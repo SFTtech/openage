@@ -44,7 +44,7 @@ from .nyan_subprocessor import AoCNyanSubprocessor
 class AoCProcessor:
 
     @classmethod
-    def convert(cls, gamespec, string_resources, existing_graphics):
+    def convert(cls, gamespec, game_version, string_resources, existing_graphics):
         """
         Input game speification and media here and get a set of
         modpacks back.
@@ -59,7 +59,7 @@ class AoCProcessor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        data_set = cls._pre_processor(gamespec, string_resources, existing_graphics)
+        data_set = cls._pre_processor(gamespec, game_version, string_resources, existing_graphics)
 
         # Create the custom openae formats (nyan, sprite, terrain)
         data_set = cls._processor(data_set)
@@ -70,7 +70,7 @@ class AoCProcessor:
         return modpacks
 
     @classmethod
-    def _pre_processor(cls, gamespec, string_resources, existing_graphics):
+    def _pre_processor(cls, gamespec, game_version, string_resources, existing_graphics):
         """
         Store data from the reader in a conversion container.
 
@@ -79,6 +79,7 @@ class AoCProcessor:
         """
         dataset = GenieObjectContainer()
 
+        dataset.game_version = game_version
         dataset.nyan_api_objects = load_api()
         dataset.strings = string_resources
         dataset.existing_graphics = existing_graphics

@@ -3,15 +3,11 @@
 """
 Creates nyan objects for things that are hardcoded into the Genie Engine,
 but configurable in openage. E.g. HP.
-
 """
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
-from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup
-from openage.convert.dataformat.aoc.internal_nyan_names import CLASS_ID_LOOKUPS,\
-    ARMOR_CLASS_LOOKUPS, TERRAIN_TYPE_LOOKUPS, BUILDING_LINE_LOOKUPS,\
-    UNIT_LINE_LOOKUPS
 from openage.convert.dataformat.converter_object import RawAPIObject,\
     ConverterObjectGroup
+from openage.convert.service import internal_name_lookups
 from openage.nyan.nyan_structs import MemberSpecialValue
 
 
@@ -247,6 +243,8 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
         api_objects = full_data_set.nyan_api_objects
 
+        class_lookup_dict = internal_name_lookups.get_class_lookups(full_data_set.game_version)
+
         type_parent = "engine.aux.game_entity_type.GameEntityType"
         types_location = "data/aux/game_entity_type/"
 
@@ -339,7 +337,7 @@ class AoCPregenSubprocessor:
 
         for unit_line in converter_groups:
             unit_class = unit_line.get_class_id()
-            class_name = CLASS_ID_LOOKUPS[unit_class]
+            class_name = class_lookup_dict[unit_class]
             class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
 
             new_game_entity_type = RawAPIObject(class_obj_name, class_name,
@@ -369,13 +367,16 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
         api_objects = full_data_set.nyan_api_objects
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(full_data_set.game_version)
+        armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(full_data_set.game_version)
+
         # =======================================================================
         # AttributeChangeType
         # =======================================================================
         type_parent = "engine.aux.attribute_change_type.AttributeChangeType"
         types_location = "data/aux/attribute_change_type/"
 
-        for type_name in ARMOR_CLASS_LOOKUPS.values():
+        for type_name in armor_lookup_dict.values():
             type_ref_in_modpack = "aux.attribute_change_type.types.%s" % (type_name)
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
                                                type_name, api_objects,
@@ -409,11 +410,7 @@ class AoCPregenSubprocessor:
                 repairable_lines.append(unit_line)
 
         for repairable_line in repairable_lines:
-            if isinstance(repairable_line, GenieUnitLineGroup):
-                game_entity_name = UNIT_LINE_LOOKUPS[repairable_line.get_head_unit_id()][0]
-
-            else:
-                game_entity_name = BUILDING_LINE_LOOKUPS[repairable_line.get_head_unit_id()][0]
+            game_entity_name = name_lookup_dict[repairable_line.get_head_unit_id()][0]
 
             type_ref_in_modpack = "aux.attribute_change_type.types.%sRepair" % (game_entity_name)
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
@@ -433,11 +430,7 @@ class AoCPregenSubprocessor:
         constructable_lines.extend(full_data_set.building_lines.values())
 
         for constructable_line in constructable_lines:
-            if isinstance(constructable_line, GenieUnitLineGroup):
-                game_entity_name = UNIT_LINE_LOOKUPS[constructable_line.get_head_unit_id()][0]
-
-            else:
-                game_entity_name = BUILDING_LINE_LOOKUPS[constructable_line.get_head_unit_id()][0]
+            game_entity_name = name_lookup_dict[constructable_line.get_head_unit_id()][0]
 
             type_ref_in_modpack = "aux.attribute_change_type.types.%sConstruct" % (game_entity_name)
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
@@ -454,11 +447,7 @@ class AoCPregenSubprocessor:
         types_location = "data/aux/construct_type/"
 
         for constructable_line in constructable_lines:
-            if isinstance(constructable_line, GenieUnitLineGroup):
-                game_entity_name = UNIT_LINE_LOOKUPS[constructable_line.get_head_unit_id()][0]
-
-            else:
-                game_entity_name = BUILDING_LINE_LOOKUPS[constructable_line.get_head_unit_id()][0]
+            game_entity_name = name_lookup_dict[constructable_line.get_head_unit_id()][0]
 
             type_ref_in_modpack = "aux.construct_type.types.%sConstruct" % (game_entity_name)
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
@@ -1416,10 +1405,12 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
         api_objects = full_data_set.nyan_api_objects
 
+        terrain_type_lookup_dict = internal_name_lookups.get_terrain_type_lookups(full_data_set.game_version)
+
         type_parent = "engine.aux.terrain_type.TerrainType"
         types_location = "data/aux/terrain_type/"
 
-        terrain_type_lookups = TERRAIN_TYPE_LOOKUPS.values()
+        terrain_type_lookups = terrain_type_lookup_dict.values()
 
         for terrain_type in terrain_type_lookups:
             type_name = terrain_type[2]

@@ -3,14 +3,10 @@
 """
 Creates upgrade patches for attribute modification effects in AoC.
 """
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieAmbientGroup
-from openage.convert.dataformat.aoc.internal_nyan_names import BUILDING_LINE_LOOKUPS,\
-    AMBIENT_GROUP_LOOKUPS, UNIT_LINE_LOOKUPS, TECH_GROUP_LOOKUPS,\
-    ARMOR_CLASS_LOOKUPS, CIV_GROUP_LOOKUPS
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
-from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
+from openage.convert.dataformat.converter_object import RawAPIObject
+from openage.convert.service import internal_name_lookups
 
 
 class AoCUpgradeAttributeSubprocessor:
@@ -38,19 +34,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -127,25 +118,21 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
         armor_class = int(value) >> 8
         armor_amount = int(value) & 0x0F
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        class_name = ARMOR_CLASS_LOOKUPS[armor_class]
+        class_name = armor_lookup_dict[armor_class]
 
         if line.has_armor(armor_class):
             patch_target_ref = "%s.Resistance.%s.BlockAmount" % (game_entity_name, class_name)
@@ -225,10 +212,12 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
         attack_amount = int(value) & 0x0F
         armor_class = int(value) >> 8
@@ -236,17 +225,11 @@ class AoCUpgradeAttributeSubprocessor:
         if armor_class == -1:
             return patches
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        class_name = ARMOR_CLASS_LOOKUPS[armor_class]
+        class_name = armor_lookup_dict[armor_class]
 
         if line.is_projectile_shooter():
             primary_projectile_id = line.get_head_unit()["attack_projectile_primary_unit_id"].get_value()
@@ -343,19 +326,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -529,19 +507,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -619,19 +592,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -709,19 +677,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -799,19 +762,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -889,19 +847,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -978,19 +931,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -1111,19 +1059,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -1200,19 +1143,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -1289,19 +1227,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -1378,19 +1311,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -1467,19 +1395,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -1573,19 +1496,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -1674,19 +1592,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -1785,19 +1698,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -1887,19 +1795,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -2008,19 +1911,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -2133,19 +2031,14 @@ class AoCUpgradeAttributeSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 

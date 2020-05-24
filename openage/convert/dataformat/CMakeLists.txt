@@ -13,3 +13,4 @@ add_py_modules(
 )
 
 add_subdirectory(aoc)
+add_subdirectory(ror)

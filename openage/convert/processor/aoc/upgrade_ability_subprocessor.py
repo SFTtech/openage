@@ -3,20 +3,19 @@
 """
 Creates upgrade patches for abilities.
 """
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieAmbientGroup, GenieVariantGroup
-from openage.convert.dataformat.aoc.internal_nyan_names import BUILDING_LINE_LOOKUPS,\
-    AMBIENT_GROUP_LOOKUPS, UNIT_LINE_LOOKUPS, TECH_GROUP_LOOKUPS,\
-    COMMAND_TYPE_LOOKUPS, VARIANT_GROUP_LOOKUPS
-from openage.convert.dataformat.value_members import NoDiffMember
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.nyan.nyan_structs import MemberOperator, MemberSpecialValue
-from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
-from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 from math import degrees
-from openage.convert.processor.aoc.upgrade_effect_subprocessor import AoCUpgradeEffectSubprocessor
+
+from openage.convert.dataformat.aoc.combined_sound import CombinedSound
+from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
+from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
+from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
+    GenieVariantGroup
+from openage.convert.dataformat.converter_object import RawAPIObject
+from openage.convert.dataformat.value_members import NoDiffMember
+from openage.convert.processor.aoc.upgrade_effect_subprocessor import AoCUpgradeEffectSubprocessor
+from openage.convert.service import internal_name_lookups
+from openage.nyan.nyan_structs import MemberOperator, MemberSpecialValue
 
 
 class AoCUgradeAbilitySubprocessor:
@@ -46,17 +45,12 @@ class AoCUgradeAbilitySubprocessor:
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+        command_lookup_dict = internal_name_lookups.get_command_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        ability_name = COMMAND_TYPE_LOOKUPS[command_id][0]
+        ability_name = command_lookup_dict[command_id][0]
 
         changed = False
         diff_animation = diff.get_member("attack_sprite_id")
@@ -94,8 +88,8 @@ class AoCUgradeAbilitySubprocessor:
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
             else:
                 wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -122,7 +116,7 @@ class AoCUgradeAbilitySubprocessor:
                                                                                                 nyan_patch_ref,
                                                                                                 ability_name,
                                                                                                 "%s_"
-                                                                                                % COMMAND_TYPE_LOOKUPS[command_id][1])
+                                                                                                % command_lookup_dict[command_id][1])
                     animations_set.append(animation_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -140,7 +134,7 @@ class AoCUgradeAbilitySubprocessor:
                                                                                         nyan_patch_ref,
                                                                                         ability_name,
                                                                                         "%s_"
-                                                                                        % COMMAND_TYPE_LOOKUPS[command_id][1])
+                                                                                        % command_lookup_dict[command_id][1])
                     sounds_set.append(sound_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
@@ -220,17 +214,12 @@ class AoCUgradeAbilitySubprocessor:
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+        command_lookup_dict = internal_name_lookups.get_command_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        ability_name = COMMAND_TYPE_LOOKUPS[command_id][0]
+        ability_name = command_lookup_dict[command_id][0]
 
         changed = False
         diff_animation = diff.get_member("attack_sprite_id")
@@ -268,8 +257,8 @@ class AoCUgradeAbilitySubprocessor:
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
             else:
                 wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -296,7 +285,7 @@ class AoCUgradeAbilitySubprocessor:
                                                                                                 nyan_patch_ref,
                                                                                                 ability_name,
                                                                                                 "%s_"
-                                                                                                % COMMAND_TYPE_LOOKUPS[command_id][1])
+                                                                                                % command_lookup_dict[command_id][1])
                     animations_set.append(animation_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -314,7 +303,7 @@ class AoCUgradeAbilitySubprocessor:
                                                                                         nyan_patch_ref,
                                                                                         ability_name,
                                                                                         "%s_"
-                                                                                        % COMMAND_TYPE_LOOKUPS[command_id][1])
+                                                                                        % command_lookup_dict[command_id][1])
                     sounds_set.append(sound_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
@@ -416,14 +405,8 @@ class AoCUgradeAbilitySubprocessor:
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -462,8 +445,8 @@ class AoCUgradeAbilitySubprocessor:
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
             else:
                 wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -536,17 +519,8 @@ class AoCUgradeAbilitySubprocessor:
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -575,8 +549,8 @@ class AoCUgradeAbilitySubprocessor:
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
             wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-            wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                % (name_lookup_dict[head_unit_id][1]))
+            wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
         else:
             wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -645,17 +619,8 @@ class AoCUgradeAbilitySubprocessor:
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -684,8 +649,8 @@ class AoCUgradeAbilitySubprocessor:
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
             wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-            wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                % (name_lookup_dict[head_unit_id][1]))
+            wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
         else:
             wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -752,17 +717,8 @@ class AoCUgradeAbilitySubprocessor:
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -791,8 +747,8 @@ class AoCUgradeAbilitySubprocessor:
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
             wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-            wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                % (name_lookup_dict[head_unit_id][1]))
+            wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
         else:
             wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -861,14 +817,8 @@ class AoCUgradeAbilitySubprocessor:
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -897,8 +847,8 @@ class AoCUgradeAbilitySubprocessor:
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
             wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-            wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                % (name_lookup_dict[head_unit_id][1]))
+            wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
         else:
             wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -957,14 +907,8 @@ class AoCUgradeAbilitySubprocessor:
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -993,8 +937,8 @@ class AoCUgradeAbilitySubprocessor:
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
             wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-            wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                % (name_lookup_dict[head_unit_id][1]))
+            wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
         else:
             wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -1053,17 +997,8 @@ class AoCUgradeAbilitySubprocessor:
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -1092,8 +1027,8 @@ class AoCUgradeAbilitySubprocessor:
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
             else:
                 wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -1189,22 +1124,13 @@ class AoCUgradeAbilitySubprocessor:
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_prefix = TECH_GROUP_LOOKUPS[group_id][0]
+            obj_prefix = tech_lookup_dict[group_id][0]
 
         else:
             obj_prefix = game_entity_name
@@ -1225,8 +1151,8 @@ class AoCUgradeAbilitySubprocessor:
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[group_id][1])
+                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[group_id][1])
 
             else:
                 wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -1285,17 +1211,11 @@ class AoCUgradeAbilitySubprocessor:
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
+        dataset = line.data
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -1334,17 +1254,8 @@ class AoCUgradeAbilitySubprocessor:
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -1371,8 +1282,8 @@ class AoCUgradeAbilitySubprocessor:
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
             else:
                 wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -1441,8 +1352,8 @@ class AoCUgradeAbilitySubprocessor:
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
             else:
                 wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -1513,17 +1424,12 @@ class AoCUgradeAbilitySubprocessor:
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+        command_lookup_dict = internal_name_lookups.get_command_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        ability_name = COMMAND_TYPE_LOOKUPS[command_id][0]
+        ability_name = command_lookup_dict[command_id][0]
 
         changed = False
         if diff:
@@ -1571,8 +1477,8 @@ class AoCUgradeAbilitySubprocessor:
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
             else:
                 wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -1599,7 +1505,7 @@ class AoCUgradeAbilitySubprocessor:
                                                                                                 nyan_patch_ref,
                                                                                                 ability_name,
                                                                                                 "%s_"
-                                                                                                % COMMAND_TYPE_LOOKUPS[command_id][1])
+                                                                                                % command_lookup_dict[command_id][1])
                     animations_set.append(animation_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -1617,7 +1523,7 @@ class AoCUgradeAbilitySubprocessor:
                                                                                         nyan_patch_ref,
                                                                                         ability_name,
                                                                                         "%s_"
-                                                                                        % COMMAND_TYPE_LOOKUPS[command_id][1])
+                                                                                        % command_lookup_dict[command_id][1])
                     sounds_set.append(sound_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
@@ -1798,14 +1704,8 @@ class AoCUgradeAbilitySubprocessor:
 
         patches = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
@@ -1834,8 +1734,8 @@ class AoCUgradeAbilitySubprocessor:
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
             wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-            wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                % (name_lookup_dict[head_unit_id][1]))
+            wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
         else:
             wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
@@ -1884,12 +1784,15 @@ class AoCUgradeAbilitySubprocessor:
         """
         dataset = converter_group.data
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+
         if isinstance(converter_group, GenieVariantGroup):
             group_name = str(animation_id)
 
         else:
             tech_id = converter_group.get_id()
-            group_name = TECH_GROUP_LOOKUPS[tech_id][1]
+            group_name = tech_lookup_dict[tech_id][1]
 
         animation_ref = "%s.%sAnimation" % (nyan_patch_ref, animation_name)
         animation_obj_name = "%sAnimation" % (animation_name)
@@ -1905,7 +1808,7 @@ class AoCUgradeAbilitySubprocessor:
         else:
             if isinstance(line, GenieBuildingLineGroup):
                 animation_filename = "%s%s_%s" % (filename_prefix,
-                                                  BUILDING_LINE_LOOKUPS[line.get_head_unit_id()][1],
+                                                  name_lookup_dict[line.get_head_unit_id()][1],
                                                   group_name)
 
             else:

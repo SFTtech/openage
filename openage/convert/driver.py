@@ -152,7 +152,7 @@ def convert_metadata(args):
     existing_graphics = get_existing_graphics(args)
 
     # Convert
-    modpacks = args.converter.convert(gamespec, string_resources, existing_graphics)
+    modpacks = args.converter.convert(gamespec, args.game_version, string_resources, existing_graphics)
 
     for modpack in modpacks:
         ModpackExporter.export(modpack, args)

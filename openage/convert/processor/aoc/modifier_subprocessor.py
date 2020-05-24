@@ -8,10 +8,8 @@ from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_unit import GenieGameEntityGroup,\
     GenieBuildingLineGroup, GenieVillagerGroup, GenieAmbientGroup,\
     GenieVariantGroup
-from openage.convert.dataformat.aoc.internal_nyan_names import BUILDING_LINE_LOOKUPS,\
-    UNIT_LINE_LOOKUPS, CIV_GROUP_LOOKUPS, AMBIENT_GROUP_LOOKUPS,\
-    VARIANT_GROUP_LOOKUPS
 from openage.convert.dataformat.converter_object import RawAPIObject
+from openage.convert.service import internal_name_lookups
 
 
 class AoCModifierSubprocessor:
@@ -70,11 +68,7 @@ class AoCModifierSubprocessor:
 
             head_unit_id = converter_obj_group.get_head_unit_id()
 
-            if isinstance(converter_obj_group, GenieBuildingLineGroup):
-                name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-            else:
-                name_lookup_dict = UNIT_LINE_LOOKUPS
+            name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
             target_obj_name = name_lookup_dict[head_unit_id][0]
 
@@ -118,13 +112,13 @@ class AoCModifierSubprocessor:
                     for resource_line in lines:
                         head_unit_id = resource_line.get_head_unit_id()
                         if isinstance(resource_line, GenieBuildingLineGroup):
-                            resource_line_name = BUILDING_LINE_LOOKUPS[head_unit_id][0]
+                            resource_line_name = name_lookup_dict[head_unit_id][0]
 
                         elif isinstance(resource_line, GenieAmbientGroup):
-                            resource_line_name = AMBIENT_GROUP_LOOKUPS[head_unit_id][0]
+                            resource_line_name = name_lookup_dict[head_unit_id][0]
 
                         elif isinstance(resource_line, GenieVariantGroup):
-                            resource_line_name = VARIANT_GROUP_LOOKUPS[head_unit_id][1]
+                            resource_line_name = name_lookup_dict[head_unit_id][1]
 
                         modifier_ref = "%s.%sGatheringRate" % (target_obj_name, resource_line_name)
                         modifier_raw_api_object = RawAPIObject(modifier_ref,
@@ -166,18 +160,13 @@ class AoCModifierSubprocessor:
         dataset = converter_obj_group.data
         if isinstance(converter_obj_group, GenieGameEntityGroup):
             head_unit_id = converter_obj_group.get_head_unit_id()
-
-            if isinstance(converter_obj_group, GenieBuildingLineGroup):
-                name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-            else:
-                name_lookup_dict = UNIT_LINE_LOOKUPS
-
+            name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
             target_obj_name = name_lookup_dict[head_unit_id][0]
 
         else:
             # Civs
-            target_obj_name = CIV_GROUP_LOOKUPS[converter_obj_group.get_id()][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            target_obj_name = civ_lookup_dict[converter_obj_group.get_id()][0]
 
         modifier_ref = "%s.MoveSpeed" % (target_obj_name)
         modifier_raw_api_object = RawAPIObject(modifier_ref, "MoveSpeed", dataset.nyan_api_objects)

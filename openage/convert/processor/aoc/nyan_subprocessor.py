@@ -7,20 +7,16 @@ main AoC processor.
 from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieGarrisonMode, GenieMonkGroup, GenieStackBuildingGroup
-from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
-    TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, CIV_GROUP_LOOKUPS,\
-    VARIANT_GROUP_LOOKUPS
+from openage.convert.dataformat.aoc.genie_unit import GenieGarrisonMode,\
+    GenieMonkGroup, GenieStackBuildingGroup
 from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
 from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
 from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubprocessor
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
 from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUgradeAbilitySubprocessor
+from openage.convert.service import internal_name_lookups
 
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
-from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, CLASS_ID_LOOKUPS,\
-    BUILDING_LINE_LOOKUPS, TECH_GROUP_LOOKUPS
 from ...dataformat.converter_object import RawAPIObject
 from .ability_subprocessor import AoCAbilitySubprocessor
 
@@ -131,14 +127,17 @@ class AoCNyanSubprocessor:
 
         dataset = unit_line.data
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        class_lookup_dict = internal_name_lookups.get_class_lookups(dataset.game_version)
+
         # Start with the generic GameEntity
-        game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]
-        obj_location = "data/game_entity/generic/%s/" % (UNIT_LINE_LOOKUPS[current_unit_id][1])
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+        obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[current_unit_id][1])
         raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
         raw_api_object.set_location(obj_location)
-        raw_api_object.set_filename(UNIT_LINE_LOOKUPS[current_unit_id][1])
+        raw_api_object.set_filename(name_lookup_dict[current_unit_id][1])
         unit_line.add_raw_api_object(raw_api_object)
 
         # =======================================================================
@@ -157,7 +156,7 @@ class AoCNyanSubprocessor:
             types_set.append(type_obj)
 
         unit_class = current_unit.get_member("unit_class").get_value()
-        class_name = CLASS_ID_LOOKUPS[unit_class]
+        class_name = class_lookup_dict[unit_class]
         class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
         types_set.append(type_obj)
@@ -331,14 +330,17 @@ class AoCNyanSubprocessor:
         current_building_id = building_line.get_head_unit_id()
         dataset = building_line.data
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        class_lookup_dict = internal_name_lookups.get_class_lookups(dataset.game_version)
+
         # Start with the generic GameEntity
-        game_entity_name = BUILDING_LINE_LOOKUPS[current_building_id][0]
-        obj_location = "data/game_entity/generic/%s/" % (BUILDING_LINE_LOOKUPS[current_building_id][1])
+        game_entity_name = name_lookup_dict[current_building_id][0]
+        obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[current_building_id][1])
         raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
         raw_api_object.set_location(obj_location)
-        raw_api_object.set_filename(BUILDING_LINE_LOOKUPS[current_building_id][1])
+        raw_api_object.set_filename(name_lookup_dict[current_building_id][1])
         building_line.add_raw_api_object(raw_api_object)
 
         # =======================================================================
@@ -359,7 +361,7 @@ class AoCNyanSubprocessor:
             types_set.append(type_obj)
 
         unit_class = current_building.get_member("unit_class").get_value()
-        class_name = CLASS_ID_LOOKUPS[unit_class]
+        class_name = class_lookup_dict[unit_class]
         class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
         types_set.append(type_obj)
@@ -485,14 +487,17 @@ class AoCNyanSubprocessor:
 
         dataset = ambient_group.data
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        class_lookup_dict = internal_name_lookups.get_class_lookups(dataset.game_version)
+
         # Start with the generic GameEntity
-        game_entity_name = AMBIENT_GROUP_LOOKUPS[ambient_id][0]
-        obj_location = "data/game_entity/generic/%s/" % (AMBIENT_GROUP_LOOKUPS[ambient_id][1])
+        game_entity_name = name_lookup_dict[ambient_id][0]
+        obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[ambient_id][1])
         raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
         raw_api_object.set_location(obj_location)
-        raw_api_object.set_filename(AMBIENT_GROUP_LOOKUPS[ambient_id][1])
+        raw_api_object.set_filename(name_lookup_dict[ambient_id][1])
         ambient_group.add_raw_api_object(raw_api_object)
 
         # =======================================================================
@@ -508,7 +513,7 @@ class AoCNyanSubprocessor:
         types_set.append(type_obj)
 
         unit_class = ambient_unit.get_member("unit_class").get_value()
-        class_name = CLASS_ID_LOOKUPS[unit_class]
+        class_name = class_lookup_dict[unit_class]
         class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
         types_set.append(type_obj)
@@ -576,14 +581,17 @@ class AoCNyanSubprocessor:
 
         dataset = variant_group.data
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        class_lookup_dict = internal_name_lookups.get_class_lookups(dataset.game_version)
+
         # Start with the generic GameEntity
-        game_entity_name = VARIANT_GROUP_LOOKUPS[variant_id][0]
-        obj_location = "data/game_entity/generic/%s/" % (VARIANT_GROUP_LOOKUPS[variant_id][1])
+        game_entity_name = name_lookup_dict[variant_id][0]
+        obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[variant_id][1])
         raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
         raw_api_object.set_location(obj_location)
-        raw_api_object.set_filename(VARIANT_GROUP_LOOKUPS[variant_id][1])
+        raw_api_object.set_filename(name_lookup_dict[variant_id][1])
         variant_group.add_raw_api_object(raw_api_object)
 
         # =======================================================================
@@ -599,7 +607,7 @@ class AoCNyanSubprocessor:
         types_set.append(type_obj)
 
         unit_class = variant_main_unit.get_member("unit_class").get_value()
-        class_name = CLASS_ID_LOOKUPS[unit_class]
+        class_name = class_lookup_dict[unit_class]
         class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
         types_set.append(type_obj)
@@ -641,7 +649,7 @@ class AoCNyanSubprocessor:
         # =======================================================================
         variants_set = []
 
-        variant_type = VARIANT_GROUP_LOOKUPS[variant_id][3]
+        variant_type = name_lookup_dict[variant_id][3]
 
         index = 0
         for variant in variant_group.line:
@@ -737,8 +745,11 @@ class AoCNyanSubprocessor:
 
         dataset = tech_group.data
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+
         # Start with the Tech object
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+        tech_name = tech_lookup_dict[tech_id][0]
         raw_api_object = RawAPIObject(tech_name, tech_name,
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.tech.Tech")
@@ -746,13 +757,13 @@ class AoCNyanSubprocessor:
         if isinstance(tech_group, UnitLineUpgrade):
             unit_line = dataset.unit_lines_vertical_ref[tech_group.get_line_id()]
             head_unit_id = unit_line.get_head_unit_id()
-            obj_location = "data/game_entity/generic/%s/" % (UNIT_LINE_LOOKUPS[head_unit_id][1])
+            obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[head_unit_id][1])
 
         else:
-            obj_location = "data/tech/generic/%s/" % (TECH_GROUP_LOOKUPS[tech_id][1])
+            obj_location = "data/tech/generic/%s/" % (tech_lookup_dict[tech_id][1])
 
         raw_api_object.set_location(obj_location)
-        raw_api_object.set_filename(TECH_GROUP_LOOKUPS[tech_id][1])
+        raw_api_object.set_filename(tech_lookup_dict[tech_id][1])
         tech_group.add_raw_api_object(raw_api_object)
 
         # =======================================================================
@@ -846,14 +857,18 @@ class AoCNyanSubprocessor:
 
         dataset = terrain_group.data
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        terrain_lookup_dict = internal_name_lookups.get_terrain_lookups(dataset.game_version)
+        terrain_type_lookup_dict = internal_name_lookups.get_terrain_type_lookups(dataset.game_version)
+
         # Start with the Terrain object
-        terrain_name = TERRAIN_GROUP_LOOKUPS[terrain_index][1]
+        terrain_name = terrain_lookup_dict[terrain_index][1]
         raw_api_object = RawAPIObject(terrain_name, terrain_name,
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.terrain.Terrain")
-        obj_location = "data/terrain/%s/" % (TERRAIN_GROUP_LOOKUPS[terrain_index][2])
+        obj_location = "data/terrain/%s/" % (terrain_lookup_dict[terrain_index][2])
         raw_api_object.set_location(obj_location)
-        raw_api_object.set_filename(TERRAIN_GROUP_LOOKUPS[terrain_index][2])
+        raw_api_object.set_filename(terrain_lookup_dict[terrain_index][2])
         terrain_group.add_raw_api_object(raw_api_object)
 
         # =======================================================================
@@ -861,7 +876,7 @@ class AoCNyanSubprocessor:
         # =======================================================================
         terrain_types = []
 
-        for terrain_type in TERRAIN_TYPE_LOOKUPS.values():
+        for terrain_type in terrain_type_lookup_dict.values():
             if terrain_index in terrain_type[0]:
                 type_name = "aux.terrain_type.types.%s" % (terrain_type[2])
                 type_obj = dataset.pregen_nyan_objects[type_name].get_nyan_object()
@@ -925,7 +940,7 @@ class AoCNyanSubprocessor:
         for ambient_index in range(ambients_count):
             ambient_id = terrain["terrain_unit_id"][ambient_index].get_value()
             ambient_line = dataset.unit_ref[ambient_id]
-            ambient_name = AMBIENT_GROUP_LOOKUPS[ambient_line.get_head_unit_id()][0]
+            ambient_name = name_lookup_dict[ambient_line.get_head_unit_id()][0]
 
             ambient_ref = "%s.Ambient%s" % (terrain_name, str(ambient_index))
             ambient_raw_api_object = RawAPIObject(ambient_ref,
@@ -976,7 +991,7 @@ class AoCNyanSubprocessor:
 
         else:
             terrain_graphic = CombinedTerrain(slp_id,
-                                              "texture_%s" % (TERRAIN_GROUP_LOOKUPS[terrain_index][2]),
+                                              "texture_%s" % (terrain_lookup_dict[terrain_index][2]),
                                               dataset)
             dataset.combined_terrains.update({terrain_graphic.get_id(): terrain_graphic})
 
@@ -1002,16 +1017,18 @@ class AoCNyanSubprocessor:
 
         dataset = civ_group.data
 
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+
         # Start with the Tech object
-        tech_name = CIV_GROUP_LOOKUPS[civ_id][0]
+        tech_name = civ_lookup_dict[civ_id][0]
         raw_api_object = RawAPIObject(tech_name, tech_name,
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.civilization.Civilization")
 
-        obj_location = "data/civ/%s/" % (CIV_GROUP_LOOKUPS[civ_id][1])
+        obj_location = "data/civ/%s/" % (civ_lookup_dict[civ_id][1])
 
         raw_api_object.set_location(obj_location)
-        raw_api_object.set_filename(CIV_GROUP_LOOKUPS[civ_id][1])
+        raw_api_object.set_filename(civ_lookup_dict[civ_id][1])
         civ_group.add_raw_api_object(raw_api_object)
 
         # =======================================================================
@@ -1118,13 +1135,10 @@ class AoCNyanSubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            game_entity_name = BUILDING_LINE_LOOKUPS[current_unit_id][0]
-            game_entity_filename = BUILDING_LINE_LOOKUPS[current_unit_id][1]
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
-        else:
-            game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]
-            game_entity_filename = UNIT_LINE_LOOKUPS[current_unit_id][1]
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+        game_entity_filename = name_lookup_dict[current_unit_id][1]
 
         projectiles_location = "data/game_entity/generic/%s/projectiles/" % (game_entity_filename)
 

@@ -4,12 +4,11 @@
 Creates effects and resistances for the Apply*Effect and Resistance
 abilities.
 """
-from openage.convert.dataformat.aoc.internal_nyan_names import ARMOR_CLASS_LOOKUPS,\
-    UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS
-from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup
+from openage.convert.dataformat.converter_object import RawAPIObject
+from openage.convert.service import internal_name_lookups
 from openage.nyan.nyan_structs import MemberSpecialValue
 
 
@@ -38,6 +37,8 @@ class AoCEffectSubprocessor:
 
         effects = []
 
+        armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(dataset.game_version)
+
         # FlatAttributeChangeDecrease
         effect_parent = "engine.effect.discrete.flat_attribute_change.FlatAttributeChange"
         attack_parent = "engine.effect.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"
@@ -47,7 +48,7 @@ class AoCEffectSubprocessor:
         for attack in attacks.values():
             armor_class = attack["type_id"].get_value()
             attack_amount = attack["amount"].get_value()
-            class_name = ARMOR_CLASS_LOOKUPS[armor_class]
+            class_name = armor_lookup_dict[armor_class]
 
             attack_ref = "%s.%s" % (ability_ref, class_name)
             attack_raw_api_object = RawAPIObject(attack_ref,
@@ -339,6 +340,8 @@ class AoCEffectSubprocessor:
         """
         dataset = line.data
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+
         effects = []
 
         effect_parent = "engine.effect.continuous.flat_attribute_change.FlatAttributeChange"
@@ -351,11 +354,7 @@ class AoCEffectSubprocessor:
                 repairable_lines.append(unit_line)
 
         for repairable_line in repairable_lines:
-            if isinstance(repairable_line, GenieUnitLineGroup):
-                game_entity_name = UNIT_LINE_LOOKUPS[repairable_line.get_head_unit_id()][0]
-
-            else:
-                game_entity_name = BUILDING_LINE_LOOKUPS[repairable_line.get_head_unit_id()][0]
+            game_entity_name = name_lookup_dict[repairable_line.get_head_unit_id()][0]
 
             repair_name = "%sRepairEffect" % (game_entity_name)
             repair_ref = "%s.%s" % (ability_ref, repair_name)
@@ -443,6 +442,8 @@ class AoCEffectSubprocessor:
         """
         dataset = line.data
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+
         effects = []
 
         progress_effect_parent = "engine.effect.continuous.time_relative_progress.TimeRelativeProgressChange"
@@ -454,11 +455,7 @@ class AoCEffectSubprocessor:
         constructable_lines.extend(dataset.building_lines.values())
 
         for constructable_line in constructable_lines:
-            if isinstance(constructable_line, GenieUnitLineGroup):
-                game_entity_name = UNIT_LINE_LOOKUPS[constructable_line.get_head_unit_id()][0]
-
-            else:
-                game_entity_name = BUILDING_LINE_LOOKUPS[constructable_line.get_head_unit_id()][0]
+            game_entity_name = name_lookup_dict[constructable_line.get_head_unit_id()][0]
 
             # Construction progress
             contruct_progress_name = "%sConstructProgressEffect" % (game_entity_name)
@@ -536,6 +533,8 @@ class AoCEffectSubprocessor:
         current_unit = line.get_head_unit()
         dataset = line.data
 
+        armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(dataset.game_version)
+
         resistances = []
 
         # FlatAttributeChangeDecrease
@@ -552,7 +551,7 @@ class AoCEffectSubprocessor:
         for armor in armors.values():
             armor_class = armor["type_id"].get_value()
             armor_amount = armor["amount"].get_value()
-            class_name = ARMOR_CLASS_LOOKUPS[armor_class]
+            class_name = armor_lookup_dict[armor_class]
 
             armor_ref = "%s.%s" % (ability_ref, class_name)
             armor_raw_api_object = RawAPIObject(armor_ref, class_name, dataset.nyan_api_objects)
@@ -754,11 +753,7 @@ class AoCEffectSubprocessor:
 
         resistances = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -846,11 +841,7 @@ class AoCEffectSubprocessor:
 
         resistances = []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 

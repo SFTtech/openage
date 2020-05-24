@@ -3,12 +3,11 @@
 """
 Creates upgrade patches for resource modification effects in AoC.
 """
-from openage.convert.dataformat.aoc.internal_nyan_names import BUILDING_LINE_LOOKUPS,\
-    UNIT_LINE_LOOKUPS, TECH_GROUP_LOOKUPS, CIV_GROUP_LOOKUPS
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.nyan.nyan_structs import MemberOperator
 from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
+from openage.convert.dataformat.converter_object import RawAPIObject
+from openage.convert.service import internal_name_lookups
+from openage.nyan.nyan_structs import MemberOperator
 
 
 class AoCUpgradeResourceSubprocessor:
@@ -33,14 +32,18 @@ class AoCUpgradeResourceSubprocessor:
 
         patches = []
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        game_entity_name = UNIT_LINE_LOOKUPS[berserk_id][0]
+        game_entity_name = name_lookup_dict[berserk_id][0]
 
         patch_target_ref = "%s.RegenerateHealth.HealthRate" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -114,10 +117,12 @@ class AoCUpgradeResourceSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
         patch_target_ref = "aux.resource.types.PopulationSpace"
         patch_target = dataset.pregen_nyan_objects[patch_target_ref].get_nyan_object()
@@ -189,14 +194,18 @@ class AoCUpgradeResourceSubprocessor:
 
         patches = []
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        game_entity_name = UNIT_LINE_LOOKUPS[monk_id][0]
+        game_entity_name = name_lookup_dict[monk_id][0]
 
         patch_target_ref = "%s.Convert" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -454,14 +463,18 @@ class AoCUpgradeResourceSubprocessor:
 
         patches = []
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        game_entity_name = UNIT_LINE_LOOKUPS[monk_id][0]
+        game_entity_name = name_lookup_dict[monk_id][0]
 
         patch_target_ref = "%s.RegenerateFaith.FaithRate" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -533,14 +546,18 @@ class AoCUpgradeResourceSubprocessor:
 
         patches = []
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        game_entity_name = BUILDING_LINE_LOOKUPS[farm_id][0]
+        game_entity_name = name_lookup_dict[farm_id][0]
 
         patch_target_ref = "%s.Harvestable.%sResourceSpot" % (game_entity_name, game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -684,14 +701,18 @@ class AoCUpgradeResourceSubprocessor:
 
         patches = []
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        game_entity_name = UNIT_LINE_LOOKUPS[monk_id][0]
+        game_entity_name = name_lookup_dict[monk_id][0]
 
         patch_target_ref = "%s.Heal" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -819,14 +840,18 @@ class AoCUpgradeResourceSubprocessor:
 
         patches = []
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
-        game_entity_name = UNIT_LINE_LOOKUPS[monk_id][0]
+        game_entity_name = name_lookup_dict[monk_id][0]
 
         patch_target_ref = "%s.Convert" % (game_entity_name)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -1045,10 +1070,12 @@ class AoCUpgradeResourceSubprocessor:
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+            obj_name = civ_lookup_dict[obj_id][0]
 
         patch_target_ref = "aux.resource.types.PopulationSpace"
         patch_target = dataset.pregen_nyan_objects[patch_target_ref].get_nyan_object()

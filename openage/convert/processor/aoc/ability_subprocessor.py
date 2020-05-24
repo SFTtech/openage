@@ -10,20 +10,16 @@ from math import degrees
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieAmbientGroup, GenieGarrisonMode, GenieStackBuildingGroup,\
-    GenieUnitLineGroup, GenieMonkGroup, GenieVariantGroup
-from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS,\
-    AMBIENT_GROUP_LOOKUPS, GATHER_TASK_LOOKUPS, RESTOCK_TARGET_LOOKUPS,\
-    TERRAIN_GROUP_LOOKUPS, TERRAIN_TYPE_LOOKUPS, COMMAND_TYPE_LOOKUPS,\
-    VARIANT_GROUP_LOOKUPS, CIV_GROUP_LOOKUPS, GRAPHICS_SET_LOOKUPS
+    GenieUnitLineGroup, GenieMonkGroup
 from openage.convert.dataformat.converter_object import RawMemberPush
 from openage.convert.processor.aoc.effect_subprocessor import AoCEffectSubprocessor
+from openage.convert.service import internal_name_lookups
 from openage.nyan.nyan_structs import MemberSpecialValue, MemberOperator
 from openage.util.ordered_set import OrderedSet
 
 from ...dataformat.aoc.combined_sprite import CombinedSprite
 from ...dataformat.aoc.expected_pointer import ExpectedPointer
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
-from ...dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS
 from ...dataformat.converter_object import RawAPIObject
 
 
@@ -55,15 +51,13 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        command_lookup_dict = internal_name_lookups.get_command_lookups(dataset.game_version)
+        gset_lookup_dict = internal_name_lookups.get_graphic_set_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        ability_name = COMMAND_TYPE_LOOKUPS[command_id][0]
+        ability_name = command_lookup_dict[command_id][0]
 
         if ranged:
             ability_parent = "engine.ability.type.RangedContinuousEffect"
@@ -101,7 +95,7 @@ class AoCAbilitySubprocessor:
                                                                                   ability_ref,
                                                                                   ability_name,
                                                                                   "%s_"
-                                                                                  % COMMAND_TYPE_LOOKUPS[command_id][1])
+                                                                                  % command_lookup_dict[command_id][1])
             animations_set.append(animation_expected_pointer)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
@@ -120,7 +114,7 @@ class AoCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    for graphics_set_id, items in GRAPHICS_SET_LOOKUPS.items():
+                    for graphics_set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
                             break
 
@@ -129,9 +123,9 @@ class AoCAbilitySubprocessor:
                     if not obj_exists:
                         handled_graphics_set_ids.add(graphics_set_id)
 
-                    obj_prefix = "%s%s" % (GRAPHICS_SET_LOOKUPS[graphics_set_id][1], ability_name)
-                    filename_prefix = "%s_%s_" % (COMMAND_TYPE_LOOKUPS[command_id][1],
-                                                  GRAPHICS_SET_LOOKUPS[graphics_set_id][2],)
+                    obj_prefix = "%s%s" % (gset_lookup_dict[graphics_set_id][1], ability_name)
+                    filename_prefix = "%s_%s_" % (command_lookup_dict[command_id][1],
+                                                  gset_lookup_dict[graphics_set_id][2],)
                     AoCAbilitySubprocessor._create_civ_animation(line,
                                                                  civ_group,
                                                                  civ_animation_id,
@@ -233,15 +227,13 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        command_lookup_dict = internal_name_lookups.get_command_lookups(dataset.game_version)
+        gset_lookup_dict = internal_name_lookups.get_graphic_set_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        ability_name = COMMAND_TYPE_LOOKUPS[command_id][0]
+        ability_name = command_lookup_dict[command_id][0]
 
         if ranged:
             ability_parent = "engine.ability.type.RangedDiscreteEffect"
@@ -279,7 +271,7 @@ class AoCAbilitySubprocessor:
                                                                                   ability_ref,
                                                                                   ability_name,
                                                                                   "%s_"
-                                                                                  % COMMAND_TYPE_LOOKUPS[command_id][1])
+                                                                                  % command_lookup_dict[command_id][1])
             animations_set.append(animation_expected_pointer)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
@@ -298,7 +290,7 @@ class AoCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    for graphics_set_id, items in GRAPHICS_SET_LOOKUPS.items():
+                    for graphics_set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
                             break
 
@@ -307,9 +299,9 @@ class AoCAbilitySubprocessor:
                     if not obj_exists:
                         handled_graphics_set_ids.add(graphics_set_id)
 
-                    obj_prefix = "%s%s" % (GRAPHICS_SET_LOOKUPS[graphics_set_id][1], ability_name)
-                    filename_prefix = "%s_%s_" % (COMMAND_TYPE_LOOKUPS[command_id][1],
-                                                  GRAPHICS_SET_LOOKUPS[graphics_set_id][2],)
+                    obj_prefix = "%s%s" % (gset_lookup_dict[graphics_set_id][1], ability_name)
+                    filename_prefix = "%s_%s_" % (command_lookup_dict[command_id][1],
+                                                  gset_lookup_dict[graphics_set_id][2],)
                     AoCAbilitySubprocessor._create_civ_animation(line,
                                                                  civ_group,
                                                                  civ_animation_id,
@@ -454,11 +446,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -606,11 +594,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -629,9 +613,7 @@ class AoCAbilitySubprocessor:
 
         # Storage elements
         elements = []
-        entity_lookups = {}
-        entity_lookups.update(UNIT_LINE_LOOKUPS)
-        entity_lookups.update(AMBIENT_GROUP_LOOKUPS)
+        entity_lookups = internal_name_lookups.get_entity_lookups(dataset.game_version)
         for entity in line.garrison_entities:
             entity_ref = entity_lookups[entity.get_head_unit_id()][0]
             entity_expected_pointer = ExpectedPointer(entity, entity_ref)
@@ -661,11 +643,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -1599,13 +1577,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-            creatable_lookup_dict = UNIT_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
-            creatable_lookup_dict = BUILDING_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
         ability_ref = "%s.Create" % (game_entity_name)
@@ -1625,7 +1597,7 @@ class AoCAbilitySubprocessor:
             # line individually to avoid duplicates. We just point to the
             # raw API objects here.
             creatable_id = creatable.get_head_unit_id()
-            creatable_name = creatable_lookup_dict[creatable_id][0]
+            creatable_name = name_lookup_dict[creatable_id][0]
 
             raw_api_object_ref = "%s.CreatableGameEntity" % creatable_name
             creatable_expected_pointer = ExpectedPointer(creatable,
@@ -1654,17 +1626,8 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        gset_lookup_dict = internal_name_lookups.get_graphic_set_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -1704,7 +1667,7 @@ class AoCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    for graphics_set_id, items in GRAPHICS_SET_LOOKUPS.items():
+                    for graphics_set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
                             break
 
@@ -1713,8 +1676,8 @@ class AoCAbilitySubprocessor:
                     if not obj_exists:
                         handled_graphics_set_ids.add(graphics_set_id)
 
-                    obj_prefix = "%sDeath" % (GRAPHICS_SET_LOOKUPS[graphics_set_id][1])
-                    filename_prefix = "death_%s_" % (GRAPHICS_SET_LOOKUPS[graphics_set_id][2])
+                    obj_prefix = "%sDeath" % (gset_lookup_dict[graphics_set_id][1])
+                    filename_prefix = "death_%s_" % (gset_lookup_dict[graphics_set_id][2])
                     AoCAbilitySubprocessor._create_civ_animation(line,
                                                                  civ_group,
                                                                  civ_animation_id,
@@ -1895,14 +1858,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -1979,17 +1935,8 @@ class AoCAbilitySubprocessor:
         if dead_unit_id > -1:
             dead_unit = dataset.genie_units[dead_unit_id]
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        gset_lookup_dict = internal_name_lookups.get_graphic_set_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -2037,7 +1984,7 @@ class AoCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    for graphics_set_id, items in GRAPHICS_SET_LOOKUPS.items():
+                    for graphics_set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
                             break
 
@@ -2046,8 +1993,8 @@ class AoCAbilitySubprocessor:
                     if not obj_exists:
                         handled_graphics_set_ids.add(graphics_set_id)
 
-                    obj_prefix = "%sDespawn" % GRAPHICS_SET_LOOKUPS[graphics_set_id][1]
-                    filename_prefix = "despawn_%s_" % GRAPHICS_SET_LOOKUPS[graphics_set_id][2]
+                    obj_prefix = "%sDespawn" % gset_lookup_dict[graphics_set_id][1]
+                    filename_prefix = "despawn_%s_" % gset_lookup_dict[graphics_set_id][2]
                     AoCAbilitySubprocessor._create_civ_animation(line,
                                                                  civ_group,
                                                                  civ_animation_id,
@@ -2110,11 +2057,8 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        gather_lookup_dict = internal_name_lookups.get_gather_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -2138,12 +2082,12 @@ class AoCAbilitySubprocessor:
                     break
 
             gatherer_unit_id = gatherer.get_id()
-            if gatherer_unit_id not in GATHER_TASK_LOOKUPS.keys():
+            if gatherer_unit_id not in gather_lookup_dict.keys():
                 # Skips hunting wolves
                 continue
 
             container_ref = "%s.ResourceStorage.%sContainer" % (game_entity_name,
-                                                                GATHER_TASK_LOOKUPS[gatherer_unit_id][0])
+                                                                gather_lookup_dict[gatherer_unit_id][0])
             container_expected_pointer = ExpectedPointer(line, container_ref)
             containers.append(container_expected_pointer)
 
@@ -2185,11 +2129,8 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        gather_lookup_dict = internal_name_lookups.get_gather_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -2204,16 +2145,16 @@ class AoCAbilitySubprocessor:
 
         containers = []
         for gatherer_id in gatherer_ids:
-            if gatherer_id not in GATHER_TASK_LOOKUPS.keys():
+            if gatherer_id not in gather_lookup_dict.keys():
                 # Skips hunting wolves
                 continue
 
             gatherer_line = dataset.unit_ref[gatherer_id]
             gatherer_head_unit_id = gatherer_line.get_head_unit_id()
-            gatherer_name = UNIT_LINE_LOOKUPS[gatherer_head_unit_id][0]
+            gatherer_name = name_lookup_dict[gatherer_head_unit_id][0]
 
             container_ref = "%s.ResourceStorage.%sContainer" % (gatherer_name,
-                                                                GATHER_TASK_LOOKUPS[gatherer_id][0])
+                                                                gather_lookup_dict[gatherer_id][0])
             container_expected_pointer = ExpectedPointer(gatherer_line, container_ref)
             containers.append(container_expected_pointer)
 
@@ -2240,11 +2181,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -2256,10 +2193,7 @@ class AoCAbilitySubprocessor:
 
         # Containers
         containers = []
-        entity_lookups = {}
-        entity_lookups.update(UNIT_LINE_LOOKUPS)
-        entity_lookups.update(BUILDING_LINE_LOOKUPS)
-
+        entity_lookups = internal_name_lookups.get_entity_lookups(dataset.game_version)
         for garrison in line.garrison_locations:
             garrison_mode = garrison.get_garrison_mode()
 
@@ -2310,11 +2244,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -2376,11 +2306,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -2392,10 +2318,7 @@ class AoCAbilitySubprocessor:
 
         # Containers
         containers = []
-        entity_lookups = {}
-        entity_lookups.update(UNIT_LINE_LOOKUPS)
-        entity_lookups.update(BUILDING_LINE_LOOKUPS)
-
+        entity_lookups = internal_name_lookups.get_entity_lookups(dataset.game_version)
         for garrison in line.garrison_locations:
             garrison_mode = garrison.get_garrison_mode()
 
@@ -2436,11 +2359,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -2524,7 +2443,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -2605,14 +2524,8 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        terrain_lookup_dict = internal_name_lookups.get_terrain_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -2627,7 +2540,7 @@ class AoCAbilitySubprocessor:
             terrain_id = current_unit["foundation_terrain_id"].get_value()
 
         terrain = dataset.terrain_groups[terrain_id]
-        terrain_expected_pointer = ExpectedPointer(terrain, TERRAIN_GROUP_LOOKUPS[terrain_id][1])
+        terrain_expected_pointer = ExpectedPointer(terrain, terrain_lookup_dict[terrain_id][1])
         ability_raw_api_object.add_raw_member("foundation_terrain",
                                               terrain_expected_pointer,
                                               "engine.ability.type.Foundation")
@@ -2658,14 +2571,8 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        gather_lookup_dict = internal_name_lookups.get_gather_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -2745,11 +2652,11 @@ class AoCAbilitySubprocessor:
                 continue
 
             gatherer_unit_id = gatherer.get_id()
-            if gatherer_unit_id not in GATHER_TASK_LOOKUPS.keys():
+            if gatherer_unit_id not in gather_lookup_dict.keys():
                 # Skips hunting wolves
                 continue
 
-            ability_name = GATHER_TASK_LOOKUPS[gatherer_unit_id][0]
+            ability_name = gather_lookup_dict[gatherer_unit_id][0]
 
             ability_ref = "%s.%s" % (game_entity_name, ability_name)
             ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
@@ -2767,7 +2674,7 @@ class AoCAbilitySubprocessor:
                                                                                       ability_ref,
                                                                                       ability_name,
                                                                                       "%s_"
-                                                                                      % GATHER_TASK_LOOKUPS[gatherer_unit_id][1])
+                                                                                      % gather_lookup_dict[gatherer_unit_id][1])
                 animations_set.append(animation_expected_pointer)
                 ability_raw_api_object.add_raw_member("animations", animations_set,
                                                       "engine.ability.specialization.AnimatedAbility")
@@ -2803,18 +2710,14 @@ class AoCAbilitySubprocessor:
 
             # Resource container
             container_ref = "%s.ResourceStorage.%sContainer" % (game_entity_name,
-                                                                GATHER_TASK_LOOKUPS[gatherer_unit_id][0])
+                                                                gather_lookup_dict[gatherer_unit_id][0])
             container_expected_pointer = ExpectedPointer(line, container_ref)
             ability_raw_api_object.add_raw_member("container",
                                                   container_expected_pointer,
                                                   "engine.ability.type.Gather")
 
             # Targets (resource spots)
-            entity_lookups = {}
-            entity_lookups.update(UNIT_LINE_LOOKUPS)
-            entity_lookups.update(BUILDING_LINE_LOOKUPS)
-            entity_lookups.update(AMBIENT_GROUP_LOOKUPS)
-
+            entity_lookups = internal_name_lookups.get_entity_lookups(dataset.game_version)
             spot_expected_pointers = []
             for group in harvestable_groups:
                 group_id = group.get_head_unit_id()
@@ -2850,17 +2753,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -3106,14 +2999,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -3163,14 +3049,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -3209,14 +3088,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -3275,17 +3147,8 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        gset_lookup_dict = internal_name_lookups.get_graphic_set_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -3325,7 +3188,7 @@ class AoCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    for graphics_set_id, items in GRAPHICS_SET_LOOKUPS.items():
+                    for graphics_set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
                             break
 
@@ -3334,8 +3197,8 @@ class AoCAbilitySubprocessor:
                     if not obj_exists:
                         handled_graphics_set_ids.add(graphics_set_id)
 
-                    obj_prefix = "%sIdle" % GRAPHICS_SET_LOOKUPS[graphics_set_id][1]
-                    filename_prefix = "idle_%s_" % GRAPHICS_SET_LOOKUPS[graphics_set_id][2]
+                    obj_prefix = "%sIdle" % gset_lookup_dict[graphics_set_id][1]
+                    filename_prefix = "idle_%s_" % gset_lookup_dict[graphics_set_id][2]
                     AoCAbilitySubprocessor._create_civ_animation(line,
                                                                  civ_group,
                                                                  civ_animation_id,
@@ -3364,14 +3227,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -3475,11 +3331,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -3520,14 +3372,8 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        gset_lookup_dict = internal_name_lookups.get_graphic_set_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -3571,7 +3417,7 @@ class AoCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    for graphics_set_id, items in GRAPHICS_SET_LOOKUPS.items():
+                    for graphics_set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
                             break
 
@@ -3580,8 +3426,8 @@ class AoCAbilitySubprocessor:
                     if not obj_exists:
                         handled_graphics_set_ids.add(graphics_set_id)
 
-                    obj_prefix = "%sMove" % GRAPHICS_SET_LOOKUPS[graphics_set_id][1]
-                    filename_prefix = "move_%s_" % GRAPHICS_SET_LOOKUPS[graphics_set_id][2]
+                    obj_prefix = "%sMove" % gset_lookup_dict[graphics_set_id][1]
+                    filename_prefix = "move_%s_" % gset_lookup_dict[graphics_set_id][2]
                     AoCAbilitySubprocessor._create_civ_animation(line,
                                                                  civ_group,
                                                                  civ_animation_id,
@@ -3672,11 +3518,7 @@ class AoCAbilitySubprocessor:
         else:
             raise Exception("Invalid projectile number: %s" % (position))
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -3736,17 +3578,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -3837,14 +3669,8 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        terrain_lookup_dict = internal_name_lookups.get_terrain_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -3857,7 +3683,7 @@ class AoCAbilitySubprocessor:
         # Terrain (Use foundation terrain)
         terrain_id = current_unit["foundation_terrain_id"].get_value()
         terrain = dataset.terrain_groups[terrain_id]
-        terrain_expected_pointer = ExpectedPointer(terrain, TERRAIN_GROUP_LOOKUPS[terrain_id][1])
+        terrain_expected_pointer = ExpectedPointer(terrain, terrain_lookup_dict[terrain_id][1])
         ability_raw_api_object.add_raw_member("terrain_overlay",
                                               terrain_expected_pointer,
                                               "engine.ability.type.OverlayTerrain")
@@ -3881,14 +3707,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -3957,11 +3776,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -4019,11 +3834,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -4127,11 +3938,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -4202,11 +4009,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -4250,11 +4053,7 @@ class AoCAbilitySubprocessor:
         else:
             return []
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -4332,11 +4131,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -4355,9 +4150,7 @@ class AoCAbilitySubprocessor:
 
         # Storage elements
         elements = []
-        entity_lookups = {}
-        entity_lookups.update(UNIT_LINE_LOOKUPS)
-        entity_lookups.update(AMBIENT_GROUP_LOOKUPS)
+        entity_lookups = internal_name_lookups.get_entity_lookups(dataset.game_version)
         for entity in line.garrison_entities:
             entity_ref = entity_lookups[entity.get_head_unit_id()][0]
             entity_expected_pointer = ExpectedPointer(entity, entity_ref)
@@ -4398,16 +4191,13 @@ class AoCAbilitySubprocessor:
             raise Exception("%s cannot be restocked: is not harvestable"
                             % (restock_target))
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        restock_lookup_dict = internal_name_lookups.get_restock_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
-        ability_ref = "%s.%s" % (game_entity_name, RESTOCK_TARGET_LOOKUPS[restock_target_id][0])
+        ability_ref = "%s.%s" % (game_entity_name, restock_lookup_dict[restock_target_id][0])
         ability_raw_api_object = RawAPIObject(ability_ref,
-                                              RESTOCK_TARGET_LOOKUPS[restock_target_id][0],
+                                              restock_lookup_dict[restock_target_id][0],
                                               dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Restock")
         ability_location = ExpectedPointer(line, game_entity_name)
@@ -4433,9 +4223,9 @@ class AoCAbilitySubprocessor:
             animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
                                                                                   ability_animation_id,
                                                                                   ability_ref,
-                                                                                  RESTOCK_TARGET_LOOKUPS[restock_target_id][0],
+                                                                                  restock_lookup_dict[restock_target_id][0],
                                                                                   "%s_"
-                                                                                  % RESTOCK_TARGET_LOOKUPS[restock_target_id][1])
+                                                                                  % restock_lookup_dict[restock_target_id][1])
 
             animations_set.append(animation_expected_pointer)
             ability_raw_api_object.add_raw_member("animations", animations_set,
@@ -4447,10 +4237,7 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Restock")
 
         # Target
-        restock_target_lookup_dict = {}
-        restock_target_lookup_dict.update(UNIT_LINE_LOOKUPS)
-        restock_target_lookup_dict.update(BUILDING_LINE_LOOKUPS)
-        restock_target_lookup_dict.update(AMBIENT_GROUP_LOOKUPS)
+        restock_target_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         restock_target_name = restock_target_lookup_dict[restock_target_id][0]
         spot_expected_pointer = ExpectedPointer(restock_target,
                                                 "%s.Harvestable.%sResourceSpot"
@@ -4511,11 +4298,8 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
         ability_ref = "%s.Research" % (game_entity_name)
@@ -4535,7 +4319,7 @@ class AoCAbilitySubprocessor:
             # line individually to avoid duplicates. We just point to the
             # raw API objects here.
             researchable_id = researchable.get_id()
-            researchable_name = TECH_GROUP_LOOKUPS[researchable_id][0]
+            researchable_name = tech_lookup_dict[researchable_id][0]
 
             raw_api_object_ref = "%s.ResearchableTech" % researchable_name
             researchable_expected_pointer = ExpectedPointer(researchable,
@@ -4563,14 +4347,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
         ability_ref = "%s.Resistance" % (game_entity_name)
@@ -4623,14 +4400,8 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        gather_lookup_dict = internal_name_lookups.get_gather_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -4677,11 +4448,11 @@ class AoCAbilitySubprocessor:
                     continue
 
             gatherer_unit_id = gatherer.get_id()
-            if gatherer_unit_id not in GATHER_TASK_LOOKUPS.keys():
+            if gatherer_unit_id not in gather_lookup_dict.keys():
                 # Skips hunting wolves
                 continue
 
-            container_name = "%sContainer" % (GATHER_TASK_LOOKUPS[gatherer_unit_id][0])
+            container_name = "%sContainer" % (gather_lookup_dict[gatherer_unit_id][0])
 
             container_ref = "%s.%s" % (ability_ref, container_name)
             container_raw_api_object = RawAPIObject(container_ref, container_name, dataset.nyan_api_objects)
@@ -4806,17 +4577,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -4944,11 +4705,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
         ability_ref = "%s.SendBackToTask" % (game_entity_name)
@@ -4986,13 +4743,10 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        command_lookup_dict = internal_name_lookups.get_command_lookups(dataset.game_version)
 
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
-
-        ability_name = COMMAND_TYPE_LOOKUPS[command_id][0]
+        ability_name = command_lookup_dict[command_id][0]
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
         ability_ref = "%s.%s" % (game_entity_name, ability_name)
@@ -5013,7 +4767,7 @@ class AoCAbilitySubprocessor:
                                                                                   ability_ref,
                                                                                   ability_name,
                                                                                   "%s_"
-                                                                                  % COMMAND_TYPE_LOOKUPS[command_id][1])
+                                                                                  % command_lookup_dict[command_id][1])
             animations_set.append(animation_expected_pointer)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
@@ -5192,11 +4946,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -5232,11 +4982,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -5275,7 +5021,7 @@ class AoCAbilitySubprocessor:
         storage_element_defs = []
         if garrison_mode is GenieGarrisonMode.UNIT_GARRISON:
             for storage_element in line.garrison_entities:
-                storage_element_name = UNIT_LINE_LOOKUPS[storage_element.get_head_unit_id()][0]
+                storage_element_name = name_lookup_dict[storage_element.get_head_unit_id()][0]
                 storage_def_ref = "%s.Storage.%sContainer.%sStorageDef" % (game_entity_name,
                                                                            game_entity_name,
                                                                            storage_element_name)
@@ -5592,17 +5338,8 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        terrain_type_lookup_dict = internal_name_lookups.get_terrain_type_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -5615,7 +5352,7 @@ class AoCAbilitySubprocessor:
         # Allowed types
         allowed_types = []
         terrain_restriction = current_unit["terrain_restriction"].get_value()
-        for terrain_type in TERRAIN_TYPE_LOOKUPS.values():
+        for terrain_type in terrain_type_lookup_dict.values():
             # Check if terrain type is covered by terrain restriction
             if terrain_restriction in terrain_type[1]:
                 type_name = "aux.terrain_type.types.%s" % (terrain_type[2])
@@ -5651,14 +5388,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -5682,7 +5412,7 @@ class AoCAbilitySubprocessor:
 
             trade_post_id = command.get_value()["unit_id"].get_value()
             trade_post_line = dataset.building_lines[trade_post_id]
-            trade_post_name = BUILDING_LINE_LOOKUPS[trade_post_id][0]
+            trade_post_name = name_lookup_dict[trade_post_id][0]
 
             trade_route_ref = "%s.TradePost.AoE2%sTradeRoute" % (trade_post_name, trade_post_name)
             trade_route_expected_pointer = ExpectedPointer(trade_post_line, trade_route_ref)
@@ -5711,14 +5441,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -5783,11 +5506,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -5804,7 +5523,7 @@ class AoCAbilitySubprocessor:
             creatable_type = garrisoned.get_head_unit().get_member("creatable_type").get_value()
 
             if creatable_type == 4:
-                storage_name = AMBIENT_GROUP_LOOKUPS[garrisoned.get_id()][0]
+                storage_name = name_lookup_dict[garrisoned.get_id()][0]
                 storage_entity = garrisoned
                 garrisoned_expected_pointer = ExpectedPointer(storage_entity, storage_name)
 
@@ -5832,7 +5551,7 @@ class AoCAbilitySubprocessor:
                 target_id = command.get_value()["unit_id"].get_value()
                 target = dataset.building_lines[target_id]
 
-        target_name = BUILDING_LINE_LOOKUPS[target.get_id()][0]
+        target_name = name_lookup_dict[target.get_id()][0]
         target_ref = "%s.Storage.%sContainer" % (target_name, target_name)
         target_expected_pointer = ExpectedPointer(target, target_ref)
         ability_raw_api_object.add_raw_member("target_container",
@@ -5859,11 +5578,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -5912,11 +5627,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -5987,17 +5698,7 @@ class AoCAbilitySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
@@ -6077,17 +5778,7 @@ class AoCAbilitySubprocessor:
         dataset = line.data
         head_unit_id = line.get_head_unit_id()
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         animation_ref = "%s.%sAnimation" % (ability_ref, ability_name)
         animation_obj_name = "%sAnimation" % (ability_name)
@@ -6143,20 +5834,11 @@ class AoCAbilitySubprocessor:
         head_unit_id = line.get_head_unit_id()
         civ_id = civ_group.get_id()
 
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        elif isinstance(line, GenieAmbientGroup):
-            name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-
-        elif isinstance(line, GenieVariantGroup):
-            name_lookup_dict = VARIANT_GROUP_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
-        civ_name = CIV_GROUP_LOOKUPS[civ_id][0]
+        civ_name = civ_lookup_dict[civ_id][0]
 
         patch_target_ref = "%s" % (ability_ref)
         patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -6224,19 +5906,6 @@ class AoCAbilitySubprocessor:
         Generates a sound for an ability.
         """
         dataset = line.data
-
-#===============================================================================
-#         head_unit_id = line.get_head_unit_id()
-#
-#         if isinstance(line, GenieBuildingLineGroup):
-#             name_lookup_dict = BUILDING_LINE_LOOKUPS
-#
-#         elif isinstance(line, GenieAmbientGroup):
-#             name_lookup_dict = AMBIENT_GROUP_LOOKUPS
-#
-#         else:
-#             name_lookup_dict = UNIT_LINE_LOOKUPS
-#===============================================================================
 
         sound_ref = "%s.%sSound" % (ability_ref, ability_name)
         sound_obj_name = "%sSound" % (ability_name)

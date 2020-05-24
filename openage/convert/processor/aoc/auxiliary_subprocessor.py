@@ -6,12 +6,10 @@ or other objects.
 """
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
-from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
 from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup,\
     GenieBuildingLineGroup, GenieUnitLineGroup
-from openage.convert.dataformat.aoc.internal_nyan_names import UNIT_LINE_LOOKUPS,\
-    BUILDING_LINE_LOOKUPS, TECH_GROUP_LOOKUPS, CIV_GROUP_LOOKUPS
 from openage.convert.dataformat.converter_object import RawAPIObject
+from openage.convert.service import internal_name_lookups
 from openage.nyan.nyan_structs import MemberSpecialValue
 
 
@@ -34,11 +32,10 @@ class AoCAuxiliarySubprocessor:
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
-        if isinstance(line, GenieBuildingLineGroup):
-            game_entity_name = BUILDING_LINE_LOOKUPS[current_unit_id][0]
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
 
-        else:
-            game_entity_name = UNIT_LINE_LOOKUPS[current_unit_id][0]
+        game_entity_name = name_lookup_dict[current_unit_id][0]
 
         obj_ref = "%s.CreatableGameEntity" % (game_entity_name)
         obj_name = "%sCreatable" % (game_entity_name)
@@ -49,11 +46,11 @@ class AoCAuxiliarySubprocessor:
         train_location_id = line.get_train_location_id()
         if isinstance(line, GenieBuildingLineGroup):
             train_location = dataset.unit_lines[train_location_id]
-            train_location_name = UNIT_LINE_LOOKUPS[train_location_id][0]
+            train_location_name = name_lookup_dict[train_location_id][0]
 
         else:
             train_location = dataset.building_lines[train_location_id]
-            train_location_name = BUILDING_LINE_LOOKUPS[train_location_id][0]
+            train_location_name = name_lookup_dict[train_location_id][0]
 
         # Location of the object depends on whether it'a a unique unit or a normal unit
         if line.is_unique():
@@ -63,7 +60,7 @@ class AoCAuxiliarySubprocessor:
             enabling_civ_id = enabling_research.get_member("civilization_id").get_value()
 
             civ = dataset.civ_groups[enabling_civ_id]
-            civ_name = CIV_GROUP_LOOKUPS[enabling_civ_id][0]
+            civ_name = civ_lookup_dict[enabling_civ_id][0]
 
             creatable_location = ExpectedPointer(civ, civ_name)
 
@@ -333,7 +330,7 @@ class AoCAuxiliarySubprocessor:
                 # Game entities (only stone wall)
                 wall_line_id = 117
                 wall_line = dataset.building_lines[wall_line_id]
-                wall_name = BUILDING_LINE_LOOKUPS[117][0]
+                wall_name = name_lookup_dict[117][0]
                 game_entities = [ExpectedPointer(wall_line, wall_name)]
                 replace_raw_api_object.add_raw_member("game_entities",
                                                       game_entities,
@@ -388,8 +385,12 @@ class AoCAuxiliarySubprocessor:
         research_location_id = tech_group.get_research_location_id()
         research_location = dataset.building_lines[research_location_id]
 
-        tech_name = TECH_GROUP_LOOKUPS[tech_group.get_id()][0]
-        research_location_name = BUILDING_LINE_LOOKUPS[research_location_id][0]
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+
+        research_location_name = name_lookup_dict[research_location_id][0]
+        tech_name = tech_lookup_dict[tech_group.get_id()][0]
 
         obj_ref = "%s.ResearchableTech" % (tech_name)
         obj_name = "%sResearchable" % (tech_name)
@@ -401,7 +402,7 @@ class AoCAuxiliarySubprocessor:
             # Add object to the Civ object
             civ_id = tech_group.get_civilization()
             civ = dataset.civ_groups[civ_id]
-            civ_name = CIV_GROUP_LOOKUPS[civ_id][0]
+            civ_name = civ_lookup_dict[civ_id][0]
 
             researchable_location = ExpectedPointer(civ, civ_name)
 
@@ -550,6 +551,9 @@ class AoCAuxiliarySubprocessor:
         dataset = converter_object.data
         tech = dataset.genie_techs[tech_id]
 
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+
         if not top_level and\
             (tech_id in dataset.initiated_techs.keys() or
              (tech_id in dataset.tech_groups.keys() and
@@ -559,12 +563,12 @@ class AoCAuxiliarySubprocessor:
             if tech_id in dataset.initiated_techs.keys():
                 initiated_tech = dataset.initiated_techs[tech_id]
                 building_id = initiated_tech.get_building_id()
-                building_name = BUILDING_LINE_LOOKUPS[building_id][0]
+                building_name = name_lookup_dict[building_id][0]
                 literal_name = "%sBuilt" % (building_name)
                 literal_parent = "engine.aux.logic.literal.type.GameEntityProgress"
 
             elif dataset.tech_groups[tech_id].is_researchable():
-                tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+                tech_name = tech_lookup_dict[tech_id][0]
                 literal_name = "%sResearched" % (tech_name)
                 literal_parent = "engine.aux.logic.literal.type.TechResearched"
 

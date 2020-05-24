@@ -6,10 +6,9 @@ Creates patches and modifiers for civs.
 from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
-from openage.convert.dataformat.aoc.internal_nyan_names import CIV_GROUP_LOOKUPS,\
-    UNIT_LINE_LOOKUPS, BUILDING_LINE_LOOKUPS, TECH_GROUP_LOOKUPS
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
+from openage.convert.service import internal_name_lookups
 from openage.nyan.nyan_structs import MemberOperator
 
 
@@ -55,8 +54,11 @@ class AoCCivSubprocessor:
         resource_amounts = []
 
         civ_id = civ_group.get_id()
-        civ_name = CIV_GROUP_LOOKUPS[civ_id][0]
         dataset = civ_group.data
+
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+
+        civ_name = civ_lookup_dict[civ_id][0]
 
         # Find starting resource amounts
         food_amount = civ_group.civ["resources"][91].get_value()
@@ -90,7 +92,7 @@ class AoCCivSubprocessor:
         food_raw_api_object = RawAPIObject(food_ref, "FoodStartingAmount",
                                            dataset.nyan_api_objects)
         food_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
-        civ_location = ExpectedPointer(civ_group, CIV_GROUP_LOOKUPS[civ_group.get_id()][0])
+        civ_location = ExpectedPointer(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         food_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
@@ -109,7 +111,7 @@ class AoCCivSubprocessor:
         wood_raw_api_object = RawAPIObject(wood_ref, "WoodStartingAmount",
                                            dataset.nyan_api_objects)
         wood_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
-        civ_location = ExpectedPointer(civ_group, CIV_GROUP_LOOKUPS[civ_group.get_id()][0])
+        civ_location = ExpectedPointer(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         wood_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["aux.resource.types.Wood"].get_nyan_object()
@@ -128,7 +130,7 @@ class AoCCivSubprocessor:
         gold_raw_api_object = RawAPIObject(gold_ref, "GoldStartingAmount",
                                            dataset.nyan_api_objects)
         gold_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
-        civ_location = ExpectedPointer(civ_group, CIV_GROUP_LOOKUPS[civ_group.get_id()][0])
+        civ_location = ExpectedPointer(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         gold_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
@@ -147,7 +149,7 @@ class AoCCivSubprocessor:
         stone_raw_api_object = RawAPIObject(stone_ref, "StoneStartingAmount",
                                             dataset.nyan_api_objects)
         stone_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
-        civ_location = ExpectedPointer(civ_group, CIV_GROUP_LOOKUPS[civ_group.get_id()][0])
+        civ_location = ExpectedPointer(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         stone_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["aux.resource.types.Stone"].get_nyan_object()
@@ -176,8 +178,13 @@ class AoCCivSubprocessor:
         """
         patches = []
 
-        civ_name = CIV_GROUP_LOOKUPS[civ_group.get_id()][0]
+        civ_id = civ_group.get_id()
         dataset = civ_group.data
+
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+
+        civ_name = civ_lookup_dict[civ_id][0]
 
         # key: tech_id; value patched in patches
         tech_patches = {}
@@ -211,7 +218,7 @@ class AoCCivSubprocessor:
 
         for tech_id, patches in tech_patches.items():
             tech_group = dataset.tech_groups[tech_id]
-            tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+            tech_name = tech_lookup_dict[tech_id][0]
 
             patch_target_ref = "%s" % (tech_name)
             patch_target_expected_pointer = ExpectedPointer(tech_group, patch_target_ref)
@@ -264,25 +271,25 @@ class AoCCivSubprocessor:
 
         civ_id = civ_group.get_id()
         dataset = civ_group.data
-        civ_name = CIV_GROUP_LOOKUPS[civ_id][0]
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+
+        civ_name = civ_lookup_dict[civ_id][0]
 
         for unique_line in civ_group.unique_entities.values():
             head_unit_id = unique_line.get_head_unit_id()
-            if isinstance(unique_line, GenieBuildingLineGroup):
-                game_entity_name = BUILDING_LINE_LOOKUPS[head_unit_id][0]
-
-            else:
-                game_entity_name = UNIT_LINE_LOOKUPS[head_unit_id][0]
+            game_entity_name = name_lookup_dict[head_unit_id][0]
 
             # Get train location of line
             train_location_id = unique_line.get_train_location_id()
             if isinstance(unique_line, GenieBuildingLineGroup):
                 train_location = dataset.unit_lines[train_location_id]
-                train_location_name = UNIT_LINE_LOOKUPS[train_location_id][0]
+                train_location_name = name_lookup_dict[train_location_id][0]
 
             else:
                 train_location = dataset.building_lines[train_location_id]
-                train_location_name = BUILDING_LINE_LOOKUPS[train_location_id][0]
+                train_location_name = name_lookup_dict[train_location_id][0]
 
             patch_target_ref = "%s.Create" % (train_location_name)
             patch_target_expected_pointer = ExpectedPointer(train_location, patch_target_ref)
@@ -338,16 +345,21 @@ class AoCCivSubprocessor:
 
         civ_id = civ_group.get_id()
         dataset = civ_group.data
-        civ_name = CIV_GROUP_LOOKUPS[civ_id][0]
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+
+        civ_name = civ_lookup_dict[civ_id][0]
 
         for unique_tech in civ_group.unique_techs.values():
             tech_id = unique_tech.get_id()
-            tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+            tech_name = tech_lookup_dict[tech_id][0]
 
             # Get train location of line
             research_location_id = unique_tech.get_research_location_id()
             research_location = dataset.building_lines[research_location_id]
-            research_location_name = BUILDING_LINE_LOOKUPS[research_location_id][0]
+            research_location_name = name_lookup_dict[research_location_id][0]
 
             patch_target_ref = "%s.Research" % (research_location_name)
             patch_target_expected_pointer = ExpectedPointer(research_location, patch_target_ref)
@@ -403,7 +415,12 @@ class AoCCivSubprocessor:
 
         civ_id = civ_group.get_id()
         dataset = civ_group.data
-        civ_name = CIV_GROUP_LOOKUPS[civ_id][0]
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+
+        civ_name = civ_lookup_dict[civ_id][0]
 
         disabled_techs = dict()
         disabled_entities = dict()
@@ -465,11 +482,7 @@ class AoCCivSubprocessor:
 
         for train_location, entities in disabled_entities.items():
             train_location_id = train_location.get_head_unit_id()
-            if isinstance(train_location, GenieBuildingLineGroup):
-                train_location_name = BUILDING_LINE_LOOKUPS[train_location_id][0]
-
-            else:
-                train_location_name = UNIT_LINE_LOOKUPS[train_location_id][0]
+            train_location_name = name_lookup_dict[train_location_id][0]
 
             patch_target_ref = "%s.Create" % (train_location_name)
             patch_target_expected_pointer = ExpectedPointer(train_location, patch_target_ref)
@@ -498,11 +511,7 @@ class AoCCivSubprocessor:
             entities_expected_pointers = []
             for entity in entities:
                 entity_id = entity.get_head_unit_id()
-                if isinstance(entity, GenieBuildingLineGroup):
-                    game_entity_name = BUILDING_LINE_LOOKUPS[entity_id][0]
-
-                else:
-                    game_entity_name = UNIT_LINE_LOOKUPS[entity_id][0]
+                game_entity_name = name_lookup_dict[entity_id][0]
 
                 disabled_ref = "%s.CreatableGameEntity" % (game_entity_name)
                 disabled_expected_pointer = ExpectedPointer(entity, disabled_ref)
@@ -526,7 +535,7 @@ class AoCCivSubprocessor:
 
         for research_location, techs in disabled_techs.items():
             research_location_id = research_location.get_head_unit_id()
-            research_location_name = BUILDING_LINE_LOOKUPS[research_location_id][0]
+            research_location_name = name_lookup_dict[research_location_id][0]
 
             patch_target_ref = "%s.Research" % (research_location_name)
             patch_target_expected_pointer = ExpectedPointer(research_location, patch_target_ref)
@@ -555,7 +564,7 @@ class AoCCivSubprocessor:
             entities_expected_pointers = []
             for tech_group in techs:
                 tech_id = tech_group.get_id()
-                tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+                tech_name = tech_lookup_dict[tech_id][0]
 
                 disabled_ref = "%s.ResearchableTech" % (tech_name)
                 disabled_expected_pointer = ExpectedPointer(tech_group, disabled_ref)
@@ -580,89 +589,13 @@ class AoCCivSubprocessor:
         return patches
 
     @staticmethod
-    def _idle_graphics_set(line, animation_id, graphics_set_name, graphics_set_filename_prefix):
-        """
-        Creates patches for civ-specific graühics the Idle ability of a line.
-
-        :param line: Unit/Building line that has the ability.
-        :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointers for the generated patches.
-        :rtype: list
-        """
-        head_unit_id = line.get_head_unit_id()
-        dataset = line.data
-
-        patches = []
-
-        if isinstance(line, GenieBuildingLineGroup):
-            name_lookup_dict = BUILDING_LINE_LOOKUPS
-
-        else:
-            name_lookup_dict = UNIT_LINE_LOOKUPS
-
-        game_entity_name = name_lookup_dict[head_unit_id][0]
-
-        patch_target_ref = "%s.Idle" % (game_entity_name)
-        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
-
-        # Wrapper
-        wrapper_name = "%sIdleAnimationWrapper" % (graphics_set_name)
-        wrapper_ref = "%s.%s" % (game_entity_name, wrapper_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
-
-        # Store civ graphic changes next to their game entity definition,
-        wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                            % (name_lookup_dict[head_unit_id][1]))
-        wrapper_raw_api_object.set_filename("%s_graphics_set" % (graphics_set_filename_prefix))
-
-        # Nyan patch
-        nyan_patch_name = "%sIdleAnimation" % (graphics_set_name)
-        nyan_patch_ref = "%s.%s.%s" % (game_entity_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(line, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
-
-        animations_set = []
-        # Patch the new animation in
-        animation_expected_pointer = AoCCivSubprocessor._create_animation(line,
-                                                                          animation_id,
-                                                                          nyan_patch_ref,
-                                                                          "%sIdle" % (graphics_set_name),
-                                                                          "%s_idle_"
-                                                                          % (graphics_set_filename_prefix))
-        animations_set.append(animation_expected_pointer)
-
-        nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                       animations_set,
-                                                       "engine.ability.specialization.AnimatedAbility",
-                                                       MemberOperator.ASSIGN)
-
-        patch_expected_pointer = ExpectedPointer(line, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
-                                              "engine.aux.patch.Patch")
-
-        line.add_raw_api_object(wrapper_raw_api_object)
-        line.add_raw_api_object(nyan_patch_raw_api_object)
-
-        wrapper_expected_pointer = ExpectedPointer(line, wrapper_ref)
-        patches.append(wrapper_expected_pointer)
-
-        return patches
-
-    @staticmethod
     def _create_animation(line, animation_id, nyan_patch_ref, animation_name, filename_prefix):
         """
         Generates an animation for an ability.
         """
         dataset = line.data
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         animation_ref = "%s.%sAnimation" % (nyan_patch_ref, animation_name)
         animation_obj_name = "%sAnimation" % (animation_name)
@@ -676,13 +609,8 @@ class AoCCivSubprocessor:
             animation_sprite = dataset.combined_sprites[animation_id]
 
         else:
-            if isinstance(line, GenieBuildingLineGroup):
-                animation_filename = "%s%s" % (filename_prefix,
-                                               BUILDING_LINE_LOOKUPS[line.get_head_unit_id()][1])
-
-            else:
-                animation_filename = "%s%s" % (filename_prefix,
-                                               UNIT_LINE_LOOKUPS[line.get_head_unit_id()][1])
+            animation_filename = "%s%s" % (filename_prefix,
+                                           name_lookup_dict[line.get_head_unit_id()][1])
 
             animation_sprite = CombinedSprite(animation_id,
                                               animation_filename,
