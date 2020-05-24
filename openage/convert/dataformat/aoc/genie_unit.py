@@ -371,7 +371,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
                 head_unit_connection = self.data.unit_connections[head_unit_id]
 
             else:
-                # Animals
+                # Animals or AoE1
                 return False
 
         elif isinstance(self, GenieBuildingLineGroup):
@@ -869,8 +869,8 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         """
         Creates a new Genie task group.
 
-        :param task_group_id: Internal task group obj_id in the .dat file.
-        :param head_task_id: The unit with this task will become the head unit.
+        :param line_id: Internal task group obj_id in the .dat file.
+        :param task_group_id: ID of the task group.
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
