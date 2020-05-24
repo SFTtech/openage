@@ -26,7 +26,6 @@ from .langfile.hdlanguagefile import (read_age2_hd_fe_stringresources,
                                       read_age2_hd_3x_stringresources)
 from .langfile.stringresource import StringResource
 from .opus import opusenc
-from .processor.aoc.processor import AoCProcessor
 from .processor.modpack_exporter import ModpackExporter
 from .slp_converter_pool import SLPConverterPool
 
@@ -138,8 +137,7 @@ def convert_metadata(args):
     if gamedata_path.exists():
         gamedata_path.removerecursive()
 
-    # TODO: Move this somewhere else
-    args.converter = AoCProcessor
+    args.converter = get_converter(args.game_version)
 
     # Read .dat
     yield "empires.dat"
@@ -181,6 +179,24 @@ def convert_metadata(args):
 
         with tgt['info/playercolortable.pal.png'].open_w() as outfile:
             player_palette.save_visualization(outfile)
+
+
+def get_converter(game_version):
+    """
+    Returns the converter for the specified game version.
+    """
+    game_edition = game_version[0]
+
+    if game_edition is GameEdition.ROR:
+        from .processor.ror.processor import RoRProcessor
+        return RoRProcessor
+
+    elif game_edition is GameEdition.AOC:
+        from .processor.aoc.processor import AoCProcessor
+        return AoCProcessor
+
+    raise Exception("no valid converter found for game edition %s"
+                    % game_edition.edition_name)
 
 
 def extract_mediafiles_names_map(srcdir):

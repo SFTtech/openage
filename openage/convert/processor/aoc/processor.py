@@ -265,7 +265,7 @@ class AoCProcessor:
     @staticmethod
     def _extract_genie_civs(gamespec, full_data_set):
         """
-        Extract civs (without units) from the game data.
+        Extract civs from the game data.
 
         :param gamespec: Gamedata from empires.dat file.
         :type gamespec: class: ...dataformat.value_members.ArrayMember
