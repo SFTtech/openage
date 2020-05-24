@@ -21,3 +21,4 @@ class MediaType(Enum):
     TERRAIN   = "terrain"
     SOUNDS    = "sounds"
     BLEND     = "blend"
+    BORDER    = "border"

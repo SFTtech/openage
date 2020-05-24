@@ -92,13 +92,25 @@ class GameEdition(enum.Enum):
     The Conquerors are considered "downgrade" expansions.
     """
 
-    # TODO: Fill in values
     ROR = (
         "Age of Empires 1: Rise of Rome",
         Support.yes,
-        {GameFileVersion('PLACEHOLDER PLACEHOLDER PLACEHOLDER',
-                         {"f2bf8b128b4bdac36ee36fafe139baf1": "1.0c"})},
-        {},
+        {
+            GameFileVersion('EMPIRESX.EXE',
+                            {"140bda90145182966acf582b28a4c8ef": "1.0B"}),
+            GameFileVersion('data2/empires.dat',
+                            {"3e567b2746653107cf80bae18c6962a7": "1.0B"}),
+        },
+        {
+            MediaType.DATFILE: ["data2/empires.dat"],
+            MediaType.GRAPHICS: ["data/graphics.drs", "data2/graphics.drs"],
+            MediaType.PALETTES: ["data2/Interfac.drs"],
+            MediaType.SOUNDS: ["data/sounds.drs", "data2/sounds.drs"],
+            MediaType.INTERFACE: ["data/Interfac.drs", "data2/Interfac.drs"],
+            MediaType.LANGUAGE: ["language.dll", "languagex.dll"],
+            MediaType.TERRAIN: ["data/Terrain.drs"],
+            MediaType.BORDER: ["data/Border.drs"],
+        },
         ["aoe1-base", "aoe1-base-graphics"],
         []
     )
@@ -137,7 +149,8 @@ class GameEdition(enum.Enum):
             MediaType.PALETTES: ["data/interfac.drs"],
             MediaType.SOUNDS: ["data/sounds.drs"],
             MediaType.INTERFACE: ["data/interfac.drs"],
-            MediaType.TERRAIN: ["data/terrain.drs"]},
+            MediaType.TERRAIN: ["data/terrain.drs"],
+        },
         [],
         []
     )
@@ -159,7 +172,8 @@ class GameEdition(enum.Enum):
             MediaType.SOUNDS: ["data/sounds.drs", "data/sounds_x1.drs"],
             MediaType.INTERFACE: ["data/interfac.drs"],
             MediaType.TERRAIN: ["data/terrain.drs"],
-            MediaType.BLEND: ["data/blendomatic.dat"]},
+            MediaType.BLEND: ["data/blendomatic.dat"],
+        },
         ["aoe2-base", "aoe2-base-graphics"],
         []
     )
@@ -179,7 +193,8 @@ class GameEdition(enum.Enum):
             MediaType.PALETTES: ["resources/_common/drs/interface/"],
             MediaType.SOUNDS: ["resources/_common/drs/sounds/"],
             MediaType.INTERFACE: ["resources/_common/drs/interface/"],
-            MediaType.TERRAIN: ["resources/_common/drs/terrain/"]},
+            MediaType.TERRAIN: ["resources/_common/drs/terrain/"],
+        },
         ["aoe2-base", "aoe2-base-graphics"],
         []
     )
@@ -199,7 +214,8 @@ class GameEdition(enum.Enum):
             MediaType.PALETTES: ["resources/_common/drs/interface/"],
             MediaType.SOUNDS: ["wwise/"],
             MediaType.INTERFACE: ["resources/_common/drs/interface/"],
-            MediaType.TERRAIN: ["resources/_common/terrain/textures/"]},
+            MediaType.TERRAIN: ["resources/_common/terrain/textures/"],
+        },
         ["aoe2-base", "aoe2-base-graphics"],
         []
     )
@@ -219,7 +235,8 @@ class GameEdition(enum.Enum):
             MediaType.PALETTES: ["Game/Data/INTERFAC.DRS"],
             MediaType.SOUNDS: ["Game/Data/SOUNDS.DRS"],
             MediaType.INTERFACE: ["Game/Data/INTERFAC.DRS"],
-            MediaType.TERRAIN: ["Game/Data/TERRAIN.DRS"]},
+            MediaType.TERRAIN: ["Game/Data/TERRAIN.DRS"],
+        },
         ["swgb-base", "swgb-base-graphics"],
         [GameExpansion.SWGB_CC]
     )
