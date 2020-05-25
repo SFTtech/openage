@@ -25,7 +25,7 @@ class RoRPregenSubprocessor:
         cls._generate_misc_effect_objects(gamedata, pregen_converter_group)
         # TODO:
         # cls._generate_modifiers(gamedata, pregen_converter_group)
-        # cls._generate_terrain_types(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor._generate_terrain_types(gamedata, pregen_converter_group)
         AoCPregenSubprocessor._generate_resources(gamedata, pregen_converter_group)
         cls._generate_death_condition(gamedata, pregen_converter_group)
 

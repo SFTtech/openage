@@ -12,8 +12,10 @@ from openage.convert.dataformat.ror.genie_tech import RoRStatUpgrade,\
     RoRBuildingLineUpgrade, RoRUnitLineUpgrade, RoRBuildingUnlock, RoRUnitUnlock,\
     RoRAgeUpgrade
 from openage.convert.dataformat.ror.genie_unit import RoRUnitTaskGroup,\
-    RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup
+    RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup, RoRAmbientGroup
+from openage.convert.dataformat.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS
 from openage.convert.nyan.api_loader import load_api
+from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
 from openage.convert.processor.aoc.processor import AoCProcessor
 from openage.convert.processor.ror.nyan_subprocessor import RoRNyanSubprocessor
 from openage.convert.processor.ror.pregen_subprocessor import RoRPregenSubprocessor
@@ -100,6 +102,7 @@ class RoRProcessor:
 
         cls._create_tech_groups(full_data_set)
         cls._create_entity_lines(gamespec, full_data_set)
+        cls._create_ambient_groups(full_data_set)
         AoCProcessor._create_terrain_groups(full_data_set)
         AoCProcessor._create_civ_groups(full_data_set)
 
@@ -125,6 +128,8 @@ class RoRProcessor:
         RoRNyanSubprocessor.convert(full_data_set)
 
         info("Creating requests for media export...")
+
+        AoCMediaSubprocessor.convert(full_data_set)
 
         return None
 
@@ -354,6 +359,25 @@ class RoRProcessor:
                     unit_line = full_data_set.unit_lines[source_id]
                     unit_line.add_unit(unit, after=source_id)
                     full_data_set.unit_ref.update({target_id: unit_line})
+
+    @staticmethod
+    def _create_ambient_groups(full_data_set):
+        """
+        Create ambient groups, mostly for resources and scenery.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        ambient_ids = AMBIENT_GROUP_LOOKUPS.keys()
+        genie_units = full_data_set.genie_units
+
+        for ambient_id in ambient_ids:
+            ambient_group = RoRAmbientGroup(ambient_id, full_data_set)
+            ambient_group.add_unit(genie_units[ambient_id])
+            full_data_set.ambient_groups.update({ambient_group.get_id(): ambient_group})
+            full_data_set.unit_ref.update({ambient_id: ambient_group})
 
     @staticmethod
     def _create_tech_groups(full_data_set):

@@ -185,7 +185,7 @@ def get_terrain_lookups(game_version):
     # game_expansions = game_version[1]
 
     if game_edition is GameEdition.ROR:
-        pass
+        return ror_internal.TERRAIN_GROUP_LOOKUPS
 
     elif game_edition is GameEdition.AOC:
         return aoc_internal.TERRAIN_GROUP_LOOKUPS
@@ -202,7 +202,7 @@ def get_terrain_type_lookups(game_version):
     # game_expansions = game_version[1]
 
     if game_edition is GameEdition.ROR:
-        pass
+        return ror_internal.TERRAIN_TYPE_LOOKUPS
 
     elif game_edition is GameEdition.AOC:
         return aoc_internal.TERRAIN_TYPE_LOOKUPS

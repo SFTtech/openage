@@ -123,7 +123,6 @@ TECH_GROUP_LOOKUPS = {
     78: ("Cataphract", "cataphract"),
     79: ("Centurion", "centurion"),
     80: ("Irrigation", "irrigation"),
-    # TODO
     81: ("Domestication", "domestication"),
     100: ("StoneAge", "stone_age"),
     101: ("ToolAge", "tool_age"),
@@ -175,6 +174,48 @@ GRAPHICS_SET_LOOKUPS = {
     2: ((3, 6, 9), "Persian", "persian"),
     3: ((0, 10, 11, 12), "Asian", "asian"),
     4: ((13, 14, 15, 16), "Roman", "roman"),
+}
+
+# key: terrain index; value: (unit terrain restrictions (manual), nyan object name, filename prefix)
+# TODO: Use terrain restrictions from .dat
+TERRAIN_GROUP_LOOKUPS = {
+    0:  ((0, 1, 4, 7, 8, 9, 10,), "Grass", "grass"),
+    1:  ((0, 3, 6,), "Water", "water"),
+    2:  ((0, 2, 6, 7, 10,), "Beach", "beach"),
+    3:  (((),), "ThinRiver", "thin_river"),
+    4:  ((0, 1, 3, 6, 7,), "Shallows", "shallows"),
+    5:  ((0, 1, 4, 7, 9, 10,), "JungleEdge", "jungle_edge"),
+    6:  ((0, 1, 4, 7, 8, 9, 10,), "Desert", "desert"),
+    7:  (((),), "Crop", "crop"),
+    8:  (((),), "Rows", "rows"),
+    9:  (((),), "Wheat", "wheat"),
+    10: ((0, 1, 4, 7, 9, 10,), "Forest", "forest"),
+    11: ((0, 1, 4, 10,), "Dirt", "dirt"),
+    12: (((),), "Grass2", "grass2"),
+    13: ((0, 1, 4, 7, 9, 10,), "DesertPalm", "desert_palm"),
+    14: (((),), "DesertImpassable", "desert_impassable"),
+    15: (((),), "WaterImpassable", "water_impassable"),
+    16: (((),), "GrassImpassable", "grass_impassable"),
+    17: (((),), "Fog", "fog"),
+    18: ((0, 1, 4, 7, 9, 10,), "ForestEdge", "forest_edge"),
+    19: ((0, 1, 4, 7, 9, 10,), "PineForest", "pine_forest"),
+    20: ((0, 1, 4, 7, 9, 10,), "Jungle", "jungle"),
+    21: ((0, 1, 4, 7, 9, 10,), "PineForestEdge", "pine_forest_edge"),
+    22: ((0, 3, 6,), "WaterDark", "water_dark"),
+}
+
+# key: not relevant; value: (terrain indices, unit terrain restrictions (manual), nyan object name)
+# TODO: Use terrain restrictions from .dat
+TERRAIN_TYPE_LOOKUPS = {
+    0: ((0, 4, 5, 6, 10, 11, 13, 18, 19, 20, 21,),
+        (1, 4, 7, 8, 9, 10),
+        "Land",),
+    1: ((1, 22,),
+        (3, 6,),
+        "Water",),
+    2: ((2, 4,),
+        (2, 6, ),
+        "Shallow",),
 }
 
 CLASS_ID_LOOKUPS = {

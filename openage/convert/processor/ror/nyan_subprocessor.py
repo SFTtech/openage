@@ -4,12 +4,18 @@
 Convert API-like objects to nyan objects. Subroutine of the
 main RoR processor. Reuses functionality from the AoC subprocessor.
 """
+from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
+from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.dataformat.ror.genie_unit import RoRVillagerGroup
+from openage.convert.dataformat.ror.genie_tech import RoRUnitLineUpgrade
 from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubprocessor
 from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
+from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
 from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubprocessor
+from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
+from openage.convert.processor.ror.ability_subprocessor import RoRAbilitySubprocessor
+from openage.convert.processor.ror.auxiliary_subprocessor import RoRAuxiliarySubprocessor
 from openage.convert.service import internal_name_lookups
 
 
@@ -35,6 +41,24 @@ class RoRNyanSubprocessor:
             building_line.create_nyan_objects()
             building_line.execute_raw_member_pushs()
 
+        for ambient_group in full_data_set.ambient_groups.values():
+            ambient_group.create_nyan_objects()
+            ambient_group.execute_raw_member_pushs()
+
+        # TODO: Variant groups
+
+        for tech_group in full_data_set.tech_groups.values():
+            tech_group.create_nyan_objects()
+            tech_group.execute_raw_member_pushs()
+
+        for terrain_group in full_data_set.terrain_groups.values():
+            terrain_group.create_nyan_objects()
+            terrain_group.execute_raw_member_pushs()
+
+        for civ_group in full_data_set.civ_groups.values():
+            civ_group.create_nyan_objects()
+            civ_group.execute_raw_member_pushs()
+
     @classmethod
     def _create_nyan_members(cls, full_data_set):
         """
@@ -46,6 +70,20 @@ class RoRNyanSubprocessor:
         for building_line in full_data_set.building_lines.values():
             building_line.create_nyan_members()
 
+        for ambient_group in full_data_set.ambient_groups.values():
+            ambient_group.create_nyan_members()
+
+        # TODO: Variant groups
+
+        for tech_group in full_data_set.tech_groups.values():
+            tech_group.create_nyan_members()
+
+        for terrain_group in full_data_set.terrain_groups.values():
+            terrain_group.create_nyan_members()
+
+        for civ_group in full_data_set.civ_groups.values():
+            civ_group.create_nyan_members()
+
     @classmethod
     def _process_game_entities(cls, full_data_set):
 
@@ -54,6 +92,21 @@ class RoRNyanSubprocessor:
 
         for building_line in full_data_set.building_lines.values():
             cls._building_line_to_game_entity(building_line)
+
+        for ambient_group in full_data_set.ambient_groups.values():
+            cls._ambient_group_to_game_entity(ambient_group)
+
+        # TODO: Variant groups
+
+        for tech_group in full_data_set.tech_groups.values():
+            if tech_group.is_researchable():
+                cls._tech_group_to_tech(tech_group)
+
+        for terrain_group in full_data_set.terrain_groups.values():
+            cls._terrain_group_to_terrain(terrain_group)
+
+        for civ_group in full_data_set.civ_groups.values():
+            cls._civ_group_to_civ(civ_group)
 
     @staticmethod
     def _unit_line_to_game_entity(unit_line):
@@ -121,7 +174,7 @@ class RoRNyanSubprocessor:
         # abilities_set.append(AoCAbilitySubprocessor.resistance_ability(unit_line))  TODO: Conversion
         abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(unit_line))
-        # abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(unit_line)) TODO: Terrain types
+        abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.turn_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(unit_line))
 
@@ -140,10 +193,8 @@ class RoRNyanSubprocessor:
 
         # Applying effects and shooting projectiles
         if unit_line.is_projectile_shooter():
-            # TODO: no second rojectile in RoR
-            # abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(unit_line, 7))
-            # RoRNyanSubprocessor._projectiles_from_line(unit_line)
-            pass
+            abilities_set.append(RoRAbilitySubprocessor.shoot_projectile_ability(unit_line, 7))
+            RoRNyanSubprocessor._projectiles_from_line(unit_line)
 
         elif unit_line.is_melee() or unit_line.is_ranged():
             if unit_line.has_command(7):
@@ -185,7 +236,7 @@ class RoRNyanSubprocessor:
 
         # Storage abilities
         if unit_line.is_garrison():
-            # abilities_set.append(AoCAbilitySubprocessor.storage_ability(unit_line)) TODO: No garrison graphic
+            abilities_set.append(AoCAbilitySubprocessor.storage_ability(unit_line))
             abilities_set.append(AoCAbilitySubprocessor.remove_storage_ability(unit_line))
 
         if len(unit_line.garrison_locations) > 0:
@@ -236,7 +287,7 @@ class RoRNyanSubprocessor:
         # Misc (Objects that are not used by the unit line itself, but use its values)
         # =======================================================================
         if unit_line.is_creatable():
-            AoCAuxiliarySubprocessor.get_creatable_game_entity(unit_line)
+            RoRAuxiliarySubprocessor.get_creatable_game_entity(unit_line)
 
     @staticmethod
     def _building_line_to_game_entity(building_line):
@@ -297,7 +348,7 @@ class RoRNyanSubprocessor:
         # =======================================================================
         abilities_set = []
 
-        # abilities_set.append(AoCAbilitySubprocessor.attribute_change_tracker_ability(building_line)) TODO: Damage graphic count
+        abilities_set.append(AoCAbilitySubprocessor.attribute_change_tracker_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.death_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.delete_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
@@ -308,7 +359,7 @@ class RoRNyanSubprocessor:
         # abilities_set.append(AoCAbilitySubprocessor.resistance_ability(building_line)) TODO: Conversion
         abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(building_line))
-        # abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(building_line)) TODO: terrain types
+        abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(building_line))
 
         # Config abilities
@@ -321,18 +372,16 @@ class RoRNyanSubprocessor:
         # Creation/Research abilities
         if len(building_line.creates) > 0:
             abilities_set.append(AoCAbilitySubprocessor.create_ability(building_line))
-            # abilities_set.append(AoCAbilitySubprocessor.production_queue_ability(building_line)) TODO: Production queue size
+            abilities_set.append(RoRAbilitySubprocessor.production_queue_ability(building_line))
 
         if len(building_line.researches) > 0:
             abilities_set.append(AoCAbilitySubprocessor.research_ability(building_line))
 
         # Effect abilities
         if building_line.is_projectile_shooter():
-            # TODO: RoR has no secondary projectile
-            # abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(building_line, 7))
-            # abilities_set.append(AoCAbilitySubprocessor.game_entity_stance_ability(building_line))
-            # RoRNyanSubprocessor._projectiles_from_line(building_line)
-            pass
+            abilities_set.append(RoRAbilitySubprocessor.shoot_projectile_ability(building_line, 7))
+            abilities_set.append(AoCAbilitySubprocessor.game_entity_stance_ability(building_line))
+            RoRNyanSubprocessor._projectiles_from_line(building_line)
 
         # Resource abilities
         if building_line.is_harvestable():
@@ -366,4 +415,562 @@ class RoRNyanSubprocessor:
         # Misc (Objects that are not used by the unit line itself, but use its values)
         # =======================================================================
         if building_line.is_creatable():
-            AoCAuxiliarySubprocessor.get_creatable_game_entity(building_line)
+            RoRAuxiliarySubprocessor.get_creatable_game_entity(building_line)
+
+    @staticmethod
+    def _ambient_group_to_game_entity(ambient_group):
+        """
+        Creates raw API objects for an ambient group.
+
+        :param ambient_group: Unit line that gets converted to a game entity.
+        :type ambient_group: ..dataformat.converter_object.ConverterObjectGroup
+        """
+        ambient_unit = ambient_group.get_head_unit()
+        ambient_id = ambient_group.get_head_unit_id()
+
+        dataset = ambient_group.data
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        class_lookup_dict = internal_name_lookups.get_class_lookups(dataset.game_version)
+
+        # Start with the generic GameEntity
+        game_entity_name = name_lookup_dict[ambient_id][0]
+        obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[ambient_id][1])
+        raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(name_lookup_dict[ambient_id][1])
+        ambient_group.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # Game Entity Types
+        # =======================================================================
+        # we give an ambient the types
+        #    - aux.game_entity_type.types.Ambient
+        # =======================================================================
+        # Create or use existing auxiliary types
+        types_set = []
+
+        type_obj = dataset.pregen_nyan_objects["aux.game_entity_type.types.Ambient"].get_nyan_object()
+        types_set.append(type_obj)
+
+        unit_class = ambient_unit.get_member("unit_class").get_value()
+        class_name = class_lookup_dict[unit_class]
+        class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
+        type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
+        types_set.append(type_obj)
+
+        raw_api_object.add_raw_member("types", types_set, "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # Abilities
+        # =======================================================================
+        abilities_set = []
+
+        interaction_mode = ambient_unit.get_member("interaction_mode").get_value()
+
+        if interaction_mode >= 0:
+            abilities_set.append(AoCAbilitySubprocessor.death_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.idle_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.live_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.named_ability(ambient_group))
+            # abilities_set.append(AoCAbilitySubprocessor.resistance_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.visibility_ability(ambient_group))
+
+        if interaction_mode >= 2:
+            abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(ambient_group))
+
+            if ambient_group.is_passable():
+                abilities_set.append(AoCAbilitySubprocessor.passable_ability(ambient_group))
+
+        if ambient_group.is_harvestable():
+            abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(ambient_group))
+
+        # =======================================================================
+        # Abilities
+        # =======================================================================
+        raw_api_object.add_raw_member("abilities", abilities_set,
+                                      "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # Modifiers
+        # =======================================================================
+        modifiers_set = []
+
+        raw_api_object.add_raw_member("modifiers", modifiers_set,
+                                      "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # TODO: Variants
+        # =======================================================================
+        variants_set = []
+
+        raw_api_object.add_raw_member("variants", variants_set,
+                                      "engine.aux.game_entity.GameEntity")
+
+    @staticmethod
+    def _tech_group_to_tech(tech_group):
+        """
+        Creates raw API objects for a tech group.
+
+        :param tech_group: Tech group that gets converted to a tech.
+        :type tech_group: ..dataformat.converter_object.ConverterObjectGroup
+        """
+        tech_id = tech_group.get_id()
+
+        # Skip Dark Age tech
+        if tech_id == 104:
+            return
+
+        dataset = tech_group.data
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+
+        # Start with the Tech object
+        tech_name = tech_lookup_dict[tech_id][0]
+        raw_api_object = RawAPIObject(tech_name, tech_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.tech.Tech")
+
+        if isinstance(tech_group, RoRUnitLineUpgrade):
+            unit_line = dataset.unit_lines[tech_group.get_line_id()]
+            head_unit_id = unit_line.get_head_unit_id()
+            obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[head_unit_id][1])
+
+        else:
+            obj_location = "data/tech/generic/%s/" % (tech_lookup_dict[tech_id][1])
+
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(tech_lookup_dict[tech_id][1])
+        tech_group.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # Types
+        # =======================================================================
+        raw_api_object.add_raw_member("types", [], "engine.aux.tech.Tech")
+
+        # =======================================================================
+        # Name
+        # =======================================================================
+        name_ref = "%s.%sName" % (tech_name, tech_name)
+        name_raw_api_object = RawAPIObject(name_ref,
+                                           "%sName"  % (tech_name),
+                                           dataset.nyan_api_objects)
+        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_location = ExpectedPointer(tech_group, tech_name)
+        name_raw_api_object.set_location(name_location)
+
+        name_raw_api_object.add_raw_member("translations",
+                                           [],
+                                           "engine.aux.translated.type.TranslatedString")
+
+        name_expected_pointer = ExpectedPointer(tech_group, name_ref)
+        raw_api_object.add_raw_member("name", name_expected_pointer, "engine.aux.tech.Tech")
+        tech_group.add_raw_api_object(name_raw_api_object)
+
+        # =======================================================================
+        # Description
+        # =======================================================================
+        description_ref = "%s.%sDescription" % (tech_name, tech_name)
+        description_raw_api_object = RawAPIObject(description_ref,
+                                                  "%sDescription"  % (tech_name),
+                                                  dataset.nyan_api_objects)
+        description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        description_location = ExpectedPointer(tech_group, tech_name)
+        description_raw_api_object.set_location(description_location)
+
+        description_raw_api_object.add_raw_member("translations",
+                                                  [],
+                                                  "engine.aux.translated.type.TranslatedMarkupFile")
+
+        description_expected_pointer = ExpectedPointer(tech_group, description_ref)
+        raw_api_object.add_raw_member("description",
+                                      description_expected_pointer,
+                                      "engine.aux.tech.Tech")
+        tech_group.add_raw_api_object(description_raw_api_object)
+
+        # =======================================================================
+        # Long description
+        # =======================================================================
+        long_description_ref = "%s.%sLongDescription" % (tech_name, tech_name)
+        long_description_raw_api_object = RawAPIObject(long_description_ref,
+                                                       "%sLongDescription"  % (tech_name),
+                                                       dataset.nyan_api_objects)
+        long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        long_description_location = ExpectedPointer(tech_group, tech_name)
+        long_description_raw_api_object.set_location(long_description_location)
+
+        long_description_raw_api_object.add_raw_member("translations",
+                                                       [],
+                                                       "engine.aux.translated.type.TranslatedMarkupFile")
+
+        long_description_expected_pointer = ExpectedPointer(tech_group, long_description_ref)
+        raw_api_object.add_raw_member("long_description",
+                                      long_description_expected_pointer,
+                                      "engine.aux.tech.Tech")
+        tech_group.add_raw_api_object(long_description_raw_api_object)
+
+        # =======================================================================
+        # Updates
+        # =======================================================================
+        patches = []
+        # patches.extend(AoCTechSubprocessor.get_patches(tech_group))
+        raw_api_object.add_raw_member("updates", patches, "engine.aux.tech.Tech")
+
+        # =======================================================================
+        # Misc (Objects that are not used by the tech group itself, but use its values)
+        # =======================================================================
+        if tech_group.is_researchable():
+            AoCAuxiliarySubprocessor.get_researchable_tech(tech_group)
+
+    @staticmethod
+    def _terrain_group_to_terrain(terrain_group):
+        """
+        Creates raw API objects for a terrain group.
+
+        :param terrain_group: Terrain group that gets converted to a tech.
+        :type terrain_group: ..dataformat.converter_object.ConverterObjectGroup
+        """
+        terrain_index = terrain_group.get_id()
+
+        dataset = terrain_group.data
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        terrain_lookup_dict = internal_name_lookups.get_terrain_lookups(dataset.game_version)
+        terrain_type_lookup_dict = internal_name_lookups.get_terrain_type_lookups(dataset.game_version)
+
+        # Start with the Terrain object
+        terrain_name = terrain_lookup_dict[terrain_index][1]
+        raw_api_object = RawAPIObject(terrain_name, terrain_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.terrain.Terrain")
+        obj_location = "data/terrain/%s/" % (terrain_lookup_dict[terrain_index][2])
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(terrain_lookup_dict[terrain_index][2])
+        terrain_group.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # Types
+        # =======================================================================
+        terrain_types = []
+
+        for terrain_type in terrain_type_lookup_dict.values():
+            if terrain_index in terrain_type[0]:
+                type_name = "aux.terrain_type.types.%s" % (terrain_type[2])
+                type_obj = dataset.pregen_nyan_objects[type_name].get_nyan_object()
+                terrain_types.append(type_obj)
+
+        raw_api_object.add_raw_member("types", terrain_types, "engine.aux.terrain.Terrain")
+
+        # =======================================================================
+        # Name
+        # =======================================================================
+        name_ref = "%s.%sName" % (terrain_name, terrain_name)
+        name_raw_api_object = RawAPIObject(name_ref,
+                                           "%sName"  % (terrain_name),
+                                           dataset.nyan_api_objects)
+        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_location = ExpectedPointer(terrain_group, terrain_name)
+        name_raw_api_object.set_location(name_location)
+
+        name_raw_api_object.add_raw_member("translations",
+                                           [],
+                                           "engine.aux.translated.type.TranslatedString")
+
+        name_expected_pointer = ExpectedPointer(terrain_group, name_ref)
+        raw_api_object.add_raw_member("name", name_expected_pointer, "engine.aux.terrain.Terrain")
+        terrain_group.add_raw_api_object(name_raw_api_object)
+
+        # =======================================================================
+        # Sound
+        # =======================================================================
+        sound_name = "%s.Sound" % (terrain_name)
+        sound_raw_api_object = RawAPIObject(sound_name, "Sound",
+                                            dataset.nyan_api_objects)
+        sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
+        sound_location = ExpectedPointer(terrain_group, terrain_name)
+        sound_raw_api_object.set_location(sound_location)
+
+        # Sounds for terrains don't exist in AoC
+        sounds = []
+
+        sound_raw_api_object.add_raw_member("play_delay",
+                                            0,
+                                            "engine.aux.sound.Sound")
+        sound_raw_api_object.add_raw_member("sounds",
+                                            sounds,
+                                            "engine.aux.sound.Sound")
+
+        sound_expected_pointer = ExpectedPointer(terrain_group, sound_name)
+        raw_api_object.add_raw_member("sound",
+                                      sound_expected_pointer,
+                                      "engine.aux.terrain.Terrain")
+
+        terrain_group.add_raw_api_object(sound_raw_api_object)
+
+        # =======================================================================
+        # Ambience
+        # =======================================================================
+        terrain = terrain_group.get_terrain()
+        ambients_count = terrain["terrain_units_used_count"].get_value()
+
+        ambience = []
+        # TODO: Ambience
+#===============================================================================
+#         for ambient_index in range(ambients_count):
+#             ambient_id = terrain["terrain_unit_id"][ambient_index].get_value()
+#             ambient_line = dataset.unit_ref[ambient_id]
+#             ambient_name = name_lookup_dict[ambient_line.get_head_unit_id()][0]
+#
+#             ambient_ref = "%s.Ambient%s" % (terrain_name, str(ambient_index))
+#             ambient_raw_api_object = RawAPIObject(ambient_ref,
+#                                                   "Ambient%s" % (str(ambient_index)),
+#                                                   dataset.nyan_api_objects)
+#             ambient_raw_api_object.add_raw_parent("engine.aux.terrain.TerrainAmbient")
+#             ambient_location = ExpectedPointer(terrain_group, terrain_name)
+#             ambient_raw_api_object.set_location(ambient_location)
+#
+#             # Game entity reference
+#             ambient_line_expected_pointer = ExpectedPointer(ambient_line, ambient_name)
+#             ambient_raw_api_object.add_raw_member("object",
+#                                                   ambient_line_expected_pointer,
+#                                                   "engine.aux.terrain.TerrainAmbient")
+#
+#             # Max density
+#             max_density = terrain["terrain_unit_density"][ambient_index].get_value()
+#             ambient_raw_api_object.add_raw_member("max_density",
+#                                                   max_density,
+#                                                   "engine.aux.terrain.TerrainAmbient")
+#
+#             terrain_group.add_raw_api_object(ambient_raw_api_object)
+#             terrain_ambient_expected_pointer = ExpectedPointer(terrain_group, ambient_ref)
+#             ambience.append(terrain_ambient_expected_pointer)
+#===============================================================================
+
+        raw_api_object.add_raw_member("ambience", ambience, "engine.aux.terrain.Terrain")
+
+        # =======================================================================
+        # Graphic
+        # =======================================================================
+        if terrain_group.has_subterrain():
+            subterrain = terrain_group.get_subterrain()
+            slp_id = subterrain["slp_id"].get_value()
+
+        else:
+            slp_id = terrain_group.get_terrain()["slp_id"].get_value()
+
+        # Create animation object
+        graphic_name = "%s.TerrainTexture" % (terrain_name)
+        graphic_raw_api_object = RawAPIObject(graphic_name, "TerrainTexture",
+                                              dataset.nyan_api_objects)
+        graphic_raw_api_object.add_raw_parent("engine.aux.graphics.Terrain")
+        graphic_location = ExpectedPointer(terrain_group, terrain_name)
+        graphic_raw_api_object.set_location(graphic_location)
+
+        if slp_id in dataset.combined_terrains.keys():
+            terrain_graphic = dataset.combined_terrains[slp_id]
+
+        else:
+            terrain_graphic = CombinedTerrain(slp_id,
+                                              "texture_%s" % (terrain_lookup_dict[terrain_index][2]),
+                                              dataset)
+            dataset.combined_terrains.update({terrain_graphic.get_id(): terrain_graphic})
+
+        terrain_graphic.add_reference(graphic_raw_api_object)
+
+        graphic_raw_api_object.add_raw_member("sprite", terrain_graphic,
+                                              "engine.aux.graphics.Terrain")
+
+        terrain_group.add_raw_api_object(graphic_raw_api_object)
+        graphic_expected_pointer = ExpectedPointer(terrain_group, graphic_name)
+        raw_api_object.add_raw_member("terrain_graphic", graphic_expected_pointer,
+                                      "engine.aux.terrain.Terrain")
+
+    @staticmethod
+    def _civ_group_to_civ(civ_group):
+        """
+        Creates raw API objects for a civ group.
+
+        :param civ_group: Terrain group that gets converted to a tech.
+        :type civ_group: ..dataformat.converter_object.ConverterObjectGroup
+        """
+        civ_id = civ_group.get_id()
+
+        dataset = civ_group.data
+
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+
+        # Start with the Tech object
+        tech_name = civ_lookup_dict[civ_id][0]
+        raw_api_object = RawAPIObject(tech_name, tech_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.civilization.Civilization")
+
+        obj_location = "data/civ/%s/" % (civ_lookup_dict[civ_id][1])
+
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(civ_lookup_dict[civ_id][1])
+        civ_group.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # Name
+        # =======================================================================
+        name_ref = "%s.%sName" % (tech_name, tech_name)
+        name_raw_api_object = RawAPIObject(name_ref,
+                                           "%sName"  % (tech_name),
+                                           dataset.nyan_api_objects)
+        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_location = ExpectedPointer(civ_group, tech_name)
+        name_raw_api_object.set_location(name_location)
+
+        name_raw_api_object.add_raw_member("translations",
+                                           [],
+                                           "engine.aux.translated.type.TranslatedString")
+
+        name_expected_pointer = ExpectedPointer(civ_group, name_ref)
+        raw_api_object.add_raw_member("name", name_expected_pointer, "engine.aux.civilization.Civilization")
+        civ_group.add_raw_api_object(name_raw_api_object)
+
+        # =======================================================================
+        # Description
+        # =======================================================================
+        description_ref = "%s.%sDescription" % (tech_name, tech_name)
+        description_raw_api_object = RawAPIObject(description_ref,
+                                                  "%sDescription"  % (tech_name),
+                                                  dataset.nyan_api_objects)
+        description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        description_location = ExpectedPointer(civ_group, tech_name)
+        description_raw_api_object.set_location(description_location)
+
+        description_raw_api_object.add_raw_member("translations",
+                                                  [],
+                                                  "engine.aux.translated.type.TranslatedMarkupFile")
+
+        description_expected_pointer = ExpectedPointer(civ_group, description_ref)
+        raw_api_object.add_raw_member("description",
+                                      description_expected_pointer,
+                                      "engine.aux.civilization.Civilization")
+        civ_group.add_raw_api_object(description_raw_api_object)
+
+        # =======================================================================
+        # Long description
+        # =======================================================================
+        long_description_ref = "%s.%sLongDescription" % (tech_name, tech_name)
+        long_description_raw_api_object = RawAPIObject(long_description_ref,
+                                                       "%sLongDescription"  % (tech_name),
+                                                       dataset.nyan_api_objects)
+        long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        long_description_location = ExpectedPointer(civ_group, tech_name)
+        long_description_raw_api_object.set_location(long_description_location)
+
+        long_description_raw_api_object.add_raw_member("translations",
+                                                       [],
+                                                       "engine.aux.translated.type.TranslatedMarkupFile")
+
+        long_description_expected_pointer = ExpectedPointer(civ_group, long_description_ref)
+        raw_api_object.add_raw_member("long_description",
+                                      long_description_expected_pointer,
+                                      "engine.aux.civilization.Civilization")
+        civ_group.add_raw_api_object(long_description_raw_api_object)
+
+        # =======================================================================
+        # TODO: Leader names
+        # =======================================================================
+        raw_api_object.add_raw_member("leader_names",
+                                      [],
+                                      "engine.aux.civilization.Civilization")
+
+        # =======================================================================
+        # Modifiers
+        # =======================================================================
+        modifiers = []
+        # modifiers = AoCCivSubprocessor.get_civ_setup(civ_group)
+        raw_api_object.add_raw_member("modifiers",
+                                      modifiers,
+                                      "engine.aux.civilization.Civilization")
+
+        # =======================================================================
+        # Starting resources
+        # =======================================================================
+        resource_amounts = []
+        # resource_amounts = AoCCivSubprocessor.get_starting_resources(civ_group)
+        raw_api_object.add_raw_member("starting_resources",
+                                      resource_amounts,
+                                      "engine.aux.civilization.Civilization")
+
+        # =======================================================================
+        # Civ setup
+        # =======================================================================
+        civ_setup = []
+        # civ_setup = AoCCivSubprocessor.get_civ_setup(civ_group)
+        raw_api_object.add_raw_member("civ_setup",
+                                      civ_setup,
+                                      "engine.aux.civilization.Civilization")
+
+    @staticmethod
+    def _projectiles_from_line(line):
+        """
+        Creates Projectile(GameEntity) raw API objects for a unit/building line.
+
+        :param line: Line for which the projectiles are extracted.
+        :type line: ..dataformat.converter_object.ConverterObjectGroup
+        """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+        game_entity_filename = name_lookup_dict[current_unit_id][1]
+
+        projectiles_location = "data/game_entity/generic/%s/projectiles/" % (game_entity_filename)
+
+        projectile_indices = []
+        projectile_primary = current_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        if projectile_primary > -1:
+            projectile_indices.append(0)
+
+        for projectile_num in projectile_indices:
+            obj_ref = "%s.ShootProjectile.Projectile%s" % (game_entity_name,
+                                                           str(projectile_num))
+            obj_name = "Projectile%s" % (str(projectile_num))
+            proj_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
+            proj_raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
+            proj_raw_api_object.set_location(projectiles_location)
+            proj_raw_api_object.set_filename("%s_projectiles" % (game_entity_filename))
+
+            # =======================================================================
+            # Types
+            # =======================================================================
+            types_set = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Projectile"].get_nyan_object()]
+            proj_raw_api_object.add_raw_member("types", types_set, "engine.aux.game_entity.GameEntity")
+
+            # =======================================================================
+            # Abilities
+            # =======================================================================
+            abilities_set = []
+            # abilities_set.append(AoCAbilitySubprocessor.projectile_ability(line, position=projectile_num)) TODO: No Dispersion
+            abilities_set.append(AoCAbilitySubprocessor.move_projectile_ability(line, position=projectile_num))
+            abilities_set.append(AoCAbilitySubprocessor.apply_discrete_effect_ability(line, 7, False, projectile_num))
+            # TODO: Death, Despawn
+            proj_raw_api_object.add_raw_member("abilities", abilities_set, "engine.aux.game_entity.GameEntity")
+
+            # =======================================================================
+            # Modifiers
+            # =======================================================================
+            modifiers_set = []
+
+            proj_raw_api_object.add_raw_member("modifiers", modifiers_set, "engine.aux.game_entity.GameEntity")
+
+            # =======================================================================
+            # Variants
+            # =======================================================================
+            variants_set = []
+            proj_raw_api_object.add_raw_member("variants", variants_set, "engine.aux.game_entity.GameEntity")
+
+            line.add_raw_api_object(proj_raw_api_object)

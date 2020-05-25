@@ -227,15 +227,22 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        current_unit = line.get_head_unit()
-        current_unit_id = line.get_head_unit_id()
+        if isinstance(line, GenieVillagerGroup):
+            current_unit = line.get_units_with_command(command_id)[0]
+            current_unit_id = current_unit["id0"].get_value()
+
+        else:
+            current_unit = line.get_head_unit()
+            current_unit_id = line.get_head_unit_id()
+
+        head_unit_id = line.get_head_unit_id()
         dataset = line.data
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         command_lookup_dict = internal_name_lookups.get_command_lookups(dataset.game_version)
         gset_lookup_dict = internal_name_lookups.get_graphic_set_lookups(dataset.game_version)
 
-        game_entity_name = name_lookup_dict[current_unit_id][0]
+        game_entity_name = name_lookup_dict[head_unit_id][0]
 
         ability_name = command_lookup_dict[command_id][0]
 
@@ -469,112 +476,49 @@ class AoCAbilitySubprocessor:
         # Change progress
         damage_graphics = current_unit.get_member("damage_graphics").get_value()
         progress_expected_pointers = []
-        # =====================================================================================
-        progress_name = "%s.AttributeChangeTracker.ChangeProgress75" % (game_entity_name)
-        progress_raw_api_object = RawAPIObject(progress_name,
-                                               "ChangeProgress75",
-                                               dataset.nyan_api_objects)
-        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.AttributeChangeProgress")
-        progress_location = ExpectedPointer(line, ability_ref)
-        progress_raw_api_object.set_location(progress_location)
 
-        # Interval = (0.0, 100.0)
-        progress_raw_api_object.add_raw_member("left_boundary",
-                                               50.0,
-                                               "engine.aux.progress.Progress")
-        progress_raw_api_object.add_raw_member("right_boundary",
-                                               75.0,
-                                               "engine.aux.progress.Progress")
+        # Damage graphics are ordered ascending, so we start from 0
+        interval_left_bound = 0
+        for damage_graphic_member in damage_graphics:
+            interval_right_bound = damage_graphic_member["damage_percent"].get_value()
+            progress_name = "%s.AttributeChangeTracker.ChangeProgress%s" % (game_entity_name,
+                                                                            interval_right_bound)
+            progress_raw_api_object = RawAPIObject(progress_name,
+                                                   "ChangeProgress%s" % (interval_right_bound),
+                                                   dataset.nyan_api_objects)
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.type.AttributeChangeProgress")
+            progress_location = ExpectedPointer(line, ability_ref)
+            progress_raw_api_object.set_location(progress_location)
 
-        progress_animation_id = damage_graphics[2]["graphic_id"].get_value()
-        if progress_animation_id > -1:
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimationOverlayProgress")
+            # Interval
+            progress_raw_api_object.add_raw_member("left_boundary",
+                                                   interval_left_bound,
+                                                   "engine.aux.progress.Progress")
+            progress_raw_api_object.add_raw_member("right_boundary",
+                                                   interval_right_bound,
+                                                   "engine.aux.progress.Progress")
 
-            # Animation
-            animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  progress_animation_id,
-                                                                                  progress_name,
-                                                                                  "Idle",
-                                                                                  "idle_damage_override_75_")
-            animations_set.append(animation_expected_pointer)
-            progress_raw_api_object.add_raw_member("overlays",
-                                                   animations_set,
-                                                   "engine.aux.progress.specialization.AnimationOverlayProgress")
+            progress_animation_id = damage_graphic_member["graphic_id"].get_value()
+            if progress_animation_id > -1:
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimationOverlayProgress")
 
-        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
-        line.add_raw_api_object(progress_raw_api_object)
-        # =====================================================================================
-        progress_name = "%s.AttributeChangeTracker.ChangeProgress50" % (game_entity_name)
-        progress_raw_api_object = RawAPIObject(progress_name,
-                                               "ChangeProgress50",
-                                               dataset.nyan_api_objects)
-        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.AttributeChangeProgress")
-        progress_location = ExpectedPointer(line, ability_ref)
-        progress_raw_api_object.set_location(progress_location)
+                # Animation
+                animations_set = []
+                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                      progress_animation_id,
+                                                                                      progress_name,
+                                                                                      "Idle",
+                                                                                      "idle_damage_override_%s_"
+                                                                                      % (interval_right_bound))
+                animations_set.append(animation_expected_pointer)
+                progress_raw_api_object.add_raw_member("overlays",
+                                                       animations_set,
+                                                       "engine.aux.progress.specialization.AnimationOverlayProgress")
 
-        # Interval = (0.0, 100.0)
-        progress_raw_api_object.add_raw_member("left_boundary",
-                                               25.0,
-                                               "engine.aux.progress.Progress")
-        progress_raw_api_object.add_raw_member("right_boundary",
-                                               50.0,
-                                               "engine.aux.progress.Progress")
+            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            line.add_raw_api_object(progress_raw_api_object)
+            interval_left_bound = interval_right_bound
 
-        progress_animation_id = damage_graphics[1]["graphic_id"].get_value()
-        if progress_animation_id > -1:
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimationOverlayProgress")
-
-            # Animation
-            animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  progress_animation_id,
-                                                                                  progress_name,
-                                                                                  "Idle",
-                                                                                  "idle_damage_override_50_")
-            animations_set.append(animation_expected_pointer)
-            progress_raw_api_object.add_raw_member("overlays",
-                                                   animations_set,
-                                                   "engine.aux.progress.specialization.AnimationOverlayProgress")
-
-        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
-        line.add_raw_api_object(progress_raw_api_object)
-        # =====================================================================================
-        progress_name = "%s.AttributeChangeTracker.ChangeProgress25" % (game_entity_name)
-        progress_raw_api_object = RawAPIObject(progress_name,
-                                               "ChangeProgress25",
-                                               dataset.nyan_api_objects)
-        progress_raw_api_object.add_raw_parent("engine.aux.progress.type.AttributeChangeProgress")
-        progress_location = ExpectedPointer(line, ability_ref)
-        progress_raw_api_object.set_location(progress_location)
-
-        # Interval = (0.0, 100.0)
-        progress_raw_api_object.add_raw_member("left_boundary",
-                                               0.0,
-                                               "engine.aux.progress.Progress")
-        progress_raw_api_object.add_raw_member("right_boundary",
-                                               25.0,
-                                               "engine.aux.progress.Progress")
-
-        progress_animation_id = damage_graphics[0]["graphic_id"].get_value()
-        if progress_animation_id > -1:
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimationOverlayProgress")
-
-            # Animation
-            animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  progress_animation_id,
-                                                                                  progress_name,
-                                                                                  "Idle",
-                                                                                  "idle_damage_override_25_")
-            animations_set.append(animation_expected_pointer)
-            progress_raw_api_object.add_raw_member("overlays",
-                                                   animations_set,
-                                                   "engine.aux.progress.specialization.AnimationOverlayProgress")
-
-        progress_expected_pointers.append(ExpectedPointer(line, progress_name))
-        line.add_raw_api_object(progress_raw_api_object)
-        # =====================================================================================
         ability_raw_api_object.add_raw_member("change_progress",
                                               progress_expected_pointers,
                                               "engine.ability.type.AttributeChangeTracker")
@@ -5232,7 +5176,11 @@ class AoCAbilitySubprocessor:
 
         else:
             # Garrison graphics
-            garrison_animation_id = current_unit.get_member("garrison_graphic").get_value()
+            if current_unit.has_member("garrison_graphic"):
+                garrison_animation_id = current_unit.get_member("garrison_graphic").get_value()
+
+            else:
+                garrison_animation_id = -1
 
             if garrison_animation_id > -1:
                 progress_name = "%s.Storage.CarryProgress" % (game_entity_name)
@@ -5867,25 +5815,33 @@ class AoCAbilitySubprocessor:
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
 
-        # If the animation object already exists, we do not need to create it again
-        if exists:
-            # Point to a previously created animation object
-            animation_ref = "%s.%sAnimation" % (ability_ref, ability_name)
-            animation_expected_pointer = ExpectedPointer(line, animation_ref)
+        if animation_id > -1:
+            # If the animation object already exists, we do not need to create it again
+            if exists:
+                # Point to a previously created animation object
+                animation_ref = "%s.%sAnimation" % (ability_ref, ability_name)
+                animation_expected_pointer = ExpectedPointer(line, animation_ref)
+
+            else:
+                # Create the animation object
+                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
+                                                                                      animation_id,
+                                                                                      ability_ref,
+                                                                                      ability_name,
+                                                                                      filename_prefix)
+
+            # Patch animation into ability
+            nyan_patch_raw_api_object.add_raw_patch_member("animations",
+                                                           [animation_expected_pointer],
+                                                           "engine.ability.specialization.AnimatedAbility",
+                                                           MemberOperator.ASSIGN)
 
         else:
-            # Create the animation object
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  animation_id,
-                                                                                  ability_ref,
-                                                                                  ability_name,
-                                                                                  filename_prefix)
-
-        # Patch animation into ability
-        nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                       [animation_expected_pointer],
-                                                       "engine.ability.specialization.AnimatedAbility",
-                                                       MemberOperator.ASSIGN)
+            # No animation -> empty the set
+            nyan_patch_raw_api_object.add_raw_patch_member("animations",
+                                                           [],
+                                                           "engine.ability.specialization.AnimatedAbility",
+                                                           MemberOperator.ASSIGN)
 
         patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
