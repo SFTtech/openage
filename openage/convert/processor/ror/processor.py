@@ -4,9 +4,6 @@
 Convert data from RoR to openage formats.
 """
 
-from numpy import full
-
-from openage.convert.dataformat.aoc.genie_civ import GenieCivilizationGroup
 from openage.convert.dataformat.aoc.genie_object_container import GenieObjectContainer
 from openage.convert.dataformat.aoc.genie_tech import AgeUpgrade, UnitUnlock,\
     BuildingUnlock, UnitLineUpgrade, BuildingLineUpgrade, StatUpgrade,\
@@ -16,6 +13,7 @@ from openage.convert.dataformat.ror.genie_unit import RoRUnitTaskGroup,\
     RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup
 from openage.convert.nyan.api_loader import load_api
 from openage.convert.processor.aoc.processor import AoCProcessor
+from openage.convert.processor.ror.pregen_subprocessor import RoRPregenSubprocessor
 
 from ....log import info
 
@@ -111,6 +109,8 @@ class RoRProcessor:
         AoCProcessor._link_trade_posts(full_data_set)
 
         info("Generating auxiliary objects...")
+
+        RoRPregenSubprocessor.generate(full_data_set)
 
         return full_data_set
 

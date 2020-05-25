@@ -371,7 +371,7 @@ class AoCPregenSubprocessor:
         armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(full_data_set.game_version)
 
         # =======================================================================
-        # AttributeChangeType
+        # Armor types
         # =======================================================================
         type_parent = "engine.aux.attribute_change_type.AttributeChangeType"
         types_location = "data/aux/attribute_change_type/"
