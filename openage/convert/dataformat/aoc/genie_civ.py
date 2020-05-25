@@ -61,15 +61,19 @@ class GenieCivilizationGroup(ConverterObjectGroup):
 
         self.civ = self.data.genie_civs[civ_id]
 
-        team_bonus_id = self.civ.get_member("team_bonus_id").get_value()
-        if team_bonus_id == -1:
-            # Gaia civ has no team bonus
-            self.team_bonus = None
+        if self.civ.has_member("team_bonus_id"):
+            team_bonus_id = self.civ.get_member("team_bonus_id").get_value()
+            if team_bonus_id == -1:
+                # Gaia civ has no team bonus
+                self.team_bonus = None
+            else:
+                # Create an object for the team bonus. We use the effect ID + 10000 to avoid
+                # conflicts with techs or effects
+                self.team_bonus = CivTeamBonus(10000 + team_bonus_id, civ_id,
+                                               team_bonus_id, full_data_set)
+
         else:
-            # Create an object for the team bonus. We use the effect ID + 10000 to avoid
-            # conflicts with techs or effects
-            self.team_bonus = CivTeamBonus(10000 + team_bonus_id, civ_id,
-                                           team_bonus_id, full_data_set)
+            self.team_bonus = None
 
         # Create an object for the tech tree bonus. We use the effect ID + 10000 to avoid
         # conflicts with techs or effects

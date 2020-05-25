@@ -247,7 +247,7 @@ class RoRVillagerGroup(GenieVillagerGroup):
 
     __slots__ = ('enabling_research_id',)
 
-    def __init__(self, group_id, task_group_ids, enabling_research_id, full_data_set):
+    def __init__(self, group_id, task_group_ids, full_data_set):
         """
         Creates a new RoR villager group.
 
@@ -255,21 +255,17 @@ class RoRVillagerGroup(GenieVillagerGroup):
                          (in AoE2: 118 = male builder).
         :param task_group_ids: Internal task group ids in the .dat file.
                                (as a list of integers)
-        :param enabling_research_id: ID of the tech that enables this unit.
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
         """
         super().__init__(group_id, task_group_ids, full_data_set)
 
-        # Saved for RoR because there's no easy way to detect it with a connection
-        self.enabling_research_id = enabling_research_id
-
     def is_passable(self):
         return False
 
     def get_enabling_research_id(self):
-        return self.enabling_research_id
+        return -1
 
     def __repr__(self):
         return "RoRVillagerGroup<%s>" % (self.get_id())

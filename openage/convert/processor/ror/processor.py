@@ -4,8 +4,16 @@
 Convert data from RoR to openage formats.
 """
 
+from numpy import full
+
+from openage.convert.dataformat.aoc.genie_civ import GenieCivilizationGroup
 from openage.convert.dataformat.aoc.genie_object_container import GenieObjectContainer
+from openage.convert.dataformat.aoc.genie_tech import AgeUpgrade, UnitUnlock,\
+    BuildingUnlock, UnitLineUpgrade, BuildingLineUpgrade, StatUpgrade,\
+    InitiatedTech
 from openage.convert.dataformat.aoc.genie_unit import GenieUnitObject
+from openage.convert.dataformat.ror.genie_unit import RoRUnitTaskGroup,\
+    RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup
 from openage.convert.nyan.api_loader import load_api
 from openage.convert.processor.aoc.processor import AoCProcessor
 
@@ -17,7 +25,7 @@ class RoRProcessor:
     @classmethod
     def convert(cls, gamespec, game_version, string_resources, existing_graphics):
         """
-        Input game speification and media here and get a set of
+        Input game specification and media here and get a set of
         modpacks back.
 
         :param gamespec: Gamedata from empires.dat read in by the
@@ -33,7 +41,7 @@ class RoRProcessor:
         data_set = cls._pre_processor(gamespec, game_version, string_resources, existing_graphics)
 
         # Create the custom openae formats (nyan, sprite, terrain)
-        data_set = cls._processor(data_set)
+        data_set = cls._processor(gamespec, data_set)
 
         # Create modpack definitions
         modpacks = cls._post_processor(data_set)
@@ -47,6 +55,10 @@ class RoRProcessor:
 
         :param gamespec: Gamedata from empires.dat file.
         :type gamespec: class: ...dataformat.value_members.ArrayMember
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
         dataset = GenieObjectContainer()
 
@@ -69,12 +81,14 @@ class RoRProcessor:
         return dataset
 
     @classmethod
-    def _processor(cls, full_data_set):
+    def _processor(cls, gamespec, full_data_set):
         """
         1. Transfer structures used in Genie games to more openage-friendly
            Python objects.
         2. Convert these objects to nyan.
 
+        :param gamespec: Gamedata from empires.dat file.
+        :type gamespec: class: ...dataformat.value_members.ArrayMember
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
@@ -83,16 +97,10 @@ class RoRProcessor:
 
         info("Creating API-like objects...")
 
-        # cls._create_unit_lines(full_data_set)
-        # cls._create_extra_unit_lines(full_data_set)
-        # cls._create_building_lines(full_data_set)
-        # cls._create_villager_groups(full_data_set)
-        # cls._create_ambient_groups(full_data_set)
-        # cls._create_variant_groups(full_data_set)
-        # AoCProcessor._create_terrain_groups(full_data_set)
-        # cls._create_tech_groups(full_data_set)
-        # cls._create_node_tech_groups(full_data_set)
-        # AoCProcessor._create_civ_groups(full_data_set)
+        cls._create_tech_groups(full_data_set)
+        cls._create_entity_lines(gamespec, full_data_set)
+        AoCProcessor._create_terrain_groups(full_data_set)
+        AoCProcessor._create_civ_groups(full_data_set)
 
         info("Linking API-like objects...")
 
@@ -118,15 +126,24 @@ class RoRProcessor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # Units are stored in the civ container.
-        # All civs point to the same units (?) except for Gaia which has more.
-        # Gaia also seems to have the most units, so we only read from Gaia
+        # In RoR the normal civs are not subsets of the Gaia civ, so we search units from
+        # Gaia and one player civ (egyptiians).
         #
         # call hierarchy: wrapper[0]->civs[0]->units
-        raw_units = gamespec.get_value()[0].get_value()["civs"].get_value()[0]\
-            .get_value()["units"].get_value()
+        raw_units = []
+
+        # Gaia units
+        raw_units.extend(gamespec[0]["civs"][0]["units"].get_value())
+
+        # Egyptians
+        raw_units.extend(gamespec[0]["civs"][1]["units"].get_value())
 
         for raw_unit in raw_units:
-            unit_id = raw_unit.get_value()["id0"].get_value()
+            unit_id = raw_unit["id0"].get_value()
+
+            if unit_id in full_data_set.genie_units.keys():
+                continue
+
             unit_members = raw_unit.get_value()
 
             # Turn attack and armor into containers to make diffing work
@@ -141,3 +158,271 @@ class RoRProcessor:
 
             unit = GenieUnitObject(unit_id, full_data_set, members=unit_members)
             full_data_set.genie_units.update({unit.get_id(): unit})
+
+        # Sort the dict to make debugging easier :)
+        full_data_set.genie_units = dict(sorted(full_data_set.genie_units.items()))
+
+    @staticmethod
+    def _create_entity_lines(gamespec, full_data_set):
+        """
+        Sort units/buildings into lines, based on information from techs and civs.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        # Search a player civ (egyptians) for the starting units
+        player_civ_units = gamespec[0]["civs"][1]["units"].get_value()
+        task_group_ids = set()
+
+        for raw_unit in player_civ_units.values():
+            unit_id = raw_unit["id0"].get_value()
+            enabled = raw_unit["enabled"].get_value()
+            entity = full_data_set.genie_units[unit_id]
+
+            if not enabled:
+                # Unlocked by tech
+                continue
+
+            unit_type = entity["unit_type"].get_value()
+
+            if unit_type == 70:
+                if entity.has_member("task_group") and\
+                        entity.get_member("task_group").get_value() > 0:
+                    task_group_id = entity["task_group"].get_value()
+
+                    if task_group_id in task_group_ids:
+                        task_group = full_data_set.task_groups[task_group_id]
+                        task_group.add_unit(entity)
+
+                    else:
+                        if task_group_id == 1:
+                            line_id = RoRUnitTaskGroup.male_line_id
+
+                        task_group = RoRUnitTaskGroup(line_id, task_group_id, -1, full_data_set)
+                        task_group.add_unit(entity)
+                        task_group_ids.add(task_group_id)
+                        full_data_set.task_groups.update({task_group_id: task_group})
+
+                else:
+                    unit_line = RoRUnitLineGroup(unit_id, -1, full_data_set)
+                    unit_line.add_unit(entity)
+                    full_data_set.unit_lines.update({unit_line.get_id(): unit_line})
+
+            elif unit_type == 80:
+                building_line = RoRBuildingLineGroup(unit_id, -1, full_data_set)
+                building_line.add_unit(entity)
+                full_data_set.building_lines.update({building_line.get_id(): building_line})
+
+        # Create the villager task group
+        villager = RoRVillagerGroup(118, task_group_ids, full_data_set)
+        full_data_set.unit_lines.update({villager.get_id(): villager})
+        full_data_set.villager_groups.update({villager.get_id(): villager})
+
+        # Other units unlocks through techs
+        unit_unlocks = full_data_set.unit_unlocks
+        for unit_unlock in unit_unlocks.values():
+            line_id = unit_unlock.get_line_id()
+            unit = full_data_set.genie_units[line_id]
+
+            unit_line = RoRUnitLineGroup(line_id, unit_unlock.get_id(), full_data_set)
+            unit_line.add_unit(unit)
+            full_data_set.unit_lines.update({unit_line.get_id(): unit_line})
+
+            # Check if the tech unlocks other lines
+            # TODO: Make this cleaner
+            unlock_effects = unit_unlock.get_effects(effect_type=2)
+            for unlock_effect in unlock_effects:
+                line_id = unlock_effect["attr_a"].get_value()
+
+                if line_id not in full_data_set.unit_lines.keys():
+                    unit_line = RoRUnitLineGroup(line_id, unit_unlock.get_id(), full_data_set)
+                    unit_line.add_unit(unit)
+                    full_data_set.unit_lines.update({unit_line.get_id(): unit_line})
+
+        # Upgraded units in a line
+        unit_upgrades = full_data_set.unit_upgrades
+        for unit_upgrade in unit_upgrades.values():
+            line_id = unit_upgrade.get_line_id()
+            target_id = unit_upgrade.get_upgrade_target_id()
+            unit = full_data_set.genie_units[target_id]
+
+            # Find the previous unit in the line
+            required_techs = unit_upgrade.tech.get_member("required_techs").get_value()
+            for required_tech in required_techs:
+                required_tech_id = required_tech.get_value()
+                if required_tech_id in full_data_set.unit_unlocks.keys():
+                    source_id = full_data_set.unit_unlocks[required_tech_id].get_line_id()
+                    break
+
+                elif required_tech_id in full_data_set.unit_upgrades.keys():
+                    source_id = full_data_set.unit_upgrades[required_tech_id].get_upgrade_target_id()
+                    break
+
+            unit_line = full_data_set.unit_lines[line_id]
+            unit_line.add_unit(unit, after=source_id)
+
+        # Other buildings unlocks through techs
+        building_unlocks = full_data_set.building_unlocks
+        for building_unlock in building_unlocks.values():
+            line_id = building_unlock.get_line_id()
+            building = full_data_set.genie_units[line_id]
+
+            building_line = RoRBuildingLineGroup(line_id, building_unlock.get_id(), full_data_set)
+            building_line.add_unit(building)
+            full_data_set.building_lines.update({building_line.get_id(): building_line})
+
+        # Upgraded buildings through techs
+        building_upgrades = full_data_set.building_upgrades
+        for building_upgrade in building_upgrades.values():
+            line_id = building_upgrade.get_line_id()
+            target_id = building_upgrade.get_upgrade_target_id()
+            unit = full_data_set.genie_units[target_id]
+
+            # Find the previous unit in the line
+            required_techs = building_upgrade.tech.get_member("required_techs").get_value()
+            for required_tech in required_techs:
+                required_tech_id = required_tech.get_value()
+                if required_tech_id in full_data_set.building_unlocks.keys():
+                    source_id = full_data_set.building_unlocks[required_tech_id].get_line_id()
+                    break
+
+                elif required_tech_id in full_data_set.building_upgrades.keys():
+                    source_id = full_data_set.building_upgrades[required_tech_id].get_upgrade_target_id()
+                    break
+
+            building_line = full_data_set.building_lines[line_id]
+            building_line.add_unit(unit, after=source_id)
+
+        # Upgraded units/buildings through age ups
+        age_ups = full_data_set.age_upgrades
+        for age_up in age_ups.values():
+            effects = age_up.get_effects(effect_type=3)
+            for effect in effects:
+                source_id = effect["attr_a"].get_value()
+                target_id = effect["attr_b"].get_value()
+                unit = full_data_set.genie_units[target_id]
+
+                if source_id in full_data_set.building_lines.keys():
+                    building_line = full_data_set.building_lines[source_id]
+                    building_line.add_unit(unit, after=source_id)
+
+                elif source_id in full_data_set.unit_lines.keys():
+                    unit_line = full_data_set.unit_lines[source_id]
+                    unit_line.add_unit(unit, after=source_id)
+
+    @staticmethod
+    def _create_tech_groups(full_data_set):
+        """
+        Create techs from tech connections and unit upgrades/unlocks
+        from unit connections.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        genie_techs = full_data_set.genie_techs
+
+        for tech_id, tech in genie_techs.items():
+            tech_type = tech["tech_type"].get_value()
+
+            # Test if a tech exist and skip it if it doesn't
+            required_techs = tech["required_techs"].get_value()
+            if all(required_tech.get_value() == 0 for required_tech in required_techs):
+                # If all required techs are tech ID 0, the tech doesnt exist
+                continue
+
+            effect_bundle_id = tech["tech_effect_id"].get_value()
+
+            if effect_bundle_id == -1:
+                continue
+
+            effect_bundle = full_data_set.genie_effect_bundles[effect_bundle_id]
+
+            # Ignore techs without effects
+            if len(effect_bundle.get_effects()) == 0:
+                continue
+
+            # Town Center techs (only age ups)
+            if tech_type == 12:
+                # Age ID is set as resource value
+                setr_effects = effect_bundle.get_effects(effect_type=1)
+                for effect in setr_effects:
+                    resource_id = effect["attr_a"].get_value()
+
+                    if resource_id == 6:
+                        age_id = int(effect["attr_d"].get_value())
+                        break
+
+                age_up = AgeUpgrade(tech_id, age_id, full_data_set)
+                full_data_set.tech_groups.update({age_up.get_id(): age_up})
+                full_data_set.age_upgrades.update({age_up.get_id(): age_up})
+
+            else:
+                effects = effect_bundle.get_effects()
+                for effect in effects:
+                    # Enabling techs
+                    if effect.get_type() == 2:
+                        unit_id = effect["attr_a"].get_value()
+                        unit = full_data_set.genie_units[unit_id]
+                        unit_type = unit["unit_type"].get_value()
+
+                        if unit_type == 70:
+                            unit_unlock = UnitUnlock(tech_id, unit_id, full_data_set)
+                            full_data_set.tech_groups.update({unit_unlock.get_id(): unit_unlock})
+                            full_data_set.unit_unlocks.update({unit_unlock.get_id(): unit_unlock})
+                            break
+
+                        elif unit_type == 80:
+                            building_unlock = BuildingUnlock(tech_id, unit_id, full_data_set)
+                            full_data_set.tech_groups.update({building_unlock.get_id(): building_unlock})
+                            full_data_set.building_unlocks.update({building_unlock.get_id(): building_unlock})
+                            break
+
+                    # Upgrades
+                    elif effect.get_type() == 3:
+                        source_unit_id = effect["attr_a"].get_value()
+                        target_unit_id = effect["attr_b"].get_value()
+                        unit = full_data_set.genie_units[source_unit_id]
+                        unit_type = unit["unit_type"].get_value()
+
+                        if unit_type == 70:
+                            unit_upgrade = UnitLineUpgrade(tech_id, source_unit_id, target_unit_id, full_data_set)
+                            full_data_set.tech_groups.update({unit_upgrade.get_id(): unit_upgrade})
+                            full_data_set.unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
+                            break
+
+                        elif unit_type == 80:
+                            building_upgrade = BuildingLineUpgrade(tech_id, source_unit_id, target_unit_id, full_data_set)
+                            full_data_set.tech_groups.update({building_upgrade.get_id(): building_upgrade})
+                            full_data_set.building_upgrades.update({building_upgrade.get_id(): building_upgrade})
+                            break
+
+                else:
+                    # Anything else must be a stat upgrade
+                    stat_up = StatUpgrade(tech_id, full_data_set)
+                    full_data_set.tech_groups.update({stat_up.get_id(): stat_up})
+                    full_data_set.stat_upgrades.update({stat_up.get_id(): stat_up})
+
+        # Initiated techs are stored with buildings
+        genie_units = full_data_set.genie_units
+
+        for genie_unit in genie_units.values():
+            if not genie_unit.has_member("research_id"):
+                continue
+
+            building_id = genie_unit.get_member("id0").get_value()
+            initiated_tech_id = genie_unit.get_member("research_id").get_value()
+
+            if initiated_tech_id == -1:
+                continue
+
+            if building_id not in full_data_set.building_lines.keys():
+                # Skips upgraded buildings (which initiate the same techs)
+                continue
+
+            initiated_tech = InitiatedTech(initiated_tech_id, building_id, full_data_set)
+            full_data_set.tech_groups.update({initiated_tech.get_id(): initiated_tech})
+            full_data_set.initiated_techs.update({initiated_tech.get_id(): initiated_tech})

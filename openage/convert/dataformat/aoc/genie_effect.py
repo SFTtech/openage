@@ -76,7 +76,7 @@ class GenieEffectBundle(ConverterObject):
         type.
 
         :param effect_type: Type that the effects should have.
-        :type effect_type: int, optional
+        :type effect_type: int
         :returns: List of matching effects.
         :rtype: list
         """

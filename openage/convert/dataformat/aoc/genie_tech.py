@@ -100,12 +100,12 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
 
         return None
 
-    def get_effects(self):
+    def get_effects(self, effect_type=None):
         """
         Returns the associated effects.
         """
         if self.effects:
-            return self.effects.get_effects()
+            return self.effects.get_effects(effect_type=effect_type)
 
         return []
 
@@ -225,6 +225,12 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
         """
         return self.unit_line_id
 
+    def get_upgrade_target_id(self):
+        """
+        Returns the target unit that is upgraded to.
+        """
+        return self.upgrade_target_id
+
     def __repr__(self):
         return "UnitLineUpgrade<%s>" % (self.get_id())
 
@@ -260,6 +266,12 @@ class BuildingLineUpgrade(GenieTechEffectBundleGroup):
         """
         return self.building_line_id
 
+    def get_upgrade_target_id(self):
+        """
+        Returns the target unit that is upgraded to.
+        """
+        return self.upgrade_target_id
+
     def __repr__(self):
         return "BuildingLineUpgrade<%s>" % (self.get_id())
 
@@ -289,6 +301,12 @@ class UnitUnlock(GenieTechEffectBundleGroup):
         super().__init__(tech_id, full_data_set)
 
         self.line_id = line_id
+
+    def get_line_id(self):
+        """
+        Returns the ID of the line that is unlocked by this tech.
+        """
+        return self.line_id
 
     def get_unlocked_line(self):
         """
@@ -325,6 +343,12 @@ class BuildingUnlock(GenieTechEffectBundleGroup):
         super().__init__(tech_id, full_data_set)
 
         self.head_unit_id = head_unit_id
+
+    def get_line_id(self):
+        """
+        Returns the ID of the line that is unlocked by this tech.
+        """
+        return self.head_unit_id
 
     def get_unlocked_line(self):
         """
@@ -499,13 +523,21 @@ class CivTechTree(ConverterObjectGroup):
         self.tech_id = tech_id
         self.data = full_data_set
         self.civ_id = civ_id
-        self.effects = self.data.genie_effect_bundles[effect_bundle_id]
+
+        if effect_bundle_id > -1:
+            self.effects = self.data.genie_effect_bundles[effect_bundle_id]
+
+        else:
+            self.effects = None
 
     def get_effects(self):
         """
         Returns the associated effects.
         """
-        return self.effects.get_effects()
+        if self.effects:
+            return self.effects.get_effects()
+
+        return []
 
     def get_civilization(self):
         return self.civ_id
