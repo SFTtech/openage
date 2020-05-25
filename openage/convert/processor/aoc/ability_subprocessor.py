@@ -47,7 +47,12 @@ class AoCAbilitySubprocessor:
         :returns: The expected pointer for the ability.
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
-        current_unit = line.get_head_unit()
+        if isinstance(line, GenieVillagerGroup):
+            current_unit = line.get_units_with_command(command_id)[0]
+
+        else:
+            current_unit = line.get_head_unit()
+
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -190,9 +195,8 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.ApplyContinuousEffect")
 
         # Application delay
-        attack_graphic_id = current_unit["attack_sprite_id"].get_value()
-        attack_graphic = dataset.genie_graphics[attack_graphic_id]
-        frame_rate = attack_graphic.get_frame_rate()
+        apply_graphic = dataset.genie_graphics[ability_animation_id]
+        frame_rate = apply_graphic.get_frame_rate()
         frame_delay = current_unit["frame_delay"].get_value()
         application_delay = frame_rate * frame_delay
         ability_raw_api_object.add_raw_member("application_delay",
@@ -2049,7 +2053,7 @@ class AoCAbilitySubprocessor:
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
         if isinstance(line, GenieVillagerGroup):
-            gatherers = line.variants[1].line
+            gatherers = line.variants[0].line
 
         else:
             gatherers = [line.line[0]]
@@ -4392,7 +4396,7 @@ class AoCAbilitySubprocessor:
         :rtype: ...dataformat.expected_pointer.ExpectedPointer
         """
         if isinstance(line, GenieVillagerGroup):
-            gatherers = line.variants[1].line
+            gatherers = line.variants[0].line
 
         else:
             gatherers = [line.line[0]]

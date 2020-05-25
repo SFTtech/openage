@@ -5,14 +5,17 @@ Convert data from RoR to openage formats.
 """
 
 from openage.convert.dataformat.aoc.genie_object_container import GenieObjectContainer
-from openage.convert.dataformat.aoc.genie_tech import AgeUpgrade, UnitUnlock,\
-    BuildingUnlock, UnitLineUpgrade, BuildingLineUpgrade, StatUpgrade,\
-    InitiatedTech
+from openage.convert.dataformat.aoc.genie_tech import InitiatedTech
 from openage.convert.dataformat.aoc.genie_unit import GenieUnitObject
+from openage.convert.dataformat.ror.genie_sound import RoRSound
+from openage.convert.dataformat.ror.genie_tech import RoRStatUpgrade,\
+    RoRBuildingLineUpgrade, RoRUnitLineUpgrade, RoRBuildingUnlock, RoRUnitUnlock,\
+    RoRAgeUpgrade
 from openage.convert.dataformat.ror.genie_unit import RoRUnitTaskGroup,\
     RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup
 from openage.convert.nyan.api_loader import load_api
 from openage.convert.processor.aoc.processor import AoCProcessor
+from openage.convert.processor.ror.nyan_subprocessor import RoRNyanSubprocessor
 from openage.convert.processor.ror.pregen_subprocessor import RoRPregenSubprocessor
 
 from ....log import info
@@ -73,7 +76,7 @@ class RoRProcessor:
         AoCProcessor._sanitize_effect_bundles(dataset)
         AoCProcessor._extract_genie_civs(gamespec, dataset)
         AoCProcessor._extract_genie_graphics(gamespec, dataset)
-        AoCProcessor._extract_genie_sounds(gamespec, dataset)
+        cls._extract_genie_sounds(gamespec, dataset)
         AoCProcessor._extract_genie_terrains(gamespec, dataset)
 
         return dataset
@@ -118,6 +121,8 @@ class RoRProcessor:
     def _post_processor(cls, full_data_set):
 
         info("Creating nyan objects...")
+
+        RoRNyanSubprocessor.convert(full_data_set)
 
         info("Creating requests for media export...")
 
@@ -169,6 +174,24 @@ class RoRProcessor:
         full_data_set.genie_units = dict(sorted(full_data_set.genie_units.items()))
 
     @staticmethod
+    def _extract_genie_sounds(gamespec, full_data_set):
+        """
+        Extract sound definitions from the game data.
+
+        :param gamespec: Gamedata from empires.dat file.
+        :type gamespec: class: ...dataformat.value_members.ArrayMember
+        """
+        # call hierarchy: wrapper[0]->sounds
+        raw_sounds = gamespec.get_value()[0].get_value()["sounds"].get_value()
+
+        for raw_sound in raw_sounds:
+            sound_id = raw_sound.get_value()["sound_id"].get_value()
+            sound_members = raw_sound.get_value()
+
+            sound = RoRSound(sound_id, full_data_set, members=sound_members)
+            full_data_set.genie_sounds.update({sound.get_id(): sound})
+
+    @staticmethod
     def _create_entity_lines(gamespec, full_data_set):
         """
         Sort units/buildings into lines, based on information from techs and civs.
@@ -181,6 +204,7 @@ class RoRProcessor:
         # Search a player civ (egyptians) for the starting units
         player_civ_units = gamespec[0]["civs"][1]["units"].get_value()
         task_group_ids = set()
+        villager_unit_ids = set()
 
         for raw_unit in player_civ_units.values():
             unit_id = raw_unit["id0"].get_value()
@@ -197,6 +221,7 @@ class RoRProcessor:
                 if entity.has_member("task_group") and\
                         entity.get_member("task_group").get_value() > 0:
                     task_group_id = entity["task_group"].get_value()
+                    villager_unit_ids.add(unit_id)
 
                     if task_group_id in task_group_ids:
                         task_group = full_data_set.task_groups[task_group_id]
@@ -215,16 +240,20 @@ class RoRProcessor:
                     unit_line = RoRUnitLineGroup(unit_id, -1, full_data_set)
                     unit_line.add_unit(entity)
                     full_data_set.unit_lines.update({unit_line.get_id(): unit_line})
+                    full_data_set.unit_ref.update({unit_id: unit_line})
 
             elif unit_type == 80:
                 building_line = RoRBuildingLineGroup(unit_id, -1, full_data_set)
                 building_line.add_unit(entity)
                 full_data_set.building_lines.update({building_line.get_id(): building_line})
+                full_data_set.unit_ref.update({unit_id: building_line})
 
         # Create the villager task group
         villager = RoRVillagerGroup(118, task_group_ids, full_data_set)
         full_data_set.unit_lines.update({villager.get_id(): villager})
         full_data_set.villager_groups.update({villager.get_id(): villager})
+        for unit_id in villager_unit_ids:
+            full_data_set.unit_ref.update({unit_id: villager})
 
         # Other units unlocks through techs
         unit_unlocks = full_data_set.unit_unlocks
@@ -235,6 +264,7 @@ class RoRProcessor:
             unit_line = RoRUnitLineGroup(line_id, unit_unlock.get_id(), full_data_set)
             unit_line.add_unit(unit)
             full_data_set.unit_lines.update({unit_line.get_id(): unit_line})
+            full_data_set.unit_ref.update({line_id: unit_line})
 
             # Check if the tech unlocks other lines
             # TODO: Make this cleaner
@@ -247,6 +277,7 @@ class RoRProcessor:
                     unit_line = RoRUnitLineGroup(line_id, unit_unlock.get_id(), full_data_set)
                     unit_line.add_unit(unit)
                     full_data_set.unit_lines.update({unit_line.get_id(): unit_line})
+                    full_data_set.unit_ref.update({line_id: unit_line})
 
         # Upgraded units in a line
         unit_upgrades = full_data_set.unit_upgrades
@@ -269,6 +300,7 @@ class RoRProcessor:
 
             unit_line = full_data_set.unit_lines[line_id]
             unit_line.add_unit(unit, after=source_id)
+            full_data_set.unit_ref.update({target_id: unit_line})
 
         # Other buildings unlocks through techs
         building_unlocks = full_data_set.building_unlocks
@@ -279,6 +311,7 @@ class RoRProcessor:
             building_line = RoRBuildingLineGroup(line_id, building_unlock.get_id(), full_data_set)
             building_line.add_unit(building)
             full_data_set.building_lines.update({building_line.get_id(): building_line})
+            full_data_set.unit_ref.update({line_id: building_line})
 
         # Upgraded buildings through techs
         building_upgrades = full_data_set.building_upgrades
@@ -301,6 +334,7 @@ class RoRProcessor:
 
             building_line = full_data_set.building_lines[line_id]
             building_line.add_unit(unit, after=source_id)
+            full_data_set.unit_ref.update({target_id: building_line})
 
         # Upgraded units/buildings through age ups
         age_ups = full_data_set.age_upgrades
@@ -314,10 +348,12 @@ class RoRProcessor:
                 if source_id in full_data_set.building_lines.keys():
                     building_line = full_data_set.building_lines[source_id]
                     building_line.add_unit(unit, after=source_id)
+                    full_data_set.unit_ref.update({target_id: building_line})
 
                 elif source_id in full_data_set.unit_lines.keys():
                     unit_line = full_data_set.unit_lines[source_id]
                     unit_line.add_unit(unit, after=source_id)
+                    full_data_set.unit_ref.update({target_id: unit_line})
 
     @staticmethod
     def _create_tech_groups(full_data_set):
@@ -363,7 +399,7 @@ class RoRProcessor:
                         age_id = int(effect["attr_d"].get_value())
                         break
 
-                age_up = AgeUpgrade(tech_id, age_id, full_data_set)
+                age_up = RoRAgeUpgrade(tech_id, age_id, full_data_set)
                 full_data_set.tech_groups.update({age_up.get_id(): age_up})
                 full_data_set.age_upgrades.update({age_up.get_id(): age_up})
 
@@ -377,13 +413,13 @@ class RoRProcessor:
                         unit_type = unit["unit_type"].get_value()
 
                         if unit_type == 70:
-                            unit_unlock = UnitUnlock(tech_id, unit_id, full_data_set)
+                            unit_unlock = RoRUnitUnlock(tech_id, unit_id, full_data_set)
                             full_data_set.tech_groups.update({unit_unlock.get_id(): unit_unlock})
                             full_data_set.unit_unlocks.update({unit_unlock.get_id(): unit_unlock})
                             break
 
                         elif unit_type == 80:
-                            building_unlock = BuildingUnlock(tech_id, unit_id, full_data_set)
+                            building_unlock = RoRBuildingUnlock(tech_id, unit_id, full_data_set)
                             full_data_set.tech_groups.update({building_unlock.get_id(): building_unlock})
                             full_data_set.building_unlocks.update({building_unlock.get_id(): building_unlock})
                             break
@@ -396,20 +432,20 @@ class RoRProcessor:
                         unit_type = unit["unit_type"].get_value()
 
                         if unit_type == 70:
-                            unit_upgrade = UnitLineUpgrade(tech_id, source_unit_id, target_unit_id, full_data_set)
+                            unit_upgrade = RoRUnitLineUpgrade(tech_id, source_unit_id, target_unit_id, full_data_set)
                             full_data_set.tech_groups.update({unit_upgrade.get_id(): unit_upgrade})
                             full_data_set.unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
                             break
 
                         elif unit_type == 80:
-                            building_upgrade = BuildingLineUpgrade(tech_id, source_unit_id, target_unit_id, full_data_set)
+                            building_upgrade = RoRBuildingLineUpgrade(tech_id, source_unit_id, target_unit_id, full_data_set)
                             full_data_set.tech_groups.update({building_upgrade.get_id(): building_upgrade})
                             full_data_set.building_upgrades.update({building_upgrade.get_id(): building_upgrade})
                             break
 
                 else:
                     # Anything else must be a stat upgrade
-                    stat_up = StatUpgrade(tech_id, full_data_set)
+                    stat_up = RoRStatUpgrade(tech_id, full_data_set)
                     full_data_set.tech_groups.update({stat_up.get_id(): stat_up})
                     full_data_set.stat_upgrades.update({stat_up.get_id(): stat_up})
 

@@ -61,7 +61,7 @@ class AoCModifierSubprocessor:
 
         if isinstance(converter_obj_group, GenieGameEntityGroup):
             if isinstance(converter_obj_group, GenieVillagerGroup):
-                gatherers = converter_obj_group.variants[1].line
+                gatherers = converter_obj_group.variants[0].line
 
             else:
                 gatherers = [converter_obj_group.line[0]]

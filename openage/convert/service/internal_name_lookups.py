@@ -134,7 +134,7 @@ def get_graphic_set_lookups(game_version):
     # game_expansions = game_version[1]
 
     if game_edition is GameEdition.ROR:
-        pass
+        return ror_internal.GRAPHICS_SET_LOOKUPS
 
     elif game_edition is GameEdition.AOC:
         return aoc_internal.GRAPHICS_SET_LOOKUPS

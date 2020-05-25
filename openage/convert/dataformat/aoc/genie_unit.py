@@ -326,7 +326,10 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         # Get the projectiles' obj_id for the first unit in the line. AoE's
         # units stay ranged with upgrades, so this should be fine.
         projectile_id_0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
-        projectile_id_1 = head_unit.get_member("attack_projectile_secondary_unit_id").get_value()
+
+        projectile_id_1 = -1
+        if head_unit.has_member("attack_projectile_secondary_unit_id"):
+            projectile_id_1 = head_unit.get_member("attack_projectile_secondary_unit_id").get_value()
 
         # -1 -> no projectile
         return (projectile_id_0 > -1 or projectile_id_1 > -1)
@@ -375,7 +378,12 @@ class GenieGameEntityGroup(ConverterObjectGroup):
                 return False
 
         elif isinstance(self, GenieBuildingLineGroup):
-            head_unit_connection = self.data.building_connections[head_unit_id]
+            if head_unit_id in self.data.building_connections.keys():
+                head_unit_connection = self.data.building_connections[head_unit_id]
+
+            else:
+                # AoE1
+                return False
 
         enabling_research_id = head_unit_connection.get_member("enabling_research").get_value()
 
