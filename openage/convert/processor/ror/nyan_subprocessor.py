@@ -618,7 +618,7 @@ class RoRNyanSubprocessor:
         # Updates
         # =======================================================================
         patches = []
-        # patches.extend(AoCTechSubprocessor.get_patches(tech_group))
+        patches.extend(AoCTechSubprocessor.get_patches(tech_group))
         raw_api_object.add_raw_member("updates", patches, "engine.aux.tech.Tech")
 
         # =======================================================================

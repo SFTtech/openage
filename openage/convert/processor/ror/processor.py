@@ -17,6 +17,7 @@ from openage.convert.dataformat.ror.internal_nyan_names import AMBIENT_GROUP_LOO
 from openage.convert.nyan.api_loader import load_api
 from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
 from openage.convert.processor.aoc.processor import AoCProcessor
+from openage.convert.processor.ror.modpack_subprocessor import RoRModpackSubprocessor
 from openage.convert.processor.ror.nyan_subprocessor import RoRNyanSubprocessor
 from openage.convert.processor.ror.pregen_subprocessor import RoRPregenSubprocessor
 
@@ -131,7 +132,7 @@ class RoRProcessor:
 
         AoCMediaSubprocessor.convert(full_data_set)
 
-        return None
+        return RoRModpackSubprocessor.get_modpacks(full_data_set)
 
     @staticmethod
     def _extract_genie_units(gamespec, full_data_set):

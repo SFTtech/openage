@@ -3,17 +3,17 @@
 """
 Creates patches for technologies.
 """
-from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUgradeAbilitySubprocessor
-from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
-    GenieBuildingLineGroup
-from openage.nyan.nyan_structs import MemberOperator
-from openage.convert.processor.aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
-from openage.convert.processor.aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
-from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS, CIV_GROUP_LOOKUPS
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
-from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup,\
     CivTeamBonus, CivBonus
+from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
+    GenieBuildingLineGroup
+from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS, CIV_GROUP_LOOKUPS
+from openage.convert.dataformat.converter_object import RawAPIObject
+from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUgradeAbilitySubprocessor
+from openage.convert.processor.aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
+from openage.convert.processor.aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
+from openage.nyan.nyan_structs import MemberOperator
 
 
 class AoCTechSubprocessor:

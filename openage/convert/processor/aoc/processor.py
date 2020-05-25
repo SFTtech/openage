@@ -1018,6 +1018,13 @@ class AoCProcessor:
         terrains = full_data_set.genie_terrains.values()
 
         for terrain in terrains:
+            slp_id = terrain["slp_id"].get_value()
+            replacement_id = terrain["terrain_replacement_id"].get_value()
+
+            if slp_id == -1 and replacement_id == -1:
+                # No graphics and no graphics replacement means this terrain is unused
+                continue
+
             enabled = terrain.get_member("enabled").get_value()
 
             if enabled:

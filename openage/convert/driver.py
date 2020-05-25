@@ -155,10 +155,11 @@ def convert_metadata(args):
     for modpack in modpacks:
         ModpackExporter.export(modpack, args)
 
-    yield "blendomatic.dat"
-    blend_data = get_blendomatic_data(args)
-    blend_data.save(args.targetdir, "blendomatic")
-    # data_formatter.add_data(blend_data.dump("blending_modes"))
+    if args.game_version[0] is not GameEdition.ROR:
+        yield "blendomatic.dat"
+        blend_data = get_blendomatic_data(args)
+        blend_data.save(args.targetdir, "blendomatic")
+        # data_formatter.add_data(blend_data.dump("blending_modes"))
 
     yield "player color palette"
     player_palette = PlayerColorTable(palette)
