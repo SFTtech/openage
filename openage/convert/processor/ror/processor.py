@@ -104,6 +104,12 @@ class RoRProcessor:
 
         info("Linking API-like objects...")
 
+        AoCProcessor._link_creatables(full_data_set)
+        AoCProcessor._link_researchables(full_data_set)
+        AoCProcessor._link_gatherers_to_dropsites(full_data_set)
+        cls._link_garrison(full_data_set)
+        AoCProcessor._link_trade_posts(full_data_set)
+
         info("Generating auxiliary objects...")
 
         return full_data_set
@@ -235,6 +241,7 @@ class RoRProcessor:
             unlock_effects = unit_unlock.get_effects(effect_type=2)
             for unlock_effect in unlock_effects:
                 line_id = unlock_effect["attr_a"].get_value()
+                unit = full_data_set.genie_units[line_id]
 
                 if line_id not in full_data_set.unit_lines.keys():
                     unit_line = RoRUnitLineGroup(line_id, unit_unlock.get_id(), full_data_set)
@@ -426,3 +433,46 @@ class RoRProcessor:
             initiated_tech = InitiatedTech(initiated_tech_id, building_id, full_data_set)
             full_data_set.tech_groups.update({initiated_tech.get_id(): initiated_tech})
             full_data_set.initiated_techs.update({initiated_tech.get_id(): initiated_tech})
+
+    @staticmethod
+    def _link_garrison(full_data_set):
+        """
+        Link a garrison unit to the lines that are stored and vice versa. This is done
+        to provide quick access during conversion.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        unit_lines = full_data_set.unit_lines
+
+        garrison_class_assignments = {}
+
+        for unit_line in unit_lines.values():
+            head_unit = unit_line.get_head_unit()
+
+            unit_commands = head_unit["unit_commands"].get_value()
+            for command in unit_commands:
+                command_type = command["type"].get_value()
+
+                if not command_type == 3:
+                    continue
+
+                class_id = command["class_id"].get_value()
+
+                if class_id in garrison_class_assignments.keys():
+                    garrison_class_assignments[class_id].append(unit_line)
+
+                else:
+                    garrison_class_assignments[class_id] = [unit_line]
+
+                break
+
+        for garrison in unit_lines.values():
+            class_id = garrison.get_class_id()
+
+            if class_id in garrison_class_assignments.keys():
+                for line in garrison_class_assignments[class_id]:
+                    garrison.garrison_entities.append(line)
+                    line.garrison_locations.append(garrison)
