@@ -13,9 +13,11 @@ from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubproc
 from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
 from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
 from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubprocessor
+from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
 from openage.convert.processor.ror.ability_subprocessor import RoRAbilitySubprocessor
 from openage.convert.processor.ror.auxiliary_subprocessor import RoRAuxiliarySubprocessor
+from openage.convert.processor.ror.civ_subprocessor import RoRCivSubprocessor
 from openage.convert.processor.ror.tech_subprocessor import RoRTechSubprocessor
 from openage.convert.service import internal_name_lookups
 
@@ -897,8 +899,7 @@ class RoRNyanSubprocessor:
         # =======================================================================
         # Starting resources
         # =======================================================================
-        resource_amounts = []
-        # resource_amounts = AoCCivSubprocessor.get_starting_resources(civ_group)
+        resource_amounts = RoRCivSubprocessor.get_starting_resources(civ_group)
         raw_api_object.add_raw_member("starting_resources",
                                       resource_amounts,
                                       "engine.aux.civilization.Civilization")
@@ -907,7 +908,7 @@ class RoRNyanSubprocessor:
         # Civ setup
         # =======================================================================
         civ_setup = []
-        # civ_setup = AoCCivSubprocessor.get_civ_setup(civ_group)
+        civ_setup = AoCCivSubprocessor.get_civ_setup(civ_group)
         raw_api_object.add_raw_member("civ_setup",
                                       civ_setup,
                                       "engine.aux.civilization.Civilization")

@@ -62,6 +62,24 @@ AMBIENT_GROUP_LOOKUPS = {
 
 # key: index; value: (nyan object name, filename prefix, units belonging to group, variant type)
 VARIANT_GROUP_LOOKUPS = {
+    56: ("TreeOak", "tree_oak", (56, 134, 141, 144, 145, 146, 148,), "misc"),
+    80: ("Shallows", "shallows", (80,), "misc"),
+    113: ("TreePalm", "tree_palm", (113, 114, 121, 129, 148, 149, 150, 151, 152, 153), "misc"),
+    135: ("TreeConifer", "tree_conifer", (135, 137, 138, 139,), "misc"),
+    136: ("TreeSpruce", "tree_spruce", (136,), "misc"),
+    140: ("TreeBeech", "tree_beech", (140,), "misc"),
+    161: ("TreePine", "tree_pine", (161, 192, 193, 194, 197, 198, 203, 226, 391, 392,), "misc"),
+    164: ("Cactus", "cactus", (164, 165, 166, 169,), "misc"),
+    167: ("GrassClump", "grass_clump", (167, 168, 170, 171, 172, 173, 174, 175, 176, 177,), "misc"),
+    178: ("DesertClump", "desert_clump", (178, 179, 180,), "misc"),
+    181: ("Skeleton", "skeleton", (181, 182, 183,), "misc"),
+    186: ("RockDirt", "rock_dirt", (186, 304, 305, 306,), "misc"),
+    187: ("Crack", "crack", (187, 188, 189, 190, 191,), "misc"),
+    184: ("RockGrass", "rock_grass", (184, 307, 308, 309, 310, 311, 312, 313,), "misc"),
+    185: ("RockSand", "rock_sand", (185, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324,), "misc"),
+    332: ("RockMud", "rock_mud", (332, 333, 334,), "misc"),
+    343: ("TreeDead", "tree_dead", (343,), "misc"),
+    385: ("RockBeach", "rock_beach", (385,), "misc"),
 }
 
 # key: head unit id; value: (nyan object name, filename prefix)

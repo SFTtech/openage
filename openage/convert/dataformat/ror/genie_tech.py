@@ -65,6 +65,12 @@ class RoRUnitUnlock(UnitUnlock):
     def is_unique(self):
         return False
 
+    def get_unlocked_line(self):
+        """
+        Returns the line that is unlocked by this tech.
+        """
+        return self.data.unit_lines[self.line_id]
+
     def __repr__(self):
         return "RoRUnitUnlock<%s>" % (self.get_id())
 

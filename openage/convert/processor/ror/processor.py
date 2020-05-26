@@ -12,8 +12,10 @@ from openage.convert.dataformat.ror.genie_tech import RoRStatUpgrade,\
     RoRBuildingLineUpgrade, RoRUnitLineUpgrade, RoRBuildingUnlock, RoRUnitUnlock,\
     RoRAgeUpgrade
 from openage.convert.dataformat.ror.genie_unit import RoRUnitTaskGroup,\
-    RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup, RoRAmbientGroup
-from openage.convert.dataformat.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS
+    RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup, RoRAmbientGroup,\
+    RoRVariantGroup
+from openage.convert.dataformat.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
+    VARIANT_GROUP_LOOKUPS
 from openage.convert.nyan.api_loader import load_api
 from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
 from openage.convert.processor.aoc.processor import AoCProcessor
@@ -104,6 +106,7 @@ class RoRProcessor:
         cls._create_tech_groups(full_data_set)
         cls._create_entity_lines(gamespec, full_data_set)
         cls._create_ambient_groups(full_data_set)
+        cls._create_variant_groups(full_data_set)
         AoCProcessor._create_terrain_groups(full_data_set)
         AoCProcessor._create_civ_groups(full_data_set)
 
@@ -379,6 +382,26 @@ class RoRProcessor:
             ambient_group.add_unit(genie_units[ambient_id])
             full_data_set.ambient_groups.update({ambient_group.get_id(): ambient_group})
             full_data_set.unit_ref.update({ambient_id: ambient_group})
+
+    @staticmethod
+    def _create_variant_groups(full_data_set):
+        """
+        Create variant groups.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        variants = VARIANT_GROUP_LOOKUPS
+
+        for group_id, variant in variants.items():
+            variant_group = RoRVariantGroup(group_id, full_data_set)
+            full_data_set.variant_groups.update({variant_group.get_id(): variant_group})
+
+            for variant_id in variant[2]:
+                variant_group.add_unit(full_data_set.genie_units[variant_id])
+                full_data_set.unit_ref.update({variant_id: variant_group})
 
     @staticmethod
     def _create_tech_groups(full_data_set):

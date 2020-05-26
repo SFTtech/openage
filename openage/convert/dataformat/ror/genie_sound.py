@@ -21,3 +21,6 @@ class RoRSound(GenieSound):
             sound_ids.append(sound_id)
 
         return sound_ids
+
+    def __repr__(self):
+        return "RoRSouns<%s>" % (self.get_id())
