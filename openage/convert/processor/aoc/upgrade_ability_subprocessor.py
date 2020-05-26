@@ -18,7 +18,7 @@ from openage.convert.service import internal_name_lookups
 from openage.nyan.nyan_structs import MemberOperator, MemberSpecialValue
 
 
-class AoCUgradeAbilitySubprocessor:
+class AoCUpgradeAbilitySubprocessor:
 
     @staticmethod
     def apply_continuous_effect_ability(converter_group, line, container_obj_ref,
@@ -110,13 +110,13 @@ class AoCUgradeAbilitySubprocessor:
                 animations_set = []
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
-                                                                                                line,
-                                                                                                diff_animation_id,
-                                                                                                nyan_patch_ref,
-                                                                                                ability_name,
-                                                                                                "%s_"
-                                                                                                % command_lookup_dict[command_id][1])
+                    animation_expected_pointer = AoCUpgradeAbilitySubprocessor._create_animation(converter_group,
+                                                                                                 line,
+                                                                                                 diff_animation_id,
+                                                                                                 nyan_patch_ref,
+                                                                                                 ability_name,
+                                                                                                 "%s_"
+                                                                                                 % command_lookup_dict[command_id][1])
                     animations_set.append(animation_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -129,12 +129,12 @@ class AoCUgradeAbilitySubprocessor:
                 diff_comm_sound_id = diff_comm_sound.get_value()
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(converter_group,
-                                                                                        diff_comm_sound_id,
-                                                                                        nyan_patch_ref,
-                                                                                        ability_name,
-                                                                                        "%s_"
-                                                                                        % command_lookup_dict[command_id][1])
+                    sound_expected_pointer = AoCUpgradeAbilitySubprocessor._create_sound(converter_group,
+                                                                                         diff_comm_sound_id,
+                                                                                         nyan_patch_ref,
+                                                                                         ability_name,
+                                                                                         "%s_"
+                                                                                         % command_lookup_dict[command_id][1])
                     sounds_set.append(sound_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
@@ -279,13 +279,13 @@ class AoCUgradeAbilitySubprocessor:
                 animations_set = []
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
-                                                                                                line,
-                                                                                                diff_animation_id,
-                                                                                                nyan_patch_ref,
-                                                                                                ability_name,
-                                                                                                "%s_"
-                                                                                                % command_lookup_dict[command_id][1])
+                    animation_expected_pointer = AoCUpgradeAbilitySubprocessor._create_animation(converter_group,
+                                                                                                 line,
+                                                                                                 diff_animation_id,
+                                                                                                 nyan_patch_ref,
+                                                                                                 ability_name,
+                                                                                                 "%s_"
+                                                                                                 % command_lookup_dict[command_id][1])
                     animations_set.append(animation_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -298,12 +298,12 @@ class AoCUgradeAbilitySubprocessor:
                 diff_comm_sound_id = diff_comm_sound.get_value()
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(converter_group,
-                                                                                        diff_comm_sound_id,
-                                                                                        nyan_patch_ref,
-                                                                                        ability_name,
-                                                                                        "%s_"
-                                                                                        % command_lookup_dict[command_id][1])
+                    sound_expected_pointer = AoCUpgradeAbilitySubprocessor._create_sound(converter_group,
+                                                                                         diff_comm_sound_id,
+                                                                                         nyan_patch_ref,
+                                                                                         ability_name,
+                                                                                         "%s_"
+                                                                                         % command_lookup_dict[command_id][1])
                     sounds_set.append(sound_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
@@ -415,18 +415,19 @@ class AoCUgradeAbilitySubprocessor:
             if isinstance(diff_damage_graphics, NoDiffMember):
                 return patches
 
-            diff_damage_animations = [diff_damage_graphics[0],
-                                      diff_damage_graphics[1],
-                                      diff_damage_graphics[2]]
+            diff_damage_animations = diff_damage_graphics.get_value()
 
         else:
             return patches
 
-        percentage = 25
+        percentage = 0
         for diff_damage_animation in diff_damage_animations:
-            if isinstance(diff_damage_animation["graphic_id"], NoDiffMember):
-                percentage += 25
+            if isinstance(diff_damage_animation, NoDiffMember) or\
+                    isinstance(diff_damage_animation["graphic_id"], NoDiffMember):
                 continue
+
+            # This should be a NoDiffMember
+            percentage = diff_damage_animation["damage_percent"].value.get_value()
 
             patch_target_ref = "%s.AttributeChangeTracker.ChangeProgress%s" % (game_entity_name,
                                                                                str(percentage))
@@ -467,13 +468,13 @@ class AoCUgradeAbilitySubprocessor:
             diff_animation_id = diff_damage_animation["graphic_id"].get_value()
             if diff_animation_id > -1:
                 # Patch the new animation in
-                animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
-                                                                                            line,
-                                                                                            diff_animation_id,
-                                                                                            nyan_patch_ref,
-                                                                                            "Idle",
-                                                                                            "idle_damage_override_%s_"
-                                                                                            % (str(percentage)))
+                animation_expected_pointer = AoCUpgradeAbilitySubprocessor._create_animation(converter_group,
+                                                                                             line,
+                                                                                             diff_animation_id,
+                                                                                             nyan_patch_ref,
+                                                                                             "Idle",
+                                                                                             "idle_damage_override_%s_"
+                                                                                             % (str(percentage)))
                 animations_set.append(animation_expected_pointer)
 
             nyan_patch_raw_api_object.add_raw_patch_member("overlays",
@@ -491,7 +492,6 @@ class AoCUgradeAbilitySubprocessor:
 
             wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
             patches.append(wrapper_expected_pointer)
-            percentage += 25
 
         return patches
 
@@ -569,12 +569,12 @@ class AoCUgradeAbilitySubprocessor:
         animations_set = []
         if diff_animation_id > -1:
             # Patch the new animation in
-            animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
-                                                                                        line,
-                                                                                        diff_animation_id,
-                                                                                        nyan_patch_ref,
-                                                                                        "Death",
-                                                                                        "death_")
+            animation_expected_pointer = AoCUpgradeAbilitySubprocessor._create_animation(converter_group,
+                                                                                         line,
+                                                                                         diff_animation_id,
+                                                                                         nyan_patch_ref,
+                                                                                         "Death",
+                                                                                         "death_")
             animations_set.append(animation_expected_pointer)
 
         nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -669,12 +669,12 @@ class AoCUgradeAbilitySubprocessor:
         animations_set = []
         if diff_animation_id > -1:
             # Patch the new animation in
-            animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
-                                                                                        line,
-                                                                                        diff_animation_id,
-                                                                                        nyan_patch_ref,
-                                                                                        "Despawn",
-                                                                                        "despawn_")
+            animation_expected_pointer = AoCUpgradeAbilitySubprocessor._create_animation(converter_group,
+                                                                                         line,
+                                                                                         diff_animation_id,
+                                                                                         nyan_patch_ref,
+                                                                                         "Despawn",
+                                                                                         "despawn_")
             animations_set.append(animation_expected_pointer)
 
         nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -767,12 +767,12 @@ class AoCUgradeAbilitySubprocessor:
         animations_set = []
         if diff_animation_id > -1:
             # Patch the new animation in
-            animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
-                                                                                        line,
-                                                                                        diff_animation_id,
-                                                                                        nyan_patch_ref,
-                                                                                        "Idle",
-                                                                                        "idle_")
+            animation_expected_pointer = AoCUpgradeAbilitySubprocessor._create_animation(converter_group,
+                                                                                         line,
+                                                                                         diff_animation_id,
+                                                                                         nyan_patch_ref,
+                                                                                         "Idle",
+                                                                                         "idle_")
             animations_set.append(animation_expected_pointer)
 
         nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -1049,12 +1049,12 @@ class AoCUgradeAbilitySubprocessor:
                 diff_animation_id = diff_move_animation.get_value()
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
-                                                                                                line,
-                                                                                                diff_animation_id,
-                                                                                                nyan_patch_ref,
-                                                                                                "Move",
-                                                                                                "move_")
+                    animation_expected_pointer = AoCUpgradeAbilitySubprocessor._create_animation(converter_group,
+                                                                                                 line,
+                                                                                                 diff_animation_id,
+                                                                                                 nyan_patch_ref,
+                                                                                                 "Move",
+                                                                                                 "move_")
                     animations_set.append(animation_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -1067,11 +1067,11 @@ class AoCUgradeAbilitySubprocessor:
                 diff_comm_sound_id = diff_comm_sound.get_value()
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(converter_group,
-                                                                                        diff_comm_sound_id,
-                                                                                        nyan_patch_ref,
-                                                                                        "Move",
-                                                                                        "move_")
+                    sound_expected_pointer = AoCUpgradeAbilitySubprocessor._create_sound(converter_group,
+                                                                                         diff_comm_sound_id,
+                                                                                         nyan_patch_ref,
+                                                                                         "Move",
+                                                                                         "move_")
                     sounds_set.append(sound_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
@@ -1169,11 +1169,11 @@ class AoCUgradeAbilitySubprocessor:
             nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
 
             name_string_id = diff_name.get_value()
-            translations = AoCUgradeAbilitySubprocessor._create_language_strings(converter_group,
-                                                                                 name_string_id,
-                                                                                 nyan_patch_ref,
-                                                                                 "%sName"
-                                                                                 % (obj_prefix))
+            translations = AoCUpgradeAbilitySubprocessor._create_language_strings(converter_group,
+                                                                                  name_string_id,
+                                                                                  nyan_patch_ref,
+                                                                                  "%sName"
+                                                                                  % (obj_prefix))
             nyan_patch_raw_api_object.add_raw_patch_member("translations",
                                                            translations,
                                                            "engine.aux.translated.type.TranslatedString",
@@ -1304,11 +1304,11 @@ class AoCUgradeAbilitySubprocessor:
             sounds_set = []
             if diff_selection_sound_id > -1:
                 # Patch the new sound in
-                sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(converter_group,
-                                                                                    diff_selection_sound_id,
-                                                                                    nyan_patch_ref,
-                                                                                    "SelectableSelf",
-                                                                                    "select_")
+                sound_expected_pointer = AoCUpgradeAbilitySubprocessor._create_sound(converter_group,
+                                                                                     diff_selection_sound_id,
+                                                                                     nyan_patch_ref,
+                                                                                     "SelectableSelf",
+                                                                                     "select_")
                 sounds_set.append(sound_expected_pointer)
 
             nyan_patch_raw_api_object.add_raw_patch_member("sounds",
@@ -1499,13 +1499,13 @@ class AoCUgradeAbilitySubprocessor:
                 diff_animation_id = diff_animation.get_value()
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_expected_pointer = AoCUgradeAbilitySubprocessor._create_animation(converter_group,
-                                                                                                line,
-                                                                                                diff_animation_id,
-                                                                                                nyan_patch_ref,
-                                                                                                ability_name,
-                                                                                                "%s_"
-                                                                                                % command_lookup_dict[command_id][1])
+                    animation_expected_pointer = AoCUpgradeAbilitySubprocessor._create_animation(converter_group,
+                                                                                                 line,
+                                                                                                 diff_animation_id,
+                                                                                                 nyan_patch_ref,
+                                                                                                 ability_name,
+                                                                                                 "%s_"
+                                                                                                 % command_lookup_dict[command_id][1])
                     animations_set.append(animation_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -1518,12 +1518,12 @@ class AoCUgradeAbilitySubprocessor:
                 diff_comm_sound_id = diff_comm_sound.get_value()
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_expected_pointer = AoCUgradeAbilitySubprocessor._create_sound(converter_group,
-                                                                                        diff_comm_sound_id,
-                                                                                        nyan_patch_ref,
-                                                                                        ability_name,
-                                                                                        "%s_"
-                                                                                        % command_lookup_dict[command_id][1])
+                    sound_expected_pointer = AoCUpgradeAbilitySubprocessor._create_sound(converter_group,
+                                                                                         diff_comm_sound_id,
+                                                                                         nyan_patch_ref,
+                                                                                         ability_name,
+                                                                                         "%s_"
+                                                                                         % command_lookup_dict[command_id][1])
                     sounds_set.append(sound_expected_pointer)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",

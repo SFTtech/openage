@@ -13,7 +13,7 @@ from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySub
 from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
 from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubprocessor
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
-from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUgradeAbilitySubprocessor
+from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
 from openage.convert.service import internal_name_lookups
 
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
@@ -380,6 +380,7 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.attribute_change_tracker_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.death_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.delete_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.despawn_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(building_line))
@@ -677,28 +678,28 @@ class AoCNyanSubprocessor:
             # Create patches for the diff
             patches = []
 
-            patches.extend(AoCUgradeAbilitySubprocessor.death_ability(variant_group,
-                                                                      variant_group,
-                                                                      variant_ref,
-                                                                      diff_variant))
-            patches.extend(AoCUgradeAbilitySubprocessor.despawn_ability(variant_group,
-                                                                        variant_group,
-                                                                        variant_ref,
-                                                                        diff_variant))
-            patches.extend(AoCUgradeAbilitySubprocessor.idle_ability(variant_group,
-                                                                     variant_group,
-                                                                     variant_ref,
-                                                                     diff_variant))
-            patches.extend(AoCUgradeAbilitySubprocessor.named_ability(variant_group,
-                                                                      variant_group,
-                                                                      variant_ref,
-                                                                      diff_variant))
-
-            if variant_main_unit.has_member("speed") and variant_main_unit["speed"].get_value() > 0:
-                patches.extend(AoCUgradeAbilitySubprocessor.move_ability(variant_group,
+            patches.extend(AoCUpgradeAbilitySubprocessor.death_ability(variant_group,
+                                                                       variant_group,
+                                                                       variant_ref,
+                                                                       diff_variant))
+            patches.extend(AoCUpgradeAbilitySubprocessor.despawn_ability(variant_group,
                                                                          variant_group,
                                                                          variant_ref,
                                                                          diff_variant))
+            patches.extend(AoCUpgradeAbilitySubprocessor.idle_ability(variant_group,
+                                                                      variant_group,
+                                                                      variant_ref,
+                                                                      diff_variant))
+            patches.extend(AoCUpgradeAbilitySubprocessor.named_ability(variant_group,
+                                                                       variant_group,
+                                                                       variant_ref,
+                                                                       diff_variant))
+
+            if variant_main_unit.has_member("speed") and variant_main_unit["speed"].get_value() > 0:
+                patches.extend(AoCUpgradeAbilitySubprocessor.move_ability(variant_group,
+                                                                          variant_group,
+                                                                          variant_ref,
+                                                                          diff_variant))
 
             # Changes
             variant_raw_api_object.add_raw_member("changes",

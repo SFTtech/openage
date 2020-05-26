@@ -227,7 +227,9 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         projectile_id_0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
-        projectile_id_1 = head_unit.get_member("attack_projectile_secondary_unit_id").get_value()
+        projectile_id_1 = -2
+        if head_unit.has_member("attack_projectile_secondary_unit_id"):
+            projectile_id_1 = head_unit.get_member("attack_projectile_secondary_unit_id").get_value()
 
         return (projectile_id_0 == projectile_id or projectile_id_1 == projectile_id)
 

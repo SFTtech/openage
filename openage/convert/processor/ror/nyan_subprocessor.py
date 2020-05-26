@@ -16,6 +16,7 @@ from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubpr
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
 from openage.convert.processor.ror.ability_subprocessor import RoRAbilitySubprocessor
 from openage.convert.processor.ror.auxiliary_subprocessor import RoRAuxiliarySubprocessor
+from openage.convert.processor.ror.tech_subprocessor import RoRTechSubprocessor
 from openage.convert.service import internal_name_lookups
 
 
@@ -211,11 +212,10 @@ class RoRNyanSubprocessor:
 
             if unit_line.has_command(104):
                 # TODO: Success chance is not a resource in RoR
-                # convert
-                # abilities_set.append(AoCAbilitySubprocessor.apply_discrete_effect_ability(unit_line,
-                #                                                                           104,
-                #                                                                           unit_line.is_ranged()))
-                pass
+                # Convert
+                abilities_set.append(RoRAbilitySubprocessor.apply_discrete_effect_ability(unit_line,
+                                                                                          104,
+                                                                                          unit_line.is_ranged()))
 
             if unit_line.has_command(105):
                 # Heal
@@ -351,6 +351,7 @@ class RoRNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.attribute_change_tracker_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.death_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.delete_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.despawn_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(building_line))
@@ -618,7 +619,7 @@ class RoRNyanSubprocessor:
         # Updates
         # =======================================================================
         patches = []
-        patches.extend(AoCTechSubprocessor.get_patches(tech_group))
+        patches.extend(RoRTechSubprocessor.get_patches(tech_group))
         raw_api_object.add_raw_member("updates", patches, "engine.aux.tech.Tech")
 
         # =======================================================================

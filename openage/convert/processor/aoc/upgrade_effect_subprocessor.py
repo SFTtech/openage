@@ -4,14 +4,13 @@
 Upgrades effects and resistances for the Apply*Effect and Resistance
 abilities.
 """
+from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
+from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.value_members import NoDiffMember,\
     LeftMissingMember, RightMissingMember
-from openage.convert.dataformat.aoc.internal_nyan_names import ARMOR_CLASS_LOOKUPS,\
-    TECH_GROUP_LOOKUPS, BUILDING_LINE_LOOKUPS
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
-from openage.convert.dataformat.converter_object import RawAPIObject
+from openage.convert.service import internal_name_lookups
 from openage.nyan.nyan_structs import MemberOperator
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
 
 
 class AoCUpgradeEffectSubprocessor:
@@ -38,7 +37,11 @@ class AoCUpgradeEffectSubprocessor:
 
         patches = []
 
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+
+        tech_name = tech_lookup_dict[tech_id][0]
 
         diff_attacks = diff["attacks"].get_value()
         for diff_attack in diff_attacks.values():
@@ -51,7 +54,7 @@ class AoCUpgradeEffectSubprocessor:
 
                 armor_class = attack["type_id"].get_value()
                 attack_amount = attack["amount"].get_value()
-                class_name = ARMOR_CLASS_LOOKUPS[armor_class]
+                class_name = armor_lookup_dict[armor_class]
 
                 # FlatAttributeChangeDecrease
                 effect_parent = "engine.effect.discrete.flat_attribute_change.FlatAttributeChange"
@@ -72,8 +75,8 @@ class AoCUpgradeEffectSubprocessor:
                     # Store building upgrades next to their game entity definition,
                     # not in the Age up techs.
                     wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                        % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                    wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                        % (name_lookup_dict[head_unit_id][1]))
+                    wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
                 else:
                     wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
@@ -168,7 +171,7 @@ class AoCUpgradeEffectSubprocessor:
                 attack = diff_attack.get_reference()
 
                 armor_class = attack["type_id"].get_value()
-                class_name = ARMOR_CLASS_LOOKUPS[armor_class]
+                class_name = armor_lookup_dict[armor_class]
 
                 patch_target_ref = "%s" % (ability_ref)
                 patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -185,8 +188,8 @@ class AoCUpgradeEffectSubprocessor:
                     # Store building upgrades next to their game entity definition,
                     # not in the Age up techs.
                     wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                        % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                    wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                        % (name_lookup_dict[head_unit_id][1]))
+                    wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
                 else:
                     wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
@@ -231,7 +234,7 @@ class AoCUpgradeEffectSubprocessor:
                 armor_class = diff_armor_class.get_reference().get_value()
                 attack_amount = diff_attack["amount"].get_value()
 
-                class_name = ARMOR_CLASS_LOOKUPS[armor_class]
+                class_name = armor_lookup_dict[armor_class]
 
                 patch_target_ref = "%s.%s.ChangeAmount" % (ability_ref, class_name)
                 patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -248,8 +251,8 @@ class AoCUpgradeEffectSubprocessor:
                     # Store building upgrades next to their game entity definition,
                     # not in the Age up techs.
                     wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                        % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                    wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                        % (name_lookup_dict[head_unit_id][1]))
+                    wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
                 else:
                     wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
@@ -305,7 +308,11 @@ class AoCUpgradeEffectSubprocessor:
 
         patches = []
 
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+
+        tech_name = tech_lookup_dict[tech_id][0]
 
         diff_armors = diff["armors"].get_value()
         for diff_armor in diff_armors.values():
@@ -318,7 +325,7 @@ class AoCUpgradeEffectSubprocessor:
 
                 armor_class = armor["type_id"].get_value()
                 armor_amount = armor["amount"].get_value()
-                class_name = ARMOR_CLASS_LOOKUPS[armor_class]
+                class_name = armor_lookup_dict[armor_class]
 
                 # FlatAttributeChangeDecrease
                 resistance_parent = "engine.resistance.discrete.flat_attribute_change.FlatAttributeChange"
@@ -339,8 +346,8 @@ class AoCUpgradeEffectSubprocessor:
                     # Store building upgrades next to their game entity definition,
                     # not in the Age up techs.
                     wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                        % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                    wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                        % (name_lookup_dict[head_unit_id][1]))
+                    wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
                 else:
                     wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
@@ -421,7 +428,7 @@ class AoCUpgradeEffectSubprocessor:
                 armor = diff_armor.get_reference()
 
                 armor_class = armor["type_id"].get_value()
-                class_name = ARMOR_CLASS_LOOKUPS[armor_class]
+                class_name = armor_lookup_dict[armor_class]
 
                 patch_target_ref = "%s" % (ability_ref)
                 patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -438,8 +445,8 @@ class AoCUpgradeEffectSubprocessor:
                     # Store building upgrades next to their game entity definition,
                     # not in the Age up techs.
                     wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                        % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                    wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                        % (name_lookup_dict[head_unit_id][1]))
+                    wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
                 else:
                     wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
@@ -484,7 +491,7 @@ class AoCUpgradeEffectSubprocessor:
                 armor_class = diff_armor_class.get_reference().get_value()
                 armor_amount = diff_armor["amount"].get_value()
 
-                class_name = ARMOR_CLASS_LOOKUPS[armor_class]
+                class_name = armor_lookup_dict[armor_class]
 
                 patch_target_ref = "%s.%s.BlockAmount" % (ability_ref, class_name)
                 patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
@@ -501,8 +508,8 @@ class AoCUpgradeEffectSubprocessor:
                     # Store building upgrades next to their game entity definition,
                     # not in the Age up techs.
                     wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                        % (BUILDING_LINE_LOOKUPS[head_unit_id][1]))
-                    wrapper_raw_api_object.set_filename("%s_upgrade" % TECH_GROUP_LOOKUPS[tech_id][1])
+                                                        % (name_lookup_dict[head_unit_id][1]))
+                    wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
                 else:
                     wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))

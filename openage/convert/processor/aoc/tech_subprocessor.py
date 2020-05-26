@@ -8,11 +8,11 @@ from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
     CivTeamBonus, CivBonus
 from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup
-from openage.convert.dataformat.aoc.internal_nyan_names import TECH_GROUP_LOOKUPS, CIV_GROUP_LOOKUPS
 from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUgradeAbilitySubprocessor
+from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
 from openage.convert.processor.aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from openage.convert.processor.aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
+from openage.convert.service import internal_name_lookups
 from openage.nyan.nyan_structs import MemberOperator
 
 
@@ -242,9 +242,10 @@ class AoCTechSubprocessor:
         resource_id = effect["attr_a"].get_value()
         value = effect["attr_d"].get_value()
 
-        if resource_id in (-1, 6):
+        if resource_id in (-1, 6, 21):
             # -1 = invalid ID
-            # 6 = set current age (we don't use this)
+            # 6  = set current age (unused)
+            # 21 = tech count (unused)
             return patches
 
         upgrade_func = AoCTechSubprocessor.upgrade_resource_funcs[resource_id]
@@ -260,6 +261,8 @@ class AoCTechSubprocessor:
         patches = []
         tech_id = converter_group.get_id()
         dataset = converter_group.data
+
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
         upgrade_source_id = effect["attr_a"].get_value()
         upgrade_target_id = effect["attr_b"].get_value()
@@ -285,22 +288,22 @@ class AoCTechSubprocessor:
 
         upgrade_source = line.line[upgrade_source_pos]
         upgrade_target = line.line[upgrade_target_pos]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+        tech_name = tech_lookup_dict[tech_id][0]
 
         diff = upgrade_source.diff(upgrade_target)
 
-        patches.extend(AoCUgradeAbilitySubprocessor.death_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.despawn_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.idle_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.live_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.los_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.named_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.resistance_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.selectable_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUgradeAbilitySubprocessor.turn_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.death_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.despawn_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.idle_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.live_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.los_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.named_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.resistance_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.selectable_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.turn_ability(converter_group, line, tech_name, diff))
 
         if line.is_projectile_shooter():
-            patches.extend(AoCUgradeAbilitySubprocessor.shoot_projectile_ability(converter_group, line,
+            patches.extend(AoCUpgradeAbilitySubprocessor.shoot_projectile_ability(converter_group, line,
                                                                                  tech_name,
                                                                                  upgrade_source,
                                                                                  upgrade_target,
@@ -308,18 +311,18 @@ class AoCTechSubprocessor:
         elif line.is_melee() or line.is_ranged():
             if line.has_command(7):
                 # Attack
-                patches.extend(AoCUgradeAbilitySubprocessor.apply_discrete_effect_ability(converter_group,
+                patches.extend(AoCUpgradeAbilitySubprocessor.apply_discrete_effect_ability(converter_group,
                                                                                           line, tech_name,
                                                                                           7,
                                                                                           line.is_ranged(),
                                                                                           diff))
 
         if isinstance(line, GenieUnitLineGroup):
-            patches.extend(AoCUgradeAbilitySubprocessor.move_ability(converter_group, line,
+            patches.extend(AoCUpgradeAbilitySubprocessor.move_ability(converter_group, line,
                                                                      tech_name, diff))
 
         if isinstance(line, GenieBuildingLineGroup):
-            patches.extend(AoCUgradeAbilitySubprocessor.attribute_change_tracker_ability(converter_group, line,
+            patches.extend(AoCUpgradeAbilitySubprocessor.attribute_change_tracker_ability(converter_group, line,
                                                                                          tech_name, diff))
 
         return patches
@@ -332,24 +335,27 @@ class AoCTechSubprocessor:
         patches = []
         dataset = converter_group.data
 
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            obj_name = civ_lookup_dict[obj_id][0]
 
         tech_id = effect["attr_a"].get_value()
         resource_id = effect["attr_b"].get_value()
         mode = effect["attr_c"].get_value()
         amount = int(effect["attr_d"].get_value())
 
-        if not tech_id in TECH_GROUP_LOOKUPS.keys():
+        if not tech_id in tech_lookup_dict.keys():
             # Skips some legacy techs from AoK such as the tech for bombard cannon
             return patches
 
         tech_group = dataset.tech_groups[tech_id]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+        tech_name = tech_lookup_dict[tech_id][0]
 
         if resource_id == 0:
             resource_name = "Food"
@@ -432,23 +438,26 @@ class AoCTechSubprocessor:
         patches = []
         dataset = converter_group.data
 
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
-            obj_name = TECH_GROUP_LOOKUPS[obj_id][0]
+            obj_name = tech_lookup_dict[obj_id][0]
 
         else:
-            obj_name = CIV_GROUP_LOOKUPS[obj_id][0]
+            obj_name = civ_lookup_dict[obj_id][0]
 
         tech_id = effect["attr_a"].get_value()
         mode = effect["attr_c"].get_value()
         research_time = effect["attr_d"].get_value()
 
-        if not tech_id in TECH_GROUP_LOOKUPS.keys():
+        if not tech_id in tech_lookup_dict.keys():
             # Skips some legacy techs from AoK such as the tech for bombard cannon
             return patches
 
         tech_group = dataset.tech_groups[tech_id]
-        tech_name = TECH_GROUP_LOOKUPS[tech_id][0]
+        tech_name = tech_lookup_dict[tech_id][0]
 
         if mode == 0:
             operator = MemberOperator.ASSIGN

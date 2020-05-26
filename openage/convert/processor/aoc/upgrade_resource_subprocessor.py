@@ -300,7 +300,7 @@ class AoCUpgradeResourceSubprocessor:
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
 
-        # Blacklisted buildings
+        # Blacklisted units
         ram_line = dataset.unit_lines[35]
         mangonel_line = dataset.unit_lines[280]
         scorpion_line = dataset.unit_lines[279]
