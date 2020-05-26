@@ -172,7 +172,7 @@ class RoRNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.los_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.move_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.named_ability(unit_line))
-        # abilities_set.append(AoCAbilitySubprocessor.resistance_ability(unit_line))  TODO: Conversion
+        abilities_set.append(RoRAbilitySubprocessor.resistance_ability(unit_line))
         abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(unit_line))
@@ -357,7 +357,7 @@ class RoRNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.live_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.los_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.named_ability(building_line))
-        # abilities_set.append(AoCAbilitySubprocessor.resistance_ability(building_line)) TODO: Conversion
+        abilities_set.append(RoRAbilitySubprocessor.resistance_ability(building_line))
         abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(building_line))
@@ -955,7 +955,7 @@ class RoRNyanSubprocessor:
             # Abilities
             # =======================================================================
             abilities_set = []
-            # abilities_set.append(AoCAbilitySubprocessor.projectile_ability(line, position=projectile_num)) TODO: No Dispersion
+            abilities_set.append(RoRAbilitySubprocessor.projectile_ability(line, position=projectile_num))
             abilities_set.append(AoCAbilitySubprocessor.move_projectile_ability(line, position=projectile_num))
             abilities_set.append(AoCAbilitySubprocessor.apply_discrete_effect_ability(line, 7, False, projectile_num))
             # TODO: Death, Despawn

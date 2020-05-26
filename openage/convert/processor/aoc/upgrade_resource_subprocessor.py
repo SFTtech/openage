@@ -877,7 +877,7 @@ class AoCUpgradeResourceSubprocessor:
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
 
-        monk_expected_pointer = ExpectedPointer(line, "Monk")
+        monk_expected_pointer = ExpectedPointer(line, game_entity_name)
         nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
                                                        [monk_expected_pointer],
                                                        "engine.ability.type.ApplyDiscreteEffect",

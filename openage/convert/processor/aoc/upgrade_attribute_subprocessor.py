@@ -225,6 +225,10 @@ class AoCUpgradeAttributeSubprocessor:
         if armor_class == -1:
             return patches
 
+        if not line.has_armor(armor_class):
+            # TODO: Happens sometimes in AoE1; what do we do?
+            return patches
+
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(dataset.game_version)
 

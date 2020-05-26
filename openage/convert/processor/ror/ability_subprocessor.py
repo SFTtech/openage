@@ -4,9 +4,11 @@
 Derives and adds abilities to lines. REimplements only
 abilities that are different from Aoc
 """
+from math import degrees
+
 from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieVillagerGroup
+    GenieVillagerGroup, GenieUnitLineGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubprocessor
 from openage.convert.processor.aoc.effect_subprocessor import AoCEffectSubprocessor
@@ -300,6 +302,155 @@ class RoRAbilitySubprocessor:
                                               "engine.ability.type.ProductionQueue")
 
         line.add_raw_api_object(mode_raw_api_object)
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def projectile_ability(line, position=0):
+        """
+        Adds a Projectile ability to projectiles in a line. Which projectile should
+        be added is determined by the 'position' argument.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param position: When 0, gives the first projectile its ability. When 1, the second...
+        :type position: int
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        # First projectile is mandatory
+        obj_ref  = "%s.ShootProjectile.Projectile%s" % (game_entity_name, str(position))
+        ability_ref = "%s.ShootProjectile.Projectile%s.Projectile"\
+            % (game_entity_name, str(position))
+        ability_raw_api_object = RawAPIObject(ability_ref, "Projectile", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Projectile")
+        ability_location = ExpectedPointer(line, obj_ref)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Arc
+        if position == 0:
+            projectile_id = current_unit.get_member("attack_projectile_primary_unit_id").get_value()
+
+        else:
+            raise Exception("Invalid position")
+
+        projectile = dataset.genie_units[projectile_id]
+        arc = degrees(projectile.get_member("projectile_arc").get_value())
+        ability_raw_api_object.add_raw_member("arc",
+                                              arc,
+                                              "engine.ability.type.Projectile")
+
+        # Accuracy
+        accuracy_name = "%s.ShootProjectile.Projectile%s.Projectile.Accuracy"\
+                        % (game_entity_name, str(position))
+        accuracy_raw_api_object = RawAPIObject(accuracy_name, "Accuracy", dataset.nyan_api_objects)
+        accuracy_raw_api_object.add_raw_parent("engine.aux.accuracy.Accuracy")
+        accuracy_location = ExpectedPointer(line, ability_ref)
+        accuracy_raw_api_object.set_location(accuracy_location)
+
+        accuracy_value = current_unit.get_member("accuracy").get_value()
+        accuracy_raw_api_object.add_raw_member("accuracy",
+                                               accuracy_value,
+                                               "engine.aux.accuracy.Accuracy")
+
+        accuracy_dispersion = 0
+        accuracy_raw_api_object.add_raw_member("accuracy_dispersion",
+                                               accuracy_dispersion,
+                                               "engine.aux.accuracy.Accuracy")
+        dropoff_type = dataset.nyan_api_objects["engine.aux.dropoff_type.type.NoDropoff"]
+        accuracy_raw_api_object.add_raw_member("dispersion_dropoff",
+                                               dropoff_type,
+                                               "engine.aux.accuracy.Accuracy")
+
+        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
+                         dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()]
+        accuracy_raw_api_object.add_raw_member("target_types",
+                                               allowed_types,
+                                               "engine.aux.accuracy.Accuracy")
+        accuracy_raw_api_object.add_raw_member("blacklisted_entities",
+                                               [],
+                                               "engine.aux.accuracy.Accuracy")
+
+        line.add_raw_api_object(accuracy_raw_api_object)
+        accuracy_expected_pointer = ExpectedPointer(line, accuracy_name)
+        ability_raw_api_object.add_raw_member("accuracy",
+                                              [accuracy_expected_pointer],
+                                              "engine.ability.type.Projectile")
+
+        # Target mode
+        target_mode = dataset.nyan_api_objects["engine.aux.target_mode.type.CurrentPosition"]
+        ability_raw_api_object.add_raw_member("target_mode",
+                                              target_mode,
+                                              "engine.ability.type.Projectile")
+
+        # Ingore types; buildings are ignored unless targeted
+        ignore_expected_pointers = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+        ability_raw_api_object.add_raw_member("ignored_types",
+                                              ignore_expected_pointers,
+                                              "engine.ability.type.Projectile")
+        ability_raw_api_object.add_raw_member("unignored_entities",
+                                              [],
+                                              "engine.ability.type.Projectile")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+
+        return ability_expected_pointer
+
+    @staticmethod
+    def resistance_ability(line):
+        """
+        Adds the Resistance ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The expected pointer for the ability.
+        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        """
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+        ability_ref = "%s.Resistance" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Resistance", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Resistance")
+        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Resistances
+        resistances = []
+        resistances.extend(AoCEffectSubprocessor.get_attack_resistances(line, ability_ref))
+        if isinstance(line, (GenieUnitLineGroup, GenieBuildingLineGroup)):
+            # TODO: Conversion resistance
+            # resistances.extend(RoREffectSubprocessor.get_convert_resistances(line, ability_ref))
+
+            if isinstance(line, GenieUnitLineGroup) and not line.is_repairable():
+                resistances.extend(AoCEffectSubprocessor.get_heal_resistances(line, ability_ref))
+
+            if isinstance(line, GenieBuildingLineGroup):
+                resistances.extend(AoCEffectSubprocessor.get_construct_resistances(line, ability_ref))
+
+            if line.is_repairable():
+                resistances.extend(AoCEffectSubprocessor.get_repair_resistances(line, ability_ref))
+
+        ability_raw_api_object.add_raw_member("resistances",
+                                              resistances,
+                                              "engine.ability.type.Resistance")
+
         line.add_raw_api_object(ability_raw_api_object)
 
         ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
