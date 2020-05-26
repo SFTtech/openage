@@ -271,7 +271,8 @@ class RawAPIObject:
     """
 
     __slots__ = ('obj_id', 'name', 'api_ref', 'raw_members', 'raw_parents',
-                 '_location', '_filename', 'nyan_object', '_patch_target')
+                 '_location', '_filename', 'nyan_object', '_patch_target',
+                 'raw_patch_parents')
 
     def __init__(self, obj_id, name, api_ref, location=""):
         """
@@ -294,6 +295,7 @@ class RawAPIObject:
 
         self.raw_members = []
         self.raw_parents = []
+        self.raw_patch_parents = []
 
         self._location = location
         self._filename = None
@@ -337,6 +339,15 @@ class RawAPIObject:
         :type parent_id: str
         """
         self.raw_parents.append(parent_id)
+
+    def add_raw_patch_parent(self, parent_id):
+        """
+        Adds a raw patch parent to the object.
+
+        :param parent_id: fqon of the parent in the API object dictionary
+        :type parent_id: str
+        """
+        self.raw_patch_parents.append(parent_id)
 
     def extend_raw_member(self, name, push_value, origin):
         """

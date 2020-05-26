@@ -14,7 +14,6 @@ from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySub
 from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
 from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubprocessor
 from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
-from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
 from openage.convert.processor.ror.ability_subprocessor import RoRAbilitySubprocessor
 from openage.convert.processor.ror.auxiliary_subprocessor import RoRAuxiliarySubprocessor
 from openage.convert.processor.ror.civ_subprocessor import RoRCivSubprocessor
@@ -48,7 +47,9 @@ class RoRNyanSubprocessor:
             ambient_group.create_nyan_objects()
             ambient_group.execute_raw_member_pushs()
 
-        # TODO: Variant groups
+        for variant_group in full_data_set.variant_groups.values():
+            variant_group.create_nyan_objects()
+            variant_group.execute_raw_member_pushs()
 
         for tech_group in full_data_set.tech_groups.values():
             tech_group.create_nyan_objects()
@@ -76,7 +77,8 @@ class RoRNyanSubprocessor:
         for ambient_group in full_data_set.ambient_groups.values():
             ambient_group.create_nyan_members()
 
-        # TODO: Variant groups
+        for variant_group in full_data_set.variant_groups.values():
+            variant_group.create_nyan_members()
 
         for tech_group in full_data_set.tech_groups.values():
             tech_group.create_nyan_members()
@@ -99,7 +101,8 @@ class RoRNyanSubprocessor:
         for ambient_group in full_data_set.ambient_groups.values():
             cls._ambient_group_to_game_entity(ambient_group)
 
-        # TODO: Variant groups
+        for variant_group in full_data_set.variant_groups.values():
+            AoCNyanSubprocessor._variant_group_to_game_entity(variant_group)
 
         for tech_group in full_data_set.tech_groups.values():
             if tech_group.is_researchable():
@@ -233,8 +236,7 @@ class RoRNyanSubprocessor:
 
         # Formation/Stance
         if not isinstance(unit_line, GenieVillagerGroup):
-            # abilities_set.append(AoCAbilitySubprocessor.game_entity_stance_ability(unit_line)) TODO: What stances are there?
-            pass
+            abilities_set.append(RoRAbilitySubprocessor.game_entity_stance_ability(unit_line))
 
         # Storage abilities
         if unit_line.is_garrison():
@@ -273,6 +275,8 @@ class RoRNyanSubprocessor:
 
         if unit_line.is_gatherer():
             modifiers_set.extend(AoCModifierSubprocessor.gather_rate_modifier(unit_line))
+
+        # TODO: Other modifiers?
 
         raw_api_object.add_raw_member("modifiers", modifiers_set,
                                       "engine.aux.game_entity.GameEntity")
@@ -383,7 +387,7 @@ class RoRNyanSubprocessor:
         # Effect abilities
         if building_line.is_projectile_shooter():
             abilities_set.append(RoRAbilitySubprocessor.shoot_projectile_ability(building_line, 7))
-            abilities_set.append(AoCAbilitySubprocessor.game_entity_stance_ability(building_line))
+            abilities_set.append(RoRAbilitySubprocessor.game_entity_stance_ability(building_line))
             RoRNyanSubprocessor._projectiles_from_line(building_line)
 
         # Resource abilities
@@ -479,7 +483,7 @@ class RoRNyanSubprocessor:
             abilities_set.append(AoCAbilitySubprocessor.idle_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.live_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.named_ability(ambient_group))
-            # abilities_set.append(AoCAbilitySubprocessor.resistance_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.resistance_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.visibility_ability(ambient_group))
 
@@ -722,37 +726,39 @@ class RoRNyanSubprocessor:
         ambients_count = terrain["terrain_units_used_count"].get_value()
 
         ambience = []
-        # TODO: Ambience
-#===============================================================================
-#         for ambient_index in range(ambients_count):
-#             ambient_id = terrain["terrain_unit_id"][ambient_index].get_value()
-#             ambient_line = dataset.unit_ref[ambient_id]
-#             ambient_name = name_lookup_dict[ambient_line.get_head_unit_id()][0]
-#
-#             ambient_ref = "%s.Ambient%s" % (terrain_name, str(ambient_index))
-#             ambient_raw_api_object = RawAPIObject(ambient_ref,
-#                                                   "Ambient%s" % (str(ambient_index)),
-#                                                   dataset.nyan_api_objects)
-#             ambient_raw_api_object.add_raw_parent("engine.aux.terrain.TerrainAmbient")
-#             ambient_location = ExpectedPointer(terrain_group, terrain_name)
-#             ambient_raw_api_object.set_location(ambient_location)
-#
-#             # Game entity reference
-#             ambient_line_expected_pointer = ExpectedPointer(ambient_line, ambient_name)
-#             ambient_raw_api_object.add_raw_member("object",
-#                                                   ambient_line_expected_pointer,
-#                                                   "engine.aux.terrain.TerrainAmbient")
-#
-#             # Max density
-#             max_density = terrain["terrain_unit_density"][ambient_index].get_value()
-#             ambient_raw_api_object.add_raw_member("max_density",
-#                                                   max_density,
-#                                                   "engine.aux.terrain.TerrainAmbient")
-#
-#             terrain_group.add_raw_api_object(ambient_raw_api_object)
-#             terrain_ambient_expected_pointer = ExpectedPointer(terrain_group, ambient_ref)
-#             ambience.append(terrain_ambient_expected_pointer)
-#===============================================================================
+        for ambient_index in range(ambients_count):
+            ambient_id = terrain["terrain_unit_id"][ambient_index].get_value()
+
+            if ambient_id not in dataset.unit_ref.keys():
+                # Unit does not exist
+                continue
+
+            ambient_line = dataset.unit_ref[ambient_id]
+            ambient_name = name_lookup_dict[ambient_line.get_head_unit_id()][0]
+
+            ambient_ref = "%s.Ambient%s" % (terrain_name, str(ambient_index))
+            ambient_raw_api_object = RawAPIObject(ambient_ref,
+                                                  "Ambient%s" % (str(ambient_index)),
+                                                  dataset.nyan_api_objects)
+            ambient_raw_api_object.add_raw_parent("engine.aux.terrain.TerrainAmbient")
+            ambient_location = ExpectedPointer(terrain_group, terrain_name)
+            ambient_raw_api_object.set_location(ambient_location)
+
+            # Game entity reference
+            ambient_line_expected_pointer = ExpectedPointer(ambient_line, ambient_name)
+            ambient_raw_api_object.add_raw_member("object",
+                                                  ambient_line_expected_pointer,
+                                                  "engine.aux.terrain.TerrainAmbient")
+
+            # Max density
+            max_density = terrain["terrain_unit_density"][ambient_index].get_value()
+            ambient_raw_api_object.add_raw_member("max_density",
+                                                  max_density,
+                                                  "engine.aux.terrain.TerrainAmbient")
+
+            terrain_group.add_raw_api_object(ambient_raw_api_object)
+            terrain_ambient_expected_pointer = ExpectedPointer(terrain_group, ambient_ref)
+            ambience.append(terrain_ambient_expected_pointer)
 
         raw_api_object.add_raw_member("ambience", ambience, "engine.aux.terrain.Terrain")
 
@@ -907,7 +913,6 @@ class RoRNyanSubprocessor:
         # =======================================================================
         # Civ setup
         # =======================================================================
-        civ_setup = []
         civ_setup = AoCCivSubprocessor.get_civ_setup(civ_group)
         raw_api_object.add_raw_member("civ_setup",
                                       civ_setup,

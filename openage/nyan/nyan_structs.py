@@ -1054,12 +1054,7 @@ class NyanPatchMember(NyanMember):
         """
         Retrieves the type of the patched member.
         """
-        # member must exist in the patch target
-        if not self._patch_target.has_member(name, origin):
-            raise Exception("patch target %s does not have a member %s with origin %s"
-                            % (self._patch_target, name, origin))
-
-        target_member = self._patch_target.get_member_by_name(name, origin)
+        target_member = self._member_origin.get_member_by_name(name, origin)
 
         return target_member.get_member_type(), target_member.get_set_type()
 
