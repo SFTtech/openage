@@ -4,7 +4,7 @@
 Creates effects and resistances for the Apply*Effect and Resistance
 abilities.
 """
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
@@ -23,7 +23,7 @@ class AoCEffectSubprocessor:
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param ability_ref: Reference of the ability raw API object the effects are added to.
         :type ability_ref: str
-        :returns: The expected pointers for the effects.
+        :returns: The forward references for the effects.
         :rtype: list
         """
         dataset = line.data
@@ -55,7 +55,7 @@ class AoCEffectSubprocessor:
                                                  class_name,
                                                  dataset.nyan_api_objects)
             attack_raw_api_object.add_raw_parent(attack_parent)
-            attack_location = ExpectedPointer(line, ability_ref)
+            attack_location = ForwardRef(line, ability_ref)
             attack_raw_api_object.set_location(attack_location)
 
             # Type
@@ -79,7 +79,7 @@ class AoCEffectSubprocessor:
             amount_name = "%s.%s.ChangeAmount" % (ability_ref, class_name)
             amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", dataset.nyan_api_objects)
             amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
-            amount_location = ExpectedPointer(line, attack_ref)
+            amount_location = ForwardRef(line, attack_ref)
             amount_raw_api_object.set_location(amount_location)
 
             attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -92,9 +92,9 @@ class AoCEffectSubprocessor:
 
             line.add_raw_api_object(amount_raw_api_object)
             # =================================================================================
-            amount_expected_pointer = ExpectedPointer(line, amount_name)
+            amount_forward_ref = ForwardRef(line, amount_name)
             attack_raw_api_object.add_raw_member("change_value",
-                                                 amount_expected_pointer,
+                                                 amount_forward_ref,
                                                  effect_parent)
 
             # Ignore protection
@@ -103,8 +103,8 @@ class AoCEffectSubprocessor:
                                                  effect_parent)
 
             line.add_raw_api_object(attack_raw_api_object)
-            attack_expected_pointer = ExpectedPointer(line, attack_ref)
-            effects.append(attack_expected_pointer)
+            attack_forward_ref = ForwardRef(line, attack_ref)
+            effects.append(attack_forward_ref)
 
         # Fallback effect
         fallback_effect = dataset.pregen_nyan_objects[("effect.discrete.flat_attribute_change."
@@ -122,7 +122,7 @@ class AoCEffectSubprocessor:
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param ability_ref: Reference of the ability raw API object the effects are added to.
         :type ability_ref: str
-        :returns: The expected pointers for the effects.
+        :returns: The forward references for the effects.
         :rtype: list
         """
         current_unit = line.get_head_unit()
@@ -153,7 +153,7 @@ class AoCEffectSubprocessor:
                                               "ConvertUnitEffect",
                                               dataset.nyan_api_objects)
         convert_raw_api_object.add_raw_parent(convert_parent)
-        convert_location = ExpectedPointer(line, ability_ref)
+        convert_location = ForwardRef(line, ability_ref)
         convert_raw_api_object.set_location(convert_location)
 
         # Type
@@ -185,8 +185,8 @@ class AoCEffectSubprocessor:
                                               convert_parent)
 
         line.add_raw_api_object(convert_raw_api_object)
-        attack_expected_pointer = ExpectedPointer(line, convert_ref)
-        effects.append(attack_expected_pointer)
+        attack_forward_ref = ForwardRef(line, convert_ref)
+        effects.append(attack_forward_ref)
 
         # Building conversion
         convert_ref = "%s.ConvertBuildingEffect" % (ability_ref)
@@ -194,7 +194,7 @@ class AoCEffectSubprocessor:
                                               "ConvertBuildingUnitEffect",
                                               dataset.nyan_api_objects)
         convert_raw_api_object.add_raw_parent(convert_parent)
-        convert_location = ExpectedPointer(line, ability_ref)
+        convert_location = ForwardRef(line, ability_ref)
         convert_raw_api_object.set_location(convert_location)
 
         # Type
@@ -226,8 +226,8 @@ class AoCEffectSubprocessor:
                                               convert_parent)
 
         line.add_raw_api_object(convert_raw_api_object)
-        attack_expected_pointer = ExpectedPointer(line, convert_ref)
-        effects.append(attack_expected_pointer)
+        attack_forward_ref = ForwardRef(line, convert_ref)
+        effects.append(attack_forward_ref)
 
         return effects
 
@@ -240,7 +240,7 @@ class AoCEffectSubprocessor:
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param ability_ref: Reference of the ability raw API object the effects are added to.
         :type ability_ref: str
-        :returns: The expected pointers for the effects.
+        :returns: The forward references for the effects.
         :rtype: list
         """
         current_unit = line.get_head_unit()
@@ -273,7 +273,7 @@ class AoCEffectSubprocessor:
                                            "HealEffect",
                                            dataset.nyan_api_objects)
         heal_raw_api_object.add_raw_parent(heal_parent)
-        heal_location = ExpectedPointer(line, ability_ref)
+        heal_location = ForwardRef(line, ability_ref)
         heal_raw_api_object.set_location(heal_location)
 
         # Type
@@ -297,7 +297,7 @@ class AoCEffectSubprocessor:
         rate_name = "%s.HealEffect.ChangeRate" % (ability_ref)
         rate_raw_api_object = RawAPIObject(rate_name, "ChangeRate", dataset.nyan_api_objects)
         rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
-        rate_location = ExpectedPointer(line, heal_ref)
+        rate_location = ForwardRef(line, heal_ref)
         rate_raw_api_object.set_location(rate_location)
 
         attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -310,9 +310,9 @@ class AoCEffectSubprocessor:
 
         line.add_raw_api_object(rate_raw_api_object)
         # =================================================================================
-        rate_expected_pointer = ExpectedPointer(line, rate_name)
+        rate_forward_ref = ForwardRef(line, rate_name)
         heal_raw_api_object.add_raw_member("change_rate",
-                                           rate_expected_pointer,
+                                           rate_forward_ref,
                                            effect_parent)
 
         # Ignore protection
@@ -321,8 +321,8 @@ class AoCEffectSubprocessor:
                                            effect_parent)
 
         line.add_raw_api_object(heal_raw_api_object)
-        heal_expected_pointer = ExpectedPointer(line, heal_ref)
-        effects.append(heal_expected_pointer)
+        heal_forward_ref = ForwardRef(line, heal_ref)
+        effects.append(heal_forward_ref)
 
         return effects
 
@@ -335,7 +335,7 @@ class AoCEffectSubprocessor:
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param ability_ref: Reference of the ability raw API object the effects are added to.
         :type ability_ref: str
-        :returns: The expected pointers for the effects.
+        :returns: The forward references for the effects.
         :rtype: list
         """
         dataset = line.data
@@ -362,7 +362,7 @@ class AoCEffectSubprocessor:
                                                  repair_name,
                                                  dataset.nyan_api_objects)
             repair_raw_api_object.add_raw_parent(repair_parent)
-            repair_location = ExpectedPointer(line, ability_ref)
+            repair_location = ForwardRef(line, ability_ref)
             repair_raw_api_object.set_location(repair_location)
 
             # Type
@@ -381,7 +381,7 @@ class AoCEffectSubprocessor:
             rate_name = "%s.%s.ChangeRate" % (ability_ref, repair_name)
             rate_raw_api_object = RawAPIObject(rate_name, "ChangeRate", dataset.nyan_api_objects)
             rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
-            rate_location = ExpectedPointer(line, repair_ref)
+            rate_location = ForwardRef(line, repair_ref)
             rate_raw_api_object.set_location(rate_location)
 
             attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -404,9 +404,9 @@ class AoCEffectSubprocessor:
 
             line.add_raw_api_object(rate_raw_api_object)
             # =================================================================================
-            rate_expected_pointer = ExpectedPointer(line, rate_name)
+            rate_forward_ref = ForwardRef(line, rate_name)
             repair_raw_api_object.add_raw_member("change_rate",
-                                                 rate_expected_pointer,
+                                                 rate_forward_ref,
                                                  effect_parent)
 
             # Ignore protection
@@ -417,14 +417,14 @@ class AoCEffectSubprocessor:
             # Repair cost
             repair_raw_api_object.add_raw_parent("engine.effect.specialization.CostEffect")
             cost_ref = "%s.CreatableGameEntity.%sRepairCost" % (game_entity_name, game_entity_name)
-            cost_expected_pointer = ExpectedPointer(repairable_line, cost_ref)
+            cost_forward_ref = ForwardRef(repairable_line, cost_ref)
             repair_raw_api_object.add_raw_member("cost",
-                                                 cost_expected_pointer,
+                                                 cost_forward_ref,
                                                  "engine.effect.specialization.CostEffect")
 
             line.add_raw_api_object(repair_raw_api_object)
-            repair_expected_pointer = ExpectedPointer(line, repair_ref)
-            effects.append(repair_expected_pointer)
+            repair_forward_ref = ForwardRef(line, repair_ref)
+            effects.append(repair_forward_ref)
 
         return effects
 
@@ -437,7 +437,7 @@ class AoCEffectSubprocessor:
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param ability_ref: Reference of the ability raw API object the effects are added to.
         :type ability_ref: str
-        :returns: The expected pointers for the effects.
+        :returns: The forward references for the effects.
         :rtype: list
         """
         dataset = line.data
@@ -464,7 +464,7 @@ class AoCEffectSubprocessor:
                                                             contruct_progress_name,
                                                             dataset.nyan_api_objects)
             contruct_progress_raw_api_object.add_raw_parent(progress_construct_parent)
-            contruct_progress_location = ExpectedPointer(line, ability_ref)
+            contruct_progress_location = ForwardRef(line, ability_ref)
             contruct_progress_raw_api_object.set_location(contruct_progress_location)
 
             # Type
@@ -481,8 +481,8 @@ class AoCEffectSubprocessor:
                                                             progress_effect_parent)
 
             line.add_raw_api_object(contruct_progress_raw_api_object)
-            contruct_progress_expected_pointer = ExpectedPointer(line, contruct_progress_ref)
-            effects.append(contruct_progress_expected_pointer)
+            contruct_progress_forward_ref = ForwardRef(line, contruct_progress_ref)
+            effects.append(contruct_progress_forward_ref)
 
             # HP increase during construction
             contruct_hp_name = "%sConstructHPEffect" % (game_entity_name)
@@ -491,7 +491,7 @@ class AoCEffectSubprocessor:
                                                       contruct_hp_name,
                                                       dataset.nyan_api_objects)
             contruct_hp_raw_api_object.add_raw_parent(attr_construct_parent)
-            contruct_hp_location = ExpectedPointer(line, ability_ref)
+            contruct_hp_location = ForwardRef(line, ability_ref)
             contruct_hp_raw_api_object.set_location(contruct_hp_location)
 
             # Type
@@ -513,8 +513,8 @@ class AoCEffectSubprocessor:
                                                       attr_effect_parent)
 
             line.add_raw_api_object(contruct_hp_raw_api_object)
-            contruct_hp_expected_pointer = ExpectedPointer(line, contruct_hp_ref)
-            effects.append(contruct_hp_expected_pointer)
+            contruct_hp_forward_ref = ForwardRef(line, contruct_hp_ref)
+            effects.append(contruct_hp_forward_ref)
 
         return effects
 
@@ -527,7 +527,7 @@ class AoCEffectSubprocessor:
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param ability_ref: Reference of the ability raw API object the effects are added to.
         :type ability_ref: str
-        :returns: The expected pointers for the effects.
+        :returns: The forward references for the effects.
         :rtype: list
         """
         current_unit = line.get_head_unit()
@@ -556,7 +556,7 @@ class AoCEffectSubprocessor:
             armor_ref = "%s.%s" % (ability_ref, class_name)
             armor_raw_api_object = RawAPIObject(armor_ref, class_name, dataset.nyan_api_objects)
             armor_raw_api_object.add_raw_parent(armor_parent)
-            armor_location = ExpectedPointer(line, ability_ref)
+            armor_location = ForwardRef(line, ability_ref)
             armor_raw_api_object.set_location(armor_location)
 
             # Type
@@ -571,7 +571,7 @@ class AoCEffectSubprocessor:
             amount_name = "%s.%s.BlockAmount" % (ability_ref, class_name)
             amount_raw_api_object = RawAPIObject(amount_name, "BlockAmount", dataset.nyan_api_objects)
             amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
-            amount_location = ExpectedPointer(line, armor_ref)
+            amount_location = ForwardRef(line, armor_ref)
             amount_raw_api_object.set_location(amount_location)
 
             attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -584,14 +584,14 @@ class AoCEffectSubprocessor:
 
             line.add_raw_api_object(amount_raw_api_object)
             # =================================================================================
-            amount_expected_pointer = ExpectedPointer(line, amount_name)
+            amount_forward_ref = ForwardRef(line, amount_name)
             armor_raw_api_object.add_raw_member("block_value",
-                                                amount_expected_pointer,
+                                                amount_forward_ref,
                                                 resistance_parent)
 
             line.add_raw_api_object(armor_raw_api_object)
-            armor_expected_pointer = ExpectedPointer(line, armor_ref)
-            resistances.append(armor_expected_pointer)
+            armor_forward_ref = ForwardRef(line, armor_ref)
+            resistances.append(armor_forward_ref)
 
         # Fallback effect
         fallback_effect = dataset.pregen_nyan_objects[("resistance.discrete.flat_attribute_change."
@@ -609,7 +609,7 @@ class AoCEffectSubprocessor:
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param ability_ref: Reference of the ability raw API object the effects are added to.
         :type ability_ref: str
-        :returns: The expected pointers for the effects.
+        :returns: The forward references for the effects.
         :rtype: list
         """
         dataset = line.data
@@ -623,7 +623,7 @@ class AoCEffectSubprocessor:
         resistance_ref = "%s.Convert" % (ability_ref)
         resistance_raw_api_object = RawAPIObject(resistance_ref, "Convert", dataset.nyan_api_objects)
         resistance_raw_api_object.add_raw_parent(convert_parent)
-        resistance_location = ExpectedPointer(line, ability_ref)
+        resistance_location = ForwardRef(line, ability_ref)
         resistance_raw_api_object.set_location(resistance_location)
 
         # Type
@@ -668,8 +668,8 @@ class AoCEffectSubprocessor:
                                                  convert_parent)
 
         line.add_raw_api_object(resistance_raw_api_object)
-        resistance_expected_pointer = ExpectedPointer(line, resistance_ref)
-        resistances.append(resistance_expected_pointer)
+        resistance_forward_ref = ForwardRef(line, resistance_ref)
+        resistances.append(resistance_forward_ref)
 
         return resistances
 
@@ -682,7 +682,7 @@ class AoCEffectSubprocessor:
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param ability_ref: Reference of the ability raw API object the effects are added to.
         :type ability_ref: str
-        :returns: The expected pointers for the effects.
+        :returns: The forward references for the effects.
         :rtype: list
         """
         dataset = line.data
@@ -697,7 +697,7 @@ class AoCEffectSubprocessor:
                                                  "Heal",
                                                  dataset.nyan_api_objects)
         resistance_raw_api_object.add_raw_parent(heal_parent)
-        resistance_location = ExpectedPointer(line, ability_ref)
+        resistance_location = ForwardRef(line, ability_ref)
         resistance_raw_api_object.set_location(resistance_location)
 
         # Type
@@ -712,7 +712,7 @@ class AoCEffectSubprocessor:
         rate_name = "%s.Heal.BlockRate" % (ability_ref)
         rate_raw_api_object = RawAPIObject(rate_name, "BlockRate", dataset.nyan_api_objects)
         rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
-        rate_location = ExpectedPointer(line, resistance_ref)
+        rate_location = ForwardRef(line, resistance_ref)
         rate_raw_api_object.set_location(rate_location)
 
         attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -725,14 +725,14 @@ class AoCEffectSubprocessor:
 
         line.add_raw_api_object(rate_raw_api_object)
         # =================================================================================
-        rate_expected_pointer = ExpectedPointer(line, rate_name)
+        rate_forward_ref = ForwardRef(line, rate_name)
         resistance_raw_api_object.add_raw_member("block_rate",
-                                                 rate_expected_pointer,
+                                                 rate_forward_ref,
                                                  resistance_parent)
 
         line.add_raw_api_object(resistance_raw_api_object)
-        resistance_expected_pointer = ExpectedPointer(line, resistance_ref)
-        resistances.append(resistance_expected_pointer)
+        resistance_forward_ref = ForwardRef(line, resistance_ref)
+        resistances.append(resistance_forward_ref)
 
         return resistances
 
@@ -745,7 +745,7 @@ class AoCEffectSubprocessor:
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param ability_ref: Reference of the ability raw API object the effects are added to.
         :type ability_ref: str
-        :returns: The expected pointers for the effects.
+        :returns: The forward references for the effects.
         :rtype: list
         """
         current_unit_id = line.get_head_unit_id()
@@ -765,7 +765,7 @@ class AoCEffectSubprocessor:
                                                  "Repair",
                                                  dataset.nyan_api_objects)
         resistance_raw_api_object.add_raw_parent(repair_parent)
-        resistance_location = ExpectedPointer(line, ability_ref)
+        resistance_location = ForwardRef(line, ability_ref)
         resistance_raw_api_object.set_location(resistance_location)
 
         # Type
@@ -780,7 +780,7 @@ class AoCEffectSubprocessor:
         rate_name = "%s.Repair.BlockRate" % (ability_ref)
         rate_raw_api_object = RawAPIObject(rate_name, "BlockRate", dataset.nyan_api_objects)
         rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
-        rate_location = ExpectedPointer(line, resistance_ref)
+        rate_location = ForwardRef(line, resistance_ref)
         rate_raw_api_object.set_location(rate_location)
 
         attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -793,9 +793,9 @@ class AoCEffectSubprocessor:
 
         line.add_raw_api_object(rate_raw_api_object)
         # =================================================================================
-        rate_expected_pointer = ExpectedPointer(line, rate_name)
+        rate_forward_ref = ForwardRef(line, rate_name)
         resistance_raw_api_object.add_raw_member("block_rate",
-                                                 rate_expected_pointer,
+                                                 rate_forward_ref,
                                                  resistance_parent)
 
         # Stacking of villager repair HP increase
@@ -819,8 +819,8 @@ class AoCEffectSubprocessor:
                                                  "engine.resistance.specialization.StackedResistance")
 
         line.add_raw_api_object(resistance_raw_api_object)
-        resistance_expected_pointer = ExpectedPointer(line, resistance_ref)
-        resistances.append(resistance_expected_pointer)
+        resistance_forward_ref = ForwardRef(line, resistance_ref)
+        resistances.append(resistance_forward_ref)
 
         return resistances
 
@@ -833,7 +833,7 @@ class AoCEffectSubprocessor:
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param ability_ref: Reference of the ability raw API object the effects are added to.
         :type ability_ref: str
-        :returns: The expected pointers for the effects.
+        :returns: The forward references for the effects.
         :rtype: list
         """
         current_unit_id = line.get_head_unit_id()
@@ -856,7 +856,7 @@ class AoCEffectSubprocessor:
                                                  "ConstructProgress",
                                                  dataset.nyan_api_objects)
         resistance_raw_api_object.add_raw_parent(progress_construct_parent)
-        resistance_location = ExpectedPointer(line, ability_ref)
+        resistance_location = ForwardRef(line, ability_ref)
         resistance_raw_api_object.set_location(resistance_location)
 
         # Type
@@ -867,8 +867,8 @@ class AoCEffectSubprocessor:
                                                  progress_resistance_parent)
 
         line.add_raw_api_object(resistance_raw_api_object)
-        resistance_expected_pointer = ExpectedPointer(line, resistance_ref)
-        resistances.append(resistance_expected_pointer)
+        resistance_forward_ref = ForwardRef(line, resistance_ref)
+        resistances.append(resistance_forward_ref)
 
         # Stacking of villager construction times
         resistance_raw_api_object.add_raw_parent("engine.resistance.specialization.StackedResistance")
@@ -896,7 +896,7 @@ class AoCEffectSubprocessor:
                                                  "ConstructHP",
                                                  dataset.nyan_api_objects)
         resistance_raw_api_object.add_raw_parent(attr_construct_parent)
-        resistance_location = ExpectedPointer(line, ability_ref)
+        resistance_location = ForwardRef(line, ability_ref)
         resistance_raw_api_object.set_location(resistance_location)
 
         # Type
@@ -927,7 +927,7 @@ class AoCEffectSubprocessor:
                                                  "engine.resistance.specialization.StackedResistance")
 
         line.add_raw_api_object(resistance_raw_api_object)
-        resistance_expected_pointer = ExpectedPointer(line, resistance_ref)
-        resistances.append(resistance_expected_pointer)
+        resistance_forward_ref = ForwardRef(line, resistance_ref)
+        resistances.append(resistance_forward_ref)
 
         return resistances

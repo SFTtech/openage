@@ -3,7 +3,7 @@
 """
 Creates patches for technologies.
 """
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup,\
     CivTeamBonus, CivBonus
 from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
@@ -304,26 +304,26 @@ class AoCTechSubprocessor:
 
         if line.is_projectile_shooter():
             patches.extend(AoCUpgradeAbilitySubprocessor.shoot_projectile_ability(converter_group, line,
-                                                                                 tech_name,
-                                                                                 upgrade_source,
-                                                                                 upgrade_target,
-                                                                                 7, diff))
+                                                                                  tech_name,
+                                                                                  upgrade_source,
+                                                                                  upgrade_target,
+                                                                                  7, diff))
         elif line.is_melee() or line.is_ranged():
             if line.has_command(7):
                 # Attack
                 patches.extend(AoCUpgradeAbilitySubprocessor.apply_discrete_effect_ability(converter_group,
-                                                                                          line, tech_name,
-                                                                                          7,
-                                                                                          line.is_ranged(),
-                                                                                          diff))
+                                                                                           line, tech_name,
+                                                                                           7,
+                                                                                           line.is_ranged(),
+                                                                                           diff))
 
         if isinstance(line, GenieUnitLineGroup):
             patches.extend(AoCUpgradeAbilitySubprocessor.move_ability(converter_group, line,
-                                                                     tech_name, diff))
+                                                                      tech_name, diff))
 
         if isinstance(line, GenieBuildingLineGroup):
             patches.extend(AoCUpgradeAbilitySubprocessor.attribute_change_tracker_ability(converter_group, line,
-                                                                                         tech_name, diff))
+                                                                                          tech_name, diff))
 
         return patches
 
@@ -381,12 +381,12 @@ class AoCTechSubprocessor:
         patch_target_ref = "%s.ResearchableTech.%sCost.%sAmount" % (tech_name,
                                                                     tech_name,
                                                                     resource_name)
-        patch_target_expected_pointer = ExpectedPointer(tech_group, patch_target_ref)
+        patch_target_forward_ref = ForwardRef(tech_group, patch_target_ref)
 
         # Wrapper
         wrapper_name = "Change%sCostWrapper" % (tech_name)
         wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -396,13 +396,13 @@ class AoCTechSubprocessor:
         # Nyan patch
         nyan_patch_name = "Change%sCost" % (tech_name)
         nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         nyan_patch_raw_api_object.add_raw_patch_member("amount",
                                                        amount,
@@ -417,16 +417,16 @@ class AoCTechSubprocessor:
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
 
-        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
+                                              patch_forward_ref,
                                               "engine.aux.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-        patches.append(wrapper_expected_pointer)
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+        patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -466,12 +466,12 @@ class AoCTechSubprocessor:
             operator = MemberOperator.ADD
 
         patch_target_ref = "%s.ResearchableTech" % (tech_name)
-        patch_target_expected_pointer = ExpectedPointer(tech_group, patch_target_ref)
+        patch_target_forward_ref = ForwardRef(tech_group, patch_target_ref)
 
         # Wrapper
         wrapper_name = "Change%sResearchTimeWrapper" % (tech_name)
         wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
-        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -481,13 +481,13 @@ class AoCTechSubprocessor:
         # Nyan patch
         nyan_patch_name = "Change%sResearchTime" % (tech_name)
         nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         nyan_patch_raw_api_object.add_raw_patch_member("research_time",
                                                        research_time,
@@ -502,15 +502,15 @@ class AoCTechSubprocessor:
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
 
-        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
+                                              patch_forward_ref,
                                               "engine.aux.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-        patches.append(wrapper_expected_pointer)
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+        patches.append(wrapper_forward_ref)
 
         return patches

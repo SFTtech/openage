@@ -5,7 +5,7 @@ Derives complex auxiliary objects from unit lines, techs
 or other objects.
 """
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup,\
     GenieBuildingLineGroup, GenieUnitLineGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
@@ -62,19 +62,19 @@ class AoCAuxiliarySubprocessor:
             civ = dataset.civ_groups[enabling_civ_id]
             civ_name = civ_lookup_dict[enabling_civ_id][0]
 
-            creatable_location = ExpectedPointer(civ, civ_name)
+            creatable_location = ForwardRef(civ, civ_name)
 
         else:
             # Add object to the train location's Create ability
-            creatable_location = ExpectedPointer(train_location,
-                                                 "%s.Create" % (train_location_name))
+            creatable_location = ForwardRef(train_location,
+                                            "%s.Create" % (train_location_name))
 
         creatable_raw_api_object.set_location(creatable_location)
 
         # Game Entity
-        game_entity_expected_pointer = ExpectedPointer(line, game_entity_name)
+        game_entity_forward_ref = ForwardRef(line, game_entity_name)
         creatable_raw_api_object.add_raw_member("game_entity",
-                                                game_entity_expected_pointer,
+                                                game_entity_forward_ref,
                                                 "engine.aux.create.CreatableGameEntity")
 
         # Cost (construction)
@@ -83,8 +83,8 @@ class AoCAuxiliarySubprocessor:
                                            "%sCost" % (game_entity_name),
                                            dataset.nyan_api_objects)
         cost_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
-        creatable_expected_pointer = ExpectedPointer(line, obj_ref)
-        cost_raw_api_object.set_location(creatable_expected_pointer)
+        creatable_forward_ref = ForwardRef(line, obj_ref)
+        cost_raw_api_object.set_location(creatable_forward_ref)
 
         payment_mode = dataset.nyan_api_objects["engine.aux.payment_mode.type.Advance"]
         cost_raw_api_object.add_raw_member("payment_mode",
@@ -99,8 +99,8 @@ class AoCAuxiliarySubprocessor:
                                                       "%sRepairCost" % (game_entity_name),
                                                       dataset.nyan_api_objects)
             cost_repair_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
-            creatable_expected_pointer = ExpectedPointer(line, obj_ref)
-            cost_repair_raw_api_object.set_location(creatable_expected_pointer)
+            creatable_forward_ref = ForwardRef(line, obj_ref)
+            cost_repair_raw_api_object.set_location(creatable_forward_ref)
 
             payment_repair_mode = dataset.nyan_api_objects["engine.aux.payment_mode.type.Adaptive"]
             cost_repair_raw_api_object.add_raw_member("payment_mode",
@@ -150,8 +150,8 @@ class AoCAuxiliarySubprocessor:
                                        "%sAmount" % resource_name,
                                        dataset.nyan_api_objects)
             cost_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
-            cost_expected_pointer = ExpectedPointer(line, cost_name)
-            cost_amount.set_location(cost_expected_pointer)
+            cost_forward_ref = ForwardRef(line, cost_name)
+            cost_amount.set_location(cost_forward_ref)
 
             cost_amount.add_raw_member("type",
                                        resource,
@@ -160,8 +160,8 @@ class AoCAuxiliarySubprocessor:
                                        amount,
                                        "engine.aux.resource.ResourceAmount")
 
-            cost_amount_expected_pointer = ExpectedPointer(line, cost_amount_name)
-            cost_amounts.append(cost_amount_expected_pointer)
+            cost_amount_forward_ref = ForwardRef(line, cost_amount_name)
+            cost_amounts.append(cost_amount_forward_ref)
             line.add_raw_api_object(cost_amount)
 
             if isinstance(line, GenieBuildingLineGroup) or line.get_class_id() in (2, 13, 20, 21, 22, 55):
@@ -171,8 +171,8 @@ class AoCAuxiliarySubprocessor:
                                            "%sAmount" % resource_name,
                                            dataset.nyan_api_objects)
                 cost_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
-                cost_expected_pointer = ExpectedPointer(line, cost_repair_name)
-                cost_amount.set_location(cost_expected_pointer)
+                cost_forward_ref = ForwardRef(line, cost_repair_name)
+                cost_amount.set_location(cost_forward_ref)
 
                 cost_amount.add_raw_member("type",
                                            resource,
@@ -181,8 +181,8 @@ class AoCAuxiliarySubprocessor:
                                            amount / 2,
                                            "engine.aux.resource.ResourceAmount")
 
-                cost_amount_expected_pointer = ExpectedPointer(line, cost_amount_name)
-                cost_repair_amounts.append(cost_amount_expected_pointer)
+                cost_amount_forward_ref = ForwardRef(line, cost_amount_name)
+                cost_repair_amounts.append(cost_amount_forward_ref)
                 line.add_raw_api_object(cost_amount)
 
         cost_raw_api_object.add_raw_member("amount",
@@ -194,9 +194,9 @@ class AoCAuxiliarySubprocessor:
                                                       cost_repair_amounts,
                                                       "engine.aux.cost.type.ResourceCost")
 
-        cost_expected_pointer = ExpectedPointer(line, cost_name)
+        cost_forward_ref = ForwardRef(line, cost_name)
         creatable_raw_api_object.add_raw_member("cost",
-                                                cost_expected_pointer,
+                                                cost_forward_ref,
                                                 "engine.aux.create.CreatableGameEntity")
         # Creation time
         if isinstance(line, GenieUnitLineGroup):
@@ -218,7 +218,7 @@ class AoCAuxiliarySubprocessor:
         sound_raw_api_object = RawAPIObject(obj_name, "CreationSound",
                                             dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
-        sound_location = ExpectedPointer(line, obj_ref)
+        sound_location = ForwardRef(line, obj_ref)
         sound_raw_api_object.set_location(sound_location)
 
         # Search for the sound if it exists
@@ -249,9 +249,9 @@ class AoCAuxiliarySubprocessor:
                                             creation_sounds,
                                             "engine.aux.sound.Sound")
 
-        sound_expected_pointer = ExpectedPointer(line, obj_name)
+        sound_forward_ref = ForwardRef(line, obj_name)
         creatable_raw_api_object.add_raw_member("creation_sounds",
-                                                [sound_expected_pointer],
+                                                [sound_forward_ref],
                                                 "engine.aux.create.CreatableGameEntity")
 
         line.add_raw_api_object(sound_raw_api_object)
@@ -278,8 +278,8 @@ class AoCAuxiliarySubprocessor:
                                                 "Place",
                                                 dataset.nyan_api_objects)
             place_raw_api_object.add_raw_parent("engine.aux.placement_mode.type.Place")
-            place_location = ExpectedPointer(line,
-                                             "%s.CreatableGameEntity" % (game_entity_name))
+            place_location = ForwardRef(line,
+                                        "%s.CreatableGameEntity" % (game_entity_name))
             place_raw_api_object.set_location(place_location)
 
             # Tile snap distance (uses 1.0 for grid placement)
@@ -313,8 +313,8 @@ class AoCAuxiliarySubprocessor:
 
             line.add_raw_api_object(place_raw_api_object)
 
-            place_expected_pointer = ExpectedPointer(line, obj_name)
-            placement_modes.append(place_expected_pointer)
+            place_forward_ref = ForwardRef(line, obj_name)
+            placement_modes.append(place_forward_ref)
 
             if line.get_class_id() == 39:
                 # Gates
@@ -323,23 +323,23 @@ class AoCAuxiliarySubprocessor:
                                                       "Replace",
                                                       dataset.nyan_api_objects)
                 replace_raw_api_object.add_raw_parent("engine.aux.placement_mode.type.Replace")
-                replace_location = ExpectedPointer(line,
-                                                   "%s.CreatableGameEntity" % (game_entity_name))
+                replace_location = ForwardRef(line,
+                                              "%s.CreatableGameEntity" % (game_entity_name))
                 replace_raw_api_object.set_location(replace_location)
 
                 # Game entities (only stone wall)
                 wall_line_id = 117
                 wall_line = dataset.building_lines[wall_line_id]
                 wall_name = name_lookup_dict[117][0]
-                game_entities = [ExpectedPointer(wall_line, wall_name)]
+                game_entities = [ForwardRef(wall_line, wall_name)]
                 replace_raw_api_object.add_raw_member("game_entities",
                                                       game_entities,
                                                       "engine.aux.placement_mode.type.Replace")
 
                 line.add_raw_api_object(replace_raw_api_object)
 
-                replace_expected_pointer = ExpectedPointer(line, obj_name)
-                placement_modes.append(replace_expected_pointer)
+                replace_forward_ref = ForwardRef(line, obj_name)
+                placement_modes.append(replace_forward_ref)
 
         else:
             placement_modes.append(dataset.nyan_api_objects["engine.aux.placement_mode.type.Eject"])
@@ -349,22 +349,22 @@ class AoCAuxiliarySubprocessor:
             own_storage_raw_api_object = RawAPIObject(obj_name, "OwnStorage",
                                                       dataset.nyan_api_objects)
             own_storage_raw_api_object.add_raw_parent("engine.aux.placement_mode.type.OwnStorage")
-            own_storage_location = ExpectedPointer(line,
-                                                   "%s.CreatableGameEntity" % (game_entity_name))
+            own_storage_location = ForwardRef(line,
+                                              "%s.CreatableGameEntity" % (game_entity_name))
             own_storage_raw_api_object.set_location(own_storage_location)
 
             # Container
-            container_expected_pointer = ExpectedPointer(train_location,
-                                                         "%s.Storage.%sContainer"
-                                                         % (train_location_name, train_location_name))
+            container_forward_ref = ForwardRef(train_location,
+                                               "%s.Storage.%sContainer"
+                                               % (train_location_name, train_location_name))
             own_storage_raw_api_object.add_raw_member("container",
-                                                      container_expected_pointer,
+                                                      container_forward_ref,
                                                       "engine.aux.placement_mode.type.OwnStorage")
 
             line.add_raw_api_object(own_storage_raw_api_object)
 
-            own_storage_expected_pointer = ExpectedPointer(line, obj_name)
-            placement_modes.append(own_storage_expected_pointer)
+            own_storage_forward_ref = ForwardRef(line, obj_name)
+            placement_modes.append(own_storage_forward_ref)
 
         creatable_raw_api_object.add_raw_member("placement_modes",
                                                 placement_modes,
@@ -404,19 +404,19 @@ class AoCAuxiliarySubprocessor:
             civ = dataset.civ_groups[civ_id]
             civ_name = civ_lookup_dict[civ_id][0]
 
-            researchable_location = ExpectedPointer(civ, civ_name)
+            researchable_location = ForwardRef(civ, civ_name)
 
         else:
             # Add object to the research location's Research ability
-            researchable_location = ExpectedPointer(research_location,
-                                                    "%s.Research" % (research_location_name))
+            researchable_location = ForwardRef(research_location,
+                                               "%s.Research" % (research_location_name))
 
         researchable_raw_api_object.set_location(researchable_location)
 
         # Tech
-        tech_expected_pointer = ExpectedPointer(tech_group, tech_name)
+        tech_forward_ref = ForwardRef(tech_group, tech_name)
         researchable_raw_api_object.add_raw_member("tech",
-                                                   tech_expected_pointer,
+                                                   tech_forward_ref,
                                                    "engine.aux.research.ResearchableTech")
 
         # Cost
@@ -425,8 +425,8 @@ class AoCAuxiliarySubprocessor:
                                            "%sCost" % (tech_name),
                                            dataset.nyan_api_objects)
         cost_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
-        tech_expected_pointer = ExpectedPointer(tech_group, obj_ref)
-        cost_raw_api_object.set_location(tech_expected_pointer)
+        tech_forward_ref = ForwardRef(tech_group, obj_ref)
+        cost_raw_api_object.set_location(tech_forward_ref)
 
         payment_mode = dataset.nyan_api_objects["engine.aux.payment_mode.type.Advance"]
         cost_raw_api_object.add_raw_member("payment_mode",
@@ -474,8 +474,8 @@ class AoCAuxiliarySubprocessor:
                                        "%sAmount" % resource_name,
                                        dataset.nyan_api_objects)
             cost_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
-            cost_expected_pointer = ExpectedPointer(tech_group, cost_ref)
-            cost_amount.set_location(cost_expected_pointer)
+            cost_forward_ref = ForwardRef(tech_group, cost_ref)
+            cost_amount.set_location(cost_forward_ref)
 
             cost_amount.add_raw_member("type",
                                        resource,
@@ -484,17 +484,17 @@ class AoCAuxiliarySubprocessor:
                                        amount,
                                        "engine.aux.resource.ResourceAmount")
 
-            cost_amount_expected_pointer = ExpectedPointer(tech_group, cost_amount_ref)
-            cost_amounts.append(cost_amount_expected_pointer)
+            cost_amount_forward_ref = ForwardRef(tech_group, cost_amount_ref)
+            cost_amounts.append(cost_amount_forward_ref)
             tech_group.add_raw_api_object(cost_amount)
 
         cost_raw_api_object.add_raw_member("amount",
                                            cost_amounts,
                                            "engine.aux.cost.type.ResourceCost")
 
-        cost_expected_pointer = ExpectedPointer(tech_group, cost_ref)
+        cost_forward_ref = ForwardRef(tech_group, cost_ref)
         researchable_raw_api_object.add_raw_member("cost",
-                                                   cost_expected_pointer,
+                                                   cost_forward_ref,
                                                    "engine.aux.research.ResearchableTech")
 
         research_time = tech_group.tech.get_member("research_time").get_value()
@@ -508,8 +508,8 @@ class AoCAuxiliarySubprocessor:
         sound_raw_api_object = RawAPIObject(sound_ref, "ResearchSound",
                                             dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
-        sound_location = ExpectedPointer(tech_group,
-                                         "%s.ResearchableTech" % (tech_name))
+        sound_location = ForwardRef(tech_group,
+                                    "%s.ResearchableTech" % (tech_name))
         sound_raw_api_object.set_location(sound_location)
 
         # AoE doesn't support sounds here, so this is empty
@@ -520,9 +520,9 @@ class AoCAuxiliarySubprocessor:
                                             [],
                                             "engine.aux.sound.Sound")
 
-        sound_expected_pointer = ExpectedPointer(tech_group, sound_ref)
+        sound_forward_ref = ForwardRef(tech_group, sound_ref)
         researchable_raw_api_object.add_raw_member("research_sounds",
-                                                   [sound_expected_pointer],
+                                                   [sound_forward_ref],
                                                    "engine.aux.research.ResearchableTech")
 
         tech_group.add_raw_api_object(sound_raw_api_object)
@@ -582,16 +582,16 @@ class AoCAuxiliarySubprocessor:
                                                   literal_name,
                                                   dataset.nyan_api_objects)
             literal_raw_api_object.add_raw_parent(literal_parent)
-            literal_location = ExpectedPointer(converter_object, obj_ref)
+            literal_location = ForwardRef(converter_object, obj_ref)
             literal_raw_api_object.set_location(literal_location)
 
             if tech_id in dataset.initiated_techs.keys():
                 building_line = dataset.unit_ref[building_id]
-                building_expected_pointer = ExpectedPointer(building_line, building_name)
+                building_forward_ref = ForwardRef(building_line, building_name)
 
                 # Building
                 literal_raw_api_object.add_raw_member("game_entity",
-                                                      building_expected_pointer,
+                                                      building_forward_ref,
                                                       literal_parent)
 
                 # Progress
@@ -601,7 +601,7 @@ class AoCAuxiliarySubprocessor:
                                                        "ProgressStatus",
                                                        dataset.nyan_api_objects)
                 progress_raw_api_object.add_raw_parent("engine.aux.progress_status.ProgressStatus")
-                progress_location = ExpectedPointer(converter_object, literal_ref)
+                progress_location = ForwardRef(converter_object, literal_ref)
                 progress_raw_api_object.set_location(progress_location)
 
                 # Type
@@ -617,16 +617,16 @@ class AoCAuxiliarySubprocessor:
 
                 converter_object.add_raw_api_object(progress_raw_api_object)
                 # =======================================================================
-                progress_expected_pointer = ExpectedPointer(converter_object, progress_ref)
+                progress_forward_ref = ForwardRef(converter_object, progress_ref)
                 literal_raw_api_object.add_raw_member("progress_status",
-                                                      progress_expected_pointer,
+                                                      progress_forward_ref,
                                                       literal_parent)
 
             elif dataset.tech_groups[tech_id].is_researchable():
                 tech_group = dataset.tech_groups[tech_id]
-                tech_expected_pointer = ExpectedPointer(tech_group, tech_name)
+                tech_forward_ref = ForwardRef(tech_group, tech_name)
                 literal_raw_api_object.add_raw_member("tech",
-                                                      tech_expected_pointer,
+                                                      tech_forward_ref,
                                                       literal_parent)
 
             # LiteralScope
@@ -636,7 +636,7 @@ class AoCAuxiliarySubprocessor:
                                                 "LiteralScope",
                                                 dataset.nyan_api_objects)
             scope_raw_api_object.add_raw_parent("engine.aux.logic.literal_scope.type.Any")
-            scope_location = ExpectedPointer(converter_object, literal_ref)
+            scope_location = ForwardRef(converter_object, literal_ref)
             scope_raw_api_object.set_location(scope_location)
 
             scope_diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
@@ -646,9 +646,9 @@ class AoCAuxiliarySubprocessor:
 
             converter_object.add_raw_api_object(scope_raw_api_object)
             # ==========================================================================
-            scope_expected_pointer = ExpectedPointer(converter_object, scope_ref)
+            scope_forward_ref = ForwardRef(converter_object, scope_ref)
             literal_raw_api_object.add_raw_member("scope",
-                                                  scope_expected_pointer,
+                                                  scope_forward_ref,
                                                   "engine.aux.logic.literal.Literal")
 
             literal_raw_api_object.add_raw_member("only_once",
@@ -656,9 +656,9 @@ class AoCAuxiliarySubprocessor:
                                                   "engine.aux.logic.LogicElement")
 
             converter_object.add_raw_api_object(literal_raw_api_object)
-            literal_expected_pointer = ExpectedPointer(converter_object, literal_ref)
+            literal_forward_ref = ForwardRef(converter_object, literal_ref)
 
-            return [literal_expected_pointer]
+            return [literal_forward_ref]
 
         else:
             # The tech condition has other requirements that need to be resolved
@@ -701,11 +701,11 @@ class AoCAuxiliarySubprocessor:
 
             if required_tech_count == len(relevant_ids):
                 gate_raw_api_object.add_raw_parent("engine.aux.logic.gate.type.AND")
-                gate_location = ExpectedPointer(converter_object, obj_ref)
+                gate_location = ForwardRef(converter_object, obj_ref)
 
             else:
                 gate_raw_api_object.add_raw_parent("engine.aux.logic.gate.type.SUBSETMIN")
-                gate_location = ExpectedPointer(converter_object, obj_ref)
+                gate_location = ForwardRef(converter_object, obj_ref)
 
                 gate_raw_api_object.add_raw_member("size",
                                                    required_tech_count,
@@ -731,5 +731,5 @@ class AoCAuxiliarySubprocessor:
                                                "engine.aux.logic.gate.LogicGate")
 
             converter_object.add_raw_api_object(gate_raw_api_object)
-            gate_expected_pointer = ExpectedPointer(converter_object, gate_ref)
-            return [gate_expected_pointer]
+            gate_forward_ref = ForwardRef(converter_object, gate_ref)
+            return [gate_forward_ref]

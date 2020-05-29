@@ -8,6 +8,7 @@ from builtins import staticmethod
 from math import degrees
 
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieAmbientGroup, GenieGarrisonMode, GenieStackBuildingGroup,\
     GenieUnitLineGroup, GenieMonkGroup
@@ -18,7 +19,6 @@ from openage.nyan.nyan_structs import MemberSpecialValue, MemberOperator
 from openage.util.ordered_set import OrderedSet
 
 from ...dataformat.aoc.combined_sprite import CombinedSprite
-from ...dataformat.aoc.expected_pointer import ExpectedPointer
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
 from ...dataformat.converter_object import RawAPIObject
 
@@ -32,8 +32,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         # TODO: Implement
 
@@ -44,8 +44,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         if isinstance(line, GenieVillagerGroup):
             current_unit = line.get_units_with_command(command_id)[0]
@@ -73,7 +73,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.%s" % (game_entity_name, ability_name)
         ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent(ability_parent)
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Get animation from commands proceed sprite
@@ -95,13 +95,13 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  ability_animation_id,
-                                                                                  ability_ref,
-                                                                                  ability_name,
-                                                                                  "%s_"
-                                                                                  % command_lookup_dict[command_id][1])
-            animations_set.append(animation_expected_pointer)
+            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                             ability_animation_id,
+                                                                             ability_ref,
+                                                                             ability_name,
+                                                                             "%s_"
+                                                                             % command_lookup_dict[command_id][1])
+            animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
@@ -146,12 +146,12 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
 
             sounds_set = []
-            sound_expected_pointer = AoCAbilitySubprocessor._create_sound(line,
-                                                                          ability_comm_sound_id,
-                                                                          ability_ref,
-                                                                          ability_name,
-                                                                          "command_")
-            sounds_set.append(sound_expected_pointer)
+            sound_forward_ref = AoCAbilitySubprocessor._create_sound(line,
+                                                                     ability_comm_sound_id,
+                                                                     ability_ref,
+                                                                     ability_name,
+                                                                     "command_")
+            sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
                                                   "engine.ability.specialization.CommandSoundAbility")
 
@@ -213,9 +213,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def apply_discrete_effect_ability(line, command_id, ranged=False, projectile=-1):
@@ -224,8 +224,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         if isinstance(line, GenieVillagerGroup):
             current_unit = line.get_units_with_command(command_id)[0]
@@ -256,7 +256,7 @@ class AoCAbilitySubprocessor:
             ability_ref = "%s.%s" % (game_entity_name, ability_name)
             ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent(ability_parent)
-            ability_location = ExpectedPointer(line, game_entity_name)
+            ability_location = ForwardRef(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
 
             ability_animation_id = current_unit.get_member("attack_sprite_id").get_value()
@@ -265,9 +265,9 @@ class AoCAbilitySubprocessor:
             ability_ref = "%s.ShootProjectile.Projectile%s.%s" % (game_entity_name, str(projectile), ability_name)
             ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent(ability_parent)
-            ability_location = ExpectedPointer(line,
-                                               "%s.ShootProjectile.Projectile%s"
-                                               % (game_entity_name, str(projectile)))
+            ability_location = ForwardRef(line,
+                                          "%s.ShootProjectile.Projectile%s"
+                                          % (game_entity_name, str(projectile)))
             ability_raw_api_object.set_location(ability_location)
 
             ability_animation_id = -1
@@ -277,13 +277,13 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  ability_animation_id,
-                                                                                  ability_ref,
-                                                                                  ability_name,
-                                                                                  "%s_"
-                                                                                  % command_lookup_dict[command_id][1])
-            animations_set.append(animation_expected_pointer)
+            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                             ability_animation_id,
+                                                                             ability_ref,
+                                                                             ability_name,
+                                                                             "%s_"
+                                                                             % command_lookup_dict[command_id][1])
+            animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
@@ -340,12 +340,12 @@ class AoCAbilitySubprocessor:
             else:
                 sound_obj_prefix = "ProjectileAttack"
 
-            sound_expected_pointer = AoCAbilitySubprocessor._create_sound(line,
-                                                                          ability_comm_sound_id,
-                                                                          ability_ref,
-                                                                          sound_obj_prefix,
-                                                                          "command_")
-            sounds_set.append(sound_expected_pointer)
+            sound_forward_ref = AoCAbilitySubprocessor._create_sound(line,
+                                                                     ability_comm_sound_id,
+                                                                     ability_ref,
+                                                                     sound_obj_prefix,
+                                                                     "command_")
+            sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
                                                   "engine.ability.specialization.CommandSoundAbility")
 
@@ -425,10 +425,10 @@ class AoCAbilitySubprocessor:
             mangonel_line = dataset.unit_lines[280]
             scorpion_line = dataset.unit_lines[279]
 
-            blacklisted_entities = [ExpectedPointer(monk_line, "Monk"),
-                                    ExpectedPointer(ram_line, "Ram"),
-                                    ExpectedPointer(mangonel_line, "Mangonel"),
-                                    ExpectedPointer(scorpion_line, "Scorpion")]
+            blacklisted_entities = [ForwardRef(monk_line, "Monk"),
+                                    ForwardRef(ram_line, "Ram"),
+                                    ForwardRef(mangonel_line, "Mangonel"),
+                                    ForwardRef(scorpion_line, "Scorpion")]
 
         else:
             blacklisted_entities = []
@@ -439,9 +439,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def attribute_change_tracker_ability(line):
@@ -450,8 +450,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -464,7 +464,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.AttributeChangeTracker" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "AttributeChangeTracker", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.AttributeChangeTracker")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Attribute
@@ -475,7 +475,7 @@ class AoCAbilitySubprocessor:
 
         # Change progress
         damage_graphics = current_unit.get_member("damage_graphics").get_value()
-        progress_expected_pointers = []
+        progress_forward_refs = []
 
         # Damage graphics are ordered ascending, so we start from 0
         interval_left_bound = 0
@@ -487,7 +487,7 @@ class AoCAbilitySubprocessor:
                                                    "ChangeProgress%s" % (interval_right_bound),
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.AttributeChangeProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             # Interval
@@ -504,30 +504,30 @@ class AoCAbilitySubprocessor:
 
                 # Animation
                 animations_set = []
-                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                      progress_animation_id,
-                                                                                      progress_name,
-                                                                                      "Idle",
-                                                                                      "idle_damage_override_%s_"
-                                                                                      % (interval_right_bound))
-                animations_set.append(animation_expected_pointer)
+                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                                 progress_animation_id,
+                                                                                 progress_name,
+                                                                                 "Idle",
+                                                                                 "idle_damage_override_%s_"
+                                                                                 % (interval_right_bound))
+                animations_set.append(animation_forward_ref)
                 progress_raw_api_object.add_raw_member("overlays",
                                                        animations_set,
                                                        "engine.aux.progress.specialization.AnimationOverlayProgress")
 
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             interval_left_bound = interval_right_bound
 
         ability_raw_api_object.add_raw_member("change_progress",
-                                              progress_expected_pointers,
+                                              progress_forward_refs,
                                               "engine.ability.type.AttributeChangeTracker")
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def collect_storage_ability(line):
@@ -536,8 +536,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -549,14 +549,14 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.CollectStorage" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "CollectStorage", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.CollectStorage")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Container
         container_ref = "%s.Storage.%sContainer" % (game_entity_name, game_entity_name)
-        container_expected_pointer = ExpectedPointer(line, container_ref)
+        container_forward_ref = ForwardRef(line, container_ref)
         ability_raw_api_object.add_raw_member("container",
-                                              container_expected_pointer,
+                                              container_forward_ref,
                                               "engine.ability.type.CollectStorage")
 
         # Storage elements
@@ -564,8 +564,8 @@ class AoCAbilitySubprocessor:
         entity_lookups = internal_name_lookups.get_entity_lookups(dataset.game_version)
         for entity in line.garrison_entities:
             entity_ref = entity_lookups[entity.get_head_unit_id()][0]
-            entity_expected_pointer = ExpectedPointer(entity, entity_ref)
-            elements.append(entity_expected_pointer)
+            entity_forward_ref = ForwardRef(entity, entity_ref)
+            elements.append(entity_forward_ref)
 
         ability_raw_api_object.add_raw_member("storage_elements",
                                               elements,
@@ -573,9 +573,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def constructable_ability(line):
@@ -584,8 +584,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -598,7 +598,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Constructable" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Constructable", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Constructable")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Starting progress (always 0)
@@ -609,7 +609,7 @@ class AoCAbilitySubprocessor:
         construction_animation_id = current_unit["construction_graphic_id"].get_value()
 
         # Construction progress
-        progress_expected_pointers = []
+        progress_forward_refs = []
         if line.get_class_id() == 49:
             # Farms
             # =====================================================================================
@@ -618,7 +618,7 @@ class AoCAbilitySubprocessor:
                                                    "ConstructionProgress0",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             # Interval = (0.0, 0.0)
@@ -634,9 +634,9 @@ class AoCAbilitySubprocessor:
             # Terrain overlay
             terrain_ref = "FarmConstruction1"
             terrain_group = dataset.terrain_groups[29]
-            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
-                                                   terrain_expected_pointer,
+                                                   terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
             progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
@@ -648,7 +648,7 @@ class AoCAbilitySubprocessor:
                                                      "InitState",
                                                      dataset.nyan_api_objects)
             init_state_raw_api_object.add_raw_parent("engine.aux.state_machine.StateChanger")
-            init_state_location = ExpectedPointer(line, ability_ref)
+            init_state_location = ForwardRef(line, ability_ref)
             init_state_raw_api_object.set_location(init_state_location)
 
             # Priority
@@ -657,81 +657,81 @@ class AoCAbilitySubprocessor:
                                                      "engine.aux.state_machine.StateChanger")
 
             # Enabled abilities
-            enabled_expected_pointers = [
-                ExpectedPointer(line,
-                                "%s.VisibilityConstruct0"
-                                % (game_entity_name))
+            enabled_forward_refs = [
+                ForwardRef(line,
+                           "%s.VisibilityConstruct0"
+                           % (game_entity_name))
             ]
             init_state_raw_api_object.add_raw_member("enable_abilities",
-                                                     enabled_expected_pointers,
+                                                     enabled_forward_refs,
                                                      "engine.aux.state_machine.StateChanger")
 
             # Disabled abilities
-            disabled_expected_pointers = [
-                ExpectedPointer(line,
-                                "%s.AttributeChangeTracker"
-                                % (game_entity_name)),
-                ExpectedPointer(line,
-                                "%s.LineOfSight"
-                                % (game_entity_name)),
-                ExpectedPointer(line,
-                                "%s.Visibility"
-                                % (game_entity_name))
+            disabled_forward_refs = [
+                ForwardRef(line,
+                           "%s.AttributeChangeTracker"
+                           % (game_entity_name)),
+                ForwardRef(line,
+                           "%s.LineOfSight"
+                           % (game_entity_name)),
+                ForwardRef(line,
+                           "%s.Visibility"
+                           % (game_entity_name))
             ]
             if len(line.creates) > 0:
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Create"
-                                                                  % (game_entity_name)))
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.ProductionQueue"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Create"
+                                                        % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.ProductionQueue"
+                                                        % (game_entity_name)))
             if len(line.researches) > 0:
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Research"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Research"
+                                                        % (game_entity_name)))
 
             if line.is_projectile_shooter():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Attack"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Attack"
+                                                        % (game_entity_name)))
 
             if line.is_garrison():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Storage"
-                                                                  % (game_entity_name)))
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.RemoveStorage"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Storage"
+                                                        % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.RemoveStorage"
+                                                        % (game_entity_name)))
 
                 garrison_mode = line.get_garrison_mode()
 
                 if garrison_mode == GenieGarrisonMode.NATURAL:
-                    disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                      "%s.SendBackToTask"
-                                                                      % (game_entity_name)))
+                    disabled_forward_refs.append(ForwardRef(line,
+                                                            "%s.SendBackToTask"
+                                                            % (game_entity_name)))
 
                 if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
-                    disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                      "%s.RallyPoint"
-                                                                      % (game_entity_name)))
+                    disabled_forward_refs.append(ForwardRef(line,
+                                                            "%s.RallyPoint"
+                                                            % (game_entity_name)))
 
             if line.is_harvestable():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Harvestable"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Harvestable"
+                                                        % (game_entity_name)))
 
             if line.is_dropsite():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.DropSite"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.DropSite"
+                                                        % (game_entity_name)))
 
             if line.is_trade_post():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.TradePost"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.TradePost"
+                                                        % (game_entity_name)))
 
             init_state_raw_api_object.add_raw_member("disable_abilities",
-                                                     disabled_expected_pointers,
+                                                     disabled_forward_refs,
                                                      "engine.aux.state_machine.StateChanger")
 
             # Enabled modifiers
@@ -746,12 +746,12 @@ class AoCAbilitySubprocessor:
 
             line.add_raw_api_object(init_state_raw_api_object)
             # =====================================================================================
-            init_state_expected_pointer = ExpectedPointer(line, init_state_name)
+            init_state_forward_ref = ForwardRef(line, init_state_name)
             progress_raw_api_object.add_raw_member("state_change",
-                                                   init_state_expected_pointer,
+                                                   init_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
             # =====================================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
             progress_name = "%s.Constructable.ConstructionProgress33" % (game_entity_name)
@@ -759,7 +759,7 @@ class AoCAbilitySubprocessor:
                                                    "ConstructionProgress33",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             # Interval = (0.0, 33.0)
@@ -775,9 +775,9 @@ class AoCAbilitySubprocessor:
             # Terrain overlay
             terrain_ref = "FarmConstruction1"
             terrain_group = dataset.terrain_groups[29]
-            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
-                                                   terrain_expected_pointer,
+                                                   terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
             progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
@@ -789,7 +789,7 @@ class AoCAbilitySubprocessor:
                                                           "ConstructState",
                                                           dataset.nyan_api_objects)
             construct_state_raw_api_object.add_raw_parent("engine.aux.state_machine.StateChanger")
-            construct_state_location = ExpectedPointer(line, ability_ref)
+            construct_state_location = ForwardRef(line, ability_ref)
             construct_state_raw_api_object.set_location(construct_state_location)
 
             # Priority
@@ -803,63 +803,63 @@ class AoCAbilitySubprocessor:
                                                           "engine.aux.state_machine.StateChanger")
 
             # Disabled abilities
-            disabled_expected_pointers = [ExpectedPointer(line,
-                                                          "%s.AttributeChangeTracker"
-                                                          % (game_entity_name))]
+            disabled_forward_refs = [ForwardRef(line,
+                                                "%s.AttributeChangeTracker"
+                                                % (game_entity_name))]
             if len(line.creates) > 0:
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Create"
-                                                                  % (game_entity_name)))
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.ProductionQueue"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Create"
+                                                        % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.ProductionQueue"
+                                                        % (game_entity_name)))
             if len(line.researches) > 0:
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Research"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Research"
+                                                        % (game_entity_name)))
 
             if line.is_projectile_shooter():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Attack"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Attack"
+                                                        % (game_entity_name)))
 
             if line.is_garrison():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Storage"
-                                                                  % (game_entity_name)))
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.RemoveStorage"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Storage"
+                                                        % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.RemoveStorage"
+                                                        % (game_entity_name)))
 
                 garrison_mode = line.get_garrison_mode()
 
                 if garrison_mode == GenieGarrisonMode.NATURAL:
-                    disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                      "%s.SendBackToTask"
-                                                                      % (game_entity_name)))
+                    disabled_forward_refs.append(ForwardRef(line,
+                                                            "%s.SendBackToTask"
+                                                            % (game_entity_name)))
 
                 if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
-                    disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                      "%s.RallyPoint"
-                                                                      % (game_entity_name)))
+                    disabled_forward_refs.append(ForwardRef(line,
+                                                            "%s.RallyPoint"
+                                                            % (game_entity_name)))
 
             if line.is_harvestable():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Harvestable"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Harvestable"
+                                                        % (game_entity_name)))
 
             if line.is_dropsite():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.DropSite"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.DropSite"
+                                                        % (game_entity_name)))
 
             if line.is_trade_post():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.TradePost"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.TradePost"
+                                                        % (game_entity_name)))
 
             construct_state_raw_api_object.add_raw_member("disable_abilities",
-                                                          disabled_expected_pointers,
+                                                          disabled_forward_refs,
                                                           "engine.aux.state_machine.StateChanger")
 
             # Enabled modifiers
@@ -874,12 +874,12 @@ class AoCAbilitySubprocessor:
 
             line.add_raw_api_object(construct_state_raw_api_object)
             # =====================================================================================
-            construct_state_expected_pointer = ExpectedPointer(line, construct_state_name)
+            construct_state_forward_ref = ForwardRef(line, construct_state_name)
             progress_raw_api_object.add_raw_member("state_change",
-                                                   construct_state_expected_pointer,
+                                                   construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
             #======================================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
             progress_name = "%s.Constructable.ConstructionProgress66" % (game_entity_name)
@@ -887,7 +887,7 @@ class AoCAbilitySubprocessor:
                                                    "ConstructionProgress66",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             # Interval = (33.0, 66.0)
@@ -903,18 +903,18 @@ class AoCAbilitySubprocessor:
             # Terrain overlay
             terrain_ref = "FarmConstruction2"
             terrain_group = dataset.terrain_groups[30]
-            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
-                                                   terrain_expected_pointer,
+                                                   terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
             # State change
             progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
             progress_raw_api_object.add_raw_member("state_change",
-                                                   construct_state_expected_pointer,
+                                                   construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
             #======================================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
             progress_name = "%s.Constructable.ConstructionProgress100" % (game_entity_name)
@@ -922,7 +922,7 @@ class AoCAbilitySubprocessor:
                                                    "ConstructionProgress100",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             # Interval = (66.0, 100.0)
@@ -938,18 +938,18 @@ class AoCAbilitySubprocessor:
             # Terrain overlay
             terrain_ref = "FarmConstruction3"
             terrain_group = dataset.terrain_groups[31]
-            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
-                                                   terrain_expected_pointer,
+                                                   terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
             # State change
             progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
             progress_raw_api_object.add_raw_member("state_change",
-                                                   construct_state_expected_pointer,
+                                                   construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
             #======================================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
 
         else:
@@ -958,7 +958,7 @@ class AoCAbilitySubprocessor:
                                                    "ConstructionProgress0",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             # Interval = (0.0, 0.0)
@@ -981,23 +981,23 @@ class AoCAbilitySubprocessor:
                                                        "IdleOverride",
                                                        dataset.nyan_api_objects)
                 override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-                override_location = ExpectedPointer(line, progress_name)
+                override_location = ForwardRef(line, progress_name)
                 override_raw_api_object.set_location(override_location)
 
-                idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+                idle_forward_ref = ForwardRef(line, "%s.Idle" % (game_entity_name))
                 override_raw_api_object.add_raw_member("ability",
-                                                       idle_expected_pointer,
+                                                       idle_forward_ref,
                                                        "engine.aux.animation_override.AnimationOverride")
 
                 # Animation
                 animations_set = []
-                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                      construction_animation_id,
-                                                                                      override_ref,
-                                                                                      "Idle",
-                                                                                      "idle_construct0_override_")
+                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                                 construction_animation_id,
+                                                                                 override_ref,
+                                                                                 "Idle",
+                                                                                 "idle_construct0_override_")
 
-                animations_set.append(animation_expected_pointer)
+                animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
                                                        animations_set,
                                                        "engine.aux.animation_override.AnimationOverride")
@@ -1006,8 +1006,8 @@ class AoCAbilitySubprocessor:
                                                        1,
                                                        "engine.aux.animation_override.AnimationOverride")
 
-                override_expected_pointer = ExpectedPointer(line, override_ref)
-                overrides.append(override_expected_pointer)
+                override_forward_ref = ForwardRef(line, override_ref)
+                overrides.append(override_forward_ref)
                 line.add_raw_api_object(override_raw_api_object)
                 # ===========================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
@@ -1023,7 +1023,7 @@ class AoCAbilitySubprocessor:
                                                      "InitState",
                                                      dataset.nyan_api_objects)
             init_state_raw_api_object.add_raw_parent("engine.aux.state_machine.StateChanger")
-            init_state_location = ExpectedPointer(line, ability_ref)
+            init_state_location = ForwardRef(line, ability_ref)
             init_state_raw_api_object.set_location(init_state_location)
 
             # Priority
@@ -1032,81 +1032,81 @@ class AoCAbilitySubprocessor:
                                                      "engine.aux.state_machine.StateChanger")
 
             # Enabled abilities
-            enabled_expected_pointers = [
-                ExpectedPointer(line,
-                                "%s.VisibilityConstruct0"
-                                % (game_entity_name))
+            enabled_forward_refs = [
+                ForwardRef(line,
+                           "%s.VisibilityConstruct0"
+                           % (game_entity_name))
             ]
             init_state_raw_api_object.add_raw_member("enable_abilities",
-                                                     enabled_expected_pointers,
+                                                     enabled_forward_refs,
                                                      "engine.aux.state_machine.StateChanger")
 
             # Disabled abilities
-            disabled_expected_pointers = [
-                ExpectedPointer(line,
-                                "%s.AttributeChangeTracker"
-                                % (game_entity_name)),
-                ExpectedPointer(line,
-                                "%s.LineOfSight"
-                                % (game_entity_name)),
-                ExpectedPointer(line,
-                                "%s.Visibility"
-                                % (game_entity_name))
+            disabled_forward_refs = [
+                ForwardRef(line,
+                           "%s.AttributeChangeTracker"
+                           % (game_entity_name)),
+                ForwardRef(line,
+                           "%s.LineOfSight"
+                           % (game_entity_name)),
+                ForwardRef(line,
+                           "%s.Visibility"
+                           % (game_entity_name))
             ]
             if len(line.creates) > 0:
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Create"
-                                                                  % (game_entity_name)))
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.ProductionQueue"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Create"
+                                                        % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.ProductionQueue"
+                                                        % (game_entity_name)))
             if len(line.researches) > 0:
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Research"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Research"
+                                                        % (game_entity_name)))
 
             if line.is_projectile_shooter():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Attack"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Attack"
+                                                        % (game_entity_name)))
 
             if line.is_garrison():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Storage"
-                                                                  % (game_entity_name)))
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.RemoveStorage"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Storage"
+                                                        % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.RemoveStorage"
+                                                        % (game_entity_name)))
 
                 garrison_mode = line.get_garrison_mode()
 
                 if garrison_mode == GenieGarrisonMode.NATURAL:
-                    disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                      "%s.SendBackToTask"
-                                                                      % (game_entity_name)))
+                    disabled_forward_refs.append(ForwardRef(line,
+                                                            "%s.SendBackToTask"
+                                                            % (game_entity_name)))
 
                 if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
-                    disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                      "%s.RallyPoint"
-                                                                      % (game_entity_name)))
+                    disabled_forward_refs.append(ForwardRef(line,
+                                                            "%s.RallyPoint"
+                                                            % (game_entity_name)))
 
             if line.is_harvestable():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Harvestable"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Harvestable"
+                                                        % (game_entity_name)))
 
             if line.is_dropsite():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.DropSite"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.DropSite"
+                                                        % (game_entity_name)))
 
             if line.is_trade_post():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.TradePost"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.TradePost"
+                                                        % (game_entity_name)))
 
             init_state_raw_api_object.add_raw_member("disable_abilities",
-                                                     disabled_expected_pointers,
+                                                     disabled_forward_refs,
                                                      "engine.aux.state_machine.StateChanger")
 
             # Enabled modifiers
@@ -1121,12 +1121,12 @@ class AoCAbilitySubprocessor:
 
             line.add_raw_api_object(init_state_raw_api_object)
             # =====================================================================================
-            init_state_expected_pointer = ExpectedPointer(line, init_state_name)
+            init_state_forward_ref = ForwardRef(line, init_state_name)
             progress_raw_api_object.add_raw_member("state_change",
-                                                   init_state_expected_pointer,
+                                                   init_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
             #======================================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
             progress_name = "%s.Constructable.ConstructionProgress25" % (game_entity_name)
@@ -1134,7 +1134,7 @@ class AoCAbilitySubprocessor:
                                                    "ConstructionProgress25",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             # Interval = (0.0, 25.0)
@@ -1157,23 +1157,23 @@ class AoCAbilitySubprocessor:
                                                        "IdleOverride",
                                                        dataset.nyan_api_objects)
                 override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-                override_location = ExpectedPointer(line, progress_name)
+                override_location = ForwardRef(line, progress_name)
                 override_raw_api_object.set_location(override_location)
 
-                idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+                idle_forward_ref = ForwardRef(line, "%s.Idle" % (game_entity_name))
                 override_raw_api_object.add_raw_member("ability",
-                                                       idle_expected_pointer,
+                                                       idle_forward_ref,
                                                        "engine.aux.animation_override.AnimationOverride")
 
                 # Animation
                 animations_set = []
-                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                      construction_animation_id,
-                                                                                      override_ref,
-                                                                                      "Idle",
-                                                                                      "idle_construct25_override_")
+                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                                 construction_animation_id,
+                                                                                 override_ref,
+                                                                                 "Idle",
+                                                                                 "idle_construct25_override_")
 
-                animations_set.append(animation_expected_pointer)
+                animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
                                                        animations_set,
                                                        "engine.aux.animation_override.AnimationOverride")
@@ -1182,8 +1182,8 @@ class AoCAbilitySubprocessor:
                                                        1,
                                                        "engine.aux.animation_override.AnimationOverride")
 
-                override_expected_pointer = ExpectedPointer(line, override_ref)
-                overrides.append(override_expected_pointer)
+                override_forward_ref = ForwardRef(line, override_ref)
+                overrides.append(override_forward_ref)
                 line.add_raw_api_object(override_raw_api_object)
                 # ===========================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
@@ -1199,7 +1199,7 @@ class AoCAbilitySubprocessor:
                                                           "ConstructState",
                                                           dataset.nyan_api_objects)
             construct_state_raw_api_object.add_raw_parent("engine.aux.state_machine.StateChanger")
-            construct_state_location = ExpectedPointer(line, ability_ref)
+            construct_state_location = ForwardRef(line, ability_ref)
             construct_state_raw_api_object.set_location(construct_state_location)
 
             # Priority
@@ -1213,63 +1213,63 @@ class AoCAbilitySubprocessor:
                                                           "engine.aux.state_machine.StateChanger")
 
             # Disabled abilities
-            disabled_expected_pointers = [ExpectedPointer(line,
-                                                          "%s.AttributeChangeTracker"
-                                                          % (game_entity_name))]
+            disabled_forward_refs = [ForwardRef(line,
+                                                "%s.AttributeChangeTracker"
+                                                % (game_entity_name))]
             if len(line.creates) > 0:
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Create"
-                                                                  % (game_entity_name)))
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.ProductionQueue"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Create"
+                                                        % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.ProductionQueue"
+                                                        % (game_entity_name)))
             if len(line.researches) > 0:
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Research"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Research"
+                                                        % (game_entity_name)))
 
             if line.is_projectile_shooter():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Attack"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Attack"
+                                                        % (game_entity_name)))
 
             if line.is_garrison():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Storage"
-                                                                  % (game_entity_name)))
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.RemoveStorage"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Storage"
+                                                        % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.RemoveStorage"
+                                                        % (game_entity_name)))
 
                 garrison_mode = line.get_garrison_mode()
 
                 if garrison_mode == GenieGarrisonMode.NATURAL:
-                    disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                      "%s.SendBackToTask"
-                                                                      % (game_entity_name)))
+                    disabled_forward_refs.append(ForwardRef(line,
+                                                            "%s.SendBackToTask"
+                                                            % (game_entity_name)))
 
                 if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
-                    disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                      "%s.RallyPoint"
-                                                                      % (game_entity_name)))
+                    disabled_forward_refs.append(ForwardRef(line,
+                                                            "%s.RallyPoint"
+                                                            % (game_entity_name)))
 
             if line.is_harvestable():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.Harvestable"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Harvestable"
+                                                        % (game_entity_name)))
 
             if line.is_dropsite():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.DropSite"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.DropSite"
+                                                        % (game_entity_name)))
 
             if line.is_trade_post():
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.TradePost"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.TradePost"
+                                                        % (game_entity_name)))
 
             construct_state_raw_api_object.add_raw_member("disable_abilities",
-                                                          disabled_expected_pointers,
+                                                          disabled_forward_refs,
                                                           "engine.aux.state_machine.StateChanger")
 
             # Enabled modifiers
@@ -1284,12 +1284,12 @@ class AoCAbilitySubprocessor:
 
             line.add_raw_api_object(construct_state_raw_api_object)
             # =====================================================================================
-            construct_state_expected_pointer = ExpectedPointer(line, construct_state_name)
+            construct_state_forward_ref = ForwardRef(line, construct_state_name)
             progress_raw_api_object.add_raw_member("state_change",
-                                                   construct_state_expected_pointer,
+                                                   construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
             #======================================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
             progress_name = "%s.Constructable.ConstructionProgress50" % (game_entity_name)
@@ -1297,7 +1297,7 @@ class AoCAbilitySubprocessor:
                                                    "ConstructionProgress50",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             # Interval = (25.0, 50.0)
@@ -1320,23 +1320,23 @@ class AoCAbilitySubprocessor:
                                                        "IdleOverride",
                                                        dataset.nyan_api_objects)
                 override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-                override_location = ExpectedPointer(line, progress_name)
+                override_location = ForwardRef(line, progress_name)
                 override_raw_api_object.set_location(override_location)
 
-                idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+                idle_forward_ref = ForwardRef(line, "%s.Idle" % (game_entity_name))
                 override_raw_api_object.add_raw_member("ability",
-                                                       idle_expected_pointer,
+                                                       idle_forward_ref,
                                                        "engine.aux.animation_override.AnimationOverride")
 
                 # Animation
                 animations_set = []
-                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                      construction_animation_id,
-                                                                                      override_ref,
-                                                                                      "Idle",
-                                                                                      "idle_construct50_override_")
+                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                                 construction_animation_id,
+                                                                                 override_ref,
+                                                                                 "Idle",
+                                                                                 "idle_construct50_override_")
 
-                animations_set.append(animation_expected_pointer)
+                animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
                                                        animations_set,
                                                        "engine.aux.animation_override.AnimationOverride")
@@ -1345,8 +1345,8 @@ class AoCAbilitySubprocessor:
                                                        1,
                                                        "engine.aux.animation_override.AnimationOverride")
 
-                override_expected_pointer = ExpectedPointer(line, override_ref)
-                overrides.append(override_expected_pointer)
+                override_forward_ref = ForwardRef(line, override_ref)
+                overrides.append(override_forward_ref)
                 line.add_raw_api_object(override_raw_api_object)
                 # ===========================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
@@ -1356,10 +1356,10 @@ class AoCAbilitySubprocessor:
             # State change
             progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
             progress_raw_api_object.add_raw_member("state_change",
-                                                   construct_state_expected_pointer,
+                                                   construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
             #======================================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
             progress_name = "%s.Constructable.ConstructionProgress75" % (game_entity_name)
@@ -1367,7 +1367,7 @@ class AoCAbilitySubprocessor:
                                                    "ConstructionProgress75",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             # Interval = (50.0, 75.0)
@@ -1390,23 +1390,23 @@ class AoCAbilitySubprocessor:
                                                        "IdleOverride",
                                                        dataset.nyan_api_objects)
                 override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-                override_location = ExpectedPointer(line, progress_name)
+                override_location = ForwardRef(line, progress_name)
                 override_raw_api_object.set_location(override_location)
 
-                idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+                idle_forward_ref = ForwardRef(line, "%s.Idle" % (game_entity_name))
                 override_raw_api_object.add_raw_member("ability",
-                                                       idle_expected_pointer,
+                                                       idle_forward_ref,
                                                        "engine.aux.animation_override.AnimationOverride")
 
                 # Animation
                 animations_set = []
-                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                      construction_animation_id,
-                                                                                      override_ref,
-                                                                                      "Idle",
-                                                                                      "idle_construct75_override_")
+                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                                 construction_animation_id,
+                                                                                 override_ref,
+                                                                                 "Idle",
+                                                                                 "idle_construct75_override_")
 
-                animations_set.append(animation_expected_pointer)
+                animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
                                                        animations_set,
                                                        "engine.aux.animation_override.AnimationOverride")
@@ -1415,8 +1415,8 @@ class AoCAbilitySubprocessor:
                                                        1,
                                                        "engine.aux.animation_override.AnimationOverride")
 
-                override_expected_pointer = ExpectedPointer(line, override_ref)
-                overrides.append(override_expected_pointer)
+                override_forward_ref = ForwardRef(line, override_ref)
+                overrides.append(override_forward_ref)
                 line.add_raw_api_object(override_raw_api_object)
                 # ===========================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
@@ -1426,10 +1426,10 @@ class AoCAbilitySubprocessor:
             # State change
             progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
             progress_raw_api_object.add_raw_member("state_change",
-                                                   construct_state_expected_pointer,
+                                                   construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
             #======================================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
             progress_name = "%s.Constructable.ConstructionProgress100" % (game_entity_name)
@@ -1437,7 +1437,7 @@ class AoCAbilitySubprocessor:
                                                    "ConstructionProgress100",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.ConstructionProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             # Interval = (75.0, 100.0)
@@ -1460,23 +1460,23 @@ class AoCAbilitySubprocessor:
                                                        "IdleOverride",
                                                        dataset.nyan_api_objects)
                 override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-                override_location = ExpectedPointer(line, progress_name)
+                override_location = ForwardRef(line, progress_name)
                 override_raw_api_object.set_location(override_location)
 
-                idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+                idle_forward_ref = ForwardRef(line, "%s.Idle" % (game_entity_name))
                 override_raw_api_object.add_raw_member("ability",
-                                                       idle_expected_pointer,
+                                                       idle_forward_ref,
                                                        "engine.aux.animation_override.AnimationOverride")
 
                 # Animation
                 animations_set = []
-                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                      construction_animation_id,
-                                                                                      override_ref,
-                                                                                      "Idle",
-                                                                                      "idle_construct100_override_")
+                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                                 construction_animation_id,
+                                                                                 override_ref,
+                                                                                 "Idle",
+                                                                                 "idle_construct100_override_")
 
-                animations_set.append(animation_expected_pointer)
+                animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
                                                        animations_set,
                                                        "engine.aux.animation_override.AnimationOverride")
@@ -1485,8 +1485,8 @@ class AoCAbilitySubprocessor:
                                                        1,
                                                        "engine.aux.animation_override.AnimationOverride")
 
-                override_expected_pointer = ExpectedPointer(line, override_ref)
-                overrides.append(override_expected_pointer)
+                override_forward_ref = ForwardRef(line, override_ref)
+                overrides.append(override_forward_ref)
                 line.add_raw_api_object(override_raw_api_object)
                 # ===========================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
@@ -1496,21 +1496,21 @@ class AoCAbilitySubprocessor:
             # State change
             progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
             progress_raw_api_object.add_raw_member("state_change",
-                                                   construct_state_expected_pointer,
+                                                   construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
             #======================================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
         # =====================================================================================
         ability_raw_api_object.add_raw_member("construction_progress",
-                                              progress_expected_pointers,
+                                              progress_forward_refs,
                                               "engine.ability.type.Constructable")
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def create_ability(line):
@@ -1519,8 +1519,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -1531,7 +1531,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Create" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Create", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Create")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         creatables_set = []
@@ -1548,17 +1548,17 @@ class AoCAbilitySubprocessor:
             creatable_name = name_lookup_dict[creatable_id][0]
 
             raw_api_object_ref = "%s.CreatableGameEntity" % creatable_name
-            creatable_expected_pointer = ExpectedPointer(creatable,
-                                                         raw_api_object_ref)
-            creatables_set.append(creatable_expected_pointer)
+            creatable_forward_ref = ForwardRef(creatable,
+                                               raw_api_object_ref)
+            creatables_set.append(creatable_forward_ref)
 
         ability_raw_api_object.add_raw_member("creatables", creatables_set,
                                               "engine.ability.type.Create")
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def death_ability(line):
@@ -1567,8 +1567,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -1582,7 +1582,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Death" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Death", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.PassiveTransformTo")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         ability_animation_id = current_unit.get_member("dying_graphic").get_value()
@@ -1592,12 +1592,12 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  ability_animation_id,
-                                                                                  ability_ref,
-                                                                                  "Death",
-                                                                                  "death_")
-            animations_set.append(animation_expected_pointer)
+            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                             ability_animation_id,
+                                                                             ability_ref,
+                                                                             "Death",
+                                                                             "death_")
+            animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
@@ -1658,7 +1658,7 @@ class AoCAbilitySubprocessor:
         target_state_name = "%s.Death.DeadState" % (game_entity_name)
         target_state_raw_api_object = RawAPIObject(target_state_name, "DeadState", dataset.nyan_api_objects)
         target_state_raw_api_object.add_raw_parent("engine.aux.state_machine.StateChanger")
-        target_state_location = ExpectedPointer(line, ability_ref)
+        target_state_location = ForwardRef(line, ability_ref)
         target_state_raw_api_object.set_location(target_state_location)
 
         # Priority
@@ -1672,73 +1672,73 @@ class AoCAbilitySubprocessor:
                                                    "engine.aux.state_machine.StateChanger")
 
         # Disabled abilities
-        disabled_expected_pointers = []
+        disabled_forward_refs = []
         if isinstance(line, (GenieUnitLineGroup, GenieBuildingLineGroup)):
-            disabled_expected_pointers.append(ExpectedPointer(line,
-                                                              "%s.LineOfSight"
-                                                              % (game_entity_name)))
+            disabled_forward_refs.append(ForwardRef(line,
+                                                    "%s.LineOfSight"
+                                                    % (game_entity_name)))
 
         if isinstance(line, GenieBuildingLineGroup):
-            disabled_expected_pointers.append(ExpectedPointer(line,
-                                                              "%s.AttributeChangeTracker"
-                                                              % (game_entity_name)))
+            disabled_forward_refs.append(ForwardRef(line,
+                                                    "%s.AttributeChangeTracker"
+                                                    % (game_entity_name)))
 
         if len(line.creates) > 0:
-            disabled_expected_pointers.append(ExpectedPointer(line,
-                                                              "%s.Create"
-                                                              % (game_entity_name)))
+            disabled_forward_refs.append(ForwardRef(line,
+                                                    "%s.Create"
+                                                    % (game_entity_name)))
 
             if isinstance(line, GenieBuildingLineGroup):
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.ProductionQueue"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.ProductionQueue"
+                                                        % (game_entity_name)))
         if len(line.researches) > 0:
-            disabled_expected_pointers.append(ExpectedPointer(line,
-                                                              "%s.Research"
-                                                              % (game_entity_name)))
+            disabled_forward_refs.append(ForwardRef(line,
+                                                    "%s.Research"
+                                                    % (game_entity_name)))
 
         if line.is_projectile_shooter():
-            disabled_expected_pointers.append(ExpectedPointer(line,
-                                                              "%s.Attack"
-                                                              % (game_entity_name)))
+            disabled_forward_refs.append(ForwardRef(line,
+                                                    "%s.Attack"
+                                                    % (game_entity_name)))
 
         if line.is_garrison():
-            disabled_expected_pointers.append(ExpectedPointer(line,
-                                                              "%s.Storage"
-                                                              % (game_entity_name)))
-            disabled_expected_pointers.append(ExpectedPointer(line,
-                                                              "%s.RemoveStorage"
-                                                              % (game_entity_name)))
+            disabled_forward_refs.append(ForwardRef(line,
+                                                    "%s.Storage"
+                                                    % (game_entity_name)))
+            disabled_forward_refs.append(ForwardRef(line,
+                                                    "%s.RemoveStorage"
+                                                    % (game_entity_name)))
 
             garrison_mode = line.get_garrison_mode()
 
             if garrison_mode == GenieGarrisonMode.NATURAL:
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.SendBackToTask"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.SendBackToTask"
+                                                        % (game_entity_name)))
 
             if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
-                disabled_expected_pointers.append(ExpectedPointer(line,
-                                                                  "%s.RallyPoint"
-                                                                  % (game_entity_name)))
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.RallyPoint"
+                                                        % (game_entity_name)))
 
         if line.is_harvestable():
-            disabled_expected_pointers.append(ExpectedPointer(line,
-                                                              "%s.Harvestable"
-                                                              % (game_entity_name)))
+            disabled_forward_refs.append(ForwardRef(line,
+                                                    "%s.Harvestable"
+                                                    % (game_entity_name)))
 
         if isinstance(line, GenieBuildingLineGroup) and line.is_dropsite():
-            disabled_expected_pointers.append(ExpectedPointer(line,
-                                                              "%s.DropSite"
-                                                              % (game_entity_name)))
+            disabled_forward_refs.append(ForwardRef(line,
+                                                    "%s.DropSite"
+                                                    % (game_entity_name)))
 
         if isinstance(line, GenieBuildingLineGroup) and line.is_trade_post():
-            disabled_expected_pointers.append(ExpectedPointer(line,
-                                                              "%s.TradePost"
-                                                              % (game_entity_name)))
+            disabled_forward_refs.append(ForwardRef(line,
+                                                    "%s.TradePost"
+                                                    % (game_entity_name)))
 
         target_state_raw_api_object.add_raw_member("disable_abilities",
-                                                   disabled_expected_pointers,
+                                                   disabled_forward_refs,
                                                    "engine.aux.state_machine.StateChanger")
 
         # Enabled modifiers
@@ -1753,9 +1753,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(target_state_raw_api_object)
         # =====================================================================================
-        target_state_expected_pointer = ExpectedPointer(line, target_state_name)
+        target_state_forward_ref = ForwardRef(line, target_state_name)
         ability_raw_api_object.add_raw_member("target_state",
-                                              target_state_expected_pointer,
+                                              target_state_forward_ref,
                                               "engine.ability.type.PassiveTransformTo")
 
         # Transform progress
@@ -1763,7 +1763,7 @@ class AoCAbilitySubprocessor:
         progress_name = "%s.Death.DeathProgress" % (game_entity_name)
         progress_raw_api_object = RawAPIObject(progress_name, "DeathProgress", dataset.nyan_api_objects)
         progress_raw_api_object.add_raw_parent("engine.aux.progress.type.TransformProgress")
-        progress_location = ExpectedPointer(line, ability_ref)
+        progress_location = ForwardRef(line, ability_ref)
         progress_raw_api_object.set_location(progress_location)
 
         # Interval = (0.0, 100.0)
@@ -1776,21 +1776,21 @@ class AoCAbilitySubprocessor:
 
         progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
         progress_raw_api_object.add_raw_member("state_change",
-                                               target_state_expected_pointer,
+                                               target_state_forward_ref,
                                                "engine.aux.progress.specialization.StateChangeProgress")
 
         line.add_raw_api_object(progress_raw_api_object)
         # =====================================================================================
-        progress_expected_pointer = ExpectedPointer(line, progress_name)
+        progress_forward_ref = ForwardRef(line, progress_name)
         ability_raw_api_object.add_raw_member("transform_progress",
-                                              [progress_expected_pointer],
+                                              [progress_forward_ref],
                                               "engine.ability.type.PassiveTransformTo")
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def delete_ability(line):
@@ -1799,8 +1799,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -1813,7 +1813,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Delete" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Delete", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ActiveTransformTo")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         ability_animation_id = current_unit.get_member("dying_graphic").get_value()
@@ -1824,8 +1824,8 @@ class AoCAbilitySubprocessor:
 
             animations_set = []
             animation_ref = "%s.Death.DeathAnimation" % (game_entity_name)
-            animation_expected_pointer = ExpectedPointer(line, animation_ref)
-            animations_set.append(animation_expected_pointer)
+            animation_forward_ref = ForwardRef(line, animation_ref)
+            animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
@@ -1844,23 +1844,23 @@ class AoCAbilitySubprocessor:
 
         # Target state (reuse from Death)
         target_state_ref = "%s.Death.DeadState" % (game_entity_name)
-        target_state_expected_pointer = ExpectedPointer(line, target_state_ref)
+        target_state_forward_ref = ForwardRef(line, target_state_ref)
         ability_raw_api_object.add_raw_member("target_state",
-                                              target_state_expected_pointer,
+                                              target_state_forward_ref,
                                               "engine.ability.type.ActiveTransformTo")
 
         # Transform progress (reuse from Death)
         progress_ref = "%s.Death.DeathProgress" % (game_entity_name)
-        progress_expected_pointer = ExpectedPointer(line, progress_ref)
+        progress_forward_ref = ForwardRef(line, progress_ref)
         ability_raw_api_object.add_raw_member("transform_progress",
-                                              [progress_expected_pointer],
+                                              [progress_forward_ref],
                                               "engine.ability.type.ActiveTransformTo")
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def despawn_ability(line):
@@ -1869,8 +1869,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -1891,7 +1891,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Despawn" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Despawn", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Despawn")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         ability_animation_id = -1
@@ -1903,12 +1903,12 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  ability_animation_id,
-                                                                                  ability_ref,
-                                                                                  "Despawn",
-                                                                                  "despawn_")
-            animations_set.append(animation_expected_pointer)
+            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                             ability_animation_id,
+                                                                             ability_ref,
+                                                                             "Despawn",
+                                                                             "despawn_")
+            animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
@@ -1982,9 +1982,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def drop_resources_ability(line):
@@ -1993,8 +1993,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         if isinstance(line, GenieVillagerGroup):
             gatherers = line.variants[0].line
@@ -2013,7 +2013,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.DropResources" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "DropResources", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.DropResources")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Resource containers
@@ -2036,8 +2036,8 @@ class AoCAbilitySubprocessor:
 
             container_ref = "%s.ResourceStorage.%sContainer" % (game_entity_name,
                                                                 gather_lookup_dict[gatherer_unit_id][0])
-            container_expected_pointer = ExpectedPointer(line, container_ref)
-            containers.append(container_expected_pointer)
+            container_forward_ref = ForwardRef(line, container_ref)
+            containers.append(container_forward_ref)
 
         ability_raw_api_object.add_raw_member("containers",
                                               containers,
@@ -2060,9 +2060,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def drop_site_ability(line):
@@ -2071,8 +2071,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -2085,7 +2085,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.DropSite" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "DropSite", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.DropSite")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Resource containers
@@ -2103,8 +2103,8 @@ class AoCAbilitySubprocessor:
 
             container_ref = "%s.ResourceStorage.%sContainer" % (gatherer_name,
                                                                 gather_lookup_dict[gatherer_id][0])
-            container_expected_pointer = ExpectedPointer(gatherer_line, container_ref)
-            containers.append(container_expected_pointer)
+            container_forward_ref = ForwardRef(gatherer_line, container_ref)
+            containers.append(container_forward_ref)
 
         ability_raw_api_object.add_raw_member("accepts_from",
                                               containers,
@@ -2112,9 +2112,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def enter_container_ability(line):
@@ -2123,8 +2123,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability. None if no valid containers were found.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer, None
+        :returns: The forward reference for the ability. None if no valid containers were found.
+        :rtype: ...dataformat.forward_ref.ForwardRef, None
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -2136,7 +2136,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.EnterContainer" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "EnterContainer", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.EnterContainer")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Containers
@@ -2152,8 +2152,8 @@ class AoCAbilitySubprocessor:
             garrison_name = entity_lookups[garrison.get_head_unit_id()][0]
 
             container_ref = "%s.Storage.%sContainer" % (garrison_name, garrison_name)
-            container_expected_pointer = ExpectedPointer(garrison, container_ref)
-            containers.append(container_expected_pointer)
+            container_forward_ref = ForwardRef(garrison, container_ref)
+            containers.append(container_forward_ref)
 
         if not containers:
             return None
@@ -2175,9 +2175,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def exchange_resources_ability(line):
@@ -2186,8 +2186,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -2204,7 +2204,7 @@ class AoCAbilitySubprocessor:
             ability_ref = "%s.%s" % (game_entity_name, ability_name)
             ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent("engine.ability.type.ExchangeResources")
-            ability_location = ExpectedPointer(line, game_entity_name)
+            ability_location = ForwardRef(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
 
             # Resource that is exchanged (resource A)
@@ -2236,8 +2236,8 @@ class AoCAbilitySubprocessor:
                                                   "engine.ability.type.ExchangeResources")
 
             line.add_raw_api_object(ability_raw_api_object)
-            ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
-            abilities.append(ability_expected_pointer)
+            ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
+            abilities.append(ability_forward_ref)
 
         return abilities
 
@@ -2248,8 +2248,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability. None if no valid containers were found.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer, None
+        :returns: The forward reference for the ability. None if no valid containers were found.
+        :rtype: ...dataformat.forward_ref.ForwardRef, None
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -2261,7 +2261,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.ExitContainer" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "ExitContainer", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ExitContainer")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Containers
@@ -2277,8 +2277,8 @@ class AoCAbilitySubprocessor:
             garrison_name = entity_lookups[garrison.get_head_unit_id()][0]
 
             container_ref = "%s.Storage.%sContainer" % (garrison_name, garrison_name)
-            container_expected_pointer = ExpectedPointer(garrison, container_ref)
-            containers.append(container_expected_pointer)
+            container_forward_ref = ForwardRef(garrison, container_ref)
+            containers.append(container_forward_ref)
 
         if not containers:
             return None
@@ -2289,9 +2289,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def game_entity_stance_ability(line):
@@ -2300,8 +2300,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -2314,7 +2314,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.GameEntityStance" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "GameEntityStance", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.GameEntityStance")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Stances
@@ -2324,14 +2324,14 @@ class AoCAbilitySubprocessor:
         # Attacking is prefered
         ability_preferences = []
         if line.is_projectile_shooter():
-            ability_preferences.append(ExpectedPointer(line, "%s.Attack" % (game_entity_name)))
+            ability_preferences.append(ForwardRef(line, "%s.Attack" % (game_entity_name)))
 
         elif line.is_melee() or line.is_ranged():
             if line.has_command(7):
-                ability_preferences.append(ExpectedPointer(line, "%s.Attack" % (game_entity_name)))
+                ability_preferences.append(ForwardRef(line, "%s.Attack" % (game_entity_name)))
 
             if line.has_command(105):
-                ability_preferences.append(ExpectedPointer(line, "%s.Heal" % (game_entity_name)))
+                ability_preferences.append(ForwardRef(line, "%s.Heal" % (game_entity_name)))
 
         # Units are prefered before buildings
         type_preferences = [
@@ -2346,7 +2346,7 @@ class AoCAbilitySubprocessor:
             stance_ref = "%s.GameEntityStance.%s" % (game_entity_name, stance_name)
             stance_raw_api_object = RawAPIObject(stance_ref, stance_name, dataset.nyan_api_objects)
             stance_raw_api_object.add_raw_parent(stance_api_ref)
-            stance_location = ExpectedPointer(line, ability_ref)
+            stance_location = ForwardRef(line, ability_ref)
             stance_raw_api_object.set_location(stance_location)
 
             # Search range
@@ -2365,8 +2365,8 @@ class AoCAbilitySubprocessor:
                                                  "engine.aux.game_entity_stance.GameEntityStance")
 
             line.add_raw_api_object(stance_raw_api_object)
-            stance_expected_pointer = ExpectedPointer(line, stance_ref)
-            stances.append(stance_expected_pointer)
+            stance_forward_ref = ForwardRef(line, stance_ref)
+            stances.append(stance_forward_ref)
 
         ability_raw_api_object.add_raw_member("stances",
                                               stances,
@@ -2374,9 +2374,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def formation_ability(line):
@@ -2385,8 +2385,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -2398,7 +2398,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Formation" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Formation", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Formation")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Formation definitions
@@ -2426,7 +2426,7 @@ class AoCAbilitySubprocessor:
                                                        formation_name,
                                                        dataset.nyan_api_objects)
             ge_formation_raw_api_object.add_raw_parent("engine.aux.game_entity_formation.GameEntityFormation")
-            ge_formation_location = ExpectedPointer(line, ability_ref)
+            ge_formation_location = ForwardRef(line, ability_ref)
             ge_formation_raw_api_object.set_location(ge_formation_location)
 
             # Formation
@@ -2442,8 +2442,8 @@ class AoCAbilitySubprocessor:
                                                        "engine.aux.game_entity_formation.GameEntityFormation")
 
             line.add_raw_api_object(ge_formation_raw_api_object)
-            ge_formation_expected_pointer = ExpectedPointer(line, ge_formation_ref)
-            formation_defs.append(ge_formation_expected_pointer)
+            ge_formation_forward_ref = ForwardRef(line, ge_formation_ref)
+            formation_defs.append(ge_formation_forward_ref)
 
         ability_raw_api_object.add_raw_member("formations",
                                               formation_defs,
@@ -2451,9 +2451,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def foundation_ability(line, terrain_id=-1):
@@ -2465,8 +2465,8 @@ class AoCAbilitySubprocessor:
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param terrain_id: Force this terrain ID as foundation
         :type terrain_id: int
-        :returns: The expected pointers for the abilities.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward references for the abilities.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -2480,7 +2480,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Foundation" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Foundation", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Foundation")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Terrain
@@ -2488,16 +2488,16 @@ class AoCAbilitySubprocessor:
             terrain_id = current_unit["foundation_terrain_id"].get_value()
 
         terrain = dataset.terrain_groups[terrain_id]
-        terrain_expected_pointer = ExpectedPointer(terrain, terrain_lookup_dict[terrain_id][1])
+        terrain_forward_ref = ForwardRef(terrain, terrain_lookup_dict[terrain_id][1])
         ability_raw_api_object.add_raw_member("foundation_terrain",
-                                              terrain_expected_pointer,
+                                              terrain_forward_ref,
                                               "engine.ability.type.Foundation")
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def gather_ability(line):
@@ -2507,7 +2507,7 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointers for the abilities.
+        :returns: The forward references for the abilities.
         :rtype: list
         """
         if isinstance(line, GenieVillagerGroup):
@@ -2609,7 +2609,7 @@ class AoCAbilitySubprocessor:
             ability_ref = "%s.%s" % (game_entity_name, ability_name)
             ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent("engine.ability.type.Gather")
-            ability_location = ExpectedPointer(line, game_entity_name)
+            ability_location = ForwardRef(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
 
             if ability_animation_id > -1:
@@ -2617,13 +2617,13 @@ class AoCAbilitySubprocessor:
                 ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
                 animations_set = []
-                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                      ability_animation_id,
-                                                                                      ability_ref,
-                                                                                      ability_name,
-                                                                                      "%s_"
-                                                                                      % gather_lookup_dict[gatherer_unit_id][1])
-                animations_set.append(animation_expected_pointer)
+                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                                 ability_animation_id,
+                                                                                 ability_ref,
+                                                                                 ability_name,
+                                                                                 "%s_"
+                                                                                 % gather_lookup_dict[gatherer_unit_id][1])
+                animations_set.append(animation_forward_ref)
                 ability_raw_api_object.add_raw_member("animations", animations_set,
                                                       "engine.ability.specialization.AnimatedAbility")
 
@@ -2641,7 +2641,7 @@ class AoCAbilitySubprocessor:
             rate_name = "%s.%s.GatherRate" % (game_entity_name, ability_name)
             rate_raw_api_object = RawAPIObject(rate_name, "GatherRate", dataset.nyan_api_objects)
             rate_raw_api_object.add_raw_parent("engine.aux.resource.ResourceRate")
-            rate_location = ExpectedPointer(line, ability_ref)
+            rate_location = ForwardRef(line, ability_ref)
             rate_raw_api_object.set_location(rate_location)
 
             rate_raw_api_object.add_raw_member("type", resource, "engine.aux.resource.ResourceRate")
@@ -2651,39 +2651,39 @@ class AoCAbilitySubprocessor:
 
             line.add_raw_api_object(rate_raw_api_object)
 
-            rate_expected_pointer = ExpectedPointer(line, rate_name)
+            rate_forward_ref = ForwardRef(line, rate_name)
             ability_raw_api_object.add_raw_member("gather_rate",
-                                                  rate_expected_pointer,
+                                                  rate_forward_ref,
                                                   "engine.ability.type.Gather")
 
             # Resource container
             container_ref = "%s.ResourceStorage.%sContainer" % (game_entity_name,
                                                                 gather_lookup_dict[gatherer_unit_id][0])
-            container_expected_pointer = ExpectedPointer(line, container_ref)
+            container_forward_ref = ForwardRef(line, container_ref)
             ability_raw_api_object.add_raw_member("container",
-                                                  container_expected_pointer,
+                                                  container_forward_ref,
                                                   "engine.ability.type.Gather")
 
             # Targets (resource spots)
             entity_lookups = internal_name_lookups.get_entity_lookups(dataset.game_version)
-            spot_expected_pointers = []
+            spot_forward_refs = []
             for group in harvestable_groups:
                 group_id = group.get_head_unit_id()
                 group_name = entity_lookups[group_id][0]
 
-                spot_expected_pointer = ExpectedPointer(group,
-                                                        "%s.Harvestable.%sResourceSpot"
-                                                        % (group_name, group_name))
-                spot_expected_pointers.append(spot_expected_pointer)
+                spot_forward_ref = ForwardRef(group,
+                                              "%s.Harvestable.%sResourceSpot"
+                                              % (group_name, group_name))
+                spot_forward_refs.append(spot_forward_ref)
 
             ability_raw_api_object.add_raw_member("targets",
-                                                  spot_expected_pointers,
+                                                  spot_forward_refs,
                                                   "engine.ability.type.Gather")
 
             line.add_raw_api_object(ability_raw_api_object)
 
-            ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
-            abilities.append(ability_expected_pointer)
+            ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
+            abilities.append(ability_forward_ref)
 
         return abilities
 
@@ -2694,8 +2694,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -2708,7 +2708,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Harvestable" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Harvestable", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Harvestable")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Resource spot
@@ -2738,7 +2738,7 @@ class AoCAbilitySubprocessor:
                                                "%sResourceSpot" % (game_entity_name),
                                                dataset.nyan_api_objects)
             spot_raw_api_object.add_raw_parent("engine.aux.resource_spot.ResourceSpot")
-            spot_location = ExpectedPointer(line, ability_ref)
+            spot_location = ForwardRef(line, ability_ref)
             spot_raw_api_object.set_location(spot_location)
 
             # Type
@@ -2774,9 +2774,9 @@ class AoCAbilitySubprocessor:
                                                decay_rate,
                                                "engine.aux.resource_spot.ResourceSpot")
 
-            spot_expected_pointer = ExpectedPointer(line, spot_name)
+            spot_forward_ref = ForwardRef(line, spot_name)
             ability_raw_api_object.add_raw_member("resources",
-                                                  spot_expected_pointer,
+                                                  spot_forward_ref,
                                                   "engine.ability.type.Harvestable")
             line.add_raw_api_object(spot_raw_api_object)
 
@@ -2789,7 +2789,7 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Harvestable")
 
         # Restock Progress
-        progress_expected_pointers = []
+        progress_forward_refs = []
         if line.get_class_id() == 49:
             # Farms
             # =====================================================================================
@@ -2798,7 +2798,7 @@ class AoCAbilitySubprocessor:
                                                    "RestockProgress33",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.RestockProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             # Interval = (0.0, 25.0)
@@ -2814,21 +2814,21 @@ class AoCAbilitySubprocessor:
             # Terrain overlay
             terrain_ref = "FarmConstruction1"
             terrain_group = dataset.terrain_groups[29]
-            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
-                                                   terrain_expected_pointer,
+                                                   terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
             progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
 
             # State change
             init_state_ref = "%s.Constructable.InitState" % (game_entity_name)
-            init_state_expected_pointer = ExpectedPointer(line, init_state_ref)
+            init_state_forward_ref = ForwardRef(line, init_state_ref)
             progress_raw_api_object.add_raw_member("state_change",
-                                                   init_state_expected_pointer,
+                                                   init_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
             # =====================================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
             progress_name = "%s.Harvestable.RestockProgress66" % (game_entity_name)
@@ -2836,7 +2836,7 @@ class AoCAbilitySubprocessor:
                                                    "RestockProgress66",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.RestockProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             # Interval = (25.0, 50.0)
@@ -2852,21 +2852,21 @@ class AoCAbilitySubprocessor:
             # Terrain overlay
             terrain_ref = "FarmConstruction2"
             terrain_group = dataset.terrain_groups[30]
-            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
-                                                   terrain_expected_pointer,
+                                                   terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
             progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
 
             # State change
             construct_state_ref = "%s.Constructable.ConstructState" % (game_entity_name)
-            construct_state_expected_pointer = ExpectedPointer(line, construct_state_ref)
+            construct_state_forward_ref = ForwardRef(line, construct_state_ref)
             progress_raw_api_object.add_raw_member("state_change",
-                                                   construct_state_expected_pointer,
+                                                   construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
             # =====================================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
             progress_name = "%s.Harvestable.RestockProgress100" % (game_entity_name)
@@ -2874,7 +2874,7 @@ class AoCAbilitySubprocessor:
                                                    "RestockProgress100",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.RestockProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             progress_raw_api_object.add_raw_member("left_boundary",
@@ -2889,25 +2889,25 @@ class AoCAbilitySubprocessor:
             # Terrain overlay
             terrain_ref = "FarmConstruction3"
             terrain_group = dataset.terrain_groups[31]
-            terrain_expected_pointer = ExpectedPointer(terrain_group, terrain_ref)
+            terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
-                                                   terrain_expected_pointer,
+                                                   terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
             progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
 
             # State change
             construct_state_ref = "%s.Constructable.ConstructState" % (game_entity_name)
-            construct_state_expected_pointer = ExpectedPointer(line, construct_state_ref)
+            construct_state_forward_ref = ForwardRef(line, construct_state_ref)
             progress_raw_api_object.add_raw_member("state_change",
-                                                   construct_state_expected_pointer,
+                                                   construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
             #=======================================================================
-            progress_expected_pointers.append(ExpectedPointer(line, progress_name))
+            progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
 
         ability_raw_api_object.add_raw_member("restock_progress",
-                                              progress_expected_pointers,
+                                              progress_forward_refs,
                                               "engine.ability.type.Harvestable")
 
         # Gatherer limit (infinite in AoC except for farms)
@@ -2930,9 +2930,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def herd_ability(line):
@@ -2941,8 +2941,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -2954,7 +2954,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Herd" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Herd", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Herd")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Range
@@ -2980,9 +2980,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def herdable_ability(line):
@@ -2991,8 +2991,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -3004,7 +3004,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Herdable" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Herdable", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Herdable")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Mode
@@ -3018,9 +3018,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def hitbox_ability(line):
@@ -3029,8 +3029,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -3043,7 +3043,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Hitbox" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Hitbox", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Hitbox")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Hitbox object
@@ -3052,7 +3052,7 @@ class AoCAbilitySubprocessor:
                                              "%sHitbox" % (game_entity_name),
                                              dataset.nyan_api_objects)
         hitbox_raw_api_object.add_raw_parent("engine.aux.hitbox.Hitbox")
-        hitbox_location = ExpectedPointer(line, ability_ref)
+        hitbox_location = ForwardRef(line, ability_ref)
         hitbox_raw_api_object.set_location(hitbox_location)
 
         radius_x = current_unit.get_member("radius_x").get_value()
@@ -3069,17 +3069,17 @@ class AoCAbilitySubprocessor:
                                              radius_z,
                                              "engine.aux.hitbox.Hitbox")
 
-        hitbox_expected_pointer = ExpectedPointer(line, hitbox_name)
+        hitbox_forward_ref = ForwardRef(line, hitbox_name)
         ability_raw_api_object.add_raw_member("hitbox",
-                                              hitbox_expected_pointer,
+                                              hitbox_forward_ref,
                                               "engine.ability.type.Hitbox")
 
         line.add_raw_api_object(hitbox_raw_api_object)
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def idle_ability(line):
@@ -3088,8 +3088,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -3103,7 +3103,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Idle" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Idle", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Idle")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         ability_animation_id = current_unit.get_member("idle_graphic0").get_value()
@@ -3113,12 +3113,12 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  ability_animation_id,
-                                                                                  ability_ref,
-                                                                                  "Idle",
-                                                                                  "idle_")
-            animations_set.append(animation_expected_pointer)
+            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                             ability_animation_id,
+                                                                             ability_ref,
+                                                                             "Idle",
+                                                                             "idle_")
+            animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
@@ -3157,9 +3157,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def live_ability(line):
@@ -3168,8 +3168,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -3182,7 +3182,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Live" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Live", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Live")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         attributes_set = []
@@ -3192,7 +3192,7 @@ class AoCAbilitySubprocessor:
         health_ref = "%s.Live.Health" % (game_entity_name)
         health_raw_api_object = RawAPIObject(health_ref, "Health", dataset.nyan_api_objects)
         health_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeSetting")
-        health_location = ExpectedPointer(line, ability_ref)
+        health_location = ForwardRef(line, ability_ref)
         health_raw_api_object.set_location(health_location)
 
         attribute_value = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -3223,15 +3223,15 @@ class AoCAbilitySubprocessor:
         line.add_raw_api_object(health_raw_api_object)
 
         # =======================================================================================
-        health_expected_pointer = ExpectedPointer(line, health_raw_api_object.get_id())
-        attributes_set.append(health_expected_pointer)
+        health_forward_ref = ForwardRef(line, health_raw_api_object.get_id())
+        attributes_set.append(health_forward_ref)
 
         if current_unit_id == 125:
             # Faith (only monk)
             faith_ref = "%s.Live.Faith" % (game_entity_name)
             faith_raw_api_object = RawAPIObject(faith_ref, "Faith", dataset.nyan_api_objects)
             faith_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeSetting")
-            faith_location = ExpectedPointer(line, ability_ref)
+            faith_location = ForwardRef(line, ability_ref)
             faith_raw_api_object.set_location(faith_location)
 
             attribute_value = dataset.pregen_nyan_objects["aux.attribute.types.Faith"].get_nyan_object()
@@ -3253,17 +3253,17 @@ class AoCAbilitySubprocessor:
 
             line.add_raw_api_object(faith_raw_api_object)
 
-            faith_expected_pointer = ExpectedPointer(line, faith_ref)
-            attributes_set.append(faith_expected_pointer)
+            faith_forward_ref = ForwardRef(line, faith_ref)
+            attributes_set.append(faith_forward_ref)
 
         ability_raw_api_object.add_raw_member("attributes", attributes_set,
                                               "engine.ability.type.Live")
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def los_ability(line):
@@ -3272,8 +3272,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -3286,7 +3286,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.LineOfSight" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "LineOfSight", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.LineOfSight")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Line of sight
@@ -3302,9 +3302,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def move_ability(line):
@@ -3313,8 +3313,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -3328,7 +3328,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Move" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Move", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Move")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Animation
@@ -3342,12 +3342,12 @@ class AoCAbilitySubprocessor:
             animation_obj_prefix = "Move"
             animation_filename_prefix = "move_"
 
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  ability_animation_id,
-                                                                                  ability_ref,
-                                                                                  animation_obj_prefix,
-                                                                                  animation_filename_prefix)
-            animations_set.append(animation_expected_pointer)
+            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                             ability_animation_id,
+                                                                             ability_ref,
+                                                                             animation_obj_prefix,
+                                                                             animation_filename_prefix)
+            animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
@@ -3394,12 +3394,12 @@ class AoCAbilitySubprocessor:
 
             sound_obj_prefix = "Move"
 
-            sound_expected_pointer = AoCAbilitySubprocessor._create_sound(line,
-                                                                          ability_comm_sound_id,
-                                                                          ability_ref,
-                                                                          sound_obj_prefix,
-                                                                          "command_")
-            sounds_set.append(sound_expected_pointer)
+            sound_forward_ref = AoCAbilitySubprocessor._create_sound(line,
+                                                                     ability_comm_sound_id,
+                                                                     ability_ref,
+                                                                     sound_obj_prefix,
+                                                                     "command_")
+            sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
                                                   "engine.ability.specialization.CommandSoundAbility")
 
@@ -3416,7 +3416,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Move.Follow" % (game_entity_name)
         follow_raw_api_object = RawAPIObject(ability_ref, "Follow", dataset.nyan_api_objects)
         follow_raw_api_object.add_raw_parent("engine.aux.move_mode.type.Follow")
-        follow_location = ExpectedPointer(line, "%s.Move" % (game_entity_name))
+        follow_location = ForwardRef(line, "%s.Move" % (game_entity_name))
         follow_raw_api_object.set_location(follow_location)
 
         follow_range = current_unit.get_member("line_of_sight").get_value() - 1
@@ -3424,8 +3424,8 @@ class AoCAbilitySubprocessor:
                                              "engine.aux.move_mode.type.Follow")
 
         line.add_raw_api_object(follow_raw_api_object)
-        follow_expected_pointer = ExpectedPointer(line, follow_raw_api_object.get_id())
-        move_modes.append(follow_expected_pointer)
+        follow_forward_ref = ForwardRef(line, follow_raw_api_object.get_id())
+        move_modes.append(follow_forward_ref)
 
         ability_raw_api_object.add_raw_member("modes", move_modes, "engine.ability.type.Move")
 
@@ -3437,9 +3437,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def move_projectile_ability(line, position=-1):
@@ -3448,8 +3448,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         dataset = line.data
 
@@ -3473,9 +3473,9 @@ class AoCAbilitySubprocessor:
         ability_ref = "Projectile%s.Move" % (position)
         ability_raw_api_object = RawAPIObject(ability_ref, "Move", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Move")
-        ability_location = ExpectedPointer(line,
-                                           "%s.ShootProjectile.Projectile%s"
-                                           % (game_entity_name, position))
+        ability_location = ForwardRef(line,
+                                      "%s.ShootProjectile.Projectile%s"
+                                      % (game_entity_name, position))
         ability_raw_api_object.set_location(ability_location)
 
         # Animation
@@ -3489,12 +3489,12 @@ class AoCAbilitySubprocessor:
             animation_obj_prefix = "ProjectileFly"
             animation_filename_prefix = "projectile_fly_"
 
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  ability_animation_id,
-                                                                                  ability_ref,
-                                                                                  animation_obj_prefix,
-                                                                                  animation_filename_prefix)
-            animations_set.append(animation_expected_pointer)
+            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                             ability_animation_id,
+                                                                             ability_ref,
+                                                                             animation_obj_prefix,
+                                                                             animation_filename_prefix)
+            animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
@@ -3508,9 +3508,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def named_ability(line):
@@ -3519,8 +3519,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -3533,7 +3533,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Named" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Named", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Named")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Name
@@ -3542,7 +3542,7 @@ class AoCAbilitySubprocessor:
                                            "%sName"  % (game_entity_name),
                                            dataset.nyan_api_objects)
         name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
-        name_location = ExpectedPointer(line, ability_ref)
+        name_location = ForwardRef(line, ability_ref)
         name_raw_api_object.set_location(name_location)
 
         name_string_id = current_unit["language_dll_name"].get_value()
@@ -3555,8 +3555,8 @@ class AoCAbilitySubprocessor:
                                            translations,
                                            "engine.aux.translated.type.TranslatedString")
 
-        name_expected_pointer = ExpectedPointer(line, name_ref)
-        ability_raw_api_object.add_raw_member("name", name_expected_pointer, "engine.ability.type.Named")
+        name_forward_ref = ForwardRef(line, name_ref)
+        ability_raw_api_object.add_raw_member("name", name_forward_ref, "engine.ability.type.Named")
         line.add_raw_api_object(name_raw_api_object)
 
         # Description
@@ -3565,16 +3565,16 @@ class AoCAbilitySubprocessor:
                                                   "%sDescription"  % (game_entity_name),
                                                   dataset.nyan_api_objects)
         description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
-        description_location = ExpectedPointer(line, ability_ref)
+        description_location = ForwardRef(line, ability_ref)
         description_raw_api_object.set_location(description_location)
 
         description_raw_api_object.add_raw_member("translations",
                                                   [],
                                                   "engine.aux.translated.type.TranslatedMarkupFile")
 
-        description_expected_pointer = ExpectedPointer(line, description_ref)
+        description_forward_ref = ForwardRef(line, description_ref)
         ability_raw_api_object.add_raw_member("description",
-                                              description_expected_pointer,
+                                              description_forward_ref,
                                               "engine.ability.type.Named")
         line.add_raw_api_object(description_raw_api_object)
 
@@ -3584,24 +3584,24 @@ class AoCAbilitySubprocessor:
                                                        "%sLongDescription"  % (game_entity_name),
                                                        dataset.nyan_api_objects)
         long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
-        long_description_location = ExpectedPointer(line, ability_ref)
+        long_description_location = ForwardRef(line, ability_ref)
         long_description_raw_api_object.set_location(long_description_location)
 
         long_description_raw_api_object.add_raw_member("translations",
                                                        [],
                                                        "engine.aux.translated.type.TranslatedMarkupFile")
 
-        long_description_expected_pointer = ExpectedPointer(line, long_description_ref)
+        long_description_forward_ref = ForwardRef(line, long_description_ref)
         ability_raw_api_object.add_raw_member("long_description",
-                                              long_description_expected_pointer,
+                                              long_description_forward_ref,
                                               "engine.ability.type.Named")
         line.add_raw_api_object(long_description_raw_api_object)
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def overlay_terrain_ability(line):
@@ -3610,8 +3610,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointers for the abilities.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward references for the abilities.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -3625,22 +3625,22 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.OverlayTerrain" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "OverlayTerrain", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.OverlayTerrain")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Terrain (Use foundation terrain)
         terrain_id = current_unit["foundation_terrain_id"].get_value()
         terrain = dataset.terrain_groups[terrain_id]
-        terrain_expected_pointer = ExpectedPointer(terrain, terrain_lookup_dict[terrain_id][1])
+        terrain_forward_ref = ForwardRef(terrain, terrain_lookup_dict[terrain_id][1])
         ability_raw_api_object.add_raw_member("terrain_overlay",
-                                              terrain_expected_pointer,
+                                              terrain_forward_ref,
                                               "engine.ability.type.OverlayTerrain")
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def passable_ability(line):
@@ -3649,8 +3649,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -3662,14 +3662,14 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Passable" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Passable", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Passable")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Hitbox
         hitbox_ref = "%s.Hitbox.%sHitbox" % (game_entity_name, game_entity_name)
-        hitbox_expected_pointer = ExpectedPointer(line, hitbox_ref)
+        hitbox_forward_ref = ForwardRef(line, hitbox_ref)
         ability_raw_api_object.add_raw_member("hitbox",
-                                              hitbox_expected_pointer,
+                                              hitbox_forward_ref,
                                               "engine.ability.type.Passable")
 
         # Passable mode
@@ -3682,7 +3682,7 @@ class AoCAbilitySubprocessor:
                 mode_parent = "engine.aux.passable_mode.type.Gate"
 
         mode_raw_api_object.add_raw_parent(mode_parent)
-        mode_location = ExpectedPointer(line, ability_ref)
+        mode_location = ForwardRef(line, ability_ref)
         mode_raw_api_object.set_location(mode_location)
 
         # Allowed types
@@ -3700,16 +3700,16 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(mode_raw_api_object)
         # =====================================================================================
-        mode_expected_pointer = ExpectedPointer(line, mode_name)
+        mode_forward_ref = ForwardRef(line, mode_name)
         ability_raw_api_object.add_raw_member("mode",
-                                              mode_expected_pointer,
+                                              mode_forward_ref,
                                               "engine.ability.type.Passable")
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def production_queue_ability(line):
@@ -3718,8 +3718,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -3731,7 +3731,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.ProductionQueue" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "ProductionQueue", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ProductionQueue")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Size
@@ -3745,14 +3745,14 @@ class AoCAbilitySubprocessor:
         mode_name = "%s.ProvideContingent.CreatablesMode" % (game_entity_name)
         mode_raw_api_object = RawAPIObject(mode_name, "CreatablesMode", dataset.nyan_api_objects)
         mode_raw_api_object.add_raw_parent("engine.aux.production_mode.type.Creatables")
-        mode_location = ExpectedPointer(line, ability_ref)
+        mode_location = ForwardRef(line, ability_ref)
         mode_raw_api_object.set_location(mode_location)
 
         # AoE2 allows all creatables in production queue
         mode_raw_api_object.add_raw_member("exclude", [], "engine.aux.production_mode.type.Creatables")
 
-        mode_expected_pointer = ExpectedPointer(line, mode_name)
-        modes.append(mode_expected_pointer)
+        mode_forward_ref = ForwardRef(line, mode_name)
+        modes.append(mode_forward_ref)
 
         ability_raw_api_object.add_raw_member("production_modes",
                                               modes,
@@ -3761,9 +3761,9 @@ class AoCAbilitySubprocessor:
         line.add_raw_api_object(mode_raw_api_object)
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def projectile_ability(line, position=0):
@@ -3775,8 +3775,8 @@ class AoCAbilitySubprocessor:
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param position: When 0, gives the first projectile its ability. When 1, the second...
         :type position: int
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -3792,7 +3792,7 @@ class AoCAbilitySubprocessor:
             % (game_entity_name, str(position))
         ability_raw_api_object = RawAPIObject(ability_ref, "Projectile", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Projectile")
-        ability_location = ExpectedPointer(line, obj_ref)
+        ability_location = ForwardRef(line, obj_ref)
         ability_raw_api_object.set_location(ability_location)
 
         # Arc
@@ -3816,7 +3816,7 @@ class AoCAbilitySubprocessor:
                         % (game_entity_name, str(position))
         accuracy_raw_api_object = RawAPIObject(accuracy_name, "Accuracy", dataset.nyan_api_objects)
         accuracy_raw_api_object.add_raw_parent("engine.aux.accuracy.Accuracy")
-        accuracy_location = ExpectedPointer(line, ability_ref)
+        accuracy_location = ForwardRef(line, ability_ref)
         accuracy_raw_api_object.set_location(accuracy_location)
 
         accuracy_value = current_unit.get_member("accuracy").get_value()
@@ -3843,9 +3843,9 @@ class AoCAbilitySubprocessor:
                                                "engine.aux.accuracy.Accuracy")
 
         line.add_raw_api_object(accuracy_raw_api_object)
-        accuracy_expected_pointer = ExpectedPointer(line, accuracy_name)
+        accuracy_forward_ref = ForwardRef(line, accuracy_name)
         ability_raw_api_object.add_raw_member("accuracy",
-                                              [accuracy_expected_pointer],
+                                              [accuracy_forward_ref],
                                               "engine.ability.type.Projectile")
 
         # Target mode
@@ -3855,9 +3855,9 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Projectile")
 
         # Ingore types; buildings are ignored unless targeted
-        ignore_expected_pointers = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+        ignore_forward_refs = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
         ability_raw_api_object.add_raw_member("ignored_types",
-                                              ignore_expected_pointers,
+                                              ignore_forward_refs,
                                               "engine.ability.type.Projectile")
         ability_raw_api_object.add_raw_member("unignored_entities",
                                               [],
@@ -3865,9 +3865,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def provide_contingent_ability(line):
@@ -3876,8 +3876,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         if isinstance(line, GenieStackBuildingGroup):
@@ -3893,7 +3893,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.ProvideContingent" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "ProvideContingent", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ProvideContingent")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Also stores the pop space
@@ -3916,8 +3916,8 @@ class AoCAbilitySubprocessor:
             contingent_amount = RawAPIObject(contingent_amount_name, resource_name,
                                              dataset.nyan_api_objects)
             contingent_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
-            ability_expected_pointer = ExpectedPointer(line, ability_ref)
-            contingent_amount.set_location(ability_expected_pointer)
+            ability_forward_ref = ForwardRef(line, ability_ref)
+            contingent_amount.set_location(ability_forward_ref)
 
             contingent_amount.add_raw_member("type",
                                              resource,
@@ -3927,9 +3927,9 @@ class AoCAbilitySubprocessor:
                                              "engine.aux.resource.ResourceAmount")
 
             line.add_raw_api_object(contingent_amount)
-            contingent_amount_expected_pointer = ExpectedPointer(line,
-                                                                 contingent_amount_name)
-            contingents.append(contingent_amount_expected_pointer)
+            contingent_amount_forward_ref = ForwardRef(line,
+                                                       contingent_amount_name)
+            contingents.append(contingent_amount_forward_ref)
 
         if not contingents:
             # Do not create the ability if its values are empty
@@ -3940,9 +3940,9 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.ProvideContingent")
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def rally_point_ability(line):
@@ -3951,8 +3951,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -3964,14 +3964,14 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.RallyPoint" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "RallyPoint", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.RallyPoint")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def regenerate_attribute_ability(line):
@@ -3980,7 +3980,7 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointers for the ability.
+        :returns: The forward references for the ability.
         :rtype: list
         """
         current_unit_id = line.get_head_unit_id()
@@ -4009,7 +4009,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.%s" % (game_entity_name, ability_name)
         ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.RegenerateAttribute")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Attribute rate
@@ -4018,7 +4018,7 @@ class AoCAbilitySubprocessor:
         rate_ref = "%s.%s.%s" % (game_entity_name, ability_name, rate_name)
         rate_raw_api_object = RawAPIObject(rate_ref, rate_name, dataset.nyan_api_objects)
         rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
-        rate_location = ExpectedPointer(line, ability_ref)
+        rate_location = ForwardRef(line, ability_ref)
         rate_raw_api_object.set_location(rate_location)
 
         # Attribute
@@ -4043,16 +4043,16 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(rate_raw_api_object)
         # ===============================================================================
-        rate_expected_pointer = ExpectedPointer(line, rate_ref)
+        rate_forward_ref = ForwardRef(line, rate_ref)
         ability_raw_api_object.add_raw_member("rate",
-                                              rate_expected_pointer,
+                                              rate_forward_ref,
                                               "engine.ability.type.RegenerateAttribute")
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return [ability_expected_pointer]
+        return [ability_forward_ref]
 
     @staticmethod
     def regenerate_resource_spot_ability(line):
@@ -4061,8 +4061,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         # Unused in AoC
 
@@ -4073,8 +4073,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -4086,14 +4086,14 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.RemoveStorage" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "RemoveStorage", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.RemoveStorage")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Container
         container_ref = "%s.Storage.%sContainer" % (game_entity_name, game_entity_name)
-        container_expected_pointer = ExpectedPointer(line, container_ref)
+        container_forward_ref = ForwardRef(line, container_ref)
         ability_raw_api_object.add_raw_member("container",
-                                              container_expected_pointer,
+                                              container_forward_ref,
                                               "engine.ability.type.RemoveStorage")
 
         # Storage elements
@@ -4101,8 +4101,8 @@ class AoCAbilitySubprocessor:
         entity_lookups = internal_name_lookups.get_entity_lookups(dataset.game_version)
         for entity in line.garrison_entities:
             entity_ref = entity_lookups[entity.get_head_unit_id()][0]
-            entity_expected_pointer = ExpectedPointer(entity, entity_ref)
-            elements.append(entity_expected_pointer)
+            entity_forward_ref = ForwardRef(entity, entity_ref)
+            elements.append(entity_forward_ref)
 
         ability_raw_api_object.add_raw_member("storage_elements",
                                               elements,
@@ -4110,9 +4110,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def restock_ability(line, restock_target_id):
@@ -4121,8 +4121,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -4148,7 +4148,7 @@ class AoCAbilitySubprocessor:
                                               restock_lookup_dict[restock_target_id][0],
                                               dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Restock")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         ability_animation_id = -1
@@ -4168,14 +4168,14 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  ability_animation_id,
-                                                                                  ability_ref,
-                                                                                  restock_lookup_dict[restock_target_id][0],
-                                                                                  "%s_"
-                                                                                  % restock_lookup_dict[restock_target_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                             ability_animation_id,
+                                                                             ability_ref,
+                                                                             restock_lookup_dict[restock_target_id][0],
+                                                                             "%s_"
+                                                                             % restock_lookup_dict[restock_target_id][1])
 
-            animations_set.append(animation_expected_pointer)
+            animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
@@ -4187,12 +4187,12 @@ class AoCAbilitySubprocessor:
         # Target
         restock_target_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         restock_target_name = restock_target_lookup_dict[restock_target_id][0]
-        spot_expected_pointer = ExpectedPointer(restock_target,
-                                                "%s.Harvestable.%sResourceSpot"
-                                                % (restock_target_name,
-                                                   restock_target_name))
+        spot_forward_ref = ForwardRef(restock_target,
+                                      "%s.Harvestable.%sResourceSpot"
+                                      % (restock_target_name,
+                                         restock_target_name))
         ability_raw_api_object.add_raw_member("target",
-                                              spot_expected_pointer,
+                                              spot_forward_ref,
                                               "engine.ability.type.Restock")
 
         # restock time
@@ -4203,14 +4203,14 @@ class AoCAbilitySubprocessor:
 
         # Manual/Auto Cost
         # Link to the same Cost object as Create
-        cost_expected_pointer = ExpectedPointer(restock_target,
-                                                "%s.CreatableGameEntity.%sCost"
-                                                % (restock_target_name, restock_target_name))
+        cost_forward_ref = ForwardRef(restock_target,
+                                      "%s.CreatableGameEntity.%sCost"
+                                      % (restock_target_name, restock_target_name))
         ability_raw_api_object.add_raw_member("manual_cost",
-                                              cost_expected_pointer,
+                                              cost_forward_ref,
                                               "engine.ability.type.Restock")
         ability_raw_api_object.add_raw_member("auto_cost",
-                                              cost_expected_pointer,
+                                              cost_forward_ref,
                                               "engine.ability.type.Restock")
 
         # Amount
@@ -4229,9 +4229,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def research_ability(line):
@@ -4240,8 +4240,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -4253,7 +4253,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Research" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Research", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Research")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         researchables_set = []
@@ -4270,17 +4270,17 @@ class AoCAbilitySubprocessor:
             researchable_name = tech_lookup_dict[researchable_id][0]
 
             raw_api_object_ref = "%s.ResearchableTech" % researchable_name
-            researchable_expected_pointer = ExpectedPointer(researchable,
-                                                            raw_api_object_ref)
-            researchables_set.append(researchable_expected_pointer)
+            researchable_forward_ref = ForwardRef(researchable,
+                                                  raw_api_object_ref)
+            researchables_set.append(researchable_forward_ref)
 
         ability_raw_api_object.add_raw_member("researchables", researchables_set,
                                               "engine.ability.type.Research")
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def resistance_ability(line):
@@ -4289,8 +4289,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -4301,7 +4301,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Resistance" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Resistance", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Resistance")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Resistances
@@ -4325,9 +4325,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def resource_storage_ability(line):
@@ -4336,8 +4336,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         if isinstance(line, GenieVillagerGroup):
             gatherers = line.variants[0].line
@@ -4357,7 +4357,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object = RawAPIObject(ability_ref, "ResourceStorage",
                                               dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ResourceStorage")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Create containers
@@ -4405,7 +4405,7 @@ class AoCAbilitySubprocessor:
             container_ref = "%s.%s" % (ability_ref, container_name)
             container_raw_api_object = RawAPIObject(container_ref, container_name, dataset.nyan_api_objects)
             container_raw_api_object.add_raw_parent("engine.aux.storage.ResourceContainer")
-            container_location = ExpectedPointer(line, ability_ref)
+            container_location = ForwardRef(line, ability_ref)
             container_raw_api_object.set_location(container_location)
 
             # Resource
@@ -4430,7 +4430,7 @@ class AoCAbilitySubprocessor:
                                                        "%sCarryProgress" % (container_name),
                                                        dataset.nyan_api_objects)
                 progress_raw_api_object.add_raw_parent("engine.aux.progress.type.CarryProgress")
-                progress_location = ExpectedPointer(line, container_ref)
+                progress_location = ForwardRef(line, container_ref)
                 progress_raw_api_object.set_location(progress_location)
 
                 # Interval = (0.0, 100.0)
@@ -4452,23 +4452,23 @@ class AoCAbilitySubprocessor:
                                                        "MoveOverride",
                                                        dataset.nyan_api_objects)
                 override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-                override_location = ExpectedPointer(line, progress_name)
+                override_location = ForwardRef(line, progress_name)
                 override_raw_api_object.set_location(override_location)
 
-                idle_expected_pointer = ExpectedPointer(line, "%s.Move" % (game_entity_name))
+                idle_forward_ref = ForwardRef(line, "%s.Move" % (game_entity_name))
                 override_raw_api_object.add_raw_member("ability",
-                                                       idle_expected_pointer,
+                                                       idle_forward_ref,
                                                        "engine.aux.animation_override.AnimationOverride")
 
                 # Animation
                 animations_set = []
-                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                      carry_move_animation_id,
-                                                                                      override_ref,
-                                                                                      "Move",
-                                                                                      "move_carry_override_")
+                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                                 carry_move_animation_id,
+                                                                                 override_ref,
+                                                                                 "Move",
+                                                                                 "move_carry_override_")
 
-                animations_set.append(animation_expected_pointer)
+                animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
                                                        animations_set,
                                                        "engine.aux.animation_override.AnimationOverride")
@@ -4477,8 +4477,8 @@ class AoCAbilitySubprocessor:
                                                        1,
                                                        "engine.aux.animation_override.AnimationOverride")
 
-                override_expected_pointer = ExpectedPointer(line, override_ref)
-                overrides.append(override_expected_pointer)
+                override_forward_ref = ForwardRef(line, override_ref)
+                overrides.append(override_forward_ref)
                 line.add_raw_api_object(override_raw_api_object)
                 # ===========================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
@@ -4487,8 +4487,8 @@ class AoCAbilitySubprocessor:
 
                 line.add_raw_api_object(progress_raw_api_object)
                 # ===========================================================================================
-                progress_expected_pointer = ExpectedPointer(line, progress_name)
-                carry_progress.append(progress_expected_pointer)
+                progress_forward_ref = ForwardRef(line, progress_name)
+                carry_progress.append(progress_forward_ref)
 
             container_raw_api_object.add_raw_member("carry_progress",
                                                     carry_progress,
@@ -4496,8 +4496,8 @@ class AoCAbilitySubprocessor:
 
             line.add_raw_api_object(container_raw_api_object)
 
-            container_expected_pointer = ExpectedPointer(line, container_ref)
-            containers.append(container_expected_pointer)
+            container_forward_ref = ForwardRef(line, container_ref)
+            containers.append(container_forward_ref)
 
         ability_raw_api_object.add_raw_member("containers",
                                               containers,
@@ -4505,9 +4505,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def selectable_ability(line):
@@ -4518,8 +4518,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the abilities.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the abilities.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the abilities.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -4546,7 +4546,7 @@ class AoCAbilitySubprocessor:
 
         ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Selectable")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Selection box
@@ -4568,9 +4568,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        abilities.append(ability_expected_pointer)
+        abilities.append(ability_forward_ref)
 
         if not isinstance(line, GenieUnitLineGroup):
             return abilities
@@ -4581,7 +4581,7 @@ class AoCAbilitySubprocessor:
 
         ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Selectable")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Command Sound
@@ -4591,12 +4591,12 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
 
             sounds_set = []
-            sound_expected_pointer = AoCAbilitySubprocessor._create_sound(line,
-                                                                          ability_comm_sound_id,
-                                                                          ability_ref,
-                                                                          ability_name,
-                                                                          "select_")
-            sounds_set.append(sound_expected_pointer)
+            sound_forward_ref = AoCAbilitySubprocessor._create_sound(line,
+                                                                     ability_comm_sound_id,
+                                                                     ability_ref,
+                                                                     ability_name,
+                                                                     "select_")
+            sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
                                                   "engine.ability.specialization.CommandSoundAbility")
 
@@ -4604,7 +4604,7 @@ class AoCAbilitySubprocessor:
         box_name = "%s.SelectableSelf.Rectangle" % (game_entity_name)
         box_raw_api_object = RawAPIObject(box_name, "Rectangle", dataset.nyan_api_objects)
         box_raw_api_object.add_raw_parent("engine.aux.selection_box.type.Rectangle")
-        box_location = ExpectedPointer(line, ability_ref)
+        box_location = ForwardRef(line, ability_ref)
         box_raw_api_object.set_location(box_location)
 
         radius_x = current_unit.get_member("selection_shape_x").get_value()
@@ -4619,9 +4619,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(box_raw_api_object)
 
-        box_expected_pointer = ExpectedPointer(line, box_name)
+        box_forward_ref = ForwardRef(line, box_name)
         ability_raw_api_object.add_raw_member("selection_box",
-                                              box_expected_pointer,
+                                              box_forward_ref,
                                               "engine.ability.type.Selectable")
 
         # Diplomacy settings
@@ -4634,9 +4634,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        abilities.append(ability_expected_pointer)
+        abilities.append(ability_forward_ref)
 
         return abilities
 
@@ -4647,8 +4647,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -4659,7 +4659,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.SendBackToTask" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "SendBackToTask", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.SendBackToTask")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Only works on villagers
@@ -4673,9 +4673,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def shoot_projectile_ability(line, command_id):
@@ -4684,8 +4684,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -4700,7 +4700,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.%s" % (game_entity_name, ability_name)
         ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ShootProjectile")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         ability_animation_id = current_unit.get_member("attack_sprite_id").get_value()
@@ -4710,13 +4710,13 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  ability_animation_id,
-                                                                                  ability_ref,
-                                                                                  ability_name,
-                                                                                  "%s_"
-                                                                                  % command_lookup_dict[command_id][1])
-            animations_set.append(animation_expected_pointer)
+            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                             ability_animation_id,
+                                                                             ability_ref,
+                                                                             ability_name,
+                                                                             "%s_"
+                                                                             % command_lookup_dict[command_id][1])
+            animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
@@ -4727,12 +4727,12 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
 
             sounds_set = []
-            sound_expected_pointer = AoCAbilitySubprocessor._create_sound(line,
-                                                                          ability_comm_sound_id,
-                                                                          ability_ref,
-                                                                          ability_name,
-                                                                          "command_")
-            sounds_set.append(sound_expected_pointer)
+            sound_forward_ref = AoCAbilitySubprocessor._create_sound(line,
+                                                                     ability_comm_sound_id,
+                                                                     ability_ref,
+                                                                     ability_name,
+                                                                     "command_")
+            sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
                                                   "engine.ability.specialization.CommandSoundAbility")
 
@@ -4740,13 +4740,13 @@ class AoCAbilitySubprocessor:
         projectiles = []
         projectile_primary = current_unit.get_member("attack_projectile_primary_unit_id").get_value()
         if projectile_primary > -1:
-            projectiles.append(ExpectedPointer(line,
-                                               "%s.ShootProjectile.Projectile0" % (game_entity_name)))
+            projectiles.append(ForwardRef(line,
+                                          "%s.ShootProjectile.Projectile0" % (game_entity_name)))
 
         projectile_secondary = current_unit.get_member("attack_projectile_secondary_unit_id").get_value()
         if projectile_secondary > -1:
-            projectiles.append(ExpectedPointer(line,
-                                               "%s.ShootProjectile.Projectile1" % (game_entity_name)))
+            projectiles.append(ForwardRef(line,
+                                          "%s.ShootProjectile.Projectile1" % (game_entity_name)))
 
         ability_raw_api_object.add_raw_member("projectiles",
                                               projectiles,
@@ -4877,9 +4877,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def stop_ability(line):
@@ -4888,8 +4888,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -4901,7 +4901,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Stop" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Stop", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Stop")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Diplomacy settings
@@ -4912,9 +4912,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def storage_ability(line):
@@ -4923,8 +4923,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -4937,7 +4937,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Storage" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Storage", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Storage")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Container
@@ -4947,7 +4947,7 @@ class AoCAbilitySubprocessor:
                                                 "%sContainer" % (game_entity_name),
                                                 dataset.nyan_api_objects)
         container_raw_api_object.add_raw_parent("engine.aux.storage.Container")
-        container_location = ExpectedPointer(line, ability_ref)
+        container_location = ForwardRef(line, ability_ref)
         container_raw_api_object.set_location(container_location)
 
         garrison_mode = line.get_garrison_mode()
@@ -4977,13 +4977,13 @@ class AoCAbilitySubprocessor:
                                                           "%sStorageDef" % (storage_element_name),
                                                           dataset.nyan_api_objects)
                 storage_def_raw_api_object.add_raw_parent("engine.aux.storage.StorageElementDefinition")
-                storage_def_location = ExpectedPointer(line, container_name)
+                storage_def_location = ForwardRef(line, container_name)
                 storage_def_raw_api_object.set_location(storage_def_location)
 
                 # Storage element
-                storage_element_expected_pointer = ExpectedPointer(storage_element, storage_element_name)
+                storage_element_forward_ref = ForwardRef(storage_element, storage_element_name)
                 storage_def_raw_api_object.add_raw_member("storage_element",
-                                                          storage_element_expected_pointer,
+                                                          storage_element_forward_ref,
                                                           "engine.aux.storage.StorageElementDefinition")
 
                 # Elements per slot
@@ -4998,8 +4998,8 @@ class AoCAbilitySubprocessor:
 
                 # TODO: State change (optional) -> speed boost
 
-                storage_def_expected_pointer = ExpectedPointer(storage_element, storage_element_name)
-                storage_element_defs.append(storage_def_expected_pointer)
+                storage_def_forward_ref = ForwardRef(storage_element, storage_element_name)
+                storage_element_defs.append(storage_def_forward_ref)
                 line.add_raw_api_object(storage_def_raw_api_object)
 
         container_raw_api_object.add_raw_member("storage_element_defs",
@@ -5027,7 +5027,7 @@ class AoCAbilitySubprocessor:
                                                    "CarryProgress",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.CarryProgress")
-            progress_location = ExpectedPointer(line, ability_ref)
+            progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
             # Interval = (0.0, 100.0)
@@ -5049,23 +5049,23 @@ class AoCAbilitySubprocessor:
                                                    "IdleOverride",
                                                    dataset.nyan_api_objects)
             override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-            override_location = ExpectedPointer(line, progress_name)
+            override_location = ForwardRef(line, progress_name)
             override_raw_api_object.set_location(override_location)
 
-            idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+            idle_forward_ref = ForwardRef(line, "%s.Idle" % (game_entity_name))
             override_raw_api_object.add_raw_member("ability",
-                                                   idle_expected_pointer,
+                                                   idle_forward_ref,
                                                    "engine.aux.animation_override.AnimationOverride")
 
             # Animation
             animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  carry_idle_animation_id,
-                                                                                  override_ref,
-                                                                                  "Idle",
-                                                                                  "idle_carry_override_")
+            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                             carry_idle_animation_id,
+                                                                             override_ref,
+                                                                             "Idle",
+                                                                             "idle_carry_override_")
 
-            animations_set.append(animation_expected_pointer)
+            animations_set.append(animation_forward_ref)
             override_raw_api_object.add_raw_member("animations",
                                                    animations_set,
                                                    "engine.aux.animation_override.AnimationOverride")
@@ -5074,8 +5074,8 @@ class AoCAbilitySubprocessor:
                                                    1,
                                                    "engine.aux.animation_override.AnimationOverride")
 
-            override_expected_pointer = ExpectedPointer(line, override_ref)
-            overrides.append(override_expected_pointer)
+            override_forward_ref = ForwardRef(line, override_ref)
+            overrides.append(override_forward_ref)
             line.add_raw_api_object(override_raw_api_object)
             # ===========================================================================================
             # Move override
@@ -5085,23 +5085,23 @@ class AoCAbilitySubprocessor:
                                                    "MoveOverride",
                                                    dataset.nyan_api_objects)
             override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-            override_location = ExpectedPointer(line, progress_name)
+            override_location = ForwardRef(line, progress_name)
             override_raw_api_object.set_location(override_location)
 
-            idle_expected_pointer = ExpectedPointer(line, "%s.Move" % (game_entity_name))
+            idle_forward_ref = ForwardRef(line, "%s.Move" % (game_entity_name))
             override_raw_api_object.add_raw_member("ability",
-                                                   idle_expected_pointer,
+                                                   idle_forward_ref,
                                                    "engine.aux.animation_override.AnimationOverride")
 
             # Animation
             animations_set = []
-            animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                  carry_move_animation_id,
-                                                                                  override_ref,
-                                                                                  "Move",
-                                                                                  "move_carry_override_")
+            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                             carry_move_animation_id,
+                                                                             override_ref,
+                                                                             "Move",
+                                                                             "move_carry_override_")
 
-            animations_set.append(animation_expected_pointer)
+            animations_set.append(animation_forward_ref)
             override_raw_api_object.add_raw_member("animations",
                                                    animations_set,
                                                    "engine.aux.animation_override.AnimationOverride")
@@ -5110,8 +5110,8 @@ class AoCAbilitySubprocessor:
                                                    1,
                                                    "engine.aux.animation_override.AnimationOverride")
 
-            override_expected_pointer = ExpectedPointer(line, override_ref)
-            overrides.append(override_expected_pointer)
+            override_forward_ref = ForwardRef(line, override_ref)
+            overrides.append(override_forward_ref)
             line.add_raw_api_object(override_raw_api_object)
             # ===========================================================================================
             progress_raw_api_object.add_raw_member("overrides",
@@ -5127,7 +5127,7 @@ class AoCAbilitySubprocessor:
                                                       "CarryRelicState",
                                                       dataset.nyan_api_objects)
             carry_state_raw_api_object.add_raw_parent("engine.aux.state_machine.StateChanger")
-            carry_state_location = ExpectedPointer(line, progress_name)
+            carry_state_location = ForwardRef(line, progress_name)
             carry_state_raw_api_object.set_location(carry_state_location)
 
             # Priority
@@ -5141,16 +5141,16 @@ class AoCAbilitySubprocessor:
                                                       "engine.aux.state_machine.StateChanger")
 
             # Disabled abilities
-            disabled_expected_pointers = [
-                ExpectedPointer(line,
-                                "%s.Convert"
-                                % (game_entity_name)),
-                ExpectedPointer(line,
-                                "%s.Heal"
-                                % (game_entity_name)),
+            disabled_forward_refs = [
+                ForwardRef(line,
+                           "%s.Convert"
+                           % (game_entity_name)),
+                ForwardRef(line,
+                           "%s.Heal"
+                           % (game_entity_name)),
             ]
             carry_state_raw_api_object.add_raw_member("disable_abilities",
-                                                      disabled_expected_pointers,
+                                                      disabled_forward_refs,
                                                       "engine.aux.state_machine.StateChanger")
 
             # Enabled modifiers
@@ -5165,14 +5165,14 @@ class AoCAbilitySubprocessor:
 
             line.add_raw_api_object(carry_state_raw_api_object)
             # =====================================================================================
-            init_state_expected_pointer = ExpectedPointer(line, carry_state_name)
+            init_state_forward_ref = ForwardRef(line, carry_state_name)
             progress_raw_api_object.add_raw_member("state_change",
-                                                   init_state_expected_pointer,
+                                                   init_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
             # =====================================================================================
             line.add_raw_api_object(progress_raw_api_object)
-            progress_expected_pointer = ExpectedPointer(line, progress_name)
-            carry_progress.append(progress_expected_pointer)
+            progress_forward_ref = ForwardRef(line, progress_name)
+            carry_progress.append(progress_forward_ref)
 
         else:
             # Garrison graphics
@@ -5188,7 +5188,7 @@ class AoCAbilitySubprocessor:
                                                        "CarryProgress",
                                                        dataset.nyan_api_objects)
                 progress_raw_api_object.add_raw_parent("engine.aux.progress.type.CarryProgress")
-                progress_location = ExpectedPointer(line, ability_ref)
+                progress_location = ForwardRef(line, ability_ref)
                 progress_raw_api_object.set_location(progress_location)
 
                 # Interval = (0.0, 100.0)
@@ -5206,23 +5206,23 @@ class AoCAbilitySubprocessor:
                                                        "IdleOverride",
                                                        dataset.nyan_api_objects)
                 override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-                override_location = ExpectedPointer(line, progress_name)
+                override_location = ForwardRef(line, progress_name)
                 override_raw_api_object.set_location(override_location)
 
-                idle_expected_pointer = ExpectedPointer(line, "%s.Idle" % (game_entity_name))
+                idle_forward_ref = ForwardRef(line, "%s.Idle" % (game_entity_name))
                 override_raw_api_object.add_raw_member("ability",
-                                                       idle_expected_pointer,
+                                                       idle_forward_ref,
                                                        "engine.aux.animation_override.AnimationOverride")
 
                 # Animation
                 animations_set = []
-                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                      garrison_animation_id,
-                                                                                      override_ref,
-                                                                                      "Idle",
-                                                                                      "idle_garrison_override_")
+                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                                 garrison_animation_id,
+                                                                                 override_ref,
+                                                                                 "Idle",
+                                                                                 "idle_garrison_override_")
 
-                animations_set.append(animation_expected_pointer)
+                animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
                                                        animations_set,
                                                        "engine.aux.animation_override.AnimationOverride")
@@ -5233,13 +5233,13 @@ class AoCAbilitySubprocessor:
 
                 line.add_raw_api_object(override_raw_api_object)
                 # ===========================================================================================
-                override_expected_pointer = ExpectedPointer(line, override_ref)
+                override_forward_ref = ForwardRef(line, override_ref)
                 progress_raw_api_object.add_raw_member("overrides",
-                                                       [override_expected_pointer],
+                                                       [override_forward_ref],
                                                        "engine.aux.progress.specialization.AnimatedProgress")
 
-                progress_expected_pointer = ExpectedPointer(line, progress_name)
-                carry_progress.append(progress_expected_pointer)
+                progress_forward_ref = ForwardRef(line, progress_name)
+                carry_progress.append(progress_forward_ref)
                 line.add_raw_api_object(progress_raw_api_object)
 
         container_raw_api_object.add_raw_member("carry_progress",
@@ -5248,9 +5248,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(container_raw_api_object)
         # ==============================================================================
-        container_expected_pointer = ExpectedPointer(line, container_name)
+        container_forward_ref = ForwardRef(line, container_name)
         ability_raw_api_object.add_raw_member("container",
-                                              container_expected_pointer,
+                                              container_forward_ref,
                                               "engine.ability.type.Storage")
 
         # Empty condition
@@ -5272,9 +5272,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def terrain_requirement_ability(line):
@@ -5283,8 +5283,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointers for the abilities.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward references for the abilities.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -5298,7 +5298,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.TerrainRequirement" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "TerrainRequirement", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.TerrainRequirement")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Allowed types
@@ -5322,9 +5322,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def trade_ability(line):
@@ -5333,8 +5333,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -5347,7 +5347,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Trade" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Trade", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Trade")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Trade route (use the trade route o the market)
@@ -5367,8 +5367,8 @@ class AoCAbilitySubprocessor:
             trade_post_name = name_lookup_dict[trade_post_id][0]
 
             trade_route_ref = "%s.TradePost.AoE2%sTradeRoute" % (trade_post_name, trade_post_name)
-            trade_route_expected_pointer = ExpectedPointer(trade_post_line, trade_route_ref)
-            trade_routes.append(trade_route_expected_pointer)
+            trade_route_forward_ref = ForwardRef(trade_post_line, trade_route_ref)
+            trade_routes.append(trade_route_forward_ref)
 
         ability_raw_api_object.add_raw_member("trade_routes",
                                               trade_routes,
@@ -5376,9 +5376,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def trade_post_ability(line):
@@ -5387,8 +5387,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -5400,7 +5400,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.TradePost" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "TradePost", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.TradePost")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Trade route
@@ -5412,7 +5412,7 @@ class AoCAbilitySubprocessor:
                                                   trade_route_name,
                                                   dataset.nyan_api_objects)
         trade_route_raw_api_object.add_raw_parent("engine.aux.trade_route.type.AoE2TradeRoute")
-        trade_route_location = ExpectedPointer(line, ability_ref)
+        trade_route_location = ForwardRef(line, ability_ref)
         trade_route_raw_api_object.set_location(trade_route_location)
 
         # Trade resource
@@ -5422,16 +5422,16 @@ class AoCAbilitySubprocessor:
                                                   "engine.aux.trade_route.TradeRoute")
 
         # Start- and endpoints
-        market_expected_pointer = ExpectedPointer(line, game_entity_name)
+        market_forward_ref = ForwardRef(line, game_entity_name)
         trade_route_raw_api_object.add_raw_member("start_trade_post",
-                                                  market_expected_pointer,
+                                                  market_forward_ref,
                                                   "engine.aux.trade_route.TradeRoute")
         trade_route_raw_api_object.add_raw_member("end_trade_post",
-                                                  market_expected_pointer,
+                                                  market_forward_ref,
                                                   "engine.aux.trade_route.TradeRoute")
 
-        trade_route_expected_pointer = ExpectedPointer(line, trade_route_ref)
-        trade_routes.append(trade_route_expected_pointer)
+        trade_route_forward_ref = ForwardRef(line, trade_route_ref)
+        trade_routes.append(trade_route_forward_ref)
 
         line.add_raw_api_object(trade_route_raw_api_object)
         # =====================================================================================
@@ -5441,9 +5441,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def transfer_storage_ability(line):
@@ -5452,8 +5452,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer, None
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef, None
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -5465,31 +5465,31 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.TransferStorage" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "TransferStorage", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.TransferStorage")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # storage element
         storage_entity = None
-        garrisoned_expected_pointer = None
+        garrisoned_forward_ref = None
         for garrisoned in line.garrison_entities:
             creatable_type = garrisoned.get_head_unit().get_member("creatable_type").get_value()
 
             if creatable_type == 4:
                 storage_name = name_lookup_dict[garrisoned.get_id()][0]
                 storage_entity = garrisoned
-                garrisoned_expected_pointer = ExpectedPointer(storage_entity, storage_name)
+                garrisoned_forward_ref = ForwardRef(storage_entity, storage_name)
 
                 break
 
         ability_raw_api_object.add_raw_member("storage_element",
-                                              garrisoned_expected_pointer,
+                                              garrisoned_forward_ref,
                                               "engine.ability.type.TransferStorage")
 
         # Source container
         source_ref = "%s.Storage.%sContainer" % (game_entity_name, game_entity_name)
-        source_expected_pointer = ExpectedPointer(line, source_ref)
+        source_forward_ref = ForwardRef(line, source_ref)
         ability_raw_api_object.add_raw_member("source_container",
-                                              source_expected_pointer,
+                                              source_forward_ref,
                                               "engine.ability.type.TransferStorage")
 
         # Target container
@@ -5505,16 +5505,16 @@ class AoCAbilitySubprocessor:
 
         target_name = name_lookup_dict[target.get_id()][0]
         target_ref = "%s.Storage.%sContainer" % (target_name, target_name)
-        target_expected_pointer = ExpectedPointer(target, target_ref)
+        target_forward_ref = ForwardRef(target, target_ref)
         ability_raw_api_object.add_raw_member("target_container",
-                                              target_expected_pointer,
+                                              target_forward_ref,
                                               "engine.ability.type.TransferStorage")
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def turn_ability(line):
@@ -5523,8 +5523,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -5537,7 +5537,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Turn" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Turn", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Turn")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Speed
@@ -5561,9 +5561,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def use_contingent_ability(line):
@@ -5572,8 +5572,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
@@ -5586,7 +5586,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.UseContingent" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "UseContingent", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.UseContingent")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Also stores the pop space
@@ -5609,8 +5609,8 @@ class AoCAbilitySubprocessor:
             contingent_amount = RawAPIObject(contingent_amount_name, resource_name,
                                              dataset.nyan_api_objects)
             contingent_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
-            ability_expected_pointer = ExpectedPointer(line, ability_ref)
-            contingent_amount.set_location(ability_expected_pointer)
+            ability_forward_ref = ForwardRef(line, ability_ref)
+            contingent_amount.set_location(ability_forward_ref)
 
             contingent_amount.add_raw_member("type",
                                              resource,
@@ -5620,9 +5620,9 @@ class AoCAbilitySubprocessor:
                                              "engine.aux.resource.ResourceAmount")
 
             line.add_raw_api_object(contingent_amount)
-            contingent_amount_expected_pointer = ExpectedPointer(line,
-                                                                 contingent_amount_name)
-            contingents.append(contingent_amount_expected_pointer)
+            contingent_amount_forward_ref = ForwardRef(line,
+                                                       contingent_amount_name)
+            contingents.append(contingent_amount_forward_ref)
 
         if not contingents:
             # Do not create the ability if its values are empty
@@ -5633,9 +5633,9 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.UseContingent")
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def visibility_ability(line):
@@ -5644,8 +5644,8 @@ class AoCAbilitySubprocessor:
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the ability.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
@@ -5657,7 +5657,7 @@ class AoCAbilitySubprocessor:
         ability_ref = "%s.Visibility" % (game_entity_name)
         ability_raw_api_object = RawAPIObject(ability_ref, "Visibility", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Visibility")
-        ability_location = ExpectedPointer(line, game_entity_name)
+        ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Units are not visible in fog...
@@ -5682,7 +5682,7 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(ability_raw_api_object)
 
-        ability_expected_pointer = ExpectedPointer(line, ability_raw_api_object.get_id())
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
         # Add another Visibility ability for buildings with construction progress = 0.0
         # It is not returned by this method, but referenced by the Constructable ability
@@ -5690,7 +5690,7 @@ class AoCAbilitySubprocessor:
             ability_ref = "%s.VisibilityConstruct0" % (game_entity_name)
             ability_raw_api_object = RawAPIObject(ability_ref, "VisibilityConstruct0", dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent("engine.ability.type.Visibility")
-            ability_location = ExpectedPointer(line, game_entity_name)
+            ability_location = ForwardRef(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
 
             # The construction site is not visible in fog
@@ -5709,7 +5709,7 @@ class AoCAbilitySubprocessor:
 
             line.add_raw_api_object(ability_raw_api_object)
 
-        return ability_expected_pointer
+        return ability_forward_ref
 
     @staticmethod
     def _create_animation(line, animation_id, ability_ref, ability_name, filename_prefix):
@@ -5737,7 +5737,7 @@ class AoCAbilitySubprocessor:
         animation_raw_api_object = RawAPIObject(animation_ref, animation_obj_name,
                                                 dataset.nyan_api_objects)
         animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-        animation_location = ExpectedPointer(line, ability_ref)
+        animation_location = ForwardRef(line, ability_ref)
         animation_raw_api_object.set_location(animation_location)
 
         if animation_id in dataset.combined_sprites.keys():
@@ -5757,9 +5757,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(animation_raw_api_object)
 
-        animation_expected_pointer = ExpectedPointer(line, animation_ref)
+        animation_forward_ref = ForwardRef(line, animation_ref)
 
-        return animation_expected_pointer
+        return animation_forward_ref
 
     @staticmethod
     def _create_civ_animation(line, civ_group, animation_id, ability_ref,
@@ -5793,7 +5793,7 @@ class AoCAbilitySubprocessor:
         civ_name = civ_lookup_dict[civ_id][0]
 
         patch_target_ref = "%s" % (ability_ref)
-        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = "%s%sAnimationWrapper" % (game_entity_name, ability_name)
@@ -5802,37 +5802,37 @@ class AoCAbilitySubprocessor:
                                               wrapper_name,
                                               dataset.nyan_api_objects)
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
-        wrapper_raw_api_object.set_location(ExpectedPointer(civ_group, civ_name))
+        wrapper_raw_api_object.set_location(ForwardRef(civ_group, civ_name))
 
         # Nyan patch
         nyan_patch_name = "%s%sAnimation" % (game_entity_name, ability_name)
         nyan_patch_ref = "%s.%s.%s" % (civ_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(civ_group, wrapper_ref)
+        nyan_patch_location = ForwardRef(civ_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         if animation_id > -1:
             # If the animation object already exists, we do not need to create it again
             if exists:
                 # Point to a previously created animation object
                 animation_ref = "%s.%sAnimation" % (ability_ref, ability_name)
-                animation_expected_pointer = ExpectedPointer(line, animation_ref)
+                animation_forward_ref = ForwardRef(line, animation_ref)
 
             else:
                 # Create the animation object
-                animation_expected_pointer = AoCAbilitySubprocessor._create_animation(line,
-                                                                                      animation_id,
-                                                                                      ability_ref,
-                                                                                      ability_name,
-                                                                                      filename_prefix)
+                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                                 animation_id,
+                                                                                 ability_ref,
+                                                                                 ability_name,
+                                                                                 filename_prefix)
 
             # Patch animation into ability
             nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                           [animation_expected_pointer],
+                                                           [animation_forward_ref],
                                                            "engine.ability.specialization.AnimatedAbility",
                                                            MemberOperator.ASSIGN)
 
@@ -5843,21 +5843,21 @@ class AoCAbilitySubprocessor:
                                                            "engine.ability.specialization.AnimatedAbility",
                                                            MemberOperator.ASSIGN)
 
-        patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
+        patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
+                                              patch_forward_ref,
                                               "engine.aux.patch.Patch")
 
         civ_group.add_raw_api_object(wrapper_raw_api_object)
         civ_group.add_raw_api_object(nyan_patch_raw_api_object)
 
         # Add patch to civ_setup
-        civ_expected_pointer = ExpectedPointer(civ_group, civ_name)
-        wrapper_expected_pointer = ExpectedPointer(civ_group, wrapper_ref)
-        push_object = RawMemberPush(civ_expected_pointer,
+        civ_forward_ref = ForwardRef(civ_group, civ_name)
+        wrapper_forward_ref = ForwardRef(civ_group, wrapper_ref)
+        push_object = RawMemberPush(civ_forward_ref,
                                     "civ_setup",
                                     "engine.aux.civ.Civilization",
-                                    [wrapper_expected_pointer])
+                                    [wrapper_forward_ref])
         civ_group.add_raw_member_push(push_object)
 
     @staticmethod
@@ -5872,7 +5872,7 @@ class AoCAbilitySubprocessor:
         sound_raw_api_object = RawAPIObject(sound_ref, sound_obj_name,
                                             dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
-        sound_location = ExpectedPointer(line, ability_ref)
+        sound_location = ForwardRef(line, ability_ref)
         sound_raw_api_object.set_location(sound_location)
 
         # Search for the sound if it exists
@@ -5904,9 +5904,9 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(sound_raw_api_object)
 
-        sound_expected_pointer = ExpectedPointer(line, sound_ref)
+        sound_forward_ref = ForwardRef(line, sound_ref)
 
-        return sound_expected_pointer
+        return sound_forward_ref
 
     @staticmethod
     def _create_language_strings(line, string_id, obj_ref, obj_name_prefix):
@@ -5924,13 +5924,13 @@ class AoCAbilitySubprocessor:
                 string_raw_api_object = RawAPIObject(string_ref, string_name,
                                                      dataset.nyan_api_objects)
                 string_raw_api_object.add_raw_parent("engine.aux.language.LanguageTextPair")
-                string_location = ExpectedPointer(line, obj_ref)
+                string_location = ForwardRef(line, obj_ref)
                 string_raw_api_object.set_location(string_location)
 
                 # Language identifier
-                lang_expected_pointer = dataset.pregen_nyan_objects["aux.language.%s" % (language)].get_nyan_object()
+                lang_forward_ref = dataset.pregen_nyan_objects["aux.language.%s" % (language)].get_nyan_object()
                 string_raw_api_object.add_raw_member("language",
-                                                     lang_expected_pointer,
+                                                     lang_forward_ref,
                                                      "engine.aux.language.LanguageTextPair")
 
                 # String
@@ -5939,7 +5939,7 @@ class AoCAbilitySubprocessor:
                                                      "engine.aux.language.LanguageTextPair")
 
                 line.add_raw_api_object(string_raw_api_object)
-                string_expected_pointer = ExpectedPointer(line, string_ref)
-                string_objs.append(string_expected_pointer)
+                string_forward_ref = ForwardRef(line, string_ref)
+                string_objs.append(string_forward_ref)
 
         return string_objs

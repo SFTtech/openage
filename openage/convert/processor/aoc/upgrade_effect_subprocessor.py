@@ -4,7 +4,7 @@
 Upgrades effects and resistances for the Apply*Effect and Resistance
 abilities.
 """
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.value_members import NoDiffMember,\
@@ -28,7 +28,7 @@ class AoCUpgradeEffectSubprocessor:
         :type diff: ...dataformat.converter_object.ConverterObject
         :param ability_ref: Reference of the ability raw API object the effects are added to.
         :type ability_ref: str
-        :returns: The expected pointers for the effects.
+        :returns: The forward references for the effects.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
@@ -61,7 +61,7 @@ class AoCUpgradeEffectSubprocessor:
                 attack_parent = "engine.effect.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"
 
                 patch_target_ref = "%s" % (ability_ref)
-                patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+                patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
                 wrapper_name = "Add%sAttackEffectWrapper" % (class_name)
@@ -79,18 +79,18 @@ class AoCUpgradeEffectSubprocessor:
                     wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
                 else:
-                    wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+                    wrapper_raw_api_object.set_location(ForwardRef(tech_group, tech_name))
 
                 # Nyan patch
                 nyan_patch_name = "Add%sAttackEffect" % (class_name)
                 nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-                nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+                nyan_patch_location = ForwardRef(tech_group, wrapper_ref)
                 nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                          nyan_patch_name,
                                                          dataset.nyan_api_objects,
                                                          nyan_patch_location)
                 nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-                nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+                nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
                 # New attack effect
                 # ============================================================================
@@ -99,7 +99,7 @@ class AoCUpgradeEffectSubprocessor:
                                                      class_name,
                                                      dataset.nyan_api_objects)
                 attack_raw_api_object.add_raw_parent(attack_parent)
-                attack_location = ExpectedPointer(tech_group, nyan_patch_ref)
+                attack_location = ForwardRef(tech_group, nyan_patch_ref)
                 attack_raw_api_object.set_location(attack_location)
 
                 # Type
@@ -123,7 +123,7 @@ class AoCUpgradeEffectSubprocessor:
                 amount_name = "%s.%s.ChangeAmount" % (nyan_patch_ref, class_name)
                 amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", dataset.nyan_api_objects)
                 amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
-                amount_location = ExpectedPointer(line, attack_ref)
+                amount_location = ForwardRef(line, attack_ref)
                 amount_raw_api_object.set_location(amount_location)
 
                 attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -136,9 +136,9 @@ class AoCUpgradeEffectSubprocessor:
 
                 line.add_raw_api_object(amount_raw_api_object)
                 # =================================================================================
-                amount_expected_pointer = ExpectedPointer(line, amount_name)
+                amount_forward_ref = ForwardRef(line, amount_name)
                 attack_raw_api_object.add_raw_member("change_value",
-                                                     amount_expected_pointer,
+                                                     amount_forward_ref,
                                                      effect_parent)
 
                 # Ignore protection
@@ -149,22 +149,22 @@ class AoCUpgradeEffectSubprocessor:
                 # Effect is added to the line, so it can be referenced by other upgrades
                 line.add_raw_api_object(attack_raw_api_object)
                 # ============================================================================
-                attack_expected_pointer = ExpectedPointer(line, attack_ref)
+                attack_forward_ref = ForwardRef(line, attack_ref)
                 nyan_patch_raw_api_object.add_raw_patch_member("effects",
-                                                               [attack_expected_pointer],
+                                                               [attack_forward_ref],
                                                                "engine.ability.type.ApplyDiscreteEffect",
                                                                MemberOperator.ADD)
 
-                patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+                patch_forward_ref = ForwardRef(tech_group, nyan_patch_ref)
                 wrapper_raw_api_object.add_raw_member("patch",
-                                                      patch_expected_pointer,
+                                                      patch_forward_ref,
                                                       "engine.aux.patch.Patch")
 
                 tech_group.add_raw_api_object(wrapper_raw_api_object)
                 tech_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-                wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
-                patches.append(wrapper_expected_pointer)
+                wrapper_forward_ref = ForwardRef(tech_group, wrapper_ref)
+                patches.append(wrapper_forward_ref)
 
             elif isinstance(diff_attack, RightMissingMember):
                 # Patch the effect out of the ability
@@ -174,7 +174,7 @@ class AoCUpgradeEffectSubprocessor:
                 class_name = armor_lookup_dict[armor_class]
 
                 patch_target_ref = "%s" % (ability_ref)
-                patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+                patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
                 wrapper_name = "Remove%sAttackEffectWrapper" % (class_name)
@@ -192,36 +192,36 @@ class AoCUpgradeEffectSubprocessor:
                     wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
                 else:
-                    wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+                    wrapper_raw_api_object.set_location(ForwardRef(tech_group, tech_name))
 
                 # Nyan patch
                 nyan_patch_name = "Remove%sAttackEffect" % (class_name)
                 nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-                nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+                nyan_patch_location = ForwardRef(tech_group, wrapper_ref)
                 nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                          nyan_patch_name,
                                                          dataset.nyan_api_objects,
                                                          nyan_patch_location)
                 nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-                nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+                nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
                 attack_ref = "%s.%s" % (ability_ref, class_name)
-                attack_expected_pointer = ExpectedPointer(line, attack_ref)
+                attack_forward_ref = ForwardRef(line, attack_ref)
                 nyan_patch_raw_api_object.add_raw_patch_member("effects",
-                                                               [attack_expected_pointer],
+                                                               [attack_forward_ref],
                                                                "engine.ability.type.ApplyDiscreteEffect",
                                                                MemberOperator.SUBTRACT)
 
-                patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+                patch_forward_ref = ForwardRef(tech_group, nyan_patch_ref)
                 wrapper_raw_api_object.add_raw_member("patch",
-                                                      patch_expected_pointer,
+                                                      patch_forward_ref,
                                                       "engine.aux.patch.Patch")
 
                 tech_group.add_raw_api_object(wrapper_raw_api_object)
                 tech_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-                wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
-                patches.append(wrapper_expected_pointer)
+                wrapper_forward_ref = ForwardRef(tech_group, wrapper_ref)
+                patches.append(wrapper_forward_ref)
 
             else:
                 diff_armor_class = diff_attack["type_id"]
@@ -237,7 +237,7 @@ class AoCUpgradeEffectSubprocessor:
                 class_name = armor_lookup_dict[armor_class]
 
                 patch_target_ref = "%s.%s.ChangeAmount" % (ability_ref, class_name)
-                patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+                patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
                 wrapper_name = "Change%sAttackWrapper" % (class_name)
@@ -255,34 +255,34 @@ class AoCUpgradeEffectSubprocessor:
                     wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
                 else:
-                    wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+                    wrapper_raw_api_object.set_location(ForwardRef(tech_group, tech_name))
 
                 # Nyan patch
                 nyan_patch_name = "Change%sAttack" % (class_name)
                 nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-                nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+                nyan_patch_location = ForwardRef(tech_group, wrapper_ref)
                 nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                          nyan_patch_name,
                                                          dataset.nyan_api_objects,
                                                          nyan_patch_location)
                 nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-                nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+                nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("amount",
                                                                attack_amount,
                                                                "engine.aux.attribute.AttributeAmount",
                                                                MemberOperator.ADD)
 
-                patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+                patch_forward_ref = ForwardRef(tech_group, nyan_patch_ref)
                 wrapper_raw_api_object.add_raw_member("patch",
-                                                      patch_expected_pointer,
+                                                      patch_forward_ref,
                                                       "engine.aux.patch.Patch")
 
                 tech_group.add_raw_api_object(wrapper_raw_api_object)
                 tech_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-                wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
-                patches.append(wrapper_expected_pointer)
+                wrapper_forward_ref = ForwardRef(tech_group, wrapper_ref)
+                patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -299,7 +299,7 @@ class AoCUpgradeEffectSubprocessor:
         :type diff: ...dataformat.converter_object.ConverterObject
         :param ability_ref: Reference of the ability raw API object the effects are added to.
         :type ability_ref: str
-        :returns: The expected pointers for the resistances.
+        :returns: The forward references for the resistances.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
@@ -332,7 +332,7 @@ class AoCUpgradeEffectSubprocessor:
                 armor_parent = "engine.resistance.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"
 
                 patch_target_ref = "%s" % (ability_ref)
-                patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+                patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
                 wrapper_name = "Add%sAttackResistanceWrapper" % (class_name)
@@ -350,18 +350,18 @@ class AoCUpgradeEffectSubprocessor:
                     wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
                 else:
-                    wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+                    wrapper_raw_api_object.set_location(ForwardRef(tech_group, tech_name))
 
                 # Nyan patch
                 nyan_patch_name = "Add%sAttackResistance" % (class_name)
                 nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-                nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+                nyan_patch_location = ForwardRef(tech_group, wrapper_ref)
                 nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                          nyan_patch_name,
                                                          dataset.nyan_api_objects,
                                                          nyan_patch_location)
                 nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-                nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+                nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
                 # New attack effect
                 # ============================================================================
@@ -370,7 +370,7 @@ class AoCUpgradeEffectSubprocessor:
                                                      class_name,
                                                      dataset.nyan_api_objects)
                 attack_raw_api_object.add_raw_parent(armor_parent)
-                attack_location = ExpectedPointer(tech_group, nyan_patch_ref)
+                attack_location = ForwardRef(tech_group, nyan_patch_ref)
                 attack_raw_api_object.set_location(attack_location)
 
                 # Type
@@ -385,7 +385,7 @@ class AoCUpgradeEffectSubprocessor:
                 amount_name = "%s.%s.BlockAmount" % (nyan_patch_ref, class_name)
                 amount_raw_api_object = RawAPIObject(amount_name, "BlockAmount", dataset.nyan_api_objects)
                 amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
-                amount_location = ExpectedPointer(line, attack_ref)
+                amount_location = ForwardRef(line, attack_ref)
                 amount_raw_api_object.set_location(amount_location)
 
                 attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -398,30 +398,30 @@ class AoCUpgradeEffectSubprocessor:
 
                 line.add_raw_api_object(amount_raw_api_object)
                 # =================================================================================
-                amount_expected_pointer = ExpectedPointer(line, amount_name)
+                amount_forward_ref = ForwardRef(line, amount_name)
                 attack_raw_api_object.add_raw_member("block_value",
-                                                     amount_expected_pointer,
+                                                     amount_forward_ref,
                                                      resistance_parent)
 
                 # Resistance is added to the line, so it can be referenced by other upgrades
                 line.add_raw_api_object(attack_raw_api_object)
                 # ============================================================================
-                attack_expected_pointer = ExpectedPointer(line, attack_ref)
+                attack_forward_ref = ForwardRef(line, attack_ref)
                 nyan_patch_raw_api_object.add_raw_patch_member("resistances",
-                                                               [attack_expected_pointer],
+                                                               [attack_forward_ref],
                                                                "engine.ability.type.Resistance",
                                                                MemberOperator.ADD)
 
-                patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+                patch_forward_ref = ForwardRef(tech_group, nyan_patch_ref)
                 wrapper_raw_api_object.add_raw_member("patch",
-                                                      patch_expected_pointer,
+                                                      patch_forward_ref,
                                                       "engine.aux.patch.Patch")
 
                 tech_group.add_raw_api_object(wrapper_raw_api_object)
                 tech_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-                wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
-                patches.append(wrapper_expected_pointer)
+                wrapper_forward_ref = ForwardRef(tech_group, wrapper_ref)
+                patches.append(wrapper_forward_ref)
 
             elif isinstance(diff_armor, RightMissingMember):
                 # Patch the resistance out of the ability
@@ -431,7 +431,7 @@ class AoCUpgradeEffectSubprocessor:
                 class_name = armor_lookup_dict[armor_class]
 
                 patch_target_ref = "%s" % (ability_ref)
-                patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+                patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
                 wrapper_name = "Remove%sAttackResistanceWrapper" % (class_name)
@@ -449,36 +449,36 @@ class AoCUpgradeEffectSubprocessor:
                     wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
                 else:
-                    wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+                    wrapper_raw_api_object.set_location(ForwardRef(tech_group, tech_name))
 
                 # Nyan patch
                 nyan_patch_name = "Remove%sAttackResistance" % (class_name)
                 nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-                nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+                nyan_patch_location = ForwardRef(tech_group, wrapper_ref)
                 nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                          nyan_patch_name,
                                                          dataset.nyan_api_objects,
                                                          nyan_patch_location)
                 nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-                nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+                nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
                 attack_ref = "%s.%s" % (ability_ref, class_name)
-                attack_expected_pointer = ExpectedPointer(line, attack_ref)
+                attack_forward_ref = ForwardRef(line, attack_ref)
                 nyan_patch_raw_api_object.add_raw_patch_member("resistances",
-                                                               [attack_expected_pointer],
+                                                               [attack_forward_ref],
                                                                "engine.ability.type.Resistance",
                                                                MemberOperator.SUBTRACT)
 
-                patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+                patch_forward_ref = ForwardRef(tech_group, nyan_patch_ref)
                 wrapper_raw_api_object.add_raw_member("patch",
-                                                      patch_expected_pointer,
+                                                      patch_forward_ref,
                                                       "engine.aux.patch.Patch")
 
                 tech_group.add_raw_api_object(wrapper_raw_api_object)
                 tech_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-                wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
-                patches.append(wrapper_expected_pointer)
+                wrapper_forward_ref = ForwardRef(tech_group, wrapper_ref)
+                patches.append(wrapper_forward_ref)
 
             else:
                 diff_armor_class = diff_armor["type_id"]
@@ -494,7 +494,7 @@ class AoCUpgradeEffectSubprocessor:
                 class_name = armor_lookup_dict[armor_class]
 
                 patch_target_ref = "%s.%s.BlockAmount" % (ability_ref, class_name)
-                patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+                patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
                 wrapper_name = "Change%sResistanceWrapper" % (class_name)
@@ -512,33 +512,33 @@ class AoCUpgradeEffectSubprocessor:
                     wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
                 else:
-                    wrapper_raw_api_object.set_location(ExpectedPointer(tech_group, tech_name))
+                    wrapper_raw_api_object.set_location(ForwardRef(tech_group, tech_name))
 
                 # Nyan patch
                 nyan_patch_name = "Change%sResistance" % (class_name)
                 nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
-                nyan_patch_location = ExpectedPointer(tech_group, wrapper_ref)
+                nyan_patch_location = ForwardRef(tech_group, wrapper_ref)
                 nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                          nyan_patch_name,
                                                          dataset.nyan_api_objects,
                                                          nyan_patch_location)
                 nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-                nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+                nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("amount",
                                                                armor_amount,
                                                                "engine.aux.attribute.AttributeAmount",
                                                                MemberOperator.ADD)
 
-                patch_expected_pointer = ExpectedPointer(tech_group, nyan_patch_ref)
+                patch_forward_ref = ForwardRef(tech_group, nyan_patch_ref)
                 wrapper_raw_api_object.add_raw_member("patch",
-                                                      patch_expected_pointer,
+                                                      patch_forward_ref,
                                                       "engine.aux.patch.Patch")
 
                 tech_group.add_raw_api_object(wrapper_raw_api_object)
                 tech_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-                wrapper_expected_pointer = ExpectedPointer(tech_group, wrapper_ref)
-                patches.append(wrapper_expected_pointer)
+                wrapper_forward_ref = ForwardRef(tech_group, wrapper_ref)
+                patches.append(wrapper_forward_ref)
 
         return patches

@@ -4,7 +4,7 @@
 Creates nyan objects for things that are hardcoded into the Genie Engine,
 but configurable in openage. E.g. HP.
 """
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.converter_object import ConverterObjectGroup,\
     RawAPIObject
 from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
@@ -53,7 +53,7 @@ class RoRPregenSubprocessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
-                                       ExpectedPointer
+                                       ForwardRef
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
@@ -79,17 +79,17 @@ class RoRPregenSubprocessor:
         literal_raw_api_object.add_raw_member("only_once", False, logic_parent)
 
         # Scope
-        scope_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                 "aux.logic.literal_scope.death.StandardHealthDeathScope")
+        scope_forward_ref = ForwardRef(pregen_converter_group,
+                                       "aux.logic.literal_scope.death.StandardHealthDeathScope")
         literal_raw_api_object.add_raw_member("scope",
-                                              scope_expected_pointer,
+                                              scope_forward_ref,
                                               literal_parent)
 
         # Attribute
-        health_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                  "aux.attribute.types.Health")
+        health_forward_ref = ForwardRef(pregen_converter_group,
+                                        "aux.attribute.types.Health")
         literal_raw_api_object.add_raw_member("attribute",
-                                              health_expected_pointer,
+                                              health_forward_ref,
                                               interval_parent)
 
         # sidenote: Apparently this is actually HP<1 in Genie
@@ -109,7 +109,7 @@ class RoRPregenSubprocessor:
         scope_raw_api_object = RawAPIObject(death_scope_ref_in_modpack,
                                             "StandardHealthDeathScope",
                                             api_objects)
-        scope_location = ExpectedPointer(pregen_converter_group, death_ref_in_modpack)
+        scope_location = ForwardRef(pregen_converter_group, death_ref_in_modpack)
         scope_raw_api_object.set_location(scope_location)
         scope_raw_api_object.add_raw_parent(self_scope_parent)
 

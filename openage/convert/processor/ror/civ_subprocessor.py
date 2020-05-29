@@ -3,7 +3,7 @@
 """
 Creates patches and modifiers for civs.
 """
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.service import internal_name_lookups
 
@@ -56,7 +56,7 @@ class RoRCivSubprocessor:
         food_raw_api_object = RawAPIObject(food_ref, "FoodStartingAmount",
                                            dataset.nyan_api_objects)
         food_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
-        civ_location = ExpectedPointer(civ_group, civ_lookup_dict[civ_group.get_id()][0])
+        civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         food_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
@@ -68,14 +68,14 @@ class RoRCivSubprocessor:
                                            food_amount,
                                            "engine.aux.resource.ResourceAmount")
 
-        food_expected_pointer = ExpectedPointer(civ_group, food_ref)
-        resource_amounts.append(food_expected_pointer)
+        food_forward_ref = ForwardRef(civ_group, food_ref)
+        resource_amounts.append(food_forward_ref)
 
         wood_ref = "%s.WoodStartingAmount" % (civ_name)
         wood_raw_api_object = RawAPIObject(wood_ref, "WoodStartingAmount",
                                            dataset.nyan_api_objects)
         wood_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
-        civ_location = ExpectedPointer(civ_group, civ_lookup_dict[civ_group.get_id()][0])
+        civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         wood_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["aux.resource.types.Wood"].get_nyan_object()
@@ -87,14 +87,14 @@ class RoRCivSubprocessor:
                                            wood_amount,
                                            "engine.aux.resource.ResourceAmount")
 
-        wood_expected_pointer = ExpectedPointer(civ_group, wood_ref)
-        resource_amounts.append(wood_expected_pointer)
+        wood_forward_ref = ForwardRef(civ_group, wood_ref)
+        resource_amounts.append(wood_forward_ref)
 
         gold_ref = "%s.GoldStartingAmount" % (civ_name)
         gold_raw_api_object = RawAPIObject(gold_ref, "GoldStartingAmount",
                                            dataset.nyan_api_objects)
         gold_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
-        civ_location = ExpectedPointer(civ_group, civ_lookup_dict[civ_group.get_id()][0])
+        civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         gold_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
@@ -106,14 +106,14 @@ class RoRCivSubprocessor:
                                            gold_amount,
                                            "engine.aux.resource.ResourceAmount")
 
-        gold_expected_pointer = ExpectedPointer(civ_group, gold_ref)
-        resource_amounts.append(gold_expected_pointer)
+        gold_forward_ref = ForwardRef(civ_group, gold_ref)
+        resource_amounts.append(gold_forward_ref)
 
         stone_ref = "%s.StoneStartingAmount" % (civ_name)
         stone_raw_api_object = RawAPIObject(stone_ref, "StoneStartingAmount",
                                             dataset.nyan_api_objects)
         stone_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
-        civ_location = ExpectedPointer(civ_group, civ_lookup_dict[civ_group.get_id()][0])
+        civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         stone_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["aux.resource.types.Stone"].get_nyan_object()
@@ -125,8 +125,8 @@ class RoRCivSubprocessor:
                                             stone_amount,
                                             "engine.aux.resource.ResourceAmount")
 
-        stone_expected_pointer = ExpectedPointer(civ_group, stone_ref)
-        resource_amounts.append(stone_expected_pointer)
+        stone_forward_ref = ForwardRef(civ_group, stone_ref)
+        resource_amounts.append(stone_forward_ref)
 
         civ_group.add_raw_api_object(food_raw_api_object)
         civ_group.add_raw_api_object(wood_raw_api_object)

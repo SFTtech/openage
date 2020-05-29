@@ -4,7 +4,7 @@
 Organize export data (nyan objects, media, scripts, etc.)
 into modpacks.
 """
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.modpack import Modpack
 from openage.convert.export.formats.nyan_file import NyanFile
 from openage.nyan.import_tree import ImportTree
@@ -74,7 +74,7 @@ class AoCModpackSubprocessor:
         for raw_api_object in raw_api_objects:
             obj_location = raw_api_object.get_location()
 
-            if isinstance(obj_location, ExpectedPointer):
+            if isinstance(obj_location, ForwardRef):
                 # Resolve location and add nested object
                 nyan_object = obj_location.resolve()
                 nyan_object.add_nested_object(raw_api_object.get_nyan_object())

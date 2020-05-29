@@ -3,7 +3,7 @@
 """
 Creates upgrade patches for resource modification effects in AoC.
 """
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.service import internal_name_lookups
@@ -23,7 +23,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         berserk_id = 692
@@ -46,12 +46,12 @@ class AoCUpgradeResourceSubprocessor:
         game_entity_name = name_lookup_dict[berserk_id][0]
 
         patch_target_ref = "%s.RegenerateHealth.HealthRate" % (game_entity_name)
-        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = "Change%sHealthRegenerationWrapper" % (game_entity_name)
         wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
-        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -61,13 +61,13 @@ class AoCUpgradeResourceSubprocessor:
         # Nyan patch
         nyan_patch_name = "Change%sHealthRegeneration" % (game_entity_name)
         nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # Regeneration is on a counter, so we have to invert the value
         value = 1 / value
@@ -76,9 +76,9 @@ class AoCUpgradeResourceSubprocessor:
                                                        "engine.aux.attribute.AttributeRate",
                                                        operator)
 
-        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
+                                              patch_forward_ref,
                                               "engine.aux.patch.Patch")
 
         if team:
@@ -92,8 +92,8 @@ class AoCUpgradeResourceSubprocessor:
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-        patches.append(wrapper_expected_pointer)
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+        patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -108,7 +108,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         dataset = converter_group.data
@@ -130,7 +130,7 @@ class AoCUpgradeResourceSubprocessor:
         # Wrapper
         wrapper_name = "ChangePopulationCapWrapper"
         wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
-        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -140,7 +140,7 @@ class AoCUpgradeResourceSubprocessor:
         # Nyan patch
         nyan_patch_name = "ChangePopulationCap"
         nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -153,9 +153,9 @@ class AoCUpgradeResourceSubprocessor:
                                                        "engine.aux.resource.ResourceContingent",
                                                        operator)
 
-        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
+                                              patch_forward_ref,
                                               "engine.aux.patch.Patch")
 
         if team:
@@ -169,8 +169,8 @@ class AoCUpgradeResourceSubprocessor:
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-        patches.append(wrapper_expected_pointer)
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+        patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -185,7 +185,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         monk_id = 125
@@ -208,14 +208,14 @@ class AoCUpgradeResourceSubprocessor:
         game_entity_name = name_lookup_dict[monk_id][0]
 
         patch_target_ref = "%s.Convert" % (game_entity_name)
-        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Building conversion
 
         # Wrapper
         wrapper_name = "EnableBuildingConversionWrapper"
         wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
-        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -225,13 +225,13 @@ class AoCUpgradeResourceSubprocessor:
         # Nyan patch
         nyan_patch_name = "EnableBuildingConversion"
         nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # New allowed types
         allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
@@ -251,38 +251,38 @@ class AoCUpgradeResourceSubprocessor:
         stone_gate_line = dataset.building_lines[64]
         wonder_line = dataset.building_lines[276]
 
-        blacklisted_expected_pointers = [ExpectedPointer(tc_line, "TownCenter"),
-                                         ExpectedPointer(farm_line, "Farm"),
-                                         ExpectedPointer(fish_trap_line, "FishingTrap"),
-                                         ExpectedPointer(monastery_line, "Monastery"),
-                                         ExpectedPointer(castle_line, "Castle"),
-                                         ExpectedPointer(palisade_line, "PalisadeWall"),
-                                         ExpectedPointer(stone_wall_line, "StoneWall"),
-                                         ExpectedPointer(stone_gate_line, "StoneGate"),
-                                         ExpectedPointer(wonder_line, "Wonder"),
-                                         ]
+        blacklisted_forward_refs = [ForwardRef(tc_line, "TownCenter"),
+                                    ForwardRef(farm_line, "Farm"),
+                                    ForwardRef(fish_trap_line, "FishingTrap"),
+                                    ForwardRef(monastery_line, "Monastery"),
+                                    ForwardRef(castle_line, "Castle"),
+                                    ForwardRef(palisade_line, "PalisadeWall"),
+                                    ForwardRef(stone_wall_line, "StoneWall"),
+                                    ForwardRef(stone_gate_line, "StoneGate"),
+                                    ForwardRef(wonder_line, "Wonder"),
+                                    ]
         nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
-                                                       blacklisted_expected_pointers,
+                                                       blacklisted_forward_refs,
                                                        "engine.ability.type.ApplyDiscreteEffect",
                                                        MemberOperator.ADD)
 
-        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
+                                              patch_forward_ref,
                                               "engine.aux.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-        patches.append(wrapper_expected_pointer)
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+        patches.append(wrapper_forward_ref)
 
         # Siege unit conversion
 
         # Wrapper
         wrapper_name = "EnableSiegeUnitConversionWrapper"
         wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
-        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -292,31 +292,31 @@ class AoCUpgradeResourceSubprocessor:
         # Nyan patch
         nyan_patch_name = "EnableSiegeUnitConversion"
         nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # Blacklisted units
         ram_line = dataset.unit_lines[35]
         mangonel_line = dataset.unit_lines[280]
         scorpion_line = dataset.unit_lines[279]
 
-        blacklisted_entities = [ExpectedPointer(ram_line, "Ram"),
-                                ExpectedPointer(mangonel_line, "Mangonel"),
-                                ExpectedPointer(scorpion_line, "Scorpion")]
+        blacklisted_entities = [ForwardRef(ram_line, "Ram"),
+                                ForwardRef(mangonel_line, "Mangonel"),
+                                ForwardRef(scorpion_line, "Scorpion")]
 
         nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
                                                        blacklisted_entities,
                                                        "engine.ability.type.ApplyDiscreteEffect",
                                                        MemberOperator.SUBTRACT)
 
-        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
+                                              patch_forward_ref,
                                               "engine.aux.patch.Patch")
 
         if team:
@@ -330,8 +330,8 @@ class AoCUpgradeResourceSubprocessor:
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-        patches.append(wrapper_expected_pointer)
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+        patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -346,7 +346,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -364,7 +364,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -382,7 +382,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -400,7 +400,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -418,7 +418,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -436,7 +436,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -454,7 +454,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         monk_id = 125
@@ -477,12 +477,12 @@ class AoCUpgradeResourceSubprocessor:
         game_entity_name = name_lookup_dict[monk_id][0]
 
         patch_target_ref = "%s.RegenerateFaith.FaithRate" % (game_entity_name)
-        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = "Change%sFaithRegenerationWrapper" % (game_entity_name)
         wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
-        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -492,22 +492,22 @@ class AoCUpgradeResourceSubprocessor:
         # Nyan patch
         nyan_patch_name = "Change%sFaithRegeneration" % (game_entity_name)
         nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         nyan_patch_raw_api_object.add_raw_patch_member("rate",
                                                        value,
                                                        "engine.aux.attribute.AttributeRate",
                                                        operator)
 
-        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
+                                              patch_forward_ref,
                                               "engine.aux.patch.Patch")
 
         if team:
@@ -521,8 +521,8 @@ class AoCUpgradeResourceSubprocessor:
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-        patches.append(wrapper_expected_pointer)
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+        patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -537,7 +537,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         farm_id = 50
@@ -560,12 +560,12 @@ class AoCUpgradeResourceSubprocessor:
         game_entity_name = name_lookup_dict[farm_id][0]
 
         patch_target_ref = "%s.Harvestable.%sResourceSpot" % (game_entity_name, game_entity_name)
-        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = "Change%sFoodAmountWrapper" % (game_entity_name)
         wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
-        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -575,22 +575,22 @@ class AoCUpgradeResourceSubprocessor:
         # Nyan patch
         nyan_patch_name = "Change%sFoodAmount" % (game_entity_name)
         nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         nyan_patch_raw_api_object.add_raw_patch_member("max_amount",
                                                        value,
                                                        "engine.aux.resource_spot.ResourceSpot",
                                                        operator)
 
-        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
+                                              patch_forward_ref,
                                               "engine.aux.patch.Patch")
 
         if team:
@@ -604,8 +604,8 @@ class AoCUpgradeResourceSubprocessor:
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-        patches.append(wrapper_expected_pointer)
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+        patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -620,7 +620,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -638,7 +638,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -656,7 +656,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -674,7 +674,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -692,7 +692,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         monk_id = 125
@@ -715,12 +715,12 @@ class AoCUpgradeResourceSubprocessor:
         game_entity_name = name_lookup_dict[monk_id][0]
 
         patch_target_ref = "%s.Heal" % (game_entity_name)
-        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = "Change%sHealRangeWrapper" % (game_entity_name)
         wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
-        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -730,22 +730,22 @@ class AoCUpgradeResourceSubprocessor:
         # Nyan patch
         nyan_patch_name = "Change%sHealRange" % (game_entity_name)
         nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         nyan_patch_raw_api_object.add_raw_patch_member("max_range",
                                                        value,
                                                        "engine.ability.type.RangedContinuousEffect",
                                                        operator)
 
-        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
+                                              patch_forward_ref,
                                               "engine.aux.patch.Patch")
 
         if team:
@@ -759,8 +759,8 @@ class AoCUpgradeResourceSubprocessor:
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-        patches.append(wrapper_expected_pointer)
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+        patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -775,7 +775,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -795,7 +795,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -813,7 +813,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -831,7 +831,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         monk_id = 125
@@ -854,12 +854,12 @@ class AoCUpgradeResourceSubprocessor:
         game_entity_name = name_lookup_dict[monk_id][0]
 
         patch_target_ref = "%s.Convert" % (game_entity_name)
-        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = "Enable%sConversionWrapper" % (game_entity_name)
         wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
-        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -869,23 +869,23 @@ class AoCUpgradeResourceSubprocessor:
         # Nyan patch
         nyan_patch_name = "Enable%sConversion" % (game_entity_name)
         nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-        monk_expected_pointer = ExpectedPointer(line, game_entity_name)
+        monk_forward_ref = ForwardRef(line, game_entity_name)
         nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
-                                                       [monk_expected_pointer],
+                                                       [monk_forward_ref],
                                                        "engine.ability.type.ApplyDiscreteEffect",
                                                        MemberOperator.SUBTRACT)
 
-        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
+                                              patch_forward_ref,
                                               "engine.aux.patch.Patch")
 
         if team:
@@ -899,8 +899,8 @@ class AoCUpgradeResourceSubprocessor:
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-        patches.append(wrapper_expected_pointer)
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+        patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -915,7 +915,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -933,7 +933,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -951,7 +951,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -969,7 +969,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -989,7 +989,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -1007,7 +1007,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -1025,7 +1025,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -1043,7 +1043,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -1061,7 +1061,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         dataset = converter_group.data
@@ -1083,7 +1083,7 @@ class AoCUpgradeResourceSubprocessor:
         # Wrapper
         wrapper_name = "ChangeInitialPopulationLimitWrapper"
         wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
-        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -1093,7 +1093,7 @@ class AoCUpgradeResourceSubprocessor:
         # Nyan patch
         nyan_patch_name = "ChangeInitialPopulationLimit"
         nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
@@ -1106,9 +1106,9 @@ class AoCUpgradeResourceSubprocessor:
                                                        "engine.aux.resource.ResourceContingent",
                                                        operator)
 
-        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
+                                              patch_forward_ref,
                                               "engine.aux.patch.Patch")
 
         if team:
@@ -1122,8 +1122,8 @@ class AoCUpgradeResourceSubprocessor:
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-        patches.append(wrapper_expected_pointer)
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+        patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -1138,7 +1138,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -1156,7 +1156,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -1174,7 +1174,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -1192,7 +1192,7 @@ class AoCUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []

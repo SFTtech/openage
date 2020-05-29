@@ -5,7 +5,7 @@ Convert API-like objects to nyan objects. Subroutine of the
 main AoC processor.
 """
 from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
 from openage.convert.dataformat.aoc.genie_unit import GenieGarrisonMode,\
     GenieMonkGroup, GenieStackBuildingGroup
@@ -672,7 +672,7 @@ class AoCNyanSubprocessor:
                                                   variant_name,
                                                   dataset.nyan_api_objects)
             variant_raw_api_object.add_raw_parent(variant_type_ref)
-            variant_location = ExpectedPointer(variant_group, game_entity_name)
+            variant_location = ForwardRef(variant_group, game_entity_name)
             variant_raw_api_object.set_location(variant_location)
 
             # Create patches for the diff
@@ -721,8 +721,8 @@ class AoCNyanSubprocessor:
                                                       index,
                                                       "engine.aux.variant.type.PerspectiveVariant")
 
-            variants_expected_pointer = ExpectedPointer(variant_group, variant_ref)
-            variants_set.append(variants_expected_pointer)
+            variants_forward_ref = ForwardRef(variant_group, variant_ref)
+            variants_set.append(variants_forward_ref)
             variant_group.add_raw_api_object(variant_raw_api_object)
 
             index += 1
@@ -780,15 +780,15 @@ class AoCNyanSubprocessor:
                                            "%sName"  % (tech_name),
                                            dataset.nyan_api_objects)
         name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
-        name_location = ExpectedPointer(tech_group, tech_name)
+        name_location = ForwardRef(tech_group, tech_name)
         name_raw_api_object.set_location(name_location)
 
         name_raw_api_object.add_raw_member("translations",
                                            [],
                                            "engine.aux.translated.type.TranslatedString")
 
-        name_expected_pointer = ExpectedPointer(tech_group, name_ref)
-        raw_api_object.add_raw_member("name", name_expected_pointer, "engine.aux.tech.Tech")
+        name_forward_ref = ForwardRef(tech_group, name_ref)
+        raw_api_object.add_raw_member("name", name_forward_ref, "engine.aux.tech.Tech")
         tech_group.add_raw_api_object(name_raw_api_object)
 
         # =======================================================================
@@ -799,16 +799,16 @@ class AoCNyanSubprocessor:
                                                   "%sDescription"  % (tech_name),
                                                   dataset.nyan_api_objects)
         description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
-        description_location = ExpectedPointer(tech_group, tech_name)
+        description_location = ForwardRef(tech_group, tech_name)
         description_raw_api_object.set_location(description_location)
 
         description_raw_api_object.add_raw_member("translations",
                                                   [],
                                                   "engine.aux.translated.type.TranslatedMarkupFile")
 
-        description_expected_pointer = ExpectedPointer(tech_group, description_ref)
+        description_forward_ref = ForwardRef(tech_group, description_ref)
         raw_api_object.add_raw_member("description",
-                                      description_expected_pointer,
+                                      description_forward_ref,
                                       "engine.aux.tech.Tech")
         tech_group.add_raw_api_object(description_raw_api_object)
 
@@ -820,16 +820,16 @@ class AoCNyanSubprocessor:
                                                        "%sLongDescription"  % (tech_name),
                                                        dataset.nyan_api_objects)
         long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
-        long_description_location = ExpectedPointer(tech_group, tech_name)
+        long_description_location = ForwardRef(tech_group, tech_name)
         long_description_raw_api_object.set_location(long_description_location)
 
         long_description_raw_api_object.add_raw_member("translations",
                                                        [],
                                                        "engine.aux.translated.type.TranslatedMarkupFile")
 
-        long_description_expected_pointer = ExpectedPointer(tech_group, long_description_ref)
+        long_description_forward_ref = ForwardRef(tech_group, long_description_ref)
         raw_api_object.add_raw_member("long_description",
-                                      long_description_expected_pointer,
+                                      long_description_forward_ref,
                                       "engine.aux.tech.Tech")
         tech_group.add_raw_api_object(long_description_raw_api_object)
 
@@ -893,15 +893,15 @@ class AoCNyanSubprocessor:
                                            "%sName"  % (terrain_name),
                                            dataset.nyan_api_objects)
         name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
-        name_location = ExpectedPointer(terrain_group, terrain_name)
+        name_location = ForwardRef(terrain_group, terrain_name)
         name_raw_api_object.set_location(name_location)
 
         name_raw_api_object.add_raw_member("translations",
                                            [],
                                            "engine.aux.translated.type.TranslatedString")
 
-        name_expected_pointer = ExpectedPointer(terrain_group, name_ref)
-        raw_api_object.add_raw_member("name", name_expected_pointer, "engine.aux.terrain.Terrain")
+        name_forward_ref = ForwardRef(terrain_group, name_ref)
+        raw_api_object.add_raw_member("name", name_forward_ref, "engine.aux.terrain.Terrain")
         terrain_group.add_raw_api_object(name_raw_api_object)
 
         # =======================================================================
@@ -911,7 +911,7 @@ class AoCNyanSubprocessor:
         sound_raw_api_object = RawAPIObject(sound_name, "Sound",
                                             dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
-        sound_location = ExpectedPointer(terrain_group, terrain_name)
+        sound_location = ForwardRef(terrain_group, terrain_name)
         sound_raw_api_object.set_location(sound_location)
 
         # Sounds for terrains don't exist in AoC
@@ -924,9 +924,9 @@ class AoCNyanSubprocessor:
                                             sounds,
                                             "engine.aux.sound.Sound")
 
-        sound_expected_pointer = ExpectedPointer(terrain_group, sound_name)
+        sound_forward_ref = ForwardRef(terrain_group, sound_name)
         raw_api_object.add_raw_member("sound",
-                                      sound_expected_pointer,
+                                      sound_forward_ref,
                                       "engine.aux.terrain.Terrain")
 
         terrain_group.add_raw_api_object(sound_raw_api_object)
@@ -948,13 +948,13 @@ class AoCNyanSubprocessor:
                                                   "Ambient%s" % (str(ambient_index)),
                                                   dataset.nyan_api_objects)
             ambient_raw_api_object.add_raw_parent("engine.aux.terrain.TerrainAmbient")
-            ambient_location = ExpectedPointer(terrain_group, terrain_name)
+            ambient_location = ForwardRef(terrain_group, terrain_name)
             ambient_raw_api_object.set_location(ambient_location)
 
             # Game entity reference
-            ambient_line_expected_pointer = ExpectedPointer(ambient_line, ambient_name)
+            ambient_line_forward_ref = ForwardRef(ambient_line, ambient_name)
             ambient_raw_api_object.add_raw_member("object",
-                                                  ambient_line_expected_pointer,
+                                                  ambient_line_forward_ref,
                                                   "engine.aux.terrain.TerrainAmbient")
 
             # Max density
@@ -964,8 +964,8 @@ class AoCNyanSubprocessor:
                                                   "engine.aux.terrain.TerrainAmbient")
 
             terrain_group.add_raw_api_object(ambient_raw_api_object)
-            terrain_ambient_expected_pointer = ExpectedPointer(terrain_group, ambient_ref)
-            ambience.append(terrain_ambient_expected_pointer)
+            terrain_ambient_forward_ref = ForwardRef(terrain_group, ambient_ref)
+            ambience.append(terrain_ambient_forward_ref)
 
         raw_api_object.add_raw_member("ambience", ambience, "engine.aux.terrain.Terrain")
 
@@ -984,7 +984,7 @@ class AoCNyanSubprocessor:
         graphic_raw_api_object = RawAPIObject(graphic_name, "TerrainTexture",
                                               dataset.nyan_api_objects)
         graphic_raw_api_object.add_raw_parent("engine.aux.graphics.Terrain")
-        graphic_location = ExpectedPointer(terrain_group, terrain_name)
+        graphic_location = ForwardRef(terrain_group, terrain_name)
         graphic_raw_api_object.set_location(graphic_location)
 
         if slp_id in dataset.combined_terrains.keys():
@@ -1002,8 +1002,8 @@ class AoCNyanSubprocessor:
                                               "engine.aux.graphics.Terrain")
 
         terrain_group.add_raw_api_object(graphic_raw_api_object)
-        graphic_expected_pointer = ExpectedPointer(terrain_group, graphic_name)
-        raw_api_object.add_raw_member("terrain_graphic", graphic_expected_pointer,
+        graphic_forward_ref = ForwardRef(terrain_group, graphic_name)
+        raw_api_object.add_raw_member("terrain_graphic", graphic_forward_ref,
                                       "engine.aux.terrain.Terrain")
 
     @staticmethod
@@ -1040,15 +1040,15 @@ class AoCNyanSubprocessor:
                                            "%sName"  % (tech_name),
                                            dataset.nyan_api_objects)
         name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
-        name_location = ExpectedPointer(civ_group, tech_name)
+        name_location = ForwardRef(civ_group, tech_name)
         name_raw_api_object.set_location(name_location)
 
         name_raw_api_object.add_raw_member("translations",
                                            [],
                                            "engine.aux.translated.type.TranslatedString")
 
-        name_expected_pointer = ExpectedPointer(civ_group, name_ref)
-        raw_api_object.add_raw_member("name", name_expected_pointer, "engine.aux.civilization.Civilization")
+        name_forward_ref = ForwardRef(civ_group, name_ref)
+        raw_api_object.add_raw_member("name", name_forward_ref, "engine.aux.civilization.Civilization")
         civ_group.add_raw_api_object(name_raw_api_object)
 
         # =======================================================================
@@ -1059,16 +1059,16 @@ class AoCNyanSubprocessor:
                                                   "%sDescription"  % (tech_name),
                                                   dataset.nyan_api_objects)
         description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
-        description_location = ExpectedPointer(civ_group, tech_name)
+        description_location = ForwardRef(civ_group, tech_name)
         description_raw_api_object.set_location(description_location)
 
         description_raw_api_object.add_raw_member("translations",
                                                   [],
                                                   "engine.aux.translated.type.TranslatedMarkupFile")
 
-        description_expected_pointer = ExpectedPointer(civ_group, description_ref)
+        description_forward_ref = ForwardRef(civ_group, description_ref)
         raw_api_object.add_raw_member("description",
-                                      description_expected_pointer,
+                                      description_forward_ref,
                                       "engine.aux.civilization.Civilization")
         civ_group.add_raw_api_object(description_raw_api_object)
 
@@ -1080,16 +1080,16 @@ class AoCNyanSubprocessor:
                                                        "%sLongDescription"  % (tech_name),
                                                        dataset.nyan_api_objects)
         long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
-        long_description_location = ExpectedPointer(civ_group, tech_name)
+        long_description_location = ForwardRef(civ_group, tech_name)
         long_description_raw_api_object.set_location(long_description_location)
 
         long_description_raw_api_object.add_raw_member("translations",
                                                        [],
                                                        "engine.aux.translated.type.TranslatedMarkupFile")
 
-        long_description_expected_pointer = ExpectedPointer(civ_group, long_description_ref)
+        long_description_forward_ref = ForwardRef(civ_group, long_description_ref)
         raw_api_object.add_raw_member("long_description",
-                                      long_description_expected_pointer,
+                                      long_description_forward_ref,
                                       "engine.aux.civilization.Civilization")
         civ_group.add_raw_api_object(long_description_raw_api_object)
 

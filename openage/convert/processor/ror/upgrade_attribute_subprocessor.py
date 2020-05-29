@@ -3,7 +3,7 @@
 """
 Creates upgrade patches for attribute modification effects in RoR.
 """
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.service import internal_name_lookups
@@ -24,7 +24,7 @@ class RoRUpgradeAttributeSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         head_unit = line.get_head_unit()
@@ -55,12 +55,12 @@ class RoRUpgradeAttributeSubprocessor:
         projectile_id0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
         if projectile_id0 > -1:
             patch_target_ref = "%s.ShootProjectile.Projectile0.Projectile" % (game_entity_name)
-            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+            patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
             wrapper_name = "Change%sProjectile0TargetModeWrapper" % (game_entity_name)
             wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
-            wrapper_location = ExpectedPointer(converter_group, obj_name)
+            wrapper_location = ForwardRef(converter_group, obj_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects,
@@ -70,22 +70,22 @@ class RoRUpgradeAttributeSubprocessor:
             # Nyan patch
             nyan_patch_name = "Change%sProjectile0TargetMode" % (game_entity_name)
             nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+            nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
             nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+            nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             nyan_patch_raw_api_object.add_raw_patch_member("target_mode",
                                                            target_mode,
                                                            "engine.ability.type.Projectile",
                                                            operator)
 
-            patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+            patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_expected_pointer,
+                                                  patch_forward_ref,
                                                   "engine.aux.patch.Patch")
 
             if team:
@@ -99,8 +99,8 @@ class RoRUpgradeAttributeSubprocessor:
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-            patches.append(wrapper_expected_pointer)
+            wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+            patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -115,7 +115,7 @@ class RoRUpgradeAttributeSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []

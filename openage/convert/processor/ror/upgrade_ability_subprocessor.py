@@ -3,7 +3,7 @@
 """
 Creates upgrade patches for abilities.
 """
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.value_members import NoDiffMember
@@ -30,7 +30,7 @@ class RoRUpgradeAbilitySubprocessor:
         :type container_obj_ref: str
         :param diff: A diff between two ConvertObject instances.
         :type diff: ...dataformat.converter_object.ConverterObject
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         head_unit_id = line.get_head_unit_id()
@@ -68,7 +68,7 @@ class RoRUpgradeAbilitySubprocessor:
 
         if changed:
             patch_target_ref = "%s.%s" % (game_entity_name, ability_name)
-            patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+            patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
             wrapper_name = "Change%s%sWrapper" % (game_entity_name, ability_name)
@@ -86,32 +86,32 @@ class RoRUpgradeAbilitySubprocessor:
                 wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
 
             else:
-                wrapper_raw_api_object.set_location(ExpectedPointer(converter_group, container_obj_ref))
+                wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
             # Nyan patch
             nyan_patch_name = "Change%s%s" % (game_entity_name, ability_name)
             nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+            nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
             nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+            nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_animation, NoDiffMember):
                 animations_set = []
                 diff_animation_id = diff_animation.get_value()
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_expected_pointer = AoCUpgradeAbilitySubprocessor._create_animation(converter_group,
-                                                                                                line,
-                                                                                                diff_animation_id,
-                                                                                                nyan_patch_ref,
-                                                                                                ability_name,
-                                                                                                "%s_"
-                                                                                                % command_lookup_dict[command_id][1])
-                    animations_set.append(animation_expected_pointer)
+                    animation_forward_ref = AoCUpgradeAbilitySubprocessor._create_animation(converter_group,
+                                                                                            line,
+                                                                                            diff_animation_id,
+                                                                                            nyan_patch_ref,
+                                                                                            ability_name,
+                                                                                            "%s_"
+                                                                                            % command_lookup_dict[command_id][1])
+                    animations_set.append(animation_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
                                                                animations_set,
@@ -123,13 +123,13 @@ class RoRUpgradeAbilitySubprocessor:
                 diff_comm_sound_id = diff_comm_sound.get_value()
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_expected_pointer = AoCUpgradeAbilitySubprocessor._create_sound(converter_group,
-                                                                                        diff_comm_sound_id,
-                                                                                        nyan_patch_ref,
-                                                                                        ability_name,
-                                                                                        "%s_"
-                                                                                        % command_lookup_dict[command_id][1])
-                    sounds_set.append(sound_expected_pointer)
+                    sound_forward_ref = AoCUpgradeAbilitySubprocessor._create_sound(converter_group,
+                                                                                    diff_comm_sound_id,
+                                                                                    nyan_patch_ref,
+                                                                                    ability_name,
+                                                                                    "%s_"
+                                                                                    % command_lookup_dict[command_id][1])
+                    sounds_set.append(sound_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
                                                                sounds_set,
@@ -206,15 +206,15 @@ class RoRUpgradeAbilitySubprocessor:
                                                                    "engine.ability.type.ShootProjectile",
                                                                    MemberOperator.ADD)
 
-            patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+            patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_expected_pointer,
+                                                  patch_forward_ref,
                                                   "engine.aux.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-            patches.append(wrapper_expected_pointer)
+            wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+            patches.append(wrapper_forward_ref)
 
         return patches

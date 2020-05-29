@@ -8,12 +8,12 @@ These are simple containers that can be processed by the converter.
 
 from openage.convert.dataformat.aoc.combined_sound import CombinedSound
 from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.value_members import NoDiffMember
 from openage.nyan.nyan_structs import NyanPatch, NyanPatchMember
 
 from ...nyan.nyan_structs import NyanObject, MemberOperator
 from .aoc.combined_sprite import CombinedSprite
-from .aoc.expected_pointer import ExpectedPointer
 from .value_members import ValueMember
 
 
@@ -215,8 +215,8 @@ class ConverterObjectGroup:
         Extend raw members of referenced raw API objects.
         """
         for push_object in self.raw_member_pushs:
-            expected_pointer = push_object.get_object_target()
-            raw_api_object = expected_pointer.resolve_raw()
+            forward_ref = push_object.get_object_target()
+            raw_api_object = forward_ref.resolve_raw()
             raw_api_object.extend_raw_member(push_object.get_member_name(),
                                              push_object.get_push_value(),
                                              push_object.get_member_origin())
@@ -266,7 +266,7 @@ class RawAPIObject:
     An object that contains all the necessary information to create
     a nyan API object. Members are stored as (membername, value) pairs.
     Values refer either to primitive values (int, float, str),
-    expected pointers to objects or expected media files.
+    forward references to objects or expected media files.
     The 'expected' values two have to be resolved in an additional step.
     """
 
@@ -285,7 +285,7 @@ class RawAPIObject:
         :param api_ref: The openage API objects used as reference for creating the nyan object.
         :type api_ref: dict
         :param location: Relative path of the nyan file in the modpack or another raw API object.
-        :type location: str, .expected_pointer.ExpectedPointer
+        :type location: str, .forward_ref.ForwardRef
         """
 
         self.obj_id = obj_id
@@ -405,7 +405,7 @@ class RawAPIObject:
             if self.is_patch():
                 member_operator = raw_member[3]
 
-            if isinstance(member_value, ExpectedPointer):
+            if isinstance(member_value, ForwardRef):
                 member_value = member_value.resolve()
 
             elif isinstance(member_value, CombinedSprite):
@@ -423,7 +423,7 @@ class RawAPIObject:
                     temp_values = []
 
                     for temp_value in member_value:
-                        if isinstance(temp_value, ExpectedPointer):
+                        if isinstance(temp_value, ForwardRef):
                             temp_values.append(temp_value.resolve())
 
                         elif isinstance(temp_value, CombinedSprite):
@@ -462,7 +462,7 @@ class RawAPIObject:
             raise Exception("Cannot link patch target: %s is not a patch"
                             % (self))
 
-        if isinstance(self._patch_target, ExpectedPointer):
+        if isinstance(self._patch_target, ForwardRef):
             target = self._patch_target.resolve()
 
         else:
@@ -486,12 +486,12 @@ class RawAPIObject:
         This method can be called instead of get_location() when
         you are unsure whether the nyan object will be nested.
         """
-        if isinstance(self._location, ExpectedPointer):
+        if isinstance(self._location, ForwardRef):
             # Work upwards until we find the root object
             nesting_raw_api_object = self._location.resolve_raw()
             nesting_location = nesting_raw_api_object.get_location()
 
-            while isinstance(nesting_location, ExpectedPointer):
+            while isinstance(nesting_location, ForwardRef):
                 nesting_raw_api_object = nesting_location.resolve_raw()
                 nesting_location = nesting_raw_api_object.get_location()
 
@@ -507,7 +507,7 @@ class RawAPIObject:
 
     def get_location(self):
         """
-        Returns the relative path to a directory or an ExpectedPointer
+        Returns the relative path to a directory or an ForwardRef
         to another RawAPIObject.
         """
         return self._location
@@ -547,21 +547,21 @@ class RawAPIObject:
     def set_location(self, location):
         """
         Set the relative location of the object in a modpack. This must
-        be a path to a nyan file or an ExpectedPointer to a nyan object.
+        be a path to a nyan file or an ForwardRef to a nyan object.
 
         :param location: Relative path of the nyan file in the modpack or
-                         an expected pointer toanother raw API object.
-        :type location: str, .expected_pointer.ExpectedPointer
+                         a forward reference to another raw API object.
+        :type location: str, .forward_ref.ForwardRef
         """
         self._location = location
 
     def set_patch_target(self, target):
         """
-        Set an ExpectedPointer as a target for this object. If this
+        Set an ForwardRef as a target for this object. If this
         is done, the RawAPIObject will be converted to a patch.
 
-        :param target: An expected pointer to another raw API object or a nyan object.
-        :type target: .expected_pointer.ExpectedPointer, ..nyan.nyan_structs.NyanObject
+        :param target: A forward reference to another raw API object or a nyan object.
+        :type target: .forward_ref.ForwardRef, ..nyan.nyan_structs.NyanObject
         """
         self._patch_target = target
 
@@ -577,14 +577,14 @@ class RawMemberPush:
     pushed to the raw API objects before their nyan members are created.
     """
 
-    __slots__ = ('expected_pointer', 'member_name', 'member_origin', 'push_value')
+    __slots__ = ('forward_ref', 'member_name', 'member_origin', 'push_value')
 
-    def __init__(self, expected_pointer, member_name, member_origin, push_value):
+    def __init__(self, forward_ref, member_name, member_origin, push_value):
         """
         Creates a new member push.
 
-        :param expected_pointer: Expected pointer of the RawAPIObject.
-        :type expected_pointer: ExpectedPointer
+        :param forward_ref: forward reference of the RawAPIObject.
+        :type forward_ref: ForwardRef
         :param member_name: Name of the member that is extended.
         :type member_name: str
         :param member_origin: Fqon of the object the member was inherited from.
@@ -592,16 +592,16 @@ class RawMemberPush:
         :param push_value: Value that extends the existing member value.
         :type push_value: list
         """
-        self.expected_pointer = expected_pointer
+        self.forward_ref = forward_ref
         self.member_name = member_name
         self.member_origin = member_origin
         self.push_value = push_value
 
     def get_object_target(self):
         """
-        Returns the expected pointer for the push target.
+        Returns the forward reference for the push target.
         """
-        return self.expected_pointer
+        return self.forward_ref
 
     def get_member_name(self):
         """

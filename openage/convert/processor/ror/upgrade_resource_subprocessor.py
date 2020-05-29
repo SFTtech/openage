@@ -3,7 +3,7 @@
 """
 Creates upgrade patches for resource modification effects in RoR.
 """
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.service import internal_name_lookups
@@ -23,7 +23,7 @@ class RoRUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         monk_id = 125
@@ -46,14 +46,14 @@ class RoRUpgradeResourceSubprocessor:
         game_entity_name = name_lookup_dict[monk_id][0]
 
         patch_target_ref = "%s.Convert" % (game_entity_name)
-        patch_target_expected_pointer = ExpectedPointer(line, patch_target_ref)
+        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Building conversion
 
         # Wrapper
         wrapper_name = "EnableBuildingConversionWrapper"
         wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
-        wrapper_location = ExpectedPointer(converter_group, obj_name)
+        wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects,
@@ -63,13 +63,13 @@ class RoRUpgradeResourceSubprocessor:
         # Nyan patch
         nyan_patch_name = "EnableBuildingConversion"
         nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
-        nyan_patch_location = ExpectedPointer(converter_group, wrapper_ref)
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
         nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # New allowed types
         allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
@@ -84,26 +84,26 @@ class RoRUpgradeResourceSubprocessor:
         monastery_line = dataset.building_lines[104]
         wonder_line = dataset.building_lines[276]
 
-        blacklisted_expected_pointers = [ExpectedPointer(tc_line, "TownCenter"),
-                                         ExpectedPointer(farm_line, "Farm"),
-                                         ExpectedPointer(monastery_line, "Temple"),
-                                         ExpectedPointer(wonder_line, "Wonder"),
-                                         ]
+        blacklisted_forward_refs = [ForwardRef(tc_line, "TownCenter"),
+                                    ForwardRef(farm_line, "Farm"),
+                                    ForwardRef(monastery_line, "Temple"),
+                                    ForwardRef(wonder_line, "Wonder"),
+                                    ]
         nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
-                                                       blacklisted_expected_pointers,
+                                                       blacklisted_forward_refs,
                                                        "engine.ability.type.ApplyDiscreteEffect",
                                                        MemberOperator.ADD)
 
-        patch_expected_pointer = ExpectedPointer(converter_group, nyan_patch_ref)
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_expected_pointer,
+                                              patch_forward_ref,
                                               "engine.aux.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        wrapper_expected_pointer = ExpectedPointer(converter_group, wrapper_ref)
-        patches.append(wrapper_expected_pointer)
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+        patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -118,7 +118,7 @@ class RoRUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []
@@ -138,7 +138,7 @@ class RoRUpgradeResourceSubprocessor:
         :type value: MemberOperator
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
-        :returns: The expected pointers for the generated patches.
+        :returns: The forward references for the generated patches.
         :rtype: list
         """
         patches = []

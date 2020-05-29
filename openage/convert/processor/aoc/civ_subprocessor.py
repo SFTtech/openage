@@ -4,7 +4,7 @@
 Creates patches and modifiers for civs.
 """
 from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
@@ -92,7 +92,7 @@ class AoCCivSubprocessor:
         food_raw_api_object = RawAPIObject(food_ref, "FoodStartingAmount",
                                            dataset.nyan_api_objects)
         food_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
-        civ_location = ExpectedPointer(civ_group, civ_lookup_dict[civ_group.get_id()][0])
+        civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         food_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
@@ -104,14 +104,14 @@ class AoCCivSubprocessor:
                                            food_amount,
                                            "engine.aux.resource.ResourceAmount")
 
-        food_expected_pointer = ExpectedPointer(civ_group, food_ref)
-        resource_amounts.append(food_expected_pointer)
+        food_forward_ref = ForwardRef(civ_group, food_ref)
+        resource_amounts.append(food_forward_ref)
 
         wood_ref = "%s.WoodStartingAmount" % (civ_name)
         wood_raw_api_object = RawAPIObject(wood_ref, "WoodStartingAmount",
                                            dataset.nyan_api_objects)
         wood_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
-        civ_location = ExpectedPointer(civ_group, civ_lookup_dict[civ_group.get_id()][0])
+        civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         wood_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["aux.resource.types.Wood"].get_nyan_object()
@@ -123,14 +123,14 @@ class AoCCivSubprocessor:
                                            wood_amount,
                                            "engine.aux.resource.ResourceAmount")
 
-        wood_expected_pointer = ExpectedPointer(civ_group, wood_ref)
-        resource_amounts.append(wood_expected_pointer)
+        wood_forward_ref = ForwardRef(civ_group, wood_ref)
+        resource_amounts.append(wood_forward_ref)
 
         gold_ref = "%s.GoldStartingAmount" % (civ_name)
         gold_raw_api_object = RawAPIObject(gold_ref, "GoldStartingAmount",
                                            dataset.nyan_api_objects)
         gold_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
-        civ_location = ExpectedPointer(civ_group, civ_lookup_dict[civ_group.get_id()][0])
+        civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         gold_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
@@ -142,14 +142,14 @@ class AoCCivSubprocessor:
                                            gold_amount,
                                            "engine.aux.resource.ResourceAmount")
 
-        gold_expected_pointer = ExpectedPointer(civ_group, gold_ref)
-        resource_amounts.append(gold_expected_pointer)
+        gold_forward_ref = ForwardRef(civ_group, gold_ref)
+        resource_amounts.append(gold_forward_ref)
 
         stone_ref = "%s.StoneStartingAmount" % (civ_name)
         stone_raw_api_object = RawAPIObject(stone_ref, "StoneStartingAmount",
                                             dataset.nyan_api_objects)
         stone_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
-        civ_location = ExpectedPointer(civ_group, civ_lookup_dict[civ_group.get_id()][0])
+        civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         stone_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["aux.resource.types.Stone"].get_nyan_object()
@@ -161,8 +161,8 @@ class AoCCivSubprocessor:
                                             stone_amount,
                                             "engine.aux.resource.ResourceAmount")
 
-        stone_expected_pointer = ExpectedPointer(civ_group, stone_ref)
-        resource_amounts.append(stone_expected_pointer)
+        stone_forward_ref = ForwardRef(civ_group, stone_ref)
+        resource_amounts.append(stone_forward_ref)
 
         civ_group.add_raw_api_object(food_raw_api_object)
         civ_group.add_raw_api_object(wood_raw_api_object)
@@ -221,12 +221,12 @@ class AoCCivSubprocessor:
             tech_name = tech_lookup_dict[tech_id][0]
 
             patch_target_ref = "%s" % (tech_name)
-            patch_target_expected_pointer = ExpectedPointer(tech_group, patch_target_ref)
+            patch_target_forward_ref = ForwardRef(tech_group, patch_target_ref)
 
             # Wrapper
             wrapper_name = "%sCivBonusWrapper" % (tech_name)
             wrapper_ref = "%s.%s" % (civ_name, wrapper_name)
-            wrapper_location = ExpectedPointer(civ_group, civ_name)
+            wrapper_location = ForwardRef(civ_group, civ_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects,
@@ -236,29 +236,29 @@ class AoCCivSubprocessor:
             # Nyan patch
             nyan_patch_name = "%sCivBonus" % (tech_name)
             nyan_patch_ref = "%s.%s.%s" % (civ_name, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(civ_group, wrapper_ref)
+            nyan_patch_location = ForwardRef(civ_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
             nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+            nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             nyan_patch_raw_api_object.add_raw_patch_member("updates",
                                                            patches,
                                                            "engine.aux.tech.Tech",
                                                            MemberOperator.ADD)
 
-            patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
+            patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_expected_pointer,
+                                                  patch_forward_ref,
                                                   "engine.aux.patch.Patch")
 
             civ_group.add_raw_api_object(wrapper_raw_api_object)
             civ_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(civ_group, wrapper_ref)
-            patches.append(wrapper_expected_pointer)
+            wrapper_forward_ref = ForwardRef(civ_group, wrapper_ref)
+            patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -292,12 +292,12 @@ class AoCCivSubprocessor:
                 train_location_name = name_lookup_dict[train_location_id][0]
 
             patch_target_ref = "%s.Create" % (train_location_name)
-            patch_target_expected_pointer = ExpectedPointer(train_location, patch_target_ref)
+            patch_target_forward_ref = ForwardRef(train_location, patch_target_ref)
 
             # Wrapper
             wrapper_name = "Add%sCreatableWrapper" % (game_entity_name)
             wrapper_ref = "%s.%s" % (civ_name, wrapper_name)
-            wrapper_location = ExpectedPointer(civ_group, civ_name)
+            wrapper_location = ForwardRef(civ_group, civ_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects,
@@ -307,32 +307,32 @@ class AoCCivSubprocessor:
             # Nyan patch
             nyan_patch_name = "Add%sCreatable" % (game_entity_name)
             nyan_patch_ref = "%s.%s.%s" % (civ_name, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(civ_group, wrapper_ref)
+            nyan_patch_location = ForwardRef(civ_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
             nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+            nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             # Add creatable
             creatable_ref = "%s.CreatableGameEntity" % (game_entity_name)
-            creatable_expected_pointer = ExpectedPointer(unique_line, creatable_ref)
+            creatable_forward_ref = ForwardRef(unique_line, creatable_ref)
             nyan_patch_raw_api_object.add_raw_patch_member("creatables",
-                                                           [creatable_expected_pointer],
+                                                           [creatable_forward_ref],
                                                            "engine.ability.type.Create",
                                                            MemberOperator.ADD)
 
-            patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
+            patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_expected_pointer,
+                                                  patch_forward_ref,
                                                   "engine.aux.patch.Patch")
 
             civ_group.add_raw_api_object(wrapper_raw_api_object)
             civ_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(civ_group, wrapper_ref)
-            patches.append(wrapper_expected_pointer)
+            wrapper_forward_ref = ForwardRef(civ_group, wrapper_ref)
+            patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -362,12 +362,12 @@ class AoCCivSubprocessor:
             research_location_name = name_lookup_dict[research_location_id][0]
 
             patch_target_ref = "%s.Research" % (research_location_name)
-            patch_target_expected_pointer = ExpectedPointer(research_location, patch_target_ref)
+            patch_target_forward_ref = ForwardRef(research_location, patch_target_ref)
 
             # Wrapper
             wrapper_name = "Add%sResearchableWrapper" % (tech_name)
             wrapper_ref = "%s.%s" % (civ_name, wrapper_name)
-            wrapper_location = ExpectedPointer(civ_group, civ_name)
+            wrapper_location = ForwardRef(civ_group, civ_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects,
@@ -377,32 +377,32 @@ class AoCCivSubprocessor:
             # Nyan patch
             nyan_patch_name = "Add%sResearchable" % (tech_name)
             nyan_patch_ref = "%s.%s.%s" % (civ_name, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(civ_group, wrapper_ref)
+            nyan_patch_location = ForwardRef(civ_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
             nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+            nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             # Add creatable
             researchable_ref = "%s.ResearchableTech" % (tech_name)
-            researchable_expected_pointer = ExpectedPointer(unique_tech, researchable_ref)
+            researchable_forward_ref = ForwardRef(unique_tech, researchable_ref)
             nyan_patch_raw_api_object.add_raw_patch_member("researchables",
-                                                           [researchable_expected_pointer],
+                                                           [researchable_forward_ref],
                                                            "engine.ability.type.Research",
                                                            MemberOperator.ADD)
 
-            patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
+            patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_expected_pointer,
+                                                  patch_forward_ref,
                                                   "engine.aux.patch.Patch")
 
             civ_group.add_raw_api_object(wrapper_raw_api_object)
             civ_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(civ_group, wrapper_ref)
-            patches.append(wrapper_expected_pointer)
+            wrapper_forward_ref = ForwardRef(civ_group, wrapper_ref)
+            patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -485,12 +485,12 @@ class AoCCivSubprocessor:
             train_location_name = name_lookup_dict[train_location_id][0]
 
             patch_target_ref = "%s.Create" % (train_location_name)
-            patch_target_expected_pointer = ExpectedPointer(train_location, patch_target_ref)
+            patch_target_forward_ref = ForwardRef(train_location, patch_target_ref)
 
             # Wrapper
             wrapper_name = "Disable%sCreatablesWrapper" % (train_location_name)
             wrapper_ref = "%s.%s" % (civ_name, wrapper_name)
-            wrapper_location = ExpectedPointer(civ_group, civ_name)
+            wrapper_location = ForwardRef(civ_group, civ_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects,
@@ -500,50 +500,50 @@ class AoCCivSubprocessor:
             # Nyan patch
             nyan_patch_name = "Disable%sCreatables" % (train_location_name)
             nyan_patch_ref = "%s.%s.%s" % (civ_name, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(civ_group, wrapper_ref)
+            nyan_patch_location = ForwardRef(civ_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
             nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+            nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-            entities_expected_pointers = []
+            entities_forward_refs = []
             for entity in entities:
                 entity_id = entity.get_head_unit_id()
                 game_entity_name = name_lookup_dict[entity_id][0]
 
                 disabled_ref = "%s.CreatableGameEntity" % (game_entity_name)
-                disabled_expected_pointer = ExpectedPointer(entity, disabled_ref)
-                entities_expected_pointers.append(disabled_expected_pointer)
+                disabled_forward_ref = ForwardRef(entity, disabled_ref)
+                entities_forward_refs.append(disabled_forward_ref)
 
             nyan_patch_raw_api_object.add_raw_patch_member("creatables",
-                                                           entities_expected_pointers,
+                                                           entities_forward_refs,
                                                            "engine.ability.type.Create",
                                                            MemberOperator.SUBTRACT)
 
-            patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
+            patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_expected_pointer,
+                                                  patch_forward_ref,
                                                   "engine.aux.patch.Patch")
 
             civ_group.add_raw_api_object(wrapper_raw_api_object)
             civ_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(civ_group, wrapper_ref)
-            patches.append(wrapper_expected_pointer)
+            wrapper_forward_ref = ForwardRef(civ_group, wrapper_ref)
+            patches.append(wrapper_forward_ref)
 
         for research_location, techs in disabled_techs.items():
             research_location_id = research_location.get_head_unit_id()
             research_location_name = name_lookup_dict[research_location_id][0]
 
             patch_target_ref = "%s.Research" % (research_location_name)
-            patch_target_expected_pointer = ExpectedPointer(research_location, patch_target_ref)
+            patch_target_forward_ref = ForwardRef(research_location, patch_target_ref)
 
             # Wrapper
             wrapper_name = "Disable%sResearchablesWrapper" % (research_location_name)
             wrapper_ref = "%s.%s" % (civ_name, wrapper_name)
-            wrapper_location = ExpectedPointer(civ_group, civ_name)
+            wrapper_location = ForwardRef(civ_group, civ_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects,
@@ -553,38 +553,38 @@ class AoCCivSubprocessor:
             # Nyan patch
             nyan_patch_name = "Disable%sResearchables" % (research_location_name)
             nyan_patch_ref = "%s.%s.%s" % (civ_name, wrapper_name, nyan_patch_name)
-            nyan_patch_location = ExpectedPointer(civ_group, wrapper_ref)
+            nyan_patch_location = ForwardRef(civ_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
             nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
-            nyan_patch_raw_api_object.set_patch_target(patch_target_expected_pointer)
+            nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-            entities_expected_pointers = []
+            entities_forward_refs = []
             for tech_group in techs:
                 tech_id = tech_group.get_id()
                 tech_name = tech_lookup_dict[tech_id][0]
 
                 disabled_ref = "%s.ResearchableTech" % (tech_name)
-                disabled_expected_pointer = ExpectedPointer(tech_group, disabled_ref)
-                entities_expected_pointers.append(disabled_expected_pointer)
+                disabled_forward_ref = ForwardRef(tech_group, disabled_ref)
+                entities_forward_refs.append(disabled_forward_ref)
 
             nyan_patch_raw_api_object.add_raw_patch_member("researchables",
-                                                           entities_expected_pointers,
+                                                           entities_forward_refs,
                                                            "engine.ability.type.Research",
                                                            MemberOperator.SUBTRACT)
 
-            patch_expected_pointer = ExpectedPointer(civ_group, nyan_patch_ref)
+            patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_expected_pointer,
+                                                  patch_forward_ref,
                                                   "engine.aux.patch.Patch")
 
             civ_group.add_raw_api_object(wrapper_raw_api_object)
             civ_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-            wrapper_expected_pointer = ExpectedPointer(civ_group, wrapper_ref)
-            patches.append(wrapper_expected_pointer)
+            wrapper_forward_ref = ForwardRef(civ_group, wrapper_ref)
+            patches.append(wrapper_forward_ref)
 
         return patches
 
@@ -602,7 +602,7 @@ class AoCCivSubprocessor:
         animation_raw_api_object = RawAPIObject(animation_ref, animation_obj_name,
                                                 dataset.nyan_api_objects)
         animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
-        animation_location = ExpectedPointer(line, nyan_patch_ref)
+        animation_location = ForwardRef(line, nyan_patch_ref)
         animation_raw_api_object.set_location(animation_location)
 
         if animation_id in dataset.combined_sprites.keys():
@@ -624,6 +624,6 @@ class AoCCivSubprocessor:
 
         line.add_raw_api_object(animation_raw_api_object)
 
-        animation_expected_pointer = ExpectedPointer(line, animation_ref)
+        animation_forward_ref = ForwardRef(line, animation_ref)
 
-        return animation_expected_pointer
+        return animation_forward_ref

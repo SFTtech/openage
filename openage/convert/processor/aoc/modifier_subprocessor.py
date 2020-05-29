@@ -4,7 +4,7 @@
 Derives and adds abilities to lines or civ groups. Subroutine of the
 nyan subprocessor.
 """
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_unit import GenieGameEntityGroup,\
     GenieBuildingLineGroup, GenieVillagerGroup, GenieAmbientGroup,\
     GenieVariantGroup
@@ -21,7 +21,7 @@ class AoCModifierSubprocessor:
 
         :param converter_obj_group: ConverterObjectGroup that gets the modifier.
         :type converter_obj_group: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointers for the modifier.
+        :returns: The forward references for the modifier.
         :rtype: list
         """
         dataset = converter_obj_group.data
@@ -37,8 +37,8 @@ class AoCModifierSubprocessor:
 
         :param converter_obj_group: ConverterObjectGroup that gets the modifier.
         :type converter_obj_group: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the modifier.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the modifier.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         dataset = converter_obj_group.data
         modifier = dataset.pregen_nyan_objects["aux.modifier.flyover_cliff.AttackMultiplierFlyover"].get_nyan_object()
@@ -52,8 +52,8 @@ class AoCModifierSubprocessor:
 
         :param converter_obj_group: ConverterObjectGroup that gets the modifier.
         :type converter_obj_group: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the modifier.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the modifier.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         dataset = converter_obj_group.data
 
@@ -125,7 +125,7 @@ class AoCModifierSubprocessor:
                                                                "%sGatheringRate",
                                                                dataset.nyan_api_objects)
                         modifier_raw_api_object.add_raw_parent("engine.modifier.multiplier.type.GatheringRate")
-                        modifier_location = ExpectedPointer(converter_obj_group, target_obj_name)
+                        modifier_location = ForwardRef(converter_obj_group, target_obj_name)
                         modifier_raw_api_object.set_location(modifier_location)
 
                         # Multiplier
@@ -135,15 +135,15 @@ class AoCModifierSubprocessor:
 
                         # Resource spot
                         spot_ref = "%s.Harvestable.%sResourceSpot" % (resource_line_name, resource_line_name)
-                        spot_expected_pointer = ExpectedPointer(resource_line, spot_ref)
+                        spot_forward_ref = ForwardRef(resource_line, spot_ref)
                         modifier_raw_api_object.add_raw_member("resource_spot",
-                                                               spot_expected_pointer,
+                                                               spot_forward_ref,
                                                                "engine.modifier.multiplier.type.GatheringRate")
 
                         converter_obj_group.add_raw_api_object(modifier_raw_api_object)
-                        modifier_expected_pointer = ExpectedPointer(converter_obj_group,
-                                                                    modifier_raw_api_object.get_id())
-                        modifiers.append(modifier_expected_pointer)
+                        modifier_forward_ref = ForwardRef(converter_obj_group,
+                                                          modifier_raw_api_object.get_id())
+                        modifiers.append(modifier_forward_ref)
 
         return modifiers
 
@@ -154,8 +154,8 @@ class AoCModifierSubprocessor:
 
         :param converter_obj_group: ConverterObjectGroup that gets the modifier.
         :type converter_obj_group: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The expected pointer for the modifier.
-        :rtype: ...dataformat.expected_pointer.ExpectedPointer
+        :returns: The forward reference for the modifier.
+        :rtype: ...dataformat.forward_ref.ForwardRef
         """
         dataset = converter_obj_group.data
         if isinstance(converter_obj_group, GenieGameEntityGroup):
@@ -171,7 +171,7 @@ class AoCModifierSubprocessor:
         modifier_ref = "%s.MoveSpeed" % (target_obj_name)
         modifier_raw_api_object = RawAPIObject(modifier_ref, "MoveSpeed", dataset.nyan_api_objects)
         modifier_raw_api_object.add_raw_parent("engine.modifier.multiplier.type.MoveSpeed")
-        modifier_location = ExpectedPointer(converter_obj_group, target_obj_name)
+        modifier_location = ForwardRef(converter_obj_group, target_obj_name)
         modifier_raw_api_object.set_location(modifier_location)
 
         modifier_raw_api_object.add_raw_member("multiplier",
@@ -180,6 +180,6 @@ class AoCModifierSubprocessor:
 
         converter_obj_group.add_raw_api_object(modifier_raw_api_object)
 
-        modifier_expected_pointer = ExpectedPointer(converter_obj_group, modifier_raw_api_object.get_id())
+        modifier_forward_ref = ForwardRef(converter_obj_group, modifier_raw_api_object.get_id())
 
-        return modifier_expected_pointer
+        return modifier_forward_ref

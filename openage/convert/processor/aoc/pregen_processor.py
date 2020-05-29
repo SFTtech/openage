@@ -4,7 +4,7 @@
 Creates nyan objects for things that are hardcoded into the Genie Engine,
 but configurable in openage. E.g. HP.
 """
-from openage.convert.dataformat.aoc.expected_pointer import ExpectedPointer
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.converter_object import RawAPIObject,\
     ConverterObjectGroup
 from openage.convert.service import internal_name_lookups
@@ -55,7 +55,7 @@ class AoCPregenSubprocessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
-                                       ExpectedPointer
+                                       ForwardRef
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
@@ -76,13 +76,13 @@ class AoCPregenSubprocessor:
         health_raw_api_object.set_filename("types")
         health_raw_api_object.add_raw_parent(attribute_parent)
 
-        name_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                "aux.attribute.types.Health.HealthName")
-        health_raw_api_object.add_raw_member("name", name_expected_pointer,
+        name_forward_ref = ForwardRef(pregen_converter_group,
+                                      "aux.attribute.types.Health.HealthName")
+        health_raw_api_object.add_raw_member("name", name_forward_ref,
                                              attribute_parent)
-        abbrv_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                 "aux.attribute.types.Health.HealthAbbreviation")
-        health_raw_api_object.add_raw_member("abbreviation", abbrv_expected_pointer,
+        abbrv_forward_ref = ForwardRef(pregen_converter_group,
+                                       "aux.attribute.types.Health.HealthAbbreviation")
+        health_raw_api_object.add_raw_member("abbreviation", abbrv_forward_ref,
                                              attribute_parent)
 
         pregen_converter_group.add_raw_api_object(health_raw_api_object)
@@ -120,13 +120,13 @@ class AoCPregenSubprocessor:
         faith_raw_api_object.set_filename("types")
         faith_raw_api_object.add_raw_parent(attribute_parent)
 
-        name_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                "aux.attribute.types.Faith.FaithName")
-        faith_raw_api_object.add_raw_member("name", name_expected_pointer,
+        name_forward_ref = ForwardRef(pregen_converter_group,
+                                      "aux.attribute.types.Faith.FaithName")
+        faith_raw_api_object.add_raw_member("name", name_forward_ref,
                                             attribute_parent)
-        abbrv_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                 "aux.attribute.types.Faith.FaithAbbreviation")
-        faith_raw_api_object.add_raw_member("abbreviation", abbrv_expected_pointer,
+        abbrv_forward_ref = ForwardRef(pregen_converter_group,
+                                       "aux.attribute.types.Faith.FaithAbbreviation")
+        faith_raw_api_object.add_raw_member("abbreviation", abbrv_forward_ref,
                                             attribute_parent)
 
         pregen_converter_group.add_raw_api_object(faith_raw_api_object)
@@ -165,7 +165,7 @@ class AoCPregenSubprocessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
-                                       ExpectedPointer
+                                       ForwardRef
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
@@ -237,7 +237,7 @@ class AoCPregenSubprocessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
-                                       ExpectedPointer
+                                       ForwardRef
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
@@ -361,7 +361,7 @@ class AoCPregenSubprocessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
-                                       ExpectedPointer
+                                       ForwardRef
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
@@ -503,7 +503,7 @@ class AoCPregenSubprocessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
-                                       ExpectedPointer
+                                       ForwardRef
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
@@ -636,16 +636,16 @@ class AoCPregenSubprocessor:
                                                     exchange_rate_parent)
 
         # Price adjust method
-        pa_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                              "aux.resource.market_trading.MarketDynamicPriceMode")
+        pa_forward_ref = ForwardRef(pregen_converter_group,
+                                    "aux.resource.market_trading.MarketDynamicPriceMode")
         exchange_rate_raw_api_object.add_raw_member("price_adjust",
-                                                    pa_expected_pointer,
+                                                    pa_forward_ref,
                                                     exchange_rate_parent)
         # Price pool
-        pool_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                "aux.resource.market_trading.MarketFoodPricePool")
+        pool_forward_ref = ForwardRef(pregen_converter_group,
+                                      "aux.resource.market_trading.MarketFoodPricePool")
         exchange_rate_raw_api_object.add_raw_member("price_pool",
-                                                    pool_expected_pointer,
+                                                    pool_forward_ref,
                                                     exchange_rate_parent)
 
         pregen_converter_group.add_raw_api_object(exchange_rate_raw_api_object)
@@ -668,16 +668,16 @@ class AoCPregenSubprocessor:
                                                     exchange_rate_parent)
 
         # Price adjust method
-        pa_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                              "aux.resource.market_trading.MarketDynamicPriceMode")
+        pa_forward_ref = ForwardRef(pregen_converter_group,
+                                    "aux.resource.market_trading.MarketDynamicPriceMode")
         exchange_rate_raw_api_object.add_raw_member("price_adjust",
-                                                    pa_expected_pointer,
+                                                    pa_forward_ref,
                                                     exchange_rate_parent)
         # Price pool
-        pool_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                "aux.resource.market_trading.MarketWoodPricePool")
+        pool_forward_ref = ForwardRef(pregen_converter_group,
+                                      "aux.resource.market_trading.MarketWoodPricePool")
         exchange_rate_raw_api_object.add_raw_member("price_pool",
-                                                    pool_expected_pointer,
+                                                    pool_forward_ref,
                                                     exchange_rate_parent)
 
         pregen_converter_group.add_raw_api_object(exchange_rate_raw_api_object)
@@ -700,16 +700,16 @@ class AoCPregenSubprocessor:
                                                     exchange_rate_parent)
 
         # Price adjust method
-        pa_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                              "aux.resource.market_trading.MarketDynamicPriceMode")
+        pa_forward_ref = ForwardRef(pregen_converter_group,
+                                    "aux.resource.market_trading.MarketDynamicPriceMode")
         exchange_rate_raw_api_object.add_raw_member("price_adjust",
-                                                    pa_expected_pointer,
+                                                    pa_forward_ref,
                                                     exchange_rate_parent)
         # Price pool
-        pool_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                "aux.resource.market_trading.MarketStonePricePool")
+        pool_forward_ref = ForwardRef(pregen_converter_group,
+                                      "aux.resource.market_trading.MarketStonePricePool")
         exchange_rate_raw_api_object.add_raw_member("price_pool",
-                                                    pool_expected_pointer,
+                                                    pool_forward_ref,
                                                     exchange_rate_parent)
 
         pregen_converter_group.add_raw_api_object(exchange_rate_raw_api_object)
@@ -741,10 +741,10 @@ class AoCPregenSubprocessor:
 
         # Change settings
         settings = [
-            ExpectedPointer(pregen_converter_group,
-                            "aux.resource.market_trading.MarketBuyPriceChange"),
-            ExpectedPointer(pregen_converter_group,
-                            "aux.resource.market_trading.MarketSellPriceChange"),
+            ForwardRef(pregen_converter_group,
+                       "aux.resource.market_trading.MarketBuyPriceChange"),
+            ForwardRef(pregen_converter_group,
+                       "aux.resource.market_trading.MarketSellPriceChange"),
         ]
         price_mode_raw_api_object.add_raw_member("change_settings",
                                                  settings,
@@ -817,7 +817,7 @@ class AoCPregenSubprocessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
-                                       ExpectedPointer
+                                       ForwardRef
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
@@ -838,11 +838,11 @@ class AoCPregenSubprocessor:
         formation_raw_api_object.add_raw_parent(formation_parent)
 
         subformations = [
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Cavalry"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Infantry"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Ranged"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Siege"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Support"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Cavalry"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Infantry"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Ranged"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Siege"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Support"),
         ]
         formation_raw_api_object.add_raw_member("subformations",
                                                 subformations,
@@ -862,11 +862,11 @@ class AoCPregenSubprocessor:
         formation_raw_api_object.add_raw_parent(formation_parent)
 
         subformations = [
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Cavalry"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Infantry"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Ranged"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Siege"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Support"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Cavalry"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Infantry"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Ranged"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Siege"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Support"),
         ]
         formation_raw_api_object.add_raw_member("subformations",
                                                 subformations,
@@ -886,11 +886,11 @@ class AoCPregenSubprocessor:
         formation_raw_api_object.add_raw_parent(formation_parent)
 
         subformations = [
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Cavalry"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Infantry"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Ranged"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Siege"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Support"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Cavalry"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Infantry"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Ranged"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Siege"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Support"),
         ]
         formation_raw_api_object.add_raw_member("subformations",
                                                 subformations,
@@ -910,11 +910,11 @@ class AoCPregenSubprocessor:
         formation_raw_api_object.add_raw_parent(formation_parent)
 
         subformations = [
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Cavalry"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Infantry"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Ranged"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Siege"),
-            ExpectedPointer(pregen_converter_group, "aux.formation.subformation.types.Support"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Cavalry"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Infantry"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Ranged"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Siege"),
+            ForwardRef(pregen_converter_group, "aux.formation.subformation.types.Support"),
         ]
         formation_raw_api_object.add_raw_member("subformations",
                                                 subformations,
@@ -1027,7 +1027,7 @@ class AoCPregenSubprocessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
-                                       ExpectedPointer
+                                       ForwardRef
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
@@ -1065,7 +1065,7 @@ class AoCPregenSubprocessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
-                                       ExpectedPointer
+                                       ForwardRef
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
@@ -1085,7 +1085,7 @@ class AoCPregenSubprocessor:
         change_raw_api_object.set_filename("min_damage")
         change_raw_api_object.add_raw_parent(min_change_parent)
 
-        attribute = ExpectedPointer(pregen_converter_group, "aux.attribute.types.Health")
+        attribute = ForwardRef(pregen_converter_group, "aux.attribute.types.Health")
         change_raw_api_object.add_raw_member("type",
                                              attribute,
                                              min_change_parent)
@@ -1110,7 +1110,7 @@ class AoCPregenSubprocessor:
         change_raw_api_object.set_filename("min_heal")
         change_raw_api_object.add_raw_parent(min_change_parent)
 
-        attribute = ExpectedPointer(pregen_converter_group, "aux.attribute.types.Health")
+        attribute = ForwardRef(pregen_converter_group, "aux.attribute.types.Health")
         change_raw_api_object.add_raw_member("type",
                                              attribute,
                                              min_change_parent)
@@ -1148,10 +1148,10 @@ class AoCPregenSubprocessor:
         amount_name = "%s.LowerCealing" % (fallback_ref_in_modpack)
         amount_raw_api_object = RawAPIObject(amount_name, "LowerCealing", api_objects)
         amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
-        amount_location = ExpectedPointer(pregen_converter_group, fallback_ref_in_modpack)
+        amount_location = ForwardRef(pregen_converter_group, fallback_ref_in_modpack)
         amount_raw_api_object.set_location(amount_location)
 
-        attribute = ExpectedPointer(pregen_converter_group, "aux.attribute.types.Health")
+        attribute = ForwardRef(pregen_converter_group, "aux.attribute.types.Health")
         amount_raw_api_object.add_raw_member("type",
                                              attribute,
                                              "engine.aux.attribute.AttributeAmount")
@@ -1162,9 +1162,9 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(amount_raw_api_object)
         pregen_nyan_objects.update({amount_name: amount_raw_api_object})
         # =================================================================================
-        amount_expected_pointer = ExpectedPointer(pregen_converter_group, amount_name)
+        amount_forward_ref = ForwardRef(pregen_converter_group, amount_name)
         fallback_raw_api_object.add_raw_member("min_change_value",
-                                               amount_expected_pointer,
+                                               amount_forward_ref,
                                                effect_parent)
 
         # Max value (optional; not needed
@@ -1174,10 +1174,10 @@ class AoCPregenSubprocessor:
         amount_name = "%s.ChangeAmount" % (fallback_ref_in_modpack)
         amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", api_objects)
         amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
-        amount_location = ExpectedPointer(pregen_converter_group, fallback_ref_in_modpack)
+        amount_location = ForwardRef(pregen_converter_group, fallback_ref_in_modpack)
         amount_raw_api_object.set_location(amount_location)
 
-        attribute = ExpectedPointer(pregen_converter_group, "aux.attribute.types.Health")
+        attribute = ForwardRef(pregen_converter_group, "aux.attribute.types.Health")
         amount_raw_api_object.add_raw_member("type",
                                              attribute,
                                              "engine.aux.attribute.AttributeAmount")
@@ -1189,9 +1189,9 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects.update({amount_name: amount_raw_api_object})
 
         # =================================================================================
-        amount_expected_pointer = ExpectedPointer(pregen_converter_group, amount_name)
+        amount_forward_ref = ForwardRef(pregen_converter_group, amount_name)
         fallback_raw_api_object.add_raw_member("change_value",
-                                               amount_expected_pointer,
+                                               amount_forward_ref,
                                                effect_parent)
 
         # Ignore protection
@@ -1229,10 +1229,10 @@ class AoCPregenSubprocessor:
         amount_name = "%s.BlockAmount" % (fallback_ref_in_modpack)
         amount_raw_api_object = RawAPIObject(amount_name, "BlockAmount", api_objects)
         amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
-        amount_location = ExpectedPointer(pregen_converter_group, fallback_ref_in_modpack)
+        amount_location = ForwardRef(pregen_converter_group, fallback_ref_in_modpack)
         amount_raw_api_object.set_location(amount_location)
 
-        attribute = ExpectedPointer(pregen_converter_group, "aux.attribute.types.Health")
+        attribute = ForwardRef(pregen_converter_group, "aux.attribute.types.Health")
         amount_raw_api_object.add_raw_member("type",
                                              attribute,
                                              "engine.aux.attribute.AttributeAmount")
@@ -1244,9 +1244,9 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects.update({amount_name: amount_raw_api_object})
 
         # =================================================================================
-        amount_expected_pointer = ExpectedPointer(pregen_converter_group, amount_name)
+        amount_forward_ref = ForwardRef(pregen_converter_group, amount_name)
         fallback_raw_api_object.add_raw_member("block_value",
-                                               amount_expected_pointer,
+                                               amount_forward_ref,
                                                effect_parent)
 
         pregen_converter_group.add_raw_api_object(fallback_raw_api_object)
@@ -1298,7 +1298,7 @@ class AoCPregenSubprocessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
-                                       ExpectedPointer
+                                       ForwardRef
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
@@ -1332,7 +1332,7 @@ class AoCPregenSubprocessor:
                                                type_parent)
 
         # Affects all cliffs
-        types = [ExpectedPointer(pregen_converter_group, "aux.game_entity_type.types.Cliff")]
+        types = [ForwardRef(pregen_converter_group, "aux.game_entity_type.types.Cliff")]
         modifier_raw_api_object.add_raw_member("flyover_types",
                                                types,
                                                type_parent)
@@ -1399,7 +1399,7 @@ class AoCPregenSubprocessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
-                                       ExpectedPointer
+                                       ForwardRef
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
@@ -1435,7 +1435,7 @@ class AoCPregenSubprocessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
-                                       ExpectedPointer
+                                       ForwardRef
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
@@ -1469,10 +1469,10 @@ class AoCPregenSubprocessor:
         food_name_value.add_raw_parent(name_value_parent)
         food_name_value.add_raw_member("translations", [], name_value_parent)
 
-        name_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                food_name_ref_in_modpack)
+        name_forward_ref = ForwardRef(pregen_converter_group,
+                                      food_name_ref_in_modpack)
         food_raw_api_object.add_raw_member("name",
-                                           name_expected_pointer,
+                                           name_forward_ref,
                                            resource_parent)
 
         pregen_converter_group.add_raw_api_object(food_name_value)
@@ -1503,10 +1503,10 @@ class AoCPregenSubprocessor:
         wood_name_value.add_raw_parent(name_value_parent)
         wood_name_value.add_raw_member("translations", [], name_value_parent)
 
-        name_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                wood_name_ref_in_modpack)
+        name_forward_ref = ForwardRef(pregen_converter_group,
+                                      wood_name_ref_in_modpack)
         wood_raw_api_object.add_raw_member("name",
-                                           name_expected_pointer,
+                                           name_forward_ref,
                                            resource_parent)
 
         pregen_converter_group.add_raw_api_object(wood_name_value)
@@ -1537,10 +1537,10 @@ class AoCPregenSubprocessor:
         stone_name_value.add_raw_parent(name_value_parent)
         stone_name_value.add_raw_member("translations", [], name_value_parent)
 
-        name_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                stone_name_ref_in_modpack)
+        name_forward_ref = ForwardRef(pregen_converter_group,
+                                      stone_name_ref_in_modpack)
         stone_raw_api_object.add_raw_member("name",
-                                            name_expected_pointer,
+                                            name_forward_ref,
                                             resource_parent)
 
         pregen_converter_group.add_raw_api_object(stone_name_value)
@@ -1571,10 +1571,10 @@ class AoCPregenSubprocessor:
         gold_name_value.add_raw_parent(name_value_parent)
         gold_name_value.add_raw_member("translations", [], name_value_parent)
 
-        name_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                gold_name_ref_in_modpack)
+        name_forward_ref = ForwardRef(pregen_converter_group,
+                                      gold_name_ref_in_modpack)
         gold_raw_api_object.add_raw_member("name",
-                                           name_expected_pointer,
+                                           name_forward_ref,
                                            resource_parent)
 
         pregen_converter_group.add_raw_api_object(gold_name_value)
@@ -1603,10 +1603,10 @@ class AoCPregenSubprocessor:
         pop_name_value.add_raw_parent(name_value_parent)
         pop_name_value.add_raw_member("translations", [], name_value_parent)
 
-        name_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                pop_name_ref_in_modpack)
+        name_forward_ref = ForwardRef(pregen_converter_group,
+                                      pop_name_ref_in_modpack)
         pop_raw_api_object.add_raw_member("name",
-                                          name_expected_pointer,
+                                          name_forward_ref,
                                           resource_parent)
         pop_raw_api_object.add_raw_member("max_storage",
                                           MemberSpecialValue.NYAN_INF,
@@ -1632,7 +1632,7 @@ class AoCPregenSubprocessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
-                                       ExpectedPointer
+                                       ForwardRef
         :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
@@ -1658,17 +1658,17 @@ class AoCPregenSubprocessor:
         literal_raw_api_object.add_raw_member("only_once", False, logic_parent)
 
         # Scope
-        scope_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                 "aux.logic.literal_scope.death.StandardHealthDeathScope")
+        scope_forward_ref = ForwardRef(pregen_converter_group,
+                                       "aux.logic.literal_scope.death.StandardHealthDeathScope")
         literal_raw_api_object.add_raw_member("scope",
-                                              scope_expected_pointer,
+                                              scope_forward_ref,
                                               literal_parent)
 
         # Attribute
-        health_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                  "aux.attribute.types.Health")
+        health_forward_ref = ForwardRef(pregen_converter_group,
+                                        "aux.attribute.types.Health")
         literal_raw_api_object.add_raw_member("attribute",
-                                              health_expected_pointer,
+                                              health_forward_ref,
                                               interval_parent)
 
         # sidenote: Apparently this is actually HP<1 in Genie
@@ -1688,7 +1688,7 @@ class AoCPregenSubprocessor:
         scope_raw_api_object = RawAPIObject(death_scope_ref_in_modpack,
                                             "StandardHealthDeathScope",
                                             api_objects)
-        scope_location = ExpectedPointer(pregen_converter_group, death_ref_in_modpack)
+        scope_location = ForwardRef(pregen_converter_group, death_ref_in_modpack)
         scope_raw_api_object.set_location(scope_location)
         scope_raw_api_object.add_raw_parent(self_scope_parent)
 
@@ -1720,17 +1720,17 @@ class AoCPregenSubprocessor:
         literal_raw_api_object.add_raw_member("only_once", False, logic_parent)
 
         # Scope
-        scope_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                 "aux.logic.literal_scope.garrison.BuildingDamageEmptyScope")
+        scope_forward_ref = ForwardRef(pregen_converter_group,
+                                       "aux.logic.literal_scope.garrison.BuildingDamageEmptyScope")
         literal_raw_api_object.add_raw_member("scope",
-                                              scope_expected_pointer,
+                                              scope_forward_ref,
                                               literal_parent)
 
         # Attribute
-        health_expected_pointer = ExpectedPointer(pregen_converter_group,
-                                                  "aux.attribute.types.Health")
+        health_forward_ref = ForwardRef(pregen_converter_group,
+                                        "aux.attribute.types.Health")
         literal_raw_api_object.add_raw_member("attribute",
-                                              health_expected_pointer,
+                                              health_forward_ref,
                                               interval_parent)
 
         # Threshhold
@@ -1749,7 +1749,7 @@ class AoCPregenSubprocessor:
         scope_raw_api_object = RawAPIObject(garrison_scope_ref_in_modpack,
                                             "BuildingDamageEmptyScope",
                                             api_objects)
-        scope_location = ExpectedPointer(pregen_converter_group, garrison_literal_ref_in_modpack)
+        scope_location = ForwardRef(pregen_converter_group, garrison_literal_ref_in_modpack)
         scope_raw_api_object.set_location(scope_location)
         scope_raw_api_object.add_raw_parent(self_scope_parent)
 
