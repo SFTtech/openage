@@ -4,9 +4,9 @@
 Module for reading AoeII HD Edition text-based language files.
 """
 
-from .langcodes_hd import LANGCODE_MAP_HD
-from .pefile import PEFile
 from ...log import dbg
+from .langcodes import LANGCODES_HD
+from .pefile import PEFile
 
 
 def read_age2_hd_fe_stringresources(stringres, path):
@@ -118,6 +118,6 @@ def read_hd_language_file(fileobj, langcode, enc='utf-8'):
 
     fileobj.close()
 
-    lang = LANGCODE_MAP_HD.get(langcode, langcode)
+    lang = LANGCODES_HD.get(langcode, langcode)
 
     return {lang: strings}

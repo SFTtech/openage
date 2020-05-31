@@ -1,11 +1,11 @@
 # Copyright 2013-2015 the openage authors. See copying.md for legal info.
 
 """
-Translates the numeric language codes, as used in PE file resources, to their
+Translates the language codes in PE files or text resources to their
 string equivalent.
 """
 
-LANGCODES = {
+LANGCODES_AOC = {
     1: 'ar',
     2: 'bg',
     3: 'ca',
@@ -463,4 +463,23 @@ LANGCODES = {
     263172: 'zh_TW_radstr',
     263185: 'ja_JP_radstr',
     265220: 'zh_HK_radstr',
-    267268: 'zh_MO_radstr'}
+    267268: 'zh_MO_radstr',
+}
+
+LANGCODES_SWGB = {
+    1041: 'de_DE',
+}
+
+LANGCODES_HD = {
+    'br': 'pt_BR',
+    'cn': 'zh_CN',
+    'de': 'de_DE',
+    'en': 'en_US',
+    'es': 'es_ES',
+    'fr': 'fr_FR',
+    'it': 'it_IT',
+    'ja': 'ja_JP',
+    'ko': 'ko_KR',
+    'nl': 'nl_NL',
+    'ru': 'ru_RU'
+}

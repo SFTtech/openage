@@ -9,21 +9,19 @@ import re
 from tempfile import gettempdir
 
 from openage.convert.dataformat.media_types import MediaType
-from openage.convert.dataformat.version_detect import GameEdition
+from openage.convert.dataformat.version_detect import GameEdition, GameExpansion
 
 from ..log import info, dbg
 from .blendomatic import Blendomatic
-from .changelog import (ASSET_VERSION, ASSET_VERSION_FILENAME,
-                        GAMESPEC_VERSION_FILENAME)
+from .changelog import (ASSET_VERSION)
 from .colortable import ColorTable, PlayerColorTable
 from .export.data_formatter import DataFormatter
-from .gamedata.empiresdat import load_gamespec, EmpiresDat
+from .gamedata.empiresdat import load_gamespec
 from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .interface.cutter import InterfaceCutter
 from .interface.rename import hud_rename
-from .langfile.hdlanguagefile import (read_age2_hd_fe_stringresources,
-                                      read_age2_hd_3x_stringresources)
+from .langfile.hdlanguagefile import read_age2_hd_3x_stringresources
 from .langfile.stringresource import StringResource
 from .opus import opusenc
 from .processor.modpack_exporter import ModpackExporter
@@ -43,7 +41,7 @@ def get_string_resources(args):
     from .langfile.pefile import PEFile
 
     for language_file in language_files:
-        if game_edition in (GameEdition.ROR, GameEdition.AOC):
+        if game_edition in (GameEdition.ROR, GameEdition.AOC, GameEdition.SWGB):
             # AoC/RoR use .DLL PE files for their string resources
             pefile = PEFile(srcdir[language_file].open('rb'))
             stringres.fill_from(pefile.resources().strings)
@@ -72,9 +70,18 @@ def get_blendomatic_data(args):
 
 
 def get_gamespec(srcdir, game_version, dont_pickle):
-    """ reads empires.dat and fixes it """
+    """
+    Reads empires.dat file.
+    """
+    if game_version[0] in (GameEdition.ROR, GameEdition.AOC):
+        filepath = srcdir.joinpath(game_version[0].media_paths[MediaType.DATFILE][0])
 
-    filepath = srcdir.joinpath(game_version[0].media_paths[MediaType.DATFILE][0])
+    elif game_version[0] is GameEdition.SWGB:
+        if GameExpansion.SWGB_CC in game_version[1]:
+            filepath = srcdir.joinpath(game_version[1][0].media_paths[MediaType.DATFILE][0])
+
+        else:
+            filepath = srcdir.joinpath(game_version[0].media_paths[MediaType.DATFILE][0])
 
     cache_file = os.path.join(gettempdir(), "{}.pickle".format(filepath.name))
 
@@ -187,6 +194,7 @@ def get_converter(game_version):
     Returns the converter for the specified game version.
     """
     game_edition = game_version[0]
+    game_expansions = game_version[1]
 
     if game_edition is GameEdition.ROR:
         from .processor.ror.processor import RoRProcessor
@@ -195,6 +203,11 @@ def get_converter(game_version):
     elif game_edition is GameEdition.AOC:
         from .processor.aoc.processor import AoCProcessor
         return AoCProcessor
+
+    elif game_edition is GameEdition.SWGB:
+        if GameExpansion.SWGB_CC in game_expansions:
+            from openage.convert.processor.swgbcc.processor import SWGBCCProcessor
+            return SWGBCCProcessor
 
     raise Exception("no valid converter found for game edition %s"
                     % game_edition.edition_name)

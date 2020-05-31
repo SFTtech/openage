@@ -180,8 +180,8 @@ class UnitLine(GenieStructure):
             (READ_GEN, "id", StorageType.ID_MEMBER, "int16_t"),
             (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
             (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_length]"),
-            (READ, "unit_ids_counter", StorageType.INT_MEMBER, "uint16_t"),
-            (READ_GEN, "unit_ids", StorageType.ARRAY_ID, "int16_t[unit_ids_counter]"),
+            (READ, "unit_ids_count", StorageType.INT_MEMBER, "uint16_t"),
+            (READ_GEN, "unit_ids", StorageType.ARRAY_ID, "int16_t[unit_ids_count]"),
         ]
 
         return data_format
@@ -800,6 +800,8 @@ class UnitObject(GenieStructure):
                     0x1C: "SWGB_WASTELAND",
                     0x1D: "SWGB_ICE",
                     0x1E: "DE2_UNKNOWN",
+                    0x1F: "SWGB_WATER2",
+                    0x20: "SWGB_ROCK4",
                 },
             )),
             # determines whether the unit can fly
@@ -1031,7 +1033,7 @@ class UnitObject(GenieStructure):
                 data_format.extend([
                     (READ, "name2_length", StorageType.INT_MEMBER, "uint16_t"),
                     (READ_GEN, "name2", StorageType.STRING_MEMBER, "char[name2_length]"),
-                    (READ_GEN, "unit_line", StorageType.ID_MEMBER, "int16_t"),
+                    (READ_GEN, "unit_line_id", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "min_tech_level", StorageType.ID_MEMBER, "int8_t"),
                 ])
 

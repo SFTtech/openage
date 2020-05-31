@@ -9,7 +9,7 @@ from collections import defaultdict
 from ...util.struct import NamedStruct
 from ...util.filelike.stream import StreamFragment
 
-from .langcodes import LANGCODES
+from .langcodes import LANGCODES_AOC
 
 # types for id in resource directory root node
 RESOURCE_TYPES = {
@@ -227,7 +227,7 @@ class PEResources:
 
             # each table has leafs for one or more languages
             for lang_id, string_table in table_dir.items():
-                langcode = LANGCODES[lang_id]
+                langcode = LANGCODES_AOC[lang_id]
                 string_table_resource = string_table.open()
                 for idx in range(STRINGTABLE_SIZE):
                     string = StringLiteral.readall(string_table_resource).value

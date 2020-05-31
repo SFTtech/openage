@@ -29,23 +29,28 @@ class GameExpansion(enum.Enum):
                  Support.nope,
                  {GameFileVersion("resources/_common/dat/empires2_x2_p1.dat",
                                   {"f2bf8b128b4bdac36ee36fafe139baf1": "1.0c"})},
-                 {MediaType.GRAPHICS: ["resources/_common/slp/"],
-                  MediaType.SOUNDS: ["resources/_common/sound/"],
-                  MediaType.INTERFACE: ["resources/_common/drs/interface/"],
-                  MediaType.TERRAIN: ["resources/_common/terrain/"]},
+                 {
+                     MediaType.GRAPHICS: ["resources/_common/slp/"],
+                     MediaType.SOUNDS: ["resources/_common/sound/"],
+                     MediaType.INTERFACE: ["resources/_common/drs/interface/"],
+                     MediaType.TERRAIN: ["resources/_common/terrain/"]
+                 },
                  ["aoe2-ak", "aoe2-ak-graphics"])
 
     SWGB_CC = ("Clone Campaigns",
                Support.yes,
                {GameFileVersion('Game/battlegrounds_x1.exe',
                                 {"974f4d4404bb94451a9c27ae5c673243": "GOG"})},
-               {MediaType.DATFILE: ["Game/Data/genie_x1.dat"],
+               {
+                   MediaType.DATFILE: ["Game/Data/genie_x1.dat"],
                    MediaType.GAMEDATA: ["Game/Data/genie_x1.dat"],
                    MediaType.GRAPHICS: ["Game/Data/graphics_x1.drs"],
+                   MediaType.LANGUAGE: ["Game/language_x1.dll"],
                    MediaType.PALETTES: ["Game/Data/interfac_x1.drs"],
                    MediaType.SOUNDS: ["Game/Data/sounds_x1.drs"],
                    MediaType.INTERFACE: ["Game/Data/interfac_x1.drs"],
-                   MediaType.TERRAIN: ["Game/Data/terrain_x1.drs"]},
+                   MediaType.TERRAIN: ["Game/Data/terrain_x1.drs"],
+               },
                ["swgb-cc", "swgb-cc-graphics"])
 
     def __init__(self, name, support_status, game_file_versions,
@@ -232,6 +237,7 @@ class GameEdition(enum.Enum):
             MediaType.DATFILE: ["Game/Data/GENIE.DAT"],
             MediaType.GAMEDATA: ["Game/Data/GAMEDATA.DRS"],
             MediaType.GRAPHICS: ["Game/Data/GRAPHICS.DRS"],
+            MediaType.LANGUAGE: ["Game/language.dll"],
             MediaType.PALETTES: ["Game/Data/INTERFAC.DRS"],
             MediaType.SOUNDS: ["Game/Data/SOUNDS.DRS"],
             MediaType.INTERFACE: ["Game/Data/INTERFAC.DRS"],
