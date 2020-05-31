@@ -170,7 +170,6 @@ TECH_GROUP_LOOKUPS = {
     93: ("Ballistics", "ballistics"),
     96: ("CappedRam", "capped_ram"),
     98: ("EliteSkirmisher", "elite_skirmisher"),
-    103: ("ImperialAge", "imperial_age"),
     100: ("Crossbowman", "crossbowman"),
     101: ("FeudalAge", "feudal_age"),
     102: ("CastleAge", "castle_age"),
