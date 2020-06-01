@@ -72,7 +72,6 @@ BUILDING_LINE_LOOKUPS = {
     104: ("Temple", "temple"),
     109: ("CommandCenter", "command_center"),
     117: ("Wall", "wall"),
-    195: ("ShieldWall", "shield_wall"),
     199: ("FishingTrap", "fishing_trap"),
     209: ("ResearchCenter", "research_center"),
     236: ("AntiAirTurret", "anti_air_turret"),

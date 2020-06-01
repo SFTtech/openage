@@ -133,3 +133,15 @@ class SWGBCCProcessor:
         AoCMediaSubprocessor.convert(full_data_set)
 
         return SWGBCCModpackSubprocessor.get_modpacks(full_data_set)
+
+    @staticmethod
+    def _create_unit_lines(full_data_set):
+        """
+        Sort units into lines, based on information in the unit connections.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        pass
