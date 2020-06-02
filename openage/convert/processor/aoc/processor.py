@@ -531,7 +531,7 @@ class AoCProcessor:
                               process.
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
-        extra_units = (48, 594, 833)  # Wildlife
+        extra_units = (48, 65, 594, 833)  # Wildlife
 
         for unit_id in extra_units:
             unit_line = GenieUnitLineGroup(unit_id, full_data_set)
@@ -1191,81 +1191,107 @@ class AoCProcessor:
                               process.
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
-        unit_lines = full_data_set.unit_lines
-        building_lines = full_data_set.building_lines
-        ambient_groups = full_data_set.ambient_groups
+        garrisoned_lines = {}
+        garrisoned_lines.update(full_data_set.unit_lines)
+        garrisoned_lines.update(full_data_set.ambient_groups)
 
         garrison_lines = {}
-        garrison_lines.update(unit_lines)
-        garrison_lines.update(building_lines)
+        garrison_lines.update(full_data_set.unit_lines)
+        garrison_lines.update(full_data_set.building_lines)
 
-        for garrison in garrison_lines.values():
-            if garrison.is_garrison():
-                garrison_mode = garrison.get_garrison_mode()
-                garrison_head = garrison.get_head_unit()
-                garrison_type = 0
+        # Search through all units and look at their garrison commands
+        for unit_line in garrisoned_lines.values():
+            garrison_classes = []
+            garrison_units = []
 
-                if garrison.get_garrison_mode() == GenieGarrisonMode.NATURAL:
-                    garrison_type = garrison_head.get_member("garrison_type").get_value()
+            if unit_line.has_command(3):
+                unit_commands = unit_line.get_head_unit()["unit_commands"].get_value()
+                for command in unit_commands:
+                    type_id = command.get_value()["type"].get_value()
 
-                # Check all lines if they fit the garrison mode
-                for unit_line in unit_lines.values():
-                    head_unit = unit_line.get_head_unit()
-                    creatable_type = head_unit.get_member("creatable_type").get_value()
-                    trait = head_unit.get_member("trait").get_value()
-
-                    if creatable_type not in garrison_mode.value:
-                        # Exception for ships; instead handled below
-                        if not trait & 0x02:
-                            continue
-
-                    if garrison_mode == GenieGarrisonMode.NATURAL:
-                        if creatable_type == 1 and not garrison_type & 0x01:
-                            continue
-
-                        elif creatable_type == 2 and not garrison_type & 0x02:
-                            continue
-
-                        elif creatable_type == 2 and unit_line.get_class_id() in (13, 51, 54, 55):
-                            # Siege and trebuchet cannot be in garrisons
-                            # even though the .dat file allows them to
-                            continue
-
-                        elif creatable_type == 3 and not garrison_type & 0x04:
-                            continue
-
-                        elif creatable_type == 6 and not garrison_type & 0x08:
-                            continue
-
-                    # Prevents siege units/trebuchet from being stored in rams
-                    if garrison_mode == GenieGarrisonMode.UNIT_GARRISON:
-                        if unit_line.get_class_id() in (13, 51, 54, 55):
-                            continue
-
-                    if garrison_mode == GenieGarrisonMode.SELF_PRODUCED:
-                        if not unit_line in garrison.creates:
-                            continue
-
-                    # Allow ships as garrisoned units, but only for production
-                    if trait & 0x02 and not garrison_mode == GenieGarrisonMode.SELF_PRODUCED:
+                    if type_id != 3:
                         continue
 
-                    unit_line.garrison_locations.append(garrison)
-                    garrison.garrison_entities.append(unit_line)
+                    class_id = command.get_value()["class_id"].get_value()
+                    if class_id > -1:
+                        garrison_classes.append(class_id)
 
-                if garrison_mode == GenieGarrisonMode.MONK:
-                    # Search for the relic
-                    for ambient_group in ambient_groups.values():
-                        head_unit = ambient_group.get_head_unit()
-                        if not head_unit.has_member("creatable_type"):
+                        if class_id == 3:
+                            # Towers because Ensemble didn't like consistent rules
+                            garrison_classes.append(52)
+
+                    unit_id = command.get_value()["unit_id"].get_value()
+                    if unit_id > -1:
+                        garrison_units.append(unit_id)
+
+            for garrison_line in garrison_lines.values():
+                if not garrison_line.is_garrison():
+                    continue
+
+                # Natural garrison
+                garrison_mode = garrison_line.get_garrison_mode()
+                if garrison_mode == GenieGarrisonMode.NATURAL:
+                    if unit_line.get_head_unit().has_member("creatable_type"):
+                        creatable_type = unit_line.get_head_unit()["creatable_type"].get_value()
+
+                    else:
+                        creatable_type = 0
+
+                    if garrison_line.get_head_unit().has_member("garrison_type"):
+                        garrison_type = garrison_line.get_head_unit()["garrison_type"].get_value()
+
+                    else:
+                        garrison_type = 0
+
+                    if creatable_type == 1 and not garrison_type & 0x01:
+                        continue
+
+                    elif creatable_type == 2 and not garrison_type & 0x02:
+                        continue
+
+                    elif creatable_type == 3 and not garrison_type & 0x04:
+                        continue
+
+                    elif creatable_type == 6 and not garrison_type & 0x08:
+                        continue
+
+                    if garrison_line.get_class_id() in garrison_classes:
+                        unit_line.garrison_locations.append(garrison_line)
+                        garrison_line.garrison_entities.append(unit_line)
+                        continue
+
+                    if garrison_line.get_head_unit_id() in garrison_units:
+                        unit_line.garrison_locations.append(garrison_line)
+                        garrison_line.garrison_entities.append(unit_line)
+                        continue
+
+                # Transports/ unit garrisons (no conditions)
+                elif garrison_mode in (GenieGarrisonMode.TRANSPORT,
+                                       GenieGarrisonMode.UNIT_GARRISON):
+                    if garrison_line.get_class_id() in garrison_classes:
+                        unit_line.garrison_locations.append(garrison_line)
+                        garrison_line.garrison_entities.append(unit_line)
+
+                # Self produced units (these cannot be determined from commands)
+                elif garrison_mode == GenieGarrisonMode.SELF_PRODUCED:
+                    if unit_line in garrison_line.creates:
+                        unit_line.garrison_locations.append(garrison_line)
+                        garrison_line.garrison_entities.append(unit_line)
+
+                # Monk inventories
+                elif garrison_mode == GenieGarrisonMode.MONK:
+                    # Search for a pickup command
+                    unit_commands = garrison_line.get_head_unit()["unit_commands"].get_value()
+                    for command in unit_commands:
+                        type_id = command.get_value()["type"].get_value()
+
+                        if type_id != 132:
                             continue
 
-                        creatable_type = head_unit.get_member("creatable_type").get_value()
-                        if creatable_type != 4:
-                            continue
-
-                        ambient_group.garrison_locations.append(garrison)
-                        garrison.garrison_entities.append(ambient_group)
+                        unit_id = command.get_value()["unit_id"].get_value()
+                        if unit_id == unit_line.get_head_unit_id():
+                            unit_line.garrison_locations.append(garrison_line)
+                            garrison_line.garrison_entities.append(unit_line)
 
     @staticmethod
     def _link_trade_posts(full_data_set):
