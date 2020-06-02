@@ -22,6 +22,7 @@ from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocesso
 from openage.convert.processor.aoc.processor import AoCProcessor
 from openage.convert.processor.swgbcc.modpack_subprocessor import SWGBCCModpackSubprocessor
 from openage.convert.processor.swgbcc.nyan_subprocessor import SWGBCCNyanSubprocessor
+from openage.convert.processor.swgbcc.pregen_subprocessor import SWGBPregenSubprocessor
 
 from ....log import info
 
@@ -126,10 +127,11 @@ class SWGBCCProcessor:
         AoCProcessor._link_gatherers_to_dropsites(full_data_set)
         cls._link_garrison(full_data_set)
         AoCProcessor._link_trade_posts(full_data_set)
+        cls._link_repairables(full_data_set)
 
         info("Generating auxiliary objects...")
 
-        # AoCPregenSubprocessor.generate(full_data_set)
+        SWGBPregenSubprocessor.generate(full_data_set)
 
         return full_data_set
 
@@ -783,3 +785,48 @@ class SWGBCCProcessor:
                         if unit_id == unit_line.get_head_unit_id():
                             unit_line.garrison_locations.append(garrison_line)
                             garrison_line.garrison_entities.append(unit_line)
+
+    @staticmethod
+    def _link_repairables(full_data_set):
+        """
+        Set units/buildings as repairable
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        villager_groups = full_data_set.villager_groups
+
+        repair_lines = {}
+        repair_lines.update(full_data_set.unit_lines)
+        repair_lines.update(full_data_set.building_lines)
+
+        repair_classes = []
+        for villager in villager_groups.values():
+            repair_unit = villager.get_units_with_command(106)[0]
+            unit_commands = repair_unit["unit_commands"].get_value()
+            for command in unit_commands:
+                type_id = command.get_value()["type"].get_value()
+
+                if type_id != 106:
+                    continue
+
+                class_id = command.get_value()["class_id"].get_value()
+                if class_id == -1:
+                    # Buildings/Siege
+                    repair_classes.append(10)
+                    repair_classes.append(18)
+                    repair_classes.append(32)
+                    repair_classes.append(33)
+                    repair_classes.append(34)
+                    repair_classes.append(35)
+                    repair_classes.append(36)
+                    repair_classes.append(53)
+
+                else:
+                    repair_classes.append(class_id)
+
+        for repair_line in repair_lines.values():
+            if repair_line.get_class_id() in repair_classes:
+                repair_line.repairable = True
