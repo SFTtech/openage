@@ -130,7 +130,7 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
         :returns: True if the civ id is not Gaia's and no alternative lines
                   for this unit line exist.
         """
-        return self.get_civ_id() != 0 and len(self.civ_lines) > 0
+        return False
 
     def __repr__(self):
         return "SWGBUnitTransformGroup<%s>" % (self.get_id())
@@ -194,4 +194,7 @@ class SWGBMonkGroup(GenieMonkGroup):
         :returns: True if the civ id is not Gaia's and no alternative lines
                   for this unit line exist.
         """
-        return self.get_civ_id() != 0 and len(self.civ_lines) > 0
+        return False
+
+    def __repr__(self):
+        return "SWGBMonkGroup<%s>" % (self.get_id())

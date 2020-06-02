@@ -86,6 +86,7 @@ CIV_LINE_ASSOCS = {
 # There is one jedi/sith for every civ
 # key: jedi/sith unit id; value: switch unit id
 MONK_GROUP_ASSOCS = {
+    # Jedi/Sith Knight
     52: 15,
     180: 151,
     183: 152,
@@ -94,6 +95,16 @@ MONK_GROUP_ASSOCS = {
     239: 178,
     647: 648,
     652: 649,
+
+    # Jedi/sith Master
+    89: 33,
+    115: 98,
+    125: 100,
+    134: 107,
+    136: 111,
+    140: 114,
+    643: 1564,
+    645: 1566,
 }
 
 
