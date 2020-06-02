@@ -4,6 +4,8 @@
 Organize export data (nyan objects, media, scripts, etc.)
 into modpacks.
 """
+from openage.convert.dataformat.modpack import Modpack
+from openage.convert.processor.aoc.modpack_subprocessor import AoCModpackSubprocessor
 
 
 class SWGBCCModpackSubprocessor:
@@ -20,6 +22,16 @@ class SWGBCCModpackSubprocessor:
         """
         Create the swgb-base modpack.
         """
-        pass
+        modpack = Modpack("swgb-base")
 
-        # TODO: Implement
+        mod_def = modpack.get_info()
+
+        mod_def.set_version("GOG")
+        mod_def.set_uid(5000)
+
+        mod_def.add_assets_to_load("data/*")
+
+        AoCModpackSubprocessor._organize_nyan_objects(modpack, gamedata)
+        AoCModpackSubprocessor._organize_media_objects(modpack, gamedata)
+
+        return modpack

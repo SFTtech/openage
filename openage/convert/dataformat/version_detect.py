@@ -242,6 +242,7 @@ class GameEdition(enum.Enum):
             MediaType.SOUNDS: ["Game/Data/SOUNDS.DRS"],
             MediaType.INTERFACE: ["Game/Data/INTERFAC.DRS"],
             MediaType.TERRAIN: ["Game/Data/TERRAIN.DRS"],
+            MediaType.BLEND: ["Game/Data/blendomatic.dat"],
         },
         ["swgb-base", "swgb-base-graphics"],
         [GameExpansion.SWGB_CC]
