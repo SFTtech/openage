@@ -11,7 +11,8 @@ from openage.convert.dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
     GenieVillagerGroup, GenieAmbientGroup, GenieVariantGroup,\
     GenieStackBuildingGroup, GenieBuildingLineGroup
 from openage.convert.dataformat.swgbcc.internal_nyan_names import MONK_GROUP_ASSOCS,\
-    CIV_LINE_ASSOCS, AMBIENT_GROUP_LOOKUPS, VARIANT_GROUP_LOOKUPS
+    CIV_LINE_ASSOCS, AMBIENT_GROUP_LOOKUPS, VARIANT_GROUP_LOOKUPS,\
+    CIV_TECH_ASSOCS
 from openage.convert.dataformat.swgbcc.swgb_tech import SWGBUnitUnlock,\
     SWGBUnitLineUpgrade
 from openage.convert.dataformat.swgbcc.swgb_unit import SWGBUnitTransformGroup,\
@@ -565,7 +566,7 @@ class SWGBCCProcessor:
                 # Units further down the line receive line upgrades
                 unit_upgrade = SWGBUnitLineUpgrade(required_research_id, line_id,
                                                    unit_id, full_data_set)
-                pre_unit_upgrades.update({unit_id: unit_upgrade})
+                pre_unit_upgrades.update({required_research_id: unit_upgrade})
 
         # Unit unlocks for civ lines
         unit_unlocks = {}
@@ -596,6 +597,24 @@ class SWGBCCProcessor:
 
         # TODO: Unit upgrades
         unit_upgrades = {}
+        for unit_upgrade in pre_unit_upgrades.values():
+            tech_id = unit_upgrade.tech.get_id()
+            if tech_id not in CIV_TECH_ASSOCS.keys():
+                for main_tech_id, civ_tech_ids in CIV_TECH_ASSOCS.items():
+                    if tech_id in civ_tech_ids:
+                        # The tech is upgrade for an alternative civ so the upgrade
+                        # is stored with the main upgrade
+                        main_upgrade = pre_unit_upgrades[main_tech_id]
+                        main_upgrade.add_civ_upgrade(unit_upgrade)
+                        break
+
+                else:
+                    # The upgrade is for a line without alternative civ lines
+                    unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
+
+            else:
+                # The upgrade is for a main line
+                unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
 
         full_data_set.tech_groups.update(unit_upgrades)
         full_data_set.unit_upgrades.update(unit_upgrades)
