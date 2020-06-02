@@ -350,7 +350,7 @@ class AoCEffectSubprocessor:
         repairable_lines = []
         repairable_lines.extend(dataset.building_lines.values())
         for unit_line in dataset.unit_lines.values():
-            if unit_line.get_class_id() in (2, 13, 20, 21, 22, 55):
+            if unit_line.is_repairable():
                 repairable_lines.append(unit_line)
 
         for repairable_line in repairable_lines:

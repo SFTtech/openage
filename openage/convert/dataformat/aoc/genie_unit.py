@@ -44,7 +44,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
     """
 
     __slots__ = ('data', 'line', 'line_positions', 'creates', 'researches',
-                 'garrison_entities', 'garrison_locations')
+                 'garrison_entities', 'garrison_locations', 'repairable')
 
     def __init__(self, line_id, full_data_set):
         """
@@ -79,6 +79,9 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         # List of units/buildings where the line can garrison
         self.garrison_locations = []
+
+        # Can be repaired by villagers
+        self.repairable = False
 
     def add_creatable(self, line):
         """
@@ -357,9 +360,9 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         Only certain lines and classes are repairable.
 
-        :returns: True if the group's class is repairable.
+        :returns: True if the group is repairable.
         """
-        return self.get_class_id() in (2, 13, 20, 21, 22, 53)
+        return self.repairable
 
     def is_unique(self):
         """

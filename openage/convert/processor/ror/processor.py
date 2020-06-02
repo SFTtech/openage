@@ -117,6 +117,7 @@ class RoRProcessor:
         AoCProcessor._link_gatherers_to_dropsites(full_data_set)
         cls._link_garrison(full_data_set)
         AoCProcessor._link_trade_posts(full_data_set)
+        cls._link_repairables(full_data_set)
 
         info("Generating auxiliary objects...")
 
@@ -560,3 +561,42 @@ class RoRProcessor:
                 for line in garrison_class_assignments[class_id]:
                     garrison.garrison_entities.append(line)
                     line.garrison_locations.append(garrison)
+
+    @staticmethod
+    def _link_repairables(full_data_set):
+        """
+        Set units/buildings as repairable
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        villager_groups = full_data_set.villager_groups
+
+        repair_lines = {}
+        repair_lines.update(full_data_set.unit_lines)
+        repair_lines.update(full_data_set.building_lines)
+
+        repair_classes = []
+        for villager in villager_groups.values():
+            repair_unit = villager.get_units_with_command(106)[0]
+            unit_commands = repair_unit["unit_commands"].get_value()
+            for command in unit_commands:
+                type_id = command.get_value()["type"].get_value()
+
+                if type_id != 106:
+                    continue
+
+                class_id = command.get_value()["class_id"].get_value()
+                if class_id == -1:
+                    # Buildings/Siege
+                    repair_classes.append(3)
+                    repair_classes.append(13)
+
+                else:
+                    repair_classes.append(class_id)
+
+        for repair_line in repair_lines.values():
+            if repair_line.get_class_id() in repair_classes:
+                repair_line.repairable = True
