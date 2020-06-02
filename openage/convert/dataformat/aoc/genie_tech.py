@@ -227,6 +227,12 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
         """
         return self.unit_line_id
 
+    def get_upgraded_line(self):
+        """
+        Returns the line id of the upgraded line.
+        """
+        return self.data.unit_lines_vertical_ref[self.unit_line_id]
+
     def get_upgrade_target_id(self):
         """
         Returns the target unit that is upgraded to.

@@ -531,7 +531,7 @@ class AoCProcessor:
                               process.
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
-        extra_units = (48, 65, 594, 833)  # Wildlife
+        extra_units = (48, 594, 833)  # Wildlife
 
         for unit_id in extra_units:
             unit_line = GenieUnitLineGroup(unit_id, full_data_set)

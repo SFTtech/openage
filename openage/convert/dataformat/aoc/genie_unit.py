@@ -752,19 +752,25 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
 
     def get_head_unit_id(self):
         """
-        Returns the unit that is switched to when picking up something.
+        Returns the ID of the head unit.
         """
         return self.head_unit["id0"].get_value()
 
     def get_head_unit(self):
         """
-        Returns the unit that is switched to when picking up something.
+        Returns the head unit.
         """
         return self.head_unit
 
+    def get_transform_unit_id(self):
+        """
+        Returns the ID of the transform unit.
+        """
+        return self.transform_unit["id0"].get_value()
+
     def get_transform_unit(self):
         """
-        Returns the unit that is switched to when picking up something.
+        Returns the transform unit.
         """
         return self.transform_unit
 

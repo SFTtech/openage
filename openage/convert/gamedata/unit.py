@@ -928,7 +928,7 @@ class UnitObject(GenieStructure):
                 # bit 6: self-shielding unit,
                 # bit 7: invisible unit
                 (READ_GEN, "trait", StorageType.ID_MEMBER, "uint8_t"),
-                (READ_GEN, "civilisation", StorageType.ID_MEMBER, "int8_t"),
+                (READ_GEN, "civilization_id", StorageType.ID_MEMBER, "int8_t"),
                 # leftover from trait+civ variable
                 (SKIP, "attribute_piece", StorageType.INT_MEMBER, "int16_t"),
             ])

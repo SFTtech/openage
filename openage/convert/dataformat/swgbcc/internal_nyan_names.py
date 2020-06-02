@@ -8,17 +8,15 @@ nyan object names and filenames for SWGB.
 # For unit lines with different graphics per civ only the unit line of
 # the first civ (Empire) is stored
 UNIT_LINE_LOOKUPS = {
-    2: ("FambaShieldGenerator", "famba_shield_generator"),
+    2: ("FambaaShieldGenerator", "fambaa_shield_generator"),
     4: ("RoyalCrusader", "royal_crusader"),
     6: ("Airspeeder", "airspeeder"),
     8: ("Berserker", "berserker"),
     13: ("UtilityTrawler", "utility_trawler"),
-    89: ("SithMaster", "sith_master"),
+    115: ("ForceMaster", "force_master"),
     118: ("Worker", "worker"),
-    125: ("JediMaster", "jedi_master"),
     174: ("DestroyerDroid", "destroyer_droid"),
-    180: ("SithKnight", "sith_knight"),
-    183: ("JediKnight", "jedi_knight"),
+    180: ("ForceKnight", "force_knight"),
     307: ("Trooper", "trooper"),
     359: ("MountedTrooper", "mounted_trooper"),
     381: ("GrenadeTrooper", "grenade_trooper"),
@@ -32,10 +30,10 @@ UNIT_LINE_LOOKUPS = {
     641: ("JediStarfighter", "jedi_starfighter"),
     642: ("GeonosianWarrior", "utility_trawler"),
     691: ("Artillery", "artillery"),
+    702: ("AntiAirMobile", "anti_air_mobile"),
     713: ("Pummel", "pummel"),
     762: ("Bomber", "bomber"),
     773: ("Fighter", "fighter"),
-    792: ("AntiAirMobile", "anti_air_mobile"),
     815: ("Cruiser", "cruiser"),
     838: ("TransportShip", "transport_ship"),
     860: ("Nexu", "nexu"),
@@ -43,7 +41,7 @@ UNIT_LINE_LOOKUPS = {
     898: ("Destroyer", "destroyer"),
     918: ("AntiAirDestroyer", "anti_air_destroyer"),
     921: ("Reek", "reek"),
-    931: ("CargoHovercraft", "cargo_hovercraft"),
+    931: ("CargoTrader", "cargo_trader"),
     939: ("Medic", "medic"),
     961: ("BountyHunter", "bounty_hunter"),
     983: ("Cannon", "cannon"),
@@ -53,6 +51,51 @@ UNIT_LINE_LOOKUPS = {
     1036: ("AirTransport", "air_transport"),
     1582: ("AWing", "a_wing"),
 }
+
+
+# key: head unit id; value: (head units of civ lines)
+CIV_LINE_ASSOCS = {
+    115: (89, 115, 135, 134, 136, 140, 643, 645),
+    180: (52, 180, 183, 204, 232, 239, 647, 652),
+    307: (238, 280, 282, 286, 307, 309, 1548, 1552),
+    359: (289, 359, 361, 370, 376, 378, 1043, 1047),
+    381: (292, 381, 383, 385, 387, 389, 1478, 1482),
+    438: (305, 438, 440, 442, 444, 446, 1540, 1542),
+    469: (244, 469, 471, 473, 475, 479, 903, 907),
+    485: (246, 485, 489, 493, 495, 497, 911, 915),
+    500: (249, 500, 502, 508, 514, 517, 919, 923),
+    550: (258, 550, 552, 554, 556, 558, 927, 932),
+    625: (619, 620, 625, 628, 630, 632, 634, 636),
+    691: (203, 691, 693, 695, 698, 700, 1551, 1553),
+    702: (207, 702, 704, 706, 708, 711, 1555, 1557),
+    713: (231, 713, 715, 717, 719, 721, 1559, 1561),
+    762: (127, 762, 764, 766, 769, 771, 1523, 1524),
+    773: (158, 773, 775, 777, 779, 781, 1525, 1526),
+    815: (190, 815, 818, 820, 823, 825, 1509, 1511),
+    838: (191, 838, 839, 840, 841, 842, 1513, 1515),
+    868: (187, 868, 870, 872, 874, 876, 1497, 1499),
+    898: (186, 898, 900, 902, 904, 906, 1493, 1495),
+    918: (188, 918, 920, 922, 924, 926, 1501, 1503),
+    939: (167, 939, 941, 943, 945, 947, 996, 1005),
+    961: (170, 961, 963, 965, 967, 969, 1533, 1535),
+    951: (169, 951, 952, 953, 954, 955, 1531, 1532),
+    1009: (1007, 1008, 1009, 1010, 1011, 1012, 1013, 1014),
+    1036: (1036, 1038, 1040, 1042, 1044, 1046, 1521, 1522),
+}
+
+# There is one jedi/sith for every civ
+# key: jedi/sith unit id; value: switch unit id
+MONK_GROUP_ASSOCS = {
+    52: 15,
+    180: 151,
+    183: 152,
+    204: 154,
+    232: 157,
+    239: 178,
+    647: 648,
+    652: 649,
+}
+
 
 # key: head unit id; value: (nyan object name, filename prefix)
 BUILDING_LINE_LOOKUPS = {
@@ -72,7 +115,7 @@ BUILDING_LINE_LOOKUPS = {
     104: ("Temple", "temple"),
     109: ("CommandCenter", "command_center"),
     117: ("Wall", "wall"),
-    199: ("FishingTrap", "fishing_trap"),
+    199: ("AquaHarvester", "aqua_harvester"),
     209: ("ResearchCenter", "research_center"),
     236: ("AntiAirTurret", "anti_air_turret"),
     276: ("Monument", "monument"),
