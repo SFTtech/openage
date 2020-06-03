@@ -4,8 +4,12 @@
 Convert API-like objects to nyan objects. Subroutine of the
 main SWGB processor. Reuses functionality from the AoC subprocessor.
 """
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
+from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubprocessor
+from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
+from openage.convert.processor.swgbcc.ability_subprocessor import SWGBAbilitySubprocessor
 from openage.convert.service import internal_name_lookups
 
 
@@ -97,7 +101,7 @@ class SWGBCCNyanSubprocessor:
                 cls._tech_group_to_tech(tech_group)
 
         for terrain_group in full_data_set.terrain_groups.values():
-            cls._terrain_group_to_terrain(terrain_group)
+            AoCNyanSubprocessor._terrain_group_to_terrain(terrain_group)
 
         for civ_group in full_data_set.civ_groups.values():
             cls._civ_group_to_civ(civ_group)
@@ -160,17 +164,17 @@ class SWGBCCNyanSubprocessor:
         # abilities_set.append(AoCAbilitySubprocessor.death_ability(unit_line))
         # abilities_set.append(AoCAbilitySubprocessor.delete_ability(unit_line))
         # abilities_set.append(AoCAbilitySubprocessor.despawn_ability(unit_line))
-        # abilities_set.append(AoCAbilitySubprocessor.idle_ability(unit_line))
-        # abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(unit_line))
-        # abilities_set.append(AoCAbilitySubprocessor.live_ability(unit_line))
-        # abilities_set.append(AoCAbilitySubprocessor.los_ability(unit_line))
-        # abilities_set.append(AoCAbilitySubprocessor.move_ability(unit_line))
-        # abilities_set.append(AoCAbilitySubprocessor.named_ability(unit_line))
-        # abilities_set.append(AoCAbilitySubprocessor.resistance_ability(unit_line))
-        # abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(unit_line))
+        abilities_set.append(SWGBAbilitySubprocessor.idle_ability(unit_line))
+        abilities_set.append(SWGBAbilitySubprocessor.hitbox_ability(unit_line))
+        abilities_set.append(SWGBAbilitySubprocessor.live_ability(unit_line))
+        abilities_set.append(SWGBAbilitySubprocessor.los_ability(unit_line))
+        abilities_set.append(SWGBAbilitySubprocessor.move_ability(unit_line))
+        abilities_set.append(SWGBAbilitySubprocessor.named_ability(unit_line))
+        abilities_set.append(AoCAbilitySubprocessor.resistance_ability(unit_line))
+        abilities_set.extend(SWGBAbilitySubprocessor.selectable_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.stop_ability(unit_line))
-        # abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(unit_line))
-        # abilities_set.append(AoCAbilitySubprocessor.turn_ability(unit_line))
+        abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(unit_line))
+        abilities_set.append(SWGBAbilitySubprocessor.turn_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(unit_line))
 
         # Creation
@@ -179,9 +183,9 @@ class SWGBCCNyanSubprocessor:
             pass
 
         # Config
-        # ability = AoCAbilitySubprocessor.use_contingent_ability(unit_line)
-        # if ability:
-        #     abilities_set.append(ability)
+        ability = AoCAbilitySubprocessor.use_contingent_ability(unit_line)
+        if ability:
+            abilities_set.append(ability)
 
         # if unit_line.get_head_unit_id() in (125, 692):
             # Healing/Recharging attribute points (monks, berserks)
@@ -226,8 +230,8 @@ class SWGBCCNyanSubprocessor:
 #===============================================================================
 
         # Formation/Stance
-        # if not isinstance(unit_line, GenieVillagerGroup):
-            # abilities_set.append(AoCAbilitySubprocessor.formation_ability(unit_line))
+        if not isinstance(unit_line, GenieVillagerGroup):
+            abilities_set.append(AoCAbilitySubprocessor.formation_ability(unit_line))
             # abilities_set.append(AoCAbilitySubprocessor.game_entity_stance_ability(unit_line))
 
         # Storage abilities
@@ -266,15 +270,15 @@ class SWGBCCNyanSubprocessor:
             # Farm restocking
             # abilities_set.append(AoCAbilitySubprocessor.restock_ability(unit_line, 50))
 
-        # if unit_line.is_harvestable():
-            # abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(unit_line))
+        if unit_line.is_harvestable():
+            abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(unit_line))
 
         # if unit_type == 70 and unit_line.get_class_id() not in (9, 10, 58):
             # Excludes trebuchets and animals
             # abilities_set.append(AoCAbilitySubprocessor.herd_ability(unit_line))
 
-        # if unit_line.get_class_id() == 58:
-            # abilities_set.append(AoCAbilitySubprocessor.herdable_ability(unit_line))
+        if unit_line.has_command(107):
+            abilities_set.append(AoCAbilitySubprocessor.herdable_ability(unit_line))
 
         # Trade abilities
         # if unit_line.has_command(111):
@@ -287,7 +291,7 @@ class SWGBCCNyanSubprocessor:
                                       "engine.aux.game_entity.GameEntity")
 
         # =======================================================================
-        # Modifiers
+        # TODO: Modifiers
         # =======================================================================
         modifiers_set = []
 
@@ -326,7 +330,91 @@ class SWGBCCNyanSubprocessor:
         :param ambient_group: Unit line that gets converted to a game entity.
         :type ambient_group: ..dataformat.converter_object.ConverterObjectGroup
         """
-        # TODO: Implement
+        ambient_unit = ambient_group.get_head_unit()
+        ambient_id = ambient_group.get_head_unit_id()
+
+        dataset = ambient_group.data
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        class_lookup_dict = internal_name_lookups.get_class_lookups(dataset.game_version)
+
+        # Start with the generic GameEntity
+        game_entity_name = name_lookup_dict[ambient_id][0]
+        obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[ambient_id][1])
+        raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(name_lookup_dict[ambient_id][1])
+        ambient_group.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # Game Entity Types
+        # =======================================================================
+        # we give an ambient the types
+        #    - aux.game_entity_type.types.Ambient
+        # =======================================================================
+        # Create or use existing auxiliary types
+        types_set = []
+
+        type_obj = dataset.pregen_nyan_objects["aux.game_entity_type.types.Ambient"].get_nyan_object()
+        types_set.append(type_obj)
+
+        unit_class = ambient_unit.get_member("unit_class").get_value()
+        class_name = class_lookup_dict[unit_class]
+        class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
+        type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
+        types_set.append(type_obj)
+
+        raw_api_object.add_raw_member("types", types_set, "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # Abilities
+        # =======================================================================
+        abilities_set = []
+
+        interaction_mode = ambient_unit.get_member("interaction_mode").get_value()
+
+        if interaction_mode >= 0:
+            # abilities_set.append(AoCAbilitySubprocessor.death_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.idle_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.live_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.named_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.resistance_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.visibility_ability(ambient_group))
+
+        if interaction_mode >= 2:
+            abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(ambient_group))
+
+            if ambient_group.is_passable():
+                abilities_set.append(AoCAbilitySubprocessor.passable_ability(ambient_group))
+
+        # if ambient_group.is_harvestable():
+            # abilities_set.append(SWGBAbilitySubprocessor.harvestable_ability(ambient_group))
+
+        # =======================================================================
+        # Abilities
+        # =======================================================================
+        raw_api_object.add_raw_member("abilities", abilities_set,
+                                      "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # Modifiers
+        # =======================================================================
+        modifiers_set = []
+
+        raw_api_object.add_raw_member("modifiers", modifiers_set,
+                                      "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # TODO: Variants
+        # =======================================================================
+        variants_set = []
+
+        raw_api_object.add_raw_member("variants", variants_set,
+                                      "engine.aux.game_entity.GameEntity")
 
     @staticmethod
     def _variant_group_to_game_entity(variant_group):
@@ -347,15 +435,7 @@ class SWGBCCNyanSubprocessor:
         :type tech_group: ..dataformat.converter_object.ConverterObjectGroup
         """
         # TODO: Implement
-    @staticmethod
-    def _terrain_group_to_terrain(terrain_group):
-        """
-        Creates raw API objects for a terrain group.
 
-        :param terrain_group: Terrain group that gets converted to a tech.
-        :type terrain_group: ..dataformat.converter_object.ConverterObjectGroup
-        """
-        # TODO: Implement
     @staticmethod
     def _civ_group_to_civ(civ_group):
         """
@@ -364,7 +444,116 @@ class SWGBCCNyanSubprocessor:
         :param civ_group: Terrain group that gets converted to a tech.
         :type civ_group: ..dataformat.converter_object.ConverterObjectGroup
         """
-        # TODO: Implement
+        civ_id = civ_group.get_id()
+
+        dataset = civ_group.data
+
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+
+        # Start with the Tech object
+        tech_name = civ_lookup_dict[civ_id][0]
+        raw_api_object = RawAPIObject(tech_name, tech_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.civilization.Civilization")
+
+        obj_location = "data/civ/%s/" % (civ_lookup_dict[civ_id][1])
+
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(civ_lookup_dict[civ_id][1])
+        civ_group.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # Name
+        # =======================================================================
+        name_ref = "%s.%sName" % (tech_name, tech_name)
+        name_raw_api_object = RawAPIObject(name_ref,
+                                           "%sName"  % (tech_name),
+                                           dataset.nyan_api_objects)
+        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_location = ForwardRef(civ_group, tech_name)
+        name_raw_api_object.set_location(name_location)
+
+        name_raw_api_object.add_raw_member("translations",
+                                           [],
+                                           "engine.aux.translated.type.TranslatedString")
+
+        name_forward_ref = ForwardRef(civ_group, name_ref)
+        raw_api_object.add_raw_member("name", name_forward_ref, "engine.aux.civilization.Civilization")
+        civ_group.add_raw_api_object(name_raw_api_object)
+
+        # =======================================================================
+        # Description
+        # =======================================================================
+        description_ref = "%s.%sDescription" % (tech_name, tech_name)
+        description_raw_api_object = RawAPIObject(description_ref,
+                                                  "%sDescription"  % (tech_name),
+                                                  dataset.nyan_api_objects)
+        description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        description_location = ForwardRef(civ_group, tech_name)
+        description_raw_api_object.set_location(description_location)
+
+        description_raw_api_object.add_raw_member("translations",
+                                                  [],
+                                                  "engine.aux.translated.type.TranslatedMarkupFile")
+
+        description_forward_ref = ForwardRef(civ_group, description_ref)
+        raw_api_object.add_raw_member("description",
+                                      description_forward_ref,
+                                      "engine.aux.civilization.Civilization")
+        civ_group.add_raw_api_object(description_raw_api_object)
+
+        # =======================================================================
+        # Long description
+        # =======================================================================
+        long_description_ref = "%s.%sLongDescription" % (tech_name, tech_name)
+        long_description_raw_api_object = RawAPIObject(long_description_ref,
+                                                       "%sLongDescription"  % (tech_name),
+                                                       dataset.nyan_api_objects)
+        long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        long_description_location = ForwardRef(civ_group, tech_name)
+        long_description_raw_api_object.set_location(long_description_location)
+
+        long_description_raw_api_object.add_raw_member("translations",
+                                                       [],
+                                                       "engine.aux.translated.type.TranslatedMarkupFile")
+
+        long_description_forward_ref = ForwardRef(civ_group, long_description_ref)
+        raw_api_object.add_raw_member("long_description",
+                                      long_description_forward_ref,
+                                      "engine.aux.civilization.Civilization")
+        civ_group.add_raw_api_object(long_description_raw_api_object)
+
+        # =======================================================================
+        # TODO: Leader names
+        # =======================================================================
+        raw_api_object.add_raw_member("leader_names",
+                                      [],
+                                      "engine.aux.civilization.Civilization")
+
+        # =======================================================================
+        # TODO: Modifiers
+        # =======================================================================
+        modifiers = []
+        raw_api_object.add_raw_member("modifiers",
+                                      modifiers,
+                                      "engine.aux.civilization.Civilization")
+
+        # =======================================================================
+        # TODO: Starting resources
+        # =======================================================================
+        resource_amounts = []
+        raw_api_object.add_raw_member("starting_resources",
+                                      resource_amounts,
+                                      "engine.aux.civilization.Civilization")
+
+        # =======================================================================
+        # TODO: Civ setup
+        # =======================================================================
+        civ_setup = []
+        raw_api_object.add_raw_member("civ_setup",
+                                      civ_setup,
+                                      "engine.aux.civilization.Civilization")
+
     @staticmethod
     def _projectiles_from_line(line):
         """

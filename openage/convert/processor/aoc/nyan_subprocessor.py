@@ -940,6 +940,10 @@ class AoCNyanSubprocessor:
         ambience = []
         for ambient_index in range(ambients_count):
             ambient_id = terrain["terrain_unit_id"][ambient_index].get_value()
+
+            if ambient_id == -1:
+                continue
+
             ambient_line = dataset.unit_ref[ambient_id]
             ambient_name = name_lookup_dict[ambient_line.get_head_unit_id()][0]
 

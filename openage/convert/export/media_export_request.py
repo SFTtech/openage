@@ -116,7 +116,7 @@ class GraphicsMediaExportRequest(MediaExportRequest):
 
         palette_subdir = MediaType.PALETTES.value
 
-        if game_version[0] in (GameEdition.ROR, GameEdition.AOC):
+        if game_version[0] in (GameEdition.ROR, GameEdition.AOC, GameEdition.SWGB):
             palette_name = "50500.bina"
 
         palette_path = sourcedir[palette_subdir, palette_name]
@@ -154,7 +154,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
 
         palette_subdir = MediaType.PALETTES.value
 
-        if game_version[0] in (GameEdition.ROR, GameEdition.AOC):
+        if game_version[0] in (GameEdition.ROR, GameEdition.AOC, GameEdition.SWGB):
             palette_name = "50500.bina"
 
         palette_path = sourcedir[palette_subdir, palette_name]
