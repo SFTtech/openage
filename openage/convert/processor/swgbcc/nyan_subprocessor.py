@@ -13,6 +13,7 @@ from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubproc
 from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
 from openage.convert.processor.swgbcc.ability_subprocessor import SWGBCCAbilitySubprocessor
 from openage.convert.processor.swgbcc.auxiliary_subprocessor import SWGBCCAuxiliarySubprocessor
+from openage.convert.processor.swgbcc.civ_subprocessor import SWGBCCCivSubprocessor
 from openage.convert.processor.swgbcc.tech_subprocessor import SWGBCCTechSubprocessor
 from openage.convert.service import internal_name_lookups
 
@@ -665,7 +666,7 @@ class SWGBCCNyanSubprocessor:
         tech_group.add_raw_api_object(long_description_raw_api_object)
 
         # =======================================================================
-        # TODO: Updates
+        # Updates
         # =======================================================================
         patches = []
         patches.extend(SWGBCCTechSubprocessor.get_patches(tech_group))
@@ -774,25 +775,25 @@ class SWGBCCNyanSubprocessor:
                                       "engine.aux.civilization.Civilization")
 
         # =======================================================================
-        # TODO: Modifiers
+        # Modifiers
         # =======================================================================
-        modifiers = []
+        modifiers = SWGBCCCivSubprocessor.get_modifiers(civ_group)
         raw_api_object.add_raw_member("modifiers",
                                       modifiers,
                                       "engine.aux.civilization.Civilization")
 
         # =======================================================================
-        # TODO: Starting resources
+        # Starting resources
         # =======================================================================
-        resource_amounts = []
+        resource_amounts = SWGBCCCivSubprocessor.get_starting_resources(civ_group)
         raw_api_object.add_raw_member("starting_resources",
                                       resource_amounts,
                                       "engine.aux.civilization.Civilization")
 
         # =======================================================================
-        # TODO: Civ setup
+        # Civ setup
         # =======================================================================
-        civ_setup = []
+        civ_setup = SWGBCCCivSubprocessor.get_civ_setup(civ_group)
         raw_api_object.add_raw_member("civ_setup",
                                       civ_setup,
                                       "engine.aux.civilization.Civilization")

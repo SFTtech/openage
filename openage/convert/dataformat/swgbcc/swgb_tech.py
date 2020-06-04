@@ -47,7 +47,7 @@ class SWGBUnitLineUpgrade(UnitLineUpgrade):
 
         :returns: True if the civilization id is greater than zero.
         """
-        return len(self.civ_unlocks) > 0
+        return len(self.civ_unlocks) == 0
 
 
 class SWGBUnitUnlock(UnitUnlock):
@@ -87,4 +87,4 @@ class SWGBUnitUnlock(UnitUnlock):
 
         :returns: True if the civilization id is greater than zero.
         """
-        return len(self.civ_unlocks) > 0
+        return len(self.civ_unlocks) == 0
