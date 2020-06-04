@@ -37,6 +37,7 @@ UNIT_LINE_LOOKUPS = {
     762: ("Bomber", "bomber"),
     773: ("Fighter", "fighter"),
     815: ("Cruiser", "cruiser"),
+    822: ("Falumpaset", "faumpaset"),
     833: ("Bantha", "bantha"),
     838: ("TransportShip", "transport_ship"),
     860: ("Nexu", "nexu"),
@@ -54,7 +55,9 @@ UNIT_LINE_LOOKUPS = {
     1034: ("Probot", "probot"),
     1036: ("AirTransport", "air_transport"),
     1203: ("Mynock", "mynock"),
-    1363: ("kaadu", "kaadu"),
+    1249: ("Dewback", "dewback"),
+    1363: ("Kaadu", "kaadu"),
+    1364: ("Ronto", "ronto"),
     1365: ("Eopie", "eopie"),
     1366: ("Tauntaun", "tauntaun"),
     1367: ("CuPa", "cu_pa"),
@@ -273,6 +276,7 @@ TECH_GROUP_LOOKUPS = {
     193: ("GalacticTradeComission", "galactic_trade_comission"),
     194: ("AlteredBargains", "altered_bargains"),
     195: ("MarketControl", "market_control"),
+    196: ("DroidAssistents", "droid_assistents"),
     197: ("MacroBinoculars", "macro_binoculars"),
     198: ("LighterArmor", "lighter_armor"),
     199: ("PortableScanner", "portable_scanner"),
@@ -302,7 +306,8 @@ TECH_GROUP_LOOKUPS = {
     582: ("KaminoanRefit", "kaminoan_refit"),
     583: ("AirCruiserBoost", "air_cruiser_boost"),
 
-    # Unit upgrades
+    # Unit/Building upgrades
+    113: ("HeavyDestroyerDroid", "heavy_destroyer_droid"),
     222: ("ForceKnight", "force_knight"),
     236: ("AdvancedMountedTrooper", "advanced_mounted_trooper"),
     241: ("HeavyMountedTrooper", "heavy_mounted_trooper"),
@@ -325,13 +330,25 @@ TECH_GROUP_LOOKUPS = {
     426: ("HeavyDestroyer", "heavy_destroyer"),
     431: ("HeavyAntiAirDestroyer", "heavy_anti_air_destroyer"),
     441: ("Frigate", "frigate"),
+    447: ("AdvancedAntiAirTurret", "advanced_anti_air_turret"),
+    472: ("DarkTrooperPhase2", "dark_trooper_phase2"),
+    474: ("HeavyFambaaShieldGenerator", "heavy_fambaa_shield_generator"),
+    475: ("EliteRoyalCrusader", "elite_royal_crusader"),
+    476: ("ArmoredAirspeeder", "armored_airspeeder"),
+    477: ("AdvancedBerserker", "advanced_berserker"),
+    480: ("MediumTurret", "medium_turret"),
+    481: ("AdvancedTurret", "advanced_turret"),
+    483: ("HeavyWall", "heavy_wall"),
+    484: ("ShieldWall", "shield_wall"),
+    533: ("AdvancedJediStarfighter", "advanced_jedi_starfighter"),
+    534: ("EliteGeonosianWarrior", "elite_geonosian_warrior"),
 }
 
 # key: tech id; value: (tech ids of civ line unlocks/upgrades)
 CIV_TECH_ASSOCS = {
     222: (93, 222, 223, 224, 225, 226, 544, 545),
     236: (86, 236, 237, 238, 239, 240, 556, 557),
-    241: (5, 241, 242, 243, 244, 245, 558, 559),
+    241: (55, 241, 242, 243, 244, 245, 558, 559),
     246: (45, 246, 247, 248, 249, 250, 560, 561),
     251: (44, 251, 252, 253, 254, 255, 562, 563),
     256: (90, 256, 257, 258, 259, 260, 564, 565),

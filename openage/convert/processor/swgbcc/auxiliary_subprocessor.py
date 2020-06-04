@@ -9,11 +9,12 @@ from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup,\
     GenieBuildingLineGroup, GenieUnitLineGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
+from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
 from openage.convert.service import internal_name_lookups
 from openage.nyan.nyan_structs import MemberSpecialValue
 
 
-class AoCAuxiliarySubprocessor:
+class SWGBCCAuxiliarySubprocessor:
 
     @staticmethod
     def get_creatable_game_entity(line):
@@ -124,16 +125,16 @@ class AoCAuxiliarySubprocessor:
                 resource_name = "Food"
 
             elif resource_id == 1:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Wood"].get_nyan_object()
-                resource_name = "Wood"
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Carbon"].get_nyan_object()
+                resource_name = "Carbon"
 
             elif resource_id == 2:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Stone"].get_nyan_object()
-                resource_name = "Stone"
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Ore"].get_nyan_object()
+                resource_name = "Ore"
 
             elif resource_id == 3:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
-                resource_name = "Gold"
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Nova"].get_nyan_object()
+                resource_name = "Nova"
 
             else:
                 # Other resource ids are handled differently
@@ -224,23 +225,25 @@ class AoCAuxiliarySubprocessor:
         # Search for the sound if it exists
         creation_sounds = []
         if creation_sound_id > -1:
-            # Creation sound should be civ agnostic
             genie_sound = dataset.genie_sounds[creation_sound_id]
-            file_id = genie_sound.get_sounds(civ_id=-1)[0]
+            file_ids = genie_sound.get_sounds(civ_id=-1)
 
-            if file_id in dataset.combined_sounds:
-                creation_sound = dataset.combined_sounds[file_id]
-                creation_sound.add_reference(sound_raw_api_object)
+            if file_ids:
+                file_id = genie_sound.get_sounds(civ_id=-1)[0]
 
-            else:
-                creation_sound = CombinedSound(creation_sound_id,
-                                               file_id,
-                                               "creation_sound_%s" % (creation_sound_id),
-                                               dataset)
-                dataset.combined_sounds.update({file_id: creation_sound})
-                creation_sound.add_reference(sound_raw_api_object)
+                if file_id in dataset.combined_sounds:
+                    creation_sound = dataset.combined_sounds[file_id]
+                    creation_sound.add_reference(sound_raw_api_object)
 
-            creation_sounds.append(creation_sound)
+                else:
+                    creation_sound = CombinedSound(creation_sound_id,
+                                                   file_id,
+                                                   "creation_sound_%s" % (creation_sound_id),
+                                                   dataset)
+                    dataset.combined_sounds.update({file_id: creation_sound})
+                    creation_sound.add_reference(sound_raw_api_object)
+
+                creation_sounds.append(creation_sound)
 
         sound_raw_api_object.add_raw_member("play_delay",
                                             0,
@@ -448,16 +451,16 @@ class AoCAuxiliarySubprocessor:
                 resource_name = "Food"
 
             elif resource_id == 1:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Wood"].get_nyan_object()
-                resource_name = "Wood"
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Carbon"].get_nyan_object()
+                resource_name = "Carbon"
 
             elif resource_id == 2:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Stone"].get_nyan_object()
-                resource_name = "Stone"
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Ore"].get_nyan_object()
+                resource_name = "Ore"
 
             elif resource_id == 3:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
-                resource_name = "Gold"
+                resource = dataset.pregen_nyan_objects["aux.resource.types.Nova"].get_nyan_object()
+                resource_name = "Nova"
 
             else:
                 # Other resource ids are handled differently
@@ -541,195 +544,3 @@ class AoCAuxiliarySubprocessor:
 
         tech_group.add_raw_api_object(researchable_raw_api_object)
         tech_group.add_raw_api_object(cost_raw_api_object)
-
-    @staticmethod
-    def _get_condition(converter_object, obj_ref, tech_id, top_level=False):
-        """
-        Creates the condition for a creatable or researchable from tech
-        by recursively searching the required techs.
-        """
-        dataset = converter_object.data
-        tech = dataset.genie_techs[tech_id]
-
-        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
-        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
-
-        if not top_level and\
-            (tech_id in dataset.initiated_techs.keys() or
-             (tech_id in dataset.tech_groups.keys() and
-              dataset.tech_groups[tech_id].is_researchable())):
-            # The tech condition is a building or a researchable tech
-            # and thus a literal.
-            if tech_id in dataset.initiated_techs.keys():
-                initiated_tech = dataset.initiated_techs[tech_id]
-                building_id = initiated_tech.get_building_id()
-                building_name = name_lookup_dict[building_id][0]
-                literal_name = "%sBuilt" % (building_name)
-                literal_parent = "engine.aux.logic.literal.type.GameEntityProgress"
-
-            elif dataset.tech_groups[tech_id].is_researchable():
-                tech_name = tech_lookup_dict[tech_id][0]
-                literal_name = "%sResearched" % (tech_name)
-                literal_parent = "engine.aux.logic.literal.type.TechResearched"
-
-            else:
-                raise Exception("Required tech id %s is neither intiated nor researchable"
-                                % (tech_id))
-
-            literal_ref = "%s.%s" % (obj_ref,
-                                     literal_name)
-            literal_raw_api_object = RawAPIObject(literal_ref,
-                                                  literal_name,
-                                                  dataset.nyan_api_objects)
-            literal_raw_api_object.add_raw_parent(literal_parent)
-            literal_location = ForwardRef(converter_object, obj_ref)
-            literal_raw_api_object.set_location(literal_location)
-
-            if tech_id in dataset.initiated_techs.keys():
-                building_line = dataset.unit_ref[building_id]
-                building_forward_ref = ForwardRef(building_line, building_name)
-
-                # Building
-                literal_raw_api_object.add_raw_member("game_entity",
-                                                      building_forward_ref,
-                                                      literal_parent)
-
-                # Progress
-                # =======================================================================
-                progress_ref = "%s.ProgressStatus" % (literal_ref)
-                progress_raw_api_object = RawAPIObject(progress_ref,
-                                                       "ProgressStatus",
-                                                       dataset.nyan_api_objects)
-                progress_raw_api_object.add_raw_parent("engine.aux.progress_status.ProgressStatus")
-                progress_location = ForwardRef(converter_object, literal_ref)
-                progress_raw_api_object.set_location(progress_location)
-
-                # Type
-                progress_type = dataset.nyan_api_objects["engine.aux.progress_type.type.Construct"]
-                progress_raw_api_object.add_raw_member("progress_type",
-                                                       progress_type,
-                                                       "engine.aux.progress_status.ProgressStatus")
-
-                # Progress (building must be 100% constructed)
-                progress_raw_api_object.add_raw_member("progress",
-                                                       100,
-                                                       "engine.aux.progress_status.ProgressStatus")
-
-                converter_object.add_raw_api_object(progress_raw_api_object)
-                # =======================================================================
-                progress_forward_ref = ForwardRef(converter_object, progress_ref)
-                literal_raw_api_object.add_raw_member("progress_status",
-                                                      progress_forward_ref,
-                                                      literal_parent)
-
-            elif dataset.tech_groups[tech_id].is_researchable():
-                tech_group = dataset.tech_groups[tech_id]
-                tech_forward_ref = ForwardRef(tech_group, tech_name)
-                literal_raw_api_object.add_raw_member("tech",
-                                                      tech_forward_ref,
-                                                      literal_parent)
-
-            # LiteralScope
-            # ==========================================================================
-            scope_ref = "%s.LiteralScope" % (literal_ref)
-            scope_raw_api_object = RawAPIObject(scope_ref,
-                                                "LiteralScope",
-                                                dataset.nyan_api_objects)
-            scope_raw_api_object.add_raw_parent("engine.aux.logic.literal_scope.type.Any")
-            scope_location = ForwardRef(converter_object, literal_ref)
-            scope_raw_api_object.set_location(scope_location)
-
-            scope_diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
-            scope_raw_api_object.add_raw_member("diplomatic_stances",
-                                                scope_diplomatic_stances,
-                                                "engine.aux.logic.literal_scope.LiteralScope")
-
-            converter_object.add_raw_api_object(scope_raw_api_object)
-            # ==========================================================================
-            scope_forward_ref = ForwardRef(converter_object, scope_ref)
-            literal_raw_api_object.add_raw_member("scope",
-                                                  scope_forward_ref,
-                                                  "engine.aux.logic.literal.Literal")
-
-            literal_raw_api_object.add_raw_member("only_once",
-                                                  True,
-                                                  "engine.aux.logic.LogicElement")
-
-            converter_object.add_raw_api_object(literal_raw_api_object)
-            literal_forward_ref = ForwardRef(converter_object, literal_ref)
-
-            return [literal_forward_ref]
-
-        else:
-            # The tech condition has other requirements that need to be resolved
-
-            # Find required techs for the current tech
-            assoc_tech_id_members = []
-            assoc_tech_id_members.extend(tech["required_techs"].get_value())
-            required_tech_count = tech["required_tech_count"].get_value()
-
-            # Remove tech ids that are invalid or those we don't use
-            relevant_ids = []
-            for tech_id_member in assoc_tech_id_members:
-                required_tech_id = tech_id_member.get_value()
-                if required_tech_id == -1:
-                    continue
-
-                elif required_tech_id == 104:
-                    # Skip Dark Age tech
-                    required_tech_count -= 1
-                    continue
-
-                elif required_tech_id in dataset.civ_boni.keys():
-                    continue
-
-                relevant_ids.append(required_tech_id)
-
-            if len(relevant_ids) == 0:
-                return []
-
-            elif len(relevant_ids) == 1:
-                # If there's only one required tech we don't need a gate
-                # we can just return the logic element of the only required tech
-                required_tech_id = relevant_ids[0]
-                return AoCAuxiliarySubprocessor._get_condition(converter_object, obj_ref, required_tech_id)
-
-            gate_ref = "%s.UnlockCondition" % (obj_ref)
-            gate_raw_api_object = RawAPIObject(gate_ref,
-                                               "UnlockCondition",
-                                               dataset.nyan_api_objects)
-
-            if required_tech_count == len(relevant_ids):
-                gate_raw_api_object.add_raw_parent("engine.aux.logic.gate.type.AND")
-                gate_location = ForwardRef(converter_object, obj_ref)
-
-            else:
-                gate_raw_api_object.add_raw_parent("engine.aux.logic.gate.type.SUBSETMIN")
-                gate_location = ForwardRef(converter_object, obj_ref)
-
-                gate_raw_api_object.add_raw_member("size",
-                                                   required_tech_count,
-                                                   "engine.aux.logic.gate.type.SUBSETMIN")
-
-            gate_raw_api_object.set_location(gate_location)
-
-            # Once unlocked, a creatable/researchable is unlocked forever
-            gate_raw_api_object.add_raw_member("only_once",
-                                               True,
-                                               "engine.aux.logic.LogicElement")
-
-            # Get requirements from subtech recursively
-            inputs = []
-            for required_tech_id in relevant_ids:
-                required = AoCAuxiliarySubprocessor._get_condition(converter_object,
-                                                                   gate_ref,
-                                                                   required_tech_id)
-                inputs.extend(required)
-
-            gate_raw_api_object.add_raw_member("inputs",
-                                               inputs,
-                                               "engine.aux.logic.gate.LogicGate")
-
-            converter_object.add_raw_api_object(gate_raw_api_object)
-            gate_forward_ref = ForwardRef(converter_object, gate_ref)
-            return [gate_forward_ref]

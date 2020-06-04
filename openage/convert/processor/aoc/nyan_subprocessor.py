@@ -628,7 +628,9 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(variant_group))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(variant_group))
 
-        if variant_main_unit.has_member("speed") and variant_main_unit["speed"].get_value() > 0:
+        if variant_main_unit.has_member("speed") and variant_main_unit["speed"].get_value() > 0.0001\
+                and variant_main_unit.has_member("command_sound_id"):
+            # TODO: Let variant groups be converted without having command_sound_id member
             abilities_set.append(AoCAbilitySubprocessor.move_ability(variant_group))
 
         if variant_group.is_harvestable():
@@ -695,7 +697,9 @@ class AoCNyanSubprocessor:
                                                                        variant_ref,
                                                                        diff_variant))
 
-            if variant_main_unit.has_member("speed") and variant_main_unit["speed"].get_value() > 0:
+            if variant_main_unit.has_member("speed") and variant_main_unit["speed"].get_value() > 0.0001\
+                    and variant_main_unit.has_member("command_sound_id"):
+                # TODO: Let variant groups be converted without having command_sound_id member:
                 patches.extend(AoCUpgradeAbilitySubprocessor.move_ability(variant_group,
                                                                           variant_group,
                                                                           variant_ref,

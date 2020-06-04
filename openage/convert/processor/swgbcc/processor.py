@@ -16,13 +16,13 @@ from openage.convert.dataformat.swgbcc.internal_nyan_names import MONK_GROUP_ASS
 from openage.convert.dataformat.swgbcc.swgb_tech import SWGBUnitUnlock,\
     SWGBUnitLineUpgrade
 from openage.convert.dataformat.swgbcc.swgb_unit import SWGBUnitTransformGroup,\
-    SWGBMonkGroup, SWGBUnitLineGroup
+    SWGBMonkGroup, SWGBUnitLineGroup, SWGBStackBuildingGroup
 from openage.convert.nyan.api_loader import load_api
 from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
 from openage.convert.processor.aoc.processor import AoCProcessor
 from openage.convert.processor.swgbcc.modpack_subprocessor import SWGBCCModpackSubprocessor
 from openage.convert.processor.swgbcc.nyan_subprocessor import SWGBCCNyanSubprocessor
-from openage.convert.processor.swgbcc.pregen_subprocessor import SWGBPregenSubprocessor
+from openage.convert.processor.swgbcc.pregen_subprocessor import SWGBCCPregenSubprocessor
 
 from ....log import info
 
@@ -131,7 +131,7 @@ class SWGBCCProcessor:
 
         info("Generating auxiliary objects...")
 
-        SWGBPregenSubprocessor.generate(full_data_set)
+        SWGBCCPregenSubprocessor.generate(full_data_set)
 
         return full_data_set
 
@@ -285,8 +285,8 @@ class SWGBCCProcessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
         # Wildlife
-        extra_units = (48, 594, 833, 1203, 1363, 1365, 1366,
-                       1367, 1469, 1471, 1473, 1475)
+        extra_units = (48, 594, 822, 833, 1203, 1249, 1363, 1364,
+                       1365, 1366, 1367, 1469, 1471, 1473, 1475)
 
         for unit_id in extra_units:
             unit_line = SWGBUnitLineGroup(unit_id, full_data_set)
@@ -384,7 +384,8 @@ class SWGBCCProcessor:
 
             else:
                 if stack_building:
-                    building_line = GenieStackBuildingGroup(line_id, line_id, full_data_set)
+                    head_unit_id = building.get_member("head_unit_id").get_value()
+                    building_line = SWGBStackBuildingGroup(line_id, head_unit_id, full_data_set)
 
                 else:
                     building_line = GenieBuildingLineGroup(line_id, full_data_set)

@@ -5141,14 +5141,18 @@ class AoCAbilitySubprocessor:
                                                       "engine.aux.state_machine.StateChanger")
 
             # Disabled abilities
-            disabled_forward_refs = [
-                ForwardRef(line,
-                           "%s.Convert"
-                           % (game_entity_name)),
-                ForwardRef(line,
-                           "%s.Heal"
-                           % (game_entity_name)),
-            ]
+            disabled_forward_refs = []
+
+            if line.has_command(104):
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Convert"
+                                                        % (game_entity_name)))
+
+            if line.has_command(105):
+                disabled_forward_refs.append(ForwardRef(line,
+                                                        "%s.Heal"
+                                                        % (game_entity_name)))
+
             carry_state_raw_api_object.add_raw_member("disable_abilities",
                                                       disabled_forward_refs,
                                                       "engine.aux.state_machine.StateChanger")

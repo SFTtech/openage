@@ -5,7 +5,7 @@ Converter objects for SWGB. Reimplements the ConverterObjectGroup
 instances from AoC.
 """
 from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
-    GenieUnitTransformGroup, GenieMonkGroup
+    GenieUnitTransformGroup, GenieMonkGroup, GenieStackBuildingGroup
 
 
 class SWGBUnitLineGroup(GenieUnitLineGroup):
@@ -66,10 +66,35 @@ class SWGBUnitLineGroup(GenieUnitLineGroup):
         :returns: True if the civ id is not Gaia's and no alternative lines
                   for this unit line exist.
         """
-        return self.get_civ_id() != 0 and len(self.civ_lines) > 0
+        return (self.get_civ_id() != 0 and
+                len(self.civ_lines) == 0 and
+                self.get_enabling_research_id() > -1)
 
     def __repr__(self):
         return "SWGBUnitLineGroup<%s>" % (self.get_id())
+
+
+class SWGBStackBuildingGroup(GenieStackBuildingGroup):
+    """
+    Buildings that stack with other units and have annexes. These buildings
+    are replaced by their stack unit once built.
+
+    Examples: Gate, Command Center
+    """
+
+    def get_enabling_research_id(self):
+        """
+        Returns the enabling tech id of the unit
+        """
+        stack_unit = self.get_stack_unit()
+        stack_unit_id = stack_unit.get_member("id0").get_value()
+        stack_unit_connection = self.data.building_connections[stack_unit_id]
+        enabling_research_id = stack_unit_connection.get_member("enabling_research").get_value()
+
+        return enabling_research_id
+
+    def __repr__(self):
+        return "SWGBStackBuildingGroup<%s>" % (self.get_id())
 
 
 class SWGBUnitTransformGroup(GenieUnitTransformGroup):
@@ -131,6 +156,15 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
                   for this unit line exist.
         """
         return False
+
+    def get_enabling_research_id(self):
+        """
+        Returns the enabling tech id of the unit
+        """
+        head_unit_connection = self.data.unit_connections[self.get_transform_unit_id()]
+        enabling_research_id = head_unit_connection.get_member("enabling_research").get_value()
+
+        return enabling_research_id
 
     def __repr__(self):
         return "SWGBUnitTransformGroup<%s>" % (self.get_id())
