@@ -13,6 +13,7 @@ from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubproc
 from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
 from openage.convert.processor.swgbcc.ability_subprocessor import SWGBCCAbilitySubprocessor
 from openage.convert.processor.swgbcc.auxiliary_subprocessor import SWGBCCAuxiliarySubprocessor
+from openage.convert.processor.swgbcc.tech_subprocessor import SWGBCCTechSubprocessor
 from openage.convert.service import internal_name_lookups
 
 
@@ -189,8 +190,8 @@ class SWGBCCNyanSubprocessor:
         if ability:
             abilities_set.append(ability)
 
-        if unit_line.get_head_unit_id() in (115, 180):
-            # Healing/Recharging attribute points (jedi/sith)
+        if unit_line.get_head_unit_id() in (8, 115, 180):
+            # Healing/Recharging attribute points (jedi/sith/berserk)
             abilities_set.extend(SWGBCCAbilitySubprocessor.regenerate_attribute_ability(unit_line))
 
         # Applying effects and shooting projectiles
@@ -368,7 +369,7 @@ class SWGBCCNyanSubprocessor:
         # =======================================================================
         abilities_set = []
 
-        abilities_set.append(AoCAbilitySubprocessor.attribute_change_tracker_ability(building_line))
+        abilities_set.append(SWGBCCAbilitySubprocessor.attribute_change_tracker_ability(building_line))
         abilities_set.append(SWGBCCAbilitySubprocessor.death_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.delete_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.despawn_ability(building_line))
@@ -664,10 +665,10 @@ class SWGBCCNyanSubprocessor:
         tech_group.add_raw_api_object(long_description_raw_api_object)
 
         # =======================================================================
-        # Updates
+        # TODO: Updates
         # =======================================================================
         patches = []
-        # patches.extend(AoCTechSubprocessor.get_patches(tech_group))
+        patches.extend(SWGBCCTechSubprocessor.get_patches(tech_group))
         raw_api_object.add_raw_member("updates", patches, "engine.aux.tech.Tech")
 
         # =======================================================================

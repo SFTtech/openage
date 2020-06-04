@@ -8,7 +8,8 @@ For SWGB we use the functions of the AoCAbilitySubprocessor, but additionally
 create a diff for every civ line.
 """
 from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup
+from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup,\
+    GenieStackBuildingGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubprocessor
 from openage.convert.processor.aoc.effect_subprocessor import AoCEffectSubprocessor
@@ -278,6 +279,98 @@ class SWGBCCAbilitySubprocessor:
         ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
         # TODO: Implement diffing of civ lines
+
+        return ability_forward_ref
+
+    @staticmethod
+    def attribute_change_tracker_ability(line):
+        """
+        Adds the AttributeChangeTracker ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
+        """
+        if isinstance(line, GenieStackBuildingGroup):
+            current_unit = line.get_stack_unit()
+            current_unit_id = line.get_stack_unit_id()
+
+        else:
+            current_unit = line.get_head_unit()
+            current_unit_id = line.get_head_unit_id()
+
+        dataset = line.data
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        ability_ref = "%s.AttributeChangeTracker" % (game_entity_name)
+        ability_raw_api_object = RawAPIObject(ability_ref, "AttributeChangeTracker", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.AttributeChangeTracker")
+        ability_location = ForwardRef(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Attribute
+        attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
+        ability_raw_api_object.add_raw_member("attribute",
+                                              attribute,
+                                              "engine.ability.type.AttributeChangeTracker")
+
+        # Change progress
+        damage_graphics = current_unit.get_member("damage_graphics").get_value()
+        progress_forward_refs = []
+
+        # Damage graphics are ordered ascending, so we start from 0
+        interval_left_bound = 0
+        for damage_graphic_member in damage_graphics:
+            interval_right_bound = damage_graphic_member["damage_percent"].get_value()
+            progress_name = "%s.AttributeChangeTracker.ChangeProgress%s" % (game_entity_name,
+                                                                            interval_right_bound)
+            progress_raw_api_object = RawAPIObject(progress_name,
+                                                   "ChangeProgress%s" % (interval_right_bound),
+                                                   dataset.nyan_api_objects)
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.type.AttributeChangeProgress")
+            progress_location = ForwardRef(line, ability_ref)
+            progress_raw_api_object.set_location(progress_location)
+
+            # Interval
+            progress_raw_api_object.add_raw_member("left_boundary",
+                                                   interval_left_bound,
+                                                   "engine.aux.progress.Progress")
+            progress_raw_api_object.add_raw_member("right_boundary",
+                                                   interval_right_bound,
+                                                   "engine.aux.progress.Progress")
+
+            progress_animation_id = damage_graphic_member["graphic_id"].get_value()
+            if progress_animation_id > -1:
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimationOverlayProgress")
+
+                # Animation
+                animations_set = []
+                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
+                                                                                 progress_animation_id,
+                                                                                 progress_name,
+                                                                                 "Idle",
+                                                                                 "idle_damage_override_%s_"
+                                                                                 % (interval_right_bound))
+                animations_set.append(animation_forward_ref)
+                progress_raw_api_object.add_raw_member("overlays",
+                                                       animations_set,
+                                                       "engine.aux.progress.specialization.AnimationOverlayProgress")
+
+            progress_forward_refs.append(ForwardRef(line, progress_name))
+            line.add_raw_api_object(progress_raw_api_object)
+            interval_left_bound = interval_right_bound
+
+        ability_raw_api_object.add_raw_member("change_progress",
+                                              progress_forward_refs,
+                                              "engine.ability.type.AttributeChangeTracker")
+
+        line.add_raw_api_object(ability_raw_api_object)
+
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
         return ability_forward_ref
 
@@ -944,6 +1037,11 @@ class SWGBCCAbilitySubprocessor:
             attribute = dataset.pregen_nyan_objects["aux.attribute.types.Faith"].get_nyan_object()
             attribute_name = "Faith"
 
+        elif current_unit_id == 8:
+            # Berserk: regenerates Health
+            attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
+            attribute_name = "Health"
+
         else:
             return []
 
@@ -977,6 +1075,11 @@ class SWGBCCAbilitySubprocessor:
         if current_unit_id in (115, 180):
             # stored in civ resources
             attribute_rate = dataset.genie_civs[0]["resources"][35].get_value()
+
+        elif current_unit_id == 8:
+            # stored in civ resources
+            heal_timer = dataset.genie_civs[0]["resources"][96].get_value()
+            attribute_rate = heal_timer
 
         rate_raw_api_object.add_raw_member("rate",
                                            attribute_rate,

@@ -9,7 +9,7 @@ from openage.convert.dataformat.aoc.genie_tech import BuildingLineUpgrade,\
     AgeUpgrade, StatUpgrade, InitiatedTech, CivBonus
 from openage.convert.dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
     GenieVillagerGroup, GenieAmbientGroup, GenieVariantGroup,\
-    GenieStackBuildingGroup, GenieBuildingLineGroup, GenieGarrisonMode
+    GenieBuildingLineGroup, GenieGarrisonMode
 from openage.convert.dataformat.swgbcc.internal_nyan_names import MONK_GROUP_ASSOCS,\
     CIV_LINE_ASSOCS, AMBIENT_GROUP_LOOKUPS, VARIANT_GROUP_LOOKUPS,\
     CIV_TECH_ASSOCS

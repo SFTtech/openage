@@ -3,8 +3,11 @@
 """
 Creates upgrade patches for attribute modification effects in AoC.
 """
+from DistUpgrade.DistUpgradePatcher import patch
+
 from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
+from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.service import internal_name_lookups
 
@@ -245,13 +248,13 @@ class AoCUpgradeAttributeSubprocessor:
                                 % (game_entity_name, class_name))
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
-        elif not line.has_attack(armor_class):
-            # TODO: Create new attack effect
-            return patches
-
         else:
             patch_target_ref = "%s.Attack.%s.ChangeAmount" % (game_entity_name, class_name)
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
+
+        if not line.has_attack(armor_class):
+            # TODO: Create new attack effect
+            return patches
 
         # Wrapper
         wrapper_name = "Change%s%sAttackWrapper" % (game_entity_name, class_name)
@@ -661,7 +664,7 @@ class AoCUpgradeAttributeSubprocessor:
     @staticmethod
     def cost_gold_upgrade(converter_group, line, value, operator, team=False):
         """
-        Creates a patch for the food cost modify effect (ID: 105).
+        Creates a patch for the gold cost modify effect (ID: 105).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
@@ -746,7 +749,7 @@ class AoCUpgradeAttributeSubprocessor:
     @staticmethod
     def cost_stone_upgrade(converter_group, line, value, operator, team=False):
         """
-        Creates a patch for the food cost modify effect (ID: 106).
+        Creates a patch for the stone cost modify effect (ID: 106).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
@@ -1430,6 +1433,10 @@ class AoCUpgradeAttributeSubprocessor:
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
             patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
 
+        else:
+            # no matching ability
+            return patches
+
         # Wrapper
         wrapper_name = "Change%sMaxRangeWrapper" % (game_entity_name)
         wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
@@ -2041,6 +2048,10 @@ class AoCUpgradeAttributeSubprocessor:
         else:
             civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
             obj_name = civ_lookup_dict[obj_id][0]
+
+        if isinstance(line, GenieBuildingLineGroup) and not line.is_projectile_shooter():
+            # Does not have the ability
+            return patches
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 

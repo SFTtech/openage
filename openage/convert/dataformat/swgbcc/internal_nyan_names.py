@@ -30,7 +30,7 @@ UNIT_LINE_LOOKUPS = {
     594: ("Nerf", "nerf"),
     625: ("AirCruiser", "air_cruiser"),
     641: ("JediStarfighter", "jedi_starfighter"),
-    642: ("GeonosianWarrior", "utility_trawler"),
+    642: ("GeonosianWarrior", "geonosian_warrior"),
     691: ("Artillery", "artillery"),
     702: ("AntiAirMobile", "anti_air_mobile"),
     713: ("Pummel", "pummel"),
@@ -153,7 +153,7 @@ BUILDING_LINE_LOOKUPS = {
     487: ("Gate", "gate"),
     562: ("CarbonProcCenter", "carbon_proc_center"),
     584: ("OreProcCenter", "ore_proc_center"),
-    598: ("Outpost", "outpost"),
+    598: ("SentryPost", "sentry_post"),
     1576: ("SensorBuoy", "sensor_buoy"),
 }
 
@@ -551,7 +551,7 @@ ARMOR_CLASS_LOOKUPS = {
     0: "AirCraft",
     1: "HeavyAssaultMech",
     2: "HeavyMech",
-    3: "Ranged",
+    3: "Energy",
     4: "Melee",
     5: "ForceUnit",
     6: "AssaultMachine",

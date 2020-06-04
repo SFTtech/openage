@@ -10,7 +10,7 @@ from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
 from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieVariantGroup
+    GenieVariantGroup, GenieUnitLineGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.dataformat.value_members import NoDiffMember
 from openage.convert.processor.aoc.upgrade_effect_subprocessor import AoCUpgradeEffectSubprocessor
@@ -1266,12 +1266,18 @@ class AoCUpgradeAbilitySubprocessor:
             if not isinstance(diff_selection_sound, NoDiffMember):
                 changed = True
 
+        if isinstance(line, GenieUnitLineGroup):
+            ability_name = "SelectableSelf"
+
+        else:
+            ability_name = "Selectable"
+
         if changed:
-            patch_target_ref = "%s.SelectableSelf" % (game_entity_name)
+            patch_target_ref = "%s.%s" % (game_entity_name, ability_name)
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%sSelectableSelfWrapper" % (game_entity_name)
+            wrapper_name = "Change%s%sWrapper" % (game_entity_name, ability_name)
             wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
@@ -1289,7 +1295,7 @@ class AoCUpgradeAbilitySubprocessor:
                 wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
             # Nyan patch
-            nyan_patch_name = "Change%sSelectableSelf" % (game_entity_name)
+            nyan_patch_name = "Change%s%s" % (game_entity_name, ability_name)
             nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
@@ -1307,13 +1313,13 @@ class AoCUpgradeAbilitySubprocessor:
                 sound_forward_ref = AoCUpgradeAbilitySubprocessor._create_sound(converter_group,
                                                                                 diff_selection_sound_id,
                                                                                 nyan_patch_ref,
-                                                                                "SelectableSelf",
+                                                                                ability_name,
                                                                                 "select_")
                 sounds_set.append(sound_forward_ref)
 
             nyan_patch_raw_api_object.add_raw_patch_member("sounds",
                                                            sounds_set,
-                                                           "engine.ability.specialization.SoundAbility",
+                                                           "engine.ability.specialization.CommandSoundAbility",
                                                            MemberOperator.ASSIGN)
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
@@ -1337,11 +1343,11 @@ class AoCUpgradeAbilitySubprocessor:
                 changed = True
 
         if changed:
-            patch_target_ref = "%s.SelectableSelf.Rectangle" % (game_entity_name)
+            patch_target_ref = "%s.%s.Rectangle" % (game_entity_name, ability_name)
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%sSelectableRectangleWrapper" % (game_entity_name)
+            wrapper_name = "Change%s%sRectangleWrapper" % (game_entity_name, ability_name)
             wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
@@ -1359,7 +1365,7 @@ class AoCUpgradeAbilitySubprocessor:
                 wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
             # Nyan patch
-            nyan_patch_name = "Change%sSelectableRectangle" % (game_entity_name)
+            nyan_patch_name = "Change%s%sRectangle" % (game_entity_name, ability_name)
             nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,

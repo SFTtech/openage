@@ -54,6 +54,10 @@ class AoCUpgradeEffectSubprocessor:
 
                 armor_class = attack["type_id"].get_value()
                 attack_amount = attack["amount"].get_value()
+
+                if armor_class == -1:
+                    continue
+
                 class_name = armor_lookup_dict[armor_class]
 
                 # FlatAttributeChangeDecrease
@@ -325,6 +329,10 @@ class AoCUpgradeEffectSubprocessor:
 
                 armor_class = armor["type_id"].get_value()
                 armor_amount = armor["amount"].get_value()
+
+                if armor_class == -1:
+                    continue
+
                 class_name = armor_lookup_dict[armor_class]
 
                 # FlatAttributeChangeDecrease
