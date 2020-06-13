@@ -201,7 +201,7 @@ class Texture(genie_structure.GenieStructure):
 
         from .png import png_create
         with targetdir[filename].open("wb") as imagefile:
-            png_data = png_create.save(self.image_data.data)
+            png_data, _ = png_create.save(self.image_data.data, png_create.CompressionMethod.COMPR_GREEDY)
             imagefile.write(png_data)
 
         return self.image_metadata

@@ -11,7 +11,10 @@ cdef extern from "png.h":
     const int PNG_TRANSFORM_IDENTITY = 0
     const int PNG_IMAGE_VERSION = 1
     const char PNG_FORMAT_RGBA = 0x03
-
+    
+    const unsigned int PNG_FILTER_NONE  = 0x08
+    const unsigned int PNG_ALL_FILTERS  = 0xF8
+    
     ctypedef unsigned char png_byte
     ctypedef const png_byte *png_const_bytep
     ctypedef png_byte *png_bytep
@@ -56,8 +59,8 @@ cdef extern from "png.h":
                                         png_voidp error_ptr,
                                         png_error_ptr error_fn,
                                         png_error_ptr warn_fn)
-
     png_infop png_create_info_struct(png_const_structrp png_ptr)
+
     void png_set_IHDR(png_const_structrp png_ptr,
                       png_inforp info_ptr,
                       png_uint_32 width,
@@ -79,6 +82,17 @@ cdef extern from "png.h":
     void png_destroy_write_struct(png_structpp png_ptr_ptr,
                                   png_infopp info_ptr_ptr)
     
+    # PNG optimization options
+    void png_set_compression_level(png_structrp png_ptr,
+                                   int level)
+    void png_set_compression_mem_level(png_structrp png_ptr,
+                                       int mem_level)
+    void png_set_compression_strategy(png_structrp png_ptr,
+                                      int strategy)
+    void png_set_filter(png_structrp png_ptr,
+                        int method,
+                        int filters)
+
     # Buffer writing
     int png_image_write_to_memory(png_imagep image,
                                   void *memory,
