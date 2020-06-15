@@ -1169,17 +1169,15 @@ class AoCProcessor:
 
         for villager in villager_groups.values():
             for unit in villager.variants[0].line:
-                drop_site_id0 = unit.get_member("drop_site0").get_value()
-                drop_site_id1 = unit.get_member("drop_site1").get_value()
+                drop_site_members = unit.get_member("drop_sites").get_value()
                 unit_id = unit.get_member("id0").get_value()
 
-                if drop_site_id0 > -1:
-                    drop_site0 = full_data_set.building_lines[drop_site_id0]
-                    drop_site0.add_gatherer_id(unit_id)
+                for drop_site_member in drop_site_members:
+                    drop_site_id = drop_site_member.get_value()
 
-                if drop_site_id1 > -1:
-                    drop_site1 = full_data_set.building_lines[drop_site_id1]
-                    drop_site1.add_gatherer_id(unit_id)
+                    if drop_site_id > -1:
+                        drop_site = full_data_set.building_lines[drop_site_id]
+                        drop_site.add_gatherer_id(unit_id)
 
     @staticmethod
     def _link_garrison(full_data_set):

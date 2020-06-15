@@ -1184,16 +1184,15 @@ class ActionUnit(MovingUnit):
             (READ_GEN, "default_task_id", StorageType.ID_MEMBER, "int16_t"),
             (READ_GEN, "search_radius", StorageType.FLOAT_MEMBER, "float"),
             (READ_GEN, "work_rate", StorageType.FLOAT_MEMBER, "float"),
-            # unit id where gathered resources shall be delivered to
-            (READ_GEN, "drop_site0", StorageType.ID_MEMBER, "int16_t"),
-            (READ_GEN, "drop_site1", StorageType.ID_MEMBER, "int16_t"),  # alternative unit id
-            # if a task is not found in the current unit, other units with the same
-            # task group are tried.
         ]
 
         if game_version[0] is GameEdition.AOE2DE:
             data_format.extend([
-                (READ_GEN, "drop_site2", StorageType.ID_MEMBER, "int16_t"),
+                (READ_GEN, "drop_sites", StorageType.ARRAY_ID, "int16_t[3]"),
+            ])
+        else:
+            data_format.extend([
+                (READ_GEN, "drop_sites", StorageType.ARRAY_ID, "int16_t[2]"),
             ])
 
         data_format.extend([
