@@ -17,6 +17,7 @@ UNIT_LINE_LOOKUPS = {
     1243: ("Goose", "goose"),
     1245: ("Pig", "pig"),
     1254: ("Konnik", "konnik"),
+    1258: ("Ram", "ram"),                       # replacement for ID 35?
     1263: ("FlamingCamel", "flaming_camel"),
     1370: ("SteppeLancer", "steppe_lancer"),
 }
@@ -60,6 +61,25 @@ CIV_GROUP_LOOKUPS = {
     33: ("Tatars", "tatars"),
     34: ("Cumans", "cumans"),
     35: ("Lithuanians", "lithuanians"),
+}
+
+# key: civ index; value: (civ ids, nyan object name, filename prefix)
+# contains only new/changed graphic sets of DE2
+GRAPHICS_SET_LOOKUPS = {
+    8: ((32, 35), "EasternEuropean", "eastern_european"),
+    11: ((33, 34), "CentralAsian", "central_asian"),
+}
+
+# key: terrain index; value: (unit terrain restrictions (manual), nyan object name, filename prefix)
+# TODO: Use terrain restrictions from .dat
+# contains only new/changed terrains of DE2
+TERRAIN_GROUP_LOOKUPS = {
+}
+
+# key: not relevant; value: (terrain indices, unit terrain restrictions (manual), nyan object name)
+# TODO: Use terrain restrictions from .dat
+# contains only new/changed terrain types of DE2
+TERRAIN_TYPE_LOOKUPS = {
 }
 
 # key: armor class; value: Gather ability name

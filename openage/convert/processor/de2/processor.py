@@ -11,7 +11,9 @@ from openage.convert.dataformat.aoc.genie_unit import GenieUnitObject,\
 import openage.convert.dataformat.aoc.internal_nyan_names as aoc_internal
 import openage.convert.dataformat.de2.internal_nyan_names as de2_internal
 from openage.convert.nyan.api_loader import load_api
+from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
 from openage.convert.processor.aoc.processor import AoCProcessor
+from openage.convert.processor.de2.nyan_subprocessor import DE2NyanSubprocessor
 from openage.util.ordered_set import OrderedSet
 
 from ....log import info
@@ -125,7 +127,7 @@ class DE2Processor:
 
         info("Creating nyan objects...")
 
-        AoCNyanSubprocessor.convert(full_data_set)
+        DE2NyanSubprocessor.convert(full_data_set)
 
         info("Creating requests for media export...")
 
@@ -149,6 +151,9 @@ class DE2Processor:
         raw_units = gamespec.get_value()[0].get_value()["civs"].get_value()[0]\
             .get_value()["units"].get_value()
 
+        # Unit headers store the things units can do
+        raw_unit_headers = gamespec.get_value()[0].get_value()["unit_headers"].get_value()
+
         for raw_unit in raw_units:
             unit_id = raw_unit.get_value()["id0"].get_value()
             unit_members = raw_unit.get_value()
@@ -165,6 +170,11 @@ class DE2Processor:
 
             unit = GenieUnitObject(unit_id, full_data_set, members=unit_members)
             full_data_set.genie_units.update({unit.get_id(): unit})
+
+            # Commands
+            if "unit_commands" not in unit_members.keys():
+                unit_commands = raw_unit_headers[unit_id].get_value()["unit_commands"]
+                unit.add_member(unit_commands)
 
     @staticmethod
     def _extract_genie_graphics(gamespec, full_data_set):
