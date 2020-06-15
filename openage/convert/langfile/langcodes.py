@@ -481,5 +481,24 @@ LANGCODES_HD = {
     'ja': 'ja_JP',
     'ko': 'ko_KR',
     'nl': 'nl_NL',
-    'ru': 'ru_RU'
+    'ru': 'ru_RU',
+}
+
+LANGCODES_DE2 = {
+    'br': 'pt_BR',
+    'de': 'de_DE',
+    'en': 'en_US',
+    'es': 'es_ES',
+    'fr': 'fr_FR',
+    'hi': 'hi_IN',
+    'it': 'it_IT',
+    'jp': 'ja_JP',
+    'ko': 'ko_KR',
+    'ms': 'ms',
+    'mx': 'es_MX',
+    'ru': 'ru_RU',
+    'tr': 'tr',
+    'tw': 'tw',
+    'vi': 'vi',
+    'zh': 'zh_CN',
 }

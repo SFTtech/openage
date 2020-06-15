@@ -1,7 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
 
 """
-nyan object names and filenames for Age of Empires I.
+Age of Empires games do not necessarily come with an english
+translation. Therefore, we use the strings in this file to
+figure out the names for a nyan object.
 """
 
 # key: head unit id; value: (nyan object name, filename prefix)

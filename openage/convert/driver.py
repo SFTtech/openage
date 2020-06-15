@@ -10,6 +10,7 @@ from tempfile import gettempdir
 
 from openage.convert.dataformat.media_types import MediaType
 from openage.convert.dataformat.version_detect import GameEdition, GameExpansion
+from openage.convert.langfile.hdlanguagefile import read_de2_language_file
 
 from ..log import info, dbg
 from .blendomatic import Blendomatic
@@ -49,6 +50,14 @@ def get_string_resources(args):
         elif game_edition is GameEdition.HDEDITION:
             read_age2_hd_3x_stringresources(stringres, srcdir)
 
+        elif game_edition is GameEdition.AOE2DE:
+            strings = read_de2_language_file(srcdir, language_file)
+            stringres.fill_from(strings)
+
+        else:
+            raise Exception("No service found for parsing language files of version %s"
+                            % game_edition.name)
+
         # TODO: Other game versions
 
     # TODO: transform and cleanup the read strings:
@@ -73,7 +82,7 @@ def get_gamespec(srcdir, game_version, dont_pickle):
     """
     Reads empires.dat file.
     """
-    if game_version[0] in (GameEdition.ROR, GameEdition.AOC):
+    if game_version[0] in (GameEdition.ROR, GameEdition.AOC, GameEdition.AOE2DE):
         filepath = srcdir.joinpath(game_version[0].media_paths[MediaType.DATFILE][0])
 
     elif game_version[0] is GameEdition.SWGB:
@@ -203,6 +212,10 @@ def get_converter(game_version):
     elif game_edition is GameEdition.AOC:
         from .processor.aoc.processor import AoCProcessor
         return AoCProcessor
+
+    elif game_edition is GameEdition.AOE2DE:
+        from .processor.de2.processor import DE2Processor
+        return DE2Processor
 
     elif game_edition is GameEdition.SWGB:
         if GameExpansion.SWGB_CC in game_expansions:

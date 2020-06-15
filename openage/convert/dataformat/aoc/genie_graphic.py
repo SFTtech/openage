@@ -53,7 +53,7 @@ class GenieGraphic(ConverterObject):
             graphic_id = subgraphic.get_value()["graphic_id"].get_value()
 
             # Ignore invalid IDs
-            if graphic_id < 0:
+            if graphic_id not in self.data.genie_graphics.keys():
                 continue
 
             graphic = self.data.genie_graphics[graphic_id]

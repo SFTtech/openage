@@ -4,6 +4,8 @@
 Module for reading AoeII HD Edition text-based language files.
 """
 
+from openage.convert.langfile.langcodes import LANGCODES_DE2
+
 from ...log import dbg
 from .langcodes import LANGCODES_HD
 from .pefile import PEFile
@@ -108,16 +110,51 @@ def read_hd_language_file(fileobj, langcode, enc='utf-8'):
         if not line or line.startswith('//'):
             continue
 
-        num, string = line.split(None, 1)
+        string_id, string = line.split(None, 1)
 
         # strings that were added in the HD edition release have
         # UPPERCASE_STRINGS as names, instead of the numeric ID stuff
-        # of AoK:TC. We only need the AoK:TC strings, and skip the rest.
-        if num.isdigit():
-            strings[num] = string
+        # of AoC.
+        strings[string_id] = string
 
     fileobj.close()
 
     lang = LANGCODES_HD.get(langcode, langcode)
+
+    return {lang: strings}
+
+
+def read_de2_language_file(srcdir, language_file):
+    """
+    Definitve Edition stores language .txt files in the resources/ folder.
+    Specific language strings are in resources/$LANG/strings/key-value/*.txt.
+
+    The data is stored in the `stringres` storage.
+    """
+    # Langcode is folder name
+    langcode = language_file.split("/")[1]
+
+    dbg("parse DE2 Language file %s", langcode)
+    strings = {}
+
+    fileobj = srcdir[language_file].open('rb')
+
+    for line in fileobj.read().decode('utf-8').split('\n'):
+        line = line.strip()
+
+        # skip comments & empty lines
+        if not line or line.startswith('//'):
+            continue
+
+        string_id, string = line.split(None, 1)
+
+        # strings that were added in the HD edition release have
+        # UPPERCASE_STRINGS as names, instead of the numeric ID stuff
+        # of AoC.
+        strings[string_id] = string
+
+    fileobj.close()
+
+    lang = LANGCODES_DE2.get(langcode, langcode)
 
     return {lang: strings}

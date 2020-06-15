@@ -774,8 +774,14 @@ class AoCProcessor:
                 continue
 
             elif line_mode == 2:
-                # Unit is first in line, there should be an unlock tech
-                unit_unlock = UnitUnlock(enabling_research_id, line_id, full_data_set)
+                # Unit is first in line, there should be an unlock tech id
+                # Tjis is usually the enabling tech id
+                unlock_tech_id = enabling_research_id
+                if unlock_tech_id == -1:
+                    # Battle elephant is a curious exception wher it's the required tech id
+                    unlock_tech_id = required_research_id
+
+                unit_unlock = UnitUnlock(unlock_tech_id, line_id, full_data_set)
                 full_data_set.tech_groups.update({unit_unlock.get_id(): unit_unlock})
                 full_data_set.unit_unlocks.update({unit_unlock.get_id(): unit_unlock})
 
