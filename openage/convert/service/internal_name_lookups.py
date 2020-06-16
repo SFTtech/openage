@@ -33,6 +33,9 @@ def get_armor_class_lookups(game_version):
     elif game_edition is GameEdition.AOE2DE:
         armor_lookup_dict = {}
         armor_lookup_dict.update(aoc_internal.ARMOR_CLASS_LOOKUPS)
+        armor_lookup_dict.update(fgt_internal.ARMOR_CLASS_LOOKUPS)
+        armor_lookup_dict.update(ak_internal.ARMOR_CLASS_LOOKUPS)
+        armor_lookup_dict.update(raj_internal.ARMOR_CLASS_LOOKUPS)
         armor_lookup_dict.update(de2_internal.ARMOR_CLASS_LOOKUPS)
 
         return armor_lookup_dict
@@ -64,6 +67,9 @@ def get_civ_lookups(game_version):
     elif game_edition is GameEdition.AOE2DE:
         civ_lookup_dict = {}
         civ_lookup_dict.update(aoc_internal.CIV_GROUP_LOOKUPS)
+        civ_lookup_dict.update(fgt_internal.CIV_GROUP_LOOKUPS)
+        civ_lookup_dict.update(ak_internal.CIV_GROUP_LOOKUPS)
+        civ_lookup_dict.update(raj_internal.CIV_GROUP_LOOKUPS)
         civ_lookup_dict.update(de2_internal.CIV_GROUP_LOOKUPS)
 
         return civ_lookup_dict
@@ -233,6 +239,16 @@ def get_graphic_set_lookups(game_version):
     elif game_edition is GameEdition.AOC:
         return aoc_internal.GRAPHICS_SET_LOOKUPS
 
+    elif game_edition is GameEdition.AOE2DE:
+        graphic_set_lookup_dict = {}
+        graphic_set_lookup_dict.update(aoc_internal.GRAPHICS_SET_LOOKUPS)
+        graphic_set_lookup_dict.update(fgt_internal.GRAPHICS_SET_LOOKUPS)
+        graphic_set_lookup_dict.update(ak_internal.GRAPHICS_SET_LOOKUPS)
+        graphic_set_lookup_dict.update(raj_internal.GRAPHICS_SET_LOOKUPS)
+        graphic_set_lookup_dict.update(de2_internal.GRAPHICS_SET_LOOKUPS)
+
+        return graphic_set_lookup_dict
+
     elif game_edition is GameEdition.SWGB:
         return swgbcc_internal.GRAPHICS_SET_LOOKUPS
 
@@ -284,6 +300,9 @@ def get_tech_lookups(game_version):
     elif game_edition is GameEdition.AOE2DE:
         tech_lookup_dict = {}
         tech_lookup_dict.update(aoc_internal.TECH_GROUP_LOOKUPS)
+        tech_lookup_dict.update(fgt_internal.TECH_GROUP_LOOKUPS)
+        tech_lookup_dict.update(ak_internal.TECH_GROUP_LOOKUPS)
+        tech_lookup_dict.update(raj_internal.TECH_GROUP_LOOKUPS)
         tech_lookup_dict.update(de2_internal.TECH_GROUP_LOOKUPS)
 
         return tech_lookup_dict

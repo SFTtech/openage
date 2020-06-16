@@ -512,9 +512,19 @@ class GenieUnitLineGroup(GenieGameEntityGroup):
     def get_enabling_research_id(self):
         """
         Returns the enabling tech id of the unit
+
+        TODO: Find enabling research ID in pre-processor and save it in the group
+              like we do for RoR. Not all creatable units must be present in the
+              unit connections.
+        TODO: Move function into GeneGameEntityGroup after doing the above.
         """
         head_unit = self.get_head_unit()
         head_unit_id = head_unit.get_member("id0").get_value()
+
+        if head_unit_id not in self.data.unit_connections.keys():
+            # TODO: Remove this check, see TODOs above
+            return -1
+
         head_unit_connection = self.data.unit_connections[head_unit_id]
         enabling_research_id = head_unit_connection.get_member("enabling_research").get_value()
 

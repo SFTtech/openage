@@ -237,9 +237,13 @@ class RoRAbilitySubprocessor:
 
         if command_id == 104:
             # Convert
-            priest_line = dataset.unit_lines[125]
-
-            blacklisted_entities = [ForwardRef(priest_line, "Priest")]
+            blacklisted_entities = []
+            for unit_line in dataset.unit_lines.values():
+                if unit_line.has_command(104):
+                    # Blacklist other monks
+                    blacklisted_name = name_lookup_dict[unit_line.get_head_unit_id()][0]
+                    blacklisted_entities.append(ForwardRef(unit_line, blacklisted_name))
+                    continue
 
         else:
             blacklisted_entities = []

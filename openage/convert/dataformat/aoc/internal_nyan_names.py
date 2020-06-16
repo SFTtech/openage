@@ -284,10 +284,10 @@ CIV_GROUP_LOOKUPS = {
 GRAPHICS_SET_LOOKUPS = {
     0: ((0, 1, 2, 13, 14), "WesternEuropean", "western_european"),
     1: ((3, 4, 11, 17), "CentralEuropean", "central_european"),
-    2: ((5, 6, 12, 18), "EastAsian", "east_asian"),
+    2: ((5, 6, 12, 18, 31), "EastAsian", "east_asian"),
     3: ((8, 9, 10), "MiddleEastern", "middle_eastern"),
     4: ((7,), "Byzantine", "byzantine"),
-    5: ((15, 16), "MesoAmerican", "meso"),
+    5: ((15, 16, 21), "MesoAmerican", "meso"),
 }
 
 # key: terrain index; value: (unit terrain restrictions (manual), nyan object name, filename prefix)

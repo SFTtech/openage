@@ -420,15 +420,19 @@ class AoCAbilitySubprocessor:
 
         if command_id == 104:
             # Convert
-            monk_line = dataset.unit_lines[125]
-            ram_line = dataset.unit_lines[35]
-            mangonel_line = dataset.unit_lines[280]
-            scorpion_line = dataset.unit_lines[279]
+            blacklisted_entities = []
+            for unit_line in dataset.unit_lines.values():
+                if unit_line.has_command(104):
+                    # Blacklist other monks
+                    blacklisted_name = name_lookup_dict[unit_line.get_head_unit_id()][0]
+                    blacklisted_entities.append(ForwardRef(unit_line, blacklisted_name))
+                    continue
 
-            blacklisted_entities = [ForwardRef(monk_line, "Monk"),
-                                    ForwardRef(ram_line, "Ram"),
-                                    ForwardRef(mangonel_line, "Mangonel"),
-                                    ForwardRef(scorpion_line, "Scorpion")]
+                elif unit_line.get_class_id() in (13, 55):
+                    # Blacklist siege
+                    blacklisted_name = name_lookup_dict[unit_line.get_head_unit_id()][0]
+                    blacklisted_entities.append(ForwardRef(unit_line, blacklisted_name))
+                    continue
 
         else:
             blacklisted_entities = []
@@ -5367,6 +5371,10 @@ class AoCAbilitySubprocessor:
                 continue
 
             trade_post_id = command.get_value()["unit_id"].get_value()
+            if trade_post_id not in dataset.building_lines.keys():
+                # Skips trade workshop
+                continue
+
             trade_post_line = dataset.building_lines[trade_post_id]
             trade_post_name = name_lookup_dict[trade_post_id][0]
 

@@ -38,3 +38,62 @@ AMBIENT_GROUP_LOOKUPS = {
 # contains only new/changed variants of Forgotten
 VARIANT_GROUP_LOOKUPS = {
 }
+
+# key: head unit id; value: (nyan object name, filename prefix)
+# contains only new techs of Forgotten
+TECH_GROUP_LOOKUPS = {
+    65: ("Gillnets", "gillnets"),
+    384: ("EagleWarrior", "eagle_warrior"),
+    460: ("Atlatl", "atlatl"),
+    461: ("Warwolf", "warwolf"),
+    462: ("GreatWall", "great_wall"),
+    463: ("Chieftains", "chieftains"),
+    464: ("GreekFire", "greek_fire"),
+    483: ("Marauders", "marauders"),
+    484: ("Yasama", "yasama"),
+    485: ("ObsidanArrows", "obsidian_arrows"),
+    486: ("Panokseon", "panokseon"),
+    487: ("Nomads", "nomads"),
+    # TODO: Boiling oil
+    489: ("Ironclad", "ironclad"),
+    490: ("Madrasah", "madrasah"),
+    491: ("Sipahi", "sipahi"),
+    492: ("Inquisition", "inquisition"),
+    493: ("Chivalry", "chivalry"),
+    494: ("Pavise", "pavise"),
+    499: ("SilkRoad", "silk_road"),
+    506: ("Sultans", "sultans"),
+    507: ("Shatagni", "shatagni"),
+    509: ("EliteKamayuk", "elite_kamayuk"),
+    512: ("Orthodoxy", "orthodoxy"),
+    513: ("Druzhina", "druzhina"),
+    514: ("CorvinianArmy", "corvinian_army"),
+    515: ("RecurveBow", "recurve_bow"),
+    516: ("AndeanSling", "andean_sling"),
+    517: ("FabricShields", "fabric_shields"),           # previously called Couriers
+}
+
+# key: civ index; value: (nyan object name, filename prefix)
+# contains only new civs of Forgotten
+CIV_GROUP_LOOKUPS = {
+    19: ("Italians", "italians"),
+    20: ("Indians", "indians"),
+    21: ("Incas", "incas"),
+    22: ("Magyars", "magyars"),
+    23: ("Slavs", "slavs"),
+}
+
+# key: civ index; value: (civ ids, nyan object name, filename prefix)
+# contains only new/changed graphic sets of Forgotten
+GRAPHICS_SET_LOOKUPS = {
+    6: ((19, 24), "Mediterranean", "mediterranean"),
+    7: ((20,), "Indian", "indian"),
+    8: ((22, 23), "Slavic", "slavic"),
+}
+
+# key: armor class; value: Gather ability name
+# contains only new armors of Forgotten
+ARMOR_CLASS_LOOKUPS = {
+    14: "AnimalPredator",
+    23: "Gunpowder",
+}

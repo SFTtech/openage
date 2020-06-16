@@ -13,6 +13,8 @@ import openage.convert.dataformat.de2.internal_nyan_names as de2_internal
 from openage.convert.nyan.api_loader import load_api
 from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
 from openage.convert.processor.aoc.processor import AoCProcessor
+from openage.convert.processor.de2.media_subprocessor import DE2MediaSubprocessor
+from openage.convert.processor.de2.modpack_subprocessor import DE2ModpackSubprocessor
 from openage.convert.processor.de2.nyan_subprocessor import DE2NyanSubprocessor
 from openage.util.ordered_set import OrderedSet
 
@@ -131,9 +133,9 @@ class DE2Processor:
 
         info("Creating requests for media export...")
 
-        AoCMediaSubprocessor.convert(full_data_set)
+        DE2MediaSubprocessor.convert(full_data_set)
 
-        return AoCModpackSubprocessor.get_modpacks(full_data_set)
+        return DE2ModpackSubprocessor.get_modpacks(full_data_set)
 
     @staticmethod
     def _extract_genie_units(gamespec, full_data_set):

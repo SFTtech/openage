@@ -10,13 +10,14 @@ figure out the names for a nyan object.
 # contains only new units of DE2
 UNIT_LINE_LOOKUPS = {
     705: ("Cow", "cow"),
+    1225: ("Konnik", "konnik"),                 # Castle unit
     1228: ("Keshik", "keshik"),
     1231: ("Kipchak", "kipchak"),
     1234: ("Leitis", "leitis"),
     1239: ("Ibex", "ibex"),
     1243: ("Goose", "goose"),
     1245: ("Pig", "pig"),
-    1254: ("Konnik", "konnik"),
+    1254: ("Konnik", "konnik"),                 # Krepost unit
     1258: ("Ram", "ram"),                       # replacement for ID 35?
     1263: ("FlamingCamel", "flaming_camel"),
     1370: ("SteppeLancer", "steppe_lancer"),
