@@ -50,6 +50,9 @@ class DE2TechSubprocessor:
     }
 
     upgrade_resource_funcs = {
+        0: DE2UpgradeResourceSubprocessor.current_food_amount_upgrade,
+        1: DE2UpgradeResourceSubprocessor.current_wood_amount_upgrade,
+        2: DE2UpgradeResourceSubprocessor.current_stone_amount_upgrade,
         3: DE2UpgradeResourceSubprocessor.current_gold_amount_upgrade,
         4: AoCUpgradeResourceSubprocessor.starting_population_space_upgrade,
         27: AoCUpgradeResourceSubprocessor.monk_conversion_upgrade,
@@ -65,6 +68,7 @@ class DE2TechSubprocessor:
         79: AoCUpgradeResourceSubprocessor.gather_stone_efficiency_upgrade,
         84: AoCUpgradeResourceSubprocessor.starting_villagers_upgrade,
         85: AoCUpgradeResourceSubprocessor.chinese_tech_discount_upgrade,
+        88: DE2UpgradeResourceSubprocessor.fish_trap_food_amount_upgrade,
         89: AoCUpgradeResourceSubprocessor.heal_rate_upgrade,
         90: AoCUpgradeResourceSubprocessor.heal_range_upgrade,
         91: AoCUpgradeResourceSubprocessor.starting_food_upgrade,
@@ -87,9 +91,12 @@ class DE2TechSubprocessor:
         194: AoCUpgradeResourceSubprocessor.crenellations_upgrade,
         196: AoCUpgradeResourceSubprocessor.wonder_time_increase_upgrade,
         197: AoCUpgradeResourceSubprocessor.spies_discount_upgrade,
+        209: DE2UpgradeResourceSubprocessor.reveal_enemy_tcs_upgrade,
         211: DE2UpgradeResourceSubprocessor.elevation_attack_upgrade,
         212: DE2UpgradeResourceSubprocessor.cliff_attack_upgrade,
         214: DE2UpgradeResourceSubprocessor.free_kipchaks_upgrade,
+        216: DE2UpgradeResourceSubprocessor.sheep_food_amount_upgrade,
+        218: DE2UpgradeResourceSubprocessor.cuman_tc_upgrade,
     }
 
     @classmethod

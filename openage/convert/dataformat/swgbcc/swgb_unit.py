@@ -87,9 +87,9 @@ class SWGBStackBuildingGroup(GenieStackBuildingGroup):
         Returns the enabling tech id of the unit
         """
         stack_unit = self.get_stack_unit()
-        stack_unit_id = stack_unit.get_member("id0").get_value()
+        stack_unit_id = stack_unit["id0"].get_value()
         stack_unit_connection = self.data.building_connections[stack_unit_id]
-        enabling_research_id = stack_unit_connection.get_member("enabling_research").get_value()
+        enabling_research_id = stack_unit_connection["enabling_research"].get_value()
 
         return enabling_research_id
 
@@ -162,7 +162,7 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
         Returns the enabling tech id of the unit
         """
         head_unit_connection = self.data.unit_connections[self.get_transform_unit_id()]
-        enabling_research_id = head_unit_connection.get_member("enabling_research").get_value()
+        enabling_research_id = head_unit_connection["enabling_research"].get_value()
 
         return enabling_research_id
 

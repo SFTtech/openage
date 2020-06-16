@@ -133,14 +133,14 @@ class AoCEffectSubprocessor:
         effect_parent = "engine.effect.discrete.convert.Convert"
         convert_parent = "engine.effect.discrete.convert.type.AoE2Convert"
 
-        unit_commands = current_unit.get_member("unit_commands").get_value()
+        unit_commands = current_unit["unit_commands"].get_value()
         for command in unit_commands:
             # Find the Heal command.
-            type_id = command.get_value()["type"].get_value()
+            type_id = command["type"].get_value()
 
             if type_id == 104:
-                skip_guaranteed_rounds = -1 * command.get_value()["work_value1"].get_value()
-                skip_protected_rounds = -1 * command.get_value()["work_value2"].get_value()
+                skip_guaranteed_rounds = -1 * command["work_value1"].get_value()
+                skip_protected_rounds = -1 * command["work_value2"].get_value()
                 break
 
         else:
@@ -251,12 +251,12 @@ class AoCEffectSubprocessor:
         effect_parent = "engine.effect.continuous.flat_attribute_change.FlatAttributeChange"
         heal_parent = "engine.effect.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"
 
-        unit_commands = current_unit.get_member("unit_commands").get_value()
+        unit_commands = current_unit["unit_commands"].get_value()
         heal_command = None
 
         for command in unit_commands:
             # Find the Heal command.
-            type_id = command.get_value()["type"].get_value()
+            type_id = command["type"].get_value()
 
             if type_id == 105:
                 heal_command = command
@@ -266,7 +266,7 @@ class AoCEffectSubprocessor:
             # Return the empty set
             return effects
 
-        heal_rate = heal_command.get_value()["work_value1"].get_value()
+        heal_rate = heal_command["work_value1"].get_value()
 
         heal_ref = "%s.HealEffect" % (ability_ref)
         heal_raw_api_object = RawAPIObject(heal_ref,

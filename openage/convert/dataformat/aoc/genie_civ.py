@@ -62,7 +62,7 @@ class GenieCivilizationGroup(ConverterObjectGroup):
         self.civ = self.data.genie_civs[civ_id]
 
         if self.civ.has_member("team_bonus_id"):
-            team_bonus_id = self.civ.get_member("team_bonus_id").get_value()
+            team_bonus_id = self.civ["team_bonus_id"].get_value()
             if team_bonus_id == -1:
                 # Gaia civ has no team bonus
                 self.team_bonus = None
@@ -77,7 +77,7 @@ class GenieCivilizationGroup(ConverterObjectGroup):
 
         # Create an object for the tech tree bonus. We use the effect ID + 10000 to avoid
         # conflicts with techs or effects
-        tech_tree_id = self.civ.get_member("tech_tree_id").get_value()
+        tech_tree_id = self.civ["tech_tree_id"].get_value()
         self.tech_tree = CivTechTree(10000 + tech_tree_id, civ_id,
                                      tech_tree_id, full_data_set)
 

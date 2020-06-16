@@ -53,9 +53,9 @@ class AoCUpgradeAbilitySubprocessor:
         ability_name = command_lookup_dict[command_id][0]
 
         changed = False
-        diff_animation = diff.get_member("attack_sprite_id")
-        diff_comm_sound = diff.get_member("command_sound_id")
-        diff_frame_delay = diff.get_member("frame_delay")
+        diff_animation = diff["attack_sprite_id"]
+        diff_comm_sound = diff["command_sound_id"]
+        diff_frame_delay = diff["frame_delay"]
         if any(not isinstance(value, NoDiffMember) for value in (diff_animation,
                                                                  diff_comm_sound,
                                                                  diff_frame_delay)):
@@ -66,8 +66,8 @@ class AoCUpgradeAbilitySubprocessor:
         diff_min_range = None
         diff_max_range = None
         if not changed and ranged:
-            diff_min_range = diff.get_member("weapon_range_min")
-            diff_max_range = diff.get_member("weapon_range_max")
+            diff_min_range = diff["weapon_range_min"]
+            diff_max_range = diff["weapon_range_max"]
             if any(not isinstance(value, NoDiffMember) for value in (diff_min_range,
                                                                      diff_max_range)):
                 changed = True
@@ -222,10 +222,10 @@ class AoCUpgradeAbilitySubprocessor:
         ability_name = command_lookup_dict[command_id][0]
 
         changed = False
-        diff_animation = diff.get_member("attack_sprite_id")
-        diff_comm_sound = diff.get_member("command_sound_id")
-        diff_reload_time = diff.get_member("attack_speed")
-        diff_frame_delay = diff.get_member("frame_delay")
+        diff_animation = diff["attack_sprite_id"]
+        diff_comm_sound = diff["command_sound_id"]
+        diff_reload_time = diff["attack_speed"]
+        diff_frame_delay = diff["frame_delay"]
         if any(not isinstance(value, NoDiffMember) for value in (diff_animation,
                                                                  diff_comm_sound,
                                                                  diff_reload_time,
@@ -235,8 +235,8 @@ class AoCUpgradeAbilitySubprocessor:
         diff_min_range = None
         diff_max_range = None
         if ranged:
-            diff_min_range = diff.get_member("weapon_range_min")
-            diff_max_range = diff.get_member("weapon_range_max")
+            diff_min_range = diff["weapon_range_min"]
+            diff_max_range = diff["weapon_range_max"]
             if any(not isinstance(value, NoDiffMember) for value in (diff_min_range,
                                                                      diff_max_range)):
                 changed = True
@@ -368,7 +368,7 @@ class AoCUpgradeAbilitySubprocessor:
         changed = False
         diff_attacks = None
         if not changed and command_id == 7:
-            diff_attacks = diff.get_member("attacks")
+            diff_attacks = diff["attacks"]
             if not isinstance(diff_attacks, NoDiffMember):
                 changed = True
 
@@ -411,7 +411,7 @@ class AoCUpgradeAbilitySubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         if diff:
-            diff_damage_graphics = diff.get_member("damage_graphics")
+            diff_damage_graphics = diff["damage_graphics"]
             if isinstance(diff_damage_graphics, NoDiffMember):
                 return patches
 
@@ -525,7 +525,7 @@ class AoCUpgradeAbilitySubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         if diff:
-            diff_animation = diff.get_member("dying_graphic")
+            diff_animation = diff["dying_graphic"]
             if isinstance(diff_animation, NoDiffMember):
                 return patches
 
@@ -625,7 +625,7 @@ class AoCUpgradeAbilitySubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         if diff:
-            diff_dead_unit = diff.get_member("dead_unit_id")
+            diff_dead_unit = diff["dead_unit_id"]
             if isinstance(diff_dead_unit, NoDiffMember):
                 return patches
 
@@ -723,7 +723,7 @@ class AoCUpgradeAbilitySubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         if diff:
-            diff_animation = diff.get_member("idle_graphic0")
+            diff_animation = diff["idle_graphic0"]
             if isinstance(diff_animation, NoDiffMember):
                 return patches
 
@@ -823,7 +823,7 @@ class AoCUpgradeAbilitySubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         if diff:
-            diff_hp = diff.get_member("hit_points")
+            diff_hp = diff["hit_points"]
             if isinstance(diff_hp, NoDiffMember):
                 return patches
 
@@ -913,7 +913,7 @@ class AoCUpgradeAbilitySubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         if diff:
-            diff_line_of_sight = diff.get_member("line_of_sight")
+            diff_line_of_sight = diff["line_of_sight"]
             if isinstance(diff_line_of_sight, NoDiffMember):
                 return patches
 
@@ -1003,9 +1003,9 @@ class AoCUpgradeAbilitySubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         changed = False
-        diff_move_animation = diff.get_member("move_graphics")
-        diff_comm_sound = diff.get_member("command_sound_id")
-        diff_move_speed = diff.get_member("speed")
+        diff_move_animation = diff["move_graphics"]
+        diff_comm_sound = diff["command_sound_id"]
+        diff_move_speed = diff["speed"]
         if any(not isinstance(value, NoDiffMember) for value in (diff_move_animation,
                                                                  diff_comm_sound,
                                                                  diff_move_speed)):
@@ -1135,7 +1135,7 @@ class AoCUpgradeAbilitySubprocessor:
         else:
             obj_prefix = game_entity_name
 
-        diff_name = diff.get_member("language_dll_name")
+        diff_name = diff["language_dll_name"]
         if not isinstance(diff_name, NoDiffMember):
             patch_target_ref = "%s.Named.%sName" % (game_entity_name, game_entity_name)
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
@@ -1219,7 +1219,7 @@ class AoCUpgradeAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        diff_armors = diff.get_member("armors")
+        diff_armors = diff["armors"]
         if not isinstance(diff_armors, NoDiffMember):
             patch_target_ref = "%s.Resistance" % (game_entity_name)
             patches.extend(AoCUpgradeEffectSubprocessor.get_attack_resistances(converter_group,
@@ -1262,7 +1262,7 @@ class AoCUpgradeAbilitySubprocessor:
         # First patch: Sound for the SelectableSelf ability
         changed = False
         if diff:
-            diff_selection_sound = diff.get_member("selection_sound_id")
+            diff_selection_sound = diff["selection_sound_id"]
             if not isinstance(diff_selection_sound, NoDiffMember):
                 changed = True
 
@@ -1336,8 +1336,8 @@ class AoCUpgradeAbilitySubprocessor:
         # Second patch: Selection box
         changed = False
         if diff:
-            diff_radius_x = diff.get_member("selection_shape_x")
-            diff_radius_y = diff.get_member("selection_shape_y")
+            diff_radius_x = diff["selection_shape_x"]
+            diff_radius_y = diff["selection_shape_y"]
             if any(not isinstance(value, NoDiffMember) for value in (diff_radius_x,
                                                                      diff_radius_y)):
                 changed = True
@@ -1439,19 +1439,19 @@ class AoCUpgradeAbilitySubprocessor:
 
         changed = False
         if diff:
-            diff_animation = diff.get_member("attack_sprite_id")
-            diff_comm_sound = diff.get_member("command_sound_id")
-            diff_min_projectiles = diff.get_member("attack_projectile_count")
-            diff_max_projectiles = diff.get_member("attack_projectile_max_count")
-            diff_min_range = diff.get_member("weapon_range_min")
-            diff_max_range = diff.get_member("weapon_range_min")
-            diff_reload_time = diff.get_member("attack_speed")
+            diff_animation = diff["attack_sprite_id"]
+            diff_comm_sound = diff["command_sound_id"]
+            diff_min_projectiles = diff["attack_projectile_count"]
+            diff_max_projectiles = diff["attack_projectile_max_count"]
+            diff_min_range = diff["weapon_range_min"]
+            diff_max_range = diff["weapon_range_min"]
+            diff_reload_time = diff["attack_speed"]
             # spawn delay also depends on animation
-            diff_spawn_delay = diff.get_member("frame_delay")
-            diff_spawn_area_offsets = diff.get_member("weapon_offset")
-            diff_spawn_area_width = diff.get_member("attack_projectile_spawning_area_width")
-            diff_spawn_area_height = diff.get_member("attack_projectile_spawning_area_length")
-            diff_spawn_area_randomness = diff.get_member("attack_projectile_spawning_area_randomness")
+            diff_spawn_delay = diff["frame_delay"]
+            diff_spawn_area_offsets = diff["weapon_offset"]
+            diff_spawn_area_width = diff["attack_projectile_spawning_area_width"]
+            diff_spawn_area_height = diff["attack_projectile_spawning_area_length"]
+            diff_spawn_area_randomness = diff["attack_projectile_spawning_area_randomness"]
 
             if any(not isinstance(value, NoDiffMember) for value in (diff_animation,
                                                                      diff_comm_sound,
@@ -1716,7 +1716,7 @@ class AoCUpgradeAbilitySubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         if diff:
-            diff_turn_speed = diff.get_member("turn_speed")
+            diff_turn_speed = diff["turn_speed"]
             if isinstance(diff_turn_speed, NoDiffMember):
                 return patches
 
@@ -1762,7 +1762,7 @@ class AoCUpgradeAbilitySubprocessor:
         turn_speed = MemberSpecialValue.NYAN_INF
         # Ships/Trebuchets turn slower
         if turn_speed_unmodified > 0:
-            turn_yaw = diff.get_member("max_yaw_per_sec_moving").get_value()
+            turn_yaw = diff["max_yaw_per_sec_moving"].get_value()
             turn_speed = degrees(turn_yaw)
 
         nyan_patch_raw_api_object.add_raw_patch_member("turn_speed",

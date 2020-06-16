@@ -301,8 +301,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        for resource_amount in head_unit.get_member("resource_cost").get_value():
-            resource_id = resource_amount.get_value()["type_id"].get_value()
+        for resource_amount in head_unit["resource_cost"].get_value():
+            resource_id = resource_amount["type_id"].get_value()
 
             resource_name = ""
             if resource_id == -1:
@@ -326,7 +326,7 @@ class SWGBCCUpgradeAttributeSubprocessor:
                 continue
 
             # Skip resources that are only expected to be there
-            if not resource_amount.get_value()["enabled"].get_value():
+            if not resource_amount["enabled"].get_value():
                 continue
 
             patch_target_ref = "%s.CreatableGameEntity.%sCost.%sAmount" % (game_entity_name,

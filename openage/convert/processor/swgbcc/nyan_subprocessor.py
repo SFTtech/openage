@@ -147,13 +147,13 @@ class SWGBCCNyanSubprocessor:
         # =======================================================================
         # Create or use existing auxiliary types
         types_set = []
-        unit_type = current_unit.get_member("unit_type").get_value()
+        unit_type = current_unit["unit_type"].get_value()
 
         if unit_type >= 70:
             type_obj = dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()
             types_set.append(type_obj)
 
-        unit_class = current_unit.get_member("unit_class").get_value()
+        unit_class = current_unit["unit_class"].get_value()
         class_name = class_lookup_dict[unit_class]
         class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
@@ -347,13 +347,13 @@ class SWGBCCNyanSubprocessor:
         # =======================================================================
         # Create or use existing auxiliary types
         types_set = []
-        unit_type = current_building.get_member("unit_type").get_value()
+        unit_type = current_building["unit_type"].get_value()
 
         if unit_type >= 80:
             type_obj = dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()
             types_set.append(type_obj)
 
-        unit_class = current_building.get_member("unit_class").get_value()
+        unit_class = current_building["unit_class"].get_value()
         class_name = class_lookup_dict[unit_class]
         class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
@@ -506,7 +506,7 @@ class SWGBCCNyanSubprocessor:
         type_obj = dataset.pregen_nyan_objects["aux.game_entity_type.types.Ambient"].get_nyan_object()
         types_set.append(type_obj)
 
-        unit_class = ambient_unit.get_member("unit_class").get_value()
+        unit_class = ambient_unit["unit_class"].get_value()
         class_name = class_lookup_dict[unit_class]
         class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
@@ -519,7 +519,7 @@ class SWGBCCNyanSubprocessor:
         # =======================================================================
         abilities_set = []
 
-        interaction_mode = ambient_unit.get_member("interaction_mode").get_value()
+        interaction_mode = ambient_unit["interaction_mode"].get_value()
 
         if interaction_mode >= 0:
             abilities_set.append(AoCAbilitySubprocessor.death_ability(ambient_group))
@@ -818,11 +818,11 @@ class SWGBCCNyanSubprocessor:
         projectiles_location = "data/game_entity/generic/%s/projectiles/" % (game_entity_filename)
 
         projectile_indices = []
-        projectile_primary = current_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        projectile_primary = current_unit["attack_projectile_primary_unit_id"].get_value()
         if projectile_primary > -1:
             projectile_indices.append(0)
 
-        projectile_secondary = current_unit.get_member("attack_projectile_secondary_unit_id").get_value()
+        projectile_secondary = current_unit["attack_projectile_secondary_unit_id"].get_value()
         if projectile_secondary > -1:
             projectile_indices.append(1)
 

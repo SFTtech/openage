@@ -47,10 +47,10 @@ class GenieGraphic(ConverterObject):
         """
         Add references for the direct subgraphics to this object.
         """
-        graphic_deltas = self.get_member("graphic_deltas").get_value()
+        graphic_deltas = self["graphic_deltas"].get_value()
 
         for subgraphic in graphic_deltas:
-            graphic_id = subgraphic.get_value()["graphic_id"].get_value()
+            graphic_id = subgraphic["graphic_id"].get_value()
 
             # Ignore invalid IDs
             if graphic_id not in self.data.genie_graphics.keys():

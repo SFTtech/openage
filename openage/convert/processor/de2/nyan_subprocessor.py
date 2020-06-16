@@ -11,8 +11,10 @@ from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup,\
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubprocessor
 from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
+from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
 from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubprocessor
 from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
+from openage.convert.processor.de2.civ_subprocessor import DE2CivSubprocessor
 from openage.convert.processor.de2.tech_subprocessor import DE2TechSubprocessor
 from openage.convert.service import internal_name_lookups
 
@@ -145,13 +147,13 @@ class DE2NyanSubprocessor:
         # =======================================================================
         # Create or use existing auxiliary types
         types_set = []
-        unit_type = current_unit.get_member("unit_type").get_value()
+        unit_type = current_unit["unit_type"].get_value()
 
         if unit_type >= 70:
             type_obj = dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()
             types_set.append(type_obj)
 
-        unit_class = current_unit.get_member("unit_class").get_value()
+        unit_class = current_unit["unit_class"].get_value()
         class_name = class_lookup_dict[unit_class]
         class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
@@ -350,13 +352,13 @@ class DE2NyanSubprocessor:
         # =======================================================================
         # Create or use existing auxiliary types
         types_set = []
-        unit_type = current_building.get_member("unit_type").get_value()
+        unit_type = current_building["unit_type"].get_value()
 
         if unit_type >= 80:
             type_obj = dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()
             types_set.append(type_obj)
 
-        unit_class = current_building.get_member("unit_class").get_value()
+        unit_class = current_building["unit_class"].get_value()
         class_name = class_lookup_dict[unit_class]
         class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
@@ -596,6 +598,7 @@ class DE2NyanSubprocessor:
         :type terrain_group: ..dataformat.converter_object.ConverterObjectGroup
         """
         # TODO: Implement
+
     @staticmethod
     def _civ_group_to_civ(civ_group):
         """
@@ -604,7 +607,116 @@ class DE2NyanSubprocessor:
         :param civ_group: Terrain group that gets converted to a tech.
         :type civ_group: ..dataformat.converter_object.ConverterObjectGroup
         """
-        # TODO: Implement
+        civ_id = civ_group.get_id()
+
+        dataset = civ_group.data
+
+        civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
+
+        # Start with the Tech object
+        tech_name = civ_lookup_dict[civ_id][0]
+        raw_api_object = RawAPIObject(tech_name, tech_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.civilization.Civilization")
+
+        obj_location = "data/civ/%s/" % (civ_lookup_dict[civ_id][1])
+
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(civ_lookup_dict[civ_id][1])
+        civ_group.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # Name
+        # =======================================================================
+        name_ref = "%s.%sName" % (tech_name, tech_name)
+        name_raw_api_object = RawAPIObject(name_ref,
+                                           "%sName"  % (tech_name),
+                                           dataset.nyan_api_objects)
+        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_location = ForwardRef(civ_group, tech_name)
+        name_raw_api_object.set_location(name_location)
+
+        name_raw_api_object.add_raw_member("translations",
+                                           [],
+                                           "engine.aux.translated.type.TranslatedString")
+
+        name_forward_ref = ForwardRef(civ_group, name_ref)
+        raw_api_object.add_raw_member("name", name_forward_ref, "engine.aux.civilization.Civilization")
+        civ_group.add_raw_api_object(name_raw_api_object)
+
+        # =======================================================================
+        # Description
+        # =======================================================================
+        description_ref = "%s.%sDescription" % (tech_name, tech_name)
+        description_raw_api_object = RawAPIObject(description_ref,
+                                                  "%sDescription"  % (tech_name),
+                                                  dataset.nyan_api_objects)
+        description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        description_location = ForwardRef(civ_group, tech_name)
+        description_raw_api_object.set_location(description_location)
+
+        description_raw_api_object.add_raw_member("translations",
+                                                  [],
+                                                  "engine.aux.translated.type.TranslatedMarkupFile")
+
+        description_forward_ref = ForwardRef(civ_group, description_ref)
+        raw_api_object.add_raw_member("description",
+                                      description_forward_ref,
+                                      "engine.aux.civilization.Civilization")
+        civ_group.add_raw_api_object(description_raw_api_object)
+
+        # =======================================================================
+        # Long description
+        # =======================================================================
+        long_description_ref = "%s.%sLongDescription" % (tech_name, tech_name)
+        long_description_raw_api_object = RawAPIObject(long_description_ref,
+                                                       "%sLongDescription"  % (tech_name),
+                                                       dataset.nyan_api_objects)
+        long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        long_description_location = ForwardRef(civ_group, tech_name)
+        long_description_raw_api_object.set_location(long_description_location)
+
+        long_description_raw_api_object.add_raw_member("translations",
+                                                       [],
+                                                       "engine.aux.translated.type.TranslatedMarkupFile")
+
+        long_description_forward_ref = ForwardRef(civ_group, long_description_ref)
+        raw_api_object.add_raw_member("long_description",
+                                      long_description_forward_ref,
+                                      "engine.aux.civilization.Civilization")
+        civ_group.add_raw_api_object(long_description_raw_api_object)
+
+        # =======================================================================
+        # TODO: Leader names
+        # =======================================================================
+        raw_api_object.add_raw_member("leader_names",
+                                      [],
+                                      "engine.aux.civilization.Civilization")
+
+        # =======================================================================
+        # Modifiers
+        # =======================================================================
+        modifiers = AoCCivSubprocessor.get_modifiers(civ_group)
+        raw_api_object.add_raw_member("modifiers",
+                                      modifiers,
+                                      "engine.aux.civilization.Civilization")
+
+        # =======================================================================
+        # Starting resources
+        # =======================================================================
+        resource_amounts = AoCCivSubprocessor.get_starting_resources(civ_group)
+        raw_api_object.add_raw_member("starting_resources",
+                                      resource_amounts,
+                                      "engine.aux.civilization.Civilization")
+
+        # =======================================================================
+        # Civ setup
+        # =======================================================================
+        civ_setup = DE2CivSubprocessor.get_civ_setup(civ_group)
+        raw_api_object.add_raw_member("civ_setup",
+                                      civ_setup,
+                                      "engine.aux.civilization.Civilization")
+
     @staticmethod
     def _projectiles_from_line(line):
         """

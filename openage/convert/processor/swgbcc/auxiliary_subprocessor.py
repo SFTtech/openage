@@ -58,7 +58,7 @@ class SWGBCCAuxiliarySubprocessor:
             # Add object to the Civ object
             enabling_research_id = line.get_enabling_research_id()
             enabling_research = dataset.genie_techs[enabling_research_id]
-            enabling_civ_id = enabling_research.get_member("civilization_id").get_value()
+            enabling_civ_id = enabling_research["civilization_id"].get_value()
 
             civ = dataset.civ_groups[enabling_civ_id]
             civ_name = civ_lookup_dict[enabling_civ_id][0]
@@ -111,8 +111,8 @@ class SWGBCCAuxiliarySubprocessor:
 
         cost_amounts = []
         cost_repair_amounts = []
-        for resource_amount in current_unit.get_member("resource_cost").get_value():
-            resource_id = resource_amount.get_value()["type_id"].get_value()
+        for resource_amount in current_unit["resource_cost"].get_value():
+            resource_id = resource_amount["type_id"].get_value()
 
             resource = None
             resource_name = ""
@@ -141,10 +141,10 @@ class SWGBCCAuxiliarySubprocessor:
                 continue
 
             # Skip resources that are only expected to be there
-            if not resource_amount.get_value()["enabled"].get_value():
+            if not resource_amount["enabled"].get_value():
                 continue
 
-            amount = resource_amount.get_value()["amount"].get_value()
+            amount = resource_amount["amount"].get_value()
 
             cost_amount_name = "%s.%sAmount" % (cost_name, resource_name)
             cost_amount = RawAPIObject(cost_amount_name,
@@ -201,7 +201,7 @@ class SWGBCCAuxiliarySubprocessor:
                                                 "engine.aux.create.CreatableGameEntity")
         # Creation time
         if isinstance(line, GenieUnitLineGroup):
-            creation_time = current_unit.get_member("creation_time").get_value()
+            creation_time = current_unit["creation_time"].get_value()
 
         else:
             # Buildings are created immediately
@@ -212,7 +212,7 @@ class SWGBCCAuxiliarySubprocessor:
                                                 "engine.aux.create.CreatableGameEntity")
 
         # Creation sound
-        creation_sound_id = current_unit.get_member("train_sound_id").get_value()
+        creation_sound_id = current_unit["train_sound_id"].get_value()
 
         # Create sound object
         obj_name = "%s.CreatableGameEntity.Sound" % (game_entity_name)
@@ -290,8 +290,8 @@ class SWGBCCAuxiliarySubprocessor:
                                                 1.0,
                                                 "engine.aux.placement_mode.type.Place")
             # Clearance size
-            clearance_size_x = current_unit.get_member("clearance_size_x").get_value()
-            clearance_size_y = current_unit.get_member("clearance_size_y").get_value()
+            clearance_size_x = current_unit["clearance_size_x"].get_value()
+            clearance_size_y = current_unit["clearance_size_y"].get_value()
             place_raw_api_object.add_raw_member("clearance_size_x",
                                                 clearance_size_x,
                                                 "engine.aux.placement_mode.type.Place")
@@ -300,7 +300,7 @@ class SWGBCCAuxiliarySubprocessor:
                                                 "engine.aux.placement_mode.type.Place")
 
             # Max elevation difference
-            elevation_mode = current_unit.get_member("elevation_mode").get_value()
+            elevation_mode = current_unit["elevation_mode"].get_value()
             if elevation_mode == 2:
                 max_elevation_difference = 0
 
@@ -437,8 +437,8 @@ class SWGBCCAuxiliarySubprocessor:
                                            "engine.aux.cost.Cost")
 
         cost_amounts = []
-        for resource_amount in tech_group.tech.get_member("research_resource_costs").get_value():
-            resource_id = resource_amount.get_value()["type_id"].get_value()
+        for resource_amount in tech_group.tech["research_resource_costs"].get_value():
+            resource_id = resource_amount["type_id"].get_value()
 
             resource = None
             resource_name = ""
@@ -467,10 +467,10 @@ class SWGBCCAuxiliarySubprocessor:
                 continue
 
             # Skip resources that are only expected to be there
-            if not resource_amount.get_value()["enabled"].get_value():
+            if not resource_amount["enabled"].get_value():
                 continue
 
-            amount = resource_amount.get_value()["amount"].get_value()
+            amount = resource_amount["amount"].get_value()
 
             cost_amount_ref = "%s.%sAmount" % (cost_ref, resource_name)
             cost_amount = RawAPIObject(cost_amount_ref,
@@ -500,7 +500,7 @@ class SWGBCCAuxiliarySubprocessor:
                                                    cost_forward_ref,
                                                    "engine.aux.research.ResearchableTech")
 
-        research_time = tech_group.tech.get_member("research_time").get_value()
+        research_time = tech_group.tech["research_time"].get_value()
 
         researchable_raw_api_object.add_raw_member("research_time",
                                                    research_time,

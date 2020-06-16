@@ -32,7 +32,7 @@ class GenieEffectObject(ConverterObject):
         """
         Returns the effect's type.
         """
-        return self.get_member("type_id").get_value()
+        return self["type_id"].get_value()
 
     def __repr__(self):
         return "GenieEffectObject<%s>" % (self.get_id())

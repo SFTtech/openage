@@ -150,14 +150,13 @@ class DE2Processor:
         # Gaia also seems to have the most units, so we only read from Gaia
         #
         # call hierarchy: wrapper[0]->civs[0]->units
-        raw_units = gamespec.get_value()[0].get_value()["civs"].get_value()[0]\
-            .get_value()["units"].get_value()
+        raw_units = gamespec[0]["civs"][0]["units"].get_value()
 
         # Unit headers store the things units can do
-        raw_unit_headers = gamespec.get_value()[0].get_value()["unit_headers"].get_value()
+        raw_unit_headers = gamespec[0]["unit_headers"].get_value()
 
         for raw_unit in raw_units:
-            unit_id = raw_unit.get_value()["id0"].get_value()
+            unit_id = raw_unit["id0"].get_value()
             unit_members = raw_unit.get_value()
 
             # Turn attack and armor into containers to make diffing work
@@ -175,7 +174,7 @@ class DE2Processor:
 
             # Commands
             if "unit_commands" not in unit_members.keys():
-                unit_commands = raw_unit_headers[unit_id].get_value()["unit_commands"]
+                unit_commands = raw_unit_headers[unit_id]["unit_commands"]
                 unit.add_member(unit_commands)
 
     @staticmethod
@@ -187,15 +186,15 @@ class DE2Processor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->graphics
-        raw_graphics = gamespec.get_value()[0].get_value()["graphics"].get_value()
+        raw_graphics = gamespec[0]["graphics"].get_value()
 
         for raw_graphic in raw_graphics:
             # Can be ignored if there is no filename associated
-            filename = raw_graphic.get_value()["filename"].get_value()
+            filename = raw_graphic["filename"].get_value()
             if not filename:
                 continue
 
-            graphic_id = raw_graphic.get_value()["graphic_id"].get_value()
+            graphic_id = raw_graphic["graphic_id"].get_value()
             graphic_members = raw_graphic.get_value()
             graphic = GenieGraphic(graphic_id, full_data_set, members=graphic_members)
 

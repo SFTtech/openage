@@ -73,16 +73,16 @@ class AoCModifierSubprocessor:
             target_obj_name = name_lookup_dict[head_unit_id][0]
 
             for gatherer in gatherers:
-                unit_commands = gatherer.get_member("unit_commands").get_value()
+                unit_commands = gatherer["unit_commands"].get_value()
 
                 for command in unit_commands:
                     # Find a gather ability.
-                    type_id = command.get_value()["type"].get_value()
+                    type_id = command["type"].get_value()
 
                     if type_id not in (5, 110):
                         continue
 
-                    work_value = command.get_value()["work_value1"].get_value()
+                    work_value = command["work_value1"].get_value()
 
                     # Check if the work value is 1 (with some rounding error margin)
                     # if not we have to create a modifier
@@ -90,8 +90,8 @@ class AoCModifierSubprocessor:
                         continue
 
                     # Search for the lines with the matching class/unit id
-                    class_id = command.get_value()["class_id"].get_value()
-                    unit_id = command.get_value()["unit_id"].get_value()
+                    class_id = command["class_id"].get_value()
+                    unit_id = command["unit_id"].get_value()
 
                     entity_lines = {}
                     entity_lines.update(dataset.unit_lines)

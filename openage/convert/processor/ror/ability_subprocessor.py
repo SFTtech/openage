@@ -61,9 +61,9 @@ class RoRAbilitySubprocessor:
 
             if command_id == 104:
                 # Get animation from commands proceed sprite
-                unit_commands = current_unit.get_member("unit_commands").get_value()
+                unit_commands = current_unit["unit_commands"].get_value()
                 for command in unit_commands:
-                    type_id = command.get_value()["type"].get_value()
+                    type_id = command["type"].get_value()
 
                     if type_id != command_id:
                         continue
@@ -75,7 +75,7 @@ class RoRAbilitySubprocessor:
                     ability_animation_id = -1
 
             else:
-                ability_animation_id = current_unit.get_member("attack_sprite_id").get_value()
+                ability_animation_id = current_unit["attack_sprite_id"].get_value()
 
         else:
             ability_ref = "%s.ShootProjectile.Projectile%s.%s" % (game_entity_name, str(projectile), ability_name)
@@ -139,7 +139,7 @@ class RoRAbilitySubprocessor:
 
         # Command Sound
         if projectile == -1:
-            ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
+            ability_comm_sound_id = current_unit["command_sound_id"].get_value()
 
         else:
             ability_comm_sound_id = -1
@@ -429,13 +429,13 @@ class RoRAbilitySubprocessor:
 
         # Arc
         if position == 0:
-            projectile_id = current_unit.get_member("attack_projectile_primary_unit_id").get_value()
+            projectile_id = current_unit["attack_projectile_primary_unit_id"].get_value()
 
         else:
             raise Exception("Invalid position")
 
         projectile = dataset.genie_units[projectile_id]
-        arc = degrees(projectile.get_member("projectile_arc").get_value())
+        arc = degrees(projectile["projectile_arc"].get_value())
         ability_raw_api_object.add_raw_member("arc",
                                               arc,
                                               "engine.ability.type.Projectile")
@@ -448,7 +448,7 @@ class RoRAbilitySubprocessor:
         accuracy_location = ForwardRef(line, ability_ref)
         accuracy_raw_api_object.set_location(accuracy_location)
 
-        accuracy_value = current_unit.get_member("accuracy").get_value()
+        accuracy_value = current_unit["accuracy"].get_value()
         accuracy_raw_api_object.add_raw_member("accuracy",
                                                accuracy_value,
                                                "engine.aux.accuracy.Accuracy")
@@ -572,7 +572,7 @@ class RoRAbilitySubprocessor:
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        ability_animation_id = current_unit.get_member("attack_sprite_id").get_value()
+        ability_animation_id = current_unit["attack_sprite_id"].get_value()
 
         if ability_animation_id > -1:
             # Make the ability animated
@@ -590,7 +590,7 @@ class RoRAbilitySubprocessor:
                                                   "engine.ability.specialization.AnimatedAbility")
 
         # Command Sound
-        ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
+        ability_comm_sound_id = current_unit["command_sound_id"].get_value()
         if ability_comm_sound_id > -1:
             # Make the ability animated
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
@@ -607,7 +607,7 @@ class RoRAbilitySubprocessor:
 
         # Projectile
         projectiles = []
-        projectile_primary = current_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        projectile_primary = current_unit["attack_projectile_primary_unit_id"].get_value()
         if projectile_primary > -1:
             projectiles.append(ForwardRef(line,
                                           "%s.ShootProjectile.Projectile0" % (game_entity_name)))
@@ -628,18 +628,18 @@ class RoRAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
 
         # Range
-        min_range = current_unit.get_member("weapon_range_min").get_value()
+        min_range = current_unit["weapon_range_min"].get_value()
         ability_raw_api_object.add_raw_member("min_range",
                                               min_range,
                                               "engine.ability.type.ShootProjectile")
 
-        max_range = current_unit.get_member("weapon_range_max").get_value()
+        max_range = current_unit["weapon_range_max"].get_value()
         ability_raw_api_object.add_raw_member("max_range",
                                               max_range,
                                               "engine.ability.type.ShootProjectile")
 
         # Reload time and delay
-        reload_time = current_unit.get_member("attack_speed").get_value()
+        reload_time = current_unit["attack_speed"].get_value()
         ability_raw_api_object.add_raw_member("reload_time",
                                               reload_time,
                                               "engine.ability.type.ShootProjectile")
@@ -651,7 +651,7 @@ class RoRAbilitySubprocessor:
         else:
             frame_rate = 0
 
-        spawn_delay_frames = current_unit.get_member("frame_delay").get_value()
+        spawn_delay_frames = current_unit["frame_delay"].get_value()
         spawn_delay = frame_rate * spawn_delay_frames
         ability_raw_api_object.add_raw_member("spawn_delay",
                                               spawn_delay,
@@ -685,9 +685,9 @@ class RoRAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
 
         # Spawning area
-        spawning_area_offset_x = current_unit.get_member("weapon_offset")[0].get_value()
-        spawning_area_offset_y = current_unit.get_member("weapon_offset")[1].get_value()
-        spawning_area_offset_z = current_unit.get_member("weapon_offset")[2].get_value()
+        spawning_area_offset_x = current_unit["weapon_offset"][0].get_value()
+        spawning_area_offset_y = current_unit["weapon_offset"][1].get_value()
+        spawning_area_offset_z = current_unit["weapon_offset"][2].get_value()
 
         ability_raw_api_object.add_raw_member("spawning_area_offset_x",
                                               spawning_area_offset_x,

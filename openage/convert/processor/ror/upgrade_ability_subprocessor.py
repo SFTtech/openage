@@ -48,14 +48,14 @@ class RoRUpgradeAbilitySubprocessor:
 
         changed = False
         if diff:
-            diff_animation = diff.get_member("attack_sprite_id")
-            diff_comm_sound = diff.get_member("command_sound_id")
-            diff_min_range = diff.get_member("weapon_range_min")
-            diff_max_range = diff.get_member("weapon_range_min")
-            diff_reload_time = diff.get_member("attack_speed")
+            diff_animation = diff["attack_sprite_id"]
+            diff_comm_sound = diff["command_sound_id"]
+            diff_min_range = diff["weapon_range_min"]
+            diff_max_range = diff["weapon_range_min"]
+            diff_reload_time = diff["attack_speed"]
             # spawn delay also depends on animation
-            diff_spawn_delay = diff.get_member("frame_delay")
-            diff_spawn_area_offsets = diff.get_member("weapon_offset")
+            diff_spawn_delay = diff["frame_delay"]
+            diff_spawn_area_offsets = diff["weapon_offset"]
 
             if any(not isinstance(value, NoDiffMember) for value in (diff_animation,
                                                                      diff_comm_sound,

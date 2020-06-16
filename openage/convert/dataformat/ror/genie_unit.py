@@ -50,7 +50,7 @@ class RoRUnitLineGroup(GenieUnitLineGroup):
         :returns: True if the unit class is 10.
         """
         head_unit = self.get_head_unit()
-        return head_unit.get_member("unit_class").get_value() == 10
+        return head_unit["unit_class"].get_value() == 10
 
     def get_garrison_mode(self):
         """
@@ -107,7 +107,7 @@ class RoRBuildingLineGroup(GenieBuildingLineGroup):
         :returns: True if the unit class is 10.
         """
         head_unit = self.get_head_unit()
-        return head_unit.get_member("unit_class").get_value() == 10
+        return head_unit["unit_class"].get_value() == 10
 
     def get_garrison_mode(self):
         return None
@@ -138,7 +138,7 @@ class RoRAmbientGroup(GenieAmbientGroup):
         :returns: True if the unit class is 10.
         """
         head_unit = self.get_head_unit()
-        return head_unit.get_member("unit_class").get_value() == 10
+        return head_unit["unit_class"].get_value() == 10
 
     def get_garrison_mode(self):
         return None
@@ -165,7 +165,7 @@ class RoRVariantGroup(GenieVariantGroup):
         :returns: True if the unit class is 10.
         """
         head_unit = self.get_head_unit()
-        return head_unit.get_member("unit_class").get_value() == 10
+        return head_unit["unit_class"].get_value() == 10
 
     def get_garrison_mode(self):
         return None
@@ -218,7 +218,7 @@ class RoRUnitTaskGroup(GenieUnitTaskGroup):
         :returns: True if the unit class is 10.
         """
         head_unit = self.get_head_unit()
-        return head_unit.get_member("unit_class").get_value() == 10
+        return head_unit["unit_class"].get_value() == 10
 
     def get_garrison_mode(self):
         """

@@ -77,9 +77,9 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Get animation from commands proceed sprite
-        unit_commands = current_unit.get_member("unit_commands").get_value()
+        unit_commands = current_unit["unit_commands"].get_value()
         for command in unit_commands:
-            type_id = command.get_value()["type"].get_value()
+            type_id = command["type"].get_value()
 
             if type_id != command_id:
                 continue
@@ -140,7 +140,7 @@ class AoCAbilitySubprocessor:
                                                                  obj_exists)
 
         # Command Sound
-        ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
+        ability_comm_sound_id = current_unit["command_sound_id"].get_value()
         if ability_comm_sound_id > -1:
             # Make the ability animated
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
@@ -259,7 +259,7 @@ class AoCAbilitySubprocessor:
             ability_location = ForwardRef(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
 
-            ability_animation_id = current_unit.get_member("attack_sprite_id").get_value()
+            ability_animation_id = current_unit["attack_sprite_id"].get_value()
 
         else:
             ability_ref = "%s.ShootProjectile.Projectile%s.%s" % (game_entity_name, str(projectile), ability_name)
@@ -323,7 +323,7 @@ class AoCAbilitySubprocessor:
 
         # Command Sound
         if projectile == -1:
-            ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
+            ability_comm_sound_id = current_unit["command_sound_id"].get_value()
 
         else:
             ability_comm_sound_id = -1
@@ -478,7 +478,7 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.AttributeChangeTracker")
 
         # Change progress
-        damage_graphics = current_unit.get_member("damage_graphics").get_value()
+        damage_graphics = current_unit["damage_graphics"].get_value()
         progress_forward_refs = []
 
         # Damage graphics are ordered ascending, so we start from 0
@@ -1589,7 +1589,7 @@ class AoCAbilitySubprocessor:
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        ability_animation_id = current_unit.get_member("dying_graphic").get_value()
+        ability_animation_id = current_unit["dying_graphic"].get_value()
 
         if ability_animation_id > -1:
             # Make the ability animated
@@ -1820,7 +1820,7 @@ class AoCAbilitySubprocessor:
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        ability_animation_id = current_unit.get_member("dying_graphic").get_value()
+        ability_animation_id = current_unit["dying_graphic"].get_value()
 
         if ability_animation_id > -1:
             # Use the animation from Death ability
@@ -1881,8 +1881,8 @@ class AoCAbilitySubprocessor:
         dataset = line.data
 
         # Animation and time come from dead unit
-        death_animation_id = current_unit.get_member("dying_graphic").get_value()
-        dead_unit_id = current_unit.get_member("dead_unit_id").get_value()
+        death_animation_id = current_unit["dying_graphic"].get_value()
+        dead_unit_id = current_unit["dead_unit_id"].get_value()
         dead_unit = None
         if dead_unit_id > -1:
             dead_unit = dataset.genie_units[dead_unit_id]
@@ -1900,7 +1900,7 @@ class AoCAbilitySubprocessor:
 
         ability_animation_id = -1
         if dead_unit:
-            ability_animation_id = dead_unit.get_member("idle_graphic0").get_value()
+            ability_animation_id = dead_unit["idle_graphic0"].get_value()
 
         if ability_animation_id > -1:
             # Make the ability animated
@@ -1970,12 +1970,12 @@ class AoCAbilitySubprocessor:
         # Despawn time = corpse decay time (dead unit) or Death animation time (if no dead unit exist)
         despawn_time = 0
         if dead_unit:
-            resource_storage = dead_unit.get_member("resource_storage").get_value()
+            resource_storage = dead_unit["resource_storage"].get_value()
             for storage in resource_storage:
-                resource_id = storage.get_value()["type"].get_value()
+                resource_id = storage["type"].get_value()
 
                 if resource_id == 12:
-                    despawn_time = storage.get_value()["amount"].get_value()
+                    despawn_time = storage["amount"].get_value()
 
         elif death_animation_id > -1:
             despawn_time = dataset.genie_graphics[death_animation_id].get_animation_length()
@@ -2023,12 +2023,12 @@ class AoCAbilitySubprocessor:
         # Resource containers
         containers = []
         for gatherer in gatherers:
-            unit_commands = gatherer.get_member("unit_commands").get_value()
+            unit_commands = gatherer["unit_commands"].get_value()
 
             for command in unit_commands:
                 # Find a gather ability. It doesn't matter which one because
                 # they should all produce the same resource for one genie unit.
-                type_id = command.get_value()["type"].get_value()
+                type_id = command["type"].get_value()
 
                 if type_id in (5, 110):
                     break
@@ -2530,7 +2530,7 @@ class AoCAbilitySubprocessor:
 
         abilities = []
         for gatherer in gatherers:
-            unit_commands = gatherer.get_member("unit_commands").get_value()
+            unit_commands = gatherer["unit_commands"].get_value()
             resource = None
             ability_animation_id = -1
             harvestable_class_ids = OrderedSet()
@@ -2539,24 +2539,24 @@ class AoCAbilitySubprocessor:
             for command in unit_commands:
                 # Find a gather ability. It doesn't matter which one because
                 # they should all produce the same resource for one genie unit.
-                type_id = command.get_value()["type"].get_value()
+                type_id = command["type"].get_value()
 
                 if type_id not in (5, 110):
                     continue
 
-                target_class_id = command.get_value()["class_id"].get_value()
+                target_class_id = command["class_id"].get_value()
                 if target_class_id > -1:
                     harvestable_class_ids.add(target_class_id)
 
-                target_unit_id = command.get_value()["unit_id"].get_value()
+                target_unit_id = command["unit_id"].get_value()
                 if target_unit_id > -1:
                     harvestable_unit_ids.add(target_unit_id)
 
-                resource_id = command.get_value()["resource_out"].get_value()
+                resource_id = command["resource_out"].get_value()
 
                 # If resource_out is not specified, the gatherer harvests resource_in
                 if resource_id == -1:
-                    resource_id = command.get_value()["resource_in"].get_value()
+                    resource_id = command["resource_in"].get_value()
 
                 if resource_id == 0:
                     resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
@@ -2574,10 +2574,10 @@ class AoCAbilitySubprocessor:
                     continue
 
                 if type_id == 110:
-                    ability_animation_id = command.get_value()["work_sprite_id"].get_value()
+                    ability_animation_id = command["work_sprite_id"].get_value()
 
                 else:
-                    ability_animation_id = command.get_value()["proceed_sprite_id"].get_value()
+                    ability_animation_id = command["proceed_sprite_id"].get_value()
 
             # Look for the harvestable groups that match the class IDs and unit IDs
             check_groups = []
@@ -2650,7 +2650,7 @@ class AoCAbilitySubprocessor:
 
             rate_raw_api_object.add_raw_member("type", resource, "engine.aux.resource.ResourceRate")
 
-            gather_rate = gatherer.get_member("work_rate").get_value()
+            gather_rate = gatherer["work_rate"].get_value()
             rate_raw_api_object.add_raw_member("rate", gather_rate, "engine.aux.resource.ResourceRate")
 
             line.add_raw_api_object(rate_raw_api_object)
@@ -2716,10 +2716,10 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Resource spot
-        resource_storage = current_unit.get_member("resource_storage").get_value()
+        resource_storage = current_unit["resource_storage"].get_value()
 
         for storage in resource_storage:
-            resource_id = storage.get_value()["type"].get_value()
+            resource_id = storage["type"].get_value()
 
             # IDs 15, 16, 17 are other types of food (meat, berries, fish)
             if resource_id in (0, 15, 16, 17):
@@ -2753,15 +2753,15 @@ class AoCAbilitySubprocessor:
             # Start amount (equals max amount)
             if line.get_id() == 50:
                 # Farm food amount (hardcoded in civ)
-                starting_amount = dataset.genie_civs[1].get_member("resources").get_value()[36].get_value()
+                starting_amount = dataset.genie_civs[1]["resources"][36].get_value()
 
             elif line.get_id() == 199:
                 # Fish trap food amount (hardcoded in civ)
-                starting_amount = storage.get_value()["amount"].get_value()
-                starting_amount += dataset.genie_civs[1].get_member("resources").get_value()[88].get_value()
+                starting_amount = storage["amount"].get_value()
+                starting_amount += dataset.genie_civs[1]["resources"][88].get_value()
 
             else:
-                starting_amount = storage.get_value()["amount"].get_value()
+                starting_amount = storage["amount"].get_value()
 
             spot_raw_api_object.add_raw_member("starting_amount",
                                                starting_amount,
@@ -2773,7 +2773,7 @@ class AoCAbilitySubprocessor:
                                                "engine.aux.resource_spot.ResourceSpot")
 
             # Decay rate
-            decay_rate = current_unit.get_member("resource_decay").get_value()
+            decay_rate = current_unit["resource_decay"].get_value()
             spot_raw_api_object.add_raw_member("decay_rate",
                                                decay_rate,
                                                "engine.aux.resource_spot.ResourceSpot")
@@ -2924,7 +2924,7 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Harvestable")
 
         # Unit have to die before they are harvestable (except for farms)
-        harvestable_by_default = current_unit.get_member("hit_points").get_value() == 0
+        harvestable_by_default = current_unit["hit_points"].get_value() == 0
         if line.get_class_id() == 49:
             harvestable_by_default = True
 
@@ -3059,9 +3059,9 @@ class AoCAbilitySubprocessor:
         hitbox_location = ForwardRef(line, ability_ref)
         hitbox_raw_api_object.set_location(hitbox_location)
 
-        radius_x = current_unit.get_member("radius_x").get_value()
-        radius_y = current_unit.get_member("radius_y").get_value()
-        radius_z = current_unit.get_member("radius_z").get_value()
+        radius_x = current_unit["radius_x"].get_value()
+        radius_y = current_unit["radius_y"].get_value()
+        radius_z = current_unit["radius_z"].get_value()
 
         hitbox_raw_api_object.add_raw_member("radius_x",
                                              radius_x,
@@ -3110,7 +3110,7 @@ class AoCAbilitySubprocessor:
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        ability_animation_id = current_unit.get_member("idle_graphic0").get_value()
+        ability_animation_id = current_unit["idle_graphic0"].get_value()
 
         if ability_animation_id > -1:
             # Make the ability animated
@@ -3210,7 +3210,7 @@ class AoCAbilitySubprocessor:
                                              "engine.aux.attribute.AttributeSetting")
 
         # Max HP and starting HP
-        max_hp_value = current_unit.get_member("hit_points").get_value()
+        max_hp_value = current_unit["hit_points"].get_value()
         health_raw_api_object.add_raw_member("max_value",
                                              max_hp_value,
                                              "engine.aux.attribute.AttributeSetting")
@@ -3294,7 +3294,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Line of sight
-        line_of_sight = current_unit.get_member("line_of_sight").get_value()
+        line_of_sight = current_unit["line_of_sight"].get_value()
         ability_raw_api_object.add_raw_member("range", line_of_sight,
                                               "engine.ability.type.LineOfSight")
 
@@ -3336,7 +3336,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Animation
-        ability_animation_id = current_unit.get_member("move_graphics").get_value()
+        ability_animation_id = current_unit["move_graphics"].get_value()
         if ability_animation_id > -1:
             # Make the ability animated
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
@@ -3389,7 +3389,7 @@ class AoCAbilitySubprocessor:
                                                                  obj_exists)
 
         # Command Sound
-        ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
+        ability_comm_sound_id = current_unit["command_sound_id"].get_value()
         if ability_comm_sound_id > -1:
             # Make the ability animated
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
@@ -3408,7 +3408,7 @@ class AoCAbilitySubprocessor:
                                                   "engine.ability.specialization.CommandSoundAbility")
 
         # Speed
-        speed = current_unit.get_member("speed").get_value()
+        speed = current_unit["speed"].get_value()
         ability_raw_api_object.add_raw_member("speed", speed, "engine.ability.type.Move")
 
         # Standard move modes
@@ -3423,7 +3423,7 @@ class AoCAbilitySubprocessor:
         follow_location = ForwardRef(line, "%s.Move" % (game_entity_name))
         follow_raw_api_object.set_location(follow_location)
 
-        follow_range = current_unit.get_member("line_of_sight").get_value() - 1
+        follow_range = current_unit["line_of_sight"].get_value() - 1
         follow_raw_api_object.add_raw_member("range", follow_range,
                                              "engine.aux.move_mode.type.Follow")
 
@@ -3483,7 +3483,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Animation
-        ability_animation_id = current_unit.get_member("move_graphics").get_value()
+        ability_animation_id = current_unit["move_graphics"].get_value()
         if ability_animation_id > -1:
             # Make the ability animated
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
@@ -3503,7 +3503,7 @@ class AoCAbilitySubprocessor:
                                                   "engine.ability.specialization.AnimatedAbility")
 
         # Speed
-        speed = current_unit.get_member("speed").get_value()
+        speed = current_unit["speed"].get_value()
         ability_raw_api_object.add_raw_member("speed", speed, "engine.ability.type.Move")
 
         # Move modes
@@ -3801,16 +3801,16 @@ class AoCAbilitySubprocessor:
 
         # Arc
         if position == 0:
-            projectile_id = current_unit.get_member("attack_projectile_primary_unit_id").get_value()
+            projectile_id = current_unit["attack_projectile_primary_unit_id"].get_value()
 
         elif position == 1:
-            projectile_id = current_unit.get_member("attack_projectile_secondary_unit_id").get_value()
+            projectile_id = current_unit["attack_projectile_secondary_unit_id"].get_value()
 
         else:
             raise Exception("Invalid position")
 
         projectile = dataset.genie_units[projectile_id]
-        arc = degrees(projectile.get_member("projectile_arc").get_value())
+        arc = degrees(projectile["projectile_arc"].get_value())
         ability_raw_api_object.add_raw_member("arc",
                                               arc,
                                               "engine.ability.type.Projectile")
@@ -3823,12 +3823,12 @@ class AoCAbilitySubprocessor:
         accuracy_location = ForwardRef(line, ability_ref)
         accuracy_raw_api_object.set_location(accuracy_location)
 
-        accuracy_value = current_unit.get_member("accuracy").get_value()
+        accuracy_value = current_unit["accuracy"].get_value()
         accuracy_raw_api_object.add_raw_member("accuracy",
                                                accuracy_value,
                                                "engine.aux.accuracy.Accuracy")
 
-        accuracy_dispersion = current_unit.get_member("accuracy_dispersion").get_value()
+        accuracy_dispersion = current_unit["accuracy_dispersion"].get_value()
         accuracy_raw_api_object.add_raw_member("accuracy_dispersion",
                                                accuracy_dispersion,
                                                "engine.aux.accuracy.Accuracy")
@@ -3837,8 +3837,10 @@ class AoCAbilitySubprocessor:
                                                dropoff_type,
                                                "engine.aux.accuracy.Accuracy")
 
-        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
-                         dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()]
+        allowed_types = [
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()
+        ]
         accuracy_raw_api_object.add_raw_member("target_types",
                                                allowed_types,
                                                "engine.aux.accuracy.Accuracy")
@@ -3901,11 +3903,11 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Also stores the pop space
-        resource_storage = current_unit.get_member("resource_storage").get_value()
+        resource_storage = current_unit["resource_storage"].get_value()
 
         contingents = []
         for storage in resource_storage:
-            type_id = storage.get_value()["type"].get_value()
+            type_id = storage["type"].get_value()
 
             if type_id == 4:
                 resource = dataset.pregen_nyan_objects["aux.resource.types.PopulationSpace"].get_nyan_object()
@@ -3914,7 +3916,7 @@ class AoCAbilitySubprocessor:
             else:
                 continue
 
-            amount = storage.get_value()["amount"].get_value()
+            amount = storage["amount"].get_value()
 
             contingent_amount_name = "%s.ProvideContingent.%s" % (game_entity_name, resource_name)
             contingent_amount = RawAPIObject(contingent_amount_name, resource_name,
@@ -4160,12 +4162,12 @@ class AoCAbilitySubprocessor:
         if isinstance(line, GenieVillagerGroup) and restock_target_id == 50:
             # Search for the build graphic of farms
             restock_unit = line.get_units_with_command(101)[0]
-            commands = restock_unit.get_member("unit_commands").get_value()
+            commands = restock_unit["unit_commands"].get_value()
             for command in commands:
-                type_id = command.get_value()["type"].get_value()
+                type_id = command["type"].get_value()
 
                 if type_id == 101:
-                    ability_animation_id = command.get_value()["work_sprite_id"].get_value()
+                    ability_animation_id = command["work_sprite_id"].get_value()
 
         if ability_animation_id > -1:
             # Make the ability animated
@@ -4200,7 +4202,7 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Restock")
 
         # restock time
-        restock_time = restock_target.get_head_unit().get_member("creation_time").get_value()
+        restock_time = restock_target.get_head_unit()["creation_time"].get_value()
         ability_raw_api_object.add_raw_member("restock_time",
                                               restock_time,
                                               "engine.ability.type.Restock")
@@ -4218,14 +4220,14 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Restock")
 
         # Amount
-        restock_amount = restock_target.get_head_unit().get_member("resource_capacity").get_value()
+        restock_amount = restock_target.get_head_unit()["resource_capacity"].get_value()
         if restock_target_id == 50:
             # Farm food amount (hardcoded in civ)
-            restock_amount = dataset.genie_civs[1].get_member("resources").get_value()[36].get_value()
+            restock_amount = dataset.genie_civs[1]["resources"][36].get_value()
 
         elif restock_target_id == 199:
             # Fish trap added food amount (hardcoded in civ)
-            restock_amount += dataset.genie_civs[1].get_member("resources").get_value()[88].get_value()
+            restock_amount += dataset.genie_civs[1]["resources"][88].get_value()
 
         ability_raw_api_object.add_raw_member("amount",
                                               restock_amount,
@@ -4367,22 +4369,22 @@ class AoCAbilitySubprocessor:
         # Create containers
         containers = []
         for gatherer in gatherers:
-            unit_commands = gatherer.get_member("unit_commands").get_value()
+            unit_commands = gatherer["unit_commands"].get_value()
             resource = None
 
             for command in unit_commands:
                 # Find a gather ability. It doesn't matter which one because
                 # they should all produce the same resource for one genie unit.
-                type_id = command.get_value()["type"].get_value()
+                type_id = command["type"].get_value()
 
                 if type_id not in (5, 110):
                     continue
 
-                resource_id = command.get_value()["resource_out"].get_value()
+                resource_id = command["resource_out"].get_value()
 
                 # If resource_out is not specified, the gatherer harvests resource_in
                 if resource_id == -1:
-                    resource_id = command.get_value()["resource_in"].get_value()
+                    resource_id = command["resource_in"].get_value()
 
                 if resource_id == 0:
                     resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
@@ -4418,14 +4420,14 @@ class AoCAbilitySubprocessor:
                                                     "engine.aux.storage.ResourceContainer")
 
             # Carry capacity
-            carry_capacity = gatherer.get_member("resource_capacity").get_value()
+            carry_capacity = gatherer["resource_capacity"].get_value()
             container_raw_api_object.add_raw_member("capacity",
                                                     carry_capacity,
                                                     "engine.aux.storage.ResourceContainer")
 
             # Carry progress
             carry_progress = []
-            carry_move_animation_id = command.get_value()["carry_sprite_id"].get_value()
+            carry_move_animation_id = command["carry_sprite_id"].get_value()
             if carry_move_animation_id > -1:
                 # ===========================================================================================
                 progress_name = "%s.ResourceStorage.%sCarryProgress" % (game_entity_name,
@@ -4589,7 +4591,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Command Sound
-        ability_comm_sound_id = current_unit.get_member("selection_sound_id").get_value()
+        ability_comm_sound_id = current_unit["selection_sound_id"].get_value()
         if ability_comm_sound_id > -1:
             # Make the ability animated
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
@@ -4611,12 +4613,12 @@ class AoCAbilitySubprocessor:
         box_location = ForwardRef(line, ability_ref)
         box_raw_api_object.set_location(box_location)
 
-        radius_x = current_unit.get_member("selection_shape_x").get_value()
+        radius_x = current_unit["selection_shape_x"].get_value()
         box_raw_api_object.add_raw_member("radius_x",
                                           radius_x,
                                           "engine.aux.selection_box.type.Rectangle")
 
-        radius_y = current_unit.get_member("selection_shape_y").get_value()
+        radius_y = current_unit["selection_shape_y"].get_value()
         box_raw_api_object.add_raw_member("radius_y",
                                           radius_y,
                                           "engine.aux.selection_box.type.Rectangle")
@@ -4707,7 +4709,7 @@ class AoCAbilitySubprocessor:
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        ability_animation_id = current_unit.get_member("attack_sprite_id").get_value()
+        ability_animation_id = current_unit["attack_sprite_id"].get_value()
 
         if ability_animation_id > -1:
             # Make the ability animated
@@ -4725,7 +4727,7 @@ class AoCAbilitySubprocessor:
                                                   "engine.ability.specialization.AnimatedAbility")
 
         # Command Sound
-        ability_comm_sound_id = current_unit.get_member("command_sound_id").get_value()
+        ability_comm_sound_id = current_unit["command_sound_id"].get_value()
         if ability_comm_sound_id > -1:
             # Make the ability animated
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
@@ -4742,12 +4744,12 @@ class AoCAbilitySubprocessor:
 
         # Projectile
         projectiles = []
-        projectile_primary = current_unit.get_member("attack_projectile_primary_unit_id").get_value()
+        projectile_primary = current_unit["attack_projectile_primary_unit_id"].get_value()
         if projectile_primary > -1:
             projectiles.append(ForwardRef(line,
                                           "%s.ShootProjectile.Projectile0" % (game_entity_name)))
 
-        projectile_secondary = current_unit.get_member("attack_projectile_secondary_unit_id").get_value()
+        projectile_secondary = current_unit["attack_projectile_secondary_unit_id"].get_value()
         if projectile_secondary > -1:
             projectiles.append(ForwardRef(line,
                                           "%s.ShootProjectile.Projectile1" % (game_entity_name)))
@@ -4757,8 +4759,8 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
 
         # Projectile count
-        min_projectiles = current_unit.get_member("attack_projectile_count").get_value()
-        max_projectiles = current_unit.get_member("attack_projectile_max_count").get_value()
+        min_projectiles = current_unit["attack_projectile_count"].get_value()
+        max_projectiles = current_unit["attack_projectile_max_count"].get_value()
 
         if projectile_primary == -1:
             # Special case where only the second projectile is defined (town center)
@@ -4784,18 +4786,18 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
 
         # Range
-        min_range = current_unit.get_member("weapon_range_min").get_value()
+        min_range = current_unit["weapon_range_min"].get_value()
         ability_raw_api_object.add_raw_member("min_range",
                                               min_range,
                                               "engine.ability.type.ShootProjectile")
 
-        max_range = current_unit.get_member("weapon_range_max").get_value()
+        max_range = current_unit["weapon_range_max"].get_value()
         ability_raw_api_object.add_raw_member("max_range",
                                               max_range,
                                               "engine.ability.type.ShootProjectile")
 
         # Reload time and delay
-        reload_time = current_unit.get_member("attack_speed").get_value()
+        reload_time = current_unit["attack_speed"].get_value()
         ability_raw_api_object.add_raw_member("reload_time",
                                               reload_time,
                                               "engine.ability.type.ShootProjectile")
@@ -4807,7 +4809,7 @@ class AoCAbilitySubprocessor:
         else:
             frame_rate = 0
 
-        spawn_delay_frames = current_unit.get_member("frame_delay").get_value()
+        spawn_delay_frames = current_unit["frame_delay"].get_value()
         spawn_delay = frame_rate * spawn_delay_frames
         ability_raw_api_object.add_raw_member("spawn_delay",
                                               spawn_delay,
@@ -4841,9 +4843,9 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
 
         # Spawning area
-        spawning_area_offset_x = current_unit.get_member("weapon_offset")[0].get_value()
-        spawning_area_offset_y = current_unit.get_member("weapon_offset")[1].get_value()
-        spawning_area_offset_z = current_unit.get_member("weapon_offset")[2].get_value()
+        spawning_area_offset_x = current_unit["weapon_offset"][0].get_value()
+        spawning_area_offset_y = current_unit["weapon_offset"][1].get_value()
+        spawning_area_offset_z = current_unit["weapon_offset"][2].get_value()
 
         ability_raw_api_object.add_raw_member("spawning_area_offset_x",
                                               spawning_area_offset_x,
@@ -4855,9 +4857,9 @@ class AoCAbilitySubprocessor:
                                               spawning_area_offset_z,
                                               "engine.ability.type.ShootProjectile")
 
-        spawning_area_width = current_unit.get_member("attack_projectile_spawning_area_width").get_value()
-        spawning_area_height = current_unit.get_member("attack_projectile_spawning_area_length").get_value()
-        spawning_area_randomness = current_unit.get_member("attack_projectile_spawning_area_randomness").get_value()
+        spawning_area_width = current_unit["attack_projectile_spawning_area_width"].get_value()
+        spawning_area_height = current_unit["attack_projectile_spawning_area_length"].get_value()
+        spawning_area_randomness = current_unit["attack_projectile_spawning_area_randomness"].get_value()
 
         ability_raw_api_object.add_raw_member("spawning_area_width",
                                               spawning_area_width,
@@ -5011,7 +5013,7 @@ class AoCAbilitySubprocessor:
                                                 "engine.aux.storage.Container")
 
         # Container slots
-        slots = current_unit.get_member("garrison_capacity").get_value()
+        slots = current_unit["garrison_capacity"].get_value()
         if garrison_mode is GenieGarrisonMode.MONK:
             slots = 1
 
@@ -5023,8 +5025,8 @@ class AoCAbilitySubprocessor:
         carry_progress = []
         if garrison_mode is GenieGarrisonMode.MONK and isinstance(line, GenieMonkGroup):
             switch_unit = line.get_switch_unit()
-            carry_idle_animation_id = switch_unit.get_member("idle_graphic0").get_value()
-            carry_move_animation_id = switch_unit.get_member("move_graphics").get_value()
+            carry_idle_animation_id = switch_unit["idle_graphic0"].get_value()
+            carry_move_animation_id = switch_unit["move_graphics"].get_value()
 
             progress_name = "%s.Storage.CarryProgress" % (game_entity_name)
             progress_raw_api_object = RawAPIObject(progress_name,
@@ -5185,7 +5187,7 @@ class AoCAbilitySubprocessor:
         else:
             # Garrison graphics
             if current_unit.has_member("garrison_graphic"):
-                garrison_animation_id = current_unit.get_member("garrison_graphic").get_value()
+                garrison_animation_id = current_unit["garrison_graphic"].get_value()
 
             else:
                 garrison_animation_id = -1
@@ -5362,15 +5364,15 @@ class AoCAbilitySubprocessor:
         trade_routes = []
 
         trade_post_id = -1
-        unit_commands = current_unit.get_member("unit_commands").get_value()
+        unit_commands = current_unit["unit_commands"].get_value()
         for command in unit_commands:
             # Find the trade command and the trade post id
-            type_id = command.get_value()["type"].get_value()
+            type_id = command["type"].get_value()
 
             if type_id != 111:
                 continue
 
-            trade_post_id = command.get_value()["unit_id"].get_value()
+            trade_post_id = command["unit_id"].get_value()
             if trade_post_id not in dataset.building_lines.keys():
                 # Skips trade workshop
                 continue
@@ -5484,7 +5486,7 @@ class AoCAbilitySubprocessor:
         storage_entity = None
         garrisoned_forward_ref = None
         for garrisoned in line.garrison_entities:
-            creatable_type = garrisoned.get_head_unit().get_member("creatable_type").get_value()
+            creatable_type = garrisoned.get_head_unit()["creatable_type"].get_value()
 
             if creatable_type == 4:
                 storage_name = name_lookup_dict[garrisoned.get_id()][0]
@@ -5506,13 +5508,13 @@ class AoCAbilitySubprocessor:
 
         # Target container
         target = None
-        unit_commands = line.get_switch_unit().get_member("unit_commands").get_value()
+        unit_commands = line.get_switch_unit()["unit_commands"].get_value()
         for command in unit_commands:
-            type_id = command.get_value()["type"].get_value()
+            type_id = command["type"].get_value()
 
             # Deposit
             if type_id == 136:
-                target_id = command.get_value()["unit_id"].get_value()
+                target_id = command["unit_id"].get_value()
                 target = dataset.building_lines[target_id]
 
         target_name = name_lookup_dict[target.get_id()][0]
@@ -5553,14 +5555,14 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Speed
-        turn_speed_unmodified = current_unit.get_member("turn_speed").get_value()
+        turn_speed_unmodified = current_unit["turn_speed"].get_value()
 
         # Default case: Instant turning
         turn_speed = MemberSpecialValue.NYAN_INF
 
         # Ships/Trebuchets turn slower
         if turn_speed_unmodified > 0:
-            turn_yaw = current_unit.get_member("max_yaw_per_sec_moving").get_value()
+            turn_yaw = current_unit["max_yaw_per_sec_moving"].get_value()
             turn_speed = degrees(turn_yaw)
 
         ability_raw_api_object.add_raw_member("turn_speed", turn_speed, "engine.ability.type.Turn")
@@ -5602,11 +5604,11 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Also stores the pop space
-        resource_storage = current_unit.get_member("resource_storage").get_value()
+        resource_storage = current_unit["resource_storage"].get_value()
 
         contingents = []
         for storage in resource_storage:
-            type_id = storage.get_value()["type"].get_value()
+            type_id = storage["type"].get_value()
 
             if type_id == 11:
                 resource = dataset.pregen_nyan_objects["aux.resource.types.PopulationSpace"].get_nyan_object()
@@ -5615,7 +5617,7 @@ class AoCAbilitySubprocessor:
             else:
                 continue
 
-            amount = storage.get_value()["amount"].get_value()
+            amount = storage["amount"].get_value()
 
             contingent_amount_name = "%s.UseContingent.%s" % (game_entity_name, resource_name)
             contingent_amount = RawAPIObject(contingent_amount_name, resource_name,

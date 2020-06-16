@@ -170,14 +170,13 @@ class AoCProcessor:
         # Gaia also seems to have the most units, so we only read from Gaia
         #
         # call hierarchy: wrapper[0]->civs[0]->units
-        raw_units = gamespec.get_value()[0].get_value()["civs"].get_value()[0]\
-            .get_value()["units"].get_value()
+        raw_units = gamespec[0]["civs"][0]["units"].get_value()
 
         # Unit headers store the things units can do
-        raw_unit_headers = gamespec.get_value()[0].get_value()["unit_headers"].get_value()
+        raw_unit_headers = gamespec[0]["unit_headers"].get_value()
 
         for raw_unit in raw_units:
-            unit_id = raw_unit.get_value()["id0"].get_value()
+            unit_id = raw_unit["id0"].get_value()
             unit_members = raw_unit.get_value()
 
             # Turn attack and armor into containers to make diffing work
@@ -194,7 +193,7 @@ class AoCProcessor:
             full_data_set.genie_units.update({unit.get_id(): unit})
 
             # Commands
-            unit_commands = raw_unit_headers[unit_id].get_value()["unit_commands"]
+            unit_commands = raw_unit_headers[unit_id]["unit_commands"]
             unit.add_member(unit_commands)
 
     @staticmethod
@@ -208,7 +207,7 @@ class AoCProcessor:
         # Techs are stored as "researches".
         #
         # call hierarchy: wrapper[0]->researches
-        raw_techs = gamespec.get_value()[0].get_value()["researches"].get_value()
+        raw_techs = gamespec[0]["researches"].get_value()
 
         index = 0
         for raw_tech in raw_techs:
@@ -229,14 +228,14 @@ class AoCProcessor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->effect_bundles
-        raw_effect_bundles = gamespec.get_value()[0].get_value()["effect_bundles"].get_value()
+        raw_effect_bundles = gamespec[0]["effect_bundles"].get_value()
 
         index_bundle = 0
         for raw_effect_bundle in raw_effect_bundles:
             bundle_id = index_bundle
 
             # call hierarchy: effect_bundle->effects
-            raw_effects = raw_effect_bundle.get_value()["effects"].get_value()
+            raw_effects = raw_effect_bundle["effects"].get_value()
 
             effects = {}
 
@@ -272,7 +271,7 @@ class AoCProcessor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->civs
-        raw_civs = gamespec.get_value()[0].get_value()["civs"].get_value()
+        raw_civs = gamespec[0]["civs"].get_value()
 
         index = 0
         for raw_civ in raw_civs:
@@ -298,10 +297,10 @@ class AoCProcessor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->age_connections
-        raw_connections = gamespec.get_value()[0].get_value()["age_connections"].get_value()
+        raw_connections = gamespec[0]["age_connections"].get_value()
 
         for raw_connection in raw_connections:
-            age_id = raw_connection.get_value()["id"].get_value()
+            age_id = raw_connection["id"].get_value()
             connection_members = raw_connection.get_value()
 
             connection = GenieAgeConnection(age_id, full_data_set, members=connection_members)
@@ -316,10 +315,10 @@ class AoCProcessor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->building_connections
-        raw_connections = gamespec.get_value()[0].get_value()["building_connections"].get_value()
+        raw_connections = gamespec[0]["building_connections"].get_value()
 
         for raw_connection in raw_connections:
-            building_id = raw_connection.get_value()["id"].get_value()
+            building_id = raw_connection["id"].get_value()
             connection_members = raw_connection.get_value()
 
             connection = GenieBuildingConnection(building_id, full_data_set,
@@ -335,10 +334,10 @@ class AoCProcessor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->unit_connections
-        raw_connections = gamespec.get_value()[0].get_value()["unit_connections"].get_value()
+        raw_connections = gamespec[0]["unit_connections"].get_value()
 
         for raw_connection in raw_connections:
-            unit_id = raw_connection.get_value()["id"].get_value()
+            unit_id = raw_connection["id"].get_value()
             connection_members = raw_connection.get_value()
 
             connection = GenieUnitConnection(unit_id, full_data_set, members=connection_members)
@@ -353,10 +352,10 @@ class AoCProcessor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->tech_connections
-        raw_connections = gamespec.get_value()[0].get_value()["tech_connections"].get_value()
+        raw_connections = gamespec[0]["tech_connections"].get_value()
 
         for raw_connection in raw_connections:
-            tech_id = raw_connection.get_value()["id"].get_value()
+            tech_id = raw_connection["id"].get_value()
             connection_members = raw_connection.get_value()
 
             connection = GenieTechConnection(tech_id, full_data_set, members=connection_members)
@@ -371,19 +370,19 @@ class AoCProcessor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->graphics
-        raw_graphics = gamespec.get_value()[0].get_value()["graphics"].get_value()
+        raw_graphics = gamespec[0]["graphics"].get_value()
 
         for raw_graphic in raw_graphics:
             # Can be ignored if there is no filename associated
-            filename = raw_graphic.get_value()["filename"].get_value()
+            filename = raw_graphic["filename"].get_value()
             if not filename:
                 continue
 
-            graphic_id = raw_graphic.get_value()["graphic_id"].get_value()
+            graphic_id = raw_graphic["graphic_id"].get_value()
             graphic_members = raw_graphic.get_value()
 
             graphic = GenieGraphic(graphic_id, full_data_set, members=graphic_members)
-            slp_id = raw_graphic.get_value()["slp_id"].get_value()
+            slp_id = raw_graphic["slp_id"].get_value()
             if str(slp_id) not in full_data_set.existing_graphics:
                 graphic.exists = False
 
@@ -402,10 +401,10 @@ class AoCProcessor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->sounds
-        raw_sounds = gamespec.get_value()[0].get_value()["sounds"].get_value()
+        raw_sounds = gamespec[0]["sounds"].get_value()
 
         for raw_sound in raw_sounds:
-            sound_id = raw_sound.get_value()["sound_id"].get_value()
+            sound_id = raw_sound["sound_id"].get_value()
             sound_members = raw_sound.get_value()
 
             sound = GenieSound(sound_id, full_data_set, members=sound_members)
@@ -420,7 +419,7 @@ class AoCProcessor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->terrains
-        raw_terrains = gamespec.get_value()[0].get_value()["terrains"].get_value()
+        raw_terrains = gamespec[0]["terrains"].get_value()
 
         index = 0
         for raw_terrain in raw_terrains:
@@ -452,9 +451,9 @@ class AoCProcessor:
         pre_unit_lines = {}
 
         for connection in unit_connections.values():
-            unit_id = connection.get_member("id").get_value()
+            unit_id = connection["id"].get_value()
             unit = full_data_set.genie_units[unit_id]
-            line_id = connection.get_member("vertical_line").get_value()
+            line_id = connection["vertical_line"].get_value()
 
             # Check if a line object already exists for this id
             # if not, create it
@@ -465,7 +464,7 @@ class AoCProcessor:
             else:
                 # Check for special cases first
                 if unit.has_member("transform_unit_id")\
-                        and unit.get_member("transform_unit_id").get_value() > -1:
+                        and unit["transform_unit_id"].get_value() > -1:
                     # Trebuchet
                     unit_line = GenieUnitTransformGroup(line_id, unit_id, full_data_set)
                     full_data_set.transform_groups.update({unit_line.get_id(): unit_line})
@@ -477,7 +476,7 @@ class AoCProcessor:
                     full_data_set.monk_groups.update({unit_line.get_id(): unit_line})
 
                 elif unit.has_member("task_group")\
-                        and unit.get_member("task_group").get_value() > 0:
+                        and unit["task_group"].get_value() > 0:
                     # Villager
                     # done somewhere else because they are special^TM
                     continue
@@ -489,17 +488,17 @@ class AoCProcessor:
                 pre_unit_lines.update({unit_line.get_id(): unit_line})
                 full_data_set.unit_ref.update({unit_id: unit_line})
 
-            if connection.get_member("line_mode").get_value() == 2:
+            if connection["line_mode"].get_value() == 2:
                 # The unit is the first in line
                 unit_line.add_unit(unit)
 
             else:
                 # The unit comes after another one
                 # Search other_connections for the previous unit in line
-                connected_types = connection.get_member("other_connections").get_value()
+                connected_types = connection["other_connections"].get_value()
                 connected_index = -1
                 for index in range(len(connected_types)):
-                    connected_type = connected_types[index].get_value()["other_connection"].get_value()
+                    connected_type = connected_types[index]["other_connection"].get_value()
                     if connected_type == 2:
                         # 2 == Unit
                         connected_index = index
@@ -510,7 +509,7 @@ class AoCProcessor:
                                     " be found in other_connections" % (unit_id))
 
                 # Find the id of the connected unit
-                connected_ids = connection.get_member("other_connected_ids").get_value()
+                connected_ids = connection["other_connected_ids"].get_value()
                 previous_unit_id = connected_ids[connected_index].get_value()
 
                 unit_line.add_unit(unit, after=previous_unit_id)
@@ -556,7 +555,7 @@ class AoCProcessor:
         building_connections = full_data_set.building_connections
 
         for connection in building_connections.values():
-            building_id = connection.get_member("id").get_value()
+            building_id = connection["id"].get_value()
             building = full_data_set.genie_units[building_id]
             previous_building_id = None
             stack_building = False
@@ -567,11 +566,11 @@ class AoCProcessor:
 
             # Check if we have to create a GenieStackBuildingGroup
             if building.has_member("stack_unit_id") and \
-                    building.get_member("stack_unit_id").get_value() > -1:
+                    building["stack_unit_id"].get_value() > -1:
                 stack_building = True
 
             if building.has_member("head_unit_id") and \
-                    building.get_member("head_unit_id").get_value() > -1:
+                    building["head_unit_id"].get_value() > -1:
                 # we don't care about head units because we process
                 # them with their stack unit
                 continue
@@ -579,20 +578,20 @@ class AoCProcessor:
             # Check if the building is part of an existing line.
             # To do this, we look for connected techs and
             # check if any tech has an upgrade effect.
-            connected_types = connection.get_member("other_connections").get_value()
+            connected_types = connection["other_connections"].get_value()
             connected_tech_indices = []
             for index in range(len(connected_types)):
-                connected_type = connected_types[index].get_value()["other_connection"].get_value()
+                connected_type = connected_types[index]["other_connection"].get_value()
                 if connected_type == 3:
                     # 3 == Tech
                     connected_tech_indices.append(index)
 
-            connected_ids = connection.get_member("other_connected_ids").get_value()
+            connected_ids = connection["other_connected_ids"].get_value()
 
             for index in connected_tech_indices:
                 connected_tech_id = connected_ids[index].get_value()
                 connected_tech = full_data_set.genie_techs[connected_tech_id]
-                effect_bundle_id = connected_tech.get_member("tech_effect_id").get_value()
+                effect_bundle_id = connected_tech["tech_effect_id"].get_value()
                 effect_bundle = full_data_set.genie_effect_bundles[effect_bundle_id]
 
                 upgrade_effects = effect_bundle.get_effects(effect_type=3)
@@ -602,8 +601,8 @@ class AoCProcessor:
 
                 # Search upgrade effects for the line_id
                 for upgrade in upgrade_effects:
-                    upgrade_source = upgrade.get_member("attr_a").get_value()
-                    upgrade_target = upgrade.get_member("attr_b").get_value()
+                    upgrade_source = upgrade["attr_a"].get_value()
+                    upgrade_target = upgrade["attr_b"].get_value()
 
                     # Check if the upgrade target is correct
                     if upgrade_target == building_id:
@@ -618,7 +617,7 @@ class AoCProcessor:
                 # Find the previous building
                 connected_index = -1
                 for c_index in range(len(connected_types)):
-                    connected_type = connected_types[c_index].get_value()["other_connection"].get_value()
+                    connected_type = connected_types[c_index]["other_connection"].get_value()
                     if connected_type == 1:
                         # 1 == Building
                         connected_index = c_index
@@ -647,7 +646,7 @@ class AoCProcessor:
 
             else:
                 if stack_building:
-                    stack_unit_id = building.get_member("stack_unit_id").get_value()
+                    stack_unit_id = building["stack_unit_id"].get_value()
                     building_line = GenieStackBuildingGroup(stack_unit_id, line_id, full_data_set)
 
                 else:
@@ -676,13 +675,13 @@ class AoCProcessor:
 
             index = 0
             for effect in effects:
-                effect_type = effect.get_member("type_id").get_value()
+                effect_type = effect["type_id"].get_value()
                 if effect_type < 0:
                     # Effect has no type
                     continue
 
                 elif effect_type == 102:
-                    if effect.get_member("attr_d").get_value() < 0:
+                    if effect["attr_d"].get_value() < 0:
                         # Tech disable effect with no tech id specified
                         continue
 
@@ -706,18 +705,18 @@ class AoCProcessor:
         tech_connections = full_data_set.tech_connections
 
         for connection in tech_connections.values():
-            connected_buildings = connection.get_member("buildings").get_value()
-            tech_id = connection.get_member("id").get_value()
+            connected_buildings = connection["buildings"].get_value()
+            tech_id = connection["id"].get_value()
             tech = full_data_set.genie_techs[tech_id]
 
             # Check if the tech is an age upgrade
-            if (tech.has_member("tech_type") and tech.get_member("tech_type").get_value() == 2)\
-                    or connection.get_member("line_mode").get_value() == 0:
+            if (tech.has_member("tech_type") and tech["tech_type"].get_value() == 2)\
+                    or connection["line_mode"].get_value() == 0:
                 # Search other_connections for the age id
-                connected_types = connection.get_member("other_connections").get_value()
+                connected_types = connection["other_connections"].get_value()
                 connected_index = -1
                 for index in range(len(connected_types)):
-                    connected_type = connected_types[index].get_value()["other_connection"].get_value()
+                    connected_type = connected_types[index]["other_connection"].get_value()
                     if connected_type == 0:
                         # 2 == Unit
                         connected_index = index
@@ -728,7 +727,7 @@ class AoCProcessor:
                                     " can be found in other_connections" % (tech_id))
 
                 # Find the age id in the connected ids
-                connected_ids = connection.get_member("other_connected_ids").get_value()
+                connected_ids = connection["other_connected_ids"].get_value()
                 age_id = connected_ids[connected_index].get_value()
                 age_up = AgeUpgrade(tech_id, age_id, full_data_set)
                 full_data_set.tech_groups.update({age_up.get_id(): age_up})
@@ -739,7 +738,7 @@ class AoCProcessor:
                 # so we don't need to create them here
                 if tech_id not in full_data_set.building_upgrades.keys():
                     # Check if the tech is a building unlock
-                    effect_bundle_id = tech.get_member("tech_effect_id").get_value()
+                    effect_bundle_id = tech["tech_effect_id"].get_value()
                     effect_bundle = full_data_set.genie_effect_bundles[effect_bundle_id]
 
                     unlock_effects = effect_bundle.get_effects(effect_type=2)
@@ -747,7 +746,7 @@ class AoCProcessor:
                     if len(unlock_effects) > 0:
                         # Search unlock effects for the line_id
                         for upgrade in unlock_effects:
-                            unlock_id = upgrade.get_member("attr_a").get_value()
+                            unlock_id = upgrade["attr_a"].get_value()
 
                         building_unlock = BuildingUnlock(tech_id, unlock_id, full_data_set)
                         full_data_set.tech_groups.update({building_unlock.get_id(): building_unlock})
@@ -763,11 +762,11 @@ class AoCProcessor:
         unit_connections = full_data_set.unit_connections
 
         for connection in unit_connections.values():
-            unit_id = connection.get_member("id").get_value()
-            required_research_id = connection.get_member("required_research").get_value()
-            enabling_research_id = connection.get_member("enabling_research").get_value()
-            line_mode = connection.get_member("line_mode").get_value()
-            line_id = connection.get_member("vertical_line").get_value()
+            unit_id = connection["id"].get_value()
+            required_research_id = connection["required_research"].get_value()
+            enabling_research_id = connection["enabling_research"].get_value()
+            line_mode = connection["line_mode"].get_value()
+            line_id = connection["vertical_line"].get_value()
 
             if required_research_id == -1 and enabling_research_id == -1:
                 # Unit is unlocked from the start
@@ -799,8 +798,8 @@ class AoCProcessor:
             if not genie_unit.has_member("research_id"):
                 continue
 
-            building_id = genie_unit.get_member("id0").get_value()
-            initiated_tech_id = genie_unit.get_member("research_id").get_value()
+            building_id = genie_unit["id0"].get_value()
+            initiated_tech_id = genie_unit["research_id"].get_value()
 
             if initiated_tech_id == -1:
                 continue
@@ -821,17 +820,17 @@ class AoCProcessor:
             tech_id = index
 
             # Civ ID must be positive and non-zero
-            civ_id = genie_techs[index].get_member("civilization_id").get_value()
+            civ_id = genie_techs[index]["civilization_id"].get_value()
             if civ_id <= 0:
                 continue
 
             # Passive boni are not researched anywhere
-            research_location_id = genie_techs[index].get_member("research_location_id").get_value()
+            research_location_id = genie_techs[index]["research_location_id"].get_value()
             if research_location_id > 0:
                 continue
 
             # Passive boni are not available in full tech mode
-            full_tech_mode = genie_techs[index].get_member("full_tech_mode").get_value()
+            full_tech_mode = genie_techs[index]["full_tech_mode"].get_value()
             if full_tech_mode:
                 continue
 
@@ -939,7 +938,7 @@ class AoCProcessor:
         # Find task groups in the dataset
         for unit in units.values():
             if unit.has_member("task_group"):
-                task_group_id = unit.get_member("task_group").get_value()
+                task_group_id = unit["task_group"].get_value()
 
             else:
                 task_group_id = 0
@@ -964,7 +963,7 @@ class AoCProcessor:
                 full_data_set.task_groups.update({task_group_id: task_group})
 
             task_group_ids.add(task_group_id)
-            unit_ids.add(unit.get_member("id0").get_value())
+            unit_ids.add(unit["id0"].get_value())
 
         # Create the villager task group
         villager = GenieVillagerGroup(118, task_group_ids, full_data_set)
@@ -1032,7 +1031,7 @@ class AoCProcessor:
                 # No graphics and no graphics replacement means this terrain is unused
                 continue
 
-            enabled = terrain.get_member("enabled").get_value()
+            enabled = terrain["enabled"].get_value()
 
             if enabled:
                 terrain_group = GenieTerrainGroup(terrain.get_id(), full_data_set)
@@ -1139,9 +1138,9 @@ class AoCProcessor:
             if unit_line.is_unique():
                 head_unit_id = unit_line.get_head_unit_id()
                 head_unit_connection = full_data_set.unit_connections[head_unit_id]
-                enabling_research_id = head_unit_connection.get_member("enabling_research").get_value()
+                enabling_research_id = head_unit_connection["enabling_research"].get_value()
                 enabling_research = full_data_set.genie_techs[enabling_research_id]
-                enabling_civ_id = enabling_research.get_member("civilization_id").get_value()
+                enabling_civ_id = enabling_research["civilization_id"].get_value()
 
                 full_data_set.civ_groups[enabling_civ_id].add_unique_entity(unit_line)
 
@@ -1149,9 +1148,9 @@ class AoCProcessor:
             if building_line.is_unique():
                 head_unit_id = building_line.get_head_unit_id()
                 head_building_connection = full_data_set.building_connections[head_unit_id]
-                enabling_research_id = head_building_connection.get_member("enabling_research").get_value()
+                enabling_research_id = head_building_connection["enabling_research"].get_value()
                 enabling_research = full_data_set.genie_techs[enabling_research_id]
-                enabling_civ_id = enabling_research.get_member("civilization_id").get_value()
+                enabling_civ_id = enabling_research["civilization_id"].get_value()
 
                 full_data_set.civ_groups[enabling_civ_id].add_unique_entity(building_line)
 
@@ -1175,8 +1174,8 @@ class AoCProcessor:
 
         for villager in villager_groups.values():
             for unit in villager.variants[0].line:
-                drop_site_members = unit.get_member("drop_sites").get_value()
-                unit_id = unit.get_member("id0").get_value()
+                drop_site_members = unit["drop_sites"].get_value()
+                unit_id = unit["id0"].get_value()
 
                 for drop_site_member in drop_site_members:
                     drop_site_id = drop_site_member.get_value()
@@ -1212,12 +1211,12 @@ class AoCProcessor:
             if unit_line.has_command(3):
                 unit_commands = unit_line.get_head_unit()["unit_commands"].get_value()
                 for command in unit_commands:
-                    type_id = command.get_value()["type"].get_value()
+                    type_id = command["type"].get_value()
 
                     if type_id != 3:
                         continue
 
-                    class_id = command.get_value()["class_id"].get_value()
+                    class_id = command["class_id"].get_value()
                     if class_id > -1:
                         garrison_classes.append(class_id)
 
@@ -1225,7 +1224,7 @@ class AoCProcessor:
                             # Towers because Ensemble didn't like consistent rules
                             garrison_classes.append(52)
 
-                    unit_id = command.get_value()["unit_id"].get_value()
+                    unit_id = command["unit_id"].get_value()
                     if unit_id > -1:
                         garrison_units.append(unit_id)
 
@@ -1288,12 +1287,12 @@ class AoCProcessor:
                     # Search for a pickup command
                     unit_commands = garrison_line.get_head_unit()["unit_commands"].get_value()
                     for command in unit_commands:
-                        type_id = command.get_value()["type"].get_value()
+                        type_id = command["type"].get_value()
 
                         if type_id != 132:
                             continue
 
-                        unit_id = command.get_value()["unit_id"].get_value()
+                        unit_id = command["unit_id"].get_value()
                         if unit_id == unit_line.get_head_unit_id():
                             unit_line.garrison_locations.append(garrison_line)
                             garrison_line.garrison_entities.append(unit_line)
@@ -1313,16 +1312,16 @@ class AoCProcessor:
         for unit_line in unit_lines:
             if unit_line.has_command(111):
                 head_unit = unit_line.get_head_unit()
-                unit_commands = head_unit.get_member("unit_commands").get_value()
+                unit_commands = head_unit["unit_commands"].get_value()
                 trade_post_id = -1
                 for command in unit_commands:
                     # Find the trade command and the trade post id
-                    type_id = command.get_value()["type"].get_value()
+                    type_id = command["type"].get_value()
 
                     if type_id != 111:
                         continue
 
-                    trade_post_id = command.get_value()["unit_id"].get_value()
+                    trade_post_id = command["unit_id"].get_value()
                     break
 
                 # Notify buiding
@@ -1349,12 +1348,12 @@ class AoCProcessor:
             repair_unit = villager.get_units_with_command(106)[0]
             unit_commands = repair_unit["unit_commands"].get_value()
             for command in unit_commands:
-                type_id = command.get_value()["type"].get_value()
+                type_id = command["type"].get_value()
 
                 if type_id != 106:
                     continue
 
-                class_id = command.get_value()["class_id"].get_value()
+                class_id = command["class_id"].get_value()
                 if class_id == -1:
                     # Buildings/Siege
                     repair_classes.append(3)

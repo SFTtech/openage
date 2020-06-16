@@ -223,7 +223,7 @@ class AoCTechSubprocessor:
 
         effect_type = effect.get_type()
         operator = None
-        if effect_type == 1:
+        if effect_type in (1, 11):
             mode = effect["attr_b"].get_value()
 
             if mode == 0:
@@ -232,7 +232,7 @@ class AoCTechSubprocessor:
             else:
                 operator = MemberOperator.ADD
 
-        elif effect_type == 6:
+        elif effect_type in (6, 16):
             operator = MemberOperator.MULTIPLY
 
         else:
@@ -371,6 +371,17 @@ class AoCTechSubprocessor:
 
         else:
             raise Exception("no valid resource ID found")
+
+        # Check if the tech actually costs an amount of the defined resource
+        for resource_amount in tech_group.tech["research_resource_costs"].get_value():
+            cost_resource_id = resource_amount["type_id"].get_value()
+
+            if cost_resource_id == resource_id:
+                break
+
+        else:
+            # Skip patch generation if no matching resource cost was found
+            return patches
 
         if mode == 0:
             operator = MemberOperator.ASSIGN

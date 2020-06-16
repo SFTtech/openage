@@ -149,14 +149,14 @@ class RoRProcessor:
         # Units are stored in the civ container.
         # In RoR the normal civs are not subsets of the Gaia civ, so we search units from
         # Gaia and one player civ (egyptiians).
-        #
-        # call hierarchy: wrapper[0]->civs[0]->units
         raw_units = []
 
         # Gaia units
+        # call hierarchy: wrapper[0]->civs[0]->units
         raw_units.extend(gamespec[0]["civs"][0]["units"].get_value())
 
         # Egyptians
+        # call hierarchy: wrapper[0]->civs[1]->units
         raw_units.extend(gamespec[0]["civs"][1]["units"].get_value())
 
         for raw_unit in raw_units:
@@ -192,10 +192,10 @@ class RoRProcessor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->sounds
-        raw_sounds = gamespec.get_value()[0].get_value()["sounds"].get_value()
+        raw_sounds = gamespec[0]["sounds"].get_value()
 
         for raw_sound in raw_sounds:
-            sound_id = raw_sound.get_value()["sound_id"].get_value()
+            sound_id = raw_sound["sound_id"].get_value()
             sound_members = raw_sound.get_value()
 
             sound = RoRSound(sound_id, full_data_set, members=sound_members)
@@ -229,7 +229,7 @@ class RoRProcessor:
 
             if unit_type == 70:
                 if entity.has_member("task_group") and\
-                        entity.get_member("task_group").get_value() > 0:
+                        entity["task_group"].get_value() > 0:
                     task_group_id = entity["task_group"].get_value()
                     villager_unit_ids.add(unit_id)
 
@@ -297,7 +297,7 @@ class RoRProcessor:
             unit = full_data_set.genie_units[target_id]
 
             # Find the previous unit in the line
-            required_techs = unit_upgrade.tech.get_member("required_techs").get_value()
+            required_techs = unit_upgrade.tech["required_techs"].get_value()
             for required_tech in required_techs:
                 required_tech_id = required_tech.get_value()
                 if required_tech_id in full_data_set.unit_unlocks.keys():
@@ -331,7 +331,7 @@ class RoRProcessor:
             unit = full_data_set.genie_units[target_id]
 
             # Find the previous unit in the line
-            required_techs = building_upgrade.tech.get_member("required_techs").get_value()
+            required_techs = building_upgrade.tech["required_techs"].get_value()
             for required_tech in required_techs:
                 required_tech_id = required_tech.get_value()
                 if required_tech_id in full_data_set.building_unlocks.keys():
@@ -505,8 +505,8 @@ class RoRProcessor:
             if not genie_unit.has_member("research_id"):
                 continue
 
-            building_id = genie_unit.get_member("id0").get_value()
-            initiated_tech_id = genie_unit.get_member("research_id").get_value()
+            building_id = genie_unit["id0"].get_value()
+            initiated_tech_id = genie_unit["research_id"].get_value()
 
             if initiated_tech_id == -1:
                 continue
@@ -583,12 +583,12 @@ class RoRProcessor:
             repair_unit = villager.get_units_with_command(106)[0]
             unit_commands = repair_unit["unit_commands"].get_value()
             for command in unit_commands:
-                type_id = command.get_value()["type"].get_value()
+                type_id = command["type"].get_value()
 
                 if type_id != 106:
                     continue
 
-                class_id = command.get_value()["class_id"].get_value()
+                class_id = command["class_id"].get_value()
                 if class_id == -1:
                     # Buildings/Siege
                     repair_classes.append(3)
