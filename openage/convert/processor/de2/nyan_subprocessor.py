@@ -5,7 +5,7 @@ Convert API-like objects to nyan objects. Subroutine of the
 main DE2 processor.
 """
 from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup,\
-    GenieGarrisonMode, GenieMonkGroup
+    GenieGarrisonMode, GenieMonkGroup, GenieStackBuildingGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
 from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubprocessor
 from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
@@ -92,10 +92,10 @@ class DE2NyanSubprocessor:
             cls._building_line_to_game_entity(building_line)
 
         for ambient_group in full_data_set.ambient_groups.values():
-            cls._ambient_group_to_game_entity(ambient_group)
+            AoCNyanSubprocessor._ambient_group_to_game_entity(ambient_group)
 
         for variant_group in full_data_set.variant_groups.values():
-            cls._variant_group_to_game_entity(variant_group)
+            AoCNyanSubprocessor._variant_group_to_game_entity(variant_group)
 
         for tech_group in full_data_set.tech_groups.values():
             if tech_group.is_researchable():
@@ -319,25 +319,155 @@ class DE2NyanSubprocessor:
         :param building_line: Building line that gets converted to a game entity.
         :type building_line: ..dataformat.converter_object.ConverterObjectGroup
         """
-        # TODO: Implement
-    @staticmethod
-    def _ambient_group_to_game_entity(ambient_group):
-        """
-        Creates raw API objects for an ambient group.
+        current_building = building_line.line[0]
+        current_building_id = building_line.get_head_unit_id()
+        dataset = building_line.data
 
-        :param ambient_group: Unit line that gets converted to a game entity.
-        :type ambient_group: ..dataformat.converter_object.ConverterObjectGroup
-        """
-        # TODO: Implement
-    @staticmethod
-    def _variant_group_to_game_entity(variant_group):
-        """
-        Creates raw API objects for a variant group.
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        class_lookup_dict = internal_name_lookups.get_class_lookups(dataset.game_version)
 
-        :param ambient_group: Unit line that gets converted to a game entity.
-        :type ambient_group: ..dataformat.converter_object.ConverterObjectGroup
-        """
-        # TODO: Implement
+        # Start with the generic GameEntity
+        game_entity_name = name_lookup_dict[current_building_id][0]
+        obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[current_building_id][1])
+        raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(name_lookup_dict[current_building_id][1])
+        building_line.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # Game Entity Types
+        # =======================================================================
+        # we give a building two types
+        #    - aux.game_entity_type.types.Building (if unit_type >= 80)
+        #    - aux.game_entity_type.types.<Class> (depending on the class)
+        # and additionally
+        #    - aux.game_entity_type.types.DropSite (only if this is used as a drop site)
+        # =======================================================================
+        # Create or use existing auxiliary types
+        types_set = []
+        unit_type = current_building.get_member("unit_type").get_value()
+
+        if unit_type >= 80:
+            type_obj = dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()
+            types_set.append(type_obj)
+
+        unit_class = current_building.get_member("unit_class").get_value()
+        class_name = class_lookup_dict[unit_class]
+        class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
+        type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
+        types_set.append(type_obj)
+
+        if building_line.is_dropsite():
+            type_obj = dataset.pregen_nyan_objects["aux.game_entity_type.types.DropSite"].get_nyan_object()
+            types_set.append(type_obj)
+
+        raw_api_object.add_raw_member("types", types_set, "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # Abilities
+        # =======================================================================
+        abilities_set = []
+
+        abilities_set.append(AoCAbilitySubprocessor.attribute_change_tracker_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.death_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.delete_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.despawn_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.live_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.los_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.named_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.resistance_ability(building_line))
+        abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.stop_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.visibility_ability(building_line))
+
+        # Config abilities
+        if building_line.is_creatable():
+            abilities_set.append(AoCAbilitySubprocessor.constructable_ability(building_line))
+
+        if building_line.is_passable() or\
+                (isinstance(building_line, GenieStackBuildingGroup) and building_line.is_gate()):
+            abilities_set.append(AoCAbilitySubprocessor.passable_ability(building_line))
+
+        if building_line.has_foundation():
+            if building_line.get_class_id() == 49:
+                # Use OverlayTerrain for the farm terrain
+                abilities_set.append(AoCAbilitySubprocessor.overlay_terrain_ability(building_line))
+                abilities_set.append(AoCAbilitySubprocessor.foundation_ability(building_line,
+                                                                               terrain_id=27))
+
+            else:
+                abilities_set.append(AoCAbilitySubprocessor.foundation_ability(building_line))
+
+        # Creation/Research abilities
+        if len(building_line.creates) > 0:
+            abilities_set.append(AoCAbilitySubprocessor.create_ability(building_line))
+            abilities_set.append(AoCAbilitySubprocessor.production_queue_ability(building_line))
+
+        if len(building_line.researches) > 0:
+            abilities_set.append(AoCAbilitySubprocessor.research_ability(building_line))
+
+        # Effect abilities
+        if building_line.is_projectile_shooter():
+            abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(building_line, 7))
+            abilities_set.append(AoCAbilitySubprocessor.game_entity_stance_ability(building_line))
+            AoCNyanSubprocessor._projectiles_from_line(building_line)
+
+        # Storage abilities
+        if building_line.is_garrison():
+            abilities_set.append(AoCAbilitySubprocessor.storage_ability(building_line))
+            abilities_set.append(AoCAbilitySubprocessor.remove_storage_ability(building_line))
+
+            garrison_mode = building_line.get_garrison_mode()
+
+            if garrison_mode == GenieGarrisonMode.NATURAL:
+                abilities_set.append(AoCAbilitySubprocessor.send_back_to_task_ability(building_line))
+
+            if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
+                abilities_set.append(AoCAbilitySubprocessor.rally_point_ability(building_line))
+
+        # Resource abilities
+        if building_line.is_harvestable():
+            abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(building_line))
+
+        if building_line.is_dropsite():
+            abilities_set.append(AoCAbilitySubprocessor.drop_site_ability(building_line))
+
+        ability = AoCAbilitySubprocessor.provide_contingent_ability(building_line)
+        if ability:
+            abilities_set.append(ability)
+
+        # Trade abilities
+        if building_line.is_trade_post():
+            abilities_set.append(AoCAbilitySubprocessor.trade_post_ability(building_line))
+
+        if building_line.get_id() == 84:
+            # Market trading
+            abilities_set.extend(AoCAbilitySubprocessor.exchange_resources_ability(building_line))
+
+        raw_api_object.add_raw_member("abilities", abilities_set,
+                                      "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # Modifiers
+        # =======================================================================
+        raw_api_object.add_raw_member("modifiers", [], "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # TODO: Variants
+        # =======================================================================
+        raw_api_object.add_raw_member("variants", [], "engine.aux.game_entity.GameEntity")
+
+        # =======================================================================
+        # Misc (Objects that are not used by the unit line itself, but use its values)
+        # =======================================================================
+        if building_line.is_creatable():
+            AoCAuxiliarySubprocessor.get_creatable_game_entity(building_line)
+
     @staticmethod
     def _tech_group_to_tech(tech_group):
         """

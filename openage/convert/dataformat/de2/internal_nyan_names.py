@@ -44,6 +44,10 @@ VARIANT_GROUP_LOOKUPS = {
 # contains only new techs of DE2
 TECH_GROUP_LOOKUPS = {
     488: ("Kamandaran", "kamandaran"),
+    678: ("EliteKonnik", "elite_konnik"),
+    680: ("EliteKeshik", "elite_keshik"),
+    682: ("EliteKipchak", "elite_kipchak"),
+    684: ("EliteLeitis", "elite_leitis"),
     685: ("Stirrups", "stirrups"),
     686: ("Bagains", "bagains"),
     687: ("SilkArmor", "silk_armor"),
@@ -52,6 +56,7 @@ TECH_GROUP_LOOKUPS = {
     690: ("CumanMercanaries", "cuman_mercinaries"),
     691: ("HillForts", "hill_forts"),
     692: ("TowerShields", "tower_shields"),
+    715: ("EliteSteppeLancer", "elite_steppe_lancer"),
     716: ("Supplies", "supplies"),
 }
 
@@ -86,5 +91,6 @@ TERRAIN_TYPE_LOOKUPS = {
 # key: armor class; value: Gather ability name
 # contains only new armors of DE2
 ARMOR_CLASS_LOOKUPS = {
+    0: "Wonder",
     31: "AntiLetis",
 }

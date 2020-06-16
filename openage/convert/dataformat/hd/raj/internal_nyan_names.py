@@ -39,6 +39,10 @@ VARIANT_GROUP_LOOKUPS = {
 # key: head unit id; value: (nyan object name, filename prefix)
 # contains only new techs of Rajas
 TECH_GROUP_LOOKUPS = {
+    615: ("EliteBallistaElephant", "elite_ballista_elephant"),
+    617: ("EliteKrarambitWarrior", "elite_karambit_warrior"),
+    619: ("EliteArambai", "elite_arambai"),
+    621: ("EliteRattanArcher", "elite_rattan_archer"),
     622: ("TuskSwords", "tusk_swords"),
     623: ("DoubleCrossbow", "double_crossbow"),
     624: ("Thalassocracy", "thalassocracy"),
@@ -47,7 +51,8 @@ TECH_GROUP_LOOKUPS = {
     627: ("ManipurCavalry", "manipur_cavalry"),
     628: ("Chatras", "chatras"),
     629: ("PaperMoney", "paper_money"),
-    622: ("TuskSwords", "tusk_swords"),
+    631: ("EliteBattleElephant", "elite_battle_elephant"),
+    655: ("ImperialSkirmisher", "imperial_skirmisher"),
 }
 
 # key: civ index; value: (nyan object name, filename prefix)

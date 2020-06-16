@@ -47,6 +47,10 @@ VARIANT_GROUP_LOOKUPS = {
 # key: head unit id; value: (nyan object name, filename prefix)
 # contains only new techs of AK
 TECH_GROUP_LOOKUPS = {
+    563: ("EliteOrganGun", "elite_organ_gun"),
+    565: ("EliteCamelArcher", "elite_camel_archer"),
+    567: ("EliteGbeto", "elite_gbeto"),
+    569: ("EliteShotelWarrior", "elite_shotel_warrior"),
     572: ("Carrack", "carrack"),
     573: ("Arquebus", "arquebus"),
     574: ("RoyalHeirs", "royal_heirs"),
@@ -55,6 +59,8 @@ TECH_GROUP_LOOKUPS = {
     577: ("Farimba", "farimba"),
     578: ("Kasbah", "kasbah"),
     579: ("MaghrebiCamels", "maghrebi_camels"),
+    597: ("EliteCaravel", "elite_caravel"),
+    599: ("EliteGenitour", "elite_genitour"),
     602: ("Arson", "arson"),
     608: ("Arrowslits", "arrowslits"),
 }
