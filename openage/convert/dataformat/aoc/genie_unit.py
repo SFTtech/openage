@@ -202,15 +202,21 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         return False
 
-    def has_command(self, command_id):
+    def has_command(self, command_id, civ_id=-1):
         """
         Checks if units in the line can execute a specific command.
 
         :param command_id: The type of command searched for.
         :type command_id: int
+        :param civ_id: Test if the property is true for unit lines
+                       of the civ with this ID:
+        :type civ_id: int
         :returns: True if the train location obj_id is greater than zero.
         """
         head_unit = self.get_head_unit()
+        if civ_id != -1:
+            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+
         commands = head_unit.get_member("unit_commands").get_value()
         for command in commands:
             type_id = command.get_value()["type"].get_value()
@@ -220,15 +226,21 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         return False
 
-    def has_projectile(self, projectile_id):
+    def has_projectile(self, projectile_id, civ_id=-1):
         """
         Checks if units shoot a projectile with this ID.
 
         :param projectile_id: The ID of the projectile unit.
         :type projectile_id: int
+        :param civ_id: Test if the property is true for unit lines
+                       of the civ with this ID:
+        :type civ_id: int
         :returns: True if the train location obj_id is greater than zero.
         """
         head_unit = self.get_head_unit()
+        if civ_id != -1:
+            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+
         projectile_id_0 = head_unit.get_member("attack_projectile_primary_unit_id").get_value()
         projectile_id_1 = -2
         if head_unit.has_member("attack_projectile_secondary_unit_id"):
@@ -236,27 +248,39 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         return (projectile_id_0 == projectile_id or projectile_id_1 == projectile_id)
 
-    def is_creatable(self):
+    def is_creatable(self, civ_id=-1):
         """
         Units/Buildings are creatable if they have a valid train location.
 
+        :param civ_id: Test if the property is true for unit lines
+                       of the civ with this ID:
+        :type civ_id: int
         :returns: True if the train location obj_id is greater than zero.
         """
         # Get the train location obj_id for the first unit in the line
         head_unit = self.get_head_unit()
+        if civ_id != -1:
+            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+
         train_location_id = head_unit.get_member("train_location_id").get_value()
 
         # -1 = no train location
         return train_location_id > -1
 
-    def is_harvestable(self):
+    def is_harvestable(self, civ_id=-1):
         """
         Checks whether the group holds any of the 4 main resources Food,
         Wood, Gold and Stone.
 
+        :param civ_id: Test if the property is true for unit lines
+                       of the civ with this ID:
+        :type civ_id: int
         :returns: True if the group contains at least one resource storage.
         """
         head_unit = self.get_head_unit()
+        if civ_id != -1:
+            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+
         for resource_storage in head_unit.get_member("resource_storage").get_value():
             type_id = resource_storage.get_value()["type"].get_value()
 
@@ -265,7 +289,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         return False
 
-    def is_garrison(self):
+    def is_garrison(self, civ_id=-1):
         """
         Checks whether the group can garrison other entities. This covers
         all of these garrisons:
@@ -277,9 +301,15 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         This does not include kidnapping units!
 
+        :param civ_id: Test if the property is true for unit lines
+                       of the civ with this ID:
+        :type civ_id: int
         :returns: True if the group falls into the above categories.
         """
         head_unit = self.get_head_unit()
+        if civ_id != -1:
+            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+
         trait = head_unit.get_member("trait").get_value()
 
         # Transport ship/ram
@@ -300,30 +330,44 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         return False
 
-    def is_gatherer(self):
+    def is_gatherer(self, civ_id=-1):
         """
         Checks whether the group has any gather abilities.
 
+        :param civ_id: Test if the property is true for unit lines
+                       of the civ with this ID:
+        :type civ_id: int
         :returns: True if the group contains at least one resource storage.
         """
-        return self.has_command(5)
+        return self.has_command(5, civ_id=civ_id)
 
-    def is_passable(self):
+    def is_passable(self, civ_id=-1):
         """
         Checks whether the group has a passable hitbox.
 
+        :param civ_id: Test if the property is true for unit lines
+                       of the civ with this ID:
+        :type civ_id: int
         :returns: True if the group has obstruction type 0.
         """
         head_unit = self.get_head_unit()
+        if civ_id != -1:
+            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+
         return head_unit.get_member("obstruction_type").get_value() == 0
 
-    def is_projectile_shooter(self):
+    def is_projectile_shooter(self, civ_id=-1):
         """
         Units/Buildings are projectile shooters if they have assigned a projectile ID.
 
+        :param civ_id: Test if the property is true for unit lines
+                       of the civ with this ID:
+        :type civ_id: int
         :returns: True if one of the projectile IDs is greater than zero.
         """
         head_unit = self.get_head_unit()
+        if civ_id != -1:
+            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
         if not head_unit.has_member("attack_projectile_primary_unit_id"):
             return False
@@ -339,19 +383,28 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         # -1 -> no projectile
         return (projectile_id_0 > -1 or projectile_id_1 > -1)
 
-    def is_ranged(self):
+    def is_ranged(self, civ_id=-1):
         """
         Groups are ranged if their maximum range is greater than 0.
 
+        :param civ_id: Test if the property is true for unit lines
+                       of the civ with this ID:
+        :type civ_id: int
         :returns: True if the group's max range is greater than 0.
         """
         head_unit = self.get_head_unit()
+        if civ_id != -1:
+            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+
         return head_unit["weapon_range_max"].get_value() > 0
 
-    def is_melee(self):
+    def is_melee(self, civ_id=-1):
         """
         Groups are melee if they have a Combat ability and are not ranged units.
 
+        :param civ_id: Test if the property is true for unit lines
+                       of the civ with this ID:
+        :type civ_id: int
         :returns: True if the group is not ranged and has a combat ability.
         """
         return self.has_command(7)
