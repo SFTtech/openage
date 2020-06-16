@@ -159,13 +159,13 @@ class AoCTechSubprocessor:
 
         effect_type = effect.get_type()
         operator = None
-        if effect_type == 0:
+        if effect_type in (0, 10):
             operator = MemberOperator.ASSIGN
 
-        elif effect_type == 4:
+        elif effect_type in (4, 14):
             operator = MemberOperator.ADD
 
-        elif effect_type == 5:
+        elif effect_type in (5, 15):
             operator = MemberOperator.MULTIPLY
 
         else:

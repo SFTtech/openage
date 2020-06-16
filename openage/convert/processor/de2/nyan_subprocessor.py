@@ -4,6 +4,8 @@
 Convert API-like objects to nyan objects. Subroutine of the
 main DE2 processor.
 """
+from openage.convert.dataformat.aoc.forward_ref import ForwardRef
+from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
 from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup,\
     GenieGarrisonMode, GenieMonkGroup, GenieStackBuildingGroup
 from openage.convert.dataformat.converter_object import RawAPIObject
@@ -11,6 +13,7 @@ from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubproc
 from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
 from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubprocessor
 from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
+from openage.convert.processor.de2.tech_subprocessor import DE2TechSubprocessor
 from openage.convert.service import internal_name_lookups
 
 
@@ -476,7 +479,114 @@ class DE2NyanSubprocessor:
         :param tech_group: Tech group that gets converted to a tech.
         :type tech_group: ..dataformat.converter_object.ConverterObjectGroup
         """
-        # TODO: Implement
+        tech_id = tech_group.get_id()
+
+        # Skip Dark Age tech
+        if tech_id == 104:
+            return
+
+        dataset = tech_group.data
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
+
+        # Start with the Tech object
+        tech_name = tech_lookup_dict[tech_id][0]
+        raw_api_object = RawAPIObject(tech_name, tech_name,
+                                      dataset.nyan_api_objects)
+        raw_api_object.add_raw_parent("engine.aux.tech.Tech")
+
+        if isinstance(tech_group, UnitLineUpgrade):
+            unit_line = dataset.unit_lines_vertical_ref[tech_group.get_line_id()]
+            head_unit_id = unit_line.get_head_unit_id()
+            obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[head_unit_id][1])
+
+        else:
+            obj_location = "data/tech/generic/%s/" % (tech_lookup_dict[tech_id][1])
+
+        raw_api_object.set_location(obj_location)
+        raw_api_object.set_filename(tech_lookup_dict[tech_id][1])
+        tech_group.add_raw_api_object(raw_api_object)
+
+        # =======================================================================
+        # Types
+        # =======================================================================
+        raw_api_object.add_raw_member("types", [], "engine.aux.tech.Tech")
+
+        # =======================================================================
+        # Name
+        # =======================================================================
+        name_ref = "%s.%sName" % (tech_name, tech_name)
+        name_raw_api_object = RawAPIObject(name_ref,
+                                           "%sName"  % (tech_name),
+                                           dataset.nyan_api_objects)
+        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_location = ForwardRef(tech_group, tech_name)
+        name_raw_api_object.set_location(name_location)
+
+        name_raw_api_object.add_raw_member("translations",
+                                           [],
+                                           "engine.aux.translated.type.TranslatedString")
+
+        name_forward_ref = ForwardRef(tech_group, name_ref)
+        raw_api_object.add_raw_member("name", name_forward_ref, "engine.aux.tech.Tech")
+        tech_group.add_raw_api_object(name_raw_api_object)
+
+        # =======================================================================
+        # Description
+        # =======================================================================
+        description_ref = "%s.%sDescription" % (tech_name, tech_name)
+        description_raw_api_object = RawAPIObject(description_ref,
+                                                  "%sDescription"  % (tech_name),
+                                                  dataset.nyan_api_objects)
+        description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        description_location = ForwardRef(tech_group, tech_name)
+        description_raw_api_object.set_location(description_location)
+
+        description_raw_api_object.add_raw_member("translations",
+                                                  [],
+                                                  "engine.aux.translated.type.TranslatedMarkupFile")
+
+        description_forward_ref = ForwardRef(tech_group, description_ref)
+        raw_api_object.add_raw_member("description",
+                                      description_forward_ref,
+                                      "engine.aux.tech.Tech")
+        tech_group.add_raw_api_object(description_raw_api_object)
+
+        # =======================================================================
+        # Long description
+        # =======================================================================
+        long_description_ref = "%s.%sLongDescription" % (tech_name, tech_name)
+        long_description_raw_api_object = RawAPIObject(long_description_ref,
+                                                       "%sLongDescription"  % (tech_name),
+                                                       dataset.nyan_api_objects)
+        long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        long_description_location = ForwardRef(tech_group, tech_name)
+        long_description_raw_api_object.set_location(long_description_location)
+
+        long_description_raw_api_object.add_raw_member("translations",
+                                                       [],
+                                                       "engine.aux.translated.type.TranslatedMarkupFile")
+
+        long_description_forward_ref = ForwardRef(tech_group, long_description_ref)
+        raw_api_object.add_raw_member("long_description",
+                                      long_description_forward_ref,
+                                      "engine.aux.tech.Tech")
+        tech_group.add_raw_api_object(long_description_raw_api_object)
+
+        # =======================================================================
+        # Updates
+        # =======================================================================
+        patches = []
+        patches.extend(DE2TechSubprocessor.get_patches(tech_group))
+        raw_api_object.add_raw_member("updates", patches, "engine.aux.tech.Tech")
+
+        # =======================================================================
+        # Misc (Objects that are not used by the tech group itself, but use its values)
+        # =======================================================================
+        if tech_group.is_researchable():
+            AoCAuxiliarySubprocessor.get_researchable_tech(tech_group)
+
     @staticmethod
     def _terrain_group_to_terrain(terrain_group):
         """

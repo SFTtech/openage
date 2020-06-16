@@ -52,6 +52,7 @@ TECH_GROUP_LOOKUPS = {
     468: ("EliteGenoeseCrossbowman", "elite_genoese_crossbowman"),
     472: ("EliteMagyarHuszar", "elite_magyar_huszar"),
     481: ("EliteElephantArcher", "elite_elephant_archer"),
+    482: ("Stronghold", "stronghold"),
     483: ("Marauders", "marauders"),
     484: ("Yasama", "yasama"),
     485: ("ObsidanArrows", "obsidian_arrows"),
@@ -75,6 +76,7 @@ TECH_GROUP_LOOKUPS = {
     515: ("RecurveBow", "recurve_bow"),
     516: ("AndeanSling", "andean_sling"),
     517: ("FabricShields", "fabric_shields"),           # previously called Couriers
+    521: ("ImperialCamelRider", "imperial_camel_rider"),
 }
 
 # key: civ index; value: (nyan object name, filename prefix)

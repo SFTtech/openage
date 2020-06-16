@@ -301,13 +301,12 @@ class AoCUpgradeResourceSubprocessor:
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # Blacklisted units
-        ram_line = dataset.unit_lines[35]
-        mangonel_line = dataset.unit_lines[280]
-        scorpion_line = dataset.unit_lines[279]
-
-        blacklisted_entities = [ForwardRef(ram_line, "Ram"),
-                                ForwardRef(mangonel_line, "Mangonel"),
-                                ForwardRef(scorpion_line, "Scorpion")]
+        blacklisted_entities = []
+        for unit_line in dataset.unit_lines.values():
+            if unit_line.get_class_id() in (13, 55):
+                # Siege units
+                blacklisted_name = name_lookup_dict[unit_line.get_head_unit_id()][0]
+                blacklisted_entities.append(ForwardRef(unit_line, blacklisted_name))
 
         nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
                                                        blacklisted_entities,
@@ -351,6 +350,8 @@ class AoCUpgradeResourceSubprocessor:
         """
         patches = []
 
+        # TODO: Implement
+
         return patches
 
     @staticmethod
@@ -368,6 +369,8 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -387,6 +390,8 @@ class AoCUpgradeResourceSubprocessor:
         """
         patches = []
 
+        # TODO: Implement
+
         return patches
 
     @staticmethod
@@ -404,6 +409,8 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -423,6 +430,8 @@ class AoCUpgradeResourceSubprocessor:
         """
         patches = []
 
+        # TODO: Implement
+
         return patches
 
     @staticmethod
@@ -440,6 +449,8 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -625,6 +636,8 @@ class AoCUpgradeResourceSubprocessor:
         """
         patches = []
 
+        # TODO: Implement
+
         return patches
 
     @staticmethod
@@ -642,6 +655,8 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -661,6 +676,8 @@ class AoCUpgradeResourceSubprocessor:
         """
         patches = []
 
+        # TODO: Implement
+
         return patches
 
     @staticmethod
@@ -678,6 +695,8 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -800,6 +819,8 @@ class AoCUpgradeResourceSubprocessor:
         """
         patches = []
 
+        # TODO: Implement
+
         return patches
 
     @staticmethod
@@ -817,6 +838,8 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -938,6 +961,8 @@ class AoCUpgradeResourceSubprocessor:
         """
         patches = []
 
+        # TODO: Implement
+
         return patches
 
     @staticmethod
@@ -955,6 +980,8 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -994,6 +1021,8 @@ class AoCUpgradeResourceSubprocessor:
         """
         patches = []
 
+        # TODO: Implement
+
         return patches
 
     @staticmethod
@@ -1011,6 +1040,8 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -1030,6 +1061,8 @@ class AoCUpgradeResourceSubprocessor:
         """
         patches = []
 
+        # TODO: Implement
+
         return patches
 
     @staticmethod
@@ -1047,6 +1080,8 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -1143,6 +1178,8 @@ class AoCUpgradeResourceSubprocessor:
         """
         patches = []
 
+        # TODO: Implement
+
         return patches
 
     @staticmethod
@@ -1160,6 +1197,8 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -1179,6 +1218,8 @@ class AoCUpgradeResourceSubprocessor:
         """
         patches = []
 
+        # TODO: Implement
+
         return patches
 
     @staticmethod
@@ -1196,5 +1237,7 @@ class AoCUpgradeResourceSubprocessor:
         :rtype: list
         """
         patches = []
+
+        # TODO: Implement
 
         return patches

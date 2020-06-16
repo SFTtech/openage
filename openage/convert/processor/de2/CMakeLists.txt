@@ -4,4 +4,7 @@ add_py_modules(
 	modpack_subprocessor.py
 	nyan_subprocessor.py
 	processor.py
+	tech_subprocessor.py
+	upgrade_attribute_subprocessor.py
+	upgrade_resource_subprocessor.py
 )

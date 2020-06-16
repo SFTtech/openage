@@ -234,7 +234,7 @@ class AoCUpgradeAbilitySubprocessor:
 
         diff_min_range = None
         diff_max_range = None
-        if not changed and ranged:
+        if ranged:
             diff_min_range = diff.get_member("weapon_range_min")
             diff_max_range = diff.get_member("weapon_range_max")
             if any(not isinstance(value, NoDiffMember) for value in (diff_min_range,

@@ -3,8 +3,6 @@
 """
 Creates upgrade patches for attribute modification effects in AoC.
 """
-from DistUpgrade.DistUpgradePatcher import patch
-
 from openage.convert.dataformat.aoc.forward_ref import ForwardRef
 from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
 from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
