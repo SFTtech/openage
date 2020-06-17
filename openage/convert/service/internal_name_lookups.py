@@ -334,6 +334,9 @@ def get_terrain_lookups(game_version):
     elif game_edition is GameEdition.AOE2DE:
         terrain_lookup_dict = {}
         terrain_lookup_dict.update(aoc_internal.TERRAIN_GROUP_LOOKUPS)
+        terrain_lookup_dict.update(fgt_internal.TERRAIN_GROUP_LOOKUPS)
+        terrain_lookup_dict.update(ak_internal.TERRAIN_GROUP_LOOKUPS)
+        terrain_lookup_dict.update(raj_internal.TERRAIN_GROUP_LOOKUPS)
         terrain_lookup_dict.update(de2_internal.TERRAIN_GROUP_LOOKUPS)
 
         return terrain_lookup_dict
@@ -365,6 +368,9 @@ def get_terrain_type_lookups(game_version):
     elif game_edition is GameEdition.AOE2DE:
         terrain_type_lookup_dict = {}
         terrain_type_lookup_dict.update(aoc_internal.TERRAIN_TYPE_LOOKUPS)
+        terrain_type_lookup_dict.update(fgt_internal.TERRAIN_TYPE_LOOKUPS)
+        terrain_type_lookup_dict.update(ak_internal.TERRAIN_TYPE_LOOKUPS)
+        terrain_type_lookup_dict.update(raj_internal.TERRAIN_TYPE_LOOKUPS)
         terrain_type_lookup_dict.update(de2_internal.TERRAIN_TYPE_LOOKUPS)
 
         return terrain_type_lookup_dict

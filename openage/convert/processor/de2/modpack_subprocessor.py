@@ -8,26 +8,26 @@ from openage.convert.dataformat.modpack import Modpack
 from openage.convert.processor.aoc.modpack_subprocessor import AoCModpackSubprocessor
 
 
-class RoRModpackSubprocessor:
+class DE2ModpackSubprocessor:
 
     @classmethod
     def get_modpacks(cls, gamedata):
 
-        aoe1_base = cls._get_aoe1_base(gamedata)
+        de2_base = cls._get_aoe2_base(gamedata)
 
-        return [aoe1_base]
+        return [de2_base]
 
     @classmethod
-    def _get_aoe1_base(cls, gamedata):
+    def _get_aoe2_base(cls, gamedata):
         """
-        Create the aoe1-base modpack.
+        Create the aoe2-base modpack.
         """
-        modpack = Modpack("aoe1-base")
+        modpack = Modpack("de2-base")
 
         mod_def = modpack.get_info()
 
-        mod_def.set_version("1.0B")
-        mod_def.set_uid(1000)
+        mod_def.set_version("TODO")
+        mod_def.set_uid(2000)
 
         mod_def.add_assets_to_load("data/*")
 

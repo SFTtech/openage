@@ -70,6 +70,35 @@ GRAPHICS_SET_LOOKUPS = {
     10: ((28, 29, 30), "SouthEastAsian", "south_east_asian"),
 }
 
+# key: terrain index; value: (unit terrain restrictions (manual), nyan object name, filename prefix)
+# TODO: Use terrain restrictions from .dat
+# contains only new/changed terrains of DE2
+TERRAIN_GROUP_LOOKUPS = {
+    51: ((0,), "Beach2", "beach2"),
+    52: ((0,), "Beach3", "beach3"),
+    53: ((0,), "Beach4", "beach4"),
+    54: ((0,), "ShallowsMangroove", "shallows_mangroove"),
+    55: ((0,), "ForestMangroove", "forest_mangroove"),
+    56: ((0,), "Rainforest", "rainforest"),
+    57: ((0,), "Water4", "water4"),
+    58: ((0,), "Water5", "water5"),
+    59: ((0,), "ShallowsRainforest", "shallows_rainforest"),
+    60: ((0,), "GrassJungle", "grass_jungle"),
+    61: ((0,), "RoadJungle", "road_jungle"),
+    62: ((0,), "LeavesJungle", "leaves_jungle"),
+    63: ((0,), "RiceFarmCrops", "rice_farm_crops"),
+    64: ((0,), "RiceFarmHarvested", "rice_farm_harvested"),
+    65: ((0,), "RiceFarmConstruction1", "rice_farm_construction1"),
+    66: ((0,), "RiceFarmConstruction2", "rice_farm_construction2"),
+    67: ((0,), "RiceFarmConstruction3", "rice_farm_construction3"),
+}
+
+# key: not relevant; value: (terrain indices, unit terrain restrictions (manual), nyan object name)
+# TODO: Use terrain restrictions from .dat
+# contains only new/changed terrain types of DE2
+TERRAIN_TYPE_LOOKUPS = {
+}
+
 # key: armor class; value: Gather ability name
 # contains only new armors of Rajas
 ARMOR_CLASS_LOOKUPS = {

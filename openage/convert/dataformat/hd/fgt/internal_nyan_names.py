@@ -97,6 +97,18 @@ GRAPHICS_SET_LOOKUPS = {
     8: ((22, 23), "Slavic", "slavic"),
 }
 
+# key: terrain index; value: (unit terrain restrictions (manual), nyan object name, filename prefix)
+# TODO: Use terrain restrictions from .dat
+# contains only new/changed terrains of DE2
+TERRAIN_GROUP_LOOKUPS = {
+}
+
+# key: not relevant; value: (terrain indices, unit terrain restrictions (manual), nyan object name)
+# TODO: Use terrain restrictions from .dat
+# contains only new/changed terrain types of DE2
+TERRAIN_TYPE_LOOKUPS = {
+}
+
 # key: armor class; value: Gather ability name
 # contains only new armors of Forgotten
 ARMOR_CLASS_LOOKUPS = {

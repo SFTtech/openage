@@ -80,6 +80,28 @@ GRAPHICS_SET_LOOKUPS = {
     9: ((25, 26, 27), "African", "african"),
 }
 
+# key: terrain index; value: (unit terrain restrictions (manual), nyan object name, filename prefix)
+# TODO: Use terrain restrictions from .dat
+# contains only new/changed terrains of DE2
+TERRAIN_GROUP_LOOKUPS = {
+    41: ((0,), "Savannah", "savannah"),
+    42: ((0,), "Dirt4", "dirt4"),
+    43: ((0,), "Road3", "road3"),
+    44: ((0,), "Moorland", "moorland"),
+    45: ((0,), "DesertCracked", "desert_cracked"),
+    46: ((0,), "DesertQuicksand", "desert_quicksand"),
+    47: ((0,), "Black", "black"),
+    48: ((0,), "ForestDragon", "forest_dragon"),
+    49: ((0,), "ForestBaobab", "forest_baobab"),
+    50: ((0,), "ForestAcacia", "forest_acacia"),
+}
+
+# key: not relevant; value: (terrain indices, unit terrain restrictions (manual), nyan object name)
+# TODO: Use terrain restrictions from .dat
+# contains only new/changed terrain types of DE2
+TERRAIN_TYPE_LOOKUPS = {
+}
+
 # key: armor class; value: Gather ability name
 # contains only new armors of AK
 ARMOR_CLASS_LOOKUPS = {

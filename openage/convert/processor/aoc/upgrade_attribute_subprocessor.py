@@ -995,6 +995,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
+        if not line.is_garrison():
+            # TODO: Patch ability in
+            return patches
+
         patch_target_ref = "%s.Storage.%sContainer" % (game_entity_name, game_entity_name)
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 

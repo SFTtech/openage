@@ -462,15 +462,21 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         return self.get_head_unit()["unit_class"].get_value()
 
-    def get_garrison_mode(self):
+    def get_garrison_mode(self, civ_id=-1):
         """
         Returns the mode the garrison operates in. This is used by the
         converter to determine which storage abilities the line will get.
 
+        :param civ_id: Get the garrison mode for unit lines of the civ
+                       with this ID.
+        :type civ_id: int
         :returns: The garrison mode of the line.
         :rtype: GenieGarrisonMode
         """
         head_unit = self.get_head_unit()
+        if civ_id != -1:
+            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+
         trait = head_unit["trait"].get_value()
 
         # Ram
