@@ -190,7 +190,7 @@ class DE2Processor:
 
         for raw_graphic in raw_graphics:
             # Can be ignored if there is no filename associated
-            filename = raw_graphic["filename"].get_value()
+            filename = raw_graphic["filename"].get_value().lower()
             if not filename:
                 continue
 

@@ -118,33 +118,90 @@ def convert(args):
     #     fil.write(EmpiresDat.get_hash(args.game_version))
 
     # clean args (set by convert_metadata for convert_media)
-    del args.palette
+    del args.palettes
 
     info("asset conversion complete; asset version: %s", ASSET_VERSION)
 
 
-def get_palette(srcdir, offset=0):
+def get_palettes(srcdir, game_version, index=None):
     """
-    Read and create the color palette
+    Read and create the color palettes.
     """
+    game_edition = game_version[0]
 
-    palette_path = "interface/{}.bina".format(50500 + offset)
+    palettes = {}
 
-    return ColorTable(srcdir[palette_path].open("rb").read())
+    if game_edition in (GameEdition.ROR, GameEdition.AOC, GameEdition.SWGB, GameEdition.HDEDITION):
+        if index:
+            palette_path = "%s/%s.bina" % (MediaType.PALETTES.value, str(index))
+            palette_file = srcdir[palette_path]
+            palette = ColorTable(palette_file.open("rb").read())
+            palette_id = int(palette_file.stem)
+
+            palettes[palette_id] = palette
+
+        else:
+            palette_dir = srcdir[MediaType.PALETTES.value]
+            for palette_file in palette_dir.iterdir():
+                # Only 505XX.bina files are usable palettes
+                if palette_file.stem.startswith("505"):
+                    palette = ColorTable(palette_file.open("rb").read())
+                    palette_id = int(palette_file.stem)
+
+                    palettes[palette_id] = palette
+
+            if game_edition is GameEdition.HDEDITION:
+                # TODO: HD edition has extra palettes in the dat folder
+                pass
+
+    elif game_edition in (GameEdition.AOE1DE, GameEdition.AOE2DE):
+        # Parse palettes.conf file and save the ids/paths
+        conf_filepath = "%s/palettes.conf" % (MediaType.PALETTES.value)
+        conf_file = srcdir[conf_filepath].open('rb')
+        palette_paths = {}
+
+        for line in conf_file.read().decode('utf-8').split('\n'):
+            line = line.strip()
+
+            # skip comments and empty lines
+            if not line or line.startswith('//'):
+                continue
+
+            palette_id, filepath = line.split(',')
+            palette_id = int(palette_id)
+            palette_paths[palette_id] = filepath
+
+        if index:
+            palette_path = "%s/%s" % (MediaType.PALETTES.value, palette_paths[index])
+            palette = ColorTable(srcdir[palette_path].open("rb").read())
+
+            palettes[index] = palette
+
+        else:
+            for palette_id, filepath in palette_paths.items():
+                palette_path = "%s/%s" % (MediaType.PALETTES.value, filepath)
+                palette_file = srcdir[palette_path]
+                palette = ColorTable(palette_file.open("rb").read())
+
+                palettes[palette_id] = palette
+
+    return palettes
 
 
 def convert_metadata(args):
-    """ Converts the metadata part """
+    """
+    Converts the metadata part.
+    """
     if not args.flag("no_metadata"):
         info("converting metadata")
         data_formatter = DataFormatter()
 
     # required for player palette and color lookup during SLP conversion.
     yield "palette"
-    palette = get_palette(args.srcdir)
+    palettes = get_palettes(args.srcdir, args.game_version)
 
     # store for use by convert_media
-    args.palette = palette
+    args.palettes = palettes
 
     if args.flag("no_metadata"):
         return
@@ -171,14 +228,14 @@ def convert_metadata(args):
     for modpack in modpacks:
         ModpackExporter.export(modpack, args)
 
-    if args.game_version[0] is not GameEdition.ROR:
+    if args.game_version[0] not in (GameEdition.ROR, GameEdition.AOE2DE):
         yield "blendomatic.dat"
         blend_data = get_blendomatic_data(args)
         blend_data.save(args.targetdir, "blendomatic")
         # data_formatter.add_data(blend_data.dump("blending_modes"))
 
     yield "player color palette"
-    player_palette = PlayerColorTable(palette)
+    # player_palette = PlayerColorTable(palette)
     # data_formatter.add_data(player_palette.dump("player_palette"))
 
     yield "terminal color palette"
@@ -192,10 +249,12 @@ def convert_metadata(args):
         dbg("generating extra files for visualization")
         tgt = args.targetdir
         with tgt['info/colortable.pal.png'].open_w() as outfile:
-            palette.save_visualization(outfile)
+            # palette.save_visualization(outfile)
+            pass
 
         with tgt['info/playercolortable.pal.png'].open_w() as outfile:
-            player_palette.save_visualization(outfile)
+            # player_palette.save_visualization(outfile)
+            pass
 
 
 def get_converter(game_version):

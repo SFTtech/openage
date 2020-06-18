@@ -2,19 +2,21 @@
 #
 # cython: profile=False
 
+from enum import Enum
 from struct import Struct, unpack_from
 
-from enum import Enum
+import numpy
+
+from ..log import spam, dbg
+
 
 cimport cython
-import numpy
 cimport numpy
 
 from libc.stdint cimport uint8_t, uint16_t
 from libcpp cimport bool
 from libcpp.vector cimport vector
 
-from ..log import spam, dbg
 
 
 # SMP files have little endian byte order
@@ -187,6 +189,8 @@ class SMPLayerHeader:
         # the absolute offset of the frame
         self.frame_offset = frame_offset
 
+        self.palette_number = -1
+
     @staticmethod
     def repr_header():
         return ("width x height | hotspot x/y | "
@@ -349,6 +353,15 @@ cdef class SMPLayer:
         Return the layer's hotspot (the "center" of the image)
         """
         return self.info.hotspot
+
+    def get_palette_number(self):
+        """
+        Return the layer's palette number.
+
+        :return: Palette number of the layer.
+        :rtype: int
+        """
+        return self.pcolor[0][0].palette & 0b00111111
 
     def __repr__(self):
         return repr(self.info)
@@ -694,6 +707,8 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
     # micro optimization to avoid call to ColorTable.__getitem__()
     cdef list m_lookup = main_palette.palette
     cdef list p_lookup = player_palette.palette
+    
+    cdef m_color_size = len(m_lookup[0])
 
     cdef uint8_t r
     cdef uint8_t g
@@ -733,7 +748,13 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
                 # look up the color index in the
                 # main graphics table
-                r, g, b, alpha = m_lookup[index]
+                if m_color_size == 3:
+                    # RGB tables (leftover from HD edition)
+                    r, g, b = m_lookup[index]
+                    
+                elif m_color_size == 4:
+                    # RGBA tables (but alpha is often unused)
+                    r, g, b, alpha = m_lookup[index]
 
                 # alpha values are unused
                 # in 0x0C and 0x0B version of SMPs

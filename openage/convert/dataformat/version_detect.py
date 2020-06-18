@@ -234,7 +234,7 @@ class GameEdition(enum.Enum):
                 "resources/vi/strings/key-value/key-value-strings-utf8.txt",
                 "resources/zh/strings/key-value/key-value-strings-utf8.txt",
             ],
-            MediaType.PALETTES: ["resources/_common/drs/interface/"],
+            MediaType.PALETTES: ["resources/_common/palettes/"],
             MediaType.SOUNDS: ["wwise/"],
             MediaType.INTERFACE: ["resources/_common/drs/interface/"],
             MediaType.TERRAIN: ["resources/_common/terrain/textures/"],

@@ -23,7 +23,6 @@ class ModpackExporter:
         """
         sourcedir = args.srcdir
         exportdir = args.targetdir
-        game_version = args.game_version
 
         modpack_dir = exportdir.joinpath("%s" % (modpack.info.name))
 
@@ -53,8 +52,15 @@ class ModpackExporter:
         for media_type in media_files.keys():
             cur_export_requests = media_files[media_type]
 
+            kwargs = {}
+
+            if media_type in (MediaType.GRAPHICS, MediaType.TERRAIN):
+                # Game version and palettes
+                kwargs["game_version"] = args.game_version
+                kwargs["palettes"] = args.palettes
+
             for request in cur_export_requests:
-                request.save(sourcedir, modpack_dir, game_version)
+                request.save(sourcedir, modpack_dir, **kwargs)
 
         info("Dumping metadata files...")
 

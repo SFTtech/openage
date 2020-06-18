@@ -9,6 +9,8 @@ import os
 
 import numpy
 
+from openage.convert.dataformat.version_detect import GameEdition
+
 from ..log import spam
 from ..util.fslike.path import Path
 from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
@@ -92,8 +94,7 @@ class Texture(genie_structure.GenieStructure):
     # player-specific colors will be in color blue, but with an alpha of 254
     player_id = 1
 
-    def __init__(self, input_data, main_palette=None,
-                 player_palette=None, custom_cutter=None):
+    def __init__(self, input_data, palettes=None, game_version=None, custom_cutter=None):
         super().__init__()
         spam("creating Texture from %s", repr(input_data))
 
@@ -101,8 +102,17 @@ class Texture(genie_structure.GenieStructure):
         from .smp import SMP
         from .smx import SMX
 
-        if isinstance(input_data, SLP):
+        if game_version:
+            if game_version[0] in (GameEdition.ROR, GameEdition.AOC, GameEdition.SWGB,
+                                   GameEdition.HDEDITION):
+                main_palette = palettes[50500]
+                player_palette = None
 
+            elif game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
+                # Blue player color
+                player_palette = palettes[55]
+
+        if isinstance(input_data, SLP):
             frames = []
 
             for frame in input_data.main_frames:
@@ -113,10 +123,11 @@ class Texture(genie_structure.GenieStructure):
                     frames.append(subtex)
 
         elif isinstance(input_data, (SMP, SMX)):
-
             frames = []
 
             for frame in input_data.main_frames:
+                # Palette can be different for every frame
+                main_palette = palettes[frame.get_palette_number()]
                 for subtex in self._smp_to_subtextures(frame,
                                                        main_palette,
                                                        player_palette,
@@ -144,9 +155,6 @@ class Texture(genie_structure.GenieStructure):
         """
         convert slp to subtexture or subtextures, using a palette.
         """
-        # TODO this needs some _serious_ performance work
-        # (at least a 10x improvement, 50x would be better).
-        # ideas: remove PIL and use libpng via CPPInterface
         subtex = TextureImage(
             frame.get_picture_data(main_palette, player_palette,
                                    self.player_id),
@@ -164,9 +172,6 @@ class Texture(genie_structure.GenieStructure):
         """
         convert smp to subtexture or subtextures, using a palette.
         """
-        # TODO this needs some _serious_ performance work
-        # (at least a 10x improvement, 50x would be better).
-        # ideas: remove PIL and use libpng via CPPInterface
         subtex = TextureImage(
             frame.get_picture_data(main_palette, player_palette),
             hotspot=frame.get_hotspot()
@@ -178,10 +183,19 @@ class Texture(genie_structure.GenieStructure):
         else:
             return [subtex]
 
-    def save(self, targetdir, filename):
+    def save(self, targetdir, filename, compression_level=1):
         """
         Store the image data into the target directory path,
         with given filename="dir/out.png".
+
+        :param compression_level: Compression level of the PNG. A higher
+                                  level results in smaller file sizes, but
+                                  takes longer to generate.
+                                      - 0 = no compression
+                                      - 1 = normal png compression (default)
+                                      - 2 = greedy search for smallest file; slowdown is 8x
+                                      - 3 = maximum possible compression; slowdown is 256x
+        :type compression_level: int
         """
         if not isinstance(targetdir, Path):
             raise ValueError("util.fslike Path expected as targetdir")
@@ -200,8 +214,19 @@ class Texture(genie_structure.GenieStructure):
         ext = ext[1:]
 
         from .png import png_create
+
+        compression_method = png_create.CompressionMethod.COMPR_DEFAULT
+        if compression_level == 0:
+            pass
+
+        elif compression_level == 2:
+            compression_method = png_create.CompressionMethod.COMPR_GREEDY
+
+        elif compression_level == 3:
+            compression_method = png_create.CompressionMethod.COMPR_AGGRESSIVE
+
         with targetdir[filename].open("wb") as imagefile:
-            png_data, _ = png_create.save(self.image_data.data, png_create.CompressionMethod.COMPR_GREEDY)
+            png_data, _ = png_create.save(self.image_data.data, compression_method)
             imagefile.write(png_data)
 
         return self.image_metadata

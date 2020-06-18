@@ -4,9 +4,7 @@
 Specifies a request for a media resource that should be
 converted and exported into a modpack.
 """
-from openage.convert.colortable import ColorTable
 from openage.convert.dataformat.media_types import MediaType
-from openage.convert.dataformat.version_detect import GameEdition
 from openage.convert.texture import Texture
 from openage.util.observer import Observable
 
@@ -37,7 +35,7 @@ class MediaExportRequest(Observable):
         raise NotImplementedError("%s has not implemented get_type()"
                                   % (self))
 
-    def save(self, sourcedir, exportdir, game_version=None):
+    def save(self, sourcedir, exportdir, **kwargs):
         """
         Convert the media to openage target format and output the result
         to a file. Encountered metadata is returned on completion.
@@ -98,9 +96,19 @@ class GraphicsMediaExportRequest(MediaExportRequest):
     def get_type(self):
         return MediaType.GRAPHICS
 
-    def save(self, sourcedir, exportdir, game_version):
+    def save(self, sourcedir, exportdir, game_version, palettes):
         source_file = sourcedir[self.get_type().value, self.source_filename]
-        media_file = source_file.open("rb")
+
+        try:
+            media_file = source_file.open("rb")
+
+        except FileNotFoundError:
+            if source_file.suffix.lower() == ".smx":
+                # Rename extension to SMP and try again
+                other_filename = self.source_filename[:-1] + "p"
+                source_file = sourcedir[self.get_type().value, other_filename]
+
+            media_file = source_file.open("rb")
 
         if source_file.suffix.lower() == ".slp":
             from ..slp import SLP
@@ -114,16 +122,7 @@ class GraphicsMediaExportRequest(MediaExportRequest):
             from ..smx import SMX
             image = SMX(media_file.read())
 
-        palette_subdir = MediaType.PALETTES.value
-
-        if game_version[0] in (GameEdition.ROR, GameEdition.AOC, GameEdition.SWGB):
-            palette_name = "50500.bina"
-
-        palette_path = sourcedir[palette_subdir, palette_name]
-        palette_file = palette_path.open("rb")
-        palette_table = ColorTable(palette_file.read())
-
-        texture = Texture(image, palette_table)
+        texture = Texture(image, palettes, game_version)
         metadata = texture.save(exportdir.joinpath(self.targetdir), self.target_filename)
         metadata = {self.target_filename: metadata}
 
@@ -140,7 +139,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
     def get_type(self):
         return MediaType.TERRAIN
 
-    def save(self, sourcedir, exportdir, game_version):
+    def save(self, sourcedir, exportdir, game_version, palettes):
         source_file = sourcedir[self.get_type().value, self.source_filename]
         media_file = source_file.open("rb")
 
@@ -152,16 +151,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
             # TODO: Implement
             pass
 
-        palette_subdir = MediaType.PALETTES.value
-
-        if game_version[0] in (GameEdition.ROR, GameEdition.AOC, GameEdition.SWGB):
-            palette_name = "50500.bina"
-
-        palette_path = sourcedir[palette_subdir, palette_name]
-        palette_file = palette_path.open("rb")
-        palette_table = ColorTable(palette_file.read())
-
-        texture = Texture(image, palette_table)
+        texture = Texture(image, palettes, game_version)
         texture.save(exportdir.joinpath(self.targetdir), self.target_filename)
 
 
@@ -173,7 +163,7 @@ class SoundMediaExportRequest(MediaExportRequest):
     def get_type(self):
         return MediaType.SOUNDS
 
-    def save(self, sourcedir, exportdir, game_version):
+    def save(self, sourcedir, exportdir):
         source_file = sourcedir[self.get_type().value, self.source_filename]
 
         if source_file.is_file():

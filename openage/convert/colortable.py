@@ -5,15 +5,18 @@
 import math
 
 from openage.convert.dataformat.genie_structure import GenieStructure
+
+from ..log import dbg
 from .export.data_definition import DataDefinition
 from .export.struct_definition import StructDefinition
-from ..log import dbg
 
 
 class ColorTable(GenieStructure):
     name_struct = "palette_color"
     name_struct_file = "color"
     struct_description = "indexed color storage."
+
+    __slots__ = ('header', 'version', 'palette')
 
     def __init__(self, data):
         super().__init__()
@@ -35,8 +38,8 @@ class ColorTable(GenieStructure):
         self.version = lines[1]
 
         # check for palette header
-        if self.header != "JASC-PAL":
-            raise Exception("No palette header 'JASC-PAL' found, "
+        if not (self.header == "JASC-PAL" or self.header == "JASC-PALX"):
+            raise Exception("No palette header 'JASC-PAL' or 'JASC-PALX' found, "
                             "instead: %r" % self.header)
 
         if self.version != "0100":
@@ -44,19 +47,29 @@ class ColorTable(GenieStructure):
 
         entry_count = int(lines[2])
 
+        entry_start = 3
+        if lines[3].startswith("$ALPHA"):
+            # TODO: Definitive Editions have palettes with fixed alpha
+            entry_start = 4
+
         self.palette = []
 
-        # data entries are line 3 to n
-        for line in lines[3:entry_count + 3]:
+        # data entries from 'entry_start' to n
+        for line in lines[entry_start:]:
+            # skip comments and empty lines
+            if not line or line.startswith("#"):
+                continue
+
             # one entry looks like "13 37 42",
             # "red green blue"
             # => red 13, 37 green and 42 blue.
-            self.palette.append(tuple(int(val) for val in line.split(' ')))
+            # DE1 and DE2 have a fourth value, but it seems unused
+            self.palette.append(tuple(int(val) for val in line.split()))
 
-        if len(self.palette) != len(lines) - 4:
+        if len(self.palette) != entry_count:
             raise Exception("read a %d palette entries "
                             "but expected %d." % (
-                                len(self.palette), len(lines) - 4))
+                                len(self.palette), entry_count))
 
     def __getitem__(self, index):
         return self.palette[index]
@@ -178,6 +191,8 @@ class PlayerColorTable(ColorTable):
 
     each player has 8 subcolors, where 0 is the darkest and 7 is the lightest
     """
+
+    __slots__ = ('header', 'version', 'palette')
 
     def __init__(self, base_table):
         # TODO pylint: disable=super-init-not-called
