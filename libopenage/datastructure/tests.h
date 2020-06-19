@@ -1,13 +1,12 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <functional>
 #include <stddef.h>
+#include <mutex>
 
-namespace openage {
-namespace datastructure {
-namespace tests {
+namespace openage::datastructure::tests {
 
 /**
  * simplest priority queue element that supports reordering.
@@ -24,9 +23,7 @@ struct heap_elem {
 	}
 };
 
-} // namespace tests
-} // namespace datastructure
-} // namespace openage
+} // namespace openage::datastructure::tests
 
 namespace std {
 

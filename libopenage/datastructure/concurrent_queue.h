@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,10 +6,9 @@
 #include <mutex>
 #include <queue>
 #include <thread>
+#include <type_traits>
 
-namespace openage {
-namespace datastructure {
-
+namespace openage::datastructure {
 /**
  * A threadsafe queue.
  * Wraps the std::queue with a mutex.
@@ -26,7 +25,7 @@ class ConcurrentQueue {
 public:
 	/** Removes all elements from the queue. */
 	void clear() {
-		std::lock_guard<mutex_t> lock{this->mutex};
+		std::scoped_lock lock{this->mutex};
 		while (!this->queue.empty()) {
 			this->queue.pop();
 		}
@@ -34,7 +33,7 @@ public:
 
 	/** Returns whether the queue is empty. */
 	bool empty() {
-		std::lock_guard<mutex_t> lock{this->mutex};
+		std::scoped_lock lock{this->mutex};
 		return this->queue.empty();
 	}
 
@@ -47,21 +46,45 @@ public:
 		return this->queue.front();
 	}
 
-	/** Removes the front item of the queue and returns it. */
-	T &pop() {
-		std::unique_lock<mutex_t> lock{this->mutex};
-		while (this->queue.empty()) {
-			this->elements_available.wait(lock);
-		}
-		auto &item = this->queue.front();
+	/** Copies the front item in the queue and removes it from the queue. */
+	template<typename... None, typename U = T>
+	T pop([[maybe_unused]] typename std::enable_if_t<!std::is_move_constructible_v<U> and std::is_copy_constructible_v<U>>* t = nullptr) {
+		static_assert(sizeof...(None) == 0, "User-specified template arguments are prohibited.");
+		std::scoped_lock lock{this->mutex};
+		T ret = this->front();
 		this->queue.pop();
-		return item;
+
+		// Explicitly call the copy constructor since T cannot be move-constructed
+		// TODO: change to `return ret;` when we migrate to GCC 10
+		return T(ret);
 	}
 
-	/** Appends the given item to the queue. */
-	void push(const T &item) {
+	/** Moves the front item in the queue and removes it from the queue. */
+	template<typename... None, typename U = T>
+	T pop([[maybe_unused]] typename std::enable_if_t<std::is_move_constructible_v<U>>* t = nullptr) {
+		static_assert(sizeof...(None) == 0, "User-specified template arguments are prohibited.");
+		std::scoped_lock lock{this->mutex};
+		T ret = std::move(this->front());
+		this->queue.pop();
+		return ret;
+	}
+
+	/** Appends the given item to the queue by copying it. */
+	template<typename... None, typename U = T>
+	void push(typename std::enable_if_t<std::is_copy_constructible_v<U>, const T&> item) {
+		static_assert(sizeof...(None) == 0, "User-specified template arguments are prohibited.");
 		std::unique_lock<mutex_t> lock{this->mutex};
 		this->queue.push(item);
+		lock.unlock();
+		this->elements_available.notify_one();
+	}
+
+	/** Appends the given item to the queue by moving it. */
+	template<typename... None, typename U = T>
+	void push(typename std::enable_if_t<std::is_move_constructible_v<U>, T&&> item) {
+		static_assert(sizeof...(None) == 0, "User-specified template arguments are prohibited.");
+		std::unique_lock<mutex_t> lock{this->mutex};
+		this->queue.push(std::move(item));
 		lock.unlock();
 		this->elements_available.notify_one();
 	}
@@ -88,5 +111,4 @@ private:
 	std::condition_variable_any elements_available;
 };
 
-}
-}
+}	// openage::datastructure

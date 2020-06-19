@@ -1,4 +1,4 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 #include "tests.h"
 
@@ -8,11 +8,10 @@
 
 #include "constexpr_map.h"
 #include "pairing_heap.h"
+#include "concurrent_queue.h"
 
 
-namespace openage {
-namespace datastructure {
-namespace tests {
+namespace openage::datastructure::tests {
 
 
 void pairing_heap_0() {
@@ -192,4 +191,146 @@ void constexpr_map() {
 	TESTEQUALS(cmap.get(42), 9001);
 }
 
-}}} // openage::datastructure::tests
+/**
+ * A simple class that can be move-constructed but not copy-constructed
+ */
+class MoveOnly{
+private:
+	int data;
+
+	int release() {
+		int ret = this->data;
+		this->data = 0;
+		return ret;
+	}
+
+public:
+	MoveOnly(int data): data(data) {}
+	MoveOnly(const MoveOnly &) = delete;
+	MoveOnly(MoveOnly&& other): data(other.release()) {}
+	~MoveOnly() {}
+
+	int get() const {
+		return this->data;
+	}
+};
+
+/**
+ * A simple class that can be copy-constructed but not move-constructed
+ */
+class CopyOnly{
+private:
+	int data;
+public:
+	CopyOnly(int data): data(data) {}
+	CopyOnly(const CopyOnly & other): data(other.get()) {}
+	CopyOnly(CopyOnly&&) = delete;
+	~CopyOnly() {}
+
+	int get() const {
+		return this->data;
+	}
+};
+
+/**
+ * A simple class that can be both copy-constructed and move-constructed
+ */
+class CopyMove{
+private:
+	int data;
+
+	static std::mutex s_mutex;
+	static int s_accumulatedConstructionCounter;
+
+	int release() {
+		int ret = this->data;
+		this->data = 0;
+		return ret;
+	}
+
+	void atomic_inc() {
+		std::scoped_lock lock(s_mutex);
+		s_accumulatedConstructionCounter++;
+	}
+
+public:
+	CopyMove(int data): data(data) {
+		atomic_inc();
+	}
+
+	CopyMove(const CopyMove & other): data(other.get()) {
+		atomic_inc();
+	}
+
+	// Move constructor does not increase global counter
+	CopyMove(CopyMove&& other): data(other.release()) {}
+
+	~CopyMove() {}
+
+	int get() const {
+		return this->data;
+	}
+
+	static int get_accumulated_construction_counter() {
+		return CopyMove::s_accumulatedConstructionCounter;
+	}
+
+	static void reset_accumulated_construction_counter() {
+		CopyMove::s_accumulatedConstructionCounter = 0;
+	}
+};
+
+std::mutex CopyMove::s_mutex = std::mutex();
+int CopyMove::s_accumulatedConstructionCounter = 0;
+
+void concurrent_queue_copy_only_elements_compilation() {
+	const int test_data = 157;
+	openage::datastructure::ConcurrentQueue<CopyOnly> queue;
+
+	{
+		CopyOnly tmp(test_data);
+		queue.push(std::move(tmp));
+	}
+
+	CopyOnly res(queue.pop());
+	TESTEQUALS(res.get(), test_data);
+}
+
+void concurrent_queue_move_only_elements_compilation() {
+	const int test_data = 157;
+	openage::datastructure::ConcurrentQueue<MoveOnly> queue;
+
+	{
+		MoveOnly tmp(test_data);
+		queue.push(std::move(tmp));
+	}
+
+	MoveOnly res(queue.pop());
+	TESTEQUALS(res.get(), test_data);
+}
+
+void concurrent_queue_copy_move_elements_compilation() {
+	const int test_data = 157;
+	openage::datastructure::ConcurrentQueue<CopyMove> queue;
+
+	{
+		CopyMove tmp(test_data);
+		queue.push(std::move(tmp));
+	}
+
+	CopyMove res(queue.pop());
+	TESTEQUALS(res.get(), test_data);
+
+	// The second instance should be move-constructed
+	TESTEQUALS(CopyMove::get_accumulated_construction_counter(), 1);
+	res.reset_accumulated_construction_counter();
+}
+
+// exported test
+void concurrent_queue() {
+	concurrent_queue_copy_only_elements_compilation();
+	concurrent_queue_move_only_elements_compilation();
+	concurrent_queue_copy_move_elements_compilation();
+}
+
+} // openage::datastructure::tests
