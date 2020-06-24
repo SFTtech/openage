@@ -338,7 +338,7 @@ class Node:
         self.node_type = node_type
         self.parent = parent
 
-        if not self.parent and not self.node_type is NodeType.ROOT:
+        if not self.parent and self.node_type is not NodeType.ROOT:
             raise Exception("Only node with type ROOT are allowed to have no parent")
 
         self.depth = 0

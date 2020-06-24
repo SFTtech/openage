@@ -9,6 +9,9 @@ once the object has been created.
 
 
 class ForwardRef:
+    """
+    Declares a forward reference to a RawAPIObject.
+    """
 
     __slots__ = ('group_object', 'raw_api_object_name')
 
@@ -17,9 +20,10 @@ class ForwardRef:
         Creates a forward reference to a RawAPIObject that will be created
         by a converter object group.
 
-        :param converter_object_group_ref: ConverterObjectGroup where the nyan object will be created.
+        :param converter_object_group_ref: ConverterObjectGroup where the RawAPIObject
+                                           will be created.
         :type converter_object_group_ref: ConverterObjectGroup
-        :param raw_api_object_ref: Name of the raw API object.
+        :param raw_api_object_ref: Name of the RawAPIObject.
         :type raw_api_object_ref: str
         """
 

@@ -1,4 +1,5 @@
 # Copyright 2015-2020 the openage authors. See copying.md for legal info.
+
 """
 Receives cleaned-up srcdir and targetdir objects from .main, and drives the
 actual conversion process.
@@ -8,21 +9,18 @@ import os
 import re
 from tempfile import gettempdir
 
-from openage.convert.dataformat.media_types import MediaType
-from openage.convert.dataformat.version_detect import GameEdition, GameExpansion
-from openage.convert.langfile.hdlanguagefile import read_de2_language_file
-
 from ..log import info, dbg
 from .blendomatic import Blendomatic
 from .changelog import (ASSET_VERSION)
-from .colortable import ColorTable, PlayerColorTable
-from .export.data_formatter import DataFormatter
+from .colortable import ColorTable
+from .dataformat.media_types import MediaType
+from .dataformat.version_detect import GameEdition, GameExpansion
 from .gamedata.empiresdat import load_gamespec
-from .hardcoded.termcolors import URXVTCOLS
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .interface.cutter import InterfaceCutter
 from .interface.rename import hud_rename
 from .langfile.hdlanguagefile import read_age2_hd_3x_stringresources
+from .langfile.hdlanguagefile import read_de2_language_file
 from .langfile.stringresource import StringResource
 from .opus import opusenc
 from .processor.modpack_exporter import ModpackExporter
@@ -194,7 +192,7 @@ def convert_metadata(args):
     """
     if not args.flag("no_metadata"):
         info("converting metadata")
-        data_formatter = DataFormatter()
+        # data_formatter = DataFormatter()
 
     # required for player palette and color lookup during SLP conversion.
     yield "palette"
@@ -223,7 +221,10 @@ def convert_metadata(args):
     existing_graphics = get_existing_graphics(args)
 
     # Convert
-    modpacks = args.converter.convert(gamespec, args.game_version, string_resources, existing_graphics)
+    modpacks = args.converter.convert(gamespec,
+                                      args.game_version,
+                                      string_resources,
+                                      existing_graphics)
 
     for modpack in modpacks:
         ModpackExporter.export(modpack, args)
@@ -239,7 +240,7 @@ def convert_metadata(args):
     # data_formatter.add_data(player_palette.dump("player_palette"))
 
     yield "terminal color palette"
-    termcolortable = ColorTable(URXVTCOLS)
+    # termcolortable = ColorTable(URXVTCOLS)
     # data_formatter.add_data(termcolortable.dump("termcolors"))
 
     yield "game specification files"
@@ -247,14 +248,12 @@ def convert_metadata(args):
 
     if args.flag('gen_extra_files'):
         dbg("generating extra files for visualization")
-        tgt = args.targetdir
-        with tgt['info/colortable.pal.png'].open_w() as outfile:
-            # palette.save_visualization(outfile)
-            pass
+        # tgt = args.targetdir
+        # with tgt['info/colortable.pal.png'].open_w() as outfile:
+        #     palette.save_visualization(outfile)
 
-        with tgt['info/playercolortable.pal.png'].open_w() as outfile:
-            # player_palette.save_visualization(outfile)
-            pass
+        # with tgt['info/playercolortable.pal.png'].open_w() as outfile:
+        #     player_palette.save_visualization(outfile)
 
 
 def get_converter(game_version):
@@ -268,15 +267,15 @@ def get_converter(game_version):
         from .processor.ror.processor import RoRProcessor
         return RoRProcessor
 
-    elif game_edition is GameEdition.AOC:
+    if game_edition is GameEdition.AOC:
         from .processor.aoc.processor import AoCProcessor
         return AoCProcessor
 
-    elif game_edition is GameEdition.AOE2DE:
+    if game_edition is GameEdition.AOE2DE:
         from .processor.de2.processor import DE2Processor
         return DE2Processor
 
-    elif game_edition is GameEdition.SWGB:
+    if game_edition is GameEdition.SWGB:
         if GameExpansion.SWGB_CC in game_expansions:
             from openage.convert.processor.swgbcc.processor import SWGBCCProcessor
             return SWGBCCProcessor

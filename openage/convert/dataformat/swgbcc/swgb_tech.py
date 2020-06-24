@@ -14,7 +14,7 @@ class SWGBUnitLineUpgrade(UnitLineUpgrade):
     Upgrades attributes of units/buildings or other stats in the game.
     """
 
-    __slots__ = ('civ_unlocks')
+    __slots__ = ('civ_unlocks',)
 
     def __init__(self, tech_id, unit_line_id, upgrade_target_id, full_data_set):
         """
@@ -55,7 +55,7 @@ class SWGBUnitUnlock(UnitUnlock):
     Upgrades attributes of units/buildings or other stats in the game.
     """
 
-    __slots__ = ('civ_unlocks')
+    __slots__ = ('civ_unlocks',)
 
     def __init__(self, tech_id, line_id, full_data_set):
         """

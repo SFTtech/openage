@@ -1,4 +1,4 @@
-# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+# Copyright 2013-2020 the openage authors. See copying.md for legal info.
 
 """
 Provides PEFile, a class for reading MS portable executable files.
@@ -8,8 +8,8 @@ http://www.csn.ul.ie/~caolan/pub/winresdump/winresdump/doc/pefile2.html
 http://en.wikibooks.org/wiki/X86_Disassembly/Windows_Executable_Files
 """
 
-from ...util.struct import NamedStruct
 from ...util.filelike.stream import StreamFragment
+from ...util.struct import NamedStruct
 
 
 class PEDOSHeader(NamedStruct):

@@ -1,5 +1,9 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
+"""
+Contains structures and API-like objects for graphics from AoC.
+"""
+
 from ...dataformat.converter_object import ConverterObject
 
 

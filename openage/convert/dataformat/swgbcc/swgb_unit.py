@@ -12,7 +12,7 @@ class SWGBUnitLineGroup(GenieUnitLineGroup):
     """
     A collection of GenieUnitObject types that form an "upgrade line"
     in SWGB. In comparison to AoE, there is one almost identical line
-    for every civ (civ line). 
+    for every civ (civ line).
 
     Example: Trooper Recruit->Trooper->Heavy Trooper->Repeater Trooper
 
@@ -20,7 +20,7 @@ class SWGBUnitLineGroup(GenieUnitLineGroup):
     with have their differences patched in by the civ.
     """
 
-    __slots__ = ('civ_lines')
+    __slots__ = ('civ_lines',)
 
     def __init__(self, line_id, full_data_set):
         """
@@ -108,7 +108,7 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
     with have their differences patched in by the civ.
     """
 
-    __slots__ = ('civ_lines')
+    __slots__ = ('civ_lines',)
 
     def __init__(self, line_id, head_unit_id, full_data_set):
         """
@@ -179,7 +179,7 @@ class SWGBMonkGroup(GenieMonkGroup):
     with have their differences patched in by the civ.
     """
 
-    __slots__ = ('civ_lines')
+    __slots__ = ('civ_lines',)
 
     def __init__(self, line_id, head_unit_id, switch_unit_id, full_data_set):
         """

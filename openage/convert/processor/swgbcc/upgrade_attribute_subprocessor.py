@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
+#
+# TODO: Remove when all methods are implemented
+# pylint: disable=unused-argument,line-too-long
 
 """
 Creates upgrade patches for attribute modification effects in SWGB.
@@ -10,6 +15,9 @@ from openage.convert.service import internal_name_lookups
 
 
 class SWGBCCUpgradeAttributeSubprocessor:
+    """
+    Creates raw API objects for attribute upgrade effects in SWGB.
+    """
 
     @staticmethod
     def cost_carbon_upgrade(converter_group, line, value, operator, team=False):
@@ -82,8 +90,10 @@ class SWGBCCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -167,8 +177,10 @@ class SWGBCCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -252,8 +264,10 @@ class SWGBCCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -309,7 +323,7 @@ class SWGBCCUpgradeAttributeSubprocessor:
                 # Not a valid resource
                 continue
 
-            elif resource_id == 0:
+            if resource_id == 0:
                 resource_name = "Food"
 
             elif resource_id == 1:
@@ -369,8 +383,10 @@ class SWGBCCUpgradeAttributeSubprocessor:
 
             if team:
                 wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-                stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                           dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+                stances = [
+                    dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                    dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+                ]
                 wrapper_raw_api_object.add_raw_member("stances",
                                                       stances,
                                                       "engine.aux.patch.type.DiplomaticPatch")

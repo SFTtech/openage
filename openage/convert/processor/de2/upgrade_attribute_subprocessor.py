@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-few-public-methods
+#
+# TODO: Remove when all methods are implemented
+# pylint: disable=unused-argument
 
 """
 Creates upgrade patches for attribute modification effects in DE2.
@@ -6,6 +11,9 @@ Creates upgrade patches for attribute modification effects in DE2.
 
 
 class DE2UpgradeAttributeSubprocessor:
+    """
+    Creates raw API objects for attribute upgrade effects in DE2.
+    """
 
     @staticmethod
     def regeneration_rate_upgrade(converter_group, line, value, operator, team=False):

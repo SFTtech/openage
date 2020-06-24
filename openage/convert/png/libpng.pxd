@@ -11,10 +11,10 @@ cdef extern from "png.h":
     const int PNG_TRANSFORM_IDENTITY = 0
     const int PNG_IMAGE_VERSION = 1
     const char PNG_FORMAT_RGBA = 0x03
-    
+
     const unsigned int PNG_FILTER_NONE  = 0x08
     const unsigned int PNG_ALL_FILTERS  = 0xF8
-    
+
     ctypedef unsigned char png_byte
     ctypedef const png_byte *png_const_bytep
     ctypedef png_byte *png_bytep
@@ -27,18 +27,18 @@ cdef extern from "png.h":
     ctypedef png_struct *png_structrp
     ctypedef png_struct **png_structpp
     ctypedef const png_struct *png_const_structrp
-    
+
     ctypedef struct png_info
     ctypedef png_info *png_infop
     ctypedef png_info *png_inforp
     ctypedef png_info **png_infopp
     ctypedef const png_info *png_const_inforp
-    
+
     ctypedef const char *png_const_charp
     ctypedef void *png_voidp
     ctypedef (png_structp, png_const_charp) *png_error_ptr
     ctypedef FILE *png_FILE_p
-    
+
     ctypedef struct png_control
     ctypedef png_control *png_controlp
     ctypedef struct png_image:
@@ -52,7 +52,7 @@ cdef extern from "png.h":
         png_uint_32 warning_or_error
         char message[64]
     ctypedef png_image *png_imagep
-    
+
     ctypedef size_t png_alloc_size_t
 
     png_structp png_create_write_struct(png_const_charp user_png_ver,
@@ -81,7 +81,7 @@ cdef extern from "png.h":
                        png_voidp params)
     void png_destroy_write_struct(png_structpp png_ptr_ptr,
                                   png_infopp info_ptr_ptr)
-    
+
     # PNG optimization options
     void png_set_compression_level(png_structrp png_ptr,
                                    int level)
@@ -109,4 +109,3 @@ cdef extern from "png.h":
                        png_const_bytep row)
     void png_write_end(png_structrp png_ptr,
                        png_inforp info_ptr)
-    

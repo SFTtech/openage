@@ -1,4 +1,4 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 """ Routines for texture generation etc """
 
@@ -16,8 +16,7 @@ from ..util.fslike.path import Path
 from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from .blendomatic import BlendingMode
 from .dataformat import genie_structure
-from .export import data_definition
-from .export import struct_definition, data_formatter
+from .export import struct_definition
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
                                 TERRAIN_ASPECT_RATIO)

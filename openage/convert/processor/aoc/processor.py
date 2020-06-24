@@ -1,17 +1,11 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-lines,too-many-branches,too-many-statements
+# pylint: disable=too-many-locals,too-many-public-methods
 
 """
 Convert data from AoC to openage formats.
 """
-from openage.convert.dataformat.aoc.genie_tech import StatUpgrade, InitiatedTech,\
-    BuildingUnlock, NodeTech
-from openage.convert.dataformat.aoc.genie_terrain import GenieTerrainGroup
-from openage.convert.dataformat.aoc.genie_unit import GenieAmbientGroup,\
-    GenieGarrisonMode
-from openage.convert.dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
-    VARIANT_GROUP_LOOKUPS
-from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
-from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
 
 from ....log import info
 from ...dataformat.aoc.genie_civ import GenieCivilizationGroup
@@ -27,7 +21,12 @@ from ...dataformat.aoc.genie_tech import AgeUpgrade,\
     UnitUnlock, UnitLineUpgrade, CivBonus
 from ...dataformat.aoc.genie_tech import BuildingLineUpgrade
 from ...dataformat.aoc.genie_tech import GenieTechObject
+from ...dataformat.aoc.genie_tech import StatUpgrade, InitiatedTech,\
+    BuildingUnlock, NodeTech
+from ...dataformat.aoc.genie_terrain import GenieTerrainGroup
 from ...dataformat.aoc.genie_terrain import GenieTerrainObject
+from ...dataformat.aoc.genie_unit import GenieAmbientGroup,\
+    GenieGarrisonMode
 from ...dataformat.aoc.genie_unit import GenieStackBuildingGroup,\
     GenieBuildingLineGroup
 from ...dataformat.aoc.genie_unit import GenieUnitLineGroup,\
@@ -36,12 +35,19 @@ from ...dataformat.aoc.genie_unit import GenieUnitObject
 from ...dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
     GenieVillagerGroup
 from ...dataformat.aoc.genie_unit import GenieVariantGroup
+from ...dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
+    VARIANT_GROUP_LOOKUPS
 from ...nyan.api_loader import load_api
+from .media_subprocessor import AoCMediaSubprocessor
 from .modpack_subprocessor import AoCModpackSubprocessor
 from .nyan_subprocessor import AoCNyanSubprocessor
+from .pregen_processor import AoCPregenSubprocessor
 
 
 class AoCProcessor:
+    """
+    Main processor for converting data from AoC.
+    """
 
     @classmethod
     def convert(cls, gamespec, game_version, string_resources, existing_graphics):
@@ -51,7 +57,7 @@ class AoCProcessor:
 
         :param gamespec: Gamedata from empires.dat read in by the
                          reader functions.
-        :type gamespec: class: ...dataformat.value_members.ArrayMember
+        :type gamespec: ...dataformat.value_members.ArrayMember
         :returns: A list of modpacks.
         :rtype: list
         """
@@ -75,7 +81,7 @@ class AoCProcessor:
         Store data from the reader in a conversion container.
 
         :param gamespec: Gamedata from empires.dat file.
-        :type gamespec: class: ...dataformat.value_members.ArrayMember
+        :type gamespec: ...dataformat.value_members.ArrayMember
         """
         dataset = GenieObjectContainer()
 
@@ -86,57 +92,56 @@ class AoCProcessor:
 
         info("Extracting Genie data...")
 
-        cls._extract_genie_units(gamespec, dataset)
-        cls._extract_genie_techs(gamespec, dataset)
-        cls._extract_genie_effect_bundles(gamespec, dataset)
-        cls._sanitize_effect_bundles(dataset)
-        cls._extract_genie_civs(gamespec, dataset)
-        cls._extract_age_connections(gamespec, dataset)
-        cls._extract_building_connections(gamespec, dataset)
-        cls._extract_unit_connections(gamespec, dataset)
-        cls._extract_tech_connections(gamespec, dataset)
-        cls._extract_genie_graphics(gamespec, dataset)
-        cls._extract_genie_sounds(gamespec, dataset)
-        cls._extract_genie_terrains(gamespec, dataset)
+        cls.extract_genie_units(gamespec, dataset)
+        cls.extract_genie_techs(gamespec, dataset)
+        cls.extract_genie_effect_bundles(gamespec, dataset)
+        cls.sanitize_effect_bundles(dataset)
+        cls.extract_genie_civs(gamespec, dataset)
+        cls.extract_age_connections(gamespec, dataset)
+        cls.extract_building_connections(gamespec, dataset)
+        cls.extract_unit_connections(gamespec, dataset)
+        cls.extract_tech_connections(gamespec, dataset)
+        cls.extract_genie_graphics(gamespec, dataset)
+        cls.extract_genie_sounds(gamespec, dataset)
+        cls.extract_genie_terrains(gamespec, dataset)
 
         return dataset
 
     @classmethod
     def _processor(cls, full_data_set):
         """
-        1. Transfer structures used in Genie games to more openage-friendly
-           Python objects.
-        2. Convert these objects to nyan.
+        Transfer structures used in Genie games to more openage-friendly
+        Python objects.
 
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
-        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
 
         info("Creating API-like objects...")
 
-        cls._create_unit_lines(full_data_set)
-        cls._create_extra_unit_lines(full_data_set)
-        cls._create_building_lines(full_data_set)
-        cls._create_villager_groups(full_data_set)
-        cls._create_ambient_groups(full_data_set)
-        cls._create_variant_groups(full_data_set)
-        cls._create_terrain_groups(full_data_set)
-        cls._create_tech_groups(full_data_set)
-        cls._create_node_tech_groups(full_data_set)
-        cls._create_civ_groups(full_data_set)
+        cls.create_unit_lines(full_data_set)
+        cls.create_extra_unit_lines(full_data_set)
+        cls.create_building_lines(full_data_set)
+        cls.create_villager_groups(full_data_set)
+        cls.create_ambient_groups(full_data_set)
+        cls.create_variant_groups(full_data_set)
+        cls.create_terrain_groups(full_data_set)
+        cls.create_tech_groups(full_data_set)
+        cls.create_node_tech_groups(full_data_set)
+        cls.create_civ_groups(full_data_set)
 
         info("Linking API-like objects...")
 
-        cls._link_building_upgrades(full_data_set)
-        cls._link_creatables(full_data_set)
-        cls._link_researchables(full_data_set)
-        cls._link_civ_uniques(full_data_set)
-        cls._link_gatherers_to_dropsites(full_data_set)
-        cls._link_garrison(full_data_set)
-        cls._link_trade_posts(full_data_set)
-        cls._link_repairables(full_data_set)
+        cls.link_building_upgrades(full_data_set)
+        cls.link_creatables(full_data_set)
+        cls.link_researchables(full_data_set)
+        cls.link_civ_uniques(full_data_set)
+        cls.link_gatherers_to_dropsites(full_data_set)
+        cls.link_garrison(full_data_set)
+        cls.link_trade_posts(full_data_set)
+        cls.link_repairables(full_data_set)
 
         info("Generating auxiliary objects...")
 
@@ -146,6 +151,14 @@ class AoCProcessor:
 
     @classmethod
     def _post_processor(cls, full_data_set):
+        """
+        Convert API-like Python objects to nyan.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
 
         info("Creating nyan objects...")
 
@@ -158,12 +171,12 @@ class AoCProcessor:
         return AoCModpackSubprocessor.get_modpacks(full_data_set)
 
     @staticmethod
-    def _extract_genie_units(gamespec, full_data_set):
+    def extract_genie_units(gamespec, full_data_set):
         """
         Extract units from the game data.
 
         :param gamespec: Gamedata from empires.dat file.
-        :type gamespec: class: ...dataformat.value_members.ArrayMember
+        :type gamespec: ...dataformat.value_members.ArrayMember
         """
         # Units are stored in the civ container.
         # All civs point to the same units (?) except for Gaia which has more.
@@ -197,12 +210,12 @@ class AoCProcessor:
             unit.add_member(unit_commands)
 
     @staticmethod
-    def _extract_genie_techs(gamespec, full_data_set):
+    def extract_genie_techs(gamespec, full_data_set):
         """
         Extract techs from the game data.
 
         :param gamespec: Gamedata from empires.dat file.
-        :type gamespec: class: ...dataformat.value_members.ArrayMember
+        :type gamespec: ...dataformat.value_members.ArrayMember
         """
         # Techs are stored as "researches".
         #
@@ -220,12 +233,12 @@ class AoCProcessor:
             index += 1
 
     @staticmethod
-    def _extract_genie_effect_bundles(gamespec, full_data_set):
+    def extract_genie_effect_bundles(gamespec, full_data_set):
         """
         Extract effects and effect bundles from the game data.
 
         :param gamespec: Gamedata from empires.dat file.
-        :type gamespec: class: ...dataformat.value_members.ArrayMember
+        :type gamespec: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->effect_bundles
         raw_effect_bundles = gamespec[0]["effect_bundles"].get_value()
@@ -263,7 +276,7 @@ class AoCProcessor:
             index_bundle += 1
 
     @staticmethod
-    def _extract_genie_civs(gamespec, full_data_set):
+    def extract_genie_civs(gamespec, full_data_set):
         """
         Extract civs from the game data.
 
@@ -289,7 +302,7 @@ class AoCProcessor:
             index += 1
 
     @staticmethod
-    def _extract_age_connections(gamespec, full_data_set):
+    def extract_age_connections(gamespec, full_data_set):
         """
         Extract age connections from the game data.
 
@@ -307,7 +320,7 @@ class AoCProcessor:
             full_data_set.age_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def _extract_building_connections(gamespec, full_data_set):
+    def extract_building_connections(gamespec, full_data_set):
         """
         Extract building connections from the game data.
 
@@ -326,7 +339,7 @@ class AoCProcessor:
             full_data_set.building_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def _extract_unit_connections(gamespec, full_data_set):
+    def extract_unit_connections(gamespec, full_data_set):
         """
         Extract unit connections from the game data.
 
@@ -344,7 +357,7 @@ class AoCProcessor:
             full_data_set.unit_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def _extract_tech_connections(gamespec, full_data_set):
+    def extract_tech_connections(gamespec, full_data_set):
         """
         Extract tech connections from the game data.
 
@@ -362,7 +375,7 @@ class AoCProcessor:
             full_data_set.tech_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def _extract_genie_graphics(gamespec, full_data_set):
+    def extract_genie_graphics(gamespec, full_data_set):
         """
         Extract graphic definitions from the game data.
 
@@ -393,7 +406,7 @@ class AoCProcessor:
             genie_graphic.detect_subgraphics()
 
     @staticmethod
-    def _extract_genie_sounds(gamespec, full_data_set):
+    def extract_genie_sounds(gamespec, full_data_set):
         """
         Extract sound definitions from the game data.
 
@@ -411,7 +424,7 @@ class AoCProcessor:
             full_data_set.genie_sounds.update({sound.get_id(): sound})
 
     @staticmethod
-    def _extract_genie_terrains(gamespec, full_data_set):
+    def extract_genie_terrains(gamespec, full_data_set):
         """
         Extract terrains from the game data.
 
@@ -432,7 +445,7 @@ class AoCProcessor:
             index += 1
 
     @staticmethod
-    def _create_unit_lines(full_data_set):
+    def create_unit_lines(full_data_set):
         """
         Sort units into lines, based on information in the unit connections.
 
@@ -497,7 +510,7 @@ class AoCProcessor:
                 # Search other_connections for the previous unit in line
                 connected_types = connection["other_connections"].get_value()
                 connected_index = -1
-                for index in range(len(connected_types)):
+                for index, _ in enumerate(connected_types):
                     connected_type = connected_types[index]["other_connection"].get_value()
                     if connected_type == 2:
                         # 2 == Unit
@@ -522,7 +535,7 @@ class AoCProcessor:
         full_data_set.unit_lines_vertical_ref.update(pre_unit_lines)
 
     @staticmethod
-    def _create_extra_unit_lines(full_data_set):
+    def create_extra_unit_lines(full_data_set):
         """
         Create additional units that are not in the unit connections.
 
@@ -540,7 +553,7 @@ class AoCProcessor:
             full_data_set.unit_ref.update({unit_id: unit_line})
 
     @staticmethod
-    def _create_building_lines(full_data_set):
+    def create_building_lines(full_data_set):
         """
         Establish building lines, based on information in the building connections.
         Because of how Genie building lines work, this will only find the first
@@ -580,7 +593,7 @@ class AoCProcessor:
             # check if any tech has an upgrade effect.
             connected_types = connection["other_connections"].get_value()
             connected_tech_indices = []
-            for index in range(len(connected_types)):
+            for index, _ in enumerate(connected_types):
                 connected_type = connected_types[index]["other_connection"].get_value()
                 if connected_type == 3:
                     # 3 == Tech
@@ -616,7 +629,7 @@ class AoCProcessor:
 
                 # Find the previous building
                 connected_index = -1
-                for c_index in range(len(connected_types)):
+                for c_index, _ in enumerate(connected_types):
                     connected_type = connected_types[c_index]["other_connection"].get_value()
                     if connected_type == 1:
                         # 1 == Building
@@ -624,16 +637,21 @@ class AoCProcessor:
                         break
 
                 else:
-                    raise Exception("Building %s is not first in line, but no previous building can"
-                                    " be found in other_connections" % (building_id))
+                    raise Exception("Building %s is not first in line, but no previous "
+                                    "building could be found in other_connections"
+                                    % (building_id))
 
                 previous_building_id = connected_ids[connected_index].get_value()
 
                 # Add the upgrade tech group to the data set.
                 building_upgrade = BuildingLineUpgrade(connected_tech_id, line_id,
                                                        building_id, full_data_set)
-                full_data_set.tech_groups.update({building_upgrade.get_id(): building_upgrade})
-                full_data_set.building_upgrades.update({building_upgrade.get_id(): building_upgrade})
+                full_data_set.tech_groups.update(
+                    {building_upgrade.get_id(): building_upgrade}
+                )
+                full_data_set.building_upgrades.update(
+                    {building_upgrade.get_id(): building_upgrade}
+                )
 
                 break
 
@@ -657,7 +675,7 @@ class AoCProcessor:
                 full_data_set.unit_ref.update({building_id: building_line})
 
     @staticmethod
-    def _sanitize_effect_bundles(full_data_set):
+    def sanitize_effect_bundles(full_data_set):
         """
         Remove garbage data from effect bundles.
 
@@ -680,7 +698,7 @@ class AoCProcessor:
                     # Effect has no type
                     continue
 
-                elif effect_type == 102:
+                if effect_type == 102:
                     if effect["attr_d"].get_value() < 0:
                         # Tech disable effect with no tech id specified
                         continue
@@ -692,7 +710,7 @@ class AoCProcessor:
             bundle.sanitized = True
 
     @staticmethod
-    def _create_tech_groups(full_data_set):
+    def create_tech_groups(full_data_set):
         """
         Create techs from tech connections and unit upgrades/unlocks
         from unit connections.
@@ -715,7 +733,7 @@ class AoCProcessor:
                 # Search other_connections for the age id
                 connected_types = connection["other_connections"].get_value()
                 connected_index = -1
-                for index in range(len(connected_types)):
+                for index, _ in enumerate(connected_types):
                     connected_type = connected_types[index]["other_connection"].get_value()
                     if connected_type == 0:
                         # 2 == Unit
@@ -734,7 +752,7 @@ class AoCProcessor:
                 full_data_set.age_upgrades.update({age_up.get_id(): age_up})
 
             elif len(connected_buildings) > 0:
-                # Building upgrades are created in _create_building_lines() method
+                # Building upgrades are created in create_building_lines() method
                 # so we don't need to create them here
                 if tech_id not in full_data_set.building_upgrades.keys():
                     # Check if the tech is a building unlock
@@ -749,8 +767,12 @@ class AoCProcessor:
                             unlock_id = upgrade["attr_a"].get_value()
 
                         building_unlock = BuildingUnlock(tech_id, unlock_id, full_data_set)
-                        full_data_set.tech_groups.update({building_unlock.get_id(): building_unlock})
-                        full_data_set.building_unlocks.update({building_unlock.get_id(): building_unlock})
+                        full_data_set.tech_groups.update(
+                            {building_unlock.get_id(): building_unlock}
+                        )
+                        full_data_set.building_unlocks.update(
+                            {building_unlock.get_id(): building_unlock}
+                        )
 
             else:
                 # Create a stat upgrade for other techs
@@ -772,7 +794,7 @@ class AoCProcessor:
                 # Unit is unlocked from the start
                 continue
 
-            elif line_mode == 2:
+            if line_mode == 2:
                 # Unit is first in line, there should be an unlock tech id
                 # Tjis is usually the enabling tech id
                 unlock_tech_id = enabling_research_id
@@ -816,7 +838,7 @@ class AoCProcessor:
         # Civ boni = ONLY passive boni (not unit unlocks, unit upgrades or team bonus)
         genie_techs = full_data_set.genie_techs
 
-        for index in range(len(genie_techs)):
+        for index, _ in enumerate(genie_techs):
             tech_id = index
 
             # Civ ID must be positive and non-zero
@@ -839,7 +861,7 @@ class AoCProcessor:
             full_data_set.civ_boni.update({civ_bonus.get_id(): civ_bonus})
 
     @staticmethod
-    def _create_node_tech_groups(full_data_set):
+    def create_node_tech_groups(full_data_set):
         """
         Create tech condition chains for age upgrades
 
@@ -861,10 +883,10 @@ class AoCProcessor:
                 if tech_id == -1:
                     continue
 
-                elif tech_id == 104:
+                if tech_id == 104:
                     continue
 
-                elif tech_id in full_data_set.tech_groups.keys():
+                if tech_id in full_data_set.tech_groups.keys():
                     continue
 
                 node_tech_group = NodeTech(tech_id, full_data_set)
@@ -885,10 +907,10 @@ class AoCProcessor:
                     if tech_id == -1:
                         continue
 
-                    elif tech_id == 104:
+                    if tech_id == 104:
                         continue
 
-                    elif tech_id in full_data_set.tech_groups.keys():
+                    if tech_id in full_data_set.tech_groups.keys():
                         continue
 
                     node_tech_group = NodeTech(tech_id, full_data_set)
@@ -901,7 +923,7 @@ class AoCProcessor:
                 node_techs.remove(current_tech)
 
     @staticmethod
-    def _create_civ_groups(full_data_set):
+    def create_civ_groups(full_data_set):
         """
         Create civilization groups from civ objects.
 
@@ -921,7 +943,7 @@ class AoCProcessor:
             index += 1
 
     @staticmethod
-    def _create_villager_groups(full_data_set):
+    def create_villager_groups(full_data_set):
         """
         Create task groups and assign the relevant male and female group to a
         villager group.
@@ -973,7 +995,7 @@ class AoCProcessor:
             full_data_set.unit_ref.update({unit_id: villager})
 
     @staticmethod
-    def _create_ambient_groups(full_data_set):
+    def create_ambient_groups(full_data_set):
         """
         Create ambient groups, mostly for resources and scenery.
 
@@ -992,7 +1014,7 @@ class AoCProcessor:
             full_data_set.unit_ref.update({ambient_id: ambient_group})
 
     @staticmethod
-    def _create_variant_groups(full_data_set):
+    def create_variant_groups(full_data_set):
         """
         Create variant groups.
 
@@ -1012,7 +1034,7 @@ class AoCProcessor:
                 full_data_set.unit_ref.update({variant_id: variant_group})
 
     @staticmethod
-    def _create_terrain_groups(full_data_set):
+    def create_terrain_groups(full_data_set):
         """
         Create terrain groups.
 
@@ -1038,7 +1060,7 @@ class AoCProcessor:
                 full_data_set.terrain_groups.update({terrain.get_id(): terrain_group})
 
     @staticmethod
-    def _link_building_upgrades(full_data_set):
+    def link_building_upgrades(full_data_set):
         """
         Find building upgrades in the AgeUp techs and append them to the building lines.
 
@@ -1070,7 +1092,7 @@ class AoCProcessor:
                 full_data_set.unit_ref.update({upgrade_target_id: upgraded_line})
 
     @staticmethod
-    def _link_creatables(full_data_set):
+    def link_creatables(full_data_set):
         """
         Link creatable units and buildings to their creating entity. This is done
         to provide quick access during conversion.
@@ -1103,7 +1125,7 @@ class AoCProcessor:
                     full_data_set.unit_lines[train_location_id].add_creatable(building_line)
 
     @staticmethod
-    def _link_researchables(full_data_set):
+    def link_researchables(full_data_set):
         """
         Link techs to their buildings. This is done
         to provide quick access during conversion.
@@ -1121,7 +1143,7 @@ class AoCProcessor:
                 full_data_set.building_lines[research_location_id].add_researchable(tech)
 
     @staticmethod
-    def _link_civ_uniques(full_data_set):
+    def link_civ_uniques(full_data_set):
         """
         Link civ bonus techs, unique units and unique techs to their civs.
 
@@ -1160,7 +1182,7 @@ class AoCProcessor:
                 full_data_set.civ_groups[civ_id].add_unique_tech(tech_group)
 
     @staticmethod
-    def _link_gatherers_to_dropsites(full_data_set):
+    def link_gatherers_to_dropsites(full_data_set):
         """
         Link gatherers to the buildings they drop resources off. This is done
         to provide quick access during conversion.
@@ -1185,7 +1207,7 @@ class AoCProcessor:
                         drop_site.add_gatherer_id(unit_id)
 
     @staticmethod
-    def _link_garrison(full_data_set):
+    def link_garrison(full_data_set):
         """
         Link a garrison unit to the lines that are stored and vice versa. This is done
         to provide quick access during conversion.
@@ -1250,13 +1272,13 @@ class AoCProcessor:
                     if creatable_type == 1 and not garrison_type & 0x01:
                         continue
 
-                    elif creatable_type == 2 and not garrison_type & 0x02:
+                    if creatable_type == 2 and not garrison_type & 0x02:
                         continue
 
-                    elif creatable_type == 3 and not garrison_type & 0x04:
+                    if creatable_type == 3 and not garrison_type & 0x04:
                         continue
 
-                    elif creatable_type == 6 and not garrison_type & 0x08:
+                    if creatable_type == 6 and not garrison_type & 0x08:
                         continue
 
                     if garrison_line.get_class_id() in garrison_classes:
@@ -1298,7 +1320,7 @@ class AoCProcessor:
                             garrison_line.garrison_entities.append(unit_line)
 
     @staticmethod
-    def _link_trade_posts(full_data_set):
+    def link_trade_posts(full_data_set):
         """
         Link a trade post building to the lines that it trades with.
 
@@ -1328,7 +1350,7 @@ class AoCProcessor:
                 full_data_set.building_lines[trade_post_id].add_trading_line(unit_line)
 
     @staticmethod
-    def _link_repairables(full_data_set):
+    def link_repairables(full_data_set):
         """
         Set units/buildings as repairable
 

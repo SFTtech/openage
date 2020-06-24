@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
+#
+# TODO: Remove when all methods are implemented
+# pylint: disable=unused-argument
 
 """
 Creates upgrade patches for resource modification effects in RoR.
@@ -11,6 +16,9 @@ from openage.nyan.nyan_structs import MemberOperator
 
 
 class RoRUpgradeResourceSubprocessor:
+    """
+    Creates raw API objects for resource upgrade effects in RoR.
+    """
 
     @staticmethod
     def building_conversion_upgrade(converter_group, value, operator, team=False):
@@ -72,7 +80,9 @@ class RoRUpgradeResourceSubprocessor:
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # New allowed types
-        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+        allowed_types = [
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()
+        ]
         nyan_patch_raw_api_object.add_raw_patch_member("allowed_types",
                                                        allowed_types,
                                                        "engine.ability.type.ApplyDiscreteEffect",

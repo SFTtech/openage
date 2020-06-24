@@ -1,4 +1,10 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-lines,too-many-statements
+# pylint: disable=too-few-public-methods,too-many-branches
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Creates upgrade patches for abilities.
@@ -13,6 +19,9 @@ from openage.nyan.nyan_structs import MemberOperator
 
 
 class RoRUpgradeAbilitySubprocessor:
+    """
+    Creates raw API objects for ability upgrade effects in RoR.
+    """
 
     @staticmethod
     def shoot_projectile_ability(converter_group, line, container_obj_ref,
@@ -104,13 +113,13 @@ class RoRUpgradeAbilitySubprocessor:
                 diff_animation_id = diff_animation.get_value()
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_forward_ref = AoCUpgradeAbilitySubprocessor._create_animation(converter_group,
-                                                                                            line,
-                                                                                            diff_animation_id,
-                                                                                            nyan_patch_ref,
-                                                                                            ability_name,
-                                                                                            "%s_"
-                                                                                            % command_lookup_dict[command_id][1])
+                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(converter_group,
+                                                                                           line,
+                                                                                           diff_animation_id,
+                                                                                           nyan_patch_ref,
+                                                                                           ability_name,
+                                                                                           "%s_"
+                                                                                           % command_lookup_dict[command_id][1])
                     animations_set.append(animation_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -123,12 +132,12 @@ class RoRUpgradeAbilitySubprocessor:
                 diff_comm_sound_id = diff_comm_sound.get_value()
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_forward_ref = AoCUpgradeAbilitySubprocessor._create_sound(converter_group,
-                                                                                    diff_comm_sound_id,
-                                                                                    nyan_patch_ref,
-                                                                                    ability_name,
-                                                                                    "%s_"
-                                                                                    % command_lookup_dict[command_id][1])
+                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(converter_group,
+                                                                                   diff_comm_sound_id,
+                                                                                   nyan_patch_ref,
+                                                                                   ability_name,
+                                                                                   "%s_"
+                                                                                   % command_lookup_dict[command_id][1])
                     sounds_set.append(sound_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
@@ -160,7 +169,7 @@ class RoRUpgradeAbilitySubprocessor:
                                                                "engine.ability.type.ShootProjectile",
                                                                MemberOperator.ADD)
 
-            if not (isinstance(diff_spawn_delay, NoDiffMember)):
+            if not isinstance(diff_spawn_delay, NoDiffMember):
                 if not isinstance(diff_animation, NoDiffMember):
                     attack_graphic_id = diff_animation.get_value()
 

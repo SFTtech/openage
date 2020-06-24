@@ -32,6 +32,8 @@ class CombinedSprite:
         self.filename = filename
         self.data = full_data_set
 
+        self.metadata = None
+
         # Depending on the amounts of references:
         # 0 = do not convert;
         # 1 = store with GameEntity;
@@ -85,8 +87,10 @@ class CombinedSprite:
         if len(self._refs) > 1:
             return "../shared/graphics/%s.sprite" % (self.filename)
 
-        elif len(self._refs) == 1:
+        if len(self._refs) == 1:
             return "./graphics/%s.sprite" % (self.filename)
+
+        return None
 
     def remove_reference(self, referer):
         """
@@ -117,7 +121,7 @@ class CombinedSprite:
         if len(self._refs) > 1:
             return "data/game_entity/shared/graphics/"
 
-        elif len(self._refs) == 1:
+        if len(self._refs) == 1:
             return "%s%s" % (self._refs[0].get_file_location()[0], "graphics/")
 
         return None

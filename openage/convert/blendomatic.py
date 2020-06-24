@@ -1,5 +1,7 @@
 # Copyright 2013-2020 the openage authors. See copying.md for legal info.
 
+# TODO pylint: disable=too-many-function-args
+
 """
 Conversion for the terrain blending masks.
 Those originate from blendomatic.dat.
@@ -248,6 +250,9 @@ class Blendomatic(GenieStructure):
         return [Texture(b_mode) for b_mode in self.blending_modes]
 
     def dump(self, filename):
+        """
+        Return a printale file.
+        """
         data = [
             {"blend_mode": idx}
             for idx, _ in enumerate(self.blending_modes)

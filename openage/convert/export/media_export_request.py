@@ -1,4 +1,6 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,arguments-differ
 
 """
 Specifies a request for a media resource that should be
@@ -10,6 +12,9 @@ from openage.util.observer import Observable
 
 
 class MediaExportRequest(Observable):
+    """
+    Generic superclass for export requests.
+    """
 
     def __init__(self, targetdir, source_filename, target_filename):
         """
@@ -35,7 +40,7 @@ class MediaExportRequest(Observable):
         raise NotImplementedError("%s has not implemented get_type()"
                                   % (self))
 
-    def save(self, sourcedir, exportdir, **kwargs):
+    def save(self, sourcedir, exportdir, *args, **kwargs):
         """
         Convert the media to openage target format and output the result
         to a file. Encountered metadata is returned on completion.
@@ -96,7 +101,7 @@ class GraphicsMediaExportRequest(MediaExportRequest):
     def get_type(self):
         return MediaType.GRAPHICS
 
-    def save(self, sourcedir, exportdir, game_version, palettes):
+    def save(self, sourcedir, exportdir, game_version, palettes, *args, **kwargs):
         source_file = sourcedir[self.get_type().value, self.source_filename]
 
         try:
@@ -139,7 +144,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
     def get_type(self):
         return MediaType.TERRAIN
 
-    def save(self, sourcedir, exportdir, game_version, palettes):
+    def save(self, sourcedir, exportdir, game_version, palettes, *args, **kwargs):
         source_file = sourcedir[self.get_type().value, self.source_filename]
         media_file = source_file.open("rb")
 
@@ -157,13 +162,13 @@ class TerrainMediaExportRequest(MediaExportRequest):
 
 class SoundMediaExportRequest(MediaExportRequest):
     """
-    Export requests for ingame graphics such as animations or sprites.
+    Export requests for ingame sounds.
     """
 
     def get_type(self):
         return MediaType.SOUNDS
 
-    def save(self, sourcedir, exportdir):
+    def save(self, sourcedir, exportdir, *args, **kwargs):
         source_file = sourcedir[self.get_type().value, self.source_filename]
 
         if source_file.is_file():

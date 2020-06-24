@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-lines,too-many-locals,too-many-statements,too-many-branches
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Convert API-like objects to nyan objects. Subroutine of the
@@ -22,10 +27,15 @@ from openage.convert.service import internal_name_lookups
 
 
 class RoRNyanSubprocessor:
+    """
+    Transform a RoR dataset to nyan objects.
+    """
 
     @classmethod
     def convert(cls, gamedata):
-
+        """
+        Create nyan objects from the given dataset.
+        """
         cls._process_game_entities(gamedata)
         cls._create_nyan_objects(gamedata)
         cls._create_nyan_members(gamedata)
@@ -91,31 +101,33 @@ class RoRNyanSubprocessor:
 
     @classmethod
     def _process_game_entities(cls, full_data_set):
-
+        """
+        Create the RawAPIObject representation of the objects.
+        """
         for unit_line in full_data_set.unit_lines.values():
-            cls._unit_line_to_game_entity(unit_line)
+            cls.unit_line_to_game_entity(unit_line)
 
         for building_line in full_data_set.building_lines.values():
-            cls._building_line_to_game_entity(building_line)
+            cls.building_line_to_game_entity(building_line)
 
         for ambient_group in full_data_set.ambient_groups.values():
-            cls._ambient_group_to_game_entity(ambient_group)
+            cls.ambient_group_to_game_entity(ambient_group)
 
         for variant_group in full_data_set.variant_groups.values():
-            AoCNyanSubprocessor._variant_group_to_game_entity(variant_group)
+            AoCNyanSubprocessor.variant_group_to_game_entity(variant_group)
 
         for tech_group in full_data_set.tech_groups.values():
             if tech_group.is_researchable():
-                cls._tech_group_to_tech(tech_group)
+                cls.tech_group_to_tech(tech_group)
 
         for terrain_group in full_data_set.terrain_groups.values():
-            cls._terrain_group_to_terrain(terrain_group)
+            cls.terrain_group_to_terrain(terrain_group)
 
         for civ_group in full_data_set.civ_groups.values():
-            cls._civ_group_to_civ(civ_group)
+            cls.civ_group_to_civ(civ_group)
 
     @staticmethod
-    def _unit_line_to_game_entity(unit_line):
+    def unit_line_to_game_entity(unit_line):
         """
         Creates raw API objects for a unit line.
 
@@ -200,7 +212,7 @@ class RoRNyanSubprocessor:
         # Applying effects and shooting projectiles
         if unit_line.is_projectile_shooter():
             abilities_set.append(RoRAbilitySubprocessor.shoot_projectile_ability(unit_line, 7))
-            RoRNyanSubprocessor._projectiles_from_line(unit_line)
+            RoRNyanSubprocessor.projectiles_from_line(unit_line)
 
         elif unit_line.is_melee() or unit_line.is_ranged():
             if unit_line.has_command(7):
@@ -296,7 +308,7 @@ class RoRNyanSubprocessor:
             RoRAuxiliarySubprocessor.get_creatable_game_entity(unit_line)
 
     @staticmethod
-    def _building_line_to_game_entity(building_line):
+    def building_line_to_game_entity(building_line):
         """
         Creates raw API objects for a building line.
 
@@ -388,7 +400,7 @@ class RoRNyanSubprocessor:
         if building_line.is_projectile_shooter():
             abilities_set.append(RoRAbilitySubprocessor.shoot_projectile_ability(building_line, 7))
             abilities_set.append(RoRAbilitySubprocessor.game_entity_stance_ability(building_line))
-            RoRNyanSubprocessor._projectiles_from_line(building_line)
+            RoRNyanSubprocessor.projectiles_from_line(building_line)
 
         # Resource abilities
         if building_line.is_harvestable():
@@ -425,7 +437,7 @@ class RoRNyanSubprocessor:
             RoRAuxiliarySubprocessor.get_creatable_game_entity(building_line)
 
     @staticmethod
-    def _ambient_group_to_game_entity(ambient_group):
+    def ambient_group_to_game_entity(ambient_group):
         """
         Creates raw API objects for an ambient group.
 
@@ -519,7 +531,7 @@ class RoRNyanSubprocessor:
                                       "engine.aux.game_entity.GameEntity")
 
     @staticmethod
-    def _tech_group_to_tech(tech_group):
+    def tech_group_to_tech(tech_group):
         """
         Creates raw API objects for a tech group.
 
@@ -635,7 +647,7 @@ class RoRNyanSubprocessor:
             AoCAuxiliarySubprocessor.get_researchable_tech(tech_group)
 
     @staticmethod
-    def _terrain_group_to_terrain(terrain_group):
+    def terrain_group_to_terrain(terrain_group):
         """
         Creates raw API objects for a terrain group.
 
@@ -800,7 +812,7 @@ class RoRNyanSubprocessor:
                                       "engine.aux.terrain.Terrain")
 
     @staticmethod
-    def _civ_group_to_civ(civ_group):
+    def civ_group_to_civ(civ_group):
         """
         Creates raw API objects for a civ group.
 
@@ -919,7 +931,7 @@ class RoRNyanSubprocessor:
                                       "engine.aux.civilization.Civilization")
 
     @staticmethod
-    def _projectiles_from_line(line):
+    def projectiles_from_line(line):
         """
         Creates Projectile(GameEntity) raw API objects for a unit/building line.
 

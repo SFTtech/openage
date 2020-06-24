@@ -1,14 +1,19 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-few-public-methods,too-many-statements,too-many-locals
 
 """
 Creates patches and modifiers for civs.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.service import internal_name_lookups
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.converter_object import RawAPIObject
+from ...service import internal_name_lookups
 
 
 class RoRCivSubprocessor:
+    """
+    Creates raw API objects for civs in RoR.
+    """
 
     @staticmethod
     def get_starting_resources(civ_group):

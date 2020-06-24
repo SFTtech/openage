@@ -1,4 +1,11 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-public-methods,too-many-lines,too-many-locals
+# pylint: disable=too-many-branches,too-many-statements,too-many-arguments
+# pylint: disable=invalid-name
+#
+# TODO:
+# pylint: disable=unused-argument,line-too-long
 
 """
 Derives and adds abilities to lines. Subroutine of the
@@ -19,6 +26,9 @@ from openage.util.ordered_set import OrderedSet
 
 
 class SWGBCCAbilitySubprocessor:
+    """
+    Creates raw API objects for abilities in SWGB.
+    """
 
     @staticmethod
     def active_transform_to_ability(line):
@@ -112,12 +122,12 @@ class SWGBCCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                             ability_animation_id,
-                                                                             ability_ref,
-                                                                             ability_name,
-                                                                             "%s_"
-                                                                             % command_lookup_dict[command_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                            ability_animation_id,
+                                                                            ability_ref,
+                                                                            ability_name,
+                                                                            "%s_"
+                                                                            % command_lookup_dict[command_id][1])
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
@@ -136,8 +146,10 @@ class SWGBCCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    for graphics_set_id, items in gset_lookup_dict.items():
+                    graphics_set_id = -1
+                    for set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
+                            graphics_set_id = set_id
                             break
 
                     # Check if the object for the animation has been created before
@@ -148,13 +160,13 @@ class SWGBCCAbilitySubprocessor:
                     obj_prefix = "%s%s" % (gset_lookup_dict[graphics_set_id][1], ability_name)
                     filename_prefix = "%s_%s_" % (command_lookup_dict[command_id][1],
                                                   gset_lookup_dict[graphics_set_id][2],)
-                    AoCAbilitySubprocessor._create_civ_animation(line,
-                                                                 civ_group,
-                                                                 civ_animation_id,
-                                                                 ability_ref,
-                                                                 obj_prefix,
-                                                                 filename_prefix,
-                                                                 obj_exists)
+                    AoCAbilitySubprocessor.create_civ_animation(line,
+                                                                civ_group,
+                                                                civ_animation_id,
+                                                                ability_ref,
+                                                                obj_prefix,
+                                                                filename_prefix,
+                                                                obj_exists)
 
         # Command Sound
         if projectile == -1:
@@ -175,11 +187,11 @@ class SWGBCCAbilitySubprocessor:
             else:
                 sound_obj_prefix = "ProjectileAttack"
 
-            sound_forward_ref = AoCAbilitySubprocessor._create_sound(line,
-                                                                     ability_comm_sound_id,
-                                                                     ability_ref,
-                                                                     sound_obj_prefix,
-                                                                     "command_")
+            sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
+                                                                    ability_comm_sound_id,
+                                                                    ability_ref,
+                                                                    sound_obj_prefix,
+                                                                    "command_")
             sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
                                                   "engine.ability.specialization.CommandSoundAbility")
@@ -349,12 +361,12 @@ class SWGBCCAbilitySubprocessor:
 
                 # Animation
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                                 progress_animation_id,
-                                                                                 progress_name,
-                                                                                 "Idle",
-                                                                                 "idle_damage_override_%s_"
-                                                                                 % (interval_right_bound))
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                                progress_animation_id,
+                                                                                progress_name,
+                                                                                "Idle",
+                                                                                "idle_damage_override_%s_"
+                                                                                % (interval_right_bound))
                 animations_set.append(animation_forward_ref)
                 progress_raw_api_object.add_raw_member("overlays",
                                                        animations_set,
@@ -586,12 +598,12 @@ class SWGBCCAbilitySubprocessor:
                 ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                                 ability_animation_id,
-                                                                                 ability_ref,
-                                                                                 ability_name,
-                                                                                 "%s_"
-                                                                                 % gather_lookup_dict[gatherer_unit_id][1])
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                                ability_animation_id,
+                                                                                ability_ref,
+                                                                                ability_name,
+                                                                                "%s_"
+                                                                                % gather_lookup_dict[gatherer_unit_id][1])
                 animations_set.append(animation_forward_ref)
                 ability_raw_api_object.add_raw_member("animations", animations_set,
                                                       "engine.ability.specialization.AnimatedAbility")
@@ -871,7 +883,7 @@ class SWGBCCAbilitySubprocessor:
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
-            #=======================================================================
+            # =======================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
 
@@ -1135,6 +1147,7 @@ class SWGBCCAbilitySubprocessor:
             unit_commands = gatherer["unit_commands"].get_value()
             resource = None
 
+            used_command = None
             for command in unit_commands:
                 # Find a gather ability. It doesn't matter which one because
                 # they should all produce the same resource for one genie unit.
@@ -1164,6 +1177,12 @@ class SWGBCCAbilitySubprocessor:
                 else:
                     continue
 
+                used_command = command
+
+            if not used_command:
+                # The unit uses no gathering command or we don't recognize it
+                continue
+
             gatherer_unit_id = gatherer.get_id()
             if gatherer_unit_id not in gather_lookup_dict.keys():
                 # Skips hunting wolves
@@ -1190,7 +1209,7 @@ class SWGBCCAbilitySubprocessor:
 
             # Carry progress
             carry_progress = []
-            carry_move_animation_id = command["carry_sprite_id"].get_value()
+            carry_move_animation_id = used_command["carry_sprite_id"].get_value()
             if carry_move_animation_id > -1:
                 # ===========================================================================================
                 progress_name = "%s.ResourceStorage.%sCarryProgress" % (game_entity_name,
@@ -1231,11 +1250,11 @@ class SWGBCCAbilitySubprocessor:
 
                 # Animation
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                                 carry_move_animation_id,
-                                                                                 override_ref,
-                                                                                 "Move",
-                                                                                 "move_carry_override_")
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                                carry_move_animation_id,
+                                                                                override_ref,
+                                                                                "Move",
+                                                                                "move_carry_override_")
 
                 animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
@@ -1288,7 +1307,7 @@ class SWGBCCAbilitySubprocessor:
         :returns: The forward reference for the ability.
         :rtype: ...dataformat.forward_ref.ForwardRef
         """
-        ability_forward_ref = AoCAbilitySubprocessor.restock_ability(line)
+        ability_forward_ref = AoCAbilitySubprocessor.restock_ability(line, restock_target_id)
 
         # TODO: Implement diffing of civ lines
 

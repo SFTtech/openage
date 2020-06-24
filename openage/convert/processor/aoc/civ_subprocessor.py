@@ -1,4 +1,6 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-statements,too-many-branches
 
 """
 Creates patches and modifiers for civs.
@@ -13,6 +15,9 @@ from openage.nyan.nyan_structs import MemberOperator
 
 
 class AoCCivSubprocessor:
+    """
+    Creates raw API objects for civs in AoC.
+    """
 
     @classmethod
     def get_civ_setup(cls, civ_group):
@@ -22,10 +27,10 @@ class AoCCivSubprocessor:
         """
         patches = []
 
-        patches.extend(cls._setup_unique_units(civ_group))
-        patches.extend(cls._setup_unique_techs(civ_group))
-        patches.extend(cls._setup_tech_tree(civ_group))
-        patches.extend(cls._setup_civ_bonus(civ_group))
+        patches.extend(cls.setup_unique_units(civ_group))
+        patches.extend(cls.setup_unique_techs(civ_group))
+        patches.extend(cls.setup_tech_tree(civ_group))
+        patches.extend(cls.setup_civ_bonus(civ_group))
 
         if len(civ_group.get_team_bonus_effects()) > 0:
             patches.extend(AoCTechSubprocessor.get_patches(civ_group.team_bonus))
@@ -172,7 +177,7 @@ class AoCCivSubprocessor:
         return resource_amounts
 
     @classmethod
-    def _setup_civ_bonus(cls, civ_group):
+    def setup_civ_bonus(cls, civ_group):
         """
         Returns global modifiers of a civ.
         """
@@ -263,7 +268,7 @@ class AoCCivSubprocessor:
         return patches
 
     @staticmethod
-    def _setup_unique_units(civ_group):
+    def setup_unique_units(civ_group):
         """
         Patches the unique units into their train location.
         """
@@ -337,7 +342,7 @@ class AoCCivSubprocessor:
         return patches
 
     @staticmethod
-    def _setup_unique_techs(civ_group):
+    def setup_unique_techs(civ_group):
         """
         Patches the unique techs into their research location.
         """
@@ -407,7 +412,7 @@ class AoCCivSubprocessor:
         return patches
 
     @staticmethod
-    def _setup_tech_tree(civ_group):
+    def setup_tech_tree(civ_group):
         """
         Patches standard techs and units out of Research and Create.
         """
@@ -430,14 +435,14 @@ class AoCCivSubprocessor:
             type_id = effect.get_type()
 
             if type_id == 101:
-                patches.extend(AoCTechSubprocessor._tech_cost_modify_effect(civ_group, effect))
+                patches.extend(AoCTechSubprocessor.tech_cost_modify_effect(civ_group, effect))
                 continue
 
-            elif type_id == 103:
-                patches.extend(AoCTechSubprocessor._tech_time_modify_effect(civ_group, effect))
+            if type_id == 103:
+                patches.extend(AoCTechSubprocessor.tech_time_modify_effect(civ_group, effect))
                 continue
 
-            elif type_id != 102:
+            if type_id != 102:
                 continue
 
             # Get tech id
@@ -589,7 +594,7 @@ class AoCCivSubprocessor:
         return patches
 
     @staticmethod
-    def _create_animation(line, animation_id, nyan_patch_ref, animation_name, filename_prefix):
+    def create_animation(line, animation_id, nyan_patch_ref, animation_name, filename_prefix):
         """
         Generates an animation for an ability.
         """

@@ -694,8 +694,8 @@ class NyanMember:
 
         self._sanity_check()
 
-        if isinstance(self._member_type, NyanObject) and not\
-                value is MemberSpecialValue.NYAN_NONE:
+        if isinstance(self._member_type, NyanObject) and\
+                value is not MemberSpecialValue.NYAN_NONE:
             if not (self.value is self._member_type or
                     self.value.has_ancestor(self._member_type)):
                 raise Exception(("%s: 'value' with type NyanObject must "
@@ -882,8 +882,8 @@ class NyanMember:
         This lets us convert data fields without worrying about the
         correct types too much, e.g. if a boolean is stored as uint8.
         """
-        if self._member_type is MemberType.INT and not\
-                self._operator in (MemberOperator.DIVIDE, MemberOperator.MULTIPLY):
+        if self._member_type is MemberType.INT and\
+                self._operator not in (MemberOperator.DIVIDE, MemberOperator.MULTIPLY):
             self.value = int(self.value)
 
         elif self._member_type is MemberType.FLOAT:

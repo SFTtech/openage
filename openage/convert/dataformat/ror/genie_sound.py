@@ -1,5 +1,11 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
 
+"""
+Contains structures and API-like objects for sounds from RoR.
+
+Based on the classes from the AoC converter.
+"""
+
 from openage.convert.dataformat.aoc.genie_sound import GenieSound
 
 

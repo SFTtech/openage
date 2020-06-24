@@ -1,5 +1,7 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
+# pylint: disable=too-many-instance-attributes,too-many-branches,too-few-public-methods
+
 """
 Objects that represent data structures in the original game.
 
@@ -365,7 +367,7 @@ class RawAPIObject:
             member_value = raw_member[1]
             member_origin = raw_member[2]
 
-            if name == member_name and member_origin == member_origin:
+            if name == member_name and member_origin == origin:
                 member_value = member_value.extend(push_value)
                 break
 
@@ -446,8 +448,8 @@ class RawAPIObject:
                 member_value = round(member_value, ndigits=6)
 
             if self.is_patch():
-                nyan_member = NyanPatchMember(member_name, self.nyan_object.get_target(), member_origin,
-                                              member_value, member_operator)
+                nyan_member = NyanPatchMember(member_name, self.nyan_object.get_target(),
+                                              member_origin, member_value, member_operator)
                 self.nyan_object.add_member(nyan_member)
 
             else:
@@ -478,7 +480,7 @@ class RawAPIObject:
 
     def get_file_location(self):
         """
-        Returns a tuple with 
+        Returns a tuple with
             1. the relative path to the directory
             2. the filename
         where the nyan object will be stored.

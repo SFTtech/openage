@@ -1,5 +1,9 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
+"""
+Contains structures and API-like objects for civilization from AoC.
+"""
+
 from openage.convert.dataformat.aoc.genie_tech import CivTeamBonus, CivTechTree
 
 from ...dataformat.converter_object import ConverterObject,\
@@ -11,7 +15,7 @@ class GenieCivilizationObject(ConverterObject):
     Civilization in AoE2.
     """
 
-    __slots__ = ('data')
+    __slots__ = ('data',)
 
     def __init__(self, civ_id, full_data_set, members=None):
         """

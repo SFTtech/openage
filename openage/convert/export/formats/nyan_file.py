@@ -6,28 +6,28 @@ manages imports.
 """
 
 from ....nyan.nyan_structs import NyanObject
+from ....util.ordered_set import OrderedSet
 from ..data_definition import DataDefinition
-from openage.util.ordered_set import OrderedSet
-from debian.debtags import output
+
 
 FILE_VERSION = "0.1.0"
 
 
 class NyanFile(DataDefinition):
     """
-    Superclass for nyan files.
+    Groups nyan objects into files. Contains methods for creating imports
+    and dumping all objects into a human-readable .nyan file.
     """
 
     def __init__(self, targetdir, filename, modpack_name, nyan_objects=None):
-        self.nyan_objects = OrderedSet()
+        super().__init__(targetdir, filename)
 
+        self.modpack_name = modpack_name
+
+        self.nyan_objects = OrderedSet()
         if nyan_objects:
             for nyan_object in nyan_objects:
                 self.add_nyan_object(nyan_object)
-
-        self.targetdir = targetdir
-        self.filename = filename
-        self.modpack_name = modpack_name
 
         self.import_tree = None
 
@@ -54,7 +54,8 @@ class NyanFile(DataDefinition):
         """
         output_str = "# NYAN FILE\nversion %s\n\n" % (FILE_VERSION)
 
-        import_aliases = self.import_tree.establish_import_dict(self, ignore_names=["type", "types"])
+        import_aliases = self.import_tree.establish_import_dict(self,
+                                                                ignore_names=["type", "types"])
 
         for alias, fqon in import_aliases.items():
             output_str += "import "

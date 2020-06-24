@@ -1,4 +1,6 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-arguments,too-many-locals
 
 """
 Export requests for media metadata.
@@ -54,7 +56,7 @@ class SpriteMetadataExport(MetadataExport):
         self.graphics_metadata[img_filename] = (layer_mode, layer_pos, frame_rate, replay_delay,
                                                 frame_count, angle_count, mirror_mode)
 
-    def save(self, exportdir):
+    def save(self, exportdir, game_version=None):
         sprite_file = SpriteMetadata(self.targetdir, self.target_filename)
 
         index = 0

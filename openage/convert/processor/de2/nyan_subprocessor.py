@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-lines,too-many-locals,too-many-statements,too-many-branches
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Convert API-like objects to nyan objects. Subroutine of the
@@ -21,10 +26,15 @@ from openage.convert.service import internal_name_lookups
 
 
 class DE2NyanSubprocessor:
+    """
+    Transform a DE2 dataset to nyan objects.
+    """
 
     @classmethod
     def convert(cls, gamedata):
-
+        """
+        Create nyan objects from the given dataset.
+        """
         cls._process_game_entities(gamedata)
         cls._create_nyan_objects(gamedata)
         cls._create_nyan_members(gamedata)
@@ -90,31 +100,33 @@ class DE2NyanSubprocessor:
 
     @classmethod
     def _process_game_entities(cls, full_data_set):
-
+        """
+        Create the RawAPIObject representation of the objects.
+        """
         for unit_line in full_data_set.unit_lines.values():
-            cls._unit_line_to_game_entity(unit_line)
+            cls.unit_line_to_game_entity(unit_line)
 
         for building_line in full_data_set.building_lines.values():
-            cls._building_line_to_game_entity(building_line)
+            cls.building_line_to_game_entity(building_line)
 
         for ambient_group in full_data_set.ambient_groups.values():
-            AoCNyanSubprocessor._ambient_group_to_game_entity(ambient_group)
+            AoCNyanSubprocessor.ambient_group_to_game_entity(ambient_group)
 
         for variant_group in full_data_set.variant_groups.values():
-            AoCNyanSubprocessor._variant_group_to_game_entity(variant_group)
+            AoCNyanSubprocessor.variant_group_to_game_entity(variant_group)
 
         for tech_group in full_data_set.tech_groups.values():
             if tech_group.is_researchable():
-                cls._tech_group_to_tech(tech_group)
+                cls.tech_group_to_tech(tech_group)
 
         for terrain_group in full_data_set.terrain_groups.values():
-            cls._terrain_group_to_terrain(terrain_group)
+            cls.terrain_group_to_terrain(terrain_group)
 
         for civ_group in full_data_set.civ_groups.values():
-            cls._civ_group_to_civ(civ_group)
+            cls.civ_group_to_civ(civ_group)
 
     @staticmethod
-    def _unit_line_to_game_entity(unit_line):
+    def unit_line_to_game_entity(unit_line):
         """
         Creates raw API objects for a unit line.
 
@@ -199,7 +211,7 @@ class DE2NyanSubprocessor:
         # Applying effects and shooting projectiles
         if unit_line.is_projectile_shooter():
             abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(unit_line, 7))
-            AoCNyanSubprocessor._projectiles_from_line(unit_line)
+            AoCNyanSubprocessor.projectiles_from_line(unit_line)
 
         elif unit_line.is_melee() or unit_line.is_ranged():
             if unit_line.has_command(7):
@@ -318,7 +330,7 @@ class DE2NyanSubprocessor:
             AoCAuxiliarySubprocessor.get_creatable_game_entity(unit_line)
 
     @staticmethod
-    def _building_line_to_game_entity(building_line):
+    def building_line_to_game_entity(building_line):
         """
         Creates raw API objects for a building line.
 
@@ -421,7 +433,7 @@ class DE2NyanSubprocessor:
         if building_line.is_projectile_shooter():
             abilities_set.append(AoCAbilitySubprocessor.shoot_projectile_ability(building_line, 7))
             abilities_set.append(AoCAbilitySubprocessor.game_entity_stance_ability(building_line))
-            AoCNyanSubprocessor._projectiles_from_line(building_line)
+            AoCNyanSubprocessor.projectiles_from_line(building_line)
 
         # Storage abilities
         if building_line.is_garrison():
@@ -475,7 +487,7 @@ class DE2NyanSubprocessor:
             AoCAuxiliarySubprocessor.get_creatable_game_entity(building_line)
 
     @staticmethod
-    def _tech_group_to_tech(tech_group):
+    def tech_group_to_tech(tech_group):
         """
         Creates raw API objects for a tech group.
 
@@ -591,7 +603,7 @@ class DE2NyanSubprocessor:
             AoCAuxiliarySubprocessor.get_researchable_tech(tech_group)
 
     @staticmethod
-    def _terrain_group_to_terrain(terrain_group):
+    def terrain_group_to_terrain(terrain_group):
         """
         Creates raw API objects for a terrain group.
 
@@ -602,7 +614,7 @@ class DE2NyanSubprocessor:
 
         dataset = terrain_group.data
 
-        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+        # name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         terrain_lookup_dict = internal_name_lookups.get_terrain_lookups(dataset.game_version)
         terrain_type_lookup_dict = internal_name_lookups.get_terrain_type_lookups(dataset.game_version)
 
@@ -684,11 +696,11 @@ class DE2NyanSubprocessor:
         # Ambience
         # =======================================================================
         terrain = terrain_group.get_terrain()
-        ambients_count = terrain["terrain_units_used_count"].get_value()
+        # ambients_count = terrain["terrain_units_used_count"].get_value()
 
         ambience = []
         # TODO: Ambience
-#===============================================================================
+# ===============================================================================
 #         for ambient_index in range(ambients_count):
 #             ambient_id = terrain["terrain_unit_id"][ambient_index].get_value()
 #
@@ -721,7 +733,7 @@ class DE2NyanSubprocessor:
 #             terrain_group.add_raw_api_object(ambient_raw_api_object)
 #             terrain_ambient_forward_ref = ForwardRef(terrain_group, ambient_ref)
 #             ambience.append(terrain_ambient_forward_ref)
-#===============================================================================
+# ===============================================================================
 
         raw_api_object.add_raw_member("ambience", ambience, "engine.aux.terrain.Terrain")
 
@@ -759,7 +771,7 @@ class DE2NyanSubprocessor:
                                       "engine.aux.terrain.Terrain")
 
     @staticmethod
-    def _civ_group_to_civ(civ_group):
+    def civ_group_to_civ(civ_group):
         """
         Creates raw API objects for a civ group.
 

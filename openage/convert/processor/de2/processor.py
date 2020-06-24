@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-lines,too-many-branches,too-many-statements
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Convert data from DE2 to openage formats.
@@ -22,6 +27,9 @@ from ....log import info
 
 
 class DE2Processor:
+    """
+    Main processor for converting data from DE2.
+    """
 
     @classmethod
     def convert(cls, gamespec, game_version, string_resources, existing_graphics):
@@ -66,27 +74,26 @@ class DE2Processor:
 
         info("Extracting Genie data...")
 
-        cls._extract_genie_units(gamespec, dataset)
-        AoCProcessor._extract_genie_techs(gamespec, dataset)
-        AoCProcessor._extract_genie_effect_bundles(gamespec, dataset)
-        AoCProcessor._sanitize_effect_bundles(dataset)
-        AoCProcessor._extract_genie_civs(gamespec, dataset)
-        AoCProcessor._extract_age_connections(gamespec, dataset)
-        AoCProcessor._extract_building_connections(gamespec, dataset)
-        AoCProcessor._extract_unit_connections(gamespec, dataset)
-        AoCProcessor._extract_tech_connections(gamespec, dataset)
-        cls._extract_genie_graphics(gamespec, dataset)
-        AoCProcessor._extract_genie_sounds(gamespec, dataset)
-        AoCProcessor._extract_genie_terrains(gamespec, dataset)
+        cls.extract_genie_units(gamespec, dataset)
+        AoCProcessor.extract_genie_techs(gamespec, dataset)
+        AoCProcessor.extract_genie_effect_bundles(gamespec, dataset)
+        AoCProcessor.sanitize_effect_bundles(dataset)
+        AoCProcessor.extract_genie_civs(gamespec, dataset)
+        AoCProcessor.extract_age_connections(gamespec, dataset)
+        AoCProcessor.extract_building_connections(gamespec, dataset)
+        AoCProcessor.extract_unit_connections(gamespec, dataset)
+        AoCProcessor.extract_tech_connections(gamespec, dataset)
+        cls.extract_genie_graphics(gamespec, dataset)
+        AoCProcessor.extract_genie_sounds(gamespec, dataset)
+        AoCProcessor.extract_genie_terrains(gamespec, dataset)
 
         return dataset
 
     @classmethod
     def _processor(cls, full_data_set):
         """
-        1. Transfer structures used in Genie games to more openage-friendly
-           Python objects.
-        2. Convert these objects to nyan.
+        Transfer structures used in Genie games to more openage-friendly
+        Python objects.
 
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
@@ -96,27 +103,27 @@ class DE2Processor:
 
         info("Creating API-like objects...")
 
-        AoCProcessor._create_unit_lines(full_data_set)
-        AoCProcessor._create_extra_unit_lines(full_data_set)
-        AoCProcessor._create_building_lines(full_data_set)
-        AoCProcessor._create_villager_groups(full_data_set)
-        cls._create_ambient_groups(full_data_set)
-        cls._create_variant_groups(full_data_set)
-        AoCProcessor._create_terrain_groups(full_data_set)
-        AoCProcessor._create_tech_groups(full_data_set)
-        AoCProcessor._create_node_tech_groups(full_data_set)
-        AoCProcessor._create_civ_groups(full_data_set)
+        AoCProcessor.create_unit_lines(full_data_set)
+        AoCProcessor.create_extra_unit_lines(full_data_set)
+        AoCProcessor.create_building_lines(full_data_set)
+        AoCProcessor.create_villager_groups(full_data_set)
+        cls.create_ambient_groups(full_data_set)
+        cls.create_variant_groups(full_data_set)
+        AoCProcessor.create_terrain_groups(full_data_set)
+        AoCProcessor.create_tech_groups(full_data_set)
+        AoCProcessor.create_node_tech_groups(full_data_set)
+        AoCProcessor.create_civ_groups(full_data_set)
 
         info("Linking API-like objects...")
 
-        AoCProcessor._link_building_upgrades(full_data_set)
-        AoCProcessor._link_creatables(full_data_set)
-        AoCProcessor._link_researchables(full_data_set)
-        AoCProcessor._link_civ_uniques(full_data_set)
-        AoCProcessor._link_gatherers_to_dropsites(full_data_set)
-        AoCProcessor._link_garrison(full_data_set)
-        AoCProcessor._link_trade_posts(full_data_set)
-        AoCProcessor._link_repairables(full_data_set)
+        AoCProcessor.link_building_upgrades(full_data_set)
+        AoCProcessor.link_creatables(full_data_set)
+        AoCProcessor.link_researchables(full_data_set)
+        AoCProcessor.link_civ_uniques(full_data_set)
+        AoCProcessor.link_gatherers_to_dropsites(full_data_set)
+        AoCProcessor.link_garrison(full_data_set)
+        AoCProcessor.link_trade_posts(full_data_set)
+        AoCProcessor.link_repairables(full_data_set)
 
         info("Generating auxiliary objects...")
 
@@ -126,7 +133,14 @@ class DE2Processor:
 
     @classmethod
     def _post_processor(cls, full_data_set):
+        """
+        Convert API-like Python objects to nyan.
 
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
         info("Creating nyan objects...")
 
         DE2NyanSubprocessor.convert(full_data_set)
@@ -138,7 +152,7 @@ class DE2Processor:
         return DE2ModpackSubprocessor.get_modpacks(full_data_set)
 
     @staticmethod
-    def _extract_genie_units(gamespec, full_data_set):
+    def extract_genie_units(gamespec, full_data_set):
         """
         Extract units from the game data.
 
@@ -178,7 +192,7 @@ class DE2Processor:
                 unit.add_member(unit_commands)
 
     @staticmethod
-    def _extract_genie_graphics(gamespec, full_data_set):
+    def extract_genie_graphics(gamespec, full_data_set):
         """
         Extract graphic definitions from the game data.
 
@@ -208,7 +222,7 @@ class DE2Processor:
             genie_graphic.detect_subgraphics()
 
     @staticmethod
-    def _create_ambient_groups(full_data_set):
+    def create_ambient_groups(full_data_set):
         """
         Create ambient groups, mostly for resources and scenery.
 
@@ -229,7 +243,7 @@ class DE2Processor:
             full_data_set.unit_ref.update({ambient_id: ambient_group})
 
     @staticmethod
-    def _create_variant_groups(full_data_set):
+    def create_variant_groups(full_data_set):
         """
         Create variant groups.
 

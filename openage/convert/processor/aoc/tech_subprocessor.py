@@ -1,22 +1,30 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-statements,too-many-branches
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Creates patches for technologies.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup,\
+from ....nyan.nyan_structs import MemberOperator
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_tech import GenieTechEffectBundleGroup,\
     CivTeamBonus, CivBonus
-from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
+from ...dataformat.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
-from openage.convert.processor.aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
-from openage.convert.processor.aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
-from openage.convert.service import internal_name_lookups
-from openage.nyan.nyan_structs import MemberOperator
+from ...dataformat.converter_object import RawAPIObject
+from ...service import internal_name_lookups
+from .upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
+from .upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
+from .upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
 
 
 class AoCTechSubprocessor:
+    """
+    Creates raw API objects and patches for techs and civ setups in AoC.
+    """
 
     upgrade_attribute_funcs = {
         0: AoCUpgradeAttributeSubprocessor.hp_upgrade,
@@ -121,36 +129,42 @@ class AoCTechSubprocessor:
                 type_id -= 10
 
             if type_id in (0, 4, 5):
-                patches.extend(cls._attribute_modify_effect(converter_group, effect, team=team_effect))
+                patches.extend(cls.attribute_modify_effect(converter_group,
+                                                           effect,
+                                                           team=team_effect))
 
             elif type_id in (1, 6):
-                patches.extend(cls._resource_modify_effect(converter_group, effect, team=team_effect))
+                patches.extend(cls.resource_modify_effect(converter_group,
+                                                          effect,
+                                                          team=team_effect))
 
             elif type_id == 2:
                 # Enabling/disabling units: Handled in creatable conditions
                 pass
 
             elif type_id == 3:
-                patches.extend(cls._upgrade_unit_effect(converter_group, effect))
+                patches.extend(cls.upgrade_unit_effect(converter_group, effect))
 
             elif type_id == 101:
-                patches.extend(cls._tech_cost_modify_effect(converter_group, effect, team=team_effect))
-                pass
+                patches.extend(cls.tech_cost_modify_effect(converter_group,
+                                                           effect,
+                                                           team=team_effect))
 
             elif type_id == 102:
                 # Tech disable: Only used for civ tech tree
                 pass
 
             elif type_id == 103:
-                patches.extend(cls._tech_time_modify_effect(converter_group, effect, team=team_effect))
-                pass
+                patches.extend(cls.tech_time_modify_effect(converter_group,
+                                                           effect,
+                                                           team=team_effect))
 
             team_effect = False
 
         return patches
 
     @staticmethod
-    def _attribute_modify_effect(converter_group, effect, team=False):
+    def attribute_modify_effect(converter_group, effect, team=False):
         """
         Creates the patches for modifying attributes of entities.
         """
@@ -215,7 +229,7 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def _resource_modify_effect(converter_group, effect, team=False):
+    def resource_modify_effect(converter_group, effect, team=False):
         """
         Creates the patches for modifying resources.
         """
@@ -254,7 +268,7 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def _upgrade_unit_effect(converter_group, effect):
+    def upgrade_unit_effect(converter_group, effect):
         """
         Creates the patches for upgrading entities in a line.
         """
@@ -328,7 +342,7 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def _tech_cost_modify_effect(converter_group, effect, team=False):
+    def tech_cost_modify_effect(converter_group, effect, team=False):
         """
         Creates the patches for modifying tech costs.
         """
@@ -350,7 +364,7 @@ class AoCTechSubprocessor:
         mode = effect["attr_c"].get_value()
         amount = int(effect["attr_d"].get_value())
 
-        if not tech_id in tech_lookup_dict.keys():
+        if tech_id not in tech_lookup_dict.keys():
             # Skips some legacy techs from AoK such as the tech for bombard cannon
             return patches
 
@@ -422,8 +436,10 @@ class AoCTechSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -442,7 +458,7 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def _tech_time_modify_effect(converter_group, effect, team=False):
+    def tech_time_modify_effect(converter_group, effect, team=False):
         """
         Creates the patches for modifying tech research times.
         """
@@ -463,7 +479,7 @@ class AoCTechSubprocessor:
         mode = effect["attr_c"].get_value()
         research_time = effect["attr_d"].get_value()
 
-        if not tech_id in tech_lookup_dict.keys():
+        if tech_id not in tech_lookup_dict.keys():
             # Skips some legacy techs from AoK such as the tech for bombard cannon
             return patches
 
@@ -507,8 +523,10 @@ class AoCTechSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")

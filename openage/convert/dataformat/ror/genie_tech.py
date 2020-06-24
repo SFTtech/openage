@@ -1,8 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
 
 """
-Changes the is_unique() method from the AoC classes as RoR does
-not use them.
+Contains structures and API-like objects for techs from RoR.
+
+Based on the classes from the AoC converter.
 """
 
 from openage.convert.dataformat.aoc.genie_tech import StatUpgrade, AgeUpgrade,\

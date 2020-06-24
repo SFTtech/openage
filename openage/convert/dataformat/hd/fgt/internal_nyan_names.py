@@ -1,4 +1,6 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=line-too-long
 
 """
 Age of Empires games do not necessarily come with an english
@@ -94,7 +96,7 @@ CIV_GROUP_LOOKUPS = {
 GRAPHICS_SET_LOOKUPS = {
     6: ((19, 24), "Mediterranean", "mediterranean"),
     7: ((20,), "Indian", "indian"),
-    8: ((22, 23), "Slavic", "slavic"),
+    8: ((22, 23, 32, 35), "EasternEuropean", "eastern_european"),
 }
 
 # key: terrain index; value: (unit terrain restrictions (manual), nyan object name, filename prefix)

@@ -1,4 +1,6 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-few-public-methods
 
 """
 Convert media information to metadata definitions and export
@@ -11,10 +13,15 @@ from openage.convert.export.metadata_export import SpriteMetadataExport
 
 
 class AoCMediaSubprocessor:
+    """
+    Creates the exports requests for media files from AoC.
+    """
 
     @classmethod
     def convert(cls, full_data_set):
-
+        """
+        Create all export requests for the dataset.
+        """
         cls._create_graphics_requests(full_data_set)
         cls._create_sound_requests(full_data_set)
 

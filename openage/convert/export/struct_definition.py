@@ -1,4 +1,4 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -88,8 +88,8 @@ class StructDefinition:
                         # member = ArrayMember(ref_type=NumberMember,
                         #                      length=array_length,
                         #                      ref_type_params=[array_type])
-                        # BIG BIG TODO: Remove this
-                        #raise NotImplementedError("implement exporting arrays!")
+                        # TODO: Remove this
+                        # raise NotImplementedError("implement exporting arrays!")
                         member = ArrayMember(array_type, array_length)
 
                     else:

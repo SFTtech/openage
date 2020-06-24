@@ -22,8 +22,16 @@ class DataDefinition:
         :param filename: Filename of the resulting file.
         :type filename: str
         """
-        self.set_targetdir(targetdir)
-        self.set_filename(filename)
+        if not isinstance(targetdir, str):
+            raise ValueError("str expected as targetdir")
+
+        self.targetdir = targetdir
+
+        if not isinstance(filename, str):
+            raise ValueError("str expected as filename, not %s" %
+                             type(filename))
+
+        self.filename = filename
 
     def dump(self):
         """

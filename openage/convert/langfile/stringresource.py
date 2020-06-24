@@ -1,11 +1,12 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
-# TODO pylint: disable=C
+# TODO pylint: disable=C,too-many-function-args
 
 from collections import defaultdict
 
-from ..export import data_definition, struct_definition
 from openage.convert.dataformat import genie_structure
+
+from ..export import data_definition, struct_definition
 
 
 class StringResource(genie_structure.GenieStructure):

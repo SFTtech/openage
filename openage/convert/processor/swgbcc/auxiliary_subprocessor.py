@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-branches,too-many-statements
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Derives complex auxiliary objects from unit lines, techs
@@ -15,6 +20,9 @@ from openage.nyan.nyan_structs import MemberSpecialValue
 
 
 class SWGBCCAuxiliarySubprocessor:
+    """
+    Creates complexer auxiliary raw API objects for abilities in SWGB.
+    """
 
     @staticmethod
     def get_creatable_game_entity(line):
@@ -120,7 +128,7 @@ class SWGBCCAuxiliarySubprocessor:
                 # Not a valid resource
                 continue
 
-            elif resource_id == 0:
+            if resource_id == 0:
                 resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
                 resource_name = "Food"
 
@@ -263,9 +271,9 @@ class SWGBCCAuxiliarySubprocessor:
         unlock_conditions = []
         enabling_research_id = line.get_enabling_research_id()
         if enabling_research_id > -1:
-            unlock_conditions.extend(AoCAuxiliarySubprocessor._get_condition(line,
-                                                                             obj_ref,
-                                                                             enabling_research_id))
+            unlock_conditions.extend(AoCAuxiliarySubprocessor.get_condition(line,
+                                                                            obj_ref,
+                                                                            enabling_research_id))
 
         creatable_raw_api_object.add_raw_member("condition",
                                                 unlock_conditions,
@@ -446,7 +454,7 @@ class SWGBCCAuxiliarySubprocessor:
                 # Not a valid resource
                 continue
 
-            elif resource_id == 0:
+            if resource_id == 0:
                 resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
                 resource_name = "Food"
 
@@ -533,10 +541,10 @@ class SWGBCCAuxiliarySubprocessor:
         # Condition
         unlock_conditions = []
         if tech_group.get_id() > -1:
-            unlock_conditions.extend(AoCAuxiliarySubprocessor._get_condition(tech_group,
-                                                                             obj_ref,
-                                                                             tech_group.get_id(),
-                                                                             top_level=True))
+            unlock_conditions.extend(AoCAuxiliarySubprocessor.get_condition(tech_group,
+                                                                            obj_ref,
+                                                                            tech_group.get_id(),
+                                                                            top_level=True))
 
         researchable_raw_api_object.add_raw_member("condition",
                                                    unlock_conditions,

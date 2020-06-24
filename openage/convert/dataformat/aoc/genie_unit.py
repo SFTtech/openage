@@ -1,5 +1,10 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-lines,too-many-public-methods,too-many-instance-attributes,consider-iterating-dictionary
 
+"""
+Contains structures and API-like objects for game entities from AoC.
+"""
 
 from enum import Enum
 
@@ -12,7 +17,7 @@ class GenieUnitObject(ConverterObject):
     Ingame object in AoE2.
     """
 
-    __slots__ = ('data')
+    __slots__ = ('data',)
 
     def __init__(self, unit_id, full_data_set, members=None):
         """
@@ -108,7 +113,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         :param genie_unit: A GenieUnit object that is part of this
                            line.
         :param position: Puts the unit at an specific position in the line.
-                         If this is -1, the unit is placed at the end 
+                         If this is -1, the unit is placed at the end.
         :param after: ID of a unit after which the new unit is
                       placed in the line. If a unit with this obj_id
                       is not present, the unit is appended at the end
@@ -117,7 +122,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         unit_id = genie_unit["id0"].get_value()
 
         # Only add unit if it is not already in the list
-        if not self.contains_unit(unit_id):
+        if not self.contains_entity(unit_id):
             insert_index = len(self.line)
 
             if position > -1:
@@ -128,7 +133,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
                         self.line_positions[unit] += 1
 
             elif after:
-                if self.contains_unit(after):
+                if self.contains_entity(after):
                     insert_index = self.line_positions[after] + 1
 
                     for unit in self.line_positions.keys():
@@ -246,7 +251,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if head_unit.has_member("attack_projectile_secondary_unit_id"):
             projectile_id_1 = head_unit["attack_projectile_secondary_unit_id"].get_value()
 
-        return (projectile_id_0 == projectile_id or projectile_id_1 == projectile_id)
+        return projectile_id in (projectile_id_0, projectile_id_1)
 
     def is_creatable(self, civ_id=-1):
         """
@@ -381,7 +386,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
             projectile_id_1 = head_unit["attack_projectile_secondary_unit_id"].get_value()
 
         # -1 -> no projectile
-        return (projectile_id_0 > -1 or projectile_id_1 > -1)
+        return projectile_id_0 > -1 or projectile_id_1 > -1
 
     def is_ranged(self, civ_id=-1):
         """
@@ -407,7 +412,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         :type civ_id: int
         :returns: True if the group is not ranged and has a combat ability.
         """
-        return self.has_command(7)
+        return self.has_command(7, civ_id=civ_id)
 
     def is_repairable(self):
         """
@@ -714,7 +719,7 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
         self.head = self.data.genie_units[head_building_id]
         self.stack = self.data.genie_units[stack_unit_id]
 
-    def is_creatable(self):
+    def is_creatable(self, civ_id=-1):
         """
         Stack buildings are created through their head building. We have to
         lookup its values.
@@ -806,7 +811,7 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
         transform_id = self.head_unit["transform_unit_id"].get_value()
         self.transform_unit = self.data.genie_units[transform_id]
 
-    def is_projectile_shooter(self):
+    def is_projectile_shooter(self, civ_id=-1):
         """
         Transform groups are projectile shooters if their head or transform units
         have assigned a projectile ID.
@@ -879,10 +884,10 @@ class GenieMonkGroup(GenieUnitLineGroup):
         self.head_unit = self.data.genie_units[head_unit_id]
         self.switch_unit = self.data.genie_units[switch_unit_id]
 
-    def is_garrison(self):
+    def is_garrison(self, civ_id=-1):
         return True
 
-    def get_garrison_mode(self):
+    def get_garrison_mode(self, civ_id=-1):
         return GenieGarrisonMode.MONK
 
     def get_switch_unit(self):
@@ -910,7 +915,7 @@ class GenieAmbientGroup(GenieGameEntityGroup):
         """
         return self.contains_entity(ambient_id)
 
-    def is_projectile_shooter(self):
+    def is_projectile_shooter(self, civ_id=-1):
         return False
 
     def __repr__(self):
@@ -945,7 +950,7 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
     the other are used to create more abilities with AnimationOverride.
     """
 
-    __slots__ = ('task_group_id')
+    __slots__ = ('task_group_id',)
 
     # From unit connection
     male_line_id = 83   # male villager (with combat task)
@@ -977,7 +982,7 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         else:
             super().add_unit(genie_unit, position, after)
 
-    def is_creatable(self):
+    def is_creatable(self, civ_id=-1):
         """
         Task groups are creatable if any unit in the group is creatable.
 
@@ -1058,7 +1063,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
 
         return False
 
-    def has_command(self, command_id):
+    def has_command(self, command_id, civ_id=-1):
         for variant in self.variants:
             for genie_unit in variant.line:
                 commands = genie_unit["unit_commands"].get_value()
@@ -1071,7 +1076,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
 
         return False
 
-    def is_creatable(self):
+    def is_creatable(self, civ_id=-1):
         """
         Villagers are creatable if any of their variant task groups are creatable.
 
@@ -1083,22 +1088,26 @@ class GenieVillagerGroup(GenieUnitLineGroup):
 
         return False
 
-    def is_garrison(self):
+    def is_garrison(self, civ_id=-1):
         return False
 
-    def is_gatherer(self):
+    def is_gatherer(self, civ_id=-1):
         return True
 
-    def is_hunter(self):
+    @classmethod
+    def is_hunter(cls):
+        """
+        Returns True if the unit hunts animals.
+        """
         return True
 
     def is_unique(self):
         return False
 
-    def is_projectile_shooter(self):
+    def is_projectile_shooter(self, civ_id=-1):
         return False
 
-    def get_garrison_mode(self):
+    def get_garrison_mode(self, civ_id=-1):
         return None
 
     def get_head_unit_id(self):
@@ -1152,6 +1161,7 @@ class GenieGarrisonMode(Enum):
     the "garrison_type" from the .dat file. These garrison modes reflect
     how the garrison will be handled in the openage API.
     """
+    # pylint: disable=bad-whitespace,line-too-long
 
     # Keys = all possible creatable types; may be specified further by other factors
     # The negative integers at the start of the tupe prevent Python from creating

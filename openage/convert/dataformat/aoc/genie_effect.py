@@ -1,5 +1,9 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
+"""
+Contains structures and API-like objects for effects from AoC.
+"""
+
 from ...dataformat.converter_object import ConverterObject
 
 
@@ -88,8 +92,7 @@ class GenieEffectBundle(ConverterObject):
 
             return matching_effects
 
-        else:
-            return list(self.effects.values())
+        return list(self.effects.values())
 
     def is_sanitized(self):
         """

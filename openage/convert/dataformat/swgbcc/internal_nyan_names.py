@@ -1,4 +1,6 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=line-too-long
 
 """
 Age of Empires games do not necessarily come with an english

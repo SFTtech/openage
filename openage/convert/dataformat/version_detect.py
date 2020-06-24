@@ -1,4 +1,6 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-arguments
 
 """
 Detects the base version of the game and installed expansions.
@@ -76,7 +78,7 @@ class GameExpansion(enum.Enum):
                                 These modpacks will be created for this version.
         :type target_modpacks: list
         :param flags: Anything else specific to this version which is useful
-                      for the converter. 
+                      for the converter.
         """
         self.expansion_name = name
         self.support = support_status
@@ -291,7 +293,7 @@ class GameEdition(enum.Enum):
         :param expansions: A list of expansions available for this edition.
         :type expansion: list
         :param flags: Anything else specific to this version which is useful
-                      for the converter. 
+                      for the converter.
         """
         self.edition_name = name
         self.support = support_status

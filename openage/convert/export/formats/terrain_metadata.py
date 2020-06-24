@@ -1,4 +1,6 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-arguments
 
 """
 Terrain definition file.
@@ -25,6 +27,7 @@ class TerrainMetadata(DataDefinition):
     Collects terrain metadata and can format it
     as a .terrain custom format
     """
+
     def __init__(self, targetdir, filename):
         super().__init__(targetdir, filename)
 

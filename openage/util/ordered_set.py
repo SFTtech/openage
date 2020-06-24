@@ -1,4 +1,4 @@
-# Copyright 2019-2019 the openage authors. See copying.md for legal info.
+# Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
 """
 Provides a very simple implementation of an ordered set. We use the
@@ -12,7 +12,7 @@ class OrderedSet:
     Set that saves the input order of elements.
     """
 
-    __slots__ = ('ordered_set')
+    __slots__ = ('ordered_set',)
 
     def __init__(self, elements=None):
         self.ordered_set = {}

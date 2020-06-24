@@ -1,5 +1,9 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
+"""
+Contains structures and API-like objects for terrain from AoC.
+"""
+
 
 from openage.convert.dataformat.converter_object import ConverterObjectGroup
 
@@ -11,7 +15,7 @@ class GenieTerrainObject(ConverterObject):
     Terrain definition from a .dat file.
     """
 
-    __slots__ = ('data')
+    __slots__ = ('data',)
 
     def __init__(self, terrain_id, full_data_set, members=None):
         """

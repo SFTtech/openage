@@ -1,4 +1,4 @@
-# Copyright 2013-2019 the openage authors. See copying.md for legal info.
+# Copyright 2013-2020 the openage authors. See copying.md for legal info.
 #
 # cython: profile=False
 
@@ -707,7 +707,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
     # micro optimization to avoid call to ColorTable.__getitem__()
     cdef list m_lookup = main_palette.palette
     cdef list p_lookup = player_palette.palette
-    
+
     cdef m_color_size = len(m_lookup[0])
 
     cdef uint8_t r
@@ -751,7 +751,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 if m_color_size == 3:
                     # RGB tables (leftover from HD edition)
                     r, g, b = m_lookup[index]
-                    
+
                 elif m_color_size == 4:
                     # RGBA tables (but alpha is often unused)
                     r, g, b, alpha = m_lookup[index]

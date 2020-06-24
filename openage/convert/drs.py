@@ -1,4 +1,4 @@
-# Copyright 2013-2018 the openage authors. See copying.md for legal info.
+# Copyright 2013-2020 the openage authors. See copying.md for legal info.
 
 """
 Code for reading Genie .DRS archives.
@@ -7,12 +7,14 @@ Note that .DRS archives can't store file names; they just store the file
 extension, and a file number.
 """
 
+from openage.convert.dataformat.version_detect import GameEdition
+
 from ..log import spam, dbg
+from ..util.filelike.stream import StreamFragment
+from ..util.fslike.filecollection import FileCollection
 from ..util.strings import decode_until_null
 from ..util.struct import NamedStruct
-from ..util.fslike.filecollection import FileCollection
-from ..util.filelike.stream import StreamFragment
-from openage.convert.dataformat.version_detect import GameEdition
+
 
 # version of the drs files, hardcoded for now
 COPYRIGHT_SIZE_ENSEMBLE = 40

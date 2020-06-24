@@ -1,5 +1,9 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
+"""
+Contains structures and API-like objects for techs from AoC.
+"""
+
 
 from ...dataformat.converter_object import ConverterObject,\
     ConverterObjectGroup
@@ -14,7 +18,7 @@ class GenieTechObject(ConverterObject):
     (excluding team boni).
     """
 
-    __slots__ = ('data')
+    __slots__ = ('data',)
 
     def __init__(self, tech_id, full_data_set, members=None):
         """
@@ -150,8 +154,8 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         """
         if self.effects:
             return len(self.effects.get_effects()) > 0
-        else:
-            return False
+
+        return False
 
     def __repr__(self):
         return "GenieTechEffectBundleGroup<%s>" % (self.get_id())
@@ -176,7 +180,7 @@ class AgeUpgrade(GenieTechEffectBundleGroup):
     here and create a Tech from it.
     """
 
-    __slots__ = ('age_id')
+    __slots__ = ('age_id',)
 
     def __init__(self, tech_id, age_id, full_data_set):
         """
@@ -293,7 +297,7 @@ class UnitUnlock(GenieTechEffectBundleGroup):
     will be created.
     """
 
-    __slots__ = ('line_id')
+    __slots__ = ('line_id',)
 
     def __init__(self, tech_id, line_id, full_data_set):
         """
@@ -335,7 +339,7 @@ class BuildingUnlock(GenieTechEffectBundleGroup):
     will be created.
     """
 
-    __slots__ = ('head_unit_id')
+    __slots__ = ('head_unit_id',)
 
     def __init__(self, tech_id, head_unit_id, full_data_set):
         """
@@ -375,7 +379,7 @@ class InitiatedTech(GenieTechEffectBundleGroup):
     This will used to determine requirements for the creatables.
     """
 
-    __slots__ = ('building_id')
+    __slots__ = ('building_id',)
 
     def __init__(self, tech_id, building_id, full_data_set):
         """
@@ -393,6 +397,9 @@ class InitiatedTech(GenieTechEffectBundleGroup):
         self.building_id = building_id
 
     def get_building_id(self):
+        """
+        Returns the ID of the building intiating this tech.
+        """
         return self.building_id
 
     def __repr__(self):
@@ -405,19 +412,6 @@ class NodeTech(GenieTechEffectBundleGroup):
     requirements for age upgrades.
     """
 
-    def __init__(self, tech_id, full_data_set):
-        """
-        Creates a new Genie tech group object.
-
-        :param tech_id: The internal tech_id from the .dat file.
-        :param building_id: The id of the genie building initiatig this tech.
-        :param full_data_set: GenieObjectContainer instance that
-                              contains all relevant data for the conversion
-                              process.
-        """
-
-        super().__init__(tech_id, full_data_set)
-
     def __repr__(self):
         return "NodeTech<%s>" % (self.get_id())
 
@@ -429,7 +423,7 @@ class CivBonus(GenieTechEffectBundleGroup):
     This will become patches in the Civilization API object.
     """
 
-    __slots__ = ('civ_id')
+    __slots__ = ('civ_id',)
 
     def __init__(self, tech_id, civ_id, full_data_set):
         """
@@ -501,6 +495,9 @@ class CivTeamBonus(ConverterObjectGroup):
         return self.effects.get_effects()
 
     def get_civilization(self):
+        """
+        Returns ID of the civilization that has this bonus.
+        """
         return self.civ_id
 
     def __repr__(self):
@@ -548,6 +545,9 @@ class CivTechTree(ConverterObjectGroup):
         return []
 
     def get_civilization(self):
+        """
+        Returns ID of the civilization that has this tech tree.
+        """
         return self.civ_id
 
     def __repr__(self):

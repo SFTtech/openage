@@ -1,17 +1,22 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-statements,too-many-branches
 
 """
 Creates patches and modifiers for civs.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
-from openage.convert.processor.de2.tech_subprocessor import DE2TechSubprocessor
-from openage.convert.service import internal_name_lookups
-from openage.nyan.nyan_structs import MemberOperator
+from ....nyan.nyan_structs import MemberOperator
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.converter_object import RawAPIObject
+from ...service import internal_name_lookups
+from ..aoc.civ_subprocessor import AoCCivSubprocessor
+from .tech_subprocessor import DE2TechSubprocessor
 
 
 class DE2CivSubprocessor:
+    """
+    Creates raw API objects for civs in DE2.
+    """
 
     @classmethod
     def get_civ_setup(cls, civ_group):
@@ -21,10 +26,10 @@ class DE2CivSubprocessor:
         """
         patches = []
 
-        patches.extend(AoCCivSubprocessor._setup_unique_units(civ_group))
-        patches.extend(AoCCivSubprocessor._setup_unique_techs(civ_group))
-        patches.extend(AoCCivSubprocessor._setup_tech_tree(civ_group))
-        patches.extend(cls._setup_civ_bonus(civ_group))
+        patches.extend(AoCCivSubprocessor.setup_unique_units(civ_group))
+        patches.extend(AoCCivSubprocessor.setup_unique_techs(civ_group))
+        patches.extend(AoCCivSubprocessor.setup_tech_tree(civ_group))
+        patches.extend(cls.setup_civ_bonus(civ_group))
 
         if len(civ_group.get_team_bonus_effects()) > 0:
             patches.extend(DE2TechSubprocessor.get_patches(civ_group.team_bonus))
@@ -32,7 +37,7 @@ class DE2CivSubprocessor:
         return patches
 
     @classmethod
-    def _setup_civ_bonus(cls, civ_group):
+    def setup_civ_bonus(cls, civ_group):
         """
         Returns global modifiers of a civ.
         """
@@ -73,12 +78,12 @@ class DE2CivSubprocessor:
                         # Skip Dark Age; it is not a tech in openage
                         patches.extend(bonus_patches)
 
-                    if not tech_id in dataset.tech_groups.keys() or\
+                    if tech_id not in dataset.tech_groups.keys() or\
                             not dataset.tech_groups[tech_id].is_researchable():
                         # TODO: Bonus unlocked by something else
                         continue
 
-                    elif tech_id in tech_patches.keys():
+                    if tech_id in tech_patches.keys():
                         tech_patches[tech_id].extend(bonus_patches)
 
                     else:

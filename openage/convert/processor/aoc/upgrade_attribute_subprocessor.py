@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
+#
+# TODO: Remove when all methods are implemented
+# pylint: disable=unused-argument,line-too-long
 
 """
 Creates upgrade patches for attribute modification effects in AoC.
@@ -11,6 +16,9 @@ from openage.convert.service import internal_name_lookups
 
 
 class AoCUpgradeAttributeSubprocessor:
+    """
+    Creates raw API objects for attribute upgrade effects in AoC.
+    """
 
     @staticmethod
     def accuracy_upgrade(converter_group, line, value, operator, team=False):
@@ -82,8 +90,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -176,8 +186,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -287,8 +299,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -382,8 +396,10 @@ class AoCUpgradeAttributeSubprocessor:
 
             if team:
                 wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-                stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                           dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+                stances = [
+                    dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                    dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+                ]
                 wrapper_raw_api_object.add_raw_member("stances",
                                                       stances,
                                                       "engine.aux.patch.type.DiplomaticPatch")
@@ -431,8 +447,10 @@ class AoCUpgradeAttributeSubprocessor:
 
             if team:
                 wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-                stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                           dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+                stances = [
+                    dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                    dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+                ]
                 wrapper_raw_api_object.add_raw_member("stances",
                                                       stances,
                                                       "engine.aux.patch.type.DiplomaticPatch")
@@ -572,8 +590,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -669,8 +689,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -766,8 +788,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -863,8 +887,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -947,8 +973,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -1035,8 +1063,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -1163,8 +1193,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -1247,8 +1279,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -1331,8 +1365,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -1415,8 +1451,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -1520,8 +1558,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -1616,8 +1656,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -1700,8 +1742,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -1822,8 +1866,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -1879,7 +1925,7 @@ class AoCUpgradeAttributeSubprocessor:
                 # Not a valid resource
                 continue
 
-            elif resource_id == 0:
+            if resource_id == 0:
                 resource_name = "Food"
 
             elif resource_id == 1:
@@ -1939,8 +1985,10 @@ class AoCUpgradeAttributeSubprocessor:
 
             if team:
                 wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-                stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                           dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+                stances = [
+                    dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                    dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+                ]
                 wrapper_raw_api_object.add_raw_member("stances",
                                                       stances,
                                                       "engine.aux.patch.type.DiplomaticPatch")
@@ -1988,7 +2036,7 @@ class AoCUpgradeAttributeSubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         if line.is_harvestable():
-            patch_target_ref = "%s.Harvestable.%ResourceSpot" % (game_entity_name)
+            patch_target_ref = "%s.Harvestable.%sResourceSpot" % (game_entity_name, game_entity_name)
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
             wrapper_name = "Change%sHarvestableAmountWrapper" % (game_entity_name)
             nyan_patch_name = "Change%sHarvestableAmount" % (game_entity_name)
@@ -2037,8 +2085,10 @@ class AoCUpgradeAttributeSubprocessor:
 
         if team:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-            stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.aux.patch.type.DiplomaticPatch")
@@ -2150,8 +2200,10 @@ class AoCUpgradeAttributeSubprocessor:
 
             if team:
                 wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-                stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                           dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+                stances = [
+                    dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                    dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+                ]
                 wrapper_raw_api_object.add_raw_member("stances",
                                                       stances,
                                                       "engine.aux.patch.type.DiplomaticPatch")

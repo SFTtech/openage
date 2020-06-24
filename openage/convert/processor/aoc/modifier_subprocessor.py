@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-branches,too-many-nested-blocks
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Derives and adds abilities to lines or civ groups. Subroutine of the
@@ -13,6 +18,9 @@ from openage.convert.service import internal_name_lookups
 
 
 class AoCModifierSubprocessor:
+    """
+    Creates raw API objects for modifiers in AoC.
+    """
 
     @staticmethod
     def elevation_attack_modifiers(converter_obj_group):
@@ -25,8 +33,10 @@ class AoCModifierSubprocessor:
         :rtype: list
         """
         dataset = converter_obj_group.data
-        modifiers = [dataset.pregen_nyan_objects["aux.modifier.elevation_difference.AttackMultiplierHigh"].get_nyan_object(),
-                     dataset.pregen_nyan_objects["aux.modifier.elevation_difference.AttackMultiplierLow"].get_nyan_object()]
+        modifiers = [
+            dataset.pregen_nyan_objects["aux.modifier.elevation_difference.AttackMultiplierHigh"].get_nyan_object(),
+            dataset.pregen_nyan_objects["aux.modifier.elevation_difference.AttackMultiplierLow"].get_nyan_object()
+        ]
 
         return modifiers
 
@@ -46,7 +56,7 @@ class AoCModifierSubprocessor:
         return modifier
 
     @staticmethod
-    def gather_rate_modifier(converter_obj_group, value=None):
+    def gather_rate_modifier(converter_obj_group):
         """
         Adds Gather modifiers to a line or civ group.
 
@@ -120,7 +130,8 @@ class AoCModifierSubprocessor:
                         elif isinstance(resource_line, GenieVariantGroup):
                             resource_line_name = name_lookup_dict[head_unit_id][1]
 
-                        modifier_ref = "%s.%sGatheringRate" % (target_obj_name, resource_line_name)
+                        modifier_ref = "%s.%sGatheringRate" % (target_obj_name,
+                                                               resource_line_name)
                         modifier_raw_api_object = RawAPIObject(modifier_ref,
                                                                "%sGatheringRate",
                                                                dataset.nyan_api_objects)
@@ -134,7 +145,8 @@ class AoCModifierSubprocessor:
                                                                "engine.modifier.multiplier.MultiplierModifier")
 
                         # Resource spot
-                        spot_ref = "%s.Harvestable.%sResourceSpot" % (resource_line_name, resource_line_name)
+                        spot_ref = "%s.Harvestable.%sResourceSpot" % (resource_line_name,
+                                                                      resource_line_name)
                         spot_forward_ref = ForwardRef(resource_line, spot_ref)
                         modifier_raw_api_object.add_raw_member("resource_spot",
                                                                spot_forward_ref,

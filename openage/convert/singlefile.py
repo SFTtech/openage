@@ -1,4 +1,4 @@
-# Copyright 2015-2019 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
 Convert a single slp file from some drs archive to a png image.
@@ -6,11 +6,12 @@ Convert a single slp file from some drs archive to a png image.
 
 from pathlib import Path
 
+from ..log import info
+from ..util.fslike.directory import Directory
 from .colortable import ColorTable
+from .dataformat.version_detect import GameEdition
 from .drs import DRS
 from .texture import Texture
-from ..util.fslike.directory import Directory
-from ..log import info
 
 
 def init_subparser(cli):
@@ -139,7 +140,9 @@ def read_slp_in_drs_file(drs, slp_path, palette_index, output_path, interfac=Non
     output_file = Path(output_path)
 
     # open from drs archive
-    drs_file = DRS(drs)
+    # TODO: Also allow SWGB's DRS files
+    game_version = (GameEdition.AOC, [])
+    drs_file = DRS(drs, game_version)
 
     info("opening slp in drs '%s:%s'...", drs.name, slp_path)
     slp_file = drs_file.root[slp_path].open("rb")
@@ -150,14 +153,12 @@ def read_slp_in_drs_file(drs, slp_path, palette_index, output_path, interfac=Non
 
     else:
         # otherwise use the path of the drs.
-        interfac_file = Path(drs.name).with_name(
-            "interfac.drs").open("rb")  # pylint: disable=no-member
+        # pylint: disable=no-member
+        interfac_file = Path(drs.name).with_name("interfac.drs").open("rb")
 
     # open palette
-    info("opening palette in drs '%s:%s.bina'...",
-         interfac_file.name, palette_index)
-    palette_file = DRS(
-        interfac_file).root["%s.bina" % palette_index].open("rb")
+    info("opening palette in drs '%s:%s.bina'...", interfac_file.name, palette_index)
+    palette_file = DRS(interfac_file, game_version).root["%s.bina" % palette_index].open("rb")
 
     info("parsing palette data...")
     palette = ColorTable(palette_file.read())

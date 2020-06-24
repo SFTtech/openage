@@ -1,21 +1,29 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-branches
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Creates patches for technologies.
 """
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
+from ....nyan.nyan_structs import MemberOperator
+from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieUnitLineGroup
-from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
-from openage.convert.processor.aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
-from openage.convert.processor.aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
-from openage.convert.processor.ror.upgrade_ability_subprocessor import RoRUpgradeAbilitySubprocessor
-from openage.convert.processor.ror.upgrade_attribute_subprocessor import RoRUpgradeAttributeSubprocessor
-from openage.convert.processor.ror.upgrade_resource_subprocessor import RoRUpgradeResourceSubprocessor
-from openage.convert.service import internal_name_lookups
-from openage.nyan.nyan_structs import MemberOperator
+from ...service import internal_name_lookups
+from ..aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
+from ..aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
+from ..aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
+from .upgrade_ability_subprocessor import RoRUpgradeAbilitySubprocessor
+from .upgrade_attribute_subprocessor import RoRUpgradeAttributeSubprocessor
+from .upgrade_resource_subprocessor import RoRUpgradeResourceSubprocessor
 
 
 class RoRTechSubprocessor:
+    """
+    Creates raw API objects and patches for techs and civ setups in RoR.
+    """
 
     upgrade_attribute_funcs = {
         0: AoCUpgradeAttributeSubprocessor.hp_upgrade,
@@ -66,22 +74,22 @@ class RoRTechSubprocessor:
             type_id = effect.get_type()
 
             if type_id in (0, 4, 5):
-                patches.extend(cls._attribute_modify_effect(converter_group, effect))
+                patches.extend(cls.attribute_modify_effect(converter_group, effect))
 
             elif type_id == 1:
-                patches.extend(cls._resource_modify_effect(converter_group, effect))
+                patches.extend(cls.resource_modify_effect(converter_group, effect))
 
             elif type_id == 2:
                 # Enabling/disabling units: Handled in creatable conditions
                 pass
 
             elif type_id == 3:
-                patches.extend(cls._upgrade_unit_effect(converter_group, effect))
+                patches.extend(cls.upgrade_unit_effect(converter_group, effect))
 
         return patches
 
     @staticmethod
-    def _attribute_modify_effect(converter_group, effect, team=False):
+    def attribute_modify_effect(converter_group, effect, team=False):
         """
         Creates the patches for modifying attributes of entities.
         """
@@ -146,7 +154,7 @@ class RoRTechSubprocessor:
         return patches
 
     @staticmethod
-    def _resource_modify_effect(converter_group, effect, team=False):
+    def resource_modify_effect(converter_group, effect, team=False):
         """
         Creates the patches for modifying resources.
         """
@@ -186,7 +194,7 @@ class RoRTechSubprocessor:
         return patches
 
     @staticmethod
-    def _upgrade_unit_effect(converter_group, effect):
+    def upgrade_unit_effect(converter_group, effect):
         """
         Creates the patches for upgrading entities in a line.
         """

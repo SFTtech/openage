@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
 Asset version change log
@@ -7,10 +7,10 @@ used to determine whether assets that were converted by an earlier version of
 openage are still up to date.
 """
 
-from .gamedata.empiresdat import EmpiresDat
-
 from ..log import info, warn
 from ..testing.testing import TestError
+from .dataformat.version_detect import GameEdition
+from .gamedata.empiresdat import EmpiresDat
 
 
 # filename where to store the versioning information
@@ -64,7 +64,8 @@ def changes(asset_version, spec_version):
         changed_components |= version_changes
 
     if "metadata" not in changed_components:
-        if EmpiresDat.get_hash() != spec_version:
+        game_version = (GameEdition.AOC, [])
+        if EmpiresDat.get_hash(game_version) != spec_version:
             info("game metadata hash changed, need to reconvert it")
             changed_components.add("metadata")
 

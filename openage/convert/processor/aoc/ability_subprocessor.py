@@ -1,29 +1,37 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-public-methods,too-many-lines,too-many-locals
+# pylint: disable=too-many-branches,too-many-statements,too-many-arguments
+# pylint: disable=invalid-name
+#
+# TODO:
+# pylint: disable=unused-argument,line-too-long
 
 """
 Derives and adds abilities to lines. Subroutine of the
 nyan subprocessor.
 """
-from builtins import staticmethod
 from math import degrees
 
-from openage.convert.dataformat.aoc.combined_sound import CombinedSound
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
+from ....nyan.nyan_structs import MemberSpecialValue, MemberOperator
+from ....util.ordered_set import OrderedSet
+from ...dataformat.aoc.combined_sound import CombinedSound
+from ...dataformat.aoc.combined_sprite import CombinedSprite
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieAmbientGroup, GenieGarrisonMode, GenieStackBuildingGroup,\
     GenieUnitLineGroup, GenieMonkGroup
-from openage.convert.dataformat.converter_object import RawMemberPush
-from openage.convert.processor.aoc.effect_subprocessor import AoCEffectSubprocessor
-from openage.convert.service import internal_name_lookups
-from openage.nyan.nyan_structs import MemberSpecialValue, MemberOperator
-from openage.util.ordered_set import OrderedSet
-
-from ...dataformat.aoc.combined_sprite import CombinedSprite
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
 from ...dataformat.converter_object import RawAPIObject
+from ...dataformat.converter_object import RawMemberPush
+from ...service import internal_name_lookups
+from .effect_subprocessor import AoCEffectSubprocessor
 
 
 class AoCAbilitySubprocessor:
+    """
+    Creates raw API objects for abilities in AoC.
+    """
 
     @staticmethod
     def active_transform_to_ability(line):
@@ -36,6 +44,7 @@ class AoCAbilitySubprocessor:
         :rtype: ...dataformat.forward_ref.ForwardRef
         """
         # TODO: Implement
+        return None
 
     @staticmethod
     def apply_continuous_effect_ability(line, command_id, ranged=False):
@@ -95,12 +104,12 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                             ability_animation_id,
-                                                                             ability_ref,
-                                                                             ability_name,
-                                                                             "%s_"
-                                                                             % command_lookup_dict[command_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                            ability_animation_id,
+                                                                            ability_ref,
+                                                                            ability_name,
+                                                                            "%s_"
+                                                                            % command_lookup_dict[command_id][1])
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
@@ -119,8 +128,10 @@ class AoCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    for graphics_set_id, items in gset_lookup_dict.items():
+                    graphics_set_id = -1
+                    for set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
+                            graphics_set_id = set_id
                             break
 
                     # Check if the object for the animation has been created before
@@ -131,13 +142,13 @@ class AoCAbilitySubprocessor:
                     obj_prefix = "%s%s" % (gset_lookup_dict[graphics_set_id][1], ability_name)
                     filename_prefix = "%s_%s_" % (command_lookup_dict[command_id][1],
                                                   gset_lookup_dict[graphics_set_id][2],)
-                    AoCAbilitySubprocessor._create_civ_animation(line,
-                                                                 civ_group,
-                                                                 civ_animation_id,
-                                                                 ability_ref,
-                                                                 obj_prefix,
-                                                                 filename_prefix,
-                                                                 obj_exists)
+                    AoCAbilitySubprocessor.create_civ_animation(line,
+                                                                civ_group,
+                                                                civ_animation_id,
+                                                                ability_ref,
+                                                                obj_prefix,
+                                                                filename_prefix,
+                                                                obj_exists)
 
         # Command Sound
         ability_comm_sound_id = current_unit["command_sound_id"].get_value()
@@ -146,11 +157,11 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
 
             sounds_set = []
-            sound_forward_ref = AoCAbilitySubprocessor._create_sound(line,
-                                                                     ability_comm_sound_id,
-                                                                     ability_ref,
-                                                                     ability_name,
-                                                                     "command_")
+            sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
+                                                                    ability_comm_sound_id,
+                                                                    ability_ref,
+                                                                    ability_name,
+                                                                    "command_")
             sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
                                                   "engine.ability.specialization.CommandSoundAbility")
@@ -178,17 +189,23 @@ class AoCAbilitySubprocessor:
         if command_id == 101:
             # Construct
             effects = AoCEffectSubprocessor.get_construct_effects(line, ability_ref)
-            allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+            allowed_types = [
+                dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()
+            ]
 
         elif command_id == 105:
             # Heal
             effects = AoCEffectSubprocessor.get_heal_effects(line, ability_ref)
-            allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()]
+            allowed_types = [
+                dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()
+            ]
 
         elif command_id == 106:
             # Repair
             effects = AoCEffectSubprocessor.get_repair_effects(line, ability_ref)
-            allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+            allowed_types = [
+                dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()
+            ]
 
         ability_raw_api_object.add_raw_member("effects",
                                               effects,
@@ -254,7 +271,9 @@ class AoCAbilitySubprocessor:
 
         if projectile == -1:
             ability_ref = "%s.%s" % (game_entity_name, ability_name)
-            ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
+            ability_raw_api_object = RawAPIObject(ability_ref,
+                                                  ability_name,
+                                                  dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent(ability_parent)
             ability_location = ForwardRef(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
@@ -262,7 +281,9 @@ class AoCAbilitySubprocessor:
             ability_animation_id = current_unit["attack_sprite_id"].get_value()
 
         else:
-            ability_ref = "%s.ShootProjectile.Projectile%s.%s" % (game_entity_name, str(projectile), ability_name)
+            ability_ref = "%s.ShootProjectile.Projectile%s.%s" % (game_entity_name,
+                                                                  str(projectile),
+                                                                  ability_name)
             ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent(ability_parent)
             ability_location = ForwardRef(line,
@@ -277,12 +298,12 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                             ability_animation_id,
-                                                                             ability_ref,
-                                                                             ability_name,
-                                                                             "%s_"
-                                                                             % command_lookup_dict[command_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                            ability_animation_id,
+                                                                            ability_ref,
+                                                                            ability_name,
+                                                                            "%s_"
+                                                                            % command_lookup_dict[command_id][1])
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
@@ -301,8 +322,10 @@ class AoCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    for graphics_set_id, items in gset_lookup_dict.items():
+                    graphics_set_id = -1
+                    for set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
+                            graphics_set_id = set_id
                             break
 
                     # Check if the object for the animation has been created before
@@ -313,13 +336,13 @@ class AoCAbilitySubprocessor:
                     obj_prefix = "%s%s" % (gset_lookup_dict[graphics_set_id][1], ability_name)
                     filename_prefix = "%s_%s_" % (command_lookup_dict[command_id][1],
                                                   gset_lookup_dict[graphics_set_id][2],)
-                    AoCAbilitySubprocessor._create_civ_animation(line,
-                                                                 civ_group,
-                                                                 civ_animation_id,
-                                                                 ability_ref,
-                                                                 obj_prefix,
-                                                                 filename_prefix,
-                                                                 obj_exists)
+                    AoCAbilitySubprocessor.create_civ_animation(line,
+                                                                civ_group,
+                                                                civ_animation_id,
+                                                                ability_ref,
+                                                                obj_prefix,
+                                                                filename_prefix,
+                                                                obj_exists)
 
         # Command Sound
         if projectile == -1:
@@ -340,11 +363,11 @@ class AoCAbilitySubprocessor:
             else:
                 sound_obj_prefix = "ProjectileAttack"
 
-            sound_forward_ref = AoCAbilitySubprocessor._create_sound(line,
-                                                                     ability_comm_sound_id,
-                                                                     ability_ref,
-                                                                     sound_obj_prefix,
-                                                                     "command_")
+            sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
+                                                                    ability_comm_sound_id,
+                                                                    ability_ref,
+                                                                    sound_obj_prefix,
+                                                                    "command_")
             sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
                                                   "engine.ability.specialization.CommandSoundAbility")
@@ -408,11 +431,15 @@ class AoCAbilitySubprocessor:
         # Allowed types (all buildings/units)
         if command_id == 104:
             # Convert
-            allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()]
+            allowed_types = [
+                dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()
+            ]
 
         else:
-            allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
-                             dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+            allowed_types = [
+                dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
+                dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()
+            ]
 
         ability_raw_api_object.add_raw_member("allowed_types",
                                               allowed_types,
@@ -426,13 +453,11 @@ class AoCAbilitySubprocessor:
                     # Blacklist other monks
                     blacklisted_name = name_lookup_dict[unit_line.get_head_unit_id()][0]
                     blacklisted_entities.append(ForwardRef(unit_line, blacklisted_name))
-                    continue
 
                 elif unit_line.get_class_id() in (13, 55):
                     # Blacklist siege
                     blacklisted_name = name_lookup_dict[unit_line.get_head_unit_id()][0]
                     blacklisted_entities.append(ForwardRef(unit_line, blacklisted_name))
-                    continue
 
         else:
             blacklisted_entities = []
@@ -466,7 +491,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.AttributeChangeTracker" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "AttributeChangeTracker", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "AttributeChangeTracker",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.AttributeChangeTracker")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -508,12 +535,12 @@ class AoCAbilitySubprocessor:
 
                 # Animation
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                                 progress_animation_id,
-                                                                                 progress_name,
-                                                                                 "Idle",
-                                                                                 "idle_damage_override_%s_"
-                                                                                 % (interval_right_bound))
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                                progress_animation_id,
+                                                                                progress_name,
+                                                                                "Idle",
+                                                                                "idle_damage_override_%s_"
+                                                                                % (interval_right_bound))
                 animations_set.append(animation_forward_ref)
                 progress_raw_api_object.add_raw_member("overlays",
                                                        animations_set,
@@ -551,7 +578,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.CollectStorage" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "CollectStorage", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "CollectStorage",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.CollectStorage")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -882,7 +911,7 @@ class AoCAbilitySubprocessor:
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
-            #======================================================================================
+            # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
@@ -917,7 +946,7 @@ class AoCAbilitySubprocessor:
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
-            #======================================================================================
+            # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
@@ -952,7 +981,7 @@ class AoCAbilitySubprocessor:
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
-            #======================================================================================
+            # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
 
@@ -974,9 +1003,9 @@ class AoCAbilitySubprocessor:
                                                    "engine.aux.progress.Progress")
 
             if construction_animation_id > -1:
-                # ===========================================================================================
+                # =================================================================================
                 # Idle override
-                # ===========================================================================================
+                # =================================================================================
                 progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
 
                 overrides = []
@@ -995,11 +1024,11 @@ class AoCAbilitySubprocessor:
 
                 # Animation
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                                 construction_animation_id,
-                                                                                 override_ref,
-                                                                                 "Idle",
-                                                                                 "idle_construct0_override_")
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                                construction_animation_id,
+                                                                                override_ref,
+                                                                                "Idle",
+                                                                                "idle_construct0_override_")
 
                 animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
@@ -1013,7 +1042,7 @@ class AoCAbilitySubprocessor:
                 override_forward_ref = ForwardRef(line, override_ref)
                 overrides.append(override_forward_ref)
                 line.add_raw_api_object(override_raw_api_object)
-                # ===========================================================================================
+                # =================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
                                                        overrides,
                                                        "engine.aux.progress.specialization.AnimatedProgress")
@@ -1129,7 +1158,7 @@ class AoCAbilitySubprocessor:
             progress_raw_api_object.add_raw_member("state_change",
                                                    init_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
-            #======================================================================================
+            # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
@@ -1150,9 +1179,9 @@ class AoCAbilitySubprocessor:
                                                    "engine.aux.progress.Progress")
 
             if construction_animation_id > -1:
-                # ===========================================================================================
+                # =================================================================================
                 # Idle override
-                # ===========================================================================================
+                # =================================================================================
                 progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
 
                 overrides = []
@@ -1171,11 +1200,11 @@ class AoCAbilitySubprocessor:
 
                 # Animation
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                                 construction_animation_id,
-                                                                                 override_ref,
-                                                                                 "Idle",
-                                                                                 "idle_construct25_override_")
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                                construction_animation_id,
+                                                                                override_ref,
+                                                                                "Idle",
+                                                                                "idle_construct25_override_")
 
                 animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
@@ -1189,7 +1218,7 @@ class AoCAbilitySubprocessor:
                 override_forward_ref = ForwardRef(line, override_ref)
                 overrides.append(override_forward_ref)
                 line.add_raw_api_object(override_raw_api_object)
-                # ===========================================================================================
+                # =================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
                                                        overrides,
                                                        "engine.aux.progress.specialization.AnimatedProgress")
@@ -1292,7 +1321,7 @@ class AoCAbilitySubprocessor:
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
-            #======================================================================================
+            # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
@@ -1313,9 +1342,9 @@ class AoCAbilitySubprocessor:
                                                    "engine.aux.progress.Progress")
 
             if construction_animation_id > -1:
-                # ===========================================================================================
+                # =================================================================================
                 # Idle override
-                # ===========================================================================================
+                # =================================================================================
                 progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
 
                 overrides = []
@@ -1334,11 +1363,11 @@ class AoCAbilitySubprocessor:
 
                 # Animation
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                                 construction_animation_id,
-                                                                                 override_ref,
-                                                                                 "Idle",
-                                                                                 "idle_construct50_override_")
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                                construction_animation_id,
+                                                                                override_ref,
+                                                                                "Idle",
+                                                                                "idle_construct50_override_")
 
                 animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
@@ -1352,7 +1381,7 @@ class AoCAbilitySubprocessor:
                 override_forward_ref = ForwardRef(line, override_ref)
                 overrides.append(override_forward_ref)
                 line.add_raw_api_object(override_raw_api_object)
-                # ===========================================================================================
+                # =================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
                                                        overrides,
                                                        "engine.aux.progress.specialization.AnimatedProgress")
@@ -1362,7 +1391,7 @@ class AoCAbilitySubprocessor:
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
-            #======================================================================================
+            # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
@@ -1383,9 +1412,9 @@ class AoCAbilitySubprocessor:
                                                    "engine.aux.progress.Progress")
 
             if construction_animation_id > -1:
-                # ===========================================================================================
+                # =================================================================================
                 # Idle override
-                # ===========================================================================================
+                # =================================================================================
                 progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
 
                 overrides = []
@@ -1404,11 +1433,11 @@ class AoCAbilitySubprocessor:
 
                 # Animation
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                                 construction_animation_id,
-                                                                                 override_ref,
-                                                                                 "Idle",
-                                                                                 "idle_construct75_override_")
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                                construction_animation_id,
+                                                                                override_ref,
+                                                                                "Idle",
+                                                                                "idle_construct75_override_")
 
                 animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
@@ -1422,7 +1451,7 @@ class AoCAbilitySubprocessor:
                 override_forward_ref = ForwardRef(line, override_ref)
                 overrides.append(override_forward_ref)
                 line.add_raw_api_object(override_raw_api_object)
-                # ===========================================================================================
+                # =================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
                                                        overrides,
                                                        "engine.aux.progress.specialization.AnimatedProgress")
@@ -1432,7 +1461,7 @@ class AoCAbilitySubprocessor:
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
-            #======================================================================================
+            # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
@@ -1453,9 +1482,9 @@ class AoCAbilitySubprocessor:
                                                    "engine.aux.progress.Progress")
 
             if construction_animation_id > -1:
-                # ===========================================================================================
+                # =================================================================================
                 # Idle override
-                # ===========================================================================================
+                # =================================================================================
                 progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
 
                 overrides = []
@@ -1474,11 +1503,11 @@ class AoCAbilitySubprocessor:
 
                 # Animation
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                                 construction_animation_id,
-                                                                                 override_ref,
-                                                                                 "Idle",
-                                                                                 "idle_construct100_override_")
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                                construction_animation_id,
+                                                                                override_ref,
+                                                                                "Idle",
+                                                                                "idle_construct100_override_")
 
                 animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
@@ -1492,7 +1521,7 @@ class AoCAbilitySubprocessor:
                 override_forward_ref = ForwardRef(line, override_ref)
                 overrides.append(override_forward_ref)
                 line.add_raw_api_object(override_raw_api_object)
-                # ===========================================================================================
+                # =================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
                                                        overrides,
                                                        "engine.aux.progress.specialization.AnimatedProgress")
@@ -1502,7 +1531,7 @@ class AoCAbilitySubprocessor:
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
-            #======================================================================================
+            # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
         # =====================================================================================
@@ -1596,11 +1625,11 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                             ability_animation_id,
-                                                                             ability_ref,
-                                                                             "Death",
-                                                                             "death_")
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                            ability_animation_id,
+                                                                            ability_ref,
+                                                                            "Death",
+                                                                            "death_")
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
@@ -1619,8 +1648,10 @@ class AoCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    for graphics_set_id, items in gset_lookup_dict.items():
+                    graphics_set_id = -1
+                    for set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
+                            graphics_set_id = set_id
                             break
 
                     # Check if the object for the animation has been created before
@@ -1630,16 +1661,18 @@ class AoCAbilitySubprocessor:
 
                     obj_prefix = "%sDeath" % (gset_lookup_dict[graphics_set_id][1])
                     filename_prefix = "death_%s_" % (gset_lookup_dict[graphics_set_id][2])
-                    AoCAbilitySubprocessor._create_civ_animation(line,
-                                                                 civ_group,
-                                                                 civ_animation_id,
-                                                                 ability_ref,
-                                                                 obj_prefix,
-                                                                 filename_prefix,
-                                                                 obj_exists)
+                    AoCAbilitySubprocessor.create_civ_animation(line,
+                                                                civ_group,
+                                                                civ_animation_id,
+                                                                ability_ref,
+                                                                obj_prefix,
+                                                                filename_prefix,
+                                                                obj_exists)
 
         # Death condition
-        death_condition = [dataset.pregen_nyan_objects["aux.logic.literal.death.StandardHealthDeathLiteral"].get_nyan_object()]
+        death_condition = [
+            dataset.pregen_nyan_objects["aux.logic.literal.death.StandardHealthDeathLiteral"].get_nyan_object()
+        ]
         ability_raw_api_object.add_raw_member("condition",
                                               death_condition,
                                               "engine.ability.type.PassiveTransformTo")
@@ -1660,7 +1693,9 @@ class AoCAbilitySubprocessor:
         # Target state
         # =====================================================================================
         target_state_name = "%s.Death.DeadState" % (game_entity_name)
-        target_state_raw_api_object = RawAPIObject(target_state_name, "DeadState", dataset.nyan_api_objects)
+        target_state_raw_api_object = RawAPIObject(target_state_name,
+                                                   "DeadState",
+                                                   dataset.nyan_api_objects)
         target_state_raw_api_object.add_raw_parent("engine.aux.state_machine.StateChanger")
         target_state_location = ForwardRef(line, ability_ref)
         target_state_raw_api_object.set_location(target_state_location)
@@ -1765,7 +1800,9 @@ class AoCAbilitySubprocessor:
         # Transform progress
         # =====================================================================================
         progress_name = "%s.Death.DeathProgress" % (game_entity_name)
-        progress_raw_api_object = RawAPIObject(progress_name, "DeathProgress", dataset.nyan_api_objects)
+        progress_raw_api_object = RawAPIObject(progress_name,
+                                               "DeathProgress",
+                                               dataset.nyan_api_objects)
         progress_raw_api_object.add_raw_parent("engine.aux.progress.type.TransformProgress")
         progress_location = ForwardRef(line, ability_ref)
         progress_raw_api_object.set_location(progress_location)
@@ -1907,13 +1944,14 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                             ability_animation_id,
-                                                                             ability_ref,
-                                                                             "Despawn",
-                                                                             "despawn_")
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                            ability_animation_id,
+                                                                            ability_ref,
+                                                                            "Despawn",
+                                                                            "despawn_")
             animations_set.append(animation_forward_ref)
-            ability_raw_api_object.add_raw_member("animations", animations_set,
+            ability_raw_api_object.add_raw_member("animations",
+                                                  animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
             # Create custom civ graphics
@@ -1936,8 +1974,10 @@ class AoCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    for graphics_set_id, items in gset_lookup_dict.items():
+                    graphics_set_id = -1
+                    for set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
+                            graphics_set_id = set_id
                             break
 
                     # Check if the object for the animation has been created before
@@ -1947,17 +1987,19 @@ class AoCAbilitySubprocessor:
 
                     obj_prefix = "%sDespawn" % gset_lookup_dict[graphics_set_id][1]
                     filename_prefix = "despawn_%s_" % gset_lookup_dict[graphics_set_id][2]
-                    AoCAbilitySubprocessor._create_civ_animation(line,
-                                                                 civ_group,
-                                                                 civ_animation_id,
-                                                                 ability_ref,
-                                                                 obj_prefix,
-                                                                 filename_prefix,
-                                                                 obj_exists)
+                    AoCAbilitySubprocessor.create_civ_animation(line,
+                                                                civ_group,
+                                                                civ_animation_id,
+                                                                ability_ref,
+                                                                obj_prefix,
+                                                                filename_prefix,
+                                                                obj_exists)
 
         # Activation condition
         # Uses the death condition of the units
-        activation_condition = [dataset.pregen_nyan_objects["aux.logic.literal.death.StandardHealthDeathLiteral"].get_nyan_object()]
+        activation_condition = [
+            dataset.pregen_nyan_objects["aux.logic.literal.death.StandardHealthDeathLiteral"].get_nyan_object()
+        ]
         ability_raw_api_object.add_raw_member("activation_condition",
                                               activation_condition,
                                               "engine.ability.type.Despawn")
@@ -2015,7 +2057,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.DropResources" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "DropResources", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "DropResources",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.DropResources")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2053,7 +2097,9 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.DropResources")
 
         # Allowed types
-        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.DropSite"].get_nyan_object()]
+        allowed_types = [
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.DropSite"].get_nyan_object()
+        ]
         ability_raw_api_object.add_raw_member("allowed_types",
                                               allowed_types,
                                               "engine.ability.type.DropResources")
@@ -2138,7 +2184,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.EnterContainer" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "EnterContainer", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "EnterContainer",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.EnterContainer")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2167,8 +2215,10 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.EnterContainer")
 
         # Allowed types (all buildings/units)
-        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
-                         dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+        allowed_types = [
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()
+        ]
 
         ability_raw_api_object.add_raw_member("allowed_types",
                                               allowed_types,
@@ -2263,7 +2313,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.ExitContainer" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "ExitContainer", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "ExitContainer",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ExitContainer")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2316,7 +2368,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.GameEntityStance" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "GameEntityStance", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "GameEntityStance",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.GameEntityStance")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -2621,12 +2675,12 @@ class AoCAbilitySubprocessor:
                 ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                                 ability_animation_id,
-                                                                                 ability_ref,
-                                                                                 ability_name,
-                                                                                 "%s_"
-                                                                                 % gather_lookup_dict[gatherer_unit_id][1])
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                                ability_animation_id,
+                                                                                ability_ref,
+                                                                                ability_name,
+                                                                                "%s_"
+                                                                                % gather_lookup_dict[gatherer_unit_id][1])
                 animations_set.append(animation_forward_ref)
                 ability_raw_api_object.add_raw_member("animations", animations_set,
                                                       "engine.ability.specialization.AnimatedAbility")
@@ -2906,7 +2960,7 @@ class AoCAbilitySubprocessor:
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
                                                    "engine.aux.progress.specialization.StateChangeProgress")
-            #=======================================================================
+            # =======================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
 
@@ -2972,7 +3026,9 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Herd")
 
         # Allowed types
-        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Herdable"].get_nyan_object()]
+        allowed_types = [
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Herdable"].get_nyan_object()
+        ]
         ability_raw_api_object.add_raw_member("allowed_types",
                                               allowed_types,
                                               "engine.ability.type.Herd")
@@ -3006,7 +3062,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.Herdable" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "Herdable", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "Herdable",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Herdable")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -3117,13 +3175,14 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                             ability_animation_id,
-                                                                             ability_ref,
-                                                                             "Idle",
-                                                                             "idle_")
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                            ability_animation_id,
+                                                                            ability_ref,
+                                                                            "Idle",
+                                                                            "idle_")
             animations_set.append(animation_forward_ref)
-            ability_raw_api_object.add_raw_member("animations", animations_set,
+            ability_raw_api_object.add_raw_member("animations",
+                                                  animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
             # Create custom civ graphics
@@ -3140,8 +3199,10 @@ class AoCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    for graphics_set_id, items in gset_lookup_dict.items():
+                    graphics_set_id = -1
+                    for set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
+                            graphics_set_id = set_id
                             break
 
                     # Check if the object for the animation has been created before
@@ -3151,13 +3212,13 @@ class AoCAbilitySubprocessor:
 
                     obj_prefix = "%sIdle" % gset_lookup_dict[graphics_set_id][1]
                     filename_prefix = "idle_%s_" % gset_lookup_dict[graphics_set_id][2]
-                    AoCAbilitySubprocessor._create_civ_animation(line,
-                                                                 civ_group,
-                                                                 civ_animation_id,
-                                                                 ability_ref,
-                                                                 obj_prefix,
-                                                                 filename_prefix,
-                                                                 obj_exists)
+                    AoCAbilitySubprocessor.create_civ_animation(line,
+                                                                civ_group,
+                                                                civ_animation_id,
+                                                                ability_ref,
+                                                                obj_prefix,
+                                                                filename_prefix,
+                                                                obj_exists)
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -3346,11 +3407,11 @@ class AoCAbilitySubprocessor:
             animation_obj_prefix = "Move"
             animation_filename_prefix = "move_"
 
-            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                             ability_animation_id,
-                                                                             ability_ref,
-                                                                             animation_obj_prefix,
-                                                                             animation_filename_prefix)
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                            ability_animation_id,
+                                                                            ability_ref,
+                                                                            animation_obj_prefix,
+                                                                            animation_filename_prefix)
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
@@ -3369,8 +3430,10 @@ class AoCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    for graphics_set_id, items in gset_lookup_dict.items():
+                    graphics_set_id = -1
+                    for set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
+                            graphics_set_id = set_id
                             break
 
                     # Check if the object for the animation has been created before
@@ -3380,13 +3443,13 @@ class AoCAbilitySubprocessor:
 
                     obj_prefix = "%sMove" % gset_lookup_dict[graphics_set_id][1]
                     filename_prefix = "move_%s_" % gset_lookup_dict[graphics_set_id][2]
-                    AoCAbilitySubprocessor._create_civ_animation(line,
-                                                                 civ_group,
-                                                                 civ_animation_id,
-                                                                 ability_ref,
-                                                                 obj_prefix,
-                                                                 filename_prefix,
-                                                                 obj_exists)
+                    AoCAbilitySubprocessor.create_civ_animation(line,
+                                                                civ_group,
+                                                                civ_animation_id,
+                                                                ability_ref,
+                                                                obj_prefix,
+                                                                filename_prefix,
+                                                                obj_exists)
 
         # Command Sound
         ability_comm_sound_id = current_unit["command_sound_id"].get_value()
@@ -3398,11 +3461,11 @@ class AoCAbilitySubprocessor:
 
             sound_obj_prefix = "Move"
 
-            sound_forward_ref = AoCAbilitySubprocessor._create_sound(line,
-                                                                     ability_comm_sound_id,
-                                                                     ability_ref,
-                                                                     sound_obj_prefix,
-                                                                     "command_")
+            sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
+                                                                    ability_comm_sound_id,
+                                                                    ability_ref,
+                                                                    sound_obj_prefix,
+                                                                    "command_")
             sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
                                                   "engine.ability.specialization.CommandSoundAbility")
@@ -3412,9 +3475,11 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("speed", speed, "engine.ability.type.Move")
 
         # Standard move modes
-        move_modes = [dataset.nyan_api_objects["engine.aux.move_mode.type.AttackMove"],
-                      dataset.nyan_api_objects["engine.aux.move_mode.type.Normal"],
-                      dataset.nyan_api_objects["engine.aux.move_mode.type.Patrol"]]
+        move_modes = [
+            dataset.nyan_api_objects["engine.aux.move_mode.type.AttackMove"],
+            dataset.nyan_api_objects["engine.aux.move_mode.type.Normal"],
+            dataset.nyan_api_objects["engine.aux.move_mode.type.Patrol"]
+        ]
 
         # Follow
         ability_ref = "%s.Move.Follow" % (game_entity_name)
@@ -3424,7 +3489,8 @@ class AoCAbilitySubprocessor:
         follow_raw_api_object.set_location(follow_location)
 
         follow_range = current_unit["line_of_sight"].get_value() - 1
-        follow_raw_api_object.add_raw_member("range", follow_range,
+        follow_raw_api_object.add_raw_member("range",
+                                             follow_range,
                                              "engine.aux.move_mode.type.Follow")
 
         line.add_raw_api_object(follow_raw_api_object)
@@ -3436,7 +3502,8 @@ class AoCAbilitySubprocessor:
         # Diplomacy settings
         ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
         diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
-        ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
+        ability_raw_api_object.add_raw_member("stances",
+                                              diplomatic_stances,
                                               "engine.ability.specialization.DiplomaticAbility")
 
         line.add_raw_api_object(ability_raw_api_object)
@@ -3493,11 +3560,11 @@ class AoCAbilitySubprocessor:
             animation_obj_prefix = "ProjectileFly"
             animation_filename_prefix = "projectile_fly_"
 
-            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                             ability_animation_id,
-                                                                             ability_ref,
-                                                                             animation_obj_prefix,
-                                                                             animation_filename_prefix)
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                            ability_animation_id,
+                                                                            ability_ref,
+                                                                            animation_obj_prefix,
+                                                                            animation_filename_prefix)
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
@@ -3507,7 +3574,9 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("speed", speed, "engine.ability.type.Move")
 
         # Move modes
-        move_modes = [dataset.nyan_api_objects["engine.aux.move_mode.type.Normal"], ]
+        move_modes = [
+            dataset.nyan_api_objects["engine.aux.move_mode.type.Normal"],
+        ]
         ability_raw_api_object.add_raw_member("modes", move_modes, "engine.ability.type.Move")
 
         line.add_raw_api_object(ability_raw_api_object)
@@ -3550,11 +3619,11 @@ class AoCAbilitySubprocessor:
         name_raw_api_object.set_location(name_location)
 
         name_string_id = current_unit["language_dll_name"].get_value()
-        translations = AoCAbilitySubprocessor._create_language_strings(line,
-                                                                       name_string_id,
-                                                                       name_ref,
-                                                                       "%sName"
-                                                                       % (game_entity_name))
+        translations = AoCAbilitySubprocessor.create_language_strings(line,
+                                                                      name_string_id,
+                                                                      name_ref,
+                                                                      "%sName"
+                                                                      % (game_entity_name))
         name_raw_api_object.add_raw_member("translations",
                                            translations,
                                            "engine.aux.translated.type.TranslatedString")
@@ -3627,7 +3696,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.OverlayTerrain" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "OverlayTerrain", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "OverlayTerrain",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.OverlayTerrain")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -3664,7 +3735,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.Passable" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "Passable", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "Passable",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Passable")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -3690,9 +3763,11 @@ class AoCAbilitySubprocessor:
         mode_raw_api_object.set_location(mode_location)
 
         # Allowed types
-        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
-                         dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
-                         dataset.pregen_nyan_objects["aux.game_entity_type.types.Projectile"].get_nyan_object()]
+        allowed_types = [
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Projectile"].get_nyan_object()
+        ]
         mode_raw_api_object.add_raw_member("allowed_types",
                                            allowed_types,
                                            "engine.aux.passable_mode.PassableMode")
@@ -3733,7 +3808,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.ProductionQueue" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "ProductionQueue", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "ProductionQueue",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ProductionQueue")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -3741,7 +3818,9 @@ class AoCAbilitySubprocessor:
         # Size
         size = 14
 
-        ability_raw_api_object.add_raw_member("size", size, "engine.ability.type.ProductionQueue")
+        ability_raw_api_object.add_raw_member("size",
+                                              size,
+                                              "engine.ability.type.ProductionQueue")
 
         # Production modes
         modes = []
@@ -3753,7 +3832,9 @@ class AoCAbilitySubprocessor:
         mode_raw_api_object.set_location(mode_location)
 
         # AoE2 allows all creatables in production queue
-        mode_raw_api_object.add_raw_member("exclude", [], "engine.aux.production_mode.type.Creatables")
+        mode_raw_api_object.add_raw_member("exclude",
+                                           [],
+                                           "engine.aux.production_mode.type.Creatables")
 
         mode_forward_ref = ForwardRef(line, mode_name)
         modes.append(mode_forward_ref)
@@ -3791,10 +3872,12 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         # First projectile is mandatory
-        obj_ref  = "%s.ShootProjectile.Projectile%s" % (game_entity_name, str(position))
+        obj_ref = "%s.ShootProjectile.Projectile%s" % (game_entity_name, str(position))
         ability_ref = "%s.ShootProjectile.Projectile%s.Projectile"\
             % (game_entity_name, str(position))
-        ability_raw_api_object = RawAPIObject(ability_ref, "Projectile", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "Projectile",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Projectile")
         ability_location = ForwardRef(line, obj_ref)
         ability_raw_api_object.set_location(ability_location)
@@ -3818,7 +3901,9 @@ class AoCAbilitySubprocessor:
         # Accuracy
         accuracy_name = "%s.ShootProjectile.Projectile%s.Projectile.Accuracy"\
                         % (game_entity_name, str(position))
-        accuracy_raw_api_object = RawAPIObject(accuracy_name, "Accuracy", dataset.nyan_api_objects)
+        accuracy_raw_api_object = RawAPIObject(accuracy_name,
+                                               "Accuracy",
+                                               dataset.nyan_api_objects)
         accuracy_raw_api_object.add_raw_parent("engine.aux.accuracy.Accuracy")
         accuracy_location = ForwardRef(line, ability_ref)
         accuracy_raw_api_object.set_location(accuracy_location)
@@ -3861,7 +3946,9 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Projectile")
 
         # Ingore types; buildings are ignored unless targeted
-        ignore_forward_refs = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+        ignore_forward_refs = [
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()
+        ]
         ability_raw_api_object.add_raw_member("ignored_types",
                                               ignore_forward_refs,
                                               "engine.ability.type.Projectile")
@@ -3897,7 +3984,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.ProvideContingent" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "ProvideContingent", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "ProvideContingent",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ProvideContingent")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -4090,7 +4179,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.RemoveStorage" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "RemoveStorage", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "RemoveStorage",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.RemoveStorage")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -4174,12 +4265,12 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                             ability_animation_id,
-                                                                             ability_ref,
-                                                                             restock_lookup_dict[restock_target_id][0],
-                                                                             "%s_"
-                                                                             % restock_lookup_dict[restock_target_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                            ability_animation_id,
+                                                                            ability_ref,
+                                                                            restock_lookup_dict[restock_target_id][0],
+                                                                            "%s_"
+                                                                            % restock_lookup_dict[restock_target_id][1])
 
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
@@ -4257,7 +4348,9 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
         ability_ref = "%s.Research" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "Research", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "Research",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Research")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -4305,7 +4398,9 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
         ability_ref = "%s.Resistance" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "Resistance", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "Resistance",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Resistance")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -4360,7 +4455,8 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.ResourceStorage" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "ResourceStorage",
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "ResourceStorage",
                                               dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ResourceStorage")
         ability_location = ForwardRef(line, game_entity_name)
@@ -4372,6 +4468,7 @@ class AoCAbilitySubprocessor:
             unit_commands = gatherer["unit_commands"].get_value()
             resource = None
 
+            used_command = None
             for command in unit_commands:
                 # Find a gather ability. It doesn't matter which one because
                 # they should all produce the same resource for one genie unit.
@@ -4401,6 +4498,12 @@ class AoCAbilitySubprocessor:
                 else:
                     continue
 
+                used_command = command
+
+            if not used_command:
+                # The unit uses no gathering command or we don't recognize it
+                continue
+
             gatherer_unit_id = gatherer.get_id()
             if gatherer_unit_id not in gather_lookup_dict.keys():
                 # Skips hunting wolves
@@ -4409,7 +4512,9 @@ class AoCAbilitySubprocessor:
             container_name = "%sContainer" % (gather_lookup_dict[gatherer_unit_id][0])
 
             container_ref = "%s.%s" % (ability_ref, container_name)
-            container_raw_api_object = RawAPIObject(container_ref, container_name, dataset.nyan_api_objects)
+            container_raw_api_object = RawAPIObject(container_ref,
+                                                    container_name,
+                                                    dataset.nyan_api_objects)
             container_raw_api_object.add_raw_parent("engine.aux.storage.ResourceContainer")
             container_location = ForwardRef(line, ability_ref)
             container_raw_api_object.set_location(container_location)
@@ -4427,7 +4532,7 @@ class AoCAbilitySubprocessor:
 
             # Carry progress
             carry_progress = []
-            carry_move_animation_id = command["carry_sprite_id"].get_value()
+            carry_move_animation_id = used_command["carry_sprite_id"].get_value()
             if carry_move_animation_id > -1:
                 # ===========================================================================================
                 progress_name = "%s.ResourceStorage.%sCarryProgress" % (game_entity_name,
@@ -4468,11 +4573,11 @@ class AoCAbilitySubprocessor:
 
                 # Animation
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                                 carry_move_animation_id,
-                                                                                 override_ref,
-                                                                                 "Move",
-                                                                                 "move_carry_override_")
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                                carry_move_animation_id,
+                                                                                override_ref,
+                                                                                "Move",
+                                                                                "move_carry_override_")
 
                 animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
@@ -4565,9 +4670,11 @@ class AoCAbilitySubprocessor:
         if isinstance(line, GenieUnitLineGroup):
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
 
-            stances = [dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Enemy"].get_nyan_object(),
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Neutral"].get_nyan_object(),
-                       dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            stances = [
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Enemy"].get_nyan_object(),
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Neutral"].get_nyan_object(),
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             ability_raw_api_object.add_raw_member("stances",
                                                   stances,
                                                   "engine.ability.specialization.DiplomaticAbility")
@@ -4585,7 +4692,9 @@ class AoCAbilitySubprocessor:
         ability_ref = ability_refs[1]
         ability_name = ability_names[1]
 
-        ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              ability_name,
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Selectable")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -4597,13 +4706,14 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
 
             sounds_set = []
-            sound_forward_ref = AoCAbilitySubprocessor._create_sound(line,
-                                                                     ability_comm_sound_id,
-                                                                     ability_ref,
-                                                                     ability_name,
-                                                                     "select_")
+            sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
+                                                                    ability_comm_sound_id,
+                                                                    ability_ref,
+                                                                    ability_name,
+                                                                    "select_")
             sounds_set.append(sound_forward_ref)
-            ability_raw_api_object.add_raw_member("sounds", sounds_set,
+            ability_raw_api_object.add_raw_member("sounds",
+                                                  sounds_set,
                                                   "engine.ability.specialization.CommandSoundAbility")
 
         # Selection box
@@ -4663,13 +4773,17 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
         ability_ref = "%s.SendBackToTask" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "SendBackToTask", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "SendBackToTask",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.SendBackToTask")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Only works on villagers
-        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Villager"].get_nyan_object()]
+        allowed_types = [
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Villager"].get_nyan_object()
+        ]
         ability_raw_api_object.add_raw_member("allowed_types",
                                               allowed_types,
                                               "engine.ability.type.SendBackToTask")
@@ -4704,7 +4818,9 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
         ability_ref = "%s.%s" % (game_entity_name, ability_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              ability_name,
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ShootProjectile")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -4716,14 +4832,15 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                             ability_animation_id,
-                                                                             ability_ref,
-                                                                             ability_name,
-                                                                             "%s_"
-                                                                             % command_lookup_dict[command_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                            ability_animation_id,
+                                                                            ability_ref,
+                                                                            ability_name,
+                                                                            "%s_"
+                                                                            % command_lookup_dict[command_id][1])
             animations_set.append(animation_forward_ref)
-            ability_raw_api_object.add_raw_member("animations", animations_set,
+            ability_raw_api_object.add_raw_member("animations",
+                                                  animations_set,
                                                   "engine.ability.specialization.AnimatedAbility")
 
         # Command Sound
@@ -4733,13 +4850,14 @@ class AoCAbilitySubprocessor:
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
 
             sounds_set = []
-            sound_forward_ref = AoCAbilitySubprocessor._create_sound(line,
-                                                                     ability_comm_sound_id,
-                                                                     ability_ref,
-                                                                     ability_name,
-                                                                     "command_")
+            sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
+                                                                    ability_comm_sound_id,
+                                                                    ability_ref,
+                                                                    ability_name,
+                                                                    "command_")
             sounds_set.append(sound_forward_ref)
-            ability_raw_api_object.add_raw_member("sounds", sounds_set,
+            ability_raw_api_object.add_raw_member("sounds",
+                                                  sounds_set,
                                                   "engine.ability.specialization.CommandSoundAbility")
 
         # Projectile
@@ -4832,11 +4950,7 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
 
         # Manual Aiming (Mangonel + Trebuchet)
-        if line.get_head_unit_id() in (280, 331):
-            manual_aiming_allowed = True
-
-        else:
-            manual_aiming_allowed = False
+        manual_aiming_allowed = line.get_head_unit_id() in (280, 331)
 
         ability_raw_api_object.add_raw_member("manual_aiming_allowed",
                                               manual_aiming_allowed,
@@ -4872,8 +4986,10 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
 
         # Restrictions on targets (only units and buildings allowed)
-        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
-                         dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()]
+        allowed_types = [
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
+            dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()
+        ]
         ability_raw_api_object.add_raw_member("allowed_types",
                                               allowed_types,
                                               "engine.ability.type.ShootProjectile")
@@ -5065,11 +5181,11 @@ class AoCAbilitySubprocessor:
 
             # Animation
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                             carry_idle_animation_id,
-                                                                             override_ref,
-                                                                             "Idle",
-                                                                             "idle_carry_override_")
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                            carry_idle_animation_id,
+                                                                            override_ref,
+                                                                            "Idle",
+                                                                            "idle_carry_override_")
 
             animations_set.append(animation_forward_ref)
             override_raw_api_object.add_raw_member("animations",
@@ -5101,11 +5217,11 @@ class AoCAbilitySubprocessor:
 
             # Animation
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                             carry_move_animation_id,
-                                                                             override_ref,
-                                                                             "Move",
-                                                                             "move_carry_override_")
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                            carry_move_animation_id,
+                                                                            override_ref,
+                                                                            "Move",
+                                                                            "move_carry_override_")
 
             animations_set.append(animation_forward_ref)
             override_raw_api_object.add_raw_member("animations",
@@ -5226,11 +5342,11 @@ class AoCAbilitySubprocessor:
 
                 # Animation
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                                 garrison_animation_id,
-                                                                                 override_ref,
-                                                                                 "Idle",
-                                                                                 "idle_garrison_override_")
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                                garrison_animation_id,
+                                                                                override_ref,
+                                                                                "Idle",
+                                                                                "idle_garrison_override_")
 
                 animations_set.append(animation_forward_ref)
                 override_raw_api_object.add_raw_member("animations",
@@ -5306,7 +5422,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.TerrainRequirement" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "TerrainRequirement", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "TerrainRequirement",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.TerrainRequirement")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -5412,7 +5530,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.TradePost" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "TradePost", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "TradePost",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.TradePost")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -5477,7 +5597,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.TransferStorage" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "TransferStorage", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "TransferStorage",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.TransferStorage")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -5549,7 +5671,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.Turn" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "Turn", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "Turn",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Turn")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -5565,7 +5689,9 @@ class AoCAbilitySubprocessor:
             turn_yaw = current_unit["max_yaw_per_sec_moving"].get_value()
             turn_speed = degrees(turn_yaw)
 
-        ability_raw_api_object.add_raw_member("turn_speed", turn_speed, "engine.ability.type.Turn")
+        ability_raw_api_object.add_raw_member("turn_speed",
+                                              turn_speed,
+                                              "engine.ability.type.Turn")
 
         # Diplomacy settings
         ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
@@ -5598,7 +5724,9 @@ class AoCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = "%s.UseContingent" % (game_entity_name)
-        ability_raw_api_object = RawAPIObject(ability_ref, "UseContingent", dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref,
+                                              "UseContingent",
+                                              dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.UseContingent")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -5686,11 +5814,13 @@ class AoCAbilitySubprocessor:
 
         # Diplomacy settings
         ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
-        diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                              dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object(),
-                              dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Neutral"].get_nyan_object(),
-                              dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Enemy"].get_nyan_object(),
-                              dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Gaia"].get_nyan_object()]
+        diplomatic_stances = [
+            dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+            dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object(),
+            dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Neutral"].get_nyan_object(),
+            dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Enemy"].get_nyan_object(),
+            dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Gaia"].get_nyan_object()
+        ]
         ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                               "engine.ability.specialization.DiplomaticAbility")
 
@@ -5702,7 +5832,9 @@ class AoCAbilitySubprocessor:
         # It is not returned by this method, but referenced by the Constructable ability
         if isinstance(line, GenieBuildingLineGroup):
             ability_ref = "%s.VisibilityConstruct0" % (game_entity_name)
-            ability_raw_api_object = RawAPIObject(ability_ref, "VisibilityConstruct0", dataset.nyan_api_objects)
+            ability_raw_api_object = RawAPIObject(ability_ref,
+                                                  "VisibilityConstruct0",
+                                                  dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent("engine.ability.type.Visibility")
             ability_location = ForwardRef(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
@@ -5716,8 +5848,10 @@ class AoCAbilitySubprocessor:
             # Diplomacy settings
             ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
             # Only the player and friendly players can see the construction site
-            diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                                  dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()]
+            diplomatic_stances = [
+                dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+                dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
+            ]
             ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                                   "engine.ability.specialization.DiplomaticAbility")
 
@@ -5726,7 +5860,7 @@ class AoCAbilitySubprocessor:
         return ability_forward_ref
 
     @staticmethod
-    def _create_animation(line, animation_id, ability_ref, ability_name, filename_prefix):
+    def create_animation(line, animation_id, ability_ref, ability_name, filename_prefix):
         """
         Generates an animation for an ability.
 
@@ -5776,8 +5910,8 @@ class AoCAbilitySubprocessor:
         return animation_forward_ref
 
     @staticmethod
-    def _create_civ_animation(line, civ_group, animation_id, ability_ref,
-                              ability_name, filename_prefix, exists=False):
+    def create_civ_animation(line, civ_group, animation_id, ability_ref,
+                             ability_name, filename_prefix, exists=False):
         """
         Generates an animation as a patch for a civ.
 
@@ -5838,24 +5972,28 @@ class AoCAbilitySubprocessor:
 
             else:
                 # Create the animation object
-                animation_forward_ref = AoCAbilitySubprocessor._create_animation(line,
-                                                                                 animation_id,
-                                                                                 ability_ref,
-                                                                                 ability_name,
-                                                                                 filename_prefix)
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
+                                                                                animation_id,
+                                                                                ability_ref,
+                                                                                ability_name,
+                                                                                filename_prefix)
 
             # Patch animation into ability
-            nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                           [animation_forward_ref],
-                                                           "engine.ability.specialization.AnimatedAbility",
-                                                           MemberOperator.ASSIGN)
+            nyan_patch_raw_api_object.add_raw_patch_member(
+                "animations",
+                [animation_forward_ref],
+                "engine.ability.specialization.AnimatedAbility",
+                MemberOperator.ASSIGN
+            )
 
         else:
             # No animation -> empty the set
-            nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                           [],
-                                                           "engine.ability.specialization.AnimatedAbility",
-                                                           MemberOperator.ASSIGN)
+            nyan_patch_raw_api_object.add_raw_patch_member(
+                "animations",
+                [],
+                "engine.ability.specialization.AnimatedAbility",
+                MemberOperator.ASSIGN
+            )
 
         patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
@@ -5870,12 +6008,12 @@ class AoCAbilitySubprocessor:
         wrapper_forward_ref = ForwardRef(civ_group, wrapper_ref)
         push_object = RawMemberPush(civ_forward_ref,
                                     "civ_setup",
-                                    "engine.aux.civ.Civilization",
+                                    "engine.aux.civilization.Civilization",
                                     [wrapper_forward_ref])
         civ_group.add_raw_member_push(push_object)
 
     @staticmethod
-    def _create_sound(line, sound_id, ability_ref, ability_name, filename_prefix):
+    def create_sound(line, sound_id, ability_ref, ability_name, filename_prefix):
         """
         Generates a sound for an ability.
         """
@@ -5923,7 +6061,7 @@ class AoCAbilitySubprocessor:
         return sound_forward_ref
 
     @staticmethod
-    def _create_language_strings(line, string_id, obj_ref, obj_name_prefix):
+    def create_language_strings(line, string_id, obj_ref, obj_name_prefix):
         """
         Generates a language string for an ability.
         """
@@ -5942,7 +6080,8 @@ class AoCAbilitySubprocessor:
                 string_raw_api_object.set_location(string_location)
 
                 # Language identifier
-                lang_forward_ref = dataset.pregen_nyan_objects["aux.language.%s" % (language)].get_nyan_object()
+                lang_ref = "aux.language.%s" % (language)
+                lang_forward_ref = dataset.pregen_nyan_objects[lang_ref].get_nyan_object()
                 string_raw_api_object.add_raw_member("language",
                                                      lang_forward_ref,
                                                      "engine.aux.language.LanguageTextPair")

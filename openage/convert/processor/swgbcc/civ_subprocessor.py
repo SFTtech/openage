@@ -1,4 +1,6 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-statements,too-many-branches
 
 """
 Creates patches and modifiers for civs.
@@ -11,6 +13,9 @@ from openage.convert.service import internal_name_lookups
 
 
 class SWGBCCCivSubprocessor:
+    """
+    Creates raw API objects for civs in SWGB.
+    """
 
     @classmethod
     def get_civ_setup(cls, civ_group):
@@ -20,10 +25,10 @@ class SWGBCCCivSubprocessor:
         """
         patches = []
 
-        patches.extend(AoCCivSubprocessor._setup_unique_units(civ_group))
-        patches.extend(AoCCivSubprocessor._setup_unique_techs(civ_group))
-        patches.extend(AoCCivSubprocessor._setup_tech_tree(civ_group))
-        patches.extend(AoCCivSubprocessor._setup_civ_bonus(civ_group))
+        patches.extend(AoCCivSubprocessor.setup_unique_units(civ_group))
+        patches.extend(AoCCivSubprocessor.setup_unique_techs(civ_group))
+        patches.extend(AoCCivSubprocessor.setup_tech_tree(civ_group))
+        patches.extend(AoCCivSubprocessor.setup_civ_bonus(civ_group))
 
         if len(civ_group.get_team_bonus_effects()) > 0:
             patches.extend(SWGBCCTechSubprocessor.get_patches(civ_group.team_bonus))

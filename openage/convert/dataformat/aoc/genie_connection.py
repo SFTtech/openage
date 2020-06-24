@@ -1,5 +1,9 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 
+"""
+Contains structures and API-like objects for connections from AoC.
+"""
+
 
 from ...dataformat.converter_object import ConverterObject
 
@@ -9,7 +13,7 @@ class GenieAgeConnection(ConverterObject):
     A relation between an Age and buildings/techs/units in AoE.
     """
 
-    __slots__ = ('data')
+    __slots__ = ('data',)
 
     def __init__(self, age_id, full_data_set, members=None):
         """
@@ -35,7 +39,7 @@ class GenieBuildingConnection(ConverterObject):
     A relation between a building and other buildings/techs/units in AoE.
     """
 
-    __slots__ = ('data')
+    __slots__ = ('data',)
 
     def __init__(self, building_id, full_data_set, members=None):
         """
@@ -61,7 +65,7 @@ class GenieTechConnection(ConverterObject):
     A relation between a tech and other buildings/techs/units in AoE.
     """
 
-    __slots__ = ('data')
+    __slots__ = ('data',)
 
     def __init__(self, tech_id, full_data_set, members=None):
         """
@@ -87,7 +91,7 @@ class GenieUnitConnection(ConverterObject):
     A relation between a unit and other buildings/techs/units in AoE.
     """
 
-    __slots__ = ('data')
+    __slots__ = ('data',)
 
     def __init__(self, unit_id, full_data_set, members=None):
         """

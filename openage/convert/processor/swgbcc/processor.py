@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-lines,too-many-branches,too-many-statements,too-many-locals
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Convert data from SWGB:CC to openage formats.
@@ -28,6 +33,9 @@ from ....log import info
 
 
 class SWGBCCProcessor:
+    """
+    Main processor for converting data from SWGB.
+    """
 
     @classmethod
     def convert(cls, gamespec, game_version, string_resources, existing_graphics):
@@ -48,7 +56,7 @@ class SWGBCCProcessor:
         data_set = cls._pre_processor(gamespec, game_version, string_resources, existing_graphics)
 
         # Create the custom openae formats (nyan, sprite, terrain)
-        data_set = cls._processor(gamespec, data_set)
+        data_set = cls._processor(data_set)
 
         # Create modpack definitions
         modpacks = cls._post_processor(data_set)
@@ -76,30 +84,27 @@ class SWGBCCProcessor:
 
         info("Extracting Genie data...")
 
-        AoCProcessor._extract_genie_units(gamespec, dataset)
-        AoCProcessor._extract_genie_techs(gamespec, dataset)
-        AoCProcessor._extract_genie_effect_bundles(gamespec, dataset)
-        AoCProcessor._sanitize_effect_bundles(dataset)
-        AoCProcessor._extract_genie_civs(gamespec, dataset)
-        AoCProcessor._extract_age_connections(gamespec, dataset)
-        AoCProcessor._extract_building_connections(gamespec, dataset)
-        AoCProcessor._extract_unit_connections(gamespec, dataset)
-        AoCProcessor._extract_tech_connections(gamespec, dataset)
-        AoCProcessor._extract_genie_graphics(gamespec, dataset)
-        AoCProcessor._extract_genie_sounds(gamespec, dataset)
-        AoCProcessor._extract_genie_terrains(gamespec, dataset)
+        AoCProcessor.extract_genie_units(gamespec, dataset)
+        AoCProcessor.extract_genie_techs(gamespec, dataset)
+        AoCProcessor.extract_genie_effect_bundles(gamespec, dataset)
+        AoCProcessor.sanitize_effect_bundles(dataset)
+        AoCProcessor.extract_genie_civs(gamespec, dataset)
+        AoCProcessor.extract_age_connections(gamespec, dataset)
+        AoCProcessor.extract_building_connections(gamespec, dataset)
+        AoCProcessor.extract_unit_connections(gamespec, dataset)
+        AoCProcessor.extract_tech_connections(gamespec, dataset)
+        AoCProcessor.extract_genie_graphics(gamespec, dataset)
+        AoCProcessor.extract_genie_sounds(gamespec, dataset)
+        AoCProcessor.extract_genie_terrains(gamespec, dataset)
 
         return dataset
 
     @classmethod
-    def _processor(cls, gamespec, full_data_set):
+    def _processor(cls, full_data_set):
         """
-        1. Transfer structures used in Genie games to more openage-friendly
-           Python objects.
-        2. Convert these objects to nyan.
+        Transfer structures used in Genie games to more openage-friendly
+        Python objects.
 
-        :param gamespec: Gamedata from empires.dat file.
-        :type gamespec: class: ...dataformat.value_members.ArrayMember
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
@@ -108,26 +113,26 @@ class SWGBCCProcessor:
 
         info("Creating API-like objects...")
 
-        cls._create_unit_lines(full_data_set)
-        cls._create_extra_unit_lines(full_data_set)
-        cls._create_building_lines(full_data_set)
-        cls._create_villager_groups(full_data_set)
-        cls._create_ambient_groups(full_data_set)
-        cls._create_variant_groups(full_data_set)
-        AoCProcessor._create_terrain_groups(full_data_set)
-        cls._create_tech_groups(full_data_set)
-        AoCProcessor._create_civ_groups(full_data_set)
+        cls.create_unit_lines(full_data_set)
+        cls.create_extra_unit_lines(full_data_set)
+        cls.create_building_lines(full_data_set)
+        cls.create_villager_groups(full_data_set)
+        cls.create_ambient_groups(full_data_set)
+        cls.create_variant_groups(full_data_set)
+        AoCProcessor.create_terrain_groups(full_data_set)
+        cls.create_tech_groups(full_data_set)
+        AoCProcessor.create_civ_groups(full_data_set)
 
         info("Linking API-like objects...")
 
-        AoCProcessor._link_building_upgrades(full_data_set)
-        AoCProcessor._link_creatables(full_data_set)
-        AoCProcessor._link_researchables(full_data_set)
-        AoCProcessor._link_civ_uniques(full_data_set)
-        AoCProcessor._link_gatherers_to_dropsites(full_data_set)
-        cls._link_garrison(full_data_set)
-        AoCProcessor._link_trade_posts(full_data_set)
-        cls._link_repairables(full_data_set)
+        AoCProcessor.link_building_upgrades(full_data_set)
+        AoCProcessor.link_creatables(full_data_set)
+        AoCProcessor.link_researchables(full_data_set)
+        AoCProcessor.link_civ_uniques(full_data_set)
+        AoCProcessor.link_gatherers_to_dropsites(full_data_set)
+        cls.link_garrison(full_data_set)
+        AoCProcessor.link_trade_posts(full_data_set)
+        cls.link_repairables(full_data_set)
 
         info("Generating auxiliary objects...")
 
@@ -137,6 +142,14 @@ class SWGBCCProcessor:
 
     @classmethod
     def _post_processor(cls, full_data_set):
+        """
+        Convert API-like Python objects to nyan.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
 
         info("Creating nyan objects...")
 
@@ -149,7 +162,7 @@ class SWGBCCProcessor:
         return SWGBCCModpackSubprocessor.get_modpacks(full_data_set)
 
     @staticmethod
-    def _create_unit_lines(full_data_set):
+    def create_unit_lines(full_data_set):
         """
         Sort units into lines, based on information in the unit connections.
 
@@ -215,7 +228,7 @@ class SWGBCCProcessor:
                 # Search other_connections for the previous unit in line
                 connected_types = connection["other_connections"].get_value()
                 connected_index = -1
-                for index in range(len(connected_types)):
+                for index, _ in enumerate(connected_types):
                     connected_type = connected_types[index]["other_connection"].get_value()
                     if connected_type == 2:
                         # 2 == Unit
@@ -275,7 +288,7 @@ class SWGBCCProcessor:
             full_data_set.unit_lines.update({line.get_head_unit_id(): line})
 
     @staticmethod
-    def _create_extra_unit_lines(full_data_set):
+    def create_extra_unit_lines(full_data_set):
         """
         Create additional units that are not in the unit connections.
 
@@ -295,7 +308,7 @@ class SWGBCCProcessor:
             full_data_set.unit_ref.update({unit_id: unit_line})
 
     @staticmethod
-    def _create_building_lines(full_data_set):
+    def create_building_lines(full_data_set):
         """
         Establish building lines, based on information in the building connections.
         Because of how Genie building lines work, this will only find the first
@@ -370,8 +383,12 @@ class SWGBCCProcessor:
                     # Add the upgrade tech group to the data set.
                     building_upgrade = BuildingLineUpgrade(tech_id, line_id,
                                                            building_id, full_data_set)
-                    full_data_set.tech_groups.update({building_upgrade.get_id(): building_upgrade})
-                    full_data_set.building_upgrades.update({building_upgrade.get_id(): building_upgrade})
+                    full_data_set.tech_groups.update(
+                        {building_upgrade.get_id(): building_upgrade}
+                    )
+                    full_data_set.building_upgrades.update(
+                        {building_upgrade.get_id(): building_upgrade}
+                    )
 
                     break
 
@@ -395,7 +412,7 @@ class SWGBCCProcessor:
                 full_data_set.unit_ref.update({building_id: building_line})
 
     @staticmethod
-    def _create_villager_groups(full_data_set):
+    def create_villager_groups(full_data_set):
         """
         Create task groups and assign the relevant worker group to a
         villager group.
@@ -444,13 +461,14 @@ class SWGBCCProcessor:
         # Create the villager task group
         villager = GenieVillagerGroup(118, task_group_ids, full_data_set)
         full_data_set.unit_lines.update({villager.get_id(): villager})
-        full_data_set.unit_lines_vertical_ref.update({36: villager})  # TODO: Find the line id elsewhere
+        # TODO: Find the line id elsewhere
+        full_data_set.unit_lines_vertical_ref.update({36: villager})
         full_data_set.villager_groups.update({villager.get_id(): villager})
         for unit_id in unit_ids:
             full_data_set.unit_ref.update({unit_id: villager})
 
     @staticmethod
-    def _create_ambient_groups(full_data_set):
+    def create_ambient_groups(full_data_set):
         """
         Create ambient groups, mostly for resources and scenery.
 
@@ -469,7 +487,7 @@ class SWGBCCProcessor:
             full_data_set.unit_ref.update({ambient_id: ambient_group})
 
     @staticmethod
-    def _create_variant_groups(full_data_set):
+    def create_variant_groups(full_data_set):
         """
         Create variant groups.
 
@@ -489,7 +507,7 @@ class SWGBCCProcessor:
                 full_data_set.unit_ref.update({variant_id: variant_group})
 
     @staticmethod
-    def _create_tech_groups(full_data_set):
+    def create_tech_groups(full_data_set):
         """
         Create techs from tech connections and unit upgrades/unlocks
         from unit connections.
@@ -521,7 +539,7 @@ class SWGBCCProcessor:
                 # Search other_connections for the age id
                 connected_types = connection["other_connections"].get_value()
                 connected_index = -1
-                for index in range(len(connected_types)):
+                for index, _ in enumerate(connected_types):
                     connected_type = connected_types[index]["other_connection"].get_value()
                     if connected_type == 0:
                         # 0 == Age
@@ -560,7 +578,7 @@ class SWGBCCProcessor:
                 # Unit is unlocked from the start
                 continue
 
-            elif line_mode == 2:
+            if line_mode == 2:
                 # Unit is first in line, there should be an unlock tech
                 unit_unlock = SWGBUnitUnlock(enabling_research_id, line_id, full_data_set)
                 pre_unit_unlocks.update({unit_id: unit_unlock})
@@ -647,7 +665,7 @@ class SWGBCCProcessor:
         # Civ boni = ONLY passive boni (not unit unlocks, unit upgrades or team bonus)
         genie_techs = full_data_set.genie_techs
 
-        for index in range(len(genie_techs)):
+        for index, _ in enumerate(genie_techs):
             tech_id = index
 
             # Civ ID must be positive and non-zero
@@ -670,7 +688,7 @@ class SWGBCCProcessor:
             full_data_set.civ_boni.update({civ_bonus.get_id(): civ_bonus})
 
     @staticmethod
-    def _link_garrison(full_data_set):
+    def link_garrison(full_data_set):
         """
         Link a garrison unit to the lines that are stored and vice versa. This is done
         to provide quick access during conversion.
@@ -735,16 +753,16 @@ class SWGBCCProcessor:
                     if creatable_type == 1 and not garrison_type & 0x01:
                         continue
 
-                    elif creatable_type == 2 and not garrison_type & 0x02:
+                    if creatable_type == 2 and not garrison_type & 0x02:
                         continue
 
-                    elif creatable_type == 3 and not garrison_type & 0x04:
+                    if creatable_type == 3 and not garrison_type & 0x04:
                         continue
 
-                    elif creatable_type == 6 and not garrison_type & 0x08:
+                    if creatable_type == 6 and not garrison_type & 0x08:
                         continue
 
-                    elif (creatable_type == 0 and unit_line.get_class_id() == 1) and not\
+                    if (creatable_type == 0 and unit_line.get_class_id() == 1) and not\
                             garrison_type & 0x10:
                         # Bantha/Nerf
                         continue
@@ -788,7 +806,7 @@ class SWGBCCProcessor:
                             garrison_line.garrison_entities.append(unit_line)
 
     @staticmethod
-    def _link_repairables(full_data_set):
+    def link_repairables(full_data_set):
         """
         Set units/buildings as repairable
 

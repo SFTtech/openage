@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,invalid-name
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Creates effects and resistances for the Apply*Effect and Resistance
@@ -13,6 +18,9 @@ from openage.nyan.nyan_structs import MemberSpecialValue
 
 
 class AoCEffectSubprocessor:
+    """
+    Creates raw API objects for attacks/resistances in AoC.
+    """
 
     @staticmethod
     def get_attack_effects(line, ability_ref, projectile=-1):

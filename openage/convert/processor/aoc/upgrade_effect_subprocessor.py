@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-statements,too-many-branches
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Upgrades effects and resistances for the Apply*Effect and Resistance
@@ -14,6 +19,9 @@ from openage.nyan.nyan_structs import MemberOperator
 
 
 class AoCUpgradeEffectSubprocessor:
+    """
+    Creates raw API objects for attack/resistance upgrades in AoC.
+    """
 
     @staticmethod
     def get_attack_effects(tech_group, line, diff, ability_ref):
@@ -48,7 +56,7 @@ class AoCUpgradeEffectSubprocessor:
             if isinstance(diff_attack, NoDiffMember):
                 continue
 
-            elif isinstance(diff_attack, LeftMissingMember):
+            if isinstance(diff_attack, LeftMissingMember):
                 # Create a new attack effect, then patch it in
                 attack = diff_attack.get_reference()
 
@@ -323,7 +331,7 @@ class AoCUpgradeEffectSubprocessor:
             if isinstance(diff_armor, NoDiffMember):
                 continue
 
-            elif isinstance(diff_armor, LeftMissingMember):
+            if isinstance(diff_armor, LeftMissingMember):
                 # Create a new attack resistance, then patch it in
                 armor = diff_armor.get_reference()
 

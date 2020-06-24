@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-statements
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Creates nyan objects for things that are hardcoded into the Genie Engine,
@@ -14,24 +19,30 @@ from openage.nyan.nyan_structs import MemberSpecialValue
 
 
 class SWGBCCPregenSubprocessor:
+    """
+    Creates raw API objects for hardcoded settings in SWGB.
+    """
 
     @classmethod
     def generate(cls, gamedata):
+        """
+        Create nyan objects for hardcoded properties.
+        """
         # Stores pregenerated raw API objects as a container
         pregen_converter_group = ConverterObjectGroup("pregen")
 
-        AoCPregenSubprocessor._generate_attributes(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor._generate_diplomatic_stances(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor._generate_entity_types(gamedata, pregen_converter_group)
-        cls._generate_effect_types(gamedata, pregen_converter_group)
-        cls._generate_exchange_objects(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor._generate_formation_types(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor._generate_language_objects(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor._generate_misc_effect_objects(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_attributes(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_diplomatic_stances(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_entity_types(gamedata, pregen_converter_group)
+        cls.generate_effect_types(gamedata, pregen_converter_group)
+        cls.generate_exchange_objects(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_formation_types(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_language_objects(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_misc_effect_objects(gamedata, pregen_converter_group)
         # cls._generate_modifiers(gamedata, pregen_converter_group) ??
         # cls._generate_terrain_types(gamedata, pregen_converter_group) TODO: Create terrain types
-        cls._generate_resources(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor._generate_death_condition(gamedata, pregen_converter_group)
+        cls.generate_resources(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_death_condition(gamedata, pregen_converter_group)
 
         pregen_nyan_objects = gamedata.pregen_nyan_objects
         # Create nyan objects from the raw API objects
@@ -47,18 +58,18 @@ class SWGBCCPregenSubprocessor:
                                 "Member or object not initialized." % (pregen_object))
 
     @staticmethod
-    def _generate_effect_types(full_data_set, pregen_converter_group):
+    def generate_effect_types(full_data_set, pregen_converter_group):
         """
         Generate types for effects and resistances.
 
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
-        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
                                        ForwardRef
-        :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
+        :type pregen_converter_group: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
         api_objects = full_data_set.nyan_api_objects
@@ -193,18 +204,18 @@ class SWGBCCPregenSubprocessor:
         pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
 
     @staticmethod
-    def _generate_exchange_objects(full_data_set, pregen_converter_group):
+    def generate_exchange_objects(full_data_set, pregen_converter_group):
         """
         Generate objects for market trading (ExchangeResources).
 
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
-        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
                                        ForwardRef
-        :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
+        :type pregen_converter_group: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
         api_objects = full_data_set.nyan_api_objects
@@ -507,18 +518,18 @@ class SWGBCCPregenSubprocessor:
         pregen_nyan_objects.update({price_change_ref_in_modpack: price_change_raw_api_object})
 
     @staticmethod
-    def _generate_resources(full_data_set, pregen_converter_group):
+    def generate_resources(full_data_set, pregen_converter_group):
         """
         Generate Attribute objects.
 
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
-        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
                                        ForwardRef
-        :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
+        :type pregen_converter_group: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
         api_objects = full_data_set.nyan_api_objects

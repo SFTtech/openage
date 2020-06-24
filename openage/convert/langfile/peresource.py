@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
 Provides PEResources, which reads the resource section from a PEFile.
@@ -6,10 +6,10 @@ Provides PEResources, which reads the resource section from a PEFile.
 
 from collections import defaultdict
 
-from ...util.struct import NamedStruct
 from ...util.filelike.stream import StreamFragment
-
+from ...util.struct import NamedStruct
 from .langcodes import LANGCODES_AOC
+
 
 # types for id in resource directory root node
 RESOURCE_TYPES = {

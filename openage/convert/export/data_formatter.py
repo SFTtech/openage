@@ -1,11 +1,11 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
 from . import entry_parser
 from . import util
-from .generated_file import GeneratedFile
 from ..dataformat.read_members import RefMember
+from .generated_file import GeneratedFile
 
 
 class DataFormatter:

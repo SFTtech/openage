@@ -1,15 +1,18 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-few-public-methods
 
 """
 Export data from a modpack to files.
 """
-from openage.convert import game_versions
-from openage.convert.dataformat.media_types import MediaType
-
 from ...log import info
+from ..dataformat.media_types import MediaType
 
 
 class ModpackExporter:
+    """
+    Writes the contents of a created modpack into a targetdir.
+    """
 
     @staticmethod
     def export(modpack, args):

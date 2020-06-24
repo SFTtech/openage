@@ -1,18 +1,26 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-branches
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Creates patches for technologies.
 """
-from openage.convert.dataformat.aoc.genie_tech import CivTeamBonus, CivBonus
-from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
-from openage.convert.processor.aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
-from openage.convert.processor.aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
-from openage.convert.processor.swgbcc.upgrade_attribute_subprocessor import SWGBCCUpgradeAttributeSubprocessor
-from openage.convert.processor.swgbcc.upgrade_resource_subprocessor import SWGBCCUpgradeResourceSubprocessor
-from openage.nyan.nyan_structs import MemberOperator
+from ....nyan.nyan_structs import MemberOperator
+from ...dataformat.aoc.genie_tech import CivTeamBonus, CivBonus
+from ..aoc.tech_subprocessor import AoCTechSubprocessor
+from ..aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
+from ..aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
+from .upgrade_attribute_subprocessor import SWGBCCUpgradeAttributeSubprocessor
+from .upgrade_resource_subprocessor import SWGBCCUpgradeResourceSubprocessor
 
 
 class SWGBCCTechSubprocessor:
+    """
+    Creates raw API objects and patches for techs and civ setups in SWGB.
+    """
 
     upgrade_attribute_funcs = {
         0: AoCUpgradeAttributeSubprocessor.hp_upgrade,
@@ -127,36 +135,43 @@ class SWGBCCTechSubprocessor:
                 type_id -= 10
 
             if type_id in (0, 4, 5):
-                patches.extend(cls._attribute_modify_effect(converter_group, effect, team=team_effect))
+                patches.extend(cls.attribute_modify_effect(converter_group,
+                                                           effect,
+                                                           team=team_effect))
 
             elif type_id in (1, 6):
-                patches.extend(cls._resource_modify_effect(converter_group, effect, team=team_effect))
+                patches.extend(cls.resource_modify_effect(converter_group,
+                                                          effect,
+                                                          team=team_effect))
 
             elif type_id == 2:
                 # Enabling/disabling units: Handled in creatable conditions
                 pass
 
             elif type_id == 3:
-                patches.extend(AoCTechSubprocessor._upgrade_unit_effect(converter_group, effect))
+                patches.extend(AoCTechSubprocessor.upgrade_unit_effect(converter_group,
+                                                                       effect))
 
             elif type_id == 101:
-                patches.extend(AoCTechSubprocessor._tech_cost_modify_effect(converter_group, effect, team=team_effect))
-                pass
+                patches.extend(AoCTechSubprocessor.tech_cost_modify_effect(converter_group,
+                                                                           effect,
+                                                                           team=team_effect))
 
             elif type_id == 102:
                 # Tech disable: Only used for civ tech tree
                 pass
 
             elif type_id == 103:
-                patches.extend(AoCTechSubprocessor._tech_time_modify_effect(converter_group, effect, team=team_effect))
-                pass
+                patches.extend(AoCTechSubprocessor.tech_time_modify_effect(converter_group,
+                                                                           effect,
+                                                                           team=team_effect))
 
             team_effect = False
 
         return patches
 
     @staticmethod
-    def _attribute_modify_effect(converter_group, effect, team=False):
+    def attribute_modify_effect(converter_group, effect, team=False):
         """
         Creates the patches for modifying attributes of entities.
         """
@@ -221,7 +236,7 @@ class SWGBCCTechSubprocessor:
         return patches
 
     @staticmethod
-    def _resource_modify_effect(converter_group, effect, team=False):
+    def resource_modify_effect(converter_group, effect, team=False):
         """
         Creates the patches for modifying resources.
         """

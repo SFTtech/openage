@@ -11,6 +11,9 @@ from openage.convert.export.metadata_export import MetadataExport
 
 
 class Modpack:
+    """
+    A collection of data and media files.
+    """
 
     def __init__(self, name):
 

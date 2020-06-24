@@ -73,8 +73,10 @@ class CombinedSound:
         if len(self._refs) > 1:
             return "../shared/sounds/%s.opus" % (self.filename)
 
-        elif len(self._refs) == 1:
+        if len(self._refs) == 1:
             return "./sounds/%s.opus" % (self.filename)
+
+        return None
 
     def resolve_sound_location(self):
         """
@@ -83,7 +85,7 @@ class CombinedSound:
         if len(self._refs) > 1:
             return "data/game_entity/shared/sounds/"
 
-        elif len(self._refs) == 1:
+        if len(self._refs) == 1:
             return "%s%s" % (self._refs[0].get_file_location()[0], "sounds/")
 
         return None

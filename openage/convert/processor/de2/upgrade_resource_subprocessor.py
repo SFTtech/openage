@@ -1,4 +1,9 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods,invalid-name
+#
+# TODO: Remove when all methods are implemented
+# pylint: disable=unused-argument
 
 """
 Creates upgrade patches for resource modification effects in DE2.
@@ -6,6 +11,9 @@ Creates upgrade patches for resource modification effects in DE2.
 
 
 class DE2UpgradeResourceSubprocessor:
+    """
+    Creates raw API objects for resource upgrade effects in DE2.
+    """
 
     @staticmethod
     def cliff_attack_upgrade(converter_group, value, operator, team=False):

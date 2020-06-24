@@ -1,4 +1,7 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals,too-many-branches,too-many-statements
+# pylint: disable=too-few-public-methods
 
 """
 Derives complex auxiliary objects from unit lines, techs
@@ -15,6 +18,9 @@ from openage.nyan.nyan_structs import MemberSpecialValue
 
 
 class RoRAuxiliarySubprocessor:
+    """
+    Creates complexer auxiliary raw API objects for abilities in RoR.
+    """
 
     @staticmethod
     def get_creatable_game_entity(line):
@@ -108,7 +114,7 @@ class RoRAuxiliarySubprocessor:
                 # Not a valid resource
                 continue
 
-            elif resource_id == 0:
+            if resource_id == 0:
                 resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
                 resource_name = "Food"
 
@@ -153,7 +159,8 @@ class RoRAuxiliarySubprocessor:
             cost_amounts.append(cost_amount_forward_ref)
             line.add_raw_api_object(cost_amount)
 
-            if isinstance(line, GenieBuildingLineGroup) or line.get_class_id() in (2, 13, 20, 21, 22):
+            if isinstance(line, GenieBuildingLineGroup) or\
+                    line.get_class_id() in (2, 13, 20, 21, 22):
                 # Cost for repairing = half of the construction cost
                 cost_amount_name = "%s.%sAmount" % (cost_repair_name, resource_name)
                 cost_amount = RawAPIObject(cost_amount_name,
@@ -249,9 +256,9 @@ class RoRAuxiliarySubprocessor:
         unlock_conditions = []
         enabling_research_id = line.get_enabling_research_id()
         if enabling_research_id > -1:
-            unlock_conditions.extend(AoCAuxiliarySubprocessor._get_condition(line,
-                                                                             obj_ref,
-                                                                             enabling_research_id))
+            unlock_conditions.extend(AoCAuxiliarySubprocessor.get_condition(line,
+                                                                            obj_ref,
+                                                                            enabling_research_id))
 
         creatable_raw_api_object.add_raw_member("condition",
                                                 unlock_conditions,

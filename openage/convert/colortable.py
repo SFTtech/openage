@@ -1,6 +1,6 @@
-# Copyright 2013-2019 the openage authors. See copying.md for legal info.
+# Copyright 2013-2020 the openage authors. See copying.md for legal info.
 
-# TODO pylint: disable=C,R
+# TODO pylint: disable=C,R,too-many-function-args
 
 import math
 

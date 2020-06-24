@@ -1,4 +1,10 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-lines,too-many-branches,too-many-statements
+# pylint: disable=too-many-locals
+#
+# TODO:
+# pylint: disable=line-too-long
 
 """
 Convert data from RoR to openage formats.
@@ -27,6 +33,9 @@ from ....log import info
 
 
 class RoRProcessor:
+    """
+    Main processor for converting data from RoR.
+    """
 
     @classmethod
     def convert(cls, gamespec, game_version, string_resources, existing_graphics):
@@ -75,23 +84,22 @@ class RoRProcessor:
 
         info("Extracting Genie data...")
 
-        cls._extract_genie_units(gamespec, dataset)
-        AoCProcessor._extract_genie_techs(gamespec, dataset)
-        AoCProcessor._extract_genie_effect_bundles(gamespec, dataset)
-        AoCProcessor._sanitize_effect_bundles(dataset)
-        AoCProcessor._extract_genie_civs(gamespec, dataset)
-        AoCProcessor._extract_genie_graphics(gamespec, dataset)
-        cls._extract_genie_sounds(gamespec, dataset)
-        AoCProcessor._extract_genie_terrains(gamespec, dataset)
+        cls.extract_genie_units(gamespec, dataset)
+        AoCProcessor.extract_genie_techs(gamespec, dataset)
+        AoCProcessor.extract_genie_effect_bundles(gamespec, dataset)
+        AoCProcessor.sanitize_effect_bundles(dataset)
+        AoCProcessor.extract_genie_civs(gamespec, dataset)
+        AoCProcessor.extract_genie_graphics(gamespec, dataset)
+        cls.extract_genie_sounds(gamespec, dataset)
+        AoCProcessor.extract_genie_terrains(gamespec, dataset)
 
         return dataset
 
     @classmethod
     def _processor(cls, gamespec, full_data_set):
         """
-        1. Transfer structures used in Genie games to more openage-friendly
-           Python objects.
-        2. Convert these objects to nyan.
+        Transfer structures used in Genie games to more openage-friendly
+        Python objects.
 
         :param gamespec: Gamedata from empires.dat file.
         :type gamespec: class: ...dataformat.value_members.ArrayMember
@@ -103,21 +111,21 @@ class RoRProcessor:
 
         info("Creating API-like objects...")
 
-        cls._create_tech_groups(full_data_set)
+        cls.create_tech_groups(full_data_set)
         cls._create_entity_lines(gamespec, full_data_set)
-        cls._create_ambient_groups(full_data_set)
-        cls._create_variant_groups(full_data_set)
-        AoCProcessor._create_terrain_groups(full_data_set)
-        AoCProcessor._create_civ_groups(full_data_set)
+        cls.create_ambient_groups(full_data_set)
+        cls.create_variant_groups(full_data_set)
+        AoCProcessor.create_terrain_groups(full_data_set)
+        AoCProcessor.create_civ_groups(full_data_set)
 
         info("Linking API-like objects...")
 
-        AoCProcessor._link_creatables(full_data_set)
-        AoCProcessor._link_researchables(full_data_set)
-        AoCProcessor._link_gatherers_to_dropsites(full_data_set)
-        cls._link_garrison(full_data_set)
-        AoCProcessor._link_trade_posts(full_data_set)
-        cls._link_repairables(full_data_set)
+        AoCProcessor.link_creatables(full_data_set)
+        AoCProcessor.link_researchables(full_data_set)
+        AoCProcessor.link_gatherers_to_dropsites(full_data_set)
+        cls.link_garrison(full_data_set)
+        AoCProcessor.link_trade_posts(full_data_set)
+        cls.link_repairables(full_data_set)
 
         info("Generating auxiliary objects...")
 
@@ -127,7 +135,14 @@ class RoRProcessor:
 
     @classmethod
     def _post_processor(cls, full_data_set):
+        """
+        Convert API-like Python objects to nyan.
 
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
         info("Creating nyan objects...")
 
         RoRNyanSubprocessor.convert(full_data_set)
@@ -139,7 +154,7 @@ class RoRProcessor:
         return RoRModpackSubprocessor.get_modpacks(full_data_set)
 
     @staticmethod
-    def _extract_genie_units(gamespec, full_data_set):
+    def extract_genie_units(gamespec, full_data_set):
         """
         Extract units from the game data.
 
@@ -184,7 +199,7 @@ class RoRProcessor:
         full_data_set.genie_units = dict(sorted(full_data_set.genie_units.items()))
 
     @staticmethod
-    def _extract_genie_sounds(gamespec, full_data_set):
+    def extract_genie_sounds(gamespec, full_data_set):
         """
         Extract sound definitions from the game data.
 
@@ -304,7 +319,7 @@ class RoRProcessor:
                     source_id = full_data_set.unit_unlocks[required_tech_id].get_line_id()
                     break
 
-                elif required_tech_id in full_data_set.unit_upgrades.keys():
+                if required_tech_id in full_data_set.unit_upgrades.keys():
                     source_id = full_data_set.unit_upgrades[required_tech_id].get_upgrade_target_id()
                     break
 
@@ -338,7 +353,7 @@ class RoRProcessor:
                     source_id = full_data_set.building_unlocks[required_tech_id].get_line_id()
                     break
 
-                elif required_tech_id in full_data_set.building_upgrades.keys():
+                if required_tech_id in full_data_set.building_upgrades.keys():
                     source_id = full_data_set.building_upgrades[required_tech_id].get_upgrade_target_id()
                     break
 
@@ -366,7 +381,7 @@ class RoRProcessor:
                     full_data_set.unit_ref.update({target_id: unit_line})
 
     @staticmethod
-    def _create_ambient_groups(full_data_set):
+    def create_ambient_groups(full_data_set):
         """
         Create ambient groups, mostly for resources and scenery.
 
@@ -385,7 +400,7 @@ class RoRProcessor:
             full_data_set.unit_ref.update({ambient_id: ambient_group})
 
     @staticmethod
-    def _create_variant_groups(full_data_set):
+    def create_variant_groups(full_data_set):
         """
         Create variant groups.
 
@@ -405,7 +420,7 @@ class RoRProcessor:
                 full_data_set.unit_ref.update({variant_id: variant_group})
 
     @staticmethod
-    def _create_tech_groups(full_data_set):
+    def create_tech_groups(full_data_set):
         """
         Create techs from tech connections and unit upgrades/unlocks
         from unit connections.
@@ -463,14 +478,22 @@ class RoRProcessor:
 
                         if unit_type == 70:
                             unit_unlock = RoRUnitUnlock(tech_id, unit_id, full_data_set)
-                            full_data_set.tech_groups.update({unit_unlock.get_id(): unit_unlock})
-                            full_data_set.unit_unlocks.update({unit_unlock.get_id(): unit_unlock})
+                            full_data_set.tech_groups.update(
+                                {unit_unlock.get_id(): unit_unlock}
+                            )
+                            full_data_set.unit_unlocks.update(
+                                {unit_unlock.get_id(): unit_unlock}
+                            )
                             break
 
-                        elif unit_type == 80:
+                        if unit_type == 80:
                             building_unlock = RoRBuildingUnlock(tech_id, unit_id, full_data_set)
-                            full_data_set.tech_groups.update({building_unlock.get_id(): building_unlock})
-                            full_data_set.building_unlocks.update({building_unlock.get_id(): building_unlock})
+                            full_data_set.tech_groups.update(
+                                {building_unlock.get_id(): building_unlock}
+                            )
+                            full_data_set.building_unlocks.update(
+                                {building_unlock.get_id(): building_unlock}
+                            )
                             break
 
                     # Upgrades
@@ -481,15 +504,29 @@ class RoRProcessor:
                         unit_type = unit["unit_type"].get_value()
 
                         if unit_type == 70:
-                            unit_upgrade = RoRUnitLineUpgrade(tech_id, source_unit_id, target_unit_id, full_data_set)
-                            full_data_set.tech_groups.update({unit_upgrade.get_id(): unit_upgrade})
-                            full_data_set.unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
+                            unit_upgrade = RoRUnitLineUpgrade(tech_id,
+                                                              source_unit_id,
+                                                              target_unit_id,
+                                                              full_data_set)
+                            full_data_set.tech_groups.update(
+                                {unit_upgrade.get_id(): unit_upgrade}
+                            )
+                            full_data_set.unit_upgrades.update(
+                                {unit_upgrade.get_id(): unit_upgrade}
+                            )
                             break
 
-                        elif unit_type == 80:
-                            building_upgrade = RoRBuildingLineUpgrade(tech_id, source_unit_id, target_unit_id, full_data_set)
-                            full_data_set.tech_groups.update({building_upgrade.get_id(): building_upgrade})
-                            full_data_set.building_upgrades.update({building_upgrade.get_id(): building_upgrade})
+                        if unit_type == 80:
+                            building_upgrade = RoRBuildingLineUpgrade(tech_id,
+                                                                      source_unit_id,
+                                                                      target_unit_id,
+                                                                      full_data_set)
+                            full_data_set.tech_groups.update(
+                                {building_upgrade.get_id(): building_upgrade}
+                            )
+                            full_data_set.building_upgrades.update(
+                                {building_upgrade.get_id(): building_upgrade}
+                            )
                             break
 
                 else:
@@ -520,7 +557,7 @@ class RoRProcessor:
             full_data_set.initiated_techs.update({initiated_tech.get_id(): initiated_tech})
 
     @staticmethod
-    def _link_garrison(full_data_set):
+    def link_garrison(full_data_set):
         """
         Link a garrison unit to the lines that are stored and vice versa. This is done
         to provide quick access during conversion.
@@ -563,7 +600,7 @@ class RoRProcessor:
                     line.garrison_locations.append(garrison)
 
     @staticmethod
-    def _link_repairables(full_data_set):
+    def link_repairables(full_data_set):
         """
         Set units/buildings as repairable
 

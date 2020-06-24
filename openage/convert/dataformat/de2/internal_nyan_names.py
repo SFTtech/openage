@@ -1,4 +1,6 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=line-too-long
 
 """
 Age of Empires games do not necessarily come with an english
@@ -72,7 +74,6 @@ CIV_GROUP_LOOKUPS = {
 # key: civ index; value: (civ ids, nyan object name, filename prefix)
 # contains only new/changed graphic sets of DE2
 GRAPHICS_SET_LOOKUPS = {
-    8: ((32, 35), "EasternEuropean", "eastern_european"),
     11: ((33, 34), "CentralAsian", "central_asian"),
 }
 

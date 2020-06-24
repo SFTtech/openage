@@ -1,16 +1,24 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-instance-attributes
 
 """
 Modpack definition file.
 """
-import toml
-from ..data_definition import DataDefinition
 import base64
+import toml
+
+from ..data_definition import DataDefinition
+
 
 FILE_VERSION = "0.1.0"
 
 
 class ModpackInfo(DataDefinition):
+    """
+    Represents the header file of the modpack. Contains info for loading data
+    and about the creators of the modpack.
+    """
 
     def __init__(self, targetdir, filename, modpack_name):
         super().__init__(targetdir, filename)
@@ -42,7 +50,7 @@ class ModpackInfo(DataDefinition):
         """
         self.load_files.append(path)
 
-    def add_author(self, author, contact_info={}):
+    def add_author(self, author, contact_info):
         """
         Adds an author with optional contact info.
 
@@ -55,16 +63,14 @@ class ModpackInfo(DataDefinition):
         """
         self.authors[author] = contact_info
 
-    def add_author_group(self, author_group, authors=[]):
+    def add_author_group(self, author_group, authors):
         """
         Adds an author with optional contact info.
 
-        :param author: Human-readable author identifier.
-        :type author: str
-        :param contact_info: Dictionary with contact info.
-                             (key = contact method, value = address)
-                             example: {"e-mail": "mastermind@openage.dev"}
-        :type contact_info: dict
+        :param author_group: Group/Team of authors.
+        :type author_group: str
+        :param authors: List of human-readable author identifiers.
+        :type authors: list
         """
         self.author_groups[author_group] = authors
 

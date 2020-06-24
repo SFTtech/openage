@@ -1,4 +1,6 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals
 
 """
 Creates nyan objects for things that are hardcoded into the Genie Engine,
@@ -11,23 +13,29 @@ from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
 
 
 class RoRPregenSubprocessor:
+    """
+    Creates raw API objects for hardcoded settings in RoR.
+    """
 
     @classmethod
     def generate(cls, gamedata):
+        """
+        Create nyan objects for hardcoded properties.
+        """
         # Stores pregenerated raw API objects as a container
         pregen_converter_group = ConverterObjectGroup("pregen")
 
-        AoCPregenSubprocessor._generate_attributes(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor._generate_diplomatic_stances(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor._generate_entity_types(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor._generate_effect_types(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor._generate_language_objects(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor._generate_misc_effect_objects(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_attributes(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_diplomatic_stances(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_entity_types(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_effect_types(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_language_objects(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_misc_effect_objects(gamedata, pregen_converter_group)
         # TODO:
         # cls._generate_modifiers(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor._generate_terrain_types(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor._generate_resources(gamedata, pregen_converter_group)
-        cls._generate_death_condition(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_terrain_types(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_resources(gamedata, pregen_converter_group)
+        cls.generate_death_condition(gamedata, pregen_converter_group)
 
         pregen_nyan_objects = gamedata.pregen_nyan_objects
         # Create nyan objects from the raw API objects
@@ -43,18 +51,18 @@ class RoRPregenSubprocessor:
                                 "Member or object not initialized." % (pregen_object))
 
     @staticmethod
-    def _generate_death_condition(full_data_set, pregen_converter_group):
+    def generate_death_condition(full_data_set, pregen_converter_group):
         """
         Generate DeathCondition objects.
 
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
-        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         :param pregen_converter_group: GenieObjectGroup instance that stores
                                        pregenerated API objects for referencing with
                                        ForwardRef
-        :type pregen_converter_group: class: ...dataformat.aoc.genie_object_container.GenieObjectGroup
+        :type pregen_converter_group: ...dataformat.aoc.genie_object_container.GenieObjectGroup
         """
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
         api_objects = full_data_set.nyan_api_objects
