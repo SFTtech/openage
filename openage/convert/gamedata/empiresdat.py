@@ -5,8 +5,6 @@
 import pickle
 from zlib import decompress
 
-from openage.convert.dataformat.version_detect import GameEdition
-
 from . import civ
 from . import graphic
 from . import maps
@@ -21,6 +19,7 @@ from ..dataformat.genie_structure import GenieStructure
 from ..dataformat.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP
 from ..dataformat.read_members import SubdataMember
 from ..dataformat.value_members import MemberTypes as StorageType
+from ..dataformat.version_detect import GameEdition
 
 
 # this file can parse and represent the empires2_x1_p1.dat file.

@@ -6,13 +6,13 @@
 Derives complex auxiliary objects from unit lines, techs
 or other objects.
 """
-from openage.convert.dataformat.aoc.combined_sound import CombinedSound
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup,\
+from ....nyan.nyan_structs import MemberSpecialValue
+from ...dataformat.aoc.combined_sound import CombinedSound
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_unit import GenieVillagerGroup,\
     GenieBuildingLineGroup, GenieUnitLineGroup
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.service import internal_name_lookups
-from openage.nyan.nyan_structs import MemberSpecialValue
+from ...dataformat.converter_object import RawAPIObject
+from ...service import internal_name_lookups
 
 
 class AoCAuxiliarySubprocessor:

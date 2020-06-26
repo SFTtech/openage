@@ -4,10 +4,8 @@
 Module for reading AoeII HD Edition text-based language files.
 """
 
-from openage.convert.langfile.langcodes import LANGCODES_DE2
-
 from ...log import dbg
-from .langcodes import LANGCODES_HD
+from .langcodes import LANGCODES_DE2, LANGCODES_HD
 from .pefile import PEFile
 
 

@@ -5,8 +5,7 @@ SWGB tech objects. These extend the normal Genie techs to reflect
 that SWGB techs can have unique variants for every civilization.
 """
 
-from openage.convert.dataformat.aoc.genie_tech import UnitUnlock,\
-    UnitLineUpgrade
+from ..aoc.genie_tech import UnitUnlock, UnitLineUpgrade
 
 
 class SWGBUnitLineUpgrade(UnitLineUpgrade):

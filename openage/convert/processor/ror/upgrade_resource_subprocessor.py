@@ -8,11 +8,11 @@
 """
 Creates upgrade patches for resource modification effects in RoR.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.service import internal_name_lookups
-from openage.nyan.nyan_structs import MemberOperator
+from ....nyan.nyan_structs import MemberOperator
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
+from ...dataformat.converter_object import RawAPIObject
+from ...service import internal_name_lookups
 
 
 class RoRUpgradeResourceSubprocessor:

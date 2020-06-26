@@ -6,10 +6,10 @@
 Convert media information to metadata definitions and export
 requests. Subroutine of the main AoC processor.
 """
-from openage.convert.export.formats.sprite_metadata import LayerMode
-from openage.convert.export.media_export_request import GraphicsMediaExportRequest,\
+from ...export.formats.sprite_metadata import LayerMode
+from ...export.media_export_request import GraphicsMediaExportRequest,\
     SoundMediaExportRequest, TerrainMediaExportRequest
-from openage.convert.export.metadata_export import SpriteMetadataExport
+from ...export.metadata_export import SpriteMetadataExport
 
 
 class AoCMediaSubprocessor:

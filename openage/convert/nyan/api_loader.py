@@ -7,10 +7,8 @@ TODO: Implement a parser instead of hardcoded
 object creation.
 """
 
-from openage.nyan.nyan_structs import MemberType, MemberSpecialValue,\
+from ...nyan.nyan_structs import NyanObject, NyanMember, MemberType, MemberSpecialValue,\
     MemberOperator
-
-from ...nyan.nyan_structs import NyanObject, NyanMember
 
 
 def load_api():

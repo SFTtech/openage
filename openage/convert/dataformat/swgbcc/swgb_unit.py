@@ -4,8 +4,8 @@
 Converter objects for SWGB. Reimplements the ConverterObjectGroup
 instances from AoC.
 """
-from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
-    GenieUnitTransformGroup, GenieMonkGroup, GenieStackBuildingGroup
+from ..aoc.genie_unit import GenieUnitLineGroup, GenieUnitTransformGroup,\
+    GenieMonkGroup, GenieStackBuildingGroup
 
 
 class SWGBUnitLineGroup(GenieUnitLineGroup):

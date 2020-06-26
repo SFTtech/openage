@@ -9,21 +9,21 @@
 Convert API-like objects to nyan objects. Subroutine of the
 main RoR processor. Reuses functionality from the AoC subprocessor.
 """
-from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.dataformat.ror.genie_tech import RoRUnitLineUpgrade
-from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubprocessor
-from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
-from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
-from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubprocessor
-from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
-from openage.convert.processor.ror.ability_subprocessor import RoRAbilitySubprocessor
-from openage.convert.processor.ror.auxiliary_subprocessor import RoRAuxiliarySubprocessor
-from openage.convert.processor.ror.civ_subprocessor import RoRCivSubprocessor
-from openage.convert.processor.ror.tech_subprocessor import RoRTechSubprocessor
-from openage.convert.service import internal_name_lookups
+from ...dataformat.aoc.combined_terrain import CombinedTerrain
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_unit import GenieVillagerGroup
+from ...dataformat.converter_object import RawAPIObject
+from ...dataformat.ror.genie_tech import RoRUnitLineUpgrade
+from ...service import internal_name_lookups
+from ..aoc.ability_subprocessor import AoCAbilitySubprocessor
+from ..aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
+from ..aoc.civ_subprocessor import AoCCivSubprocessor
+from ..aoc.modifier_subprocessor import AoCModifierSubprocessor
+from ..aoc.nyan_subprocessor import AoCNyanSubprocessor
+from .ability_subprocessor import RoRAbilitySubprocessor
+from .auxiliary_subprocessor import RoRAuxiliarySubprocessor
+from .civ_subprocessor import RoRCivSubprocessor
+from .tech_subprocessor import RoRTechSubprocessor
 
 
 class RoRNyanSubprocessor:

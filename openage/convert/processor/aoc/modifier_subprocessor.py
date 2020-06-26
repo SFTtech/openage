@@ -9,12 +9,12 @@
 Derives and adds abilities to lines or civ groups. Subroutine of the
 nyan subprocessor.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_unit import GenieGameEntityGroup,\
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_unit import GenieGameEntityGroup,\
     GenieBuildingLineGroup, GenieVillagerGroup, GenieAmbientGroup,\
     GenieVariantGroup
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.service import internal_name_lookups
+from ...dataformat.converter_object import RawAPIObject
+from ...service import internal_name_lookups
 
 
 class AoCModifierSubprocessor:

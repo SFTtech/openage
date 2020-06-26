@@ -9,18 +9,18 @@
 Convert API-like objects to nyan objects. Subroutine of the
 main SWGB processor. Reuses functionality from the AoC subprocessor.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
-from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup,\
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_tech import UnitLineUpgrade
+from ...dataformat.aoc.genie_unit import GenieVillagerGroup,\
     GenieStackBuildingGroup, GenieGarrisonMode, GenieMonkGroup
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubprocessor
-from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
-from openage.convert.processor.swgbcc.ability_subprocessor import SWGBCCAbilitySubprocessor
-from openage.convert.processor.swgbcc.auxiliary_subprocessor import SWGBCCAuxiliarySubprocessor
-from openage.convert.processor.swgbcc.civ_subprocessor import SWGBCCCivSubprocessor
-from openage.convert.processor.swgbcc.tech_subprocessor import SWGBCCTechSubprocessor
-from openage.convert.service import internal_name_lookups
+from ...dataformat.converter_object import RawAPIObject
+from ...service import internal_name_lookups
+from ..aoc.ability_subprocessor import AoCAbilitySubprocessor
+from ..aoc.nyan_subprocessor import AoCNyanSubprocessor
+from .ability_subprocessor import SWGBCCAbilitySubprocessor
+from .auxiliary_subprocessor import SWGBCCAuxiliarySubprocessor
+from .civ_subprocessor import SWGBCCCivSubprocessor
+from .tech_subprocessor import SWGBCCTechSubprocessor
 
 
 class SWGBCCNyanSubprocessor:

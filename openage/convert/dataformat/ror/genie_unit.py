@@ -6,9 +6,9 @@ Contains structures and API-like objects for game entities from RoR.
 Based on the classes from the AoC converter.
 """
 
-from openage.convert.dataformat.aoc.genie_unit import GenieUnitLineGroup,\
-    GenieBuildingLineGroup, GenieAmbientGroup, GenieVariantGroup,\
-    GenieGarrisonMode, GenieUnitTaskGroup, GenieVillagerGroup
+from ..aoc.genie_unit import GenieUnitLineGroup, GenieBuildingLineGroup,\
+    GenieAmbientGroup, GenieVariantGroup, GenieGarrisonMode, GenieUnitTaskGroup,\
+    GenieVillagerGroup
 
 
 class RoRUnitLineGroup(GenieUnitLineGroup):

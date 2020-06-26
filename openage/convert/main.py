@@ -12,8 +12,6 @@ import subprocess
 import sys
 from tempfile import NamedTemporaryFile
 
-from openage.convert.dataformat.version_detect import get_game_info, GameEdition
-
 from . import changelog
 from ..log import warn, info, dbg
 from ..util.files import which
@@ -21,6 +19,7 @@ from ..util.fslike.directory import CaseIgnoringDirectory, Directory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
 from ..util.strings import format_progress
+from .dataformat.version_detect import get_game_info, GameEdition
 from .game_versions import Support
 
 

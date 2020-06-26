@@ -9,13 +9,13 @@
 Creates nyan objects for things that are hardcoded into the Genie Engine,
 but configurable in openage. E.g. HP.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.converter_object import ConverterObjectGroup,\
+from ....nyan.nyan_structs import MemberSpecialValue
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.converter_object import ConverterObjectGroup,\
     RawAPIObject
-from openage.convert.dataformat.swgbcc.swgb_unit import SWGBUnitTransformGroup
-from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
-from openage.convert.service import internal_name_lookups
-from openage.nyan.nyan_structs import MemberSpecialValue
+from ...dataformat.swgbcc.swgb_unit import SWGBUnitTransformGroup
+from ...service import internal_name_lookups
+from ..aoc.pregen_processor import AoCPregenSubprocessor
 
 
 class SWGBCCPregenSubprocessor:

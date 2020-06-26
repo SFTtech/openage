@@ -9,20 +9,20 @@
 Convert API-like objects to nyan objects. Subroutine of the
 main DE2 processor.
 """
-from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
-from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup,\
+from ...dataformat.aoc.combined_terrain import CombinedTerrain
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_tech import UnitLineUpgrade
+from ...dataformat.aoc.genie_unit import GenieVillagerGroup,\
     GenieGarrisonMode, GenieMonkGroup, GenieStackBuildingGroup
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubprocessor
-from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
-from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
-from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubprocessor
-from openage.convert.processor.aoc.nyan_subprocessor import AoCNyanSubprocessor
-from openage.convert.processor.de2.civ_subprocessor import DE2CivSubprocessor
-from openage.convert.processor.de2.tech_subprocessor import DE2TechSubprocessor
-from openage.convert.service import internal_name_lookups
+from ...dataformat.converter_object import RawAPIObject
+from ...service import internal_name_lookups
+from ..aoc.ability_subprocessor import AoCAbilitySubprocessor
+from ..aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
+from ..aoc.civ_subprocessor import AoCCivSubprocessor
+from ..aoc.modifier_subprocessor import AoCModifierSubprocessor
+from ..aoc.nyan_subprocessor import AoCNyanSubprocessor
+from .civ_subprocessor import DE2CivSubprocessor
+from .tech_subprocessor import DE2TechSubprocessor
 
 
 class DE2NyanSubprocessor:

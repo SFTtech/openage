@@ -9,13 +9,13 @@
 Upgrades effects and resistances for the Apply*Effect and Resistance
 abilities.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.dataformat.value_members import NoDiffMember,\
+from ....nyan.nyan_structs import MemberOperator
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup
+from ...dataformat.converter_object import RawAPIObject
+from ...dataformat.value_members import NoDiffMember,\
     LeftMissingMember, RightMissingMember
-from openage.convert.service import internal_name_lookups
-from openage.nyan.nyan_structs import MemberOperator
+from ...service import internal_name_lookups
 
 
 class AoCUpgradeEffectSubprocessor:

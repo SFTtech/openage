@@ -7,8 +7,8 @@ Detects the base version of the game and installed expansions.
 """
 
 import enum
-from openage.convert.dataformat.game_info import GameFileVersion
-from openage.convert.dataformat.media_types import MediaType
+from .game_info import GameFileVersion
+from .media_types import MediaType
 
 
 @enum.unique

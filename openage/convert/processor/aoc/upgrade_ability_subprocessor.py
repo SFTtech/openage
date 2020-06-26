@@ -11,17 +11,17 @@ Creates upgrade patches for abilities.
 """
 from math import degrees
 
-from openage.convert.dataformat.aoc.combined_sound import CombinedSound
-from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
+from ....nyan.nyan_structs import MemberOperator, MemberSpecialValue
+from ...dataformat.aoc.combined_sound import CombinedSound
+from ...dataformat.aoc.combined_sprite import CombinedSprite
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
+from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieVariantGroup, GenieUnitLineGroup
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.dataformat.value_members import NoDiffMember
-from openage.convert.processor.aoc.upgrade_effect_subprocessor import AoCUpgradeEffectSubprocessor
-from openage.convert.service import internal_name_lookups
-from openage.nyan.nyan_structs import MemberOperator, MemberSpecialValue
+from ...dataformat.converter_object import RawAPIObject
+from ...dataformat.value_members import NoDiffMember
+from ...service import internal_name_lookups
+from .upgrade_effect_subprocessor import AoCUpgradeEffectSubprocessor
 
 
 class AoCUpgradeAbilitySubprocessor:

@@ -4,10 +4,8 @@
 Contains structures and API-like objects for civilization from AoC.
 """
 
-from openage.convert.dataformat.aoc.genie_tech import CivTeamBonus, CivTechTree
-
-from ...dataformat.converter_object import ConverterObject,\
-    ConverterObjectGroup
+from ..converter_object import ConverterObject, ConverterObjectGroup
+from .genie_tech import CivTeamBonus, CivTechTree
 
 
 class GenieCivilizationObject(ConverterObject):

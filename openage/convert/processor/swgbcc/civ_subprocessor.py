@@ -5,11 +5,11 @@
 """
 Creates patches and modifiers for civs.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
-from openage.convert.processor.swgbcc.tech_subprocessor import SWGBCCTechSubprocessor
-from openage.convert.service import internal_name_lookups
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.converter_object import RawAPIObject
+from ...service import internal_name_lookups
+from ..aoc.civ_subprocessor import AoCCivSubprocessor
+from .tech_subprocessor import SWGBCCTechSubprocessor
 
 
 class SWGBCCCivSubprocessor:

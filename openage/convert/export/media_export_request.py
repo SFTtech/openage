@@ -6,9 +6,9 @@
 Specifies a request for a media resource that should be
 converted and exported into a modpack.
 """
-from openage.convert.dataformat.media_types import MediaType
-from openage.convert.texture import Texture
-from openage.util.observer import Observable
+from ...util.observer import Observable
+from ..dataformat.media_types import MediaType
+from ..texture import Texture
 
 
 class MediaExportRequest(Observable):

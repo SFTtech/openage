@@ -10,26 +10,25 @@
 Convert data from RoR to openage formats.
 """
 
-from openage.convert.dataformat.aoc.genie_object_container import GenieObjectContainer
-from openage.convert.dataformat.aoc.genie_tech import InitiatedTech
-from openage.convert.dataformat.aoc.genie_unit import GenieUnitObject
-from openage.convert.dataformat.ror.genie_sound import RoRSound
-from openage.convert.dataformat.ror.genie_tech import RoRStatUpgrade,\
+from ....log import info
+from ...dataformat.aoc.genie_object_container import GenieObjectContainer
+from ...dataformat.aoc.genie_tech import InitiatedTech
+from ...dataformat.aoc.genie_unit import GenieUnitObject
+from ...dataformat.ror.genie_sound import RoRSound
+from ...dataformat.ror.genie_tech import RoRStatUpgrade,\
     RoRBuildingLineUpgrade, RoRUnitLineUpgrade, RoRBuildingUnlock, RoRUnitUnlock,\
     RoRAgeUpgrade
-from openage.convert.dataformat.ror.genie_unit import RoRUnitTaskGroup,\
+from ...dataformat.ror.genie_unit import RoRUnitTaskGroup,\
     RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup, RoRAmbientGroup,\
     RoRVariantGroup
-from openage.convert.dataformat.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
+from ...dataformat.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
-from openage.convert.nyan.api_loader import load_api
-from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
-from openage.convert.processor.aoc.processor import AoCProcessor
-from openage.convert.processor.ror.modpack_subprocessor import RoRModpackSubprocessor
-from openage.convert.processor.ror.nyan_subprocessor import RoRNyanSubprocessor
-from openage.convert.processor.ror.pregen_subprocessor import RoRPregenSubprocessor
-
-from ....log import info
+from ...nyan.api_loader import load_api
+from ..aoc.media_subprocessor import AoCMediaSubprocessor
+from ..aoc.processor import AoCProcessor
+from .modpack_subprocessor import RoRModpackSubprocessor
+from .nyan_subprocessor import RoRNyanSubprocessor
+from .pregen_subprocessor import RoRPregenSubprocessor
 
 
 class RoRProcessor:

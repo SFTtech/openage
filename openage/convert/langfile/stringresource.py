@@ -4,12 +4,11 @@
 
 from collections import defaultdict
 
-from openage.convert.dataformat import genie_structure
-
+from ..dataformat.genie_structure import GenieStructure
 from ..export import data_definition, struct_definition
 
 
-class StringResource(genie_structure.GenieStructure):
+class StringResource(GenieStructure):
     name_struct = "string_resource"
     name_struct_file = "string_resource"
     struct_description = "string id/language to text mapping,"\

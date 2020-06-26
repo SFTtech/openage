@@ -6,10 +6,10 @@
 Organize export data (nyan objects, media, scripts, etc.)
 into modpacks.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.modpack import Modpack
-from openage.convert.export.formats.nyan_file import NyanFile
-from openage.nyan.import_tree import ImportTree
+from ....nyan.import_tree import ImportTree
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.modpack import Modpack
+from ...export.formats.nyan_file import NyanFile
 
 
 class AoCModpackSubprocessor:

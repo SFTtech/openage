@@ -6,8 +6,8 @@
 Organize export data (nyan objects, media, scripts, etc.)
 into modpacks.
 """
-from openage.convert.dataformat.modpack import Modpack
-from openage.convert.processor.aoc.modpack_subprocessor import AoCModpackSubprocessor
+from ...dataformat.modpack import Modpack
+from ..aoc.modpack_subprocessor import AoCModpackSubprocessor
 
 
 class SWGBCCModpackSubprocessor:

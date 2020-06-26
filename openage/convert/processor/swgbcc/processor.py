@@ -9,27 +9,26 @@
 Convert data from SWGB:CC to openage formats.
 """
 
-from openage.convert.dataformat.aoc.genie_object_container import GenieObjectContainer
-from openage.convert.dataformat.aoc.genie_tech import BuildingLineUpgrade,\
+from ....log import info
+from ...dataformat.aoc.genie_object_container import GenieObjectContainer
+from ...dataformat.aoc.genie_tech import BuildingLineUpgrade,\
     AgeUpgrade, StatUpgrade, InitiatedTech, CivBonus
-from openage.convert.dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
+from ...dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
     GenieVillagerGroup, GenieAmbientGroup, GenieVariantGroup,\
     GenieBuildingLineGroup, GenieGarrisonMode
-from openage.convert.dataformat.swgbcc.internal_nyan_names import MONK_GROUP_ASSOCS,\
+from ...dataformat.swgbcc.internal_nyan_names import MONK_GROUP_ASSOCS,\
     CIV_LINE_ASSOCS, AMBIENT_GROUP_LOOKUPS, VARIANT_GROUP_LOOKUPS,\
     CIV_TECH_ASSOCS
-from openage.convert.dataformat.swgbcc.swgb_tech import SWGBUnitUnlock,\
+from ...dataformat.swgbcc.swgb_tech import SWGBUnitUnlock,\
     SWGBUnitLineUpgrade
-from openage.convert.dataformat.swgbcc.swgb_unit import SWGBUnitTransformGroup,\
+from ...dataformat.swgbcc.swgb_unit import SWGBUnitTransformGroup,\
     SWGBMonkGroup, SWGBUnitLineGroup, SWGBStackBuildingGroup
-from openage.convert.nyan.api_loader import load_api
-from openage.convert.processor.aoc.media_subprocessor import AoCMediaSubprocessor
-from openage.convert.processor.aoc.processor import AoCProcessor
-from openage.convert.processor.swgbcc.modpack_subprocessor import SWGBCCModpackSubprocessor
-from openage.convert.processor.swgbcc.nyan_subprocessor import SWGBCCNyanSubprocessor
-from openage.convert.processor.swgbcc.pregen_subprocessor import SWGBCCPregenSubprocessor
-
-from ....log import info
+from ...nyan.api_loader import load_api
+from ..aoc.media_subprocessor import AoCMediaSubprocessor
+from ..aoc.processor import AoCProcessor
+from .modpack_subprocessor import SWGBCCModpackSubprocessor
+from .nyan_subprocessor import SWGBCCNyanSubprocessor
+from .pregen_subprocessor import SWGBCCPregenSubprocessor
 
 
 class SWGBCCProcessor:

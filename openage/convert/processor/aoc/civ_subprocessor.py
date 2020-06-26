@@ -5,13 +5,13 @@
 """
 Creates patches and modifiers for civs.
 """
-from openage.convert.dataformat.aoc.combined_sprite import CombinedSprite
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
-from openage.convert.service import internal_name_lookups
-from openage.nyan.nyan_structs import MemberOperator
+from ....nyan.nyan_structs import MemberOperator
+from ...dataformat.aoc.combined_sprite import CombinedSprite
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup
+from ...dataformat.converter_object import RawAPIObject
+from ...processor.aoc.tech_subprocessor import AoCTechSubprocessor
+from ...service import internal_name_lookups
 
 
 class AoCCivSubprocessor:

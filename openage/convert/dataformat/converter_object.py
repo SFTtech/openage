@@ -8,15 +8,12 @@ Objects that represent data structures in the original game.
 These are simple containers that can be processed by the converter.
 """
 
-from openage.convert.dataformat.aoc.combined_sound import CombinedSound
-from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.value_members import NoDiffMember
-from openage.nyan.nyan_structs import NyanPatch, NyanPatchMember
-
-from ...nyan.nyan_structs import NyanObject, MemberOperator
+from ...nyan.nyan_structs import NyanObject, NyanPatch, NyanPatchMember, MemberOperator
+from .aoc.combined_sound import CombinedSound
 from .aoc.combined_sprite import CombinedSprite
-from .value_members import ValueMember
+from .aoc.combined_terrain import CombinedTerrain
+from .aoc.forward_ref import ForwardRef
+from .value_members import NoDiffMember, ValueMember
 
 
 class ConverterObject:

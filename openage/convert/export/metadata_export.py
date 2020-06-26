@@ -5,8 +5,8 @@
 """
 Export requests for media metadata.
 """
-from openage.convert.export.formats.sprite_metadata import SpriteMetadata
-from openage.util.observer import Observer
+from ...util.observer import Observer
+from .formats.sprite_metadata import SpriteMetadata
 
 
 class MetadataExport(Observer):

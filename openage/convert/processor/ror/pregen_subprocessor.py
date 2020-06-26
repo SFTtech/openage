@@ -6,10 +6,10 @@
 Creates nyan objects for things that are hardcoded into the Genie Engine,
 but configurable in openage. E.g. HP.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.converter_object import ConverterObjectGroup,\
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.converter_object import ConverterObjectGroup,\
     RawAPIObject
-from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
+from ..aoc.pregen_processor import AoCPregenSubprocessor
 
 
 class RoRPregenSubprocessor:

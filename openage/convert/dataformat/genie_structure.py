@@ -6,9 +6,6 @@ import hashlib
 import math
 import struct
 
-from openage.convert.dataformat.value_members import BitfieldMember
-from openage.convert.dataformat.version_detect import GameEdition
-
 from ...util.strings import decode_until_null
 from ..export.struct_definition import (StructDefinition, vararray_match,
                                         integer_match)
@@ -18,9 +15,10 @@ from .read_members import (IncludeMembers, ContinueReadMember,
                            MultisubtypeMember, GroupMember, SubdataMember,
                            ReadMember,
                            EnumLookupMember)
-from .value_members import ContainerMember,\
-    ArrayMember, IntMember, FloatMember, StringMember, BooleanMember, IDMember
+from .value_members import ContainerMember, ArrayMember, IntMember, FloatMember,\
+    StringMember, BooleanMember, IDMember, BitfieldMember
 from .value_members import MemberTypes as StorageType
+from .version_detect import GameEdition
 
 
 class GenieStructure:

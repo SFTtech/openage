@@ -6,8 +6,8 @@ Contains structures and API-like objects for techs from RoR.
 Based on the classes from the AoC converter.
 """
 
-from openage.convert.dataformat.aoc.genie_tech import StatUpgrade, AgeUpgrade,\
-    UnitLineUpgrade, BuildingLineUpgrade, UnitUnlock, BuildingUnlock
+from ..aoc.genie_tech import StatUpgrade, AgeUpgrade, UnitLineUpgrade,\
+    BuildingLineUpgrade, UnitUnlock, BuildingUnlock
 
 
 class RoRStatUpgrade(StatUpgrade):

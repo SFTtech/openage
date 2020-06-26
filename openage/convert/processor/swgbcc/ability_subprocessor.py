@@ -14,15 +14,15 @@ nyan subprocessor.
 For SWGB we use the functions of the AoCAbilitySubprocessor, but additionally
 create a diff for every civ line.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_unit import GenieVillagerGroup,\
+from ....nyan.nyan_structs import MemberSpecialValue
+from ....util.ordered_set import OrderedSet
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_unit import GenieVillagerGroup,\
     GenieStackBuildingGroup
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.processor.aoc.ability_subprocessor import AoCAbilitySubprocessor
-from openage.convert.processor.aoc.effect_subprocessor import AoCEffectSubprocessor
-from openage.convert.service import internal_name_lookups
-from openage.nyan.nyan_structs import MemberSpecialValue
-from openage.util.ordered_set import OrderedSet
+from ...dataformat.converter_object import RawAPIObject
+from ...service import internal_name_lookups
+from ..aoc.ability_subprocessor import AoCAbilitySubprocessor
+from ..aoc.effect_subprocessor import AoCEffectSubprocessor
 
 
 class SWGBCCAbilitySubprocessor:

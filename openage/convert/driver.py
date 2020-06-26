@@ -277,7 +277,7 @@ def get_converter(game_version):
 
     if game_edition is GameEdition.SWGB:
         if GameExpansion.SWGB_CC in game_expansions:
-            from openage.convert.processor.swgbcc.processor import SWGBCCProcessor
+            from .processor.swgbcc.processor import SWGBCCProcessor
             return SWGBCCProcessor
 
     raise Exception("no valid converter found for game edition %s"

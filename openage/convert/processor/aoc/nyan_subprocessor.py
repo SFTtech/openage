@@ -9,21 +9,20 @@
 Convert API-like objects to nyan objects. Subroutine of the
 main AoC processor.
 """
-from openage.convert.dataformat.aoc.combined_terrain import CombinedTerrain
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_tech import UnitLineUpgrade
-from openage.convert.dataformat.aoc.genie_unit import GenieGarrisonMode,\
+from ...dataformat.aoc.combined_terrain import CombinedTerrain
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_tech import UnitLineUpgrade
+from ...dataformat.aoc.genie_unit import GenieGarrisonMode,\
     GenieMonkGroup, GenieStackBuildingGroup
-from openage.convert.processor.aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
-from openage.convert.processor.aoc.civ_subprocessor import AoCCivSubprocessor
-from openage.convert.processor.aoc.modifier_subprocessor import AoCModifierSubprocessor
-from openage.convert.processor.aoc.tech_subprocessor import AoCTechSubprocessor
-from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
-from openage.convert.service import internal_name_lookups
-
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
 from ...dataformat.converter_object import RawAPIObject
+from ...service import internal_name_lookups
 from .ability_subprocessor import AoCAbilitySubprocessor
+from .auxiliary_subprocessor import AoCAuxiliarySubprocessor
+from .civ_subprocessor import AoCCivSubprocessor
+from .modifier_subprocessor import AoCModifierSubprocessor
+from .tech_subprocessor import AoCTechSubprocessor
+from .upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
 
 
 class AoCNyanSubprocessor:

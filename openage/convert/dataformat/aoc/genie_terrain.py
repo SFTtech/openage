@@ -5,9 +5,7 @@ Contains structures and API-like objects for terrain from AoC.
 """
 
 
-from openage.convert.dataformat.converter_object import ConverterObjectGroup
-
-from ...dataformat.converter_object import ConverterObject
+from ..converter_object import ConverterObject, ConverterObjectGroup
 
 
 class GenieTerrainObject(ConverterObject):

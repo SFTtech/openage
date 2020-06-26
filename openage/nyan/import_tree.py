@@ -5,8 +5,8 @@ Tree structure for resolving imports.
 """
 from enum import Enum
 
-from openage.nyan.nyan_structs import NyanObject, NyanPatch
-from openage.util.ordered_set import OrderedSet
+from ..util.ordered_set import OrderedSet
+from .nyan_structs import NyanObject, NyanPatch
 
 
 class ImportTree:

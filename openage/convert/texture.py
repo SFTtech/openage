@@ -9,13 +9,12 @@ import os
 
 import numpy
 
-from openage.convert.dataformat.version_detect import GameEdition
-
 from ..log import spam
 from ..util.fslike.path import Path
 from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from .blendomatic import BlendingMode
 from .dataformat import genie_structure
+from .dataformat.version_detect import GameEdition
 from .export import struct_definition
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,

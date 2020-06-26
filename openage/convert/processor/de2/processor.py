@@ -9,21 +9,20 @@
 Convert data from DE2 to openage formats.
 """
 
-from openage.convert.dataformat.aoc.genie_graphic import GenieGraphic
-from openage.convert.dataformat.aoc.genie_object_container import GenieObjectContainer
-from openage.convert.dataformat.aoc.genie_unit import GenieUnitObject,\
-    GenieAmbientGroup, GenieVariantGroup
 import openage.convert.dataformat.aoc.internal_nyan_names as aoc_internal
 import openage.convert.dataformat.de2.internal_nyan_names as de2_internal
-from openage.convert.nyan.api_loader import load_api
-from openage.convert.processor.aoc.pregen_processor import AoCPregenSubprocessor
-from openage.convert.processor.aoc.processor import AoCProcessor
-from openage.convert.processor.de2.media_subprocessor import DE2MediaSubprocessor
-from openage.convert.processor.de2.modpack_subprocessor import DE2ModpackSubprocessor
-from openage.convert.processor.de2.nyan_subprocessor import DE2NyanSubprocessor
-from openage.util.ordered_set import OrderedSet
 
 from ....log import info
+from ....util.ordered_set import OrderedSet
+from ...dataformat.aoc.genie_graphic import GenieGraphic
+from ...dataformat.aoc.genie_object_container import GenieObjectContainer
+from ...dataformat.aoc.genie_unit import GenieUnitObject, GenieAmbientGroup, GenieVariantGroup
+from ...nyan.api_loader import load_api
+from ..aoc.pregen_processor import AoCPregenSubprocessor
+from ..aoc.processor import AoCProcessor
+from .media_subprocessor import DE2MediaSubprocessor
+from .modpack_subprocessor import DE2ModpackSubprocessor
+from .nyan_subprocessor import DE2NyanSubprocessor
 
 
 class DE2Processor:

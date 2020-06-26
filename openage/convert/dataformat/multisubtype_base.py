@@ -2,7 +2,7 @@
 
 # TODO pylint: disable=C,R
 
-from openage.convert.dataformat.genie_structure import GenieStructure
+from .genie_structure import GenieStructure
 from .member_access import NOREAD_EXPORT
 
 

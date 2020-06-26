@@ -4,10 +4,10 @@
 Defines a modpack that can be exported.
 """
 
-from openage.convert.export.data_definition import DataDefinition
-from openage.convert.export.formats.modpack_info import ModpackInfo
-from openage.convert.export.media_export_request import MediaExportRequest
-from openage.convert.export.metadata_export import MetadataExport
+from ..export.data_definition import DataDefinition
+from ..export.formats.modpack_info import ModpackInfo
+from ..export.media_export_request import MediaExportRequest
+from ..export.metadata_export import MetadataExport
 
 
 class Modpack:

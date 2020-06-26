@@ -8,10 +8,10 @@
 """
 Creates upgrade patches for attribute modification effects in RoR.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.service import internal_name_lookups
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
+from ...dataformat.converter_object import RawAPIObject
+from ...service import internal_name_lookups
 
 
 class RoRUpgradeAttributeSubprocessor:

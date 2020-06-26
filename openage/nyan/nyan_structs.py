@@ -15,7 +15,7 @@ Python does not enforce static types, so be careful
 from enum import Enum
 import re
 
-from openage.util.ordered_set import OrderedSet
+from ..util.ordered_set import OrderedSet
 
 
 INDENT = "    "

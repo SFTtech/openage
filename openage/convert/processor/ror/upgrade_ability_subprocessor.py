@@ -9,13 +9,13 @@
 """
 Creates upgrade patches for abilities.
 """
-from openage.convert.dataformat.aoc.forward_ref import ForwardRef
-from openage.convert.dataformat.aoc.genie_unit import GenieBuildingLineGroup
-from openage.convert.dataformat.converter_object import RawAPIObject
-from openage.convert.dataformat.value_members import NoDiffMember
-from openage.convert.processor.aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
-from openage.convert.service import internal_name_lookups
-from openage.nyan.nyan_structs import MemberOperator
+from ....nyan.nyan_structs import MemberOperator
+from ...dataformat.aoc.forward_ref import ForwardRef
+from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup
+from ...dataformat.converter_object import RawAPIObject
+from ...dataformat.value_members import NoDiffMember
+from ...service import internal_name_lookups
+from ..aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
 
 
 class RoRUpgradeAbilitySubprocessor:
