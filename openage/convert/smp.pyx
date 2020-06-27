@@ -342,11 +342,11 @@ cdef class SMPLayer:
         """
         return self.data_raw[offset]
 
-    def get_picture_data(self, main_palette, player_palette):
+    def get_picture_data(self, palette):
         """
         Convert the palette index matrix to a colored image.
         """
-        return determine_rgba_matrix(self.pcolor, main_palette, player_palette)
+        return determine_rgba_matrix(self.pcolor, palette)
 
     def get_hotspot(self):
         """
@@ -692,8 +692,7 @@ cdef class SMPOutlineLayer(SMPLayer):
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
-                                         main_palette, player_palette):
+cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix, palette):
     """
     converts a palette index image matrix to an rgba matrix.
     """
@@ -705,8 +704,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     # micro optimization to avoid call to ColorTable.__getitem__()
-    cdef list m_lookup = main_palette.palette
-    cdef list p_lookup = player_palette.palette
+    cdef list m_lookup = palette.palette
 
     cdef m_color_size = len(m_lookup[0])
 
@@ -776,10 +774,9 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 else:
                     raise ValueError("unknown pixel type: %d" % px_type)
 
-                # get rgb base color from the color table
-                # store it the preview player color
-                # in the table: [16*player, 16*player+7]
-                r, g, b = p_lookup[px_index]
+                # Store player color index in g channel
+                r, b = 0, 0
+                g = px_index
 
             # array_data[y, x] = (r, g, b, alpha)
             array_data[y, x, 0] = r
@@ -788,14 +785,6 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
             array_data[y, x, 3] = alpha
 
     return array_data
-
-cdef (uint8_t,uint8_t) get_palette_info(pixel image_pixel):
-    """
-    returns a 2-tuple that contains the palette number of the pixel as
-    the first value and the palette section of the pixel as the
-    second value.
-    """
-    return image_pixel.palette >> 2, image_pixel.palette & 0x03
 
 @cython.boundscheck(False)
 @cython.wraparound(False)

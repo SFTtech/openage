@@ -2,19 +2,21 @@
 #
 # cython: profile=False
 
+from enum import Enum
 from struct import Struct, unpack_from
 
-from enum import Enum
+import numpy
+
+from ..log import spam, dbg
+
 
 cimport cython
-import numpy
 cimport numpy
 
 from libc.stdint cimport uint8_t, uint16_t
 from libcpp cimport bool
 from libcpp.vector cimport vector
 
-from ..log import spam, dbg
 
 
 # SMX files have little endian byte order
@@ -411,18 +413,16 @@ cdef class SMXLayer:
         """
         return self.data_raw[offset]
 
-    def get_picture_data(self, main_palette, player_palette):
+    def get_picture_data(self, palette):
         """
-        Convert the palette index matrix to a colored image.
+        Convert the palette index matrix to a RGBA image.
 
-        :param main_palette: Color palette used for normal pixels in the sprite.
-        :param player_palette: Color palette used for player color pixels in the sprite.
+        :param main_palette: Color palette used for pixels in the sprite.
         :type main_palette: .colortable.ColorTable
-        :type player_palette: .colortable.ColorTable
         :return: Array of RGBA values.
         :rtype: numpy.ndarray
         """
-        return determine_rgba_matrix(self.pcolor, main_palette, player_palette)
+        return determine_rgba_matrix(self.pcolor, palette)
 
     def get_hotspot(self):
         """
@@ -995,14 +995,12 @@ cdef class SMXOutlineLayer(SMXLayer):
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
-                                         main_palette, player_palette):
+cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix, palette):
     """
     converts a palette index image matrix to an rgba matrix.
 
     :param image_matrix: A 2-dimensional array of SMP pixels.
-    :param main_palette: Color palette used for normal pixels in the sprite.
-    :param player_palette: Color palette used for player color pixels in the sprite.
+    :param palette: Color palette used for normal pixels in the sprite.
     """
 
     cdef size_t height = image_matrix.size()
@@ -1012,8 +1010,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     # micro optimization to avoid call to ColorTable.__getitem__()
-    cdef list m_lookup = main_palette.palette
-    cdef list p_lookup = player_palette.palette
+    cdef list m_lookup = palette.palette
 
     cdef uint8_t r
     cdef uint8_t g
@@ -1076,10 +1073,9 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 else:
                     raise ValueError("unknown pixel type: %d" % px_type)
 
-                # get rgb base color from the color table
-                # store it the preview player color
-                # in the table: [16*player, 16*player+7]
-                r, g, b = p_lookup[px_index]
+                # Store player color index in g channel
+                r, b = 0, 0
+                g = px_index
 
             # array_data[y, x] = (r, g, b, alpha)
             array_data[y, x, 0] = r

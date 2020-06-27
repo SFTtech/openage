@@ -20,19 +20,9 @@ def init_subparser(cli):
 
     cli.set_defaults(entrypoint=main)
 
-    cli.add_argument("--palette-index", default="50500",
-                     help="palette number in interfac.drs")
-    cli.add_argument("--palette-file", type=argparse.FileType('rb'),
-                     help=("palette file where the palette"
-                           "colors are contained"))
-    cli.add_argument("--player-palette-file", type=argparse.FileType('rb'),
-                     help=("palette file where the player"
-                           "colors are contained"))
-    cli.add_argument("--interfac", type=argparse.FileType('rb'),
-                     help=("drs archive where palette "
-                           "is contained (interfac.drs). "
-                           "If not set, assumed to be in same "
-                           "directory as the source drs archive"))
+    cli.add_argument("--palettes-path",
+                     help=("path to the folder containing the palettes.conf file "
+                           "OR an interfac.drs archive that contains palette files"))
     cli.add_argument("--drs", type=argparse.FileType('rb'),
                      help=("drs archive filename that contains an slp "
                            "e.g. path ~/games/aoe/graphics.drs"))
@@ -52,39 +42,82 @@ def main(args, error):
     file_path = Path(args.filename)
     file_extension = file_path.suffix[1:].lower()
 
-    if args.mode == "slp" or (file_extension == "slp" and not args.drs):
-        if not args.palette_file:
-            raise Exception("palette-file needs to be specified")
+    if not args.palettes_path:
+        raise Exception("palettes-path needs to be specified")
 
-        read_slp_file(args.filename, args.palette_file, args.output,
-                      player_palette=args.player_palette_file)
+    palettes_path = Path(args.palettes_path)
+    palettes = read_palettes(palettes_path)
+
+    if args.mode == "slp" or (file_extension == "slp" and not args.drs):
+        read_slp_file(args.filename, args.output, palettes)
 
     elif args.mode == "drs-slp" or (file_extension == "slp" and args.drs):
-        if not (args.drs and args.palette_index):
-            raise Exception("palette-file needs to be specified")
-
-        read_slp_in_drs_file(args.drs, args.filename, args.palette_index,
-                             args.output, interfac=args.interfac)
+        read_slp_in_drs_file(args.drs, args.filename, args.output, palettes)
 
     elif args.mode == "smp" or file_extension == "smp":
-        if not (args.palette_file and args.player_palette_file):
-            raise Exception("palette-file needs to be specified")
-
-        read_smp_file(args.filename, args.palette_file, args.player_palette_file,
-                      args.output)
+        read_smp_file(args.filename, args.output, palettes)
 
     elif args.mode == "smx" or file_extension == "smx":
-        if not (args.palette_file and args.player_palette_file):
-            raise Exception("palette-file needs to be specified")
-
-        read_smx_file(args.filename, args.palette_file, args.player_palette_file,
-                      args.output)
+        read_smx_file(args.filename, args.output, palettes)
 
     else:
         raise Exception("format could not be determined")
 
 
-def read_slp_file(slp_path, main_palette, output_path, player_palette=None):
+def read_palettes(palettes_path):
+    """
+    Reads the palettes from the palettes folder/archive.
+    """
+    palettes = {}
+
+    if palettes_path.is_dir():
+        info("opening palette files in directory '%s'", palettes_path.name)
+
+        palette_dir = Directory(palettes_path)
+        conf_filepath = "palettes.conf"
+        conf_file = palette_dir.root[conf_filepath].open('rb')
+        palette_paths = {}
+
+        info("parsing palette data...")
+        for line in conf_file.read().decode('utf-8').split('\n'):
+            line = line.strip()
+
+            # skip comments and empty lines
+            if not line or line.startswith('//'):
+                continue
+
+            palette_id, filepath = line.split(',')
+            palette_id = int(palette_id)
+            palette_paths[palette_id] = filepath
+
+        for palette_id, filepath in palette_paths.items():
+            palette_file = palette_dir.root[filepath]
+            palette = ColorTable(palette_file.open("rb").read())
+
+            palettes[palette_id] = palette
+
+    else:
+        info("opening palette files in drs archive '%s'", palettes_path.name)
+
+        # open from drs archive
+        # TODO: Also allow SWGB's DRS files
+        palette_file = Path(palettes_path).open("rb")
+        game_version = (GameEdition.AOC, [])
+        palette_dir = DRS(palette_file, game_version)
+
+        info("parsing palette data...")
+        for palette_file in palette_dir.root.iterdir():
+            # Only 505XX.bina files are usable palettes
+            if palette_file.stem.startswith("505"):
+                palette = ColorTable(palette_file.open("rb").read())
+                palette_id = int(palette_file.stem)
+
+                palettes[palette_id] = palette
+
+    return palettes
+
+
+def read_slp_file(slp_path, output_path, palettes):
     """
     Reads a single SLP file.
     """
@@ -94,13 +127,6 @@ def read_slp_file(slp_path, main_palette, output_path, player_palette=None):
     info("opening slp file at '%s'", Path(slp_path).name)
     slp_file = Path(slp_path).open("rb")
 
-    # open palette from independent file
-    info("opening palette in palette file '%s'", main_palette.name)
-    palette_file = Path(main_palette.name).open("rb")
-
-    info("parsing palette data...")
-    main_palette_table = ColorTable(palette_file.read())
-
     # import here to prevent that the __main__ depends on SLP
     # just by importing this singlefile.py.
     from .slp import SLP
@@ -109,31 +135,15 @@ def read_slp_file(slp_path, main_palette, output_path, player_palette=None):
     info("parsing slp image...")
     slp_image = SLP(slp_file.read())
 
-    player_palette_table = None
-
-    # Player palettes need to be specified if SLP version is greater
-    # than 3.0
-    if slp_image.version in (b'3.0\x00', b'4.0X', b'4.1X'):
-        if not player_palette:
-            raise Exception("SLPs version %s require a player "
-                            "color palette" % slp_image.version)
-
-        # open player color palette from independent file
-        info("opening player color palette in palette file '%s'", player_palette.name)
-        player_palette_file = Path(player_palette.name).open("rb")
-
-        info("parsing palette data...")
-        player_palette_table = ColorTable(player_palette_file.read())
-
     # create texture
     info("packing texture...")
-    tex = Texture(slp_image, main_palette_table, player_palette_table)
+    tex = Texture(slp_image, palettes)
 
     # save as png
     tex.save(Directory(output_file.parent).root, output_file.name)
 
 
-def read_slp_in_drs_file(drs, slp_path, palette_index, output_path, interfac=None):
+def read_slp_in_drs_file(drs, slp_path, output_path, palettes):
     """
     Reads a SLP file from a DRS archive.
     """
@@ -147,22 +157,6 @@ def read_slp_in_drs_file(drs, slp_path, palette_index, output_path, interfac=Non
     info("opening slp in drs '%s:%s'...", drs.name, slp_path)
     slp_file = drs_file.root[slp_path].open("rb")
 
-    if interfac:
-        # open the interface file if given
-        interfac_file = interfac
-
-    else:
-        # otherwise use the path of the drs.
-        # pylint: disable=no-member
-        interfac_file = Path(drs.name).with_name("interfac.drs").open("rb")
-
-    # open palette
-    info("opening palette in drs '%s:%s.bina'...", interfac_file.name, palette_index)
-    palette_file = DRS(interfac_file, game_version).root["%s.bina" % palette_index].open("rb")
-
-    info("parsing palette data...")
-    palette = ColorTable(palette_file.read())
-
     # import here to prevent that the __main__ depends on SLP
     # just by importing this singlefile.py.
     from .slp import SLP
@@ -173,13 +167,13 @@ def read_slp_in_drs_file(drs, slp_path, palette_index, output_path, interfac=Non
 
     # create texture
     info("packing texture...")
-    tex = Texture(slp_image, palette)
+    tex = Texture(slp_image, palettes)
 
     # save as png
     tex.save(Directory(output_file.parent).root, output_file.name)
 
 
-def read_smp_file(smp_path, main_palette, player_palette, output_path):
+def read_smp_file(smp_path, output_path, palettes):
     """
     Reads a single SMP file.
     """
@@ -188,20 +182,6 @@ def read_smp_file(smp_path, main_palette, player_palette, output_path):
     # open the smp
     info("opening smp file at '%s'", smp_path)
     smp_file = Path(smp_path).open("rb")
-
-    # open main palette from independent file
-    info("opening main palette in palette file '%s'", main_palette.name)
-    main_palette_file = Path(main_palette.name).open("rb")
-
-    info("parsing palette data...")
-    main_palette_table = ColorTable(main_palette_file.read())
-
-    # open player color palette from independent file
-    info("opening player color palette in palette file '%s'", player_palette.name)
-    player_palette_file = Path(player_palette.name).open("rb")
-
-    info("parsing palette data...")
-    player_palette_table = ColorTable(player_palette_file.read())
 
     # import here to prevent that the __main__ depends on SMP
     # just by importing this singlefile.py.
@@ -213,13 +193,13 @@ def read_smp_file(smp_path, main_palette, player_palette, output_path):
 
     # create texture
     info("packing texture...")
-    tex = Texture(smp_image, main_palette_table, player_palette_table)
+    tex = Texture(smp_image, palettes)
 
     # save as png
     tex.save(Directory(output_file.parent).root, output_file.name)
 
 
-def read_smx_file(smx_path, main_palette, player_palette, output_path):
+def read_smx_file(smx_path, output_path, palettes):
     """
     Reads a single SMX (compressed SMP) file.
     """
@@ -228,20 +208,6 @@ def read_smx_file(smx_path, main_palette, player_palette, output_path):
     # open the smx
     info("opening smx file at '%s'", smx_path)
     smx_file = Path(smx_path).open("rb")
-
-    # open main palette from independent file
-    info("opening main palette in palette file '%s'", main_palette.name)
-    main_palette_file = Path(main_palette.name).open("rb")
-
-    info("parsing palette data...")
-    main_palette_table = ColorTable(main_palette_file.read())
-
-    # open player color palette from independent file
-    info("opening player color palette in palette file '%s'", player_palette.name)
-    player_palette_file = Path(player_palette.name).open("rb")
-
-    info("parsing palette data...")
-    player_palette_table = ColorTable(player_palette_file.read())
 
     # import here to prevent that the __main__ depends on SMP
     # just by importing this singlefile.py.
@@ -253,7 +219,7 @@ def read_smx_file(smx_path, main_palette, player_palette, output_path):
 
     # create texture
     info("packing texture...")
-    tex = Texture(smx_image, main_palette_table, player_palette_table)
+    tex = Texture(smx_image, palettes)
 
     # save as png
     tex.save(Directory(output_file.parent).root, output_file.name)

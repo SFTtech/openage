@@ -1,7 +1,6 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,arguments-differ
-
 """
 Specifies a request for a media resource that should be
 converted and exported into a modpack.
@@ -101,7 +100,7 @@ class GraphicsMediaExportRequest(MediaExportRequest):
     def get_type(self):
         return MediaType.GRAPHICS
 
-    def save(self, sourcedir, exportdir, game_version, palettes, *args, **kwargs):
+    def save(self, sourcedir, exportdir, palettes, *args, **kwargs):
         source_file = sourcedir[self.get_type().value, self.source_filename]
 
         try:
@@ -127,7 +126,7 @@ class GraphicsMediaExportRequest(MediaExportRequest):
             from ..smx import SMX
             image = SMX(media_file.read())
 
-        texture = Texture(image, palettes, game_version)
+        texture = Texture(image, palettes)
         metadata = texture.save(exportdir.joinpath(self.targetdir), self.target_filename)
         metadata = {self.target_filename: metadata}
 
@@ -144,7 +143,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
     def get_type(self):
         return MediaType.TERRAIN
 
-    def save(self, sourcedir, exportdir, game_version, palettes, *args, **kwargs):
+    def save(self, sourcedir, exportdir, palettes, *args, **kwargs):
         source_file = sourcedir[self.get_type().value, self.source_filename]
         media_file = source_file.open("rb")
 
@@ -156,7 +155,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
             # TODO: Implement
             pass
 
-        texture = Texture(image, palettes, game_version)
+        texture = Texture(image, palettes)
         texture.save(exportdir.joinpath(self.targetdir), self.target_filename)
 
 

@@ -2,19 +2,21 @@
 #
 # cython: profile=False
 
+from enum import Enum
 from struct import Struct, unpack_from
 
-from enum import Enum
+import numpy
+
+from ..log import spam, dbg
+
 
 cimport cython
-import numpy
 cimport numpy
 
 from libc.stdint cimport uint8_t
 from libcpp cimport bool
 from libcpp.vector cimport vector
 
-from ..log import spam, dbg
 
 
 # SLP files have little endian byte order
@@ -179,7 +181,9 @@ class FrameInfo:
         self.outline_table_offset = outline_table_offset
 
         self.palette_offset = palette_offset
-        self.properties = properties  # TODO what are properties good for?
+
+        # used for palette index in DE1
+        self.properties = properties
 
         self.size = (width, height)
         self.hotspot = (hotspot_x, hotspot_y)
@@ -355,19 +359,30 @@ cdef class SLPFrame:
             pos += 1
             return cmd_pack(self.get_byte_at(pos), pos)
 
-    def get_picture_data(self, main_palette, player_palette=None,
-                         player_number=0):
+    def get_picture_data(self, palette):
         """
         Convert the palette index matrix to a colored image.
         """
-        return determine_rgba_matrix(self.pcolor, main_palette,
-                                     player_palette, player_number)
+        return determine_rgba_matrix(self.pcolor, palette)
 
     def get_hotspot(self):
         """
         Return the frame's hotspot (the "center" of the image)
         """
         return self.info.hotspot
+
+    def get_palette_number(self):
+        """
+        Return the frame's palette number.
+
+        :return: Palette number of the frame.
+        :rtype: int
+        """
+        if self.info.version in (b'3.0\x00', b'4.0X', b'4.1X'):
+            return self.info.properties >> 16
+
+        else:
+            return self.info.palette_offset + 50500
 
     def __repr__(self):
         return repr(self.info)
@@ -957,9 +972,7 @@ cdef class SLPShadowFrame(SLPFrame):
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
-                                         main_palette, player_palette,
-                                         int player_number=0):
+cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix, palette):
     """
     converts a palette index image matrix to an rgba matrix.
     """
@@ -971,12 +984,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     # micro optimization to avoid call to ColorTable.__getitem__()
-    cdef list m_lookup = main_palette.palette
-    cdef list p_lookup
-
-    # player palette for SLPs with version higher than 3.0
-    if player_palette:
-        p_lookup = player_palette.palette
+    cdef list m_lookup = palette.palette
 
     cdef uint8_t r
     cdef uint8_t g
@@ -1015,23 +1023,14 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 r, g, b = 0, 0, 0
                 alpha = 255 - (px_val << 2)
 
-            elif px_type == color_player_v4:
-                r, g, b = p_lookup[px_val]
-                # mark this pixel as player color
-                alpha = 255
-
             else:
-                if px_type == color_player:
+                if px_type == color_player_v4 or px_type == color_player:
                     # mark this pixel as player color
-                    alpha = 254
+                    alpha = 255
 
                 elif px_type == color_special_2 or\
                      px_type == color_black:
                     alpha = 251  # mark this pixel as special outline
-
-                    # black outline pixel, we will probably never encounter this.
-                    #  -16 ensures palette[16+(-16)=0] will be used.
-                    px_val = -16
 
                 elif px_type == color_special_1:
                     alpha = 253  # mark this pixel as outline
@@ -1039,10 +1038,9 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 else:
                     raise ValueError("unknown pixel type: %d" % px_type)
 
-                # get rgb base color from the color table
-                # store it the preview player color
-                # in the table: [16*player, 16*player+7]
-                r, g, b = m_lookup[px_val + (16 * player_number)]
+                # Store player color index in g channel
+                r, b = 0, 0
+                g = px_val
 
             # array_data[y, x] = (r, g, b, alpha)
             array_data[y, x, 0] = r

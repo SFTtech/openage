@@ -14,7 +14,6 @@ from ..util.fslike.path import Path
 from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from .blendomatic import BlendingMode
 from .dataformat import genie_structure
-from .dataformat.version_detect import GameEdition
 from .export import struct_definition
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
@@ -89,10 +88,7 @@ class Texture(genie_structure.GenieStructure):
         "of sprites included in the 'big texture'."
     )
 
-    # player-specific colors will be in color blue, but with an alpha of 254
-    player_id = 1
-
-    def __init__(self, input_data, palettes=None, game_version=None, custom_cutter=None):
+    def __init__(self, input_data, palettes=None, custom_cutter=None):
         super().__init__()
         spam("creating Texture from %s", repr(input_data))
 
@@ -100,35 +96,14 @@ class Texture(genie_structure.GenieStructure):
         from .smp import SMP
         from .smx import SMX
 
-        if game_version:
-            if game_version[0] in (GameEdition.ROR, GameEdition.AOC, GameEdition.SWGB,
-                                   GameEdition.HDEDITION):
-                main_palette = palettes[50500]
-                player_palette = None
-
-            elif game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
-                # Blue player color
-                player_palette = palettes[55]
-
-        if isinstance(input_data, SLP):
-            frames = []
-
-            for frame in input_data.main_frames:
-                for subtex in self._slp_to_subtextures(frame,
-                                                       main_palette,
-                                                       player_palette,
-                                                       custom_cutter):
-                    frames.append(subtex)
-
-        elif isinstance(input_data, (SMP, SMX)):
+        if isinstance(input_data, (SLP, SMP, SMX)):
             frames = []
 
             for frame in input_data.main_frames:
                 # Palette can be different for every frame
                 main_palette = palettes[frame.get_palette_number()]
-                for subtex in self._smp_to_subtextures(frame,
+                for subtex in self._slp_to_subtextures(frame,
                                                        main_palette,
-                                                       player_palette,
                                                        custom_cutter):
                     frames.append(subtex)
 
@@ -148,30 +123,12 @@ class Texture(genie_structure.GenieStructure):
         self.image_data, (self.width, self.height), self.image_metadata\
             = merge_frames(frames)
 
-    def _slp_to_subtextures(self, frame, main_palette, player_palette=None,
-                            custom_cutter=None):
+    def _slp_to_subtextures(self, frame, main_palette, custom_cutter=None):
         """
         convert slp to subtexture or subtextures, using a palette.
         """
         subtex = TextureImage(
-            frame.get_picture_data(main_palette, player_palette,
-                                   self.player_id),
-            hotspot=frame.get_hotspot()
-        )
-
-        if custom_cutter:
-            # this may cut the texture into some parts
-            return custom_cutter.cut(subtex)
-        else:
-            return [subtex]
-
-    def _smp_to_subtextures(self, frame, main_palette, player_palette=None,
-                            custom_cutter=None):
-        """
-        convert smp to subtexture or subtextures, using a palette.
-        """
-        subtex = TextureImage(
-            frame.get_picture_data(main_palette, player_palette),
+            frame.get_picture_data(main_palette),
             hotspot=frame.get_hotspot()
         )
 
