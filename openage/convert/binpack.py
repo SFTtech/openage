@@ -155,6 +155,7 @@ class BinaryTreePacker(Packer):
     Aditionally can target a given aspect ratio. 97/49 is optimal for terrain
     textures.
     """
+
     def __init__(self, margin, aspect_ratio=1, heuristic=maxside_heuristic):
         super().__init__(margin)
         self.aspect_ratio = aspect_ratio

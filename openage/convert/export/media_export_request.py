@@ -5,6 +5,8 @@
 Specifies a request for a media resource that should be
 converted and exported into a modpack.
 """
+from openage.convert.dataformat.version_detect import GameEdition
+
 from ...util.observer import Observable
 from ..dataformat.media_types import MediaType
 from ..texture import Texture
@@ -143,7 +145,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
     def get_type(self):
         return MediaType.TERRAIN
 
-    def save(self, sourcedir, exportdir, palettes, *args, **kwargs):
+    def save(self, sourcedir, exportdir, palettes, game_version, *args, **kwargs):
         source_file = sourcedir[self.get_type().value, self.source_filename]
         media_file = source_file.open("rb")
 
@@ -155,7 +157,12 @@ class TerrainMediaExportRequest(MediaExportRequest):
             # TODO: Implement
             pass
 
-        texture = Texture(image, palettes)
+        if game_version[0] is GameEdition.AOC:
+            from ..texture import merge_terrain
+            texture = Texture(image, palettes, custom_merger=merge_terrain)
+
+        else:
+            texture = Texture(image, palettes)
         texture.save(exportdir.joinpath(self.targetdir), self.target_filename)
 
 
