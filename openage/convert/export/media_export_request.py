@@ -157,7 +157,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
             # TODO: Implement
             pass
 
-        if game_version[0] is GameEdition.AOC:
+        if game_version[0] in (GameEdition.AOC, GameEdition.SWGB):
             from ..texture import merge_terrain
             texture = Texture(image, palettes, custom_merger=merge_terrain)
 

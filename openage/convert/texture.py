@@ -288,6 +288,7 @@ def merge_terrain(frames):
     :returns: Resulting texture as well as width/height.
     :rtype: TextureImage, (width, height)
     """
+    # Can be 10 (regular terrain) or 6 (farms)
     tiles_per_row = int(math.sqrt(len(frames)))
 
     # Size of one tile should be (98,49)
@@ -297,8 +298,8 @@ def merge_terrain(frames):
     half_offset_x = frame_width // 2
     half_offset_y = frame_height // 2
 
-    merge_atlas_width = frame_width * tiles_per_row
-    merge_atlas_height = frame_height * tiles_per_row
+    merge_atlas_width = (frame_width * tiles_per_row) - (tiles_per_row - 1)
+    merge_atlas_height = (frame_height * tiles_per_row) - (tiles_per_row - 1)
 
     merge_atlas = numpy.zeros((merge_atlas_height, merge_atlas_width, 4), dtype=numpy.uint8)
 
@@ -335,6 +336,32 @@ def merge_terrain(frames):
 
         index += 1
 
-    atlas = TextureImage(merge_atlas)
+    # Transform to a flat texture
+    flat_atlas_width = merge_atlas_width // 2 + 1
+
+    flat_atlas = numpy.zeros((merge_atlas_height, flat_atlas_width, 4), dtype=numpy.uint8)
+
+    # Does a matrix transformation using
+    # [  1 , -1  ]
+    # [ 0.5, 0.5 ]
+    # as the multipication matrix.
+    # This reverses the dimetric projection (diamond shape view)
+    # to a plan projection (bird's eye view).
+    # Reference: https://gamedev.stackexchange.com/questions/
+    #            16746/what-is-the-name-of-perspective-of-age-of-empires-ii
+    for flat_x in range(flat_atlas_width):
+        for flat_y in range(merge_atlas_height):
+            merge_x = (1 * flat_x + flat_atlas_width - 1) - 1 * flat_y
+            merge_y = math.floor(0.5 * flat_x + 0.5 * flat_y)
+
+            if flat_x + flat_y < merge_atlas_height:
+                merge_y = math.ceil(0.5 * flat_x + 0.5 * flat_y)
+
+            flat_atlas[flat_y][flat_x] = merge_atlas[merge_y][merge_x]
+
+    # Rotate by 270 degrees to match the rotation of HD terrain textures
+    flat_atlas = numpy.ascontiguousarray(numpy.rot90(flat_atlas, 3, axes=(0, 1)))
+
+    atlas = TextureImage(flat_atlas)
 
     return atlas, (atlas.width, atlas.height), None
