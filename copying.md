@@ -128,6 +128,7 @@ _the openage authors_ are:
 | Martin Sandsmark            | martin                      | martin dawt sandsmark à kde dawt org              |
 | Merlin Stollenwerk          | Mese96                      | merlin-stollenwerk à past-development dawt de     |
 | 段清楠 Duan Qingnan         | duanqn                      | duanqn_own_1 à yeah dawt net                      |
+| Virtopeanu Alex             | finicu212                   | smurfdeplastic à gmail dawt com                   |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
