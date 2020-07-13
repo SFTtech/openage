@@ -96,6 +96,22 @@ within a SLP as they contain their own frame info headers, edge outline tables,
 command offset tables, and draw commands. Shadows in 4.0X SLPs don't use the
 shadow draw commands of previous version SLPs.
 
+### Compressed Format (since version 4.2P)
+SLP version 4.2P introduced in Update 38862 of Age of Empires 1: Definitive Edition
+is a container format that stores a compressed SLP file (regardless of version).
+The format uses the [LZ4](https://github.com/lz4/lz4) compression method. Additionally,
+there are two uncompressed header entries preceding the compressed data stream.
+The full structure can be seen below.
+
+Length   | Type    | Description                   | Example
+---------|---------|-------------------------------|--------
+4 bytes  | string  | Version                       | 4.2P
+4 bytes  | uint32  | Uncompressed size of SLP file | 10637, 0x298D
+Variable | LZ4     | Compressed SLP file           | -
+
+Decompressing the LZ4 stream of 4.2P SLPs must always yield a valid uncompressed
+SLP file.
+
 ### SLP Frame info
 After the header, there are `num_frames` entries of `slp_frame_info`.
 Every `slp_frame_info` stores meta-information about a single frame (texture)
