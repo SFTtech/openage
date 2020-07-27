@@ -33,6 +33,14 @@ and can have any number of attributes assigned to them. In the converter, they a
 more complex structures from Genie games such as units, civilizations and techs. The transition to the nyan
 API objects is also done utilizing etntity objects.
 
+### Service
+
+Services are interfaces for requesting or passing collections of entity objects and value objects from/to
+a processor or tool. It is also used to communicate with external interfaces such as included libraries
+or Python packages. A services main job is to translate the data it receives/forwards into a usable format.
+Examples for services are internal name lookup service for mapping unit IDs to nyan object names as well as
+the nyan file and graphics exporters.
+
 ### Processor
 
 Processors operate on a given dataset consisting of multiple entity objects to produce a result. For the
@@ -50,9 +58,3 @@ processor functions of their base game and thus reduce code redundancy.
 Tools are used to encapsulate processor with a user interface (GUI, TUI or CLI), pass user input to processors
 and start the conversion process.
 
-### Service
-
-Services are interfaces to external modules and are either used to obtain entity objects/value objects
-from a external source or pass information to an external target. Its main job is the translation of the
-received data, so that it is usable for the conversion process. The file format readers in the
-converter are examples for services as are the nyan and graphics exporters.
