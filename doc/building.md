@@ -119,7 +119,7 @@ Make sure you have all the dependencies installed.
   - Linux etc: `./configure`
   - macOS:  `./configure --compiler=clang`, `./configure --mode=release --compiler=gcc`
 - `make` generates and builds everything
-- `make run` or `./run` launches the game. Try `./run --help`!
+- `make run` or `bin/run` launches the game. Try `bin/run --help`!
 - `make test` runs the built-in tests.
 
 
