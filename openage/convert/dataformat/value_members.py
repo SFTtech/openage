@@ -31,11 +31,10 @@ class ValueMember:
     Stores a value member from a data file.
     """
 
-    __slots__ = ('name', 'member_type', 'value')
+    __slots__ = ('name', 'value')
 
     def __init__(self, name):
         self.name = name
-        self.member_type = None
         self.value = None
 
     def get_name(self):
@@ -82,13 +81,12 @@ class IntMember(ValueMember):
         super().__init__(name)
 
         self.value = int(value)
-        self.member_type = MemberTypes.INT_MEMBER
 
     def get_value(self):
         return self.value
 
     def get_type(self):
-        return self.member_type
+        return MemberTypes.INT_MEMBER
 
     def diff(self, other):
         if self.get_type() is other.get_type():
@@ -118,13 +116,12 @@ class FloatMember(ValueMember):
         super().__init__(name)
 
         self.value = float(value)
-        self.member_type = MemberTypes.FLOAT_MEMBER
 
     def get_value(self):
         return self.value
 
     def get_type(self):
-        return self.member_type
+        return MemberTypes.FLOAT_MEMBER
 
     def diff(self, other):
         if self.get_type() is other.get_type():
@@ -154,13 +151,12 @@ class BooleanMember(ValueMember):
         super().__init__(name)
 
         self.value = bool(value)
-        self.member_type = MemberTypes.BOOLEAN_MEMBER
 
     def get_value(self):
         return self.value
 
     def get_type(self):
-        return self.member_type
+        return MemberTypes.BOOLEAN_MEMBER
 
     def diff(self, other):
         if self.get_type() is other.get_type():
@@ -178,15 +174,21 @@ class BooleanMember(ValueMember):
         return "BooleanMember<%s>" % (self.name)
 
 
-class IDMember(IntMember):
+class IDMember(ValueMember):
     """
     Stores references to media/resource IDs.
     """
 
     def __init__(self, name, value):
-        super().__init__(name, value)
+        super().__init__(name)
 
-        self.member_type = MemberTypes.ID_MEMBER
+        self.value = int(value)
+
+    def get_value(self):
+        return self.value
+
+    def get_type(self):
+        return MemberTypes.ID_MEMBER
 
     def diff(self, other):
         if self.get_type() is other.get_type():
@@ -213,7 +215,6 @@ class BitfieldMember(ValueMember):
         super().__init__(name)
 
         self.value = value
-        self.member_type = MemberTypes.BITFIELD_MEMBER
 
     def get_value(self):
         return self.value
@@ -229,7 +230,7 @@ class BitfieldMember(ValueMember):
         return bool(self.value & (2 ** pos))
 
     def get_type(self):
-        return self.member_type
+        return MemberTypes.BITFIELD_MEMBER
 
     def diff(self, other):
         """
@@ -263,13 +264,12 @@ class StringMember(ValueMember):
         super().__init__(name)
 
         self.value = str(value)
-        self.member_type = MemberTypes.STRING_MEMBER
 
     def get_value(self):
         return self.value
 
     def get_type(self):
-        return self.member_type
+        return MemberTypes.STRING_MEMBER
 
     def diff(self, other):
         if self.get_type() is other.get_type():
@@ -306,7 +306,6 @@ class ContainerMember(ValueMember):
         super().__init__(name)
 
         self.value = {}
-        self.member_type = MemberTypes.CONTAINER_MEMBER
 
         # submembers is a list of members
         if not isinstance(submembers, dict):
@@ -319,7 +318,7 @@ class ContainerMember(ValueMember):
         return self.value
 
     def get_type(self):
-        return self.member_type
+        return MemberTypes.CONTAINER_MEMBER
 
     def diff(self, other):
         if self.get_type() is other.get_type():
@@ -386,21 +385,6 @@ class ArrayMember(ValueMember):
 
         self.value = members
 
-        if allowed_member_type is MemberTypes.INT_MEMBER:
-            self.member_type = MemberTypes.ARRAY_INT
-        elif allowed_member_type is MemberTypes.FLOAT_MEMBER:
-            self.member_type = MemberTypes.ARRAY_FLOAT
-        elif allowed_member_type is MemberTypes.BOOLEAN_MEMBER:
-            self.member_type = MemberTypes.ARRAY_BOOL
-        elif allowed_member_type is MemberTypes.ID_MEMBER:
-            self.member_type = MemberTypes.ARRAY_ID
-        elif allowed_member_type is MemberTypes.BITFIELD_MEMBER:
-            self.member_type = MemberTypes.ARRAY_BITFIELD
-        elif allowed_member_type is MemberTypes.STRING_MEMBER:
-            self.member_type = MemberTypes.ARRAY_STRING
-        elif allowed_member_type is MemberTypes.CONTAINER_MEMBER:
-            self.member_type = MemberTypes.ARRAY_CONTAINER
-
         self._allowed_member_type = allowed_member_type
 
         # Check if members have correct type
@@ -414,7 +398,28 @@ class ArrayMember(ValueMember):
         return self.value
 
     def get_type(self):
-        return self.member_type
+        if self._allowed_member_type is MemberTypes.INT_MEMBER:
+            return MemberTypes.ARRAY_INT
+
+        elif self._allowed_member_type is MemberTypes.FLOAT_MEMBER:
+            return MemberTypes.ARRAY_FLOAT
+
+        elif self._allowed_member_type is MemberTypes.BOOLEAN_MEMBER:
+            return MemberTypes.ARRAY_BOOL
+
+        elif self._allowed_member_type is MemberTypes.ID_MEMBER:
+            return MemberTypes.ARRAY_ID
+
+        elif self._allowed_member_type is MemberTypes.BITFIELD_MEMBER:
+            return MemberTypes.ARRAY_BITFIELD
+
+        elif self._allowed_member_type is MemberTypes.STRING_MEMBER:
+            return MemberTypes.ARRAY_STRING
+
+        elif self._allowed_member_type is MemberTypes.CONTAINER_MEMBER:
+            return MemberTypes.ARRAY_CONTAINER
+
+        raise Exception("%s has no valid member type" % self)
 
     def get_container(self, key_member_name, force_not_found= False, force_duplicate=False):
         """
