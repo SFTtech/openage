@@ -27,9 +27,7 @@ class RoRUpgradeAbilitySubprocessor:
     def shoot_projectile_ability(converter_group, line, container_obj_ref,
                                  command_id, diff=None):
         """
-        Creates a patch for the Selectable ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the Selectable ability of a line.
 
         :param converter_group: Group that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup

@@ -57,4 +57,3 @@ processor functions of their base game and thus reduce code redundancy.
 
 Tools are used to encapsulate processor with a user interface (GUI, TUI or CLI), pass user input to processors
 and start the conversion process.
-

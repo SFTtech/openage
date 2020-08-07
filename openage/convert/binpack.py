@@ -1,4 +1,4 @@
-# Copyright 2016-2016 the openage authors. See copying.md for legal info.
+# Copyright 2016-2020 the openage authors. See copying.md for legal info.
 
 """ Routines for 2D binpacking """
 

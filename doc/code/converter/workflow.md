@@ -173,4 +173,3 @@ The exporter saves files contained in a modpack to the file system. nyan files
 are stored as plaintext files, while media export requests are handled by parsing
 the specified source file, converting it to a predefined target format and
 writing the result into a file.
-

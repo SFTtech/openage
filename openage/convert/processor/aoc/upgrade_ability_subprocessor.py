@@ -33,9 +33,7 @@ class AoCUpgradeAbilitySubprocessor:
     def apply_continuous_effect_ability(converter_group, line, container_obj_ref,
                                         command_id, ranged=False, diff=None):
         """
-        Creates a patch for the ApplyContinuousEffect ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the ApplyContinuousEffect ability of a line.
 
         :param converter_group: Group that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
@@ -202,9 +200,7 @@ class AoCUpgradeAbilitySubprocessor:
     def apply_discrete_effect_ability(converter_group, line, container_obj_ref,
                                       command_id, ranged=False, diff=None):
         """
-        Creates a patch for the ApplyDiscreteEffect ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the ApplyDiscreteEffect ability of a line.
 
         :param converter_group: Group that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
@@ -393,9 +389,7 @@ class AoCUpgradeAbilitySubprocessor:
     @staticmethod
     def attribute_change_tracker_ability(converter_group, line, container_obj_ref, diff=None):
         """
-        Creates a patch for the AttributeChangeTracker ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the AttributeChangeTracker ability of a line.
 
         :param converter_group: Group that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
@@ -507,9 +501,7 @@ class AoCUpgradeAbilitySubprocessor:
     @staticmethod
     def death_ability(converter_group, line, container_obj_ref, diff=None):
         """
-        Creates a patch for the Death ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the Death ability of a line.
 
         :param converter_group: Group that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
@@ -607,9 +599,7 @@ class AoCUpgradeAbilitySubprocessor:
     @staticmethod
     def despawn_ability(converter_group, line, container_obj_ref, diff=None):
         """
-        Creates a patch for the Despawn ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the Despawn ability of a line.
 
         :param converter_group: Group that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
@@ -805,9 +795,7 @@ class AoCUpgradeAbilitySubprocessor:
     @staticmethod
     def live_ability(converter_group, line, container_obj_ref, diff=None):
         """
-        Creates a patch for the Live ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the Live ability of a line.
 
         :param converter_group: Group that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
@@ -895,9 +883,7 @@ class AoCUpgradeAbilitySubprocessor:
     @staticmethod
     def los_ability(converter_group, line, container_obj_ref, diff=None):
         """
-        Creates a patch for the LineOfSight ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the LineOfSight ability of a line.
 
         :param converter_group: Group that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
@@ -985,9 +971,7 @@ class AoCUpgradeAbilitySubprocessor:
     @staticmethod
     def move_ability(converter_group, line, container_obj_ref, diff=None):
         """
-        Creates a patch for the Move ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the Move ability of a line.
 
         :param converter_group: Group that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
@@ -1112,9 +1096,7 @@ class AoCUpgradeAbilitySubprocessor:
     @staticmethod
     def named_ability(converter_group, line, container_obj_ref, diff=None):
         """
-        Creates a patch for the Named ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the Named ability of a line.
 
         :param converter_group: Group that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
@@ -1204,9 +1186,7 @@ class AoCUpgradeAbilitySubprocessor:
     @staticmethod
     def resistance_ability(converter_group, line, container_obj_ref, diff=None):
         """
-        Creates a patch for the Resistance ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the Resistance ability of a line.
 
         :param converter_group: Group that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
@@ -1242,9 +1222,7 @@ class AoCUpgradeAbilitySubprocessor:
     @staticmethod
     def selectable_ability(converter_group, line, container_obj_ref, diff=None):
         """
-        Creates a patch for the Selectable ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the Selectable ability of a line.
 
         :param converter_group: Group that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
@@ -1418,9 +1396,7 @@ class AoCUpgradeAbilitySubprocessor:
                                  upgrade_source, upgrade_target,
                                  command_id, diff=None):
         """
-        Creates a patch for the Selectable ability of a line. You can either supply a
-        diff between two units in the line or name the updated members specifically
-        with a member dict.
+        Creates a patch for the Selectable ability of a line.
 
         :param converter_group: Group that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
