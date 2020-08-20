@@ -21,27 +21,6 @@ from .hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
 from .value_object.media.blendomatic import BlendingMode
 
 
-# REFA: function -> inline
-def subtexture_meta(tx, ty, hx, hy, cx, cy):
-    """
-    generate a dict that contains the meta information for
-    the given parameters:
-        origin x, y
-        height, width
-        center/hotspot x, y
-    """
-    ret = {
-        "x":  tx,
-        "y":  ty,
-        "w":  hx,
-        "h":  hy,
-        "cx": cx,
-        "cy": cy,
-    }
-
-    return ret
-
-
 # REFA: function -> entity object
 class TextureImage:
     """
@@ -266,11 +245,20 @@ def merge_frames(frames, custom_packer=None):
         # draw the subtexture on atlas_data
         atlas_data[pos_y:pos_y + sub_h, pos_x:pos_x + sub_w] = sub_frame.data
 
-        # generate subtexture meta information object
         hotspot_x, hotspot_y = sub_frame.hotspot
-        drawn_frames_meta.append(subtexture_meta(pos_x, pos_y,
-                                                 sub_w, sub_h,
-                                                 hotspot_x, hotspot_y))
+
+        # generate subtexture meta information dict:
+        # origin x, origin y, width, height, hotspot x, hotspot y
+        drawn_frames_meta.append(
+            {
+                "x":  pos_x,
+                "y":  pos_y,
+                "w":  sub_w,
+                "h":  sub_h,
+                "cx": hotspot_x,
+                "cy": hotspot_y,
+            }
+        )
 
     atlas = TextureImage(atlas_data)
 
