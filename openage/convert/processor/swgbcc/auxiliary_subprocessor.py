@@ -11,11 +11,11 @@ or other objects.
 """
 from ....nyan.nyan_structs import MemberSpecialValue
 from ...dataformat.aoc.combined_sound import CombinedSound
-from ...dataformat.aoc.forward_ref import ForwardRef
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup,\
     GenieBuildingLineGroup, GenieUnitLineGroup
 from ...dataformat.converter_object import RawAPIObject
 from ...service import internal_name_lookups
+from ...value_object.conversion.forward_ref import ForwardRef
 from ..aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
 
 

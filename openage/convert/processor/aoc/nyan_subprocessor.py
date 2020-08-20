@@ -10,13 +10,13 @@ Convert API-like objects to nyan objects. Subroutine of the
 main AoC processor.
 """
 from ...dataformat.aoc.combined_terrain import CombinedTerrain
-from ...dataformat.aoc.forward_ref import ForwardRef
 from ...dataformat.aoc.genie_tech import UnitLineUpgrade
 from ...dataformat.aoc.genie_unit import GenieGarrisonMode,\
     GenieMonkGroup, GenieStackBuildingGroup
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup
 from ...dataformat.converter_object import RawAPIObject
 from ...service import internal_name_lookups
+from ...value_object.conversion.forward_ref import ForwardRef
 from .ability_subprocessor import AoCAbilitySubprocessor
 from .auxiliary_subprocessor import AoCAuxiliarySubprocessor
 from .civ_subprocessor import AoCCivSubprocessor

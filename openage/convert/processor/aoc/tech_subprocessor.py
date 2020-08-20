@@ -9,13 +9,13 @@
 Creates patches for technologies.
 """
 from ....nyan.nyan_structs import MemberOperator
-from ...dataformat.aoc.forward_ref import ForwardRef
 from ...dataformat.aoc.genie_tech import GenieTechEffectBundleGroup,\
     CivTeamBonus, CivBonus
 from ...dataformat.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup
 from ...dataformat.converter_object import RawAPIObject
 from ...service import internal_name_lookups
+from ...value_object.conversion.forward_ref import ForwardRef
 from .upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
 from .upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from .upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor

@@ -14,12 +14,12 @@ from math import degrees
 from ....nyan.nyan_structs import MemberOperator, MemberSpecialValue
 from ...dataformat.aoc.combined_sound import CombinedSound
 from ...dataformat.aoc.combined_sprite import CombinedSprite
-from ...dataformat.aoc.forward_ref import ForwardRef
 from ...dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
 from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieVariantGroup, GenieUnitLineGroup
 from ...dataformat.converter_object import RawAPIObject
 from ...service import internal_name_lookups
+from ...value_object.conversion.forward_ref import ForwardRef
 from ...value_object.dataformat.value_members import NoDiffMember
 from .upgrade_effect_subprocessor import AoCUpgradeEffectSubprocessor
 

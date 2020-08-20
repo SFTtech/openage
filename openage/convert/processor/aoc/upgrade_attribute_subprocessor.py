@@ -8,11 +8,11 @@
 """
 Creates upgrade patches for attribute modification effects in AoC.
 """
-from ...dataformat.aoc.forward_ref import ForwardRef
 from ...dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
 from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup
 from ...dataformat.converter_object import RawAPIObject
 from ...service import internal_name_lookups
+from ...value_object.conversion.forward_ref import ForwardRef
 
 
 class AoCUpgradeAttributeSubprocessor:

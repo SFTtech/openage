@@ -10,10 +10,10 @@ Upgrades effects and resistances for the Apply*Effect and Resistance
 abilities.
 """
 from ....nyan.nyan_structs import MemberOperator
-from ...dataformat.aoc.forward_ref import ForwardRef
 from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup
 from ...dataformat.converter_object import RawAPIObject
 from ...service import internal_name_lookups
+from ...value_object.conversion.forward_ref import ForwardRef
 from ...value_object.dataformat.value_members import NoDiffMember,\
     LeftMissingMember, RightMissingMember
 

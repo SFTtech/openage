@@ -1,5 +1,6 @@
 add_py_modules(
 	__init__.py
+	forward_ref.py
 )
 
 add_subdirectory(aoc)

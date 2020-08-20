@@ -5,9 +5,9 @@
 """
 Creates patches and modifiers for civs.
 """
-from ...dataformat.aoc.forward_ref import ForwardRef
 from ...dataformat.converter_object import RawAPIObject
 from ...service import internal_name_lookups
+from ...value_object.conversion.forward_ref import ForwardRef
 
 
 class RoRCivSubprocessor:

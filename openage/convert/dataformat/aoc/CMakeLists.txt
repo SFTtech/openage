@@ -3,7 +3,6 @@ add_py_modules(
 	combined_sprite.py
 	combined_sound.py
 	combined_terrain.py
-	forward_ref.py
 	genie_civ.py
 	genie_connection.py
 	genie_effect.py

@@ -16,11 +16,11 @@ create a diff for every civ line.
 """
 from ....nyan.nyan_structs import MemberSpecialValue
 from ....util.ordered_set import OrderedSet
-from ...dataformat.aoc.forward_ref import ForwardRef
 from ...dataformat.aoc.genie_unit import GenieVillagerGroup,\
     GenieStackBuildingGroup
 from ...dataformat.converter_object import RawAPIObject
 from ...service import internal_name_lookups
+from ...value_object.conversion.forward_ref import ForwardRef
 from ..aoc.ability_subprocessor import AoCAbilitySubprocessor
 from ..aoc.effect_subprocessor import AoCEffectSubprocessor
 
