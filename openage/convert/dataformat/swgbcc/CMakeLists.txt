@@ -1,5 +1,5 @@
 add_py_modules(
 	__init__.py
-	swgb_tech.py
-	swgb_unit.py
+	genie_tech.py
+	genie_unit.py
 )

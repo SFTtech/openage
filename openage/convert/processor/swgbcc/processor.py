@@ -16,9 +16,9 @@ from ...dataformat.aoc.genie_tech import BuildingLineUpgrade,\
 from ...dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
     GenieVillagerGroup, GenieAmbientGroup, GenieVariantGroup,\
     GenieBuildingLineGroup, GenieGarrisonMode
-from ...dataformat.swgbcc.swgb_tech import SWGBUnitUnlock,\
+from ...dataformat.swgbcc.genie_tech import SWGBUnitUnlock,\
     SWGBUnitLineUpgrade
-from ...dataformat.swgbcc.swgb_unit import SWGBUnitTransformGroup,\
+from ...dataformat.swgbcc.genie_unit import SWGBUnitTransformGroup,\
     SWGBMonkGroup, SWGBUnitLineGroup, SWGBStackBuildingGroup
 from ...service.nyan.api_loader import load_api
 from ...value_object.conversion.swgb.internal_nyan_names import MONK_GROUP_ASSOCS,\
