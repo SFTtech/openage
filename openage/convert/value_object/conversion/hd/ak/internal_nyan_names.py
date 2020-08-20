@@ -7,7 +7,6 @@ Age of Empires games do not necessarily come with an english
 translation. Therefore, we use the strings in this file to
 figure out the names for a nyan object.
 """
-# REFA: Whole file -> value object
 
 # key: head unit id; value: (nyan object name, filename prefix)
 # contains only new units of AK

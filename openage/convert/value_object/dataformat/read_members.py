@@ -668,7 +668,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         return struct definitions for this type
         """
 
-        from ...dataformat.multisubtype_base import MultisubtypeBaseFile
+        from ...deprecated.multisubtype_base import MultisubtypeBaseFile
 
         snippet_file_name = self.file_name or file_name
 

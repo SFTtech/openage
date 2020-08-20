@@ -9,8 +9,8 @@
 Convert data from DE2 to openage formats.
 """
 
-import openage.convert.dataformat.aoc.internal_nyan_names as aoc_internal
-import openage.convert.dataformat.de2.internal_nyan_names as de2_internal
+import openage.convert.value_object.conversion.aoc.internal_nyan_names as aoc_internal
+import openage.convert.value_object.conversion.de2.internal_nyan_names as de2_internal
 
 from ....log import info
 from ....util.ordered_set import OrderedSet

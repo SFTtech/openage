@@ -21,9 +21,9 @@ from ...dataformat.ror.genie_tech import RoRStatUpgrade,\
 from ...dataformat.ror.genie_unit import RoRUnitTaskGroup,\
     RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup, RoRAmbientGroup,\
     RoRVariantGroup
-from ...dataformat.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
-    VARIANT_GROUP_LOOKUPS
 from ...service.nyan.api_loader import load_api
+from ...value_object.conversion.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
+    VARIANT_GROUP_LOOKUPS
 from ..aoc.media_subprocessor import AoCMediaSubprocessor
 from ..aoc.processor import AoCProcessor
 from .modpack_subprocessor import RoRModpackSubprocessor

@@ -4,8 +4,8 @@
 gamespec struct code generation listing.
 """
 
-from ..convert.dataformat.multisubtype_base import MultisubtypeBaseFile
 from ..convert.deprecated.data_formatter import DataFormatter
+from ..convert.deprecated.multisubtype_base import MultisubtypeBaseFile
 from ..convert.entity_object.language.stringresource import StringResource
 from ..convert.texture import Texture
 from ..convert.value_object.media.blendomatic import Blendomatic

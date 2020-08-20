@@ -35,9 +35,9 @@ from ...dataformat.aoc.genie_unit import GenieUnitObject
 from ...dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
     GenieVillagerGroup
 from ...dataformat.aoc.genie_unit import GenieVariantGroup
-from ...dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
-    VARIANT_GROUP_LOOKUPS
 from ...service.nyan.api_loader import load_api
+from ...value_object.conversion.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
+    VARIANT_GROUP_LOOKUPS
 from .media_subprocessor import AoCMediaSubprocessor
 from .modpack_subprocessor import AoCModpackSubprocessor
 from .nyan_subprocessor import AoCNyanSubprocessor

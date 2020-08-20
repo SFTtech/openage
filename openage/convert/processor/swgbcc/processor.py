@@ -16,14 +16,14 @@ from ...dataformat.aoc.genie_tech import BuildingLineUpgrade,\
 from ...dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
     GenieVillagerGroup, GenieAmbientGroup, GenieVariantGroup,\
     GenieBuildingLineGroup, GenieGarrisonMode
-from ...dataformat.swgbcc.internal_nyan_names import MONK_GROUP_ASSOCS,\
-    CIV_LINE_ASSOCS, AMBIENT_GROUP_LOOKUPS, VARIANT_GROUP_LOOKUPS,\
-    CIV_TECH_ASSOCS
 from ...dataformat.swgbcc.swgb_tech import SWGBUnitUnlock,\
     SWGBUnitLineUpgrade
 from ...dataformat.swgbcc.swgb_unit import SWGBUnitTransformGroup,\
     SWGBMonkGroup, SWGBUnitLineGroup, SWGBStackBuildingGroup
 from ...service.nyan.api_loader import load_api
+from ...value_object.conversion.swgb.internal_nyan_names import MONK_GROUP_ASSOCS,\
+    CIV_LINE_ASSOCS, AMBIENT_GROUP_LOOKUPS, VARIANT_GROUP_LOOKUPS,\
+    CIV_TECH_ASSOCS
 from ..aoc.media_subprocessor import AoCMediaSubprocessor
 from ..aoc.processor import AoCProcessor
 from .modpack_subprocessor import SWGBCCModpackSubprocessor
