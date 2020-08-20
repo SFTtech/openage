@@ -4,7 +4,6 @@
 Provides code snippet templates for the generation
 of structs.
 """
-# REFA: Whole file -> REMOVE
 
 
 from string import Template

@@ -1,7 +1,6 @@
 # Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C
-# REFA: Whole file -> REMOVE
 
 """
 dataformat-specific utilities.

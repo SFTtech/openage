@@ -8,9 +8,9 @@ import math
 import struct
 
 from ...util.strings import decode_until_null
-from ..export.struct_definition import (StructDefinition, vararray_match,
-                                        integer_match)
-from ..export.util import struct_type_lookup
+from ..deprecated.struct_definition import (StructDefinition, vararray_match,
+                                            integer_match)
+from ..deprecated.util import struct_type_lookup
 from ..value_object.dataformat.member_access import READ, READ_GEN, READ_UNKNOWN, NOREAD_EXPORT, SKIP
 from ..value_object.dataformat.read_members import (IncludeMembers, ContinueReadMember,
                                                     MultisubtypeMember, GroupMember, SubdataMember,

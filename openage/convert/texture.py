@@ -14,7 +14,7 @@ from ..log import spam
 from ..util.fslike.path import Path
 from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from .dataformat import genie_structure
-from .export import struct_definition
+from .deprecated import struct_definition
 from .value_object.media.blendomatic import BlendingMode
 from .value_object.media.hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .value_object.media.hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,

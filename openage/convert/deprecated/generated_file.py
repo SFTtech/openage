@@ -7,8 +7,6 @@ from string import Template
 from .content_snippet import ContentSnippet, SectionType
 from .header_snippet import HeaderSnippet
 
-# REFA: Whole file -> REMOVE
-
 
 class GeneratedFile:
     """

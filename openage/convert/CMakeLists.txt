@@ -9,6 +9,7 @@ add_py_modules(
 )
 
 add_subdirectory(dataformat)
+add_subdirectory(deprecated)
 add_subdirectory(entity_object)
 add_subdirectory(export)
 add_subdirectory(interface)

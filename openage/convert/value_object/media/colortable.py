@@ -6,8 +6,8 @@ import math
 
 from ....log import dbg
 from ...dataformat.genie_structure import GenieStructure
+from ...deprecated.struct_definition import StructDefinition
 from ...export.data_definition import DataDefinition
-from ...export.struct_definition import StructDefinition
 
 
 class ColorTable(GenieStructure):

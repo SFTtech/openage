@@ -5,11 +5,11 @@
 from enum import Enum
 import types
 
-from ...export.content_snippet import ContentSnippet, SectionType
-from ...export.entry_parser import EntryParser
-from ...export.generated_file import GeneratedFile
-from ...export.struct_snippet import StructSnippet
-from ...export.util import determine_headers, determine_header
+from ...deprecated.content_snippet import ContentSnippet, SectionType
+from ...deprecated.entry_parser import EntryParser
+from ...deprecated.generated_file import GeneratedFile
+from ...deprecated.struct_snippet import StructSnippet
+from ...deprecated.util import determine_headers, determine_header
 
 
 class ReadMember:
@@ -698,7 +698,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 MultisubtypeBaseFile.name_struct))
 
             # add member methods to the struct
-            from ...export.data_formatter import DataFormatter
+            from ...deprecated.data_formatter import DataFormatter
             snippet.add_members((
                 "%s;" % member.get_signature()
                 for _, member in sorted(DataFormatter.member_methods.items())

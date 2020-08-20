@@ -6,7 +6,8 @@
 from collections import defaultdict
 
 from ...dataformat.genie_structure import GenieStructure
-from ...export import data_definition, struct_definition
+from ...deprecated import struct_definition
+from ...export import data_definition
 
 
 class StringResource(GenieStructure):
