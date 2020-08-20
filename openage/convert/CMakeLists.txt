@@ -3,9 +3,7 @@ add_py_modules(
 	binpack.py
 	changelog.py
 	driver.py
-	game_versions.py
 	main.py
-	singlefile.py
 	slp_converter_pool.py
 	texture.py
 )
