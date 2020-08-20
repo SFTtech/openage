@@ -9,24 +9,24 @@ Multiprocessing-based SLP-to-texture converter service.
 #      Ideally, time-intemsive parts of SLP.py should be re-written as
 #      optimized nogil Cython functions, entirely removing the need for
 #      multiprocessing.
+# REFA: Whole file -> processor
 
 import multiprocessing
 import os
 import queue
-
 from threading import Lock
 
 from ..log import warn, err, get_loglevel
 from ..util.system import free_memory
-
-from .slp import SLP
 from .texture import Texture
+from .value_object.media.slp import SLP
 
 
 class SLPConverterPool:
     """
     Multiprocessing-based pool of SLP converter processes.
     """
+
     def __init__(self, palette, jobs=None):
         if jobs is None:
             jobs = os.cpu_count()

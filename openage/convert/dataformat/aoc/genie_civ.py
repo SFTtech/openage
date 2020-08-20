@@ -3,6 +3,7 @@
 """
 Contains structures and API-like objects for civilization from AoC.
 """
+# REFA: Whole file -> entity object
 
 from ..converter_object import ConverterObject, ConverterObjectGroup
 from .genie_tech import CivTeamBonus, CivTechTree

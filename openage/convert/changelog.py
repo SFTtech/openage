@@ -6,6 +6,7 @@ Asset version change log
 used to determine whether assets that were converted by an earlier version of
 openage are still up to date.
 """
+# REFA: Whole file -> service
 
 from ..log import info, warn
 from ..testing.testing import TestError

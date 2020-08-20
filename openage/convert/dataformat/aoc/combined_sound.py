@@ -3,6 +3,7 @@
 """
 References a sound in the game that has to be converted.
 """
+# REFA: Whole file -> entity object
 
 
 class CombinedSound:

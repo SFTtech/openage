@@ -36,13 +36,14 @@ REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
 REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
 
 
+# REFA: function -> service
 def mount_asset_dirs(srcdir, game_version):
     """
     Returns a Union path where srcdir is mounted at /,
     and all the asset files are mounted in subfolders.
     """
     from ..util.fslike.union import Union
-    from .drs import DRS
+    from .value_object.media.drs import DRS
 
     result = Union().root
     result.mount(srcdir)
@@ -93,6 +94,7 @@ def mount_asset_dirs(srcdir, game_version):
     return result
 
 
+# REFA: function -> service
 def mount_input(srcdir=None, prev_source_dir_path=None):
     """
     Mount the input folders for conversion.
@@ -224,6 +226,7 @@ def expand_relative_path(path):
     return os.path.realpath(os.path.expandvars(os.path.expanduser(path)))
 
 
+# REFA: function -> subtool (wine)
 def wanna_use_wine():
     """
     Ask the user if wine should be used.
@@ -256,6 +259,7 @@ def wanna_use_wine():
     return answer
 
 
+# REFA: function -> subtool (wine)
 def set_custom_wineprefix():
     """
     Allow the customization of the WINEPREFIX environment variable.
@@ -289,6 +293,7 @@ def set_custom_wineprefix():
         os.environ["WINEPREFIX"] = new_wineprefix
 
 
+# REFA: function -> subtool (wine)
 def query_source_dir(proposals):
     """
     Query interactively for a conversion source directory.
@@ -322,6 +327,7 @@ def query_source_dir(proposals):
     return sourcedir
 
 
+# REFA: function -> subtool (wine)
 def acquire_conversion_source_dir(prev_source_dir_path=None):
     """
     Acquires source dir for the asset conversion.
@@ -369,6 +375,7 @@ def acquire_conversion_source_dir(prev_source_dir_path=None):
     return CaseIgnoringDirectory(sourcedir).root
 
 
+# REFA: function -> subtool (wine)
 def wine_to_real_path(path):
     """
     Turn a Wine file path (C:\\xyz) into a local filesystem path (~/.wine/xyz)
@@ -376,11 +383,13 @@ def wine_to_real_path(path):
     return subprocess.check_output(('winepath', path)).strip().decode()
 
 
+# REFA: function -> subtool (wine)
 def unescape_winereg(value):
     """Remove quotes and escapes from a Wine registry value"""
     return value.strip('"').replace(r'\\\\', '\\')
 
 
+# REFA: function -> subtool (wine)
 def source_dir_proposals(call_wine):
     """Yield a list of directory names where an installation might be found"""
     if "WINEPREFIX" in os.environ:
@@ -431,6 +440,7 @@ def source_dir_proposals(call_wine):
         dbg("wine registry extraction failed: %s", error)
 
 
+# REFA: function -> service
 def conversion_required(asset_dir, args):
     """
     Returns true if an asset conversion is required to run the game.
@@ -498,6 +508,7 @@ def conversion_required(asset_dir, args):
     return True
 
 
+# REFA: function -> subtool
 def interactive_browser(srcdir=None):
     """
     launch an interactive view for browsing the original
@@ -527,11 +538,11 @@ def interactive_browser(srcdir=None):
         save a slp as png.
         """
         from .texture import Texture
-        from .slp import SLP
-        from .driver import get_palette
+        from .value_object.media.slp import SLP
+        from .driver import get_palettes
 
         if not palette:
-            palette = get_palette(data)
+            palette = get_palettes(data)
 
         with path.open("rb") as slpfile:
             tex = Texture(SLP(slpfile.read()), palette)

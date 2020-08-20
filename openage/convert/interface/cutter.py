@@ -1,6 +1,7 @@
 # Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 """ Cutting some user interface assets into subtextures """
+# REFA: Whole file -> service
 
 from ..texture import TextureImage
 

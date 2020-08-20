@@ -3,6 +3,7 @@
 """ Additional hardcoded information about user interface assets """
 
 
+# REFA: lists, sets, dicts -> value_object
 INGAME_HUD_BACKGROUNDS = [
     51141,
     51142,
@@ -47,6 +48,7 @@ KNOWN_SUBTEX_CORNER_COORDS = [
 ]
 
 
+# REFA: function -> service
 def ingame_hud_background_index(idx):
     """
     Index in the hardcoded list of the known ingame hud backgrounds to match the civ.
@@ -54,6 +56,7 @@ def ingame_hud_background_index(idx):
     return INGAME_HUD_BACKGROUNDS.index(int(idx))
 
 
+# REFA: function -> service
 def is_ingame_hud_background(idx):
     """
     True if in the hardcoded list of the known ingame hud backgrounds.

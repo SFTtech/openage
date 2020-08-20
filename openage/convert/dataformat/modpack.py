@@ -3,6 +3,7 @@
 """
 Defines a modpack that can be exported.
 """
+# REFA: Whole file -> entity object
 
 from ..export.data_definition import DataDefinition
 from ..export.formats.modpack_info import ModpackInfo

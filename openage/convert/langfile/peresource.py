@@ -3,6 +3,7 @@
 """
 Provides PEResources, which reads the resource section from a PEFile.
 """
+# REFA: Whole file -> value object
 
 from collections import defaultdict
 

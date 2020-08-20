@@ -4,14 +4,16 @@
 Convert a single slp file from some drs archive to a png image.
 """
 
+# REFA: Whole file -> tool
+
 from pathlib import Path
 
 from ..log import info
 from ..util.fslike.directory import Directory
-from .colortable import ColorTable
 from .dataformat.version_detect import GameEdition
-from .drs import DRS
 from .texture import Texture
+from .value_object.media.colortable import ColorTable
+from .value_object.media.drs import DRS
 
 
 def init_subparser(cli):
@@ -129,7 +131,7 @@ def read_slp_file(slp_path, output_path, palettes):
 
     # import here to prevent that the __main__ depends on SLP
     # just by importing this singlefile.py.
-    from .slp import SLP
+    from .value_object.media.slp import SLP
 
     # parse the slp_path image
     info("parsing slp image...")
@@ -159,7 +161,7 @@ def read_slp_in_drs_file(drs, slp_path, output_path, palettes):
 
     # import here to prevent that the __main__ depends on SLP
     # just by importing this singlefile.py.
-    from .slp import SLP
+    from .value_object.media.slp import SLP
 
     # parse the slp image
     info("parsing slp image...")
@@ -185,7 +187,7 @@ def read_smp_file(smp_path, output_path, palettes):
 
     # import here to prevent that the __main__ depends on SMP
     # just by importing this singlefile.py.
-    from .smp import SMP
+    from .value_object.media.smp import SMP
 
     # parse the smp_path image
     info("parsing smp image...")
@@ -211,7 +213,7 @@ def read_smx_file(smx_path, output_path, palettes):
 
     # import here to prevent that the __main__ depends on SMP
     # just by importing this singlefile.py.
-    from .smx import SMX
+    from .value_object.media.smx import SMX
 
     # parse the smx_path image
     info("parsing smx image...")

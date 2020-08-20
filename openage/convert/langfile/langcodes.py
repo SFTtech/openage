@@ -4,6 +4,7 @@
 Translates the language codes in PE files or text resources to their
 string equivalent.
 """
+# REFA: Whole package -> value_object
 
 LANGCODES_AOC = {
     1: 'ar',

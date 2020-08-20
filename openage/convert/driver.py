@@ -10,9 +10,7 @@ import re
 from tempfile import gettempdir
 
 from ..log import info, dbg
-from .blendomatic import Blendomatic
 from .changelog import (ASSET_VERSION)
-from .colortable import ColorTable
 from .dataformat.media_types import MediaType
 from .dataformat.version_detect import GameEdition, GameExpansion
 from .gamedata.empiresdat import load_gamespec
@@ -25,8 +23,11 @@ from .langfile.stringresource import StringResource
 from .opus import opusenc
 from .processor.modpack_exporter import ModpackExporter
 from .slp_converter_pool import SLPConverterPool
+from .value_object.media.blendomatic import Blendomatic
+from .value_object.media.colortable import ColorTable
 
 
+# REFA: function -> service
 def get_string_resources(args):
     """ reads the (language) string resources """
 
@@ -64,6 +65,7 @@ def get_string_resources(args):
     return stringres
 
 
+# REFA: function -> service
 def get_blendomatic_data(args):
     """ reads blendomatic.dat """
     # in HD edition, blendomatic.dat has been renamed to
@@ -76,6 +78,7 @@ def get_blendomatic_data(args):
     return Blendomatic(blendomatic_dat)
 
 
+# REFA: function -> service
 def get_gamespec(srcdir, game_version, dont_pickle):
     """
     Reads empires.dat file.
@@ -121,6 +124,7 @@ def convert(args):
     info("asset conversion complete; asset version: %s", ASSET_VERSION)
 
 
+# REFA: function -> service
 def get_palettes(srcdir, game_version, index=None):
     """
     Read and create the color palettes.
@@ -186,6 +190,7 @@ def get_palettes(srcdir, game_version, index=None):
     return palettes
 
 
+# REFA: function -> tool
 def convert_metadata(args):
     """
     Converts the metadata part.
@@ -256,6 +261,7 @@ def convert_metadata(args):
         #     player_palette.save_visualization(outfile)
 
 
+# REFA: function -> service
 def get_converter(game_version):
     """
     Returns the converter for the specified game version.
@@ -284,6 +290,7 @@ def get_converter(game_version):
                     % game_edition.edition_name)
 
 
+# REFA: function -> REMOVE
 def extract_mediafiles_names_map(srcdir):
     """
     Some *.bina files contain name assignments.
@@ -312,6 +319,7 @@ def extract_mediafiles_names_map(srcdir):
     return names_map
 
 
+# REFA: function -> REMOVE
 def slp_rename(filepath, names_map):
     """ Returns a human-readable name if it's in the map """
     try:
@@ -324,6 +332,7 @@ def slp_rename(filepath, names_map):
         return filepath
 
 
+# REFA: function -> service
 def get_existing_graphics(args):
     """
     List the graphics files that exist in the graphics file paths.
@@ -335,6 +344,7 @@ def get_existing_graphics(args):
     return filenames
 
 
+# REFA: function -> REMOVE
 def convert_media(args):
     """ Converts the media part """
 
@@ -402,6 +412,7 @@ def convert_media(args):
         )
 
 
+# REFA: function -> REMOVE
 def get_filter(args):
     """
     Return a set containing tuples (DIRNAMES, SUFFIX), where DIRNAMES
@@ -423,6 +434,7 @@ def get_filter(args):
     return ignored
 
 
+# REFA: function -> REMOVE
 def change_dir(path_parts, dirname):
     """
     If requested, rename the containing directory
@@ -442,6 +454,7 @@ def change_dir(path_parts, dirname):
     return path_parts
 
 
+# REFA: function -> REMOVE
 def convert_slp(filepath, dirname, names_map, converter_pool, args):
     """
     Convert a slp image and save it to the target dir.
@@ -483,6 +496,7 @@ def convert_slp(filepath, dirname, names_map, converter_pool, args):
     texture.save(args.targetdir, out_filename, ("csv",))
 
 
+# REFA: function -> REMOVE
 def convert_wav(filepath, dirname, args):
     """
     Convert a wav audio file to an opus file
@@ -503,6 +517,7 @@ def convert_wav(filepath, dirname, args):
         outfile.write(outdata)
 
 
+# REFA: function -> REMOVE
 def convert_mediafile(filepath, dirname, names_map, converter_pool, args):
     """
     Converts a single media file, according to the supplied arguments.

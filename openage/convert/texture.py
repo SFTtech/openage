@@ -13,14 +13,15 @@ import numpy
 from ..log import spam
 from ..util.fslike.path import Path
 from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
-from .blendomatic import BlendingMode
 from .dataformat import genie_structure
 from .export import struct_definition
 from .hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
                                 TERRAIN_ASPECT_RATIO)
+from .value_object.media.blendomatic import BlendingMode
 
 
+# REFA: function -> inline
 def subtexture_meta(tx, ty, hx, hy, cx, cy):
     """
     generate a dict that contains the meta information for
@@ -41,6 +42,7 @@ def subtexture_meta(tx, ty, hx, hy, cx, cy):
     return ret
 
 
+# REFA: function -> entity object
 class TextureImage:
     """
     represents a image created from a (r,g,b,a) matrix.
@@ -77,6 +79,7 @@ class TextureImage:
         return self.data
 
 
+# REFA: function -> entity object
 class Texture(genie_structure.GenieStructure):
     image_format = "png"
 
@@ -93,9 +96,9 @@ class Texture(genie_structure.GenieStructure):
         super().__init__()
         spam("creating Texture from %s", repr(input_data))
 
-        from .slp import SLP
-        from .smp import SMP
-        from .smx import SMX
+        from .value_object.media.slp import SLP
+        from .value_object.media.smp import SMP
+        from .value_object.media.smx import SMX
 
         if isinstance(input_data, (SLP, SMP, SMX)):
             frames = []
@@ -212,6 +215,7 @@ class Texture(genie_structure.GenieStructure):
         return data_format
 
 
+# REFA: function -> processor
 def merge_frames(frames, custom_packer=None):
     """
     merge all given frames of this slp to a single image file.
@@ -275,6 +279,7 @@ def merge_frames(frames, custom_packer=None):
     return atlas, (width, height), drawn_frames_meta
 
 
+# REFA: function -> processor
 def merge_terrain(frames):
     """
     Merges tiles from an AoC terrain SLP into a single flat texture.

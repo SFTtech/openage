@@ -4,6 +4,7 @@
 Creates templates for parsing contents of the exported
 data files.
 """
+# REFA: Whole file -> REMOVE
 
 
 from string import Template

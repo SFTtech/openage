@@ -5,6 +5,7 @@ Contains structures and API-like objects for techs from RoR.
 
 Based on the classes from the AoC converter.
 """
+# REFA: Whole file -> entity object
 
 from ..aoc.genie_tech import StatUpgrade, AgeUpgrade, UnitLineUpgrade,\
     BuildingLineUpgrade, UnitUnlock, BuildingUnlock

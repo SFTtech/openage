@@ -3,6 +3,7 @@
 """
 Contains structures and API-like objects for techs from AoC.
 """
+# REFA: Whole file -> entity object
 
 
 from ...dataformat.converter_object import ConverterObject,\

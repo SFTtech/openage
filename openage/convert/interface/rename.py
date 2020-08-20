@@ -3,6 +3,7 @@
 """ Renaming interface assets and splitting into directories """
 
 from .hardcoded import (ingame_hud_background_index, ASSETS)
+# REFA: Whole file -> service
 
 
 def hud_rename(filepath):

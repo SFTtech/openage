@@ -12,10 +12,10 @@ For more information, see doc/media/blendomatic.md
 from math import sqrt
 from struct import Struct, unpack_from
 
-from ..log import dbg
-from .dataformat.genie_structure import GenieStructure
-from .export.data_definition import DataDefinition
-from .export.struct_definition import StructDefinition
+from ....log import dbg
+from ...dataformat.genie_structure import GenieStructure
+from ...export.data_definition import DataDefinition
+from ...export.struct_definition import StructDefinition
 
 
 class BlendingTile:
@@ -199,6 +199,10 @@ class Blendomatic(GenieStructure):
     Represents the blendomatic.dat file.
     In it are multiple blending modes,
     which then contain multiple tiles.
+
+    TODO: Blendomatic should work like SLP, meaning that the Blendomatic PNG
+          should not create the texture, but rather be created by Texture
+          during __init__ with a custom merger.
     """
 
     name_struct = "blending_mode"
@@ -246,7 +250,7 @@ class Blendomatic(GenieStructure):
         each atlas contains all blending masks merged on one texture
         """
 
-        from .texture import Texture
+        from ...texture import Texture
         return [Texture(b_mode) for b_mode in self.blending_modes]
 
     def dump(self, filename):

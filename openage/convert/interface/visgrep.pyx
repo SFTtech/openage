@@ -2,21 +2,23 @@
 
 # If you wanna boost speed even further:
 # cython: profile=False
+# REFA: Whole file -> service
 
 
 """ Cython version of the visgrep utility """
 
+from PIL import Image
 import argparse
-cimport cython
+from collections import namedtuple
 import itertools
 import logging
-import numpy
-cimport numpy
 import sys
 
-from collections import namedtuple
+import numpy
+cimport cython
+cimport numpy
+
 from libcpp.vector cimport vector
-from PIL import Image
 
 
 TOOL_DESCRIPTION = """Python translation of the visgrep v1.09

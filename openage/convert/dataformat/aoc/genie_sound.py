@@ -3,6 +3,7 @@
 """
 Contains structures and API-like objects for sounds from AoC.
 """
+# REFA: Whole file -> entity object
 
 from ...dataformat.converter_object import ConverterObject
 

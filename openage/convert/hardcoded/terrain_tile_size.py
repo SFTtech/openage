@@ -3,6 +3,7 @@
 """
 Tile size for terrain pieces.
 """
+# REFA: Whole file -> value_object
 
 TILE_HALFSIZE = {
     "x": 48,

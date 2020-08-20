@@ -6,6 +6,7 @@ This can be utilized to avoid cyclic dependencies like A->B
 while B->A during conversion. The pointer can be resolved
 once the object has been created.
 """
+# REFA: Whole file -> value object
 
 
 class ForwardRef:

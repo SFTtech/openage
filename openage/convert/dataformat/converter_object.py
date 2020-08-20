@@ -7,6 +7,7 @@ Objects that represent data structures in the original game.
 
 These are simple containers that can be processed by the converter.
 """
+# REFA: Whole file -> entity object
 
 from ...nyan.nyan_structs import NyanObject, NyanPatch, NyanPatchMember, MemberOperator
 from .aoc.combined_sound import CombinedSound

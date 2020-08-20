@@ -5,6 +5,7 @@
 """
 Contains structures and API-like objects for game entities from AoC.
 """
+# REFA: Whole file -> entity object
 
 from enum import Enum
 

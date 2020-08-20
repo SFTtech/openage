@@ -1,6 +1,7 @@
 # Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
+# REFA: Whole file -> REMOVE
 
 from enum import Enum
 

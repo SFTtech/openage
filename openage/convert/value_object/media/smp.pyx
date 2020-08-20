@@ -7,7 +7,7 @@ from struct import Struct, unpack_from
 
 import numpy
 
-from ..log import spam, dbg
+from ....log import spam, dbg
 
 
 cimport cython

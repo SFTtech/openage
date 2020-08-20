@@ -4,6 +4,7 @@
 SWGB tech objects. These extend the normal Genie techs to reflect
 that SWGB techs can have unique variants for every civilization.
 """
+# REFA: Whole file -> entity object
 
 from ..aoc.genie_tech import UnitUnlock, UnitLineUpgrade
 

@@ -5,6 +5,8 @@
 """
 Export requests for media metadata.
 """
+# REFA: Whole file -> entity object
+
 from ...util.observer import Observer
 from .formats.sprite_metadata import SpriteMetadata
 

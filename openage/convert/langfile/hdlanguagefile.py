@@ -3,6 +3,7 @@
 """
 Module for reading AoeII HD Edition text-based language files.
 """
+# REFA: Whole file -> service
 
 from ...log import dbg
 from .langcodes import LANGCODES_DE2, LANGCODES_HD

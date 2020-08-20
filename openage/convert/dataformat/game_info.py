@@ -5,6 +5,7 @@ Associate files or filepaths with hash values to determine the version of a game
 
 TODO: This is unused at the moment.
 """
+# REFA: Whole file -> value object
 
 
 class GameFileVersion:

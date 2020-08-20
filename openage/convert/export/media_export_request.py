@@ -5,6 +5,8 @@
 Specifies a request for a media resource that should be
 converted and exported into a modpack.
 """
+# REFA: Whole file -> entity object
+
 from openage.convert.dataformat.version_detect import GameEdition
 
 from ...util.observer import Observable
@@ -117,15 +119,15 @@ class GraphicsMediaExportRequest(MediaExportRequest):
             media_file = source_file.open("rb")
 
         if source_file.suffix.lower() == ".slp":
-            from ..slp import SLP
+            from ..value_object.media.slp import SLP
             image = SLP(media_file.read())
 
         elif source_file.suffix.lower() == ".smp":
-            from ..smp import SMP
+            from ..value_object.media.smp import SMP
             image = SMP(media_file.read())
 
         elif source_file.suffix.lower() == ".smx":
-            from ..smx import SMX
+            from ..value_object.media.smx import SMX
             image = SMX(media_file.read())
 
         texture = Texture(image, palettes)
@@ -150,7 +152,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
         media_file = source_file.open("rb")
 
         if source_file.suffix.lower() == ".slp":
-            from ..slp import SLP
+            from ..value_object.media.slp import SLP
             image = SLP(media_file.read())
 
         elif source_file.suffix.lower() == ".dds":

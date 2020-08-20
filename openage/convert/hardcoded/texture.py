@@ -3,6 +3,7 @@
 """
 Constants for texture generation.
 """
+# REFA: Whole file -> value_object
 
 # The maximum allowed texture dimension.
 # TODO: Maximum allowed dimension needs to

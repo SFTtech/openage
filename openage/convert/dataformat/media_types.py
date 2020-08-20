@@ -1,6 +1,7 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
 
 # pylint: disable=bad-whitespace
+# REFA: Whole file -> value object
 
 """
 Media types used in games. Media types refer to a group

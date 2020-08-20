@@ -3,6 +3,7 @@
 """
 Output format specification for data to write.
 """
+# REFA: Whole file -> entity object
 
 from ...util.fslike.path import Path
 

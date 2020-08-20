@@ -4,13 +4,13 @@
 gamespec struct code generation listing.
 """
 
-from ..convert.blendomatic import Blendomatic
-from ..convert.colortable import ColorTable
 from ..convert.dataformat.multisubtype_base import MultisubtypeBaseFile
 from ..convert.export.data_formatter import DataFormatter
 from ..convert.gamedata.empiresdat import EmpiresDat
 from ..convert.langfile.stringresource import StringResource
 from ..convert.texture import Texture
+from ..convert.value_object.media.blendomatic import Blendomatic
+from ..convert.value_object.media.colortable import ColorTable
 
 
 def generate_gamespec_structs(projectdir):
