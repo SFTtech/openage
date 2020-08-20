@@ -5,7 +5,7 @@
 """
 Creates patches and modifiers for civs.
 """
-from ...dataformat.converter_object import RawAPIObject
+from ...entity_object.conversion.converter_object import RawAPIObject
 from ...service import internal_name_lookups
 from ...value_object.conversion.forward_ref import ForwardRef
 

@@ -11,14 +11,14 @@ Convert data from RoR to openage formats.
 """
 
 from ....log import info
-from ...dataformat.aoc.genie_object_container import GenieObjectContainer
-from ...dataformat.aoc.genie_tech import InitiatedTech
-from ...dataformat.aoc.genie_unit import GenieUnitObject
-from ...dataformat.ror.genie_sound import RoRSound
-from ...dataformat.ror.genie_tech import RoRStatUpgrade,\
+from ...entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+from ...entity_object.conversion.aoc.genie_tech import InitiatedTech
+from ...entity_object.conversion.aoc.genie_unit import GenieUnitObject
+from ...entity_object.conversion.ror.genie_sound import RoRSound
+from ...entity_object.conversion.ror.genie_tech import RoRStatUpgrade,\
     RoRBuildingLineUpgrade, RoRUnitLineUpgrade, RoRBuildingUnlock, RoRUnitUnlock,\
     RoRAgeUpgrade
-from ...dataformat.ror.genie_unit import RoRUnitTaskGroup,\
+from ...entity_object.conversion.ror.genie_unit import RoRUnitTaskGroup,\
     RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup, RoRAmbientGroup,\
     RoRVariantGroup
 from ...service.nyan.api_loader import load_api

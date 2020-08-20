@@ -10,15 +10,15 @@ Convert data from SWGB:CC to openage formats.
 """
 
 from ....log import info
-from ...dataformat.aoc.genie_object_container import GenieObjectContainer
-from ...dataformat.aoc.genie_tech import BuildingLineUpgrade,\
+from ...entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+from ...entity_object.conversion.aoc.genie_tech import BuildingLineUpgrade,\
     AgeUpgrade, StatUpgrade, InitiatedTech, CivBonus
-from ...dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
+from ...entity_object.conversion.aoc.genie_unit import GenieUnitTaskGroup,\
     GenieVillagerGroup, GenieAmbientGroup, GenieVariantGroup,\
     GenieBuildingLineGroup, GenieGarrisonMode
-from ...dataformat.swgbcc.genie_tech import SWGBUnitUnlock,\
+from ...entity_object.conversion.swgbcc.genie_tech import SWGBUnitUnlock,\
     SWGBUnitLineUpgrade
-from ...dataformat.swgbcc.genie_unit import SWGBUnitTransformGroup,\
+from ...entity_object.conversion.swgbcc.genie_unit import SWGBUnitTransformGroup,\
     SWGBMonkGroup, SWGBUnitLineGroup, SWGBStackBuildingGroup
 from ...service.nyan.api_loader import load_api
 from ...value_object.conversion.swgb.internal_nyan_names import MONK_GROUP_ASSOCS,\

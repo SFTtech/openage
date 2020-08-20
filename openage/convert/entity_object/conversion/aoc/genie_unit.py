@@ -5,12 +5,10 @@
 """
 Contains structures and API-like objects for game entities from AoC.
 """
-# REFA: Whole file -> entity object
 
 from enum import Enum
 
-from ...dataformat.converter_object import ConverterObject,\
-    ConverterObjectGroup
+from ..converter_object import ConverterObject, ConverterObjectGroup
 
 
 class GenieUnitObject(ConverterObject):

@@ -13,8 +13,8 @@ import numpy
 from ..log import spam
 from ..util.fslike.path import Path
 from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
-from .dataformat import genie_structure
 from .deprecated import struct_definition
+from .entity_object.conversion import genie_structure
 from .value_object.media.blendomatic import BlendingMode
 from .value_object.media.hardcoded.terrain_tile_size import TILE_HALFSIZE
 from .value_object.media.hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,

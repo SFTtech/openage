@@ -6,9 +6,9 @@
 Creates patches and modifiers for civs.
 """
 from ....nyan.nyan_structs import MemberOperator
-from ...dataformat.aoc.combined_sprite import CombinedSprite
-from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup
-from ...dataformat.converter_object import RawAPIObject
+from ...entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup
+from ...entity_object.conversion.combined_sprite import CombinedSprite
+from ...entity_object.conversion.converter_object import RawAPIObject
 from ...processor.aoc.tech_subprocessor import AoCTechSubprocessor
 from ...service import internal_name_lookups
 from ...value_object.conversion.forward_ref import ForwardRef

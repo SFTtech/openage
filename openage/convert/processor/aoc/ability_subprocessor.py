@@ -15,14 +15,14 @@ from math import degrees
 
 from ....nyan.nyan_structs import MemberSpecialValue, MemberOperator
 from ....util.ordered_set import OrderedSet
-from ...dataformat.aoc.combined_sound import CombinedSound
-from ...dataformat.aoc.combined_sprite import CombinedSprite
-from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
+from ...entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieAmbientGroup, GenieGarrisonMode, GenieStackBuildingGroup,\
     GenieUnitLineGroup, GenieMonkGroup
-from ...dataformat.aoc.genie_unit import GenieVillagerGroup
-from ...dataformat.converter_object import RawAPIObject
-from ...dataformat.converter_object import RawMemberPush
+from ...entity_object.conversion.aoc.genie_unit import GenieVillagerGroup
+from ...entity_object.conversion.combined_sound import CombinedSound
+from ...entity_object.conversion.combined_sprite import CombinedSprite
+from ...entity_object.conversion.converter_object import RawAPIObject
+from ...entity_object.conversion.converter_object import RawMemberPush
 from ...service import internal_name_lookups
 from ...value_object.conversion.forward_ref import ForwardRef
 from .effect_subprocessor import AoCEffectSubprocessor

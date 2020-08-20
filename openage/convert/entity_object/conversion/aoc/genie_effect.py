@@ -3,9 +3,8 @@
 """
 Contains structures and API-like objects for effects from AoC.
 """
-# REFA: Whole file -> entity object
 
-from ...dataformat.converter_object import ConverterObject
+from ..converter_object import ConverterObject
 
 
 class GenieEffectObject(ConverterObject):

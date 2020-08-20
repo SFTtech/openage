@@ -14,9 +14,9 @@ import openage.convert.value_object.conversion.de2.internal_nyan_names as de2_in
 
 from ....log import info
 from ....util.ordered_set import OrderedSet
-from ...dataformat.aoc.genie_graphic import GenieGraphic
-from ...dataformat.aoc.genie_object_container import GenieObjectContainer
-from ...dataformat.aoc.genie_unit import GenieUnitObject, GenieAmbientGroup, GenieVariantGroup
+from ...entity_object.conversion.aoc.genie_graphic import GenieGraphic
+from ...entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+from ...entity_object.conversion.aoc.genie_unit import GenieUnitObject, GenieAmbientGroup, GenieVariantGroup
 from ...service.nyan.api_loader import load_api
 from ..aoc.pregen_processor import AoCPregenSubprocessor
 from ..aoc.processor import AoCProcessor

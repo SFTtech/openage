@@ -9,7 +9,7 @@
 Creates patches for technologies.
 """
 from ....nyan.nyan_structs import MemberOperator
-from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
+from ...entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieUnitLineGroup
 from ...service import internal_name_lookups
 from ..aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor

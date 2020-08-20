@@ -10,9 +10,9 @@ Creates effects and resistances for the Apply*Effect and Resistance
 abilities.
 """
 from ....nyan.nyan_structs import MemberSpecialValue
-from ...dataformat.aoc.genie_unit import GenieUnitLineGroup,\
+from ...entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup
-from ...dataformat.converter_object import RawAPIObject
+from ...entity_object.conversion.converter_object import RawAPIObject
 from ...service import internal_name_lookups
 from ...value_object.conversion.forward_ref import ForwardRef
 

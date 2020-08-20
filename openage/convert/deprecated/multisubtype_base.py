@@ -1,9 +1,8 @@
 # Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
-# REFA: Whole file -> REMOVE
 
-from ..dataformat.genie_structure import GenieStructure
+from ..entity_object.conversion.genie_structure import GenieStructure
 from ..value_object.dataformat.member_access import NOREAD_EXPORT
 
 

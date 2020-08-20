@@ -11,9 +11,9 @@ abilities that are different from AoC.
 """
 from math import degrees
 
-from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
+from ...entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieVillagerGroup, GenieUnitLineGroup
-from ...dataformat.converter_object import RawAPIObject
+from ...entity_object.conversion.converter_object import RawAPIObject
 from ...service import internal_name_lookups
 from ...value_object.conversion.forward_ref import ForwardRef
 from ..aoc.ability_subprocessor import AoCAbilitySubprocessor

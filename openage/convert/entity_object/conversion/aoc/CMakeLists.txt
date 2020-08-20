@@ -1,8 +1,5 @@
 add_py_modules(
 	__init__.py
-	combined_sprite.py
-	combined_sound.py
-	combined_terrain.py
 	genie_civ.py
 	genie_connection.py
 	genie_effect.py

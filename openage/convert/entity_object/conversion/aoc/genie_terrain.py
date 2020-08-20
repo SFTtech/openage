@@ -3,7 +3,6 @@
 """
 Contains structures and API-like objects for terrain from AoC.
 """
-# REFA: Whole file -> entity object
 
 
 from ..converter_object import ConverterObject, ConverterObjectGroup

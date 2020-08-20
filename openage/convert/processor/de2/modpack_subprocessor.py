@@ -6,7 +6,7 @@
 Organize export data (nyan objects, media, scripts, etc.)
 into modpacks.
 """
-from ...dataformat.modpack import Modpack
+from ...entity_object.conversion.modpack import Modpack
 from ..aoc.modpack_subprocessor import AoCModpackSubprocessor
 
 

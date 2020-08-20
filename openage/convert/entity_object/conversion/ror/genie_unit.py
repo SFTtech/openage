@@ -5,7 +5,6 @@ Contains structures and API-like objects for game entities from RoR.
 
 Based on the classes from the AoC converter.
 """
-# REFA: Whole file -> entity object
 
 from ..aoc.genie_unit import GenieUnitLineGroup, GenieBuildingLineGroup,\
     GenieAmbientGroup, GenieVariantGroup, GenieGarrisonMode, GenieUnitTaskGroup,\

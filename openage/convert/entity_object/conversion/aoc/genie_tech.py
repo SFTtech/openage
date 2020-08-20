@@ -3,11 +3,9 @@
 """
 Contains structures and API-like objects for techs from AoC.
 """
-# REFA: Whole file -> entity object
 
 
-from ...dataformat.converter_object import ConverterObject,\
-    ConverterObjectGroup
+from ..converter_object import ConverterObject, ConverterObjectGroup
 
 
 class GenieTechObject(ConverterObject):

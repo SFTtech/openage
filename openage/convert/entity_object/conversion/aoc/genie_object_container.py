@@ -1,13 +1,12 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-instance-attributes,too-few-public-methods
-# REFA: Whole file -> entity object
 
 """
 Object for comparing and passing around data from a dataset.
 """
 
-from ...dataformat.converter_object import ConverterObjectContainer
+from ..converter_object import ConverterObjectContainer
 
 
 class GenieObjectContainer(ConverterObjectContainer):

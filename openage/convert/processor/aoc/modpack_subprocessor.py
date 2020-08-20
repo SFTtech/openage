@@ -7,7 +7,7 @@ Organize export data (nyan objects, media, scripts, etc.)
 into modpacks.
 """
 from ....nyan.import_tree import ImportTree
-from ...dataformat.modpack import Modpack
+from ...entity_object.conversion.modpack import Modpack
 from ...entity_object.export.formats.nyan_file import NyanFile
 from ...value_object.conversion.forward_ref import ForwardRef
 

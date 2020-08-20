@@ -7,14 +7,13 @@ Objects that represent data structures in the original game.
 
 These are simple containers that can be processed by the converter.
 """
-# REFA: Whole file -> entity object
 
-from ...nyan.nyan_structs import NyanObject, NyanPatch, NyanPatchMember, MemberOperator
-from ..value_object.conversion.forward_ref import ForwardRef
-from ..value_object.dataformat.value_members import NoDiffMember, ValueMember
-from .aoc.combined_sound import CombinedSound
-from .aoc.combined_sprite import CombinedSprite
-from .aoc.combined_terrain import CombinedTerrain
+from ....nyan.nyan_structs import NyanObject, NyanPatch, NyanPatchMember, MemberOperator
+from ...value_object.conversion.forward_ref import ForwardRef
+from ...value_object.dataformat.value_members import NoDiffMember, ValueMember
+from .combined_sound import CombinedSound
+from .combined_sprite import CombinedSprite
+from .combined_terrain import CombinedTerrain
 
 
 class ConverterObject:

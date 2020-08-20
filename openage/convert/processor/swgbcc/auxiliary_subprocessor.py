@@ -10,10 +10,10 @@ Derives complex auxiliary objects from unit lines, techs
 or other objects.
 """
 from ....nyan.nyan_structs import MemberSpecialValue
-from ...dataformat.aoc.combined_sound import CombinedSound
-from ...dataformat.aoc.genie_unit import GenieVillagerGroup,\
+from ...entity_object.conversion.aoc.genie_unit import GenieVillagerGroup,\
     GenieBuildingLineGroup, GenieUnitLineGroup
-from ...dataformat.converter_object import RawAPIObject
+from ...entity_object.conversion.combined_sound import CombinedSound
+from ...entity_object.conversion.converter_object import RawAPIObject
 from ...service import internal_name_lookups
 from ...value_object.conversion.forward_ref import ForwardRef
 from ..aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor

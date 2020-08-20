@@ -4,7 +4,7 @@
 Converter objects for SWGB. Reimplements the ConverterObjectGroup
 instances from AoC.
 """
-# REFA: Whole file -> entity object
+
 from ..aoc.genie_unit import GenieUnitLineGroup, GenieUnitTransformGroup,\
     GenieMonkGroup, GenieStackBuildingGroup
 

@@ -13,8 +13,8 @@ from math import sqrt
 from struct import Struct, unpack_from
 
 from ....log import dbg
-from ...dataformat.genie_structure import GenieStructure
 from ...deprecated.struct_definition import StructDefinition
+from ...entity_object.conversion.genie_structure import GenieStructure
 from ...entity_object.export.data_definition import DataDefinition
 
 

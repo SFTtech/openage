@@ -10,7 +10,7 @@ Creates nyan objects for things that are hardcoded into the Genie Engine,
 but configurable in openage. E.g. HP.
 """
 from ....nyan.nyan_structs import MemberSpecialValue
-from ...dataformat.converter_object import RawAPIObject,\
+from ...entity_object.conversion.converter_object import RawAPIObject,\
     ConverterObjectGroup
 from ...service import internal_name_lookups
 from ...value_object.conversion.forward_ref import ForwardRef

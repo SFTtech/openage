@@ -8,7 +8,6 @@ add_py_modules(
 	texture.py
 )
 
-add_subdirectory(dataformat)
 add_subdirectory(deprecated)
 add_subdirectory(entity_object)
 add_subdirectory(interface)

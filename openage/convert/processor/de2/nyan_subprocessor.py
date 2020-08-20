@@ -9,11 +9,11 @@
 Convert API-like objects to nyan objects. Subroutine of the
 main DE2 processor.
 """
-from ...dataformat.aoc.combined_terrain import CombinedTerrain
-from ...dataformat.aoc.genie_tech import UnitLineUpgrade
-from ...dataformat.aoc.genie_unit import GenieVillagerGroup,\
+from ...entity_object.conversion.aoc.genie_tech import UnitLineUpgrade
+from ...entity_object.conversion.aoc.genie_unit import GenieVillagerGroup,\
     GenieGarrisonMode, GenieMonkGroup, GenieStackBuildingGroup
-from ...dataformat.converter_object import RawAPIObject
+from ...entity_object.conversion.combined_terrain import CombinedTerrain
+from ...entity_object.conversion.converter_object import RawAPIObject
 from ...service import internal_name_lookups
 from ...value_object.conversion.forward_ref import ForwardRef
 from ..aoc.ability_subprocessor import AoCAbilitySubprocessor

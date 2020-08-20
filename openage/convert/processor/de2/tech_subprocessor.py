@@ -6,7 +6,7 @@
 Creates patches for technologies.
 """
 from ....nyan.nyan_structs import MemberOperator
-from ...dataformat.aoc.genie_tech import CivTeamBonus, CivBonus
+from ...entity_object.conversion.aoc.genie_tech import CivTeamBonus, CivBonus
 from ..aoc.tech_subprocessor import AoCTechSubprocessor
 from ..aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from ..aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
