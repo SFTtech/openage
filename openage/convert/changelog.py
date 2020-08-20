@@ -10,7 +10,7 @@ openage are still up to date.
 
 from ..log import info, warn
 from ..testing.testing import TestError
-from .dataformat.version_detect import GameEdition
+from .value_object.dataformat.version_detect import GameEdition
 from .value_object.media.datfile.empiresdat import EmpiresDat
 
 

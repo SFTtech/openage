@@ -19,8 +19,8 @@ from ..util.fslike.directory import CaseIgnoringDirectory, Directory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
 from ..util.strings import format_progress
-from .dataformat.version_detect import Support
-from .dataformat.version_detect import get_game_info, GameEdition
+from .value_object.dataformat.version_detect import Support
+from .value_object.dataformat.version_detect import get_game_info, GameEdition
 
 
 STANDARD_PATH_IN_32BIT_WINEPREFIX =\

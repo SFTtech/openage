@@ -1,16 +1,15 @@
 # Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,abstract-method
-# REFA: Whole file -> value object
 
 from enum import Enum
 import types
 
-from ..export.content_snippet import ContentSnippet, SectionType
-from ..export.entry_parser import EntryParser
-from ..export.generated_file import GeneratedFile
-from ..export.struct_snippet import StructSnippet
-from ..export.util import determine_headers, determine_header
+from ...export.content_snippet import ContentSnippet, SectionType
+from ...export.entry_parser import EntryParser
+from ...export.generated_file import GeneratedFile
+from ...export.struct_snippet import StructSnippet
+from ...export.util import determine_headers, determine_header
 
 
 class ReadMember:
@@ -669,7 +668,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         return struct definitions for this type
         """
 
-        from .multisubtype_base import MultisubtypeBaseFile
+        from ...dataformat.multisubtype_base import MultisubtypeBaseFile
 
         snippet_file_name = self.file_name or file_name
 
@@ -699,7 +698,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 MultisubtypeBaseFile.name_struct))
 
             # add member methods to the struct
-            from ..export.data_formatter import DataFormatter
+            from ...export.data_formatter import DataFormatter
             snippet.add_members((
                 "%s;" % member.get_signature()
                 for _, member in sorted(DataFormatter.member_methods.items())

@@ -11,15 +11,15 @@ from ...util.strings import decode_until_null
 from ..export.struct_definition import (StructDefinition, vararray_match,
                                         integer_match)
 from ..export.util import struct_type_lookup
-from .member_access import READ, READ_GEN, READ_UNKNOWN, NOREAD_EXPORT, SKIP
-from .read_members import (IncludeMembers, ContinueReadMember,
-                           MultisubtypeMember, GroupMember, SubdataMember,
-                           ReadMember,
-                           EnumLookupMember)
-from .value_members import ContainerMember, ArrayMember, IntMember, FloatMember,\
+from ..value_object.dataformat.member_access import READ, READ_GEN, READ_UNKNOWN, NOREAD_EXPORT, SKIP
+from ..value_object.dataformat.read_members import (IncludeMembers, ContinueReadMember,
+                                                    MultisubtypeMember, GroupMember, SubdataMember,
+                                                    ReadMember,
+                                                    EnumLookupMember)
+from ..value_object.dataformat.value_members import ContainerMember, ArrayMember, IntMember, FloatMember,\
     StringMember, BooleanMember, IDMember, BitfieldMember
-from .value_members import MemberTypes as StorageType
-from .version_detect import GameEdition
+from ..value_object.dataformat.value_members import MemberTypes as StorageType
+from ..value_object.dataformat.version_detect import GameEdition
 
 
 class GenieStructure:

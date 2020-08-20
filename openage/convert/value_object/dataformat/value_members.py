@@ -1,6 +1,5 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 # TODO pylint: disable=C,R,abstract-method
-# REFA: Whole file -> value object
 
 """
 Storage format for values from data file entries.

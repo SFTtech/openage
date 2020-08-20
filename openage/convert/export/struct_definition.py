@@ -6,9 +6,10 @@
 from collections import OrderedDict
 import re
 
-from ..dataformat.member_access import SKIP, READ_GEN, NOREAD_EXPORT
-from ..dataformat.read_members import IncludeMembers, StringMember, CharArrayMember, NumberMember, ReadMember, RefMember, ArrayMember
-from ..dataformat.version_detect import GameEdition
+from ..value_object.dataformat.member_access import SKIP, READ_GEN, NOREAD_EXPORT
+from ..value_object.dataformat.read_members import IncludeMembers, StringMember,\
+    CharArrayMember, NumberMember, ReadMember, RefMember, ArrayMember
+from ..value_object.dataformat.version_detect import GameEdition
 from .content_snippet import ContentSnippet, SectionType
 from .struct_snippet import StructSnippet
 from .util import determine_header

@@ -7,11 +7,10 @@ converted and exported into a modpack.
 """
 # REFA: Whole file -> entity object
 
-from openage.convert.dataformat.version_detect import GameEdition
-
 from ...util.observer import Observable
-from ..dataformat.media_types import MediaType
 from ..texture import Texture
+from ..value_object.dataformat.media_types import MediaType
+from ..value_object.dataformat.version_detect import GameEdition
 
 
 class MediaExportRequest(Observable):

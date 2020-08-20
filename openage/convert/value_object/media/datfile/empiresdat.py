@@ -15,10 +15,10 @@ from . import terrain
 from . import unit
 from .....log import spam, dbg, info, warn
 from ....dataformat.genie_structure import GenieStructure
-from ....dataformat.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP
-from ....dataformat.read_members import SubdataMember
-from ....dataformat.value_members import MemberTypes as StorageType
-from ....dataformat.version_detect import GameEdition
+from ...dataformat.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP
+from ...dataformat.read_members import SubdataMember
+from ...dataformat.value_members import MemberTypes as StorageType
+from ...dataformat.version_detect import GameEdition
 
 
 # this file can parse and represent the empires2_x1_p1.dat file.

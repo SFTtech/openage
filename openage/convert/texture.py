@@ -15,10 +15,10 @@ from ..util.fslike.path import Path
 from .binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from .dataformat import genie_structure
 from .export import struct_definition
-from .hardcoded.terrain_tile_size import TILE_HALFSIZE
-from .hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
-                                TERRAIN_ASPECT_RATIO)
 from .value_object.media.blendomatic import BlendingMode
+from .value_object.media.hardcoded.terrain_tile_size import TILE_HALFSIZE
+from .value_object.media.hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
+                                                   TERRAIN_ASPECT_RATIO)
 
 
 # REFA: function -> entity object

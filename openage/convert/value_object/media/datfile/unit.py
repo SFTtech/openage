@@ -3,10 +3,10 @@
 # TODO pylint: disable=C,R,too-many-lines
 
 from ....dataformat.genie_structure import GenieStructure
-from ....dataformat.member_access import READ, READ_GEN, SKIP
-from ....dataformat.read_members import EnumLookupMember, ContinueReadMember, IncludeMembers, SubdataMember
-from ....dataformat.value_members import MemberTypes as StorageType
-from ....dataformat.version_detect import GameEdition
+from ...dataformat.member_access import READ, READ_GEN, SKIP
+from ...dataformat.read_members import EnumLookupMember, ContinueReadMember, IncludeMembers, SubdataMember
+from ...dataformat.value_members import MemberTypes as StorageType
+from ...dataformat.version_detect import GameEdition
 
 
 class UnitCommand(GenieStructure):

@@ -12,7 +12,7 @@ from ....util.filelike.stream import StreamFragment
 from ....util.fslike.filecollection import FileCollection
 from ....util.strings import decode_until_null
 from ....util.struct import NamedStruct
-from ...dataformat.version_detect import GameEdition
+from ..dataformat.version_detect import GameEdition
 
 
 # version of the drs files, hardcoded for now

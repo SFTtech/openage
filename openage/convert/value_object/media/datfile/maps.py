@@ -3,9 +3,9 @@
 # TODO pylint: disable=C,R
 
 from ....dataformat.genie_structure import GenieStructure
-from ....dataformat.member_access import READ, SKIP
-from ....dataformat.read_members import SubdataMember
-from ....dataformat.value_members import MemberTypes as StorageType
+from ...dataformat.member_access import READ, SKIP
+from ...dataformat.read_members import SubdataMember
+from ...dataformat.value_members import MemberTypes as StorageType
 
 
 class MapInfo(GenieStructure):

@@ -21,7 +21,6 @@ class Support(enum.Enum):
     breaks = "presence breaks conversion"
 
 
-# REFA: class -> value object
 @enum.unique
 class GameExpansion(enum.Enum):
     """
@@ -89,7 +88,6 @@ class GameExpansion(enum.Enum):
         self.flags = flags
 
 
-# REFA: class -> value object
 @enum.unique
 class GameEdition(enum.Enum):
     """

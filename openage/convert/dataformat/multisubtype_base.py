@@ -3,8 +3,8 @@
 # TODO pylint: disable=C,R
 # REFA: Whole file -> REMOVE
 
+from ..value_object.dataformat.member_access import NOREAD_EXPORT
 from .genie_structure import GenieStructure
-from .member_access import NOREAD_EXPORT
 
 
 class MultisubtypeBaseFile(GenieStructure):

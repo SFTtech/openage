@@ -19,3 +19,4 @@ add_pxds(
 )
 
 add_subdirectory(datfile)
+add_subdirectory(hardcoded)

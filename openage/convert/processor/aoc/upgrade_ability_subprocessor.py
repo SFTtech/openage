@@ -19,8 +19,8 @@ from ...dataformat.aoc.genie_tech import GenieTechEffectBundleGroup
 from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup,\
     GenieVariantGroup, GenieUnitLineGroup
 from ...dataformat.converter_object import RawAPIObject
-from ...dataformat.value_members import NoDiffMember
 from ...service import internal_name_lookups
+from ...value_object.dataformat.value_members import NoDiffMember
 from .upgrade_effect_subprocessor import AoCUpgradeEffectSubprocessor
 
 

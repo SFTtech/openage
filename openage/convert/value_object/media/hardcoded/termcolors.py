@@ -5,7 +5,6 @@ The 256 colors for use by the in-game terminal.
 
 Proudly determined from an URXVT screenshot.
 """
-# REFA: Whole file -> value_object
 
 URXVTCOLS = [
     (0, 0, 0),

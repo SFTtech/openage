@@ -13,9 +13,9 @@ from ....nyan.nyan_structs import MemberOperator
 from ...dataformat.aoc.forward_ref import ForwardRef
 from ...dataformat.aoc.genie_unit import GenieBuildingLineGroup
 from ...dataformat.converter_object import RawAPIObject
-from ...dataformat.value_members import NoDiffMember,\
-    LeftMissingMember, RightMissingMember
 from ...service import internal_name_lookups
+from ...value_object.dataformat.value_members import NoDiffMember,\
+    LeftMissingMember, RightMissingMember
 
 
 class AoCUpgradeEffectSubprocessor:

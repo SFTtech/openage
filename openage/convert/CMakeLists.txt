@@ -11,7 +11,6 @@ add_py_modules(
 add_subdirectory(dataformat)
 add_subdirectory(entity_object)
 add_subdirectory(export)
-add_subdirectory(hardcoded)
 add_subdirectory(interface)
 add_subdirectory(processor)
 add_subdirectory(service)
