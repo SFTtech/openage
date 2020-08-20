@@ -5,12 +5,11 @@
 Specifies a request for a media resource that should be
 converted and exported into a modpack.
 """
-# REFA: Whole file -> entity object
 
-from ...util.observer import Observable
-from ..texture import Texture
-from ..value_object.dataformat.media_types import MediaType
-from ..value_object.dataformat.version_detect import GameEdition
+from ....util.observer import Observable
+from ...texture import Texture
+from ...value_object.dataformat.media_types import MediaType
+from ...value_object.dataformat.version_detect import GameEdition
 
 
 class MediaExportRequest(Observable):
@@ -118,15 +117,15 @@ class GraphicsMediaExportRequest(MediaExportRequest):
             media_file = source_file.open("rb")
 
         if source_file.suffix.lower() == ".slp":
-            from ..value_object.media.slp import SLP
+            from ...value_object.media.slp import SLP
             image = SLP(media_file.read())
 
         elif source_file.suffix.lower() == ".smp":
-            from ..value_object.media.smp import SMP
+            from ...value_object.media.smp import SMP
             image = SMP(media_file.read())
 
         elif source_file.suffix.lower() == ".smx":
-            from ..value_object.media.smx import SMX
+            from ...value_object.media.smx import SMX
             image = SMX(media_file.read())
 
         texture = Texture(image, palettes)
@@ -151,7 +150,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
         media_file = source_file.open("rb")
 
         if source_file.suffix.lower() == ".slp":
-            from ..value_object.media.slp import SLP
+            from ...value_object.media.slp import SLP
             image = SLP(media_file.read())
 
         elif source_file.suffix.lower() == ".dds":
@@ -159,7 +158,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
             pass
 
         if game_version[0] in (GameEdition.AOC, GameEdition.SWGB):
-            from ..texture import merge_terrain
+            from ...texture import merge_terrain
             texture = Texture(image, palettes, custom_merger=merge_terrain)
 
         else:
@@ -186,7 +185,7 @@ class SoundMediaExportRequest(MediaExportRequest):
             # TODO: Filter files that do not exist out sooner
             return
 
-        from ..service.opus.opusenc import encode
+        from ...service.opus.opusenc import encode
 
         soundata = encode(media_file)
 

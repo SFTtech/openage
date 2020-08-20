@@ -9,7 +9,7 @@ into modpacks.
 from ....nyan.import_tree import ImportTree
 from ...dataformat.aoc.forward_ref import ForwardRef
 from ...dataformat.modpack import Modpack
-from ...export.formats.nyan_file import NyanFile
+from ...entity_object.export.formats.nyan_file import NyanFile
 
 
 class AoCModpackSubprocessor:

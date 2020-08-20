@@ -5,8 +5,8 @@ Nyan file struct that stores a bunch of objects and
 manages imports.
 """
 
-from ....nyan.nyan_structs import NyanObject
-from ....util.ordered_set import OrderedSet
+from .....nyan.nyan_structs import NyanObject
+from .....util.ordered_set import OrderedSet
 from ..data_definition import DataDefinition
 
 

@@ -6,9 +6,9 @@
 Convert media information to metadata definitions and export
 requests. Subroutine of the main DE2 processor.
 """
-from ...export.formats.sprite_metadata import LayerMode
-from ...export.media_export_request import GraphicsMediaExportRequest
-from ...export.metadata_export import SpriteMetadataExport
+from ...entity_object.export.formats.sprite_metadata import LayerMode
+from ...entity_object.export.media_export_request import GraphicsMediaExportRequest
+from ...entity_object.export.metadata_export import SpriteMetadataExport
 
 
 class DE2MediaSubprocessor:

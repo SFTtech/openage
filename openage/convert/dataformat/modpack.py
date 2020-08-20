@@ -5,10 +5,10 @@ Defines a modpack that can be exported.
 """
 # REFA: Whole file -> entity object
 
-from ..export.data_definition import DataDefinition
-from ..export.formats.modpack_info import ModpackInfo
-from ..export.media_export_request import MediaExportRequest
-from ..export.metadata_export import MetadataExport
+from ..entity_object.export.data_definition import DataDefinition
+from ..entity_object.export.formats.modpack_info import ModpackInfo
+from ..entity_object.export.media_export_request import MediaExportRequest
+from ..entity_object.export.metadata_export import MetadataExport
 
 
 class Modpack:

@@ -6,10 +6,10 @@
 Convert media information to metadata definitions and export
 requests. Subroutine of the main AoC processor.
 """
-from ...export.formats.sprite_metadata import LayerMode
-from ...export.media_export_request import GraphicsMediaExportRequest,\
+from ...entity_object.export.formats.sprite_metadata import LayerMode
+from ...entity_object.export.media_export_request import GraphicsMediaExportRequest,\
     SoundMediaExportRequest, TerrainMediaExportRequest
-from ...export.metadata_export import SpriteMetadataExport
+from ...entity_object.export.metadata_export import SpriteMetadataExport
 
 
 class AoCMediaSubprocessor:
