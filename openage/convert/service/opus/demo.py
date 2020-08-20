@@ -7,7 +7,7 @@ import argparse
 import time
 
 from . import opusenc
-from ...log import info, crit
+from ....log import info, crit
 
 
 def convert(args):

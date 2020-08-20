@@ -3,4 +3,3 @@
 """
 Cython module to encode opus-files using libopus.
 """
-# REFA: Whole package -> service

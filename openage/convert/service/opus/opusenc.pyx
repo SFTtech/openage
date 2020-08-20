@@ -4,7 +4,7 @@ import time
 from libc.string cimport memcpy, memset
 from cpython.mem cimport PyMem_Malloc, PyMem_Free
 
-from ...log import dbg, spam
+from ....log import dbg, spam
 
 from .bytearray cimport (PyByteArray_AS_STRING, PyByteArray_GET_SIZE,
                          PyByteArray_Resize)

@@ -23,7 +23,7 @@ from ...dataformat.ror.genie_unit import RoRUnitTaskGroup,\
     RoRVariantGroup
 from ...dataformat.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
-from ...nyan.api_loader import load_api
+from ...service.nyan.api_loader import load_api
 from ..aoc.media_subprocessor import AoCMediaSubprocessor
 from ..aoc.processor import AoCProcessor
 from .modpack_subprocessor import RoRModpackSubprocessor

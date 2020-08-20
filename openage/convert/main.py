@@ -1,8 +1,8 @@
 # Copyright 2015-2020 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches
-
 """ Entry point for all of the asset conversion. """
+# importing readline enables the input() calls to have history etc.
 
 from configparser import ConfigParser
 import os
@@ -19,11 +19,10 @@ from ..util.fslike.directory import CaseIgnoringDirectory, Directory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
 from ..util.strings import format_progress
+from .dataformat.version_detect import Support
 from .dataformat.version_detect import get_game_info, GameEdition
-from .game_versions import Support
 
 
-# importing readline enables the input() calls to have history etc.
 STANDARD_PATH_IN_32BIT_WINEPREFIX =\
     "drive_c/Program Files/Microsoft Games/Age of Empires II/"
 STANDARD_PATH_IN_64BIT_WINEPREFIX =\

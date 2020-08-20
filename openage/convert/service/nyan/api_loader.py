@@ -7,7 +7,7 @@ TODO: Implement a parser instead of hardcoded
 object creation.
 """
 
-from ...nyan.nyan_structs import NyanObject, NyanMember, MemberType, MemberSpecialValue,\
+from ....nyan.nyan_structs import NyanObject, NyanMember, MemberType, MemberSpecialValue,\
     MemberOperator
 
 

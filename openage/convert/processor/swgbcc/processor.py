@@ -23,7 +23,7 @@ from ...dataformat.swgbcc.swgb_tech import SWGBUnitUnlock,\
     SWGBUnitLineUpgrade
 from ...dataformat.swgbcc.swgb_unit import SWGBUnitTransformGroup,\
     SWGBMonkGroup, SWGBUnitLineGroup, SWGBStackBuildingGroup
-from ...nyan.api_loader import load_api
+from ...service.nyan.api_loader import load_api
 from ..aoc.media_subprocessor import AoCMediaSubprocessor
 from ..aoc.processor import AoCProcessor
 from .modpack_subprocessor import SWGBCCModpackSubprocessor

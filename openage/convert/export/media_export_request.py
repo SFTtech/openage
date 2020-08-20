@@ -187,7 +187,7 @@ class SoundMediaExportRequest(MediaExportRequest):
             # TODO: Filter files that do not exist out sooner
             return
 
-        from ..opus.opusenc import encode
+        from ..service.opus.opusenc import encode
 
         soundata = encode(media_file)
 

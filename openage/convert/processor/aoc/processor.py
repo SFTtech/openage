@@ -37,7 +37,7 @@ from ...dataformat.aoc.genie_unit import GenieUnitTaskGroup,\
 from ...dataformat.aoc.genie_unit import GenieVariantGroup
 from ...dataformat.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
-from ...nyan.api_loader import load_api
+from ...service.nyan.api_loader import load_api
 from .media_subprocessor import AoCMediaSubprocessor
 from .modpack_subprocessor import AoCModpackSubprocessor
 from .nyan_subprocessor import AoCNyanSubprocessor

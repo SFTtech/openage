@@ -156,7 +156,7 @@ class Texture(genie_structure.GenieStructure):
         # without the dot
         ext = ext[1:]
 
-        from .png import png_create
+        from .service.png import png_create
 
         compression_method = png_create.CompressionMethod.COMPR_DEFAULT
         if compression_level == 0:

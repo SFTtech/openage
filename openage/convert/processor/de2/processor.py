@@ -17,7 +17,7 @@ from ....util.ordered_set import OrderedSet
 from ...dataformat.aoc.genie_graphic import GenieGraphic
 from ...dataformat.aoc.genie_object_container import GenieObjectContainer
 from ...dataformat.aoc.genie_unit import GenieUnitObject, GenieAmbientGroup, GenieVariantGroup
-from ...nyan.api_loader import load_api
+from ...service.nyan.api_loader import load_api
 from ..aoc.pregen_processor import AoCPregenSubprocessor
 from ..aoc.processor import AoCProcessor
 from .media_subprocessor import DE2MediaSubprocessor
