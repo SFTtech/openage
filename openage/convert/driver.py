@@ -14,12 +14,12 @@ from ..log import info, dbg
 from .changelog import (ASSET_VERSION)
 from .dataformat.media_types import MediaType
 from .dataformat.version_detect import GameEdition, GameExpansion
-from .gamedata.empiresdat import load_gamespec
 from .processor.modpack_exporter import ModpackExporter
 from .service.language.languagetextfile import read_age2_hd_3x_stringresources,\
     read_de2_language_file
 from .value_object.media.blendomatic import Blendomatic
 from .value_object.media.colortable import ColorTable
+from .value_object.media.datfile.empiresdat import load_gamespec
 
 
 # REFA: function -> service

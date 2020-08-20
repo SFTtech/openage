@@ -17,3 +17,5 @@ add_cython_modules(
 add_pxds(
 	__init__.pxd
 )
+
+add_subdirectory(datfile)

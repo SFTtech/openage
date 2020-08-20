@@ -4,7 +4,6 @@
 
 import pickle
 from zlib import decompress
-
 from . import civ
 from . import graphic
 from . import maps
@@ -14,12 +13,12 @@ from . import sound
 from . import tech
 from . import terrain
 from . import unit
-from ...log import spam, dbg, info, warn
-from ..dataformat.genie_structure import GenieStructure
-from ..dataformat.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP
-from ..dataformat.read_members import SubdataMember
-from ..dataformat.value_members import MemberTypes as StorageType
-from ..dataformat.version_detect import GameEdition
+from .....log import spam, dbg, info, warn
+from ....dataformat.genie_structure import GenieStructure
+from ....dataformat.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP
+from ....dataformat.read_members import SubdataMember
+from ....dataformat.value_members import MemberTypes as StorageType
+from ....dataformat.version_detect import GameEdition
 
 
 # this file can parse and represent the empires2_x1_p1.dat file.
@@ -362,6 +361,7 @@ class EmpiresDatWrapper(GenieStructure):
         return data_format
 
 
+# REFA: function -> processor
 def load_gamespec(fileobj, game_version, cachefile_name=None, load_cache=False):
     """
     Helper method that loads the contents of a 'empires.dat' gzipped wrapper
