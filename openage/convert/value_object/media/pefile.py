@@ -7,10 +7,9 @@ Primary doc sources:
 http://www.csn.ul.ie/~caolan/pub/winresdump/winresdump/doc/pefile2.html
 http://en.wikibooks.org/wiki/X86_Disassembly/Windows_Executable_Files
 """
-# REFA: Whole file -> entity_object
 
-from ...util.filelike.stream import StreamFragment
-from ...util.struct import NamedStruct
+from ....util.filelike.stream import StreamFragment
+from ....util.struct import NamedStruct
 
 
 class PEDOSHeader(NamedStruct):

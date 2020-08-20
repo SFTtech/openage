@@ -1,5 +1,4 @@
 add_py_modules(
 	__init__.py
+	stringresource.py
 )
-
-add_subdirectory(language)

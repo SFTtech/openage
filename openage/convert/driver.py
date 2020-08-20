@@ -8,15 +8,16 @@ actual conversion process.
 import os
 from tempfile import gettempdir
 
+from openage.convert.entity_object.language.stringresource import StringResource
+
 from ..log import info, dbg
 from .changelog import (ASSET_VERSION)
 from .dataformat.media_types import MediaType
 from .dataformat.version_detect import GameEdition, GameExpansion
 from .gamedata.empiresdat import load_gamespec
-from .langfile.hdlanguagefile import read_age2_hd_3x_stringresources
-from .langfile.hdlanguagefile import read_de2_language_file
-from .langfile.stringresource import StringResource
 from .processor.modpack_exporter import ModpackExporter
+from .service.language.languagetextfile import read_age2_hd_3x_stringresources,\
+    read_de2_language_file
 from .value_object.media.blendomatic import Blendomatic
 from .value_object.media.colortable import ColorTable
 
@@ -32,7 +33,7 @@ def get_string_resources(args):
 
     language_files = game_edition.media_paths[MediaType.LANGUAGE]
 
-    from .langfile.pefile import PEFile
+    from .value_object.media.pefile import PEFile
 
     for language_file in language_files:
         if game_edition in (GameEdition.ROR, GameEdition.AOC, GameEdition.SWGB):

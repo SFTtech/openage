@@ -3,12 +3,11 @@
 """
 Provides PEResources, which reads the resource section from a PEFile.
 """
-# REFA: Whole file -> value object
 
 from collections import defaultdict
 
-from ...util.filelike.stream import StreamFragment
-from ...util.struct import NamedStruct
+from ....util.filelike.stream import StreamFragment
+from ....util.struct import NamedStruct
 from .langcodes import LANGCODES_AOC
 
 

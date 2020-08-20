@@ -3,6 +3,9 @@ add_py_modules(
 	blendomatic.py
 	colortable.py
 	drs.py
+	langcodes.py
+	pefile.py
+	peresource.py
 )
 
 add_cython_modules(

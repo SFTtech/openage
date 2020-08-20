@@ -1,5 +1,4 @@
 add_py_modules(
 	__init__.py
+	languagetextfile.py
 )
-
-add_subdirectory(language)

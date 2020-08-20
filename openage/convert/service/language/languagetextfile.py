@@ -1,13 +1,12 @@
 # Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 """
-Module for reading AoeII HD Edition text-based language files.
+Module for reading plaintext-based language files.
 """
-# REFA: Whole file -> service
 
-from ...log import dbg
-from .langcodes import LANGCODES_DE2, LANGCODES_HD
-from .pefile import PEFile
+from ....log import dbg
+from ...value_object.media.langcodes import LANGCODES_DE2, LANGCODES_HD
+from ...value_object.media.pefile import PEFile
 
 
 def read_age2_hd_fe_stringresources(stringres, path):

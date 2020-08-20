@@ -3,6 +3,7 @@ add_py_modules(
 	internal_name_lookups.py
 )
 
+add_subdirectory(language)
 add_subdirectory(nyan)
 add_subdirectory(opus)
 add_subdirectory(png)

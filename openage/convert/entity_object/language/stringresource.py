@@ -1,12 +1,12 @@
 # Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,too-many-function-args
-# REFA: Whole package -> REMOVE
+# REFA: remove GenieStructure as parent
 
 from collections import defaultdict
 
-from ..dataformat.genie_structure import GenieStructure
-from ..export import data_definition, struct_definition
+from ...dataformat.genie_structure import GenieStructure
+from ...export import data_definition, struct_definition
 
 
 class StringResource(GenieStructure):
