@@ -13,82 +13,9 @@ from ..util.fslike.directory import CaseIgnoringDirectory, Directory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
 from ..util.strings import format_progress
+from .service.mount.mount_asset_dirs import mount_asset_dirs
 from .tool.sourcedir.acquire_sourcedir import acquire_conversion_source_dir
 from .tool.sourcedir.version_select import get_game_version
-
-
-# REFA: function -> service
-def mount_asset_dirs(srcdir, game_version):
-    """
-    Returns a Union path where srcdir is mounted at /,
-    and all the asset files are mounted in subfolders.
-    """
-    from ..util.fslike.union import Union
-    from .value_object.media.drs import DRS
-
-    result = Union().root
-    result.mount(srcdir)
-
-    def mount_drs(filename, target):
-        """
-        Mounts the DRS file from srcdir's filename at result's target.
-        """
-
-        drspath = srcdir[filename]
-        result[target].mount(DRS(drspath.open('rb'), game_version).root)
-
-    # Mount the media sources of the game edition
-    for media_type, media_paths in game_version[0].media_paths.items():
-        for media_path in media_paths:
-            path_to_media = srcdir[media_path]
-            if path_to_media.is_dir():
-                # Mount folder
-                result[media_type.value].mount(path_to_media)
-
-            elif path_to_media.is_file():
-                # Mount archive
-                if path_to_media.suffix.lower() == ".drs":
-                    mount_drs(media_path, media_type.value)
-
-            else:
-                raise Exception("Media at path %s could not be found"
-                                % (path_to_media))
-
-    # Mount the media sources of the game edition
-    for expansion in game_version[1]:
-        for media_type, media_paths in expansion.media_paths.items():
-            for media_path in media_paths:
-                path_to_media = srcdir[media_path]
-                if path_to_media.is_dir():
-                    # Mount folder
-                    result[media_type.value].mount(path_to_media)
-
-                elif path_to_media.is_file():
-                    # Mount archive
-                    if path_to_media.suffix.lower() == ".drs":
-                        mount_drs(media_path, media_type.value)
-
-                else:
-                    raise Exception("Media at path %s could not be found"
-                                    % (path_to_media))
-
-    return result
-
-
-# REFA: function -> service
-def mount_input(srcdir=None, prev_source_dir_path=None):
-    """
-    Mount the input folders for conversion.
-    """
-
-    # acquire conversion source directory
-    if srcdir is None:
-        srcdir = acquire_conversion_source_dir(prev_source_dir_path)
-
-    game_version = get_game_version(srcdir)
-    output = mount_asset_dirs(srcdir, game_version)
-
-    return output, game_version
 
 
 def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
@@ -106,8 +33,15 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
     This method prepares srcdir and targetdir to allow a pleasant, unified
     conversion experience, then passes them to .driver.convert().
     """
+    # acquire conversion source directory
+    if srcdir is None:
+        srcdir = acquire_conversion_source_dir(prev_source_dir_path)
 
-    data_dir, game_version = mount_input(srcdir, prev_source_dir_path)
+    # Acquire game version info
+    game_version = get_game_version(srcdir)
+
+    # Mount assets into conversion folder
+    data_dir = mount_asset_dirs(srcdir, game_version)
 
     if not data_dir:
         return None
@@ -233,13 +167,16 @@ def interactive_browser(srcdir=None):
     """
     launch an interactive view for browsing the original
     archives.
+
+    TODO: Enhance functionality and fix SLP conversion.
     """
 
     info("launching interactive data browser...")
 
     # the variables are actually used, in the interactive prompt.
     # pylint: disable=possibly-unused-variable
-    data, game_versions = mount_input(srcdir)
+    game_version = get_game_version(srcdir)
+    data = mount_asset_dirs(srcdir, game_version)
 
     if not data:
         warn("cannot launch browser as no valid input assets were found.")
