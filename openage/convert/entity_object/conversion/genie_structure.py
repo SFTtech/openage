@@ -10,6 +10,7 @@ from ....util.strings import decode_until_null
 from ...deprecated.struct_definition import (StructDefinition, vararray_match,
                                              integer_match)
 from ...deprecated.util import struct_type_lookup
+from ...value_object.dataformat.game_version import GameEdition
 from ...value_object.dataformat.member_access import READ, READ_GEN, READ_UNKNOWN, NOREAD_EXPORT, SKIP
 from ...value_object.dataformat.read_members import (IncludeMembers, ContinueReadMember,
                                                      MultisubtypeMember, GroupMember, SubdataMember,
@@ -18,7 +19,6 @@ from ...value_object.dataformat.read_members import (IncludeMembers, ContinueRea
 from ...value_object.dataformat.value_members import ContainerMember, ArrayMember, IntMember, FloatMember,\
     StringMember, BooleanMember, IDMember, BitfieldMember
 from ...value_object.dataformat.value_members import MemberTypes as StorageType
-from ...value_object.dataformat.version_detect import GameEdition
 
 
 class GenieStructure:
@@ -563,7 +563,6 @@ class GenieStructure:
                                       flatten_includes=False,
                                       )
         for _, export, member_name, _, member_type in members:
-
             # includemembers etc have no name.
             if member_name:
                 hasher.update(member_name.encode())

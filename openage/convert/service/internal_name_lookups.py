@@ -11,7 +11,7 @@ import openage.convert.value_object.conversion.hd.fgt.internal_nyan_names as fgt
 import openage.convert.value_object.conversion.hd.raj.internal_nyan_names as raj_internal
 import openage.convert.value_object.conversion.ror.internal_nyan_names as ror_internal
 import openage.convert.value_object.conversion.swgb.internal_nyan_names as swgb_internal
-from ..value_object.dataformat.version_detect import GameEdition
+from ..value_object.dataformat.game_version import GameEdition
 
 
 def get_armor_class_lookups(game_version):

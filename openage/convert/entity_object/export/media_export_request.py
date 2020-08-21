@@ -8,8 +8,8 @@ converted and exported into a modpack.
 
 from ....util.observer import Observable
 from ...texture import Texture
+from ...value_object.dataformat.game_version import GameEdition
 from ...value_object.dataformat.media_types import MediaType
-from ...value_object.dataformat.version_detect import GameEdition
 
 
 class MediaExportRequest(Observable):

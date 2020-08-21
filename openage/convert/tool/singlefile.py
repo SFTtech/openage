@@ -9,7 +9,7 @@ from pathlib import Path
 from ...log import info
 from ...util.fslike.directory import Directory
 from ..texture import Texture
-from ..value_object.dataformat.version_detect import GameEdition
+from ..value_object.dataformat.game_version import GameEdition
 from ..value_object.media.colortable import ColorTable
 from ..value_object.media.drs import DRS
 

@@ -3,9 +3,9 @@
 # TODO pylint: disable=C,R
 
 from ....entity_object.conversion.genie_structure import GenieStructure
+from ...dataformat.game_version import GameEdition
 from ...dataformat.member_access import READ_GEN
 from ...dataformat.value_members import MemberTypes as StorageType
-from ...dataformat.version_detect import GameEdition
 
 
 class PlayerColor(GenieStructure):

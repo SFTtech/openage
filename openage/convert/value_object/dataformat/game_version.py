@@ -3,11 +3,11 @@
 # pylint: disable=too-many-arguments
 
 """
-Detects the base version of the game and installed expansions.
+Stores information about base game editions and expansions.
 """
 
 import enum
-from .game_info import GameFileVersion
+from .game_file_version import GameFileVersion
 from .media_types import MediaType
 
 
@@ -124,7 +124,7 @@ class GameEdition(enum.Enum):
 
     AOE1DE = (
         "Age of Empires 1: Definitive Edition (Steam)",
-        Support.yes,
+        Support.nope,
         {
             GameFileVersion('AoEDE_s.exe',
                             {"0b652f0821cc0796a6a104bffc69875e": "steam"}),
@@ -302,44 +302,3 @@ class GameEdition(enum.Enum):
         self.target_modpacks = target_modpacks
         self.expansions = expansions
         self.flags = flags
-
-
-# REFA: function -> service
-def get_game_info(srcdir):
-    """
-    Determine what editions and expansions of a game are installed in srcdir.
-    """
-    edition = None
-    expansions = []
-
-    for game_edition in GameEdition:
-        for detection_hints in game_edition.game_file_versions:
-            required_path = detection_hints.get_path()
-            required_file = srcdir.joinpath(required_path)
-
-            if not required_file.is_file():
-                break
-
-        else:
-            edition = game_edition
-
-            if edition.support == Support.nope:
-                continue
-
-            break
-
-    else:
-        raise Exception("no valid game version found.")
-
-    for game_expansion in edition.expansions:
-        for detection_hints in game_expansion.game_file_versions:
-            required_path = detection_hints.get_path()
-            required_file = srcdir.joinpath(required_path)
-
-            if not required_file.is_file():
-                break
-
-        else:
-            expansions.append(game_expansion)
-
-    return edition, expansions

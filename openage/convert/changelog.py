@@ -8,11 +8,8 @@ openage are still up to date.
 """
 # REFA: Whole file -> processor
 
-from ..log import info, warn
+from ..log import warn
 from ..testing.testing import TestError
-from .value_object.dataformat.version_detect import GameEdition
-from .value_object.media.datfile.empiresdat import EmpiresDat
-
 
 # filename where to store the versioning information
 ASSET_VERSION_FILENAME = "asset_version"
@@ -58,17 +55,7 @@ def changes(asset_version, spec_version):
 
     changed_components = set()
 
-    first_new_version = asset_version + 1
-
-    # fetch all changes since the detected version
-    for version_changes in CHANGES[first_new_version:]:
-        changed_components |= version_changes
-
-    if "metadata" not in changed_components:
-        game_version = (GameEdition.AOC, [])
-        if EmpiresDat.get_hash(game_version) != spec_version:
-            info("game metadata hash changed, need to reconvert it")
-            changed_components.add("metadata")
+    # TODO: Reimplement with proper detection based on file hashing
 
     return changed_components
 
