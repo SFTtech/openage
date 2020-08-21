@@ -1,7 +1,6 @@
 # Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,too-many-function-args
-# REFA: remove GenieStructure as parent
 
 from collections import defaultdict
 

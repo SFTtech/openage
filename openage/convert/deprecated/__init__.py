@@ -4,4 +4,3 @@
 Modules that are due to be removed after the old gamestate and codegen generation has
 been removed.
 """
-# REFA: Whole package -> REMOVE

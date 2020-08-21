@@ -2,7 +2,6 @@
 
 # If you wanna boost speed even further:
 # cython: profile=False
-# REFA: Whole file -> service
 
 
 """ Cython version of the visgrep utility """

@@ -4,8 +4,9 @@ add_py_modules(
 )
 
 add_subdirectory(game_version)
-add_subdirectory(language)
+add_subdirectory(interface)
 add_subdirectory(mount)
 add_subdirectory(nyan)
 add_subdirectory(opus)
 add_subdirectory(png)
+add_subdirectory(read)

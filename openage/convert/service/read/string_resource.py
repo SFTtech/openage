@@ -5,8 +5,46 @@ Module for reading plaintext-based language files.
 """
 
 from ....log import dbg
+from ...entity_object.language.stringresource import StringResource
+from ...value_object.dataformat.game_version import GameEdition
+from ...value_object.dataformat.media_types import MediaType
 from ...value_object.media.langcodes import LANGCODES_DE2, LANGCODES_HD
 from ...value_object.media.pefile import PEFile
+
+
+def get_string_resources(args):
+    """ reads the (language) string resources """
+
+    stringres = StringResource()
+
+    srcdir = args.srcdir
+    game_edition = args.game_version[0]
+
+    language_files = game_edition.media_paths[MediaType.LANGUAGE]
+
+    for language_file in language_files:
+        if game_edition in (GameEdition.ROR, GameEdition.AOC, GameEdition.SWGB):
+            # AoC/RoR use .DLL PE files for their string resources
+            pefile = PEFile(srcdir[language_file].open('rb'))
+            stringres.fill_from(pefile.resources().strings)
+
+        elif game_edition is GameEdition.HDEDITION:
+            read_age2_hd_3x_stringresources(stringres, srcdir)
+
+        elif game_edition is GameEdition.AOE2DE:
+            strings = read_de2_language_file(srcdir, language_file)
+            stringres.fill_from(strings)
+
+        else:
+            raise Exception("No service found for parsing language files of version %s"
+                            % game_edition.name)
+
+        # TODO: Other game versions
+
+    # TODO: transform and cleanup the read strings:
+    #       convert formatting indicators from HTML to something sensible, etc
+
+    return stringres
 
 
 def read_age2_hd_fe_stringresources(stringres, path):

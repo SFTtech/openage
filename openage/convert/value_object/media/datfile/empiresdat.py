@@ -2,9 +2,6 @@
 
 # TODO pylint: disable=C,R
 
-import pickle
-from zlib import decompress
-
 from . import civ
 from . import graphic
 from . import maps
@@ -14,7 +11,6 @@ from . import sound
 from . import tech
 from . import terrain
 from . import unit
-from .....log import spam, dbg, info, warn
 from ....entity_object.conversion.genie_structure import GenieStructure
 from ...dataformat.game_version import GameEdition
 from ...dataformat.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP
@@ -360,58 +356,3 @@ class EmpiresDatWrapper(GenieStructure):
         ]
 
         return data_format
-
-
-# REFA: function -> processor
-def load_gamespec(fileobj, game_version, cachefile_name=None, load_cache=False):
-    """
-    Helper method that loads the contents of a 'empires.dat' gzipped wrapper
-    file.
-
-    If cachefile_name is given, this file is consulted before performing the
-    load.
-    """
-    # try to use the cached result from a previous run
-    if cachefile_name and load_cache:
-        try:
-            with open(cachefile_name, "rb") as cachefile:
-                # pickle.load() can fail in many ways, we need to catch all.
-                # pylint: disable=broad-except
-                try:
-                    wrapper = pickle.load(cachefile)
-                    info("using cached wrapper: %s", cachefile_name)
-                    return wrapper
-                except Exception:
-                    warn("could not use cached wrapper:")
-                    import traceback
-                    traceback.print_exc()
-                    warn("we will just skip the cache, no worries.")
-
-        except FileNotFoundError:
-            pass
-
-    # read the file ourselves
-
-    dbg("reading dat file")
-    compressed_data = fileobj.read()
-    fileobj.close()
-
-    dbg("decompressing dat file")
-    # -15: there's no header, window size is 15.
-    file_data = decompress(compressed_data, -15)
-    del compressed_data
-
-    spam("length of decompressed data: %d", len(file_data))
-
-    wrapper = EmpiresDatWrapper()
-    _, gamespec = wrapper.read(file_data, 0, game_version)
-
-    # Remove the list sorrounding the converted data
-    gamespec = gamespec[0]
-
-    if cachefile_name:
-        dbg("dumping dat file contents to cache file: %s", cachefile_name)
-        with open(cachefile_name, "wb") as cachefile:
-            pickle.dump(gamespec, cachefile)
-
-    return gamespec

@@ -1,9 +1,10 @@
-# Copyright 2016-2017 the openage authors. See copying.md for legal info.
+# Copyright 2016-2020 the openage authors. See copying.md for legal info.
 
-""" Additional hardcoded information about user interface assets """
+"""
+Additional hardcoded information about AoC user interface assets
+"""
 
 
-# REFA: lists, sets, dicts -> value_object
 INGAME_HUD_BACKGROUNDS = [
     51141,
     51142,
@@ -46,19 +47,3 @@ KNOWN_SUBTEX_CORNER_COORDS = [
     (239, 10, 265, 27),
     (316, 10, 342, 27),
 ]
-
-
-# REFA: function -> service
-def ingame_hud_background_index(idx):
-    """
-    Index in the hardcoded list of the known ingame hud backgrounds to match the civ.
-    """
-    return INGAME_HUD_BACKGROUNDS.index(int(idx))
-
-
-# REFA: function -> service
-def is_ingame_hud_background(idx):
-    """
-    True if in the hardcoded list of the known ingame hud backgrounds.
-    """
-    return int(idx) in INGAME_HUD_BACKGROUNDS_SET

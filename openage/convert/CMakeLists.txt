@@ -2,7 +2,6 @@ add_py_modules(
 	__init__.py
 	binpack.py
 	changelog.py
-	driver.py
 	main.py
 	slp_converter_pool.py
 	texture.py
@@ -10,7 +9,6 @@ add_py_modules(
 
 add_subdirectory(deprecated)
 add_subdirectory(entity_object)
-add_subdirectory(interface)
 add_subdirectory(processor)
 add_subdirectory(service)
 add_subdirectory(tool)

@@ -1,16 +1,15 @@
 # Copyright 2016-2017 the openage authors. See copying.md for legal info.
 
 """ Cutting some user interface assets into subtextures """
-# REFA: Whole file -> service
 
-from ..texture import TextureImage
-
-from .hardcoded import (is_ingame_hud_background,
-                        TOP_STRIP_PATTERN_CORNERS,
-                        TOP_STRIP_PATTERN_SEARCH_AREA_CORNERS,
-                        MID_STRIP_PATTERN_CORNERS,
-                        MID_STRIP_PATTERN_SEARCH_AREA_CORNERS,
-                        KNOWN_SUBTEX_CORNER_COORDS)
+from ...texture import TextureImage
+from ...value_object.media.hardcoded.interface import (TOP_STRIP_PATTERN_CORNERS,
+                                                       TOP_STRIP_PATTERN_SEARCH_AREA_CORNERS,
+                                                       MID_STRIP_PATTERN_CORNERS,
+                                                       MID_STRIP_PATTERN_SEARCH_AREA_CORNERS,
+                                                       KNOWN_SUBTEX_CORNER_COORDS,
+                                                       INGAME_HUD_BACKGROUNDS,
+                                                       INGAME_HUD_BACKGROUNDS_SET)
 from .visgrep import visgrep, crop_array
 
 
@@ -77,3 +76,17 @@ class InterfaceCutter:
                 pattern_corners[3]
             ))
         )
+
+
+def ingame_hud_background_index(idx):
+    """
+    Index in the hardcoded list of the known ingame hud backgrounds to match the civ.
+    """
+    return INGAME_HUD_BACKGROUNDS.index(int(idx))
+
+
+def is_ingame_hud_background(idx):
+    """
+    True if in the hardcoded list of the known ingame hud backgrounds.
+    """
+    return int(idx) in INGAME_HUD_BACKGROUNDS_SET

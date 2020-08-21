@@ -1,19 +1,17 @@
 # Copyright 2015-2020 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches
-""" Entry point for all of the asset conversion. """
-# importing readline enables the input() calls to have history etc.
-
-import os
-import readline  # pylint: disable=unused-import
-
+"""
+Entry point for all of the asset conversion.
+"""
 from . import changelog
-from ..log import warn, info, dbg
-from ..util.fslike.directory import CaseIgnoringDirectory, Directory
+from ..log import info, dbg
+from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
 from ..util.strings import format_progress
 from .service.mount.mount_asset_dirs import mount_asset_dirs
+from .tool.interactive import interactive_browser
 from .tool.sourcedir.acquire_sourcedir import acquire_conversion_source_dir
 from .tool.sourcedir.version_select import get_game_version
 
@@ -67,7 +65,7 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
     args.flag = flag
 
     # import here so codegen.py doesn't depend on it.
-    from .driver import convert
+    from .tool.driver import convert
 
     converted_count = 0
     total_count = None
@@ -160,73 +158,6 @@ def conversion_required(asset_dir, args):
         args.no_pickle_cache = True
 
     return True
-
-
-# REFA: function -> subtool
-def interactive_browser(srcdir=None):
-    """
-    launch an interactive view for browsing the original
-    archives.
-
-    TODO: Enhance functionality and fix SLP conversion.
-    """
-
-    info("launching interactive data browser...")
-
-    # the variables are actually used, in the interactive prompt.
-    # pylint: disable=possibly-unused-variable
-    game_version = get_game_version(srcdir)
-    data = mount_asset_dirs(srcdir, game_version)
-
-    if not data:
-        warn("cannot launch browser as no valid input assets were found.")
-        return
-
-    def save(path, target):
-        """
-        save a path to a custom target
-        """
-        with path.open("rb") as infile:
-            with open(target, "rb") as outfile:
-                outfile.write(infile.read())
-
-    def save_slp(path, target, palette=None):
-        """
-        save a slp as png.
-        """
-        from .texture import Texture
-        from .value_object.media.slp import SLP
-        from .driver import get_palettes
-
-        if not palette:
-            palette = get_palettes(data)
-
-        with path.open("rb") as slpfile:
-            tex = Texture(SLP(slpfile.read()), palette)
-
-            out_path, filename = os.path.split(target)
-            tex.save(Directory(out_path).root, filename)
-
-    import code
-    from pprint import pprint
-
-    import rlcompleter
-
-    completer = rlcompleter.Completer(locals())
-    readline.parse_and_bind("tab: complete")
-    readline.parse_and_bind("set show-all-if-ambiguous on")
-    readline.set_completer(completer.complete)
-
-    code.interact(
-        banner=("\nuse `pprint` for beautiful output!\n"
-                "you can access stuff by the `data` variable!\n"
-                "`data` is an openage.util.fslike.path.Path!\n\n"
-                "* version detection:   pprint(game_versions)\n"
-                "* list contents:       pprint(list(data['graphics'].list()))\n"
-                "* dump data:           save(data['file/path'], '/tmp/outputfile')\n"
-                "* save a slp as png:   save_slp(data['dir/123.slp'], '/tmp/pic.png')\n"),
-        local=locals()
-    )
 
 
 def init_subparser(cli):
