@@ -3,7 +3,7 @@
 # TODO pylint: disable=C,R
 
 from ..entity_object.conversion.genie_structure import GenieStructure
-from ..value_object.dataformat.member_access import NOREAD_EXPORT
+from ..value_object.read.member_access import NOREAD_EXPORT
 
 
 class MultisubtypeBaseFile(GenieStructure):

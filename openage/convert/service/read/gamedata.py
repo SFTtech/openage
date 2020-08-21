@@ -9,9 +9,9 @@ from tempfile import gettempdir
 from zlib import decompress
 
 from ....log import spam, dbg, info, warn
-from ...value_object.dataformat.game_version import GameEdition, GameExpansion
-from ...value_object.dataformat.media_types import MediaType
-from ...value_object.media.datfile.empiresdat import EmpiresDatWrapper
+from ...value_object.init.game_version import GameEdition, GameExpansion
+from ...value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
+from ...value_object.read.media_types import MediaType
 
 
 def get_gamespec(srcdir, game_version, dont_pickle):

@@ -20,7 +20,7 @@ from threading import Lock
 from ....log import warn, err, get_loglevel
 from ....util.system import free_memory
 from ...entity_object.export.texture import Texture
-from ...value_object.media.slp import SLP
+from ...value_object.read.media.slp import SLP
 
 
 class SLPConverterPool:

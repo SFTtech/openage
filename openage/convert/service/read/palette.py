@@ -3,9 +3,9 @@
 """
 Module for reading palette files.
 """
-from ...value_object.dataformat.game_version import GameEdition
-from ...value_object.dataformat.media_types import MediaType
-from ...value_object.media.colortable import ColorTable
+from ...value_object.init.game_version import GameEdition
+from ...value_object.read.media.colortable import ColorTable
+from ...value_object.read.media_types import MediaType
 
 
 def get_palettes(srcdir, game_version, index=None):

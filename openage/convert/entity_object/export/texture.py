@@ -12,8 +12,8 @@ import numpy
 from ....log import spam
 from ....util.fslike.path import Path
 from ...deprecated import struct_definition
-from ...value_object.media.blendomatic import BlendingMode
-from ...value_object.media.hardcoded.terrain_tile_size import TILE_HALFSIZE
+from ...value_object.read.media.blendomatic import BlendingMode
+from ...value_object.read.media.hardcoded.terrain_tile_size import TILE_HALFSIZE
 from ..conversion import genie_structure
 
 
@@ -69,9 +69,9 @@ class Texture(genie_structure.GenieStructure):
         super().__init__()
         spam("creating Texture from %s", repr(input_data))
 
-        from ...value_object.media.slp import SLP
-        from ...value_object.media.smp import SMP
-        from ...value_object.media.smx import SMX
+        from ...value_object.read.media.slp import SLP
+        from ...value_object.read.media.smp import SMP
+        from ...value_object.read.media.smx import SMX
 
         if isinstance(input_data, (SLP, SMP, SMX)):
             frames = []
@@ -151,7 +151,7 @@ class Texture(genie_structure.GenieStructure):
         # without the dot
         ext = ext[1:]
 
-        from ...service.png import png_create
+        from ...service.export.png import png_create
 
         compression_method = png_create.CompressionMethod.COMPR_DEFAULT
         if compression_level == 0:

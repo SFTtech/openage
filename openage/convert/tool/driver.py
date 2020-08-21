@@ -7,14 +7,14 @@ actual conversion process.
 
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
-from ..service.changelog import (ASSET_VERSION)
+from ..service.init.changelog import (ASSET_VERSION)
 from ..service.read.gamedata import get_gamespec
 from ..service.read.palette import get_palettes
 from ..service.read.register_media import get_existing_graphics
 from ..service.read.string_resource import get_string_resources
-from ..value_object.dataformat.game_version import GameEdition, GameExpansion
-from ..value_object.dataformat.media_types import MediaType
-from ..value_object.media.blendomatic import Blendomatic
+from ..value_object.init.game_version import GameEdition, GameExpansion
+from ..value_object.read.media.blendomatic import Blendomatic
+from ..value_object.read.media_types import MediaType
 
 
 def get_blendomatic_data(args):
@@ -131,20 +131,20 @@ def get_converter(game_version):
     game_expansions = game_version[1]
 
     if game_edition is GameEdition.ROR:
-        from ..processor.ror.processor import RoRProcessor
+        from ..processor.conversion.ror.processor import RoRProcessor
         return RoRProcessor
 
     if game_edition is GameEdition.AOC:
-        from ..processor.aoc.processor import AoCProcessor
+        from ..processor.conversion.aoc.processor import AoCProcessor
         return AoCProcessor
 
     if game_edition is GameEdition.AOE2DE:
-        from ..processor.de2.processor import DE2Processor
+        from ..processor.conversion.de2.processor import DE2Processor
         return DE2Processor
 
     if game_edition is GameEdition.SWGB:
         if GameExpansion.SWGB_CC in game_expansions:
-            from ..processor.swgbcc.processor import SWGBCCProcessor
+            from ..processor.conversion.swgbcc.processor import SWGBCCProcessor
             return SWGBCCProcessor
 
     raise Exception("no valid converter found for game edition %s"

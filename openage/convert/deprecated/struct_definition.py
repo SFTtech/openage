@@ -5,9 +5,9 @@
 from collections import OrderedDict
 import re
 
-from ..value_object.dataformat.game_version import GameEdition
-from ..value_object.dataformat.member_access import SKIP, READ_GEN, NOREAD_EXPORT
-from ..value_object.dataformat.read_members import IncludeMembers, StringMember,\
+from ..value_object.init.game_version import GameEdition
+from ..value_object.read.member_access import SKIP, READ_GEN, NOREAD_EXPORT
+from ..value_object.read.read_members import IncludeMembers, StringMember,\
     CharArrayMember, NumberMember, ReadMember, RefMember, ArrayMember
 from .content_snippet import ContentSnippet, SectionType
 from .struct_snippet import StructSnippet

@@ -6,6 +6,7 @@ add_py_modules(
 	converter_object.py
 	genie_structure.py
 	modpack.py
+	stringresource.py
 )
 
 add_subdirectory(aoc)

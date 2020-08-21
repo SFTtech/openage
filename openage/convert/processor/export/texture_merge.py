@@ -11,8 +11,8 @@ import numpy
 from ....log import spam
 from ...entity_object.export.binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from ...entity_object.export.texture import TextureImage
-from ...value_object.media.hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
-                                                     TERRAIN_ASPECT_RATIO)
+from ...value_object.read.media.hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
+                                                          TERRAIN_ASPECT_RATIO)
 
 
 def merge_frames(frames, custom_packer=None):

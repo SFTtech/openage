@@ -1,9 +1,0 @@
-add_py_modules(
-	__init__.py
-	game_file_version.py
-	game_version.py
-	media_types.py
-	member_access.py
-	read_members.py
-	value_members.py
-)

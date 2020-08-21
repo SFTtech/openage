@@ -5,8 +5,8 @@ Initial version detection based on user input.
 TODO: Version selection.
 """
 from ....log import warn, info
-from ...service.game_version.version_detect import iterate_game_versions
-from ...value_object.dataformat.game_version import GameEdition, Support
+from ...service.init.version_detect import iterate_game_versions
+from ...value_object.init.game_version import GameEdition, Support
 
 
 def get_game_version(srcdir):

@@ -10,7 +10,7 @@ These are simple containers that can be processed by the converter.
 
 from ....nyan.nyan_structs import NyanObject, NyanPatch, NyanPatchMember, MemberOperator
 from ...value_object.conversion.forward_ref import ForwardRef
-from ...value_object.dataformat.value_members import NoDiffMember, ValueMember
+from ...value_object.read.value_members import NoDiffMember, ValueMember
 from .combined_sound import CombinedSound
 from .combined_sprite import CombinedSprite
 from .combined_terrain import CombinedTerrain

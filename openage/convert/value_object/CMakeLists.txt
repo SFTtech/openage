@@ -3,5 +3,5 @@ add_py_modules(
 )
 
 add_subdirectory(conversion)
-add_subdirectory(dataformat)
-add_subdirectory(media)
+add_subdirectory(init)
+add_subdirectory(read)

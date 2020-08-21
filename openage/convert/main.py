@@ -9,8 +9,8 @@ from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
 from ..util.strings import format_progress
-from .service.conversion_required import conversion_required
-from .service.mount.mount_asset_dirs import mount_asset_dirs
+from .service.init.conversion_required import conversion_required
+from .service.init.mount_asset_dirs import mount_asset_dirs
 from .tool.interactive import interactive_browser
 from .tool.subtool.acquire_sourcedir import acquire_conversion_source_dir
 from .tool.subtool.version_select import get_game_version

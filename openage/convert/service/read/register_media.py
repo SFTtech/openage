@@ -4,7 +4,7 @@
 Module for registering media files.
 """
 
-from ...value_object.dataformat.media_types import MediaType
+from ...value_object.read.media_types import MediaType
 
 
 def get_existing_graphics(args):

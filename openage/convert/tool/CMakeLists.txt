@@ -5,4 +5,4 @@ add_py_modules(
 	singlefile.py
 )
 
-add_subdirectory(sourcedir)
+add_subdirectory(subtool)

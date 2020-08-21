@@ -5,11 +5,11 @@ Module for reading plaintext-based language files.
 """
 
 from ....log import dbg
-from ...entity_object.language.stringresource import StringResource
-from ...value_object.dataformat.game_version import GameEdition
-from ...value_object.dataformat.media_types import MediaType
-from ...value_object.media.langcodes import LANGCODES_DE2, LANGCODES_HD
-from ...value_object.media.pefile import PEFile
+from ...entity_object.conversion.stringresource import StringResource
+from ...value_object.init.game_version import GameEdition
+from ...value_object.read.media.langcodes import LANGCODES_DE2, LANGCODES_HD
+from ...value_object.read.media.pefile import PEFile
+from ...value_object.read.media_types import MediaType
 
 
 def get_string_resources(args):

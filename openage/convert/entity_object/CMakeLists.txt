@@ -4,4 +4,3 @@ add_py_modules(
 
 add_subdirectory(conversion)
 add_subdirectory(export)
-add_subdirectory(language)

@@ -9,7 +9,7 @@ import readline  # pylint: disable=unused-import
 
 from ...log import warn, info
 from ...util.fslike.directory import Directory
-from ..service.mount.mount_asset_dirs import mount_asset_dirs
+from ..service.init.mount_asset_dirs import mount_asset_dirs
 from .subtool.version_select import get_game_version
 
 
@@ -45,7 +45,7 @@ def interactive_browser(srcdir=None):
         save a slp as png.
         """
         from ..entity_object.export.texture import Texture
-        from ..value_object.media.slp import SLP
+        from ..value_object.read.media.slp import SLP
         from ..service.read.palette import get_palettes
 
         if not palette:

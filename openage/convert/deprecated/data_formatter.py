@@ -4,7 +4,7 @@
 
 from . import entry_parser
 from . import util
-from ..value_object.dataformat.read_members import RefMember
+from ..value_object.read.read_members import RefMember
 from .generated_file import GeneratedFile
 
 

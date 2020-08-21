@@ -11,8 +11,8 @@ should be a processor/service that saves the file based on the request.
 """
 
 from ....util.observer import Observable
-from ...value_object.dataformat.game_version import GameEdition
-from ...value_object.dataformat.media_types import MediaType
+from ...value_object.init.game_version import GameEdition
+from ...value_object.read.media_types import MediaType
 from .texture import Texture
 
 
@@ -121,15 +121,15 @@ class GraphicsMediaExportRequest(MediaExportRequest):
             media_file = source_file.open("rb")
 
         if source_file.suffix.lower() == ".slp":
-            from ...value_object.media.slp import SLP
+            from ...value_object.read.media.slp import SLP
             image = SLP(media_file.read())
 
         elif source_file.suffix.lower() == ".smp":
-            from ...value_object.media.smp import SMP
+            from ...value_object.read.media.smp import SMP
             image = SMP(media_file.read())
 
         elif source_file.suffix.lower() == ".smx":
-            from ...value_object.media.smx import SMX
+            from ...value_object.read.media.smx import SMX
             image = SMX(media_file.read())
 
         texture = Texture(image, palettes)
@@ -154,7 +154,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
         media_file = source_file.open("rb")
 
         if source_file.suffix.lower() == ".slp":
-            from ...value_object.media.slp import SLP
+            from ...value_object.read.media.slp import SLP
             image = SLP(media_file.read())
 
         elif source_file.suffix.lower() == ".dds":
@@ -189,7 +189,7 @@ class SoundMediaExportRequest(MediaExportRequest):
             # TODO: Filter files that do not exist out sooner
             return
 
-        from ...service.opus.opusenc import encode
+        from ...service.export.opus.opusenc import encode
 
         soundata = encode(media_file)
 
