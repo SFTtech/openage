@@ -255,7 +255,7 @@ class Blendomatic(GenieStructure):
 
     def dump(self, filename):
         """
-        Return a printale file.
+        Return a printable file.
         """
         data = [
             {"blend_mode": idx}

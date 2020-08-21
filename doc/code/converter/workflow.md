@@ -7,7 +7,7 @@
 - Converter is built to support multiple games
 - Keep that in mind when adding features
 
-![workflow structogram]()
+![workflow structogram](images/workflow.svg)
 
 ## Game and Version detection
 
