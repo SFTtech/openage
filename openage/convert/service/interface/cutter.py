@@ -2,7 +2,7 @@
 
 """ Cutting some user interface assets into subtextures """
 
-from ...texture import TextureImage
+from ...entity_object.export.texture import TextureImage
 from ...value_object.media.hardcoded.interface import (TOP_STRIP_PATTERN_CORNERS,
                                                        TOP_STRIP_PATTERN_SEARCH_AREA_CORNERS,
                                                        MID_STRIP_PATTERN_CORNERS,

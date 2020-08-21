@@ -12,8 +12,8 @@ from ..util.strings import format_progress
 from .service.conversion_required import conversion_required
 from .service.mount.mount_asset_dirs import mount_asset_dirs
 from .tool.interactive import interactive_browser
-from .tool.sourcedir.acquire_sourcedir import acquire_conversion_source_dir
-from .tool.sourcedir.version_select import get_game_version
+from .tool.subtool.acquire_sourcedir import acquire_conversion_source_dir
+from .tool.subtool.version_select import get_game_version
 
 
 def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
