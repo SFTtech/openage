@@ -1,5 +1,7 @@
 add_py_modules(
 	__init__.py
+	changelog.py
+	conversion_required.py
 	internal_name_lookups.py
 )
 

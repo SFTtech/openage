@@ -6,8 +6,8 @@ gamespec struct code generation listing.
 
 from ..convert.deprecated.data_formatter import DataFormatter
 from ..convert.deprecated.multisubtype_base import MultisubtypeBaseFile
+from ..convert.entity_object.export.texture import Texture
 from ..convert.entity_object.language.stringresource import StringResource
-from ..convert.texture import Texture
 from ..convert.value_object.media.blendomatic import Blendomatic
 from ..convert.value_object.media.colortable import ColorTable
 from ..convert.value_object.media.datfile.empiresdat import EmpiresDat

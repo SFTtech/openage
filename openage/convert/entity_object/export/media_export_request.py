@@ -4,12 +4,16 @@
 """
 Specifies a request for a media resource that should be
 converted and exported into a modpack.
+
+TODO: Change how exports are handled. Rather than having the
+export request implement save() functionality by itself, there
+should be a processor/service that saves the file based on the request.
 """
 
 from ....util.observer import Observable
-from ...texture import Texture
 from ...value_object.dataformat.game_version import GameEdition
 from ...value_object.dataformat.media_types import MediaType
+from .texture import Texture
 
 
 class MediaExportRequest(Observable):
@@ -158,7 +162,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
             pass
 
         if game_version[0] in (GameEdition.AOC, GameEdition.SWGB):
-            from ...texture import merge_terrain
+            from ...processor.export.texture_merge import merge_terrain
             texture = Texture(image, palettes, custom_merger=merge_terrain)
 
         else:

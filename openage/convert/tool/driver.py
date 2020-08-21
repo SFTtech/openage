@@ -6,8 +6,8 @@ actual conversion process.
 """
 
 from ...log import info, dbg
-from ..changelog import (ASSET_VERSION)
-from ..processor.modpack_exporter import ModpackExporter
+from ..processor.export.modpack_exporter import ModpackExporter
+from ..service.changelog import (ASSET_VERSION)
 from ..service.read.gamedata import get_gamespec
 from ..service.read.palette import get_palettes
 from ..service.read.register_media import get_existing_graphics
@@ -17,9 +17,12 @@ from ..value_object.dataformat.media_types import MediaType
 from ..value_object.media.blendomatic import Blendomatic
 
 
-# REFA: function -> make this a MediaExportRequest
 def get_blendomatic_data(args):
-    """ reads blendomatic.dat """
+    """
+    reads blendomatic.dat
+
+    TODO: make this a MediaExportRequest.
+    """
     # in HD edition, blendomatic.dat has been renamed to
     # blendomatic_x1.dat; their new blendomatic.dat has a new, unsupported
     # format.

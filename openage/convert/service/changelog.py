@@ -6,10 +6,9 @@ Asset version change log
 used to determine whether assets that were converted by an earlier version of
 openage are still up to date.
 """
-# REFA: Whole file -> processor
 
-from ..log import warn
-from ..testing.testing import TestError
+from ...log import warn
+from ...testing.testing import TestError
 
 # filename where to store the versioning information
 ASSET_VERSION_FILENAME = "asset_version"

@@ -4,22 +4,23 @@
 Multiprocessing-based SLP-to-texture converter service.
 """
 
-# TODO This is a temporary workaround for the fact that the SLP conversion
-#      requires the GIL, and is really slow right now.
-#      Ideally, time-intemsive parts of SLP.py should be re-written as
-#      optimized nogil Cython functions, entirely removing the need for
-#      multiprocessing.
-# REFA: Whole file -> processor
+# TODO: This is a temporary workaround for the fact that the SLP conversion
+#       requires the GIL, and is really slow right now.
+#       Ideally, time-intemsive parts of SLP.py should be re-written as
+#       optimized nogil Cython functions, entirely removing the need for
+#       multiprocessing.
+#
+# TODO: Currently unused
 
 import multiprocessing
 import os
 import queue
 from threading import Lock
 
-from ..log import warn, err, get_loglevel
-from ..util.system import free_memory
-from .texture import Texture
-from .value_object.media.slp import SLP
+from ....log import warn, err, get_loglevel
+from ....util.system import free_memory
+from ...entity_object.export.texture import Texture
+from ...value_object.media.slp import SLP
 
 
 class SLPConverterPool:
@@ -133,7 +134,7 @@ def converter_process(inqueue, outqueue):
     """
     import sys
 
-    from ..log import set_loglevel
+    from ....log import set_loglevel
 
     # prevent writes to sys.stdout
     sys.stdout.write = sys.stderr.write

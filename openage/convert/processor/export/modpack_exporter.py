@@ -5,8 +5,8 @@
 """
 Export data from a modpack to files.
 """
-from ...log import info
-from ..value_object.dataformat.media_types import MediaType
+from ....log import info
+from ...value_object.dataformat.media_types import MediaType
 
 
 class ModpackExporter:

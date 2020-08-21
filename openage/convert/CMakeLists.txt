@@ -1,10 +1,6 @@
 add_py_modules(
 	__init__.py
-	binpack.py
-	changelog.py
 	main.py
-	slp_converter_pool.py
-	texture.py
 )
 
 add_subdirectory(deprecated)

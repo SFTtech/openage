@@ -3,8 +3,6 @@
 """ Routines for 2D binpacking """
 
 # TODO pylint: disable=C,R
-# REFA: Whole file -> entity object
-
 
 import math
 

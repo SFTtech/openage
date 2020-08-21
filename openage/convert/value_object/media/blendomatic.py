@@ -250,7 +250,7 @@ class Blendomatic(GenieStructure):
         each atlas contains all blending masks merged on one texture
         """
 
-        from ...texture import Texture
+        from ...entity_object.export.texture import Texture
         return [Texture(b_mode) for b_mode in self.blending_modes]
 
     def dump(self, filename):
