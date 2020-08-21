@@ -1,4 +1,4 @@
-# Copyright 2016-2018 the openage authors. See copying.md for legal info.
+# Copyright 2016-2020 the openage authors. See copying.md for legal info.
 
 # If you wanna boost speed even further:
 # cython: profile=False
@@ -11,9 +11,10 @@ import argparse
 from collections import namedtuple
 import itertools
 import logging
+import numpy
 import sys
 
-import numpy
+
 cimport cython
 cimport numpy
 

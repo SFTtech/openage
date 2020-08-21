@@ -1,5 +1,6 @@
 # Copyright 2014-2020 the openage authors. See copying.md for legal info.
-
+#
+# pylint: disable=too-many-locals
 """
 Merges texture frames into a spritesheet or terrain tiles into
 a terrain texture.

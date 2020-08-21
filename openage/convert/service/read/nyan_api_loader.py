@@ -1,5 +1,6 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
-
+#
+# pylint: disable=line-too-long,too-many-lines,too-many-statements
 """
 Loads the API into the converter.
 

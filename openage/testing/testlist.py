@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """ Lists of all possible tests; enter your tests here. """
 
@@ -26,7 +26,7 @@ def tests_py():
     yield "openage.assets.test"
     yield ("openage.cabextract.test.test", "test CAB archive extraction",
            lambda env: env["has_assets"])
-    yield "openage.convert.changelog.test"
+    yield "openage.convert.service.init.changelog.test"
     yield "openage.cppinterface.exctranslate_tests.cpp_to_py"
     yield ("openage.cppinterface.exctranslate_tests.cpp_to_py_bounce",
            "translates the exception back and forth a few times")
@@ -46,7 +46,7 @@ def demos_py():
            "translates a C++ exception and its causes to python")
     yield ("openage.log.tests.demo",
            "demonstrates the translation of Python log messages")
-    yield ("openage.convert.opus.demo.convert",
+    yield ("openage.convert.service.export.opus.demo.convert",
            "encodes an opus file from a wave file")
     yield ("openage.event.demo.curvepong",
            "play pong on steroids through future prediction")

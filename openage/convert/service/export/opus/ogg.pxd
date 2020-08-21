@@ -1,4 +1,4 @@
-# Copyright 2018-2018 the openage authors. See copying.md for legal info.
+# Copyright 2018-2020 the openage authors. See copying.md for legal info.
 
 cdef extern from "ogg/config_types.h":
     ctypedef short ogg_int16_t

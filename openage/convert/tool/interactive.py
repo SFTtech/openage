@@ -49,7 +49,7 @@ def interactive_browser(srcdir=None):
         from ..service.read.palette import get_palettes
 
         if not palette:
-            palette = get_palettes(data)
+            palette = get_palettes(data, game_version)
 
         with path.open("rb") as slpfile:
             tex = Texture(SLP(slpfile.read()), palette)

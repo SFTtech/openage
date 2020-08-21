@@ -41,7 +41,7 @@ CHANGES = (
 ASSET_VERSION = len(CHANGES) - 1
 
 
-def changes(asset_version, spec_version):
+def changes(asset_version):
     """
     return all changed components since the passed version number.
     """

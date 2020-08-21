@@ -1,4 +1,4 @@
-# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+# Copyright 2013-2020 the openage authors. See copying.md for legal info.
 
 """
 Objects for storing conversion data.

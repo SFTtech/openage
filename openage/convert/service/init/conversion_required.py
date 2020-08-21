@@ -17,8 +17,6 @@ def conversion_required(asset_dir, args):
     """
 
     version_path = asset_dir / 'converted' / changelog.ASSET_VERSION_FILENAME
-    spec_path = asset_dir / 'converted' / changelog.GAMESPEC_VERSION_FILENAME
-
     # determine the version of assets
     try:
         with version_path.open() as fileobj:
@@ -36,16 +34,7 @@ def conversion_required(asset_dir, args):
         info("No converted assets have been found")
         asset_version = -1
 
-    # determine the version of the gamespec format
-    try:
-        with spec_path.open() as fileobj:
-            spec_version = fileobj.read().strip()
-
-    except FileNotFoundError:
-        info("Game specification version file not found.")
-        spec_version = None
-
-    changes = changelog.changes(asset_version, spec_version)
+    changes = changelog.changes(asset_version,)
 
     if not changes:
         dbg("Converted assets are up to date")
