@@ -33,6 +33,7 @@ Dependency list:
     C     cmake >=3.16
       A   numpy
       A   python imaging library (PIL) -> pillow
+     RA   toml
     CR    opengl >=3.3
     CR    libepoxy
     CR    libpng

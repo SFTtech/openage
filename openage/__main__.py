@@ -22,6 +22,7 @@ class PrintVersion(argparse.Action):
     This is the easiest way around.
     """
     # pylint: disable=too-few-public-methods
+
     def __call__(self, parser, namespace, values, option_string=None):
         del parser, namespace, values, option_string  # unused
 
@@ -89,7 +90,7 @@ def main(argv=None):
         "convert",
         parents=[global_cli]))
 
-    from .convert.singlefile import init_subparser
+    from .convert.tool.singlefile import init_subparser
     init_subparser(subparsers.add_parser(
         "convert-file",
         parents=[global_cli]))

@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 #include "unit_texture.h"
 
@@ -22,7 +22,7 @@ UnitTexture::UnitTexture(GameSpec &spec, uint16_t graphic_id, bool delta)
 
 UnitTexture::UnitTexture(GameSpec &spec, const gamedata::graphic *graphic, bool delta)
 	:
-	id{graphic->id},
+	id{graphic->graphic_id},
 	sound_id{graphic->sound_id},
 	frame_count{graphic->frame_count},
 	angle_count{graphic->angle_count},

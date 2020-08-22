@@ -1,0 +1,18 @@
+add_py_modules(
+	__init__.py
+	ability_subprocessor.py
+	auxiliary_subprocessor.py
+	civ_subprocessor.py
+	effect_subprocessor.py
+	media_subprocessor.py
+	modifier_subprocessor.py
+	modpack_subprocessor.py
+	nyan_subprocessor.py
+	pregen_processor.py
+	processor.py
+	tech_subprocessor.py
+	upgrade_ability_subprocessor.py
+	upgrade_attribute_subprocessor.py
+	upgrade_effect_subprocessor.py
+	upgrade_resource_subprocessor.py
+)

@@ -1,17 +1,16 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
 gamespec struct code generation listing.
 """
 
-from ..convert.dataformat.data_formatter import DataFormatter
-
-from ..convert.dataformat.multisubtype_base import MultisubtypeBaseFile
-from ..convert.gamedata.empiresdat import EmpiresDat
-from ..convert.blendomatic import Blendomatic
-from ..convert.colortable import ColorTable
-from ..convert.texture import Texture
-from ..convert.stringresource import StringResource
+from ..convert.deprecated.data_formatter import DataFormatter
+from ..convert.deprecated.multisubtype_base import MultisubtypeBaseFile
+from ..convert.entity_object.conversion.stringresource import StringResource
+from ..convert.entity_object.export.texture import Texture
+from ..convert.value_object.read.media.blendomatic import Blendomatic
+from ..convert.value_object.read.media.colortable import ColorTable
+from ..convert.value_object.read.media.datfile.empiresdat import EmpiresDat
 
 
 def generate_gamespec_structs(projectdir):

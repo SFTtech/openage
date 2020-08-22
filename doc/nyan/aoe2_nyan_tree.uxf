@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
   <help_text>// Uncomment the following line to change the fontsize and font:
 // fontsize=10
 // fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
@@ -2737,7 +2738,7 @@ bg=blue</panel_attributes>
       <x>3260</x>
       <y>3490</y>
       <w>240</w>
-      <h>90</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>*Progress*
 bg=pink
@@ -2801,12 +2802,12 @@ bg=pink</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>3370</x>
-      <y>3570</y>
+      <y>3560</y>
       <w>30</w>
-      <h>450</h>
+      <h>460</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;430.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;440.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -5734,7 +5735,7 @@ markup_file : file</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1850</x>
+      <x>1840</x>
       <y>1370</y>
       <w>180</w>
       <h>80</h>
@@ -5756,7 +5757,7 @@ sound : Sound</panel_attributes>
       <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -5767,7 +5768,7 @@ sound : Sound</panel_attributes>
       <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -5778,7 +5779,7 @@ sound : Sound</panel_attributes>
       <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>

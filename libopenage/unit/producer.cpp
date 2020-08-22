@@ -1,4 +1,4 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 #include <initializer_list>
 
@@ -92,7 +92,7 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	dataspec(spec),
 	unit_data(*ud),
 	terrain_outline{nullptr},
-	default_tex{spec.get_unit_texture(ud->graphic_standing0)},
+	default_tex{spec.get_unit_texture(ud->idle_graphic0)},
 	dead_unit_id{ud->dead_unit_id} {
 
 	// copy the class type
@@ -103,13 +103,13 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	this->decay = unit_data.name.substr(unit_data.name.length() - 2) == "_D";
 
 	// find suitable sounds
-	int creation_sound = this->unit_data.train_sound;
-	int dying_sound = this->unit_data.sound_dying;
+	int creation_sound = this->unit_data.train_sound_id;
+	int dying_sound = this->unit_data.dying_sound_id;
 	if (creation_sound == -1) {
-		creation_sound = this->unit_data.damage_sound;
+		creation_sound = this->unit_data.damage_sound_id;
 	}
 	if (creation_sound == -1) {
-		creation_sound = this->unit_data.sound_selection;
+		creation_sound = this->unit_data.selection_sound_id;
 	}
 	if (dying_sound == -1) {
 		dying_sound = 323; //generic explosion sound
@@ -124,7 +124,7 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	};
 
 	// shape of the outline
-	if (this->unit_data.selection_shape > 1) {
+	if (this->unit_data.obstruction_class > 1) {
 		this->terrain_outline = radial_outline(this->unit_data.radius_x);
 	}
 	else {
@@ -132,7 +132,7 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	}
 
 	// graphic set
-	auto standing = spec.get_unit_texture(this->unit_data.graphic_standing0);
+	auto standing = spec.get_unit_texture(this->unit_data.idle_graphic0);
 	if (!standing) {
 
 		// indicates problems with data converion
@@ -247,7 +247,7 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 	else if (this->unit_data.unit_class == gamedata::unit_classes::PREY_ANIMAL) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 140));
 	}
-	else if (this->unit_data.unit_class == gamedata::unit_classes::SHEEP) {
+	else if (this->unit_data.unit_class == gamedata::unit_classes::HERDABLE) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 100, 0.1));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::GOLD_MINE) {
@@ -295,7 +295,7 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 TerrainObject *ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
 
 	// create new object with correct base shape
-	if (this->unit_data.selection_shape > 1) {
+	if (this->unit_data.obstruction_class > 1) {
 		u->make_location<RadialObject>(this->unit_data.radius_x, this->terrain_outline);
 	}
 	else {
@@ -367,12 +367,12 @@ MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, cons
 	unit_data(*um),
 	on_move{spec.get_sound(this->unit_data.command_sound_id)},
 	on_attack{spec.get_sound(this->unit_data.command_sound_id)},
-	projectile{this->unit_data.missile_unit_id} {
+	projectile{this->unit_data.attack_projectile_primary_unit_id} {
 
 	// extra graphics if available
 	// villagers have invalid attack and walk graphics
 	// it seems these come from the command data instead
-	auto walk = spec.get_unit_texture(this->unit_data.walking_graphics0);
+	auto walk = spec.get_unit_texture(this->unit_data.move_graphics);
 	if (!walk) {
 
 		// use standing instead
@@ -385,7 +385,7 @@ MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, cons
 		this->graphics[graphic_type::carrying] = walk;
 	}
 
-	auto attack = spec.get_unit_texture(this->unit_data.fight_sprite_id);
+	auto attack = spec.get_unit_texture(this->unit_data.attack_sprite_id);
 	if (attack && attack->is_valid()) {
 		this->graphics[graphic_type::attack] = attack;
 	}
@@ -420,7 +420,7 @@ void MovableProducer::initialise(Unit *unit, Player &player) {
 
 	// projectile of melee attacks
 	UnitType *proj_type = this->owner.get_type(this->projectile);
-	if (this->unit_data.missile_unit_id > 0 && proj_type) {
+	if (this->unit_data.attack_projectile_primary_unit_id > 0 && proj_type) {
 
 		// calculate requirements for ranged attacks
 		coord::phys_t range_phys = this->unit_data.weapon_range_max;
@@ -455,7 +455,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 	MovableProducer::initialise(unit, player);
 
 	// population of 1 for all movable units
-	if (this->unit_data.unit_class != gamedata::unit_classes::SHEEP) {
+	if (this->unit_data.unit_class != gamedata::unit_classes::HERDABLE) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(1, 0));
 	}
 
@@ -482,7 +482,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 			multitype_attr.types[gamedata::unit_classes::CIVILIAN] = this->parent_type(); // get default villager
 			multitype_attr.types[gamedata::unit_classes::BUILDING] = this->owner.get_type(156); // builder 118
 			multitype_attr.types[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(120); // forager
-			multitype_attr.types[gamedata::unit_classes::SHEEP] = this->owner.get_type(592); // sheperd
+			multitype_attr.types[gamedata::unit_classes::HERDABLE] = this->owner.get_type(592); // sheperd
 			multitype_attr.types[gamedata::unit_classes::TREES] = this->owner.get_type(123); // woodcutter
 			multitype_attr.types[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(579); // gold miner
 			multitype_attr.types[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(124); // stone miner
@@ -494,7 +494,7 @@ void LivingProducer::initialise(Unit *unit, Player &player) {
 			multitype_attr.types[gamedata::unit_classes::CIVILIAN] = this->parent_type(); // get default villager
 			multitype_attr.types[gamedata::unit_classes::BUILDING] = this->owner.get_type(222); // builder 212
 			multitype_attr.types[gamedata::unit_classes::BERRY_BUSH] = this->owner.get_type(354); // forager
-			multitype_attr.types[gamedata::unit_classes::SHEEP] = this->owner.get_type(590); // sheperd
+			multitype_attr.types[gamedata::unit_classes::HERDABLE] = this->owner.get_type(590); // sheperd
 			multitype_attr.types[gamedata::unit_classes::TREES] = this->owner.get_type(218); // woodcutter
 			multitype_attr.types[gamedata::unit_classes::GOLD_MINE] = this->owner.get_type(581); // gold miner
 			multitype_attr.types[gamedata::unit_classes::STONE_MINE] = this->owner.get_type(220); // stone miner
@@ -524,9 +524,9 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	:
 	UnitType(owner),
 	unit_data{*ud},
-	texture{spec.get_unit_texture(ud->graphic_standing0)},
+	texture{spec.get_unit_texture(ud->idle_graphic0)},
 	destroyed{spec.get_unit_texture(ud->dying_graphic)},
-	projectile{this->unit_data.missile_unit_id},
+	projectile{this->unit_data.attack_projectile_primary_unit_id},
 	foundation_terrain{ud->foundation_terrain_id},
 	enable_collisions{this->unit_data.id0 != 109} { // 109 = town center
 
@@ -535,13 +535,13 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	this->icon = this->unit_data.icon_id;
 
 	// find suitable sounds
-	int creation_sound = this->unit_data.train_sound;
-	int dying_sound = this->unit_data.sound_dying;
+	int creation_sound = this->unit_data.train_sound_id;
+	int dying_sound = this->unit_data.dying_sound_id;
 	if (creation_sound == -1) {
-		creation_sound = this->unit_data.damage_sound;
+		creation_sound = this->unit_data.damage_sound_id;
 	}
 	if (creation_sound == -1) {
-		creation_sound = this->unit_data.sound_selection;
+		creation_sound = this->unit_data.selection_sound_id;
 	}
 	if (dying_sound == -1) {
 		dying_sound = 323; //generic explosion sound
@@ -557,8 +557,8 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 
 	// graphic set
 	this->graphics[graphic_type::construct] = spec.get_unit_texture(ud->construction_graphic_id);
-	this->graphics[graphic_type::standing] = spec.get_unit_texture(ud->graphic_standing0);
-	this->graphics[graphic_type::attack] = spec.get_unit_texture(ud->graphic_standing0);
+	this->graphics[graphic_type::standing] = spec.get_unit_texture(ud->idle_graphic0);
+	this->graphics[graphic_type::attack] = spec.get_unit_texture(ud->idle_graphic0);
 	auto dying_tex = spec.get_unit_texture(ud->dying_graphic);
 	if (dying_tex) {
 		this->graphics[graphic_type::dying] = dying_tex;
@@ -629,7 +629,7 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	unit->push_action(std::make_unique<FoundationAction>(unit, has_destruct_graphic), true);
 
 	UnitType *proj_type = this->owner.get_type(this->projectile);
-	if (this->unit_data.missile_unit_id > 0 && proj_type) {
+	if (this->unit_data.attack_projectile_primary_unit_id > 0 && proj_type) {
 		coord::phys_t range_phys = this->unit_data.weapon_range_max;
 		unit->add_attribute(std::make_shared<Attribute<attr_type::attack>>(proj_type, range_phys, 350000, 1));
 		// formation is used only for the attack_stance
@@ -793,7 +793,7 @@ ProjectileProducer::ProjectileProducer(const Player &owner, const GameSpec &spec
 	:
 	UnitType(owner),
 	unit_data{*pd},
-	tex{spec.get_unit_texture(this->unit_data.graphic_standing0)},
+	tex{spec.get_unit_texture(this->unit_data.idle_graphic0)},
 	sh{spec.get_unit_texture(3379)}, // 3379 = general arrow shadow
 	destroyed{spec.get_unit_texture(this->unit_data.dying_graphic)} {
 

@@ -1,0 +1,11 @@
+add_py_modules(
+	__init__.py
+	civ_subprocessor.py
+	media_subprocessor.py
+	modpack_subprocessor.py
+	nyan_subprocessor.py
+	processor.py
+	tech_subprocessor.py
+	upgrade_attribute_subprocessor.py
+	upgrade_resource_subprocessor.py
+)
