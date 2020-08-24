@@ -698,6 +698,11 @@ class AoCProcessor:
                     # Effect has no type
                     continue
 
+                if effect_type == 3:
+                    if effect["attr_b"].get_value() < 0:
+                        # Upgrade to invalid unit
+                        continue
+
                 if effect_type == 102:
                     if effect["attr_d"].get_value() < 0:
                         # Tech disable effect with no tech id specified

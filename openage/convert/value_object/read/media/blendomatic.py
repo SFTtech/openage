@@ -217,7 +217,7 @@ class Blendomatic(GenieStructure):
     # };
     blendomatic_header = Struct("< I I")
 
-    def __init__(self, fileobj):
+    def __init__(self, fileobj, custom_mode_count=None):
         super().__init__()
 
         buf = fileobj.read(Blendomatic.blendomatic_header.size)
@@ -227,6 +227,12 @@ class Blendomatic(GenieStructure):
 
         dbg("%d blending modes, each %d tiles",
             blending_mode_count, tile_count)
+
+        if custom_mode_count:
+            blending_mode_count = custom_mode_count
+
+            dbg("reading only the first %d blending modes",
+                custom_mode_count)
 
         blending_mode = Struct("< I %dB" % (tile_count))
 

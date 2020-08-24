@@ -48,8 +48,10 @@ class EmpiresDat(GenieStructure):
                 (READ_GEN, "civ_count_swgb", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_UNKNOWN, None, StorageType.INT_MEMBER, "int32_t"),
                 (READ_UNKNOWN, None, StorageType.INT_MEMBER, "int32_t"),
-                (READ_UNKNOWN, None, StorageType.INT_MEMBER, "int32_t"),
-                (READ_UNKNOWN, None, StorageType.INT_MEMBER, "int32_t"),
+                # Number of blend modes used in the game?
+                (READ_GEN, "blend_mode_count_swgb", StorageType.INT_MEMBER, "int32_t"),
+                # Number of blend modes that they wanted to use??
+                (READ_GEN, "blend_mode_count_max_swgb", StorageType.INT_MEMBER, "int32_t"),
             ])
 
         # terrain header data
