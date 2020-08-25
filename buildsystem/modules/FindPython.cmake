@@ -63,7 +63,7 @@ elseif(PYTHON_TEST_RESULT)
 	set(PYTHON_FOUND ${Python3_Interpreter_FOUND})
 	set(PYTHON_LIBRARIES ${Python3_LIBRARIES} CACHE STRING "Linker invocation for the Python library" FORCE)
 	set(PYTHON_INCLUDE_DIRS ${Python3_INCLUDE_DIRS} CACHE PATH "Location of the Python include dir" FORCE)
-	set(PYTHONLIBS_VERSION_STRING ${Python3_VERSION})
+	set(PYTHON_VERSION_STRING ${Python3_VERSION})
 
 	# Numpy.cmake vars <= Python3.cmake vars
 	set(NUMPY_FOUND ${Python3_NumPy_FOUND})
