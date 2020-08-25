@@ -106,9 +106,6 @@ function(py_get_config_var VAR RESULTVAR)
 		"from distutils.sysconfig import get_config_var; print(get_config_var('${VAR}'))"
 		RESULT
 	)
-	if(MINGW)
-		string(REPLACE "dll" "pyd" RESULT "${RESULT}")
-	endif()
 
 	set("${RESULTVAR}" "${RESULT}" PARENT_SCOPE)
 endfunction()
