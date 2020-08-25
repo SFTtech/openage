@@ -160,6 +160,11 @@ endif()
 set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
 set(CMAKE_MODULE_PATH "${BUILDSYSTEM_DIR}" "${BUILDSYSTEM_DIR}/modules/")
 
+# prioritize macOS frameworks since they're probably newer
+# than the system libraries
+set(CMAKE_FIND_FRAMEWORK LAST)
+set(CMAKE_FIND_APPBUNDLE LAST)
+
 # load helper modules
 include(GNUInstallDirs)
 include(CheckInSourceBuild)
