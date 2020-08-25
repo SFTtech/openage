@@ -39,6 +39,7 @@ else:
         "Cython        {cython}\n"
         "Jinja2        {jinja2}\n"
         "NumPy         {numpy}\n"
+        "Pillow        {pillow}\n"
         "Pygments      {pygments}\n"
         "\n"
         "== C++ =="
@@ -54,6 +55,7 @@ else:
         cython=config.CYTHONVERSION,
         jinja2=config.JINJAVERSION,
         numpy=config.NUMPYVERSION,
+        pillow=config.PILVERSION,
         pygments=config.PYGMENTSVERSION,
     )
 
