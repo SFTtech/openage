@@ -185,8 +185,6 @@ and will provide you with updates!
   - Unfortunately, it's not as simple as invoking a compiler. Building
     `openage` involves code generation and the building of Cython
     extension modules.
-  - See [buildsystem/simple](/buildsystem/simple), which does exactly
-    these things, manually (don't use this for production).
 
 * Why don't you `$proposition`? Your `$component` is crap
   and would be much better then!
