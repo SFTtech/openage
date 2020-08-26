@@ -1,23 +1,20 @@
 find_package(Ogg REQUIRED)
 find_package(Opusfile REQUIRED)
 
-# Currently there is no way to link cython modules to extra libraries.
-# Since PYEXT_LINK_LIBRARY normally only includes libopenage (what
-# opusenc doesn't need), we hijack this variable. This is ok, because
-# there are no subdirectories, that will see the changed variable.
-set(PYEXT_LINK_LIBRARY
+add_cython_modules(
+	opusenc.pyx
+)
+
+pyext_link_libraries(
+	opusenc.pyx
 	${OGG_LIBRARIES}
 	${OPUS_LIBRARIES}
 )
 
-set(PYEXT_INCLUDE_DIRS
-	${PYEXT_INCLUDE_DIRS}
+pyext_include_directories(
+	opusenc.pyx
 	${OGG_INCLUDE_DIRS}
 	${OPUS_INCLUDE_DIRS}
-)
-
-add_cython_modules(
-	opusenc.pyx
 )
 
 add_pxds(
