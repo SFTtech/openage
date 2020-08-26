@@ -1,4 +1,4 @@
-# Copyright 2017-2019 the openage authors. See copying.md for legal info.
+# Copyright 2017-2020 the openage authors. See copying.md for legal info.
 
 # @AUTOGEN_WARNING@
 
@@ -16,7 +16,7 @@ set(downloads_dir "@CMAKE_BINARY_DIR@/downloads")
 set(logfiles_dir "@CMAKE_BINARY_DIR@/logfiles")
 set(python "@PYTHON@")
 set(py_install_prefix "@CMAKE_PY_INSTALL_PREFIX@")
-set(py_version "@PYTHONLIBS_VERSION_STRING@")
+set(py_version "@PYTHON_VERSION_STRING@")
 set(sizeof_void_p @CMAKE_SIZEOF_VOID_P@)
 set(vcpkg_dir "@vcpkg_dir@")
 set(windeployqt "@windeployqt@")

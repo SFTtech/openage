@@ -8,7 +8,7 @@ _the openage authors_ are:
 
 | Full name                   | aliases                     | E-Mail                                            |
 |-----------------------------|-----------------------------|---------------------------------------------------|
-| Jonas Jelten                | TheJJ                       | jj à sft dawt mx                                  |
+| Jonas Jelten                | TheJJ                       | jj à sft dawt lol                                 |
 | Michael Enßlin              | mic_e                       | michael à ensslin dawt cc                         |
 | Andre Kupka                 | freakout                    | kupka à in dawt tum dawt de                       |
 | Frank Schmidt               | gellardo                    | rubiccuber à googlemail dawt com                  |

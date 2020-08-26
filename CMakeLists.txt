@@ -229,6 +229,10 @@ add_subdirectory(libopenage/)
 
 ##################################################
 # Python content (uses the C++ library)
+
+# create a virtual library that, when linked to,
+# injects a header inclusion, and links to libopenage.
+# -> all cython modules get our hacks included and link to libopenage.
 add_library(pyext_libopenage INTERFACE)
 if(MSVC)
 	set(FORCE_INCLUDE_CXXFLAG "/FI")

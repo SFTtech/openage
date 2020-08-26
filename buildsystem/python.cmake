@@ -41,6 +41,33 @@ function(python_init)
 endfunction()
 
 
+function(cython_get_target_name RESULT_VAR)
+	file(RELATIVE_PATH REL_CURRENT_SOURCE_DIR
+		"${CMAKE_SOURCE_DIR}"
+		"${CMAKE_CURRENT_SOURCE_DIR}")
+
+	get_filename_component(OUTPUTNAME "${source}" NAME_WE)
+
+	set(TARGETNAME "${REL_CURRENT_SOURCE_DIR}/${OUTPUTNAME}")
+	string(REPLACE "/" "_" TARGETNAME "${TARGETNAME}")
+
+	set("${RESULT_VAR}" "${TARGETNAME}" PARENT_SCOPE)
+endfunction()
+
+
+function(cython_modname_sanitize RESULT_VAR SOURCE)
+	if(NOT IS_ABSOLUTE "${SOURCE}")
+		set(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/${SOURCE}")
+	endif()
+
+	if(NOT "${SOURCE}" MATCHES ".*\\.pyx?$")
+		message(FATAL_ERROR "non-.py/.pyx file given: ${SOURCE}")
+	endif()
+
+	set("${RESULT_VAR}" "${SOURCE}" PARENT_SCOPE)
+endfunction()
+
+
 function(add_cython_modules)
 	# adds a new module for cython compilation, by relative filename.
 	# synoposis:
@@ -58,6 +85,9 @@ function(add_cython_modules)
 	# linked only against libpython.
 	# foo/test.pyx is compiled to a shared library linked against nothing, and will
 	# not be installed.
+	#
+	# PYEXT_LINK_LIBRARY is linked to all non-standalone cython modules,
+	# and is used e.g. to inject compiler options
 
 	file(RELATIVE_PATH REL_CURRENT_SOURCE_DIR
 		"${CMAKE_SOURCE_DIR}"
@@ -74,21 +104,14 @@ function(add_cython_modules)
 		elseif(source STREQUAL "NOINSTALL")
 			set(NOINSTALL_NEXT TRUE)
 		else()
-			if(NOT IS_ABSOLUTE "${source}")
-				set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
-			endif()
+			cython_modname_sanitize(source "${source}")
 
-			if(NOT "${source}" MATCHES ".*\\.pyx?$")
-				message(FATAL_ERROR "non-.py/.pyx file given to add_cython_modules: ${source}")
-			endif()
+			# construct some hopefully unique target name
+			cython_get_target_name(TARGETNAME "${source}")
 
 			get_filename_component(OUTPUTNAME "${source}" NAME_WE)
 			set(CPPNAME "${CMAKE_CURRENT_BINARY_DIR}/${OUTPUTNAME}.cpp")
 			set_source_files_properties("${CPPNAME}" PROPERTIES GENERATED ON)
-
-			# construct some hopefully unique target name
-			set(TARGETNAME "${REL_CURRENT_SOURCE_DIR}/${OUTPUTNAME}")
-			string(REPLACE "/" "_" TARGETNAME "${TARGETNAME}")
 
 			# generate the pretty module name
 			set(PRETTY_MODULE_NAME "${REL_CURRENT_SOURCE_DIR}/${OUTPUTNAME}")
@@ -106,8 +129,7 @@ function(add_cython_modules)
 					set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-municode")
 				endif()
 
-				# TODO: use full ldflags and cflags provided by python${VERSION}-config
-				target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
+				target_link_libraries("${TARGETNAME}" PRIVATE ${PYEXT_LIBRARY})
 			else()
 				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES "${source}")
 				add_library("${TARGETNAME}" MODULE "${CPPNAME}")
@@ -118,7 +140,7 @@ function(add_cython_modules)
 				)
 
 				if(WIN32)
-					target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
+					target_link_libraries("${TARGETNAME}" PRIVATE ${PYEXT_LIBRARY})
 				endif()
 			endif()
 
@@ -141,7 +163,7 @@ function(add_cython_modules)
 				set(PRETTY_MODULE_PROPERTIES "${PRETTY_MODULE_PROPERTIES} [standalone]")
 			else()
 				set_target_properties("${TARGETNAME}" PROPERTIES LINK_DEPENDS_NO_SHARED 1)
-				target_link_libraries("${TARGETNAME}" "${PYEXT_LINK_LIBRARY}")
+				target_link_libraries("${TARGETNAME}" PRIVATE "${PYEXT_LINK_LIBRARY}")
 			endif()
 
 			# Since this module is not embedded with python interpreter,
@@ -161,6 +183,41 @@ function(add_cython_modules)
 			set(NOINSTALL_NEXT FALSE)
 			set(STANDALONE_NEXT FALSE)
 		endif()
+	endforeach()
+endfunction()
+
+
+function(pyext_link_libraries SOURCE)
+	# link a cython module to some libraries
+	#
+	# synoposis:
+	# pyext_link_libraries(
+	#    somemodule.pyx
+	#    PNG::PNG
+	#    ${OPUS_LIBRARIES}
+	# )
+	cython_modname_sanitize(source "${SOURCE}")
+	cython_get_target_name(TARGETNAME "${SOURCE}")
+
+	foreach(library ${ARGN})
+		target_link_libraries("${TARGETNAME}" PRIVATE "${library}")
+	endforeach()
+endfunction()
+
+
+function(pyext_include_directories SOURCE)
+	# build a cython module with given include dirs
+	#
+	# synoposis:
+	# pyext_include_directories(
+	#    somemodule.pyx
+	#    ${OPUS_INCLUDE_DIRS}
+	# )
+	cython_modname_sanitize(source "${SOURCE}")
+	cython_get_target_name(TARGETNAME "${SOURCE}")
+
+	foreach(directory ${ARGN})
+		target_include_directories("${TARGETNAME}" PRIVATE "${directory}")
 	endforeach()
 endfunction()
 
