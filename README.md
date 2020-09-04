@@ -128,32 +128,54 @@ or the [bug tracker](https://github.com/SFTtech/openage/issues).
 Contributing
 ============
 
-* Being typical computer science students, we hate people.
-* Please don't contact us.
-* Nobody likes Age of Empires anyway.
-* None of you are interested in making openage more awesome anyway.
-* We don't want a community.
-* Don't even think about trying to help.
+You might ask yourself now "Yeah, this sounds cool and all, but how do *I* participate
+and ~~get famous~~ contribute useful features?".
 
-Guidelines:
+Fortunately for you, there is a lot to do and we are very grateful for help.
 
-* No **bug reports** or **feature requests**, the game is perfect as is.
-* Don't try to **fix any bugs**, see above.
-* Don't implement any features, your code is crap.
-* Don't even think about sending a **pull request**.
-* Please ignore the [easy tasks](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) that [could just be done](https://github.com/SFTtech/openage/issues?q=is:issue+is:open+label:%22just+do+it%22).
-* Absolutely never ever participate in this [boring community](https://www.reddit.com/r/openage/).
-* Don't note the irony, you idiot.
+## Where do I start?
 
-To prevent accidental violation of one of those guidelines, you should *never*
+* The engine has several [core parts](https://github.com/SFTtech/openage/projects) that need help.
+  You can look at the project related issues and find something for you, for example:
+    **Asset Converter:** Converts whatever properietary format used by a Age of Empires 2 into
+    open formats. Written mostly in Python 3. There are a lot of TODOs and beginner issues available
+    right now, so it's a good place to get your feet wet.
+    **Game simulation:** Also known as the gameplay implementation. Written in C++, using the
+    Entity-Component-System paradigm in addition to an event-driven simulation.
+    **Documentation:** We not only document code, but also anything technical about the Genie engine
+    and its games. If you like documenting [file formats](https://github.com/SFTtech/openage/tree/master/doc/media)
+    or thouroughly investigating [game mechanics](https://github.com/SFTtech/openage/tree/master/doc/reverse_engineering),
+    then this might be the right place to start.
+* **Check the [issues** labelled with good first issues](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22). These are tasks that you can start right away
+  and don't require much previous knowledge.
+* **Ask us** in the [chat](https://riot.im/app/#/room/#sfttech:matrix.org). Someone there could need
+  help with something.
+* You can also **take the initiative** and fix a bug you found, create an issue for discussion or
+  implement a feature that we never though of, but always wanted.
 
-* [learn git](https://git-scm.com/book/)
-* [fork the repo](https://help.github.com/articles/fork-a-repo)
-* [learn python](https://docs.python.org/3/tutorial/appetite.html)
-* [learn c++](http://www.cplusplus.com/doc/tutorial/)
-* read the code and documentation
-* [contribute](/doc/contributing.md) anything to the code
-* [contact us](#contact)
+
+## Ok, I found something. What now?
+
+* **[Tell us](#contact)**, if you haven't already. Chances are that we have additional information
+  and directions.
+* [Read the docs](https://github.com/SFTtech/openage/tree/master/doc). They will answer most "administrative"
+  questions like what code style is used and how the engine core parts are connected.
+* **Read the code** and get familiar with the engine component you want to work with.
+* Do not hesitate to **[ask us for help](#contact)** if you do not understand something.
+
+
+## How do I contribute my features/changes?
+
+* Read the **[contributing guide](https://github.com/SFTtech/openage/blob/master/doc/contributing.md)**.
+* You can upload work in progress (WIP) revisions or drafts of your contribution to get feedback or support.
+* Tell us (again) when you want us to review your work.
+
+## I want to help, but I'm not a programmer...
+
+Then openage might be a good reason to become one! We have many issues and tasks for beginners. You
+just have to ask and we'll find something. Alternatively, lurking is also allowed.
+
+----
 
 Cheers, happy hecking.
 
