@@ -1,9 +1,10 @@
-# Copyright 2015-2019 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
 Holds the game entry point for openage.
 """
 
+from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
 from ..log import err, info
 
 
@@ -56,7 +57,7 @@ def main(args, error):
     root["cfg"].mount(get_config_path(args.cfg_dir))
 
     # ensure that the assets have been converted
-    if conversion_required(root["assets"], args):
+    if wanna_convert() or conversion_required(root["assets"], args):
         # try to get previously used source dir
         asset_location_path = root["cfg"] / "asset_location"
         try:

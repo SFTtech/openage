@@ -13,9 +13,8 @@ def conversion_required(asset_dir, args):
 
     Sets options in args according to what sorts of conversion are required.
 
-    TODO: Reimplement for new converter.
+    TODO: Reimplement change detection for new converter.
     """
-
     version_path = asset_dir / 'converted' / changelog.ASSET_VERSION_FILENAME
     # determine the version of assets
     try:

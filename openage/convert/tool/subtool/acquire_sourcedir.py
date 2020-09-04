@@ -32,6 +32,24 @@ def expand_relative_path(path):
     return os.path.realpath(os.path.expandvars(os.path.expanduser(path)))
 
 
+def wanna_convert():
+    """
+    Ask the user if assets should be converted.
+    """
+    answer = None
+    while answer is None:
+        print("  Do you want to convert assets? [Y/n]")
+
+        user_selection = input("> ")
+        if user_selection.lower() in {"yes", "y", ""}:
+            answer = True
+
+        elif user_selection.lower() in {"no", "n"}:
+            answer = False
+
+    return answer
+
+
 def wanna_use_wine():
     """
     Ask the user if wine should be used.

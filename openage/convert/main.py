@@ -12,7 +12,7 @@ from ..util.strings import format_progress
 from .service.init.conversion_required import conversion_required
 from .service.init.mount_asset_dirs import mount_asset_dirs
 from .tool.interactive import interactive_browser
-from .tool.subtool.acquire_sourcedir import acquire_conversion_source_dir
+from .tool.subtool.acquire_sourcedir import acquire_conversion_source_dir, wanna_convert
 from .tool.subtool.version_select import get_game_version
 
 
@@ -175,7 +175,7 @@ def main(args, error):
     from ..assets import get_asset_path
     outdir = get_asset_path(args.output_dir)
 
-    if args.force or conversion_required(outdir, args):
+    if args.force or wanna_convert() or conversion_required(outdir, args):
         if not convert_assets(outdir, args, srcdir):
             return 1
     else:
