@@ -3,12 +3,17 @@ How to use the original game assets?
 
 Openage currently depends on the original game assets, so you need a valid copy of the *original game files*.
 
-Currently we support conversion for these games:
+Currently we *support* conversion for these games:
 
 * **RoR**: Age of Empires 1 (1997) + Rise of Rome
 * **AoC**: Age of Empires 2 (1999) + The Conqueror's
 * **SWGB**: Star Wars: Galactic Battlegrounds + Clone Campaigns
 * **DE2**: Age of Empires 2: Definitve Edition
+
+The following versions are currently *unsupported*, but will be added later:
+
+* **HD**: Age of Empires 2 (2013) (formerly: Age of Empires 2: HD Edition)
+* **DE1**: Age of Empires 1: Definitive Edition
 
 On Linux, you may have to use additional measures to download DE2 versions from Steam:
 
