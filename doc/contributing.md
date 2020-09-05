@@ -19,8 +19,7 @@ You're in luck. There's various sources for tasks:
    - [good first issue](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)!
    - [just do it](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22just+do+it%22)!
  - Use [your favorite code searching tool](https://github.com/ggreer/the_silver_searcher) to find `TODO` messages!
- - The issue tracker [milestones](https://github.com/SFTtech/openage/milestones)!
- - [milestones.md](/doc/milestones.md) (more ambitious, obviously...)!
+ - The [projects](https://github.com/SFTtech/openage/projects) page for issues listed by engine core component!
  - [Ask us](/README.md#contact)!
 
 
@@ -109,7 +108,7 @@ Before making a pull request, it's good to review these things:
 - You should [rebase](#rebasing) your work to avoid "clutter" in your commits and use the latest upstream code.
 
 We have a buildbot (currently [`kevin-ci`](https://github.com/SFTtech/kevin)) that runs all sorts of checks.
-It can be a bit fascist at times, so don't be shocked if it rejects your code, and go fix it instead.
+It can be very strict at times, so don't be shocked if it rejects your code, and go fix it instead.
 
 
 The pull request will present your code to the community, which may point out
@@ -136,10 +135,10 @@ There's two main applications:
 git fetch upstream
 
 # be on your feature branch (you probably are)
-git checkout nobody-likes-you
+git checkout my-awesome-feature
 
 # make backup (you never know, you know?)
-git branch nobody-likes-you-backup
+git branch my-awesome-feature-backup
 
 # rebase: put your commits on top of upstream's master
 git rebase -m upstream/master
@@ -205,9 +204,9 @@ git will not accept your pushes because they're not simple fast-forwards:
   - Why? You changed the commits, so you want the old ones to be deleted!
 
   You can use any of:
-  - `git push origin +nobody-likes-you`
-  - `git push origin -f you-are-fat`
-  - `git push origin --force and-you-are-adopted`
+  - `git push origin +my-awesome-feature`
+  - `git push origin -f my-awesome-feature`
+  - `git push origin --force my-awesome-feature`
 
 Some extra tutorials on `git rebase`:
  * [Atlassian's Git Tutorial](https://www.atlassian.com/git/tutorials/rewriting-history/)

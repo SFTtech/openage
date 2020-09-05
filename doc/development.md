@@ -55,7 +55,7 @@ All sorts of contributions are welcome, including
 
 But read [contributing.md](/doc/contributing.md) first to learn about the contribution workflow/requirements.
 
-As always, join the IRC channel (`freenode.net#sfttech`) and discuss your ideas.
+As always, join the [chat](/README.md#contact) and discuss your ideas.
 
 
 Code philosophy
