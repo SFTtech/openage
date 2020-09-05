@@ -85,12 +85,12 @@ Installation Packages
 
 **Supported Platforms:** Linux, Windows 10, MacOS X 10.14
  
-- For **Linux** check at [repology](https://repology.org/project/openage/versions) if your distribution has any packages available or [here](https://bintray.com/simonsan/openage-packages/openage-linux-releases) for any future updates on *.deb and AppImage packages.
-- For **Windows** check our [release page](https://github.com/SFTtech/openage/releases) for the latest installer or [here](https://dl.bintray.com/simonsan/openage-packages/) for nightly builds.
+* For **Linux** check at [repology](https://repology.org/project/openage/versions) if your distribution has any packages available or [here](https://bintray.com/simonsan/openage-packages/openage-linux-releases) for any future updates on *.deb and AppImage packages.
+* For **Windows** check our [release page](https://github.com/SFTtech/openage/releases) for the latest installer or [here](https://dl.bintray.com/simonsan/openage-packages/) for nightly builds.
 
-    **NOTE:** If you have any problems starting conversion or starting *openage* take a look into the [package instructions](doc/build_instructions/packages.md) and our [troubleshooting guide](/doc/troubleshooting.md).
+    * **NOTE:** If you have any problems starting conversion or starting *openage* take a look into the [package instructions](doc/build_instructions/packages.md) and our [troubleshooting guide](/doc/troubleshooting.md).
 
-    **NOTE:** For **MacOSX** we currently don't have any packages.
+    * **NOTE:** For **MacOSX** we currently don't have any packages.
 
 
 Quickstart
@@ -137,16 +137,16 @@ Fortunately for you, there is a lot to do and we are very grateful for help.
 
 * The engine has several [core parts](https://github.com/SFTtech/openage/projects) that need help.
   You can look at the project related issues and find something for you, for example:
-    **Asset Converter:** Converts whatever properietary format used by a Age of Empires 2 into
+    * **Asset Converter:** Converts whatever properietary format used by a Age of Empires 2 into
     open formats. Written mostly in Python 3. There are a lot of TODOs and beginner issues available
     right now, so it's a good place to get your feet wet.
-    **Game simulation:** Also known as the gameplay implementation. Written in C++, using the
+    * **Game simulation:** Also known as the gameplay implementation. Written in C++, using the
     Entity-Component-System paradigm in addition to an event-driven simulation.
-    **Documentation:** We not only document code, but also anything technical about the Genie engine
+    * **Documentation:** We not only document code, but also anything technical about the Genie engine
     and its games. If you like documenting [file formats](https://github.com/SFTtech/openage/tree/master/doc/media)
     or thouroughly investigating [game mechanics](https://github.com/SFTtech/openage/tree/master/doc/reverse_engineering),
     then this might be the right place to start.
-* **Check the [issues** labelled with good first issues](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22). These are tasks that you can start right away
+* **Check the issues** [labelled with good first issues](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22). These are tasks that you can start right away
   and don't require much previous knowledge.
 * **Ask us** in the [chat](https://riot.im/app/#/room/#sfttech:matrix.org). Someone there could need
   help with something.
