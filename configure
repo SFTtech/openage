@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright 2013-2016 the openage authors. See copying.md for legal info.
+# Copyright 2013-2020 the openage authors. See copying.md for legal info.
 
 """
 openage autocancer-like cmake frontend.
@@ -129,17 +129,19 @@ def get_compiler(args, parser):
         # map alias -> actual compiler
         aliases = {
             "clang": "clang++",
-            "clang-8": "clang++-8",
-            "clang-9": "clang++-9",
-            "clang-10": "clang++-10",
             "gcc": "g++",
         }
 
-        cxx = args.compiler
+        cxxver = args.compiler.split('-', maxsplit=1)
+        cxx = cxxver[0]
 
         # try to replace aliases
         if cxx in aliases:
             cxx = aliases[cxx]
+
+        # we had a version suffix with e.g. -1.2.3
+        if len(cxxver) == 2:
+            cxx += "-" + cxxver[1]
 
     else:
         # CXX has not been specified
