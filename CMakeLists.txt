@@ -270,6 +270,7 @@ message("${PROJECT_NAME} ${PROJECT_VERSION}
 
    version string | ${VERSION_FULL_STRING}
          compiler | ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}
+           python | ${PYTHON_VERSION_STRING}
        build type | ${CMAKE_BUILD_TYPE}
          cxxflags | ${CMAKE_CXX_FLAGS} ${EXTRA_FLAGS}
  build type flags | ${${BUILD_TYPE_CXX_FLAGS}}

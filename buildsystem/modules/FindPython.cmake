@@ -32,8 +32,21 @@ endif()
 # Never use the Windows Registry to find python
 set(Python3_FIND_REGISTRY "NEVER")
 
+# when there are multiple pythons, preferrably use the version of
+# the default `python3` executable.
+execute_process(
+	COMMAND "python3" -c "import platform; print(platform.python_version())"
+	OUTPUT_VARIABLE PYVER_OUTPUT
+	RESULT_VARIABLE PYVER_RETVAL
+)
+
+if(PYVER_RETVAL EQUAL 0)
+	string(REGEX MATCH "^[0-9]+\\.[0-9]+" PYTHON_MIN_VERSION "${PYVER_OUTPUT}")
+	set(need_exact_version "EXACT")
+endif()
+
 # use cmake's FindPython3 to locate library and interpreter
-find_package(Python3 ${PYTHON_MIN_VERSION} COMPONENTS Interpreter Development NumPy)
+find_package(Python3 ${PYTHON_MIN_VERSION} ${need_exact_version} COMPONENTS Interpreter Development NumPy)
 
 
 # python version string to cpython api test in modules/FindPython_test.cpp
@@ -53,7 +66,7 @@ try_compile(PYTHON_TEST_RESULT
 
 if(NOT PYTHON_TEST_RESULT)
 	message(WARNING "!! No suitable Python interpreter was found !!\n")
-	message(WARNING "We need a Python interpreter >= 3.6 that is shipped with libpython and header files.\n")
+	message(WARNING "We need a Python interpreter >= ${PYTHON_MIN_VERSION} that is shipped with libpython and header files.\n")
 	message(WARNING "Specify the directory to your own with -DPYTHON_DIR=/dir/of/executable\n\n\n")
 
 elseif(PYTHON_TEST_RESULT)
