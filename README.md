@@ -9,7 +9,7 @@ To play, you require *an original AoE II: TC or [AoE II: HD](http://store.steamp
 
 [![github stars](https://img.shields.io/github/stars/SFTtech/openage.svg)](https://github.com/SFTtech/openage/stargazers)
 [![#sfttech on Freenode](https://img.shields.io/badge/chat-on%20freenode-brightgreen)](https://webchat.freenode.net/?channels=sfttech)
-[![#sfttech on matrix.org](https://img.shields.io/badge/matrix-%23sfttech-blue.svg)](https://riot.im/app/#/room/#sfttech:matrix.org)
+[![#sfttech on matrix.org](https://img.shields.io/badge/matrix-%23sfttech-blue.svg)](https://app.element.io/#/room/#sfttech:matrix.org)
 [![quality badge](https://img.shields.io/badge/cuteness-overload-orange.svg)](http://www.emergencykitten.com/)
 
 
@@ -19,9 +19,9 @@ Contact
 Contact          | Where?
 -----------------|-------
 Issue Tracker    | [SFTtech/openage](https://github.com/SFTtech/openage/issues)
-Development Blog | [blog.openage.sft.mx](https://blog.openage.sft.mx)
+Development Blog | [blog.openage.dev](https://blog.openage.dev)
 Forum            | [<img src="https://www.redditstatic.com/about/assets/reddit-logo.png" alt="reddit" height="22"/> /r/openage](https://www.reddit.com/r/openage/)
-Matrix Chat      | [`#sfttech:matrix.org`](https://riot.im/app/#/room/#sfttech:matrix.org)
+Matrix Chat      | [`#sfttech:matrix.org`](https://app.element.io/#/room/#sfttech:matrix.org)
 IRC Chat         | [`irc.freenode.net #sfttech`](https://webchat.freenode.net/?channels=sfttech)
 Money Sink       | [![money sink](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/SFTtech)
 
@@ -143,12 +143,12 @@ Fortunately for you, there is a lot to do and we are very grateful for help.
     * **Game simulation:** Also known as the gameplay implementation. Written in C++, using the
     Entity-Component-System paradigm in addition to an event-driven simulation.
     * **Documentation:** We not only document code, but also anything technical about the Genie engine
-    and its games. If you like documenting [file formats](https://github.com/SFTtech/openage/tree/master/doc/media)
-    or thouroughly investigating [game mechanics](https://github.com/SFTtech/openage/tree/master/doc/reverse_engineering),
+    and its games. If you like documenting [file formats](/doc/media)
+    or thouroughly investigating [game mechanics](/doc/reverse_engineering),
     then this might be the right place to start.
 * **Check the issues** [labelled with good first issues](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22). These are tasks that you can start right away
   and don't require much previous knowledge.
-* **Ask us** in the [chat](https://riot.im/app/#/room/#sfttech:matrix.org). Someone there could need
+* **Ask us** in the [chat](https://app.element.io/#/room/#sfttech:matrix.org). Someone there could need
   help with something.
 * You can also **take the initiative** and fix a bug you found, create an issue for discussion or
   implement a feature that we never though of, but always wanted.
@@ -158,7 +158,7 @@ Fortunately for you, there is a lot to do and we are very grateful for help.
 
 * **[Tell us](#contact)**, if you haven't already. Chances are that we have additional information
   and directions.
-* [Read the docs](https://github.com/SFTtech/openage/tree/master/doc). They will answer most "administrative"
+* **[Read the docs](/doc)**. They will answer most "administrative"
   questions like what code style is used and how the engine core parts are connected.
 * **Read the code** and get familiar with the engine component you want to work with.
 * Do not hesitate to **[ask us for help](#contact)** if you do not understand something.
@@ -166,7 +166,7 @@ Fortunately for you, there is a lot to do and we are very grateful for help.
 
 ## How do I contribute my features/changes?
 
-* Read the **[contributing guide](https://github.com/SFTtech/openage/blob/master/doc/contributing.md)**.
+* Read the **[contributing guide](/doc/contributing.md)**.
 * You can upload work in progress (WIP) revisions or drafts of your contribution to get feedback or support.
 * Tell us (again) when you want us to review your work.
 

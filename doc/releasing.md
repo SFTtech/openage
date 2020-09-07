@@ -12,4 +12,4 @@
 * In the future, kevin will automatically attach build artifacts like installers to the release. For now, you will need to do that manually. Have fun setting up a windows build environment or if you feel like being lazy, go bug someone who already has. Actually, taking care of where to build for windows before publishing the release might not be a bad idea.
 * OPTIONAL: Brag on social media. /r/openage, /r/aoe2 and AoE2 Discords might be the right place to do so.
 
-If you need help or are not completely sure what you are doing, ask in [`#sfttech:matrix.org`](https://riot.im/app/#/room/#sfttech:matrix.org) and highlight `zuntrax` or someone else who has done it before. Better having someone help you than screwing up a release.
+If you need help or are not completely sure what you are doing, ask in [`#sfttech:matrix.org`](https://app.element.io/#/room/#sfttech:matrix.org) and highlight `zuntrax` or someone else who has done it before. Better having someone help you than screwing up a release.
