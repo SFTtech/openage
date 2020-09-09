@@ -1,5 +1,8 @@
 # Interactive conversion
 
+***Important notice***: This functionality is currently broken. Interactive browsing
+will be reintegrated in a later update.
+
 We support browsing the original media files with an interactive shell.
 
 It can be invoked the following way:

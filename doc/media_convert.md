@@ -1,21 +1,35 @@
 How to use the original game assets?
 ------------------------------------
 
-Openage currently depends on the original game assets, so you need a copy of the *original AoE II or AoE II: HD*. If you use *AoE II: HD*, make sure it is on patch level 4.3. You have a few options.
+Openage currently depends on the original game assets, so you need a valid copy of the *original game files*.
 
-* Use [Proton](https://github.com/ValveSoftware/Proton) which is integrated into [Steam Play](https://store.steampowered.com/linux) to download the *AoE II: HD* assets (and even play it).
+Currently we *support* conversion for these games:
+
+* **RoR**: Age of Empires 1 (1997) + Rise of Rome
+* **AoC**: Age of Empires 2 (1999) + The Conqueror's
+* **SWGB**: Star Wars: Galactic Battlegrounds + Clone Campaigns
+* **DE2**: Age of Empires 2: Definitve Edition
+
+The following versions are currently *unsupported*, but will be added later:
+
+* **HD**: Age of Empires 2 (2013) (formerly: Age of Empires 2: HD Edition)
+* **DE1**: Age of Empires 1: Definitive Edition
+
+On Linux, you may have to use additional measures to download DE2 versions from Steam:
+
+* Use [Proton](https://github.com/ValveSoftware/Proton) which is integrated into [Steam Play](https://store.steampowered.com/linux) to download the DE2 assets (and even play it).
 * You may use [Wine](https://www.winehq.org/) to run Steam for Windows.
 * You can trick Steam for Linux/Mac into downloading the Windows game assets [with a game manifest file](https://gist.github.com/paulirish/758f262379092ff2910a).
-  1. Save the below code to **`appmanifest_221380.acf`**
+  1. Save the below code to **`appmanifest_813780.acf`**
   2. Place the file in your steamapps folder, typically found in `~/.steam/steam/SteamApps` or `~/Library/Application Support/Steam/steamapps`
   3. Restart Steam after placing the file
 
 ```json
     "AppState"
     {
-      "AppID"  "221380"
+      "AppID"  "813780"
       "Universe" "1"
-      "installdir" "Age2HD"
+      "installdir" "AOE2DE"
       "StateFlags" "1026"
     }
 ```
@@ -29,8 +43,8 @@ In the future, using installation disks may be supported.
 
 ## Conversion
 
-The original AoE:TC game asset formats are, lets say, "special", so they need to be converted in order to be usable from openage.
-That conversion is performed by the openage.convert python module when the game is run for the first time.
+The original AoC game asset formats are, lets say, "special", so they need to be converted in order to be usable from openage.
+That conversion is performed by the `openage.convert` python module when the game is run for the first time.
 
 The game will ask for your AoE II installation folder; examples include:
 
@@ -40,6 +54,3 @@ The game will ask for your AoE II installation folder; examples include:
     ~/Library/Application Support/Steam/steamapps/common/Age2HD
 
 You will find the converted files in `assets/converted`.
-
-The version of openage that the media files were converted with is written to `assets/converted/asset_version`.
-Delete that file to trigger a full reconversion.

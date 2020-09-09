@@ -22,11 +22,8 @@ We use Python, Cython and C++.
 Extension     | Language  | Usage
 --------------|-----------|---------
 `.py`         | Python    | Everything that does not crunch data
-`.pyx` `.pxd` | Cython    | Fast Python code, glue between C++ and Python
+`.pyx` `.pxd` | Cython    | Fast Python code, glue between C/C++ and Python
 `.h`   `.cpp` | C++       | Data crunching code: simulation, graphics, sound, ...
-
-
-If in doubt what to choose, use Python.
 
 
 ## Folders
@@ -36,30 +33,12 @@ contents. This ensures separation of components and defines the base structure
 of the project.
 
 
-### doc/
-
-In the `doc/` folder is conceptual documentation, ideas, algorithms, etc.
-The code itself is commented with `/** doxygen comments */`.
-
-See [doc/README.md](/doc/README.md) for documentation guidelines.
-
-
-### openage/
-
-Contains the Python3 components of openage.
-Python3 is used for non-data-crunching tasks, like scripting and modding.
-
-The main entry point for openage is in `__main__.py`. From there, other
-components like asset conversion and the main game are started.
-
-The other Python/Cython components like `convert`, `game` or `testing`.
-
-
 ### assets/
 
-Game assets required at run time are placed in here. This includes shaders
-etc. The directory is installed to `/usr/share/openage/assets` or whatever
-the platform recommends.
+Game assets required at run time are placed in here. This includes everything
+that is converted from the original assets (see [asset conversion](media_convert.md))
+and other input like shaders etc. The directory is installed to `/usr/share/openage/assets`
+or whatever the platform recommends.
 
 
 ### buildsystem/
@@ -72,8 +51,46 @@ executable definitions are placed in this directory.
 The code compliance checker also lives here.
 
 
+### cfg/
+
+Contains the standard configuration of the engine, e.g. keybindings.
+
+
+### dist/
+
+Files for package distribution.
+
+
+### doc/
+
+In the `doc/` folder is conceptual documentation, ideas, algorithms, etc.
+The code itself is commented with `/** doxygen comments */`.
+
+See [doc/README.md](/doc/README.md) for documentation guidelines.
+
+
+### legal/
+
+Our license (GPLv3+) and licenses of other projects' components that are
+integrated into openage.
+
+
 ### libopenage/
 
-Source files written in **C++14** live here.
+Source files written in **C++17** live here.
 All engine components, data structures and C++ tests are located in this
 folder, each subsystem resides in its own subfolder.
+
+
+### openage/
+
+Contains the Python3 auxiliary components of openage.
+Python3 is used for non-data-crunching tasks, like converting original assets,
+scripting and modding.
+
+The main entry point for openage is in `__main__.py`.
+
+
+### packaging/
+
+CMake script for creating a package for distribution.
