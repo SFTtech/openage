@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 #include "draw.h"
 
@@ -50,7 +50,7 @@ void to_opengl(Engine *engine, Console *console) {
 
 			cursor_visible_at_current_pos &= console->buf.cursor_visible;
 
-			if ((p.flags & CHR_NEGATIVE) xor cursor_visible_at_current_pos) {
+			if (((p.flags & CHR_NEGATIVE) != 0) xor cursor_visible_at_current_pos) {
 				bgcolid = p.fgcol;
 				fgcolid = p.bgcol;
 			} else {
@@ -142,7 +142,7 @@ void to_terminal(Buf *buf, util::FD *fd, bool clear) {
 			}
 			bool cursor_visible_at_current_pos = buf->cursorpos == coord::term{x, y - buf->scrollback_pos};
 			cursor_visible_at_current_pos &= buf->cursor_visible;
-			if ((p.flags & CHR_NEGATIVE) xor cursor_visible_at_current_pos) {
+			if (((p.flags & CHR_NEGATIVE) != 0) xor cursor_visible_at_current_pos) {
 				//print char negative
 				fd->puts("\x1b[7m");
 			}
