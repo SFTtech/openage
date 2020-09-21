@@ -16,7 +16,7 @@ _the openage authors_ are:
 | Sascha Vincent Kurowski     | svkurowski                  | svkurowski à gmail dawt com                       |
 | James Mintram               | JimmyJazz                   | jamesmintram à gmail dawt com                     |
 | Martin McGrath              | MartinMcGrath               | mcgrath dawt martin à gmail dawt com              |
-| René Kooi                   | goto-bus-stop               | rene à kooi dawt me                               |
+| Renée Kooi                  | goto-bus-stop               | renee à kooi dawt me                               |
 | Markus Elfring              | elfring                     | elfring à users dawt sourceforge dawt net         |
 | Jimmy Berry                 | boombatower                 | jimmy à boombatower dawt com                      |
 | João Roque                  | joaoroque                   | joaoroque à gmail dawt com                        |
