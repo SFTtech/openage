@@ -27,7 +27,7 @@ is the modpack definition file (see its dedicated section for details).
 
 The modpack definition file acts as the header file for the modpack. It is
 the only mandatory file in the modpack. The definition file must be placed
-in the modpack's root folder under the filename `modpack.nfo`.
+in the modpack's root folder under the filename `modpack.toml`.
 
 The main purpose of the file is to store configuration parameters such as:
 
@@ -85,7 +85,7 @@ when openage is installed.
 Repositories are the preferred method of distributing mods.
 
 
-### Licensing
+## Licensing
 
 Once a mod is out in the open, it's good to clarify how and what other creators are
 allowed to do with it. This can be done by adding a **license** to the
@@ -98,7 +98,7 @@ While the engine is licensed as GPLv3+, modpack licenses do not need to
 be compatible with it. Repos may decide which licenses they allow and
 reject. Additionally, they may offer a default license.
 
-When you include (not reference) assets from modpacks of other creators,
+When you copy (not reference) assets from modpacks of other creators,
 always check their license first. Copying files may be subject to terms set
 in the license. It is usually safer (and less frowned upon) to have the modpack
 referenced as a dependency than to copy files over.
