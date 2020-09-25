@@ -71,10 +71,10 @@ But beware, for sanity reasons:
 Current State of the Project
 ----------------------------
 
-**Important notice**: Gameplay is currently non-functional as the internal simulation is replaced by a more sophisticated implementation. You also might experience errors when running a build. Gameplay will return in a later update.
+**Important notice**: Gameplay is currently non-functional as the internal simulation is replaced by a more sophisticated implementation. You also might experience errors when running a build. Gameplay will return in a later update. Detailed explanations can be found in this [blog post](https://blog.openage.dev/new-gamestate-2020.html).
 
 * What features are currently implemented?
-    * See [doc/status.md](/doc/status.md).
+    * See [status page](https://github.com/SFTtech/openage/projects).
 
 * What's the plan?
     * See [doc/milestones.md](/doc/milestones.md). We also have [lists of crazy xor good ideas](/doc/ideas) and a [technical overview for requested features](/doc/ideas/fr_technical_overview.md).
