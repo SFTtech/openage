@@ -75,4 +75,3 @@ class ModpackExporter:
 
         # Manifest file
         modpack.manifest.save(modpack_dir)
-        
