@@ -72,3 +72,7 @@ class ModpackExporter:
 
         for metadata_file in metadata_files:
             metadata_file.save(modpack_dir)
+
+        # Manifest file
+        modpack.manifest.save(modpack_dir)
+        
