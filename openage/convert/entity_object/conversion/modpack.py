@@ -4,9 +4,9 @@
 Defines a modpack that can be exported.
 """
 
-from ...processor.export.modpack_manifest import ManifestFile
 from ..export.data_definition import DataDefinition
 from ..export.formats.modpack_info import ModpackInfo
+from ..export.formats.modpack_manifest import ManifestFile
 from ..export.media_export_request import MediaExportRequest
 from ..export.metadata_export import MetadataExport
 
