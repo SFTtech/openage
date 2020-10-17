@@ -6,6 +6,7 @@ Defines a modpack that can be exported.
 
 from ..export.data_definition import DataDefinition
 from ..export.formats.modpack_info import ModpackInfo
+from ..export.formats.modpack_manifest import ManifestFile
 from ..export.media_export_request import MediaExportRequest
 from ..export.metadata_export import MetadataExport
 
@@ -21,6 +22,9 @@ class Modpack:
 
         # Definition file
         self.info = ModpackInfo("", self.name + ".nfo", self.name)
+
+        # Manifest file
+        self.manifest = ManifestFile("", "manifest.toml")
 
         # Data/media export
         self.data_export_files = []

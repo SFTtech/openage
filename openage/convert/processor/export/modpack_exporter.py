@@ -5,6 +5,8 @@
 """
 Export data from a modpack to files.
 """
+
+from .generate_manifest_hashes import generate_hashes
 from ....log import info
 from ...value_object.read.media_types import MediaType
 
@@ -72,3 +74,7 @@ class ModpackExporter:
 
         for metadata_file in metadata_files:
             metadata_file.save(modpack_dir)
+
+        # Manifest file
+        generate_hashes(modpack, modpack_dir)
+        modpack.manifest.save(modpack_dir)
