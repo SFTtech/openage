@@ -135,6 +135,15 @@ class Texture(genie_structure.GenieStructure):
                                       - 3 = maximum possible compression; slowdown is 256x
         :type compression_level: int
         """
+        from ...service.export.png import png_create
+
+        COMPRESSION_LEVELS = {
+            0: png_create.CompressionMethod.COMPR_NONE,
+            1: png_create.CompressionMethod.COMPR_DEFAULT,
+            2: png_create.CompressionMethod.COMPR_GREEDY,
+            3: png_create.CompressionMethod.COMPR_AGGRESSIVE,
+        }
+
         if not isinstance(targetdir, Path):
             raise ValueError("util.fslike Path expected as targetdir")
         if not isinstance(filename, str):
@@ -151,18 +160,7 @@ class Texture(genie_structure.GenieStructure):
         # without the dot
         ext = ext[1:]
 
-        from ...service.export.png import png_create
-
-        compression_method = png_create.CompressionMethod.COMPR_DEFAULT
-        if compression_level == 0:
-            pass
-
-        elif compression_level == 2:
-            compression_method = png_create.CompressionMethod.COMPR_GREEDY
-
-        elif compression_level == 3:
-            compression_method = png_create.CompressionMethod.COMPR_AGGRESSIVE
-
+        compression_method = COMPRESSION_LEVELS.get(compression_level, png_create.CompressionMethod.COMPR_DEFAULT)
         with targetdir[filename].open("wb") as imagefile:
             png_data, _ = png_create.save(self.image_data.data, compression_method)
             imagefile.write(png_data)

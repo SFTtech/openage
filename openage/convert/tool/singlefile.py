@@ -28,6 +28,8 @@ def init_subparser(cli):
     cli.add_argument("--mode", choices=['drs-slp', 'drs-wav', 'slp', 'smp', 'smx', 'wav'],
                      help=("choose between drs-slp, drs-wav, slp, smp, smx or wav; "
                            "otherwise, this is determined by the file extension"))
+    cli.add_argument("--compression-level", type=int, default=1, choices=[0, 1, 2, 3],
+                     help="set PNG compression level")
     cli.add_argument("filename", help=("filename or, if inside a drs archive "
                                        "given by --drs, the filename within "
                                        "the drs archive"))
@@ -48,17 +50,18 @@ def main(args, error):
         palettes_path = Path(args.palettes_path)
         palettes = read_palettes(palettes_path)
 
+    compression_level = args.compression_level
     if args.mode == "slp" or (file_extension == "slp" and not args.drs):
-        read_slp_file(args.filename, args.output, palettes)
+        read_slp_file(args.filename, args.output, palettes, compression_level)
 
     elif args.mode == "drs-slp" or (file_extension == "slp" and args.drs):
-        read_slp_in_drs_file(args.drs, args.filename, args.output, palettes)
+        read_slp_in_drs_file(args.drs, args.filename, args.output, palettes, compression_level)
 
     elif args.mode == "smp" or file_extension == "smp":
-        read_smp_file(args.filename, args.output, palettes)
+        read_smp_file(args.filename, args.output, palettes, compression_level)
 
     elif args.mode == "smx" or file_extension == "smx":
-        read_smx_file(args.filename, args.output, palettes)
+        read_smx_file(args.filename, args.output, palettes, compression_level)
 
     elif args.mode == "wav" or (file_extension == "wav" and not args.drs):
         read_wav_file(args.filename, args.output)
@@ -123,7 +126,7 @@ def read_palettes(palettes_path):
     return palettes
 
 
-def read_slp_file(slp_path, output_path, palettes):
+def read_slp_file(slp_path, output_path, palettes, compression_level):
     """
     Reads a single SLP file.
     """
@@ -146,10 +149,10 @@ def read_slp_file(slp_path, output_path, palettes):
     tex = Texture(slp_image, palettes)
 
     # save as png
-    tex.save(Directory(output_file.parent).root, output_file.name)
+    tex.save(Directory(output_file.parent).root, output_file.name, compression_level)
 
 
-def read_slp_in_drs_file(drs, slp_path, output_path, palettes):
+def read_slp_in_drs_file(drs, slp_path, output_path, palettes, compression_level):
     """
     Reads a SLP file from a DRS archive.
     """
@@ -176,10 +179,10 @@ def read_slp_in_drs_file(drs, slp_path, output_path, palettes):
     tex = Texture(slp_image, palettes)
 
     # save as png
-    tex.save(Directory(output_file.parent).root, output_file.name)
+    tex.save(Directory(output_file.parent).root, output_file.name, compression_level)
 
 
-def read_smp_file(smp_path, output_path, palettes):
+def read_smp_file(smp_path, output_path, palettes, compression_level):
     """
     Reads a single SMP file.
     """
@@ -202,10 +205,10 @@ def read_smp_file(smp_path, output_path, palettes):
     tex = Texture(smp_image, palettes)
 
     # save as png
-    tex.save(Directory(output_file.parent).root, output_file.name)
+    tex.save(Directory(output_file.parent).root, output_file.name, compression_level)
 
 
-def read_smx_file(smx_path, output_path, palettes):
+def read_smx_file(smx_path, output_path, palettes, compression_level):
     """
     Reads a single SMX (compressed SMP) file.
     """
@@ -228,7 +231,7 @@ def read_smx_file(smx_path, output_path, palettes):
     tex = Texture(smx_image, palettes)
 
     # save as png
-    tex.save(Directory(output_file.parent).root, output_file.name)
+    tex.save(Directory(output_file.parent).root, output_file.name, compression_level)
 
 
 def read_wav_file(wav_path, output_path):

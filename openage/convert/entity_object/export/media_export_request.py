@@ -105,7 +105,7 @@ class GraphicsMediaExportRequest(MediaExportRequest):
     def get_type(self):
         return MediaType.GRAPHICS
 
-    def save(self, sourcedir, exportdir, palettes, *args, **kwargs):
+    def save(self, sourcedir, exportdir, palettes, compression_level, *args, **kwargs):
         source_file = sourcedir[self.get_type().value, self.source_filename]
 
         try:
@@ -132,7 +132,11 @@ class GraphicsMediaExportRequest(MediaExportRequest):
             image = SMX(media_file.read())
 
         texture = Texture(image, palettes)
-        metadata = texture.save(exportdir.joinpath(self.targetdir), self.target_filename)
+        metadata = texture.save(
+            exportdir.joinpath(self.targetdir),
+            self.target_filename,
+            compression_level
+        )
         metadata = {self.target_filename: metadata}
 
         self.set_changed()
@@ -148,7 +152,9 @@ class TerrainMediaExportRequest(MediaExportRequest):
     def get_type(self):
         return MediaType.TERRAIN
 
-    def save(self, sourcedir, exportdir, palettes, game_version, *args, **kwargs):
+    # pylint: disable=too-many-arguments
+    def save(self, sourcedir, exportdir, palettes, game_version, compression_level,
+             *args, **kwargs):
         source_file = sourcedir[self.get_type().value, self.source_filename]
         media_file = source_file.open("rb")
 
@@ -167,6 +173,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
         else:
             texture = Texture(image, palettes)
         texture.save(exportdir.joinpath(self.targetdir), self.target_filename)
+        texture.save(exportdir.joinpath(self.targetdir), self.target_filename, compression_level)
 
 
 class SoundMediaExportRequest(MediaExportRequest):
