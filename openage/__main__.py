@@ -52,14 +52,15 @@ def main(argv=None):
                             help="increase verbosity")
     global_cli.add_argument("--quiet", "-q", action='count', default=0,
                             help="decrease verbosity")
-    global_cli.add_argument("--devmode", action="store_true",
-                            help="force-enable development mode")
-    global_cli.add_argument("--no-devmode", action="store_true",
-                            help="force-disable devlopment mode")
     global_cli.add_argument("--trap-exceptions", action="store_true",
                             help=("upon throwing an exception a debug break is "
                                   "triggered. this will crash openage if no "
                                   "debugger is present"))
+    devmodes = global_cli.add_mutually_exclusive_group()
+    devmodes.add_argument("--devmode", action="store_true",
+                          help="force-enable development mode")
+    devmodes.add_argument("--no-devmode", action="store_true",
+                          help="force-disable development mode")
 
     # shared directory arguments for most subcommands
     cfg_cli = argparse.ArgumentParser(add_help=False)
@@ -108,9 +109,6 @@ def main(argv=None):
 
     # process the shared args
     set_loglevel(verbosity_to_level(args.verbose - args.quiet))
-
-    if args.no_devmode and args.devmode:
-        cli.error("can't force enable and disable devmode at the same time")
 
     try:
         from . import config
