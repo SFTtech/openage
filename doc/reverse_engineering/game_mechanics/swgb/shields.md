@@ -10,9 +10,9 @@ points regenerate.
 
 A shielded unit gradually fills a shield bar (originally yellow and placed
 under the health bar), that doubles its health points. Aditionally, shielded
-units have a yellow glow effect, and the UI lights the left indicator in yellow
-when a shielded unit is selected, as visible
-[here]([200~https://www.youtube.com/watch?v=pwAtMv_eiM4&feature=youtu.be&t=1786]).
+units have a yellow glow effect, and [the UI](user-interface.md#cap) lights the
+leftmost indicator in yellow when a shielded unit is selected, as visible
+[here]([https://www.youtube.com/watch?v=pwAtMv_eiM4&feature=youtu.be&t=1786]).
 
 Shields are depleted first when taking hits, before the regular health bar.
 Regenerating shields do not affect the health bar.
@@ -22,6 +22,8 @@ Regenerating shields do not affect the health bar.
 When losing the shield ability (like when exiting a shield generator), the
 shield points will gradually deplete. They will gradually replenish when
 regaining the ability.
+The depletion rate is reportedly set for the full depletion to happen in 40s.
+This still needs confirmation.
 
 Shielded units always spawn with an empty shield.
 
@@ -49,3 +51,7 @@ Shielded units always spawn with an empty shield.
 
 * Power Core (with *Power Core Shielding* technology)
 * Shield Wall (with necessary upgrade)
+
+## Future research
+
+Confirm depletion and regeneration rates.
