@@ -1,0 +1,16 @@
+# version hashes of Age of Empires 1: Definitive Edition (Steam)
+
+file_version = "1.0"
+hash_algo = "SHA3-256"
+
+[AoEDE_s]
+path = "AoEDE_s.exe"
+
+  [AoEDE_s.map]
+  3356c013f2cb732601e1acf286654e4360d7e7304a092bdbeaa63d48 = "steam"
+
+[empiresdat]
+path = "Data/empires.dat"
+
+  [empiresdat.map]
+  4d1f3cb7ce20074bfa23445c62755b95e4ec193b41507d5196921033 = "steam"

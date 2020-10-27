@@ -1,0 +1,16 @@
+# version hashes of Age of Empires 2: Definitive Edition
+
+file_version = "1.0"
+hash_algo = "SHA3-256"
+
+[AoE2DE_s]
+path = "AoE2DE_s.exe"
+
+  [AoE2DE_s.map]
+  01ff7cc7819e4f77be059c8efc6c07472dd1a58f429621e937328750 = "36906"
+
+[empires2_x2_p1dat]
+path = "resources/_common/dat/empires2_x2_p1.dat"
+
+  [empires2_x2_p1dat.map]
+  cf13c553c78df192da1af957d1519870db15c9dbca314b245a5abe6f = "36906"

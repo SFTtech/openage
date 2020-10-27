@@ -1,0 +1,16 @@
+# version hashes of Age of Empires 1: Rise of Rome
+
+file_version = "1.0"
+hash_algo = "SHA3-256"
+
+[EMPIRESX]
+path = "EMPIRESX.EXE"
+
+  [EMPIRESX.map]
+  bd55a288136ea5457c61fbc794e3e4a4ac526b1d53809f1b16762119 = "1.0B"
+
+[empiresdat]
+path = "data2/empires.dat"
+
+  [empiresdat.map]
+  0376368ce4c78be31596dea7b76f592b2352f6b5c3aca222b7939b4a = "1.0B"

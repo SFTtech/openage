@@ -1,0 +1,10 @@
+# version hashes of African Kingdoms (HD)
+
+file_version = "1.0"
+hash_algo = "SHA3-256"
+
+[empires2_x2_p1dat]
+path = "resources/_common/dat/empires2_x2_p1.dat"
+
+  [empires2_x2_p1dat.map]
+  b2a69980a1ef39e68de2be1771392858cb639a9f2797373ab1649acf = "5.8"

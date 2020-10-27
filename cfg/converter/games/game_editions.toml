@@ -1,0 +1,136 @@
+# game edition config file for openage
+
+file_version = "1.0"
+
+[AOC]
+name = "Age of Empires 2: The Conqueror's"
+game_edition_id = "AOC"
+support = "yes"
+targetmod = [ "aoe2-base", "aoe2-base-graphics" ]
+expansions = [ ]
+
+  [AOC.mediapaths]
+  datfile = [ "data/empires2_x1_p1.dat" ]
+  gamedata = [ "data/gamedata_x1_p1.drs" ]
+  graphics = [ "data/graphics.drs" ]
+  language = [ "language.dll", "language_x1.dll", "language_x1_p1.dll" ]
+  palettes = [ "data/interfac.drs" ]
+  sounds = [ "data/sounds.drs", "data/sounds_x1.drs" ]
+  interface = [ "data/interfac.drs" ]
+  terrain = [ "data/terrain.drs" ]
+  blend = [ "data/blendomatic.dat" ]
+
+[AOK]
+name = "Age of Empires 2: Age of Kings"
+game_edition_id = "AOK"
+support = "nope"
+targetmod = [ ]
+expansions = [ ]
+
+  [AOK.mediapaths]
+  datfile = [ "data/empires2.dat" ]
+  gamedata = [ "data/gamedata.drs" ]
+  graphics = [ "data/graphics.drs" ]
+  palettes = [ "data/interfac.drs" ]
+  sounds = [ "data/sounds.drs" ]
+  interface = [ "data/interfac.drs" ]
+  terrain = [ "data/terrain.drs" ]
+
+[AOE1DE]
+name = "Age of Empires 1: Definitive Edition (Steam)"
+game_edition_id = "AOE1DE"
+support = "nope"
+targetmod = [ "aoe1-base", "aoe1-base-graphics" ]
+expansions = [ ]
+
+  [AOE1DE.mediapaths]
+  datfile = [ "Data/empires.dat" ]
+  graphics = [ "Assets/SLP/" ]
+  palettes = [ "Assets/Palettes/" ]
+  sounds = [ "Assets/Sounds/" ]
+  interface = [ "Data/DRS/interfac.drs", "Data/DRS/interfac_x1.drs" ]
+
+[ROR]
+name = "Age of Empires 1: Rise of Rome"
+game_edition_id = "ROR"
+support = "yes"
+targetmod = [ "aoe1-base", "aoe1-base-graphics" ]
+expansions = [ ]
+
+  [ROR.mediapaths]
+  datfile = [ "data2/empires.dat" ]
+  graphics = [ "data/graphics.drs", "data2/graphics.drs" ]
+  palettes = [ "data/Interfac.drs", "data2/Interfac.drs" ]
+  sounds = [ "data/sounds.drs", "data2/sounds.drs" ]
+  interface = [ "data/Interfac.drs", "data2/Interfac.drs" ]
+  language = [ "language.dll", "languagex.dll" ]
+  terrain = [ "data/Terrain.drs" ]
+  border = [ "data/Border.drs" ]
+
+[HDEDITION]
+name = "Age of Empires 2: HD Edition"
+game_edition_id = "HDEDITION"
+support = "yes"
+targetmod = [ "aoe2-base", "aoe2-base-graphics" ]
+expansions = [ ]
+
+  [HDEDITION.mediapaths]
+  datfile = [ "resources/_common/dat/empires2_x1_p1.dat" ]
+  gamedata = [ "resources/_common/drs/gamedata_x1/" ]
+  graphics = [ "resources/_common/drs/graphics/" ]
+  palettes = [ "resources/_common/drs/interface/" ]
+  sounds = [ "resources/_common/drs/sounds/" ]
+  interface = [ "resources/_common/drs/interface/" ]
+  terrain = [ "resources/_common/drs/terrain/" ]
+
+[AOE2DE]
+name = "Age of Empires 2: Definitive Edition"
+game_edition_id = "AOE2DE"
+support = "yes"
+targetmod = [ "aoe2-base", "aoe2-base-graphics" ]
+expansions = [ ]
+
+  [AOE2DE.mediapaths]
+  datfile = [ "resources/_common/dat/empires2_x2_p1.dat" ]
+  gamedata = [ "resources/_common/drs/gamedata_x1/" ]
+  graphics = [ "resources/_common/drs/graphics/" ]
+  language = [
+  "resources/br/strings/key-value/key-value-strings-utf8.txt",
+  "resources/de/strings/key-value/key-value-strings-utf8.txt",
+  "resources/en/strings/key-value/key-value-strings-utf8.txt",
+  "resources/es/strings/key-value/key-value-strings-utf8.txt",
+  "resources/fr/strings/key-value/key-value-strings-utf8.txt",
+  "resources/hi/strings/key-value/key-value-strings-utf8.txt",
+  "resources/it/strings/key-value/key-value-strings-utf8.txt",
+  "resources/jp/strings/key-value/key-value-strings-utf8.txt",
+  "resources/ko/strings/key-value/key-value-strings-utf8.txt",
+  "resources/ms/strings/key-value/key-value-strings-utf8.txt",
+  "resources/mx/strings/key-value/key-value-strings-utf8.txt",
+  "resources/ru/strings/key-value/key-value-strings-utf8.txt",
+  "resources/tr/strings/key-value/key-value-strings-utf8.txt",
+  "resources/tw/strings/key-value/key-value-strings-utf8.txt",
+  "resources/vi/strings/key-value/key-value-strings-utf8.txt",
+  "resources/zh/strings/key-value/key-value-strings-utf8.txt"
+]
+  palettes = [ "resources/_common/palettes/" ]
+  sounds = [ "wwise/" ]
+  interface = [ "resources/_common/drs/interface/" ]
+  terrain = [ "resources/_common/terrain/textures/" ]
+
+[SWGB]
+name = "Star Wars: Galactic Battlegrounds"
+game_edition_id = "SWGB"
+support = "yes"
+targetmod = [ "swgb-base", "swgb-base-graphics" ]
+expansions = [ "SWGB_CC" ]
+
+  [SWGB.mediapaths]
+  datfile = [ "Game/Data/GENIE.DAT" ]
+  gamedata = [ "Game/Data/GAMEDATA.DRS" ]
+  graphics = [ "Game/Data/GRAPHICS.DRS" ]
+  language = [ "Game/language.dll" ]
+  palettes = [ "Game/Data/INTERFAC.DRS" ]
+  sounds = [ "Game/Data/SOUNDS.DRS" ]
+  interface = [ "Game/Data/INTERFAC.DRS" ]
+  terrain = [ "Game/Data/TERRAIN.DRS" ]
+  blend = [ "Game/Data/blendomatic.dat" ]

@@ -1,0 +1,17 @@
+# version hashes of Age of Empires 2: The Conqueror's
+
+file_version = "1.0"
+hash_algo = "SHA3-256"
+
+[age2_x1]
+path = "age2_x1/age2_x1.exe"
+
+  [age2_x1.map]
+  d02ef2f4935c5ef568eaa873442b4b2b547067ed8e3572758bbbbee8 = "1.0c"
+  4568f37f309c0a89fa9e84a0c0f6c61b0f394c28adc82c0b3f2203b3 = "1.0c"
+
+[empires2_x1_p1dat]
+path = "Data/empires2_x1_p1.dat"
+
+  [empires2_x1_p1dat.map]
+  6aab4c7468c3d319ec00f577835dc7799b70ffab1de6bfd25ac227b5 = "1.0c"

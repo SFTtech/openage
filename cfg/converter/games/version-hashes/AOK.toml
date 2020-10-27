@@ -1,0 +1,16 @@
+# version hashes of Age of Empires 2: Age of Kings
+
+file_version = "1.0"
+hash_algo = "MD5"
+
+[empires2]
+path = "empires2.exe"
+
+  [empires2.map]
+  5f7ca6c7edeba075c7982714619bc66b = "2.0a"
+
+[empires2dat]
+path = "data/empires2.dat"
+
+  [empires2dat.map]
+  89ff818894b69040ebd1657d8029b068 = "2.0a"

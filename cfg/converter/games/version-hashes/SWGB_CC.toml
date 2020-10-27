@@ -1,0 +1,16 @@
+# version hashes of Clone Campaigns
+
+file_version = "1.0"
+hash_algo = "SHA3-256"
+
+[battlegrounds_x1]
+path = "Game/battlegrounds_x1.exe"
+
+  [battlegrounds_x1.map]
+  fb722624bae8a4626925926d5709e1397766dd3ee2dcd1df7849ad27 = "GOG"
+
+[genie_x1dat]
+path = "Game/Data/genie_x1.dat"
+
+  [genie_x1dat.map]
+  036a16aefd1a66f5bad121786e66b8cc9542cbe88b43c4eb8f73eadb = "GOG"
