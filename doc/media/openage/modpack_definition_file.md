@@ -90,13 +90,13 @@ The contact table can use the following parameters.
 Parameter  | Data Type     | Optional | Description
 -----------|---------------|----------|------------
 `email`    | String        | Yes      | Email address.
-`github`   | String        | Yes      | Github username.
+`github`   | String        | Yes      | GitHub username.
 `gitlab`   | String        | Yes      | Gitlab username.
 `mastodon` | String        | Yes      | Mastodon username.
 `matrix`   | String        | Yes      | Matrix username.
 `reddit`   | String        | Yes      | Reddit username.
 `twitter`  | String        | Yes      | Twitter username.
-`youtube`  | String        | Yes      | Youtube username.
+`youtube`  | String        | Yes      | YouTube username.
 
 
 ## [authorgroups] Section
