@@ -12,7 +12,6 @@ from .....util.filelike.stream import StreamFragment
 from .....util.fslike.filecollection import FileCollection
 from .....util.strings import decode_until_null
 from .....util.struct import NamedStruct
-from ...init.game_version import GameEdition
 
 
 # version of the drs files, hardcoded for now
@@ -92,7 +91,7 @@ class DRS(FileCollection):
         self.fileobj = fileobj
 
         # read header
-        if GameEdition.SWGB is game_version[0]:
+        if game_version == "SWGB":
             header = DRSHeaderLucasArts.read(fileobj)
 
         else:

@@ -3,7 +3,6 @@
 # TODO pylint: disable=C,R
 
 from .....entity_object.conversion.genie_structure import GenieStructure
-from ....init.game_version import GameEdition
 from ....read.member_access import READ, READ_GEN, SKIP
 from ....read.read_members import SubdataMember, EnumLookupMember
 from ....read.value_members import MemberTypes as StorageType
@@ -263,7 +262,7 @@ class Tech(GenieStructure):
         """
         Return the members in this struct.
         """
-        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+        if game_version[0].game_id not in ("ROR", "AOE1DE"):
             data_format = [
                 # research ids of techs that are required for activating the possible research
                 (READ_GEN, "required_techs", StorageType.ARRAY_ID, "int16_t[6]"),
@@ -282,7 +281,7 @@ class Tech(GenieStructure):
             (READ_GEN, "required_tech_count", StorageType.INT_MEMBER, "int16_t"),       # a subset of the above required techs may be sufficient, this defines the minimum amount
         ])
 
-        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+        if game_version[0].game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
                 (READ_GEN, "civilization_id", StorageType.ID_MEMBER, "int16_t"),           # id of the civ that gets this technology
                 (READ_GEN, "full_tech_mode", StorageType.BOOLEAN_MEMBER, "int16_t"),       # 1: research is available when the full tech tree is activated on game start, 0: not
@@ -302,14 +301,14 @@ class Tech(GenieStructure):
             (READ_GEN, "hotkey", StorageType.ID_MEMBER, "int32_t"),                    # -1 for every tech
         ])
 
-        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
+        if game_version[0].game_id in ("AOE1DE", "AOE2DE"):
             data_format.extend([
                 (SKIP, "name_length_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_length]"),
             ])
 
-            if game_version[0] is GameEdition.AOE2DE:
+            if game_version[0].game_id == "AOE2DE":
                 data_format.extend([
                     (READ_GEN, "repeatable", StorageType.INT_MEMBER, "int8_t"),
                 ])
@@ -320,7 +319,7 @@ class Tech(GenieStructure):
                 (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_length]"),
             ])
 
-            if game_version[0] is GameEdition.SWGB:
+            if game_version[0].game_id == "SWGB":
                 data_format.extend([
                     (READ, "name2_length", StorageType.INT_MEMBER, "uint16_t"),
                     (READ_GEN, "name2", StorageType.STRING_MEMBER, "char[name2_length]"),

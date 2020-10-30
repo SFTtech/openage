@@ -3,7 +3,6 @@
 # TODO pylint: disable=C,R
 
 from .....entity_object.conversion.genie_structure import GenieStructure
-from ....init.game_version import GameEdition
 from ....read.member_access import READ_GEN, READ, SKIP
 from ....read.read_members import SubdataMember
 from ....read.value_members import MemberTypes as StorageType
@@ -21,13 +20,13 @@ class SoundItem(GenieStructure):
         """
         data_format = []
 
-        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
+        if game_version[0].game_id in ("AOE1DE", "AOE2DE"):
             data_format.extend([
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_len]"),
             ])
-        elif game_version[0] is GameEdition.SWGB:
+        elif game_version[0].game_id == "SWGB":
             data_format.extend([
                 (READ_GEN, "filename", StorageType.STRING_MEMBER, "char[27]"),
             ])
@@ -41,7 +40,7 @@ class SoundItem(GenieStructure):
             (READ_GEN, "probablilty", StorageType.INT_MEMBER, "int16_t"),
         ])
 
-        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+        if game_version[0].game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
                 (READ_GEN, "civilization_id", StorageType.ID_MEMBER, "int16_t"),
                 (READ_GEN, "icon_set", StorageType.ID_MEMBER, "int16_t"),
@@ -67,7 +66,7 @@ class Sound(GenieStructure):
             (SKIP, "cache_time", StorageType.INT_MEMBER, "int32_t"),                   # always 300000
         ]
 
-        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
+        if game_version[0].game_id in ("AOE1DE", "AOE2DE"):
             data_format.extend([
                 (READ_GEN, "total_probability", StorageType.ID_MEMBER, "int16_t"),
             ])

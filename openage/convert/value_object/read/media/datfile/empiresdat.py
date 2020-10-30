@@ -12,7 +12,6 @@ from . import tech
 from . import terrain
 from . import unit
 from .....entity_object.conversion.genie_structure import GenieStructure
-from ....init.game_version import GameEdition
 from ....read.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP
 from ....read.read_members import SubdataMember
 from ....read.value_members import MemberTypes as StorageType
@@ -43,7 +42,7 @@ class EmpiresDat(GenieStructure):
         """
         data_format = [(READ_GEN, "versionstr", StorageType.STRING_MEMBER, "char[8]")]
 
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0].game_id == "SWGB":
             data_format.extend([
                 (READ_GEN, "civ_count_swgb", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_UNKNOWN, None, StorageType.INT_MEMBER, "int32_t"),
@@ -61,7 +60,7 @@ class EmpiresDat(GenieStructure):
             (READ, "float_ptr_terrain_tables", StorageType.ARRAY_ID, "int32_t[terrain_restriction_count]"),
         ])
 
-        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+        if game_version[0].game_id not in ("ROR", "AOE1DE"):
             data_format.append((READ, "terrain_pass_graphics_ptrs", StorageType.ARRAY_ID, "int32_t[terrain_restriction_count]"))
 
         data_format.extend([
@@ -110,27 +109,27 @@ class EmpiresDat(GenieStructure):
 
         # Stored terrain number is hardcoded.
         # Usually less terrains are used by the game
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0].game_id == "SWGB":
             data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=55,
             )))
-        elif game_version[0] is GameEdition.AOE2DE:
+        elif game_version[0].game_id == "AOE2DE":
             data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=200,
             )))
-        elif game_version[0] is GameEdition.AOE1DE:
+        elif game_version[0].game_id == "AOE1DE":
             data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=96,
             )))
-        elif game_version[0] is GameEdition.HDEDITION:
+        elif game_version[0].game_id == "HDEDITION":
             data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=100,
             )))
-        elif game_version[0] is GameEdition.AOC:
+        elif game_version[0].game_id == "AOC":
             data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=42,
@@ -141,7 +140,7 @@ class EmpiresDat(GenieStructure):
                 length=32,
             )))
 
-        if game_version[0] is not GameEdition.AOE2DE:
+        if game_version[0].game_id != "AOE2DE":
             data_format.extend([
                 (READ_GEN, "terrain_border", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=terrain.TerrainBorder,
@@ -150,7 +149,7 @@ class EmpiresDat(GenieStructure):
                 (SKIP, "map_row_offset", StorageType.INT_MEMBER, "int32_t"),
             ])
 
-        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+        if game_version[0].game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
                 (SKIP, "map_min_x", StorageType.FLOAT_MEMBER, "float"),
                 (SKIP, "map_min_y", StorageType.FLOAT_MEMBER, "float"),
@@ -177,7 +176,7 @@ class EmpiresDat(GenieStructure):
             (SKIP, "block_end_column", StorageType.INT_MEMBER, "int16_t"),
         ])
 
-        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+        if game_version[0].game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
                 (SKIP, "search_map_ptr", StorageType.INT_MEMBER, "int32_t"),
                 (SKIP, "search_map_rows_ptr", StorageType.INT_MEMBER, "int32_t"),
@@ -195,13 +194,13 @@ class EmpiresDat(GenieStructure):
             (SKIP, "fog_flag", StorageType.INT_MEMBER, "int8_t"),
         ])
 
-        if game_version[0] is not GameEdition.AOE2DE:
-            if game_version[0] is GameEdition.SWGB:
+        if game_version[0].game_id != "AOE2DE":
+            if game_version[0].game_id == "SWGB":
                 data_format.extend([
                     (READ_UNKNOWN, "terrain_blob0", StorageType.ARRAY_INT, "uint8_t[25]"),
                     (READ_UNKNOWN, "terrain_blob1", StorageType.ARRAY_INT, "uint32_t[157]"),
                 ])
-            elif game_version[0] in (GameEdition.ROR, GameEdition.AOE1DE):
+            elif game_version[0].game_id in ("ROR", "AOE1DE"):
                 data_format.extend([
                     (READ_UNKNOWN, "terrain_blob0", StorageType.ARRAY_INT, "uint8_t[2]"),
                     (READ_UNKNOWN, "terrain_blob1", StorageType.ARRAY_INT, "uint32_t[5]"),
@@ -233,7 +232,7 @@ class EmpiresDat(GenieStructure):
             )),
         ])
 
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0].game_id == "SWGB":
             data_format.extend([
                 (READ, "unit_line_count", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_GEN, "unit_lines", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -243,7 +242,7 @@ class EmpiresDat(GenieStructure):
             ])
 
         # unit header data
-        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+        if game_version[0].game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
                 (READ, "unit_count", StorageType.INT_MEMBER, "uint32_t"),
                 (READ_GEN, "unit_headers", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -261,7 +260,7 @@ class EmpiresDat(GenieStructure):
             )),
         ])
 
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0].game_id == "SWGB":
             data_format.append((READ_UNKNOWN, None, StorageType.INT_MEMBER, "int8_t"))
 
         # research data
@@ -273,10 +272,10 @@ class EmpiresDat(GenieStructure):
             )),
         ])
 
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0].game_id == "SWGB":
             data_format.append((READ_UNKNOWN, None, StorageType.INT_MEMBER, "int8_t"))
 
-        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+        if game_version[0].game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
                 (SKIP, "time_slice", StorageType.INT_MEMBER, "int32_t"),
                 (SKIP, "unit_kill_rate", StorageType.INT_MEMBER, "int32_t"),
@@ -293,7 +292,7 @@ class EmpiresDat(GenieStructure):
                 (READ, "building_connection_count", StorageType.INT_MEMBER, "uint8_t"),
             ])
 
-            if game_version[0] is GameEdition.SWGB:
+            if game_version[0].game_id == "SWGB":
                 data_format.append((READ, "unit_connection_count", StorageType.INT_MEMBER, "uint16_t"))
 
             else:

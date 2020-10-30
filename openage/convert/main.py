@@ -11,12 +11,13 @@ from ..util.fslike.wrapper import (DirectoryCreator,
 from ..util.strings import format_progress
 from .service.init.conversion_required import conversion_required
 from .service.init.mount_asset_dirs import mount_asset_dirs
+from .service.init.version_detect import create_version_objects
 from .tool.interactive import interactive_browser
 from .tool.subtool.acquire_sourcedir import acquire_conversion_source_dir, wanna_convert
 from .tool.subtool.version_select import get_game_version
 
 
-def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
+def convert_assets(assets, cfg, args, srcdir=None, prev_source_dir_path=None):
     """
     Perform asset conversion.
 
@@ -35,8 +36,12 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
     if srcdir is None:
         srcdir = acquire_conversion_source_dir(prev_source_dir_path)
 
+    # Initialize game versions data
+    auxiliary_files_dir = cfg / "converter" / "games"
+    args.avail_game_eds, args.avail_game_exps = create_version_objects(auxiliary_files_dir)
+
     # Acquire game version info
-    game_version = get_game_version(srcdir)
+    game_version = get_game_version(srcdir, args.avail_game_eds, args.avail_game_exps)
 
     # Mount assets into conversion folder
     data_dir = mount_asset_dirs(srcdir, game_version)
@@ -167,8 +172,14 @@ def main(args, error):
     else:
         srcdir = None
 
+    # mount the config folder at "cfg/"
+    from ..cvar.location import get_config_path
+    from ..util.fslike.union import Union
+    root = Union().root
+    root["cfg"].mount(get_config_path(args.cfg_dir))
+
     if args.interactive:
-        interactive_browser(srcdir)
+        interactive_browser(root["cfg"], srcdir)
         return 0
 
     # conversion target
@@ -176,7 +187,7 @@ def main(args, error):
     outdir = get_asset_path(args.output_dir)
 
     if args.force or wanna_convert() or conversion_required(outdir, args):
-        if not convert_assets(outdir, args, srcdir):
+        if not convert_assets(outdir, root["cfg"], args, srcdir):
             return 1
     else:
         print("assets are up to date; no conversion is required.")

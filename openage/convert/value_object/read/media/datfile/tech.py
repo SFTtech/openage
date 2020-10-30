@@ -3,7 +3,6 @@
 # TODO pylint: disable=C,R
 
 from .....entity_object.conversion.genie_structure import GenieStructure
-from ....init.game_version import GameEdition
 from ....read.member_access import READ, READ_GEN, SKIP
 from ....read.read_members import SubdataMember, EnumLookupMember
 from ....read.value_members import MemberTypes as StorageType
@@ -120,7 +119,7 @@ class EffectBundle(GenieStructure):  # also called techage in some other tools
         """
         Return the members in this struct.
         """
-        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
+        if game_version[0].game_id in ("AOE1DE", "AOE2DE"):
             data_format = [
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
@@ -190,7 +189,7 @@ class AgeTechTree(GenieStructure):
             (READ_GEN, "status", StorageType.ID_MEMBER, "int8_t"),
         ]
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0].game_id != "ROR":
             data_format.extend([
                 (READ, "building_count", StorageType.INT_MEMBER, "uint8_t"),
                 (READ_GEN, "buildings", StorageType.ARRAY_ID, "int32_t[building_count]"),
@@ -213,7 +212,7 @@ class AgeTechTree(GenieStructure):
             (READ_GEN, "connected_slots_used", StorageType.INT_MEMBER, "int32_t"),
         ])
 
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0].game_id == "SWGB":
             data_format.extend([
                 (READ_GEN, "other_connected_ids", StorageType.ARRAY_ID, "int32_t[20]"),
                 (READ_GEN, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -221,7 +220,7 @@ class AgeTechTree(GenieStructure):
                     length=20,
                 )),
             ])
-        elif game_version[0] is GameEdition.ROR:
+        elif game_version[0].game_id == "ROR":
             data_format.extend([
                 (READ_GEN, "other_connected_ids", StorageType.ARRAY_ID, "int32_t[5]"),
                 (READ_GEN, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -242,12 +241,12 @@ class AgeTechTree(GenieStructure):
             (READ_GEN, "building_level_count", StorageType.INT_MEMBER, "int8_t"),
         ])
 
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0].game_id == "SWGB":
             data_format.extend([
                 (READ_GEN, "buildings_per_zone", StorageType.ARRAY_INT, "int8_t[20]"),
                 (READ_GEN, "group_length_per_zone", StorageType.ARRAY_INT, "int8_t[20]"),
             ])
-        elif game_version[0] is GameEdition.ROR:
+        elif game_version[0].game_id == "ROR":
             data_format.extend([
                 (READ_GEN, "buildings_per_zone", StorageType.ARRAY_INT, "int8_t[3]"),
                 (READ_GEN, "group_length_per_zone", StorageType.ARRAY_INT, "int8_t[3]"),
@@ -291,7 +290,7 @@ class BuildingConnection(GenieStructure):
             (READ, "status", StorageType.ID_MEMBER, "int8_t"),
         ]
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0].game_id != "ROR":
             data_format.extend([
                 (READ, "building_count", StorageType.INT_MEMBER, "uint8_t"),
                 # new buildings available when this building was created
@@ -317,7 +316,7 @@ class BuildingConnection(GenieStructure):
             (READ_GEN, "connected_slots_used", StorageType.INT_MEMBER, "int32_t"),
         ])
 
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0].game_id == "SWGB":
             data_format.extend([
                 (READ_GEN, "other_connected_ids", StorageType.ARRAY_ID, "int32_t[20]"),
                 (READ_GEN, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -325,7 +324,7 @@ class BuildingConnection(GenieStructure):
                     length=20,
                 )),
             ])
-        elif game_version[0] is GameEdition.ROR:
+        elif game_version[0].game_id == "ROR":
             data_format.extend([
                 (READ_GEN, "other_connected_ids", StorageType.ARRAY_ID, "int32_t[5]"),
                 (READ_GEN, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -381,7 +380,7 @@ class UnitConnection(GenieStructure):
             (READ_GEN, "connected_slots_used", StorageType.INT_MEMBER, "int32_t"),
         ]
 
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0].game_id == "SWGB":
             data_format.extend([
                 (READ_GEN, "other_connected_ids", StorageType.ARRAY_ID, "int32_t[20]"),
                 (READ_GEN, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -389,7 +388,7 @@ class UnitConnection(GenieStructure):
                     length=20,
                 )),
             ])
-        elif game_version[0] is GameEdition.ROR:
+        elif game_version[0].game_id == "ROR":
             data_format.extend([
                 (READ_GEN, "other_connected_ids", StorageType.ARRAY_ID, "int32_t[5]"),
                 (READ_GEN, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -410,7 +409,7 @@ class UnitConnection(GenieStructure):
             (READ_GEN, "vertical_line", StorageType.ID_MEMBER, "int32_t"),
         ])
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0].game_id != "ROR":
             data_format.extend([
                 (READ, "unit_count", StorageType.INT_MEMBER, "uint8_t"),
                 (READ_GEN, "units", StorageType.ARRAY_ID, "int32_t[unit_count]"),
@@ -457,7 +456,7 @@ class ResearchConnection(GenieStructure):
             (READ_GEN, "upper_building", StorageType.ID_MEMBER, "int32_t"),
         ]
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0].game_id != "ROR":
             data_format.extend([
                 (READ, "building_count", StorageType.INT_MEMBER, "uint8_t"),
                 (READ_GEN, "buildings", StorageType.ARRAY_ID, "int32_t[building_count]"),
@@ -480,7 +479,7 @@ class ResearchConnection(GenieStructure):
             (READ_GEN, "connected_slots_used", StorageType.INT_MEMBER, "int32_t"),
         ])
 
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0].game_id == "SWGB":
             data_format.extend([
                 (READ_GEN, "other_connected_ids", StorageType.ARRAY_ID, "int32_t[20]"),
                 (READ_GEN, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -488,7 +487,7 @@ class ResearchConnection(GenieStructure):
                     length=20,
                 )),
             ])
-        elif game_version[0] is GameEdition.ROR:
+        elif game_version[0].game_id == "ROR":
             data_format.extend([
                 (READ_GEN, "other_connected_ids", StorageType.ARRAY_ID, "int32_t[5]"),
                 (READ_GEN, "other_connections", StorageType.ARRAY_CONTAINER, SubdataMember(

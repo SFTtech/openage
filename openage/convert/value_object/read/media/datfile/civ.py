@@ -3,7 +3,6 @@
 # TODO pylint: disable=C,R
 from . import unit
 from .....entity_object.conversion.genie_structure import GenieStructure
-from ....init.game_version import GameEdition
 from ....read.member_access import READ, READ_GEN, SKIP
 from ....read.read_members import MultisubtypeMember, EnumLookupMember
 from ....read.value_members import MemberTypes as StorageType
@@ -24,7 +23,7 @@ class Civ(GenieStructure):
             (SKIP, "player_type", StorageType.INT_MEMBER, "int8_t"),
         ]
 
-        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
+        if game_version[0].game_id in ("AOE1DE", "AOE2DE"):
             data_format.extend([
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
@@ -41,11 +40,11 @@ class Civ(GenieStructure):
             (READ_GEN, "tech_tree_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+        if game_version[0].game_id not in ("ROR", "AOE1DE"):
             # links to tech id as well
             data_format.append((READ_GEN, "team_bonus_id", StorageType.ID_MEMBER, "int16_t"))
 
-            if game_version[0] is GameEdition.SWGB:
+            if game_version[0].game_id == "SWGB":
                 data_format.extend([
                     (READ_GEN, "name2", StorageType.STRING_MEMBER, "char[20]"),
                     (READ_GEN, "unique_unit_techs", StorageType.ARRAY_ID, "int16_t[4]"),

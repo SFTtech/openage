@@ -3,7 +3,6 @@
 # TODO pylint: disable=C,R
 
 from .....entity_object.conversion.genie_structure import GenieStructure
-from ....init.game_version import GameEdition
 from ....read.member_access import READ, READ_GEN, SKIP
 from ....read.read_members import ArrayMember, SubdataMember, IncludeMembers
 from ....read.value_members import MemberTypes as StorageType
@@ -45,7 +44,7 @@ class TerrainPassGraphic(GenieStructure):
             (READ_GEN, "slp_id_walk_tile", StorageType.ID_MEMBER, "int32_t"),
         ]
 
-        if game_version[0] is GameEdition.SWGB:
+        if game_version[0].game_id == "SWGB":
             data_format.append((READ_GEN, "walk_sprite_rate", StorageType.FLOAT_MEMBER, "float"))
         else:
             data_format.append((READ_GEN, "replication_amount", StorageType.INT_MEMBER, "int32_t"))
@@ -78,7 +77,7 @@ class TerrainRestriction(GenieStructure):
             (READ_GEN, "accessible_dmgmultiplier", StorageType.ARRAY_FLOAT, "float[terrain_count]")
         ]
 
-        if game_version[0] is not GameEdition.ROR:
+        if game_version[0].game_id != "ROR":
             data_format.append(
                 (READ_GEN, "pass_graphics", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=TerrainPassGraphic,
@@ -138,14 +137,14 @@ class Terrain(GenieStructure):
             (READ_GEN, "random", StorageType.INT_MEMBER, "int8_t"),
         ]
 
-        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
+        if game_version[0].game_id in ("AOE1DE", "AOE2DE"):
             data_format.extend([
                 (READ_GEN, "is_water", StorageType.BOOLEAN_MEMBER, "int8_t"),
                 (READ_GEN, "hide_in_editor", StorageType.BOOLEAN_MEMBER, "int8_t"),
                 (READ_GEN, "string_id", StorageType.ID_MEMBER, "int32_t"),
             ])
 
-            if game_version[0] is GameEdition.AOE1DE:
+            if game_version[0].game_id == "AOE1DE":
                 data_format.extend([
                     (READ_GEN, "blend_priority", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "blend_type", StorageType.ID_MEMBER, "int16_t"),
@@ -159,7 +158,7 @@ class Terrain(GenieStructure):
                 (READ, "filename_len", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_GEN, "filename", StorageType.STRING_MEMBER, "char[filename_len]"),
             ])
-        elif game_version[0] is GameEdition.SWGB:
+        elif game_version[0].game_id == "SWGB":
             data_format.extend([
                 (READ_GEN, "internal_name", StorageType.STRING_MEMBER, "char[17]"),
                 (READ_GEN, "filename", StorageType.STRING_MEMBER, "char[17]"),
@@ -176,19 +175,19 @@ class Terrain(GenieStructure):
             (READ_GEN, "sound_id", StorageType.ID_MEMBER, "int32_t"),
         ])
 
-        if game_version[0] is GameEdition.AOE2DE:
+        if game_version[0].game_id == "AOE2DE":
             data_format.extend([
                 (READ_GEN, "wwise_sound_id", StorageType.ID_MEMBER, "uint32_t"),
                 (READ_GEN, "wwise_stop_sound_id", StorageType.ID_MEMBER, "uint32_t"),
             ])
 
-        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+        if game_version[0].game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
                 # see doc/media/blendomatic.md for blending stuff
                 (READ_GEN, "blend_priority", StorageType.ID_MEMBER, "int32_t"),
                 (READ_GEN, "blend_mode", StorageType.ID_MEMBER, "int32_t"),
             ])
-            if game_version[0] is GameEdition.AOE2DE:
+            if game_version[0].game_id == "AOE2DE":
                 data_format.extend([
                     (SKIP, "overlay_mask_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                     (READ, "overlay_mask_name_len", StorageType.INT_MEMBER, "uint16_t"),
@@ -216,32 +215,32 @@ class Terrain(GenieStructure):
             (READ_GEN, "terrain_to_draw1", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0] is GameEdition.AOE2DE:
+        if game_version[0].game_id == "AOE2DE":
             data_format.append(
                 (READ_GEN, "terrain_unit_masked_density", StorageType.ARRAY_INT, "int16_t[30]")
             )
-        elif game_version[0] is GameEdition.SWGB:
+        elif game_version[0].game_id == "SWGB":
             data_format.append(
                 (READ_GEN, "borders", StorageType.ARRAY_INT, ArrayMember(
                     "int16_t",
                     55
                 ))
             )
-        elif game_version[0] is GameEdition.AOE1DE:
+        elif game_version[0].game_id == "AOE1DE":
             data_format.append(
                 (READ_GEN, "borders", StorageType.ARRAY_INT, ArrayMember(
                     "int16_t",
                     96
                 ))
             )
-        elif game_version[0] is GameEdition.HDEDITION:
+        elif game_version[0].game_id == "HDEDITION":
             data_format.append(
                 (READ_GEN, "borders", StorageType.ARRAY_INT, ArrayMember(
                     "int16_t",
                     100
                 ))
             )
-        elif game_version[0] is GameEdition.AOC:
+        elif game_version[0].game_id == "AOC":
             data_format.append(
                 (READ_GEN, "borders", StorageType.ARRAY_INT, ArrayMember(
                     "int16_t",
@@ -267,7 +266,7 @@ class Terrain(GenieStructure):
             (READ_GEN, "terrain_units_used_count", StorageType.INT_MEMBER, "int16_t"),
         ])
 
-        if game_version[0] is not GameEdition.SWGB:
+        if game_version[0].game_id != "SWGB":
             data_format.append((READ, "phantom", StorageType.INT_MEMBER, "int16_t"))
 
         return data_format

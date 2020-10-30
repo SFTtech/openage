@@ -11,7 +11,6 @@ should be a processor/service that saves the file based on the request.
 """
 
 from ....util.observer import Observable
-from ...value_object.init.game_version import GameEdition
 from ...value_object.read.media_types import MediaType
 from .texture import Texture
 
@@ -161,7 +160,7 @@ class TerrainMediaExportRequest(MediaExportRequest):
             # TODO: Implement
             pass
 
-        if game_version[0] in (GameEdition.AOC, GameEdition.SWGB):
+        if game_version[0].game_id in ("AOC", "SWGB"):
             from ...processor.export.texture_merge import merge_terrain
             texture = Texture(image, palettes, custom_merger=merge_terrain)
 
