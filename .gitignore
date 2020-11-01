@@ -66,6 +66,9 @@ perf.data*
 .vscode
 .idea
 
+# CMake + ccls
+/compile_commands.json
+
 # Virtual Environments
 /.venv/
 
