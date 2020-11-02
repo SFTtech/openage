@@ -83,7 +83,7 @@ Bit index | Description
 6         | If set to `1`, the frame contains a shadow layer
 5         | If set to `1`, the frame contains an outline layer
 4         | Determines the compression algorithm for the main graphic layer. `0` = 4plus1; `1` = 8to5 (see the [Compression Algorithms](#compression-algorithms) section)
-3         | Unknown, but only used by bridges
+3         | If set to `1`, other animations' shadows will be cast over the animation.
 0-2       | Unused
 
 **Example**
