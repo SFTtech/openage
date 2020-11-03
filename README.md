@@ -103,7 +103,7 @@ Quickstart
   Windows 10 - x64    | [![Build status](https://ci.appveyor.com/api/projects/status/66sx35key94u740e?svg=true)](https://ci.appveyor.com/project/simonsan/openage-sl215)
 
 
-* How do I get this to run on my box?
+* How do I get this to run on my system?
     * See [doc/building.md](/doc/building.md).
 
 * I compiled everything. Now how do I run it?
