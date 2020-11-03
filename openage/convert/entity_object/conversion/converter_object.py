@@ -227,9 +227,9 @@ class ConverterObjectGroup:
         try:
             return self.raw_api_objects[obj_id]
 
-        except KeyError:
+        except KeyError as missing_raw_api_obj:
             raise Exception("%s: Could not find raw API object with obj_id %s"
-                            % (self, obj_id))
+                            % (self, obj_id)) from missing_raw_api_obj
 
     def get_raw_api_objects(self):
         """
