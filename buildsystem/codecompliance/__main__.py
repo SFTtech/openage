@@ -1,4 +1,4 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 """
 Entry point for the code compliance checker.
@@ -208,6 +208,10 @@ def find_all_issues(args, check_files=None):
 
     Yields tuples of (title, text) that are displayed as warnings.
     """
+
+    # pylint: disable=too-many-function-args, no-value-for-parameter
+    # no-value-for-parameter has to be used because pylint is dumb
+
     if args.headerguards:
         from .headerguards import find_issues
         yield from find_issues('libopenage')
