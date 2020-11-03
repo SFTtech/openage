@@ -8,8 +8,8 @@ https://msdn.microsoft.com/en-us/library/bb417343.aspx.
 """
 
 from bisect import bisect
-from collections import OrderedDict
 from calendar import timegm
+from collections import OrderedDict
 
 from ..log import dbg
 from ..util.filelike.readonly import PosSavingReadOnlyFileLikeObject
@@ -19,14 +19,13 @@ from ..util.fslike.filecollection import FileCollection
 from ..util.math import INF
 from ..util.strings import try_decode
 from ..util.struct import NamedStruct, Flags
-
 from .cabchecksum import mscab_csum
 
 
 class CFHeaderFlags(Flags):
     """ Cabinet file option indicators. Found in the header. """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     specstr         = "H"
 
@@ -48,7 +47,7 @@ class CFHeaderFlags(Flags):
 class CFHeader(NamedStruct):
     """ Global CAB file header; found at the very beginning of the file. """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness      = "<"
 
@@ -86,7 +85,7 @@ class CFHeaderReservedFields(NamedStruct):
     folder and data structs.
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness      = "<"
 
@@ -101,7 +100,7 @@ class CFFolder(NamedStruct):
     (compressed) concatenated file contents.
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness      = "<"
 
@@ -122,7 +121,7 @@ class CFFileAttributes(Flags):
     File flags; found in the CFFile struct.
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     specstr         = "H"
 
@@ -142,7 +141,7 @@ class CFFile(NamedStruct):
     as well as the location of its content (which CAB folder, at what offset).
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness      = "<"
 
@@ -178,7 +177,7 @@ class CFData(NamedStruct):
     of one such data block.
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness      = "<"
 
@@ -224,6 +223,7 @@ class CABFile(FileCollection):
     The constructor reads the entire header, including the folder and file
     descriptions. Most CAB file issues should cause the constructor to fail.
     """
+
     def __init__(self, cab):
         super().__init__()
 

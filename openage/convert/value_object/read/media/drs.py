@@ -25,7 +25,7 @@ class DRSHeaderEnsemble(NamedStruct):
     DRS file header for AoE1 and AoE2; see doc/media/drs-files
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness       = "<"
 
@@ -41,7 +41,7 @@ class DRSHeaderLucasArts(NamedStruct):
     DRS file header for SWGB; see doc/media/drs-files
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness       = "<"
 
@@ -57,7 +57,7 @@ class DRSTableInfo(NamedStruct):
     DRS table header
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness       = "<"
 
@@ -71,7 +71,7 @@ class DRSFileInfo(NamedStruct):
     DRS file header
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness       = "<"
 

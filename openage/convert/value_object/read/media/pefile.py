@@ -19,7 +19,7 @@ class PEDOSHeader(NamedStruct):
     In all modern PE files, only the 'lfanew' pointer is relevant.
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness = "<"
 
@@ -49,7 +49,7 @@ class PECOFFHeader(NamedStruct):
     The new (win32) PE and object file header.
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness = "<"
 
@@ -68,7 +68,7 @@ class PEOptionalHeader(NamedStruct):
     This "optional" header is required for linked files (but not object files).
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness = "<"
 
@@ -120,7 +120,7 @@ class PEDataDirectory(NamedStruct):
     which are used to set up the execution environment.
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness = "<"
 
@@ -133,7 +133,7 @@ class PESection(NamedStruct):
     Describes a section in a PE file (like an ELF section).
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness = "<"
 

@@ -1160,7 +1160,7 @@ class GenieGarrisonMode(Enum):
     the "garrison_type" from the .dat file. These garrison modes reflect
     how the garrison will be handled in the openage API.
     """
-    # pylint: disable=bad-whitespace,line-too-long
+    # pylint: disable=line-too-long
 
     # Keys = all possible creatable types; may be specified further by other factors
     # The negative integers at the start of the tupe prevent Python from creating
