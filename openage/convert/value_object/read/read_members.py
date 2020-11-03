@@ -339,7 +339,7 @@ class ContinueReadMemberResult(Enum):
     CONTINUE = "data_exists"
 
     def __str__(self):
-        return self.value
+        return str(self.value)
 
 
 class ContinueReadMember(NumberMember):
