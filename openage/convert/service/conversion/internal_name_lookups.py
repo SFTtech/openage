@@ -92,7 +92,7 @@ def get_class_lookups(game_version):
     if game_edition.game_id == "ROR":
         return ror_internal.CLASS_ID_LOOKUPS
 
-    if game_edition in ("AOC", "HDEDITION", "AOE2DE"):
+    if game_edition.game_id in ("AOC", "HDEDITION", "AOE2DE"):
         return aoc_internal.CLASS_ID_LOOKUPS
 
     if game_edition.game_id == "SWGB":
@@ -115,7 +115,7 @@ def get_command_lookups(game_version):
     if game_edition.game_id == "ROR":
         return ror_internal.COMMAND_TYPE_LOOKUPS
 
-    if game_edition in ("AOC", "HDEDITION", "AOE2DE"):
+    if game_edition.game_id in ("AOC", "HDEDITION", "AOE2DE"):
         return aoc_internal.COMMAND_TYPE_LOOKUPS
 
     if game_edition.game_id == "SWGB":
@@ -206,7 +206,7 @@ def get_gather_lookups(game_version):
     if game_edition.game_id == "ROR":
         return ror_internal.GATHER_TASK_LOOKUPS
 
-    if game_edition in ("AOC", "HDEDITION", "AOE2DE"):
+    if game_edition.game_id in ("AOC", "HDEDITION", "AOE2DE"):
         return aoc_internal.GATHER_TASK_LOOKUPS
 
     if game_edition.game_id == "SWGB":
@@ -262,7 +262,7 @@ def get_restock_lookups(game_version):
     if game_edition.game_id == "ROR":
         return None
 
-    if game_edition in ("AOC", "HDEDITION", "AOE2DE"):
+    if game_edition.game_id in ("AOC", "HDEDITION", "AOE2DE"):
         return aoc_internal.RESTOCK_TARGET_LOOKUPS
 
     if game_edition.game_id == "SWGB":

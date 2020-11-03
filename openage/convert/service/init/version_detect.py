@@ -66,27 +66,25 @@ def create_version_objects(srcdir):
     game_edition_list = []
 
     # initiliaze necessary paths
-    game_edition_path = srcdir.joinpath("game_edition.toml")
-    game_expansion_path = srcdir.joinpath("game_expansion.toml")
-    version_hashes_path = srcdir.joinpath("version_hashes")
+    game_edition_path = srcdir.joinpath("game_editions.toml")
+    game_expansion_path = srcdir.joinpath("game_expansions.toml")
+    version_hashes_path = srcdir.joinpath("version-hashes")
 
     # load toml config files to a dictionary variable
-    game_edition_dic = toml.load(game_edition_path)
-    game_expansion_dic = toml.load(game_expansion_path)
+    with game_edition_path.open() as game_edition_toml:
+        game_edition_dic = toml.loads(game_edition_toml.read())
+    with game_expansion_path.open() as game_expansion_toml:
+        game_expansion_dic = toml.loads(game_expansion_toml.read())
 
     # create and list GameEdition objects
+    game_edition_dic.pop("file_version")
     for game in game_edition_dic:
-        if game == 'file_version':
-            continue
-
         game_obj = create_game_obj(game_edition_dic[game], version_hashes_path)
         game_edition_list.append(game_obj)
 
     # create and list GameExpansion objects
+    game_expansion_dic.pop("file_version")
     for game in game_expansion_dic:
-        if game == 'file_version':
-            continue
-
         game_obj = create_game_obj(game_expansion_dic[game], version_hashes_path, True)
         game_expansion_list.append(game_obj)
 
@@ -110,12 +108,15 @@ def create_game_obj(game_dic, version_hashes_path, expansion=False):
         expansions = game_dic['expansions']
 
     # add version-hashes from the auxiliary file specific for the game
-    game_hash_dic = toml.load(version_hashes_path.joinpath(game_id + '.toml'))
+    game_hash_path = version_hashes_path.joinpath(game_id + '.toml')
+    with game_hash_path.open() as game_hash_toml:
+        game_hash_dic = toml.loads(game_hash_toml.read())
+
     game_hash_list = []
-    for item in game_hash_dic:
-        if item in ['file_version', 'hash_algo']:
+    for item in game_hash_dic.items():
+        if item[0] in ['file_version', 'hash_algo']:
             continue
-        game_hash_list.append((item['path'], item['map']))
+        game_hash_list.append((item[1]['path'], item[1]['map']))
 
     # add mediapaths for the game
     game_mediapaths_list = []

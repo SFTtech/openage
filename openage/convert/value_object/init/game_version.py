@@ -48,7 +48,7 @@ class GameBase:
         self.game_id = game_id
         self.flags = flags
         self.target_modpacks = modpacks
-        self.support_status = Support[support]
+        self.support = Support[support]
 
         self.game_file_versions = []
         self.media_paths = {}
@@ -103,6 +103,9 @@ class GameExpansion(GameBase):
 
         self.expansion_name = name
 
+    def __str__(self):
+        return self.expansion_name
+
 
 class GameEdition(GameBase):
     """
@@ -133,3 +136,6 @@ class GameEdition(GameBase):
 
         self.edition_name = name
         self.expansions = expansions
+
+    def __str__(self):
+        return self.edition_name
