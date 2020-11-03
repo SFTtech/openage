@@ -1,7 +1,7 @@
 # Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
-Convert a single slp file from some drs archive to a png image.
+Convert a single slp/wav file from some drs archive to a png/opus file.
 """
 
 from pathlib import Path
@@ -24,15 +24,15 @@ def init_subparser(cli):
                      help=("path to the folder containing the palettes.conf file "
                            "OR an interfac.drs archive that contains palette files"))
     cli.add_argument("--drs", type=argparse.FileType('rb'),
-                     help=("drs archive filename that contains an slp "
+                     help=("drs archive filename that contains an slp or wav "
                            "e.g. path ~/games/aoe/graphics.drs"))
-    cli.add_argument("--mode", choices=['drs-slp', 'slp', 'smp', 'smx'],
-                     help=("choose between drs-slp, slp, smp or smx; "
+    cli.add_argument("--mode", choices=['drs-slp', 'drs-wav', 'slp', 'smp', 'smx', 'wav'],
+                     help=("choose between drs-slp, drs-wav, slp, smp, smx or wav; "
                            "otherwise, this is determined by the file extension"))
     cli.add_argument("filename", help=("filename or, if inside a drs archive "
                                        "given by --drs, the filename within "
                                        "the drs archive"))
-    cli.add_argument("output", help="image output path name")
+    cli.add_argument("output", help="output path name")
 
 
 def main(args, error):
@@ -42,11 +42,12 @@ def main(args, error):
     file_path = Path(args.filename)
     file_extension = file_path.suffix[1:].lower()
 
-    if not args.palettes_path:
-        raise Exception("palettes-path needs to be specified")
+    if not (args.mode in ["drs-wav", "wav"] or file_extension == "wav"):
+        if not args.palettes_path:
+            raise Exception("palettes-path needs to be specified")
 
-    palettes_path = Path(args.palettes_path)
-    palettes = read_palettes(palettes_path)
+        palettes_path = Path(args.palettes_path)
+        palettes = read_palettes(palettes_path)
 
     if args.mode == "slp" or (file_extension == "slp" and not args.drs):
         read_slp_file(args.filename, args.output, palettes)
@@ -59,6 +60,12 @@ def main(args, error):
 
     elif args.mode == "smx" or file_extension == "smx":
         read_smx_file(args.filename, args.output, palettes)
+
+    elif args.mode == "wav" or (file_extension == "wav" and not args.drs):
+        read_wav_file(args.filename, args.output)
+
+    elif args.mode == "drs-wav" or (file_extension == "wav" and args.drs):
+        read_wav_in_drs_file(args.drs, args.filename, args.output)
 
     else:
         raise Exception("format could not be determined")
@@ -223,3 +230,54 @@ def read_smx_file(smx_path, output_path, palettes):
 
     # save as png
     tex.save(Directory(output_file.parent).root, output_file.name)
+
+
+def read_wav_file(wav_path, output_path):
+    """
+    Reads a single WAV file.
+    """
+
+    output_file = Path(output_path)
+
+    # open the wav file
+    info("opening wav file at '%s'", wav_path)
+    wav_file = Path(wav_path).open("rb")
+
+    # import here to prevent that the __main__ depends on opusenc
+    # just by importing this singlefile.py.
+    from ..service.export.opus.opusenc import encode
+
+    # convert wav to opus
+    info("converting wav to opus...")
+    opus_data = encode(wav_file.read())
+
+    # save converted opus data to target directory
+    info("saving opus file...")
+    output_file.write_bytes(opus_data)
+
+
+def read_wav_in_drs_file(drs, wav_path, output_path):
+    """
+    Reads a WAV file from a DRS archive.
+    """
+    output_file = Path(output_path)
+
+    # open from drs archive
+    # TODO: Also allow SWGB's DRS files
+    game_version = (GameEdition.AOC, [])
+    drs_file = DRS(drs, game_version)
+
+    info("opening wav in drs '%s:%s'...", drs.name, wav_path)
+    wav_file = drs_file.root[wav_path].open("rb")
+
+    # import here to prevent that the __main__ depends on opusenc
+    # just by importing this singlefile.py.
+    from ..service.export.opus.opusenc import encode
+
+    # convert wav to opus
+    info("converting wav to opus...")
+    opus_data = encode(wav_file.read())
+
+    # save converted opus data to target directory
+    info("saving opus file...")
+    output_file.write_bytes(opus_data)
