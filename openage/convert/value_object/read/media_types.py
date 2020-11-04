@@ -1,7 +1,5 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
 
-# pylint: disable=bad-whitespace
-
 """
 Media types used in games. Media types refer to a group
 of file types used in the game.

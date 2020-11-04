@@ -112,7 +112,7 @@ class OrderedSet:
         return len(self.ordered_set)
 
     def __reversed__(self):
-        return reversed(self.ordered_set)
+        return reversed(self.ordered_set.keys())
 
     def __str__(self):
         return f'OrderedSet({list(self.ordered_set.keys())})'

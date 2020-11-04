@@ -49,7 +49,7 @@ class ResourceDirectory(NamedStruct):
     Resource directory header.
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness = "<"
 
@@ -73,7 +73,7 @@ class ResourceDirectoryEntry(NamedStruct):
     these follow immediately after the directory.
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness = "<"
 
@@ -94,7 +94,7 @@ class ResourceLeaf(NamedStruct):
     header for a leaf node in the resource tree.
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness = "<"
 
@@ -120,7 +120,7 @@ class StringLiteral(NamedStruct):
     A simple length-prefixed little-endian utf-16 string.
     """
 
-    # pylint: disable=bad-whitespace,too-few-public-methods
+    # pylint: disable=too-few-public-methods
 
     endianness = "<"
 
