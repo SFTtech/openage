@@ -11,7 +11,6 @@ import openage.convert.value_object.conversion.hd.fgt.internal_nyan_names as fgt
 import openage.convert.value_object.conversion.hd.raj.internal_nyan_names as raj_internal
 import openage.convert.value_object.conversion.ror.internal_nyan_names as ror_internal
 import openage.convert.value_object.conversion.swgb.internal_nyan_names as swgb_internal
-from ...value_object.init.game_version import GameEdition
 
 
 def get_armor_class_lookups(game_version):
@@ -24,13 +23,13 @@ def get_armor_class_lookups(game_version):
     game_edition = game_version[0]
     # game_expansions = game_version[1]
 
-    if game_edition is GameEdition.ROR:
+    if game_edition.game_id == "ROR":
         return ror_internal.ARMOR_CLASS_LOOKUPS
 
-    if game_edition is GameEdition.AOC:
+    if game_edition.game_id == "AOC":
         return aoc_internal.ARMOR_CLASS_LOOKUPS
 
-    if game_edition is GameEdition.AOE2DE:
+    if game_edition.game_id == "AOE2DE":
         armor_lookup_dict = {}
         armor_lookup_dict.update(aoc_internal.ARMOR_CLASS_LOOKUPS)
         armor_lookup_dict.update(fgt_internal.ARMOR_CLASS_LOOKUPS)
@@ -40,7 +39,7 @@ def get_armor_class_lookups(game_version):
 
         return armor_lookup_dict
 
-    if game_edition is GameEdition.SWGB:
+    if game_edition.game_id == "SWGB":
         return swgb_internal.ARMOR_CLASS_LOOKUPS
 
     raise Exception("No lookup dict found for game version %s"
@@ -57,13 +56,13 @@ def get_civ_lookups(game_version):
     game_edition = game_version[0]
     # game_expansions = game_version[1]
 
-    if game_edition is GameEdition.ROR:
+    if game_edition.game_id == "ROR":
         return ror_internal.CIV_GROUP_LOOKUPS
 
-    if game_edition is GameEdition.AOC:
+    if game_edition.game_id == "AOC":
         return aoc_internal.CIV_GROUP_LOOKUPS
 
-    if game_edition is GameEdition.AOE2DE:
+    if game_edition.game_id == "AOE2DE":
         civ_lookup_dict = {}
         civ_lookup_dict.update(aoc_internal.CIV_GROUP_LOOKUPS)
         civ_lookup_dict.update(fgt_internal.CIV_GROUP_LOOKUPS)
@@ -73,7 +72,7 @@ def get_civ_lookups(game_version):
 
         return civ_lookup_dict
 
-    if game_edition is GameEdition.SWGB:
+    if game_edition.game_id == "SWGB":
         return swgb_internal.CIV_GROUP_LOOKUPS
 
     raise Exception("No lookup dict found for game version %s"
@@ -90,13 +89,13 @@ def get_class_lookups(game_version):
     game_edition = game_version[0]
     # game_expansions = game_version[1]
 
-    if game_edition is GameEdition.ROR:
+    if game_edition.game_id == "ROR":
         return ror_internal.CLASS_ID_LOOKUPS
 
-    if game_edition in (GameEdition.AOC, GameEdition.HDEDITION, GameEdition.AOE2DE):
+    if game_edition.game_id in ("AOC", "HDEDITION", "AOE2DE"):
         return aoc_internal.CLASS_ID_LOOKUPS
 
-    if game_edition is GameEdition.SWGB:
+    if game_edition.game_id == "SWGB":
         return swgb_internal.CLASS_ID_LOOKUPS
 
     raise Exception("No lookup dict found for game version %s"
@@ -113,13 +112,13 @@ def get_command_lookups(game_version):
     game_edition = game_version[0]
     # game_expansions = game_version[1]
 
-    if game_edition is GameEdition.ROR:
+    if game_edition.game_id == "ROR":
         return ror_internal.COMMAND_TYPE_LOOKUPS
 
-    if game_edition in (GameEdition.AOC, GameEdition.HDEDITION, GameEdition.AOE2DE):
+    if game_edition.game_id in ("AOC", "HDEDITION", "AOE2DE"):
         return aoc_internal.COMMAND_TYPE_LOOKUPS
 
-    if game_edition is GameEdition.SWGB:
+    if game_edition.game_id == "SWGB":
         return swgb_internal.COMMAND_TYPE_LOOKUPS
 
     raise Exception("No lookup dict found for game version %s"
@@ -138,7 +137,7 @@ def get_entity_lookups(game_version):
 
     entity_lookup_dict = {}
 
-    if game_edition is GameEdition.ROR:
+    if game_edition.game_id == "ROR":
         entity_lookup_dict.update(ror_internal.UNIT_LINE_LOOKUPS)
         entity_lookup_dict.update(ror_internal.BUILDING_LINE_LOOKUPS)
         entity_lookup_dict.update(ror_internal.AMBIENT_GROUP_LOOKUPS)
@@ -146,7 +145,7 @@ def get_entity_lookups(game_version):
 
         return entity_lookup_dict
 
-    if game_edition is GameEdition.AOC:
+    if game_edition.game_id == "AOC":
         entity_lookup_dict.update(aoc_internal.UNIT_LINE_LOOKUPS)
         entity_lookup_dict.update(aoc_internal.BUILDING_LINE_LOOKUPS)
         entity_lookup_dict.update(aoc_internal.AMBIENT_GROUP_LOOKUPS)
@@ -154,7 +153,7 @@ def get_entity_lookups(game_version):
 
         return entity_lookup_dict
 
-    if game_edition is GameEdition.AOE2DE:
+    if game_edition.game_id == "AOE2DE":
         entity_lookup_dict.update(aoc_internal.UNIT_LINE_LOOKUPS)
         entity_lookup_dict.update(aoc_internal.BUILDING_LINE_LOOKUPS)
         entity_lookup_dict.update(aoc_internal.AMBIENT_GROUP_LOOKUPS)
@@ -182,7 +181,7 @@ def get_entity_lookups(game_version):
 
         return entity_lookup_dict
 
-    if game_edition is GameEdition.SWGB:
+    if game_edition.game_id == "SWGB":
         entity_lookup_dict.update(swgb_internal.UNIT_LINE_LOOKUPS)
         entity_lookup_dict.update(swgb_internal.BUILDING_LINE_LOOKUPS)
         entity_lookup_dict.update(swgb_internal.AMBIENT_GROUP_LOOKUPS)
@@ -204,13 +203,13 @@ def get_gather_lookups(game_version):
     game_edition = game_version[0]
     # game_expansions = game_version[1]
 
-    if game_edition is GameEdition.ROR:
+    if game_edition.game_id == "ROR":
         return ror_internal.GATHER_TASK_LOOKUPS
 
-    if game_edition in (GameEdition.AOC, GameEdition.HDEDITION, GameEdition.AOE2DE):
+    if game_edition.game_id in ("AOC", "HDEDITION", "AOE2DE"):
         return aoc_internal.GATHER_TASK_LOOKUPS
 
-    if game_edition is GameEdition.SWGB:
+    if game_edition.game_id == "SWGB":
         return swgb_internal.GATHER_TASK_LOOKUPS
 
     raise Exception("No lookup dict found for game version %s"
@@ -227,13 +226,13 @@ def get_graphic_set_lookups(game_version):
     game_edition = game_version[0]
     # game_expansions = game_version[1]
 
-    if game_edition is GameEdition.ROR:
+    if game_edition.game_id == "ROR":
         return ror_internal.GRAPHICS_SET_LOOKUPS
 
-    if game_edition is GameEdition.AOC:
+    if game_edition.game_id == "AOC":
         return aoc_internal.GRAPHICS_SET_LOOKUPS
 
-    if game_edition is GameEdition.AOE2DE:
+    if game_edition.game_id == "AOE2DE":
         graphic_set_lookup_dict = {}
         graphic_set_lookup_dict.update(aoc_internal.GRAPHICS_SET_LOOKUPS)
         graphic_set_lookup_dict.update(fgt_internal.GRAPHICS_SET_LOOKUPS)
@@ -243,7 +242,7 @@ def get_graphic_set_lookups(game_version):
 
         return graphic_set_lookup_dict
 
-    if game_edition is GameEdition.SWGB:
+    if game_edition.game_id == "SWGB":
         return swgb_internal.GRAPHICS_SET_LOOKUPS
 
     raise Exception("No lookup dict found for game version %s"
@@ -260,13 +259,13 @@ def get_restock_lookups(game_version):
     game_edition = game_version[0]
     # game_expansions = game_version[1]
 
-    if game_edition is GameEdition.ROR:
+    if game_edition.game_id == "ROR":
         return None
 
-    if game_edition in (GameEdition.AOC, GameEdition.HDEDITION, GameEdition.AOE2DE):
+    if game_edition.game_id in ("AOC", "HDEDITION", "AOE2DE"):
         return aoc_internal.RESTOCK_TARGET_LOOKUPS
 
-    if game_edition is GameEdition.SWGB:
+    if game_edition.game_id == "SWGB":
         return swgb_internal.RESTOCK_TARGET_LOOKUPS
 
     raise Exception("No lookup dict found for game version %s"
@@ -283,13 +282,13 @@ def get_tech_lookups(game_version):
     game_edition = game_version[0]
     # game_expansions = game_version[1]
 
-    if game_edition is GameEdition.ROR:
+    if game_edition.game_id == "ROR":
         return ror_internal.TECH_GROUP_LOOKUPS
 
-    if game_edition is GameEdition.AOC:
+    if game_edition.game_id == "AOC":
         return aoc_internal.TECH_GROUP_LOOKUPS
 
-    if game_edition is GameEdition.AOE2DE:
+    if game_edition.game_id == "AOE2DE":
         tech_lookup_dict = {}
         tech_lookup_dict.update(aoc_internal.TECH_GROUP_LOOKUPS)
         tech_lookup_dict.update(fgt_internal.TECH_GROUP_LOOKUPS)
@@ -299,7 +298,7 @@ def get_tech_lookups(game_version):
 
         return tech_lookup_dict
 
-    if game_edition is GameEdition.SWGB:
+    if game_edition.game_id == "SWGB":
         return swgb_internal.TECH_GROUP_LOOKUPS
 
     raise Exception("No lookup dict found for game version %s"
@@ -316,13 +315,13 @@ def get_terrain_lookups(game_version):
     game_edition = game_version[0]
     # game_expansions = game_version[1]
 
-    if game_edition is GameEdition.ROR:
+    if game_edition.game_id == "ROR":
         return ror_internal.TERRAIN_GROUP_LOOKUPS
 
-    if game_edition is GameEdition.AOC:
+    if game_edition.game_id == "AOC":
         return aoc_internal.TERRAIN_GROUP_LOOKUPS
 
-    if game_edition is GameEdition.AOE2DE:
+    if game_edition.game_id == "AOE2DE":
         terrain_lookup_dict = {}
         terrain_lookup_dict.update(aoc_internal.TERRAIN_GROUP_LOOKUPS)
         terrain_lookup_dict.update(fgt_internal.TERRAIN_GROUP_LOOKUPS)
@@ -332,7 +331,7 @@ def get_terrain_lookups(game_version):
 
         return terrain_lookup_dict
 
-    if game_edition is GameEdition.SWGB:
+    if game_edition.game_id == "SWGB":
         return swgb_internal.TERRAIN_GROUP_LOOKUPS
 
     raise Exception("No lookup dict found for game version %s"
@@ -349,13 +348,13 @@ def get_terrain_type_lookups(game_version):
     game_edition = game_version[0]
     # game_expansions = game_version[1]
 
-    if game_edition is GameEdition.ROR:
+    if game_edition.game_id == "ROR":
         return ror_internal.TERRAIN_TYPE_LOOKUPS
 
-    if game_edition is GameEdition.AOC:
+    if game_edition.game_id == "AOC":
         return aoc_internal.TERRAIN_TYPE_LOOKUPS
 
-    if game_edition is GameEdition.AOE2DE:
+    if game_edition.game_id == "AOE2DE":
         terrain_type_lookup_dict = {}
         terrain_type_lookup_dict.update(aoc_internal.TERRAIN_TYPE_LOOKUPS)
         terrain_type_lookup_dict.update(fgt_internal.TERRAIN_TYPE_LOOKUPS)
@@ -365,7 +364,7 @@ def get_terrain_type_lookups(game_version):
 
         return terrain_type_lookup_dict
 
-    if game_edition is GameEdition.SWGB:
+    if game_edition.game_id == "SWGB":
         return swgb_internal.TERRAIN_TYPE_LOOKUPS
 
     raise Exception("No lookup dict found for game version %s"

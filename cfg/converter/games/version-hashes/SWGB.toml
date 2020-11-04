@@ -1,0 +1,16 @@
+# version hashes of Star Wars: Galactic Battlegrounds
+
+file_version = "1.0"
+hash_algo = "SHA3-256"
+
+[Battlegrounds]
+path = "Game/Battlegrounds.exe"
+
+  [Battlegrounds.map]
+  0a5e2b7828b5b0a45cb6dfbf52e3becb2021e97259ba23a5cee94230 = "GOG"
+
+[GENIE]
+path = "Game/Data/GENIE.DAT"
+
+  [GENIE.map]
+  f1f641f201dac9d7663df4cf1ece7a60a78770a09e70e202399505d9 = "GOG"

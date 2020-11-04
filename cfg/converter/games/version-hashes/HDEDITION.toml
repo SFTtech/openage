@@ -1,0 +1,16 @@
+# version hashes of Age of Empires 2: HD Edition
+
+file_version = "1.0"
+hash_algo = "SHA3-256"
+
+["AoK HD"]
+path = "AoK HD.exe"
+
+  ["AoK HD".map]
+  73a068f353efd50e058762ca090062600a7ca50e435fe55a6ca87efa = "5.8"
+
+[empires2_x1_p1dat]
+path = "resources/_common/dat/empires2_x1_p1.dat"
+
+  [empires2_x1_p1dat.map]
+  91f7370b75b2fadf238b25f6fdd2f43a88a1f01ea022cd6086e44f43 = "5.8"

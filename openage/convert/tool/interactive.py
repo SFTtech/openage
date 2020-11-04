@@ -10,10 +10,11 @@ import readline  # pylint: disable=unused-import
 from ...log import warn, info
 from ...util.fslike.directory import Directory
 from ..service.init.mount_asset_dirs import mount_asset_dirs
+from ..service.init.version_detect import create_version_objects
 from .subtool.version_select import get_game_version
 
 
-def interactive_browser(srcdir=None):
+def interactive_browser(cfg, srcdir=None):
     """
     launch an interactive view for browsing the original
     archives.
@@ -25,7 +26,14 @@ def interactive_browser(srcdir=None):
 
     # the variables are actually used, in the interactive prompt.
     # pylint: disable=possibly-unused-variable
-    game_version = get_game_version(srcdir)
+
+    # Initialize game versions data
+
+    auxiliary_files_dir = cfg / "converter" / "games"
+    avail_game_eds, avail_game_exps = create_version_objects(auxiliary_files_dir)
+
+    # Acquire game version info
+    game_version = get_game_version(srcdir, avail_game_eds, avail_game_exps)
     data = mount_asset_dirs(srcdir, game_version)
 
     if not data:

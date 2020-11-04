@@ -65,7 +65,7 @@ def main(args, error):
                 prev_source_dir_path = file_obj.read().strip()
         except FileNotFoundError:
             prev_source_dir_path = None
-        used_asset_path = convert_assets(root["assets"], args,
+        used_asset_path = convert_assets(root["assets"], root["cfg"], args,
                                          prev_source_dir_path=prev_source_dir_path)
         if used_asset_path:
             # Remember the asset location

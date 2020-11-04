@@ -3,7 +3,6 @@
 # TODO pylint: disable=C,R
 
 from .....entity_object.conversion.genie_structure import GenieStructure
-from ....init.game_version import GameEdition
 from ....read.member_access import READ_GEN
 from ....read.value_members import MemberTypes as StorageType
 
@@ -19,7 +18,7 @@ class PlayerColor(GenieStructure):
         Return the members in this struct.
         """
 
-        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+        if game_version[0].game_id not in ("ROR", "AOE1DE"):
             data_format = [
                 (READ_GEN, "id", StorageType.ID_MEMBER, "int32_t"),
                 # palette index offset, where the 8 player colors start

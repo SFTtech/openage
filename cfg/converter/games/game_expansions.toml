@@ -1,0 +1,31 @@
+# game expansion config file for openage
+
+file_version = "1.0"
+
+[AFRI_KING]
+name = "African Kingdoms (HD)"
+game_edition_id = "AFRI_KING"
+support = "nope"
+targetmod = [ "aoe2-ak", "aoe2-ak-graphics" ]
+
+  [AFRI_KING.mediapaths]
+  graphics = [ "resources/_common/slp/" ]
+  sounds = [ "resources/_common/sound/" ]
+  interface = [ "resources/_common/drs/interface/" ]
+  terrain = [ "resources/_common/terrain/" ]
+
+[SWGB_CC]
+name = "Clone Campaigns"
+game_edition_id = "SWGB_CC"
+support = "yes"
+targetmod = [ "swgb-cc", "swgb-cc-graphics" ]
+
+  [SWGB_CC.mediapaths]
+  datfile = [ "Game/Data/genie_x1.dat" ]
+  gamedata = [ "Game/Data/genie_x1.dat" ]
+  graphics = [ "Game/Data/graphics_x1.drs" ]
+  language = [ "Game/language_x1.dll" ]
+  palettes = [ "Game/Data/interfac_x1.drs" ]
+  sounds = [ "Game/Data/sounds_x1.drs" ]
+  interface = [ "Game/Data/interfac_x1.drs" ]
+  terrain = [ "Game/Data/terrain_x1.drs" ]

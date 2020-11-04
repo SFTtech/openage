@@ -3,7 +3,6 @@
 # TODO pylint: disable=C,R
 
 from .....entity_object.conversion.genie_structure import GenieStructure
-from ....init.game_version import GameEdition
 from ....read.member_access import READ, READ_GEN, SKIP
 from ....read.read_members import SubdataMember, EnumLookupMember
 from ....read.value_members import MemberTypes as StorageType
@@ -85,7 +84,7 @@ class GraphicAttackSound(GenieStructure):
         """
         Return the members in this struct.
         """
-        if game_version[0] is GameEdition.AOE2DE:
+        if game_version[0].game_id == "AOE2DE":
             data_format = [
                 (READ_GEN, "sound_props", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=DE2SoundProp,
@@ -117,7 +116,7 @@ class Graphic(GenieStructure):
         data_format = []
 
         # internal name: e.g. ARRG2NNE = archery range feudal Age north european
-        if game_version[0] in (GameEdition.AOE1DE, GameEdition.AOE2DE):
+        if game_version[0].game_id in ("AOE1DE", "AOE2DE"):
             data_format.extend([
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
@@ -126,18 +125,18 @@ class Graphic(GenieStructure):
                 (READ, "filename_len", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_GEN, "filename", StorageType.STRING_MEMBER, "char[filename_len]"),
             ])
-            if game_version[0] is GameEdition.AOE2DE:
+            if game_version[0].game_id == "AOE2DE":
                 data_format.extend([
                     (SKIP, "particle_effect_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                     (READ, "particle_effect_name_len", StorageType.INT_MEMBER, "uint16_t"),
                     (READ_GEN, "particle_effect_name", StorageType.STRING_MEMBER, "char[particle_effect_name_len]"),
                 ])
-            if game_version[0] is GameEdition.AOE1DE:
+            if game_version[0].game_id == "AOE1DE":
                 data_format.extend([
                     (READ_GEN, "first_frame", StorageType.ID_MEMBER, "uint16_t"),
                 ])
 
-        elif game_version[0] is GameEdition.SWGB:
+        elif game_version[0].game_id == "SWGB":
             data_format.extend([
                 (READ_GEN, "name", StorageType.STRING_MEMBER, "char[25]"),
                 (READ_GEN, "filename", StorageType.STRING_MEMBER, "char[25]"),
@@ -184,7 +183,7 @@ class Graphic(GenieStructure):
             (READ_GEN, "sound_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0] is GameEdition.AOE2DE:
+        if game_version[0].game_id == "AOE2DE":
             data_format.extend([
                 (READ_GEN, "wwise_sound_id", StorageType.ID_MEMBER, "uint32_t"),
             ])
@@ -201,7 +200,7 @@ class Graphic(GenieStructure):
             (READ_GEN, "mirroring_mode", StorageType.ID_MEMBER, "int8_t"),
         ])
 
-        if game_version[0] not in (GameEdition.ROR, GameEdition.AOE1DE):
+        if game_version[0].game_id not in ("ROR", "AOE1DE"):
             # sprite editor thing for AoK
             data_format.append((SKIP, "editor_flag", StorageType.BOOLEAN_MEMBER, "int8_t"))
 

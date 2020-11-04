@@ -6,11 +6,12 @@ import hashlib
 import math
 import struct
 
+from openage.convert.value_object.init.game_version import GameEdition
+
 from ....util.strings import decode_until_null
 from ...deprecated.struct_definition import (StructDefinition, vararray_match,
                                              integer_match)
 from ...deprecated.util import struct_type_lookup
-from ...value_object.init.game_version import GameEdition
 from ...value_object.read.member_access import READ, READ_GEN, READ_UNKNOWN, NOREAD_EXPORT, SKIP
 from ...value_object.read.read_members import (IncludeMembers, ContinueReadMember,
                                                MultisubtypeMember, GroupMember, SubdataMember,
@@ -502,13 +503,18 @@ class GenieStructure:
     def structs(cls):
         """
         create struct definitions for this class and its subdata references.
+
+        TODO: Remove from buildsystem
         """
 
         ret = list()
         self_member_count = 0
 
+        # dummy game edition that represents AoC
+        dummy = GameEdition("", "AoC", "yes", [], [], [], [])
+
         # acquire all struct members, including the included members
-        members = cls.get_data_format((GameEdition.AOC, []),
+        members = cls.get_data_format((dummy, []),
                                       allowed_modes=(True, SKIP, READ_GEN, NOREAD_EXPORT),
                                       flatten_includes=False)
 

@@ -6,14 +6,14 @@ TODO: Version selection.
 """
 from ....log import warn, info
 from ...service.init.version_detect import iterate_game_versions
-from ...value_object.init.game_version import GameEdition, Support
+from ...value_object.init.game_version import Support
 
 
-def get_game_version(srcdir):
+def get_game_version(srcdir, avail_game_eds, avail_game_exps):
     """
     Mount the input folders for conversion.
     """
-    game_version = iterate_game_versions(srcdir)
+    game_version = iterate_game_versions(srcdir, avail_game_eds, avail_game_exps)
     if not game_version:
         warn("No valid game version(s) could not be detected in %s", srcdir)
 
@@ -42,7 +42,7 @@ def get_game_version(srcdir):
     # inform about supported versions
     if no_support:
         warn("You need at least one of:")
-        for edition in GameEdition:
+        for edition in avail_game_eds:
             if edition.support == Support.yes:
                 warn(" * \x1b[34m%s\x1b[m", edition)
 

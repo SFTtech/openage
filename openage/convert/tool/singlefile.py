@@ -9,7 +9,6 @@ from pathlib import Path
 from ...log import info
 from ...util.fslike.directory import Directory
 from ..entity_object.export.texture import Texture
-from ..value_object.init.game_version import GameEdition
 from ..value_object.read.media.colortable import ColorTable
 from ..value_object.read.media.drs import DRS
 
@@ -109,7 +108,7 @@ def read_palettes(palettes_path):
         # open from drs archive
         # TODO: Also allow SWGB's DRS files
         palette_file = Path(palettes_path).open("rb")
-        game_version = (GameEdition.AOC, [])
+        game_version = ("AOC", [])
         palette_dir = DRS(palette_file, game_version)
 
         info("parsing palette data...")
@@ -158,7 +157,7 @@ def read_slp_in_drs_file(drs, slp_path, output_path, palettes):
 
     # open from drs archive
     # TODO: Also allow SWGB's DRS files
-    game_version = (GameEdition.AOC, [])
+    game_version = ("AOC", [])
     drs_file = DRS(drs, game_version)
 
     info("opening slp in drs '%s:%s'...", drs.name, slp_path)
@@ -264,7 +263,7 @@ def read_wav_in_drs_file(drs, wav_path, output_path):
 
     # open from drs archive
     # TODO: Also allow SWGB's DRS files
-    game_version = (GameEdition.AOC, [])
+    game_version = ("AOC", [])
     drs_file = DRS(drs, game_version)
 
     info("opening wav in drs '%s:%s'...", drs.name, wav_path)

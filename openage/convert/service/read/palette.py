@@ -3,7 +3,6 @@
 """
 Module for reading palette files.
 """
-from ...value_object.init.game_version import GameEdition
 from ...value_object.read.media.colortable import ColorTable
 from ...value_object.read.media_types import MediaType
 
@@ -16,7 +15,7 @@ def get_palettes(srcdir, game_version, index=None):
 
     palettes = {}
 
-    if game_edition in (GameEdition.ROR, GameEdition.AOC, GameEdition.SWGB, GameEdition.HDEDITION):
+    if game_edition.game_id in ("ROR", "AOC", "SWGB", "HDEDITION"):
         if index:
             palette_path = "%s/%s.bina" % (MediaType.PALETTES.value, str(index))
             palette_file = srcdir[palette_path]
@@ -35,11 +34,11 @@ def get_palettes(srcdir, game_version, index=None):
 
                     palettes[palette_id] = palette
 
-            if game_edition is GameEdition.HDEDITION:
+            if game_edition.game_id == "HDEDITION":
                 # TODO: HD edition has extra palettes in the dat folder
                 pass
 
-    elif game_edition in (GameEdition.AOE1DE, GameEdition.AOE2DE):
+    elif game_edition.game_id in ("AOE1DE", "AOE2DE"):
         # Parse palettes.conf file and save the ids/paths
         conf_filepath = "%s/palettes.conf" % (MediaType.PALETTES.value)
         conf_file = srcdir[conf_filepath].open('rb')

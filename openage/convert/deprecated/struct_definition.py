@@ -5,7 +5,8 @@
 from collections import OrderedDict
 import re
 
-from ..value_object.init.game_version import GameEdition
+from openage.convert.value_object.init.game_version import GameEdition
+
 from ..value_object.read.member_access import SKIP, READ_GEN, NOREAD_EXPORT
 from ..value_object.read.read_members import IncludeMembers, StringMember,\
     CharArrayMember, NumberMember, ReadMember, RefMember, ArrayMember
@@ -58,7 +59,10 @@ class StructDefinition:
         self.inherited_members = list()
         self.parent_classes = list()
 
-        target_members = target.get_data_format((GameEdition.AOC, []),
+        # dummy game edition that represents AoC
+        dummy = GameEdition("", "AoC", "yes", [], [], [], [])
+
+        target_members = target.get_data_format((dummy, []),
                                                 allowed_modes=(True, SKIP, READ_GEN, NOREAD_EXPORT),
                                                 flatten_includes=True
                                                 )
@@ -115,7 +119,7 @@ class StructDefinition:
             if is_parent:
                 self.inherited_members.append(member_name)
 
-        members = target.get_data_format((GameEdition.AOC, []), flatten_includes=False)
+        members = target.get_data_format((dummy, []), flatten_includes=False)
         for _, _, _, _, member_type in members:
             if isinstance(member_type, IncludeMembers):
                 self.parent_classes.append(member_type.cls)

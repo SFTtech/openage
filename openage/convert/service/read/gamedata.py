@@ -9,7 +9,6 @@ from tempfile import gettempdir
 from zlib import decompress
 
 from ....log import spam, dbg, info, warn
-from ...value_object.init.game_version import GameEdition, GameExpansion
 from ...value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
 from ...value_object.read.media_types import MediaType
 
@@ -18,11 +17,11 @@ def get_gamespec(srcdir, game_version, dont_pickle):
     """
     Reads empires.dat file.
     """
-    if game_version[0] in (GameEdition.ROR, GameEdition.AOC, GameEdition.AOE2DE):
+    if game_version[0] .game_id in ("ROR", "AOC", "AOE2DE"):
         filepath = srcdir.joinpath(game_version[0].media_paths[MediaType.DATFILE][0])
 
-    elif game_version[0] is GameEdition.SWGB:
-        if GameExpansion.SWGB_CC in game_version[1]:
+    elif game_version[0] .game_id == "SWGB":
+        if "SWGB_CC" in [expansion.game_id for expansion in game_version[1]]:
             filepath = srcdir.joinpath(game_version[1][0].media_paths[MediaType.DATFILE][0])
 
         else:

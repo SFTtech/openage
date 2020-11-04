@@ -12,7 +12,6 @@ from ..service.read.gamedata import get_gamespec
 from ..service.read.palette import get_palettes
 from ..service.read.register_media import get_existing_graphics
 from ..service.read.string_resource import get_string_resources
-from ..value_object.init.game_version import GameEdition, GameExpansion
 from ..value_object.read.media.blendomatic import Blendomatic
 from ..value_object.read.media_types import MediaType
 
@@ -96,10 +95,10 @@ def convert_metadata(args):
     for modpack in modpacks:
         ModpackExporter.export(modpack, args)
 
-    if args.game_version[0] not in (GameEdition.ROR, GameEdition.AOE2DE):
+    if args.game_version[0].game_id not in ("ROR", "AOE2DE"):
         yield "blendomatic.dat"
 
-        if args.game_version[0] is GameEdition.SWGB:
+        if args.game_version[0].game_id == "SWGB":
             blend_mode_count = gamespec[0]["blend_mode_count_swgb"].get_value()
             blend_data = get_blendomatic_data(args, blend_mode_count)
 
@@ -137,20 +136,20 @@ def get_converter(game_version):
     game_edition = game_version[0]
     game_expansions = game_version[1]
 
-    if game_edition is GameEdition.ROR:
+    if game_edition.game_id == "ROR":
         from ..processor.conversion.ror.processor import RoRProcessor
         return RoRProcessor
 
-    if game_edition is GameEdition.AOC:
+    if game_edition.game_id == "AOC":
         from ..processor.conversion.aoc.processor import AoCProcessor
         return AoCProcessor
 
-    if game_edition is GameEdition.AOE2DE:
+    if game_edition.game_id == "AOE2DE":
         from ..processor.conversion.de2.processor import DE2Processor
         return DE2Processor
 
-    if game_edition is GameEdition.SWGB:
-        if GameExpansion.SWGB_CC in game_expansions:
+    if game_edition.game_id == "SWGB":
+        if "SWGB_CC" in [expansion.game_id for expansion in game_expansions]:
             from ..processor.conversion.swgbcc.processor import SWGBCCProcessor
             return SWGBCCProcessor
 
