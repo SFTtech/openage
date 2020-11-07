@@ -24,7 +24,9 @@ struct slp_header {
 Python format: `Struct("< 4s i 24s")`
 
 ### Header (since version 4.0X)
-Age of Empires 1: Definitive Edition SLPs (v4.0) use a differently structured header:
+Age of Empires 1: Definitive Edition SLPs (v4.0 and v4.1) use a differently structured header.
+
+Note that SLPs with version v4.2 or higher need to be decompressed first (see section about the [compressed format](#compressed-format-since-version-42p)).
 
 Length   | Type    | Description             | Example
 ---------|---------|-------------------------|--------

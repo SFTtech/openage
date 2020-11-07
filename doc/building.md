@@ -34,6 +34,7 @@ Dependency list:
       A   numpy
       A   python imaging library (PIL) -> pillow
      RA   toml
+     RA   lz4
     CR    opengl >=3.3
     CR    libepoxy
     CR    libpng

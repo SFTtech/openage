@@ -12,7 +12,7 @@ brew install qt5
 brew install -cc=clang llvm@8
 export PATH="/usr/local/opt/llvm@8/bin:$PATH:/usr/local/lib:/usr/local/opt/llvm/bin"
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig:/usr/local/lib"
-pip3 install pygments cython numpy pillow pyreadline toml jinja2
+pip3 install pygments cython numpy lz4 pillow pyreadline toml jinja2
 ```
 
 You will also need [nyan](https://github.com/SFTtech/nyan/blob/master/doc/building.md) and its dependencies:
