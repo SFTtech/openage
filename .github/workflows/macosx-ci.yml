@@ -1,31 +1,62 @@
-name: MacOSX-CI
+name: macOS-CI
 on: [push, pull_request]
 
 jobs:
-  macosx-build:
+  # https://docs.github.com/en/actions/reference/software-installed-on-github-hosted-runners
+  # we install stuff not already there
+  macos-build:
     runs-on: macOS-latest
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+
+      # caching dependencies and ccache
+      # https://docs.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows
+      - name: Get timestamp
+        id: timestamp
+        shell: cmake -P {0}
+        run: |
+          string(TIMESTAMP current_date "%Y-%m-%d-%H:%M:%S" UTC)
+          message("::set-output name=timestamp::${current_date}")
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        id: cache-deps
+        with:
+          path: |
+            ~/Library/Caches/pip
+            ~/Library/Caches/Homebrew
+          key: '${{ runner.os }}-deps-${{ steps.timestamp.outputs.timestamp }}'
+          restore-keys: |
+            ${{ runner.os }}-deps-
+      - name: Cache ccache dir
+        uses: actions/cache@v2
+        id: cache-ccache
+        with:
+          path: '${{ github.workspace }}/.ccache'
+          key: '${{ runner.os }}-ccache-${{ steps.timestamp.outputs.timestamp }}'
+          restore-keys: |
+            ${{ runner.os }}-ccache-
+
       - name: Brew update-reset
         run: brew update-reset
       - name: Brew update
         run: brew update
       - name: Brew install DeJaVu fonts
         run: brew tap homebrew/cask-fonts && brew cask install font-dejavu
-      - name: Upgrade cmake
-        run: brew upgrade cmake
+      - name: Install environment helpers with homebrew
+        run: brew install ccache
       - name: Install dependencies with homebrew
-        run: brew install freetype cmake python3 qt5 flex make libepoxy fontconfig harfbuzz sdl2 sdl2_image opus libogg opusfile libpng eigen
-      - name: Install LLVM
-        run: brew install -cc=clang llvm@8
-      - name: Setting environment variables
-        run: export PATH="/usr/local/opt/llvm@8/bin:$PATH:/usr/local/lib:/usr/local/opt/llvm/bin" && export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig:/usr/local/lib"
-      - name: Install python3 dependencies
-        run: pip3 install pygments cython numpy pillow pyreadline jinja2
-      - name: Configure 
-        run: ./configure --compiler=clang++ --mode=debug --download-nyan 
+        run: brew install libepoxy freetype fontconfig harfbuzz sdl2 sdl2_image opus opusfile qt5 libogg libpng eigen
+      - name: Install nyan dependencies with homebrew
+        run: brew install flex make
+      - name: Install python3 packages
+        # cython, numpy and pygments are in homebrew,
+        # but "cython is keg-only, which means it was not symlinked into /usr/local"
+        # numpy pulls gcc as dep? and pygments doesn't work.
+        run: pip3 install --upgrade cython numpy jinja2 pillow pygments toml
+      - name: Configure
+        run: ./configure --compiler=clang++ --mode=debug --ccache --download-nyan
       - name: Build
-        run: make
+        run: make -j$(sysctl -n hw.ncpu) VERBOSE=1
       - name: Test
         run: make test
