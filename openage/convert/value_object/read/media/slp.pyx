@@ -3,9 +3,10 @@
 # cython: profile=False
 
 from enum import Enum
+import numpy
 from struct import Struct, unpack_from
 
-import numpy
+import lz4.block
 
 from .....log import spam, dbg
 
@@ -102,8 +103,29 @@ class SLP:
     # };
     slp_frame_info = Struct(endianness + "I I I I i i i i")
 
+    # struct slp42_uncompressed_size {
+    #   unsigned int uncompressed_size;
+    # };
+    slp42_uncompressed_size = Struct(endianness + "I")
+
     def __init__(self, data):
         self.version = SLP.slp_version.unpack_from(data)[0]
+        self.compressed = False
+
+        if self.version == b'4.2P':
+            self.compressed = True
+
+            # Extract LZ4 container
+            uncompressed_size = SLP.slp42_uncompressed_size.unpack_from(data, SLP.slp_version.size)
+
+            dbg("Decompressing SLP")
+            dbg(" version:               %s",  self.version.decode('ascii'))
+            dbg(" uncompressed size:     %sB", uncompressed_size)
+
+            data = lz4.block.decompress(data[4:])
+
+            # Read decompressed version
+            self.version = SLP.slp_version.unpack_from(data)[0]
 
         if self.version in (b'4.0X', b'4.1X'):
             header = SLP.slp_header_v4.unpack_from(data, SLP.slp_version.size)
