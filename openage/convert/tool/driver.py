@@ -105,7 +105,7 @@ def convert_metadata(args):
         else:
             blend_data = get_blendomatic_data(args)
 
-        blend_data.save(args.targetdir, "blendomatic")
+        blend_data.save(args.targetdir, "blendomatic", args.compression_level)
         # data_formatter.add_data(blend_data.dump("blending_modes"))
 
     yield "player color palette"

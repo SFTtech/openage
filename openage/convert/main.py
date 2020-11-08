@@ -157,6 +157,10 @@ def init_subparser(cli):
         "--id", type=int, default=None,
         help="only convert files with this id (used for debugging..)")
 
+    cli.add_argument(
+        "--compression-level", type=int, default=1, choices=[0, 1, 2, 3],
+        help="set PNG compression level")
+
 
 def main(args, error):
     """ CLI entry point """

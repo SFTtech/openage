@@ -59,10 +59,15 @@ class ModpackExporter:
 
             kwargs = {}
 
-            if media_type in (MediaType.GRAPHICS, MediaType.TERRAIN):
+            if media_type is MediaType.TERRAIN:
                 # Game version and palettes
                 kwargs["game_version"] = args.game_version
                 kwargs["palettes"] = args.palettes
+                kwargs["compression_level"] = args.compression_level
+
+            elif media_type is MediaType.GRAPHICS:
+                kwargs["palettes"] = args.palettes
+                kwargs["compression_level"] = args.compression_level
 
             for request in cur_export_requests:
                 request.save(sourcedir, modpack_dir, **kwargs)

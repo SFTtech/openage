@@ -273,7 +273,7 @@ class Blendomatic(GenieStructure):
     def structs(cls):
         return [StructDefinition(cls)]
 
-    def save(self, fslikeobj, path):
+    def save(self, fslikeobj, path, compression_level):
         """
         Save the blending mask textures to disk.
         """
@@ -281,7 +281,7 @@ class Blendomatic(GenieStructure):
         for idx, texture in enumerate(self.get_textures()):
             name = "mode%02d.png" % idx
             dbg("saving blending mode %02d texture -> %s", idx, name)
-            texture.save(fslikeobj, path + '/' + name)
+            texture.save(fslikeobj, path + '/' + name, compression_level)
 
         dbg("blending masks successfully exported")
 
