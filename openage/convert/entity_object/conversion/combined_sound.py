@@ -71,10 +71,10 @@ class CombinedSound:
         is expected to be in the modpack.
         """
         if len(self._refs) > 1:
-            return "../shared/sounds/%s.opus" % (self.filename)
+            return f"../shared/sounds/{self.filename}.opus"
 
         if len(self._refs) == 1:
-            return "./sounds/%s.opus" % (self.filename)
+            return f"./sounds/{self.filename}.opus"
 
         return None
 
@@ -86,7 +86,7 @@ class CombinedSound:
             return "data/game_entity/shared/sounds/"
 
         if len(self._refs) == 1:
-            return "%s%s" % (self._refs[0].get_file_location()[0], "sounds/")
+            return f"{self._refs[0].get_file_location()[0]}{'sounds/'}"
 
         return None
 
@@ -97,4 +97,4 @@ class CombinedSound:
         self._refs.remove(referer)
 
     def __repr__(self):
-        return "CombinedSound<%s>" % (self.head_sound_id)
+        return f"CombinedSound<{self.head_sound_id}>"

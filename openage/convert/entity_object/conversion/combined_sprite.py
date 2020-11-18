@@ -85,10 +85,10 @@ class CombinedSprite:
         is expected to be in the modpack.
         """
         if len(self._refs) > 1:
-            return "../shared/graphics/%s.sprite" % (self.filename)
+            return f"../shared/graphics/{self.filename}.sprite"
 
         if len(self._refs) == 1:
-            return "./graphics/%s.sprite" % (self.filename)
+            return f"./graphics/{self.filename}.sprite"
 
         return None
 
@@ -122,9 +122,9 @@ class CombinedSprite:
             return "data/game_entity/shared/graphics/"
 
         if len(self._refs) == 1:
-            return "%s%s" % (self._refs[0].get_file_location()[0], "graphics/")
+            return f"{self._refs[0].get_file_location()[0]}{'graphics/'}"
 
         return None
 
     def __repr__(self):
-        return "CombinedSprite<%s>" % (self.head_sprite_id)
+        return f"CombinedSprite<{self.head_sprite_id}>"

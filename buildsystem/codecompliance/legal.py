@@ -119,7 +119,7 @@ def create_year_fix(filename, file_content, expected_end_year,
 
         writefile(filename, fixed_file)
 
-        return "Copyright for %s was fixed." % filename
+        return f"Copyright for {filename} was fixed."
 
     return year_fix_function
 

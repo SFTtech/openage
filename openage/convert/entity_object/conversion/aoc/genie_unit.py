@@ -34,7 +34,7 @@ class GenieUnitObject(ConverterObject):
         self.data = full_data_set
 
     def __repr__(self):
-        return "GenieUnitObject<%s>" % (self.get_id())
+        return f"GenieUnitObject<{self.get_id()}>"
 
 
 class GenieGameEntityGroup(ConverterObjectGroup):
@@ -536,7 +536,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         return None
 
     def __repr__(self):
-        return "GenieGameEntityGroup<%s>" % (self.get_id())
+        return f"GenieGameEntityGroup<{self.get_id()}>"
 
 
 class GenieUnitLineGroup(GenieGameEntityGroup):
@@ -594,7 +594,7 @@ class GenieUnitLineGroup(GenieGameEntityGroup):
         return enabling_research_id
 
     def __repr__(self):
-        return "GenieUnitLineGroup<%s>" % (self.get_id())
+        return f"GenieUnitLineGroup<{self.get_id()}>"
 
 
 class GenieBuildingLineGroup(GenieGameEntityGroup):
@@ -687,7 +687,7 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         return enabling_research_id
 
     def __repr__(self):
-        return "GenieBuildingLineGroup<%s>" % (self.get_id())
+        return f"GenieBuildingLineGroup<{self.get_id()}>"
 
 
 class GenieStackBuildingGroup(GenieBuildingLineGroup):
@@ -779,7 +779,7 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
         return None
 
     def __repr__(self):
-        return "GenieStackBuildingGroup<%s>" % (self.get_id())
+        return f"GenieStackBuildingGroup<{self.get_id()}>"
 
 
 class GenieUnitTransformGroup(GenieUnitLineGroup):
@@ -851,7 +851,7 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
         return self.transform_unit
 
     def __repr__(self):
-        return "GenieUnitTransformGroup<%s>" % (self.get_id())
+        return f"GenieUnitTransformGroup<{self.get_id()}>"
 
 
 class GenieMonkGroup(GenieUnitLineGroup):
@@ -896,7 +896,7 @@ class GenieMonkGroup(GenieUnitLineGroup):
         return self.switch_unit
 
     def __repr__(self):
-        return "GenieMonkGroup<%s>" % (self.get_id())
+        return f"GenieMonkGroup<{self.get_id()}>"
 
 
 class GenieAmbientGroup(GenieGameEntityGroup):
@@ -918,7 +918,7 @@ class GenieAmbientGroup(GenieGameEntityGroup):
         return False
 
     def __repr__(self):
-        return "GenieAmbientGroup<%s>" % (self.get_id())
+        return f"GenieAmbientGroup<{self.get_id()}>"
 
 
 class GenieVariantGroup(GenieGameEntityGroup):
@@ -936,7 +936,7 @@ class GenieVariantGroup(GenieGameEntityGroup):
         return self.contains_entity(object_id)
 
     def __repr__(self):
-        return "GenieVariantGroup<%s>" % (self.get_id())
+        return f"GenieVariantGroup<{self.get_id()}>"
 
 
 class GenieUnitTaskGroup(GenieUnitLineGroup):
@@ -1009,7 +1009,7 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         return None
 
     def __repr__(self):
-        return "GenieUnitTaskGroup<%s>" % (self.get_id())
+        return f"GenieUnitTaskGroup<{self.get_id()}>"
 
 
 class GenieVillagerGroup(GenieUnitLineGroup):
@@ -1151,7 +1151,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
         return None
 
     def __repr__(self):
-        return "GenieVillagerGroup<%s>" % (self.get_id())
+        return f"GenieVillagerGroup<{self.get_id()}>"
 
 
 class GenieGarrisonMode(Enum):

@@ -48,4 +48,4 @@ def find_issues(dirname):
                 raise HeaderIssue("No valid header guard found")
 
         except HeaderIssue as exc:
-            yield ("header guard issue in {}".format(fname), exc.args[0], None)
+            yield (f"header guard issue in {fname}", exc.args[0], None)

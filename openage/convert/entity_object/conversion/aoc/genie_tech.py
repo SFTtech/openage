@@ -35,7 +35,7 @@ class GenieTechObject(ConverterObject):
         self.data = full_data_set
 
     def __repr__(self):
-        return "GenieTechObject<%s>" % (self.get_id())
+        return f"GenieTechObject<{self.get_id()}>"
 
 
 class GenieTechEffectBundleGroup(ConverterObjectGroup):
@@ -157,7 +157,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         return False
 
     def __repr__(self):
-        return "GenieTechEffectBundleGroup<%s>" % (self.get_id())
+        return f"GenieTechEffectBundleGroup<{self.get_id()}>"
 
 
 class StatUpgrade(GenieTechEffectBundleGroup):
@@ -166,7 +166,7 @@ class StatUpgrade(GenieTechEffectBundleGroup):
     """
 
     def __repr__(self):
-        return "StatUpgrade<%s>" % (self.get_id())
+        return f"StatUpgrade<{self.get_id()}>"
 
 
 class AgeUpgrade(GenieTechEffectBundleGroup):
@@ -196,7 +196,7 @@ class AgeUpgrade(GenieTechEffectBundleGroup):
         self.age_id = age_id
 
     def __repr__(self):
-        return "AgeUpgrade<%s>" % (self.get_id())
+        return f"AgeUpgrade<{self.get_id()}>"
 
 
 class UnitLineUpgrade(GenieTechEffectBundleGroup):
@@ -243,7 +243,7 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
         return self.upgrade_target_id
 
     def __repr__(self):
-        return "UnitLineUpgrade<%s>" % (self.get_id())
+        return f"UnitLineUpgrade<{self.get_id()}>"
 
 
 class BuildingLineUpgrade(GenieTechEffectBundleGroup):
@@ -284,7 +284,7 @@ class BuildingLineUpgrade(GenieTechEffectBundleGroup):
         return self.upgrade_target_id
 
     def __repr__(self):
-        return "BuildingLineUpgrade<%s>" % (self.get_id())
+        return f"BuildingLineUpgrade<{self.get_id()}>"
 
 
 class UnitUnlock(GenieTechEffectBundleGroup):
@@ -326,7 +326,7 @@ class UnitUnlock(GenieTechEffectBundleGroup):
         return self.data.unit_lines_vertical_ref[self.line_id]
 
     def __repr__(self):
-        return "UnitUnlock<%s>" % (self.get_id())
+        return f"UnitUnlock<{self.get_id()}>"
 
 
 class BuildingUnlock(GenieTechEffectBundleGroup):
@@ -368,7 +368,7 @@ class BuildingUnlock(GenieTechEffectBundleGroup):
         return self.data.building_lines[self.head_unit_id]
 
     def __repr__(self):
-        return "BuildingUnlock<%s>" % (self.get_id())
+        return f"BuildingUnlock<{self.get_id()}>"
 
 
 class InitiatedTech(GenieTechEffectBundleGroup):
@@ -402,7 +402,7 @@ class InitiatedTech(GenieTechEffectBundleGroup):
         return self.building_id
 
     def __repr__(self):
-        return "InitiatedTech<%s>" % (self.get_id())
+        return f"InitiatedTech<{self.get_id()}>"
 
 
 class NodeTech(GenieTechEffectBundleGroup):
@@ -412,7 +412,7 @@ class NodeTech(GenieTechEffectBundleGroup):
     """
 
     def __repr__(self):
-        return "NodeTech<%s>" % (self.get_id())
+        return f"NodeTech<{self.get_id()}>"
 
 
 class CivBonus(GenieTechEffectBundleGroup):
@@ -458,7 +458,7 @@ class CivBonus(GenieTechEffectBundleGroup):
         return None
 
     def __repr__(self):
-        return "CivBonus<%s>" % (self.get_id())
+        return f"CivBonus<{self.get_id()}>"
 
 
 class CivTeamBonus(ConverterObjectGroup):
@@ -500,7 +500,7 @@ class CivTeamBonus(ConverterObjectGroup):
         return self.civ_id
 
     def __repr__(self):
-        return "CivTeamBonus<%s>" % (self.get_id())
+        return f"CivTeamBonus<{self.get_id()}>"
 
 
 class CivTechTree(ConverterObjectGroup):
@@ -550,4 +550,4 @@ class CivTechTree(ConverterObjectGroup):
         return self.civ_id
 
     def __repr__(self):
-        return "CivTechTree<%s>" % (self.get_id())
+        return f"CivTechTree<{self.get_id()}>"

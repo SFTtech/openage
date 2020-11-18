@@ -32,7 +32,7 @@ class GenieCivilizationObject(ConverterObject):
         self.data = full_data_set
 
     def __repr__(self):
-        return "GenieCivilizationObject<%s>" % (self.get_id())
+        return f"GenieCivilizationObject<{self.get_id()}>"
 
 
 class GenieCivilizationGroup(ConverterObjectGroup):
@@ -129,4 +129,4 @@ class GenieCivilizationGroup(ConverterObjectGroup):
         return []
 
     def __repr__(self):
-        return "GenieCivilizationGroup<%s>" % (self.get_id())
+        return f"GenieCivilizationGroup<{self.get_id()}>"

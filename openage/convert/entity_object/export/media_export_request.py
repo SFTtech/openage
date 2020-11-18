@@ -41,8 +41,7 @@ class MediaExportRequest(Observable):
         """
         Return the media type.
         """
-        raise NotImplementedError("%s has not implemented get_type()"
-                                  % (self))
+        raise NotImplementedError(f"{self} has not implemented get_type()")
 
     def save(self, sourcedir, exportdir, *args, **kwargs):
         """
@@ -54,8 +53,7 @@ class MediaExportRequest(Observable):
         :param exportdir: Relative path to the export directory.
         :type exportdir: ...util.fslike.path.Path
         """
-        raise NotImplementedError("%s has not implemented save()"
-                                  % (self))
+        raise NotImplementedError(f"{self} has not implemented save()")
 
     def set_source_filename(self, filename):
         """
@@ -65,8 +63,7 @@ class MediaExportRequest(Observable):
         :type filename: str
         """
         if not isinstance(filename, str):
-            raise ValueError("str expected as source filename, not %s" %
-                             type(filename))
+            raise ValueError(f"str expected as source filename, not {type(filename)}")
 
         self.source_filename = filename
 
@@ -78,8 +75,7 @@ class MediaExportRequest(Observable):
         :type filename: str
         """
         if not isinstance(filename, str):
-            raise ValueError("str expected as target filename, not %s" %
-                             type(filename))
+            raise ValueError(f"str expected as target filename, not {type(filename)}")
 
         self.target_filename = filename
 
@@ -91,8 +87,7 @@ class MediaExportRequest(Observable):
         :type targetdir: str
         """
         if not isinstance(targetdir, str):
-            raise ValueError("str expected as targetdir, not %s" %
-                             type(targetdir))
+            raise ValueError(f"str expected as targetdir, not {type(targetdir)}")
 
         self.targetdir = targetdir
 
@@ -200,7 +195,7 @@ class SoundMediaExportRequest(MediaExportRequest):
         soundata = encode(media_file)
 
         if isinstance(soundata, (str, int)):
-            raise Exception("opusenc failed: {}".format(soundata))
+            raise Exception(f"opusenc failed: {soundata}")
 
         with exportdir[self.targetdir, self.target_filename].open_w() as outfile:
             outfile.write(soundata)

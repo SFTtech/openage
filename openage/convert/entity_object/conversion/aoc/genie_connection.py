@@ -31,7 +31,7 @@ class GenieAgeConnection(ConverterObject):
         self.data = full_data_set
 
     def __repr__(self):
-        return "GenieAgeConnection<%s>" % (self.get_id())
+        return f"GenieAgeConnection<{self.get_id()}>"
 
 
 class GenieBuildingConnection(ConverterObject):
@@ -57,7 +57,7 @@ class GenieBuildingConnection(ConverterObject):
         self.data = full_data_set
 
     def __repr__(self):
-        return "GenieBuildingConnection<%s>" % (self.get_id())
+        return f"GenieBuildingConnection<{self.get_id()}>"
 
 
 class GenieTechConnection(ConverterObject):
@@ -83,7 +83,7 @@ class GenieTechConnection(ConverterObject):
         self.data = full_data_set
 
     def __repr__(self):
-        return "GenieTechConnection<%s>" % (self.get_id())
+        return f"GenieTechConnection<{self.get_id()}>"
 
 
 class GenieUnitConnection(ConverterObject):
@@ -109,4 +109,4 @@ class GenieUnitConnection(ConverterObject):
         self.data = full_data_set
 
     def __repr__(self):
-        return "GenieUnitConnection<%s>" % (self.get_id())
+        return f"GenieUnitConnection<{self.get_id()}>"

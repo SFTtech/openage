@@ -54,7 +54,7 @@ def writefile(filename, new_content):
     writes the file and update it in the cache.
     """
     if filename in BADUTF8FILES:
-        raise Exception("%s: cannot write due to utf8-errors." % filename)
+        raise Exception(f"{filename}: cannot write due to utf8-errors.")
 
     with open(filename, 'w') as fileobj:
         fileobj.write(new_content)

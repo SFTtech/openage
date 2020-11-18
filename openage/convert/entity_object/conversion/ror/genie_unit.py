@@ -70,7 +70,7 @@ class RoRUnitLineGroup(GenieUnitLineGroup):
         return self.enabling_research_id
 
     def __repr__(self):
-        return "RoRUnitLineGroup<%s>" % (self.get_id())
+        return f"RoRUnitLineGroup<{self.get_id()}>"
 
 
 class RoRBuildingLineGroup(GenieBuildingLineGroup):
@@ -118,7 +118,7 @@ class RoRBuildingLineGroup(GenieBuildingLineGroup):
         return self.enabling_research_id
 
     def __repr__(self):
-        return "RoRBuildingLineGroup<%s>" % (self.get_id())
+        return f"RoRBuildingLineGroup<{self.get_id()}>"
 
 
 class RoRAmbientGroup(GenieAmbientGroup):
@@ -146,7 +146,7 @@ class RoRAmbientGroup(GenieAmbientGroup):
         return None
 
     def __repr__(self):
-        return "RoRAmbientGroup<%s>" % (self.get_id())
+        return f"RoRAmbientGroup<{self.get_id()}>"
 
 
 class RoRVariantGroup(GenieVariantGroup):
@@ -173,7 +173,7 @@ class RoRVariantGroup(GenieVariantGroup):
         return None
 
     def __repr__(self):
-        return "RoRVariantGroup<%s>" % (self.get_id())
+        return f"RoRVariantGroup<{self.get_id()}>"
 
 
 class RoRUnitTaskGroup(GenieUnitTaskGroup):
@@ -238,7 +238,7 @@ class RoRUnitTaskGroup(GenieUnitTaskGroup):
         return self.enabling_research_id
 
     def __repr__(self):
-        return "RoRUnitTaskGroup<%s>" % (self.get_id())
+        return f"RoRUnitTaskGroup<{self.get_id()}>"
 
 
 class RoRVillagerGroup(GenieVillagerGroup):
@@ -254,4 +254,4 @@ class RoRVillagerGroup(GenieVillagerGroup):
         return -1
 
     def __repr__(self):
-        return "RoRVillagerGroup<%s>" % (self.get_id())
+        return f"RoRVillagerGroup<{self.get_id()}>"

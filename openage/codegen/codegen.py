@@ -101,7 +101,7 @@ class CodegenDirWrapper(Wrapper):
         self.writes.clear()
 
     def __repr__(self):
-        return "CodegenDirWrapper({})".format(repr(self.obj))
+        return f"CodegenDirWrapper({repr(self.obj)})"
 
 
 def codegen(mode, input_dir, output_dir):
@@ -147,7 +147,7 @@ def codegen(mode, input_dir, output_dir):
             # write new content to file
             wpath.parent.mkdirs()
             with wpath.open('wb') as outfile:
-                print("\x1b[36mcodegen: %s\x1b[0m" % b'/'.join(parts).decode(errors='replace'))
+                print(f"[36mcodegen: {b'/'.join(parts).decode(errors='replace')}[0m")
                 outfile.write(data)
 
         elif mode == CodegenMode.dryrun:

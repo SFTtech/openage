@@ -28,11 +28,10 @@ class MetadataExport(Observer):
         :param exportdir: Relative path to the export directory.
         :type exportdir: ...util.fslike.path.Path
         """
-        raise NotImplementedError("%s has not implemented save()"
-                                  % (self))
+        raise NotImplementedError(f"{self} has not implemented save()")
 
     def __repr__(self):
-        return "MetadataExport<%s>" % (type(self))
+        return f"MetadataExport<{type(self)}>"
 
 
 class SpriteMetadataExport(MetadataExport):

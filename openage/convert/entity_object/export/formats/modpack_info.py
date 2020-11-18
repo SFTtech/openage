@@ -128,7 +128,7 @@ class ModpackInfo(DataDefinition):
             info_table["info"].update({"uid": uid})
 
         if not self.version:
-            raise Exception("%s: version needs to be defined before dumping." % (self))
+            raise Exception(f"{self}: version needs to be defined before dumping.")
 
         info_table["info"].update({"version": self.version})
 
@@ -174,7 +174,7 @@ class ModpackInfo(DataDefinition):
 
         output_dict.update(authors_table)
 
-        output_str = "# MODPACK INFO version %s\n\n" % (FILE_VERSION)
+        output_str = f"# MODPACK INFO version {FILE_VERSION}\n\n"
         output_str += toml.dumps(output_dict)
 
         return output_str
@@ -249,4 +249,4 @@ class ModpackInfo(DataDefinition):
         self.version = version
 
     def __repr__(self):
-        return "ModpackInfo<%s>" % (self.name)
+        return f"ModpackInfo<{self.name}>"

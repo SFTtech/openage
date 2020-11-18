@@ -24,7 +24,7 @@ class ParserError(Exception):
     Represents a fatal parsing error in PXDGenerator.
     """
     def __init__(self, filename, lineno, message):
-        super().__init__("{}:{} {}".format(filename, lineno, message))
+        super().__init__(f"{filename}:{lineno} {message}")
 
 
 class PXDGenerator:
@@ -435,8 +435,7 @@ def main():
         hdr_count = len(args.all_files)
         plural = "s" if hdr_count > 1 else ""
 
-        print("extracting pxd information "
-              "from {} header{}...".format(hdr_count, plural))
+        print(f"extracting pxd information from {hdr_count} header{plural}...")
 
     for filename in args.all_files:
         filename = Path(filename).resolve()
@@ -449,7 +448,7 @@ def main():
         pxdfile = out_cppdir / pxdfile_relpath
 
         if args.verbose:
-            print("creating '{}' for '{}':".format(pxdfile, filename))
+            print(f"creating '{pxdfile}' for '{filename}':")
 
         generator = PXDGenerator(filename)
 

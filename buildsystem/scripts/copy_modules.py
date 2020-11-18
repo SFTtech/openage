@@ -18,9 +18,9 @@ def copy_module(name, destination):
     """Copy the importable module 'name' to the 'destination' directory"""
     loader = importlib.util.find_spec(name).loader
     if not isinstance(loader, importlib.abc.FileLoader):
-        sys.exit("Loader for module %s is not handled" % (name))
+        sys.exit(f"Loader for module {name} is not handled")
 
-    print('Copying "%s" to "%s"' % (name, destination))
+    print(f'Copying "{name}" to "{destination}"')
     filename = loader.get_filename(name)
     if loader.is_package(name):
         pkgdir, _ = os.path.split(filename)

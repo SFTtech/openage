@@ -181,7 +181,7 @@ def main(args):
         plural = "s" if issues_count > 1 else ""
 
         if args.fix and auto_fixes:
-            remainfound = "remain%s" % plural
+            remainfound = f"remain{plural}"
         else:
             remainfound = ("were" if issues_count > 1 else "was") + " found"
 
@@ -189,7 +189,7 @@ def main(args):
               "".format(num=issues_count,
                         plural=plural,
                         remainfound=remainfound))
-
+                        
         if not args.fix and fixes_possible:
             print("When invoked with --fix, I can try"
                   "to automatically resolve some of the issues.\n")

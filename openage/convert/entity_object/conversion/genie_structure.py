@@ -308,7 +308,7 @@ class GenieStructure:
 
                 else:
                     raise Exception(
-                        "unknown data member definition %s for member '%s'" % (var_type, var_name))
+                        f"unknown data member definition {var_type} for member '{var_name}'")
 
                 if data_count < 0:
                     raise Exception("invalid length %d < 0 in %s for member '%s'" % (

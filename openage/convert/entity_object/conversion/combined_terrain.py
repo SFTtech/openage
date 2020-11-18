@@ -69,7 +69,7 @@ class CombinedTerrain:
         is expected to be in the modpack.
         """
         if len(self._refs) >= 1:
-            return "./graphics/%s.terrain" % (self.filename)
+            return f"./graphics/{self.filename}.terrain"
 
         return None
 
@@ -91,9 +91,9 @@ class CombinedTerrain:
         Returns the planned location of the definition file in the modpack.
         """
         if len(self._refs) >= 1:
-            return "%s%s" % (self._refs[0].get_file_location()[0], "graphics/")
+            return f"{self._refs[0].get_file_location()[0]}{'graphics/'}"
 
         return None
 
     def __repr__(self):
-        return "CombinedTerrain<%s>" % (self.slp_id)
+        return f"CombinedTerrain<{self.slp_id}>"

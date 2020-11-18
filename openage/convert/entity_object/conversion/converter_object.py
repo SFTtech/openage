@@ -101,7 +101,7 @@ class ConverterObject:
             if not isinstance(member_diff, NoDiffMember):
                 obj_diff.update({member_id: member_diff})
 
-        return ConverterObject("%s-%s-sdiff" % (self.obj_id, other.get_id()), members=obj_diff)
+        return ConverterObject(f"{self.obj_id}-{other.get_id()}-sdiff", members=obj_diff)
 
     def diff(self, other):
         """
@@ -116,7 +116,7 @@ class ConverterObject:
         for member_id, member in self.members.items():
             obj_diff.update({member_id: member.diff(other.get_member(member_id))})
 
-        return ConverterObject("%s-%s-diff" % (self.obj_id, other.get_id()), members=obj_diff)
+        return ConverterObject(f"{self.obj_id}-{other.get_id()}-diff", members=obj_diff)
 
     def __getitem__(self, key):
         """
@@ -126,7 +126,7 @@ class ConverterObject:
 
     def __repr__(self):
         raise NotImplementedError(
-            "return short description of the object %s" % (type(self)))
+            f"return short description of the object {type(self)}")
 
 
 class ConverterObjectGroup:
@@ -257,7 +257,7 @@ class ConverterObjectGroup:
             self.add_raw_api_object(subobject)
 
     def __repr__(self):
-        return "ConverterObjectGroup<%s>" % (self.group_id)
+        return f"ConverterObjectGroup<{self.group_id}>"
 
 
 class RawAPIObject:
@@ -458,8 +458,7 @@ class RawAPIObject:
         Set the target NyanObject for a patch.
         """
         if not self.is_patch():
-            raise Exception("Cannot link patch target: %s is not a patch"
-                            % (self))
+            raise Exception(f"Cannot link patch target: {self} is not a patch")
 
         if isinstance(self._patch_target, ForwardRef):
             target = self._patch_target.resolve()
@@ -518,7 +517,7 @@ class RawAPIObject:
         if self.nyan_object:
             return self.nyan_object
 
-        raise Exception("nyan object for %s has not been created yet" % (self))
+        raise Exception(f"nyan object for {self} has not been created yet")
 
     def is_ready(self):
         """
@@ -541,7 +540,7 @@ class RawAPIObject:
         :param suffix: File extension (defaults to "nyan")
         :type suffix: str
         """
-        self._filename = "%s.%s" % (filename, suffix)
+        self._filename = f"{filename}.{suffix}"
 
     def set_location(self, location):
         """
@@ -565,7 +564,7 @@ class RawAPIObject:
         self._patch_target = target
 
     def __repr__(self):
-        return "RawAPIObject<%s>" % (self.obj_id)
+        return f"RawAPIObject<{self.obj_id}>"
 
 
 class RawMemberPush:

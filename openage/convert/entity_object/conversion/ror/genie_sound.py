@@ -29,4 +29,4 @@ class RoRSound(GenieSound):
         return sound_ids
 
     def __repr__(self):
-        return "RoRSouns<%s>" % (self.get_id())
+        return f"RoRSouns<{self.get_id()}>"
