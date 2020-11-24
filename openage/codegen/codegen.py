@@ -147,7 +147,7 @@ def codegen(mode, input_dir, output_dir):
             # write new content to file
             wpath.parent.mkdirs()
             with wpath.open('wb') as outfile:
-                print(f"[36mcodegen: {b'/'.join(parts).decode(errors='replace')}[0m")
+                print("\x1b[36mcodegen: %s\x1b[0m" % b'/'.join(parts).decode(errors='replace'))
                 outfile.write(data)
 
         elif mode == CodegenMode.dryrun:
