@@ -80,12 +80,12 @@ class AoCUpgradeAbilitySubprocessor:
                 changed = True
 
         if changed:
-            patch_target_ref = "%s.%s" % (game_entity_name, ability_name)
+            patch_target_ref = f"{game_entity_name}.{ability_name}"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%s%sWrapper" % (game_entity_name, ability_name)
-            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+            wrapper_name = f"Change{game_entity_name}{ability_name}Wrapper"
+            wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -96,14 +96,14 @@ class AoCUpgradeAbilitySubprocessor:
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                     % (name_lookup_dict[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+                wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
                 wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
             # Nyan patch
-            nyan_patch_name = "Change%s%s" % (game_entity_name, ability_name)
-            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}{ability_name}"
+            nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
@@ -247,12 +247,12 @@ class AoCUpgradeAbilitySubprocessor:
                 changed = True
 
         if changed:
-            patch_target_ref = "%s.%s" % (game_entity_name, ability_name)
+            patch_target_ref = f"{game_entity_name}.{ability_name}"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%s%sWrapper" % (game_entity_name, ability_name)
-            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+            wrapper_name = f"Change{game_entity_name}{ability_name}Wrapper"
+            wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -263,14 +263,14 @@ class AoCUpgradeAbilitySubprocessor:
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                     % (name_lookup_dict[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+                wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
                 wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
             # Nyan patch
-            nyan_patch_name = "Change%s%s" % (game_entity_name, ability_name)
-            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}{ability_name}"
+            nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
@@ -378,7 +378,7 @@ class AoCUpgradeAbilitySubprocessor:
                 changed = True
 
         if changed:
-            patch_target_ref = "%s.%s" % (game_entity_name, ability_name)
+            patch_target_ref = f"{game_entity_name}.{ability_name}"
             if command_id == 7 and not isinstance(diff_attacks, NoDiffMember):
                 patches.extend(AoCUpgradeEffectSubprocessor.get_attack_effects(converter_group,
                                                                                line, diff,
@@ -439,7 +439,7 @@ class AoCUpgradeAbilitySubprocessor:
             # Wrapper
             wrapper_name = "Change%sDamageGraphic%sWrapper" % (game_entity_name,
                                                                str(percentage))
-            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+            wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -450,15 +450,14 @@ class AoCUpgradeAbilitySubprocessor:
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                     % (name_lookup_dict[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+                wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
                 wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
             # Nyan patch
-            nyan_patch_name = "Change%sDamageGraphic%s" % (game_entity_name,
-                                                           str(percentage))
-            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}DamageGraphic{str(percentage)}"
+            nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
@@ -535,12 +534,12 @@ class AoCUpgradeAbilitySubprocessor:
         else:
             return patches
 
-        patch_target_ref = "%s.Death" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Death"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sDeathAnimationWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}DeathAnimationWrapper"
+        wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
@@ -551,14 +550,14 @@ class AoCUpgradeAbilitySubprocessor:
             # not in the Age up techs.
             wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                 % (name_lookup_dict[head_unit_id][1]))
-            wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+            wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         else:
             wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
         # Nyan patch
-        nyan_patch_name = "Change%sDeathAnimation" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}DeathAnimation"
+        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -633,12 +632,12 @@ class AoCUpgradeAbilitySubprocessor:
         else:
             return patches
 
-        patch_target_ref = "%s.Despawn" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Despawn"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sDespawnAnimationWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}DespawnAnimationWrapper"
+        wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
@@ -649,14 +648,14 @@ class AoCUpgradeAbilitySubprocessor:
             # not in the Age up techs.
             wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                 % (name_lookup_dict[head_unit_id][1]))
-            wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+            wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         else:
             wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
         # Nyan patch
-        nyan_patch_name = "Change%sDespawnAnimation" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}DespawnAnimation"
+        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -731,12 +730,12 @@ class AoCUpgradeAbilitySubprocessor:
         else:
             return patches
 
-        patch_target_ref = "%s.Idle" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Idle"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sIdleAnimationWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}IdleAnimationWrapper"
+        wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
@@ -747,14 +746,14 @@ class AoCUpgradeAbilitySubprocessor:
             # not in the Age up techs.
             wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                 % (name_lookup_dict[head_unit_id][1]))
-            wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+            wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         else:
             wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
         # Nyan patch
-        nyan_patch_name = "Change%sIdleAnimation" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}IdleAnimation"
+        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -829,12 +828,12 @@ class AoCUpgradeAbilitySubprocessor:
         else:
             return patches
 
-        patch_target_ref = "%s.Live.Health" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Live.Health"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sHealthWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}HealthWrapper"
+        wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
@@ -845,14 +844,14 @@ class AoCUpgradeAbilitySubprocessor:
             # not in the Age up techs.
             wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                 % (name_lookup_dict[head_unit_id][1]))
-            wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+            wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         else:
             wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
         # Nyan patch
-        nyan_patch_name = "Change%sHealth" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}Health"
+        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -917,12 +916,12 @@ class AoCUpgradeAbilitySubprocessor:
         else:
             return patches
 
-        patch_target_ref = "%s.LineOfSight" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.LineOfSight"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sLineOfSightWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}LineOfSightWrapper"
+        wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
@@ -933,14 +932,14 @@ class AoCUpgradeAbilitySubprocessor:
             # not in the Age up techs.
             wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                 % (name_lookup_dict[head_unit_id][1]))
-            wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+            wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         else:
             wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
         # Nyan patch
-        nyan_patch_name = "Change%sLineOfSight" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}LineOfSight"
+        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -1005,12 +1004,12 @@ class AoCUpgradeAbilitySubprocessor:
             changed = True
 
         if changed:
-            patch_target_ref = "%s.Move" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.Move"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%sMoveWrapper" % (game_entity_name)
-            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+            wrapper_name = f"Change{game_entity_name}MoveWrapper"
+            wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -1021,14 +1020,14 @@ class AoCUpgradeAbilitySubprocessor:
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                     % (name_lookup_dict[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+                wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
                 wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
             # Nyan patch
-            nyan_patch_name = "Change%sMove" % (game_entity_name)
-            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}Move"
+            nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
@@ -1128,12 +1127,12 @@ class AoCUpgradeAbilitySubprocessor:
 
         diff_name = diff["language_dll_name"]
         if not isinstance(diff_name, NoDiffMember):
-            patch_target_ref = "%s.Named.%sName" % (game_entity_name, game_entity_name)
+            patch_target_ref = f"{game_entity_name}.Named.{game_entity_name}Name"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%sNameWrapper" % (game_entity_name)
-            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+            wrapper_name = f"Change{game_entity_name}NameWrapper"
+            wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -1143,14 +1142,14 @@ class AoCUpgradeAbilitySubprocessor:
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                     % (name_lookup_dict[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[group_id][1])
+                wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[group_id][1]}_upgrade")
 
             else:
                 wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
             # Nyan patch
-            nyan_patch_name = "Change%sName" % (game_entity_name)
-            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}Name"
+            nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
@@ -1210,7 +1209,7 @@ class AoCUpgradeAbilitySubprocessor:
 
         diff_armors = diff["armors"]
         if not isinstance(diff_armors, NoDiffMember):
-            patch_target_ref = "%s.Resistance" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.Resistance"
             patches.extend(AoCUpgradeEffectSubprocessor.get_attack_resistances(converter_group,
                                                                                line, diff,
                                                                                patch_target_ref))
@@ -1260,12 +1259,12 @@ class AoCUpgradeAbilitySubprocessor:
             ability_name = "Selectable"
 
         if changed:
-            patch_target_ref = "%s.%s" % (game_entity_name, ability_name)
+            patch_target_ref = f"{game_entity_name}.{ability_name}"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%s%sWrapper" % (game_entity_name, ability_name)
-            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+            wrapper_name = f"Change{game_entity_name}{ability_name}Wrapper"
+            wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -1276,14 +1275,14 @@ class AoCUpgradeAbilitySubprocessor:
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                     % (name_lookup_dict[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+                wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
                 wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
             # Nyan patch
-            nyan_patch_name = "Change%s%s" % (game_entity_name, ability_name)
-            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}{ability_name}"
+            nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
@@ -1330,12 +1329,12 @@ class AoCUpgradeAbilitySubprocessor:
                 changed = True
 
         if changed:
-            patch_target_ref = "%s.%s.Rectangle" % (game_entity_name, ability_name)
+            patch_target_ref = f"{game_entity_name}.{ability_name}.Rectangle"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%s%sRectangleWrapper" % (game_entity_name, ability_name)
-            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+            wrapper_name = f"Change{game_entity_name}{ability_name}RectangleWrapper"
+            wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -1346,14 +1345,14 @@ class AoCUpgradeAbilitySubprocessor:
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                     % (name_lookup_dict[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+                wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
                 wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
             # Nyan patch
-            nyan_patch_name = "Change%s%sRectangle" % (game_entity_name, ability_name)
-            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}{ability_name}Rectangle"
+            nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
@@ -1453,12 +1452,12 @@ class AoCUpgradeAbilitySubprocessor:
                 changed = True
 
         if changed:
-            patch_target_ref = "%s.%s" % (game_entity_name, ability_name)
+            patch_target_ref = f"{game_entity_name}.{ability_name}"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%s%sWrapper" % (game_entity_name, ability_name)
-            wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+            wrapper_name = f"Change{game_entity_name}{ability_name}Wrapper"
+            wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
@@ -1469,14 +1468,14 @@ class AoCUpgradeAbilitySubprocessor:
                 # not in the Age up techs.
                 wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                     % (name_lookup_dict[head_unit_id][1]))
-                wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+                wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
                 wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
             # Nyan patch
-            nyan_patch_name = "Change%s%s" % (game_entity_name, ability_name)
-            nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}{ability_name}"
+            nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
@@ -1710,12 +1709,12 @@ class AoCUpgradeAbilitySubprocessor:
         else:
             return patches
 
-        patch_target_ref = "%s.Turn" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Turn"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sTurnWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (container_obj_ref, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}TurnWrapper"
+        wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
@@ -1726,14 +1725,14 @@ class AoCUpgradeAbilitySubprocessor:
             # not in the Age up techs.
             wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                 % (name_lookup_dict[head_unit_id][1]))
-            wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+            wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         else:
             wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
 
         # Nyan patch
-        nyan_patch_name = "Change%sTurn" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (container_obj_ref, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}Turn"
+        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -1785,8 +1784,8 @@ class AoCUpgradeAbilitySubprocessor:
             tech_id = converter_group.get_id()
             group_name = tech_lookup_dict[tech_id][1]
 
-        animation_ref = "%s.%sAnimation" % (nyan_patch_ref, animation_name)
-        animation_obj_name = "%sAnimation" % (animation_name)
+        animation_ref = f"{nyan_patch_ref}.{animation_name}Animation"
+        animation_obj_name = f"{animation_name}Animation"
         animation_raw_api_object = RawAPIObject(animation_ref, animation_obj_name,
                                                 dataset.nyan_api_objects)
         animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
@@ -1803,7 +1802,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                   group_name)
 
             else:
-                animation_filename = "%s%s" % (filename_prefix, group_name)
+                animation_filename = f"{filename_prefix}{group_name}"
 
             animation_sprite = CombinedSprite(animation_id,
                                               animation_filename,
@@ -1828,8 +1827,8 @@ class AoCUpgradeAbilitySubprocessor:
         """
         dataset = converter_group.data
 
-        sound_ref = "%s.%sSound" % (nyan_patch_ref, sound_name)
-        sound_obj_name = "%sSound" % (sound_name)
+        sound_ref = f"{nyan_patch_ref}.{sound_name}Sound"
+        sound_obj_name = f"{sound_name}Sound"
         sound_raw_api_object = RawAPIObject(sound_ref, sound_obj_name,
                                             dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
@@ -1847,7 +1846,7 @@ class AoCUpgradeAbilitySubprocessor:
                 sound = dataset.combined_sounds[file_id]
 
             else:
-                sound_filename = "%ssound_%s" % (filename_prefix, str(file_id))
+                sound_filename = f"{filename_prefix}sound_{str(file_id)}"
 
                 sound = CombinedSound(sound_id,
                                       file_id,
@@ -1882,8 +1881,8 @@ class AoCUpgradeAbilitySubprocessor:
         string_objs = []
         for language, strings in string_resources.items():
             if string_id in strings.keys():
-                string_name = "%sString" % (obj_name_prefix)
-                string_ref = "%s.%s" % (obj_ref, string_name)
+                string_name = f"{obj_name_prefix}String"
+                string_ref = f"{obj_ref}.{string_name}"
                 string_raw_api_object = RawAPIObject(string_ref, string_name,
                                                      dataset.nyan_api_objects)
                 string_raw_api_object.add_raw_parent("engine.aux.language.LanguageTextPair")
@@ -1891,7 +1890,7 @@ class AoCUpgradeAbilitySubprocessor:
                 string_raw_api_object.set_location(string_location)
 
                 # Language identifier
-                lang_forward_ref = dataset.pregen_nyan_objects["aux.language.%s" % (language)].get_nyan_object()
+                lang_forward_ref = dataset.pregen_nyan_objects[f"aux.language.{language}"].get_nyan_object()
                 string_raw_api_object.add_raw_member("language",
                                                      lang_forward_ref,
                                                      "engine.aux.language.LanguageTextPair")

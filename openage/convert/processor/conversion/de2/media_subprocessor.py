@@ -36,7 +36,7 @@ class DE2MediaSubprocessor:
             ref_graphics = sprite.get_graphics()
             graphic_targetdirs = sprite.resolve_graphics_location()
 
-            metadata_filename = "%s.%s" % (sprite.get_filename(), "sprite")
+            metadata_filename = f"{sprite.get_filename()}.{'sprite'}"
             metadata_export = SpriteMetadataExport(sprite.resolve_sprite_location(),
                                                    metadata_filename)
             full_data_set.metadata_exports.append(metadata_export)
@@ -47,7 +47,7 @@ class DE2MediaSubprocessor:
                     continue
 
                 targetdir = graphic_targetdirs[graphic_id]
-                source_filename = "%s.smx" % str(graphic["filename"].get_value())
+                source_filename = f"{str(graphic['filename'].get_value())}.smx"
                 target_filename = "%s_%s.png" % (sprite.get_filename(),
                                                  str(graphic["slp_id"].get_value()))
 

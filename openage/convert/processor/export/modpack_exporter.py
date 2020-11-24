@@ -29,7 +29,7 @@ class ModpackExporter:
         sourcedir = args.srcdir
         exportdir = args.targetdir
 
-        modpack_dir = exportdir.joinpath("%s" % (modpack.info.name))
+        modpack_dir = exportdir.joinpath(f"{modpack.info.name}")
 
         info("Starting export...")
         info("Dumping info file...")

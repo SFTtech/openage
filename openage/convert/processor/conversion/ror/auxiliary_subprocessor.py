@@ -45,8 +45,8 @@ class RoRAuxiliarySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_ref = "%s.CreatableGameEntity" % (game_entity_name)
-        obj_name = "%sCreatable" % (game_entity_name)
+        obj_ref = f"{game_entity_name}.CreatableGameEntity"
+        obj_name = f"{game_entity_name}Creatable"
         creatable_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
         creatable_raw_api_object.add_raw_parent("engine.aux.create.CreatableGameEntity")
 
@@ -62,7 +62,7 @@ class RoRAuxiliarySubprocessor:
 
         # Add object to the train location's Create ability
         creatable_location = ForwardRef(train_location,
-                                        "%s.Create" % (train_location_name))
+                                        f"{train_location_name}.Create")
 
         creatable_raw_api_object.set_location(creatable_location)
 
@@ -73,9 +73,9 @@ class RoRAuxiliarySubprocessor:
                                                 "engine.aux.create.CreatableGameEntity")
 
         # Cost (construction)
-        cost_name = "%s.CreatableGameEntity.%sCost" % (game_entity_name, game_entity_name)
+        cost_name = f"{game_entity_name}.CreatableGameEntity.{game_entity_name}Cost"
         cost_raw_api_object = RawAPIObject(cost_name,
-                                           "%sCost" % (game_entity_name),
+                                           f"{game_entity_name}Cost",
                                            dataset.nyan_api_objects)
         cost_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
         creatable_forward_ref = ForwardRef(line, obj_ref)
@@ -91,7 +91,7 @@ class RoRAuxiliarySubprocessor:
             cost_repair_name = "%s.CreatableGameEntity.%sRepairCost" % (game_entity_name,
                                                                         game_entity_name)
             cost_repair_raw_api_object = RawAPIObject(cost_repair_name,
-                                                      "%sRepairCost" % (game_entity_name),
+                                                      f"{game_entity_name}RepairCost",
                                                       dataset.nyan_api_objects)
             cost_repair_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
             creatable_forward_ref = ForwardRef(line, obj_ref)
@@ -140,9 +140,9 @@ class RoRAuxiliarySubprocessor:
 
             amount = resource_amount["amount"].get_value()
 
-            cost_amount_name = "%s.%sAmount" % (cost_name, resource_name)
+            cost_amount_name = f"{cost_name}.{resource_name}Amount"
             cost_amount = RawAPIObject(cost_amount_name,
-                                       "%sAmount" % resource_name,
+                                       f"{resource_name}Amount",
                                        dataset.nyan_api_objects)
             cost_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
             cost_forward_ref = ForwardRef(line, cost_name)
@@ -162,9 +162,9 @@ class RoRAuxiliarySubprocessor:
             if isinstance(line, GenieBuildingLineGroup) or\
                     line.get_class_id() in (2, 13, 20, 21, 22):
                 # Cost for repairing = half of the construction cost
-                cost_amount_name = "%s.%sAmount" % (cost_repair_name, resource_name)
+                cost_amount_name = f"{cost_repair_name}.{resource_name}Amount"
                 cost_amount = RawAPIObject(cost_amount_name,
-                                           "%sAmount" % resource_name,
+                                           f"{resource_name}Amount",
                                            dataset.nyan_api_objects)
                 cost_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
                 cost_forward_ref = ForwardRef(line, cost_repair_name)
@@ -210,7 +210,7 @@ class RoRAuxiliarySubprocessor:
         creation_sound_id = current_unit["train_sound_id"].get_value()
 
         # Create sound object
-        obj_name = "%s.CreatableGameEntity.Sound" % (game_entity_name)
+        obj_name = f"{game_entity_name}.CreatableGameEntity.Sound"
         sound_raw_api_object = RawAPIObject(obj_name, "CreationSound",
                                             dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
@@ -231,7 +231,7 @@ class RoRAuxiliarySubprocessor:
             else:
                 creation_sound = CombinedSound(creation_sound_id,
                                                file_id,
-                                               "creation_sound_%s" % (creation_sound_id),
+                                               f"creation_sound_{creation_sound_id}",
                                                dataset)
                 dataset.combined_sounds.update({file_id: creation_sound})
                 creation_sound.add_reference(sound_raw_api_object)
@@ -269,13 +269,13 @@ class RoRAuxiliarySubprocessor:
         if isinstance(line, GenieBuildingLineGroup):
             # Buildings are placed on the map
             # Place mode
-            obj_name = "%s.CreatableGameEntity.Place" % (game_entity_name)
+            obj_name = f"{game_entity_name}.CreatableGameEntity.Place"
             place_raw_api_object = RawAPIObject(obj_name,
                                                 "Place",
                                                 dataset.nyan_api_objects)
             place_raw_api_object.add_raw_parent("engine.aux.placement_mode.type.Place")
             place_location = ForwardRef(line,
-                                        "%s.CreatableGameEntity" % (game_entity_name))
+                                        f"{game_entity_name}.CreatableGameEntity")
             place_raw_api_object.set_location(place_location)
 
             # Tile snap distance (uses 1.0 for grid placement)

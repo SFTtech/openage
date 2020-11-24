@@ -72,12 +72,12 @@ class AoCUpgradeEffectSubprocessor:
                 effect_parent = "engine.effect.discrete.flat_attribute_change.FlatAttributeChange"
                 attack_parent = "engine.effect.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"
 
-                patch_target_ref = "%s" % (ability_ref)
+                patch_target_ref = f"{ability_ref}"
                 patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
-                wrapper_name = "Add%sAttackEffectWrapper" % (class_name)
-                wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+                wrapper_name = f"Add{class_name}AttackEffectWrapper"
+                wrapper_ref = f"{tech_name}.{wrapper_name}"
                 wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                       wrapper_name,
                                                       dataset.nyan_api_objects)
@@ -88,14 +88,14 @@ class AoCUpgradeEffectSubprocessor:
                     # not in the Age up techs.
                     wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                         % (name_lookup_dict[head_unit_id][1]))
-                    wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+                    wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
                 else:
                     wrapper_raw_api_object.set_location(ForwardRef(tech_group, tech_name))
 
                 # Nyan patch
-                nyan_patch_name = "Add%sAttackEffect" % (class_name)
-                nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
+                nyan_patch_name = f"Add{class_name}AttackEffect"
+                nyan_patch_ref = f"{tech_name}.{wrapper_name}.{nyan_patch_name}"
                 nyan_patch_location = ForwardRef(tech_group, wrapper_ref)
                 nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                          nyan_patch_name,
@@ -106,7 +106,7 @@ class AoCUpgradeEffectSubprocessor:
 
                 # New attack effect
                 # ============================================================================
-                attack_ref = "%s.%s" % (nyan_patch_ref, class_name)
+                attack_ref = f"{nyan_patch_ref}.{class_name}"
                 attack_raw_api_object = RawAPIObject(attack_ref,
                                                      class_name,
                                                      dataset.nyan_api_objects)
@@ -115,7 +115,7 @@ class AoCUpgradeEffectSubprocessor:
                 attack_raw_api_object.set_location(attack_location)
 
                 # Type
-                type_ref = "aux.attribute_change_type.types.%s" % (class_name)
+                type_ref = f"aux.attribute_change_type.types.{class_name}"
                 change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
                 attack_raw_api_object.add_raw_member("type",
                                                      change_type,
@@ -132,7 +132,7 @@ class AoCUpgradeEffectSubprocessor:
 
                 # Change value
                 # =================================================================================
-                amount_name = "%s.%s.ChangeAmount" % (nyan_patch_ref, class_name)
+                amount_name = f"{nyan_patch_ref}.{class_name}.ChangeAmount"
                 amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", dataset.nyan_api_objects)
                 amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
                 amount_location = ForwardRef(line, attack_ref)
@@ -185,12 +185,12 @@ class AoCUpgradeEffectSubprocessor:
                 armor_class = attack["type_id"].get_value()
                 class_name = armor_lookup_dict[armor_class]
 
-                patch_target_ref = "%s" % (ability_ref)
+                patch_target_ref = f"{ability_ref}"
                 patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
-                wrapper_name = "Remove%sAttackEffectWrapper" % (class_name)
-                wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+                wrapper_name = f"Remove{class_name}AttackEffectWrapper"
+                wrapper_ref = f"{tech_name}.{wrapper_name}"
                 wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                       wrapper_name,
                                                       dataset.nyan_api_objects)
@@ -201,14 +201,14 @@ class AoCUpgradeEffectSubprocessor:
                     # not in the Age up techs.
                     wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                         % (name_lookup_dict[head_unit_id][1]))
-                    wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+                    wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
                 else:
                     wrapper_raw_api_object.set_location(ForwardRef(tech_group, tech_name))
 
                 # Nyan patch
-                nyan_patch_name = "Remove%sAttackEffect" % (class_name)
-                nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
+                nyan_patch_name = f"Remove{class_name}AttackEffect"
+                nyan_patch_ref = f"{tech_name}.{wrapper_name}.{nyan_patch_name}"
                 nyan_patch_location = ForwardRef(tech_group, wrapper_ref)
                 nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                          nyan_patch_name,
@@ -217,7 +217,7 @@ class AoCUpgradeEffectSubprocessor:
                 nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
                 nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-                attack_ref = "%s.%s" % (ability_ref, class_name)
+                attack_ref = f"{ability_ref}.{class_name}"
                 attack_forward_ref = ForwardRef(line, attack_ref)
                 nyan_patch_raw_api_object.add_raw_patch_member("effects",
                                                                [attack_forward_ref],
@@ -248,12 +248,12 @@ class AoCUpgradeEffectSubprocessor:
 
                 class_name = armor_lookup_dict[armor_class]
 
-                patch_target_ref = "%s.%s.ChangeAmount" % (ability_ref, class_name)
+                patch_target_ref = f"{ability_ref}.{class_name}.ChangeAmount"
                 patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
-                wrapper_name = "Change%sAttackWrapper" % (class_name)
-                wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+                wrapper_name = f"Change{class_name}AttackWrapper"
+                wrapper_ref = f"{tech_name}.{wrapper_name}"
                 wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                       wrapper_name,
                                                       dataset.nyan_api_objects)
@@ -264,14 +264,14 @@ class AoCUpgradeEffectSubprocessor:
                     # not in the Age up techs.
                     wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                         % (name_lookup_dict[head_unit_id][1]))
-                    wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+                    wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
                 else:
                     wrapper_raw_api_object.set_location(ForwardRef(tech_group, tech_name))
 
                 # Nyan patch
-                nyan_patch_name = "Change%sAttack" % (class_name)
-                nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
+                nyan_patch_name = f"Change{class_name}Attack"
+                nyan_patch_ref = f"{tech_name}.{wrapper_name}.{nyan_patch_name}"
                 nyan_patch_location = ForwardRef(tech_group, wrapper_ref)
                 nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                          nyan_patch_name,
@@ -347,12 +347,12 @@ class AoCUpgradeEffectSubprocessor:
                 resistance_parent = "engine.resistance.discrete.flat_attribute_change.FlatAttributeChange"
                 armor_parent = "engine.resistance.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"
 
-                patch_target_ref = "%s" % (ability_ref)
+                patch_target_ref = f"{ability_ref}"
                 patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
-                wrapper_name = "Add%sAttackResistanceWrapper" % (class_name)
-                wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+                wrapper_name = f"Add{class_name}AttackResistanceWrapper"
+                wrapper_ref = f"{tech_name}.{wrapper_name}"
                 wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                       wrapper_name,
                                                       dataset.nyan_api_objects)
@@ -363,14 +363,14 @@ class AoCUpgradeEffectSubprocessor:
                     # not in the Age up techs.
                     wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                         % (name_lookup_dict[head_unit_id][1]))
-                    wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+                    wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
                 else:
                     wrapper_raw_api_object.set_location(ForwardRef(tech_group, tech_name))
 
                 # Nyan patch
-                nyan_patch_name = "Add%sAttackResistance" % (class_name)
-                nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
+                nyan_patch_name = f"Add{class_name}AttackResistance"
+                nyan_patch_ref = f"{tech_name}.{wrapper_name}.{nyan_patch_name}"
                 nyan_patch_location = ForwardRef(tech_group, wrapper_ref)
                 nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                          nyan_patch_name,
@@ -381,7 +381,7 @@ class AoCUpgradeEffectSubprocessor:
 
                 # New attack effect
                 # ============================================================================
-                attack_ref = "%s.%s" % (nyan_patch_ref, class_name)
+                attack_ref = f"{nyan_patch_ref}.{class_name}"
                 attack_raw_api_object = RawAPIObject(attack_ref,
                                                      class_name,
                                                      dataset.nyan_api_objects)
@@ -390,7 +390,7 @@ class AoCUpgradeEffectSubprocessor:
                 attack_raw_api_object.set_location(attack_location)
 
                 # Type
-                type_ref = "aux.attribute_change_type.types.%s" % (class_name)
+                type_ref = f"aux.attribute_change_type.types.{class_name}"
                 change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
                 attack_raw_api_object.add_raw_member("type",
                                                      change_type,
@@ -398,7 +398,7 @@ class AoCUpgradeEffectSubprocessor:
 
                 # Block value
                 # =================================================================================
-                amount_name = "%s.%s.BlockAmount" % (nyan_patch_ref, class_name)
+                amount_name = f"{nyan_patch_ref}.{class_name}.BlockAmount"
                 amount_raw_api_object = RawAPIObject(amount_name, "BlockAmount", dataset.nyan_api_objects)
                 amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
                 amount_location = ForwardRef(line, attack_ref)
@@ -446,12 +446,12 @@ class AoCUpgradeEffectSubprocessor:
                 armor_class = armor["type_id"].get_value()
                 class_name = armor_lookup_dict[armor_class]
 
-                patch_target_ref = "%s" % (ability_ref)
+                patch_target_ref = f"{ability_ref}"
                 patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
-                wrapper_name = "Remove%sAttackResistanceWrapper" % (class_name)
-                wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+                wrapper_name = f"Remove{class_name}AttackResistanceWrapper"
+                wrapper_ref = f"{tech_name}.{wrapper_name}"
                 wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                       wrapper_name,
                                                       dataset.nyan_api_objects)
@@ -462,14 +462,14 @@ class AoCUpgradeEffectSubprocessor:
                     # not in the Age up techs.
                     wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                         % (name_lookup_dict[head_unit_id][1]))
-                    wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+                    wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
                 else:
                     wrapper_raw_api_object.set_location(ForwardRef(tech_group, tech_name))
 
                 # Nyan patch
-                nyan_patch_name = "Remove%sAttackResistance" % (class_name)
-                nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
+                nyan_patch_name = f"Remove{class_name}AttackResistance"
+                nyan_patch_ref = f"{tech_name}.{wrapper_name}.{nyan_patch_name}"
                 nyan_patch_location = ForwardRef(tech_group, wrapper_ref)
                 nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                          nyan_patch_name,
@@ -478,7 +478,7 @@ class AoCUpgradeEffectSubprocessor:
                 nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
                 nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-                attack_ref = "%s.%s" % (ability_ref, class_name)
+                attack_ref = f"{ability_ref}.{class_name}"
                 attack_forward_ref = ForwardRef(line, attack_ref)
                 nyan_patch_raw_api_object.add_raw_patch_member("resistances",
                                                                [attack_forward_ref],
@@ -509,12 +509,12 @@ class AoCUpgradeEffectSubprocessor:
 
                 class_name = armor_lookup_dict[armor_class]
 
-                patch_target_ref = "%s.%s.BlockAmount" % (ability_ref, class_name)
+                patch_target_ref = f"{ability_ref}.{class_name}.BlockAmount"
                 patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
-                wrapper_name = "Change%sResistanceWrapper" % (class_name)
-                wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+                wrapper_name = f"Change{class_name}ResistanceWrapper"
+                wrapper_ref = f"{tech_name}.{wrapper_name}"
                 wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                       wrapper_name,
                                                       dataset.nyan_api_objects)
@@ -525,14 +525,14 @@ class AoCUpgradeEffectSubprocessor:
                     # not in the Age up techs.
                     wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
                                                         % (name_lookup_dict[head_unit_id][1]))
-                    wrapper_raw_api_object.set_filename("%s_upgrade" % tech_lookup_dict[tech_id][1])
+                    wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
                 else:
                     wrapper_raw_api_object.set_location(ForwardRef(tech_group, tech_name))
 
                 # Nyan patch
-                nyan_patch_name = "Change%sResistance" % (class_name)
-                nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
+                nyan_patch_name = f"Change{class_name}Resistance"
+                nyan_patch_ref = f"{tech_name}.{wrapper_name}.{nyan_patch_name}"
                 nyan_patch_location = ForwardRef(tech_group, wrapper_ref)
                 nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                          nyan_patch_name,

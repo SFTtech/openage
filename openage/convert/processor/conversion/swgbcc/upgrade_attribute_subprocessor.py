@@ -58,8 +58,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sCarbonCostWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}CarbonCostWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -68,8 +68,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sCarbonCost" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}CarbonCost"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -145,8 +145,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sNovaCostWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}NovaCostWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -155,8 +155,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sNovaCost" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}NovaCost"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -232,8 +232,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sOreCostWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}OreCostWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -242,8 +242,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sOreCost" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}OreCost"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -349,9 +349,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%s%sCostWrapper" % (game_entity_name,
-                                                      resource_name)
-            wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+            wrapper_name = f"Change{game_entity_name}{resource_name}CostWrapper"
+            wrapper_ref = f"{obj_name}.{wrapper_name}"
             wrapper_location = ForwardRef(converter_group, obj_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
@@ -360,9 +359,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
             # Nyan patch
-            nyan_patch_name = "Change%s%sCost" % (game_entity_name,
-                                                  resource_name)
-            nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}{resource_name}Cost"
+            nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,

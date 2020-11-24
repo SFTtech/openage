@@ -349,7 +349,7 @@ class AoCPregenSubprocessor:
         for unit_line in converter_groups:
             unit_class = unit_line.get_class_id()
             class_name = class_lookup_dict[unit_class]
-            class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
+            class_obj_name = f"aux.game_entity_type.types.{class_name}"
 
             new_game_entity_type = RawAPIObject(class_obj_name, class_name,
                                                 full_data_set.nyan_api_objects,
@@ -388,7 +388,7 @@ class AoCPregenSubprocessor:
         types_location = "data/aux/attribute_change_type/"
 
         for type_name in armor_lookup_dict.values():
-            type_ref_in_modpack = "aux.attribute_change_type.types.%s" % (type_name)
+            type_ref_in_modpack = f"aux.attribute_change_type.types.{type_name}"
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
                                                type_name, api_objects,
                                                types_location)
@@ -423,9 +423,9 @@ class AoCPregenSubprocessor:
         for repairable_line in repairable_lines:
             game_entity_name = name_lookup_dict[repairable_line.get_head_unit_id()][0]
 
-            type_ref_in_modpack = "aux.attribute_change_type.types.%sRepair" % (game_entity_name)
+            type_ref_in_modpack = f"aux.attribute_change_type.types.{game_entity_name}Repair"
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
-                                               "%sRepair" % (game_entity_name),
+                                               f"{game_entity_name}Repair",
                                                api_objects,
                                                types_location)
             type_raw_api_object.set_filename("types")
@@ -443,9 +443,9 @@ class AoCPregenSubprocessor:
         for constructable_line in constructable_lines:
             game_entity_name = name_lookup_dict[constructable_line.get_head_unit_id()][0]
 
-            type_ref_in_modpack = "aux.attribute_change_type.types.%sConstruct" % (game_entity_name)
+            type_ref_in_modpack = f"aux.attribute_change_type.types.{game_entity_name}Construct"
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
-                                               "%sConstruct" % (game_entity_name),
+                                               f"{game_entity_name}Construct",
                                                api_objects,
                                                types_location)
             type_raw_api_object.set_filename("types")
@@ -460,9 +460,9 @@ class AoCPregenSubprocessor:
         for constructable_line in constructable_lines:
             game_entity_name = name_lookup_dict[constructable_line.get_head_unit_id()][0]
 
-            type_ref_in_modpack = "aux.construct_type.types.%sConstruct" % (game_entity_name)
+            type_ref_in_modpack = f"aux.construct_type.types.{game_entity_name}Construct"
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
-                                               "%sConstruct" % (game_entity_name),
+                                               f"{game_entity_name}Construct",
                                                api_objects,
                                                types_location)
             type_raw_api_object.set_filename("types")
@@ -1050,7 +1050,7 @@ class AoCPregenSubprocessor:
         languages = full_data_set.strings.get_tables().keys()
 
         for language in languages:
-            language_ref_in_modpack = "aux.language.%s" % (language)
+            language_ref_in_modpack = f"aux.language.{language}"
             language_raw_api_object = RawAPIObject(language_ref_in_modpack,
                                                    language,
                                                    api_objects,
@@ -1156,7 +1156,7 @@ class AoCPregenSubprocessor:
 
         # Min value (optional)
         # =================================================================================
-        amount_name = "%s.LowerCealing" % (fallback_ref_in_modpack)
+        amount_name = f"{fallback_ref_in_modpack}.LowerCealing"
         amount_raw_api_object = RawAPIObject(amount_name, "LowerCealing", api_objects)
         amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
         amount_location = ForwardRef(pregen_converter_group, fallback_ref_in_modpack)
@@ -1182,7 +1182,7 @@ class AoCPregenSubprocessor:
 
         # Change value
         # =================================================================================
-        amount_name = "%s.ChangeAmount" % (fallback_ref_in_modpack)
+        amount_name = f"{fallback_ref_in_modpack}.ChangeAmount"
         amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", api_objects)
         amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
         amount_location = ForwardRef(pregen_converter_group, fallback_ref_in_modpack)
@@ -1237,7 +1237,7 @@ class AoCPregenSubprocessor:
 
         # Block value
         # =================================================================================
-        amount_name = "%s.BlockAmount" % (fallback_ref_in_modpack)
+        amount_name = f"{fallback_ref_in_modpack}.BlockAmount"
         amount_raw_api_object = RawAPIObject(amount_name, "BlockAmount", api_objects)
         amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
         amount_location = ForwardRef(pregen_converter_group, fallback_ref_in_modpack)
@@ -1425,7 +1425,7 @@ class AoCPregenSubprocessor:
 
         for terrain_type in terrain_type_lookups:
             type_name = terrain_type[2]
-            type_ref_in_modpack = "aux.terrain_type.types.%s" % (type_name)
+            type_ref_in_modpack = f"aux.terrain_type.types.{type_name}"
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
                                                type_name, api_objects,
                                                types_location)
