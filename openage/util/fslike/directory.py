@@ -28,7 +28,7 @@ class Directory(FSLikeObject):
         elif isinstance(path_, bytes):
             path = path_
         else:
-            raise Exception("incompatible type for path: %s" % type(path_))
+            raise Exception(f"incompatible type for path: {type(path_)}")
 
         if not os.path.isdir(path):
             if create_if_missing:
@@ -39,7 +39,7 @@ class Directory(FSLikeObject):
         self.path = path
 
     def __repr__(self):
-        return "Directory({})".format(self.path.decode(errors='replace'))
+        return f"Directory({self.path.decode(errors='replace')})"
 
     def resolve(self, parts):
         """ resolves parts to an actual path name. """
@@ -133,7 +133,7 @@ class CaseIgnoringDirectory(Directory):
         self.listings = {}
 
     def __repr__(self):
-        return "Directory({})".format(self.path.decode(errors='replace'))
+        return f"Directory({self.path.decode(errors='replace')})"
 
     def actual_name(self, stem, name):
         """

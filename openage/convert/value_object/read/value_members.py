@@ -48,14 +48,14 @@ class ValueMember:
         Returns the value of a member.
         """
         raise NotImplementedError(
-            "%s cannot have values" % (type(self)))
+            f"{type(self)} cannot have values")
 
     def get_type(self):
         """
         Returns the type of a member.
         """
         raise NotImplementedError(
-            "%s cannot have a type" % (type(self)))
+            f"{type(self)} cannot have a type")
 
     def diff(self, other):
         """
@@ -65,11 +65,11 @@ class ValueMember:
         If they are equal, return a NoDiffMember.
         """
         raise NotImplementedError(
-            "%s has no diff implemented" % (type(self)))
+            f"{type(self)} has no diff implemented")
 
     def __repr__(self):
         raise NotImplementedError(
-            "return short description of the member type %s" % (type(self)))
+            f"return short description of the member type {type(self)}")
 
 
 class IntMember(ValueMember):
@@ -101,10 +101,10 @@ class IntMember(ValueMember):
 
         else:
             raise Exception(
-                "type %s member cannot be diffed with type %s" % (type(self), type(other)))
+                f"type {type(self)} member cannot be diffed with type {type(other)}")
 
     def __repr__(self):
-        return "IntMember<%s>" % (self.name)
+        return f"IntMember<{self.name}>"
 
 
 class FloatMember(ValueMember):
@@ -136,10 +136,10 @@ class FloatMember(ValueMember):
 
         else:
             raise Exception(
-                "type %s member cannot be diffed with type %s" % (type(self), type(other)))
+                f"type {type(self)} member cannot be diffed with type {type(other)}")
 
     def __repr__(self):
-        return "FloatMember<%s>" % (self.name)
+        return f"FloatMember<{self.name}>"
 
 
 class BooleanMember(ValueMember):
@@ -168,10 +168,10 @@ class BooleanMember(ValueMember):
 
         else:
             raise Exception(
-                "type %s member cannot be diffed with type %s" % (type(self), type(other)))
+                f"type {type(self)} member cannot be diffed with type {type(other)}")
 
     def __repr__(self):
-        return "BooleanMember<%s>" % (self.name)
+        return f"BooleanMember<{self.name}>"
 
 
 class IDMember(ValueMember):
@@ -200,10 +200,10 @@ class IDMember(ValueMember):
 
         else:
             raise Exception(
-                "type %s member cannot be diffed with type %s" % (type(self), type(other)))
+                f"type {type(self)} member cannot be diffed with type {type(other)}")
 
     def __repr__(self):
-        return "IDMember<%s>" % (self.name)
+        return f"IDMember<{self.name}>"
 
 
 class BitfieldMember(ValueMember):
@@ -246,13 +246,13 @@ class BitfieldMember(ValueMember):
 
         else:
             raise Exception(
-                "type %s member cannot be diffed with type %s" % (type(self), type(other)))
+                f"type {type(self)} member cannot be diffed with type {type(other)}")
 
     def __len__(self):
         return len(self.value)
 
     def __repr__(self):
-        return "BitfieldMember<%s>" % (self.name)
+        return f"BitfieldMember<{self.name}>"
 
 
 class StringMember(ValueMember):
@@ -281,13 +281,13 @@ class StringMember(ValueMember):
 
         else:
             raise Exception(
-                "type %s member cannot be diffed with type %s" % (type(self), type(other)))
+                f"type {type(self)} member cannot be diffed with type {type(other)}")
 
     def __len__(self):
         return len(self.value)
 
     def __repr__(self):
-        return "StringMember<%s>" % (self.name)
+        return f"StringMember<{self.name}>"
 
 
 class ContainerMember(ValueMember):
@@ -349,7 +349,7 @@ class ContainerMember(ValueMember):
 
         else:
             raise Exception(
-                "type %s member cannot be diffed with type %s" % (type(self), type(other)))
+                f"type {type(self)} member cannot be diffed with type {type(other)}")
 
     def _create_dict(self, member_list):
         """
@@ -370,7 +370,7 @@ class ContainerMember(ValueMember):
         return len(self.value)
 
     def __repr__(self):
-        return "ContainerMember<%s>" % (self.name)
+        return f"ContainerMember<{self.name}>"
 
 
 class ArrayMember(ValueMember):
@@ -419,7 +419,7 @@ class ArrayMember(ValueMember):
         elif self._allowed_member_type is MemberTypes.CONTAINER_MEMBER:
             return MemberTypes.ARRAY_CONTAINER
 
-        raise Exception("%s has no valid member type" % self)
+        raise Exception(f"{self} has no valid member type")
 
     def get_container(self, key_member_name, force_not_found= False, force_duplicate=False):
         """
@@ -497,7 +497,7 @@ class ArrayMember(ValueMember):
 
         else:
             raise Exception(
-                "type %s member cannot be diffed with type %s" % (type(self), type(other)))
+                f"type {type(self)} member cannot be diffed with type {type(other)}")
 
     def __getitem__(self, key):
         """
@@ -509,7 +509,7 @@ class ArrayMember(ValueMember):
         return len(self.value)
 
     def __repr__(self):
-        return "ArrayMember<%s>" % (self.name)
+        return f"ArrayMember<{self.name}>"
 
 
 class NoDiffMember(ValueMember):
@@ -533,7 +533,7 @@ class NoDiffMember(ValueMember):
         return self.value
 
     def __repr__(self):
-        return "NoDiffMember<%s>" % (self.name)
+        return f"NoDiffMember<{self.name}>"
 
 
 class LeftMissingMember(ValueMember):
@@ -559,7 +559,7 @@ class LeftMissingMember(ValueMember):
         return self.value
 
     def __repr__(self):
-        return "LeftMissingMember<%s>" % (self.name)
+        return f"LeftMissingMember<{self.name}>"
 
 
 class RightMissingMember(ValueMember):
@@ -585,7 +585,7 @@ class RightMissingMember(ValueMember):
         return self.value
 
     def __repr__(self):
-        return "RightMissingMember<%s>" % (self.name)
+        return f"RightMissingMember<{self.name}>"
 
 
 class MemberTypes(Enum):

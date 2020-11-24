@@ -54,8 +54,7 @@ class Union(FSLikeObject):
         """
 
         if not isinstance(pathobj, Path):
-            raise Exception("only a fslike.Path can be mounted, "
-                            "not {}".format(type(pathobj)))
+            raise Exception(f"only a fslike.Path can be mounted, not {type(pathobj)}")
 
         # search for the right place to insert the mount.
         idx = len(self.mounts) - 1

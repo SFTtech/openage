@@ -67,4 +67,4 @@ def test():
     for entry in CHANGES:
         if entry > COMPONENTS:
             invalid = entry - COMPONENTS
-            raise TestError("'{}': invalid changelog entry".format(invalid))
+            raise TestError(f"'{invalid}': invalid changelog entry")

@@ -19,7 +19,7 @@ def load_config_file(path, set_cvar_func, loaded_files=None):
         loaded_files = set()
 
     if not path.is_file():
-        info("config file %s not found.", path)
+        info(f"config file {path} not found.")
         return
 
     # file is already loaded?
@@ -28,13 +28,13 @@ def load_config_file(path, set_cvar_func, loaded_files=None):
     if repr(path) in loaded_files:
         return
 
-    info("loading config file %s...", path)
+    info(f"loading config file {path}...")
 
     loaded_files.add(repr(path))
 
     with path.open() as config:
         for line in config:
-            spam("Reading config line: %s" % line)
+            spam(f"Reading config line: {line}")
             lstrip = line.lstrip()
             if not lstrip or lstrip.startswith("#"):
                 continue

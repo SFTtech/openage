@@ -27,11 +27,11 @@ class ReadMember:
 
     def get_parsers(self, idx, member):
         raise NotImplementedError(
-            "implement the parser generation for the member type %s" % type(self))
+            f"implement the parser generation for the member type {type(self)}")
 
     def get_headers(self, output_target):
         raise NotImplementedError(
-            "return needed headers for %s for a given output target" % type(self))
+            f"return needed headers for {type(self)} for a given output target")
 
     def get_typerefs(self):
         """
@@ -50,7 +50,7 @@ class ReadMember:
 
     def get_effective_type(self):
         raise NotImplementedError(
-            "return the effective (struct) type of member %s" % type(self))
+            f"return the effective (struct) type of member {type(self)}")
 
     def get_empty_value(self):
         """
@@ -74,7 +74,7 @@ class ReadMember:
         return the lines to put inside the C struct.
         """
 
-        return ["%s %s;" % (self.get_effective_type(), member_name)]
+        return [f"{self.get_effective_type()} {member_name};"]
 
     def format_hash(self, hasher):
         """
@@ -87,7 +87,7 @@ class ReadMember:
 
     def __repr__(self):
         raise NotImplementedError(
-            "return short description of the member type %s" % (type(self)))
+            f"return short description of the member type {type(self)}")
 
 
 class GroupMember(ReadMember):
@@ -125,7 +125,7 @@ class GroupMember(ReadMember):
         return self.cls.format_hash(hasher)
 
     def __repr__(self):
-        return "GroupMember<%s>" % repr(self.cls)
+        return f"GroupMember<{repr(self.cls)}>"
 
 
 class IncludeMembers(GroupMember):
@@ -142,7 +142,7 @@ class IncludeMembers(GroupMember):
         raise Exception("this should never be called!")
 
     def __repr__(self):
-        return "IncludeMember<%s>" % repr(self.cls)
+        return f"IncludeMember<{repr(self.cls)}>"
 
 
 class DynLengthMember(ReadMember):
@@ -217,7 +217,7 @@ class DynLengthMember(ReadMember):
         elif callable(target):
             return True
         else:
-            raise Exception("unknown length definition supplied: %s" % target)
+            raise Exception(f"unknown length definition supplied: {target}")
 
     def format_hash(self, hasher):
         if isinstance(self.length, types.LambdaType):
@@ -279,7 +279,7 @@ class NumberMember(ReadMember):
         super().__init__()
         if number_def not in self.type_scan_lookup:
             raise Exception(
-                "created number column from unknown type %s" % number_def)
+                f"created number column from unknown type {number_def}")
 
         # type used for the output struct
         self.number_type = number_def
@@ -363,10 +363,10 @@ class ContinueReadMember(NumberMember):
         entry_parser_txt = (
             "// remember if the following members are undefined",
             'if (buf[%d] == "%s") {' % (idx, self.Result.ABORT.value),
-            "    this->%s = 0;" % (member),
+            f"    this->{member} = 0;",
             '} else if (buf[%d] == "%s") {' % (
                 idx, self.Result.CONTINUE.value),
-            "    this->%s = 1;" % (member),
+            f"    this->{member} = 1;",
             "} else {",
             ('    throw openage::error::Error(ERR << "unexpected value \'"'
              '<< buf[%d] << "\' for %s");' % (idx, self.__class__.__name__)),
@@ -396,13 +396,12 @@ class EnumMember(RefMember):
     def get_parsers(self, idx, member):
         enum_parse_else = ""
         enum_parser = list()
-        enum_parser.append("// parse enum %s" % (self.type_name))
+        enum_parser.append(f"// parse enum {self.type_name}")
         for enum_value in self.values:
             enum_parser.extend([
                 '%sif (buf[%d] == "%s") {' % (
                     enum_parse_else, idx, enum_value),
-                "    this->%s = %s::%s;" % (member,
-                                            self.type_name, enum_value),
+                f"    this->{member} = {self.type_name}::{enum_value};",
                 "}",
             ])
             enum_parse_else = "else "
@@ -466,7 +465,7 @@ class EnumMember(RefMember):
                 snippet_file_name,
                 SectionType.section_body,
                 orderby=self.type_name,
-                reprtxt="enum class %s" % self.type_name,
+                reprtxt=f"enum class {self.type_name}",
             )
             snippet.typedefs |= {self.type_name}
 
@@ -483,7 +482,7 @@ class EnumMember(RefMember):
         return hasher
 
     def __repr__(self):
-        return "enum %s" % self.type_name
+        return f"enum {self.type_name}"
 
 
 class EnumLookupMember(EnumMember):
@@ -509,7 +508,7 @@ class EnumLookupMember(EnumMember):
             return self.lookup_dict[data]
         except KeyError:
             try:
-                h = " = %s" % hex(data)
+                h = f" = {hex(data)}"
             except TypeError:
                 h = ""
             raise Exception("failed to find %s%s in lookup dict %s!" %
@@ -570,7 +569,7 @@ class CharArrayMember(DynLengthMember):
         return ""
 
     def __repr__(self):
-        return "%s[%s]" % (self.get_effective_type(), self.length)
+        return f"{self.get_effective_type()}[{self.length}]"
 
 
 class StringMember(CharArrayMember):
@@ -653,7 +652,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             # the "real" data entries.
             # the above parsed filename is searched in this basedir.
             EntryParser(
-                ["this->%s.recurse(storage, basedir);" % (member)],
+                [f"this->{member}.recurse(storage, basedir);"],
                 headers=set(),
                 typerefs=set(),
                 destination="recurse",
@@ -700,7 +699,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             # add member methods to the struct
             from ...deprecated.data_formatter import DataFormatter
             snippet.add_members((
-                "%s;" % member.get_signature()
+                f"{member.get_signature()};"
                 for _, member in sorted(DataFormatter.member_methods.items())
             ))
 
@@ -787,7 +786,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
                 snippet_file_name,
                 SectionType.section_body,
                 orderby=self.type_name,
-                reprtxt="multisubtype %s container fill function" % self.type_name,
+                reprtxt=f"multisubtype {self.type_name} container fill function",
             )
             snippet.typerefs |= (self.get_contained_types() |
                                  {self.type_name, MultisubtypeBaseFile.name_struct})
@@ -810,7 +809,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         return hasher
 
     def __repr__(self):
-        return "MultisubtypeMember<%s:len=%s>" % (self.type_name, self.length)
+        return f"MultisubtypeMember<{self.type_name}:len={self.length}>"
 
 
 class SubdataMember(MultisubtypeMember):
@@ -842,7 +841,7 @@ class SubdataMember(MultisubtypeMember):
         return GeneratedFile.namespacify(tuple(self.get_contained_types())[0])
 
     def get_effective_type(self):
-        return "openage::util::csv_subdata<%s>" % (self.get_subtype())
+        return f"openage::util::csv_subdata<{self.get_subtype()}>"
 
     def get_parsers(self, idx, member):
         return [
@@ -856,7 +855,7 @@ class SubdataMember(MultisubtypeMember):
             # then read the subdata content from the storage,
             # searching for the filename relative to basedir.
             EntryParser(
-                ["this->%s.read(storage, basedir);" % (member)],
+                [f"this->{member}.read(storage, basedir);"],
                 headers=set(),
                 typerefs=set(),
                 destination="recurse",
@@ -874,7 +873,7 @@ class SubdataMember(MultisubtypeMember):
         return self.class_lookup[None].__name__
 
     def __repr__(self):
-        return "SubdataMember<%s:len=%s>" % (self.get_subdata_type_name(), self.length)
+        return f"SubdataMember<{self.get_subdata_type_name()}:len={self.length}>"
 
 
 class ArrayMember(DynLengthMember):
@@ -897,4 +896,4 @@ class ArrayMember(DynLengthMember):
     # =====================================================================
 
     def __repr__(self):
-        return "ArrayMember<%s:len=%s>" % (self.raw_type, self.length)
+        return f"ArrayMember<{self.raw_type}:len={self.length}>"

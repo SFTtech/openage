@@ -40,8 +40,7 @@ def mount_asset_dirs(srcdir, game_version):
                     mount_drs(media_path, media_type.value)
 
             else:
-                raise Exception("Media at path %s could not be found"
-                                % (path_to_media))
+                raise Exception(f"Media at path {path_to_media} could not be found")
 
     # Mount the media sources of the game edition
     for expansion in game_version[1]:
@@ -58,7 +57,6 @@ def mount_asset_dirs(srcdir, game_version):
                         mount_drs(media_path, media_type.value)
 
                 else:
-                    raise Exception("Media at path %s could not be found"
-                                    % (path_to_media))
+                    raise Exception(f"Media at path {path_to_media} could not be found")
 
     return result

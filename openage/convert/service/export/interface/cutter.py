@@ -27,8 +27,7 @@ class InterfaceCutter:
         """
 
         if not isinstance(image, TextureImage):
-            raise ValueError("we can only cut TextureImage, "
-                             "not '%s'" % type(image))
+            raise ValueError(f"we can only cut TextureImage, not '{type(image)}'")
 
         if is_ingame_hud_background(self.idx):
             img_data = image.get_data()

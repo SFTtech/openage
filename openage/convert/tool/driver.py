@@ -49,7 +49,7 @@ def convert(args):
     # clean args (set by convert_metadata for convert_media)
     del args.palettes
 
-    info("asset conversion complete; asset version: %s", ASSET_VERSION)
+    info(f"asset conversion complete; asset version: {ASSET_VERSION}", )
 
 
 def convert_metadata(args):
@@ -153,5 +153,4 @@ def get_converter(game_version):
             from ..processor.conversion.swgbcc.processor import SWGBCCProcessor
             return SWGBCCProcessor
 
-    raise Exception("no valid converter found for game edition %s"
-                    % game_edition.edition_name)
+    raise Exception(f"no valid converter found for game edition {game_edition.edition_name}")

@@ -49,10 +49,7 @@ class FSLikeObject(ABC):
         """
         pretty-format a path in this filesystem like object.
         """
-        return "[%s]:%s" % (
-            str(self),
-            b"/".join(parts).decode(errors='replace')
-        )
+        return f"[{str(self)}]:{b'/'.join(parts).decode(errors='replace')}"
 
     @abstractmethod
     def open_r(self, parts):

@@ -42,8 +42,8 @@ def convert(args):
     with open(outname, mode='wb') as fil:
         fil.write(out)
 
-    info("Wave size: %s", "{:>8}".format(len(wav)))
-    info("Opus size: %s (%s%)", "{:>8}".format(len(out)),
-         "{:2.1f}".format(100 * len(out) / len(wav)))
-    info("Encoding time: %s seconds.", "{:.3f}".format(tic))
+    info("Wave size: %s", f"{len(wav):>8}")
+    info("Opus size: %s (%s%)", f"{len(out):>8}",
+         f"{100 * len(out) / len(wav):2.1f}")
+    info("Encoding time: %s seconds.", f"{tic:.3f}")
     return 0

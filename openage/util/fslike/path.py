@@ -72,7 +72,7 @@ class Path:
         if not self.parts:
             return repr(self.fsobj) + ".root"
 
-        return "Path({}, {})".format(repr(self.fsobj), repr(self.parts))
+        return f"Path({repr(self.fsobj)}, {repr(self.parts)})"
 
     def exists(self):
         """ True if path exists """
