@@ -1,4 +1,4 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2020 the openage authors. See copying.md for legal info.
 
 """
 
@@ -81,7 +81,7 @@ def get_dir(which):
             raise Exception("could not reconstruct {}, "
                             "missing env variables: '{}'".format(
                                 which,
-                                [var for (var, val) in env_var.items()
+                                [var for (var, val) in env_vars.items()
                                  if val is None].join(", ")
                             ))
 
