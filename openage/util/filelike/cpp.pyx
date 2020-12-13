@@ -75,7 +75,7 @@ cdef class FileLikeCPPWrapper:
         elif whence == os.SEEK_END:
             whence_c = seek_t_END
         else:
-            raise ValueError("invalid whence: %s" % whence)
+            raise ValueError(f"invalid whence: {whence}")
 
         self.filelike.get().seek(offset, whence_c)
 

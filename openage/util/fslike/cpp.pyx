@@ -269,7 +269,7 @@ cdef File_cpp fs_open(object path, int mode) except *:
         elif mode == 4:
             access_mode = 'a+b'
         else:
-            raise ValueError("unknown file open mode id: %s" % mode)
+            raise ValueError(f"unknown file open mode id: {mode}")
 
         # open it the python-way and wrap it
         filelike = path.open(access_mode)
