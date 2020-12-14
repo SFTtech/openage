@@ -188,7 +188,7 @@ class SLP:
         return "".join(ret)
 
     def __repr__(self):
-        return f"SLP image<{len(self.main_frames)} frames>"
+        return f"SLP image<{len(self.main_frames):d} frames>"
 
 
 class FrameInfo:
@@ -344,10 +344,16 @@ cdef class SLPFrame:
         # verify size of generated row
         if row_data.size() != pixel_count:
             got = row_data.size()
-            summary = f"{got}/{pixel_count} -> row {rowid}, offset {first_cmd_offset} / {first_cmd_offset:#x}"
-            txt = f"got %s pixels than expected: {summary}, missing: {abs(pixel_count - got)}"
+            summary = (
+                f"{got:d}/{pixel_count:d} -> row {rowid:d}, "
+                f"offset {first_cmd_offset:d} / {first_cmd_offset:#x}"
+            )
+            message = (
+                f"got {'LESS' if got < pixel_count else 'MORE'} pixels than expected: {summary}, "
+                f"missing: {abs(pixel_count - got):d}"
+            )
 
-            raise Exception(txt % ("LESS" if got < pixel_count else "MORE"))
+            raise Exception(message)
 
         return row_data
 
@@ -442,8 +448,8 @@ cdef class SLPMainFrameAoC(SLPFrame):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    f"Only {expected_size} pixels should be drawn in row {rowid},"
-                    " but we have {row_data.size()} already!"
+                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d}, " +
+                    f"but we have {row_data.size():d} already!"
                 )
 
             # fetch drawing instruction
@@ -625,7 +631,7 @@ cdef class SLPMainFrameAoC(SLPFrame):
             else:
                 raise Exception(
                     f"unknown slp drawing command: " +
-                    f"{cmd:#x} in row {rowid}")
+                    f"{cmd:#x} in row {rowid:d}")
 
             dpos += 1
 
@@ -667,7 +673,8 @@ cdef class SLPMainFrameDE(SLPFrame):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    f"Only {expected_size} pixels should be drawn in row {rowid}, but we have {row_data.size()} already!"
+                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d}, "
+                    f"but we have {row_data.size():d} already!"
                 )
 
             # fetch drawing instruction
@@ -851,7 +858,7 @@ cdef class SLPMainFrameDE(SLPFrame):
             else:
                 raise Exception(
                     f"unknown slp drawing command: " +
-                    f"{cmd:#x} in row {rowid}")
+                    f"{cmd:#x} in row {rowid:d}")
 
             dpos += 1
 
@@ -893,7 +900,8 @@ cdef class SLPShadowFrame(SLPFrame):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    f"Only {expected_size} pixels should be drawn in row {rowid}, but we have {row_data.size()} already!"
+                    f"Only {expected_size} pixels should be drawn in row {rowid:d}, "
+                    f"but we have {row_data.size():d} already!"
                 )
 
             # fetch drawing instruction
@@ -974,7 +982,8 @@ cdef class SLPShadowFrame(SLPFrame):
             else:
                 raise Exception(
                     f"unknown slp shadow drawing command: " +
-                    f"{cmd:#x} in row {rowid}")
+                    f"{cmd:#x} in row {rowid:d}"
+                )
 
             dpos += 1
 

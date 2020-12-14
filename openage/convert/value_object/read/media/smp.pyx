@@ -153,7 +153,7 @@ class SMP:
 
                 else:
                     raise Exception(
-                        f"unknown layer type: {layer_header.layer_type} at offset {layer_header_offset}"
+                        f"unknown layer type: {layer_header.layer_type:#x} at offset {layer_header_offset:#x}"
                     )
                 spam(layer_header)
 
@@ -166,7 +166,7 @@ class SMP:
         return "".join(ret)
 
     def __repr__(self):
-        return f"SMP image<{len(self.main_frames)} frames>"
+        return f"SMP image<{len(self.main_frames):d} frames>"
 
 
 class SMPLayerHeader:
@@ -318,10 +318,17 @@ cdef class SMPLayer:
         # verify size of generated row
         if row_data.size() != pixel_count:
             got = row_data.size()
-            summary = f"{got}/{pixel_count} -> row {rowid}, layer type {self.info.layer_type}, offset {first_cmd_offset} / {first_cmd_offset:#x}"
-            txt = f"got %s pixels than expected: {summary}, missing: {abs(pixel_count - got)}"
+            summary = (
+                f"{got:d}/{pixel_count:d} -> row {rowid:d}, "
+                f"layer type {self.info.layer_type:x}, "
+                f"offset {first_cmd_offset:d} / {first_cmd_offset:#x}"
+            )
+            message = (
+                f"got {'LESS' if got < pixel_count else 'MORE'} pixels than expected: {summary}, "
+                f"missing: {abs(pixel_count - got):d}"
+            )
 
-            raise Exception(txt % ("LESS" if got < pixel_count else "MORE"))
+            raise Exception(message)
 
         return row_data
 
@@ -397,8 +404,8 @@ cdef class SMPMainLayer(SMPLayer):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    f"Only {expected_size} pixels should be drawn in row {rowid} "
-                    f"with layer type {self.info.layer_type}, but we have {row_data.size()}"
+                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d} " +
+                    f"with layer type {self.info.layer_type:#x}, but we have {row_data.size():d}"
                 )
 
             # fetch drawing instruction
@@ -470,7 +477,7 @@ cdef class SMPMainLayer(SMPLayer):
             else:
                 raise Exception(
                     f"unknown smp main graphics layer drawing command: " +
-                    f"{cmd:#x} in row {rowid}"
+                    f"{cmd:#x} in row {rowid:d}"
                 )
 
             # process next command
@@ -518,8 +525,8 @@ cdef class SMPShadowLayer(SMPLayer):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    f"Only {expected_size} pixels should be drawn in row {rowid} "
-                    f"with layer type {self.info.layer_type}, but we have {row_data.size()} "
+                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d} " +
+                    f"with layer type {self.info.layer_type:#x}, but we have {row_data.size():d} " +
                     f"already!"
                 )
 
@@ -577,7 +584,7 @@ cdef class SMPShadowLayer(SMPLayer):
             else:
                 raise Exception(
                     f"unknown smp shadow layer drawing command: " +
-                    f"{cmd:#x} in row {rowid}")
+                    f"{cmd:#x} in row {rowid:d}")
 
             # process next command
             dpos += 1
@@ -618,8 +625,8 @@ cdef class SMPOutlineLayer(SMPLayer):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    f"Only {expected_size} pixels should be drawn in row {rowid} "
-                    f"with layer type {self.info.layer_type}, but we have {row_data.size()} "
+                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d} " +
+                    f"with layer type {self.info.layer_type:#x}, but we have {row_data.size():d} "
                     f"already!"
                 )
 
@@ -664,7 +671,7 @@ cdef class SMPOutlineLayer(SMPLayer):
             else:
                 raise Exception(
                     f"unknown smp outline layer drawing command: " +
-                    f"{cmd:#x} in row {rowid}")
+                    f"{cmd:#x} in row {rowid:d}")
             # process next command
             dpos += 1
 

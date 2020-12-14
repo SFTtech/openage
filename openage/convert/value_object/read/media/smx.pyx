@@ -187,7 +187,7 @@ class SMX:
         return "".join(ret)
 
     def __repr__(self):
-        return f"{self.smp_type} image<{len(self.main_frames)} frames>"
+        return f"{self.smp_type} image<{len(self.main_frames):d} frames>"
 
 
 class SMXLayerHeader:
@@ -499,8 +499,8 @@ cdef class SMXMainLayer8to5(SMXLayer):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    f"Only {expected_size} pixels should be drawn in row {rowid} "
-                    f"with layer type {self.info.layer_type}, but we have {row_data.size()} "
+                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d} "
+                    f"with layer type {self.info.layer_type:#x}, but we have {row_data.size():d} "
                     f"already!"
                 )
 
@@ -643,8 +643,8 @@ cdef class SMXMainLayer8to5(SMXLayer):
 
             else:
                 raise Exception(
-                    "unknown smx main graphics layer drawing command: " +
-                    "{cmd:#x} in row {rowid}"
+                    f"unknown smx main graphics layer drawing command: " +
+                    f"{cmd:#x} in row {rowid:d}"
                     )
 
             # Process next command
@@ -693,8 +693,8 @@ cdef class SMXMainLayer4plus1(SMXLayer):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    f"Only {expected_size} pixels should be drawn in row {rowid} "
-                    f"with layer type {self.info.layer_type}, but we have {row_data.size()} "
+                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d} " +
+                    f"with layer type {self.info.layer_type:#x}, but we have {row_data.size():d} " +
                     f"already!"
                 )
 
@@ -782,7 +782,8 @@ cdef class SMXMainLayer4plus1(SMXLayer):
             else:
                 raise Exception(
                     f"unknown smx main graphics layer drawing command: " +
-                    f"{cmd:#x} in row {rowid}" % (cmd, rowid))
+                    f"{cmd:#x} in row {rowid:d}"
+                )
 
             # Process next command
             dpos_cmd += 1
@@ -823,8 +824,8 @@ cdef class SMXShadowLayer(SMXLayer):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    f"Only {expected_size} pixels should be drawn ifn row {rowid} "
-                    f"with layer type {self.info.layer_type}, but we have {row_data.size()} "
+                    f"Only {expected_size:d} pixels should be drawn ifn row {rowid:d} " +
+                    f"with layer type {self.info.layer_type:#x}, but we have {row_data.size():d} " +
                     f"already!"
                 )
 
@@ -879,9 +880,9 @@ cdef class SMXShadowLayer(SMXLayer):
 
             else:
                 raise Exception(
-                    "unknown smp shadow layer drawing command: " +
-                    "{cmd:#x} in row {rowid}"
-                    )
+                    f"unknown smp shadow layer drawing command: " +
+                    f"{cmd:#x} in row {rowid}"
+                )
 
             # process next command
             dpos += 1
@@ -923,8 +924,8 @@ cdef class SMXOutlineLayer(SMXLayer):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    f"Only {expected_size} pixels should be drawn in row {rowid} "
-                    f"with layer type {self.info.layer_type}, but we have {row_data.size()} "
+                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d} " +
+                    f"with layer type {self.info.layer_type:#x}, but we have {row_data.size():d} " +
                     f"already!"
                 )
 
@@ -971,7 +972,7 @@ cdef class SMXOutlineLayer(SMXLayer):
                 raise Exception(
                     f"unknown smp outline layer drawing command: " +
                     f"{cmd:#x} in row {rowid}"
-                    )
+                )
 
             # process next command
             dpos += 1
@@ -1058,7 +1059,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix, pa
                     alpha = 253
 
                 else:
-                    raise ValueError(f"unknown pixel type: {px_type}")
+                    raise ValueError(f"unknown pixel type: {px_type:#x}")
 
                 # Store player color index in g channel
                 r, b = 0, 0

@@ -11,8 +11,9 @@ import argparse
 from collections import namedtuple
 import itertools
 import logging
-import numpy
 import sys
+
+import numpy
 
 
 cimport cython
@@ -220,9 +221,9 @@ cdef do_output(show_badness, badness, point, idx):
     Print match coordinates and score.
     """
     if show_badness:
-        print(f"{badness} {point.x} {point.y} {idx}")
+        print(f"{badness:d} {point.x:d} {point.y:d} {idx:d}")
     else:
-        print(f"{point.x}, {point.y} {idx}")
+        print(f"{point.x:d}, {point.y:d} {idx:d}")
 
 
 cdef advance_point(point, img, start_x):
