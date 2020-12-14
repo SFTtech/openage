@@ -59,10 +59,7 @@ class NyanFile(DataDefinition):
         for alias, fqon in import_aliases.items():
             output_str += "import "
 
-            for part in fqon:
-                output_str += f"{part}."
-
-            output_str = output_str[:-1]
+            output_str += ".".join(fqon)
 
             output_str += f" as {alias}\n"
 
