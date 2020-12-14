@@ -3,10 +3,10 @@
 # cython: profile=False
 
 from enum import Enum
-import numpy
+import lz4.block
 from struct import Struct, unpack_from
 
-import lz4.block
+import numpy
 
 from .....log import spam, dbg
 
@@ -442,8 +442,8 @@ cdef class SLPMainFrameAoC(SLPFrame):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    f"Only {expected_size} pixels should be drawn in row {rowid}, but we have {row_data.size()} already!"
-                    )
+                    f"Only {expected_size} pixels should be drawn in row {rowid},"
+                    " but we have {row_data.size()} already!"
                 )
 
             # fetch drawing instruction
