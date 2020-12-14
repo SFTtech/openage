@@ -189,7 +189,7 @@ def main(args):
               "".format(num=issues_count,
                         plural=plural,
                         remainfound=remainfound))
-                        
+
         if not args.fix and fixes_possible:
             print("When invoked with --fix, I can try"
                   "to automatically resolve some of the issues.\n")

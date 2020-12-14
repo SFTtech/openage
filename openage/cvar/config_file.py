@@ -1,4 +1,4 @@
-# Copyright 2016-2018 the openage authors. See copying.md for legal info.
+# Copyright 2016-2020 the openage authors. See copying.md for legal info.
 
 """
 Load and save the configuration : file <-> console var system

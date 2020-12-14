@@ -1,4 +1,4 @@
-# Copyright 2017-2018 the openage authors. See copying.md for legal info.
+# Copyright 2017-2020 the openage authors. See copying.md for legal info.
 
 """
 Functions called from C++ to perform method calls on
