@@ -409,8 +409,8 @@ class AoCTechSubprocessor:
         patch_target_forward_ref = ForwardRef(tech_group, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sCostWrapper" % (tech_name)
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+        wrapper_name = f"Change{tech_name}CostWrapper"
+        wrapper_ref = f"{tech_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -419,8 +419,8 @@ class AoCTechSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sCost" % (tech_name)
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{tech_name}Cost"
+        nyan_patch_ref = f"{tech_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -492,12 +492,12 @@ class AoCTechSubprocessor:
         else:
             operator = MemberOperator.ADD
 
-        patch_target_ref = "%s.ResearchableTech" % (tech_name)
+        patch_target_ref = f"{tech_name}.ResearchableTech"
         patch_target_forward_ref = ForwardRef(tech_group, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sResearchTimeWrapper" % (tech_name)
-        wrapper_ref = "%s.%s" % (tech_name, wrapper_name)
+        wrapper_name = f"Change{tech_name}ResearchTimeWrapper"
+        wrapper_ref = f"{tech_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -506,8 +506,8 @@ class AoCTechSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sResearchTime" % (tech_name)
-        nyan_patch_ref = "%s.%s.%s" % (tech_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{tech_name}ResearchTime"
+        nyan_patch_ref = f"{tech_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,

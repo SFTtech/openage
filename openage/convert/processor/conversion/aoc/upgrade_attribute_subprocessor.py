@@ -54,12 +54,12 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.ShootProjectile.Projectile0.Projectile.Accuracy" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.ShootProjectile.Projectile0.Projectile.Accuracy"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sAccuracyWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}AccuracyWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -68,8 +68,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sAccuracy" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}Accuracy"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -146,7 +146,7 @@ class AoCUpgradeAttributeSubprocessor:
         class_name = armor_lookup_dict[armor_class]
 
         if line.has_armor(armor_class):
-            patch_target_ref = "%s.Resistance.%s.BlockAmount" % (game_entity_name, class_name)
+            patch_target_ref = f"{game_entity_name}.Resistance.{class_name}.BlockAmount"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         else:
@@ -154,8 +154,8 @@ class AoCUpgradeAttributeSubprocessor:
             return patches
 
         # Wrapper
-        wrapper_name = "Change%s%sResistanceWrapper" % (game_entity_name, class_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}{class_name}ResistanceWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -164,8 +164,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%s%sResistance" % (game_entity_name, class_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}{class_name}Resistance"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -259,7 +259,7 @@ class AoCUpgradeAttributeSubprocessor:
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         else:
-            patch_target_ref = "%s.Attack.%s.ChangeAmount" % (game_entity_name, class_name)
+            patch_target_ref = f"{game_entity_name}.Attack.{class_name}.ChangeAmount"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         if not line.has_attack(armor_class):
@@ -267,8 +267,8 @@ class AoCUpgradeAttributeSubprocessor:
             return patches
 
         # Wrapper
-        wrapper_name = "Change%s%sAttackWrapper" % (game_entity_name, class_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}{class_name}AttackWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -277,8 +277,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%s%sAttack" % (game_entity_name, class_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}{class_name}Attack"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -360,12 +360,12 @@ class AoCUpgradeAttributeSubprocessor:
         projectile_id1 = head_unit["attack_projectile_secondary_unit_id"].get_value()
 
         if projectile_id0 > -1:
-            patch_target_ref = "%s.ShootProjectile.Projectile0.Projectile" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.ShootProjectile.Projectile0.Projectile"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%sProjectile0TargetModeWrapper" % (game_entity_name)
-            wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+            wrapper_name = f"Change{game_entity_name}Projectile0TargetModeWrapper"
+            wrapper_ref = f"{obj_name}.{wrapper_name}"
             wrapper_location = ForwardRef(converter_group, obj_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
@@ -374,8 +374,8 @@ class AoCUpgradeAttributeSubprocessor:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
             # Nyan patch
-            nyan_patch_name = "Change%sProjectile0TargetMode" % (game_entity_name)
-            nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}Projectile0TargetMode"
+            nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
@@ -411,12 +411,12 @@ class AoCUpgradeAttributeSubprocessor:
             patches.append(wrapper_forward_ref)
 
         if projectile_id1 > -1:
-            patch_target_ref = "%s.ShootProjectile.Projectile1.Projectile" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.ShootProjectile.Projectile1.Projectile"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%sProjectile1TargetModeWrapper" % (game_entity_name)
-            wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+            wrapper_name = f"Change{game_entity_name}Projectile1TargetModeWrapper"
+            wrapper_ref = f"{obj_name}.{wrapper_name}"
             wrapper_location = ForwardRef(converter_group, obj_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
@@ -425,8 +425,8 @@ class AoCUpgradeAttributeSubprocessor:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
             # Nyan patch
-            nyan_patch_name = "Change%sProjectile1TargetMode" % (game_entity_name)
-            nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}Projectile1TargetMode"
+            nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
@@ -558,8 +558,8 @@ class AoCUpgradeAttributeSubprocessor:
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sFoodCostWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}FoodCostWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -568,8 +568,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sFoodCost" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}FoodCost"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -657,8 +657,8 @@ class AoCUpgradeAttributeSubprocessor:
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sWoodCostWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}WoodCostWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -667,8 +667,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sWoodCost" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}WoodCost"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -756,8 +756,8 @@ class AoCUpgradeAttributeSubprocessor:
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sGoldCostWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}GoldCostWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -766,8 +766,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sGoldCost" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}GoldCost"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -855,8 +855,8 @@ class AoCUpgradeAttributeSubprocessor:
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sStoneCostWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}StoneCostWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -865,8 +865,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sStoneCost" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}StoneCost"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -937,12 +937,12 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.CreatableGameEntity" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.CreatableGameEntity"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sCreationTimeWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}CreationTimeWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -951,8 +951,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sCreationTime" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}CreationTime"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -1027,12 +1027,12 @@ class AoCUpgradeAttributeSubprocessor:
             # TODO: Patch ability in
             return patches
 
-        patch_target_ref = "%s.Storage.%sContainer" % (game_entity_name, game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Storage.{game_entity_name}Container"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sCreationTimeWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}CreationTimeWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -1041,8 +1041,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sCreationTime" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}CreationTime"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -1157,12 +1157,12 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.Live.Health" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Live.Health"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sMaxHealthWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}MaxHealthWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -1171,8 +1171,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sMaxHealth" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}MaxHealth"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -1243,12 +1243,12 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.LineOfSight" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.LineOfSight"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sLineOfSightWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}LineOfSightWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -1257,8 +1257,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sLineOfSight" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}LineOfSight"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -1329,12 +1329,12 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.Attack" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Attack"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sMaxProjectilesWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}MaxProjectilesWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -1343,8 +1343,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sMaxProjectiles" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}MaxProjectiles"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -1415,12 +1415,12 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.Attack" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Attack"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sMinProjectilesWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}MinProjectilesWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -1429,8 +1429,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sMinProjectiles" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}MinProjectiles"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -1502,13 +1502,13 @@ class AoCUpgradeAttributeSubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         if line.is_projectile_shooter():
-            patch_target_ref = "%s.Attack" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.Attack"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
             patch_target_parent = "engine.ability.type.ShootProjectile"
 
         elif line.is_melee():
             if line.is_ranged():
-                patch_target_ref = "%s.Attack" % (game_entity_name)
+                patch_target_ref = f"{game_entity_name}.Attack"
                 patch_target_forward_ref = ForwardRef(line, patch_target_ref)
                 patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
 
@@ -1517,7 +1517,7 @@ class AoCUpgradeAttributeSubprocessor:
                 return patches
 
         elif line.has_command(104):
-            patch_target_ref = "%s.Convert" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.Convert"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
             patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
 
@@ -1526,8 +1526,8 @@ class AoCUpgradeAttributeSubprocessor:
             return patches
 
         # Wrapper
-        wrapper_name = "Change%sMaxRangeWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}MaxRangeWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -1536,8 +1536,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sMaxRange" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}MaxRange"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -1609,23 +1609,23 @@ class AoCUpgradeAttributeSubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         if line.is_projectile_shooter():
-            patch_target_ref = "%s.Attack" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.Attack"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
             patch_target_parent = "engine.ability.type.ShootProjectile"
 
         elif line.is_melee():
-            patch_target_ref = "%s.Attack" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.Attack"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
             patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
 
         elif line.has_command(104):
-            patch_target_ref = "%s.Convert" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.Convert"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
             patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
 
         # Wrapper
-        wrapper_name = "Change%sMinRangeWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}MinRangeWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -1634,8 +1634,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sMinRange" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}MinRange"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -1706,12 +1706,12 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.Move" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Move"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sMoveSpeedWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}MoveSpeedWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -1720,8 +1720,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sMoveSpeed" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}MoveSpeed"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -1815,17 +1815,17 @@ class AoCUpgradeAttributeSubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         if line.is_projectile_shooter():
-            patch_target_ref = "%s.Attack" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.Attack"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
             patch_target_parent = "engine.ability.type.ShootProjectile"
 
         elif line.is_melee():
-            patch_target_ref = "%s.Attack" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.Attack"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
             patch_target_parent = "engine.ability.type.ApplyDiscreteEffect"
 
         elif line.has_command(104):
-            patch_target_ref = "%s.Convert" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.Convert"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
             patch_target_parent = "engine.ability.type.ApplyDiscreteEffect"
 
@@ -1834,8 +1834,8 @@ class AoCUpgradeAttributeSubprocessor:
             return patches
 
         # Wrapper
-        wrapper_name = "Change%sReloadTimeWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}ReloadTimeWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -1844,8 +1844,8 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sReloadTime" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}ReloadTime"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -1951,9 +1951,8 @@ class AoCUpgradeAttributeSubprocessor:
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%s%sCostWrapper" % (game_entity_name,
-                                                      resource_name)
-            wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+            wrapper_name = f"Change{game_entity_name}{resource_name}CostWrapper"
+            wrapper_ref = f"{obj_name}.{wrapper_name}"
             wrapper_location = ForwardRef(converter_group, obj_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
@@ -1962,9 +1961,8 @@ class AoCUpgradeAttributeSubprocessor:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
             # Nyan patch
-            nyan_patch_name = "Change%s%sCost" % (game_entity_name,
-                                                  resource_name)
-            nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}{resource_name}Cost"
+            nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,
@@ -2036,19 +2034,19 @@ class AoCUpgradeAttributeSubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         if line.is_harvestable():
-            patch_target_ref = "%s.Harvestable.%sResourceSpot" % (game_entity_name, game_entity_name)
+            patch_target_ref = f"{game_entity_name}.Harvestable.{game_entity_name}ResourceSpot"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
-            wrapper_name = "Change%sHarvestableAmountWrapper" % (game_entity_name)
-            nyan_patch_name = "Change%sHarvestableAmount" % (game_entity_name)
+            wrapper_name = f"Change{game_entity_name}HarvestableAmountWrapper"
+            nyan_patch_name = f"Change{game_entity_name}HarvestableAmount"
 
         else:
-            patch_target_ref = "%s.ProvideContingent.PopSpace" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.ProvideContingent.PopSpace"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
-            wrapper_name = "Change%sPopSpaceWrapper" % (game_entity_name)
-            nyan_patch_name = "Change%sPopSpace" % (game_entity_name)
+            wrapper_name = f"Change{game_entity_name}PopSpaceWrapper"
+            nyan_patch_name = f"Change{game_entity_name}PopSpace"
 
         # Wrapper
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -2057,7 +2055,7 @@ class AoCUpgradeAttributeSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -2164,12 +2162,12 @@ class AoCUpgradeAttributeSubprocessor:
         stance_names = ["Aggressive", "Defensive", "StandGround", "Passive"]
 
         for stance_name in stance_names:
-            patch_target_ref = "%s.GameEntityStance.%s" % (game_entity_name, stance_name)
+            patch_target_ref = f"{game_entity_name}.GameEntityStance.{stance_name}"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%s%sSearchRangeWrapper" % (game_entity_name, stance_name)
-            wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+            wrapper_name = f"Change{game_entity_name}{stance_name}SearchRangeWrapper"
+            wrapper_ref = f"{obj_name}.{wrapper_name}"
             wrapper_location = ForwardRef(converter_group, obj_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
@@ -2178,8 +2176,8 @@ class AoCUpgradeAttributeSubprocessor:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
             # Nyan patch
-            nyan_patch_name = "Change%s%sSearchRange" % (game_entity_name, stance_name)
-            nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}{stance_name}SearchRange"
+            nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,

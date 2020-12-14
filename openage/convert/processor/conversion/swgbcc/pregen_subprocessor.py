@@ -84,7 +84,7 @@ class SWGBCCPregenSubprocessor:
         types_location = "data/aux/attribute_change_type/"
 
         for type_name in armor_lookup_dict.values():
-            type_ref_in_modpack = "aux.attribute_change_type.types.%s" % (type_name)
+            type_ref_in_modpack = f"aux.attribute_change_type.types.{type_name}"
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
                                                type_name, api_objects,
                                                types_location)
@@ -123,9 +123,9 @@ class SWGBCCPregenSubprocessor:
             else:
                 game_entity_name = name_lookup_dict[repairable_line.get_head_unit_id()][0]
 
-            type_ref_in_modpack = "aux.attribute_change_type.types.%sRepair" % (game_entity_name)
+            type_ref_in_modpack = f"aux.attribute_change_type.types.{game_entity_name}Repair"
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
-                                               "%sRepair" % (game_entity_name),
+                                               f"{game_entity_name}Repair",
                                                api_objects,
                                                types_location)
             type_raw_api_object.set_filename("types")
@@ -143,9 +143,9 @@ class SWGBCCPregenSubprocessor:
         for constructable_line in constructable_lines:
             game_entity_name = name_lookup_dict[constructable_line.get_head_unit_id()][0]
 
-            type_ref_in_modpack = "aux.attribute_change_type.types.%sConstruct" % (game_entity_name)
+            type_ref_in_modpack = f"aux.attribute_change_type.types.{game_entity_name}Construct"
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
-                                               "%sConstruct" % (game_entity_name),
+                                               f"{game_entity_name}Construct",
                                                api_objects,
                                                types_location)
             type_raw_api_object.set_filename("types")
@@ -160,9 +160,9 @@ class SWGBCCPregenSubprocessor:
         for constructable_line in constructable_lines:
             game_entity_name = name_lookup_dict[constructable_line.get_head_unit_id()][0]
 
-            type_ref_in_modpack = "aux.construct_type.types.%sConstruct" % (game_entity_name)
+            type_ref_in_modpack = f"aux.construct_type.types.{game_entity_name}Construct"
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
-                                               "%sConstruct" % (game_entity_name),
+                                               f"{game_entity_name}Construct",
                                                api_objects,
                                                types_location)
             type_raw_api_object.set_filename("types")

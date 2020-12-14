@@ -28,8 +28,7 @@ class DataDefinition:
         self.targetdir = targetdir
 
         if not isinstance(filename, str):
-            raise ValueError("str expected as filename, not %s" %
-                             type(filename))
+            raise ValueError(f"str expected as filename, not {type(filename)}")
 
         self.filename = filename
 
@@ -37,8 +36,7 @@ class DataDefinition:
         """
         Creates a human-readable string that can be written to a file.
         """
-        raise NotImplementedError("%s has not implemented dump() method"
-                                  % (type(self)))
+        raise NotImplementedError(f"{type(self)} has not implemented dump() method")
 
     def save(self, exportdir):
         """
@@ -66,8 +64,7 @@ class DataDefinition:
         :type filename: str
         """
         if not isinstance(filename, str):
-            raise ValueError("str expected as filename, not %s" %
-                             type(filename))
+            raise ValueError(f"str expected as filename, not {type(filename)}")
 
         self.filename = filename
 
@@ -84,4 +81,4 @@ class DataDefinition:
         self.targetdir = targetdir
 
     def __repr__(self):
-        return "DataDefinition<%s>" % (type(self))
+        return f"DataDefinition<{type(self)}>"

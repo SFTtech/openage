@@ -54,8 +54,7 @@ class NyanObject:
             self._nested_objects.update(nested_objects)
 
             for nested_object in self._nested_objects:
-                nested_object.set_fqon("%s.%s" % (self._fqon,
-                                                  nested_object.get_name()))
+                nested_object.set_fqon(f"{self._fqon}.{nested_object.get_name()}")
 
         # Set of children
         self._children = OrderedSet()
@@ -196,7 +195,7 @@ class NyanObject:
                 if member.get_name() == member_name:
                     return member
 
-        raise Exception("%s has no member '%s'" % (self, member_name))
+        raise Exception(f"{self} has no member '{member_name}'")
 
     def get_name(self):
         """
@@ -259,8 +258,7 @@ class NyanObject:
             self._fqon = new_fqon
 
         else:
-            raise Exception("%s: Fqon must be a tuple(str) not %s"
-                            % (self, type(new_fqon)))
+            raise Exception(f"{self}: Fqon must be a tuple(str) not {type(new_fqon)}")
 
         # Recursively set fqon for nested objects
         for nested_object in self._nested_objects:
@@ -307,7 +305,7 @@ class NyanObject:
         Returns the string representation of the object.
         """
         # Header
-        output_str = "%s" % (self.get_name())
+        output_str = f"{self.get_name()}"
 
         output_str += self._prepare_inheritance_content(import_tree=import_tree)
 
@@ -370,7 +368,7 @@ class NyanObject:
 
         # Empty objects need a 'pass' line
         if empty:
-            output_str += "%spass\n\n" % ((indent_depth + 1) * INDENT)
+            output_str += f"{(indent_depth + 1) * INDENT}pass\n\n"
 
         return output_str
 
@@ -391,7 +389,7 @@ class NyanObject:
                 else:
                     sfqon = ".".join(parent.get_fqon())
 
-                output_str += "%s, " % (sfqon)
+                output_str += f"{sfqon}, "
 
             output_str = output_str[:-2]
 
@@ -413,12 +411,11 @@ class NyanObject:
         """
         # self.name must be a string
         if not isinstance(self.name, str):
-            raise Exception("%s: 'name' must be a string" % (self.__repr__()))
+            raise Exception(f"{self.__repr__()}: 'name' must be a string")
 
         # self.name must conform to nyan grammar rules
         if not re.fullmatch(r"[a-zA-Z_][a-zA-Z0-9_]*", self.name):
-            raise Exception("%s: 'name' is not well-formed" %
-                            (self.__repr__()))
+            raise Exception(f"{self.__repr__()}: 'name' is not well-formed")
 
         # self._parents must be NyanObjects
         for parent in self._parents:
@@ -449,7 +446,7 @@ class NyanObject:
                                 % (self.__repr__()))
 
     def __repr__(self):
-        return "NyanObject<%s>" % (self.name)
+        return f"NyanObject<{self.name}>"
 
 
 class NyanPatch(NyanObject):
@@ -495,15 +492,14 @@ class NyanPatch(NyanObject):
         self._target = target
 
         if not isinstance(self._target, NyanObject):
-            raise Exception("%s: '_target' must have NyanObject type"
-                            % (self.__repr__()))
+            raise Exception(f"{self.__repr__()}: '_target' must have NyanObject type")
 
     def dump(self, indent_depth=0, import_tree=None):
         """
         Returns the string representation of the object.
         """
         # Header
-        output_str = "%s" % (self.get_name())
+        output_str = f"{self.get_name()}"
 
         if import_tree:
             sfqon = ".".join(import_tree.get_alias_fqon(self._target.get_fqon()))
@@ -511,7 +507,7 @@ class NyanPatch(NyanObject):
         else:
             sfqon = ".".join(self._target.get_fqon())
 
-        output_str += "<%s>" % (sfqon)
+        output_str += f"<{sfqon}>"
 
         if len(self._add_inheritance) > 0:
             output_str += "["
@@ -524,9 +520,9 @@ class NyanPatch(NyanObject):
                     sfqon = ".".join(new_inheritance.get_fqon())
 
                 if new_inheritance[0] == "FRONT":
-                    output_str += "+%s, " % (sfqon)
+                    output_str += f"+{sfqon}, "
                 elif new_inheritance[0] == "BACK":
-                    output_str += "%s+, " % (sfqon)
+                    output_str += f"{sfqon}+, "
 
             output_str = output_str[:-2] + "]"
 
@@ -572,7 +568,7 @@ class NyanPatch(NyanObject):
                                     % (self.__repr__()))
 
     def __repr__(self):
-        return "NyanPatch<%s<%s>>" % (self.name, self._target.name)
+        return f"NyanPatch<{self.name}<{self._target.name}>>"
 
 
 class NyanMember:
@@ -706,7 +702,7 @@ class NyanMember:
         """
         Returns the nyan string representation of the member.
         """
-        output_str = "%s" % (self.name)
+        output_str = f"{self.name}"
 
         type_str = ""
 
@@ -723,10 +719,10 @@ class NyanMember:
             type_str = self._member_type.value
 
         if self._optional:
-            output_str += " : optional(%s)" % (type_str)
+            output_str += f" : optional({type_str})"
 
         else:
-            output_str += " : %s" % (type_str)
+            output_str += f" : {type_str}"
 
         if self.is_complex():
             if isinstance(self._set_type, NyanObject):
@@ -736,10 +732,10 @@ class NyanMember:
                 else:
                     sfqon = ".".join(self._set_type.get_fqon())
 
-                output_str += "(%s)" % (sfqon)
+                output_str += f"({sfqon})"
 
             else:
-                output_str += "(%s)" % (self._set_type.value)
+                output_str += f"({self._set_type.value})"
 
         if self.is_initialized():
             output_str += " %s%s %s" % ("@" * self._override_depth,
@@ -765,13 +761,11 @@ class NyanMember:
         """
         # self.name must be a string
         if not isinstance(self.name, str):
-            raise Exception("%s: 'name' must be a string"
-                            % (self.__repr__()))
+            raise Exception(f"{self.__repr__()}: 'name' must be a string")
 
         # self.name must conform to nyan grammar rules
         if not re.fullmatch(r"[a-zA-Z_][a-zA-Z0-9_]*", self.name[0]):
-            raise Exception("%s: 'name' is not well-formed"
-                            % (self.__repr__()))
+            raise Exception(f"{self.__repr__()}: 'name' is not well-formed")
 
         if self.is_complex():
             # if the member type is complex, then the set type needs
@@ -911,10 +905,10 @@ class NyanMember:
         Subroutine of _get_str_representation()
         """
         if member_type is MemberType.FLOAT:
-            return "%sf" % value
+            return f"{value}f"
 
         elif member_type in (MemberType.TEXT, MemberType.FILE):
-            return "\"%s\"" % (value)
+            return f"\"{value}\""
 
         elif isinstance(member_type, NyanObject):
             if import_tree:
@@ -925,14 +919,14 @@ class NyanMember:
 
             return sfqon
 
-        return "%s" % value
+        return f"{value}"
 
     def _get_str_representation(self, import_tree=None):
         """
         Returns the nyan string representation of the value.
         """
         if not self.is_initialized():
-            return "UNINITIALIZED VALUE %s" % self.__repr__()
+            return f"UNINITIALIZED VALUE {self.__repr__()}"
 
         if self._optional and self.value is MemberSpecialValue.NYAN_NONE:
             return MemberSpecialValue.NYAN_NONE.value
@@ -977,13 +971,13 @@ class NyanMember:
             return sfqon
 
         else:
-            raise Exception("%s has no valid type" % self.__repr__())
+            raise Exception(f"{self.__repr__()} has no valid type")
 
     def __str__(self):
         return self._get_str_representation()
 
     def __repr__(self):
-        return "NyanMember<%s: %s>" % (self.name, self._member_type)
+        return f"NyanMember<{self.name}: {self._member_type}>"
 
 
 class NyanPatchMember(NyanMember):
@@ -1015,7 +1009,7 @@ class NyanPatchMember(NyanMember):
         """
         Returns the name of the member in <member_origin>.<name> form.
         """
-        return "%s.%s" % (self._member_origin.name, self.name)
+        return f"{self._member_origin.name}.{self.name}"
 
     def dump(self, import_tree=None):
         """
@@ -1042,13 +1036,11 @@ class NyanPatchMember(NyanMember):
 
         # patch target must be a nyan object
         if not isinstance(self._patch_target, NyanObject):
-            raise Exception("%s: '_patch_target' must have NyanObject type"
-                            % (self))
+            raise Exception(f"{self}: '_patch_target' must have NyanObject type")
 
         # member origin must be a nyan object
         if not isinstance(self._member_origin, NyanObject):
-            raise Exception("%s: '_member_origin' must have NyanObject type"
-                            % (self))
+            raise Exception(f"{self}: '_member_origin' must have NyanObject type")
 
     def _get_target_member_type(self, name, origin):
         """
@@ -1059,7 +1051,7 @@ class NyanPatchMember(NyanMember):
         return target_member.get_member_type(), target_member.get_set_type()
 
     def __repr__(self):
-        return "NyanPatchMember<%s: %s>" % (self.name, self._member_type)
+        return f"NyanPatchMember<{self.name}: {self._member_type}>"
 
 
 class InheritedNyanMember(NyanMember):
@@ -1087,7 +1079,7 @@ class InheritedNyanMember(NyanMember):
         """
         Returns the name of the member in <origin>.<name> form.
         """
-        return "%s.%s" % (self._origin.name, self.name)
+        return f"{self._origin.name}.{self.name}"
 
     def get_origin(self):
         """
@@ -1145,16 +1137,14 @@ class InheritedNyanMember(NyanMember):
 
         # parent must be a nyan object
         if not isinstance(self._parent, NyanObject):
-            raise Exception("%s: '_parent' must have NyanObject type"
-                            % (self.__repr__()))
+            raise Exception(f"{self.__repr__()}: '_parent' must have NyanObject type")
 
         # origin must be a nyan object
         if not isinstance(self._origin, NyanObject):
-            raise Exception("%s: '_origin' must have NyanObject type"
-                            % (self.__repr__()))
+            raise Exception(f"{self.__repr__()}: '_origin' must have NyanObject type")
 
     def __repr__(self):
-        return "InheritedNyanMember<%s: %s>" % (self.name, self._member_type)
+        return f"InheritedNyanMember<{self.name}: {self._member_type}>"
 
 
 class MemberType(Enum):

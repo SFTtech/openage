@@ -131,6 +131,7 @@ _the openage authors_ are:
 | Sean Ramey                  | SeanRamey                   | sramey40 à gmail dawt com                         |
 | D R Siddhartha              | drs-11                      | siddharthadr11 à gmail dawt com                   |
 | Martin Matějek              | mmtj                        | martin dawt matejek à gmx dawt com                |
+| Tobias Feldballe            | Namabilis                   | tobias à osandweb dawt dk                         |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

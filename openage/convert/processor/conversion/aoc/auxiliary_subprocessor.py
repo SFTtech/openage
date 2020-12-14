@@ -42,8 +42,8 @@ class AoCAuxiliarySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        obj_ref = "%s.CreatableGameEntity" % (game_entity_name)
-        obj_name = "%sCreatable" % (game_entity_name)
+        obj_ref = f"{game_entity_name}.CreatableGameEntity"
+        obj_name = f"{game_entity_name}Creatable"
         creatable_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
         creatable_raw_api_object.add_raw_parent("engine.aux.create.CreatableGameEntity")
 
@@ -72,7 +72,7 @@ class AoCAuxiliarySubprocessor:
         else:
             # Add object to the train location's Create ability
             creatable_location = ForwardRef(train_location,
-                                            "%s.Create" % (train_location_name))
+                                            f"{train_location_name}.Create")
 
         creatable_raw_api_object.set_location(creatable_location)
 
@@ -83,9 +83,9 @@ class AoCAuxiliarySubprocessor:
                                                 "engine.aux.create.CreatableGameEntity")
 
         # Cost (construction)
-        cost_name = "%s.CreatableGameEntity.%sCost" % (game_entity_name, game_entity_name)
+        cost_name = f"{game_entity_name}.CreatableGameEntity.{game_entity_name}Cost"
         cost_raw_api_object = RawAPIObject(cost_name,
-                                           "%sCost" % (game_entity_name),
+                                           f"{game_entity_name}Cost",
                                            dataset.nyan_api_objects)
         cost_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
         creatable_forward_ref = ForwardRef(line, obj_ref)
@@ -101,7 +101,7 @@ class AoCAuxiliarySubprocessor:
             cost_repair_name = "%s.CreatableGameEntity.%sRepairCost" % (game_entity_name,
                                                                         game_entity_name)
             cost_repair_raw_api_object = RawAPIObject(cost_repair_name,
-                                                      "%sRepairCost" % (game_entity_name),
+                                                      f"{game_entity_name}RepairCost",
                                                       dataset.nyan_api_objects)
             cost_repair_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
             creatable_forward_ref = ForwardRef(line, obj_ref)
@@ -150,9 +150,9 @@ class AoCAuxiliarySubprocessor:
 
             amount = resource_amount["amount"].get_value()
 
-            cost_amount_name = "%s.%sAmount" % (cost_name, resource_name)
+            cost_amount_name = f"{cost_name}.{resource_name}Amount"
             cost_amount = RawAPIObject(cost_amount_name,
-                                       "%sAmount" % resource_name,
+                                       f"{resource_name}Amount",
                                        dataset.nyan_api_objects)
             cost_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
             cost_forward_ref = ForwardRef(line, cost_name)
@@ -171,9 +171,9 @@ class AoCAuxiliarySubprocessor:
 
             if line.is_repairable():
                 # Cost for repairing = half of the construction cost
-                cost_amount_name = "%s.%sAmount" % (cost_repair_name, resource_name)
+                cost_amount_name = f"{cost_repair_name}.{resource_name}Amount"
                 cost_amount = RawAPIObject(cost_amount_name,
-                                           "%sAmount" % resource_name,
+                                           f"{resource_name}Amount",
                                            dataset.nyan_api_objects)
                 cost_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
                 cost_forward_ref = ForwardRef(line, cost_repair_name)
@@ -219,7 +219,7 @@ class AoCAuxiliarySubprocessor:
         creation_sound_id = current_unit["train_sound_id"].get_value()
 
         # Create sound object
-        obj_name = "%s.CreatableGameEntity.Sound" % (game_entity_name)
+        obj_name = f"{game_entity_name}.CreatableGameEntity.Sound"
         sound_raw_api_object = RawAPIObject(obj_name, "CreationSound",
                                             dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
@@ -240,7 +240,7 @@ class AoCAuxiliarySubprocessor:
             else:
                 creation_sound = CombinedSound(creation_sound_id,
                                                file_id,
-                                               "creation_sound_%s" % (creation_sound_id),
+                                               f"creation_sound_{creation_sound_id}",
                                                dataset)
                 dataset.combined_sounds.update({file_id: creation_sound})
                 creation_sound.add_reference(sound_raw_api_object)
@@ -278,13 +278,13 @@ class AoCAuxiliarySubprocessor:
         if isinstance(line, GenieBuildingLineGroup):
             # Buildings are placed on the map
             # Place mode
-            obj_name = "%s.CreatableGameEntity.Place" % (game_entity_name)
+            obj_name = f"{game_entity_name}.CreatableGameEntity.Place"
             place_raw_api_object = RawAPIObject(obj_name,
                                                 "Place",
                                                 dataset.nyan_api_objects)
             place_raw_api_object.add_raw_parent("engine.aux.placement_mode.type.Place")
             place_location = ForwardRef(line,
-                                        "%s.CreatableGameEntity" % (game_entity_name))
+                                        f"{game_entity_name}.CreatableGameEntity")
             place_raw_api_object.set_location(place_location)
 
             # Tile snap distance (uses 1.0 for grid placement)
@@ -323,13 +323,13 @@ class AoCAuxiliarySubprocessor:
 
             if line.get_class_id() == 39:
                 # Gates
-                obj_name = "%s.CreatableGameEntity.Replace" % (game_entity_name)
+                obj_name = f"{game_entity_name}.CreatableGameEntity.Replace"
                 replace_raw_api_object = RawAPIObject(obj_name,
                                                       "Replace",
                                                       dataset.nyan_api_objects)
                 replace_raw_api_object.add_raw_parent("engine.aux.placement_mode.type.Replace")
                 replace_location = ForwardRef(line,
-                                              "%s.CreatableGameEntity" % (game_entity_name))
+                                              f"{game_entity_name}.CreatableGameEntity")
                 replace_raw_api_object.set_location(replace_location)
 
                 # Game entities (only stone wall)
@@ -350,12 +350,12 @@ class AoCAuxiliarySubprocessor:
             placement_modes.append(dataset.nyan_api_objects["engine.aux.placement_mode.type.Eject"])
 
             # OwnStorage mode
-            obj_name = "%s.CreatableGameEntity.OwnStorage" % (game_entity_name)
+            obj_name = f"{game_entity_name}.CreatableGameEntity.OwnStorage"
             own_storage_raw_api_object = RawAPIObject(obj_name, "OwnStorage",
                                                       dataset.nyan_api_objects)
             own_storage_raw_api_object.add_raw_parent("engine.aux.placement_mode.type.OwnStorage")
             own_storage_location = ForwardRef(line,
-                                              "%s.CreatableGameEntity" % (game_entity_name))
+                                              f"{game_entity_name}.CreatableGameEntity")
             own_storage_raw_api_object.set_location(own_storage_location)
 
             # Container
@@ -397,8 +397,8 @@ class AoCAuxiliarySubprocessor:
         research_location_name = name_lookup_dict[research_location_id][0]
         tech_name = tech_lookup_dict[tech_group.get_id()][0]
 
-        obj_ref = "%s.ResearchableTech" % (tech_name)
-        obj_name = "%sResearchable" % (tech_name)
+        obj_ref = f"{tech_name}.ResearchableTech"
+        obj_name = f"{tech_name}Researchable"
         researchable_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
         researchable_raw_api_object.add_raw_parent("engine.aux.research.ResearchableTech")
 
@@ -414,7 +414,7 @@ class AoCAuxiliarySubprocessor:
         else:
             # Add object to the research location's Research ability
             researchable_location = ForwardRef(research_location,
-                                               "%s.Research" % (research_location_name))
+                                               f"{research_location_name}.Research")
 
         researchable_raw_api_object.set_location(researchable_location)
 
@@ -425,9 +425,9 @@ class AoCAuxiliarySubprocessor:
                                                    "engine.aux.research.ResearchableTech")
 
         # Cost
-        cost_ref = "%s.ResearchableTech.%sCost" % (tech_name, tech_name)
+        cost_ref = f"{tech_name}.ResearchableTech.{tech_name}Cost"
         cost_raw_api_object = RawAPIObject(cost_ref,
-                                           "%sCost" % (tech_name),
+                                           f"{tech_name}Cost",
                                            dataset.nyan_api_objects)
         cost_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
         tech_forward_ref = ForwardRef(tech_group, obj_ref)
@@ -474,9 +474,9 @@ class AoCAuxiliarySubprocessor:
 
             amount = resource_amount["amount"].get_value()
 
-            cost_amount_ref = "%s.%sAmount" % (cost_ref, resource_name)
+            cost_amount_ref = f"{cost_ref}.{resource_name}Amount"
             cost_amount = RawAPIObject(cost_amount_ref,
-                                       "%sAmount" % resource_name,
+                                       f"{resource_name}Amount",
                                        dataset.nyan_api_objects)
             cost_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
             cost_forward_ref = ForwardRef(tech_group, cost_ref)
@@ -509,12 +509,12 @@ class AoCAuxiliarySubprocessor:
                                                    "engine.aux.research.ResearchableTech")
 
         # Create sound object
-        sound_ref = "%s.ResearchableTech.Sound" % (tech_name)
+        sound_ref = f"{tech_name}.ResearchableTech.Sound"
         sound_raw_api_object = RawAPIObject(sound_ref, "ResearchSound",
                                             dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
         sound_location = ForwardRef(tech_group,
-                                    "%s.ResearchableTech" % (tech_name))
+                                    f"{tech_name}.ResearchableTech")
         sound_raw_api_object.set_location(sound_location)
 
         # AoE doesn't support sounds here, so this is empty
@@ -569,20 +569,19 @@ class AoCAuxiliarySubprocessor:
                 initiated_tech = dataset.initiated_techs[tech_id]
                 building_id = initiated_tech.get_building_id()
                 building_name = name_lookup_dict[building_id][0]
-                literal_name = "%sBuilt" % (building_name)
+                literal_name = f"{building_name}Built"
                 literal_parent = "engine.aux.logic.literal.type.GameEntityProgress"
 
             elif dataset.tech_groups[tech_id].is_researchable():
                 tech_name = tech_lookup_dict[tech_id][0]
-                literal_name = "%sResearched" % (tech_name)
+                literal_name = f"{tech_name}Researched"
                 literal_parent = "engine.aux.logic.literal.type.TechResearched"
 
             else:
                 raise Exception("Required tech id %s is neither intiated nor researchable"
                                 % (tech_id))
 
-            literal_ref = "%s.%s" % (obj_ref,
-                                     literal_name)
+            literal_ref = f"{obj_ref}.{literal_name}"
             literal_raw_api_object = RawAPIObject(literal_ref,
                                                   literal_name,
                                                   dataset.nyan_api_objects)
@@ -601,7 +600,7 @@ class AoCAuxiliarySubprocessor:
 
                 # Progress
                 # =======================================================================
-                progress_ref = "%s.ProgressStatus" % (literal_ref)
+                progress_ref = f"{literal_ref}.ProgressStatus"
                 progress_raw_api_object = RawAPIObject(progress_ref,
                                                        "ProgressStatus",
                                                        dataset.nyan_api_objects)
@@ -636,7 +635,7 @@ class AoCAuxiliarySubprocessor:
 
             # LiteralScope
             # ==========================================================================
-            scope_ref = "%s.LiteralScope" % (literal_ref)
+            scope_ref = f"{literal_ref}.LiteralScope"
             scope_raw_api_object = RawAPIObject(scope_ref,
                                                 "LiteralScope",
                                                 dataset.nyan_api_objects)
@@ -703,7 +702,7 @@ class AoCAuxiliarySubprocessor:
                                                               obj_ref,
                                                               required_tech_id)
 
-            gate_ref = "%s.UnlockCondition" % (obj_ref)
+            gate_ref = f"{obj_ref}.UnlockCondition"
             gate_raw_api_object = RawAPIObject(gate_ref,
                                                "UnlockCondition",
                                                dataset.nyan_api_objects)

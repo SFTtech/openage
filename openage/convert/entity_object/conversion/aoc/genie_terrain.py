@@ -32,7 +32,7 @@ class GenieTerrainObject(ConverterObject):
         self.data = full_data_set
 
     def __repr__(self):
-        return "GenieTerrainObject<%s>" % (self.get_id())
+        return f"GenieTerrainObject<{self.get_id()}>"
 
 
 class GenieTerrainGroup(ConverterObjectGroup):
@@ -78,4 +78,4 @@ class GenieTerrainGroup(ConverterObjectGroup):
         return self.terrain
 
     def __repr__(self):
-        return "GenieTerrainGroup<%s>" % (self.get_id())
+        return f"GenieTerrainGroup<{self.get_id()}>"

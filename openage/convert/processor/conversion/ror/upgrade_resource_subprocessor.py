@@ -53,14 +53,14 @@ class RoRUpgradeResourceSubprocessor:
 
         game_entity_name = name_lookup_dict[monk_id][0]
 
-        patch_target_ref = "%s.Convert" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Convert"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Building conversion
 
         # Wrapper
         wrapper_name = "EnableBuildingConversionWrapper"
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -70,7 +70,7 @@ class RoRUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "EnableBuildingConversion"
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,

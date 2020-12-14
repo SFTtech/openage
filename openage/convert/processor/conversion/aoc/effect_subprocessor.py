@@ -58,7 +58,7 @@ class AoCEffectSubprocessor:
             attack_amount = attack["amount"].get_value()
             class_name = armor_lookup_dict[armor_class]
 
-            attack_ref = "%s.%s" % (ability_ref, class_name)
+            attack_ref = f"{ability_ref}.{class_name}"
             attack_raw_api_object = RawAPIObject(attack_ref,
                                                  class_name,
                                                  dataset.nyan_api_objects)
@@ -67,7 +67,7 @@ class AoCEffectSubprocessor:
             attack_raw_api_object.set_location(attack_location)
 
             # Type
-            type_ref = "aux.attribute_change_type.types.%s" % (class_name)
+            type_ref = f"aux.attribute_change_type.types.{class_name}"
             change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
             attack_raw_api_object.add_raw_member("type",
                                                  change_type,
@@ -84,7 +84,7 @@ class AoCEffectSubprocessor:
 
             # Change value
             # =================================================================================
-            amount_name = "%s.%s.ChangeAmount" % (ability_ref, class_name)
+            amount_name = f"{ability_ref}.{class_name}.ChangeAmount"
             amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", dataset.nyan_api_objects)
             amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
             amount_location = ForwardRef(line, attack_ref)
@@ -156,7 +156,7 @@ class AoCEffectSubprocessor:
             return effects
 
         # Unit conversion
-        convert_ref = "%s.ConvertUnitEffect" % (ability_ref)
+        convert_ref = f"{ability_ref}.ConvertUnitEffect"
         convert_raw_api_object = RawAPIObject(convert_ref,
                                               "ConvertUnitEffect",
                                               dataset.nyan_api_objects)
@@ -197,7 +197,7 @@ class AoCEffectSubprocessor:
         effects.append(attack_forward_ref)
 
         # Building conversion
-        convert_ref = "%s.ConvertBuildingEffect" % (ability_ref)
+        convert_ref = f"{ability_ref}.ConvertBuildingEffect"
         convert_raw_api_object = RawAPIObject(convert_ref,
                                               "ConvertBuildingUnitEffect",
                                               dataset.nyan_api_objects)
@@ -276,7 +276,7 @@ class AoCEffectSubprocessor:
 
         heal_rate = heal_command["work_value1"].get_value()
 
-        heal_ref = "%s.HealEffect" % (ability_ref)
+        heal_ref = f"{ability_ref}.HealEffect"
         heal_raw_api_object = RawAPIObject(heal_ref,
                                            "HealEffect",
                                            dataset.nyan_api_objects)
@@ -302,7 +302,7 @@ class AoCEffectSubprocessor:
 
         # Change rate
         # =================================================================================
-        rate_name = "%s.HealEffect.ChangeRate" % (ability_ref)
+        rate_name = f"{ability_ref}.HealEffect.ChangeRate"
         rate_raw_api_object = RawAPIObject(rate_name, "ChangeRate", dataset.nyan_api_objects)
         rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
         rate_location = ForwardRef(line, heal_ref)
@@ -364,8 +364,8 @@ class AoCEffectSubprocessor:
         for repairable_line in repairable_lines:
             game_entity_name = name_lookup_dict[repairable_line.get_head_unit_id()][0]
 
-            repair_name = "%sRepairEffect" % (game_entity_name)
-            repair_ref = "%s.%s" % (ability_ref, repair_name)
+            repair_name = f"{game_entity_name}RepairEffect"
+            repair_ref = f"{ability_ref}.{repair_name}"
             repair_raw_api_object = RawAPIObject(repair_ref,
                                                  repair_name,
                                                  dataset.nyan_api_objects)
@@ -374,7 +374,7 @@ class AoCEffectSubprocessor:
             repair_raw_api_object.set_location(repair_location)
 
             # Type
-            type_ref = "aux.attribute_change_type.types.%sRepair" % (game_entity_name)
+            type_ref = f"aux.attribute_change_type.types.{game_entity_name}Repair"
             change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
             repair_raw_api_object.add_raw_member("type",
                                                  change_type,
@@ -386,7 +386,7 @@ class AoCEffectSubprocessor:
 
             # Change rate
             # =================================================================================
-            rate_name = "%s.%s.ChangeRate" % (ability_ref, repair_name)
+            rate_name = f"{ability_ref}.{repair_name}.ChangeRate"
             rate_raw_api_object = RawAPIObject(rate_name, "ChangeRate", dataset.nyan_api_objects)
             rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
             rate_location = ForwardRef(line, repair_ref)
@@ -424,7 +424,7 @@ class AoCEffectSubprocessor:
 
             # Repair cost
             repair_raw_api_object.add_raw_parent("engine.effect.specialization.CostEffect")
-            cost_ref = "%s.CreatableGameEntity.%sRepairCost" % (game_entity_name, game_entity_name)
+            cost_ref = f"{game_entity_name}.CreatableGameEntity.{game_entity_name}RepairCost"
             cost_forward_ref = ForwardRef(repairable_line, cost_ref)
             repair_raw_api_object.add_raw_member("cost",
                                                  cost_forward_ref,
@@ -466,8 +466,8 @@ class AoCEffectSubprocessor:
             game_entity_name = name_lookup_dict[constructable_line.get_head_unit_id()][0]
 
             # Construction progress
-            contruct_progress_name = "%sConstructProgressEffect" % (game_entity_name)
-            contruct_progress_ref = "%s.%s" % (ability_ref, contruct_progress_name)
+            contruct_progress_name = f"{game_entity_name}ConstructProgressEffect"
+            contruct_progress_ref = f"{ability_ref}.{contruct_progress_name}"
             contruct_progress_raw_api_object = RawAPIObject(contruct_progress_ref,
                                                             contruct_progress_name,
                                                             dataset.nyan_api_objects)
@@ -476,7 +476,7 @@ class AoCEffectSubprocessor:
             contruct_progress_raw_api_object.set_location(contruct_progress_location)
 
             # Type
-            type_ref = "aux.construct_type.types.%sConstruct" % (game_entity_name)
+            type_ref = f"aux.construct_type.types.{game_entity_name}Construct"
             change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
             contruct_progress_raw_api_object.add_raw_member("type",
                                                             change_type,
@@ -493,8 +493,8 @@ class AoCEffectSubprocessor:
             effects.append(contruct_progress_forward_ref)
 
             # HP increase during construction
-            contruct_hp_name = "%sConstructHPEffect" % (game_entity_name)
-            contruct_hp_ref = "%s.%s" % (ability_ref, contruct_hp_name)
+            contruct_hp_name = f"{game_entity_name}ConstructHPEffect"
+            contruct_hp_ref = f"{ability_ref}.{contruct_hp_name}"
             contruct_hp_raw_api_object = RawAPIObject(contruct_hp_ref,
                                                       contruct_hp_name,
                                                       dataset.nyan_api_objects)
@@ -503,7 +503,7 @@ class AoCEffectSubprocessor:
             contruct_hp_raw_api_object.set_location(contruct_hp_location)
 
             # Type
-            type_ref = "aux.attribute_change_type.types.%sConstruct" % (game_entity_name)
+            type_ref = f"aux.attribute_change_type.types.{game_entity_name}Construct"
             change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
             contruct_hp_raw_api_object.add_raw_member("type",
                                                       change_type,
@@ -561,14 +561,14 @@ class AoCEffectSubprocessor:
             armor_amount = armor["amount"].get_value()
             class_name = armor_lookup_dict[armor_class]
 
-            armor_ref = "%s.%s" % (ability_ref, class_name)
+            armor_ref = f"{ability_ref}.{class_name}"
             armor_raw_api_object = RawAPIObject(armor_ref, class_name, dataset.nyan_api_objects)
             armor_raw_api_object.add_raw_parent(armor_parent)
             armor_location = ForwardRef(line, ability_ref)
             armor_raw_api_object.set_location(armor_location)
 
             # Type
-            type_ref = "aux.attribute_change_type.types.%s" % (class_name)
+            type_ref = f"aux.attribute_change_type.types.{class_name}"
             change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
             armor_raw_api_object.add_raw_member("type",
                                                 change_type,
@@ -576,7 +576,7 @@ class AoCEffectSubprocessor:
 
             # Block value
             # =================================================================================
-            amount_name = "%s.%s.BlockAmount" % (ability_ref, class_name)
+            amount_name = f"{ability_ref}.{class_name}.BlockAmount"
             amount_raw_api_object = RawAPIObject(amount_name, "BlockAmount", dataset.nyan_api_objects)
             amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
             amount_location = ForwardRef(line, armor_ref)
@@ -628,7 +628,7 @@ class AoCEffectSubprocessor:
         resistance_parent = "engine.resistance.discrete.convert.Convert"
         convert_parent = "engine.resistance.discrete.convert.type.AoE2Convert"
 
-        resistance_ref = "%s.Convert" % (ability_ref)
+        resistance_ref = f"{ability_ref}.Convert"
         resistance_raw_api_object = RawAPIObject(resistance_ref, "Convert", dataset.nyan_api_objects)
         resistance_raw_api_object.add_raw_parent(convert_parent)
         resistance_location = ForwardRef(line, ability_ref)
@@ -700,7 +700,7 @@ class AoCEffectSubprocessor:
         resistance_parent = "engine.resistance.continuous.flat_attribute_change.FlatAttributeChange"
         heal_parent = "engine.resistance.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"
 
-        resistance_ref = "%s.Heal" % (ability_ref)
+        resistance_ref = f"{ability_ref}.Heal"
         resistance_raw_api_object = RawAPIObject(resistance_ref,
                                                  "Heal",
                                                  dataset.nyan_api_objects)
@@ -717,7 +717,7 @@ class AoCEffectSubprocessor:
 
         # Block rate
         # =================================================================================
-        rate_name = "%s.Heal.BlockRate" % (ability_ref)
+        rate_name = f"{ability_ref}.Heal.BlockRate"
         rate_raw_api_object = RawAPIObject(rate_name, "BlockRate", dataset.nyan_api_objects)
         rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
         rate_location = ForwardRef(line, resistance_ref)
@@ -768,7 +768,7 @@ class AoCEffectSubprocessor:
         resistance_parent = "engine.resistance.continuous.flat_attribute_change.FlatAttributeChange"
         repair_parent = "engine.resistance.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"
 
-        resistance_ref = "%s.Repair" % (ability_ref)
+        resistance_ref = f"{ability_ref}.Repair"
         resistance_raw_api_object = RawAPIObject(resistance_ref,
                                                  "Repair",
                                                  dataset.nyan_api_objects)
@@ -777,7 +777,7 @@ class AoCEffectSubprocessor:
         resistance_raw_api_object.set_location(resistance_location)
 
         # Type
-        type_ref = "aux.attribute_change_type.types.%sRepair" % (game_entity_name)
+        type_ref = f"aux.attribute_change_type.types.{game_entity_name}Repair"
         change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
         resistance_raw_api_object.add_raw_member("type",
                                                  change_type,
@@ -785,7 +785,7 @@ class AoCEffectSubprocessor:
 
         # Block rate
         # =================================================================================
-        rate_name = "%s.Repair.BlockRate" % (ability_ref)
+        rate_name = f"{ability_ref}.Repair.BlockRate"
         rate_raw_api_object = RawAPIObject(rate_name, "BlockRate", dataset.nyan_api_objects)
         rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
         rate_location = ForwardRef(line, resistance_ref)
@@ -859,7 +859,7 @@ class AoCEffectSubprocessor:
         attr_construct_parent = "engine.resistance.continuous.time_relative_attribute.type.TimeRelativeAttributeIncrease"
 
         # Progress
-        resistance_ref = "%s.ConstructProgress" % (ability_ref)
+        resistance_ref = f"{ability_ref}.ConstructProgress"
         resistance_raw_api_object = RawAPIObject(resistance_ref,
                                                  "ConstructProgress",
                                                  dataset.nyan_api_objects)
@@ -868,7 +868,7 @@ class AoCEffectSubprocessor:
         resistance_raw_api_object.set_location(resistance_location)
 
         # Type
-        type_ref = "aux.construct_type.types.%sConstruct" % (game_entity_name)
+        type_ref = f"aux.construct_type.types.{game_entity_name}Construct"
         change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
         resistance_raw_api_object.add_raw_member("type",
                                                  change_type,
@@ -899,7 +899,7 @@ class AoCEffectSubprocessor:
                                                  "engine.resistance.specialization.StackedResistance")
 
         # Health
-        resistance_ref = "%s.ConstructHP" % (ability_ref)
+        resistance_ref = f"{ability_ref}.ConstructHP"
         resistance_raw_api_object = RawAPIObject(resistance_ref,
                                                  "ConstructHP",
                                                  dataset.nyan_api_objects)
@@ -908,7 +908,7 @@ class AoCEffectSubprocessor:
         resistance_raw_api_object.set_location(resistance_location)
 
         # Type
-        type_ref = "aux.attribute_change_type.types.%sConstruct" % (game_entity_name)
+        type_ref = f"aux.attribute_change_type.types.{game_entity_name}Construct"
         change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
         resistance_raw_api_object.add_raw_member("type",
                                                  change_type,

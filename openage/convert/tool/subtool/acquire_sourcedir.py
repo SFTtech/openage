@@ -92,7 +92,7 @@ def set_custom_wineprefix():
 
     current_wineprefix = os.environ.get("WINEPREFIX")
     if current_wineprefix:
-        print("Currently: WINEPREFIX='%s'" % current_wineprefix)
+        print(f"Currently: WINEPREFIX='{current_wineprefix}'")
 
     print("Enter a custom value or leave empty to keep it as-is:")
     while True:
@@ -127,7 +127,7 @@ def query_source_dir(proposals):
 
         proposals = sorted(proposals)
         for index, proposal in enumerate(proposals):
-            print("({}) {}".format(index, proposal))
+            print(f"({index}) {proposal}")
 
     else:
         print("Could not find any installation directory "
@@ -190,7 +190,7 @@ def acquire_conversion_source_dir(prev_source_dir_path=None):
             print("\nEOF, aborting")
             sys.exit(0)
 
-    print("converting from '%s'" % sourcedir)
+    print(f"converting from '{sourcedir}'")
 
     return CaseIgnoringDirectory(sourcedir).root
 

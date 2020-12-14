@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
 Provides Path, which is analogous to pathlib.Path,
@@ -72,7 +72,7 @@ class Path:
         if not self.parts:
             return repr(self.fsobj) + ".root"
 
-        return "Path({}, {})".format(repr(self.fsobj), repr(self.parts))
+        return f"Path({repr(self.fsobj)}, {repr(self.parts)})"
 
     def exists(self):
         """ True if path exists """

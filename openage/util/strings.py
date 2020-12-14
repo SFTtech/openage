@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 """
 Misc string helper functions; this includes encoding, decoding,
 manipulation, ...
@@ -81,8 +81,7 @@ def lstrip_once(string, substr):
     ValueError: 'libopenage.test' doesn't start with 'openage.'
     """
     if not string.startswith(substr):
-        raise ValueError("{string} doesn't start with {substr}".format(
-            string=repr(string), substr=repr(substr)))
+        raise ValueError(f"{repr(string)} doesn't start with {repr(substr)}")
 
     return string[len(substr):]
 
@@ -96,8 +95,7 @@ def rstrip_once(string, substr):
     """
     if not string.endswith(substr):
         raise ValueError(
-            "{string} doesn't end with {substr}".format(string=repr(string),
-                                                        substr=repr(substr)))
+            f"{repr(string)} doesn't end with {repr(substr)}")
 
     return string[:-len(substr)]
 

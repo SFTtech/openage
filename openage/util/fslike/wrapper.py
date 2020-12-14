@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
 Provides
@@ -30,7 +30,7 @@ class Wrapper(FSLikeObject):
     """
     def __init__(self, obj, contextguard=None):
         if not isinstance(obj, Path):
-            raise TypeError("Path expected as obj, got '%s'" % type(obj))
+            raise TypeError(f"Path expected as obj, got '{type(obj)}'")
 
         self.obj = obj
         if contextguard is None:
@@ -40,10 +40,9 @@ class Wrapper(FSLikeObject):
 
     def __repr__(self):
         if isinstance(self.contextguard, DummyGuard):
-            return "{}({})".format(type(self).__name__, repr(self.obj))
+            return f"{type(self).__name__}({repr(self.obj)})"
 
-        return "{}({}, {})".format(
-            type(self).__name__, repr(self.obj), repr(self.contextguard))
+        return f"{type(self).__name__}({repr(self.obj)}, {repr(self.contextguard)})"
 
     def open_r(self, parts):
         with self.contextguard:
@@ -130,7 +129,7 @@ class WriteBlocker(ReadOnlyFSLikeObject, Wrapper):
     All writing calls raise IOError, and writable returns False.
     """
     def __repr__(self):
-        return "WriteBlocker({})".format(repr(self.obj))
+        return f"WriteBlocker({repr(self.obj)})"
 
 
 class Synchronizer(Wrapper):
@@ -144,7 +143,7 @@ class Synchronizer(Wrapper):
     def __repr__(self):
         # TODO: remove override once pylint is fixed.
         with self.lock:  # pylint: disable=not-context-manager
-            return "Synchronizer({})".format(repr(self.obj))
+            return f"Synchronizer({repr(self.obj)})"
 
 
 class GuardedFile(FileLikeObject):
@@ -199,8 +198,7 @@ class GuardedFile(FileLikeObject):
 
     def __repr__(self):
         with self.guard:
-            return "GuardedFile({}, {})".format(
-                repr(self.obj), repr(self.guard))
+            return f"GuardedFile({repr(self.obj)}, {repr(self.guard)})"
 
 
 class DirectoryCreator(Wrapper):
@@ -214,4 +212,4 @@ class DirectoryCreator(Wrapper):
         return super().open_w(parts)
 
     def __repr__(self):
-        return "DirectoryCreator({})".format(self.obj)
+        return f"DirectoryCreator({self.obj})"

@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
 Generates code for C++ testing, mostly the table to look up symbols from test
@@ -39,7 +39,7 @@ class Namespace:
         including all sub-namespaces and function prototypes.
         """
         for name in self.functions:
-            yield "void %s();\n" % name
+            yield f"void {name}();\n"
 
         for namespacename, namespace in sorted(self.namespaces.items()):
             yield "namespace %s {\n" % namespacename

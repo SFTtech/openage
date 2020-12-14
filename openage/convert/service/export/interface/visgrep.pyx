@@ -11,8 +11,9 @@ import argparse
 from collections import namedtuple
 import itertools
 import logging
-import numpy
 import sys
+
+import numpy
 
 
 cimport cython
@@ -89,7 +90,7 @@ cdef numpy.ndarray img_to_array(img):
     """
 
     if not isinstance(img, Image.Image):
-        raise ValueError("PIL image required, not '%s'" % type(img))
+        raise ValueError(f"PIL image required, not '{type(img)}'")
 
     return numpy.array(img)
 
@@ -220,9 +221,9 @@ cdef do_output(show_badness, badness, point, idx):
     Print match coordinates and score.
     """
     if show_badness:
-        print("%d %d,%d %d" % (badness, point.x, point.y, idx))
+        print(f"{badness:d} {point.x:d} {point.y:d} {idx:d}")
     else:
-        print("%d,%d %d" % (point.x, point.y, idx))
+        print(f"{point.x:d}, {point.y:d} {idx:d}")
 
 
 cdef advance_point(point, img, start_x):

@@ -98,7 +98,7 @@ class SWGBCCAbilitySubprocessor:
             ability_parent = "engine.ability.type.ApplyDiscreteEffect"
 
         if projectile == -1:
-            ability_ref = "%s.%s" % (game_entity_name, ability_name)
+            ability_ref = f"{game_entity_name}.{ability_name}"
             ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent(ability_parent)
             ability_location = ForwardRef(line, game_entity_name)
@@ -107,7 +107,7 @@ class SWGBCCAbilitySubprocessor:
             ability_animation_id = current_unit["attack_sprite_id"].get_value()
 
         else:
-            ability_ref = "%s.ShootProjectile.Projectile%s.%s" % (game_entity_name, str(projectile), ability_name)
+            ability_ref = f"{game_entity_name}.ShootProjectile.Projectile{str(projectile)}.{ability_name}"
             ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent(ability_parent)
             ability_location = ForwardRef(line,
@@ -157,7 +157,7 @@ class SWGBCCAbilitySubprocessor:
                     if not obj_exists:
                         handled_graphics_set_ids.add(graphics_set_id)
 
-                    obj_prefix = "%s%s" % (gset_lookup_dict[graphics_set_id][1], ability_name)
+                    obj_prefix = f"{gset_lookup_dict[graphics_set_id][1]}{ability_name}"
                     filename_prefix = "%s_%s_" % (command_lookup_dict[command_id][1],
                                                   gset_lookup_dict[graphics_set_id][2],)
                     AoCAbilitySubprocessor.create_civ_animation(line,
@@ -318,7 +318,7 @@ class SWGBCCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        ability_ref = "%s.AttributeChangeTracker" % (game_entity_name)
+        ability_ref = f"{game_entity_name}.AttributeChangeTracker"
         ability_raw_api_object = RawAPIObject(ability_ref, "AttributeChangeTracker", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.AttributeChangeTracker")
         ability_location = ForwardRef(line, game_entity_name)
@@ -341,7 +341,7 @@ class SWGBCCAbilitySubprocessor:
             progress_name = "%s.AttributeChangeTracker.ChangeProgress%s" % (game_entity_name,
                                                                             interval_right_bound)
             progress_raw_api_object = RawAPIObject(progress_name,
-                                                   "ChangeProgress%s" % (interval_right_bound),
+                                                   f"ChangeProgress{interval_right_bound}",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.AttributeChangeProgress")
             progress_location = ForwardRef(line, ability_ref)
@@ -439,15 +439,15 @@ class SWGBCCAbilitySubprocessor:
 
         abilities = []
         for resource_name in resource_names:
-            ability_name = "MarketExchange%s" % (resource_name)
-            ability_ref = "%s.%s" % (game_entity_name, ability_name)
+            ability_name = f"MarketExchange{resource_name}"
+            ability_ref = f"{game_entity_name}.{ability_name}"
             ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent("engine.ability.type.ExchangeResources")
             ability_location = ForwardRef(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
 
             # Resource that is exchanged (resource A)
-            resource_a = dataset.pregen_nyan_objects["aux.resource.types.%s" % (resource_name)].get_nyan_object()
+            resource_a = dataset.pregen_nyan_objects[f"aux.resource.types.{resource_name}"].get_nyan_object()
             ability_raw_api_object.add_raw_member("resource_a",
                                                   resource_a,
                                                   "engine.ability.type.ExchangeResources")
@@ -587,7 +587,7 @@ class SWGBCCAbilitySubprocessor:
 
             ability_name = gather_lookup_dict[gatherer_unit_id][0]
 
-            ability_ref = "%s.%s" % (game_entity_name, ability_name)
+            ability_ref = f"{game_entity_name}.{ability_name}"
             ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent("engine.ability.type.Gather")
             ability_location = ForwardRef(line, game_entity_name)
@@ -619,7 +619,7 @@ class SWGBCCAbilitySubprocessor:
                                                   "engine.ability.type.Gather")
 
             # Gather rate
-            rate_name = "%s.%s.GatherRate" % (game_entity_name, ability_name)
+            rate_name = f"{game_entity_name}.{ability_name}.GatherRate"
             rate_raw_api_object = RawAPIObject(rate_name, "GatherRate", dataset.nyan_api_objects)
             rate_raw_api_object.add_raw_parent("engine.aux.resource.ResourceRate")
             rate_location = ForwardRef(line, ability_ref)
@@ -686,7 +686,7 @@ class SWGBCCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        ability_ref = "%s.Harvestable" % (game_entity_name)
+        ability_ref = f"{game_entity_name}.Harvestable"
         ability_raw_api_object = RawAPIObject(ability_ref, "Harvestable", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Harvestable")
         ability_location = ForwardRef(line, game_entity_name)
@@ -714,9 +714,9 @@ class SWGBCCAbilitySubprocessor:
             else:
                 continue
 
-            spot_name = "%s.Harvestable.%sResourceSpot" % (game_entity_name, game_entity_name)
+            spot_name = f"{game_entity_name}.Harvestable.{game_entity_name}ResourceSpot"
             spot_raw_api_object = RawAPIObject(spot_name,
-                                               "%sResourceSpot" % (game_entity_name),
+                                               f"{game_entity_name}ResourceSpot",
                                                dataset.nyan_api_objects)
             spot_raw_api_object.add_raw_parent("engine.aux.resource_spot.ResourceSpot")
             spot_location = ForwardRef(line, ability_ref)
@@ -774,7 +774,7 @@ class SWGBCCAbilitySubprocessor:
         if line.get_class_id() == 7:
             # Farms
             # =====================================================================================
-            progress_name = "%s.Harvestable.RestockProgress33" % (game_entity_name)
+            progress_name = f"{game_entity_name}.Harvestable.RestockProgress33"
             progress_raw_api_object = RawAPIObject(progress_name,
                                                    "RestockProgress33",
                                                    dataset.nyan_api_objects)
@@ -803,7 +803,7 @@ class SWGBCCAbilitySubprocessor:
             progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
 
             # State change
-            init_state_ref = "%s.Constructable.InitState" % (game_entity_name)
+            init_state_ref = f"{game_entity_name}.Constructable.InitState"
             init_state_forward_ref = ForwardRef(line, init_state_ref)
             progress_raw_api_object.add_raw_member("state_change",
                                                    init_state_forward_ref,
@@ -812,7 +812,7 @@ class SWGBCCAbilitySubprocessor:
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
-            progress_name = "%s.Harvestable.RestockProgress66" % (game_entity_name)
+            progress_name = f"{game_entity_name}.Harvestable.RestockProgress66"
             progress_raw_api_object = RawAPIObject(progress_name,
                                                    "RestockProgress66",
                                                    dataset.nyan_api_objects)
@@ -841,7 +841,7 @@ class SWGBCCAbilitySubprocessor:
             progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
 
             # State change
-            construct_state_ref = "%s.Constructable.ConstructState" % (game_entity_name)
+            construct_state_ref = f"{game_entity_name}.Constructable.ConstructState"
             construct_state_forward_ref = ForwardRef(line, construct_state_ref)
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
@@ -850,7 +850,7 @@ class SWGBCCAbilitySubprocessor:
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
             # =====================================================================================
-            progress_name = "%s.Harvestable.RestockProgress100" % (game_entity_name)
+            progress_name = f"{game_entity_name}.Harvestable.RestockProgress100"
             progress_raw_api_object = RawAPIObject(progress_name,
                                                    "RestockProgress100",
                                                    dataset.nyan_api_objects)
@@ -878,7 +878,7 @@ class SWGBCCAbilitySubprocessor:
             progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
 
             # State change
-            construct_state_ref = "%s.Constructable.ConstructState" % (game_entity_name)
+            construct_state_ref = f"{game_entity_name}.Constructable.ConstructState"
             construct_state_forward_ref = ForwardRef(line, construct_state_ref)
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
@@ -1061,8 +1061,8 @@ class SWGBCCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        ability_name = "Regenerate%s" % (attribute_name)
-        ability_ref = "%s.%s" % (game_entity_name, ability_name)
+        ability_name = f"Regenerate{attribute_name}"
+        ability_ref = f"{game_entity_name}.{ability_name}"
         ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.RegenerateAttribute")
         ability_location = ForwardRef(line, game_entity_name)
@@ -1070,8 +1070,8 @@ class SWGBCCAbilitySubprocessor:
 
         # Attribute rate
         # ===============================================================================
-        rate_name = "%sRate" % (attribute_name)
-        rate_ref = "%s.%s.%s" % (game_entity_name, ability_name, rate_name)
+        rate_name = f"{attribute_name}Rate"
+        rate_ref = f"{game_entity_name}.{ability_name}.{rate_name}"
         rate_raw_api_object = RawAPIObject(rate_ref, rate_name, dataset.nyan_api_objects)
         rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
         rate_location = ForwardRef(line, ability_ref)
@@ -1134,7 +1134,7 @@ class SWGBCCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        ability_ref = "%s.ResourceStorage" % (game_entity_name)
+        ability_ref = f"{game_entity_name}.ResourceStorage"
         ability_raw_api_object = RawAPIObject(ability_ref, "ResourceStorage",
                                               dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ResourceStorage")
@@ -1188,9 +1188,9 @@ class SWGBCCAbilitySubprocessor:
                 # Skips hunting wolves
                 continue
 
-            container_name = "%sContainer" % (gather_lookup_dict[gatherer_unit_id][0])
+            container_name = f"{gather_lookup_dict[gatherer_unit_id][0]}Container"
 
-            container_ref = "%s.%s" % (ability_ref, container_name)
+            container_ref = f"{ability_ref}.{container_name}"
             container_raw_api_object = RawAPIObject(container_ref, container_name, dataset.nyan_api_objects)
             container_raw_api_object.add_raw_parent("engine.aux.storage.ResourceContainer")
             container_location = ForwardRef(line, ability_ref)
@@ -1215,7 +1215,7 @@ class SWGBCCAbilitySubprocessor:
                 progress_name = "%s.ResourceStorage.%sCarryProgress" % (game_entity_name,
                                                                         container_name)
                 progress_raw_api_object = RawAPIObject(progress_name,
-                                                       "%sCarryProgress" % (container_name),
+                                                       f"{container_name}CarryProgress",
                                                        dataset.nyan_api_objects)
                 progress_raw_api_object.add_raw_parent("engine.aux.progress.type.CarryProgress")
                 progress_location = ForwardRef(line, container_ref)
@@ -1235,7 +1235,7 @@ class SWGBCCAbilitySubprocessor:
                 # ===========================================================================================
                 # Move override
                 # ===========================================================================================
-                override_ref = "%s.MoveOverride" % (progress_name)
+                override_ref = f"{progress_name}.MoveOverride"
                 override_raw_api_object = RawAPIObject(override_ref,
                                                        "MoveOverride",
                                                        dataset.nyan_api_objects)
@@ -1243,7 +1243,7 @@ class SWGBCCAbilitySubprocessor:
                 override_location = ForwardRef(line, progress_name)
                 override_raw_api_object.set_location(override_location)
 
-                idle_forward_ref = ForwardRef(line, "%s.Move" % (game_entity_name))
+                idle_forward_ref = ForwardRef(line, f"{game_entity_name}.Move")
                 override_raw_api_object.add_raw_member("ability",
                                                        idle_forward_ref,
                                                        "engine.aux.animation_override.AnimationOverride")
@@ -1347,7 +1347,7 @@ class SWGBCCAbilitySubprocessor:
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
-        ability_ref = "%s.SendBackToTask" % (game_entity_name)
+        ability_ref = f"{game_entity_name}.SendBackToTask"
         ability_raw_api_object = RawAPIObject(ability_ref, "SendBackToTask", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.SendBackToTask")
         ability_location = ForwardRef(line, game_entity_name)
@@ -1402,7 +1402,7 @@ class SWGBCCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        ability_ref = "%s.Trade" % (game_entity_name)
+        ability_ref = f"{game_entity_name}.Trade"
         ability_raw_api_object = RawAPIObject(ability_ref, "Trade", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Trade")
         ability_location = ForwardRef(line, game_entity_name)
@@ -1428,7 +1428,7 @@ class SWGBCCAbilitySubprocessor:
             trade_post_line = dataset.building_lines[trade_post_id]
             trade_post_name = name_lookup_dict[trade_post_id][0]
 
-            trade_route_ref = "%s.TradePost.AoE2%sTradeRoute" % (trade_post_name, trade_post_name)
+            trade_route_ref = f"{trade_post_name}.TradePost.AoE2{trade_post_name}TradeRoute"
             trade_route_forward_ref = ForwardRef(trade_post_line, trade_route_ref)
             trade_routes.append(trade_route_forward_ref)
 
@@ -1459,7 +1459,7 @@ class SWGBCCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        ability_ref = "%s.TradePost" % (game_entity_name)
+        ability_ref = f"{game_entity_name}.TradePost"
         ability_raw_api_object = RawAPIObject(ability_ref, "TradePost", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.TradePost")
         ability_location = ForwardRef(line, game_entity_name)
@@ -1468,8 +1468,8 @@ class SWGBCCAbilitySubprocessor:
         # Trade route
         trade_routes = []
         # =====================================================================================
-        trade_route_name = "AoE2%sTradeRoute" % (game_entity_name)
-        trade_route_ref = "%s.TradePost.%s" % (game_entity_name, trade_route_name)
+        trade_route_name = f"AoE2{game_entity_name}TradeRoute"
+        trade_route_ref = f"{game_entity_name}.TradePost.{trade_route_name}"
         trade_route_raw_api_object = RawAPIObject(trade_route_ref,
                                                   trade_route_name,
                                                   dataset.nyan_api_objects)

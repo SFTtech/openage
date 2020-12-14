@@ -48,15 +48,14 @@ def conversion_required(asset_dir, args):
     # try to resolve resolve the output path
     target_path = asset_dir.resolve_native_path_w()
     if not target_path:
-        raise OSError("could not resolve a writable asset path "
-                      "in {}".format(asset_dir))
+        raise OSError(f"could not resolve a writable asset path in {asset_dir}")
 
     info("Will save to '%s'", target_path.decode(errors="replace"))
 
     for component in changelog.COMPONENTS:
         if component not in changes:
             # don't reconvert this component:
-            setattr(args, "no_{}".format(component), True)
+            setattr(args, f"no_{component}", True)
 
     if "metadata" in changes:
         args.no_pickle_cache = True

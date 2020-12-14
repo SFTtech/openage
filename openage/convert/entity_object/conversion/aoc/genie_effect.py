@@ -39,7 +39,7 @@ class GenieEffectObject(ConverterObject):
         return self["type_id"].get_value()
 
     def __repr__(self):
-        return "GenieEffectObject<%s>" % (self.get_id())
+        return f"GenieEffectObject<{self.get_id()}>"
 
 
 class GenieEffectBundle(ConverterObject):
@@ -101,4 +101,4 @@ class GenieEffectBundle(ConverterObject):
         return self.sanitized
 
     def __repr__(self):
-        return "GenieEffectBundle<%s>" % (self.get_id())
+        return f"GenieEffectBundle<{self.get_id()}>"

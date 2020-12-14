@@ -72,7 +72,7 @@ class SWGBUnitLineGroup(GenieUnitLineGroup):
                 self.get_enabling_research_id() > -1)
 
     def __repr__(self):
-        return "SWGBUnitLineGroup<%s>" % (self.get_id())
+        return f"SWGBUnitLineGroup<{self.get_id()}>"
 
 
 class SWGBStackBuildingGroup(GenieStackBuildingGroup):
@@ -95,7 +95,7 @@ class SWGBStackBuildingGroup(GenieStackBuildingGroup):
         return enabling_research_id
 
     def __repr__(self):
-        return "SWGBStackBuildingGroup<%s>" % (self.get_id())
+        return f"SWGBStackBuildingGroup<{self.get_id()}>"
 
 
 class SWGBUnitTransformGroup(GenieUnitTransformGroup):
@@ -168,7 +168,7 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
         return enabling_research_id
 
     def __repr__(self):
-        return "SWGBUnitTransformGroup<%s>" % (self.get_id())
+        return f"SWGBUnitTransformGroup<{self.get_id()}>"
 
 
 class SWGBMonkGroup(GenieMonkGroup):
@@ -232,4 +232,4 @@ class SWGBMonkGroup(GenieMonkGroup):
         return False
 
     def __repr__(self):
-        return "SWGBMonkGroup<%s>" % (self.get_id())
+        return f"SWGBMonkGroup<{self.get_id()}>"

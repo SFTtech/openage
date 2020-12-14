@@ -37,7 +37,7 @@ class AoCMediaSubprocessor:
             ref_graphics = sprite.get_graphics()
             graphic_targetdirs = sprite.resolve_graphics_location()
 
-            metadata_filename = "%s.%s" % (sprite.get_filename(), "sprite")
+            metadata_filename = f"{sprite.get_filename()}.{'sprite'}"
             metadata_export = SpriteMetadataExport(sprite.resolve_sprite_location(),
                                                    metadata_filename)
             full_data_set.metadata_exports.append(metadata_export)
@@ -48,7 +48,7 @@ class AoCMediaSubprocessor:
                     continue
 
                 targetdir = graphic_targetdirs[graphic_id]
-                source_filename = "%s.slp" % str(graphic["slp_id"].get_value())
+                source_filename = f"{str(graphic['slp_id'].get_value())}.slp"
                 target_filename = "%s_%s.png" % (sprite.get_filename(),
                                                  str(graphic["slp_id"].get_value()))
 
@@ -98,8 +98,8 @@ class AoCMediaSubprocessor:
             slp_id = texture.get_id()
 
             targetdir = texture.resolve_graphics_location()
-            source_filename = "%s.slp" % str(slp_id)
-            target_filename = "%s.png" % texture.get_filename()
+            source_filename = f"{str(slp_id)}.slp"
+            target_filename = f"{texture.get_filename()}.png"
 
             export_request = TerrainMediaExportRequest(targetdir, source_filename,
                                                        target_filename)
@@ -116,8 +116,8 @@ class AoCMediaSubprocessor:
             sound_id = sound.get_file_id()
 
             targetdir = sound.resolve_sound_location()
-            source_filename = "%s.wav" % str(sound_id)
-            target_filename = "%s.opus" % sound.get_filename()
+            source_filename = f"{str(sound_id)}.wav"
+            target_filename = f"{sound.get_filename()}.opus"
 
             export_request = SoundMediaExportRequest(targetdir, source_filename,
                                                      target_filename)

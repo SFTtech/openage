@@ -101,7 +101,7 @@ class CodegenDirWrapper(Wrapper):
         self.writes.clear()
 
     def __repr__(self):
-        return "CodegenDirWrapper({})".format(repr(self.obj))
+        return f"CodegenDirWrapper({repr(self.obj)})"
 
 
 def codegen(mode, input_dir, output_dir):

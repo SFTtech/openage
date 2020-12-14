@@ -27,7 +27,7 @@ def get_gamespec(srcdir, game_version, dont_pickle):
         else:
             filepath = srcdir.joinpath(game_version[0].media_paths[MediaType.DATFILE][0])
 
-    cache_file = os.path.join(gettempdir(), "{}.pickle".format(filepath.name))
+    cache_file = os.path.join(gettempdir(), f"{filepath.name}.pickle")
 
     with filepath.open('rb') as empiresdat_file:
         gamespec = load_gamespec(empiresdat_file,

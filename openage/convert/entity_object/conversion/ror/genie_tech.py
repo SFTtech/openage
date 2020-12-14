@@ -19,7 +19,7 @@ class RoRStatUpgrade(StatUpgrade):
         return False
 
     def __repr__(self):
-        return "RoRStatUpgrade<%s>" % (self.get_id())
+        return f"RoRStatUpgrade<{self.get_id()}>"
 
 
 class RoRAgeUpgrade(AgeUpgrade):
@@ -31,7 +31,7 @@ class RoRAgeUpgrade(AgeUpgrade):
         return False
 
     def __repr__(self):
-        return "RoRAgeUpgrade<%s>" % (self.get_id())
+        return f"RoRAgeUpgrade<{self.get_id()}>"
 
 
 class RoRUnitLineUpgrade(UnitLineUpgrade):
@@ -43,7 +43,7 @@ class RoRUnitLineUpgrade(UnitLineUpgrade):
         return False
 
     def __repr__(self):
-        return "RoRUnitLineUpgrade<%s>" % (self.get_id())
+        return f"RoRUnitLineUpgrade<{self.get_id()}>"
 
 
 class RoRBuildingLineUpgrade(BuildingLineUpgrade):
@@ -55,7 +55,7 @@ class RoRBuildingLineUpgrade(BuildingLineUpgrade):
         return False
 
     def __repr__(self):
-        return "RoRBuildingLineUpgrade<%s>" % (self.get_id())
+        return f"RoRBuildingLineUpgrade<{self.get_id()}>"
 
 
 class RoRUnitUnlock(UnitUnlock):
@@ -73,7 +73,7 @@ class RoRUnitUnlock(UnitUnlock):
         return self.data.unit_lines[self.line_id]
 
     def __repr__(self):
-        return "RoRUnitUnlock<%s>" % (self.get_id())
+        return f"RoRUnitUnlock<{self.get_id()}>"
 
 
 class RoRBuildingUnlock(BuildingUnlock):
@@ -85,4 +85,4 @@ class RoRBuildingUnlock(BuildingUnlock):
         return False
 
     def __repr__(self):
-        return "RoRBuildingUnlock<%s>" % (self.get_id())
+        return f"RoRBuildingUnlock<{self.get_id()}>"

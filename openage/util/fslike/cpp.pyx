@@ -1,4 +1,4 @@
-# Copyright 2017-2018 the openage authors. See copying.md for legal info.
+# Copyright 2017-2020 the openage authors. See copying.md for legal info.
 
 """
 Functions called from C++ to perform method calls on
@@ -269,7 +269,7 @@ cdef File_cpp fs_open(object path, int mode) except *:
         elif mode == 4:
             access_mode = 'a+b'
         else:
-            raise ValueError("unknown file open mode id: %s" % mode)
+            raise ValueError(f"unknown file open mode id: {mode}")
 
         # open it the python-way and wrap it
         filelike = path.open(access_mode)

@@ -45,4 +45,4 @@ class ForwardRef:
         return self.group_object.get_raw_api_object(self.raw_api_object_name)
 
     def __repr__(self):
-        return "ForwardRef<%s>" % (self.raw_api_object_name)
+        return f"ForwardRef<{self.raw_api_object_name}>"

@@ -3,10 +3,10 @@
 # cython: profile=False
 
 from enum import Enum
-import numpy
+import lz4.block
 from struct import Struct, unpack_from
 
-import lz4.block
+import numpy
 
 from .....log import spam, dbg
 
@@ -188,7 +188,7 @@ class SLP:
         return "".join(ret)
 
     def __repr__(self):
-        return "SLP image<%d frames>" % len(self.main_frames)
+        return f"SLP image<{len(self.main_frames):d} frames>"
 
 
 class FrameInfo:
@@ -344,12 +344,16 @@ cdef class SLPFrame:
         # verify size of generated row
         if row_data.size() != pixel_count:
             got = row_data.size()
-            summary = "%d/%d -> row %d, offset %d / %#x" % (
-                got, pixel_count, rowid, first_cmd_offset, first_cmd_offset)
-            txt = "got %%s pixels than expected: %s, missing: %d" % (
-                summary, abs(pixel_count - got))
+            summary = (
+                f"{got:d}/{pixel_count:d} -> row {rowid:d}, "
+                f"offset {first_cmd_offset:d} / {first_cmd_offset:#x}"
+            )
+            message = (
+                f"got {'LESS' if got < pixel_count else 'MORE'} pixels than expected: {summary}, "
+                f"missing: {abs(pixel_count - got):d}"
+            )
 
-            raise Exception(txt % ("LESS" if got < pixel_count else "MORE"))
+            raise Exception(message)
 
         return row_data
 
@@ -444,10 +448,8 @@ cdef class SLPMainFrameAoC(SLPFrame):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    "Only %d pixels should be drawn in row %d, "
-                    "but we have %d already!" % (
-                        expected_size, rowid, row_data.size()
-                    )
+                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d}, " +
+                    f"but we have {row_data.size():d} already!"
                 )
 
             # fetch drawing instruction
@@ -628,8 +630,8 @@ cdef class SLPMainFrameAoC(SLPFrame):
 
             else:
                 raise Exception(
-                    "unknown slp drawing command: " +
-                    "%#x in row %d" % (cmd, rowid))
+                    f"unknown slp drawing command: " +
+                    f"{cmd:#x} in row {rowid:d}")
 
             dpos += 1
 
@@ -671,10 +673,8 @@ cdef class SLPMainFrameDE(SLPFrame):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    "Only %d pixels should be drawn in row %d, "
-                    "but we have %d already!" % (
-                        expected_size, rowid, row_data.size()
-                    )
+                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d}, "
+                    f"but we have {row_data.size():d} already!"
                 )
 
             # fetch drawing instruction
@@ -857,8 +857,8 @@ cdef class SLPMainFrameDE(SLPFrame):
 
             else:
                 raise Exception(
-                    "unknown slp drawing command: " +
-                    "%#x in row %d" % (cmd, rowid))
+                    f"unknown slp drawing command: " +
+                    f"{cmd:#x} in row {rowid:d}")
 
             dpos += 1
 
@@ -900,10 +900,8 @@ cdef class SLPShadowFrame(SLPFrame):
         while not eor:
             if row_data.size() > expected_size:
                 raise Exception(
-                    "Only %d pixels should be drawn in row %d, "
-                    "but we have %d already!" % (
-                        expected_size, rowid, row_data.size()
-                    )
+                    f"Only {expected_size} pixels should be drawn in row {rowid:d}, "
+                    f"but we have {row_data.size():d} already!"
                 )
 
             # fetch drawing instruction
@@ -983,8 +981,9 @@ cdef class SLPShadowFrame(SLPFrame):
 
             else:
                 raise Exception(
-                    "unknown slp shadow drawing command: " +
-                    "%#x in row %d" % (cmd, rowid))
+                    f"unknown slp shadow drawing command: " +
+                    f"{cmd:#x} in row {rowid:d}"
+                )
 
             dpos += 1
 

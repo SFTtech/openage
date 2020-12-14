@@ -40,8 +40,7 @@ class NyanFile(DataDefinition):
         Adds a nyan object to the file.
         """
         if not isinstance(new_object, NyanObject):
-            raise Exception("nyan file cannot contain non-nyan object %s" %
-                            (new_object))
+            raise Exception(f"nyan file cannot contain non-nyan object {new_object}")
 
         self.nyan_objects.add(new_object)
 
@@ -52,7 +51,7 @@ class NyanFile(DataDefinition):
         """
         Returns the string that represents the nyan file.
         """
-        output_str = "# NYAN FILE\nversion %s\n\n" % (FILE_VERSION)
+        output_str = f"# NYAN FILE\nversion {FILE_VERSION}\n\n"
 
         import_aliases = self.import_tree.establish_import_dict(self,
                                                                 ignore_names=["type", "types"])
@@ -60,12 +59,9 @@ class NyanFile(DataDefinition):
         for alias, fqon in import_aliases.items():
             output_str += "import "
 
-            for part in fqon:
-                output_str += "%s." % (part)
+            output_str += ".".join(fqon)
 
-            output_str = output_str[:-1]
-
-            output_str += " as %s\n" % (alias)
+            output_str += f" as {alias}\n"
 
         output_str += "\n"
 
@@ -89,7 +85,7 @@ class NyanFile(DataDefinition):
         """
         Relative path of the nyan file in the modpack.
         """
-        return "%s/%s%s" % (self.modpack_name, self.targetdir, self.filename)
+        return f"{self.modpack_name}/{self.targetdir}{self.filename}"
 
     def set_import_tree(self, import_tree):
         """

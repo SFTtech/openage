@@ -57,7 +57,7 @@ class RoRCivSubprocessor:
             elif resource_id == 3:
                 stone_amount += amount
 
-        food_ref = "%s.FoodStartingAmount" % (civ_name)
+        food_ref = f"{civ_name}.FoodStartingAmount"
         food_raw_api_object = RawAPIObject(food_ref, "FoodStartingAmount",
                                            dataset.nyan_api_objects)
         food_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
@@ -76,7 +76,7 @@ class RoRCivSubprocessor:
         food_forward_ref = ForwardRef(civ_group, food_ref)
         resource_amounts.append(food_forward_ref)
 
-        wood_ref = "%s.WoodStartingAmount" % (civ_name)
+        wood_ref = f"{civ_name}.WoodStartingAmount"
         wood_raw_api_object = RawAPIObject(wood_ref, "WoodStartingAmount",
                                            dataset.nyan_api_objects)
         wood_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
@@ -95,7 +95,7 @@ class RoRCivSubprocessor:
         wood_forward_ref = ForwardRef(civ_group, wood_ref)
         resource_amounts.append(wood_forward_ref)
 
-        gold_ref = "%s.GoldStartingAmount" % (civ_name)
+        gold_ref = f"{civ_name}.GoldStartingAmount"
         gold_raw_api_object = RawAPIObject(gold_ref, "GoldStartingAmount",
                                            dataset.nyan_api_objects)
         gold_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
@@ -114,7 +114,7 @@ class RoRCivSubprocessor:
         gold_forward_ref = ForwardRef(civ_group, gold_ref)
         resource_amounts.append(gold_forward_ref)
 
-        stone_ref = "%s.StoneStartingAmount" % (civ_name)
+        stone_ref = f"{civ_name}.StoneStartingAmount"
         stone_raw_api_object = RawAPIObject(stone_ref, "StoneStartingAmount",
                                             dataset.nyan_api_objects)
         stone_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")

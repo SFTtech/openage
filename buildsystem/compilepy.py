@@ -70,7 +70,7 @@ def main():
             modules = []
 
     if not os.path.isdir(args.output_dir):
-        cli.error("not a directory: '%s'" % args.output_dir)
+        cli.error(f"not a directory: '{args.output_dir}'")
 
     all_output_files = []
     to_compile = []
@@ -102,7 +102,7 @@ def main():
             py_compile.compile(module, cfile=outputfile, doraise=True)
 
         except py_compile.PyCompileError as exc:
-            print("FAILED to compile '%s':" % exc.file)
+            print(f"FAILED to compile '{exc.file}':")
             print(exc.msg)
             sys.exit(1)
 

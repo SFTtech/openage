@@ -1,4 +1,4 @@
-# Copyright 2015-2019 the openage authors. See copying.md for legal info.
+# Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 """
 Provides filesystem-like interfaces:
@@ -49,10 +49,7 @@ class FSLikeObject(ABC):
         """
         pretty-format a path in this filesystem like object.
         """
-        return "[%s]:%s" % (
-            str(self),
-            b"/".join(parts).decode(errors='replace')
-        )
+        return f"[{str(self)}]:{b'/'.join(parts).decode(errors='replace')}"
 
     @abstractmethod
     def open_r(self, parts):

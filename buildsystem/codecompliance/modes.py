@@ -1,4 +1,4 @@
-# Copyright 2016-2018 the openage authors. See copying.md for legal info.
+# Copyright 2016-2020 the openage authors. See copying.md for legal info.
 
 """
 Checks the mode of all files and prevents executable source files.
@@ -46,7 +46,7 @@ def check_mode(filename):
                     x_ok = True
 
         if not x_ok:
-            raise ValueError('file {} is executable'.format(filename))
+            raise ValueError(f'file {filename} is executable')
 
 
 def find_issues(check_files, paths):

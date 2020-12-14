@@ -53,12 +53,12 @@ class AoCUpgradeResourceSubprocessor:
 
         game_entity_name = name_lookup_dict[berserk_id][0]
 
-        patch_target_ref = "%s.RegenerateHealth.HealthRate" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.RegenerateHealth.HealthRate"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sHealthRegenerationWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}HealthRegenerationWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -67,8 +67,8 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sHealthRegeneration" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}HealthRegeneration"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -139,7 +139,7 @@ class AoCUpgradeResourceSubprocessor:
 
         # Wrapper
         wrapper_name = "ChangePopulationCapWrapper"
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -149,7 +149,7 @@ class AoCUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "ChangePopulationCap"
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -219,14 +219,14 @@ class AoCUpgradeResourceSubprocessor:
 
         game_entity_name = name_lookup_dict[monk_id][0]
 
-        patch_target_ref = "%s.Convert" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Convert"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Building conversion
 
         # Wrapper
         wrapper_name = "EnableBuildingConversionWrapper"
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -236,7 +236,7 @@ class AoCUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "EnableBuildingConversion"
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -293,7 +293,7 @@ class AoCUpgradeResourceSubprocessor:
 
         # Wrapper
         wrapper_name = "EnableSiegeUnitConversionWrapper"
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -303,7 +303,7 @@ class AoCUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "EnableSiegeUnitConversion"
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -501,12 +501,12 @@ class AoCUpgradeResourceSubprocessor:
 
         game_entity_name = name_lookup_dict[monk_id][0]
 
-        patch_target_ref = "%s.RegenerateFaith.FaithRate" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.RegenerateFaith.FaithRate"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sFaithRegenerationWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}FaithRegenerationWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -515,8 +515,8 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sFaithRegeneration" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}FaithRegeneration"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -586,12 +586,12 @@ class AoCUpgradeResourceSubprocessor:
 
         game_entity_name = name_lookup_dict[farm_id][0]
 
-        patch_target_ref = "%s.Harvestable.%sResourceSpot" % (game_entity_name, game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Harvestable.{game_entity_name}ResourceSpot"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sFoodAmountWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}FoodAmountWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -600,8 +600,8 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sFoodAmount" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}FoodAmount"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -751,12 +751,12 @@ class AoCUpgradeResourceSubprocessor:
 
         game_entity_name = name_lookup_dict[monk_id][0]
 
-        patch_target_ref = "%s.Heal" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Heal"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Change%sHealRangeWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Change{game_entity_name}HealRangeWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -765,8 +765,8 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Change%sHealRange" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Change{game_entity_name}HealRange"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -896,12 +896,12 @@ class AoCUpgradeResourceSubprocessor:
 
         game_entity_name = name_lookup_dict[monk_id][0]
 
-        patch_target_ref = "%s.Convert" % (game_entity_name)
+        patch_target_ref = f"{game_entity_name}.Convert"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = "Enable%sConversionWrapper" % (game_entity_name)
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_name = f"Enable{game_entity_name}ConversionWrapper"
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -910,8 +910,8 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
         # Nyan patch
-        nyan_patch_name = "Enable%sConversion" % (game_entity_name)
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_name = f"Enable{game_entity_name}Conversion"
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,
@@ -1139,7 +1139,7 @@ class AoCUpgradeResourceSubprocessor:
 
         # Wrapper
         wrapper_name = "ChangeInitialPopulationLimitWrapper"
-        wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+        wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -1149,7 +1149,7 @@ class AoCUpgradeResourceSubprocessor:
 
         # Nyan patch
         nyan_patch_name = "ChangeInitialPopulationLimit"
-        nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+        nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                  nyan_patch_name,

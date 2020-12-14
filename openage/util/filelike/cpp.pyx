@@ -1,4 +1,4 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2020 the openage authors. See copying.md for legal info.
 
 """
 Functions called from C++ to perform method calls on
@@ -75,7 +75,7 @@ cdef class FileLikeCPPWrapper:
         elif whence == os.SEEK_END:
             whence_c = seek_t_END
         else:
-            raise ValueError("invalid whence: %s" % whence)
+            raise ValueError(f"invalid whence: {whence}")
 
         self.filelike.get().seek(offset, whence_c)
 

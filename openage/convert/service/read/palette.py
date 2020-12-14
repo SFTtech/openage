@@ -17,7 +17,7 @@ def get_palettes(srcdir, game_version, index=None):
 
     if game_edition.game_id in ("ROR", "AOC", "SWGB", "HDEDITION"):
         if index:
-            palette_path = "%s/%s.bina" % (MediaType.PALETTES.value, str(index))
+            palette_path = f"{MediaType.PALETTES.value}/{str(index)}.bina"
             palette_file = srcdir[palette_path]
             palette = ColorTable(palette_file.open("rb").read())
             palette_id = int(palette_file.stem)
@@ -40,7 +40,7 @@ def get_palettes(srcdir, game_version, index=None):
 
     elif game_edition.game_id in ("AOE1DE", "AOE2DE"):
         # Parse palettes.conf file and save the ids/paths
-        conf_filepath = "%s/palettes.conf" % (MediaType.PALETTES.value)
+        conf_filepath = f"{MediaType.PALETTES.value}/palettes.conf"
         conf_file = srcdir[conf_filepath].open('rb')
         palette_paths = {}
 
@@ -56,14 +56,14 @@ def get_palettes(srcdir, game_version, index=None):
             palette_paths[palette_id] = filepath
 
         if index:
-            palette_path = "%s/%s" % (MediaType.PALETTES.value, palette_paths[index])
+            palette_path = f"{MediaType.PALETTES.value}/{palette_paths[index]}"
             palette = ColorTable(srcdir[palette_path].open("rb").read())
 
             palettes[index] = palette
 
         else:
             for palette_id, filepath in palette_paths.items():
-                palette_path = "%s/%s" % (MediaType.PALETTES.value, filepath)
+                palette_path = f"{MediaType.PALETTES.value}/{filepath}"
                 palette_file = srcdir[palette_path]
                 palette = ColorTable(palette_file.open("rb").read())
 

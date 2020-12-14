@@ -42,7 +42,7 @@ class ColorTable(GenieStructure):
                             "instead: %r" % self.header)
 
         if self.version != "0100":
-            raise Exception("palette version mispatch, got %s" % self.version)
+            raise Exception(f"palette version mispatch, got {self.version}")
 
         entry_count = int(lines[2])
 
@@ -80,7 +80,7 @@ class ColorTable(GenieStructure):
         return "ColorTable<%d entries>" % len(self.palette)
 
     def __str__(self):
-        return "%s\n%s" % (repr(self), self.palette)
+        return f"{repr(self)}\n{self.palette}"
 
     def gen_image(self, draw_text=True, squaresize=100):
         """
@@ -196,8 +196,7 @@ class PlayerColorTable(ColorTable):
     def __init__(self, base_table):
         # TODO pylint: disable=super-init-not-called
         if not isinstance(base_table, ColorTable):
-            raise Exception("no ColorTable supplied, "
-                            "instead: %s" % (type(base_table)))
+            raise Exception(f"no ColorTable supplied, instead: {type(base_table)}")
 
         self.header = base_table.header
         self.version = base_table.version

@@ -1,4 +1,4 @@
-# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+# Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 """
 Checks whether all authors are properly listed in copying.md.
@@ -60,9 +60,9 @@ def get_author_emails_git_shortlog(exts):
 
     invocation = ['git', 'shortlog', '-sne', '--']
     for ext in exts:
-        invocation.append("*{}".format(ext))
-        invocation.append("*{}.in".format(ext))
-        invocation.append("*{}.template".format(ext))
+        invocation.append(f"*{ext}")
+        invocation.append(f"*{ext}.in")
+        invocation.append(f"*{ext}.template")
 
     output = Popen(invocation, stdout=PIPE).communicate()[0]
 
@@ -91,8 +91,6 @@ def find_issues():
 
         yield (
             "author inconsistency",
-            ("{}\n"
-             "\temail appears in git log, "
-             "but not in copying.md or .mailmap".format(email)),
+            f"{email}\n\temail appears in git log, but not in copying.md or .mailmap",
             None
         )

@@ -49,4 +49,4 @@ class GenieSound(ConverterObject):
         return sound_ids
 
     def __repr__(self):
-        return "GenieSound<%s>" % (self.get_id())
+        return f"GenieSound<{self.get_id()}>"

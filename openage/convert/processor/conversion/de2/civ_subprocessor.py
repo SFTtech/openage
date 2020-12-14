@@ -96,12 +96,12 @@ class DE2CivSubprocessor:
             tech_group = dataset.tech_groups[tech_id]
             tech_name = tech_lookup_dict[tech_id][0]
 
-            patch_target_ref = "%s" % (tech_name)
+            patch_target_ref = f"{tech_name}"
             patch_target_forward_ref = ForwardRef(tech_group, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "%sCivBonusWrapper" % (tech_name)
-            wrapper_ref = "%s.%s" % (civ_name, wrapper_name)
+            wrapper_name = f"{tech_name}CivBonusWrapper"
+            wrapper_ref = f"{civ_name}.{wrapper_name}"
             wrapper_location = ForwardRef(civ_group, civ_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
@@ -110,8 +110,8 @@ class DE2CivSubprocessor:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
             # Nyan patch
-            nyan_patch_name = "%sCivBonus" % (tech_name)
-            nyan_patch_ref = "%s.%s.%s" % (civ_name, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"{tech_name}CivBonus"
+            nyan_patch_ref = f"{civ_name}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(civ_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,

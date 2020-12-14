@@ -147,8 +147,7 @@ class Texture(genie_structure.GenieStructure):
         if not isinstance(targetdir, Path):
             raise ValueError("util.fslike Path expected as targetdir")
         if not isinstance(filename, str):
-            raise ValueError("str expected as filename, not %s" %
-                             type(filename))
+            raise ValueError(f"str expected as filename, not {type(filename)}")
 
         _, ext = os.path.splitext(filename)
 

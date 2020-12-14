@@ -92,4 +92,4 @@ class GenieGraphic(ConverterObject):
         return len(self._refs) > 1
 
     def __repr__(self):
-        return "GenieGraphic<%s>" % (self.get_id())
+        return f"GenieGraphic<{self.get_id()}>"

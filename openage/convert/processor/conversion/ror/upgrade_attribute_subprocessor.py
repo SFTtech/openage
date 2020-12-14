@@ -62,12 +62,12 @@ class RoRUpgradeAttributeSubprocessor:
 
         projectile_id0 = head_unit["attack_projectile_primary_unit_id"].get_value()
         if projectile_id0 > -1:
-            patch_target_ref = "%s.ShootProjectile.Projectile0.Projectile" % (game_entity_name)
+            patch_target_ref = f"{game_entity_name}.ShootProjectile.Projectile0.Projectile"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%sProjectile0TargetModeWrapper" % (game_entity_name)
-            wrapper_ref = "%s.%s" % (obj_name, wrapper_name)
+            wrapper_name = f"Change{game_entity_name}Projectile0TargetModeWrapper"
+            wrapper_ref = f"{obj_name}.{wrapper_name}"
             wrapper_location = ForwardRef(converter_group, obj_name)
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
@@ -76,8 +76,8 @@ class RoRUpgradeAttributeSubprocessor:
             wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
 
             # Nyan patch
-            nyan_patch_name = "Change%sProjectile0TargetMode" % (game_entity_name)
-            nyan_patch_ref = "%s.%s.%s" % (obj_name, wrapper_name, nyan_patch_name)
+            nyan_patch_name = f"Change{game_entity_name}Projectile0TargetMode"
+            nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
             nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
                                                      nyan_patch_name,

@@ -61,7 +61,7 @@ class RoRAbilitySubprocessor:
             ability_parent = "engine.ability.type.ApplyDiscreteEffect"
 
         if projectile == -1:
-            ability_ref = "%s.%s" % (game_entity_name, ability_name)
+            ability_ref = f"{game_entity_name}.{ability_name}"
             ability_raw_api_object = RawAPIObject(ability_ref,
                                                   ability_name,
                                                   dataset.nyan_api_objects)
@@ -142,7 +142,7 @@ class RoRAbilitySubprocessor:
                     if not obj_exists:
                         handled_graphics_set_ids.add(graphics_set_id)
 
-                    obj_prefix = "%s%s" % (gset_lookup_dict[graphics_set_id][1], ability_name)
+                    obj_prefix = f"{gset_lookup_dict[graphics_set_id][1]}{ability_name}"
                     filename_prefix = "%s_%s_" % (command_lookup_dict[command_id][1],
                                                   gset_lookup_dict[graphics_set_id][2],)
                     AoCAbilitySubprocessor.create_civ_animation(line,
@@ -296,7 +296,7 @@ class RoRAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        ability_ref = "%s.GameEntityStance" % (game_entity_name)
+        ability_ref = f"{game_entity_name}.GameEntityStance"
         ability_raw_api_object = RawAPIObject(ability_ref,
                                               "GameEntityStance",
                                               dataset.nyan_api_objects)
@@ -311,14 +311,14 @@ class RoRAbilitySubprocessor:
         # Attacking is prefered
         ability_preferences = []
         if line.is_projectile_shooter():
-            ability_preferences.append(ForwardRef(line, "%s.Attack" % (game_entity_name)))
+            ability_preferences.append(ForwardRef(line, f"{game_entity_name}.Attack"))
 
         elif line.is_melee() or line.is_ranged():
             if line.has_command(7):
-                ability_preferences.append(ForwardRef(line, "%s.Attack" % (game_entity_name)))
+                ability_preferences.append(ForwardRef(line, f"{game_entity_name}.Attack"))
 
             if line.has_command(105):
-                ability_preferences.append(ForwardRef(line, "%s.Heal" % (game_entity_name)))
+                ability_preferences.append(ForwardRef(line, f"{game_entity_name}.Heal"))
 
         # Units are prefered before buildings
         type_preferences = [
@@ -328,9 +328,9 @@ class RoRAbilitySubprocessor:
 
         stances = []
         for stance_name in stance_names:
-            stance_api_ref = "engine.aux.game_entity_stance.type.%s" % (stance_name)
+            stance_api_ref = f"engine.aux.game_entity_stance.type.{stance_name}"
 
-            stance_ref = "%s.GameEntityStance.%s" % (game_entity_name, stance_name)
+            stance_ref = f"{game_entity_name}.GameEntityStance.{stance_name}"
             stance_raw_api_object = RawAPIObject(stance_ref, stance_name, dataset.nyan_api_objects)
             stance_raw_api_object.add_raw_parent(stance_api_ref)
             stance_location = ForwardRef(line, ability_ref)
@@ -382,7 +382,7 @@ class RoRAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        ability_ref = "%s.ProductionQueue" % (game_entity_name)
+        ability_ref = f"{game_entity_name}.ProductionQueue"
         ability_raw_api_object = RawAPIObject(ability_ref,
                                               "ProductionQueue",
                                               dataset.nyan_api_objects)
@@ -398,7 +398,7 @@ class RoRAbilitySubprocessor:
         # Production modes
         modes = []
 
-        mode_name = "%s.ProvideContingent.CreatablesMode" % (game_entity_name)
+        mode_name = f"{game_entity_name}.ProvideContingent.CreatablesMode"
         mode_raw_api_object = RawAPIObject(mode_name, "CreatablesMode", dataset.nyan_api_objects)
         mode_raw_api_object.add_raw_parent("engine.aux.production_mode.type.Creatables")
         mode_location = ForwardRef(line, ability_ref)
@@ -445,7 +445,7 @@ class RoRAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         # First projectile is mandatory
-        obj_ref = "%s.ShootProjectile.Projectile%s" % (game_entity_name, str(position))
+        obj_ref = f"{game_entity_name}.ShootProjectile.Projectile{str(position)}"
         ability_ref = "%s.ShootProjectile.Projectile%s.Projectile" % (game_entity_name,
                                                                       str(position))
         ability_raw_api_object = RawAPIObject(ability_ref,
@@ -546,7 +546,7 @@ class RoRAbilitySubprocessor:
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
-        ability_ref = "%s.Resistance" % (game_entity_name)
+        ability_ref = f"{game_entity_name}.Resistance"
         ability_raw_api_object = RawAPIObject(ability_ref, "Resistance", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Resistance")
         ability_location = ForwardRef(line, game_entity_name)
@@ -603,7 +603,7 @@ class RoRAbilitySubprocessor:
         ability_name = command_lookup_dict[command_id][0]
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
-        ability_ref = "%s.%s" % (game_entity_name, ability_name)
+        ability_ref = f"{game_entity_name}.{ability_name}"
         ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ShootProjectile")
         ability_location = ForwardRef(line, game_entity_name)
@@ -648,7 +648,7 @@ class RoRAbilitySubprocessor:
         projectile_primary = current_unit["attack_projectile_primary_unit_id"].get_value()
         if projectile_primary > -1:
             projectiles.append(ForwardRef(line,
-                                          "%s.ShootProjectile.Projectile0" % (game_entity_name)))
+                                          f"{game_entity_name}.ShootProjectile.Projectile0"))
 
         ability_raw_api_object.add_raw_member("projectiles",
                                               projectiles,

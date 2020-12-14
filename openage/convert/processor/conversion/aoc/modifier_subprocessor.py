@@ -180,7 +180,7 @@ class AoCModifierSubprocessor:
             civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
             target_obj_name = civ_lookup_dict[converter_obj_group.get_id()][0]
 
-        modifier_ref = "%s.MoveSpeed" % (target_obj_name)
+        modifier_ref = f"{target_obj_name}.MoveSpeed"
         modifier_raw_api_object = RawAPIObject(modifier_ref, "MoveSpeed", dataset.nyan_api_objects)
         modifier_raw_api_object.add_raw_parent("engine.modifier.multiplier.type.MoveSpeed")
         modifier_location = ForwardRef(converter_obj_group, target_obj_name)

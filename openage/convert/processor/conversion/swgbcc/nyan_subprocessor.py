@@ -142,7 +142,7 @@ class SWGBCCNyanSubprocessor:
 
         # Start with the generic GameEntity
         game_entity_name = name_lookup_dict[current_unit_id][0]
-        obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[current_unit_id][1])
+        obj_location = f"data/game_entity/generic/{name_lookup_dict[current_unit_id][1]}/"
         raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
@@ -167,7 +167,7 @@ class SWGBCCNyanSubprocessor:
 
         unit_class = current_unit["unit_class"].get_value()
         class_name = class_lookup_dict[unit_class]
-        class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
+        class_obj_name = f"aux.game_entity_type.types.{class_name}"
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
         types_set.append(type_obj)
 
@@ -339,7 +339,7 @@ class SWGBCCNyanSubprocessor:
 
         # Start with the generic GameEntity
         game_entity_name = name_lookup_dict[current_building_id][0]
-        obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[current_building_id][1])
+        obj_location = f"data/game_entity/generic/{name_lookup_dict[current_building_id][1]}/"
         raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
@@ -366,7 +366,7 @@ class SWGBCCNyanSubprocessor:
 
         unit_class = current_building["unit_class"].get_value()
         class_name = class_lookup_dict[unit_class]
-        class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
+        class_obj_name = f"aux.game_entity_type.types.{class_name}"
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
         types_set.append(type_obj)
 
@@ -497,7 +497,7 @@ class SWGBCCNyanSubprocessor:
 
         # Start with the generic GameEntity
         game_entity_name = name_lookup_dict[ambient_id][0]
-        obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[ambient_id][1])
+        obj_location = f"data/game_entity/generic/{name_lookup_dict[ambient_id][1]}/"
         raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
@@ -519,7 +519,7 @@ class SWGBCCNyanSubprocessor:
 
         unit_class = ambient_unit["unit_class"].get_value()
         class_name = class_lookup_dict[unit_class]
-        class_obj_name = "aux.game_entity_type.types.%s" % (class_name)
+        class_obj_name = f"aux.game_entity_type.types.{class_name}"
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
         types_set.append(type_obj)
 
@@ -601,10 +601,10 @@ class SWGBCCNyanSubprocessor:
         if isinstance(tech_group, UnitLineUpgrade):
             unit_line = dataset.unit_lines_vertical_ref[tech_group.get_line_id()]
             head_unit_id = unit_line.get_head_unit_id()
-            obj_location = "data/game_entity/generic/%s/" % (name_lookup_dict[head_unit_id][1])
+            obj_location = f"data/game_entity/generic/{name_lookup_dict[head_unit_id][1]}/"
 
         else:
-            obj_location = "data/tech/generic/%s/" % (tech_lookup_dict[tech_id][1])
+            obj_location = f"data/tech/generic/{tech_lookup_dict[tech_id][1]}/"
 
         raw_api_object.set_location(obj_location)
         raw_api_object.set_filename(tech_lookup_dict[tech_id][1])
@@ -618,9 +618,9 @@ class SWGBCCNyanSubprocessor:
         # =======================================================================
         # Name
         # =======================================================================
-        name_ref = "%s.%sName" % (tech_name, tech_name)
+        name_ref = f"{tech_name}.{tech_name}Name"
         name_raw_api_object = RawAPIObject(name_ref,
-                                           "%sName"  % (tech_name),
+                                           f"{tech_name}Name",
                                            dataset.nyan_api_objects)
         name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
         name_location = ForwardRef(tech_group, tech_name)
@@ -637,9 +637,9 @@ class SWGBCCNyanSubprocessor:
         # =======================================================================
         # Description
         # =======================================================================
-        description_ref = "%s.%sDescription" % (tech_name, tech_name)
+        description_ref = f"{tech_name}.{tech_name}Description"
         description_raw_api_object = RawAPIObject(description_ref,
-                                                  "%sDescription"  % (tech_name),
+                                                  f"{tech_name}Description",
                                                   dataset.nyan_api_objects)
         description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
         description_location = ForwardRef(tech_group, tech_name)
@@ -658,9 +658,9 @@ class SWGBCCNyanSubprocessor:
         # =======================================================================
         # Long description
         # =======================================================================
-        long_description_ref = "%s.%sLongDescription" % (tech_name, tech_name)
+        long_description_ref = f"{tech_name}.{tech_name}LongDescription"
         long_description_raw_api_object = RawAPIObject(long_description_ref,
-                                                       "%sLongDescription"  % (tech_name),
+                                                       f"{tech_name}LongDescription",
                                                        dataset.nyan_api_objects)
         long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
         long_description_location = ForwardRef(tech_group, tech_name)
@@ -711,7 +711,7 @@ class SWGBCCNyanSubprocessor:
                                       dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.aux.civilization.Civilization")
 
-        obj_location = "data/civ/%s/" % (civ_lookup_dict[civ_id][1])
+        obj_location = f"data/civ/{civ_lookup_dict[civ_id][1]}/"
 
         raw_api_object.set_location(obj_location)
         raw_api_object.set_filename(civ_lookup_dict[civ_id][1])
@@ -720,9 +720,9 @@ class SWGBCCNyanSubprocessor:
         # =======================================================================
         # Name
         # =======================================================================
-        name_ref = "%s.%sName" % (tech_name, tech_name)
+        name_ref = f"{tech_name}.{tech_name}Name"
         name_raw_api_object = RawAPIObject(name_ref,
-                                           "%sName"  % (tech_name),
+                                           f"{tech_name}Name",
                                            dataset.nyan_api_objects)
         name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
         name_location = ForwardRef(civ_group, tech_name)
@@ -739,9 +739,9 @@ class SWGBCCNyanSubprocessor:
         # =======================================================================
         # Description
         # =======================================================================
-        description_ref = "%s.%sDescription" % (tech_name, tech_name)
+        description_ref = f"{tech_name}.{tech_name}Description"
         description_raw_api_object = RawAPIObject(description_ref,
-                                                  "%sDescription"  % (tech_name),
+                                                  f"{tech_name}Description",
                                                   dataset.nyan_api_objects)
         description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
         description_location = ForwardRef(civ_group, tech_name)
@@ -760,9 +760,9 @@ class SWGBCCNyanSubprocessor:
         # =======================================================================
         # Long description
         # =======================================================================
-        long_description_ref = "%s.%sLongDescription" % (tech_name, tech_name)
+        long_description_ref = f"{tech_name}.{tech_name}LongDescription"
         long_description_raw_api_object = RawAPIObject(long_description_ref,
-                                                       "%sLongDescription"  % (tech_name),
+                                                       f"{tech_name}LongDescription",
                                                        dataset.nyan_api_objects)
         long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
         long_description_location = ForwardRef(civ_group, tech_name)
@@ -826,7 +826,7 @@ class SWGBCCNyanSubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
         game_entity_filename = name_lookup_dict[current_unit_id][1]
 
-        projectiles_location = "data/game_entity/generic/%s/projectiles/" % (game_entity_filename)
+        projectiles_location = f"data/game_entity/generic/{game_entity_filename}/projectiles/"
 
         projectile_indices = []
         projectile_primary = current_unit["attack_projectile_primary_unit_id"].get_value()
@@ -840,11 +840,11 @@ class SWGBCCNyanSubprocessor:
         for projectile_num in projectile_indices:
             obj_ref = "%s.ShootProjectile.Projectile%s" % (game_entity_name,
                                                            str(projectile_num))
-            obj_name = "Projectile%s" % (str(projectile_num))
+            obj_name = f"Projectile{str(projectile_num)}"
             proj_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
             proj_raw_api_object.add_raw_parent("engine.aux.game_entity.GameEntity")
             proj_raw_api_object.set_location(projectiles_location)
-            proj_raw_api_object.set_filename("%s_projectiles" % (game_entity_filename))
+            proj_raw_api_object.set_filename(f"{game_entity_filename}_projectiles")
 
             # =======================================================================
             # Types

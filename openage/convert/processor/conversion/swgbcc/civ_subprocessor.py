@@ -91,7 +91,7 @@ class SWGBCCCivSubprocessor:
             elif resource_id == 94:
                 ore_amount += amount
 
-        food_ref = "%s.FoodStartingAmount" % (civ_name)
+        food_ref = f"{civ_name}.FoodStartingAmount"
         food_raw_api_object = RawAPIObject(food_ref, "FoodStartingAmount",
                                            dataset.nyan_api_objects)
         food_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
@@ -110,7 +110,7 @@ class SWGBCCCivSubprocessor:
         food_forward_ref = ForwardRef(civ_group, food_ref)
         resource_amounts.append(food_forward_ref)
 
-        carbon_ref = "%s.CarbonStartingAmount" % (civ_name)
+        carbon_ref = f"{civ_name}.CarbonStartingAmount"
         carbon_raw_api_object = RawAPIObject(carbon_ref, "CarbonStartingAmount",
                                              dataset.nyan_api_objects)
         carbon_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
@@ -129,7 +129,7 @@ class SWGBCCCivSubprocessor:
         carbon_forward_ref = ForwardRef(civ_group, carbon_ref)
         resource_amounts.append(carbon_forward_ref)
 
-        nova_ref = "%s.NovaStartingAmount" % (civ_name)
+        nova_ref = f"{civ_name}.NovaStartingAmount"
         nova_raw_api_object = RawAPIObject(nova_ref, "NovaStartingAmount",
                                            dataset.nyan_api_objects)
         nova_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
@@ -148,7 +148,7 @@ class SWGBCCCivSubprocessor:
         nova_forward_ref = ForwardRef(civ_group, nova_ref)
         resource_amounts.append(nova_forward_ref)
 
-        ore_ref = "%s.OreStartingAmount" % (civ_name)
+        ore_ref = f"{civ_name}.OreStartingAmount"
         ore_raw_api_object = RawAPIObject(ore_ref, "OreStartingAmount",
                                           dataset.nyan_api_objects)
         ore_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
