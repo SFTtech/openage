@@ -68,7 +68,10 @@ class ConverterObject:
         """
         Returns a member of the object.
         """
-        return self.members[name]
+        try:
+            return self.members[name]
+        except KeyError as err:
+            raise KeyError(f"{self} has no attribute: {name}") from err
 
     def has_member(self, name):
         """
