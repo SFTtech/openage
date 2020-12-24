@@ -122,35 +122,33 @@ imagefile 2 "/{aoe2_base}/graphics/grass.png"
 ```
 
 
-### `blendmask`
+### `blendtable`
 
-Defines a blending mask that is used to blend one terrain texture
-into a different terrain texture that is directly adjacent. The
+Defines a blending table that is used for looking up a blending mask. The
 blending mechanism is described in more detail in the [blendomatic](/doc/media/blendomatic.md)
-documentation. Only one of the blending masked defined by adjacent
-terrain is used (the one with the highest priority). Blending masks
-are **optional** and do not need to be defined.
+documentation. Blending masks/tables are **optional** and do not need to be used.
 
-Parameter | Type   | Optional | Default value
-----------|--------|----------|--------------
-blend_id  | int    | No       | -
-filename  | string | No       | -
-priority  | int    | No       | -
+Parameter  | Type   | Optional | Default value
+-----------|--------|----------|--------------
+table_id   | int    | No       | -
+filename   | string | No       | -
+priority   | int    | No       | -
+blend_mode | int    | No       | -
 
-**blend_id**<br>
-Reference ID for the blending mask used in this file. IDs should start at `0`.
+**table_id**<br>
+Reference ID for the blending table used in this file. IDs should start at `0`.
 
 **filename**<br>
-Path to the image resource for the blending mask on the filesystem.
+Path to the blending table definition on the filesystem.
 
 There are two ways to specify a path: relative and absolute. Relative
 paths are relative to the location of the terrain definition file. They
 can only refer to image resources that are in the same modpack.
 
 ```
-blendmask 0 "blend0.png" 10        # blend0.png is in the same folder as the terrain file
-blendmask 1 "./blend0.png" 10      # same as above, but more explicit
-blendmask 2 "media/blend1.png" 10  # blend1.png is in the subfolder media/
+blendmask 0 "blend0.bltable" 10 3        # blend0.bltable is in the same folder as the terrain file
+blendmask 1 "./blend0.bltable" 10 3      # same as above, but more explicit
+blendmask 2 "media/blend1.bltable" 10 3  # blend1.bltable is in the subfolder media/
 ```
 
 Absolute paths start from the (virtual) modpack root (the path where all
@@ -159,45 +157,46 @@ a modpack identifier or a shortened modpack alias enclosed by `{}`. For
 information on modpack identifiers and aliases see the [TODO]() docs.
 
 ```
-blendmask 0 "/{aoe2_base@openage}/blend0.png" 10  # absolute path with modpack identifier
-blendmask 1 "/{aoe2_base}/blend0.png" 10          # absolute path with modpack alias
+blendmask 0 "/{aoe2_base@openage}/blend0.bltable" 10 3  # absolute path with modpack identifier
+blendmask 1 "/{aoe2_base}/blend0.bltable" 10 3         # absolute path with modpack alias
 ```
 
 Absolute paths are the only way to reference image resources from other
 modpacks.
 
 **priority**<br>
-Decides which blending mask of the adjacent terrain textures is selected
-for rendering. The blending mask with the highest priority value will be
-picked. If two adjacent textures use blending masks with equal priority,
-the blending mask of the texture with a lower x coordinate value is
-selected. If the x coordinate value is also the same, the blendig mask
-of the texture with the lowest y coordinate is selected.
+Decides which blending table of the two adjacent terrain textures is selected.
+The table referenced by the terrain with the highest priority value will be picked.
+If two adjacent terrains have equal priority, the blending table of the terrain
+with a lower x coordinate value is selected. If the x coordinate value is also
+equal, the blending table of the terrain with the lowest y coordinate is selected.
 
 ```
 # grass.terrain
 ...
-blendmask 0 "blend0.png" 12
+blendmask 0 "blend0.bltable" 12 2
 ...
 
 # sand.terrain
 ...
-blendmask 0 "blend1.png" 10
+blendmask 0 "blend1.bltable" 10 3
 ...
 
--> grass.terrain's blending mask has a higher blending priority.
-   Its blending mask is therefore used when grass.terrain and
-   sand.terrain are adjacent to each other.
-
+-> grass.terrain's blending table has a higher blending priority.
+   Its blending table definition is therefore used when grass.terrain
+   and sand.terrain are adjacent to each other.
 ```
+
+**blend_mode**<br>
+Used for looking up the blending mask index in the blending table.
 
 
 #### Example
 
 ```
-blendmask 0 "blend0.png" 40
-blendmask 1 "./blend3.png" 10
-blendmask 2 "/{aoe2_base}/blend8.png" 90
+blendmask 0 "blend0.bltable" 40 7
+blendmask 1 "./blend3.bltable" 10 1
+blendmask 2 "/{aoe2_base}/blend8.bltable" 90 1
 ```
 
 
