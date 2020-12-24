@@ -126,7 +126,7 @@ paths are relative to the location of the terrain definition file. They
 can only refer to image resources that are in the same modpack.
 
 ```
-blendmask 0 "blend0.blmask"        # blend0.blmask is in the same folder as the terrain file
+blendmask 0 "blend0.blmask"        # blend0.blmask is in the same folder as the blendtable file
 blendmask 1 "./blend0.blmask"      # same as above, but more explicit
 blendmask 2 "media/blend1.blmask"  # blend1.blmask is in the subfolder media/
 ```
@@ -152,4 +152,3 @@ blendmask 0 "blend0.blmask"
 blendmask 1 "./blend3.blmask"
 blendmask 2 "/{aoe2_base}/blend8.blmask"
 ```
-
