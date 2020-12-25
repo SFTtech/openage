@@ -4,6 +4,8 @@
 """
 Entry point for all of the asset conversion.
 """
+from datetime import datetime
+
 from ..log import info
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.fslike.wrapper import (DirectoryCreator,
@@ -59,6 +61,11 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
     # make srcdir and targetdir safe for threaded conversion
     args.srcdir = AccessSynchronizer(data_dir).root
     args.targetdir = AccessSynchronizer(targetdir).root
+
+    # add a dir for debug logs
+    debug_log_path = converted_path / "debug" / datetime.now().isoformat(timespec='seconds')
+    debugdir = DirectoryCreator(debug_log_path).root
+    args.debugdir = AccessSynchronizer(debugdir).root
 
     def flag(name):
         """
@@ -160,6 +167,10 @@ def init_subparser(cli):
     cli.add_argument(
         "--compression-level", type=int, default=1, choices=[0, 1, 2, 3],
         help="set PNG compression level")
+
+    cli.add_argument(
+        "--debug-log", type=int, default=3, choices=[0, 1, 2, 3, 4, 5, 6],
+        help="create a debug log for the converter run; verbosity level 0-6")
 
 
 def main(args, error):
