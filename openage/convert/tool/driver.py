@@ -7,6 +7,7 @@ actual conversion process.
 
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
+from ..service.debug_info import debug_gamedata_format
 from ..service.init.changelog import (ASSET_VERSION)
 from ..service.read.gamedata import get_gamespec
 from ..service.read.palette import get_palettes
@@ -78,6 +79,7 @@ def convert_metadata(args):
 
     # Read .dat
     yield "empires.dat"
+    debug_gamedata_format(args.debugdir, args.game_version, args.debug_log)
     gamespec = get_gamespec(args.srcdir, args.game_version, args.flag("no_pickle_cache"))
 
     # Read strings

@@ -10,11 +10,11 @@ class MemberAccess(Enum):
     # pylint doesn't understand that this Enum doesn't need any members.
     # pylint: disable=too-few-public-methods
 
-    READ          = "binary-read_member"
-    READ_GEN      = "binary-read_gen_member"
-    NOREAD_EXPORT = "noread-export_member"
-    READ_UNKNOWN  = "read-unknown_member"
-    SKIP          = "skip-member"
+    READ          = "READ"
+    READ_GEN      = "READ_GEN"
+    NOREAD_EXPORT = "NOREAD_EXPORT"
+    READ_UNKNOWN  = "READ_UNKNOWN"
+    SKIP          = "SKIP"
 
 
 # TODO those values are made available in the module's global namespace
