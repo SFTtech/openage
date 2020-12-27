@@ -5,8 +5,43 @@
 Creates debug output from data in a conversion run.
 """
 from openage.convert.value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
-from openage.convert.value_object.read.read_members import SubdataMember,\
-    IncludeMembers, MultisubtypeMember
+from openage.convert.value_object.read.read_members import IncludeMembers, MultisubtypeMember
+
+
+def debug_init(debugdir, args):
+    """
+    Log the converter settings.
+    """
+    logfile = debugdir["args"]
+    logtext = ""
+
+    # Get CLI args
+    arg_dict = {}
+    for name, arg in vars(args).items():
+        if name == "entrypoint":
+            # args after entrypoint are not from CLI
+            break
+
+        arg_dict.update({name: arg})
+
+    # Sort by name
+    arg_dict = dict(sorted(arg_dict.items(), key=lambda item: item[0]))
+
+    for name, arg in arg_dict.items():
+        logtext += f"{name}: {arg}\n"
+
+    with logfile.open("w") as log:
+        log.write(logtext)
+
+    # Log game version
+    logfile = debugdir.joinpath("init/")["game_version"]
+    logtext = ""
+
+    logtext += f"game edition: {args.game_version[0]}\n"
+    logtext += f"game expansions: {args.game_version[1]}\n"
+
+    with logfile.open("w") as log:
+        log.write(logtext)
 
 
 def debug_gamedata_format(debugdir, game_version, loglevel):

@@ -5,6 +5,8 @@ Receives cleaned-up srcdir and targetdir objects from .main, and drives the
 actual conversion process.
 """
 
+from openage.convert.service.debug_info import debug_init
+
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
 from ..service.debug_info import debug_gamedata_format
@@ -76,6 +78,7 @@ def convert_metadata(args):
         gamedata_path.removerecursive()
 
     args.converter = get_converter(args.game_version)
+    debug_init(args.debugdir, args)
 
     # Read .dat
     yield "empires.dat"
