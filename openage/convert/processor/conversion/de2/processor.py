@@ -4,7 +4,8 @@
 #
 # TODO:
 # pylint: disable=line-too-long
-
+from openage.convert.service.debug_info import debug_converter_objects,\
+    debug_converter_object_groups
 """
 Convert data from DE2 to openage formats.
 """
@@ -31,7 +32,7 @@ class DE2Processor:
     """
 
     @classmethod
-    def convert(cls, gamespec, game_version, string_resources, existing_graphics):
+    def convert(cls, gamespec, args, string_resources, existing_graphics):
         """
         Input game speification and media here and get a set of
         modpacks back.
@@ -46,13 +47,15 @@ class DE2Processor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        data_set = cls._pre_processor(gamespec, game_version, string_resources, existing_graphics)
+        dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
+        debug_converter_objects(args.debugdir, dataset, args.debug_log)
 
         # Create the custom openae formats (nyan, sprite, terrain)
-        data_set = cls._processor(data_set)
+        dataset = cls._processor(dataset)
+        debug_converter_object_groups(args.debugdir, dataset, args.debug_log)
 
         # Create modpack definitions
-        modpacks = cls._post_processor(data_set)
+        modpacks = cls._post_processor(dataset)
 
         return modpacks
 

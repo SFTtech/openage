@@ -4,6 +4,11 @@
 """
 Creates debug output from data in a conversion run.
 """
+from openage.convert.entity_object.conversion.aoc.genie_tech import AgeUpgrade,\
+    UnitLineUpgrade, BuildingLineUpgrade, UnitUnlock, BuildingUnlock
+from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
+    GenieBuildingLineGroup, GenieStackBuildingGroup, GenieUnitTransformGroup,\
+    GenieMonkGroup
 from openage.convert.value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
 from openage.convert.value_object.read.read_members import IncludeMembers, MultisubtypeMember
 from openage.util.fslike.filecollection import FileCollectionPath
@@ -190,3 +195,201 @@ def debug_registered_graphics(debugdir, existing_graphics, loglevel):
 
     with logfile.open("w") as log:
         log.write(logtext)
+
+
+def debug_converter_objects(debugdir, dataset, loglevel):
+    """
+    Create debug output for ConverterObject instances from the
+    conversion preprocessor.
+    """
+    logfile = debugdir.joinpath("conversion/")["preprocessor_objects"]
+    logtext = ""
+
+    logtext += (
+        f"unit objects count: {len(dataset.genie_units)}\n"
+        f"tech objects count: {len(dataset.genie_techs)}\n"
+        f"civ objects count: {len(dataset.genie_civs)}\n"
+        f"effect bundles count: {len(dataset.genie_effect_bundles)}\n"
+        f"age connections count: {len(dataset.age_connections)}\n"
+        f"building connections count: {len(dataset.building_connections)}\n"
+        f"unit connections count: {len(dataset.unit_connections)}\n"
+        f"tech connections count: {len(dataset.tech_connections)}\n"
+        f"graphics objects count: {len(dataset.genie_graphics)}\n"
+        f"sound objects count: {len(dataset.genie_sounds)}\n"
+        f"terrain objects count: {len(dataset.genie_terrains)}\n"
+    )
+
+    with logfile.open("w") as log:
+        log.write(logtext)
+
+
+def debug_converter_object_groups(debugdir, dataset, loglevel):
+    """
+    Create debug output for ConverterObjectGroup instances from the
+    conversion preprocessor.
+    """
+    enitity_groups = {}
+    enitity_groups.update(dataset.unit_lines)
+    enitity_groups.update(dataset.building_lines)
+    enitity_groups.update(dataset.ambient_groups)
+    enitity_groups.update(dataset.variant_groups)
+
+    for key, line in enitity_groups.items():
+        logfile = debugdir.joinpath("conversion/entity_groups/")[str(key)]
+        logtext = ""
+
+        logtext += f"repr: {line}\n"
+
+        logtext += f"is_creatable: {line.is_creatable()}\n"
+        logtext += f"is_harvestable: {line.is_harvestable()}\n"
+        logtext += f"is_garrison: {line.is_garrison()}\n"
+        logtext += f"is_gatherer: {line.is_gatherer()}\n"
+        logtext += f"is_passable: {line.is_passable()}\n"
+        logtext += f"is_projectile_shooter: {line.is_projectile_shooter()}\n"
+        logtext += f"is_ranged: {line.is_ranged()}\n"
+        logtext += f"is_melee: {line.is_melee()}\n"
+        logtext += f"is_repairable: {line.is_repairable()}\n"
+        logtext += f"is_unique: {line.is_unique()}\n"
+
+        logtext += f"class id: {line.get_class_id()}\n"
+        logtext += f"garrison mode: {line.get_garrison_mode()}\n"
+        logtext += f"head unit: {line.get_head_unit()}\n"
+        logtext += f"train location id: {line.get_train_location_id()}\n"
+
+        logtext += "line:\n"
+        for unit in line.line:
+            logtext += f"    - {unit}\n"
+
+        if len(line.creates) > 0:
+            logtext += "creates:\n"
+            for unit in line.creates:
+                logtext += f"    - {unit}\n"
+
+        else:
+            logtext += "creates: nothing\n"
+
+        if len(line.researches) > 0:
+            logtext += "researches:\n"
+            for tech in line.researches:
+                logtext += f"    - {tech}\n"
+
+        else:
+            logtext += "researches: nothing\n"
+
+        if len(line.garrison_entities) > 0:
+            logtext += "garrisons units:\n"
+            for unit in line.garrison_entities:
+                logtext += f"    - {unit}\n"
+
+        else:
+            logtext += "garrisons units: nothing\n"
+
+        if len(line.garrison_locations) > 0:
+            logtext += "garrisons in:\n"
+            for unit in line.garrison_locations:
+                logtext += f"    - {unit}\n"
+
+        else:
+            logtext += "garrisons in: nothing\n"
+
+        if isinstance(line, GenieUnitLineGroup):
+            logtext += "\n"
+            logtext += f"civ id: {line.get_civ_id()}\n"
+            logtext += f"enabling research id: {line.get_enabling_research_id()}\n"
+
+        if isinstance(line, GenieBuildingLineGroup):
+            logtext += "\n"
+            logtext += f"has_foundation: {line.has_foundation()}\n"
+            logtext += f"is_dropsite: {line.is_dropsite()}\n"
+            logtext += f"is_trade_post {line.is_trade_post()}\n"
+            logtext += f"enabling research id: {line.get_enabling_research_id()}\n"
+            logtext += f"dropoff gatherer ids: {line.get_gatherer_ids()}\n"
+
+        if isinstance(line, GenieStackBuildingGroup):
+            logtext += "\n"
+            logtext += f"is_gate: {line.is_gate()}\n"
+            logtext += f"stack unit: {line.get_stack_unit()}\n"
+
+        if isinstance(line, GenieUnitTransformGroup):
+            logtext += "\n"
+            logtext += f"transform unit: {line.get_transform_unit()}\n"
+
+        if isinstance(line, GenieMonkGroup):
+            logtext += "\n"
+            logtext += f"switch unit: {line.get_switch_unit()}\n"
+
+        with logfile.open("w") as log:
+            log.write(logtext)
+
+    for key, civ in dataset.civ_groups.items():
+        logfile = debugdir.joinpath("conversion/civ_groups/")[str(key)]
+        logtext = ""
+
+        logtext += f"repr: {civ}\n"
+        logtext += f"team bonus: {civ.team_bonus}\n"
+        logtext += f"tech tree: {civ.tech_tree}\n"
+
+        logtext += "civ bonus ids:\n"
+        for bonus in civ.civ_boni:
+            logtext += f"    - {bonus}\n"
+
+        logtext += "unique unit ids:\n"
+        for unit in civ.unique_entities:
+            logtext += f"    - {unit}\n"
+
+        logtext += "unique tech ids:\n"
+        for tech in civ.unique_techs:
+            logtext += f"    - {tech}\n"
+
+        with logfile.open("w") as log:
+            log.write(logtext)
+
+    for key, tech in dataset.tech_groups.items():
+        logfile = debugdir.joinpath("conversion/tech_groups/")[str(key)]
+        logtext = ""
+
+        logtext += f"repr: {tech}\n"
+        logtext += f"is_researchable: {tech.is_researchable()}\n"
+        logtext += f"is_unique: {tech.is_unique()}\n"
+        logtext += f"research location id: {tech.get_research_location_id()}\n"
+
+        logtext += f"required tech count: {tech.get_required_tech_count()}\n"
+        logtext += "required techs:\n"
+        for req_tech in tech.get_required_techs():
+            logtext += f"    - {req_tech}\n"
+
+        if isinstance(tech, AgeUpgrade):
+            logtext += "\n"
+            logtext += f"researched age id: {tech.age_id}\n"
+
+        if isinstance(tech, UnitLineUpgrade):
+            logtext += "\n"
+            logtext += f"upgraded line id: {tech.get_line_id()}\n"
+            logtext += f"upgraded line: {tech.get_upgraded_line()}\n"
+            logtext += f"upgrade target id: {tech.get_upgrade_target_id()}\n"
+
+        if isinstance(tech, BuildingLineUpgrade):
+            logtext += "\n"
+            logtext += f"upgraded line id: {tech.get_line_id()}\n"
+            logtext += f"upgrade target id: {tech.get_upgrade_target_id()}\n"
+
+        if isinstance(tech, UnitUnlock):
+            logtext += "\n"
+            logtext += f"unlocked line: {tech.get_unlocked_line()}\n"
+
+        if isinstance(tech, BuildingUnlock):
+            logtext += "\n"
+            logtext += f"unlocked line: {tech.get_unlocked_line()}\n"
+
+        with logfile.open("w") as log:
+            log.write(logtext)
+
+    for key, terrain in dataset.terrain_groups.items():
+        logfile = debugdir.joinpath("conversion/terrain_groups/")[str(key)]
+        logtext = ""
+
+        logtext += f"repr: {terrain}\n"
+        logtext += f"has_subterrain: {terrain.has_subterrain()}\n"
+
+        with logfile.open("w") as log:
+            log.write(logtext)

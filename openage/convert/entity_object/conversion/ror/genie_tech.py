@@ -39,6 +39,9 @@ class RoRUnitLineUpgrade(UnitLineUpgrade):
     Upgrades a unit in a line.
     """
 
+    def get_upgraded_line(self):
+        return self.data.unit_lines[self.unit_line_id]
+
     def is_unique(self):
         return False
 

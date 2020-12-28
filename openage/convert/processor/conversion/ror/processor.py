@@ -5,7 +5,7 @@
 #
 # TODO:
 # pylint: disable=line-too-long
-
+from openage.convert.service.debug_info import debug_converter_object_groups
 """
 Convert data from RoR to openage formats.
 """
@@ -21,6 +21,7 @@ from ....entity_object.conversion.ror.genie_tech import RoRStatUpgrade,\
 from ....entity_object.conversion.ror.genie_unit import RoRUnitTaskGroup,\
     RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup, RoRAmbientGroup,\
     RoRVariantGroup
+from ....service.debug_info import debug_converter_objects
 from ....service.read.nyan_api_loader import load_api
 from ....value_object.conversion.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
@@ -37,7 +38,7 @@ class RoRProcessor:
     """
 
     @classmethod
-    def convert(cls, gamespec, game_version, string_resources, existing_graphics):
+    def convert(cls, gamespec, args, string_resources, existing_graphics):
         """
         Input game specification and media here and get a set of
         modpacks back.
@@ -52,13 +53,15 @@ class RoRProcessor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        data_set = cls._pre_processor(gamespec, game_version, string_resources, existing_graphics)
+        dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
+        debug_converter_objects(args.debugdir, dataset, args.debug_log)
 
         # Create the custom openae formats (nyan, sprite, terrain)
-        data_set = cls._processor(gamespec, data_set)
+        dataset = cls._processor(gamespec, dataset)
+        debug_converter_object_groups(args.debugdir, dataset, args.debug_log)
 
         # Create modpack definitions
-        modpacks = cls._post_processor(data_set)
+        modpacks = cls._post_processor(dataset)
 
         return modpacks
 

@@ -914,7 +914,22 @@ class GenieAmbientGroup(GenieGameEntityGroup):
         """
         return self.contains_entity(ambient_id)
 
+    def is_creatable(self, civ_id=-1):
+        return False
+
+    def is_gatherer(self, civ_id=-1):
+        return False
+
+    def is_melee(self, civ_id=-1):
+        return False
+
+    def is_ranged(self, civ_id=-1):
+        return False
+
     def is_projectile_shooter(self, civ_id=-1):
+        return False
+
+    def is_unique(self):
         return False
 
     def __repr__(self):
@@ -934,6 +949,21 @@ class GenieVariantGroup(GenieGameEntityGroup):
         Returns True if a unit with unit_id is part of the group.
         """
         return self.contains_entity(object_id)
+
+    def is_creatable(self, civ_id=-1):
+        return False
+
+    def is_gatherer(self, civ_id=-1):
+        return False
+
+    def is_melee(self, civ_id=-1):
+        return False
+
+    def is_ranged(self, civ_id=-1):
+        return False
+
+    def is_unique(self):
+        return False
 
     def __repr__(self):
         return f"GenieVariantGroup<{self.get_id()}>"

@@ -2,11 +2,9 @@
 #
 # pylint: disable=too-many-lines,too-many-branches,too-many-statements
 # pylint: disable=too-many-locals,too-many-public-methods
-
 """
 Convert data from AoC to openage formats.
 """
-
 from .....log import info
 from ....entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup
 from ....entity_object.conversion.aoc.genie_civ import GenieCivilizationObject
@@ -35,6 +33,8 @@ from ....entity_object.conversion.aoc.genie_unit import GenieUnitObject
 from ....entity_object.conversion.aoc.genie_unit import GenieUnitTaskGroup,\
     GenieVillagerGroup
 from ....entity_object.conversion.aoc.genie_unit import GenieVariantGroup
+from ....service.debug_info import debug_converter_objects,\
+    debug_converter_object_groups
 from ....service.read.nyan_api_loader import load_api
 from ....value_object.conversion.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
@@ -50,7 +50,7 @@ class AoCProcessor:
     """
 
     @classmethod
-    def convert(cls, gamespec, game_version, string_resources, existing_graphics):
+    def convert(cls, gamespec, args, string_resources, existing_graphics):
         """
         Input game speification and media here and get a set of
         modpacks back.
@@ -65,13 +65,15 @@ class AoCProcessor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        data_set = cls._pre_processor(gamespec, game_version, string_resources, existing_graphics)
+        dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
+        debug_converter_objects(args.debugdir, dataset, args.debug_log)
 
         # Create the custom openae formats (nyan, sprite, terrain)
-        data_set = cls._processor(data_set)
+        dataset = cls._processor(dataset)
+        debug_converter_object_groups(args.debugdir, dataset, args.debug_log)
 
         # Create modpack definitions
-        modpacks = cls._post_processor(data_set)
+        modpacks = cls._post_processor(dataset)
 
         return modpacks
 

@@ -96,7 +96,7 @@ def convert_metadata(args):
 
     # Convert
     modpacks = args.converter.convert(gamespec,
-                                      args.game_version,
+                                      args,
                                       string_resources,
                                       existing_graphics)
 
