@@ -78,7 +78,7 @@ def convert_metadata(args):
         gamedata_path.removerecursive()
 
     args.converter = get_converter(args.game_version)
-    debug_init(args.debugdir, args)
+    debug_init(args.debugdir, args, args.debug_log)
 
     # Read .dat
     yield "empires.dat"

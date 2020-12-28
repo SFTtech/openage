@@ -6,9 +6,12 @@ Creates debug output from data in a conversion run.
 """
 from openage.convert.value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
 from openage.convert.value_object.read.read_members import IncludeMembers, MultisubtypeMember
+from openage.util.fslike.directory import Directory
+from openage.util.fslike.filecollection import FileCollectionPath
+from openage.util.fslike.path import Path
 
 
-def debug_init(debugdir, args):
+def debug_init(debugdir, args, loglevel):
     """
     Log the converter settings.
     """
@@ -37,8 +40,68 @@ def debug_init(debugdir, args):
     logfile = debugdir.joinpath("init/")["game_version"]
     logtext = ""
 
-    logtext += f"game edition: {args.game_version[0]}\n"
-    logtext += f"game expansions: {args.game_version[1]}\n"
+    logtext += (
+        f"game edition:\n"
+        f"    - {args.game_version[0]}\n"
+    )
+
+    if len(args.game_version[1]) > 0:
+        logtext += "game expansions:\n"
+        for expansion in args.game_version[1]:
+            logtext += f"    - {expansion}\n"
+
+    else:
+        logtext += "game expansions: none detected"
+
+    with logfile.open("w") as log:
+        log.write(logtext)
+
+    # Log mounts
+    logfile = debugdir.joinpath("init/")["mounts"]
+    logtext = ""
+
+    mounts = args.srcdir.fsobj.obj.fsobj.mounts
+
+    # Sort by mounted directory name
+    mount_dict = {}
+    for mount in mounts:
+        if mount[0] in mount_dict.keys():
+            mount_dict[mount[0]].append(mount[1])
+
+        else:
+            mount_dict[mount[0]] = [mount[1]]
+
+    mount_dict = dict(sorted(mount_dict.items(), key=lambda item: item[0]))
+
+    # Format mounts
+    for mountpoint, resources in mount_dict.items():
+        if len(mountpoint) == 0:
+            logtext += f"mountpoint: ${{srcdir}}/\n"
+
+        else:
+            logtext += f"mountpoint: ${{srcdir}}/{mountpoint[0].decode()}/\n"
+
+        for resource in resources:
+            resource_type = None
+            abs_path = ""
+            file_count = 0
+
+            if type(resource) is Path:
+                resource_type = "dir"
+                abs_path = resource.fsobj.path.decode()
+
+            elif type(resource) is FileCollectionPath:
+                resource_type = "file collection"
+                abs_path = resource.fsobj.fileobj.name.decode()
+                file_count = len(resource.fsobj.rootentries[0])
+
+            logtext += f"    resource type: {resource_type}\n"
+            logtext += f"    source path: {abs_path}\n"
+
+            if resource_type == "file collection":
+                logtext += f"    file count: {file_count}\n"
+
+            logtext += f"    ----\n"
 
     with logfile.open("w") as log:
         log.write(logtext)
