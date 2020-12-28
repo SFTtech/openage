@@ -5,7 +5,8 @@ Receives cleaned-up srcdir and targetdir objects from .main, and drives the
 actual conversion process.
 """
 
-from openage.convert.service.debug_info import debug_init
+from openage.convert.service.debug_info import debug_init,\
+    debug_string_resources, debug_registered_graphics
 
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
@@ -87,9 +88,11 @@ def convert_metadata(args):
 
     # Read strings
     string_resources = get_string_resources(args)
+    debug_string_resources(args.debugdir, string_resources, args.debug_log)
 
     # Existing graphic IDs/filenames
     existing_graphics = get_existing_graphics(args)
+    debug_registered_graphics(args.debugdir, existing_graphics, args.debug_log)
 
     # Convert
     modpacks = args.converter.convert(gamespec,

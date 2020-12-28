@@ -6,7 +6,6 @@ Creates debug output from data in a conversion run.
 """
 from openage.convert.value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
 from openage.convert.value_object.read.read_members import IncludeMembers, MultisubtypeMember
-from openage.util.fslike.directory import Directory
 from openage.util.fslike.filecollection import FileCollectionPath
 from openage.util.fslike.path import Path
 
@@ -154,6 +153,40 @@ def debug_gamedata_format(debugdir, game_version, loglevel):
 
         handled_structs.add(struct)
         logtext += "\n"
+
+    with logfile.open("w") as log:
+        log.write(logtext)
+
+
+def debug_string_resources(debugdir, string_resources, loglevel):
+    """
+    Create debug output for found string resources.
+    """
+    logfile = debugdir.joinpath("read/")["string_resources"]
+    logtext = ""
+
+    logtext += "found languages: "
+    logtext += ", ".join(string_resources.get_tables().keys())
+    logtext += "\n\n"
+
+    for language, strings in string_resources.get_tables().items():
+        logtext += f"{language}: {len(strings)} IDs\n"
+
+    with logfile.open("w") as log:
+        log.write(logtext)
+
+
+def debug_registered_graphics(debugdir, existing_graphics, loglevel):
+    """
+    Create debug output for found graphics files.
+    """
+    logfile = debugdir.joinpath("read/")["existing_graphics"]
+    logtext = ""
+
+    logtext += f"file count: {len(existing_graphics)}\n\n"
+
+    sorted_graphics = list(sorted(existing_graphics))
+    logtext += "\n".join(sorted_graphics)
 
     with logfile.open("w") as log:
         log.write(logtext)
