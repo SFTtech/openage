@@ -6,7 +6,7 @@ actual conversion process.
 """
 
 from openage.convert.service.debug_info import debug_init,\
-    debug_string_resources, debug_registered_graphics
+    debug_string_resources, debug_registered_graphics, debug_modpack
 
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
@@ -102,6 +102,7 @@ def convert_metadata(args):
 
     for modpack in modpacks:
         ModpackExporter.export(modpack, args)
+        debug_modpack(args.debugdir, modpack, args.debug_log)
 
     if args.game_version[0].game_id not in ("ROR", "AOE2DE"):
         yield "blendomatic.dat"

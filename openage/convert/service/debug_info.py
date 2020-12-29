@@ -393,3 +393,43 @@ def debug_converter_object_groups(debugdir, dataset, loglevel):
 
         with logfile.open("w") as log:
             log.write(logtext)
+
+
+def debug_modpack(debugdir, modpack, loglevel):
+    """
+    Create debug output for a modpack.
+    """
+    logfile = debugdir.joinpath(f"export/{modpack.name}")["summary"]
+    logtext = ""
+
+    logtext += f"name: {modpack.name}\n"
+
+    file_count = (
+        len(modpack.get_data_files()) +
+        len(modpack.get_media_files()) +
+        len(modpack.get_metadata_files())
+    )
+    logtext += f"file count: {file_count}\n"
+    logtext += f"    data: {len(modpack.get_data_files())}\n"
+    logtext += f"    media: {len(modpack.get_media_files())}\n"
+
+    # Count the files by type
+    media_dict = {}
+    for media_type, files in modpack.get_media_files().items():
+        media_dict[media_type.value] = len(files)
+
+    # Sort by type name
+    media_dict = dict(sorted(media_dict.items(), key=lambda item: item[0]))
+
+    for media_type, file_count in media_dict.items():
+        logtext += f"        {media_type}: {file_count}\n"
+
+    logtext += f"    metadata: {len(modpack.get_metadata_files())}\n"
+
+    with logfile.open("w") as log:
+        log.write(logtext)
+
+    # Export info and manifest file
+    logdir = debugdir.joinpath(f"export/{modpack.name}")
+    modpack.info.save(logdir)
+    modpack.manifest.save(logdir)
