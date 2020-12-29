@@ -277,6 +277,12 @@ class BuildingLineUpgrade(GenieTechEffectBundleGroup):
         """
         return self.building_line_id
 
+    def get_upgraded_line(self):
+        """
+        Returns the line that is upgraded.
+        """
+        return self.data.building_lines[self.building_line_id]
+
     def get_upgrade_target_id(self):
         """
         Returns the target unit that is upgraded to.

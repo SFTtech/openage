@@ -9,6 +9,8 @@ from openage.convert.entity_object.conversion.aoc.genie_tech import AgeUpgrade,\
 from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup, GenieStackBuildingGroup, GenieUnitTransformGroup,\
     GenieMonkGroup
+from openage.convert.service.conversion.internal_name_lookups import get_entity_lookups,\
+    get_tech_lookups, get_civ_lookups, get_terrain_lookups
 from openage.convert.value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
 from openage.convert.value_object.read.read_members import IncludeMembers, MultisubtypeMember
 from openage.util.fslike.filecollection import FileCollectionPath
@@ -264,11 +266,23 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
     enitity_groups.update(dataset.ambient_groups)
     enitity_groups.update(dataset.variant_groups)
 
+    entity_name_lookup_dict = get_entity_lookups(dataset.game_version)
+    tech_name_lookup_dict = get_tech_lookups(dataset.game_version)
+    civ_name_lookup_dict = get_civ_lookups(dataset.game_version)
+    terrain_name_lookup_dict = get_terrain_lookups(dataset.game_version)
+
+    # Used when a name lookup fails
+    nnn = ("NameNotFound",)
+
     for key, line in enitity_groups.items():
         logfile = debugdir.joinpath("conversion/entity_groups/")[str(key)]
         logtext = ""
 
         logtext += f"repr: {line}\n"
+        logtext += (
+            f"nyan name: "
+            f"{entity_name_lookup_dict.get(line.get_head_unit_id(), nnn)[0]}\n"
+        )
 
         logtext += f"is_creatable: {line.is_creatable()}\n"
         logtext += f"is_harvestable: {line.is_harvestable()}\n"
@@ -293,7 +307,10 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
         if len(line.creates) > 0:
             logtext += "creates:\n"
             for unit in line.creates:
-                logtext += f"    - {unit}\n"
+                logtext += (
+                    f"    - {unit} "
+                    f"({entity_name_lookup_dict.get(unit.get_head_unit_id(), nnn)[0]})\n"
+                )
 
         else:
             logtext += "creates: nothing\n"
@@ -301,7 +318,10 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
         if len(line.researches) > 0:
             logtext += "researches:\n"
             for tech in line.researches:
-                logtext += f"    - {tech}\n"
+                logtext += (
+                    f"    - {tech} "
+                    f"({tech_name_lookup_dict.get(tech.get_id(), nnn)[0]})\n"
+                )
 
         else:
             logtext += "researches: nothing\n"
@@ -309,7 +329,10 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
         if len(line.garrison_entities) > 0:
             logtext += "garrisons units:\n"
             for unit in line.garrison_entities:
-                logtext += f"    - {unit}\n"
+                logtext += (
+                    f"    - {unit} "
+                    f"({entity_name_lookup_dict.get(unit.get_head_unit_id(), nnn)[0]})\n"
+                )
 
         else:
             logtext += "garrisons units: nothing\n"
@@ -317,22 +340,34 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
         if len(line.garrison_locations) > 0:
             logtext += "garrisons in:\n"
             for unit in line.garrison_locations:
-                logtext += f"    - {unit}\n"
+                logtext += (
+                    f"    - {unit} "
+                    f"({entity_name_lookup_dict.get(unit.get_head_unit_id(), nnn)[0]})\n"
+                )
 
         else:
             logtext += "garrisons in: nothing\n"
 
         if isinstance(line, GenieUnitLineGroup):
             logtext += "\n"
-            logtext += f"civ id: {line.get_civ_id()}\n"
-            logtext += f"enabling research id: {line.get_enabling_research_id()}\n"
+            logtext += (
+                f"civ id: {line.get_civ_id()} "
+                f"({civ_name_lookup_dict.get(line.get_civ_id(), nnn)[0]})\n"
+            )
+            logtext += (
+                f"enabling research id: {line.get_enabling_research_id()} "
+                f"({tech_name_lookup_dict.get(line.get_enabling_research_id(), nnn)[0]})\n"
+            )
 
         if isinstance(line, GenieBuildingLineGroup):
             logtext += "\n"
             logtext += f"has_foundation: {line.has_foundation()}\n"
             logtext += f"is_dropsite: {line.is_dropsite()}\n"
             logtext += f"is_trade_post {line.is_trade_post()}\n"
-            logtext += f"enabling research id: {line.get_enabling_research_id()}\n"
+            logtext += (
+                f"enabling research id: {line.get_enabling_research_id()} "
+                f"({tech_name_lookup_dict.get(line.get_enabling_research_id(), nnn)[0]})\n"
+            )
             logtext += f"dropoff gatherer ids: {line.get_gatherer_ids()}\n"
 
         if isinstance(line, GenieStackBuildingGroup):
@@ -356,6 +391,11 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
         logtext = ""
 
         logtext += f"repr: {civ}\n"
+        logtext += (
+            f"nyan name: "
+            f"{civ_name_lookup_dict.get(civ.get_id(), nnn)[0]}\n"
+        )
+
         logtext += f"team bonus: {civ.team_bonus}\n"
         logtext += f"tech tree: {civ.tech_tree}\n"
 
@@ -365,11 +405,17 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
 
         logtext += "unique unit ids:\n"
         for unit in civ.unique_entities:
-            logtext += f"    - {unit}\n"
+            logtext += (
+                f"    - {unit} "
+                f"({entity_name_lookup_dict.get(unit, nnn)[0]})\n"
+            )
 
         logtext += "unique tech ids:\n"
         for tech in civ.unique_techs:
-            logtext += f"    - {tech}\n"
+            logtext += (
+                f"    - {tech} "
+                f"({tech_name_lookup_dict.get(tech, nnn)[0]})\n"
+            )
 
         with logfile.open("w") as log:
             log.write(logtext)
@@ -379,14 +425,25 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
         logtext = ""
 
         logtext += f"repr: {tech}\n"
+        logtext += (
+            f"nyan name: "
+            f"{tech_name_lookup_dict.get(tech.get_id(), nnn)[0]}\n"
+        )
+
         logtext += f"is_researchable: {tech.is_researchable()}\n"
         logtext += f"is_unique: {tech.is_unique()}\n"
-        logtext += f"research location id: {tech.get_research_location_id()}\n"
+        logtext += (
+            f"research location id: {tech.get_research_location_id()} "
+            f"({entity_name_lookup_dict.get(tech.get_research_location_id(), nnn)[0]})\n"
+        )
 
         logtext += f"required tech count: {tech.get_required_tech_count()}\n"
         logtext += "required techs:\n"
         for req_tech in tech.get_required_techs():
-            logtext += f"    - {req_tech}\n"
+            logtext += (
+                f"    - {req_tech} "
+                f"({tech_name_lookup_dict.get(req_tech, nnn)[0]})\n"
+            )
 
         if isinstance(tech, AgeUpgrade):
             logtext += "\n"
@@ -395,21 +452,34 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
         if isinstance(tech, UnitLineUpgrade):
             logtext += "\n"
             logtext += f"upgraded line id: {tech.get_line_id()}\n"
-            logtext += f"upgraded line: {tech.get_upgraded_line()}\n"
+            logtext += (
+                f"upgraded line: {tech.get_upgraded_line()} "
+                f"({entity_name_lookup_dict.get(tech.get_line_id(), nnn)[0]})\n"
+            )
             logtext += f"upgrade target id: {tech.get_upgrade_target_id()}\n"
 
         if isinstance(tech, BuildingLineUpgrade):
             logtext += "\n"
             logtext += f"upgraded line id: {tech.get_line_id()}\n"
+            logtext += (
+                f"upgraded line: {tech.get_upgraded_line()} "
+                f"({entity_name_lookup_dict.get(tech.get_line_id(), nnn)[0]})\n"
+            )
             logtext += f"upgrade target id: {tech.get_upgrade_target_id()}\n"
 
         if isinstance(tech, UnitUnlock):
             logtext += "\n"
-            logtext += f"unlocked line: {tech.get_unlocked_line()}\n"
+            logtext += (
+                f"unlocked line: {tech.get_unlocked_line()} "
+                f"({entity_name_lookup_dict.get(tech.get_unlocked_line().get_head_unit_id(), nnn)[0]})\n"
+            )
 
         if isinstance(tech, BuildingUnlock):
             logtext += "\n"
-            logtext += f"unlocked line: {tech.get_unlocked_line()}\n"
+            logtext += (
+                f"unlocked line: {tech.get_unlocked_line()} "
+                f"({entity_name_lookup_dict.get(tech.get_unlocked_line().get_head_unit_id(), nnn)[0]})\n"
+            )
 
         with logfile.open("w") as log:
             log.write(logtext)
@@ -419,6 +489,11 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
         logtext = ""
 
         logtext += f"repr: {terrain}\n"
+        logtext += (
+            f"nyan name: "
+            f"{terrain_name_lookup_dict.get(terrain.get_id(), nnn)[1]}\n"
+        )
+
         logtext += f"has_subterrain: {terrain.has_subterrain()}\n"
 
         with logfile.open("w") as log:

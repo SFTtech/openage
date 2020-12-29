@@ -102,7 +102,7 @@ class GenieCivilizationGroup(ConverterObjectGroup):
         """
         Adds a unique unit to the civilization.
         """
-        self.unique_entities.update({entity_group.get_id(): entity_group})
+        self.unique_entities.update({entity_group.get_head_unit_id(): entity_group})
 
     def add_unique_tech(self, tech_group):
         """

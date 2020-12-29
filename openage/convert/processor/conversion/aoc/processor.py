@@ -451,6 +451,9 @@ class AoCProcessor:
         """
         Sort units into lines, based on information in the unit connections.
 
+        TODO: Use the head unit id as the line id because the latter is pretty
+        useless.
+
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.

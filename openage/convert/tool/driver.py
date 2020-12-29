@@ -6,7 +6,8 @@ actual conversion process.
 """
 
 from openage.convert.service.debug_info import debug_string_resources,\
-    debug_registered_graphics, debug_modpack, debug_cli_args
+    debug_registered_graphics, debug_modpack, debug_cli_args, debug_game_version,\
+    debug_mounts
 
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
@@ -80,6 +81,8 @@ def convert_metadata(args):
 
     args.converter = get_converter(args.game_version)
     debug_cli_args(args.debugdir, args.debug_info, args)
+    debug_game_version(args.debugdir, args.debug_info, args)
+    debug_mounts(args.debugdir, args.debug_info, args)
 
     # Read .dat
     yield "empires.dat"
