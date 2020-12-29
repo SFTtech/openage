@@ -5,13 +5,11 @@ Receives cleaned-up srcdir and targetdir objects from .main, and drives the
 actual conversion process.
 """
 
-from openage.convert.service.debug_info import debug_string_resources,\
-    debug_registered_graphics, debug_modpack, debug_cli_args, debug_game_version,\
-    debug_mounts
-
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
 from ..service.debug_info import debug_gamedata_format
+from ..service.debug_info import debug_string_resources,\
+    debug_registered_graphics, debug_modpack
 from ..service.init.changelog import (ASSET_VERSION)
 from ..service.read.gamedata import get_gamespec
 from ..service.read.palette import get_palettes
@@ -80,9 +78,6 @@ def convert_metadata(args):
         gamedata_path.removerecursive()
 
     args.converter = get_converter(args.game_version)
-    debug_cli_args(args.debugdir, args.debug_info, args)
-    debug_game_version(args.debugdir, args.debug_info, args)
-    debug_mounts(args.debugdir, args.debug_info, args)
 
     # Read .dat
     yield "empires.dat"

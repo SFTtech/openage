@@ -65,7 +65,12 @@ class AoCProcessor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
+        dataset = cls._pre_processor(
+            gamespec,
+            args.game_version,
+            string_resources,
+            existing_graphics
+        )
         debug_converter_objects(args.debugdir, args.debug_info, dataset)
 
         # Create the custom openae formats (nyan, sprite, terrain)

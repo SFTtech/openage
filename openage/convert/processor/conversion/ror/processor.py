@@ -5,11 +5,9 @@
 #
 # TODO:
 # pylint: disable=line-too-long
-from openage.convert.service.debug_info import debug_converter_object_groups
 """
 Convert data from RoR to openage formats.
 """
-
 from .....log import info
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 from ....entity_object.conversion.aoc.genie_tech import InitiatedTech
@@ -21,7 +19,8 @@ from ....entity_object.conversion.ror.genie_tech import RoRStatUpgrade,\
 from ....entity_object.conversion.ror.genie_unit import RoRUnitTaskGroup,\
     RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup, RoRAmbientGroup,\
     RoRVariantGroup
-from ....service.debug_info import debug_converter_objects
+from ....service.debug_info import debug_converter_objects,\
+    debug_converter_object_groups
 from ....service.read.nyan_api_loader import load_api
 from ....value_object.conversion.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
@@ -53,7 +52,12 @@ class RoRProcessor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
+        dataset = cls._pre_processor(
+            gamespec,
+            args.game_version,
+            string_resources,
+            existing_graphics
+        )
         debug_converter_objects(args.debugdir, args.debug_info, dataset)
 
         # Create the custom openae formats (nyan, sprite, terrain)

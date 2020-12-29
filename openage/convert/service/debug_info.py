@@ -97,7 +97,7 @@ def debug_mounts(debugdir, loglevel, args):
     # Format mounts
     for mountpoint, resources in mount_dict.items():
         if len(mountpoint) == 0:
-            logtext += f"mountpoint: ${{srcdir}}/\n"
+            logtext += "mountpoint: ${srcdir}/\n"
 
         else:
             logtext += f"mountpoint: ${{srcdir}}/{mountpoint[0].decode()}/\n"
@@ -122,7 +122,7 @@ def debug_mounts(debugdir, loglevel, args):
             if resource_type == "file collection":
                 logtext += f"    file count: {file_count}\n"
 
-            logtext += f"    ----\n"
+            logtext += "    ----\n"
 
     with logfile.open("w") as log:
         log.write(logtext)

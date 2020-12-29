@@ -4,8 +4,6 @@
 #
 # TODO:
 # pylint: disable=line-too-long
-from openage.convert.service.debug_info import debug_converter_objects,\
-    debug_converter_object_groups
 """
 Convert data from SWGB:CC to openage formats.
 """
@@ -21,6 +19,8 @@ from ....entity_object.conversion.swgbcc.genie_tech import SWGBUnitUnlock,\
     SWGBUnitLineUpgrade
 from ....entity_object.conversion.swgbcc.genie_unit import SWGBUnitTransformGroup,\
     SWGBMonkGroup, SWGBUnitLineGroup, SWGBStackBuildingGroup
+from ....service.debug_info import debug_converter_objects,\
+    debug_converter_object_groups
 from ....service.read.nyan_api_loader import load_api
 from ....value_object.conversion.swgb.internal_nyan_names import MONK_GROUP_ASSOCS,\
     CIV_LINE_ASSOCS, AMBIENT_GROUP_LOOKUPS, VARIANT_GROUP_LOOKUPS,\
@@ -53,7 +53,12 @@ class SWGBCCProcessor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
+        dataset = cls._pre_processor(
+            gamespec,
+            args.game_version,
+            string_resources,
+            existing_graphics
+        )
         debug_converter_objects(args.debugdir, args.debug_info, dataset)
 
         # Create the custom openae formats (nyan, sprite, terrain)

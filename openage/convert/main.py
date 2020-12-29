@@ -11,6 +11,7 @@ from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
 from ..util.strings import format_progress
+from .service.debug_info import debug_cli_args, debug_game_version, debug_mounts
 from .service.init.conversion_required import conversion_required
 from .service.init.mount_asset_dirs import mount_asset_dirs
 from .service.init.version_detect import create_version_objects
@@ -38,34 +39,37 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
     if srcdir is None:
         srcdir = acquire_conversion_source_dir(prev_source_dir_path)
 
-    # Initialize game versions data
-    auxiliary_files_dir = args.cfg_dir / "converter" / "games"
-    args.avail_game_eds, args.avail_game_exps = create_version_objects(auxiliary_files_dir)
-
-    # Acquire game version info
-    game_version = get_game_version(srcdir, args.avail_game_eds, args.avail_game_exps)
-
-    # Mount assets into conversion folder
-    data_dir = mount_asset_dirs(srcdir, game_version)
-
-    if not data_dir:
-        return None
-
-    # make versions available easily
-    args.game_version = game_version
-
     converted_path = assets / "converted"
     converted_path.mkdirs()
     targetdir = DirectoryCreator(converted_path).root
-
-    # make srcdir and targetdir safe for threaded conversion
-    args.srcdir = AccessSynchronizer(data_dir).root
-    args.targetdir = AccessSynchronizer(targetdir).root
 
     # add a dir for debug info
     debug_log_path = converted_path / "debug" / datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
     debugdir = DirectoryCreator(debug_log_path).root
     args.debugdir = AccessSynchronizer(debugdir).root
+
+    # Create CLI args info
+    debug_cli_args(args.debugdir, args.debug_info, args)
+
+    # Initialize game versions data
+    auxiliary_files_dir = args.cfg_dir / "converter" / "games"
+    args.avail_game_eds, args.avail_game_exps = create_version_objects(auxiliary_files_dir)
+
+    # Acquire game version info
+    args.game_version = get_game_version(srcdir, args.avail_game_eds, args.avail_game_exps)
+    debug_game_version(args.debugdir, args.debug_info, args)
+
+    # Mount assets into conversion folder
+    data_dir = mount_asset_dirs(srcdir, args.game_version)
+    if not data_dir:
+        return None
+
+    # make srcdir and targetdir safe for threaded conversion
+    args.srcdir = AccessSynchronizer(data_dir).root
+    args.targetdir = AccessSynchronizer(targetdir).root
+
+    # Create mountpoint info
+    debug_mounts(args.debugdir, args.debug_info, args)
 
     def flag(name):
         """
