@@ -20,6 +20,13 @@ from openage.util.fslike.path import Path
 def debug_cli_args(debugdir, loglevel, args):
     """
     Create debug output for the converter CLI args.
+
+    :param debugdir: Output directory for the debug info.
+    :type debugdir: Directory
+    :param loglevel: Determines how detailed the output is.
+    :type loglevel: int
+    :param args: CLI arguments.
+    :type args: Namespace
     """
     if loglevel < 1:
         return
@@ -45,6 +52,13 @@ def debug_cli_args(debugdir, loglevel, args):
 def debug_game_version(debugdir, loglevel, args):
     """
     Create debug output for the detected game version.
+
+    :param debugdir: Output directory for the debug info.
+    :type debugdir: Directory
+    :param loglevel: Determines how detailed the output is.
+    :type loglevel: int
+    :param args: CLI arguments.
+    :type args: Namespace
     """
     if loglevel < 2:
         return
@@ -73,6 +87,13 @@ def debug_game_version(debugdir, loglevel, args):
 def debug_mounts(debugdir, loglevel, args):
     """
     Create debug output for the mounted files and folders.
+
+    :param debugdir: Output directory for the debug info.
+    :type debugdir: Directory
+    :param loglevel: Determines how detailed the output is.
+    :type loglevel: int
+    :param args: CLI arguments.
+    :type args: Namespace
     """
     if loglevel < 2:
         return
@@ -131,6 +152,13 @@ def debug_mounts(debugdir, loglevel, args):
 def debug_gamedata_format(debugdir, loglevel, game_version):
     """
     Create debug output for the converted .dat format.
+
+    :param debugdir: Output directory for the debug info.
+    :type debugdir: Directory
+    :param loglevel: Determines how detailed the output is.
+    :type loglevel: int
+    :param game_version: Game version the .dat file comes with.
+    :type game_version: tuple
     """
     if loglevel < 2:
         return
@@ -186,6 +214,13 @@ def debug_gamedata_format(debugdir, loglevel, game_version):
 def debug_string_resources(debugdir, loglevel, string_resources):
     """
     Create debug output for found string resources.
+
+    :param debugdir: Output directory for the debug info.
+    :type debugdir: Directory
+    :param loglevel: Determines how detailed the output is.
+    :type loglevel: int
+    :param string_resources: Language and string information.
+    :type string_resources: StringResource
     """
     if loglevel < 2:
         return
@@ -207,6 +242,13 @@ def debug_string_resources(debugdir, loglevel, string_resources):
 def debug_registered_graphics(debugdir, loglevel, existing_graphics):
     """
     Create debug output for found graphics files.
+
+    :param debugdir: Output directory for the debug info.
+    :type debugdir: Directory
+    :param loglevel: Determines how detailed the output is.
+    :type loglevel: int
+    :param existing_graphics: List of graphic ids of graphic files.
+    :type existing_graphics: list
     """
     if loglevel < 2:
         return
@@ -227,6 +269,13 @@ def debug_converter_objects(debugdir, loglevel, dataset):
     """
     Create debug output for ConverterObject instances from the
     conversion preprocessor.
+
+    :param debugdir: Output directory for the debug info.
+    :type debugdir: Directory
+    :param loglevel: Determines how detailed the output is.
+    :type loglevel: int
+    :param dataset: Dataset containing converter objects from pre-processing.
+    :type dataset: GenieObjectContainer
     """
     if loglevel < 2:
         return
@@ -256,6 +305,13 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
     """
     Create debug output for ConverterObjectGroup instances from the
     conversion preprocessor.
+
+    :param debugdir: Output directory for the debug info.
+    :type debugdir: Directory
+    :param loglevel: Determines how detailed the output is.
+    :type loglevel: int
+    :param dataset: Dataset containing converter object groups from processing.
+    :type dataset: GenieObjectContainer
     """
     if loglevel < 3:
         return
@@ -503,6 +559,13 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
 def debug_modpack(debugdir, loglevel, modpack):
     """
     Create debug output for a modpack.
+
+    :param debugdir: Output directory for the debug info.
+    :type debugdir: Directory
+    :param loglevel: Determines how detailed the output is.
+    :type loglevel: int
+    :param modpack: Modpack container.
+    :type modpack: Modpack
     """
     if loglevel < 1:
         return
