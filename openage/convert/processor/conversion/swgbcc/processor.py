@@ -4,7 +4,6 @@
 #
 # TODO:
 # pylint: disable=line-too-long
-
 """
 Convert data from SWGB:CC to openage formats.
 """
@@ -20,6 +19,8 @@ from ....entity_object.conversion.swgbcc.genie_tech import SWGBUnitUnlock,\
     SWGBUnitLineUpgrade
 from ....entity_object.conversion.swgbcc.genie_unit import SWGBUnitTransformGroup,\
     SWGBMonkGroup, SWGBUnitLineGroup, SWGBStackBuildingGroup
+from ....service.debug_info import debug_converter_objects,\
+    debug_converter_object_groups
 from ....service.read.nyan_api_loader import load_api
 from ....value_object.conversion.swgb.internal_nyan_names import MONK_GROUP_ASSOCS,\
     CIV_LINE_ASSOCS, AMBIENT_GROUP_LOOKUPS, VARIANT_GROUP_LOOKUPS,\
@@ -37,7 +38,7 @@ class SWGBCCProcessor:
     """
 
     @classmethod
-    def convert(cls, gamespec, game_version, string_resources, existing_graphics):
+    def convert(cls, gamespec, args, string_resources, existing_graphics):
         """
         Input game specification and media here and get a set of
         modpacks back.
@@ -52,13 +53,20 @@ class SWGBCCProcessor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        data_set = cls._pre_processor(gamespec, game_version, string_resources, existing_graphics)
+        dataset = cls._pre_processor(
+            gamespec,
+            args.game_version,
+            string_resources,
+            existing_graphics
+        )
+        debug_converter_objects(args.debugdir, args.debug_info, dataset)
 
         # Create the custom openae formats (nyan, sprite, terrain)
-        data_set = cls._processor(data_set)
+        dataset = cls._processor(dataset)
+        debug_converter_object_groups(args.debugdir, args.debug_info, dataset)
 
         # Create modpack definitions
-        modpacks = cls._post_processor(data_set)
+        modpacks = cls._post_processor(dataset)
 
         return modpacks
 

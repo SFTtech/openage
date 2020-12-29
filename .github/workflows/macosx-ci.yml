@@ -42,7 +42,7 @@ jobs:
       - name: Brew update
         run: brew update
       - name: Brew install DeJaVu fonts
-        run: brew tap homebrew/cask-fonts && brew cask install font-dejavu
+        run: brew tap homebrew/cask-fonts && brew install --cask font-dejavu
       - name: Install environment helpers with homebrew
         run: brew install ccache
       - name: Install dependencies with homebrew

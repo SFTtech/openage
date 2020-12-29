@@ -7,6 +7,9 @@ actual conversion process.
 
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
+from ..service.debug_info import debug_gamedata_format
+from ..service.debug_info import debug_string_resources,\
+    debug_registered_graphics, debug_modpack
 from ..service.init.changelog import (ASSET_VERSION)
 from ..service.read.gamedata import get_gamespec
 from ..service.read.palette import get_palettes
@@ -78,22 +81,26 @@ def convert_metadata(args):
 
     # Read .dat
     yield "empires.dat"
+    debug_gamedata_format(args.debugdir, args.debug_info, args.game_version)
     gamespec = get_gamespec(args.srcdir, args.game_version, args.flag("no_pickle_cache"))
 
     # Read strings
     string_resources = get_string_resources(args)
+    debug_string_resources(args.debugdir, args.debug_info, string_resources)
 
     # Existing graphic IDs/filenames
     existing_graphics = get_existing_graphics(args)
+    debug_registered_graphics(args.debugdir, args.debug_info, existing_graphics)
 
     # Convert
     modpacks = args.converter.convert(gamespec,
-                                      args.game_version,
+                                      args,
                                       string_resources,
                                       existing_graphics)
 
     for modpack in modpacks:
         ModpackExporter.export(modpack, args)
+        debug_modpack(args.debugdir, args.debug_info, modpack)
 
     if args.game_version[0].game_id not in ("ROR", "AOE2DE"):
         yield "blendomatic.dat"

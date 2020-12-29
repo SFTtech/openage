@@ -4,11 +4,14 @@
 """
 Entry point for all of the asset conversion.
 """
+from datetime import datetime
+
 from ..log import info
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
 from ..util.strings import format_progress
+from .service.debug_info import debug_cli_args, debug_game_version, debug_mounts
 from .service.init.conversion_required import conversion_required
 from .service.init.mount_asset_dirs import mount_asset_dirs
 from .service.init.version_detect import create_version_objects
@@ -36,29 +39,37 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
     if srcdir is None:
         srcdir = acquire_conversion_source_dir(prev_source_dir_path)
 
+    converted_path = assets / "converted"
+    converted_path.mkdirs()
+    targetdir = DirectoryCreator(converted_path).root
+
+    # add a dir for debug info
+    debug_log_path = converted_path / "debug" / datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+    debugdir = DirectoryCreator(debug_log_path).root
+    args.debugdir = AccessSynchronizer(debugdir).root
+
+    # Create CLI args info
+    debug_cli_args(args.debugdir, args.debug_info, args)
+
     # Initialize game versions data
     auxiliary_files_dir = args.cfg_dir / "converter" / "games"
     args.avail_game_eds, args.avail_game_exps = create_version_objects(auxiliary_files_dir)
 
     # Acquire game version info
-    game_version = get_game_version(srcdir, args.avail_game_eds, args.avail_game_exps)
+    args.game_version = get_game_version(srcdir, args.avail_game_eds, args.avail_game_exps)
+    debug_game_version(args.debugdir, args.debug_info, args)
 
     # Mount assets into conversion folder
-    data_dir = mount_asset_dirs(srcdir, game_version)
-
+    data_dir = mount_asset_dirs(srcdir, args.game_version)
     if not data_dir:
         return None
-
-    # make versions available easily
-    args.game_version = game_version
-
-    converted_path = assets / "converted"
-    converted_path.mkdirs()
-    targetdir = DirectoryCreator(converted_path).root
 
     # make srcdir and targetdir safe for threaded conversion
     args.srcdir = AccessSynchronizer(data_dir).root
     args.targetdir = AccessSynchronizer(targetdir).root
+
+    # Create mountpoint info
+    debug_mounts(args.debugdir, args.debug_info, args)
 
     def flag(name):
         """
@@ -161,6 +172,10 @@ def init_subparser(cli):
         "--compression-level", type=int, default=1, choices=[0, 1, 2, 3],
         help="set PNG compression level")
 
+    cli.add_argument(
+        "--debug-info", type=int, choices=[0, 1, 2, 3],
+        help="create debug output for the converter run; verbosity levels 0-3")
+
 
 def main(args, error):
     """ CLI entry point """
@@ -175,6 +190,14 @@ def main(args, error):
         srcdir = CaseIgnoringDirectory(args.source_dir).root
     else:
         srcdir = None
+
+    # Set verbosity for debug output
+    if not args.debug_info:
+        if args.devmode:
+            args.debug_info = 3
+
+        else:
+            args.debug_info = 0
 
     # mount the config folder at "cfg/"
     from ..cvar.location import get_config_path

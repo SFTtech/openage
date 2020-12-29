@@ -4,7 +4,6 @@
 #
 # TODO:
 # pylint: disable=line-too-long
-
 """
 Convert data from DE2 to openage formats.
 """
@@ -17,6 +16,8 @@ from .....util.ordered_set import OrderedSet
 from ....entity_object.conversion.aoc.genie_graphic import GenieGraphic
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 from ....entity_object.conversion.aoc.genie_unit import GenieUnitObject, GenieAmbientGroup, GenieVariantGroup
+from ....service.debug_info import debug_converter_objects,\
+    debug_converter_object_groups
 from ....service.read.nyan_api_loader import load_api
 from ..aoc.pregen_processor import AoCPregenSubprocessor
 from ..aoc.processor import AoCProcessor
@@ -31,7 +32,7 @@ class DE2Processor:
     """
 
     @classmethod
-    def convert(cls, gamespec, game_version, string_resources, existing_graphics):
+    def convert(cls, gamespec, args, string_resources, existing_graphics):
         """
         Input game speification and media here and get a set of
         modpacks back.
@@ -46,13 +47,20 @@ class DE2Processor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        data_set = cls._pre_processor(gamespec, game_version, string_resources, existing_graphics)
+        dataset = cls._pre_processor(
+            gamespec,
+            args.game_version,
+            string_resources,
+            existing_graphics
+        )
+        debug_converter_objects(args.debugdir, args.debug_info, dataset)
 
         # Create the custom openae formats (nyan, sprite, terrain)
-        data_set = cls._processor(data_set)
+        dataset = cls._processor(dataset)
+        debug_converter_object_groups(args.debugdir, args.debug_info, dataset)
 
         # Create modpack definitions
-        modpacks = cls._post_processor(data_set)
+        modpacks = cls._post_processor(dataset)
 
         return modpacks
 

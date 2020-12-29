@@ -232,7 +232,7 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
 
     def get_upgraded_line(self):
         """
-        Returns the line id of the upgraded line.
+        Returns the line that is upgraded.
         """
         return self.data.unit_lines_vertical_ref[self.unit_line_id]
 
@@ -276,6 +276,12 @@ class BuildingLineUpgrade(GenieTechEffectBundleGroup):
         Returns the line id of the upgraded line.
         """
         return self.building_line_id
+
+    def get_upgraded_line(self):
+        """
+        Returns the line that is upgraded.
+        """
+        return self.data.building_lines[self.building_line_id]
 
     def get_upgrade_target_id(self):
         """
@@ -487,17 +493,17 @@ class CivTeamBonus(ConverterObjectGroup):
         self.civ_id = civ_id
         self.effects = self.data.genie_effect_bundles[effect_bundle_id]
 
-    def get_effects(self):
-        """
-        Returns the associated effects.
-        """
-        return self.effects.get_effects()
-
     def get_civilization(self):
         """
         Returns ID of the civilization that has this bonus.
         """
         return self.civ_id
+
+    def get_effects(self):
+        """
+        Returns the associated effects.
+        """
+        return self.effects.get_effects()
 
     def __repr__(self):
         return f"CivTeamBonus<{self.get_id()}>"
@@ -534,6 +540,12 @@ class CivTechTree(ConverterObjectGroup):
         else:
             self.effects = None
 
+    def get_civilization(self):
+        """
+        Returns ID of the civilization that has this tech tree.
+        """
+        return self.civ_id
+
     def get_effects(self):
         """
         Returns the associated effects.
@@ -542,12 +554,6 @@ class CivTechTree(ConverterObjectGroup):
             return self.effects.get_effects()
 
         return []
-
-    def get_civilization(self):
-        """
-        Returns ID of the civilization that has this tech tree.
-        """
-        return self.civ_id
 
     def __repr__(self):
         return f"CivTechTree<{self.get_id()}>"

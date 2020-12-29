@@ -1,11 +1,10 @@
 # Workflow
 
-- Converter has a general workflow
-- Workflow is the same for every game edition
-- Workflow should stay consistent if changes are made
+The converter has a general workflow that is the same for every game edition.
+This workflow should stay consistent if changes are made.
 
-- Converter is built to support multiple games
-- Keep that in mind when adding features
+Our converter is built to support multiple games. Keep in mind that you
+must test with all supported version when you add a feature.
 
 ![workflow structogram](images/workflow.svg)
 
