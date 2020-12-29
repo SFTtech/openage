@@ -5,8 +5,8 @@ Receives cleaned-up srcdir and targetdir objects from .main, and drives the
 actual conversion process.
 """
 
-from openage.convert.service.debug_info import debug_init,\
-    debug_string_resources, debug_registered_graphics, debug_modpack
+from openage.convert.service.debug_info import debug_string_resources,\
+    debug_registered_graphics, debug_modpack, debug_cli_args
 
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
@@ -79,20 +79,20 @@ def convert_metadata(args):
         gamedata_path.removerecursive()
 
     args.converter = get_converter(args.game_version)
-    debug_init(args.debugdir, args, args.debug_info)
+    debug_cli_args(args.debugdir, args.debug_info, args)
 
     # Read .dat
     yield "empires.dat"
-    debug_gamedata_format(args.debugdir, args.game_version, args.debug_info)
+    debug_gamedata_format(args.debugdir, args.debug_info, args.game_version)
     gamespec = get_gamespec(args.srcdir, args.game_version, args.flag("no_pickle_cache"))
 
     # Read strings
     string_resources = get_string_resources(args)
-    debug_string_resources(args.debugdir, string_resources, args.debug_info)
+    debug_string_resources(args.debugdir, args.debug_info, string_resources)
 
     # Existing graphic IDs/filenames
     existing_graphics = get_existing_graphics(args)
-    debug_registered_graphics(args.debugdir, existing_graphics, args.debug_info)
+    debug_registered_graphics(args.debugdir, args.debug_info, existing_graphics)
 
     # Convert
     modpacks = args.converter.convert(gamespec,
@@ -102,7 +102,7 @@ def convert_metadata(args):
 
     for modpack in modpacks:
         ModpackExporter.export(modpack, args)
-        debug_modpack(args.debugdir, modpack, args.debug_info)
+        debug_modpack(args.debugdir, args.debug_info, modpack)
 
     if args.game_version[0].game_id not in ("ROR", "AOE2DE"):
         yield "blendomatic.dat"

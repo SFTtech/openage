@@ -15,20 +15,19 @@ from openage.util.fslike.filecollection import FileCollectionPath
 from openage.util.fslike.path import Path
 
 
-def debug_init(debugdir, args, loglevel):
+def debug_cli_args(debugdir, loglevel, args):
     """
-    Log the converter settings.
+    Create debug output for the converter CLI args.
     """
+    if loglevel < 1:
+        return
+
     logfile = debugdir["args"]
     logtext = ""
 
     # Get CLI args
     arg_dict = {}
     for name, arg in vars(args).items():
-        if name == "entrypoint":
-            # args after entrypoint are not from CLI
-            break
-
         arg_dict.update({name: arg})
 
     # Sort by name
@@ -39,6 +38,14 @@ def debug_init(debugdir, args, loglevel):
 
     with logfile.open("w") as log:
         log.write(logtext)
+
+
+def debug_game_version(debugdir, loglevel, args):
+    """
+    Create debug output for the detected game version.
+    """
+    if loglevel < 2:
+        return
 
     # Log game version
     logfile = debugdir.joinpath("init/")["game_version"]
@@ -59,6 +66,14 @@ def debug_init(debugdir, args, loglevel):
 
     with logfile.open("w") as log:
         log.write(logtext)
+
+
+def debug_mounts(debugdir, loglevel, args):
+    """
+    Create debug output for the mounted files and folders.
+    """
+    if loglevel < 2:
+        return
 
     # Log mounts
     logfile = debugdir.joinpath("init/")["mounts"]
@@ -111,10 +126,13 @@ def debug_init(debugdir, args, loglevel):
         log.write(logtext)
 
 
-def debug_gamedata_format(debugdir, game_version, loglevel):
+def debug_gamedata_format(debugdir, loglevel, game_version):
     """
-    Logs the data format of a .dat file of a specific a game version.
+    Create debug output for the converted .dat format.
     """
+    if loglevel < 2:
+        return
+
     logfile = debugdir.joinpath("read/")["data_format"]
     logtext = ""
 
@@ -163,10 +181,13 @@ def debug_gamedata_format(debugdir, game_version, loglevel):
         log.write(logtext)
 
 
-def debug_string_resources(debugdir, string_resources, loglevel):
+def debug_string_resources(debugdir, loglevel, string_resources):
     """
     Create debug output for found string resources.
     """
+    if loglevel < 2:
+        return
+
     logfile = debugdir.joinpath("read/")["string_resources"]
     logtext = ""
 
@@ -181,10 +202,13 @@ def debug_string_resources(debugdir, string_resources, loglevel):
         log.write(logtext)
 
 
-def debug_registered_graphics(debugdir, existing_graphics, loglevel):
+def debug_registered_graphics(debugdir, loglevel, existing_graphics):
     """
     Create debug output for found graphics files.
     """
+    if loglevel < 2:
+        return
+
     logfile = debugdir.joinpath("read/")["existing_graphics"]
     logtext = ""
 
@@ -197,11 +221,14 @@ def debug_registered_graphics(debugdir, existing_graphics, loglevel):
         log.write(logtext)
 
 
-def debug_converter_objects(debugdir, dataset, loglevel):
+def debug_converter_objects(debugdir, loglevel, dataset):
     """
     Create debug output for ConverterObject instances from the
     conversion preprocessor.
     """
+    if loglevel < 2:
+        return
+
     logfile = debugdir.joinpath("conversion/")["preprocessor_objects"]
     logtext = ""
 
@@ -223,11 +250,14 @@ def debug_converter_objects(debugdir, dataset, loglevel):
         log.write(logtext)
 
 
-def debug_converter_object_groups(debugdir, dataset, loglevel):
+def debug_converter_object_groups(debugdir, loglevel, dataset):
     """
     Create debug output for ConverterObjectGroup instances from the
     conversion preprocessor.
     """
+    if loglevel < 3:
+        return
+
     enitity_groups = {}
     enitity_groups.update(dataset.unit_lines)
     enitity_groups.update(dataset.building_lines)
@@ -395,10 +425,21 @@ def debug_converter_object_groups(debugdir, dataset, loglevel):
             log.write(logtext)
 
 
-def debug_modpack(debugdir, modpack, loglevel):
+def debug_modpack(debugdir, loglevel, modpack):
     """
     Create debug output for a modpack.
     """
+    if loglevel < 1:
+        return
+
+    # Export info and manifest file
+    logdir = debugdir.joinpath(f"export/{modpack.name}")
+    modpack.info.save(logdir)
+    modpack.manifest.save(logdir)
+
+    if loglevel < 2:
+        return
+
     logfile = debugdir.joinpath(f"export/{modpack.name}")["summary"]
     logtext = ""
 
@@ -428,8 +469,3 @@ def debug_modpack(debugdir, modpack, loglevel):
 
     with logfile.open("w") as log:
         log.write(logtext)
-
-    # Export info and manifest file
-    logdir = debugdir.joinpath(f"export/{modpack.name}")
-    modpack.info.save(logdir)
-    modpack.manifest.save(logdir)

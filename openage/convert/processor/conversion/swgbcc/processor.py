@@ -54,11 +54,11 @@ class SWGBCCProcessor:
 
         # Create a new container for the conversion process
         dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
-        debug_converter_objects(args.debugdir, dataset, args.debug_info)
+        debug_converter_objects(args.debugdir, args.debug_info, dataset)
 
         # Create the custom openae formats (nyan, sprite, terrain)
         dataset = cls._processor(dataset)
-        debug_converter_object_groups(args.debugdir, dataset, args.debug_info)
+        debug_converter_object_groups(args.debugdir, args.debug_info, dataset)
 
         # Create modpack definitions
         modpacks = cls._post_processor(dataset)
