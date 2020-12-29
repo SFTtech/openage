@@ -1,5 +1,5 @@
-[![openage](/assets/logo/banner.png)](http://openage.sft.mx)
-============================================================
+[![openage](/assets/logo/banner.svg)](http://openage.dev)
+=========================================================
 
 **openage**: a volunteer project to create a free engine clone of the *Genie Engine* used by *Age of Empires*, *Age of Empires II (HD)* and *Star Wars: Galactic Battlegrounds*, comparable to projects like [OpenMW](https://openmw.org/), [OpenRA](http://openra.net/),  [OpenSAGE](https://github.com/OpenSAGE/OpenSAGE/), [OpenTTD](https://openttd.org/) and [OpenRCT2](https://openrct2.org/). At the moment we focus our efforts on the integration of *Age of Empires II*, while being primarily aimed at POSIX platforms such as **GNU/Linux**.
 
@@ -84,7 +84,7 @@ Installation Packages
 ---------------------
 
 **Supported Platforms:** Linux, Windows 10, MacOS X 10.14
- 
+
 * For **Linux** check at [repology](https://repology.org/project/openage/versions) if your distribution has any packages available or [here](https://bintray.com/simonsan/openage-packages/openage-linux-releases) for any future updates on *.deb and AppImage packages.
 * For **Windows** check our [release page](https://github.com/SFTtech/openage/releases) for the latest installer or [here](https://dl.bintray.com/simonsan/openage-packages/) for nightly builds.
 
