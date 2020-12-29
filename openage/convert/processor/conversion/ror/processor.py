@@ -54,11 +54,11 @@ class RoRProcessor:
 
         # Create a new container for the conversion process
         dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
-        debug_converter_objects(args.debugdir, dataset, args.debug_log)
+        debug_converter_objects(args.debugdir, dataset, args.debug_info)
 
         # Create the custom openae formats (nyan, sprite, terrain)
         dataset = cls._processor(gamespec, dataset)
-        debug_converter_object_groups(args.debugdir, dataset, args.debug_log)
+        debug_converter_object_groups(args.debugdir, dataset, args.debug_info)
 
         # Create modpack definitions
         modpacks = cls._post_processor(dataset)

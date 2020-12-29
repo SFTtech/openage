@@ -169,8 +169,8 @@ def init_subparser(cli):
         help="set PNG compression level")
 
     cli.add_argument(
-        "--debug-log", type=int, default=3, choices=[0, 1, 2, 3, 4, 5, 6],
-        help="create a debug log for the converter run; verbosity level 0-6")
+        "--debug-info", type=int, choices=[0, 1, 2, 3],
+        help="create debug output for the converter run; verbosity levels 0-3")
 
 
 def main(args, error):
@@ -186,6 +186,14 @@ def main(args, error):
         srcdir = CaseIgnoringDirectory(args.source_dir).root
     else:
         srcdir = None
+
+    # Set verbosity for debug output
+    if not args.debug_info:
+        if args.devmode:
+            args.debug_info = 3
+
+        else:
+            args.debug_info = 0
 
     # mount the config folder at "cfg/"
     from ..cvar.location import get_config_path
