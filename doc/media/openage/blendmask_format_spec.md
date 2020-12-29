@@ -27,7 +27,7 @@ imagefile <image_id> <filename>
 scalefactor <factor>
 
 # selection of blendomatic borders
-mask <directions> <filename>
+mask <directions> <image_id> <xpos> <ypos> <xsize> <ysize>
 ```
 
 
@@ -35,6 +35,7 @@ mask <directions> <filename>
 
 Type     | Example | Description
 ---------|---------|---------
+bits     | `0b01`  | Number represented as bits
 int      | `5`     | Signed Integer
 float    | `1.2`   | Float
 string   | `"bla"` | String of characters enclosed by `"`
@@ -137,14 +138,14 @@ modpacks.
 
 Tells the renderer which mask it has to use.
 
-Parameter  | Type   | Optional | Default value
------------|--------|----------|--------------
-directions | int    | No       | -
-image_id   | int    | No       | -
-xpos       | int    | No       | -
-ypos       | int    | No       | -
-xsize      | int    | No       | -
-ysize      | int    | No       | -
+Parameter  | Type      | Optional | Default value
+-----------|-----------|----------|--------------
+directions | int, bits | No       | -
+image_id   | int       | No       | -
+xpos       | int       | No       | -
+ypos       | int       | No       | -
+xsize      | int       | No       | -
+ysize      | int       | No       | -
 
 **directions**<br>
 The directions for which the *blending* terrain touches the *blended*
@@ -169,8 +170,8 @@ following logic.
 For every adjacent tile of `@` that is from the lending terrain, the bit
 at the respective index is set. For example, if `@` is blended by another
 terrain adjacent in directions north-west, north and north-east, the bits
-at index 7, 0 and 1 are set (`1000 0011`). This is stored as a decimal integer
-value.
+at index 7, 0 and 1 are set (`0b10000011`). This is stored as a decimal integer
+value or a bits value.
 
 ```
 mask 131 ...   # 131 equals 0b10000011
@@ -207,6 +208,7 @@ Height of the texture inside the image resource.
 
 ```
 mask 131 0 0 0 12 124
+mask 0b00101010 0 0 0 34 12
 ```
 
 ## Mandatory Directions
