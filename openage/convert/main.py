@@ -62,8 +62,8 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
     args.srcdir = AccessSynchronizer(data_dir).root
     args.targetdir = AccessSynchronizer(targetdir).root
 
-    # add a dir for debug logs
-    debug_log_path = converted_path / "debug" / datetime.now().isoformat(timespec='seconds')
+    # add a dir for debug info
+    debug_log_path = converted_path / "debug" / datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
     debugdir = DirectoryCreator(debug_log_path).root
     args.debugdir = AccessSynchronizer(debugdir).root
 
