@@ -1,13 +1,6 @@
 Milestones
 ==========
 
-1. stuff
-2. magical stuff
-3. truly awesome stuff
-4. ask the community for more awesome stuff to do
-5. ask the community to do the awesome stuff for us
-
-Ahem, nope, this is the real roadmap:
 
 - [x] 0: decide on the technology and architecture we're using.
     * language, libraries, build system, coding standards, ...
@@ -17,7 +10,7 @@ Ahem, nope, this is the real roadmap:
 - [x] 3: Event system for the game simulation
 - [x] 4: Design a modding API for the engine ([reference sheet](https://github.com/SFTtech/openage/tree/master/doc/nyan/api_reference))
 - [X] 5: Convert AoE2 game data to our engine formats ([code doc](https://github.com/SFTtech/openage/tree/master/doc/code/converter))
-- [ ] 6: Gamestate calculation with curves logic ([blogpost](https://blog.openage.sft.mx/t1-curves-logic.html))
+- [ ] 6: Gamestate calculation with curves logic ([blogpost](https://blog.openage.dev/t1-curves-logic.html))
 - [ ] 7: Gameplay simulation! Where everything comes together
 - [ ] 8: Multiplayer
 

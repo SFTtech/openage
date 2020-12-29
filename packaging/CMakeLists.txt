@@ -10,7 +10,7 @@ set(CPACK_PACKAGE_VENDOR "The openage authors")
 set(CPACK_PACKAGE_CONTACT "openage-Maintainers https://github.com/SFTtech/openage#contact")
 set(CPACK_PACKAGE_DESCRIPTION "Free (as in freedom) open source clone of the Age of Empires II engine 🚀")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A FLOSS RTS-engine in tribute to Genie 🚀")
-set(CPACK_PACKAGE_HOMEPAGE_URL "https://openage.sft.mx/")
+set(CPACK_PACKAGE_HOMEPAGE_URL "https://openage.dev/")
 
 
 ########################################################################

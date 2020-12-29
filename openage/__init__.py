@@ -4,7 +4,7 @@
 The Python part of openage, a free engine re-write of
 Age of Empires II.
 
-See https://openage.sft.mx and http://github.com/sfttech/openage.
+See https://openage.dev and http://github.com/SFTtech/openage
 
 Requires Python 3.6.
 """
