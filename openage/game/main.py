@@ -55,6 +55,7 @@ def main(args, error):
 
     # mount the config folder at "cfg/"
     root["cfg"].mount(get_config_path(args.cfg_dir))
+    args.cfg_dir = root["cfg"]
 
     # ensure that the assets have been converted
     if wanna_convert() or conversion_required(root["assets"], args):
@@ -65,7 +66,7 @@ def main(args, error):
                 prev_source_dir_path = file_obj.read().strip()
         except FileNotFoundError:
             prev_source_dir_path = None
-        used_asset_path = convert_assets(root["assets"], root["cfg"], args,
+        used_asset_path = convert_assets(root["assets"], args,
                                          prev_source_dir_path=prev_source_dir_path)
         if used_asset_path:
             # Remember the asset location

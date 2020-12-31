@@ -43,6 +43,18 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
     converted_path.mkdirs()
     targetdir = DirectoryCreator(converted_path).root
 
+    # Set compression level for media output if it was not set
+    if "compression_level" not in vars(args):
+        args.compression_level = 1
+
+    # Set verbosity for debug output
+    if "debug_info" not in vars(args):
+        if args.devmode:
+            args.debug_info = 3
+
+        else:
+            args.debug_info = 0
+
     # add a dir for debug info
     debug_log_path = converted_path / "debug" / datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
     debugdir = DirectoryCreator(debug_log_path).root
@@ -190,14 +202,6 @@ def main(args, error):
         srcdir = CaseIgnoringDirectory(args.source_dir).root
     else:
         srcdir = None
-
-    # Set verbosity for debug output
-    if not args.debug_info:
-        if args.devmode:
-            args.debug_info = 3
-
-        else:
-            args.debug_info = 0
 
     # mount the config folder at "cfg/"
     from ..cvar.location import get_config_path
