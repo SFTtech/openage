@@ -66,8 +66,12 @@ def main(args, error):
                 prev_source_dir_path = file_obj.read().strip()
         except FileNotFoundError:
             prev_source_dir_path = None
-        used_asset_path = convert_assets(root["assets"], args,
-                                         prev_source_dir_path=prev_source_dir_path)
+        used_asset_path = convert_assets(
+            root["assets"],
+            args,
+            prev_source_dir_path=prev_source_dir_path
+        )
+
         if used_asset_path:
             # Remember the asset location
             with asset_location_path.open("wb") as file_obj:
@@ -75,6 +79,13 @@ def main(args, error):
         else:
             err("game asset conversion failed")
             return 1
+
+    # Exit here with an explanation because the converted assets are incompatible!
+    # Remove this when the gamestate works again
+    info("Generated nyan assets are not yet compatible to the engine.")
+    info("Please revert to release v0.4.1 if you want to test the previous working gamestate.")
+    info("Exiting...")
+    exit()
 
     # start the game, continue in main_cpp.pyx!
     return run_game(args, root)
