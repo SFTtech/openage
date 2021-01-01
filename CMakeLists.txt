@@ -1,4 +1,4 @@
-# Copyright 2013-2020 the openage authors. See copying.md for legal info.
+# Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 cmake_minimum_required(VERSION 3.16)
 
@@ -115,7 +115,7 @@ if(NOT DEFINED GLOBAL_CONFIG_DIR)
 	if(MSVC)
 		set(GLOBAL_CONFIG_DIR "${CONFIG_DIR}")
 	else()
-		set(GLOBAL_CONFIG_DIR "/${CONFIG_DIR}")
+		set(GLOBAL_CONFIG_DIR "${CMAKE_INSTALL_PREFIX}/${CONFIG_DIR}")
 	endif()
 endif()
 
