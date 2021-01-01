@@ -1,4 +1,4 @@
-# Copyright 2017-2020 the openage authors. See copying.md for legal info.
+# Copyright 2017-2021 the openage authors. See copying.md for legal info.
 
 install(FILES
 	"${CMAKE_CURRENT_SOURCE_DIR}/keybinds.oac"
@@ -6,6 +6,6 @@ install(FILES
 )
 
 install(DIRECTORY
-	"${CMAKE_CURRENT_SOURCE_DIR}/converter/"
+	"${CMAKE_CURRENT_SOURCE_DIR}/converter"
 	DESTINATION "${GLOBAL_CONFIG_DIR}/"
 )
