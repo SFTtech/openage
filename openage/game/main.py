@@ -1,4 +1,6 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-locals
 
 """
 Holds the game entry point for openage.
@@ -55,6 +57,7 @@ def main(args, error):
 
     # mount the config folder at "cfg/"
     root["cfg"].mount(get_config_path(args.cfg_dir))
+    args.cfg_dir = root["cfg"]
 
     # ensure that the assets have been converted
     if wanna_convert() or conversion_required(root["assets"], args):
@@ -65,8 +68,12 @@ def main(args, error):
                 prev_source_dir_path = file_obj.read().strip()
         except FileNotFoundError:
             prev_source_dir_path = None
-        used_asset_path = convert_assets(root["assets"], root["cfg"], args,
-                                         prev_source_dir_path=prev_source_dir_path)
+        used_asset_path = convert_assets(
+            root["assets"],
+            args,
+            prev_source_dir_path=prev_source_dir_path
+        )
+
         if used_asset_path:
             # Remember the asset location
             with asset_location_path.open("wb") as file_obj:
@@ -74,6 +81,14 @@ def main(args, error):
         else:
             err("game asset conversion failed")
             return 1
+
+    # Exit here with an explanation because the converted assets are incompatible!
+    # Remove this when the gamestate works again
+    info("Generated nyan assets are not yet compatible to the engine.")
+    info("Please revert to release v0.4.1 if you want to test the previous working gamestate.")
+    info("Exiting...")
+    import sys
+    sys.exit()
 
     # start the game, continue in main_cpp.pyx!
     return run_game(args, root)
