@@ -1,0 +1,16 @@
+{
+    "name": "eigen",
+    "buildsystem": "cmake-ninja",
+    "builddir": true,
+    "config-opts" : [
+        "-DBUILD_TESTING=OFF"
+    ],
+    "sources": [
+        {
+            "type": "archive",
+            "url": "https://gitlab.com/libeigen/eigen/-/archive/3.3.9/eigen-3.3.9.tar.gz",
+            "sha256": "7985975b787340124786f092b3a07d594b2e9cd53bbfe5f3d9b1daee7d55f56f"
+        }
+    ]
+}
+
