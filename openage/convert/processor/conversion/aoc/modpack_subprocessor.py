@@ -31,7 +31,7 @@ class AoCModpackSubprocessor:
         """
         Create the aoe2-base modpack.
         """
-        modpack = Modpack("aoe2-base")
+        modpack = Modpack("aoe2_base")
 
         mod_def = modpack.get_info()
 
@@ -113,7 +113,7 @@ class AoCModpackSubprocessor:
         for nyan_file in created_nyan_files.values():
             nyan_file.set_import_tree(import_tree)
 
-        AoCModpackSubprocessor._set_static_aliases(import_tree)
+        AoCModpackSubprocessor._set_static_aliases(modpack, import_tree)
 
     @staticmethod
     def organize_media_objects(modpack, full_data_set):
@@ -130,7 +130,7 @@ class AoCModpackSubprocessor:
             modpack.add_metadata_export(metadata_file)
 
     @staticmethod
-    def _set_static_aliases(import_tree):
+    def _set_static_aliases(modpack, import_tree):
         """
         Set the aliases for the nyan import tree. The alias names
         and affected nodes are hardcoded in this function.
@@ -166,7 +166,7 @@ class AoCModpackSubprocessor:
         import_tree.add_alias(("engine", "aux", "herdable_mode", "type"), "herdable_mode")
         import_tree.add_alias(("engine", "aux", "hitbox", "Hitbox"), "Hitbox")
         import_tree.add_alias(("engine", "aux", "move_mode", "type"), "move_mode")
-        import_tree.add_alias(("engine", "aux", "language"), "language")
+        import_tree.add_alias(("engine", "aux", "language"), "lang")
         import_tree.add_alias(("engine", "aux", "logic", "gate", "type"), "logic_gate")
         import_tree.add_alias(("engine", "aux", "logic", "literal", "type"), "literal")
         import_tree.add_alias(("engine", "aux", "logic", "literal_scope", "type"), "literal_scope")
@@ -247,3 +247,190 @@ class AoCModpackSubprocessor:
             ("engine", "modifier", "multiplier", "effect", "flat_attribute_change", "type"),
             "mme_flac"
         )
+
+        # Aliases for objects from the modpack itself
+
+        # Prefix aliases to prevent naming conflucts with 'engine'
+        prefix = modpack.name + "_"
+
+        # Auxiliary objects
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "attribute", "types"),
+            prefix + "attribute"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "attribute_change_type", "types"),
+            prefix + "attr_change_type"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "construct_type", "types"),
+            prefix + "construct_type"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "convert_type", "types"),
+            prefix + "convert_type"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "diplomatic_stance", "types"),
+            prefix + "diplo_stance"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "game_entity_type", "types"),
+            prefix + "ge_type"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "formation", "types"),
+            prefix + "formation"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "formation", "subformations"),
+            prefix + "subformations"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "language", "language"),
+            prefix + "lang"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "logic", "death", "death", "StandardHealthDeathLiteral"),
+            "death_condition"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "logic", "garrison_empty", "garrison_empty", "BuildingDamageEmptyLiteral"),
+            "empty_garrison_condition"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "resource", "market_trading"),
+            prefix + "market_trading"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "resource", "types"),
+            prefix + "resource"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "terrain_type", "types"),
+            prefix + "terrain_type"
+        )
+
+        # Effect objects
+        import_tree.add_alias(
+            (modpack.name, "data", "effect", "discrete", "flat_attribute_change", "fallback", "AoE2AttackFallback"),
+            "attack_fallback"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "effect", "discrete", "flat_attribute_change", "min_damage", "AoE2MinChangeAmount"),
+            "min_damage"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "effect", "discrete", "flat_attribute_change", "min_heal", "AoE2MinChangeAmount"),
+            "min_heal"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "resistance", "discrete", "flat_attribute_change"),
+            prefix + "rdisc_flac"
+        )
+
+        # Modifier objects
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "modifier", "elevation_difference", "elevation_difference", "AttackMultiplierHigh"),
+            prefix + "mme_elev_high"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "modifier", "elevation_difference", "elevation_difference", "AttackMultiplierLow"),
+            prefix + "mme_elev_low"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "aux", "modifier", "flyover_cliff", "flyover_cliff", "AttackMultiplierFlyover"),
+            prefix + "mme_cliff_attack"
+        )
+
+        # Terrain objects
+        import_tree.add_alias(
+            (modpack.name, "data", "terrain", "foundation", "foundation", "Foundation"),
+            prefix + "foundation"
+        )
+
+        # Generic aliases
+        # TODO: Make this less hacky
+        fqon = (modpack.name, "data", "game_entity", "generic")
+        current_node = import_tree.root
+        for part in fqon:
+            current_node = current_node.get_child(part)
+
+        for child in current_node.children.values():
+            current_node = child
+
+            # These are folders and should have unique names
+            alias_name = f"ge_{current_node.name}"
+
+            for subchild in current_node.children.values():
+                if subchild.name in ("graphics", "sounds"):
+                    continue
+
+                elif subchild.name == "projectiles":
+                    alias = f"{alias_name}_proj"
+                    subchild.set_alias(alias)
+                    continue
+
+                elif subchild.name.endswith("upgrade"):
+                    alias = f"{alias_name}_{subchild.name}"
+                    subchild.set_alias(alias)
+                    continue
+
+                alias = f"ge_{subchild.name}"
+
+                # One level deeper: This should be a nyan object
+                current_node = list(subchild.children.values())[0]
+
+                # Set the folder name as alias for the object
+                current_node.set_alias(alias)
+
+        fqon = (modpack.name, "data", "tech", "generic")
+        current_node = import_tree.root
+        for part in fqon:
+            current_node = current_node.get_child(part)
+
+        for child in current_node.children.values():
+            current_node = child
+
+            # These are folders and should have unique names
+            alias_name = "tech_" + current_node.name
+
+            # Two levels deeper: This should be a nyan object
+            current_node = list(current_node.children[current_node.name].children.values())[0]
+
+            # Set the folder name as alias for the object
+            current_node.set_alias(alias_name)
+
+        fqon = (modpack.name, "data", "civ")
+        current_node = import_tree.root
+        for part in fqon:
+            current_node = current_node.get_child(part)
+
+        for child in current_node.children.values():
+            current_node = child
+
+            # These are folders and should have unique names
+            alias_name = "civ_" + current_node.name
+
+            # Two levels deeper: This should be a nyan object
+            current_node = list(current_node.children[current_node.name].children.values())[0]
+
+            # Set the folder name as alias for the object
+            current_node.set_alias(alias_name)
+
+        fqon = (modpack.name, "data", "terrain")
+        current_node = import_tree.root
+        for part in fqon:
+            current_node = current_node.get_child(part)
+
+        for child in current_node.children.values():
+            current_node = child
+
+            # These are folders and should have unique names
+            alias_name = "terrain_" + current_node.name
+
+            # Two levels deeper: This should be a nyan object
+            current_node = list(current_node.children[current_node.name].children.values())[0]
+
+            # Set the folder name as alias for the object
+            current_node.set_alias(alias_name)
