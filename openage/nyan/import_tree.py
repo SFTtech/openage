@@ -19,6 +19,21 @@ class ImportTree:
     def __init__(self):
         self.root = Node("", NodeType.ROOT, None)
 
+    def add_alias(self, fqon, alias):
+        """
+        Adds an alias to the node with the specified fqon.
+        """
+        current_node = self.root
+        for node_str in fqon:
+            if current_node.has_child(node_str):
+                # Choose the already created node
+                current_node = current_node.get_child(node_str)
+
+            else:
+                raise KeyError(f"fqon '{'.'.join(fqon)}' could not be found in import tree")
+
+        current_node.set_alias(alias)
+
     def clear_marks(self):
         """
         Remove all alias marks from the tree.
@@ -32,7 +47,6 @@ class ImportTree:
         :param nyan_file: File with nyan objects.
         :type nyan_file: .convert.export.formats.nyan_file.NyanFile
         """
-        # Process fqon of the file
         current_node = self.root
         fqon = nyan_file.get_fqon()
         node_type = NodeType.FILESYS
@@ -291,6 +305,31 @@ class ImportTree:
 
         return fqon_aliases
 
+    def get_import_dict(self):
+        """
+        Get the fqons of the nodes that are used for alias, i.e. fqons of all
+        marked nodes. The dict can be used for creating imports of a nyan file.
+        Call this function after all object references in a file have been
+        searched for aliases with get_alias_fqon().
+        """
+        aliases = {}
+        unhandled_nodes = [self.root]
+
+        while len(unhandled_nodes) > 0:
+            current_node = unhandled_nodes.pop(0)
+            unhandled_nodes.extend(current_node.children.values())
+
+            if current_node.marked:
+                if current_node.alias in aliases.keys():
+                    raise Exception(f"duplicate alias: {current_node.alias}")
+
+                aliases.update({current_node.alias: current_node.get_fqon()})
+
+        # Sort by imported name because it looks NICE!
+        aliases = dict(sorted(aliases.items(), key=lambda item: item[1]))
+
+        return aliases
+
     def get_alias_fqon(self, fqon):
         """
         Find the (shortened) fqon by traversing the tree to the fqon node and
@@ -304,12 +343,17 @@ class ImportTree:
         # Traverse the tree upwards
         sfqon = []
         while current_node.depth > 0:
-            sfqon.insert(0, current_node.name)
-
             if current_node.alias:
+                sfqon.insert(0, current_node.alias)
+                current_node.mark()
                 break
 
+            sfqon.insert(0, current_node.name)
+
             current_node = current_node.parent
+
+        if not current_node.alias:
+            print(fqon)
 
         return tuple(sfqon)
 
@@ -320,7 +364,7 @@ class Node:
     or an object.
     """
 
-    __slots__ = ('name', 'node_type', 'parent', 'depth', 'children', 'alias')
+    __slots__ = ('name', 'node_type', 'parent', 'depth', 'children', 'marked', 'alias')
 
     def __init__(self, name, node_type, parent):
         """
@@ -350,7 +394,8 @@ class Node:
 
         self.children = {}
 
-        self.alias = False
+        self.marked = False
+        self.alias = ""
 
     def add_child(self, child_node):
         """
@@ -412,13 +457,19 @@ class Node:
         """
         Mark this node as an alias node.
         """
-        self.alias = True
+        self.marked = True
 
     def unmark(self):
         """
         Unmark this node as an alias node.
         """
-        self.alias = False
+        self.marked = False
+
+    def set_alias(self, alias):
+        """
+        Give this node an alias name.
+        """
+        self.alias = alias
 
 
 class NodeType(Enum):
