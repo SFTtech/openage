@@ -19,6 +19,7 @@ from ..util.ordered_set import OrderedSet
 
 
 INDENT = "    "
+LINE_WIDTH = 130
 
 
 class NyanObject:
@@ -331,6 +332,7 @@ class NyanObject:
                     output_str += "%s%s\n" % (
                         (indent_depth + 1) * INDENT,
                         inherited_member.dump(
+                            indent_depth + 1,
                             import_tree=import_tree,
                             namespace=self.get_fqon()
                         )
@@ -346,6 +348,7 @@ class NyanObject:
                     output_str += "%s%s\n" % (
                         (indent_depth + 1) * INDENT,
                         member.dump_short(
+                            indent_depth + 1,
                             import_tree=import_tree,
                             namespace=self.get_fqon()
                         )
@@ -354,6 +357,7 @@ class NyanObject:
                     output_str += "%s%s\n" % (
                         (indent_depth + 1) * INDENT,
                         member.dump(
+                            indent_depth + 1,
                             import_tree=import_tree,
                             namespace=self.get_fqon()
                         )
@@ -710,7 +714,7 @@ class NyanMember:
                                  "have their member type as ancestor")
                                 % (self.__repr__()))
 
-    def dump(self, import_tree=None, namespace=None):
+    def dump(self, indent_depth, import_tree=None, namespace=None):
         """
         Returns the nyan string representation of the member.
         """
@@ -759,21 +763,28 @@ class NyanMember:
             output_str += " %s%s %s" % ("@" * self._override_depth,
                                         self._operator.value,
                                         self._get_str_representation(
+                                            indent_depth,
                                             import_tree=import_tree,
                                             namespace=namespace
                                         ))
 
         return output_str
 
-    def dump_short(self, import_tree=None):
+    def dump_short(self, indent_depth, import_tree=None, namespace=None):
         """
         Returns the nyan string representation of the member, but
         without the type definition.
         """
-        return "%s %s%s %s" % (self.get_name(),
-                               "@" * self._override_depth,
-                               self._operator.value,
-                               self._get_str_representation(import_tree=import_tree))
+        return "%s %s%s %s" % (
+            self.get_name(),
+            "@" * self._override_depth,
+            self._operator.value,
+            self._get_str_representation(
+                indent_depth,
+                import_tree=import_tree,
+                namespace=namespace
+            )
+        )
 
     def _sanity_check(self):
         """
@@ -942,7 +953,78 @@ class NyanMember:
 
         return f"{value}"
 
-    def _get_str_representation(self, import_tree=None, namespace=None):
+    def _get_complex_value_str(self, indent_depth,  member_type, value, import_tree=None, namespace=None):
+        """
+        Returns the nyan string representation of complex values.
+
+        Subroutine of _get_str_representation()
+        """
+        output_str = ""
+
+        if member_type is MemberType.ORDEREDSET:
+            output_str += "o"
+
+        output_str += "{"
+
+        # Store the values for formatting
+        stored_values = []
+        for val in value:
+            stored_values.append(self._get_primitive_value_str(
+                self._set_type,
+                val,
+                import_tree=import_tree,
+                namespace=namespace
+            ))
+
+        # Check if the line gets too long
+        # TODO: this does not account for a type definition
+        concat_values = ", ".join(stored_values)
+        line_length = len(indent_depth * INDENT) + len((
+            f"{self.name} "
+            f"{'@' * self._override_depth}"
+            f"{self._operator.value} "
+            f"{concat_values}"
+        ))
+
+        if line_length < LINE_WIDTH:
+            output_str += concat_values
+
+        elif stored_values:
+            output_str += "\n"
+
+            # How much space is left per formatted line
+            space_left = LINE_WIDTH - len((indent_depth + 2) * INDENT)
+
+            # Find the longest value's length
+            longest_len = len(max(stored_values, key=len))
+
+            # How man values of that length fit in one line
+            values_per_line = space_left // longest_len
+
+            if values_per_line < 1:
+                values_per_line = 1
+
+            output_str += (indent_depth + 2) * INDENT
+
+            val_index = 0
+            for val in stored_values:
+                val_index += 1
+                output_str += val
+
+                if val_index == values_per_line:
+                    output_str += ",\n" + ((indent_depth + 2) * INDENT)
+                    val_index = 0
+                    continue
+
+                output_str += ", "
+
+            output_str = output_str[:-2] + "\n" + ((indent_depth + 1) * INDENT)
+
+        output_str = output_str + "}"
+
+        return output_str
+
+    def _get_str_representation(self, indent_depth, import_tree=None, namespace=None):
         """
         Returns the nyan string representation of the value.
         """
@@ -966,25 +1048,13 @@ class NyanMember:
             )
 
         elif self._member_type in (MemberType.SET, MemberType.ORDEREDSET):
-            output_str = ""
-
-            if self._member_type is MemberType.ORDEREDSET:
-                output_str += "o"
-
-            output_str += "{"
-
-            if len(self.value) > 0:
-                for val in self.value:
-                    output_str += "%s, " % self._get_primitive_value_str(
-                        self._set_type,
-                        val,
-                        import_tree=import_tree,
-                        namespace=namespace
-                    )
-
-                return output_str[:-2] + "}"
-
-            return output_str + "}"
+            return self._get_complex_value_str(
+                indent_depth,
+                self._member_type,
+                self.value,
+                import_tree=import_tree,
+                namespace=namespace
+            )
 
         elif isinstance(self._member_type, NyanObject):
             if import_tree:
@@ -1039,13 +1109,13 @@ class NyanPatchMember(NyanMember):
         """
         return f"{self._member_origin.name}.{self.name}"
 
-    def dump(self, import_tree=None, namespace=None):
+    def dump(self, indent_depth, import_tree=None, namespace=None):
         """
         Returns the string representation of the member.
         """
-        return self.dump_short(import_tree=import_tree, namespace=namespace)
+        return self.dump_short(indent_depth, import_tree=import_tree, namespace=namespace)
 
-    def dump_short(self, import_tree=None, namespace=None):
+    def dump_short(self, indent_depth, import_tree=None, namespace=None):
         """
         Returns the nyan string representation of the member, but
         without the type definition.
@@ -1055,6 +1125,7 @@ class NyanPatchMember(NyanMember):
             "@" * self._override_depth,
             self._operator.value,
             self._get_str_representation(
+                indent_depth,
                 import_tree=import_tree,
                 namespace=namespace
             )
@@ -1145,13 +1216,13 @@ class InheritedNyanMember(NyanMember):
         """
         return self.value is not None
 
-    def dump(self, import_tree=None, namespace=None):
+    def dump(self, indent_depth, import_tree=None, namespace=None):
         """
         Returns the string representation of the member.
         """
-        return self.dump_short(import_tree=import_tree, namespace=namespace)
+        return self.dump_short(indent_depth, import_tree=import_tree, namespace=namespace)
 
-    def dump_short(self, import_tree=None, namespace=None):
+    def dump_short(self, indent_depth, import_tree=None, namespace=None):
         """
         Returns the nyan string representation of the member, but
         without the type definition.
@@ -1161,6 +1232,7 @@ class InheritedNyanMember(NyanMember):
             "@" * self._override_depth,
             self._operator.value,
             self._get_str_representation(
+                indent_depth,
                 import_tree=import_tree,
                 namespace=namespace
             )
