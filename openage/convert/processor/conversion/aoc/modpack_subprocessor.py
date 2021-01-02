@@ -113,6 +113,8 @@ class AoCModpackSubprocessor:
         for nyan_file in created_nyan_files.values():
             nyan_file.set_import_tree(import_tree)
 
+        AoCModpackSubprocessor._set_static_aliases(import_tree)
+
     @staticmethod
     def organize_media_objects(modpack, full_data_set):
         """
@@ -126,3 +128,122 @@ class AoCModpackSubprocessor:
 
         for metadata_file in full_data_set.metadata_exports:
             modpack.add_metadata_export(metadata_file)
+
+    @staticmethod
+    def _set_static_aliases(import_tree):
+        """
+        Set the aliases for the nyan import tree. The alias names
+        and affected nodes are hardcoded in this function.
+        """
+        # Abilities from the openage API
+        import_tree.add_alias(("engine", "ability", "type"), "ablty")
+        import_tree.add_alias(("engine", "ability", "specialization"), "ablty_spez")
+
+        # Auxiliary objects
+        import_tree.add_alias(("engine", "aux", "accuracy", "Accuracy"), "Accuracy")
+        import_tree.add_alias(("engine", "aux", "animation_override", "AnimationOverride"), "AnimationOverride")
+        import_tree.add_alias(("engine", "aux", "attribute"), "attribute")
+        import_tree.add_alias(("engine", "aux", "attribute_change_type"), "AttributeChangeType")
+        import_tree.add_alias(("engine", "aux", "calculation_type", "type"), "calculation_type")
+        import_tree.add_alias(("engine", "aux", "civilization", "Civilization"), "Civ")
+        import_tree.add_alias(("engine", "aux", "convert_type", "ConvertType"), "ConvertType")
+        import_tree.add_alias(("engine", "aux", "cost", "type"), "cost_type")
+        import_tree.add_alias(("engine", "aux", "create"), "create")
+        import_tree.add_alias(("engine", "aux", "diplomatic_stance"), "diplo_stance")
+        import_tree.add_alias(("engine", "aux", "diplomatic_stance", "type", "Self"), "diplo_stance_self")
+        import_tree.add_alias(("engine", "aux", "distribution_type", "type"), "distribution_type")
+        import_tree.add_alias(("engine", "aux", "dropoff_type", "type"), "dropoff_type")
+        import_tree.add_alias(("engine", "aux", "exchange_mode", "type"), "exchange_mode")
+        import_tree.add_alias(("engine", "aux", "exchange_rate", "ExchangeRate"), "ExchangeRate")
+        import_tree.add_alias(("engine", "aux", "formation"), "formation")
+        import_tree.add_alias(("engine", "aux", "game_entity", "GameEntity"), "GameEntity")
+        import_tree.add_alias(("engine", "aux", "game_entity_formation", "GameEntityFormation"), "GameEntityFormation")
+        import_tree.add_alias(("engine", "aux", "game_entity_stance", "type"), "ge_stance")
+        import_tree.add_alias(("engine", "aux", "game_entity_type", "type"), "ge_type")
+        import_tree.add_alias(("engine", "aux", "game_entity_type", "GameEntityType"), "GameEntityType")
+        import_tree.add_alias(("engine", "aux", "graphics", "Animation"), "Animation")
+        import_tree.add_alias(("engine", "aux", "graphics", "Terrain"), "TerrainGraphics")
+        import_tree.add_alias(("engine", "aux", "herdable_mode", "type"), "herdable_mode")
+        import_tree.add_alias(("engine", "aux", "hitbox", "Hitbox"), "Hitbox")
+        import_tree.add_alias(("engine", "aux", "move_mode", "type"), "move_mode")
+        import_tree.add_alias(("engine", "aux", "language"), "language")
+        import_tree.add_alias(("engine", "aux", "logic", "gate", "type"), "logic_gate")
+        import_tree.add_alias(("engine", "aux", "logic", "literal", "type"), "literal")
+        import_tree.add_alias(("engine", "aux", "logic", "literal_scope", "type"), "literal_scope")
+        import_tree.add_alias(("engine", "aux", "patch"), "patch")
+        import_tree.add_alias(("engine", "aux", "passable_mode", "type"), "passable_mode")
+        import_tree.add_alias(("engine", "aux", "payment_mode", "type"), "payment_mode")
+        import_tree.add_alias(("engine", "aux", "placement_mode", "type"), "placement_mode")
+        import_tree.add_alias(("engine", "aux", "price_change", "PriceChange"), "PriceChange")
+        import_tree.add_alias(("engine", "aux", "price_mode", "dynamic", "type"), "dynamic_price_mode")
+        import_tree.add_alias(("engine", "aux", "price_pool", "PricePool"), "PricePool")
+        import_tree.add_alias(("engine", "aux", "production_mode", "type"), "production_mode")
+        import_tree.add_alias(("engine", "aux", "progress", "type"), "progress")
+        import_tree.add_alias(("engine", "aux", "progress", "specialization"), "progress_spez")
+        import_tree.add_alias(("engine", "aux", "progress_status", "ProgressStatus"), "ProgressStatus")
+        import_tree.add_alias(("engine", "aux", "progress_type", "type"), "progress_type")
+        import_tree.add_alias(("engine", "aux", "research", "ResearchableTech"), "ResearchableTech")
+        import_tree.add_alias(("engine", "aux", "resource"), "resource")
+        import_tree.add_alias(("engine", "aux", "resource_spot", "ResourceSpot"), "ResourceSpot")
+        import_tree.add_alias(("engine", "aux", "selection_box", "type"), "selection_box")
+        import_tree.add_alias(("engine", "aux", "sound", "Sound"), "Sound")
+        import_tree.add_alias(("engine", "aux", "state_machine", "StateChanger"), "StateChanger")
+        import_tree.add_alias(("engine", "aux", "storage"), "storage")
+        import_tree.add_alias(("engine", "aux", "target_mode", "type"), "target_mode")
+        import_tree.add_alias(("engine", "aux", "tech", "Tech"), "Tech")
+        import_tree.add_alias(("engine", "aux", "terrain", "Terrain"), "Terrain")
+        import_tree.add_alias(("engine", "aux", "terrain", "TerrainAmbient"), "TerrainAmbient")
+        import_tree.add_alias(("engine", "aux", "terrain_type", "TerrainType"), "TerrainType")
+        import_tree.add_alias(("engine", "aux", "trade_route", "type"), "trade_route")
+        import_tree.add_alias(("engine", "aux", "translated", "type"), "translated")
+        import_tree.add_alias(("engine", "aux", "variant", "type"), "variant")
+
+        # Effect objects
+        import_tree.add_alias(
+            ("engine", "effect", "continuous", "flat_attribute_change", "type"),
+            "econt_flac"
+        )
+        import_tree.add_alias(
+            ("engine", "effect", "continuous", "time_relative_progress", "type"),
+            "econt_trp"
+        )
+        import_tree.add_alias(
+            ("engine", "effect", "continuous", "time_relative_attribute", "type"),
+            "econt_tra"
+        )
+        import_tree.add_alias(
+            ("engine", "effect", "discrete", "convert", "type"),
+            "edisc_conv"
+        )
+        import_tree.add_alias(
+            ("engine", "effect", "discrete", "flat_attribute_change", "type"),
+            "edisc_flac"
+        )
+        import_tree.add_alias(("engine", "effect", "specialization"), "effect_spez")
+        import_tree.add_alias(
+            ("engine", "resistance", "continuous", "flat_attribute_change", "type"),
+            "rcont_flac"
+        )
+        import_tree.add_alias(
+            ("engine", "resistance", "continuous", "time_relative_progress", "type"),
+            "rcont_trp"
+        )
+        import_tree.add_alias(
+            ("engine", "resistance", "continuous", "time_relative_attribute", "type"),
+            "rcont_tra"
+        )
+        import_tree.add_alias(
+            ("engine", "resistance", "discrete", "convert", "type"),
+            "rdisc_conv"
+        )
+        import_tree.add_alias(
+            ("engine", "resistance", "discrete", "flat_attribute_change", "type"),
+            "rdisc_flac"
+        )
+        import_tree.add_alias(("engine", "resistance", "specialization"), "resist_spez")
+
+        # Modifier objects
+        import_tree.add_alias(
+            ("engine", "modifier", "multiplier", "effect", "flat_attribute_change", "type"),
+            "mme_flac"
+        )

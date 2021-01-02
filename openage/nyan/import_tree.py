@@ -353,7 +353,8 @@ class ImportTree:
             current_node = current_node.parent
 
         if not current_node.alias:
-            print(fqon)
+            if fqon[0] == "engine":
+                print(fqon)
 
         return tuple(sfqon)
 
