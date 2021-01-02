@@ -330,7 +330,10 @@ class NyanObject:
                     empty = False
                     output_str += "%s%s\n" % (
                         (indent_depth + 1) * INDENT,
-                        inherited_member.dump(import_tree=import_tree)
+                        inherited_member.dump(
+                            import_tree=import_tree,
+                            namespace=self.get_fqon()
+                        )
                     )
             if not empty:
                 output_str += "\n"
@@ -342,12 +345,18 @@ class NyanObject:
                     # Patches do not need the type definition
                     output_str += "%s%s\n" % (
                         (indent_depth + 1) * INDENT,
-                        member.dump_short(import_tree=import_tree)
+                        member.dump_short(
+                            import_tree=import_tree,
+                            namespace=self.get_fqon()
+                        )
                     )
                 else:
                     output_str += "%s%s\n" % (
                         (indent_depth + 1) * INDENT,
-                        member.dump(import_tree=import_tree)
+                        member.dump(
+                            import_tree=import_tree,
+                            namespace=self.get_fqon()
+                        )
                     )
 
             output_str += "\n"
@@ -360,7 +369,7 @@ class NyanObject:
                     (indent_depth + 1) * INDENT,
                     nested_object.dump(
                         indent_depth + 1,
-                        import_tree
+                        import_tree=import_tree
                     )
                 )
 
@@ -384,7 +393,10 @@ class NyanObject:
         if len(self._parents) > 0:
             for parent in self._parents:
                 if import_tree:
-                    sfqon = ".".join(import_tree.get_alias_fqon(parent.get_fqon()))
+                    sfqon = ".".join(import_tree.get_alias_fqon(
+                        parent.get_fqon(),
+                        namespace=self.get_fqon()
+                    ))
 
                 else:
                     sfqon = ".".join(parent.get_fqon())
@@ -698,7 +710,7 @@ class NyanMember:
                                  "have their member type as ancestor")
                                 % (self.__repr__()))
 
-    def dump(self, import_tree=None):
+    def dump(self, import_tree=None, namespace=None):
         """
         Returns the nyan string representation of the member.
         """
@@ -708,7 +720,10 @@ class NyanMember:
 
         if isinstance(self._member_type, NyanObject):
             if import_tree:
-                sfqon = ".".join(import_tree.get_alias_fqon(self._member_type.get_fqon()))
+                sfqon = ".".join(import_tree.get_alias_fqon(
+                    self._member_type.get_fqon(),
+                    namespace
+                ))
 
             else:
                 sfqon = ".".join(self._member_type.get_fqon())
@@ -727,7 +742,10 @@ class NyanMember:
         if self.is_complex():
             if isinstance(self._set_type, NyanObject):
                 if import_tree:
-                    sfqon = ".".join(import_tree.get_alias_fqon(self._set_type.get_fqon()))
+                    sfqon = ".".join(import_tree.get_alias_fqon(
+                        self._set_type.get_fqon(),
+                        namespace
+                    ))
 
                 else:
                     sfqon = ".".join(self._set_type.get_fqon())
@@ -740,7 +758,10 @@ class NyanMember:
         if self.is_initialized():
             output_str += " %s%s %s" % ("@" * self._override_depth,
                                         self._operator.value,
-                                        self._get_str_representation(import_tree=import_tree))
+                                        self._get_str_representation(
+                                            import_tree=import_tree,
+                                            namespace=namespace
+                                        ))
 
         return output_str
 
@@ -898,21 +919,21 @@ class NyanMember:
         elif self._member_type is MemberType.ORDEREDSET:
             self.value = OrderedSet(self.value)
 
-    def _get_primitive_value_str(self, member_type, value, import_tree=None):
+    def _get_primitive_value_str(self, member_type, value, import_tree=None, namespace=None):
         """
         Returns the nyan string representation of primitive values.
 
         Subroutine of _get_str_representation()
         """
-        if member_type is MemberType.FLOAT:
-            return f"{value}f"
-
-        elif member_type in (MemberType.TEXT, MemberType.FILE):
+        if member_type in (MemberType.TEXT, MemberType.FILE):
             return f"\"{value}\""
 
         elif isinstance(member_type, NyanObject):
             if import_tree:
-                sfqon = ".".join(import_tree.get_alias_fqon(value.get_fqon()))
+                sfqon = ".".join(import_tree.get_alias_fqon(
+                    value.get_fqon(),
+                    namespace=namespace
+                ))
 
             else:
                 sfqon = ".".join(value.get_fqon())
@@ -921,7 +942,7 @@ class NyanMember:
 
         return f"{value}"
 
-    def _get_str_representation(self, import_tree=None):
+    def _get_str_representation(self, import_tree=None, namespace=None):
         """
         Returns the nyan string representation of the value.
         """
@@ -937,9 +958,12 @@ class NyanMember:
         if self._member_type in (MemberType.INT, MemberType.FLOAT,
                                  MemberType.TEXT, MemberType.FILE,
                                  MemberType.BOOLEAN):
-            return self._get_primitive_value_str(self._member_type,
-                                                 self.value,
-                                                 import_tree=import_tree)
+            return self._get_primitive_value_str(
+                self._member_type,
+                self.value,
+                import_tree=import_tree,
+                namespace=namespace
+            )
 
         elif self._member_type in (MemberType.SET, MemberType.ORDEREDSET):
             output_str = ""
@@ -954,7 +978,8 @@ class NyanMember:
                     output_str += "%s, " % self._get_primitive_value_str(
                         self._set_type,
                         val,
-                        import_tree=import_tree
+                        import_tree=import_tree,
+                        namespace=namespace
                     )
 
                 return output_str[:-2] + "}"
@@ -963,7 +988,10 @@ class NyanMember:
 
         elif isinstance(self._member_type, NyanObject):
             if import_tree:
-                sfqon = ".".join(import_tree.get_alias_fqon(self.value.get_fqon()))
+                sfqon = ".".join(import_tree.get_alias_fqon(
+                    self.value.get_fqon(),
+                    namespace
+                ))
 
             else:
                 sfqon = ".".join(self.value.get_fqon())
@@ -1011,21 +1039,26 @@ class NyanPatchMember(NyanMember):
         """
         return f"{self._member_origin.name}.{self.name}"
 
-    def dump(self, import_tree=None):
+    def dump(self, import_tree=None, namespace=None):
         """
         Returns the string representation of the member.
         """
-        return self.dump_short(import_tree=import_tree)
+        return self.dump_short(import_tree=import_tree, namespace=namespace)
 
-    def dump_short(self, import_tree=None):
+    def dump_short(self, import_tree=None, namespace=None):
         """
         Returns the nyan string representation of the member, but
         without the type definition.
         """
-        return "%s %s%s %s" % (self.get_name_with_origin(),
-                               "@" * self._override_depth,
-                               self._operator.value,
-                               self._get_str_representation(import_tree=import_tree))
+        return "%s %s%s %s" % (
+            self.get_name_with_origin(),
+            "@" * self._override_depth,
+            self._operator.value,
+            self._get_str_representation(
+                import_tree=import_tree,
+                namespace=namespace
+            )
+        )
 
     def _sanity_check(self):
         """
@@ -1112,21 +1145,26 @@ class InheritedNyanMember(NyanMember):
         """
         return self.value is not None
 
-    def dump(self, import_tree=None):
+    def dump(self, import_tree=None, namespace=None):
         """
         Returns the string representation of the member.
         """
-        return self.dump_short(import_tree=import_tree)
+        return self.dump_short(import_tree=import_tree, namespace=namespace)
 
-    def dump_short(self, import_tree=None):
+    def dump_short(self, import_tree=None, namespace=None):
         """
         Returns the nyan string representation of the member, but
         without the type definition.
         """
-        return "%s %s%s %s" % (self.get_name_with_origin(),
-                               "@" * self._override_depth,
-                               self._operator.value,
-                               self._get_str_representation(import_tree=import_tree))
+        return "%s %s%s %s" % (
+            self.get_name_with_origin(),
+            "@" * self._override_depth,
+            self._operator.value,
+            self._get_str_representation(
+                import_tree=import_tree,
+                namespace=namespace
+            )
+        )
 
     def _sanity_check(self):
         """
