@@ -25,12 +25,14 @@ class ImportTree:
         """
         current_node = self.root
         for node_str in fqon:
-            if current_node.has_child(node_str):
-                # Choose the already created node
+            try:
                 current_node = current_node.get_child(node_str)
 
-            else:
-                raise KeyError(f"fqon '{'.'.join(fqon)}' could not be found in import tree")
+            except KeyError as err:
+                # TODO: Do not silently fail
+                return
+                # raise KeyError(f"fqon '{'.'.join(fqon)}'"
+                #                "could not be found in import tree") from err
 
         current_node.set_alias(alias)
 

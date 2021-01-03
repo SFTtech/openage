@@ -29,7 +29,7 @@ class RoRModpackSubprocessor:
         """
         Create the aoe1-base modpack.
         """
-        modpack = Modpack("aoe1-base")
+        modpack = Modpack("aoe1_base")
 
         mod_def = modpack.get_info()
 

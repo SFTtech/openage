@@ -29,7 +29,7 @@ class DE2ModpackSubprocessor:
         """
         Create the aoe2-base modpack.
         """
-        modpack = Modpack("de2-base")
+        modpack = Modpack("de2_base")
 
         mod_def = modpack.get_info()
 

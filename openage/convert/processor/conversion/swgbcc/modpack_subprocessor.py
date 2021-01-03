@@ -29,7 +29,7 @@ class SWGBCCModpackSubprocessor:
         """
         Create the swgb-base modpack.
         """
-        modpack = Modpack("swgb-base")
+        modpack = Modpack("swgb_base")
 
         mod_def = modpack.get_info()
 
