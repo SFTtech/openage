@@ -1,0 +1,18 @@
+{
+    "name": "python3-lz4",
+    "buildsystem": "simple",
+    "build-commands": [
+        "pip3 install --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"lz4\" --no-build-isolation"
+    ],
+    "sources": [
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/1b/d7/ce69a9e1ec81ca3e14018d9db7c0d05b4f9a0c58a089d8e6c2e6c2c67a2f/lz4-3.1.1.tar.gz",
+            "sha256": "1ac354804cb2d5fb3d213857a6bf8590a301ef051cc16fbb4938bd2d6e524bda"
+        }
+    ],
+    "modules": [
+        "python3-pkgconfig.json",
+        "python3-setuptools-scm.json"
+    ]
+}
