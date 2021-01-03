@@ -48,7 +48,7 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
         args.compression_level = 1
 
     # Set verbosity for debug output
-    if "debug_info" not in vars(args):
+    if "debug_info" not in vars(args) or not args.debug_info:
         if args.devmode:
             args.debug_info = 3
 
