@@ -96,6 +96,7 @@ class DE2TechSubprocessor:
         194: AoCUpgradeResourceSubprocessor.crenellations_upgrade,
         196: AoCUpgradeResourceSubprocessor.wonder_time_increase_upgrade,
         197: AoCUpgradeResourceSubprocessor.spies_discount_upgrade,
+        208: DE2UpgradeResourceSubprocessor.unknown_de2_upgrade,
         209: DE2UpgradeResourceSubprocessor.reveal_enemy_tcs_upgrade,
         211: DE2UpgradeResourceSubprocessor.elevation_attack_upgrade,
         212: DE2UpgradeResourceSubprocessor.cliff_attack_upgrade,
