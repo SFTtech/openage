@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,invalid-name
 # pylint: disable=too-many-public-methods,too-many-branches,too-many-arguments
@@ -862,6 +862,12 @@ class AoCUpgradeAbilitySubprocessor:
 
         # HP max value
         nyan_patch_raw_api_object.add_raw_patch_member("max_value",
+                                                       diff_hp_value,
+                                                       "engine.aux.attribute.AttributeSetting",
+                                                       MemberOperator.ADD)
+
+        # HP starting value
+        nyan_patch_raw_api_object.add_raw_patch_member("starting_value",
                                                        diff_hp_value,
                                                        "engine.aux.attribute.AttributeSetting",
                                                        MemberOperator.ADD)
