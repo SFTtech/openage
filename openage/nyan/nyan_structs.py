@@ -1007,18 +1007,22 @@ class NyanMember:
             output_str += (indent_depth + 2) * INDENT
 
             val_index = 0
+            end_index = len(stored_values)
             for val in stored_values:
                 val_index += 1
                 output_str += val
 
-                if val_index == values_per_line:
-                    output_str += ",\n" + ((indent_depth + 2) * INDENT)
-                    val_index = 0
-                    continue
+                if val_index % values_per_line == 0:
+                    output_str += ",\n"
 
-                output_str += ", "
+                    if val_index != end_index:
+                        output_str += ((indent_depth + 2) * INDENT)
 
-            output_str = output_str[:-2] + "\n" + ((indent_depth + 1) * INDENT)
+                else:
+                    output_str += ", "
+
+            output_str = output_str[:-2] + "\n"
+            output_str += ((indent_depth + 1) * INDENT)
 
         output_str = output_str + "}"
 
