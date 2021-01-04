@@ -32,7 +32,7 @@ jobs:
         uses: actions/cache@v2
         id: cache-ccache
         with:
-          path: '${{ github.workspace }}/.ccache'
+          path: ~/Library/Caches/ccache
           key: '${{ runner.os }}-ccache-${{ steps.timestamp.outputs.timestamp }}'
           restore-keys: |
             ${{ runner.os }}-ccache-
