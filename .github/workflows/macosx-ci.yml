@@ -55,7 +55,7 @@ jobs:
         # cython, numpy and pygments are in homebrew,
         # but "cython is keg-only, which means it was not symlinked into /usr/local"
         # numpy pulls gcc as dep? and pygments doesn't work.
-        run: pip3 install --upgrade cython numpy jinja2 pillow pygments toml
+        run: pip3 install --upgrade cython numpy jinja2 lz4 pillow pygments toml
       - name: Configure
         run: ./configure --compiler=clang++ --mode=debug --ccache --download-nyan
       - name: Build
