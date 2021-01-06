@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-locals,too-many-statements
 #
@@ -1317,7 +1317,7 @@ class AoCPregenSubprocessor:
 
         modifier_parent = "engine.modifier.multiplier.MultiplierModifier"
         type_parent = "engine.modifier.multiplier.effect.flat_attribute_change.type.Flyover"
-        types_location = "data/aux/modifier/flyover_cliff"
+        types_location = "data/aux/modifier/flyover_cliff/"
 
         # =======================================================================
         # Flyover effect multiplier
@@ -1356,7 +1356,7 @@ class AoCPregenSubprocessor:
         # =======================================================================
         modifier_parent = "engine.modifier.multiplier.MultiplierModifier"
         type_parent = "engine.modifier.multiplier.effect.flat_attribute_change.type.ElevationDifferenceHigh"
-        types_location = "data/aux/modifier/elevation_difference"
+        types_location = "data/aux/modifier/elevation_difference/"
 
         modifier_ref_in_modpack = "aux.modifier.elevation_difference.AttackMultiplierHigh"
         modifier_raw_api_object = RawAPIObject(modifier_ref_in_modpack,
@@ -1380,7 +1380,7 @@ class AoCPregenSubprocessor:
         # =======================================================================
         modifier_parent = "engine.modifier.multiplier.MultiplierModifier"
         type_parent = "engine.modifier.multiplier.effect.flat_attribute_change.type.ElevationDifferenceLow"
-        types_location = "data/aux/modifier/elevation_difference"
+        types_location = "data/aux/modifier/elevation_difference/"
 
         modifier_ref_in_modpack = "aux.modifier.elevation_difference.AttackMultiplierLow"
         modifier_raw_api_object = RawAPIObject(modifier_ref_in_modpack,

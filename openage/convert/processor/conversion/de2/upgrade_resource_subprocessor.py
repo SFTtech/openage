@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods,invalid-name
 #
@@ -354,5 +354,25 @@ class DE2UpgradeResourceSubprocessor:
         patches = []
 
         # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def unknown_de2_upgrade(converter_group, value, operator, team=False):
+        """
+        Placeholder for unknown resources.
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement all resources
 
         return patches

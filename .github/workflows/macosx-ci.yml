@@ -32,7 +32,7 @@ jobs:
         uses: actions/cache@v2
         id: cache-ccache
         with:
-          path: '${{ github.workspace }}/.ccache'
+          path: ~/Library/Caches/ccache
           key: '${{ runner.os }}-ccache-${{ steps.timestamp.outputs.timestamp }}'
           restore-keys: |
             ${{ runner.os }}-ccache-
@@ -45,6 +45,8 @@ jobs:
         run: brew tap homebrew/cask-fonts && brew install --cask font-dejavu
       - name: Install environment helpers with homebrew
         run: brew install ccache
+      - name: Remove python's 2to3 link so that 'brew link' does not fail
+        run: rm '/usr/local/bin/2to3'
       - name: Install dependencies with homebrew
         run: brew install libepoxy freetype fontconfig harfbuzz sdl2 sdl2_image opus opusfile qt5 libogg libpng eigen
       - name: Install nyan dependencies with homebrew
@@ -53,7 +55,7 @@ jobs:
         # cython, numpy and pygments are in homebrew,
         # but "cython is keg-only, which means it was not symlinked into /usr/local"
         # numpy pulls gcc as dep? and pygments doesn't work.
-        run: pip3 install --upgrade cython numpy jinja2 pillow pygments toml
+        run: pip3 install --upgrade cython numpy jinja2 lz4 pillow pygments toml
       - name: Configure
         run: ./configure --compiler=clang++ --mode=debug --ccache --download-nyan
       - name: Build

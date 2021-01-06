@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-few-public-methods
 
@@ -29,7 +29,7 @@ class DE2ModpackSubprocessor:
         """
         Create the aoe2-base modpack.
         """
-        modpack = Modpack("de2-base")
+        modpack = Modpack("de2_base")
 
         mod_def = modpack.get_info()
 

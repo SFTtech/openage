@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2021 the openage authors. See copying.md for legal info.
 
 """
 Nyan file struct that stores a bunch of objects and
@@ -51,27 +51,29 @@ class NyanFile(DataDefinition):
         """
         Returns the string that represents the nyan file.
         """
-        output_str = f"# NYAN FILE\nversion {FILE_VERSION}\n\n"
-
-        import_aliases = self.import_tree.establish_import_dict(self,
-                                                                ignore_names=["type", "types"])
-
-        for alias, fqon in import_aliases.items():
-            output_str += "import "
-
-            output_str += ".".join(fqon)
-
-            output_str += f" as {alias}\n"
-
-        output_str += "\n"
+        fileinfo_str = f"# NYAN FILE\nversion {FILE_VERSION}\n\n"
+        import_str = ""
+        objects_str = ""
 
         for nyan_object in self.nyan_objects:
-            output_str += nyan_object.dump(import_tree=self.import_tree)
+            objects_str += nyan_object.dump(import_tree=self.import_tree)
 
+        # Removes one empty newline at the end of the objects definition
+        objects_str = objects_str[:-1]
+
+        import_aliases = self.import_tree.get_import_dict()
         self.import_tree.clear_marks()
 
-        # Removes one empty line at the end of the file
-        output_str = output_str[:-1]
+        for alias, fqon in import_aliases.items():
+            import_str += "import "
+
+            import_str += ".".join(fqon)
+
+            import_str += f" as {alias}\n"
+
+        import_str += "\n"
+
+        output_str = fileinfo_str + import_str + objects_str
 
         return output_str
 

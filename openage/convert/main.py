@@ -1,4 +1,4 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches
 """
@@ -48,7 +48,7 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
         args.compression_level = 1
 
     # Set verbosity for debug output
-    if "debug_info" not in vars(args):
+    if "debug_info" not in vars(args) or not args.debug_info:
         if args.devmode:
             args.debug_info = 3
 

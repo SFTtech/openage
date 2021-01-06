@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
 #
@@ -1182,6 +1182,11 @@ class AoCUpgradeAttributeSubprocessor:
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         nyan_patch_raw_api_object.add_raw_patch_member("max_value",
+                                                       value,
+                                                       "engine.aux.attribute.AttributeSetting",
+                                                       operator)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("starting_value",
                                                        value,
                                                        "engine.aux.attribute.AttributeSetting",
                                                        operator)
