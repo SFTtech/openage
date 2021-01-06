@@ -1,17 +1,16 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
-# pylint: disable=too-many-instance-attributes
+# pylint: disable=too-many-instance-attributes,too-many-arguments
 
 """
 Modpack definition file.
 """
-import base64
 import toml
 
 from ..data_definition import DataDefinition
 
 
-FILE_VERSION = "0.1.0"
+FILE_VERSION = "1"
 
 
 class ModpackInfo(DataDefinition):
@@ -20,153 +19,221 @@ class ModpackInfo(DataDefinition):
     and about the creators of the modpack.
     """
 
-    def __init__(self, targetdir, filename, modpack_name):
+    def __init__(self, targetdir, filename):
         super().__init__(targetdir, filename)
 
-        # Mandatory
-        self.name = modpack_name
+        # Info
+        self.packagename = None
         self.version = None
+        self.extra_info = {}
 
-        # Optional
-        self.uid = None
-        self.short_description = None
-        self.long_description = None
-        self.provides = []
-        self.conflicts = []
+        # Assets
+        self.includes = []
+        self.excludes = []
+
+        # Dependency
         self.requires = []
-        self.url = None
-        self.license = None
-        self.author_groups = {}
+
+        # Conflict
+        self.conflicts = []
+
+        # Authors
         self.authors = {}
-        self.load_files = []
 
-    def add_assets_to_load(self, path):
+        # Author groups
+        self.author_groups = {}
+
+    def add_author(self, name, fullname=None, since=None, until=None, roles=None, contact=None):
         """
-        Add a path to an asset that is loaded by the modpack. Directories
-        are also allowed.
+        Adds an author with optional contact info.
 
-        :param path: Path to the asset(s).
+        :param name: Nickname of the author. Must be unique for the modpack.
+        :type name: str
+        :param fullname: Full name of the author.
+        :type fullname: str
+        :param since: Version number of the release where the author started to contribute.
+        :type since: str
+        :param until: Version number of the release where the author stopped to contribute.
+        :type until: str
+        :param roles: List of roles of the author during the creation of the modpack.
+        :type roles: list
+        :param contact: Dictionary with contact info. See the spec
+                        for available parameters.
+        :type contact: dict
+        """
+        author = {}
+        author["name"] = name
+        if fullname:
+            author["fullname"] = fullname
+
+        if since:
+            author["since"] = since
+
+        if until:
+            author["until"] = until
+
+        if roles:
+            author["roles"] = roles
+
+        if contact:
+            author["contact"] = contact
+
+        self.authors[name] = author
+
+    def add_author_group(self, name, authors, description=None):
+        """
+        Adds an author with optional contact info.
+
+        :param name: Group or team name.
+        :type name: str
+        :param authors: List of author identifiers. These must match up
+                        with subtable keys in the self.authors.
+        :type authors: list
+        :param description: Path to a file with a description of the team.
+        :type description: str
+        """
+        author_group = {}
+        author_group["name"] = name
+        author_group["authors"] = authors
+        if description:
+            author_group["description"] = description
+
+        self.author_groups[name] = author_group
+
+    def add_include(self, path):
+        """
+        Add a path to an asset that is loaded by the modpack.
+
+        :param path: Path to assets that should be mounted on load time.
         :type path: str
         """
-        self.load_files.append(path)
+        self.includes.append(path)
 
-    def add_author(self, author, contact_info):
+    def add_exclude(self, path):
         """
-        Adds an author with optional contact info.
+        Add a path to an asset that excluded from loading.
 
-        :param author: Human-readable author identifier.
-        :type author: str
-        :param contact_info: Dictionary with contact info.
-                             (key = contact method, value = address)
-                             example: {"e-mail": "mastermind@openage.dev"}
-        :type contact_info: dict
+        :param path: Path to assets.
+        :type path: str
         """
-        self.authors[author] = contact_info
+        self.excludes.append(path)
 
-    def add_author_group(self, author_group, authors):
-        """
-        Adds an author with optional contact info.
-
-        :param author_group: Group/Team of authors.
-        :type author_group: str
-        :param authors: List of human-readable author identifiers.
-        :type authors: list
-        """
-        self.author_groups[author_group] = authors
-
-    def add_provided_modpack(self, modpack_name, version, uid):
-        """
-        Add an identifier of another modpack that this modpack provides.
-
-        :param modpack_name: Name of the provided modpack.
-        :type modpack_name: str
-        :param version: Version of the provided modpack.
-        :type version: str
-        :param uid: UID of the provided modpack.
-        :type uid: str
-        """
-        self.provides[modpack_name].update({"uid": uid, "version": version})
-
-    def add_conflicting_modpack(self, modpack_name, version, uid):
+    def add_conflict(self, modpack_id):
         """
         Add an identifier of another modpack that has a conflict with this modpack.
 
-        :param modpack_name: Name of the provided modpack.
-        :type modpack_name: str
-        :param version: Version of the provided modpack.
-        :type version: str
-        :param uid: UID of the provided modpack.
-        :type uid: str
+        :param modpack_id: Modpack alias or identifier.
+        :type modpack_id: str
         """
-        self.conflicts[modpack_name].update({"uid": uid, "version": version})
+        self.conflicts.append(modpack_id)
 
-    def add_required_modpack(self, modpack_name, version, uid):
+    def add_dependency(self, modpack_id):
         """
-        Add an identifier of another modpack that has is required by this modpack.
+        Add an identifier of another modpack that is a dependency of this modpack.
 
-        :param modpack_name: Name of the provided modpack.
-        :type modpack_name: str
-        :param version: Version of the provided modpack.
-        :type version: str
-        :param uid: UID of the provided modpack.
-        :type uid: str
+        :param modpack_id: Modpack alias or identifier.
+        :type modpack_id: str
         """
-        self.requires[modpack_name].update({"uid": uid, "version": version})
+        self.requires.append(modpack_id)
+
+    def set_info(self, packagename, version, repo=None, alias=None, title=None,
+                 description=None, long_description=None, url=None, licenses=None):
+        """
+        Set the general information about the modpack.
+
+        :param packagename: Name of the modpack.
+        :type packagename: str
+        :param version: Version number.
+        :type version: str
+        :param repo: Name of the repo where the package is hosted.
+        :type repo: str
+        :param alias: Alias of the modpack.
+        :type alias: str
+        :param title: Title used in UI.
+        :type title: str
+        :param description: Path to a file with a short description (max 500 chars).
+        :type description: str
+        :param long_description: Path to a file with a detailed description.
+        :type long_description: str
+        :param url: Link to the modpack's website.
+        :type url: str
+        :param licenses: License(s) of the modpack.
+        :type licenses: list
+        """
+        self.packagename = packagename
+        self.version = version
+
+        if repo:
+            self.extra_info["repo"] = repo
+
+        if alias:
+            self.extra_info["alias"] = alias
+
+        if title:
+            self.extra_info["title"] = title
+
+        if description:
+            self.extra_info["description"] = description
+
+        if long_description:
+            self.extra_info["long_description"] = long_description
+
+        if url:
+            self.extra_info["url"] = url
+
+        if licenses:
+            self.extra_info["licenses"] = licenses
 
     def dump(self):
         """
         Outputs the modpack info to the TOML output format.
         """
+        output_str = "# openage modpack definition file\n\n"
         output_dict = {}
 
+        # File version
+        output_dict.update({"file_version": FILE_VERSION})
+
         # info table
-        info_table = {"info": {}}
-        info_table["info"].update({"name": self.name})
-        if self.uid:
-            # Encode as base64 string
-            uid = base64.b64encode(self.uid.to_bytes(6, byteorder='big')).decode("utf-8")
-            info_table["info"].update({"uid": uid})
+        if not self.packagename:
+            raise Exception(f"{self}: packagename needs to be defined before dumping.")
 
         if not self.version:
             raise Exception(f"{self}: version needs to be defined before dumping.")
 
-        info_table["info"].update({"version": self.version})
-
-        if self.short_description:
-            info_table["info"].update({"short_description": self.short_description})
-        if self.long_description:
-            info_table["info"].update({"long_description": self.long_description})
-
-        if self.url:
-            info_table["info"].update({"url": self.url})
-        if self.license:
-            info_table["info"].update({"license": self.license})
+        info_table = {"info": {}}
+        info_table["info"].update(
+            {
+                "name": self.packagename,
+                "version": self.version
+            }
+        )
+        info_table["info"].update(self.extra_info)
 
         output_dict.update(info_table)
 
-        # provides table
-        provides_table = {"provides": {}}
-        provides_table["provides"].update(self.provides)
+        # assets table
+        assets_table = {"assets": {}}
+        assets_table["assets"].update(
+            {
+                "include": self.includes,
+                "exclude": self.excludes
+            }
+        )
 
-        output_dict.update(provides_table)
+        output_dict.update(assets_table)
+
+        # dependency table
+        dependency_table = {"dependency": {}}
+        dependency_table["dependency"].update({"modpacks": self.requires})
+
+        output_dict.update(dependency_table)
 
         # conflicts table
-        conflicts_table = {"conflicts": {}}
-        conflicts_table["conflicts"].update(self.conflicts)
+        conflicts_table = {"conflict": {}}
+        conflicts_table["conflict"].update({"modpacks": self.conflicts})
 
         output_dict.update(conflicts_table)
-
-        # requires table
-        requires_table = {"requires": {}}
-        requires_table["requires"].update(self.requires)
-
-        output_dict.update(requires_table)
-
-        # load table
-        load_table = {"load": {}}
-        load_table["load"].update({"include": self.load_files})
-
-        output_dict.update(load_table)
 
         # authors table
         authors_table = {"authors": {}}
@@ -174,79 +241,15 @@ class ModpackInfo(DataDefinition):
 
         output_dict.update(authors_table)
 
-        output_str = f"# MODPACK INFO version {FILE_VERSION}\n\n"
+        # authorgroups table
+        authorgroups_table = {"authorgroups": {}}
+        authorgroups_table["authorgroups"].update(self.author_groups)
+
+        output_dict.update(authorgroups_table)
+
         output_str += toml.dumps(output_dict)
 
         return output_str
 
-    def set_author_info(self, author, contact_method, contact_address):
-        """
-        Add or change a contact method of an author.
-
-        :param author: Author identifier.
-        :type author: str
-        :param contact_method: Contact method for an author.
-        :type contact_method: str
-        :param contact_address: Contact address for a contact method.
-        :type contact_address: str
-        """
-        contact_info = self.authors[author]
-        contact_info[contact_method] = contact_address
-
-    def set_short_description(self, path):
-        """
-        Set path to file with a short description of the mod.
-
-        :param path: Path to description file.
-        :type path: str
-        """
-        self.short_description = path
-
-    def set_long_description(self, path):
-        """
-        Set path to file with a longer description of the mod.
-
-        :param path: Path to description file.
-        :type path: str
-        """
-        self.long_description = path
-
-    def set_license(self, path):
-        """
-        Set path to a license file in the modpack.
-
-        :param path: Path to license file.
-        :type path: str
-        """
-        self.license = path
-
-    def set_uid(self, uid):
-        """
-        Set the unique identifier of the modpack. This must be a 48-Bit
-        integer.
-
-        :param uid: Unique identifier.
-        :type uid: int
-        """
-        self.uid = uid
-
-    def set_url(self, url):
-        """
-        Set the hompage URL of the modpack.
-
-        :param url: Homepage URL.
-        :type url: str
-        """
-        self.url = url
-
-    def set_version(self, version):
-        """
-        Set the version of the modpack.
-
-        :param version: Version string.
-        :type version: str
-        """
-        self.version = version
-
     def __repr__(self):
-        return f"ModpackInfo<{self.name}>"
+        return f"ModpackInfo<{self.packagename}>"

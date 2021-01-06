@@ -35,10 +35,9 @@ class AoCModpackSubprocessor:
 
         mod_def = modpack.get_info()
 
-        mod_def.set_version("1.0c")
-        mod_def.set_uid(2000)
+        mod_def.set_info("aoe2_base", "1.0c", repo="openage")
 
-        mod_def.add_assets_to_load("data/*")
+        mod_def.add_include("data/*")
 
         cls.organize_nyan_objects(modpack, gamedata)
         cls.organize_media_objects(modpack, gamedata)
@@ -88,14 +87,14 @@ class AoCModpackSubprocessor:
                 continue
 
             obj_filename = raw_api_object.get_filename()
-            nyan_file_path = f"{modpack.info.name}/{obj_location}{obj_filename}"
+            nyan_file_path = f"{modpack.name}/{obj_location}{obj_filename}"
 
             if nyan_file_path in created_nyan_files.keys():
                 nyan_file = created_nyan_files[nyan_file_path]
 
             else:
                 nyan_file = NyanFile(obj_location, obj_filename,
-                                     modpack.info.name)
+                                     modpack.name)
                 created_nyan_files.update({nyan_file.get_relative_file_path(): nyan_file})
                 modpack.add_data_export(nyan_file)
 
