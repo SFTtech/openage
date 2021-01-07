@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 """
@@ -328,7 +328,7 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
     terrain_name_lookup_dict = get_terrain_lookups(dataset.game_version)
 
     # Used when a name lookup fails
-    nnn = ("NameNotFound",)
+    nnn = ("NameNotFound", "NameNotFound")
 
     for key, line in enitity_groups.items():
         logfile = debugdir.joinpath("conversion/entity_groups/")[str(key)]
