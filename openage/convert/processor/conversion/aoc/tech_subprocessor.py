@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-statements,too-many-branches
 #
@@ -75,10 +75,12 @@ class AoCTechSubprocessor:
         79: AoCUpgradeResourceSubprocessor.gather_stone_efficiency_upgrade,
         84: AoCUpgradeResourceSubprocessor.starting_villagers_upgrade,
         85: AoCUpgradeResourceSubprocessor.chinese_tech_discount_upgrade,
+        86: AoCUpgradeResourceSubprocessor.research_time_upgrade,
         89: AoCUpgradeResourceSubprocessor.heal_rate_upgrade,
         90: AoCUpgradeResourceSubprocessor.heal_range_upgrade,
         91: AoCUpgradeResourceSubprocessor.starting_food_upgrade,
         92: AoCUpgradeResourceSubprocessor.starting_wood_upgrade,
+        94: AoCUpgradeResourceSubprocessor.starting_gold_upgrade,
         96: AoCUpgradeResourceSubprocessor.berserk_heal_rate_upgrade,
         97: AoCUpgradeResourceSubprocessor.herding_dominance_upgrade,
         178: AoCUpgradeResourceSubprocessor.conversion_resistance_min_rounds_upgrade,

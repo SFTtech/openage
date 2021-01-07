@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods,invalid-name
 #
@@ -968,6 +968,26 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
+    def research_time_upgrade(converter_group, value, operator, team=False):
+        """
+        Creates a patch for the research time modify effect (ID: 86).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
     def reveal_ally_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the reveal ally modify effect (ID: 50).
@@ -1071,6 +1091,26 @@ class AoCUpgradeResourceSubprocessor:
     def starting_wood_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the starting wood modify effect (ID: 92).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def starting_gold_upgrade(converter_group, value, operator, team=False):
+        """
+        Creates a patch for the starting gold modify effect (ID: 94).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
