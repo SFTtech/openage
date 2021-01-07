@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 
 """
 Defines a modpack that can be exported.
@@ -21,7 +21,7 @@ class Modpack:
         self.name = name
 
         # Definition file
-        self.info = ModpackInfo("", self.name + ".nfo", self.name)
+        self.info = ModpackInfo("", "modpack.toml")
 
         # Manifest file
         self.manifest = ManifestFile("", "manifest.toml")

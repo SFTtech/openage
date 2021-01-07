@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-few-public-methods
 
@@ -6,9 +6,9 @@
 Export data from a modpack to files.
 """
 
-from .generate_manifest_hashes import generate_hashes
 from ....log import info
 from ...value_object.read.media_types import MediaType
+from .generate_manifest_hashes import generate_hashes
 
 
 class ModpackExporter:
@@ -29,7 +29,7 @@ class ModpackExporter:
         sourcedir = args.srcdir
         exportdir = args.targetdir
 
-        modpack_dir = exportdir.joinpath(f"{modpack.info.name}")
+        modpack_dir = exportdir.joinpath(f"{modpack.info.packagename}")
 
         info("Starting export...")
         info("Dumping info file...")

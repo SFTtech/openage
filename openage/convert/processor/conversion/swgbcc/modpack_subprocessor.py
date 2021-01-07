@@ -33,10 +33,9 @@ class SWGBCCModpackSubprocessor:
 
         mod_def = modpack.get_info()
 
-        mod_def.set_version("GOG")
-        mod_def.set_uid(5000)
+        mod_def.set_info("swgb_base", "1.1-gog4", repo="openage")
 
-        mod_def.add_assets_to_load("data/*")
+        mod_def.add_include("data/*")
 
         AoCModpackSubprocessor.organize_nyan_objects(modpack, gamedata)
         AoCModpackSubprocessor.organize_media_objects(modpack, gamedata)
