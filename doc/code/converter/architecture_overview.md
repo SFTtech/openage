@@ -31,7 +31,7 @@ Entity objects are used for structures that have a defined identity. An example 
 be one `Unit` object from AoE2 or a `GameEntity` instance from the openage API. Entity objects are mutable
 and can have any number of attributes assigned to them. In the converter, they are used to model the
 more complex structures from Genie games such as units, civilizations and techs. The transition to the nyan
-API objects is also done utilizing etntity objects.
+API objects is also done utilizing entity objects.
 
 ### Service
 
