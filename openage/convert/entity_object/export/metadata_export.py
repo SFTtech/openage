@@ -19,16 +19,7 @@ class MetadataExport(Observer):
     def __init__(self, targetdir, target_filename):
 
         self.targetdir = targetdir
-        self.target_filename = target_filename
-
-    def save(self, exportdir, game_version=None):
-        """
-        Output the metadata into the associated file format(s).
-
-        :param exportdir: Relative path to the export directory.
-        :type exportdir: ...util.fslike.path.Path
-        """
-        raise NotImplementedError(f"{self} has not implemented save()")
+        self.filename = target_filename
 
     def __repr__(self):
         return f"MetadataExport<{type(self)}>"
@@ -56,8 +47,8 @@ class SpriteMetadataExport(MetadataExport):
         self.graphics_metadata[img_filename] = (layer_mode, layer_pos, frame_rate, replay_delay,
                                                 frame_count, angle_count, mirror_mode)
 
-    def save(self, exportdir, game_version=None):
-        sprite_file = SpriteMetadata(self.targetdir, self.target_filename)
+    def dump(self):
+        sprite_file = SpriteMetadata(self.targetdir, self.filename)
 
         index = 0
         for img_filename, metadata in self.graphics_metadata.items():
@@ -92,7 +83,7 @@ class SpriteMetadataExport(MetadataExport):
 
             index += 1
 
-        sprite_file.save(exportdir)
+        return sprite_file.dump()
 
     def update(self, observable, message=None):
         """

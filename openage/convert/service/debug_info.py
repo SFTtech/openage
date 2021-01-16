@@ -572,8 +572,12 @@ def debug_modpack(debugdir, loglevel, modpack):
 
     # Export info and manifest file
     logdir = debugdir.joinpath(f"export/{modpack.name}")
-    modpack.info.save(logdir)
-    modpack.manifest.save(logdir)
+
+    with logdir[modpack.info.filename].open('wb') as outfile:
+        outfile.write(modpack.info.dump().encode('utf-8'))
+
+    with logdir[modpack.manifest.filename].open('wb') as outfile:
+        outfile.write(modpack.manifest.dump().encode('utf-8'))
 
     if loglevel < 2:
         return
