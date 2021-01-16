@@ -85,6 +85,7 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.combined_terrains = {}
 
         self.graphics_exports = {}
+        self.blend_exports = {}
         self.sound_exports = {}
         self.metadata_exports = []
 

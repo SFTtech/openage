@@ -9,6 +9,7 @@ from openage.convert.entity_object.export.texture import Texture
 from openage.convert.processor.export.texture_merge import merge_frames, merge_terrain
 from openage.convert.service import debug_info
 from openage.convert.service.export.load_replay_data import load_graphics_replay_data
+from openage.convert.value_object.read.media.blendomatic import Blendomatic
 from openage.convert.value_object.read.media_types import MediaType
 
 
@@ -47,6 +48,10 @@ class MediaExporter:
             elif media_type is MediaType.SOUNDS:
                 export_func = MediaExporter._export_sound
 
+            elif media_type is MediaType.BLEND:
+                kwargs["blend_mode_count"] = args.blend_mode_count
+                export_func = MediaExporter._export_blend
+
             for request in cur_export_requests:
                 export_func(request, sourcedir, exportdir, **kwargs)
 
@@ -75,11 +80,23 @@ class MediaExporter:
             )
 
     @staticmethod
-    def _export_blend(export_request, sourcedir, exportdir):
+    def _export_blend(export_request, sourcedir, exportdir, blend_mode_count=None):
         """
         Convert and export a blend file.
         """
-        # ASDF
+        source_file = sourcedir.joinpath(export_request.source_filename)
+
+        media_file = source_file.open("rb")
+        blend_data = Blendomatic(media_file, blend_mode_count)
+
+        textures = blend_data.get_textures()
+        for idx, texture in enumerate(textures):
+            merge_frames(texture)
+            MediaExporter.save_png(
+                texture,
+                exportdir[export_request.targetdir],
+                f"{export_request.target_filename}{idx}.png"
+            )
 
     @staticmethod
     def _export_graphics(export_request, sourcedir, exportdir, palettes,
@@ -155,7 +172,7 @@ class MediaExporter:
         """
         Convert and export a palette file.
         """
-        # ASDF
+        # TODO: Implement
 
     @staticmethod
     def _export_sound(export_request, sourcedir, exportdir):

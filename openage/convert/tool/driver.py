@@ -84,6 +84,13 @@ def convert_metadata(args):
     debug_gamedata_format(args.debugdir, args.debug_info, args.game_version)
     gamespec = get_gamespec(args.srcdir, args.game_version, args.flag("no_pickle_cache"))
 
+    # Blending mode count
+    if args.game_version[0].game_id == "SWGB":
+        args.blend_mode_count = gamespec[0]["blend_mode_count_swgb"].get_value()
+
+    else:
+        args.blend_mode_count = None
+
     # Read strings
     string_resources = get_string_resources(args)
     debug_string_resources(args.debugdir, args.debug_info, string_resources)
@@ -101,19 +108,6 @@ def convert_metadata(args):
     for modpack in modpacks:
         ModpackExporter.export(modpack, args)
         debug_modpack(args.debugdir, args.debug_info, modpack)
-
-    if args.game_version[0].game_id not in ("ROR", "AOE2DE"):
-        yield "blendomatic.dat"
-
-        if args.game_version[0].game_id == "SWGB":
-            blend_mode_count = gamespec[0]["blend_mode_count_swgb"].get_value()
-            blend_data = get_blendomatic_data(args, blend_mode_count)
-
-        else:
-            blend_data = get_blendomatic_data(args)
-
-        blend_data.save(args.targetdir, "blendomatic", args.compression_level)
-        # data_formatter.add_data(blend_data.dump("blending_modes"))
 
     yield "player color palette"
     # player_palette = PlayerColorTable(palette)

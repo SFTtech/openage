@@ -109,6 +109,16 @@ class AoCMediaSubprocessor:
                                                 target_filename)
             full_data_set.graphics_exports.update({slp_id: export_request})
 
+        # Blendomatic export
+        # TODO: Blendomatic contains multiple files. Better handling?
+        # export_request = MediaExportRequest(
+        #     MediaType.BLEND,
+        #     "data/blend/",
+        #     full_data_set.game_version[0].media_paths[MediaType.BLEND][0],
+        #     "blendmode"
+        # )
+        # full_data_set.blend_exports.update({0: export_request})
+
     @staticmethod
     def _create_sound_requests(full_data_set):
         """

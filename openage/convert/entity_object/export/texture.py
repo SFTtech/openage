@@ -65,8 +65,7 @@ class Texture(genie_structure.GenieStructure):
         "of sprites included in the 'big texture'."
     )
 
-    def __init__(self, input_data, palettes=None, custom_cutter=None,
-                 custom_packer=None, custom_merger=None):
+    def __init__(self, input_data, palettes=None, custom_cutter=None):
         super().__init__()
 
         # Compression setting values for libpng
