@@ -81,19 +81,18 @@ class Texture(genie_structure.GenieStructure):
         from ...value_object.read.media.smp import SMP
         from ...value_object.read.media.smx import SMX
 
+        self.frames = []
         if isinstance(input_data, (SLP, SMP, SMX)):
-            frames = []
-
             for frame in input_data.main_frames:
                 # Palette can be different for every frame
                 main_palette = palettes[frame.get_palette_number()]
                 for subtex in self._slp_to_subtextures(frame,
                                                        main_palette,
                                                        custom_cutter):
-                    frames.append(subtex)
+                    self.frames.append(subtex)
 
         elif isinstance(input_data, BlendingMode):
-            frames = [
+            self.frames = [
                 # the hotspot is in the west corner of a tile.
                 TextureImage(
                     tile.get_picture_data(),
@@ -104,17 +103,6 @@ class Texture(genie_structure.GenieStructure):
         else:
             raise Exception("cannot create Texture "
                             "from unknown source type: %s" % (type(input_data)))
-
-        if custom_merger:
-            self.image_data, (self.width, self.height), self.image_metadata,\
-                self.best_packer_hints\
-                = custom_merger(frames)
-
-        else:
-            from ...processor.export.texture_merge import merge_frames
-            self.image_data, (self.width, self.height), self.image_metadata,\
-                self.best_packer_hints\
-                = merge_frames(frames, custom_packer=custom_packer)
 
     def _slp_to_subtextures(self, frame, main_palette, custom_cutter=None):
         """

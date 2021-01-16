@@ -6,6 +6,7 @@ Converts media requested by export requests to files.
 import os
 
 from openage.convert.entity_object.export.texture import Texture
+from openage.convert.processor.export.texture_merge import merge_frames, merge_terrain
 from openage.convert.service import debug_info
 from openage.convert.service.export.load_replay_data import load_graphics_replay_data
 from openage.convert.value_object.read.media_types import MediaType
@@ -49,7 +50,7 @@ class MediaExporter:
             for request in cur_export_requests:
                 export_func(request, sourcedir, exportdir, **kwargs)
 
-        if args.debug_info == 3:
+        if args.debug_info > 5:
             replaydata = {}
             for request in export_requests[MediaType.GRAPHICS]:
                 kwargs = {}
@@ -117,12 +118,24 @@ class MediaExporter:
             from ...value_object.read.media.smx import SMX
             image = SMX(media_file.read())
 
+        packer_replay = None
+        compr_replay = None
+        if replay_info:
+            replay_params = replay_info.get(export_request.source_filename, None)
+
+            if replay_params:
+                packer_replay = replay_params["packer_settings"]
+                compression_level = replay_params["compr_settings"][0]
+                compr_replay = replay_params["compr_settings"][1:]
+
         texture = Texture(image, palettes)
+        merge_frames(texture, replay=packer_replay)
         MediaExporter.save_png(
             texture,
             exportdir[export_request.targetdir],
             export_request.target_filename,
-            compression_level,
+            compression_level=compression_level,
+            replay=compr_replay
         )
         metadata = {export_request.target_filename: texture.get_metadata()}
 
@@ -198,11 +211,12 @@ class MediaExporter:
             pass
 
         if game_version[0].game_id in ("AOC", "SWGB"):
-            from ...processor.export.texture_merge import merge_terrain
-            texture = Texture(image, palettes, custom_merger=merge_terrain)
+            texture = Texture(image, palettes)
+            merge_terrain(texture)
 
         else:
             texture = Texture(image, palettes)
+            merge_frames(texture)
 
         MediaExporter.save_png(
             texture,
@@ -249,6 +263,7 @@ class MediaExporter:
             image = SMX(media_file.read())
 
         texture = Texture(image, palettes)
+        merge_frames(texture)
         MediaExporter.save_png(
             texture,
             None,

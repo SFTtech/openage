@@ -6,7 +6,10 @@ Merges texture frames into a spritesheet or terrain tiles into
 a terrain texture.
 """
 import math
+
 import numpy
+
+from openage.convert.entity_object.export.binpack import DeterministicPacker
 
 from ....log import spam
 from ...entity_object.export.binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
@@ -15,20 +18,26 @@ from ...value_object.read.media.hardcoded.texture import (MAX_TEXTURE_DIMENSION,
                                                           TERRAIN_ASPECT_RATIO)
 
 
-def merge_frames(frames, custom_packer=None, replay=None):
+def merge_frames(texture, custom_packer=None, replay=None):
     """
-    merge all given frames of this slp to a single image file.
+    merge all given frames in a texture into a single image atlas.
 
     frames = [TextureImage, ...]
 
     returns = TextureImage, (width, height), [drawn_frames_meta]
     """
-
+    frames = texture.frames
     if len(frames) == 0:
         raise Exception("cannot create texture with empty input frame list")
 
     if custom_packer:
         packer = custom_packer
+
+    elif replay:
+        packer = DeterministicPacker(
+            margin=MARGIN,
+            hints=replay
+        )
 
     else:
         packer = BestPacker([BinaryTreePacker(margin=MARGIN, aspect_ratio=1),
@@ -80,20 +89,18 @@ def merge_frames(frames, custom_packer=None, replay=None):
             }
         )
 
-    atlas = TextureImage(atlas_data)
+    texture.image_data = TextureImage(atlas_data)
+    texture.image_metadata = drawn_frames_meta
 
     spam("successfully merged %d frames to atlas.", len(frames))
 
-    best_hints = None
     if isinstance(packer, BestPacker):
         # Only generate these values if no custom packer was used
         # TODO: It might make sense to do it anyway for debugging purposes
-        best_hints = packer.get_mapping_hints(frames)
-
-    return atlas, (width, height), drawn_frames_meta, best_hints
+        texture.best_packer_hints = packer.get_mapping_hints(frames)
 
 
-def merge_terrain(frames):
+def merge_terrain(texture):
     """
     Merges tiles from an AoC terrain SLP into a single flat texture.
 
@@ -101,11 +108,10 @@ def merge_terrain(frames):
     of the big merged terrain. By blending and overlapping
     the tiles, we create a single terrain texture.
 
-    :param frames: Terrain tiles
-    :type frames: TextureImage
-    :returns: Resulting texture as well as width/height.
-    :rtype: TextureImage, (width, height)
+    :param texture: Texture containing the terrain tiles.
+    :type texture: Texture
     """
+    frames = texture.frames
     # Can be 10 (regular terrain) or 6 (farms)
     tiles_per_row = int(math.sqrt(len(frames)))
 
@@ -180,6 +186,4 @@ def merge_terrain(frames):
     # Rotate by 270 degrees to match the rotation of HD terrain textures
     flat_atlas = numpy.ascontiguousarray(numpy.rot90(flat_atlas, 3, axes=(0, 1)))
 
-    atlas = TextureImage(flat_atlas)
-
-    return atlas, (atlas.width, atlas.height), None, None
+    texture.image_data = TextureImage(flat_atlas)
