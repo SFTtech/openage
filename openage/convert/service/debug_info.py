@@ -611,3 +611,17 @@ def debug_modpack(debugdir, loglevel, modpack):
 
     with logfile.open("w") as log:
         log.write(logtext)
+
+
+def debug_graphics_replay(debugdir, loglevel, replaydata):
+    """
+    Create replay data for graphics files. This allows replaying
+    packer and compression settings for graphics file conversion.
+
+    :param debugdir: Output directory for the debug info.
+    :type debugdir: Directory
+    :param loglevel: Determines how detailed the output is.
+    :type loglevel: int
+    :param replaydata: Dict with replaydata
+    :type replaydata: dict
+    """

@@ -6,7 +6,6 @@ Merges texture frames into a spritesheet or terrain tiles into
 a terrain texture.
 """
 import math
-
 import numpy
 
 from ....log import spam
@@ -16,7 +15,7 @@ from ...value_object.read.media.hardcoded.texture import (MAX_TEXTURE_DIMENSION,
                                                           TERRAIN_ASPECT_RATIO)
 
 
-def merge_frames(frames, custom_packer=None):
+def merge_frames(frames, custom_packer=None, replay=None):
     """
     merge all given frames of this slp to a single image file.
 
@@ -85,7 +84,13 @@ def merge_frames(frames, custom_packer=None):
 
     spam("successfully merged %d frames to atlas.", len(frames))
 
-    return atlas, (width, height), drawn_frames_meta
+    best_hints = None
+    if isinstance(packer, BestPacker):
+        # Only generate these values if no custom packer was used
+        # TODO: It might make sense to do it anyway for debugging purposes
+        best_hints = packer.get_mapping_hints(frames)
+
+    return atlas, (width, height), drawn_frames_meta, best_hints
 
 
 def merge_terrain(frames):
@@ -177,4 +182,4 @@ def merge_terrain(frames):
 
     atlas = TextureImage(flat_atlas)
 
-    return atlas, (atlas.width, atlas.height), None
+    return atlas, (atlas.width, atlas.height), None, None

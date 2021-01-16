@@ -100,9 +100,12 @@ def save(numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] imagedata not None,
         best_settings = (used_settings["compr_lvl"], used_settings["mem_lvl"],
                          used_settings["strat"], used_settings["filters"])
 
-    else:
+    elif compr_method is CompressionMethod.COMPR_DEFAULT:
         outdata = optimize_default(mview, width, height)
         best_settings = None
+        
+    else:
+        raise NotImplementedError(f"Compression method {compr_method} is not supported yet")
 
     return outdata, best_settings
 

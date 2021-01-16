@@ -65,8 +65,16 @@ class Texture(genie_structure.GenieStructure):
         "of sprites included in the 'big texture'."
     )
 
-    def __init__(self, input_data, palettes=None, custom_cutter=None, custom_merger=False):
+    def __init__(self, input_data, palettes=None, custom_cutter=None,
+                 custom_packer=None, custom_merger=None):
         super().__init__()
+
+        # Compression setting values for libpng
+        self.best_compr = None
+
+        # Best packer hints (positions of sprites in texture)
+        self.best_packer_hints = None
+
         spam("creating Texture from %s", repr(input_data))
 
         from ...value_object.read.media.slp import SLP
@@ -98,13 +106,15 @@ class Texture(genie_structure.GenieStructure):
                             "from unknown source type: %s" % (type(input_data)))
 
         if custom_merger:
-            self.image_data, (self.width, self.height), self.image_metadata\
+            self.image_data, (self.width, self.height), self.image_metadata,\
+                self.best_packer_hints\
                 = custom_merger(frames)
 
         else:
             from ...processor.export.texture_merge import merge_frames
-            self.image_data, (self.width, self.height), self.image_metadata\
-                = merge_frames(frames)
+            self.image_data, (self.width, self.height), self.image_metadata,\
+                self.best_packer_hints\
+                = merge_frames(frames, custom_packer=custom_packer)
 
     def _slp_to_subtextures(self, frame, main_palette, custom_cutter=None):
         """
@@ -121,7 +131,7 @@ class Texture(genie_structure.GenieStructure):
         else:
             return [subtex]
 
-    def save(self, targetdir, filename, compression_level=1):
+    def save(self, targetdir, filename, compression_level=1, replay=None):
         """
         Store the image data into the target directory path,
         with given filename="dir/out.png".
@@ -161,10 +171,27 @@ class Texture(genie_structure.GenieStructure):
 
         compression_method = COMPRESSION_LEVELS.get(compression_level, png_create.CompressionMethod.COMPR_DEFAULT)
         with targetdir[filename].open("wb") as imagefile:
-            png_data, _ = png_create.save(self.image_data.data, compression_method)
+            png_data, compr_params = png_create.save(self.image_data.data, compression_method)
             imagefile.write(png_data)
 
+        if compr_params:
+            self.best_compr = (compression_level, *compr_params)
+
         return self.image_metadata
+
+    def get_metadata(self):
+        """
+        Get the image metadata information.
+        """
+        return self.image_metadata
+
+    def get_replay_params(self):
+        """
+        Get the parameters used for packing and saving the texture.
+            - Packing hints (sprite index, (xpos, ypos) in the final texture)
+            - PNG compression parameters (compression level + deflate params)
+        """
+        return self.best_packer_hints, self.best_compr
 
     @classmethod
     def structs(cls):
