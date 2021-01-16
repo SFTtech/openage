@@ -4,8 +4,8 @@ Provides functions for traversing a directory and
 generating hash values for all the items inside.
 """
 
-import hashlib
 import os
+from openage.util.hash import hash_file
 
 
 def bfs_directory(root):
@@ -34,31 +34,7 @@ def bfs_directory(root):
         dirs = next_level
 
 
-def get_file_hash(file_path, hashfunc, bufsize):
-    """
-    Returns the hash value of a given file.
-
-    :param file_path: Path of the given file.
-    :type file_path: ...util.fslike.path.Path
-    :param hashfunc: Hashing algorithm used.
-    :type hashfunc: str
-    :param bufsize: Buffer size for reading files.
-    :type bufsize: int
-    """
-    # set the hashing algorithm
-    hashf = hashlib.new(hashfunc)
-
-    with file_path.open_r() as f_in:
-        while True:
-            data = f_in.read(bufsize)
-            if not data:
-                break
-            hashf.update(data)
-
-    return hashf.hexdigest()
-
-
-def generate_hashes(modpack, exportdir, hashfunc='sha3_256', bufsize=32768):
+def generate_hashes(modpack, exportdir, hash_algo='sha3_256', bufsize=32768):
     """
     Generate hashes for all the items in a
     given modpack and adds them to the manifest
@@ -68,18 +44,17 @@ def generate_hashes(modpack, exportdir, hashfunc='sha3_256', bufsize=32768):
     :type modpack: ..dataformats.modpack.Modpack
     :param exportdir: Directory wheere modpacks are stored.
     :type exportdir: ...util.fslike.path.Path
-    :param hashfunc: Hashing algorithm used.
-    :type hashfunc: str
+    :param hash_algo: Hashing algorithm used.
+    :type hash_algo: str
     :param bufsize: Buffer size for reading files.
     :type bufsize: int
     """
-
     # set the hashing algorithm in the manifest instance
-    modpack.manifest.set_hashing_func(hashfunc)
+    modpack.manifest.set_hashing_func(hash_algo)
 
     # traverse the directory with breadth-first way and
     # generate hash values for the items encountered
     for file in bfs_directory(exportdir):
-        hash_val = get_file_hash(file, hashfunc, bufsize)
+        hash_val = hash_file(file, hash_algo=hash_algo, bufsize=bufsize)
         relative_path = os.path.relpath(str(file), str(exportdir))
         modpack.manifest.add_hash_value(hash_val, relative_path)
