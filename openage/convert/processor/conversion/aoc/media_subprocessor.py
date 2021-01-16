@@ -1,14 +1,14 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-few-public-methods
+from openage.convert.value_object.read.media_types import MediaType
 
 """
 Convert media information to metadata definitions and export
 requests. Subroutine of the main AoC processor.
 """
 from ....entity_object.export.formats.sprite_metadata import LayerMode
-from ....entity_object.export.media_export_request import GraphicsMediaExportRequest,\
-    SoundMediaExportRequest, TerrainMediaExportRequest
+from ....entity_object.export.media_export_request import MediaExportRequest
 from ....entity_object.export.metadata_export import SpriteMetadataExport
 
 
@@ -52,8 +52,10 @@ class AoCMediaSubprocessor:
                 target_filename = "%s_%s.png" % (sprite.get_filename(),
                                                  str(graphic["slp_id"].get_value()))
 
-                export_request = GraphicsMediaExportRequest(targetdir, source_filename,
-                                                            target_filename)
+                export_request = MediaExportRequest(MediaType.GRAPHICS,
+                                                    targetdir,
+                                                    source_filename,
+                                                    target_filename)
                 full_data_set.graphics_exports.update({graphic_id: export_request})
 
                 # Metadata from graphics
@@ -101,8 +103,10 @@ class AoCMediaSubprocessor:
             source_filename = f"{str(slp_id)}.slp"
             target_filename = f"{texture.get_filename()}.png"
 
-            export_request = TerrainMediaExportRequest(targetdir, source_filename,
-                                                       target_filename)
+            export_request = MediaExportRequest(MediaType.TERRAIN,
+                                                targetdir,
+                                                source_filename,
+                                                target_filename)
             full_data_set.graphics_exports.update({slp_id: export_request})
 
     @staticmethod
@@ -119,7 +123,9 @@ class AoCMediaSubprocessor:
             source_filename = f"{str(sound_id)}.wav"
             target_filename = f"{sound.get_filename()}.opus"
 
-            export_request = SoundMediaExportRequest(targetdir, source_filename,
-                                                     target_filename)
+            export_request = MediaExportRequest(MediaType.SOUNDS,
+                                                targetdir,
+                                                source_filename,
+                                                target_filename)
 
             full_data_set.sound_exports.update({sound_id: export_request})

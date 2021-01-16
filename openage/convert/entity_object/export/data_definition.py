@@ -4,8 +4,6 @@
 Output format specification for data to write.
 """
 
-from ....util.fslike.path import Path
-
 
 class DataDefinition:
     """
@@ -37,24 +35,6 @@ class DataDefinition:
         Creates a human-readable string that can be written to a file.
         """
         raise NotImplementedError(f"{type(self)} has not implemented dump() method")
-
-    def save(self, exportdir):
-        """
-        Outputs the contents of the DataDefinition to a file.
-
-        :param exportdir: Relative path to the export directory.
-        :type exportdir: ...util.fslike.path.Path
-        """
-        if not isinstance(exportdir, Path):
-            raise ValueError("util.fslike.path.Path expected as filename, not %s" %
-                             type(exportdir))
-
-        output_dir = exportdir.joinpath(self.targetdir)
-        output_content = self.dump()
-
-        # generate human-readable file
-        with output_dir[self.filename].open('wb') as outfile:
-            outfile.write(output_content.encode('utf-8'))
 
     def set_filename(self, filename):
         """
