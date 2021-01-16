@@ -59,7 +59,12 @@ class MediaExporter:
 
                 replaydata[request] = replay
 
-            debug_info.debug_graphics_replay(args.debug_dir, args.debug_info, replaydata)
+            debug_info.debug_graphics_replay(
+                args.debugdir,
+                args.debug_info,
+                replaydata,
+                args.game_version
+            )
 
     @staticmethod
     def _export_blend(export_request, sourcedir, exportdir):

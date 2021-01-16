@@ -9,6 +9,7 @@ from openage.convert.entity_object.conversion.aoc.genie_tech import AgeUpgrade,\
 from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup, GenieStackBuildingGroup, GenieUnitTransformGroup,\
     GenieMonkGroup
+from openage.convert.entity_object.export.formats.replay_graphics import ReplayGraphicsFile
 from openage.convert.service.conversion.internal_name_lookups import get_entity_lookups,\
     get_tech_lookups, get_civ_lookups, get_terrain_lookups
 from openage.convert.value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
@@ -613,7 +614,7 @@ def debug_modpack(debugdir, loglevel, modpack):
         log.write(logtext)
 
 
-def debug_graphics_replay(debugdir, loglevel, replaydata):
+def debug_graphics_replay(debugdir, loglevel, replaydata, game_version):
     """
     Create replay data for graphics files. This allows replaying
     packer and compression settings for graphics file conversion.
@@ -625,3 +626,20 @@ def debug_graphics_replay(debugdir, loglevel, replaydata):
     :param replaydata: Dict with replaydata
     :type replaydata: dict
     """
+    replay_file = ReplayGraphicsFile("export/", "replay_graphics.toml", game_version)
+    replay_file.set_hash_func("TEST")
+
+    for request, replay in replaydata.items():
+
+        replay_file.add_replay_data(
+            request.get_type(),
+            request.source_filename,
+            "xyz",
+            replay[0],
+            replay[1])
+
+    logfile = debugdir.joinpath("export/")["replay_graphics.toml"]
+    logtext = replay_file.dump()
+
+    with logfile.open("w") as log:
+        log.write(logtext)

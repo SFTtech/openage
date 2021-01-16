@@ -54,9 +54,9 @@ class Packer:
         return (self.margin,)
 
     def get_mapping_hints(self, blocks):
-        hints = {}
+        hints = []
         for index, block in enumerate(blocks):
-            hints[index] = self.pos(block)
+            hints.append((index, *self.pos(block)))
 
         return hints
 
