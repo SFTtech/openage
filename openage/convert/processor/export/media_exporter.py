@@ -7,6 +7,7 @@ import os
 
 from openage.convert.entity_object.export.texture import Texture
 from openage.convert.service import debug_info
+from openage.convert.service.export.load_replay_data import load_graphics_replay_data
 from openage.convert.value_object.read.media_types import MediaType
 
 
@@ -20,6 +21,10 @@ class MediaExporter:
         """
         Converts files requested by a MediaExportRequests.
         """
+        replay_info = {}
+        if args.game_version[0].replay_graphics:
+            replay_info = load_graphics_replay_data(args.game_version[0].replay_graphics)
+
         for media_type in export_requests.keys():
             cur_export_requests = export_requests[media_type]
 
@@ -35,6 +40,7 @@ class MediaExporter:
             elif media_type is MediaType.GRAPHICS:
                 kwargs["palettes"] = args.palettes
                 kwargs["compression_level"] = args.compression_level
+                kwargs["replay_info"] = replay_info
                 export_func = MediaExporter._export_graphics
 
             elif media_type is MediaType.SOUNDS:
@@ -76,7 +82,7 @@ class MediaExporter:
 
     @staticmethod
     def _export_graphics(export_request, sourcedir, exportdir, palettes,
-                         compression_level, replay=None):
+                         compression_level, replay_info=None):
         """
         Convert and export a graphics file.
         """
@@ -117,7 +123,6 @@ class MediaExporter:
             exportdir[export_request.targetdir],
             export_request.target_filename,
             compression_level,
-            replay
         )
         metadata = {export_request.target_filename: texture.get_metadata()}
 

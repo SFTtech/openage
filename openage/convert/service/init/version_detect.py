@@ -100,7 +100,6 @@ def create_game_obj(game_dic, aux_path, expansion=False):
     Use expansion parameter to decide if a GameEdition object
     is needed to be created or GameExpansion.
     """
-
     # initialize necessary parameters
     game_name = game_dic['name']
     game_id = game_dic['game_edition_id']
@@ -108,6 +107,13 @@ def create_game_obj(game_dic, aux_path, expansion=False):
     modpacks = game_dic['targetmod']
     if not expansion:
         expansions = game_dic['expansions']
+
+    flags = {}
+
+    # add mediapaths for the game
+    game_mediapaths_list = []
+    for media_type in game_dic['mediapaths']:
+        game_mediapaths_list.append((media_type, game_dic['mediapaths'][media_type]))
 
     # add version hashes from the auxiliary file specific for the game
     game_hash_path = aux_path["version_hashes.toml"]
@@ -120,14 +126,13 @@ def create_game_obj(game_dic, aux_path, expansion=False):
             continue
         game_hash_list.append((item[1]['path'], item[1]['map']))
 
-    # add mediapaths for the game
-    game_mediapaths_list = []
-    for media_type in game_dic['mediapaths']:
-        game_mediapaths_list.append((media_type, game_dic['mediapaths'][media_type]))
+    # Check if there are replay graphics and save the path if it exists
+    if aux_path["replay_graphics.toml"].is_file():
+        flags["replay_graphics"] = aux_path["replay_graphics.toml"]
 
     if expansion:
         return GameExpansion(game_name, game_id, support, game_hash_list,
-                             game_mediapaths_list, modpacks)
+                             game_mediapaths_list, modpacks, **flags)
 
     return GameEdition(game_name, game_id, support, game_hash_list,
-                       game_mediapaths_list, modpacks, expansions)
+                       game_mediapaths_list, modpacks, expansions, **flags)
