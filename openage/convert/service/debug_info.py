@@ -16,6 +16,7 @@ from openage.convert.value_object.read.media.datfile.empiresdat import EmpiresDa
 from openage.convert.value_object.read.read_members import IncludeMembers, MultisubtypeMember
 from openage.util.fslike.filecollection import FileCollectionPath
 from openage.util.fslike.path import Path
+from openage.util.hash import hash_file
 
 
 def debug_cli_args(debugdir, loglevel, args):
@@ -614,7 +615,7 @@ def debug_modpack(debugdir, loglevel, modpack):
         log.write(logtext)
 
 
-def debug_graphics_replay(debugdir, loglevel, replaydata, game_version):
+def debug_graphics_replay(debugdir, loglevel, sourcedir, replaydata, game_version):
     """
     Create replay data for graphics files. This allows replaying
     packer and compression settings for graphics file conversion.
@@ -623,20 +624,34 @@ def debug_graphics_replay(debugdir, loglevel, replaydata, game_version):
     :type debugdir: Directory
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
-    :param replaydata: Dict with replaydata
+    :param sourcedir: Sourcedir where the graphics files are mounted.
+    :type sourcedir: int
+    :param replaydata: Dict with replaydata.
     :type replaydata: dict
+    :param game_version: Game version.
+    :type game_version: tuple
     """
+    # if loglevel < 6:
+    #     return
+
     replay_file = ReplayGraphicsFile("export/", "replay_graphics.toml", game_version)
-    replay_file.set_hash_func("TEST")
+    replay_file.set_hash_func("sha3_256")
+
+    # Sort the output by filename
+    replaydata = dict(sorted(replaydata.items(), key=lambda item: item[0].source_filename))
 
     for request, replay in replaydata.items():
+        filepath = sourcedir[
+            request.get_type().value,
+            request.source_filename
+        ]
 
         replay_file.add_replay_data(
             request.get_type(),
             request.source_filename,
-            "xyz",
-            replay[0],
-            replay[1])
+            hash_file(filepath),
+            replay[1],
+            replay[0])
 
     logfile = debugdir.joinpath("export/")["replay_graphics.toml"]
     logtext = replay_file.dump()

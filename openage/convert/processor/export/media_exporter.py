@@ -62,6 +62,7 @@ class MediaExporter:
             debug_info.debug_graphics_replay(
                 args.debugdir,
                 args.debug_info,
+                sourcedir,
                 replaydata,
                 args.game_version
             )
