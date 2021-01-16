@@ -5,7 +5,7 @@ file_version = "1.0"
 [AFRI_KING]
 name = "African Kingdoms (HD)"
 game_edition_id = "AFRI_KING"
-subfolder = "hd_afri_king"
+subfolder = "hd_ak"
 support = "nope"
 targetmod = [ "aoe2-ak", "aoe2-ak-graphics" ]
 

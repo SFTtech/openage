@@ -68,30 +68,32 @@ def create_version_objects(srcdir):
     # initiliaze necessary paths
     game_edition_path = srcdir.joinpath("game_editions.toml")
     game_expansion_path = srcdir.joinpath("game_expansions.toml")
-    version_hashes_path = srcdir.joinpath("version-hashes")
 
     # load toml config files to a dictionary variable
     with game_edition_path.open() as game_edition_toml:
-        game_edition_dic = toml.loads(game_edition_toml.read())
+        game_editions = toml.loads(game_edition_toml.read())
+
     with game_expansion_path.open() as game_expansion_toml:
-        game_expansion_dic = toml.loads(game_expansion_toml.read())
+        game_expansions = toml.loads(game_expansion_toml.read())
 
     # create and list GameEdition objects
-    game_edition_dic.pop("file_version")
-    for game in game_edition_dic:
-        game_obj = create_game_obj(game_edition_dic[game], version_hashes_path)
+    game_editions.pop("file_version")
+    for game in game_editions:
+        aux_path = srcdir[game_editions[game]["subfolder"]]
+        game_obj = create_game_obj(game_editions[game], aux_path)
         game_edition_list.append(game_obj)
 
     # create and list GameExpansion objects
-    game_expansion_dic.pop("file_version")
-    for game in game_expansion_dic:
-        game_obj = create_game_obj(game_expansion_dic[game], version_hashes_path, True)
+    game_expansions.pop("file_version")
+    for game in game_expansions:
+        aux_path = srcdir[game_expansions[game]["subfolder"]]
+        game_obj = create_game_obj(game_expansions[game], aux_path, True)
         game_expansion_list.append(game_obj)
 
     return game_edition_list, game_expansion_list
 
 
-def create_game_obj(game_dic, version_hashes_path, expansion=False):
+def create_game_obj(game_dic, aux_path, expansion=False):
     """
     Create a GameEdition or GameExpansion object with the help of
     game_dic map and its version hash file.
@@ -107,8 +109,8 @@ def create_game_obj(game_dic, version_hashes_path, expansion=False):
     if not expansion:
         expansions = game_dic['expansions']
 
-    # add version-hashes from the auxiliary file specific for the game
-    game_hash_path = version_hashes_path.joinpath(game_id + '.toml')
+    # add version hashes from the auxiliary file specific for the game
+    game_hash_path = aux_path["version_hashes.toml"]
     with game_hash_path.open() as game_hash_toml:
         game_hash_dic = toml.loads(game_hash_toml.read())
 
