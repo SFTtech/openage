@@ -14,10 +14,12 @@ class ImportTree:
     Tree for storing nyan object references.
     """
 
-    __slots__ = ('root')
+    __slots__ = ('root', 'alias_nodes')
 
     def __init__(self):
         self.root = Node("", NodeType.ROOT, None)
+
+        self.alias_nodes = set()
 
     def add_alias(self, fqon, alias):
         """
@@ -40,7 +42,7 @@ class ImportTree:
         """
         Remove all alias marks from the tree.
         """
-        self.root.clear()
+        self.alias_nodes.clear()
 
     def expand_from_file(self, nyan_file):
         """
@@ -153,22 +155,18 @@ class ImportTree:
     def get_import_dict(self):
         """
         Get the fqons of the nodes that are used for alias, i.e. fqons of all
-        marked nodes. The dict can be used for creating imports of a nyan file.
+        nodes in self.alias_nodes. The dict can be used for creating imports
+        of a nyan file.
+
         Call this function after all object references in a file have been
         searched for aliases with get_alias_fqon().
         """
         aliases = {}
-        unhandled_nodes = [self.root]
+        for current_node in self.alias_nodes:
+            if current_node.alias in aliases.keys():
+                raise Exception(f"duplicate alias: {current_node.alias}")
 
-        while len(unhandled_nodes) > 0:
-            current_node = unhandled_nodes.pop(0)
-            unhandled_nodes.extend(current_node.children.values())
-
-            if current_node.marked:
-                if current_node.alias in aliases.keys():
-                    raise Exception(f"duplicate alias: {current_node.alias}")
-
-                aliases.update({current_node.alias: current_node.get_fqon()})
+            aliases.update({current_node.alias: current_node.get_fqon()})
 
         # Sort by imported name because it looks NICE!
         aliases = dict(sorted(aliases.items(), key=lambda item: item[1]))
@@ -215,7 +213,7 @@ class ImportTree:
         while current_node.depth > 0:
             if current_node.alias:
                 sfqon.insert(0, current_node.alias)
-                current_node.mark()
+                self.alias_nodes.add(current_node)
                 break
 
             sfqon.insert(0, current_node.name)
@@ -234,7 +232,7 @@ class Node:
     or an object.
     """
 
-    __slots__ = ('name', 'node_type', 'parent', 'depth', 'children', 'marked', 'alias')
+    __slots__ = ('name', 'node_type', 'parent', 'depth', 'children', 'alias')
 
     def __init__(self, name, node_type, parent):
         """
@@ -264,7 +262,6 @@ class Node:
 
         self.children = {}
 
-        self.marked = False
         self.alias = ""
 
     def add_child(self, child_node):
@@ -272,14 +269,6 @@ class Node:
         Adds a child node to this node.
         """
         self.children.update({child_node.name: child_node})
-
-    def clear(self):
-        """
-        Unmark node and all children.
-        """
-        self.unmark()
-        for child in self.children.values():
-            child.clear()
 
     def has_ancestor(self, ancestor_node, max_distance=128):
         """
@@ -322,18 +311,6 @@ class Node:
             current_node = current_node.parent
 
         return tuple(fqon)
-
-    def mark(self):
-        """
-        Mark this node as an alias node.
-        """
-        self.marked = True
-
-    def unmark(self):
-        """
-        Unmark this node as an alias node.
-        """
-        self.marked = False
 
     def set_alias(self, alias):
         """
