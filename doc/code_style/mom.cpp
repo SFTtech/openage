@@ -18,9 +18,9 @@
 #include "mom.h"
 
 // System includes follow, sorted alphabetically
-#include <iostream>
 #include <cmath>
 #include <cstdio>
+#include <iostream>
 #include <SDL/SDL.h>
 
 // Local includes next, sorted alphabetically
@@ -66,7 +66,6 @@ struct another_stupid_type {
 };
 
 
-
 /**
  * Yet another Valve game. Go on, nothing to see here.
  */
@@ -74,12 +73,12 @@ class HalfLife3 : public ValveGame {
 // vvv The access modifier is at the same indent level as the class definition:
 public:
 	void release_game(const ValveTeam &team,
-	                  uint128_t        passed_time,
-	                  const Engine    *game_engine,
-	                  Internet        *community,
-	                  bool             keep_secret=true) {
+	                  uint128_t passed_time,
+	                  const std::shared_ptr<Engine> &game_engine,
+	                  const std::shared_ptr<Internet> &community,
+	                  bool keep_secret = true) {
 
-		// ^ insert a empty line here to make it more readable.
+		// ^ you can insert a empty line here to make it more readable.
 
 		// http://www.abstrusegoose.com/440
 		auto gaben = team.get_human("gaben");
@@ -89,7 +88,7 @@ public:
 		    and (this->story->awesomeness > 9000)
 		    and (game_engine->quality_points > min_quality)) {
 
-			// ^ This empty line is mandatory, too.
+			// ^ This empty line may help, too.
 			team->start_ARG(community);
 
 			// https://developer.valvesoftware.com/wiki/Valve_Time
@@ -121,7 +120,7 @@ public:
 
 private:
 	/** Links to the story of the game. */
-	Story *story;
+	std::shared_ptr<Story> story;
 
 	/** Time in seconds estimated left until release. */
 	uint128_t estimated_release_time;
@@ -135,13 +134,10 @@ private:
 
 
 // Documentation for a namespace is in the header.
-// Can't wait for C++17's "namespace parents::mom {" style!
-namespace parents {
-namespace mom {
+namespace parents::mom {
 // <- A namespace does not increase the indentation level!
 
-YourMom::YourMom(int her_mass)
-	:
+YourMom::YourMom(int her_mass) :
 	mass{her_mass},
 	number_of_moons{0},
 	stupidity{1} {
@@ -234,10 +230,9 @@ void YourMom::buy(const Thing & /*item*/) {
 	// TODO: implement
 }
 
-}} // parents::mom
+} // namespace parents::mom
 // ^ When closing namespaces,
 //   close all in the same line and write a comment like this.
-//   In C++17 this will only be a single }
 
 
 int main(int argc, char **argv) {

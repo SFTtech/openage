@@ -41,8 +41,7 @@ constexpr int DEFAULT_MOM_MASS = 9001;
  * You may document a namespace if it's something special.
  * This documentation will also show up in generated docs then.
  */
-namespace parents {
-namespace mom {
+namespace parents::mom {
 // <- The namespace does not increase the indentation level!
 
 // In header files, forward declare as many classes as possible!
@@ -62,7 +61,7 @@ public:
 	 * Creates your mom.
 	 * @param mass: Initial mass for this mother.
 	 */
-	YourMom(int mass=DEFAULT_MOM_MASS);
+	YourMom(int mass = DEFAULT_MOM_MASS);
 
 	~YourMom();
 	// Note that the destructor has no doc,
@@ -84,7 +83,7 @@ public:
 
 protected:
 	/** Let your mom buy something */
-	void buy(const Thing& item);
+	void buy(const Thing &item);
 
 	// To have doxygen parse one-liners, write the following:
 	int64_t mass; //!< Your mom's mass (solar masses).
@@ -113,7 +112,7 @@ protected:
 enum class awesome_enumeration {
 	LOW,
 	MID,
-	HIGH,  // <- note the last , there!
+	HIGH, // <- note the last , there!
 };
 
 
@@ -124,5 +123,4 @@ enum class awesome_enumeration {
 using wtf_t = std::unordered_map<std::string,
                                  std::unique_ptr<Stuff>>;
 
-}} // parents::mom
-// ^ in C++17 this will only be a single }
+} // namespace parents::mom
