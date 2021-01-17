@@ -25,7 +25,8 @@ cimport numpy
 class CompressionMethod(Enum):
     COMPR_NONE       = 0x00  # unused; no compression (for debugging)
     COMPR_DEFAULT    = 0x01  # no optimization; default PNG compression
-    COMPR_GREEDY     = 0x02  # try several compression parameters; usually 50% smaller files
+    COMPR_OPTI       = 0x02  # best PNG compression; usually 50% smaller files
+    COMPR_GREEDY     = 0x03  # try several compression parameters; usually >50% smaller files
     COMPR_AGGRESSIVE = 0x04  # unused; use zopfli for even better compression
 
 cdef struct greedy_replay_param:
@@ -55,7 +56,7 @@ cdef int GREEDY_FILTER_5 = libpng.PNG_ALL_FILTERS
 @cython.boundscheck(False)
 @cython.wraparound(False)
 def save(numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] imagedata not None,
-         compr_method=CompressionMethod.COMPR_DEFAULT, compr_settings=None):
+         compr_method=CompressionMethod.COMPR_OPTI, compr_settings=None):
     """
     Convert an image matrix with RGBA colors to a PNG. The PNG is returned
     as a bytearray.
@@ -102,6 +103,15 @@ def save(numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] imagedata not None,
 
     elif compr_method is CompressionMethod.COMPR_DEFAULT:
         outdata = optimize_default(mview, width, height)
+        best_settings = None
+        
+    elif compr_method is CompressionMethod.COMPR_OPTI:
+        replay.compr_lvl = 9
+        replay.mem_lvl = 8
+        replay.strat = 0
+        replay.filters = 8
+        
+        outdata, used_settings = optimize_greedy(mview, width, height, replay)
         best_settings = None
         
     else:
