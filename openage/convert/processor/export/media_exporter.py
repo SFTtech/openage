@@ -6,7 +6,7 @@ Converts media requested by export requests to files.
 import os
 
 from openage.convert.entity_object.export.texture import Texture
-from openage.convert.processor.export.texture_merge import merge_frames, merge_terrain
+from openage.convert.processor.export.texture_merge import merge_frames
 from openage.convert.service import debug_info
 from openage.convert.service.export.load_replay_data import load_graphics_replay_data
 from openage.convert.value_object.read.media.blendomatic import Blendomatic
@@ -229,6 +229,7 @@ class MediaExporter:
             pass
 
         if game_version[0].game_id in ("AOC", "SWGB"):
+            from .terrain_merge import merge_terrain
             texture = Texture(image, palettes)
             merge_terrain(texture)
 

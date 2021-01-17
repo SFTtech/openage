@@ -6,3 +6,7 @@ add_py_modules(
 	modpack_exporter.py
 	texture_merge.py
 )
+
+add_cython_modules(
+	terrain_merge.pyx
+)
