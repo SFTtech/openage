@@ -1,14 +1,14 @@
 # Copyright 2020-2020 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-few-public-methods
-
 """
 Convert media information to metadata definitions and export
 requests. Subroutine of the main DE2 processor.
 """
 from ....entity_object.export.formats.sprite_metadata import LayerMode
-from ....entity_object.export.media_export_request import GraphicsMediaExportRequest
+from ....entity_object.export.media_export_request import MediaExportRequest
 from ....entity_object.export.metadata_export import SpriteMetadataExport
+from ....value_object.read.media_types import MediaType
 
 
 class DE2MediaSubprocessor:
@@ -51,8 +51,10 @@ class DE2MediaSubprocessor:
                 target_filename = "%s_%s.png" % (sprite.get_filename(),
                                                  str(graphic["slp_id"].get_value()))
 
-                export_request = GraphicsMediaExportRequest(targetdir, source_filename,
-                                                            target_filename)
+                export_request = MediaExportRequest(MediaType.GRAPHICS,
+                                                    targetdir,
+                                                    source_filename,
+                                                    target_filename)
                 full_data_set.graphics_exports.update({graphic_id: export_request})
 
                 # Metadata from graphics

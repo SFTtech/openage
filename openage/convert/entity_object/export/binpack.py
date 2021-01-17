@@ -5,6 +5,7 @@
 # TODO pylint: disable=C,R
 
 import enum
+from functools import lru_cache
 import math
 
 
@@ -14,6 +15,7 @@ class PackerType(enum.Enum):
     BINTREE = "bintree"
 
 
+@lru_cache(maxsize=32)
 def factor(n):
     """Return two (preferable close) factors of n."""
     for a in range(int(math.sqrt(n)), 0, -1):

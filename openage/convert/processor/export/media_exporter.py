@@ -120,6 +120,7 @@ class MediaExporter:
                     export_request.get_type().value,
                     other_filename
                 ]
+                export_request.set_source_filename(other_filename)
 
             media_file = source_file.open("rb")
 
