@@ -15,24 +15,6 @@ from ..service.read.gamedata import get_gamespec
 from ..service.read.palette import get_palettes
 from ..service.read.register_media import get_existing_graphics
 from ..service.read.string_resource import get_string_resources
-from ..value_object.read.media.blendomatic import Blendomatic
-from ..value_object.read.media_types import MediaType
-
-
-def get_blendomatic_data(args, blend_mode_count=None):
-    """
-    reads blendomatic.dat
-
-    TODO: make this a MediaExportRequest.
-    """
-    # in HD edition, blendomatic.dat has been renamed to
-    # blendomatic_x1.dat; their new blendomatic.dat has a new, unsupported
-    # format.
-    game_edition = args.game_version[0]
-    blendomatic_path = game_edition.media_paths[MediaType.BLEND][0]
-    blendomatic_dat = args.srcdir[blendomatic_path].open('rb')
-
-    return Blendomatic(blendomatic_dat, blend_mode_count)
 
 
 def convert(args):

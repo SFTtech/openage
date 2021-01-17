@@ -118,54 +118,6 @@ class Texture(genie_structure.GenieStructure):
         else:
             return [subtex]
 
-    def save(self, targetdir, filename, compression_level=1, replay=None):
-        """
-        Store the image data into the target directory path,
-        with given filename="dir/out.png".
-
-        :param compression_level: Compression level of the PNG. A higher
-                                  level results in smaller file sizes, but
-                                  takes longer to generate.
-                                      - 0 = no compression
-                                      - 1 = normal png compression (default)
-                                      - 2 = greedy search for smallest file; slowdown is 8x
-                                      - 3 = maximum possible compression; slowdown is 256x
-        :type compression_level: int
-        """
-        from ...service.export.png import png_create
-
-        COMPRESSION_LEVELS = {
-            0: png_create.CompressionMethod.COMPR_NONE,
-            1: png_create.CompressionMethod.COMPR_DEFAULT,
-            2: png_create.CompressionMethod.COMPR_GREEDY,
-            3: png_create.CompressionMethod.COMPR_AGGRESSIVE,
-        }
-
-        if not isinstance(targetdir, Path):
-            raise ValueError("util.fslike Path expected as targetdir")
-        if not isinstance(filename, str):
-            raise ValueError(f"str expected as filename, not {type(filename)}")
-
-        _, ext = os.path.splitext(filename)
-
-        # only allow png
-        if ext != ".png":
-            raise ValueError("Filename invalid, a texture must be saved"
-                             "as 'filename.png', not '%s'" % (filename))
-
-        # without the dot
-        ext = ext[1:]
-
-        compression_method = COMPRESSION_LEVELS.get(compression_level, png_create.CompressionMethod.COMPR_DEFAULT)
-        with targetdir[filename].open("wb") as imagefile:
-            png_data, compr_params = png_create.save(self.image_data.data, compression_method)
-            imagefile.write(png_data)
-
-        if compr_params:
-            self.best_compr = (compression_level, *compr_params)
-
-        return self.image_metadata
-
     def get_metadata(self):
         """
         Get the image metadata information.
