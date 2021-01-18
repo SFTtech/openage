@@ -16,4 +16,5 @@ add_pxds(
 
 add_py_modules(
 	__init__.py
+	binpack.py
 )
