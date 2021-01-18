@@ -5,15 +5,12 @@
 Merges texture frames into a spritesheet or terrain tiles into
 a terrain texture.
 """
-import math
-
 import numpy
 
-from openage.convert.entity_object.export.binpack import DeterministicPacker
-
 from ....log import spam
-from ...entity_object.export.binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from ...entity_object.export.texture import TextureImage
+from ...service.export.png.binpack import DeterministicPacker
+from ...service.export.png.binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from ...value_object.read.media.hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
                                                           TERRAIN_ASPECT_RATIO)
 
