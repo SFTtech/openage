@@ -1,6 +1,6 @@
 # Copyright 2013-2020 the openage authors. See copying.md for legal info.
 #
-# cython: profile=False
+# cython: profile=True
 
 from enum import Enum
 import lz4.block

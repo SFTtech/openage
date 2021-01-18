@@ -4,9 +4,9 @@ add_py_modules(
 	generate_manifest_hashes.py
 	media_exporter.py
 	modpack_exporter.py
-	texture_merge.py
 )
 
 add_cython_modules(
 	terrain_merge.pyx
+	texture_merge.pyx
 )

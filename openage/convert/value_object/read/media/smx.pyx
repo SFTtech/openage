@@ -1,6 +1,6 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 #
-# cython: profile=False
+# cython: infer_types=True, profile=True
 
 from enum import Enum
 from struct import Struct, unpack_from
@@ -324,7 +324,7 @@ cdef class SMXLayer:
 
             self.pcolor.push_back(row_data)
 
-    cdef tuple create_color_row(self, Py_ssize_t rowid,
+    cdef inline (int, int, int, vector[pixel]) create_color_row(self, Py_ssize_t rowid,
                                 int cmd_offset, int color_offset,
                                 int chunk_pos) except +:
         """
@@ -385,7 +385,7 @@ cdef class SMXLayer:
 
         return next_cmd_offset, next_color_offset, chunk_pos, row_data
 
-    cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
+    cdef (int, int, int, vector[pixel]) process_drawing_cmds(self, vector[pixel] &row_data,
                                     Py_ssize_t rowid,
                                     Py_ssize_t first_cmd_offset,
                                     Py_ssize_t first_color_offset,
@@ -454,7 +454,7 @@ cdef class SMXMainLayer8to5(SMXLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
 
-    cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
+    cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self, vector[pixel] &row_data,
                                     Py_ssize_t rowid,
                                     Py_ssize_t first_cmd_offset,
                                     Py_ssize_t first_color_offset,
@@ -661,7 +661,7 @@ cdef class SMXMainLayer4plus1(SMXLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
 
-    cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
+    cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self, vector[pixel] &row_data,
                                     Py_ssize_t rowid,
                                     Py_ssize_t first_cmd_offset,
                                     Py_ssize_t first_color_offset,
@@ -799,7 +799,7 @@ cdef class SMXShadowLayer(SMXLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
 
-    cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
+    cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self, vector[pixel] &row_data,
                                     Py_ssize_t rowid,
                                     Py_ssize_t first_cmd_offset,
                                     Py_ssize_t first_color_offset,
@@ -899,7 +899,7 @@ cdef class SMXOutlineLayer(SMXLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
 
-    cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
+    cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self, vector[pixel] &row_data,
                                     Py_ssize_t rowid,
                                     Py_ssize_t first_cmd_offset,
                                     Py_ssize_t first_color_offset,

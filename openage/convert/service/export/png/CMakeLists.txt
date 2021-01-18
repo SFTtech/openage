@@ -1,6 +1,7 @@
 find_package(PNG REQUIRED)
 
 add_cython_modules(
+	binpack.pyx
 	png_create.pyx
 )
 
@@ -16,5 +17,4 @@ add_pxds(
 
 add_py_modules(
 	__init__.py
-	binpack.py
 )

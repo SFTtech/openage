@@ -1,5 +1,6 @@
 # Copyright 2014-2020 the openage authors. See copying.md for legal info.
 #
+# cython: infer_types=True, profile=True
 # pylint: disable=too-many-locals
 """
 Merges texture frames into a spritesheet or terrain tiles into
@@ -14,8 +15,21 @@ from ...service.export.png.binpack import RowPacker, ColumnPacker, BinaryTreePac
 from ...value_object.read.media.hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
                                                           TERRAIN_ASPECT_RATIO)
 
+cimport cython
+cimport numpy
+
 
 def merge_frames(texture, custom_packer=None, replay=None):
+    """
+    Python wrapper for the Cython function.
+    """
+    cmerge_frames(texture)
+    
+
+@cython.boundscheck(False)
+@cython.wraparound(False)
+@cython.cdivision(True)
+cdef void cmerge_frames(texture, custom_packer=None, replay=None):
     """
     merge all given frames in a texture into a single image atlas.
 
@@ -45,21 +59,31 @@ def merge_frames(texture, custom_packer=None, replay=None):
 
     packer.pack(frames)
 
-    width, height = packer.width(), packer.height()
+    cdef int width = packer.width()
+    cdef int height = packer.height()
     assert width <= MAX_TEXTURE_DIMENSION, "Texture width limit exceeded"
     assert height <= MAX_TEXTURE_DIMENSION, "Texture height limit exceeded"
 
-    area = sum(block.width * block.height for block in frames)
-    used_area = width * height
-    efficiency = area / used_area
+    cdef int area = sum(block.width * block.height for block in frames)
+    cdef int used_area = width * height
+    cdef int efficiency = area / used_area
 
     spam("merging %d frames to %dx%d atlas, efficiency %.3f.",
          len(frames), width, height, efficiency)
 
-    atlas_data = numpy.zeros((height, width, 4), dtype=numpy.uint8)
-    drawn_frames_meta = []
+    cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] atlas_data = \
+        numpy.zeros((height, width, 4), dtype=numpy.uint8)
+    cdef numpy.uint8_t[:, :, ::1] catlas_data = atlas_data
+    cdef numpy.uint8_t[:, :, ::1] csub_frame
+    
+    cdef int pos_x
+    cdef int pos_y
+    cdef int sub_w
+    cdef int sub_h
 
+    cdef list drawn_frames_meta = []
     for sub_frame in frames:
+        
         sub_w = sub_frame.width
         sub_h = sub_frame.height
 
@@ -69,7 +93,8 @@ def merge_frames(texture, custom_packer=None, replay=None):
              len(drawn_frames_meta), pos_x, pos_y)
 
         # draw the subtexture on atlas_data
-        atlas_data[pos_y:pos_y + sub_h, pos_x:pos_x + sub_w] = sub_frame.data
+        csub_frame = sub_frame.data
+        catlas_data[pos_y:pos_y + sub_h, pos_x:pos_x + sub_w] = csub_frame
 
         hotspot_x, hotspot_y = sub_frame.hotspot
 

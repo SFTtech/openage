@@ -1,6 +1,6 @@
 # Copyright 2021-2021 the openage authors. See copying.md for legal info.
 #
-# cython: infer_types=True
+# cython: infer_types=True, profile=True
 # pylint: disable=too-many-locals
 """
 Merges a texture containing several terrain tiles into a single cartesian
