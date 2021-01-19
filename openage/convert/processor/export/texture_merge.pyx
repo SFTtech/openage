@@ -19,17 +19,17 @@ cimport cython
 cimport numpy
 
 
-def merge_frames(texture, custom_packer=None, replay=None):
+def merge_frames(texture, custom_packer=None, cache=None):
     """
     Python wrapper for the Cython function.
     """
-    cmerge_frames(texture)
+    cmerge_frames(texture, custom_packer, cache)
 
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
 @cython.cdivision(True)
-cdef void cmerge_frames(texture, custom_packer=None, replay=None):
+cdef void cmerge_frames(texture, custom_packer=None, cache=None):
     """
     merge all given frames in a texture into a single image atlas.
 
@@ -44,10 +44,10 @@ cdef void cmerge_frames(texture, custom_packer=None, replay=None):
     if custom_packer:
         packer = custom_packer
 
-    elif replay:
+    elif cache:
         packer = DeterministicPacker(
             margin=MARGIN,
-            hints=replay
+            hints=cache
         )
 
     else:

@@ -53,9 +53,9 @@ class GameBase:
         self.game_file_versions = []
         self.media_paths = {}
 
-        self.replay_graphics = None
-        if "replay_graphics" in flags.keys():
-            self.replay_graphics = flags["replay_graphics"]
+        self.media_cache = None
+        if "media_cache" in flags.keys():
+            self.media_cache = flags["media_cache"]
 
         for path, hash_map in game_hashes:
             self.add_game_file_versions(path, hash_map)

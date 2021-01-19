@@ -3,7 +3,7 @@
 # pylint: disable=too-many-arguments
 
 """
-Create a replay graphics file for a game version.
+Create a media cache file for a game version.
 """
 
 import toml
@@ -13,9 +13,9 @@ from ..data_definition import DataDefinition
 FILE_VERSION = "1.0"
 
 
-class ReplayGraphicsFile(DataDefinition):
+class MediaCacheFile(DataDefinition):
     """
-    Used for creating a replay graphics file.
+    Used for creating a media cache file.
     """
 
     def __init__(self, targetdir, filename, game_version):
@@ -23,11 +23,11 @@ class ReplayGraphicsFile(DataDefinition):
 
         self.game_version = game_version
         self.hash_func = None
-        self.replay_values = {}
+        self.cache = {}
 
     def dump(self):
         """
-        Returns the replay graphics file content in TOML format.
+        Returns the media cache file content in TOML format.
         """
 
         output_dict = {}
@@ -35,26 +35,26 @@ class ReplayGraphicsFile(DataDefinition):
         output_dict["file_version"] = FILE_VERSION
         output_dict["hash_algo"] = self.hash_func
 
-        for media_type, replaydata in self.replay_values.items():
+        for media_type, cachedata in self.cache.items():
             output_dict.update({media_type.value: {}})
 
-            for idx, replay in enumerate(replaydata):
-                replay_table = output_dict[media_type.value]
-                replay_table[f"file{idx}"] = {
-                    "filepath": replay[0],
-                    "hash": replay[1],
-                    "compression_settings": replay[2],
-                    "packer_settings": replay[3]
+            for idx, cache in enumerate(cachedata):
+                cache_table = output_dict[media_type.value]
+                cache_table[f"file{idx}"] = {
+                    "filepath": cache[0],
+                    "hash": cache[1],
+                    "compression_settings": cache[2],
+                    "packer_settings": cache[3]
                 }
 
-        output_str = "# openage graphics replay file\n\n"
+        output_str = "# openage media cache file\n\n"
         output_str += toml.dumps(output_dict)
 
         return output_str
 
-    def add_replay_data(self, media_type, filepath, filehash, compr_settings, packer_settings):
+    def add_cache_data(self, media_type, filepath, filehash, compr_settings, packer_settings):
         """
-        Add replay data for a file.
+        Add cache data for a file.
 
         :param media_type: Media type of the file (should be a graphics format)
         :type media_type: MediaType
@@ -68,10 +68,10 @@ class ReplayGraphicsFile(DataDefinition):
         :param packer_settings: Settings for the packing algorithm.
         :type packer_settings: ruple
         """
-        if media_type not in self.replay_values.keys():
-            self.replay_values[media_type] = []
+        if media_type not in self.cache.keys():
+            self.cache[media_type] = []
 
-        self.replay_values[media_type].append(
+        self.cache[media_type].append(
             (filepath, filehash, compr_settings, packer_settings)
         )
 

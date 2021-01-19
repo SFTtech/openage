@@ -1,6 +1,6 @@
 add_py_modules(
 	__init__.py
-	load_replay_data.py
+	load_media_cache.py
 )
 
 add_subdirectory(interface)

@@ -29,7 +29,7 @@ class CompressionMethod(Enum):
     COMPR_GREEDY     = 0x03  # try several compression parameters; usually >50% smaller files
     COMPR_AGGRESSIVE = 0x04  # unused; use zopfli for even better compression
 
-cdef struct greedy_replay_param:
+cdef struct greedy_cache_param:
     uint8_t compr_lvl
     uint8_t mem_lvl
     uint8_t strat
@@ -81,23 +81,23 @@ def save(numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] imagedata not None,
     cdef unsigned int height = imagedata.shape[0]
     cdef numpy.uint8_t[:,:,::1] mview = imagedata
 
-    cdef greedy_replay_param replay
+    cdef greedy_cache_param cache
 
     if compr_method is CompressionMethod.COMPR_GREEDY:
         if compr_settings:
-            replay.compr_lvl = compr_settings[0]
-            replay.mem_lvl = compr_settings[1]
-            replay.strat = compr_settings[2]
-            replay.filters = compr_settings[3]
+            cache.compr_lvl = compr_settings[0]
+            cache.mem_lvl = compr_settings[1]
+            cache.strat = compr_settings[2]
+            cache.filters = compr_settings[3]
 
         else:
             # Assign invalid values. This will trigger the optimization loop.
-            replay.compr_lvl = 0xFF
-            replay.mem_lvl = 0xFF
-            replay.strat = 0xFF
-            replay.filters = 0xFF
+            cache.compr_lvl = 0xFF
+            cache.mem_lvl = 0xFF
+            cache.strat = 0xFF
+            cache.filters = 0xFF
 
-        outdata, used_settings = optimize_greedy(mview, width, height, replay)
+        outdata, used_settings = optimize_greedy(mview, width, height, cache)
         best_settings = (used_settings["compr_lvl"], used_settings["mem_lvl"],
                          used_settings["strat"], used_settings["filters"])
 
@@ -106,12 +106,12 @@ def save(numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] imagedata not None,
         best_settings = None
 
     elif compr_method is CompressionMethod.COMPR_OPTI:
-        replay.compr_lvl = 9
-        replay.mem_lvl = 8
-        replay.strat = 0
-        replay.filters = 8
+        cache.compr_lvl = 9
+        cache.mem_lvl = 8
+        cache.strat = 0
+        cache.filters = 8
 
-        outdata, used_settings = optimize_greedy(mview, width, height, replay)
+        outdata, used_settings = optimize_greedy(mview, width, height, cache)
         best_settings = None
 
     else:
@@ -183,7 +183,7 @@ cdef bytearray optimize_default(numpy.uint8_t[:,:,::1] imagedata, int width, int
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef optimize_greedy(numpy.uint8_t[:,:,::1] imagedata, int width, int height, greedy_replay_param replay):
+cdef optimize_greedy(numpy.uint8_t[:,:,::1] imagedata, int width, int height, greedy_cache_param cache):
     """
     Create an in-memory PNG by greedily searching for the result with the
     smallest file size and copying it to a bytearray.
@@ -199,15 +199,15 @@ cdef optimize_greedy(numpy.uint8_t[:,:,::1] imagedata, int width, int height, gr
     :type width: int
     :param height: Height of the image in pixels.
     :type height: int
-    :param replay: A struct containing compression parameters for the PNG generation. Pass
+    :param cache: A struct containing compression parameters for the PNG generation. Pass
                    a struct with all values intialized to 0xFF to run the greedy search.
-    :type replay: greedy_replay_param
+    :type cache: greedy_cache_param
     :returns: A bytearray containing the generated PNG file as well as the
               settings that generate the smallest PNG.
     :rtype: tuple
     """
-    if replay.compr_lvl == 0xFF:
-        replay = optimize_greedy_iterate(imagedata, width, height)
+    if cache.compr_lvl == 0xFF:
+        cache = optimize_greedy_iterate(imagedata, width, height)
 
     # Create an in-memory stream of a file
     cdef char *outbuffer
@@ -215,10 +215,10 @@ cdef optimize_greedy(numpy.uint8_t[:,:,::1] imagedata, int width, int height, gr
     cdef libpng.png_FILE_p fp = open_memstream(&outbuffer, &outbuffer_len)
 
     write_to_file(imagedata, fp,
-                  replay.compr_lvl,
-                  replay.mem_lvl,
-                  replay.strat,
-                  replay.filters,
+                  cache.compr_lvl,
+                  cache.mem_lvl,
+                  cache.strat,
+                  cache.filters,
                   width, height)
 
     # Copy file data to bytearray
@@ -237,12 +237,12 @@ cdef optimize_greedy(numpy.uint8_t[:,:,::1] imagedata, int width, int height, gr
     fclose(fp)
     free(outbuffer)
 
-    return outdata, replay
+    return outdata, cache
 
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef greedy_replay_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata, int width, int height):
+cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata, int width, int height):
     """
     Try several different compression settings and choose the settings
     that generate the smallest PNG. The function tries 8 different
@@ -261,7 +261,7 @@ cdef greedy_replay_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedat
     :param height: Height of the image in pixels.
     :type height: int
     :returns: Settings that generate the smallest PNG.
-    :rtype: greedy_replay_param
+    :rtype: greedy_cache_param
     """
     cdef int     best_filesize = 0x7fffffff
     cdef int     current_filesize = 0x7fffffff
@@ -270,7 +270,7 @@ cdef greedy_replay_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedat
     cdef uint8_t best_compr_strat = 0xFF
     cdef uint8_t best_filters = 0xFF
 
-    cdef greedy_replay_param result
+    cdef greedy_cache_param result
 
     # Create a memory buffer that the PNG trials are written into
     cdef char *buf

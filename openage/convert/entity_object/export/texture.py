@@ -125,7 +125,7 @@ class Texture(genie_structure.GenieStructure):
         """
         return self.image_metadata
 
-    def get_replay_params(self):
+    def get_cache_params(self):
         """
         Get the parameters used for packing and saving the texture.
             - Packing hints (sprite index, (xpos, ypos) in the final texture)

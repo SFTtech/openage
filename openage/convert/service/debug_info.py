@@ -9,7 +9,7 @@ from openage.convert.entity_object.conversion.aoc.genie_tech import AgeUpgrade,\
 from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup, GenieStackBuildingGroup, GenieUnitTransformGroup,\
     GenieMonkGroup
-from openage.convert.entity_object.export.formats.replay_graphics import ReplayGraphicsFile
+from openage.convert.entity_object.export.formats.media_cache import MediaCacheFile
 from openage.convert.service.conversion.internal_name_lookups import get_entity_lookups,\
     get_tech_lookups, get_civ_lookups, get_terrain_lookups
 from openage.convert.value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
@@ -615,9 +615,9 @@ def debug_modpack(debugdir, loglevel, modpack):
         log.write(logtext)
 
 
-def debug_graphics_replay(debugdir, loglevel, sourcedir, replaydata, game_version):
+def debug_media_cache(debugdir, loglevel, sourcedir, cachedata, game_version):
     """
-    Create replay data for graphics files. This allows replaying
+    Create media cache data for graphics files. This allows using deterministic
     packer and compression settings for graphics file conversion.
 
     :param debugdir: Output directory for the debug info.
@@ -626,35 +626,35 @@ def debug_graphics_replay(debugdir, loglevel, sourcedir, replaydata, game_versio
     :type loglevel: int
     :param sourcedir: Sourcedir where the graphics files are mounted.
     :type sourcedir: int
-    :param replaydata: Dict with replaydata.
-    :type replaydata: dict
+    :param cachedata: Dict with cache data.
+    :type cachedata: dict
     :param game_version: Game version.
     :type game_version: tuple
     """
     if loglevel < 6:
         return
 
-    replay_file = ReplayGraphicsFile("export/", "replay_graphics.toml", game_version)
-    replay_file.set_hash_func("sha3_256")
+    cache_file = MediaCacheFile("export/", "media_cache.toml", game_version)
+    cache_file.set_hash_func("sha3_256")
 
     # Sort the output by filename
-    replaydata = dict(sorted(replaydata.items(), key=lambda item: item[0].source_filename))
+    cache_data = dict(sorted(cachedata.items(), key=lambda item: item[0].source_filename))
 
-    for request, replay in replaydata.items():
+    for request, cache in cache_data.items():
         filepath = sourcedir[
             request.get_type().value,
             request.source_filename
         ]
 
-        replay_file.add_replay_data(
+        cache_file.add_cache_data(
             request.get_type(),
             request.source_filename,
             hash_file(filepath),
-            replay[1],
-            replay[0])
+            cache[1],
+            cache[0])
 
-    logfile = debugdir.joinpath("export/")["replay_graphics.toml"]
-    logtext = replay_file.dump()
+    logfile = debugdir.joinpath("export/")["media_cache.toml"]
+    logtext = cache_file.dump()
 
     with logfile.open("w") as log:
         log.write(logtext)

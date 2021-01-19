@@ -126,9 +126,9 @@ def create_game_obj(game_dic, aux_path, expansion=False):
             continue
         game_hash_list.append((item[1]['path'], item[1]['map']))
 
-    # Check if there are replay graphics and save the path if it exists
-    if aux_path["replay_graphics.toml"].is_file():
-        flags["replay_graphics"] = aux_path["replay_graphics.toml"]
+    # Check if there is a media cache file and save the path if it exists
+    if aux_path["media_cache.toml"].is_file():
+        flags["media_cache"] = aux_path["media_cache.toml"]
 
     if expansion:
         return GameExpansion(game_name, game_id, support, game_hash_list,

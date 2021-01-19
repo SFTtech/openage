@@ -8,7 +8,7 @@ import os
 
 from openage.convert.entity_object.export.texture import Texture
 from openage.convert.service import debug_info
-from openage.convert.service.export.load_replay_data import load_graphics_replay_data
+from openage.convert.service.export.load_media_cache import load_media_cache
 from openage.convert.value_object.read.media.blendomatic import Blendomatic
 from openage.convert.value_object.read.media_types import MediaType
 
@@ -23,9 +23,9 @@ class MediaExporter:
         """
         Converts files requested by a MediaExportRequests.
         """
-        replay_info = {}
-        if args.game_version[0].replay_graphics:
-            replay_info = load_graphics_replay_data(args.game_version[0].replay_graphics)
+        cache_info = {}
+        if args.game_version[0].media_cache:
+            cache_info = load_media_cache(args.game_version[0].media_cache)
 
         for media_type in export_requests.keys():
             cur_export_requests = export_requests[media_type]
@@ -42,7 +42,7 @@ class MediaExporter:
             elif media_type is MediaType.GRAPHICS:
                 kwargs["palettes"] = args.palettes
                 kwargs["compression_level"] = args.compression_level
-                kwargs["replay_info"] = replay_info
+                kwargs["cache_info"] = cache_info
                 export_func = MediaExporter._export_graphics
 
             elif media_type is MediaType.SOUNDS:
@@ -56,26 +56,26 @@ class MediaExporter:
                 export_func(request, sourcedir, exportdir, **kwargs)
 
         if args.debug_info > 5:
-            replaydata = {}
+            cachedata = {}
             for request in export_requests[MediaType.GRAPHICS]:
                 kwargs = {}
                 kwargs["palettes"] = args.palettes
                 kwargs["compression_level"] = args.compression_level
 
-                replay = MediaExporter._get_graphics_replay_data(
+                cache = MediaExporter._get_media_cache(
                     request,
                     sourcedir,
                     args.palettes,
                     compression_level=2
                 )
 
-                replaydata[request] = replay
+                cachedata[request] = cache
 
-            debug_info.debug_graphics_replay(
+            debug_info.debug_media_cache(
                 args.debugdir,
                 args.debug_info,
                 sourcedir,
-                replaydata,
+                cachedata,
                 args.game_version
             )
 
@@ -102,7 +102,7 @@ class MediaExporter:
 
     @staticmethod
     def _export_graphics(export_request, sourcedir, exportdir, palettes,
-                         compression_level, replay_info=None):
+                         compression_level, cache_info=None):
         """
         Convert and export a graphics file.
         """
@@ -138,26 +138,26 @@ class MediaExporter:
             from ...value_object.read.media.smx import SMX
             image = SMX(media_file.read())
 
-        packer_replay = None
-        compr_replay = None
-        if replay_info:
-            replay_params = replay_info.get(export_request.source_filename, None)
+        packer_cache = None
+        compr_cache = None
+        if cache_info:
+            cache_params = cache_info.get(export_request.source_filename, None)
 
-            if replay_params:
-                packer_replay = replay_params["packer_settings"]
-                compression_level = replay_params["compr_settings"][0]
-                compr_replay = replay_params["compr_settings"][1:]
+            if cache_params:
+                packer_cache = cache_params["packer_settings"]
+                compression_level = cache_params["compr_settings"][0]
+                compr_cache = cache_params["compr_settings"][1:]
 
         from .texture_merge import merge_frames
 
         texture = Texture(image, palettes)
-        merge_frames(texture, replay=packer_replay)
+        merge_frames(texture, cache=packer_cache)
         MediaExporter.save_png(
             texture,
             exportdir[export_request.targetdir],
             export_request.target_filename,
             compression_level=compression_level,
-            replay=compr_replay
+            cache=compr_cache
         )
         metadata = {export_request.target_filename: texture.get_metadata()}
 
@@ -250,9 +250,9 @@ class MediaExporter:
         )
 
     @staticmethod
-    def _get_graphics_replay_data(export_request, sourcedir, palettes, compression_level):
+    def _get_media_cache(export_request, sourcedir, palettes, compression_level):
         """
-        Convert a graphics file and return the used settings. This performs
+        Convert a media file and return the used settings. This performs
         a dry run, i.e. the graphics media is not saved on the filesystem.
         """
         source_file = sourcedir[
@@ -294,14 +294,14 @@ class MediaExporter:
             None,
             None,
             compression_level=compression_level,
-            replay=None,
+            cache=None,
             dry_run=True
         )
 
-        return texture.get_replay_params()
+        return texture.get_cache_params()
 
     @staticmethod
-    def save_png(texture, targetdir, filename, compression_level=1, replay=None, dry_run=False):
+    def save_png(texture, targetdir, filename, compression_level=1, cache=None, dry_run=False):
         """
         Store the image data into the target directory path,
         with given filename="dir/out.png".
@@ -341,7 +341,7 @@ class MediaExporter:
         png_data, compr_params = png_create.save(
             texture.image_data.data,
             compression_method,
-            replay
+            cache
         )
 
         if not dry_run:

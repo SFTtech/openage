@@ -1,9 +1,9 @@
 add_py_modules(
 	__init__.py
+	media_cache.py
 	modpack_info.py
 	modpack_manifest.py
 	nyan_file.py
-	replay_graphics.py
 	sprite_metadata.py
 	terrain_metadata.py
 )
