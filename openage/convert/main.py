@@ -185,8 +185,8 @@ def init_subparser(cli):
         help="set PNG compression level")
 
     cli.add_argument(
-        "--debug-info", type=int, choices=[0, 1, 2, 3],
-        help="create debug output for the converter run; verbosity levels 0-3")
+        "--debug-info", type=int, choices=[0, 1, 2, 3, 4, 5, 6],
+        help="create debug output for the converter run; verbosity levels 0-6")
 
 
 def main(args, error):

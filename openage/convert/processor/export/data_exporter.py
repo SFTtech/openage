@@ -1,6 +1,6 @@
 # Copyright 2021-2021 the openage authors. See copying.md for legal info.
-
-
+#
+# pylint: disable=too-few-public-methods
 """
 Exports data formats from a modpack to files.
 """
@@ -12,7 +12,7 @@ class DataExporter:
     """
 
     @staticmethod
-    def export(data_files, exportdir, args):
+    def export(data_files, exportdir):
         """
         Exports data files.
         """

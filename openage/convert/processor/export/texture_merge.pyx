@@ -1,4 +1,4 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True, profile=True
 # pylint: disable=too-many-locals
@@ -24,7 +24,7 @@ def merge_frames(texture, custom_packer=None, replay=None):
     Python wrapper for the Cython function.
     """
     cmerge_frames(texture)
-    
+
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
@@ -75,7 +75,7 @@ cdef void cmerge_frames(texture, custom_packer=None, replay=None):
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
     cdef numpy.uint8_t[:, :, ::1] catlas_data = atlas_data
     cdef numpy.uint8_t[:, :, ::1] csub_frame
-    
+
     cdef int pos_x
     cdef int pos_y
     cdef int sub_w
@@ -83,7 +83,6 @@ cdef void cmerge_frames(texture, custom_packer=None, replay=None):
 
     cdef list drawn_frames_meta = []
     for sub_frame in frames:
-        
         sub_w = sub_frame.width
         sub_h = sub_frame.height
 

@@ -1,14 +1,10 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
-# pylint: disable=too-many-lines,too-many-branches,too-many-statements
-# pylint: disable=too-many-locals
-#
-# TODO:
-# pylint: disable=line-too-long
-from openage.convert.processor.conversion.ror.media_subprocessor import RoRMediaSubprocessor
+# pylint: disable=line-too-long,too-many-lines,too-many-branches,too-many-statements,too-many-locals
 """
 Convert data from RoR to openage formats.
 """
+from openage.convert.processor.conversion.ror.media_subprocessor import RoRMediaSubprocessor
 from .....log import info
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 from ....entity_object.conversion.aoc.genie_tech import InitiatedTech
@@ -25,7 +21,6 @@ from ....service.debug_info import debug_converter_objects,\
 from ....service.read.nyan_api_loader import load_api
 from ....value_object.conversion.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
     VARIANT_GROUP_LOOKUPS
-from ..aoc.media_subprocessor import AoCMediaSubprocessor
 from ..aoc.processor import AoCProcessor
 from .modpack_subprocessor import RoRModpackSubprocessor
 from .nyan_subprocessor import RoRNyanSubprocessor

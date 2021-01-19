@@ -1,9 +1,6 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
-# pylint: disable=too-many-lines,too-many-branches,too-many-statements
-#
-# TODO:
-# pylint: disable=line-too-long
+# pylint: disable=line-too-long,too-many-lines,too-many-branches,too-many-statements
 """
 Convert data from DE2 to openage formats.
 """
@@ -15,7 +12,8 @@ from .....log import info
 from .....util.ordered_set import OrderedSet
 from ....entity_object.conversion.aoc.genie_graphic import GenieGraphic
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-from ....entity_object.conversion.aoc.genie_unit import GenieUnitObject, GenieAmbientGroup, GenieVariantGroup
+from ....entity_object.conversion.aoc.genie_unit import GenieUnitObject, GenieAmbientGroup,\
+    GenieVariantGroup
 from ....service.debug_info import debug_converter_objects,\
     debug_converter_object_groups
 from ....service.read.nyan_api_loader import load_api

@@ -18,5 +18,5 @@ class RoRMediaSubprocessor:
         """
         Create all export requests for the dataset.
         """
-        AoCMediaSubprocessor._create_graphics_requests(full_data_set)
-        AoCMediaSubprocessor._create_sound_requests(full_data_set)
+        AoCMediaSubprocessor.create_graphics_requests(full_data_set)
+        AoCMediaSubprocessor.create_sound_requests(full_data_set)

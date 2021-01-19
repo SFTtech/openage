@@ -1,4 +1,6 @@
 # Copyright 2021-2021 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-arguments
 
 """
 Create a replay graphics file for a game version.
@@ -56,7 +58,7 @@ class ReplayGraphicsFile(DataDefinition):
 
         :param media_type: Media type of the file (should be a graphics format)
         :type media_type: MediaType
-        :param filepath: Path of the source file in the sourcedir 
+        :param filepath: Path of the source file in the sourcedir
                          mounted by the openage converter.
         :type filepath: str
         :param filehash: Hash value of the source file.

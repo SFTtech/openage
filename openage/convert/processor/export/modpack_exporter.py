@@ -35,12 +35,12 @@ class ModpackExporter:
         info("Dumping info file...")
 
         # Modpack info file
-        DataExporter.export([modpack.info], modpack_dir, args)
+        DataExporter.export([modpack.info], modpack_dir)
 
         info("Dumping data files...")
 
         # Data files
-        DataExporter.export(modpack.get_data_files(), modpack_dir, args)
+        DataExporter.export(modpack.get_data_files(), modpack_dir)
 
         if args.flag("no_media"):
             info("Skipping media file export...")
@@ -54,8 +54,8 @@ class ModpackExporter:
         info("Dumping metadata files...")
 
         # Metadata files
-        DataExporter.export(modpack.get_metadata_files(), modpack_dir, args)
+        DataExporter.export(modpack.get_metadata_files(), modpack_dir)
 
         # Manifest file
         generate_hashes(modpack, modpack_dir)
-        DataExporter.export([modpack.manifest], modpack_dir, args)
+        DataExporter.export([modpack.manifest], modpack_dir)

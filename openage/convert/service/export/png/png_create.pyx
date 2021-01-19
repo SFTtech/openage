@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True, profile=True
 
@@ -104,16 +104,16 @@ def save(numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] imagedata not None,
     elif compr_method is CompressionMethod.COMPR_DEFAULT:
         outdata = optimize_default(mview, width, height)
         best_settings = None
-        
+
     elif compr_method is CompressionMethod.COMPR_OPTI:
         replay.compr_lvl = 9
         replay.mem_lvl = 8
         replay.strat = 0
         replay.filters = 8
-        
+
         outdata, used_settings = optimize_greedy(mview, width, height, replay)
         best_settings = None
-        
+
     else:
         raise NotImplementedError(f"Compression method {compr_method} is not supported yet")
 

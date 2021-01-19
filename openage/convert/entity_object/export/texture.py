@@ -1,16 +1,14 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 """ Routines for texture generation etc """
 
 # TODO pylint: disable=C,R
 
 from PIL import Image
-import os
 
 import numpy
 
 from ....log import spam
-from ....util.fslike.path import Path
 from ...deprecated import struct_definition
 from ...value_object.read.media.blendomatic import BlendingMode
 from ...value_object.read.media.hardcoded.terrain_tile_size import TILE_HALFSIZE
@@ -73,6 +71,9 @@ class Texture(genie_structure.GenieStructure):
 
         # Best packer hints (positions of sprites in texture)
         self.best_packer_hints = None
+
+        self.image_data = None
+        self.image_metadata = None
 
         spam("creating Texture from %s", repr(input_data))
 

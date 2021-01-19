@@ -631,8 +631,8 @@ def debug_graphics_replay(debugdir, loglevel, sourcedir, replaydata, game_versio
     :param game_version: Game version.
     :type game_version: tuple
     """
-    # if loglevel < 6:
-    #     return
+    if loglevel < 6:
+        return
 
     replay_file = ReplayGraphicsFile("export/", "replay_graphics.toml", game_version)
     replay_file.set_hash_func("sha3_256")

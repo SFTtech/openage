@@ -22,7 +22,7 @@ def merge_terrain(texture):
     Python wrapper for the Cython function.
     """
     cmerge_terrain(texture)
-    
+
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
@@ -56,7 +56,7 @@ cdef void cmerge_terrain(texture):
         numpy.zeros((merge_atlas_height, merge_atlas_width, 4), dtype=numpy.uint8)
     cdef numpy.uint8_t[:, :, ::1] cmerge_atlas = merge_atlas
     cdef numpy.uint8_t[:, :, ::1] csubframe_atlas
-    
+
     cdef int merge_offset_x
     cdef int merge_offset_y
 
@@ -69,7 +69,7 @@ cdef void cmerge_terrain(texture):
     index = 0
     for sub_frame in frames:
         csubframe_atlas = sub_frame.data
-        
+
         tenth_frame = index / tiles_per_row
         every_frame = index % tiles_per_row
 
@@ -110,7 +110,7 @@ cdef void cmerge_terrain(texture):
 
     cdef int merge_x
     cdef int merge_y
-    
+
     # Does a matrix transformation using
     # [  1 , -1  ]
     # [ 0.5, 0.5 ]

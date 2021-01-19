@@ -1,6 +1,6 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
-# pylint: disable=too-many-arguments
+# pylint: disable=too-many-arguments, too-many-locals
 """
 Detects the base version of the game and installed expansions.
 """

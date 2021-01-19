@@ -1,17 +1,16 @@
 # Copyright 2021-2021 the openage authors. See copying.md for legal info.
-
+#
+# pylint: disable=too-many-arguments,too-many-locals
 """
 Converts media requested by export requests to files.
 """
 import os
 
 from openage.convert.entity_object.export.texture import Texture
-from openage.convert.processor.export.texture_merge import merge_frames
 from openage.convert.service import debug_info
 from openage.convert.service.export.load_replay_data import load_graphics_replay_data
 from openage.convert.value_object.read.media.blendomatic import Blendomatic
 from openage.convert.value_object.read.media_types import MediaType
-from openage.util.profiler import Profiler
 
 
 class MediaExporter:
@@ -90,6 +89,8 @@ class MediaExporter:
         media_file = source_file.open("rb")
         blend_data = Blendomatic(media_file, blend_mode_count)
 
+        from .texture_merge import merge_frames
+
         textures = blend_data.get_textures()
         for idx, texture in enumerate(textures):
             merge_frames(texture)
@@ -146,6 +147,8 @@ class MediaExporter:
                 packer_replay = replay_params["packer_settings"]
                 compression_level = replay_params["compr_settings"][0]
                 compr_replay = replay_params["compr_settings"][1:]
+
+        from .texture_merge import merge_frames
 
         texture = Texture(image, palettes)
         merge_frames(texture, replay=packer_replay)
@@ -235,6 +238,7 @@ class MediaExporter:
             merge_terrain(texture)
 
         else:
+            from .texture_merge import merge_frames
             texture = Texture(image, palettes)
             merge_frames(texture)
 
@@ -282,6 +286,7 @@ class MediaExporter:
             from ...value_object.read.media.smx import SMX
             image = SMX(media_file.read())
 
+        from .texture_merge import merge_frames
         texture = Texture(image, palettes)
         merge_frames(texture)
         MediaExporter.save_png(
@@ -314,7 +319,7 @@ class MediaExporter:
         """
         from ...service.export.png import png_create
 
-        COMPRESSION_LEVELS = {
+        compression_levels = {
             0: png_create.CompressionMethod.COMPR_NONE,
             1: png_create.CompressionMethod.COMPR_DEFAULT,
             2: png_create.CompressionMethod.COMPR_GREEDY,
@@ -329,7 +334,7 @@ class MediaExporter:
                 raise ValueError("Filename invalid, a texture must be saved"
                                  "as 'filename.png', not '%s'" % (filename))
 
-        compression_method = COMPRESSION_LEVELS.get(
+        compression_method = compression_levels.get(
             compression_level,
             png_create.CompressionMethod.COMPR_DEFAULT
         )

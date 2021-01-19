@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments,too-many-locals
 
@@ -20,6 +20,9 @@ class MetadataExport(Observer):
 
         self.targetdir = targetdir
         self.filename = target_filename
+
+    def update(self, observable, message=None):
+        return NotImplemented
 
     def __repr__(self):
         return f"MetadataExport<{type(self)}>"
@@ -48,6 +51,9 @@ class SpriteMetadataExport(MetadataExport):
                                                 frame_count, angle_count, mirror_mode)
 
     def dump(self):
+        """
+        Creates a human-readable string that can be written to a file.
+        """
         sprite_file = SpriteMetadata(self.targetdir, self.filename)
 
         index = 0

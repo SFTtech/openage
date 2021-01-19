@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-few-public-methods
 """
@@ -22,12 +22,12 @@ class AoCMediaSubprocessor:
         """
         Create all export requests for the dataset.
         """
-        cls._create_graphics_requests(full_data_set)
-        # cls._create_blend_requests(full_data_set)
-        cls._create_sound_requests(full_data_set)
+        cls.create_graphics_requests(full_data_set)
+        # cls.create_blend_requests(full_data_set)
+        cls.create_sound_requests(full_data_set)
 
     @staticmethod
-    def _create_graphics_requests(full_data_set):
+    def create_graphics_requests(full_data_set):
         """
         Create export requests for graphics referenced by CombinedSprite objects.
         """
@@ -111,7 +111,7 @@ class AoCMediaSubprocessor:
             full_data_set.graphics_exports.update({slp_id: export_request})
 
     @staticmethod
-    def _create_blend_requests(full_data_set):
+    def create_blend_requests(full_data_set):
         """
         Create export requests for Blendomatic objects.
 
@@ -126,7 +126,7 @@ class AoCMediaSubprocessor:
         full_data_set.blend_exports.update({0: export_request})
 
     @staticmethod
-    def _create_sound_requests(full_data_set):
+    def create_sound_requests(full_data_set):
         """
         Create export requests for sounds referenced by CombinedSound objects.
         """
