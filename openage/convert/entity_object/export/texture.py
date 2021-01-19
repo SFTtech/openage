@@ -84,7 +84,7 @@ class Texture(genie_structure.GenieStructure):
         if isinstance(input_data, (SLP, SMP, SMX)):
             for frame in input_data.main_frames:
                 # Palette can be different for every frame
-                main_palette = palettes[frame.get_palette_number()]
+                main_palette = palettes[frame.get_palette_number()].array
                 for subtex in self._slp_to_subtextures(frame,
                                                        main_palette,
                                                        custom_cutter):
