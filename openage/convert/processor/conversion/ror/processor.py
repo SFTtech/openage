@@ -5,6 +5,7 @@
 #
 # TODO:
 # pylint: disable=line-too-long
+from openage.convert.processor.conversion.ror.media_subprocessor import RoRMediaSubprocessor
 """
 Convert data from RoR to openage formats.
 """
@@ -155,7 +156,7 @@ class RoRProcessor:
 
         info("Creating requests for media export...")
 
-        AoCMediaSubprocessor.convert(full_data_set)
+        RoRMediaSubprocessor.convert(full_data_set)
 
         return RoRModpackSubprocessor.get_modpacks(full_data_set)
 

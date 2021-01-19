@@ -1,12 +1,12 @@
 # Copyright 2019-2020 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-few-public-methods
-from openage.convert.value_object.read.media_types import MediaType
-
 """
 Convert media information to metadata definitions and export
 requests. Subroutine of the main AoC processor.
 """
+from openage.convert.value_object.read.media_types import MediaType
+
 from ....entity_object.export.formats.sprite_metadata import LayerMode
 from ....entity_object.export.media_export_request import MediaExportRequest
 from ....entity_object.export.metadata_export import SpriteMetadataExport
@@ -23,6 +23,7 @@ class AoCMediaSubprocessor:
         Create all export requests for the dataset.
         """
         cls._create_graphics_requests(full_data_set)
+        # cls._create_blend_requests(full_data_set)
         cls._create_sound_requests(full_data_set)
 
     @staticmethod
@@ -109,15 +110,20 @@ class AoCMediaSubprocessor:
                                                 target_filename)
             full_data_set.graphics_exports.update({slp_id: export_request})
 
-        # Blendomatic export
-        # TODO: Blendomatic contains multiple files. Better handling?
-        # export_request = MediaExportRequest(
-        #     MediaType.BLEND,
-        #     "data/blend/",
-        #     full_data_set.game_version[0].media_paths[MediaType.BLEND][0],
-        #     "blendmode"
-        # )
-        # full_data_set.blend_exports.update({0: export_request})
+    @staticmethod
+    def _create_blend_requests(full_data_set):
+        """
+        Create export requests for Blendomatic objects.
+
+        TODO: Blendomatic contains multiple files. Better handling?
+        """
+        export_request = MediaExportRequest(
+            MediaType.BLEND,
+            "data/blend/",
+            full_data_set.game_version[0].media_paths[MediaType.BLEND][0],
+            "blendmode"
+        )
+        full_data_set.blend_exports.update({0: export_request})
 
     @staticmethod
     def _create_sound_requests(full_data_set):

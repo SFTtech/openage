@@ -3,6 +3,7 @@ add_py_modules(
 	ability_subprocessor.py
 	auxiliary_subprocessor.py
 	civ_subprocessor.py
+	media_subprocessor.py
 	modpack_subprocessor.py
 	nyan_subprocessor.py
 	pregen_subprocessor.py
