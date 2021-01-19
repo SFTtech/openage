@@ -15,13 +15,25 @@ from openage.convert.value_object.read.media_types import MediaType
 
 class MediaExporter:
     """
-    Provides functions for convertingmedia files and writing them to a targetdir.
+    Provides functions for converting media files and writing them to a targetdir.
     """
 
     @staticmethod
     def export(export_requests, sourcedir, exportdir, args):
         """
-        Converts files requested by a MediaExportRequests.
+        Converts files requested by MediaExportRequests.
+
+        :param export_requests: Export requests for media files. This is a dict of export requests
+                                by their media type.
+        :param sourcedir: Directory where all media assets are mounted. Source subfolder and
+                          source filename should be stored in the export request.
+        :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
+                          and target filename should be stored in the export request.
+        :param args: Converter arguments.
+        :type export_requests: dict
+        :type sourcedir: Directory
+        :type exportdir: Directory
+        :type args: Namespace
         """
         cache_info = {}
         if args.game_version[0].media_cache:
@@ -82,7 +94,18 @@ class MediaExporter:
     @staticmethod
     def _export_blend(export_request, sourcedir, exportdir, blend_mode_count=None):
         """
-        Convert and export a blend file.
+        Convert and export a blending mode.
+
+        :param export_request: Export request for a blending mask.
+        :param sourcedir: Directory where all media assets are mounted. Source subfolder and
+                          source filename should be stored in the export request.
+        :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
+                          and target filename should be stored in the export request.
+        :param blend_mode_count: Number of blending modes extracted from the source file.
+        :type export_request: MediaExportRequest
+        :type sourcedir: Directory
+        :type exportdir: Directory
+        :type blend_mode_count: int
         """
         source_file = sourcedir.joinpath(export_request.source_filename)
 
@@ -105,6 +128,21 @@ class MediaExporter:
                          compression_level, cache_info=None):
         """
         Convert and export a graphics file.
+
+        :param export_request: Export request for a graphics file.
+        :param sourcedir: Directory where all media assets are mounted. Source subfolder and
+                          source filename should be stored in the export request.
+        :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
+                          and target filename should be stored in the export request.
+        :param palettes: Palettes used by the game.
+        :param compression_level: PNG compression level for the resulting image file.
+        :param cache_info: Media cache information with compression parameters from a previous run.
+        :type export_request: MediaExportRequest
+        :type sourcedir: Directory
+        :type exportdir: Directory
+        :type palettes: dict
+        :type compression_level: int
+        :type cache_info: tuple
         """
         source_file = sourcedir[
             export_request.get_type().value,
@@ -183,6 +221,15 @@ class MediaExporter:
     def _export_sound(export_request, sourcedir, exportdir):
         """
         Convert and export a sound file.
+
+        :param export_request: Export request for a sound file.
+        :param sourcedir: Directory where all media assets are mounted. Source subfolder and
+                          source filename should be stored in the export request.
+        :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
+                          and target filename should be stored in the export request.
+        :type export_request: MediaExportRequest
+        :type sourcedir: Directory
+        :type exportdir: DirectoryVersion of the game
         """
         source_file = sourcedir[
             export_request.get_type().value,
@@ -217,6 +264,21 @@ class MediaExporter:
                         game_version, compression_level):
         """
         Convert and export a terrain graphics file.
+
+        :param export_request: Export request for a terrain graphics file.
+        :param sourcedir: Directory where all media assets are mounted. Source subfolder and
+                          source filename should be stored in the export request.
+        :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
+                          and target filename should be stored in the export request.
+        :param game_version: Game edition and expansion info.
+        :param palettes: Palettes used by the game.
+        :param compression_level: PNG compression level for the resulting image file.
+        :type export_request: MediaExportRequest
+        :type sourcedir: Directory
+        :type exportdir: Directory
+        :type palettes: dict
+        :type game_version: tuple
+        :type compression_level: int
         """
         source_file = sourcedir[
             export_request.get_type().value,
@@ -254,6 +316,19 @@ class MediaExporter:
         """
         Convert a media file and return the used settings. This performs
         a dry run, i.e. the graphics media is not saved on the filesystem.
+
+        :param export_request: Export request for a graphics file.
+        :param sourcedir: Directory where all media assets are mounted. Source subfolder and
+                          source filename should be stored in the export request.
+        :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
+                          and target filename should be stored in the export request.
+        :param palettes: Palettes used by the game.
+        :param compression_level: PNG compression level for the resulting image file.
+        :type export_request: MediaExportRequest
+        :type sourcedir: Directory
+        :type exportdir: Directory
+        :type palettes: dict
+        :type compression_level: int
         """
         source_file = sourcedir[
             export_request.get_type().value,
@@ -306,15 +381,15 @@ class MediaExporter:
         Store the image data into the target directory path,
         with given filename="dir/out.png".
 
-        :param compression_level: Compression level of the PNG. A higher
-                                  level results in smaller file sizes, but
-                                  takes longer to generate.
-                                      - 0 = no compression
-                                      - 1 = normal png compression (default)
-                                      - 2 = greedy search for smallest file; slowdown is 8x
-                                      - 3 = maximum possible compression; slowdown is 256x
+        :param texture: Texture with an image atlas.
+        :param targetdir: Directory where the image file is created.
+        :param filename: Name of the resulting image file.
+        :param compression_level: PNG compression level used for the resulting image file.
+        :param dry_run: If True, create the PNG but don't save it as a file.
+        :type texture: Texture
+        :type targetdir: Directory
+        :type filename: str
         :type compression_level: int
-        :param dry_run: Create the PNG but don't save it as a file.
         :type dry_run: bool
         """
         from ...service.export.png import png_create
@@ -322,8 +397,9 @@ class MediaExporter:
         compression_levels = {
             0: png_create.CompressionMethod.COMPR_NONE,
             1: png_create.CompressionMethod.COMPR_DEFAULT,
-            2: png_create.CompressionMethod.COMPR_GREEDY,
-            3: png_create.CompressionMethod.COMPR_AGGRESSIVE,
+            2: png_create.CompressionMethod.COMPR_OPTI,
+            3: png_create.CompressionMethod.COMPR_GREEDY,
+            4: png_create.CompressionMethod.COMPR_AGGRESSIVE,
         }
 
         if not dry_run:

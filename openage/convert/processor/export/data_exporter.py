@@ -15,6 +15,12 @@ class DataExporter:
     def export(data_files, exportdir):
         """
         Exports data files.
+
+        :param data_files: Data definitions for data files.
+        :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
+                          and target filename should be stored in the export request.
+        :type exportdir: Directory
+        :type data_files: list
         """
         for data_file in data_files:
             output_dir = exportdir.joinpath(data_file.targetdir)

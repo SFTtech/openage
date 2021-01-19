@@ -20,6 +20,9 @@ from libc.math cimport sqrt, floor, ceil
 def merge_terrain(texture):
     """
     Python wrapper for the Cython function.
+
+    :param texture: Texture containing the terrain tiles.
+    :type texture: Texture
     """
     cmerge_terrain(texture)
 

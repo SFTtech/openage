@@ -22,6 +22,15 @@ cimport numpy
 def merge_frames(texture, custom_packer=None, cache=None):
     """
     Python wrapper for the Cython function.
+
+    :param texture: Texture containing animation frames.
+    :param custom_packer: Packer implementation for efficient packing of frames.
+                          If none is specified, the function will try several
+                          packer and chooses the most efficient one.
+    :param cache: Media cache information with packer settings from a previous run.
+    :type texture: Texture
+    :type custom_packer: Packer
+    :type cache: list
     """
     cmerge_frames(texture, custom_packer, cache)
 
@@ -33,9 +42,14 @@ cdef void cmerge_frames(texture, custom_packer=None, cache=None):
     """
     merge all given frames in a texture into a single image atlas.
 
-    frames = [TextureImage, ...]
-
-    returns = TextureImage, (width, height), [drawn_frames_meta]
+    :param texture: Texture containing animation frames.
+    :param custom_packer: Packer implementation for efficient packing of frames.
+                          If none is specified, the function will try several
+                          packer and chooses the most efficient one.
+    :param cache: Media cache information with packer settings from a previous run.
+    :type texture: Texture
+    :type custom_packer: Packer
+    :type cache: list
     """
     frames = texture.frames
     if len(frames) == 0:

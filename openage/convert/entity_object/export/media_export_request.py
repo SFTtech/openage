@@ -20,6 +20,8 @@ class MediaExportRequest(Observable):
         """
         Create a request for a media file.
 
+        :param media_type: Media type of the requested  source file.
+        :type media_type: MediaType
         :param targetdir: Relative path to the export directory.
         :type targetdir: str
         :param source_filename: Filename of the source file.

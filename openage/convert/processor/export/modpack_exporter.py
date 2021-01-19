@@ -22,9 +22,9 @@ class ModpackExporter:
         Export a modpack to a directory.
 
         :param modpack: Modpack that is going to be exported.
+        :param args: Converter arguments.
         :type modpack: ..dataformats.modpack.Modpack
-        :param exportdir: Directory wheere modpacks are stored.
-        :type exportdir: ...util.fslike.path.Path
+        :type args: Namespace
         """
         sourcedir = args.srcdir
         exportdir = args.targetdir
