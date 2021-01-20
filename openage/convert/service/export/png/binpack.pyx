@@ -1,12 +1,23 @@
-# Copyright 2016-2020 the openage authors. See copying.md for legal info.
+# Copyright 2016-2021 the openage authors. See copying.md for legal info.
+#
+# cython: infer_types=True, profile=True
 
 """ Routines for 2D binpacking """
 
 # TODO pylint: disable=C,R
 
+import enum
+from functools import lru_cache
 import math
 
 
+class PackerType(enum.Enum):
+    ROW     = "row"
+    COLUMN  = "column"
+    BINTREE = "bintree"
+
+
+@lru_cache(maxsize=32)
 def factor(n):
     """Return two (preferable close) factors of n."""
     for a in range(int(math.sqrt(n)), 0, -1):
@@ -21,7 +32,7 @@ class Packer:
         self.margin = margin
         self.mapping = {}
 
-    def pack(self, blocks):
+    def pack(self, blocks, hint=None):
         """
         Pack all the blocks.
 
@@ -40,61 +51,38 @@ class Packer:
         """Gets the total height of the packing."""
         return max(self.pos(block)[1] + block.height for block in self.mapping)
 
+    def get_packer_settings(self):
+        """
+        Get the init parameters set for the packer.
+        """
+        return (self.margin,)
 
-class RowPacker(Packer):
+    def get_mapping_hints(self, blocks):
+        hints = []
+        for block in blocks:
+            hints.append(self.pos(block))
+
+        return hints
+
+    def get_type(self):
+        """
+        Get the packer type.
+        """
+        raise NotImplementedError
+
+
+class DeterministicPacker(Packer):
     """
-    Packs blocks into rows, greedily trying to minimize the maximum width.
+    Packs blocks based on predetermined settings.
     """
+
+    def __init__(self, margin, hints):
+        super().__init__(margin)
+        self.hints = hints
 
     def pack(self, blocks):
-        self.mapping = {}
-
-        num_rows, _ = factor(len(blocks))
-        rows = [[] for _ in range(num_rows)]
-
-        # Put blocks into rows.
-        for block in blocks:
-            min_row = min(rows, key=lambda row: sum(b.width for b in row))
-            min_row.append(block)
-
-        # Calculate positions.
-        y = 0
-        for row in rows:
-            x = 0
-
-            for block in row:
-                self.mapping[block] = (x, y)
-                x += block.width + self.margin
-
-            y += max(block.height for block in row) + self.margin
-
-
-class ColumnPacker(Packer):
-    """
-    Packs blocks into columns, greedily trying to minimize the maximum height.
-    """
-
-    def pack(self, blocks):
-        self.mapping = {}
-
-        num_columns, _ = factor(len(blocks))
-        columns = [[] for _ in range(num_columns)]
-
-        # Put blocks into columns.
-        for block in blocks:
-            min_col = min(columns, key=lambda col: sum(b.height for b in col))
-            min_col.append(block)
-
-        # Calculate positions.
-        x = 0
-        for column in columns:
-            y = 0
-
-            for block in column:
-                self.mapping[block] = (x, y)
-                y += block.height + self.margin
-
-            x += max(block.width for block in column) + self.margin
+        for idx, block in enumerate(blocks):
+            self.mapping[block] = self.hints[idx]
 
 
 class BestPacker:
@@ -122,19 +110,76 @@ class BestPacker:
     def height(self):
         return self.current_best.height()
 
+    def get_packer_settings(self):
+        return self.current_best.get_packer_settings()
 
-class PackerNode:
-    """A node in a binary packing tree."""
+    def get_mapping_hints(self, blocks):
+        return self.current_best.get_mapping_hints(blocks)
 
-    def __init__(self, x, y, width, height):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
+    def get_type(self):
+        return self.current_best.get_type()
 
-        self.used = False
-        self.down = None
-        self.right = None
+
+class RowPacker(Packer):
+    """
+    Packs blocks into rows, greedily trying to minimize the maximum width.
+    """
+
+    def pack(self, blocks, hint=None):
+        self.mapping = {}
+
+        num_rows, _ = factor(len(blocks))
+        rows = [[] for _ in range(num_rows)]
+
+        # Put blocks into rows.
+        for block in blocks:
+            min_row = min(rows, key=lambda row: sum(b.width for b in row))
+            min_row.append(block)
+
+        # Calculate positions.
+        y = 0
+        for row in rows:
+            x = 0
+
+            for block in row:
+                self.mapping[block] = (x, y)
+                x += block.width + self.margin
+
+            y += max(block.height for block in row) + self.margin
+
+    def get_type(self):
+        return PackerType.ROW
+
+
+class ColumnPacker(Packer):
+    """
+    Packs blocks into columns, greedily trying to minimize the maximum height.
+    """
+
+    def pack(self, blocks, hint=None):
+        self.mapping = {}
+
+        num_columns, _ = factor(len(blocks))
+        columns = [[] for _ in range(num_columns)]
+
+        # Put blocks into columns.
+        for block in blocks:
+            min_col = min(columns, key=lambda col: sum(b.height for b in col))
+            min_col.append(block)
+
+        # Calculate positions.
+        x = 0
+        for column in columns:
+            y = 0
+
+            for block in column:
+                self.mapping[block] = (x, y)
+                y += block.height + self.margin
+
+            x += max(block.width for block in column) + self.margin
+
+    def get_type(self):
+        return PackerType.COLUMN
 
 
 def maxside_heuristic(block):
@@ -161,7 +206,7 @@ class BinaryTreePacker(Packer):
         self.heuristic = heuristic
         self.root = None
 
-    def pack(self, blocks):
+    def pack(self, blocks, hint=None):
         self.mapping = {}
         self.root = None
 
@@ -171,6 +216,12 @@ class BinaryTreePacker(Packer):
     def pos(self, block):
         node = self.mapping[block]
         return node.x, node.y
+
+    def get_packer_settings(self):
+        return (self.margin,)
+
+    def get_type(self):
+        return PackerType.BINTREE
 
     def fit(self, block):
         if self.root is None:
@@ -249,3 +300,17 @@ class BinaryTreePacker(Packer):
         node = self.find_node(self.root, width, height)
         if node is not None:
             return self.split_node(node, width, height)
+
+
+class PackerNode:
+    """A node in a binary packing tree."""
+
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
+        self.used = False
+        self.down = None
+        self.right = None

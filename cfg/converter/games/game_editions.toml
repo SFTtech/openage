@@ -5,6 +5,7 @@ file_version = "1.0"
 [AOC]
 name = "Age of Empires 2: The Conqueror's"
 game_edition_id = "AOC"
+subfolder = "aoc"
 support = "yes"
 targetmod = [ "aoe2-base", "aoe2-base-graphics" ]
 expansions = [ ]
@@ -23,6 +24,7 @@ expansions = [ ]
 [AOK]
 name = "Age of Empires 2: Age of Kings"
 game_edition_id = "AOK"
+subfolder = "aok"
 support = "nope"
 targetmod = [ ]
 expansions = [ ]
@@ -39,6 +41,7 @@ expansions = [ ]
 [AOE1DE]
 name = "Age of Empires 1: Definitive Edition (Steam)"
 game_edition_id = "AOE1DE"
+subfolder = "de1"
 support = "nope"
 targetmod = [ "aoe1-base", "aoe1-base-graphics" ]
 expansions = [ ]
@@ -53,6 +56,7 @@ expansions = [ ]
 [ROR]
 name = "Age of Empires 1: Rise of Rome"
 game_edition_id = "ROR"
+subfolder = "ror"
 support = "yes"
 targetmod = [ "aoe1-base", "aoe1-base-graphics" ]
 expansions = [ ]
@@ -70,6 +74,7 @@ expansions = [ ]
 [HDEDITION]
 name = "Age of Empires 2: HD Edition"
 game_edition_id = "HDEDITION"
+subfolder = "hd"
 support = "yes"
 targetmod = [ "aoe2-base", "aoe2-base-graphics" ]
 expansions = [ ]
@@ -86,6 +91,7 @@ expansions = [ ]
 [AOE2DE]
 name = "Age of Empires 2: Definitive Edition"
 game_edition_id = "AOE2DE"
+subfolder = "de2"
 support = "yes"
 targetmod = [ "aoe2-base", "aoe2-base-graphics" ]
 expansions = [ ]
@@ -120,6 +126,7 @@ expansions = [ ]
 [SWGB]
 name = "Star Wars: Galactic Battlegrounds"
 game_edition_id = "SWGB"
+subfolder = "swgb"
 support = "yes"
 targetmod = [ "swgb-base", "swgb-base-graphics" ]
 expansions = [ "SWGB_CC" ]

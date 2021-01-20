@@ -9,12 +9,14 @@ from openage.convert.entity_object.conversion.aoc.genie_tech import AgeUpgrade,\
 from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup, GenieStackBuildingGroup, GenieUnitTransformGroup,\
     GenieMonkGroup
+from openage.convert.entity_object.export.formats.media_cache import MediaCacheFile
 from openage.convert.service.conversion.internal_name_lookups import get_entity_lookups,\
     get_tech_lookups, get_civ_lookups, get_terrain_lookups
 from openage.convert.value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
 from openage.convert.value_object.read.read_members import IncludeMembers, MultisubtypeMember
 from openage.util.fslike.filecollection import FileCollectionPath
 from openage.util.fslike.path import Path
+from openage.util.hash import hash_file
 
 
 def debug_cli_args(debugdir, loglevel, args):
@@ -572,8 +574,12 @@ def debug_modpack(debugdir, loglevel, modpack):
 
     # Export info and manifest file
     logdir = debugdir.joinpath(f"export/{modpack.name}")
-    modpack.info.save(logdir)
-    modpack.manifest.save(logdir)
+
+    with logdir[modpack.info.filename].open('wb') as outfile:
+        outfile.write(modpack.info.dump().encode('utf-8'))
+
+    with logdir[modpack.manifest.filename].open('wb') as outfile:
+        outfile.write(modpack.manifest.dump().encode('utf-8'))
 
     if loglevel < 2:
         return
@@ -604,6 +610,51 @@ def debug_modpack(debugdir, loglevel, modpack):
         logtext += f"        {media_type}: {file_count}\n"
 
     logtext += f"    metadata: {len(modpack.get_metadata_files())}\n"
+
+    with logfile.open("w") as log:
+        log.write(logtext)
+
+
+def debug_media_cache(debugdir, loglevel, sourcedir, cachedata, game_version):
+    """
+    Create media cache data for graphics files. This allows using deterministic
+    packer and compression settings for graphics file conversion.
+
+    :param debugdir: Output directory for the debug info.
+    :type debugdir: Directory
+    :param loglevel: Determines how detailed the output is.
+    :type loglevel: int
+    :param sourcedir: Sourcedir where the graphics files are mounted.
+    :type sourcedir: int
+    :param cachedata: Dict with cache data.
+    :type cachedata: dict
+    :param game_version: Game version.
+    :type game_version: tuple
+    """
+    if loglevel < 6:
+        return
+
+    cache_file = MediaCacheFile("export/", "media_cache.toml", game_version)
+    cache_file.set_hash_func("sha3_256")
+
+    # Sort the output by filename
+    cache_data = dict(sorted(cachedata.items(), key=lambda item: item[0].source_filename))
+
+    for request, cache in cache_data.items():
+        filepath = sourcedir[
+            request.get_type().value,
+            request.source_filename
+        ]
+
+        cache_file.add_cache_data(
+            request.get_type(),
+            request.source_filename,
+            hash_file(filepath),
+            cache[1],
+            cache[0])
+
+    logfile = debugdir.joinpath("export/")["media_cache.toml"]
+    logtext = cache_file.dump()
 
     with logfile.open("w") as log:
         log.write(logtext)

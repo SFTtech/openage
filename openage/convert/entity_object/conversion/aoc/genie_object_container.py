@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-instance-attributes,too-few-public-methods
 
@@ -85,6 +85,7 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.combined_terrains = {}
 
         self.graphics_exports = {}
+        self.blend_exports = {}
         self.sound_exports = {}
         self.metadata_exports = []
 

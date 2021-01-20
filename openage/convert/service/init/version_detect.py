@@ -1,6 +1,6 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
-# pylint: disable=too-many-arguments
+# pylint: disable=too-many-arguments, too-many-locals
 """
 Detects the base version of the game and installed expansions.
 """
@@ -68,37 +68,38 @@ def create_version_objects(srcdir):
     # initiliaze necessary paths
     game_edition_path = srcdir.joinpath("game_editions.toml")
     game_expansion_path = srcdir.joinpath("game_expansions.toml")
-    version_hashes_path = srcdir.joinpath("version-hashes")
 
     # load toml config files to a dictionary variable
     with game_edition_path.open() as game_edition_toml:
-        game_edition_dic = toml.loads(game_edition_toml.read())
+        game_editions = toml.loads(game_edition_toml.read())
+
     with game_expansion_path.open() as game_expansion_toml:
-        game_expansion_dic = toml.loads(game_expansion_toml.read())
+        game_expansions = toml.loads(game_expansion_toml.read())
 
     # create and list GameEdition objects
-    game_edition_dic.pop("file_version")
-    for game in game_edition_dic:
-        game_obj = create_game_obj(game_edition_dic[game], version_hashes_path)
+    game_editions.pop("file_version")
+    for game in game_editions:
+        aux_path = srcdir[game_editions[game]["subfolder"]]
+        game_obj = create_game_obj(game_editions[game], aux_path)
         game_edition_list.append(game_obj)
 
     # create and list GameExpansion objects
-    game_expansion_dic.pop("file_version")
-    for game in game_expansion_dic:
-        game_obj = create_game_obj(game_expansion_dic[game], version_hashes_path, True)
+    game_expansions.pop("file_version")
+    for game in game_expansions:
+        aux_path = srcdir[game_expansions[game]["subfolder"]]
+        game_obj = create_game_obj(game_expansions[game], aux_path, True)
         game_expansion_list.append(game_obj)
 
     return game_edition_list, game_expansion_list
 
 
-def create_game_obj(game_dic, version_hashes_path, expansion=False):
+def create_game_obj(game_dic, aux_path, expansion=False):
     """
     Create a GameEdition or GameExpansion object with the help of
     game_dic map and its version hash file.
     Use expansion parameter to decide if a GameEdition object
     is needed to be created or GameExpansion.
     """
-
     # initialize necessary parameters
     game_name = game_dic['name']
     game_id = game_dic['game_edition_id']
@@ -107,8 +108,15 @@ def create_game_obj(game_dic, version_hashes_path, expansion=False):
     if not expansion:
         expansions = game_dic['expansions']
 
-    # add version-hashes from the auxiliary file specific for the game
-    game_hash_path = version_hashes_path.joinpath(game_id + '.toml')
+    flags = {}
+
+    # add mediapaths for the game
+    game_mediapaths_list = []
+    for media_type in game_dic['mediapaths']:
+        game_mediapaths_list.append((media_type, game_dic['mediapaths'][media_type]))
+
+    # add version hashes from the auxiliary file specific for the game
+    game_hash_path = aux_path["version_hashes.toml"]
     with game_hash_path.open() as game_hash_toml:
         game_hash_dic = toml.loads(game_hash_toml.read())
 
@@ -118,14 +126,13 @@ def create_game_obj(game_dic, version_hashes_path, expansion=False):
             continue
         game_hash_list.append((item[1]['path'], item[1]['map']))
 
-    # add mediapaths for the game
-    game_mediapaths_list = []
-    for media_type in game_dic['mediapaths']:
-        game_mediapaths_list.append((media_type, game_dic['mediapaths'][media_type]))
+    # Check if there is a media cache file and save the path if it exists
+    if aux_path["media_cache.toml"].is_file():
+        flags["media_cache"] = aux_path["media_cache.toml"]
 
     if expansion:
         return GameExpansion(game_name, game_id, support, game_hash_list,
-                             game_mediapaths_list, modpacks)
+                             game_mediapaths_list, modpacks, **flags)
 
     return GameEdition(game_name, game_id, support, game_hash_list,
-                       game_mediapaths_list, modpacks, expansions)
+                       game_mediapaths_list, modpacks, expansions, **flags)

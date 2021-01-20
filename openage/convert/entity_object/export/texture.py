@@ -1,16 +1,14 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 """ Routines for texture generation etc """
 
 # TODO pylint: disable=C,R
 
 from PIL import Image
-import os
 
 import numpy
 
 from ....log import spam
-from ....util.fslike.path import Path
 from ...deprecated import struct_definition
 from ...value_object.read.media.blendomatic import BlendingMode
 from ...value_object.read.media.hardcoded.terrain_tile_size import TILE_HALFSIZE
@@ -65,27 +63,36 @@ class Texture(genie_structure.GenieStructure):
         "of sprites included in the 'big texture'."
     )
 
-    def __init__(self, input_data, palettes=None, custom_cutter=None, custom_merger=False):
+    def __init__(self, input_data, palettes=None, custom_cutter=None):
         super().__init__()
+
+        # Compression setting values for libpng
+        self.best_compr = None
+
+        # Best packer hints (positions of sprites in texture)
+        self.best_packer_hints = None
+
+        self.image_data = None
+        self.image_metadata = None
+
         spam("creating Texture from %s", repr(input_data))
 
         from ...value_object.read.media.slp import SLP
         from ...value_object.read.media.smp import SMP
         from ...value_object.read.media.smx import SMX
 
+        self.frames = []
         if isinstance(input_data, (SLP, SMP, SMX)):
-            frames = []
-
             for frame in input_data.main_frames:
                 # Palette can be different for every frame
-                main_palette = palettes[frame.get_palette_number()]
+                main_palette = palettes[frame.get_palette_number()].array
                 for subtex in self._slp_to_subtextures(frame,
                                                        main_palette,
                                                        custom_cutter):
-                    frames.append(subtex)
+                    self.frames.append(subtex)
 
         elif isinstance(input_data, BlendingMode):
-            frames = [
+            self.frames = [
                 # the hotspot is in the west corner of a tile.
                 TextureImage(
                     tile.get_picture_data(),
@@ -96,15 +103,6 @@ class Texture(genie_structure.GenieStructure):
         else:
             raise Exception("cannot create Texture "
                             "from unknown source type: %s" % (type(input_data)))
-
-        if custom_merger:
-            self.image_data, (self.width, self.height), self.image_metadata\
-                = custom_merger(frames)
-
-        else:
-            from ...processor.export.texture_merge import merge_frames
-            self.image_data, (self.width, self.height), self.image_metadata\
-                = merge_frames(frames)
 
     def _slp_to_subtextures(self, frame, main_palette, custom_cutter=None):
         """
@@ -121,50 +119,19 @@ class Texture(genie_structure.GenieStructure):
         else:
             return [subtex]
 
-    def save(self, targetdir, filename, compression_level=1):
+    def get_metadata(self):
         """
-        Store the image data into the target directory path,
-        with given filename="dir/out.png".
-
-        :param compression_level: Compression level of the PNG. A higher
-                                  level results in smaller file sizes, but
-                                  takes longer to generate.
-                                      - 0 = no compression
-                                      - 1 = normal png compression (default)
-                                      - 2 = greedy search for smallest file; slowdown is 8x
-                                      - 3 = maximum possible compression; slowdown is 256x
-        :type compression_level: int
+        Get the image metadata information.
         """
-        from ...service.export.png import png_create
-
-        COMPRESSION_LEVELS = {
-            0: png_create.CompressionMethod.COMPR_NONE,
-            1: png_create.CompressionMethod.COMPR_DEFAULT,
-            2: png_create.CompressionMethod.COMPR_GREEDY,
-            3: png_create.CompressionMethod.COMPR_AGGRESSIVE,
-        }
-
-        if not isinstance(targetdir, Path):
-            raise ValueError("util.fslike Path expected as targetdir")
-        if not isinstance(filename, str):
-            raise ValueError(f"str expected as filename, not {type(filename)}")
-
-        _, ext = os.path.splitext(filename)
-
-        # only allow png
-        if ext != ".png":
-            raise ValueError("Filename invalid, a texture must be saved"
-                             "as 'filename.png', not '%s'" % (filename))
-
-        # without the dot
-        ext = ext[1:]
-
-        compression_method = COMPRESSION_LEVELS.get(compression_level, png_create.CompressionMethod.COMPR_DEFAULT)
-        with targetdir[filename].open("wb") as imagefile:
-            png_data, _ = png_create.save(self.image_data.data, compression_method)
-            imagefile.write(png_data)
-
         return self.image_metadata
+
+    def get_cache_params(self):
+        """
+        Get the parameters used for packing and saving the texture.
+            - Packing hints (sprite index, (xpos, ypos) in the final texture)
+            - PNG compression parameters (compression level + deflate params)
+        """
+        return self.best_packer_hints, self.best_compr
 
     @classmethod
     def structs(cls):

@@ -1,10 +1,12 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 """
 Convert a single slp/wav file from some drs archive to a png/opus file.
 """
 
 from pathlib import Path
+
+from openage.convert.processor.export.media_exporter import MediaExporter
 
 from ...log import info
 from ...util.fslike.directory import Directory
@@ -148,8 +150,16 @@ def read_slp_file(slp_path, output_path, palettes, compression_level):
     info("packing texture...")
     tex = Texture(slp_image, palettes)
 
+    from ..processor.export.texture_merge import merge_frames
+    merge_frames(tex)
+
     # save as png
-    tex.save(Directory(output_file.parent).root, output_file.name, compression_level)
+    MediaExporter.save_png(
+        tex,
+        Directory(output_file.parent).root,
+        output_file.name,
+        compression_level
+    )
 
 
 def read_slp_in_drs_file(drs, slp_path, output_path, palettes, compression_level):
@@ -178,8 +188,16 @@ def read_slp_in_drs_file(drs, slp_path, output_path, palettes, compression_level
     info("packing texture...")
     tex = Texture(slp_image, palettes)
 
+    from ..processor.export.texture_merge import merge_frames
+    merge_frames(tex)
+
     # save as png
-    tex.save(Directory(output_file.parent).root, output_file.name, compression_level)
+    MediaExporter.save_png(
+        tex,
+        Directory(output_file.parent).root,
+        output_file.name,
+        compression_level
+    )
 
 
 def read_smp_file(smp_path, output_path, palettes, compression_level):
@@ -204,8 +222,16 @@ def read_smp_file(smp_path, output_path, palettes, compression_level):
     info("packing texture...")
     tex = Texture(smp_image, palettes)
 
+    from ..processor.export.texture_merge import merge_frames
+    merge_frames(tex)
+
     # save as png
-    tex.save(Directory(output_file.parent).root, output_file.name, compression_level)
+    MediaExporter.save_png(
+        tex,
+        Directory(output_file.parent).root,
+        output_file.name,
+        compression_level
+    )
 
 
 def read_smx_file(smx_path, output_path, palettes, compression_level):
@@ -230,8 +256,16 @@ def read_smx_file(smx_path, output_path, palettes, compression_level):
     info("packing texture...")
     tex = Texture(smx_image, palettes)
 
+    from ..processor.export.texture_merge import merge_frames
+    merge_frames(tex)
+
     # save as png
-    tex.save(Directory(output_file.parent).root, output_file.name, compression_level)
+    MediaExporter.save_png(
+        tex,
+        Directory(output_file.parent).root,
+        output_file.name,
+        compression_level
+    )
 
 
 def read_wav_file(wav_path, output_path):

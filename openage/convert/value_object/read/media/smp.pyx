@@ -1,6 +1,6 @@
-# Copyright 2013-2020 the openage authors. See copying.md for legal info.
+# Copyright 2013-2021 the openage authors. See copying.md for legal info.
 #
-# cython: profile=False
+# cython: infer_types=True, profile=True
 
 from enum import Enum
 from struct import Struct, unpack_from
@@ -236,22 +236,24 @@ cdef class SMPLayer:
     # pixel matrix representing the final image
     cdef vector[vector[pixel]] pcolor
 
-    # memory pointer
-    cdef const uint8_t *data_raw
-
     def __init__(self, layer_header, data):
         self.info = layer_header
 
         if not (isinstance(data, bytes) or isinstance(data, bytearray)):
             raise ValueError("Layer data must be some bytes object")
 
+        # memory pointer
         # convert the bytes obj to char*
-        self.data_raw = data
+        cdef const uint8_t[:] data_raw = data
+
+        cdef unsigned short left
+        cdef unsigned short right
 
         cdef size_t i
         cdef int cmd_offset
 
         cdef size_t row_count = self.info.size[1]
+        self.pcolor.reserve(row_count)
 
         # process bondary table
         for i in range(row_count):
@@ -278,9 +280,11 @@ cdef class SMPLayer:
             self.cmd_offsets.push_back(cmd_offset)
 
         for i in range(row_count):
-            self.pcolor.push_back(self.create_color_row(i))
+            self.pcolor.push_back(self.create_color_row(data_raw, i))
 
-    cdef vector[pixel] create_color_row(self, Py_ssize_t rowid) except +:
+    cdef vector[pixel] create_color_row(self,
+                                        const uint8_t[:] &data_raw,
+                                        Py_ssize_t rowid) except +:
         """
         extract colors (pixels) for the given rowid.
         """
@@ -307,7 +311,8 @@ cdef class SMPLayer:
             row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
 
         # process the drawing commands for this row.
-        self.process_drawing_cmds(row_data, rowid,
+        self.process_drawing_cmds(data_raw,
+                                  row_data, rowid,
                                   first_cmd_offset,
                                   pixel_count - bounds.right)
 
@@ -332,17 +337,14 @@ cdef class SMPLayer:
 
         return row_data
 
-    cdef process_drawing_cmds(self, vector[pixel] &row_data,
-                              Py_ssize_t rowid,
-                              Py_ssize_t first_cmd_offset,
-                              size_t expected_size):
+    @cython.boundscheck(False)
+    cdef void process_drawing_cmds(self,
+                                   const uint8_t[:] &data_raw,
+                                   vector[pixel] &row_data,
+                                   Py_ssize_t rowid,
+                                   Py_ssize_t first_cmd_offset,
+                                   size_t expected_size):
         pass
-
-    cdef inline uint8_t get_byte_at(self, Py_ssize_t offset):
-        """
-        Fetch a byte from the SMP.
-        """
-        return self.data_raw[offset]
 
     def get_picture_data(self, palette):
         """
@@ -377,10 +379,13 @@ cdef class SMPMainLayer(SMPLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
 
-    cdef process_drawing_cmds(self, vector[pixel] &row_data,
-                              Py_ssize_t rowid,
-                              Py_ssize_t first_cmd_offset,
-                              size_t expected_size):
+    @cython.boundscheck(False)
+    cdef void process_drawing_cmds(self,
+                                   const uint8_t[:] &data_raw,
+                                   vector[pixel] &row_data,
+                                   Py_ssize_t rowid,
+                                   Py_ssize_t first_cmd_offset,
+                                   size_t expected_size):
         """
         extract colors (pixels) for the drawing commands
         found for this row in the SMP frame.
@@ -409,7 +414,7 @@ cdef class SMPMainLayer(SMPLayer):
                 )
 
             # fetch drawing instruction
-            cmd = self.get_byte_at(dpos)
+            cmd = data_raw[dpos]
 
             # Last 2 bits store command type
             lower_crumb = 0b00000011 & cmd
@@ -443,7 +448,7 @@ cdef class SMPMainLayer(SMPLayer):
                 for _ in range(pixel_count):
                     for _ in range(4):
                         dpos += 1
-                        pixel_data.push_back(self.get_byte_at(dpos))
+                        pixel_data.push_back(data_raw[dpos])
 
                     row_data.push_back(pixel(color_standard,
                                              pixel_data[0],
@@ -464,7 +469,7 @@ cdef class SMPMainLayer(SMPLayer):
                 for _ in range(pixel_count):
                     for _ in range(4):
                         dpos += 1
-                        pixel_data.push_back(self.get_byte_at(dpos))
+                        pixel_data.push_back(data_raw[dpos])
 
                     row_data.push_back(pixel(color_player,
                                              pixel_data[0],
@@ -501,10 +506,13 @@ cdef class SMPShadowLayer(SMPLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
 
-    cdef process_drawing_cmds(self, vector[pixel] &row_data,
-                              Py_ssize_t rowid,
-                              Py_ssize_t first_cmd_offset,
-                              size_t expected_size):
+    @cython.boundscheck(False)
+    cdef void process_drawing_cmds(self,
+                                   const uint8_t[:] &data_raw,
+                                   vector[pixel] &row_data,
+                                   Py_ssize_t rowid,
+                                   Py_ssize_t first_cmd_offset,
+                                   size_t expected_size):
         """
         extract colors (pixels) for the drawing commands
         found for this row in the SMP frame.
@@ -531,7 +539,7 @@ cdef class SMPShadowLayer(SMPLayer):
                 )
 
             # fetch drawing instruction
-            cmd = self.get_byte_at(dpos)
+            cmd = data_raw[dpos]
 
             # Last 2 bits store command type
             lower_crumb = 0b00000011 & cmd
@@ -576,7 +584,7 @@ cdef class SMPShadowLayer(SMPLayer):
                 for _ in range(pixel_count):
 
                     dpos += 1
-                    nextbyte = self.get_byte_at(dpos)
+                    nextbyte = data_raw[dpos]
 
                     row_data.push_back(pixel(color_shadow,
                                              nextbyte, 0, 0, 0))
@@ -601,10 +609,13 @@ cdef class SMPOutlineLayer(SMPLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
 
-    cdef process_drawing_cmds(self, vector[pixel] &row_data,
-                              Py_ssize_t rowid,
-                              Py_ssize_t first_cmd_offset,
-                              size_t expected_size):
+    @cython.boundscheck(False)
+    cdef void process_drawing_cmds(self,
+                                   const uint8_t[:] &data_raw,
+                                   vector[pixel] &row_data,
+                                   Py_ssize_t rowid,
+                                   Py_ssize_t first_cmd_offset,
+                                   size_t expected_size):
         """
         extract colors (pixels) for the drawing commands
         found for this row in the SMP frame.
@@ -631,7 +642,7 @@ cdef class SMPOutlineLayer(SMPLayer):
                 )
 
             # fetch drawing instruction
-            cmd = self.get_byte_at(dpos)
+            cmd = data_raw[dpos]
 
             # Last 2 bits store command type
             lower_crumb = 0b00000011 & cmd
@@ -681,7 +692,8 @@ cdef class SMPOutlineLayer(SMPLayer):
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix, palette):
+cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
+                                         numpy.ndarray[numpy.uint8_t, ndim=2, mode="c"] palette):
     """
     converts a palette index image matrix to an rgba matrix.
     """
@@ -692,10 +704,9 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix, pa
     cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
-    # micro optimization to avoid call to ColorTable.__getitem__()
-    cdef list m_lookup = palette.palette
+    cdef uint8_t[:, ::1] m_lookup = palette
 
-    cdef m_color_size = len(m_lookup[0])
+    cdef uint8_t m_color_size = len(m_lookup[0])
 
     cdef uint8_t r
     cdef uint8_t g
@@ -737,11 +748,16 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix, pa
                 # main graphics table
                 if m_color_size == 3:
                     # RGB tables (leftover from HD edition)
-                    r, g, b = m_lookup[index]
+                    r = m_lookup[index][0]
+                    g = m_lookup[index][1]
+                    b = m_lookup[index][2]
 
                 elif m_color_size == 4:
                     # RGBA tables (but alpha is often unused)
-                    r, g, b, alpha = m_lookup[index]
+                    r = m_lookup[index][0]
+                    g = m_lookup[index][1]
+                    b = m_lookup[index][2]
+                    alpha = m_lookup[index][3]
 
                 # alpha values are unused
                 # in 0x0C and 0x0B version of SMPs

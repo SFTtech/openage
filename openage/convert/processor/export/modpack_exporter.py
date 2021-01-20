@@ -1,14 +1,14 @@
 # Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-few-public-methods
-
 """
 Export data from a modpack to files.
 """
 
 from ....log import info
-from ...value_object.read.media_types import MediaType
+from .data_exporter import DataExporter
 from .generate_manifest_hashes import generate_hashes
+from .media_exporter import MediaExporter
 
 
 class ModpackExporter:
@@ -22,9 +22,9 @@ class ModpackExporter:
         Export a modpack to a directory.
 
         :param modpack: Modpack that is going to be exported.
+        :param args: Converter arguments.
         :type modpack: ..dataformats.modpack.Modpack
-        :param exportdir: Directory wheere modpacks are stored.
-        :type exportdir: ...util.fslike.path.Path
+        :type args: Namespace
         """
         sourcedir = args.srcdir
         exportdir = args.targetdir
@@ -35,15 +35,12 @@ class ModpackExporter:
         info("Dumping info file...")
 
         # Modpack info file
-        modpack.info.save(modpack_dir)
+        DataExporter.export([modpack.info], modpack_dir)
 
         info("Dumping data files...")
 
         # Data files
-        data_files = modpack.get_data_files()
-
-        for data_file in data_files:
-            data_file.save(modpack_dir)
+        DataExporter.export(modpack.get_data_files(), modpack_dir)
 
         if args.flag("no_media"):
             info("Skipping media file export...")
@@ -52,34 +49,13 @@ class ModpackExporter:
         info("Exporting media files...")
 
         # Media files
-        media_files = modpack.get_media_files()
-
-        for media_type in media_files.keys():
-            cur_export_requests = media_files[media_type]
-
-            kwargs = {}
-
-            if media_type is MediaType.TERRAIN:
-                # Game version and palettes
-                kwargs["game_version"] = args.game_version
-                kwargs["palettes"] = args.palettes
-                kwargs["compression_level"] = args.compression_level
-
-            elif media_type is MediaType.GRAPHICS:
-                kwargs["palettes"] = args.palettes
-                kwargs["compression_level"] = args.compression_level
-
-            for request in cur_export_requests:
-                request.save(sourcedir, modpack_dir, **kwargs)
+        MediaExporter.export(modpack.get_media_files(), sourcedir, modpack_dir, args)
 
         info("Dumping metadata files...")
 
         # Metadata files
-        metadata_files = modpack.get_metadata_files()
-
-        for metadata_file in metadata_files:
-            metadata_file.save(modpack_dir)
+        DataExporter.export(modpack.get_metadata_files(), modpack_dir)
 
         # Manifest file
         generate_hashes(modpack, modpack_dir)
-        modpack.manifest.save(modpack_dir)
+        DataExporter.export([modpack.manifest], modpack_dir)

@@ -5,6 +5,7 @@ file_version = "1.0"
 [AFRI_KING]
 name = "African Kingdoms (HD)"
 game_edition_id = "AFRI_KING"
+subfolder = "hd_ak"
 support = "nope"
 targetmod = [ "aoe2-ak", "aoe2-ak-graphics" ]
 
@@ -17,6 +18,7 @@ targetmod = [ "aoe2-ak", "aoe2-ak-graphics" ]
 [SWGB_CC]
 name = "Clone Campaigns"
 game_edition_id = "SWGB_CC"
+subfolder = "swgb_cc"
 support = "yes"
 targetmod = [ "swgb-cc", "swgb-cc-graphics" ]
 

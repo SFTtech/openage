@@ -1,6 +1,6 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2021 the openage authors. See copying.md for legal info.
 #
-# cython: profile=False
+# cython: infer_types=True, profile=True
 
 from enum import Enum
 from struct import Struct, unpack_from
@@ -21,6 +21,13 @@ from libcpp.vector cimport vector
 
 # SMX files have little endian byte order
 endianness = "< "
+
+
+cdef struct palette_entry:
+    uint8_t r
+    uint8_t g
+    uint8_t b
+    uint8_t a
 
 
 cdef struct boundary_def:
@@ -273,9 +280,6 @@ cdef class SMXLayer:
     # pixel matrix representing the final image
     cdef vector[vector[pixel]] pcolor
 
-    # memory pointer
-    cdef const uint8_t *data_raw
-
     def __init__(self, layer_header, data):
         """
         SMX layer definition superclass. There can be various types of
@@ -291,12 +295,16 @@ cdef class SMXLayer:
         if not (isinstance(data, bytes) or isinstance(data, bytearray)):
             raise ValueError("Layer data must be some bytes object")
 
+        # memory pointer
         # convert the bytes obj to char*
-        self.data_raw = data
+        cdef const uint8_t[:] data_raw = data
+
+        cdef unsigned short left
+        cdef unsigned short right
 
         cdef size_t i
-
         cdef size_t row_count = self.info.size[1]
+        self.pcolor.reserve(row_count)
 
         # process bondary table
         for i in range(row_count):
@@ -320,13 +328,16 @@ cdef class SMXLayer:
         # process cmd table
         for i in range(row_count):
             cmd_offset, color_offset, chunk_pos, row_data = \
-                self.create_color_row(i, cmd_offset, color_offset, chunk_pos)
+                self.create_color_row(data_raw, i, cmd_offset, color_offset, chunk_pos)
 
             self.pcolor.push_back(row_data)
 
-    cdef tuple create_color_row(self, Py_ssize_t rowid,
-                                int cmd_offset, int color_offset,
-                                int chunk_pos) except +:
+    cdef inline (int, int, int, vector[pixel]) create_color_row(self,
+                                                                const uint8_t[:] &data_raw,
+                                                                Py_ssize_t rowid,
+                                                                int cmd_offset,
+                                                                int color_offset,
+                                                                int chunk_pos) except +:
         """
         Extract colors (pixels) for the given rowid.
 
@@ -360,12 +371,15 @@ cdef class SMXLayer:
 
         # process the drawing commands for this row.
         next_cmd_offset, next_color_offset, chunk_pos, row_data = \
-            self.process_drawing_cmds(row_data,
-                                      rowid,
-                                      first_cmd_offset,
-                                      first_color_offset,
-                                      chunk_pos,
-                                      pixel_count - bounds.right)
+            self.process_drawing_cmds(
+                data_raw,
+                row_data,
+                rowid,
+                first_cmd_offset,
+                first_color_offset,
+                chunk_pos,
+                pixel_count - bounds.right
+            )
 
         # finish by filling up the right transparent space
         for i in range(bounds.right):
@@ -385,12 +399,14 @@ cdef class SMXLayer:
 
         return next_cmd_offset, next_color_offset, chunk_pos, row_data
 
-    cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
-                                    Py_ssize_t rowid,
-                                    Py_ssize_t first_cmd_offset,
-                                    Py_ssize_t first_color_offset,
-                                    int chunk_pos,
-                                    size_t expected_size):
+    cdef (int, int, int, vector[pixel]) process_drawing_cmds(self,
+                                                             const uint8_t[:] &data_raw,
+                                                             vector[pixel] &row_data,
+                                                             Py_ssize_t rowid,
+                                                             Py_ssize_t first_cmd_offset,
+                                                             Py_ssize_t first_color_offset,
+                                                             int chunk_pos,
+                                                             size_t expected_size):
         """
         Extracts pixel data from the layer data. Every layer type uses
         its own implementation for better optimization.
@@ -403,15 +419,6 @@ cdef class SMXLayer:
         :param expected_size: Expected length of row_data after encountering the EOR command.
         """
         pass
-
-    cdef inline uint8_t get_byte_at(self, Py_ssize_t offset):
-        """
-        Fetch a byte from the SMX.
-
-        :param offset: Offset of the byte in the file.
-        :return: Byte value at offset.
-        """
-        return self.data_raw[offset]
 
     def get_picture_data(self, palette):
         """
@@ -454,12 +461,15 @@ cdef class SMXMainLayer8to5(SMXLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
 
-    cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
-                                    Py_ssize_t rowid,
-                                    Py_ssize_t first_cmd_offset,
-                                    Py_ssize_t first_color_offset,
-                                    int chunk_pos,
-                                    size_t expected_size):
+    @cython.boundscheck(False)
+    cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self,
+                                                                    const uint8_t[:] &data_raw,
+                                                                    vector[pixel] &row_data,
+                                                                    Py_ssize_t rowid,
+                                                                    Py_ssize_t first_cmd_offset,
+                                                                    Py_ssize_t first_color_offset,
+                                                                    int chunk_pos,
+                                                                    size_t expected_size):
         """
         extract colors (pixels) for the drawing commands that were
         compressed with 8to5 compression.
@@ -505,7 +515,7 @@ cdef class SMXMainLayer8to5(SMXLayer):
                 )
 
             # fetch drawing instruction
-            cmd = self.get_byte_at(dpos_cmd)
+            cmd = data_raw[dpos_cmd]
 
             # Last 2 bits store command type
             lower_crumb = 0b00000011 & cmd
@@ -545,8 +555,8 @@ cdef class SMXMainLayer8to5(SMXLayer):
 
                         # Palette index. Essentially a rotation of (byte[1]byte[2])
                         # by 6 to the left, then masking with 0x00FF.
-                        pixel_data_odd_0 = self.get_byte_at(dpos_color + 1)
-                        pixel_data_odd_1 = self.get_byte_at(dpos_color + 2)
+                        pixel_data_odd_0 = data_raw[dpos_color + 1]
+                        pixel_data_odd_1 = data_raw[dpos_color + 2]
                         pixel_data.push_back((pixel_data_odd_0 >> 2) | (pixel_data_odd_1 << 6))
 
                         # Palette section. Described in byte[2] in bits 4-5.
@@ -554,8 +564,8 @@ cdef class SMXMainLayer8to5(SMXLayer):
 
                         # Damage mask 1. Essentially a rotation of (byte[3]byte[4])
                         # by 6 to the left, then masking with 0x00F0.
-                        pixel_data_odd_2 = self.get_byte_at(dpos_color + 3)
-                        pixel_data_odd_3 = self.get_byte_at(dpos_color + 4)
+                        pixel_data_odd_2 = data_raw[dpos_color + 3]
+                        pixel_data_odd_3 = data_raw[dpos_color + 4]
                         pixel_data.push_back(((pixel_data_odd_2 >> 2) | (pixel_data_odd_3 << 6)) & 0xF0)
 
                         # Damage mask 2. Described in byte[4] in bits 0-5.
@@ -573,7 +583,7 @@ cdef class SMXMainLayer8to5(SMXLayer):
                     else:
                         # Even indices can be read "as is". They just have to be masked.
                         for px_dpos in range(4):
-                            pixel_data.push_back(self.get_byte_at(dpos_color + px_dpos))
+                            pixel_data.push_back(data_raw[dpos_color + px_dpos])
 
                         row_data.push_back(pixel(color_standard,
                                                  pixel_data[0],
@@ -602,8 +612,8 @@ cdef class SMXMainLayer8to5(SMXLayer):
 
                         # Palette index. Essentially a rotation of (byte[1]byte[2])
                         # by 6 to the left, then masking with 0x00FF.
-                        pixel_data_odd_0 = self.get_byte_at(dpos_color + 1)
-                        pixel_data_odd_1 = self.get_byte_at(dpos_color + 2)
+                        pixel_data_odd_0 = data_raw[dpos_color + 1]
+                        pixel_data_odd_1 = data_raw[dpos_color + 2]
                         pixel_data.push_back((pixel_data_odd_0 >> 2) | (pixel_data_odd_1 << 6))
 
                         # Palette section. Described in byte[2] in bits 4-5.
@@ -611,8 +621,8 @@ cdef class SMXMainLayer8to5(SMXLayer):
 
                         # Damage modifier 1. Essentially a rotation of (byte[3]byte[4])
                         # by 6 to the left, then masking with 0x00F0.
-                        pixel_data_odd_2 = self.get_byte_at(dpos_color + 3)
-                        pixel_data_odd_3 = self.get_byte_at(dpos_color + 4)
+                        pixel_data_odd_2 = data_raw[dpos_color + 3]
+                        pixel_data_odd_3 = data_raw[dpos_color + 4]
                         pixel_data.push_back(((pixel_data_odd_2 >> 2) | (pixel_data_odd_3 << 6)) & 0xF0)
 
                         # Damage modifier 2. Described in byte[4] in bits 0-5.
@@ -630,7 +640,7 @@ cdef class SMXMainLayer8to5(SMXLayer):
                     else:
                         # Even indices can be read "as is". They just have to be masked.
                         for px_dpos in range(4):
-                            pixel_data.push_back(self.get_byte_at(dpos_color + px_dpos))
+                            pixel_data.push_back(data_raw[dpos_color + px_dpos])
 
                         row_data.push_back(pixel(color_player,
                                                  pixel_data[0],
@@ -661,12 +671,15 @@ cdef class SMXMainLayer4plus1(SMXLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
 
-    cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
-                                    Py_ssize_t rowid,
-                                    Py_ssize_t first_cmd_offset,
-                                    Py_ssize_t first_color_offset,
-                                    int chunk_pos,
-                                    size_t expected_size):
+    @cython.boundscheck(False)
+    cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self,
+                                                                    const uint8_t[:] &data_raw,
+                                                                    vector[pixel] &row_data,
+                                                                    Py_ssize_t rowid,
+                                                                    Py_ssize_t first_cmd_offset,
+                                                                    Py_ssize_t first_color_offset,
+                                                                    int chunk_pos,
+                                                                    size_t expected_size):
         """
         extract colors (pixels) for the drawing commands that were
         compressed with 4plus1 compression.
@@ -699,7 +712,7 @@ cdef class SMXMainLayer4plus1(SMXLayer):
                 )
 
             # fetch drawing instruction
-            cmd = self.get_byte_at(dpos_cmd)
+            cmd = data_raw[dpos_cmd]
 
             # Last 2 bits store command type
             lower_crumb = 0b00000011 & cmd
@@ -731,13 +744,13 @@ cdef class SMXMainLayer4plus1(SMXLayer):
 
                 pixel_count = (cmd >> 2) + 1
 
-                palette_section_block = self.get_byte_at(dpos_color + (4 - dpos_chunk))
+                palette_section_block = data_raw[dpos_color + (4 - dpos_chunk)]
 
                 for _ in range(pixel_count):
                     # Start fetching pixel data
                     palette_section = (palette_section_block >> (2 * dpos_chunk)) & 0x03
                     row_data.push_back(pixel(color_standard,
-                                             self.get_byte_at(dpos_color),
+                                             data_raw[dpos_color],
                                              palette_section,
                                              0,
                                              0))
@@ -749,7 +762,7 @@ cdef class SMXMainLayer4plus1(SMXLayer):
                     if dpos_chunk > 3:
                         dpos_chunk = 0
                         dpos_color += 1 # Skip palette section block
-                        palette_section_block = self.get_byte_at(dpos_color + 4)
+                        palette_section_block = data_raw[dpos_color + 4]
 
             elif lower_crumb == 0b00000010:
                 # player_color command
@@ -765,7 +778,7 @@ cdef class SMXMainLayer4plus1(SMXLayer):
                     # Start fetching pixel data
                     palette_section = (palette_section_block >> (2 * dpos_chunk)) & 0x03
                     row_data.push_back(pixel(color_player,
-                                             self.get_byte_at(dpos_color),
+                                             data_raw[dpos_color],
                                              palette_section,
                                              0,
                                              0))
@@ -777,7 +790,7 @@ cdef class SMXMainLayer4plus1(SMXLayer):
                     if dpos_chunk > 3:
                         dpos_chunk = 0
                         dpos_color += 1 # Skip palette section block
-                        palette_section_block = self.get_byte_at(dpos_color + 4)
+                        palette_section_block = data_raw[dpos_color + 4]
 
             else:
                 raise Exception(
@@ -799,12 +812,15 @@ cdef class SMXShadowLayer(SMXLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
 
-    cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
-                                    Py_ssize_t rowid,
-                                    Py_ssize_t first_cmd_offset,
-                                    Py_ssize_t first_color_offset,
-                                    int chunk_pos,
-                                    size_t expected_size):
+    @cython.boundscheck(False)
+    cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self,
+                                                                    const uint8_t[:] &data_raw,
+                                                                    vector[pixel] &row_data,
+                                                                    Py_ssize_t rowid,
+                                                                    Py_ssize_t first_cmd_offset,
+                                                                    Py_ssize_t first_color_offset,
+                                                                    int chunk_pos,
+                                                                    size_t expected_size):
         """
         extract colors (pixels) for the drawing commands
         found for this row in the SMX layer.
@@ -830,7 +846,7 @@ cdef class SMXShadowLayer(SMXLayer):
                 )
 
             # fetch drawing instruction
-            cmd = self.get_byte_at(dpos)
+            cmd = data_raw[dpos]
 
             # Last 2 bits store command type
             lower_crumb = 0b00000011 & cmd
@@ -873,7 +889,7 @@ cdef class SMXShadowLayer(SMXLayer):
 
                 for _ in range(pixel_count):
                     dpos += 1
-                    nextbyte = self.get_byte_at(dpos)
+                    nextbyte = data_raw[dpos]
 
                     row_data.push_back(pixel(color_shadow,
                                              nextbyte, 0, 0, 0))
@@ -899,12 +915,15 @@ cdef class SMXOutlineLayer(SMXLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
 
-    cdef tuple process_drawing_cmds(self, vector[pixel] &row_data,
-                                    Py_ssize_t rowid,
-                                    Py_ssize_t first_cmd_offset,
-                                    Py_ssize_t first_color_offset,
-                                    int chunk_pos,
-                                    size_t expected_size):
+    @cython.boundscheck(False)
+    cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self,
+                                                                    const uint8_t[:] &data_raw,
+                                                                    vector[pixel] &row_data,
+                                                                    Py_ssize_t rowid,
+                                                                    Py_ssize_t first_cmd_offset,
+                                                                    Py_ssize_t first_color_offset,
+                                                                    int chunk_pos,
+                                                                    size_t expected_size):
         """
         extract colors (pixels) for the drawing commands
         found for this row in the SMX layer.
@@ -930,7 +949,7 @@ cdef class SMXOutlineLayer(SMXLayer):
                 )
 
             # fetch drawing instruction
-            cmd = self.get_byte_at(dpos)
+            cmd = data_raw[dpos]
 
             # Last 2 bits store command type
             lower_crumb = 0b00000011 & cmd
@@ -983,7 +1002,8 @@ cdef class SMXOutlineLayer(SMXLayer):
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix, palette):
+cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
+                                         numpy.ndarray[numpy.uint8_t, ndim=2, mode="c"] palette):
     """
     converts a palette index image matrix to an rgba matrix.
 
@@ -997,8 +1017,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix, pa
     cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
-    # micro optimization to avoid call to ColorTable.__getitem__()
-    cdef list m_lookup = palette.palette
+    cdef uint8_t[:, ::1] m_lookup = palette
 
     cdef uint8_t r
     cdef uint8_t g
@@ -1039,7 +1058,10 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix, pa
 
                 # look up the color index in the
                 # main graphics table
-                r, g, b, alpha = m_lookup[index]
+                r = m_lookup[index][0]
+                g = m_lookup[index][1]
+                b = m_lookup[index][2]
+                alpha = m_lookup[index][3]
 
                 # alpha values are unused
                 # in 0x0C and 0x0B version of SMPs

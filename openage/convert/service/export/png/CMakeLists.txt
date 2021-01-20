@@ -1,6 +1,7 @@
 find_package(PNG REQUIRED)
 
 add_cython_modules(
+	binpack.pyx
 	png_create.pyx
 )
 

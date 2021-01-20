@@ -1,8 +1,10 @@
-# Copyright 2013-2020 the openage authors. See copying.md for legal info.
+# Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,too-many-function-args
 
 import math
+
+import numpy
 
 from .....log import dbg
 from ....deprecated.struct_definition import StructDefinition
@@ -24,6 +26,9 @@ class ColorTable(GenieStructure):
             self.fill_from_array(data)
         else:
             self.fill(data)
+
+        # Fast access for media conversion
+        self.array = self.get_ndarray()
 
     def fill_from_array(self, ar):
         self.palette = [tuple(e) for e in ar]
@@ -144,6 +149,9 @@ class ColorTable(GenieStructure):
             raise Exception("fak u, no negative values for squaresize pls.")
 
         return palette_image
+
+    def get_ndarray(self):
+        return numpy.array(self.palette, dtype=numpy.uint8, order='C')
 
     def save_visualization(self, fileobj):
         self.gen_image().save(fileobj, 'png')

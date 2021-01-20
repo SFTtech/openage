@@ -1,6 +1,6 @@
-# Copyright 2013-2020 the openage authors. See copying.md for legal info.
+# Copyright 2013-2021 the openage authors. See copying.md for legal info.
 #
-# cython: profile=False
+# cython: infer_types=True, profile=True
 
 from enum import Enum
 import lz4.block
@@ -262,22 +262,24 @@ cdef class SLPFrame:
     # palette index matrix representing the final image
     cdef vector[vector[pixel]] pcolor
 
-    # memory pointer
-    cdef const uint8_t *data_raw
-
     def __init__(self, frame_info, data):
         self.info = frame_info
 
         if not (isinstance(data, bytes) or isinstance(data, bytearray)):
             raise ValueError("Frame data must be some bytes object")
 
+        # memory pointer
         # convert the bytes obj to char*
-        self.data_raw = data
+        cdef const uint8_t[:] data_raw = data
+
+        cdef unsigned short left
+        cdef unsigned short right
 
         cdef size_t i
         cdef int cmd_offset
 
         cdef size_t row_count = self.info.size[1]
+        self.pcolor.reserve(row_count)
 
         # process bondary table
         for i in range(row_count):
@@ -304,9 +306,11 @@ cdef class SLPFrame:
             self.cmd_offsets.push_back(cmd_offset)
 
         for i in range(row_count):
-            self.pcolor.push_back(self.create_palette_color_row(i))
+            self.pcolor.push_back(self.create_palette_color_row(data_raw, i))
 
-    cdef vector[pixel] create_palette_color_row(self, Py_ssize_t rowid) except +:
+    cdef vector[pixel] create_palette_color_row(self,
+                                                const uint8_t[:] &data_raw,
+                                                Py_ssize_t rowid) except +:
         """
         create palette indices (colors) for the given rowid.
         """
@@ -333,7 +337,9 @@ cdef class SLPFrame:
             row_data.push_back(pixel(color_transparent, 0))
 
         # process the drawing commands for this row.
-        self.process_drawing_cmds(row_data, rowid,
+        self.process_drawing_cmds(data_raw,
+                                  row_data,
+                                  rowid,
                                   first_cmd_offset,
                                   pixel_count - bounds.right)
 
@@ -357,33 +363,14 @@ cdef class SLPFrame:
 
         return row_data
 
-    cdef process_drawing_cmds(self, vector[pixel] &row_data,
-                              Py_ssize_t rowid,
-                              Py_ssize_t first_cmd_offset,
-                              size_t expected_size):
+    @cython.boundscheck(False)
+    cdef void process_drawing_cmds(self,
+                                   const uint8_t[:] &data_raw,
+                                   vector[pixel] &row_data,
+                                   Py_ssize_t rowid,
+                                   Py_ssize_t first_cmd_offset,
+                                   size_t expected_size):
         pass
-
-    cdef inline uint8_t get_byte_at(self, Py_ssize_t offset):
-        """
-        Fetch a byte from the slp.
-        """
-        return self.data_raw[offset]
-
-    cdef inline cmd_pack cmd_or_next(self, uint8_t cmd,
-                                     uint8_t n, Py_ssize_t pos):
-        """
-        to save memory, the draw amount may be encoded into
-        the drawing command itself in the upper n bits.
-        """
-
-        cdef uint8_t packed_in_cmd = cmd >> n
-
-        if packed_in_cmd != 0:
-            return cmd_pack(packed_in_cmd, pos)
-
-        else:
-            pos += 1
-            return cmd_pack(self.get_byte_at(pos), pos)
 
     def get_picture_data(self, palette):
         """
@@ -422,10 +409,13 @@ cdef class SLPMainFrameAoC(SLPFrame):
     def __init__(self, frame_info, data):
         super().__init__(frame_info, data)
 
-    cdef process_drawing_cmds(self, vector[pixel] &row_data,
-                              Py_ssize_t rowid,
-                              Py_ssize_t first_cmd_offset,
-                              size_t expected_size):
+    @cython.boundscheck(False)
+    cdef void process_drawing_cmds(self,
+                                   const uint8_t[:] &data_raw,
+                                   vector[pixel] &row_data,
+                                   Py_ssize_t rowid,
+                                   Py_ssize_t first_cmd_offset,
+                                   size_t expected_size):
         """
         create palette indices (colors) for the drawing commands
         found for this row in the SLP frame.
@@ -437,6 +427,7 @@ cdef class SLPMainFrameAoC(SLPFrame):
         cdef bool eor = False
 
         cdef uint8_t cmd
+        cdef uint8_t color
         cdef uint8_t nextbyte
         cdef uint8_t lower_nibble
         cdef uint8_t higher_nibble
@@ -453,7 +444,7 @@ cdef class SLPMainFrameAoC(SLPFrame):
                 )
 
             # fetch drawing instruction
-            cmd = self.get_byte_at(dpos)
+            cmd = data_raw[dpos]
 
             lower_nibble = 0x0f & cmd
             higher_nibble = 0xf0 & cmd
@@ -473,7 +464,7 @@ cdef class SLPMainFrameAoC(SLPFrame):
                 pixel_count = cmd >> 2
                 for _ in range(pixel_count):
                     dpos += 1
-                    color = self.get_byte_at(dpos)
+                    color = data_raw[dpos]
 
                     row_data.push_back(pixel(color_standard, color))
 
@@ -482,7 +473,7 @@ cdef class SLPMainFrameAoC(SLPFrame):
                 # draw 'count' transparent pixels
                 # count = cmd >> 2; if count == 0: count = nextbyte
 
-                cpack = self.cmd_or_next(cmd, 2, dpos)
+                cpack = cmd_or_next(data_raw, cmd, 2, dpos)
                 dpos = cpack.dpos
                 for _ in range(cpack.count):
                     row_data.push_back(pixel(color_transparent, 0))
@@ -492,12 +483,12 @@ cdef class SLPMainFrameAoC(SLPFrame):
                 # draw (higher_nibble << 4 + nextbyte) following palette colors
 
                 dpos += 1
-                nextbyte = self.get_byte_at(dpos)
+                nextbyte = data_raw[dpos]
                 pixel_count = (higher_nibble << 4) + nextbyte
 
                 for _ in range(pixel_count):
                     dpos += 1
-                    color = self.get_byte_at(dpos)
+                    color = data_raw[dpos]
                     row_data.push_back(pixel(color_standard, color))
 
             elif lower_nibble == 0x03:
@@ -506,7 +497,7 @@ cdef class SLPMainFrameAoC(SLPFrame):
                 # transparent pixels
 
                 dpos += 1
-                nextbyte = self.get_byte_at(dpos)
+                nextbyte = data_raw[dpos]
                 pixel_count = (higher_nibble << 4) + nextbyte
 
                 for _ in range(pixel_count):
@@ -517,11 +508,11 @@ cdef class SLPMainFrameAoC(SLPFrame):
                 # we have to draw the player color for cmd>>4 times,
                 # or if that is 0, as often as the next byte says.
 
-                cpack = self.cmd_or_next(cmd, 4, dpos)
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
                 dpos = cpack.dpos
                 for _ in range(cpack.count):
                     dpos += 1
-                    color = self.get_byte_at(dpos)
+                    color = data_raw[dpos]
 
                     row_data.push_back(pixel(color_player, color))
 
@@ -529,11 +520,11 @@ cdef class SLPMainFrameAoC(SLPFrame):
                 # fill command
                 # draw 'count' pixels with color of next byte
 
-                cpack = self.cmd_or_next(cmd, 4, dpos)
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
                 dpos = cpack.dpos
 
                 dpos += 1
-                color = self.get_byte_at(dpos)
+                color = data_raw[dpos]
 
                 for _ in range(cpack.count):
                     row_data.push_back(pixel(color_standard, color))
@@ -542,11 +533,11 @@ cdef class SLPMainFrameAoC(SLPFrame):
                 # fill player color command
                 # draw the player color for 'count' times
 
-                cpack = self.cmd_or_next(cmd, 4, dpos)
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
                 dpos = cpack.dpos
 
                 dpos += 1
-                color = self.get_byte_at(dpos)
+                color = data_raw[dpos]
 
                 for _ in range(cpack.count):
                     row_data.push_back(pixel(color_player, color))
@@ -555,7 +546,7 @@ cdef class SLPMainFrameAoC(SLPFrame):
                 # shadow command
                 # draw a transparent shadow pixel for 'count' times
 
-                cpack = self.cmd_or_next(cmd, 4, dpos)
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
                 dpos = cpack.dpos
 
                 for _ in range(cpack.count):
@@ -604,7 +595,7 @@ cdef class SLPMainFrameAoC(SLPFrame):
                     # same as above, but span special color 1 nextbyte times.
 
                     dpos += 1
-                    pixel_count = self.get_byte_at(dpos)
+                    pixel_count = data_raw[dpos]
 
                     for _ in range(pixel_count):
                         row_data.push_back(pixel(color_special_1, 0))
@@ -614,7 +605,7 @@ cdef class SLPMainFrameAoC(SLPFrame):
                     # same as above, using special color 2
 
                     dpos += 1
-                    pixel_count = self.get_byte_at(dpos)
+                    pixel_count = data_raw[dpos]
 
                     for _ in range(pixel_count):
                         row_data.push_back(pixel(color_special_2, 0))
@@ -647,10 +638,13 @@ cdef class SLPMainFrameDE(SLPFrame):
     def __init__(self, frame_info, data):
         super().__init__(frame_info, data)
 
-    cdef process_drawing_cmds(self, vector[pixel] &row_data,
-                              Py_ssize_t rowid,
-                              Py_ssize_t first_cmd_offset,
-                              size_t expected_size):
+    @cython.boundscheck(False)
+    cdef void process_drawing_cmds(self,
+                                   const uint8_t[:] &data_raw,
+                                   vector[pixel] &row_data,
+                                   Py_ssize_t rowid,
+                                   Py_ssize_t first_cmd_offset,
+                                   size_t expected_size):
         """
         create palette indices (colors) for the drawing commands
         found for this row in the SLP frame.
@@ -662,6 +656,7 @@ cdef class SLPMainFrameDE(SLPFrame):
         cdef bool eor = False
 
         cdef uint8_t cmd
+        cdef uint8_t color
         cdef uint8_t nextbyte
         cdef uint8_t lower_nibble
         cdef uint8_t higher_nibble
@@ -678,7 +673,7 @@ cdef class SLPMainFrameDE(SLPFrame):
                 )
 
             # fetch drawing instruction
-            cmd = self.get_byte_at(dpos)
+            cmd = data_raw[dpos]
 
             lower_nibble = 0x0f & cmd
             higher_nibble = 0xf0 & cmd
@@ -698,7 +693,7 @@ cdef class SLPMainFrameDE(SLPFrame):
                 pixel_count = cmd >> 2
                 for _ in range(pixel_count):
                     dpos += 1
-                    color = self.get_byte_at(dpos)
+                    color = data_raw[dpos]
 
                     row_data.push_back(pixel(color_standard, color))
 
@@ -707,7 +702,7 @@ cdef class SLPMainFrameDE(SLPFrame):
                 # draw 'count' transparent pixels
                 # count = cmd >> 2; if count == 0: count = nextbyte
 
-                cpack = self.cmd_or_next(cmd, 2, dpos)
+                cpack = cmd_or_next(data_raw, cmd, 2, dpos)
                 dpos = cpack.dpos
                 for _ in range(cpack.count):
                     row_data.push_back(pixel(color_transparent, 0))
@@ -717,12 +712,12 @@ cdef class SLPMainFrameDE(SLPFrame):
                 # draw (higher_nibble << 4 + nextbyte) following palette colors
 
                 dpos += 1
-                nextbyte = self.get_byte_at(dpos)
+                nextbyte = data_raw[dpos]
                 pixel_count = (higher_nibble << 4) + nextbyte
 
                 for _ in range(pixel_count):
                     dpos += 1
-                    color = self.get_byte_at(dpos)
+                    color = data_raw[dpos]
                     row_data.push_back(pixel(color_standard, color))
 
             elif lower_nibble == 0x03:
@@ -731,7 +726,7 @@ cdef class SLPMainFrameDE(SLPFrame):
                 # transparent pixels
 
                 dpos += 1
-                nextbyte = self.get_byte_at(dpos)
+                nextbyte = data_raw[dpos]
                 pixel_count = (higher_nibble << 4) + nextbyte
 
                 for _ in range(pixel_count):
@@ -742,11 +737,11 @@ cdef class SLPMainFrameDE(SLPFrame):
                 # we have to draw the player color for cmd>>4 times,
                 # or if that is 0, as often as the next byte says.
 
-                cpack = self.cmd_or_next(cmd, 4, dpos)
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
                 dpos = cpack.dpos
                 for _ in range(cpack.count):
                     dpos += 1
-                    color = self.get_byte_at(dpos)
+                    color = data_raw[dpos]
 
                     # version 3.0 uses extra palettes for player colors
                     row_data.push_back(pixel(color_player_v4, color))
@@ -755,11 +750,11 @@ cdef class SLPMainFrameDE(SLPFrame):
                 # fill command
                 # draw 'count' pixels with color of next byte
 
-                cpack = self.cmd_or_next(cmd, 4, dpos)
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
                 dpos = cpack.dpos
 
                 dpos += 1
-                color = self.get_byte_at(dpos)
+                color = data_raw[dpos]
 
                 for _ in range(cpack.count):
                     row_data.push_back(pixel(color_standard, color))
@@ -768,11 +763,11 @@ cdef class SLPMainFrameDE(SLPFrame):
                 # fill player color command
                 # draw the player color for 'count' times
 
-                cpack = self.cmd_or_next(cmd, 4, dpos)
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
                 dpos = cpack.dpos
 
                 dpos += 1
-                color = self.get_byte_at(dpos)
+                color = data_raw[dpos]
 
                 for _ in range(cpack.count):
                     # version 3.0 uses extra palettes for player colors
@@ -782,7 +777,7 @@ cdef class SLPMainFrameDE(SLPFrame):
                 # shadow command
                 # draw a transparent shadow pixel for 'count' times
 
-                cpack = self.cmd_or_next(cmd, 4, dpos)
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
                 dpos = cpack.dpos
 
                 for _ in range(cpack.count):
@@ -831,7 +826,7 @@ cdef class SLPMainFrameDE(SLPFrame):
                     # same as above, but span special color 1 nextbyte times.
 
                     dpos += 1
-                    pixel_count = self.get_byte_at(dpos)
+                    pixel_count = data_raw[dpos]
 
                     for _ in range(pixel_count):
                         row_data.push_back(pixel(color_special_1, 0))
@@ -841,7 +836,7 @@ cdef class SLPMainFrameDE(SLPFrame):
                     # same as above, using special color 2
 
                     dpos += 1
-                    pixel_count = self.get_byte_at(dpos)
+                    pixel_count = data_raw[dpos]
 
                     for _ in range(pixel_count):
                         row_data.push_back(pixel(color_special_2, 0))
@@ -873,10 +868,13 @@ cdef class SLPShadowFrame(SLPFrame):
     def __init__(self, frame_info, data):
         super().__init__(frame_info, data)
 
-    cdef process_drawing_cmds(self, vector[pixel] &row_data,
-                              Py_ssize_t rowid,
-                              Py_ssize_t first_cmd_offset,
-                              size_t expected_size):
+    @cython.boundscheck(False)
+    cdef void process_drawing_cmds(self,
+                                   const uint8_t[:] &data_raw,
+                                   vector[pixel] &row_data,
+                                   Py_ssize_t rowid,
+                                   Py_ssize_t first_cmd_offset,
+                                   size_t expected_size):
         """
         create palette indices (colors) for the drawing commands
         found for this row in the SLP frame.
@@ -889,6 +887,7 @@ cdef class SLPShadowFrame(SLPFrame):
         cdef bool eor = False
 
         cdef uint8_t cmd
+        cdef uint8_t color
         cdef uint8_t nextbyte
         cdef uint8_t lower_nibble
         cdef uint8_t higher_nibble
@@ -905,7 +904,7 @@ cdef class SLPShadowFrame(SLPFrame):
                 )
 
             # fetch drawing instruction
-            cmd = self.get_byte_at(dpos)
+            cmd = data_raw[dpos]
 
             lower_nibble = 0x0f & cmd
             higher_nibble = 0xf0 & cmd
@@ -925,7 +924,7 @@ cdef class SLPShadowFrame(SLPFrame):
                 pixel_count = cmd >> 2
                 for _ in range(pixel_count):
                     dpos += 1
-                    color = self.get_byte_at(dpos)
+                    color = data_raw[dpos]
 
                     # shadows in v4.0 draw a different color
                     row_data.push_back(pixel(color_shadow_v4, color))
@@ -935,7 +934,7 @@ cdef class SLPShadowFrame(SLPFrame):
                 # draw 'count' transparent pixels
                 # count = cmd >> 2; if count == 0: count = nextbyte
 
-                cpack = self.cmd_or_next(cmd, 2, dpos)
+                cpack = cmd_or_next(data_raw, cmd, 2, dpos)
                 dpos = cpack.dpos
                 for _ in range(cpack.count):
                     row_data.push_back(pixel(color_transparent, 0))
@@ -945,12 +944,12 @@ cdef class SLPShadowFrame(SLPFrame):
                 # draw (higher_nibble << 4 + nextbyte) following palette colors
 
                 dpos += 1
-                nextbyte = self.get_byte_at(dpos)
+                nextbyte = data_raw[dpos]
                 pixel_count = (higher_nibble << 4) + nextbyte
 
                 for _ in range(pixel_count):
                     dpos += 1
-                    color = self.get_byte_at(dpos)
+                    color = data_raw[dpos]
                     row_data.push_back(pixel(color_shadow_v4, color))
 
             elif lower_nibble == 0x03:
@@ -959,7 +958,7 @@ cdef class SLPShadowFrame(SLPFrame):
                 # transparent pixels
 
                 dpos += 1
-                nextbyte = self.get_byte_at(dpos)
+                nextbyte = data_raw[dpos]
                 pixel_count = (higher_nibble << 4) + nextbyte
 
                 for _ in range(pixel_count):
@@ -969,11 +968,11 @@ cdef class SLPShadowFrame(SLPFrame):
                 # fill command
                 # draw 'count' pixels with color of next byte
 
-                cpack = self.cmd_or_next(cmd, 4, dpos)
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
                 dpos = cpack.dpos
 
                 dpos += 1
-                color = self.get_byte_at(dpos)
+                color = data_raw[dpos]
 
                 for _ in range(cpack.count):
                     # shadows in v4.0 draw a different color
@@ -992,8 +991,28 @@ cdef class SLPShadowFrame(SLPFrame):
 
 
 @cython.boundscheck(False)
+cdef inline cmd_pack cmd_or_next(const uint8_t[:] &data_raw,
+                                 uint8_t cmd,
+                                 uint8_t n,
+                                 Py_ssize_t pos):
+    """
+    to save memory, the draw amount may be encoded into
+    the drawing command itself in the upper n bits.
+    """
+    cdef uint8_t packed_in_cmd = cmd >> n
+
+    if packed_in_cmd != 0:
+        return cmd_pack(packed_in_cmd, pos)
+
+    else:
+        pos += 1
+        return cmd_pack(data_raw[pos], pos)
+
+
+@cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix, palette):
+cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
+                                         numpy.ndarray[numpy.uint8_t, ndim=2, mode="c"] palette):
     """
     converts a palette index image matrix to an rgba matrix.
     """
@@ -1004,8 +1023,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix, pa
     cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
-    # micro optimization to avoid call to ColorTable.__getitem__()
-    cdef list m_lookup = palette.palette
+    cdef uint8_t[:, ::1] m_lookup = palette
 
     cdef uint8_t r
     cdef uint8_t g
@@ -1031,7 +1049,9 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix, pa
 
             if px_type == color_standard:
                 # simply look up the color index in the table
-                r, g, b = m_lookup[px_val]
+                r = m_lookup[px_val][0]
+                g = m_lookup[px_val][1]
+                b = m_lookup[px_val][2]
                 alpha = 255
 
             elif px_type == color_transparent:

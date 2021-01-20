@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 
 """
 Interactive browser for game asset files.
@@ -6,6 +6,8 @@ Interactive browser for game asset files.
 
 import os
 import readline  # pylint: disable=unused-import
+
+from openage.convert.processor.export.media_exporter import MediaExporter
 
 from ...log import warn, info
 from ...util.fslike.directory import Directory
@@ -60,10 +62,19 @@ def interactive_browser(cfg, srcdir=None):
             palette = get_palettes(data, game_version)
 
         with path.open("rb") as slpfile:
+
+            from ..processor.export.texture_merge import merge_frames
+
             tex = Texture(SLP(slpfile.read()), palette)
 
+            merge_frames(tex)
+
             out_path, filename = os.path.split(target)
-            tex.save(Directory(out_path).root, filename)
+            MediaExporter.save_png(
+                tex,
+                Directory(out_path).root,
+                filename
+            )
 
     import code
     from pprint import pprint

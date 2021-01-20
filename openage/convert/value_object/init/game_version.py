@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments
 
@@ -52,6 +52,10 @@ class GameBase:
 
         self.game_file_versions = []
         self.media_paths = {}
+
+        self.media_cache = None
+        if "media_cache" in flags.keys():
+            self.media_cache = flags["media_cache"]
 
         for path, hash_map in game_hashes:
             self.add_game_file_versions(path, hash_map)
