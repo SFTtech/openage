@@ -1,6 +1,6 @@
 # Copyright 2016-2021 the openage authors. See copying.md for legal info.
 #
-# cython: infer_types=True, profile=True
+# cython: infer_types=True
 
 """ Routines for 2D binpacking """
 

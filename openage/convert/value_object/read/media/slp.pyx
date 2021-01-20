@@ -1,6 +1,6 @@
 # Copyright 2013-2021 the openage authors. See copying.md for legal info.
 #
-# cython: infer_types=True, profile=True
+# cython: infer_types=True
 
 from enum import Enum
 import lz4.block

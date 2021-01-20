@@ -1,6 +1,6 @@
 # Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
-# cython: infer_types=True, profile=True
+# cython: infer_types=True
 
 """
 Creates valid PNG files as bytearrays by utilizing libpng.
