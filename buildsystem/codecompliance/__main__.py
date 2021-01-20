@@ -1,4 +1,4 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 """
 Entry point for the code compliance checker.
@@ -23,25 +23,27 @@ def parse_args():
     cli.add_argument("--only-changed-files", metavar='GITREF',
                      help=("slow checks are only done on files that have "
                            "changed since GITREF."))
-    cli.add_argument("--textfiles", action="store_true",
-                     help="check text files for whitespace issues")
-    cli.add_argument("--headerguards", action="store_true",
-                     help="check all header guards")
-    cli.add_argument("--cppstyle", action="store_true",
-                     help=("check the cpp code style"))
-    cli.add_argument("--pystyle", action="store_true",
-                     help=("check whether the python code complies with "
-                           "(a selected subset of) pep8."))
-    cli.add_argument("--pylint", action="store_true",
-                     help=("run pylint on the python code"))
-    cli.add_argument("--filemodes", action="store_true",
-                     help=("check whether files in the repo have the "
-                           "correct access bits (-> 0644) "))
     cli.add_argument("--authors", action="store_true",
                      help=("check whether all git authors are in copying.md. "
                            "repo must be a git repository."))
+    cli.add_argument("--cppstyle", action="store_true",
+                     help=("check the cpp code style"))
+    cli.add_argument("--cython", action="store_true",
+                     help=("check if cython is turned off"))
+    cli.add_argument("--headerguards", action="store_true",
+                     help="check all header guards")
     cli.add_argument("--legal", action="store_true",
                      help="check whether all sourcefiles have legal headers")
+    cli.add_argument("--filemodes", action="store_true",
+                     help=("check whether files in the repo have the "
+                           "correct access bits (-> 0644) "))
+    cli.add_argument("--pylint", action="store_true",
+                     help=("run pylint on the python code"))
+    cli.add_argument("--pystyle", action="store_true",
+                     help=("check whether the python code complies with "
+                           "(a selected subset of) pep8."))
+    cli.add_argument("--textfiles", action="store_true",
+                     help="check text files for whitespace issues")
     cli.add_argument("--test-git-change-years", action="store_true",
                      help=("when doing legal checks, test whether the "
                            "copyright year matches the git history."))
@@ -66,12 +68,13 @@ def process_args(args, error):
 
     if args.fast or args.all:
         # enable "fast" tests
+        args.authors = True
+        args.cppstyle = True
+        args.cython = True
         args.headerguards = True
         args.legal = True
-        args.authors = True
-        args.textfiles = True
-        args.cppstyle = True
         args.filemodes = True
+        args.textfiles = True
 
     if args.all:
         # enable tests that take a bit longer
@@ -81,8 +84,8 @@ def process_args(args, error):
         args.test_git_change_years = True
 
     if not any((args.headerguards, args.legal, args.authors, args.pystyle,
-                args.cppstyle, args.test_git_change_years, args.pylint,
-                args.filemodes, args.textfiles)):
+                args.cppstyle, args.cython, args.test_git_change_years,
+                args.pylint, args.filemodes, args.textfiles)):
         error("no checks were specified")
 
     has_git = bool(shutil.which('git'))
@@ -223,6 +226,10 @@ def find_all_issues(args, check_files=None):
     if args.pystyle:
         from .pystyle import find_issues
         yield from find_issues(check_files, ('openage', 'buildsystem'))
+
+    if args.cython:
+        from buildsystem.codecompliance.cython import find_issues
+        yield from find_issues(check_files, ('openage',))
 
     if args.cppstyle:
         from .cppstyle import find_issues
