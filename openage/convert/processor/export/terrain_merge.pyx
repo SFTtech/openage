@@ -94,9 +94,15 @@ cdef void cmerge_terrain(texture):
                 # Do an alpha blend:
                 # this if skips all fully transparent pixels
                 # which means we only copy colored pixels
-                if numpy.any(sub_frame.data[frame_y][frame_x]):
-                    cmerge_atlas[merge_coord_y, merge_coord_x] = csubframe_atlas[frame_y, frame_x]
+                for c in range(4):
+                    if csubframe_atlas[frame_y, frame_x][c] > 0:
+                        break
 
+                else:
+                    merge_coord_y += 1
+                    continue
+
+                cmerge_atlas[merge_coord_y, merge_coord_x] = csubframe_atlas[frame_y, frame_x]
                 merge_coord_y += 1
 
             merge_coord_x += 1
