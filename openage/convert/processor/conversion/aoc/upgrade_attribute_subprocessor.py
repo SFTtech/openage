@@ -1124,6 +1124,28 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
+    def gold_counter_upgrade(converter_group, line, value, operator, team=False):
+        """
+        Creates a patch for the gold cunter effect (ID: 49).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # Unused in AoC
+
+        return patches
+
+    @staticmethod
     def hp_upgrade(converter_group, line, value, operator, team=False):
         """
         Creates a patch for the HP modify effect (ID: 0).
@@ -1211,6 +1233,50 @@ class AoCUpgradeAttributeSubprocessor:
 
         wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
         patches.append(wrapper_forward_ref)
+
+        return patches
+
+    @staticmethod
+    def imperial_tech_id_upgrade(converter_group, line, value, operator, team=False):
+        """
+        Creates a patch for the imperial tech ID effect (ID: 24).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # Unused in AoC
+
+        return patches
+
+    @staticmethod
+    def kidnap_storage_upgrade(converter_group, line, value, operator, team=False):
+        """
+        Creates a patch for the kidnap storage effect (ID: 57).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # Unused in AoC
 
         return patches
 
@@ -2220,9 +2286,75 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
+    def standing_wonders_upgrade(converter_group, line, value, operator, team=False):
+        """
+        Creates a patch for the standing wonders effect (ID: 42).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # Unused in AoC
+
+        return patches
+
+    @staticmethod
+    def tc_available_upgrade(converter_group, line, value, operator, team=False):
+        """
+        Creates a patch for the TC available effect (ID: 48).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # Unused in AoC
+
+        return patches
+
+    @staticmethod
     def terrain_defense_upgrade(converter_group, line, value, operator, team=False):
         """
         Creates a patch for the terrain defense modify effect (ID: 18).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # Unused in AoC
+
+        return patches
+
+    @staticmethod
+    def tribute_inefficiency_upgrade(converter_group, line, value, operator, team=False):
+        """
+        Creates a patch for the tribute inefficiency effect (ID: 46).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup

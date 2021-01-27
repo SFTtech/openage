@@ -22,13 +22,21 @@ UNIT_LINE_LOOKUPS = {
     1254: ("Konnik", "konnik"),                 # Krepost unit
     1258: ("Ram", "ram"),                       # replacement for ID 35?
     1263: ("FlamingCamel", "flaming_camel"),
+
+    # LOTW
     1370: ("SteppeLancer", "steppe_lancer"),
+    1655: ("Coustillier", "coustillier"),
+    1658: ("Serjeant", "serjeant"),
+    1663: ("FlemishMilitia", "flemish_militia"),
 }
 
 # key: head unit id; value: (nyan object name, filename prefix)
 # contains only new buildings of DE2
 BUILDING_LINE_LOOKUPS = {
     1251: ("Krepost", "krepost"),
+
+    # LOTW
+    1665: ("Donjon", "donjon"),
 }
 
 # key: (head) unit id; value: (nyan object name, filename prefix)
@@ -60,6 +68,14 @@ TECH_GROUP_LOOKUPS = {
     692: ("TowerShields", "tower_shields"),
     715: ("EliteSteppeLancer", "elite_steppe_lancer"),
     716: ("Supplies", "supplies"),
+
+    # LOTW
+    751: ("EliteCoustillier", "elite_coustillier"),
+    753: ("EliteSerjeant", "elite_serjeant"),
+    754: ("BurgundianVineyatds", "burgundian_vineyards"),
+    755: ("FlemishRevolution", "flemish_revolution"),
+    756: ("FirstCrusade", "first_crusade"),
+    757: ("Scutage", "scutage"),
 }
 
 # key: civ index; value: (nyan object name, filename prefix)
@@ -69,11 +85,17 @@ CIV_GROUP_LOOKUPS = {
     33: ("Tatars", "tatars"),
     34: ("Cumans", "cumans"),
     35: ("Lithuanians", "lithuanians"),
+
+    # LOTW
+    36: ("Burgundians", "burgundians"),
+    37: ("Sicilians", "sicilians"),
 }
 
 # key: civ index; value: (civ ids, nyan object name, filename prefix)
 # contains only new/changed graphic sets of DE2
 GRAPHICS_SET_LOOKUPS = {
+    0: ((0, 1, 2, 13, 14, 36), "WesternEuropean", "western_european"),
+    4: ((7, 37), "Byzantine", "byzantine"),
     11: ((33, 34), "CentralAsian", "central_asian"),
 }
 

@@ -45,7 +45,10 @@ class Effect(GenieStructure):
                     # a == resource_id, d == factor
                     6: "RESOURCE_MUL",
 
-                    # may mean something different in aok:hd:
+                    # a == unit_id, b == building_id, c == amount
+                    7: "SPAWN_UNIT",
+
+                    # same as 0-6 but applied to team members
                     10: "TEAM_ATTRIBUTE_ABSSET",
                     11: "TEAM_RESOURCE_MODIFY",
                     12: "TEAM_UNIT_ENABLED",
@@ -53,6 +56,15 @@ class Effect(GenieStructure):
                     14: "TEAM_ATTRIBUTE_RELSET",
                     15: "TEAM_ATTRIBUTE_MUL",
                     16: "TEAM_RESOURCE_MUL",
+
+                    # same as 0-6 but applied to enemies
+                    20: "ENEMY_ATTRIBUTE_ABSSET",
+                    21: "ENEMY_RESOURCE_MODIFY",
+                    22: "ENEMY_UNIT_ENABLED",
+                    23: "ENEMY_UNIT_UPGRADE",
+                    24: "ENEMY_ATTRIBUTE_RELSET",
+                    25: "ENEMY_ATTRIBUTE_MUL",
+                    26: "ENEMY_RESOURCE_MUL",
 
                     # these are only used in technology trees, 103 even requires
                     # one

@@ -131,6 +131,7 @@ class SWGBCCTechSubprocessor:
             type_id = effect.get_type()
 
             if team_bonus or type_id in (10, 11, 12, 13, 14, 15, 16):
+                # Same effect as (type_id - 1) but gets applied to all allies
                 team_effect = True
                 type_id -= 10
 
@@ -151,6 +152,10 @@ class SWGBCCTechSubprocessor:
             elif type_id == 3:
                 patches.extend(AoCTechSubprocessor.upgrade_unit_effect(converter_group,
                                                                        effect))
+
+            elif type_id == 7:
+                # Spawn units: This should be a script
+                pass
 
             elif type_id == 101:
                 patches.extend(AoCTechSubprocessor.tech_cost_modify_effect(converter_group,

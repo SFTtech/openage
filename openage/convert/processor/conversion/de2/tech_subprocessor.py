@@ -42,6 +42,15 @@ class DE2TechSubprocessor:
         21: AoCUpgradeAttributeSubprocessor.resource_storage_1_upgrade,
         22: AoCUpgradeAttributeSubprocessor.blast_radius_upgrade,
         23: AoCUpgradeAttributeSubprocessor.search_radius_upgrade,
+
+        # TODO: These refer to different atributes in DE2
+        24: AoCUpgradeAttributeSubprocessor.imperial_tech_id_upgrade,
+        42: AoCUpgradeAttributeSubprocessor.standing_wonders_upgrade,
+        46: AoCUpgradeAttributeSubprocessor.tribute_inefficiency_upgrade,
+        48: AoCUpgradeAttributeSubprocessor.tc_available_upgrade,
+        49: AoCUpgradeAttributeSubprocessor.gold_counter_upgrade,
+        57: AoCUpgradeAttributeSubprocessor.kidnap_storage_upgrade,
+
         100: AoCUpgradeAttributeSubprocessor.resource_cost_upgrade,
         101: AoCUpgradeAttributeSubprocessor.creation_time_upgrade,
         102: AoCUpgradeAttributeSubprocessor.min_projectiles_upgrade,
@@ -105,6 +114,9 @@ class DE2TechSubprocessor:
         214: DE2UpgradeResourceSubprocessor.free_kipchaks_upgrade,
         216: DE2UpgradeResourceSubprocessor.sheep_food_amount_upgrade,
         218: DE2UpgradeResourceSubprocessor.cuman_tc_upgrade,
+        220: DE2UpgradeResourceSubprocessor.relic_food_production_upgrade,
+        234: DE2UpgradeResourceSubprocessor.first_crusade_upgrade,
+        236: DE2UpgradeResourceSubprocessor.burgundian_vineyards_upgrade,
     }
 
     @classmethod

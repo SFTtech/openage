@@ -3169,6 +3169,9 @@ class AoCAbilitySubprocessor:
                             graphics_set_id = set_id
                             break
 
+                    else:
+                        raise Exception(f"No graphics set found for civ id {civ_id}")
+
                     # Check if the object for the animation has been created before
                     obj_exists = graphics_set_id in handled_graphics_set_ids
                     if not obj_exists:
