@@ -234,7 +234,7 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
         """
         Returns the line that is upgraded.
         """
-        return self.data.unit_lines_vertical_ref[self.unit_line_id]
+        return self.data.unit_lines[self.unit_line_id]
 
     def get_upgrade_target_id(self):
         """
@@ -329,7 +329,7 @@ class UnitUnlock(GenieTechEffectBundleGroup):
         """
         Returns the line that is unlocked by this tech.
         """
-        return self.data.unit_lines_vertical_ref[self.line_id]
+        return self.data.unit_lines[self.line_id]
 
     def __repr__(self):
         return f"UnitUnlock<{self.get_id()}>"

@@ -512,7 +512,7 @@ class DE2NyanSubprocessor:
         raw_api_object.add_raw_parent("engine.aux.tech.Tech")
 
         if isinstance(tech_group, UnitLineUpgrade):
-            unit_line = dataset.unit_lines_vertical_ref[tech_group.get_line_id()]
+            unit_line = dataset.unit_lines[tech_group.get_line_id()]
             head_unit_id = unit_line.get_head_unit_id()
             obj_location = f"data/game_entity/generic/{name_lookup_dict[head_unit_id][1]}/"
 
