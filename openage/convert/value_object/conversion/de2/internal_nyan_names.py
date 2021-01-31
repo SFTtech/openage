@@ -27,6 +27,7 @@ UNIT_LINE_LOOKUPS = {
     1370: ("SteppeLancer", "steppe_lancer"),
     1655: ("Coustillier", "coustillier"),
     1658: ("Serjeant", "serjeant"),
+    1660: ("DSerjeant", "dserjeant"),           # Donjon Serjeant
     1663: ("FlemishMilitia", "flemish_militia"),
 }
 

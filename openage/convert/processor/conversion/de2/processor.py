@@ -116,7 +116,6 @@ class DE2Processor:
         cls.create_variant_groups(full_data_set)
         AoCProcessor.create_terrain_groups(full_data_set)
         AoCProcessor.create_tech_groups(full_data_set)
-        AoCProcessor.create_node_tech_groups(full_data_set)
         AoCProcessor.create_civ_groups(full_data_set)
 
         info("Linking API-like objects...")

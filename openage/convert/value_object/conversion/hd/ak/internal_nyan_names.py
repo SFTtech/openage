@@ -11,7 +11,6 @@ figure out the names for a nyan object.
 # key: head unit id; value: (nyan object name, filename prefix)
 # contains only new units of AK
 UNIT_LINE_LOOKUPS = {
-    527: ("DemolitionRaft", "demolition_raft"),
     583: ("Genitour", "genitour"),
     885: ("SiegeTower", "siege_tower"),             # old version of ID 1105 with combat
     936: ("Elephant", "elephant"),
@@ -27,6 +26,7 @@ UNIT_LINE_LOOKUPS = {
     1031: ("Crocodile", "crocodile"),
     1060: ("Goat", "goat"),
     1103: ("FireGalley", "fire_galley"),
+    1104: ("DemolitionRaft", "demolition_raft"),
     1105: ("SiegeTower", "siege_tower"),
 }
 

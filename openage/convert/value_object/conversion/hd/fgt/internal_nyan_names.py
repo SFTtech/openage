@@ -11,7 +11,6 @@ figure out the names for a nyan object.
 # key: head unit id; value: (nyan object name, filename prefix)
 # contains only new units of Forgotten
 UNIT_LINE_LOOKUPS = {
-    184: ("Condottiero", "condottiero"),
     185: ("Slinger", "slinger"),
     305: ("Llama", "llama"),
     486: ("Bear", "bear"),
@@ -23,6 +22,7 @@ UNIT_LINE_LOOKUPS = {
     873: ("ElephantArcher", "elephant_archer"),
     876: ("Boyar", "boyar"),
     879: ("Kamayuk", "kamayuk"),
+    882: ("Condottiero", "condottiero"),
 }
 
 # key: head unit id; value: (nyan object name, filename prefix)
