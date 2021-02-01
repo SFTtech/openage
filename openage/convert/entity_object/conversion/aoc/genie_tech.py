@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2021 the openage authors. See copying.md for legal info.
 
 """
 Contains structures and API-like objects for techs from AoC.
@@ -409,16 +409,6 @@ class InitiatedTech(GenieTechEffectBundleGroup):
 
     def __repr__(self):
         return f"InitiatedTech<{self.get_id()}>"
-
-
-class NodeTech(GenieTechEffectBundleGroup):
-    """
-    Techs that act as a container for other techs. It is used to form complex
-    requirements for age upgrades.
-    """
-
-    def __repr__(self):
-        return f"NodeTech<{self.get_id()}>"
 
 
 class CivBonus(GenieTechEffectBundleGroup):

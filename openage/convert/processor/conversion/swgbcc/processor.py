@@ -1,14 +1,14 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-branches,too-many-statements,too-many-locals
 #
 # TODO:
 # pylint: disable=line-too-long
-from openage.convert.entity_object.conversion.aoc.genie_tech import BuildingUnlock
 """
 Convert data from SWGB:CC to openage formats.
 """
 
+from openage.convert.entity_object.conversion.aoc.genie_tech import BuildingUnlock
 from .....log import info
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 from ....entity_object.conversion.aoc.genie_tech import BuildingLineUpgrade,\

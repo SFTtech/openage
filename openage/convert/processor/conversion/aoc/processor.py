@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-branches,too-many-statements
 # pylint: disable=too-many-locals,too-many-public-methods
@@ -20,7 +20,7 @@ from ....entity_object.conversion.aoc.genie_tech import AgeUpgrade,\
 from ....entity_object.conversion.aoc.genie_tech import BuildingLineUpgrade
 from ....entity_object.conversion.aoc.genie_tech import GenieTechObject
 from ....entity_object.conversion.aoc.genie_tech import StatUpgrade, InitiatedTech,\
-    BuildingUnlock, NodeTech
+    BuildingUnlock
 from ....entity_object.conversion.aoc.genie_terrain import GenieTerrainGroup
 from ....entity_object.conversion.aoc.genie_terrain import GenieTerrainObject
 from ....entity_object.conversion.aoc.genie_unit import GenieAmbientGroup,\
@@ -780,7 +780,7 @@ class AoCProcessor:
                     )
                     continue
 
-                elif len(upgrade_effects) > 0:
+                if len(upgrade_effects) > 0:
                     upgrade = upgrade_effects[0]
                     line_id = upgrade["attr_a"].get_value()
                     upgrade_id = upgrade["attr_b"].get_value()
