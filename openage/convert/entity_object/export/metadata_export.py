@@ -83,7 +83,13 @@ class SpriteMetadataExport(MetadataExport):
 
                         frame_metadata = self.frame_metadata[img_filename][frame_idx]
 
-                        sprite_file.add_frame(index, int(degree), index, *frame_metadata.values())
+                        sprite_file.add_frame(
+                            frame_idx,
+                            int(degree),
+                            index,
+                            index,
+                            *frame_metadata.values()
+                        )
 
                 degree += degree_step
 
