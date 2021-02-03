@@ -136,7 +136,7 @@ modpacks.
 
 ### `mask`
 
-Tells the renderer which mask it has to use.
+Tells the renderer which mask it has to use for what adjacent directions.
 
 Parameter  | Type      | Optional | Default value
 -----------|-----------|----------|--------------
