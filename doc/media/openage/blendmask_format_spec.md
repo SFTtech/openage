@@ -85,11 +85,11 @@ image quality with higher zoom levels.
 ```
 # Assume the texture image has a size of 100x100
 scalefactor 1.0  # No scaling, 100x100 at default zoom
-scalefactor 2.0  # 50x50 at default zoom; 100x100 at 2x zoom
-scalefactor 4.0  # 25x25 at default zoom; 100x100 at 4x zoom
+scalefactor 2.0  # scaled down to 50x50 at default zoom; original 100x100 at 2x zoom in
+scalefactor 4.0  # scaled down to 25x25 at default zoom; original 100x100 at 4x zoom in
 
 # Factors <1 result in upscaling
-scalefactor 0.5  # 200x200 at default zoom; 100x100 at 2x zoom
+scalefactor 0.5  # scaled up to 200x200 at default zoom; original 100x100 at 2x zoom out
 ```
 
 
