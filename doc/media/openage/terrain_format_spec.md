@@ -155,7 +155,8 @@ blendmask 2 "media/blend1.bltable" 10 3  # blend1.bltable is in the subfolder me
 Absolute paths start from the (virtual) modpack root (the path where all
 modpacks are installed). They always begin with `/` followed by either
 a modpack identifier or a shortened modpack alias enclosed by `{}`. For
-information on modpack identifiers and aliases see the [TODO]() docs.
+information on modpack identifiers and aliases see the [modpack](modpacks.md#alias-and-identifier)
+docs.
 
 ```
 blendmask 0 "/{aoe2_base@openage}/blend0.bltable" 10 3  # absolute path with modpack identifier

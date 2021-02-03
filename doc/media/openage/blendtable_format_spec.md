@@ -22,11 +22,12 @@ parameters have default values and are optional. The preferred file extension is
 version 1
 
 # table definitions (n x n matrix)
-blendtable
+blendtable [
 <a> <b> <c> ...
 <d> <e> <f> ...
 <g> <h> <i> ...
 ... ... ... ...
+]
 
 # selection of blendomatic borders
 blendmask <blend_id> <filename>
@@ -76,14 +77,14 @@ Parameter | Type    | Optional | Default value
 matrix    | int[][] | No       | -
 
 **matrix**<br>
-A nxn matrix containing reference IDs for blending masks. This
+A `n`x`n` matrix containing reference IDs for blending masks. This
 must be a square matrix. Columns are separated by spaces, rows
 are separated by newlines. IDs in the table must be defined in the
 same file by using the `blendmask` attribute.
 
 When two terrains are adjacent, the renderer selects the blending
 mask by looking it up in this table. For that purpose, it uses
-the `priority` ans `blend_mode` parameters of the `blendtable`
+the `priority` and `blend_mode` parameters of the `[blendtable](terrain_format_spec.md#blendtable)`
 attribute in the respective terrain format definitions.
 
 The terrain with the higher priority uses its `blend_mode` value for
@@ -96,10 +97,11 @@ defined by the ID at the index.
 #### Example
 
 ```
-blendtable
+blendtable [
 0  0  0
 1  2  3
 23 42 1337
+]
 ```
 
 
@@ -134,7 +136,8 @@ blendmask 2 "media/blend1.blmask"  # blend1.blmask is in the subfolder media/
 Absolute paths start from the (virtual) modpack root (the path where all
 modpacks are installed). They always begin with `/` followed by either
 a modpack identifier or a shortened modpack alias enclosed by `{}`. For
-information on modpack identifiers and aliases see the [TODO]() docs.
+information on modpack identifiers and aliases see the [modpack](modpacks.md#alias-and-identifier)
+docs.
 
 ```
 blendmask 0 "/{aoe2_base@openage}/blend0.blmask"  # absolute path with modpack identifier
