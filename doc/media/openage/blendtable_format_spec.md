@@ -19,7 +19,7 @@ parameters have default values and are optional. The preferred file extension is
 # comments start with # and are ignored
 
 # file version
-version <version_no>
+version 1
 
 # table definitions (n x n matrix)
 blendtable

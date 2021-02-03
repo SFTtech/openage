@@ -18,7 +18,7 @@ parameters have default values and are optional. The preferred file extension is
 # comments start with # and are ignored
 
 # file version
-version <version_no>
+version 1
 
 # image file reference, relative to this file's location
 imagefile <image_id> <filename>
