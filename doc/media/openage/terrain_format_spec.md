@@ -301,38 +301,44 @@ Height of the texture inside the image resource.
 **priority**<br>
 Decides which blending table of the two adjacent terrain textures is selected.
 The table referenced by the terrain with the highest priority value will be picked.
-If two adjacent terrains have equal priority, the blending table of the terrain
-with a lower x coordinate value is selected. If the x coordinate value is also
-equal, the blending table of the terrain with the lowest y coordinate is selected.
 
 ```
 # grass.terrain
 ...
-blendtable 0 "blend0.bltable" 12 2
+frame 0 1 0 0 0 200 200 priority=5 blend_mode=0
 ...
 
 # sand.terrain
 ...
-blendtable 0 "blend1.bltable" 10 3
+frame 0 1 0 0 0 200 200 priority=1 blend_mode=0
 ...
 
--> grass.terrain's blending table has a higher blending priority.
-   Its blending table definition is therefore used when grass.terrain
-   and sand.terrain are adjacent to each other.
+-> grass.terrain's frame has a higher blending priority.
+   therefore, its blending table definition is used when
+   grass.terrain and sand.terrain are adjacent to each other.
 ```
 
+If two adjacent terrains have equal priority, the blending table of the terrain
+with a lower x coordinate value is selected. If the x coordinate value is also
+equal, the blending table of the terrain with the lowest y coordinate is selected.
+
+If no priority is defined, the renderer assigns the frame priority 0.
+
 **blend_mode**<br>
-Used for looking up the blending pattern index in the blending table.
+Used for looking up the blending pattern index in the blending table. If no
+blend mode is defined, then no blending pattern is used at all, even if
+adjacent terrain textures define one.
 
 
 #### Example
 
 ```
-frame 0 1 0 0 0 200 200 blend_id=1
-# frame_idx = 0  -> first frame in the animation
-# layer_id  = 1  -> drawn on layer 1
-# image_id  = 0  -> taken from image resource with ID 0
-# blend_id  = 1  -> use blending pattern 1
+frame 0 1 0 0 0 200 200 priority=1 blend_mode=0
+# frame_idx  = 0  -> first frame in the animation
+# layer_id   = 1  -> drawn on layer 1
+# image_id   = 0  -> taken from image resource with ID 0
+# priority   = 1  -> this frame's blending table is selected with priority 1
+# blend_mode = 0  -> use blend mode 0
 # Texture is located at (0,0) in image resource
 # and has a size of (200,200).
 ```
