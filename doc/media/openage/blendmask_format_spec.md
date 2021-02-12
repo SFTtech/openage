@@ -3,8 +3,7 @@
 **Format Version:** 1
 
 The openage blendmask format is a plaintext configuration file format for defining
-a blending mask. The table can be used by terrain files to blend edges other
-terrains with an alpha mask.
+a blending pattern table using alpha masks.
 
 All attributes start with a defined keyword followed by parameter values. Some
 parameters have default values and are optional. The preferred file extension is

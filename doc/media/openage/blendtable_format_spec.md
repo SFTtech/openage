@@ -3,9 +3,11 @@
 **Format Version:** 1
 
 The openage blendtable format is a plaintext configuration file format for defining
-a blending mask table. The table can be used by terrain files to blend edges other
-terrains with an alpha mask. In the file, a blending lookup table and blending
-masks are declared.
+a blending pattern lookup table. Using this table, the renderer selects a blending
+pattern for two directly adjacent terrain textures. The blending pattern is further
+defined by the [blendmask format](blendmask_format_spec.md).
+
+The blending table is referenced by [terrain format files](terrain_format_spec.md).
 
 All attributes start with a defined keyword followed by parameter values. Some
 parameters have default values and are optional. The preferred file extension is
@@ -30,7 +32,7 @@ blendtable [
 ]
 
 # selection of blendomatic borders
-blendmask <blend_id> <filename>
+pattern <pattern_id> <filename>
 ```
 
 
@@ -68,7 +70,7 @@ version 1
 
 ### `blendtable`
 
-Lookup table for blendmasks blending two adjacent terrains.
+Lookup table for blend patterns blending two adjacent terrains.
 
 There has to be exactly one `blendtable` defined.
 
@@ -77,20 +79,20 @@ Parameter | Type    | Optional | Default value
 matrix    | int[][] | No       | -
 
 **matrix**<br>
-A `n`x`n` matrix containing reference IDs for blending masks. This
+A `n`x`n` matrix containing reference IDs for blending patterns. This
 must be a square matrix. Columns are separated by spaces, rows
 are separated by newlines. IDs in the table must be defined in the
-same file by using the `blendmask` attribute.
+same file by using the `pattern` attribute.
 
 When two terrains are adjacent, the renderer selects the blending
-mask by looking it up in this table. For that purpose, it uses
-the `priority` and `blend_mode` parameters of the `[blendtable](terrain_format_spec.md#blendtable)`
+pattern by looking it up in this table. For that purpose, it uses
+the `priority` and `blend_mode` parameters of the `[blendtable](terrain_format_spec.md#frame)`
 attribute in the respective terrain format definitions.
 
 The terrain with the higher priority uses its `blend_mode` value for
 the row-index in the table, the terrain with the lower priority uses
 its `blend_mode` value for the column-index. The terrain with the higher
-priority is then blended onto the other terrain, using the blendmask
+priority is then blended onto the other terrain, using the blending pattern
 defined by the ID at the index.
 
 
@@ -105,32 +107,32 @@ blendtable [
 ```
 
 
-### `blendmask`
+### `pattern`
 
-Defines a blending mask that is used to blend one terrain texture
+Defines a blending pattern that is used to blend one terrain texture
 into a different terrain texture that is directly adjacent. The
 blending mechanism is described in more detail in the [blendomatic](/doc/media/blendomatic.md)
 documentation.
 
-Parameter | Type   | Optional | Default value
-----------|--------|----------|--------------
-blend_id  | int    | No       | -
-filename  | string | No       | -
+Parameter  | Type   | Optional | Default value
+-----------|--------|----------|--------------
+pattern_id | int    | No       | -
+filename   | string | No       | -
 
-**blend_id**<br>
-Reference ID for the blending mask used in this file. IDs should start at `0`.
+**pattern_id**<br>
+Reference ID for the blending pattern used in this file. IDs should start at `0`.
 
 **filename**<br>
-Path to the blending mask definition file on the filesystem.
+Path to the blending pattern definition file on the filesystem.
 
 There are two ways to specify a path: relative and absolute. Relative
 paths are relative to the location of the terrain definition file. They
 can only refer to image resources that are in the same modpack.
 
 ```
-blendmask 0 "blend0.blmask"        # blend0.blmask is in the same folder as the blendtable file
-blendmask 1 "./blend0.blmask"      # same as above, but more explicit
-blendmask 2 "media/blend1.blmask"  # blend1.blmask is in the subfolder media/
+pattern 0 "blend0.blmask"        # blend0.blmask is in the same folder as the blendtable file
+pattern 1 "./blend0.blmask"      # same as above, but more explicit
+pattern 2 "media/blend1.blmask"  # blend1.blmask is in the subfolder media/
 ```
 
 Absolute paths start from the (virtual) modpack root (the path where all
@@ -140,8 +142,8 @@ information on modpack identifiers and aliases see the [modpack](modpacks.md#ali
 docs.
 
 ```
-blendmask 0 "/{aoe2_base@openage}/blend0.blmask"  # absolute path with modpack identifier
-blendmask 1 "/{aoe2_base}/blend0.blmask"          # absolute path with modpack alias
+pattern 0 "/{aoe2_base@openage}/blend0.blmask"  # absolute path with modpack identifier
+pattern 1 "/{aoe2_base}/blend0.blmask"          # absolute path with modpack alias
 ```
 
 Absolute paths are the only way to reference image resources from other
@@ -151,7 +153,7 @@ modpacks.
 #### Example
 
 ```
-blendmask 0 "blend0.blmask"
-blendmask 1 "./blend3.blmask"
-blendmask 2 "/{aoe2_base}/blend8.blmask"
+pattern 0 "blend0.blmask"
+pattern 1 "./blend3.blmask"
+pattern 2 "/{aoe2_base}/blend8.blmask"
 ```

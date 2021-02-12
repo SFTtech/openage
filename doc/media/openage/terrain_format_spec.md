@@ -23,8 +23,8 @@ version 1
 # source image definitions
 imagefile <image_id> <filename>
 
-# selection of blendomatic borders
-blendmask <blend_id> <filename> <priority>
+# selection of blending pattern
+blendtable <table_id> <filename>
 
 # the zoom level at which the texture is shown in full detail
 # e.g. scalefactor 2.0 -> full detail at 200% zoom
@@ -37,7 +37,7 @@ layer <id> mode=loop position=<int> time_per_frame=<float> replay_delay=<float>
 
 # definition of a terrain frames
 # these are iterated for an animation
-frame <layer_id> <image_id> <xpos> <ypos> <xsize> <ysize> blend_id=<int>
+frame <layer_id> <image_id> <xpos> <ypos> <xsize> <ysize>  priority=<int> blend_mode=<int>
 ```
 
 
@@ -125,9 +125,9 @@ imagefile 2 "/{aoe2_base}/graphics/grass.png"
 
 ### `blendtable`
 
-Defines a blending table that is used for looking up a blending mask. The
+Defines a blending table that is used for looking up a blending pattern. The
 blending mechanism is described in more detail in the [blendomatic](/doc/media/blendomatic.md)
-documentation. Blending masks/tables are **optional** and do not need to be used.
+documentation. Blending patterns/tables are **optional** and do not need to be used.
 
 Parameter  | Type   | Optional | Default value
 -----------|--------|----------|--------------
@@ -147,9 +147,9 @@ paths are relative to the location of the terrain definition file. They
 can only refer to image resources that are in the same modpack.
 
 ```
-blendmask 0 "blend0.bltable" 10 3        # blend0.bltable is in the same folder as the terrain file
-blendmask 1 "./blend0.bltable" 10 3      # same as above, but more explicit
-blendmask 2 "media/blend1.bltable" 10 3  # blend1.bltable is in the subfolder media/
+blendtable 0 "blend0.bltable" 10 3        # blend0.bltable is in the same folder as the terrain file
+blendtable 1 "./blend0.bltable" 10 3      # same as above, but more explicit
+blendtable 2 "media/blend1.bltable" 10 3  # blend1.bltable is in the subfolder media/
 ```
 
 Absolute paths start from the (virtual) modpack root (the path where all
@@ -159,46 +159,20 @@ information on modpack identifiers and aliases see the [modpack](modpacks.md#ali
 docs.
 
 ```
-blendmask 0 "/{aoe2_base@openage}/blend0.bltable" 10 3  # absolute path with modpack identifier
-blendmask 1 "/{aoe2_base}/blend0.bltable" 10 3         # absolute path with modpack alias
+blendtable 0 "/{aoe2_base@openage}/blend0.bltable" 10 3  # absolute path with modpack identifier
+blendtable 1 "/{aoe2_base}/blend0.bltable" 10 3          # absolute path with modpack alias
 ```
 
 Absolute paths are the only way to reference image resources from other
 modpacks.
 
-**priority**<br>
-Decides which blending table of the two adjacent terrain textures is selected.
-The table referenced by the terrain with the highest priority value will be picked.
-If two adjacent terrains have equal priority, the blending table of the terrain
-with a lower x coordinate value is selected. If the x coordinate value is also
-equal, the blending table of the terrain with the lowest y coordinate is selected.
-
-```
-# grass.terrain
-...
-blendmask 0 "blend0.bltable" 12 2
-...
-
-# sand.terrain
-...
-blendmask 0 "blend1.bltable" 10 3
-...
-
--> grass.terrain's blending table has a higher blending priority.
-   Its blending table definition is therefore used when grass.terrain
-   and sand.terrain are adjacent to each other.
-```
-
-**blend_mode**<br>
-Used for looking up the blending mask index in the blending table.
-
 
 #### Example
 
 ```
-blendmask 0 "blend0.bltable" 40 7
-blendmask 1 "./blend3.bltable" 10 1
-blendmask 2 "/{aoe2_base}/blend8.bltable" 90 1
+blendtable 0 "blend0.bltable" 40 7
+blendtable 1 "./blend3.bltable" 10 1
+blendtable 2 "/{aoe2_base}/blend8.bltable" 90 1
 ```
 
 
@@ -284,16 +258,17 @@ supposed to be animated, only frame `0` has to be defined.
 Textures displayed in the frame are taken from an image resource
 defined by the `imagefile` attribute.
 
-Parameter | Type  | Optional | Default value
-----------|-------|----------|--------------
-frame_idx | int   | No       | -
-layer_id  | int   | No       | -
-image_id  | int   | No       | -
-xpos      | int   | No       | -
-ypos      | int   | No       | -
-xsize     | int   | No       | -
-ysize     | int   | No       | -
-blend_id  | int   | Yes      | -
+Parameter  | Type  | Optional | Default value
+-----------|-------|----------|--------------
+frame_idx  | int   | No       | -
+layer_id   | int   | No       | -
+image_id   | int   | No       | -
+xpos       | int   | No       | -
+ypos       | int   | No       | -
+xsize      | int   | No       | -
+ysize      | int   | No       | -
+priority   | int   | Yes      | -
+blend_mode | int   | Yes      | -
 
 **frame_idx**<br>
 Index of the frame in the animation. The first usable index value
@@ -323,10 +298,31 @@ Width of the texture inside the image resource.
 **ysize**<br>
 Height of the texture inside the image resource.
 
-**blend_id**<br>
-ID of the blending mask used in this frame. If no ID is defined, the
-renderer will always select the blending mask of the adjacent terrain
-texture for blending.
+**priority**<br>
+Decides which blending table of the two adjacent terrain textures is selected.
+The table referenced by the terrain with the highest priority value will be picked.
+If two adjacent terrains have equal priority, the blending table of the terrain
+with a lower x coordinate value is selected. If the x coordinate value is also
+equal, the blending table of the terrain with the lowest y coordinate is selected.
+
+```
+# grass.terrain
+...
+blendtable 0 "blend0.bltable" 12 2
+...
+
+# sand.terrain
+...
+blendtable 0 "blend1.bltable" 10 3
+...
+
+-> grass.terrain's blending table has a higher blending priority.
+   Its blending table definition is therefore used when grass.terrain
+   and sand.terrain are adjacent to each other.
+```
+
+**blend_mode**<br>
+Used for looking up the blending pattern index in the blending table.
 
 
 #### Example
@@ -336,7 +332,7 @@ frame 0 1 0 0 0 200 200 blend_id=1
 # frame_idx = 0  -> first frame in the animation
 # layer_id  = 1  -> drawn on layer 1
 # image_id  = 0  -> taken from image resource with ID 0
-# blend_id  = 1  -> use blending mask 1
+# blend_id  = 1  -> use blending pattern 1
 # Texture is located at (0,0) in image resource
 # and has a size of (200,200).
 ```
