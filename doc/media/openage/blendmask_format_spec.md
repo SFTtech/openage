@@ -3,7 +3,10 @@
 **Format Version:** 1
 
 The openage blendmask format is a plaintext configuration file format for defining
-a blending pattern table using alpha masks.
+a blending pattern using alpha masks. A blendmask defines a table of directional filters
+to blend a terrain texture into another texture. Standard tiles have 8 directional
+edges where they can border other textures. Thus, there are `2^8 = 256` total
+combinations which can be used as filters.
 
 All attributes start with a defined keyword followed by parameter values. Some
 parameters have default values and are optional. The preferred file extension is
