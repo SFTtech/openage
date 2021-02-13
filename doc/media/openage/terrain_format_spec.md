@@ -127,7 +127,11 @@ imagefile 2 "/{aoe2_base}/graphics/grass.png"
 
 Defines a blending table that is used for looking up a blending pattern. The
 blending mechanism is described in more detail in the [blendomatic](/doc/media/blendomatic.md)
-documentation. Blending patterns/tables are **optional** and do not need to be used.
+documentation. The blending table and blending patterns are further defined
+in the [blending table format](blendtable_format_spec.md) and
+[blendmask format](blendmask_format_spec.md) specifications.
+
+Blending patterns/tables are **optional** and do not need to be used.
 
 Parameter  | Type   | Optional | Default value
 -----------|--------|----------|--------------
@@ -299,8 +303,9 @@ Width of the texture inside the image resource.
 Height of the texture inside the image resource.
 
 **priority**<br>
-Decides which blending table of the two adjacent terrain textures is selected.
-The table referenced by the terrain with the highest priority value will be picked.
+Decides which [blending table](blendtable_format_spec.md) of the two
+adjacent terrain textures is selected. The table referenced by the terrain
+with the highest priority value will be picked.
 
 ```
 # grass.terrain

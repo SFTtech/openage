@@ -31,7 +31,7 @@ blendtable [
 ... ... ... ...
 ]
 
-# selection of blendomatic borders
+# pattern definitions
 pattern <pattern_id> <filename>
 ```
 
@@ -111,8 +111,8 @@ blendtable [
 
 Defines a blending pattern that is used to blend one terrain texture
 into a different terrain texture that is directly adjacent. The
-blending mechanism is described in more detail in the [blendomatic](/doc/media/blendomatic.md)
-documentation.
+blending mechanism is described in more detail in the [blendmask](blendmask_format_spec.md)
+format documentation.
 
 Parameter  | Type   | Optional | Default value
 -----------|--------|----------|--------------

@@ -8,6 +8,8 @@ to blend a terrain texture into another texture. Standard tiles have 8 direction
 edges where they can border other textures. Thus, there are `2^8 = 256` total
 combinations which can be used as filters.
 
+More info on the blending mechanism can be found in the [blendomatic docs](/doc/media/blendomatic.md).
+
 All attributes start with a defined keyword followed by parameter values. Some
 parameters have default values and are optional. The preferred file extension is
 `.blmask`.
