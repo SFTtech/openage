@@ -111,31 +111,9 @@ filename  | string | No       | -
 Reference ID for the resource used in this file. IDs should start at `0`.
 
 **filename**<br>
-Path to the image resource for the blend texture on the filesystem.
-
-There are two ways to specify a path: relative and absolute. Relative
-paths are relative to the location of the blendmask definition file. They
-can only refer to image resources that are in the same modpack.
-
-```
-imagefile 0 "grass.png"       # grass.png is in the same folder as the blendmask file
-imagefile 1 "./grass.png"     # same as above, but more explicit
-imagefile 2 "media/sand.png"  # sand.png is in the subfolder media/
-```
-
-Absolute paths start from the (virtual) modpack root (the path where all
-modpacks are installed). They always begin with `/` followed by either
-a modpack identifier or a shortened modpack alias enclosed by `{}`. For
-information on modpack identifiers and aliases see the [modpack](modpacks.md#alias-and-identifier)
+Path to the image resource for the blend texture on the filesystem. The different methods of
+resource referencing are explained in the [file referencing](file_referencing.md)
 docs.
-
-```
-imagefile 0 "/{aoe2_base@openage}/sand.png"  # absolute path with modpack identifier
-imagefile 1 "/{aoe2_base}/sand.png"          # absolute path with modpack alias
-```
-
-Absolute paths are the only way to reference image resources from other
-modpacks.
 
 
 ### `mask`

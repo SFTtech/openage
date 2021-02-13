@@ -1,4 +1,4 @@
-# Path Referencing
+# File Referencing
 
 There are two ways to specify a path: *relative* and *absolute*.
 

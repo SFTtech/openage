@@ -123,31 +123,9 @@ filename   | string | No       | -
 Reference ID for the blending pattern used in this file. IDs should start at `0`.
 
 **filename**<br>
-Path to the blending pattern definition file on the filesystem.
-
-There are two ways to specify a path: relative and absolute. Relative
-paths are relative to the location of the terrain definition file. They
-can only refer to image resources that are in the same modpack.
-
-```
-pattern 0 "blend0.blmask"        # blend0.blmask is in the same folder as the blendtable file
-pattern 1 "./blend0.blmask"      # same as above, but more explicit
-pattern 2 "media/blend1.blmask"  # blend1.blmask is in the subfolder media/
-```
-
-Absolute paths start from the (virtual) modpack root (the path where all
-modpacks are installed). They always begin with `/` followed by either
-a modpack identifier or a shortened modpack alias enclosed by `{}`. For
-information on modpack identifiers and aliases see the [modpack](modpacks.md#alias-and-identifier)
+Path to the blending pattern definition file on the filesystem. The different methods of
+resource referencing are explained in the [file referencing](file_referencing.md)
 docs.
-
-```
-pattern 0 "/{aoe2_base@openage}/blend0.blmask"  # absolute path with modpack identifier
-pattern 1 "/{aoe2_base}/blend0.blmask"          # absolute path with modpack alias
-```
-
-Absolute paths are the only way to reference image resources from other
-modpacks.
 
 
 #### Example

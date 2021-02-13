@@ -144,31 +144,9 @@ blend_mode | int    | No       | -
 Reference ID for the blending table used in this file. IDs should start at `0`.
 
 **filename**<br>
-Path to the blending table definition on the filesystem.
-
-There are two ways to specify a path: relative and absolute. Relative
-paths are relative to the location of the terrain definition file. They
-can only refer to image resources that are in the same modpack.
-
-```
-blendtable 0 "blend0.bltable" 10 3        # blend0.bltable is in the same folder as the terrain file
-blendtable 1 "./blend0.bltable" 10 3      # same as above, but more explicit
-blendtable 2 "media/blend1.bltable" 10 3  # blend1.bltable is in the subfolder media/
-```
-
-Absolute paths start from the (virtual) modpack root (the path where all
-modpacks are installed). They always begin with `/` followed by either
-a modpack identifier or a shortened modpack alias enclosed by `{}`. For
-information on modpack identifiers and aliases see the [modpack](modpacks.md#alias-and-identifier)
+Path to the blending table definition on the filesystem. The different methods of
+resource referencing are explained in the [file referencing](file_referencing.md)
 docs.
-
-```
-blendtable 0 "/{aoe2_base@openage}/blend0.bltable" 10 3  # absolute path with modpack identifier
-blendtable 1 "/{aoe2_base}/blend0.bltable" 10 3          # absolute path with modpack alias
-```
-
-Absolute paths are the only way to reference image resources from other
-modpacks.
 
 
 #### Example
