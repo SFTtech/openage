@@ -25,7 +25,7 @@ imagefile <image_id> <filename>
 
 # the zoom level at which the animation is shown in full detail
 # e.g. scalefactor 2 -> full detail at 200% zoom
-scalefactor 1
+scalefactor 1.0
 
 # layer definitions
 # all layers will be drawn

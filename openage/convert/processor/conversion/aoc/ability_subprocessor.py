@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-public-methods,too-many-lines,too-many-locals
 # pylint: disable=too-many-branches,too-many-statements,too-many-arguments
@@ -3168,6 +3168,9 @@ class AoCAbilitySubprocessor:
                         if civ_id in items[0]:
                             graphics_set_id = set_id
                             break
+
+                    else:
+                        raise Exception(f"No graphics set found for civ id {civ_id}")
 
                     # Check if the object for the animation has been created before
                     obj_exists = graphics_set_id in handled_graphics_set_ids

@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-branches,too-many-statements,too-many-locals
 #
@@ -8,6 +8,7 @@
 Convert data from SWGB:CC to openage formats.
 """
 
+from openage.convert.entity_object.conversion.aoc.genie_tech import BuildingUnlock
 from .....log import info
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 from ....entity_object.conversion.aoc.genie_tech import BuildingLineUpgrade,\
@@ -179,61 +180,85 @@ class SWGBCCProcessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
         unit_connections = full_data_set.unit_connections
+        unit_lines = {}
+        unit_ref = {}
 
-        # Stores unit lines with key=line_id and val=object
-        # while they are created. In the GenieObjectContainer,
-        # we additionally store them with key=head_unit_id
-        # and val=object.
-        pre_unit_lines = {}
-
-        # Create all the lines
+        # First only handle the line heads (first units in a line)
         for connection in unit_connections.values():
             unit_id = connection["id"].get_value()
             unit = full_data_set.genie_units[unit_id]
-            line_id = connection["vertical_line"].get_value()
+            line_mode = connection["line_mode"].get_value()
 
-            # Check if a line object already exists for this id
-            # if not, create it
-            if line_id in pre_unit_lines.keys():
-                unit_line = pre_unit_lines[line_id]
+            if line_mode != 2:
+                # It's an upgrade. Skip and handle later
+                continue
 
-            else:
-                # Check for special cases first
-                if unit.has_member("transform_unit_id")\
-                        and unit["transform_unit_id"].get_value() > -1:
-                    # Cannon
-                    # SWGB stores a reference to the deployed cannon in the connections.
-                    # The transform unit is the real head unit.
-                    head_unit_id = unit["transform_unit_id"].get_value()
-                    unit_line = SWGBUnitTransformGroup(line_id, head_unit_id, full_data_set)
+            # Check for special cases first
+            if unit.has_member("transform_unit_id")\
+                    and unit["transform_unit_id"].get_value() > -1:
+                # Cannon
+                # SWGB stores the deployed cannon in the connections, but we
+                # want the undeployed cannon
+                transform_id = unit["transform_unit_id"].get_value()
+                unit_line = SWGBUnitTransformGroup(transform_id, transform_id, full_data_set)
 
-                elif unit_id in MONK_GROUP_ASSOCS.keys():
-                    # Jedi/Sith
-                    # Switch to monk with relic is hardcoded :(
-                    # for every civ (WTF LucasArts)
-                    switch_unit_id = MONK_GROUP_ASSOCS[unit_id]
-                    unit_line = SWGBMonkGroup(line_id, unit_id, switch_unit_id, full_data_set)
+            elif unit_id in MONK_GROUP_ASSOCS.keys():
+                # Jedi/Sith
+                # Switch to monk with relic is hardcoded :(
+                # for every civ (WTF LucasArts)
+                switch_unit_id = MONK_GROUP_ASSOCS[unit_id]
+                unit_line = SWGBMonkGroup(unit_id, unit_id, switch_unit_id, full_data_set)
 
-                elif unit.has_member("task_group")\
-                        and unit["task_group"].get_value() > 0:
-                    # Villager
-                    # done somewhere else because they are special^TM
-                    continue
-
-                else:
-                    # Normal units
-                    unit_line = SWGBUnitLineGroup(line_id, full_data_set)
-
-                pre_unit_lines.update({unit_line.get_id(): unit_line})
-
-            if connection["line_mode"].get_value() == 2:
-                # The unit is the first in line
-                unit_line.add_unit(unit)
+            elif unit.has_member("task_group")\
+                    and unit["task_group"].get_value() > 0:
+                # Villager
+                # done somewhere else because they are special^TM
+                continue
 
             else:
-                # The unit comes after another one
-                # Search other_connections for the previous unit in line
-                connected_types = connection["other_connections"].get_value()
+                # Normal units
+                unit_line = SWGBUnitLineGroup(unit_id, full_data_set)
+
+            unit_line.add_unit(unit)
+            unit_lines.update({unit_line.get_id(): unit_line})
+            unit_ref.update({unit_id: unit_line})
+
+        # Second, handle all upgraded units
+        for connection in unit_connections.values():
+            unit_id = connection["id"].get_value()
+            unit = full_data_set.genie_units[unit_id]
+            line_mode = connection["line_mode"].get_value()
+
+            if line_mode != 3:
+                # This unit is not an upgrade and was handled in the last for-loop
+                continue
+
+            # Search other_connections for the previous unit in line
+            connected_types = connection["other_connections"].get_value()
+            connected_index = -1
+            for index, _ in enumerate(connected_types):
+                connected_type = connected_types[index]["other_connection"].get_value()
+                if connected_type == 2:
+                    # 2 == Unit
+                    connected_index = index
+                    break
+
+            else:
+                raise Exception("Unit %s is not first in line, but no previous unit can"
+                                " be found in other_connections" % (unit_id))
+
+            connected_ids = connection["other_connected_ids"].get_value()
+            previous_unit_id = connected_ids[connected_index].get_value()
+
+            # Search for the first unit ID in the line recursively
+            previous_id = previous_unit_id
+            previous_connection = unit_connections[previous_unit_id]
+            while previous_connection["line_mode"] != 2:
+                if previous_id in unit_ref.keys():
+                    # Short-circuit here, if we the previous unit was already handled
+                    break
+
+                connected_types = previous_connection["other_connections"].get_value()
                 connected_index = -1
                 for index, _ in enumerate(connected_types):
                     connected_type = connected_types[index]["other_connection"].get_value()
@@ -242,25 +267,16 @@ class SWGBCCProcessor:
                         connected_index = index
                         break
 
-                else:
-                    raise Exception("Unit %s is not first in line, but no previous unit can"
-                                    " be found in other_connections" % (unit_id))
+                connected_ids = previous_connection["other_connected_ids"].get_value()
+                previous_id = connected_ids[connected_index].get_value()
+                previous_connection = unit_connections[previous_id]
 
-                # Find the id of the connected unit
-                connected_ids = connection["other_connected_ids"].get_value()
-                previous_unit_id = connected_ids[connected_index].get_value()
-
-                unit_line.add_unit(unit, after=previous_unit_id)
-
-        # Store the lines in the data set with the line ids as keys
-        full_data_set.unit_lines_vertical_ref.update(pre_unit_lines)
-
-        # Store the lines with the head unit ids as keys for searching
-        unit_lines = {}
-        for line in pre_unit_lines.values():
-            unit_lines.update({line.get_head_unit_id(): line})
+            unit_line = unit_ref[previous_id]
+            unit_line.add_unit(unit, after=previous_unit_id)
 
         # Search for civ lines and attach them to their main line
+        final_unit_lines = {}
+        final_unit_lines.update(unit_lines)
         for line in unit_lines.values():
             if line.get_head_unit_id() not in CIV_LINE_ASSOCS.keys():
                 for main_head_unit_id, civ_head_unit_ids in CIV_LINE_ASSOCS.items():
@@ -272,7 +288,7 @@ class SWGBCCProcessor:
 
                         # Remove the line from the main reference dict, so that
                         # it doesn't get converted to a game entity
-                        pre_unit_lines.pop(line.get_id())
+                        final_unit_lines.pop(line.get_id())
 
                         # Store a reference to the main line in the unit ID refs
                         for unit in line.line:
@@ -290,9 +306,8 @@ class SWGBCCProcessor:
                 for unit in line.line:
                     full_data_set.unit_ref[unit.get_id()] = line
 
-        # Store the remaining lines with the head unit id as keys
-        for line in pre_unit_lines.values():
-            full_data_set.unit_lines.update({line.get_head_unit_id(): line})
+        # Store the remaining lines in the main reference dict
+        full_data_set.unit_lines.update(final_unit_lines)
 
     @staticmethod
     def create_extra_unit_lines(full_data_set):
@@ -328,16 +343,70 @@ class SWGBCCProcessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
         building_connections = full_data_set.building_connections
+        genie_techs = full_data_set.genie_techs
 
+        # Unlocked = first in line
+        unlocked_by_tech = set()
+
+        # Upgraded = later in line
+        upgraded_by_tech = {}
+
+        # Search all techs for building upgrades. This is necessary because they are
+        # not stored in tech connections in SWGB
+        for tech_id, tech in genie_techs.items():
+            tech_effect_id = tech["tech_effect_id"].get_value()
+            if tech_effect_id < 0:
+                continue
+
+            tech_effects = full_data_set.genie_effect_bundles[tech_effect_id].get_effects()
+
+            # Search for upgrade or unlock effects
+            age_up = False
+            for effect in tech_effects:
+                effect_type = effect["type_id"].get_value()
+                unit_id_a = effect["attr_a"].get_value()
+                unit_id_b = effect["attr_b"].get_value()
+
+                if effect_type == 1 and effect["attr_a"].get_value() == 6:
+                    # if this is an age up tech, we do not need to create any additional
+                    # unlock techs
+                    age_up = True
+
+                if effect_type == 2 and unit_id_a in building_connections.keys():
+                    # Unlocks
+                    unlocked_by_tech.add(unit_id_a)
+
+                    if not age_up:
+                        # Add an unlock tech group to the data set
+                        building_unlock = BuildingUnlock(tech_id, unit_id_a, full_data_set)
+                        full_data_set.building_unlocks.update({building_unlock.get_id(): building_unlock})
+
+                elif effect_type == 2 and unit_id_a in full_data_set.genie_units.keys():
+                    # Check if this is a stacked unit (gate or command center)
+                    # for these units, we needs the stack_unit_id
+                    building = full_data_set.genie_units[unit_id_a]
+
+                    if building.has_member("stack_unit_id") and \
+                            building["stack_unit_id"].get_value() > -1:
+                        unit_id_a = building["stack_unit_id"].get_value()
+                        unlocked_by_tech.add(unit_id_a)
+
+                        if not age_up:
+                            building_unlock = BuildingUnlock(tech_id, unit_id_a, full_data_set)
+                            full_data_set.building_unlocks.update({building_unlock.get_id(): building_unlock})
+
+                if effect_type == 3 and unit_id_b in building_connections.keys():
+                    # Upgrades
+                    upgraded_by_tech[unit_id_b] = tech_id
+
+        # First only handle the line heads (first buildings in a line)
         for connection in building_connections.values():
             building_id = connection["id"].get_value()
-            building = full_data_set.genie_units[building_id]
-            previous_building_id = None
-            stack_building = False
 
-            # Buildings have no actual lines, so we use
-            # their unit ID as the line ID.
-            line_id = building_id
+            if building_id not in unlocked_by_tech:
+                continue
+
+            building = full_data_set.genie_units[building_id]
 
             # Check if we have to create a GenieStackBuildingGroup
             if building.has_member("stack_unit_id") and \
@@ -348,75 +417,76 @@ class SWGBCCProcessor:
 
             if building.has_member("head_unit_id") and \
                     building["head_unit_id"].get_value() > -1:
-                stack_building = True
-
-            # Check if the building is part of an existing line.
-            # TODO: SWGB does not use connected techs for this, so we have to use
-            # something else
-            for tech_id, tech in full_data_set.genie_techs.items():
-                # Check all techs that have a research time
-                if tech["research_time"].get_value() == 0:
-                    continue
-
-                effect_bundle_id = tech["tech_effect_id"].get_value()
-
-                # Ignore tech if it's an age up (handled separately)
-                resource_effects = full_data_set.genie_effect_bundles[effect_bundle_id].get_effects(effect_type=1)
-                age_up = False
-                for effect in resource_effects:
-                    resource_id = effect["attr_a"].get_value()
-
-                    if resource_id == 6:
-                        age_up = True
-                        break
-
-                if age_up:
-                    continue
-
-                # Search upgrade effects
-                upgrade_effects = full_data_set.genie_effect_bundles[effect_bundle_id].get_effects(effect_type=3)
-                upgrade_found = False
-                for effect in upgrade_effects:
-                    upgrade_source_id = effect["attr_a"].get_value()
-                    upgrade_target_id = effect["attr_b"].get_value()
-
-                    if upgrade_target_id == building_id:
-                        # TODO: This assumes that the head unit is always upgraded first
-                        line_id = upgrade_source_id
-                        upgrade_found = True
-                        break
-
-                if upgrade_found:
-                    # Add the upgrade tech group to the data set.
-                    building_upgrade = BuildingLineUpgrade(tech_id, line_id,
-                                                           building_id, full_data_set)
-                    full_data_set.tech_groups.update(
-                        {building_upgrade.get_id(): building_upgrade}
-                    )
-                    full_data_set.building_upgrades.update(
-                        {building_upgrade.get_id(): building_upgrade}
-                    )
-
-                    break
-
-            # Check if a line object already exists for this id
-            # if not, create it
-            if line_id in full_data_set.building_lines.keys():
-                building_line = full_data_set.building_lines[line_id]
-                building_line.add_unit(building, after=previous_building_id)
-                full_data_set.unit_ref.update({building_id: building_line})
+                head_unit_id = building["head_unit_id"].get_value()
+                building_line = SWGBStackBuildingGroup(building_id, head_unit_id, full_data_set)
 
             else:
-                if stack_building:
-                    head_unit_id = building["head_unit_id"].get_value()
-                    building_line = SWGBStackBuildingGroup(line_id, head_unit_id, full_data_set)
+                building_line = GenieBuildingLineGroup(building_id, full_data_set)
 
-                else:
-                    building_line = GenieBuildingLineGroup(line_id, full_data_set)
+            building_line.add_unit(building)
+            full_data_set.building_lines.update({building_line.get_id(): building_line})
+            full_data_set.unit_ref.update({building_id: building_line})
 
-                full_data_set.building_lines.update({building_line.get_id(): building_line})
-                building_line.add_unit(building, after=previous_building_id)
-                full_data_set.unit_ref.update({building_id: building_line})
+        # Second, handle all upgraded buildings
+        for connection in building_connections.values():
+            building_id = connection["id"].get_value()
+
+            if building_id not in upgraded_by_tech.keys():
+                continue
+
+            building = full_data_set.genie_units[building_id]
+
+            # Search other_connections for the previous unit in line
+            connected_types = connection["other_connections"].get_value()
+            connected_index = -1
+            for index, _ in enumerate(connected_types):
+                connected_type = connected_types[index]["other_connection"].get_value()
+                if connected_type == 1:
+                    # 1 == Building
+                    connected_index = index
+                    break
+
+            else:
+                raise Exception("Building %s is not first in line, but no previous building can"
+                                " be found in other_connections" % (building_id))
+
+            connected_ids = connection["other_connected_ids"].get_value()
+            previous_unit_id = connected_ids[connected_index].get_value()
+
+            # Search for the first unit ID in the line recursively
+            previous_id = previous_unit_id
+            previous_connection = building_connections[previous_unit_id]
+            while previous_connection["line_mode"] != 2:
+                if previous_id in full_data_set.unit_ref.keys():
+                    # Short-circuit here, if we the previous unit was already handled
+                    break
+
+                connected_types = previous_connection["other_connections"].get_value()
+                connected_index = -1
+                for index, _ in enumerate(connected_types):
+                    connected_type = connected_types[index]["other_connection"].get_value()
+                    if connected_type == 1:
+                        # 1 == Building
+                        connected_index = index
+                        break
+
+                connected_ids = previous_connection["other_connected_ids"].get_value()
+                previous_id = connected_ids[connected_index].get_value()
+                previous_connection = building_connections[previous_id]
+
+            building_line = full_data_set.unit_ref[previous_id]
+            building_line.add_unit(building, after=previous_unit_id)
+            full_data_set.unit_ref.update({building_id: building_line})
+
+            # Also add the building upgrade tech here
+            building_upgrade = BuildingLineUpgrade(
+                upgraded_by_tech[building_id],
+                building_line.get_id(),
+                building_id,
+                full_data_set
+            )
+            full_data_set.tech_groups.update({building_upgrade.get_id(): building_upgrade})
+            full_data_set.building_upgrades.update({building_upgrade.get_id(): building_upgrade})
 
     @staticmethod
     def create_villager_groups(full_data_set):
@@ -530,56 +600,47 @@ class SWGBCCProcessor:
             tech_id = connection["id"].get_value()
             tech = full_data_set.genie_techs[tech_id]
 
+            effect_id = tech["tech_effect_id"].get_value()
+            if effect_id < 0:
+                continue
+
+            tech_effects = full_data_set.genie_effect_bundles[effect_id]
+
             # Check if the tech is an age upgrade
-            effect_bundle_id = tech["tech_effect_id"].get_value()
-            resource_effects = full_data_set.genie_effect_bundles[effect_bundle_id].get_effects(effect_type=1)
-            age_up = False
+            tech_found = False
+            resource_effects = tech_effects.get_effects(effect_type=1)
             for effect in resource_effects:
-                resource_id = effect["attr_a"].get_value()
+                # Resource ID 6: Current Age
+                if effect["attr_a"].get_value() != 6:
+                    continue
 
-                # Sets current tech level
-                if resource_id == 6:
-                    age_up = True
-                    break
-
-            if age_up:
-                # Search other_connections for the age id
-                connected_types = connection["other_connections"].get_value()
-                connected_index = -1
-                for index, _ in enumerate(connected_types):
-                    connected_type = connected_types[index]["other_connection"].get_value()
-                    if connected_type == 0:
-                        # 0 == Age
-                        connected_index = index
-                        break
-
-                else:
-                    raise Exception("Tech %s sets Tech level resource, but no age id"
-                                    " can be found in other_connections" % (tech_id))
-
-                # Find the age id in the connected ids
-                connected_ids = connection["other_connected_ids"].get_value()
-                age_id = connected_ids[connected_index].get_value()
+                age_id = effect["attr_b"].get_value()
                 age_up = AgeUpgrade(tech_id, age_id, full_data_set)
                 full_data_set.tech_groups.update({age_up.get_id(): age_up})
                 full_data_set.age_upgrades.update({age_up.get_id(): age_up})
+                tech_found = True
+                break
 
-            else:
-                # Create a stat upgrade for other techs
-                stat_up = StatUpgrade(tech_id, full_data_set)
-                full_data_set.tech_groups.update({stat_up.get_id(): stat_up})
-                full_data_set.stat_upgrades.update({stat_up.get_id(): stat_up})
+            if tech_found:
+                continue
+
+            # Building unlocks/upgrades are not in SWGB tech connections
+
+            # Create a stat upgrade for other techs
+            stat_up = StatUpgrade(tech_id, full_data_set)
+            full_data_set.tech_groups.update({stat_up.get_id(): stat_up})
+            full_data_set.stat_upgrades.update({stat_up.get_id(): stat_up})
 
         # Unit upgrades and unlocks are stored in unit connections
         unit_connections = full_data_set.unit_connections
-        pre_unit_unlocks = {}
-        pre_unit_upgrades = {}
+        unit_unlocks = {}
+        unit_upgrades = {}
         for connection in unit_connections.values():
             unit_id = connection["id"].get_value()
             required_research_id = connection["required_research"].get_value()
             enabling_research_id = connection["enabling_research"].get_value()
             line_mode = connection["line_mode"].get_value()
-            line_id = connection["vertical_line"].get_value()
+            line_id = full_data_set.unit_ref[unit_id].get_id()
 
             if required_research_id == -1 and enabling_research_id == -1:
                 # Unit is unlocked from the start
@@ -588,17 +649,17 @@ class SWGBCCProcessor:
             if line_mode == 2:
                 # Unit is first in line, there should be an unlock tech
                 unit_unlock = SWGBUnitUnlock(enabling_research_id, line_id, full_data_set)
-                pre_unit_unlocks.update({unit_id: unit_unlock})
+                unit_unlocks.update({unit_id: unit_unlock})
 
             elif line_mode == 3:
                 # Units further down the line receive line upgrades
                 unit_upgrade = SWGBUnitLineUpgrade(required_research_id, line_id,
                                                    unit_id, full_data_set)
-                pre_unit_upgrades.update({required_research_id: unit_upgrade})
+                unit_upgrades.update({required_research_id: unit_upgrade})
 
         # Unit unlocks for civ lines
-        unit_unlocks = {}
-        for unit_unlock in pre_unit_unlocks.values():
+        final_unit_unlocks = {}
+        for unit_unlock in unit_unlocks.values():
             line = unit_unlock.get_unlocked_line()
             if line.get_head_unit_id() not in CIV_LINE_ASSOCS.keys():
                 for main_head_unit_id, civ_head_unit_ids in CIV_LINE_ASSOCS.items():
@@ -608,48 +669,47 @@ class SWGBCCProcessor:
 
                         # The line is an alternative civ line so the unlock
                         # is stored with the main unlock
-                        main_unlock = pre_unit_unlocks[main_head_unit_id]
+                        main_unlock = unit_unlocks[main_head_unit_id]
                         main_unlock.add_civ_unlock(unit_unlock)
                         break
 
                 else:
                     # The unlock is for a line without alternative civ lines
-                    unit_unlocks.update({unit_unlock.get_id(): unit_unlock})
+                    final_unit_unlocks.update({unit_unlock.get_id(): unit_unlock})
 
             else:
                 # The unlock is for a main line
-                unit_unlocks.update({unit_unlock.get_id(): unit_unlock})
+                final_unit_unlocks.update({unit_unlock.get_id(): unit_unlock})
 
-        full_data_set.tech_groups.update(unit_unlocks)
-        full_data_set.unit_unlocks.update(unit_unlocks)
+        full_data_set.tech_groups.update(final_unit_unlocks)
+        full_data_set.unit_unlocks.update(final_unit_unlocks)
 
-        # TODO: Unit upgrades
-        unit_upgrades = {}
-        for unit_upgrade in pre_unit_upgrades.values():
+        # Unit upgrades for civ lines
+        final_unit_upgrades = {}
+        for unit_upgrade in unit_upgrades.values():
             tech_id = unit_upgrade.tech.get_id()
             if tech_id not in CIV_TECH_ASSOCS.keys():
                 for main_tech_id, civ_tech_ids in CIV_TECH_ASSOCS.items():
                     if tech_id in civ_tech_ids:
                         # The tech is upgrade for an alternative civ so the upgrade
                         # is stored with the main upgrade
-                        main_upgrade = pre_unit_upgrades[main_tech_id]
+                        main_upgrade = unit_upgrades[main_tech_id]
                         main_upgrade.add_civ_upgrade(unit_upgrade)
                         break
 
                 else:
                     # The upgrade is for a line without alternative civ lines
-                    unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
+                    final_unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
 
             else:
                 # The upgrade is for a main line
-                unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
+                final_unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
 
-        full_data_set.tech_groups.update(unit_upgrades)
-        full_data_set.unit_upgrades.update(unit_upgrades)
+        full_data_set.tech_groups.update(final_unit_upgrades)
+        full_data_set.unit_upgrades.update(final_unit_upgrades)
 
         # Initiated techs are stored with buildings
         genie_units = full_data_set.genie_units
-
         for genie_unit in genie_units.values():
             if not genie_unit.has_member("research_id"):
                 continue
@@ -671,7 +731,6 @@ class SWGBCCProcessor:
         # Civ boni have to be aquired from techs
         # Civ boni = ONLY passive boni (not unit unlocks, unit upgrades or team bonus)
         genie_techs = full_data_set.genie_techs
-
         for index, _ in enumerate(genie_techs):
             tech_id = index
 

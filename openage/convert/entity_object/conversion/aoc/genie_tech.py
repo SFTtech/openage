@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2021 the openage authors. See copying.md for legal info.
 
 """
 Contains structures and API-like objects for techs from AoC.
@@ -234,7 +234,7 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
         """
         Returns the line that is upgraded.
         """
-        return self.data.unit_lines_vertical_ref[self.unit_line_id]
+        return self.data.unit_lines[self.unit_line_id]
 
     def get_upgrade_target_id(self):
         """
@@ -329,7 +329,7 @@ class UnitUnlock(GenieTechEffectBundleGroup):
         """
         Returns the line that is unlocked by this tech.
         """
-        return self.data.unit_lines_vertical_ref[self.line_id]
+        return self.data.unit_lines[self.line_id]
 
     def __repr__(self):
         return f"UnitUnlock<{self.get_id()}>"
@@ -409,16 +409,6 @@ class InitiatedTech(GenieTechEffectBundleGroup):
 
     def __repr__(self):
         return f"InitiatedTech<{self.get_id()}>"
-
-
-class NodeTech(GenieTechEffectBundleGroup):
-    """
-    Techs that act as a container for other techs. It is used to form complex
-    requirements for age upgrades.
-    """
-
-    def __repr__(self):
-        return f"NodeTech<{self.get_id()}>"
 
 
 class CivBonus(GenieTechEffectBundleGroup):

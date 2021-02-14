@@ -1,4 +1,4 @@
-# Copyright 2013-2020 the openage authors. See copying.md for legal info.
+# Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,too-many-lines
 
@@ -540,6 +540,38 @@ class ResourceCost(GenieStructure):
                     216: "DE2_UNKNOWN_216",
                     217: "DE2_UNKNOWN_217",
                     218: "DE2_UNKNOWN_218",
+                    219: "DE2_UNKNOWN_219",
+                    220: "RELIC_FOOD_PRODUCTION_RATE",
+                    221: "DE2_UNKNOWN_221",
+                    222: "DE2_UNKNOWN_222",
+                    223: "DE2_UNKNOWN_223",
+                    224: "DE2_UNKNOWN_224",
+                    225: "DE2_UNKNOWN_225",
+                    226: "DE2_UNKNOWN_226",
+                    227: "DE2_UNKNOWN_227",
+                    228: "DE2_UNKNOWN_228",
+                    229: "DE2_UNKNOWN_229",
+                    230: "DE2_UNKNOWN_230",
+                    231: "DE2_UNKNOWN_231",
+                    232: "DE2_UNKNOWN_232",
+                    233: "DE2_UNKNOWN_233",
+                    234: "FIRST_CRUSADE",
+                    235: "DE2_UNKNOWN_235",
+                    236: "BURGUNDIAN_VINEYARDS",
+                    237: "DE2_UNKNOWN_237",
+                    238: "DE2_UNKNOWN_238",
+                    239: "DE2_UNKNOWN_239",
+                    240: "DE2_UNKNOWN_240",
+                    241: "DE2_UNKNOWN_241",
+                    242: "DE2_UNKNOWN_242",
+                    243: "DE2_UNKNOWN_243",
+                    244: "DE2_UNKNOWN_244",
+                    245: "DE2_UNKNOWN_245",
+                    246: "DE2_UNKNOWN_246",
+                    247: "DE2_UNKNOWN_247",
+                    248: "DE2_UNKNOWN_248",
+                    249: "DE2_UNKNOWN_249",
+                    250: "DE2_UNKNOWN_250",
                 }
             )),
             (READ_GEN, "amount", StorageType.INT_MEMBER, "int16_t"),
@@ -1277,6 +1309,12 @@ class ProjectileUnit(ActionUnit):
                     10: "WALL",
                 },
             )),
+        ])
+
+        if game_version[0].game_id == "AOE2DE":
+            data_format.append((READ_GEN, "bonus_damage_resistance", StorageType.FLOAT_MEMBER, "float"))
+
+        data_format.extend([
             (READ_GEN, "weapon_range_max", StorageType.FLOAT_MEMBER, "float"),
             (READ_GEN, "blast_range", StorageType.FLOAT_MEMBER, "float"),
             (READ_GEN, "attack_speed", StorageType.FLOAT_MEMBER, "float"),  # = "reload time"
@@ -1428,6 +1466,10 @@ class LivingUnit(ProjectileUnit):
                 data_format.extend([
                     (READ_GEN, "spawn_graphic_id", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "upgrade_graphic_id", StorageType.ID_MEMBER, "int16_t"),
+                    (READ_GEN, "max_charge", StorageType.FLOAT_MEMBER, "float"),
+                    (READ_GEN, "charge_regen_rate", StorageType.FLOAT_MEMBER, "float"),
+                    (READ_GEN, "charge_cost", StorageType.ID_MEMBER, "int16_t"),
+                    (READ_GEN, "charge_type", StorageType.ID_MEMBER, "int16_t"),
                 ])
 
             data_format.extend([

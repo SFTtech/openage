@@ -16,6 +16,26 @@ class DE2UpgradeResourceSubprocessor:
     """
 
     @staticmethod
+    def burgundian_vineyards_upgrade(converter_group, value, operator, team=False):
+        """
+        Creates a patch for the burgundian vineyards effect (ID: 236).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
     def cliff_attack_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the cliff attack multiplier effect (ID: 212).
@@ -294,6 +314,26 @@ class DE2UpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
+    def first_crusade_upgrade(converter_group, value, operator, team=False):
+        """
+        Creates a patch for the first crusade effect (ID: 234).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
     def fish_trap_food_amount_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the fish trap food amount modify effect (ID: 88).
@@ -319,6 +359,26 @@ class DE2UpgradeResourceSubprocessor:
     def free_kipchaks_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the current gold amount modify effect (ID: 214).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def relic_food_production_upgrade(converter_group, value, operator, team=False):
+        """
+        Creates a patch for the relic food production effect (ID: 220).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
