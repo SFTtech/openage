@@ -27,7 +27,8 @@ version 1
 # source image definitions
 imagefile <image_id> <filename>
 
-# How much the texture is scaled down at default zoom level
+# the zoom level at which the texture is shown in full detail
+# e.g. scalefactor 2.0 -> full detail at 200% zoom
 scalefactor <factor>
 
 # selection of blendomatic borders

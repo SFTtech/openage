@@ -21,7 +21,7 @@ parameters have default values and are optional. The preferred file extension is
 version 1
 
 # number of entries in the colour table
-entries <int>
+entries <count>
 
 # Colour values
 colours [
@@ -76,7 +76,7 @@ Number of colour values in the palette.
 #### Example
 
 ```
-count 256
+entries 256
 ```
 
 
