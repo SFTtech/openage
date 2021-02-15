@@ -76,7 +76,7 @@ There has to be exactly one `blendtable` defined.
 
 Parameter | Type    | Optional | Default value
 ----------|---------|----------|--------------
-matrix    | int[][] | No       | -
+matrix    | int[]   | No       | -
 
 **matrix**<br>
 A `n`x`n` matrix containing reference IDs for blending patterns. This
