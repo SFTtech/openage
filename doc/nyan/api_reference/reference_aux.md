@@ -1263,9 +1263,6 @@ ResourceSpot(Entity):
     capacity               : int
     starting_amount        : int
     decay_rate             : float
-    harvest_progress       : set(HarvestProgress)
-    gatherer_limit         : int
-    harvestable_by_default : bool
 ```
 
 Amount of resources that is gatherable through the `Harvestable` ability of a game entity.
@@ -1281,31 +1278,6 @@ Gatherable amount when the resource spot is created.
 
 **decay_rate**
 Determines how much resources are lost each second after the resource spot is activated (see `harvestable_by_default` for details).
-
-**harvest_progress**
-Can alter the game entity the resource spot belongs to after certain percentages of the  resource amount are harvested.
-
-**gatherer_limit**
-Limits the amount of gatherers that can access the resource spot simultaneously.
-
-**harvestable_by_default**
-Determines whether the resource spot is harvestable when it is created. If `true`, the resource spot will be accessible without any conditions as long as the corresponding `Harvestable` ability of the game entity is enabled. When set to false, the resource spot must be activated with a `MakeHarvestable` effect. The conditions under which the activation succeeds are decided by the `MakeHarvestable` resistance of the game entity the resource spot belongs to.
-
-## aux.resource_spot.RestockableResourceSpot
-
-```python
-RestockableResourceSpot(ResourceSpot):
-    destruction_time_limit : float
-    restock_progress       : set(RestockProgress)
-```
-
-Resource spot that can be restocked after the contained resource amount reaches 0.
-
-**destruction_time_limit**
-Time until the resource spot is made permanently inaccessible. Afterwards, restocking is impossible.
-
-**restock_progress**
-Can alter the game entity the resource spot belongs to after certain percentages of the  resource amount are restocked.
 
 ## aux.sound.Sound
 

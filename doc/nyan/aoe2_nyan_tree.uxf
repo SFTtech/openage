@@ -10759,14 +10759,14 @@ lock_pool : LockPool</panel_attributes>
     <coordinates>
       <x>6290</x>
       <y>4000</y>
-      <w>170</w>
+      <w>190</w>
       <h>80</h>
     </coordinates>
     <panel_attributes>*Lock*
 bg=green
 
 --
-locks : set(LockPool)</panel_attributes>
+lock_pools : set(LockPool)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -10798,13 +10798,13 @@ slots : int</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>6450</x>
+      <x>6470</x>
       <y>4030</y>
-      <w>90</w>
+      <w>70</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
