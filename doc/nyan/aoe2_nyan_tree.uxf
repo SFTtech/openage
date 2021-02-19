@@ -8888,7 +8888,11 @@ distribution_type : DistributionType
     </coordinates>
     <panel_attributes>
 *CalculationType*
-bg=pink</panel_attributes>
+bg=pink
+
+// this determines the factor that is multiplied with the
+// value determined by distribution_type. It depends on
+// the number of effectors.</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -8916,7 +8920,10 @@ bg=pink
 --
 shift_x : int
 shift_y : int
-scale_factor : float</panel_attributes>
+scale_factor : float
+
+
+// factor =  (scale_factor / (num_effectors - shift_x)) + shift_y</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -8957,12 +8964,14 @@ scale_factor : float</panel_attributes>
     <coordinates>
       <x>2890</x>
       <y>5530</y>
-      <w>120</w>
+      <w>110</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>
 *Linear*
-bg=pink</panel_attributes>
+bg=pink
+
+// factor =  num_effectors</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -8986,7 +8995,10 @@ bg=pink</panel_attributes>
     </coordinates>
     <panel_attributes>
 *NoStacking*
-bg=pink</panel_attributes>
+bg=pink
+
+
+// factor = 1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -9652,7 +9664,13 @@ blacklisted_entities : set(GameEntity)</panel_attributes>
     </coordinates>
     <panel_attributes>
 *DistributionType*
-bg=pink</panel_attributes>
+bg=pink
+
+// Becomes relevant if effector's have different change values
+// e.g. monk1 = heals 20 HP/s
+//      monk2 = heals 30 HP/s
+// if distribution_type = Mean the mean value 25 HP/s is used
+// for the calculation</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

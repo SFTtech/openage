@@ -6,31 +6,100 @@ Reference documentation of the `engine.effect` module of the openage modding API
 
 ```python
 Effect(Entity):
+    properties : dict(abstract(children(EffectProperty)), children(EffectProperty))
 ```
 
 Generalization object for all effects.
 
-Standard behavior without specializations:
+**properties**
+Further specializes the effect beyond the standard behaviour.
+
+The engine expects objects from the namespace `engine.ability.property.type` as keys. Values must always be an instance of the object used as key.
+
+Standard behavior without properties:
 
 * Effects are **only applied** if the resistor has a **matching** `Resistance` object. Matching can be further defined depending on the concrete effect.
 * Applying them **costs nothing**.
 * Will be applied to targets **with any diplomatic stance**.
-* Only affect the target chosen with the `ApplyContinuousEffect`/`ApplyDiscretEffect` ability.
+* They only affect the target chosen with the `ApplyContinuousEffect`/`ApplyDiscretEffect` ability.
+* Effects have no preferred order of application.
 
-Specializations:
+Properties:
 
-* `AreaEffect`: Effects are applied to other game entities in a circular area around the target.
-* `CostEffect`: Makes effects cost attribute points or resources.
-* `DiplomaticEffect`: Effects only apply to specified diplomatic stances.
+* `Area`: Effects are applied to other game entities in a circular area around the target.
+* `Cost`: Makes effects cost attribute points or resources.
+* `Diplomatic`: Effects only apply to specified diplomatic stances.
+* `Priority`: Sets the prefered order of application in comparison to other effects.
+
+## ability.property.EffectProperty
+
+```python
+EffectProperty(Entity):
+    pass
+```
+
+Generalization object for all properties of effects.
+
+## effect.property.type.Area
+
+```python
+Area(EffectProperty):
+    range   : float
+    dropoff : DropoffType
+```
+
+Apply the effect to game entities in a circular area around the target.
+
+**range**
+The radius of the area in which game entities are affected.
+
+**dropoff**
+Changes the effectiveness of the effect based on the distance to the center of the circle (see `DropoffType`).
+
+## effect.property.type.Cost
+
+```python
+Cost(EffectProperty):
+    cost : Cost
+```
+
+Make the effect cost attribute points or resources.
+
+**cost**
+The costs for the effect as a `Cost` object.
+
+## effect.property.type.Diplomatic
+
+```python
+Diplomatic(EffectProperty):
+    stances : set(DiplomaticStance)
+```
+
+Make the effect only applicable to game entities of a player with a specified diplomatic stance.
+
+**stances**
+If the target is owned by a player has *any* of the specified diplomatic stances, the effect is applied.
+
+## effect.property.type.Priority
+
+```python
+Priority(EffectProperty):
+    priority : int
+```
+
+Assigns a priority to the effect. Priorities determine the order of application when multiple effects are applied via an `EffectBatch`.
+
+**priority**
+Priority value used for comparison with other effects. Effects with higher values are preferred before effects with lower values.
 
 ## effect.continuous.ContinuousEffect
 
 ```python
 ContinuousEffect(Effect):
+    pass
 ```
 
 Generalization object for effects that are applied at a per-second rate.
-
 
 ## effect.continuous.flat_attribute_change.FlatAttributeChange
 
@@ -72,6 +141,7 @@ Ignores the `ProtectingAttribute`s in the set when changing the attributes of th
 
 ```python
 FlatAttributeChangeDecrease(FlatAttributeChange):
+    pass
 ```
 
 Specialization of the continuous `FlatAttributeChange` effect that decreases the resistor's current attribute value at a per-second rate.
@@ -81,6 +151,7 @@ Specialization of the continuous `FlatAttributeChange` effect that decreases the
 
 ```python
 FlatAttributeChangeIncrease(FlatAttributeChange):
+    pass
 ```
 
 Specialization of the continuous `FlatAttributeChange` effect that increases the resistor's current attribute value at a per-second rate.
@@ -135,6 +206,7 @@ Ignores the `ProtectingAttribute`s in the set when changing the attributes of th
 
 ```python
 TimeRelativeAttributeDecrease(TimeRelativeAttributeChange):
+    pass
 ```
 
 Specialization of the continuous `TimeRelativeAttributeChange` effect that decreases the resistor's current attribute value in a fixed amount of time relative to their attribute's `max_value`.
@@ -143,14 +215,15 @@ Specialization of the continuous `TimeRelativeAttributeChange` effect that decre
 
 ```python
 TimeRelativeAttributeIncrease(TimeRelativeAttributeChange):
+    pass
 ```
 
 Specialization of the continuous `TimeRelativeAttributeChange` effect that increases the resistor's current attribute value in a fixed amount of time relative to their attribute's `max_value`.
 
-## effect.continuous.time_relative_progress.TimeRelativeProgress
+## effect.continuous.time_relative_progress_change.TimeRelativeProgressChange
 
 ```python
-TimeRelativeProgress(ContinuousEffect):
+TimeRelativeProgressChange(ContinuousEffect):
     type              : ProgressType
     total_change_time : float
 ```
@@ -164,7 +237,7 @@ applied\_rate = 100 / total\_change\_time
 *Example*: Consider a constructable resistor and an effector with a `TimeRelativeProgressIncrease` time of 10 seconds. The per-second change rate is calculated by dividing 100% by the time requirement of the effect. Hence, the change rate is 10%/s. This rate is fix. If the resistor currently has 30% construction progress, it would be constructed in 7 seconds.
 
 **type**
-The effect will be matched with a `Resistance.ContinuousResistance.TimeRelativeProgress` object that stores the same `ProgressType` object in its `type` member. Otherwise, the effect will not be applied.
+The effect will be matched with a `Resistance.ContinuousResistance.TimeRelativeProgressChange` object that stores the same `ProgressType` object in its `type` member. Otherwise, the effect will not be applied.
 
 **total_change_time**
 The total time needed to change the resistors attribute points from 100% to 0 (for `TimeRelativeProgressDecrease`) or from 0 to 100% (for `TimeRelativeProgressIncrease`).
@@ -172,23 +245,26 @@ The total time needed to change the resistors attribute points from 100% to 0 (f
 ## effect.continuous.time_relative_progress.type.TimeRelativeProgressDecrease
 
 ```python
-TimeRelativeProgressDecrease(TimeRelativeProgress):
+TimeRelativeProgressDecrease(TimeRelativeProgressChange):
+    pass
 ```
 
-Specialization of the continuous `TimeRelativeProgress` effect that decreases the resistor's progress amount in a fixed amount of time relative to 100%.
+Specialization of the continuous `TimeRelativeProgressChange` effect that decreases the resistor's progress amount in a fixed amount of time relative to 100%.
 
 ## effect.continuous.time_relative_progress.type.TimeRelativeProgressIncrease
 
 ```python
-TimeRelativeProgressIncrease(TimeRelativeProgress):
+TimeRelativeProgressIncrease(TimeRelativeProgressChange):
+    pass
 ```
 
-Specialization of the continuous `TimeRelativeProgress` effect that increases the resistor's progress amount in a fixed amount of time relative to 100%.
+Specialization of the continuous `TimeRelativeProgressChange` effect that increases the resistor's progress amount in a fixed amount of time relative to 100%.
 ´
 ## effect.discrete.DiscreteEffect
 
 ```python
 DiscreteEffect(Effect):
+    pass
 ```
 
 Generalization object for effects that are applied immediately.
@@ -285,6 +361,7 @@ Ignores the `ProtectingAttribute`s in the set when changing the attributes of th
 
 ```python
 FlatAttributeChangeDecrease(FlatAttributeChange):
+    pass
 ```
 
 Specialization of the discrete `FlatAttributeChange` effect that decreases the resistor's current attribute value by a flat amount.
@@ -294,6 +371,7 @@ Specialization of the discrete `FlatAttributeChange` effect that decreases the r
 
 ```python
 FlatAttributeChangeIncrease(FlatAttributeChange):
+    pass
 ```
 
 Specialization of the discrete `FlatAttributeChange` effect that increases the resistor's current attribute value by a flat amount.
@@ -325,43 +403,3 @@ The effect will be matched with a `Resistance.DiscreteResistance.SendToStorage` 
 
 **storages**
 Set of containers the target should enter. The target will choose the nearest one for which it has an `EnterContainer` ability.
-
-## effect.specialization.AreaEffect
-
-```python
-AreaEffect(Effect):
-    range   : float
-    dropoff : DropoffType
-```
-
-Can be inherited to apply the effect to game entities in a circular area around the target.
-
-**range**
-The radius of the area in which game entities are affected.
-
-**dropoff**
-Changes the effectiveness of the effect based on the distance to the center of the circle (see `DropoffType`).
-
-## effect.specialization.CostEffect
-
-```python
-AttributeCostEffect(Effect):
-    cost : Cost
-```
-
-Can be inherited to make the effect cost attribute points or resources.
-
-**cost**
-The costs for the effect as a `Cost` object.
-
-## effect.specialization.DiplomaticEffect
-
-```python
-DiplomaticEffect(Effect):
-    stances : set(DiplomaticStance)
-```
-
-Can be inherited to make the effect only applicable to game entities of a player with a specified diplomatic stance.
-
-**stances**
-If the target is owned by a player has *any* of the specified diplomatic stances, the effect is applied.

@@ -21,6 +21,7 @@ Standard behavior without properties:
 * Abilities in the `abilities` set of `GameEntity` are considered enabled as soon as the game entity is created, unless a `StateChager` object disables them.
 * No ability is explicitly required to be animated or to play a sound. For this purpose, ability properties are used.
 * A game entity's abilities are available to **all** players, not just the owner. This can be limited to players with specific diplomatic stances towards the owner by assigning the `Diplomatic` property.
+* An ability's execution does not block any other ability, unless explicitely defined by the API.
 
 Properties:
 
