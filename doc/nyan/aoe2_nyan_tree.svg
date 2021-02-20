@@ -884,15 +884,15 @@
       >slots : int</text
     ></g
     ><g fill="rgb(0,255,0)" fill-opacity="0.4902" transform="translate(6290,4000)" stroke-opacity="0.4902" stroke="rgb(0,255,0)"
-    ><rect x="0.5" width="168.5" height="78.5" y="0.5" clip-path="url(#clipPath4)" stroke="none"
+    ><rect x="0.5" width="188.5" height="78.5" y="0.5" clip-path="url(#clipPath7)" stroke="none"
     /></g
     ><g transform="translate(6290,4000)"
-    ><rect fill="none" x="0.5" width="168.5" height="78.5" y="0.5" clip-path="url(#clipPath4)"
-      /><text x="68" font-size="14px" y="17.5312" clip-path="url(#clipPath4)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
+    ><rect fill="none" x="0.5" width="188.5" height="78.5" y="0.5" clip-path="url(#clipPath7)"
+      /><text x="78" font-size="14px" y="17.5312" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
       >Lock</text
-      ><path fill="none" d="M1 39.0625 L169 39.0625" clip-path="url(#clipPath4)"
-      /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath4)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >locks : set(LockPool)</text
+      ><path fill="none" d="M1 39.0625 L189 39.0625" clip-path="url(#clipPath7)"
+      /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath7)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      >lock_pools : set(LockPool)</text
     ></g
     ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(4810,4180)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
     ><rect x="0.5" width="218.5" height="78.5" y="0.5" clip-path="url(#clipPath6)" stroke="none"
@@ -1534,11 +1534,11 @@
       >NoStacking</text
     ></g
     ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(2890,5530)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
-    ><rect x="0.5" width="118.5" height="58.5" y="0.5" clip-path="url(#clipPath24)" stroke="none"
+    ><rect x="0.5" width="108.5" height="58.5" y="0.5" clip-path="url(#clipPath28)" stroke="none"
     /></g
     ><g transform="translate(2890,5530)"
-    ><rect fill="none" x="0.5" width="118.5" height="58.5" y="0.5" clip-path="url(#clipPath24)"
-      /><text x="38" font-size="14px" y="33.0625" clip-path="url(#clipPath24)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
+    ><rect fill="none" x="0.5" width="108.5" height="58.5" y="0.5" clip-path="url(#clipPath28)"
+      /><text x="33" font-size="14px" y="33.0625" clip-path="url(#clipPath28)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
       >Linear</text
     ></g
     ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(2890,5600)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
@@ -2548,8 +2548,8 @@
     /></g
     ><g transform="translate(2480,1650)"
     ><rect fill="none" x="0.5" width="318.5" height="88.5" y="0.5" clip-path="url(#clipPath29)"
-      /><text x="138" font-size="14px" y="17.5312" clip-path="url(#clipPath29)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
-      >Scope</text
+      /><text x="134" font-size="14px" y="17.5312" clip-path="url(#clipPath29)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
+      >Scoped</text
       ><path fill="none" d="M1 39.0625 L319 39.0625" clip-path="url(#clipPath29)"
       /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath29)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >diplomatic_stances : set(DiplomaticStance)</text
@@ -5466,9 +5466,9 @@
     ><g transform="translate(2890,1580)"
     ><path fill="none" d="M80.5 10.5 L10.5 10.5" clip-path="url(#clipPath113)"
     /></g
-    ><g stroke-dasharray="8,5" stroke-miterlimit="5" transform="translate(6450,4030)" stroke-linecap="butt"
-    ><path fill="none" d="M70.5 10.5 L10.5 10.5" clip-path="url(#clipPath13)"
-      /><path fill="none" stroke-miterlimit="10" stroke-dasharray="none" d="M59.2417 4 L70.5 10.5 L59.2417 17" clip-path="url(#clipPath13)" stroke-linecap="square"
+    ><g stroke-dasharray="8,5" stroke-miterlimit="5" transform="translate(6470,4030)" stroke-linecap="butt"
+    ><path fill="none" d="M50.5 10.5 L10.5 10.5" clip-path="url(#clipPath102)"
+      /><path fill="none" stroke-miterlimit="10" stroke-dasharray="none" d="M39.2417 4 L50.5 10.5 L39.2417 17" clip-path="url(#clipPath102)" stroke-linecap="square"
     /></g
     ><g transform="translate(6250,4030)"
     ><path fill="none" d="M10.5 10.5 L40.5 10.5" clip-path="url(#clipPath12)"

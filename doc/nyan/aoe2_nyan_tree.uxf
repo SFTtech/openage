@@ -5829,7 +5829,7 @@ subformation : Subformation</panel_attributes>
       <w>320</w>
       <h>90</h>
     </coordinates>
-    <panel_attributes>*Scope*
+    <panel_attributes>*Scoped*
 bg=pink
 
 --
