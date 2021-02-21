@@ -366,7 +366,6 @@ FlatAttributeChangeDecrease(FlatAttributeChange):
 
 Specialization of the discrete `FlatAttributeChange` effect that decreases the resistor's current attribute value by a flat amount.
 
-
 ## effect.discrete.flat_attribute_change.type.FlatAttributeChangeIncrease
 
 ```python
