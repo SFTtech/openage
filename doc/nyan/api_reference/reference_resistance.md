@@ -14,6 +14,8 @@ Generalization object for all resistances.
 **properties**
 Further specializes the resistance beyond the standard behaviour.
 
+The engine expects objects from the namespace `engine.resistance.property.type` as keys. Values must always be an instance of the object used as key.
+
 Standard behavior without properties:
 
 * Effects are **only applied** if the resistor has a **matching** `Resistance` object. Matching can be further defined depending on the concrete effect.
@@ -25,7 +27,7 @@ Properties:
 * `Cost`: Makes resistances cost attribute points or resources.
 * `Stacked`: Adjust effect calculation when multiple effectors are applying effects simultaneously.
 
-## ability.property.ResistanceProperty
+## resistance.property.ResistanceProperty
 
 ```python
 ResistanceProperty(Entity):
@@ -90,7 +92,7 @@ Generalization object for resistances to continuous effects.
 
 ```python
 FlatAttributeChange(ContinuousResistance):
-    type       : AttributeChangeType
+    type       : children(AttributeChangeType)
     block_rate : set(AttributeRate)
 ```
 
@@ -99,10 +101,10 @@ Generalization object for resistances to continuous `FlatAttributeChange` effect
 Note that you cannot use this resistance object directly and have to choose one of the specializations `FlatAttributeChangeDecrease` or `FlatAttributeChangeIncrease`.
 
 **type**
-Effects of type `Effect.ContinuousEffect.FlatAttributeChange` are matched to this resistance if they store the same `AttributeChangeType` object in their `type` member. Otherwise, the effect will not be applied.
+Effects of type `effect.continuous.flat_attribute_change.FlatAttributeChange` are matched to this resistance if they store the same `AttributeChangeType` object in their `type` member. Otherwise, the effect will not be applied.
 
 **block_rate**
-The per-second attribute rate that is blocked by the resistor. The net change rate (applied rate) is calculated by subtracting the effector's `change_rate` from the resistor's `block_rate`.
+The per-second attribute rate that is blocked by the resistor. The net change rate (applied rate) is calculated by subtracting the resistor's `block_rate` from the effector's `change_rate`.
 
 ```math
 applied\_rate = change\_rate - block\_rate
@@ -129,23 +131,23 @@ FlatAttributeChangeIncrease(FlatAttributeChange):
 
 Specialization of the continuous `FlatAttributeChange` resistance that blocks the effector's attribute increase rate.
 
-## resistance.continuous.type.Lure
+## resistance.continuous.lure.type.Lure
 
 ```python
 Lure(ContinuousResistance):
-    type : LureType
+    type : children(LureType)
 ```
 
 Resistance to the `Lure` effect.
 
 **type**
-Effects of type `Effect.ContinuousEffect.Lure` are matched to this resistance if they store the same `LureType` object in their `type` member. Otherwise, the effect will not be applied.
+Effects of type `effect.continuous.lure.type.Lure` are matched to this resistance if they store the same `LureType` object in their `type` member. Otherwise, the effect will not be applied.
 
 ## resistance.continuous.time_relative_attribute_change.TimeRelativeAttributeChange
 
 ```python
 TimeRelativeAttributeChange(ContinuousResistance):
-    type : AttributeChangeType
+    type : children(AttributeChangeType)
 ```
 
 Generalization object for resistances to continuous `TimeRelativeAttributeChange` effects.
@@ -153,7 +155,7 @@ Generalization object for resistances to continuous `TimeRelativeAttributeChange
 Note that you cannot use this resistance object directly and have to choose one of the specializations `TimeRelativeAttributeDecrease` or `TimeRelativeAttributeIncrease`.
 
 **type**
-Effects of type `Effect.ContinuousEffect.TimeRelativeAttributeChange` are matched to this resistance if they store the same `AttributeChangeType` object in their `type` member. Otherwise, the effect will not be applied.
+Effects of type `effect.continuous.time_relative_attribute_change.TimeRelativeAttributeChange` are matched to this resistance if they store the same `AttributeChangeType` object in their `type` member. Otherwise, the effect will not be applied.
 
 ## resistance.continuous.time_relative_attribute_change.type.TimeRelativeAttributeDecrease
 
@@ -177,7 +179,7 @@ Specialization of the continuous `TimeRelativeAttributeChange` resistance that i
 
 ```python
 TimeRelativeProgressChange(ContinuousResistance):
-    type : ProgressType
+    type : children(ProgressType)
 ```
 
 Generalization object for resistances to continuous `TimeRelativeProgressChange` effects.
@@ -185,7 +187,7 @@ Generalization object for resistances to continuous `TimeRelativeProgressChange`
 Note that you cannot use this resistance object directly and have to choose one of the specializations `TimeRelativeProgressDecrease` or `TimeRelativeProgressIncrease`.
 
 **type**
-Effects of type `Effect.ContinuousEffect.TimeRelativeProgressChange` are matched to this resistance if they store the same `ProgressType` object in their `type` member. Otherwise, the effect will not be applied.
+Effects of type `effect.continuous.time_relative_progress.TimeRelativeProgressChange` are matched to this resistance if they store the same `ProgressType` object in their `type` member. Otherwise, the effect will not be applied.
 
 ## resistance.continuous.time_relative_progress.type.TimeRelativeProgressDecrease
 
@@ -218,17 +220,17 @@ Generalization object for resistances to discrete effects.
 
 ```python
 Convert(DiscreteResistance):
-    type          : ConvertType
+    type          : children(ConvertType)
     chance_resist : float
 ```
 
 Resistance to the `Convert` effect.
 
 **type**
-Effects of type `Effect.ContinuousEffect.Convert` are matched to this resistance if they store the same `ConvertType` object in their `type` member. Otherwise, the effect will not be applied.
+Effects of type `effect.discrete.convert.Convert` are matched to this resistance if they store the same `ConvertType` object in their `type` member. Otherwise, the effect will not be applied.
 
 **chance_resist**
-Percentage amount subtracted from the effector's success chance. The percentage should be stored as a float value between *0.0* and *1.0*. The net chance (applied chance) of success is calculated by subtracting the effector's `chance_success` from the resistor's `chance_resist`.
+Percentage amount subtracted from the effector's success chance. The percentage should be stored as a float value between *0.0* and *1.0*. The net chance (applied chance) of success is calculated by subtracting the resistor's `chance_resist` from the effector's `chance_success`.
 
 ```math
 applied\_chance = chance\_success - chance\_resist
@@ -262,7 +264,7 @@ When the effector stops applying the effect, the number of protected rounds is i
 
 ```python
 FlatAttributeChange(DiscreteResistance):
-    type        : AttributeChangeType
+    type        : children(AttributeChangeType)
     block_value : set(AttributeAmount)
 ```
 
@@ -271,10 +273,10 @@ Generalization object for resistances to discrete `FlatAttributeChange` effects.
 Note that you cannot use this resistance object directly and have to choose one of the specializations `FlatAttributeChangeDecrease` or `FlatAttributeChangeIncrease`.
 
 **type**
-Effects of type `Effect.DiscreteEffect.FlatAttributeChange` are matched to this resistance if they store the same `AttributeChangeType` object in their `type` member. Otherwise, the effect will not be applied.
+Effects of type `effect.discrete.flat_attribute_change.FlatAttributeChange` are matched to this resistance if they store the same `AttributeChangeType` object in their `type` member. Otherwise, the effect will not be applied.
 
 **change_value**
-The flat attribute amount that is blocked by the resistor. The net change value (applied value) is calculated by subtracting the effector's `change_value` from the resistor's `block_value`.
+The flat attribute amount that is blocked by the resistor. The net change value (applied value) is calculated by subtracting the resistor's `block_value` from the effector's `change_value`.
 
 ```math
 applied\_value = change\_value - block\_value
@@ -301,7 +303,7 @@ FlatAttributeChangeIncrease(FlatAttributeChange):
 
 Specialization of the discrete `FlatAttributeChange` resistance that blocks the effector's attribute increase value.
 
-## resistance.discrete.type.MakeHarvestable
+## resistance.discrete.make_harvestable.type.MakeHarvestable
 
 ```python
 MakeHarvestable(DiscreteResistance):
@@ -312,16 +314,16 @@ MakeHarvestable(DiscreteResistance):
 Resistance to the `MakeHarvestable` effect.
 
 **resource_spot**
-Resource spot that should be made harvestable. Effects of type `Effect.DiscreteEffect.MakeHarvestable` are matched to this resistance if they store the same `ResourceSpot` object in their `resource_spot` member. Additionally, the target needs to have a `Harvestable` ability that contains the resource spot.
+Resource spot that should be made harvestable. Effects of type `effect.discrete.make_harvestable.type.MakeHarvestable` are matched to this resistance if they store the same `ResourceSpot` object in their `resource_spot` member. Additionally, the target needs to have a `Harvestable` ability that contains the resource spot.
 
 **resist_condition**
-The which must he fulfilled to make the resource spot harvestable.
+Condition which must he fulfilled to make the resource spot harvestable.
 
-## resistance.discrete.type.SendToContainer
+## resistance.discrete.send_to_container.type.SendToContainer
 
 ```python
 SendToContainer(DiscreteResistance):
-    type              : SendToContainerType
+    type              : children(SendToContainerType)
     search_range      : float
     ignore_containers : set(Container)
 ```
@@ -329,7 +331,7 @@ SendToContainer(DiscreteResistance):
 Resistance to the `SendToContainer` effect.
 
 **type**
-Effects of type `Effect.DiscreteEffect.SendToContainer` are matched to this resistance if they store the same `SendToContainerType` object in their `type` member. Otherwise, the effect will not be applied.
+Effects of type `effect.discrete.send_to_container.type.SendToContainer` are matched to this resistance if they store the same `SendToContainerType` object in their `type` member. Otherwise, the effect will not be applied.
 
 **search_range**
 The range in which the resistor will search for a container.

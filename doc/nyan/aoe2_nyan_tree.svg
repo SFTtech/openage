@@ -1293,9 +1293,9 @@
       >Rectangle</text
       ><path fill="none" d="M1 39.0625 L139 39.0625" clip-path="url(#clipPath26)"
       /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath26)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >radius_x : float</text
+      >width : float</text
       ><text x="5" font-size="14px" y="69.125" clip-path="url(#clipPath26)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >radius_y : float</text
+      >height : float</text
     ></g
     ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(2700,5560)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
     ><rect x="0.5" width="98.5" height="58.5" y="0.5" clip-path="url(#clipPath2)" stroke="none"
@@ -4469,8 +4469,8 @@
     /></g
     ><g transform="translate(1820,4370)"
     ><rect fill="none" x="0.5" width="308.5" height="158.5" y="0.5" clip-path="url(#clipPath96)"
-      /><text x="118" font-size="14px" y="17.5312" clip-path="url(#clipPath96)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
-      >Civilization</text
+      /><text x="114" font-size="14px" y="17.5312" clip-path="url(#clipPath96)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
+      >PlayerSetup</text
       ><path fill="none" d="M1 39.0625 L309 39.0625" clip-path="url(#clipPath96)"
       /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath96)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >name : TranslatedString</text
@@ -4485,7 +4485,7 @@
       ><text x="5" font-size="14px" y="131.25" clip-path="url(#clipPath96)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >starting_resources : set(ResourceAmount)</text
       ><text x="5" font-size="14px" y="146.7812" clip-path="url(#clipPath96)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >civ_setup : orderedset(Patch)</text
+      >game_setup : orderedset(Patch)</text
     ></g
     ><g fill="rgb(0,255,0)" fill-opacity="0.4902" transform="translate(7610,3730)" stroke-opacity="0.4902" stroke="rgb(0,255,0)"
     ><rect x="0.5" width="258.5" height="108.5" y="0.5" clip-path="url(#clipPath18)" stroke="none"
@@ -4505,18 +4505,18 @@
       >state_change : optional(StateChanger)</text
     ></g
     ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(3300,3140)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
-    ><rect x="0.5" width="258.5" height="98.5" y="0.5" clip-path="url(#clipPath59)" stroke="none"
+    ><rect x="0.5" width="248.5" height="98.5" y="0.5" clip-path="url(#clipPath60)" stroke="none"
     /></g
     ><g transform="translate(3300,3140)"
-    ><rect fill="none" x="0.5" width="258.5" height="98.5" y="0.5" clip-path="url(#clipPath59)"
-      /><text x="110" font-size="14px" y="17.5312" clip-path="url(#clipPath59)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
+    ><rect fill="none" x="0.5" width="248.5" height="98.5" y="0.5" clip-path="url(#clipPath60)"
+      /><text x="105" font-size="14px" y="17.5312" clip-path="url(#clipPath60)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
       >Taunt</text
-      ><path fill="none" d="M1 39.0625 L259 39.0625" clip-path="url(#clipPath59)"
-      /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath59)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><path fill="none" d="M1 39.0625 L249 39.0625" clip-path="url(#clipPath60)"
+      /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath60)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >activation_message : text</text
-      ><text x="5" font-size="14px" y="69.125" clip-path="url(#clipPath59)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><text x="5" font-size="14px" y="69.125" clip-path="url(#clipPath60)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >display_message : TranslatedString</text
-      ><text x="5" font-size="14px" y="84.6562" clip-path="url(#clipPath59)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><text x="5" font-size="14px" y="84.6562" clip-path="url(#clipPath60)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >sound : Sound</text
     ></g
     ><g fill="rgb(0,255,0)" fill-opacity="0.4902" transform="translate(6140,4620)" stroke-opacity="0.4902" stroke="rgb(0,255,0)"
@@ -4991,16 +4991,16 @@
       >Cactus</text
     ></g
     ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(3300,3050)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
-    ><rect x="0.5" width="208.5" height="78.5" y="0.5" clip-path="url(#clipPath25)" stroke="none"
+    ><rect x="0.5" width="188.5" height="78.5" y="0.5" clip-path="url(#clipPath9)" stroke="none"
     /></g
     ><g transform="translate(3300,3050)"
-    ><rect fill="none" x="0.5" width="208.5" height="78.5" y="0.5" clip-path="url(#clipPath25)"
-      /><text x="85" font-size="14px" y="17.5312" clip-path="url(#clipPath25)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
+    ><rect fill="none" x="0.5" width="188.5" height="78.5" y="0.5" clip-path="url(#clipPath9)"
+      /><text x="75" font-size="14px" y="17.5312" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
       >Cheat</text
-      ><path fill="none" d="M1 39.0625 L209 39.0625" clip-path="url(#clipPath25)"
-      /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath25)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><path fill="none" d="M1 39.0625 L189 39.0625" clip-path="url(#clipPath9)"
+      /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >activation_message : text</text
-      ><text x="5" font-size="14px" y="69.125" clip-path="url(#clipPath25)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      ><text x="5" font-size="14px" y="69.125" clip-path="url(#clipPath9)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >changes : orderedset(Patch)</text
     ></g
     ><g fill="rgb(0,255,0)" fill-opacity="0.4902" transform="translate(5280,3830)" stroke-opacity="0.4902" stroke="rgb(0,255,0)"
@@ -5034,7 +5034,7 @@
       >ShootProjectile</text
       ><path fill="none" d="M1 39.0625 L319 39.0625" clip-path="url(#clipPath99)"
       /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath99)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >projectiles : orderedset(Projectile)</text
+      >projectiles : orderedset(GameEntity)</text
       ><text x="5" font-size="14px" y="69.125" clip-path="url(#clipPath99)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >min_projectiles : int</text
       ><text x="5" font-size="14px" y="84.6562" clip-path="url(#clipPath99)" font-family="sans-serif" stroke="none" xml:space="preserve"

@@ -48,10 +48,10 @@ Animated(AbilityProperty):
     animations : set(Animation)
 ```
 
-Abilities with this property will play an animation while they are active. Whether the animation loops is defined in the `.sprite` file linked in the `Animation` object.
+Play an animation while the ability is used. The animation itself is configured in the `.sprite` file linked in the `Animation` object.
 
 **animations**
-The animation(s) played while the ability is active. If more than one animation is defined, the engine picks one of them at random.
+The animation(s) played while the ability is used. If more than one animation is defined, the engine randomly picks one of them.
 
 ## ability.property.type.AnimationOverride
 
@@ -65,7 +65,7 @@ Specifies a set of animation overrides that are applied when the ability is used
 *Usage example*: Consider a unit with two attacks. One of them is animated by having the unit wield a sword, while the other one is an animation in which the unit uses a bow. What we want is that the animation of the `Move` and `Idle` abilities correspond to the attack that was used last, e.g. after a sword attack, the movement animation show the unit moving around with a sword in its hand, and after a bow attack, the movement animation show the unit moving around with a bow. To accomplish this, we would add the `AnimationOverride(AbilityProperty)` to both attack abilities and specify `AnimationOverride` objects for them which target `Move` and `Idle`.
 
 **overrides**
-Stores the animations and abilities that will be overridden temporarily as `AnimationOverride` objects.
+Overrides initiated when using the ability.
 
 ## ability.property.type.CommandSound
 
@@ -77,13 +77,13 @@ CommandSound(AbilityProperty):
 Abilities with this property will play a sound once when the player orders the game entity to use them.
 
 **sounds**
-The sound(s) played when the order to use the ability is given. If more than one sound is defined, the engine picks one of them at random.
+Sound(s) played when the order to use the ability is given. If more than one sound is defined, the engine randomly picks one of them.
 
 ## ability.property.type.Diplomatic
 
 ```python
 Diplomatic(AbilityProperty):
-    stances : set(DiplomaticStance)
+    stances : set(children(DiplomaticStance))
 ```
 
 Restricts the players who can access the ability. Access is given to a player when the owner of the game entity has one of the specified stances towards this player. Note that when using this property, the access must also be explicitly allowed for the owner of the game entity by adding the `Self` stance to the set.
@@ -91,7 +91,7 @@ Restricts the players who can access the ability. Access is given to a player wh
 *Usage example*: Consider a trade post like the marketplace from AoE games. Players can send trade carts between trade posts to generate resources. Trade post behavior is activated by assigning the `TradePost` ability to a game entity. Without the `Diplomatic` property, all player can trade with this trade post, including its owner. However, if we want to limit the trade post to only be accessible for allies, we assign `Diplomatic`as a property and add the `Allied` stance to the `stances` set.
 
 **stances**
-The stances the owner needs to have towards another player to make the ability accessible for the latter.
+Whitelist of stances of the game entity owner towards other players. Only players that match these stances from the owner's perspective can use the ability.
 
 ## ability.property.type.ExecutionSound
 
@@ -103,7 +103,7 @@ ExecutionSound(AbilityProperty):
 Abilities with this property will play a sound while they are active.
 
 **sounds**
-The sound(s) played while the ability is active. If more than one sound is defined, the engine picks one of them at random.
+The sound(s) played while the ability is used. If more than one sound is defined, the engine randomly picks one of them.
 
 ## ability.property.type.Lock
 
@@ -112,7 +112,9 @@ Lock(AbilityProperty):
     lock_pool : LockPool
 ```
 
-Abilities with this property require a free slot in the specified lock pool to become active. While they are active, the occupy one slot in the pool.
+Abilities with this property require a free slot in the specified lock pool to become active. While they are active, they occupy one slot in the lock pool. This property can be used to prevent abilities from specific abilities being executed simultaneously.
+
+*Usage example*: Consider a game entity that has the abilities `Create` for producing game entities and `Research` for researching techs. At runtime, only one of them should be active at the same time, i.e. the game entity should *either* produce a game entity *or* research a tech, not both. We can realize this by assigning both abilities the `Lock` property which references the same `LockPool` object (which has 1 slot). As a consequence, `Create` cannot be used together with `Research` as they both require 1 free slot to be used.
 
 **lock_pool**
 The lock pool used by the ability. This lock pool should be assigned to a `Lock` ability that is assigned to the game entity.
@@ -134,7 +136,7 @@ TransformTo(Ability):
     transform_progress : set(TransformProgress)
 ```
 
-Activates a state change for a game entity.
+Activates a state change for a game entity. Triggered by player input.
 
 **target_state**
 Target state change that activates when the time defined in `transform_time` has passed.
@@ -151,17 +153,17 @@ A set of `TransformProgress` objects that can activate state changes and animati
 ApplyContinuousEffect(Ability):
     effects              : set(ContinuousEffect)
     application_delay    : float
-    allowed_types        : set(GameEntityType)
+    allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
-Applies a batch of continuous effects on another game entity.
+Applies a continuous effects on another game entity.
 
 **effects**
 The applied continuous effect definitions.
 
 **application_delay**
-Time between the initiation of the ability and the application of the effects.
+Time between the initiation of the ability and the application of the effects in seconds.
 
 **allowed_types**
 Whitelist of game entity types that can be targeted with the ability.
@@ -176,7 +178,7 @@ ApplyDiscreteEffect(Ability):
     batches              : set(EffectBatch)
     reload_time          : float
     application_delay    : float
-    allowed_types        : set(GameEntityType)
+    allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
@@ -186,10 +188,10 @@ Applies batches of discrete effects on a game entity.
 The batches of discrete effect which are applied when the ability is used.
 
 **reload_time**
-Minimum time between two applications of the effect batches.
+Minimum time between two applications of the effect batches in seconds.
 
 **application_delay**
-Time between the initiation of the ability and first application of the effects.
+Time between the initiation of the ability and first application of the effects in seconds.
 
 **allowed_types**
 Whitelist of game entity types that can be targeted with the ability.
@@ -202,7 +204,7 @@ Blacklist for specific game entities that would be covered by `allowed_types`, b
 ```python
 AttributeChangeTracker(Ability):
     attribute       : Attribute
-    change_progress : set(DamageProgress)
+    change_progress : set(children(AttributeChangeProgress))
 ```
 
 Allows the alteration of the state of the game entity when its attribute values increase or decrease.
@@ -211,7 +213,7 @@ Allows the alteration of the state of the game entity when its attribute values 
 The attribute which is monitored.
 
 **change_progress**
-Set of `AttributeChangeProgress` objects that can activate state changes and animation overrides when the current attribute increases or decreases.
+Set of `AttributeChangeProgress` objects that activate when the current attribute value enters their defined intervals.
 
 ## ability.type.Cloak
 
@@ -221,7 +223,7 @@ Cloak(Ability):
     interrupt_cooldown : float
 ```
 
-Makes the unit invisible to game entity's of other players.
+Makes the unit untargetable for other game entities.
 
 **interrupted_by**
 Abilities of the game entity that interrupt the cloak when used.
@@ -240,17 +242,17 @@ CollectStorage(Ability):
 Allows a game entity to insert specified game entities into one of its containers.
 
 **container**
-The container the target game entity will be inserted into. A `Storage` ability with this container must be enabled.
+Container the target game entity will be inserted into. A `Storage` ability with this container must be enabled.
 
 **storage_elements**
-The set of game entities that can be inserted into the container. The container must allow the `GameEntity` objects.
+Game entities that can be inserted into the container. The container must allow the `GameEntity` objects.
 
 ## ability.type.Constructable
 
 ```python
 Constructable(Ability):
     starting_progress     : int
-    construction_progress : set(ConstructionProgress)
+    construction_progress : set(children(ConstructionProgress))
 ```
 
 Makes the game entity constructable via `Effect` types.
@@ -259,7 +261,7 @@ Makes the game entity constructable via `Effect` types.
 The construction progress when the game entity is created.
 
 **construction_progress**
-Set of `ConstructionProgress` objects that can activate state changes and animation overrides when the construction progresses.
+Set of `ConstructionProgress` objects that activate when the current contruction progress value enters their defined intervals.
 
 ## ability.type.Create
 
@@ -271,7 +273,7 @@ Create(Ability):
 Allows a game entity to spawn new instances of game entities.
 
 **creatables**
-Stores the reference to the creatable game entities as well as the preconditions that have to be fulfilled in order to spawn a new instance.
+Stores the reference to the creatable game entities as well as configuration options for the creation.
 
 ## ability.type.Despawn
 
@@ -283,36 +285,36 @@ Despawn(Ability):
     state_change         : optional(StateChanger)
 ```
 
-Allows a "clean exit" that removes the game entity from the current game. By default, `Despawn` is inactive until triggered by `activation_condition`. Once activated, at least one of the elements in `despawn_condition` must be `True` to trigger the despawning.
+Permanently removes the game entity from the game. By default, `Despawn` is inactive until triggered by `activation_condition`. Once activated, at least one of the elements in `despawn_condition` must be true to trigger the despawning.
 
 **activation_condition**
-Activates (i.e. *primes*) the ability once one of the elements is `True`. After activation, the ability will wait for an element in `despawn_condition` to be `True`.
+Activates (i.e. *primes*) the ability when one of the listed conditions are true. After activation, the ability will wait for an element in `despawn_condition` to be true.
 
 **despawn_condition**
-Triggers the despawning once one of the elements is `True`.
+Triggers the despawning process when of the conditions are true. `activation_condition` must have been fulfilled once before the despawn condition can be triggered.
 
 **despawn_time**
-Time until the game entity is removed from the game. The removal is permanent.
+Time until the game entity is removed from the game after the despawn condition has been fulfilled. The removal is permanent.
 
 **state_change**
-Alters the abilities and modifiers of a game entity after the `despawn_condition` is fulfilled. The state change stays active until the game entity is removed from the game.
+Alters the abilities and modifiers of a game entity after the despawn condition is fulfilled. The state change stays active until the game entity is removed from the game.
 
 ## ability.type.DetectCloak
 
 ```python
 DetectCloak(Ability):
     range                : float
-    allowed_types        : set(GameEntityType)
+    allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
 Enables the game entity to decloak other game entities which use the `Cloak` ability.
 
 **range**
-The range in which other game entities will be decloaked.
+Range around the game entity in which other game entities will be decloaked.
 
 **allowed_types**
-Whitelist of game entity types that can be detected.
+Whitelist of game entity types that can be decloaked.
 
 **blacklisted_entities**
 Blacklist for specific game entities that would be covered by `allowed_types`, but should be explicitly excluded.
@@ -323,20 +325,20 @@ Blacklist for specific game entities that would be covered by `allowed_types`, b
 DropResources(Ability):
     containers           : set(ResourceContainer)
     search_range         : float
-    allowed_types        : set(GameEntityType)
+    allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
-Allows a game entity to drop off resources at other game entities that have the `DropSite` ability. The resources are transfered to the player's global resource storage. Game entities with the `ResourceStorage` ability will automatically use this ability when their resource container capacity is reached.
+Allows a game entity to drop off resources at other game entities that have the `DropSite` ability. The resources are transferred to the player's global resource storage. Game entities with the `ResourceStorage` ability will automatically use this ability when their resource container capacity is reached.
 
 **containers**
-Containers whose resources are deposited.
+Resource containers whose resources are transferred.
 
 **search_range**
-The range in which the unit will search for a resource drop site when the ability is not used manually.
+Range in which the unit will search for a resource drop site if the ability is not used manually.
 
 **allowed_types**
-Whitelist of game entity types that can be used as drop sites. They must have a `DropSite` ability accepting the corresponding resource.
+Whitelist of game entity types that can be used as drop sites. They must have a `DropSite` ability accepting the corresponding resource container.
 
 **blacklisted_entities**
 Blacklist for specific game entities that would be covered by `allowed_types`, but should be explicitly excluded.
@@ -358,14 +360,14 @@ Resource containers that can be emptied at the game entity.
 ```python
 EnterContainer(Ability):
     allowed_containers   : set(Container)
-    allowed_types        : set(GameEntityType)
+    allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
 Allows a game entity to enter specified containers of another game entity's `Storage` ability.
 
 **allowed_containers**
-The containers that can be entered.
+Containers that can be entered.
 
 **allowed_types**
 Whitelist of game entity types that can be targeted with the ability.
@@ -383,7 +385,7 @@ ExchangeResources(Ability):
     exchange_modes : set(ExchangeMode)
 ```
 
-Exchanges a resource for another resource. The nature of the exchange depends on the exchange mode. Players can exchange resources with themselves or other players.
+Exchanges a resource for another resource. The type of exchange depends on the exchange mode. Players can exchange resources with themselves or other players.
 
 **resource_a**
 First resource used for the exchange.
@@ -392,7 +394,7 @@ First resource used for the exchange.
 Second resource used for the exchange.
 
 **exchange_rate**
-Defines an exchange rate for the exchange.
+Exchange rate per unit of exchanged resources.
 
 **exchange_modes**
 Defines how the resources can be exchanged.
@@ -407,7 +409,7 @@ ExitContainer(Ability):
 Allows a game entity to exit specified containers of another game entity's `Storage` ability when they are in the container.
 
 **allowed_containers**
-The containers that can be exited.
+Containers that can be exited.
 
 ## ability.type.Fly
 
@@ -428,10 +430,10 @@ Formation(Ability):
     formations : set(GameEntityFormation)
 ```
 
-Allows a game entity to be part of certain formations.
+Allows a game entity to be part of specified formations.
 
 **formations**
-Formation types that the game entity can be part of as well as the corresponding subformation that is used.
+Formation types that the game entity can be part of.
 
 ## ability.type.Foundation
 
@@ -440,10 +442,10 @@ Foundation(Ability):
     foundation_terrain : Terrain
 ```
 
-Changes the terrain under a game entity when it is created.
+Changes the terrain under a game entity on its creation.
 
 **foundation_terrain**
-Replacement terrain that is placed on the tiles the game entity occupies.
+Replacement terrain that is placed under the space the game entity occupies.
 
 ## ability.type.GameEntityStance
 
@@ -455,7 +457,7 @@ GameEntityStance(Ability):
 Defines activity stances for a game entity. These stances define which abilities will be used without player interaction when the game entity is idle.
 
 **stances**
-Stance definitions for the game entity as `aux.game_entity_stance.GameEntityStance` objects.
+Stance definitions for the game entity.
 
 ## ability.type.Gather
 
@@ -468,19 +470,19 @@ Gather(Ability):
     container           : ResourceContainer
 ```
 
-Allows a game entity to gather from resource spots defined the `Harvestable` abilities of other game entities.
+Allows a game entity to gather from resource spots defined in the `Harvestable` abilities of other game entities.
 
 **auto_resume**
 Determines whether the game entity will automatically resume gathering after the resource spot is depleted. When enabled, the game entity will check if it can refill the depleted resource spot with one of its `Restock` abilities. Otherwise, the game entity will search for a new resource spot it can access with this ability.
 
 **resume_search_range**
-The range in which the game entity searches for a new resource spot if `auto_resume` is enabled.
+Range in which the game entity searches for a new resource spot if `auto_resume` is enabled.
 
 **targets**
-Resource spots that can be accessed with this ability.
+Resource spots that can be accessed and gathered from.
 
 **gather_rate**
-The rate at which the game entity collects resources from the resource spot.
+Rate at which the game entity collects resources from the targeted resource spot.
 
 **container**
 Resource container of the game entity where the gathered resources are stored. The resource container must be referenced by the game entity in a `ResourceStorage` ability.
@@ -499,7 +501,7 @@ Harvestable(Ability):
 Assigns a game entity a resource spot that can be harvested by other game entities with the `Gather` ability.
 
 **resource_spot**
-The resource spot as a `ResourceSpot` object. It defines the contained resource type and capacity.
+The resource spot as a `ResourceSpot` object. It defines the contained resource type and resource capacity.
 
 **harvest_progress**
 Can alter the game entity when the percentage of harvested resources reaches defined progress intervals.
@@ -519,7 +521,7 @@ Determines whether the resource spot is harvestable when it is created. If `True
 Herd(Ability):
     range                : float
     strength             : int
-    allowed_types        : set(GameEntityType)
+    allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
@@ -529,7 +531,7 @@ Allows a game entity to change the ownership of other game entities with the `He
 Minimum distance to a herdable game entity to make it change ownership.
 
 **strength**
-Comparison value for situations when the game entity competes with other game entities for a herdable. The game entity with the highest `strength` value will always be prefered, even if other game entities fulfill the condition set by `mode` in `Hardable` better.
+Comparison value for situations when the game entity competes with other game entities for a herdable. The game entity with the highest `strength` value will always be prefered, even if other game entities fulfill the condition set by `mode` in `Herdable` better.
 
 **allowed_types**
 Whitelist of game entity types that can be herded.
@@ -542,13 +544,13 @@ Blacklist for specific game entities that would be covered by `allowed_types`, b
 ```python
 Herdable(Ability):
     adjacent_discover_range : float
-    mode                    : HerdableMode
+    mode                    : children(HerdableMode)
 ```
 
-Makes the game entity switch ownership when it is in range of another game entity with a `Herd` ability. The new owner is the player who owns the game entity with the `Herd` ability. If the herdable game entity is in range of two or more herding game entities, the ownership changes to the owner of the game entity which is closest.
+Makes the game entity switch ownership when it is in range of another game entity with a `Herd` ability. Its new owner is owner of the herding game entity. If the herdable game entity is in range of two or more herding game entities, the ownership changes based on the `mode` set in the `Herdable` ability.
 
 **adjacent_discover_range**
-When the game entity is herded, other herdables in this range are also herded. The rules in `Herd` of the herding game entity apply.
+When other herdables are in this range around the herded game entity, they will also be herded and switch ownership.
 
 **mode**
 Determines who gets ownership of the herdable game entity when multiple game entities using `Herd` are in range.
@@ -572,7 +574,7 @@ Idle(Ability):
     pass
 ```
 
-Used for assigning animations and sounds to game entities in an idle state. In contrast to the other abilities, game entities always have an implicit idle state, even if they have no `Idle` ability defined.
+Used for assigning animations and sounds to game entities in an idle state.
 
 ## ability.type.LineOfSight
 
@@ -581,10 +583,10 @@ LineOfSight(Ability):
     range : float
 ```
 
-Reveals an area around the game entity.
+Reveals the area around the game entity on the ingame map.
 
 **range**
-Determines the radius of the circular area around the game entity that is revealed.
+Radius of the area around the game entity that is revealed.
 
 ## ability.type.Live
 
@@ -593,10 +595,10 @@ Live(Ability):
     attributes : set(AttributeSetting)
 ```
 
-Assigns attributes to a game entity. The properties of the attributes are defined in `AttributeSetting` objects.
+Assigns attributes to a game entity.
 
 **attributes**
-Configures the attribute values of the game entity via `AttributeSetting` objects.
+Configures the attribute values of the game entity.
 
 ## ability.type.Lock
 
@@ -605,17 +607,17 @@ Lock(Ability):
     lock_pools : set(LockPool)
 ```
 
-Defines lock pools for the abilities of the game entities.
+Defines lock pools which abilities with the `Lock` property can use.
 
 **lock_pools**
-Set of lock pools usable by abilities of the game entity with the `Lock` property.
+Lock pools definitions.
 
 ## ability.type.Move
 
 ```python
 Move(Ability):
     speed : float
-    modes : set(MoveMode)
+    modes : set(children(MoveMode))
 ```
 
 Allows a game entity to move around the map.
@@ -624,7 +626,7 @@ Allows a game entity to move around the map.
 Speed of movement.
 
 **modes**
-Movement modes that can be used by the game entity.
+Type of movements that can be used.
 
 ## ability.type.Named
 
@@ -635,13 +637,13 @@ Named(Ability):
     long_description : TranslatedMarkupFile
 ```
 
-Assigns a game entity name and descriptions.
+Assigns the game entity a translatable name and descriptions.
 
 **name**
-The name of the game entity as a translatable string.
+Name of the game entity as a translatable string.
 
 **description**
-A description of the game entity as a translatable markup file.
+Description of the game entity as a translatable markup file.
 
 **long_description**
 A longer description of the game entity as a translatable markup file.
@@ -654,7 +656,7 @@ Passable(Ability):
     mode   : PassableMode
 ```
 
-Deactivates the specified hitbox of the game entity for movement of other game entities. The hitbox is still relevant for the game entity's own movement.
+Deactivates a specified hitbox of the game entity for movement of other game entities. The hitbox is still relevant for the game entity's own movement.
 
 **hitbox**
 Reference to the hitbox that should be deactivated.
@@ -672,19 +674,19 @@ PassiveTransformTo(Ability):
     transform_progress : set(TransformProgress)
 ```
 
-Activates a defined state when a condition is fulilled.
+Activates a state change for a game entity when a condition is fulfilled.
 
 **condition**
-Triggers the transformation once one element is `True`.
+Triggers the transformation when one condition becomes true.
 
 **transform_time**
-Time until the target state is reached.
+Time to wait (in seconds) after the the transformation is triggered until the target state is activated.
 
 **target_state**
 State change activated after `transform_time` has passed.
 
 **transform_progress**
-Can alter the game entity while the transformation progresses.
+Can alter the game entity while the transformation is in progress.
 
 ## ability.type.ProductionQueue
 
@@ -694,7 +696,7 @@ ProductionQueue(Ability):
     production_modes : set(children(ProductionMode))
 ```
 
-Enables a game entity to queue production of `CreatableGameEntity` and `ResearchableTech`.
+Allows a game entity to queue production of `CreatableGameEntity` and `ResearchableTech`.
 
 **size**
 Maximum number of production items in the queue.
@@ -708,21 +710,21 @@ Defines the production items which can be added to the queue.
 Projectile(Ability):
     arc               : int
     accuracy          : set(Accuracy)
-    target_mode       : TargetMode
-    ignored_types     : set(GameEntityType)
+    target_mode       : children(TargetMode)
+    ignored_types     : set(children(GameEntityType))
     unignore_entities : set(GameEntity)
 ```
 
 Gives a game entity projectile behaviour. A projectile is always spawned with another `GameEntity` object as a target. The engine calculates a parabolic path to the target, using the `arc`, `accuracy` and `target_mode` members. While moving along this path, the game entity can use other abilities.
 
 **arc**
-The starting arc of the projectile as value between 0 and 360.
+The starting arc of the projectile as a value between 0 and 360.
 
 **accuracy**
-The accuracy of the projectile as an `Accuracy` object.
+Accuracy of the projectile. Depending on the type of target entity, a different accuracy might be used.
 
 **target_mode**
-Determines the end point of the projectile path with a `TargetMode` object. The end point can be at the expected position of the target, when the projectile hits, or at the position of the target, when the projectile spawns.
+Determines the end point of the projectile path.
 
 **ignore_types**
 The projectile will not use abilities on game entities with these types and ignore their hitbox, while moving along the path. However, the projectile will always use abilities on its target, even if it has one of they types in this set.
@@ -759,7 +761,7 @@ RangedContinuousEffect(ApplyContinuousEffect):
     max_range : int
 ```
 
-Applies a batch of discrete effects on another game entity. This specialization of `ApplyContinuousEffect` allows ranged application.
+Applies continuous effects on another game entity. This specialization of `ApplyContinuousEffect` allows ranged application.
 
 **min_range**
 Minimum distance to target.
@@ -775,7 +777,7 @@ RangedDiscreteEffect(ApplyDiscreteEffect):
     max_range : int
 ```
 
-Applies a batch of discrete effects on another game entity. This specialization of `ApplyDiscreteEffect` allows ranged application.
+Applies batches of discrete effects on another game entity. This specialization of `ApplyDiscreteEffect` allows ranged application.
 
 **min_range**
 Minimum distance to target.
@@ -799,14 +801,14 @@ Regeneration rate as an `AttributeRate` object.
 
 ```python
 RegenerateResourceSpot(Ability):
-    rate : ResourceRate
+    rate          : ResourceRate
     resource_spot : ResourceSpot
 ```
 
 Regenerate the available resources of a game entity's resource spot at a defined rate.
 
 **rate**
-Regeneration rate as an `ResourceRate` object.
+Resource regeneration rate.
 
 **resource_spot**
 Resource spot that is refilled. The game entity must have a `Harvestable` ability that contains this resource spot.
@@ -822,10 +824,10 @@ RemoveStorage(Ability):
 Allows a game entity to remove specified game entities from one of its containers.
 
 **container**
-The container the target game entity will be removed from. A `Storage` ability with this container must be enabled.
+Container the target game entity will be removed from. A `Storage` ability with this container must be enabled.
 
 **storage_elements**
-The set of game entities that can be removed from the container.
+Game entities that can be removed from the container.
 
 ## ability.type.Research
 
@@ -834,10 +836,10 @@ Research(Ability):
     researchables : set(ResearchableTech)
 ```
 
-Allows a game entity to research a `Tech` object. Initiating a research will lock the technology for other game entities that can research it. The lock is lifted when the research process of the `Tech` is cancelled.
+Allows a game entity to research a `Tech` object. Initiating a research will lock the technology for other game entities that can research it. The lock is removed if the research process of the `Tech` is cancelled.
 
 **researchables**
-Stores the reference to the researchable techs as well as the preconditions that have to be fulfilled in order to research them.
+Stores the reference to the researchable techs as well as configuration options for researching.
 
 ## ability.type.Resistance
 
@@ -849,7 +851,7 @@ Resistance(Ability):
 Assigns a game entity resistances to effects applied by other game entities.
 
 **resistances**
-Set of resistances.
+Resistances of the game entity against effects.
 
 ## ability.type.ResourceStorage
 
@@ -861,7 +863,7 @@ ResourceStorage(Ability):
 Assigns a game entity containers for storing resources until they are dropped at a drop site.
 
 **containers**
-Set of containers which specify how resources can be stored.
+Containers which specify how resources can be stored.
 
 ## ability.type.Restock
 
@@ -878,13 +880,13 @@ Restock(Ability):
 Refills a resource spot with a defined amount of resources.
 
 **auto_restock**
-Determines whether the game entity will automatically restock a resource spot that it helped deplete.
+Determines whether the game entity will automatically restock a resource spot that it harvested and is depleted.
 
 **target**
-The resource spot that can be restocked with this ability.
+Resource spot that can be restocked with this ability.
 
 **restock_time**
-Time until the restocking finishes.
+Time until the restocking finishes in seconds.
 
 **manual_cost**
 Cost of restocking when the ability is used manually by a player.
@@ -893,32 +895,32 @@ Cost of restocking when the ability is used manually by a player.
 Cost of restocking when the ability is automatically used by the game entity.
 
 **amount**
-The amount of resources that is refilled.
+Resource amount that is added to the resource spot after restocking.
 
 ## ability.type.Selectable
 
 ```python
 Selectable(Ability):
-    selection_box : SelectionBox
+    selection_box : children(SelectionBox)
 ```
 
 Makes the game entity selectable by players.
 
 **selection_box**
-Defines the area which has to be clicked by the player to select the game entity.
+Defines the clickable area around the game entity which results in a selection.
 
 ## ability.type.SendBackToTask
 
 ```python
 SendBackToTask(Ability):
-    allowed_types        : set(GameEntityType)
+    allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
-Empties the containers of the `Storage` abilities of a game entity and lets the ejected game entities resume their previous tasks.
+Empties the containers of the `Storage` abilities of a game entity and makes the ejected game entities resume their previous tasks.
 
 **allowed_types**
-Whitelist of game entity types that can will be affected.
+Whitelist of game entity types that will be affected.
 
 **blacklisted_entities**
 Blacklist for specific game entities that would be covered by `allowed_types`, but should be explicitly excluded.
@@ -927,7 +929,7 @@ Blacklist for specific game entities that would be covered by `allowed_types`, b
 
 ```python
 ShootProjectile(Ability):
-    projectiles              : orderedset(Projectile)
+    projectiles              : orderedset(GameEntity)
     min_projectiles          : int
     max_projectiles          : int
     min_range                : int
@@ -947,10 +949,10 @@ ShootProjectile(Ability):
     blacklisted_entities     : set(GameEntity)
 ```
 
-Spawns projectiles that have a `GameEntity` object as a target. Projectiles are essentially fire-and-forget objects and only loosely depend on the game entity they originate from. The game entity using `ShootProjectile` will forward its `max_range` value and the target's ID to the spawned projectile object, so that it can calculate the projectile path.
+Spawns projectiles that have a game entity as a target. Projectiles are essentially fire-and-forget objects and only loosely depend on the game entity they originate from.
 
 **projectiles**
-`Projectile` game entities that can be spawned by the ability. The projectiles are fired in the order they have in the set. The amount of spawned projectiles is `min_projectiles` by default and can be increased by `Modifier` objects up to an upper limit of `max_projectiles`. The *last* `Projectile` is reused when the number of projectiles supposed to be fired is greater than the size of the set.
+Game entities that can be spawned by the ability. Projectiles are spawned using the order in the set. The *last* `Projectile` is reused when the number of projectiles supposed to be fired is greater than the size of the set.
 
 **min_projectiles**
 Minimum amount of projectiles spawned.
@@ -959,22 +961,22 @@ Minimum amount of projectiles spawned.
 Maximum amount of projectiles spawned.
 
 **min_range**
-Minimum distance the game entity has to have to the target.
+Minimum distance to the targeted game entity.
 
 **max_range**
-Maximum distance at which the game entity can initiate the ability. Projectiles will be fired at targets further than this distance if the target was in range of the shooting game entity when the ability was initiated.
+Maximum distance to the targeted game entity.
 
 **reload_time**
-Time until the ability can be used again. The timer starts after the *last* projectile has been fired.
+Time until the ability can be used again in seconds. The timer starts after the *last* projectile has been fired.
 
 **spawn_delay**
-Time between the initiation of the ability and first projectile being fired.
+Time to wait between the initiation of the ability and spawning the first projectile in seconds.
 
 **projectile_delay**
-Time until the next projectile is spawned when multiple projectiles are fired.
+Time to wait until the next projectile is spawned when `min_projectiles > 1` in seconds.
 
 **require_turning**
-Determines whether the game entity must turn towards the target.
+Determines whether the game entity must face the target before it can use the ability.
 
 **manual_aiming_allowed**
 Determines whether the ability can be aimed at a coordinate instead of a `GameEntity` object.
@@ -995,7 +997,7 @@ Determines the spawn area in which the projectile can be spawned randomly.
 Determines the spawn area in which the projectile can be spawned randomly.
 
 **spawning_area_randomness**
-Value between 0 and 1 that determines far the spawn location can be from the spawn area center. The engine chooses random (x,y) coordinates in the spawn area and multiplies them by this value in order to determine the spawn location.
+Value between 0.0 and 1.0 that determines how far the spawn location can be from the spawn area center. The engine chooses random (x,y) coordinates in the spawn area and multiplies them by this value in order to determine the spawn location.
 
 **allowed_types**
 Whitelist of game entity types that can be targeted with the ability.
@@ -1020,19 +1022,19 @@ Storage(Ability):
     empty_threshold : set(LogicElement)
 ```
 
-Enables a game entity to store other game entities. The stored game entities can influence the state of the storing game entity.
+Allows a game entity to store other game entities. Stored game entities can influence the state of the storing game entity.
 
 **container**
-Defines which and how many game entities can be stored.
+Configres the storage container.
 
 **empty_threshold**
-Empties the storage if one of the elements is `True`.
+Ejects all game entities from the container if one of the conditions is true.
 
 ## ability.type.TerrainRequirement
 
 ```python
 TerrainRequirement(Ability):
-    allowed_types        : set(TerrainType)
+    allowed_types        : set(children(TerrainType))
     blacklisted_terrains : set(Terrain)
 ```
 
@@ -1077,16 +1079,16 @@ TransferStorage(Ability):
     target_container : Container
 ```
 
-Transfers one game entity from a container to another.
+Transfers a game entity from one container to another.
 
 **storage_element**
 Game entity that is transferred.
 
 **source_container**
-Container the game entity is stored in when the ability is used.
+Container the transferable game entity is stored in.
 
 **target_container**
-Container that the game entity is inserted into. The target container can belong to the same game entity.
+Container the game entity is inserted into. The target container can belong to the same game entity.
 
 ## ability.type.Turn
 
@@ -1098,7 +1100,7 @@ Fly(Ability):
 Allows a game entity to turn on the spot.
 
 **turn_speed**
-Speed at which the game entity turns.
+Speed at which the game entity turns. `inf` can be assigned to make the game entity turn immediately.
 
 ## ability.type.UseContingent
 
@@ -1107,7 +1109,7 @@ UseContingent(Ability):
     amount : set(ResourceAmount)
 ```
 
-Reserves a temporary resource amount of a `ResourceContingent`. Game entities produced via the `Create` ability only spawn the the contingent has enough space to support them. The amount is reserved until the ability is disabled.
+Reserves a temporary resource amount of a `ResourceContingent`. The amount is freed when the ability is disabled.
 
 **amount**
 Temporary resource amount that is reserved by the game entity.

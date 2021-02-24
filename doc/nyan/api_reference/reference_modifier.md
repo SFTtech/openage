@@ -14,6 +14,8 @@ Generalization object for all modifiers. Modifiers change the behavior of abilit
 **properties**
 Further specializes the modifier beyond the standard behaviour.
 
+The engine expects objects from the namespace `engine.modifier.property.type` as keys. Values must always be an instance of the object used as key.
+
 Standard behavior without properties:
 
 * Modifiers in the `modifiers` set of `GameEntity` are considered enabled as soon as the game entity is created, unless a `StateChager` object disables them.
@@ -43,7 +45,7 @@ Multiplier(ModifierProperty):
     multiplier : float
 ```
 
-Multiples the value of the assiciated ability member with a defined factor.
+Multiples the value of the associated ability member with a defined factor.
 
 **multiplier**
 Multiplication factor.
@@ -52,8 +54,8 @@ Multiplication factor.
 
 ```python
 Scoped(ModifierProperty):
-    diplomatic_stances : set(DiplomaticStance)
-    scope              : ModifierScope
+    diplomatic_stances : set(children(DiplomaticStance))
+    scope              : children(ModifierScope)
 ```
 
 Applies the modifier to a defined set of game entities. The modifier affects these game entities as long as it stays enabled for the game entity it is assigned to.
@@ -86,7 +88,7 @@ AbsoluteProjectileAmount(Modifier):
 Increases the projectile amount of `ShootProjectile` abilities by a fixed value. The total amount is limited by the `max_projectiles` member in `ShootProjectile`.
 
 **amount**
-The amount of projectiles added.
+Amount of projectiles added.
 
 ## modifier.type.AoE2ProjectileAmount
 
@@ -94,7 +96,7 @@ The amount of projectiles added.
 AoE2ProjectileAmount(Modifier):
     provider_abilities : set(ApplyDiscreteEffect)
     receiver_abilities : set(ApplyDiscreteEffect)
-    change_types       : set(AttributeChangeType)
+    change_types       : set(children(AttributeChangeType))
 ```
 
 Compares the raw change value of two sets of `ApplyDiscreteEffect` abilities. The final amount is calculated by using this formula:
@@ -162,7 +164,7 @@ Changes the attribute amount of `AttributeCost` objects in `CreatableGameEntity`
 Limits the modifier to `AttributeAmount` objects referencing attributes from this set.
 
 **creatables**
-These `CreatableGameEntity` objects are considered.
+`CreatableGameEntity` objects that are considered.
 
 ## modifier.type.CreationResourceCost
 
@@ -190,7 +192,7 @@ CreationTime(MultiplierModifier):
 Changes the `creation_time` member of a `CreatableGameEntity` object in the `Create` ability.
 
 **creatables**
-These `CreatableGameEntity` objects are considered.
+`CreatableGameEntity` objects that are considered.
 
 ## modifier.type.DepositResourcesOnProgress
 
@@ -198,11 +200,11 @@ These `CreatableGameEntity` objects are considered.
 DepositResourcesOnProgress(Modifier):
     progress_status      : ProgressStatus
     resources            : set(Resource)
-    affected_types       : set(GameEntityType)
+    affected_types       : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
-Deposits resources of a game entity into the players resource pool if the game entity was involved in advancing the progress via `TimeRelativeProgress` effects.
+Deposits resources of a game entity into the players resource pool if the game entity was involved in advancing the progress via `TimeRelativeProgressChange` effects.
 
 **progress_status**
 Progress status at which the resources are deposited. The `TimeRelativeProgress` effect must be applied at the exact same time as the progress is reached.
@@ -220,13 +222,13 @@ Blacklist for specific game entities that would be covered by `affected_types`, 
 
 ```python
 DiplomaticLineOfSight(Modifier):
-    diplomatic_stance : DiplomaticStance
+    diplomatic_stance : children(DiplomaticStance)
 ```
 
-Activates line of sight for game entities of players that the owner of the game entity has a specified diplomatic stance towards.
+Activates line of sight for game entities of players with the specified diplomatic stance are also visible to owner of the modifier.
 
 **diplomatic_stance**
-Stance towards other players which should be visible.
+Players with these stances share ther line of sight with the modifier owner.
 
 ## modifier.type.effect.flat_attribute_change.type.ElevationDifferenceHigh
 
@@ -244,11 +246,11 @@ The minimum elevation difference between effector and resistor.
 
 ```python
 Flyover(Modifier):
-    flyover_types        : set(GameEntityType)
+    flyover_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
-Changes the cumulated *applied change value* of `FlatAtttributeChange` effects of a projectile's attack if the projectile path went over specified game entity types.
+Changes the accumulated *applied change value* of `FlatAtttributeChange` effects of a projectile's attack if the projectile path went over specified game entity types.
 
 **flyover_types**
 Whitelist of game entity types that must be under the patch of the projectile. The game entities must have the `Hitbox` ability.
@@ -263,10 +265,10 @@ Terrain(Modifier):
     terrain : Terrain
 ```
 
-Changes the cumulated *applied change value* of `FlatAtttributeChange` effects when the target game entity is on a specified terrain.
+Changes the accumulated *applied change value* of `FlatAtttributeChange` effects when the target game entity is on a specified terrain.
 
 **terrain**
-The terrain the targeted game entity must stand on.
+Terrain the targeted game entity must stand on.
 
 ## modifier.type.effect.flat_attribute_change.type.Unconditional
 
@@ -275,7 +277,7 @@ Unconditional(Modifier):
     pass
 ```
 
-Changes the cumulated *applied change value* of `FlatAtttributeChange` effects without any conditions.
+Changes the accumulated *applied change value* of `FlatAtttributeChange` effects without any conditions.
 
 ## modifier.type.effect.type.TimeRelativeAttributeChangeTime
 
@@ -307,7 +309,7 @@ Changes the amount of resources that are removed from a specific resource spot's
 *Example*: Consider a gold resource spot containing 100 gold and a game entity with a `GatheringEfficiency` modifier for this resource spot with multiplier `0.8`. For an amount of 10 gold that the game entity gathers, the resource spot will remove only `0.8` times this amount, i.e. the resource spot only loses 8 gold. This effectively increases the yield of the resource spot to 125 gold for the game entity.
 
 **resource_spot**
-The resource spot for which the efficiency multiplier is applied.
+Resource spot for which the efficiency is changed.
 
 ## modifier.type.GatheringRate
 
@@ -316,10 +318,10 @@ GatheringRate(Modifier):
     resource_spot : ResourceSpot
 ```
 
-Changes the amount of resources that are gathered from a specific resource spot.
+Changes the gathering rate in a game entity's `Gather` ability for a specific resource spot.
 
 **resource_spot**
-The resource spot for which the rate multiplier is applied.
+Resource spot for which the gathering rate is changed.
 
 ## modifier.type.InContainerContinuousEffect
 
@@ -361,10 +363,10 @@ InstantTechResearch(Modifier):
     condition : set(LogicElement)
 ```
 
-Instantly researches a `Tech` and applies its patches for a player when the condition is fulfilled.
+Instantly unlocks a `Tech` and applies its patches when the condition is fulfilled.
 
 **tech**
-The technology that is researched.
+Technology that is researched.
 
 **condition**
 Condition that need to be fulfilled to trigger the research.
@@ -392,7 +394,7 @@ Returns a fixed amount of resources back to the player after the condition has b
 Amount of resources that are added to the player's resource pool.
 
 **condition**
-The condition that triggers the refund.
+Condition that triggers the refund.
 
 ## modifier.type.ReloadTime
 
@@ -414,10 +416,10 @@ ResearchAttributeCost(Modifier):
 Changes the attribute amount of `AttributeCost` objects in `ResearchableTech` objects.
 
 **attributes**
-Limits the modifier to `AttributeAmount` objects referencing attributes from this set.
+Limits the modifier to `AttributeAmount` objects referencing `Attribute` objects from this set.
 
 **researchables**
-These `ResearchableTech` objects are considered.
+`ResearchableTech` objects that are considered.
 
 ## modifier.type.ResearchResourceCost
 
@@ -430,10 +432,10 @@ ResearchResourceCost(Modifier):
 Changes the resource amount of `ResourceCost` objects in `ResearchableTech` objects.
 
 **resources**
-Limits the modifier to `ResourceAmount` objects referencing resources from this set.
+Limits the modifier to `ResourceAmount` objects referencing `Resource` objects from this set.
 
 **researchables**
-These `ResearchableTech` objects are considered.
+`ResearchableTech` objects that are considered.
 
 ## modifier.type.ResearchTime
 
@@ -445,7 +447,7 @@ ResearchTime(Modifier):
 Changes the `research_time` member of a `ResearchableTech` object in the `Research` ability.
 
 **researchables**
-These `ResearchableTech` objects are considered.
+`ResearchableTech` objects that are considered.
 
 ## modifier.type.resistance.flat_attribute_change.type.ElevationDifferenceLow
 
@@ -487,7 +489,7 @@ Unconditional(Modifier):
     pass
 ```
 
-Changes the cumulated *applied change value* of `FlatAtttributeChange` resistances without any conditions.
+Changes the accumulated *applied change value* of `FlatAtttributeChange` resistances without any conditions.
 
 ## modifier.type.Reveal
 
@@ -501,7 +503,7 @@ Reveal(Modifier):
 Reveals an area around specified game entities.
 
 **line_of_sight**
-The radius of the visible area around the game entity.
+Radius of the visible area around the game entity.
 
 **affected_types**
 Whitelist of game entity types that the modifier should apply to.
@@ -519,4 +521,4 @@ StorageElementCapacity(Modifier):
 Changes the `elements_per_slot` member of a `StorageElementDefinition` object in a container. Resulting values are floored.
 
 **storage_element**
-The storage element which is considered.
+Storage element which is considered.

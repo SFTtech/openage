@@ -498,7 +498,7 @@ rate : AttributeRate</panel_attributes>
 bg=green
 
 --
-projectiles : orderedset(Projectile)
+projectiles : orderedset(GameEntity)
 min_projectiles : int
 max_projectiles : int
 min_range : int
@@ -569,7 +569,7 @@ height : float</panel_attributes>
     <coordinates>
       <x>3300</x>
       <y>3050</y>
-      <w>210</w>
+      <w>190</w>
       <h>80</h>
     </coordinates>
     <panel_attributes>*Cheat*
@@ -1988,7 +1988,7 @@ attributes : set(AttributeSetting)</panel_attributes>
     <coordinates>
       <x>3300</x>
       <y>3140</y>
-      <w>260</w>
+      <w>250</w>
       <h>100</h>
     </coordinates>
     <panel_attributes>*Taunt*
@@ -2070,7 +2070,7 @@ state_change : optional(StateChanger)</panel_attributes>
       <w>310</w>
       <h>160</h>
     </coordinates>
-    <panel_attributes>*Civilization*
+    <panel_attributes>*PlayerSetup*
 bg=pink
 
 --
@@ -2080,7 +2080,7 @@ long_description : TranslatedMarkupFile
 leader_names : set(TranslatedString)
 modifiers : set(Modifier)
 starting_resources : set(ResourceAmount)
-civ_setup : orderedset(Patch)</panel_attributes>
+game_setup : orderedset(Patch)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -9702,8 +9702,8 @@ bg=pink</panel_attributes>
 bg=pink
 
 --
-radius_x : float
-radius_y : float</panel_attributes>
+width : float
+height : float</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

@@ -9,50 +9,50 @@ Accuracy(Entity):
     accuracy             : float
     accuracy_dispersion  : float
     dispersion_dropoff   : DropOffType
-    target_types         : set(GameEntityType)
+    target_types         : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
-Stores information for the accuracy calculation of a game entity with `Projectile` ability.
+Stores information for the accuracy calculation of a game entity with the `Projectile` ability.
 
 **accuracy**
-The chance for the projectile to land at the "perfect" position to hit its target as a value between 0 and 1.
+Chance for the projectile to land at the "perfect" position to hit its target. The value represents a percentage and must be between 0.0 and 1.0.
 
 **accuracy_dispersion**
-The maximum accuracy dispersion when the projectile fails the accuracy check.
+Maximum accuracy dispersion when the projectile fails the accuracy check.
 
 **dispersion_dropoff**
 Multiplies the maximum dispersion with a dropoff factor. The dropoff depends on the distance of the projectile spawning game entity in relation to the `max_range` of its `ShootProjectile` ability.
 
 **target_types**
-Lists the game entities types for which the accuracy value can be used.
+Game entities types for which the accuracy value can be used.
 
 **blacklisted_entities**
-Used to blacklist game entities that have one of the types listed in `target_types`, but should not be covered by this `Accuracy` object.
+Blacklists game entities that have one of the types listed in `target_types`, but should not be covered by this `Accuracy` object.
 
 ## aux.animation_override.AnimationOverride
 
 ```python
 AnimationOverride(Entity):
-    ability    : Ability
+    ability    : abstract(Ability)
     animations : set(Animation)
     priority   : int
 ```
 
-Internally overrides the animations used for an ability. The ability must be an `AnimatedAbility` when the override occurs. The override stops when
+Internally overrides the animations used for an ability. The ability must have the `Animated` property when the override occurs. The override stops when
 
-* Another override of the same ability with a *greater than or equal to* (>=) is initiated
-* The overridden ability is deactivated
-* The override animation would be the same as the standard animation
+* Another override of the same ability with a *greater than or equal to* (>=) priority is initiated **or**
+* The overridden ability is deactivated **or**
+* The `Animated` property is removed.
 
 **ability**
-The ability whose animations should be overridden. This member can reference a specific ability of the game entity or an API ability. If an API ability is referenced, all its instances in the ability set of the game entity will be overridden.
+Ability whose animations should be overridden. This member can reference a specific ability of the game entity or an API object from the `engine.ability.type` namespace. If an API object is referenced, all its instances of the ability defined for the game entity will have their animation overridden.
 
 **animations**
-The replacement animations of the override.
+Replacement animations of the override.
 
 **priority**
-Priority of the override. Overrides are only executed if their priority is *greater than or equal to* (>=) an already existing override. The default animation of an ability always has a priority of 0.
+Priority of the override. Overrides are only executed if their priority is *greater than or equal to* (>=) an already existing override. The default animation from an `Animated` property of an ability always has a priority of 0.
 
 ## aux.animation_override.AnimationOverride
 
@@ -62,7 +62,7 @@ Reset(AnimationOverride):
     priority   = 0
 ```
 
-Resets the animation of the specified ability by removing the current animation override.
+Resets the animation of the specified ability to the animation defined in the `Animated` property by removing the current animation override.
 
 ## aux.attribute.Attribute
 
@@ -72,10 +72,10 @@ Attribute(Entity):
     abbreviation : TranslatedString
 ```
 
-Defines an attribute that can be assigned a value range by `AttributeSetting`. Attributes are used for interaction between game entities (e.g. health) and as payment for effects.
+Defines an attribute that can be assigned a value range by `AttributeSetting`.
 
 **name**
-The name of the attribute as a translated string.
+Name of the attribute as a translated string.
 
 **abbreviation**
 Short version of the names as a translated string.
@@ -91,7 +91,7 @@ AttributeAmount(Entity):
 A fixed amount of a certain attribute.
 
 **type**
-The attribute.
+Attribute reference.
 
 **amount**
 Amount of attribute points.
@@ -104,10 +104,10 @@ AttributeRate(Entity):
     rate   : float
 ```
 
-A per second rate of a certain attribute.
+A per-second rate of a certain attribute.
 
 **type**
-The attribute.
+Attribute reference.
 
 **rate**
 Rate of attribute points.
@@ -122,13 +122,13 @@ AttributeSetting(Entity):
     starting_value : int
 ```
 
-Assigns an interval for an attribute of a game entity. The game entity can have a *current attribute value* while it exists. Attribute values can be changed by abilities or effects.
+Assigns an attribute to a game entity and specifies the range the attribute value can be in. The game entity has a *current attribute value* at runtime. Attribute values can be changed by abilities or effects.
 
 **attribute**
-Attribute the interval is defined for.
+Attribute that is configured by this object.
 
 **min_value**
-Minimum value the current attribute value can have. Can be negative.
+Minimum value the current attribute value can have.
 
 **max_value**
 Maximum value the current attribute value can have.
@@ -152,6 +152,7 @@ The attribute that is protected.
 
 ```python
 AttributeChangeType(Entity):
+    pass
 ```
 
 Used by `FlatAttributeChange` effects and resistances for matching.
@@ -160,11 +161,12 @@ Used by `FlatAttributeChange` effects and resistances for matching.
 
 ```python
 Fallback(AttributeChangeType):
+    pass
 ```
 
 A special type for `FlatAttributeChange`. Effects with this type are only evaluated if the accumulated applied value or applied rate of all other effects is outside of a specified interval. The interval is defined by the `FlatAttributeChange` object that has its `type` member set to `Fallback`. Upper and lower bounds are `[min_change_rate,max_change_rate]` (continuous effects) and `[min_change_value,max_change_value]` (discrete effects). The fallback effect is also evaluated if no other `FlatAttributeChange` effect is present or matched to any resistances. However, fallback effects still needs to be matched against a resistance object with `type` set to `Fallback`.
 
-For example, effects that utilize fallback can be used to model minimum or maximum damage of a game entity.
+For example, effects that utilize fallback behaviour can be used to model minimum or maximum damage of a game entity.
 
 ## aux.calculation_type.CalculationType
 
@@ -237,61 +239,22 @@ Sets the influence factor to 1 regardless of the number of effectors. Note that 
 ```python
 Cheat(Entity):
     activation_message : text
-    display_message    : text
     changes            : orderedset(Patch)
 ```
 
-Cheats are a predefined gameplay change, often in favor and to the amusement of the player. They are deactivated by default in multiplayer. Advanced cheating behavior can be realized by attaching scripts to the `Cheat` object.
+Cheats are a predefined gameplay change, often in favour and to the amusement of the player. They are deactivated by default in multiplayer. Advanced cheating behavior can be realized by attaching scripts to the `Cheat` object.
 
 **activation_message**
 The activation message that has to be typed into the chat console.
 
-**display_message**
-The displayed message after the cheat is activated as a `TranslatedString`.
-
 **changes**
 Changes to API objects.
-
-## aux.civilization.Civilization
-
-```python
-Civilization(Entity):
-    name               : TranslatedString
-    description        : TranslatedMarkupFile
-    long_description   : TranslatedMarkupFile
-    leader_names       : set(TranslatedString)
-    modifiers          : set(Modifier)
-    starting_resources : set(ResourceAmount)
-    civ_setup          : orderedset(Patch)
-```
-
-Civilization customize the base state of the game for a player. This includes availability of units, buildings and techs as well as changing their abilities and modifiers plus their individual members.
-
-**name**
-The name of the civilization as a translatable string.
-
-**description**
-A description of the civilization as a translatable markup file.
-
-**long_description**
-A longer description of the civilization as a translatable markup file. Used for the tech tree help of the civilization.
-
-**leader_names**
-Names for the leader of the civilizations that are displayed with the score.
-
-**modifiers**
-Modifiers for game entities of the civilization. By default, these modifiers apply to **all** game entities belonging to the player. For example, an `AttributeModifier` with `multiplier = 1.2` for the attribute `Health` will increase the maximum HP of every unit owned by the player by 20\%. If you want the modifier to only affect specific game entities, you have to use `ScopedModifier` or assign `Modifier` objects to individual game entities using `civ_setup`.
-
-**starting_resources**
-The resources of the civilization at the start of a game.
-
-**civ_setup**
-Customizes the base state of the game through patches. Any members and objects can be patched. Normal `Patch` objects will only be applied to the player. To apply patches to other player with specific diplomatic stances, use `DiplomaticPatch`.
 
 ## aux.container_type.SendToContainerType
 
 ```python
 SendToContainerType(Entity):
+    pass
 ```
 
 Used by `SendToContainer` effects and resistances for matching.
@@ -300,6 +263,7 @@ Used by `SendToContainer` effects and resistances for matching.
 
 ```python
 ConvertType(Entity):
+    pass
 ```
 
 Used by `Convert` effects and resistances for matching.
@@ -308,13 +272,13 @@ Used by `Convert` effects and resistances for matching.
 
 ```python
 Cost(Entity):
-    payment_mode : PaymentMode
+    payment_mode : children(PaymentMode)
 ```
 
 Generalization object for resource and attribute costs.
 
 **payment_mode**
-Determines when the costs have to be payed as `PaymentMode` objects.
+Determines how the costs have to be payed.
 
 ## aux.cost.type.AttributeCost
 
@@ -323,10 +287,10 @@ AttributeCost(Cost):
     amount : set(AttributeAmount)
 ```
 
-Defines the cost as an amount of attribute points that is removed from the game entity's current attribute value.
+Defines the cost as an amount of attribute points that is removed from a game entity's current attribute value.
 
 **amount**
-Amounts of attribute points as `AttributeAmount` objects.
+Amounts of attribute points.
 
 ## aux.cost.type.ResourceCost
 
@@ -338,7 +302,7 @@ ResourceCost(Cost):
 Defines the cost as an amount of resources that is removed from the player's resource pool.
 
 **amount**
-Amounts of resources as `ResourceAmount` objects.
+Amounts of resources.
 
 ## aux.create.CreatableGameEntity
 
@@ -350,7 +314,7 @@ CreatableGameEntity(Entity):
     creation_time   : float
     creation_sounds : set(Sound)
     condition       : set(LogicElement)
-    placement_modes : set(PlacementMode)
+    placement_modes : set(children(PlacementMode))
 ```
 
 Defines preconditions, placement and spawn configurations for a new instance of a game entity created by a `Create` ability.
@@ -362,24 +326,25 @@ Reference to the `GameEntity` object that is spawned.
 Variants can alter the game entity before they are created. The requirement and extent of the changes depends on the `Variant` object.
 
 **cost**
-Resource amount spent to initiate creation. Cancelling the creation results in a refund of the spent resources.
+Amount spent to initiate creation. Cancelling the creation results in a refund of the spent cost.
 
 **creation_time**
-Time until the game entity is spawned from the creating game entity.
+Time to wait until the game entity is spawned from the creating game entity in seconds.
 
 **creation_sounds**
-Sounds that are played on creating an instance of the game entity.
+Sounds that are played when the game entity is spawned.
 
 **condition**
 Conditions that unlock the creatable game entity for the creating game entity. Only one condition needs to be fulfilled to trigger the unlock. If the set is empty, the game entity is considered available from the start for the creating game entity.
 
 **placement_modes**
-Decides where and how the game entity instance is spawned as a `PlacementMode` object.
+Decides where and how the game entity instance is spawned.
 
 ## aux.diplomatic_stance.DiplomaticStance
 
 ```python
 DiplomaticStance(Entity):
+    pass
 ```
 
 Generalization object for diplomatic stances that can be used for diplomacy ingame. Diplomatic stances also define which player can use the abilities, modifiers and effects of a game entity.
@@ -397,6 +362,7 @@ Can be used to address any diplomatic stance.
 
 ```python
 Self(DiplomaticStance):
+    pass
 ```
 
 The diplomatic stance of a player towards themselves.
@@ -423,6 +389,7 @@ Calculates the distribution value by using the mean of all change values of effe
 
 ```python
 DropoffType(Entity):
+    pass
 ```
 
 Used for calculating the effectiveness over distance of `AreaEffect`s and `Accuracy` of projectiles. The dropoff modifier is always relational to the maximum range.
@@ -431,22 +398,25 @@ Used for calculating the effectiveness over distance of `AreaEffect`s and `Accur
 
 ```python
 InverseLinear(DropoffType):
+    pass
 ```
 
-The effectiveness starts at 0\% (for zero distance) and linearly increases to 100\% (for maximum distance).
+The effectiveness starts at 0% (for zero distance) and linearly increases to 100% (for maximum distance).
 
 ## aux.dropoff_type.type.Linear
 
 ```python
 Linear(DropoffType):
+    pass
 ```
 
-The effectiveness starts at 100\% (for zero distance) and linearly decreases to 0\% (for maximum distance).
+The effectiveness starts at 100% (for zero distance) and linearly decreases to 0% (for maximum distance).
 
 ## aux.dropoff_type.type.NoDropoff
 
 ```python
 NoDropoff(DropoffType):
+    pass
 ```
 
 The effectiveness is constant and independent from the range to the target.
@@ -460,6 +430,19 @@ EffectBatch(Entity):
 ```
 
 Generalization object for a collection of discrete effects. Batches combine the discrete effects to transactions. Batches - like effects - can have properties to configure the batch application.
+
+**effects**
+Discrete effects applied by the batch.
+
+**properties**
+Further specializes the batch beyond the standard behaviour.
+
+The engine expects objects from the namespace `engine.aux.effect_batch.property.type` as keys. Values must always be an instance of the object used as key.
+
+Properties:
+
+* `Chance`: Batches have a chance to be applied.
+* `Priority`: Sets the preferred order of application in comparison to other batches.
 
 ## aux.effect_batch.property.BatchProperty
 
@@ -556,8 +539,8 @@ Sell an amount of `resource_a` and receive an amount of `resource_b`. `resource_
 ```python
 ExchangeRate(Entity):
     base_price   : float
-    price_adjust : optional(dict(ExchangeMode, PriceMode))
-    price_pool   : optional(PricePool)
+    price_adjust : optional(dict(ExchangeMode, children(PriceMode)))
+    price_pool   : optional(children(PricePool))
 ```
 
 Defines an exchange rate for the resources in the `ExchangeResources` ability.
@@ -599,7 +582,7 @@ Ordering priority in relation to other subformations. Formations are ordered in 
 
 ```python
 GameEntity(Entity):
-    types     : set(GameEntityType)
+    types     : set(children(GameEntityType))
     abilities : set(Ability)
     modifiers : set(Modifier)
 ```
@@ -607,13 +590,13 @@ GameEntity(Entity):
 For definition of all ingame objects, including units, buildings, items, projectiles and ambience. Their capabilities are handled through `Ability` and `Modifier` API objects stored in the members.
 
 **types**
-Classification of the game entity via `GameEntityType` objects.
+Classification of the game entity.
 
 **abilities**
-Define what the game entity *does* and *is* through `Ability` objects.
+Define what the game entity *does* and *is* (see the [ability module](reference_ability.md)).
 
 **modifiers**
-Change the stats of abilities belonging to the game entity. Mostly used to give boni or mali in certain situations (see `Modifier`).
+Change the stats of abilities belonging to the game entity. Mostly used to give boni or mali in certain situations (see the [modifier module](reference_modifier.md)).
 
 ## aux.game_entity_formation.GameEntityFormation
 
@@ -623,10 +606,10 @@ GameEntityFormation(Entity):
     subformation : Subformation
 ```
 
-Defines a placement in a formation for the `Formation` ability.
+Defines the placement of a game entity in a formation for the `Formation` ability.
 
 **formation**
-The formation the game entity is placed in.
+Formation the game entity is placed in.
 
 **subformation**
 Subformation inside the subformation that the game entity is inserted into.
@@ -637,24 +620,25 @@ Subformation inside the subformation that the game entity is inserted into.
 GameEntityStance(Entity):
     search_range       : float
     ability_preference : orderedset(Ability)
-    type_preference    : orderedset(GameEntityType)
+    type_preference    : orderedset(children(GameEntityType))
 ```
 
 Generalization object for activity stances for the `GameEntityStance` ability.
 
 **search_range**
-Defines the range in which the game entity will lok for targets.
+Defines the range in which the game entity will look for targets.
 
 **ability_preference**
-The abilities which the game entity will execute or search targets for. Their order in the set defines the priority of usage.
+Abilities which the game entity will execute or search targets for. Their order in the set defines the priority of usage.
 
 **type_preference**
-Determines which game entity types are prioritized as targets. Their order in the set defines the priority of usage. Game entities with types that are not in the set will be ignored.
+Determines which game entity types are prioritized as targets. Their order in the set defines the priority with which they are targeted. Game entities with types that are not in the set will be ignored.
 
 ## aux.game_entity_stance.type.Aggressive
 
 ```python
 Aggressive(GameEntityStance):
+    pass
 ```
 
 The game entity will use ranged abilities or move to the nearest target in its line of sight to use other abilities. If the target gets out of the line of sight, the game entity searches for a new target. When no new target can be found, the game entity stops moving and returns to an idle state.
@@ -663,6 +647,7 @@ The game entity will use ranged abilities or move to the nearest target in its l
 
 ```python
 Defensive(GameEntityStance):
+    pass
 ```
 
 The game entity will use ranged abilities or move to the nearest target in its line of sight to use other abilities. If the target gets out of range or the line of sight, the game entity searches for a new target. When no new target can be found, the game entity returns to its original position and returns to an idle state.
@@ -671,6 +656,7 @@ The game entity will use ranged abilities or move to the nearest target in its l
 
 ```python
 Passive(GameEntityStance):
+    pass
 ```
 
 The game entity will stay at its current position and only reacts to manual commands given by players. Abilities in `ability_preference` will be ignored.
@@ -679,14 +665,16 @@ The game entity will stay at its current position and only reacts to manual comm
 
 ```python
 StandGround(GameEntityStance):
+    pass
 ```
 
-The game entity will stay at its current position.
+The game entity will stay at its current position. Abilities in `ability_preference` will be used if other game entities come in range of the game entity.
 
 ## aux.game_entity_type.GameEntityType
 
 ```python
 GameEntityType(Entity):
+    pass
 ```
 
 Classification for a game entity.
@@ -806,7 +794,7 @@ LanguageMarkupPair(Entity):
 Defines the translation of a longer text from a markup file in a certain language.
 
 **language**
-The language used in the markup file.
+Language used in the markup file.
 
 **markup_file**
 File descriptor of the markup file. Has to be relative to the `.nyan` file where the `LanguageMarkupPair` is defined.
@@ -822,7 +810,7 @@ LanguageSoundPair(Entity):
 Defines the translation of a sound in a certain language.
 
 **language**
-The language used for the sound.
+Language used for the sound.
 
 **sound**
 References the `Sound` object for the translation.
@@ -838,10 +826,55 @@ LanguageTextPair(Entity):
 Defines the translation of a string in a certain language.
 
 **language**
-The language used for the string.
+Language used for the string.
 
 **string**
 The translated string.
+
+## aux.language.translated.TranslatedObject
+
+```python
+TranslatedObject(Entity):
+    pass
+```
+
+Generalization object for any objects that are or should be different depending on the language. Currently we support translations for strings, markup files and sounds.
+
+## aux.language.translated.type.TranslatedMarkupFile
+
+```python
+TranslatedMarkupFile(TranslatedObject):
+    translations : set(LanguageMarkupPair)
+```
+
+The translated versions of a longer text stored in markup files.
+
+**translations**
+All translations of the markup files as language-file pairs (see `LanguageMarkupPair`).
+
+## aux.language.translated.type.TranslatedSound
+
+```python
+TranslatedSound(TranslatedObject):
+    translations : set(LanguageSoundPair)
+```
+
+The translated versions of a sound.
+
+**translations**
+All translations of the sound as language-sound pairs (see `LanguageSoundPair`).
+
+## aux.language.translated.type.TranslatedString
+
+```python
+TranslatedString(TranslatedObject):
+    translations : set(LanguageTextPair)
+```
+
+The translated versions of a string.
+
+**translations**
+All translations of the string as language-text pairs (see `LanguageTextPair`).
 
 ## aux.lock.LockPool
 
@@ -975,7 +1008,7 @@ Literal(LogicElement):
     scope : LiteralScope
 ```
 
-Generalization object for a logical statement about the game world that is either true or false at a goven point in time.
+Generalization object for a logical statement about the game world that is either true or false at a given point in time.
 
 **scope**
 Scope in which the statement is checked.
@@ -1118,10 +1151,10 @@ TechResearched(Literal):
     tech : Tech
 ```
 
-Is true when the technology has been researched by the player.
+Is true when the specified technology has been researched by the player.
 
 **tech**
-The technology that has to be researched.
+Technology that has to be researched.
 
 ## aux.logic.literal.type.Timer
 
@@ -1130,10 +1163,10 @@ Timer(Literal):
     time : float
 ```
 
-Triggers after a specified amount of time has passed after the `Despawn` ability has been activated. If the `Despawn` ability is disabled before the timer has finished, it will be reset.
+Triggers after a specified amount of time has passed. When the timer is started depends on the object that uses the condition.
 
 **time**
-Time that has to pass after the activation of the corresponding `Despawn` ability.
+Time that has to pass after the activation.
 
 ## aux.logic.literal_scope.LiteralScope
 
@@ -1157,7 +1190,7 @@ Use the default scope defined by the literal.
 
 ```python
 Diplomatic(LiteralScope):
-    stances : set(DiplomaticStance)
+    stances : set(children(DiplomaticStance))
 ```
 
 Include the state of players with the specified stances in the scope.
@@ -1169,6 +1202,7 @@ Diplomatic stances included in the scope.
 
 ```python
 LureType(Entity):
+    pass
 ```
 
 Used by `Lure` effects and resistances for matching.
@@ -1181,10 +1215,10 @@ Mod(Entity):
     priority : int
 ```
 
-A set of patches that will be automatically applied when the modpack is loaded.
+Defines patches that will be automatically applied when the modpack is loaded.
 
 **patches**
-Changes the game state through patches. Any members and objects can be patched. Every `Patch` will be applied to all players. `DiplomaticPatch` objects will also be applied to all players.
+Changes the game state through patches.
 
 **priority**
 Determines the application order of the mod in comparison to other `Mod` objects. `Mod` objects are applied starting with the object with the highest priority value.
@@ -1193,15 +1227,16 @@ Determines the application order of the mod in comparison to other `Mod` objects
 
 ```python
 ModifierScope(Entity):
+    pass
 ```
 
-Generalization object for scopes of a `ScopeModifier` object.
+Generalization object for scopes of a `Scoped` property of a `Modifier`.
 
 ## aux.modifier_scope.type.GameEntityScope
 
 ```python
 GameEntityScope(ModifierScope):
-    affected_types       : set(GameEntityType)
+    affected_types       : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
@@ -1217,14 +1252,16 @@ Blacklist for specific game entities that would be covered by `affected_types`, 
 
 ```python
 Standard(ModifierScope):
+    pass
 ```
 
-Makes the modifier behave as if standard rules would apply, i.e. as if the modifier had no `ScopeModifier` specialization type.
+Makes the modifier behave as if standard rules would apply, i.e. as if the modifier had no `Scoped` property.
 
 ## aux.move_mode.MoveMode
 
 ```python
 MoveMode(Entity):
+    pass
 ```
 
 Generalization object for move modes for the `Move` ability.
@@ -1233,6 +1270,7 @@ Generalization object for move modes for the `Move` ability.
 
 ```python
 AttackMove(MoveMode):
+    pass
 ```
 
 Move to a position on the map. Stances from `GameEntityStance` ability are considered during movement.
@@ -1264,7 +1302,8 @@ The range at which the other game entity is guarded.
 ## aux.move_mode.type.Normal
 
 ```python
-AttackMove(MoveMode):
+Normal(MoveMode):
+    pass
 ```
 
 Move to a position on the map. Stances from `GameEntityStance` ability are ignored during movement.
@@ -1273,6 +1312,7 @@ Move to a position on the map. Stances from `GameEntityStance` ability are ignor
 
 ```python
 Patrol(MoveMode):
+    pass
 ```
 
 Lets player set two or more waypoints that the game entity will follow. Stances from `GameEntityStance` ability are considered during movement.
@@ -1281,7 +1321,7 @@ Lets player set two or more waypoints that the game entity will follow. Stances 
 
 ```python
 PassableMode(Entity):
-    allowed_types        : set(GameEntityType)
+    allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
@@ -1297,7 +1337,7 @@ Used to blacklist game entities that have one of the types listed in `allowed_ty
 
 ```python
 Gate(PassableMode):
-    stances : set(DiplomaticStance)
+    stances : set(children(DiplomaticStance))
 ```
 
 Lets all compatible game entities from players with the specified stances pass through the hitbox. Game entities of players with other stances can also pass through while any unit is passing through.
@@ -1328,7 +1368,7 @@ Parent object for nyan patches used in the openage API. All nyan patches must in
 ```python
 Patch(Entity):
     properties : dict(abstract(children(PatchProperty)), children(PatchProperty))
-    patch      : NyanPatch
+    patch      : children(NyanPatch)
 ```
 
 Wrapper for nyan patches with additional configuration options throuh properties.
@@ -1341,7 +1381,7 @@ Properties:
 * `Diplomatic`: The patch is applied to the database view of players with defined diplomatic stances.
 
 **patch**
-The nyan patch that gets applied by the wrapper.
+Nyan patch that gets applied by the wrapper.
 
 ## aux.patch.property.PatchProperty
 
@@ -1356,18 +1396,19 @@ Generalization object for all properties of patches.
 
 ```python
 Diplomatic(PatchProperty):
-    stances : set(DiplomaticStance)
+    stances : set(children(DiplomaticStance))
 ```
 
-The patch that is applied to all players that have the specified diplomatic stances from the viewpoint of the patch's initiator.
+The patch is applied to all players that have the specified diplomatic stances.
 
 **stances**
-The diplomatic stances of the players the patch should apply to.
+Diplomatic stances of the players the patch should apply to.
 
 ## aux.payment_mode.PaymentMode
 
 ```python
 PaymentMode(Entity):
+    pass
 ```
 
 Generalization object for the payment options of a `Cost` object.
@@ -1376,6 +1417,7 @@ Generalization object for the payment options of a `Cost` object.
 
 ```python
 Adaptive(PaymentMode):
+    pass
 ```
 
 The cost is handled as *running costs*. Payment is progressive (relative to a value, e.g. time) while an action is executed. The action halts if the costs cannot be payed anymore.
@@ -1384,6 +1426,7 @@ The cost is handled as *running costs*. Payment is progressive (relative to a va
 
 ```python
 Advance(PaymentMode):
+    pass
 ```
 
 The cost is handled as *payment in advance*. Actions require payment first before they can be executed.
@@ -1392,6 +1435,7 @@ The cost is handled as *payment in advance*. Actions require payment first befor
 
 ```python
 Arrear(PaymentMode):
+    pass
 ```
 
 The cost is handled as *payment in arrear*. Actions that require payment are executed first and payed afterwards.
@@ -1400,6 +1444,7 @@ The cost is handled as *payment in arrear*. Actions that require payment are exe
 
 ```python
 Shadow(PaymentMode):
+    pass
 ```
 
 Requires the resources or attribute points to be available to the player, but does not require payment of the resources.
@@ -1510,7 +1555,7 @@ Fixed(PriceMode):
     pass
 ```
 
-The price is not adjusted on an exchange.
+The price is not adjusted by an exchange.
 
 ## aux.price_pool.PricePool
 
@@ -1570,7 +1615,7 @@ Generalization object for progression types.
 * The progress of ability actions **or**
 * The percentage of a value at runtime for values that operate in a min-max range
 
-It is defined as a float between 0.0 (0%) and 1.0 (100%).
+It is defined as a float between 0.0 (0%) and 100.0 (100%).
 
 `Progress` objects define what happens if the progress of an action or runtime value enters a specified interval. The direction at which the interval is entered does not matter. The boundaries of the interval are defined by `left_boundary` and `right_boundary`. The interval is *left-closed* and *right-open* which means the `Progress` object is associazed with a progress in this range:
 
@@ -1578,25 +1623,28 @@ It is defined as a float between 0.0 (0%) and 1.0 (100%).
 left\_boundary <= progress < right\_boundary
 ```
 
-In the special case of `left_boundary = 0.0` the interval is considered as *left-open*. This is done to ensure that progress can be exclusively checked *during* an ability action (between 0% and 100%) without having to consider the *before* or *after*. If progress should additionally be checked for the case 0%, a `Progress` object with the exact values `left_boundary = 0.0` and `right_boundary = 0.0` must be defined. Similarly, If progress should additionally be checked for the case 100%, a `Progress` object with the exact values `left_boundary = 1.0` and `right_boundary = 1.0` must be defined.
+In the special case of `left_boundary = 0.0` the interval is considered as *left-open*. This is done to ensure that progress can be exclusively checked *during* an ability action (between 0% and 100%) without having to consider the *before* or *after*. If progress should additionally be checked for the case 0%, a `Progress` object with the exact values `left_boundary = 0.0` and `right_boundary = 0.0` must be defined. Similarly, If progress should additionally be checked for the case 100%, a `Progress` object with the exact values `left_boundary = 100.0` and `right_boundary = 100.0` must be defined.
 
 **properties**
 Defines what happens if the progress enters the defined interval.
 
+The engine expects objects from the namespace `engine.aux.progress.property.type` as keys. Values must always be an instance of the object used as key.
+
 Properties:
 
-* `AnimatedProgress`: Overrides the animation of an ability.
-* `TerrainProgress`: Changes the underlying terrain of the game entity.
-* `TerrainOverlayProgress`: Changes terrain overlays of a game entity.
-* `StateChangeProgress`: Alters the base abilities and modifiers of the game entity through `StateChanger` objects.
+* `AnimationOverlay`: Overlays the animation of an ability with other animations.
+* `Animated`: Overrides the animation of an ability.
+* `Terrain`: Changes the underlying terrain of the game entity.
+* `TerrainOverlay`: Changes terrain overlays of a game entity.
+* `StateChange`: Alters the base abilities and modifiers of the game entity through `StateChanger` objects.
 
 **left_boundary**
-Defines the left boundary of the progression interval. Must be a float between 0.0 and 1.0 that represents a percentage of progression. Must be smaller than `right_boundary`.
+Defines the left boundary of the progression interval. Must be a float between 0.0 and 100.0 that represents a percentage of progression. Must be smaller than `right_boundary`.
 
 **right_boundary**
-Defines the left boundary of the progression interval. Must be a float between 0.0 and 1.0 that represents a percentage of progression. Must be larger than `left_boundary`.
+Defines the left boundary of the progression interval. Must be a float between 0.0 and 100.0 that represents a percentage of progression. Must be larger than `left_boundary`.
 
-## aux.property.ProgressProperty
+## aux.progress.property.ProgressProperty
 
 ```python
 ProgressProperty(Entity):
@@ -1672,7 +1720,7 @@ AttributeChangeProgress(Progress):
     pass
 ```
 
-Compares the current attribute value in relation to the `max_value` of an attribute of a game entity. The `Progress` objects are stored in a `Damageable` ability which specifies the type of attribute that is monitored. When the attribute value is equal to `max_value` of the attribute defined by the game entity, the progress is 0\%. Once the attribute value reaches the `min_value`, the progress is 100\%.
+Compares the current attribute value in relation to the `max_value` of an attribute of a game entity. The `Progress` objects are stored in a `AttributeChangeTracker` ability which specifies the type of attribute that is monitored. When the attribute value is equal to `max_value` of the attribute defined by the game entity, the progress is 100%. Once the attribute value reaches the `min_value`, the progress is 0%.
 
 ## aux.progress.type.CarryProgress
 
@@ -1681,7 +1729,7 @@ CarryProgress(Progress):
     pass
 ```
 
-Monitors the occupied storage space of a `Storage` or `Gather` ability. An empty storage has a progress of 0\% and a full storage a progress of 100\%.
+Monitors the occupied storage space of a `Storage` or `Gather` ability. An empty storage has a progress of 0% and a full storage a progress of 100%.
 
 ## aux.progress.type.ConstructionProgress
 
@@ -1690,7 +1738,7 @@ ConstructionProgress(Progress):
     pass
 ```
 
-Monitors the construction progress of a game entity with `Contructable` ability. An unconstructed game entity has a progress of 0\% and a fully constructed game entity a progress of 100\%.
+Monitors the construction progress of a game entity with `Contructable` ability. An unconstructed game entity has a progress of 0% and a fully constructed game entity a progress of 100%.
 
 ## aux.progress.type.HarvestProgress
 
@@ -1699,7 +1747,7 @@ HarvestProgress(Progress):
     pass
 ```
 
-Monitors the harvesting progress of a resource spot stored by a `Harvestable` ability. A resource spot with full capacity has a progress of 0\% and a fully harvested resource spot a progress of 100\%.
+Monitors the harvesting progress of a resource spot stored by a `Harvestable` ability. A resource spot at maximum capacity has a progress of 0% and a depleted resource spot a progress of 100%.
 
 ## aux.progress.type.RestockProgress
 
@@ -1708,9 +1756,7 @@ RestockProgress(Progress):
     pass
 ```
 
-Monitors the restock progress of a restockable resource spot stored by a `Harvestable` ability. The restocking progress is initiated by the `Restock` ability of another game entity. At the start of the restocking process, the progress is 0\%. After the restocking has finished, the progress is 100\%.
-
-Restocking progress is only tracked between the start and end of restock process. Therefore, state changes initiated by `RestockProgress` objects of type `StateChangerProgress` will be deactivated after the progress reaches 100\%.
+Monitors the restock progress of a restockable resource spot stored by a `Harvestable` ability. The restocking progress is initiated by the `Restock` ability of another game entity. At the start of the restocking process, the progress is 0%. After the restocking has finished, the progress is 100%.
 
 ## aux.progress.type.TransformProgress
 
@@ -1719,30 +1765,29 @@ TransformProgress(Progress):
     pass
 ```
 
-Monitors the progress of a transformation initiated by a `TransformTo` ability. At the start of the transformation, the progress is 0\%. After the transformation has finished, the progress is 100\%.
-
-Transformation progress is only tracked between the start and end of transformation. Therefore, state changes initiated by `TransformProgress` objects of type `StateChangerProgress` will be deactivated after the progress reaches 100\%.
+Monitors the progress of a transformation initiated by the `ActiveTransformTo` or `PassiveTransformTo` ability. At the start of the transformation, the progress is 0%. After the transformation has finished, the progress is 100%.
 
 ## aux.progress_status.ProgressStatus
 
 ```python
 ProgressStatus(Entity):
-    progress_type : ProgressType
+    progress_type : children(ProgressType)
     progress      : float
 ```
 
-Generalization object for progress status objects required by `GameEntityProgress`.
+Generalization object for progress status objects used by `GameEntityProgress`.
 
 **progress_type**
-The type of progress.
+Type of progress.
 
 **progress**
-Minimum amount of progress that has to be reached.
+Minimum amount of progress that has to be reached. Value can be between 0.0 and 100.0.
 
 ## aux.progress_type.ProgressType
 
 ```python
 ProgressType(Entity):
+    pass
 ```
 
 Used by `Convert` effects and resistances for matching.
@@ -1751,6 +1796,7 @@ Used by `Convert` effects and resistances for matching.
 
 ```python
 Construct(ProgressType):
+    pass
 ```
 
 A progress type that covers construction progress.
@@ -1775,7 +1821,7 @@ Reference to the `Tech` object that is researched.
 Resource amount spent to initiate the research. Cancelling the research results in a refund of the spent resources.
 
 **research_time**
-Time until the `Tech` object's patches are applied.
+Time to wait until the `Tech` object's patches are applied in seconds.
 
 **research_sounds**
 Sounds that are played when the research finishes.
@@ -1794,10 +1840,10 @@ Resource(Entity):
 Defines a resource that can be used in the game. Adding a resources will give an amount of 0 of that resource to all players. The current amount of resources can be influenced by the abilities and modifiers of game entities.
 
 **name**
-The name of the resource as a translatable string.
+Name of the resource.
 
 **max_storage**
-Maximum amount of resources that can be stored at a time by the player.
+Maximum amount of resources that can be stored in the player's global resource storage.
 
 ## aux.resource.ResourceContingent
 
@@ -1835,7 +1881,7 @@ ResourceAmount(Entity):
 A fixed amount of a certain resource.
 
 **type**
-The resource.
+Reference to the resource.
 
 **amount**
 Amount of the resource.
@@ -1851,7 +1897,7 @@ ResourceRate(Entity):
 A per-second rate of a certain resource.
 
 **type**
-The resource.
+Reference to the resource.
 
 **rate**
 Rate of the resource.
@@ -1902,11 +1948,53 @@ Use animation sprites of the game entity as the selection area. Transparent pixe
 
 ```python
 Rectangle(SelectionBox):
-    radius_x : float
-    radius_y : float
+    width  : float
+    height : float
 ```
 
 Use a rectangular box as the selection area.
+
+**width**
+Width of the selection box.
+
+**height**
+Height of the selection box.
+
+## aux.setup.PlayerSetup
+
+```python
+PlayerSetup(Entity):
+    name               : TranslatedString
+    description        : TranslatedMarkupFile
+    long_description   : TranslatedMarkupFile
+    leader_names       : set(TranslatedString)
+    modifiers          : set(Modifier)
+    starting_resources : set(ResourceAmount)
+    game_setup         : orderedset(Patch)
+```
+
+Pre-defined configuration for a specific player in a game. Patches are applied to the player's database view before the game starts.
+
+**name**
+Name of the player setup.
+
+**description**
+Description of the player setup.
+
+**long_description**
+A longer description of the player setup.
+
+**leader_names**
+Names for the leader of civilizations that are displayed with the score.
+
+**modifiers**
+Modifiers for game entities of the player setup. By default, these modifiers apply to **all** game entities belonging to the player. For example, an `AttributeModifier` with `multiplier = 1.2` for the attribute `Health` will increase the maximum HP of every unit owned by the player by 20%. If you want the modifier to only affect specific game entities, you have to use the `Scoped` property or assign `Modifier` objects to individual game entities using `civ_setup`.
+
+**starting_resources**
+Resources of the player at the start of a game.
+
+**game_setup**
+Customizes the player setup through patches. Patches to other player setups can also be applied using the `Diplomatic` property for a `Patch`.
 
 ## aux.sound.Sound
 
@@ -1939,16 +2027,16 @@ StateChanger(Entity):
 State changes alter the *base state* of a game entity which is defined by the abilities and modifiers stored in a `GameEntity` object. They are allowed to enable new and disable existing abilities as well as modifiers. Multiple state changes can be applied at once. Only abilities and modifiers with a priority *lower than or equal to* (<=) the one defined in the `StateChanger` object will be disabled.
 
 **enable_abilities**
-A set of abilities that are enabled when the state change is active.
+Abilities that are enabled when the state change is active.
 
 **disable_abilities**
-A set of abilities that are disabled when the state change is active and the abilities have a priority *lower than or equal to* (<=) the `priority` in the disabling `StateChanger` object.
+Abilities that are disabled when the state change is active and the abilities have a priority *lower than or equal to* (<=) the `priority` in the disabling `StateChanger` object.
 
 **enable_modifiers**
-A set of modifiers that are enabled when the state change is active.
+Modifiers that are enabled when the state change is active.
 
 **disable_modifiers**
-A set of modifiers that are disabled when the state change is active and the modifiers have a priority *lower than or equal to* (<=) the `priority` in the disabling `StateChanger` object.
+Modifiers that are disabled when the state change is active and the modifiers have a priority *lower than or equal to* (<=) the `priority` in the disabling `StateChanger` object.
 
 **transform_pool**
 Transform pool the state change uses. Only one state change can be active per transform pool. If this is `None`, the base state is changed.
@@ -1974,11 +2062,11 @@ Resets the game entity to the *base* state. This means that all state changes ar
 
 ```python
 Container(Entity):
-    allowed_types        : set(GameEntityType)
+    allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
     storage_element_defs : set(StorageElementDefinition)
     slots                : int
-    carry_progress       : set(CarryProgress)
+    carry_progress       : set(children(CarryProgress))
 ```
 
 Used by the `Storage` ability to set the allowed game entities and store definitions of how the stored game entities influence the storing game entity.
@@ -1996,7 +2084,7 @@ Contains further configuration settings for specific game entities.
 Defines how many slots for game entities the container has. Multiple game entities may be stacked in one slot depending on the `elements_per_slot` member in `StorageElementDefinition`.
 
 **carry_progress**
-A set of `CarryProgress` objects that can activate state changes and animation overrides when the container is filled.
+`CarryProgress` objects that can alter the game entity when the container is filled.
 
 ## aux.storage.ResourceContainer
 
@@ -2016,7 +2104,7 @@ Resource stored in the container.
 Maximum amount of resources that can be stored in the container.
 
 **carry_progress**
-A set of `CarryProgress` objects that can activate state changes and animation overrides when the container is filled.
+`CarryProgress` objects that can alter the game entity when the container is filled.
 
 ## aux.storage.InternalDropSite
 
@@ -2025,7 +2113,7 @@ InternalDropSite(ResourceContainer):
     update_time    : float
 ```
 
-Deposits the resources directly into the game entity owner's global resource amount. Instead of dropping the resources at a drop site, the resource amount in the internal drop site is added to the player's resource amounts in defined intervals.
+Deposits the resources directly into the player's global resource amount. Instead of having to drop the resources at a drop site, the resource amount in the internal drop site is added to the player's resource amounts in defined intervals.
 
 **update_time**
 Update interval between the automatic deposition of the stored resources in seconds.
@@ -2040,16 +2128,16 @@ StorageElementDefinition(Entity):
     state_change      : StateChanger
 ```
 
-Defines how a stored game entity influences its storing game entity.
+Defines how a stored game entity influences its container game entity.
 
 **storage_element**
-The stored game entity to which this definition applies.
+Stored game entity to which this definition applies.
 
 **elements_per_slot**
 Defines how many game entities of the type referenced in `storage_element` can be stacked in one slot.
 
 **conflicts**
-A set of storage elements which cannot be in the container at the same time as this storage element.
+Storage elements which cannot be in the container at the same time as this storage element.
 
 **state_change**
 Alters the base abilities and modifiers of the storing game entity when at least one game entity of the type referenced in `storage_element` is present in the container.
@@ -2058,6 +2146,7 @@ Alters the base abilities and modifiers of the storing game entity when at least
 
 ```python
 TargetMode(Entity):
+    pass
 ```
 
 Generalization object for target modes used by projectiles.
@@ -2066,6 +2155,7 @@ Generalization object for target modes used by projectiles.
 
 ```python
 CurrentPosition(TargetMode):
+    pass
 ```
 
 Makes the projectile path end at the current position of the target when the projectile spawned.
@@ -2074,6 +2164,7 @@ Makes the projectile path end at the current position of the target when the pro
 
 ```python
 ExpectedPosition(TargetMode):
+    pass
 ```
 
 Makes the projectile path end at the position where the target is expected to be when the projectile is supposed to hit it.
@@ -2090,10 +2181,10 @@ Taunt(Entity):
 A predefined message players can send to each other.
 
 **activation_message**
-The activation message that has to be typed into the chat console.
+Activation message that has to be typed into the chat console.
 
 **display_message**
-The displayed message after the taunt is activated as a `TranslatedString`.
+Displayed message after the taunt is activated.
 
 **sound**
 Sounds that are played after the taunt is activated.
@@ -2102,7 +2193,7 @@ Sounds that are played after the taunt is activated.
 
 ```python
 Tech(Entity):
-    types            : set(TechType)
+    types            : set(children(TechType))
     name             : TranslatedString
     description      : TranslatedMarkupFile
     long_description : TranslatedMarkupFile
@@ -2115,16 +2206,16 @@ An object that can apply changes through patching. It follows the standard imple
 Classification of the tech.
 
 **name**
-The name of the technology as a translatable string.
+Name of the technology.
 
 **description**
-A description of the technology as a translatable markup file.
+Description of the technology.
 
 **long_description**
-A longer description of the technology as a translatable markup file.
+A longer description of the technology.
 
 **updates**
-Changes the game state through patches. Any members and objects can be patched. Normal `Patch` objects will only be applied to the player. To apply patches to other player with specific diplomatic stances, use `DiplomaticPatch`.
+Changes the game state through patches.
 
 ## aux.tech_type.TechType
 
@@ -2148,7 +2239,7 @@ Can be used to address any tech, even ones that have no `TechType` assigned.
 
 ```python
 Terrain(Entity):
-    types           : set(TerrainType)
+    types           : set(children(TerrainType))
     name            : TranslatedString
     terrain_graphic : Terrain
     sound           : Sound
@@ -2161,16 +2252,16 @@ Terrains define the properties of the ground which the game entities are placed 
 Classification of the terrain.
 
 **name**
-The name of the terrain as a translatable string.
+Name of the terrain.
 
 **terrain_graphic**
-Texture of the terrain (see `Terrain`). openage uses 3D terrain on which the texture is painted on.
+Texture of the terrain (see `aux.graphics.Terrain`).
 
 **sound**
 Ambient sound played when the camera of the player is looking onto the terrain.
 
 **ambience**
-Defines ambient objects placed on the terrain through a set of `TerrainAmbient` objects.
+Ambient objects placed on the terrain.
 
 ## aux.terrain.TerrainAmbient
 
@@ -2183,7 +2274,7 @@ TerrainAmbient(Entity):
 An ambient game entity that is placed randomly on a chunk of terrain (10x10 tiles).
 
 **object**
-The game entity placed on the terrain.
+Game entity placed on the terrain.
 
 **max_density**
 Defines how many ambient objects are allowed to be placed on a chunk at maximum.
@@ -2246,6 +2337,7 @@ Amount of resources traded each time.
 
 ```python
 AoE2TradeRoute(Entity):
+    pass
 ```
 
 Uses Age of Empires 2 rules for trading. The trading game entity chooses the nearest possible `end_trade_post` from the `start_trade_post`. Calculation of the traded resource amount is based on this formula:
@@ -2262,50 +2354,6 @@ TransformPool(Entity):
 ```
 
 Defines a pool for `StateChanger` objects. Only one state change can be active per transform pool.
-
-## aux.translated.TranslatedObject
-
-```python
-TranslatedObject(Entity):
-```
-
-Generalization object for any objects that are or should be different depending on the language. Currently we support translations for strings, markup files and sounds.
-
-## aux.translated.type.TranslatedMarkupFile
-
-```python
-TranslatedMarkupFile(TranslatedObject):
-    translations : set(LanguageMarkupPair)
-```
-
-The translated versions of a longer text stored in markup files.
-
-**translations**
-All translations of the markup files as language-file pairs (see `LanguageMarkupPair`).
-
-## aux.translated.type.TranslatedSound
-
-```python
-TranslatedSound(TranslatedObject):
-    translations : set(LanguageSoundPair)
-```
-
-The translated versions of a sound.
-
-**translations**
-All translations of the sound as language-sound pairs (see `LanguageSoundPair`).
-
-## aux.translated.type.TranslatedString
-
-```python
-TranslatedString(TranslatedObject):
-    translations : set(LanguageTextPair)
-```
-
-The translated versions of a string.
-
-**translations**
-All translations of the string as language-text pairs (see `LanguageTextPair`).
 
 ## aux.variant.Variant
 
@@ -2337,31 +2385,31 @@ AdjacentTilesVariant(Variant):
     north_west : optional(GameEntity)
 ```
 
-A variant that is chosen based on adjacent game entities. Both the created game entity and the adjacent game entities must have the `TileRequirement` ability. From all `AdjacentVariant` variants the one with the most matches in all directions is chosen.
+A variant that is chosen based on adjacent game entities. From all `AdjacentVariant` variants the one with the most matches in all directions is chosen.
 
 **north**
-The desired game entity north of the created game entity. Does not have to be set.
+The desired game entity north of the created game entity.
 
 **north_east**
-The desired game entity north-east of the created game entity. Does not have to be set.
+The desired game entity north-east of the created game entity.
 
 **east**
-The desired game entity east of the created game entity. Does not have to be set.
+The desired game entity east of the created game entity.
 
 **south_east**
-The desired game entity south-east of the created game entity. Does not have to be set.
+The desired game entity south-east of the created game entity.
 
 **south**
-The desired game entity south of the created game entity. Does not have to be set.
+The desired game entity south of the created game entity.
 
 **south_west**
-The desired game entity south-west of the created game entity. Does not have to be set.
+The desired game entity south-west of the created game entity.
 
 **west**
-The desired game entity west of the created game entity. Does not have to be set.
+The desired game entity west of the created game entity.
 
 **north_west**
-The desired game entity north-west of the created game entity. Does not have to be set.
+The desired game entity north-west of the created game entity.
 
 ## aux.variant.type.RandomVariant
 
@@ -2375,7 +2423,7 @@ From all variants of this type in the `variants` member of the game entity, one 
 **chance_share**
 The relative chance of the variant to be picked. Note that this is **not** a percentage chance. The value defines how likely it is for the variant to be chosen relative to the other `RandomVariant` objects.
 
-**Example:**
+Example:
 
 * Random variant 1 with `chance_share = 1.0`
 * Random variant 2 with `chance_share = 4.0`
@@ -2395,4 +2443,4 @@ PerspectiveVariant(Variant):
 Variant depending on the placement angle of the game entity. Currently only works with the `PlacementMode` of type `Place` with the `allow_ratation` member set to true.
 
 **angle**
-Angle of the game entity. An angle of *0* points to the south-west direction.
+Angle of the game entity.
