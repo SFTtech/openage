@@ -1,4 +1,5 @@
 add_py_modules(
+	blmask_metadata.py
 	bltable_metadata.py
 	__init__.py
 	media_cache.py
