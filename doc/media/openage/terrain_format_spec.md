@@ -137,8 +137,6 @@ Parameter  | Type   | Optional | Default value
 -----------|--------|----------|--------------
 table_id   | int    | No       | -
 filename   | string | No       | -
-priority   | int    | No       | -
-blend_mode | int    | No       | -
 
 **table_id**<br>
 Reference ID for the blending table used in this file. IDs should start at `0`.

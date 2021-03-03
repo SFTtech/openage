@@ -10,16 +10,16 @@ from enum import Enum
 
 from ..data_definition import DataDefinition
 
-FILE_VERSION = '1'
+FORMAT_VERSION = '1'
 
 
 class LayerMode(Enum):
     """
     Possible values for the mode of a layer.
     """
-    OFF = 'off'
-    ONCE = 'once'
-    LOOP = 'loop'
+    OFF = 'off'     # layer is not animated
+    ONCE = 'once'   # animation plays once
+    LOOP = 'loop'   # animation loops indefinitely
 
 
 class SpriteMetadata(DataDefinition):
@@ -31,8 +31,8 @@ class SpriteMetadata(DataDefinition):
     def __init__(self, targetdir, filename):
         super().__init__(targetdir, filename)
 
-        self.scalefactor = 1
         self.image_files = {}
+        self.scalefactor = 1
         self.layers = {}
         self.angles = {}
         self.frames = []
@@ -145,21 +145,21 @@ class SpriteMetadata(DataDefinition):
         output_str += "# openage sprite definition file\n\n"
 
         # version
-        output_str += f"version {FILE_VERSION}\n\n"
-
-        # scale factor
-        output_str += f"scalefactor {self.scalefactor}\n\n"
+        output_str += f"version {FORMAT_VERSION}\n\n"
 
         # image files
         for image in self.image_files.values():
             output_str += f"imagefile {image['image_id']} {image['filename']}\n\n"
+
+        # scale factor
+        output_str += f"scalefactor {self.scalefactor}\n\n"
 
         # layer definitions
         for layer in self.layers.values():
             output_str += f"layer {layer['layer_id']}"
 
             if layer["mode"]:
-                output_str += f" mode={layer['mode']}"
+                output_str += f" mode={layer['mode'].value}"
 
             if layer["position"]:
                 output_str += f" position={layer['position']}"

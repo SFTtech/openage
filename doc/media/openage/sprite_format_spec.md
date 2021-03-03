@@ -41,7 +41,7 @@ angle <degree> mirror-from=<existing_angle>
 # *pos, *size and *hotspot is within the source image.
 # all the hotspots of the frames will be drawn at the same pixel (requested by renderer)
 # so that the alignment/movement of the frames is done solely by hotspots.
-frame <id> <angle> <layer_id> <image_id> <xpos> <ypos> <xsize> <ysize> <xhotspot> <yhotspot>
+frame <frame_idx> <angle> <layer_id> <image_id> <xpos> <ypos> <xsize> <ysize> <xhotspot> <yhotspot>
 ```
 
 

@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments
 
@@ -10,16 +10,15 @@ from enum import Enum
 
 from ..data_definition import DataDefinition
 
-FILE_VERSION = "0.1.0"
+FORMAT_VERSION = '1'
 
 
 class LayerMode(Enum):
     """
     Possible values for the mode of a layer.
     """
-    OFF = 'off'
-    ONCE = 'once'
-    LOOP = 'loop'
+    OFF = 'off'     # layer is not animated
+    LOOP = 'loop'   # animation loops indefinitely
 
 
 class TerrainMetadata(DataDefinition):
@@ -31,12 +30,11 @@ class TerrainMetadata(DataDefinition):
     def __init__(self, targetdir, filename):
         super().__init__(targetdir, filename)
 
+        self.scalefactor = 1
         self.image_files = {}
+        self.blendtable = None
         self.layers = {}
         self.frames = []
-        self.blending_masks = {}
-        self.blending_priority = None
-        self.dots_per_tile = None
 
     def add_image(self, img_id, filename):
         """
@@ -44,36 +42,48 @@ class TerrainMetadata(DataDefinition):
 
         :param img_id: Image identifier.
         :type img_id: int
-        :param filename: Name of the image file, with extension.
+        :param filename: Path to the image file.
         :type filename: str
         """
-        self.image_files[img_id] = filename
+        self.image_files[img_id] = {
+            "image_id": img_id,
+            "filename": filename,
+        }
 
-    def add_layer(self, layer_id, mode, time_per_frame=None, replay_delay=None):
+    def add_layer(self, layer_id, mode, position=None, time_per_frame=None, replay_delay=None):
         """
-        Add a layer and its relative parameters.
+        Define a layer for the rendered texture.
 
         :param layer_id: Layer identifier.
         :type layer_id: int
-        :param mode: Animation mode (off, once, loop).
+        :param mode: Animation mode (off, loop).
         :type mode: LayerMode
+        :param position: Layer position.
+        :type position: int
         :param time_per_frame: Time spent on each frame.
         :type time_per_frame: float
         :param replay_delay: Time delay before replaying the animation.
         :type replay_delay: float
         """
-        self.layers[layer_id] = (mode, time_per_frame, replay_delay)
+        self.layers[layer_id] = {
+            "layer_id": layer_id,
+            "mode": mode,
+            "position": position,
+            "time_per_frame": time_per_frame,
+            "replay_delay": replay_delay,
+        }
 
-    def add_frame(self, layer_id, img_id, blend_id, xpos, ypos, xsize, ysize):
+    def add_frame(self, frame_idx, layer_id, img_id, xpos, ypos, xsize, ysize,
+                  priority=None, blend_mode=None):
         """
         Add frame with all its spacial information.
 
+        :param frame_idx: Index of the frame in the animation.
+        :type frame_idx: int
         :param layer_id: ID of the layer to which the frame belongs.
         :type layer_id: int
         :param img_id: ID of the image used by this frame.
         :type img_id: int
-        :param blend_id: ID of the blending mask fror this frame.
-        :type blend_id: int
         :param xpos: X position of the frame on the image canvas.
         :type xpos: int
         :param ypos: Y position of the frame on the image canvas.
@@ -82,72 +92,92 @@ class TerrainMetadata(DataDefinition):
         :type xsize: int
         :param ysize: Height of the frame.
         :type ysize: int
+        :param priority: Priority for blending.
+        :type priority: int
+        :param blend_mode: Used for looking up the blending pattern index in the blending table.
+        :type blend_mode: int
         """
-        self.frames.append((layer_id, img_id, blend_id, xpos, ypos, xsize, ysize))
+        self.frames.append(
+            {
+                "frame_idx": frame_idx,
+                "layer_id": layer_id,
+                "img_id": img_id,
+                "xpos": xpos,
+                "ypos": ypos,
+                "xsize": xsize,
+                "ysize": ysize,
+                "priority": priority,
+                "blend_mode": blend_mode,
+            }
+        )
 
-    def add_blending_mask(self, mask_id, filename):
+    def set_blendtable(self, table_id, filename):
         """
-        Add a blending mask and the relative file name.
+        Set the blendtable and the relative filename.
 
-        :param mask_id: Mask identifier.
-        :type mask_id: int
-        :param filename: Name of the blending mask file, with extension.
+        :param img_id: Table identifier.
+        :type img_id: int
+        :param filename: Path to the blendtable file.
         :type filename: str
         """
-        self.blending_masks[mask_id] = filename
+        self.blendtable = {
+            "table_id": table_id,
+            "filename": filename,
+        }
 
-    def set_blending_priority(self, priority):
+    def set_scalefactor(self, factor):
         """
-        Set the blending priority of this terrain.
+        Set the scale factor of the texture.
 
-        :param priority: Priority level.
-        :type priority: int
+        :param factor: Factor by which sprite images are scaled down at default zoom level.
+        :type factor: float
         """
-        self.blending_priority = priority
-
-    def set_dots_per_tile(self, dot_amount):
-        """
-        Set the amount of dots per tile.
-
-        :param dot_amount: Amount of dots per tile.
-        :type dot_amount: float
-        """
-        self.dots_per_tile = dot_amount
+        self.scalefactor = float(factor)
 
     def dump(self):
-        out = ''
+        output_str = ""
 
         # header
-        out += f'# TERRAIN DEFINITION FILE version {FILE_VERSION}\n'
+        output_str += "# openage terrain definition file\n\n"
 
-        # priority for blending mask
-        out += f'blending_priority {self.blending_priority}'
-
-        # blending mask files
-        for mask_id, file in self.blending_masks.items():
-            out += f'blending_mask {mask_id} {file}'
-
-        # dots per tile
-        out += f'dots_per_tile {self.dots_per_tile}'
+        # version
+        output_str += f"version {FORMAT_VERSION}\n\n"
 
         # image files
-        for img_id, file in self.image_files.items():
-            out += f'imagefile {img_id} {file}\n'
+        for image in self.image_files.values():
+            output_str += f"imagefile {image['image_id']} {image['filename']}\n\n"
+
+        # blendtable reference
+        output_str += f"blendtable {self.blendtable['table_id']} {self.blendtable['filename']}\n\n"
+
+        # scale factor
+        output_str += f"scalefactor {self.scalefactor}\n\n"
 
         # layer definitions
-        for layer_id, params in self.layers.items():
-            out += f'layer {layer_id} mode={params[0].value}'
-            if params[1] is not None:
-                out += f' time_per_frame={params[1]}'
-            if params[2] is not None:
-                out += f' replay_delay={params[2]}'
-            out += '\n'
+        for layer in self.layers.values():
+            output_str += f"layer {layer['layer_id']}"
+
+            if layer["mode"]:
+                output_str += f" mode={layer['mode'].value}"
+
+            if layer["position"]:
+                output_str += f" position={layer['position']}"
+
+            if layer["time_per_frame"]:
+                output_str += f" time_per_frame={layer['time_per_frame']}"
+
+            if layer["replay_delay"]:
+                output_str += f" replay_delay={layer['replay_delay']}"
+
+            output_str += "\n"
+
+        output_str += "\n"
 
         # frame definitions
         for frame in self.frames:
-            out += f'frame {" ".join(frame)}\n'
+            output_str += f'frame {" ".join(str(param) for param in frame.values())}\n'
 
-        return out
+        return output_str
 
     def __repr__(self):
         return f'TerrainMetadata<{self.filename}>'
