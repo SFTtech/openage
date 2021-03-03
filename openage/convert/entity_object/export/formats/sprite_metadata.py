@@ -149,7 +149,9 @@ class SpriteMetadata(DataDefinition):
 
         # image files
         for image in self.image_files.values():
-            output_str += f"imagefile {image['image_id']} {image['filename']}\n\n"
+            output_str += f"imagefile {image['image_id']} {image['filename']}\n"
+
+        output_str += "\n"
 
         # scale factor
         output_str += f"scalefactor {self.scalefactor}\n\n"

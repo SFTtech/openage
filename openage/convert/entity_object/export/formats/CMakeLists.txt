@@ -1,4 +1,5 @@
 add_py_modules(
+	bltable_metadata.py
 	__init__.py
 	media_cache.py
 	modpack_info.py

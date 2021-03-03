@@ -145,7 +145,9 @@ class TerrainMetadata(DataDefinition):
 
         # image files
         for image in self.image_files.values():
-            output_str += f"imagefile {image['image_id']} {image['filename']}\n\n"
+            output_str += f"imagefile {image['image_id']} {image['filename']}\n"
+
+        output_str += "\n"
 
         # blendtable reference
         output_str += f"blendtable {self.blendtable['table_id']} {self.blendtable['filename']}\n\n"
