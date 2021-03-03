@@ -6,6 +6,7 @@ add_py_modules(
 	modpack_info.py
 	modpack_manifest.py
 	nyan_file.py
+	palette_metadata.py
 	sprite_metadata.py
 	terrain_metadata.py
 )
