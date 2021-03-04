@@ -605,6 +605,7 @@ class NyanMember:
 
         if isinstance(member_type, NyanObject):         # type
             self._member_type = member_type
+
         else:
             self._member_type = MemberType(member_type)
 
@@ -612,6 +613,14 @@ class NyanMember:
         if set_type:
             if isinstance(set_type, NyanObject):
                 self._set_type = set_type
+
+            elif isinstance(set_type, tuple):
+                self._set_type = []
+                for stype in set_type:
+                    self._set_type.append(MemberType(stype))
+
+                self._set_type = tuple(self._set_type)
+
             else:
                 self._set_type = MemberType(set_type)
 
@@ -665,11 +674,29 @@ class NyanMember:
         """
         return self.value
 
+    def is_primitive(self):
+        """
+        Returns True if the member is a single value.
+        """
+        return self._member_type in (MemberType.INT,
+                                     MemberType.FLOAT,
+                                     MemberType.TEXT,
+                                     MemberType.FILE,
+                                     MemberType.BOOLEAN)
+
     def is_complex(self):
         """
-        Returns True if the member is a set or orderedset.
+        Returns True if the member is a collection.
         """
-        return self._member_type in (MemberType.SET, MemberType.ORDEREDSET)
+        return self._member_type in (MemberType.SET,
+                                     MemberType.ORDEREDSET,
+                                     MemberType.DICT)
+
+    def is_object(self):
+        """
+        Returns True if the member is an object.
+        """
+        return isinstance(self._member_type, NyanObject)
 
     def is_initialized(self):
         """
@@ -706,8 +733,7 @@ class NyanMember:
 
         self._sanity_check()
 
-        if isinstance(self._member_type, NyanObject) and\
-                value is not MemberSpecialValue.NYAN_NONE:
+        if self.is_object() and value is not MemberSpecialValue.NYAN_NONE:
             if not (self.value is self._member_type or
                     self.value.has_ancestor(self._member_type)):
                 raise Exception(("%s: 'value' with type NyanObject must "
@@ -807,7 +833,7 @@ class NyanMember:
                                 % (self.__repr__()))
 
             # set types cannot be sets
-            if self._set_type in (MemberType.SET, MemberType.ORDEREDSET):
+            if self._set_type in (MemberType.SET, MemberType.ORDEREDSET, MemberType.DICT):
                 raise Exception("%s: '_set_type' cannot be complex but is %s"
                                 % (self.__repr__(), self._set_type))
 
@@ -865,7 +891,18 @@ class NyanMember:
                     and self._operator not in (MemberOperator.ASSIGN,
                                                MemberOperator.ADD,
                                                MemberOperator.SUBTRACT,
-                                               MemberOperator.AND):
+                                               MemberOperator.AND,
+                                               MemberOperator.OR):
+                raise Exception("%s: %s is not a valid operator for %s member type"
+                                % (self.__repr__(), self._operator,
+                                   self._member_type))
+
+            elif self._member_type is MemberType.DICT\
+                    and self._operator not in (MemberOperator.ASSIGN,
+                                               MemberOperator.ADD,
+                                               MemberOperator.SUBTRACT,
+                                               MemberOperator.AND,
+                                               MemberOperator.OR):
                 raise Exception("%s: %s is not a valid operator for %s member type"
                                 % (self.__repr__(), self._operator,
                                    self._member_type))
@@ -882,6 +919,7 @@ class NyanMember:
                 raise Exception("%s: 'value' is NYAN_NONE but member is not optional"
                                 % (self.__repr__()))
 
+            # inf is only used for ints and floats
             if self.value is MemberSpecialValue.NYAN_INF and\
                     self._member_type not in (MemberType.INT, MemberType.FLOAT):
                 raise Exception("%s: 'value' is NYAN_INF but member type is not "
@@ -929,6 +967,9 @@ class NyanMember:
 
         elif self._member_type is MemberType.ORDEREDSET:
             self.value = OrderedSet(self.value)
+
+        elif self._member_type is MemberType.DICT:
+            self.value = dict(self.value)
 
     def _get_primitive_value_str(self, member_type, value, import_tree=None, namespace=None):
         """
@@ -1276,6 +1317,7 @@ class MemberType(Enum):
     # Complex types
     SET = "set"
     ORDEREDSET = "orderedset"
+    DICT = "dict"
 
 
 class MemberSpecialValue(Enum):
