@@ -705,7 +705,7 @@ class NyanMemberType:
         if self.is_modifier():
             return self.element_types[0].accepts_op(operator)
 
-        if self._member_type in (MemberType.INT, MemberType.FLOAT)\
+        if self.member_type in (MemberType.INT, MemberType.FLOAT)\
             and operator not in (MemberOperator.ASSIGN,
                                  MemberOperator.ADD,
                                  MemberOperator.SUBTRACT,
@@ -1030,86 +1030,19 @@ class NyanMember:
         if not re.fullmatch(r"[a-zA-Z_][a-zA-Z0-9_]*", self.name[0]):
             raise Exception(f"{repr(self)}: 'name' is not well-formed")
 
-        if (self.is_initialized() and not isinstance(self, InheritedNyanMember)) or\
-                (isinstance(self, InheritedNyanMember) and self.has_value()):
-            # Check if operator type matches with member type
-            if self._member_type in (MemberType.INT, MemberType.FLOAT)\
-                    and self._operator not in (MemberOperator.ASSIGN,
-                                               MemberOperator.ADD,
-                                               MemberOperator.SUBTRACT,
-                                               MemberOperator.MULTIPLY,
-                                               MemberOperator.DIVIDE):
-                raise Exception((
-                    f"{repr(self)}: {self._operator} is not a valid"
-                    f"operator for {self._member_type} member type"
-                ))
-
-            elif self._member_type is MemberType.TEXT\
-                    and self._operator not in (MemberOperator.ASSIGN,
-                                               MemberOperator.ADD):
-                raise Exception((
-                    f"{repr(self)}: {self._operator} is not a valid"
-                    f"operator for {self._member_type} member type"
-                ))
-
-            elif self._member_type is MemberType.FILE\
-                    and self._operator is not MemberOperator.ASSIGN:
-                raise Exception((
-                    f"{repr(self)}: {self._operator} is not a valid"
-                    f"operator for {self._member_type} member type"
-                ))
-
-            elif self._member_type is MemberType.BOOLEAN\
-                    and self._operator not in (MemberOperator.ASSIGN,
-                                               MemberOperator.AND,
-                                               MemberOperator.OR):
-                raise Exception((
-                    f"{repr(self)}: {self._operator} is not a valid"
-                    f"operator for {self._member_type} member type"
-                ))
-
-            elif self._member_type is MemberType.SET\
-                    and self._operator not in (MemberOperator.ASSIGN,
-                                               MemberOperator.ADD,
-                                               MemberOperator.SUBTRACT,
-                                               MemberOperator.AND,
-                                               MemberOperator.OR):
-                raise Exception((
-                    f"{repr(self)}: {self._operator} is not a valid"
-                    f"operator for {self._member_type} member type"
-                ))
-
-            elif self._member_type is MemberType.ORDEREDSET\
-                    and self._operator not in (MemberOperator.ASSIGN,
-                                               MemberOperator.ADD,
-                                               MemberOperator.SUBTRACT,
-                                               MemberOperator.AND,
-                                               MemberOperator.OR):
-                raise Exception((
-                    f"{repr(self)}: {self._operator} is not a valid"
-                    f"operator for {self._member_type} member type"
-                ))
-
-            elif self._member_type is MemberType.DICT\
-                    and self._operator not in (MemberOperator.ASSIGN,
-                                               MemberOperator.ADD,
-                                               MemberOperator.SUBTRACT,
-                                               MemberOperator.AND,
-                                               MemberOperator.OR):
-                raise Exception((
-                    f"{repr(self)}: {self._operator} is not a valid"
-                    f"operator for {self._member_type} member type"
-                ))
-
+        if (self.is_initialized() and not self.is_inherited()) or\
+                (self.is_inherited() and self.has_value()):
             # override depth must be a non-negative integer
             if not (isinstance(self._override_depth, int) and
                     self._override_depth >= 0):
-                raise Exception(f"{repr(self)}: '_override_depth' must be a non-negative integer")
+                raise Exception(f"{repr(self)}: override depth must be a non-negative integer")
 
-            # Member values can only be NYAN_NONE if the member is optional
-            if self.value is MemberSpecialValue.NYAN_NONE and not\
-                    self._optional:
-                raise Exception(f"{repr(self)}: 'value' is NYAN_NONE but member is not optional")
+            # Check if operator type matches with member type
+            if not self._member_type.accepts_op(self._operator):
+                raise Exception((
+                    f"{repr(self)}: {self._operator} is not a valid"
+                    f"operator for member type {self._member_type}"
+                ))
 
             # Check if value is compatible with member type
             if not self._member_type.accepts_value(self.value):
