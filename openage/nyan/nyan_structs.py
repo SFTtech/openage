@@ -587,12 +587,196 @@ class NyanPatch(NyanObject):
         return f"NyanPatch<{self.name}<{self._target.name}>>"
 
 
+class NyanMemberType:
+    """
+    Superclass for nyan member types.
+    """
+
+    __slots__ = ('_membert_type', 'element_types')
+
+    def __init__(self, member_type, element_types=None):
+        """
+        Initializes the member type and does some correctness
+        checks, for your convenience.
+        """
+        if isinstance(member_type, NyanObject):
+            self.member_type = member_type
+
+        else:
+            self.member_type = MemberType(member_type)
+
+        self.element_types = tuple(element_types)
+
+        # check for errors in the initilization
+        self._sanity_check()
+
+    def is_primitive(self):
+        """
+        Returns True if the member is a single value.
+        """
+        return self.member_type in (MemberType.INT,
+                                    MemberType.FLOAT,
+                                    MemberType.TEXT,
+                                    MemberType.FILE,
+                                    MemberType.BOOLEAN)
+
+    def is_complex(self):
+        """
+        Returns True if the member is a collection.
+        """
+        return self.member_type in (MemberType.SET,
+                                    MemberType.ORDEREDSET,
+                                    MemberType.DICT)
+
+    def is_modifier(self):
+        """
+        Returns True if the member is a modifier.
+        """
+        return self.member_type in (MemberType.ABSTRACT,
+                                    MemberType.CHILDREN,
+                                    MemberType.OPTIONAL)
+
+    def is_object(self):
+        """
+        Returns True if the member is an object.
+        """
+        return isinstance(self.member_type, NyanObject)
+
+    def is_composite(self):
+        """
+        Returns True if the member is a composite type with at least one element type.
+        """
+        return self.is_complex() or self.is_modifier()
+
+    def accepts_op(self, operator):
+        """
+        Check if an operator is compatible with the member type.
+        """
+        if self.is_modifier():
+            return self.element_types[0].accepts_op(operator)
+
+        if self._member_type in (MemberType.INT, MemberType.FLOAT)\
+            and operator not in (MemberOperator.ASSIGN,
+                                 MemberOperator.ADD,
+                                 MemberOperator.SUBTRACT,
+                                 MemberOperator.MULTIPLY,
+                                 MemberOperator.DIVIDE):
+            return False
+
+        elif self.member_type is MemberType.TEXT\
+                and operator not in (MemberOperator.ASSIGN,
+                                     MemberOperator.ADD):
+            return False
+
+        elif self.member_type is MemberType.FILE\
+                and operator is not MemberOperator.ASSIGN:
+            return False
+
+        elif self.member_type is MemberType.BOOLEAN\
+                and operator not in (MemberOperator.ASSIGN,
+                                     MemberOperator.AND,
+                                     MemberOperator.OR):
+            return False
+
+        elif self.member_type is MemberType.SET\
+                and operator not in (MemberOperator.ASSIGN,
+                                     MemberOperator.ADD,
+                                     MemberOperator.SUBTRACT,
+                                     MemberOperator.AND,
+                                     MemberOperator.OR):
+            return False
+
+        elif self.member_type is MemberType.ORDEREDSET\
+                and operator not in (MemberOperator.ASSIGN,
+                                     MemberOperator.ADD,
+                                     MemberOperator.SUBTRACT,
+                                     MemberOperator.AND,
+                                     MemberOperator.OR):
+            return False
+
+        elif self.member_type is MemberType.DICT\
+                and operator not in (MemberOperator.ASSIGN,
+                                     MemberOperator.ADD,
+                                     MemberOperator.SUBTRACT,
+                                     MemberOperator.AND,
+                                     MemberOperator.OR):
+            return False
+
+        return True
+
+    def accepts_value(self, value):
+        """
+        Check if a value is compatible with the member type.
+        """
+        if self.is_modifier():
+            return self.element_types[0].accepts_value(value)
+
+        # Member values can only be NYAN_NONE if the member is optional
+        if value is MemberSpecialValue.NYAN_NONE and self.member_type is not MemberType.OPTIONAL:
+            return False
+
+        # inf is only used for ints and floats
+        if value is MemberSpecialValue.NYAN_INF and\
+                self.member_type not in (MemberType.INT, MemberType.FLOAT):
+            return False
+
+        return True
+
+    def _sanity_check(self):
+        """
+        Check if the member type and element types are compatiable.
+        """
+        if self.is_composite():
+            # if the member type is a composite, then the element types need
+            # to be initialized
+            if not self.element_types:
+                raise Exception(f"{repr(self)}: element types are required for composite types")
+
+            # element types cannot be complex
+            for elem_type in self.element_types:
+                if elem_type.is_complex():
+                    raise Exception(f"{repr(self)}: element types cannot be complex but contains {elem_type}")
+
+        else:
+            # if the member is not a composite, the set type should be None
+            if self.element_types:
+                raise Exception(f"{repr(self)}: member type has element types but is not a composite")
+
+    def dump(self, import_tree=None, namespace=None):
+        """
+        Returns the nyan string representation of the member type.
+        """
+        if self.is_primitive():
+            return self.member_type.value
+
+        elif self.is_object():
+            if import_tree:
+                sfqon = ".".join(import_tree.get_alias_fqon(
+                    self.member_type.get_fqon(),
+                    namespace
+                ))
+
+            else:
+                sfqon = ".".join(self.member_type.get_fqon())
+
+            return sfqon
+
+        # Composite types
+        return (
+            f"{self.member_type.value}("
+            f"{', '.join(elem_type.dump() for elem_type in self.element_types)})"
+        )
+
+    def __repr__(self):
+        return f"NyanType<{self.member_type}: {self.element_types}>"
+
+
 class NyanMember:
     """
     Superclass for all nyan members.
     """
 
-    __slots__ = ('name', '_member_type', '_set_type', '_optional', '_override_depth',
+    __slots__ = ('name', '_member_type', '_elem_type', '_optional', '_override_depth',
                  '_operator', 'value')
 
     def __init__(self, name, member_type, value=None, operator=None,
@@ -606,23 +790,26 @@ class NyanMember:
         if isinstance(member_type, NyanObject):         # type
             self._member_type = member_type
 
+        elif isinstance(member_type, NyanMemberType):
+            self._member_type = member_type
+
         else:
             self._member_type = MemberType(member_type)
 
-        self._set_type = None                           # set/orderedset type
+        self._elem_type = None                           # for composite type
         if set_type:
             if isinstance(set_type, NyanObject):
-                self._set_type = set_type
+                self._elem_type = set_type
 
             elif isinstance(set_type, tuple):
-                self._set_type = []
+                self._elem_type = []
                 for stype in set_type:
-                    self._set_type.append(MemberType(stype))
+                    self._elem_type.append(MemberType(stype))
 
-                self._set_type = tuple(self._set_type)
+                self._elem_type = tuple(self._elem_type)
 
             else:
-                self._set_type = MemberType(set_type)
+                self._elem_type = MemberType(set_type)
 
         self._optional = optional                       # whether the value is allowed to be NYAN_NONE
         self._override_depth = override_depth           # override depth
@@ -654,7 +841,7 @@ class NyanMember:
         """
         Returns the set type of the member.
         """
-        return self._set_type
+        return self._elem_type
 
     def get_operator(self):
         """
@@ -770,20 +957,20 @@ class NyanMember:
             output_str += f" : {type_str}"
 
         if self.is_complex():
-            if isinstance(self._set_type, NyanObject):
+            if isinstance(self._elem_type, NyanObject):
                 if import_tree:
                     sfqon = ".".join(import_tree.get_alias_fqon(
-                        self._set_type.get_fqon(),
+                        self._elem_type.get_fqon(),
                         namespace
                     ))
 
                 else:
-                    sfqon = ".".join(self._set_type.get_fqon())
+                    sfqon = ".".join(self._elem_type.get_fqon())
 
                 output_str += f"({sfqon})"
 
             else:
-                output_str += f"({self._set_type.value})"
+                output_str += f"({self._elem_type.value})"
 
         if self.is_initialized():
             output_str += " %s%s %s" % ("@" * self._override_depth,
@@ -819,29 +1006,26 @@ class NyanMember:
         """
         # self.name must be a string
         if not isinstance(self.name, str):
-            raise Exception(f"{self.__repr__()}: 'name' must be a string")
+            raise Exception(f"{repr(self)}: 'name' must be a string")
 
         # self.name must conform to nyan grammar rules
         if not re.fullmatch(r"[a-zA-Z_][a-zA-Z0-9_]*", self.name[0]):
-            raise Exception(f"{self.__repr__()}: 'name' is not well-formed")
+            raise Exception(f"{repr(self)}: 'name' is not well-formed")
 
         if self.is_complex():
             # if the member type is complex, then the set type needs
             # to be initialized
-            if not self._set_type:
-                raise Exception("%s: '_set_type' is required for complex types"
-                                % (self.__repr__()))
+            if not self._elem_type:
+                raise Exception(f"{repr(self)}: '_elem_type' is required for complex types")
 
             # set types cannot be sets
-            if self._set_type in (MemberType.SET, MemberType.ORDEREDSET, MemberType.DICT):
-                raise Exception("%s: '_set_type' cannot be complex but is %s"
-                                % (self.__repr__(), self._set_type))
+            if self._elem_type in (MemberType.SET, MemberType.ORDEREDSET, MemberType.DICT):
+                raise Exception(f"{repr(self)}: '_elem_type' cannot be complex but is {self._elem_type}")
 
         else:
             # if the member is not complex, the set type should be None
-            if self._set_type:
-                raise Exception("%s: member has '_set_type' but is not complex"
-                                % (self.__repr__()))
+            if self._elem_type:
+                raise Exception(f"{repr(self)}: member has '_elem_type' but is not complex")
 
         if (self.is_initialized() and not isinstance(self, InheritedNyanMember)) or\
                 (isinstance(self, InheritedNyanMember) and self.has_value()):
@@ -852,30 +1036,34 @@ class NyanMember:
                                                MemberOperator.SUBTRACT,
                                                MemberOperator.MULTIPLY,
                                                MemberOperator.DIVIDE):
-                raise Exception("%s: %s is not a valid operator for %s member type"
-                                % (self.__repr__(), self._operator,
-                                   self._member_type))
+                raise Exception((
+                    f"{repr(self)}: {self._operator} is not a valid"
+                    f"operator for {self._member_type} member type"
+                ))
 
             elif self._member_type is MemberType.TEXT\
                     and self._operator not in (MemberOperator.ASSIGN,
                                                MemberOperator.ADD):
-                raise Exception("%s: %s is not a valid operator for %s member type"
-                                % (self.__repr__(), self._operator,
-                                   self._member_type))
+                raise Exception((
+                    f"{repr(self)}: {self._operator} is not a valid"
+                    f"operator for {self._member_type} member type"
+                ))
 
             elif self._member_type is MemberType.FILE\
                     and self._operator is not MemberOperator.ASSIGN:
-                raise Exception("%s: %s is not a valid operator for %s member type"
-                                % (self.__repr__(), self._operator,
-                                   self._member_type))
+                raise Exception((
+                    f"{repr(self)}: {self._operator} is not a valid"
+                    f"operator for {self._member_type} member type"
+                ))
 
             elif self._member_type is MemberType.BOOLEAN\
                     and self._operator not in (MemberOperator.ASSIGN,
                                                MemberOperator.AND,
                                                MemberOperator.OR):
-                raise Exception("%s: %s is not a valid operator for %s member type"
-                                % (self.__repr__(), self._operator,
-                                   self._member_type))
+                raise Exception((
+                    f"{repr(self)}: {self._operator} is not a valid"
+                    f"operator for {self._member_type} member type"
+                ))
 
             elif self._member_type is MemberType.SET\
                     and self._operator not in (MemberOperator.ASSIGN,
@@ -883,9 +1071,10 @@ class NyanMember:
                                                MemberOperator.SUBTRACT,
                                                MemberOperator.AND,
                                                MemberOperator.OR):
-                raise Exception("%s: %s is not a valid operator for %s member type"
-                                % (self.__repr__(), self._operator,
-                                   self._member_type))
+                raise Exception((
+                    f"{repr(self)}: {self._operator} is not a valid"
+                    f"operator for {self._member_type} member type"
+                ))
 
             elif self._member_type is MemberType.ORDEREDSET\
                     and self._operator not in (MemberOperator.ASSIGN,
@@ -893,9 +1082,10 @@ class NyanMember:
                                                MemberOperator.SUBTRACT,
                                                MemberOperator.AND,
                                                MemberOperator.OR):
-                raise Exception("%s: %s is not a valid operator for %s member type"
-                                % (self.__repr__(), self._operator,
-                                   self._member_type))
+                raise Exception((
+                    f"{repr(self)}: {self._operator} is not a valid"
+                    f"operator for {self._member_type} member type"
+                ))
 
             elif self._member_type is MemberType.DICT\
                     and self._operator not in (MemberOperator.ASSIGN,
@@ -903,41 +1093,41 @@ class NyanMember:
                                                MemberOperator.SUBTRACT,
                                                MemberOperator.AND,
                                                MemberOperator.OR):
-                raise Exception("%s: %s is not a valid operator for %s member type"
-                                % (self.__repr__(), self._operator,
-                                   self._member_type))
+                raise Exception((
+                    f"{repr(self)}: {self._operator} is not a valid"
+                    f"operator for {self._member_type} member type"
+                ))
 
             # override depth must be a non-negative integer
             if not (isinstance(self._override_depth, int) and
                     self._override_depth >= 0):
-                raise Exception("%s: '_override_depth' must be a non-negative integer"
-                                % (self.__repr__()))
+                raise Exception(f"{repr(self)}: '_override_depth' must be a non-negative integer")
 
             # Member values can only be NYAN_NONE if the member is optional
             if self.value is MemberSpecialValue.NYAN_NONE and not\
                     self._optional:
-                raise Exception("%s: 'value' is NYAN_NONE but member is not optional"
-                                % (self.__repr__()))
+                raise Exception(f"{repr(self)}: 'value' is NYAN_NONE but member is not optional")
 
             # inf is only used for ints and floats
             if self.value is MemberSpecialValue.NYAN_INF and\
                     self._member_type not in (MemberType.INT, MemberType.FLOAT):
-                raise Exception("%s: 'value' is NYAN_INF but member type is not "
-                                "INT or FLOAT" % (self.__repr__()))
+                raise Exception(f"{repr(self)}: 'value' is NYAN_INF but member type is not "
+                                "INT or FLOAT")
 
             # NYAN_NONE values can only be assigned
             if self.value is MemberSpecialValue.NYAN_NONE and\
                     self._operator is not MemberOperator.ASSIGN:
-                raise Exception(("%s: 'value' with NYAN_NONE can only have operator type "
-                                 "MemberOperator.ASSIGN") % (self.__repr__()))
+                raise Exception(f"{repr(self)}: 'value' with NYAN_NONE can only have operator type "
+                                "ASSIGN")
 
+            # Values that are nyan objects must be the member type
+            # or the children of the member type
             if isinstance(self._member_type, NyanObject) and self.value\
                     and self.value is not MemberSpecialValue.NYAN_NONE:
                 if not (self.value is self._member_type or
-                        self.value.has_ancestor((self._member_type))):
-                    raise Exception(("%s: 'value' with type NyanObject must "
-                                     "have their member type as ancestor")
-                                    % (self.__repr__()))
+                        self.value.has_ancestor(self._member_type)):
+                    raise Exception(f"{repr(self)}: 'value' with type NyanObject must "
+                                    "have their member type as ancestor")
 
     def _type_conversion(self):
         """
@@ -1011,7 +1201,7 @@ class NyanMember:
         stored_values = []
         for val in value:
             stored_values.append(self._get_primitive_value_str(
-                self._set_type,
+                self._elem_type,
                 val,
                 import_tree=import_tree,
                 namespace=namespace
@@ -1318,6 +1508,11 @@ class MemberType(Enum):
     SET = "set"
     ORDEREDSET = "orderedset"
     DICT = "dict"
+
+    # Modifier types
+    ABSTRACT = "abstract"
+    CHILDREN = "children"
+    OPTIONAL = "optional"
 
 
 class MemberSpecialValue(Enum):
