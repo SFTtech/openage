@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-lines,too-many-statements
 """
@@ -8,8 +8,17 @@ TODO: Implement a parser instead of hardcoded
 object creation.
 """
 
+from ....nyan.nyan_structs import NyanMemberType
 from ....nyan.nyan_structs import NyanObject, NyanMember, MemberType, MemberSpecialValue,\
     MemberOperator
+
+# Common primitive types
+# We can use these so we don't have to create them every single time
+N_INT = NyanMemberType("int")
+N_FLOAT = NyanMemberType("float")
+N_TEXT = NyanMemberType("text")
+N_FILE = NyanMemberType("file")
+N_BOOL = NyanMemberType("bool")
 
 
 def load_api():
@@ -2353,7 +2362,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.state_machine.StateChanger"]
     member = NyanMember("target_state", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("transform_time", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("transform_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.progress.type.TransformProgress"]
     member = NyanMember("transform_progress", MemberType.SET, None, None, 0, set_type, False)
@@ -2365,7 +2374,7 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.effect.continuous.ContinuousEffect"]
     member = NyanMember("effects", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("application_delay", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("application_delay", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
     member = NyanMember("allowed_types", MemberType.SET, None, None, 0, set_type, False)
@@ -2380,9 +2389,9 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.effect.discrete.DiscreteEffect"]
     member = NyanMember("effects", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("reload_time", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("reload_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("application_delay", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("application_delay", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
     member = NyanMember("allowed_types", MemberType.SET, None, None, 0, set_type, False)
@@ -2407,7 +2416,7 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.ability.Ability"]
     member = NyanMember("interrupted_by", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("interrupt_cooldown", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("interrupt_cooldown", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.CollectStorage
@@ -2423,7 +2432,7 @@ def _insert_members(api_objects):
     # engine.ability.type.Constructable
     api_object = api_objects["engine.ability.type.Constructable"]
 
-    member = NyanMember("starting_progress", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("starting_progress", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.progress.type.ConstructionProgress"]
     member = NyanMember("construction_progress", MemberType.SET, None, None, 0, set_type, False)
@@ -2445,7 +2454,7 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.logic.LogicElement"]
     member = NyanMember("despawn_condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("despawn_time", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("despawn_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.state_machine.StateChanger"]
     member = NyanMember("state_change", ref_object, MemberSpecialValue.NYAN_NONE,
@@ -2465,7 +2474,7 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.storage.ResourceContainer"]
     member = NyanMember("containers", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("search_range", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("search_range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
     member = NyanMember("allowed_types", MemberType.SET, None, None, 0, set_type, False)
@@ -2513,7 +2522,7 @@ def _insert_members(api_objects):
     # engine.ability.type.Fly
     api_object = api_objects["engine.ability.type.Fly"]
 
-    member = NyanMember("height", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("height", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.Formation
@@ -2540,9 +2549,9 @@ def _insert_members(api_objects):
     # engine.ability.type.Gather
     api_object = api_objects["engine.ability.type.Gather"]
 
-    member = NyanMember("auto_resume", MemberType.BOOLEAN, None, None, 0, None, False)
+    member = NyanMember("auto_resume", N_BOOL, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("resume_search_range", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("resume_search_range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.resource_spot.ResourceSpot"]
     member = NyanMember("targets", MemberType.SET, None, None, 0, set_type, False)
@@ -2566,17 +2575,17 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.progress.type.RestockProgress"]
     member = NyanMember("restock_progress", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("gatherer_limit", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("gatherer_limit", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("harvestable_by_default", MemberType.BOOLEAN, None, None, 0, None, False)
+    member = NyanMember("harvestable_by_default", N_BOOL, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.Herd
     api_object = api_objects["engine.ability.type.Herd"]
 
-    member = NyanMember("range", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("strength", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("strength", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
     member = NyanMember("allowed_types", MemberType.SET, None, None, 0, set_type, False)
@@ -2588,7 +2597,7 @@ def _insert_members(api_objects):
     # engine.ability.type.Herdable
     api_object = api_objects["engine.ability.type.Herdable"]
 
-    member = NyanMember("adjacent_discover_range", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("adjacent_discover_range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.herdable_mode.HerdableMode"]
     member = NyanMember("mode", ref_object, None, None, 0, None, False)
@@ -2604,7 +2613,7 @@ def _insert_members(api_objects):
     # engine.ability.type.LineOfSight
     api_object = api_objects["engine.ability.type.LineOfSight"]
 
-    member = NyanMember("range", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.Live
@@ -2617,7 +2626,7 @@ def _insert_members(api_objects):
     # engine.ability.type.Move
     api_object = api_objects["engine.ability.type.Move"]
 
-    member = NyanMember("speed", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("speed", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.move_mode.MoveMode"]
     member = NyanMember("modes", MemberType.SET, None, None, 0, set_type, False)
@@ -2659,7 +2668,7 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.logic.LogicElement"]
     member = NyanMember("condition", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("transform_time", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("transform_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.state_machine.StateChanger"]
     member = NyanMember("target_state", ref_object, None, None, 0, None, False)
@@ -2671,7 +2680,7 @@ def _insert_members(api_objects):
     # engine.ability.type.ProductionQueue
     api_object = api_objects["engine.ability.type.ProductionQueue"]
 
-    member = NyanMember("size", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("size", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.production_mode.ProductionMode"]
     member = NyanMember("production_modes", MemberType.SET, None, None, 0, set_type, False)
@@ -2680,7 +2689,7 @@ def _insert_members(api_objects):
     # engine.ability.type.Projectile
     api_object = api_objects["engine.ability.type.Projectile"]
 
-    member = NyanMember("arc", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("arc", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.accuracy.Accuracy"]
     member = NyanMember("accuracy", MemberType.SET, None, None, 0, set_type, False)
@@ -2705,17 +2714,17 @@ def _insert_members(api_objects):
     # engine.ability.type.RangedContinuousEffect
     api_object = api_objects["engine.ability.type.RangedContinuousEffect"]
 
-    member = NyanMember("min_range", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("min_range", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("max_range", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("max_range", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.RangedDiscreteEffect
     api_object = api_objects["engine.ability.type.RangedDiscreteEffect"]
 
-    member = NyanMember("min_range", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("min_range", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("max_range", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("max_range", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.RegenerateAttribute
@@ -2769,12 +2778,12 @@ def _insert_members(api_objects):
     # engine.ability.type.Restock
     api_object = api_objects["engine.ability.type.Restock"]
 
-    member = NyanMember("auto_restock", MemberType.BOOLEAN, None, None, 0, None, False)
+    member = NyanMember("auto_restock", N_BOOL, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.resource_spot.ResourceSpot"]
     member = NyanMember("target", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("restock_time", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("restock_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.cost.Cost"]
     member = NyanMember("manual_cost", ref_object, None, None, 0, None, False)
@@ -2782,7 +2791,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.cost.Cost"]
     member = NyanMember("auto_cost", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("amount", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("amount", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.SendBackToTask
@@ -2808,35 +2817,35 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.game_entity.GameEntity"]
     member = NyanMember("projectiles", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("min_projectiles", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("min_projectiles", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("max_projectiles", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("max_projectiles", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("min_range", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("min_range", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("max_range", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("max_range", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("reload_time", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("reload_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("spawn_delay", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("spawn_delay", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("projectile_delay", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("projectile_delay", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("require_turning", MemberType.BOOLEAN, None, None, 0, None, False)
+    member = NyanMember("require_turning", N_BOOL, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("manual_aiming_allowed", MemberType.BOOLEAN, None, None, 0, None, False)
+    member = NyanMember("manual_aiming_allowed", N_BOOL, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("spawning_area_offset_x", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("spawning_area_offset_x", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("spawning_area_offset_y", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("spawning_area_offset_y", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("spawning_area_offset_z", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("spawning_area_offset_z", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("spawning_area_width", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("spawning_area_width", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("spawning_area_height", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("spawning_area_height", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("spawning_area_randomness", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("spawning_area_randomness", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
     member = NyanMember("allowed_types", MemberType.SET, None, None, 0, set_type, False)
@@ -2895,7 +2904,7 @@ def _insert_members(api_objects):
     # engine.ability.type.Turn
     api_object = api_objects["engine.ability.type.Turn"]
 
-    member = NyanMember("turn_speed", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("turn_speed", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.UseContingent
@@ -2908,16 +2917,16 @@ def _insert_members(api_objects):
     # engine.ability.type.Visibility
     api_object = api_objects["engine.ability.type.Visibility"]
 
-    member = NyanMember("visible_in_fog", MemberType.BOOLEAN, None, None, 0, None, False)
+    member = NyanMember("visible_in_fog", N_BOOL, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux
     # engine.aux.accuracy.Accuracy
     api_object = api_objects["engine.aux.accuracy.Accuracy"]
 
-    member = NyanMember("accuracy", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("accuracy", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("accuracy_dispersion", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("accuracy_dispersion", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.dropoff_type.DropoffType"]
     member = NyanMember("dispersion_dropoff", ref_object, None, None, 0, None, False)
@@ -2938,7 +2947,7 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.graphics.Animation"]
     member = NyanMember("animations", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("priority", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("priority", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.attribute.Attribute
@@ -2957,7 +2966,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.attribute.Attribute"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("amount", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("amount", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.attribute.AttributeRate
@@ -2966,7 +2975,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.attribute.Attribute"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("rate", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("rate", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.attribute.AttributeSetting
@@ -2975,11 +2984,11 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.attribute.Attribute"]
     member = NyanMember("attribute", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("min_value", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("min_value", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("max_value", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("max_value", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("starting_value", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("starting_value", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.attribute.ProtectingAttribute
@@ -2992,7 +3001,7 @@ def _insert_members(api_objects):
     # engine.aux.logic.LogicElement
     api_object = api_objects["engine.aux.logic.LogicElement"]
 
-    member = NyanMember("only_once", MemberType.BOOLEAN, None, None, 0, None, False)
+    member = NyanMember("only_once", N_BOOL, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.logic.gate.LogicGate
@@ -3005,13 +3014,13 @@ def _insert_members(api_objects):
     # engine.aux.logic.gate.type.SUBSETMAX
     api_object = api_objects["engine.aux.logic.gate.type.SUBSETMAX"]
 
-    member = NyanMember("size", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("size", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.logic.gate.type.SUBSETMIN
     api_object = api_objects["engine.aux.logic.gate.type.SUBSETMIN"]
 
-    member = NyanMember("size", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("size", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.logic.literal.Literal
@@ -3034,7 +3043,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.attribute.Attribute"]
     member = NyanMember("attribute", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("threshold", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("threshold", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.logic.literal.type.AttributeBelowValue
@@ -3043,7 +3052,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.attribute.Attribute"]
     member = NyanMember("attribute", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("threshold", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("threshold", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.logic.literal.type.GameEntityProgress
@@ -3066,19 +3075,19 @@ def _insert_members(api_objects):
     # engine.aux.calculation_type.type.Hyperbolic
     api_object = api_objects["engine.aux.calculation_type.type.Hyperbolic"]
 
-    member = NyanMember("shift_x", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("shift_x", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("shift_y", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("shift_y", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("scale_factor", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("scale_factor", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.cheat.Cheat
     api_object = api_objects["engine.aux.cheat.Cheat"]
 
-    member = NyanMember("activation_message", MemberType.TEXT, None, None, 0, None, False)
+    member = NyanMember("activation_message", N_TEXT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("display_message", MemberType.TEXT, None, None, 0, None, False)
+    member = NyanMember("display_message", N_TEXT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.patch.Patch"]
     member = NyanMember("changes", MemberType.ORDEREDSET, None, None, 0, set_type, False)
@@ -3139,7 +3148,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.cost.Cost"]
     member = NyanMember("cost", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("creation_time", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("creation_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.sound.Sound"]
     member = NyanMember("creation_sounds", MemberType.SET, None, None, 0, set_type, False)
@@ -3154,13 +3163,13 @@ def _insert_members(api_objects):
     # engine.aux.exchange_mode.ExchangeMode
     api_object = api_objects["engine.aux.exchange_mode.ExchangeMode"]
 
-    member = NyanMember("fee_multiplier", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("fee_multiplier", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.exchange_rate.ExchangeRate
     api_object = api_objects["engine.aux.exchange_rate.ExchangeRate"]
 
-    member = NyanMember("base_price", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("base_price", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.price_mode.PriceMode"]
     member = NyanMember("price_adjust", ref_object, MemberSpecialValue.NYAN_NONE,
@@ -3188,7 +3197,7 @@ def _insert_members(api_objects):
     # engine.aux.formation.Subformation
     api_object = api_objects["engine.aux.formation.Subformation"]
 
-    member = NyanMember("ordering_priority", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("ordering_priority", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.game_entity.GameEntity
@@ -3220,7 +3229,7 @@ def _insert_members(api_objects):
     # engine.aux.game_entity_stance.GameEntityStance
     api_object = api_objects["engine.aux.game_entity_stance.GameEntityStance"]
 
-    member = NyanMember("search_range", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("search_range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.ability.Ability"]
     member = NyanMember("ability_preference", MemberType.ORDEREDSET, None, None, 0, set_type, False)
@@ -3232,35 +3241,35 @@ def _insert_members(api_objects):
     # engine.aux.graphics.Animation
     api_object = api_objects["engine.aux.graphics.Animation"]
 
-    member = NyanMember("sprite", MemberType.FILE, None, None, 0, None, False)
+    member = NyanMember("sprite", N_FILE, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.graphics.Palette
     api_object = api_objects["engine.aux.graphics.Palette"]
 
-    member = NyanMember("palette", MemberType.FILE, None, None, 0, None, False)
+    member = NyanMember("palette", N_FILE, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.graphics.Terrain
     api_object = api_objects["engine.aux.graphics.Terrain"]
 
-    member = NyanMember("sprite", MemberType.FILE, None, None, 0, None, False)
+    member = NyanMember("sprite", N_FILE, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.hitbox.hitbox
     api_object = api_objects["engine.aux.hitbox.Hitbox"]
 
-    member = NyanMember("radius_x", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("radius_x", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("radius_y", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("radius_y", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("radius_z", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("radius_z", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.language.Language
     api_object = api_objects["engine.aux.language.Language"]
 
-    member = NyanMember("ietf_string", MemberType.TEXT, None, None, 0, None, False)
+    member = NyanMember("ietf_string", N_TEXT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.language.LanguageMarkupPair
@@ -3269,7 +3278,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.language.Language"]
     member = NyanMember("language", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("markup_file", MemberType.FILE, None, None, 0, None, False)
+    member = NyanMember("markup_file", N_FILE, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.language.LanguageSoundPair
@@ -3288,13 +3297,13 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.language.Language"]
     member = NyanMember("language", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("string", MemberType.TEXT, None, None, 0, None, False)
+    member = NyanMember("string", N_TEXT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.mod.Mod
     api_object = api_objects["engine.aux.mod.Mod"]
 
-    member = NyanMember("priority", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("priority", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.patch.Patch"]
     member = NyanMember("patches", MemberType.ORDEREDSET, None, None, 0, set_type, False)
@@ -3313,13 +3322,13 @@ def _insert_members(api_objects):
     # engine.aux.move_mode.type.Follow
     api_object = api_objects["engine.aux.move_mode.type.Follow"]
 
-    member = NyanMember("range", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.move_mode.type.Guard
     api_object = api_objects["engine.aux.move_mode.type.Guard"]
 
-    member = NyanMember("range", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.passable_mode.PassableMode
@@ -3356,13 +3365,13 @@ def _insert_members(api_objects):
     # engine.aux.placement_mode.type.Place
     api_object = api_objects["engine.aux.placement_mode.type.Place"]
 
-    member = NyanMember("tile_snap_distance", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("tile_snap_distance", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("clearance_size_x", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("clearance_size_x", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("clearance_size_y", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("clearance_size_y", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("max_elevation_difference", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("max_elevation_difference", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.placement_mode.type.Replace
@@ -3378,15 +3387,15 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.exchange_mode.ExchangeMode"]
     member = NyanMember("exchange_mode", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("change_value", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("change_value", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.price_mode.dynamic.Dynamic
     api_object = api_objects["engine.aux.price_mode.dynamic.Dynamic"]
 
-    member = NyanMember("min_price", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("min_price", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("max_price", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("max_price", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.price_mode.dynamic.type.DynamicFlat
@@ -3413,9 +3422,9 @@ def _insert_members(api_objects):
     # engine.aux.progress.Progress
     api_object = api_objects["engine.aux.progress.Progress"]
 
-    member = NyanMember("left_boundary", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("left_boundary", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("right_boundary", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("right_boundary", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.progress.specialization.AnimatedProgress
@@ -3459,7 +3468,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.progress_type.ProgressType"]
     member = NyanMember("progress_type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("progress", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("progress", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.research.ResearchableTech
@@ -3471,7 +3480,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.cost.Cost"]
     member = NyanMember("cost", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("research_time", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("research_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.sound.Sound"]
     member = NyanMember("research_sounds", MemberType.SET, None, None, 0, set_type, False)
@@ -3486,15 +3495,15 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.translated.type.TranslatedString"]
     member = NyanMember("name", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("max_storage", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("max_storage", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.resource.ResourceContingent
     api_object = api_objects["engine.aux.resource.ResourceContingent"]
 
-    member = NyanMember("min_amount", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("min_amount", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("max_amount", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("max_amount", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.resource.ResourceAmount
@@ -3503,7 +3512,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.resource.Resource"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("amount", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("amount", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.resource.ResourceRate
@@ -3512,7 +3521,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.resource.Resource"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("rate", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("rate", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.resource_spot.ResourceSpot
@@ -3521,25 +3530,25 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.resource.Resource"]
     member = NyanMember("resource", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("max_amount", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("max_amount", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("starting_amount", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("starting_amount", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("decay_rate", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("decay_rate", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.selection_box.type.Rectangle
     api_object = api_objects["engine.aux.selection_box.type.Rectangle"]
 
-    member = NyanMember("radius_x", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("radius_x", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("radius_y", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("radius_y", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.sound.Sound
     api_object = api_objects["engine.aux.sound.Sound"]
 
-    member = NyanMember("play_delay", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("play_delay", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = MemberType.FILE
     member = NyanMember("sounds", MemberType.ORDEREDSET, None, None, 0, set_type, False)
@@ -3564,7 +3573,7 @@ def _insert_members(api_objects):
     member = NyanMember("transform_pool", ref_object, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, True)
     api_object.add_member(member)
-    member = NyanMember("priority", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("priority", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.storage.Container
@@ -3579,7 +3588,7 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.storage.StorageElementDefinition"]
     member = NyanMember("storage_element_defs", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("slots", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("slots", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.progress.type.CarryProgress"]
     member = NyanMember("carry_progress", MemberType.SET, None, None, 0, set_type, False)
@@ -3591,7 +3600,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.resource.Resource"]
     member = NyanMember("resource", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("capacity", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("capacity", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.progress.type.CarryProgress"]
     member = NyanMember("carry_progress", MemberType.SET, None, None, 0, set_type, False)
@@ -3600,7 +3609,7 @@ def _insert_members(api_objects):
     # engine.aux.storage.resource_container.type.GlobalSink
     api_object = api_objects["engine.aux.storage.resource_container.type.GlobalSink"]
 
-    member = NyanMember("update_time", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("update_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.storage.StorageElementDefinition
@@ -3609,7 +3618,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.game_entity.GameEntity"]
     member = NyanMember("storage_element", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("elements_per_slot", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("elements_per_slot", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.storage.StorageElementDefinition"]
     member = NyanMember("conflicts", MemberType.SET, None, None, 0, set_type, False)
@@ -3622,7 +3631,7 @@ def _insert_members(api_objects):
     # engine.aux.taunt.Taunt
     api_object = api_objects["engine.aux.taunt.Taunt"]
 
-    member = NyanMember("activation_message", MemberType.TEXT, None, None, 0, None, False)
+    member = NyanMember("activation_message", N_TEXT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.translated.type.TranslatedString"]
     member = NyanMember("display_message", ref_object, None, None, 0, None, False)
@@ -3675,7 +3684,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.game_entity.GameEntity"]
     member = NyanMember("object", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("max_density", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("max_density", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.trade_route.TradeRoute
@@ -3697,7 +3706,7 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.resource.Resource"]
     member = NyanMember("exchange_resources", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("trade_amount", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("trade_amount", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.translated.type.TranslatedMarkupFile
@@ -3727,7 +3736,7 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.patch.Patch"]
     member = NyanMember("changes", MemberType.ORDEREDSET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("priority", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("priority", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.variant.type.AdjacentTilesVariant
@@ -3761,13 +3770,13 @@ def _insert_members(api_objects):
     # engine.aux.variant.type.RandomVariant
     api_object = api_objects["engine.aux.variant.type.RandomVariant"]
 
-    member = NyanMember("chance_share", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("chance_share", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.variant.type.PerspectiveVariant
     api_object = api_objects["engine.aux.variant.type.PerspectiveVariant"]
 
-    member = NyanMember("angle", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("angle", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.effect
@@ -3801,7 +3810,7 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.game_entity.GameEntity"]
     member = NyanMember("destination", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("min_distance_to_destination", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("min_distance_to_destination", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.effect.continuous.time_relative_attribute.TimeRelativeAttributeChange
@@ -3810,7 +3819,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.attribute_change_type.AttributeChangeType"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("total_change_time", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("total_change_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.attribute.ProtectingAttribute"]
     member = NyanMember("ignore_protection", MemberType.SET, None, None, 0, set_type, False)
@@ -3822,7 +3831,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.progress_type.ProgressType"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("total_change_time", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("total_change_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.effect.discrete.convert.Convert
@@ -3837,7 +3846,7 @@ def _insert_members(api_objects):
     member = NyanMember("max_chance_success", MemberType.FLOAT, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, True)
     api_object.add_member(member)
-    member = NyanMember("chance_success", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("chance_success", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.cost.Cost"]
     member = NyanMember("cost_fail", ref_object, MemberSpecialValue.NYAN_NONE,
@@ -3847,9 +3856,9 @@ def _insert_members(api_objects):
     # engine.effect.discrete.convert.type.AoE2Convert
     api_object = api_objects["engine.effect.discrete.convert.type.AoE2Convert"]
 
-    member = NyanMember("skip_guaranteed_rounds", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("skip_guaranteed_rounds", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("skip_protected_rounds", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("skip_protected_rounds", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.effect.discrete.flat_attribute_change.FlatAttributeChange
@@ -3893,7 +3902,7 @@ def _insert_members(api_objects):
     # engine.effect.specialization.AreaEffect
     api_object = api_objects["engine.effect.specialization.AreaEffect"]
 
-    member = NyanMember("range", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.dropoff_type.DropoffType"]
     member = NyanMember("dropoff", ref_object, None, None, 0, None, False)
@@ -3951,17 +3960,17 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.convert_type.ConvertType"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("chance_resist", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("chance_resist", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.resistance.discrete.convert.type.AoE2Convert
     api_object = api_objects["engine.resistance.discrete.convert.type.AoE2Convert"]
 
-    member = NyanMember("guaranteed_resist_rounds", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("guaranteed_resist_rounds", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("protected_rounds", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("protected_rounds", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("protection_round_recharge_time", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("protection_round_recharge_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.resistance.discrete.flat_attribute_change.FlatAttributeChange
@@ -3990,7 +3999,7 @@ def _insert_members(api_objects):
     ref_object = api_objects["engine.aux.container_type.SendToContainerType"]
     member = NyanMember("type", ref_object, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("search_range", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("search_range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.storage.Container"]
     member = NyanMember("ignore_containers", MemberType.SET, None, None, 0, set_type, False)
@@ -4006,7 +4015,7 @@ def _insert_members(api_objects):
     # engine.resistance.specialization.StackedResistance
     api_object = api_objects["engine.resistance.specialization.StackedResistance"]
 
-    member = NyanMember("stack_limit", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("stack_limit", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     ref_object = api_objects["engine.aux.calculation_type.CalculationType"]
     member = NyanMember("calculation_type", ref_object, None, None, 0, None, False)
@@ -4026,13 +4035,13 @@ def _insert_members(api_objects):
     # engine.modifier.specialization.StackedModifier
     api_object = api_objects["engine.modifier.specialization.StackedModifier"]
 
-    member = NyanMember("stack_limit", MemberType.INT, None, None, 0, None, False)
+    member = NyanMember("stack_limit", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.modifier.multiplier.MultiplierModifier
     api_object = api_objects["engine.modifier.multiplier.MultiplierModifier"]
 
-    member = NyanMember("multiplier", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("multiplier", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.modifier.multiplier.effect.flat_attribute_change.type.ElevationDifferenceHigh
@@ -4058,7 +4067,7 @@ def _insert_members(api_objects):
     set_type = api_objects["engine.aux.game_entity.GameEntity"]
     member = NyanMember("blacklisted_entities", MemberType.SET, None, None, 0, set_type, False)
     api_object.add_member(member)
-    member = NyanMember("relative_angle", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("relative_angle", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.modifier.multiplier.effect.flat_attribute_change.type.Terrain
@@ -4194,7 +4203,7 @@ def _insert_members(api_objects):
     # engine.modifier.type.AbsoluteProjectileAmount
     api_object = api_objects["engine.modifier.relative_projectile_amount.AoE2ProjectileAmount"]
 
-    member = NyanMember("amount", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("amount", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.modifier.type.ContinuousResource
@@ -4267,7 +4276,7 @@ def _insert_members(api_objects):
     # engine.modifier.type.Reveal
     api_object = api_objects["engine.modifier.type.Reveal"]
 
-    member = NyanMember("line_of_sight", MemberType.FLOAT, None, None, 0, None, False)
+    member = NyanMember("line_of_sight", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     set_type = api_objects["engine.aux.game_entity_type.GameEntityType"]
     member = NyanMember("affected_types", MemberType.SET, None, None, 0, set_type, False)
