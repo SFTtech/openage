@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals
 
@@ -42,7 +42,7 @@ class RoRPregenSubprocessor:
         for pregen_object in pregen_nyan_objects.values():
             pregen_object.create_nyan_object()
 
-        # This has to be separate because of possible object interdependencies
+        # This has to be a separate for-loop because of possible object interdependencies
         for pregen_object in pregen_nyan_objects.values():
             pregen_object.create_nyan_members()
 

@@ -39,6 +39,34 @@ class DE2NyanSubprocessor:
         cls._create_nyan_objects(gamedata)
         cls._create_nyan_members(gamedata)
 
+        cls._check_objects(gamedata)
+
+    @classmethod
+    def _check_objects(cls, full_data_set):
+        """
+        Check if objects are valid.
+        """
+        for unit_line in full_data_set.unit_lines.values():
+            unit_line.check_readiness()
+
+        for building_line in full_data_set.building_lines.values():
+            building_line.check_readiness()
+
+        for ambient_group in full_data_set.ambient_groups.values():
+            ambient_group.check_readiness()
+
+        for variant_group in full_data_set.variant_groups.values():
+            variant_group.check_readiness()
+
+        for tech_group in full_data_set.tech_groups.values():
+            tech_group.check_readiness()
+
+        for terrain_group in full_data_set.terrain_groups.values():
+            terrain_group.check_readiness()
+
+        for civ_group in full_data_set.civ_groups.values():
+            civ_group.check_readiness()
+
     @classmethod
     def _create_nyan_objects(cls, full_data_set):
         """

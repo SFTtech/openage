@@ -47,7 +47,7 @@ class AoCPregenSubprocessor:
         for pregen_object in pregen_nyan_objects.values():
             pregen_object.create_nyan_object()
 
-        # This has to be separate because of possible object interdependencies
+        # This has to be a separate for-loop because of possible object interdependencies
         for pregen_object in pregen_nyan_objects.values():
             pregen_object.create_nyan_members()
 

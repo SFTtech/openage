@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2021 the openage authors. See copying.md for legal info.
 
 # pylint: disable=too-many-instance-attributes,too-many-branches,too-few-public-methods
 
@@ -208,9 +208,20 @@ class ConverterObjectGroup:
         for raw_api_object in self.raw_api_objects.values():
             raw_api_object.create_nyan_members()
 
+    def check_readiness(self):
+        """
+        check if all nyan objects in the group are ready for export.
+        """
+        for raw_api_object in self.raw_api_objects.values():
             if not raw_api_object.is_ready():
-                raise Exception("%s: object is not ready for export. "
-                                "Member or object not initialized." % (raw_api_object))
+                if not raw_api_object.nyan_object:
+                    raise Exception(f"{raw_api_object}: object is not ready for export: "
+                                    "Nyan object not initialized.")
+
+                uninit_members = raw_api_object.get_nyan_object().get_uninitialized_members()
+                concat_names = ", ".join(member.get_name() for member in uninit_members)
+                raise Exception(f"{raw_api_object}: object is not ready for export: "
+                                f"Member(s) {concat_names} not initialized.")
 
     def execute_raw_member_pushs(self):
         """
