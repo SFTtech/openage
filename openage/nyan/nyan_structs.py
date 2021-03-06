@@ -1004,29 +1004,29 @@ class NyanMember:
         This lets us convert data fields without worrying about the
         correct types too much, e.g. if a boolean is stored as uint8.
         """
-        if self._member_type is MemberType.INT and\
+        if self._member_type.get_real_type() is MemberType.INT and\
                 self._operator not in (MemberOperator.DIVIDE, MemberOperator.MULTIPLY):
             self.value = int(self.value)
 
-        elif self._member_type is MemberType.FLOAT:
+        elif self._member_type.get_real_type() is MemberType.FLOAT:
             self.value = float(self.value)
 
-        elif self._member_type is MemberType.TEXT:
+        elif self._member_type.get_real_type() is MemberType.TEXT:
             self.value = str(self.value)
 
-        elif self._member_type is MemberType.FILE:
+        elif self._member_type.get_real_type() is MemberType.FILE:
             self.value = str(self.value)
 
-        elif self._member_type is MemberType.BOOLEAN:
+        elif self._member_type.get_real_type() is MemberType.BOOLEAN:
             self.value = bool(self.value)
 
-        elif self._member_type is MemberType.SET:
+        elif self._member_type.get_real_type() is MemberType.SET:
             self.value = OrderedSet(self.value)
 
-        elif self._member_type is MemberType.ORDEREDSET:
+        elif self._member_type.get_real_type() is MemberType.ORDEREDSET:
             self.value = OrderedSet(self.value)
 
-        elif self._member_type is MemberType.DICT:
+        elif self._member_type.get_real_type() is MemberType.DICT:
             self.value = dict(self.value)
 
     def _get_primitive_value_str(self, member_type, value, import_tree=None, namespace=None):
