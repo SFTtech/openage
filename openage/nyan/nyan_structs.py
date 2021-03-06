@@ -102,10 +102,8 @@ class NyanObject:
                 self,
                 self,
                 None,
-                new_member.get_element_type(),
                 None,
-                0,
-                new_member.is_optional()
+                0
             )
             child.update_inheritance(inherited_member)
 
@@ -127,10 +125,8 @@ class NyanObject:
                 self,
                 self,
                 None,
-                member.get_element_type(),
                 None,
-                0,
-                member.is_optional()
+                0
             )
             new_child.update_inheritance(inherited_member)
 
@@ -142,10 +138,8 @@ class NyanObject:
                 self,
                 inherited.get_origin(),
                 None,
-                inherited.get_element_type(),
                 None,
-                0,
-                inherited.is_optional()
+                0
             )
             new_child.update_inheritance(inherited_member)
 
@@ -294,10 +288,8 @@ class NyanObject:
                 self,
                 new_inherited_member.get_origin(),
                 None,
-                new_inherited_member.get_element_type(),
                 None,
-                0,
-                new_inherited_member.is_optional()
+                0
             )
             child.update_inheritance(inherited_member)
 
@@ -825,7 +817,7 @@ class NyanMemberType:
         )
 
     def __repr__(self):
-        return f"NyanType<{self.member_type}: {self.element_types}>"
+        return f"NyanMemberType<{self.member_type}: {self.element_types}>"
 
 
 class NyanMember:
@@ -833,63 +825,31 @@ class NyanMember:
     Superclass for all nyan members.
     """
 
-    __slots__ = ('name', '_member_type', '_elem_type', '_optional', '_override_depth',
-                 '_operator', 'value')
+    __slots__ = ('name', '_member_type', 'value', '_operator', '_override_depth')
 
-    def __init__(self, name, member_type, value=None, operator=None,
-                 override_depth=0, elem_type=None, optional=False):
+    def __init__(self, name, member_type, value=None, operator=None, override_depth=0):
         """
         Initializes the member and does some correctness
         checks, for your convenience.
         """
         self.name = name                                # identifier
 
-        self._optional = optional                       # whether the value is allowed to be NYAN_NONE
-
         if isinstance(member_type, NyanMemberType):     # type
             self._member_type = member_type
 
-        # TODO: Move the type creation out of the member
-        # ----
         else:
-            if isinstance(member_type, NyanObject):
-                self._member_type = NyanMemberType(member_type)
-
-            else:
-                etype = None
-                if elem_type:
-                    etype = (NyanMemberType(elem_type),)
-
-                self._member_type = NyanMemberType(member_type, etype)
-
-            if self._optional:
-                etype = (self._member_type,)
-                self._member_type = NyanMemberType(MemberType.OPTIONAL, etype)
-
-        self._elem_type = None                           # for composite type
-        if elem_type:
-            if isinstance(elem_type, NyanObject):
-                self._elem_type = elem_type
-
-            elif isinstance(elem_type, tuple):
-                self._elem_type = []
-                for stype in elem_type:
-                    self._elem_type.append(MemberType(stype))
-
-                self._elem_type = tuple(self._elem_type)
-
-            else:
-                self._elem_type = MemberType(elem_type)
-        # ----
+            raise Exception(f"NyanMember<{self.name}>: Expected NyanMemberType for member_type "
+                            f"but got {type(member_type)}")
 
         self._override_depth = override_depth           # override depth
 
         self._operator = None
-        self.value = None                               # value
         if operator:
             operator = MemberOperator(operator)   # operator type
 
+        self.value = None                               # value
         if value is not None:
+            # Needs to check for None because 0 is also False
             self.set_value(value, operator)
 
         # check for errors in the initilization
@@ -906,12 +866,6 @@ class NyanMember:
         Returns the type of the member.
         """
         return self._member_type
-
-    def get_element_type(self):
-        """
-        Returns the element type of the member.
-        """
-        return self._elem_type
 
     def get_operator(self):
         """
@@ -960,12 +914,6 @@ class NyanMember:
         Returns True if the member is inherited from another object.
         """
         return False
-
-    def is_optional(self):
-        """
-        Returns True if the member is optional.
-        """
-        return self._optional
 
     def set_value(self, value, operator=None):
         """
@@ -1188,7 +1136,7 @@ class NyanMember:
         if not self.is_initialized():
             return f"UNINITIALIZED VALUE {repr(self)}"
 
-        if self._optional and self.value is MemberSpecialValue.NYAN_NONE:
+        if self.value is MemberSpecialValue.NYAN_NONE:
             return MemberSpecialValue.NYAN_NONE.value
 
         if self.value is MemberSpecialValue.NYAN_INF:
@@ -1241,10 +1189,9 @@ class NyanPatchMember(NyanMember):
         # the origin of the patched member from the patch target
         self._member_origin = member_origin
 
-        target_member_type, target_set_type = self._get_target_member_type(name, member_origin)
+        target_member_type = self._get_target_member_type(name, member_origin)
 
-        super().__init__(name, target_member_type, value, operator,
-                         override_depth, target_set_type, False)
+        super().__init__(name, target_member_type, value, operator, override_depth)
 
     def get_name_with_origin(self):
         """
@@ -1295,7 +1242,7 @@ class NyanPatchMember(NyanMember):
         """
         target_member = self._member_origin.get_member_by_name(name, origin)
 
-        return target_member.get_member_type(), target_member.get_element_type()
+        return target_member.get_member_type()
 
     def __repr__(self):
         return f"NyanPatchMember<{self.name}: {self._member_type}>"
@@ -1309,18 +1256,15 @@ class InheritedNyanMember(NyanMember):
     __slots__ = ('_parent', '_origin')
 
     def __init__(self, name, member_type, parent, origin, value=None,
-                 set_type=None, operator=None, override_depth=0, optional=False):
+                 operator=None, override_depth=0):
         """
         Initializes the member and does some correctness
         checks, for your convenience.
         """
+        self._parent = parent   # the direct parent of the object which contains the member
+        self._origin = origin   # nyan object which originally defined the member
 
-        self._parent = parent               # the direct parent of the object which contains the member
-
-        self._origin = origin               # nyan object which originally defined the member
-
-        super().__init__(name, member_type, value, operator,
-                         override_depth, set_type, optional)
+        super().__init__(name, member_type, value, operator, override_depth)
 
     def get_name_with_origin(self):
         """
