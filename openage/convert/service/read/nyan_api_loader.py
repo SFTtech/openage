@@ -2324,40 +2324,40 @@ def _insert_members(api_objects):
     # engine.ability.specialization.AnimatedAbility
     api_object = api_objects["engine.ability.specialization.AnimatedAbility"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.graphics.Animation"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.graphics.Animation"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("animations", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.specialization.AnimationOverrideAbility
     api_object = api_objects["engine.ability.specialization.AnimationOverrideAbility"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.animation_override.AnimationOverride"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.animation_override.AnimationOverride"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("overrides", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.specialization.CommandSoundAbility
     api_object = api_objects["engine.ability.specialization.CommandSoundAbility"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.sound.Sound"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.sound.Sound"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("sounds", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.specialization.DiplomaticAbility
     api_object = api_objects["engine.ability.specialization.DiplomaticAbility"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.diplomatic_stance.DiplomaticStance"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.diplomatic_stance.DiplomaticStance"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("stances", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.specialization.ExecutionSoundAbility
     api_object = api_objects["engine.ability.specialization.ExecutionSoundAbility"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.sound.Sound"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.sound.Sound"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("sounds", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2369,46 +2369,46 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     member = NyanMember("transform_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.progress.type.TransformProgress"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.progress.type.TransformProgress"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("transform_progress", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.ApplyContinuousEffect
     api_object = api_objects["engine.ability.type.ApplyContinuousEffect"]
 
-    set_type = NyanMemberType(api_objects["engine.effect.continuous.ContinuousEffect"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.effect.continuous.ContinuousEffect"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("effects", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("application_delay", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("allowed_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.ApplyDiscreteEffect
     api_object = api_objects["engine.ability.type.ApplyDiscreteEffect"]
 
-    set_type = NyanMemberType(api_objects["engine.effect.discrete.DiscreteEffect"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.effect.discrete.DiscreteEffect"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("effects", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("reload_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("application_delay", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("allowed_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2418,16 +2418,16 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.attribute.Attribute"])
     member = NyanMember("attribute", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.progress.type.AttributeChangeProgress"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.progress.type.AttributeChangeProgress"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("change_progress", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.Cloak
     api_object = api_objects["engine.ability.type.Cloak"]
 
-    set_type = NyanMemberType(api_objects["engine.ability.Ability"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.ability.Ability"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("interrupted_by", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("interrupt_cooldown", N_FLOAT, None, None, 0, None, False)
@@ -2439,8 +2439,8 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
     member = NyanMember("container", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("storage_elements", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2449,34 +2449,34 @@ def _insert_members(api_objects):
 
     member = NyanMember("starting_progress", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.progress.type.ConstructionProgress"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.progress.type.ConstructionProgress"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("construction_progress", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.Create
     api_object = api_objects["engine.ability.type.Create"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.create.CreatableGameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.create.CreatableGameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("creatables", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.Despawn
     api_object = api_objects["engine.ability.type.Despawn"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("activation_condition", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("despawn_condition", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("despawn_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.state_machine.StateChanger"])
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.state_machine.StateChanger"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("state_change", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
@@ -2484,42 +2484,42 @@ def _insert_members(api_objects):
     # engine.ability.type.DropSite
     api_object = api_objects["engine.ability.type.DropSite"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.storage.ResourceContainer"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.storage.ResourceContainer"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("accepts_from", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.DropResources
     api_object = api_objects["engine.ability.type.DropResources"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.storage.ResourceContainer"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.storage.ResourceContainer"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("containers", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("search_range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("allowed_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.EnterContainer
     api_object = api_objects["engine.ability.type.EnterContainer"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("allowed_containers", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("allowed_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2535,16 +2535,16 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.exchange_rate.ExchangeRate"])
     member = NyanMember("exchange_rate", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.exchange_mode.ExchangeMode"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.exchange_mode.ExchangeMode"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("exchange_modes", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.ExitContainer
     api_object = api_objects["engine.ability.type.ExitContainer"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("allowed_containers", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2557,8 +2557,8 @@ def _insert_members(api_objects):
     # engine.ability.type.Formation
     api_object = api_objects["engine.ability.type.Formation"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_formation.GameEntityFormation"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_formation.GameEntityFormation"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("formations", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2572,8 +2572,8 @@ def _insert_members(api_objects):
     # engine.ability.type.GameEntityStance
     api_object = api_objects["engine.ability.type.GameEntityStance"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_stance.GameEntityStance"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_stance.GameEntityStance"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("stances", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2584,8 +2584,8 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     member = NyanMember("resume_search_range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.resource_spot.ResourceSpot"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.resource_spot.ResourceSpot"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("targets", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.aux.resource.ResourceRate"])
@@ -2601,12 +2601,12 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.resource_spot.ResourceSpot"])
     member = NyanMember("resources", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.progress.type.HarvestProgress"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.progress.type.HarvestProgress"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("harvest_progress", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.progress.type.RestockProgress"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.progress.type.RestockProgress"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("restock_progress", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("gatherer_limit", N_INT, None, None, 0, None, False)
@@ -2621,12 +2621,12 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     member = NyanMember("strength", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("allowed_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2655,8 +2655,8 @@ def _insert_members(api_objects):
     # engine.ability.type.Live
     api_object = api_objects["engine.ability.type.Live"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeSetting"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeSetting"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("attributes", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2665,8 +2665,8 @@ def _insert_members(api_objects):
 
     member = NyanMember("speed", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.move_mode.MoveMode"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.move_mode.MoveMode"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("modes", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2703,8 +2703,8 @@ def _insert_members(api_objects):
     # engine.ability.type.PassiveTransformTo
     api_object = api_objects["engine.ability.type.PassiveTransformTo"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("condition", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("transform_time", N_FLOAT, None, None, 0, None, False)
@@ -2712,8 +2712,8 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.state_machine.StateChanger"])
     member = NyanMember("target_state", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.progress.type.TransformProgress"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.progress.type.TransformProgress"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("transform_progress", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2722,8 +2722,8 @@ def _insert_members(api_objects):
 
     member = NyanMember("size", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.production_mode.ProductionMode"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.production_mode.ProductionMode"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("production_modes", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2732,27 +2732,27 @@ def _insert_members(api_objects):
 
     member = NyanMember("arc", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.accuracy.Accuracy"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.accuracy.Accuracy"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("accuracy", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.aux.target_mode.TargetMode"])
     member = NyanMember("target_mode", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("ignored_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("unignored_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.ProvideContingent
     api_object = api_objects["engine.ability.type.ProvideContingent"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.resource.ResourceAmount"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.resource.ResourceAmount"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("amount", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2795,32 +2795,32 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
     member = NyanMember("container", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("storage_elements", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.Research
     api_object = api_objects["engine.ability.type.Research"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.research.ResearchableTech"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.research.ResearchableTech"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("researchables", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.Resistance
     api_object = api_objects["engine.ability.type.Resistance"]
 
-    set_type = NyanMemberType(api_objects["engine.resistance.Resistance"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.resistance.Resistance"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("resistances", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.ResourceStorage
     api_object = api_objects["engine.ability.type.ResourceStorage"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.storage.ResourceContainer"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.storage.ResourceContainer"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("containers", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2846,12 +2846,12 @@ def _insert_members(api_objects):
     # engine.ability.type.SendBackToTask
     api_object = api_objects["engine.ability.type.SendBackToTask"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("allowed_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2865,8 +2865,8 @@ def _insert_members(api_objects):
     # engine.ability.type.ShootProjectile
     api_object = api_objects["engine.ability.type.ShootProjectile"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("projectiles", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("min_projectiles", N_INT, None, None, 0, None, False)
@@ -2899,12 +2899,12 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     member = NyanMember("spawning_area_randomness", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("allowed_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2914,36 +2914,36 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
     member = NyanMember("container", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("empty_condition", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.TerrainRequirement
     api_object = api_objects["engine.ability.type.TerrainRequirement"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.terrain_type.TerrainType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.terrain_type.TerrainType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("allowed_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.terrain.Terrain"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.terrain.Terrain"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_terrains", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.Trade
     api_object = api_objects["engine.ability.type.Trade"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.trade_route.TradeRoute"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.trade_route.TradeRoute"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("trade_routes", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.ability.type.TradePost
     api_object = api_objects["engine.ability.type.TradePost"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.trade_route.TradeRoute"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.trade_route.TradeRoute"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("trade_routes", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2969,8 +2969,8 @@ def _insert_members(api_objects):
     # engine.ability.type.UseContingent
     api_object = api_objects["engine.ability.type.UseContingent"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.resource.ResourceAmount"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.resource.ResourceAmount"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("amount", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -2991,12 +2991,12 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.dropoff_type.DropoffType"])
     member = NyanMember("dispersion_dropoff", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("target_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3006,8 +3006,8 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.ability.Ability"])
     member = NyanMember("ability", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.graphics.Animation"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.graphics.Animation"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("animations", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("priority", N_INT, None, None, 0, None, False)
@@ -3070,8 +3070,8 @@ def _insert_members(api_objects):
     # engine.aux.logic.gate.LogicGate
     api_object = api_objects["engine.aux.logic.gate.LogicGate"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("inputs", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3097,8 +3097,8 @@ def _insert_members(api_objects):
     # engine.aux.logic.literal_scope.LiteralScope
     api_object = api_objects["engine.aux.logic.literal_scope.LiteralScope"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.diplomatic_stance.DiplomaticStance"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.diplomatic_stance.DiplomaticStance"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("diplomatic_stances", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3154,8 +3154,8 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     member = NyanMember("display_message", N_TEXT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.patch.Patch"])
-    member_type = NyanMemberType(MemberType.ORDEREDSET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.patch.Patch"])
+    member_type = NyanMemberType(MemberType.ORDEREDSET, (elem_type,))
     member = NyanMember("changes", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3171,20 +3171,20 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.translated.type.TranslatedMarkupFile"])
     member = NyanMember("long_description", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.translated.type.TranslatedString"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.translated.type.TranslatedString"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("leader_names", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.modifier.Modifier"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.modifier.Modifier"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("modifiers", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.resource.ResourceAmount"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.resource.ResourceAmount"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("starting_resources", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.patch.Patch"])
-    member_type = NyanMemberType(MemberType.ORDEREDSET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.patch.Patch"])
+    member_type = NyanMemberType(MemberType.ORDEREDSET, (elem_type,))
     member = NyanMember("civ_setup", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3198,16 +3198,16 @@ def _insert_members(api_objects):
     # engine.aux.cost.type.AttributeCost
     api_object = api_objects["engine.aux.cost.type.AttributeCost"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeAmount"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeAmount"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("amount", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.cost.type.ResourceCost
     api_object = api_objects["engine.aux.cost.type.ResourceCost"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.resource.ResourceAmount"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.resource.ResourceAmount"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("amount", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3222,16 +3222,16 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     member = NyanMember("creation_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.sound.Sound"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.sound.Sound"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("creation_sounds", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("condition", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.placement_mode.PlacementMode"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.placement_mode.PlacementMode"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("placement_modes", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3246,13 +3246,13 @@ def _insert_members(api_objects):
 
     member = NyanMember("base_price", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.price_mode.PriceMode"])
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.price_mode.PriceMode"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("price_adjust", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.price_pool.PricePool"])
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.price_pool.PricePool"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("price_pool", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
@@ -3260,16 +3260,16 @@ def _insert_members(api_objects):
     # engine.aux.price_pool.PricePool
     api_object = api_objects["engine.aux.price_pool.PricePool"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.diplomatic_stance.DiplomaticStance"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.diplomatic_stance.DiplomaticStance"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("diplomatic_stances", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.formation.Formation
     api_object = api_objects["engine.aux.formation.Formation"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.formation.Subformation"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.formation.Subformation"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("subformations", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3282,20 +3282,20 @@ def _insert_members(api_objects):
     # engine.aux.game_entity.GameEntity
     api_object = api_objects["engine.aux.game_entity.GameEntity"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.variant.Variant"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.variant.Variant"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("variants", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.ability.Ability"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.ability.Ability"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("abilities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.modifier.Modifier"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.modifier.Modifier"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("modifiers", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3314,12 +3314,12 @@ def _insert_members(api_objects):
 
     member = NyanMember("search_range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.ability.Ability"])
-    member_type = NyanMemberType(MemberType.ORDEREDSET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.ability.Ability"])
+    member_type = NyanMemberType(MemberType.ORDEREDSET, (elem_type,))
     member = NyanMember("ability_preference", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.ORDEREDSET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.ORDEREDSET, (elem_type,))
     member = NyanMember("type_preference", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3390,20 +3390,20 @@ def _insert_members(api_objects):
 
     member = NyanMember("priority", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.patch.Patch"])
-    member_type = NyanMemberType(MemberType.ORDEREDSET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.patch.Patch"])
+    member_type = NyanMemberType(MemberType.ORDEREDSET, (elem_type,))
     member = NyanMember("patches", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.modifier_scope.type.GameEntityScope
     api_object = api_objects["engine.aux.modifier_scope.type.GameEntityScope"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("affected_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3422,12 +3422,12 @@ def _insert_members(api_objects):
     # engine.aux.passable_mode.PassableMode
     api_object = api_objects["engine.aux.passable_mode.PassableMode"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("allowed_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3441,8 +3441,8 @@ def _insert_members(api_objects):
     # engine.aux.patch.type.DiplomaticPatch
     api_object = api_objects["engine.aux.patch.type.DiplomaticPatch"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.diplomatic_stance.DiplomaticStance"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.diplomatic_stance.DiplomaticStance"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("stances", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3468,8 +3468,8 @@ def _insert_members(api_objects):
     # engine.aux.placement_mode.type.Replace
     api_object = api_objects["engine.aux.placement_mode.type.Replace"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("game_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3493,24 +3493,24 @@ def _insert_members(api_objects):
     # engine.aux.price_mode.dynamic.type.DynamicFlat
     api_object = api_objects["engine.aux.price_mode.dynamic.type.DynamicFlat"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.price_change.PriceChange"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.price_change.PriceChange"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("change_settings", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.production_mode.type.Creatables
     api_object = api_objects["engine.aux.production_mode.type.Creatables"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.create.CreatableGameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.create.CreatableGameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("exclude", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.production_mode.type.Researchables
     api_object = api_objects["engine.aux.production_mode.type.Researchables"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.research.ResearchableTech"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.research.ResearchableTech"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("exclude", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3525,16 +3525,16 @@ def _insert_members(api_objects):
     # engine.aux.progress.specialization.AnimatedProgress
     api_object = api_objects["engine.aux.progress.specialization.AnimatedProgress"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.animation_override.AnimationOverride"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.animation_override.AnimationOverride"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("overrides", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.progress.specialization.AnimationOverlayProgress
     api_object = api_objects["engine.aux.progress.specialization.AnimationOverlayProgress"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.graphics.Animation"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.graphics.Animation"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("overlays", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3579,12 +3579,12 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     member = NyanMember("research_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.sound.Sound"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.sound.Sound"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("research_sounds", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("condition", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3649,32 +3649,32 @@ def _insert_members(api_objects):
 
     member = NyanMember("play_delay", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = N_FILE
-    member_type = NyanMemberType(MemberType.ORDEREDSET, (set_type,))
+    elem_type = N_FILE
+    member_type = NyanMemberType(MemberType.ORDEREDSET, (elem_type,))
     member = NyanMember("sounds", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.state_machine.StateChanger
     api_object = api_objects["engine.aux.state_machine.StateChanger"]
 
-    set_type = NyanMemberType(api_objects["engine.ability.Ability"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.ability.Ability"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("enable_abilities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.ability.Ability"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.ability.Ability"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("disable_abilities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.modifier.Modifier"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.modifier.Modifier"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("enable_modifiers", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.modifier.Modifier"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.modifier.Modifier"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("disable_modifiers", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.transform_pool.TransformPool"])
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.transform_pool.TransformPool"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("transform_pool", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
@@ -3684,22 +3684,22 @@ def _insert_members(api_objects):
     # engine.aux.storage.Container
     api_object = api_objects["engine.aux.storage.Container"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("allowed_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.storage.StorageElementDefinition"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.storage.StorageElementDefinition"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("storage_element_defs", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("slots", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.progress.type.CarryProgress"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.progress.type.CarryProgress"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("carry_progress", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3711,8 +3711,8 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     member = NyanMember("capacity", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.progress.type.CarryProgress"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.progress.type.CarryProgress"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("carry_progress", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3730,12 +3730,12 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     member = NyanMember("elements_per_slot", N_INT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.storage.StorageElementDefinition"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.storage.StorageElementDefinition"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("conflicts", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.state_machine.StateChanger"])
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.state_machine.StateChanger"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("state_change", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
@@ -3755,8 +3755,8 @@ def _insert_members(api_objects):
     # engine.aux.tech.Tech
     api_object = api_objects["engine.aux.tech.Tech"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.tech_type.TechType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.tech_type.TechType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.aux.translated.type.TranslatedString"])
@@ -3768,16 +3768,16 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.translated.type.TranslatedMarkupFile"])
     member = NyanMember("long_description", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.patch.Patch"])
-    member_type = NyanMemberType(MemberType.ORDEREDSET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.patch.Patch"])
+    member_type = NyanMemberType(MemberType.ORDEREDSET, (elem_type,))
     member = NyanMember("updates", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.terrain.Terrain
     api_object = api_objects["engine.aux.terrain.Terrain"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.terrain_type.TerrainType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.terrain_type.TerrainType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.aux.translated.type.TranslatedString"])
@@ -3789,8 +3789,8 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.sound.Sound"])
     member = NyanMember("sound", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.terrain.TerrainAmbient"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.terrain.TerrainAmbient"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("ambience", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3819,8 +3819,8 @@ def _insert_members(api_objects):
     # engine.aux.trade_route.type.AoE1TradeRoute
     api_object = api_objects["engine.aux.trade_route.type.AoE1TradeRoute"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.resource.Resource"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.resource.Resource"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("exchange_resources", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("trade_amount", N_INT, None, None, 0, None, False)
@@ -3829,32 +3829,32 @@ def _insert_members(api_objects):
     # engine.aux.translated.type.TranslatedMarkupFile
     api_object = api_objects["engine.aux.translated.type.TranslatedMarkupFile"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.language.LanguageMarkupPair"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.language.LanguageMarkupPair"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("translations", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.translated.type.TranslatedSound
     api_object = api_objects["engine.aux.translated.type.TranslatedSound"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.language.LanguageSoundPair"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.language.LanguageSoundPair"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("translations", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.translated.type.TranslatedString
     api_object = api_objects["engine.aux.translated.type.TranslatedString"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.language.LanguageTextPair"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.language.LanguageTextPair"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("translations", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.variant.Variant
     api_object = api_objects["engine.aux.variant.Variant"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.patch.Patch"])
-    member_type = NyanMemberType(MemberType.ORDEREDSET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.patch.Patch"])
+    member_type = NyanMemberType(MemberType.ORDEREDSET, (elem_type,))
     member = NyanMember("changes", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("priority", N_INT, None, None, 0, None, False)
@@ -3863,29 +3863,37 @@ def _insert_members(api_objects):
     # engine.aux.variant.type.AdjacentTilesVariant
     api_object = api_objects["engine.aux.variant.type.AdjacentTilesVariant"]
 
-    member_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member = NyanMember("north", member_type, None, None, 0, None, True)
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
+    member = NyanMember("north", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member = NyanMember("north_east", member_type, None, None, 0, None, True)
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
+    member = NyanMember("north_east", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member = NyanMember("east", member_type, None, None, 0, None, True)
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
+    member = NyanMember("east", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member = NyanMember("south_east", member_type, None, None, 0, None, True)
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
+    member = NyanMember("south_east", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member = NyanMember("south", member_type, None, None, 0, None, True)
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
+    member = NyanMember("south", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member = NyanMember("south_west", member_type, None, None, 0, None, True)
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
+    member = NyanMember("south_west", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member = NyanMember("west", member_type, None, None, 0, None, True)
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
+    member = NyanMember("west", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member = NyanMember("north_west", member_type, None, None, 0, None, True)
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
+    member = NyanMember("north_west", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.aux.variant.type.RandomVariant
@@ -3907,21 +3915,21 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.attribute_change_type.AttributeChangeType"])
     member = NyanMember("type", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeRate"])
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeRate"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("min_change_rate", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeRate"])
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeRate"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("max_change_rate", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
-    member_type = api_objects["engine.aux.attribute.AttributeRate"]
+    member_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeRate"])
     member = NyanMember("change_rate", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.attribute.ProtectingAttribute"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.attribute.ProtectingAttribute"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("ignore_protection", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3931,8 +3939,8 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.lure_type.LureType"])
     member = NyanMember("type", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("destination", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("min_distance_to_destination", N_INT, None, None, 0, None, False)
@@ -3946,8 +3954,8 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     member = NyanMember("total_change_time", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.attribute.ProtectingAttribute"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.attribute.ProtectingAttribute"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("ignore_protection", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -3966,16 +3974,20 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.convert_type.ConvertType"])
     member = NyanMember("type", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("min_chance_success", MemberType.FLOAT, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0, None, True)
+    elem_type = N_FLOAT
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
+    member = NyanMember("min_chance_success", member_type, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
-    member = NyanMember("max_chance_success", MemberType.FLOAT, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0, None, True)
+    elem_type = N_FLOAT
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
+    member = NyanMember("max_chance_success", member_type, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("chance_success", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.cost.Cost"])
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.cost.Cost"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("cost_fail", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
@@ -3994,21 +4006,21 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.attribute_change_type.AttributeChangeType"])
     member = NyanMember("type", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeAmount"])
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeAmount"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("min_change_value", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeAmount"])
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeAmount"])
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("max_change_value", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.aux.attribute.AttributeAmount"])
     member = NyanMember("change_value", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.attribute.ProtectingAttribute"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.attribute.ProtectingAttribute"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("ignore_protection", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -4025,8 +4037,8 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.container_type.SendToContainerType"])
     member = NyanMember("type", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("storages", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -4049,8 +4061,8 @@ def _insert_members(api_objects):
     # engine.effect.specialization.DiplomaticEffect
     api_object = api_objects["engine.effect.specialization.DiplomaticEffect"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.diplomatic_stance.DiplomaticStance"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.diplomatic_stance.DiplomaticStance"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("stances", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -4121,8 +4133,8 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.resource_spot.ResourceSpot"])
     member = NyanMember("resource_spot", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("harvest_conditions", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -4134,8 +4146,8 @@ def _insert_members(api_objects):
     api_object.add_member(member)
     member = NyanMember("search_range", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("ignore_containers", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -4162,8 +4174,8 @@ def _insert_members(api_objects):
     # engine.modifier.specialization.ScopeModifier
     api_object = api_objects["engine.modifier.specialization.ScopeModifier"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.diplomatic_stance.DiplomaticStance"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.diplomatic_stance.DiplomaticStance"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("diplomatic_stances", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -4182,8 +4194,8 @@ def _insert_members(api_objects):
     # engine.modifier.multiplier.effect.flat_attribute_change.type.ElevationDifferenceHigh
     api_object = api_objects["engine.modifier.multiplier.effect.flat_attribute_change.type.ElevationDifferenceHigh"]
 
-    set_type = N_FLOAT
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = N_FLOAT
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
@@ -4191,8 +4203,8 @@ def _insert_members(api_objects):
     # engine.modifier.multiplier.effect.flat_attribute_change.type.ElevationDifferenceLow
     api_object = api_objects["engine.modifier.multiplier.effect.flat_attribute_change.type.ElevationDifferenceLow"]
 
-    set_type = N_FLOAT
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = N_FLOAT
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
@@ -4200,12 +4212,12 @@ def _insert_members(api_objects):
     # engine.modifier.multiplier.effect.flat_attribute_change.type.Flyover
     api_object = api_objects["engine.modifier.multiplier.effect.flat_attribute_change.type.Flyover"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("flyover_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member = NyanMember("relative_angle", N_FLOAT, None, None, 0, None, False)
@@ -4221,8 +4233,8 @@ def _insert_members(api_objects):
     # engine.modifier.multiplier.resistance.flat_attribute_change.type.ElevationDifferenceHigh
     api_object = api_objects["engine.modifier.multiplier.resistance.flat_attribute_change.type.ElevationDifferenceHigh"]
 
-    set_type = N_FLOAT
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = N_FLOAT
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
@@ -4230,8 +4242,8 @@ def _insert_members(api_objects):
     # engine.modifier.multiplier.resistance.flat_attribute_change.type.ElevationDifferenceLow
     api_object = api_objects["engine.modifier.multiplier.resistance.flat_attribute_change.type.ElevationDifferenceLow"]
 
-    set_type = N_FLOAT
-    member_type = NyanMemberType(MemberType.OPTIONAL, (set_type,))
+    elem_type = N_FLOAT
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0, None, False)
     api_object.add_member(member)
@@ -4260,32 +4272,32 @@ def _insert_members(api_objects):
     # engine.modifier.multiplier.type.CreationAttributeCost
     api_object = api_objects["engine.modifier.multiplier.type.CreationAttributeCost"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.attribute.Attribute"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.attribute.Attribute"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("attributes", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.create.CreatableGameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.create.CreatableGameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("creatables", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.modifier.multiplier.type.CreationResourceCost
     api_object = api_objects["engine.modifier.multiplier.type.CreationResourceCost"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.resource.Resource"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.resource.Resource"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("resources", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.create.CreatableGameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.create.CreatableGameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("creatables", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.modifier.multiplier.type.CreationTime
     api_object = api_objects["engine.modifier.multiplier.type.CreationTime"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.create.CreatableGameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.create.CreatableGameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("creatables", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -4306,32 +4318,32 @@ def _insert_members(api_objects):
     # engine.modifier.multiplier.type.ResearchAttributeCost
     api_object = api_objects["engine.modifier.multiplier.type.ResearchAttributeCost"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.attribute.Attribute"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.attribute.Attribute"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("attributes", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.research.ResearchableTech"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.research.ResearchableTech"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("researchables", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.modifier.multiplier.type.ResearchResourceCost
     api_object = api_objects["engine.modifier.multiplier.type.ResearchResourceCost"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.resource.Resource"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.resource.Resource"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("resources", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.research.ResearchableTech"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.research.ResearchableTech"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("researchables", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.modifier.multiplier.type.ResearchTime
     api_object = api_objects["engine.modifier.multiplier.type.ResearchTime"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.research.ResearchableTech"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.research.ResearchableTech"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("researchables", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -4345,16 +4357,16 @@ def _insert_members(api_objects):
     # engine.modifier.relative_projectile_amount.AoE2ProjectileAmount
     api_object = api_objects["engine.modifier.relative_projectile_amount.AoE2ProjectileAmount"]
 
-    set_type = NyanMemberType(api_objects["engine.ability.type.ApplyDiscreteEffect"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.ability.type.ApplyDiscreteEffect"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("provider_abilities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.ability.type.ApplyDiscreteEffect"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.ability.type.ApplyDiscreteEffect"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("receiver_abilities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.attribute_change_type.AttributeChangeType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.attribute_change_type.AttributeChangeType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("change_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -4367,8 +4379,8 @@ def _insert_members(api_objects):
     # engine.modifier.type.ContinuousResource
     api_object = api_objects["engine.modifier.type.ContinuousResource"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.resource.ResourceRate"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.resource.ResourceRate"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("rates", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -4378,16 +4390,16 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.progress_status.ProgressStatus"])
     member = NyanMember("progress_status", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.resource.Resource"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.resource.Resource"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("resources", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("affected_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -4401,8 +4413,8 @@ def _insert_members(api_objects):
     # engine.modifier.type.InContainerContinuousEffect
     api_object = api_objects["engine.modifier.type.InContainerContinuousEffect"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("containers", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.ability.type.ApplyContinuousEffect"])
@@ -4412,8 +4424,8 @@ def _insert_members(api_objects):
     # engine.modifier.type.InContainerDiscreteEffect
     api_object = api_objects["engine.modifier.type.InContainerDiscreteEffect"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.storage.Container"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("containers", member_type, None, None, 0, None, False)
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.ability.type.ApplyDiscreteEffect"])
@@ -4426,16 +4438,16 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(api_objects["engine.aux.tech.Tech"])
     member = NyanMember("tech", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.logic.LogicElement"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("condition", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
     # engine.modifier.type.RefundOnCondition
     api_object = api_objects["engine.modifier.type.RefundOnCondition"]
 
-    set_type = NyanMemberType(api_objects["engine.aux.resource.ResourceAmount"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.resource.ResourceAmount"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("refund_amount", member_type, None, None, 0, None, False)
     api_object.add_member(member)
 
@@ -4444,11 +4456,11 @@ def _insert_members(api_objects):
 
     member = NyanMember("line_of_sight", N_FLOAT, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity_type.GameEntityType"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("affected_types", member_type, None, None, 0, None, False)
     api_object.add_member(member)
-    set_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (set_type,))
+    elem_type = NyanMemberType(api_objects["engine.aux.game_entity.GameEntity"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0, None, False)
     api_object.add_member(member)
