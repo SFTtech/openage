@@ -758,11 +758,11 @@ class NyanMemberType:
         """
         Check if a value is compatible with the member type.
         """
-        if self.is_modifier():
-            # Member values can only be NYAN_NONE if the member is optional
-            if self.member_type is MemberType.OPTIONAL and value is MemberSpecialValue.NYAN_NONE:
-                return True
+        # Member values can only be NYAN_NONE if the member is optional
+        if value is MemberSpecialValue.NYAN_NONE:
+            return self.member_type is MemberType.OPTIONAL
 
+        elif self.is_modifier():
             return self.element_types[0].accepts_value(value)
 
         # inf is only used for ints and floats
