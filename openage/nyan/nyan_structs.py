@@ -168,14 +168,13 @@ class NyanObject:
 
     def get_members(self):
         """
-        Returns all NyanMembers of the object, excluding members from nested objects.
+        Returns all NyanMembers of the object, including inherited members.
         """
         return self._members.union(self._inherited_members)
 
     def get_member_by_name(self, member_name, origin=None):
         """
-        Returns the NyanMember with the specified name or
-        None if there is no member with that name.
+        Returns the NyanMember with the specified name.
         """
         if origin and origin is not self:
             for inherited_member in self._inherited_members:
@@ -191,6 +190,17 @@ class NyanObject:
                     return member
 
         raise Exception(f"{self} has no member '{member_name}'")
+
+    def get_uninitialized_members(self):
+        """
+        Returns all uninitialized NyanMembers of the object.
+        """
+        uninit_members = []
+        for member in self.get_members():
+            if not member.is_initialized():
+                uninit_members.append(member)
+
+        return uninit_members
 
     def get_name(self):
         """
@@ -227,14 +237,9 @@ class NyanObject:
 
     def is_abstract(self):
         """
-        Returns True if unique or inherited members were
-        not initialized.
+        Returns True if any unique or inherited members are uninitialized.
         """
-        for member in self.get_members():
-            if not member.is_initialized():
-                return True
-
-        return False
+        return len(self.get_uninitialized_members()) > 0
 
     def is_patch(self):
         """
@@ -584,7 +589,7 @@ class NyanMemberType:
     Superclass for nyan member types.
     """
 
-    __slots__ = ('member_type', 'element_types')
+    __slots__ = ('_member_type', '_element_types')
 
     def __init__(self, member_type, element_types=None):
         """
@@ -592,14 +597,14 @@ class NyanMemberType:
         checks, for your convenience.
         """
         if isinstance(member_type, NyanObject):
-            self.member_type = member_type
+            self._member_type = member_type
 
         else:
-            self.member_type = MemberType(member_type)
+            self._member_type = MemberType(member_type)
 
-        self.element_types = None
+        self._element_types = None
         if element_types:
-            self.element_types = tuple(element_types)
+            self._element_types = tuple(element_types)
 
         # check for errors in the initilization
         self._sanity_check()
@@ -608,39 +613,39 @@ class NyanMemberType:
         """
         Returns the member type.
         """
-        return self.member_type
+        return self._member_type
 
     def get_real_type(self):
         """
         Returns the member type without wrapping modifiers.
         """
         if self.is_modifier():
-            return self.element_types[0].get_type()
+            return self._element_types[0].get_type()
 
-        return self.member_type
+        return self._member_type
 
     def get_element_types(self):
         """
         Returns the element types.
         """
-        return self.element_types
+        return self._element_types
 
     def is_primitive(self):
         """
         Returns True if the member type is a single value.
         """
-        return self.member_type in (MemberType.INT,
-                                    MemberType.FLOAT,
-                                    MemberType.TEXT,
-                                    MemberType.FILE,
-                                    MemberType.BOOLEAN)
+        return self._member_type in (MemberType.INT,
+                                     MemberType.FLOAT,
+                                     MemberType.TEXT,
+                                     MemberType.FILE,
+                                     MemberType.BOOLEAN)
 
     def is_real_primitive(self):
         """
         Returns True if the member type is a primitive wrapped in a modifier.
         """
         if self.is_modifier():
-            return self.element_types[0].is_primitive()
+            return self._element_types[0].is_primitive()
 
         return self.is_primitive()
 
@@ -648,16 +653,16 @@ class NyanMemberType:
         """
         Returns True if the member type is a collection.
         """
-        return self.member_type in (MemberType.SET,
-                                    MemberType.ORDEREDSET,
-                                    MemberType.DICT)
+        return self._member_type in (MemberType.SET,
+                                     MemberType.ORDEREDSET,
+                                     MemberType.DICT)
 
     def is_real_complex(self):
         """
         Returns True if the member type is a collection wrapped in a modifier.
         """
         if self.is_modifier():
-            return self.element_types[0].is_complex()
+            return self._element_types[0].is_complex()
 
         return self.is_complex()
 
@@ -665,14 +670,14 @@ class NyanMemberType:
         """
         Returns True if the member type is an object.
         """
-        return isinstance(self.member_type, NyanObject)
+        return isinstance(self._member_type, NyanObject)
 
     def is_real_object(self):
         """
         Returns True if the member type is an object wrapped in a modifier.
         """
         if self.is_modifier():
-            return self.element_types[0].is_object()
+            return self._element_types[0].is_object()
 
         return self.is_object()
 
@@ -680,9 +685,9 @@ class NyanMemberType:
         """
         Returns True if the member type is a modifier.
         """
-        return self.member_type in (MemberType.ABSTRACT,
-                                    MemberType.CHILDREN,
-                                    MemberType.OPTIONAL)
+        return self._member_type in (MemberType.ABSTRACT,
+                                     MemberType.CHILDREN,
+                                     MemberType.OPTIONAL)
 
     def is_composite(self):
         """
@@ -695,9 +700,9 @@ class NyanMemberType:
         Check if an operator is compatible with the member type.
         """
         if self.is_modifier():
-            return self.element_types[0].accepts_op(operator)
+            return self._element_types[0].accepts_op(operator)
 
-        if self.member_type in (MemberType.INT, MemberType.FLOAT)\
+        if self._member_type in (MemberType.INT, MemberType.FLOAT)\
             and operator not in (MemberOperator.ASSIGN,
                                  MemberOperator.ADD,
                                  MemberOperator.SUBTRACT,
@@ -705,30 +710,22 @@ class NyanMemberType:
                                  MemberOperator.DIVIDE):
             return False
 
-        elif self.member_type is MemberType.TEXT\
+        elif self._member_type is MemberType.TEXT\
                 and operator not in (MemberOperator.ASSIGN,
                                      MemberOperator.ADD):
             return False
 
-        elif self.member_type is MemberType.FILE\
+        elif self._member_type is MemberType.FILE\
                 and operator is not MemberOperator.ASSIGN:
             return False
 
-        elif self.member_type is MemberType.BOOLEAN\
+        elif self._member_type is MemberType.BOOLEAN\
                 and operator not in (MemberOperator.ASSIGN,
                                      MemberOperator.AND,
                                      MemberOperator.OR):
             return False
 
-        elif self.member_type is MemberType.SET\
-                and operator not in (MemberOperator.ASSIGN,
-                                     MemberOperator.ADD,
-                                     MemberOperator.SUBTRACT,
-                                     MemberOperator.AND,
-                                     MemberOperator.OR):
-            return False
-
-        elif self.member_type is MemberType.ORDEREDSET\
+        elif self._member_type is MemberType.SET\
                 and operator not in (MemberOperator.ASSIGN,
                                      MemberOperator.ADD,
                                      MemberOperator.SUBTRACT,
@@ -736,7 +733,15 @@ class NyanMemberType:
                                      MemberOperator.OR):
             return False
 
-        elif self.member_type is MemberType.DICT\
+        elif self._member_type is MemberType.ORDEREDSET\
+                and operator not in (MemberOperator.ASSIGN,
+                                     MemberOperator.ADD,
+                                     MemberOperator.SUBTRACT,
+                                     MemberOperator.AND,
+                                     MemberOperator.OR):
+            return False
+
+        elif self._member_type is MemberType.DICT\
                 and operator not in (MemberOperator.ASSIGN,
                                      MemberOperator.ADD,
                                      MemberOperator.SUBTRACT,
@@ -752,21 +757,21 @@ class NyanMemberType:
         """
         # Member values can only be NYAN_NONE if the member is optional
         if value is MemberSpecialValue.NYAN_NONE:
-            return self.member_type is MemberType.OPTIONAL
+            return self._member_type is MemberType.OPTIONAL
 
         elif self.is_modifier():
-            return self.element_types[0].accepts_value(value)
+            return self._element_types[0].accepts_value(value)
 
         # inf is only used for ints and floats
         if value is MemberSpecialValue.NYAN_INF and\
-                self.member_type not in (MemberType.INT, MemberType.FLOAT):
+                self._member_type not in (MemberType.INT, MemberType.FLOAT):
             return False
 
         # Values that are nyan objects must be the member type
         # or the children of the member type
         if self.is_object():
-            if not (value is self.member_type or
-                    value.has_ancestor(self.member_type)):
+            if not (value is self._member_type or
+                    value.has_ancestor(self._member_type)):
                 return False
 
         return True
@@ -778,17 +783,17 @@ class NyanMemberType:
         if self.is_composite():
             # if the member type is a composite, then the element types need
             # to be initialized
-            if not self.element_types:
+            if not self._element_types:
                 raise Exception(f"{repr(self)}: element types are required for composite types")
 
             # element types cannot be complex
-            for elem_type in self.element_types:
+            for elem_type in self._element_types:
                 if elem_type.is_complex():
                     raise Exception(f"{repr(self)}: element types cannot be complex but contains {elem_type}")
 
         else:
             # if the member is not a composite, the set type should be None
-            if self.element_types:
+            if self._element_types:
                 raise Exception(f"{repr(self)}: member type has element types but is not a composite")
 
     def dump(self, import_tree=None, namespace=None):
@@ -796,28 +801,28 @@ class NyanMemberType:
         Returns the nyan string representation of the member type.
         """
         if self.is_primitive():
-            return self.member_type.value
+            return self._member_type.value
 
         elif self.is_object():
             if import_tree:
                 sfqon = ".".join(import_tree.get_alias_fqon(
-                    self.member_type.get_fqon(),
+                    self._member_type.get_fqon(),
                     namespace
                 ))
 
             else:
-                sfqon = ".".join(self.member_type.get_fqon())
+                sfqon = ".".join(self._member_type.get_fqon())
 
             return sfqon
 
         # Composite types
         return (
-            f"{self.member_type.value}("
-            f"{', '.join(elem_type.dump() for elem_type in self.element_types)})"
+            f"{self._member_type.value}("
+            f"{', '.join(elem_type.dump() for elem_type in self._element_types)})"
         )
 
     def __repr__(self):
-        return f"NyanMemberType<{self.member_type}: {self.element_types}>"
+        return f"NyanMemberType<{self._member_type}: {self._element_types}>"
 
 
 class NyanMember:
