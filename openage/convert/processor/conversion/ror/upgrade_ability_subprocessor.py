@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements
 # pylint: disable=too-few-public-methods,too-many-branches
@@ -122,7 +122,7 @@ class RoRUpgradeAbilitySubprocessor:
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
                                                                animations_set,
-                                                               "engine.ability.specialization.AnimatedAbility",
+                                                               "engine.ability.property.type.Animated",
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_comm_sound, NoDiffMember):
@@ -140,7 +140,7 @@ class RoRUpgradeAbilitySubprocessor:
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
                                                                sounds_set,
-                                                               "engine.ability.specialization.CommandSoundAbility",
+                                                               "engine.ability.property.type.CommandSound",
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_min_range, NoDiffMember):

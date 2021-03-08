@@ -99,7 +99,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(health_raw_api_object)
         pregen_nyan_objects.update({health_ref_in_modpack: health_raw_api_object})
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         health_name_ref_in_modpack = "aux.attribute.types.Health.HealthName"
         health_name_value = RawAPIObject(health_name_ref_in_modpack, "HealthName",
                                          api_objects, attributes_location)
@@ -110,7 +110,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(health_name_value)
         pregen_nyan_objects.update({health_name_ref_in_modpack: health_name_value})
 
-        abbrv_value_parent = "engine.aux.translated.type.TranslatedString"
+        abbrv_value_parent = "engine.aux.language.translated.type.TranslatedString"
         health_abbrv_ref_in_modpack = "aux.attribute.types.Health.HealthAbbreviation"
         health_abbrv_value = RawAPIObject(health_abbrv_ref_in_modpack, "HealthAbbreviation",
                                           api_objects, attributes_location)
@@ -143,7 +143,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(faith_raw_api_object)
         pregen_nyan_objects.update({faith_ref_in_modpack: faith_raw_api_object})
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         faith_name_ref_in_modpack = "aux.attribute.types.Faith.FaithName"
         faith_name_value = RawAPIObject(faith_name_ref_in_modpack, "FaithName",
                                         api_objects, attributes_location)
@@ -154,7 +154,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(faith_name_value)
         pregen_nyan_objects.update({faith_name_ref_in_modpack: faith_name_value})
 
-        abbrv_value_parent = "engine.aux.translated.type.TranslatedString"
+        abbrv_value_parent = "engine.aux.language.translated.type.TranslatedString"
         faith_abbrv_ref_in_modpack = "aux.attribute.types.Faith.FaithAbbreviation"
         faith_abbrv_value = RawAPIObject(faith_abbrv_ref_in_modpack, "FaithAbbreviation",
                                          api_objects, attributes_location)
@@ -580,7 +580,7 @@ class AoCPregenSubprocessor:
 
         # Diplomatic stances
         diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Any"]]
-        exchange_pool_raw_api_object.add_raw_member("diplomatic_stances",
+        exchange_pool_raw_api_object.add_raw_member("stances",
                                                     diplomatic_stances,
                                                     exchange_pool_parent)
 
@@ -600,7 +600,7 @@ class AoCPregenSubprocessor:
 
         # Diplomatic stances
         diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Any"]]
-        exchange_pool_raw_api_object.add_raw_member("diplomatic_stances",
+        exchange_pool_raw_api_object.add_raw_member("stances",
                                                     diplomatic_stances,
                                                     exchange_pool_parent)
 
@@ -620,7 +620,7 @@ class AoCPregenSubprocessor:
 
         # Diplomatic stances
         diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Any"]]
-        exchange_pool_raw_api_object.add_raw_member("diplomatic_stances",
+        exchange_pool_raw_api_object.add_raw_member("stances",
                                                     diplomatic_stances,
                                                     exchange_pool_parent)
 
@@ -1472,7 +1472,7 @@ class AoCPregenSubprocessor:
                                            MemberSpecialValue.NYAN_INF,
                                            resource_parent)
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         food_name_ref_in_modpack = "aux.attribute.types.Food.FoodName"
         food_name_value = RawAPIObject(food_name_ref_in_modpack, "FoodName",
                                        api_objects, resources_location)
@@ -1506,7 +1506,7 @@ class AoCPregenSubprocessor:
                                            MemberSpecialValue.NYAN_INF,
                                            resource_parent)
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         wood_name_ref_in_modpack = "aux.attribute.types.Wood.WoodName"
         wood_name_value = RawAPIObject(wood_name_ref_in_modpack, "WoodName",
                                        api_objects, resources_location)
@@ -1540,7 +1540,7 @@ class AoCPregenSubprocessor:
                                             MemberSpecialValue.NYAN_INF,
                                             resource_parent)
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         stone_name_ref_in_modpack = "aux.attribute.types.Stone.StoneName"
         stone_name_value = RawAPIObject(stone_name_ref_in_modpack, "StoneName",
                                         api_objects, resources_location)
@@ -1574,7 +1574,7 @@ class AoCPregenSubprocessor:
                                            MemberSpecialValue.NYAN_INF,
                                            resource_parent)
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         gold_name_ref_in_modpack = "aux.attribute.types.Gold.GoldName"
         gold_name_value = RawAPIObject(gold_name_ref_in_modpack, "GoldName",
                                        api_objects, resources_location)
@@ -1606,7 +1606,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(pop_raw_api_object)
         pregen_nyan_objects.update({pop_ref_in_modpack: pop_raw_api_object})
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         pop_name_ref_in_modpack = "aux.attribute.types.PopulationSpace.PopulationSpaceName"
         pop_name_value = RawAPIObject(pop_name_ref_in_modpack, "PopulationSpaceName",
                                       api_objects, resources_location)
@@ -1704,7 +1704,7 @@ class AoCPregenSubprocessor:
         scope_raw_api_object.add_raw_parent(self_scope_parent)
 
         scope_diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Self"]]
-        scope_raw_api_object.add_raw_member("diplomatic_stances",
+        scope_raw_api_object.add_raw_member("stances",
                                             scope_diplomatic_stances,
                                             scope_parent)
 
@@ -1765,7 +1765,7 @@ class AoCPregenSubprocessor:
         scope_raw_api_object.add_raw_parent(self_scope_parent)
 
         scope_diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Self"]]
-        scope_raw_api_object.add_raw_member("diplomatic_stances",
+        scope_raw_api_object.add_raw_member("stances",
                                             scope_diplomatic_stances,
                                             scope_parent)
 

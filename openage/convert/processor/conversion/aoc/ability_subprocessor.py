@@ -101,7 +101,7 @@ class AoCAbilitySubprocessor:
 
         if ability_animation_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
@@ -112,7 +112,7 @@ class AoCAbilitySubprocessor:
                                                                             % command_lookup_dict[command_id][1])
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+                                                  "engine.ability.property.type.Animated")
 
             # Create custom civ graphics
             handled_graphics_set_ids = set()
@@ -154,7 +154,7 @@ class AoCAbilitySubprocessor:
         ability_comm_sound_id = current_unit["command_sound_id"].get_value()
         if ability_comm_sound_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
 
             sounds_set = []
             sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
@@ -164,7 +164,7 @@ class AoCAbilitySubprocessor:
                                                                     "command_")
             sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
-                                                  "engine.ability.specialization.CommandSoundAbility")
+                                                  "engine.ability.property.type.CommandSound")
 
         if ranged:
             # Min range
@@ -295,7 +295,7 @@ class AoCAbilitySubprocessor:
 
         if ability_animation_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
@@ -306,7 +306,7 @@ class AoCAbilitySubprocessor:
                                                                             % command_lookup_dict[command_id][1])
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+                                                  "engine.ability.property.type.Animated")
 
             # Create custom civ graphics
             handled_graphics_set_ids = set()
@@ -353,7 +353,7 @@ class AoCAbilitySubprocessor:
 
         if ability_comm_sound_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
 
             sounds_set = []
 
@@ -370,7 +370,7 @@ class AoCAbilitySubprocessor:
                                                                     "command_")
             sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
-                                                  "engine.ability.specialization.CommandSoundAbility")
+                                                  "engine.ability.property.type.CommandSound")
 
         if ranged:
             # Min range
@@ -531,7 +531,7 @@ class AoCAbilitySubprocessor:
 
             progress_animation_id = damage_graphic_member["graphic_id"].get_value()
             if progress_animation_id > -1:
-                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimationOverlayProgress")
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.AnimationOverlay")
 
                 # Animation
                 animations_set = []
@@ -544,7 +544,7 @@ class AoCAbilitySubprocessor:
                 animations_set.append(animation_forward_ref)
                 progress_raw_api_object.add_raw_member("overlays",
                                                        animations_set,
-                                                       "engine.aux.progress.specialization.AnimationOverlayProgress")
+                                                       "engine.aux.progress.property.type.AnimationOverlay")
 
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -672,7 +672,7 @@ class AoCAbilitySubprocessor:
                                                    terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
             # State change
             # =====================================================================================
@@ -773,7 +773,7 @@ class AoCAbilitySubprocessor:
             init_state_forward_ref = ForwardRef(line, init_state_name)
             progress_raw_api_object.add_raw_member("state_change",
                                                    init_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -804,7 +804,7 @@ class AoCAbilitySubprocessor:
                                                    terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
             # State change
             # =====================================================================================
@@ -896,7 +896,7 @@ class AoCAbilitySubprocessor:
             construct_state_forward_ref = ForwardRef(line, construct_state_name)
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -928,10 +928,10 @@ class AoCAbilitySubprocessor:
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
             # State change
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -963,10 +963,10 @@ class AoCAbilitySubprocessor:
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
             # State change
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -992,7 +992,7 @@ class AoCAbilitySubprocessor:
                 # =================================================================================
                 # Idle override
                 # =================================================================================
-                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.Animated")
 
                 overrides = []
                 override_ref = f"{game_entity_name}.Constructable.ConstructionProgress0.IdleOverride"
@@ -1031,9 +1031,9 @@ class AoCAbilitySubprocessor:
                 # =================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
                                                        overrides,
-                                                       "engine.aux.progress.specialization.AnimatedProgress")
+                                                       "engine.aux.progress.property.type.Animated")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
             # State change
             # =====================================================================================
@@ -1134,7 +1134,7 @@ class AoCAbilitySubprocessor:
             init_state_forward_ref = ForwardRef(line, init_state_name)
             progress_raw_api_object.add_raw_member("state_change",
                                                    init_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -1159,7 +1159,7 @@ class AoCAbilitySubprocessor:
                 # =================================================================================
                 # Idle override
                 # =================================================================================
-                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.Animated")
 
                 overrides = []
                 override_ref = f"{game_entity_name}.Constructable.ConstructionProgress25.IdleOverride"
@@ -1198,9 +1198,9 @@ class AoCAbilitySubprocessor:
                 # =================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
                                                        overrides,
-                                                       "engine.aux.progress.specialization.AnimatedProgress")
+                                                       "engine.aux.progress.property.type.Animated")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
             # State change
             # =====================================================================================
@@ -1292,7 +1292,7 @@ class AoCAbilitySubprocessor:
             construct_state_forward_ref = ForwardRef(line, construct_state_name)
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -1317,7 +1317,7 @@ class AoCAbilitySubprocessor:
                 # =================================================================================
                 # Idle override
                 # =================================================================================
-                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.Animated")
 
                 overrides = []
                 override_ref = f"{game_entity_name}.Constructable.ConstructionProgress50.IdleOverride"
@@ -1356,13 +1356,13 @@ class AoCAbilitySubprocessor:
                 # =================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
                                                        overrides,
-                                                       "engine.aux.progress.specialization.AnimatedProgress")
+                                                       "engine.aux.progress.property.type.Animated")
 
             # State change
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -1387,7 +1387,7 @@ class AoCAbilitySubprocessor:
                 # =================================================================================
                 # Idle override
                 # =================================================================================
-                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.Animated")
 
                 overrides = []
                 override_ref = f"{game_entity_name}.Constructable.ConstructionProgress75.IdleOverride"
@@ -1426,13 +1426,13 @@ class AoCAbilitySubprocessor:
                 # =================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
                                                        overrides,
-                                                       "engine.aux.progress.specialization.AnimatedProgress")
+                                                       "engine.aux.progress.property.type.Animated")
 
             # State change
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -1457,7 +1457,7 @@ class AoCAbilitySubprocessor:
                 # =================================================================================
                 # Idle override
                 # =================================================================================
-                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.Animated")
 
                 overrides = []
                 override_ref = f"{game_entity_name}.Constructable.ConstructionProgress100.IdleOverride"
@@ -1496,13 +1496,13 @@ class AoCAbilitySubprocessor:
                 # =================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
                                                        overrides,
-                                                       "engine.aux.progress.specialization.AnimatedProgress")
+                                                       "engine.aux.progress.property.type.Animated")
 
             # State change
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -1594,7 +1594,7 @@ class AoCAbilitySubprocessor:
 
         if ability_animation_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
@@ -1604,7 +1604,7 @@ class AoCAbilitySubprocessor:
                                                                             "death_")
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+                                                  "engine.ability.property.type.Animated")
 
             # Create custom civ graphics
             handled_graphics_set_ids = set()
@@ -1779,10 +1779,10 @@ class AoCAbilitySubprocessor:
                                                100.0,
                                                "engine.aux.progress.Progress")
 
-        progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+        progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
         progress_raw_api_object.add_raw_member("state_change",
                                                target_state_forward_ref,
-                                               "engine.aux.progress.specialization.StateChangeProgress")
+                                               "engine.aux.progress.property.type.StateChange")
 
         line.add_raw_api_object(progress_raw_api_object)
         # =====================================================================================
@@ -1825,14 +1825,14 @@ class AoCAbilitySubprocessor:
 
         if ability_animation_id > -1:
             # Use the animation from Death ability
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
             animations_set = []
             animation_ref = f"{game_entity_name}.Death.DeathAnimation"
             animation_forward_ref = ForwardRef(line, animation_ref)
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+                                                  "engine.ability.property.type.Animated")
 
         # Transform time
         # Use the time of the dying graphics
@@ -1905,7 +1905,7 @@ class AoCAbilitySubprocessor:
 
         if ability_animation_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
@@ -1916,7 +1916,7 @@ class AoCAbilitySubprocessor:
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations",
                                                   animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+                                                  "engine.ability.property.type.Animated")
 
             # Create custom civ graphics
             handled_graphics_set_ids = set()
@@ -2636,7 +2636,7 @@ class AoCAbilitySubprocessor:
 
             if ability_animation_id > -1:
                 # Make the ability animated
-                ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+                ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
                 animations_set = []
                 animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
@@ -2647,7 +2647,7 @@ class AoCAbilitySubprocessor:
                                                                                 % gather_lookup_dict[gatherer_unit_id][1])
                 animations_set.append(animation_forward_ref)
                 ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                      "engine.ability.specialization.AnimatedAbility")
+                                                      "engine.ability.property.type.Animated")
 
             # Auto resume
             ability_raw_api_object.add_raw_member("auto_resume",
@@ -2841,14 +2841,14 @@ class AoCAbilitySubprocessor:
                                                    terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
             # State change
             init_state_ref = f"{game_entity_name}.Constructable.InitState"
             init_state_forward_ref = ForwardRef(line, init_state_ref)
             progress_raw_api_object.add_raw_member("state_change",
                                                    init_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -2879,14 +2879,14 @@ class AoCAbilitySubprocessor:
                                                    terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
             # State change
             construct_state_ref = f"{game_entity_name}.Constructable.ConstructState"
             construct_state_forward_ref = ForwardRef(line, construct_state_ref)
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -2916,14 +2916,14 @@ class AoCAbilitySubprocessor:
                                                    terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
             # State change
             construct_state_ref = f"{game_entity_name}.Constructable.ConstructState"
             construct_state_forward_ref = ForwardRef(line, construct_state_ref)
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =======================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -3136,7 +3136,7 @@ class AoCAbilitySubprocessor:
 
         if ability_animation_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
@@ -3147,7 +3147,7 @@ class AoCAbilitySubprocessor:
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations",
                                                   animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+                                                  "engine.ability.property.type.Animated")
 
             # Create custom civ graphics
             handled_graphics_set_ids = set()
@@ -3327,10 +3327,10 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.LineOfSight")
 
         # Diplomacy settings
-        ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+        ability_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
         diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
         ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
-                                              "engine.ability.specialization.DiplomaticAbility")
+                                              "engine.ability.property.type.Diplomatic")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -3367,7 +3367,7 @@ class AoCAbilitySubprocessor:
         ability_animation_id = current_unit["move_graphics"].get_value()
         if ability_animation_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
             animations_set = []
 
@@ -3381,7 +3381,7 @@ class AoCAbilitySubprocessor:
                                                                             animation_filename_prefix)
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+                                                  "engine.ability.property.type.Animated")
 
             # Create custom civ graphics
             handled_graphics_set_ids = set()
@@ -3422,7 +3422,7 @@ class AoCAbilitySubprocessor:
         ability_comm_sound_id = current_unit["command_sound_id"].get_value()
         if ability_comm_sound_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
 
             sounds_set = []
 
@@ -3435,7 +3435,7 @@ class AoCAbilitySubprocessor:
                                                                     "command_")
             sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
-                                                  "engine.ability.specialization.CommandSoundAbility")
+                                                  "engine.ability.property.type.CommandSound")
 
         # Speed
         speed = current_unit["speed"].get_value()
@@ -3467,11 +3467,11 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("modes", move_modes, "engine.ability.type.Move")
 
         # Diplomacy settings
-        ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+        ability_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
         diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
         ability_raw_api_object.add_raw_member("stances",
                                               diplomatic_stances,
-                                              "engine.ability.specialization.DiplomaticAbility")
+                                              "engine.ability.property.type.Diplomatic")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -3520,7 +3520,7 @@ class AoCAbilitySubprocessor:
         ability_animation_id = current_unit["move_graphics"].get_value()
         if ability_animation_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
             animations_set = []
 
@@ -3534,7 +3534,7 @@ class AoCAbilitySubprocessor:
                                                                             animation_filename_prefix)
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+                                                  "engine.ability.property.type.Animated")
 
         # Speed
         speed = current_unit["speed"].get_value()
@@ -3581,7 +3581,7 @@ class AoCAbilitySubprocessor:
         name_raw_api_object = RawAPIObject(name_ref,
                                            f"{game_entity_name}Name",
                                            dataset.nyan_api_objects)
-        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_raw_api_object.add_raw_parent("engine.aux.language.translated.type.TranslatedString")
         name_location = ForwardRef(line, ability_ref)
         name_raw_api_object.set_location(name_location)
 
@@ -3593,7 +3593,7 @@ class AoCAbilitySubprocessor:
                                                                       % (game_entity_name))
         name_raw_api_object.add_raw_member("translations",
                                            translations,
-                                           "engine.aux.translated.type.TranslatedString")
+                                           "engine.aux.language.translated.type.TranslatedString")
 
         name_forward_ref = ForwardRef(line, name_ref)
         ability_raw_api_object.add_raw_member("name", name_forward_ref, "engine.ability.type.Named")
@@ -3604,13 +3604,13 @@ class AoCAbilitySubprocessor:
         description_raw_api_object = RawAPIObject(description_ref,
                                                   f"{game_entity_name}Description",
                                                   dataset.nyan_api_objects)
-        description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        description_raw_api_object.add_raw_parent("engine.aux.language.translated.type.TranslatedMarkupFile")
         description_location = ForwardRef(line, ability_ref)
         description_raw_api_object.set_location(description_location)
 
         description_raw_api_object.add_raw_member("translations",
                                                   [],
-                                                  "engine.aux.translated.type.TranslatedMarkupFile")
+                                                  "engine.aux.language.translated.type.TranslatedMarkupFile")
 
         description_forward_ref = ForwardRef(line, description_ref)
         ability_raw_api_object.add_raw_member("description",
@@ -3623,13 +3623,13 @@ class AoCAbilitySubprocessor:
         long_description_raw_api_object = RawAPIObject(long_description_ref,
                                                        f"{game_entity_name}LongDescription",
                                                        dataset.nyan_api_objects)
-        long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        long_description_raw_api_object.add_raw_parent("engine.aux.language.translated.type.TranslatedMarkupFile")
         long_description_location = ForwardRef(line, ability_ref)
         long_description_raw_api_object.set_location(long_description_location)
 
         long_description_raw_api_object.add_raw_member("translations",
                                                        [],
-                                                       "engine.aux.translated.type.TranslatedMarkupFile")
+                                                       "engine.aux.language.translated.type.TranslatedMarkupFile")
 
         long_description_forward_ref = ForwardRef(line, long_description_ref)
         ability_raw_api_object.add_raw_member("long_description",
@@ -4228,7 +4228,7 @@ class AoCAbilitySubprocessor:
 
         if ability_animation_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
@@ -4240,7 +4240,7 @@ class AoCAbilitySubprocessor:
 
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+                                                  "engine.ability.property.type.Animated")
 
         # Auto restock
         ability_raw_api_object.add_raw_member("auto_restock",
@@ -4492,7 +4492,7 @@ class AoCAbilitySubprocessor:
 
             # Carry capacity
             carry_capacity = gatherer["resource_capacity"].get_value()
-            container_raw_api_object.add_raw_member("capacity",
+            container_raw_api_object.add_raw_member("max_amount",
                                                     carry_capacity,
                                                     "engine.aux.storage.ResourceContainer")
 
@@ -4518,7 +4518,7 @@ class AoCAbilitySubprocessor:
                                                        100.0,
                                                        "engine.aux.progress.Progress")
 
-                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.Animated")
 
                 overrides = []
                 # ===========================================================================================
@@ -4560,7 +4560,7 @@ class AoCAbilitySubprocessor:
                 # ===========================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
                                                        overrides,
-                                                       "engine.aux.progress.specialization.AnimatedProgress")
+                                                       "engine.aux.progress.property.type.Animated")
 
                 line.add_raw_api_object(progress_raw_api_object)
                 # ===========================================================================================
@@ -4634,7 +4634,7 @@ class AoCAbilitySubprocessor:
 
         # Diplomacy setting (for units)
         if isinstance(line, GenieUnitLineGroup):
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
 
             stances = [
                 dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Enemy"].get_nyan_object(),
@@ -4643,7 +4643,7 @@ class AoCAbilitySubprocessor:
             ]
             ability_raw_api_object.add_raw_member("stances",
                                                   stances,
-                                                  "engine.ability.specialization.DiplomaticAbility")
+                                                  "engine.ability.property.type.Diplomatic")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -4669,7 +4669,7 @@ class AoCAbilitySubprocessor:
         ability_comm_sound_id = current_unit["selection_sound_id"].get_value()
         if ability_comm_sound_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
 
             sounds_set = []
             sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
@@ -4680,7 +4680,7 @@ class AoCAbilitySubprocessor:
             sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds",
                                                   sounds_set,
-                                                  "engine.ability.specialization.CommandSoundAbility")
+                                                  "engine.ability.property.type.CommandSound")
 
         # Selection box
         box_name = f"{game_entity_name}.SelectableSelf.Rectangle"
@@ -4689,14 +4689,14 @@ class AoCAbilitySubprocessor:
         box_location = ForwardRef(line, ability_ref)
         box_raw_api_object.set_location(box_location)
 
-        radius_x = current_unit["selection_shape_x"].get_value()
-        box_raw_api_object.add_raw_member("radius_x",
-                                          radius_x,
+        width = current_unit["selection_shape_x"].get_value()
+        box_raw_api_object.add_raw_member("width",
+                                          width,
                                           "engine.aux.selection_box.type.Rectangle")
 
-        radius_y = current_unit["selection_shape_y"].get_value()
-        box_raw_api_object.add_raw_member("radius_y",
-                                          radius_y,
+        height = current_unit["selection_shape_y"].get_value()
+        box_raw_api_object.add_raw_member("height",
+                                          height,
                                           "engine.aux.selection_box.type.Rectangle")
 
         line.add_raw_api_object(box_raw_api_object)
@@ -4707,12 +4707,12 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Selectable")
 
         # Diplomacy settings
-        ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+        ability_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
 
         stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
         ability_raw_api_object.add_raw_member("stances",
                                               stances,
-                                              "engine.ability.specialization.DiplomaticAbility")
+                                              "engine.ability.property.type.Diplomatic")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -4795,7 +4795,7 @@ class AoCAbilitySubprocessor:
 
         if ability_animation_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
@@ -4807,13 +4807,13 @@ class AoCAbilitySubprocessor:
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations",
                                                   animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+                                                  "engine.ability.property.type.Animated")
 
         # Command Sound
         ability_comm_sound_id = current_unit["command_sound_id"].get_value()
         if ability_comm_sound_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
 
             sounds_set = []
             sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
@@ -4824,7 +4824,7 @@ class AoCAbilitySubprocessor:
             sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds",
                                                   sounds_set,
-                                                  "engine.ability.specialization.CommandSoundAbility")
+                                                  "engine.ability.property.type.CommandSound")
 
         # Projectile
         projectiles = []
@@ -4993,10 +4993,10 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Diplomacy settings
-        ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+        ability_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
         diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
         ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
-                                              "engine.ability.specialization.DiplomaticAbility")
+                                              "engine.ability.property.type.Diplomatic")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -5126,7 +5126,7 @@ class AoCAbilitySubprocessor:
                                                    100.0,
                                                    "engine.aux.progress.Progress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.Animated")
 
             # =====================================================================================
             overrides = []
@@ -5204,9 +5204,9 @@ class AoCAbilitySubprocessor:
             # ===========================================================================================
             progress_raw_api_object.add_raw_member("overrides",
                                                    overrides,
-                                                   "engine.aux.progress.specialization.AnimatedProgress")
+                                                   "engine.aux.progress.property.type.Animated")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
             # State change
             # =====================================================================================
@@ -5258,7 +5258,7 @@ class AoCAbilitySubprocessor:
             init_state_forward_ref = ForwardRef(line, carry_state_name)
             progress_raw_api_object.add_raw_member("state_change",
                                                    init_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             line.add_raw_api_object(progress_raw_api_object)
             progress_forward_ref = ForwardRef(line, progress_name)
@@ -5289,7 +5289,7 @@ class AoCAbilitySubprocessor:
                                                        100.0,
                                                        "engine.aux.progress.Progress")
 
-                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.Animated")
                 # ===========================================================================================
                 override_ref = f"{game_entity_name}.Storage.CarryProgress.IdleOverride"
                 override_raw_api_object = RawAPIObject(override_ref,
@@ -5326,7 +5326,7 @@ class AoCAbilitySubprocessor:
                 override_forward_ref = ForwardRef(line, override_ref)
                 progress_raw_api_object.add_raw_member("overrides",
                                                        [override_forward_ref],
-                                                       "engine.aux.progress.specialization.AnimatedProgress")
+                                                       "engine.aux.progress.property.type.Animated")
 
                 progress_forward_ref = ForwardRef(line, progress_name)
                 carry_progress.append(progress_forward_ref)
@@ -5658,10 +5658,10 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Turn")
 
         # Diplomacy settings
-        ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+        ability_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
         diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
         ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
-                                              "engine.ability.specialization.DiplomaticAbility")
+                                              "engine.ability.property.type.Diplomatic")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -5777,7 +5777,7 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Visibility")
 
         # Diplomacy settings
-        ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+        ability_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
         diplomatic_stances = [
             dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
             dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object(),
@@ -5786,7 +5786,7 @@ class AoCAbilitySubprocessor:
             dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Gaia"].get_nyan_object()
         ]
         ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
-                                              "engine.ability.specialization.DiplomaticAbility")
+                                              "engine.ability.property.type.Diplomatic")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -5810,14 +5810,14 @@ class AoCAbilitySubprocessor:
                                                   "engine.ability.type.Visibility")
 
             # Diplomacy settings
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.DiplomaticAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
             # Only the player and friendly players can see the construction site
             diplomatic_stances = [
                 dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
                 dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
             ]
             ability_raw_api_object.add_raw_member("stances", diplomatic_stances,
-                                                  "engine.ability.specialization.DiplomaticAbility")
+                                                  "engine.ability.property.type.Diplomatic")
 
             line.add_raw_api_object(ability_raw_api_object)
 
@@ -5946,7 +5946,7 @@ class AoCAbilitySubprocessor:
             nyan_patch_raw_api_object.add_raw_patch_member(
                 "animations",
                 [animation_forward_ref],
-                "engine.ability.specialization.AnimatedAbility",
+                "engine.ability.property.type.Animated",
                 MemberOperator.ASSIGN
             )
 
@@ -5955,7 +5955,7 @@ class AoCAbilitySubprocessor:
             nyan_patch_raw_api_object.add_raw_patch_member(
                 "animations",
                 [],
-                "engine.ability.specialization.AnimatedAbility",
+                "engine.ability.property.type.Animated",
                 MemberOperator.ASSIGN
             )
 
@@ -5967,12 +5967,12 @@ class AoCAbilitySubprocessor:
         civ_group.add_raw_api_object(wrapper_raw_api_object)
         civ_group.add_raw_api_object(nyan_patch_raw_api_object)
 
-        # Add patch to civ_setup
+        # Add patch to game_setup
         civ_forward_ref = ForwardRef(civ_group, civ_name)
         wrapper_forward_ref = ForwardRef(civ_group, wrapper_ref)
         push_object = RawMemberPush(civ_forward_ref,
-                                    "civ_setup",
-                                    "engine.aux.civilization.Civilization",
+                                    "game_setup",
+                                    "engine.aux.setup.PlayerSetup",
                                     [wrapper_forward_ref])
         civ_group.add_raw_member_push(push_object)
 

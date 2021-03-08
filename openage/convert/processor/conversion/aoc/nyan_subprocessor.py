@@ -346,10 +346,7 @@ class AoCNyanSubprocessor:
         # =======================================================================
         # TODO: Variants
         # =======================================================================
-        variants_set = []
-
-        raw_api_object.add_raw_member("variants", variants_set,
-                                      "engine.aux.game_entity.GameEntity")
+        raw_api_object.add_raw_member("variants", [], "engine.aux.game_entity.GameEntity")
 
         # =======================================================================
         # Misc (Objects that are not used by the unit line itself, but use its values)
@@ -603,10 +600,7 @@ class AoCNyanSubprocessor:
         # =======================================================================
         # TODO: Variants
         # =======================================================================
-        variants_set = []
-
-        raw_api_object.add_raw_member("variants", variants_set,
-                                      "engine.aux.game_entity.GameEntity")
+        raw_api_object.add_raw_member("variants", [], "engine.aux.game_entity.GameEntity")
 
     @staticmethod
     def variant_group_to_game_entity(variant_group):
@@ -822,13 +816,13 @@ class AoCNyanSubprocessor:
         name_raw_api_object = RawAPIObject(name_ref,
                                            f"{tech_name}Name",
                                            dataset.nyan_api_objects)
-        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_raw_api_object.add_raw_parent("engine.aux.language.translated.type.TranslatedString")
         name_location = ForwardRef(tech_group, tech_name)
         name_raw_api_object.set_location(name_location)
 
         name_raw_api_object.add_raw_member("translations",
                                            [],
-                                           "engine.aux.translated.type.TranslatedString")
+                                           "engine.aux.language.translated.type.TranslatedString")
 
         name_forward_ref = ForwardRef(tech_group, name_ref)
         raw_api_object.add_raw_member("name", name_forward_ref, "engine.aux.tech.Tech")
@@ -841,13 +835,13 @@ class AoCNyanSubprocessor:
         description_raw_api_object = RawAPIObject(description_ref,
                                                   f"{tech_name}Description",
                                                   dataset.nyan_api_objects)
-        description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        description_raw_api_object.add_raw_parent("engine.aux.language.translated.type.TranslatedMarkupFile")
         description_location = ForwardRef(tech_group, tech_name)
         description_raw_api_object.set_location(description_location)
 
         description_raw_api_object.add_raw_member("translations",
                                                   [],
-                                                  "engine.aux.translated.type.TranslatedMarkupFile")
+                                                  "engine.aux.language.translated.type.TranslatedMarkupFile")
 
         description_forward_ref = ForwardRef(tech_group, description_ref)
         raw_api_object.add_raw_member("description",
@@ -862,13 +856,13 @@ class AoCNyanSubprocessor:
         long_description_raw_api_object = RawAPIObject(long_description_ref,
                                                        f"{tech_name}LongDescription",
                                                        dataset.nyan_api_objects)
-        long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        long_description_raw_api_object.add_raw_parent("engine.aux.language.translated.type.TranslatedMarkupFile")
         long_description_location = ForwardRef(tech_group, tech_name)
         long_description_raw_api_object.set_location(long_description_location)
 
         long_description_raw_api_object.add_raw_member("translations",
                                                        [],
-                                                       "engine.aux.translated.type.TranslatedMarkupFile")
+                                                       "engine.aux.language.translated.type.TranslatedMarkupFile")
 
         long_description_forward_ref = ForwardRef(tech_group, long_description_ref)
         raw_api_object.add_raw_member("long_description",
@@ -935,13 +929,13 @@ class AoCNyanSubprocessor:
         name_raw_api_object = RawAPIObject(name_ref,
                                            f"{terrain_name}Name",
                                            dataset.nyan_api_objects)
-        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_raw_api_object.add_raw_parent("engine.aux.language.translated.type.TranslatedString")
         name_location = ForwardRef(terrain_group, terrain_name)
         name_raw_api_object.set_location(name_location)
 
         name_raw_api_object.add_raw_member("translations",
                                            [],
-                                           "engine.aux.translated.type.TranslatedString")
+                                           "engine.aux.language.translated.type.TranslatedString")
 
         name_forward_ref = ForwardRef(terrain_group, name_ref)
         raw_api_object.add_raw_member("name", name_forward_ref, "engine.aux.terrain.Terrain")
@@ -1071,7 +1065,7 @@ class AoCNyanSubprocessor:
         tech_name = civ_lookup_dict[civ_id][0]
         raw_api_object = RawAPIObject(tech_name, tech_name,
                                       dataset.nyan_api_objects)
-        raw_api_object.add_raw_parent("engine.aux.civilization.Civilization")
+        raw_api_object.add_raw_parent("engine.aux.setup.PlayerSetup")
 
         obj_location = f"data/civ/{civ_lookup_dict[civ_id][1]}/"
 
@@ -1086,16 +1080,16 @@ class AoCNyanSubprocessor:
         name_raw_api_object = RawAPIObject(name_ref,
                                            f"{tech_name}Name",
                                            dataset.nyan_api_objects)
-        name_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedString")
+        name_raw_api_object.add_raw_parent("engine.aux.language.translated.type.TranslatedString")
         name_location = ForwardRef(civ_group, tech_name)
         name_raw_api_object.set_location(name_location)
 
         name_raw_api_object.add_raw_member("translations",
                                            [],
-                                           "engine.aux.translated.type.TranslatedString")
+                                           "engine.aux.language.translated.type.TranslatedString")
 
         name_forward_ref = ForwardRef(civ_group, name_ref)
-        raw_api_object.add_raw_member("name", name_forward_ref, "engine.aux.civilization.Civilization")
+        raw_api_object.add_raw_member("name", name_forward_ref, "engine.aux.setup.PlayerSetup")
         civ_group.add_raw_api_object(name_raw_api_object)
 
         # =======================================================================
@@ -1105,18 +1099,18 @@ class AoCNyanSubprocessor:
         description_raw_api_object = RawAPIObject(description_ref,
                                                   f"{tech_name}Description",
                                                   dataset.nyan_api_objects)
-        description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        description_raw_api_object.add_raw_parent("engine.aux.language.translated.type.TranslatedMarkupFile")
         description_location = ForwardRef(civ_group, tech_name)
         description_raw_api_object.set_location(description_location)
 
         description_raw_api_object.add_raw_member("translations",
                                                   [],
-                                                  "engine.aux.translated.type.TranslatedMarkupFile")
+                                                  "engine.aux.language.translated.type.TranslatedMarkupFile")
 
         description_forward_ref = ForwardRef(civ_group, description_ref)
         raw_api_object.add_raw_member("description",
                                       description_forward_ref,
-                                      "engine.aux.civilization.Civilization")
+                                      "engine.aux.setup.PlayerSetup")
         civ_group.add_raw_api_object(description_raw_api_object)
 
         # =======================================================================
@@ -1126,18 +1120,18 @@ class AoCNyanSubprocessor:
         long_description_raw_api_object = RawAPIObject(long_description_ref,
                                                        f"{tech_name}LongDescription",
                                                        dataset.nyan_api_objects)
-        long_description_raw_api_object.add_raw_parent("engine.aux.translated.type.TranslatedMarkupFile")
+        long_description_raw_api_object.add_raw_parent("engine.aux.language.translated.type.TranslatedMarkupFile")
         long_description_location = ForwardRef(civ_group, tech_name)
         long_description_raw_api_object.set_location(long_description_location)
 
         long_description_raw_api_object.add_raw_member("translations",
                                                        [],
-                                                       "engine.aux.translated.type.TranslatedMarkupFile")
+                                                       "engine.aux.language.translated.type.TranslatedMarkupFile")
 
         long_description_forward_ref = ForwardRef(civ_group, long_description_ref)
         raw_api_object.add_raw_member("long_description",
                                       long_description_forward_ref,
-                                      "engine.aux.civilization.Civilization")
+                                      "engine.aux.setup.PlayerSetup")
         civ_group.add_raw_api_object(long_description_raw_api_object)
 
         # =======================================================================
@@ -1145,7 +1139,7 @@ class AoCNyanSubprocessor:
         # =======================================================================
         raw_api_object.add_raw_member("leader_names",
                                       [],
-                                      "engine.aux.civilization.Civilization")
+                                      "engine.aux.setup.PlayerSetup")
 
         # =======================================================================
         # Modifiers
@@ -1153,7 +1147,7 @@ class AoCNyanSubprocessor:
         modifiers = AoCCivSubprocessor.get_modifiers(civ_group)
         raw_api_object.add_raw_member("modifiers",
                                       modifiers,
-                                      "engine.aux.civilization.Civilization")
+                                      "engine.aux.setup.PlayerSetup")
 
         # =======================================================================
         # Starting resources
@@ -1161,15 +1155,15 @@ class AoCNyanSubprocessor:
         resource_amounts = AoCCivSubprocessor.get_starting_resources(civ_group)
         raw_api_object.add_raw_member("starting_resources",
                                       resource_amounts,
-                                      "engine.aux.civilization.Civilization")
+                                      "engine.aux.setup.PlayerSetup")
 
         # =======================================================================
-        # Civ setup
+        # Game setup
         # =======================================================================
-        civ_setup = AoCCivSubprocessor.get_civ_setup(civ_group)
-        raw_api_object.add_raw_member("civ_setup",
-                                      civ_setup,
-                                      "engine.aux.civilization.Civilization")
+        game_setup = AoCCivSubprocessor.get_civ_setup(civ_group)
+        raw_api_object.add_raw_member("game_setup",
+                                      game_setup,
+                                      "engine.aux.setup.PlayerSetup")
 
     @staticmethod
     def projectiles_from_line(line):

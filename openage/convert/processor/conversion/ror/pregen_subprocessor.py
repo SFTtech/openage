@@ -47,7 +47,7 @@ class RoRPregenSubprocessor:
             pregen_object.create_nyan_members()
 
             if not pregen_object.is_ready():
-                raise Exception("%s: Pregenerated object is not ready for export."
+                raise Exception("%s: Pregenerated object is not ready for export: "
                                 "Member or object not initialized." % (pregen_object))
 
     @staticmethod
@@ -122,7 +122,7 @@ class RoRPregenSubprocessor:
         scope_raw_api_object.add_raw_parent(self_scope_parent)
 
         scope_diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Self"]]
-        scope_raw_api_object.add_raw_member("diplomatic_stances",
+        scope_raw_api_object.add_raw_member("stances",
                                             scope_diplomatic_stances,
                                             scope_parent)
 

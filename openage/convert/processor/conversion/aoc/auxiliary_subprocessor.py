@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-branches,too-many-statements,no-else-return
 
@@ -80,6 +80,12 @@ class AoCAuxiliarySubprocessor:
         game_entity_forward_ref = ForwardRef(line, game_entity_name)
         creatable_raw_api_object.add_raw_member("game_entity",
                                                 game_entity_forward_ref,
+                                                "engine.aux.create.CreatableGameEntity")
+
+        # TODO: Variants
+        variants_set = []
+
+        creatable_raw_api_object.add_raw_member("variants", variants_set,
                                                 "engine.aux.create.CreatableGameEntity")
 
         # Cost (construction)
@@ -299,6 +305,11 @@ class AoCAuxiliarySubprocessor:
                                                 "engine.aux.placement_mode.type.Place")
             place_raw_api_object.add_raw_member("clearance_size_y",
                                                 clearance_size_y,
+                                                "engine.aux.placement_mode.type.Place")
+
+            # Allow rotation
+            place_raw_api_object.add_raw_member("allow_rotation",
+                                                True,
                                                 "engine.aux.placement_mode.type.Place")
 
             # Max elevation difference
@@ -646,7 +657,7 @@ class AoCAuxiliarySubprocessor:
             scope_diplomatic_stances = [
                 dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]
             ]
-            scope_raw_api_object.add_raw_member("diplomatic_stances",
+            scope_raw_api_object.add_raw_member("stances",
                                                 scope_diplomatic_stances,
                                                 "engine.aux.logic.literal_scope.LiteralScope")
 

@@ -5,9 +5,6 @@ Tree structure for resolving imports.
 """
 from enum import Enum
 
-from ..util.ordered_set import OrderedSet
-from .nyan_structs import NyanObject, NyanPatch
-
 
 class ImportTree:
     """
@@ -33,8 +30,8 @@ class ImportTree:
             except KeyError as err:
                 # TODO: Do not silently fail
                 return
-                # raise KeyError(f"fqon '{'.'.join(fqon)}'"
-                #                "could not be found in import tree") from err
+                # raise KeyError(f"fqon '{'.'.join(fqon)}' "
+                #               "could not be found in import tree") from err
 
         current_node.set_alias(alias)
 
@@ -219,9 +216,6 @@ class ImportTree:
             sfqon.insert(0, current_node.name)
 
             current_node = current_node.parent
-
-        if not current_node.alias:
-            print(fqon)
 
         return tuple(sfqon)
 

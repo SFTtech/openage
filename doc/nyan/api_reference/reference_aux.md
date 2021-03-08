@@ -585,6 +585,7 @@ GameEntity(Entity):
     types     : set(children(GameEntityType))
     abilities : set(Ability)
     modifiers : set(Modifier)
+    variants  : set(Variant)
 ```
 
 For definition of all ingame objects, including units, buildings, items, projectiles and ambience. Their capabilities are handled through `Ability` and `Modifier` API objects stored in the members.

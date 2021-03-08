@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-public-methods,too-many-lines,too-many-locals
 # pylint: disable=too-many-branches,too-many-statements,too-many-arguments
@@ -119,7 +119,7 @@ class SWGBCCAbilitySubprocessor:
 
         if ability_animation_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
@@ -130,7 +130,7 @@ class SWGBCCAbilitySubprocessor:
                                                                             % command_lookup_dict[command_id][1])
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+                                                  "engine.ability.property.type.Animated")
 
             # Create custom civ graphics
             handled_graphics_set_ids = set()
@@ -177,7 +177,7 @@ class SWGBCCAbilitySubprocessor:
 
         if ability_comm_sound_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
 
             sounds_set = []
 
@@ -194,7 +194,7 @@ class SWGBCCAbilitySubprocessor:
                                                                     "command_")
             sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
-                                                  "engine.ability.specialization.CommandSoundAbility")
+                                                  "engine.ability.property.type.CommandSound")
 
         if ranged:
             # Min range
@@ -357,7 +357,7 @@ class SWGBCCAbilitySubprocessor:
 
             progress_animation_id = damage_graphic_member["graphic_id"].get_value()
             if progress_animation_id > -1:
-                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimationOverlayProgress")
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.AnimationOverlay")
 
                 # Animation
                 animations_set = []
@@ -370,7 +370,7 @@ class SWGBCCAbilitySubprocessor:
                 animations_set.append(animation_forward_ref)
                 progress_raw_api_object.add_raw_member("overlays",
                                                        animations_set,
-                                                       "engine.aux.progress.specialization.AnimationOverlayProgress")
+                                                       "engine.aux.progress.property.type.AnimationOverlay")
 
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -595,7 +595,7 @@ class SWGBCCAbilitySubprocessor:
 
             if ability_animation_id > -1:
                 # Make the ability animated
-                ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+                ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
                 animations_set = []
                 animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
@@ -606,7 +606,7 @@ class SWGBCCAbilitySubprocessor:
                                                                                 % gather_lookup_dict[gatherer_unit_id][1])
                 animations_set.append(animation_forward_ref)
                 ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                      "engine.ability.specialization.AnimatedAbility")
+                                                      "engine.ability.property.type.Animated")
 
             # Auto resume
             ability_raw_api_object.add_raw_member("auto_resume",
@@ -800,14 +800,14 @@ class SWGBCCAbilitySubprocessor:
                                                    terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
             # State change
             init_state_ref = f"{game_entity_name}.Constructable.InitState"
             init_state_forward_ref = ForwardRef(line, init_state_ref)
             progress_raw_api_object.add_raw_member("state_change",
                                                    init_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -838,14 +838,14 @@ class SWGBCCAbilitySubprocessor:
                                                    terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
             # State change
             construct_state_ref = f"{game_entity_name}.Constructable.ConstructState"
             construct_state_forward_ref = ForwardRef(line, construct_state_ref)
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =====================================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -875,14 +875,14 @@ class SWGBCCAbilitySubprocessor:
                                                    terrain_forward_ref,
                                                    "engine.aux.progress.specialization.TerrainOverlayProgress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
             # State change
             construct_state_ref = f"{game_entity_name}.Constructable.ConstructState"
             construct_state_forward_ref = ForwardRef(line, construct_state_ref)
             progress_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
             # =======================================================================
             progress_forward_refs.append(ForwardRef(line, progress_name))
             line.add_raw_api_object(progress_raw_api_object)
@@ -1229,7 +1229,7 @@ class SWGBCCAbilitySubprocessor:
                                                        100.0,
                                                        "engine.aux.progress.Progress")
 
-                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+                progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.Animated")
 
                 overrides = []
                 # ===========================================================================================
@@ -1271,7 +1271,7 @@ class SWGBCCAbilitySubprocessor:
                 # ===========================================================================================
                 progress_raw_api_object.add_raw_member("overrides",
                                                        overrides,
-                                                       "engine.aux.progress.specialization.AnimatedProgress")
+                                                       "engine.aux.progress.property.type.Animated")
 
                 line.add_raw_api_object(progress_raw_api_object)
                 # ===========================================================================================

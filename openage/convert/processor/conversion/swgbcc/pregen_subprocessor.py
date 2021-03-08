@@ -554,7 +554,7 @@ class SWGBCCPregenSubprocessor:
                                            MemberSpecialValue.NYAN_INF,
                                            resource_parent)
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         food_name_ref_in_modpack = "aux.attribute.types.Food.FoodName"
         food_name_value = RawAPIObject(food_name_ref_in_modpack, "FoodName",
                                        api_objects, resources_location)
@@ -588,7 +588,7 @@ class SWGBCCPregenSubprocessor:
                                              MemberSpecialValue.NYAN_INF,
                                              resource_parent)
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         carbon_name_ref_in_modpack = "aux.attribute.types.Carbon.CarbonName"
         carbon_name_value = RawAPIObject(carbon_name_ref_in_modpack, "CarbonName",
                                          api_objects, resources_location)
@@ -622,7 +622,7 @@ class SWGBCCPregenSubprocessor:
                                           MemberSpecialValue.NYAN_INF,
                                           resource_parent)
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         ore_name_ref_in_modpack = "aux.attribute.types.Ore.OreName"
         ore_name_value = RawAPIObject(ore_name_ref_in_modpack, "OreName",
                                       api_objects, resources_location)
@@ -656,7 +656,7 @@ class SWGBCCPregenSubprocessor:
                                            MemberSpecialValue.NYAN_INF,
                                            resource_parent)
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         nova_name_ref_in_modpack = "aux.attribute.types.Nova.NovaName"
         nova_name_value = RawAPIObject(nova_name_ref_in_modpack, "NovaName",
                                        api_objects, resources_location)
@@ -688,7 +688,7 @@ class SWGBCCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(pop_raw_api_object)
         pregen_nyan_objects.update({pop_ref_in_modpack: pop_raw_api_object})
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         pop_name_ref_in_modpack = "aux.attribute.types.PopulationSpace.PopulationSpaceName"
         pop_name_value = RawAPIObject(pop_name_ref_in_modpack, "PopulationSpaceName",
                                       api_objects, resources_location)

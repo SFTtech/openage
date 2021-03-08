@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches,too-many-statements,too-many-locals
 #
@@ -104,7 +104,7 @@ class RoRAbilitySubprocessor:
 
         if ability_animation_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
@@ -115,7 +115,7 @@ class RoRAbilitySubprocessor:
                                                                             % command_lookup_dict[command_id][1])
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+                                                  "engine.ability.property.type.Animated")
 
             # Create custom civ graphics
             handled_graphics_set_ids = set()
@@ -162,7 +162,7 @@ class RoRAbilitySubprocessor:
 
         if ability_comm_sound_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
 
             sounds_set = []
 
@@ -179,7 +179,7 @@ class RoRAbilitySubprocessor:
                                                                     "command_")
             sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds", sounds_set,
-                                                  "engine.ability.specialization.CommandSoundAbility")
+                                                  "engine.ability.property.type.CommandSound")
 
         if ranged:
             # Min range
@@ -613,7 +613,7 @@ class RoRAbilitySubprocessor:
 
         if ability_animation_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
@@ -624,13 +624,13 @@ class RoRAbilitySubprocessor:
                                                                             % command_lookup_dict[command_id][1])
             animations_set.append(animation_forward_ref)
             ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+                                                  "engine.ability.property.type.Animated")
 
         # Command Sound
         ability_comm_sound_id = current_unit["command_sound_id"].get_value()
         if ability_comm_sound_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+            ability_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
 
             sounds_set = []
             sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
@@ -641,7 +641,7 @@ class RoRAbilitySubprocessor:
             sounds_set.append(sound_forward_ref)
             ability_raw_api_object.add_raw_member("sounds",
                                                   sounds_set,
-                                                  "engine.ability.specialization.CommandSoundAbility")
+                                                  "engine.ability.property.type.CommandSound")
 
         # Projectile
         projectiles = []

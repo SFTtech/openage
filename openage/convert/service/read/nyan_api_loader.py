@@ -3386,6 +3386,10 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("modifiers", member_type, None, None, 0)
     api_object.add_member(member)
+    elem_type = NyanMemberType(api_objects["engine.aux.variant.Variant"])
+    member_type = NyanMemberType(MemberType.SET, (elem_type,))
+    member = NyanMember("variants", member_type, None, None, 0)
+    api_object.add_member(member)
 
     # engine.aux.game_entity_formation.GameEntityFormation
     api_object = api_objects["engine.aux.game_entity_formation.GameEntityFormation"]
@@ -3745,14 +3749,6 @@ def _insert_members(api_objects):
     member = NyanMember("min_price", N_FLOAT, None, None, 0)
     api_object.add_member(member)
     member = NyanMember("max_price", N_FLOAT, None, None, 0)
-    api_object.add_member(member)
-
-    # engine.aux.price_pool.PricePool
-    api_object = api_objects["engine.aux.price_pool.PricePool"]
-
-    elem_type = NyanMemberType(api_objects["engine.aux.diplomatic_stance.DiplomaticStance"])
-    member_type = NyanMemberType(MemberType.SET, (elem_type,))
-    member = NyanMember("diplomatic_stances", member_type, None, None, 0)
     api_object.add_member(member)
 
     # engine.aux.production_mode.type.Creatables

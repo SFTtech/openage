@@ -128,7 +128,7 @@ class AoCUpgradeAbilitySubprocessor:
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
                                                                animations_set,
-                                                               "engine.ability.specialization.AnimatedAbility",
+                                                               "engine.ability.property.type.Animated",
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_comm_sound, NoDiffMember):
@@ -146,7 +146,7 @@ class AoCUpgradeAbilitySubprocessor:
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
                                                                sounds_set,
-                                                               "engine.ability.specialization.CommandSoundAbility",
+                                                               "engine.ability.property.type.CommandSound",
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_frame_delay, NoDiffMember):
@@ -295,7 +295,7 @@ class AoCUpgradeAbilitySubprocessor:
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
                                                                animations_set,
-                                                               "engine.ability.specialization.AnimatedAbility",
+                                                               "engine.ability.property.type.Animated",
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_comm_sound, NoDiffMember):
@@ -313,7 +313,7 @@ class AoCUpgradeAbilitySubprocessor:
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
                                                                sounds_set,
-                                                               "engine.ability.specialization.CommandSoundAbility",
+                                                               "engine.ability.property.type.CommandSound",
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_reload_time, NoDiffMember):
@@ -481,7 +481,7 @@ class AoCUpgradeAbilitySubprocessor:
 
             nyan_patch_raw_api_object.add_raw_patch_member("overlays",
                                                            animations_set,
-                                                           "engine.aux.progress.specialization.AnimationOverlayProgress",
+                                                           "engine.aux.progress.property.type.AnimationOverlay",
                                                            MemberOperator.ASSIGN)
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
@@ -579,7 +579,7 @@ class AoCUpgradeAbilitySubprocessor:
 
         nyan_patch_raw_api_object.add_raw_patch_member("animations",
                                                        animations_set,
-                                                       "engine.ability.specialization.AnimatedAbility",
+                                                       "engine.ability.property.type.Animated",
                                                        MemberOperator.ASSIGN)
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
@@ -677,7 +677,7 @@ class AoCUpgradeAbilitySubprocessor:
 
         nyan_patch_raw_api_object.add_raw_patch_member("animations",
                                                        animations_set,
-                                                       "engine.ability.specialization.AnimatedAbility",
+                                                       "engine.ability.property.type.Animated",
                                                        MemberOperator.ASSIGN)
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
@@ -775,7 +775,7 @@ class AoCUpgradeAbilitySubprocessor:
 
         nyan_patch_raw_api_object.add_raw_patch_member("animations",
                                                        animations_set,
-                                                       "engine.ability.specialization.AnimatedAbility",
+                                                       "engine.ability.property.type.Animated",
                                                        MemberOperator.ASSIGN)
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
@@ -1057,7 +1057,7 @@ class AoCUpgradeAbilitySubprocessor:
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
                                                                animations_set,
-                                                               "engine.ability.specialization.AnimatedAbility",
+                                                               "engine.ability.property.type.Animated",
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_comm_sound, NoDiffMember):
@@ -1074,7 +1074,7 @@ class AoCUpgradeAbilitySubprocessor:
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
                                                                sounds_set,
-                                                               "engine.ability.specialization.CommandSoundAbility",
+                                                               "engine.ability.property.type.CommandSound",
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_move_speed, NoDiffMember):
@@ -1172,7 +1172,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                                  % (obj_prefix))
             nyan_patch_raw_api_object.add_raw_patch_member("translations",
                                                            translations,
-                                                           "engine.aux.translated.type.TranslatedString",
+                                                           "engine.aux.language.translated.type.TranslatedString",
                                                            MemberOperator.ASSIGN)
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
@@ -1311,7 +1311,7 @@ class AoCUpgradeAbilitySubprocessor:
 
             nyan_patch_raw_api_object.add_raw_patch_member("sounds",
                                                            sounds_set,
-                                                           "engine.ability.specialization.CommandSoundAbility",
+                                                           "engine.ability.property.type.CommandSound",
                                                            MemberOperator.ASSIGN)
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
@@ -1368,18 +1368,18 @@ class AoCUpgradeAbilitySubprocessor:
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_radius_x, NoDiffMember):
-                diff_radius_x_value = diff_radius_x.get_value()
+                diff_width_value = diff_radius_x.get_value()
 
-                nyan_patch_raw_api_object.add_raw_patch_member("radius_x",
-                                                               diff_radius_x_value,
+                nyan_patch_raw_api_object.add_raw_patch_member("width",
+                                                               diff_width_value,
                                                                "engine.aux.selection_box.type.Rectangle",
                                                                MemberOperator.ADD)
 
             if not isinstance(diff_radius_y, NoDiffMember):
-                diff_radius_y_value = diff_radius_y.get_value()
+                diff_height_value = diff_radius_y.get_value()
 
-                nyan_patch_raw_api_object.add_raw_patch_member("radius_y",
-                                                               diff_radius_y_value,
+                nyan_patch_raw_api_object.add_raw_patch_member("height",
+                                                               diff_height_value,
                                                                "engine.aux.selection_box.type.Rectangle",
                                                                MemberOperator.ADD)
 
@@ -1506,7 +1506,7 @@ class AoCUpgradeAbilitySubprocessor:
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
                                                                animations_set,
-                                                               "engine.ability.specialization.AnimatedAbility",
+                                                               "engine.ability.property.type.Animated",
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_comm_sound, NoDiffMember):
@@ -1524,7 +1524,7 @@ class AoCUpgradeAbilitySubprocessor:
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
                                                                sounds_set,
-                                                               "engine.ability.specialization.CommandSoundAbility",
+                                                               "engine.ability.property.type.CommandSound",
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_min_projectiles, NoDiffMember):
