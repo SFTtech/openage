@@ -6,7 +6,7 @@ Reference documentation of the `engine.resistance` module of the openage modding
 
 ```python
 Resistance(Entity):
-    properties : dict(abstract(ResistanceProperty), ResistanceProperty)
+    properties : dict(abstract(ResistanceProperty), ResistanceProperty) = {}
 ```
 
 Generalization object for all resistances.

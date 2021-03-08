@@ -426,7 +426,7 @@ The effectiveness is constant and independent from the range to the target.
 ```python
 EffectBatch(Entity):
     effects    : set(DiscreteEffect)
-    properties : dict(abstract(BatchProperty), BatchProperty)
+    properties : dict(abstract(BatchProperty), BatchProperty) = {}
 ```
 
 Generalization object for a collection of discrete effects. Batches combine the discrete effects to transactions. Batches - like effects - can have properties to configure the batch application.
@@ -539,8 +539,8 @@ Sell an amount of `resource_a` and receive an amount of `resource_b`. `resource_
 ```python
 ExchangeRate(Entity):
     base_price   : float
-    price_adjust : optional(dict(ExchangeMode, PriceMode))
-    price_pool   : optional(children(PricePool))
+    price_adjust : optional(dict(ExchangeMode, PriceMode)) = None
+    price_pool   : optional(children(PricePool)) = None
 ```
 
 Defines an exchange rate for the resources in the `ExchangeResources` ability.
@@ -1370,7 +1370,7 @@ Parent object for nyan patches used in the openage API. All nyan patches must in
 
 ```python
 Patch(Entity):
-    properties : dict(abstract(PatchProperty), PatchProperty)
+    properties : dict(abstract(PatchProperty), PatchProperty) = {}
     patch      : children(NyanPatch)
 ```
 
@@ -1606,7 +1606,7 @@ The queue can store production requests for `ResearchableTech` instances.
 
 ```python
 Progress(Entity):
-    properties     : dict(abstract(ProgressProperty), ProgressProperty)
+    properties     : dict(abstract(ProgressProperty), ProgressProperty) = {}
     left_boundary  : float
     right_boundary : float
 ```
@@ -2023,7 +2023,7 @@ StateChanger(Entity):
     disable_abilities : set(abstract(Ability))
     enable_modifiers  : set(abstract(Modifier))
     disable_modifiers : set(abstract(Modifier))
-    transform_pool    : optional(TransformPool)
+    transform_pool    : optional(TransformPool) = None
     priority          : int
 ```
 

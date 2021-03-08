@@ -2179,6 +2179,13 @@ def _create_objects(api_objects):
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.modifier.effect.flat_attribute_change.type.ElevationDifferenceLow
+    parents = [api_objects["engine.modifier.Modifier"]]
+    nyan_object = NyanObject("ElevationDifferenceLow", parents)
+    fqon = "engine.modifier.effect.flat_attribute_change.type.ElevationDifferenceLow"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.modifier.effect.flat_attribute_change.type.Flyover
     parents = [api_objects["engine.modifier.Modifier"]]
     nyan_object = NyanObject("Flyover", parents)
@@ -2211,6 +2218,13 @@ def _create_objects(api_objects):
     parents = [api_objects["engine.modifier.Modifier"]]
     nyan_object = NyanObject("TimeRelativeProgress", parents)
     fqon = "engine.modifier.multiplier.effect.type.TimeRelativeProgressChange"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.modifier.resistance.flat_attribute_change.type.ElevationDifferenceHigh
+    parents = [api_objects["engine.modifier.Modifier"]]
+    nyan_object = NyanObject("ElevationDifferenceHigh", parents)
+    fqon = "engine.modifier.resistance.flat_attribute_change.type.ElevationDifferenceHigh"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -2417,7 +2431,7 @@ def _insert_members(api_objects):
     subtype = NyanMemberType(api_objects["engine.ability.property.AbilityProperty"])
     key_type = NyanMemberType(MemberType.ABSTRACT, (subtype,))
     member_type = NyanMemberType(MemberType.DICT, (key_type, subtype))
-    member = NyanMember("properties", member_type, None, None, 0)
+    member = NyanMember("properties", member_type, {}, MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
 
     # engine.ability.property.type.Animated
@@ -3302,7 +3316,7 @@ def _insert_members(api_objects):
     subtype = NyanMemberType(api_objects["engine.aux.effect_batch.property.BatchProperty"])
     key_type = NyanMemberType(MemberType.ABSTRACT, (subtype,))
     member_type = NyanMemberType(MemberType.DICT, (key_type, subtype))
-    member = NyanMember("properties", member_type, None, None, 0)
+    member = NyanMember("properties", member_type, {}, MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
 
     # engine.aux.effect_batch.property.type.Chance
@@ -3679,7 +3693,7 @@ def _insert_members(api_objects):
     subtype = NyanMemberType(api_objects["engine.aux.patch.property.PatchProperty"])
     key_type = NyanMemberType(MemberType.ABSTRACT, (subtype,))
     member_type = NyanMemberType(MemberType.DICT, (key_type, subtype))
-    member = NyanMember("properties", member_type, None, None, 0)
+    member = NyanMember("properties", member_type, {}, MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.aux.patch.NyanPatch"])
     member_type = NyanMemberType(MemberType.CHILDREN, (elem_type,))
@@ -3763,7 +3777,7 @@ def _insert_members(api_objects):
     subtype = NyanMemberType(api_objects["engine.aux.progress.property.ProgressProperty"])
     key_type = NyanMemberType(MemberType.ABSTRACT, (subtype,))
     member_type = NyanMemberType(MemberType.DICT, (key_type, subtype))
-    member = NyanMember("properties", member_type, None, None, 0)
+    member = NyanMember("properties", member_type, {}, MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
     member = NyanMember("left_boundary", N_FLOAT, None, None, 0)
     api_object.add_member(member)
@@ -4191,7 +4205,7 @@ def _insert_members(api_objects):
     subtype = NyanMemberType(api_objects["engine.effect.property.EffectProperty"])
     key_type = NyanMemberType(MemberType.ABSTRACT, (subtype,))
     member_type = NyanMemberType(MemberType.DICT, (key_type, subtype))
-    member = NyanMember("properties", member_type, None, None, 0)
+    member = NyanMember("properties", member_type, {}, MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
 
     # engine.effect.property.type.Area
@@ -4372,7 +4386,7 @@ def _insert_members(api_objects):
     subtype = NyanMemberType(api_objects["engine.resistance.property.ResistanceProperty"])
     key_type = NyanMemberType(MemberType.ABSTRACT, (subtype,))
     member_type = NyanMemberType(MemberType.DICT, (key_type, subtype))
-    member = NyanMember("properties", member_type, None, None, 0)
+    member = NyanMember("properties", member_type, {}, MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
 
     # engine.resistance.property.type.Cost
@@ -4492,7 +4506,7 @@ def _insert_members(api_objects):
     subtype = NyanMemberType(api_objects["engine.modifier.property.ModifierProperty"])
     key_type = NyanMemberType(MemberType.ABSTRACT, (subtype,))
     member_type = NyanMemberType(MemberType.DICT, (key_type, subtype))
-    member = NyanMember("properties", member_type, None, None, 0)
+    member = NyanMember("properties", member_type, {}, MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
 
     # engine.modifier.property.type.Multiplier
@@ -4524,6 +4538,15 @@ def _insert_members(api_objects):
                         MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
 
+    # engine.modifier.effect.flat_attribute_change.type.ElevationDifferenceLow
+    api_object = api_objects["engine.modifier.effect.flat_attribute_change.type.ElevationDifferenceLow"]
+
+    elem_type = N_FLOAT
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
+    member = NyanMember("min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0)
+    api_object.add_member(member)
+
     # engine.modifier.effect.flat_attribute_change.type.Flyover
     api_object = api_objects["engine.modifier.effect.flat_attribute_change.type.Flyover"]
 
@@ -4544,6 +4567,15 @@ def _insert_members(api_objects):
 
     member_type = NyanMemberType(api_objects["engine.aux.terrain.Terrain"])
     member = NyanMember("terrain", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.modifier.resistance.flat_attribute_change.type.ElevationDifferenceHigh
+    api_object = api_objects["engine.modifier.resistance.flat_attribute_change.type.ElevationDifferenceHigh"]
+
+    elem_type = N_FLOAT
+    member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
+    member = NyanMember("min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE,
+                        MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
 
     # engine.modifier.resistance.flat_attribute_change.type.ElevationDifferenceLow

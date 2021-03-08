@@ -6,7 +6,7 @@ Reference documentation of the `engine.ability` module of the openage modding AP
 
 ```python
 Ability(Entity):
-    properties : dict(abstract(AbilityProperty), AbilityProperty)
+    properties : dict(abstract(AbilityProperty), AbilityProperty) = {}
 ```
 
 Generalization object for all abilities. Abilities define what game entities can *do* and what they *are*, respectively. They can be considered passive and active traits.
@@ -282,7 +282,7 @@ Despawn(Ability):
     activation_condition : set(LogicElement)
     despawn_condition    : set(LogicElement)
     despawn_time         : float
-    state_change         : optional(StateChanger)
+    state_change         : optional(StateChanger) = None
 ```
 
 Permanently removes the game entity from the game. By default, `Despawn` is inactive until triggered by `activation_condition`. Once activated, at least one of the elements in `despawn_condition` must be true to trigger the despawning.

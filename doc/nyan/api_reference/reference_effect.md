@@ -6,7 +6,7 @@ Reference documentation of the `engine.effect` module of the openage modding API
 
 ```python
 Effect(Entity):
-    properties : dict(abstract(EffectProperty), EffectProperty)
+    properties : dict(abstract(EffectProperty), EffectProperty) = {}
 ```
 
 Generalization object for all effects.
@@ -106,8 +106,8 @@ Generalization object for effects that are applied at a per-second rate.
 ```python
 FlatAttributeChange(ContinuousEffect):
     type              : children(AttributeChangeType)
-    min_change_rate   : optional(AttributeRate)
-    max_change_rate   : optional(AttributeRate)
+    min_change_rate   : optional(AttributeRate) = None
+    max_change_rate   : optional(AttributeRate) = None
     change_rate       : AttributeRate
     ignore_protection : set(ProtectingAttribute)
 ```
@@ -273,10 +273,10 @@ Generalization object for effects that are applied immediately.
 ```python
 Convert(DiscreteEffect):
     type               : children(ConvertType)
-    min_chance_success : optional(float)
-    max_chance_success : optional(float)
+    min_chance_success : optional(float) = None
+    max_chance_success : optional(float) = None
     chance_success     : float
-    cost_fail          : optional(Cost)
+    cost_fail          : optional(Cost) = None
 ```
 
 Change the owner of the target unit to the player who owns the effector game entity.
@@ -325,8 +325,8 @@ Lowers the number of rounds that are needed for the success chance to always be 
 ```python
 FlatAttributeChange(DiscreteEffect):
     type              : children(AttributeChangeType)
-    min_change_value  : optional(AttributeAmount)
-    max_change_value  : optional(AttributeAmount)
+    min_change_value  : optional(AttributeAmount) = None
+    max_change_value  : optional(AttributeAmount) = None
     change_value      : AttributeAmount
     ignore_protection : set(ProtectingAttribute)
 ```

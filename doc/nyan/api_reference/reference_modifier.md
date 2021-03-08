@@ -6,7 +6,7 @@ Reference documentation of the `engine.modifier` module of the openage modding A
 
 ```python
 Modifier(Entity):
-    properties : dict(abstract(ModifierProperty), ModifierProperty)
+    properties : dict(abstract(ModifierProperty), ModifierProperty) = {}
 ```
 
 Generalization object for all modifiers. Modifiers change the behavior of abilities at for general and edge cases. They can influence more than one ability at a time.
@@ -82,10 +82,22 @@ Maximum number of times the modifier can be stacked.
 
 ```python
 ElevationDifferenceHigh(Modifier):
-    min_elevation_difference : optional(float)
+    min_elevation_difference : optional(float) = None
 ```
 
 Changes the cumulated *change value* of `FlatAtttributeChange` effects when the effector containing this modifier is located *higher* than the targeted resistor.
+
+**min_elevation_difference**
+The minimum elevation difference between effector and resistor.
+
+## modifier.effect.flat_attribute_change.type.ElevationDifferenceLow
+
+```python
+ElevationDifferenceLow(Modifier):
+    min_elevation_difference : optional(float) = None
+```
+
+Changes the cumulated *change value* of `FlatAtttributeChange` effects when the effector containing this modifier is located *lower* than the targeted resistor.
 
 **min_elevation_difference**
 The minimum elevation difference between effector and resistor.
@@ -149,11 +161,23 @@ TimeRelativeProgressChange(Modifier):
 
 Changes the `total_change_time` member of `TimeRelativeProgress` effects.
 
+## modifier.resistance.flat_attribute_change.type.ElevationDifferenceHigh
+
+```python
+ElevationDifferenceHigh(Modifier):
+    min_elevation_difference : optional(float) = None
+```
+
+Changes the cumulated *change value* of `FlatAtttributeChange` resistances when the resistor containing this modifier is located *higher* than the effector.
+
+**min_elevation_difference**
+The minimum elevation difference between effector and resistor.
+
 ## modifier.resistance.flat_attribute_change.type.ElevationDifferenceLow
 
 ```python
 ElevationDifferenceLow(Modifier):
-    min_elevation_difference : optional(float)
+    min_elevation_difference : optional(float) = None
 ```
 
 Changes the cumulated *change value* of `FlatAtttributeChange` resistances when the resistor containing this modifier is located *lower* than the effector.
