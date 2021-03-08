@@ -786,13 +786,14 @@ class NyanMemberType:
             if not self._element_types:
                 raise Exception(f"{repr(self)}: element types are required for composite types")
 
-            # element types cannot be complex
-            for elem_type in self._element_types:
-                if elem_type.is_complex():
-                    raise Exception(f"{repr(self)}: element types cannot be complex but contains {elem_type}")
+            if self.is_complex():
+                # element types of complex types cannot be complex
+                for elem_type in self._element_types:
+                    if elem_type.is_real_complex():
+                        raise Exception(f"{repr(self)}: element types cannot be complex but contains {elem_type}")
 
         else:
-            # if the member is not a composite, the set type should be None
+            # if the member is not a composite, the element types should be None
             if self._element_types:
                 raise Exception(f"{repr(self)}: member type has element types but is not a composite")
 
@@ -822,7 +823,7 @@ class NyanMemberType:
         )
 
     def __repr__(self):
-        return f"NyanMemberType<{self._member_type}: {self._element_types}>"
+        return f"NyanMemberType<{self.dump()}>"
 
 
 class NyanMember:

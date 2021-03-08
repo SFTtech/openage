@@ -6,7 +6,7 @@ Reference documentation of the `engine.effect` module of the openage modding API
 
 ```python
 Effect(Entity):
-    properties : dict(abstract(children(EffectProperty)), children(EffectProperty))
+    properties : dict(abstract(EffectProperty), EffectProperty)
 ```
 
 Generalization object for all effects.
@@ -45,7 +45,7 @@ Generalization object for all properties of effects.
 ```python
 Area(EffectProperty):
     range   : float
-    dropoff : children(DropoffType)
+    dropoff : DropoffType
 ```
 
 Apply the effect to game entities in a circular area around the target.

@@ -6,7 +6,7 @@ Reference documentation of the `engine.modifier` module of the openage modding A
 
 ```python
 Modifier(Entity):
-    properties : dict(abstract(children(ModifierProperty)), children(ModifierProperty))
+    properties : dict(abstract(ModifierProperty), ModifierProperty)
 ```
 
 Generalization object for all modifiers. Modifiers change the behavior of abilities at for general and edge cases. They can influence more than one ability at a time.
@@ -54,8 +54,8 @@ Multiplication factor.
 
 ```python
 Scoped(ModifierProperty):
-    diplomatic_stances : set(children(DiplomaticStance))
-    scope              : children(ModifierScope)
+    stances : set(children(DiplomaticStance))
+    scope   : children(ModifierScope)
 ```
 
 Applies the modifier to a defined set of game entities. The modifier affects these game entities as long as it stays enabled for the game entity it is assigned to.
@@ -77,6 +77,119 @@ Defines how often a modifier can be applied to the same game entity.
 
 **stack_limit**
 Maximum number of times the modifier can be stacked.
+
+## modifier.effect.flat_attribute_change.type.ElevationDifferenceHigh
+
+```python
+ElevationDifferenceHigh(Modifier):
+    min_elevation_difference : optional(float)
+```
+
+Changes the cumulated *change value* of `FlatAtttributeChange` effects when the effector containing this modifier is located *higher* than the targeted resistor.
+
+**min_elevation_difference**
+The minimum elevation difference between effector and resistor.
+
+## modifier.effect.flat_attribute_change.type.Flyover
+
+```python
+Flyover(Modifier):
+    relative_angle       : float
+    flyover_types        : set(children(GameEntityType))
+    blacklisted_entities : set(GameEntity)
+```
+
+Changes the accumulated *applied change value* of `FlatAtttributeChange` effects of a projectile's attack if the projectile path went over specified game entity types.
+
+**relative_angle**
+Maximum difference between the relative angle of the effector and the flyover entity in degrees.
+
+**flyover_types**
+Whitelist of game entity types that must be under the patch of the projectile. The game entities must have the `Hitbox` ability.
+
+**blacklisted_entities**
+Blacklist for specific game entities that would be covered by `flyover_types`, but should be excplicitly excluded.
+
+## modifier.effect.flat_attribute_change.type.Terrain
+
+```python
+Terrain(Modifier):
+    terrain : Terrain
+```
+
+Changes the accumulated *applied change value* of `FlatAtttributeChange` effects when the target game entity is on a specified terrain.
+
+**terrain**
+Terrain the targeted game entity must stand on.
+
+## modifier.effect.flat_attribute_change.type.Unconditional
+
+```python
+Unconditional(Modifier):
+    pass
+```
+
+Changes the accumulated *applied change value* of `FlatAtttributeChange` effects without any conditions.
+
+## modifier.effect.type.TimeRelativeAttributeChange
+
+```python
+TimeRelativeAttributeChange(Modifier):
+    pass
+```
+
+Changes the `total_change_time` member of `TimeRelativeAttributeChange` effects.
+
+## modifier.effect.type.TimeRelativeProgressChange
+
+```python
+TimeRelativeProgressChange(Modifier):
+    pass
+```
+
+Changes the `total_change_time` member of `TimeRelativeProgress` effects.
+
+## modifier.resistance.flat_attribute_change.type.ElevationDifferenceLow
+
+```python
+ElevationDifferenceLow(Modifier):
+    min_elevation_difference : optional(float)
+```
+
+Changes the cumulated *change value* of `FlatAtttributeChange` resistances when the resistor containing this modifier is located *lower* than the effector.
+
+**min_elevation_difference**
+The minimum elevation difference between effector and resistor.
+
+## modifier.resistance.flat_attribute_change.type.Stray
+
+```python
+Stray(Modifier):
+    pass
+```
+
+Changes the cumulated *applied change value* of `FlatAtttributeChange` resistances for a projectile when the resistor was not the intended target.
+
+## modifier.resistance.flat_attribute_change.type.Terrain
+
+```python
+Terrain(Modifier):
+    terrain : Terrain
+```
+
+Changes the cumulated *applied change value* of `FlatAtttributeChange` resistances when the resisting game entity is on a specified terrain.
+
+**terrain**
+The terrain the game entity must stand on.
+
+## modifier.resistance.flat_attribute_change.type.Unconditional
+
+```python
+Unconditional(Modifier):
+    pass
+```
+
+Changes the accumulated *applied change value* of `FlatAtttributeChange` resistances without any conditions.
 
 ## modifier.type.AbsoluteProjectileAmount
 
@@ -230,73 +343,6 @@ Activates line of sight for game entities of players with the specified diplomat
 **diplomatic_stance**
 Players with these stances share ther line of sight with the modifier owner.
 
-## modifier.type.effect.flat_attribute_change.type.ElevationDifferenceHigh
-
-```python
-ElevationDifferenceHigh(Modifier):
-    min_elevation_difference : optional(float)
-```
-
-Changes the cumulated *change value* of `FlatAtttributeChange` effects when the effector containing this modifier is located *higher* than the targeted resistor.
-
-**min_elevation_difference**
-The minimum elevation difference between effector and resistor.
-
-## modifier.type.effect.flat_attribute_change.type.Flyover
-
-```python
-Flyover(Modifier):
-    flyover_types        : set(children(GameEntityType))
-    blacklisted_entities : set(GameEntity)
-```
-
-Changes the accumulated *applied change value* of `FlatAtttributeChange` effects of a projectile's attack if the projectile path went over specified game entity types.
-
-**flyover_types**
-Whitelist of game entity types that must be under the patch of the projectile. The game entities must have the `Hitbox` ability.
-
-**blacklisted_entities**
-Blacklist for specific game entities that would be covered by `flyover_types`, but should be excplicitly excluded.
-
-## modifier.type.effect.flat_attribute_change.type.Terrain
-
-```python
-Terrain(Modifier):
-    terrain : Terrain
-```
-
-Changes the accumulated *applied change value* of `FlatAtttributeChange` effects when the target game entity is on a specified terrain.
-
-**terrain**
-Terrain the targeted game entity must stand on.
-
-## modifier.type.effect.flat_attribute_change.type.Unconditional
-
-```python
-Unconditional(Modifier):
-    pass
-```
-
-Changes the accumulated *applied change value* of `FlatAtttributeChange` effects without any conditions.
-
-## modifier.type.effect.type.TimeRelativeAttributeChangeTime
-
-```python
-TimeRelativeAttributeChangeTime(Modifier):
-    pass
-```
-
-Changes the `total_change_time` member of `TimeRelativeAttributeChange` effects.
-
-## modifier.type.effect.type.TimeRelativeProgressChange
-
-```python
-TimeRelativeProgressChange(Modifier):
-    pass
-```
-
-Changes the `total_change_time` member of `TimeRelativeProgress` effects.
-
 ## modifier.type.GatheringEfficiency
 
 ```python
@@ -449,54 +495,12 @@ Changes the `research_time` member of a `ResearchableTech` object in the `Resear
 **researchables**
 `ResearchableTech` objects that are considered.
 
-## modifier.type.resistance.flat_attribute_change.type.ElevationDifferenceLow
-
-```python
-ElevationDifferenceLow(Modifier):
-    min_elevation_difference : optional(float)
-```
-
-Changes the cumulated *change value* of `FlatAtttributeChange` resistances when the resistor containing this modifier is located *lower* than the effector.
-
-**min_elevation_difference**
-The minimum elevation difference between effector and resistor.
-
-## modifier.type.resistance.flat_attribute_change.type.Stray
-
-```python
-Stray(Modifier):
-    pass
-```
-
-Changes the cumulated *applied change value* of `FlatAtttributeChange` resistances for a projectile when the resistor was not the intended target.
-
-## modifier.type.resistance.flat_attribute_change.type.Terrain
-
-```python
-Terrain(Modifier):
-    terrain : Terrain
-```
-
-Changes the cumulated *applied change value* of `FlatAtttributeChange` resistances when the resisting game entity is on a specified terrain.
-
-**terrain**
-The terrain the game entity must stand on.
-
-## modifier.type.resistance.flat_attribute_change.type.Unconditional
-
-```python
-Unconditional(Modifier):
-    pass
-```
-
-Changes the accumulated *applied change value* of `FlatAtttributeChange` resistances without any conditions.
-
 ## modifier.type.Reveal
 
 ```python
 Reveal(Modifier):
     line_of_sight        : float
-    affected_types       : set(GameEntityType)
+    affected_types       : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 

@@ -154,8 +154,8 @@ accepts_from : set(ResourceContainer)</panel_attributes>
 bg=pink
 --
 resource : Resource
-starting_amount : int
 max_amount : int
+starting_amount : int
 decay_rate : float</panel_attributes>
     <additional_attributes/>
   </element>
@@ -2919,9 +2919,9 @@ bg=blue</panel_attributes>
 bg=yellow
 
 --
+relative_angle : float
 flyover_types : set(GameEntityType)
-blacklisted_entities : set(GameEntity)
-relative_angle : float</panel_attributes>
+blacklisted_entities : set(GameEntity)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -5814,16 +5814,16 @@ subformation : Subformation</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2480</x>
+      <x>2590</x>
       <y>1650</y>
-      <w>320</w>
+      <w>210</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>*Scoped*
 bg=pink
 
 --
-diplomatic_stances : set(DiplomaticStance)
+stances : set(DiplomaticStance)
 // the scope for which the Bonus applies, e.g.
 // only for the game entity (default), for every
 // matching game entity owned by the player or 
@@ -6588,7 +6588,7 @@ bg=pink</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2280</x>
+      <x>2390</x>
       <y>1660</y>
       <w>140</w>
       <h>60</h>
@@ -6601,7 +6601,7 @@ bg=pink</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2410</x>
+      <x>2520</x>
       <y>1680</y>
       <w>90</w>
       <h>30</h>
@@ -7083,7 +7083,7 @@ resource_spot : ResourceSpot</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2230</x>
+      <x>2340</x>
       <y>1750</y>
       <w>120</w>
       <h>60</h>
@@ -7097,7 +7097,7 @@ bg=pink</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2340</x>
+      <x>2450</x>
       <y>1710</y>
       <w>70</w>
       <h>100</h>
@@ -7108,7 +7108,7 @@ bg=pink</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2100</x>
+      <x>2210</x>
       <y>1820</y>
       <w>250</w>
       <h>80</h>
@@ -7125,7 +7125,7 @@ blacklisted_entities : set(GameEntity)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2340</x>
+      <x>2450</x>
       <y>1780</y>
       <w>70</w>
       <h>90</h>
@@ -9246,15 +9246,16 @@ size : int</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2580</x>
-      <y>4150</y>
-      <w>160</w>
-      <h>60</h>
+      <x>2530</x>
+      <y>4140</y>
+      <w>210</w>
+      <h>80</h>
     </coordinates>
-    <panel_attributes>
-*LiteralScope*
+    <panel_attributes>*LiteralScope*
 bg=pink
-</panel_attributes>
+
+--
+stances : set(DiplomaticStance)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -9272,12 +9273,12 @@ bg=pink
     <id>UMLClass</id>
     <coordinates>
       <x>2500</x>
-      <y>4230</y>
+      <y>4240</y>
       <w>100</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>
-*Default*
+*Any*
 bg=pink
 </panel_attributes>
     <additional_attributes/>
@@ -9286,7 +9287,7 @@ bg=pink
     <id>Relation</id>
     <coordinates>
       <x>2610</x>
-      <y>4200</y>
+      <y>4210</y>
       <w>30</w>
       <h>150</h>
     </coordinates>
@@ -9296,23 +9297,21 @@ bg=pink
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2390</x>
-      <y>4300</y>
-      <w>210</w>
-      <h>80</h>
+      <x>2500</x>
+      <y>4310</y>
+      <w>100</w>
+      <h>60</h>
     </coordinates>
-    <panel_attributes>*Diplomatic*
-bg=pink
-
---
-stances : set(DiplomaticStance)</panel_attributes>
+    <panel_attributes>
+*Self*
+bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>2590</x>
-      <y>4320</y>
+      <y>4330</y>
       <w>50</w>
       <h>30</h>
     </coordinates>
@@ -9323,7 +9322,7 @@ stances : set(DiplomaticStance)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2590</x>
-      <y>4250</y>
+      <y>4260</y>
       <w>50</w>
       <h>30</h>
     </coordinates>
@@ -10289,7 +10288,7 @@ bg=pink
 
 --
 resource : Resource
-capacity : int
+max_amount : int
 carry_progress : set(CarryProgress)</panel_attributes>
     <additional_attributes/>
   </element>

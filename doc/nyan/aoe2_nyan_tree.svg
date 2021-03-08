@@ -1089,7 +1089,7 @@
       /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath21)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >resource : Resource</text
       ><text x="5" font-size="14px" y="69.125" clip-path="url(#clipPath21)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >capacity : int</text
+      >max_amount : int</text
       ><text x="5" font-size="14px" y="84.6562" clip-path="url(#clipPath21)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >carry_progress : set(CarryProgress)</text
     ></g
@@ -1429,32 +1429,32 @@
       /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath8)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >only_enabled : bool</text
     ></g
-    ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(2390,4300)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
+    ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(2500,4310)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
+    ><rect x="0.5" width="98.5" height="58.5" y="0.5" clip-path="url(#clipPath2)" stroke="none"
+    /></g
+    ><g transform="translate(2500,4310)"
+    ><rect fill="none" x="0.5" width="98.5" height="58.5" y="0.5" clip-path="url(#clipPath2)"
+      /><text x="37" font-size="14px" y="33.0625" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
+      >Self</text
+    ></g
+    ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(2500,4240)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
+    ><rect x="0.5" width="98.5" height="58.5" y="0.5" clip-path="url(#clipPath2)" stroke="none"
+    /></g
+    ><g transform="translate(2500,4240)"
+    ><rect fill="none" x="0.5" width="98.5" height="58.5" y="0.5" clip-path="url(#clipPath2)"
+      /><text x="36" font-size="14px" y="33.0625" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
+      >Any</text
+    ></g
+    ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(2530,4140)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
     ><rect x="0.5" width="208.5" height="78.5" y="0.5" clip-path="url(#clipPath25)" stroke="none"
     /></g
-    ><g transform="translate(2390,4300)"
+    ><g transform="translate(2530,4140)"
     ><rect fill="none" x="0.5" width="208.5" height="78.5" y="0.5" clip-path="url(#clipPath25)"
-      /><text x="69" font-size="14px" y="17.5312" clip-path="url(#clipPath25)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
-      >Diplomatic</text
+      /><text x="62" font-size="14px" y="17.5312" clip-path="url(#clipPath25)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
+      >LiteralScope</text
       ><path fill="none" d="M1 39.0625 L209 39.0625" clip-path="url(#clipPath25)"
       /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath25)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >stances : set(DiplomaticStance)</text
-    ></g
-    ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(2500,4230)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
-    ><rect x="0.5" width="98.5" height="58.5" y="0.5" clip-path="url(#clipPath2)" stroke="none"
-    /></g
-    ><g transform="translate(2500,4230)"
-    ><rect fill="none" x="0.5" width="98.5" height="58.5" y="0.5" clip-path="url(#clipPath2)"
-      /><text x="26" font-size="14px" y="33.0625" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
-      >Default</text
-    ></g
-    ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(2580,4150)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
-    ><rect x="0.5" width="158.5" height="58.5" y="0.5" clip-path="url(#clipPath10)" stroke="none"
-    /></g
-    ><g transform="translate(2580,4150)"
-    ><rect fill="none" x="0.5" width="158.5" height="58.5" y="0.5" clip-path="url(#clipPath10)"
-      /><text x="37" font-size="14px" y="33.0625" clip-path="url(#clipPath10)" font-family="sans-serif" stroke="none" font-weight="bold" xml:space="preserve"
-      >LiteralScope</text
     ></g
     ><g fill="rgb(255,175,175)" fill-opacity="0.4902" transform="translate(3180,4250)" stroke-opacity="0.4902" stroke="rgb(255,175,175)"
     ><rect x="0.5" width="138.5" height="78.5" y="0.5" clip-path="url(#clipPath16)" stroke="none"
@@ -5304,9 +5304,9 @@
       /><text x="5" font-size="14px" y="53.5938" clip-path="url(#clipPath102)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >resource : Resource</text
       ><text x="5" font-size="14px" y="69.125" clip-path="url(#clipPath102)" font-family="sans-serif" stroke="none" xml:space="preserve"
-      >starting_amount : int</text
-      ><text x="5" font-size="14px" y="84.6562" clip-path="url(#clipPath102)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >max_amount : int</text
+      ><text x="5" font-size="14px" y="84.6562" clip-path="url(#clipPath102)" font-family="sans-serif" stroke="none" xml:space="preserve"
+      >starting_amount : int</text
       ><text x="5" font-size="14px" y="100.1875" clip-path="url(#clipPath102)" font-family="sans-serif" stroke="none" xml:space="preserve"
       >decay_rate : float</text
     ></g
@@ -5742,13 +5742,13 @@
     ><g transform="translate(2960,4280)"
     ><path fill="none" d="M10.5 10.5 L30.5 10.5" clip-path="url(#clipPath103)"
     /></g
-    ><g transform="translate(2590,4250)"
+    ><g transform="translate(2590,4260)"
     ><path fill="none" d="M10.5 10.5 L30.5 10.5" clip-path="url(#clipPath103)"
     /></g
-    ><g transform="translate(2590,4320)"
+    ><g transform="translate(2590,4330)"
     ><path fill="none" d="M10.5 10.5 L30.5 10.5" clip-path="url(#clipPath103)"
     /></g
-    ><g transform="translate(2610,4200)"
+    ><g transform="translate(2610,4210)"
     ><path fill="none" d="M10.5 10.5 L10.5 130.5" clip-path="url(#clipPath122)"
       /><path fill="white" d="M4 21.7583 L10.5 10.5 L17 21.7583 L4 21.7583" clip-path="url(#clipPath122)" stroke="none"
       /><path fill="none" d="M4 21.7583 L10.5 10.5 L17 21.7583 L4 21.7583" clip-path="url(#clipPath122)"
