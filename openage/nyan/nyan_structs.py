@@ -620,7 +620,7 @@ class NyanMemberType:
         Returns the member type without wrapping modifiers.
         """
         if self.is_modifier():
-            return self._element_types[0].get_type()
+            return self._element_types[0].get_real_type()
 
         return self._member_type
 
@@ -645,7 +645,7 @@ class NyanMemberType:
         Returns True if the member type is a primitive wrapped in a modifier.
         """
         if self.is_modifier():
-            return self._element_types[0].is_primitive()
+            return self._element_types[0].is_real_primitive()
 
         return self.is_primitive()
 
@@ -662,7 +662,7 @@ class NyanMemberType:
         Returns True if the member type is a collection wrapped in a modifier.
         """
         if self.is_modifier():
-            return self._element_types[0].is_complex()
+            return self._element_types[0].is_real_complex()
 
         return self.is_complex()
 
@@ -677,7 +677,7 @@ class NyanMemberType:
         Returns True if the member type is an object wrapped in a modifier.
         """
         if self.is_modifier():
-            return self._element_types[0].is_object()
+            return self._element_types[0].is_real_object()
 
         return self.is_object()
 

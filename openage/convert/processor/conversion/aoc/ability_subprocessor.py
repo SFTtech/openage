@@ -662,7 +662,7 @@ class AoCAbilitySubprocessor:
                                                    0.0,
                                                    "engine.aux.progress.Progress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.TerrainOverlay")
 
             # Terrain overlay
             terrain_ref = "FarmConstruction1"
@@ -670,7 +670,7 @@ class AoCAbilitySubprocessor:
             terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
                                                    terrain_forward_ref,
-                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+                                                   "engine.aux.progress.property.type.TerrainOverlay")
 
             progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
@@ -794,7 +794,7 @@ class AoCAbilitySubprocessor:
                                                    33.0,
                                                    "engine.aux.progress.Progress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.TerrainOverlay")
 
             # Terrain overlay
             terrain_ref = "FarmConstruction1"
@@ -802,7 +802,7 @@ class AoCAbilitySubprocessor:
             terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
                                                    terrain_forward_ref,
-                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+                                                   "engine.aux.progress.property.type.TerrainOverlay")
 
             progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
@@ -917,7 +917,7 @@ class AoCAbilitySubprocessor:
                                                    66.0,
                                                    "engine.aux.progress.Progress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.TerrainOverlay")
 
             # Terrain overlay
             terrain_ref = "FarmConstruction2"
@@ -925,7 +925,7 @@ class AoCAbilitySubprocessor:
             terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
                                                    terrain_forward_ref,
-                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+                                                   "engine.aux.progress.property.type.TerrainOverlay")
 
             # State change
             progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
@@ -952,7 +952,7 @@ class AoCAbilitySubprocessor:
                                                    100.0,
                                                    "engine.aux.progress.Progress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.TerrainOverlay")
 
             # Terrain overlay
             terrain_ref = "FarmConstruction3"
@@ -960,7 +960,7 @@ class AoCAbilitySubprocessor:
             terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
                                                    terrain_forward_ref,
-                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+                                                   "engine.aux.progress.property.type.TerrainOverlay")
 
             # State change
             progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
@@ -2831,7 +2831,7 @@ class AoCAbilitySubprocessor:
                                                    33.0,
                                                    "engine.aux.progress.Progress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.TerrainOverlay")
 
             # Terrain overlay
             terrain_ref = "FarmConstruction1"
@@ -2839,7 +2839,7 @@ class AoCAbilitySubprocessor:
             terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
                                                    terrain_forward_ref,
-                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+                                                   "engine.aux.progress.property.type.TerrainOverlay")
 
             progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
@@ -2869,7 +2869,7 @@ class AoCAbilitySubprocessor:
                                                    66.0,
                                                    "engine.aux.progress.Progress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.TerrainOverlay")
 
             # Terrain overlay
             terrain_ref = "FarmConstruction2"
@@ -2877,7 +2877,7 @@ class AoCAbilitySubprocessor:
             terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
                                                    terrain_forward_ref,
-                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+                                                   "engine.aux.progress.property.type.TerrainOverlay")
 
             progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
@@ -2906,7 +2906,7 @@ class AoCAbilitySubprocessor:
                                                    100.0,
                                                    "engine.aux.progress.Progress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+            progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.TerrainOverlay")
 
             # Terrain overlay
             terrain_ref = "FarmConstruction3"
@@ -2914,7 +2914,7 @@ class AoCAbilitySubprocessor:
             terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
             progress_raw_api_object.add_raw_member("terrain_overlay",
                                                    terrain_forward_ref,
-                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+                                                   "engine.aux.progress.property.type.TerrainOverlay")
 
             progress_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
 
@@ -3743,6 +3743,17 @@ class AoCAbilitySubprocessor:
         mode_raw_api_object.add_raw_member("blacklisted_entities",
                                            [],
                                            "engine.aux.passable_mode.PassableMode")
+
+        if isinstance(line, GenieStackBuildingGroup):
+            if line.is_gate():
+                # Let friendly and own units pass through gate
+                stances = [
+                    dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object(),
+                    dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]
+                ]
+                mode_raw_api_object.add_raw_member("stances",
+                                                   stances,
+                                                   mode_parent)
 
         line.add_raw_api_object(mode_raw_api_object)
         # =====================================================================================
