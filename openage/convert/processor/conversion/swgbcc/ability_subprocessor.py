@@ -1203,7 +1203,7 @@ class SWGBCCAbilitySubprocessor:
 
             # Carry capacity
             carry_capacity = gatherer["resource_capacity"].get_value()
-            container_raw_api_object.add_raw_member("capacity",
+            container_raw_api_object.add_raw_member("max_amount",
                                                     carry_capacity,
                                                     "engine.aux.storage.ResourceContainer")
 

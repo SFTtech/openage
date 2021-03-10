@@ -278,12 +278,6 @@ class SWGBCCPregenSubprocessor:
         exchange_pool_raw_api_object.set_filename("market_trading")
         exchange_pool_raw_api_object.add_raw_parent(exchange_pool_parent)
 
-        # Diplomatic stances
-        diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Any"]]
-        exchange_pool_raw_api_object.add_raw_member("diplomatic_stances",
-                                                    diplomatic_stances,
-                                                    exchange_pool_parent)
-
         pregen_converter_group.add_raw_api_object(exchange_pool_raw_api_object)
         pregen_nyan_objects.update({exchange_pool_ref_in_modpack: exchange_pool_raw_api_object})
 
@@ -298,12 +292,6 @@ class SWGBCCPregenSubprocessor:
         exchange_pool_raw_api_object.set_filename("market_trading")
         exchange_pool_raw_api_object.add_raw_parent(exchange_pool_parent)
 
-        # Diplomatic stances
-        diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Any"]]
-        exchange_pool_raw_api_object.add_raw_member("diplomatic_stances",
-                                                    diplomatic_stances,
-                                                    exchange_pool_parent)
-
         pregen_converter_group.add_raw_api_object(exchange_pool_raw_api_object)
         pregen_nyan_objects.update({exchange_pool_ref_in_modpack: exchange_pool_raw_api_object})
 
@@ -317,12 +305,6 @@ class SWGBCCPregenSubprocessor:
                                                     exchange_pool_location)
         exchange_pool_raw_api_object.set_filename("market_trading")
         exchange_pool_raw_api_object.add_raw_parent(exchange_pool_parent)
-
-        # Diplomatic stances
-        diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Any"]]
-        exchange_pool_raw_api_object.add_raw_member("diplomatic_stances",
-                                                    diplomatic_stances,
-                                                    exchange_pool_parent)
 
         pregen_converter_group.add_raw_api_object(exchange_pool_raw_api_object)
         pregen_nyan_objects.update({exchange_pool_ref_in_modpack: exchange_pool_raw_api_object})
@@ -346,12 +328,19 @@ class SWGBCCPregenSubprocessor:
                                                     1.0,
                                                     exchange_rate_parent)
 
-        # Price adjust method
-        pa_forward_ref = ForwardRef(pregen_converter_group,
-                                    "aux.resource.market_trading.MarketDynamicPriceMode")
+        # Price adjust methods
+        pa_buy_forward_ref = ForwardRef(pregen_converter_group,
+                                        "aux.resource.market_trading.MarketBuyPriceMode")
+        pa_sell_forward_ref = ForwardRef(pregen_converter_group,
+                                         "aux.resource.market_trading.MarketSellPriceMode")
+        price_adjust = {
+            api_objects["engine.aux.exchange_mode.type.Buy"]: pa_buy_forward_ref,
+            api_objects["engine.aux.exchange_mode.type.Sell"]: pa_sell_forward_ref
+        }
         exchange_rate_raw_api_object.add_raw_member("price_adjust",
-                                                    pa_forward_ref,
+                                                    price_adjust,
                                                     exchange_rate_parent)
+
         # Price pool
         pool_forward_ref = ForwardRef(pregen_converter_group,
                                       "aux.resource.market_trading.MarketFoodPricePool")
@@ -378,12 +367,19 @@ class SWGBCCPregenSubprocessor:
                                                     1.0,
                                                     exchange_rate_parent)
 
-        # Price adjust method
-        pa_forward_ref = ForwardRef(pregen_converter_group,
-                                    "aux.resource.market_trading.MarketDynamicPriceMode")
+        # Price adjust methods
+        pa_buy_forward_ref = ForwardRef(pregen_converter_group,
+                                        "aux.resource.market_trading.MarketBuyPriceMode")
+        pa_sell_forward_ref = ForwardRef(pregen_converter_group,
+                                         "aux.resource.market_trading.MarketSellPriceMode")
+        price_adjust = {
+            api_objects["engine.aux.exchange_mode.type.Buy"]: pa_buy_forward_ref,
+            api_objects["engine.aux.exchange_mode.type.Sell"]: pa_sell_forward_ref
+        }
         exchange_rate_raw_api_object.add_raw_member("price_adjust",
-                                                    pa_forward_ref,
+                                                    price_adjust,
                                                     exchange_rate_parent)
+
         # Price pool
         pool_forward_ref = ForwardRef(pregen_converter_group,
                                       "aux.resource.market_trading.MarketCarbonPricePool")
@@ -410,12 +406,19 @@ class SWGBCCPregenSubprocessor:
                                                     1.3,
                                                     exchange_rate_parent)
 
-        # Price adjust method
-        pa_forward_ref = ForwardRef(pregen_converter_group,
-                                    "aux.resource.market_trading.MarketDynamicPriceMode")
+        # Price adjust methods
+        pa_buy_forward_ref = ForwardRef(pregen_converter_group,
+                                        "aux.resource.market_trading.MarketBuyPriceMode")
+        pa_sell_forward_ref = ForwardRef(pregen_converter_group,
+                                         "aux.resource.market_trading.MarketSellPriceMode")
+        price_adjust = {
+            api_objects["engine.aux.exchange_mode.type.Buy"]: pa_buy_forward_ref,
+            api_objects["engine.aux.exchange_mode.type.Sell"]: pa_sell_forward_ref
+        }
         exchange_rate_raw_api_object.add_raw_member("price_adjust",
-                                                    pa_forward_ref,
+                                                    price_adjust,
                                                     exchange_rate_parent)
+
         # Price pool
         pool_forward_ref = ForwardRef(pregen_converter_group,
                                       "aux.resource.market_trading.MarketOrePricePool")
@@ -427,95 +430,68 @@ class SWGBCCPregenSubprocessor:
         pregen_nyan_objects.update({exchange_rate_ref_in_modpack: exchange_rate_raw_api_object})
 
         # =======================================================================
-        # Price mode
+        # Buy Price mode
         # =======================================================================
-        price_mode_parent = "engine.aux.price_mode.dynamic.type.DynamicFlat"
+        price_mode_parent = "engine.aux.price_mode.type.Dynamic"
         price_mode_location = "data/aux/resource/"
 
-        price_mode_ref_in_modpack = "aux.resource.market_trading.MarketDynamicPriceMode"
+        price_mode_ref_in_modpack = "aux.resource.market_trading.MarketBuyPriceMode"
         price_mode_raw_api_object = RawAPIObject(price_mode_ref_in_modpack,
-                                                 "MarketDynamicPriceMode",
+                                                 "MarketBuyPriceMode",
                                                  api_objects,
                                                  price_mode_location)
         price_mode_raw_api_object.set_filename("market_trading")
         price_mode_raw_api_object.add_raw_parent(price_mode_parent)
 
+        # Change value
+        price_mode_raw_api_object.add_raw_member("change_value",
+                                                 0.03,
+                                                 price_mode_parent)
+
         # Min price
         price_mode_raw_api_object.add_raw_member("min_price",
                                                  0.3,
-                                                 "engine.aux.price_mode.dynamic.Dynamic")
+                                                 price_mode_parent)
 
         # Max price
         price_mode_raw_api_object.add_raw_member("max_price",
                                                  99.9,
-                                                 "engine.aux.price_mode.dynamic.Dynamic")
-
-        # Change settings
-        settings = [
-            ForwardRef(pregen_converter_group,
-                       "aux.resource.market_trading.MarketBuyPriceChange"),
-            ForwardRef(pregen_converter_group,
-                       "aux.resource.market_trading.MarketSellPriceChange"),
-        ]
-        price_mode_raw_api_object.add_raw_member("change_settings",
-                                                 settings,
                                                  price_mode_parent)
 
         pregen_converter_group.add_raw_api_object(price_mode_raw_api_object)
         pregen_nyan_objects.update({price_mode_ref_in_modpack: price_mode_raw_api_object})
 
         # =======================================================================
-        # Price change Buy
+        # Sell Price mode
         # =======================================================================
-        price_change_parent = "engine.aux.price_change.PriceChange"
-        price_change_location = "data/aux/resource/"
+        price_mode_parent = "engine.aux.price_mode.type.Dynamic"
+        price_mode_location = "data/aux/resource/"
 
-        price_change_ref_in_modpack = "aux.resource.market_trading.MarketBuyPriceChange"
-        price_change_raw_api_object = RawAPIObject(price_change_ref_in_modpack,
-                                                   "MarketBuyPriceChange",
-                                                   api_objects,
-                                                   price_change_location)
-        price_change_raw_api_object.set_filename("market_trading")
-        price_change_raw_api_object.add_raw_parent(price_change_parent)
-
-        # Exchange Mode
-        exchange_mode = api_objects["engine.aux.exchange_mode.type.Buy"]
-        price_change_raw_api_object.add_raw_member("exchange_mode",
-                                                   exchange_mode,
-                                                   price_change_parent)
+        price_mode_ref_in_modpack = "aux.resource.market_trading.MarketSellPriceMode"
+        price_mode_raw_api_object = RawAPIObject(price_mode_ref_in_modpack,
+                                                 "MarketSellPriceMode",
+                                                 api_objects,
+                                                 price_mode_location)
+        price_mode_raw_api_object.set_filename("market_trading")
+        price_mode_raw_api_object.add_raw_parent(price_mode_parent)
 
         # Change value
-        price_change_raw_api_object.add_raw_member("change_value",
-                                                   0.03,
-                                                   price_change_parent)
+        price_mode_raw_api_object.add_raw_member("change_value",
+                                                 -0.03,
+                                                 price_mode_parent)
 
-        pregen_converter_group.add_raw_api_object(price_change_raw_api_object)
-        pregen_nyan_objects.update({price_change_ref_in_modpack: price_change_raw_api_object})
+        # Min price
+        price_mode_raw_api_object.add_raw_member("min_price",
+                                                 0.3,
+                                                 price_mode_parent)
 
-        # =======================================================================
-        # Price change Sell
-        # =======================================================================
-        price_change_ref_in_modpack = "aux.resource.market_trading.MarketSellPriceChange"
-        price_change_raw_api_object = RawAPIObject(price_change_ref_in_modpack,
-                                                   "MarketSellPriceChange",
-                                                   api_objects,
-                                                   price_change_location)
-        price_change_raw_api_object.set_filename("market_trading")
-        price_change_raw_api_object.add_raw_parent(price_change_parent)
+        # Max price
+        price_mode_raw_api_object.add_raw_member("max_price",
+                                                 99.9,
+                                                 price_mode_parent)
 
-        # Exchange Mode
-        exchange_mode = api_objects["engine.aux.exchange_mode.type.Sell"]
-        price_change_raw_api_object.add_raw_member("exchange_mode",
-                                                   exchange_mode,
-                                                   price_change_parent)
-
-        # Change value
-        price_change_raw_api_object.add_raw_member("change_value",
-                                                   -0.03,
-                                                   price_change_parent)
-
-        pregen_converter_group.add_raw_api_object(price_change_raw_api_object)
-        pregen_nyan_objects.update({price_change_ref_in_modpack: price_change_raw_api_object})
+        pregen_converter_group.add_raw_api_object(price_mode_raw_api_object)
+        pregen_nyan_objects.update({price_mode_ref_in_modpack: price_mode_raw_api_object})
 
     @staticmethod
     def generate_resources(full_data_set, pregen_converter_group):

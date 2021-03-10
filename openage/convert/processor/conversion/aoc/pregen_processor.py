@@ -746,17 +746,17 @@ class AoCPregenSubprocessor:
         # Min price
         price_mode_raw_api_object.add_raw_member("change_value",
                                                  0.03,
-                                                 "engine.aux.price_mode.type.Dynamic")
+                                                 price_mode_parent)
 
         # Min price
         price_mode_raw_api_object.add_raw_member("min_price",
                                                  0.3,
-                                                 "engine.aux.price_mode.type.Dynamic")
+                                                 price_mode_parent)
 
         # Max price
         price_mode_raw_api_object.add_raw_member("max_price",
                                                  99.9,
-                                                 "engine.aux.price_mode.type.Dynamic")
+                                                 price_mode_parent)
 
         pregen_converter_group.add_raw_api_object(price_mode_raw_api_object)
         pregen_nyan_objects.update({price_mode_ref_in_modpack: price_mode_raw_api_object})
@@ -778,17 +778,17 @@ class AoCPregenSubprocessor:
         # Min price
         price_mode_raw_api_object.add_raw_member("change_value",
                                                  -0.03,
-                                                 "engine.aux.price_mode.type.Dynamic")
+                                                 price_mode_parent)
 
         # Min price
         price_mode_raw_api_object.add_raw_member("min_price",
                                                  0.3,
-                                                 "engine.aux.price_mode.type.Dynamic")
+                                                 price_mode_parent)
 
         # Max price
         price_mode_raw_api_object.add_raw_member("max_price",
                                                  99.9,
-                                                 "engine.aux.price_mode.type.Dynamic")
+                                                 price_mode_parent)
 
         pregen_converter_group.add_raw_api_object(price_mode_raw_api_object)
         pregen_nyan_objects.update({price_mode_ref_in_modpack: price_mode_raw_api_object})

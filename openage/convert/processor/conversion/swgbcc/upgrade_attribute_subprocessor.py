@@ -89,14 +89,14 @@ class SWGBCCUpgradeAttributeSubprocessor:
                                               "engine.aux.patch.Patch")
 
         if team:
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.property.type.Diplomatic")
             stances = [
                 dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
                 dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
             ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
-                                                  "engine.aux.patch.type.DiplomaticPatch")
+                                                  "engine.aux.patch.property.type.Diplomatic")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -176,14 +176,14 @@ class SWGBCCUpgradeAttributeSubprocessor:
                                               "engine.aux.patch.Patch")
 
         if team:
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.property.type.Diplomatic")
             stances = [
                 dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
                 dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
             ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
-                                                  "engine.aux.patch.type.DiplomaticPatch")
+                                                  "engine.aux.patch.property.type.Diplomatic")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -263,14 +263,14 @@ class SWGBCCUpgradeAttributeSubprocessor:
                                               "engine.aux.patch.Patch")
 
         if team:
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.property.type.Diplomatic")
             stances = [
                 dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
                 dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
             ]
             wrapper_raw_api_object.add_raw_member("stances",
                                                   stances,
-                                                  "engine.aux.patch.type.DiplomaticPatch")
+                                                  "engine.aux.patch.property.type.Diplomatic")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -380,14 +380,14 @@ class SWGBCCUpgradeAttributeSubprocessor:
                                                   "engine.aux.patch.Patch")
 
             if team:
-                wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
+                wrapper_raw_api_object.add_raw_parent("engine.aux.patch.property.type.Diplomatic")
                 stances = [
                     dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
                     dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
                 ]
                 wrapper_raw_api_object.add_raw_member("stances",
                                                       stances,
-                                                      "engine.aux.patch.type.DiplomaticPatch")
+                                                      "engine.aux.patch.property.type.Diplomatic")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
