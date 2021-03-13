@@ -5128,6 +5128,7 @@ class AoCAbilitySubprocessor:
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         # get the restock target
         converter_groups = {}
@@ -5152,8 +5153,10 @@ class AoCAbilitySubprocessor:
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        ability_animation_id = -1
+        # Ability properties
+        properties = {}
 
+        ability_animation_id = -1
         if isinstance(line, GenieVillagerGroup) and restock_target_id == 50:
             # Search for the build graphic of farms
             restock_unit = line.get_units_with_command(101)[0]
@@ -5166,19 +5169,37 @@ class AoCAbilitySubprocessor:
 
         if ability_animation_id > -1:
             # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
+            property_ref = f"{ability_ref}.Animated"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "Animated",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
+            property_location = ForwardRef(line, ability_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
                                                                             ability_animation_id,
-                                                                            ability_ref,
+                                                                            property_ref,
                                                                             restock_lookup_dict[restock_target_id][0],
                                                                             "%s_"
                                                                             % restock_lookup_dict[restock_target_id][1])
 
             animations_set.append(animation_forward_ref)
-            ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.property.type.Animated")
+            property_raw_api_object.add_raw_member("animations",
+                                                   animations_set,
+                                                   "engine.ability.property.type.Animated")
+
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.ability.property.type.Animated"]: property_forward_ref
+            })
+
+        ability_raw_api_object.add_raw_member("properties",
+                                              properties,
+                                              "engine.ability.Ability")
 
         # Auto restock
         ability_raw_api_object.add_raw_member("auto_restock",
@@ -5510,9 +5531,11 @@ class AoCAbilitySubprocessor:
                 override_location = ForwardRef(line, property_ref)
                 override_raw_api_object.set_location(override_location)
 
-                idle_forward_ref = ForwardRef(line, f"{game_entity_name}.Move")
+                line.add_raw_api_object(override_raw_api_object)
+
+                move_forward_ref = ForwardRef(line, f"{game_entity_name}.Move")
                 override_raw_api_object.add_raw_member("ability",
-                                                       idle_forward_ref,
+                                                       move_forward_ref,
                                                        "engine.aux.animation_override.AnimationOverride")
 
                 # Animation
@@ -5534,7 +5557,6 @@ class AoCAbilitySubprocessor:
 
                 override_forward_ref = ForwardRef(line, override_ref)
                 overrides.append(override_forward_ref)
-                line.add_raw_api_object(override_raw_api_object)
                 # =================================================================================
                 # TODO: Idle override (stops on last used frame of Move override?)
                 # =================================================================================
@@ -6911,7 +6933,7 @@ class AoCAbilitySubprocessor:
 
         if not contingents:
             # Break out of function if no contingents were found
-            return
+            return None
 
         ability_raw_api_object = RawAPIObject(ability_ref,
                                               "UseContingent",
