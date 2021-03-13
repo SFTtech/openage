@@ -1,6 +1,6 @@
 # Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
-# pylint: disable=too-many-locals,invalid-name
+# pylint: disable=too-many-locals,too-many-statements,invalid-name
 #
 # TODO:
 # pylint: disable=line-too-long
@@ -9,7 +9,6 @@
 Creates effects and resistances for the Apply*Effect and Resistance
 abilities.
 """
-from .....nyan.nyan_structs import MemberSpecialValue
 from ....entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
@@ -347,6 +346,7 @@ class AoCEffectSubprocessor:
         :rtype: list
         """
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
@@ -372,6 +372,8 @@ class AoCEffectSubprocessor:
             repair_raw_api_object.add_raw_parent(repair_parent)
             repair_location = ForwardRef(line, location_ref)
             repair_raw_api_object.set_location(repair_location)
+
+            line.add_raw_api_object(repair_raw_api_object)
 
             # Type
             type_ref = f"aux.attribute_change_type.types.{game_entity_name}Repair"
@@ -423,14 +425,31 @@ class AoCEffectSubprocessor:
                                                  effect_parent)
 
             # Repair cost
-            repair_raw_api_object.add_raw_parent("engine.effect.property.type.Cost")
+            property_ref = f"{repair_ref}.Cost"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "Cost",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.effect.property.type.Cost")
+            property_location = ForwardRef(line, repair_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
+
             cost_ref = f"{game_entity_name}.CreatableGameEntity.{game_entity_name}RepairCost"
             cost_forward_ref = ForwardRef(repairable_line, cost_ref)
-            repair_raw_api_object.add_raw_member("cost",
-                                                 cost_forward_ref,
-                                                 "engine.effect.property.type.Cost")
+            property_raw_api_object.add_raw_member("cost",
+                                                   cost_forward_ref,
+                                                   "engine.effect.property.type.Cost")
 
-            line.add_raw_api_object(repair_raw_api_object)
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties = {
+                api_objects["engine.effect.property.type.Cost"]: property_forward_ref
+            }
+
+            repair_raw_api_object.add_raw_member("properties",
+                                                 properties,
+                                                 "engine.effect.Effect")
+
             repair_forward_ref = ForwardRef(line, repair_ref)
             effects.append(repair_forward_ref)
 
@@ -758,6 +777,7 @@ class AoCEffectSubprocessor:
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         resistances = []
 
@@ -807,24 +827,15 @@ class AoCEffectSubprocessor:
                                                  resistance_parent)
 
         # Stacking of villager repair HP increase
-        resistance_raw_api_object.add_raw_parent("engine.resistance.property.type.Stacked")
+        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingRepair"].get_nyan_object()
+        properties = {
+            api_objects["engine.resistance.property.type.Stacked"]: construct_property
+        }
 
-        # Stack limit
-        resistance_raw_api_object.add_raw_member("stack_limit",
-                                                 MemberSpecialValue.NYAN_INF,
-                                                 "engine.resistance.property.type.Stacked")
-
-        # Calculation type
-        calculation_type = dataset.pregen_nyan_objects["aux.calculation_type.construct_calculation.BuildingConstruct"].get_nyan_object()
-        resistance_raw_api_object.add_raw_member("calculation_type",
-                                                 calculation_type,
-                                                 "engine.resistance.property.type.Stacked")
-
-        # Calculation type
-        distribution_type = dataset.nyan_api_objects["engine.aux.distribution_type.type.Mean"]
-        resistance_raw_api_object.add_raw_member("distribution_type",
-                                                 distribution_type,
-                                                 "engine.resistance.property.type.Stacked")
+        # Add the predefined property
+        resistance_raw_api_object.add_raw_member("properties",
+                                                 properties,
+                                                 "engine.resistance.Resistance")
 
         line.add_raw_api_object(resistance_raw_api_object)
         resistance_forward_ref = ForwardRef(line, resistance_ref)
@@ -846,6 +857,7 @@ class AoCEffectSubprocessor:
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         resistances = []
 
@@ -879,24 +891,15 @@ class AoCEffectSubprocessor:
         resistances.append(resistance_forward_ref)
 
         # Stacking of villager construction times
-        resistance_raw_api_object.add_raw_parent("engine.resistance.property.type.Stacked")
+        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingConstruct"].get_nyan_object()
+        properties = {
+            api_objects["engine.resistance.property.type.Stacked"]: construct_property
+        }
 
-        # Stack limit
-        resistance_raw_api_object.add_raw_member("stack_limit",
-                                                 MemberSpecialValue.NYAN_INF,
-                                                 "engine.resistance.property.type.Stacked")
-
-        # Calculation type
-        calculation_type = dataset.pregen_nyan_objects["aux.calculation_type.construct_calculation.BuildingConstruct"].get_nyan_object()
-        resistance_raw_api_object.add_raw_member("calculation_type",
-                                                 calculation_type,
-                                                 "engine.resistance.property.type.Stacked")
-
-        # Calculation type
-        distribution_type = dataset.nyan_api_objects["engine.aux.distribution_type.type.Mean"]
-        resistance_raw_api_object.add_raw_member("distribution_type",
-                                                 distribution_type,
-                                                 "engine.resistance.property.type.Stacked")
+        # Add the predefined property
+        resistance_raw_api_object.add_raw_member("properties",
+                                                 properties,
+                                                 "engine.resistance.Resistance")
 
         # Health
         resistance_ref = f"{ability_ref}.ConstructHP"
@@ -915,24 +918,15 @@ class AoCEffectSubprocessor:
                                                  attr_resistance_parent)
 
         # Stacking of villager construction HP increase
-        resistance_raw_api_object.add_raw_parent("engine.resistance.property.type.Stacked")
+        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingConstruct"].get_nyan_object()
+        properties = {
+            api_objects["engine.resistance.property.type.Stacked"]: construct_property
+        }
 
-        # Stack limit
-        resistance_raw_api_object.add_raw_member("stack_limit",
-                                                 MemberSpecialValue.NYAN_INF,
-                                                 "engine.resistance.property.type.Stacked")
-
-        # Calculation type
-        calculation_type = dataset.pregen_nyan_objects["aux.calculation_type.construct_calculation.BuildingConstruct"].get_nyan_object()
-        resistance_raw_api_object.add_raw_member("calculation_type",
-                                                 calculation_type,
-                                                 "engine.resistance.property.type.Stacked")
-
-        # Calculation type
-        distribution_type = dataset.nyan_api_objects["engine.aux.distribution_type.type.Mean"]
-        resistance_raw_api_object.add_raw_member("distribution_type",
-                                                 distribution_type,
-                                                 "engine.resistance.property.type.Stacked")
+        # Add the predefined property
+        resistance_raw_api_object.add_raw_member("properties",
+                                                 properties,
+                                                 "engine.resistance.Resistance")
 
         line.add_raw_api_object(resistance_raw_api_object)
         resistance_forward_ref = ForwardRef(line, resistance_ref)

@@ -31,6 +31,7 @@ class AoCPregenSubprocessor:
 
         cls.generate_attributes(gamedata, pregen_converter_group)
         cls.generate_diplomatic_stances(gamedata, pregen_converter_group)
+        cls.generate_team_property(gamedata, pregen_converter_group)
         cls.generate_entity_types(gamedata, pregen_converter_group)
         cls.generate_effect_types(gamedata, pregen_converter_group)
         cls.generate_exchange_objects(gamedata, pregen_converter_group)
@@ -236,6 +237,42 @@ class AoCPregenSubprocessor:
 
         pregen_converter_group.add_raw_api_object(gaia_raw_api_object)
         pregen_nyan_objects.update({gaia_ref_in_modpack: gaia_raw_api_object})
+
+    @staticmethod
+    def generate_team_property(full_data_set, pregen_converter_group):
+        """
+        Generate the property used in team patches objects.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        :param pregen_converter_group: GenieObjectGroup instance that stores
+                                       pregenerated API objects for referencing with
+                                       ForwardRef
+        :type pregen_converter_group: ...dataformat.aoc.genie_object_container.GenieObjectGroup
+        """
+        pregen_nyan_objects = full_data_set.pregen_nyan_objects
+        api_objects = full_data_set.nyan_api_objects
+
+        prop_ref_in_modpack = "aux.patch.property.types.Team"
+        prop_raw_api_object = RawAPIObject(prop_ref_in_modpack,
+                                           "Team",
+                                           api_objects,
+                                           "data/aux/patch/property/")
+        prop_raw_api_object.set_filename("types")
+        prop_raw_api_object.add_raw_parent("engine.aux.patch.property.type.Diplomatic")
+
+        pregen_converter_group.add_raw_api_object(prop_raw_api_object)
+        pregen_nyan_objects.update({prop_ref_in_modpack: prop_raw_api_object})
+
+        stances = [
+            full_data_set.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+            ForwardRef(pregen_converter_group, "aux.diplomatic_stance.types.Friendly")
+        ]
+        prop_raw_api_object.add_raw_member("stances",
+                                           stances,
+                                           "engine.aux.patch.property.type.Diplomatic")
 
     @staticmethod
     def generate_entity_types(full_data_set, pregen_converter_group):
@@ -1240,21 +1277,44 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects.update({fallback_ref_in_modpack: fallback_raw_api_object})
 
         # =======================================================================
+        # Property Construct
+        # =======================================================================
+        prop_ref_in_modpack = "resistance.property.types.BuildingConstruct"
+        prop_raw_api_object = RawAPIObject(prop_ref_in_modpack,
+                                           "BuildingConstruct",
+                                           api_objects,
+                                           "data/resistance/property/")
+        prop_raw_api_object.set_filename("types")
+        prop_raw_api_object.add_raw_parent("engine.resistance.property.type.Stacked")
+
+        pregen_converter_group.add_raw_api_object(prop_raw_api_object)
+        pregen_nyan_objects.update({prop_ref_in_modpack: prop_raw_api_object})
+
+        prop_raw_api_object.add_raw_member("stack_limit",
+                                           MemberSpecialValue.NYAN_INF,
+                                           "engine.resistance.property.type.Stacked")
+
+        prop_raw_api_object.add_raw_member("distribution_type",
+                                           api_objects["engine.aux.distribution_type.type.Mean"],
+                                           "engine.resistance.property.type.Stacked")
+
         # Calculation type Construct
         # =======================================================================
         calc_parent = "engine.aux.calculation_type.type.Hyperbolic"
-        calc_location = "data/resistance/discrete/flat_attribute_change/"
 
-        calc_ref_in_modpack = "aux.calculation_type.construct_calculation.BuildingConstruct"
+        calc_ref_in_modpack = "aux.calculation_type.construct_calculation.ConstructCalcType"
         calc_raw_api_object = RawAPIObject(calc_ref_in_modpack,
                                            "BuildingConstruct",
-                                           api_objects,
-                                           calc_location)
-        calc_raw_api_object.set_filename("construct_calculation")
+                                           api_objects)
+        calc_location = ForwardRef(pregen_converter_group, prop_ref_in_modpack)
+        calc_raw_api_object.set_location(calc_location)
         calc_raw_api_object.add_raw_parent(calc_parent)
 
-        # Formula: (scale_factor * val)/(count_effectors - shift_x) + shift_y
-        # AoE2: (3 * construction_time) / (vil_count + 2)
+        pregen_converter_group.add_raw_api_object(calc_raw_api_object)
+        pregen_nyan_objects.update({calc_ref_in_modpack: calc_raw_api_object})
+
+        # Formula: (scale_factor / (count_effectors - shift_x)) + shift_y
+        # AoE2: (3 / (vil_count + 2))
 
         # Shift x
         calc_raw_api_object.add_raw_member("shift_x",
@@ -1271,8 +1331,71 @@ class AoCPregenSubprocessor:
                                            3,
                                            calc_parent)
 
+        calc_forward_ref = ForwardRef(pregen_converter_group, calc_ref_in_modpack)
+        prop_raw_api_object.add_raw_member("calculation_type",
+                                           calc_forward_ref,
+                                           "engine.resistance.property.type.Stacked")
+
+        # =======================================================================
+        # Property Repair
+        # =======================================================================
+        prop_ref_in_modpack = "resistance.property.types.BuildingRepair"
+        prop_raw_api_object = RawAPIObject(prop_ref_in_modpack,
+                                           "BuildingRepair",
+                                           api_objects,
+                                           "data/resistance/property/")
+        prop_raw_api_object.set_filename("types")
+        prop_raw_api_object.add_raw_parent("engine.resistance.property.type.Stacked")
+
+        pregen_converter_group.add_raw_api_object(prop_raw_api_object)
+        pregen_nyan_objects.update({prop_ref_in_modpack: prop_raw_api_object})
+
+        prop_raw_api_object.add_raw_member("stack_limit",
+                                           MemberSpecialValue.NYAN_INF,
+                                           "engine.resistance.property.type.Stacked")
+
+        prop_raw_api_object.add_raw_member("distribution_type",
+                                           api_objects["engine.aux.distribution_type.type.Mean"],
+                                           "engine.resistance.property.type.Stacked")
+
+        # =======================================================================
+        # Calculation type Repair
+        # =======================================================================
+        calc_parent = "engine.aux.calculation_type.type.Linear"
+
+        calc_ref_in_modpack = "aux.calculation_type.construct_calculation.BuildingRepair"
+        calc_raw_api_object = RawAPIObject(calc_ref_in_modpack,
+                                           "BuildingRepair",
+                                           api_objects)
+        calc_location = ForwardRef(pregen_converter_group, prop_ref_in_modpack)
+        calc_raw_api_object.set_location(calc_location)
+        calc_raw_api_object.add_raw_parent(calc_parent)
+
         pregen_converter_group.add_raw_api_object(calc_raw_api_object)
         pregen_nyan_objects.update({calc_ref_in_modpack: calc_raw_api_object})
+
+        # Formula: (scale_factor * (count_effectors - shift_x)) + shift_y
+        # AoE2: (0.333334 * (vil_count + 2))
+
+        # Shift x
+        calc_raw_api_object.add_raw_member("shift_x",
+                                           -2,
+                                           calc_parent)
+
+        # Shift y
+        calc_raw_api_object.add_raw_member("shift_y",
+                                           0,
+                                           calc_parent)
+
+        # Scale
+        calc_raw_api_object.add_raw_member("scale_factor",
+                                           1 / 3,
+                                           calc_parent)
+
+        calc_forward_ref = ForwardRef(pregen_converter_group, calc_ref_in_modpack)
+        prop_raw_api_object.add_raw_member("calculation_type",
+                                           calc_forward_ref,
+                                           "engine.resistance.property.type.Stacked")
 
     @staticmethod
     def generate_modifiers(full_data_set, pregen_converter_group):

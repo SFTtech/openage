@@ -33,6 +33,7 @@ class SWGBCCPregenSubprocessor:
 
         AoCPregenSubprocessor.generate_attributes(gamedata, pregen_converter_group)
         AoCPregenSubprocessor.generate_diplomatic_stances(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_team_property(gamedata, pregen_converter_group)
         AoCPregenSubprocessor.generate_entity_types(gamedata, pregen_converter_group)
         cls.generate_effect_types(gamedata, pregen_converter_group)
         cls.generate_exchange_objects(gamedata, pregen_converter_group)

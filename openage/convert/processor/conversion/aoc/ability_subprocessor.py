@@ -4925,7 +4925,7 @@ class AoCAbilitySubprocessor:
 
         if not contingents:
             # Do not create the ability if the unit provides no contingents
-            return
+            return None
 
         ability_raw_api_object = RawAPIObject(ability_ref,
                                               "ProvideContingent",
