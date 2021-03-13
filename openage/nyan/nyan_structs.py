@@ -630,6 +630,15 @@ class NyanMemberType:
         """
         return self._element_types
 
+    def get_real_element_types(self):
+        """
+        Returns the element types without wrapping modifiers.
+        """
+        if self.is_modifier():
+            return self._element_types[0].get_real_element_types()
+
+        return self._element_types
+
     def is_primitive(self):
         """
         Returns True if the member type is a single value.
@@ -1074,14 +1083,36 @@ class NyanMember:
         # Store the values for formatting
         # TODO: Dicts
         stored_values = []
-        for val in value:
-            subtype = member_type.get_element_types()[0]
-            stored_values.append(self._get_primitive_value_str(
-                subtype,
-                val,
-                import_tree=import_tree,
-                namespace=namespace
-            ))
+
+        if member_type.get_real_type() is MemberType.DICT:
+            for key, val in value.items():
+                subtype = member_type.get_real_element_types()[0]
+                key_str = self._get_primitive_value_str(
+                    subtype,
+                    key,
+                    import_tree=import_tree,
+                    namespace=namespace
+                )
+
+                subtype = member_type.get_real_element_types()[1]
+                val_str = self._get_primitive_value_str(
+                    subtype,
+                    val,
+                    import_tree=import_tree,
+                    namespace=namespace
+                )
+
+                stored_values.append(f"{key_str}: {val_str}")
+
+        else:
+            for val in value:
+                subtype = member_type.get_real_element_types()[0]
+                stored_values.append(self._get_primitive_value_str(
+                    subtype,
+                    val,
+                    import_tree=import_tree,
+                    namespace=namespace
+                ))
 
         # Check if the line gets too long
         # TODO: this does not account for a type definition
