@@ -1,4 +1,4 @@
-# Copyright 2017-2018 the openage authors. See copying.md for legal info.
+# Copyright 2017-2021 the openage authors. See copying.md for legal info.
 
 """
 Profiling utilities
@@ -112,7 +112,8 @@ class Tracemalloc:
         for stat in self.snapshot.statistics(sortby, cumulative)[:limit]:
             print(stat)
 
-    def enable(self):
+    @staticmethod
+    def enable():
         """
         Begins profiling calls.
         """

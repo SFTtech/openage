@@ -89,7 +89,7 @@ class SWGBCCUpgradeAttributeSubprocessor:
                                               "engine.aux.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"]
+            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
             }
@@ -175,7 +175,7 @@ class SWGBCCUpgradeAttributeSubprocessor:
                                               "engine.aux.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"]
+            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
             }
@@ -261,7 +261,7 @@ class SWGBCCUpgradeAttributeSubprocessor:
                                               "engine.aux.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"]
+            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
             }
@@ -377,7 +377,7 @@ class SWGBCCUpgradeAttributeSubprocessor:
                                                   "engine.aux.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"]
+                team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
                 properties = {
                     dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
                 }
