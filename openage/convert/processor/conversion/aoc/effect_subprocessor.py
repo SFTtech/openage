@@ -23,14 +23,14 @@ class AoCEffectSubprocessor:
     """
 
     @staticmethod
-    def get_attack_effects(line, ability_ref, projectile=-1):
+    def get_attack_effects(line, location_ref, projectile=-1):
         """
         Creates effects that are used for attacking (unit command: 7)
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param ability_ref: Reference of the ability raw API object the effects are added to.
-        :type ability_ref: str
+        :param location_ref: Reference to API object the effects are added to.
+        :type location_ref: str
         :returns: The forward references for the effects.
         :rtype: list
         """
@@ -58,12 +58,12 @@ class AoCEffectSubprocessor:
             attack_amount = attack["amount"].get_value()
             class_name = armor_lookup_dict[armor_class]
 
-            attack_ref = f"{ability_ref}.{class_name}"
+            attack_ref = f"{location_ref}.{class_name}"
             attack_raw_api_object = RawAPIObject(attack_ref,
                                                  class_name,
                                                  dataset.nyan_api_objects)
             attack_raw_api_object.add_raw_parent(attack_parent)
-            attack_location = ForwardRef(line, ability_ref)
+            attack_location = ForwardRef(line, location_ref)
             attack_raw_api_object.set_location(attack_location)
 
             # Type
@@ -84,7 +84,7 @@ class AoCEffectSubprocessor:
 
             # Change value
             # =================================================================================
-            amount_name = f"{ability_ref}.{class_name}.ChangeAmount"
+            amount_name = f"{location_ref}.{class_name}.ChangeAmount"
             amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", dataset.nyan_api_objects)
             amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
             amount_location = ForwardRef(line, attack_ref)
@@ -122,14 +122,14 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_convert_effects(line, ability_ref):
+    def get_convert_effects(line, location_ref):
         """
         Creates effects that are used for conversion (unit command: 104)
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param ability_ref: Reference of the ability raw API object the effects are added to.
-        :type ability_ref: str
+        :param location_ref: Reference to API object the effects are added to.
+        :type location_ref: str
         :returns: The forward references for the effects.
         :rtype: list
         """
@@ -156,12 +156,12 @@ class AoCEffectSubprocessor:
             return effects
 
         # Unit conversion
-        convert_ref = f"{ability_ref}.ConvertUnitEffect"
+        convert_ref = f"{location_ref}.ConvertUnitEffect"
         convert_raw_api_object = RawAPIObject(convert_ref,
                                               "ConvertUnitEffect",
                                               dataset.nyan_api_objects)
         convert_raw_api_object.add_raw_parent(convert_parent)
-        convert_location = ForwardRef(line, ability_ref)
+        convert_location = ForwardRef(line, location_ref)
         convert_raw_api_object.set_location(convert_location)
 
         # Type
@@ -197,12 +197,12 @@ class AoCEffectSubprocessor:
         effects.append(attack_forward_ref)
 
         # Building conversion
-        convert_ref = f"{ability_ref}.ConvertBuildingEffect"
+        convert_ref = f"{location_ref}.ConvertBuildingEffect"
         convert_raw_api_object = RawAPIObject(convert_ref,
                                               "ConvertBuildingUnitEffect",
                                               dataset.nyan_api_objects)
         convert_raw_api_object.add_raw_parent(convert_parent)
-        convert_location = ForwardRef(line, ability_ref)
+        convert_location = ForwardRef(line, location_ref)
         convert_raw_api_object.set_location(convert_location)
 
         # Type
@@ -240,14 +240,14 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_heal_effects(line, ability_ref):
+    def get_heal_effects(line, location_ref):
         """
         Creates effects that are used for healing (unit command: 105)
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param ability_ref: Reference of the ability raw API object the effects are added to.
-        :type ability_ref: str
+        :param location_ref: Reference to API object the effects are added to.
+        :type location_ref: str
         :returns: The forward references for the effects.
         :rtype: list
         """
@@ -276,12 +276,12 @@ class AoCEffectSubprocessor:
 
         heal_rate = heal_command["work_value1"].get_value()
 
-        heal_ref = f"{ability_ref}.HealEffect"
+        heal_ref = f"{location_ref}.HealEffect"
         heal_raw_api_object = RawAPIObject(heal_ref,
                                            "HealEffect",
                                            dataset.nyan_api_objects)
         heal_raw_api_object.add_raw_parent(heal_parent)
-        heal_location = ForwardRef(line, ability_ref)
+        heal_location = ForwardRef(line, location_ref)
         heal_raw_api_object.set_location(heal_location)
 
         # Type
@@ -302,7 +302,7 @@ class AoCEffectSubprocessor:
 
         # Change rate
         # =================================================================================
-        rate_name = f"{ability_ref}.HealEffect.ChangeRate"
+        rate_name = f"{location_ref}.HealEffect.ChangeRate"
         rate_raw_api_object = RawAPIObject(rate_name, "ChangeRate", dataset.nyan_api_objects)
         rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
         rate_location = ForwardRef(line, heal_ref)
@@ -335,14 +335,14 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_repair_effects(line, ability_ref):
+    def get_repair_effects(line, location_ref):
         """
         Creates effects that are used for repairing (unit command: 106)
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param ability_ref: Reference of the ability raw API object the effects are added to.
-        :type ability_ref: str
+        :param location_ref: Reference to API object the effects are added to.
+        :type location_ref: str
         :returns: The forward references for the effects.
         :rtype: list
         """
@@ -365,12 +365,12 @@ class AoCEffectSubprocessor:
             game_entity_name = name_lookup_dict[repairable_line.get_head_unit_id()][0]
 
             repair_name = f"{game_entity_name}RepairEffect"
-            repair_ref = f"{ability_ref}.{repair_name}"
+            repair_ref = f"{location_ref}.{repair_name}"
             repair_raw_api_object = RawAPIObject(repair_ref,
                                                  repair_name,
                                                  dataset.nyan_api_objects)
             repair_raw_api_object.add_raw_parent(repair_parent)
-            repair_location = ForwardRef(line, ability_ref)
+            repair_location = ForwardRef(line, location_ref)
             repair_raw_api_object.set_location(repair_location)
 
             # Type
@@ -386,7 +386,7 @@ class AoCEffectSubprocessor:
 
             # Change rate
             # =================================================================================
-            rate_name = f"{ability_ref}.{repair_name}.ChangeRate"
+            rate_name = f"{location_ref}.{repair_name}.ChangeRate"
             rate_raw_api_object = RawAPIObject(rate_name, "ChangeRate", dataset.nyan_api_objects)
             rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
             rate_location = ForwardRef(line, repair_ref)
@@ -437,14 +437,14 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_construct_effects(line, ability_ref):
+    def get_construct_effects(line, location_ref):
         """
         Creates effects that are used for construction (unit command: 101)
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param ability_ref: Reference of the ability raw API object the effects are added to.
-        :type ability_ref: str
+        :param location_ref: Reference to API object the effects are added to.
+        :type location_ref: str
         :returns: The forward references for the effects.
         :rtype: list
         """
@@ -467,12 +467,12 @@ class AoCEffectSubprocessor:
 
             # Construction progress
             contruct_progress_name = f"{game_entity_name}ConstructProgressEffect"
-            contruct_progress_ref = f"{ability_ref}.{contruct_progress_name}"
+            contruct_progress_ref = f"{location_ref}.{contruct_progress_name}"
             contruct_progress_raw_api_object = RawAPIObject(contruct_progress_ref,
                                                             contruct_progress_name,
                                                             dataset.nyan_api_objects)
             contruct_progress_raw_api_object.add_raw_parent(progress_construct_parent)
-            contruct_progress_location = ForwardRef(line, ability_ref)
+            contruct_progress_location = ForwardRef(line, location_ref)
             contruct_progress_raw_api_object.set_location(contruct_progress_location)
 
             # Type
@@ -494,12 +494,12 @@ class AoCEffectSubprocessor:
 
             # HP increase during construction
             contruct_hp_name = f"{game_entity_name}ConstructHPEffect"
-            contruct_hp_ref = f"{ability_ref}.{contruct_hp_name}"
+            contruct_hp_ref = f"{location_ref}.{contruct_hp_name}"
             contruct_hp_raw_api_object = RawAPIObject(contruct_hp_ref,
                                                       contruct_hp_name,
                                                       dataset.nyan_api_objects)
             contruct_hp_raw_api_object.add_raw_parent(attr_construct_parent)
-            contruct_hp_location = ForwardRef(line, ability_ref)
+            contruct_hp_location = ForwardRef(line, location_ref)
             contruct_hp_raw_api_object.set_location(contruct_hp_location)
 
             # Type

@@ -2519,7 +2519,7 @@ def _insert_members(api_objects):
 
     elem_type = NyanMemberType(api_objects["engine.aux.effect_batch.EffectBatch"])
     member_type = NyanMemberType(MemberType.SET, (elem_type,))
-    member = NyanMember("effects", member_type, None, None, 0)
+    member = NyanMember("batches", member_type, None, None, 0)
     api_object.add_member(member)
     member = NyanMember("reload_time", N_FLOAT, None, None, 0)
     api_object.add_member(member)

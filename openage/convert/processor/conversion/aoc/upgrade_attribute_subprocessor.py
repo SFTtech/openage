@@ -254,12 +254,12 @@ class AoCUpgradeAttributeSubprocessor:
                 # Upgrade is skipped if the primary projectile is not defined
                 return patches
 
-            patch_target_ref = ("%s.ShootProjectile.Projectile0.Attack.%s.ChangeAmount"
-                                % (game_entity_name, class_name))
+            patch_target_ref = (f"{game_entity_name}.ShootProjectile.Projectile0."
+                                f"Attack.Batch.{class_name}.ChangeAmount")
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         else:
-            patch_target_ref = f"{game_entity_name}.Attack.{class_name}.ChangeAmount"
+            patch_target_ref = f"{game_entity_name}.Attack.Batch.{class_name}.ChangeAmount"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         if not line.has_attack(armor_class):

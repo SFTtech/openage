@@ -195,22 +195,36 @@ class RoRAbilitySubprocessor:
                                                   "engine.ability.type.RangedDiscreteEffect")
 
         # Effects
+        batch_ref = f"{ability_ref}.Batch"
+        batch_raw_api_object = RawAPIObject(batch_ref, "Batch", dataset.nyan_api_objects)
+        batch_raw_api_object.add_raw_parent("engine.aux.effect_batch.type.UnorderedBatch")
+        batch_location = ForwardRef(line, ability_ref)
+        batch_raw_api_object.set_location(batch_location)
+
+        line.add_raw_api_object(batch_raw_api_object)
+
+        # Effects
         effects = []
         if command_id == 7:
             # Attack
             if projectile != 1:
-                effects = AoCEffectSubprocessor.get_attack_effects(line, ability_ref)
+                effects = AoCEffectSubprocessor.get_attack_effects(line, batch_ref)
 
             else:
-                effects = AoCEffectSubprocessor.get_attack_effects(line, ability_ref, projectile=1)
+                effects = AoCEffectSubprocessor.get_attack_effects(line, batch_ref, projectile=1)
 
         elif command_id == 104:
             # TODO: Convert
             # effects = AoCEffectSubprocessor.get_convert_effects(line, ability_ref)
             pass
 
-        ability_raw_api_object.add_raw_member("effects",
-                                              effects,
+        batch_raw_api_object.add_raw_member("effects",
+                                            effects,
+                                            "engine.aux.effect_batch.EffectBatch")
+
+        batch_forward_ref = ForwardRef(line, batch_ref)
+        ability_raw_api_object.add_raw_member("batches",
+                                              [batch_forward_ref],
                                               "engine.ability.type.ApplyDiscreteEffect")
 
         # Reload time
