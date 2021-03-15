@@ -1,14 +1,18 @@
 # Copyright 2016-2021 the openage authors. See copying.md for legal info.
 #
-# cython: infer_types=True
+# cython: infer_types=True,profile=True
 
 """ Routines for 2D binpacking """
 
 # TODO pylint: disable=C,R
 
 import enum
-from functools import lru_cache
 import math
+
+cimport cython
+
+from libc.math cimport sqrt
+from libcpp cimport bool
 
 
 class PackerType(enum.Enum):
@@ -17,16 +21,21 @@ class PackerType(enum.Enum):
     BINTREE = "bintree"
 
 
-@lru_cache(maxsize=32)
-def factor(n):
+@cython.boundscheck(False)
+@cython.wraparound(False)
+@cython.cdivision(True)
+cdef inline (unsigned int, unsigned int) factor(unsigned int n):
     """Return two (preferable close) factors of n."""
-    for a in range(int(math.sqrt(n)), 0, -1):
-        if n % a == 0:
-            return a, n // a
+    cdef unsigned int a = <unsigned int>sqrt(n)
+    for num in range(a, 0, -1):
+        if n % num == 0:
+            return num, n // num
 
 
 class Packer:
-    """Packs blocks."""
+    """
+    Packs blocks.
+    """
 
     def __init__(self, margin):
         self.margin = margin
@@ -44,11 +53,15 @@ class Packer:
         return self.mapping[block]
 
     def width(self):
-        """Gets the total width of the packing."""
+        """
+        Gets the total width of the packing.
+        """
         return max(self.pos(block)[0] + block.width for block in self.mapping)
 
     def height(self):
-        """Gets the total height of the packing."""
+        """
+        Gets the total height of the packing.
+        """
         return max(self.pos(block)[1] + block.height for block in self.mapping)
 
     def get_packer_settings(self):
@@ -86,7 +99,9 @@ class DeterministicPacker(Packer):
 
 
 class BestPacker:
-    """Chooses the best result from all the given packers."""
+    """
+    Chooses the best result from all the given packers.
+    """
 
     def __init__(self, packers):
         self.packers = packers
@@ -182,8 +197,10 @@ class ColumnPacker(Packer):
         return PackerType.COLUMN
 
 
-def maxside_heuristic(block):
-    """Heuristic: Order blocks by maximum side."""
+cdef inline (unsigned int, unsigned int, unsigned int, unsigned int) maxside_heuristic(block):
+    """
+    Heuristic: Order blocks by maximum side.
+    """
     return (max(block.width, block.height),
             min(block.width, block.height),
             block.height,
@@ -302,8 +319,14 @@ class BinaryTreePacker(Packer):
             return self.split_node(node, width, height)
 
 
-class PackerNode:
-    """A node in a binary packing tree."""
+cdef class PackerNode:
+    """
+    A node in a binary packing tree.
+    """
+    # ASDF: Remove 'public'
+    cdef public unsigned int x, y, width, height
+    cdef public bool used
+    cdef public PackerNode down, right
 
     def __init__(self, x, y, width, height):
         self.x = x
