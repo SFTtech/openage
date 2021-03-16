@@ -1,10 +1,11 @@
 # Copyright 2016-2021 the openage authors. See copying.md for legal info.
 #
-# cython: infer_types=True,profile=True
-
-""" Routines for 2D binpacking """
-
+# cython: infer_types=True,profile=False
 # TODO pylint: disable=C,R
+
+"""
+Routines for 2D binpacking
+"""
 
 from enum import Enum
 
@@ -13,35 +14,17 @@ cimport cython
 from libc.math cimport sqrt
 
 
-class PackerType(Enum):
-    ROW     = 0x01  # RowPacker
-    COLUMN  = 0x02  # ColumnPacker
-    BINTREE = 0x03  # BinaryTreePacker
-
-
 @cython.boundscheck(False)
 @cython.wraparound(False)
 @cython.cdivision(True)
 cdef inline (unsigned int, unsigned int) factor(unsigned int n):
-    """Return two (preferable close) factors of n."""
+    """
+    Return two (preferable close) factors of n.
+    """
     cdef unsigned int a = <unsigned int>sqrt(n)
     for num in range(a, 0, -1):
         if n % num == 0:
             return num, n // num
-
-
-cdef Packer get_packer(packer_type):
-    if packer_type is PackerType.ROW:
-        return RowPacker
-    
-    elif packer_type is PackerType.COLUMN:
-        return ColumnPacker
-        
-    elif packer_type is PackerType.BINTREE:
-        return BinaryTreePacker
-    
-    else:
-        raise Exception(f"No valid packer type: {packer_type}")
 
 
 cdef class Packer:
@@ -107,7 +90,7 @@ cdef class BestPacker:
     """
     Chooses the best result from all the given packers.
     """
-    def __init__(self, packers):
+    def __init__(self, list packers):
         self.packers = packers
         self.current_best = None
 
@@ -145,6 +128,9 @@ cdef class RowPacker(Packer):
 
     cdef void pack(self, blocks):
         self.mapping = {}
+
+        cdef unsigned int num_rows
+        cdef list rows
 
         num_rows, _ = factor(len(blocks))
         rows = [[] for _ in range(num_rows)]
@@ -314,16 +300,6 @@ cdef class BinaryTreePacker(Packer):
         node = self.find_node(self.root, width, height)
         if node is not None:
             return self.split_node(node, width, height)
-
-
-cdef struct packer_node:
-    unsigned int x
-    unsigned int y
-    unsigned int width
-    unsigned int height
-    bint used
-    packer_node * down
-    packer_node * right
 
 
 cdef class PackerNode:

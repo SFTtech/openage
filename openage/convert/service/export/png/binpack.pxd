@@ -40,7 +40,6 @@ cdef class BinaryTreePacker(Packer):
     cdef PackerNode grow_down(self, unsigned int width, unsigned int height)
 
 cdef class PackerNode:
-    # ASDF: Remove 'public'
-    cdef public unsigned int x, y, width, height
-    cdef public bint used
-    cdef public PackerNode down, right
+    cdef unsigned int x, y, width, height
+    cdef bint used
+    cdef PackerNode down, right
