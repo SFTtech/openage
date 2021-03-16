@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-public-methods,too-many-lines,too-many-locals
 # pylint: disable=too-many-branches,too-many-statements,too-many-arguments
@@ -82,6 +82,7 @@ class SWGBCCAbilitySubprocessor:
 
         head_unit_id = line.get_head_unit_id()
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         command_lookup_dict = internal_name_lookups.get_command_lookups(dataset.game_version)
@@ -117,20 +118,36 @@ class SWGBCCAbilitySubprocessor:
 
             ability_animation_id = -1
 
+        # Ability properties
+        properties = {}
+
+        # Animated
         if ability_animation_id > -1:
-            # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            property_ref = f"{ability_ref}.Animated"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "Animated",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
+            property_location = ForwardRef(line, ability_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
                                                                             ability_animation_id,
-                                                                            ability_ref,
+                                                                            property_ref,
                                                                             ability_name,
                                                                             "%s_"
                                                                             % command_lookup_dict[command_id][1])
             animations_set.append(animation_forward_ref)
-            ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+            property_raw_api_object.add_raw_member("animations", animations_set,
+                                                   "engine.ability.property.type.Animated")
+
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.ability.property.type.Animated"]: property_forward_ref
+            })
 
             # Create custom civ graphics
             handled_graphics_set_ids = set()
@@ -176,8 +193,15 @@ class SWGBCCAbilitySubprocessor:
             ability_comm_sound_id = -1
 
         if ability_comm_sound_id > -1:
-            # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+            property_ref = f"{ability_ref}.CommandSound"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "CommandSound",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
+            property_location = ForwardRef(line, ability_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
 
             sounds_set = []
 
@@ -189,12 +213,40 @@ class SWGBCCAbilitySubprocessor:
 
             sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
                                                                     ability_comm_sound_id,
-                                                                    ability_ref,
+                                                                    property_ref,
                                                                     sound_obj_prefix,
                                                                     "command_")
             sounds_set.append(sound_forward_ref)
-            ability_raw_api_object.add_raw_member("sounds", sounds_set,
-                                                  "engine.ability.specialization.CommandSoundAbility")
+            property_raw_api_object.add_raw_member("sounds", sounds_set,
+                                                   "engine.ability.property.type.CommandSound")
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.ability.property.type.CommandSound"]: property_forward_ref
+            })
+
+        # Diplomacy settings
+        property_ref = f"{ability_ref}.Diplomatic"
+        property_raw_api_object = RawAPIObject(property_ref,
+                                               "Diplomatic",
+                                               dataset.nyan_api_objects)
+        property_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
+        property_location = ForwardRef(line, ability_ref)
+        property_raw_api_object.set_location(property_location)
+
+        line.add_raw_api_object(property_raw_api_object)
+
+        diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
+        property_raw_api_object.add_raw_member("stances", diplomatic_stances,
+                                               "engine.ability.property.type.Diplomatic")
+
+        property_forward_ref = ForwardRef(line, property_ref)
+        properties.update({
+            api_objects["engine.ability.property.type.Diplomatic"]: property_forward_ref
+        })
+
+        ability_raw_api_object.add_raw_member("properties",
+                                              properties,
+                                              "engine.ability.Ability")
 
         if ranged:
             # Min range
@@ -210,20 +262,34 @@ class SWGBCCAbilitySubprocessor:
                                                   "engine.ability.type.RangedDiscreteEffect")
 
         # Effects
+        batch_ref = f"{ability_ref}.Batch"
+        batch_raw_api_object = RawAPIObject(batch_ref, "Batch", dataset.nyan_api_objects)
+        batch_raw_api_object.add_raw_parent("engine.aux.effect_batch.type.UnorderedBatch")
+        batch_location = ForwardRef(line, ability_ref)
+        batch_raw_api_object.set_location(batch_location)
+
+        line.add_raw_api_object(batch_raw_api_object)
+
+        # Effects
         if command_id == 7:
             # Attack
             if projectile != 1:
-                effects = AoCEffectSubprocessor.get_attack_effects(line, ability_ref)
+                effects = AoCEffectSubprocessor.get_attack_effects(line, batch_ref)
 
             else:
-                effects = AoCEffectSubprocessor.get_attack_effects(line, ability_ref, projectile=1)
+                effects = AoCEffectSubprocessor.get_attack_effects(line, batch_ref, projectile=1)
 
         elif command_id == 104:
             # Convert
-            effects = AoCEffectSubprocessor.get_convert_effects(line, ability_ref)
+            effects = AoCEffectSubprocessor.get_convert_effects(line, batch_ref)
 
-        ability_raw_api_object.add_raw_member("effects",
-                                              effects,
+        batch_raw_api_object.add_raw_member("effects",
+                                            effects,
+                                            "engine.aux.effect_batch.EffectBatch")
+
+        batch_forward_ref = ForwardRef(line, batch_ref)
+        ability_raw_api_object.add_raw_member("batches",
+                                              [batch_forward_ref],
                                               "engine.ability.type.ApplyDiscreteEffect")
 
         # Reload time
@@ -313,6 +379,7 @@ class SWGBCCAbilitySubprocessor:
             current_unit_id = line.get_head_unit_id()
 
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
@@ -323,6 +390,8 @@ class SWGBCCAbilitySubprocessor:
         ability_raw_api_object.add_raw_parent("engine.ability.type.AttributeChangeTracker")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
+
+        line.add_raw_api_object(ability_raw_api_object)
 
         # Attribute
         attribute = dataset.pregen_nyan_objects["aux.attribute.types.Health"].get_nyan_object()
@@ -338,14 +407,15 @@ class SWGBCCAbilitySubprocessor:
         interval_left_bound = 0
         for damage_graphic_member in damage_graphics:
             interval_right_bound = damage_graphic_member["damage_percent"].get_value()
-            progress_name = "%s.AttributeChangeTracker.ChangeProgress%s" % (game_entity_name,
-                                                                            interval_right_bound)
-            progress_raw_api_object = RawAPIObject(progress_name,
+            progress_ref = f"{game_entity_name}.AttributeChangeTracker.ChangeProgress{interval_right_bound}"
+            progress_raw_api_object = RawAPIObject(progress_ref,
                                                    f"ChangeProgress{interval_right_bound}",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.AttributeChangeProgress")
             progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
+
+            line.add_raw_api_object(progress_raw_api_object)
 
             # Interval
             progress_raw_api_object.add_raw_member("left_boundary",
@@ -355,32 +425,51 @@ class SWGBCCAbilitySubprocessor:
                                                    interval_right_bound,
                                                    "engine.aux.progress.Progress")
 
+            # Progress properties
+            properties = {}
+            # =====================================================================================
+            # AnimationOverlay property
+            # =====================================================================================
             progress_animation_id = damage_graphic_member["graphic_id"].get_value()
             if progress_animation_id > -1:
-                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimationOverlayProgress")
+                property_ref = f"{progress_ref}.AnimationOverlay"
+                property_raw_api_object = RawAPIObject(property_ref,
+                                                       "AnimationOverlay",
+                                                       dataset.nyan_api_objects)
+                property_raw_api_object.add_raw_parent("engine.aux.progress.property.type.AnimationOverlay")
+                property_location = ForwardRef(line, progress_ref)
+                property_raw_api_object.set_location(property_location)
+
+                line.add_raw_api_object(property_raw_api_object)
 
                 # Animation
                 animations_set = []
                 animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
                                                                                 progress_animation_id,
-                                                                                progress_name,
+                                                                                property_ref,
                                                                                 "Idle",
                                                                                 "idle_damage_override_%s_"
                                                                                 % (interval_right_bound))
                 animations_set.append(animation_forward_ref)
-                progress_raw_api_object.add_raw_member("overlays",
+                property_raw_api_object.add_raw_member("overlays",
                                                        animations_set,
-                                                       "engine.aux.progress.specialization.AnimationOverlayProgress")
+                                                       "engine.aux.progress.property.type.AnimationOverlay")
 
-            progress_forward_refs.append(ForwardRef(line, progress_name))
-            line.add_raw_api_object(progress_raw_api_object)
+                property_forward_ref = ForwardRef(line, property_ref)
+                properties.update({
+                    api_objects["engine.aux.progress.property.type.AnimationOverlay"]: property_forward_ref
+                })
+
+            progress_raw_api_object.add_raw_member("properties",
+                                                   properties,
+                                                   "engine.aux.progress.Progress")
+
+            progress_forward_refs.append(ForwardRef(line, progress_ref))
             interval_left_bound = interval_right_bound
 
         ability_raw_api_object.add_raw_member("change_progress",
                                               progress_forward_refs,
                                               "engine.ability.type.AttributeChangeTracker")
-
-        line.add_raw_api_object(ability_raw_api_object)
 
         ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
@@ -499,6 +588,7 @@ class SWGBCCAbilitySubprocessor:
 
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         gather_lookup_dict = internal_name_lookups.get_gather_lookups(dataset.game_version)
@@ -593,20 +683,62 @@ class SWGBCCAbilitySubprocessor:
             ability_location = ForwardRef(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
 
+            line.add_raw_api_object(ability_raw_api_object)
+
+            # Ability properties
+            properties = {}
+
+            # Animation
             if ability_animation_id > -1:
-                # Make the ability animated
-                ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+                property_ref = f"{ability_ref}.Animated"
+                property_raw_api_object = RawAPIObject(property_ref,
+                                                       "Animated",
+                                                       dataset.nyan_api_objects)
+                property_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
+                property_location = ForwardRef(line, ability_ref)
+                property_raw_api_object.set_location(property_location)
+
+                line.add_raw_api_object(property_raw_api_object)
 
                 animations_set = []
                 animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
                                                                                 ability_animation_id,
-                                                                                ability_ref,
+                                                                                property_ref,
                                                                                 ability_name,
                                                                                 "%s_"
                                                                                 % gather_lookup_dict[gatherer_unit_id][1])
                 animations_set.append(animation_forward_ref)
-                ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                      "engine.ability.specialization.AnimatedAbility")
+                property_raw_api_object.add_raw_member("animations", animations_set,
+                                                       "engine.ability.property.type.Animated")
+
+                property_forward_ref = ForwardRef(line, property_ref)
+                properties.update({
+                    api_objects["engine.ability.property.type.Animated"]: property_forward_ref
+                })
+
+            # Diplomacy settings
+            property_ref = f"{ability_ref}.Diplomatic"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "Diplomatic",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
+            property_location = ForwardRef(line, ability_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
+
+            diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
+            property_raw_api_object.add_raw_member("stances", diplomatic_stances,
+                                                   "engine.ability.property.type.Diplomatic")
+
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.ability.property.type.Diplomatic"]: property_forward_ref
+            })
+
+            ability_raw_api_object.add_raw_member("properties",
+                                                  properties,
+                                                  "engine.ability.Ability")
 
             # Auto resume
             ability_raw_api_object.add_raw_member("auto_resume",
@@ -661,8 +793,6 @@ class SWGBCCAbilitySubprocessor:
                                                   spot_forward_refs,
                                                   "engine.ability.type.Gather")
 
-            line.add_raw_api_object(ability_raw_api_object)
-
             ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
             abilities.append(ability_forward_ref)
 
@@ -681,6 +811,7 @@ class SWGBCCAbilitySubprocessor:
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
@@ -774,15 +905,17 @@ class SWGBCCAbilitySubprocessor:
         if line.get_class_id() == 7:
             # Farms
             # =====================================================================================
-            progress_name = f"{game_entity_name}.Harvestable.RestockProgress33"
-            progress_raw_api_object = RawAPIObject(progress_name,
+            progress_ref = f"{ability_ref}.RestockProgress33"
+            progress_raw_api_object = RawAPIObject(progress_ref,
                                                    "RestockProgress33",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.RestockProgress")
             progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
-            # Interval = (0.0, 25.0)
+            line.add_raw_api_object(progress_raw_api_object)
+
+            # Interval = (0.0, 33.0)
             progress_raw_api_object.add_raw_member("left_boundary",
                                                    0.0,
                                                    "engine.aux.progress.Progress")
@@ -790,37 +923,75 @@ class SWGBCCAbilitySubprocessor:
                                                    33.0,
                                                    "engine.aux.progress.Progress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+            # Progress properties
+            properties = {}
+            # =====================================================================================
+            # Terrain overlay property
+            # =====================================================================================
+            property_ref = f"{progress_ref}.TerrainOverlay"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "TerrainOverlay",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.aux.progress.property.type.TerrainOverlay")
+            property_location = ForwardRef(line, progress_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
 
             # Terrain overlay
             terrain_ref = "FarmConstruction1"
-            terrain_group = dataset.terrain_groups[31]
+            terrain_group = dataset.terrain_groups[29]
             terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
-            progress_raw_api_object.add_raw_member("terrain_overlay",
+            property_raw_api_object.add_raw_member("terrain_overlay",
                                                    terrain_forward_ref,
-                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+                                                   "engine.aux.progress.property.type.TerrainOverlay")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.aux.progress.property.type.TerrainOverlay"]: property_forward_ref
+            })
+            # =====================================================================================
+            # State change property
+            # =====================================================================================
+            property_ref = f"{progress_ref}.StateChange"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "StateChange",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
+            property_location = ForwardRef(line, progress_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
 
             # State change
             init_state_ref = f"{game_entity_name}.Constructable.InitState"
             init_state_forward_ref = ForwardRef(line, init_state_ref)
-            progress_raw_api_object.add_raw_member("state_change",
+            property_raw_api_object.add_raw_member("state_change",
                                                    init_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
+
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.aux.progress.property.type.StateChange"]: property_forward_ref
+            })
             # =====================================================================================
-            progress_forward_refs.append(ForwardRef(line, progress_name))
-            line.add_raw_api_object(progress_raw_api_object)
+            progress_raw_api_object.add_raw_member("properties",
+                                                   properties,
+                                                   "engine.aux.progress.Progress")
+
+            progress_forward_refs.append(ForwardRef(line, progress_ref))
             # =====================================================================================
-            progress_name = f"{game_entity_name}.Harvestable.RestockProgress66"
-            progress_raw_api_object = RawAPIObject(progress_name,
+            progress_ref = f"{ability_ref}.RestockProgress66"
+            progress_raw_api_object = RawAPIObject(progress_ref,
                                                    "RestockProgress66",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.RestockProgress")
             progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
 
-            # Interval = (25.0, 50.0)
+            line.add_raw_api_object(progress_raw_api_object)
+
+            # Interval = (33.0, 66.0)
             progress_raw_api_object.add_raw_member("left_boundary",
                                                    33.0,
                                                    "engine.aux.progress.Progress")
@@ -828,35 +999,73 @@ class SWGBCCAbilitySubprocessor:
                                                    66.0,
                                                    "engine.aux.progress.Progress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+            # Progress properties
+            properties = {}
+            # =====================================================================================
+            # Terrain overlay property
+            # =====================================================================================
+            property_ref = f"{progress_ref}.TerrainOverlay"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "TerrainOverlay",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.aux.progress.property.type.TerrainOverlay")
+            property_location = ForwardRef(line, progress_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
 
             # Terrain overlay
             terrain_ref = "FarmConstruction2"
             terrain_group = dataset.terrain_groups[30]
             terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
-            progress_raw_api_object.add_raw_member("terrain_overlay",
+            property_raw_api_object.add_raw_member("terrain_overlay",
                                                    terrain_forward_ref,
-                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+                                                   "engine.aux.progress.property.type.TerrainOverlay")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.aux.progress.property.type.TerrainOverlay"]: property_forward_ref
+            })
+            # =====================================================================================
+            # State change property
+            # =====================================================================================
+            property_ref = f"{progress_ref}.StateChange"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "StateChange",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
+            property_location = ForwardRef(line, progress_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
 
             # State change
             construct_state_ref = f"{game_entity_name}.Constructable.ConstructState"
             construct_state_forward_ref = ForwardRef(line, construct_state_ref)
-            progress_raw_api_object.add_raw_member("state_change",
+            property_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
+
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.aux.progress.property.type.StateChange"]: property_forward_ref
+            })
             # =====================================================================================
-            progress_forward_refs.append(ForwardRef(line, progress_name))
-            line.add_raw_api_object(progress_raw_api_object)
+            progress_raw_api_object.add_raw_member("properties",
+                                                   properties,
+                                                   "engine.aux.progress.Progress")
+
+            progress_forward_refs.append(ForwardRef(line, progress_ref))
             # =====================================================================================
-            progress_name = f"{game_entity_name}.Harvestable.RestockProgress100"
-            progress_raw_api_object = RawAPIObject(progress_name,
+            progress_ref = f"{ability_ref}.RestockProgress100"
+            progress_raw_api_object = RawAPIObject(progress_ref,
                                                    "RestockProgress100",
                                                    dataset.nyan_api_objects)
             progress_raw_api_object.add_raw_parent("engine.aux.progress.type.RestockProgress")
             progress_location = ForwardRef(line, ability_ref)
             progress_raw_api_object.set_location(progress_location)
+
+            line.add_raw_api_object(progress_raw_api_object)
 
             progress_raw_api_object.add_raw_member("left_boundary",
                                                    66.0,
@@ -865,27 +1074,63 @@ class SWGBCCAbilitySubprocessor:
                                                    100.0,
                                                    "engine.aux.progress.Progress")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.TerrainOverlayProgress")
+            # Progress properties
+            properties = {}
+            # =====================================================================================
+            # Terrain overlay property
+            # =====================================================================================
+            property_ref = f"{progress_ref}.TerrainOverlay"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "TerrainOverlay",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.aux.progress.property.type.TerrainOverlay")
+            property_location = ForwardRef(line, progress_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
 
             # Terrain overlay
             terrain_ref = "FarmConstruction3"
-            terrain_group = dataset.terrain_groups[29]
+            terrain_group = dataset.terrain_groups[31]
             terrain_forward_ref = ForwardRef(terrain_group, terrain_ref)
-            progress_raw_api_object.add_raw_member("terrain_overlay",
+            property_raw_api_object.add_raw_member("terrain_overlay",
                                                    terrain_forward_ref,
-                                                   "engine.aux.progress.specialization.TerrainOverlayProgress")
+                                                   "engine.aux.progress.property.type.TerrainOverlay")
 
-            progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.StateChangeProgress")
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.aux.progress.property.type.TerrainOverlay"]: property_forward_ref
+            })
+            # =====================================================================================
+            # State change property
+            # =====================================================================================
+            property_ref = f"{progress_ref}.StateChange"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "StateChange",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.aux.progress.property.type.StateChange")
+            property_location = ForwardRef(line, progress_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
 
             # State change
             construct_state_ref = f"{game_entity_name}.Constructable.ConstructState"
             construct_state_forward_ref = ForwardRef(line, construct_state_ref)
-            progress_raw_api_object.add_raw_member("state_change",
+            property_raw_api_object.add_raw_member("state_change",
                                                    construct_state_forward_ref,
-                                                   "engine.aux.progress.specialization.StateChangeProgress")
+                                                   "engine.aux.progress.property.type.StateChange")
+
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.aux.progress.property.type.StateChange"]: property_forward_ref
+            })
             # =======================================================================
-            progress_forward_refs.append(ForwardRef(line, progress_name))
-            line.add_raw_api_object(progress_raw_api_object)
+            progress_raw_api_object.add_raw_member("properties",
+                                                   properties,
+                                                   "engine.aux.progress.Progress")
+
+            progress_forward_refs.append(ForwardRef(line, progress_ref))
 
         ability_raw_api_object.add_raw_member("restock_progress",
                                               progress_forward_refs,
@@ -1128,6 +1373,7 @@ class SWGBCCAbilitySubprocessor:
 
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         gather_lookup_dict = internal_name_lookups.get_gather_lookups(dataset.game_version)
@@ -1196,6 +1442,8 @@ class SWGBCCAbilitySubprocessor:
             container_location = ForwardRef(line, ability_ref)
             container_raw_api_object.set_location(container_location)
 
+            line.add_raw_api_object(container_raw_api_object)
+
             # Resource
             container_raw_api_object.add_raw_member("resource",
                                                     resource,
@@ -1203,7 +1451,7 @@ class SWGBCCAbilitySubprocessor:
 
             # Carry capacity
             carry_capacity = gatherer["resource_capacity"].get_value()
-            container_raw_api_object.add_raw_member("capacity",
+            container_raw_api_object.add_raw_member("max_amount",
                                                     carry_capacity,
                                                     "engine.aux.storage.ResourceContainer")
 
@@ -1212,40 +1460,56 @@ class SWGBCCAbilitySubprocessor:
             carry_move_animation_id = used_command["carry_sprite_id"].get_value()
             if carry_move_animation_id > -1:
                 # ===========================================================================================
-                progress_name = "%s.ResourceStorage.%sCarryProgress" % (game_entity_name,
-                                                                        container_name)
-                progress_raw_api_object = RawAPIObject(progress_name,
+                progress_ref = f"{ability_ref}.{container_name}CarryProgress"
+                progress_raw_api_object = RawAPIObject(progress_ref,
                                                        f"{container_name}CarryProgress",
                                                        dataset.nyan_api_objects)
                 progress_raw_api_object.add_raw_parent("engine.aux.progress.type.CarryProgress")
                 progress_location = ForwardRef(line, container_ref)
                 progress_raw_api_object.set_location(progress_location)
 
-                # Interval = (0.0, 100.0)
+                line.add_raw_api_object(progress_raw_api_object)
+
+                # Interval = (20.0, 100.0)
                 progress_raw_api_object.add_raw_member("left_boundary",
-                                                       0.0,
+                                                       20.0,
                                                        "engine.aux.progress.Progress")
                 progress_raw_api_object.add_raw_member("right_boundary",
                                                        100.0,
                                                        "engine.aux.progress.Progress")
 
-                progress_raw_api_object.add_raw_parent("engine.aux.progress.specialization.AnimatedProgress")
+                # Progress properties
+                properties = {}
+                # =================================================================================
+                # Animated property (animation overrides)
+                # =================================================================================
+                property_ref = f"{progress_ref}.Animated"
+                property_raw_api_object = RawAPIObject(property_ref,
+                                                       "Animated",
+                                                       dataset.nyan_api_objects)
+                property_raw_api_object.add_raw_parent("engine.aux.progress.property.type.Animated")
+                property_location = ForwardRef(line, progress_ref)
+                property_raw_api_object.set_location(property_location)
 
+                line.add_raw_api_object(property_raw_api_object)
+                # =================================================================================
                 overrides = []
-                # ===========================================================================================
+                # =================================================================================
                 # Move override
-                # ===========================================================================================
-                override_ref = f"{progress_name}.MoveOverride"
+                # =================================================================================
+                override_ref = f"{property_ref}.MoveOverride"
                 override_raw_api_object = RawAPIObject(override_ref,
                                                        "MoveOverride",
                                                        dataset.nyan_api_objects)
                 override_raw_api_object.add_raw_parent("engine.aux.animation_override.AnimationOverride")
-                override_location = ForwardRef(line, progress_name)
+                override_location = ForwardRef(line, property_ref)
                 override_raw_api_object.set_location(override_location)
 
-                idle_forward_ref = ForwardRef(line, f"{game_entity_name}.Move")
+                line.add_raw_api_object(override_raw_api_object)
+
+                move_forward_ref = ForwardRef(line, f"{game_entity_name}.Move")
                 override_raw_api_object.add_raw_member("ability",
-                                                       idle_forward_ref,
+                                                       move_forward_ref,
                                                        "engine.aux.animation_override.AnimationOverride")
 
                 # Animation
@@ -1267,22 +1531,27 @@ class SWGBCCAbilitySubprocessor:
 
                 override_forward_ref = ForwardRef(line, override_ref)
                 overrides.append(override_forward_ref)
-                line.add_raw_api_object(override_raw_api_object)
-                # ===========================================================================================
-                progress_raw_api_object.add_raw_member("overrides",
+                # =================================================================================
+                property_raw_api_object.add_raw_member("overrides",
                                                        overrides,
-                                                       "engine.aux.progress.specialization.AnimatedProgress")
+                                                       "engine.aux.progress.property.type.Animated")
 
-                line.add_raw_api_object(progress_raw_api_object)
-                # ===========================================================================================
-                progress_forward_ref = ForwardRef(line, progress_name)
+                property_forward_ref = ForwardRef(line, property_ref)
+
+                properties.update({
+                    api_objects["engine.aux.progress.property.type.Animated"]: property_forward_ref
+                })
+                # =================================================================================
+                progress_raw_api_object.add_raw_member("properties",
+                                                       properties,
+                                                       "engine.aux.progress.Progress")
+                # =================================================================================
+                progress_forward_ref = ForwardRef(line, progress_ref)
                 carry_progress.append(progress_forward_ref)
 
             container_raw_api_object.add_raw_member("carry_progress",
                                                     carry_progress,
                                                     "engine.aux.storage.ResourceContainer")
-
-            line.add_raw_api_object(container_raw_api_object)
 
             container_forward_ref = ForwardRef(line, container_ref)
             containers.append(container_forward_ref)

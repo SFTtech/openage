@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2021 the openage authors. See copying.md for legal info.
 
 # pylint: disable=too-many-instance-attributes,too-many-branches,too-few-public-methods
 
@@ -70,6 +70,7 @@ class ConverterObject:
         """
         try:
             return self.members[name]
+
         except KeyError as err:
             raise KeyError(f"{self} has no attribute: {name}") from err
 
@@ -208,9 +209,20 @@ class ConverterObjectGroup:
         for raw_api_object in self.raw_api_objects.values():
             raw_api_object.create_nyan_members()
 
+    def check_readiness(self):
+        """
+        check if all nyan objects in the group are ready for export.
+        """
+        for raw_api_object in self.raw_api_objects.values():
             if not raw_api_object.is_ready():
-                raise Exception("%s: object is not ready for export. "
-                                "Member or object not initialized." % (raw_api_object))
+                if not raw_api_object.nyan_object:
+                    raise Exception(f"{raw_api_object}: object is not ready for export: "
+                                    "Nyan object not initialized.")
+
+                uninit_members = raw_api_object.get_nyan_object().get_uninitialized_members()
+                concat_names = ", ".join(member.get_name() for member in uninit_members)
+                raise Exception(f"{raw_api_object}: object is not ready for export: "
+                                f"Member(s) {concat_names} not initialized.")
 
     def execute_raw_member_pushs(self):
         """
@@ -407,45 +419,8 @@ class RawAPIObject:
             if self.is_patch():
                 member_operator = raw_member[3]
 
-            if isinstance(member_value, ForwardRef):
-                member_value = member_value.resolve()
-
-            elif isinstance(member_value, CombinedSprite):
-                member_value = member_value.get_relative_sprite_location()
-
-            elif isinstance(member_value, CombinedTerrain):
-                member_value = member_value.get_relative_terrain_location()
-
-            elif isinstance(member_value, CombinedSound):
-                member_value = member_value.get_relative_file_location()
-
-            elif isinstance(member_value, list):
-                # Resolve elements in the list, if it's not empty
-                if member_value:
-                    temp_values = []
-
-                    for temp_value in member_value:
-                        if isinstance(temp_value, ForwardRef):
-                            temp_values.append(temp_value.resolve())
-
-                        elif isinstance(temp_value, CombinedSprite):
-                            temp_values.append(temp_value.get_relative_sprite_location())
-
-                        elif isinstance(member_value, CombinedTerrain):
-                            member_value = member_value.get_relative_terrain_location()
-
-                        elif isinstance(temp_value, CombinedSound):
-                            temp_values.append(temp_value.get_relative_file_location())
-
-                        else:
-                            temp_values.append(temp_value)
-
-                    member_value = temp_values
-
-            elif isinstance(member_value, float):
-                # Round floats to 6 decimal places for increased readability
-                # should have no effect on balance, hopefully
-                member_value = round(member_value, ndigits=6)
+            # Resolve forward references to objects/assets and trim floats
+            member_value = self._resolve_raw_values(member_value)
 
             if self.is_patch():
                 nyan_member = NyanPatchMember(member_name, self.nyan_object.get_target(),
@@ -565,6 +540,67 @@ class RawAPIObject:
         :type target: .forward_ref.ForwardRef, ..nyan.nyan_structs.NyanObject
         """
         self._patch_target = target
+
+    @staticmethod
+    def _resolve_raw_value(value):
+        """
+        Check if a raw member value contains a reference to a resource (nyan
+        objects or asset files), resolve the reference to a nyan-compatible value
+        and return it.
+
+        If the value contains no resource reference, it is returned as-is.
+
+        :param value: Raw member value.
+        :return: Value usable by a nyan object or nyan member.
+        """
+        if isinstance(value, ForwardRef):
+            # Object references
+            return value.resolve()
+
+        if isinstance(value, CombinedSprite):
+            return value.get_relative_sprite_location()
+
+        if isinstance(value, CombinedTerrain):
+            return value.get_relative_terrain_location()
+
+        if isinstance(value, CombinedSound):
+            return value.get_relative_file_location()
+
+        if isinstance(value, float):
+            # Round floats to 6 decimal places for increased readability
+            # should have no effect on balance, hopefully
+            return round(value, ndigits=6)
+
+        return value
+
+    def _resolve_raw_values(self, values):
+        """
+        Convert a raw member values to nyan-compatible values by resolving
+        contained references to resources.
+
+        :param values: Raw member values.
+        :type values: list, dict
+        :return: Value usable by a nyan object or nyan member.
+        """
+        if isinstance(values, list):
+            # Sets or orderedsets
+            temp_values = []
+            for temp_value in values:
+                temp_values.append(self._resolve_raw_value(temp_value))
+
+            return temp_values
+
+        if isinstance(values, dict):
+            # Dicts
+            temp_values = {}
+            for key, val in values.items():
+                temp_values.update({
+                    self._resolve_raw_value(key): self._resolve_raw_value(val)
+                })
+
+            return temp_values
+
+        return self._resolve_raw_value(values)
 
     def __repr__(self):
         return f"RawAPIObject<{self.obj_id}>"

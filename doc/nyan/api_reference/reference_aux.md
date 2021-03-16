@@ -54,7 +54,7 @@ Replacement animations of the override.
 **priority**
 Priority of the override. Overrides are only executed if their priority is *greater than or equal to* (>=) an already existing override. The default animation from an `Animated` property of an ability always has a priority of 0.
 
-## aux.animation_override.AnimationOverride
+## aux.animation_override.type.Reset
 
 ```python
 Reset(AnimationOverride):
@@ -272,7 +272,7 @@ Used by `Convert` effects and resistances for matching.
 
 ```python
 Cost(Entity):
-    payment_mode : children(PaymentMode)
+    payment_mode : PaymentMode
 ```
 
 Generalization object for resource and attribute costs.
@@ -314,7 +314,7 @@ CreatableGameEntity(Entity):
     creation_time   : float
     creation_sounds : set(Sound)
     condition       : set(LogicElement)
-    placement_modes : set(children(PlacementMode))
+    placement_modes : set(PlacementMode)
 ```
 
 Defines preconditions, placement and spawn configurations for a new instance of a game entity created by a `Create` ability.
@@ -426,7 +426,7 @@ The effectiveness is constant and independent from the range to the target.
 ```python
 EffectBatch(Entity):
     effects    : set(DiscreteEffect)
-    properties : dict(abstract(children(BatchProperty)), children(BatchProperty))
+    properties : dict(abstract(BatchProperty), BatchProperty) = {}
 ```
 
 Generalization object for a collection of discrete effects. Batches combine the discrete effects to transactions. Batches - like effects - can have properties to configure the batch application.
@@ -539,8 +539,8 @@ Sell an amount of `resource_a` and receive an amount of `resource_b`. `resource_
 ```python
 ExchangeRate(Entity):
     base_price   : float
-    price_adjust : optional(dict(ExchangeMode, children(PriceMode)))
-    price_pool   : optional(children(PricePool))
+    price_adjust : optional(dict(ExchangeMode, PriceMode)) = None
+    price_pool   : optional(children(PricePool)) = None
 ```
 
 Defines an exchange rate for the resources in the `ExchangeResources` ability.
@@ -585,6 +585,7 @@ GameEntity(Entity):
     types     : set(children(GameEntityType))
     abilities : set(Ability)
     modifiers : set(Modifier)
+    variants  : set(Variant)
 ```
 
 For definition of all ingame objects, including units, buildings, items, projectiles and ambience. Their capabilities are handled through `Ability` and `Modifier` API objects stored in the members.
@@ -939,6 +940,15 @@ AND(LogicGate):
 
 Evaluates to true if *all* inputs are true.
 
+## aux.logic.gate.type.MULTIXOR
+
+```python
+MULTIXOR(LogicGate):
+    pass
+```
+
+Evaluates to true if *an uneven number of* inputs is true.
+
 ## aux.logic.gate.type.NOT
 
 ```python
@@ -949,15 +959,6 @@ NOT(LogicGate):
 Negates the input.
 
 Only one input is allowed for this type of gate. If more than one input is defined, the gate evaluates to false.
-
-## aux.logic.gate.type.MULTIXOR
-
-```python
-MULTIXOR(LogicGate):
-    pass
-```
-
-Evaluates to true if *an uneven number of* inputs is true.
 
 ## aux.logic.gate.type.OR
 
@@ -1102,6 +1103,9 @@ OwnsGameEntity(Literal):
 
 Triggers when a game entity is owned by a player in the defined scope.
 
+**game_entity**
+Game entity that should be owned.
+
 ## aux.logic.literal.type.ProjectileHitTerrain
 
 ```python
@@ -1172,31 +1176,31 @@ Time that has to pass after the activation.
 
 ```python
 LiteralScope(Entity):
-    pass
+    stances : set(children(DiplomaticStance))
 ```
 
 Configures the scope in which the fulfillment of the literal is checked.
 
-## aux.logic.literal_scope.type.Default
+**stances**
+Diplomatic stances defining the boundaries of the scope.
+
+## aux.logic.literal_scope.type.Any
 
 ```python
-Default(LiteralScope):
+Any(LiteralScope):
     pass
 ```
 
-Use the default scope defined by the literal.
+Check if the literal is true for any entity.
 
-## aux.logic.literal_scope.type.Diplomatic
+## aux.logic.literal_scope.type.Self
 
 ```python
-Diplomatic(LiteralScope):
-    stances : set(children(DiplomaticStance))
+Self(LiteralScope):
+    pass
 ```
 
-Include the state of players with the specified stances in the scope.
-
-**stances**
-Diplomatic stances included in the scope.
+Check if the literal is true for the game entity it is assigned to.
 
 ## aux.lure_type.LureType
 
@@ -1367,7 +1371,7 @@ Parent object for nyan patches used in the openage API. All nyan patches must in
 
 ```python
 Patch(Entity):
-    properties : dict(abstract(children(PatchProperty)), children(PatchProperty))
+    properties : dict(abstract(PatchProperty), PatchProperty) = {}
     patch      : children(NyanPatch)
 ```
 
@@ -1603,7 +1607,7 @@ The queue can store production requests for `ResearchableTech` instances.
 
 ```python
 Progress(Entity):
-    properties     : dict(abstract(children(ProgressProperty)), children(ProgressProperty))
+    properties     : dict(abstract(ProgressProperty), ProgressProperty) = {}
     left_boundary  : float
     right_boundary : float
 ```
@@ -1653,18 +1657,6 @@ ProgressProperty(Entity):
 
 Generalization object for all properties of `Progress` objects.
 
-## aux.progress.property.type.AnimationOverlay
-
-```python
-AnimationOverlay(ProgressProperty):
-    overlays : set(Animation)
-```
-
-Overlays the animation of abilities with the specified animations.
-
-**overlays**
-The overlay animations.
-
 ## aux.progress.property.type.Animated
 
 ```python
@@ -1676,6 +1668,18 @@ Overrides the animation of abilities when the specified progress interval has be
 
 **overrides**
 The overriding animations.
+
+## aux.progress.property.type.AnimationOverlay
+
+```python
+AnimationOverlay(ProgressProperty):
+    overlays : set(Animation)
+```
+
+Overlays the animation of abilities with the specified animations.
+
+**overlays**
+The overlay animations.
 
 ## aux.progress.property.type.StateChange
 
@@ -2016,11 +2020,11 @@ A set of sound files that are played in the order they are stored in the set.
 
 ```python
 StateChanger(Entity):
-    enable_abilities  : set(Ability)
-    disable_abilities : set(Ability)
-    enable_modifiers  : set(Modifier)
-    disable_modifiers : set(Modifier)
-    transform_pool    : optional(TransformPool)
+    enable_abilities  : set(abstract(Ability))
+    disable_abilities : set(abstract(Ability))
+    enable_modifiers  : set(abstract(Modifier))
+    disable_modifiers : set(abstract(Modifier))
+    transform_pool    : optional(TransformPool) = None
     priority          : int
 ```
 
@@ -2066,7 +2070,7 @@ Container(Entity):
     blacklisted_entities : set(GameEntity)
     storage_element_defs : set(StorageElementDefinition)
     slots                : int
-    carry_progress       : set(children(CarryProgress))
+    carry_progress       : set(CarryProgress)
 ```
 
 Used by the `Storage` ability to set the allowed game entities and store definitions of how the stored game entities influence the storing game entity.
@@ -2091,7 +2095,7 @@ Defines how many slots for game entities the container has. Multiple game entiti
 ```python
 ResourceContainer(Entity):
     resource       : Resource
-    capacity       : int
+    max_amount     : int
     carry_progress : set(CarryProgress)
 ```
 
@@ -2100,13 +2104,13 @@ Used by the `ResourceStorage` ability to define storage space for resources that
 **resource**
 Resource stored in the container.
 
-**capacity**
+**max_amount**
 Maximum amount of resources that can be stored in the container.
 
 **carry_progress**
 `CarryProgress` objects that can alter the game entity when the container is filled.
 
-## aux.storage.InternalDropSite
+## aux.storage.resource_container.type.InternalDropSite
 
 ```python
 InternalDropSite(ResourceContainer):

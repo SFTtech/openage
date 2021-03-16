@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches,too-many-statements,too-many-locals
 #
@@ -45,6 +45,7 @@ class RoRAbilitySubprocessor:
 
         head_unit_id = line.get_head_unit_id()
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         command_lookup_dict = internal_name_lookups.get_command_lookups(dataset.game_version)
@@ -102,20 +103,36 @@ class RoRAbilitySubprocessor:
 
             ability_animation_id = -1
 
+        # Ability properties
+        properties = {}
+
+        # Animated
         if ability_animation_id > -1:
-            # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            property_ref = f"{ability_ref}.Animated"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "Animated",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
+            property_location = ForwardRef(line, ability_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
                                                                             ability_animation_id,
-                                                                            ability_ref,
+                                                                            property_ref,
                                                                             ability_name,
                                                                             "%s_"
                                                                             % command_lookup_dict[command_id][1])
             animations_set.append(animation_forward_ref)
-            ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+            property_raw_api_object.add_raw_member("animations", animations_set,
+                                                   "engine.ability.property.type.Animated")
+
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.ability.property.type.Animated"]: property_forward_ref
+            })
 
             # Create custom civ graphics
             handled_graphics_set_ids = set()
@@ -161,8 +178,15 @@ class RoRAbilitySubprocessor:
             ability_comm_sound_id = -1
 
         if ability_comm_sound_id > -1:
-            # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+            property_ref = f"{ability_ref}.CommandSound"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "CommandSound",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
+            property_location = ForwardRef(line, ability_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
 
             sounds_set = []
 
@@ -174,12 +198,40 @@ class RoRAbilitySubprocessor:
 
             sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
                                                                     ability_comm_sound_id,
-                                                                    ability_ref,
+                                                                    property_ref,
                                                                     sound_obj_prefix,
                                                                     "command_")
             sounds_set.append(sound_forward_ref)
-            ability_raw_api_object.add_raw_member("sounds", sounds_set,
-                                                  "engine.ability.specialization.CommandSoundAbility")
+            property_raw_api_object.add_raw_member("sounds", sounds_set,
+                                                   "engine.ability.property.type.CommandSound")
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.ability.property.type.CommandSound"]: property_forward_ref
+            })
+
+        # Diplomacy settings
+        property_ref = f"{ability_ref}.Diplomatic"
+        property_raw_api_object = RawAPIObject(property_ref,
+                                               "Diplomatic",
+                                               dataset.nyan_api_objects)
+        property_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
+        property_location = ForwardRef(line, ability_ref)
+        property_raw_api_object.set_location(property_location)
+
+        line.add_raw_api_object(property_raw_api_object)
+
+        diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
+        property_raw_api_object.add_raw_member("stances", diplomatic_stances,
+                                               "engine.ability.property.type.Diplomatic")
+
+        property_forward_ref = ForwardRef(line, property_ref)
+        properties.update({
+            api_objects["engine.ability.property.type.Diplomatic"]: property_forward_ref
+        })
+
+        ability_raw_api_object.add_raw_member("properties",
+                                              properties,
+                                              "engine.ability.Ability")
 
         if ranged:
             # Min range
@@ -195,22 +247,36 @@ class RoRAbilitySubprocessor:
                                                   "engine.ability.type.RangedDiscreteEffect")
 
         # Effects
+        batch_ref = f"{ability_ref}.Batch"
+        batch_raw_api_object = RawAPIObject(batch_ref, "Batch", dataset.nyan_api_objects)
+        batch_raw_api_object.add_raw_parent("engine.aux.effect_batch.type.UnorderedBatch")
+        batch_location = ForwardRef(line, ability_ref)
+        batch_raw_api_object.set_location(batch_location)
+
+        line.add_raw_api_object(batch_raw_api_object)
+
+        # Effects
         effects = []
         if command_id == 7:
             # Attack
             if projectile != 1:
-                effects = AoCEffectSubprocessor.get_attack_effects(line, ability_ref)
+                effects = AoCEffectSubprocessor.get_attack_effects(line, batch_ref)
 
             else:
-                effects = AoCEffectSubprocessor.get_attack_effects(line, ability_ref, projectile=1)
+                effects = AoCEffectSubprocessor.get_attack_effects(line, batch_ref, projectile=1)
 
         elif command_id == 104:
             # TODO: Convert
             # effects = AoCEffectSubprocessor.get_convert_effects(line, ability_ref)
             pass
 
-        ability_raw_api_object.add_raw_member("effects",
-                                              effects,
+        batch_raw_api_object.add_raw_member("effects",
+                                            effects,
+                                            "engine.aux.effect_batch.EffectBatch")
+
+        batch_forward_ref = ForwardRef(line, batch_ref)
+        ability_raw_api_object.add_raw_member("batches",
+                                              [batch_forward_ref],
                                               "engine.ability.type.ApplyDiscreteEffect")
 
         # Reload time
@@ -308,7 +374,7 @@ class RoRAbilitySubprocessor:
         search_range = current_unit["search_radius"].get_value()
         stance_names = ["Aggressive", "StandGround"]
 
-        # Attacking is prefered
+        # Attacking is preferred
         ability_preferences = []
         if line.is_projectile_shooter():
             ability_preferences.append(ForwardRef(line, f"{game_entity_name}.Attack"))
@@ -320,7 +386,7 @@ class RoRAbilitySubprocessor:
             if line.has_command(105):
                 ability_preferences.append(ForwardRef(line, f"{game_entity_name}.Heal"))
 
-        # Units are prefered before buildings
+        # Units are preferred before buildings
         type_preferences = [
             dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
             dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
@@ -596,6 +662,7 @@ class RoRAbilitySubprocessor:
         current_unit = line.get_head_unit()
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         command_lookup_dict = internal_name_lookups.get_command_lookups(dataset.game_version)
@@ -609,39 +676,91 @@ class RoRAbilitySubprocessor:
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
-        ability_animation_id = current_unit["attack_sprite_id"].get_value()
+        # Ability properties
+        properties = {}
 
+        # Animation
+        ability_animation_id = current_unit["attack_sprite_id"].get_value()
         if ability_animation_id > -1:
-            # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.AnimatedAbility")
+            property_ref = f"{ability_ref}.Animated"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "Animated",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
+            property_location = ForwardRef(line, ability_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
 
             animations_set = []
             animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
                                                                             ability_animation_id,
-                                                                            ability_ref,
+                                                                            property_ref,
                                                                             ability_name,
                                                                             "%s_"
                                                                             % command_lookup_dict[command_id][1])
             animations_set.append(animation_forward_ref)
-            ability_raw_api_object.add_raw_member("animations", animations_set,
-                                                  "engine.ability.specialization.AnimatedAbility")
+            property_raw_api_object.add_raw_member("animations",
+                                                   animations_set,
+                                                   "engine.ability.property.type.Animated")
+
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.ability.property.type.Animated"]: property_forward_ref
+            })
 
         # Command Sound
         ability_comm_sound_id = current_unit["command_sound_id"].get_value()
         if ability_comm_sound_id > -1:
-            # Make the ability animated
-            ability_raw_api_object.add_raw_parent("engine.ability.specialization.CommandSoundAbility")
+            property_ref = f"{ability_ref}.CommandSound"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "CommandSound",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
+            property_location = ForwardRef(line, ability_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
 
             sounds_set = []
             sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
                                                                     ability_comm_sound_id,
-                                                                    ability_ref,
+                                                                    property_ref,
                                                                     ability_name,
                                                                     "command_")
             sounds_set.append(sound_forward_ref)
-            ability_raw_api_object.add_raw_member("sounds",
-                                                  sounds_set,
-                                                  "engine.ability.specialization.CommandSoundAbility")
+            property_raw_api_object.add_raw_member("sounds",
+                                                   sounds_set,
+                                                   "engine.ability.property.type.CommandSound")
+
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                api_objects["engine.ability.property.type.CommandSound"]: property_forward_ref
+            })
+
+        # Diplomacy settings
+        property_ref = f"{ability_ref}.Diplomatic"
+        property_raw_api_object = RawAPIObject(property_ref,
+                                               "Diplomatic",
+                                               dataset.nyan_api_objects)
+        property_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
+        property_location = ForwardRef(line, ability_ref)
+        property_raw_api_object.set_location(property_location)
+
+        line.add_raw_api_object(property_raw_api_object)
+
+        diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
+        property_raw_api_object.add_raw_member("stances", diplomatic_stances,
+                                               "engine.ability.property.type.Diplomatic")
+
+        property_forward_ref = ForwardRef(line, property_ref)
+        properties.update({
+            api_objects["engine.ability.property.type.Diplomatic"]: property_forward_ref
+        })
+
+        ability_raw_api_object.add_raw_member("properties",
+                                              properties,
+                                              "engine.ability.Ability")
 
         # Projectile
         projectiles = []

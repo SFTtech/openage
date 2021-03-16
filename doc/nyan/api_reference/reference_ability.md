@@ -6,7 +6,7 @@ Reference documentation of the `engine.ability` module of the openage modding AP
 
 ```python
 Ability(Entity):
-    properties : dict(abstract(children(AbilityProperty)), children(AbilityProperty))
+    properties : dict(abstract(AbilityProperty), AbilityProperty) = {}
 ```
 
 Generalization object for all abilities. Abilities define what game entities can *do* and what they *are*, respectively. They can be considered passive and active traits.
@@ -282,7 +282,7 @@ Despawn(Ability):
     activation_condition : set(LogicElement)
     despawn_condition    : set(LogicElement)
     despawn_time         : float
-    state_change         : optional(StateChanger)
+    state_change         : optional(StateChanger) = None
 ```
 
 Permanently removes the game entity from the game. By default, `Despawn` is inactive until triggered by `activation_condition`. Once activated, at least one of the elements in `despawn_condition` must be true to trigger the despawning.
@@ -423,7 +423,7 @@ Allows a game entity fly at a fixed height.
 **height**
 The height at which the game entity flies. This value is always relative to the ground below.
 
-## ability.type.FormFormation
+## ability.type.Formation
 
 ```python
 Formation(Ability):
@@ -544,7 +544,7 @@ Blacklist for specific game entities that would be covered by `allowed_types`, b
 ```python
 Herdable(Ability):
     adjacent_discover_range : float
-    mode                    : children(HerdableMode)
+    mode                    : HerdableMode
 ```
 
 Makes the game entity switch ownership when it is in range of another game entity with a `Herd` ability. Its new owner is owner of the herding game entity. If the herdable game entity is in range of two or more herding game entities, the ownership changes based on the `mode` set in the `Herdable` ability.
@@ -617,7 +617,7 @@ Lock pools definitions.
 ```python
 Move(Ability):
     speed : float
-    modes : set(children(MoveMode))
+    modes : set(MoveMode)
 ```
 
 Allows a game entity to move around the map.
@@ -647,6 +647,18 @@ Description of the game entity as a translatable markup file.
 
 **long_description**
 A longer description of the game entity as a translatable markup file.
+
+## ability.type.OverlayTerrain
+
+```python
+OverlayTerrain(Ability):
+    terrain_overlay : Terrain
+```
+
+Temporarily replace the map terrain the game entity is positioned on with a specified terrain.
+
+**terrain_overlay**
+Terrain that is temporily replaces the existing map terrain.
 
 ## ability.type.Passable
 
@@ -693,7 +705,7 @@ Can alter the game entity while the transformation is in progress.
 ```python
 ProductionQueue(Ability):
     size             : int
-    production_modes : set(children(ProductionMode))
+    production_modes : set(ProductionMode)
 ```
 
 Allows a game entity to queue production of `CreatableGameEntity` and `ResearchableTech`.
@@ -710,7 +722,7 @@ Defines the production items which can be added to the queue.
 Projectile(Ability):
     arc               : int
     accuracy          : set(Accuracy)
-    target_mode       : children(TargetMode)
+    target_mode       : TargetMode
     ignored_types     : set(children(GameEntityType))
     unignore_entities : set(GameEntity)
 ```
@@ -901,7 +913,7 @@ Resource amount that is added to the resource spot after restocking.
 
 ```python
 Selectable(Ability):
-    selection_box : children(SelectionBox)
+    selection_box : SelectionBox
 ```
 
 Makes the game entity selectable by players.
@@ -945,7 +957,7 @@ ShootProjectile(Ability):
     spawning_area_width      : float
     spawning_area_height     : float
     spawning_area_randomness : float
-    allowed_types            : set(GameEntityType)
+    allowed_types            : set(children(GameEntityType))
     blacklisted_entities     : set(GameEntity)
 ```
 

@@ -6,7 +6,7 @@ Reference documentation of the `engine.resistance` module of the openage modding
 
 ```python
 Resistance(Entity):
-    properties : dict(abstract(children(ResistanceProperty)), children(ResistanceProperty))
+    properties : dict(abstract(ResistanceProperty), ResistanceProperty) = {}
 ```
 
 Generalization object for all resistances.
@@ -48,13 +48,13 @@ Make the resistance cost attribute points or resources.
 **cost**
 The amount of attribute points or resources removed from the resistor.
 
-## resistance.property.type.Stacked´
+## resistance.property.type.Stacked
 
 ```python
 Stacked(ResistanceProperty):
     stack_limit       : int
-    calculation_type  : children(CalculationType)
-    distribution_type : children(DistributionType)
+    calculation_type  : CalculationType
+    distribution_type : DistributionType
 ```
 
 Configure the calculation of the applied value when a resistor if affected by multiple effectors.

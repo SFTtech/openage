@@ -31,6 +31,7 @@ class AoCPregenSubprocessor:
 
         cls.generate_attributes(gamedata, pregen_converter_group)
         cls.generate_diplomatic_stances(gamedata, pregen_converter_group)
+        cls.generate_team_property(gamedata, pregen_converter_group)
         cls.generate_entity_types(gamedata, pregen_converter_group)
         cls.generate_effect_types(gamedata, pregen_converter_group)
         cls.generate_exchange_objects(gamedata, pregen_converter_group)
@@ -47,12 +48,12 @@ class AoCPregenSubprocessor:
         for pregen_object in pregen_nyan_objects.values():
             pregen_object.create_nyan_object()
 
-        # This has to be separate because of possible object interdependencies
+        # This has to be a separate for-loop because of possible object interdependencies
         for pregen_object in pregen_nyan_objects.values():
             pregen_object.create_nyan_members()
 
             if not pregen_object.is_ready():
-                raise Exception("%s: Pregenerated object is not ready for export."
+                raise Exception("%s: Pregenerated object is not ready for export. "
                                 "Member or object not initialized." % (pregen_object))
 
     @staticmethod
@@ -99,7 +100,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(health_raw_api_object)
         pregen_nyan_objects.update({health_ref_in_modpack: health_raw_api_object})
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         health_name_ref_in_modpack = "aux.attribute.types.Health.HealthName"
         health_name_value = RawAPIObject(health_name_ref_in_modpack, "HealthName",
                                          api_objects, attributes_location)
@@ -110,7 +111,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(health_name_value)
         pregen_nyan_objects.update({health_name_ref_in_modpack: health_name_value})
 
-        abbrv_value_parent = "engine.aux.translated.type.TranslatedString"
+        abbrv_value_parent = "engine.aux.language.translated.type.TranslatedString"
         health_abbrv_ref_in_modpack = "aux.attribute.types.Health.HealthAbbreviation"
         health_abbrv_value = RawAPIObject(health_abbrv_ref_in_modpack, "HealthAbbreviation",
                                           api_objects, attributes_location)
@@ -143,7 +144,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(faith_raw_api_object)
         pregen_nyan_objects.update({faith_ref_in_modpack: faith_raw_api_object})
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         faith_name_ref_in_modpack = "aux.attribute.types.Faith.FaithName"
         faith_name_value = RawAPIObject(faith_name_ref_in_modpack, "FaithName",
                                         api_objects, attributes_location)
@@ -154,7 +155,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(faith_name_value)
         pregen_nyan_objects.update({faith_name_ref_in_modpack: faith_name_value})
 
-        abbrv_value_parent = "engine.aux.translated.type.TranslatedString"
+        abbrv_value_parent = "engine.aux.language.translated.type.TranslatedString"
         faith_abbrv_ref_in_modpack = "aux.attribute.types.Faith.FaithAbbreviation"
         faith_abbrv_value = RawAPIObject(faith_abbrv_ref_in_modpack, "FaithAbbreviation",
                                          api_objects, attributes_location)
@@ -236,6 +237,42 @@ class AoCPregenSubprocessor:
 
         pregen_converter_group.add_raw_api_object(gaia_raw_api_object)
         pregen_nyan_objects.update({gaia_ref_in_modpack: gaia_raw_api_object})
+
+    @staticmethod
+    def generate_team_property(full_data_set, pregen_converter_group):
+        """
+        Generate the property used in team patches objects.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        :param pregen_converter_group: GenieObjectGroup instance that stores
+                                       pregenerated API objects for referencing with
+                                       ForwardRef
+        :type pregen_converter_group: ...dataformat.aoc.genie_object_container.GenieObjectGroup
+        """
+        pregen_nyan_objects = full_data_set.pregen_nyan_objects
+        api_objects = full_data_set.nyan_api_objects
+
+        prop_ref_in_modpack = "aux.patch.property.types.Team"
+        prop_raw_api_object = RawAPIObject(prop_ref_in_modpack,
+                                           "Team",
+                                           api_objects,
+                                           "data/aux/patch/property/")
+        prop_raw_api_object.set_filename("types")
+        prop_raw_api_object.add_raw_parent("engine.aux.patch.property.type.Diplomatic")
+
+        pregen_converter_group.add_raw_api_object(prop_raw_api_object)
+        pregen_nyan_objects.update({prop_ref_in_modpack: prop_raw_api_object})
+
+        stances = [
+            full_data_set.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
+            ForwardRef(pregen_converter_group, "aux.diplomatic_stance.types.Friendly")
+        ]
+        prop_raw_api_object.add_raw_member("stances",
+                                           stances,
+                                           "engine.aux.patch.property.type.Diplomatic")
 
     @staticmethod
     def generate_entity_types(full_data_set, pregen_converter_group):
@@ -578,12 +615,6 @@ class AoCPregenSubprocessor:
         exchange_pool_raw_api_object.set_filename("market_trading")
         exchange_pool_raw_api_object.add_raw_parent(exchange_pool_parent)
 
-        # Diplomatic stances
-        diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Any"]]
-        exchange_pool_raw_api_object.add_raw_member("diplomatic_stances",
-                                                    diplomatic_stances,
-                                                    exchange_pool_parent)
-
         pregen_converter_group.add_raw_api_object(exchange_pool_raw_api_object)
         pregen_nyan_objects.update({exchange_pool_ref_in_modpack: exchange_pool_raw_api_object})
 
@@ -598,12 +629,6 @@ class AoCPregenSubprocessor:
         exchange_pool_raw_api_object.set_filename("market_trading")
         exchange_pool_raw_api_object.add_raw_parent(exchange_pool_parent)
 
-        # Diplomatic stances
-        diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Any"]]
-        exchange_pool_raw_api_object.add_raw_member("diplomatic_stances",
-                                                    diplomatic_stances,
-                                                    exchange_pool_parent)
-
         pregen_converter_group.add_raw_api_object(exchange_pool_raw_api_object)
         pregen_nyan_objects.update({exchange_pool_ref_in_modpack: exchange_pool_raw_api_object})
 
@@ -617,12 +642,6 @@ class AoCPregenSubprocessor:
                                                     exchange_pool_location)
         exchange_pool_raw_api_object.set_filename("market_trading")
         exchange_pool_raw_api_object.add_raw_parent(exchange_pool_parent)
-
-        # Diplomatic stances
-        diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Any"]]
-        exchange_pool_raw_api_object.add_raw_member("diplomatic_stances",
-                                                    diplomatic_stances,
-                                                    exchange_pool_parent)
 
         pregen_converter_group.add_raw_api_object(exchange_pool_raw_api_object)
         pregen_nyan_objects.update({exchange_pool_ref_in_modpack: exchange_pool_raw_api_object})
@@ -646,12 +665,19 @@ class AoCPregenSubprocessor:
                                                     1.0,
                                                     exchange_rate_parent)
 
-        # Price adjust method
-        pa_forward_ref = ForwardRef(pregen_converter_group,
-                                    "aux.resource.market_trading.MarketDynamicPriceMode")
+        # Price adjust methods
+        pa_buy_forward_ref = ForwardRef(pregen_converter_group,
+                                        "aux.resource.market_trading.MarketBuyPriceMode")
+        pa_sell_forward_ref = ForwardRef(pregen_converter_group,
+                                         "aux.resource.market_trading.MarketSellPriceMode")
+        price_adjust = {
+            api_objects["engine.aux.exchange_mode.type.Buy"]: pa_buy_forward_ref,
+            api_objects["engine.aux.exchange_mode.type.Sell"]: pa_sell_forward_ref
+        }
         exchange_rate_raw_api_object.add_raw_member("price_adjust",
-                                                    pa_forward_ref,
+                                                    price_adjust,
                                                     exchange_rate_parent)
+
         # Price pool
         pool_forward_ref = ForwardRef(pregen_converter_group,
                                       "aux.resource.market_trading.MarketFoodPricePool")
@@ -678,12 +704,19 @@ class AoCPregenSubprocessor:
                                                     1.0,
                                                     exchange_rate_parent)
 
-        # Price adjust method
-        pa_forward_ref = ForwardRef(pregen_converter_group,
-                                    "aux.resource.market_trading.MarketDynamicPriceMode")
+        # Price adjust methods
+        pa_buy_forward_ref = ForwardRef(pregen_converter_group,
+                                        "aux.resource.market_trading.MarketBuyPriceMode")
+        pa_sell_forward_ref = ForwardRef(pregen_converter_group,
+                                         "aux.resource.market_trading.MarketSellPriceMode")
+        price_adjust = {
+            api_objects["engine.aux.exchange_mode.type.Buy"]: pa_buy_forward_ref,
+            api_objects["engine.aux.exchange_mode.type.Sell"]: pa_sell_forward_ref
+        }
         exchange_rate_raw_api_object.add_raw_member("price_adjust",
-                                                    pa_forward_ref,
+                                                    price_adjust,
                                                     exchange_rate_parent)
+
         # Price pool
         pool_forward_ref = ForwardRef(pregen_converter_group,
                                       "aux.resource.market_trading.MarketWoodPricePool")
@@ -710,12 +743,19 @@ class AoCPregenSubprocessor:
                                                     1.3,
                                                     exchange_rate_parent)
 
-        # Price adjust method
-        pa_forward_ref = ForwardRef(pregen_converter_group,
-                                    "aux.resource.market_trading.MarketDynamicPriceMode")
+        # Price adjust methods
+        pa_buy_forward_ref = ForwardRef(pregen_converter_group,
+                                        "aux.resource.market_trading.MarketBuyPriceMode")
+        pa_sell_forward_ref = ForwardRef(pregen_converter_group,
+                                         "aux.resource.market_trading.MarketSellPriceMode")
+        price_adjust = {
+            api_objects["engine.aux.exchange_mode.type.Buy"]: pa_buy_forward_ref,
+            api_objects["engine.aux.exchange_mode.type.Sell"]: pa_sell_forward_ref
+        }
         exchange_rate_raw_api_object.add_raw_member("price_adjust",
-                                                    pa_forward_ref,
+                                                    price_adjust,
                                                     exchange_rate_parent)
+
         # Price pool
         pool_forward_ref = ForwardRef(pregen_converter_group,
                                       "aux.resource.market_trading.MarketStonePricePool")
@@ -727,95 +767,68 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects.update({exchange_rate_ref_in_modpack: exchange_rate_raw_api_object})
 
         # =======================================================================
-        # Price mode
+        # Buy Price mode
         # =======================================================================
-        price_mode_parent = "engine.aux.price_mode.dynamic.type.DynamicFlat"
+        price_mode_parent = "engine.aux.price_mode.type.Dynamic"
         price_mode_location = "data/aux/resource/"
 
-        price_mode_ref_in_modpack = "aux.resource.market_trading.MarketDynamicPriceMode"
+        price_mode_ref_in_modpack = "aux.resource.market_trading.MarketBuyPriceMode"
         price_mode_raw_api_object = RawAPIObject(price_mode_ref_in_modpack,
-                                                 "MarketDynamicPriceMode",
+                                                 "MarketBuyPriceMode",
                                                  api_objects,
                                                  price_mode_location)
         price_mode_raw_api_object.set_filename("market_trading")
         price_mode_raw_api_object.add_raw_parent(price_mode_parent)
 
         # Min price
+        price_mode_raw_api_object.add_raw_member("change_value",
+                                                 0.03,
+                                                 price_mode_parent)
+
+        # Min price
         price_mode_raw_api_object.add_raw_member("min_price",
                                                  0.3,
-                                                 "engine.aux.price_mode.dynamic.Dynamic")
+                                                 price_mode_parent)
 
         # Max price
         price_mode_raw_api_object.add_raw_member("max_price",
                                                  99.9,
-                                                 "engine.aux.price_mode.dynamic.Dynamic")
-
-        # Change settings
-        settings = [
-            ForwardRef(pregen_converter_group,
-                       "aux.resource.market_trading.MarketBuyPriceChange"),
-            ForwardRef(pregen_converter_group,
-                       "aux.resource.market_trading.MarketSellPriceChange"),
-        ]
-        price_mode_raw_api_object.add_raw_member("change_settings",
-                                                 settings,
                                                  price_mode_parent)
 
         pregen_converter_group.add_raw_api_object(price_mode_raw_api_object)
         pregen_nyan_objects.update({price_mode_ref_in_modpack: price_mode_raw_api_object})
 
         # =======================================================================
-        # Price change Buy
+        # Sell Price mode
         # =======================================================================
-        price_change_parent = "engine.aux.price_change.PriceChange"
-        price_change_location = "data/aux/resource/"
+        price_mode_parent = "engine.aux.price_mode.type.Dynamic"
+        price_mode_location = "data/aux/resource/"
 
-        price_change_ref_in_modpack = "aux.resource.market_trading.MarketBuyPriceChange"
-        price_change_raw_api_object = RawAPIObject(price_change_ref_in_modpack,
-                                                   "MarketBuyPriceChange",
-                                                   api_objects,
-                                                   price_change_location)
-        price_change_raw_api_object.set_filename("market_trading")
-        price_change_raw_api_object.add_raw_parent(price_change_parent)
+        price_mode_ref_in_modpack = "aux.resource.market_trading.MarketSellPriceMode"
+        price_mode_raw_api_object = RawAPIObject(price_mode_ref_in_modpack,
+                                                 "MarketSellPriceMode",
+                                                 api_objects,
+                                                 price_mode_location)
+        price_mode_raw_api_object.set_filename("market_trading")
+        price_mode_raw_api_object.add_raw_parent(price_mode_parent)
 
-        # Exchange Mode
-        exchange_mode = api_objects["engine.aux.exchange_mode.type.Buy"]
-        price_change_raw_api_object.add_raw_member("exchange_mode",
-                                                   exchange_mode,
-                                                   price_change_parent)
+        # Min price
+        price_mode_raw_api_object.add_raw_member("change_value",
+                                                 -0.03,
+                                                 price_mode_parent)
 
-        # Change value
-        price_change_raw_api_object.add_raw_member("change_value",
-                                                   0.03,
-                                                   price_change_parent)
+        # Min price
+        price_mode_raw_api_object.add_raw_member("min_price",
+                                                 0.3,
+                                                 price_mode_parent)
 
-        pregen_converter_group.add_raw_api_object(price_change_raw_api_object)
-        pregen_nyan_objects.update({price_change_ref_in_modpack: price_change_raw_api_object})
+        # Max price
+        price_mode_raw_api_object.add_raw_member("max_price",
+                                                 99.9,
+                                                 price_mode_parent)
 
-        # =======================================================================
-        # Price change Sell
-        # =======================================================================
-        price_change_ref_in_modpack = "aux.resource.market_trading.MarketSellPriceChange"
-        price_change_raw_api_object = RawAPIObject(price_change_ref_in_modpack,
-                                                   "MarketSellPriceChange",
-                                                   api_objects,
-                                                   price_change_location)
-        price_change_raw_api_object.set_filename("market_trading")
-        price_change_raw_api_object.add_raw_parent(price_change_parent)
-
-        # Exchange Mode
-        exchange_mode = api_objects["engine.aux.exchange_mode.type.Sell"]
-        price_change_raw_api_object.add_raw_member("exchange_mode",
-                                                   exchange_mode,
-                                                   price_change_parent)
-
-        # Change value
-        price_change_raw_api_object.add_raw_member("change_value",
-                                                   -0.03,
-                                                   price_change_parent)
-
-        pregen_converter_group.add_raw_api_object(price_change_raw_api_object)
-        pregen_nyan_objects.update({price_change_ref_in_modpack: price_change_raw_api_object})
+        pregen_converter_group.add_raw_api_object(price_mode_raw_api_object)
+        pregen_nyan_objects.update({price_mode_ref_in_modpack: price_mode_raw_api_object})
 
     @staticmethod
     def generate_formation_types(full_data_set, pregen_converter_group):
@@ -1264,21 +1277,44 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects.update({fallback_ref_in_modpack: fallback_raw_api_object})
 
         # =======================================================================
+        # Property Construct
+        # =======================================================================
+        prop_ref_in_modpack = "resistance.property.types.BuildingConstruct"
+        prop_raw_api_object = RawAPIObject(prop_ref_in_modpack,
+                                           "BuildingConstruct",
+                                           api_objects,
+                                           "data/resistance/property/")
+        prop_raw_api_object.set_filename("types")
+        prop_raw_api_object.add_raw_parent("engine.resistance.property.type.Stacked")
+
+        pregen_converter_group.add_raw_api_object(prop_raw_api_object)
+        pregen_nyan_objects.update({prop_ref_in_modpack: prop_raw_api_object})
+
+        prop_raw_api_object.add_raw_member("stack_limit",
+                                           MemberSpecialValue.NYAN_INF,
+                                           "engine.resistance.property.type.Stacked")
+
+        prop_raw_api_object.add_raw_member("distribution_type",
+                                           api_objects["engine.aux.distribution_type.type.Mean"],
+                                           "engine.resistance.property.type.Stacked")
+
         # Calculation type Construct
         # =======================================================================
         calc_parent = "engine.aux.calculation_type.type.Hyperbolic"
-        calc_location = "data/resistance/discrete/flat_attribute_change/"
 
-        calc_ref_in_modpack = "aux.calculation_type.construct_calculation.BuildingConstruct"
+        calc_ref_in_modpack = "aux.calculation_type.construct_calculation.ConstructCalcType"
         calc_raw_api_object = RawAPIObject(calc_ref_in_modpack,
                                            "BuildingConstruct",
-                                           api_objects,
-                                           calc_location)
-        calc_raw_api_object.set_filename("construct_calculation")
+                                           api_objects)
+        calc_location = ForwardRef(pregen_converter_group, prop_ref_in_modpack)
+        calc_raw_api_object.set_location(calc_location)
         calc_raw_api_object.add_raw_parent(calc_parent)
 
-        # Formula: (scale_factor * val)/(count_effectors - shift_x) + shift_y
-        # AoE2: (3 * construction_time) / (vil_count + 2)
+        pregen_converter_group.add_raw_api_object(calc_raw_api_object)
+        pregen_nyan_objects.update({calc_ref_in_modpack: calc_raw_api_object})
+
+        # Formula: (scale_factor / (count_effectors - shift_x)) + shift_y
+        # AoE2: (3 / (vil_count + 2))
 
         # Shift x
         calc_raw_api_object.add_raw_member("shift_x",
@@ -1295,8 +1331,71 @@ class AoCPregenSubprocessor:
                                            3,
                                            calc_parent)
 
+        calc_forward_ref = ForwardRef(pregen_converter_group, calc_ref_in_modpack)
+        prop_raw_api_object.add_raw_member("calculation_type",
+                                           calc_forward_ref,
+                                           "engine.resistance.property.type.Stacked")
+
+        # =======================================================================
+        # Property Repair
+        # =======================================================================
+        prop_ref_in_modpack = "resistance.property.types.BuildingRepair"
+        prop_raw_api_object = RawAPIObject(prop_ref_in_modpack,
+                                           "BuildingRepair",
+                                           api_objects,
+                                           "data/resistance/property/")
+        prop_raw_api_object.set_filename("types")
+        prop_raw_api_object.add_raw_parent("engine.resistance.property.type.Stacked")
+
+        pregen_converter_group.add_raw_api_object(prop_raw_api_object)
+        pregen_nyan_objects.update({prop_ref_in_modpack: prop_raw_api_object})
+
+        prop_raw_api_object.add_raw_member("stack_limit",
+                                           MemberSpecialValue.NYAN_INF,
+                                           "engine.resistance.property.type.Stacked")
+
+        prop_raw_api_object.add_raw_member("distribution_type",
+                                           api_objects["engine.aux.distribution_type.type.Mean"],
+                                           "engine.resistance.property.type.Stacked")
+
+        # =======================================================================
+        # Calculation type Repair
+        # =======================================================================
+        calc_parent = "engine.aux.calculation_type.type.Linear"
+
+        calc_ref_in_modpack = "aux.calculation_type.construct_calculation.BuildingRepair"
+        calc_raw_api_object = RawAPIObject(calc_ref_in_modpack,
+                                           "BuildingRepair",
+                                           api_objects)
+        calc_location = ForwardRef(pregen_converter_group, prop_ref_in_modpack)
+        calc_raw_api_object.set_location(calc_location)
+        calc_raw_api_object.add_raw_parent(calc_parent)
+
         pregen_converter_group.add_raw_api_object(calc_raw_api_object)
         pregen_nyan_objects.update({calc_ref_in_modpack: calc_raw_api_object})
+
+        # Formula: (scale_factor * (count_effectors - shift_x)) + shift_y
+        # AoE2: (0.333334 * (vil_count + 2))
+
+        # Shift x
+        calc_raw_api_object.add_raw_member("shift_x",
+                                           -2,
+                                           calc_parent)
+
+        # Shift y
+        calc_raw_api_object.add_raw_member("shift_y",
+                                           0,
+                                           calc_parent)
+
+        # Scale
+        calc_raw_api_object.add_raw_member("scale_factor",
+                                           1 / 3,
+                                           calc_parent)
+
+        calc_forward_ref = ForwardRef(pregen_converter_group, calc_ref_in_modpack)
+        prop_raw_api_object.add_raw_member("calculation_type",
+                                           calc_forward_ref,
+                                           "engine.resistance.property.type.Stacked")
 
     @staticmethod
     def generate_modifiers(full_data_set, pregen_converter_group):
@@ -1315,16 +1414,17 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
         api_objects = full_data_set.nyan_api_objects
 
-        modifier_parent = "engine.modifier.multiplier.MultiplierModifier"
-        type_parent = "engine.modifier.multiplier.effect.flat_attribute_change.type.Flyover"
+        modifier_parent = "engine.modifier.Modifier"
+        mprop_parent = "engine.modifier.property.type.Multiplier"
+        type_parent = "engine.modifier.effect.flat_attribute_change.type.Flyover"
         types_location = "data/aux/modifier/flyover_cliff/"
 
         # =======================================================================
         # Flyover effect multiplier
         # =======================================================================
-        modifier_ref_in_modpack = "aux.modifier.flyover_cliff.AttackMultiplierFlyover"
+        modifier_ref_in_modpack = "aux.modifier.flyover_cliff.AttackFlyover"
         modifier_raw_api_object = RawAPIObject(modifier_ref_in_modpack,
-                                               "AttackMultiplierFlyover", api_objects,
+                                               "AttackFlyover", api_objects,
                                                types_location)
         modifier_raw_api_object.set_filename("flyover_cliff")
         modifier_raw_api_object.add_raw_parent(type_parent)
@@ -1332,12 +1432,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(modifier_raw_api_object)
         pregen_nyan_objects.update({modifier_ref_in_modpack: modifier_raw_api_object})
 
-        # Increases effect value by 25%
-        modifier_raw_api_object.add_raw_member("multiplier",
-                                               1.25,
-                                               modifier_parent)
-
-        # Relative angle to cliff must not be larger than 90°
+        # Relative angle to cliff must not be smaller than 90°
         modifier_raw_api_object.add_raw_member("relative_angle",
                                                90,
                                                type_parent)
@@ -1351,16 +1446,39 @@ class AoCPregenSubprocessor:
                                                [],
                                                type_parent)
 
+        # Multiplier property: Increases effect value by 25%
+        # --------------------------------------------------
+        prop_ref_in_modpack = "aux.modifier.flyover_cliff.AttackFlyover.Multiplier"
+        prop_raw_api_object = RawAPIObject(prop_ref_in_modpack,
+                                           "Multiplier", api_objects,
+                                           types_location)
+        prop_location = ForwardRef(pregen_converter_group, modifier_ref_in_modpack)
+        prop_raw_api_object.set_location(prop_location)
+        prop_raw_api_object.add_raw_parent(mprop_parent)
+
+        pregen_converter_group.add_raw_api_object(prop_raw_api_object)
+        pregen_nyan_objects.update({prop_ref_in_modpack: prop_raw_api_object})
+
+        prop_raw_api_object.add_raw_member("multiplier",
+                                           1.25,
+                                           mprop_parent)
+        # --------------------------------------------------
+        # Assign property to modifier
+        prop_forward_ref = ForwardRef(pregen_converter_group, prop_ref_in_modpack)
+        properties = {api_objects[mprop_parent]: prop_forward_ref}
+        modifier_raw_api_object.add_raw_member("properties",
+                                               properties,
+                                               modifier_parent)
+
         # =======================================================================
         # Elevation difference effect multiplier (higher unit)
         # =======================================================================
-        modifier_parent = "engine.modifier.multiplier.MultiplierModifier"
-        type_parent = "engine.modifier.multiplier.effect.flat_attribute_change.type.ElevationDifferenceHigh"
+        type_parent = "engine.modifier.effect.flat_attribute_change.type.ElevationDifferenceHigh"
         types_location = "data/aux/modifier/elevation_difference/"
 
-        modifier_ref_in_modpack = "aux.modifier.elevation_difference.AttackMultiplierHigh"
+        modifier_ref_in_modpack = "aux.modifier.elevation_difference.AttackHigh"
         modifier_raw_api_object = RawAPIObject(modifier_ref_in_modpack,
-                                               "AttackMultiplierHigh", api_objects,
+                                               "AttackHigh", api_objects,
                                                types_location)
         modifier_raw_api_object.set_filename("elevation_difference")
         modifier_raw_api_object.add_raw_parent(type_parent)
@@ -1368,23 +1486,39 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(modifier_raw_api_object)
         pregen_nyan_objects.update({modifier_ref_in_modpack: modifier_raw_api_object})
 
-        # Increases effect value to 125%
-        modifier_raw_api_object.add_raw_member("multiplier",
-                                               1.25,
-                                               modifier_parent)
+        # Multiplier property: Increases effect value to 125%
+        # --------------------------------------------------
+        prop_ref_in_modpack = "aux.modifier.elevation_difference.AttackHigh.Multiplier"
+        prop_raw_api_object = RawAPIObject(prop_ref_in_modpack,
+                                           "Multiplier", api_objects,
+                                           types_location)
+        prop_location = ForwardRef(pregen_converter_group, modifier_ref_in_modpack)
+        prop_raw_api_object.set_location(prop_location)
+        prop_raw_api_object.add_raw_parent(mprop_parent)
 
-        # Min elevation difference is not set
+        pregen_converter_group.add_raw_api_object(prop_raw_api_object)
+        pregen_nyan_objects.update({prop_ref_in_modpack: prop_raw_api_object})
+
+        prop_raw_api_object.add_raw_member("multiplier",
+                                           1.25,
+                                           mprop_parent)
+        # --------------------------------------------------
+        # Assign property to modifier
+        prop_forward_ref = ForwardRef(pregen_converter_group, prop_ref_in_modpack)
+        properties = {api_objects[mprop_parent]: prop_forward_ref}
+        modifier_raw_api_object.add_raw_member("properties",
+                                               properties,
+                                               modifier_parent)
 
         # =======================================================================
         # Elevation difference effect multiplier (lower unit)
         # =======================================================================
-        modifier_parent = "engine.modifier.multiplier.MultiplierModifier"
-        type_parent = "engine.modifier.multiplier.effect.flat_attribute_change.type.ElevationDifferenceLow"
+        type_parent = "engine.modifier.effect.flat_attribute_change.type.ElevationDifferenceLow"
         types_location = "data/aux/modifier/elevation_difference/"
 
-        modifier_ref_in_modpack = "aux.modifier.elevation_difference.AttackMultiplierLow"
+        modifier_ref_in_modpack = "aux.modifier.elevation_difference.AttackLow"
         modifier_raw_api_object = RawAPIObject(modifier_ref_in_modpack,
-                                               "AttackMultiplierLow", api_objects,
+                                               "AttackLow", api_objects,
                                                types_location)
         modifier_raw_api_object.set_filename("elevation_difference")
         modifier_raw_api_object.add_raw_parent(type_parent)
@@ -1392,12 +1526,29 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(modifier_raw_api_object)
         pregen_nyan_objects.update({modifier_ref_in_modpack: modifier_raw_api_object})
 
-        # Decreases effect value to 75%
-        modifier_raw_api_object.add_raw_member("multiplier",
-                                               0.75,
-                                               modifier_parent)
+        # Multiplier property: Decreases effect value to 75%
+        # --------------------------------------------------
+        prop_ref_in_modpack = "aux.modifier.elevation_difference.AttackLow.Multiplier"
+        prop_raw_api_object = RawAPIObject(prop_ref_in_modpack,
+                                           "Multiplier", api_objects,
+                                           types_location)
+        prop_location = ForwardRef(pregen_converter_group, modifier_ref_in_modpack)
+        prop_raw_api_object.set_location(prop_location)
+        prop_raw_api_object.add_raw_parent(mprop_parent)
 
-        # Min elevation difference is not set
+        pregen_converter_group.add_raw_api_object(prop_raw_api_object)
+        pregen_nyan_objects.update({prop_ref_in_modpack: prop_raw_api_object})
+
+        prop_raw_api_object.add_raw_member("multiplier",
+                                           1.25,
+                                           mprop_parent)
+        # --------------------------------------------------
+        # Assign property to modifier
+        prop_forward_ref = ForwardRef(pregen_converter_group, prop_ref_in_modpack)
+        properties = {api_objects[mprop_parent]: prop_forward_ref}
+        modifier_raw_api_object.add_raw_member("properties",
+                                               properties,
+                                               modifier_parent)
 
     @staticmethod
     def generate_terrain_types(full_data_set, pregen_converter_group):
@@ -1472,7 +1623,7 @@ class AoCPregenSubprocessor:
                                            MemberSpecialValue.NYAN_INF,
                                            resource_parent)
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         food_name_ref_in_modpack = "aux.attribute.types.Food.FoodName"
         food_name_value = RawAPIObject(food_name_ref_in_modpack, "FoodName",
                                        api_objects, resources_location)
@@ -1506,7 +1657,7 @@ class AoCPregenSubprocessor:
                                            MemberSpecialValue.NYAN_INF,
                                            resource_parent)
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         wood_name_ref_in_modpack = "aux.attribute.types.Wood.WoodName"
         wood_name_value = RawAPIObject(wood_name_ref_in_modpack, "WoodName",
                                        api_objects, resources_location)
@@ -1540,7 +1691,7 @@ class AoCPregenSubprocessor:
                                             MemberSpecialValue.NYAN_INF,
                                             resource_parent)
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         stone_name_ref_in_modpack = "aux.attribute.types.Stone.StoneName"
         stone_name_value = RawAPIObject(stone_name_ref_in_modpack, "StoneName",
                                         api_objects, resources_location)
@@ -1574,7 +1725,7 @@ class AoCPregenSubprocessor:
                                            MemberSpecialValue.NYAN_INF,
                                            resource_parent)
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         gold_name_ref_in_modpack = "aux.attribute.types.Gold.GoldName"
         gold_name_value = RawAPIObject(gold_name_ref_in_modpack, "GoldName",
                                        api_objects, resources_location)
@@ -1606,7 +1757,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(pop_raw_api_object)
         pregen_nyan_objects.update({pop_ref_in_modpack: pop_raw_api_object})
 
-        name_value_parent = "engine.aux.translated.type.TranslatedString"
+        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
         pop_name_ref_in_modpack = "aux.attribute.types.PopulationSpace.PopulationSpaceName"
         pop_name_value = RawAPIObject(pop_name_ref_in_modpack, "PopulationSpaceName",
                                       api_objects, resources_location)
@@ -1704,7 +1855,7 @@ class AoCPregenSubprocessor:
         scope_raw_api_object.add_raw_parent(self_scope_parent)
 
         scope_diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Self"]]
-        scope_raw_api_object.add_raw_member("diplomatic_stances",
+        scope_raw_api_object.add_raw_member("stances",
                                             scope_diplomatic_stances,
                                             scope_parent)
 
@@ -1765,7 +1916,7 @@ class AoCPregenSubprocessor:
         scope_raw_api_object.add_raw_parent(self_scope_parent)
 
         scope_diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Self"]]
-        scope_raw_api_object.add_raw_member("diplomatic_stances",
+        scope_raw_api_object.add_raw_member("stances",
                                             scope_diplomatic_stances,
                                             scope_parent)
 

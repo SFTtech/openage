@@ -1,6 +1,6 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
-# pylint: disable=too-many-locals,invalid-name
+# pylint: disable=too-many-locals,too-many-statements,invalid-name
 #
 # TODO:
 # pylint: disable=line-too-long
@@ -9,7 +9,6 @@
 Creates effects and resistances for the Apply*Effect and Resistance
 abilities.
 """
-from .....nyan.nyan_structs import MemberSpecialValue
 from ....entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
@@ -23,14 +22,14 @@ class AoCEffectSubprocessor:
     """
 
     @staticmethod
-    def get_attack_effects(line, ability_ref, projectile=-1):
+    def get_attack_effects(line, location_ref, projectile=-1):
         """
         Creates effects that are used for attacking (unit command: 7)
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param ability_ref: Reference of the ability raw API object the effects are added to.
-        :type ability_ref: str
+        :param location_ref: Reference to API object the effects are added to.
+        :type location_ref: str
         :returns: The forward references for the effects.
         :rtype: list
         """
@@ -58,12 +57,12 @@ class AoCEffectSubprocessor:
             attack_amount = attack["amount"].get_value()
             class_name = armor_lookup_dict[armor_class]
 
-            attack_ref = f"{ability_ref}.{class_name}"
+            attack_ref = f"{location_ref}.{class_name}"
             attack_raw_api_object = RawAPIObject(attack_ref,
                                                  class_name,
                                                  dataset.nyan_api_objects)
             attack_raw_api_object.add_raw_parent(attack_parent)
-            attack_location = ForwardRef(line, ability_ref)
+            attack_location = ForwardRef(line, location_ref)
             attack_raw_api_object.set_location(attack_location)
 
             # Type
@@ -84,7 +83,7 @@ class AoCEffectSubprocessor:
 
             # Change value
             # =================================================================================
-            amount_name = f"{ability_ref}.{class_name}.ChangeAmount"
+            amount_name = f"{location_ref}.{class_name}.ChangeAmount"
             amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", dataset.nyan_api_objects)
             amount_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeAmount")
             amount_location = ForwardRef(line, attack_ref)
@@ -122,14 +121,14 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_convert_effects(line, ability_ref):
+    def get_convert_effects(line, location_ref):
         """
         Creates effects that are used for conversion (unit command: 104)
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param ability_ref: Reference of the ability raw API object the effects are added to.
-        :type ability_ref: str
+        :param location_ref: Reference to API object the effects are added to.
+        :type location_ref: str
         :returns: The forward references for the effects.
         :rtype: list
         """
@@ -156,12 +155,12 @@ class AoCEffectSubprocessor:
             return effects
 
         # Unit conversion
-        convert_ref = f"{ability_ref}.ConvertUnitEffect"
+        convert_ref = f"{location_ref}.ConvertUnitEffect"
         convert_raw_api_object = RawAPIObject(convert_ref,
                                               "ConvertUnitEffect",
                                               dataset.nyan_api_objects)
         convert_raw_api_object.add_raw_parent(convert_parent)
-        convert_location = ForwardRef(line, ability_ref)
+        convert_location = ForwardRef(line, location_ref)
         convert_raw_api_object.set_location(convert_location)
 
         # Type
@@ -197,12 +196,12 @@ class AoCEffectSubprocessor:
         effects.append(attack_forward_ref)
 
         # Building conversion
-        convert_ref = f"{ability_ref}.ConvertBuildingEffect"
+        convert_ref = f"{location_ref}.ConvertBuildingEffect"
         convert_raw_api_object = RawAPIObject(convert_ref,
                                               "ConvertBuildingUnitEffect",
                                               dataset.nyan_api_objects)
         convert_raw_api_object.add_raw_parent(convert_parent)
-        convert_location = ForwardRef(line, ability_ref)
+        convert_location = ForwardRef(line, location_ref)
         convert_raw_api_object.set_location(convert_location)
 
         # Type
@@ -240,14 +239,14 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_heal_effects(line, ability_ref):
+    def get_heal_effects(line, location_ref):
         """
         Creates effects that are used for healing (unit command: 105)
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param ability_ref: Reference of the ability raw API object the effects are added to.
-        :type ability_ref: str
+        :param location_ref: Reference to API object the effects are added to.
+        :type location_ref: str
         :returns: The forward references for the effects.
         :rtype: list
         """
@@ -276,12 +275,12 @@ class AoCEffectSubprocessor:
 
         heal_rate = heal_command["work_value1"].get_value()
 
-        heal_ref = f"{ability_ref}.HealEffect"
+        heal_ref = f"{location_ref}.HealEffect"
         heal_raw_api_object = RawAPIObject(heal_ref,
                                            "HealEffect",
                                            dataset.nyan_api_objects)
         heal_raw_api_object.add_raw_parent(heal_parent)
-        heal_location = ForwardRef(line, ability_ref)
+        heal_location = ForwardRef(line, location_ref)
         heal_raw_api_object.set_location(heal_location)
 
         # Type
@@ -302,7 +301,7 @@ class AoCEffectSubprocessor:
 
         # Change rate
         # =================================================================================
-        rate_name = f"{ability_ref}.HealEffect.ChangeRate"
+        rate_name = f"{location_ref}.HealEffect.ChangeRate"
         rate_raw_api_object = RawAPIObject(rate_name, "ChangeRate", dataset.nyan_api_objects)
         rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
         rate_location = ForwardRef(line, heal_ref)
@@ -335,18 +334,19 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_repair_effects(line, ability_ref):
+    def get_repair_effects(line, location_ref):
         """
         Creates effects that are used for repairing (unit command: 106)
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param ability_ref: Reference of the ability raw API object the effects are added to.
-        :type ability_ref: str
+        :param location_ref: Reference to API object the effects are added to.
+        :type location_ref: str
         :returns: The forward references for the effects.
         :rtype: list
         """
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
@@ -365,13 +365,15 @@ class AoCEffectSubprocessor:
             game_entity_name = name_lookup_dict[repairable_line.get_head_unit_id()][0]
 
             repair_name = f"{game_entity_name}RepairEffect"
-            repair_ref = f"{ability_ref}.{repair_name}"
+            repair_ref = f"{location_ref}.{repair_name}"
             repair_raw_api_object = RawAPIObject(repair_ref,
                                                  repair_name,
                                                  dataset.nyan_api_objects)
             repair_raw_api_object.add_raw_parent(repair_parent)
-            repair_location = ForwardRef(line, ability_ref)
+            repair_location = ForwardRef(line, location_ref)
             repair_raw_api_object.set_location(repair_location)
+
+            line.add_raw_api_object(repair_raw_api_object)
 
             # Type
             type_ref = f"aux.attribute_change_type.types.{game_entity_name}Repair"
@@ -386,7 +388,7 @@ class AoCEffectSubprocessor:
 
             # Change rate
             # =================================================================================
-            rate_name = f"{ability_ref}.{repair_name}.ChangeRate"
+            rate_name = f"{location_ref}.{repair_name}.ChangeRate"
             rate_raw_api_object = RawAPIObject(rate_name, "ChangeRate", dataset.nyan_api_objects)
             rate_raw_api_object.add_raw_parent("engine.aux.attribute.AttributeRate")
             rate_location = ForwardRef(line, repair_ref)
@@ -423,28 +425,45 @@ class AoCEffectSubprocessor:
                                                  effect_parent)
 
             # Repair cost
-            repair_raw_api_object.add_raw_parent("engine.effect.specialization.CostEffect")
+            property_ref = f"{repair_ref}.Cost"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "Cost",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.effect.property.type.Cost")
+            property_location = ForwardRef(line, repair_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
+
             cost_ref = f"{game_entity_name}.CreatableGameEntity.{game_entity_name}RepairCost"
             cost_forward_ref = ForwardRef(repairable_line, cost_ref)
-            repair_raw_api_object.add_raw_member("cost",
-                                                 cost_forward_ref,
-                                                 "engine.effect.specialization.CostEffect")
+            property_raw_api_object.add_raw_member("cost",
+                                                   cost_forward_ref,
+                                                   "engine.effect.property.type.Cost")
 
-            line.add_raw_api_object(repair_raw_api_object)
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties = {
+                api_objects["engine.effect.property.type.Cost"]: property_forward_ref
+            }
+
+            repair_raw_api_object.add_raw_member("properties",
+                                                 properties,
+                                                 "engine.effect.Effect")
+
             repair_forward_ref = ForwardRef(line, repair_ref)
             effects.append(repair_forward_ref)
 
         return effects
 
     @staticmethod
-    def get_construct_effects(line, ability_ref):
+    def get_construct_effects(line, location_ref):
         """
         Creates effects that are used for construction (unit command: 101)
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param ability_ref: Reference of the ability raw API object the effects are added to.
-        :type ability_ref: str
+        :param location_ref: Reference to API object the effects are added to.
+        :type location_ref: str
         :returns: The forward references for the effects.
         :rtype: list
         """
@@ -467,12 +486,12 @@ class AoCEffectSubprocessor:
 
             # Construction progress
             contruct_progress_name = f"{game_entity_name}ConstructProgressEffect"
-            contruct_progress_ref = f"{ability_ref}.{contruct_progress_name}"
+            contruct_progress_ref = f"{location_ref}.{contruct_progress_name}"
             contruct_progress_raw_api_object = RawAPIObject(contruct_progress_ref,
                                                             contruct_progress_name,
                                                             dataset.nyan_api_objects)
             contruct_progress_raw_api_object.add_raw_parent(progress_construct_parent)
-            contruct_progress_location = ForwardRef(line, ability_ref)
+            contruct_progress_location = ForwardRef(line, location_ref)
             contruct_progress_raw_api_object.set_location(contruct_progress_location)
 
             # Type
@@ -494,12 +513,12 @@ class AoCEffectSubprocessor:
 
             # HP increase during construction
             contruct_hp_name = f"{game_entity_name}ConstructHPEffect"
-            contruct_hp_ref = f"{ability_ref}.{contruct_hp_name}"
+            contruct_hp_ref = f"{location_ref}.{contruct_hp_name}"
             contruct_hp_raw_api_object = RawAPIObject(contruct_hp_ref,
                                                       contruct_hp_name,
                                                       dataset.nyan_api_objects)
             contruct_hp_raw_api_object.add_raw_parent(attr_construct_parent)
-            contruct_hp_location = ForwardRef(line, ability_ref)
+            contruct_hp_location = ForwardRef(line, location_ref)
             contruct_hp_raw_api_object.set_location(contruct_hp_location)
 
             # Type
@@ -758,6 +777,7 @@ class AoCEffectSubprocessor:
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         resistances = []
 
@@ -807,24 +827,15 @@ class AoCEffectSubprocessor:
                                                  resistance_parent)
 
         # Stacking of villager repair HP increase
-        resistance_raw_api_object.add_raw_parent("engine.resistance.specialization.StackedResistance")
+        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingRepair"].get_nyan_object()
+        properties = {
+            api_objects["engine.resistance.property.type.Stacked"]: construct_property
+        }
 
-        # Stack limit
-        resistance_raw_api_object.add_raw_member("stack_limit",
-                                                 MemberSpecialValue.NYAN_INF,
-                                                 "engine.resistance.specialization.StackedResistance")
-
-        # Calculation type
-        calculation_type = dataset.pregen_nyan_objects["aux.calculation_type.construct_calculation.BuildingConstruct"].get_nyan_object()
-        resistance_raw_api_object.add_raw_member("calculation_type",
-                                                 calculation_type,
-                                                 "engine.resistance.specialization.StackedResistance")
-
-        # Calculation type
-        distribution_type = dataset.nyan_api_objects["engine.aux.distribution_type.type.Mean"]
-        resistance_raw_api_object.add_raw_member("distribution_type",
-                                                 distribution_type,
-                                                 "engine.resistance.specialization.StackedResistance")
+        # Add the predefined property
+        resistance_raw_api_object.add_raw_member("properties",
+                                                 properties,
+                                                 "engine.resistance.Resistance")
 
         line.add_raw_api_object(resistance_raw_api_object)
         resistance_forward_ref = ForwardRef(line, resistance_ref)
@@ -846,6 +857,7 @@ class AoCEffectSubprocessor:
         """
         current_unit_id = line.get_head_unit_id()
         dataset = line.data
+        api_objects = dataset.nyan_api_objects
 
         resistances = []
 
@@ -879,24 +891,15 @@ class AoCEffectSubprocessor:
         resistances.append(resistance_forward_ref)
 
         # Stacking of villager construction times
-        resistance_raw_api_object.add_raw_parent("engine.resistance.specialization.StackedResistance")
+        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingConstruct"].get_nyan_object()
+        properties = {
+            api_objects["engine.resistance.property.type.Stacked"]: construct_property
+        }
 
-        # Stack limit
-        resistance_raw_api_object.add_raw_member("stack_limit",
-                                                 MemberSpecialValue.NYAN_INF,
-                                                 "engine.resistance.specialization.StackedResistance")
-
-        # Calculation type
-        calculation_type = dataset.pregen_nyan_objects["aux.calculation_type.construct_calculation.BuildingConstruct"].get_nyan_object()
-        resistance_raw_api_object.add_raw_member("calculation_type",
-                                                 calculation_type,
-                                                 "engine.resistance.specialization.StackedResistance")
-
-        # Calculation type
-        distribution_type = dataset.nyan_api_objects["engine.aux.distribution_type.type.Mean"]
-        resistance_raw_api_object.add_raw_member("distribution_type",
-                                                 distribution_type,
-                                                 "engine.resistance.specialization.StackedResistance")
+        # Add the predefined property
+        resistance_raw_api_object.add_raw_member("properties",
+                                                 properties,
+                                                 "engine.resistance.Resistance")
 
         # Health
         resistance_ref = f"{ability_ref}.ConstructHP"
@@ -915,24 +918,15 @@ class AoCEffectSubprocessor:
                                                  attr_resistance_parent)
 
         # Stacking of villager construction HP increase
-        resistance_raw_api_object.add_raw_parent("engine.resistance.specialization.StackedResistance")
+        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingConstruct"].get_nyan_object()
+        properties = {
+            api_objects["engine.resistance.property.type.Stacked"]: construct_property
+        }
 
-        # Stack limit
-        resistance_raw_api_object.add_raw_member("stack_limit",
-                                                 MemberSpecialValue.NYAN_INF,
-                                                 "engine.resistance.specialization.StackedResistance")
-
-        # Calculation type
-        calculation_type = dataset.pregen_nyan_objects["aux.calculation_type.construct_calculation.BuildingConstruct"].get_nyan_object()
-        resistance_raw_api_object.add_raw_member("calculation_type",
-                                                 calculation_type,
-                                                 "engine.resistance.specialization.StackedResistance")
-
-        # Calculation type
-        distribution_type = dataset.nyan_api_objects["engine.aux.distribution_type.type.Mean"]
-        resistance_raw_api_object.add_raw_member("distribution_type",
-                                                 distribution_type,
-                                                 "engine.resistance.specialization.StackedResistance")
+        # Add the predefined property
+        resistance_raw_api_object.add_raw_member("properties",
+                                                 properties,
+                                                 "engine.resistance.Resistance")
 
         line.add_raw_api_object(resistance_raw_api_object)
         resistance_forward_ref = ForwardRef(line, resistance_ref)

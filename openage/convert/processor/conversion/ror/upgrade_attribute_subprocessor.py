@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
 #
@@ -97,14 +97,13 @@ class RoRUpgradeAttributeSubprocessor:
                                                   "engine.aux.patch.Patch")
 
             if team:
-                wrapper_raw_api_object.add_raw_parent("engine.aux.patch.type.DiplomaticPatch")
-                stances = [
-                    dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"],
-                    dataset.pregen_nyan_objects["aux.diplomatic_stance.types.Friendly"].get_nyan_object()
-                ]
-                wrapper_raw_api_object.add_raw_member("stances",
-                                                      stances,
-                                                      "engine.aux.patch.type.DiplomaticPatch")
+                team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
+                properties = {
+                    dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
+                }
+                wrapper_raw_api_object.add_raw_member("properties",
+                                                      properties,
+                                                      "engine.aux.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)

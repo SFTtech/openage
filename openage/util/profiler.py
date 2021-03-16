@@ -1,12 +1,13 @@
-# Copyright 2017-2018 the openage authors. See copying.md for legal info.
+# Copyright 2017-2021 the openage authors. See copying.md for legal info.
 
 """
 Profiling utilities
 """
 
 import cProfile
-import pstats
 import io
+import pstats
+import tracemalloc
 
 
 class Profiler:
@@ -71,3 +72,55 @@ class Profiler:
         Stop profiling calls.
         """
         self.profile.disable()
+
+
+class Tracemalloc:
+    """
+    A class for memory profiling.
+    Usage:
+        p = Tracemalloc()
+        with p:
+            # call methods that need to be profiled here
+        print(p.report())
+
+    The 'with' statement can be replaced with calls to
+    p.enable() and p.disable().
+    """
+
+    snapshot = None
+
+    def __init__(self, oStream=None):
+        # oStream can be a file if the profile results want to be saved.
+        self.tracemalloc_stream = oStream
+
+    def __enter__(self):
+        """
+        Activate data collection.
+        """
+        self.enable()
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        """
+        Stop profiling.
+        """
+        self.disable()
+
+    def report(self, sortby='lineno', cumulative=True, limit=100):
+        """
+        Return the snapshot statistics to the console.
+        """
+        for stat in self.snapshot.statistics(sortby, cumulative)[:limit]:
+            print(stat)
+
+    @staticmethod
+    def enable():
+        """
+        Begins profiling calls.
+        """
+        tracemalloc.start()
+
+    def disable(self):
+        """
+        Stop profiling calls.
+        """
+        self.snapshot = tracemalloc.take_snapshot()

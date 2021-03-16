@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-statements,too-many-branches
 #
@@ -72,7 +72,7 @@ class AoCUpgradeEffectSubprocessor:
                 effect_parent = "engine.effect.discrete.flat_attribute_change.FlatAttributeChange"
                 attack_parent = "engine.effect.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"
 
-                patch_target_ref = f"{ability_ref}"
+                patch_target_ref = f"{ability_ref}.Batch"
                 patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
@@ -164,7 +164,7 @@ class AoCUpgradeEffectSubprocessor:
                 attack_forward_ref = ForwardRef(line, attack_ref)
                 nyan_patch_raw_api_object.add_raw_patch_member("effects",
                                                                [attack_forward_ref],
-                                                               "engine.ability.type.ApplyDiscreteEffect",
+                                                               "engine.aux.effect_batch.EffectBatch",
                                                                MemberOperator.ADD)
 
                 patch_forward_ref = ForwardRef(tech_group, nyan_patch_ref)
@@ -185,7 +185,7 @@ class AoCUpgradeEffectSubprocessor:
                 armor_class = attack["type_id"].get_value()
                 class_name = armor_lookup_dict[armor_class]
 
-                patch_target_ref = f"{ability_ref}"
+                patch_target_ref = f"{ability_ref}.Batch"
                 patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper
@@ -221,7 +221,7 @@ class AoCUpgradeEffectSubprocessor:
                 attack_forward_ref = ForwardRef(line, attack_ref)
                 nyan_patch_raw_api_object.add_raw_patch_member("effects",
                                                                [attack_forward_ref],
-                                                               "engine.ability.type.ApplyDiscreteEffect",
+                                                               "engine.aux.effect_batch.EffectBatch",
                                                                MemberOperator.SUBTRACT)
 
                 patch_forward_ref = ForwardRef(tech_group, nyan_patch_ref)
@@ -248,7 +248,7 @@ class AoCUpgradeEffectSubprocessor:
 
                 class_name = armor_lookup_dict[armor_class]
 
-                patch_target_ref = f"{ability_ref}.{class_name}.ChangeAmount"
+                patch_target_ref = f"{ability_ref}.Batch.{class_name}.ChangeAmount"
                 patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
                 # Wrapper

@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals
 
@@ -42,12 +42,12 @@ class RoRPregenSubprocessor:
         for pregen_object in pregen_nyan_objects.values():
             pregen_object.create_nyan_object()
 
-        # This has to be separate because of possible object interdependencies
+        # This has to be a separate for-loop because of possible object interdependencies
         for pregen_object in pregen_nyan_objects.values():
             pregen_object.create_nyan_members()
 
             if not pregen_object.is_ready():
-                raise Exception("%s: Pregenerated object is not ready for export."
+                raise Exception("%s: Pregenerated object is not ready for export: "
                                 "Member or object not initialized." % (pregen_object))
 
     @staticmethod
@@ -122,7 +122,7 @@ class RoRPregenSubprocessor:
         scope_raw_api_object.add_raw_parent(self_scope_parent)
 
         scope_diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Self"]]
-        scope_raw_api_object.add_raw_member("diplomatic_stances",
+        scope_raw_api_object.add_raw_member("stances",
                                             scope_diplomatic_stances,
                                             scope_parent)
 
