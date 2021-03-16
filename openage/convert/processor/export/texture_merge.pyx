@@ -10,8 +10,7 @@ import numpy
 
 from ....log import spam
 from ...entity_object.export.texture import TextureImage
-from ...service.export.png.binpack import DeterministicPacker
-from ...service.export.png.binpack import RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
+from ...service.export.png.binpack cimport Packer, DeterministicPacker, RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
 from ...value_object.read.media.hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
                                                           TERRAIN_ASPECT_RATIO)
 
@@ -32,37 +31,30 @@ def merge_frames(texture, custom_packer=None, cache=None):
     :type custom_packer: Packer
     :type cache: list
     """
-    cmerge_frames(texture, custom_packer, cache)
+    cmerge_frames(texture, cache)
 
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
 @cython.cdivision(True)
-cdef void cmerge_frames(texture, custom_packer=None, cache=None):
+cdef void cmerge_frames(texture, cache=None):
     """
     merge all given frames in a texture into a single image atlas.
 
     :param texture: Texture containing animation frames.
-    :param custom_packer: Packer implementation for efficient packing of frames.
-                          If none is specified, the function will try several
-                          packer and chooses the most efficient one.
     :param cache: Media cache information with packer settings from a previous run.
     :type texture: Texture
-    :type custom_packer: Packer
     :type cache: list
     """
-    frames = texture.frames
+    cdef list frames = texture.frames
+    
     if len(frames) == 0:
         raise Exception("cannot create texture with empty input frame list")
 
-    if custom_packer:
-        packer = custom_packer
+    cdef BestPacker packer
 
-    elif cache:
-        packer = DeterministicPacker(
-            margin=MARGIN,
-            hints=cache
-        )
+    if cache:
+        packer = BestPacker([DeterministicPacker(margin=MARGIN,hints=cache)])
 
     else:
         packer = BestPacker([BinaryTreePacker(margin=MARGIN, aspect_ratio=1),
