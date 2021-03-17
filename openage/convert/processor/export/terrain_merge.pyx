@@ -43,100 +43,67 @@ cdef void cmerge_terrain(texture):
     """
     frames = texture.frames
     # Can be 10 (regular terrain) or 6 (farms)
-    cdef int tiles_per_row = <int>sqrt(len(frames))
+    cdef unsigned int tiles_per_row = <int>sqrt(len(frames))
 
     # Size of one tile should be (98,49)
-    cdef int frame_width = frames[0].width
-    cdef int frame_height = frames[0].height
+    cdef unsigned int frame_width = frames[0].width
+    cdef unsigned int frame_height = frames[0].height
 
-    cdef int half_offset_x = frame_width // 2
-    cdef int half_offset_y = frame_height // 2
+    cdef unsigned int flat_frame_width = (frame_width // 2) + 1
+    cdef unsigned int flat_frame_height = frame_height
 
-    cdef int merge_atlas_width = (frame_width * tiles_per_row) - (tiles_per_row - 1)
-    cdef int merge_atlas_height = (frame_height * tiles_per_row) - (tiles_per_row - 1)
-
-    cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] merge_atlas = \
-        numpy.zeros((merge_atlas_height, merge_atlas_width, 4), dtype=numpy.uint8)
-    cdef numpy.uint8_t[:, :, ::1] cmerge_atlas = merge_atlas
     cdef numpy.uint8_t[:, :, ::1] csubframe_atlas
 
-    cdef int merge_offset_x
-    cdef int merge_offset_y
+    cdef unsigned int column_idx
+    cdef unsigned int row_idx
 
-    cdef int merge_coord_x
-    cdef int merge_coord_y
-
-    cdef int tenth_frame
-    cdef int every_frame
-
-    index = 0
-    for sub_frame in frames:
-        csubframe_atlas = sub_frame.data
-
-        tenth_frame = index / tiles_per_row
-        every_frame = index % tiles_per_row
-
-        # Offset of every terrain tile in relation to (0,0)
-        # Tiles are shifted by the distance of a half tile
-        # and blended into each other.
-        merge_offset_x = ((every_frame * (half_offset_x))
-                          + (tenth_frame * (half_offset_x)))
-        merge_offset_y = ((merge_atlas_height // 2) - half_offset_y
-                          - (every_frame * (half_offset_y))
-                          + (tenth_frame * (half_offset_y)))
-
-        # Iterate through every pixel in the frame and copy
-        # colored pixels to the correct position in the merge image
-        merge_coord_x = merge_offset_x
-        merge_coord_y = merge_offset_y
-        for frame_x in range(frame_width):
-            for frame_y in range(frame_height):
-                # Do an alpha blend:
-                # this if skips all fully transparent pixels
-                # which means we only copy colored pixels
-                for c in range(4):
-                    if csubframe_atlas[frame_y, frame_x][c] > 0:
-                        break
-
-                else:
-                    merge_coord_y += 1
-                    continue
-
-                cmerge_atlas[merge_coord_y, merge_coord_x] = csubframe_atlas[frame_y, frame_x]
-                merge_coord_y += 1
-
-            merge_coord_x += 1
-            merge_coord_y = merge_offset_y
-
-        index += 1
-
-    # Transform to a flat texture
-    cdef int flat_atlas_width = (merge_atlas_width // 2) + 1
+    cdef unsigned int merge_atlas_width = (frame_width * tiles_per_row) - (tiles_per_row - 1)
+    cdef unsigned int merge_atlas_height = (frame_height * tiles_per_row) - (tiles_per_row - 1)
+    cdef unsigned int flat_atlas_width = (merge_atlas_width // 2) + 1
 
     cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] flat_atlas = \
         numpy.zeros((merge_atlas_height, flat_atlas_width, 4), dtype=numpy.uint8)
     cdef numpy.uint8_t[:, :, ::1] cflat_atlas = flat_atlas
 
-    cdef int merge_x
-    cdef int merge_y
+    cdef unsigned int source_x
+    cdef unsigned int source_y
 
-    # Does a matrix transformation using
-    # [  1 , -1  ]
-    # [ 0.5, 0.5 ]
-    # as the multipication matrix.
-    # This reverses the dimetric projection (diamond shape view)
-    # to a plan projection (bird's eye view).
-    # Reference: https://gamedev.stackexchange.com/questions/
-    #            16746/what-is-the-name-of-perspective-of-age-of-empires-ii
-    for flat_x in range(flat_atlas_width):
-        for flat_y in range(merge_atlas_height):
-            merge_x = (flat_x + flat_atlas_width - 1) - flat_y
-            merge_y = <int>floor(0.5 * flat_x + 0.5 * flat_y)
+    cdef unsigned int final_x
+    cdef unsigned int final_y
 
-            if flat_x + flat_y < merge_atlas_height:
-                merge_y = int(ceil(0.5 * flat_x + 0.5 * flat_y))
+    index = 0
+    for sub_frame in frames:
+        csubframe_atlas = sub_frame.data
+ 
+        # Fill each column upwards, starting with the last row
+        row_idx = (tiles_per_row - 1) - (index % tiles_per_row)
+        column_idx = index // tiles_per_row
 
-            cflat_atlas[flat_y, flat_x] = cmerge_atlas[merge_y, merge_x]
+        # Does a matrix transformation using
+        # [  1 , -1  ]
+        # [ 0.5, 0.5 ]
+        # as the multipication matrix.
+        # This reverses the dimetric projection (diamond shape view)
+        # to a plan projection (bird's eye view).
+        # Reference: https://gamedev.stackexchange.com/questions/
+        #            16746/what-is-the-name-of-perspective-of-age-of-empires-ii
+        for target_x in range(flat_frame_width):
+            for target_y in range(frame_height):
+                # Find the coords of the pixel (source) that is projected
+                # to the target pixel coords
+                source_x = (target_x + flat_frame_width - 1) - target_y
+                source_y = <unsigned int>floor(0.5 * target_x + 0.5 * target_y)
+
+                if target_x + target_y < frame_height:
+                    source_y = int(ceil(0.5 * target_x + 0.5 * target_y))
+
+                # Offset the target coords for the big texture
+                final_x = target_x + (column_idx * (flat_frame_width - 1))
+                final_y = target_y + (row_idx * (flat_frame_height - 1))
+
+                cflat_atlas[final_y, final_x] = csubframe_atlas[source_y, source_x]
+
+        index += 1
 
     # Rotate by 270 degrees to match the rotation of HD terrain textures
     flat_atlas = numpy.ascontiguousarray(numpy.rot90(flat_atlas, 3, axes=(0, 1)))
