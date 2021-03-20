@@ -39,38 +39,33 @@ class MediaExporter:
         if args.game_version[0].media_cache:
             cache_info = load_media_cache(args.game_version[0].media_cache)
 
-        from openage.util.profiler import Profiler
-        p = Profiler()
-        with p:
-            for media_type in export_requests.keys():
-                cur_export_requests = export_requests[media_type]
+        for media_type in export_requests.keys():
+            cur_export_requests = export_requests[media_type]
 
-                export_func = None
-                kwargs = {}
-                if media_type is MediaType.TERRAIN:
-                    # Game version and palettes
-                    kwargs["game_version"] = args.game_version
-                    kwargs["palettes"] = args.palettes
-                    kwargs["compression_level"] = args.compression_level
-                    export_func = MediaExporter._export_terrain
+            export_func = None
+            kwargs = {}
+            if media_type is MediaType.TERRAIN:
+                # Game version and palettes
+                kwargs["game_version"] = args.game_version
+                kwargs["palettes"] = args.palettes
+                kwargs["compression_level"] = args.compression_level
+                export_func = MediaExporter._export_terrain
 
-                elif media_type is MediaType.GRAPHICS:
-                    kwargs["palettes"] = args.palettes
-                    kwargs["compression_level"] = args.compression_level
-                    kwargs["cache_info"] = cache_info
-                    export_func = MediaExporter._export_graphics
+            elif media_type is MediaType.GRAPHICS:
+                kwargs["palettes"] = args.palettes
+                kwargs["compression_level"] = args.compression_level
+                kwargs["cache_info"] = cache_info
+                export_func = MediaExporter._export_graphics
 
-                elif media_type is MediaType.SOUNDS:
-                    export_func = MediaExporter._export_sound
+            elif media_type is MediaType.SOUNDS:
+                export_func = MediaExporter._export_sound
 
-                elif media_type is MediaType.BLEND:
-                    kwargs["blend_mode_count"] = args.blend_mode_count
-                    export_func = MediaExporter._export_blend
+            elif media_type is MediaType.BLEND:
+                kwargs["blend_mode_count"] = args.blend_mode_count
+                export_func = MediaExporter._export_blend
 
-                for request in cur_export_requests:
-                    export_func(request, sourcedir, exportdir, **kwargs)
-
-        print(p.report(sortby='tottime'))
+            for request in cur_export_requests:
+                export_func(request, sourcedir, exportdir, **kwargs)
 
         if args.debug_info > 5:
             cachedata = {}

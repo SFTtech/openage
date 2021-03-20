@@ -47,7 +47,7 @@ cdef void cmerge_frames(texture, cache=None):
     :type cache: list
     """
     cdef list frames = texture.frames
-    
+
     if len(frames) == 0:
         raise Exception("cannot create texture with empty input frame list")
 

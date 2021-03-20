@@ -8,14 +8,14 @@ cdef class Packer:
     cdef (unsigned int, unsigned int) pos(self, block)
     cdef unsigned int width(self)
     cdef unsigned int height(self)
-    
+
 cdef class DeterministicPacker(Packer):
     pass
 
 cdef class BestPacker:
     cdef list packers
     cdef Packer current_best
-    
+
     cdef void pack(self, blocks)
     cdef Packer best_packer(self)
     cdef (unsigned int, unsigned int) pos(self, block)
@@ -31,7 +31,7 @@ cdef class ColumnPacker(Packer):
 cdef class BinaryTreePacker(Packer):
     cdef unsigned int aspect_ratio
     cdef PackerNode root
-    
+
     cdef void fit(self, block)
     cdef PackerNode find_node(self, PackerNode root, unsigned int width, unsigned int height)
     cdef PackerNode split_node(self, PackerNode node, unsigned int width, unsigned int height)

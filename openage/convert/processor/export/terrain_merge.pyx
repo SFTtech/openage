@@ -74,7 +74,7 @@ cdef void cmerge_terrain(texture):
     index = 0
     for sub_frame in frames:
         csubframe_atlas = sub_frame.data
- 
+
         # Fill each column upwards, starting with the last row
         row_idx = (tiles_per_row - 1) - (index % tiles_per_row)
         column_idx = index // tiles_per_row
