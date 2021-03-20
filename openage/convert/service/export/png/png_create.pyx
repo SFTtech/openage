@@ -6,12 +6,14 @@
 Creates valid PNG files as bytearrays by utilizing libpng.
 """
 
-from libc.stdio cimport SEEK_END, fclose, fread, fseek, ftell, rewind
+from libc.stdio cimport SEEK_END, fclose, fread, fseek, ftell, rewind, tmpfile
 from libc.stdint cimport uint8_t
 from libc.stdlib cimport malloc, free
 from libc.string cimport memcpy, memset
 
-from posix.stdio cimport open_memstream
+# TODO: Use an in-memory file for much better speed
+#       Currently deactivated because it doesn't work on Windows :(
+# from posix.stdio cimport open_memstream
 
 from ..opus.bytearray cimport PyByteArray_AS_STRING
 from . cimport libpng
@@ -56,7 +58,7 @@ cdef int GREEDY_FILTER_5 = libpng.PNG_ALL_FILTERS
 @cython.boundscheck(False)
 @cython.wraparound(False)
 def save(numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] imagedata not None,
-         compr_method=CompressionMethod.COMPR_OPTI, compr_settings=None):
+         compr_method=CompressionMethod.COMPR_DEFAULT, compr_settings=None):
     """
     Convert an image matrix with RGBA colors to a PNG. The PNG is returned
     as a bytearray.
@@ -83,7 +85,11 @@ def save(numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] imagedata not None,
 
     cdef greedy_cache_param cache
 
-    if compr_method is CompressionMethod.COMPR_GREEDY:
+    if compr_method is CompressionMethod.COMPR_DEFAULT:
+        outdata = optimize_default(mview, width, height)
+        best_settings = None
+
+    elif compr_method is CompressionMethod.COMPR_GREEDY:
         if compr_settings:
             cache.compr_lvl = compr_settings[0]
             cache.mem_lvl = compr_settings[1]
@@ -100,10 +106,6 @@ def save(numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] imagedata not None,
         outdata, used_settings = optimize_greedy(mview, width, height, cache)
         best_settings = (used_settings["compr_lvl"], used_settings["mem_lvl"],
                          used_settings["strat"], used_settings["filters"])
-
-    elif compr_method is CompressionMethod.COMPR_DEFAULT:
-        outdata = optimize_default(mview, width, height)
-        best_settings = None
 
     elif compr_method is CompressionMethod.COMPR_OPTI:
         cache.compr_lvl = 9
@@ -209,10 +211,13 @@ cdef optimize_greedy(numpy.uint8_t[:,:,::1] imagedata, int width, int height, gr
     if cache.compr_lvl == 0xFF:
         cache = optimize_greedy_iterate(imagedata, width, height)
 
-    # Create an in-memory stream of a file
-    cdef char *outbuffer
-    cdef size_t outbuffer_len
-    cdef libpng.png_FILE_p fp = open_memstream(&outbuffer, &outbuffer_len)
+    # TODO: Create an in-memory stream of a file
+    # cdef char *outbuffer
+    # cdef size_t outbuffer_len
+    # cdef libpng.png_FILE_p fp = open_memstream(&outbuffer, &outbuffer_len)
+
+    # Create a tmp file
+    cdef libpng.png_FILE_p fp = tmpfile()
 
     write_to_file(imagedata, fp,
                   cache.compr_lvl,
@@ -235,7 +240,9 @@ cdef optimize_greedy(numpy.uint8_t[:,:,::1] imagedata, int width, int height, gr
 
     # Free memory
     fclose(fp)
-    free(outbuffer)
+
+    # TODO: Free memory of outbuffer of in-memory file
+    # free(outbuffer)
 
     return outdata, cache
 
@@ -272,9 +279,12 @@ cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata
 
     cdef greedy_cache_param result
 
-    # Create a memory buffer that the PNG trials are written into
-    cdef char *buf
-    cdef size_t len
+    # TODO: Create a memory buffer that the PNG trials are written into
+    # cdef char *buf
+    # cdef size_t len
+    # cdef libpng.png_FILE_p fp
+
+    # tmp file for the trials
     cdef libpng.png_FILE_p fp
 
     for filters in range(GREEDY_FILTER_0, GREEDY_FILTER_5 + 1):
@@ -284,8 +294,11 @@ cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata
         for strategy in range(GREEDY_COMPR_STRAT_MIN, GREEDY_COMPR_STRAT_MAX + 1):
             for compr_lvl in range(GREEDY_COMPR_LVL_MIN, GREEDY_COMPR_LVL_MAX + 1):
                 for mem_lvl in range(GREEDY_COMPR_MEM_LVL_MIN, GREEDY_COMPR_MEM_LVL_MAX + 1):
-                    # Create an in-memory stream of a file
-                    fp = open_memstream(&buf, &len)
+                    # TODO: Create an in-memory stream of a file
+                    # fp = open_memstream(&buf, &len)
+
+                    # Create a tmp file
+                    fp = tmpfile()
 
                     # Write the file to the memory stream
                     write_to_file(imagedata, fp, compr_lvl, mem_lvl,
@@ -305,7 +318,8 @@ cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata
 
                     fclose(fp)
 
-    free(buf)
+    # TODO: Activate memmory buffer conversion
+    # free(buf)
 
     result.compr_lvl = best_compr_lvl
     result.mem_lvl = best_compr_mem_lvl

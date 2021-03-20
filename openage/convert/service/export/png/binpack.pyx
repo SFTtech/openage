@@ -1,38 +1,41 @@
 # Copyright 2016-2021 the openage authors. See copying.md for legal info.
 #
-# cython: infer_types=True
-
-""" Routines for 2D binpacking """
-
+# cython: infer_types=True,profile=False
 # TODO pylint: disable=C,R
 
-import enum
-from functools import lru_cache
-import math
+"""
+Routines for 2D binpacking
+"""
+
+from enum import Enum
+
+cimport cython
+
+from libc.math cimport sqrt
 
 
-class PackerType(enum.Enum):
-    ROW     = "row"
-    COLUMN  = "column"
-    BINTREE = "bintree"
+@cython.boundscheck(False)
+@cython.wraparound(False)
+@cython.cdivision(True)
+cdef inline (unsigned int, unsigned int) factor(unsigned int n):
+    """
+    Return two (preferable close) factors of n.
+    """
+    cdef unsigned int a = <unsigned int>sqrt(n)
+    for num in range(a, 0, -1):
+        if n % num == 0:
+            return num, n // num
 
 
-@lru_cache(maxsize=32)
-def factor(n):
-    """Return two (preferable close) factors of n."""
-    for a in range(int(math.sqrt(n)), 0, -1):
-        if n % a == 0:
-            return a, n // a
-
-
-class Packer:
-    """Packs blocks."""
-
+cdef class Packer:
+    """
+    Packs blocks.
+    """
     def __init__(self, margin):
         self.margin = margin
         self.mapping = {}
 
-    def pack(self, blocks, hint=None):
+    cdef void pack(self, blocks):
         """
         Pack all the blocks.
 
@@ -40,15 +43,19 @@ class Packer:
         """
         raise NotImplementedError
 
-    def pos(self, block):
+    cdef (unsigned int, unsigned int) pos(self, block):
         return self.mapping[block]
 
-    def width(self):
-        """Gets the total width of the packing."""
+    cdef unsigned int width(self):
+        """
+        Gets the total width of the packing.
+        """
         return max(self.pos(block)[0] + block.width for block in self.mapping)
 
-    def height(self):
-        """Gets the total height of the packing."""
+    cdef unsigned int height(self):
+        """
+        Gets the total height of the packing.
+        """
         return max(self.pos(block)[1] + block.height for block in self.mapping)
 
     def get_packer_settings(self):
@@ -64,14 +71,8 @@ class Packer:
 
         return hints
 
-    def get_type(self):
-        """
-        Get the packer type.
-        """
-        raise NotImplementedError
 
-
-class DeterministicPacker(Packer):
+cdef class DeterministicPacker(Packer):
     """
     Packs blocks based on predetermined settings.
     """
@@ -80,34 +81,37 @@ class DeterministicPacker(Packer):
         super().__init__(margin)
         self.hints = hints
 
-    def pack(self, blocks):
+    cdef void pack(self, blocks):
         for idx, block in enumerate(blocks):
             self.mapping[block] = self.hints[idx]
 
 
-class BestPacker:
-    """Chooses the best result from all the given packers."""
-
-    def __init__(self, packers):
+cdef class BestPacker:
+    """
+    Chooses the best result from all the given packers.
+    """
+    def __init__(self, list packers):
         self.packers = packers
         self.current_best = None
 
-    def pack(self, blocks):
+    cdef void pack(self, blocks):
+        cdef Packer p
         for packer in self.packers:
-            packer.pack(blocks)
+            p = packer
+            p.pack(blocks)
 
         self.current_best = self.best_packer()
 
-    def best_packer(self):
-        return min(self.packers, key=lambda p: p.width() * p.height())
+    cdef Packer best_packer(self):
+        return min(self.packers, key=lambda Packer p: p.width() * p.height())
 
-    def pos(self, block):
+    cdef (unsigned int, unsigned int) pos(self, block):
         return self.current_best.pos(block)
 
-    def width(self):
+    cdef unsigned int width(self):
         return self.current_best.width()
 
-    def height(self):
+    cdef unsigned int height(self):
         return self.current_best.height()
 
     def get_packer_settings(self):
@@ -116,17 +120,17 @@ class BestPacker:
     def get_mapping_hints(self, blocks):
         return self.current_best.get_mapping_hints(blocks)
 
-    def get_type(self):
-        return self.current_best.get_type()
 
-
-class RowPacker(Packer):
+cdef class RowPacker(Packer):
     """
     Packs blocks into rows, greedily trying to minimize the maximum width.
     """
 
-    def pack(self, blocks, hint=None):
+    cdef void pack(self, blocks):
         self.mapping = {}
+
+        cdef unsigned int num_rows
+        cdef list rows
 
         num_rows, _ = factor(len(blocks))
         rows = [[] for _ in range(num_rows)]
@@ -147,16 +151,13 @@ class RowPacker(Packer):
 
             y += max(block.height for block in row) + self.margin
 
-    def get_type(self):
-        return PackerType.ROW
 
-
-class ColumnPacker(Packer):
+cdef class ColumnPacker(Packer):
     """
     Packs blocks into columns, greedily trying to minimize the maximum height.
     """
 
-    def pack(self, blocks, hint=None):
+    cdef void pack(self, blocks):
         self.mapping = {}
 
         num_columns, _ = factor(len(blocks))
@@ -178,19 +179,18 @@ class ColumnPacker(Packer):
 
             x += max(block.width for block in column) + self.margin
 
-    def get_type(self):
-        return PackerType.COLUMN
 
-
-def maxside_heuristic(block):
-    """Heuristic: Order blocks by maximum side."""
+cdef inline (unsigned int, unsigned int, unsigned int, unsigned int) maxside_heuristic(block):
+    """
+    Heuristic: Order blocks by maximum side.
+    """
     return (max(block.width, block.height),
             min(block.width, block.height),
             block.height,
             block.width)
 
 
-class BinaryTreePacker(Packer):
+cdef class BinaryTreePacker(Packer):
     """
     Binary tree bin packing strategy.
 
@@ -199,31 +199,27 @@ class BinaryTreePacker(Packer):
     Aditionally can target a given aspect ratio. 97/49 is optimal for terrain
     textures.
     """
-
-    def __init__(self, margin, aspect_ratio=1, heuristic=maxside_heuristic):
+    def __init__(self, margin, aspect_ratio=1):
+        # ASF: what about heuristic=max_heuristic?
         super().__init__(margin)
         self.aspect_ratio = aspect_ratio
-        self.heuristic = heuristic
         self.root = None
 
-    def pack(self, blocks, hint=None):
+    cdef void pack(self, blocks):
         self.mapping = {}
         self.root = None
 
-        for block in sorted(blocks, key=self.heuristic, reverse=True):
+        for block in sorted(blocks, key=maxside_heuristic, reverse=True):
             self.fit(block)
 
-    def pos(self, block):
+    cdef (unsigned int, unsigned int) pos(self, block):
         node = self.mapping[block]
         return node.x, node.y
 
     def get_packer_settings(self):
         return (self.margin,)
 
-    def get_type(self):
-        return PackerType.BINTREE
-
-    def fit(self, block):
+    cdef void fit(self, block):
         if self.root is None:
             self.root = PackerNode(0, 0,
                                    block.width + self.margin,
@@ -243,14 +239,15 @@ class BinaryTreePacker(Packer):
 
         self.mapping[block] = node
 
-    def find_node(self, root, width, height):
+    cdef PackerNode find_node(self, PackerNode root, unsigned int width, unsigned int height):
         if root.used:
             return (self.find_node(root.right, width, height) or
                     self.find_node(root.down, width, height))
+
         elif width <= root.width and height <= root.height:
             return root
 
-    def split_node(self, node, width, height):
+    cdef PackerNode split_node(self, PackerNode node, unsigned int width, unsigned int height):
         node.used = True
         node.down = PackerNode(node.x, node.y + height,
                                node.width, node.height - height)
@@ -258,26 +255,29 @@ class BinaryTreePacker(Packer):
                                 node.width - width, height)
         return node
 
-    def grow_node(self, width, height):
-        can_grow_down = width <= self.root.width
-        can_grow_right = height <= self.root.height
+    cdef PackerNode grow_node(self, unsigned int width, unsigned int height):
+        cdef bint can_grow_down = width <= self.root.width
+        cdef bint can_grow_right = height <= self.root.height
         assert can_grow_down or can_grow_right, "Bad block ordering heuristic"
 
-        should_grow_right = ((self.root.height * self.aspect_ratio) >=
-                             (self.root.width + width))
-        should_grow_down = ((self.root.width / self.aspect_ratio) >=
-                            (self.root.height + height))
+        cdef bint should_grow_right = ((self.root.height * self.aspect_ratio) >=
+                                       (self.root.width + width))
+        cdef bint should_grow_down = ((self.root.width / self.aspect_ratio) >=
+                                      (self.root.height + height))
 
         if can_grow_right and should_grow_right:
             return self.grow_right(width, height)
+
         elif can_grow_down and should_grow_down:
             return self.grow_down(width, height)
+
         elif can_grow_right:
             return self.grow_right(width, height)
+
         else:
             return self.grow_down(width, height)
 
-    def grow_right(self, width, height):
+    cdef PackerNode grow_right(self, unsigned int width, unsigned int height):
         old_root = self.root
 
         self.root = PackerNode(0, 0, old_root.width + width, old_root.height)
@@ -289,7 +289,7 @@ class BinaryTreePacker(Packer):
         if node is not None:
             return self.split_node(node, width, height)
 
-    def grow_down(self, width, height):
+    cdef PackerNode grow_down(self, unsigned int width, unsigned int height):
         old_root = self.root
 
         self.root = PackerNode(0, 0, old_root.width, old_root.height + height)
@@ -302,10 +302,11 @@ class BinaryTreePacker(Packer):
             return self.split_node(node, width, height)
 
 
-class PackerNode:
-    """A node in a binary packing tree."""
-
-    def __init__(self, x, y, width, height):
+cdef class PackerNode:
+    """
+    A node in a binary packing tree.
+    """
+    def __cinit__(self, unsigned int x, unsigned int y, unsigned int width, unsigned int height):
         self.x = x
         self.y = y
         self.width = width
