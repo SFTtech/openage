@@ -1,4 +1,4 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2021 the openage authors. See copying.md for legal info.
 
 #include "mesh_data.h"
 
@@ -137,7 +137,7 @@ namespace {
 /**
  * Generate triangle-strip meshdata for a given 4-vertex/uv-coord array.
  */
-template <uint64_t size>
+template <size_t size>
 MeshData create_float_mesh(const std::array<float, size> &src) {
 	auto const data_size = size * sizeof(float);
 
