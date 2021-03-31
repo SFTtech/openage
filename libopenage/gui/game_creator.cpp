@@ -1,12 +1,12 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #include "game_creator.h"
 
 #include <QtQml>
 
-#include "../gamestate/game_main.h"
-#include "../gamestate/game_spec.h"
-#include "../gamestate/generator.h"
+#include "../gamestate/old/game_main.h"
+#include "../gamestate/old/game_spec.h"
+#include "../gamestate/old/generator.h"
 
 #include "game_main_link.h"
 #include "game_spec_link.h"

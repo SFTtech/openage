@@ -30,6 +30,7 @@ __pycache__
 /.bin
 /build
 /deps
+/.ccls-cache
 
 # root dir run script
 /run
@@ -56,7 +57,7 @@ perf.data*
 .gdb_history
 
 # code search
-/.agignore
+/.ignore
 /.globalrc
 /GPATH
 /GRTAGS

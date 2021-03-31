@@ -1,4 +1,4 @@
-// Copyright 2015-2020 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #include "unit_texture.h"
 
@@ -7,7 +7,7 @@
 
 #include "../coord/phys.h"
 #include "../coord/pixel.h"
-#include "../gamestate/game_spec.h"
+#include "../gamestate/old/game_spec.h"
 #include "../log/log.h"
 #include "../texture.h"
 #include "../util/math.h"

@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,7 +9,6 @@
 
 #include "../curve/curve.h"
 #include "eventqueue.h"
-#include "eventfilter.h"
 #include "event.h"
 #include "../log/log.h"
 
@@ -21,13 +20,13 @@ int curvepong();
 }
 
 class Event;
-class EventTarget;
+class EventEntity;
 class State;
 
 
 
 /**
- * The core class to manage event class and targets.
+ * The core class to manage event handler and targets.
  */
 class Loop {
 
@@ -35,8 +34,8 @@ class Loop {
 	friend int demo::curvepong();
 
 public:
-	/** register a new event class */
-	void add_event_class(const std::shared_ptr<EventClass> &cls);
+	/** register a new event handler */
+	void add_event_class(const std::shared_ptr<EventHandler> &cls);
 
 	/**
 	 * Add a new Event to the queue.
@@ -45,31 +44,22 @@ public:
 	 *
 	 * The `reference_time` is used to calculate the actual event time.
 	 */
-	std::weak_ptr<Event> create_event(const std::string &name,
-	                                  const std::shared_ptr<EventTarget> &target,
-	                                  const std::shared_ptr<State> &state,
-	                                  const curve::time_t &reference_time,
-	                                  const EventClass::param_map &params=EventClass::param_map({}));
+	std::shared_ptr<Event> create_event(const std::string &name,
+	                                    const std::shared_ptr<EventEntity> &target,
+	                                    const std::shared_ptr<State> &state,
+	                                    const curve::time_t &reference_time,
+	                                    const EventHandler::param_map &params=EventHandler::param_map({}));
 
 	/**
-	 * This will generate a new randomly named eventclass for this specific element
+	 * This will generate a new randomly named eventhandler for this specific element
 	 *
 	 * The `reference_time` is used to determine the actual event trigger time.
 	 */
-	std::weak_ptr<Event> create_event(const std::shared_ptr<EventClass> &eventclass,
-	                                  const std::shared_ptr<EventTarget> &target,
-	                                  const std::shared_ptr<State> &state,
-	                                  const curve::time_t &reference_time,
-	                                  const EventClass::param_map &params=EventClass::param_map({}));
-
-	void onfilter(const std::shared_ptr<EventClass> &eventclass, const EventFilter &);
-
-	template <class evntclass_t>
-	void onfilter(const EventFilter &filter) {
-		this->onfilter(std::make_shared<evntclass_t>(), filter);
-	}
-
-	void register_object(const std::shared_ptr<EventTarget> &);
+	std::shared_ptr<Event> create_event(const std::shared_ptr<EventHandler> &eventhandler,
+	                                    const std::shared_ptr<EventEntity> &target,
+	                                    const std::shared_ptr<State> &state,
+	                                    const curve::time_t &reference_time,
+	                                    const EventHandler::param_map &params=EventHandler::param_map({}));
 
 	/**
 	 * Execute all events that are registered until a certain point in time.
@@ -79,15 +69,13 @@ public:
 
 	/**
 	 * Register that a given event must be reevaluated at a time,
-	 * this usually happens because this event depended on an eventtarget
+	 * this usually happens because this event depended on an evententity
 	 * that got changed at this time.
 	 * This inserts the event into the changes queue
 	 * so it will be evaluated in the next loop iteration.
 	 */
-	template<class T>
 	void create_change(const std::shared_ptr<Event> &event,
-	                   const curve::time_t &changes_at,
-	                   const T &new_value);
+	                   const curve::time_t &changes_at);
 
 	const EventQueue &get_queue() const {
 		return this->queue;
@@ -108,15 +96,9 @@ private:
 	void update_changes(const std::shared_ptr<State> &state);
 
 	/**
-	 * Here we do the bookkeeping of registered event classes.
+	 * Here we do the bookkeeping of registered event handleres.
 	 */
-	std::unordered_map<std::string, std::shared_ptr<EventClass>> classstore;
-
-	/**
-	 * Here we store all running filters that shall be applied whenever a new
-	 * obejct is added to our objectstore
-	 */
-	std::list<EventFilter> filters;
+	std::unordered_map<std::string, std::shared_ptr<EventHandler>> classstore;
 
 	/**
 	 * All events are enqueued here.
@@ -128,20 +110,6 @@ private:
 	 * This is useful for event cancelations (so one can't cancel itself).
 	 */
 	std::shared_ptr<Event> active_event;
-
-	std::unordered_map<uint64_t, std::weak_ptr<EventTarget>> curveindex;
 };
-
-
-template <typename T>
-void Loop::create_change(const std::shared_ptr<Event> &evnt,
-                         const curve::time_t &changes_at,
-                         const T &new_value) {
-
-	log::log(DBG << "Loop: registering change of " << evnt->get_eventclass()->id()
-	         << " at t=" << changes_at << " to " << new_value);
-	this->queue.add_change(evnt, changes_at);
-}
-
 
 } // openage::event

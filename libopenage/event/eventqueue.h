@@ -5,7 +5,7 @@
 #include <memory>
 #include <unordered_set>
 
-#include "eventclass.h"
+#include "eventhandler.h"
 #include "eventstore.h"
 #include "../curve/curve.h"
 
@@ -14,18 +14,18 @@ namespace openage::event {
 
 class Event;
 class Loop;
-class EventTarget;
+class EventEntity;
 
 /**
- * The core event class for execution and execution dependencies.
+ * The core event handler for execution and execution dependencies.
  */
 class EventQueue final {
 public:
 
-	class OnChangeElement {
+	class Change {
 	public:
-		OnChangeElement(const std::shared_ptr<Event> &evnt,
-		                curve::time_t time);
+		Change(const std::shared_ptr<Event> &evnt,
+		       curve::time_t time);
 
 		curve::time_t time;
 		std::weak_ptr<Event> evnt;
@@ -33,24 +33,24 @@ public:
 
 		class Hasher {
 		public:
-			size_t operator ()(const OnChangeElement& e) const {
+			size_t operator ()(const Change& e) const {
 				return e.hash;
 			}
 		};
 
 		class Equal {
 		public:
-			size_t operator ()(const OnChangeElement& left,
-			                   const OnChangeElement& right) const;
+			size_t operator ()(const Change& left,
+			                   const Change& right) const;
 		};
 	};
 
 	/**
 	 * Type for the set to store changes to track.
 	 */
-	using change_set = std::unordered_set<OnChangeElement,
-	                                      OnChangeElement::Hasher,
-	                                      OnChangeElement::Equal>;
+	using change_set = std::unordered_set<Change,
+	                                      Change::Hasher,
+	                                      Change::Equal>;
 
 
 	EventQueue();
@@ -61,14 +61,14 @@ public:
 	 * A target is every single unit in the game world - so best add these events
 	 * in the constructor of the game objects.
 	 *
-	 * The `insertion_time` is the time used to calculate when
-	 * the actual event time will happen!
+	 * The `reference_time` is the time used to calculate when
+	 * the actual event time will happen by calling `eventhandler->predict_invoke_time()`!
 	 */
-	std::shared_ptr<Event> create_event(const std::shared_ptr<EventTarget> &eventtarget,
-	                                    const std::shared_ptr<EventClass> &eventclass,
+	std::shared_ptr<Event> create_event(const std::shared_ptr<EventEntity> &evententity,
+	                                    const std::shared_ptr<EventHandler> &eventhandler,
 	                                    const std::shared_ptr<State> &state,
 	                                    const curve::time_t &reference_time,
-	                                    const EventClass::param_map &params);
+	                                    const EventHandler::param_map &params);
 
 	/**
 	 * Remove the given event from the queue.
@@ -81,7 +81,7 @@ public:
 	 * is newly created. This updates/inserts the given event
 	 * in the main queue.
 	 */
-	void enqueue_change(const std::shared_ptr<Event> &event);
+	void enqueue(const std::shared_ptr<Event> &event);
 
 	/**
 	 * The event was just removed, add it again.
@@ -150,7 +150,6 @@ private:
 
 	/**
 	 * The universe timeline processes through this queue.
-	 * Type::ONCE is only inserted into the queue.
 	 */
 	EventStore event_queue;
 };

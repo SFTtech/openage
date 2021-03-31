@@ -1,11 +1,12 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <optional>
 #include <utility>
+#include <sstream>
 
-#include "value_container.h"
+#include "base_curve.h"
 
 
 namespace openage::curve {
@@ -15,19 +16,22 @@ namespace openage::curve {
  * implement `operator=` and copy ctor.
  */
 template<typename T>
-class Discrete : public ValueContainer<T> {
+class Discrete : public BaseCurve<T> {
 	static_assert(std::is_copy_assignable<T>::value,
 	              "Template type is not copy assignable");
 	static_assert(std::is_copy_constructible<T>::value,
 	              "Template type is not copy constructible");
 public:
-	using ValueContainer<T>::ValueContainer;
+	using BaseCurve<T>::BaseCurve;
 
 	/**
 	 * Does not interpolate anything,
 	 * just returns gives the raw value of the last keyframe with time <= t.
 	 */
 	T get(const time_t &t) const override;
+
+	/** human readable id string */
+	std::string idstr() const override;
 
 	/**
 	 * Return the last time and keyframe with time <= t.
@@ -46,6 +50,21 @@ T Discrete<T>::get(const time_t &time) const {
 	auto e = this->container.last(time, this->last_element);
 	this->last_element = e;   // TODO if Caching?
 	return e->value;
+}
+
+
+template <typename T>
+std::string Discrete<T>::idstr() const {
+	std::stringstream ss;
+	ss << "DiscreteCurve[";
+	if (this->_idstr.size()) {
+		ss << this->_idstr;
+	}
+	else {
+		ss << this->id();
+	}
+	ss << "]";
+	return ss.str();
 }
 
 

@@ -1,4 +1,4 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 """
 Verifies the guard macros of all C++ header files.
@@ -45,7 +45,7 @@ def find_issues(dirname):
 
             match = GUARD_RE.match(data)
             if not match:
-                raise HeaderIssue("No valid header guard found")
+                raise HeaderIssue("No valid header guard found (e.g. #pragma once)")
 
         except HeaderIssue as exc:
             yield (f"header guard issue in {fname}", exc.args[0], None)

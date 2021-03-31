@@ -4,10 +4,10 @@
 
 namespace openage::event::demo {
 
-const std::vector<PongEvent> &AIInput::get_inputs(const std::shared_ptr<PongPlayer> &player,
-                                                  const std::shared_ptr<PongBall> &ball,
-                                                  const curve::time_t &now) {
-	this->commands.clear();
+std::vector<PongEvent> get_ai_inputs(const std::shared_ptr<PongPlayer> &player,
+                                     const std::shared_ptr<PongBall> &ball,
+                                     const curve::time_t &now) {
+	std::vector<PongEvent> ret;
 
 	auto position = player->position->get(now);
 
@@ -16,14 +16,17 @@ const std::vector<PongEvent> &AIInput::get_inputs(const std::shared_ptr<PongPlay
 
 	// Ball is below position
 	if (ball->position->get(now)[1] > position + player->size->get(now) / 3) {
-		this->commands.emplace_back(player->id(), PongEvent::DOWN);
+		ret.emplace_back(player->id(), PongEvent::DOWN);
 	}
 	// Ball is above position
 	else if (ball->position->get(now)[1] < position - player->size->get(now) / 3) {
-		this->commands.emplace_back(player->id(), PongEvent::UP);
+		ret.emplace_back(player->id(), PongEvent::UP);
+	}
+	else {
+		ret.emplace_back(player->id(), PongEvent::IDLE);
 	}
 
-	return this->commands;
+	return ret;
 }
 
 } // openage::event::demo

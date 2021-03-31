@@ -1,4 +1,4 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 """
 Behold: The central entry point for all of openage.
@@ -74,6 +74,12 @@ def main(argv=None):
 
     # enable reimports for "init_subparser"
     # pylint: disable=reimported
+
+    from .main.main import init_subparser
+    main_cli = subparsers.add_parser(
+        "main",
+        parents=[global_cli, cfg_cli])
+    init_subparser(main_cli)
 
     from .game.main import init_subparser
     game_cli = subparsers.add_parser(

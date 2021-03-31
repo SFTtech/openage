@@ -1,10 +1,10 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 #include <memory>
 
 #include "../terrain/terrain_object.h"
-#include "../gamestate/cost.h"
-#include "../gamestate/player.h"
+#include "../gamestate/old/cost.h"
+#include "../gamestate/old/player.h"
 #include "ability.h"
 #include "action.h"
 #include "command.h"

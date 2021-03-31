@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,7 +9,7 @@
 #include "coord/pixel.h"
 #include "input/input_context.h"
 #include "rng/rng.h"
-#include "gamestate/game_main.h"
+#include "gamestate/old/game_main.h"
 #include "unit/command.h"
 #include "unit/selection.h"
 #include "unit/unit_type.h"

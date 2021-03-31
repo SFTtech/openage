@@ -1,4 +1,4 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 """ Lists of all possible tests; enter your tests here. """
 
@@ -52,6 +52,8 @@ def demos_py():
            "play pong on steroids through future prediction")
     yield ("openage.renderer.tests.renderer_demo",
            "showcases the new renderer")
+    yield ("openage.main.tests.engine_demo",
+           "showcases the engine features")
 
 
 def benchmark_py():

@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #include <epoxy/gl.h>
 #include <SDL2/SDL.h>
@@ -9,8 +9,8 @@
 #include "console/console.h"
 #include "engine.h"
 #include "gamedata/color.gen.h"
-#include "gamestate/game_main.h"
-#include "gamestate/game_spec.h"
+#include "gamestate/old/game_main.h"
+#include "gamestate/old/game_spec.h"
 #include "input/input_manager.h"
 #include "log/log.h"
 #include "terrain/terrain.h"

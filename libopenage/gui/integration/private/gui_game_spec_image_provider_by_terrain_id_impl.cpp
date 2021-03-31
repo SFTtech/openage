@@ -1,10 +1,10 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #include "gui_game_spec_image_provider_by_terrain_id_impl.h"
 
 #include "../../../error/error.h"
 
-#include "../../../gamestate/game_spec.h"
+#include "../../../gamestate/old/game_spec.h"
 
 namespace openage::gui {
 

@@ -1,10 +1,10 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #include "game_control.h"
 
 #include "engine.h"
 #include "error/error.h"
-#include "gamestate/game_spec.h"
+#include "gamestate/old/game_spec.h"
 #include "log/log.h"
 #include "renderer/color.h"
 #include "terrain/terrain_chunk.h"

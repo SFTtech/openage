@@ -1,4 +1,4 @@
-// Copyright 2013-2020 the openage authors. See copying.md for legal info.
+// Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 #include "engine.h"
 
@@ -13,8 +13,8 @@
 #include "config.h"
 #include "error/error.h"
 #include "error/gl_debug.h"
-#include "gamestate/game_main.h"
-#include "gamestate/generator.h"
+#include "gamestate/old/game_main.h"
+#include "gamestate/old/generator.h"
 #include "gui/gui.h"
 #include "log/log.h"
 #include "renderer/font/font.h"
@@ -26,7 +26,9 @@
 #include "util/opengl.h"
 #include "util/strings.h"
 #include "util/timer.h"
+#include "version.h"
 #include "versions/compiletime.h"
+
 
 /**
  * Main openage namespace to store all things that make the have to do with the game.

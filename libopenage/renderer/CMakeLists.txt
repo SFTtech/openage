@@ -2,13 +2,14 @@ add_sources(libopenage
 	color.cpp
 	geometry.cpp
 	renderer.cpp
-	shader_program.cpp
 	sdl_global.cpp
+	shader_program.cpp
 	tests.cpp
 	text.cpp
 	texture.cpp
 	texture_array.cpp
 	uniform_input.cpp
+	util.cpp
 	window.cpp
 )
 

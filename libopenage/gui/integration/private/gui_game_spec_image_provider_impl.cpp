@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #include "gui_game_spec_image_provider_impl.h"
 
@@ -8,7 +8,7 @@
 
 #include "../../../error/error.h"
 
-#include "../../../gamestate/game_spec.h"
+#include "../../../gamestate/old/game_spec.h"
 #include "../../guisys/private/gui_event_queue_impl.h"
 
 #include "gui_texture_factory.h"

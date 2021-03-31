@@ -190,12 +190,13 @@ endif()
 # ncurses support
 if(WANT_NCURSES)
 	set(CURSES_NEED_NCURSES TRUE)
+	set(CURSES_NEED_WIDE TRUE)
 	find_package(Curses)
 endif()
 
 if(WANT_NCURSES AND CURSES_FOUND)
 	have_config_option(ncurses NCURSES true)
-	target_include_directories(libopenage PRIVATE ${Curses_INCLUDE_DIRS})
+	target_include_directories(libopenage PRIVATE ${CURSES_INCLUDE_DIRS})
 	target_link_libraries(libopenage PRIVATE ${CURSES_LIBRARIES})
 else()
 	have_config_option(ncurses NCURSES false)
@@ -235,6 +236,8 @@ get_config_option_string()
 
 configure_file(config.h.in config.h)
 configure_file(config.cpp.in config.cpp)
+configure_file(version.h.in version.h)
+configure_file(version.cpp.in version.cpp)
 
 configure_file(
 	"${CMAKE_SOURCE_DIR}/openage/config.py.in"
@@ -325,6 +328,7 @@ add_sources(libopenage
 	screenshot.cpp
 	texture.cpp
 	${CMAKE_CURRENT_BINARY_DIR}/config.cpp
+	${CMAKE_CURRENT_BINARY_DIR}/version.cpp
 	${CODEGEN_SCU_FILE}
 )
 
@@ -340,19 +344,21 @@ add_subdirectory("coord")
 add_subdirectory("curve")
 add_subdirectory("cvar")
 add_subdirectory("datastructure")
-add_subdirectory("event")
-add_subdirectory("gui")
 add_subdirectory("error")
+add_subdirectory("event")
 add_subdirectory("gamestate")
+add_subdirectory("gui")
 add_subdirectory("input")
-add_subdirectory("log")
 add_subdirectory("job")
+add_subdirectory("log")
+add_subdirectory("main")
 add_subdirectory("pathfinding")
+add_subdirectory("presenter")
 add_subdirectory("pyinterface")
 add_subdirectory("renderer")
 add_subdirectory("rng")
-add_subdirectory("simulation")
 add_subdirectory("shader")
+add_subdirectory("simulation")
 add_subdirectory("terrain")
 add_subdirectory("testing")
 add_subdirectory("unit")
