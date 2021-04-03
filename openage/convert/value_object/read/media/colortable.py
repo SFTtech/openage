@@ -7,16 +7,11 @@ import math
 import numpy
 
 from .....log import dbg
-from ....deprecated.struct_definition import StructDefinition
 from ....entity_object.conversion.genie_structure import GenieStructure
 from ....entity_object.export.data_definition import DataDefinition
 
 
 class ColorTable(GenieStructure):
-    name_struct = "palette_color"
-    name_struct_file = "color"
-    struct_description = "indexed color storage."
-
     __slots__ = ('header', 'version', 'palette')
 
     def __init__(self, data):
@@ -171,10 +166,6 @@ class ColorTable(GenieStructure):
             data.append(color_entry)
 
         return [DataDefinition(self, data, filename)]
-
-    @classmethod
-    def structs(cls):
-        return [StructDefinition(cls)]
 
     @classmethod
     def get_data_format_members(cls, game_version):

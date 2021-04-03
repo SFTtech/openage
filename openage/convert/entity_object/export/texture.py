@@ -9,7 +9,6 @@ from PIL import Image
 import numpy
 
 from ....log import spam
-from ...deprecated import struct_definition
 from ...value_object.read.media.blendomatic import BlendingMode
 from ...value_object.read.media.hardcoded.terrain_tile_size import TILE_HALFSIZE
 from ..conversion import genie_structure
@@ -132,10 +131,6 @@ class Texture(genie_structure.GenieStructure):
             - PNG compression parameters (compression level + deflate params)
         """
         return self.best_packer_hints, self.best_compr
-
-    @classmethod
-    def structs(cls):
-        return [struct_definition.StructDefinition(cls)]
 
     @classmethod
     def get_data_format_members(cls, game_version):
