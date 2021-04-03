@@ -19,7 +19,7 @@ namespace gamedata {
 
 /**
  * one sprite, as part of a texture atlas.
- * 
+ *
  * this struct stores information about positions and sizes
  * of sprites included in the 'big texture'.
  */
