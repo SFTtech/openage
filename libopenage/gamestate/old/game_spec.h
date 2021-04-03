@@ -4,8 +4,8 @@
 
 #include "../types.h"
 #include "../../job/job.h"
-#include "../../gamedata/gamedata.gen.h"
-#include "../../gamedata/graphic.gen.h"
+#include "../../gamedata/gamedata_dummy.h"
+#include "../../gamedata/graphic_dummy.h"
 #include "../../terrain/terrain.h"
 #include "../../unit/unit_texture.h"
 #include "../../util/csv.h"

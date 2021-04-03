@@ -779,8 +779,8 @@ class UnitObject(GenieStructure):
                 type_name="elevation_modes",
                 lookup_dict={
                     0: "NONE",    # gates, farms, walls, towers
-                    2: "ZERO_ELEV_DIFFERENCe",  # towncenter, port, trade workshop
-                    3: "ONE_ELEV_DIFFERENCe",   # everything else
+                    2: "ZERO_ELEV_DIFFERENCE",  # towncenter, port, trade workshop
+                    3: "ONE_ELEV_DIFFERENCE",   # everything else
                 },
             )),
             (READ_GEN, "visible_in_fog", StorageType.ID_MEMBER, EnumLookupMember(

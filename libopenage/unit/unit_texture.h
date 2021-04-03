@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "../coord/phys.h"
-#include "../gamedata/graphic.gen.h"
+#include "../gamedata/graphic_dummy.h"
 
 namespace openage {
 

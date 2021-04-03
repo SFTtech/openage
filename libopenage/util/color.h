@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "../gamedata/color.gen.h"
+#include "../gamedata/color_dummy.h"
 
 namespace openage {
 namespace util {

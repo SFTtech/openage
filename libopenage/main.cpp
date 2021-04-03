@@ -6,7 +6,7 @@
 #include "engine.h"
 #include "game_control.h"
 #include "game_renderer.h"
-#include "gamedata/color.gen.h"
+#include "gamedata/color_dummy.h"
 #include "log/log.h"
 #include "shader/program.h"
 #include "shader/shader.h"

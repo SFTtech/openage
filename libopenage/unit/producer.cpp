@@ -4,7 +4,7 @@
 
 #include "../engine.h"
 #include "../log/log.h"
-#include "../gamedata/unit.gen.h"
+#include "../gamedata/unit_dummy.h"
 #include "../terrain/terrain.h"
 #include "../terrain/terrain_object.h"
 #include "../terrain/terrain_outline.h"

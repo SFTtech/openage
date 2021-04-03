@@ -7,7 +7,7 @@
 #include <algorithm>
 
 #include "../coord/tile.h"
-#include "../gamedata/unit.gen.h"
+#include "../gamedata/unit_dummy.h"
 #include "../terrain/terrain_object.h"
 #include "../gamestate/old/resource.h"
 #include "unit_container.h"

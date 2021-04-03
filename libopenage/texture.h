@@ -6,7 +6,7 @@
 #include <vector>
 #include <memory>
 
-#include "gamedata/texture.gen.h"
+#include "gamedata/texture_dummy.h"
 #include "coord/pixel.h"
 #include "coord/tile.h"
 #include "shader/program.h"
