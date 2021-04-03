@@ -8,9 +8,6 @@ from ....read.value_members import MemberTypes as StorageType
 
 
 class PlayerColor(GenieStructure):
-    name_struct        = "player_color"
-    name_struct_file   = name_struct
-    struct_description = "describes player color settings."
 
     @classmethod
     def get_data_format_members(cls, game_version):

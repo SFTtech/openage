@@ -31,10 +31,6 @@ class EmpiresDat(GenieStructure):
     represents the main game data file.
     """
 
-    name_struct_file   = "gamedata"
-    name_struct        = "empiresdat"
-    struct_description = "empires2_x1_p1.dat structure"
-
     @classmethod
     def get_data_format_members(cls, game_version):
         """
@@ -339,10 +335,6 @@ class EmpiresDatWrapper(GenieStructure):
     and has no parent itself. Thereby this class is discarded
     and the child classes use this as parent for their return values.
     """
-
-    name_struct_file   = "gamedata"
-    name_struct        = "gamedata"
-    struct_description = "wrapper for empires2_x1_p1.dat structure"
 
     @classmethod
     def get_data_format_members(cls, game_version):

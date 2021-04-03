@@ -13,9 +13,6 @@ class UnitCommand(GenieStructure):
     also known as "Task" according to ES debug code,
     this structure is the master for spawn-unit actions.
     """
-    name_struct = "unit_command"
-    name_struct_file = "unit"
-    struct_description = "a command a single unit may receive by script or human."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -142,9 +139,6 @@ class UnitCommand(GenieStructure):
 
 
 class UnitHeader(GenieStructure):
-    name_struct = "unit_header"
-    name_struct_file = "unit"
-    struct_description = "stores a bunch of unit commands."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -165,9 +159,6 @@ class UnitHeader(GenieStructure):
 
 # Only used in SWGB
 class UnitLine(GenieStructure):
-    name_struct        = "unit_line"
-    name_struct_file   = "unit_lines"
-    struct_description = "stores refernces to units in SWGB."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -186,9 +177,6 @@ class UnitLine(GenieStructure):
 
 
 class ResourceStorage(GenieStructure):
-    name_struct = "resource_storage"
-    name_struct_file = "unit"
-    struct_description = "determines the resource storage capacity for one unit mode."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -216,9 +204,6 @@ class ResourceStorage(GenieStructure):
 
 
 class DamageGraphic(GenieStructure):
-    name_struct = "damage_graphic"
-    name_struct_file = "unit"
-    struct_description = "stores one possible unit image that is displayed at a given damage percentage."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -245,9 +230,6 @@ class DamageGraphic(GenieStructure):
 
 
 class HitType(GenieStructure):
-    name_struct = "hit_type"
-    name_struct_file = "unit"
-    struct_description = "stores attack amount for a damage type."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -306,9 +288,6 @@ class HitType(GenieStructure):
 
 
 class ResourceCost(GenieStructure):
-    name_struct = "resource_cost"
-    name_struct_file = "unit"
-    struct_description = "stores cost for one resource for creating the unit."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -583,10 +562,6 @@ class ResourceCost(GenieStructure):
 
 class BuildingAnnex(GenieStructure):
 
-    name_struct = "building_annex"
-    name_struct_file = "unit"
-    struct_description = "a possible building annex."
-
     @classmethod
     def get_data_format_members(cls, game_version):
         """
@@ -605,9 +580,6 @@ class UnitObject(GenieStructure):
     """
     base properties for every unit entry.
     """
-    name_struct = "unit_object"
-    name_struct_file = "unit"
-    struct_description = "base properties for all units."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -1082,10 +1054,6 @@ class TreeUnit(UnitObject):
     type_id == 90
     """
 
-    name_struct = "tree_unit"
-    name_struct_file = "unit"
-    struct_description = "just a tree unit."
-
     @classmethod
     def get_data_format_members(cls, game_version):
         """
@@ -1103,10 +1071,6 @@ class AnimatedUnit(UnitObject):
     type_id >= 20
     Animated master object
     """
-
-    name_struct = "animated_unit"
-    name_struct_file = "unit"
-    struct_description = "adds speed property to units."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -1126,10 +1090,6 @@ class DoppelgangerUnit(AnimatedUnit):
     type_id >= 25
     """
 
-    name_struct = "doppelganger_unit"
-    name_struct_file = "unit"
-    struct_description = "weird doppelganger unit thats actually the same as an animated unit."
-
     @classmethod
     def get_data_format_members(cls, game_version):
         """
@@ -1147,10 +1107,6 @@ class MovingUnit(DoppelgangerUnit):
     type_id >= 30
     Moving master object
     """
-
-    name_struct = "moving_unit"
-    name_struct_file = "unit"
-    struct_description = "adds walking graphics, rotations and tracking properties to units."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -1195,10 +1151,6 @@ class ActionUnit(MovingUnit):
     type_id >= 40
     Action master object
     """
-
-    name_struct = "action_unit"
-    name_struct_file = "unit"
-    struct_description = "adds search radius and work properties, as well as movement sounds."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -1267,10 +1219,6 @@ class ProjectileUnit(ActionUnit):
     type_id >= 60
     Projectile master object
     """
-
-    name_struct = "projectile_unit"
-    name_struct_file = "unit"
-    struct_description = "adds attack and armor properties to units."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -1364,10 +1312,6 @@ class MissileUnit(ProjectileUnit):
     Missile master object
     """
 
-    name_struct = "missile_unit"
-    name_struct_file = "unit"
-    struct_description = "adds missile specific unit properties."
-
     @classmethod
     def get_data_format_members(cls, game_version):
         """
@@ -1395,10 +1339,6 @@ class LivingUnit(ProjectileUnit):
     """
     type_id >= 70
     """
-
-    name_struct = "living_unit"
-    name_struct_file = "unit"
-    struct_description = "adds creation location and garrison unit properties."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -1509,10 +1449,6 @@ class BuildingUnit(LivingUnit):
     """
     type_id >= 80
     """
-
-    name_struct = "building_unit"
-    name_struct_file = "unit"
-    struct_description = "construction graphics and garrison building properties for units."
 
     @classmethod
     def get_data_format_members(cls, game_version):

@@ -9,9 +9,6 @@ from ....read.value_members import MemberTypes as StorageType
 
 
 class SoundItem(GenieStructure):
-    name_struct        = "sound_item"
-    name_struct_file   = "sound"
-    struct_description = "one possible file for a sound."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -50,9 +47,6 @@ class SoundItem(GenieStructure):
 
 
 class Sound(GenieStructure):
-    name_struct        = "sound"
-    name_struct_file   = "sound"
-    struct_description = "describes a sound, consisting of several sound items."
 
     @classmethod
     def get_data_format_members(cls, game_version):

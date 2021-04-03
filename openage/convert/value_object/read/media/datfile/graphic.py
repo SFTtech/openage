@@ -9,9 +9,6 @@ from ....read.value_members import MemberTypes as StorageType
 
 
 class GraphicDelta(GenieStructure):
-    name_struct        = "graphic_delta"
-    name_struct_file   = "graphic"
-    struct_description = "delta definitions for ingame graphics files."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -32,9 +29,6 @@ class GraphicDelta(GenieStructure):
 
 
 class DE2SoundProp(GenieStructure):
-    name_struct        = "de2_sound_prop"
-    name_struct_file   = "graphic"
-    struct_description = "DE2 sound id and delay definition for graphics sounds."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -57,9 +51,6 @@ class DE2SoundProp(GenieStructure):
 
 
 class SoundProp(GenieStructure):
-    name_struct        = "sound_prop"
-    name_struct_file   = "graphic"
-    struct_description = "sound id and delay definition for graphics sounds."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -75,9 +66,6 @@ class SoundProp(GenieStructure):
 
 
 class GraphicAttackSound(GenieStructure):
-    name_struct        = "graphic_attack_sound"
-    name_struct_file   = "graphic"
-    struct_description = "attack sounds for a given graphics file."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -104,9 +92,6 @@ class GraphicAttackSound(GenieStructure):
 
 
 class Graphic(GenieStructure):
-    name_struct        = "graphic"
-    name_struct_file   = name_struct
-    struct_description = "metadata for ingame graphics files."
 
     @classmethod
     def get_data_format_members(cls, game_version):

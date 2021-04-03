@@ -9,9 +9,6 @@ def generate_all(projectdir):
     """
     Generates all source files in targetdir.
     """
-    from .gamespec_structs import generate_gamespec_structs
-    generate_gamespec_structs(projectdir)
-
     from .cpp_testlist import generate_testlist
     generate_testlist(projectdir)
 

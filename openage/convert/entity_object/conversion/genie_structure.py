@@ -27,29 +27,6 @@ class GenieStructure:
     superclass for all structures from Genie Engine games.
     """
 
-    # name of the created struct
-    name_struct = None
-
-    # name of the file where struct is placed in
-    name_struct_file = None
-
-    # comment for the created struct
-    struct_description = None
-
-    # struct format specification
-    # ===========================================================
-    # contains a list of 4-tuples that define
-    # (read_mode, var_name, storage_type, read_type)
-    #
-    # read_mode: Tells whether to read or skip values
-    # var_name: The stored name of the extracted variable.
-    #           Must be unique for each ConverterObject
-    # storage_type: ValueMember type for storage
-    #               (see value_members.MemberTypes)
-    # read_type: ReadMember type for reading the values from bytes
-    #            (see read_members.py)
-    # ===========================================================
-
     def __init__(self, **args):
         # store passed arguments as members
         self.__dict__.update(args)
@@ -500,97 +477,6 @@ class GenieStructure:
         return offset, generated_value_members
 
     @classmethod
-    def structs(cls):
-        """
-        create struct definitions for this class and its subdata references.
-
-        TODO: Remove from buildsystem
-        """
-
-        ret = list()
-        self_member_count = 0
-
-        # dummy game edition that represents AoC
-        dummy = GameEdition("", "AoC", "yes", [], [], [], [])
-
-        # acquire all struct members, including the included members
-        members = cls.get_data_format((dummy, []),
-                                      allowed_modes=(True, SKIP, READ_GEN, NOREAD_EXPORT),
-                                      flatten_includes=False)
-
-        for _, _, _, _, member_type in members:
-            self_member_count += 1
-            if isinstance(member_type, MultisubtypeMember):
-                for _, subtype_class in sorted(member_type.class_lookup.items()):
-                    if not issubclass(subtype_class, GenieStructure):
-                        raise Exception("tried to export structs "
-                                        "from non-exportable %s" % (
-                                            subtype_class))
-                    ret += subtype_class.structs()
-
-            elif isinstance(member_type, GroupMember):
-                if not issubclass(member_type.cls, GenieStructure):
-                    raise Exception("tried to export structs "
-                                    "from non-exportable member "
-                                    "included class %r" % (member_type.cls))
-                ret += member_type.cls.structs()
-
-            else:
-                continue
-
-        # create struct only when it has members?
-        if True or self_member_count > 0:
-            new_def = StructDefinition(cls)
-            ret.append(new_def)
-
-        return ret
-
-    @classmethod
-    def format_hash(cls, game_version, hasher=None):
-        """
-        provides a deterministic hash of all exported structure members
-
-        used for determining changes in the exported data, which requires
-        data reconversion.
-        """
-
-        if not hasher:
-            hasher = hashlib.sha512()
-
-        # struct properties
-        hasher.update(cls.name_struct.encode())
-        hasher.update(cls.name_struct_file.encode())
-        hasher.update(cls.struct_description.encode())
-
-        # only hash exported struct members!
-        # non-exported values don't influence anything.
-        members = cls.get_data_format(game_version,
-                                      allowed_modes=(True, SKIP, READ_GEN, NOREAD_EXPORT),
-                                      flatten_includes=False,
-                                      )
-        for _, export, member_name, _, member_type in members:
-            # includemembers etc have no name.
-            if member_name:
-                hasher.update(member_name.encode())
-
-            if isinstance(member_type, ReadMember):
-                hasher = member_type.format_hash(hasher)
-
-            elif isinstance(member_type, str):
-                hasher.update(member_type.encode())
-
-            else:
-                raise Exception("can't hash unsupported member")
-
-            hasher.update(export.name.encode())
-
-        return hasher
-
-    @classmethod
-    def get_effective_type(cls):
-        return cls.name_struct
-
-    @classmethod
     def get_data_format(cls, game_version, allowed_modes=False,
                         flatten_includes=False, is_parent=False):
         """
@@ -632,5 +518,20 @@ class GenieStructure:
     def get_data_format_members(cls, game_version):
         """
         Return the members in this struct.
+
+        struct format specification
+        ===========================================================
+        contains a list of 4-tuples that define
+        (read_mode, var_name, storage_type, read_type)
+
+        read_mode: Tells whether to read or skip values
+        var_name: The stored name of the extracted variable.
+                  Must be unique for each ConverterObject
+        storage_type: ValueMember type for storage
+                      (see value_members.MemberTypes)
+        read_type: ReadMember type for reading the values from bytes
+                   (see read_members.py)
+        ===========================================================
+
         """
         raise NotImplementedError("Subclass has not implemented this function")

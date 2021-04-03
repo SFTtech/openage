@@ -9,9 +9,6 @@ from ....read.value_members import MemberTypes as StorageType
 
 
 class Effect(GenieStructure):
-    name_struct = "tech_effect"
-    name_struct_file = "tech"
-    struct_description = "applied effect for a research technology."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -122,9 +119,6 @@ class Effect(GenieStructure):
 
 
 class EffectBundle(GenieStructure):  # also called techage in some other tools
-    name_struct = "effect_bundle"
-    name_struct_file = "tech"
-    struct_description = "a bundle of effects."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -155,9 +149,6 @@ class EffectBundle(GenieStructure):  # also called techage in some other tools
 
 
 class OtherConnection(GenieStructure):
-    name_struct = "other_connection"
-    name_struct_file = "tech"
-    struct_description = "misc connection for a building/unit/research connection"
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -181,9 +172,6 @@ class OtherConnection(GenieStructure):
 
 
 class AgeTechTree(GenieStructure):
-    name_struct = "age_tech_tree"
-    name_struct_file = "tech"
-    struct_description = "items available when this age was reached."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -279,9 +267,6 @@ class AgeTechTree(GenieStructure):
 
 
 class BuildingConnection(GenieStructure):
-    name_struct = "building_connection"
-    name_struct_file = "tech"
-    struct_description = "new available buildings/units/researches when this building was created."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -369,9 +354,6 @@ class BuildingConnection(GenieStructure):
 
 
 class UnitConnection(GenieStructure):
-    name_struct = "unit_connection"
-    name_struct_file = "tech"
-    struct_description = "unit updates to apply when activating the technology."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -447,9 +429,6 @@ class UnitConnection(GenieStructure):
 
 
 class ResearchConnection(GenieStructure):
-    name_struct = "research_connection"
-    name_struct_file = "tech"
-    struct_description = "research updates to apply when activating the technology."
 
     @classmethod
     def get_data_format_members(cls, game_version):
