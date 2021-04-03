@@ -1,15 +1,8 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
-
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
+#
 # TODO pylint: disable=C,R,abstract-method
 
 from enum import Enum
-import types
-
-from ...deprecated.content_snippet import ContentSnippet, SectionType
-from ...deprecated.entry_parser import EntryParser
-from ...deprecated.generated_file import GeneratedFile
-from ...deprecated.struct_snippet import StructSnippet
-from ...deprecated.util import determine_headers, determine_header
 
 
 class ReadMember:
@@ -25,21 +18,6 @@ class ReadMember:
         self.raw_type = None
         self.do_raw_read = True
 
-    def get_parsers(self, idx, member):
-        raise NotImplementedError(
-            f"implement the parser generation for the member type {type(self)}")
-
-    def get_headers(self, output_target):
-        raise NotImplementedError(
-            f"return needed headers for {type(self)} for a given output target")
-
-    def get_typerefs(self):
-        """
-        this member entry references these types.
-        this is most likely the type name of the corresponding struct entry.
-        """
-        return set()
-
     def entry_hook(self, data):
         """
         allows the data member class to modify the input data
@@ -47,10 +25,6 @@ class ReadMember:
         is used e.g. for the number => enum lookup
         """
         return data
-
-    def get_effective_type(self):
-        raise NotImplementedError(
-            f"return the effective (struct) type of member {type(self)}")
 
     def get_empty_value(self):
         """
@@ -69,22 +43,6 @@ class ReadMember:
         del obj, data  # unused
         return True
 
-    def get_struct_entries(self, member_name):
-        """
-        return the lines to put inside the C struct.
-        """
-
-        return [f"{self.get_effective_type()} {member_name};"]
-
-    def format_hash(self, hasher):
-        """
-        hash these member's settings.
-
-        used to determine data format changes.
-        """
-        raise NotImplementedError(
-            "return the hasher updated with member settings")
-
     def __repr__(self):
         raise NotImplementedError(
             f"return short description of the member type {type(self)}")
@@ -102,28 +60,6 @@ class GroupMember(ReadMember):
         super().__init__()
         self.cls = cls
 
-    def get_headers(self, output_target):
-        return {self.cls.name_struct_file}
-
-    def get_typerefs(self):
-        return {self.get_effective_type()}
-
-    def get_effective_type(self):
-        return self.cls.get_effective_type()
-
-    def get_parsers(self, idx, member):
-        return [
-            EntryParser(
-                ["this->%s.fill(buf[%d]);" % (member, idx)],
-                headers=set(),
-                typerefs=set(),
-                destination="fill",
-            )
-        ]
-
-    def format_hash(self, hasher):
-        return self.cls.format_hash(hasher)
-
     def __repr__(self):
         return f"GroupMember<{repr(self.cls)}>"
 
@@ -137,9 +73,6 @@ class IncludeMembers(GroupMember):
     the unit class "building" and "movable" will both have
     common members that have to be read first.
     """
-
-    def get_parsers(self, idx, member):
-        raise Exception("this should never be called!")
 
     def __repr__(self):
         return f"IncludeMember<{repr(self.cls)}>"
@@ -219,16 +152,6 @@ class DynLengthMember(ReadMember):
         else:
             raise Exception(f"unknown length definition supplied: {target}")
 
-    def format_hash(self, hasher):
-        if isinstance(self.length, types.LambdaType):
-            # update hash with the lambda code
-            # pylint: disable=no-member
-            hasher.update(self.length.__code__.co_code)
-        else:
-            hasher.update(str(self.length).encode())
-
-        return hasher
-
 
 class RefMember(ReadMember):
     """
@@ -243,17 +166,6 @@ class RefMember(ReadMember):
         # xrefs not supported yet.
         # would allow reusing a struct definition that lies in another file
         self.resolved = False
-
-    def format_hash(self, hasher):
-        # the file_name is irrelevant for the format hash
-        # engine-internal relevance only.
-
-        # type name is none for subdata members, hash is determined
-        # by recursing into the subdata member itself.
-        if self.type_name:
-            hasher.update(self.type_name.encode())
-
-        return hasher
 
 
 class NumberMember(ReadMember):
@@ -284,33 +196,6 @@ class NumberMember(ReadMember):
         # type used for the output struct
         self.number_type = number_def
         self.raw_type = number_def
-
-    def get_parsers(self, idx, member):
-        scan_symbol = self.type_scan_lookup[self.number_type]
-
-        return [
-            EntryParser(
-                ["if (sscanf(buf[%d].c_str(), \"%%%s\", &this->%s) != 1) "
-                 "{ return %d; }" % (idx, scan_symbol, member, idx)],
-                headers=determine_header("sscanf"),
-                typerefs=set(),
-                destination="fill",
-            )
-        ]
-
-    def get_headers(self, output_target):
-        if "struct" == output_target:
-            return determine_header(self.number_type)
-        else:
-            return set()
-
-    def get_effective_type(self):
-        return self.number_type
-
-    def format_hash(self, hasher):
-        hasher.update(self.number_type.encode())
-
-        return hasher
 
     def __repr__(self):
         return self.number_type
@@ -359,29 +244,6 @@ class ContinueReadMember(NumberMember):
     def get_empty_value(self):
         return 0
 
-    def get_parsers(self, idx, member):
-        entry_parser_txt = (
-            "// remember if the following members are undefined",
-            'if (buf[%d] == "%s") {' % (idx, self.Result.ABORT.value),
-            f"    this->{member} = 0;",
-            '} else if (buf[%d] == "%s") {' % (
-                idx, self.Result.CONTINUE.value),
-            f"    this->{member} = 1;",
-            "} else {",
-            ('    throw openage::error::Error(ERR << "unexpected value \'"'
-             '<< buf[%d] << "\' for %s");' % (idx, self.__class__.__name__)),
-            "}",
-        )
-
-        return [
-            EntryParser(
-                entry_parser_txt,
-                headers=determine_headers(("engine_error",)),
-                typerefs=set(),
-                destination="fill",
-            )
-        ]
-
 
 class EnumMember(RefMember):
     """
@@ -393,93 +255,8 @@ class EnumMember(RefMember):
         self.values = values
         self.resolved = True    # TODO, xrefs not supported yet.
 
-    def get_parsers(self, idx, member):
-        enum_parse_else = ""
-        enum_parser = list()
-        enum_parser.append(f"// parse enum {self.type_name}")
-        for enum_value in self.values:
-            enum_parser.extend([
-                '%sif (buf[%d] == "%s") {' % (
-                    enum_parse_else, idx, enum_value),
-                f"    this->{member} = {self.type_name}::{enum_value};",
-                "}",
-            ])
-            enum_parse_else = "else "
-
-        enum_parser.append(
-            "else {{\n"
-            "    throw openage::error::Error(\n"
-            "        MSG(err)\n"
-            '        << "unknown enum value \'" << buf[{idx}]\n'
-            '        << "\' encountered. valid are: "\n'
-            '           "{valids}\\n---\\n"\n'
-            '           "If this is an inconsistency due to updates in the "\n'
-            '           "media converter, try re-converting the assets\\n---\"\n'
-            '    );'
-            "}}".format(idx=idx, valids=",".join(self.values)),
-        )
-
-        return [
-            EntryParser(
-                enum_parser,
-                headers=determine_headers(("engine_error")),
-                typerefs=set(),
-                destination="fill",
-            )
-        ]
-
-    def get_headers(self, output_target):
-        return set()
-
-    def get_typerefs(self):
-        return {self.get_effective_type()}
-
-    def get_effective_type(self):
-        return self.type_name
-
     def validate_value(self, value):
         return value in self.values
-
-    def get_snippets(self, file_name, format_):
-        """
-        generate enum snippets from given data
-
-        input: EnumMember
-        output: ContentSnippet
-        """
-
-        if format_ == "struct":
-            snippet_file_name = self.file_name or file_name
-
-            txt = list()
-
-            # create enum definition
-            txt.extend([
-                "enum class %s {\n    " % self.type_name,
-                ",\n    ".join(self.values),
-                "\n};\n\n",
-            ])
-
-            snippet = ContentSnippet(
-                "".join(txt),
-                snippet_file_name,
-                SectionType.section_body,
-                orderby=self.type_name,
-                reprtxt=f"enum class {self.type_name}",
-            )
-            snippet.typedefs |= {self.type_name}
-
-            return [snippet]
-        else:
-            return list()
-
-    def format_hash(self, hasher):
-        hasher = super().format_hash(hasher)
-
-        for v in sorted(self.values):
-            hasher.update(v.encode())
-
-        return hasher
 
     def __repr__(self):
         return f"enum {self.type_name}"
@@ -524,52 +301,11 @@ class CharArrayMember(DynLengthMember):
         super().__init__(length)
         self.raw_type = "char[]"
 
-    def get_parsers(self, idx, member):
-        headers = set()
-
-        if self.is_dynamic_length():
-            # copy to std::string
-            lines = ["this->%s = buf[%d];" % (member, idx)]
-
-        else:
-            # copy to char[n]
-            data_length = self.get_length()
-            lines = [
-                "strncpy(this->%s, buf[%d].c_str(), %d);" % (member,
-                                                             idx, data_length),
-                "this->%s[%d] = '\\0';" % (member, data_length - 1),
-            ]
-            headers |= determine_header("strncpy")
-
-        return [
-            EntryParser(
-                lines,
-                headers=headers,
-                typerefs=set(),
-                destination="fill",
-            )
-        ]
-
-    def get_headers(self, output_target):
-        ret = set()
-
-        if "struct" == output_target:
-            if self.is_dynamic_length():
-                ret |= determine_header("std::string")
-
-        return ret
-
-    def get_effective_type(self):
-        if self.is_dynamic_length():
-            return "std::string"
-        else:
-            return "char"
-
     def get_empty_value(self):
         return ""
 
     def __repr__(self):
-        return f"{self.get_effective_type()}[{self.length}]"
+        return f"{self.raw_type}[{self.length}]"
 
 
 class StringMember(CharArrayMember):
@@ -617,19 +353,6 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         # no xrefs supported yet.. just set to true as if they were resolved.
         self.resolved = True
 
-    def get_headers(self, output_target):
-        if "struct" == output_target:
-            return determine_header("std::vector")
-
-        elif "structimpl" == output_target:
-            return determine_header("read_csv_file")
-
-        else:
-            return set()
-
-    def get_effective_type(self):
-        return self.type_name
-
     def get_empty_value(self):
         return list()
 
@@ -638,175 +361,6 @@ class MultisubtypeMember(RefMember, DynLengthMember):
             contained_type.get_effective_type()
             for contained_type in self.class_lookup.values()
         }
-
-    def get_parsers(self, idx, member):
-        return [
-            # first, the parser to just read the index file name
-            EntryParser(
-                ["this->%s.subdata_meta.filename = buf[%d];" % (member, idx)],
-                headers=set(),
-                typerefs=set(),
-                destination="fill",
-            ),
-            # then the parser that uses the index file to recurse over
-            # the "real" data entries.
-            # the above parsed filename is searched in this basedir.
-            EntryParser(
-                [f"this->{member}.recurse(storage, basedir);"],
-                headers=set(),
-                typerefs=set(),
-                destination="recurse",
-            )
-        ]
-
-    def get_typerefs(self):
-        return {self.type_name}
-
-    def get_snippets(self, file_name, format_):
-        """
-        return struct definitions for this type
-        """
-
-        from ...deprecated.multisubtype_base import MultisubtypeBaseFile
-
-        snippet_file_name = self.file_name or file_name
-
-        if format_ == "struct":
-            # all the struct info is packed in one text snippet.
-            snippet = StructSnippet(snippet_file_name, self.type_name)
-
-            # for each subdata type, add a container struct,
-            # which basically stores the list of entries of that subdata.
-            for (entry_name, entry_type) in sorted(self.class_lookup.items()):
-                entry_type = entry_type.get_effective_type()
-
-                snippet.add_member(
-                    "struct openage::util::csv_subdata<%s> %s;" % (
-                        GeneratedFile.namespacify(entry_type), entry_name
-                    )
-                )
-                snippet.typerefs |= {entry_type}
-
-            snippet.includes |= determine_header("csv_subdata")
-            snippet.typerefs |= {MultisubtypeBaseFile.name_struct}
-
-            # metainformation about locations and types of subdata to recurse
-            # basically maps subdata type to a filename where this subdata is
-            # stored
-            snippet.add_member("struct openage::util::csv_subdata<%s> subdata_meta;\n" % (
-                MultisubtypeBaseFile.name_struct))
-
-            # add member methods to the struct
-            from ...deprecated.data_formatter import DataFormatter
-            snippet.add_members((
-                f"{member.get_signature()};"
-                for _, member in sorted(DataFormatter.member_methods.items())
-            ))
-
-            return [snippet]
-
-        elif format_ == "structimpl":
-            # TODO: generalize this member function generation...
-
-            txt = list()
-
-            # function to fill up the struct contents, does nothing here.
-            txt.append(
-                "int {type_name}::fill(const std::string & /*line*/) {{\n"
-                "    return -1;\n"
-                "}}\n".format(type_name=self.type_name)
-            )
-
-            # function to recursively read the referenced files
-            # this reads the metainformation for the subtypes to be read.
-            #
-            # this is invoked in util/csv.h:
-            # CSVCollection::read
-            txt.append(
-                "bool {type_name}::recurse(const openage::util::CSVCollection &storage,\n"
-                "{type_leng}               const std::string &basedir) {{\n"
-                "\n"
-                "    // the .filename was set by the previous entry parser already\n"
-                "    // so now read the index-file entries\n"
-                "    this->subdata_meta.read(storage, basedir);\n"
-                "\n"
-                "    int subtype_count = this->subdata_meta.data.size();\n"
-                "    if (subtype_count != {subtype_count}) {{\n"
-                "        throw openage::error::Error(\n"
-                '            ERR << "multisubtype index file entry count mismatched!"\n'
-                '            << subtype_count << " != {subtype_count}"\n'
-                "        );\n"
-                "    }}\n"
-                "\n"
-                "    // the recursed data files are relative to the subdata_meta filename\n"
-                "    std::string metadata_dir = basedir + openage::util::fslike::PATHSEP + openage::util::dirname(this->subdata_meta.filename);\n"
-                "    int idx;\n"
-                "    int idxtry;\n"
-                "\n".format(type_name=self.type_name,
-                            type_leng=" " * len(self.type_name),
-                            subtype_count=len(self.class_lookup))
-            )
-
-            for (entry_name, entry_type) in sorted(self.class_lookup.items()):
-                # for each type in a multisubtype member:
-                # * try to find the type name index in the metadatafile
-                # * fetch the filename for that type from the metadata (by the index)
-                # * fill that subdata type with information
-                txt.append(
-                    "    // read subtype '{entry_name}'\n"
-                    "    idx = -1;\n"
-                    "    idxtry = 0;\n"
-                    "    // find the index of the subdata in the metadata\n"
-                    "    for (auto &file_reference : this->subdata_meta.data) {{\n"
-                    '        if (file_reference.subtype == "{entry_name}") {{\n'
-                    "            idx = idxtry;\n"
-                    "            break;\n"
-                    "        }}\n"
-                    "        idxtry += 1;\n"
-                    "    }}\n"
-                    "    if (idx == -1) {{\n"
-                    "        throw openage::error::Error(\n"
-                    '            ERR << "multisubtype index file contains no entry for {entry_name}!"\n'
-                    "        );\n"
-                    "    }}\n"
-                    "\n"
-                    "    // the filename is relative to the metadata file!\n"
-                    "    this->{entry_name}.filename = this->subdata_meta.data[idx].filename;\n"
-                    "    this->{entry_name}.read(storage, metadata_dir);\n"
-                    "\n".format(entry_name=entry_name)
-                )
-
-            txt.append(
-                "    return true;\n"
-                "}\n"
-            )
-
-            snippet = ContentSnippet(
-                "".join(txt),
-                snippet_file_name,
-                SectionType.section_body,
-                orderby=self.type_name,
-                reprtxt=f"multisubtype {self.type_name} container fill function",
-            )
-            snippet.typerefs |= (self.get_contained_types() |
-                                 {self.type_name, MultisubtypeBaseFile.name_struct})
-            snippet.includes |= determine_headers(
-                ("util::Path", "engine_error", "csv_collection", "std::string")
-            )
-
-            return [snippet]
-
-        else:
-            return list()
-
-    def format_hash(self, hasher):
-        hasher = RefMember.format_hash(self, hasher)
-        hasher = DynLengthMember.format_hash(self, hasher)
-
-        for _, subtype_class in sorted(self.class_lookup.items()):
-            hasher = subtype_class.format_hash(hasher)
-
-        return hasher
 
     def __repr__(self):
         return f"MultisubtypeMember<{self.type_name}:len={self.length}>"
@@ -831,44 +385,6 @@ class SubdataMember(MultisubtypeMember):
             passed_args=passed_args,
         )
 
-    def get_headers(self, output_target):
-        if "struct" == output_target:
-            return determine_header("csv_subdata")
-        else:
-            return set()
-
-    def get_subtype(self):
-        return GeneratedFile.namespacify(tuple(self.get_contained_types())[0])
-
-    def get_effective_type(self):
-        return f"openage::util::csv_subdata<{self.get_subtype()}>"
-
-    def get_parsers(self, idx, member):
-        return [
-            # to read subdata, first fetch the filename to read
-            EntryParser(
-                ["this->%s.filename = buf[%d];" % (member, idx)],
-                headers=set(),
-                typerefs=set(),
-                destination="fill",
-            ),
-            # then read the subdata content from the storage,
-            # searching for the filename relative to basedir.
-            EntryParser(
-                [f"this->{member}.read(storage, basedir);"],
-                headers=set(),
-                typerefs=set(),
-                destination="recurse",
-            ),
-        ]
-
-    def get_snippets(self, file_name, format_):
-        del file_name, format_  # unused
-        return list()
-
-    def get_typerefs(self):
-        return self.get_contained_types()
-
     def get_subdata_type_name(self):
         return self.class_lookup[None].__name__
 
@@ -884,16 +400,6 @@ class ArrayMember(DynLengthMember):
     def __init__(self, raw_type, length):
         super().__init__(length)
         self.raw_type = raw_type
-
-    # TODO: Taken from above, remove with buildsystem cleanup
-    # =====================================================================
-    def get_effective_type(self):
-        return self.raw_type
-
-    def get_parsers(self, idx, member):
-        return [
-        ]
-    # =====================================================================
 
     def __repr__(self):
         return f"ArrayMember<{self.raw_type}:len={self.length}>"

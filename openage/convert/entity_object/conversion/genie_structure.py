@@ -1,8 +1,9 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
 import math
+import re
 import struct
 
 from ....util.strings import decode_until_null
@@ -20,6 +21,38 @@ class GenieStructure:
     """
     superclass for all structures from Genie Engine games.
     """
+
+    # regex for matching type array definitions like int[1337]
+    # group 1: type name, group 2: length
+    vararray_match = re.compile("([{0}]+) *\\[([{0}]+)\\] *;?".format("a-zA-Z0-9_"))
+
+    # match a simple number
+    integer_match = re.compile("\\d+")
+
+    # type lookup for C -> python struct
+    struct_type_lookup = {
+        "char":               "b",
+        "unsigned char":      "B",
+        "int8_t":             "b",
+        "uint8_t":            "B",
+        "short":              "h",
+        "unsigned short":     "H",
+        "int16_t":            "h",
+        "uint16_t":           "H",
+        "int":                "i",
+        "unsigned int":       "I",
+        "int32_t":            "i",
+        "uint32_t":           "I",
+        "long":               "l",
+        "unsigned long":      "L",
+        "long long":          "q",
+        "unsigned long long": "Q",
+        "int64_t":            "q",
+        "uint64_t":           "Q",
+        "float":              "f",
+        "double":             "d",
+        "char[]":             "s",
+    }
 
     def __init__(self, **args):
         # store passed arguments as members
@@ -184,7 +217,7 @@ class GenieStructure:
                         subtype_name = getattr(
                             self, var_type.subtype_definition[1])
 
-                        # look up the type name to get the subtype class
+                        # look up the subtype class
                         new_data_class = var_type.class_lookup[subtype_name]
 
                     if not issubclass(new_data_class, GenieStructure):
@@ -239,7 +272,7 @@ class GenieStructure:
                 is_custom_member = False
 
                 if isinstance(var_type, str):
-                    is_array = vararray_match.match(var_type)
+                    is_array = self.vararray_match.match(var_type)
 
                     if is_array:
                         struct_type = is_array.group(1)
@@ -247,7 +280,7 @@ class GenieStructure:
                         if struct_type == "char":
                             struct_type = "char[]"
 
-                        if integer_match.match(data_count):
+                        if self.integer_match.match(data_count):
                             # integer length
                             data_count = int(data_count)
                         else:
@@ -285,7 +318,7 @@ class GenieStructure:
                     raise Exception("invalid length %d < 0 in %s for member '%s'" % (
                         data_count, var_type, var_name))
 
-                if struct_type not in struct_type_lookup:
+                if struct_type not in self.struct_type_lookup:
                     raise Exception("%s: member %s requests unknown data type %s" % (
                         repr(self), var_name, struct_type))
 
@@ -295,7 +328,7 @@ class GenieStructure:
                     var_name = "unknown-0x%08x" % offset
 
                 # lookup c type to python struct scan type
-                symbol = struct_type_lookup[struct_type]
+                symbol = self.struct_type_lookup[struct_type]
 
                 # read that stuff!!11
                 struct_format = "< %d%s" % (data_count, symbol)
