@@ -3,7 +3,6 @@ add_py_modules(
 	main.py
 )
 
-add_subdirectory(deprecated)
 add_subdirectory(entity_object)
 add_subdirectory(processor)
 add_subdirectory(service)

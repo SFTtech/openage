@@ -2,17 +2,11 @@
 
 # TODO pylint: disable=C,R
 
-import hashlib
 import math
 import struct
 
-from openage.convert.value_object.init.game_version import GameEdition
-
 from ....util.strings import decode_until_null
-from ...deprecated.struct_definition import (StructDefinition, vararray_match,
-                                             integer_match)
-from ...deprecated.util import struct_type_lookup
-from ...value_object.read.member_access import READ, READ_GEN, READ_UNKNOWN, NOREAD_EXPORT, SKIP
+from ...value_object.read.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP
 from ...value_object.read.read_members import (IncludeMembers, ContinueReadMember,
                                                MultisubtypeMember, GroupMember, SubdataMember,
                                                ReadMember,

@@ -317,13 +317,6 @@ class EmpiresDat(GenieStructure):
 
         return data_format
 
-    @classmethod
-    def get_hash(cls, game_version):
-        """
-        Return the unique hash for the data format tree.
-        """
-        return cls.format_hash(game_version).hexdigest()
-
 
 class EmpiresDatWrapper(GenieStructure):
     """
