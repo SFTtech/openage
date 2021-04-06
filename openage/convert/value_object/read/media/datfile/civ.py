@@ -1,4 +1,4 @@
-# Copyright 2013-2020 the openage authors. See copying.md for legal info.
+# Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from . import unit
@@ -9,9 +9,6 @@ from ....read.value_members import MemberTypes as StorageType
 
 
 class Civ(GenieStructure):
-    name_struct = "civilisation"
-    name_struct_file = name_struct
-    struct_description = "describes a civilisation."
 
     @classmethod
     def get_data_format_members(cls, game_version):

@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,7 +11,7 @@
 #include "../input/input_manager.h"
 #include "../util/color.h"
 #include "../renderer/font/font.h"
-#include "../gamedata/color.gen.h"
+#include "../gamedata/color_dummy.h"
 
 namespace openage {
 

@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,7 +6,7 @@
 #include <vector>
 #include <memory>
 
-#include "gamedata/texture.gen.h"
+#include "gamedata/texture_dummy.h"
 #include "coord/pixel.h"
 #include "coord/tile.h"
 #include "shader/program.h"

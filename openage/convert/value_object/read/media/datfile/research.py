@@ -9,9 +9,6 @@ from ....read.value_members import MemberTypes as StorageType
 
 
 class TechResourceCost(GenieStructure):
-    name_struct        = "tech_resource_cost"
-    name_struct_file   = "research"
-    struct_description = "amount definition for a single type resource for researches."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -285,9 +282,6 @@ class TechResourceCost(GenieStructure):
 
 
 class Tech(GenieStructure):
-    name_struct        = "tech"
-    name_struct_file   = "research"
-    struct_description = "one researchable technology."
 
     @classmethod
     def get_data_format_members(cls, game_version):

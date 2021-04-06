@@ -3,7 +3,6 @@ add_py_modules(
 	codegen.py
 	coord.py
 	cpp_testlist.py
-	gamespec_structs.py
 	listing.py
 	main.py
 )

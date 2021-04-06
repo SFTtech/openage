@@ -1,4 +1,4 @@
-# Copyright 2013-2020 the openage authors. See copying.md for legal info.
+# Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=too-many-function-args
 
@@ -13,7 +13,6 @@ from math import sqrt
 from struct import Struct, unpack_from
 
 from .....log import dbg
-from ....deprecated.struct_definition import StructDefinition
 from ....entity_object.conversion.genie_structure import GenieStructure
 from ....entity_object.export.data_definition import DataDefinition
 
@@ -268,10 +267,6 @@ class Blendomatic(GenieStructure):
             for idx, _ in enumerate(self.blending_modes)
         ]
         return [DataDefinition(self, data, filename)]
-
-    @classmethod
-    def structs(cls):
-        return [StructDefinition(cls)]
 
     def save(self, fslikeobj, path, compression_level):
         """

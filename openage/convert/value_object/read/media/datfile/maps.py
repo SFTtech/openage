@@ -1,4 +1,4 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -9,9 +9,6 @@ from ....read.value_members import MemberTypes as StorageType
 
 
 class MapInfo(GenieStructure):
-    name_struct_file   = "randommap"
-    name_struct        = "map_header"
-    struct_description = "random map information header"
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -43,9 +40,6 @@ class MapInfo(GenieStructure):
 
 
 class MapLand(GenieStructure):
-    name_struct_file   = "randommap"
-    name_struct        = "map"
-    struct_description = "random map information data"
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -74,9 +68,6 @@ class MapLand(GenieStructure):
 
 
 class MapTerrain(GenieStructure):
-    name_struct_file   = "randommap"
-    name_struct        = "map_terrain"
-    struct_description = "random map terrain information data"
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -96,9 +87,6 @@ class MapTerrain(GenieStructure):
 
 
 class MapUnit(GenieStructure):
-    name_struct_file   = "randommap"
-    name_struct        = "map_unit"
-    struct_description = "random map unit information data"
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -125,9 +113,6 @@ class MapUnit(GenieStructure):
 
 
 class MapElevation(GenieStructure):
-    name_struct_file   = "randommap"
-    name_struct        = "map_elevation"
-    struct_description = "random map elevation data"
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -147,9 +132,6 @@ class MapElevation(GenieStructure):
 
 
 class Map(GenieStructure):
-    name_struct_file   = "randommap"
-    name_struct        = "map"
-    struct_description = "random map information data"
 
     @classmethod
     def get_data_format_members(cls, game_version):

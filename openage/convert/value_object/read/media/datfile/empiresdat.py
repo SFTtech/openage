@@ -1,4 +1,4 @@
-# Copyright 2013-2020 the openage authors. See copying.md for legal info.
+# Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -30,10 +30,6 @@ class EmpiresDat(GenieStructure):
 
     represents the main game data file.
     """
-
-    name_struct_file   = "gamedata"
-    name_struct        = "empiresdat"
-    struct_description = "empires2_x1_p1.dat structure"
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -321,13 +317,6 @@ class EmpiresDat(GenieStructure):
 
         return data_format
 
-    @classmethod
-    def get_hash(cls, game_version):
-        """
-        Return the unique hash for the data format tree.
-        """
-        return cls.format_hash(game_version).hexdigest()
-
 
 class EmpiresDatWrapper(GenieStructure):
     """
@@ -339,10 +328,6 @@ class EmpiresDatWrapper(GenieStructure):
     and has no parent itself. Thereby this class is discarded
     and the child classes use this as parent for their return values.
     """
-
-    name_struct_file   = "gamedata"
-    name_struct        = "gamedata"
-    struct_description = "wrapper for empires2_x1_p1.dat structure"
 
     @classmethod
     def get_data_format_members(cls, game_version):

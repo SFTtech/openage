@@ -1,4 +1,4 @@
-# Copyright 2013-2020 the openage authors. See copying.md for legal info.
+# Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -9,9 +9,6 @@ from ....read.value_members import MemberTypes as StorageType
 
 
 class FrameData(GenieStructure):
-    name_struct_file   = "terrain"
-    name_struct        = "frame_data"
-    struct_description = "specification of terrain frames."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -28,9 +25,6 @@ class FrameData(GenieStructure):
 
 
 class TerrainPassGraphic(GenieStructure):
-    name_struct_file   = "terrain"
-    name_struct        = "terrain_pass_graphic"
-    struct_description = None
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -56,10 +50,6 @@ class TerrainRestriction(GenieStructure):
     """
     access policies for units on specific terrain.
     """
-
-    name_struct_file   = "terrain"
-    name_struct        = "terrain_restriction"
-    struct_description = "TODO"
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -89,9 +79,6 @@ class TerrainRestriction(GenieStructure):
 
 
 class TerrainAnimation(GenieStructure):
-    name_struct        = "terrain_animation"
-    name_struct_file   = "terrain"
-    struct_description = "describes animation properties of a terrain type"
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -123,9 +110,6 @@ class TerrainAnimation(GenieStructure):
 
 
 class Terrain(GenieStructure):
-    name_struct        = "terrain_type"
-    name_struct_file   = "terrain"
-    struct_description = "describes a terrain type, like water, ice, etc."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -273,9 +257,6 @@ class Terrain(GenieStructure):
 
 
 class TerrainBorder(GenieStructure):
-    name_struct        = "terrain_border"
-    name_struct_file   = "terrain"
-    struct_description = "one inter-terraintile border specification."
 
     @classmethod
     def get_data_format_members(cls, game_version):
@@ -308,9 +289,6 @@ class TerrainBorder(GenieStructure):
 
 
 class TileSize(GenieStructure):
-    name_struct        = "tile_size"
-    name_struct_file   = "terrain"
-    struct_description = "size definition of one terrain tile."
 
     @classmethod
     def get_data_format_members(cls, game_version):

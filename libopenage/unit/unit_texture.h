@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "../coord/phys.h"
-#include "../gamedata/graphic.gen.h"
+#include "../gamedata/graphic_dummy.h"
 
 namespace openage {
 

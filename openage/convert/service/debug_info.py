@@ -178,7 +178,6 @@ def debug_gamedata_format(debugdir, loglevel, game_version):
             continue
 
         members = struct.get_data_format_members(game_version)
-        logtext += f"struct name: {struct.name_struct}\n"
         logtext += f"total member count: {len(members)}\n"
 
         max_name_width = 1

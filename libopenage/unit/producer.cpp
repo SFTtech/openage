@@ -1,10 +1,10 @@
-// Copyright 2014-2020 the openage authors. See copying.md for legal info.
+// Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 #include <initializer_list>
 
 #include "../engine.h"
 #include "../log/log.h"
-#include "../gamedata/unit.gen.h"
+#include "../gamedata/unit_dummy.h"
 #include "../terrain/terrain.h"
 #include "../terrain/terrain_object.h"
 #include "../terrain/terrain_outline.h"

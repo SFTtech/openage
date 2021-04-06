@@ -1,19 +1,14 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,too-many-function-args
 
 from collections import defaultdict
 
-from ...deprecated import struct_definition
 from ...entity_object.conversion.genie_structure import GenieStructure
 from ...entity_object.export import data_definition
 
 
 class StringResource(GenieStructure):
-    name_struct = "string_resource"
-    name_struct_file = "string_resource"
-    struct_description = "string id/language to text mapping,"\
-                         " extracted from language.dll file."
 
     def __init__(self):
         super().__init__()
@@ -46,10 +41,6 @@ class StringResource(GenieStructure):
 
         data = sorted(data, key=lambda x: x["id"])
         return [data_definition.DataDefinition(self, data, filename)]
-
-    @classmethod
-    def structs(cls):
-        return [struct_definition.StructDefinition(cls)]
 
     @classmethod
     def get_data_format_members(cls, game_version):

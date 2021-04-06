@@ -8,7 +8,7 @@
 
 #include "console/console.h"
 #include "engine.h"
-#include "gamedata/color.gen.h"
+#include "gamedata/color_dummy.h"
 #include "gamestate/old/game_main.h"
 #include "gamestate/old/game_spec.h"
 #include "input/input_manager.h"

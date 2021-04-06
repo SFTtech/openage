@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,7 +7,7 @@
 #include <algorithm>
 
 #include "../coord/tile.h"
-#include "../gamedata/unit.gen.h"
+#include "../gamedata/unit_dummy.h"
 #include "../terrain/terrain_object.h"
 #include "../gamestate/old/resource.h"
 #include "unit_container.h"

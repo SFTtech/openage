@@ -1,8 +1,8 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "../gamedata/color.gen.h"
+#include "../gamedata/color_dummy.h"
 
 namespace openage {
 namespace util {

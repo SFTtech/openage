@@ -1,11 +1,11 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include "../types.h"
 #include "../../job/job.h"
-#include "../../gamedata/gamedata.gen.h"
-#include "../../gamedata/graphic.gen.h"
+#include "../../gamedata/gamedata_dummy.h"
+#include "../../gamedata/graphic_dummy.h"
 #include "../../terrain/terrain.h"
 #include "../../unit/unit_texture.h"
 #include "../../util/csv.h"
