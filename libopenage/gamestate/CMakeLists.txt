@@ -8,5 +8,7 @@ add_sources(libopenage
 	universe.cpp
 )
 
+add_subdirectory(component/)
+
 # TODO: remove once migration is done.
 add_subdirectory(old/)
