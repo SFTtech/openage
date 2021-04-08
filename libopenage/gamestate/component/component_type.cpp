@@ -4,4 +4,4 @@
 namespace openage::gamestate::component {
 
 
-} // openage::gamestate::component
+} // namespace openage::gamestate::component
