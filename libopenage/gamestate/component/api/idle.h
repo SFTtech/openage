@@ -2,21 +2,11 @@
 
 #pragma once
 
+#include "../api_component.h"
 
 namespace openage::gamestate::component {
 
-/**
- * Types of components.
- */
-enum class component_t
-{
-	POSITION,
-	COMMANDQUEUE,
-	OWNERSHIP,
-	IDLE,
-	TURN,
-	MOVE,
-	LIVE
+class Idle : APIComponent {
 };
 
 } // namespace openage::gamestate::component

@@ -2,21 +2,11 @@
 
 #pragma once
 
+#include "../internal_component.h"
 
 namespace openage::gamestate::component {
 
-/**
- * Types of components.
- */
-enum class component_t
-{
-	POSITION,
-	COMMANDQUEUE,
-	OWNERSHIP,
-	IDLE,
-	TURN,
-	MOVE,
-	LIVE
+class Position : InternalComponent {
 };
 
 } // namespace openage::gamestate::component

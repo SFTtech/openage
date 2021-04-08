@@ -11,14 +11,12 @@ namespace openage::gamestate::component {
  */
 class Component {
 public:
-
-    /**
+	/**
      * Get the component type of the component.
      *
      * @return Component type of the component.
      */
-    virtual const component_t get_component_type() const;
-
+	virtual const component_t get_component_type() const;
 };
 
-} // openage::gamestate::component
+} // namespace openage::gamestate::component
