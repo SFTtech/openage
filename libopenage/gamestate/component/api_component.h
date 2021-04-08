@@ -4,8 +4,8 @@
 
 #include <nyan/nyan.h>
 
-#include "base_component.h"
 #include "../../curve/discrete.h"
+#include "base_component.h"
 
 namespace openage::gamestate::component {
 
@@ -15,20 +15,18 @@ namespace openage::gamestate::component {
  */
 class APIComponent : Component {
 public:
+	APIComponent(nyan::Object &ability,
+	             const bool enabled);
 
-    APIComponent(nyan::Object &ability,
-                 const bool enabled);
-
-    /**
+	/**
      * nyan object holding the data for the component.
      */
-    nyan::Object ability;
+	nyan::Object ability;
 
-    /**
+	/**
      * Determines if the component is available to its game entity.
      */
-    curve::Discrete<bool> enabled;
-
+	curve::Discrete<bool> enabled;
 };
 
-} // openage::gamestate::component
+} // namespace openage::gamestate::component

@@ -2,7 +2,7 @@
 
 #pragma once
 
-# include "base_component.h"
+#include "base_component.h"
 
 namespace openage::gamestate::component {
 
@@ -11,8 +11,6 @@ namespace openage::gamestate::component {
  * a game entity, without having a nyan object representation.
  */
 class InternalComponent : Component {
-
-
 };
 
-} // openage::gamestate::component
+} // namespace openage::gamestate::component
