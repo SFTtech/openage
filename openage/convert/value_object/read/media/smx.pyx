@@ -482,22 +482,22 @@ cdef class SMXMainLayer8to5(SMXLayer):
 
         # Position in the compression chunk.
         cdef bool odd = chunk_pos
-        cdef int px_dpos # For loop iterator
+        cdef int px_dpos = 0 # For loop iterator
 
         # is the end of the current row reached?
         cdef bool eor = False
 
-        cdef uint8_t cmd
-        cdef uint8_t lower_crumb
-        cdef int pixel_count
+        cdef uint8_t cmd = 0
+        cdef uint8_t lower_crumb = 0
+        cdef int pixel_count = 0
         cdef vector[uint8_t] pixel_data
         pixel_data.reserve(4)
 
         # Pixel data temporary values that need further decompression
-        cdef uint8_t pixel_data_odd_0
-        cdef uint8_t pixel_data_odd_1
-        cdef uint8_t pixel_data_odd_2
-        cdef uint8_t pixel_data_odd_3
+        cdef uint8_t pixel_data_odd_0 = 0
+        cdef uint8_t pixel_data_odd_1 = 0
+        cdef uint8_t pixel_data_odd_2 = 0
+        cdef uint8_t pixel_data_odd_3 = 0
 
         # Mask for even indices
         # cdef uint8_t pixel_mask_even_0 = 0xFF
@@ -696,11 +696,11 @@ cdef class SMXMainLayer4plus1(SMXLayer):
         # is the end of the current row reached?
         cdef bool eor = False
 
-        cdef uint8_t cmd
-        cdef uint8_t lower_crumb
-        cdef int pixel_count
-        cdef uint8_t palette_section_block
-        cdef uint8_t palette_section
+        cdef uint8_t cmd = 0
+        cdef uint8_t lower_crumb = 0
+        cdef int pixel_count = 0
+        cdef uint8_t palette_section_block = 0
+        cdef uint8_t palette_section = 0
 
         # work through commands till end of row.
         while not eor:
@@ -831,10 +831,10 @@ cdef class SMXShadowLayer(SMXLayer):
         # is the end of the current row reached?
         cdef bool eor = False
 
-        cdef uint8_t cmd
-        cdef uint8_t nextbyte
-        cdef uint8_t lower_crumb
-        cdef int pixel_count
+        cdef uint8_t cmd = 0
+        cdef uint8_t nextbyte = 0
+        cdef uint8_t lower_crumb = 0
+        cdef int pixel_count = 0
 
         # work through commands till end of row.
         while not eor:
@@ -934,10 +934,10 @@ cdef class SMXOutlineLayer(SMXLayer):
         # is the end of the current row reached?
         cdef bool eor = False
 
-        cdef uint8_t cmd
-        cdef uint8_t nextbyte
-        cdef uint8_t lower_crumb
-        cdef int pixel_count
+        cdef uint8_t cmd = 0
+        cdef uint8_t nextbyte = 0
+        cdef uint8_t lower_crumb = 0
+        cdef int pixel_count = 0
 
         # work through commands till end of row.
         while not eor:
@@ -1019,21 +1019,21 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
     cdef uint8_t[:, ::1] m_lookup = palette
 
-    cdef uint8_t r
-    cdef uint8_t g
-    cdef uint8_t b
-    cdef uint8_t alpha
+    cdef uint8_t r = 0
+    cdef uint8_t g = 0
+    cdef uint8_t b = 0
+    cdef uint8_t alpha = 0
 
     cdef vector[pixel] current_row
     cdef pixel px
     cdef pixel_type px_type
-    cdef uint8_t px_index
-    cdef uint8_t px_palette
+    cdef uint8_t px_index = 0
+    cdef uint8_t px_palette = 0
 
-    cdef uint16_t palette_section
+    cdef uint16_t palette_section = 0
 
-    cdef size_t x
-    cdef size_t y
+    cdef size_t x = 0
+    cdef size_t y = 0
 
     for y in range(height):
 
@@ -1111,16 +1111,16 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
-    cdef uint8_t r
-    cdef uint8_t g
-    cdef uint8_t b
-    cdef uint8_t alpha
+    cdef uint8_t r = 0
+    cdef uint8_t g = 0
+    cdef uint8_t b = 0
+    cdef uint8_t alpha = 0
 
     cdef vector[pixel] current_row
     cdef pixel px
 
-    cdef size_t x
-    cdef size_t y
+    cdef size_t x = 0
+    cdef size_t y = 0
 
     for y in range(height):
 
