@@ -136,6 +136,7 @@ _the openage authors_ are:
 | David Heidelberg            | okias                       | david à ixit dawt cz                              |
 | Giacomo Frascarelli         | 0ro8lu                      | giacomo dawt frascarelli1 à gmail dawt com        |
 | Antonio M. R. Cunha         | Grubben                     | antoniomsprc à gmail dawt com                     |
+| Jens Nyman                  | nymanjens                   | nymanjens dawt nj à gmail dawt com                |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
