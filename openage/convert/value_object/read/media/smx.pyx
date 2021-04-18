@@ -569,7 +569,7 @@ cdef class SMXMainLayer8to5(SMXLayer):
                         pixel_data.push_back(((pixel_data_odd_2 >> 2) | (pixel_data_odd_3 << 6)) & 0xF0)
 
                         # Damage mask 2. Described in byte[4] in bits 0-5.
-                        pixel_data.push_back((pixel_data_odd_3 >> 2) & 0x1F)
+                        pixel_data.push_back((pixel_data_odd_3 >> 2) & 0x3F)
 
                         row_data.push_back(pixel(color_standard,
                                                  pixel_data[0],
@@ -626,7 +626,7 @@ cdef class SMXMainLayer8to5(SMXLayer):
                         pixel_data.push_back(((pixel_data_odd_2 >> 2) | (pixel_data_odd_3 << 6)) & 0xF0)
 
                         # Damage modifier 2. Described in byte[4] in bits 0-5.
-                        pixel_data.push_back((pixel_data_odd_3 >> 2) & 0x1F)
+                        pixel_data.push_back((pixel_data_odd_3 >> 2) & 0x3F)
 
                         row_data.push_back(pixel(color_player,
                                                  pixel_data[0],
