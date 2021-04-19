@@ -7,16 +7,18 @@
 namespace openage::gamestate::component {
 
 /**
- * Superclass for components.
+ * Interface for components.
  */
 class Component {
 public:
+	virtual ~Component() = default;
+
 	/**
      * Get the component type of the component.
      *
      * @return Component type of the component.
      */
-	virtual const component_t get_component_type() const;
+	virtual component_t get_component_type() const = 0;
 };
 
 } // namespace openage::gamestate::component
