@@ -7,6 +7,7 @@
 namespace openage::gamestate::component {
 
 class Turn : APIComponent {
+	component_t get_component_type() const override;
 };
 
 } // namespace openage::gamestate::component
