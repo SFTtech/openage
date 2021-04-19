@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "../../curve/discrete.h"
+#include "../../../curve/discrete.h"
 #include "../internal_component.h"
 
 namespace openage::gamestate::component {
@@ -13,6 +13,8 @@ public:
      * ID of a game entity's owner at a given time.
      */
 	curve::Discrete<uint64_t> owner;
+
+	component_t get_component_type() const override;
 };
 
 } // namespace openage::gamestate::component
