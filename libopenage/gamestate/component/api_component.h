@@ -15,7 +15,9 @@ namespace openage::gamestate::component {
  */
 class APIComponent : Component {
 public:
-	APIComponent(nyan::Object &ability,
+	APIComponent(const std::shared_ptr<event::Loop> &loop,
+	             nyan::Object &ability,
+	             const time_t &creation_time,
 	             const bool enabled);
 
 	/**

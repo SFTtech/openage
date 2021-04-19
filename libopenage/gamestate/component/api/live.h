@@ -4,20 +4,25 @@
 
 #include <nyan/nyan.h>
 
-#include "../../curve/continuous.h"
-#include "../../curve/map.h"
+#include "../../../curve/continuous.h"
+#include "../../../curve/map.h"
 #include "../api_component.h"
 
 namespace openage::gamestate::component {
-
 class Live : APIComponent {
-	curve::UnorderedMap<nyan::Object,
-	                    std::unique_ptr<curve::Continuous<uint64_t>>>
+	/**
+	 * Map of attribute values by attribute type.
+	 */
+	curve::UnorderedMap<uint64_t,
+	                    std::unique_ptr<curve::Discrete<uint64_t>>>
 		attribute_values;
 
-	Live(nyan::Object &ability,
-	     const bool enabled,
-	     const std::shared_ptr<event::Loop> &loop);
+	Live(const std::shared_ptr<event::Loop> &loop,
+	     nyan::Object &ability,
+	     const time_t &creation_time,
+	     const bool enabled);
+
+	component_t get_component_type() const override;
 };
 
 } // namespace openage::gamestate::component
