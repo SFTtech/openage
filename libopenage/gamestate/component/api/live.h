@@ -13,12 +13,13 @@ class Live : APIComponent {
 	/**
 	 * Map of attribute values by attribute type.
 	 */
-	curve::UnorderedMap<uint64_t,
-	                    std::unique_ptr<curve::Discrete<uint64_t>>>
+	curve::UnorderedMap<nyan::fqon_t,
+	                    std::shared_ptr<curve::Discrete<uint64_t>>>
 		attribute_values;
 
 	Live(const std::shared_ptr<event::Loop> &loop,
 	     nyan::Object &ability,
+	     nyan::View &view,
 	     const time_t &creation_time,
 	     const bool enabled);
 
