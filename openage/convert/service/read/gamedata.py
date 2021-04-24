@@ -17,7 +17,7 @@ def get_gamespec(srcdir, game_version, dont_pickle):
     """
     Reads empires.dat file.
     """
-    if game_version[0] .game_id in ("ROR", "AOC", "AOE2DE"):
+    if game_version[0] .game_id in ("ROR", "AOC", "HDEDITION", "AOE2DE"):
         filepath = srcdir.joinpath(game_version[0].media_paths[MediaType.DATFILE][0])
 
     elif game_version[0] .game_id == "SWGB":

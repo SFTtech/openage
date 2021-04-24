@@ -1,4 +1,4 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 """
 Module for reading plaintext-based language files.
@@ -28,7 +28,8 @@ def get_string_resources(args):
             stringres.fill_from(pefile.resources().strings)
 
         elif game_edition.game_id == "HDEDITION":
-            read_age2_hd_3x_stringresources(stringres, srcdir)
+            strings = read_hd_language_file(srcdir, language_file)
+            stringres.fill_from(strings)
 
         elif game_edition.game_id == "AOE2DE":
             strings = read_de2_language_file(srcdir, language_file)
@@ -73,7 +74,7 @@ def read_age2_hd_fe_stringresources(stringres, path):
                             "key-value-strings-utf8.txt"]
 
             with path[langfilename].open('rb') as langfile:
-                stringres.fill_from(read_hd_language_file(langfile, lang))
+                stringres.fill_from(read_hd_language_file_old(langfile, lang))
 
             count += 1
 
@@ -123,20 +124,56 @@ def read_age2_hd_3x_stringresources(stringres, srcdir):
                 with lang_path[basename].open('rb') as langfile:
                     # No utf-8 :(
                     stringres.fill_from(
-                        read_hd_language_file(
+                        read_hd_language_file_old(
                             langfile, lang, enc='iso-8859-1'))
                 count += 1
 
     return count
 
 
-def read_hd_language_file(fileobj, langcode, enc='utf-8'):
+def read_hd_language_file_old(fileobj, langcode, enc='utf-8'):
     """
     Takes a file object, and the file's language code.
     """
 
     dbg("parse HD Language file %s", langcode)
     strings = {}
+
+    for line in fileobj.read().decode(enc).split('\n'):
+        line = line.strip()
+
+        # skip comments & empty lines
+        if not line or line.startswith('//'):
+            continue
+
+        string_id, string = line.split(None, 1)
+
+        # strings that were added in the HD edition release have
+        # UPPERCASE_STRINGS as names, instead of the numeric ID stuff
+        # of AoC.
+        strings[string_id] = string
+
+    fileobj.close()
+
+    lang = LANGCODES_HD.get(langcode, langcode)
+
+    return {lang: strings}
+
+
+def read_hd_language_file(srcdir, language_file, enc='utf-8'):
+    """
+    HD Edition stores language .txt files in the resources/ folder.
+    Specific language strings are in resources/$LANG/strings/key-value/*.txt.
+
+    The data is stored in the `stringres` storage.
+    """
+    # Langcode is folder name
+    langcode = language_file.split("/")[1]
+
+    dbg("parse HD Language file %s", langcode)
+    strings = {}
+
+    fileobj = srcdir[language_file].open('rb')
 
     for line in fileobj.read().decode(enc).split('\n'):
         line = line.strip()
@@ -183,7 +220,7 @@ def read_de2_language_file(srcdir, language_file):
 
         string_id, string = line.split(None, 1)
 
-        # strings that were added in the HD edition release have
+        # strings that were added in the DE2 edition release have
         # UPPERCASE_STRINGS as names, instead of the numeric ID stuff
         # of AoC.
         strings[string_id] = string

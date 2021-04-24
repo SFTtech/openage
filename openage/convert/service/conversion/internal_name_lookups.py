@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 
 """
 Provides functions that retrieve name lookup dicts for internal nyan object
@@ -28,6 +28,14 @@ def get_armor_class_lookups(game_version):
 
     if game_edition.game_id == "AOC":
         return aoc_internal.ARMOR_CLASS_LOOKUPS
+
+    if game_edition.game_id == "HDEDITION":
+        armor_lookup_dict = {}
+        armor_lookup_dict.update(aoc_internal.ARMOR_CLASS_LOOKUPS)
+
+        # TODO: Include expansion lookups
+
+        return armor_lookup_dict
 
     if game_edition.game_id == "AOE2DE":
         armor_lookup_dict = {}
@@ -61,6 +69,14 @@ def get_civ_lookups(game_version):
 
     if game_edition.game_id == "AOC":
         return aoc_internal.CIV_GROUP_LOOKUPS
+
+    if game_edition.game_id == "HDEDITION":
+        civ_lookup_dict = {}
+        civ_lookup_dict.update(aoc_internal.CIV_GROUP_LOOKUPS)
+
+        # TODO: Include expansion lookups
+
+        return civ_lookup_dict
 
     if game_edition.game_id == "AOE2DE":
         civ_lookup_dict = {}
@@ -153,6 +169,16 @@ def get_entity_lookups(game_version):
 
         return entity_lookup_dict
 
+    if game_edition.game_id == "HDEDITION":
+        entity_lookup_dict.update(aoc_internal.UNIT_LINE_LOOKUPS)
+        entity_lookup_dict.update(aoc_internal.BUILDING_LINE_LOOKUPS)
+        entity_lookup_dict.update(aoc_internal.AMBIENT_GROUP_LOOKUPS)
+        entity_lookup_dict.update(aoc_internal.VARIANT_GROUP_LOOKUPS)
+
+        # TODO: Include expansion lookups
+
+        return entity_lookup_dict
+
     if game_edition.game_id == "AOE2DE":
         entity_lookup_dict.update(aoc_internal.UNIT_LINE_LOOKUPS)
         entity_lookup_dict.update(aoc_internal.BUILDING_LINE_LOOKUPS)
@@ -232,6 +258,14 @@ def get_graphic_set_lookups(game_version):
     if game_edition.game_id == "AOC":
         return aoc_internal.GRAPHICS_SET_LOOKUPS
 
+    if game_edition.game_id == "HDEDITION":
+        graphic_set_lookup_dict = {}
+        graphic_set_lookup_dict.update(aoc_internal.GRAPHICS_SET_LOOKUPS)
+
+        # TODO: Include expansion lookups
+
+        return graphic_set_lookup_dict
+
     if game_edition.game_id == "AOE2DE":
         graphic_set_lookup_dict = {}
         graphic_set_lookup_dict.update(aoc_internal.GRAPHICS_SET_LOOKUPS)
@@ -288,6 +322,14 @@ def get_tech_lookups(game_version):
     if game_edition.game_id == "AOC":
         return aoc_internal.TECH_GROUP_LOOKUPS
 
+    if game_edition.game_id == "HDEDITION":
+        tech_lookup_dict = {}
+        tech_lookup_dict.update(aoc_internal.TECH_GROUP_LOOKUPS)
+
+        # TODO: Include expansion lookups
+
+        return tech_lookup_dict
+
     if game_edition.game_id == "AOE2DE":
         tech_lookup_dict = {}
         tech_lookup_dict.update(aoc_internal.TECH_GROUP_LOOKUPS)
@@ -321,6 +363,14 @@ def get_terrain_lookups(game_version):
     if game_edition.game_id == "AOC":
         return aoc_internal.TERRAIN_GROUP_LOOKUPS
 
+    if game_edition.game_id == "HDEDITION":
+        terrain_lookup_dict = {}
+        terrain_lookup_dict.update(aoc_internal.TERRAIN_GROUP_LOOKUPS)
+
+        # TODO: Include expansion lookups
+
+        return terrain_lookup_dict
+
     if game_edition.game_id == "AOE2DE":
         terrain_lookup_dict = {}
         terrain_lookup_dict.update(aoc_internal.TERRAIN_GROUP_LOOKUPS)
@@ -353,6 +403,14 @@ def get_terrain_type_lookups(game_version):
 
     if game_edition.game_id == "AOC":
         return aoc_internal.TERRAIN_TYPE_LOOKUPS
+
+    if game_edition.game_id == "HDEDITION":
+        terrain_type_lookup_dict = {}
+        terrain_type_lookup_dict.update(aoc_internal.TERRAIN_TYPE_LOOKUPS)
+
+        # TODO: Include expansion lookups
+
+        return terrain_type_lookup_dict
 
     if game_edition.game_id == "AOE2DE":
         terrain_type_lookup_dict = {}

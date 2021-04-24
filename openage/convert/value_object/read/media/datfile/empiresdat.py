@@ -121,16 +121,24 @@ class EmpiresDat(GenieStructure):
                 length=96,
             )))
         elif game_version[0].game_id == "HDEDITION":
-            data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
-                ref_type=terrain.Terrain,
-                length=100,
-            )))
+            if len(game_version[1]) > 0:
+                data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
+                    ref_type=terrain.Terrain,
+                    length=100,
+                )))
+
+            else:
+                data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
+                    ref_type=terrain.Terrain,
+                    length=42,
+                )))
+
         elif game_version[0].game_id == "AOC":
             data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=42,
             )))
-        else:
+        else:  # game_version[0].game_id == "ROR"
             data_format.append((READ_GEN, "terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=terrain.Terrain,
                 length=32,

@@ -86,7 +86,20 @@ expansions = [ ]
   palettes = [ "resources/_common/drs/interface/" ]
   sounds = [ "resources/_common/drs/sounds/" ]
   interface = [ "resources/_common/drs/interface/" ]
-  terrain = [ "resources/_common/drs/terrain/" ]
+  language = [
+  "resources/br/strings/key-value/key-value-strings-utf8.txt",
+  "resources/de/strings/key-value/key-value-strings-utf8.txt",
+  "resources/en/strings/key-value/key-value-strings-utf8.txt",
+  "resources/es/strings/key-value/key-value-strings-utf8.txt",
+  "resources/fr/strings/key-value/key-value-strings-utf8.txt",
+  "resources/it/strings/key-value/key-value-strings-utf8.txt",
+  "resources/jp/strings/key-value/key-value-strings-utf8.txt",
+  "resources/ko/strings/key-value/key-value-strings-utf8.txt",
+  "resources/nl/strings/key-value/key-value-strings-utf8.txt",
+  "resources/ru/strings/key-value/key-value-strings-utf8.txt",
+  "resources/zh/strings/key-value/key-value-strings-utf8.txt"
+  ]
+  terrain = [ "resources/_common/terrain/textures/" ]
 
 [AOE2DE]
 name = "Age of Empires 2: Definitive Edition"
@@ -117,7 +130,7 @@ expansions = [ ]
   "resources/tw/strings/key-value/key-value-strings-utf8.txt",
   "resources/vi/strings/key-value/key-value-strings-utf8.txt",
   "resources/zh/strings/key-value/key-value-strings-utf8.txt"
-]
+  ]
   palettes = [ "resources/_common/palettes/" ]
   sounds = [ "wwise/" ]
   interface = [ "resources/_common/drs/interface/" ]
