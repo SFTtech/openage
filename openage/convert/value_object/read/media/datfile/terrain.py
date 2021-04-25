@@ -218,12 +218,21 @@ class Terrain(GenieStructure):
                 ))
             )
         elif game_version[0].game_id == "HDEDITION":
-            data_format.append(
-                (READ_GEN, "borders", StorageType.ARRAY_INT, ArrayMember(
-                    "int16_t",
-                    100
-                ))
-            )
+            if len(game_version[1]) > 0:
+                data_format.append(
+                    (READ_GEN, "borders", StorageType.ARRAY_INT, ArrayMember(
+                        "int16_t",
+                        100
+                    ))
+                )
+            else:
+                data_format.append(
+                    (READ_GEN, "borders", StorageType.ARRAY_INT, ArrayMember(
+                        "int16_t",
+                        42
+                    ))
+                )
+
         elif game_version[0].game_id == "AOC":
             data_format.append(
                 (READ_GEN, "borders", StorageType.ARRAY_INT, ArrayMember(
@@ -231,7 +240,7 @@ class Terrain(GenieStructure):
                     42
                 ))
             )
-        else:
+        else:  # game_version[0].game_id == "ROR"
             data_format.append(
                 (READ_GEN, "borders", StorageType.ARRAY_INT, ArrayMember(
                     "int16_t",

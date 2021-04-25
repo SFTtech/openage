@@ -123,7 +123,7 @@ def get_converter(game_version):
         from ..processor.conversion.ror.processor import RoRProcessor
         return RoRProcessor
 
-    if game_edition.game_id == "AOC":
+    if game_edition.game_id in ("AOC", "HDEDITION"):
         from ..processor.conversion.aoc.processor import AoCProcessor
         return AoCProcessor
 
