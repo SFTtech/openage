@@ -1,5 +1,5 @@
 // Copyright 2019-2019 the openage authors. See copying.md for legal info.
-
+#define SDL_MAIN_HANDLED
 #include "gamestate.h"
 
 #include <sstream>
