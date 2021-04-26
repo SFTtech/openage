@@ -6,9 +6,10 @@
 Holds the game entry point for openage.
 """
 
+import platform
 from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
 from ..log import err, info
-import platform
+
 
 
 def init_subparser(cli):
