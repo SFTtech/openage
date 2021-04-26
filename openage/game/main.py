@@ -11,7 +11,6 @@ from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
 from ..log import err, info
 
 
-
 def init_subparser(cli):
     """ Initializes the parser for game-specific args. """
     cli.set_defaults(entrypoint=main)
