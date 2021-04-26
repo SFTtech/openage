@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 """
 Initial version detection based on user input.
 
@@ -14,30 +14,34 @@ def get_game_version(srcdir, avail_game_eds, avail_game_exps):
     Mount the input folders for conversion.
     """
     game_version = iterate_game_versions(srcdir, avail_game_eds, avail_game_exps)
-    if not game_version:
+
+    no_support = False
+    if not game_version[0]:
         warn("No valid game version(s) could not be detected in %s", srcdir)
 
-    # true if no supported version was found
-    no_support = False
-
-    broken_edition = game_version[0].support == Support.breaks
-
-    # a broken edition is installed
-    if broken_edition:
-        warn("You have installed an incompatible game edition:")
-        warn(" * \x1b[31;1m%s\x1b[m", game_version[0])
+        # no supported version was found
         no_support = True
 
-    broken_expansions = []
-    for expansion in game_version[1]:
-        if expansion.support == Support.breaks:
-            broken_expansions.append(expansion)
+    else:
+        # Check for broken edition
+        broken_edition = game_version[0].support == Support.breaks
 
-    # a broken expansion is installed
-    if broken_expansions:
-        warn("You have installed incompatible game expansions:")
-        for expansion in broken_expansions:
-            warn(" * \x1b[31;1m%s\x1b[m", expansion)
+        # a broken edition is installed
+        if broken_edition:
+            warn("You have installed an incompatible game edition:")
+            warn(" * \x1b[31;1m%s\x1b[m", game_version[0])
+            no_support = True
+
+        broken_expansions = []
+        for expansion in game_version[1]:
+            if expansion.support == Support.breaks:
+                broken_expansions.append(expansion)
+
+        # a broken expansion is installed
+        if broken_expansions:
+            warn("You have installed incompatible game expansions:")
+            for expansion in broken_expansions:
+                warn(" * \x1b[31;1m%s\x1b[m", expansion)
 
     # inform about supported versions
     if no_support:
@@ -48,10 +52,10 @@ def get_game_version(srcdir, avail_game_eds, avail_game_exps):
 
         return (False, set())
 
-    info("Game edition detected:")
+    info("Compatible game edition detected:")
     info(" * %s", game_version[0].edition_name)
     if game_version[1]:
-        info("Expansions detected:")
+        info("Compatible expansions detected:")
         for expansion in game_version[1]:
             info(" * %s", expansion.expansion_name)
 
