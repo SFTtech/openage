@@ -6,6 +6,7 @@ from .....entity_object.conversion.genie_structure import GenieStructure
 from ....read.member_access import READ, READ_GEN, SKIP
 from ....read.read_members import SubdataMember, EnumLookupMember
 from ....read.value_members import MemberTypes as StorageType
+from .lookup_dicts import GRAPHICS_LAYER
 
 
 class GraphicDelta(GenieStructure):
@@ -139,26 +140,7 @@ class Graphic(GenieStructure):
             (READ_GEN, "layer", StorageType.ID_MEMBER, EnumLookupMember(       # originally 40 layers, higher -> drawn on top
                 raw_type    = "int8_t",  # -> same layer -> order according to map position.
                 type_name   = "graphics_layer",
-                lookup_dict = {
-                    0: "TERRAIN",      # cliff
-                    1: "GRASS_PATCH",
-                    2: "DE2_CLIFF",
-                    3: "AOE1_DIRT",
-                    4: "DE1_DESTRUCTION",
-                    5: "SHADOW",       # farm fields as well
-                    6: "RUBBLE",
-                    7: "PLANT",
-                    9: "SWGB_EFFECT",
-                    10: "UNIT_LOW",    # constructions, dead units, tree stumps, flowers, paths
-                    11: "FISH",
-                    18: "SWGB_LAYER1",
-                    19: "CRATER",      # rugs
-                    20: "UNIT",        # buildings, units, damage flames, animations (mill)
-                    21: "BLACKSMITH",  # blacksmith smoke
-                    22: "BIRD",        # hawk
-                    30: "PROJECTILE",  # and explosions
-                    31: "SWGB_FLYING",
-                }
+                lookup_dict = GRAPHICS_LAYER
             )),
             (READ_GEN, "player_color_force_id", StorageType.ID_MEMBER, "int8_t"),    # force given player color
             (READ_GEN, "adapt_color", StorageType.INT_MEMBER, "int8_t"),             # playercolor can be changed on sight (like sheep)
