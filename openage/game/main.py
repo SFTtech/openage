@@ -8,6 +8,7 @@ Holds the game entry point for openage.
 
 from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
 from ..log import err, info
+import platform
 
 
 def init_subparser(cli):
@@ -32,7 +33,10 @@ def main(args, error):
 
     # we have to import stuff inside the function
     # as it depends on generated/compiled code
-    from .main_cpp import run_game
+    if platform.system() == "Windows":
+        from main_cpp import run_game
+    else:
+        from .main_cpp import run_game
     from .. import config
     from ..assets import get_asset_path
     from ..convert.main import conversion_required, convert_assets
