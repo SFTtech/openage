@@ -1,5 +1,6 @@
 // Copyright 2018-2019 the openage authors. See copying.md for legal info.
 
+#define SDL_MAIN_HANDLED
 #include <cstdlib>
 #include <epoxy/gl.h>
 #include <functional>
