@@ -4,9 +4,11 @@
 Module for reading plaintext-based language files.
 """
 
+import re
+
 from ....log import dbg
 from ...entity_object.conversion.stringresource import StringResource
-from ...value_object.read.media.langcodes import LANGCODES_DE2, LANGCODES_HD
+from ...value_object.read.media.langcodes import LANGCODES_DE1, LANGCODES_DE2, LANGCODES_HD
 from ...value_object.read.media.pefile import PEFile
 from ...value_object.read.media_types import MediaType
 
@@ -31,13 +33,17 @@ def get_string_resources(args):
             strings = read_hd_language_file(srcdir, language_file)
             stringres.fill_from(strings)
 
+        elif game_edition.game_id == "AOE1DE":
+            strings = read_de1_language_file(srcdir, language_file)
+            stringres.fill_from(strings)
+
         elif game_edition.game_id == "AOE2DE":
             strings = read_de2_language_file(srcdir, language_file)
             stringres.fill_from(strings)
 
         else:
             raise Exception("No service found for parsing language files of version %s"
-                            % game_edition.name)
+                            % game_edition.game_id)
 
         # TODO: Other game versions
 
@@ -192,6 +198,43 @@ def read_hd_language_file(srcdir, language_file, enc='utf-8'):
     fileobj.close()
 
     lang = LANGCODES_HD.get(langcode, langcode)
+
+    return {lang: strings}
+
+
+def read_de1_language_file(srcdir, language_file):
+    """
+    Definitve Edition stores language .txt files in the Localization folder.
+    Specific language strings are in Data/Localization/$LANG/strings.txt.
+
+    The data is stored in the `stringres` storage.
+    """
+    # Langcode is folder name
+    langcode = language_file.split("/")[2]
+
+    dbg("parse DE1 Language file %s", langcode)
+    strings = {}
+
+    fileobj = srcdir[language_file].open('rb')
+
+    for line in fileobj.read().decode('utf-8').split('\n'):
+        line = line.strip()
+
+        # skip comments & empty lines
+        if not line or line.startswith('//'):
+            continue
+
+        # Brilliant idea to split by command AND space!!
+        string_id, string = re.split(",|\s", line, maxsplit=1)
+
+        # strings that were added in the DE2 edition release have
+        # UPPERCASE_STRINGS as names, instead of the numeric ID stuff
+        # of AoC.
+        strings[string_id] = string
+
+    fileobj.close()
+
+    lang = LANGCODES_DE1.get(langcode, langcode)
 
     return {lang: strings}
 
