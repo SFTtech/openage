@@ -406,7 +406,7 @@ cdef class SLPFrame:
             if self.info.properties > 0xFFFFFF:
                 # DE1 effects palette
                 return 54
-            
+
             return self.info.properties >> 16
 
         else:
@@ -1375,18 +1375,18 @@ cdef class SLPFrame32:
                     dpos += 1
                     nextbyte = data_raw[dpos]
                     pixel_count = nextbyte
-                    
+
                     for _ in range(pixel_count):
                         for _ in range(4):
                             dpos += 1
                             pixel_data.push_back(data_raw[dpos])
-    
+
                         row_data.push_back(pixel32(color_standard,
                                                    pixel_data[2],
                                                    pixel_data[1],
                                                    pixel_data[0],
                                                    255 - pixel_data[3]))
-    
+
                         pixel_data.clear()
 
                 elif higher_nibble == 0xA0:

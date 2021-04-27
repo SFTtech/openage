@@ -5,18 +5,18 @@ Convert data from DE1 to openage formats.
 """
 
 
-from openage.convert.entity_object.conversion.aoc.genie_graphic import GenieGraphic
-from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-from openage.convert.processor.conversion.aoc.processor import AoCProcessor
-from openage.convert.processor.conversion.de1.media_subprocessor import DE1MediaSubprocessor
-from openage.convert.processor.conversion.ror.modpack_subprocessor import RoRModpackSubprocessor
-from openage.convert.processor.conversion.ror.nyan_subprocessor import RoRNyanSubprocessor
-from openage.convert.processor.conversion.ror.processor import RoRProcessor
-from openage.convert.service.debug_info import debug_converter_objects,\
-    debug_converter_object_groups
-from openage.convert.service.read.nyan_api_loader import load_api
-
 from .....log import info
+from ....entity_object.conversion.aoc.genie_graphic import GenieGraphic
+from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+from ....service.debug_info import debug_converter_objects,\
+    debug_converter_object_groups
+from ....service.read.nyan_api_loader import load_api
+from ..aoc.processor import AoCProcessor
+from ..ror.modpack_subprocessor import RoRModpackSubprocessor
+from ..ror.nyan_subprocessor import RoRNyanSubprocessor
+from ..ror.pregen_subprocessor import RoRPregenSubprocessor
+from ..ror.processor import RoRProcessor
+from .media_subprocessor import DE1MediaSubprocessor
 
 
 class DE1Processor:
@@ -49,7 +49,7 @@ class DE1Processor:
         debug_converter_objects(args.debugdir, args.debug_info, dataset)
 
         # Create the custom openage formats (nyan, sprite, terrain)
-        dataset = RoRProcessor._processor(gamespec, dataset)
+        dataset = cls._processor(gamespec, dataset)
         debug_converter_object_groups(args.debugdir, args.debug_info, dataset)
 
         # Create modpack definitions
@@ -88,6 +88,44 @@ class DE1Processor:
         AoCProcessor.extract_genie_terrains(gamespec, dataset)
 
         return dataset
+
+    @classmethod
+    def _processor(cls, gamespec, full_data_set):
+        """
+        Transfer structures used in Genie games to more openage-friendly
+        Python objects.
+
+        :param gamespec: Gamedata from empires.dat file.
+        :type gamespec: class: ...dataformat.value_members.ArrayMember
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+
+        info("Creating API-like objects...")
+
+        RoRProcessor.create_tech_groups(full_data_set)
+        RoRProcessor.create_entity_lines(gamespec, full_data_set)
+        RoRProcessor.create_ambient_groups(full_data_set)
+        RoRProcessor.create_variant_groups(full_data_set)
+        AoCProcessor.create_terrain_groups(full_data_set)
+        AoCProcessor.create_civ_groups(full_data_set)
+
+        info("Linking API-like objects...")
+
+        AoCProcessor.link_creatables(full_data_set)
+        AoCProcessor.link_researchables(full_data_set)
+        AoCProcessor.link_gatherers_to_dropsites(full_data_set)
+        RoRProcessor.link_garrison(full_data_set)
+        AoCProcessor.link_trade_posts(full_data_set)
+        RoRProcessor.link_repairables(full_data_set)
+
+        info("Generating auxiliary objects...")
+
+        RoRPregenSubprocessor.generate(full_data_set)
+
+        return full_data_set
 
     @classmethod
     def _post_processor(cls, full_data_set):

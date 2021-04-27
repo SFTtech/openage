@@ -114,7 +114,7 @@ class RoRProcessor:
         info("Creating API-like objects...")
 
         cls.create_tech_groups(full_data_set)
-        cls._create_entity_lines(gamespec, full_data_set)
+        cls.create_entity_lines(gamespec, full_data_set)
         cls.create_ambient_groups(full_data_set)
         cls.create_variant_groups(full_data_set)
         AoCProcessor.create_terrain_groups(full_data_set)
@@ -219,7 +219,7 @@ class RoRProcessor:
             full_data_set.genie_sounds.update({sound.get_id(): sound})
 
     @staticmethod
-    def _create_entity_lines(gamespec, full_data_set):
+    def create_entity_lines(gamespec, full_data_set):
         """
         Sort units/buildings into lines, based on information from techs and civs.
 
