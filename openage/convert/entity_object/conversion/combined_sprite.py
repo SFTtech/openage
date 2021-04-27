@@ -65,7 +65,7 @@ class CombinedSprite:
         graphics = [self.data.genie_graphics[self.head_sprite_id]]
         graphics.extend(self.data.genie_graphics[self.head_sprite_id].get_subgraphics())
 
-        # Pnly consider existing graphics
+        # Only consider existing graphics
         existing_graphics = []
         for graphic in graphics:
             if graphic.exists:

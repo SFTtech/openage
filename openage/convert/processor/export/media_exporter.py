@@ -206,7 +206,7 @@ class MediaExporter:
     @staticmethod
     def _export_interface(export_request, sourcedir, **kwargs):
         """
-        Convert and export a sound file.
+        Convert and export a sprite file.
         """
         # TODO: Implement
 
