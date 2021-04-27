@@ -92,8 +92,8 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
     __Note:__ The paths above should be added to the global system variables `PATH` and not to the user specific variables.
 
   - Now, to run the openage:
-    - Open a CMD window in `<openage directory>` and run `copypyd.cmd <your python site-packages directory>` (Usually something like `C:\Users\YourUsernameHere\AppData\Local\Programs\Python\<relevant python installation>\Lib\site-packages`)
-    - After it has successfully moved all the files, run `python -m openage game`
+    - Open a CMD window in `<openage directory>` and run `copypyd.cmd`
+    - After it has successfully copied all the files, run `python -m openage game`
     - Execute`<openage directory>\build\run.exe` every time after that and enjoy!
 
 ## Packaging
