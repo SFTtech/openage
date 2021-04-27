@@ -978,6 +978,19 @@ cdef class SLPShadowFrame(SLPFrame):
                 for _ in range(pixel_count):
                     row_data.push_back(pixel(color_transparent, 0))
 
+            elif lower_nibble == 0x06:
+                # player_color_list command
+                # we have to draw the player color for cmd>>4 times,
+                # or if that is 0, as often as the next byte says.
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
+                dpos = cpack.dpos
+                for _ in range(cpack.count):
+                    dpos += 1
+                    color = data_raw[dpos]
+
+                    # version 3.0 uses extra palettes for player colors
+                    row_data.push_back(pixel(color_player_v4, color))
+
             elif lower_nibble == 0x07:
                 # fill command
                 # draw 'count' pixels with color of next byte
