@@ -124,8 +124,8 @@ def get_converter(game_version):
         return RoRProcessor
 
     if game_edition.game_id == "AOE1DE":
-        from ..processor.conversion.ror.processor import RoRProcessor
-        return RoRProcessor
+        from ..processor.conversion.de1.processor import DE1Processor
+        return DE1Processor
 
     if game_edition.game_id in ("AOC", "HDEDITION"):
         from ..processor.conversion.aoc.processor import AoCProcessor

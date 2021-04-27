@@ -65,6 +65,10 @@ class SpriteMetadataExport(MetadataExport):
             frame_count = metadata[4]
             angle_count = metadata[5]
             mirror_mode = metadata[6]
+
+            if angle_count == 0:
+                angle_count = 1
+
             degree_step = 360 / angle_count
             for angle in range(angle_count):
                 mirror_from = None
