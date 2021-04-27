@@ -42,7 +42,7 @@ expansions = [ ]
 name = "Age of Empires 1: Definitive Edition (Steam)"
 game_edition_id = "AOE1DE"
 subfolder = "de1"
-support = "nope"
+support = "yes"
 targetmod = [ "aoe1-base", "aoe1-base-graphics" ]
 expansions = [ ]
 
@@ -52,6 +52,22 @@ expansions = [ ]
   palettes = [ "Assets/Palettes/" ]
   sounds = [ "Assets/Sounds/" ]
   interface = [ "Data/DRS/interfac.drs", "Data/DRS/interfac_x1.drs" ]
+  language = [
+  "Data/Localization/br/strings.txt",
+  "Data/Localization/de/strings.txt",
+  "Data/Localization/en/strings.txt",
+  "Data/Localization/es/strings.txt",
+  "Data/Localization/fr/strings.txt",
+  "Data/Localization/hi/strings.txt",
+  "Data/Localization/it/strings.txt",
+  "Data/Localization/jp/strings.txt",
+  "Data/Localization/ko/strings.txt",
+  "Data/Localization/mx/strings.txt",
+  "Data/Localization/ru/strings.txt",
+  "Data/Localization/vi/strings.txt",
+  "Data/Localization/zhs/strings.txt",
+  "Data/Localization/zht/strings.txt"
+  ]
 
 [ROR]
 name = "Age of Empires 1: Rise of Rome"
