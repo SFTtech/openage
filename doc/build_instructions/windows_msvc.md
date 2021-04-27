@@ -87,6 +87,7 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
     - Path to `nyan.dll` (depends on the procedure chosen to get nyan)
     - `<vcpkg directory>\installed\<relevant config>\bin`
     - `<QT5 directory>\bin` (if prebuilt QT5 was installed)
+  - Append `<openage directory>\build\openage\game\RelWithDebInfo` to the `PYTHONPATH` environment variable
 
     __Note:__ The paths above should be added to the global system variables `PATH` and not to the user specific variables.
 
