@@ -68,6 +68,7 @@ expansions = [ ]
   "Data/Localization/zhs/strings.txt",
   "Data/Localization/zht/strings.txt"
   ]
+  terrain = [ "Assets/SLP/" ]
 
 [ROR]
 name = "Age of Empires 1: Rise of Rome"
