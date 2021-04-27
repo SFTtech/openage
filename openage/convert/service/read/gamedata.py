@@ -17,15 +17,19 @@ def get_gamespec(srcdir, game_version, dont_pickle):
     """
     Reads empires.dat file.
     """
-    if game_version[0] .game_id in ("ROR", "AOC", "HDEDITION", "AOE2DE"):
+    if game_version[0].game_id in ("ROR", "AOE1DE", "AOC", "HDEDITION", "AOE2DE"):
         filepath = srcdir.joinpath(game_version[0].media_paths[MediaType.DATFILE][0])
 
-    elif game_version[0] .game_id == "SWGB":
+    elif game_version[0].game_id == "SWGB":
         if "SWGB_CC" in [expansion.game_id for expansion in game_version[1]]:
             filepath = srcdir.joinpath(game_version[1][0].media_paths[MediaType.DATFILE][0])
 
         else:
             filepath = srcdir.joinpath(game_version[0].media_paths[MediaType.DATFILE][0])
+
+    else:
+        raise Exception("No service found for reading data file of version %s"
+                        % game_version[0].game_id)
 
     cache_file = os.path.join(gettempdir(), f"{filepath.name}.pickle")
 
