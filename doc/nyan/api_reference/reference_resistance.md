@@ -325,7 +325,7 @@ Condition which must he fulfilled to make the resource spot harvestable.
 SendToContainer(DiscreteResistance):
     type              : children(SendToContainerType)
     search_range      : float
-    ignore_containers : set(Container)
+    ignore_containers : set(EntityContainer)
 ```
 
 Resistance to the `SendToContainer` effect.

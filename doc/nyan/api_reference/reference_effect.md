@@ -391,7 +391,7 @@ Resource spot that should be made harvestable. The effect will be matched with a
 ```python
 SendToContainer(DiscreteEffect):
     type     : children(SendToStorageType)
-    storages : set(Container)
+    storages : set(EntityContainer)
 ```
 
 Makes the target move to and enter the nearest game entity where it can be stored. The resistor needs an `EnterContainer` ability for at least one of the containers for this to work.

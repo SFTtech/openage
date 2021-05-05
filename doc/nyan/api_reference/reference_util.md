@@ -116,10 +116,11 @@ Rate of attribute points.
 
 ```python
 AttributeSetting(Object):
-    attribute      : Attribute
-    min_value      : int
-    max_value      : int
-    starting_value : int
+    attribute       : Attribute
+    min_value       : int
+    max_value       : int
+    starting_value  : int
+    change_progress : set(Progress)
 ```
 
 Assigns an attribute to a game entity and specifies the range the attribute value can be in. The game entity has a *current attribute value* at runtime. Attribute values can be changed by abilities or effects.
@@ -135,6 +136,9 @@ Maximum value the current attribute value can have.
 
 **starting_value**
 The current attribute value when the game entity is created.
+
+**change_progress**
+Set of `Progress` objects that activate when the current attribute value enters their defined intervals. The objects in the set must have progress type `AttributeChange`.
 
 ## util.attribute.ProtectingAttribute
 
@@ -1475,7 +1479,7 @@ The game entity is ejected from the creating game entity. Ejecting considers the
 
 ```python
 OwnStorage(PlacementMode):
-    container : Container
+    container : EntityContainer
 ```
 
 The game entity is stored into a container of the creating game entity.
@@ -1608,6 +1612,7 @@ The queue can store production requests for `ResearchableTech` instances.
 ```python
 Progress(Object):
     properties     : dict(abstract(ProgressProperty), ProgressProperty) = {}
+    type           : children(ProgressType)
     left_boundary  : float
     right_boundary : float
 ```
@@ -1641,6 +1646,9 @@ Properties:
 * `Terrain`: Changes the underlying terrain of the game entity.
 * `TerrainOverlay`: Changes terrain overlays of a game entity.
 * `StateChange`: Alters the base abilities and modifiers of the game entity through `StateChanger` objects.
+
+**type**
+Classification for the progress.
 
 **left_boundary**
 Defines the left boundary of the progression interval. Must be a float between 0.0 and 100.0 that represents a percentage of progression. Must be smaller than `right_boundary`.
@@ -1717,60 +1725,6 @@ Changes the underlying terrain of a game entity when the specified progress inte
 **terrain**
 The new terrain that will be permanently placed under the game entity.
 
-## util.progress.type.AttributeChangeProgress
-
-```python
-AttributeChangeProgress(Progress):
-    pass
-```
-
-Compares the current attribute value in relation to the `max_value` of an attribute of a game entity. The `Progress` objects are stored in a `AttributeChangeTracker` ability which specifies the type of attribute that is monitored. When the attribute value is equal to `max_value` of the attribute defined by the game entity, the progress is 100%. Once the attribute value reaches the `min_value`, the progress is 0%.
-
-## util.progress.type.CarryProgress
-
-```python
-CarryProgress(Progress):
-    pass
-```
-
-Monitors the occupied storage space of a `Storage` or `Gather` ability. An empty storage has a progress of 0% and a full storage a progress of 100%.
-
-## util.progress.type.ConstructionProgress
-
-```python
-ConstructionProgress(Progress):
-    pass
-```
-
-Monitors the construction progress of a game entity with `Contructable` ability. An unconstructed game entity has a progress of 0% and a fully constructed game entity a progress of 100%.
-
-## util.progress.type.HarvestProgress
-
-```python
-HarvestProgress(Progress):
-    pass
-```
-
-Monitors the harvesting progress of a resource spot stored by a `Harvestable` ability. A resource spot at maximum capacity has a progress of 0% and a depleted resource spot a progress of 100%.
-
-## util.progress.type.RestockProgress
-
-```python
-RestockProgress(Progress):
-    pass
-```
-
-Monitors the restock progress of a restockable resource spot stored by a `Harvestable` ability. The restocking progress is initiated by the `Restock` ability of another game entity. At the start of the restocking process, the progress is 0%. After the restocking has finished, the progress is 100%.
-
-## util.progress.type.TransformProgress
-
-```python
-TransformProgress(Progress):
-    pass
-```
-
-Monitors the progress of a transformation initiated by the `ActiveTransformTo` or `PassiveTransformTo` ability. At the start of the transformation, the progress is 0%. After the transformation has finished, the progress is 100%.
-
 ## util.progress_status.ProgressStatus
 
 ```python
@@ -1796,6 +1750,24 @@ ProgressType(Object):
 
 Used by `Convert` effects and resistances for matching.
 
+## util.progress_type.type.AttributeChange
+
+```python
+AttributeChange(ProgressType):
+    pass
+```
+
+Compares the current attribute value in relation to the `max_value` of an attribute of a game entity. The `Progress` objects should be stored in a `AttributeChangeTracker` ability which specifies the type of attribute that is monitored. When the attribute value is equal to `max_value` of the attribute defined by the game entity, the progress is 100%. Once the attribute value reaches the `min_value`, the progress is 0%.
+
+## util.progress_type.type.Carry
+
+```python
+Carry(ProgressType):
+    pass
+```
+
+Monitors the occupied storage space of a `Storage` or `Gather` ability. An empty storage has a progress of 0% and a full storage a progress of 100%.
+
 ## util.progress_type.type.Construct
 
 ```python
@@ -1803,7 +1775,34 @@ Construct(ProgressType):
     pass
 ```
 
-A progress type that covers construction progress.
+Monitors the construction progress of a game entity with `Contructable` ability. An unconstructed game entity has a progress of 0% and a fully constructed game entity a progress of 100%.
+
+## util.progress_type.type.Harvest
+
+```python
+Harvest(ProgressType):
+    pass
+```
+
+Monitors the harvesting progress of a resource spot stored by a `Harvestable` ability. A resource spot at maximum capacity has a progress of 0% and a depleted resource spot a progress of 100%.
+
+## util.progress_type.type.Restock
+
+```python
+Restock(ProgressType):
+    pass
+```
+
+Monitors the restock progress of a restockable resource spot stored by a `Harvestable` ability. The restocking progress is initiated by the `Restock` ability of another game entity. At the start of the restocking process, the progress is 0%. After the restocking has finished, the progress is 100%.
+
+## util.progress_type.type.Transform
+
+```python
+Transform(ProgressType):
+    pass
+```
+
+Monitors the progress of a transformation initiated by the `ActiveTransformTo` or `PassiveTransformTo` ability. At the start of the transformation, the progress is 0%. After the transformation has finished, the progress is 100%.
 
 ## util.research.ResearchableTech
 
@@ -2062,15 +2061,15 @@ Reset(StateChanger):
 
 Resets the game entity to the *base* state. This means that all state changes are cleared immediately on activation.
 
-## util.storage.Container
+## util.storage.EntityContainer
 
 ```python
-Container(Object):
+EntityContainer(Object):
     allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
     storage_element_defs : set(StorageElementDefinition)
     slots                : int
-    carry_progress       : set(CarryProgress)
+    carry_progress       : set(Progress)
 ```
 
 Used by the `Storage` ability to set the allowed game entities and store definitions of how the stored game entities influence the storing game entity.
@@ -2088,7 +2087,7 @@ Contains further configuration settings for specific game entities.
 Defines how many slots for game entities the container has. Multiple game entities may be stacked in one slot depending on the `elements_per_slot` member in `StorageElementDefinition`.
 
 **carry_progress**
-`CarryProgress` objects that can alter the game entity when the container is filled.
+`CarryProgress` objects that can alter the game entity when the container is filled. The objects in the set must have progress type `Carry`.
 
 ## util.storage.ResourceContainer
 
@@ -2096,7 +2095,7 @@ Defines how many slots for game entities the container has. Multiple game entiti
 ResourceContainer(Object):
     resource       : Resource
     max_amount     : int
-    carry_progress : set(CarryProgress)
+    carry_progress : set(Progress)
 ```
 
 Used by the `ResourceStorage` ability to define storage space for resources that can be carried by a game entity.
@@ -2108,7 +2107,7 @@ Resource stored in the container.
 Maximum amount of resources that can be stored in the container.
 
 **carry_progress**
-`CarryProgress` objects that can alter the game entity when the container is filled.
+`CarryProgress` objects that can alter the game entity when the container is filled.  The objects in the set must have progress type `Carry`.
 
 ## util.storage.resource_container.type.InternalDropSite
 
