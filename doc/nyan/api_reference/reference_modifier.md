@@ -5,7 +5,7 @@ Reference documentation of the `engine.modifier` module of the openage modding A
 ## modifier.Modifier
 
 ```python
-Modifier(Entity):
+Modifier(Object):
     properties : dict(abstract(ModifierProperty), ModifierProperty) = {}
 ```
 
@@ -32,7 +32,7 @@ Properties:
 ## modifier.property.ModifierProperty
 
 ```python
-ModifierProperty(Entity):
+ModifierProperty(Object):
     pass
 ```
 

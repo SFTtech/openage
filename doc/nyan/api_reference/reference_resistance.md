@@ -5,7 +5,7 @@ Reference documentation of the `engine.resistance` module of the openage modding
 ## resistance.Resistance
 
 ```python
-Resistance(Entity):
+Resistance(Object):
     properties : dict(abstract(ResistanceProperty), ResistanceProperty) = {}
 ```
 
@@ -30,7 +30,7 @@ Properties:
 ## resistance.property.ResistanceProperty
 
 ```python
-ResistanceProperty(Entity):
+ResistanceProperty(Object):
     pass
 ```
 

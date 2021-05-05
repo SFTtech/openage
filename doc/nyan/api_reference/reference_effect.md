@@ -5,7 +5,7 @@ Reference documentation of the `engine.effect` module of the openage modding API
 ## effect.Effect
 
 ```python
-Effect(Entity):
+Effect(Object):
     properties : dict(abstract(EffectProperty), EffectProperty) = {}
 ```
 
@@ -34,7 +34,7 @@ Properties:
 ## effect.property.EffectProperty
 
 ```python
-EffectProperty(Entity):
+EffectProperty(Object):
     pass
 ```
 

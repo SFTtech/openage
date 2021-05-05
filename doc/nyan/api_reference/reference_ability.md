@@ -5,7 +5,7 @@ Reference documentation of the `engine.ability` module of the openage modding AP
 ## ability.Ability
 
 ```python
-Ability(Entity):
+Ability(Object):
     properties : dict(abstract(AbilityProperty), AbilityProperty) = {}
 ```
 
@@ -35,7 +35,7 @@ Properties:
 ## ability.property.AbilityProperty
 
 ```python
-AbilityProperty(Entity):
+AbilityProperty(Object):
     pass
 ```
 

@@ -5,7 +5,7 @@ Reference documentation of the `engine.aux` module of the openage modding API.
 ## aux.accuracy.Accuracy
 
 ```python
-Accuracy(Entity):
+Accuracy(Object):
     accuracy             : float
     accuracy_dispersion  : float
     dispersion_dropoff   : DropOffType
@@ -33,7 +33,7 @@ Blacklists game entities that have one of the types listed in `target_types`, bu
 ## aux.animation_override.AnimationOverride
 
 ```python
-AnimationOverride(Entity):
+AnimationOverride(Object):
     ability    : abstract(Ability)
     animations : set(Animation)
     priority   : int
@@ -67,7 +67,7 @@ Resets the animation of the specified ability to the animation defined in the `A
 ## aux.attribute.Attribute
 
 ```python
-Attribute(Entity):
+Attribute(Object):
     name         : TranslatedString
     abbreviation : TranslatedString
 ```
@@ -83,7 +83,7 @@ Short version of the names as a translated string.
 ## aux.attribute.AttributeAmount
 
 ```python
-AttributeAmount(Entity):
+AttributeAmount(Object):
     type   : Attribute
     amount : int
 ```
@@ -99,7 +99,7 @@ Amount of attribute points.
 ## aux.attribute.AttributeRate
 
 ```python
-AttributeRate(Entity):
+AttributeRate(Object):
     type   : Attribute
     rate   : float
 ```
@@ -115,7 +115,7 @@ Rate of attribute points.
 ## aux.attribute.AttributeSetting
 
 ```python
-AttributeSetting(Entity):
+AttributeSetting(Object):
     attribute      : Attribute
     min_value      : int
     max_value      : int
@@ -151,7 +151,7 @@ The attribute that is protected.
 ## aux.attribute_change_type.AttributeChangeType
 
 ```python
-AttributeChangeType(Entity):
+AttributeChangeType(Object):
     pass
 ```
 
@@ -171,7 +171,7 @@ For example, effects that utilize fallback behaviour can be used to model minimu
 ## aux.calculation_type.CalculationType
 
 ```python
-CalculationType(Entity):
+CalculationType(Object):
     pass
 ```
 
@@ -237,7 +237,7 @@ Sets the influence factor to 1 regardless of the number of effectors. Note that 
 ## aux.cheat.Cheat
 
 ```python
-Cheat(Entity):
+Cheat(Object):
     activation_message : text
     changes            : orderedset(Patch)
 ```
@@ -253,7 +253,7 @@ Changes to API objects.
 ## aux.container_type.SendToContainerType
 
 ```python
-SendToContainerType(Entity):
+SendToContainerType(Object):
     pass
 ```
 
@@ -262,7 +262,7 @@ Used by `SendToContainer` effects and resistances for matching.
 ## aux.convert_type.ConvertType
 
 ```python
-ConvertType(Entity):
+ConvertType(Object):
     pass
 ```
 
@@ -271,7 +271,7 @@ Used by `Convert` effects and resistances for matching.
 ## aux.cost.Cost
 
 ```python
-Cost(Entity):
+Cost(Object):
     payment_mode : PaymentMode
 ```
 
@@ -307,7 +307,7 @@ Amounts of resources.
 ## aux.create.CreatableGameEntity
 
 ```python
-CreatableGameEntity(Entity):
+CreatableGameEntity(Object):
     game_entity     : GameEntity
     variants        : set(Variant)
     cost            : Cost
@@ -343,7 +343,7 @@ Decides where and how the game entity instance is spawned.
 ## aux.diplomatic_stance.DiplomaticStance
 
 ```python
-DiplomaticStance(Entity):
+DiplomaticStance(Object):
     pass
 ```
 
@@ -370,7 +370,7 @@ The diplomatic stance of a player towards themselves.
 ## aux.distribution_type.DistributionType
 
 ```python
-DistributionType(Entity):
+DistributionType(Object):
     pass
 ```
 
@@ -388,7 +388,7 @@ Calculates the distribution value by using the mean of all change values of effe
 ## aux.dropoff_type.DropoffType
 
 ```python
-DropoffType(Entity):
+DropoffType(Object):
     pass
 ```
 
@@ -424,7 +424,7 @@ The effectiveness is constant and independent from the range to the target.
 ## aux.effect_batch.EffectBatch
 
 ```python
-EffectBatch(Entity):
+EffectBatch(Object):
     effects    : set(DiscreteEffect)
     properties : dict(abstract(BatchProperty), BatchProperty) = {}
 ```
@@ -447,7 +447,7 @@ Properties:
 ## aux.effect_batch.property.BatchProperty
 
 ```python
-BatchProperty(Entity):
+BatchProperty(Object):
     pass
 ```
 
@@ -507,7 +507,7 @@ The effects in the batch are applied without any particular order.
 ## aux.exchange_mode.ExchangeMode
 
 ```python
-ExchangeMode(Entity):
+ExchangeMode(Object):
     fee_multiplier : float
 ```
 
@@ -537,7 +537,7 @@ Sell an amount of `resource_a` and receive an amount of `resource_b`. `resource_
 ## aux.exchange_rate.ExchangeRate
 
 ```python
-ExchangeRate(Entity):
+ExchangeRate(Object):
     base_price   : float
     price_adjust : optional(dict(ExchangeMode, PriceMode)) = None
     price_pool   : optional(children(PricePool)) = None
@@ -557,7 +557,7 @@ Can be used to sync the current price at runtime across game entities. All excha
 ## aux.formation.Formation
 
 ```python
-Formation(Entity):
+Formation(Object):
     subformations : set(Subformation)
 ```
 
@@ -569,7 +569,7 @@ Subdivisions of the formation. Game entities are sorted into one of the subforma
 ## aux.formation.Subformation
 
 ```python
-Subformation(Entity):
+Subformation(Object):
     ordering_priority : int
 ```
 
@@ -581,7 +581,7 @@ Ordering priority in relation to other subformations. Formations are ordered in 
 ## aux.game_entity.GameEntity
 
 ```python
-GameEntity(Entity):
+GameEntity(Object):
     types     : set(children(GameEntityType))
     abilities : set(Ability)
     modifiers : set(Modifier)
@@ -602,7 +602,7 @@ Change the stats of abilities belonging to the game entity. Mostly used to give 
 ## aux.game_entity_formation.GameEntityFormation
 
 ```python
-GameEntityFormation(Entity):
+GameEntityFormation(Object):
     formation    : Formation
     subformation : Subformation
 ```
@@ -618,7 +618,7 @@ Subformation inside the subformation that the game entity is inserted into.
 ## aux.game_entity_stance.GameEntityStance
 
 ```python
-GameEntityStance(Entity):
+GameEntityStance(Object):
     search_range       : float
     ability_preference : orderedset(Ability)
     type_preference    : orderedset(children(GameEntityType))
@@ -674,7 +674,7 @@ The game entity will stay at its current position. Abilities in `ability_prefere
 ## aux.game_entity_type.GameEntityType
 
 ```python
-GameEntityType(Entity):
+GameEntityType(Object):
     pass
 ```
 
@@ -692,7 +692,7 @@ Can be used to address any game entity, even ones that have no `GameEntityType` 
 ## aux.graphics.Animation
 
 ```python
-Animation(Entity):
+Animation(Object):
     sprite : file
 ```
 
@@ -701,7 +701,7 @@ Points to a openage sprite definition file in the `.sprite` format. The specifie
 ## aux.graphics.Palette
 
 ```python
-Palette(Entity):
+Palette(Object):
     palette : file
 ```
 
@@ -710,7 +710,7 @@ Points to a openage palette definition file in the `.opal` format.
 ## aux.graphics.Terrain
 
 ```python
-Terrain(Entity):
+Terrain(Object):
     sprite : file
 ```
 
@@ -719,7 +719,7 @@ Points to a openage terrain definition file in the `.terrain` format. This objec
 ## aux.herdable_mode.HerdableMode
 
 ```python
-HerdableMode(Entity):
+HerdableMode(Object):
     pass
 ```
 
@@ -755,7 +755,7 @@ The player with the most herding game entities in range gets ownership.
 ## aux.hitbox.Hitbox
 
 ```python
-Hitbox(Entity):
+Hitbox(Object):
     radius_x : float
     radius_y : float
     radius_z : float
@@ -775,7 +775,7 @@ Height of the game entity.
 ## aux.language.Language
 
 ```python
-Language(Entity):
+Language(Object):
     ietf_string : text
 ```
 
@@ -787,7 +787,7 @@ The IETF identification tag of the language. [See here](https://tools.ietf.org/h
 ## aux.language.LanguageMarkupPair
 
 ```python
-LanguageMarkupPair(Entity):
+LanguageMarkupPair(Object):
     language    : Language
     markup_file : file
 ```
@@ -803,7 +803,7 @@ File descriptor of the markup file. Has to be relative to the `.nyan` file where
 ## aux.language.LanguageSoundPair
 
 ```python
-LanguageSoundPair(Entity):
+LanguageSoundPair(Object):
     language : Language
     sound    : Sound
 ```
@@ -819,7 +819,7 @@ References the `Sound` object for the translation.
 ## aux.language.LanguageTextPair
 
 ```python
-LanguageTextPair(Entity):
+LanguageTextPair(Object):
     language : Language
     string   : text
 ```
@@ -835,7 +835,7 @@ The translated string.
 ## aux.language.translated.TranslatedObject
 
 ```python
-TranslatedObject(Entity):
+TranslatedObject(Object):
     pass
 ```
 
@@ -880,7 +880,7 @@ All translations of the string as language-text pairs (see `LanguageTextPair`).
 ## aux.lock.LockPool
 
 ```python
-LockPool(Entity):
+LockPool(Object):
     slots : int
 ```
 
@@ -1175,7 +1175,7 @@ Time that has to pass after the activation.
 ## aux.logic.literal_scope.LiteralScope
 
 ```python
-LiteralScope(Entity):
+LiteralScope(Object):
     stances : set(children(DiplomaticStance))
 ```
 
@@ -1205,7 +1205,7 @@ Check if the literal is true for the game entity it is assigned to.
 ## aux.lure_type.LureType
 
 ```python
-LureType(Entity):
+LureType(Object):
     pass
 ```
 
@@ -1214,7 +1214,7 @@ Used by `Lure` effects and resistances for matching.
 ## aux.mod.Mod
 
 ```python
-Mod(Entity):
+Mod(Object):
     patches  : orderedset(Patch)
     priority : int
 ```
@@ -1230,7 +1230,7 @@ Determines the application order of the mod in comparison to other `Mod` objects
 ## aux.modifier_scope.ModifierScope
 
 ```python
-ModifierScope(Entity):
+ModifierScope(Object):
     pass
 ```
 
@@ -1264,7 +1264,7 @@ Makes the modifier behave as if standard rules would apply, i.e. as if the modif
 ## aux.move_mode.MoveMode
 
 ```python
-MoveMode(Entity):
+MoveMode(Object):
     pass
 ```
 
@@ -1324,7 +1324,7 @@ Lets player set two or more waypoints that the game entity will follow. Stances 
 ## aux.passable_mode.PassableMode
 
 ```python
-PassableMode(Entity):
+PassableMode(Object):
     allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
@@ -1361,7 +1361,7 @@ Lets all compatible game entities pass through the hitbox.
 ## aux.patch.NyanPatch
 
 ```python
-NyanPatch(Entity):
+NyanPatch(Object):
     pass
 ```
 
@@ -1370,7 +1370,7 @@ Parent object for nyan patches used in the openage API. All nyan patches must in
 ## aux.patch.Patch
 
 ```python
-Patch(Entity):
+Patch(Object):
     properties : dict(abstract(PatchProperty), PatchProperty) = {}
     patch      : children(NyanPatch)
 ```
@@ -1390,7 +1390,7 @@ Nyan patch that gets applied by the wrapper.
 ## aux.patch.property.PatchProperty
 
 ```python
-PatchProperty(Entity):
+PatchProperty(Object):
     pass
 ```
 
@@ -1411,7 +1411,7 @@ Diplomatic stances of the players the patch should apply to.
 ## aux.payment_mode.PaymentMode
 
 ```python
-PaymentMode(Entity):
+PaymentMode(Object):
     pass
 ```
 
@@ -1456,7 +1456,7 @@ Requires the resources or attribute points to be available to the player, but do
 ## aux.placement_mode.PlacementMode
 
 ```python
-PlacementMode(Entity):
+PlacementMode(Object):
     pass
 ```
 
@@ -1526,7 +1526,7 @@ Game entities that can be replaced.
 ## aux.price_mode.PriceMode
 
 ```python
-PriceMode(Entity):
+PriceMode(Object):
     pass
 ```
 
@@ -1564,7 +1564,7 @@ The price is not adjusted by an exchange.
 ## aux.price_pool.PricePool
 
 ```python
-PricePool(Entity):
+PricePool(Object):
     pass
 ```
 
@@ -1573,7 +1573,7 @@ Allows syncing the price (at runtime) of an exchange rate across several game en
 ## aux.production_mode.ProductionMode
 
 ```python
-ProductionMode(Entity):
+ProductionMode(Object):
     pass
 ```
 
@@ -1606,7 +1606,7 @@ The queue can store production requests for `ResearchableTech` instances.
 ## aux.progress.Progress
 
 ```python
-Progress(Entity):
+Progress(Object):
     properties     : dict(abstract(ProgressProperty), ProgressProperty) = {}
     left_boundary  : float
     right_boundary : float
@@ -1651,7 +1651,7 @@ Defines the left boundary of the progression interval. Must be a float between 0
 ## aux.progress.property.ProgressProperty
 
 ```python
-ProgressProperty(Entity):
+ProgressProperty(Object):
     pass
 ```
 
@@ -1774,7 +1774,7 @@ Monitors the progress of a transformation initiated by the `ActiveTransformTo` o
 ## aux.progress_status.ProgressStatus
 
 ```python
-ProgressStatus(Entity):
+ProgressStatus(Object):
     progress_type : children(ProgressType)
     progress      : float
 ```
@@ -1790,7 +1790,7 @@ Minimum amount of progress that has to be reached. Value can be between 0.0 and 
 ## aux.progress_type.ProgressType
 
 ```python
-ProgressType(Entity):
+ProgressType(Object):
     pass
 ```
 
@@ -1808,7 +1808,7 @@ A progress type that covers construction progress.
 ## aux.research.ResearchableTech
 
 ```python
-ResearchableTech(Entity):
+ResearchableTech(Object):
     tech            : Tech
     cost            : Cost
     research_time   : float
@@ -1836,7 +1836,7 @@ Condition that unlock the technology for the researching game entity. Only one c
 ## aux.resource.Resource
 
 ```python
-Resource(Entity):
+Resource(Object):
     name        : TranslatedString
     max_storage : int
 ```
@@ -1877,7 +1877,7 @@ The maximum contingent size.
 ## aux.resource.ResourceAmount
 
 ```python
-ResourceAmount(Entity):
+ResourceAmount(Object):
     type   : Resource
     amount : int
 ```
@@ -1893,7 +1893,7 @@ Amount of the resource.
 ## aux.resource.ResourceRate
 
 ```python
-ResourceRate(Entity):
+ResourceRate(Object):
     type : Resource
     rate : float
 ```
@@ -1909,7 +1909,7 @@ Rate of the resource.
 ## aux.resource_spot.ResourceSpot
 
 ```python
-ResourceSpot(Entity):
+ResourceSpot(Object):
     resource        : Resource
     max_amount      : int
     starting_amount : int
@@ -1933,7 +1933,7 @@ Determines how much resources are lost each second after the resource spot is ac
 ## aux.selection_box.SelectionBox
 
 ```python
-SelectionBox(Entity):
+SelectionBox(Object):
     pass
 ```
 
@@ -1967,7 +1967,7 @@ Height of the selection box.
 ## aux.setup.PlayerSetup
 
 ```python
-PlayerSetup(Entity):
+PlayerSetup(Object):
     name               : TranslatedString
     description        : TranslatedMarkupFile
     long_description   : TranslatedMarkupFile
@@ -2003,7 +2003,7 @@ Customizes the player setup through patches. Patches to other player setups can 
 ## aux.sound.Sound
 
 ```python
-Sound(Entity):
+Sound(Object):
     play_delay : float
     sounds     : orderedset(file)
 ```
@@ -2019,7 +2019,7 @@ A set of sound files that are played in the order they are stored in the set.
 ## aux.state_machine.StateChanger
 
 ```python
-StateChanger(Entity):
+StateChanger(Object):
     enable_abilities  : set(abstract(Ability))
     disable_abilities : set(abstract(Ability))
     enable_modifiers  : set(abstract(Modifier))
@@ -2065,7 +2065,7 @@ Resets the game entity to the *base* state. This means that all state changes ar
 ## aux.storage.Container
 
 ```python
-Container(Entity):
+Container(Object):
     allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
     storage_element_defs : set(StorageElementDefinition)
@@ -2093,7 +2093,7 @@ Defines how many slots for game entities the container has. Multiple game entiti
 ## aux.storage.ResourceContainer
 
 ```python
-ResourceContainer(Entity):
+ResourceContainer(Object):
     resource       : Resource
     max_amount     : int
     carry_progress : set(CarryProgress)
@@ -2125,7 +2125,7 @@ Update interval between the automatic deposition of the stored resources in seco
 ## aux.storage.StorageElementDefinition
 
 ```python
-StorageElementDefinition(Entity):
+StorageElementDefinition(Object):
     storage_element   : GameEntity
     elements_per_slot : int
     conflicts         : set(StorageElementDefinition)
@@ -2149,7 +2149,7 @@ Alters the base abilities and modifiers of the storing game entity when at least
 ## aux.target_mode.TargetMode
 
 ```python
-TargetMode(Entity):
+TargetMode(Object):
     pass
 ```
 
@@ -2176,7 +2176,7 @@ Makes the projectile path end at the position where the target is expected to be
 ## aux.taunt.Taunt
 
 ```python
-Taunt(Entity):
+Taunt(Object):
     activation_message : text
     display_message    : TranslatedString
     sound              : Sound
@@ -2196,7 +2196,7 @@ Sounds that are played after the taunt is activated.
 ## aux.tech.Tech
 
 ```python
-Tech(Entity):
+Tech(Object):
     types            : set(children(TechType))
     name             : TranslatedString
     description      : TranslatedMarkupFile
@@ -2224,7 +2224,7 @@ Changes the game state through patches.
 ## aux.tech_type.TechType
 
 ```python
-TechType(Entity):
+TechType(Object):
     pass
 ```
 
@@ -2242,7 +2242,7 @@ Can be used to address any tech, even ones that have no `TechType` assigned.
 ## aux.terrain.Terrain
 
 ```python
-Terrain(Entity):
+Terrain(Object):
     types           : set(children(TerrainType))
     name            : TranslatedString
     terrain_graphic : Terrain
@@ -2270,7 +2270,7 @@ Ambient objects placed on the terrain.
 ## aux.terrain.TerrainAmbient
 
 ```python
-TerrainAmbient(Entity):
+TerrainAmbient(Object):
     object      : GameEntity
     max_density : int
 ```
@@ -2286,7 +2286,7 @@ Defines how many ambient objects are allowed to be placed on a chunk at maximum.
 ## aux.terrain_type.TerrainType
 
 ```python
-TerrainType(Entity):
+TerrainType(Object):
     pass
 ```
 
@@ -2304,7 +2304,7 @@ Can be used to address any terrain, even ones that have no `TerrainType` assigne
 ## aux.trade_route.TradeRoute
 
 ```python
-TradeRoute(Entity):
+TradeRoute(Object):
     trade_resource    : Resource
     start_trade_post  : GameEntity
     end_trade_post    : GameEntity
@@ -2324,7 +2324,7 @@ The game entity the traded resource is delivered to. The game entity must have a
 ## aux.trade_route.type.AoE1TradeRoute
 
 ```python
-AoE1TradeRoute(Entity):
+AoE1TradeRoute(Object):
     exchange_resources : set(Resource)
     trade_amount       : int
 ```
@@ -2340,7 +2340,7 @@ Amount of resources traded each time.
 ## aux.trade_route.type.AoE2TradeRoute
 
 ```python
-AoE2TradeRoute(Entity):
+AoE2TradeRoute(Object):
     pass
 ```
 
@@ -2353,7 +2353,7 @@ trade\_amount = 0.46 \cdot tiles\_distance \cdot ((tiles\_distance / map\_size) 
 ## aux.transform_pool.TransformPool
 
 ```python
-TransformPool(Entity):
+TransformPool(Object):
     pass
 ```
 
@@ -2362,7 +2362,7 @@ Defines a pool for `StateChanger` objects. Only one state change can be active p
 ## aux.variant.Variant
 
 ```python
-Variant(Entity):
+Variant(Object):
     changes  : orderedset(Patch)
     priority : int
 ```
