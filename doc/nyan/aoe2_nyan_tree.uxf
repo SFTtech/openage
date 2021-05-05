@@ -2004,12 +2004,12 @@ hitbox : Hitbox</panel_attributes>
       <w>175</w>
       <h>56</h>
     </coordinates>
-    <panel_attributes>*Constructable*
+    <panel_attributes>*AttributeChangeTracker*
 bg=green
 
 --
-starting_progress : int
-construction_progress : set(Progress)</panel_attributes>
+attribute : Attribute
+change_progress : set(Progress)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -2237,7 +2237,7 @@ terrain_overlay : Terrain
       <x>4305</x>
       <y>3339</y>
       <w>154</w>
-      <h>84</h>
+      <h>77</h>
     </coordinates>
     <panel_attributes>*AttributeSetting*
 bg=pink
@@ -2246,8 +2246,7 @@ bg=pink
 attribute : Attribute
 min_value : int
 max_value : int
-starting_value : int
-change_progress : set(Progress)</panel_attributes>
+starting_value : int</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -6304,12 +6303,12 @@ abbreviation : TranslatedString
     <id>Relation</id>
     <coordinates>
       <x>4375</x>
-      <y>3416</y>
+      <y>3409</y>
       <w>21</w>
-      <h>49</h>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -10125,5 +10124,32 @@ bg=pink</panel_attributes>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4823</x>
+      <y>3269</y>
+      <w>175</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>*Constructable*
+bg=green
+
+--
+starting_progress : int
+construction_progress : set(Progress)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4991</x>
+      <y>3290</y>
+      <w>42</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

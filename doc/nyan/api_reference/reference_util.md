@@ -120,7 +120,6 @@ AttributeSetting(Object):
     min_value       : int
     max_value       : int
     starting_value  : int
-    change_progress : set(Progress)
 ```
 
 Assigns an attribute to a game entity and specifies the range the attribute value can be in. The game entity has a *current attribute value* at runtime. Attribute values can be changed by abilities or effects.
@@ -136,9 +135,6 @@ Maximum value the current attribute value can have.
 
 **starting_value**
 The current attribute value when the game entity is created.
-
-**change_progress**
-Set of `Progress` objects that activate when the current attribute value enters their defined intervals. The objects in the set must have progress type `AttributeChange`.
 
 ## util.attribute.ProtectingAttribute
 

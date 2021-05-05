@@ -199,6 +199,22 @@ Whitelist of game entity types that can be targeted with the ability.
 **blacklisted_entities**
 Blacklist for specific game entities that would be covered by `allowed_types`, but should be explicitly excluded.
 
+## ability.type.AttributeChangeTracker
+
+```python
+AttributeChangeTracker(Ability):
+    attribute       : Attribute
+    change_progress : set(children(AttributeChangeProgress))
+```
+
+Allows the alteration of the state of the game entity when its attribute values increase or decrease.
+
+**attribute**
+The attribute which is monitored.
+
+**change_progress**
+Set of `AttributeChangeProgress` objects that activate when the current attribute value enters their defined intervals.
+
 ## ability.type.Cloak
 
 ```python
