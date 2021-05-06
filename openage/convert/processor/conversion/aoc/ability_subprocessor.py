@@ -5544,7 +5544,7 @@ class AoCAbilitySubprocessor:
 
             elif used_command["type"].get_value() == 111:
                 # Trading
-                container_name = f"TradeContainer"
+                container_name = "TradeContainer"
 
             container_ref = f"{ability_ref}.{container_name}"
             container_raw_api_object = RawAPIObject(container_ref,

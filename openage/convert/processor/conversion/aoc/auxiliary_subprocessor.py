@@ -1,6 +1,6 @@
 # Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
-# pylint: disable=too-many-locals,too-many-branches,too-many-statements,no-else-return
+# pylint: disable=line-too-long,too-many-locals,too-many-branches,too-many-statements,no-else-return
 
 """
 Derives complex auxiliary objects from unit lines, techs
