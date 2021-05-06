@@ -34,8 +34,8 @@ class AoCModifierSubprocessor:
         """
         dataset = converter_obj_group.data
         modifiers = [
-            dataset.pregen_nyan_objects["aux.modifier.elevation_difference.AttackHigh"].get_nyan_object(),
-            dataset.pregen_nyan_objects["aux.modifier.elevation_difference.AttackLow"].get_nyan_object()
+            dataset.pregen_nyan_objects["util.modifier.elevation_difference.AttackHigh"].get_nyan_object(),
+            dataset.pregen_nyan_objects["util.modifier.elevation_difference.AttackLow"].get_nyan_object()
         ]
 
         return modifiers
@@ -51,7 +51,7 @@ class AoCModifierSubprocessor:
         :rtype: ...dataformat.forward_ref.ForwardRef
         """
         dataset = converter_obj_group.data
-        modifier = dataset.pregen_nyan_objects["aux.modifier.flyover_cliff.AttackFlyover"].get_nyan_object()
+        modifier = dataset.pregen_nyan_objects["util.modifier.flyover_cliff.AttackFlyover"].get_nyan_object()
 
         return modifier
 
