@@ -220,7 +220,7 @@ class ConverterObjectGroup:
                                     "Nyan object not initialized.")
 
                 uninit_members = raw_api_object.get_nyan_object().get_uninitialized_members()
-                concat_names = ", ".join(member.get_name() for member in uninit_members)
+                concat_names = ", ".join(f"'{member.get_name()}'" for member in uninit_members)
                 raise Exception(f"{raw_api_object}: object is not ready for export: "
                                 f"Member(s) {concat_names} not initialized.")
 
