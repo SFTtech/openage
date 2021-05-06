@@ -107,7 +107,7 @@ class DE2CivSubprocessor:
                                                   wrapper_name,
                                                   dataset.nyan_api_objects,
                                                   wrapper_location)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             # Nyan patch
             nyan_patch_name = f"{tech_name}CivBonus"
@@ -117,18 +117,18 @@ class DE2CivSubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             nyan_patch_raw_api_object.add_raw_patch_member("updates",
                                                            patches,
-                                                           "engine.aux.tech.Tech",
+                                                           "engine.util.tech.Tech",
                                                            MemberOperator.ADD)
 
             patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             civ_group.add_raw_api_object(wrapper_raw_api_object)
             civ_group.add_raw_api_object(nyan_patch_raw_api_object)

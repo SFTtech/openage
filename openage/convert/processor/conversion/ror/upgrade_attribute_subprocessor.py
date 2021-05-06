@@ -42,10 +42,10 @@ class RoRUpgradeAttributeSubprocessor:
         patches = []
 
         if value == 0:
-            target_mode = dataset.nyan_api_objects["engine.aux.target_mode.type.CurrentPosition"]
+            target_mode = dataset.nyan_api_objects["engine.util.target_mode.type.CurrentPosition"]
 
         elif value == 1:
-            target_mode = dataset.nyan_api_objects["engine.aux.target_mode.type.ExpectedPosition"]
+            target_mode = dataset.nyan_api_objects["engine.util.target_mode.type.ExpectedPosition"]
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
@@ -73,7 +73,7 @@ class RoRUpgradeAttributeSubprocessor:
                                                   wrapper_name,
                                                   dataset.nyan_api_objects,
                                                   wrapper_location)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             # Nyan patch
             nyan_patch_name = f"Change{game_entity_name}Projectile0TargetMode"
@@ -83,7 +83,7 @@ class RoRUpgradeAttributeSubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             nyan_patch_raw_api_object.add_raw_patch_member("target_mode",
@@ -94,16 +94,16 @@ class RoRUpgradeAttributeSubprocessor:
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
+                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
                 properties = {
-                    dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
+                    dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
                 }
                 wrapper_raw_api_object.add_raw_member("properties",
                                                       properties,
-                                                      "engine.aux.patch.Patch")
+                                                      "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
