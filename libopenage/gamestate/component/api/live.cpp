@@ -29,7 +29,7 @@ Live::Live(const std::shared_ptr<event::Loop> &loop,
 	}
 }
 
-component_t Live::get_component_type() const {
+inline component_t Live::get_component_type() const {
 	return component_t::LIVE;
 }
 

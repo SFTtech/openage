@@ -13,7 +13,7 @@ Ownership::Ownership(const std::shared_ptr<event::Loop> &loop,
 	this->owner.set_insert(creation_time, owner_id);
 }
 
-component_t Ownership::get_component_type() const {
+inline component_t Ownership::get_component_type() const {
 	return component_t::OWNERSHIP;
 }
 

@@ -7,7 +7,7 @@
 
 namespace openage::gamestate::component {
 
-component_t Move::get_component_type() const {
+inline component_t Move::get_component_type() const {
 	return component_t::TURN;
 }
 
