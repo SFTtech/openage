@@ -6,7 +6,7 @@
 
 namespace openage::gamestate::component {
 
-component_t CommandQueue::get_component_type() const {
+inline component_t CommandQueue::get_component_type() const {
 	return component_t::COMMANDQUEUE;
 }
 
