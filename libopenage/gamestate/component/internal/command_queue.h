@@ -7,6 +7,8 @@
 namespace openage::gamestate::component {
 
 class CommandQueue : InternalComponent {
+	// TODO: Add command queue member
+
 	component_t get_component_type() const override;
 };
 

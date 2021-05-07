@@ -17,6 +17,15 @@ class Live : APIComponent {
 	                    std::shared_ptr<curve::Discrete<uint64_t>>>
 		attribute_values;
 
+	/**
+	 * Creates a Live component.
+	 *
+	 * @param loop Event loop that all events from the component are registered on.
+	 * @param ability nyan ability object for the component.
+	 * @param view nyan view of the owner of the comonent's entity.
+	 * @param creation_time Ingame creation time of the component.
+	 * @param enabled If true, enable the component at creation time.
+	 */
 	Live(const std::shared_ptr<event::Loop> &loop,
 	     nyan::Object &ability,
 	     nyan::View &view,

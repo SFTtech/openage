@@ -14,6 +14,13 @@ public:
      */
 	curve::Discrete<uint64_t> owner;
 
+	/**
+	 * Creates an Ownership component.
+	 *
+	 * @param loop Event loop that all events from the component are registered on.
+	 * @param owner_id ID of the entity's owner.
+	 * @param creation_time Ingame creation time of the component.
+	 */
 	Ownership(const std::shared_ptr<event::Loop> &loop,
 	          const uint64_t owner_id,
 	          const time_t &creation_time);
