@@ -7,8 +7,8 @@
 namespace openage::gamestate::component {
 
 /**
- * Component that is used to track ingame information about
- * a game entity, without having a nyan object representation.
+ * Interface for components that track ingame information about
+ * a game entity, but don't use information from the nyan API.
  */
 class InternalComponent : Component {};
 

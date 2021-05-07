@@ -19,7 +19,7 @@ Live::Live(const std::shared_ptr<event::Loop> &loop,
 		nyan::fqon_t setting_fqon{setting_val.get()};
 		nyan::Object setting{view.get_object(setting_fqon)};
 
-		auto attribute_fqon{setting.get_object("attribute").get_name()};
+		nyan::fqon_t attribute_fqon{setting.get_object("attribute").get_name()};
 		auto starting_value{setting.get_int("starting_value")};
 
 		auto attr_curve{std::make_shared<curve::Discrete<uint64_t>>(loop, 0)};

@@ -10,9 +10,12 @@ namespace openage::gamestate::component {
  */
 enum class component_t
 {
+	// Internal
 	POSITION,
 	COMMANDQUEUE,
 	OWNERSHIP,
+
+	// API
 	IDLE,
 	TURN,
 	MOVE,
