@@ -1,12 +1,5 @@
-@cd \openage\build\openage\log\RelWithDebInfo
-@copy *.pyd \openage\build\openage\log\
-@cd \openage\build\openage\cppinterface\RelWithDebInfo
-@copy *.pyd \openage\build\openage\cppinterface\
-@cd \openage\build\openage\cvar\RelWithDebInfo
-@copy *.pyd \openage\build\openage\cvar
-@cd \openage\build\openage\util\filelike\RelWithDebInfo
-@copy *.pyd \openage\build\openage\util\filelike\
-@cd \openage\build\openage\util\fslike\RelWithDebInfo
-@copy *.pyd \openage\build\openage\util\fslike\
-@echo "Successfully moved pyd files"
-@cd \openage\build
+@robocopy %CD%\build\openage\log\RelWithDebInfo %CD%\build\openage\log\ *.pyd
+@robocopy %CD%\build\openage\cppinterface\RelWithDebInfo %CD%\build\openage\cppinterface\ *.pyd
+@robocopy %CD%\build\openage\cvar\RelWithDebInfo %CD%\build\openage\cvar\ *.pyd
+@robocopy %CD%\build\openage\util\filelike\RelWithDebInfo %CD%\build\openage\util\filelike\ *.pyd
+@robocopy %CD%\build\openage\util\fslike\RelWithDebInfo %CD%\build\openage\util\fslike\ *.pyd
