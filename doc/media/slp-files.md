@@ -599,6 +599,7 @@ Lesser draw              | `0bXXXXXX00`     | `cmd_byte >> 2`         | An array
 Lesser skip              | `0bXXXXXX01`     | `cmd_byte >> 2` or next | *Count* transparent pixels should be drawn from the current position.
 Greater draw             | `0bXXXX0010`     | `cmd_byte << 4 + next`  | An array of length *Count* filled with 1-byte "shadow" values follows, 1 value per pixel.
 Greater skip             | `0bXXXX0011`     | `cmd_byte << 4 + next`  | *Count* transparent pixels should be drawn from the current position.
+Player color draw        | `0bXXXX0110`     | `cmd_byte >> 4` or next | An array of length "Count" filled with `px_color_value`. The real palette index is `player_color_palette_index + player * 16`, where `player` is the player ID you're drawing for (1-8).
 Fill                     | `0bXXXX0111`     | `cmd_byte >> 4` or next | One palette index byte follows. This color should be drawn `pixel_count` times from the current position.
 
 For shadows, the values read have to be converted to an alpha mask by left shifting

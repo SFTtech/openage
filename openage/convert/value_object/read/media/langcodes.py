@@ -1,4 +1,4 @@
-# Copyright 2013-2020 the openage authors. See copying.md for legal info.
+# Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 """
 Translates the language codes in PE files or text resources to their
@@ -482,6 +482,23 @@ LANGCODES_HD = {
     'ko': 'ko_KR',
     'nl': 'nl_NL',
     'ru': 'ru_RU',
+}
+
+LANGCODES_DE1 = {
+    'br': 'pt_BR',
+    'de': 'de_DE',
+    'en': 'en_US',
+    'es': 'es_ES',
+    'fr': 'fr_FR',
+    'hi': 'hi_IN',
+    'it': 'it_IT',
+    'jp': 'ja_JP',
+    'ko': 'ko_KR',
+    'mx': 'es_MX',
+    'ru': 'ru_RU',
+    'vi': 'vi',
+    'zhs': 'zh_CN',
+    'zht': 'zh_TW',
 }
 
 LANGCODES_DE2 = {

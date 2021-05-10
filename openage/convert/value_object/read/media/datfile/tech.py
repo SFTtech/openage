@@ -6,6 +6,7 @@ from .....entity_object.conversion.genie_structure import GenieStructure
 from ....read.member_access import READ, READ_GEN, SKIP
 from ....read.read_members import SubdataMember, EnumLookupMember
 from ....read.value_members import MemberTypes as StorageType
+from .lookup_dicts import EFFECT_APPLY_TYPE, CONNECTION_MODE
 
 
 class Effect(GenieStructure):
@@ -19,95 +20,7 @@ class Effect(GenieStructure):
             (READ_GEN, "type_id", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int8_t",
                 type_name="effect_apply_type",
-                lookup_dict={
-                    # unused assignage: a = -1, b = -1, c = -1, d = 0
-                    -1: "DISABLED",
-                    # if a != -1: a == unit_id, else b == unit_class_id; c =
-                    # attribute_id, d = new_value
-                    0: "ATTRIBUTE_ABSSET",
-                    # a == resource_id, if b == 0: then d = absval, else d = relval
-                    # (for inc/dec)
-                    1: "RESOURCE_MODIFY",
-                    # a == unit_id, if b == 0: disable unit, else b == 1: enable
-                    # unit
-                    2: "UNIT_ENABLED",
-                    # a == old_unit_id, b == new_unit_id
-                    3: "UNIT_UPGRADE",
-                    # if a != -1: unit_id, else b == unit_class_id; c=attribute_id,
-                    # d=relval
-                    4: "ATTRIBUTE_RELSET",
-                    # if a != -1: unit_id, else b == unit_class_id; c=attribute_id,
-                    # d=factor
-                    5: "ATTRIBUTE_MUL",
-                    # a == resource_id, d == factor
-                    6: "RESOURCE_MUL",
-
-                    # a == unit_id, b == building_id, c == amount
-                    7: "SPAWN_UNIT",
-
-                    # same as 0-6 but applied to team members
-                    10: "TEAM_ATTRIBUTE_ABSSET",
-                    11: "TEAM_RESOURCE_MODIFY",
-                    12: "TEAM_UNIT_ENABLED",
-                    13: "TEAM_UNIT_UPGRADE",
-                    14: "TEAM_ATTRIBUTE_RELSET",
-                    15: "TEAM_ATTRIBUTE_MUL",
-                    16: "TEAM_RESOURCE_MUL",
-
-                    # same as 0-6 but applied to enemies
-                    20: "ENEMY_ATTRIBUTE_ABSSET",
-                    21: "ENEMY_RESOURCE_MODIFY",
-                    22: "ENEMY_UNIT_ENABLED",
-                    23: "ENEMY_UNIT_UPGRADE",
-                    24: "ENEMY_ATTRIBUTE_RELSET",
-                    25: "ENEMY_ATTRIBUTE_MUL",
-                    26: "ENEMY_RESOURCE_MUL",
-
-                    # these are only used in technology trees, 103 even requires
-                    # one
-                    # a == research_id, b == resource_id, if c == 0: d==absval
-                    # else: d == relval
-                    101: "TECHCOST_MODIFY",
-                    102: "TECH_TOGGLE",       # d == research_id
-                    103: "TECH_TIME_MODIFY",  # a == research_id, if c == 0: d==absval else d==relval
-
-                    # attribute_id:
-                    # 0: hit points
-                    # 1: line of sight
-                    # 2: garrison capacity
-                    # 3: unit size x
-                    # 4: unit size y
-                    # 5: movement speed
-                    # 6: rotation speed
-                    # 7: unknown
-                    # 8: armor                           # real_val = val + (256 * armor_id)
-                    # 9: attack                          # real_val = val + (256 * attack_id)
-                    # 10: attack reloading time
-                    # 11: accuracy percent
-                    # 12: max range
-                    # 13: working rate
-                    # 14: resource carriage
-                    # 15: default armor
-                    # 16: projectile unit
-                    # 17: upgrade graphic (icon), graphics angle
-                    # 18: terrain restriction to multiply damage received (always sets)
-                    # 19: intelligent projectile aim 1=on, 0=off
-                    # 20: minimum range
-                    # 21: first resource storage
-                    # 22: blast width (area damage)
-                    # 23: search radius
-                    # 80: boarding energy reload speed
-                    # 100: resource cost
-                    # 101: creation time
-                    # 102: number of garrison arrows
-                    # 103: food cost
-                    # 104: wood cost
-                    # 105: stone cost
-                    # 106: gold cost
-                    # 107: max total projectiles
-                    # 108: garrison healing rate
-                    # 109: regeneration rate
-                },
+                lookup_dict=EFFECT_APPLY_TYPE
             )),
             (READ_GEN, "attr_a", StorageType.INT_MEMBER, "int16_t"),
             (READ_GEN, "attr_b", StorageType.INT_MEMBER, "int16_t"),
@@ -159,12 +72,7 @@ class OtherConnection(GenieStructure):
             (READ_GEN, "other_connection", StorageType.ID_MEMBER, EnumLookupMember(  # mode for unit_or_research0
                 raw_type="int32_t",
                 type_name="connection_mode",
-                lookup_dict={
-                    0: "AGE",
-                    1: "BUILDING",
-                    2: "UNIT",
-                    3: "RESEARCH",
-                }
+                lookup_dict=CONNECTION_MODE
             )),
         ]
 

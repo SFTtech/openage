@@ -1,12 +1,13 @@
 # Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
-# pylint: disable=too-many-arguments, too-many-locals
+# pylint: disable=too-many-arguments,too-many-locals,too-many-branches
 """
 Detects the base version of the game and installed expansions.
 """
 
 import toml
 
+from ....log import info
 from ...value_object.init.game_version import GameEdition, GameExpansion, Support
 
 
@@ -30,15 +31,16 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
             edition = game_edition
 
             if edition.support == Support.nope:
+                info(f"Found unsupported game edition: {edition}")
                 continue
 
             break
 
     else:
-        raise Exception("no valid game version found.")
+        # This will clear found unsupported game editions
+        return None, []
 
     for game_expansion in edition.expansions:
-
         for existing_game_expansion in avail_game_exps:
             if game_expansion == existing_game_expansion.game_id:
                 game_expansion = existing_game_expansion
@@ -51,6 +53,10 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
                 break
 
         else:
+            if game_expansion.support == Support.nope:
+                info(f"Found unsupported game expansion: {game_expansion}")
+                continue
+
             expansions.append(game_expansion)
 
     return edition, expansions
