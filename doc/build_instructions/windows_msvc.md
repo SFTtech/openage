@@ -93,7 +93,8 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
 
   - Now, to run the openage:
     - Open a CMD window in `<openage directory>` and run `copypyd.cmd`
-    - After it has successfully copied all the files, run `python -m openage game`
+    - After it has successfully copied all the files, run `cd build`
+    - Now run `python -m openage game`
     - Execute`<openage directory>\build\run.exe` every time after that and enjoy!
 
 ## Packaging
