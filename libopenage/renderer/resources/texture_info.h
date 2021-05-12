@@ -15,7 +15,8 @@ namespace renderer {
 namespace resources {
 
 /// How the pixels are represented in a texture.
-enum class pixel_format {
+enum class pixel_format
+{
 	/// 16 bits per pixel, unsigned integer, single channel
 	r16ui,
 	/// 32 bits per pixel, unsigned integer, single channel
@@ -41,8 +42,7 @@ constexpr size_t pixel_size(pixel_format fmt) {
 		std::make_pair(pixel_format::bgr8, 3),
 		std::make_pair(pixel_format::rgba8, 4),
 		std::make_pair(pixel_format::rgba8ui, 4),
-		std::make_pair(pixel_format::depth24, 3)
-  );
+		std::make_pair(pixel_format::depth24, 3));
 
 	return pix_size.get(fmt);
 }
@@ -54,18 +54,22 @@ constexpr size_t pixel_size(pixel_format fmt) {
 class Texture2dInfo {
 public:
 	/// Constructs a Texture2dInfo with the given information.
-	Texture2dInfo(size_t width, size_t height, pixel_format, size_t row_alignment = 1, std::vector<Texture2dSubInfo>&& = std::vector<Texture2dSubInfo>());
+	Texture2dInfo(size_t width,
+	              size_t height,
+	              pixel_format,
+	              size_t row_alignment = 1,
+	              std::vector<Texture2dSubInfo> && = std::vector<Texture2dSubInfo>());
 
 	Texture2dInfo() = default;
-	Texture2dInfo(Texture2dInfo const&) = default;
+	Texture2dInfo(Texture2dInfo const &) = default;
 	~Texture2dInfo() = default;
 
 	/// Compares the texture parameters _excluding_ the subtexture information
 	/// and returns true if they're equal, false otherwise.
-	bool operator==(Texture2dInfo const&);
+	bool operator==(Texture2dInfo const &);
 
 	/// See operator==.
-	bool operator!=(Texture2dInfo const&);
+	bool operator!=(Texture2dInfo const &);
 
 	/// Returns the dimensions of the whole texture bitmap
 	/// @returns tuple(width, height)
@@ -89,7 +93,7 @@ public:
 	size_t get_subtexture_count() const;
 
 	/// Returns the coordinates of the subtexture with the given ID.
-	const Texture2dSubInfo& get_subtexture(size_t subid) const;
+	const Texture2dSubInfo &get_subtexture(size_t subid) const;
 
 	/// Returns the size of the subtexture with the given ID.
 	std::pair<int32_t, int32_t> get_subtexture_size(size_t subid) const;
@@ -118,4 +122,6 @@ private:
 	std::vector<Texture2dSubInfo> subtextures;
 };
 
-}}}
+} // namespace resources
+} // namespace renderer
+} // namespace openage
