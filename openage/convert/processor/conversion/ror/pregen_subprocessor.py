@@ -70,12 +70,12 @@ class RoRPregenSubprocessor:
         # =======================================================================
         # Death condition
         # =======================================================================
-        logic_parent = "engine.aux.logic.LogicElement"
-        literal_parent = "engine.aux.logic.literal.Literal"
-        interval_parent = "engine.aux.logic.literal.type.AttributeBelowValue"
-        literal_location = "data/aux/logic/death/"
+        logic_parent = "engine.util.logic.LogicElement"
+        literal_parent = "engine.util.logic.literal.Literal"
+        interval_parent = "engine.util.logic.literal.type.AttributeBelowValue"
+        literal_location = "data/util/logic/death/"
 
-        death_ref_in_modpack = "aux.logic.literal.death.StandardHealthDeathLiteral"
+        death_ref_in_modpack = "util.logic.literal.death.StandardHealthDeathLiteral"
         literal_raw_api_object = RawAPIObject(death_ref_in_modpack,
                                               "StandardHealthDeathLiteral",
                                               api_objects,
@@ -88,14 +88,14 @@ class RoRPregenSubprocessor:
 
         # Scope
         scope_forward_ref = ForwardRef(pregen_converter_group,
-                                       "aux.logic.literal_scope.death.StandardHealthDeathScope")
+                                       "util.logic.literal_scope.death.StandardHealthDeathScope")
         literal_raw_api_object.add_raw_member("scope",
                                               scope_forward_ref,
                                               literal_parent)
 
         # Attribute
         health_forward_ref = ForwardRef(pregen_converter_group,
-                                        "aux.attribute.types.Health")
+                                        "util.attribute.types.Health")
         literal_raw_api_object.add_raw_member("attribute",
                                               health_forward_ref,
                                               interval_parent)
@@ -110,10 +110,10 @@ class RoRPregenSubprocessor:
         pregen_nyan_objects.update({death_ref_in_modpack: literal_raw_api_object})
 
         # LiteralScope
-        scope_parent = "engine.aux.logic.literal_scope.LiteralScope"
-        self_scope_parent = "engine.aux.logic.literal_scope.type.Self"
+        scope_parent = "engine.util.logic.literal_scope.LiteralScope"
+        self_scope_parent = "engine.util.logic.literal_scope.type.Self"
 
-        death_scope_ref_in_modpack = "aux.logic.literal_scope.death.StandardHealthDeathScope"
+        death_scope_ref_in_modpack = "util.logic.literal_scope.death.StandardHealthDeathScope"
         scope_raw_api_object = RawAPIObject(death_scope_ref_in_modpack,
                                             "StandardHealthDeathScope",
                                             api_objects)
@@ -121,7 +121,7 @@ class RoRPregenSubprocessor:
         scope_raw_api_object.set_location(scope_location)
         scope_raw_api_object.add_raw_parent(self_scope_parent)
 
-        scope_diplomatic_stances = [api_objects["engine.aux.diplomatic_stance.type.Self"]]
+        scope_diplomatic_stances = [api_objects["engine.util.diplomatic_stance.type.Self"]]
         scope_raw_api_object.add_raw_member("stances",
                                             scope_diplomatic_stances,
                                             scope_parent)

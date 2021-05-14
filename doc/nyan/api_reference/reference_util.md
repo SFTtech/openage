@@ -1,11 +1,11 @@
-# engine.aux
+# engine.util
 
-Reference documentation of the `engine.aux` module of the openage modding API.
+Reference documentation of the `engine.util` module of the openage modding API.
 
-## aux.accuracy.Accuracy
+## util.accuracy.Accuracy
 
 ```python
-Accuracy(Entity):
+Accuracy(Object):
     accuracy             : float
     accuracy_dispersion  : float
     dispersion_dropoff   : DropOffType
@@ -30,10 +30,10 @@ Game entities types for which the accuracy value can be used.
 **blacklisted_entities**
 Blacklists game entities that have one of the types listed in `target_types`, but should not be covered by this `Accuracy` object.
 
-## aux.animation_override.AnimationOverride
+## util.animation_override.AnimationOverride
 
 ```python
-AnimationOverride(Entity):
+AnimationOverride(Object):
     ability    : abstract(Ability)
     animations : set(Animation)
     priority   : int
@@ -54,7 +54,7 @@ Replacement animations of the override.
 **priority**
 Priority of the override. Overrides are only executed if their priority is *greater than or equal to* (>=) an already existing override. The default animation from an `Animated` property of an ability always has a priority of 0.
 
-## aux.animation_override.type.Reset
+## util.animation_override.type.Reset
 
 ```python
 Reset(AnimationOverride):
@@ -64,10 +64,10 @@ Reset(AnimationOverride):
 
 Resets the animation of the specified ability to the animation defined in the `Animated` property by removing the current animation override.
 
-## aux.attribute.Attribute
+## util.attribute.Attribute
 
 ```python
-Attribute(Entity):
+Attribute(Object):
     name         : TranslatedString
     abbreviation : TranslatedString
 ```
@@ -80,10 +80,10 @@ Name of the attribute as a translated string.
 **abbreviation**
 Short version of the names as a translated string.
 
-## aux.attribute.AttributeAmount
+## util.attribute.AttributeAmount
 
 ```python
-AttributeAmount(Entity):
+AttributeAmount(Object):
     type   : Attribute
     amount : int
 ```
@@ -96,10 +96,10 @@ Attribute reference.
 **amount**
 Amount of attribute points.
 
-## aux.attribute.AttributeRate
+## util.attribute.AttributeRate
 
 ```python
-AttributeRate(Entity):
+AttributeRate(Object):
     type   : Attribute
     rate   : float
 ```
@@ -112,14 +112,14 @@ Attribute reference.
 **rate**
 Rate of attribute points.
 
-## aux.attribute.AttributeSetting
+## util.attribute.AttributeSetting
 
 ```python
-AttributeSetting(Entity):
-    attribute      : Attribute
-    min_value      : int
-    max_value      : int
-    starting_value : int
+AttributeSetting(Object):
+    attribute       : Attribute
+    min_value       : int
+    max_value       : int
+    starting_value  : int
 ```
 
 Assigns an attribute to a game entity and specifies the range the attribute value can be in. The game entity has a *current attribute value* at runtime. Attribute values can be changed by abilities or effects.
@@ -136,7 +136,7 @@ Maximum value the current attribute value can have.
 **starting_value**
 The current attribute value when the game entity is created.
 
-## aux.attribute.ProtectingAttribute
+## util.attribute.ProtectingAttribute
 
 ```python
 ProtectingAttribute(Attribute):
@@ -148,16 +148,16 @@ Protects an attribute by preventing its value to be decreased by another game en
 **protects**
 The attribute that is protected.
 
-## aux.attribute_change_type.AttributeChangeType
+## util.attribute_change_type.AttributeChangeType
 
 ```python
-AttributeChangeType(Entity):
+AttributeChangeType(Object):
     pass
 ```
 
 Used by `FlatAttributeChange` effects and resistances for matching.
 
-## aux.attribute_change_type.type.Fallback
+## util.attribute_change_type.type.Fallback
 
 ```python
 Fallback(AttributeChangeType):
@@ -168,16 +168,16 @@ A special type for `FlatAttributeChange`. Effects with this type are only evalua
 
 For example, effects that utilize fallback behaviour can be used to model minimum or maximum damage of a game entity.
 
-## aux.calculation_type.CalculationType
+## util.calculation_type.CalculationType
 
 ```python
-CalculationType(Entity):
+CalculationType(Object):
     pass
 ```
 
 Generalization object for the calculation method for the influence factor of a resistance with the `Stacked` property.
 
-## aux.calculation_type.type.Hyperbolic
+## util.calculation_type.type.Hyperbolic
 
 ```python
 Hyperbolic(CalculationType):
@@ -201,7 +201,7 @@ Vertical shift in the hyperbola equation.
 **scale_factor**
 Scale factor in the hyperbola equation.
 
-## aux.calculation_type.type.Linear
+## util.calculation_type.type.Linear
 
 ```python
 Linear(CalculationType):
@@ -225,7 +225,7 @@ Vertical shift in the linear equation.
 **scale_factor**
 Scale factor in the linear equation.
 
-## aux.calculation_type.type.NoStack
+## util.calculation_type.type.NoStack
 
 ```python
 NoStack(CalculationType):
@@ -234,10 +234,10 @@ NoStack(CalculationType):
 
 Sets the influence factor to 1 regardless of the number of effectors. Note that this is different to setting the stack limit to 1, since the distribution type can still be influenced by multiple effectors.
 
-## aux.cheat.Cheat
+## util.cheat.Cheat
 
 ```python
-Cheat(Entity):
+Cheat(Object):
     activation_message : text
     changes            : orderedset(Patch)
 ```
@@ -250,28 +250,28 @@ The activation message that has to be typed into the chat console.
 **changes**
 Changes to API objects.
 
-## aux.container_type.SendToContainerType
+## util.container_type.SendToContainerType
 
 ```python
-SendToContainerType(Entity):
+SendToContainerType(Object):
     pass
 ```
 
 Used by `SendToContainer` effects and resistances for matching.
 
-## aux.convert_type.ConvertType
+## util.convert_type.ConvertType
 
 ```python
-ConvertType(Entity):
+ConvertType(Object):
     pass
 ```
 
 Used by `Convert` effects and resistances for matching.
 
-## aux.cost.Cost
+## util.cost.Cost
 
 ```python
-Cost(Entity):
+Cost(Object):
     payment_mode : PaymentMode
 ```
 
@@ -280,7 +280,7 @@ Generalization object for resource and attribute costs.
 **payment_mode**
 Determines how the costs have to be payed.
 
-## aux.cost.type.AttributeCost
+## util.cost.type.AttributeCost
 
 ```python
 AttributeCost(Cost):
@@ -292,7 +292,7 @@ Defines the cost as an amount of attribute points that is removed from a game en
 **amount**
 Amounts of attribute points.
 
-## aux.cost.type.ResourceCost
+## util.cost.type.ResourceCost
 
 ```python
 ResourceCost(Cost):
@@ -304,10 +304,10 @@ Defines the cost as an amount of resources that is removed from the player's res
 **amount**
 Amounts of resources.
 
-## aux.create.CreatableGameEntity
+## util.create.CreatableGameEntity
 
 ```python
-CreatableGameEntity(Entity):
+CreatableGameEntity(Object):
     game_entity     : GameEntity
     variants        : set(Variant)
     cost            : Cost
@@ -340,16 +340,16 @@ Conditions that unlock the creatable game entity for the creating game entity. O
 **placement_modes**
 Decides where and how the game entity instance is spawned.
 
-## aux.diplomatic_stance.DiplomaticStance
+## util.diplomatic_stance.DiplomaticStance
 
 ```python
-DiplomaticStance(Entity):
+DiplomaticStance(Object):
     pass
 ```
 
 Generalization object for diplomatic stances that can be used for diplomacy ingame. Diplomatic stances also define which player can use the abilities, modifiers and effects of a game entity.
 
-## aux.diplomatic_stance.Any
+## util.diplomatic_stance.Any
 
 ```python
 Any(DiplomaticStance):
@@ -358,7 +358,7 @@ Any(DiplomaticStance):
 
 Can be used to address any diplomatic stance.
 
-## aux.diplomatic_stance.type.Self
+## util.diplomatic_stance.type.Self
 
 ```python
 Self(DiplomaticStance):
@@ -367,16 +367,16 @@ Self(DiplomaticStance):
 
 The diplomatic stance of a player towards themselves.
 
-## aux.distribution_type.DistributionType
+## util.distribution_type.DistributionType
 
 ```python
-DistributionType(Entity):
+DistributionType(Object):
     pass
 ```
 
 Generalization object for the calculation method for the distribution value of a resistance with the `Stacked` property.
 
-## aux.distribution_type.type.Mean
+## util.distribution_type.type.Mean
 
 ```python
 Mean(DistributionType):
@@ -385,16 +385,16 @@ Mean(DistributionType):
 
 Calculates the distribution value by using the mean of all change values of effectors.
 
-## aux.dropoff_type.DropoffType
+## util.dropoff_type.DropoffType
 
 ```python
-DropoffType(Entity):
+DropoffType(Object):
     pass
 ```
 
 Used for calculating the effectiveness over distance of `AreaEffect`s and `Accuracy` of projectiles. The dropoff modifier is always relational to the maximum range.
 
-## aux.dropoff_type.type.InverseLinear
+## util.dropoff_type.type.InverseLinear
 
 ```python
 InverseLinear(DropoffType):
@@ -403,7 +403,7 @@ InverseLinear(DropoffType):
 
 The effectiveness starts at 0% (for zero distance) and linearly increases to 100% (for maximum distance).
 
-## aux.dropoff_type.type.Linear
+## util.dropoff_type.type.Linear
 
 ```python
 Linear(DropoffType):
@@ -412,7 +412,7 @@ Linear(DropoffType):
 
 The effectiveness starts at 100% (for zero distance) and linearly decreases to 0% (for maximum distance).
 
-## aux.dropoff_type.type.NoDropoff
+## util.dropoff_type.type.NoDropoff
 
 ```python
 NoDropoff(DropoffType):
@@ -421,10 +421,10 @@ NoDropoff(DropoffType):
 
 The effectiveness is constant and independent from the range to the target.
 
-## aux.effect_batch.EffectBatch
+## util.effect_batch.EffectBatch
 
 ```python
-EffectBatch(Entity):
+EffectBatch(Object):
     effects    : set(DiscreteEffect)
     properties : dict(abstract(BatchProperty), BatchProperty) = {}
 ```
@@ -437,23 +437,23 @@ Discrete effects applied by the batch.
 **properties**
 Further specializes the batch beyond the standard behaviour.
 
-The engine expects objects from the namespace `engine.aux.effect_batch.property.type` as keys. Values must always be an instance of the object used as key.
+The engine expects objects from the namespace `engine.util.effect_batch.property.type` as keys. Values must always be an instance of the object used as key.
 
 Properties:
 
 * `Chance`: Batches have a chance to be applied.
 * `Priority`: Sets the preferred order of application in comparison to other batches.
 
-## aux.effect_batch.property.BatchProperty
+## util.effect_batch.property.BatchProperty
 
 ```python
-BatchProperty(Entity):
+BatchProperty(Object):
     pass
 ```
 
 Generalization object for all properties of effect batches.
 
-## aux.effect_batch.property.type.Chance
+## util.effect_batch.property.type.Chance
 
 ```python
 Chance(BatchProperty):
@@ -465,7 +465,7 @@ The batch has a random chance to be applied.
 **chance**
 Chance of the batch to be applied. Muste be a value between 0.0 and 1.0.
 
-## aux.effect_batch.property.type.Priority
+## util.effect_batch.property.type.Priority
 
 ```python
 Priority(BatchProperty):
@@ -477,7 +477,7 @@ Assigns a priority value to the batch that is used to determine the order of bat
 **priority**
 The priority of the batch. When comparing with other batches, the batch with higher values are applied first.
 
-## aux.effect_batch.type.ChainedBatch
+## util.effect_batch.type.ChainedBatch
 
 ```python
 ChainedBatch(EffectBatch):
@@ -486,7 +486,7 @@ ChainedBatch(EffectBatch):
 
 The effects in the batch are applied using the effect property `Priority` for ordering. If two or more effects have the same priority, it is assumed that the order for these effects does not matter. Effects are applied as long there are matching resistance objects stored by the resistor. If an effect cannot be applied because of a missing match, the application of the remaining effects is canceled.
 
-## aux.effect_batch.type.OrderedBatch
+## util.effect_batch.type.OrderedBatch
 
 ```python
 OrderedBatch(EffectBatch):
@@ -495,7 +495,7 @@ OrderedBatch(EffectBatch):
 
 The effects in the batch are applied using the effect property `Priority` for ordering. If two or more effects have the same priority, it is assumed that the order for these effects does not matter.
 
-## aux.effect_batch.type.UnorderedBatch
+## util.effect_batch.type.UnorderedBatch
 
 ```python
 UnorderedBatch(EffectBatch):
@@ -504,10 +504,10 @@ UnorderedBatch(EffectBatch):
 
 The effects in the batch are applied without any particular order.
 
-## aux.exchange_mode.ExchangeMode
+## util.exchange_mode.ExchangeMode
 
 ```python
-ExchangeMode(Entity):
+ExchangeMode(Object):
     fee_multiplier : float
 ```
 
@@ -516,7 +516,7 @@ Generalization object for exchange modes of the `ExchangeResource` ability.
 **fee_multiplier**
 Share of resource amounts that have to be payed as a fee for using the exchange mode. The fee is additional to the exchanged resources.
 
-## aux.exchange_mode.type.Buy
+## util.exchange_mode.type.Buy
 
 ```python
 Buy(ExchangeMode):
@@ -525,7 +525,7 @@ Buy(ExchangeMode):
 
 Buy an amount of `resource_a` by paying with an amount of `resource_b`. `resource_a * fee_multiplier` is charged as the additional fee.
 
-## aux.exchange_mode.type.Sell
+## util.exchange_mode.type.Sell
 
 ```python
 Sell(ExchangeMode):
@@ -534,10 +534,10 @@ Sell(ExchangeMode):
 
 Sell an amount of `resource_a` and receive an amount of `resource_b`. `resource_a * fee_multiplier` is charged as the additional fee.
 
-## aux.exchange_rate.ExchangeRate
+## util.exchange_rate.ExchangeRate
 
 ```python
-ExchangeRate(Entity):
+ExchangeRate(Object):
     base_price   : float
     price_adjust : optional(dict(ExchangeMode, PriceMode)) = None
     price_pool   : optional(children(PricePool)) = None
@@ -554,10 +554,10 @@ Method to adjust the current price of the exchange rate at runtime. This method 
 **price_pool**
 Can be used to sync the current price at runtime across game entities. All exchange rates that use the same price pool share the same price at runtime. If `ExchangeRate` objects reference the same `PricePool`, but have different `base_price` values defined, the price at the start of the game is set to the lowest `base_price` value.
 
-## aux.formation.Formation
+## util.formation.Formation
 
 ```python
-Formation(Entity):
+Formation(Object):
     subformations : set(Subformation)
 ```
 
@@ -566,10 +566,10 @@ Organizational structure for multiple game entities.
 **subformations**
 Subdivisions of the formation. Game entities are sorted into one of the subformations.
 
-## aux.formation.Subformation
+## util.formation.Subformation
 
 ```python
-Subformation(Entity):
+Subformation(Object):
     ordering_priority : int
 ```
 
@@ -578,10 +578,10 @@ Subdivision of a formation. It defines the structure and placement of game entit
 **ordering_priority**
 Ordering priority in relation to other subformations. Formations are ordered in with descending priority, i.e. the subformation with the highest priority is placed in front.
 
-## aux.game_entity.GameEntity
+## util.game_entity.GameEntity
 
 ```python
-GameEntity(Entity):
+GameEntity(Object):
     types     : set(children(GameEntityType))
     abilities : set(Ability)
     modifiers : set(Modifier)
@@ -599,10 +599,10 @@ Define what the game entity *does* and *is* (see the [ability module](reference_
 **modifiers**
 Change the stats of abilities belonging to the game entity. Mostly used to give boni or mali in certain situations (see the [modifier module](reference_modifier.md)).
 
-## aux.game_entity_formation.GameEntityFormation
+## util.game_entity_formation.GameEntityFormation
 
 ```python
-GameEntityFormation(Entity):
+GameEntityFormation(Object):
     formation    : Formation
     subformation : Subformation
 ```
@@ -615,10 +615,10 @@ Formation the game entity is placed in.
 **subformation**
 Subformation inside the subformation that the game entity is inserted into.
 
-## aux.game_entity_stance.GameEntityStance
+## util.game_entity_stance.GameEntityStance
 
 ```python
-GameEntityStance(Entity):
+GameEntityStance(Object):
     search_range       : float
     ability_preference : orderedset(Ability)
     type_preference    : orderedset(children(GameEntityType))
@@ -635,7 +635,7 @@ Abilities which the game entity will execute or search targets for. Their order 
 **type_preference**
 Determines which game entity types are prioritized as targets. Their order in the set defines the priority with which they are targeted. Game entities with types that are not in the set will be ignored.
 
-## aux.game_entity_stance.type.Aggressive
+## util.game_entity_stance.type.Aggressive
 
 ```python
 Aggressive(GameEntityStance):
@@ -644,7 +644,7 @@ Aggressive(GameEntityStance):
 
 The game entity will use ranged abilities or move to the nearest target in its line of sight to use other abilities. If the target gets out of the line of sight, the game entity searches for a new target. When no new target can be found, the game entity stops moving and returns to an idle state.
 
-## aux.game_entity_stance.type.Defensive
+## util.game_entity_stance.type.Defensive
 
 ```python
 Defensive(GameEntityStance):
@@ -653,7 +653,7 @@ Defensive(GameEntityStance):
 
 The game entity will use ranged abilities or move to the nearest target in its line of sight to use other abilities. If the target gets out of range or the line of sight, the game entity searches for a new target. When no new target can be found, the game entity returns to its original position and returns to an idle state.
 
-## aux.game_entity_stance.type.Passive
+## util.game_entity_stance.type.Passive
 
 ```python
 Passive(GameEntityStance):
@@ -662,7 +662,7 @@ Passive(GameEntityStance):
 
 The game entity will stay at its current position and only reacts to manual commands given by players. Abilities in `ability_preference` will be ignored.
 
-## aux.game_entity_stance.type.StandGround
+## util.game_entity_stance.type.StandGround
 
 ```python
 StandGround(GameEntityStance):
@@ -671,16 +671,16 @@ StandGround(GameEntityStance):
 
 The game entity will stay at its current position. Abilities in `ability_preference` will be used if other game entities come in range of the game entity.
 
-## aux.game_entity_type.GameEntityType
+## util.game_entity_type.GameEntityType
 
 ```python
-GameEntityType(Entity):
+GameEntityType(Object):
     pass
 ```
 
 Classification for a game entity.
 
-## aux.game_entity_type.Any
+## util.game_entity_type.Any
 
 ```python
 Any(GameEntityType):
@@ -689,43 +689,43 @@ Any(GameEntityType):
 
 Can be used to address any game entity, even ones that have no `GameEntityType` assigned.
 
-## aux.graphics.Animation
+## util.graphics.Animation
 
 ```python
-Animation(Entity):
+Animation(Object):
     sprite : file
 ```
 
 Points to a openage sprite definition file in the `.sprite` format. The specified animation can be used by `AnimatedAbility` objects.
 
-## aux.graphics.Palette
+## util.graphics.Palette
 
 ```python
-Palette(Entity):
+Palette(Object):
     palette : file
 ```
 
 Points to a openage palette definition file in the `.opal` format.
 
-## aux.graphics.Terrain
+## util.graphics.Terrain
 
 ```python
-Terrain(Entity):
+Terrain(Object):
     sprite : file
 ```
 
 Points to a openage terrain definition file in the `.terrain` format. This object is used by the `terrain.Terrain` object that defines properties of ingame terrain.
 
-## aux.herdable_mode.HerdableMode
+## util.herdable_mode.HerdableMode
 
 ```python
-HerdableMode(Entity):
+HerdableMode(Object):
     pass
 ```
 
 Used by the `Herdable` ability to determine who gets ownership of the herdable.
 
-## aux.herdable_mode.type.ClosestHerding
+## util.herdable_mode.type.ClosestHerding
 
 ```python
 ClosestHerding(HerdableMode):
@@ -734,7 +734,7 @@ ClosestHerding(HerdableMode):
 
 The player with the closest herding game entity gets ownership.
 
-## aux.herdable_mode.type.LongestTimeInRange
+## util.herdable_mode.type.LongestTimeInRange
 
 ```python
 LongestTimeInRange(HerdableMode):
@@ -743,7 +743,7 @@ LongestTimeInRange(HerdableMode):
 
 The player of the game entity which has been in range for the longest time gets ownership.
 
-## aux.herdable_mode.type.MostHerding
+## util.herdable_mode.type.MostHerding
 
 ```python
 MostHerding(HerdableMode):
@@ -752,10 +752,10 @@ MostHerding(HerdableMode):
 
 The player with the most herding game entities in range gets ownership.
 
-## aux.hitbox.Hitbox
+## util.hitbox.Hitbox
 
 ```python
-Hitbox(Entity):
+Hitbox(Object):
     radius_x : float
     radius_y : float
     radius_z : float
@@ -772,10 +772,10 @@ Length of the game entity.
 **radius_z**
 Height of the game entity.
 
-## aux.language.Language
+## util.language.Language
 
 ```python
-Language(Entity):
+Language(Object):
     ietf_string : text
 ```
 
@@ -784,10 +784,10 @@ A language definition. Languages are used for translated strings, markup files a
 **ietf_string**
 The IETF identification tag of the language. [See here](https://tools.ietf.org/html/rfc4646) for more information on how the tags are established.
 
-## aux.language.LanguageMarkupPair
+## util.language.LanguageMarkupPair
 
 ```python
-LanguageMarkupPair(Entity):
+LanguageMarkupPair(Object):
     language    : Language
     markup_file : file
 ```
@@ -800,10 +800,10 @@ Language used in the markup file.
 **markup_file**
 File descriptor of the markup file. Has to be relative to the `.nyan` file where the `LanguageMarkupPair` is defined.
 
-## aux.language.LanguageSoundPair
+## util.language.LanguageSoundPair
 
 ```python
-LanguageSoundPair(Entity):
+LanguageSoundPair(Object):
     language : Language
     sound    : Sound
 ```
@@ -816,10 +816,10 @@ Language used for the sound.
 **sound**
 References the `Sound` object for the translation.
 
-## aux.language.LanguageTextPair
+## util.language.LanguageTextPair
 
 ```python
-LanguageTextPair(Entity):
+LanguageTextPair(Object):
     language : Language
     string   : text
 ```
@@ -832,16 +832,16 @@ Language used for the string.
 **string**
 The translated string.
 
-## aux.language.translated.TranslatedObject
+## util.language.translated.TranslatedObject
 
 ```python
-TranslatedObject(Entity):
+TranslatedObject(Object):
     pass
 ```
 
 Generalization object for any objects that are or should be different depending on the language. Currently we support translations for strings, markup files and sounds.
 
-## aux.language.translated.type.TranslatedMarkupFile
+## util.language.translated.type.TranslatedMarkupFile
 
 ```python
 TranslatedMarkupFile(TranslatedObject):
@@ -853,7 +853,7 @@ The translated versions of a longer text stored in markup files.
 **translations**
 All translations of the markup files as language-file pairs (see `LanguageMarkupPair`).
 
-## aux.language.translated.type.TranslatedSound
+## util.language.translated.type.TranslatedSound
 
 ```python
 TranslatedSound(TranslatedObject):
@@ -865,7 +865,7 @@ The translated versions of a sound.
 **translations**
 All translations of the sound as language-sound pairs (see `LanguageSoundPair`).
 
-## aux.language.translated.type.TranslatedString
+## util.language.translated.type.TranslatedString
 
 ```python
 TranslatedString(TranslatedObject):
@@ -877,10 +877,10 @@ The translated versions of a string.
 **translations**
 All translations of the string as language-text pairs (see `LanguageTextPair`).
 
-## aux.lock.LockPool
+## util.lock.LockPool
 
 ```python
-LockPool(Entity):
+LockPool(Object):
     slots : int
 ```
 
@@ -889,7 +889,7 @@ Used by abilities to block each other. The lock pool has a defined number of slo
 **slots**
 Maximum number of abilities using the pool that can be active at the same time.
 
-## aux.logic.LogicElement
+## util.logic.LogicElement
 
 ```python
 LogicElement(LogicElement):
@@ -901,7 +901,7 @@ Generalization object for a logical elements (literals, gates or constants) in t
 **only_once**
 If this is set, the logical element is always true if it has been true at least once during the game.
 
-## aux.logic.const.False
+## util.logic.const.False
 
 ```python
 False(LogicElement):
@@ -910,7 +910,7 @@ False(LogicElement):
 
 A logic element that is always false.
 
-## aux.logic.const.True
+## util.logic.const.True
 
 ```python
 True(LogicElement):
@@ -919,7 +919,7 @@ True(LogicElement):
 
 A logic element that is always true.
 
-## aux.logic.gate.LogicGate
+## util.logic.gate.LogicGate
 
 ```python
 LogicGate(LogicElement):
@@ -931,7 +931,7 @@ Gneralization object for a logic gate implementing a Boolean function. The Boole
 **inputs**
 Inputs for the gate. Some types of gate may require a minimum or maximum number of inputs. Gates with 0 inputs are always evaluated to false.
 
-## aux.logic.gate.type.AND
+## util.logic.gate.type.AND
 
 ```python
 AND(LogicGate):
@@ -940,7 +940,7 @@ AND(LogicGate):
 
 Evaluates to true if *all* inputs are true.
 
-## aux.logic.gate.type.MULTIXOR
+## util.logic.gate.type.MULTIXOR
 
 ```python
 MULTIXOR(LogicGate):
@@ -949,7 +949,7 @@ MULTIXOR(LogicGate):
 
 Evaluates to true if *an uneven number of* inputs is true.
 
-## aux.logic.gate.type.NOT
+## util.logic.gate.type.NOT
 
 ```python
 NOT(LogicGate):
@@ -960,7 +960,7 @@ Negates the input.
 
 Only one input is allowed for this type of gate. If more than one input is defined, the gate evaluates to false.
 
-## aux.logic.gate.type.OR
+## util.logic.gate.type.OR
 
 ```python
 OR(LogicGate):
@@ -969,7 +969,7 @@ OR(LogicGate):
 
 Evaluates to true if *at least one* input is true.
 
-## aux.logic.gate.type.SUBSETMAX
+## util.logic.gate.type.SUBSETMAX
 
 ```python
 SUBSETMAX(LogicGate):
@@ -981,7 +981,7 @@ Evaluates to true if *at most* `size` inputs are true.
 **size**
 Maximum number of inputs that should be true.
 
-## aux.logic.gate.type.SUBSETMIN
+## util.logic.gate.type.SUBSETMIN
 
 ```python
 SUBSETMIN(LogicGate):
@@ -993,7 +993,7 @@ Evaluates to true if *at least* `size` inputs are true.
 **size**
 Minimum number of inputs that must be true.
 
-## aux.logic.gate.type.XOR
+## util.logic.gate.type.XOR
 
 ```python
 XOR(LogicGate):
@@ -1002,7 +1002,7 @@ XOR(LogicGate):
 
 Evaluates to true if *exactly one* input is true.
 
-## aux.logic.literal.Literal
+## util.logic.literal.Literal
 
 ```python
 Literal(LogicElement):
@@ -1014,7 +1014,7 @@ Generalization object for a logical statement about the game world that is eithe
 **scope**
 Scope in which the statement is checked.
 
-## aux.logic.literal.type.AttributeAbovePercentage
+## util.logic.literal.type.AttributeAbovePercentage
 
 ```python
 AttributeAbovePercentage(Literal):
@@ -1030,7 +1030,7 @@ Attribute that is checked.
 **threshold**
 Value threshold that must be passed for the literal to be true.
 
-## aux.logic.literal.type.AttributeAboveValue
+## util.logic.literal.type.AttributeAboveValue
 
 ```python
 AttributeAboveValue(Literal):
@@ -1046,7 +1046,7 @@ Attribute that is checked.
 **threshold**
 Value threshold that must be passed for the literal to be true.
 
-## aux.logic.literal.type.AttributeBelowPercentage
+## util.logic.literal.type.AttributeBelowPercentage
 
 ```python
 AttributeBelowPercentage(Literal):
@@ -1062,7 +1062,7 @@ Attribute that is checked.
 **threshold**
 Value threshold that must be passed for the literal to be true.
 
-## aux.logic.literal.type.AttributeBelowValue
+## util.logic.literal.type.AttributeBelowValue
 
 ```python
 AttributeBelowValue(Literal):
@@ -1078,7 +1078,7 @@ Attribute that is checked.
 **threshold**
 Value threshold that must be passed for the literal to be true.
 
-## aux.logic.literal.type.GameEntityProgress
+## util.logic.literal.type.GameEntityProgress
 
 ```python
 GameEntityProgress(Literal):
@@ -1094,7 +1094,7 @@ The game entity that should have progressed this far.
 **status**
 Status of a game entity as a `ProgressStatus` object.
 
-## aux.logic.literal.type.OwnsGameEntity
+## util.logic.literal.type.OwnsGameEntity
 
 ```python
 OwnsGameEntity(Literal):
@@ -1106,7 +1106,7 @@ Triggers when a game entity is owned by a player in the defined scope.
 **game_entity**
 Game entity that should be owned.
 
-## aux.logic.literal.type.ProjectileHitTerrain
+## util.logic.literal.type.ProjectileHitTerrain
 
 ```python
 ProjectileHitTerrain(Literal):
@@ -1115,7 +1115,7 @@ ProjectileHitTerrain(Literal):
 
 Triggers when a game entity's hitbox collides with the terrain of the map.
 
-## aux.logic.literal.type.ProjectilePassThrough
+## util.logic.literal.type.ProjectilePassThrough
 
 ```python
 ProjectilePassThrough(Literal):
@@ -1127,7 +1127,7 @@ Triggers when the distance to the spawn location of the game entity becomes grea
 **pass_through_range**
 Distance to the spawn location. Only (x,y) coordinates are considered.
 
-## aux.logic.literal.type.ResourceSpotsDepleted
+## util.logic.literal.type.ResourceSpotsDepleted
 
 ```python
 ResourceSpotsDepleted(Literal):
@@ -1139,7 +1139,7 @@ Triggers when all resource spots in `Harvestable` abilities have been depleted.
 **only_enabled**
 The condition only considers resource spots of enabled `Harvestable` abilities.
 
-## aux.logic.literal.type.StateChangeActive
+## util.logic.literal.type.StateChangeActive
 
 ```python
 StateChangeActive(Literal):
@@ -1148,7 +1148,7 @@ StateChangeActive(Literal):
 
 Triggers when the defined state changer is active for the game entity.
 
-## aux.logic.literal.type.TechResearched
+## util.logic.literal.type.TechResearched
 
 ```python
 TechResearched(Literal):
@@ -1160,7 +1160,7 @@ Is true when the specified technology has been researched by the player.
 **tech**
 Technology that has to be researched.
 
-## aux.logic.literal.type.Timer
+## util.logic.literal.type.Timer
 
 ```python
 Timer(Literal):
@@ -1172,10 +1172,10 @@ Triggers after a specified amount of time has passed. When the timer is started 
 **time**
 Time that has to pass after the activation.
 
-## aux.logic.literal_scope.LiteralScope
+## util.logic.literal_scope.LiteralScope
 
 ```python
-LiteralScope(Entity):
+LiteralScope(Object):
     stances : set(children(DiplomaticStance))
 ```
 
@@ -1184,7 +1184,7 @@ Configures the scope in which the fulfillment of the literal is checked.
 **stances**
 Diplomatic stances defining the boundaries of the scope.
 
-## aux.logic.literal_scope.type.Any
+## util.logic.literal_scope.type.Any
 
 ```python
 Any(LiteralScope):
@@ -1193,7 +1193,7 @@ Any(LiteralScope):
 
 Check if the literal is true for any entity.
 
-## aux.logic.literal_scope.type.Self
+## util.logic.literal_scope.type.Self
 
 ```python
 Self(LiteralScope):
@@ -1202,19 +1202,19 @@ Self(LiteralScope):
 
 Check if the literal is true for the game entity it is assigned to.
 
-## aux.lure_type.LureType
+## util.lure_type.LureType
 
 ```python
-LureType(Entity):
+LureType(Object):
     pass
 ```
 
 Used by `Lure` effects and resistances for matching.
 
-## aux.mod.Mod
+## util.mod.Mod
 
 ```python
-Mod(Entity):
+Mod(Object):
     patches  : orderedset(Patch)
     priority : int
 ```
@@ -1227,16 +1227,16 @@ Changes the game state through patches.
 **priority**
 Determines the application order of the mod in comparison to other `Mod` objects. `Mod` objects are applied starting with the object with the highest priority value.
 
-## aux.modifier_scope.ModifierScope
+## util.modifier_scope.ModifierScope
 
 ```python
-ModifierScope(Entity):
+ModifierScope(Object):
     pass
 ```
 
 Generalization object for scopes of a `Scoped` property of a `Modifier`.
 
-## aux.modifier_scope.type.GameEntityScope
+## util.modifier_scope.type.GameEntityScope
 
 ```python
 GameEntityScope(ModifierScope):
@@ -1252,7 +1252,7 @@ Whitelist of game entity types that the modifier should apply to.
 **blacklisted_entities**
 Blacklist for specific game entities that would be covered by `affected_types`, but should be excplicitly excluded.
 
-## aux.modifier_scope.type.Standard
+## util.modifier_scope.type.Standard
 
 ```python
 Standard(ModifierScope):
@@ -1261,16 +1261,16 @@ Standard(ModifierScope):
 
 Makes the modifier behave as if standard rules would apply, i.e. as if the modifier had no `Scoped` property.
 
-## aux.move_mode.MoveMode
+## util.move_mode.MoveMode
 
 ```python
-MoveMode(Entity):
+MoveMode(Object):
     pass
 ```
 
 Generalization object for move modes for the `Move` ability.
 
-## aux.move_mode.type.AttackMove
+## util.move_mode.type.AttackMove
 
 ```python
 AttackMove(MoveMode):
@@ -1279,7 +1279,7 @@ AttackMove(MoveMode):
 
 Move to a position on the map. Stances from `GameEntityStance` ability are considered during movement.
 
-## aux.move_mode.type.Follow
+## util.move_mode.type.Follow
 
 ```python
 Follow(MoveMode):
@@ -1291,7 +1291,7 @@ Follow another game entity at a defined range. The movement speed is adjusted to
 **range**
 The range at which the other game entity is followed.
 
-## aux.move_mode.type.Guard
+## util.move_mode.type.Guard
 
 ```python
 Guard(MoveMode):
@@ -1303,7 +1303,7 @@ Follow another game entity at a defined range and defend it from other game enti
 **range**
 The range at which the other game entity is guarded.
 
-## aux.move_mode.type.Normal
+## util.move_mode.type.Normal
 
 ```python
 Normal(MoveMode):
@@ -1312,7 +1312,7 @@ Normal(MoveMode):
 
 Move to a position on the map. Stances from `GameEntityStance` ability are ignored during movement.
 
-## aux.move_mode.type.Patrol
+## util.move_mode.type.Patrol
 
 ```python
 Patrol(MoveMode):
@@ -1321,10 +1321,10 @@ Patrol(MoveMode):
 
 Lets player set two or more waypoints that the game entity will follow. Stances from `GameEntityStance` ability are considered during movement.
 
-## aux.passable_mode.PassableMode
+## util.passable_mode.PassableMode
 
 ```python
-PassableMode(Entity):
+PassableMode(Object):
     allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
@@ -1337,7 +1337,7 @@ Lists the game entities types which can pass the hitbox.
 **blacklisted_entities**
 Used to blacklist game entities that have one of the types listed in `allowed_types`, but should not be covered by this `PassableMode` object.
 
-## aux.passable_mode.type.Gate
+## util.passable_mode.type.Gate
 
 ```python
 Gate(PassableMode):
@@ -1349,7 +1349,7 @@ Lets all compatible game entities from players with the specified stances pass t
 **stances**
 Stances of players whose game entities are always allowed to pass though the hitbox.
 
-## aux.passable_mode.type.Normal
+## util.passable_mode.type.Normal
 
 ```python
 Normal(PassableMode):
@@ -1358,19 +1358,19 @@ Normal(PassableMode):
 
 Lets all compatible game entities pass through the hitbox.
 
-## aux.patch.NyanPatch
+## util.patch.NyanPatch
 
 ```python
-NyanPatch(Entity):
+NyanPatch(Object):
     pass
 ```
 
 Parent object for nyan patches used in the openage API. All nyan patches must inherit from this object.
 
-## aux.patch.Patch
+## util.patch.Patch
 
 ```python
-Patch(Entity):
+Patch(Object):
     properties : dict(abstract(PatchProperty), PatchProperty) = {}
     patch      : children(NyanPatch)
 ```
@@ -1387,16 +1387,16 @@ Properties:
 **patch**
 Nyan patch that gets applied by the wrapper.
 
-## aux.patch.property.PatchProperty
+## util.patch.property.PatchProperty
 
 ```python
-PatchProperty(Entity):
+PatchProperty(Object):
     pass
 ```
 
 Generalization object for all properties of patches.
 
-## aux.patch.property.type.Diplomatic
+## util.patch.property.type.Diplomatic
 
 ```python
 Diplomatic(PatchProperty):
@@ -1408,16 +1408,16 @@ The patch is applied to all players that have the specified diplomatic stances.
 **stances**
 Diplomatic stances of the players the patch should apply to.
 
-## aux.payment_mode.PaymentMode
+## util.payment_mode.PaymentMode
 
 ```python
-PaymentMode(Entity):
+PaymentMode(Object):
     pass
 ```
 
 Generalization object for the payment options of a `Cost` object.
 
-## aux.payment_mode.type.Adaptive
+## util.payment_mode.type.Adaptive
 
 ```python
 Adaptive(PaymentMode):
@@ -1426,7 +1426,7 @@ Adaptive(PaymentMode):
 
 The cost is handled as *running costs*. Payment is progressive (relative to a value, e.g. time) while an action is executed. The action halts if the costs cannot be payed anymore.
 
-## aux.payment_mode.type.Advance
+## util.payment_mode.type.Advance
 
 ```python
 Advance(PaymentMode):
@@ -1435,7 +1435,7 @@ Advance(PaymentMode):
 
 The cost is handled as *payment in advance*. Actions require payment first before they can be executed.
 
-## aux.payment_mode.type.Arrear
+## util.payment_mode.type.Arrear
 
 ```python
 Arrear(PaymentMode):
@@ -1444,7 +1444,7 @@ Arrear(PaymentMode):
 
 The cost is handled as *payment in arrear*. Actions that require payment are executed first and payed afterwards.
 
-## aux.payment_mode.type.Shadow
+## util.payment_mode.type.Shadow
 
 ```python
 Shadow(PaymentMode):
@@ -1453,16 +1453,16 @@ Shadow(PaymentMode):
 
 Requires the resources or attribute points to be available to the player, but does not require payment of the resources.
 
-## aux.placement_mode.PlacementMode
+## util.placement_mode.PlacementMode
 
 ```python
-PlacementMode(Entity):
+PlacementMode(Object):
     pass
 ```
 
 Generalization object for all placement modes that are configurable for a `CreatableGameEntity` object.
 
-## aux.placement_mode.type.Eject
+## util.placement_mode.type.Eject
 
 ```python
 Eject(PlacementMode):
@@ -1471,11 +1471,11 @@ Eject(PlacementMode):
 
 The game entity is ejected from the creating game entity. Ejecting considers the game entity's `Hitbox` and `TerrainRequirement` abilities for the ejection location.
 
-## aux.placement_mode.type.OwnStorage
+## util.placement_mode.type.OwnStorage
 
 ```python
 OwnStorage(PlacementMode):
-    container : Container
+    container : EntityContainer
 ```
 
 The game entity is stored into a container of the creating game entity.
@@ -1483,7 +1483,7 @@ The game entity is stored into a container of the creating game entity.
 **container**
 Container used for storing the game entity. If the creating game entity does not have a `Storage` ability wth this container or the container is already full, the placement mode cannot be used.
 
-## aux.placement_mode.type.Place
+## util.placement_mode.type.Place
 
 ```python
 Place(PlacementMode):
@@ -1511,7 +1511,7 @@ The player can cycle through the `PerspectiveVariant` variants of the game entit
 **max_elevation_difference**
 Maximum elevation difference between the lowest and hightest point in the placement area.
 
-## aux.placement_mode.type.Replace
+## util.placement_mode.type.Replace
 
 ```python
 Replace(PlacementMode):
@@ -1523,16 +1523,16 @@ Replaces one or more existing game entities. The replaced game entities are perm
 **game_entities**
 Game entities that can be replaced.
 
-## aux.price_mode.PriceMode
+## util.price_mode.PriceMode
 
 ```python
-PriceMode(Entity):
+PriceMode(Object):
     pass
 ```
 
 Generalization object for price modes used for adjusting prices of exchange rates.
 
-## aux.price_mode.type.Dynamic
+## util.price_mode.type.Dynamic
 
 ```python
 Dynamic(PriceMode):
@@ -1552,7 +1552,7 @@ Lower bound for the price. The price cannot be changed to a value lower than thi
 **min_price**
 Upper bound for the price. The price cannot be changed to a value higher than this.
 
-## aux.price_mode.type.Fixed
+## util.price_mode.type.Fixed
 
 ```python
 Fixed(PriceMode):
@@ -1561,25 +1561,25 @@ Fixed(PriceMode):
 
 The price is not adjusted by an exchange.
 
-## aux.price_pool.PricePool
+## util.price_pool.PricePool
 
 ```python
-PricePool(Entity):
+PricePool(Object):
     pass
 ```
 
 Allows syncing the price (at runtime) of an exchange rate across several game entities. The price for exchanging resources is the same for every exchange rate using the same price pool.
 
-## aux.production_mode.ProductionMode
+## util.production_mode.ProductionMode
 
 ```python
-ProductionMode(Entity):
+ProductionMode(Object):
     pass
 ```
 
 Generalization object for all production modes used by a `ProductionQueue` ability.
 
-## aux.production_mode.type.Creatables
+## util.production_mode.type.Creatables
 
 ```python
 Creatables(ProductionMode):
@@ -1591,7 +1591,7 @@ The queue can store production requests for `CreatableGameEntity` instances.
 **exclude**
 `CreatableGameEntity` instances that are blacklisted from being appended to the queue.
 
-## aux.production_mode.type.Researchables
+## util.production_mode.type.Researchables
 
 ```python
 Researchables(ProductionMode):
@@ -1603,11 +1603,12 @@ The queue can store production requests for `ResearchableTech` instances.
 **exclude**
 `ResearchableTech` instances that are blacklisted from being appended to the queue.
 
-## aux.progress.Progress
+## util.progress.Progress
 
 ```python
-Progress(Entity):
+Progress(Object):
     properties     : dict(abstract(ProgressProperty), ProgressProperty) = {}
+    type           : children(ProgressType)
     left_boundary  : float
     right_boundary : float
 ```
@@ -1632,7 +1633,7 @@ In the special case of `left_boundary = 0.0` the interval is considered as *left
 **properties**
 Defines what happens if the progress enters the defined interval.
 
-The engine expects objects from the namespace `engine.aux.progress.property.type` as keys. Values must always be an instance of the object used as key.
+The engine expects objects from the namespace `engine.util.progress.property.type` as keys. Values must always be an instance of the object used as key.
 
 Properties:
 
@@ -1642,22 +1643,25 @@ Properties:
 * `TerrainOverlay`: Changes terrain overlays of a game entity.
 * `StateChange`: Alters the base abilities and modifiers of the game entity through `StateChanger` objects.
 
+**type**
+Classification for the progress.
+
 **left_boundary**
 Defines the left boundary of the progression interval. Must be a float between 0.0 and 100.0 that represents a percentage of progression. Must be smaller than `right_boundary`.
 
 **right_boundary**
 Defines the left boundary of the progression interval. Must be a float between 0.0 and 100.0 that represents a percentage of progression. Must be larger than `left_boundary`.
 
-## aux.progress.property.ProgressProperty
+## util.progress.property.ProgressProperty
 
 ```python
-ProgressProperty(Entity):
+ProgressProperty(Object):
     pass
 ```
 
 Generalization object for all properties of `Progress` objects.
 
-## aux.progress.property.type.Animated
+## util.progress.property.type.Animated
 
 ```python
 Animated(ProgressProperty):
@@ -1669,7 +1673,7 @@ Overrides the animation of abilities when the specified progress interval has be
 **overrides**
 The overriding animations.
 
-## aux.progress.property.type.AnimationOverlay
+## util.progress.property.type.AnimationOverlay
 
 ```python
 AnimationOverlay(ProgressProperty):
@@ -1681,7 +1685,7 @@ Overlays the animation of abilities with the specified animations.
 **overlays**
 The overlay animations.
 
-## aux.progress.property.type.StateChange
+## util.progress.property.type.StateChange
 
 ```python
 StateChange(ProgressProperty):
@@ -1693,7 +1697,7 @@ Alters the base abilities and modifiers of a game entity when the specified prog
 **state_change**
 The state modifications as a `StateChanger` object.
 
-## aux.progress.property.type.TerrainOverlay
+## util.progress.property.type.TerrainOverlay
 
 ```python
 TerrainOverlay(ProgressProperty):
@@ -1705,7 +1709,7 @@ Changes overlayed terrain of a game entity when the specified progress interval 
 **terrain**
 Overrides the overlayed terrain of the currently enabled `OverlayTerrain` ability of the game entity. The override stops when another terrain overlay override is initiated, the overridden `OverlayTerrain` ability is deactivated or the override terrain is the same as the default overlayed terrain of the ability.
 
-## aux.progress.property.type.Terrain
+## util.progress.property.type.Terrain
 
 ```python
 Terrain(ProgressProperty):
@@ -1717,64 +1721,10 @@ Changes the underlying terrain of a game entity when the specified progress inte
 **terrain**
 The new terrain that will be permanently placed under the game entity.
 
-## aux.progress.type.AttributeChangeProgress
+## util.progress_status.ProgressStatus
 
 ```python
-AttributeChangeProgress(Progress):
-    pass
-```
-
-Compares the current attribute value in relation to the `max_value` of an attribute of a game entity. The `Progress` objects are stored in a `AttributeChangeTracker` ability which specifies the type of attribute that is monitored. When the attribute value is equal to `max_value` of the attribute defined by the game entity, the progress is 100%. Once the attribute value reaches the `min_value`, the progress is 0%.
-
-## aux.progress.type.CarryProgress
-
-```python
-CarryProgress(Progress):
-    pass
-```
-
-Monitors the occupied storage space of a `Storage` or `Gather` ability. An empty storage has a progress of 0% and a full storage a progress of 100%.
-
-## aux.progress.type.ConstructionProgress
-
-```python
-ConstructionProgress(Progress):
-    pass
-```
-
-Monitors the construction progress of a game entity with `Contructable` ability. An unconstructed game entity has a progress of 0% and a fully constructed game entity a progress of 100%.
-
-## aux.progress.type.HarvestProgress
-
-```python
-HarvestProgress(Progress):
-    pass
-```
-
-Monitors the harvesting progress of a resource spot stored by a `Harvestable` ability. A resource spot at maximum capacity has a progress of 0% and a depleted resource spot a progress of 100%.
-
-## aux.progress.type.RestockProgress
-
-```python
-RestockProgress(Progress):
-    pass
-```
-
-Monitors the restock progress of a restockable resource spot stored by a `Harvestable` ability. The restocking progress is initiated by the `Restock` ability of another game entity. At the start of the restocking process, the progress is 0%. After the restocking has finished, the progress is 100%.
-
-## aux.progress.type.TransformProgress
-
-```python
-TransformProgress(Progress):
-    pass
-```
-
-Monitors the progress of a transformation initiated by the `ActiveTransformTo` or `PassiveTransformTo` ability. At the start of the transformation, the progress is 0%. After the transformation has finished, the progress is 100%.
-
-## aux.progress_status.ProgressStatus
-
-```python
-ProgressStatus(Entity):
+ProgressStatus(Object):
     progress_type : children(ProgressType)
     progress      : float
 ```
@@ -1787,28 +1737,73 @@ Type of progress.
 **progress**
 Minimum amount of progress that has to be reached. Value can be between 0.0 and 100.0.
 
-## aux.progress_type.ProgressType
+## util.progress_type.ProgressType
 
 ```python
-ProgressType(Entity):
+ProgressType(Object):
     pass
 ```
 
 Used by `Convert` effects and resistances for matching.
 
-## aux.progress_type.type.Construct
+## util.progress_type.type.AttributeChange
+
+```python
+AttributeChange(ProgressType):
+    pass
+```
+
+Compares the current attribute value in relation to the `max_value` of an attribute of a game entity. The `Progress` objects should be stored in a `AttributeChangeTracker` ability which specifies the type of attribute that is monitored. When the attribute value is equal to `max_value` of the attribute defined by the game entity, the progress is 100%. Once the attribute value reaches the `min_value`, the progress is 0%.
+
+## util.progress_type.type.Carry
+
+```python
+Carry(ProgressType):
+    pass
+```
+
+Monitors the occupied storage space of a `Storage` or `Gather` ability. An empty storage has a progress of 0% and a full storage a progress of 100%.
+
+## util.progress_type.type.Construct
 
 ```python
 Construct(ProgressType):
     pass
 ```
 
-A progress type that covers construction progress.
+Monitors the construction progress of a game entity with `Contructable` ability. An unconstructed game entity has a progress of 0% and a fully constructed game entity a progress of 100%.
 
-## aux.research.ResearchableTech
+## util.progress_type.type.Harvest
 
 ```python
-ResearchableTech(Entity):
+Harvest(ProgressType):
+    pass
+```
+
+Monitors the harvesting progress of a resource spot stored by a `Harvestable` ability. A resource spot at maximum capacity has a progress of 0% and a depleted resource spot a progress of 100%.
+
+## util.progress_type.type.Restock
+
+```python
+Restock(ProgressType):
+    pass
+```
+
+Monitors the restock progress of a restockable resource spot stored by a `Harvestable` ability. The restocking progress is initiated by the `Restock` ability of another game entity. At the start of the restocking process, the progress is 0%. After the restocking has finished, the progress is 100%.
+
+## util.progress_type.type.Transform
+
+```python
+Transform(ProgressType):
+    pass
+```
+
+Monitors the progress of a transformation initiated by the `ActiveTransformTo` or `PassiveTransformTo` ability. At the start of the transformation, the progress is 0%. After the transformation has finished, the progress is 100%.
+
+## util.research.ResearchableTech
+
+```python
+ResearchableTech(Object):
     tech            : Tech
     cost            : Cost
     research_time   : float
@@ -1833,10 +1828,10 @@ Sounds that are played when the research finishes.
 **condition**
 Condition that unlock the technology for the researching game entity. Only one condition needs to be fulfilled to trigger the unlock. If the set is empty, the technology is considered available from the start for the researching game entity.
 
-## aux.resource.Resource
+## util.resource.Resource
 
 ```python
-Resource(Entity):
+Resource(Object):
     name        : TranslatedString
     max_storage : int
 ```
@@ -1849,7 +1844,7 @@ Name of the resource.
 **max_storage**
 Maximum amount of resources that can be stored in the player's global resource storage.
 
-## aux.resource.ResourceContingent
+## util.resource.ResourceContingent
 
 ```python
 ResourceContingent(Resource):
@@ -1874,10 +1869,10 @@ The minimum contingent size. Static and temporary amounts will be added to this 
 **max_amount**
 The maximum contingent size.
 
-## aux.resource.ResourceAmount
+## util.resource.ResourceAmount
 
 ```python
-ResourceAmount(Entity):
+ResourceAmount(Object):
     type   : Resource
     amount : int
 ```
@@ -1890,10 +1885,10 @@ Reference to the resource.
 **amount**
 Amount of the resource.
 
-## aux.resource.ResourceRate
+## util.resource.ResourceRate
 
 ```python
-ResourceRate(Entity):
+ResourceRate(Object):
     type : Resource
     rate : float
 ```
@@ -1906,10 +1901,10 @@ Reference to the resource.
 **rate**
 Rate of the resource.
 
-## aux.resource_spot.ResourceSpot
+## util.resource_spot.ResourceSpot
 
 ```python
-ResourceSpot(Entity):
+ResourceSpot(Object):
     resource        : Resource
     max_amount      : int
     starting_amount : int
@@ -1930,16 +1925,16 @@ Gatherable amount when the resource spot is created.
 **decay_rate**
 Determines how much resources are lost each second after the resource spot is activated (see `harvestable_by_default` for details).
 
-## aux.selection_box.SelectionBox
+## util.selection_box.SelectionBox
 
 ```python
-SelectionBox(Entity):
+SelectionBox(Object):
     pass
 ```
 
 Defines the selection area for the `Selectable` ability.
 
-## aux.selection_box.type.MatchToSprite
+## util.selection_box.type.MatchToSprite
 
 ```python
 MatchToSprite(SelectionBox):
@@ -1948,7 +1943,7 @@ MatchToSprite(SelectionBox):
 
 Use animation sprites of the game entity as the selection area. Transparent pixels are excluded.
 
-## aux.selection_box.type.Rectangle
+## util.selection_box.type.Rectangle
 
 ```python
 Rectangle(SelectionBox):
@@ -1964,10 +1959,10 @@ Width of the selection box.
 **height**
 Height of the selection box.
 
-## aux.setup.PlayerSetup
+## util.setup.PlayerSetup
 
 ```python
-PlayerSetup(Entity):
+PlayerSetup(Object):
     name               : TranslatedString
     description        : TranslatedMarkupFile
     long_description   : TranslatedMarkupFile
@@ -2000,10 +1995,10 @@ Resources of the player at the start of a game.
 **game_setup**
 Customizes the player setup through patches. Patches to other player setups can also be applied using the `Diplomatic` property for a `Patch`.
 
-## aux.sound.Sound
+## util.sound.Sound
 
 ```python
-Sound(Entity):
+Sound(Object):
     play_delay : float
     sounds     : orderedset(file)
 ```
@@ -2016,10 +2011,10 @@ Delay when the sound loops.
 **sounds**
 A set of sound files that are played in the order they are stored in the set.
 
-## aux.state_machine.StateChanger
+## util.state_machine.StateChanger
 
 ```python
-StateChanger(Entity):
+StateChanger(Object):
     enable_abilities  : set(abstract(Ability))
     disable_abilities : set(abstract(Ability))
     enable_modifiers  : set(abstract(Modifier))
@@ -2048,7 +2043,7 @@ Transform pool the state change uses. Only one state change can be active per tr
 **priority**
 Priority of a state change. The value can be negative. Abilities and modifiers belonging to the base state have an implicit priority of 0.
 
-## aux.state_machine.Reset
+## util.state_machine.Reset
 
 ```python
 Reset(StateChanger):
@@ -2062,15 +2057,15 @@ Reset(StateChanger):
 
 Resets the game entity to the *base* state. This means that all state changes are cleared immediately on activation.
 
-## aux.storage.Container
+## util.storage.EntityContainer
 
 ```python
-Container(Entity):
+EntityContainer(Object):
     allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
     storage_element_defs : set(StorageElementDefinition)
     slots                : int
-    carry_progress       : set(CarryProgress)
+    carry_progress       : set(Progress)
 ```
 
 Used by the `Storage` ability to set the allowed game entities and store definitions of how the stored game entities influence the storing game entity.
@@ -2088,15 +2083,15 @@ Contains further configuration settings for specific game entities.
 Defines how many slots for game entities the container has. Multiple game entities may be stacked in one slot depending on the `elements_per_slot` member in `StorageElementDefinition`.
 
 **carry_progress**
-`CarryProgress` objects that can alter the game entity when the container is filled.
+`CarryProgress` objects that can alter the game entity when the container is filled. The objects in the set must have progress type `Carry`.
 
-## aux.storage.ResourceContainer
+## util.storage.ResourceContainer
 
 ```python
-ResourceContainer(Entity):
+ResourceContainer(Object):
     resource       : Resource
     max_amount     : int
-    carry_progress : set(CarryProgress)
+    carry_progress : set(Progress)
 ```
 
 Used by the `ResourceStorage` ability to define storage space for resources that can be carried by a game entity.
@@ -2108,9 +2103,9 @@ Resource stored in the container.
 Maximum amount of resources that can be stored in the container.
 
 **carry_progress**
-`CarryProgress` objects that can alter the game entity when the container is filled.
+`CarryProgress` objects that can alter the game entity when the container is filled.  The objects in the set must have progress type `Carry`.
 
-## aux.storage.resource_container.type.InternalDropSite
+## util.storage.resource_container.type.InternalDropSite
 
 ```python
 InternalDropSite(ResourceContainer):
@@ -2122,10 +2117,10 @@ Deposits the resources directly into the player's global resource amount. Instea
 **update_time**
 Update interval between the automatic deposition of the stored resources in seconds.
 
-## aux.storage.StorageElementDefinition
+## util.storage.StorageElementDefinition
 
 ```python
-StorageElementDefinition(Entity):
+StorageElementDefinition(Object):
     storage_element   : GameEntity
     elements_per_slot : int
     conflicts         : set(StorageElementDefinition)
@@ -2146,16 +2141,16 @@ Storage elements which cannot be in the container at the same time as this stora
 **state_change**
 Alters the base abilities and modifiers of the storing game entity when at least one game entity of the type referenced in `storage_element` is present in the container.
 
-## aux.target_mode.TargetMode
+## util.target_mode.TargetMode
 
 ```python
-TargetMode(Entity):
+TargetMode(Object):
     pass
 ```
 
 Generalization object for target modes used by projectiles.
 
-## aux.target_mode.type.CurrentPosition
+## util.target_mode.type.CurrentPosition
 
 ```python
 CurrentPosition(TargetMode):
@@ -2164,7 +2159,7 @@ CurrentPosition(TargetMode):
 
 Makes the projectile path end at the current position of the target when the projectile spawned.
 
-## aux.target_mode.type.ExpectedPosition
+## util.target_mode.type.ExpectedPosition
 
 ```python
 ExpectedPosition(TargetMode):
@@ -2173,10 +2168,10 @@ ExpectedPosition(TargetMode):
 
 Makes the projectile path end at the position where the target is expected to be when the projectile is supposed to hit it.
 
-## aux.taunt.Taunt
+## util.taunt.Taunt
 
 ```python
-Taunt(Entity):
+Taunt(Object):
     activation_message : text
     display_message    : TranslatedString
     sound              : Sound
@@ -2193,10 +2188,10 @@ Displayed message after the taunt is activated.
 **sound**
 Sounds that are played after the taunt is activated.
 
-## aux.tech.Tech
+## util.tech.Tech
 
 ```python
-Tech(Entity):
+Tech(Object):
     types            : set(children(TechType))
     name             : TranslatedString
     description      : TranslatedMarkupFile
@@ -2221,16 +2216,16 @@ A longer description of the technology.
 **updates**
 Changes the game state through patches.
 
-## aux.tech_type.TechType
+## util.tech_type.TechType
 
 ```python
-TechType(Entity):
+TechType(Object):
     pass
 ```
 
 Classification for a tech.
 
-## aux.tech_type.Any
+## util.tech_type.Any
 
 ```python
 Any(TechType):
@@ -2239,10 +2234,10 @@ Any(TechType):
 
 Can be used to address any tech, even ones that have no `TechType` assigned.
 
-## aux.terrain.Terrain
+## util.terrain.Terrain
 
 ```python
-Terrain(Entity):
+Terrain(Object):
     types           : set(children(TerrainType))
     name            : TranslatedString
     terrain_graphic : Terrain
@@ -2259,7 +2254,7 @@ Classification of the terrain.
 Name of the terrain.
 
 **terrain_graphic**
-Texture of the terrain (see `aux.graphics.Terrain`).
+Texture of the terrain (see `util.graphics.Terrain`).
 
 **sound**
 Ambient sound played when the camera of the player is looking onto the terrain.
@@ -2267,10 +2262,10 @@ Ambient sound played when the camera of the player is looking onto the terrain.
 **ambience**
 Ambient objects placed on the terrain.
 
-## aux.terrain.TerrainAmbient
+## util.terrain.TerrainAmbient
 
 ```python
-TerrainAmbient(Entity):
+TerrainAmbient(Object):
     object      : GameEntity
     max_density : int
 ```
@@ -2283,16 +2278,16 @@ Game entity placed on the terrain.
 **max_density**
 Defines how many ambient objects are allowed to be placed on a chunk at maximum.
 
-## aux.terrain_type.TerrainType
+## util.terrain_type.TerrainType
 
 ```python
-TerrainType(Entity):
+TerrainType(Object):
     pass
 ```
 
 Classification for a terrain.
 
-## aux.terrain_type.Any
+## util.terrain_type.Any
 
 ```python
 Any(TerrainType):
@@ -2301,10 +2296,10 @@ Any(TerrainType):
 
 Can be used to address any terrain, even ones that have no `TerrainType` assigned.
 
-## aux.trade_route.TradeRoute
+## util.trade_route.TradeRoute
 
 ```python
-TradeRoute(Entity):
+TradeRoute(Object):
     trade_resource    : Resource
     start_trade_post  : GameEntity
     end_trade_post    : GameEntity
@@ -2321,10 +2316,10 @@ The game entity where the traded resource is collected. The game entity must hav
 **end_trade_post**
 The game entity the traded resource is delivered to. The game entity must have a `TradePost` ability that contains this `TradeRoute` object.
 
-## aux.trade_route.type.AoE1TradeRoute
+## util.trade_route.type.AoE1TradeRoute
 
 ```python
-AoE1TradeRoute(Entity):
+AoE1TradeRoute(Object):
     exchange_resources : set(Resource)
     trade_amount       : int
 ```
@@ -2337,10 +2332,10 @@ The trading game entity exchanges `trade_amount` of a selected resource in this 
 **trade_amount**
 Amount of resources traded each time.
 
-## aux.trade_route.type.AoE2TradeRoute
+## util.trade_route.type.AoE2TradeRoute
 
 ```python
-AoE2TradeRoute(Entity):
+AoE2TradeRoute(Object):
     pass
 ```
 
@@ -2350,19 +2345,19 @@ Uses Age of Empires 2 rules for trading. The trading game entity chooses the nea
 trade\_amount = 0.46 \cdot tiles\_distance \cdot ((tiles\_distance / map\_size) + 0.3)
 ```
 
-## aux.transform_pool.TransformPool
+## util.transform_pool.TransformPool
 
 ```python
-TransformPool(Entity):
+TransformPool(Object):
     pass
 ```
 
 Defines a pool for `StateChanger` objects. Only one state change can be active per transform pool.
 
-## aux.variant.Variant
+## util.variant.Variant
 
 ```python
-Variant(Entity):
+Variant(Object):
     changes  : orderedset(Patch)
     priority : int
 ```
@@ -2375,7 +2370,7 @@ The changes to the game entity as a set of patches. Only the created game entity
 **priority**
 When many variants are chosen, this member influences the order in which the patches from their `changes` member are applied. Patches from variants with higher priority value are applied first.
 
-## aux.variant.type.AdjacentTilesVariant
+## util.variant.type.AdjacentTilesVariant
 
 ```python
 AdjacentTilesVariant(Variant):
@@ -2415,7 +2410,7 @@ The desired game entity west of the created game entity.
 **north_west**
 The desired game entity north-west of the created game entity.
 
-## aux.variant.type.RandomVariant
+## util.variant.type.RandomVariant
 
 ```python
 RandomVariant(Variant):
@@ -2437,7 +2432,7 @@ The second variant is four times as likely to be picked. The absolute chances ar
 * Random variant 1: 20\%
 * Random variant 2: 80\%
 
-## aux.variant.type.PerspectiveVariant
+## util.variant.type.PerspectiveVariant
 
 ```python
 PerspectiveVariant(Variant):

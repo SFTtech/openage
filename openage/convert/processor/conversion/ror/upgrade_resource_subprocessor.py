@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
 #
@@ -66,7 +66,7 @@ class RoRUpgradeResourceSubprocessor:
                                               wrapper_name,
                                               dataset.nyan_api_objects,
                                               wrapper_location)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = "EnableBuildingConversion"
@@ -76,12 +76,12 @@ class RoRUpgradeResourceSubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # New allowed types
         allowed_types = [
-            dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()
+            dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()
         ]
         nyan_patch_raw_api_object.add_raw_patch_member("allowed_types",
                                                        allowed_types,
@@ -107,7 +107,7 @@ class RoRUpgradeResourceSubprocessor:
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)

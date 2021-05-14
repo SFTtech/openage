@@ -81,11 +81,11 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Armor types
         # =======================================================================
-        type_parent = "engine.aux.attribute_change_type.AttributeChangeType"
-        types_location = "data/aux/attribute_change_type/"
+        type_parent = "engine.util.attribute_change_type.AttributeChangeType"
+        types_location = "data/util/attribute_change_type/"
 
         for type_name in armor_lookup_dict.values():
-            type_ref_in_modpack = f"aux.attribute_change_type.types.{type_name}"
+            type_ref_in_modpack = f"util.attribute_change_type.types.{type_name}"
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
                                                type_name, api_objects,
                                                types_location)
@@ -98,7 +98,7 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Heal
         # =======================================================================
-        type_ref_in_modpack = "aux.attribute_change_type.types.Heal"
+        type_ref_in_modpack = "util.attribute_change_type.types.Heal"
         type_raw_api_object = RawAPIObject(type_ref_in_modpack,
                                            "Heal", api_objects,
                                            types_location)
@@ -124,7 +124,7 @@ class SWGBCCPregenSubprocessor:
             else:
                 game_entity_name = name_lookup_dict[repairable_line.get_head_unit_id()][0]
 
-            type_ref_in_modpack = f"aux.attribute_change_type.types.{game_entity_name}Repair"
+            type_ref_in_modpack = f"util.attribute_change_type.types.{game_entity_name}Repair"
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
                                                f"{game_entity_name}Repair",
                                                api_objects,
@@ -144,7 +144,7 @@ class SWGBCCPregenSubprocessor:
         for constructable_line in constructable_lines:
             game_entity_name = name_lookup_dict[constructable_line.get_head_unit_id()][0]
 
-            type_ref_in_modpack = f"aux.attribute_change_type.types.{game_entity_name}Construct"
+            type_ref_in_modpack = f"util.attribute_change_type.types.{game_entity_name}Construct"
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
                                                f"{game_entity_name}Construct",
                                                api_objects,
@@ -155,13 +155,13 @@ class SWGBCCPregenSubprocessor:
             pregen_converter_group.add_raw_api_object(type_raw_api_object)
             pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
 
-        type_parent = "engine.aux.progress_type.type.Construct"
-        types_location = "data/aux/construct_type/"
+        type_parent = "engine.util.progress_type.type.Construct"
+        types_location = "data/util/construct_type/"
 
         for constructable_line in constructable_lines:
             game_entity_name = name_lookup_dict[constructable_line.get_head_unit_id()][0]
 
-            type_ref_in_modpack = f"aux.construct_type.types.{game_entity_name}Construct"
+            type_ref_in_modpack = f"util.construct_type.types.{game_entity_name}Construct"
             type_raw_api_object = RawAPIObject(type_ref_in_modpack,
                                                f"{game_entity_name}Construct",
                                                api_objects,
@@ -175,10 +175,10 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # ConvertType: UnitConvert
         # =======================================================================
-        type_parent = "engine.aux.convert_type.ConvertType"
-        types_location = "data/aux/convert_type/"
+        type_parent = "engine.util.convert_type.ConvertType"
+        types_location = "data/util/convert_type/"
 
-        type_ref_in_modpack = "aux.convert_type.types.UnitConvert"
+        type_ref_in_modpack = "util.convert_type.types.UnitConvert"
         type_raw_api_object = RawAPIObject(type_ref_in_modpack,
                                            "UnitConvert", api_objects,
                                            types_location)
@@ -191,10 +191,10 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # ConvertType: BuildingConvert
         # =======================================================================
-        type_parent = "engine.aux.convert_type.ConvertType"
-        types_location = "data/aux/convert_type/"
+        type_parent = "engine.util.convert_type.ConvertType"
+        types_location = "data/util/convert_type/"
 
-        type_ref_in_modpack = "aux.convert_type.types.BuildingConvert"
+        type_ref_in_modpack = "util.convert_type.types.BuildingConvert"
         type_raw_api_object = RawAPIObject(type_ref_in_modpack,
                                            "BuildingConvert", api_objects,
                                            types_location)
@@ -224,10 +224,10 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Exchange mode Buy
         # =======================================================================
-        exchange_mode_parent = "engine.aux.exchange_mode.type.Buy"
-        exchange_mode_location = "data/aux/resource/"
+        exchange_mode_parent = "engine.util.exchange_mode.type.Buy"
+        exchange_mode_location = "data/util/resource/"
 
-        exchange_mode_ref_in_modpack = "aux.resource.market_trading.MarketBuyExchangeMode"
+        exchange_mode_ref_in_modpack = "util.resource.market_trading.MarketBuyExchangeMode"
         exchange_mode_raw_api_object = RawAPIObject(exchange_mode_ref_in_modpack,
                                                     "MarketBuyExchangePool",
                                                     api_objects,
@@ -238,7 +238,7 @@ class SWGBCCPregenSubprocessor:
         # Fee (30% on top)
         exchange_mode_raw_api_object.add_raw_member("fee_multiplier",
                                                     1.3,
-                                                    "engine.aux.exchange_mode.ExchangeMode")
+                                                    "engine.util.exchange_mode.ExchangeMode")
 
         pregen_converter_group.add_raw_api_object(exchange_mode_raw_api_object)
         pregen_nyan_objects.update({exchange_mode_ref_in_modpack: exchange_mode_raw_api_object})
@@ -246,10 +246,10 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Exchange mode Sell
         # =======================================================================
-        exchange_mode_parent = "engine.aux.exchange_mode.type.Sell"
-        exchange_mode_location = "data/aux/resource/"
+        exchange_mode_parent = "engine.util.exchange_mode.type.Sell"
+        exchange_mode_location = "data/util/resource/"
 
-        exchange_mode_ref_in_modpack = "aux.resource.market_trading.MarketSellExchangeMode"
+        exchange_mode_ref_in_modpack = "util.resource.market_trading.MarketSellExchangeMode"
         exchange_mode_raw_api_object = RawAPIObject(exchange_mode_ref_in_modpack,
                                                     "MarketSellExchangeMode",
                                                     api_objects,
@@ -260,7 +260,7 @@ class SWGBCCPregenSubprocessor:
         # Fee (30% reduced)
         exchange_mode_raw_api_object.add_raw_member("fee_multiplier",
                                                     0.7,
-                                                    "engine.aux.exchange_mode.ExchangeMode")
+                                                    "engine.util.exchange_mode.ExchangeMode")
 
         pregen_converter_group.add_raw_api_object(exchange_mode_raw_api_object)
         pregen_nyan_objects.update({exchange_mode_ref_in_modpack: exchange_mode_raw_api_object})
@@ -268,10 +268,10 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Market Food price pool
         # =======================================================================
-        exchange_pool_parent = "engine.aux.price_pool.PricePool"
-        exchange_pool_location = "data/aux/resource/"
+        exchange_pool_parent = "engine.util.price_pool.PricePool"
+        exchange_pool_location = "data/util/resource/"
 
-        exchange_pool_ref_in_modpack = "aux.resource.market_trading.MarketFoodPricePool"
+        exchange_pool_ref_in_modpack = "util.resource.market_trading.MarketFoodPricePool"
         exchange_pool_raw_api_object = RawAPIObject(exchange_pool_ref_in_modpack,
                                                     "MarketFoodPricePool",
                                                     api_objects,
@@ -285,7 +285,7 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Market Carbon price pool
         # =======================================================================
-        exchange_pool_ref_in_modpack = "aux.resource.market_trading.MarketCarbonPricePool"
+        exchange_pool_ref_in_modpack = "util.resource.market_trading.MarketCarbonPricePool"
         exchange_pool_raw_api_object = RawAPIObject(exchange_pool_ref_in_modpack,
                                                     "MarketCarbonPricePool",
                                                     api_objects,
@@ -299,7 +299,7 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Market Ore price pool
         # =======================================================================
-        exchange_pool_ref_in_modpack = "aux.resource.market_trading.MarketOrePricePool"
+        exchange_pool_ref_in_modpack = "util.resource.market_trading.MarketOrePricePool"
         exchange_pool_raw_api_object = RawAPIObject(exchange_pool_ref_in_modpack,
                                                     "MarketOrePricePool",
                                                     api_objects,
@@ -313,10 +313,10 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Exchange rate Food
         # =======================================================================
-        exchange_rate_parent = "engine.aux.exchange_rate.ExchangeRate"
-        exchange_rate_location = "data/aux/resource/"
+        exchange_rate_parent = "engine.util.exchange_rate.ExchangeRate"
+        exchange_rate_location = "data/util/resource/"
 
-        exchange_rate_ref_in_modpack = "aux.resource.market_trading.MarketFoodExchangeRate"
+        exchange_rate_ref_in_modpack = "util.resource.market_trading.MarketFoodExchangeRate"
         exchange_rate_raw_api_object = RawAPIObject(exchange_rate_ref_in_modpack,
                                                     "MarketFoodExchangeRate",
                                                     api_objects,
@@ -331,12 +331,12 @@ class SWGBCCPregenSubprocessor:
 
         # Price adjust methods
         pa_buy_forward_ref = ForwardRef(pregen_converter_group,
-                                        "aux.resource.market_trading.MarketBuyPriceMode")
+                                        "util.resource.market_trading.MarketBuyPriceMode")
         pa_sell_forward_ref = ForwardRef(pregen_converter_group,
-                                         "aux.resource.market_trading.MarketSellPriceMode")
+                                         "util.resource.market_trading.MarketSellPriceMode")
         price_adjust = {
-            api_objects["engine.aux.exchange_mode.type.Buy"]: pa_buy_forward_ref,
-            api_objects["engine.aux.exchange_mode.type.Sell"]: pa_sell_forward_ref
+            api_objects["engine.util.exchange_mode.type.Buy"]: pa_buy_forward_ref,
+            api_objects["engine.util.exchange_mode.type.Sell"]: pa_sell_forward_ref
         }
         exchange_rate_raw_api_object.add_raw_member("price_adjust",
                                                     price_adjust,
@@ -344,7 +344,7 @@ class SWGBCCPregenSubprocessor:
 
         # Price pool
         pool_forward_ref = ForwardRef(pregen_converter_group,
-                                      "aux.resource.market_trading.MarketFoodPricePool")
+                                      "util.resource.market_trading.MarketFoodPricePool")
         exchange_rate_raw_api_object.add_raw_member("price_pool",
                                                     pool_forward_ref,
                                                     exchange_rate_parent)
@@ -355,7 +355,7 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Exchange rate Carbon
         # =======================================================================
-        exchange_rate_ref_in_modpack = "aux.resource.market_trading.MarketCarbonExchangeRate"
+        exchange_rate_ref_in_modpack = "util.resource.market_trading.MarketCarbonExchangeRate"
         exchange_rate_raw_api_object = RawAPIObject(exchange_rate_ref_in_modpack,
                                                     "MarketCarbonExchangeRate",
                                                     api_objects,
@@ -370,12 +370,12 @@ class SWGBCCPregenSubprocessor:
 
         # Price adjust methods
         pa_buy_forward_ref = ForwardRef(pregen_converter_group,
-                                        "aux.resource.market_trading.MarketBuyPriceMode")
+                                        "util.resource.market_trading.MarketBuyPriceMode")
         pa_sell_forward_ref = ForwardRef(pregen_converter_group,
-                                         "aux.resource.market_trading.MarketSellPriceMode")
+                                         "util.resource.market_trading.MarketSellPriceMode")
         price_adjust = {
-            api_objects["engine.aux.exchange_mode.type.Buy"]: pa_buy_forward_ref,
-            api_objects["engine.aux.exchange_mode.type.Sell"]: pa_sell_forward_ref
+            api_objects["engine.util.exchange_mode.type.Buy"]: pa_buy_forward_ref,
+            api_objects["engine.util.exchange_mode.type.Sell"]: pa_sell_forward_ref
         }
         exchange_rate_raw_api_object.add_raw_member("price_adjust",
                                                     price_adjust,
@@ -383,7 +383,7 @@ class SWGBCCPregenSubprocessor:
 
         # Price pool
         pool_forward_ref = ForwardRef(pregen_converter_group,
-                                      "aux.resource.market_trading.MarketCarbonPricePool")
+                                      "util.resource.market_trading.MarketCarbonPricePool")
         exchange_rate_raw_api_object.add_raw_member("price_pool",
                                                     pool_forward_ref,
                                                     exchange_rate_parent)
@@ -394,7 +394,7 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Exchange rate Ore
         # =======================================================================
-        exchange_rate_ref_in_modpack = "aux.resource.market_trading.MarketOreExchangeRate"
+        exchange_rate_ref_in_modpack = "util.resource.market_trading.MarketOreExchangeRate"
         exchange_rate_raw_api_object = RawAPIObject(exchange_rate_ref_in_modpack,
                                                     "MarketOreExchangeRate",
                                                     api_objects,
@@ -409,12 +409,12 @@ class SWGBCCPregenSubprocessor:
 
         # Price adjust methods
         pa_buy_forward_ref = ForwardRef(pregen_converter_group,
-                                        "aux.resource.market_trading.MarketBuyPriceMode")
+                                        "util.resource.market_trading.MarketBuyPriceMode")
         pa_sell_forward_ref = ForwardRef(pregen_converter_group,
-                                         "aux.resource.market_trading.MarketSellPriceMode")
+                                         "util.resource.market_trading.MarketSellPriceMode")
         price_adjust = {
-            api_objects["engine.aux.exchange_mode.type.Buy"]: pa_buy_forward_ref,
-            api_objects["engine.aux.exchange_mode.type.Sell"]: pa_sell_forward_ref
+            api_objects["engine.util.exchange_mode.type.Buy"]: pa_buy_forward_ref,
+            api_objects["engine.util.exchange_mode.type.Sell"]: pa_sell_forward_ref
         }
         exchange_rate_raw_api_object.add_raw_member("price_adjust",
                                                     price_adjust,
@@ -422,7 +422,7 @@ class SWGBCCPregenSubprocessor:
 
         # Price pool
         pool_forward_ref = ForwardRef(pregen_converter_group,
-                                      "aux.resource.market_trading.MarketOrePricePool")
+                                      "util.resource.market_trading.MarketOrePricePool")
         exchange_rate_raw_api_object.add_raw_member("price_pool",
                                                     pool_forward_ref,
                                                     exchange_rate_parent)
@@ -433,10 +433,10 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Buy Price mode
         # =======================================================================
-        price_mode_parent = "engine.aux.price_mode.type.Dynamic"
-        price_mode_location = "data/aux/resource/"
+        price_mode_parent = "engine.util.price_mode.type.Dynamic"
+        price_mode_location = "data/util/resource/"
 
-        price_mode_ref_in_modpack = "aux.resource.market_trading.MarketBuyPriceMode"
+        price_mode_ref_in_modpack = "util.resource.market_trading.MarketBuyPriceMode"
         price_mode_raw_api_object = RawAPIObject(price_mode_ref_in_modpack,
                                                  "MarketBuyPriceMode",
                                                  api_objects,
@@ -465,10 +465,10 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Sell Price mode
         # =======================================================================
-        price_mode_parent = "engine.aux.price_mode.type.Dynamic"
-        price_mode_location = "data/aux/resource/"
+        price_mode_parent = "engine.util.price_mode.type.Dynamic"
+        price_mode_location = "data/util/resource/"
 
-        price_mode_ref_in_modpack = "aux.resource.market_trading.MarketSellPriceMode"
+        price_mode_ref_in_modpack = "util.resource.market_trading.MarketSellPriceMode"
         price_mode_raw_api_object = RawAPIObject(price_mode_ref_in_modpack,
                                                  "MarketSellPriceMode",
                                                  api_objects,
@@ -511,13 +511,13 @@ class SWGBCCPregenSubprocessor:
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
         api_objects = full_data_set.nyan_api_objects
 
-        resource_parent = "engine.aux.resource.Resource"
-        resources_location = "data/aux/resource/"
+        resource_parent = "engine.util.resource.Resource"
+        resources_location = "data/util/resource/"
 
         # =======================================================================
         # Food
         # =======================================================================
-        food_ref_in_modpack = "aux.resource.types.Food"
+        food_ref_in_modpack = "util.resource.types.Food"
         food_raw_api_object = RawAPIObject(food_ref_in_modpack,
                                            "Food", api_objects,
                                            resources_location)
@@ -531,8 +531,8 @@ class SWGBCCPregenSubprocessor:
                                            MemberSpecialValue.NYAN_INF,
                                            resource_parent)
 
-        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
-        food_name_ref_in_modpack = "aux.attribute.types.Food.FoodName"
+        name_value_parent = "engine.util.language.translated.type.TranslatedString"
+        food_name_ref_in_modpack = "util.attribute.types.Food.FoodName"
         food_name_value = RawAPIObject(food_name_ref_in_modpack, "FoodName",
                                        api_objects, resources_location)
         food_name_value.set_filename("types")
@@ -551,7 +551,7 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Carbon
         # =======================================================================
-        carbon_ref_in_modpack = "aux.resource.types.Carbon"
+        carbon_ref_in_modpack = "util.resource.types.Carbon"
         carbon_raw_api_object = RawAPIObject(carbon_ref_in_modpack,
                                              "Carbon", api_objects,
                                              resources_location)
@@ -565,8 +565,8 @@ class SWGBCCPregenSubprocessor:
                                              MemberSpecialValue.NYAN_INF,
                                              resource_parent)
 
-        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
-        carbon_name_ref_in_modpack = "aux.attribute.types.Carbon.CarbonName"
+        name_value_parent = "engine.util.language.translated.type.TranslatedString"
+        carbon_name_ref_in_modpack = "util.attribute.types.Carbon.CarbonName"
         carbon_name_value = RawAPIObject(carbon_name_ref_in_modpack, "CarbonName",
                                          api_objects, resources_location)
         carbon_name_value.set_filename("types")
@@ -585,7 +585,7 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Ore
         # =======================================================================
-        ore_ref_in_modpack = "aux.resource.types.Ore"
+        ore_ref_in_modpack = "util.resource.types.Ore"
         ore_raw_api_object = RawAPIObject(ore_ref_in_modpack,
                                           "Ore", api_objects,
                                           resources_location)
@@ -599,8 +599,8 @@ class SWGBCCPregenSubprocessor:
                                           MemberSpecialValue.NYAN_INF,
                                           resource_parent)
 
-        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
-        ore_name_ref_in_modpack = "aux.attribute.types.Ore.OreName"
+        name_value_parent = "engine.util.language.translated.type.TranslatedString"
+        ore_name_ref_in_modpack = "util.attribute.types.Ore.OreName"
         ore_name_value = RawAPIObject(ore_name_ref_in_modpack, "OreName",
                                       api_objects, resources_location)
         ore_name_value.set_filename("types")
@@ -619,7 +619,7 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Nova
         # =======================================================================
-        nova_ref_in_modpack = "aux.resource.types.Nova"
+        nova_ref_in_modpack = "util.resource.types.Nova"
         nova_raw_api_object = RawAPIObject(nova_ref_in_modpack,
                                            "Nova", api_objects,
                                            resources_location)
@@ -633,8 +633,8 @@ class SWGBCCPregenSubprocessor:
                                            MemberSpecialValue.NYAN_INF,
                                            resource_parent)
 
-        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
-        nova_name_ref_in_modpack = "aux.attribute.types.Nova.NovaName"
+        name_value_parent = "engine.util.language.translated.type.TranslatedString"
+        nova_name_ref_in_modpack = "util.attribute.types.Nova.NovaName"
         nova_name_value = RawAPIObject(nova_name_ref_in_modpack, "NovaName",
                                        api_objects, resources_location)
         nova_name_value.set_filename("types")
@@ -653,9 +653,9 @@ class SWGBCCPregenSubprocessor:
         # =======================================================================
         # Population Space
         # =======================================================================
-        resource_contingent_parent = "engine.aux.resource.ResourceContingent"
+        resource_contingent_parent = "engine.util.resource.ResourceContingent"
 
-        pop_ref_in_modpack = "aux.resource.types.PopulationSpace"
+        pop_ref_in_modpack = "util.resource.types.PopulationSpace"
         pop_raw_api_object = RawAPIObject(pop_ref_in_modpack,
                                           "PopulationSpace", api_objects,
                                           resources_location)
@@ -665,8 +665,8 @@ class SWGBCCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(pop_raw_api_object)
         pregen_nyan_objects.update({pop_ref_in_modpack: pop_raw_api_object})
 
-        name_value_parent = "engine.aux.language.translated.type.TranslatedString"
-        pop_name_ref_in_modpack = "aux.attribute.types.PopulationSpace.PopulationSpaceName"
+        name_value_parent = "engine.util.language.translated.type.TranslatedString"
+        pop_name_ref_in_modpack = "util.attribute.types.PopulationSpace.PopulationSpaceName"
         pop_name_value = RawAPIObject(pop_name_ref_in_modpack, "PopulationSpaceName",
                                       api_objects, resources_location)
         pop_name_value.set_filename("types")

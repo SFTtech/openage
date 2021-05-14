@@ -23,6 +23,7 @@ class ParserError(Exception):
     """
     Represents a fatal parsing error in PXDGenerator.
     """
+
     def __init__(self, filename, lineno, message):
         super().__init__(f"{filename}:{lineno} {message}")
 
@@ -219,7 +220,9 @@ class PXDGenerator:
 
         def handle_state_1(self, token, val, namespace_parts):
             # we're inside a namespace definition; expect Token.Name
-            if token != Token.Name:
+            # TODO: pygments 2.9 correctly reports Token.Name.Namespace
+            #       we can require this version eventually and change the condition
+            if token not in Token.Name:
                 raise self.parser_error(
                     "expected identifier after 'namespace'")
             namespace_parts.append(val)

@@ -2,10 +2,10 @@
 
 Reference documentation of the `engine.root` module of the openage modding API.
 
-## Entity
+## root.Object
 
 ```python
-Entity():
+Object():
     pass
 ```
 

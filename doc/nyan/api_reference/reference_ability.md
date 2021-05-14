@@ -5,7 +5,7 @@ Reference documentation of the `engine.ability` module of the openage modding AP
 ## ability.Ability
 
 ```python
-Ability(Entity):
+Ability(Object):
     properties : dict(abstract(AbilityProperty), AbilityProperty) = {}
 ```
 
@@ -35,7 +35,7 @@ Properties:
 ## ability.property.AbilityProperty
 
 ```python
-AbilityProperty(Entity):
+AbilityProperty(Object):
     pass
 ```
 
@@ -133,7 +133,7 @@ the ability with this property cannot become active.
 TransformTo(Ability):
     target_state       : StateChanger
     transform_time     : float
-    transform_progress : set(TransformProgress)
+    transform_progress : set(Progress)
 ```
 
 Activates a state change for a game entity. Triggered by player input.
@@ -145,7 +145,7 @@ Target state change that activates when the time defined in `transform_time` has
 The time for the transformation to complete.
 
 **transform_progress**
-A set of `TransformProgress` objects that can activate state changes and animation overrides while the transformation progresses.
+A set of `Progress` objects that can activate state changes and animation overrides while the transformation progresses. The objects in the set must have progress type `Restock`.
 
 ## ability.type.ApplyContinuousEffect
 
@@ -235,7 +235,7 @@ Time needed to reactivate the cloak after an ability from `interrupted_by` has b
 
 ```python
 CollectStorage(Ability):
-    container        : Container
+    container        : EntityContainer
     storage_elements : set(GameEntity)
 ```
 
@@ -252,7 +252,7 @@ Game entities that can be inserted into the container. The container must allow 
 ```python
 Constructable(Ability):
     starting_progress     : int
-    construction_progress : set(children(ConstructionProgress))
+    construction_progress : set(Progress)
 ```
 
 Makes the game entity constructable via `Effect` types.
@@ -261,7 +261,7 @@ Makes the game entity constructable via `Effect` types.
 The construction progress when the game entity is created.
 
 **construction_progress**
-Set of `ConstructionProgress` objects that activate when the current contruction progress value enters their defined intervals.
+Set of `Progress` objects that activate when the current contruction progress value enters their defined intervals. The objects in the set must have progress type `Construct`.
 
 ## ability.type.Create
 
@@ -359,7 +359,7 @@ Resource containers that can be emptied at the game entity.
 
 ```python
 EnterContainer(Ability):
-    allowed_containers   : set(Container)
+    allowed_containers   : set(EntityContainer)
     allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
@@ -403,7 +403,7 @@ Defines how the resources can be exchanged.
 
 ```python
 ExitContainer(Ability):
-    allowed_containers : set(Container)
+    allowed_containers : set(EntityContainer)
 ```
 
 Allows a game entity to exit specified containers of another game entity's `Storage` ability when they are in the container.
@@ -504,10 +504,10 @@ Assigns a game entity a resource spot that can be harvested by other game entiti
 The resource spot as a `ResourceSpot` object. It defines the contained resource type and resource capacity.
 
 **harvest_progress**
-Can alter the game entity when the percentage of harvested resources reaches defined progress intervals.
+Can alter the game entity when the percentage of harvested resources reaches defined progress intervals. The objects in the set must have progress type `Harvest`.
 
 **restock_progress**
-Can alter the game entity when the percentage of restocked resources reaches defined progress intervals.
+Can alter the game entity when the percentage of restocked resources reaches defined progress intervals. The objects in the set must have progress type `Restock`.
 
 **gatherer_limit**
 Limits the amount of gatherers that can access the resource spot simultaneously.
@@ -683,7 +683,7 @@ PassiveTransformTo(Ability):
     condition          : set(LogicElement)
     transform_time     : float
     target_state       : StateChanger
-    transform_progress : set(TransformProgress)
+    transform_progress : set(Progress)
 ```
 
 Activates a state change for a game entity when a condition is fulfilled.
@@ -698,7 +698,7 @@ Time to wait (in seconds) after the the transformation is triggered until the ta
 State change activated after `transform_time` has passed.
 
 **transform_progress**
-Can alter the game entity while the transformation is in progress.
+Can alter the game entity while the transformation is in progress. The objects in the set must have progress type `Transform`.
 
 ## ability.type.ProductionQueue
 
@@ -829,7 +829,7 @@ Resource spot that is refilled. The game entity must have a `Harvestable` abilit
 
 ```python
 RemoveStorage(Ability):
-    container        : Container
+    container        : EntityContainer
     storage_elements : set(GameEntity)
 ```
 
@@ -1030,7 +1030,7 @@ Stops all current tasks and returns the game entity to an idle state.
 
 ```python
 Storage(Ability):
-    container       : Container
+    container       : EntityContainer
     empty_threshold : set(LogicElement)
 ```
 
@@ -1063,12 +1063,16 @@ Blacklist for specific terrains that would be covered by `allowed_types`, but sh
 ```python
 Trade(Ability):
     trade_routes : set(TradeRoute)
+    container    : ResourceContainer
 ```
 
 Allows a game entity to trade with other game entities that have the `TradePost` ability.
 
 **trade_routes**
 Trade routes that can be established with trade posts. The `TradeRoute` object defines rules and traded resources for the trade.
+
+**container**
+Resource container of the game entity where the traded resources are stored. The resource container must be referenced by the game entity in a `ResourceStorage` ability.
 
 ## ability.type.TradePost
 
@@ -1087,8 +1091,8 @@ Trade routes that can be established with this trade post. The `TradeRoute` obje
 ```python
 TransferStorage(Ability):
     storage_element  : GameEntity
-    source_container : Container
-    target_container : Container
+    source_container : EntityContainer
+    target_container : EntityContainer
 ```
 
 Transfers a game entity from one container to another.

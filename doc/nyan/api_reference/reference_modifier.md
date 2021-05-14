@@ -5,7 +5,7 @@ Reference documentation of the `engine.modifier` module of the openage modding A
 ## modifier.Modifier
 
 ```python
-Modifier(Entity):
+Modifier(Object):
     properties : dict(abstract(ModifierProperty), ModifierProperty) = {}
 ```
 
@@ -32,7 +32,7 @@ Properties:
 ## modifier.property.ModifierProperty
 
 ```python
-ModifierProperty(Entity):
+ModifierProperty(Object):
     pass
 ```
 
@@ -263,14 +263,14 @@ Changes the `starting_value` **and** `max_value` members of an `AttributeSetting
 **attribute**
 `AttributeSettings` objects with this attribute are considered.
 
-## modifier.type.ContainerCapacity
+## modifier.type.EntityContainerCapacity
 
 ```python
-ContainerCapacity(Modifier):
-    container : Container
+EntityContainerCapacity(Modifier):
+    container : EntityContainer
 ```
 
-Changes the `size` member of a `Container` object in a `Storage` ability. Resulting values are floored.
+Changes the `size` member of an `EntityContainer` object in a `Storage` ability. Resulting values are floored.
 
 **container**
 The container which is considered.
@@ -397,7 +397,7 @@ Resource spot for which the gathering rate is changed.
 
 ```python
 InContainerContinuousEffect(Modifier):
-    containers : set(Container)
+    containers : set(EntityContainer)
     ability    : ApplyContinuousEffect
 ```
 
@@ -413,7 +413,7 @@ Ability that is used to apply the effects. It does not have to be an ability of 
 
 ```python
 InContainerDiscreteEffect(Modifier):
-    containers : set(Container)
+    containers : set(EntityContainer)
     ability    : ApplyDiscreteEffect
 ```
 
