@@ -33,9 +33,9 @@ public:
 	 * @param replay_delay Additional time (in seconds) to display the last frame in a loop.
 	 * @param angles Angle information.
 	 */
-	LayerInfo(const display_mode mode,
-	          const size_t position,
+	LayerInfo(const size_t position,
 	          std::vector<AngleInfo> &angles,
+	          const display_mode mode,
 	          const float time_per_frame,
 	          const float replay_delay);
 

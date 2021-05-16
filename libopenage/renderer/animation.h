@@ -27,7 +27,7 @@ protected:
 	Animation2d(const resources::Animation2dInfo &info);
 
 	/**
-	 * Information about the layers, angles and frames.
+	 * Information about the animation layers, angles and frames.
 	 */
 	resources::Animation2dInfo info;
 };

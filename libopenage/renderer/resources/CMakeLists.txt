@@ -11,3 +11,4 @@ add_sources(libopenage
 )
 
 add_subdirectory(assets/)
+add_subdirectory(parser/)
