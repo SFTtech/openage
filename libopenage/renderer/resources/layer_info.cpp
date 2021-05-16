@@ -4,9 +4,9 @@
 
 namespace openage::renderer::resources {
 
-LayerInfo::LayerInfo(const display_mode mode,
-                     const size_t position,
+LayerInfo::LayerInfo(const size_t position,
                      std::vector<AngleInfo> &angles,
+                     const display_mode mode = display_mode::OFF,
                      const float time_per_frame = 0.0,
                      const float replay_delay = 0.0) :
 	mode{mode},
