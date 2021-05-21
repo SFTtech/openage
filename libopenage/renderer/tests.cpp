@@ -131,7 +131,7 @@ void main() {
 	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
 
 	/* Texture for the clickable objects. */
-	auto tex = resources::Texture2dData(path / "/assets/gaben.png");
+	auto tex = resources::Texture2dData(path / "/assets/gaben.png", false);
 	auto gltex = renderer->add_texture(tex);
 
 	auto transform1 = Eigen::Affine3f::Identity();

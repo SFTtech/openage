@@ -12,13 +12,13 @@ namespace openage::renderer::resources::parser {
  *
  * Definition according to doc/media/openage/sprite_format_spec.md.
  */
-struct ImageData {
-	size_t id;
+struct TextureData {
+	size_t texture_id;
 	std::string path;
 };
 
 struct LayerData {
-	size_t id;
+	size_t layer_id;
 	display_mode mode{display_mode::OFF};
 	size_t position{0};
 	float time_per_frame{0.0};
@@ -34,13 +34,8 @@ struct FrameData {
 	size_t index;
 	size_t angle;
 	size_t layer_id;
-	size_t image_id;
-	size_t xpos;
-	size_t ypos;
-	size_t xsize;
-	size_t ysize;
-	size_t xhotspot;
-	size_t yhotspot;
+	size_t texture_id;
+	size_t subtex_id;
 };
 
 /**
@@ -50,6 +45,6 @@ struct FrameData {
  *
  * @return The corresponding animation definition.
  */
-Animation2d parse_sprite(util::Path &file);
+Animation2dInfo parse_sprite_file(util::Path &file);
 
 } // namespace openage::renderer::resources::parser
