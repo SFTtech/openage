@@ -10,6 +10,9 @@ All attributes start with a defined keyword followed by parameter values. Some
 parameters may have default values and are optional. The preferred file extension is
 `.texture`.
 
+A `.texture` file should be placed next to the image file it references and have the same
+filename stem.
+
 
 ## Quick Reference
 
@@ -20,8 +23,14 @@ parameters may have default values and are optional. The preferred file extensio
 # file version
 version 1
 
-# texture file reference, relative to this file's location
-texture <filename>
+# image file reference, relative to this file's location
+imagefile <filename>
+
+# Image size
+size <width> <height>
+
+# Pixel format representation
+pxformat <format> cbit=<token>
 
 # Defines a subtexture inside the image resource
 # Subtextures have x and y coordinates, width and height
@@ -36,6 +45,7 @@ Type     | Example | Description
 ---------|---------|---------
 int      | `5`     | Signed Integer
 string   | `"bla"` | String of characters enclosed by `"`
+token    | `off`   | Alphanumeric predefined keyword
 
 
 ## Attributes
@@ -78,6 +88,59 @@ docs.
 
 ```
 imagefile "idle.png"
+```
+
+
+### `size`
+
+Size of the image loaded from the file.
+
+Parameter | Type   | Optional | Default value
+----------|--------|----------|--------------
+width     | int    | No       | -
+height    | int    | No       | -
+
+**width**<br>
+Width of the image in pixels.
+
+**height**<br>
+Height of the image in pixels.
+
+
+#### Example
+
+```
+size 800 600
+```
+
+
+### `pxformat`
+
+Pixel format used for pixels in the image.
+
+Parameter | Type   | Optional | Default value
+----------|--------|----------|--------------
+format    | token  | No       | -
+cbit      | token  | Yes      | `false`
+
+**format**<br>
+Pixel format of the image.
+
+Format    | Description
+----------|------------
+`rgba8`   | 32 bits per pixel, RGBA colours
+
+**cbit**<br>
+Determines if the last significant bit of the pixel's alpha channel is reserved
+as a colour command bit. If the command bit is set and has value `1`, the pixel
+is handled as a colour command with special drawing rules.
+
+
+#### Example
+
+```
+pxformat rgba8
+pxformat rgba8 cbit=true
 ```
 
 

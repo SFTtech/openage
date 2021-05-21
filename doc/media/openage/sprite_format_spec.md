@@ -98,9 +98,9 @@ docs.
 #### Example
 
 ```
-imagefile 0 "idle.texture"
-imagefile 1 "../../attack.texture"
-imagefile 2 "/{aoe2_base}/graphics/attack.texture"
+texture 0 "idle.texture"
+texture 1 "../../attack.texture"
+texture 2 "/{aoe2_base}/graphics/attack.texture"
 ```
 
 
