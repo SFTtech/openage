@@ -5,8 +5,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "../../log/log.h"
 #include "../../error/error.h"
+#include "../../log/log.h"
 #include "../../util/csv.h"
 
 
@@ -57,8 +57,7 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 	std::string native_path = path.resolve_native_path();
 	std::unique_ptr<SDL_Surface, decltype(&SDL_FreeSurface)> surface(
 		IMG_Load(native_path.c_str()),
-		&SDL_FreeSurface
-	);
+		&SDL_FreeSurface);
 
 	if (!surface) {
 		throw Error(MSG(err)
@@ -78,11 +77,7 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 	case SDL_PIXELFORMAT_BGR24:
 		pix_fmt = pixel_format::bgr8;
 		break;
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-	case SDL_PIXELFORMAT_RGBA8888:
-#else
-	case SDL_PIXELFORMAT_ABGR8888:
-#endif
+	case SDL_PIXELFORMAT_RGBA32:
 		pix_fmt = pixel_format::rgba8;
 		break;
 	default:
@@ -109,7 +104,7 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 	else {
 		// we don't have a texture description file.
 		// use the whole image as one texture then.
-		Texture2dSubInfo s{0, 0, w, h, w/2, h/2};
+		Texture2dSubInfo s{0, 0, w, h, w / 2, h / 2};
 
 		subtextures.push_back(s);
 	}
@@ -118,9 +113,8 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 	this->info = Texture2dInfo(w, h, pix_fmt, align, std::move(subtextures));
 }
 
-Texture2dData::Texture2dData(Texture2dInfo const& info, std::vector<uint8_t> &&data)
-	: info(info)
-	, data(std::move(data)) {}
+Texture2dData::Texture2dData(Texture2dInfo const &info, std::vector<uint8_t> &&data) :
+	info(info), data(std::move(data)) {}
 
 Texture2dData Texture2dData::flip_y() {
 	size_t row_size = this->info.get_row_size();
@@ -129,7 +123,7 @@ Texture2dData Texture2dData::flip_y() {
 	std::vector<uint8_t> new_data(this->data.size());
 
 	for (size_t y = 0; y < height; ++y) {
-		std::copy(this->data.data() + row_size * y, this->data.data() + row_size * (y+1), new_data.end() - row_size * (y+1));
+		std::copy(this->data.data() + row_size * y, this->data.data() + row_size * (y + 1), new_data.end() - row_size * (y + 1));
 	}
 
 	this->data = new_data;
@@ -139,7 +133,7 @@ Texture2dData Texture2dData::flip_y() {
 	return Texture2dData(std::move(new_info), std::move(new_data));
 }
 
-const Texture2dInfo& Texture2dData::get_info() const {
+const Texture2dInfo &Texture2dData::get_info() const {
 	return this->info;
 }
 
@@ -147,7 +141,7 @@ const uint8_t *Texture2dData::get_data() const {
 	return this->data.data();
 }
 
-void Texture2dData::store(const util::Path& file) const {
+void Texture2dData::store(const util::Path &file) const {
 	log::log(MSG(info) << "Saving texture data to " << file);
 
 	if (this->info.get_format() != pixel_format::rgba8) {
@@ -174,28 +168,27 @@ void Texture2dData::store(const util::Path& file) const {
 	std::unique_ptr<SDL_Surface, decltype(&SDL_FreeSurface)> surf(
 		SDL_CreateRGBSurfaceFrom(
 			// const_cast is okay, because the surface doesn't modify data
-			const_cast<void*>(static_cast<void const*>(this->data.data())),
+			const_cast<void *>(static_cast<void const *>(this->data.data())),
 			size.first,
 			size.second,
 			32,
 			this->info.get_row_size(),
-			rmask, gmask, bmask, amask
-		),
-		&SDL_FreeSurface
-	);
+			rmask,
+			gmask,
+			bmask,
+			amask),
+		&SDL_FreeSurface);
 #else
 	std::unique_ptr<SDL_Surface, decltype(&SDL_FreeSurface)> surf(
 		SDL_CreateRGBSurfaceWithFormatFrom(
 			// const_cast is okay, because the surface doesn't modify data
-			const_cast<void*>(static_cast<void const*>(this->data.data())),
+			const_cast<void *>(static_cast<void const *>(this->data.data())),
 			size.first,
 			size.second,
 			32,
 			this->info.get_row_size(),
-			SDL_PIXELFORMAT_RGBA32
-		),
-		&SDL_FreeSurface
-	);
+			SDL_PIXELFORMAT_RGBA32),
+		&SDL_FreeSurface);
 #endif
 
 	// Call sdl_image for saving the screenshot to PNG
@@ -203,4 +196,6 @@ void Texture2dData::store(const util::Path& file) const {
 	IMG_SavePNG(surf.get(), path.c_str());
 }
 
-}}}
+} // namespace resources
+} // namespace renderer
+} // namespace openage
