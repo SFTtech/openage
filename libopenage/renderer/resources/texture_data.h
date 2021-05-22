@@ -28,7 +28,6 @@ public:
 	Texture2dData(const util::Path &path, bool use_metafile = false);
 
 	/// Create a texture from info and path.
-	/// @param[in] metafile Path to the texture metadata file
 	///
 	/// Uses SDL Image internally. For supported image file types,
 	/// see the SDL_Image initialization in the engine.

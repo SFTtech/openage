@@ -58,6 +58,7 @@ public:
 	              size_t height,
 	              pixel_format,
 	              size_t row_alignment = 1,
+	              std::shared_ptr<util::Path> image = nullptr,
 	              std::vector<Texture2dSubInfo> && = std::vector<Texture2dSubInfo>());
 
 	Texture2dInfo() = default;
@@ -116,6 +117,9 @@ private:
 	/// There is padding at the end of each row to match the alignment if the
 	/// row size is not a multiple of the alignment.
 	size_t row_alignment;
+
+	// Path to image resource for this info.
+	std::shared_ptr<util::Path> image;
 
 	/// Some textures are merged together into texture atlases, large images which contain
 	/// more than one individual texture. These are their positions in the atlas.

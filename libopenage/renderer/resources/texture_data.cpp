@@ -110,7 +110,52 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 	}
 
 	size_t align = guess_row_alignment(w, pix_fmt, surface->pitch);
-	this->info = Texture2dInfo(w, h, pix_fmt, align, std::move(subtextures));
+	std::shared_ptr<util::Path> imagepath = std::make_shared<util::Path>(path);
+	this->info = Texture2dInfo(w, h, pix_fmt, align, imagepath, std::move(subtextures));
+}
+
+Texture2dData::Texture2dData(Texture2dInfo const &info, const util::Path &path) {
+	std::string native_path = path.resolve_native_path();
+	std::unique_ptr<SDL_Surface, decltype(&SDL_FreeSurface)> surface(
+		IMG_Load(native_path.c_str()),
+		&SDL_FreeSurface);
+
+	if (!surface) {
+		throw Error(MSG(err)
+		            << "Could not load texture from " << native_path
+		            << ": " << IMG_GetError());
+	}
+
+	log::log(MSG(dbg) << "Texture has been loaded from " << native_path);
+
+	auto surf_fmt = *surface->format;
+
+	pixel_format pix_fmt;
+	switch (surf_fmt.format) {
+	case SDL_PIXELFORMAT_RGB24:
+		pix_fmt = pixel_format::rgb8;
+		break;
+	case SDL_PIXELFORMAT_BGR24:
+		pix_fmt = pixel_format::bgr8;
+		break;
+	case SDL_PIXELFORMAT_RGBA32:
+		pix_fmt = pixel_format::rgba8;
+		break;
+	default:
+		throw Error(MSG(err) << "Texture " << native_path << " uses an unsupported format.");
+	}
+
+	if (unlikely(info.get_format() != pix_fmt)) {
+		throw Error(MSG(err) << "Texture format of texture "
+		                     << native_path
+		                     << " does not match information in metadata.");
+	}
+
+	size_t data_size = surf_fmt.BytesPerPixel * surface->w * surface->h;
+
+	// copy pixel data from surface
+	this->data = std::vector<uint8_t>(data_size);
+	memcpy(this->data.data(), surface->pixels, data_size);
 }
 
 Texture2dData::Texture2dData(Texture2dInfo const &info, std::vector<uint8_t> &&data) :
