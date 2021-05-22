@@ -27,7 +27,6 @@ public:
 	Texture2dData(const util::Path &path, bool use_metafile = false);
 
 	/// Create a texture from info and path.
-	/// @param[in] metafile Path to the texture metadata file
 	///
 	/// Uses QImage internally.
 	Texture2dData(Texture2dInfo const &info, const util::Path &path);

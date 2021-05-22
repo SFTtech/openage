@@ -232,7 +232,7 @@ Animation2dInfo parse_sprite_file(util::Path &file) {
 	// TODO: Check if texture is already loaded
 	std::vector<Texture2dInfo> texture_infos;
 	for (auto texture : textures) {
-		util::Path texturepath = file / texture.path;
+		util::Path texturepath = (file.get_parent() / texture.path);
 		texture_infos.push_back(parse_texture_file(texturepath));
 	}
 
