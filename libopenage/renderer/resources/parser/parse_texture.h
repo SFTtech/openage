@@ -19,7 +19,7 @@ struct SizeData {
 
 struct PixelFormatData {
 	pixel_format format;
-	size_t cbits;
+	bool cbits;
 };
 
 struct SubtextureData {
@@ -38,6 +38,6 @@ struct SubtextureData {
  *
  * @return The corresponding texture definition.
  */
-Texture2dInfo parse_texture_file(util::Path &file);
+Texture2dInfo parse_texture_file(const util::Path &file);
 
 } // namespace openage::renderer::resources::parser

@@ -45,6 +45,6 @@ struct FrameData {
  *
  * @return The corresponding animation definition.
  */
-Animation2dInfo parse_sprite_file(util::Path &file);
+Animation2dInfo parse_sprite_file(const util::Path &file);
 
 } // namespace openage::renderer::resources::parser
