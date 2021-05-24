@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #include "tests.h"
 
@@ -15,6 +15,7 @@
 #include "geometry.h"
 #include "opengl/window.h"
 #include "resources/mesh_data.h"
+#include "resources/parser/parse_sprite.h"
 #include "resources/parser/parse_texture.h"
 #include "resources/shader_source.h"
 #include "resources/texture_data.h"
@@ -287,7 +288,7 @@ void renderer_demo_1(const util::Path &path) {
 	opengl::GlWindow window("openage renderer test", 800, 600);
 	auto renderer = window.make_renderer();
 
-	/* Texture for the clickable objects. */
+	/* Load texture file standalone. */
 	auto tex_path = path / "assets" / "render-test" / "attack_champion_3085.texture";
 	auto tex_info = renderer::resources::parser::parse_texture_file(tex_path);
 
@@ -306,6 +307,49 @@ void renderer_demo_1(const util::Path &path) {
 	log::log(INFO << "    cbits: "
 	              << "(currently unused)");
 	log::log(INFO << "  subtex count: " << tex_info.get_subtexture_count());
+
+	/* Load animation file using the texture. */
+	auto sprite_path = path / "assets" / "render-test" / "attack_champion.sprite";
+	auto sprite_info = renderer::resources::parser::parse_sprite_file(sprite_path);
+
+	log::log(INFO << "Loaded animation " << sprite_path.resolve_native_path());
+	log::log(INFO << "  texture count: " << sprite_info.get_texture_count());
+	for (size_t i = 0; i < sprite_info.get_texture_count(); ++i) {
+		log::log(INFO << "    texture " << i << ": "
+		              << sprite_info.get_texture(i).get_image_path().get()->resolve_native_path());
+	}
+
+	log::log(INFO << "  scalefactor: " << sprite_info.get_scalefactor());
+	log::log(INFO << "  layer count: " << sprite_info.get_layer_count());
+	for (size_t i = 0; i < sprite_info.get_layer_count(); ++i) {
+		auto layer_info = sprite_info.get_layer(i);
+		log::log(INFO << "    layer " << i << ":");
+		log::log(INFO << "      position: " << layer_info.get_position());
+		log::log(INFO << "      time per frame: " << layer_info.get_time_per_frame());
+		log::log(INFO << "      replay delay: " << layer_info.get_replay_delay());
+		log::log(INFO << "      angle count: " << layer_info.get_angle_count());
+
+		for (size_t i = 0; i < layer_info.get_angle_count(); ++i) {
+			auto angle_info = layer_info.get_angle(i);
+			log::log(INFO << "      angle " << i << ":");
+			log::log(INFO << "        degree: " << angle_info.get_angle_start());
+			log::log(INFO << "        frame count: " << angle_info.get_frame_count());
+			log::log(INFO << "        mirrored: " << angle_info.is_mirrored());
+
+			if (angle_info.is_mirrored()) {
+				log::log(INFO << "        mirrored angle: "
+				              << angle_info.get_mirrored_angle().get()->get_angle_start());
+			}
+			else {
+				for (size_t i = 0; i < angle_info.get_frame_count(); ++i) {
+					auto frame_info = angle_info.get_frame(i);
+					log::log(INFO << "        frame " << i << ":");
+					log::log(INFO << "          texture idx: " << frame_info.get_texture_idx());
+					log::log(INFO << "          subtexture idx: " << frame_info.get_subtexture_idx());
+				}
+			}
+		}
+	}
 
 	while (not window.should_close()) {
 		window.update();
