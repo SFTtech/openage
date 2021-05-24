@@ -10,7 +10,7 @@ from enum import Enum
 
 from ..data_definition import DataDefinition
 
-FORMAT_VERSION = '1'
+FORMAT_VERSION = '2'
 
 
 class LayerMode(Enum):
@@ -31,23 +31,23 @@ class SpriteMetadata(DataDefinition):
     def __init__(self, targetdir, filename):
         super().__init__(targetdir, filename)
 
-        self.image_files = {}
+        self.texture_files = {}
         self.scalefactor = 1
         self.layers = {}
         self.angles = {}
         self.frames = []
 
-    def add_image(self, img_id, filename):
+    def add_texture(self, texture_id, filename):
         """
-        Add an image and the relative file name.
+        Add a texture and the relative file name.
 
-        :param img_id: Image identifier.
-        :type img_id: int
+        :param texture_id: Texture identifier.
+        :type texture_id: int
         :param filename: Path to the image file.
         :type filename: str
         """
-        self.image_files[img_id] = {
-            "image_id": img_id,
+        self.texture_files[texture_id] = {
+            "texture_id": texture_id,
             "filename": filename,
         }
 
@@ -88,8 +88,7 @@ class SpriteMetadata(DataDefinition):
             "mirror_from": mirror_from,
         }
 
-    def add_frame(self, frame_idx, angle, layer_id, img_id, xpos, ypos,
-                  xsize, ysize, xhotspot, yhotspot):
+    def add_frame(self, frame_idx, angle, layer_id, texture_id, subtex_id):
         """
         Add frame with all its spacial information.
 
@@ -99,33 +98,18 @@ class SpriteMetadata(DataDefinition):
         :type angle: int
         :param layer_id: ID of the layer to which the frame belongs.
         :type layer_id: int
-        :param img_id: ID of the image used by this frame.
-        :type img_id: int
-        :param xpos: X position of the frame on the image canvas.
-        :type xpos: int
-        :param ypos: Y position of the frame on the image canvas.
-        :type ypos: int
-        :param xsize: Width of the frame.
-        :type xsize: int
-        :param ysize: Height of the frame.
-        :type ysize: int
-        :param xhotspot: X position of the hotspot of the frame.
-        :type xhotspot: int
-        :param yhotspot: Y position of the hotspot of the frame.
-        :type yhotspot: int
+        :param texture_id: ID of the texture used by this frame.
+        :type texture_id: int
+        :param subtex_id: ID of the subtexture from the texture used by this frame.
+        :type subtex_id: int
         """
         self.frames.append(
             {
                 "frame_idx": frame_idx,
                 "angle": angle,
                 "layer_id": layer_id,
-                "img_id": img_id,
-                "xpos": xpos,
-                "ypos": ypos,
-                "xsize": xsize,
-                "ysize": ysize,
-                "xhotspot": xhotspot,
-                "yhotspot": yhotspot,
+                "texture_id": texture_id,
+                "subtex_id": subtex_id,
             }
         )
 
@@ -147,9 +131,9 @@ class SpriteMetadata(DataDefinition):
         # version
         output_str += f"version {FORMAT_VERSION}\n\n"
 
-        # image files
-        for image in self.image_files.values():
-            output_str += f"imagefile {image['image_id']} \"{image['filename']}\"\n"
+        # texture files
+        for texture in self.texture_files.values():
+            output_str += f"texture {texture['texture_id']} \"{texture['filename']}\"\n"
 
         output_str += "\n"
 

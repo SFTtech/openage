@@ -72,7 +72,7 @@ class Texture(genie_structure.GenieStructure):
         self.best_packer_hints = None
 
         self.image_data = None
-        self.image_metadata = None
+        self.image_metadata = {}
 
         spam("creating Texture from %s", repr(input_data))
 
