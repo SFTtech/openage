@@ -9,4 +9,5 @@ add_py_modules(
 	palette_metadata.py
 	sprite_metadata.py
 	terrain_metadata.py
+	texture_metadata.py
 )
