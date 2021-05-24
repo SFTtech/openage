@@ -6,11 +6,11 @@ Converts media requested by export requests to files.
 """
 import os
 
-from openage.convert.entity_object.export.texture import Texture
-from openage.convert.service import debug_info
-from openage.convert.service.export.load_media_cache import load_media_cache
-from openage.convert.value_object.read.media.blendomatic import Blendomatic
-from openage.convert.value_object.read.media_types import MediaType
+from ...entity_object.export.texture import Texture
+from ...service import debug_info
+from ...service.export.load_media_cache import load_media_cache
+from ...value_object.read.media.blendomatic import Blendomatic
+from ...value_object.read.media_types import MediaType
 
 
 class MediaExporter:

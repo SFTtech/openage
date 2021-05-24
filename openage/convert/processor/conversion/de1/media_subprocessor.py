@@ -5,11 +5,10 @@
 Convert media information to metadata definitions and export
 requests. Subroutine of the main DE1 processor.
 """
-from openage.convert.entity_object.export.metadata_export import TextureMetadataExport
-
 from ....entity_object.export.formats.sprite_metadata import LayerMode
 from ....entity_object.export.media_export_request import MediaExportRequest
 from ....entity_object.export.metadata_export import SpriteMetadataExport
+from ....entity_object.export.metadata_export import TextureMetadataExport
 from ....value_object.read.media_types import MediaType
 from ..aoc.media_subprocessor import AoCMediaSubprocessor
 

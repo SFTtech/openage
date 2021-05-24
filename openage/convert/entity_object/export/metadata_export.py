@@ -1,14 +1,13 @@
 # Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments,too-many-locals
-from openage.convert.entity_object.export.formats.texture_metadata import TextureMetadata
-
 """
 Export requests for media metadata.
 """
 
 from ....util.observer import Observer
 from .formats.sprite_metadata import SpriteMetadata
+from .formats.texture_metadata import TextureMetadata
 
 
 class MetadataExport(Observer):

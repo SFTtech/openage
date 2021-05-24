@@ -5,7 +5,7 @@
 Convert media information to metadata definitions and export
 requests. Subroutine of the main RoR processor.
 """
-from openage.convert.processor.conversion.aoc.media_subprocessor import AoCMediaSubprocessor
+from ..aoc.media_subprocessor import AoCMediaSubprocessor
 
 
 class RoRMediaSubprocessor:
