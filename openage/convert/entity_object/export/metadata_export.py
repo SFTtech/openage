@@ -1,8 +1,6 @@
 # Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments,too-many-locals
-from openage.convert.entity_object.export.formats.texture_metadata import TextureMetadata
-
 """
 Export requests for media metadata.
 """
@@ -12,6 +10,7 @@ import typing
 
 from ....util.observer import Observer
 from .formats.sprite_metadata import SpriteMetadata
+from .formats.texture_metadata import TextureMetadata
 
 if typing.TYPE_CHECKING:
     from openage.util.observer import Observable

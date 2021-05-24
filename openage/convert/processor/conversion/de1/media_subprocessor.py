@@ -11,6 +11,7 @@ import typing
 from ....entity_object.export.formats.sprite_metadata import LayerMode
 from ....entity_object.export.media_export_request import MediaExportRequest
 from ....entity_object.export.metadata_export import SpriteMetadataExport
+from ....entity_object.export.metadata_export import TextureMetadataExport
 from ....value_object.read.media_types import MediaType
 from ..aoc.media_subprocessor import AoCMediaSubprocessor
 
