@@ -5,10 +5,10 @@
 namespace openage::renderer::resources {
 
 LayerInfo::LayerInfo(std::vector<AngleInfo> &angles,
-                     const display_mode mode = display_mode::OFF,
-                     const size_t position = 0,
-                     const float time_per_frame = 0.0,
-                     const float replay_delay = 0.0) :
+                     const display_mode mode,
+                     const size_t position,
+                     const float time_per_frame,
+                     const float replay_delay) :
 	mode{mode},
 	position{position},
 	time_per_frame{time_per_frame},
@@ -29,6 +29,10 @@ float LayerInfo::get_time_per_frame() const {
 
 float LayerInfo::get_replay_delay() const {
 	return this->replay_delay;
+}
+
+size_t LayerInfo::get_angle_count() const {
+	return this->angles.size();
 }
 
 const AngleInfo &LayerInfo::get_angle(size_t idx) const {

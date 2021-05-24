@@ -73,7 +73,7 @@ PixelFormatData parse_pxformat(std::vector<std::string> args) {
 	// Only accepted format
 	pxformat.format = pixel_format::rgba8;
 
-	for (size_t i = 2; i <= args.size(); ++i) {
+	for (size_t i = 2; i < args.size(); ++i) {
 		std::vector<std::string> keywordarg{util::split(args[i], '=')};
 
 		if (keywordarg[0] == "cbits") {

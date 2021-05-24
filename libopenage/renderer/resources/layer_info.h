@@ -34,10 +34,10 @@ public:
 	 * @param angles Angle information.
 	 */
 	LayerInfo(std::vector<AngleInfo> &angles,
-	          const display_mode mode,
-	          const size_t position,
-	          const float time_per_frame,
-	          const float replay_delay);
+	          const display_mode mode = display_mode::OFF,
+	          const size_t position = 0,
+	          const float time_per_frame = 0.0,
+	          const float replay_delay = 0.0);
 
 	LayerInfo() = default;
 	~LayerInfo() = default;
@@ -69,6 +69,13 @@ public:
 	 * @return Additional time to display the last frame in seconds.
 	 */
 	float get_replay_delay() const;
+
+	/**
+	 * Get number of angles in the layer.
+	 *
+	 * @return Number of angles.
+	 */
+	size_t get_angle_count() const;
 
 	/**
 	 * Get the angle information of the angle with the specified index.
