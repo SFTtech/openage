@@ -90,6 +90,9 @@ public:
 	/// get_row_size() * get_size().second.
 	size_t get_data_size() const;
 
+	/// Returns the pointer to the image path
+	std::shared_ptr<util::Path> get_image_path() const;
+
 	/// Returns the number of available subtextures.
 	size_t get_subtexture_count() const;
 
