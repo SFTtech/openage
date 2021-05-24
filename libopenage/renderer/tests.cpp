@@ -15,6 +15,7 @@
 #include "geometry.h"
 #include "opengl/window.h"
 #include "resources/mesh_data.h"
+#include "resources/parser/parse_texture.h"
 #include "resources/shader_source.h"
 #include "resources/texture_data.h"
 #include "shader_program.h"
@@ -282,10 +283,44 @@ void main() {
 	}
 }
 
+void renderer_demo_1(const util::Path &path) {
+	opengl::GlWindow window("openage renderer test", 800, 600);
+	auto renderer = window.make_renderer();
+
+	/* Texture for the clickable objects. */
+	auto tex_path = path / "assets" / "render-test" / "attack_champion_3085.texture";
+	auto tex_info = renderer::resources::parser::parse_texture_file(tex_path);
+
+	log::log(INFO << "Loaded texture " << tex_path.resolve_native_path());
+	log::log(INFO << "  imagefile: " << tex_info.get_image_path().get()->resolve_native_path());
+	log::log(INFO << "  size:");
+	log::log(INFO << "    width: " << tex_info.get_size().first);
+	log::log(INFO << "    height: " << tex_info.get_size().second);
+	log::log(INFO << "  pxformat:");
+	log::log(INFO << "    data size: " << tex_info.get_data_size()
+	              << " ("
+	              << tex_info.get_size().first << " x "
+	              << tex_info.get_size().second << " x "
+	              << renderer::resources::pixel_size(tex_info.get_format())
+	              << ")");
+	log::log(INFO << "    cbits: "
+	              << "(currently unused)");
+	log::log(INFO << "  subtex count: " << tex_info.get_subtexture_count());
+
+	while (not window.should_close()) {
+		window.update();
+		opengl::GlContext::check_error();
+	}
+}
+
 void renderer_demo(int demo_id, const util::Path &path) {
 	switch (demo_id) {
 	case 0:
 		renderer_demo_0(path);
+		break;
+
+	case 1:
+		renderer_demo_1(path);
 		break;
 
 	default:
