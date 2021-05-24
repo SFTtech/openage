@@ -142,7 +142,7 @@ FrameData parse_frame(std::vector<std::string> args) {
 	return frame;
 }
 
-Animation2dInfo parse_sprite_file(util::Path &file) {
+Animation2dInfo parse_sprite_file(const util::Path &file) {
 	auto content = file.open();
 	auto lines = content.get_lines();
 

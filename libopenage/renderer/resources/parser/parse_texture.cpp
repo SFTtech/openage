@@ -39,7 +39,7 @@ std::string parse_imagefile(std::vector<std::string> args) {
 	// it should result in an error if wrongly used here.
 
 	// Call substr() to get rid of the quotes
-	return args[2].substr(1, args[2].size() - 2);
+	return args[1].substr(1, args[1].size() - 2);
 }
 
 /**
@@ -77,7 +77,12 @@ PixelFormatData parse_pxformat(std::vector<std::string> args) {
 		std::vector<std::string> keywordarg{util::split(args[i], '=')};
 
 		if (keywordarg[0] == "cbits") {
-			pxformat.cbits = std::stoul(keywordarg[1]);
+			if (keywordarg[1] == "True") {
+				pxformat.cbits = true;
+			}
+			else if (keywordarg[1] == "False") {
+				pxformat.cbits = false;
+			}
 		}
 	}
 
@@ -105,7 +110,7 @@ SubtextureData parse_subtex(std::vector<std::string> args) {
 	return subtex;
 }
 
-Texture2dInfo parse_texture_file(util::Path &file) {
+Texture2dInfo parse_texture_file(const util::Path &file) {
 	auto content = file.open();
 	auto lines = content.get_lines();
 
