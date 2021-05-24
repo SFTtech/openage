@@ -35,7 +35,7 @@ public:
 	 */
 	AngleInfo(const float angle_start,
 	          std::vector<FrameInfo> &frames,
-	          std::shared_ptr<AngleInfo> mirror_from);
+	          std::shared_ptr<AngleInfo> mirror_from = nullptr);
 
 	AngleInfo() = default;
 	~AngleInfo() = default;
@@ -60,6 +60,13 @@ public:
 	 * @return An angle information object.
 	 */
 	const std::shared_ptr<AngleInfo> &get_mirrored_angle() const;
+
+	/**
+	 * Get number of frames for the angle.
+	 *
+	 * @return Number of frames.
+	 */
+	size_t get_frame_count() const;
 
 	/**
 	 * Get the frame information of the frame with the specified index.

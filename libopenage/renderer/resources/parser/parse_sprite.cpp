@@ -70,7 +70,7 @@ LayerData parse_layer(std::vector<std::string> args) {
 	layer.layer_id = std::stoul(args[1]);
 
 	// Optional args
-	for (size_t i = 2; i <= args.size(); ++i) {
+	for (size_t i = 2; i < args.size(); ++i) {
 		std::vector<std::string> keywordarg{util::split(args[i], '=')};
 
 		if (keywordarg[0] == "mode") {
@@ -111,7 +111,7 @@ AngleData parse_angle(std::vector<std::string> args) {
 
 	angle.degree = std::stoul(args[1]);
 
-	for (size_t i = 2; i <= args.size(); ++i) {
+	for (size_t i = 2; i < args.size(); ++i) {
 		std::vector<std::string> keywordarg{util::split(args[i], '=')};
 
 		if (keywordarg[0] == "mirror_from") {
@@ -198,26 +198,39 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 	// Create ID map. Resolves IDs used in the file to array indices
 	std::unordered_map<size_t, size_t> texture_id_map;
 	for (size_t i = 0; i < textures.size(); ++i) {
-		texture_id_map.insert(std::make_pair(textures.at(i).texture_id, i));
+		texture_id_map.insert(std::make_pair(textures[i].texture_id, i));
+	}
+	std::unordered_map<size_t, size_t> angle_id_map;
+	for (size_t i = 0; i < angles.size(); ++i) {
+		angle_id_map.insert(std::make_pair(angles[i].degree, i));
 	}
 
 	std::vector<LayerInfo> layer_infos;
 	for (auto layer : layers) {
 		std::vector<AngleInfo> angle_infos;
+		std::vector<std::shared_ptr<AngleInfo>> angle_info_ptrs;
 		for (auto angle : angles) {
 			std::vector<FrameInfo> frame_infos;
-			for (auto frame : frames.at(angle.degree)) {
-				if (frame.layer_id != layer.layer_id) {
-					continue;
-				}
-				if (frame.index >= frame_infos.size()) {
-					// Add empty frames if no frame exists for an index
-					for (size_t i = frame_infos.size() - 1; i < frame.index; ++i) {
-						frame_infos.emplace_back(-1, -1);
+			if (angle.mirror_from < 0) {
+				for (auto frame : frames[angle.degree]) {
+					if (frame.layer_id != layer.layer_id) {
+						continue;
 					}
+					if (frame.index > frame_infos.size()) {
+						// TODO: Add empty frames if no frame exists for an index
+						for (size_t i = frame_infos.size() - 1; i < frame.index; ++i) {
+							// frame_infos.emplace_back();
+						}
+					}
+					frame_infos.emplace_back(texture_id_map[frame.texture_id],
+					                         frame.subtex_id);
 				}
-				frame_infos.emplace_back(texture_id_map[frame.texture_id],
-				                         frame.subtex_id);
+				angle_info_ptrs.emplace_back(std::make_shared<AngleInfo>(angle.degree, frame_infos));
+				angle_infos.emplace_back(angle.degree, frame_infos);
+			}
+			else {
+				auto angle_info_ptr = angle_info_ptrs[angle_id_map[angle.mirror_from]];
+				angle_infos.emplace_back(angle.degree, frame_infos, angle_info_ptr);
 			}
 		}
 

@@ -45,6 +45,13 @@ public:
 	float get_scalefactor() const;
 
 	/**
+	 * Get number of textures referenced by the animation.
+	 *
+	 * @return Number of textures.
+	 */
+	size_t get_texture_count() const;
+
+	/**
 	 * Get the 2D texture information of the texture with the specified index.
 	 *
 	 * @param idx Index of the texture.
@@ -53,6 +60,13 @@ public:
 	 *         referenced texture.
 	 */
 	const Texture2dInfo &get_texture(size_t idx) const;
+
+	/**
+	 * Get number of layers in the animation.
+	 *
+	 * @return Number of layers.
+	 */
+	size_t get_layer_count() const;
 
 	/**
 	 * Get the layer information of the layer with the specified index.
