@@ -60,6 +60,10 @@ size_t Texture2dInfo::get_data_size() const {
 	return this->get_row_size() * this->h;
 }
 
+std::shared_ptr<util::Path> Texture2dInfo::get_image_path() const {
+	return this->image;
+}
+
 size_t Texture2dInfo::get_subtexture_count() const {
 	return this->subtextures.size();
 }
