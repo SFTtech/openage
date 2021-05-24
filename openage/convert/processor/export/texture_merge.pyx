@@ -135,7 +135,8 @@ cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) exc
         )
 
     texture.image_data = TextureImage(atlas_data)
-    texture.image_metadata = drawn_frames_meta
+    texture.image_metadata["size"] = (width, height)
+    texture.image_metadata["subtex_metadata"] = drawn_frames_meta
 
     spam("successfully merged %d frames to atlas.", len(frames))
 

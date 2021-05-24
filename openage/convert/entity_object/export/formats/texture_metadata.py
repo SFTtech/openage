@@ -36,43 +36,6 @@ class TextureMetadata(DataDefinition):
         self.pxformat = {}
         self.subtexs = []
 
-    def add_image(self, filename):
-        """
-        Set the relative filename of the image.
-
-        :param filename: Path to the image file.
-        :type filename: str
-        """
-        self.image_file = filename
-
-    def add_size(self, width, height):
-        """
-        Define the size of the PNG file.
-
-        :param width: Width of the exported PNG in pixels.
-        :type width: int
-        :param height: Height of the exported PNG in pixels.
-        :type height: int
-        """
-        self.size = {
-            "width": width,
-            "height": height
-        }
-
-    def add_pxformat(self, pxformat="rgba8", cbits=True):
-        """
-        Specify the pixel format of the texture.
-
-        :param pxformat: Identifier for the pixel format of each pixel.
-        :type pxformat: str
-        :param cbits: True if the pixels use a command bit.
-        :type cbits: bool
-        """
-        self.pxformat = {
-            "format": pxformat,
-            "cbits": cbits,
-        }
-
     def add_subtex(self, xpos, ypos, xsize, ysize, xhotspot, yhotspot):
         """
         Add a subtex with all its spacial information.
@@ -101,6 +64,43 @@ class TextureMetadata(DataDefinition):
             }
         )
 
+    def set_imagefile(self, filename):
+        """
+        Set the relative filename of the texture.
+
+        :param filename: Path to the image file.
+        :type filename: str
+        """
+        self.image_file = filename
+
+    def set_size(self, width, height):
+        """
+        Define the size of the PNG file.
+
+        :param width: Width of the exported PNG in pixels.
+        :type width: int
+        :param height: Height of the exported PNG in pixels.
+        :type height: int
+        """
+        self.size = {
+            "width": width,
+            "height": height
+        }
+
+    def set_pxformat(self, pxformat="rgba8", cbits=True):
+        """
+        Specify the pixel format of the texture.
+
+        :param pxformat: Identifier for the pixel format of each pixel.
+        :type pxformat: str
+        :param cbits: True if the pixels use a command bit.
+        :type cbits: bool
+        """
+        self.pxformat = {
+            "format": pxformat,
+            "cbits": cbits,
+        }
+
     def dump(self):
         output_str = ""
 
@@ -121,7 +121,7 @@ class TextureMetadata(DataDefinition):
         output_str += "\n"
 
         # pixel format
-        output_str += f"pxformat {self.pxformat['format']} {self.pxformat['cbits']}"
+        output_str += f"pxformat {self.pxformat['format']}"
 
         if self.pxformat["cbits"]:
             output_str += f" cbits={self.pxformat['cbits']}"

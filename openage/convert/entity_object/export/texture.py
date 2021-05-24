@@ -93,7 +93,7 @@ class Texture(GenieStructure):
         self.best_packer_hints: tuple = None
 
         self.image_data: TextureImage = None
-        self.image_metadata: list[dict[str, int]] = None
+        self.image_metadata: list[dict[str, int]] = {}
 
         spam("creating Texture from %s", repr(input_data))
 
