@@ -23,12 +23,11 @@ namespace openage::datastructure {
  * Messages include: "error: ‘*0u’ is not a constant expression"
  * -> nonexistant key
  */
-template<typename K, typename V, size_t count>
+template <typename K, typename V, size_t count>
 class ConstMap {
 public:
-	template<class... Entries>
-	constexpr ConstMap(Entries&&... entries)
-		:
+	template <class... Entries>
+	constexpr ConstMap(Entries &&...entries) :
 		values{std::forward<Entries>(entries)...} {
 		this->verify_no_duplicates();
 	}
@@ -62,7 +61,7 @@ public:
 	/**
 	 * Access entries by map[key].
 	 */
-	constexpr const V &operator [](const K &key) const {
+	constexpr const V &operator[](const K &key) const {
 		return this->get(key);
 	}
 
@@ -106,8 +105,8 @@ private:
  *
  * usage: constexpr auto bla = create_const_map<type0, type1>(entry0, entry1, ...);
  */
-template<typename K, typename V, typename... Entries>
-constexpr auto create_const_map(Entries&&... entry) {
+template <typename K, typename V, typename... Entries>
+constexpr auto create_const_map(Entries &&...entry) {
 	return ConstMap<K, V, sizeof...(entry)>{entry...};
 }
 
@@ -125,5 +124,4 @@ requires std::conjunction_v<std::is_same<Entry, Rest>...>
 ConstMap(Entry, Rest&&...) -> ConstMap<typename Entry::first_type,
                                        typename Entry::second_type,
                                        1 + sizeof...(Rest)>;
-
-} // openage::datastructure
+} // namespace openage::datastructure

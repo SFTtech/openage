@@ -26,10 +26,11 @@ public:
 	/// Uses QImage internally.
 	Texture2dData(const util::Path &path, bool use_metafile = false);
 
-	/// Create a texture from info and path.
+	/// Create a texture from info.
 	///
-	/// Uses QImage internally.
-	Texture2dData(Texture2dInfo const &info, const util::Path &path);
+	/// Uses SDL Image internally. For supported image file types,
+	/// see the SDL_Image initialization in the engine.
+	Texture2dData(Texture2dInfo const &info);
 
 	/// Construct by moving the information and raw texture data from somewhere else.
 	Texture2dData(Texture2dInfo const &info, std::vector<uint8_t> &&data);
