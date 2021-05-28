@@ -23,12 +23,11 @@ namespace openage::datastructure {
  * Messages include: "error: ‘*0u’ is not a constant expression"
  * -> nonexistant key
  */
-template<typename K, typename V, size_t count>
+template <typename K, typename V, size_t count>
 class ConstMap {
 public:
-	template<class... Entries>
-	constexpr ConstMap(Entries&&... entries)
-		:
+	template <class... Entries>
+	constexpr ConstMap(Entries &&...entries) :
 		values{std::forward<Entries>(entries)...} {
 		this->verify_no_duplicates();
 	}
@@ -62,7 +61,7 @@ public:
 	/**
 	 * Access entries by map[key].
 	 */
-	constexpr const V &operator [](const K &key) const {
+	constexpr const V &operator[](const K &key) const {
 		return this->get(key);
 	}
 
@@ -103,7 +102,7 @@ private:
  * Specialization for size 0.
  * Needed until https://bugs.llvm.org/show_bug.cgi?id=40124 is resolved.
  */
-template<typename K, typename V>
+template <typename K, typename V>
 class ConstMap<K, V, 0> {
 public:
 	/**
@@ -127,8 +126,8 @@ public:
  *
  * usage: constexpr auto bla = create_const_map<type0, type1>(entry0, entry1, ...);
  */
-template<typename K, typename V, typename... Entries>
-constexpr auto create_const_map(Entries&&... entry) {
+template <typename K, typename V, typename... Entries>
+constexpr auto create_const_map(Entries &&...entry) {
 	return ConstMap<K, V, sizeof...(entry)>{entry...};
 }
 
@@ -141,10 +140,9 @@ constexpr auto create_const_map(Entries&&... entry) {
  * Note: Use when automatic type deduction is desirable.
  *       For manually specifying types, use the other method.
  */
-template<typename Entry, typename... Rest,
-         typename = std::enable_if_t<std::conjunction_v<std::is_same<Entry, Rest>...>>>
-ConstMap(Entry, Rest&&...) -> ConstMap<typename Entry::first_type,
-                                       typename Entry::second_type,
-                                       1 + sizeof...(Rest)>;
+template <typename Entry, typename... Rest, typename = std::enable_if_t<std::conjunction_v<std::is_same<Entry, Rest>...>>>
+ConstMap(Entry, Rest &&...) -> ConstMap<typename Entry::first_type,
+                                        typename Entry::second_type,
+                                        1 + sizeof...(Rest)>;
 
-} // openage::datastructure
+} // namespace openage::datastructure
