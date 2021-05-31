@@ -3,10 +3,9 @@
 # cython: infer_types=True
 
 from enum import Enum
+import lz4.block
 import numpy
 from struct import Struct, unpack_from
-
-import lz4.block
 
 from .....log import spam, dbg
 
@@ -1501,17 +1500,20 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 r, g, b = 0, 0, 0
                 alpha = 255 - (px_val << 2)
 
+                # Only uneven alphas are used in openage; even alphas are used for commands
+                alpha = alpha | 0x01
+
             else:
                 if px_type == color_player_v4 or px_type == color_player:
                     # mark this pixel as player color
-                    alpha = 255
+                    alpha = 254
 
                 elif px_type == color_special_2 or\
                      px_type == color_black:
-                    alpha = 251  # mark this pixel as special outline
+                    alpha = 250  # mark this pixel as special outline
 
                 elif px_type == color_special_1:
-                    alpha = 253  # mark this pixel as outline
+                    alpha = 252  # mark this pixel as outline
 
                 else:
                     raise ValueError("unknown pixel type: %d" % px_type)
@@ -1568,6 +1570,9 @@ cdef numpy.ndarray determine_rgba_matrix32(vector[vector[pixel32]] &image_matrix
                 b = px.b
                 alpha = px.a
 
+                # Only uneven alphas are used in openage; even alphas are used for commands
+                alpha = alpha | 0x01
+
             elif px_type == color_transparent:
                 r, g, b, alpha = 0, 0, 0, 0
 
@@ -1578,17 +1583,20 @@ cdef numpy.ndarray determine_rgba_matrix32(vector[vector[pixel32]] &image_matrix
                 r, g, b = 0, 0, 0
                 alpha = 255 - (px.r << 2)
 
+                # Only uneven alphas are used in openage; even alphas are used for commands
+                alpha = alpha | 0x01
+
             else:
                 if px_type == color_player_v4 or px_type == color_player:
                     # mark this pixel as player color
-                    alpha = 255
+                    alpha = 254
 
                 elif px_type == color_special_2 or\
                      px_type == color_black:
-                    alpha = 251  # mark this pixel as special outline
+                    alpha = 250  # mark this pixel as special outline
 
                 elif px_type == color_special_1:
-                    alpha = 253  # mark this pixel as outline
+                    alpha = 252  # mark this pixel as outline
 
                 else:
                     raise ValueError("unknown pixel type: %d" % px_type)

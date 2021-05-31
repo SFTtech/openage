@@ -3,9 +3,8 @@
 # cython: infer_types=True
 
 from enum import Enum
-from struct import Struct, unpack_from
-
 import numpy
+from struct import Struct, unpack_from
 
 from .....log import spam, dbg
 
@@ -1064,7 +1063,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 alpha = m_lookup[index][3]
 
                 # alpha values are unused
-                # in 0x0C and 0x0B version of SMPs
+                # in 0x0C and 0x0B version of SMP/SMX
                 alpha = 255
 
             elif px_type == color_transparent:
@@ -1073,12 +1072,15 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
             elif px_type == color_shadow:
                 r, g, b, alpha = 0, 0, 0, px_index
 
+                # Only uneven alphas are used in openage; even alphas are used for commands
+                alpha = alpha | 0x01
+
             else:
                 if px_type == color_player:
-                    alpha = 255
+                    alpha = 254
 
                 elif px_type == color_outline:
-                    alpha = 253
+                    alpha = 252
 
                 else:
                     raise ValueError(f"unknown pixel type: {px_type:#x}")
