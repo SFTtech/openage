@@ -305,6 +305,12 @@ void main() {
 	window.close();
 }
 
+/**
+ * Loads .sprite and .texture meta information files and displays
+ * subtextures from the attached texture images.
+ *
+ * @param path Path to the openage asset directory.
+ */
 void renderer_demo_1(const util::Path &path) {
 	opengl::GlWindow window("openage renderer test", 800, 600);
 	auto renderer = window.make_renderer();
@@ -372,6 +378,9 @@ void renderer_demo_1(const util::Path &path) {
 		}
 	}
 
+	/* Display the subtextures using the meta information */
+	log::log(INFO << "Loading shaders...");
+
 	/* Shader for individual objects in pass 1. */
 	auto obj_vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
@@ -381,13 +390,19 @@ void renderer_demo_1(const util::Path &path) {
 
 layout(location=0) in vec2 position;
 layout(location=1) in vec2 uv;
+
 uniform mat4 mv;
 uniform mat4 proj;
+uniform vec4 offset_tile;
+
+float width = offset_tile.y - offset_tile.x;
+float height = offset_tile.w - offset_tile.z;
+
 out vec2 v_uv;
 
 void main() {
 	gl_Position = proj * mv * vec4(position, 0.0, 1.0);
-  v_uv = vec2(uv.x, 1.0 - uv.y);
+    v_uv = vec2((uv.x * width) + offset_tile.x, (((1.0 - uv.y) * height) + offset_tile.z));
 }
 )s");
 
@@ -406,10 +421,24 @@ layout(location=1) out uint id;
 
 void main() {
 	vec4 tex_val = texture(tex, v_uv);
-	if (tex_val.a == 0) {
-		discard;
+	int alpha = int(round(tex_val.a * 255));
+	switch (alpha) {
+		case 0:
+			discard;
+			break;
+		case 254:
+		    col = vec4(1.0f, 0.0f, 0.0f, 1.0f);
+			break;
+		case 252:
+		    col = vec4(0.0f, 1.0f, 0.0f, 1.0f);
+			break;
+		case 250:
+		    col = vec4(0.0f, 0.0f, 1.0f, 1.0f);
+			break;
+		default:
+	    	col = tex_val;
+			break;
 	}
-	col = tex_val;
 	id = u_id;
 }
 )s");
@@ -426,7 +455,7 @@ layout(location=1) in vec2 uv;
 out vec2 v_uv;
 
 void main() {
-	gl_Position =  vec4(position, 0.0, 1.0);
+	gl_Position = vec4(position, 0.0, 1.0);
 	v_uv = uv;
 }
 )s");
@@ -450,50 +479,40 @@ void main() {
 	auto obj_shader = renderer->add_shader({obj_vshader_src, obj_fshader_src});
 	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
 
-	/* Texture for the clickable objects. */
+	/* Load texture image using the metafile. */
+	log::log(INFO << "Loading texture image...");
 	auto tex = resources::Texture2dData(sprite_info.get_texture(0));
 	auto gltex = renderer->add_texture(tex);
 
-	auto transform1 = Eigen::Affine3f::Identity();
-	transform1.prescale(Eigen::Vector3f(0.4f, 0.2f, 1.0f));
-	transform1.prerotate(Eigen::AngleAxisf(30.0f * math::PI / 180.0f, Eigen::Vector3f::UnitX()));
-	transform1.pretranslate(Eigen::Vector3f(-0.4f, -0.6f, 0.0f));
+	/* Read location of the subtexture in the texture image */
+	auto size = window.get_size();
+	size_t subtexture_index = 0;
+	util::Vector2s subtex_size = {tex.get_info().get_subtexture_size(subtexture_index).first,
+	                              tex.get_info().get_subtexture_size(subtexture_index).second};
+	auto [s_left, s_right, s_top, s_bottom] = tex.get_info().get_subtexture_coordinates(subtexture_index);
+	Eigen::Vector4f subtex_coords{s_left, s_right, s_top, s_bottom};
 
-	/* Clickable objects on the screen consist of a transform (matrix which places each object
-	 * in the correct location), an identifier and a reference to the texture. */
+	/* Upscale subtexture for better visibility */
+	float scale_x = 10 * (float)subtex_size[1] / size[0];
+	float scale_y = 10 * (float)subtex_size[0] / size[1];
+	auto transform1 = Eigen::Affine3f::Identity();
+	transform1.prescale(Eigen::Vector3f(scale_y,
+	                                    scale_x,
+	                                    1.0f));
+
+	/* Pass uniforms to the shaders.
+		mv          : The upscaling matrix
+		offset_tile : Subtexture coordinates (as floats relative to texture image size)
+		u_id        : Identifier
+		tex         : OpenGL texture reference
+	*/
 	auto obj1_unifs = obj_shader->new_uniform_input(
 		"mv",
 		transform1.matrix(),
+		"offset_tile",
+		subtex_coords,
 		"u_id",
 		1u,
-		"tex",
-		gltex);
-
-	auto transform2 = Eigen::Affine3f::Identity();
-	transform2.prescale(Eigen::Vector3f(0.3f, 0.1f, 1.0f));
-	transform2.prerotate(Eigen::AngleAxisf(50.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
-
-	auto transform3 = transform2;
-
-	transform2.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.3f));
-
-	auto obj2_unifs = obj_shader->new_uniform_input(
-		"mv",
-		transform2.matrix(),
-		"u_id",
-		2u,
-		// TODO bug: this tex input spills over to all the other uniform inputs!
-		"tex",
-		gltex);
-
-	transform3.prerotate(Eigen::AngleAxisf(90.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
-	transform3.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.5f));
-
-	auto obj3_unifs = obj_shader->new_uniform_input(
-		"mv",
-		transform3.matrix(),
-		"u_id",
-		3u,
 		"tex",
 		gltex);
 
@@ -506,25 +525,10 @@ void main() {
 		true,
 	};
 
-	Renderable obj2{
-		obj2_unifs,
-		quad,
-		true,
-		true,
-	};
-
-	Renderable obj3{
-		obj3_unifs,
-		quad,
-		true,
-		true,
-	};
-
 	/* Make a framebuffer for the first render pass to draw into. The framebuffer consists of a color texture
 	 * to be copied onto the back buffer in pass 2, as well as an id texture which will contain the object ids
 	 * which we can later read in order to determine which object was clicked. The depth texture is required,
 	 * but mostly irrelevant in this case. */
-	auto size = window.get_size();
 	auto color_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::rgba8));
 	auto id_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::r32ui));
 	auto depth_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::depth24));
@@ -543,7 +547,7 @@ void main() {
 	};
 
 	auto pass1 = renderer->add_render_pass(
-		{proj_update, obj1, obj2, obj3},
+		{proj_update, obj1},
 		fbo);
 
 	/* Make an object encompassing the entire screen for the second render pass. The object
@@ -566,6 +570,9 @@ void main() {
 	glDepthFunc(GL_LEQUAL);
 	glDepthRange(0.0, 1.0);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	/* Register callbacks */
+	log::log(INFO << "Register callbacks...");
 
 	window.add_mouse_button_callback([&](SDL_MouseButtonEvent const &ev) {
 		auto x = ev.x;
@@ -610,6 +617,59 @@ void main() {
 		texture_data_valid = false;
 		pass1->set_target(fbo);
 	});
+
+	/* Iterate through subtextures with left/right arrows */
+	window.add_key_callback([&](SDL_KeyboardEvent event) {
+		if (event.type == SDL_KEYUP) {
+			if (event.keysym.sym == SDLK_RIGHT) {
+				log::log(INFO << "Key pressed (Right arrow)");
+
+				++subtexture_index;
+				if (subtexture_index >= tex.get_info().get_subtexture_count()) {
+					subtexture_index = 0;
+				}
+			}
+			else if (event.keysym.sym == SDLK_LEFT) {
+				log::log(INFO << "Key pressed (Left arrow)");
+				if (subtexture_index == 0) {
+					subtexture_index = tex.get_info().get_subtexture_count() - 1;
+				}
+				else {
+					--subtexture_index;
+				}
+			}
+			else {
+				return;
+			}
+
+			log::log(INFO << "Selected subtexture: " << subtexture_index);
+
+			/* Rescale the transformation matrix. */
+			auto size = window.get_size();
+			util::Vector2s subtex_size = {tex.get_info().get_subtexture_size(subtexture_index).first,
+			                              tex.get_info().get_subtexture_size(subtexture_index).second};
+			float scale_x = 10 * (float)subtex_size[1] / size[0];
+			float scale_y = 10 * (float)subtex_size[0] / size[1];
+
+			auto transform1 = Eigen::Affine3f::Identity();
+			transform1.prescale(Eigen::Vector3f(scale_y,
+			                                    scale_x,
+			                                    1.0f));
+
+			obj1_unifs->update("mv", transform1.matrix());
+
+			/* Pass the new subtexture coordinates. */
+			auto [s_left, s_right, s_top, s_bottom] = tex.get_info().get_subtexture_coordinates(subtexture_index);
+			Eigen::Vector4f subtex_coords{s_left, s_right, s_top, s_bottom};
+
+			obj1_unifs->update("offset_tile", subtex_coords);
+		}
+	});
+	log::log(INFO << "Success!");
+
+	log::log(INFO << "Instructions:");
+	log::log(INFO << "  1. Click on the texture pixels with LEFT MOUSE BUTTON to get the object ID");
+	log::log(INFO << "  2. Press LEFT/RIGHT ARROW to cycle through available subtextures");
 
 	while (not window.should_close()) {
 		renderer->render(pass1);
