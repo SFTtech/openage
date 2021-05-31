@@ -10,16 +10,15 @@
 namespace openage::renderer::resources::parser {
 
 /**
- * Parse the file version and check if the version is supported by
- * the parser.
+ * Parse the file version attribute.
  *
  * @param args Arguments from the line with a \p version attribute.
  *             The first argument is expected to be the attribute keyword.
  *
- * @return true if the version is supported, else false
+ * @return Version number.
  */
-bool parse_version(std::vector<std::string> args) {
-	return args[1] == "1";
+size_t parse_spriteversion(std::vector<std::string> args) {
+	return std::stoul(args[1]);
 }
 
 /**
@@ -69,30 +68,39 @@ LayerData parse_layer(std::vector<std::string> args) {
 
 	layer.layer_id = std::stoul(args[1]);
 
-	// Optional args
-	for (size_t i = 2; i < args.size(); ++i) {
-		std::vector<std::string> keywordarg{util::split(args[i], '=')};
-
-		if (keywordarg[0] == "mode") {
-			if (keywordarg[1] == "off") {
+	// Optional arguments
+	const auto keywordfuncs = datastructure::create_const_map<std::string, std::function<void(std::vector<std::string>)>>(
+		std::make_pair("mode", [&](std::vector<std::string> keywordargs) {
+			if (keywordargs[1] == "off") {
 				layer.mode = display_mode::OFF;
 			}
-			else if (keywordarg[1] == "once") {
+			else if (keywordargs[1] == "once") {
 				layer.mode = display_mode::ONCE;
 			}
-			else if (keywordarg[1] == "loop") {
+			else if (keywordargs[1] == "loop") {
 				layer.mode = display_mode::LOOP;
 			}
+		}),
+		std::make_pair("position", [&](std::vector<std::string> keywordargs) {
+			layer.position = std::stoul(keywordargs[1]);
+		}),
+		std::make_pair("time_per_frame", [&](std::vector<std::string> keywordargs) {
+			layer.time_per_frame = std::stof(keywordargs[1]);
+		}),
+		std::make_pair("replay_delay", [&](std::vector<std::string> keywordargs) {
+			layer.replay_delay = std::stof(keywordargs[1]);
+		}));
+
+	for (size_t i = 2; i < args.size(); ++i) {
+		std::vector<std::string> keywordargs{util::split(args[i], '=')};
+
+		if (unlikely(!keywordfuncs.contains(keywordargs[0]))) {
+			throw Error(MSG(err) << "Keyword argument "
+			                     << keywordargs[0]
+			                     << " of 'layer' attribute is not defined");
 		}
-		else if (keywordarg[0] == "position") {
-			layer.position = std::stoul(keywordarg[1]);
-		}
-		else if (keywordarg[0] == "time_per_frame") {
-			layer.time_per_frame = std::stof(keywordarg[1]);
-		}
-		else if (keywordarg[0] == "replay_delay") {
-			layer.replay_delay = std::stof(keywordarg[1]);
-		}
+
+		keywordfuncs[keywordargs[0]](keywordargs);
 	}
 
 	return layer;
@@ -111,12 +119,22 @@ AngleData parse_angle(std::vector<std::string> args) {
 
 	angle.degree = std::stoul(args[1]);
 
-	for (size_t i = 2; i < args.size(); ++i) {
-		std::vector<std::string> keywordarg{util::split(args[i], '=')};
+	// Optional arguments
+	const auto keywordfuncs = datastructure::create_const_map<std::string, std::function<void(std::vector<std::string>)>>(
+		std::make_pair("mirror_from", [&](std::vector<std::string> keywordargs) {
+			angle.mirror_from = std::stoul(keywordargs[1]);
+		}));
 
-		if (keywordarg[0] == "mirror_from") {
-			angle.mirror_from = std::stoul(keywordarg[1]);
+	for (size_t i = 2; i < args.size(); ++i) {
+		std::vector<std::string> keywordargs{util::split(args[i], '=')};
+
+		if (unlikely(!keywordfuncs.contains(keywordargs[0]))) {
+			throw Error(MSG(err) << "Keyword argument "
+			                     << keywordargs[0]
+			                     << " of 'angle' attribute is not defined");
 		}
+
+		keywordfuncs[keywordargs[0]](keywordargs);
 	}
 
 	return angle;
@@ -154,6 +172,38 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 	// Map frame data to angle
 	std::unordered_map<size_t, std::vector<FrameData>> frames;
 
+	const auto keywordfuncs = datastructure::create_const_map<std::string, std::function<void(std::vector<std::string>)>>(
+		std::make_pair("version", [&](std::vector<std::string> args) {
+			size_t version_no = parse_spriteversion(args);
+
+			if (version_no != 2) {
+				throw Error(MSG(err) << "Reading .sprite file '"
+			                         << file
+			                         << "' failed. Reason: Version "
+			                         << version_no << " not supported");
+			}
+		}),
+		std::make_pair("texture", [&](std::vector<std::string> args) {
+			textures.push_back(parse_texture(args));
+		}),
+		std::make_pair("scalefactor", [&](std::vector<std::string> args) {
+			scalefactor = parse_scalefactor(args);
+		}),
+		std::make_pair("layer", [&](std::vector<std::string> args) {
+			layers.push_back(parse_layer(args));
+		}),
+		std::make_pair("angle", [&](std::vector<std::string> args) {
+			angles.push_back(parse_angle(args));
+		}),
+		std::make_pair("frame", [&](std::vector<std::string> args) {
+			auto frame = parse_frame(args);
+			if (frames.count(frame.angle) == 0) {
+				std::vector<FrameData> angle_frames{};
+				frames.emplace(std::make_pair(frame.angle, angle_frames));
+			}
+			frames.at(frame.angle).push_back(frame);
+		}));
+
 	for (auto line : lines) {
 		// Skip empty lines and comments
 		if (line.empty() || line.substr(0, 1) == "#") {
@@ -161,29 +211,14 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 		}
 		std::vector<std::string> args{util::split(line, ' ')};
 
-		if (args[0] == "version") {
-			// TODO: Check support
+		if (unlikely(!keywordfuncs.contains(args[0]))) {
+			throw Error(MSG(err) << "Reading .sprite file '"
+			                     << file
+			                     << "' failed. Reason: Keyword "
+			                     << args[0] << " is not defined");
 		}
-		else if (args[0] == "texture") {
-			textures.push_back(parse_texture(args));
-		}
-		else if (args[0] == "scalefactor") {
-			scalefactor = parse_scalefactor(args);
-		}
-		else if (args[0] == "layer") {
-			layers.push_back(parse_layer(args));
-		}
-		else if (args[0] == "angle") {
-			angles.push_back(parse_angle(args));
-		}
-		else if (args[0] == "frame") {
-			auto frame = parse_frame(args);
-			if (frames.count(frame.angle) == 0) {
-				std::vector<FrameData> angle_frames{};
-				frames.emplace(std::make_pair(frame.angle, angle_frames));
-			}
-			frames.at(frame.angle).push_back(frame);
-		}
+
+		keywordfuncs[args[0]](args);
 	}
 
 	// Order frames by index
