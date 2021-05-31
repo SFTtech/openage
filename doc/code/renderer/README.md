@@ -6,6 +6,7 @@ The graphics subsystem is implemented in two levels. The first level is an abstr
 `openage::renderer::opengl` - the OpenGL implementation
 `openage::renderer::vulkan` - the Vulkan implementation
 `openage::renderer::resources` - management of graphics assets
+`openage::renderer::resources::parser` - parsers for openage media [metadata files](/doc/media/openage)
 
 __TODO name__
 `openage::graphics` - the level 2 system
