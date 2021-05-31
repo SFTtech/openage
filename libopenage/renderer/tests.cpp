@@ -316,7 +316,7 @@ void renderer_demo_1(const util::Path &path) {
 	auto renderer = window.make_renderer();
 
 	/* Load texture file standalone. */
-	auto tex_path = path / "assets" / "render-test" / "attack_champion_3085.texture";
+	auto tex_path = path / "assets/tests/renderer/1/test_texture.texture";
 	auto tex_info = renderer::resources::parser::parse_texture_file(tex_path);
 
 	log::log(INFO << "Loaded texture " << tex_path.resolve_native_path());
@@ -336,7 +336,7 @@ void renderer_demo_1(const util::Path &path) {
 	log::log(INFO << "  subtex count: " << tex_info.get_subtexture_count());
 
 	/* Load animation file using the texture. */
-	auto sprite_path = path / "assets" / "render-test" / "attack_champion.sprite";
+	auto sprite_path = path / "assets/tests/renderer/1/test_animation.sprite";
 	auto sprite_info = renderer::resources::parser::parse_sprite_file(sprite_path);
 
 	log::log(INFO << "Loaded animation " << sprite_path.resolve_native_path());
@@ -495,8 +495,9 @@ void main() {
 
 	/* Upscale subtexture for better visibility */
 	auto tex_size = tex_info.get_size();
-	float scale_x = 5 * (float)subtex_size[1] / tex_size.first;
-	float scale_y = 5 * (float)subtex_size[0] / tex_size.second;
+	unsigned char upscale_factor = 3;
+	float scale_x = upscale_factor * (float)subtex_size[1] / tex_size.first;
+	float scale_y = upscale_factor * (float)subtex_size[0] / tex_size.second;
 	auto transform1 = Eigen::Affine3f::Identity();
 	transform1.prescale(Eigen::Vector3f(scale_y,
 	                                    scale_x,
@@ -656,8 +657,8 @@ void main() {
 			tex_size = tex_info.get_size();
 			subtex_size = {tex.get_info().get_subtexture_size(subtexture_index).first,
 			               tex.get_info().get_subtexture_size(subtexture_index).second};
-			scale_x = 5 * (float)subtex_size[1] / tex_size.first;
-			scale_y = 5 * (float)subtex_size[0] / tex_size.second;
+			scale_x = upscale_factor * (float)subtex_size[1] / tex_size.first;
+			scale_y = upscale_factor * (float)subtex_size[0] / tex_size.second;
 
 			transform1 = Eigen::Affine3f::Identity();
 			transform1.prescale(Eigen::Vector3f(scale_y,
