@@ -69,7 +69,7 @@ out vec2 v_uv;
 
 void main() {
 	gl_Position = proj * mv * vec4(position, 0.0, 1.0);
-    v_uv = vec2(uv.x, 1.0 - uv.y);
+	v_uv = vec2(uv.x, 1.0 - uv.y);
 }
 )s");
 
@@ -424,20 +424,20 @@ void main() {
 	int alpha = int(round(tex_val.a * 255));
 	switch (alpha) {
 		case 0:
-			discard;
-			break;
+		discard;
+		break;
 		case 254:
-		    col = vec4(1.0f, 0.0f, 0.0f, 1.0f);
-			break;
+		col = vec4(1.0f, 0.0f, 0.0f, 1.0f);
+		break;
 		case 252:
-		    col = vec4(0.0f, 1.0f, 0.0f, 1.0f);
-			break;
+		col = vec4(0.0f, 1.0f, 0.0f, 1.0f);
+		break;
 		case 250:
-		    col = vec4(0.0f, 0.0f, 1.0f, 1.0f);
-			break;
+		col = vec4(0.0f, 0.0f, 1.0f, 1.0f);
+		break;
 		default:
-	    	col = tex_val;
-			break;
+	    col = tex_val;
+		break;
 	}
 	id = u_id;
 }
