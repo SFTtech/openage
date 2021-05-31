@@ -53,7 +53,7 @@ static constexpr size_t guess_row_alignment(size_t width, pixel_format fmt, size
 	return 4;
 }
 
-Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
+Texture2dData::Texture2dData(const util::Path &path) {
 	std::string native_path = path.resolve_native_path();
 	std::unique_ptr<SDL_Surface, decltype(&SDL_FreeSurface)> surface(
 		IMG_Load(native_path.c_str()),
@@ -94,20 +94,11 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 	memcpy(this->data.data(), surface->pixels, data_size);
 
 	std::vector<Texture2dSubInfo> subtextures;
-	if (use_metafile) {
-		util::Path meta = (path.get_parent() / path.get_stem()).with_suffix(".slp.docx");
-		log::log(MSG(info) << "Loading meta file: " << meta);
+	// we don't have a texture description file.
+	// use the whole image as one texture then.
+	Texture2dSubInfo s{0, 0, w, h, w / 2, h / 2};
 
-		// get subtexture information by meta file exported by script
-		subtextures = util::read_csv_file<Texture2dSubInfo>(meta);
-	}
-	else {
-		// we don't have a texture description file.
-		// use the whole image as one texture then.
-		Texture2dSubInfo s{0, 0, w, h, w / 2, h / 2};
-
-		subtextures.push_back(s);
-	}
+	subtextures.push_back(s);
 
 	size_t align = guess_row_alignment(w, pix_fmt, surface->pitch);
 	std::shared_ptr<util::Path> imagepath = std::make_shared<util::Path>(path);
