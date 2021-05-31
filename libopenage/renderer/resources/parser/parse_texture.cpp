@@ -1,6 +1,7 @@
 // Copyright 2021-2021 the openage authors. See copying.md for legal info.
 
 #include "parse_texture.h"
+#include "../../../datastructure/constexpr_map.h"
 #include "../../../error/error.h"
 #include "../../../util/strings.h"
 
@@ -23,6 +24,18 @@ static constexpr size_t guess_row_alignment(size_t width) {
 
 	// Bail with a sane value.
 	return 4;
+}
+
+/**
+ * Parse the file version attribute.
+ *
+ * @param args Arguments from the line with a \p version attribute.
+ *             The first argument is expected to be the attribute keyword.
+ *
+ * @return Version number.
+ */
+size_t parse_texversion(std::vector<std::string> args) {
+	return std::stoul(args[1]);
 }
 
 /**
@@ -73,17 +86,28 @@ PixelFormatData parse_pxformat(std::vector<std::string> args) {
 	// Only accepted format
 	pxformat.format = pixel_format::rgba8;
 
-	for (size_t i = 2; i < args.size(); ++i) {
-		std::vector<std::string> keywordarg{util::split(args[i], '=')};
-
-		if (keywordarg[0] == "cbits") {
-			if (keywordarg[1] == "True") {
+	// Optional arguments
+	const auto keywordfuncs = datastructure::create_const_map<std::string, std::function<void(std::vector<std::string>)>>(
+		std::make_pair("cbits", [&](std::vector<std::string> keywordargs) {
+			if (keywordargs[1] == "True") {
 				pxformat.cbits = true;
 			}
-			else if (keywordarg[1] == "False") {
+			else if (keywordargs[1] == "False") {
 				pxformat.cbits = false;
 			}
+		}));
+
+	// Optional arguments
+	for (size_t i = 2; i < args.size(); ++i) {
+		std::vector<std::string> keywordargs{util::split(args[i], '=')};
+
+		if (unlikely(!keywordfuncs.contains(keywordargs[0]))) {
+			throw Error(MSG(err) << "Keyword argument "
+			                     << keywordargs[0]
+			                     << " of 'pxformat' attribute is not defined");
 		}
+
+		keywordfuncs[keywordargs[0]](keywordargs);
 	}
 
 	return pxformat;
@@ -119,6 +143,30 @@ Texture2dInfo parse_texture_file(const util::Path &file) {
 	PixelFormatData pxformat;
 	std::vector<SubtextureData> subtexs;
 
+	const auto keywordfuncs = datastructure::create_const_map<std::string, std::function<void(std::vector<std::string>)>>(
+		std::make_pair("version", [&](std::vector<std::string> args) {
+			size_t version_no = parse_texversion(args);
+
+			if (version_no != 1) {
+				throw Error(MSG(err) << "Reading .texture file '"
+			                         << file
+			                         << "' failed. Reason: Version "
+			                         << version_no << " not supported");
+			}
+		}),
+		std::make_pair("imagefile", [&](std::vector<std::string> args) {
+			imagefile = parse_imagefile(args);
+		}),
+		std::make_pair("size", [&](std::vector<std::string> args) {
+			size = parse_size(args);
+		}),
+		std::make_pair("pxformat", [&](std::vector<std::string> args) {
+			pxformat = parse_pxformat(args);
+		}),
+		std::make_pair("subtex", [&](std::vector<std::string> args) {
+			subtexs.push_back(parse_subtex(args));
+		}));
+
 	for (auto line : lines) {
 		// Skip empty lines and comments
 		if (line.empty() || line.substr(0, 1) == "#") {
@@ -126,21 +174,14 @@ Texture2dInfo parse_texture_file(const util::Path &file) {
 		}
 		std::vector<std::string> args{util::split(line, ' ')};
 
-		if (args[0] == "version") {
-			// TODO: Check support
+		if (unlikely(!keywordfuncs.contains(args[0]))) {
+			throw Error(MSG(err) << "Reading .texture file '"
+			                     << file
+			                     << "' failed. Reason: Keyword "
+			                     << args[0] << " is not defined");
 		}
-		else if (args[0] == "imagefile") {
-			imagefile = parse_imagefile(args);
-		}
-		else if (args[0] == "size") {
-			size = parse_size(args);
-		}
-		else if (args[0] == "pxformat") {
-			pxformat = parse_pxformat(args);
-		}
-		else if (args[0] == "subtex") {
-			subtexs.push_back(parse_subtex(args));
-		}
+
+		keywordfuncs[args[0]](args);
 	}
 
 	std::vector<Texture2dSubInfo> subinfos;
