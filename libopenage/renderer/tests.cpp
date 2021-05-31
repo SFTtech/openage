@@ -464,13 +464,14 @@ void main() {
 	auto obj_shader = renderer->add_shader({obj_vshader_src, obj_fshader_src});
 	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
 
+	auto window_size = window.get_size();
+
 	/* Load texture image using the metafile. */
 	log::log(INFO << "Loading texture image...");
 	auto tex = resources::Texture2dData(sprite_info.get_texture(0));
 	auto gltex = renderer->add_texture(tex);
 
 	/* Read location of the subtexture in the texture image */
-	auto size = window.get_size();
 	size_t subtexture_index = 0;
 	util::Vector2s subtex_size = {tex.get_info().get_subtexture_size(subtexture_index).first,
 	                              tex.get_info().get_subtexture_size(subtexture_index).second};
@@ -478,8 +479,9 @@ void main() {
 	Eigen::Vector4f subtex_coords{s_left, s_right, s_top, s_bottom};
 
 	/* Upscale subtexture for better visibility */
-	float scale_x = 10 * (float)subtex_size[1] / size[0];
-	float scale_y = 10 * (float)subtex_size[0] / size[1];
+	auto tex_size = tex_info.get_size();
+	float scale_x = 5 * (float)subtex_size[1] / tex_size.first;
+	float scale_y = 5 * (float)subtex_size[0] / tex_size.second;
 	auto transform1 = Eigen::Affine3f::Identity();
 	transform1.prescale(Eigen::Vector3f(scale_y,
 	                                    scale_x,
@@ -514,9 +516,15 @@ void main() {
 	 * to be copied onto the back buffer in pass 2, as well as an id texture which will contain the object ids
 	 * which we can later read in order to determine which object was clicked. The depth texture is required,
 	 * but mostly irrelevant in this case. */
-	auto color_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::rgba8));
-	auto id_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::r32ui));
-	auto depth_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::depth24));
+	auto color_texture = renderer->add_texture(resources::Texture2dInfo(window_size[0],
+	                                                                    window_size[1],
+	                                                                    resources::pixel_format::rgba8));
+	auto id_texture = renderer->add_texture(resources::Texture2dInfo(window_size[0],
+	                                                                 window_size[1],
+	                                                                 resources::pixel_format::r32ui));
+	auto depth_texture = renderer->add_texture(resources::Texture2dInfo(window_size[0],
+	                                                                    window_size[1],
+	                                                                    resources::pixel_format::depth24));
 	auto fbo = renderer->create_texture_target({color_texture, id_texture, depth_texture});
 
 	/* Make an object to update the projection matrix in pass 1 according to changes in the screen size.
@@ -630,13 +638,13 @@ void main() {
 			log::log(INFO << "Selected subtexture: " << subtexture_index);
 
 			/* Rescale the transformation matrix. */
-			auto size = window.get_size();
-			util::Vector2s subtex_size = {tex.get_info().get_subtexture_size(subtexture_index).first,
-			                              tex.get_info().get_subtexture_size(subtexture_index).second};
-			float scale_x = 10 * (float)subtex_size[1] / size[0];
-			float scale_y = 10 * (float)subtex_size[0] / size[1];
+			tex_size = tex_info.get_size();
+			subtex_size = {tex.get_info().get_subtexture_size(subtexture_index).first,
+			               tex.get_info().get_subtexture_size(subtexture_index).second};
+			scale_x = 5 * (float)subtex_size[1] / tex_size.first;
+			scale_y = 5 * (float)subtex_size[0] / tex_size.second;
 
-			auto transform1 = Eigen::Affine3f::Identity();
+			transform1 = Eigen::Affine3f::Identity();
 			transform1.prescale(Eigen::Vector3f(scale_y,
 			                                    scale_x,
 			                                    1.0f));
