@@ -1,0 +1,31 @@
+# Copyright 2021-2021 the openage authors. See copying.md for legal info.
+# openage sprite definition file
+
+version 2
+
+texture 0 "test_texture.texture"
+
+scalefactor 1
+
+layer 0 mode=loop position=20 time_per_frame=0.125
+
+angle 0
+
+frame 0 0 0 0 0
+frame 1 0 0 0 1
+frame 2 0 0 0 2
+frame 3 0 0 0 3
+frame 4 0 0 0 4
+frame 5 0 0 0 5
+frame 6 0 0 0 6
+frame 7 0 0 0 7
+frame 8 0 0 0 8
+frame 9 0 0 0 9
+frame 10 0 0 0 10
+frame 11 0 0 0 11
+frame 12 0 0 0 12
+frame 13 0 0 0 13
+frame 14 0 0 0 14
+frame 15 0 0 0 15
+frame 16 0 0 0 16
+frame 17 0 0 0 17
