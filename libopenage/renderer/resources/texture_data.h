@@ -18,13 +18,11 @@ namespace resources {
 /// and storing onto disk, as well as sending to and receiving from graphics hardware.
 class Texture2dData {
 public:
-	/// ASDF: deprecated
 	/// Create a texture from an image file.
-	/// @param[in] use_metafile determines whether the loading should read an accompanying
-	///                         metadata file to split the texture into subtextures
+	/// @param path Path to the image file.
 	///
 	/// Uses QImage internally.
-	Texture2dData(const util::Path &path, bool use_metafile = false);
+	Texture2dData(const util::Path &path);
 
 	/// Create a texture from info.
 	///
