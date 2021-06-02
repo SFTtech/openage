@@ -135,6 +135,12 @@ SubtextureData parse_subtex(std::vector<std::string> args) {
 }
 
 Texture2dInfo parse_texture_file(const util::Path &file) {
+	if (unlikely(!file.is_file())) {
+		throw Error(MSG(err) << "Reading .texture file '"
+		                     << file.get_name()
+		                     << "' failed. Reason: File not found");
+	}
+
 	auto content = file.open();
 	auto lines = content.get_lines();
 
@@ -149,7 +155,7 @@ Texture2dInfo parse_texture_file(const util::Path &file) {
 
 			if (version_no != 1) {
 				throw Error(MSG(err) << "Reading .texture file '"
-			                         << file
+			                         << file.get_name()
 			                         << "' failed. Reason: Version "
 			                         << version_no << " not supported");
 			}
@@ -176,7 +182,7 @@ Texture2dInfo parse_texture_file(const util::Path &file) {
 
 		if (unlikely(!keywordfuncs.contains(args[0]))) {
 			throw Error(MSG(err) << "Reading .texture file '"
-			                     << file
+			                     << file.get_name()
 			                     << "' failed. Reason: Keyword "
 			                     << args[0] << " is not defined");
 		}
