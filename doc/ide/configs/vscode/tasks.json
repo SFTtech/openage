@@ -1,0 +1,89 @@
+// Copyright 2021-2021 the openage authors. See copying.md for legal info.
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Configure & Build",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Configure",
+                "Build"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Configure",
+            "type": "shell",
+            "command": "${workspaceFolder}/configure",
+            "args": [
+                // "--optimize", "0", // Comment this out to disable compiler optimization for debug runs
+                // "--ccache",        // Comment this out if you want to use ccache
+                // "--download-nyan"  // Comment this out if you do not want to clone and build nyan yourself
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "make",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Sanity Check",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "checkall"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Run Tests",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "test"
+            ],
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "cleanbuilddirs"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ]
+}

@@ -2,7 +2,7 @@
 
 ## Using Qt Creator Integrated Development Environment (IDE)
 
-See [Developing openage in IDE](/doc/ide.md).
+See [Qt Creator IDE](/doc/ide/qt_creator.md).
 
 ## Writing presentation-level code
 
