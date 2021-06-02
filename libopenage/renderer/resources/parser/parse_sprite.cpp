@@ -161,6 +161,12 @@ FrameData parse_frame(std::vector<std::string> args) {
 }
 
 Animation2dInfo parse_sprite_file(const util::Path &file) {
+	if (unlikely(!file.is_file())) {
+		throw Error(MSG(err) << "Reading .sprite file '"
+		                     << file.get_name()
+		                     << "' failed. Reason: File not found");
+	}
+
 	auto content = file.open();
 	auto lines = content.get_lines();
 
@@ -178,7 +184,7 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 
 			if (version_no != 2) {
 				throw Error(MSG(err) << "Reading .sprite file '"
-			                         << file
+			                         << file.get_name()
 			                         << "' failed. Reason: Version "
 			                         << version_no << " not supported");
 			}
@@ -213,7 +219,7 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 
 		if (unlikely(!keywordfuncs.contains(args[0]))) {
 			throw Error(MSG(err) << "Reading .sprite file '"
-			                     << file
+			                     << file.get_name()
 			                     << "' failed. Reason: Keyword "
 			                     << args[0] << " is not defined");
 		}
