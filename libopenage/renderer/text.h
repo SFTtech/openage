@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -20,6 +20,11 @@ extern GLint texture, color, tex_coord;
 
 namespace renderer {
 
+/**
+ * Can render text with OpenGL.
+ *
+ * TODO: move to the main renderer!
+ */
 class TextRenderer {
 
 public:

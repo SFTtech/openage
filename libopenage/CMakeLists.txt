@@ -331,8 +331,6 @@ get_codegen_scu_file()
 add_sources(libopenage
 	assetmanager.cpp
 	engine.cpp
-	game_control.cpp
-	game_renderer.cpp
 	handlers.cpp
 	main.cpp
 	options.cpp

@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -13,6 +13,7 @@
 namespace openage {
 namespace options {
 
+// TODO: load option values from cvar system.
 
 /**
  * list of possible value types

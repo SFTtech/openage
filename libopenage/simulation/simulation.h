@@ -1,0 +1,3 @@
+class Simulation {
+	all entities;
+};

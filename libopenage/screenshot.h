@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2020 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -14,6 +14,11 @@ namespace job {
 class JobManager;
 }
 
+/**
+ * Takes screenshots, duh.
+ *
+ * TODO: move into renderer!
+ */
 class ScreenshotManager {
 public:
 	/**

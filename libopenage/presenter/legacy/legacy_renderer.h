@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2020 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,13 +7,13 @@
 #include <unordered_set>
 #include <vector>
 
-#include "coord/tile.h"
-#include "handlers.h"
-#include "options.h"
+#include "../../coord/tile.h"
+#include "../../handlers.h"
+#include "../../options.h"
 
 namespace openage {
 
-class Engine;
+class LegacyDisplay;
 class GameMain;
 
 /**
@@ -34,12 +34,11 @@ public:
 
 /**
  * renders the editor and action views
- *
  */
-class GameRenderer : DrawHandler {
+class LegacyRenderer : DrawHandler {
 public:
-	GameRenderer(Engine *e);
-	~GameRenderer();
+	LegacyRenderer(LegacyDisplay *e);
+	~LegacyRenderer();
 
 	bool on_draw() override;
 
@@ -58,8 +57,7 @@ public:
 	RenderOptions settings;
 
 private:
-	Engine *engine;
-
+	LegacyDisplay *display;
 };
 
 } // openage

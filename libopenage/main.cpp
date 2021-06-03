@@ -28,6 +28,8 @@ int run_game(const main_arguments &args) {
 	         << " and fps limit "
 	         << args.fps_limit);
 
+	// TODO: store args.fps_limit and args.gl_debug as default in the cvar system.
+
 	util::Timer timer;
 	timer.start();
 
@@ -35,36 +37,30 @@ int run_game(const main_arguments &args) {
 	auto cvar_manager = std::make_shared<cvar::CVarManager>(args.root_path["cfg"]);
 	cvar_manager->load_all();
 
-	// TODO: store args.fps_limit and args.gl_debug as default in the cvar system.
+	// TODO: select run_mode by launch argument
+	Engine::mode run_mode = Engine::mode::LEGACY;
 
-	Engine engine{Engine::mode::LEGACY, args.root_path, cvar_manager};
+	// TODO: remove all legacy mode!
+	if (run_mode == Engine::mode::LEGACY) {
 
-	// initialize terminal colors
-	std::vector<gamedata::palette_color> termcolors = util::read_csv_file<gamedata::palette_color>(
-		args.root_path["assets/converted/termcolors.docx"]
-	);
+		Engine engine{Engine::mode::LEGACY, args.root_path, cvar_manager};
 
-	// TODO: move inside the engine
-	// TODO: support multiple consoles
-	console::Console console{&engine};
-	console.load_colors(termcolors);
-	console.register_to_engine();
+		log::log(MSG(info).fmt("Loading time [engine]: %5.3f s", timer.getval() / 1.0e9));
 
-	log::log(MSG(info).fmt("Loading time [engine]: %5.3f s", timer.getval() / 1.0e9));
+		timer.start();
 
-	timer.start();
+		{
+			// create components that use the engine.
+			GameRenderer renderer{&engine};
 
-	{
-		// create components that use the engine.
-		GameRenderer renderer{&engine};
+			log::log(MSG(info).fmt("Loading time   [game]: %5.3f s", timer.getval() / 1.0e9));
 
-		log::log(MSG(info).fmt("Loading time   [game]: %5.3f s", timer.getval() / 1.0e9));
+			// run main loop
+			engine.run();
+		}
 
-		// run main loop
-		engine.run();
+		log::log(INFO << "cya!");
 	}
-
-	log::log(INFO << "cya!");
 
 	return 0;
 }

@@ -15,6 +15,7 @@ public:
 	void run();
 
 protected:
+	// TODO: remove and move into our config/settings system
 	util::Path root_dir;
 
 	std::shared_ptr<renderer::Window> window;
