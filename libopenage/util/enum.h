@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -82,7 +82,7 @@ public:
 	}
 
 	friend std::ostream &operator <<(std::ostream &os, const DerivedType &arg) {
-		os << util::demangle(typeid(DerivedType).name()) << "::" << arg.name;
+		os << util::typestring<DerivedType>() << "::" << arg.name;
 		return os;
 	}
 

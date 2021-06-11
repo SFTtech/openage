@@ -1,4 +1,4 @@
-// Copyright 2013-2019 the openage authors. See copying.md for legal info.
+// Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 #include "error.h"
 
@@ -76,7 +76,7 @@ const char *Error::what() const noexcept {
 
 
 std::string Error::type_name() const {
-	return util::demangle(typeid(*this).name());
+	return util::typestring(*this);
 }
 
 
@@ -96,7 +96,7 @@ std::ostream &operator <<(std::ostream &os, const Error &e) {
 	} catch (Error &cause) {
 		os << cause << std::endl;
 	} catch (std::exception &cause) {
-		os << util::demangle(typeid(cause).name()) << ": " << cause.what() << std::endl;
+		os << util::typestring(cause) << ": " << cause.what() << std::endl;
 	} catch (...) {
 		os << "unknown non std::exception cause!" << std::endl;
 	}

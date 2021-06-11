@@ -67,7 +67,7 @@ bool GameSpec::initialize() {
 	catch (std::exception &exc) {
 		// unfortunately we have no idea of the std::exception backtrace
 		throw Error{ERR << "gamedata could not be loaded: "
-		                << util::demangle(typeid(exc).name())
+		                << util::typestring(exc)
 		                << ": "<< exc.what()};
 	}
 

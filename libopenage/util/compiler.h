@@ -134,5 +134,13 @@ std::string typestring(const T *ptr) {
 	return demangle(typeid(*ptr).name());
 }
 
+/**
+ * Returns the string representation of type of given reference
+ */
+template <typename T>
+std::string typestring(const T &ref) {
+	return demangle(typeid(ref).name());
+}
+
 
 }} // openage::util

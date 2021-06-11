@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #include "exctranslate_tests.h"
 
@@ -84,13 +84,13 @@ void err_py_to_cpp() {
 				}
 
 			} catch (std::exception &cause) {
-				return "exc had cause of unexpected type " + util::demangle(typeid(cause).name());
+				return "exc had cause of unexpected type " + util::typestring(cause);
 			} catch (...) {
 				return "exc had cause of nonstandard type";
 			}
 
 		} catch (std::exception &cause) {
-			return "exc had unexpected type " + util::demangle(typeid(cause).name());
+			return "exc had unexpected type " + util::typestring(cause);
 		} catch (...) {
 			return "exc had nonstandard type";
 		}
