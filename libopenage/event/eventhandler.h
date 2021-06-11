@@ -1,4 +1,4 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,6 +8,7 @@
 #include <any>
 #include <memory>
 #include <string>
+#include <typeinfo>
 #include <unordered_map>
 
 

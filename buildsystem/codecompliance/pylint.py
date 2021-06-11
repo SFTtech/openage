@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 """
 Checks the Python modules with pylint.
@@ -27,7 +27,10 @@ def find_issues(check_files, dirnames):
     if check_files is None:
         invocation.extend(dirnames)
     else:
-        invocation.extend(filter_file_list(check_files, dirnames))
+        check_files = filter_file_list(check_files, dirnames)
+        if not check_files:
+            return
+        invocation.extend(check_files)
 
     try:
         lint.Run(invocation)

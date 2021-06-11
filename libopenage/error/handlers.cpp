@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 /*
  * This file holds handlers for std::terminate and SIGSEGV.
@@ -14,7 +14,6 @@
 
 #include <exception>
 #include <iostream>
-#include <typeinfo>
 #include <cstring>
 
 #ifdef _MSC_VER
@@ -83,7 +82,7 @@ util::OnDeInit restore_handlers([]() {
 		} catch (std::exception &exc) {
 			std::cout <<
 				"std::exception of type " <<
-				util::demangle(typeid(exc).name()) <<
+				util::typestring(exc) <<
 				": " << exc.what() << std::endl;
 		} catch (...) {
 			std::cout << "non-standard exception object" << std::endl;
