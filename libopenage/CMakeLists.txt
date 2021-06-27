@@ -349,6 +349,7 @@ pxdgen(
 # add subsystem folders
 add_subdirectory("audio")
 add_subdirectory("console")
+add_subdirectory("control")
 add_subdirectory("coord")
 add_subdirectory("curve")
 add_subdirectory("cvar")
