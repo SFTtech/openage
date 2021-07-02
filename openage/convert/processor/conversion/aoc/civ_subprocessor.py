@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-statements,too-many-branches
 
@@ -96,18 +96,18 @@ class AoCCivSubprocessor:
         food_ref = f"{civ_name}.FoodStartingAmount"
         food_raw_api_object = RawAPIObject(food_ref, "FoodStartingAmount",
                                            dataset.nyan_api_objects)
-        food_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
+        food_raw_api_object.add_raw_parent("engine.util.resource.ResourceAmount")
         civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         food_raw_api_object.set_location(civ_location)
 
-        resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
+        resource = dataset.pregen_nyan_objects["util.resource.types.Food"].get_nyan_object()
         food_raw_api_object.add_raw_member("type",
                                            resource,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
 
         food_raw_api_object.add_raw_member("amount",
                                            food_amount,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
 
         food_forward_ref = ForwardRef(civ_group, food_ref)
         resource_amounts.append(food_forward_ref)
@@ -115,18 +115,18 @@ class AoCCivSubprocessor:
         wood_ref = f"{civ_name}.WoodStartingAmount"
         wood_raw_api_object = RawAPIObject(wood_ref, "WoodStartingAmount",
                                            dataset.nyan_api_objects)
-        wood_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
+        wood_raw_api_object.add_raw_parent("engine.util.resource.ResourceAmount")
         civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         wood_raw_api_object.set_location(civ_location)
 
-        resource = dataset.pregen_nyan_objects["aux.resource.types.Wood"].get_nyan_object()
+        resource = dataset.pregen_nyan_objects["util.resource.types.Wood"].get_nyan_object()
         wood_raw_api_object.add_raw_member("type",
                                            resource,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
 
         wood_raw_api_object.add_raw_member("amount",
                                            wood_amount,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
 
         wood_forward_ref = ForwardRef(civ_group, wood_ref)
         resource_amounts.append(wood_forward_ref)
@@ -134,18 +134,18 @@ class AoCCivSubprocessor:
         gold_ref = f"{civ_name}.GoldStartingAmount"
         gold_raw_api_object = RawAPIObject(gold_ref, "GoldStartingAmount",
                                            dataset.nyan_api_objects)
-        gold_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
+        gold_raw_api_object.add_raw_parent("engine.util.resource.ResourceAmount")
         civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         gold_raw_api_object.set_location(civ_location)
 
-        resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
+        resource = dataset.pregen_nyan_objects["util.resource.types.Gold"].get_nyan_object()
         gold_raw_api_object.add_raw_member("type",
                                            resource,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
 
         gold_raw_api_object.add_raw_member("amount",
                                            gold_amount,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
 
         gold_forward_ref = ForwardRef(civ_group, gold_ref)
         resource_amounts.append(gold_forward_ref)
@@ -153,18 +153,18 @@ class AoCCivSubprocessor:
         stone_ref = f"{civ_name}.StoneStartingAmount"
         stone_raw_api_object = RawAPIObject(stone_ref, "StoneStartingAmount",
                                             dataset.nyan_api_objects)
-        stone_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
+        stone_raw_api_object.add_raw_parent("engine.util.resource.ResourceAmount")
         civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         stone_raw_api_object.set_location(civ_location)
 
-        resource = dataset.pregen_nyan_objects["aux.resource.types.Stone"].get_nyan_object()
+        resource = dataset.pregen_nyan_objects["util.resource.types.Stone"].get_nyan_object()
         stone_raw_api_object.add_raw_member("type",
                                             resource,
-                                            "engine.aux.resource.ResourceAmount")
+                                            "engine.util.resource.ResourceAmount")
 
         stone_raw_api_object.add_raw_member("amount",
                                             stone_amount,
-                                            "engine.aux.resource.ResourceAmount")
+                                            "engine.util.resource.ResourceAmount")
 
         stone_forward_ref = ForwardRef(civ_group, stone_ref)
         resource_amounts.append(stone_forward_ref)
@@ -236,7 +236,7 @@ class AoCCivSubprocessor:
                                                   wrapper_name,
                                                   dataset.nyan_api_objects,
                                                   wrapper_location)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             # Nyan patch
             nyan_patch_name = f"{tech_name}CivBonus"
@@ -246,18 +246,18 @@ class AoCCivSubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             nyan_patch_raw_api_object.add_raw_patch_member("updates",
                                                            patches,
-                                                           "engine.aux.tech.Tech",
+                                                           "engine.util.tech.Tech",
                                                            MemberOperator.ADD)
 
             patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             civ_group.add_raw_api_object(wrapper_raw_api_object)
             civ_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -307,7 +307,7 @@ class AoCCivSubprocessor:
                                                   wrapper_name,
                                                   dataset.nyan_api_objects,
                                                   wrapper_location)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             # Nyan patch
             nyan_patch_name = f"Add{game_entity_name}Creatable"
@@ -317,7 +317,7 @@ class AoCCivSubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             # Add creatable
@@ -331,7 +331,7 @@ class AoCCivSubprocessor:
             patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             civ_group.add_raw_api_object(wrapper_raw_api_object)
             civ_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -377,7 +377,7 @@ class AoCCivSubprocessor:
                                                   wrapper_name,
                                                   dataset.nyan_api_objects,
                                                   wrapper_location)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             # Nyan patch
             nyan_patch_name = f"Add{tech_name}Researchable"
@@ -387,7 +387,7 @@ class AoCCivSubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             # Add creatable
@@ -401,7 +401,7 @@ class AoCCivSubprocessor:
             patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             civ_group.add_raw_api_object(wrapper_raw_api_object)
             civ_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -500,7 +500,7 @@ class AoCCivSubprocessor:
                                                   wrapper_name,
                                                   dataset.nyan_api_objects,
                                                   wrapper_location)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             # Nyan patch
             nyan_patch_name = f"Disable{train_location_name}Creatables"
@@ -510,7 +510,7 @@ class AoCCivSubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             entities_forward_refs = []
@@ -530,7 +530,7 @@ class AoCCivSubprocessor:
             patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             civ_group.add_raw_api_object(wrapper_raw_api_object)
             civ_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -553,7 +553,7 @@ class AoCCivSubprocessor:
                                                   wrapper_name,
                                                   dataset.nyan_api_objects,
                                                   wrapper_location)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             # Nyan patch
             nyan_patch_name = f"Disable{research_location_name}Researchables"
@@ -563,7 +563,7 @@ class AoCCivSubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             entities_forward_refs = []
@@ -583,7 +583,7 @@ class AoCCivSubprocessor:
             patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             civ_group.add_raw_api_object(wrapper_raw_api_object)
             civ_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -606,7 +606,7 @@ class AoCCivSubprocessor:
         animation_obj_name = f"{animation_name}Animation"
         animation_raw_api_object = RawAPIObject(animation_ref, animation_obj_name,
                                                 dataset.nyan_api_objects)
-        animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
+        animation_raw_api_object.add_raw_parent("engine.util.graphics.Animation")
         animation_location = ForwardRef(line, nyan_patch_ref)
         animation_raw_api_object.set_location(animation_location)
 
@@ -625,7 +625,7 @@ class AoCCivSubprocessor:
         animation_sprite.add_reference(animation_raw_api_object)
 
         animation_raw_api_object.add_raw_member("sprite", animation_sprite,
-                                                "engine.aux.graphics.Animation")
+                                                "engine.util.graphics.Animation")
 
         line.add_raw_api_object(animation_raw_api_object)
 

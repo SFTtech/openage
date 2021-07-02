@@ -1,4 +1,4 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,10 +8,12 @@
  *
  * May contain some platform-dependent code.
  */
-#include <ciso646>
 
+#include <ciso646>
 // pxd: from libcpp.string cimport string
 #include <string>
+#include <typeinfo>
+
 
 /**
  * DLL entry-point decorations.
@@ -130,6 +132,14 @@ std::string typestring() {
 template <typename T>
 std::string typestring(const T *ptr) {
 	return demangle(typeid(*ptr).name());
+}
+
+/**
+ * Returns the string representation of type of given reference
+ */
+template <typename T>
+std::string typestring(const T &ref) {
+	return demangle(typeid(ref).name());
 }
 
 

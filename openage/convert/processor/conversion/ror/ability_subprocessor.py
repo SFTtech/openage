@@ -220,7 +220,7 @@ class RoRAbilitySubprocessor:
 
         line.add_raw_api_object(property_raw_api_object)
 
-        diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
+        diplomatic_stances = [dataset.nyan_api_objects["engine.util.diplomatic_stance.type.Self"]]
         property_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                                "engine.ability.property.type.Diplomatic")
 
@@ -249,7 +249,7 @@ class RoRAbilitySubprocessor:
         # Effects
         batch_ref = f"{ability_ref}.Batch"
         batch_raw_api_object = RawAPIObject(batch_ref, "Batch", dataset.nyan_api_objects)
-        batch_raw_api_object.add_raw_parent("engine.aux.effect_batch.type.UnorderedBatch")
+        batch_raw_api_object.add_raw_parent("engine.util.effect_batch.type.UnorderedBatch")
         batch_location = ForwardRef(line, ability_ref)
         batch_raw_api_object.set_location(batch_location)
 
@@ -272,7 +272,7 @@ class RoRAbilitySubprocessor:
 
         batch_raw_api_object.add_raw_member("effects",
                                             effects,
-                                            "engine.aux.effect_batch.EffectBatch")
+                                            "engine.util.effect_batch.EffectBatch")
 
         batch_forward_ref = ForwardRef(line, batch_ref)
         ability_raw_api_object.add_raw_member("batches",
@@ -308,13 +308,13 @@ class RoRAbilitySubprocessor:
         if command_id == 104:
             # Convert
             allowed_types = [
-                dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()
+                dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object()
             ]
 
         else:
             allowed_types = [
-                dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
-                dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()
+                dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object(),
+                dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()
             ]
 
         ability_raw_api_object.add_raw_member("allowed_types",
@@ -388,13 +388,13 @@ class RoRAbilitySubprocessor:
 
         # Units are preferred before buildings
         type_preferences = [
-            dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object(),
-            dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
+            dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object(),
+            dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(),
         ]
 
         stances = []
         for stance_name in stance_names:
-            stance_api_ref = f"engine.aux.game_entity_stance.type.{stance_name}"
+            stance_api_ref = f"engine.util.game_entity_stance.type.{stance_name}"
 
             stance_ref = f"{game_entity_name}.GameEntityStance.{stance_name}"
             stance_raw_api_object = RawAPIObject(stance_ref, stance_name, dataset.nyan_api_objects)
@@ -405,17 +405,17 @@ class RoRAbilitySubprocessor:
             # Search range
             stance_raw_api_object.add_raw_member("search_range",
                                                  search_range,
-                                                 "engine.aux.game_entity_stance.GameEntityStance")
+                                                 "engine.util.game_entity_stance.GameEntityStance")
 
             # Ability preferences
             stance_raw_api_object.add_raw_member("ability_preference",
                                                  ability_preferences,
-                                                 "engine.aux.game_entity_stance.GameEntityStance")
+                                                 "engine.util.game_entity_stance.GameEntityStance")
 
             # Type preferences
             stance_raw_api_object.add_raw_member("type_preference",
                                                  type_preferences,
-                                                 "engine.aux.game_entity_stance.GameEntityStance")
+                                                 "engine.util.game_entity_stance.GameEntityStance")
 
             line.add_raw_api_object(stance_raw_api_object)
             stance_forward_ref = ForwardRef(line, stance_ref)
@@ -466,14 +466,14 @@ class RoRAbilitySubprocessor:
 
         mode_name = f"{game_entity_name}.ProvideContingent.CreatablesMode"
         mode_raw_api_object = RawAPIObject(mode_name, "CreatablesMode", dataset.nyan_api_objects)
-        mode_raw_api_object.add_raw_parent("engine.aux.production_mode.type.Creatables")
+        mode_raw_api_object.add_raw_parent("engine.util.production_mode.type.Creatables")
         mode_location = ForwardRef(line, ability_ref)
         mode_raw_api_object.set_location(mode_location)
 
         # RoR allows all creatables in production queue
         mode_raw_api_object.add_raw_member("exclude",
                                            [],
-                                           "engine.aux.production_mode.type.Creatables")
+                                           "engine.util.production_mode.type.Creatables")
 
         mode_forward_ref = ForwardRef(line, mode_name)
         modes.append(mode_forward_ref)
@@ -538,34 +538,34 @@ class RoRAbilitySubprocessor:
         accuracy_name = "%s.ShootProjectile.Projectile%s.Projectile.Accuracy"\
                         % (game_entity_name, str(position))
         accuracy_raw_api_object = RawAPIObject(accuracy_name, "Accuracy", dataset.nyan_api_objects)
-        accuracy_raw_api_object.add_raw_parent("engine.aux.accuracy.Accuracy")
+        accuracy_raw_api_object.add_raw_parent("engine.util.accuracy.Accuracy")
         accuracy_location = ForwardRef(line, ability_ref)
         accuracy_raw_api_object.set_location(accuracy_location)
 
         accuracy_value = current_unit["accuracy"].get_value()
         accuracy_raw_api_object.add_raw_member("accuracy",
                                                accuracy_value,
-                                               "engine.aux.accuracy.Accuracy")
+                                               "engine.util.accuracy.Accuracy")
 
         accuracy_dispersion = 0
         accuracy_raw_api_object.add_raw_member("accuracy_dispersion",
                                                accuracy_dispersion,
-                                               "engine.aux.accuracy.Accuracy")
-        dropoff_type = dataset.nyan_api_objects["engine.aux.dropoff_type.type.NoDropoff"]
+                                               "engine.util.accuracy.Accuracy")
+        dropoff_type = dataset.nyan_api_objects["engine.util.dropoff_type.type.NoDropoff"]
         accuracy_raw_api_object.add_raw_member("dispersion_dropoff",
                                                dropoff_type,
-                                               "engine.aux.accuracy.Accuracy")
+                                               "engine.util.accuracy.Accuracy")
 
         allowed_types = [
-            dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
-            dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()
+            dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(),
+            dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object()
         ]
         accuracy_raw_api_object.add_raw_member("target_types",
                                                allowed_types,
-                                               "engine.aux.accuracy.Accuracy")
+                                               "engine.util.accuracy.Accuracy")
         accuracy_raw_api_object.add_raw_member("blacklisted_entities",
                                                [],
-                                               "engine.aux.accuracy.Accuracy")
+                                               "engine.util.accuracy.Accuracy")
 
         line.add_raw_api_object(accuracy_raw_api_object)
         accuracy_forward_ref = ForwardRef(line, accuracy_name)
@@ -574,14 +574,14 @@ class RoRAbilitySubprocessor:
                                               "engine.ability.type.Projectile")
 
         # Target mode
-        target_mode = dataset.nyan_api_objects["engine.aux.target_mode.type.CurrentPosition"]
+        target_mode = dataset.nyan_api_objects["engine.util.target_mode.type.CurrentPosition"]
         ability_raw_api_object.add_raw_member("target_mode",
                                               target_mode,
                                               "engine.ability.type.Projectile")
 
         # Ingore types; buildings are ignored unless targeted
         ignore_forward_refs = [
-            dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()
+            dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()
         ]
         ability_raw_api_object.add_raw_member("ignored_types",
                                               ignore_forward_refs,
@@ -749,7 +749,7 @@ class RoRAbilitySubprocessor:
 
         line.add_raw_api_object(property_raw_api_object)
 
-        diplomatic_stances = [dataset.nyan_api_objects["engine.aux.diplomatic_stance.type.Self"]]
+        diplomatic_stances = [dataset.nyan_api_objects["engine.util.diplomatic_stance.type.Self"]]
         property_raw_api_object.add_raw_member("stances", diplomatic_stances,
                                                "engine.ability.property.type.Diplomatic")
 
@@ -868,8 +868,8 @@ class RoRAbilitySubprocessor:
 
         # Restrictions on targets (only units and buildings allowed)
         allowed_types = [
-            dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object(),
-            dataset.pregen_nyan_objects["aux.game_entity_type.types.Unit"].get_nyan_object()
+            dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(),
+            dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object()
         ]
         ability_raw_api_object.add_raw_member("allowed_types",
                                               allowed_types,

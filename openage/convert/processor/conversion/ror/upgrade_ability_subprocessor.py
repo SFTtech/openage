@@ -83,7 +83,7 @@ class RoRUpgradeAbilitySubprocessor:
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
@@ -103,7 +103,7 @@ class RoRUpgradeAbilitySubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_animation, NoDiffMember):
@@ -216,7 +216,7 @@ class RoRUpgradeAbilitySubprocessor:
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)

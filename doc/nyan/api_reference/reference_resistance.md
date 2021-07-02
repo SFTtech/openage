@@ -5,7 +5,7 @@ Reference documentation of the `engine.resistance` module of the openage modding
 ## resistance.Resistance
 
 ```python
-Resistance(Entity):
+Resistance(Object):
     properties : dict(abstract(ResistanceProperty), ResistanceProperty) = {}
 ```
 
@@ -30,7 +30,7 @@ Properties:
 ## resistance.property.ResistanceProperty
 
 ```python
-ResistanceProperty(Entity):
+ResistanceProperty(Object):
     pass
 ```
 
@@ -325,7 +325,7 @@ Condition which must he fulfilled to make the resource spot harvestable.
 SendToContainer(DiscreteResistance):
     type              : children(SendToContainerType)
     search_range      : float
-    ignore_containers : set(Container)
+    ignore_containers : set(EntityContainer)
 ```
 
 Resistance to the `SendToContainer` effect.

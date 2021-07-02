@@ -89,7 +89,7 @@ class AoCUpgradeAbilitySubprocessor:
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
@@ -109,7 +109,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_animation, NoDiffMember):
@@ -186,7 +186,7 @@ class AoCUpgradeAbilitySubprocessor:
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -256,7 +256,7 @@ class AoCUpgradeAbilitySubprocessor:
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
@@ -276,7 +276,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_animation, NoDiffMember):
@@ -361,7 +361,7 @@ class AoCUpgradeAbilitySubprocessor:
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -443,7 +443,7 @@ class AoCUpgradeAbilitySubprocessor:
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
@@ -463,7 +463,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             animations_set = []
@@ -481,13 +481,13 @@ class AoCUpgradeAbilitySubprocessor:
 
             nyan_patch_raw_api_object.add_raw_patch_member("overlays",
                                                            animations_set,
-                                                           "engine.aux.progress.property.type.AnimationOverlay",
+                                                           "engine.util.progress.property.type.AnimationOverlay",
                                                            MemberOperator.ASSIGN)
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -543,7 +543,7 @@ class AoCUpgradeAbilitySubprocessor:
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
@@ -563,7 +563,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         animations_set = []
@@ -585,7 +585,7 @@ class AoCUpgradeAbilitySubprocessor:
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -641,7 +641,7 @@ class AoCUpgradeAbilitySubprocessor:
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
@@ -661,7 +661,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         animations_set = []
@@ -683,7 +683,7 @@ class AoCUpgradeAbilitySubprocessor:
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -739,7 +739,7 @@ class AoCUpgradeAbilitySubprocessor:
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
@@ -759,7 +759,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         animations_set = []
@@ -781,7 +781,7 @@ class AoCUpgradeAbilitySubprocessor:
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -837,7 +837,7 @@ class AoCUpgradeAbilitySubprocessor:
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
@@ -857,25 +857,25 @@ class AoCUpgradeAbilitySubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # HP max value
         nyan_patch_raw_api_object.add_raw_patch_member("max_value",
                                                        diff_hp_value,
-                                                       "engine.aux.attribute.AttributeSetting",
+                                                       "engine.util.attribute.AttributeSetting",
                                                        MemberOperator.ADD)
 
         # HP starting value
         nyan_patch_raw_api_object.add_raw_patch_member("starting_value",
                                                        diff_hp_value,
-                                                       "engine.aux.attribute.AttributeSetting",
+                                                       "engine.util.attribute.AttributeSetting",
                                                        MemberOperator.ADD)
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -931,7 +931,7 @@ class AoCUpgradeAbilitySubprocessor:
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
@@ -951,7 +951,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # Line of Sight
@@ -963,7 +963,7 @@ class AoCUpgradeAbilitySubprocessor:
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -1019,7 +1019,7 @@ class AoCUpgradeAbilitySubprocessor:
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
@@ -1039,7 +1039,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_move_animation, NoDiffMember):
@@ -1088,7 +1088,7 @@ class AoCUpgradeAbilitySubprocessor:
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -1142,7 +1142,7 @@ class AoCUpgradeAbilitySubprocessor:
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
@@ -1161,7 +1161,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             name_string_id = diff_name.get_value()
@@ -1172,13 +1172,13 @@ class AoCUpgradeAbilitySubprocessor:
                                                                                  % (obj_prefix))
             nyan_patch_raw_api_object.add_raw_patch_member("translations",
                                                            translations,
-                                                           "engine.aux.language.translated.type.TranslatedString",
+                                                           "engine.util.language.translated.type.TranslatedString",
                                                            MemberOperator.ASSIGN)
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -1274,7 +1274,7 @@ class AoCUpgradeAbilitySubprocessor:
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
@@ -1294,7 +1294,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             # Change sound
@@ -1317,7 +1317,7 @@ class AoCUpgradeAbilitySubprocessor:
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -1344,7 +1344,7 @@ class AoCUpgradeAbilitySubprocessor:
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
@@ -1364,7 +1364,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_radius_x, NoDiffMember):
@@ -1372,7 +1372,7 @@ class AoCUpgradeAbilitySubprocessor:
 
                 nyan_patch_raw_api_object.add_raw_patch_member("width",
                                                                diff_width_value,
-                                                               "engine.aux.selection_box.type.Rectangle",
+                                                               "engine.util.selection_box.type.Rectangle",
                                                                MemberOperator.ADD)
 
             if not isinstance(diff_radius_y, NoDiffMember):
@@ -1380,13 +1380,13 @@ class AoCUpgradeAbilitySubprocessor:
 
                 nyan_patch_raw_api_object.add_raw_patch_member("height",
                                                                diff_height_value,
-                                                               "engine.aux.selection_box.type.Rectangle",
+                                                               "engine.util.selection_box.type.Rectangle",
                                                                MemberOperator.ADD)
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -1467,7 +1467,7 @@ class AoCUpgradeAbilitySubprocessor:
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
                                                   dataset.nyan_api_objects)
-            wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
@@ -1487,7 +1487,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                      nyan_patch_name,
                                                      dataset.nyan_api_objects,
                                                      nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_animation, NoDiffMember):
@@ -1668,7 +1668,7 @@ class AoCUpgradeAbilitySubprocessor:
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
             wrapper_raw_api_object.add_raw_member("patch",
                                                   patch_forward_ref,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -1724,7 +1724,7 @@ class AoCUpgradeAbilitySubprocessor:
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
                                               dataset.nyan_api_objects)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
@@ -1744,7 +1744,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # Speed
@@ -1763,7 +1763,7 @@ class AoCUpgradeAbilitySubprocessor:
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -1794,7 +1794,7 @@ class AoCUpgradeAbilitySubprocessor:
         animation_obj_name = f"{animation_name}Animation"
         animation_raw_api_object = RawAPIObject(animation_ref, animation_obj_name,
                                                 dataset.nyan_api_objects)
-        animation_raw_api_object.add_raw_parent("engine.aux.graphics.Animation")
+        animation_raw_api_object.add_raw_parent("engine.util.graphics.Animation")
         animation_location = ForwardRef(converter_group, nyan_patch_ref)
         animation_raw_api_object.set_location(animation_location)
 
@@ -1818,7 +1818,7 @@ class AoCUpgradeAbilitySubprocessor:
         animation_sprite.add_reference(animation_raw_api_object)
 
         animation_raw_api_object.add_raw_member("sprite", animation_sprite,
-                                                "engine.aux.graphics.Animation")
+                                                "engine.util.graphics.Animation")
 
         converter_group.add_raw_api_object(animation_raw_api_object)
 
@@ -1837,7 +1837,7 @@ class AoCUpgradeAbilitySubprocessor:
         sound_obj_name = f"{sound_name}Sound"
         sound_raw_api_object = RawAPIObject(sound_ref, sound_obj_name,
                                             dataset.nyan_api_objects)
-        sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
+        sound_raw_api_object.add_raw_parent("engine.util.sound.Sound")
         sound_location = ForwardRef(converter_group, nyan_patch_ref)
         sound_raw_api_object.set_location(sound_location)
 
@@ -1865,10 +1865,10 @@ class AoCUpgradeAbilitySubprocessor:
 
         sound_raw_api_object.add_raw_member("play_delay",
                                             0,
-                                            "engine.aux.sound.Sound")
+                                            "engine.util.sound.Sound")
         sound_raw_api_object.add_raw_member("sounds",
                                             sounds_set,
-                                            "engine.aux.sound.Sound")
+                                            "engine.util.sound.Sound")
 
         converter_group.add_raw_api_object(sound_raw_api_object)
 
@@ -1891,20 +1891,20 @@ class AoCUpgradeAbilitySubprocessor:
                 string_ref = f"{obj_ref}.{string_name}"
                 string_raw_api_object = RawAPIObject(string_ref, string_name,
                                                      dataset.nyan_api_objects)
-                string_raw_api_object.add_raw_parent("engine.aux.language.LanguageTextPair")
+                string_raw_api_object.add_raw_parent("engine.util.language.LanguageTextPair")
                 string_location = ForwardRef(converter_group, obj_ref)
                 string_raw_api_object.set_location(string_location)
 
                 # Language identifier
-                lang_forward_ref = dataset.pregen_nyan_objects[f"aux.language.{language}"].get_nyan_object()
+                lang_forward_ref = dataset.pregen_nyan_objects[f"util.language.{language}"].get_nyan_object()
                 string_raw_api_object.add_raw_member("language",
                                                      lang_forward_ref,
-                                                     "engine.aux.language.LanguageTextPair")
+                                                     "engine.util.language.LanguageTextPair")
 
                 # String
                 string_raw_api_object.add_raw_member("string",
                                                      strings[string_id],
-                                                     "engine.aux.language.LanguageTextPair")
+                                                     "engine.util.language.LanguageTextPair")
 
                 converter_group.add_raw_api_object(string_raw_api_object)
                 string_forward_ref = ForwardRef(converter_group, string_ref)

@@ -64,7 +64,7 @@ class AoCUpgradeResourceSubprocessor:
                                               wrapper_name,
                                               dataset.nyan_api_objects,
                                               wrapper_location)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{game_entity_name}HealthRegeneration"
@@ -74,29 +74,29 @@ class AoCUpgradeResourceSubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # Regeneration is on a counter, so we have to invert the value
         value = 1 / value
         nyan_patch_raw_api_object.add_raw_patch_member("rate",
                                                        value,
-                                                       "engine.aux.attribute.AttributeRate",
+                                                       "engine.util.attribute.AttributeRate",
                                                        operator)
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
-                dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
+                dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
             wrapper_raw_api_object.add_raw_member("properties",
                                                   properties,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -133,7 +133,7 @@ class AoCUpgradeResourceSubprocessor:
             civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
             obj_name = civ_lookup_dict[obj_id][0]
 
-        patch_target_ref = "aux.resource.types.PopulationSpace"
+        patch_target_ref = "util.resource.types.PopulationSpace"
         patch_target = dataset.pregen_nyan_objects[patch_target_ref].get_nyan_object()
 
         # Wrapper
@@ -144,7 +144,7 @@ class AoCUpgradeResourceSubprocessor:
                                               wrapper_name,
                                               dataset.nyan_api_objects,
                                               wrapper_location)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = "ChangePopulationCap"
@@ -154,27 +154,27 @@ class AoCUpgradeResourceSubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target)
 
         nyan_patch_raw_api_object.add_raw_patch_member("max_amount",
                                                        value,
-                                                       "engine.aux.resource.ResourceContingent",
+                                                       "engine.util.resource.ResourceContingent",
                                                        operator)
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
-                dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
+                dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
             wrapper_raw_api_object.add_raw_member("properties",
                                                   properties,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -230,7 +230,7 @@ class AoCUpgradeResourceSubprocessor:
                                               wrapper_name,
                                               dataset.nyan_api_objects,
                                               wrapper_location)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = "EnableBuildingConversion"
@@ -240,11 +240,11 @@ class AoCUpgradeResourceSubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # New allowed types
-        allowed_types = [dataset.pregen_nyan_objects["aux.game_entity_type.types.Building"].get_nyan_object()]
+        allowed_types = [dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()]
         nyan_patch_raw_api_object.add_raw_patch_member("allowed_types",
                                                        allowed_types,
                                                        "engine.ability.type.ApplyDiscreteEffect",
@@ -279,7 +279,7 @@ class AoCUpgradeResourceSubprocessor:
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -297,7 +297,7 @@ class AoCUpgradeResourceSubprocessor:
                                               wrapper_name,
                                               dataset.nyan_api_objects,
                                               wrapper_location)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = "EnableSiegeUnitConversion"
@@ -307,7 +307,7 @@ class AoCUpgradeResourceSubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # Blacklisted units
@@ -326,16 +326,16 @@ class AoCUpgradeResourceSubprocessor:
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
-                dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
+                dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
             wrapper_raw_api_object.add_raw_member("properties",
                                                   properties,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -509,7 +509,7 @@ class AoCUpgradeResourceSubprocessor:
                                               wrapper_name,
                                               dataset.nyan_api_objects,
                                               wrapper_location)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{game_entity_name}FaithRegeneration"
@@ -519,27 +519,27 @@ class AoCUpgradeResourceSubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         nyan_patch_raw_api_object.add_raw_patch_member("rate",
                                                        value,
-                                                       "engine.aux.attribute.AttributeRate",
+                                                       "engine.util.attribute.AttributeRate",
                                                        operator)
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
-                dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
+                dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
             wrapper_raw_api_object.add_raw_member("properties",
                                                   properties,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -593,7 +593,7 @@ class AoCUpgradeResourceSubprocessor:
                                               wrapper_name,
                                               dataset.nyan_api_objects,
                                               wrapper_location)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{game_entity_name}FoodAmount"
@@ -603,27 +603,27 @@ class AoCUpgradeResourceSubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         nyan_patch_raw_api_object.add_raw_patch_member("max_amount",
                                                        value,
-                                                       "engine.aux.resource_spot.ResourceSpot",
+                                                       "engine.util.resource_spot.ResourceSpot",
                                                        operator)
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
-                dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
+                dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
             wrapper_raw_api_object.add_raw_member("properties",
                                                   properties,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -757,7 +757,7 @@ class AoCUpgradeResourceSubprocessor:
                                               wrapper_name,
                                               dataset.nyan_api_objects,
                                               wrapper_location)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{game_entity_name}HealRange"
@@ -767,7 +767,7 @@ class AoCUpgradeResourceSubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         nyan_patch_raw_api_object.add_raw_patch_member("max_range",
@@ -778,16 +778,16 @@ class AoCUpgradeResourceSubprocessor:
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
-                dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
+                dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
             wrapper_raw_api_object.add_raw_member("properties",
                                                   properties,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -901,7 +901,7 @@ class AoCUpgradeResourceSubprocessor:
                                               wrapper_name,
                                               dataset.nyan_api_objects,
                                               wrapper_location)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Enable{game_entity_name}Conversion"
@@ -911,7 +911,7 @@ class AoCUpgradeResourceSubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         monk_forward_ref = ForwardRef(line, game_entity_name)
@@ -923,16 +923,16 @@ class AoCUpgradeResourceSubprocessor:
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
-                dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
+                dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
             wrapper_raw_api_object.add_raw_member("properties",
                                                   properties,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -1167,7 +1167,7 @@ class AoCUpgradeResourceSubprocessor:
             civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
             obj_name = civ_lookup_dict[obj_id][0]
 
-        patch_target_ref = "aux.resource.types.PopulationSpace"
+        patch_target_ref = "util.resource.types.PopulationSpace"
         patch_target = dataset.pregen_nyan_objects[patch_target_ref].get_nyan_object()
 
         # Wrapper
@@ -1178,7 +1178,7 @@ class AoCUpgradeResourceSubprocessor:
                                               wrapper_name,
                                               dataset.nyan_api_objects,
                                               wrapper_location)
-        wrapper_raw_api_object.add_raw_parent("engine.aux.patch.Patch")
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = "ChangeInitialPopulationLimit"
@@ -1188,27 +1188,27 @@ class AoCUpgradeResourceSubprocessor:
                                                  nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.aux.patch.NyanPatch")
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target)
 
         nyan_patch_raw_api_object.add_raw_patch_member("min_amount",
                                                        value,
-                                                       "engine.aux.resource.ResourceContingent",
+                                                       "engine.util.resource.ResourceContingent",
                                                        operator)
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
         wrapper_raw_api_object.add_raw_member("patch",
                                               patch_forward_ref,
-                                              "engine.aux.patch.Patch")
+                                              "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["aux.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
-                dataset.nyan_api_objects["engine.aux.patch.property.type.Diplomatic"]: team_property
+                dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
             wrapper_raw_api_object.add_raw_member("properties",
                                                   properties,
-                                                  "engine.aux.patch.Patch")
+                                                  "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)

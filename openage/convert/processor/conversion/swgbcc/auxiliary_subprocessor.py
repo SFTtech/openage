@@ -49,7 +49,7 @@ class SWGBCCAuxiliarySubprocessor:
         obj_ref = f"{game_entity_name}.CreatableGameEntity"
         obj_name = f"{game_entity_name}Creatable"
         creatable_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
-        creatable_raw_api_object.add_raw_parent("engine.aux.create.CreatableGameEntity")
+        creatable_raw_api_object.add_raw_parent("engine.util.create.CreatableGameEntity")
 
         # Get train location of line
         train_location_id = line.get_train_location_id()
@@ -84,27 +84,27 @@ class SWGBCCAuxiliarySubprocessor:
         game_entity_forward_ref = ForwardRef(line, game_entity_name)
         creatable_raw_api_object.add_raw_member("game_entity",
                                                 game_entity_forward_ref,
-                                                "engine.aux.create.CreatableGameEntity")
+                                                "engine.util.create.CreatableGameEntity")
 
         # TODO: Variants
         variants_set = []
 
         creatable_raw_api_object.add_raw_member("variants", variants_set,
-                                                "engine.aux.create.CreatableGameEntity")
+                                                "engine.util.create.CreatableGameEntity")
 
         # Cost (construction)
         cost_name = f"{game_entity_name}.CreatableGameEntity.{game_entity_name}Cost"
         cost_raw_api_object = RawAPIObject(cost_name,
                                            f"{game_entity_name}Cost",
                                            dataset.nyan_api_objects)
-        cost_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
+        cost_raw_api_object.add_raw_parent("engine.util.cost.type.ResourceCost")
         creatable_forward_ref = ForwardRef(line, obj_ref)
         cost_raw_api_object.set_location(creatable_forward_ref)
 
-        payment_mode = dataset.nyan_api_objects["engine.aux.payment_mode.type.Advance"]
+        payment_mode = dataset.nyan_api_objects["engine.util.payment_mode.type.Advance"]
         cost_raw_api_object.add_raw_member("payment_mode",
                                            payment_mode,
-                                           "engine.aux.cost.Cost")
+                                           "engine.util.cost.Cost")
 
         if line.is_repairable():
             # Cost (repair) for buildings
@@ -113,14 +113,14 @@ class SWGBCCAuxiliarySubprocessor:
             cost_repair_raw_api_object = RawAPIObject(cost_repair_name,
                                                       f"{game_entity_name}RepairCost",
                                                       dataset.nyan_api_objects)
-            cost_repair_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
+            cost_repair_raw_api_object.add_raw_parent("engine.util.cost.type.ResourceCost")
             creatable_forward_ref = ForwardRef(line, obj_ref)
             cost_repair_raw_api_object.set_location(creatable_forward_ref)
 
-            payment_repair_mode = dataset.nyan_api_objects["engine.aux.payment_mode.type.Adaptive"]
+            payment_repair_mode = dataset.nyan_api_objects["engine.util.payment_mode.type.Adaptive"]
             cost_repair_raw_api_object.add_raw_member("payment_mode",
                                                       payment_repair_mode,
-                                                      "engine.aux.cost.Cost")
+                                                      "engine.util.cost.Cost")
             line.add_raw_api_object(cost_repair_raw_api_object)
 
         cost_amounts = []
@@ -135,19 +135,19 @@ class SWGBCCAuxiliarySubprocessor:
                 continue
 
             if resource_id == 0:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
+                resource = dataset.pregen_nyan_objects["util.resource.types.Food"].get_nyan_object()
                 resource_name = "Food"
 
             elif resource_id == 1:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Carbon"].get_nyan_object()
+                resource = dataset.pregen_nyan_objects["util.resource.types.Carbon"].get_nyan_object()
                 resource_name = "Carbon"
 
             elif resource_id == 2:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Ore"].get_nyan_object()
+                resource = dataset.pregen_nyan_objects["util.resource.types.Ore"].get_nyan_object()
                 resource_name = "Ore"
 
             elif resource_id == 3:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Nova"].get_nyan_object()
+                resource = dataset.pregen_nyan_objects["util.resource.types.Nova"].get_nyan_object()
                 resource_name = "Nova"
 
             else:
@@ -164,16 +164,16 @@ class SWGBCCAuxiliarySubprocessor:
             cost_amount = RawAPIObject(cost_amount_name,
                                        f"{resource_name}Amount",
                                        dataset.nyan_api_objects)
-            cost_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
+            cost_amount.add_raw_parent("engine.util.resource.ResourceAmount")
             cost_forward_ref = ForwardRef(line, cost_name)
             cost_amount.set_location(cost_forward_ref)
 
             cost_amount.add_raw_member("type",
                                        resource,
-                                       "engine.aux.resource.ResourceAmount")
+                                       "engine.util.resource.ResourceAmount")
             cost_amount.add_raw_member("amount",
                                        amount,
-                                       "engine.aux.resource.ResourceAmount")
+                                       "engine.util.resource.ResourceAmount")
 
             cost_amount_forward_ref = ForwardRef(line, cost_amount_name)
             cost_amounts.append(cost_amount_forward_ref)
@@ -185,16 +185,16 @@ class SWGBCCAuxiliarySubprocessor:
                 cost_amount = RawAPIObject(cost_amount_name,
                                            f"{resource_name}Amount",
                                            dataset.nyan_api_objects)
-                cost_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
+                cost_amount.add_raw_parent("engine.util.resource.ResourceAmount")
                 cost_forward_ref = ForwardRef(line, cost_repair_name)
                 cost_amount.set_location(cost_forward_ref)
 
                 cost_amount.add_raw_member("type",
                                            resource,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
                 cost_amount.add_raw_member("amount",
                                            amount / 2,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
 
                 cost_amount_forward_ref = ForwardRef(line, cost_amount_name)
                 cost_repair_amounts.append(cost_amount_forward_ref)
@@ -202,17 +202,17 @@ class SWGBCCAuxiliarySubprocessor:
 
         cost_raw_api_object.add_raw_member("amount",
                                            cost_amounts,
-                                           "engine.aux.cost.type.ResourceCost")
+                                           "engine.util.cost.type.ResourceCost")
 
         if line.is_repairable():
             cost_repair_raw_api_object.add_raw_member("amount",
                                                       cost_repair_amounts,
-                                                      "engine.aux.cost.type.ResourceCost")
+                                                      "engine.util.cost.type.ResourceCost")
 
         cost_forward_ref = ForwardRef(line, cost_name)
         creatable_raw_api_object.add_raw_member("cost",
                                                 cost_forward_ref,
-                                                "engine.aux.create.CreatableGameEntity")
+                                                "engine.util.create.CreatableGameEntity")
         # Creation time
         if isinstance(line, GenieUnitLineGroup):
             creation_time = current_unit["creation_time"].get_value()
@@ -223,7 +223,7 @@ class SWGBCCAuxiliarySubprocessor:
 
         creatable_raw_api_object.add_raw_member("creation_time",
                                                 creation_time,
-                                                "engine.aux.create.CreatableGameEntity")
+                                                "engine.util.create.CreatableGameEntity")
 
         # Creation sound
         creation_sound_id = current_unit["train_sound_id"].get_value()
@@ -232,7 +232,7 @@ class SWGBCCAuxiliarySubprocessor:
         obj_name = f"{game_entity_name}.CreatableGameEntity.Sound"
         sound_raw_api_object = RawAPIObject(obj_name, "CreationSound",
                                             dataset.nyan_api_objects)
-        sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
+        sound_raw_api_object.add_raw_parent("engine.util.sound.Sound")
         sound_location = ForwardRef(line, obj_ref)
         sound_raw_api_object.set_location(sound_location)
 
@@ -261,15 +261,15 @@ class SWGBCCAuxiliarySubprocessor:
 
         sound_raw_api_object.add_raw_member("play_delay",
                                             0,
-                                            "engine.aux.sound.Sound")
+                                            "engine.util.sound.Sound")
         sound_raw_api_object.add_raw_member("sounds",
                                             creation_sounds,
-                                            "engine.aux.sound.Sound")
+                                            "engine.util.sound.Sound")
 
         sound_forward_ref = ForwardRef(line, obj_name)
         creatable_raw_api_object.add_raw_member("creation_sounds",
                                                 [sound_forward_ref],
-                                                "engine.aux.create.CreatableGameEntity")
+                                                "engine.util.create.CreatableGameEntity")
 
         line.add_raw_api_object(sound_raw_api_object)
 
@@ -283,7 +283,7 @@ class SWGBCCAuxiliarySubprocessor:
 
         creatable_raw_api_object.add_raw_member("condition",
                                                 unlock_conditions,
-                                                "engine.aux.create.CreatableGameEntity")
+                                                "engine.util.create.CreatableGameEntity")
 
         # Placement modes
         placement_modes = []
@@ -294,7 +294,7 @@ class SWGBCCAuxiliarySubprocessor:
             place_raw_api_object = RawAPIObject(obj_name,
                                                 "Place",
                                                 dataset.nyan_api_objects)
-            place_raw_api_object.add_raw_parent("engine.aux.placement_mode.type.Place")
+            place_raw_api_object.add_raw_parent("engine.util.placement_mode.type.Place")
             place_location = ForwardRef(line,
                                         f"{game_entity_name}.CreatableGameEntity")
             place_raw_api_object.set_location(place_location)
@@ -302,21 +302,21 @@ class SWGBCCAuxiliarySubprocessor:
             # Tile snap distance (uses 1.0 for grid placement)
             place_raw_api_object.add_raw_member("tile_snap_distance",
                                                 1.0,
-                                                "engine.aux.placement_mode.type.Place")
+                                                "engine.util.placement_mode.type.Place")
             # Clearance size
             clearance_size_x = current_unit["clearance_size_x"].get_value()
             clearance_size_y = current_unit["clearance_size_y"].get_value()
             place_raw_api_object.add_raw_member("clearance_size_x",
                                                 clearance_size_x,
-                                                "engine.aux.placement_mode.type.Place")
+                                                "engine.util.placement_mode.type.Place")
             place_raw_api_object.add_raw_member("clearance_size_y",
                                                 clearance_size_y,
-                                                "engine.aux.placement_mode.type.Place")
+                                                "engine.util.placement_mode.type.Place")
 
             # Allow rotation
             place_raw_api_object.add_raw_member("allow_rotation",
                                                 True,
-                                                "engine.aux.placement_mode.type.Place")
+                                                "engine.util.placement_mode.type.Place")
 
             # Max elevation difference
             elevation_mode = current_unit["elevation_mode"].get_value()
@@ -331,7 +331,7 @@ class SWGBCCAuxiliarySubprocessor:
 
             place_raw_api_object.add_raw_member("max_elevation_difference",
                                                 max_elevation_difference,
-                                                "engine.aux.placement_mode.type.Place")
+                                                "engine.util.placement_mode.type.Place")
 
             line.add_raw_api_object(place_raw_api_object)
 
@@ -344,7 +344,7 @@ class SWGBCCAuxiliarySubprocessor:
                 replace_raw_api_object = RawAPIObject(obj_name,
                                                       "Replace",
                                                       dataset.nyan_api_objects)
-                replace_raw_api_object.add_raw_parent("engine.aux.placement_mode.type.Replace")
+                replace_raw_api_object.add_raw_parent("engine.util.placement_mode.type.Replace")
                 replace_location = ForwardRef(line,
                                               f"{game_entity_name}.CreatableGameEntity")
                 replace_raw_api_object.set_location(replace_location)
@@ -356,7 +356,7 @@ class SWGBCCAuxiliarySubprocessor:
                 game_entities = [ForwardRef(wall_line, wall_name)]
                 replace_raw_api_object.add_raw_member("game_entities",
                                                       game_entities,
-                                                      "engine.aux.placement_mode.type.Replace")
+                                                      "engine.util.placement_mode.type.Replace")
 
                 line.add_raw_api_object(replace_raw_api_object)
 
@@ -364,13 +364,13 @@ class SWGBCCAuxiliarySubprocessor:
                 placement_modes.append(replace_forward_ref)
 
         else:
-            placement_modes.append(dataset.nyan_api_objects["engine.aux.placement_mode.type.Eject"])
+            placement_modes.append(dataset.nyan_api_objects["engine.util.placement_mode.type.Eject"])
 
             # OwnStorage mode
             obj_name = f"{game_entity_name}.CreatableGameEntity.OwnStorage"
             own_storage_raw_api_object = RawAPIObject(obj_name, "OwnStorage",
                                                       dataset.nyan_api_objects)
-            own_storage_raw_api_object.add_raw_parent("engine.aux.placement_mode.type.OwnStorage")
+            own_storage_raw_api_object.add_raw_parent("engine.util.placement_mode.type.OwnStorage")
             own_storage_location = ForwardRef(line,
                                               f"{game_entity_name}.CreatableGameEntity")
             own_storage_raw_api_object.set_location(own_storage_location)
@@ -381,7 +381,7 @@ class SWGBCCAuxiliarySubprocessor:
                                                % (train_location_name, train_location_name))
             own_storage_raw_api_object.add_raw_member("container",
                                                       container_forward_ref,
-                                                      "engine.aux.placement_mode.type.OwnStorage")
+                                                      "engine.util.placement_mode.type.OwnStorage")
 
             line.add_raw_api_object(own_storage_raw_api_object)
 
@@ -390,7 +390,7 @@ class SWGBCCAuxiliarySubprocessor:
 
         creatable_raw_api_object.add_raw_member("placement_modes",
                                                 placement_modes,
-                                                "engine.aux.create.CreatableGameEntity")
+                                                "engine.util.create.CreatableGameEntity")
 
         line.add_raw_api_object(creatable_raw_api_object)
         line.add_raw_api_object(cost_raw_api_object)
@@ -417,7 +417,7 @@ class SWGBCCAuxiliarySubprocessor:
         obj_ref = f"{tech_name}.ResearchableTech"
         obj_name = f"{tech_name}Researchable"
         researchable_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
-        researchable_raw_api_object.add_raw_parent("engine.aux.research.ResearchableTech")
+        researchable_raw_api_object.add_raw_parent("engine.util.research.ResearchableTech")
 
         # Location of the object depends on whether it'a a unique tech or a normal tech
         if tech_group.is_unique():
@@ -439,21 +439,21 @@ class SWGBCCAuxiliarySubprocessor:
         tech_forward_ref = ForwardRef(tech_group, tech_name)
         researchable_raw_api_object.add_raw_member("tech",
                                                    tech_forward_ref,
-                                                   "engine.aux.research.ResearchableTech")
+                                                   "engine.util.research.ResearchableTech")
 
         # Cost
         cost_ref = f"{tech_name}.ResearchableTech.{tech_name}Cost"
         cost_raw_api_object = RawAPIObject(cost_ref,
                                            f"{tech_name}Cost",
                                            dataset.nyan_api_objects)
-        cost_raw_api_object.add_raw_parent("engine.aux.cost.type.ResourceCost")
+        cost_raw_api_object.add_raw_parent("engine.util.cost.type.ResourceCost")
         tech_forward_ref = ForwardRef(tech_group, obj_ref)
         cost_raw_api_object.set_location(tech_forward_ref)
 
-        payment_mode = dataset.nyan_api_objects["engine.aux.payment_mode.type.Advance"]
+        payment_mode = dataset.nyan_api_objects["engine.util.payment_mode.type.Advance"]
         cost_raw_api_object.add_raw_member("payment_mode",
                                            payment_mode,
-                                           "engine.aux.cost.Cost")
+                                           "engine.util.cost.Cost")
 
         cost_amounts = []
         for resource_amount in tech_group.tech["research_resource_costs"].get_value():
@@ -466,19 +466,19 @@ class SWGBCCAuxiliarySubprocessor:
                 continue
 
             if resource_id == 0:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
+                resource = dataset.pregen_nyan_objects["util.resource.types.Food"].get_nyan_object()
                 resource_name = "Food"
 
             elif resource_id == 1:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Carbon"].get_nyan_object()
+                resource = dataset.pregen_nyan_objects["util.resource.types.Carbon"].get_nyan_object()
                 resource_name = "Carbon"
 
             elif resource_id == 2:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Ore"].get_nyan_object()
+                resource = dataset.pregen_nyan_objects["util.resource.types.Ore"].get_nyan_object()
                 resource_name = "Ore"
 
             elif resource_id == 3:
-                resource = dataset.pregen_nyan_objects["aux.resource.types.Nova"].get_nyan_object()
+                resource = dataset.pregen_nyan_objects["util.resource.types.Nova"].get_nyan_object()
                 resource_name = "Nova"
 
             else:
@@ -495,16 +495,16 @@ class SWGBCCAuxiliarySubprocessor:
             cost_amount = RawAPIObject(cost_amount_ref,
                                        f"{resource_name}Amount",
                                        dataset.nyan_api_objects)
-            cost_amount.add_raw_parent("engine.aux.resource.ResourceAmount")
+            cost_amount.add_raw_parent("engine.util.resource.ResourceAmount")
             cost_forward_ref = ForwardRef(tech_group, cost_ref)
             cost_amount.set_location(cost_forward_ref)
 
             cost_amount.add_raw_member("type",
                                        resource,
-                                       "engine.aux.resource.ResourceAmount")
+                                       "engine.util.resource.ResourceAmount")
             cost_amount.add_raw_member("amount",
                                        amount,
-                                       "engine.aux.resource.ResourceAmount")
+                                       "engine.util.resource.ResourceAmount")
 
             cost_amount_forward_ref = ForwardRef(tech_group, cost_amount_ref)
             cost_amounts.append(cost_amount_forward_ref)
@@ -512,24 +512,24 @@ class SWGBCCAuxiliarySubprocessor:
 
         cost_raw_api_object.add_raw_member("amount",
                                            cost_amounts,
-                                           "engine.aux.cost.type.ResourceCost")
+                                           "engine.util.cost.type.ResourceCost")
 
         cost_forward_ref = ForwardRef(tech_group, cost_ref)
         researchable_raw_api_object.add_raw_member("cost",
                                                    cost_forward_ref,
-                                                   "engine.aux.research.ResearchableTech")
+                                                   "engine.util.research.ResearchableTech")
 
         research_time = tech_group.tech["research_time"].get_value()
 
         researchable_raw_api_object.add_raw_member("research_time",
                                                    research_time,
-                                                   "engine.aux.research.ResearchableTech")
+                                                   "engine.util.research.ResearchableTech")
 
         # Create sound object
         sound_ref = f"{tech_name}.ResearchableTech.Sound"
         sound_raw_api_object = RawAPIObject(sound_ref, "ResearchSound",
                                             dataset.nyan_api_objects)
-        sound_raw_api_object.add_raw_parent("engine.aux.sound.Sound")
+        sound_raw_api_object.add_raw_parent("engine.util.sound.Sound")
         sound_location = ForwardRef(tech_group,
                                     f"{tech_name}.ResearchableTech")
         sound_raw_api_object.set_location(sound_location)
@@ -537,15 +537,15 @@ class SWGBCCAuxiliarySubprocessor:
         # AoE doesn't support sounds here, so this is empty
         sound_raw_api_object.add_raw_member("play_delay",
                                             0,
-                                            "engine.aux.sound.Sound")
+                                            "engine.util.sound.Sound")
         sound_raw_api_object.add_raw_member("sounds",
                                             [],
-                                            "engine.aux.sound.Sound")
+                                            "engine.util.sound.Sound")
 
         sound_forward_ref = ForwardRef(tech_group, sound_ref)
         researchable_raw_api_object.add_raw_member("research_sounds",
                                                    [sound_forward_ref],
-                                                   "engine.aux.research.ResearchableTech")
+                                                   "engine.util.research.ResearchableTech")
 
         tech_group.add_raw_api_object(sound_raw_api_object)
 
@@ -559,7 +559,7 @@ class SWGBCCAuxiliarySubprocessor:
 
         researchable_raw_api_object.add_raw_member("condition",
                                                    unlock_conditions,
-                                                   "engine.aux.research.ResearchableTech")
+                                                   "engine.util.research.ResearchableTech")
 
         tech_group.add_raw_api_object(researchable_raw_api_object)
         tech_group.add_raw_api_object(cost_raw_api_object)

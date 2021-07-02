@@ -1,10 +1,11 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #include "glyph_atlas.h"
 
 #include <algorithm>
 #include <functional>
 #include <typeindex>
+#include <typeinfo>
 #include <cstring>
 #include <epoxy/gl.h>
 

@@ -1,4 +1,4 @@
-// Copyright 2018-2019 the openage authors. See copying.md for legal info.
+// Copyright 2018-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,8 +8,7 @@
 
 namespace openage::main::tests {
 
-// pxd: void engine_demo(int demo_id, Path path)
-// except +
+// pxd: void engine_demo(int demo_id, Path path) except +
 void engine_demo(int demo_id, const util::Path &path);
 
 } // openage::main::tests

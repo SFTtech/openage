@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-few-public-methods,too-many-statements,too-many-locals
 
@@ -60,18 +60,18 @@ class RoRCivSubprocessor:
         food_ref = f"{civ_name}.FoodStartingAmount"
         food_raw_api_object = RawAPIObject(food_ref, "FoodStartingAmount",
                                            dataset.nyan_api_objects)
-        food_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
+        food_raw_api_object.add_raw_parent("engine.util.resource.ResourceAmount")
         civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         food_raw_api_object.set_location(civ_location)
 
-        resource = dataset.pregen_nyan_objects["aux.resource.types.Food"].get_nyan_object()
+        resource = dataset.pregen_nyan_objects["util.resource.types.Food"].get_nyan_object()
         food_raw_api_object.add_raw_member("type",
                                            resource,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
 
         food_raw_api_object.add_raw_member("amount",
                                            food_amount,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
 
         food_forward_ref = ForwardRef(civ_group, food_ref)
         resource_amounts.append(food_forward_ref)
@@ -79,18 +79,18 @@ class RoRCivSubprocessor:
         wood_ref = f"{civ_name}.WoodStartingAmount"
         wood_raw_api_object = RawAPIObject(wood_ref, "WoodStartingAmount",
                                            dataset.nyan_api_objects)
-        wood_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
+        wood_raw_api_object.add_raw_parent("engine.util.resource.ResourceAmount")
         civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         wood_raw_api_object.set_location(civ_location)
 
-        resource = dataset.pregen_nyan_objects["aux.resource.types.Wood"].get_nyan_object()
+        resource = dataset.pregen_nyan_objects["util.resource.types.Wood"].get_nyan_object()
         wood_raw_api_object.add_raw_member("type",
                                            resource,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
 
         wood_raw_api_object.add_raw_member("amount",
                                            wood_amount,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
 
         wood_forward_ref = ForwardRef(civ_group, wood_ref)
         resource_amounts.append(wood_forward_ref)
@@ -98,18 +98,18 @@ class RoRCivSubprocessor:
         gold_ref = f"{civ_name}.GoldStartingAmount"
         gold_raw_api_object = RawAPIObject(gold_ref, "GoldStartingAmount",
                                            dataset.nyan_api_objects)
-        gold_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
+        gold_raw_api_object.add_raw_parent("engine.util.resource.ResourceAmount")
         civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         gold_raw_api_object.set_location(civ_location)
 
-        resource = dataset.pregen_nyan_objects["aux.resource.types.Gold"].get_nyan_object()
+        resource = dataset.pregen_nyan_objects["util.resource.types.Gold"].get_nyan_object()
         gold_raw_api_object.add_raw_member("type",
                                            resource,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
 
         gold_raw_api_object.add_raw_member("amount",
                                            gold_amount,
-                                           "engine.aux.resource.ResourceAmount")
+                                           "engine.util.resource.ResourceAmount")
 
         gold_forward_ref = ForwardRef(civ_group, gold_ref)
         resource_amounts.append(gold_forward_ref)
@@ -117,18 +117,18 @@ class RoRCivSubprocessor:
         stone_ref = f"{civ_name}.StoneStartingAmount"
         stone_raw_api_object = RawAPIObject(stone_ref, "StoneStartingAmount",
                                             dataset.nyan_api_objects)
-        stone_raw_api_object.add_raw_parent("engine.aux.resource.ResourceAmount")
+        stone_raw_api_object.add_raw_parent("engine.util.resource.ResourceAmount")
         civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         stone_raw_api_object.set_location(civ_location)
 
-        resource = dataset.pregen_nyan_objects["aux.resource.types.Stone"].get_nyan_object()
+        resource = dataset.pregen_nyan_objects["util.resource.types.Stone"].get_nyan_object()
         stone_raw_api_object.add_raw_member("type",
                                             resource,
-                                            "engine.aux.resource.ResourceAmount")
+                                            "engine.util.resource.ResourceAmount")
 
         stone_raw_api_object.add_raw_member("amount",
                                             stone_amount,
-                                            "engine.aux.resource.ResourceAmount")
+                                            "engine.util.resource.ResourceAmount")
 
         stone_forward_ref = ForwardRef(civ_group, stone_ref)
         resource_amounts.append(stone_forward_ref)
