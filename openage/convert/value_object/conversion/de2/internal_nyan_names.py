@@ -28,7 +28,8 @@ UNIT_LINE_LOOKUPS = {
     1655: ("Coustillier", "coustillier"),
     1658: ("Serjeant", "serjeant"),
     1660: ("DSerjeant", "dserjeant"),           # Donjon Serjeant
-    1663: ("FlemishMilitia", "flemish_militia"),
+    # 1663: ("FlemishMilitia", "flemish_militia"),
+    1699: ("FlemishMilitia", "flemish_militia"),
 }
 
 # key: head unit id; value: (nyan object name, filename prefix)

@@ -823,8 +823,16 @@ class LivingUnit(ProjectileUnit):
         ]
 
         if game_version[0].game_id not in ("ROR", "AOE1DE"):
+            if game_version[0].game_id == "AOE2DE":
+                data_format.extend([
+                    (READ_GEN, "heal_timer", StorageType.FLOAT_MEMBER, "float"),
+                ])
+            else:
+                data_format.extend([
+                    (SKIP, "rear_attack_modifier", StorageType.FLOAT_MEMBER, "float"),
+                ])
+
             data_format.extend([
-                (SKIP, "rear_attack_modifier", StorageType.FLOAT_MEMBER, "float"),
                 (SKIP, "flank_attack_modifier", StorageType.FLOAT_MEMBER, "float"),
                 (READ_GEN, "creatable_type", StorageType.ID_MEMBER, EnumLookupMember(
                     raw_type="int8_t",
@@ -844,6 +852,7 @@ class LivingUnit(ProjectileUnit):
                 data_format.extend([
                     (READ_GEN, "spawn_graphic_id", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "upgrade_graphic_id", StorageType.ID_MEMBER, "int16_t"),
+                    (READ_GEN, "hero_glow_graphic_id", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "max_charge", StorageType.FLOAT_MEMBER, "float"),
                     (READ_GEN, "charge_regen_rate", StorageType.FLOAT_MEMBER, "float"),
                     (READ_GEN, "charge_cost", StorageType.ID_MEMBER, "int16_t"),

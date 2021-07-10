@@ -135,8 +135,16 @@ class AoCUpgradeAttributeSubprocessor:
             civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
             obj_name = civ_lookup_dict[obj_id][0]
 
-        armor_class = int(value) >> 8
-        armor_amount = int(value) & 0x0F
+        if value > 0:
+            armor_class = int(value) >> 8
+            armor_amount = int(value) & 0x0F
+
+        else:
+            # Sign is for armor amount
+            value *= -1
+            armor_class = int(value) >> 8
+            armor_amount = int(value) & 0x0F
+            armor_amount *= -1
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(dataset.game_version)

@@ -70,6 +70,11 @@ class DE2CivSubprocessor:
                         # This tech is usually unlocked by an age up
                         tech_id = civ_bonus.tech["required_techs"][1].get_value()
 
+                        if tech_id not in dataset.tech_groups.keys():
+                            # Circumvents a "funny" duplicate castle age up tech for Incas
+                            # The required tech of the dupicate is the age up we are looking for
+                            tech_id = dataset.genie_techs[tech_id]["required_techs"][0].get_value()
+
                         if not dataset.tech_groups[tech_id].is_researchable():
                             # Fall back to the first tech if the second is not researchable
                             tech_id = civ_bonus.tech["required_techs"][0].get_value()
