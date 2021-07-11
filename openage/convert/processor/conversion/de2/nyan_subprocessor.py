@@ -4,7 +4,6 @@
 #
 # TODO:
 # pylint: disable=line-too-long
-
 """
 Convert API-like objects to nyan objects. Subroutine of the
 main DE2 processor.
@@ -21,6 +20,7 @@ from ..aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
 from ..aoc.civ_subprocessor import AoCCivSubprocessor
 from ..aoc.modifier_subprocessor import AoCModifierSubprocessor
 from ..aoc.nyan_subprocessor import AoCNyanSubprocessor
+from .ability_subprocessor import DE2AbilitySubprocessor
 from .civ_subprocessor import DE2CivSubprocessor
 from .tech_subprocessor import DE2TechSubprocessor
 
@@ -234,7 +234,7 @@ class DE2NyanSubprocessor:
 
         if unit_line.get_head_unit_id() in (125, 692):
             # Healing/Recharging attribute points (monks, berserks)
-            abilities_set.extend(AoCAbilitySubprocessor.regenerate_attribute_ability(unit_line))
+            abilities_set.extend(DE2AbilitySubprocessor.regenerate_attribute_ability(unit_line))
 
         # Applying effects and shooting projectiles
         if unit_line.is_projectile_shooter():

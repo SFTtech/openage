@@ -1,4 +1,5 @@
 add_py_modules(
+	ability_subprocessor.py
 	__init__.py
 	civ_subprocessor.py
 	media_subprocessor.py
