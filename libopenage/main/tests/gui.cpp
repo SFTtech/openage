@@ -173,7 +173,7 @@ void main() {
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	this->window.add_resize_callback(
-		[=] (size_t w, size_t h) {
+		[=, this] (size_t w, size_t h) {
 			Eigen::Matrix4f proj_matrix = renderer::util::ortho_matrix_f(
 				0.0f, w, 0.0f, h, 0.0f, 1.0f
 			);

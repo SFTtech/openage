@@ -1156,7 +1156,7 @@ UnitReference GatherAction::nearest_dropsite(game_resource res_type) {
 
 	// find nearest dropsite from the targeted resource
 	auto ds = find_near(*this->target.get()->location,
-		[=](const TerrainObject &obj) {
+		[=, this](const TerrainObject &obj) {
 
 			if (not obj.unit.has_attribute(attr_type::building) or &obj.unit == this->entity or &obj.unit == this->target.get()) {
 				return false;

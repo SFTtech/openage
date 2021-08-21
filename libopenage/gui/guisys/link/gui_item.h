@@ -182,7 +182,7 @@ public:
 	void i(F f, Args&& ... args) {
 		GuiItemBase *base = checked_static_cast<GuiItemBase*>(checked_static_cast<T*>(this));
 
-		emit base->game_logic_caller.in_game_logic_thread([=] {
+		emit base->game_logic_caller.in_game_logic_thread([=, this] {
 			static_assert_about_unwrapping<F, decltype(unwrap(checked_static_cast<T*>(this))), decltype(unwrap_if_can(args))...>();
 			f(unwrap(checked_static_cast<T*>(this)), unwrap_if_can(args)...);
 		});
@@ -220,10 +220,10 @@ private:
 		static_assert_about_unwrapping<F, decltype(unwrap(checked_static_cast<T*>(this))), decltype(unwrap_if_can(arg))>();
 
 		if (base->init_over)
-			emit base->game_logic_caller.in_game_logic_thread([=] {f(unwrap(checked_static_cast<T*>(this)), unwrap_if_can(arg));});
+			emit base->game_logic_caller.in_game_logic_thread([=, this] {f(unwrap(checked_static_cast<T*>(this)), unwrap_if_can(arg));});
 		else
-			base->static_properties_assignments.push_back([=] {
-				emit base->game_logic_caller.in_game_logic_thread([=] {f(unwrap(checked_static_cast<T*>(this)), unwrap_if_can(arg));});
+			base->static_properties_assignments.push_back([=, this] {
+				emit base->game_logic_caller.in_game_logic_thread([=, this] {f(unwrap(checked_static_cast<T*>(this)), unwrap_if_can(arg));});
 			});
 	}
 };
