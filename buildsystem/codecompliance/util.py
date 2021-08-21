@@ -1,4 +1,4 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 """
 Some utilities.
@@ -56,7 +56,7 @@ def writefile(filename, new_content):
     if filename in BADUTF8FILES:
         raise Exception(f"{filename}: cannot write due to utf8-errors.")
 
-    with open(filename, 'w') as fileobj:
+    with open(filename, 'w', encoding='utf8') as fileobj:
         fileobj.write(new_content)
 
     FILECACHE[filename] = new_content

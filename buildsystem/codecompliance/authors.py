@@ -33,7 +33,7 @@ def get_author_emails_copying_md():
 
     |     name     |    nick    |    email    |
     """
-    with open("copying.md") as fobj:
+    with open("copying.md", encoding='utf8') as fobj:
         for line in fobj:
             match = re.match("^.*\\|[^|]*\\|[^|]*\\|([^|]*)\\|.*$", line)
             if not match:

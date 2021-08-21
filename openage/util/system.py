@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 """
 Various OS utilities
@@ -22,7 +22,7 @@ def free_memory():
 
     if platform.startswith('linux'):
         pattern = re.compile('^MemAvailable: +([0-9]+) kB\n$')
-        with open('/proc/meminfo') as meminfo:
+        with open('/proc/meminfo', encoding='utf8') as meminfo:
             for line in meminfo:
                 match = pattern.match(line)
                 if match:

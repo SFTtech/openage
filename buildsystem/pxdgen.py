@@ -74,7 +74,7 @@ class PXDGenerator:
 
         lexer = get_lexer_for_filename('.cpp')
 
-        with open(self.filename) as infile:
+        with open(self.filename, encoding='utf8') as infile:
             code = infile.read()
 
         for token, val in lexer.get_tokens(code):
@@ -376,12 +376,12 @@ class PXDGenerator:
         result = "\n".join(self.get_pxd_lines())
 
         if os.path.exists(pxdfile):
-            with open(pxdfile) as outfile:
+            with open(pxdfile, encoding='utf8') as outfile:
                 if outfile.read() == result:
                     # don't write the file if the content is up to date
                     return False
 
-        with open(pxdfile, 'w') as outfile:
+        with open(pxdfile, 'w', encoding='utf8') as outfile:
             print("\x1b[36mpxdgen: generate %s\x1b[0m" % os.path.relpath(pxdfile, CWD))
             outfile.write(result)
 
@@ -417,7 +417,7 @@ def parse_args():
     args = cli.parse_args()
 
     if args.file_list:
-        with open(args.file_list) as flist:
+        with open(args.file_list, encoding='utf8') as flist:
             file_list = flist.read().strip().split(';')
     else:
         file_list = []

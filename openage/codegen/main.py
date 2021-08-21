@@ -1,4 +1,4 @@
-# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 """
 Codegen interface to the build system.
@@ -116,7 +116,7 @@ def main(args, error):
         If the file doesn't exist, a warning is printed.
         """
         try:
-            with open(filename) as fileobj:
+            with open(filename, encoding='utf8') as fileobj:
                 for line in fileobj:
                     line = line.strip()
                     if line:
@@ -152,10 +152,10 @@ def main(args, error):
     print_set_differences(old_generated, generated, "generated files")
     print_set_differences(old_depends, depends, "dependencies")
 
-    with open(args.generated_list_file, 'w') as fileobj:
+    with open(args.generated_list_file, 'w', encoding='utf8') as fileobj:
         fileobj.write('\n'.join(generated))
 
-    with open(args.depend_list_file, 'w') as fileobj:
+    with open(args.depend_list_file, 'w', encoding='utf8') as fileobj:
         fileobj.write('\n'.join(depends))
 
     if args.file_to_touch:
