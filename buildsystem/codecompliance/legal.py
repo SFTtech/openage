@@ -1,4 +1,4 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 """
 Checks the legal headers of all files.
@@ -65,12 +65,12 @@ def get_git_change_year(filename):
         filename
     ]
 
-    proc = Popen(invocation, stdout=PIPE)
-    output = proc.communicate()[0].decode('utf-8', errors='ignore').strip()
+    with Popen(invocation, stdout=PIPE) as proc:
+        output = proc.communicate()[0].decode('utf-8', errors='ignore').strip()
 
-    if proc.returncode != 0 or not output:
-        # git doesn't know about the file
-        return None
+        if proc.returncode != 0 or not output:
+            # git doesn't know about the file
+            return None
 
     return int(output[:4])
 
@@ -133,8 +133,9 @@ def test_headers(check_files, paths, git_change_years, third_party_files):
 
     # determine all uncommited files from git.
     # those definitely need the current year in the copyright message.
-    proc = Popen(['git', 'diff', '--name-only', 'HEAD'], stdout=PIPE)
-    uncommited = set(proc.communicate()[0].decode('ascii').strip().split('\n'))
+    with Popen(['git', 'diff', '--name-only', 'HEAD'], stdout=PIPE) as proc:
+        uncommited = set(proc.communicate()[0].decode('ascii').strip().split('\n'))
+
     current_calendar_year = date.today().year
 
     for filename in findfiles(paths, EXTENSIONS_REQUIRING_LEGAL_HEADERS):
