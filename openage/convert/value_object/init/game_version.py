@@ -17,9 +17,9 @@ class Support(enum.Enum):
     """
     Support state of a game version
     """
-    nope = "not supported"
-    yes = "supported"
-    breaks = "presence breaks conversion"
+    NOPE = "not supported"
+    YES = "supported"
+    BREAKS = "presence breaks conversion"
 
 
 class GameBase:
