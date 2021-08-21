@@ -150,7 +150,7 @@ def main(args):
     else:
         check_files = None
 
-    auto_fixes = list()
+    auto_fixes = []
     fixes_possible = False
 
     issues_count = 0
