@@ -1,4 +1,4 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 """
 FSLikeObjects that represent actual file system paths:
@@ -86,7 +86,8 @@ class Directory(FSLikeObject):
         try:
             os.utime(self.resolve(parts))
         except FileNotFoundError:
-            open(self.resolve(parts), 'ab').close()
+            with open(self.resolve(parts), 'ab') as directory:
+                directory.close()
 
     def rename(self, srcparts, tgtparts):
         return os.rename(self.resolve(srcparts), self.resolve(tgtparts))

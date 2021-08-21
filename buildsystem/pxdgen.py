@@ -417,7 +417,8 @@ def parse_args():
     args = cli.parse_args()
 
     if args.file_list:
-        file_list = open(args.file_list).read().strip().split(';')
+        with open(args.file_list) as flist:
+            file_list = flist.read().strip().split(';')
     else:
         file_list = []
 

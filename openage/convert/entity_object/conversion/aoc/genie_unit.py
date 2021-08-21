@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-public-methods,too-many-instance-attributes,consider-iterating-dictionary
 
@@ -127,16 +127,16 @@ class GenieGameEntityGroup(ConverterObjectGroup):
             if position > -1:
                 insert_index = position
 
-                for unit in self.line_positions.keys():
-                    if self.line_positions[unit] >= insert_index:
+                for unit, line_pos in self.line_positions.items():
+                    if line_pos >= insert_index:
                         self.line_positions[unit] += 1
 
             elif after:
                 if self.contains_entity(after):
                     insert_index = self.line_positions[after] + 1
 
-                    for unit in self.line_positions.keys():
-                        if self.line_positions[unit] >= insert_index:
+                    for unit, line_pos in self.line_positions.items():
+                        if line_pos >= insert_index:
                             self.line_positions[unit] += 1
 
             self.line_positions.update({genie_unit.get_id(): insert_index})
