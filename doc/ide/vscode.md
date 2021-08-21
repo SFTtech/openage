@@ -41,7 +41,7 @@ You should add these entries to the list of directories that are not watched:
 
 These directories contain generated build files, binaries created from builds and media assets converted from the original games. Hence, there is no need to watch these files for changes during development. If you do not add these entries, vscode will likely complain that there are too many files for it to index.
 
-**C_Cpp> Default: Include Path**
+**C_Cpp > Default: Include Path**
 
 If you use a C/C++ language support extension, you need to add the path to the *nyan* directory to your workspace's include path. Otherwise, vscode will not be able to find the nyan header files.
 
@@ -62,6 +62,19 @@ If you use a C/C++ language support extension, you need to add the path to the *
     "${workspaceFolder}/../nyan/**"
 ]
 ```
+
+**Python > Formatting: Autopep8 Args**
+
+If you use a Python language support extension with `autopep8` formatting, you should add these settings to get the openage Python code style. Add these entries to the list of passed arguments:
+
+* `--ignore E221,E241,E251,E501`
+
+Ignoring the `E221,E241,E251` errors allows placing multiple spaces around commas and before comments for alignment, while ignoring `E501` disables auto-formatting of overlong lines.
+
+If you don't want to ignore `E501`, you should add this argument which increases the maximum line length to 100:
+
+* `--line-length 100`
+
 
 ## Add openage configure and build tasks
 
