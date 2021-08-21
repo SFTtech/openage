@@ -46,7 +46,7 @@ namespace util {
 template<typename DerivedType, typename NumericType=int>
 class OAAPI EnumValue {
 public:
-	// implicit constructor: EnumValue(const char *value_name, int numeric_value)
+	constexpr EnumValue(const char *value_name, NumericType numeric_value): name(value_name), numeric(numeric_value) {}
 
 	// enum values cannot be copied
 	EnumValue(const EnumValue &other) = delete;
@@ -131,7 +131,7 @@ public:
 	constexpr Enum() = delete;
 	constexpr Enum(const DerivedType &value) : value{&value} {}
 
-	constexpr operator const DerivedType &() const {
+	constexpr explicit operator const DerivedType &() const {
 		return *this->value;
 	}
 

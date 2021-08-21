@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -31,7 +31,7 @@ public:
 
 		if (this->data != nullptr) {
 			for (size_t i = 0; i < this->count; i++) {
-				alloc.destroy(&this->data[i]);
+				(this->data[i]).~T();
 			}
 			alloc.deallocate(this->data, this->capacity);
 		}
@@ -60,8 +60,8 @@ public:
 			size_t newcapacity = capacity * 2;
 			T *newdata = alloc.allocate(newcapacity);
 			for (size_t i = 0; i < this->capacity; i++) {
-				alloc.construct(&newdata[i], std::move_if_noexcept(this->data[i]));
-				alloc.destroy(&this->data[i]);
+				new(static_cast<void *>(&newdata[i])) T(std::move_if_noexcept(this->data[i]));
+				(this->data[i]).~T();
 			}
 			alloc.deallocate(this->data, this->capacity);
 			this->data = newdata;
@@ -69,7 +69,7 @@ public:
 		}
 
 		// add val at the end.
-		alloc.construct(&this->data[this->count], val);
+		new(static_cast<void *>(&this->data[this->count])) T(val);
 		this->count += 1;
 	}
 
