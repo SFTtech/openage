@@ -24,7 +24,7 @@ def get_game_version(srcdir, avail_game_eds, avail_game_exps):
 
     else:
         # Check for broken edition
-        broken_edition = game_version[0].support == Support.breaks
+        broken_edition = game_version[0].support == Support.BREAKS
 
         # a broken edition is installed
         if broken_edition:
@@ -34,7 +34,7 @@ def get_game_version(srcdir, avail_game_eds, avail_game_exps):
 
         broken_expansions = []
         for expansion in game_version[1]:
-            if expansion.support == Support.breaks:
+            if expansion.support == Support.BREAKS:
                 broken_expansions.append(expansion)
 
         # a broken expansion is installed
@@ -47,7 +47,7 @@ def get_game_version(srcdir, avail_game_eds, avail_game_exps):
     if no_support:
         warn("You need at least one of:")
         for edition in avail_game_eds:
-            if edition.support == Support.yes:
+            if edition.support == Support.YES:
                 warn(" * \x1b[34m%s\x1b[m", edition)
 
         return (False, set())

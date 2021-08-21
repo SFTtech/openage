@@ -1,4 +1,4 @@
-# Copyright 2018-2020 the openage authors. See copying.md for legal info.
+# Copyright 2018-2021 the openage authors. See copying.md for legal info.
 """
 Demo for the opusenc module.
 """
@@ -22,7 +22,9 @@ def convert(args):
 
     wavname = args.input
     info("Reading %s...", wavname)
-    wav = open(wavname, mode='rb').read()
+
+    with open(wavname, mode='rb') as wav_file:
+        wav = wav_file.read()
 
     info("Encoding...")
 

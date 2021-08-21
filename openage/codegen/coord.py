@@ -1,4 +1,4 @@
-# Copyright 2016-2016 the openage authors. See copying.md for legal info.
+# Copyright 2016-2021 the openage authors. See copying.md for legal info.
 
 """
 Generates libopenage/coord/coord_{xy, xyz, ne_se, ne_se_up}.{h, cpp}
@@ -13,6 +13,7 @@ def generate_coord_basetypes(projectdir):
 
     projectdir is a util.fslike.path.Path.
     """
+    # pylint: disable=cell-var-from-loop
     # this list contains all required member lists.
     member_lists = [
         ["x", "y"],

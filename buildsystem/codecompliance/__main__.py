@@ -150,7 +150,7 @@ def main(args):
     else:
         check_files = None
 
-    auto_fixes = list()
+    auto_fixes = []
     fixes_possible = False
 
     issues_count = 0
@@ -194,7 +194,7 @@ def main(args):
                         remainfound=remainfound))
 
         if not args.fix and fixes_possible:
-            print("When invoked with --fix, I can try"
+            print("When invoked with --fix, I can try "
                   "to automatically resolve some of the issues.\n")
 
     return issues_count == 0

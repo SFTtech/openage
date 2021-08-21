@@ -1,4 +1,4 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 """
 Compiles python modules with cpython to pyc/pyo files.
@@ -64,7 +64,7 @@ def main():
     ))
     args = cli.parse_args()
 
-    with open(args.pymodule_list_file) as fileobj:
+    with open(args.pymodule_list_file, encoding='utf8') as fileobj:
         modules = fileobj.read().strip().split(';')
         if modules == ['']:
             modules = []

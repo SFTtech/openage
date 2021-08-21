@@ -30,7 +30,7 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
         else:
             edition = game_edition
 
-            if edition.support == Support.nope:
+            if edition.support == Support.NOPE:
                 info(f"Found unsupported game edition: {edition}")
                 continue
 
@@ -53,7 +53,7 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
                 break
 
         else:
-            if game_expansion.support == Support.nope:
+            if game_expansion.support == Support.NOPE:
                 info(f"Found unsupported game expansion: {game_expansion}")
                 continue
 

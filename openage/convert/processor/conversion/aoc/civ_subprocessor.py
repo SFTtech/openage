@@ -427,8 +427,8 @@ class AoCCivSubprocessor:
 
         civ_name = civ_lookup_dict[civ_id][0]
 
-        disabled_techs = dict()
-        disabled_entities = dict()
+        disabled_techs = {}
+        disabled_entities = {}
 
         tech_tree = civ_group.get_tech_tree_effects()
         for effect in tech_tree:

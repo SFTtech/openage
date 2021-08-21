@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 """
 Downloads the SFT test cab archive and uses it to test the cabextract code.
 """
@@ -51,7 +51,8 @@ def open_test_archive():
         pass
 
     with open(TEST_ARCHIVE_FILENAME, 'wb') as test_arc:
-        test_arc.write(urlopen(TEST_ARCHIVE_URL).read())
+        with urlopen(TEST_ARCHIVE_URL) as url:
+            test_arc.write(url.read())
 
     return open_cached_test_archive()
 

@@ -1,4 +1,4 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 """
 Utility and driver module for C++ code generation.
@@ -28,13 +28,13 @@ class CodegenMode(Enum):
     # pylint: disable=too-few-public-methods
 
     # source files are created regularily
-    codegen = "codegen"
+    CODEGEN = "codegen"
 
     # caches are updated, but no source files are created
-    dryrun = "dryrun"
+    DRYRUN = "dryrun"
 
     # files are deleted
-    clean = "clean"
+    CLEAN = "clean"
 
 
 class WriteCatcher(FIFO):
@@ -135,7 +135,7 @@ def codegen(mode, input_dir, output_dir):
 
         data = postprocess_write(parts, data)
 
-        if mode == CodegenMode.codegen:
+        if mode == CodegenMode.CODEGEN:
             # skip writing if the file already has that exact content
             try:
                 with wpath.open('rb') as outfile:
@@ -150,11 +150,11 @@ def codegen(mode, input_dir, output_dir):
                 print("\x1b[36mcodegen: %s\x1b[0m" % b'/'.join(parts).decode(errors='replace'))
                 outfile.write(data)
 
-        elif mode == CodegenMode.dryrun:
+        elif mode == CodegenMode.DRYRUN:
             # no-op
             pass
 
-        elif mode == CodegenMode.clean:
+        elif mode == CodegenMode.CLEAN:
             if wpath.is_file():
                 print(b'/'.join(parts).decode(errors='replace'))
                 wpath.unlink()

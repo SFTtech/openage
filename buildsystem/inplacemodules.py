@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 """
 Installs the Python extension modules that were created in the configuration
@@ -29,7 +29,7 @@ def main():
     ))
     args = cli.parse_args()
 
-    with open(args.module_list_file) as fileobj:
+    with open(args.module_list_file, encoding='utf8') as fileobj:
         modules = fileobj.read().strip().split(';')
         if modules == ['']:
             modules = []

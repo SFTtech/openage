@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright 2015-2019 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 """
 Runs Cython on all modules that were listed via add_cython_module.
@@ -60,7 +60,7 @@ class CythonFilter(LineFilter):
 
 def read_list_from_file(filename):
     """ Reads a semicolon-separated list of file entires """
-    with open(filename) as fileobj:
+    with open(filename, encoding='utf8') as fileobj:
         data = fileobj.read().strip()
 
     return [Path(filename).resolve() for filename in data.split(';')]

@@ -37,10 +37,10 @@ class BlendingTile:
 
         import numpy
 
-        tile_rows = list()
+        tile_rows = []
 
         for picture_row in self.row_data:
-            tile_row_data = list()
+            tile_row_data = []
 
             for alpha_data in picture_row:
 
@@ -110,7 +110,7 @@ class BlendingMode:
                                       data_file.read(self.pxcount * 4))
 
         # list of alpha-mask tiles
-        self.alphamasks = list()
+        self.alphamasks = []
 
         # draw mask tiles for this blending mode
         for _ in range(tile_count):
@@ -118,7 +118,7 @@ class BlendingMode:
                                  data_file.read(self.pxcount))
             self.alphamasks.append(self.get_tile_from_data(pixels))
 
-        bitvalues = list()
+        bitvalues = []
         for i in alpha_masks_raw:
             for b_id in range(7, -1, -1):
                 # bitmask from 0b00000001 to 0b10000000
@@ -126,7 +126,7 @@ class BlendingMode:
                 bitvalues.append(i & bit_mask)
 
         # list of bit-mask tiles
-        self.bitmasks = list()
+        self.bitmasks = []
 
         # TODO: is 32 really hardcoded?
         for i in range(32):
@@ -153,7 +153,7 @@ class BlendingMode:
 
         read_so_far = 0
         max_width = 0
-        tilerows = list()
+        tilerows = []
 
         for y_pos in range(self.row_count):
             if y_pos < half_row_count:
@@ -235,7 +235,7 @@ class Blendomatic(GenieStructure):
 
         blending_mode = Struct("< I %dB" % (tile_count))
 
-        self.blending_modes = list()
+        self.blending_modes = []
 
         for i in range(blending_mode_count):
             header_data = fileobj.read(blending_mode.size)

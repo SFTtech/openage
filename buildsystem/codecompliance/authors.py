@@ -1,4 +1,4 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 """
 Checks whether all authors are properly listed in copying.md.
@@ -33,7 +33,7 @@ def get_author_emails_copying_md():
 
     |     name     |    nick    |    email    |
     """
-    with open("copying.md") as fobj:
+    with open("copying.md", encoding='utf8') as fobj:
         for line in fobj:
             match = re.match("^.*\\|[^|]*\\|[^|]*\\|([^|]*)\\|.*$", line)
             if not match:
@@ -64,7 +64,8 @@ def get_author_emails_git_shortlog(exts):
         invocation.append(f"*{ext}.in")
         invocation.append(f"*{ext}.template")
 
-    output = Popen(invocation, stdout=PIPE).communicate()[0]
+    with Popen(invocation, stdout=PIPE) as invoc:
+        output = invoc.communicate()[0]
 
     for line in output.decode('utf-8', errors='replace').split('\n'):
         match = re.match("^ +[0-9]+\t[^<]*\\<(.*)\\>$", line)

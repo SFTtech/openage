@@ -1,4 +1,4 @@
-# Copyright 2015-2019 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 """
 Tests whether the files listed via add_py_module are consistent with the
@@ -27,7 +27,7 @@ def main():
     openage_dir = os.path.realpath(args.py_module_dir)
 
     listed = set()
-    with open(args.py_file_list) as fileobj:
+    with open(args.py_file_list, encoding='utf8') as fileobj:
         for filename in fileobj.read().strip().split(';'):
             filepath = os.path.realpath(os.path.normpath(filename))
             if filepath.startswith(openage_dir):
