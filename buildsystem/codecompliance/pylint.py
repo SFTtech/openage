@@ -6,8 +6,8 @@ Checks the Python modules with pylint.
 
 from pylint import lint
 
-from .util import findfiles
 from .pystyle import filter_file_list
+from .util import findfiles
 
 
 def find_pyx_modules(dirnames):
@@ -22,7 +22,7 @@ def find_issues(check_files, dirnames):
     invocation = ['--rcfile=etc/pylintrc', '--reports=n']
 
     from multiprocessing import cpu_count
-    invocation.append("--jobs={:d}".format(cpu_count()))
+    invocation.append(f"--jobs={cpu_count():d}")
 
     if check_files is None:
         invocation.extend(dirnames)
@@ -35,10 +35,10 @@ def find_issues(check_files, dirnames):
     try:
         lint.Run(invocation)
     except SystemExit as exc:
-        errorcode = exc.args[0]
-        if errorcode != 0:
+        error_count = exc.args[0]
+        if error_count != 0:
             if check_files is None:
-                msg = "python code is noncompliant: %d" % errorcode
+                msg = f"python code is noncompliant: {error_count:d}"
             else:
                 msg = ("false positives may result from not checking the "
                        "entire codebase")
