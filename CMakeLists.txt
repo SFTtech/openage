@@ -27,7 +27,7 @@ If you have installed all the dependencies that are conveniently listed in
 If it doesn't, consider reporting the issue: https://github.com/SFTtech/openage
 Or ask for help:
   * Matrix: #sfttech:matrix.org
-  * IRC:    #sfttech on freenode.net
+  * IRC:    #sfttech on libera.chat
 ")
 
 
