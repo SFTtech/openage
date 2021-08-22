@@ -1541,7 +1541,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                 r, g, b = 0, 0, 0
                 alpha = 255 - (px_val << 2)
 
-                # Only uneven alphas are used in openage; even alphas are used for commands
+                # Only odd alphas are used in openage; even alphas are used for commands
                 alpha = alpha | 0x01
 
             else:
@@ -1611,7 +1611,7 @@ cdef numpy.ndarray determine_rgba_matrix32(vector[vector[pixel32]] &image_matrix
                 b = px.b
                 alpha = px.a
 
-                # Only uneven alphas are used in openage; even alphas are used for commands
+                # Only odd alphas are used in openage; even alphas are used for commands
                 alpha = alpha | 0x01
 
             elif px_type == color_transparent:
@@ -1624,7 +1624,7 @@ cdef numpy.ndarray determine_rgba_matrix32(vector[vector[pixel32]] &image_matrix
                 r, g, b = 0, 0, 0
                 alpha = 255 - (px.r << 2)
 
-                # Only uneven alphas are used in openage; even alphas are used for commands
+                # Only odd alphas are used in openage; even alphas are used for commands
                 alpha = alpha | 0x01
 
             else:

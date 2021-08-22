@@ -10,9 +10,7 @@
 #include "texture_info.h"
 
 
-namespace openage {
-namespace renderer {
-namespace resources {
+namespace openage::renderer::resources {
 
 /// Stores 2D texture data in a CPU-accessible byte buffer. Provides methods for loading from
 /// and storing onto disk, as well as sending to and receiving from graphics hardware.
@@ -72,6 +70,4 @@ private:
 	std::vector<uint8_t> data;
 };
 
-} // namespace resources
-} // namespace renderer
-} // namespace openage
+} // namespace openage::renderer::resources

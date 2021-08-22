@@ -815,7 +815,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
             elif px_type == color_shadow:
                 r, g, b, alpha = 0, 0, 0, px_index
 
-                # Only uneven alphas are used in openage; even alphas are used for commands
+                # Only odd alphas are used in openage; even alphas are used for commands
                 alpha = alpha | 0x01
 
             else:
