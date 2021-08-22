@@ -1,9 +1,8 @@
 # Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
+# >=3.16 finding numpy with the findpython3 module
 cmake_minimum_required(VERSION 3.16)
 
-# finding numpy with the findpython3 module
-# >3.8 required for CMAKE_CXX_STANDARD for C++17
 
 # main build configuration file
 
@@ -153,6 +152,7 @@ endif()
 
 # option processing is now done.
 
+message("========================================================")
 
 ##################################################
 # include buildsystem features
