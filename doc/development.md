@@ -15,7 +15,7 @@ thus, communication happens mostly over private channels (XMPP, Mumble, maybe ev
 Development workflow
 --------------------
 
-Many contributions originate from discussions on the IRC channel,
+Many contributions originate from discussions on the Matrix/IRC channel,
 or an issue on the [issue tracker](https://github.com/sfttech/openage/issues).
 
 The pull requests are then open for review by everybody.
