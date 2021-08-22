@@ -1,4 +1,4 @@
-# Prerequisite steps for Fedora users (Fedora >= 27)
+# Prerequisite steps for Fedora users (Fedora >= 33)
 
 Run the following command:
 

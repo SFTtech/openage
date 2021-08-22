@@ -27,7 +27,7 @@ Dependencies are needed for:
 
 Dependency list:
 
-    C     gcc >=7 or clang >=5
+    C     gcc >=10 or clang >=10
     CRA   python >=3.6
     C     cython >=0.25
     C     cmake >=3.16
@@ -42,7 +42,7 @@ Dependency list:
     CR    eigen >=3
     CR    freetype2
     CR    fontconfig
-    CR    harfbuzz >=1.0.0
+    CR    harfbuzz
     CR    nyan  (https://github.com/SFTtech/nyan)
     CR  O ncurses
     C     jinja2
@@ -71,16 +71,15 @@ There are some prerequisite steps that need to be performed so *openage* can be
 built successfully. Those steps vary from platform to platform, and are
 described below for some of the most common ones:
 
-- [Ubuntu (>= 18.04)](build_instructions/ubuntu.md)
-- [Debian Unstable](build_instructions/debian.md)
-- [Fedora (>= 27)](build_instructions/fedora.md)
-- [openSUSE 13.2](build_instructions/opensuse_13.2.md)
-- [openSUSE Tumbleweed](build_instructions/opensuse_tumbleweed.md)
-- [Mac OS X 10.14 Mojave](build_instructions/os_x_10.14_mojave.md)
+- [Ubuntu](build_instructions/ubuntu.md)
+- [Debian](build_instructions/debian.md)
+- [Fedora](build_instructions/fedora.md)
+- [openSUSE](build_instructions/opensuse_tumbleweed.md)
+- [macOS](build_instructions/macos.md)
 - [Arch Linux](build_instructions/arch_linux.md)
 - [FreeBSD](build_instructions/freebsd.md)
 - [Gentoo](build_instructions/gentoo.md)
-- [Microsoft Windows 10](build_instructions/windows_msvc.md)
+- [Microsoft Windows](build_instructions/windows_msvc.md)
 
 
 ### nyan installation
@@ -89,24 +88,21 @@ described below for some of the most common ones:
 engine configuration language.
 
 
-* For development, `nyan` can be built and used **without installation** (->
-no "`make install`"). Just clone the repo somewhere and [follow the `nyan`
-build instructions](https://github.com/SFTtech/nyan/blob/master/doc/building.md)).
+* For development, `nyan` can be built and used **without installation**
+(-> no "`make install`", since it can be found using [`cmake` user package registry](https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html#user-package-registry)).
+Just clone the repo somewhere and [follow the `nyan` build instructions](https://github.com/SFTtech/nyan/blob/master/doc/building.md)).
 
 * Alternatively, `openage` can download `nyan` automatically. This is
   activated with `./configure --download-nyan ...` or `cmake
   -DDOWNLOAD_NYAN=YES ...`.
 
-**Only install** `nyan` when packaging it. You don't need to clobber your
-filesystem.
+`cmake` looks for `nyan` in the user package registry (`~/.cmake/packages/nyan/`)
+and the system package registry (`/usr/lib/cmake/nyan/`) for `nyanConfig.cmake`.
 
-`cmake` looks for `nyan` in the user package registry
-(`~/.cmake/packages/nyan/`) and the system package registry
-(`/usr/lib/cmake/nyan/`) for `nyanConfig.cmake`.
-
-If `nyan` cannot be found but you know where it is, you can hint the
-location of the `nyanConfig.cmake` with
-`-Dnyan_DIR=/directory/where/nyanConfig/is/in/`.
+If `nyan` cannot be found but you know where it is, you can hint the location of the `nyanConfig.cmake` with:
+```
+-Dnyan_DIR=/directory/where/nyanConfig/is/in/
+```
 
 
 ## Build procedure
@@ -119,7 +115,7 @@ Make sure you have all the dependencies installed.
 - Make sure you have everything from the [dependency list](#dependencies)
 - Select the compiler and mode: see `./configure --help`
   - Linux etc: `./configure`
-  - macOS:  `./configure --compiler=clang`, `./configure --mode=release --compiler=gcc`
+  - macOS:  `./configure --compiler=clang`
 - `make` generates and builds everything
 - `make run` or `bin/run` launches the game. Try `bin/run --help`!
 - `make test` runs the built-in tests.
@@ -130,6 +126,7 @@ Make sure you have all the dependencies installed.
 Disclaimer: Use your distribution package of `openage` instead!
 Your distro package maintainers do all the nasty work for you,
 and will provide you with updates!
+Also, you don't need to `make install`, you can run `openage` within its git repo.
 
  - Set build mode: `./configure --mode=release --compiler=clang --prefix=/usr/local`
  - `make`
