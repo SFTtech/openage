@@ -407,7 +407,7 @@ template<typename ReturnType, typename ... ArgTypes>
 class PyIfFunc : public Func<ReturnType, ArgTypes ...> {
 public:
 	PyIfFunc() {
-		add_py_if_component(this, [=]() -> bool {
+		add_py_if_component(this, [=, this]() -> bool {
 			try {
 				this->check_fptr();
 				return true;

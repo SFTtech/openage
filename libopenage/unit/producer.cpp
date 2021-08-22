@@ -652,8 +652,8 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 std::vector<game_resource> BuildingProducer::get_accepted_resources() {
 	//TODO use a more general approach instead of hard coded ids
 
-	auto id_in = [=](std::initializer_list<int> ids) {
-		return std::any_of(ids.begin(), ids.end(), [=](int n) { return n == this->id(); });
+	auto id_in = [=, this](std::initializer_list<int> ids) {
+		return std::any_of(ids.begin(), ids.end(), [=, this](int n) { return n == this->id(); });
 	};
 
 	if (this->id() == 109) { // Town center
