@@ -265,7 +265,7 @@ class PXDGenerator:
 
         for token, val in self.tokenize():
             # ignore whitespaces
-            if token == Token.Text and not val.strip():
+            if token in Token.Text and not val.strip():
                 continue
 
             try:
