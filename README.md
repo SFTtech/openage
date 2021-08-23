@@ -31,7 +31,7 @@ Technical foundation
 
 Technology     | Component
 ---------------|----------
-**C++17**      | Engine core
+**C++20**      | Engine core
 **Python3**    | Scripting, media conversion, in-game console, code generation
 **Qt5**        | Graphical user interface
 **Cython**     | Glue code

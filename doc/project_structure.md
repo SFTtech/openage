@@ -77,7 +77,7 @@ integrated into openage.
 
 ### libopenage/
 
-Source files written in **C++17** live here.
+Source files written in **C++20** live here.
 All engine components, data structures and C++ tests are located in this
 folder, each subsystem resides in its own subfolder.
 

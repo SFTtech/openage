@@ -1,17 +1,19 @@
 # Package Instructions
-## Linux Packages [ ![Download](https://api.bintray.com/packages/simonsan/openage-packages/openage-linux-releases/images/download.svg) ](https://bintray.com/simonsan/openage-packages/openage-linux-releases/_latestVersion)
 
-Currently we have only the packages available that you can see at [repology](https://repology.org/project/openage/versions).  We are working on *.deb-packaging and AppImages though, you can follow the progress at [bintray](https://bintray.com/simonsan/openage-packages/openage-linux-releases).
+## Linux Packages
 
-## Windows Packages [ ![Release](https://api.bintray.com/packages/simonsan/openage-packages/openage-windows-release/images/download.svg) ](https://bintray.com/simonsan/openage-packages/openage-windows-release/_latestVersion)
+There's no prebuilt Linux packages yet, but you can follow the build instructions to build it yourself :)
 
-### Instructions
-1. Download and check [signature](https://gist.githubusercontent.com/simonsan/817cdc5ef5cd5f53875bc52bf4cd7a2f/raw/)
-2. Install
-3. Set a new environment variable *AGE2DIR* to the path of your Age2-directory. You could also add that in the *openage.bat*-file, if you like.
-4. Double-click *openage.bat*
-5. Wait for the conversion of the assets
-6. Enjoy
+
+## Windows Packages
+
+Currently we don't generate Windows installers, please also build the project yourself.
+
+
+## macOS Packages
+
+You might have guessed it, but we don't offer prebuilt macOS packages either yet.
+
 
 ## Troubleshooting
 Also consider taking a look into our [Troubleshooting](https://github.com/SFTtech/openage/blob/master/doc/troubleshooting.md) guide. Please give ***feedback for potential problems*** in our [Matrix](https://app.element.io/#/room/#sfttech:matrix.org) channel or on [reddit](https://www.reddit.com/r/openage/).
