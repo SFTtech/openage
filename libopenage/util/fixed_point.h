@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -297,29 +297,7 @@ public:
 	}
 
 	// Comparison operators for comparison with other
-	constexpr bool operator ==(const FixedPoint &o) const {
-		return raw_value == o.raw_value;
-	}
-
-	constexpr bool operator !=(const FixedPoint &o) const {
-		return raw_value != o.raw_value;
-	}
-
-	constexpr bool operator <(const FixedPoint &o) const {
-		return raw_value < o.raw_value;
-	}
-
-	constexpr bool operator >(const FixedPoint &o) const {
-		return raw_value > o.raw_value;
-	}
-
-	constexpr bool operator <=(const FixedPoint &o) const {
-		return raw_value <= o.raw_value;
-	}
-
-	constexpr bool operator >=(const FixedPoint &o) const {
-		return raw_value >= o.raw_value;
-	}
+	constexpr auto operator <=> (const FixedPoint &o) const = default;
 
 	// Unary operators
 	constexpr FixedPoint operator +() const {
