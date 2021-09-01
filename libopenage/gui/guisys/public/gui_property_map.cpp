@@ -1,10 +1,11 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #include "gui_property_map.h"
 
 #include <algorithm>
 #include <typeinfo>
 #include <cassert>
+#include <stdexcept>
 
 #include <QVariant>
 #include <QRegExp>
