@@ -47,7 +47,8 @@ find_library(FONTCONFIG_LIB fontconfig)
 
 find_package(Freetype REQUIRED)
 find_package(PNG REQUIRED)
-find_package(SDL2 REQUIRED)
+find_package(SDL2 CONFIG REQUIRED)
+target_compile_definitions(SDL2::SDL2 INTERFACE SDL_MAIN_HANDLED)
 find_package(SDL2Image REQUIRED)
 find_package(Opusfile REQUIRED)
 find_package(Epoxy REQUIRED)
@@ -263,7 +264,6 @@ target_include_directories(libopenage
 	${EPOXY_INCLUDE_DIRS}
 	${OPUS_INCLUDE_DIRS}
 	${PNG_INCLUDE_DIRS}
-	${SDL2_INCLUDE_DIR}
 	${SDL2IMAGE_INCLUDE_DIRS}
 	${HarfBuzz_INCLUDE_DIRS}
 	${QTPLATFORM_INCLUDE_DIRS}
@@ -289,7 +289,7 @@ target_link_libraries(libopenage
 		${EPOXY_LIBRARIES}
 		${MATH_LIB}
 		${SDL2IMAGE_LIBRARIES}
-		${SDL2_LIBRARY}
+		SDL2::SDL2
 		${UTIL_LIB}
 		${HarfBuzz_LIBRARIES}
 		${RT_LIB}
