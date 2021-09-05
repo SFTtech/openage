@@ -1,0 +1,55 @@
+name: Ubuntu 21.04 CI
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build-devenv:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: sudo DOCKER_BUILDKIT=1 docker build ./docker/devenv --file ./docker/devenv/Dockerfile.ubuntu.2104 --tag openage-devenv:latest
+      shell: bash
+    - name: Save the Docker image
+      run: |
+        mkdir -p /tmp/staging
+        sudo docker save openage-devenv:latest | gzip > /tmp/staging/devenv.tar.gz
+      shell: bash
+    - name: Publish the Docker image
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: devenv-image-compressed.tar.gz
+        path: '/tmp/staging/devenv.tar.gz'
+        if-no-files-found: error
+        retention-days: 30
+
+  build:
+    runs-on: ubuntu-20.04
+    needs: build-devenv
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create tmp path
+      run: mkdir -p /tmp/image
+      shell: bash
+    - name: Download devenv image
+      uses: actions/download-artifact@v2
+      with:
+        name: devenv-image-compressed.tar.gz
+        path: '/tmp/image'
+    - name: Load Docker image
+      run: sudo docker load --input /tmp/image/devenv.tar.gz
+    - name: Build openage
+      run: |
+        sudo docker run --rm -v "$(pwd)":/mnt/openage -w /mnt/openage openage-devenv:latest \
+          bash -c 'mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=$(which gcc-11) -DCMAKE_CXX_COMPILER=$(which g++-11) -DCMAKE_CXX_FLAGS='' -DCMAKE_EXE_LINKER_FLAGS='' -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_MODULE_LINKER_FLAGS='' -DCMAKE_SHARED_LINKER_FLAGS='' -DDOWNLOAD_NYAN=YES -DCXX_OPTIMIZATION_LEVEL=auto -DCXX_SANITIZE_FATAL=False -DCXX_SANITIZE_MODE=none -DWANT_BACKTRACE=if_available -DWANT_GPERFTOOLS_PROFILER=if_available -DWANT_GPERFTOOLS_TCMALLOC=False -DWANT_INOTIFY=if_available -DWANT_NCURSES=if_available -DWANT_OPENGL=if_available -DWANT_VULKAN=if_available -G Ninja .. && cmake --build . --parallel $(nproc) -- -k1'
+    - name: Compress build artifacts
+      run: |
+        mkdir -p /tmp/openage
+        tar -czvf /tmp/openage/openage-build.tar.gz ./build
+    - name: Publish build artifacts
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: openage-build.tar.gz
+        path: '/tmp/openage/openage-build.tar.gz'
+        if-no-files-found: error
+        retention-days: 30
