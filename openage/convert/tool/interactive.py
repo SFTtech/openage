@@ -76,6 +76,32 @@ def interactive_browser(cfg, srcdir=None):
                 filename
             )
 
+    def save_smx(path, target, palette=None):
+        """
+        save a smx as png.
+        """
+        from ..entity_object.export.texture import Texture
+        from ..value_object.read.media.smx import SMX
+        from ..service.read.palette import get_palettes
+
+        if not palette:
+            palette = get_palettes(data, game_version)
+
+        with path.open("rb") as smxfile:
+
+            from ..processor.export.texture_merge import merge_frames
+
+            tex = Texture(SMX(smxfile.read()), palette)
+
+            merge_frames(tex)
+
+            out_path, filename = os.path.split(target)
+            MediaExporter.save_png(
+                tex,
+                Directory(out_path).root,
+                filename
+            )
+
     import code
     from pprint import pprint
 
@@ -93,6 +119,7 @@ def interactive_browser(cfg, srcdir=None):
                 "* version detection:   pprint(game_versions)\n"
                 "* list contents:       pprint(list(data['graphics'].list()))\n"
                 "* dump data:           save(data['file/path'], '/tmp/outputfile')\n"
-                "* save a slp as png:   save_slp(data['dir/123.slp'], '/tmp/pic.png')\n"),
+                "* save a slp as png:   save_slp(data['dir/123.slp'], '/tmp/pic.png')\n"
+                "* save a smx as png:   save_smx(data['dir/123.smx'], '/tmp/pic.png')\n"),
         local=locals()
     )
