@@ -7,7 +7,8 @@ Detects the base version of the game and installed expansions.
 
 import toml
 
-from ....log import info, warn
+from ....log import info, warn, dbg
+from ....util.hash import hash_file
 from ...value_object.init.game_version import GameEdition, GameExpansion, Support
 
 
@@ -16,7 +17,7 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
     Determine what editions and expansions of a game are installed in srcdir
     by iterating through all versions the converter knows about.
     """
-    edition = None
+    best_edition = None
     expansions = []
 
     for game_edition in avail_game_eds:
@@ -30,6 +31,18 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
                 required_file = srcdir.joinpath(required_path)
 
                 if required_file.is_file():
+                    hash = hash_file(required_file,
+                                     hash_algo=detection_hints.hash_algo)
+
+                    if hash not in detection_hints.get_hashes():
+                        dbg(f"Found required file {required_file.resolve_native_path()} "
+                            "but could not determine version number")
+
+                    else:
+                        version_no = detection_hints.get_hashes()[hash]
+                        dbg(f"Found required file {required_file.resolve_native_path()} "
+                            f"for version {version_no}")
+
                     found_file = True
                     break
 
@@ -38,29 +51,35 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
 
         else:
             # All files were found. Now check if the version is supported.
-            edition = game_edition
+            if game_edition.support == Support.NOPE:
+                dbg(f"Found unsupported game edition: {game_edition}")
 
-            if edition.support == Support.NOPE:
-                info(f"Found unsupported game edition: {edition}")
+                if best_edition is None:
+                    best_edition = game_edition
+
                 # Continue to look for supported editions
                 continue
 
-            elif edition.support == Support.BREAKS:
-                info(f"Found broken game edition: {edition}")
+            elif game_edition.support == Support.BREAKS:
+                dbg(f"Found broken game edition: {game_edition}")
+
+                if best_edition is None or best_edition.support == Support.NOPE:
+                    best_edition = game_edition
+
                 # Continue to look for supported editions
                 continue
 
-            # We found a supported version!
+            # We found a fully supported edition!
+            # No need to check for better editions
+            best_edition = game_edition
             break
 
     else:
-        warn("No valid game version(s) could not be detected "
-             f"in {srcdir.resolve()}")
+        # Either no version or an unsupported or broken was found
+        # Return the last detected edition
+        return best_edition, []
 
-        # This will clear found unsupported game editions
-        return None, []
-
-    for game_expansion in edition.expansions:
+    for game_expansion in best_edition.expansions:
         for existing_game_expansion in avail_game_exps:
             if game_expansion == existing_game_expansion.game_id:
                 game_expansion = existing_game_expansion
@@ -88,13 +107,13 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
                 continue
 
             elif game_expansion.support == Support.BREAKS:
-                info(f"Found broken game expansion: {edition}")
+                info(f"Found broken game expansion: {best_edition}")
                 # Continue to look for supported expansions
                 continue
 
             expansions.append(game_expansion)
 
-    return edition, expansions
+    return best_edition, expansions
 
 
 def create_version_objects(srcdir):
@@ -163,6 +182,8 @@ def create_game_obj(game_info, aux_path, expansion=False):
 
     file_version = game_hashes.pop("file_version")
     hash_algo = game_hashes.pop("hash_algo")
+    if hash_algo != "SHA3-256":
+        warn(f"{game_hash_path}: Unrecognized hash algorithm: {hash_algo}")
 
     game_version_info = []
     for item in game_hashes.items():
@@ -180,7 +201,7 @@ def create_game_obj(game_info, aux_path, expansion=False):
 
         else:
             raise Exception(
-                f"{game_hash_path.resolve()}: Unrecognized file version: '{file_version}'")
+                f"{game_hash_path}: Unrecognized file version: '{file_version}'")
 
     # Check if there is a media cache file and save the path if it exists
     if aux_path["media_cache.toml"].is_file():

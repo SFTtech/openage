@@ -10,6 +10,7 @@ class GameFileVersion:
     Associates a file hash with a specific version number.
     This can be used to pinpoint the exact version of a game.
     """
+    hash_algo = "SHA3-256"
 
     def __init__(self, filepaths, hashes):
         """

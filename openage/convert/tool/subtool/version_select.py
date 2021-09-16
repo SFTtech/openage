@@ -13,11 +13,15 @@ def get_game_version(srcdir, avail_game_eds, avail_game_exps):
     """
     Mount the input folders for conversion.
     """
+    info(f"Looking for compatible games to convert...")
     game_version = iterate_game_versions(
         srcdir, avail_game_eds, avail_game_exps)
 
     no_support = False
     if not game_version[0]:
+        warn("No valid game version(s) could not be detected "
+             f"in {srcdir.resolve_native_path()}")
+
         # no supported version was found
         no_support = True
 
