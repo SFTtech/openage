@@ -27,7 +27,7 @@ class GameBase:
     Common base class for GameEdition and GameExpansion
     """
 
-    def __init__(self, game_id, support, game_hashes, media_paths,
+    def __init__(self, game_id, support, game_version_info, media_paths,
                  modpacks, **flags):
         """
         :param game_id: Unique id for the given game.
@@ -37,10 +37,9 @@ class GameBase:
         :type support: str
         :param modpacks: List of modpacks.
         :type modpacks: list
-        :param game_hashes: A list of tuples of GameFileVersion parameters
-        :type game_hashes: list[tuple]
-        :param media_paths: A list of tuples of media types and their
-                            paths
+        :param game_version_info: Versioning information about the game.
+        :type game_version_info: list[tuple]
+        :param media_paths: Media types and their paths
         :type media_paths: list[tuple]
         :param flags: Anything else specific to this version which is useful
                       for the converter.
@@ -57,23 +56,26 @@ class GameBase:
         if "media_cache" in flags.keys():
             self.media_cache = flags["media_cache"]
 
-        for path, hash_map in game_hashes:
+        for path, hash_map in game_version_info:
             self.add_game_file_versions(path, hash_map)
+
         for media_type, paths in media_paths:
             self.add_media_paths(media_type, paths)
 
-    def add_game_file_versions(self, filepath, hashes):
+    def add_game_file_versions(self, filepaths, hashes):
         """
         Add a GameFileVersion object for files which are unique
         to this version of the game.
 
-        :param filepath: Path of the specific file.
-        :type filepath: str
-        :param hashes: Hash value mapped to the file version.
+        :param filepaths: Paths to the specified file. Only one of the paths
+                          needs to exist. The other paths are interpreted as
+                          alternatives, e.g. if the game is released on different
+                          platforms with different names for the same file.
+        :type filepaths: list
+        :param hashes: Hash value mapped to a file version.
         :type hashes: dict
         """
-        game_file_version_obj = GameFileVersion(filepath, hashes)
-        self.game_file_versions.append(game_file_version_obj)
+        self.game_file_versions.append(GameFileVersion(filepaths, hashes))
 
     def add_media_paths(self, media_type, paths):
         """

@@ -7,7 +7,7 @@ Detects the base version of the game and installed expansions.
 
 import toml
 
-from ....log import info
+from ....log import info, warn
 from ...value_object.init.game_version import GameEdition, GameExpansion, Support
 
 
@@ -20,23 +20,43 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
     expansions = []
 
     for game_edition in avail_game_eds:
+        # Check for files that we know exist in the game's folder
         for detection_hints in game_edition.game_file_versions:
-            required_path = detection_hints.get_path()
-            required_file = srcdir.joinpath(required_path)
+            check_paths = detection_hints.get_paths()
 
-            if not required_file.is_file():
+            # Check if any of the known paths for the file exists
+            found_file = False
+            for required_path in check_paths:
+                required_file = srcdir.joinpath(required_path)
+
+                if required_file.is_file():
+                    found_file = True
+                    break
+
+            if not found_file:
                 break
 
         else:
+            # All files were found. Now check if the version is supported.
             edition = game_edition
 
             if edition.support == Support.NOPE:
                 info(f"Found unsupported game edition: {edition}")
+                # Continue to look for supported editions
                 continue
 
+            elif edition.support == Support.BREAKS:
+                info(f"Found broken game edition: {edition}")
+                # Continue to look for supported editions
+                continue
+
+            # We found a supported version!
             break
 
     else:
+        warn("No valid game version(s) could not be detected "
+             f"in {srcdir.resolve()}")
+
         # This will clear found unsupported game editions
         return None, []
 
@@ -45,16 +65,31 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
             if game_expansion == existing_game_expansion.game_id:
                 game_expansion = existing_game_expansion
 
+        # Check for files that we know exist in the game expansion's folder
         for detection_hints in game_expansion.game_file_versions:
-            required_path = detection_hints.get_path()
-            required_file = srcdir.joinpath(required_path)
+            check_paths = detection_hints.get_paths()
 
-            if not required_file.is_file():
+            # Check if any of the known paths for the file exists
+            found_file = False
+            for required_path in check_paths:
+                required_file = srcdir.joinpath(required_path)
+
+                if required_file.is_file():
+                    found_file = True
+                    break
+
+            if not found_file:
                 break
 
         else:
             if game_expansion.support == Support.NOPE:
                 info(f"Found unsupported game expansion: {game_expansion}")
+                # Continue to look for supported expansions
+                continue
+
+            elif game_expansion.support == Support.BREAKS:
+                info(f"Found broken game expansion: {edition}")
+                # Continue to look for supported expansions
                 continue
 
             expansions.append(game_expansion)
@@ -67,7 +102,6 @@ def create_version_objects(srcdir):
     Create GameEdition and GameExpansion objects from auxiliary
     config files.
     """
-
     game_expansion_list = []
     game_edition_list = []
 
@@ -99,46 +133,62 @@ def create_version_objects(srcdir):
     return game_edition_list, game_expansion_list
 
 
-def create_game_obj(game_dic, aux_path, expansion=False):
+def create_game_obj(game_info, aux_path, expansion=False):
     """
-    Create a GameEdition or GameExpansion object with the help of
-    game_dic map and its version hash file.
+    Create a GameEdition or GameExpansion object from the contents
+    of the game_info dictionary and its version hash file.
     Use expansion parameter to decide if a GameEdition object
     is needed to be created or GameExpansion.
     """
     # initialize necessary parameters
-    game_name = game_dic['name']
-    game_id = game_dic['game_edition_id']
-    support = game_dic['support']
-    modpacks = game_dic['targetmod']
+    game_name = game_info['name']
+    game_id = game_info['game_edition_id']
+    support = game_info['support']
+    modpacks = game_info['targetmod']
     if not expansion:
-        expansions = game_dic['expansions']
+        expansions = game_info['expansions']
 
     flags = {}
 
     # add mediapaths for the game
-    game_mediapaths_list = []
-    for media_type in game_dic['mediapaths']:
-        game_mediapaths_list.append((media_type, game_dic['mediapaths'][media_type]))
+    game_mediapaths = []
+    for media_type in game_info['mediapaths']:
+        game_mediapaths.append(
+            (media_type, game_info['mediapaths'][media_type]))
 
     # add version hashes from the auxiliary file specific for the game
     game_hash_path = aux_path["version_hashes.toml"]
     with game_hash_path.open() as game_hash_toml:
-        game_hash_dic = toml.loads(game_hash_toml.read())
+        game_hashes = toml.loads(game_hash_toml.read())
 
-    game_hash_list = []
-    for item in game_hash_dic.items():
-        if item[0] in ['file_version', 'hash_algo']:
-            continue
-        game_hash_list.append((item[1]['path'], item[1]['map']))
+    file_version = game_hashes.pop("file_version")
+    hash_algo = game_hashes.pop("hash_algo")
+
+    game_version_info = []
+    for item in game_hashes.items():
+        if file_version == "1.0":
+            game_version_info.append((
+                [item[1]['path']],
+                item[1]['map']
+            ))
+
+        elif file_version == "2.0":
+            game_version_info.append((
+                item[1]['paths'],
+                item[1]['map']
+            ))
+
+        else:
+            raise Exception(
+                f"{game_hash_path.resolve()}: Unrecognized file version: '{file_version}'")
 
     # Check if there is a media cache file and save the path if it exists
     if aux_path["media_cache.toml"].is_file():
         flags["media_cache"] = aux_path["media_cache.toml"]
 
     if expansion:
-        return GameExpansion(game_name, game_id, support, game_hash_list,
-                             game_mediapaths_list, modpacks, **flags)
+        return GameExpansion(game_name, game_id, support, game_version_info,
+                             game_mediapaths, modpacks, **flags)
 
-    return GameEdition(game_name, game_id, support, game_hash_list,
-                       game_mediapaths_list, modpacks, expansions, **flags)
+    return GameEdition(game_name, game_id, support, game_version_info,
+                       game_mediapaths, modpacks, expansions, **flags)
