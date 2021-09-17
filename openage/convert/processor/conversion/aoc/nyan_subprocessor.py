@@ -1018,10 +1018,10 @@ class AoCNyanSubprocessor:
         # =======================================================================
         if terrain_group.has_subterrain():
             subterrain = terrain_group.get_subterrain()
-            slp_id = subterrain["slp_id"].get_value()
+            terrain_id = subterrain.get_id()
 
         else:
-            slp_id = terrain_group.get_terrain()["slp_id"].get_value()
+            terrain_id = terrain_group.get_id()
 
         # Create animation object
         graphic_name = f"{terrain_name}.TerrainTexture"
@@ -1031,11 +1031,11 @@ class AoCNyanSubprocessor:
         graphic_location = ForwardRef(terrain_group, terrain_name)
         graphic_raw_api_object.set_location(graphic_location)
 
-        if slp_id in dataset.combined_terrains.keys():
-            terrain_graphic = dataset.combined_terrains[slp_id]
+        if terrain_id in dataset.combined_terrains.keys():
+            terrain_graphic = dataset.combined_terrains[terrain_id]
 
         else:
-            terrain_graphic = CombinedTerrain(slp_id,
+            terrain_graphic = CombinedTerrain(terrain_id,
                                               f"texture_{terrain_lookup_dict[terrain_index][2]}",
                                               dataset)
             dataset.combined_terrains.update({terrain_graphic.get_id(): terrain_graphic})

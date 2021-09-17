@@ -98,7 +98,7 @@ class AoCMediaSubprocessor:
 
         combined_terrains = full_data_set.combined_terrains.values()
         for texture in combined_terrains:
-            slp_id = texture.get_id()
+            slp_id = texture.get_terrain()["slp_id"].get_value()
 
             targetdir = texture.resolve_graphics_location()
             source_filename = f"{str(slp_id)}.slp"

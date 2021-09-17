@@ -12,14 +12,14 @@ class CombinedTerrain:
     This will become a spritesheet texture with a terrain file.
     """
 
-    __slots__ = ('slp_id', 'filename', 'data', 'metadata', '_refs')
+    __slots__ = ('terrain_id', 'filename', 'data', 'metadata', '_refs')
 
-    def __init__(self, slp_id, filename, full_data_set):
+    def __init__(self, terrain_id, filename, full_data_set):
         """
-        Creates a new CombinedSprite instance.
+        Creates a new CombinedTerrain instance.
 
-        :param slp_id: The id of the SLP.
-        :type slp_id: int
+        :param terrain_id: The index of the terrain that references the sprite.
+        :type terrain_id: int
         :param filename: Name of the terrain and definition file.
         :type filename: str
         :param full_data_set: GenieObjectContainer instance that
@@ -28,7 +28,7 @@ class CombinedTerrain:
         :type full_data_set: class: ...dataformat.converter_object.ConverterObjectContainer
         """
 
-        self.slp_id = slp_id
+        self.terrain_id = terrain_id
         self.filename = filename
         self.data = full_data_set
 
@@ -53,15 +53,21 @@ class CombinedTerrain:
 
     def get_filename(self):
         """
-        Returns the desired filename of the terrain.
+        Returns the destination filename of the terrain.
         """
         return self.filename
 
+    def get_terrain(self):
+        """
+        Returns the terrain referenced by this terrain sprite.
+        """
+        return self.data.genie_terrains[self.terrain_id]
+
     def get_id(self):
         """
-        Returns the SLP id of the terrain.
+        Returns the terrain id of the terrain.
         """
-        return self.slp_id
+        return self.terrain_id
 
     def get_relative_terrain_location(self):
         """
@@ -96,4 +102,4 @@ class CombinedTerrain:
         return None
 
     def __repr__(self):
-        return f"CombinedTerrain<{self.slp_id}>"
+        return f"CombinedTerrain<{self.terrain_id}>"

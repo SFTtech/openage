@@ -768,8 +768,7 @@ class DE2NyanSubprocessor:
         # =======================================================================
         # Graphic
         # =======================================================================
-        # DE2' SLP IDs are irrelevant, so we use the filename as ID
-        texture_id = terrain["filename"].get_value()
+        texture_id = terrain.get_id()
 
         # Create animation object
         graphic_name = f"{terrain_name}.TerrainTexture"
