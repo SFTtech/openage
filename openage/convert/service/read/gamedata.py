@@ -31,7 +31,7 @@ def get_gamespec(srcdir, game_version, dont_pickle):
         raise Exception("No service found for reading data file of version %s"
                         % game_version[0].game_id)
 
-    cache_file = os.path.join(gettempdir(), f"{filepath.name}.pickle")
+    cache_file = os.path.join(gettempdir(), f"{game_version[0].game_id}_{filepath.name}.pickle")
 
     with filepath.open('rb') as empiresdat_file:
         gamespec = load_gamespec(empiresdat_file,
