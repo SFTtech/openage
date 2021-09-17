@@ -225,7 +225,7 @@ def read_de1_language_file(srcdir, language_file):
             continue
 
         # Brilliant idea to split by command AND space!!
-        string_id, string = re.split(r"(,|\s)", line, maxsplit=1)
+        string_id, string = re.split(r",|\s", line, maxsplit=1)
 
         # strings that were added in the DE2 edition release have
         # UPPERCASE_STRINGS as names, instead of the numeric ID stuff
