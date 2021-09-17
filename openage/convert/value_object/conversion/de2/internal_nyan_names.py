@@ -30,6 +30,11 @@ UNIT_LINE_LOOKUPS = {
     1660: ("DSerjeant", "dserjeant"),           # Donjon Serjeant
     # 1663: ("FlemishMilitia", "flemish_militia"),
     1699: ("FlemishMilitia", "flemish_militia"),
+
+    # DOTD
+    1701: ("Obuch", "obuch"),
+    1704: ("HussiteWagon", "hussite_wagon"),
+    1709: ("Obuch", "obuch"),
 }
 
 # key: head unit id; value: (nyan object name, filename prefix)
@@ -39,6 +44,9 @@ BUILDING_LINE_LOOKUPS = {
 
     # LOTW
     1665: ("Donjon", "donjon"),
+
+    # DOTD
+    1734: ("Folwark", "folwark"),
 }
 
 # key: (head) unit id; value: (nyan object name, filename prefix)
@@ -78,6 +86,17 @@ TECH_GROUP_LOOKUPS = {
     755: ("FlemishRevolution", "flemish_revolution"),
     756: ("FirstCrusade", "first_crusade"),
     757: ("Scutage", "scutage"),
+
+    # DOTD
+    779: ("EliteObuch", "elite_obuch"),
+    781: ("EliteHussiteWagon", "elite_hussite_wagon"),
+    782: ("SzlachtaPriviledges", "slzachte_priviledges"),
+    783: ("LechiticLegacy", "lechitic_legacy"),
+    784: ("WagenburgTactics", "wagenburg_tactics"),
+    785: ("HussiteReforms", "hussite_reforms"),
+    786: ("WingedHussar", "winged_hussar"),
+    787: ("Houfnice", "houfnice"),
+    793: ("Folwark", "folwark"),
 }
 
 # key: civ index; value: (nyan object name, filename prefix)
@@ -91,6 +110,10 @@ CIV_GROUP_LOOKUPS = {
     # LOTW
     36: ("Burgundians", "burgundians"),
     37: ("Sicilians", "sicilians"),
+
+    # DOTD
+    38: ("Poles", "poles"),
+    39: ("Bohemians", "bohemians"),
 }
 
 # key: civ index; value: (civ ids, nyan object name, filename prefix)
@@ -98,6 +121,7 @@ CIV_GROUP_LOOKUPS = {
 GRAPHICS_SET_LOOKUPS = {
     0: ((0, 1, 2, 13, 14, 36), "WesternEuropean", "western_european"),
     4: ((7, 37), "Byzantine", "byzantine"),
+    8: ((22, 23, 32, 35, 38, 39), "EasternEuropean", "eastern_european"),
     11: ((33, 34), "CentralAsian", "central_asian"),
 }
 
@@ -118,4 +142,6 @@ TERRAIN_TYPE_LOOKUPS = {
 ARMOR_CLASS_LOOKUPS = {
     0: "Wonder",
     31: "AntiLetis",
+    36: "DE2Hero",
+    37: "HussiteWagon",
 }
