@@ -356,6 +356,72 @@ class DE2UpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
+    def folwark_collect_upgrade(converter_group, value, operator, team=False):
+        """
+        Creates a patch for the folwark collect amount modify effect (ID: 237).
+
+        TODO: Move into AoC processor
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def folwark_flag_upgrade(converter_group, value, operator, team=False):
+        """
+        Creates a patch for the folwark flag effect (ID: 238).
+
+        TODO: Move into AoC processor
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def folwark_mill_id_upgrade(converter_group, value, operator, team=False):
+        """
+        Creates a patch for the folwark mill ID set effect (ID: 239).
+
+        TODO: Move into AoC processor
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
     def free_kipchaks_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the current gold amount modify effect (ID: 214).
@@ -421,6 +487,26 @@ class DE2UpgradeResourceSubprocessor:
     def sheep_food_amount_upgrade(converter_group, value, operator, team=False):
         """
         Creates a patch for the sheep food amount modify effect (ID: 216).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def stone_gold_gen_upgrade(converter_group, value, operator, team=False):
+        """
+        Creates a patch for the polish stone gold generation effect (ID: 241).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup

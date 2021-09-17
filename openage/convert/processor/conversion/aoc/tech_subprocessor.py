@@ -8,6 +8,7 @@
 """
 Creates patches for technologies.
 """
+from openage.log import warn
 from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup,\
     CivTeamBonus, CivBonus
@@ -295,7 +296,13 @@ class AoCTechSubprocessor:
 
         line = dataset.unit_ref[upgrade_source_id]
         upgrade_source_pos = line.get_unit_position(upgrade_source_id)
-        upgrade_target_pos = line.get_unit_position(upgrade_target_id)
+        try:
+            upgrade_target_pos = line.get_unit_position(upgrade_target_id)
+
+        except KeyError:
+            # TODO: Implement branching line upgrades
+            warn(f"Could not create upgrade from unit {upgrade_source_id} to {upgrade_target_id}")
+            return patches
 
         if isinstance(line, GenieBuildingLineGroup):
             # Building upgrades always reference the head unit

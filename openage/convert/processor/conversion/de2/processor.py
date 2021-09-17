@@ -5,6 +5,7 @@
 Convert data from DE2 to openage formats.
 """
 
+from openage.convert.value_object.read.value_members import ArrayMember, MemberTypes
 import openage.convert.value_object.conversion.aoc.internal_nyan_names as aoc_internal
 import openage.convert.value_object.conversion.de2.internal_nyan_names as de2_internal
 
@@ -12,7 +13,7 @@ from .....log import info
 from .....util.ordered_set import OrderedSet
 from ....entity_object.conversion.aoc.genie_graphic import GenieGraphic
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-from ....entity_object.conversion.aoc.genie_unit import GenieUnitObject, GenieAmbientGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, GenieUnitLineGroup, GenieUnitObject, GenieAmbientGroup,\
     GenieVariantGroup
 from ....service.debug_info import debug_converter_objects,\
     debug_converter_object_groups
@@ -110,6 +111,7 @@ class DE2Processor:
 
         AoCProcessor.create_unit_lines(full_data_set)
         AoCProcessor.create_extra_unit_lines(full_data_set)
+        cls.create_extra_building_lines(full_data_set)
         AoCProcessor.create_building_lines(full_data_set)
         AoCProcessor.create_villager_groups(full_data_set)
         cls.create_ambient_groups(full_data_set)
@@ -192,8 +194,19 @@ class DE2Processor:
 
             # Commands
             if "unit_commands" not in unit_members.keys():
-                unit_commands = raw_unit_headers[unit_id]["unit_commands"]
-                unit.add_member(unit_commands)
+                # Only ActionUnits with type >= 40 should have commands
+                unit_type = raw_unit["unit_type"].get_value()
+                if unit_type >= 40:
+                    unit_commands = raw_unit_headers[unit_id]["unit_commands"]
+                    unit.add_member(unit_commands)
+
+                else:
+                    # Create empty member if no headers are present
+                    unit_commands = ArrayMember("unit_commands",
+                                                MemberTypes.CONTAINER_MEMBER,
+                                                members=[])
+                    unit.add_member(unit_commands)
+
 
     @staticmethod
     def extract_genie_graphics(gamespec, full_data_set):
@@ -267,3 +280,22 @@ class DE2Processor:
             for variant_id in variant[2]:
                 variant_group.add_unit(full_data_set.genie_units[variant_id])
                 full_data_set.unit_ref.update({variant_id: variant_group})
+
+    @staticmethod
+    def create_extra_building_lines(full_data_set):
+        """
+        Create additional units that are not in the building connections.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        """
+        extra_units = (1734,)  # Folwark
+
+        for unit_id in extra_units:
+            building_line = GenieBuildingLineGroup(unit_id, full_data_set)
+            building_line.add_unit(full_data_set.genie_units[unit_id])
+            full_data_set.building_lines.update({building_line.get_id(): building_line})
+            full_data_set.unit_ref.update({unit_id: building_line})
+
