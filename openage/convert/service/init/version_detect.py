@@ -31,15 +31,15 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
                 required_file = srcdir.joinpath(required_path)
 
                 if required_file.is_file():
-                    hash = hash_file(required_file,
-                                     hash_algo=detection_hints.hash_algo)
+                    hash_val = hash_file(required_file,
+                                         hash_algo=detection_hints.hash_algo)
 
-                    if hash not in detection_hints.get_hashes():
+                    if hash_val not in detection_hints.get_hashes():
                         dbg(f"Found required file {required_file.resolve_native_path()} "
                             "but could not determine version number")
 
                     else:
-                        version_no = detection_hints.get_hashes()[hash]
+                        version_no = detection_hints.get_hashes()[hash_val]
                         dbg(f"Found required file {required_file.resolve_native_path()} "
                             f"for version {version_no}")
 
@@ -60,7 +60,7 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
                 # Continue to look for supported editions
                 continue
 
-            elif game_edition.support == Support.BREAKS:
+            if game_edition.support == Support.BREAKS:
                 dbg(f"Found broken game edition: {game_edition}")
 
                 if best_edition is None or best_edition.support == Support.NOPE:
@@ -106,7 +106,7 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
                 # Continue to look for supported expansions
                 continue
 
-            elif game_expansion.support == Support.BREAKS:
+            if game_expansion.support == Support.BREAKS:
                 info(f"Found broken game expansion: {best_edition}")
                 # Continue to look for supported expansions
                 continue

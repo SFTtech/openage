@@ -13,7 +13,7 @@ def get_game_version(srcdir, avail_game_eds, avail_game_exps):
     """
     Mount the input folders for conversion.
     """
-    info(f"Looking for compatible games to convert...")
+    info("Looking for compatible games to convert...")
     game_version = iterate_game_versions(
         srcdir, avail_game_eds, avail_game_exps)
 

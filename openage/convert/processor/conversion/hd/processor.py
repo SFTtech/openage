@@ -1,4 +1,6 @@
 # Copyright 2021-2021 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-few-public-methods
 
 """
 Convert data from AoE2:HD to openage formats.

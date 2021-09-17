@@ -1,6 +1,6 @@
 # Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
-# pylint: disable=too-many-locals,too-few-public-methods
+# pylint: disable=too-many-locals
 """
 Convert media information to metadata definitions and export
 requests. Subroutine of the main DE2 processor.

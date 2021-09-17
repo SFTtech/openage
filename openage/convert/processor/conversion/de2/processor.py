@@ -13,7 +13,7 @@ from .....log import info
 from .....util.ordered_set import OrderedSet
 from ....entity_object.conversion.aoc.genie_graphic import GenieGraphic
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, GenieUnitLineGroup, GenieUnitObject, GenieAmbientGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, GenieUnitObject, GenieAmbientGroup,\
     GenieVariantGroup
 from ....service.debug_info import debug_converter_objects,\
     debug_converter_object_groups
@@ -207,7 +207,6 @@ class DE2Processor:
                                                 members=[])
                     unit.add_member(unit_commands)
 
-
     @staticmethod
     def extract_genie_graphics(gamespec, full_data_set):
         """
@@ -298,4 +297,3 @@ class DE2Processor:
             building_line.add_unit(full_data_set.genie_units[unit_id])
             full_data_set.building_lines.update({building_line.get_id(): building_line})
             full_data_set.unit_ref.update({unit_id: building_line})
-
