@@ -1,9 +1,10 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2021-2021 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals
+
 """
 Convert media information to metadata definitions and export
-requests. Subroutine of the main DE2 processor.
+requests. Subroutine of the main HD processor.
 """
 from ....entity_object.export.formats.sprite_metadata import LayerMode
 from ....entity_object.export.media_export_request import MediaExportRequest
@@ -11,9 +12,9 @@ from ....entity_object.export.metadata_export import SpriteMetadataExport
 from ....value_object.read.media_types import MediaType
 
 
-class DE2MediaSubprocessor:
+class HDMediaSubprocessor:
     """
-    Creates the exports requests for media files from DE2.
+    Creates the exports requests for media files from HD Edition.
     """
 
     @classmethod
@@ -47,7 +48,7 @@ class DE2MediaSubprocessor:
                     continue
 
                 targetdir = graphic_targetdirs[graphic_id]
-                source_filename = f"{str(graphic['filename'].get_value())}.smx"
+                source_filename = f"{str(graphic['slp_id'].get_value())}.slp"
                 target_filename = "%s_%s.png" % (sprite.get_filename(),
                                                  str(graphic["slp_id"].get_value()))
 
@@ -89,16 +90,43 @@ class DE2MediaSubprocessor:
                                                       angle_count,
                                                       mirror_mode)
 
-                # Notify metadata export about SMX metadata when the file is exported
+                # Notify metadata export about SLP metadata when the file is exported
                 export_request.add_observer(metadata_export)
 
                 handled_graphic_ids.add(graphic_id)
 
-        # TODO: Terrain exports (DDS files)
+        combined_terrains = full_data_set.combined_terrains.values()
+        for texture in combined_terrains:
+            slp_id = texture.get_terrain()["slp_id"].get_value()
+            srcfile_prefix = texture.get_terrain()["filename"].get_value()
+
+            targetdir = texture.resolve_graphics_location()
+            source_filename = f"{str(srcfile_prefix)}_00_color.png"
+            target_filename = f"{texture.get_filename()}.png"
+
+            export_request = MediaExportRequest(MediaType.TERRAIN,
+                                                targetdir,
+                                                source_filename,
+                                                target_filename)
+            full_data_set.graphics_exports.update({slp_id: export_request})
 
     @staticmethod
     def create_sound_requests(full_data_set):
         """
         Create export requests for sounds referenced by CombinedSound objects.
         """
-        # TODO: Sound exports (Wwise files)
+        combined_sounds = full_data_set.combined_sounds.values()
+
+        for sound in combined_sounds:
+            sound_id = sound.get_file_id()
+
+            targetdir = sound.resolve_sound_location()
+            source_filename = f"{str(sound_id)}.wav"
+            target_filename = f"{sound.get_filename()}.opus"
+
+            export_request = MediaExportRequest(MediaType.SOUNDS,
+                                                targetdir,
+                                                source_filename,
+                                                target_filename)
+
+            full_data_set.sound_exports.update({sound_id: export_request})

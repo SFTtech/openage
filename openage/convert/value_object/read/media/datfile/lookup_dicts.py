@@ -494,6 +494,7 @@ ARMOR_CLASS = {
     34: "DE2_UNKOWN_34",
     35: "DE2_UNKOWN_35",
     36: "DE2_UNKOWN_36",
+    37: "DE2_UNKOWN_36",
 }
 
 UNIT_CLASSES = {
@@ -714,6 +715,10 @@ BLAST_OFFENSE_TYPES = {
     2: "NEARBY_UNITS",
     3: "TARGET_ONLY",
     6: "UNKNOWN_6",
+    10: "UNKNOWN_10",
+    18: "UNKNOWN_18",
+    34: "UNKNOWN_34",
+    66: "UNKNOWN_66",
 }
 
 CREATABLE_TYPES = {

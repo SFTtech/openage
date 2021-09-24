@@ -284,15 +284,27 @@ class MediaExporter:
             export_request.get_type().value,
             export_request.source_filename
         ]
-        media_file = source_file.open("rb")
 
         if source_file.suffix.lower() == ".slp":
             from ...value_object.read.media.slp import SLP
+            media_file = source_file.open("rb")
             image = SLP(media_file.read())
 
         elif source_file.suffix.lower() == ".dds":
             # TODO: Implement
             pass
+
+        elif source_file.suffix.lower() == ".png":
+            from shutil import copyfileobj
+            src_path = source_file.open('rb')
+            dst_path = exportdir[export_request.targetdir,
+                                 export_request.target_filename].open('wb')
+            copyfileobj(src_path, dst_path)
+            return
+
+        else:
+            raise Exception(f"Source file {source_file.name} has an unrecognized extension: "
+                            f"{source_file.suffix.lower()}")
 
         if game_version[0].game_id in ("AOC", "SWGB"):
             from .terrain_merge import merge_terrain

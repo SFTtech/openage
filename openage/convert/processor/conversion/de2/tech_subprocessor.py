@@ -88,6 +88,7 @@ class DE2TechSubprocessor:
         90: AoCUpgradeResourceSubprocessor.heal_range_upgrade,
         91: AoCUpgradeResourceSubprocessor.starting_food_upgrade,
         92: AoCUpgradeResourceSubprocessor.starting_wood_upgrade,
+        93: AoCUpgradeResourceSubprocessor.starting_stone_upgrade,
         94: AoCUpgradeResourceSubprocessor.starting_gold_upgrade,
         96: AoCUpgradeResourceSubprocessor.berserk_heal_rate_upgrade,
         97: AoCUpgradeResourceSubprocessor.herding_dominance_upgrade,
@@ -117,6 +118,10 @@ class DE2TechSubprocessor:
         220: DE2UpgradeResourceSubprocessor.relic_food_production_upgrade,
         234: DE2UpgradeResourceSubprocessor.first_crusade_upgrade,
         236: DE2UpgradeResourceSubprocessor.burgundian_vineyards_upgrade,
+        237: DE2UpgradeResourceSubprocessor.folwark_collect_upgrade,
+        238: DE2UpgradeResourceSubprocessor.folwark_flag_upgrade,
+        239: DE2UpgradeResourceSubprocessor.folwark_mill_id_upgrade,
+        241: DE2UpgradeResourceSubprocessor.stone_gold_gen_upgrade,
     }
 
     @classmethod

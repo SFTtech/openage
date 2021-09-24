@@ -6,7 +6,7 @@ Entry point for all of the asset conversion.
 """
 from datetime import datetime
 
-from ..log import info
+from ..log import info, err
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
@@ -70,6 +70,9 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
     # Acquire game version info
     args.game_version = get_game_version(srcdir, args.avail_game_eds, args.avail_game_exps)
     debug_game_version(args.debugdir, args.debug_info, args)
+
+    if not args.game_version[0]:
+        return None
 
     # Mount assets into conversion folder
     data_dir = mount_asset_dirs(srcdir, args.game_version)
@@ -220,7 +223,9 @@ def main(args, error):
 
     if args.force or wanna_convert() or conversion_required(outdir, args):
         if not convert_assets(outdir, args, srcdir):
+            err("game asset conversion failed")
             return 1
+
     else:
         print("assets are up to date; no conversion is required.")
         print("override with --force.")

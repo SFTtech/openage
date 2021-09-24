@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2021 the openage authors. See copying.md for legal info.
 
 """
 Acquire the sourcedir for the game that is supposed to be converted.
@@ -66,7 +66,8 @@ def wanna_use_wine():
     long_prompt = True
     while answer is None:
         if long_prompt:
-            print("  Should we call wine to determine an AOE installation? [Y/n]")
+            print(
+                "  Should we call wine to determine an AOE installation? [Y/n]")
             long_prompt = False
         else:
             # TODO: text-adventure here
@@ -122,7 +123,7 @@ def query_source_dir(proposals):
     """
 
     if proposals:
-        print("\nPlease select an Age of Kings installation directory.")
+        print("\nPlease select an Age of Empires installation directory.")
         print("Insert the index of one of the proposals, or any path:")
 
         proposals = sorted(proposals)
@@ -167,7 +168,8 @@ def acquire_conversion_source_dir(prev_source_dir_path=None):
             proposals = set()
 
             if prev_source_dir_path and Path(prev_source_dir_path).is_dir():
-                prev_source_dir = CaseIgnoringDirectory(prev_source_dir_path).root
+                prev_source_dir = CaseIgnoringDirectory(
+                    prev_source_dir_path).root
                 proposals.add(
                     prev_source_dir.resolve_native_path().decode('utf-8', errors='replace')
                 )

@@ -348,6 +348,14 @@ class AoCUpgradeAttributeSubprocessor:
         elif value == 1:
             target_mode = dataset.nyan_api_objects["engine.util.target_mode.type.ExpectedPosition"]
 
+        elif value == 2:
+            # No Ballistics, only for Arambai
+            target_mode = dataset.nyan_api_objects["engine.util.target_mode.type.ExpectedPosition"]
+
+        elif value == 3:
+            # Ballistics, only for Arambai
+            target_mode = dataset.nyan_api_objects["engine.util.target_mode.type.ExpectedPosition"]
+
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
             tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)

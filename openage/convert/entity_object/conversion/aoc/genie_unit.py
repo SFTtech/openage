@@ -681,8 +681,13 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         """
         head_unit = self.get_head_unit()
         head_unit_id = head_unit["id0"].get_value()
-        head_unit_connection = self.data.building_connections[head_unit_id]
-        enabling_research_id = head_unit_connection["enabling_research"].get_value()
+        if head_unit_id in self.data.building_connections.keys():
+            head_unit_connection = self.data.building_connections[head_unit_id]
+            enabling_research_id = head_unit_connection["enabling_research"].get_value()
+
+        else:
+            # Assume it is avialable from the start
+            enabling_research_id = -1
 
         return enabling_research_id
 

@@ -127,9 +127,13 @@ def get_converter(game_version):
         from ..processor.conversion.de1.processor import DE1Processor
         return DE1Processor
 
-    if game_edition.game_id in ("AOC", "HDEDITION"):
+    if game_edition.game_id == "AOC":
         from ..processor.conversion.aoc.processor import AoCProcessor
         return AoCProcessor
+
+    if game_edition.game_id == "HDEDITION":
+        from ..processor.conversion.hd.processor import HDProcessor
+        return HDProcessor
 
     if game_edition.game_id == "AOE2DE":
         from ..processor.conversion.de2.processor import DE2Processor
