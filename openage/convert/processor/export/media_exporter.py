@@ -304,7 +304,7 @@ class MediaExporter:
 
         else:
             raise Exception(f"Source file {source_file.name} has an unrecognized extension: "
-                            f"source_file.suffix.lower()")
+                            f"{source_file.suffix.lower()}")
 
         if game_version[0].game_id in ("AOC", "SWGB"):
             from .terrain_merge import merge_terrain
