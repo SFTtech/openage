@@ -422,10 +422,10 @@ public:
 	}
 
 	// no copy construction!
-	PyIfFunc<ReturnType, ArgTypes ...>(const PyIfFunc<ReturnType, ArgTypes ...> &other) = delete;
-	PyIfFunc<ReturnType, ArgTypes ...>(PyIfFunc<ReturnType, ArgTypes ...> &&other) = delete;
-	PyIfFunc<ReturnType, ArgTypes ...> &operator =(const PyIfFunc<ReturnType, ArgTypes ...> &other) = delete;
-	PyIfFunc<ReturnType, ArgTypes ...> &operator =(PyIfFunc<ReturnType, ArgTypes ...> &&other) = delete;
+	PyIfFunc(const PyIfFunc<ReturnType, ArgTypes ...> &other) = delete;
+	PyIfFunc(PyIfFunc<ReturnType, ArgTypes ...> &&other) = delete;
+	PyIfFunc &operator =(const PyIfFunc<ReturnType, ArgTypes ...> &other) = delete;
+	PyIfFunc &operator =(PyIfFunc<ReturnType, ArgTypes ...> &&other) = delete;
 
 	// but you may convert this to a regular Func object.
 	operator Func<ReturnType, ArgTypes ...> &() const {
