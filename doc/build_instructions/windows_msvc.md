@@ -82,13 +82,15 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
     - Copy `fontconfig\57-dejavu-serif.conf` to `%FONTCONFIG_PATH%\conf.d`.
   - [Optional] Set the `AGE2DIR` environment variable to the AoE 2 installation directory.
   - Set `QML2_IMPORT_PATH` to `<vcpkg directory>\installed\<relevant config>\qml` or for prebuilt Qt `<qt directory>\<qt-version>\<compiler-version>\qml`
-  - Append the following to the environment `PATH`:
-    - `<openage directory>\build\libopenage\<config built>` (for `openage.dll`)
-    - Path to `nyan.dll` (depends on the procedure chosen to get nyan)
-    - `<vcpkg directory>\installed\<relevant config>\bin`
-    - `<QT5 directory>\bin` (if prebuilt QT5 was installed)
+  - openage needs these DLL files to run:
+    - `openage.dll` (Usually in `<openage directory>\build\libopenage\<config built>`.)
+    - `nyan.dll` (The location depends on the procedure chosen to get nyan.)
+    - DLLs from vcpkg-installed dependencies. Normally, these DLLs should be copied to `<openage directory>\build\libopenage\<config built>` during the build process. If they are not, you can find them in `<vcpkg directory>\installed\<relevant config>\bin`.
+      - If prebuilt QT5 was installed, the original location of QT5 DLLs is `<QT5 directory>\bin`.
 
-    __Note:__ The paths above should be added to the global system variables `PATH` and not to the user specific variables.
+    You need to ensure Python can locate these DLL files.
+    Up to Python 3.7, this can be done by adding the paths into the global system variables `PATH` (not the user-specific `PATH`).
+    For Python 3.8+, you should use the `--add-dll-search-path` option when running the `openage` module.
 
   - Now, to run the openage:
     - Open a CMD window in `<openage directory>\build\` and run `python -m openage game`
