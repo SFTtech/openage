@@ -56,6 +56,11 @@ def main(argv=None):
                             help=("upon throwing an exception a debug break is "
                                   "triggered. this will crash openage if no "
                                   "debugger is present"))
+    if sys.platform == 'win32':
+        global_cli.add_argument(
+            "--add-dll-search-path", action='append', dest='dll_paths',
+            help="(Windows only) provide additional DLL search path")
+
     devmodes = global_cli.add_mutually_exclusive_group()
     devmodes.add_argument("--devmode", action="store_true",
                           help="force-enable development mode")
