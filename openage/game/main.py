@@ -30,6 +30,13 @@ def main(args, error):
     """
     del error  # unused
 
+    win_dll_path_handles = []
+    import sys
+    if sys.platform == 'win32' and args.dll_paths is not None:
+        import os
+        for addtional_path in args.dll_paths:
+            win_dll_path_handles.append(os.add_dll_directory(addtional_path))
+
     # we have to import stuff inside the function
     # as it depends on generated/compiled code
     from .main_cpp import run_game
@@ -39,6 +46,10 @@ def main(args, error):
     from ..cppinterface.setup import setup as cpp_interface_setup
     from ..cvar.location import get_config_path
     from ..util.fslike.union import Union
+
+    if sys.platform == 'win32':
+        for handle in win_dll_path_handles:
+            handle.close()
 
     # initialize libopenage
     cpp_interface_setup(args)
@@ -87,7 +98,6 @@ def main(args, error):
     info("Generated nyan assets are not yet compatible to the engine.")
     info("Please revert to release v0.4.1 if you want to test the previous working gamestate.")
     info("Exiting...")
-    import sys
     sys.exit()
 
     # start the game, continue in main_cpp.pyx!
