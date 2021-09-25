@@ -6,6 +6,7 @@
 Holds the game entry point for openage.
 """
 
+import sys
 from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
 from ..log import err, info
 
@@ -31,7 +32,6 @@ def main(args, error):
     del error  # unused
 
     win_dll_path_handles = []
-    import sys
     if sys.platform == 'win32' and args.dll_paths is not None:
         import os
         for addtional_path in args.dll_paths:
