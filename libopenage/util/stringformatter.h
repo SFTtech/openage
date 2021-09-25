@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -297,7 +297,7 @@ public:
 
 	// allow conversion to std::string.
 
-	operator std::string &() {
+	operator std::string &() & {
 		return this->buffer;
 	}
 
