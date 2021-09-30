@@ -11,7 +11,7 @@ Ball():
     color : Color = Color
 
 Player():
-    lifes : int = 3
+    lives : int = 3
     size : int = 200
 
 GameTest(PongGame):
