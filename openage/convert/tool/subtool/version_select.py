@@ -18,7 +18,7 @@ def get_game_version(srcdir, avail_game_eds, avail_game_exps):
         srcdir, avail_game_eds, avail_game_exps)
 
     no_support = False
-    if not game_version[0]:
+    if not game_version[0] or game_version[0].support == Support.NOPE:
         warn("No valid game version(s) could not be detected "
              f"in {srcdir.resolve_native_path()}")
 
