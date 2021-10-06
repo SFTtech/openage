@@ -11,6 +11,8 @@ from openage.convert.service import debug_info
 from openage.convert.service.export.load_media_cache import load_media_cache
 from openage.convert.value_object.read.media.blendomatic import Blendomatic
 from openage.convert.value_object.read.media_types import MediaType
+from openage.log import dbg
+from openage.util.fslike.path import Path
 
 
 class MediaExporter:
@@ -122,6 +124,15 @@ class MediaExporter:
                 exportdir[export_request.targetdir],
                 f"{export_request.target_filename}{idx}.png"
             )
+        source_format = Path(export_request.source_filename).suffix
+        source_size = os.path.getsize(source_file)
+        target_size = os.path.getsize(export_request.targetdir + export_request.target_filename)
+        target_format = Path(export_request.target_filename).suffix
+        log = (f"Source File:{export_request.source_filename} "
+               f" ({source_format},{source_size}) "
+               f"-> Target File:{export_request.target_filename} "
+               f"({target_format}, {target_size})")
+        dbg(log)
 
     @staticmethod
     def _export_graphics(export_request, sourcedir, exportdir, palettes,
@@ -203,6 +214,16 @@ class MediaExporter:
         export_request.notify_observers(metadata)
         export_request.clear_changed()
 
+        source_format = Path(export_request.source_filename).suffix
+        source_size = os.path.getsize(source_file)
+        target_size = os.path.getsize(export_request.targetdir + export_request.target_filename)
+        target_format = Path(export_request.target_filename).suffix
+        log = (f"Source File:{export_request.source_filename} "
+               f" ({source_format},{source_size}) "
+               f"-> Target File:{export_request.target_filename} "
+               f"({target_format}, {target_size})")
+        dbg(log)
+
     @staticmethod
     def _export_interface(export_request, sourcedir, **kwargs):
         """
@@ -258,6 +279,16 @@ class MediaExporter:
 
         with export_file.open_w() as outfile:
             outfile.write(soundata)
+
+        source_format = Path(export_request.source_filename).suffix
+        source_size = os.path.getsize(source_file)
+        target_size = os.path.getsize(export_request.targetdir + export_request.target_filename)
+        target_format = Path(export_request.target_filename).suffix
+        log = (f"Source File:{export_request.source_filename} "
+               f" ({source_format},{source_size}) "
+               f"-> Target File:{export_request.target_filename} "
+               f"({target_format}, {target_size})")
+        dbg(log)
 
     @staticmethod
     def _export_terrain(export_request, sourcedir, exportdir, palettes,
@@ -323,6 +354,16 @@ class MediaExporter:
             compression_level,
         )
 
+        source_format = Path(export_request.source_filename).suffix
+        source_size = os.path.getsize(source_file)
+        target_size = os.path.getsize(export_request.targetdir + export_request.target_filename)
+        target_format = Path(export_request.target_filename).suffix
+        log = (f"Source File:{export_request.source_filename} "
+               f" ({source_format},{source_size}) "
+               f"-> Target File:{export_request.target_filename} "
+               f"({target_format}, {target_size})")
+        dbg(log)
+
     @staticmethod
     def _get_media_cache(export_request, sourcedir, palettes, compression_level):
         """
@@ -384,6 +425,16 @@ class MediaExporter:
             cache=None,
             dry_run=True
         )
+
+        source_format = Path(export_request.source_filename).suffix
+        source_size = os.path.getsize(source_file)
+        target_size = os.path.getsize(export_request.targetdir + export_request.target_filename)
+        target_format = Path(export_request.target_filename).suffix
+        log = (f"Source File:{export_request.source_filename} "
+               f" ({source_format},{source_size}) "
+               f"-> Target File:{export_request.target_filename} "
+               f"({target_format}, {target_size})")
+        dbg(log)
 
         return texture.get_cache_params()
 
