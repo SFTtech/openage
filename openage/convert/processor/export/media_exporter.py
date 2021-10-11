@@ -474,9 +474,10 @@ class MediaExporter:
             dest.seek(0, os.SEEK_END)
             target_size = dest.tell()
 
-        log = (f"Source File: {source_file.name} "
-               f" ({source_format}, {source_size} B) "
-               f"-> Target File: {target_file.name} "
-               f"({target_format}, {target_size} B)")
+        log = ("Converted: "
+               f"{source_file.name} "
+               f" ({source_format}, {source_size}B) "
+               f"-> {target_file.name} "
+               f"({target_format}, {target_size}B)")
 
         dbg(log)

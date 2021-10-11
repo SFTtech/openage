@@ -1,4 +1,4 @@
-# Copyright 2018-2020 the openage authors. See copying.md for legal info.
+# Copyright 2018-2021 the openage authors. See copying.md for legal info.
 
 import time
 from libc.string cimport memcpy, memset
@@ -21,8 +21,10 @@ def encode(inputdata):
     if not isinstance(inopt, dict):
         return inopt
 
-    dbg("Wavefile: Total length: %s\tHeader length: %s\tTrailer length: %s",\
-        len(inputdata), inopt['header_len'], inopt['trailer_len'])
+    dbg("Wavefile")
+    dbg(f" Total length:   {len(inputdata)}")
+    dbg(f" Header length:  {inopt['header_len']}")
+    dbg(f" Trailer length: {inopt['trailer_len']}")
     if inopt['trailer_len']:
         inputdata = inputdata[inopt['header_len']:-inopt['trailer_len']]
     else:
@@ -57,8 +59,9 @@ def encode(inputdata):
     frame_sz = <opus.opus_int32> (frame_sz / (48000 / coding_rate))
 
     if coding_rate != rate:
-        dbg("Resampling necessary: input rate: %s\tcoding rate: %s",
-            rate, coding_rate)
+        dbg("Resampling necessary:")
+        dbg(f" input rate:  {rate}")
+        dbg(f" coding rate: {coding_rate}")
         try:
             inputdata = upsample(inputdata, len(inputdata), inopt, coding_rate)
         except MemoryError:
