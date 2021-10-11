@@ -11,6 +11,7 @@ from openage.convert.service import debug_info
 from openage.convert.service.export.load_media_cache import load_media_cache
 from openage.convert.value_object.read.media.blendomatic import Blendomatic
 from openage.convert.value_object.read.media_types import MediaType
+from openage.log import dbg
 
 
 class MediaExporter:
@@ -123,6 +124,11 @@ class MediaExporter:
                 f"{export_request.target_filename}{idx}.png"
             )
 
+            MediaExporter.log_fileinfo(
+                source_file,
+                exportdir[export_request.targetdir, f"{export_request.target_filename}{idx}.png"]
+            )
+
     @staticmethod
     def _export_graphics(export_request, sourcedir, exportdir, palettes,
                          compression_level, cache_info=None):
@@ -198,10 +204,13 @@ class MediaExporter:
             cache=compr_cache
         )
         metadata = {export_request.target_filename: texture.get_metadata()}
-
         export_request.set_changed()
         export_request.notify_observers(metadata)
         export_request.clear_changed()
+        MediaExporter.log_fileinfo(
+            source_file,
+            exportdir[export_request.targetdir, export_request.target_filename]
+        )
 
     @staticmethod
     def _export_interface(export_request, sourcedir, **kwargs):
@@ -258,6 +267,11 @@ class MediaExporter:
 
         with export_file.open_w() as outfile:
             outfile.write(soundata)
+
+        MediaExporter.log_fileinfo(
+            source_file,
+            exportdir[export_request.targetdir, export_request.target_filename]
+        )
 
     @staticmethod
     def _export_terrain(export_request, sourcedir, exportdir, palettes,
@@ -321,6 +335,11 @@ class MediaExporter:
             exportdir[export_request.targetdir],
             export_request.target_filename,
             compression_level,
+        )
+
+        MediaExporter.log_fileinfo(
+            source_file,
+            exportdir[export_request.targetdir, export_request.target_filename]
         )
 
     @staticmethod
@@ -438,3 +457,27 @@ class MediaExporter:
 
         if compr_params:
             texture.best_compr = (compression_level, *compr_params)
+
+    @staticmethod
+    def log_fileinfo(source_file, target_file):
+        """
+        Log source and target file information to the shell.
+        """
+        source_format = source_file.suffix[1:].upper()
+        target_format = target_file.suffix[1:].upper()
+
+        with source_file.open('r') as src:
+            src.seek(0, os.SEEK_END)
+            source_size = src.tell()
+
+        with target_file.open('r') as dest:
+            dest.seek(0, os.SEEK_END)
+            target_size = dest.tell()
+
+        log = ("Converted: "
+               f"{source_file.name} "
+               f" ({source_format}, {source_size}B) "
+               f"-> {target_file.name} "
+               f"({target_format}, {target_size}B)")
+
+        dbg(log)
