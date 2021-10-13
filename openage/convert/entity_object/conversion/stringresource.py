@@ -5,7 +5,6 @@
 from collections import defaultdict
 
 from ...entity_object.conversion.genie_structure import GenieStructure
-from ...entity_object.export import data_definition
 
 
 class StringResource(GenieStructure):
@@ -26,21 +25,6 @@ class StringResource(GenieStructure):
         Returns the stringtable.
         """
         return self.strings
-
-    def dump(self, filename):
-        data = []
-
-        for lang, langstrings in self.strings.items():
-            for idx, text in langstrings.items():
-                entry = {
-                    "id": idx,
-                    "lang": lang,
-                    "text": text,
-                }
-                data.append(entry)
-
-        data = sorted(data, key=lambda x: x["id"])
-        return [data_definition.DataDefinition(self, data, filename)]
 
     @classmethod
     def get_data_format_members(cls, game_version):
