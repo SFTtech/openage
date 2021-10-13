@@ -16,23 +16,39 @@ import sys
 from .log import set_loglevel, verbosity_to_level, ENV_VERBOSITY
 
 
-class PrintVersion(argparse.Action):
+def print_version():
     """
     The default version printer, unfortunately, inserts newlines.
     This is the easiest way around.
     """
-    # pylint: disable=too-few-public-methods
+    from . import LONGVERSION
+    print(LONGVERSION)
+    from .versions.versions import get_version_numbers
+    version_numbers = get_version_numbers()
+    for key in version_numbers:
+        print(key.decode("utf8") + " " + version_numbers[key].decode("utf8"))
+    sys.exit(0)
 
-    def __call__(self, parser, namespace, values, option_string=None):
-        del parser, namespace, values, option_string  # unused
 
-        from . import LONGVERSION
-        print(LONGVERSION)
-        from .versions.versions import get_version_numbers
-        version_numbers = get_version_numbers()
-        for key in version_numbers:
-            print(key.decode("utf8") + " " + version_numbers[key].decode("utf8"))
-        sys.exit(0)
+def add_dll_search_paths(dll_paths):
+    """
+    This function adds DLL search paths.
+    This function does nothing if current OS is not Windows.
+    """
+
+    def close_windows_dll_path_handles(dll_path_handles):
+        """
+        This function calls close() method on each of the handles.
+        """
+        for handle in dll_path_handles:
+            handle.close()
+
+    if sys.platform == 'win32' and dll_paths is not None:
+        import atexit
+        win_dll_path_handles = []
+        for addtional_path in dll_paths:
+            win_dll_path_handles.append(os.add_dll_directory(addtional_path))
+        atexit.register(close_windows_dll_path_handles, win_dll_path_handles)
 
 
 def main(argv=None):
@@ -42,7 +58,12 @@ def main(argv=None):
         description=("free age of empires II engine clone")
     )
 
-    cli.add_argument("--version", "-V", nargs=0, action=PrintVersion,
+    if sys.platform == 'win32':
+        cli.add_argument(
+            "--add-dll-search-path", action='append', dest='dll_paths',
+            help="(Windows only) provide additional DLL search path")
+
+    cli.add_argument("--version", "-V", action='store_true', dest='print_version',
                      help="print version info and exit")
 
     # shared arguments for all subcommands
@@ -56,10 +77,6 @@ def main(argv=None):
                             help=("upon throwing an exception a debug break is "
                                   "triggered. this will crash openage if no "
                                   "debugger is present"))
-    if sys.platform == 'win32':
-        global_cli.add_argument(
-            "--add-dll-search-path", action='append', dest='dll_paths',
-            help="(Windows only) provide additional DLL search path")
 
     devmodes = global_cli.add_mutually_exclusive_group()
     devmodes.add_argument("--devmode", action="store_true",
@@ -81,10 +98,9 @@ def main(argv=None):
     # pylint: disable=reimported
 
     from .main.main import init_subparser
-    main_cli = subparsers.add_parser(
+    init_subparser(subparsers.add_parser(
         "main",
-        parents=[global_cli, cfg_cli])
-    init_subparser(main_cli)
+        parents=[global_cli, cfg_cli]))
 
     from .game.main import init_subparser
     game_cli = subparsers.add_parser(
@@ -113,6 +129,12 @@ def main(argv=None):
         parents=[global_cli]))
 
     args = cli.parse_args(argv)
+
+    if sys.platform == 'win32':
+        add_dll_search_paths(args.dll_paths)
+
+    if args.print_version:
+        print_version()
 
     if not args.subcommand:
         # the user didn't specify a subcommand. default to 'game'.

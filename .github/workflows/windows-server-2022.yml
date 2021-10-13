@@ -1,0 +1,96 @@
+name: Windows Server 2022 CI
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build-x64:
+    runs-on: windows-2022
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        path: source
+    - name: Inspect environment
+      run: |
+        vswhere -latest
+      shell: pwsh
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+        architecture: 'x64'
+    - name: Install dependencies [vcpkg]
+      run: |
+        mkdir download
+        cd download
+        $zipfile = "openage-dep-x64-windows.zip"
+        Invoke-WebRequest https://github.com/duanqn/openage-windows-dep/releases/download/v0.0.1-alpha-ba157a25-eigenfix/openage-dep-x64-windows.zip -OutFile $zipfile
+        Expand-Archive -Path $zipfile -DestinationPath . -Force
+        Remove-Item $zipfile
+        (Get-ChildItem . -Recurse -File).FullName
+      shell: pwsh
+    - name: Install dependencies [winflexbison]
+      run: |
+        cd download
+        $zipfile = "winflexbison-2.5.24.zip"
+        Invoke-WebRequest https://github.com/lexxmark/winflexbison/releases/download/v2.5.24/win_flex_bison-2.5.24.zip -OutFile $zipfile
+        mkdir winflexbison
+        Expand-Archive -Path $zipfile -DestinationPath ./winflexbison -Force
+        Remove-Item $zipfile
+        (Get-ChildItem ./winflexbison -Recurse -File).FullName
+      shell: pwsh
+    - name: Install dependencies [Python]
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install --upgrade Cython wheel numpy lz4 toml pillow pygments pyreadline Jinja2
+      shell: pwsh
+    - name: Build
+      run: |
+        $TOOLCHAIN_FILE = Join-Path download merge-x64-windows scripts buildsystems vcpkg.cmake | Resolve-Path
+        $FLEX_PATH = (Get-ChildItem ./download -Recurse -Force -Filter 'win_flex.exe')[0].FullName
+        mkdir build
+        cd build
+        cmake -DCMAKE_TOOLCHAIN_FILE="$TOOLCHAIN_FILE" -DCMAKE_BUILD_TYPE=Release -DCMAKE_TRY_COMPILE_CONFIGURATION=Release -DCMAKE_CXX_FLAGS='/Zc:__cplusplus /permissive- /EHsc' -DCMAKE_EXE_LINKER_FLAGS='' -DCMAKE_MODULE_LINKER_FLAGS='' -DCMAKE_SHARED_LINKER_FLAGS='' -DDOWNLOAD_NYAN=YES -DCXX_OPTIMIZATION_LEVEL=auto -DCXX_SANITIZE_FATAL=False -DCXX_SANITIZE_MODE=none -DWANT_BACKTRACE=if_available -DWANT_GPERFTOOLS_PROFILER=if_available -DWANT_GPERFTOOLS_TCMALLOC=False -DWANT_INOTIFY=if_available -DWANT_NCURSES=if_available -DWANT_OPENGL=if_available -DWANT_VULKAN=if_available -DFLEX_EXECUTABLE="$FLEX_PATH" -G "Visual Studio 17 2022" -A x64 ../source
+        cmake --build . --config RelWithDebInfo -- -nologo -maxCpuCount
+      shell: pwsh
+    - name: Package
+      run: |
+        mkdir package
+        cd package
+        mkdir dll
+        cd ..
+        $STAGING_PATH = Resolve-Path package
+        $DLL_PATH = Join-Path package dll | Resolve-Path
+
+        cd build
+        $NYAN_DLL = (Get-ChildItem . -Recurse -Force -Filter 'nyan.dll')[0].FullName
+        $OPENAGE_DLL = (Get-ChildItem . -Recurse -Force -Filter 'openage.dll')[0].FullName
+        $NATIVE_OUTPUT = Split-Path -Path $OPENAGE_DLL -Parent
+        Copy-Item -Path ./openage -Destination $STAGING_PATH -Recurse
+        Copy-Item -Path $NYAN_DLL -Destination $DLL_PATH
+        Copy-Item -Path (Join-Path $NATIVE_OUTPUT *.dll) -Destination $DLL_PATH
+        Copy-Item -Path run.* -Destination $STAGING_PATH
+      shell: pwsh
+    - name: Test
+      run: |
+        $DLL_PATH = Join-Path package dll | Resolve-Path
+        cd package
+        python -m openage --add-dll-search-path $DLL_PATH --version
+      shell: pwsh
+    - name: Publish build artifacts
+      uses: actions/upload-artifact@v2.2.4
+      if: ${{ always() }}
+      with:
+        name: build-files
+        path: './build'
+        if-no-files-found: error
+        retention-days: 30
+    - name: Publish packaged artifacts
+      uses: actions/upload-artifact@v2.2.4
+      if: ${{ always() }}
+      with:
+        name: package-files
+        path: './package'
+        if-no-files-found: error
+        retention-days: 30
+      
