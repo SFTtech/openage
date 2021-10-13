@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 """
 Provides some utility context guards.
@@ -15,4 +15,4 @@ class DummyGuard:
 
     @staticmethod
     def __exit__(exc_type, exc_value, traceback):
-        del exc_type, exc_value, traceback  # unused
+        pass

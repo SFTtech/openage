@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 """
 Provides Filecollection, a utility class for combining multiple file-like
@@ -18,6 +18,7 @@ class FileCollection(FSLikeObject):
 
     Uses lambdas to access files somewhere else on the fly.
     """
+
     def __init__(self):
         super().__init__()
 
@@ -212,13 +213,14 @@ class FileCollection(FSLikeObject):
         return False
 
     def poll_watches(self):
-        del self  # unused
+        pass
 
 
 class FileCollectionPath(Path):
     """
     Provides an additional method for adding a file at this path.
     """
+
     def add_file(self, open_r=None, open_w=None, filesize=None, mtime=None):
         """
         All parent directories are 'created', if needed.
