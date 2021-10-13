@@ -99,8 +99,11 @@ Quickstart
   Operating System    | Build status
   :------------------:|:--------------:
   Debian Sid          | [Todo: Kevin #11](https://github.com/SFTtech/kevin/issues/11)
+  Ubuntu 21.04        | [![Ubuntu 21.04 build status](https://github.com/SFTTech/openage/actions/workflows/ubuntu-21.04.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/ubuntu-21.04.yml)
   macOS               | [![macOS build status](https://github.com/SFTtech/openage/workflows/macOS-CI/badge.svg)](https://github.com/SFTtech/openage/actions?query=workflow%3AmacOS-CI)
   Windows 10 - x64    | [![Build status](https://ci.appveyor.com/api/projects/status/66sx35key94u740e?svg=true)](https://ci.appveyor.com/project/simonsan/openage-sl215)
+  Windows Server 2019 | [![Windows Server 2019 build status](https://github.com/SFTtech/openage/actions/workflows/windows-server-2019.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/windows-server-2019.yml)
+  Windows Server 2022 | [![Windows Server 2022 build status](https://github.com/SFTtech/openage/actions/workflows/windows-server-2022.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/windows-server-2022.yml)
 
 
 * How do I get this to run on my box?
