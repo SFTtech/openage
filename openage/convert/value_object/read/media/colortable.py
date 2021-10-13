@@ -8,7 +8,6 @@ import numpy
 
 from .....log import dbg
 from ....entity_object.conversion.genie_structure import GenieStructure
-from ....entity_object.export.data_definition import DataDefinition
 
 
 class ColorTable(GenieStructure):
@@ -151,22 +150,6 @@ class ColorTable(GenieStructure):
     def save_visualization(self, fileobj):
         self.gen_image().save(fileobj, 'png')
 
-    def dump(self, filename):
-        data = list()
-
-        # dump all color entries
-        for idx, entry in enumerate(self.palette):
-            color_entry = {
-                "idx": idx,
-                "r":   entry[0],
-                "g":   entry[1],
-                "b":   entry[2],
-                "a":   255,
-            }
-            data.append(color_entry)
-
-        return [DataDefinition(self, data, filename)]
-
     @classmethod
     def get_data_format_members(cls, game_version):
         """
@@ -183,7 +166,7 @@ class ColorTable(GenieStructure):
         return data_format
 
 
-class PlayerColorTable(ColorTable):
+class PlayerColorTable(GenieStructure):
     """
     this class represents stock player color values.
 
@@ -193,7 +176,8 @@ class PlayerColorTable(ColorTable):
     __slots__ = ('header', 'version', 'palette')
 
     def __init__(self, base_table):
-        # TODO pylint: disable=super-init-not-called
+        super().__init__()
+
         if not isinstance(base_table, ColorTable):
             raise Exception(f"no ColorTable supplied, instead: {type(base_table)}")
 
@@ -211,5 +195,20 @@ class PlayerColorTable(ColorTable):
                 r, g, b = base_table[16 * i + subcol]
                 self.palette.append((r, g, b))
 
+    @classmethod
+    def get_data_format_members(cls, game_version):
+        """
+        Return the members in this struct.
+        """
+        data_format = (
+            (True, "idx", None, "int32_t"),
+            (True, "r", None,   "uint8_t"),
+            (True, "g", None,   "uint8_t"),
+            (True, "b", None,   "uint8_t"),
+            (True, "a", None,   "uint8_t"),
+        )
+
+        return data_format
+
     def __repr__(self):
-        return "ColorTable<%d entries>" % len(self.palette)
+        return "PlayerColorTable<%d entries>" % len(self.palette)
