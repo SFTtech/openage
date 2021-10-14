@@ -4,6 +4,7 @@
 """
 Converts media requested by export requests to files.
 """
+import logging
 import os
 
 from openage.convert.entity_object.export.texture import Texture
@@ -11,7 +12,7 @@ from openage.convert.service import debug_info
 from openage.convert.service.export.load_media_cache import load_media_cache
 from openage.convert.value_object.read.media.blendomatic import Blendomatic
 from openage.convert.value_object.read.media_types import MediaType
-from openage.log import dbg
+from openage.log import dbg, get_loglevel
 
 
 class MediaExporter:
@@ -124,10 +125,12 @@ class MediaExporter:
                 f"{export_request.target_filename}{idx}.png"
             )
 
-            MediaExporter.log_fileinfo(
-                source_file,
-                exportdir[export_request.targetdir, f"{export_request.target_filename}{idx}.png"]
-            )
+            if get_loglevel() <= logging.DEBUG:
+                MediaExporter.log_fileinfo(
+                    source_file,
+                    exportdir[export_request.targetdir,
+                              f"{export_request.target_filename}{idx}.png"]
+                )
 
     @staticmethod
     def _export_graphics(export_request, sourcedir, exportdir, palettes,
@@ -207,10 +210,12 @@ class MediaExporter:
         export_request.set_changed()
         export_request.notify_observers(metadata)
         export_request.clear_changed()
-        MediaExporter.log_fileinfo(
-            source_file,
-            exportdir[export_request.targetdir, export_request.target_filename]
-        )
+
+        if get_loglevel() <= logging.DEBUG:
+            MediaExporter.log_fileinfo(
+                source_file,
+                exportdir[export_request.targetdir, export_request.target_filename]
+            )
 
     @staticmethod
     def _export_interface(export_request, sourcedir, **kwargs):
@@ -268,10 +273,11 @@ class MediaExporter:
         with export_file.open_w() as outfile:
             outfile.write(soundata)
 
-        MediaExporter.log_fileinfo(
-            source_file,
-            exportdir[export_request.targetdir, export_request.target_filename]
-        )
+        if get_loglevel() <= logging.DEBUG:
+            MediaExporter.log_fileinfo(
+                source_file,
+                exportdir[export_request.targetdir, export_request.target_filename]
+            )
 
     @staticmethod
     def _export_terrain(export_request, sourcedir, exportdir, palettes,
@@ -337,10 +343,11 @@ class MediaExporter:
             compression_level,
         )
 
-        MediaExporter.log_fileinfo(
-            source_file,
-            exportdir[export_request.targetdir, export_request.target_filename]
-        )
+        if get_loglevel() <= logging.DEBUG:
+            MediaExporter.log_fileinfo(
+                source_file,
+                exportdir[export_request.targetdir, export_request.target_filename]
+            )
 
     @staticmethod
     def _get_media_cache(export_request, sourcedir, palettes, compression_level):
@@ -466,18 +473,23 @@ class MediaExporter:
         source_format = source_file.suffix[1:].upper()
         target_format = target_file.suffix[1:].upper()
 
-        with source_file.open('r') as src:
-            src.seek(0, os.SEEK_END)
-            source_size = src.tell()
+        source_path = source_file.resolve_native_path()
+        if source_path:
+            source_size = os.path.getsize(source_path)
 
-        with target_file.open('r') as dest:
-            dest.seek(0, os.SEEK_END)
-            target_size = dest.tell()
+        else:
+            with source_file.open('r') as src:
+                src.seek(0, os.SEEK_END)
+                source_size = src.tell()
+
+        target_path = target_file.resolve_native_path()
+        target_size = os.path.getsize(target_path)
 
         log = ("Converted: "
                f"{source_file.name} "
-               f" ({source_format}, {source_size}B) "
+               f"({source_format}, {source_size}B) "
                f"-> {target_file.name} "
-               f"({target_format}, {target_size}B)")
+               f"({target_format}, {target_size}B | "
+               f"{(target_size / source_size * 100) - 100:+.1f}%)")
 
         dbg(log)
