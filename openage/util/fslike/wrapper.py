@@ -1,4 +1,4 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 """
 Provides
@@ -28,6 +28,7 @@ class Wrapper(FSLikeObject):
     Inherit to override individual methods.
     Pass a context guard to protect calls.
     """
+
     def __init__(self, obj, contextguard=None):
         if not isinstance(obj, Path):
             raise TypeError(f"Path expected as obj, got '{type(obj)}'")
@@ -67,6 +68,9 @@ class Wrapper(FSLikeObject):
 
     def resolve_w(self, parts):
         return self.obj.joinpath(parts) if self.writable(parts) else None
+
+    def get_native_path(self, parts):
+        return self.obj.joinpath(parts).resolve_native_path() if self.exists(parts) else None
 
     def list(self, parts):
         with self.contextguard:
@@ -128,6 +132,7 @@ class WriteBlocker(ReadOnlyFSLikeObject, Wrapper):
 
     All writing calls raise IOError, and writable returns False.
     """
+
     def __repr__(self):
         return f"WriteBlocker({repr(self.obj)})"
 
@@ -136,6 +141,7 @@ class Synchronizer(Wrapper):
     """
     Wraps a FSLikeObject, securing all wrapped calls with a mutex.
     """
+
     def __init__(self, obj):
         self.lock = Lock()
         super().__init__(obj, self.lock)
@@ -151,6 +157,7 @@ class GuardedFile(FileLikeObject):
     Wraps file-like objects, protecting calls to their members with the given
     context guard.
     """
+
     def __init__(self, obj, guard):
         super().__init__()
         self.obj = obj
