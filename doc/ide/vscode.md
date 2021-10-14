@@ -67,13 +67,15 @@ If you use a C/C++ language support extension, you need to add the path to the *
 
 If you use a Python language support extension with `autopep8` formatting, you should add these settings to get the openage Python code style. Add these entries to the list of passed arguments:
 
-* `--ignore E221,E241,E251,E501`
+* `--ignore`
+* `E221,E241,E251,E501`
 
 Ignoring the `E221,E241,E251` errors allows placing multiple spaces around commas and before comments for alignment, while ignoring `E501` disables auto-formatting of overlong lines.
 
 If you don't want to ignore `E501`, you should add this argument which increases the maximum line length to 100:
 
-* `--line-length 100`
+* `--max-line-length`
+* `100`
 
 
 ## Add openage configure and build tasks
