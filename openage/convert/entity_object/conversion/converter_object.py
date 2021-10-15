@@ -380,7 +380,7 @@ class RawAPIObject:
             member_origin = raw_member[2]
 
             if name == member_name and member_origin == origin:
-                member_value = member_value.extend(push_value)
+                member_value.extend(push_value)
                 break
 
         else:

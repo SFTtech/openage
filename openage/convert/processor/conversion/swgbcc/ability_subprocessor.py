@@ -1719,7 +1719,6 @@ class SWGBCCAbilitySubprocessor:
         # Trade route (use the trade route o the market)
         trade_routes = []
 
-        trade_post_id = -1
         unit_commands = current_unit["unit_commands"].get_value()
         for command in unit_commands:
             # Find the trade command and the trade post id

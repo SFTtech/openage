@@ -1,4 +1,6 @@
 # Copyright 2019-2021 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-lines,too-many-arguments,too-many-return-statements,too-many-locals
 
 """
 Nyan structs.
@@ -19,7 +21,7 @@ from ..util.ordered_set import OrderedSet
 
 
 INDENT = "    "
-LINE_WIDTH = 130
+MAX_LINE_WIDTH = 130
 
 
 class NyanObject:
@@ -177,6 +179,7 @@ class NyanObject:
         Returns the NyanMember with the specified name.
         """
         if origin and origin is not self:
+            # Inherited member: Search in the inheritance tree
             for inherited_member in self._inherited_members:
                 if origin == inherited_member.get_origin():
                     if inherited_member.get_name() == member_name:
@@ -184,10 +187,11 @@ class NyanObject:
 
             raise Exception("%s has no member '%s' with origin '%s'"
                             % (self, member_name, origin))
-        else:
-            for member in self._members:
-                if member.get_name() == member_name:
-                    return member
+
+        # Else: Member should be a direct member of this nyan object
+        for member in self._members:
+            if member.get_name() == member_name:
+                return member
 
         raise Exception(f"{self} has no member '{member_name}'")
 
@@ -241,7 +245,8 @@ class NyanObject:
         """
         return len(self.get_uninitialized_members()) > 0
 
-    def is_patch(self):
+    @staticmethod
+    def is_patch():
         """
         Returns True if the object is a NyanPatch.
         """
@@ -719,30 +724,22 @@ class NyanMemberType:
                                  MemberOperator.DIVIDE):
             return False
 
-        elif self._member_type is MemberType.TEXT\
+        if self._member_type is MemberType.TEXT\
                 and operator not in (MemberOperator.ASSIGN,
                                      MemberOperator.ADD):
             return False
 
-        elif self._member_type is MemberType.FILE\
+        if self._member_type is MemberType.FILE\
                 and operator is not MemberOperator.ASSIGN:
             return False
 
-        elif self._member_type is MemberType.BOOLEAN\
+        if self._member_type is MemberType.BOOLEAN\
                 and operator not in (MemberOperator.ASSIGN,
                                      MemberOperator.AND,
                                      MemberOperator.OR):
             return False
 
-        elif self._member_type is MemberType.SET\
-                and operator not in (MemberOperator.ASSIGN,
-                                     MemberOperator.ADD,
-                                     MemberOperator.SUBTRACT,
-                                     MemberOperator.AND,
-                                     MemberOperator.OR):
-            return False
-
-        elif self._member_type is MemberType.ORDEREDSET\
+        if self._member_type is MemberType.SET\
                 and operator not in (MemberOperator.ASSIGN,
                                      MemberOperator.ADD,
                                      MemberOperator.SUBTRACT,
@@ -750,7 +747,15 @@ class NyanMemberType:
                                      MemberOperator.OR):
             return False
 
-        elif self._member_type is MemberType.DICT\
+        if self._member_type is MemberType.ORDEREDSET\
+                and operator not in (MemberOperator.ASSIGN,
+                                     MemberOperator.ADD,
+                                     MemberOperator.SUBTRACT,
+                                     MemberOperator.AND,
+                                     MemberOperator.OR):
+            return False
+
+        if self._member_type is MemberType.DICT\
                 and operator not in (MemberOperator.ASSIGN,
                                      MemberOperator.ADD,
                                      MemberOperator.SUBTRACT,
@@ -768,7 +773,7 @@ class NyanMemberType:
         if value is MemberSpecialValue.NYAN_NONE:
             return self._member_type is MemberType.OPTIONAL
 
-        elif self.is_modifier():
+        if self.is_modifier():
             return self._element_types[0].accepts_value(value)
 
         # inf is only used for ints and floats
@@ -799,12 +804,16 @@ class NyanMemberType:
                 # element types of complex types cannot be complex
                 for elem_type in self._element_types:
                     if elem_type.is_real_complex():
-                        raise Exception(f"{repr(self)}: element types cannot be complex but contains {elem_type}")
+                        raise Exception(
+                            f"{repr(self)}: element types cannot be complex "
+                            f"but contains {elem_type}")
 
         else:
             # if the member is not a composite, the element types should be None
             if self._element_types:
-                raise Exception(f"{repr(self)}: member type has element types but is not a composite")
+                raise Exception(
+                    f"{repr(self)}: member type has element types "
+                    "but is not a composite")
 
     def dump(self, import_tree=None, namespace=None):
         """
@@ -813,7 +822,7 @@ class NyanMemberType:
         if self.is_primitive():
             return self._member_type.value
 
-        elif self.is_object():
+        if self.is_object():
             if import_tree:
                 sfqon = ".".join(import_tree.get_alias_fqon(
                     self._member_type.get_fqon(),
@@ -924,11 +933,18 @@ class NyanMember:
         """
         return self.value is not None
 
-    def is_inherited(self):
+    @staticmethod
+    def is_inherited():
         """
         Returns True if the member is inherited from another object.
         """
         return False
+
+    def has_value(self):
+        """
+        Returns True if the member has a value.
+        """
+        return self.value is not None
 
     def set_value(self, value, operator=None):
         """
@@ -1044,16 +1060,17 @@ class NyanMember:
         elif self._member_type.get_real_type() is MemberType.DICT:
             self.value = dict(self.value)
 
-    def _get_primitive_value_str(self, member_type, value, import_tree=None, namespace=None):
+    @staticmethod
+    def _get_primitive_value_str(member_type, value, import_tree=None, namespace=None):
         """
         Returns the nyan string representation of primitive values.
 
-        Subroutine of _get_value_str()
+        Subroutine of _get_value_str(..)
         """
         if member_type.get_real_type() in (MemberType.TEXT, MemberType.FILE):
             return f"\"{value}\""
 
-        elif member_type.is_real_object():
+        if member_type.is_real_object():
             if import_tree:
                 sfqon = ".".join(import_tree.get_alias_fqon(
                     value.get_fqon(),
@@ -1067,7 +1084,8 @@ class NyanMember:
 
         return f"{value}"
 
-    def _get_complex_value_str(self, indent_depth, member_type, value, import_tree=None, namespace=None):
+    def _get_complex_value_str(self, indent_depth, member_type, value,
+                               import_tree=None, namespace=None):
         """
         Returns the nyan string representation of complex values.
 
@@ -1124,23 +1142,21 @@ class NyanMember:
             f"{concat_values}"
         ))
 
-        if line_length < LINE_WIDTH:
+        if line_length < MAX_LINE_WIDTH:
             output_str += concat_values
 
         elif stored_values:
             output_str += "\n"
 
             # How much space is left per formatted line
-            space_left = LINE_WIDTH - len((indent_depth + 2) * INDENT)
+            space_left = MAX_LINE_WIDTH - len((indent_depth + 2) * INDENT)
 
             # Find the longest value's length
             longest_len = len(max(stored_values, key=len))
 
             # How man values of that length fit in one line
             values_per_line = space_left // longest_len
-
-            if values_per_line < 1:
-                values_per_line = 1
+            values_per_line = max(values_per_line, 1)
 
             output_str += (indent_depth + 2) * INDENT
 
@@ -1187,7 +1203,7 @@ class NyanMember:
                 namespace=namespace
             )
 
-        elif self.is_complex():
+        if self.is_complex():
             return self._get_complex_value_str(
                 indent_depth,
                 self._member_type,
@@ -1196,11 +1212,10 @@ class NyanMember:
                 namespace=namespace
             )
 
-        else:
-            raise Exception(f"{repr(self)} has no valid type")
+        raise Exception(f"{repr(self)} has no valid type")
 
     def __str__(self):
-        return self._get_value_str()
+        return self._get_value_str(indent_depth=0)
 
     def __repr__(self):
         return f"NyanMember<{self.name}: {self._member_type}>"
@@ -1333,12 +1348,6 @@ class InheritedNyanMember(NyanMember):
         """
         return super().is_initialized() or\
             self._parent.get_member_by_name(self.name, self._origin).is_initialized()
-
-    def has_value(self):
-        """
-        Returns True if the inherited member has a value
-        """
-        return self.value is not None
 
     def dump(self, indent_depth, import_tree=None, namespace=None):
         """

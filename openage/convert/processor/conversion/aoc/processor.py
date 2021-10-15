@@ -511,7 +511,6 @@ class AoCProcessor:
 
             # Search other_connections for the previous unit in line
             connected_types = connection["other_connections"].get_value()
-            connected_index = -1
             for index, _ in enumerate(connected_types):
                 connected_type = connected_types[index]["other_connection"].get_value()
                 if connected_type == 2:
@@ -645,7 +644,6 @@ class AoCProcessor:
                     continue
 
                 # Find the previous building
-                connected_index = -1
                 for c_index, _ in enumerate(connected_types):
                     connected_type = connected_types[c_index]["other_connection"].get_value()
                     if connected_type == 1:

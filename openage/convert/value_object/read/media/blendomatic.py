@@ -14,7 +14,6 @@ from struct import Struct, unpack_from
 
 from .....log import dbg
 from ....entity_object.conversion.genie_structure import GenieStructure
-from ....entity_object.export.data_definition import DataDefinition
 
 
 class BlendingTile:
@@ -254,31 +253,8 @@ class Blendomatic(GenieStructure):
         one atlas per blending mode is generated,
         each atlas contains all blending masks merged on one texture
         """
-
         from ....entity_object.export.texture import Texture
         return [Texture(b_mode) for b_mode in self.blending_modes]
-
-    def dump(self, filename):
-        """
-        Return a printable file.
-        """
-        data = [
-            {"blend_mode": idx}
-            for idx, _ in enumerate(self.blending_modes)
-        ]
-        return [DataDefinition(self, data, filename)]
-
-    def save(self, fslikeobj, path, compression_level):
-        """
-        Save the blending mask textures to disk.
-        """
-
-        for idx, texture in enumerate(self.get_textures()):
-            name = "mode%02d.png" % idx
-            dbg("saving blending mode %02d texture -> %s", idx, name)
-            texture.save(fslikeobj, path + '/' + name, compression_level)
-
-        dbg("blending masks successfully exported")
 
     @classmethod
     def get_data_format_members(cls, game_version):

@@ -1,4 +1,4 @@
-# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+# Copyright 2014-2021 the openage authors. See copying.md for legal info.
 
 """
 Python logging.
@@ -8,7 +8,6 @@ loaded.
 """
 
 import logging
-from logging import Handler
 from os import environ
 
 from ..util.math import clamp
@@ -16,10 +15,11 @@ from ..util.math import clamp
 PYTHON_TO_CPP_LOG_LEVEL = {}
 
 
-class CppHandler(Handler):
+class CppHandler(logging.Handler):
     """
     CppHandler calls into the CPP logging system if the library has been loaded.
     """
+
     def __init__(self):
         super().__init__()
 

@@ -4073,7 +4073,6 @@ class AoCAbilitySubprocessor:
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
-                    graphics_set_id = -1
                     for set_id, items in gset_lookup_dict.items():
                         if civ_id in items[0]:
                             graphics_set_id = set_id
@@ -6739,7 +6738,6 @@ class AoCAbilitySubprocessor:
         # Trade route (use the trade route to the market)
         trade_routes = []
 
-        trade_post_id = -1
         unit_commands = current_unit["unit_commands"].get_value()
         for command in unit_commands:
             # Find the trade command and the trade post id

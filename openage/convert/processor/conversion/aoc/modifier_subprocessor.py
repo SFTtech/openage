@@ -1,9 +1,6 @@
 # Copyright 2020-2021 the openage authors. See copying.md for legal info.
 #
-# pylint: disable=too-many-locals,too-many-branches,too-many-nested-blocks
-#
-# TODO:
-# pylint: disable=line-too-long
+# pylint: disable=too-many-locals,too-many-branches,too-many-nested-blocks,too-many-statements
 
 """
 Derives and adds abilities to lines or civ groups. Subroutine of the
@@ -34,8 +31,12 @@ class AoCModifierSubprocessor:
         """
         dataset = converter_obj_group.data
         modifiers = [
-            dataset.pregen_nyan_objects["util.modifier.elevation_difference.AttackHigh"].get_nyan_object(),
-            dataset.pregen_nyan_objects["util.modifier.elevation_difference.AttackLow"].get_nyan_object()
+            dataset.pregen_nyan_objects[
+                "util.modifier.elevation_difference.AttackHigh"
+            ].get_nyan_object(),
+            dataset.pregen_nyan_objects[
+                "util.modifier.elevation_difference.AttackLow"
+            ].get_nyan_object()
         ]
 
         return modifiers
@@ -51,7 +52,9 @@ class AoCModifierSubprocessor:
         :rtype: ...dataformat.forward_ref.ForwardRef
         """
         dataset = converter_obj_group.data
-        modifier = dataset.pregen_nyan_objects["util.modifier.flyover_cliff.AttackFlyover"].get_nyan_object()
+        modifier = dataset.pregen_nyan_objects[
+            "util.modifier.flyover_cliff.AttackFlyover"
+        ].get_nyan_object()
 
         return modifier
 
@@ -89,14 +92,16 @@ class AoCModifierSubprocessor:
                     # Find a gather ability.
                     type_id = command["type"].get_value()
 
-                    if type_id not in (5, 110):
+                    gather_task_ids = internal_name_lookups.get_gather_lookups(
+                        dataset.game_version).keys()
+                    if type_id not in gather_task_ids:
                         continue
 
                     work_value = command["work_value1"].get_value()
 
                     # Check if the work value is 1 (with some rounding error margin)
-                    # if not we have to create a modifier
-                    if work_value < 1.0001 or work_value > 0.9999:
+                    # if not, we have to create a modifier
+                    if 0.9999 < work_value < 1.0001:
                         continue
 
                     # Search for the lines with the matching class/unit id
@@ -118,6 +123,9 @@ class AoCModifierSubprocessor:
                             if line.get_class_id() == class_id:
                                 lines.append(line)
 
+                    else:
+                        raise Exception("Gather task has no valid target ID.")
+
                     # Create a modifier for each matching resource spot
                     for resource_line in lines:
                         head_unit_id = resource_line.get_head_unit_id()
@@ -135,22 +143,27 @@ class AoCModifierSubprocessor:
                         modifier_raw_api_object = RawAPIObject(modifier_ref,
                                                                "%sGatheringRate",
                                                                dataset.nyan_api_objects)
-                        modifier_raw_api_object.add_raw_parent("engine.modifier.multiplier.type.GatheringRate")
+                        modifier_raw_api_object.add_raw_parent(
+                            "engine.modifier.multiplier.type.GatheringRate")
                         modifier_location = ForwardRef(converter_obj_group, target_obj_name)
                         modifier_raw_api_object.set_location(modifier_location)
 
                         # Multiplier
-                        modifier_raw_api_object.add_raw_member("multiplier",
-                                                               work_value,
-                                                               "engine.modifier.multiplier.MultiplierModifier")
+                        modifier_raw_api_object.add_raw_member(
+                            "multiplier",
+                            work_value,
+                            "engine.modifier.multiplier.MultiplierModifier"
+                        )
 
                         # Resource spot
                         spot_ref = "%s.Harvestable.%sResourceSpot" % (resource_line_name,
                                                                       resource_line_name)
                         spot_forward_ref = ForwardRef(resource_line, spot_ref)
-                        modifier_raw_api_object.add_raw_member("resource_spot",
-                                                               spot_forward_ref,
-                                                               "engine.modifier.multiplier.type.GatheringRate")
+                        modifier_raw_api_object.add_raw_member(
+                            "resource_spot",
+                            spot_forward_ref,
+                            "engine.modifier.multiplier.type.GatheringRate"
+                        )
 
                         converter_obj_group.add_raw_api_object(modifier_raw_api_object)
                         modifier_forward_ref = ForwardRef(converter_obj_group,
