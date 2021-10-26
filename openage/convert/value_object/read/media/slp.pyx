@@ -169,7 +169,7 @@ class SLP:
                 data, frame_header_offset), self.version, slp_standard)
             spam(frame_info)
 
-            if frame_info.properties & 0x07:
+            if frame_info.properties & 0x07 == 0x07:
                 self.main_frames.append(SLPFrame32(frame_info, data))
 
             elif self.version in (b'3.0\x00', b'4.0X', b'4.1X'):
