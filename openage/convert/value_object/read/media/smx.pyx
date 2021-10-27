@@ -54,6 +54,327 @@ cdef struct pixel:
     uint8_t damage_modifier_2   # modifier for damage (part 2)
 
 
+cdef class SMXMainLayer8to5Variant:
+    pass
+
+cdef class SMXMainLayer4plus1Variant:
+    pass
+
+cdef class SMXOutlineLayerVariant:
+    pass
+
+cdef class SMXShadowLayerVariant:
+    pass
+
+
+ctypedef fused SMXLayerVariant:
+    SMXMainLayer8to5Variant
+    SMXMainLayer4plus1Variant
+    SMXOutlineLayerVariant
+    SMXShadowLayerVariant
+
+
+cdef process_drawing_cmds(SMXLayerVariant variant,
+                          const uint8_t[:] &data_raw,
+                          vector[pixel] &row_data,
+                          Py_ssize_t rowid,
+                          Py_ssize_t first_cmd_offset,
+                          Py_ssize_t first_color_offset,
+                          int chunk_pos,
+                          size_t expected_size):
+    """
+    TODO: docstring
+    """
+
+    # position in the command array, we start at the first command of this row
+    cdef Py_ssize_t dpos_cmd = first_cmd_offset
+
+    # is the end of the current row reached?
+    cdef bool eor = False
+
+    cdef uint8_t cmd = 0
+    cdef uint8_t lower_crumb = 0
+    cdef int pixel_count = 0
+
+    if SMXLayerVariant is SMXMainLayer8to5Variant
+        # Position in the pixel data array
+        cdef Py_ssize_t dpos_color = first_color_offset
+
+        # Position in the compression chunk.
+        cdef bool odd = chunk_pos
+        cdef int px_dpos = 0 # For loop iterator
+    
+        cdef vector[uint8_t] pixel_data
+        pixel_data.reserve(4)
+
+        # Pixel data temporary values that need further decompression
+        cdef uint8_t pixel_data_odd_0 = 0
+        cdef uint8_t pixel_data_odd_1 = 0
+        cdef uint8_t pixel_data_odd_2 = 0
+        cdef uint8_t pixel_data_odd_3 = 0
+
+        # Mask for even indices
+        # cdef uint8_t pixel_mask_even_0 = 0xFF
+        cdef uint8_t pixel_mask_even_1 = 0b00000011
+        cdef uint8_t pixel_mask_even_2 = 0b11110000
+        cdef uint8_t pixel_mask_even_3 = 0b00111111
+
+    if SMXLayerVariant is SMXMainLayer4plus1Variant:
+        # Position in the pixel data array
+        cdef Py_ssize_t dpos_color = first_color_offset
+
+        # Position in the compression chunk
+        cdef uint8_t dpos_chunk = chunk_pos
+
+        cdef uint8_t palette_section_block = 0
+        cdef uint8_t palette_section = 0
+
+    if SMXLayerVariant in (SMXShadowLayerVariant, SMXOutlineLayerVariant):
+        cdef uint8_t nextbyte = 0
+    
+    # work through commands till end of row.
+    while not eor:
+        if row_data.size() > expected_size:
+            raise Exception(
+                f"Only {expected_size:d} pixels should be drawn in row {rowid:d} "
+                f"with layer type {self.info.layer_type:#x}, but we have {row_data.size():d} "
+                f"already!"
+            )
+
+        # fetch drawing instruction
+        cmd = data_raw[dpos_cmd]
+
+        # Last 2 bits store command type
+        lower_crumb = 0b00000011 & cmd
+
+        if lower_crumb == 0b00000011:
+            # eor (end of row) command, this row is finished now.
+            eor = True
+            dpos_cmd += 1
+
+            if  is SMXShadowLayerVariant:
+                # shadows sometimes need an extra pixel at
+                # the end
+                if row_data.size() < expected_size:
+                    # copy the last drawn pixel
+                    # (still stored in nextbyte)
+                    #
+                    # TODO: confirm that this is the
+                    #       right way to do it
+                    row_data.push_back(pixel(color_shadow,
+                                             nextbyte, 0, 0, 0))
+            continue
+
+        elif lower_crumb == 0b00000000:
+            # skip command
+            # draw 'count' transparent pixels
+            # count = (cmd >> 2) + 1
+
+            pixel_count = (cmd >> 2) + 1
+
+            for _ in range(pixel_count):
+                row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
+
+        elif lower_crumb == 0b00000001:
+            # color_list command
+            # draw the following 'count' pixels
+            # pixels are stored in 5 byte chunks
+            # even pixel indices have their info stored
+            # in byte[0] - byte[3]. odd pixel indices have
+            # their info stored in byte[1] - byte[4].
+            # count = (cmd >> 2) + 1
+
+            pixel_count = (cmd >> 2) + 1
+            
+            if  is SMXMainLayer8to5Variant:
+                for _ in range(pixel_count):
+                    # Start fetching pixel data
+                    if odd:
+                        # Odd indices require manual extraction of each of the 4 values
+
+                        # Palette index. Essentially a rotation of (byte[1]byte[2])
+                        # by 6 to the left, then masking with 0x00FF.
+                        pixel_data_odd_0 = data_raw[dpos_color + 1]
+                        pixel_data_odd_1 = data_raw[dpos_color + 2]
+                        pixel_data.push_back((pixel_data_odd_0 >> 2) | (pixel_data_odd_1 << 6))
+
+                        # Palette section. Described in byte[2] in bits 4-5.
+                        pixel_data.push_back((pixel_data_odd_1 >> 2) & 0x03)
+
+                        # Damage mask 1. Essentially a rotation of (byte[3]byte[4])
+                        # by 6 to the left, then masking with 0x00F0.
+                        pixel_data_odd_2 = data_raw[dpos_color + 3]
+                        pixel_data_odd_3 = data_raw[dpos_color + 4]
+                        pixel_data.push_back(((pixel_data_odd_2 >> 2) | (pixel_data_odd_3 << 6)) & 0xF0)
+
+                        # Damage mask 2. Described in byte[4] in bits 0-5.
+                        pixel_data.push_back((pixel_data_odd_3 >> 2) & 0x3F)
+
+                        row_data.push_back(pixel(color_standard,
+                                                    pixel_data[0],
+                                                    pixel_data[1],
+                                                    pixel_data[2],
+                                                    pixel_data[3]))
+
+                        # Go to next pixel
+                        dpos_color += 5
+
+                    else:
+                        # Even indices can be read "as is". They just have to be masked.
+                        for px_dpos in range(4):
+                            pixel_data.push_back(data_raw[dpos_color + px_dpos])
+
+                        row_data.push_back(pixel(color_standard,
+                                                    pixel_data[0],
+                                                    pixel_data[1] & pixel_mask_even_1,
+                                                    pixel_data[2] & pixel_mask_even_2,
+                                                    pixel_data[3] & pixel_mask_even_3))
+
+                    odd = not odd
+                    pixel_data.clear()
+
+            if  is SMXMainLayer4plus1Variant:
+                palette_section_block = data_raw[dpos_color + (4 - dpos_chunk)]
+
+                for _ in range(pixel_count):
+                    # Start fetching pixel data
+                    palette_section = (palette_section_block >> (2 * dpos_chunk)) & 0x03
+                    row_data.push_back(pixel(color_standard,
+                                             data_raw[dpos_color],
+                                             palette_section,
+                                             0,
+                                             0))
+
+                    dpos_color += 1
+                    dpos_chunk += 1
+
+                    # Skip to next chunk
+                    if dpos_chunk > 3:
+                        dpos_chunk = 0
+                        dpos_color += 1 # Skip palette section block
+                        palette_section_block = data_raw[dpos_color + 4]
+
+            if SMXLayerVariant is SMXShadowLayerVariant:
+                for _ in range(pixel_count):
+                    dpos_color += 1
+                    nextbyte = data_raw[dpos_color]
+
+                    row_data.push_back(pixel(color_shadow,
+                                             nextbyte, 0, 0, 0))
+
+            if SMXLayerVariant is SMXOutlineLayerVariant:
+                # we don't know the color the game wants
+                # so we just draw index 0
+                row_data.push_back(pixel(color_outline,
+                                            0, 0, 0, 0))
+
+       
+        elif lower_crumb == 0b00000010:
+            if SMXLayerVariant is SMXMainLayer8to5Variant:
+                # player_color command
+                # draw the following 'count' pixels
+                # pixels are stored in 5 byte chunks
+                # even pixel indices have their info stored
+                # in byte[0] - byte[3]. odd pixel indices have
+                # their info stored in byte[1] - byte[4].
+                # count = (cmd >> 2) + 1
+
+                pixel_count = (cmd >> 2) + 1
+
+                for _ in range(pixel_count):
+                    # Start fetching pixel data
+                    if odd:
+                        # Odd indices require manual extraction of each of the 4 values
+
+                        # Palette index. Essentially a rotation of (byte[1]byte[2])
+                        # by 6 to the left, then masking with 0x00FF.
+                        pixel_data_odd_0 = data_raw[dpos_color + 1]
+                        pixel_data_odd_1 = data_raw[dpos_color + 2]
+                        pixel_data.push_back((pixel_data_odd_0 >> 2) | (pixel_data_odd_1 << 6))
+
+                        # Palette section. Described in byte[2] in bits 4-5.
+                        pixel_data.push_back((pixel_data_odd_1 >> 2) & 0x03)
+
+                        # Damage modifier 1. Essentially a rotation of (byte[3]byte[4])
+                        # by 6 to the left, then masking with 0x00F0.
+                        pixel_data_odd_2 = data_raw[dpos_color + 3]
+                        pixel_data_odd_3 = data_raw[dpos_color + 4]
+                        pixel_data.push_back(((pixel_data_odd_2 >> 2) | (pixel_data_odd_3 << 6)) & 0xF0)
+
+                        # Damage modifier 2. Described in byte[4] in bits 0-5.
+                        pixel_data.push_back((pixel_data_odd_3 >> 2) & 0x3F)
+
+                        row_data.push_back(pixel(color_player,
+                                                    pixel_data[0],
+                                                    pixel_data[1],
+                                                    pixel_data[2],
+                                                    pixel_data[3]))
+
+                        # Go to next pixel
+                        dpos_color += 5
+
+                    else:
+                        # Even indices can be read "as is". They just have to be masked.
+                        for px_dpos in range(4):
+                            pixel_data.push_back(data_raw[dpos_color + px_dpos])
+
+                        row_data.push_back(pixel(color_player,
+                                                    pixel_data[0],
+                                                    pixel_data[1] & pixel_mask_even_1,
+                                                    pixel_data[2] & pixel_mask_even_2,
+                                                    pixel_data[3] & pixel_mask_even_3))
+
+                    odd = not odd
+                    pixel_data.clear()
+
+        
+        elif lower_crumb == 0b00000010:
+            if SMXLayerVariant is SMXMainLayer4plus1Variant:
+                # player_color command
+                # draw the following 'count' pixels
+                # 4 pixels are stored in every 5 byte chunk.
+                # palette indices are contained in byte[0] - byte[3]
+                # palette sections are stored in byte[4]
+                # count = (cmd >> 2) + 1
+
+                pixel_count = (cmd >> 2) + 1
+
+                for _ in range(pixel_count):
+                    # Start fetching pixel data
+                    palette_section = (palette_section_block >> (2 * dpos_chunk)) & 0x03
+                    row_data.push_back(pixel(color_player,
+                                                data_raw[dpos_color],
+                                                palette_section,
+                                                0,
+                                                0))
+
+                    dpos_color += 1
+                    dpos_chunk += 1
+
+                    # Skip to next chunk
+                    if dpos_chunk > 3:
+                        dpos_chunk = 0
+                        dpos_color += 1 # Skip palette section block
+                        palette_section_block = data_raw[dpos_color + 4]
+
+            if SMXLayerVariant is (SMXOutlineLayerVariant, SMXShadowLayerVariant):
+                pass
+
+        else:
+            raise Exception(
+                f"unknown smx main graphics layer drawing command: " +
+                f"{cmd:#x} in row {rowid:d}"
+                )
+
+        # Process next command
+        dpos_cmd += 1
+
+    if SMXLayerVariant in (SMXMainLayer8to5Variant, SMXMainLayer4plus1Variant):
+        return dpos_cmd, dpos_color, odd, row_data
+    if SMXLayerVariant in (SMXOutlineLayerVariant, SMXShadowLayerVariant):
+        return dpos_cmd, dpos_cmd, chunk_pos, row_data
+
+
 class SMX:
     """
     Class for reading/converting compressed SMP files (delivered
