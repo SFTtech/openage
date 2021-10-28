@@ -17,6 +17,7 @@ from libc.string cimport memcpy, memset
 
 from ..opus.bytearray cimport PyByteArray_AS_STRING
 from . cimport libpng
+from . cimport png_tmp_file
 from enum import Enum
 
 cimport cython
@@ -379,6 +380,72 @@ cdef void write_to_file(numpy.uint8_t[:,:,::1] imagedata,
                         libpng.PNG_INTERLACE_NONE,
                         libpng.PNG_COMPRESSION_TYPE_DEFAULT,
                         libpng.PNG_FILTER_TYPE_DEFAULT)
+
+    # Write the data
+    libpng.png_write_info(write_ptr, write_info_ptr)
+
+    for row_idx in range(height):
+        libpng.png_write_row(write_ptr, &imagedata[row_idx,0,0])
+
+    libpng.png_write_end(write_ptr, write_info_ptr)
+
+    # Destroy the write struct
+    libpng.png_destroy_write_struct(&write_ptr, &write_info_ptr)
+
+
+@cython.boundscheck(False)
+@cython.wraparound(False)
+cdef void write_to_buffer(numpy.uint8_t[:,:,::1] imagedata,
+                          png_tmp_file.tmp_file_buffer_state bufstate,
+                          int compression_level, int memory_level,
+                          int compression_strategy, int filters,
+                          int width, int height):
+    """
+    Write an image matrix with RGBA color values to a file.
+
+    :param imagedata: A memory view of a 3-dimensional array with RGBA color
+                      values for pixels. The array is expected to be C-aligned.
+    :type imagedata: uint8_t[:,:,::1]
+    :param buf: Struct containg the pointer to and the size of a buffer.
+    :type buf: tmp_file_buffer_state
+    :param compression_level: libpng compression level setting. (allowed: 1-9)
+    :type compression_level: int
+    :param memory_level: libpng compression memory level setting. (allowed: 1-9)
+    :type memory_level: int
+    :param compression_strategy: libpng compression strategy setting.  (allowed: 0-3)
+    :type compression_strategy: int
+    :param filters: libpng filter flags bitfield. (allowed: 0x08, 0x10, 0x20, 0x40, 0x80, 0xF8)
+    :type filters: int
+    :param width: Width of the image in pixels.
+    :type width: int
+    :param height: Height of the image in pixels.
+    :type height: int
+    """
+    write_ptr = libpng.png_create_write_struct(libpng.PNG_LIBPNG_VER_STRING,
+                                               NULL,
+                                               NULL,
+                                               NULL)
+    write_info_ptr = libpng.png_create_info_struct(write_ptr)
+
+    # Configure write settings
+    libpng.png_set_compression_level(write_ptr, compression_level)
+    libpng.png_set_compression_mem_level(write_ptr, memory_level)
+    libpng.png_set_compression_strategy(write_ptr, compression_strategy)
+    libpng.png_set_filter(write_ptr, libpng.PNG_FILTER_TYPE_DEFAULT, filters)
+
+    libpng.png_set_IHDR(write_ptr, write_info_ptr,
+                        width, height,
+                        8,
+                        libpng.PNG_COLOR_TYPE_RGBA,
+                        libpng.PNG_INTERLACE_NONE,
+                        libpng.PNG_COMPRESSION_TYPE_DEFAULT,
+                        libpng.PNG_FILTER_TYPE_DEFAULT)
+
+    # Set ur write function for writing to buffer
+    libpng.png_set_write_fn(write_ptr,
+                            NULL,
+                            &png_tmp_file.tmp_file_png_write_fn,
+                            &png_tmp_file.tmp_file_flush_fn)
 
     # Write the data
     libpng.png_write_info(write_ptr, write_info_ptr)

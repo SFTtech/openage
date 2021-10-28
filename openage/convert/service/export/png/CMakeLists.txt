@@ -13,6 +13,7 @@ pyext_link_libraries(
 add_pxds(
 	__init__.pxd
 	libpng.pxd
+	png_tmp_file.pxd
 )
 
 add_py_modules(
