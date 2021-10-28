@@ -49,7 +49,6 @@ int check_compressed_size(uint8_t ***imagedata, int compression_level, int memor
 	png_set_filter(write_ptr, PNG_FILTER_TYPE_DEFAULT, filters);
 	png_set_IHDR(write_ptr, write_info_ptr, width, height, 8, PNG_COLOR_TYPE_RGBA, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
 
-
 	// Initialize temporary 'file' in memory to write to
 	tmp_file_buffer_state state;
 	state.buffer = NULL;

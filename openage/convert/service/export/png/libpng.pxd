@@ -36,6 +36,8 @@ cdef extern from "png.h":
 
     ctypedef const char *png_const_charp
     ctypedef void *png_voidp
+    ctypedef void *png_rw_ptr
+    ctypedef void *png_flush_ptr
     ctypedef (png_structp, png_const_charp) *png_error_ptr
     ctypedef FILE *png_FILE_p
 
@@ -101,6 +103,10 @@ cdef extern from "png.h":
                                   const void *buffer,
                                   png_int_32 row_stride,
                                   const void *colormap)
+    void png_set_write_fn(png_structp png_ptr,
+                          png_voidp io_ptr,
+                          png_rw_ptr write_data_fn,
+                          png_flush_ptr output_flush_fn)
 
     # Should not be necessary if png_write_png() works
     void png_write_info(png_structrp png_ptr,
