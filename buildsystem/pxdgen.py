@@ -444,7 +444,7 @@ def main():
     for filename in args.all_files:
         filename = Path(filename).resolve()
         if cppdir not in filename.parents:
-            print("pxdgen source file is not in " + cppdir + ": " + filename)
+            print("pxdgen source file is not in " + str(cppdir) + ": " + str(filename))
             sys.exit(1)
 
         # join out_cppdir with relative path from cppdir

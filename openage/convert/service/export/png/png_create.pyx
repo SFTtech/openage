@@ -406,8 +406,8 @@ cdef void write_to_buffer(numpy.uint8_t[:,:,::1] imagedata,
     :param imagedata: A memory view of a 3-dimensional array with RGBA color
                       values for pixels. The array is expected to be C-aligned.
     :type imagedata: uint8_t[:,:,::1]
-    :param buf: Struct containg the pointer to and the size of a buffer.
-    :type buf: tmp_file_buffer_state
+    :param bufstate: Struct containg the pointer to and the size of a buffer.
+    :type bufstate: tmp_file_buffer_state
     :param compression_level: libpng compression level setting. (allowed: 1-9)
     :type compression_level: int
     :param memory_level: libpng compression memory level setting. (allowed: 1-9)
@@ -443,7 +443,7 @@ cdef void write_to_buffer(numpy.uint8_t[:,:,::1] imagedata,
 
     # Set ur write function for writing to buffer
     libpng.png_set_write_fn(write_ptr,
-                            NULL,
+                            &bufstate,
                             &png_tmp_file.tmp_file_png_write_fn,
                             &png_tmp_file.tmp_file_flush_fn)
 
