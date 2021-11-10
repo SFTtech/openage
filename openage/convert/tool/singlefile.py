@@ -40,7 +40,7 @@ def init_subparser(cli):
     cli.add_argument("--mode", choices=['drs-slp', 'drs-wav', 'sld', 'slp', 'smp', 'smx', 'wav'],
                      help=("choose between drs-slp, drs-wav, sld, slp, smp, smx or wav; "
                            "otherwise, this is determined by the file extension"))
-    cli.add_argument("--compression-level", type=int, default=1, choices=[0, 1, 2, 3],
+    cli.add_argument("--compression-level", type=int, default=2, choices=[0, 1, 2, 3, 4],
                      help="set PNG compression level")
     cli.add_argument("--layer", type=int, default=0, choices=[0, 1, 2, 3, 4],
                      help="ID of SLD/SMP/SMX layer that should be exported to image file")
