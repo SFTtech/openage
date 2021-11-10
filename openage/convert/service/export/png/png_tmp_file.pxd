@@ -2,6 +2,7 @@
 
 from . cimport libpng
 from libc.stdint cimport uint8_t
+from libcpp.vector cimport vector
 
 cdef extern from *:
     """
@@ -14,7 +15,7 @@ cdef extern from *:
     #include <cstring>
 
     struct tmp_file_buffer_state {
-        char *buffer;
+        png_bytep buffer;
         size_t size;
     };
 
@@ -25,10 +26,10 @@ cdef extern from *:
 
         // Resize buffer to fit new data
         if (state->buffer) {
-            state->buffer = (char *)realloc(state->buffer, new_size);
+            state->buffer = (png_bytep)realloc(state->buffer, new_size);
         }
         else {
-            state->buffer = (char *)malloc(new_size);
+            state->buffer = (png_bytep)malloc(new_size);
         }
 
         if (!state->buffer) {
@@ -37,6 +38,7 @@ cdef extern from *:
 
         // Append new data to buffer
         memcpy(state->buffer + state->size, data, length);
+        state->size = new_size;
     }
 
     void tmp_file_flush_fn(png_structp png_ptr) {
@@ -81,7 +83,7 @@ cdef extern from *:
     }
     """
     ctypedef struct tmp_file_buffer_state:
-        char* buffer
+        libpng.png_bytep buffer
         size_t size
 
     void tmp_file_png_write_fn(libpng.png_structp png_ptr,
