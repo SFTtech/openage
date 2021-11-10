@@ -289,7 +289,8 @@ cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata
     cdef greedy_cache_param result
 
     # tmp file for the trials
-    cdef libpng.png_FILE_p fp
+    # cdef libpng.png_FILE_p fp
+    cdef png_tmp_file.tmp_file_buffer_state bufstate
 
     for filters in range(GREEDY_FILTER_0, GREEDY_FILTER_5 + 1):
         if filters != GREEDY_FILTER_0 and filters != GREEDY_FILTER_5:
@@ -302,15 +303,30 @@ cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata
                     # fp = open_memstream(&buf, &len)
 
                     # Create a tmp file
-                    fp = tmpfile()
+                    # fp = tmpfile()
+# 
+                    # # Write the file to the memory stream
+                    # write_to_file(imagedata, fp, compr_lvl, mem_lvl,
+                    #                strategy, filters, width, height)
+# 
+                    # # Check the size of the resulting file
+                    # fseek(fp, 0, SEEK_END)
+                    # current_filesize = ftell(fp)
+                    bufstate.buffer = NULL
+                    bufstate.size = 0
 
-                    # Write the file to the memory stream
-                    write_to_file(imagedata, fp, compr_lvl, mem_lvl,
-                                   strategy, filters, width, height)
+                    write_to_buffer(
+                        imagedata,
+                        &bufstate,
+                        compr_lvl, 
+                        mem_lvl,
+                        strategy,
+                        filters,
+                        width,
+                        height
+                    )
 
-                    # Check the size of the resulting file
-                    fseek(fp, 0, SEEK_END)
-                    current_filesize = ftell(fp)
+                    current_filesize = bufstate.size
 
                     if current_filesize < best_filesize:
                         # Save the settings if we found a better result
@@ -320,7 +336,7 @@ cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata
                         best_filters = filters
                         best_filesize = current_filesize
 
-                    fclose(fp)
+                    # fclose(fp)
 
     # TODO: Activate memmory buffer conversion
     # free(buf)
