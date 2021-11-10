@@ -225,37 +225,6 @@ cdef optimize_greedy(numpy.uint8_t[:,:,::1] imagedata, int width, int height, gr
 
     return outbuffer, cache
 
-    # Create a tmp file
-    cdef libpng.png_FILE_p fp = tmpfile()
-
-    write_to_file(imagedata, fp,
-                  cache.compr_lvl,
-                  cache.mem_lvl,
-                  cache.strat,
-                  cache.filters,
-                  width, height)
-
-    # Copy file data to bytearray
-    fseek(fp, 0, SEEK_END)
-    filesize = ftell(fp)
-    rewind(fp)
-
-    outdata = bytearray(filesize)
-    cdef char *out = PyByteArray_AS_STRING(outdata)
-    wresult = fread(out, 1, filesize, fp)
-
-    if wresult != filesize:
-        raise MemoryError("Copy to bytearray failed for PNG conversion.")
-
-    # Free memory
-    fclose(fp)
-
-    # TODO: Free memory of outbuffer of in-memory file
-    # free(outbuffer)
-
-    return outdata, cache
-
-
 @cython.boundscheck(False)
 @cython.wraparound(False)
 cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata, int width, int height):
@@ -288,8 +257,6 @@ cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata
 
     cdef greedy_cache_param result
 
-    # tmp file for the trials
-    # cdef libpng.png_FILE_p fp
     cdef png_tmp_file.tmp_file_buffer_state bufstate
 
     for filters in range(GREEDY_FILTER_0, GREEDY_FILTER_5 + 1):
@@ -299,26 +266,13 @@ cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata
         for strategy in range(GREEDY_COMPR_STRAT_MIN, GREEDY_COMPR_STRAT_MAX + 1):
             for compr_lvl in range(GREEDY_COMPR_LVL_MIN, GREEDY_COMPR_LVL_MAX + 1):
                 for mem_lvl in range(GREEDY_COMPR_MEM_LVL_MIN, GREEDY_COMPR_MEM_LVL_MAX + 1):
-                    # TODO: Create an in-memory stream of a file
-                    # fp = open_memstream(&buf, &len)
-
-                    # Create a tmp file
-                    # fp = tmpfile()
-# 
-                    # # Write the file to the memory stream
-                    # write_to_file(imagedata, fp, compr_lvl, mem_lvl,
-                    #                strategy, filters, width, height)
-# 
-                    # # Check the size of the resulting file
-                    # fseek(fp, 0, SEEK_END)
-                    # current_filesize = ftell(fp)
                     bufstate.buffer = NULL
                     bufstate.size = 0
 
                     write_to_buffer(
                         imagedata,
                         &bufstate,
-                        compr_lvl, 
+                        compr_lvl,
                         mem_lvl,
                         strategy,
                         filters,
@@ -335,11 +289,6 @@ cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata
                         best_compr_strat = strategy
                         best_filters = filters
                         best_filesize = current_filesize
-
-                    # fclose(fp)
-
-    # TODO: Activate memmory buffer conversion
-    # free(buf)
 
     result.compr_lvl = best_compr_lvl
     result.mem_lvl = best_compr_mem_lvl
