@@ -10,10 +10,7 @@ from libc.stdio cimport SEEK_END, fclose, fread, fseek, ftell, rewind, tmpfile
 from libc.stdint cimport uint8_t
 from libc.stdlib cimport malloc, free
 from libc.string cimport memcpy, memset
-
-# TODO: Use an in-memory file for much better speed
-#       Currently deactivated because it doesn't work on Windows :(
-# from posix.stdio cimport open_memstream
+from libcpp.vector cimport vector
 
 from ..opus.bytearray cimport PyByteArray_AS_STRING
 from . cimport libpng
@@ -212,10 +209,21 @@ cdef optimize_greedy(numpy.uint8_t[:,:,::1] imagedata, int width, int height, gr
     if cache.compr_lvl == 0xFF:
         cache = optimize_greedy_iterate(imagedata, width, height)
 
-    # TODO: Create an in-memory stream of a file
-    # cdef char *outbuffer
-    # cdef size_t outbuffer_len
-    # cdef libpng.png_FILE_p fp = open_memstream(&outbuffer, &outbuffer_len)
+    cdef png_tmp_file.tmp_file_buffer_state bufstate
+    bufstate.buffer = NULL
+    bufstate.size = 0
+
+    write_to_buffer(imagedata,
+                    &bufstate,
+                    cache.compr_lvl,
+                    cache.mem_lvl,
+                    cache.strat,
+                    cache.filters,
+                    width, height)
+
+    outbuffer = <bytes>bufstate.buffer[:bufstate.size]
+
+    return outbuffer, cache
 
     # Create a tmp file
     cdef libpng.png_FILE_p fp = tmpfile()
@@ -279,11 +287,6 @@ cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata
     cdef uint8_t best_filters = 0xFF
 
     cdef greedy_cache_param result
-
-    # TODO: Create a memory buffer that the PNG trials are written into
-    # cdef char *buf
-    # cdef size_t len
-    # cdef libpng.png_FILE_p fp
 
     # tmp file for the trials
     cdef libpng.png_FILE_p fp
@@ -396,7 +399,8 @@ cdef void write_to_file(numpy.uint8_t[:,:,::1] imagedata,
 @cython.boundscheck(False)
 @cython.wraparound(False)
 cdef void write_to_buffer(numpy.uint8_t[:,:,::1] imagedata,
-                          png_tmp_file.tmp_file_buffer_state bufstate,
+                          png_tmp_file.tmp_file_buffer_state *bufstate,
+                          # vector[char] *bufstate,
                           int compression_level, int memory_level,
                           int compression_strategy, int filters,
                           int width, int height):
@@ -406,8 +410,8 @@ cdef void write_to_buffer(numpy.uint8_t[:,:,::1] imagedata,
     :param imagedata: A memory view of a 3-dimensional array with RGBA color
                       values for pixels. The array is expected to be C-aligned.
     :type imagedata: uint8_t[:,:,::1]
-    :param bufstate: Struct containg the pointer to and the size of a buffer.
-    :type bufstate: tmp_file_buffer_state
+    :param bufstate: Struct containing the pointer to and the size of a buffer.
+    :type bufstate: png_tmp_file.tmp_file_buffer_state*
     :param compression_level: libpng compression level setting. (allowed: 1-9)
     :type compression_level: int
     :param memory_level: libpng compression memory level setting. (allowed: 1-9)
@@ -443,7 +447,7 @@ cdef void write_to_buffer(numpy.uint8_t[:,:,::1] imagedata,
 
     # Set ur write function for writing to buffer
     libpng.png_set_write_fn(write_ptr,
-                            &bufstate,
+                            bufstate,
                             &png_tmp_file.tmp_file_png_write_fn,
                             &png_tmp_file.tmp_file_flush_fn)
 
