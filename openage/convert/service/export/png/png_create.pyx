@@ -6,11 +6,9 @@
 Creates valid PNG files as bytearrays by utilizing libpng.
 """
 
-from libc.stdio cimport SEEK_END, fclose, fread, fseek, ftell, rewind, tmpfile
 from libc.stdint cimport uint8_t
 from libc.stdlib cimport malloc, free
 from libc.string cimport memcpy, memset
-from libcpp.vector cimport vector
 
 from ..opus.bytearray cimport PyByteArray_AS_STRING
 from . cimport libpng
