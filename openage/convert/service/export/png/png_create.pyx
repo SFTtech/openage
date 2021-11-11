@@ -59,7 +59,7 @@ def save(numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] imagedata not None,
          compr_method=CompressionMethod.COMPR_DEFAULT, compr_settings=None):
     """
     Convert an image matrix with RGBA colors to a PNG. The PNG is returned
-    as a bytearray.
+    as a bytearray or bytes object.
 
     The function provides the option to reduce the resulting PNG size by
     doing multiple compression trials.
@@ -186,7 +186,7 @@ cdef bytearray optimize_default(numpy.uint8_t[:,:,::1] imagedata, int width, int
 cdef optimize_greedy(numpy.uint8_t[:,:,::1] imagedata, int width, int height, greedy_cache_param cache):
     """
     Create an in-memory PNG by greedily searching for the result with the
-    smallest file size and copying it to a bytearray.
+    smallest file size and copying it to a bytes object.
 
     The function provides the option to run the PNG generation with a fixed set of
     (optimal) compression parameters that were found in a previous run. In this
@@ -365,12 +365,11 @@ cdef void write_to_file(numpy.uint8_t[:,:,::1] imagedata,
 @cython.wraparound(False)
 cdef void write_to_buffer(numpy.uint8_t[:,:,::1] imagedata,
                           png_tmp_file.tmp_file_buffer_state *bufstate,
-                          # vector[char] *bufstate,
                           int compression_level, int memory_level,
                           int compression_strategy, int filters,
                           int width, int height):
     """
-    Write an image matrix with RGBA color values to a file.
+    Write an image matrix with RGBA color values to a given buffer.
 
     :param imagedata: A memory view of a 3-dimensional array with RGBA color
                       values for pixels. The array is expected to be C-aligned.
