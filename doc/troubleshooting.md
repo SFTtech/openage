@@ -26,3 +26,13 @@ A workaround would be to make a backup of your AGE2 directory and let the conver
 backup at subfolder `AGE2/resources` delete all files ***except*** folders. Another workaround would be to
 backup your AGE2 folder and redownload it to have a clean install. After conversion you can replace
 it with the backup.
+
+## Installation
+
+### Cannot specify compile definitions for target "SDL2::SDL2" which is not built by this project
+
+This error is specific to a few operating systems. The main cause is that your SDL2 version is too old and does not
+include the necessary CMake files defining the target. There is an indepth discussion about this
+[here](https://discourse.libsdl.org/t/how-is-sdl2-supposed-to-be-used-with-cmake/31275/16).
+As a solution, you should update your SDL packages to SDL >=2.0.12 or **compile the latest SDL2 and SDL2-image from
+source**. The latest version includes the necessary CMake files to expose the `SDL2::SDL2` target.
