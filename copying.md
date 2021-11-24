@@ -16,7 +16,7 @@ _the openage authors_ are:
 | Sascha Vincent Kurowski     | svkurowski                  | svkurowski à gmail dawt com                       |
 | James Mintram               | JimmyJazz                   | jamesmintram à gmail dawt com                     |
 | Martin McGrath              | MartinMcGrath               | mcgrath dawt martin à gmail dawt com              |
-| Renée Kooi                  | goto-bus-stop               | renee à kooi dawt me                               |
+| Renée Kooi                  | goto-bus-stop               | renee à kooi dawt me                              |
 | Markus Elfring              | elfring                     | elfring à users dawt sourceforge dawt net         |
 | Jimmy Berry                 | boombatower                 | jimmy à boombatower dawt com                      |
 | João Roque                  | joaoroque                   | joaoroque à gmail dawt com                        |
@@ -138,6 +138,7 @@ _the openage authors_ are:
 | Antonio M. R. Cunha         | Grubben                     | antoniomsprc à gmail dawt com                     |
 | Jens Nyman                  | nymanjens                   | nymanjens dawt nj à gmail dawt com                |
 | Deepak Dinesh               | deepak                      | d.deepakdinesh13 à gmail dawt com                 |
+| Damien Lejay                | dlejay                      | lejay à paracompact dawt space                    |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

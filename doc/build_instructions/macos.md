@@ -7,13 +7,13 @@
 ```
 brew update-reset && brew update
 brew tap homebrew/cask-fonts
-brew install --cask font-dejavu-sans
+brew install font-dejavu
 brew install cmake python3 libepoxy freetype fontconfig harfbuzz sdl2 sdl2_image opus opusfile qt5 libogg libpng eigen
 brew install llvm
 pip3 install cython numpy jinja2 lz4 pillow pygments toml
 
 # optional, for documentation generation
-brew install --cask doxygen
+brew install doxygen
 ```
 
 You will also need [nyan](https://github.com/SFTtech/nyan/blob/master/doc/building.md) and its dependencies:
