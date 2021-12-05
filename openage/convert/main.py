@@ -228,7 +228,8 @@ def main(args, error):
 
     game_version = None
     if args.game_edition is not None:
-        game_version = get_game_version_by_id(args.game_edition, args.game_expansion, avail_game_eds, avail_game_exps)
+        game_version = get_game_version_by_id(
+            args.game_edition, args.game_expansion, avail_game_eds, avail_game_exps)
         if game_version[0] is None:
             err(f"Game edition {args.game_edition} is not supported.")
             return 1
@@ -236,7 +237,7 @@ def main(args, error):
         game_version = get_game_version(srcdir, avail_game_eds, avail_game_exps)
 
     if args.interactive:
-        interactive_browser(root["cfg"], srcdir, game_version=game_version)
+        interactive_browser(srcdir, game_version=game_version)
         return 0
 
     # conversion target

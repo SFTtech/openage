@@ -64,7 +64,11 @@ def get_game_version(srcdir, avail_game_eds, avail_game_exps):
 
     return game_version
 
+
 def get_game_version_by_id(edition_name, expansion_names, avail_game_eds, avail_game_exps):
+    """
+    Select game version.
+    """
     res_edition = None
     for game_edition in avail_game_eds:
         if game_edition.game_id == edition_name:

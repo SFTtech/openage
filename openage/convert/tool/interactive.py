@@ -12,11 +12,9 @@ from openage.convert.processor.export.media_exporter import MediaExporter
 from ...log import warn, info
 from ...util.fslike.directory import Directory
 from ..service.init.mount_asset_dirs import mount_asset_dirs
-from ..service.init.version_detect import create_version_objects
-from .subtool.version_select import get_game_version
 
 
-def interactive_browser(cfg, srcdir, game_version):
+def interactive_browser(srcdir, game_version):
     """
     launch an interactive view for browsing the original
     archives.
