@@ -16,7 +16,7 @@ from ..service.init.version_detect import create_version_objects
 from .subtool.version_select import get_game_version
 
 
-def interactive_browser(cfg, srcdir=None):
+def interactive_browser(cfg, srcdir, game_version):
     """
     launch an interactive view for browsing the original
     archives.
@@ -29,13 +29,6 @@ def interactive_browser(cfg, srcdir=None):
     # the variables are actually used, in the interactive prompt.
     # pylint: disable=possibly-unused-variable
 
-    # Initialize game versions data
-
-    auxiliary_files_dir = cfg / "converter" / "games"
-    avail_game_eds, avail_game_exps = create_version_objects(auxiliary_files_dir)
-
-    # Acquire game version info
-    game_version = get_game_version(srcdir, avail_game_eds, avail_game_exps)
     if not game_version[0]:
         warn("cannot launch browser as no valid game version was found.")
         return

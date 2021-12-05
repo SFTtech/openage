@@ -63,3 +63,19 @@ def get_game_version(srcdir, avail_game_eds, avail_game_exps):
             info(" * %s", expansion.expansion_name)
 
     return game_version
+
+def get_game_version_by_id(edition_name, expansion_names, avail_game_eds, avail_game_exps):
+    res_edition = None
+    for game_edition in avail_game_eds:
+        if game_edition.game_id == edition_name:
+            res_edition = game_edition
+
+    if res_edition is None:
+        return None, []
+
+    res_expansions = []
+    for game_expansion in avail_game_exps:
+        if game_expansion.game_id in res_edition.expansions and game_expansion.game_id in expansion_names:
+            res_expansions.append(game_expansion)
+
+    return res_edition, res_expansions

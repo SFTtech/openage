@@ -17,10 +17,10 @@ from .service.init.mount_asset_dirs import mount_asset_dirs
 from .service.init.version_detect import create_version_objects
 from .tool.interactive import interactive_browser
 from .tool.subtool.acquire_sourcedir import acquire_conversion_source_dir, wanna_convert
-from .tool.subtool.version_select import get_game_version
+from .tool.subtool.version_select import get_game_version, get_game_version_by_id
 
 
-def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
+def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None, game_version=None):
     """
     Perform asset conversion.
 
@@ -63,12 +63,14 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
     # Create CLI args info
     debug_cli_args(args.debugdir, args.debug_info, args)
 
-    # Initialize game versions data
-    auxiliary_files_dir = args.cfg_dir / "converter" / "games"
-    args.avail_game_eds, args.avail_game_exps = create_version_objects(auxiliary_files_dir)
-
     # Acquire game version info
-    args.game_version = get_game_version(srcdir, args.avail_game_eds, args.avail_game_exps)
+    if game_version is None:
+        # Initialize game versions data
+        auxiliary_files_dir = args.cfg_dir / "converter" / "games"
+        args.avail_game_eds, args.avail_game_exps = create_version_objects(auxiliary_files_dir)
+        game_version = get_game_version(srcdir, args.avail_game_eds, args.avail_game_exps)
+    args.game_version = game_version
+
     debug_game_version(args.debugdir, args.debug_info, args)
 
     if not args.game_version[0]:
@@ -191,6 +193,14 @@ def init_subparser(cli):
         "--debug-info", type=int, choices=[0, 1, 2, 3, 4, 5, 6],
         help="create debug output for the converter run; verbosity levels 0-6")
 
+    cli.add_argument(
+        "--game-edition", type=str, default=None,
+        help="set the game edition and skip auto-detection")
+
+    cli.add_argument(
+        "--game-expansion", type=str, action='append', default=None,
+        help="set the game expansions and skip auto-detection")
+
 
 def main(args, error):
     """ CLI entry point """
@@ -204,7 +214,7 @@ def main(args, error):
     if args.source_dir is not None:
         srcdir = CaseIgnoringDirectory(args.source_dir).root
     else:
-        srcdir = None
+        srcdir = acquire_conversion_source_dir()
 
     # mount the config folder at "cfg/"
     from ..cvar.location import get_config_path
@@ -213,8 +223,20 @@ def main(args, error):
     root["cfg"].mount(get_config_path())
     args.cfg_dir = root["cfg"]
 
+    auxiliary_files_dir = root["cfg"] / "converter" / "games"
+    avail_game_eds, avail_game_exps = create_version_objects(auxiliary_files_dir)
+
+    game_version = None
+    if args.game_edition is not None:
+        game_version = get_game_version_by_id(args.game_edition, args.game_expansion, avail_game_eds, avail_game_exps)
+        if game_version[0] is None:
+            err(f"Game edition {args.game_edition} is not supported.")
+            return 1
+    else:
+        game_version = get_game_version(srcdir, avail_game_eds, avail_game_exps)
+
     if args.interactive:
-        interactive_browser(root["cfg"], srcdir)
+        interactive_browser(root["cfg"], srcdir, game_version=game_version)
         return 0
 
     # conversion target
@@ -222,7 +244,7 @@ def main(args, error):
     outdir = get_asset_path(args.output_dir)
 
     if args.force or wanna_convert() or conversion_required(outdir, args):
-        if not convert_assets(outdir, args, srcdir):
+        if not convert_assets(outdir, args, srcdir, game_version=game_version):
             err("game asset conversion failed")
             return 1
 
