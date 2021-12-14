@@ -116,6 +116,13 @@ Make sure you have all the dependencies installed.
 - Select the compiler and mode: see `./configure --help`
   - Linux etc: `./configure`
   - macOS:  `./configure --compiler=clang`
+    - hassle-free building on macOS (if above is not working)
+      - get the latest llvm build from: `https://github.com/llvm/llvm-project/releases/latest`
+        - (yeah, xcode still needs to be installed)
+      - install python deps: `pip3 install cython NumPy Pillow Pygments Jinja2 toml`
+      - install build deps: `brew install sdl2_image opusfile libepoxy eigen qt@5`
+      - configure: `CC=/path/to/downloaded-llvm/bin/clang CXX=/path/to/downloaded-llvm/bin/clang++ LD=/path/to/downloaded-llvm/bin/ld64.lld ./configure --download-nyan`
+      - a smoll build hint for later: use your freaking cores with the -j option later `make -j6`
 - `make` generates and builds everything
 - `make run` or `bin/run` launches the game. Try `bin/run --help`!
 - `make test` runs the built-in tests.
