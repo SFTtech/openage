@@ -36,11 +36,22 @@ jobs:
           key: '${{ runner.os }}-ccache-${{ steps.timestamp.outputs.timestamp }}'
           restore-keys: |
             ${{ runner.os }}-ccache-
-
       - name: Brew update-reset
         run: brew update-reset
       - name: Brew update
         run: brew update
+      - name: Install clang / LLVM 13.0.0
+        run: |
+          set -x
+          brew install wget
+          mkdir -p /tmp/clang
+          cd /tmp/clang
+          wget https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/clang+llvm-13.0.0-x86_64-apple-darwin.tar.xz -O clang-13.0.0.tar.xz
+          ls
+          tar -xvf clang-13.0.0.tar.xz -C ~
+          cd ~
+          mv clang+llvm-13.0.0-x86_64-apple-darwin clang-13.0.0
+          ~/clang-13.0.0/bin/clang++ --version
       - name: Brew install DeJaVu fonts
         run: brew tap homebrew/cask-fonts && brew install font-dejavu
       - name: Remove python's 2to3 link so that 'brew link' does not fail
@@ -57,8 +68,10 @@ jobs:
         # numpy pulls gcc as dep? and pygments doesn't work.
         run: pip3 install --upgrade cython numpy jinja2 lz4 pillow pygments toml
       - name: Configure
-        run: ./configure --compiler=clang++ --mode=debug --ccache --download-nyan
+        run: |
+          CLANG_PATH="$HOME/clang-13.0.0/bin/clang++"
+          ./configure --compiler="$CLANG_PATH" --mode=debug --ccache --download-nyan
       - name: Build
-        run: make -j$(sysctl -n hw.ncpu) VERBOSE=1
+        run: make -j$(sysctl -n hw.logicalcpu) VERBOSE=1
       - name: Test
         run: make test
