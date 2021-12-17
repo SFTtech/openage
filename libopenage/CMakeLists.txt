@@ -250,6 +250,9 @@ configure_file(
 # platform specifics
 if(APPLE)
 	find_path(QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders "/usr/local/opt/qt5/include")
+	find_library(COCOA_LIBRARY Cocoa)
+	target_include_directories(libopenage PRIVATE ${COCOA_LIBRARY})
+	target_link_libraries(libopenage PRIVATE ${COCOA_LIBRARY})
 endif()
 
 
