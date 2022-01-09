@@ -1,4 +1,4 @@
-# Copyright 2013-2021 the openage authors. See copying.md for legal info.
+# Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 # >=3.16 finding numpy with the findpython3 module
 cmake_minimum_required(VERSION 3.16)
@@ -23,10 +23,9 @@ You have chosen, or been chosen, to attempt the daring task of building openage.
 If you have installed all the dependencies that are conveniently listed in
 [doc/building.md], this _might_ just work!
 
-If it doesn't, consider reporting the issue: https://github.com/SFTtech/openage
-Or ask for help:
+If it doesn't, consider reporting the issue, or ask for help:
+  * GitHub: https://github.com/SFTtech/openage
   * Matrix: #sfttech:matrix.org
-  * IRC:    #sfttech on libera.chat
 ")
 
 
