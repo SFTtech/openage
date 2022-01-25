@@ -24,6 +24,11 @@ find_path(FREETYPE_INCLUDE_DIRS freetype/freetype.h HINTS /usr/include/freetype2
 
 # provide apple qt5 location
 if(APPLE)
+	execute_process(
+		COMMAND brew --prefix
+		OUTPUT_VARIABLE HOMEBREW_PREFIX
+		OUTPUT_STRIP_TRAILING_WHITESPACE
+		)
 	list(APPEND CMAKE_PREFIX_PATH ${HOMEBREW_PREFIX}/opt/qt5)
 endif()
 
@@ -249,11 +254,6 @@ configure_file(
 ##################################################
 # platform specifics
 if(APPLE)
-	execute_process(
-		COMMAND brew --prefix
-		OUTPUT_VARIABLE HOMEBREW_PREFIX
-		OUTPUT_STRIP_TRAILING_WHITESPACE
-		)
 	find_path(
 		QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders
 		"${HOMEBREW_PREFIX}/opt/qt5/include"
