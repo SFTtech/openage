@@ -31,7 +31,7 @@ cd openage
 ## Building
 
 ```
-./configure --compiler=clang++ --mode=release --download-nyan
+./configure --compiler=$(which clang++) --mode=release --download-nyan
 make
 ```
 
