@@ -32,7 +32,7 @@ cd openage
 
 ```
 ./configure --compiler=$(which clang++) --mode=release --download-nyan
-make
+make -j$(sysctl -n hw.ncpu)
 ```
 
 ## Testing
