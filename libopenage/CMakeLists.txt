@@ -24,7 +24,12 @@ find_path(FREETYPE_INCLUDE_DIRS freetype/freetype.h HINTS /usr/include/freetype2
 
 # provide apple qt5 location
 if(APPLE)
-	list(APPEND CMAKE_PREFIX_PATH /usr/local/opt/qt5)
+	execute_process(
+		COMMAND brew --prefix
+		OUTPUT_VARIABLE HOMEBREW_PREFIX
+		OUTPUT_STRIP_TRAILING_WHITESPACE
+		)
+	list(APPEND CMAKE_PREFIX_PATH ${HOMEBREW_PREFIX}/opt/qt5)
 endif()
 
 # windows does not have libm
@@ -249,7 +254,10 @@ configure_file(
 ##################################################
 # platform specifics
 if(APPLE)
-	find_path(QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders "/usr/local/opt/qt5/include")
+	find_path(
+		QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders
+		"${HOMEBREW_PREFIX}/opt/qt5/include"
+		)
 	find_library(COCOA_LIBRARY Cocoa)
 	target_include_directories(libopenage PRIVATE ${COCOA_LIBRARY})
 	target_link_libraries(libopenage PRIVATE ${COCOA_LIBRARY})
