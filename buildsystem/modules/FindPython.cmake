@@ -48,9 +48,9 @@ endif()
 # use cmake's FindPython3 to locate library and interpreter
 find_package(Python3 ${PYTHON_MIN_VERSION} ${need_exact_version} COMPONENTS Interpreter Development NumPy)
 
-
 # python version string to cpython api test in modules/FindPython_test.cpp
-set(PYTHON_MIN_VERSION_HEX "0x0${Python3_VERSION_MAJOR}0${Python3_VERSION_MINOR}0000")
+math(EXPR BIT_SHIFT_HEX "${Python3_VERSION_MAJOR} << 24 | ${Python3_VERSION_MINOR} << 16" OUTPUT_FORMAT HEXADECIMAL)
+set(PYTHON_MIN_VERSION_HEX "${BIT_SHIFT_HEX}")
 
 # there's a static_assert that tests the Python version.
 # that way, we verify the interpreter and the library version.
