@@ -1,4 +1,4 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides an abstract read-only FileLikeObject.
@@ -6,6 +6,7 @@ Provides an abstract read-only FileLikeObject.
 
 import os
 from io import UnsupportedOperation
+from typing import NoReturn
 
 from .abstract import FileLikeObject
 
@@ -21,18 +22,18 @@ class ReadOnlyFileLikeObject(FileLikeObject):
     # pylint doesn't understand that this class is supposed to be abstract.
     # pylint: disable=abstract-method
 
-    def flush(self):
+    def flush(self) -> None:
         # no flushing is needed for read-only objects.
         pass
 
-    def readable(self):
+    def readable(self) -> bool:
         return True
 
-    def write(self, data):
+    def write(self, data) -> NoReturn:
         del data  # unused
         raise UnsupportedOperation("read-only file")
 
-    def writable(self):
+    def writable(self) -> bool:
         return False
 
 
@@ -50,11 +51,11 @@ class PosSavingReadOnlyFileLikeObject(ReadOnlyFileLikeObject):
         super().__init__()
         self.pos = 0
 
-    def seek(self, offset, whence=os.SEEK_SET):
+    def seek(self, offset: int, whence=os.SEEK_SET) -> None:
         self.pos = self.seek_helper(offset, whence)
 
-    def seekable(self):
+    def seekable(self) -> bool:
         return True
 
-    def tell(self):
+    def tell(self) -> int:
         return self.pos

@@ -1,4 +1,4 @@
-# Copyright 2017-2021 the openage authors. See copying.md for legal info.
+# Copyright 2017-2022 the openage authors. See copying.md for legal info.
 
 """
 Profiling utilities
@@ -23,8 +23,8 @@ class Profiler:
     p.enable() and p.disable().
     """
 
-    profile = None
-    profile_stats = None
+    profile: cProfile.Profile = None
+    profile_stats: pstats.Stats = None
     profile_stream = None
 
     def __init__(self, oStream=None):
@@ -44,7 +44,7 @@ class Profiler:
         """
         self.disable()
 
-    def write_report(self, sortby='calls'):
+    def write_report(self, sortby: str = 'calls') -> None:
         """
         Write the profile stats to profile_stream's file.
         """
@@ -52,7 +52,7 @@ class Profiler:
         self.profile_stats.sort_stats(sortby)
         self.profile_stats.print_stats()
 
-    def report(self, sortby='calls'):
+    def report(self, sortby: str = 'calls'):
         """
         Return the profile_stats to the console.
         """
@@ -105,7 +105,12 @@ class Tracemalloc:
         """
         self.disable()
 
-    def report(self, sortby='lineno', cumulative=True, limit=100):
+    def report(
+        self,
+        sortby: str = 'lineno',
+        cumulative: bool = True,
+        limit: int = 100
+    ) -> None:
         """
         Return the snapshot statistics to the console.
         """
@@ -113,13 +118,13 @@ class Tracemalloc:
             print(stat)
 
     @staticmethod
-    def enable():
+    def enable() -> None:
         """
         Begins profiling calls.
         """
         tracemalloc.start()
 
-    def disable(self):
+    def disable(self) -> None:
         """
         Stop profiling calls.
         """

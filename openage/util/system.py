@@ -1,4 +1,4 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Various OS utilities
@@ -10,7 +10,7 @@ from sys import platform
 from .math import INF
 
 
-def free_memory():
+def free_memory() -> int:
     """
     Returns the amount of free bytes of memory.
     On failure, returns +inf.

@@ -1,4 +1,4 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 FSLikeObjects that represent actual file system paths:
@@ -7,10 +7,18 @@ FSLikeObjects that represent actual file system paths:
  - CaseIgnoringReadOnlyDirectory
 """
 
+from __future__ import annotations
+import typing
+
 import os
 import pathlib
 
+from typing import Union
+
 from .abstract import FSLikeObject
+
+if typing.TYPE_CHECKING:
+    from io import BufferedReader
 
 
 class Directory(FSLikeObject):
@@ -41,64 +49,64 @@ class Directory(FSLikeObject):
     def __repr__(self):
         return f"Directory({self.path.decode(errors='replace')})"
 
-    def resolve(self, parts):
+    def resolve(self, parts) -> Union[str, bytes]:
         """ resolves parts to an actual path name. """
         return os.path.join(self.path, *parts)
 
-    def open_r(self, parts):
+    def open_r(self, parts) -> BufferedReader:
         return open(self.resolve(parts), 'rb')
 
-    def open_w(self, parts):
+    def open_w(self, parts) -> BufferedReader:
         return open(self.resolve(parts), 'wb')
 
-    def open_rw(self, parts):
+    def open_rw(self, parts) -> BufferedReader:
         return open(self.resolve(parts), 'r+b')
 
-    def open_a(self, parts):
+    def open_a(self, parts) -> BufferedReader:
         return open(self.resolve(parts), 'ab')
 
-    def open_ar(self, parts):
+    def open_ar(self, parts) -> BufferedReader:
         return open(self.resolve(parts), 'a+b')
 
-    def get_native_path(self, parts):
+    def get_native_path(self, parts) -> Union[str, bytes]:
         return self.resolve(parts)
 
-    def list(self, parts):
+    def list(self, parts) -> typing.Generator[str | bytes, None, None]:
         # TODO migrate to scandir, once we're on py 3.5.
         yield from os.listdir(self.resolve(parts))
 
-    def filesize(self, parts):
+    def filesize(self, parts) -> int:
         return os.path.getsize(self.resolve(parts))
 
-    def mtime(self, parts):
+    def mtime(self, parts) -> float:
         return os.path.getmtime(self.resolve(parts))
 
-    def mkdirs(self, parts):
+    def mkdirs(self, parts) -> None:
         return os.makedirs(self.resolve(parts), exist_ok=True)
 
-    def rmdir(self, parts):
+    def rmdir(self, parts) -> None:
         return os.rmdir(self.resolve(parts))
 
-    def unlink(self, parts):
+    def unlink(self, parts) -> None:
         return os.unlink(self.resolve(parts))
 
-    def touch(self, parts):
+    def touch(self, parts) -> None:
         try:
             os.utime(self.resolve(parts))
         except FileNotFoundError:
             with open(self.resolve(parts), 'ab') as directory:
                 directory.close()
 
-    def rename(self, srcparts, tgtparts):
+    def rename(self, srcparts, tgtparts) -> None:
         return os.rename(self.resolve(srcparts), self.resolve(tgtparts))
 
-    def is_file(self, parts):
+    def is_file(self, parts) -> bool:
         return os.path.isfile(self.resolve(parts))
 
-    def is_dir(self, parts):
+    def is_dir(self, parts) -> bool:
         return os.path.isdir(self.resolve(parts))
 
-    def writable(self, parts):
+    def writable(self, parts) -> bool:
         parts = list(parts)
         path = self.resolve(parts)
 
@@ -111,11 +119,11 @@ class Directory(FSLikeObject):
 
         return os.access(path, os.W_OK)
 
-    def watch(self, parts, callback):
+    def watch(self, parts, callback) -> None:
         # TODO
         pass
 
-    def poll_watches(self):
+    def poll_watches(self) -> None:
         # TODO
         pass
 
@@ -128,6 +136,7 @@ class CaseIgnoringDirectory(Directory):
     The one exception is the constructor argument:
     It _must_ be in the correct case.
     """
+
     def __init__(self, path, create_if_missing=False):
         super().__init__(path, create_if_missing)
         self.cache = {(): ()}
@@ -136,7 +145,7 @@ class CaseIgnoringDirectory(Directory):
     def __repr__(self):
         return f"Directory({self.path.decode(errors='replace')})"
 
-    def actual_name(self, stem, name):
+    def actual_name(self, stem: list, name: str) -> str:
         """
         If the (lower-case) path that's given in stem exists,
         fetches the actual name for the given lower-case name.
@@ -161,7 +170,7 @@ class CaseIgnoringDirectory(Directory):
         except KeyError:
             return name
 
-    def resolve(self, parts):
+    def resolve(self, parts) -> Union[str, bytes]:
         parts = [part.lower() for part in parts]
 
         i = 0
@@ -182,7 +191,7 @@ class CaseIgnoringDirectory(Directory):
 
         return os.path.join(self.path, *result)
 
-    def list(self, parts):
+    def list(self, parts) -> typing.Generator[str | bytes, None, None]:
         for name in super().list(parts):
             yield name.lower()
 

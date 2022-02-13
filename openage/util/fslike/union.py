@@ -1,4 +1,4 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides Union, a utility class for combining multiple FSLikeObjects to a
@@ -45,7 +45,7 @@ class Union(FSLikeObject):
     def root(self):
         return UnionPath(self, [])
 
-    def add_mount(self, pathobj, mountpoint, priority):
+    def add_mount(self, pathobj: Path, mountpoint, priority: int) -> None:
         """
         This method should not be called directly; instead, use the mount
         method of Path objects that were obtained from this.
@@ -68,7 +68,7 @@ class Union(FSLikeObject):
         for subdir in mountpoint:
             dirstructure = dirstructure.setdefault(subdir, {})
 
-    def remove_mount(self, search_mountpoint, source_pathobj=None):
+    def remove_mount(self, search_mountpoint, source_pathobj: Path = None) -> None:
         """
         Remove a mount from the union by searching for the source
         that provides the given mountpoint.
@@ -168,27 +168,27 @@ class Union(FSLikeObject):
         if not dir_exists:
             raise FileNotFoundError(b'/'.join(parts))
 
-    def filesize(self, parts):
+    def filesize(self, parts) -> int:
         for path in self.candidate_paths(parts):
             if path.is_file():
                 return path.filesize
 
         raise FileNotFoundError(b'/'.join(parts))
 
-    def mtime(self, parts):
+    def mtime(self, parts) -> float:
         for path in self.candidate_paths(parts):
             if path.exists():
                 return path.mtime
 
         raise FileNotFoundError(b'/'.join(parts))
 
-    def mkdirs(self, parts):
+    def mkdirs(self, parts) -> None:
         for path in self.candidate_paths(parts):
             if path.writable():
                 return path.mkdirs()
         return None
 
-    def rmdir(self, parts):
+    def rmdir(self, parts) -> None:
         found = False
 
         # remove the directory in all mounts where it exists
@@ -200,7 +200,7 @@ class Union(FSLikeObject):
         if not found:
             raise FileNotFoundError(b'/'.join(parts))
 
-    def unlink(self, parts):
+    def unlink(self, parts) -> None:
         found = False
 
         # remove the file in all mounts where it exists
@@ -212,14 +212,14 @@ class Union(FSLikeObject):
         if not found:
             raise FileNotFoundError(b'/'.join(parts))
 
-    def touch(self, parts):
+    def touch(self, parts) -> None:
         for path in self.candidate_paths(parts):
             if path.writable():
                 return path.touch()
 
         raise FileNotFoundError(b'/'.join(parts))
 
-    def rename(self, srcparts, tgtparts):
+    def rename(self, srcparts, tgtparts) -> None:
         found = False
 
         for srcpath in self.candidate_paths(srcparts):
@@ -237,14 +237,14 @@ class Union(FSLikeObject):
                 b'/'.join(tgtparts).decode(errors='replace'))
         raise FileNotFoundError(b'/'.join(srcparts))
 
-    def is_file(self, parts):
+    def is_file(self, parts) -> bool:
         for path in self.candidate_paths(parts):
             if path.is_file():
                 return True
 
         return False
 
-    def is_dir(self, parts):
+    def is_dir(self, parts) -> bool:
         try:
             dirstructure = self.dirstructure
             for part in parts:
@@ -259,14 +259,14 @@ class Union(FSLikeObject):
 
         return False
 
-    def writable(self, parts):
+    def writable(self, parts) -> bool:
         for path in self.candidate_paths(parts):
             if path.writable():
                 return True
 
         return False
 
-    def watch(self, parts, callback):
+    def watch(self, parts, callback) -> bool:
         watching = False
         for path in self.candidate_paths(parts):
             if path.exists():
@@ -283,13 +283,14 @@ class UnionPath(Path):
     """
     Provides an additional method for mounting an other path at this path.
     """
-    def mount(self, pathobj, priority=0):
+
+    def mount(self, pathobj: Path, priority: int = 0) -> None:
         """
         Mounts pathobj here. All parent directories are 'created', if needed.
         """
         return self.fsobj.add_mount(pathobj, self.parts, priority)
 
-    def unmount(self, pathobj=None):
+    def unmount(self, pathobj: Path = None) -> None:
         """
         Unmount a path from the union described by this path.
         This is like "unmounting /home", no matter what the source was.

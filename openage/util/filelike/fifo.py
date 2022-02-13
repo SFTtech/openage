@@ -1,4 +1,4 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides a FileLikeObject that acts like a FIFO.
@@ -6,6 +6,7 @@ Provides a FileLikeObject that acts like a FIFO.
 
 import os
 from io import UnsupportedOperation
+from typing import NoReturn
 
 from .abstract import FileLikeObject
 from ..bytequeue import ByteQueue
@@ -34,7 +35,7 @@ class FIFO(FileLikeObject):
         self.queue = ByteQueue()
         self.pos = 0
 
-    def tell(self):
+    def tell(self) -> int:
         """
         Warning: Returns the position for reading.
 
@@ -42,13 +43,13 @@ class FIFO(FileLikeObject):
         """
         return self.pos
 
-    def tellw(self):
+    def tellw(self) -> int:
         """
         Returns the position for writing.
         """
         return self.pos + len(self.queue)
 
-    def seek(self, offset, whence=os.SEEK_SET):
+    def seek(self, offset, whence=os.SEEK_SET) -> NoReturn:
         """
         Unsupported because this is a FIFO.
         """
@@ -56,7 +57,7 @@ class FIFO(FileLikeObject):
 
         raise UnsupportedOperation("unseekable stream")
 
-    def seekable(self):
+    def seekable(self) -> bool:
         return False
 
     def __len__(self):
@@ -65,7 +66,7 @@ class FIFO(FileLikeObject):
         """
         return len(self.queue)
 
-    def seteof(self):
+    def seteof(self) -> None:
         """
         Declares that no more data will be added using write().
 
@@ -74,7 +75,7 @@ class FIFO(FileLikeObject):
         """
         self.eof = True
 
-    def write(self, data):
+    def write(self, data: bytes) -> None:
         """
         Works until seteof() has been called; accepts bytes objects.
         """
@@ -83,10 +84,10 @@ class FIFO(FileLikeObject):
 
         self.queue.append(data)
 
-    def writable(self):
+    def writable(self) -> bool:
         return True
 
-    def read(self, size=-1):
+    def read(self, size: int = -1) -> bytes:
         """
         If seteof() has not been called yet, requesting more data than
         len(self) raises a ValueError.
@@ -104,16 +105,16 @@ class FIFO(FileLikeObject):
 
         return self.queue.popleft(size)
 
-    def readable(self):
+    def readable(self) -> bool:
         return True
 
-    def get_size(self):
+    def get_size(self) -> int:
         return len(self.queue)
 
-    def flush(self):
+    def flush(self) -> None:
         # no-op
         pass
 
-    def close(self):
+    def close(self) -> None:
         self.closed = True
         self.queue = None

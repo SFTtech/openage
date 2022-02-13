@@ -1,4 +1,4 @@
-# Copyright 2015-2019 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides the FileLikeObject abstract base class, which specifies a file-like
@@ -19,11 +19,12 @@ class FileLikeObject(ABC):
 
     Does not implement/force implementation of line-reading functionality.
     """
+
     def __init__(self):
         self.closed = False
 
     @abstractmethod
-    def read(self, size=-1):
+    def read(self, size: int = -1) -> bytes:
         """
         Read at most size bytes (less if EOF has been reached).
 
@@ -31,13 +32,13 @@ class FileLikeObject(ABC):
         """
 
     @abstractmethod
-    def readable(self):
+    def readable(self) -> bool:
         """
         Returns True if read() is allowed.
         """
 
     @abstractmethod
-    def write(self, data):
+    def write(self, data) -> None:
         """
         Writes all of data to the file.
 
@@ -47,13 +48,13 @@ class FileLikeObject(ABC):
         """
 
     @abstractmethod
-    def writable(self):
+    def writable(self) -> bool:
         """
         Returns True if write() is allowed.
         """
 
     @abstractmethod
-    def seek(self, offset, whence=os.SEEK_SET):
+    def seek(self, offset: int, whence=os.SEEK_SET) -> None:
         """
         Seeks to a given position.
 
@@ -67,7 +68,7 @@ class FileLikeObject(ABC):
         """
 
     @abstractmethod
-    def seekable(self):
+    def seekable(self) -> bool:
         """
         Returns True if seek() is allowed.
         """
@@ -95,7 +96,7 @@ class FileLikeObject(ABC):
         """
 
     @abstractmethod
-    def get_size(self):
+    def get_size(self) -> int:
         """
         Returns the size of the object, if known.
         Returns -1 otherwise.
@@ -113,7 +114,7 @@ class FileLikeObject(ABC):
 
         self.close()
 
-    def seek_helper(self, offset, whence):
+    def seek_helper(self, offset: int, whence) -> int:
         """
         Helper function for use by implementations of seek().
 

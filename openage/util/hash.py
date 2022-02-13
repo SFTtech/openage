@@ -1,12 +1,22 @@
-# Copyright 2021-2021 the openage authors. See copying.md for legal info.
+# Copyright 2021-2022 the openage authors. See copying.md for legal info.
 
 """
 Functions for hashing files.
 """
+from __future__ import annotations
+
+import typing
 import hashlib
 
+if typing.TYPE_CHECKING:
+    from openage.util.fslike.path import Path
 
-def hash_file(path, hash_algo="sha3_256", bufsize=32768):
+
+def hash_file(
+    path: Path,
+    hash_algo: str = "sha3_256",
+    bufsize: int = 32768
+) -> str:
     """
     Get the hash value of a given file.
 

@@ -1,4 +1,4 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides
@@ -29,7 +29,7 @@ class Wrapper(FSLikeObject):
     Pass a context guard to protect calls.
     """
 
-    def __init__(self, obj, contextguard=None):
+    def __init__(self, obj: Path, contextguard = None):
         if not isinstance(obj, Path):
             raise TypeError(f"Path expected as obj, got '{type(obj)}'")
 
@@ -76,48 +76,48 @@ class Wrapper(FSLikeObject):
         with self.contextguard:
             return list(self.obj.joinpath(parts).list())
 
-    def filesize(self, parts):
+    def filesize(self, parts) -> int:
         with self.contextguard:
             return self.obj.joinpath(parts).filesize
 
-    def mtime(self, parts):
+    def mtime(self, parts) -> float:
         with self.contextguard:
             return self.obj.joinpath(parts).mtime
 
-    def mkdirs(self, parts):
+    def mkdirs(self, parts) -> None:
         with self.contextguard:
             return self.obj.joinpath(parts).mkdirs()
 
-    def rmdir(self, parts):
+    def rmdir(self, parts) -> None:
         with self.contextguard:
             return self.obj.joinpath(parts).rmdir()
 
-    def unlink(self, parts):
+    def unlink(self, parts) -> None:
         with self.contextguard:
             return self.obj.joinpath(parts).unlink()
 
-    def touch(self, parts):
+    def touch(self, parts) -> None:
         with self.contextguard:
             return self.obj.joinpath(parts).touch()
 
-    def rename(self, srcparts, tgtparts):
+    def rename(self, srcparts, tgtparts) -> None:
         with self.contextguard:
             return self.obj.joinpath(srcparts).rename(
                 self.obj.joinpath(tgtparts))
 
-    def is_file(self, parts):
+    def is_file(self, parts) -> bool:
         with self.contextguard:
             return self.obj.joinpath(parts).is_file()
 
-    def is_dir(self, parts):
+    def is_dir(self, parts) -> bool:
         with self.contextguard:
             return self.obj.joinpath(parts).is_dir()
 
-    def writable(self, parts):
+    def writable(self, parts) -> bool:
         with self.contextguard:
             return self.obj.joinpath(parts).writable()
 
-    def watch(self, parts, callback):
+    def watch(self, parts, callback) -> bool:
         with self.contextguard:
             return self.obj.joinpath(parts).watch(callback)
 
@@ -158,32 +158,32 @@ class GuardedFile(FileLikeObject):
     context guard.
     """
 
-    def __init__(self, obj, guard):
+    def __init__(self, obj: FileLikeObject, guard):
         super().__init__()
         self.obj = obj
         self.guard = guard
 
-    def read(self, size=-1):
+    def read(self, size: int = -1):
         with self.guard:
             return self.obj.read(size)
 
-    def readable(self):
+    def readable(self) -> bool:
         with self.guard:
             return self.obj.readable()
 
-    def write(self, data):
+    def write(self, data) -> None:
         with self.guard:
             return self.obj.write(data)
 
-    def writable(self):
+    def writable(self) -> bool:
         with self.guard:
             return self.obj.writable()
 
-    def seek(self, offset, whence=os.SEEK_SET):
+    def seek(self, offset: int, whence=os.SEEK_SET) -> None:
         with self.guard:
             return self.obj.seek(offset, whence)
 
-    def seekable(self):
+    def seekable(self) -> bool:
         with self.guard:
             return self.obj.seekable()
 
@@ -199,7 +199,7 @@ class GuardedFile(FileLikeObject):
         with self.guard:
             return self.obj.flush()
 
-    def get_size(self):
+    def get_size(self) -> int:
         with self.guard:
             return self.obj.get_size()
 

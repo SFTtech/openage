@@ -1,11 +1,11 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 """
 Misc string helper functions; this includes encoding, decoding,
 manipulation, ...
 """
 
 
-def decode_until_null(data, encoding='utf-8'):
+def decode_until_null(data: bytes, encoding: str = 'utf-8') -> str:
     """
     decodes a bytes object, aborting at the first \\0 character.
 
@@ -19,7 +19,7 @@ def decode_until_null(data, encoding='utf-8'):
     return data.decode(encoding)
 
 
-def try_decode(data):
+def try_decode(data: bytes) -> str:
     """
     does its best to attempt decoding the given string of unknown encoding.
     """
@@ -31,7 +31,7 @@ def try_decode(data):
     return data.decode('iso-8859-1')
 
 
-def binstr(num, bits=None, group=8):
+def binstr(num: int, bits: int = None, group: int = 8) -> str:
     """
     Similar to the built-in bin(), but optionally takes
     the number of bits as an argument, and prints underscores instead of
@@ -54,7 +54,7 @@ def binstr(num, bits=None, group=8):
     return result
 
 
-def colorize(string, colorcode):
+def colorize(string: str, colorcode: str) -> str:
     """
     Colorizes string with the given EMCA-48 SGR code.
 
@@ -70,7 +70,7 @@ def colorize(string, colorcode):
     return colorized
 
 
-def lstrip_once(string, substr):
+def lstrip_once(string: str, substr: str) -> str:
     """
     Removes substr at the start of string, and raises ValueError on failure.
 
@@ -86,7 +86,7 @@ def lstrip_once(string, substr):
     return string[len(substr):]
 
 
-def rstrip_once(string, substr):
+def rstrip_once(string: str, substr: str) -> str:
     """
     Removes substr at the end of string, and raises ValueError on failure.
 
@@ -100,7 +100,7 @@ def rstrip_once(string, substr):
     return string[:-len(substr)]
 
 
-def format_progress(progress, total):
+def format_progress(progress: int, total: int) -> str:
     """
     Formats an "x out of y" string with fixed width.
 

@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Holds some math constants and helpers
@@ -14,7 +14,7 @@ TAU = 2 * math.pi
 DEGSPERRAD = TAU / 360
 
 
-def clamp(val, minval, maxval):
+def clamp(val: int, minval: int, maxval: int) -> int:
     """
     clamps val to be at least minval, and at most maxval.
 
