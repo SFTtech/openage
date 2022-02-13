@@ -1,15 +1,16 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """ Processes the raw test lists from the testlist module. """
 
 
 from collections import OrderedDict
 from importlib import import_module
+from typing import Callable
 
 from ..util.strings import lstrip_once
 
 
-def list_targets(test_lister, demo_lister, benchmark_lister):
+def list_targets(test_lister: Callable, demo_lister: Callable, benchmark_lister: Callable):
     """
     Yields tuples of (testname, type, description, condition_function)
     for given test and demo listers.
@@ -65,7 +66,7 @@ def list_targets_cpp():
         yield val
 
 
-def get_all_targets():
+def get_all_targets() -> OrderedDict:
     """
     Reads the Python and C++ testspec.
 

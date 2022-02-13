@@ -1,18 +1,19 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2022 the openage authors. See copying.md for legal info.
 
 """ Benchmarking tools for the tests. """
 
 from timeit import timeit
 from sys import stdout
 from time import sleep
+from typing import Callable
 
 
-def benchmark_test_function():
+def benchmark_test_function() -> None:
     """ Simple function to call in for benchmarking. """
     sleep(0.1)
 
 
-def benchmark(func):
+def benchmark(func: Callable) -> None:
     """
     Benchmark the given function. Repeated execution helps to give a maximum to
     the consumed time, until one iteration takes more than 5s, summed up 10s.
