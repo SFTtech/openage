@@ -1,15 +1,28 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches
 """
 Mount asset dirs of a game version into the conversion folder.
 """
 
+from __future__ import annotations
+
+import typing
+
+
 from ....util.fslike.union import Union
 from ...value_object.read.media.drs import DRS
 
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameEdition
+    from openage.convert.value_object.init.game_version import GameExpansion
+    from openage.util.fslike.directory import Directory
 
-def mount_asset_dirs(srcdir, game_version):
+
+def mount_asset_dirs(
+    srcdir: Directory,
+    game_version: tuple[GameEdition, list[GameExpansion]]
+) -> Directory:
     """
     Returns a Union path where srcdir is mounted at /,
     and all the asset files are mounted in subfolders.
@@ -18,7 +31,7 @@ def mount_asset_dirs(srcdir, game_version):
     result = Union().root
     result.mount(srcdir)
 
-    def mount_drs(filename, target):
+    def mount_drs(filename: str, target: str) -> None:
         """
         Mounts the DRS file from srcdir's filename at result's target.
         """

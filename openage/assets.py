@@ -1,9 +1,12 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2022 the openage authors. See copying.md for legal info.
 
 """
 Code for locating the game assets.
 """
+from __future__ import annotations
 
+
+import typing
 import os
 from pathlib import Path
 
@@ -14,8 +17,11 @@ from .util.fslike.wrapper import WriteBlocker
 from . import config
 from . import default_dirs
 
+if typing.TYPE_CHECKING:
+    from openage.util.fslike.directory import Directory
 
-def get_asset_path(custom_asset_dir=None):
+
+def get_asset_path(custom_asset_dir: str = None) -> Directory:
     """
     Returns a Path object for the game assets.
 

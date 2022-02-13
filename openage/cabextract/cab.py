@@ -1,4 +1,4 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides CABFile, an extractor for the MSCAB format.
@@ -6,10 +6,13 @@ Provides CABFile, an extractor for the MSCAB format.
 Struct definitions are according to the documentation at
 https://msdn.microsoft.com/en-us/library/bb417343.aspx.
 """
+from __future__ import annotations
+import typing
 
 from bisect import bisect
 from calendar import timegm
 from collections import OrderedDict
+from typing import Generator, NoReturn, Union
 
 from ..log import dbg
 from ..util.filelike.readonly import PosSavingReadOnlyFileLikeObject
@@ -20,6 +23,9 @@ from ..util.math import INF
 from ..util.strings import try_decode
 from ..util.struct import NamedStruct, Flags
 from .cabchecksum import mscab_csum
+
+if typing.TYPE_CHECKING:
+    from openage.util.filelike.abstract import FileLikeObject
 
 
 class CFHeaderFlags(Flags):
@@ -189,7 +195,7 @@ class CFData(NamedStruct):
     reserved        = None  # bytes object of size reserved_data.cbCFData
     payload         = None  # compressed folder stream data block
 
-    def verify_checksum(self):
+    def verify_checksum(self) -> Union[None, NoReturn]:
         """
         Checks whether csum contains the correct checksum for the block.
         Raises ValueError otherwise.
@@ -224,7 +230,7 @@ class CABFile(FileCollection):
     descriptions. Most CAB file issues should cause the constructor to fail.
     """
 
-    def __init__(self, cab):
+    def __init__(self, cab: FileLikeObject):
         super().__init__()
 
         # read header
@@ -287,7 +293,7 @@ class CABFile(FileCollection):
     def __repr__(self):
         return "CABFile"
 
-    def read_folder_headers(self, cab):
+    def read_folder_headers(self, cab: FileLikeObject) -> Generator[CFFolder, None, None]:
         """
         Called during the constructor run.
 
@@ -346,7 +352,7 @@ class CABFile(FileCollection):
             dbg(folder)
             yield folder
 
-    def read_file_headers(self, cab):
+    def read_file_headers(self, cab: FileLikeObject) -> Generator[CFFile, None, None]:
         """
         Called during the constructor run.
 
@@ -427,7 +433,13 @@ class CABFolderStream(PosSavingReadOnlyFileLikeObject):
         Number of data blocks in the folder.
     """
 
-    def __init__(self, fileobj, offset, blockcount, blockreserved):
+    def __init__(
+        self,
+        fileobj: FileLikeObject,
+        offset: int,
+        blockcount: int,
+        blockreserved: int
+    ):
         super().__init__()
 
         self.fileobj = fileobj
@@ -440,7 +452,7 @@ class CABFolderStream(PosSavingReadOnlyFileLikeObject):
         # positions in the stream of the start of each block.
         self.streamindex = [0]
 
-    def next_block_size(self, payloadsize):
+    def next_block_size(self, payloadsize: int) -> None:
         """
         adds metadata for the next block
         """
@@ -450,7 +462,7 @@ class CABFolderStream(PosSavingReadOnlyFileLikeObject):
 
         self.streamindex.append(self.streamindex[-1] + payloadsize)
 
-    def read_block_data(self, block_id):
+    def read_block_data(self, block_id: int) -> bytes:
         """
         reads the data of block block_id.
 
@@ -490,7 +502,7 @@ class CABFolderStream(PosSavingReadOnlyFileLikeObject):
         # finally, return the data.
         return datablock.payload
 
-    def read_blocks(self, size=-1):
+    def read_blocks(self, size: int = -1) -> Generator[bytes, None, None]:
         """
         Similar to read, bit instead of a single bytes object,
         returns an iterator of multiple bytes objects, one for each block.
@@ -537,14 +549,14 @@ class CABFolderStream(PosSavingReadOnlyFileLikeObject):
 
             yield block_data
 
-    def read(self, size=-1):
+    def read(self, size: int = -1) -> bytes:
         return b"".join(self.read_blocks(size))
 
-    def get_size(self):
+    def get_size(self) -> int:
         del self  # unused
         return -1
 
-    def close(self):
+    def close(self) -> None:
         self.closed = True
         del self.fileobj
         del self.blockoffsets

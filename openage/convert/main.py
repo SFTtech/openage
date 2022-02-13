@@ -1,10 +1,13 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches
 """
 Entry point for all of the asset conversion.
 """
+from __future__ import annotations
+
 from datetime import datetime
+import typing
 
 from ..log import info, err
 from ..util.fslike.directory import CaseIgnoringDirectory
@@ -19,8 +22,17 @@ from .tool.interactive import interactive_browser
 from .tool.subtool.acquire_sourcedir import acquire_conversion_source_dir, wanna_convert
 from .tool.subtool.version_select import get_game_version
 
+if typing.TYPE_CHECKING:
+    from argparse import ArgumentParser, Namespace
+    from openage.util.fslike.directory import Directory
 
-def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
+
+def convert_assets(
+    assets: Directory,
+    args: Namespace,
+    srcdir: Directory = None,
+    prev_source_dir_path: str = None
+) -> str:
     """
     Perform asset conversion.
 
@@ -123,7 +135,7 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
     return data_dir.resolve_native_path()
 
 
-def init_subparser(cli):
+def init_subparser(cli: ArgumentParser):
     """ Initializes the parser for convert-specific args. """
     cli.set_defaults(entrypoint=main)
 

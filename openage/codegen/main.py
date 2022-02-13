@@ -1,4 +1,4 @@
-# Copyright 2014-2021 the openage authors. See copying.md for legal info.
+# Copyright 2014-2022 the openage authors. See copying.md for legal info.
 
 """
 Codegen interface to the build system.
@@ -47,13 +47,19 @@ depending on the specified invocation commands,
 - cmake re-builds are triggered if a cache has changed
 """
 
+from __future__ import annotations
+import typing
+
 import os
 import sys
 
 from .codegen import CodegenMode, codegen
 
+if typing.TYPE_CHECKING:
+    from argparse import ArgumentParser
 
-def init_subparser(cli):
+
+def init_subparser(cli: ArgumentParser):
     """ Codegen-specific CLI. """
     cli.set_defaults(entrypoint=main)
 

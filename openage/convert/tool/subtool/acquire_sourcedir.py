@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 
 """
 Acquire the sourcedir for the game that is supposed to be converted.
@@ -9,6 +9,7 @@ from pathlib import Path
 import subprocess
 import sys
 from tempfile import NamedTemporaryFile
+from typing import AnyStr, Generator
 
 from ....log import warn, info, dbg
 from ....util.files import which
@@ -26,13 +27,13 @@ REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
 REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
 
 
-def expand_relative_path(path):
+def expand_relative_path(path: str) -> AnyStr:
     """Expand relative path to an absolute one, including abbreviations like
     ~ and environment variables"""
     return os.path.realpath(os.path.expandvars(os.path.expanduser(path)))
 
 
-def wanna_convert():
+def wanna_convert() -> bool:
     """
     Ask the user if assets should be converted.
     """
@@ -50,7 +51,7 @@ def wanna_convert():
     return answer
 
 
-def wanna_use_wine():
+def wanna_use_wine() -> bool:
     """
     Ask the user if wine should be used.
     Wine is not used if user has no wine installed.
@@ -83,7 +84,7 @@ def wanna_use_wine():
     return answer
 
 
-def set_custom_wineprefix():
+def set_custom_wineprefix() -> None:
     """
     Allow the customization of the WINEPREFIX environment variable.
     """
@@ -116,7 +117,7 @@ def set_custom_wineprefix():
         os.environ["WINEPREFIX"] = new_wineprefix
 
 
-def query_source_dir(proposals):
+def query_source_dir(proposals: set[str]) -> AnyStr:
     """
     Query interactively for a conversion source directory.
     Lists proposals and allows selection if some were found.
@@ -149,7 +150,7 @@ def query_source_dir(proposals):
     return sourcedir
 
 
-def acquire_conversion_source_dir(prev_source_dir_path=None):
+def acquire_conversion_source_dir(prev_source_dir_path: str = None) -> Path:
     """
     Acquires source dir for the asset conversion.
 
@@ -197,19 +198,19 @@ def acquire_conversion_source_dir(prev_source_dir_path=None):
     return CaseIgnoringDirectory(sourcedir).root
 
 
-def wine_to_real_path(path):
+def wine_to_real_path(path: str) -> str:
     """
     Turn a Wine file path (C:\\xyz) into a local filesystem path (~/.wine/xyz)
     """
     return subprocess.check_output(('winepath', path)).strip().decode()
 
 
-def unescape_winereg(value):
+def unescape_winereg(value: str):
     """Remove quotes and escapes from a Wine registry value"""
     return value.strip('"').replace(r'\\\\', '\\')
 
 
-def source_dir_proposals(call_wine):
+def source_dir_proposals(call_wine: bool) -> Generator[str, None, None]:
     """Yield a list of directory names where an installation might be found"""
     if "WINEPREFIX" in os.environ:
         yield "$WINEPREFIX/" + STANDARD_PATH_IN_32BIT_WINEPREFIX

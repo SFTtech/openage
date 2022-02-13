@@ -1,15 +1,29 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 """
 Initial version detection based on user input.
 
 TODO: Version selection.
 """
+from __future__ import annotations
+
+import typing
+
+
 from ....log import warn, info
 from ...service.init.version_detect import iterate_game_versions
 from ...value_object.init.game_version import Support
 
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameEdition
+    from openage.convert.value_object.init.game_version import GameExpansion
+    from openage.util.fslike.directory import Directory
 
-def get_game_version(srcdir, avail_game_eds, avail_game_exps):
+
+def get_game_version(
+    srcdir: Directory,
+    avail_game_eds: list[GameEdition],
+    avail_game_exps: list[GameExpansion]
+) -> typing.Union[tuple[GameEdition, list[GameExpansion]], tuple[bool, set]]:
     """
     Mount the input folders for conversion.
     """

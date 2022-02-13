@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Wraps the LZXDecompressor in a file-like, read-only stream object.
@@ -6,6 +6,7 @@ Wraps the LZXDecompressor in a file-like, read-only stream object.
 
 import os
 from io import UnsupportedOperation
+from typing import NoReturn
 
 from ..util.filelike.readonly import ReadOnlyFileLikeObject
 from ..util.bytequeue import ByteQueue
@@ -51,7 +52,7 @@ class LZXDStream(ReadOnlyFileLikeObject):
 
         self.reset()
 
-    def reset(self):
+    def reset(self) -> None:
         """
         Resets the decompressor back to the start of the file.
         """
@@ -64,7 +65,7 @@ class LZXDStream(ReadOnlyFileLikeObject):
         self.pos = 0
         self.buf = ByteQueue()
 
-    def read(self, size=-1):
+    def read(self, size: int = -1) -> bytes:
         if size < 0:
             size = INF
 
@@ -78,22 +79,22 @@ class LZXDStream(ReadOnlyFileLikeObject):
 
         return self.buf.popleft(size)
 
-    def get_size(self):
+    def get_size(self) -> int:
         del self  # unused
         # size is unknown in advance
         return -1
 
-    def seek(self, offset, whence=os.SEEK_SET):
+    def seek(self, offset: int, whence=os.SEEK_SET) -> NoReturn:
         del offset, whence  # unused
         raise UnsupportedOperation("Cannot seek in LZXDStream.")
 
-    def seekable(self):
+    def seekable(self) -> bool:
         return False
 
-    def tell(self):
+    def tell(self) -> int:
         return self.pos
 
-    def close(self):
+    def close(self) -> None:
         self.closed = True
         del self.decompressor
         del self.sourcestream

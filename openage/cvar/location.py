@@ -1,4 +1,4 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2022 the openage authors. See copying.md for legal info.
 
 """
 Determine the config file location and set up mounts.
@@ -13,7 +13,7 @@ from ..util.fslike.union import Union
 from ..util.fslike.wrapper import WriteBlocker
 
 
-def get_config_path(custom_cfg_dir=None):
+def get_config_path(custom_cfg_dir: str = None) -> Directory:
     """
     Locates the main configuration file by name in some searchpaths.
     Optionally, mount a custom directory with highest priority.
