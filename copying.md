@@ -139,6 +139,7 @@ _the openage authors_ are:
 | Jens Nyman                  | nymanjens                   | nymanjens dawt nj à gmail dawt com                |
 | Deepak Dinesh               | deepak                      | d.deepakdinesh13 à gmail dawt com                 |
 | Damien Lejay                | dlejay                      | lejay à paracompact dawt space                    |
+| Talha Aamir                | sarcxd                      | sarcxd à gmail dawt com                    |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
