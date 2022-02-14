@@ -1,4 +1,4 @@
-# Copyright 2017-2020 the openage authors. See copying.md for legal info.
+# Copyright 2017-2022 the openage authors. See copying.md for legal info.
 
 if(NOT forward_variables)
 	message(FATAL_ERROR "CMake configuration variables not available. Please include(ForwardVariables.cmake)")
@@ -25,6 +25,6 @@ execute_process(COMMAND
 
 execute_process(COMMAND
 	"${PYTHON}" "${buildsystem_dir}/scripts/copy_modules.py"
-	numpy PIL pyreadline readline
+	numpy PIL readline
 	"${CMAKE_INSTALL_PREFIX}/${py_install_prefix}"
 )
