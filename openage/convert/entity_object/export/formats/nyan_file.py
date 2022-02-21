@@ -4,10 +4,15 @@
 Nyan file struct that stores a bunch of objects and
 manages imports.
 """
+from __future__ import annotations
+import typing
 
 from .....nyan.nyan_structs import NyanObject
 from .....util.ordered_set import OrderedSet
 from ..data_definition import DataDefinition
+
+if typing.TYPE_CHECKING:
+    from openage.nyan.import_tree import ImportTree
 
 
 FILE_VERSION = "0.1.0"
@@ -19,7 +24,13 @@ class NyanFile(DataDefinition):
     and dumping all objects into a human-readable .nyan file.
     """
 
-    def __init__(self, targetdir, filename, modpack_name, nyan_objects=None):
+    def __init__(
+        self,
+        targetdir: str,
+        filename: str,
+        modpack_name: str,
+        nyan_objects: typing.Collection = None
+    ):
         super().__init__(targetdir, filename)
 
         self.modpack_name = modpack_name
@@ -35,7 +46,7 @@ class NyanFile(DataDefinition):
                      *self.targetdir.replace("/", ".")[:-1].split("."),
                      self.filename.split(".")[0])
 
-    def add_nyan_object(self, new_object):
+    def add_nyan_object(self, new_object: NyanObject) -> None:
         """
         Adds a nyan object to the file.
         """
@@ -47,7 +58,7 @@ class NyanFile(DataDefinition):
         new_fqon = (*self.fqon, new_object.get_name())
         new_object.set_fqon(new_fqon)
 
-    def dump(self):
+    def dump(self) -> str:
         """
         Returns the string that represents the nyan file.
         """
@@ -77,39 +88,39 @@ class NyanFile(DataDefinition):
 
         return output_str
 
-    def get_fqon(self):
+    def get_fqon(self) -> str:
         """
         Return the fqon of the nyan file
         """
         return self.fqon
 
-    def get_relative_file_path(self):
+    def get_relative_file_path(self) -> str:
         """
         Relative path of the nyan file in the modpack.
         """
         return f"{self.modpack_name}/{self.targetdir}{self.filename}"
 
-    def set_import_tree(self, import_tree):
+    def set_import_tree(self, import_tree: ImportTree) -> None:
         """
         Sets the import tree of the file.
         """
         self.import_tree = import_tree
 
-    def set_filename(self, filename):
+    def set_filename(self, filename: str):
         super().set_filename(filename)
         self._reset_fqons()
 
-    def set_modpack_name(self, modpack_name):
+    def set_modpack_name(self, modpack_name: str) -> None:
         """
         Set the name of the modpack, the file is contained in.
         """
         self.modpack_name = modpack_name
 
-    def set_targetdir(self, targetdir):
+    def set_targetdir(self, targetdir: str) -> None:
         super().set_targetdir(targetdir)
         self._reset_fqons()
 
-    def _reset_fqons(self):
+    def _reset_fqons(self) -> None:
         """
         Resets fqons, depending on the modpack name,
         target directory and filename.

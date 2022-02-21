@@ -14,17 +14,16 @@ class ManifestFile(DataDefinition):
     Used for creating a manifest file for a modpack.
     """
 
-    def __init__(self, targetdir, filename):
+    def __init__(self, targetdir: str, filename: str):
         super().__init__(targetdir, filename)
 
-        self.hash_values = []
-        self.hashing_func = None
+        self.hash_values: list[tuple[str, str]] = []
+        self.hashing_func: str = None
 
-    def dump(self):
+    def dump(self) -> str:
         """
         Returns the manifest file content in TOML format.
         """
-
         output_dict = {}
 
         info_table = {"info": {}}
@@ -46,7 +45,7 @@ class ManifestFile(DataDefinition):
 
         return output_str
 
-    def add_hash_value(self, hash_val, item_path):
+    def add_hash_value(self, hash_val: str, item_path: str) -> None:
         """
         Add the item path and its hash value to the instances
         hash_values list.
@@ -58,7 +57,7 @@ class ManifestFile(DataDefinition):
         """
         self.hash_values.append((hash_val, item_path,))
 
-    def set_hashing_func(self, hashing_func):
+    def set_hashing_func(self, hashing_func: str) -> None:
         """
         Add the hashing function used for generating
         hash values for modpack files

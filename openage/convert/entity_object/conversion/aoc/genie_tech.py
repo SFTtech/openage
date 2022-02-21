@@ -3,9 +3,16 @@
 """
 Contains structures and API-like objects for techs from AoC.
 """
-
+from __future__ import annotations
+import typing
 
 from ..converter_object import ConverterObject, ConverterObjectGroup
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject, GenieEffectBundle
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup, GenieBuildingLineGroup
+    from openage.convert.value_object.read.value_members import ValueMember
 
 
 class GenieTechObject(ConverterObject):
@@ -19,7 +26,12 @@ class GenieTechObject(ConverterObject):
 
     __slots__ = ('data',)
 
-    def __init__(self, tech_id, full_data_set, members=None):
+    def __init__(
+        self,
+        tech_id: int,
+        full_data_set: GenieObjectContainer,
+        members: dict[str, ValueMember] = None
+    ):
         """
         Creates a new Genie tech object.
 
@@ -45,7 +57,11 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
 
     __slots__ = ('data', 'tech', 'effects')
 
-    def __init__(self, tech_id, full_data_set):
+    def __init__(
+        self,
+        tech_id: int,
+        full_data_set: GenieObjectContainer,
+    ):
         """
         Creates a new Genie tech group object.
 
@@ -63,15 +79,13 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         self.tech = self.data.genie_techs[tech_id]
 
         # Effects of the tech
-        effect_bundle_id = self.tech["tech_effect_id"].get_value()
+        effect_bundle_id: int = self.tech["tech_effect_id"].get_value()
 
+        self.effects: GenieEffectBundle = None
         if effect_bundle_id > -1:
             self.effects = self.data.genie_effect_bundles[effect_bundle_id]
 
-        else:
-            self.effects = None
-
-    def is_researchable(self):
+    def is_researchable(self) -> bool:
         """
         Techs are researchable if they are associated with an ingame tech.
         This is the case if the research time is greater than 0 and the research
@@ -85,7 +99,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
 
         return research_time > 0 and research_location_id > -1
 
-    def is_unique(self):
+    def is_unique(self) -> bool:
         """
         Techs are unique if they belong to a specific civ.
 
@@ -96,7 +110,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         # -1 = no train location
         return civilization_id > -1
 
-    def get_civilization(self):
+    def get_civilization(self) -> typing.Union[int, None]:
         """
         Returns the civilization id if the tech is unique, otherwise return None.
         """
@@ -105,7 +119,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
 
         return None
 
-    def get_effects(self, effect_type=None):
+    def get_effects(self, effect_type: int = None) -> list[GenieEffectObject]:
         """
         Returns the associated effects.
         """
@@ -114,7 +128,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
 
         return []
 
-    def get_required_techs(self):
+    def get_required_techs(self) -> list[GenieTechObject]:
         """
         Returns the techs that are required for this tech.
         """
@@ -131,13 +145,13 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
 
         return required_techs
 
-    def get_required_tech_count(self):
+    def get_required_tech_count(self) -> int:
         """
         Returns the number of required techs necessary to unlock this  tech.
         """
         return self.tech["required_tech_count"].get_value()
 
-    def get_research_location_id(self):
+    def get_research_location_id(self) -> int:
         """
         Returns the group_id for a building line if the tech is
         researchable, otherwise return None.
@@ -147,7 +161,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
 
         return None
 
-    def has_effect(self):
+    def has_effect(self) -> bool:
         """
         Returns True if the techology's effects do anything.
         """
@@ -181,7 +195,12 @@ class AgeUpgrade(GenieTechEffectBundleGroup):
 
     __slots__ = ('age_id',)
 
-    def __init__(self, tech_id, age_id, full_data_set):
+    def __init__(
+        self,
+        tech_id: int,
+        age_id: int,
+        full_data_set: GenieObjectContainer,
+    ):
         """
         Creates a new Genie tech group object.
 
@@ -208,7 +227,13 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
 
     __slots__ = ('unit_line_id', 'upgrade_target_id')
 
-    def __init__(self, tech_id, unit_line_id, upgrade_target_id, full_data_set):
+    def __init__(
+        self,
+        tech_id: int,
+        unit_line_id: int,
+        upgrade_target_id: int,
+        full_data_set: GenieObjectContainer,
+    ):
         """
         Creates a new Genie line upgrade object.
 
@@ -224,19 +249,19 @@ class UnitLineUpgrade(GenieTechEffectBundleGroup):
         self.unit_line_id = unit_line_id
         self.upgrade_target_id = upgrade_target_id
 
-    def get_line_id(self):
+    def get_line_id(self) -> int:
         """
         Returns the line id of the upgraded line.
         """
         return self.unit_line_id
 
-    def get_upgraded_line(self):
+    def get_upgraded_line(self) -> GenieUnitLineGroup:
         """
         Returns the line that is upgraded.
         """
         return self.data.unit_lines[self.unit_line_id]
 
-    def get_upgrade_target_id(self):
+    def get_upgrade_target_id(self) -> int:
         """
         Returns the target unit that is upgraded to.
         """
@@ -255,7 +280,13 @@ class BuildingLineUpgrade(GenieTechEffectBundleGroup):
 
     __slots__ = ('building_line_id', 'upgrade_target_id')
 
-    def __init__(self, tech_id, building_line_id, upgrade_target_id, full_data_set):
+    def __init__(
+        self,
+        tech_id: int,
+        building_line_id: int,
+        upgrade_target_id: int,
+        full_data_set: GenieObjectContainer,
+    ):
         """
         Creates a new Genie line upgrade object.
 
@@ -271,19 +302,19 @@ class BuildingLineUpgrade(GenieTechEffectBundleGroup):
         self.building_line_id = building_line_id
         self.upgrade_target_id = upgrade_target_id
 
-    def get_line_id(self):
+    def get_line_id(self) -> int:
         """
         Returns the line id of the upgraded line.
         """
         return self.building_line_id
 
-    def get_upgraded_line(self):
+    def get_upgraded_line(self) -> GenieBuildingLineGroup:
         """
         Returns the line that is upgraded.
         """
         return self.data.building_lines[self.building_line_id]
 
-    def get_upgrade_target_id(self):
+    def get_upgrade_target_id(self) -> int:
         """
         Returns the target unit that is upgraded to.
         """
@@ -304,7 +335,12 @@ class UnitUnlock(GenieTechEffectBundleGroup):
 
     __slots__ = ('line_id',)
 
-    def __init__(self, tech_id, line_id, full_data_set):
+    def __init__(
+        self,
+        tech_id: int,
+        line_id: int,
+        full_data_set: GenieObjectContainer,
+    ):
         """
         Creates a new Genie tech group object.
 
@@ -319,13 +355,13 @@ class UnitUnlock(GenieTechEffectBundleGroup):
 
         self.line_id = line_id
 
-    def get_line_id(self):
+    def get_line_id(self) -> int:
         """
         Returns the ID of the line that is unlocked by this tech.
         """
         return self.line_id
 
-    def get_unlocked_line(self):
+    def get_unlocked_line(self) -> GenieUnitLineGroup:
         """
         Returns the line that is unlocked by this tech.
         """
@@ -346,7 +382,12 @@ class BuildingUnlock(GenieTechEffectBundleGroup):
 
     __slots__ = ('head_unit_id',)
 
-    def __init__(self, tech_id, head_unit_id, full_data_set):
+    def __init__(
+        self,
+        tech_id: int,
+        head_unit_id: int,
+        full_data_set: GenieObjectContainer,
+    ):
         """
         Creates a new Genie tech group object.
 
@@ -361,13 +402,13 @@ class BuildingUnlock(GenieTechEffectBundleGroup):
 
         self.head_unit_id = head_unit_id
 
-    def get_line_id(self):
+    def get_line_id(self) -> int:
         """
         Returns the ID of the line that is unlocked by this tech.
         """
         return self.head_unit_id
 
-    def get_unlocked_line(self):
+    def get_unlocked_line(self) -> GenieBuildingLineGroup:
         """
         Returns the line that is unlocked by this tech.
         """
@@ -386,7 +427,12 @@ class InitiatedTech(GenieTechEffectBundleGroup):
 
     __slots__ = ('building_id',)
 
-    def __init__(self, tech_id, building_id, full_data_set):
+    def __init__(
+        self,
+        tech_id: int,
+        building_id: int,
+        full_data_set: GenieObjectContainer,
+    ):
         """
         Creates a new Genie tech group object.
 
@@ -401,7 +447,7 @@ class InitiatedTech(GenieTechEffectBundleGroup):
 
         self.building_id = building_id
 
-    def get_building_id(self):
+    def get_building_id(self) -> int:
         """
         Returns the ID of the building intiating this tech.
         """
@@ -420,7 +466,12 @@ class CivBonus(GenieTechEffectBundleGroup):
 
     __slots__ = ('civ_id',)
 
-    def __init__(self, tech_id, civ_id, full_data_set):
+    def __init__(
+        self,
+        tech_id: int,
+        civ_id: int,
+        full_data_set: GenieObjectContainer,
+    ):
         """
         Creates a new Genie tech group object.
 
@@ -435,10 +486,10 @@ class CivBonus(GenieTechEffectBundleGroup):
 
         self.civ_id = civ_id
 
-    def get_civilization(self):
+    def get_civilization_id(self) -> int:
         return self.civ_id
 
-    def replaces_researchable_tech(self):
+    def replaces_researchable_tech(self) -> typing.Union[GenieTechEffectBundleGroup, None]:
         """
         Checks if this bonus replaces a researchable Tech and returns the tech group
         if thats the case. Otherwise None is returned.
@@ -466,7 +517,13 @@ class CivTeamBonus(ConverterObjectGroup):
 
     __slots__ = ('tech_id', 'data', 'civ_id', 'effects')
 
-    def __init__(self, tech_id, civ_id, effect_bundle_id, full_data_set):
+    def __init__(
+        self,
+        tech_id: int,
+        civ_id: int,
+        effect_bundle_id: int,
+        full_data_set: GenieObjectContainer,
+    ):
         """
         Creates a new Genie tech group object.
 
@@ -483,13 +540,13 @@ class CivTeamBonus(ConverterObjectGroup):
         self.civ_id = civ_id
         self.effects = self.data.genie_effect_bundles[effect_bundle_id]
 
-    def get_civilization(self):
+    def get_civilization_id(self) -> int:
         """
         Returns ID of the civilization that has this bonus.
         """
         return self.civ_id
 
-    def get_effects(self):
+    def get_effects(self) -> list[GenieEffectObject]:
         """
         Returns the associated effects.
         """
@@ -508,7 +565,13 @@ class CivTechTree(ConverterObjectGroup):
 
     __slots__ = ('tech_id', 'data', 'civ_id', 'effects')
 
-    def __init__(self, tech_id, civ_id, effect_bundle_id, full_data_set):
+    def __init__(
+        self,
+        tech_id: int,
+        civ_id: int,
+        effect_bundle_id: int,
+        full_data_set: GenieObjectContainer,
+    ):
         """
         Creates a new Genie tech group object.
 
@@ -524,19 +587,17 @@ class CivTechTree(ConverterObjectGroup):
         self.data = full_data_set
         self.civ_id = civ_id
 
+        self.effects: GenieEffectBundle = None
         if effect_bundle_id > -1:
             self.effects = self.data.genie_effect_bundles[effect_bundle_id]
 
-        else:
-            self.effects = None
-
-    def get_civilization(self):
+    def get_civilization_id(self):
         """
         Returns ID of the civilization that has this tech tree.
         """
         return self.civ_id
 
-    def get_effects(self):
+    def get_effects(self) -> list[GenieEffectObject]:
         """
         Returns the associated effects.
         """

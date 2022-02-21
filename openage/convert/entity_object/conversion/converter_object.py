@@ -8,6 +8,10 @@ Objects that represent data structures in the original game.
 These are simple containers that can be processed by the converter.
 """
 
+from __future__ import annotations
+
+import typing
+
 from ....nyan.nyan_structs import NyanObject, NyanPatch, NyanPatchMember, MemberOperator
 from ...value_object.conversion.forward_ref import ForwardRef
 from ...value_object.read.value_members import NoDiffMember, ValueMember
@@ -23,70 +27,72 @@ class ConverterObject:
 
     __slots__ = ('obj_id', 'members')
 
-    def __init__(self, obj_id, members=None):
+    def __init__(
+        self,
+        obj_id: typing.Union[str, int],
+        members: dict[str, ValueMember] = None
+    ):
         """
         Creates a new ConverterObject.
 
         :param obj_id: An identifier for the object (as a string or int)
+        :type obj_id: str|int
         :param members: An already existing member dict.
+        :type members: dict[str, ValueMember]
         """
         self.obj_id = obj_id
 
         self.members = {}
 
         if members:
-            member_list = list(members.values())
-
-            if all(isinstance(member, ValueMember) for member in member_list):
+            if all(isinstance(member, ValueMember) for member in members.values()):
                 self.members.update(members)
 
             else:
                 raise Exception("members must be an instance of ValueMember")
 
-    def get_id(self):
+    def get_id(self) -> typing.Union[str, int]:
         """
         Returns the object's ID.
         """
         return self.obj_id
 
-    def add_member(self, member):
+    def add_member(self, member: ValueMember) -> None:
         """
         Adds a member to the object.
         """
         key = member.get_name()
         self.members.update({key: member})
 
-    def add_members(self, members):
+    def add_members(self, members: dict[str, ValueMember]) -> None:
         """
         Adds multiple members to the object.
         """
-        for member in members:
-            key = member.get_name()
-            self.members.update({key: member})
+        self.members.update(members)
 
-    def get_member(self, name):
+    def get_member(self, member_id: str) -> ValueMember:
         """
         Returns a member of the object.
         """
         try:
-            return self.members[name]
+            return self.members[member_id]
 
         except KeyError as err:
-            raise KeyError(f"{self} has no attribute: {name}") from err
+            raise KeyError(f"{self} has no attribute: {member_id}") from err
 
-    def has_member(self, name):
+    def has_member(self, member_id: str) -> bool:
         """
         Returns True if the object has a member with the specified name.
         """
-        return name in self.members
+        return member_id in self.members
 
-    def remove_member(self, name):
+    def remove_member(self, member_id: str) -> None:
         """
         Removes a member from the object.
         """
-        self.members.pop(name)
+        self.members.pop(member_id, None)
 
-    def short_diff(self, other):
+    def short_diff(self, other: ConverterObject) -> ConverterObject:
         """
         Returns the obj_diff between two objects as another ConverterObject.
 
@@ -107,7 +113,7 @@ class ConverterObject:
 
         return ConverterObject(f"{self.obj_id}-{other.get_id()}-sdiff", members=obj_diff)
 
-    def diff(self, other):
+    def diff(self, other: ConverterObject) -> ConverterObject:
         """
         Returns the obj_diff between two objects as another ConverterObject.
         """
@@ -142,7 +148,11 @@ class ConverterObjectGroup:
 
     __slots__ = ('group_id', 'raw_api_objects', 'raw_member_pushs')
 
-    def __init__(self, group_id, raw_api_objects=None):
+    def __init__(
+        self,
+        group_id: typing.Union[str, int],
+        raw_api_objects: list[RawAPIObject] = None
+    ):
         """
         Creates a new ConverterObjectGroup.
 
@@ -162,33 +172,33 @@ class ConverterObjectGroup:
         if raw_api_objects:
             self._create_raw_api_object_dict(raw_api_objects)
 
-    def get_id(self):
+    def get_id(self) -> typing.Union[str, int]:
         """
         Returns the object group's ID.
         """
         return self.group_id
 
-    def add_raw_api_object(self, subobject):
+    def add_raw_api_object(self, subobject: RawAPIObject) -> None:
         """
         Adds a subobject to the object.
         """
         key = subobject.get_id()
         self.raw_api_objects.update({key: subobject})
 
-    def add_raw_api_objects(self, subobjects):
+    def add_raw_api_objects(self, subobjects: list[RawAPIObject]) -> None:
         """
         Adds several subobject to the object.
         """
         for subobject in subobjects:
             self.add_raw_api_object(subobject)
 
-    def add_raw_member_push(self, push_object):
+    def add_raw_member_push(self, push_object: RawMemberPush) -> None:
         """
         Adds a RawPushMember to the object.
         """
         self.raw_member_pushs.append(push_object)
 
-    def create_nyan_objects(self):
+    def create_nyan_objects(self) -> None:
         """
         Creates nyan objects from the existing raw API objects.
         """
@@ -202,14 +212,14 @@ class ConverterObjectGroup:
         for patch_object in patch_objects:
             patch_object.link_patch_target()
 
-    def create_nyan_members(self):
+    def create_nyan_members(self) -> None:
         """
         Fill nyan members of all raw API objects.
         """
         for raw_api_object in self.raw_api_objects.values():
             raw_api_object.create_nyan_members()
 
-    def check_readiness(self):
+    def check_readiness(self) -> None:
         """
         check if all nyan objects in the group are ready for export.
         """
@@ -224,7 +234,7 @@ class ConverterObjectGroup:
                 raise Exception(f"{raw_api_object}: object is not ready for export: "
                                 f"Member(s) {concat_names} not initialized.")
 
-    def execute_raw_member_pushs(self):
+    def execute_raw_member_pushs(self) -> None:
         """
         Extend raw members of referenced raw API objects.
         """
@@ -235,7 +245,7 @@ class ConverterObjectGroup:
                                              push_object.get_push_value(),
                                              push_object.get_member_origin())
 
-    def get_raw_api_object(self, obj_id):
+    def get_raw_api_object(self, obj_id: RawAPIObject) -> RawAPIObject:
         """
         Returns a subobject of the object.
         """
@@ -246,25 +256,25 @@ class ConverterObjectGroup:
             raise Exception("%s: Could not find raw API object with obj_id %s"
                             % (self, obj_id)) from missing_raw_api_obj
 
-    def get_raw_api_objects(self):
+    def get_raw_api_objects(self) -> dict[str, RawAPIObject]:
         """
         Returns all raw API objects.
         """
         return self.raw_api_objects
 
-    def has_raw_api_object(self, obj_id):
+    def has_raw_api_object(self, obj_id: typing.Union[str, int]) -> bool:
         """
         Returns True if the object has a subobject with the specified ID.
         """
         return obj_id in self.raw_api_objects
 
-    def remove_raw_api_object(self, obj_id):
+    def remove_raw_api_object(self, obj_id: typing.Union[str, int]) -> None:
         """
         Removes a subobject from the object.
         """
         self.raw_api_objects.pop(obj_id)
 
-    def _create_raw_api_object_dict(self, subobject_list):
+    def _create_raw_api_object_dict(self, subobject_list: list[RawAPIObject]) -> None:
         """
         Creates the dict from the subobject list passed to __init__.
         """
@@ -288,7 +298,13 @@ class RawAPIObject:
                  '_location', '_filename', 'nyan_object', '_patch_target',
                  'raw_patch_parents')
 
-    def __init__(self, obj_id, name, api_ref, location=""):
+    def __init__(
+        self,
+        obj_id: typing.Union[str, int],
+        name: str,
+        api_ref: dict[str, NyanObject],
+        location: typing.Union[str, ForwardRef] = ""
+    ):
         """
         Creates a raw API object.
 
@@ -317,35 +333,46 @@ class RawAPIObject:
         self.nyan_object = None
         self._patch_target = None
 
-    def add_raw_member(self, name, value, origin):
+    def add_raw_member(
+        self,
+        name: str,
+        value: typing.Union[int, float, bool, str, list, dict, ForwardRef],
+        origin: str
+    ) -> None:
         """
         Adds a raw member to the object.
 
         :param name: Name of the member (has to be a valid inherited member name).
         :type name: str
         :param value: Value of the member.
-        :type value: int, float, bool, str, list
-        :param origin: from which parent the member was inherited.
+        :type value: int, float, bool, str, list, dict, ForwardRef
+        :param origin: fqon of the object from which the member was inherited.
         :type origin: str
         """
         self.raw_members.append((name, value, origin))
 
-    def add_raw_patch_member(self, name, value, origin, operator):
+    def add_raw_patch_member(
+        self,
+        name: str,
+        value: typing.Union[int, float, bool, str, list, dict, ForwardRef],
+        origin: str,
+        operator: MemberOperator
+    ) -> None:
         """
-        Adds a raw member to the object.
+        Adds a raw patch member to the object.
 
         :param name: Name of the member (has to be a valid target member name).
         :type name: str
         :param value: Value of the member.
-        :type value: int, float, bool, str, list
-        :param origin: from which parent the target's member was inherited.
+        :type value: int, float, bool, str, list, dict, ForwardRef
+        :param origin: fqon of the object from which the member was inherited.
         :type origin: str
         :param operator: the operator for the patched member
         :type operator: MemberOperator
         """
         self.raw_members.append((name, value, origin, operator))
 
-    def add_raw_parent(self, parent_id):
+    def add_raw_parent(self, parent_id: str) -> None:
         """
         Adds a raw parent to the object.
 
@@ -354,7 +381,7 @@ class RawAPIObject:
         """
         self.raw_parents.append(parent_id)
 
-    def add_raw_patch_parent(self, parent_id):
+    def add_raw_patch_parent(self, parent_id: str) -> None:
         """
         Adds a raw patch parent to the object.
 
@@ -363,15 +390,20 @@ class RawAPIObject:
         """
         self.raw_patch_parents.append(parent_id)
 
-    def extend_raw_member(self, name, push_value, origin):
+    def extend_raw_member(
+        self,
+        name: str,
+        push_value: list,
+        origin: str
+    ) -> None:
         """
-        Extends a raw member value.
+        Extends a raw member value if the value is a list.
 
         :param name: Name of the member (has to be a valid inherited member name).
         :type name: str
         :param push_value: Extended value of the member.
         :type push_value: list
-        :param origin: from which parent the member was inherited.
+        :param origin: fqon of the object from which the member was inherited.
         :type origin: str
         """
         for raw_member in self.raw_members:
@@ -387,7 +419,7 @@ class RawAPIObject:
             raise Exception("%s: Cannot extend raw member %s with origin %s: member not found"
                             % (self, name, origin))
 
-    def create_nyan_object(self):
+    def create_nyan_object(self) -> None:
         """
         Create the nyan object for this raw API object. Members have to be created separately.
         """
@@ -401,7 +433,7 @@ class RawAPIObject:
         else:
             self.nyan_object = NyanObject(self.name, parents)
 
-    def create_nyan_members(self):
+    def create_nyan_members(self) -> None:
         """
         Fills the nyan object members with values from the raw members.
         References to nyan objects or media files with be resolved.
@@ -431,7 +463,7 @@ class RawAPIObject:
                 nyan_member = self.nyan_object.get_member_by_name(member_name, member_origin)
                 nyan_member.set_value(member_value, MemberOperator.ASSIGN)
 
-    def link_patch_target(self):
+    def link_patch_target(self) -> None:
         """
         Set the target NyanObject for a patch.
         """
@@ -446,13 +478,13 @@ class RawAPIObject:
 
         self.nyan_object.set_target(target)
 
-    def get_filename(self):
+    def get_filename(self) -> str:
         """
         Returns the filename of the raw API object.
         """
         return self._filename
 
-    def get_file_location(self):
+    def get_file_location(self) -> str:
         """
         Returns a tuple with
             1. the relative path to the directory
@@ -475,20 +507,20 @@ class RawAPIObject:
 
         return (self._location, self._filename)
 
-    def get_id(self):
+    def get_id(self) -> typing.Union[str, int]:
         """
         Returns the ID of the raw API object.
         """
         return self.obj_id
 
-    def get_location(self):
+    def get_location(self) -> typing.Union[str, ForwardRef]:
         """
         Returns the relative path to a directory or an ForwardRef
         to another RawAPIObject.
         """
         return self._location
 
-    def get_nyan_object(self):
+    def get_nyan_object(self) -> NyanObject:
         """
         Returns the nyan API object for the raw API object.
         """
@@ -497,19 +529,19 @@ class RawAPIObject:
 
         raise Exception(f"nyan object for {self} has not been created yet")
 
-    def is_ready(self):
+    def is_ready(self) -> bool:
         """
         Returns whether the object is ready to be exported.
         """
         return self.nyan_object is not None and not self.nyan_object.is_abstract()
 
-    def is_patch(self):
+    def is_patch(self) -> bool:
         """
         Returns True if the object is a patch.
         """
         return self._patch_target is not None
 
-    def set_filename(self, filename, suffix="nyan"):
+    def set_filename(self, filename: str, suffix: str = "nyan") -> None:
         """
         Set the filename of the resulting nyan file.
 
@@ -520,29 +552,29 @@ class RawAPIObject:
         """
         self._filename = f"{filename}.{suffix}"
 
-    def set_location(self, location):
+    def set_location(self, location: typing.Union[str, ForwardRef]) -> None:
         """
         Set the relative location of the object in a modpack. This must
         be a path to a nyan file or an ForwardRef to a nyan object.
 
         :param location: Relative path of the nyan file in the modpack or
                          a forward reference to another raw API object.
-        :type location: str, .forward_ref.ForwardRef
+        :type location: str, ForwardRef
         """
         self._location = location
 
-    def set_patch_target(self, target):
+    def set_patch_target(self, target: typing.Union[ForwardRef, NyanObject]):
         """
         Set an ForwardRef as a target for this object. If this
         is done, the RawAPIObject will be converted to a patch.
 
         :param target: A forward reference to another raw API object or a nyan object.
-        :type target: .forward_ref.ForwardRef, ..nyan.nyan_structs.NyanObject
+        :type target: ForwardRef, NyanObject
         """
         self._patch_target = target
 
     @staticmethod
-    def _resolve_raw_value(value):
+    def _resolve_raw_value(value) -> typing.Union[NyanObject, str, float]:
         """
         Check if a raw member value contains a reference to a resource (nyan
         objects or asset files), resolve the reference to a nyan-compatible value
@@ -579,7 +611,6 @@ class RawAPIObject:
         contained references to resources.
 
         :param values: Raw member values.
-        :type values: list, dict
         :return: Value usable by a nyan object or nyan member.
         """
         if isinstance(values, list):
@@ -616,7 +647,13 @@ class RawMemberPush:
 
     __slots__ = ('forward_ref', 'member_name', 'member_origin', 'push_value')
 
-    def __init__(self, forward_ref, member_name, member_origin, push_value):
+    def __init__(
+        self,
+        forward_ref: ForwardRef,
+        member_name: str,
+        member_origin: str,
+        push_value: list
+    ):
         """
         Creates a new member push.
 
@@ -634,25 +671,25 @@ class RawMemberPush:
         self.member_origin = member_origin
         self.push_value = push_value
 
-    def get_object_target(self):
+    def get_object_target(self) -> ForwardRef:
         """
         Returns the forward reference for the push target.
         """
         return self.forward_ref
 
-    def get_member_name(self):
+    def get_member_name(self) -> str:
         """
         Returns the name of the member that is extended.
         """
         return self.member_name
 
-    def get_member_origin(self):
+    def get_member_origin(self) -> str:
         """
         Returns the fqon of the member's origin.
         """
         return self.member_origin
 
-    def get_push_value(self):
+    def get_push_value(self) -> list:
         """
         Returns the value that extends the member's existing value.
         """

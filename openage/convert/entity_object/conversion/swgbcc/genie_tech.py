@@ -4,8 +4,13 @@
 SWGB tech objects. These extend the normal Genie techs to reflect
 that SWGB techs can have unique variants for every civilization.
 """
+from __future__ import annotations
+import typing
 
 from ..aoc.genie_tech import UnitUnlock, UnitLineUpgrade
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 
 
 class SWGBUnitLineUpgrade(UnitLineUpgrade):
@@ -15,7 +20,13 @@ class SWGBUnitLineUpgrade(UnitLineUpgrade):
 
     __slots__ = ('civ_unlocks',)
 
-    def __init__(self, tech_id, unit_line_id, upgrade_target_id, full_data_set):
+    def __init__(
+        self,
+        tech_id: int,
+        unit_line_id: int,
+        upgrade_target_id: int,
+        full_data_set: GenieObjectContainer,
+    ):
         """
         Creates a new SWGB unit upgrade object.
 
@@ -30,9 +41,9 @@ class SWGBUnitLineUpgrade(UnitLineUpgrade):
         super().__init__(tech_id, unit_line_id, upgrade_target_id, full_data_set)
 
         # Unlocks for other civs
-        self.civ_unlocks = {}
+        self.civ_unlocks: dict[int, SWGBUnitUnlock] = {}
 
-    def add_civ_upgrade(self, other_unlock):
+    def add_civ_upgrade(self, other_unlock: SWGBUnitUnlock) -> None:
         """
         Adds a reference to an alternative unlock tech for another civ
         to this tech group.
@@ -40,7 +51,7 @@ class SWGBUnitLineUpgrade(UnitLineUpgrade):
         other_civ_id = other_unlock.tech["civilization_id"].get_value()
         self.civ_unlocks[other_civ_id] = other_unlock
 
-    def is_unique(self):
+    def is_unique(self) -> bool:
         """
         Techs are unique if they belong to a specific civ.
 
@@ -56,7 +67,12 @@ class SWGBUnitUnlock(UnitUnlock):
 
     __slots__ = ('civ_unlocks',)
 
-    def __init__(self, tech_id, line_id, full_data_set):
+    def __init__(
+        self,
+        tech_id: int,
+        line_id: int,
+        full_data_set: GenieObjectContainer
+    ):
         """
         Creates a new SWGB unit unlock object.
 
@@ -70,9 +86,9 @@ class SWGBUnitUnlock(UnitUnlock):
         super().__init__(tech_id, line_id, full_data_set)
 
         # Unlocks for other civs
-        self.civ_unlocks = {}
+        self.civ_unlocks: dict[int, SWGBUnitUnlock] = {}
 
-    def add_civ_unlock(self, other_unlock):
+    def add_civ_unlock(self, other_unlock: SWGBUnitUnlock) -> None:
         """
         Adds a reference to an alternative unlock tech for another civ
         to this tech group.
@@ -80,7 +96,7 @@ class SWGBUnitUnlock(UnitUnlock):
         other_civ_id = other_unlock.tech["civilization_id"].get_value()
         self.civ_unlocks[other_civ_id] = other_unlock
 
-    def is_unique(self):
+    def is_unique(self) -> bool:
         """
         Techs are unique if they belong to a specific civ.
 

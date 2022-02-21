@@ -5,10 +5,16 @@ Contains structures and API-like objects for game entities from RoR.
 
 Based on the classes from the AoC converter.
 """
+from __future__ import annotations
+import typing
 
 from ..aoc.genie_unit import GenieUnitLineGroup, GenieBuildingLineGroup,\
-    GenieAmbientGroup, GenieVariantGroup, GenieGarrisonMode, GenieUnitTaskGroup,\
+    GenieAmbientGroup, GenieVariantGroup, GenieUnitTaskGroup,\
     GenieVillagerGroup
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGarrisonMode
 
 
 class RoRUnitLineGroup(GenieUnitLineGroup):
@@ -22,7 +28,12 @@ class RoRUnitLineGroup(GenieUnitLineGroup):
 
     __slots__ = ('enabling_research_id',)
 
-    def __init__(self, line_id, enabling_research_id, full_data_set):
+    def __init__(
+        self,
+        line_id: int,
+        enabling_research_id: int,
+        full_data_set: GenieObjectContainer
+    ):
         """
         Creates a new RoR game entity line.
 
@@ -37,7 +48,7 @@ class RoRUnitLineGroup(GenieUnitLineGroup):
         # Saved for RoR because there's no easy way to detect it with a connection
         self.enabling_research_id = enabling_research_id
 
-    def is_garrison(self, civ_id=-1):
+    def is_garrison(self, civ_id: int = -1) -> bool:
         """
         Only transport shis can garrison in RoR.
 
@@ -45,7 +56,7 @@ class RoRUnitLineGroup(GenieUnitLineGroup):
         """
         return self.has_command(12)
 
-    def is_passable(self, civ_id=-1):
+    def is_passable(self, civ_id: int = -1) -> bool:
         """
         Checks whether the group has a passable hitbox.
 
@@ -54,7 +65,7 @@ class RoRUnitLineGroup(GenieUnitLineGroup):
         head_unit = self.get_head_unit()
         return head_unit["unit_class"].get_value() == 10
 
-    def get_garrison_mode(self, civ_id=-1):
+    def get_garrison_mode(self, civ_id: int = -1) -> typing.Union[GenieGarrisonMode, None]:
         """
         Checks only for transport boat commands.
 
@@ -66,7 +77,7 @@ class RoRUnitLineGroup(GenieUnitLineGroup):
 
         return None
 
-    def get_enabling_research_id(self):
+    def get_enabling_research_id(self) -> int:
         return self.enabling_research_id
 
     def __repr__(self):
@@ -84,7 +95,12 @@ class RoRBuildingLineGroup(GenieBuildingLineGroup):
 
     __slots__ = ('enabling_research_id',)
 
-    def __init__(self, line_id, enabling_research_id, full_data_set):
+    def __init__(
+        self,
+        line_id: int,
+        enabling_research_id: int,
+        full_data_set: GenieObjectContainer
+    ):
         """
         Creates a new RoR game entity line.
 
@@ -99,10 +115,10 @@ class RoRBuildingLineGroup(GenieBuildingLineGroup):
         # Saved for RoR because there's no easy way to detect it with a connection
         self.enabling_research_id = enabling_research_id
 
-    def is_garrison(self, civ_id=-1):
+    def is_garrison(self, civ_id: int = -1) -> bool:
         return False
 
-    def is_passable(self, civ_id=-1):
+    def is_passable(self, civ_id: int = -1) -> bool:
         """
         Checks whether the group has a passable hitbox.
 
@@ -111,10 +127,10 @@ class RoRBuildingLineGroup(GenieBuildingLineGroup):
         head_unit = self.get_head_unit()
         return head_unit["unit_class"].get_value() == 10
 
-    def get_garrison_mode(self, civ_id=-1):
+    def get_garrison_mode(self, civ_id: int = -1) -> None:
         return None
 
-    def get_enabling_research_id(self):
+    def get_enabling_research_id(self) -> int:
         return self.enabling_research_id
 
     def __repr__(self):
@@ -130,10 +146,10 @@ class RoRAmbientGroup(GenieAmbientGroup):
     Example: Trees, Gold mines, Sign
     """
 
-    def is_garrison(self, civ_id=-1):
+    def is_garrison(self, civ_id: int = -1) -> bool:
         return False
 
-    def is_passable(self, civ_id=-1):
+    def is_passable(self, civ_id: int = -1) -> bool:
         """
         Checks whether the group has a passable hitbox.
 
@@ -142,7 +158,7 @@ class RoRAmbientGroup(GenieAmbientGroup):
         head_unit = self.get_head_unit()
         return head_unit["unit_class"].get_value() == 10
 
-    def get_garrison_mode(self, civ_id=-1):
+    def get_garrison_mode(self, civ_id: int = -1) -> None:
         return None
 
     def __repr__(self):
@@ -157,10 +173,10 @@ class RoRVariantGroup(GenieVariantGroup):
     Example: Cliffs, flowers, mountains
     """
 
-    def is_garrison(self, civ_id=-1):
+    def is_garrison(self, civ_id: int = -1) -> bool:
         return False
 
-    def is_passable(self, civ_id=-1):
+    def is_passable(self, civ_id: int = -1) -> bool:
         """
         Checks whether the group has a passable hitbox.
 
@@ -169,7 +185,7 @@ class RoRVariantGroup(GenieVariantGroup):
         head_unit = self.get_head_unit()
         return head_unit["unit_class"].get_value() == 10
 
-    def get_garrison_mode(self, civ_id=-1):
+    def get_garrison_mode(self, civ_id: int = -1) -> None:
         return None
 
     def __repr__(self):
@@ -189,7 +205,13 @@ class RoRUnitTaskGroup(GenieUnitTaskGroup):
 
     __slots__ = ('enabling_research_id',)
 
-    def __init__(self, line_id, task_group_id, enabling_research_id, full_data_set):
+    def __init__(
+        self,
+        line_id: int,
+        task_group_id: int,
+        enabling_research_id: int,
+        full_data_set: GenieObjectContainer
+    ):
         """
         Creates a new RoR task group.
 
@@ -205,7 +227,7 @@ class RoRUnitTaskGroup(GenieUnitTaskGroup):
         # Saved for RoR because there's no easy way to detect it with a connection
         self.enabling_research_id = enabling_research_id
 
-    def is_garrison(self, civ_id=-1):
+    def is_garrison(self, civ_id: int = -1) -> bool:
         """
         Only transport shis can garrison in RoR.
 
@@ -213,7 +235,7 @@ class RoRUnitTaskGroup(GenieUnitTaskGroup):
         """
         return self.has_command(12)
 
-    def is_passable(self, civ_id=-1):
+    def is_passable(self, civ_id: int = -1) -> bool:
         """
         Checks whether the group has a passable hitbox.
 
@@ -222,7 +244,7 @@ class RoRUnitTaskGroup(GenieUnitTaskGroup):
         head_unit = self.get_head_unit()
         return head_unit["unit_class"].get_value() == 10
 
-    def get_garrison_mode(self, civ_id=-1):
+    def get_garrison_mode(self, civ_id: int = -1) -> typing.Union[GenieGarrisonMode, None]:
         """
         Checks only for transport boat commands.
 
@@ -234,7 +256,7 @@ class RoRUnitTaskGroup(GenieUnitTaskGroup):
 
         return None
 
-    def get_enabling_research_id(self):
+    def get_enabling_research_id(self) -> int:
         return self.enabling_research_id
 
     def __repr__(self):
@@ -247,10 +269,10 @@ class RoRVillagerGroup(GenieVillagerGroup):
     configurations for RoR.
     """
 
-    def is_passable(self, civ_id=-1):
+    def is_passable(self, civ_id: int = -1) -> bool:
         return False
 
-    def get_enabling_research_id(self):
+    def get_enabling_research_id(self) -> int:
         return -1
 
     def __repr__(self):

@@ -5,6 +5,8 @@
 """
 Create a media cache file for a game version.
 """
+from __future__ import annotations
+import typing
 
 import toml
 
@@ -12,24 +14,26 @@ from ..data_definition import DataDefinition
 
 FILE_VERSION = "1.0"
 
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.read.media_types import MediaType
+
 
 class MediaCacheFile(DataDefinition):
     """
     Used for creating a media cache file.
     """
 
-    def __init__(self, targetdir, filename, game_version):
+    def __init__(self, targetdir: str, filename: str, game_version: tuple):
         super().__init__(targetdir, filename)
 
         self.game_version = game_version
-        self.hash_func = None
+        self.hash_func: str = None
         self.cache = {}
 
-    def dump(self):
+    def dump(self) -> str:
         """
         Returns the media cache file content in TOML format.
         """
-
         output_dict = {}
 
         output_dict["file_version"] = FILE_VERSION
@@ -52,7 +56,14 @@ class MediaCacheFile(DataDefinition):
 
         return output_str
 
-    def add_cache_data(self, media_type, filepath, filehash, compr_settings, packer_settings):
+    def add_cache_data(
+        self,
+        media_type: MediaType,
+        filepath: str,
+        filehash: str,
+        compr_settings: tuple,
+        packer_settings: tuple
+    ) -> None:
         """
         Add cache data for a file.
 
@@ -66,7 +77,7 @@ class MediaCacheFile(DataDefinition):
         :param compr_settings: Settings for the PNG compression.
         :type compr_settings: tuple
         :param packer_settings: Settings for the packing algorithm.
-        :type packer_settings: ruple
+        :type packer_settings: tuple
         """
         if media_type not in self.cache.keys():
             self.cache[media_type] = []
@@ -75,7 +86,7 @@ class MediaCacheFile(DataDefinition):
             (filepath, filehash, compr_settings, packer_settings)
         )
 
-    def set_hash_func(self, hash_func):
+    def set_hash_func(self, hash_func: str) -> None:
         """
         Set the hash function used for generating
         hash values for the graphic files.

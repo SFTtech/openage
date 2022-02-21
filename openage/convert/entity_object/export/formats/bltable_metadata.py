@@ -3,6 +3,8 @@
 """
 Blendtable definition file.
 """
+from __future__ import annotations
+import typing
 
 from ..data_definition import DataDefinition
 
@@ -15,13 +17,13 @@ class BlendtableMetadata(DataDefinition):
     as a .bltable custom format
     """
 
-    def __init__(self, targetdir, filename):
+    def __init__(self, targetdir: str, filename: str):
         super().__init__(targetdir, filename)
 
-        self.blendtable = None
-        self.patterns = {}
+        self.blendtable: tuple = None
+        self.patterns: dict[int, dict[str, typing.Any]] = {}
 
-    def add_pattern(self, pattern_id, filename):
+    def add_pattern(self, pattern_id: int, filename: str) -> None:
         """
         Define a pattern in the table.
 
@@ -35,7 +37,7 @@ class BlendtableMetadata(DataDefinition):
             "filename": filename
         }
 
-    def set_blendtabe(self, table):
+    def set_blendtabe(self, table: tuple) -> None:
         """
         Set the blendtable. This expects a tuple of integers with nxn entries.
 
@@ -46,7 +48,7 @@ class BlendtableMetadata(DataDefinition):
 
         self._check_table()
 
-    def dump(self):
+    def dump(self) -> str:
         output_str = ""
 
         # header
@@ -59,7 +61,7 @@ class BlendtableMetadata(DataDefinition):
         output_str += "blendtable [\n"
 
         # table entries
-        table_width = self._get_table_with()
+        table_width = self._get_table_width()
         for idx in range(table_width):
             row_entries = self.blendtable[idx * table_width:(idx + 1) * table_width]
             output_str += f'{" ".join(row_entries)}\n'
@@ -74,7 +76,7 @@ class BlendtableMetadata(DataDefinition):
 
         return output_str
 
-    def _get_table_with(self):
+    def _get_table_width(self) -> int:
         """
         Get the width of the blending table.
         """
@@ -89,11 +91,11 @@ class BlendtableMetadata(DataDefinition):
 
         return left
 
-    def _check_table(self):
+    def _check_table(self) -> typing.Union[None, typing.NoReturn]:
         """
         Check if the blending table is a nxn matrix.
         """
-        table_width = self._get_table_with()
+        table_width = self._get_table_width()
 
         if table_width * table_width != len(self.blendtable):
             raise Exception(f"blendtable entries malformed: "

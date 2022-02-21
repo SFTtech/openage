@@ -2,18 +2,20 @@
 
 # TODO pylint: disable=C,R
 
+from __future__ import annotations
+
 import math
 import re
 import struct
 
 from ....util.strings import decode_until_null
-from ...value_object.read.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP
+from ...value_object.read.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP, MemberAccess
 from ...value_object.read.read_members import (IncludeMembers, ContinueReadMember,
                                                MultisubtypeMember, GroupMember, SubdataMember,
                                                ReadMember,
                                                EnumLookupMember)
 from ...value_object.read.value_members import ContainerMember, ArrayMember, IntMember, FloatMember,\
-    StringMember, BooleanMember, IDMember, BitfieldMember
+    StringMember, BooleanMember, IDMember, BitfieldMember, ValueMember
 from ...value_object.read.value_members import MemberTypes as StorageType
 
 
@@ -58,7 +60,14 @@ class GenieStructure:
         # store passed arguments as members
         self.__dict__.update(args)
 
-    def read(self, raw, offset, game_version, cls=None, members=None):
+    def read(
+        self,
+        raw: bytes,
+        offset: int,
+        game_version: tuple,
+        cls: GenieStructure = None,
+        members: tuple = None
+    ) -> tuple[int, list[ValueMember]]:
         """
         recursively read defined binary data from raw at given offset.
 
@@ -504,8 +513,13 @@ class GenieStructure:
         return offset, generated_value_members
 
     @classmethod
-    def get_data_format(cls, game_version, allowed_modes=False,
-                        flatten_includes=False, is_parent=False):
+    def get_data_format(
+        cls,
+        game_version: tuple,
+        allowed_modes: tuple[MemberAccess] = None,
+        flatten_includes: bool = False,
+        is_parent: bool = False
+    ):
         """
         return all members of this exportable (a struct.)
 
@@ -542,7 +556,7 @@ class GenieStructure:
             yield member_entry
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(cls, game_version: tuple):
         """
         Return the members in this struct.
 

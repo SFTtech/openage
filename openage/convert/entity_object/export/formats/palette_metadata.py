@@ -15,12 +15,12 @@ class PaletteMetadata(DataDefinition):
     as a .opal custom format
     """
 
-    def __init__(self, targetdir, filename):
+    def __init__(self, targetdir: str, filename: str):
         super().__init__(targetdir, filename)
 
-        self.colours = []
+        self.colours: list[tuple] = []
 
-    def add_colour(self, colour):
+    def add_colour(self, colour: tuple) -> None:
         """
         Add a RGBA colour to the end of the palette.
 
@@ -29,7 +29,7 @@ class PaletteMetadata(DataDefinition):
         """
         self.colours.append(colour)
 
-    def add_colours(self, colours):
+    def add_colours(self, colours: list[tuple]) -> None:
         """
         Add a collection of RGBA colours to the end of the palette.
 
@@ -38,7 +38,7 @@ class PaletteMetadata(DataDefinition):
         """
         self.colours.extend(colours)
 
-    def dump(self):
+    def dump(self) -> str:
         output_str = ""
 
         # header

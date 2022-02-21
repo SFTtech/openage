@@ -4,6 +4,9 @@
 
 # TODO pylint: disable=C,R
 
+from __future__ import annotations
+import typing
+
 from PIL import Image
 
 import numpy
@@ -11,7 +14,14 @@ import numpy
 from ....log import spam
 from ...value_object.read.media.blendomatic import BlendingMode
 from ...value_object.read.media.hardcoded.terrain_tile_size import TILE_HALFSIZE
-from ..conversion import genie_structure
+from ..conversion.genie_structure import GenieStructure
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.read.media.colortable import ColorTable
+    from openage.convert.service.export.interface.cutter import InterfaceCutter
+    from openage.convert.value_object.read.media.slp import SLP, SLPFrame
+    from openage.convert.value_object.read.media.smp import SMP, SMPLayer
+    from openage.convert.value_object.read.media.smx import SMX, SMXLayer
 
 
 class TextureImage:
@@ -19,7 +29,11 @@ class TextureImage:
     represents a image created from a (r,g,b,a) matrix.
     """
 
-    def __init__(self, picture_data, hotspot=None):
+    def __init__(
+        self,
+        picture_data: typing.Union[Image.Image, numpy.ndarray],
+        hotspot: tuple[int, int] = None
+    ):
 
         if isinstance(picture_data, Image.Image):
             if picture_data.mode != 'RGBA':
@@ -31,8 +45,8 @@ class TextureImage:
             raise ValueError("Texture image must be created from PIL Image "
                              "or numpy array, not '%s'" % type(picture_data))
 
-        self.width = picture_data.shape[1]
-        self.height = picture_data.shape[0]
+        self.width: int = picture_data.shape[1]
+        self.height: int = picture_data.shape[0]
 
         spam("creating TextureImage with size %d x %d", self.width, self.height)
 
@@ -43,14 +57,14 @@ class TextureImage:
 
         self.data = picture_data
 
-    def get_pil_image(self):
+    def get_pil_image(self) -> Image.Image:
         return Image.fromarray(self.data)
 
-    def get_data(self):
+    def get_data(self) -> numpy.ndarray:
         return self.data
 
 
-class Texture(genie_structure.GenieStructure):
+class Texture(GenieStructure):
     image_format = "png"
 
     name_struct = "subtexture"
@@ -62,17 +76,22 @@ class Texture(genie_structure.GenieStructure):
         "of sprites included in the 'big texture'."
     )
 
-    def __init__(self, input_data, palettes=None, custom_cutter=None):
+    def __init__(
+        self,
+        input_data: typing.Union[SLP, SMP, SMX, BlendingMode],
+        palettes: dict[int, ColorTable] = None,
+        custom_cutter: InterfaceCutter = None
+    ):
         super().__init__()
 
         # Compression setting values for libpng
-        self.best_compr = None
+        self.best_compr: tuple = None
 
         # Best packer hints (positions of sprites in texture)
-        self.best_packer_hints = None
+        self.best_packer_hints: tuple = None
 
-        self.image_data = None
-        self.image_metadata = None
+        self.image_data: TextureImage = None
+        self.image_metadata: list[dict[str, int]] = None
 
         spam("creating Texture from %s", repr(input_data))
 
@@ -92,9 +111,9 @@ class Texture(genie_structure.GenieStructure):
                 else:
                     main_palette = palettes[palette_number].array
 
-                for subtex in self._slp_to_subtextures(frame,
-                                                       main_palette,
-                                                       custom_cutter):
+                for subtex in self._to_subtextures(frame,
+                                                   main_palette,
+                                                   custom_cutter):
                     self.frames.append(subtex)
 
         elif isinstance(input_data, BlendingMode):
@@ -110,7 +129,12 @@ class Texture(genie_structure.GenieStructure):
             raise Exception("cannot create Texture "
                             "from unknown source type: %s" % (type(input_data)))
 
-    def _slp_to_subtextures(self, frame, main_palette, custom_cutter=None):
+    def _to_subtextures(
+        self,
+        frame: typing.Union[SLPFrame, SMPLayer, SMXLayer],
+        main_palette: ColorTable,
+        custom_cutter: InterfaceCutter = None
+    ):
         """
         convert slp to subtexture or subtextures, using a palette.
         """
@@ -122,16 +146,17 @@ class Texture(genie_structure.GenieStructure):
         if custom_cutter:
             # this may cut the texture into some parts
             return custom_cutter.cut(subtex)
+
         else:
             return [subtex]
 
-    def get_metadata(self):
+    def get_metadata(self) -> list[dict[str, int]]:
         """
         Get the image metadata information.
         """
         return self.image_metadata
 
-    def get_cache_params(self):
+    def get_cache_params(self) -> tuple[tuple, tuple]:
         """
         Get the parameters used for packing and saving the texture.
             - Packing hints (sprite index, (xpos, ypos) in the final texture)
@@ -140,7 +165,7 @@ class Texture(genie_structure.GenieStructure):
         return self.best_packer_hints, self.best_compr
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(cls, game_version) -> tuple:
         """
         Return the members in this struct.
         """

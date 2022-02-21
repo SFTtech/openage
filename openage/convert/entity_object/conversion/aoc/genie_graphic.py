@@ -3,8 +3,14 @@
 """
 Contains structures and API-like objects for graphics from AoC.
 """
+from __future__ import annotations
+import typing
 
 from ..converter_object import ConverterObject
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.value_object.read.value_members import ValueMember
 
 
 class GenieGraphic(ConverterObject):
@@ -14,7 +20,12 @@ class GenieGraphic(ConverterObject):
 
     __slots__ = ('exists', 'subgraphics', '_refs', 'data')
 
-    def __init__(self, graphic_id, full_data_set, members=None):
+    def __init__(
+        self,
+        graphic_id: int,
+        full_data_set: GenieObjectContainer,
+        members: dict[str, ValueMember] = None
+    ):
         """
         Creates a new Genie graphic object.
 
@@ -36,18 +47,18 @@ class GenieGraphic(ConverterObject):
         self.exists = True
 
         # Direct subgraphics (deltas) of this graphic
-        self.subgraphics = []
+        self.subgraphics: list[GenieGraphic] = []
 
         # Other graphics that have this graphic as a subgraphic (delta)
-        self._refs = []
+        self._refs: list[GenieGraphic] = []
 
-    def add_reference(self, referer):
+    def add_reference(self, referer: GenieGraphic) -> None:
         """
         Add another graphic that is referencing this sprite.
         """
         self._refs.append(referer)
 
-    def detect_subgraphics(self):
+    def detect_subgraphics(self) -> None:
         """
         Add references for the direct subgraphics to this object.
         """
@@ -65,27 +76,27 @@ class GenieGraphic(ConverterObject):
             self.subgraphics.append(graphic)
             graphic.add_reference(self)
 
-    def get_animation_length(self):
+    def get_animation_length(self) -> float:
         """
         Returns the time taken to display all frames in this graphic.
         """
         head_graphic = self.data.genie_graphics[self.get_id()]
         return head_graphic["frame_rate"].get_value() * head_graphic["frame_count"].get_value()
 
-    def get_subgraphics(self):
+    def get_subgraphics(self) -> list[GenieGraphic]:
         """
         Return the subgraphics of this graphic
         """
         return self.subgraphics
 
-    def get_frame_rate(self):
+    def get_frame_rate(self) -> float:
         """
         Returns the time taken to display a single frame in this graphic.
         """
         head_graphic = self.data.genie_graphics[self.get_id()]
         return head_graphic["frame_rate"].get_value()
 
-    def is_shared(self):
+    def is_shared(self) -> bool:
         """
         Return True if the number of references to this graphic is >1.
         """

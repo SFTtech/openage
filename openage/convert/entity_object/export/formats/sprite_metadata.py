@@ -5,6 +5,8 @@
 """
 Sprite definition file.
 """
+from __future__ import annotations
+import typing
 
 from enum import Enum
 
@@ -28,16 +30,16 @@ class SpriteMetadata(DataDefinition):
     as a .sprite custom format
     """
 
-    def __init__(self, targetdir, filename):
+    def __init__(self, targetdir: str, filename: str):
         super().__init__(targetdir, filename)
 
-        self.image_files = {}
-        self.scalefactor = 1
-        self.layers = {}
-        self.angles = {}
-        self.frames = []
+        self.image_files: dict[int, dict[str, typing.Any]] = {}
+        self.scalefactor = 1.0
+        self.layers: dict[int, dict[str, typing.Any]] = {}
+        self.angles: dict[int, dict[str, int]] = {}
+        self.frames: list[dict[str, int]] = []
 
-    def add_image(self, img_id, filename):
+    def add_image(self, img_id: int, filename: str) -> None:
         """
         Add an image and the relative file name.
 
@@ -51,7 +53,14 @@ class SpriteMetadata(DataDefinition):
             "filename": filename,
         }
 
-    def add_layer(self, layer_id, mode=None, position=None, time_per_frame=None, replay_delay=None):
+    def add_layer(
+        self,
+        layer_id: int,
+        mode: LayerMode = None,
+        position: int = None,
+        time_per_frame: float = None,
+        replay_delay: float = None
+    ) -> None:
         """
         Define a layer for the rendered sprite.
 
@@ -74,7 +83,7 @@ class SpriteMetadata(DataDefinition):
             "replay_delay": replay_delay,
         }
 
-    def add_angle(self, degree, mirror_from=None):
+    def add_angle(self, degree: int, mirror_from: int = None) -> None:
         """
         Specifies an angle that frames can get assigned to.
 
@@ -88,8 +97,19 @@ class SpriteMetadata(DataDefinition):
             "mirror_from": mirror_from,
         }
 
-    def add_frame(self, frame_idx, angle, layer_id, img_id, xpos, ypos,
-                  xsize, ysize, xhotspot, yhotspot):
+    def add_frame(
+        self,
+        frame_idx: int,
+        angle: int,
+        layer_id: int,
+        img_id: int,
+        xpos: int,
+        ypos: int,
+        xsize: int,
+        ysize: int,
+        xhotspot: int,
+        yhotspot: int
+    ) -> None:
         """
         Add frame with all its spacial information.
 
@@ -129,7 +149,7 @@ class SpriteMetadata(DataDefinition):
             }
         )
 
-    def set_scalefactor(self, factor):
+    def set_scalefactor(self, factor: typing.Union[int, float]) -> None:
         """
         Set the scale factor of the animation.
 
@@ -138,7 +158,7 @@ class SpriteMetadata(DataDefinition):
         """
         self.scalefactor = float(factor)
 
-    def dump(self):
+    def dump(self) -> str:
         output_str = ""
 
         # header

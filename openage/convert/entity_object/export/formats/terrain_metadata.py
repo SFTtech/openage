@@ -5,6 +5,9 @@
 """
 Terrain definition file.
 """
+from __future__ import annotations
+import typing
+
 
 from enum import Enum
 
@@ -27,16 +30,16 @@ class TerrainMetadata(DataDefinition):
     as a .terrain custom format
     """
 
-    def __init__(self, targetdir, filename):
+    def __init__(self, targetdir: str, filename: str):
         super().__init__(targetdir, filename)
 
-        self.scalefactor = 1
-        self.image_files = {}
-        self.blendtable = None
-        self.layers = {}
-        self.frames = []
+        self.scalefactor = 1.0
+        self.image_files: dict[int, dict[str, typing.Any]] = {}
+        self.blendtable: dict[str, typing.Any] = None
+        self.layers: dict[int, dict[str, typing.Any]] = {}
+        self.frames: list[dict[str, int]] = []
 
-    def add_image(self, img_id, filename):
+    def add_image(self, img_id: int, filename: str) -> None:
         """
         Add an image and the relative file name.
 
@@ -50,7 +53,14 @@ class TerrainMetadata(DataDefinition):
             "filename": filename,
         }
 
-    def add_layer(self, layer_id, mode, position=None, time_per_frame=None, replay_delay=None):
+    def add_layer(
+        self,
+        layer_id: int,
+        mode: LayerMode = None,
+        position: int = None,
+        time_per_frame: float = None,
+        replay_delay: float = None
+    ) -> None:
         """
         Define a layer for the rendered texture.
 
@@ -73,8 +83,18 @@ class TerrainMetadata(DataDefinition):
             "replay_delay": replay_delay,
         }
 
-    def add_frame(self, frame_idx, layer_id, img_id, xpos, ypos, xsize, ysize,
-                  priority=None, blend_mode=None):
+    def add_frame(
+        self,
+        frame_idx: int,
+        layer_id: int,
+        img_id: int,
+        xpos: int,
+        ypos: int,
+        xsize: int,
+        ysize: int,
+        priority: int,
+        blend_mode: int
+    ) -> None:
         """
         Add frame with all its spacial information.
 
@@ -111,7 +131,7 @@ class TerrainMetadata(DataDefinition):
             }
         )
 
-    def set_blendtable(self, table_id, filename):
+    def set_blendtable(self, table_id: int, filename: str) -> None:
         """
         Set the blendtable and the relative filename.
 
@@ -125,7 +145,7 @@ class TerrainMetadata(DataDefinition):
             "filename": filename,
         }
 
-    def set_scalefactor(self, factor):
+    def set_scalefactor(self, factor: typing.Union[int, float]) -> None:
         """
         Set the scale factor of the texture.
 
@@ -134,7 +154,7 @@ class TerrainMetadata(DataDefinition):
         """
         self.scalefactor = float(factor)
 
-    def dump(self):
+    def dump(self) -> str:
         output_str = ""
 
         # header

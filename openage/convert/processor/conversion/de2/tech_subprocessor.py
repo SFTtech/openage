@@ -138,14 +138,14 @@ class DE2TechSubprocessor:
             effects = converter_group.get_effects()
 
             # Change converter group here, so that the Civ object gets the patches
-            converter_group = dataset.civ_groups[converter_group.get_civilization()]
+            converter_group = dataset.civ_groups[converter_group.get_civilization_id()]
             team_bonus = True
 
         elif isinstance(converter_group, CivBonus):
             effects = converter_group.get_effects()
 
             # Change converter group here, so that the Civ object gets the patches
-            converter_group = dataset.civ_groups[converter_group.get_civilization()]
+            converter_group = dataset.civ_groups[converter_group.get_civilization_id()]
 
         else:
             effects = converter_group.get_effects()

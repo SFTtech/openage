@@ -7,6 +7,13 @@ while B->A during conversion. The pointer can be resolved
 once the object has been created.
 """
 
+from __future__ import annotations
+
+import typing
+
+if typing.TYPE_CHECKING:
+    from openage.nyan.nyan_structs import NyanObject
+
 
 class ForwardRef:
     """
@@ -30,7 +37,7 @@ class ForwardRef:
         self.group_object = converter_object_group_ref
         self.raw_api_object_name = raw_api_object_ref
 
-    def resolve(self):
+    def resolve(self) -> NyanObject:
         """
         Returns the nyan object reference for the pointer.
         """

@@ -13,21 +13,21 @@ class StringResource(GenieStructure):
         super().__init__()
         self.strings = defaultdict(lambda: {})
 
-    def fill_from(self, stringtable):
+    def fill_from(self, stringtable: dict[str, dict[str, str]]) -> None:
         """
         stringtable is a dict {langcode: {id: string}}
         """
         for lang, langstrings in stringtable.items():
             self.strings[lang].update(langstrings)
 
-    def get_tables(self):
+    def get_tables(self) -> dict[str, dict[str, str]]:
         """
         Returns the stringtable.
         """
         return self.strings
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(cls, game_version: tuple) -> tuple:
         """
         Return the members in this struct.
         """
