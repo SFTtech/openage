@@ -6,8 +6,15 @@
 Organize export data (nyan objects, media, scripts, etc.)
 into modpacks.
 """
+from __future__ import annotations
+import typing
+
+
 from ....entity_object.conversion.modpack import Modpack
 from ..aoc.modpack_subprocessor import AoCModpackSubprocessor
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 
 
 class RoRModpackSubprocessor:
@@ -16,16 +23,16 @@ class RoRModpackSubprocessor:
     """
 
     @classmethod
-    def get_modpacks(cls, gamedata):
+    def get_modpacks(cls, full_data_set: GenieObjectContainer) -> list[Modpack]:
         """
         Return all modpacks that can be created from the gamedata.
         """
-        aoe1_base = cls._get_aoe1_base(gamedata)
+        aoe1_base = cls._get_aoe1_base(full_data_set)
 
         return [aoe1_base]
 
     @classmethod
-    def _get_aoe1_base(cls, gamedata):
+    def _get_aoe1_base(cls, full_data_set: GenieObjectContainer) -> Modpack:
         """
         Create the aoe1-base modpack.
         """
@@ -37,7 +44,7 @@ class RoRModpackSubprocessor:
 
         mod_def.add_include("data/*")
 
-        AoCModpackSubprocessor.organize_nyan_objects(modpack, gamedata)
-        AoCModpackSubprocessor.organize_media_objects(modpack, gamedata)
+        AoCModpackSubprocessor.organize_nyan_objects(modpack, full_data_set)
+        AoCModpackSubprocessor.organize_media_objects(modpack, full_data_set)
 
         return modpack

@@ -5,6 +5,10 @@
 """
 Creates patches for technologies.
 """
+from __future__ import annotations
+import typing
+
+
 from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.aoc.genie_tech import CivTeamBonus, CivBonus
 from ..aoc.tech_subprocessor import AoCTechSubprocessor
@@ -12,6 +16,11 @@ from ..aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from ..aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
 from .upgrade_attribute_subprocessor import DE2UpgradeAttributeSubprocessor
 from .upgrade_resource_subprocessor import DE2UpgradeResourceSubprocessor
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
+    from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject
+    from openage.convert.value_object.conversion.forward_ref import ForwardRef
 
 
 class DE2TechSubprocessor:
@@ -125,7 +134,7 @@ class DE2TechSubprocessor:
     }
 
     @classmethod
-    def get_patches(cls, converter_group):
+    def get_patches(cls, converter_group: ConverterObjectGroup) -> list[ForwardRef]:
         """
         Returns the patches for a converter group, depending on the type
         of its effects.
@@ -195,7 +204,11 @@ class DE2TechSubprocessor:
         return patches
 
     @staticmethod
-    def attribute_modify_effect(converter_group, effect, team=False):
+    def attribute_modify_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates the patches for modifying attributes of entities.
         """
@@ -260,7 +273,11 @@ class DE2TechSubprocessor:
         return patches
 
     @staticmethod
-    def resource_modify_effect(converter_group, effect, team=False):
+    def resource_modify_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates the patches for modifying resources.
         """

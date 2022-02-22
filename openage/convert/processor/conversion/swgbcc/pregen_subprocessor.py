@@ -9,6 +9,9 @@
 Creates nyan objects for things that are hardcoded into the Genie Engine,
 but configurable in openage. E.g. HP.
 """
+from __future__ import annotations
+import typing
+
 from .....nyan.nyan_structs import MemberSpecialValue
 from ....entity_object.conversion.converter_object import ConverterObjectGroup,\
     RawAPIObject
@@ -17,6 +20,9 @@ from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
 from ..aoc.pregen_processor import AoCPregenSubprocessor
 
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+
 
 class SWGBCCPregenSubprocessor:
     """
@@ -24,28 +30,28 @@ class SWGBCCPregenSubprocessor:
     """
 
     @classmethod
-    def generate(cls, gamedata):
+    def generate(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Create nyan objects for hardcoded properties.
         """
         # Stores pregenerated raw API objects as a container
         pregen_converter_group = ConverterObjectGroup("pregen")
 
-        AoCPregenSubprocessor.generate_attributes(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor.generate_diplomatic_stances(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor.generate_team_property(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor.generate_entity_types(gamedata, pregen_converter_group)
-        cls.generate_effect_types(gamedata, pregen_converter_group)
-        cls.generate_exchange_objects(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor.generate_formation_types(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor.generate_language_objects(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor.generate_misc_effect_objects(gamedata, pregen_converter_group)
+        AoCPregenSubprocessor.generate_attributes(full_data_set, pregen_converter_group)
+        AoCPregenSubprocessor.generate_diplomatic_stances(full_data_set, pregen_converter_group)
+        AoCPregenSubprocessor.generate_team_property(full_data_set, pregen_converter_group)
+        AoCPregenSubprocessor.generate_entity_types(full_data_set, pregen_converter_group)
+        cls.generate_effect_types(full_data_set, pregen_converter_group)
+        cls.generate_exchange_objects(full_data_set, pregen_converter_group)
+        AoCPregenSubprocessor.generate_formation_types(full_data_set, pregen_converter_group)
+        AoCPregenSubprocessor.generate_language_objects(full_data_set, pregen_converter_group)
+        AoCPregenSubprocessor.generate_misc_effect_objects(full_data_set, pregen_converter_group)
         # cls._generate_modifiers(gamedata, pregen_converter_group) ??
         # cls._generate_terrain_types(gamedata, pregen_converter_group) TODO: Create terrain types
-        cls.generate_resources(gamedata, pregen_converter_group)
-        AoCPregenSubprocessor.generate_death_condition(gamedata, pregen_converter_group)
+        cls.generate_resources(full_data_set, pregen_converter_group)
+        AoCPregenSubprocessor.generate_death_condition(full_data_set, pregen_converter_group)
 
-        pregen_nyan_objects = gamedata.pregen_nyan_objects
+        pregen_nyan_objects = full_data_set.pregen_nyan_objects
         # Create nyan objects from the raw API objects
         for pregen_object in pregen_nyan_objects.values():
             pregen_object.create_nyan_object()
@@ -59,7 +65,10 @@ class SWGBCCPregenSubprocessor:
                                 "Member or object not initialized." % (pregen_object))
 
     @staticmethod
-    def generate_effect_types(full_data_set, pregen_converter_group):
+    def generate_effect_types(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate types for effects and resistances.
 
@@ -76,7 +85,8 @@ class SWGBCCPregenSubprocessor:
         api_objects = full_data_set.nyan_api_objects
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(full_data_set.game_version)
-        armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(full_data_set.game_version)
+        armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(
+            full_data_set.game_version)
 
         # =======================================================================
         # Armor types
@@ -205,7 +215,10 @@ class SWGBCCPregenSubprocessor:
         pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
 
     @staticmethod
-    def generate_exchange_objects(full_data_set, pregen_converter_group):
+    def generate_exchange_objects(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate objects for market trading (ExchangeResources).
 
@@ -495,7 +508,10 @@ class SWGBCCPregenSubprocessor:
         pregen_nyan_objects.update({price_mode_ref_in_modpack: price_mode_raw_api_object})
 
     @staticmethod
-    def generate_resources(full_data_set, pregen_converter_group):
+    def generate_resources(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate Attribute objects.
 

@@ -8,14 +8,15 @@ Object for comparing and passing around data from a dataset.
 from __future__ import annotations
 import typing
 
+
 from ..converter_object import ConverterObjectContainer
 
 if typing.TYPE_CHECKING:
-    from openage.convert.value_object.init.game_version import GameEdition, GameExpansion
-    from openage.nyan.nyan_structs import NyanObject
+    from openage.convert.entity_object.conversion.converter_object import RawAPIObject
     from openage.convert.entity_object.conversion.combined_sound import CombinedSound
     from openage.convert.entity_object.conversion.combined_sprite import CombinedSprite
     from openage.convert.entity_object.conversion.combined_terrain import CombinedTerrain
+    from openage.convert.entity_object.conversion.stringresource import StringResource
     from openage.convert.entity_object.conversion.aoc.genie_civ import GenieCivilizationObject,\
         GenieCivilizationGroup
     from openage.convert.entity_object.conversion.aoc.genie_connection import GenieAgeConnection,\
@@ -34,6 +35,8 @@ if typing.TYPE_CHECKING:
         GenieGameEntityGroup
     from openage.convert.entity_object.export.media_export_request import MediaExportRequest
     from openage.convert.entity_object.export.metadata_export import MetadataExport
+    from openage.convert.value_object.init.game_version import GameEdition, GameExpansion
+    from openage.nyan.nyan_structs import NyanObject
 
 
 class GenieObjectContainer(ConverterObjectContainer):
@@ -52,10 +55,10 @@ class GenieObjectContainer(ConverterObjectContainer):
 
         # Things that don't exist in the game, e.g. Attributes
         # saved as RawAPIObjects
-        self.pregen_nyan_objects: dict[str, NyanObject] = {}
+        self.pregen_nyan_objects: dict[str, RawAPIObject] = {}
 
         # Auxiliary
-        self.strings: dict[str, dict[str, str]] = None
+        self.strings: StringResource = None
         self.existing_graphics: list[str] = None
 
         # Phase 1: Genie-like objects

@@ -4,11 +4,19 @@
 """
 Export data from a modpack to files.
 """
+from __future__ import annotations
+import typing
+
 
 from ....log import info
 from .data_exporter import DataExporter
 from .generate_manifest_hashes import generate_hashes
 from .media_exporter import MediaExporter
+
+if typing.TYPE_CHECKING:
+    from argparse import Namespace
+
+    from openage.convert.entity_object.conversion.modpack import Modpack
 
 
 class ModpackExporter:
@@ -17,7 +25,7 @@ class ModpackExporter:
     """
 
     @staticmethod
-    def export(modpack, args):
+    def export(modpack: Modpack, args: Namespace) -> None:
         """
         Export a modpack to a directory.
 

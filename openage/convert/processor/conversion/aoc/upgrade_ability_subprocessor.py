@@ -9,6 +9,10 @@
 """
 Creates upgrade patches for abilities.
 """
+from __future__ import annotations
+import typing
+
+
 from math import degrees
 
 from .....nyan.nyan_structs import MemberOperator, MemberSpecialValue
@@ -23,6 +27,12 @@ from ....value_object.conversion.forward_ref import ForwardRef
 from ....value_object.read.value_members import NoDiffMember
 from .upgrade_effect_subprocessor import AoCUpgradeEffectSubprocessor
 
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObject,\
+        ConverterObjectGroup
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup,\
+        GenieUnitObject
+
 
 class AoCUpgradeAbilitySubprocessor:
     """
@@ -30,8 +40,14 @@ class AoCUpgradeAbilitySubprocessor:
     """
 
     @staticmethod
-    def apply_continuous_effect_ability(converter_group, line, container_obj_ref,
-                                        command_id, ranged=False, diff=None):
+    def apply_continuous_effect_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        command_id: int,
+        ranged: bool = False,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the ApplyContinuousEffect ability of a line.
 
@@ -197,8 +213,14 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def apply_discrete_effect_ability(converter_group, line, container_obj_ref,
-                                      command_id, ranged=False, diff=None):
+    def apply_discrete_effect_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        command_id: int,
+        ranged: bool = False,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the ApplyDiscreteEffect ability of a line.
 
@@ -387,7 +409,12 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def attribute_change_tracker_ability(converter_group, line, container_obj_ref, diff=None):
+    def attribute_change_tracker_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the AttributeChangeTracker ability of a line.
 
@@ -498,7 +525,12 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def death_ability(converter_group, line, container_obj_ref, diff=None):
+    def death_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the Death ability of a line.
 
@@ -596,7 +628,12 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def despawn_ability(converter_group, line, container_obj_ref, diff=None):
+    def despawn_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the Despawn ability of a line.
 
@@ -627,7 +664,8 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(diff_dead_unit, NoDiffMember):
                 return patches
 
-            diff_animation_id = dataset.genie_units[diff_dead_unit.get_value()]["idle_graphic0"].get_value()
+            diff_animation_id = dataset.genie_units[diff_dead_unit.get_value(
+            )]["idle_graphic0"].get_value()
 
         else:
             return patches
@@ -694,7 +732,12 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def idle_ability(converter_group, line, container_obj_ref, diff=None):
+    def idle_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the Idle ability of a line.
 
@@ -792,7 +835,12 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def live_ability(converter_group, line, container_obj_ref, diff=None):
+    def live_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the Live ability of a line.
 
@@ -886,7 +934,12 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def los_ability(converter_group, line, container_obj_ref, diff=None):
+    def los_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the LineOfSight ability of a line.
 
@@ -974,7 +1027,12 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def move_ability(converter_group, line, container_obj_ref, diff=None):
+    def move_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the Move ability of a line.
 
@@ -1099,7 +1157,12 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def named_ability(converter_group, line, container_obj_ref, diff=None):
+    def named_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the Named ability of a line.
 
@@ -1189,7 +1252,12 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def resistance_ability(converter_group, line, container_obj_ref, diff=None):
+    def resistance_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the Resistance ability of a line.
 
@@ -1225,7 +1293,12 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def selectable_ability(converter_group, line, container_obj_ref, diff=None):
+    def selectable_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the Selectable ability of a line.
 
@@ -1397,9 +1470,15 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def shoot_projectile_ability(converter_group, line, container_obj_ref,
-                                 upgrade_source, upgrade_target,
-                                 command_id, diff=None):
+    def shoot_projectile_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        upgrade_source: GenieUnitObject,
+        upgrade_target: GenieUnitObject,
+        command_id: int,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the Selectable ability of a line.
 
@@ -1679,7 +1758,12 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def turn_ability(converter_group, line, container_obj_ref, diff=None):
+    def turn_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the Turn ability of a line.
 
@@ -1774,7 +1858,14 @@ class AoCUpgradeAbilitySubprocessor:
         return patches
 
     @staticmethod
-    def create_animation(converter_group, line, animation_id, nyan_patch_ref, animation_name, filename_prefix):
+    def create_animation(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        animation_id: int,
+        nyan_patch_ref: str,
+        animation_name: str,
+        filename_prefix: str
+    ) -> ForwardRef:
         """
         Generates an animation for an ability.
         """
@@ -1827,7 +1918,13 @@ class AoCUpgradeAbilitySubprocessor:
         return animation_forward_ref
 
     @staticmethod
-    def create_sound(converter_group, sound_id, nyan_patch_ref, sound_name, filename_prefix):
+    def create_sound(
+        converter_group: ConverterObjectGroup,
+        sound_id: int,
+        nyan_patch_ref: str,
+        sound_name: str,
+        filename_prefix: str
+    ) -> ForwardRef:
         """
         Generates a sound for an ability.
         """
@@ -1877,7 +1974,12 @@ class AoCUpgradeAbilitySubprocessor:
         return sound_forward_ref
 
     @staticmethod
-    def create_language_strings(converter_group, string_id, obj_ref, obj_name_prefix):
+    def create_language_strings(
+        converter_group: ConverterObjectGroup,
+        string_id: int,
+        obj_ref: str,
+        obj_name_prefix: str
+    ) -> list[ForwardRef]:
         """
         Generates a language string for an ability.
         """
@@ -1896,7 +1998,8 @@ class AoCUpgradeAbilitySubprocessor:
                 string_raw_api_object.set_location(string_location)
 
                 # Language identifier
-                lang_forward_ref = dataset.pregen_nyan_objects[f"util.language.{language}"].get_nyan_object()
+                lang_forward_ref = dataset.pregen_nyan_objects[f"util.language.{language}"].get_nyan_object(
+                )
                 string_raw_api_object.add_raw_member("language",
                                                      lang_forward_ref,
                                                      "engine.util.language.LanguageTextPair")

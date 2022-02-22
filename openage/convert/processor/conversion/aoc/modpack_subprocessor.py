@@ -6,10 +6,17 @@
 Organize export data (nyan objects, media, scripts, etc.)
 into modpacks.
 """
+from __future__ import annotations
+import typing
+
+
 from .....nyan.import_tree import ImportTree
 from ....entity_object.conversion.modpack import Modpack
 from ....entity_object.export.formats.nyan_file import NyanFile
 from ....value_object.conversion.forward_ref import ForwardRef
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 
 
 class AoCModpackSubprocessor:
@@ -18,16 +25,16 @@ class AoCModpackSubprocessor:
     """
 
     @classmethod
-    def get_modpacks(cls, gamedata):
+    def get_modpacks(cls, full_data_set: GenieObjectContainer) -> list[Modpack]:
         """
         Return all modpacks that can be created from the gamedata.
         """
-        aoe2_base = cls._get_aoe2_base(gamedata)
+        aoe2_base = cls._get_aoe2_base(full_data_set)
 
         return [aoe2_base]
 
     @classmethod
-    def _get_aoe2_base(cls, gamedata):
+    def _get_aoe2_base(cls, full_data_set: GenieObjectContainer) -> Modpack:
         """
         Create the aoe2-base modpack.
         """
@@ -39,13 +46,13 @@ class AoCModpackSubprocessor:
 
         mod_def.add_include("data/*")
 
-        cls.organize_nyan_objects(modpack, gamedata)
-        cls.organize_media_objects(modpack, gamedata)
+        cls.organize_nyan_objects(modpack, full_data_set)
+        cls.organize_media_objects(modpack, full_data_set)
 
         return modpack
 
     @staticmethod
-    def organize_nyan_objects(modpack, full_data_set):
+    def organize_nyan_objects(modpack: Modpack, full_data_set: GenieObjectContainer) -> None:
         """
         Put available nyan objects into a given modpack.
         """
@@ -115,7 +122,7 @@ class AoCModpackSubprocessor:
         AoCModpackSubprocessor._set_static_aliases(modpack, import_tree)
 
     @staticmethod
-    def organize_media_objects(modpack, full_data_set):
+    def organize_media_objects(modpack: Modpack, full_data_set: GenieObjectContainer) -> None:
         """
         Put export requests and sprite files into as given modpack.
         """
@@ -132,7 +139,7 @@ class AoCModpackSubprocessor:
             modpack.add_metadata_export(metadata_file)
 
     @staticmethod
-    def _set_static_aliases(modpack, import_tree):
+    def _set_static_aliases(modpack: Modpack, import_tree: ImportTree) -> None:
         """
         Set the aliases for the nyan import tree. The alias names
         and affected nodes are hardcoded in this function.

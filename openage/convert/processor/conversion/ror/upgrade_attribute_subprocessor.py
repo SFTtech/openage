@@ -8,10 +8,18 @@
 """
 Creates upgrade patches for attribute modification effects in RoR.
 """
+from __future__ import annotations
+import typing
+
 from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+    from openage.nyan.nyan_structs import MemberOperator
 
 
 class RoRUpgradeAttributeSubprocessor:
@@ -20,7 +28,13 @@ class RoRUpgradeAttributeSubprocessor:
     """
 
     @staticmethod
-    def ballistics_upgrade(converter_group, line, value, operator, team=False):
+    def ballistics_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the ballistics modify effect (ID: 19).
 
@@ -29,7 +43,7 @@ class RoRUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -97,7 +111,8 @@ class RoRUpgradeAttributeSubprocessor:
                                                   "engine.util.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+                )
                 properties = {
                     dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
                 }
@@ -114,14 +129,20 @@ class RoRUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def population_upgrade(converter_group, line, value, operator, team=False):
+    def population_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the population effect (ID: 101).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.

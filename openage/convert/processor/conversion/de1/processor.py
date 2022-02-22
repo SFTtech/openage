@@ -3,6 +3,8 @@
 """
 Convert data from DE1 to openage formats.
 """
+from __future__ import annotations
+import typing
 
 
 from .....log import info
@@ -18,6 +20,13 @@ from ..ror.pregen_subprocessor import RoRPregenSubprocessor
 from ..ror.processor import RoRProcessor
 from .media_subprocessor import DE1MediaSubprocessor
 
+if typing.TYPE_CHECKING:
+    from argparse import Namespace
+    from openage.convert.entity_object.conversion.stringresource import StringResource
+    from openage.convert.entity_object.conversion.modpack import Modpack
+    from openage.convert.value_object.read.value_members import ArrayMember
+    from openage.convert.value_object.init.game_version import GameEdition, GameExpansion
+
 
 class DE1Processor:
     """
@@ -25,7 +34,13 @@ class DE1Processor:
     """
 
     @classmethod
-    def convert(cls, gamespec, args, string_resources, existing_graphics):
+    def convert(
+        cls,
+        gamespec: ArrayMember,
+        args: Namespace,
+        string_resources: StringResource,
+        existing_graphics: list[str]
+    ) -> list[Modpack]:
         """
         Input game specification and media here and get a set of
         modpacks back.
@@ -58,7 +73,13 @@ class DE1Processor:
         return modpacks
 
     @classmethod
-    def _pre_processor(cls, gamespec, game_version, string_resources, existing_graphics):
+    def _pre_processor(
+        cls,
+        gamespec: ArrayMember,
+        game_version: tuple[GameEdition, list[GameExpansion]],
+        string_resources: StringResource,
+        existing_graphics: list[str]
+    ) -> GenieObjectContainer:
         """
         Store data from the reader in a conversion container.
 
@@ -90,7 +111,7 @@ class DE1Processor:
         return dataset
 
     @classmethod
-    def _processor(cls, gamespec, full_data_set):
+    def _processor(cls, full_data_set: GenieObjectContainer) -> GenieObjectContainer:
         """
         Transfer structures used in Genie games to more openage-friendly
         Python objects.
@@ -128,7 +149,7 @@ class DE1Processor:
         return full_data_set
 
     @classmethod
-    def _post_processor(cls, full_data_set):
+    def _post_processor(cls, full_data_set: GenieObjectContainer) -> list[Modpack]:
         """
         Convert API-like Python objects to nyan.
 
@@ -148,7 +169,7 @@ class DE1Processor:
         return RoRModpackSubprocessor.get_modpacks(full_data_set)
 
     @staticmethod
-    def extract_genie_graphics(gamespec, full_data_set):
+    def extract_genie_units(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract graphic definitions from the game data.
 

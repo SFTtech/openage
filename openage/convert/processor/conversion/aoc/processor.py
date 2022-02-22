@@ -5,6 +5,10 @@
 """
 Convert data from AoC to openage formats.
 """
+from __future__ import annotations
+import typing
+
+
 from .....log import info
 from ....entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup
 from ....entity_object.conversion.aoc.genie_civ import GenieCivilizationObject
@@ -43,6 +47,13 @@ from .modpack_subprocessor import AoCModpackSubprocessor
 from .nyan_subprocessor import AoCNyanSubprocessor
 from .pregen_processor import AoCPregenSubprocessor
 
+if typing.TYPE_CHECKING:
+    from argparse import Namespace
+    from openage.convert.entity_object.conversion.stringresource import StringResource
+    from openage.convert.entity_object.conversion.modpack import Modpack
+    from openage.convert.value_object.read.value_members import ArrayMember
+    from openage.convert.value_object.init.game_version import GameEdition, GameExpansion
+
 
 class AoCProcessor:
     """
@@ -50,7 +61,13 @@ class AoCProcessor:
     """
 
     @classmethod
-    def convert(cls, gamespec, args, string_resources, existing_graphics):
+    def convert(
+        cls,
+        gamespec: ArrayMember,
+        args: Namespace,
+        string_resources: StringResource,
+        existing_graphics: list[str]
+    ) -> list[Modpack]:
         """
         Input game speification and media here and get a set of
         modpacks back.
@@ -83,7 +100,13 @@ class AoCProcessor:
         return modpacks
 
     @classmethod
-    def _pre_processor(cls, gamespec, game_version, string_resources, existing_graphics):
+    def _pre_processor(
+        cls,
+        gamespec: ArrayMember,
+        game_version: tuple[GameEdition, list[GameExpansion]],
+        string_resources: StringResource,
+        existing_graphics: list[str]
+    ) -> GenieObjectContainer:
         """
         Store data from the reader in a conversion container.
 
@@ -115,7 +138,7 @@ class AoCProcessor:
         return dataset
 
     @classmethod
-    def _processor(cls, full_data_set):
+    def _processor(cls, full_data_set: GenieObjectContainer) -> GenieObjectContainer:
         """
         Transfer structures used in Genie games to more openage-friendly
         Python objects.
@@ -156,7 +179,7 @@ class AoCProcessor:
         return full_data_set
 
     @classmethod
-    def _post_processor(cls, full_data_set):
+    def _post_processor(cls, full_data_set: GenieObjectContainer) -> list[Modpack]:
         """
         Convert API-like Python objects to nyan.
 
@@ -177,7 +200,7 @@ class AoCProcessor:
         return AoCModpackSubprocessor.get_modpacks(full_data_set)
 
     @staticmethod
-    def extract_genie_units(gamespec, full_data_set):
+    def extract_genie_units(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract units from the game data.
 
@@ -216,7 +239,7 @@ class AoCProcessor:
             unit.add_member(unit_commands)
 
     @staticmethod
-    def extract_genie_techs(gamespec, full_data_set):
+    def extract_genie_techs(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract techs from the game data.
 
@@ -239,7 +262,7 @@ class AoCProcessor:
             index += 1
 
     @staticmethod
-    def extract_genie_effect_bundles(gamespec, full_data_set):
+    def extract_genie_effect_bundles(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract effects and effect bundles from the game data.
 
@@ -282,7 +305,7 @@ class AoCProcessor:
             index_bundle += 1
 
     @staticmethod
-    def extract_genie_civs(gamespec, full_data_set):
+    def extract_genie_civs(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract civs from the game data.
 
@@ -308,7 +331,7 @@ class AoCProcessor:
             index += 1
 
     @staticmethod
-    def extract_age_connections(gamespec, full_data_set):
+    def extract_age_connections(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract age connections from the game data.
 
@@ -326,7 +349,7 @@ class AoCProcessor:
             full_data_set.age_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def extract_building_connections(gamespec, full_data_set):
+    def extract_building_connections(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract building connections from the game data.
 
@@ -345,7 +368,7 @@ class AoCProcessor:
             full_data_set.building_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def extract_unit_connections(gamespec, full_data_set):
+    def extract_unit_connections(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract unit connections from the game data.
 
@@ -363,7 +386,7 @@ class AoCProcessor:
             full_data_set.unit_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def extract_tech_connections(gamespec, full_data_set):
+    def extract_tech_connections(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract tech connections from the game data.
 
@@ -381,7 +404,7 @@ class AoCProcessor:
             full_data_set.tech_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def extract_genie_graphics(gamespec, full_data_set):
+    def extract_genie_graphics(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract graphic definitions from the game data.
 
@@ -412,7 +435,7 @@ class AoCProcessor:
             genie_graphic.detect_subgraphics()
 
     @staticmethod
-    def extract_genie_sounds(gamespec, full_data_set):
+    def extract_genie_sounds(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract sound definitions from the game data.
 
@@ -430,7 +453,7 @@ class AoCProcessor:
             full_data_set.genie_sounds.update({sound.get_id(): sound})
 
     @staticmethod
-    def extract_genie_terrains(gamespec, full_data_set):
+    def extract_genie_terrains(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract terrains from the game data.
 
@@ -451,7 +474,7 @@ class AoCProcessor:
             index += 1
 
     @staticmethod
-    def create_unit_lines(full_data_set):
+    def create_unit_lines(full_data_set: GenieObjectContainer) -> None:
         """
         Sort units into lines, based on information in the unit connections.
 
@@ -551,13 +574,13 @@ class AoCProcessor:
             full_data_set.unit_ref.update({unit_id: unit_line})
 
     @staticmethod
-    def create_extra_unit_lines(full_data_set):
+    def create_extra_unit_lines(full_data_set: GenieObjectContainer) -> None:
         """
         Create additional units that are not in the unit connections.
 
         :param full_data_set: GenieObjectContainer instance that
-                              contains all relevant data for the conversion
-                              process.
+                                contains all relevant data for the conversion
+                                process.
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
         extra_units = (48, 65, 594, 833)  # Wildlife
@@ -569,7 +592,7 @@ class AoCProcessor:
             full_data_set.unit_ref.update({unit_id: unit_line})
 
     @staticmethod
-    def create_building_lines(full_data_set):
+    def create_building_lines(full_data_set: GenieObjectContainer) -> None:
         """
         Establish building lines, based on information in the building connections.
         Because of how Genie building lines work, this will only find the first
@@ -679,7 +702,7 @@ class AoCProcessor:
                 full_data_set.unit_ref.update({building_id: building_line})
 
     @staticmethod
-    def sanitize_effect_bundles(full_data_set):
+    def sanitize_effect_bundles(full_data_set: GenieObjectContainer) -> None:
         """
         Remove garbage data from effect bundles.
 
@@ -719,7 +742,7 @@ class AoCProcessor:
             bundle.sanitized = True
 
     @staticmethod
-    def create_tech_groups(full_data_set):
+    def create_tech_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create techs from tech connections and unit upgrades/unlocks
         from unit connections.
@@ -882,7 +905,7 @@ class AoCProcessor:
             full_data_set.civ_boni.update({civ_bonus.get_id(): civ_bonus})
 
     @staticmethod
-    def create_civ_groups(full_data_set):
+    def create_civ_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create civilization groups from civ objects.
 
@@ -902,7 +925,7 @@ class AoCProcessor:
             index += 1
 
     @staticmethod
-    def create_villager_groups(full_data_set):
+    def create_villager_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create task groups and assign the relevant male and female group to a
         villager group.
@@ -954,7 +977,7 @@ class AoCProcessor:
             full_data_set.unit_ref.update({unit_id: villager})
 
     @staticmethod
-    def create_ambient_groups(full_data_set):
+    def create_ambient_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create ambient groups, mostly for resources and scenery.
 
@@ -973,7 +996,7 @@ class AoCProcessor:
             full_data_set.unit_ref.update({ambient_id: ambient_group})
 
     @staticmethod
-    def create_variant_groups(full_data_set):
+    def create_variant_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create variant groups.
 
@@ -993,7 +1016,7 @@ class AoCProcessor:
                 full_data_set.unit_ref.update({variant_id: variant_group})
 
     @staticmethod
-    def create_terrain_groups(full_data_set):
+    def create_terrain_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create terrain groups.
 
@@ -1019,7 +1042,7 @@ class AoCProcessor:
                 full_data_set.terrain_groups.update({terrain.get_id(): terrain_group})
 
     @staticmethod
-    def link_building_upgrades(full_data_set):
+    def link_building_upgrades(full_data_set: GenieObjectContainer) -> None:
         """
         Find building upgrades in the AgeUp techs and append them to the building lines.
 
@@ -1051,7 +1074,7 @@ class AoCProcessor:
                 full_data_set.unit_ref.update({upgrade_target_id: upgraded_line})
 
     @staticmethod
-    def link_creatables(full_data_set):
+    def link_creatables(full_data_set: GenieObjectContainer) -> None:
         """
         Link creatable units and buildings to their creating entity. This is done
         to provide quick access during conversion.
@@ -1084,7 +1107,7 @@ class AoCProcessor:
                     full_data_set.unit_lines[train_location_id].add_creatable(building_line)
 
     @staticmethod
-    def link_researchables(full_data_set):
+    def link_researchables(full_data_set: GenieObjectContainer) -> None:
         """
         Link techs to their buildings. This is done
         to provide quick access during conversion.
@@ -1102,7 +1125,7 @@ class AoCProcessor:
                 full_data_set.building_lines[research_location_id].add_researchable(tech)
 
     @staticmethod
-    def link_civ_uniques(full_data_set):
+    def link_civ_uniques(full_data_set: GenieObjectContainer) -> None:
         """
         Link civ bonus techs, unique units and unique techs to their civs.
 
@@ -1141,7 +1164,7 @@ class AoCProcessor:
                 full_data_set.civ_groups[civ_id].add_unique_tech(tech_group)
 
     @staticmethod
-    def link_gatherers_to_dropsites(full_data_set):
+    def link_gatherers_to_dropsites(full_data_set: GenieObjectContainer) -> None:
         """
         Link gatherers to the buildings they drop resources off. This is done
         to provide quick access during conversion.
@@ -1166,7 +1189,7 @@ class AoCProcessor:
                         drop_site.add_gatherer_id(unit_id)
 
     @staticmethod
-    def link_garrison(full_data_set):
+    def link_garrison(full_data_set: GenieObjectContainer) -> None:
         """
         Link a garrison unit to the lines that are stored and vice versa. This is done
         to provide quick access during conversion.
@@ -1279,7 +1302,7 @@ class AoCProcessor:
                             garrison_line.garrison_entities.append(unit_line)
 
     @staticmethod
-    def link_trade_posts(full_data_set):
+    def link_trade_posts(full_data_set: GenieObjectContainer) -> None:
         """
         Link a trade post building to the lines that it trades with.
 
@@ -1309,7 +1332,7 @@ class AoCProcessor:
                 full_data_set.building_lines[trade_post_id].add_trading_line(unit_line)
 
     @staticmethod
-    def link_repairables(full_data_set):
+    def link_repairables(full_data_set: GenieObjectContainer) -> None:
         """
         Set units/buildings as repairable
 

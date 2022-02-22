@@ -5,6 +5,9 @@
 """
 Convert data from AoE2:HD to openage formats.
 """
+from __future__ import annotations
+import typing
+
 
 from .....log import info
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
@@ -17,6 +20,13 @@ from ..aoc.processor import AoCProcessor
 from .media_subprocessor import HDMediaSubprocessor
 from .modpack_subprocessor import HDModpackSubprocessor
 
+if typing.TYPE_CHECKING:
+    from argparse import Namespace
+    from openage.convert.entity_object.conversion.stringresource import StringResource
+    from openage.convert.entity_object.conversion.modpack import Modpack
+    from openage.convert.value_object.read.value_members import ArrayMember
+    from openage.convert.value_object.init.game_version import GameEdition, GameExpansion
+
 
 class HDProcessor:
     """
@@ -24,7 +34,13 @@ class HDProcessor:
     """
 
     @classmethod
-    def convert(cls, gamespec, args, string_resources, existing_graphics):
+    def convert(
+        cls,
+        gamespec: ArrayMember,
+        args: Namespace,
+        string_resources: StringResource,
+        existing_graphics: list[str]
+    ) -> list[Modpack]:
         """
         Input game speification and media here and get a set of
         modpacks back.
@@ -57,7 +73,13 @@ class HDProcessor:
         return modpacks
 
     @classmethod
-    def _pre_processor(cls, gamespec, game_version, string_resources, existing_graphics):
+    def _pre_processor(
+        cls,
+        gamespec: ArrayMember,
+        game_version: tuple[GameEdition, list[GameExpansion]],
+        string_resources: StringResource,
+        existing_graphics: list[str]
+    ) -> GenieObjectContainer:
         """
         Store data from the reader in a conversion container.
 
@@ -89,7 +111,7 @@ class HDProcessor:
         return dataset
 
     @classmethod
-    def _processor(cls, full_data_set):
+    def _processor(cls, full_data_set: GenieObjectContainer) -> GenieObjectContainer:
         """
         Transfer structures used in Genie games to more openage-friendly
         Python objects.
@@ -130,7 +152,7 @@ class HDProcessor:
         return full_data_set
 
     @classmethod
-    def _post_processor(cls, full_data_set):
+    def _post_processor(cls, full_data_set: GenieObjectContainer) -> list[Modpack]:
         """
         Convert API-like Python objects to nyan.
 

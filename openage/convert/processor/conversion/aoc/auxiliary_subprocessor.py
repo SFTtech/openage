@@ -6,13 +6,21 @@
 Derives complex auxiliary objects from unit lines, techs
 or other objects.
 """
+from __future__ import annotations
+import typing
+
+
 from .....nyan.nyan_structs import MemberSpecialValue
 from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup,\
     GenieBuildingLineGroup, GenieUnitLineGroup
 from ....entity_object.conversion.combined_sound import CombinedSound
-from ....entity_object.conversion.converter_object import RawAPIObject
+from ....entity_object.conversion.converter_object import ConverterObjectGroup, RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+    from openage.convert.entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
 
 
 class AoCAuxiliarySubprocessor:
@@ -21,7 +29,7 @@ class AoCAuxiliarySubprocessor:
     """
 
     @staticmethod
-    def get_creatable_game_entity(line):
+    def get_creatable_game_entity(line: GenieGameEntityGroup) -> None:
         """
         Creates the CreatableGameEntity object for a unit/building line.
 
@@ -139,7 +147,8 @@ class AoCAuxiliarySubprocessor:
                 resource_name = "Wood"
 
             elif resource_id == 2:
-                resource = dataset.pregen_nyan_objects["util.resource.types.Stone"].get_nyan_object()
+                resource = dataset.pregen_nyan_objects["util.resource.types.Stone"].get_nyan_object(
+                )
                 resource_name = "Stone"
 
             elif resource_id == 3:
@@ -358,7 +367,8 @@ class AoCAuxiliarySubprocessor:
                 placement_modes.append(replace_forward_ref)
 
         else:
-            placement_modes.append(dataset.nyan_api_objects["engine.util.placement_mode.type.Eject"])
+            placement_modes.append(
+                dataset.nyan_api_objects["engine.util.placement_mode.type.Eject"])
 
             # OwnStorage mode
             obj_name = f"{game_entity_name}.CreatableGameEntity.OwnStorage"
@@ -390,7 +400,7 @@ class AoCAuxiliarySubprocessor:
         line.add_raw_api_object(cost_raw_api_object)
 
     @staticmethod
-    def get_researchable_tech(tech_group):
+    def get_researchable_tech(tech_group: GenieTechEffectBundleGroup) -> None:
         """
         Creates the ResearchableTech object for a Tech.
 
@@ -468,7 +478,8 @@ class AoCAuxiliarySubprocessor:
                 resource_name = "Wood"
 
             elif resource_id == 2:
-                resource = dataset.pregen_nyan_objects["util.resource.types.Stone"].get_nyan_object()
+                resource = dataset.pregen_nyan_objects["util.resource.types.Stone"].get_nyan_object(
+                )
                 resource_name = "Stone"
 
             elif resource_id == 3:
@@ -559,12 +570,22 @@ class AoCAuxiliarySubprocessor:
         tech_group.add_raw_api_object(cost_raw_api_object)
 
     @staticmethod
-    def get_condition(converter_object, obj_ref, tech_id, top_level=False):
+    def get_condition(
+        converter_obj_group: ConverterObjectGroup,
+        obj_ref: str,
+        tech_id: int,
+        top_level: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates the condition for a creatable or researchable from tech
         by recursively searching the required techs.
+
+        :param converter_object: ConverterObjectGroup that the condition objects should be nested in.
+        :param obj_ref: Reference of converter_object inside the modpack.
+        :param tech_id: tech ID of a tech wth a conditional unlock.
+        :param top_level: True if the condition has subconditions, False otherwise.
         """
-        dataset = converter_object.data
+        dataset = converter_obj_group.data
         tech = dataset.genie_techs[tech_id]
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
@@ -597,7 +618,7 @@ class AoCAuxiliarySubprocessor:
                                                   literal_name,
                                                   dataset.nyan_api_objects)
             literal_raw_api_object.add_raw_parent(literal_parent)
-            literal_location = ForwardRef(converter_object, obj_ref)
+            literal_location = ForwardRef(converter_obj_group, obj_ref)
             literal_raw_api_object.set_location(literal_location)
 
             if tech_id in dataset.initiated_techs.keys():
@@ -616,7 +637,7 @@ class AoCAuxiliarySubprocessor:
                                                        "ProgressStatus",
                                                        dataset.nyan_api_objects)
                 progress_raw_api_object.add_raw_parent("engine.util.progress_status.ProgressStatus")
-                progress_location = ForwardRef(converter_object, literal_ref)
+                progress_location = ForwardRef(converter_obj_group, literal_ref)
                 progress_raw_api_object.set_location(progress_location)
 
                 # Type
@@ -630,9 +651,9 @@ class AoCAuxiliarySubprocessor:
                                                        100,
                                                        "engine.util.progress_status.ProgressStatus")
 
-                converter_object.add_raw_api_object(progress_raw_api_object)
+                converter_obj_group.add_raw_api_object(progress_raw_api_object)
                 # =======================================================================
-                progress_forward_ref = ForwardRef(converter_object, progress_ref)
+                progress_forward_ref = ForwardRef(converter_obj_group, progress_ref)
                 literal_raw_api_object.add_raw_member("progress_status",
                                                       progress_forward_ref,
                                                       literal_parent)
@@ -651,7 +672,7 @@ class AoCAuxiliarySubprocessor:
                                                 "LiteralScope",
                                                 dataset.nyan_api_objects)
             scope_raw_api_object.add_raw_parent("engine.util.logic.literal_scope.type.Any")
-            scope_location = ForwardRef(converter_object, literal_ref)
+            scope_location = ForwardRef(converter_obj_group, literal_ref)
             scope_raw_api_object.set_location(scope_location)
 
             scope_diplomatic_stances = [
@@ -661,9 +682,9 @@ class AoCAuxiliarySubprocessor:
                                                 scope_diplomatic_stances,
                                                 "engine.util.logic.literal_scope.LiteralScope")
 
-            converter_object.add_raw_api_object(scope_raw_api_object)
+            converter_obj_group.add_raw_api_object(scope_raw_api_object)
             # ==========================================================================
-            scope_forward_ref = ForwardRef(converter_object, scope_ref)
+            scope_forward_ref = ForwardRef(converter_obj_group, scope_ref)
             literal_raw_api_object.add_raw_member("scope",
                                                   scope_forward_ref,
                                                   "engine.util.logic.literal.Literal")
@@ -672,8 +693,8 @@ class AoCAuxiliarySubprocessor:
                                                   True,
                                                   "engine.util.logic.LogicElement")
 
-            converter_object.add_raw_api_object(literal_raw_api_object)
-            literal_forward_ref = ForwardRef(converter_object, literal_ref)
+            converter_obj_group.add_raw_api_object(literal_raw_api_object)
+            literal_forward_ref = ForwardRef(converter_obj_group, literal_ref)
 
             return [literal_forward_ref]
 
@@ -709,7 +730,7 @@ class AoCAuxiliarySubprocessor:
                 # If there's only one required tech we don't need a gate
                 # we can just return the logic element of the only required tech
                 required_tech_id = relevant_ids[0]
-                return AoCAuxiliarySubprocessor.get_condition(converter_object,
+                return AoCAuxiliarySubprocessor.get_condition(converter_obj_group,
                                                               obj_ref,
                                                               required_tech_id)
 
@@ -720,11 +741,11 @@ class AoCAuxiliarySubprocessor:
 
             if required_tech_count == len(relevant_ids):
                 gate_raw_api_object.add_raw_parent("engine.util.logic.gate.type.AND")
-                gate_location = ForwardRef(converter_object, obj_ref)
+                gate_location = ForwardRef(converter_obj_group, obj_ref)
 
             else:
                 gate_raw_api_object.add_raw_parent("engine.util.logic.gate.type.SUBSETMIN")
-                gate_location = ForwardRef(converter_object, obj_ref)
+                gate_location = ForwardRef(converter_obj_group, obj_ref)
 
                 gate_raw_api_object.add_raw_member("size",
                                                    required_tech_count,
@@ -740,7 +761,7 @@ class AoCAuxiliarySubprocessor:
             # Get requirements from subtech recursively
             inputs = []
             for required_tech_id in relevant_ids:
-                required = AoCAuxiliarySubprocessor.get_condition(converter_object,
+                required = AoCAuxiliarySubprocessor.get_condition(converter_obj_group,
                                                                   gate_ref,
                                                                   required_tech_id)
                 inputs.extend(required)
@@ -749,6 +770,6 @@ class AoCAuxiliarySubprocessor:
                                                inputs,
                                                "engine.util.logic.gate.LogicGate")
 
-            converter_object.add_raw_api_object(gate_raw_api_object)
-            gate_forward_ref = ForwardRef(converter_object, gate_ref)
+            converter_obj_group.add_raw_api_object(gate_raw_api_object)
+            gate_forward_ref = ForwardRef(converter_obj_group, gate_ref)
             return [gate_forward_ref]

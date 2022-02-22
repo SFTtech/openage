@@ -8,6 +8,15 @@
 """
 Creates upgrade patches for attribute modification effects in DE2.
 """
+from __future__ import annotations
+import typing
+
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+    from openage.nyan.nyan_structs import MemberOperator
+    from openage.convert.value_object.conversion.forward_ref import ForwardRef
 
 
 class DE2UpgradeAttributeSubprocessor:
@@ -16,7 +25,13 @@ class DE2UpgradeAttributeSubprocessor:
     """
 
     @staticmethod
-    def regeneration_rate_upgrade(converter_group, line, value, operator, team=False):
+    def regeneration_rate_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the regeneration rate modify effect (ID: 109).
 
@@ -27,7 +42,7 @@ class DE2UpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.

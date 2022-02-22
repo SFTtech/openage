@@ -5,6 +5,14 @@
 Exports data formats from a modpack to files.
 """
 
+from __future__ import annotations
+import typing
+
+
+if typing.TYPE_CHECKING:
+    from openage.util.fslike.directory import Directory
+    from openage.convert.entity_object.export.data_definition import DataDefinition
+
 
 class DataExporter:
     """
@@ -12,7 +20,7 @@ class DataExporter:
     """
 
     @staticmethod
-    def export(data_files, exportdir):
+    def export(data_files: list[DataDefinition], exportdir: Directory) -> None:
         """
         Exports data files.
 

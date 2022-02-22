@@ -8,6 +8,10 @@
 """
 Creates patches for technologies.
 """
+from __future__ import annotations
+import typing
+
+
 from openage.log import warn
 from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup,\
@@ -20,6 +24,10 @@ from ....value_object.conversion.forward_ref import ForwardRef
 from .upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
 from .upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from .upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
+    from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject
 
 
 class AoCTechSubprocessor:
@@ -103,7 +111,7 @@ class AoCTechSubprocessor:
     }
 
     @classmethod
-    def get_patches(cls, converter_group):
+    def get_patches(cls, converter_group: ConverterObjectGroup) -> list[ForwardRef]:
         """
         Returns the patches for a converter group, depending on the type
         of its effects.
@@ -172,7 +180,11 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def attribute_modify_effect(converter_group, effect, team=False):
+    def attribute_modify_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates the patches for modifying attributes of entities.
         """
@@ -237,7 +249,11 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def resource_modify_effect(converter_group, effect, team=False):
+    def resource_modify_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates the patches for modifying resources.
         """
@@ -276,7 +292,10 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def upgrade_unit_effect(converter_group, effect):
+    def upgrade_unit_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject
+    ) -> list[ForwardRef]:
         """
         Creates the patches for upgrading entities in a line.
         """
@@ -365,7 +384,11 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def tech_cost_modify_effect(converter_group, effect, team=False):
+    def tech_cost_modify_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates the patches for modifying tech costs.
         """
@@ -481,7 +504,11 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def tech_time_modify_effect(converter_group, effect, team=False):
+    def tech_time_modify_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates the patches for modifying tech research times.
         """

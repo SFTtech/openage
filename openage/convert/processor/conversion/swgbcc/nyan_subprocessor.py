@@ -9,6 +9,9 @@
 Convert API-like objects to nyan objects. Subroutine of the
 main SWGB processor. Reuses functionality from the AoC subprocessor.
 """
+from __future__ import annotations
+import typing
+
 from ....entity_object.conversion.aoc.genie_tech import UnitLineUpgrade
 from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup,\
     GenieStackBuildingGroup, GenieGarrisonMode, GenieMonkGroup
@@ -22,6 +25,13 @@ from .auxiliary_subprocessor import SWGBCCAuxiliarySubprocessor
 from .civ_subprocessor import SWGBCCCivSubprocessor
 from .tech_subprocessor import SWGBCCTechSubprocessor
 
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
+        GenieBuildingLineGroup, GenieAmbientGroup
+
 
 class SWGBCCNyanSubprocessor:
     """
@@ -29,18 +39,18 @@ class SWGBCCNyanSubprocessor:
     """
 
     @classmethod
-    def convert(cls, gamedata):
+    def convert(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Create nyan objects from the given dataset.
         """
-        cls._process_game_entities(gamedata)
-        cls._create_nyan_objects(gamedata)
-        cls._create_nyan_members(gamedata)
+        cls._process_game_entities(full_data_set)
+        cls._create_nyan_objects(full_data_set)
+        cls._create_nyan_members(full_data_set)
 
-        cls._check_objects(gamedata)
+        cls._check_objects(full_data_set)
 
     @classmethod
-    def _check_objects(cls, full_data_set):
+    def _check_objects(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Check if objects are valid.
         """
@@ -66,7 +76,7 @@ class SWGBCCNyanSubprocessor:
             civ_group.check_readiness()
 
     @classmethod
-    def _create_nyan_objects(cls, full_data_set):
+    def _create_nyan_objects(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Creates nyan objects from the API objects.
         """
@@ -99,7 +109,7 @@ class SWGBCCNyanSubprocessor:
             civ_group.execute_raw_member_pushs()
 
     @classmethod
-    def _create_nyan_members(cls, full_data_set):
+    def _create_nyan_members(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Fill nyan member values of the API objects.
         """
@@ -125,7 +135,7 @@ class SWGBCCNyanSubprocessor:
             civ_group.create_nyan_members()
 
     @classmethod
-    def _process_game_entities(cls, full_data_set):
+    def _process_game_entities(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Create the RawAPIObject representation of the objects.
         """
@@ -152,7 +162,7 @@ class SWGBCCNyanSubprocessor:
             cls.civ_group_to_civ(civ_group)
 
     @staticmethod
-    def unit_line_to_game_entity(unit_line):
+    def unit_line_to_game_entity(unit_line: GenieUnitLineGroup) -> None:
         """
         Creates raw API objects for a unit line.
 
@@ -190,7 +200,8 @@ class SWGBCCNyanSubprocessor:
         unit_type = current_unit["unit_type"].get_value()
 
         if unit_type >= 70:
-            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object()
+            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object(
+            )
             types_set.append(type_obj)
 
         unit_class = current_unit["unit_class"].get_value()
@@ -354,7 +365,7 @@ class SWGBCCNyanSubprocessor:
             SWGBCCAuxiliarySubprocessor.get_creatable_game_entity(unit_line)
 
     @staticmethod
-    def building_line_to_game_entity(building_line):
+    def building_line_to_game_entity(building_line: GenieBuildingLineGroup) -> None:
         """
         Creates raw API objects for a building line.
 
@@ -392,7 +403,8 @@ class SWGBCCNyanSubprocessor:
         unit_type = current_building["unit_type"].get_value()
 
         if unit_type >= 80:
-            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()
+            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(
+            )
             types_set.append(type_obj)
 
         unit_class = current_building["unit_class"].get_value()
@@ -402,7 +414,8 @@ class SWGBCCNyanSubprocessor:
         types_set.append(type_obj)
 
         if building_line.is_dropsite():
-            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.DropSite"].get_nyan_object()
+            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.DropSite"].get_nyan_object(
+            )
             types_set.append(type_obj)
 
         raw_api_object.add_raw_member("types", types_set, "engine.util.game_entity.GameEntity")
@@ -412,7 +425,8 @@ class SWGBCCNyanSubprocessor:
         # =======================================================================
         abilities_set = []
 
-        abilities_set.append(SWGBCCAbilitySubprocessor.attribute_change_tracker_ability(building_line))
+        abilities_set.append(
+            SWGBCCAbilitySubprocessor.attribute_change_tracker_ability(building_line))
         abilities_set.append(SWGBCCAbilitySubprocessor.death_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.delete_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.despawn_ability(building_line))
@@ -467,7 +481,8 @@ class SWGBCCNyanSubprocessor:
             garrison_mode = building_line.get_garrison_mode()
 
             if garrison_mode == GenieGarrisonMode.NATURAL:
-                abilities_set.append(SWGBCCAbilitySubprocessor.send_back_to_task_ability(building_line))
+                abilities_set.append(
+                    SWGBCCAbilitySubprocessor.send_back_to_task_ability(building_line))
 
             if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
                 abilities_set.append(AoCAbilitySubprocessor.rally_point_ability(building_line))
@@ -489,7 +504,8 @@ class SWGBCCNyanSubprocessor:
 
         if building_line.get_id() == 84:
             # Spaceport trading
-            abilities_set.extend(SWGBCCAbilitySubprocessor.exchange_resources_ability(building_line))
+            abilities_set.extend(
+                SWGBCCAbilitySubprocessor.exchange_resources_ability(building_line))
 
         raw_api_object.add_raw_member("abilities", abilities_set,
                                       "engine.util.game_entity.GameEntity")
@@ -511,7 +527,7 @@ class SWGBCCNyanSubprocessor:
             SWGBCCAuxiliarySubprocessor.get_creatable_game_entity(building_line)
 
     @staticmethod
-    def ambient_group_to_game_entity(ambient_group):
+    def ambient_group_to_game_entity(ambient_group: GenieAmbientGroup) -> None:
         """
         Creates raw API objects for an ambient group.
 
@@ -545,7 +561,8 @@ class SWGBCCNyanSubprocessor:
         # Create or use existing auxiliary types
         types_set = []
 
-        type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Ambient"].get_nyan_object()
+        type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Ambient"].get_nyan_object(
+        )
         types_set.append(type_obj)
 
         unit_class = ambient_unit["unit_class"].get_value()
@@ -605,7 +622,7 @@ class SWGBCCNyanSubprocessor:
                                       "engine.util.game_entity.GameEntity")
 
     @staticmethod
-    def tech_group_to_tech(tech_group):
+    def tech_group_to_tech(tech_group: GenieTechEffectBundleGroup) -> None:
         """
         Creates raw API objects for a tech group.
 
@@ -672,7 +689,8 @@ class SWGBCCNyanSubprocessor:
         description_raw_api_object = RawAPIObject(description_ref,
                                                   f"{tech_name}Description",
                                                   dataset.nyan_api_objects)
-        description_raw_api_object.add_raw_parent("engine.util.language.translated.type.TranslatedMarkupFile")
+        description_raw_api_object.add_raw_parent(
+            "engine.util.language.translated.type.TranslatedMarkupFile")
         description_location = ForwardRef(tech_group, tech_name)
         description_raw_api_object.set_location(description_location)
 
@@ -693,7 +711,8 @@ class SWGBCCNyanSubprocessor:
         long_description_raw_api_object = RawAPIObject(long_description_ref,
                                                        f"{tech_name}LongDescription",
                                                        dataset.nyan_api_objects)
-        long_description_raw_api_object.add_raw_parent("engine.util.language.translated.type.TranslatedMarkupFile")
+        long_description_raw_api_object.add_raw_parent(
+            "engine.util.language.translated.type.TranslatedMarkupFile")
         long_description_location = ForwardRef(tech_group, tech_name)
         long_description_raw_api_object.set_location(long_description_location)
 
@@ -723,7 +742,7 @@ class SWGBCCNyanSubprocessor:
         # TODO: Implement civ line techs
 
     @staticmethod
-    def civ_group_to_civ(civ_group):
+    def civ_group_to_civ(civ_group: GenieCivilizationGroup) -> None:
         """
         Creates raw API objects for a civ group.
 
@@ -774,7 +793,8 @@ class SWGBCCNyanSubprocessor:
         description_raw_api_object = RawAPIObject(description_ref,
                                                   f"{tech_name}Description",
                                                   dataset.nyan_api_objects)
-        description_raw_api_object.add_raw_parent("engine.util.language.translated.type.TranslatedMarkupFile")
+        description_raw_api_object.add_raw_parent(
+            "engine.util.language.translated.type.TranslatedMarkupFile")
         description_location = ForwardRef(civ_group, tech_name)
         description_raw_api_object.set_location(description_location)
 
@@ -795,7 +815,8 @@ class SWGBCCNyanSubprocessor:
         long_description_raw_api_object = RawAPIObject(long_description_ref,
                                                        f"{tech_name}LongDescription",
                                                        dataset.nyan_api_objects)
-        long_description_raw_api_object.add_raw_parent("engine.util.language.translated.type.TranslatedMarkupFile")
+        long_description_raw_api_object.add_raw_parent(
+            "engine.util.language.translated.type.TranslatedMarkupFile")
         long_description_location = ForwardRef(civ_group, tech_name)
         long_description_raw_api_object.set_location(long_description_location)
 
@@ -880,18 +901,24 @@ class SWGBCCNyanSubprocessor:
             # =======================================================================
             # Types
             # =======================================================================
-            types_set = [dataset.pregen_nyan_objects["util.game_entity_type.types.Projectile"].get_nyan_object()]
-            proj_raw_api_object.add_raw_member("types", types_set, "engine.util.game_entity.GameEntity")
+            types_set = [
+                dataset.pregen_nyan_objects["util.game_entity_type.types.Projectile"].get_nyan_object()]
+            proj_raw_api_object.add_raw_member(
+                "types", types_set, "engine.util.game_entity.GameEntity")
 
             # =======================================================================
             # Abilities
             # =======================================================================
             abilities_set = []
-            abilities_set.append(AoCAbilitySubprocessor.projectile_ability(line, position=projectile_num))
-            abilities_set.append(AoCAbilitySubprocessor.move_projectile_ability(line, position=projectile_num))
-            abilities_set.append(AoCAbilitySubprocessor.apply_discrete_effect_ability(line, 7, False, projectile_num))
+            abilities_set.append(AoCAbilitySubprocessor.projectile_ability(
+                line, position=projectile_num))
+            abilities_set.append(AoCAbilitySubprocessor.move_projectile_ability(
+                line, position=projectile_num))
+            abilities_set.append(AoCAbilitySubprocessor.apply_discrete_effect_ability(
+                line, 7, False, projectile_num))
             # TODO: Death, Despawn
-            proj_raw_api_object.add_raw_member("abilities", abilities_set, "engine.util.game_entity.GameEntity")
+            proj_raw_api_object.add_raw_member(
+                "abilities", abilities_set, "engine.util.game_entity.GameEntity")
 
             # =======================================================================
             # TODO: Modifiers
@@ -901,13 +928,15 @@ class SWGBCCNyanSubprocessor:
             # modifiers_set.append(AoCModifierSubprocessor.flyover_effect_modifier(line))
             # modifiers_set.extend(AoCModifierSubprocessor.elevation_attack_modifiers(line))
 
-            proj_raw_api_object.add_raw_member("modifiers", modifiers_set, "engine.util.game_entity.GameEntity")
+            proj_raw_api_object.add_raw_member(
+                "modifiers", modifiers_set, "engine.util.game_entity.GameEntity")
 
             # =======================================================================
             # Variants
             # =======================================================================
             variants_set = []
-            proj_raw_api_object.add_raw_member("variants", variants_set, "engine.util.game_entity.GameEntity")
+            proj_raw_api_object.add_raw_member(
+                "variants", variants_set, "engine.util.game_entity.GameEntity")
 
             line.add_raw_api_object(proj_raw_api_object)
 

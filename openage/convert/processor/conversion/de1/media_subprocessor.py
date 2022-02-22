@@ -5,11 +5,17 @@
 Convert media information to metadata definitions and export
 requests. Subroutine of the main DE1 processor.
 """
+from __future__ import annotations
+import typing
+
 from ....entity_object.export.formats.sprite_metadata import LayerMode
 from ....entity_object.export.media_export_request import MediaExportRequest
 from ....entity_object.export.metadata_export import SpriteMetadataExport
 from ....value_object.read.media_types import MediaType
 from ..aoc.media_subprocessor import AoCMediaSubprocessor
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 
 
 class DE1MediaSubprocessor:
@@ -18,7 +24,7 @@ class DE1MediaSubprocessor:
     """
 
     @classmethod
-    def convert(cls, full_data_set):
+    def convert(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Create all export requests for the dataset.
         """
@@ -26,7 +32,7 @@ class DE1MediaSubprocessor:
         AoCMediaSubprocessor.create_sound_requests(full_data_set)
 
     @staticmethod
-    def create_graphics_requests(full_data_set):
+    def create_graphics_requests(full_data_set: GenieObjectContainer) -> None:
         """
         Create export requests for graphics referenced by CombinedSprite objects.
         """

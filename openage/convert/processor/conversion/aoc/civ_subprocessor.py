@@ -5,6 +5,9 @@
 """
 Creates patches and modifiers for civs.
 """
+from __future__ import annotations
+import typing
+
 from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup
 from ....entity_object.conversion.combined_sprite import CombinedSprite
@@ -13,6 +16,10 @@ from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
 from .tech_subprocessor import AoCTechSubprocessor
 
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+
 
 class AoCCivSubprocessor:
     """
@@ -20,7 +27,7 @@ class AoCCivSubprocessor:
     """
 
     @classmethod
-    def get_civ_setup(cls, civ_group):
+    def get_civ_setup(cls, civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Returns the patches for the civ setup which configures architecture sets
         unique units, unique techs, team boni and unique stat upgrades.
@@ -37,8 +44,8 @@ class AoCCivSubprocessor:
 
         return patches
 
-    @classmethod
-    def get_modifiers(cls, civ_group):
+    @ classmethod
+    def get_modifiers(cls, civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Returns global modifiers of a civ.
         """
@@ -51,8 +58,8 @@ class AoCCivSubprocessor:
 
         return modifiers
 
-    @staticmethod
-    def get_starting_resources(civ_group):
+    @ staticmethod
+    def get_starting_resources(civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Returns the starting resources of a civ.
         """
@@ -176,8 +183,8 @@ class AoCCivSubprocessor:
 
         return resource_amounts
 
-    @classmethod
-    def setup_civ_bonus(cls, civ_group):
+    @ classmethod
+    def setup_civ_bonus(cls, civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Returns global modifiers of a civ.
         """
@@ -267,8 +274,8 @@ class AoCCivSubprocessor:
 
         return patches
 
-    @staticmethod
-    def setup_unique_units(civ_group):
+    @ staticmethod
+    def setup_unique_units(civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Patches the unique units into their train location.
         """
@@ -341,8 +348,8 @@ class AoCCivSubprocessor:
 
         return patches
 
-    @staticmethod
-    def setup_unique_techs(civ_group):
+    @ staticmethod
+    def setup_unique_techs(civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Patches the unique techs into their research location.
         """
@@ -411,8 +418,8 @@ class AoCCivSubprocessor:
 
         return patches
 
-    @staticmethod
-    def setup_tech_tree(civ_group):
+    @ staticmethod
+    def setup_tech_tree(civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Patches standard techs and units out of Research and Create.
         """
@@ -593,8 +600,14 @@ class AoCCivSubprocessor:
 
         return patches
 
-    @staticmethod
-    def create_animation(line, animation_id, nyan_patch_ref, animation_name, filename_prefix):
+    @ staticmethod
+    def create_animation(
+        line: GenieGameEntityGroup,
+        animation_id: int,
+        nyan_patch_ref: str,
+        animation_name: str,
+        filename_prefix: str
+    ) -> ForwardRef:
         """
         Generates an animation for an ability.
         """

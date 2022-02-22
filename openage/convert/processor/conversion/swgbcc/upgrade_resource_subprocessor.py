@@ -8,11 +8,18 @@
 """
 Creates upgrade patches for resource modification effects in SWGB.
 """
+from __future__ import annotations
+import typing
+
 from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
+    from openage.nyan.nyan_structs import MemberOperator
 
 
 class SWGBCCUpgradeResourceSubprocessor:
@@ -21,14 +28,19 @@ class SWGBCCUpgradeResourceSubprocessor:
     """
 
     @staticmethod
-    def assault_mech_anti_air_upgrade(converter_group, value, operator, team=False):
+    def assault_mech_anti_air_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the assault mech anti air effect (ID: 31).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -41,14 +53,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def berserk_heal_rate_upgrade(converter_group, value, operator, team=False):
+    def berserk_heal_rate_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the berserk heal rate modify effect (ID: 96).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -110,7 +127,8 @@ class SWGBCCUpgradeResourceSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -127,14 +145,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def building_conversion_upgrade(converter_group, value, operator, team=False):
+    def building_conversion_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the building conversion effect (ID: 28).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -189,7 +212,8 @@ class SWGBCCUpgradeResourceSubprocessor:
 
             # New allowed types
             allowed_types = [
-                dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()
+                dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(
+                )
             ]
             nyan_patch_raw_api_object.add_raw_patch_member("allowed_types",
                                                            allowed_types,
@@ -226,14 +250,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def cloak_upgrade(converter_group, value, operator, team=False):
+    def cloak_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the force cloak effect (ID: 56).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -246,14 +275,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def concentration_upgrade(converter_group, value, operator, team=False):
+    def concentration_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the concentration effect (ID: 87).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -266,14 +300,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def conversion_range_upgrade(converter_group, value, operator, team=False):
+    def conversion_range_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the conversion range modify effect (ID: 5).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -286,14 +325,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def detect_cloak_upgrade(converter_group, value, operator, team=False):
+    def detect_cloak_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the force detect cloak effect (ID: 58).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -306,14 +350,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def faith_recharge_rate_upgrade(converter_group, value, operator, team=False):
+    def faith_recharge_rate_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the faith_recharge_rate modify effect (ID: 35).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -375,7 +424,8 @@ class SWGBCCUpgradeResourceSubprocessor:
                                                   "engine.util.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+                )
                 properties = {
                     dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
                 }
@@ -392,14 +442,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def heal_range_upgrade(converter_group, value, operator, team=False):
+    def heal_range_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the heal range modify effect (ID: 90).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -460,7 +515,8 @@ class SWGBCCUpgradeResourceSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -477,14 +533,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def monk_conversion_upgrade(converter_group, value, operator, team=False):
+    def monk_conversion_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the monk conversion effect (ID: 27).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -547,7 +608,8 @@ class SWGBCCUpgradeResourceSubprocessor:
                                                   "engine.util.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+                )
                 properties = {
                     dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
                 }
@@ -564,14 +626,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def shield_air_units_upgrade(converter_group, value, operator, team=False):
+    def shield_air_units_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the shield bomber/fighter effect (ID: 38).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -584,14 +651,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def shield_dropoff_time_upgrade(converter_group, value, operator, team=False):
+    def shield_dropoff_time_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the shield dropoff time modify effect (ID: 26).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -604,14 +676,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def shield_power_core_upgrade(converter_group, value, operator, team=False):
+    def shield_power_core_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the shield power core effect (ID: 33).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -624,14 +701,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def shield_recharge_rate_upgrade(converter_group, value, operator, team=False):
+    def shield_recharge_rate_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the shield recharge rate modify effect (ID: 10).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -644,14 +726,19 @@ class SWGBCCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def submarine_detect_upgrade(converter_group, value, operator, team=False):
+    def submarine_detect_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the submarine detect effect (ID: 23).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.

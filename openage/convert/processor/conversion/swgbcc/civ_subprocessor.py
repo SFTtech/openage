@@ -5,11 +5,18 @@
 """
 Creates patches and modifiers for civs.
 """
+from __future__ import annotations
+import typing
+
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
 from ..aoc.civ_subprocessor import AoCCivSubprocessor
 from .tech_subprocessor import SWGBCCTechSubprocessor
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
 
 
 class SWGBCCCivSubprocessor:
@@ -18,7 +25,7 @@ class SWGBCCCivSubprocessor:
     """
 
     @classmethod
-    def get_civ_setup(cls, civ_group):
+    def get_civ_setup(cls, civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Returns the patches for the civ setup which configures architecture sets
         unique units, unique techs, team boni and unique stat upgrades.
@@ -36,7 +43,7 @@ class SWGBCCCivSubprocessor:
         return patches
 
     @classmethod
-    def get_modifiers(cls, civ_group):
+    def get_modifiers(cls, civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Returns global modifiers of a civ.
         """
@@ -50,7 +57,7 @@ class SWGBCCCivSubprocessor:
         return modifiers
 
     @staticmethod
-    def get_starting_resources(civ_group):
+    def get_starting_resources(civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Returns the starting resources of a civ.
         """

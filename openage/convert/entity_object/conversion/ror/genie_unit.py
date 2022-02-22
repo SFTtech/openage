@@ -10,11 +10,10 @@ import typing
 
 from ..aoc.genie_unit import GenieUnitLineGroup, GenieBuildingLineGroup,\
     GenieAmbientGroup, GenieVariantGroup, GenieUnitTaskGroup,\
-    GenieVillagerGroup
+    GenieVillagerGroup, GenieGarrisonMode
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGarrisonMode
 
 
 class RoRUnitLineGroup(GenieUnitLineGroup):

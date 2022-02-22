@@ -5,9 +5,15 @@
 """
 Creates patches and modifiers for civs.
 """
+from __future__ import annotations
+import typing
+
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup
 
 
 class RoRCivSubprocessor:
@@ -16,7 +22,7 @@ class RoRCivSubprocessor:
     """
 
     @staticmethod
-    def get_starting_resources(civ_group):
+    def get_starting_resources(civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Returns the starting resources of a civ.
         """

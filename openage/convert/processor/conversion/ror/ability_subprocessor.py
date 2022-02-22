@@ -9,6 +9,9 @@
 Derives and adds abilities to lines. Reimplements only
 abilities that are different from AoC.
 """
+from __future__ import annotations
+import typing
+
 from math import degrees
 
 from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup,\
@@ -19,6 +22,9 @@ from ....value_object.conversion.forward_ref import ForwardRef
 from ..aoc.ability_subprocessor import AoCAbilitySubprocessor
 from ..aoc.effect_subprocessor import AoCEffectSubprocessor
 
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+
 
 class RoRAbilitySubprocessor:
     """
@@ -26,7 +32,12 @@ class RoRAbilitySubprocessor:
     """
 
     @staticmethod
-    def apply_discrete_effect_ability(line, command_id, ranged=False, projectile=-1):
+    def apply_discrete_effect_ability(
+        line: GenieGameEntityGroup,
+        command_id: int,
+        ranged: bool = False,
+        projectile: int = -1
+    ) -> ForwardRef:
         """
         Adds the ApplyDiscreteEffect ability to a line.
 
@@ -314,7 +325,8 @@ class RoRAbilitySubprocessor:
         else:
             allowed_types = [
                 dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object(),
-                dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()
+                dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(
+                )
             ]
 
         ability_raw_api_object.add_raw_member("allowed_types",
@@ -345,7 +357,7 @@ class RoRAbilitySubprocessor:
         return ability_forward_ref
 
     @staticmethod
-    def game_entity_stance_ability(line):
+    def game_entity_stance_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the GameEntityStance ability to a line.
 
@@ -432,7 +444,7 @@ class RoRAbilitySubprocessor:
         return ability_forward_ref
 
     @staticmethod
-    def production_queue_ability(line):
+    def production_queue_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the ProductionQueue ability to a line.
 
@@ -490,7 +502,7 @@ class RoRAbilitySubprocessor:
         return ability_forward_ref
 
     @staticmethod
-    def projectile_ability(line, position=0):
+    def projectile_ability(line: GenieGameEntityGroup, position: int = 0) -> ForwardRef:
         """
         Adds a Projectile ability to projectiles in a line. Which projectile should
         be added is determined by the 'position' argument.
@@ -597,7 +609,7 @@ class RoRAbilitySubprocessor:
         return ability_forward_ref
 
     @staticmethod
-    def resistance_ability(line):
+    def resistance_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Resistance ability to a line.
 
@@ -650,7 +662,7 @@ class RoRAbilitySubprocessor:
         return ability_forward_ref
 
     @staticmethod
-    def shoot_projectile_ability(line, command_id):
+    def shoot_projectile_ability(line: GenieGameEntityGroup, command_id: int) -> ForwardRef:
         """
         Adds the ShootProjectile ability to a line.
 

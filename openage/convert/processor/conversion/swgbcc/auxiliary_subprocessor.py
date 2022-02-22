@@ -9,6 +9,9 @@
 Derives complex auxiliary objects from unit lines, techs
 or other objects.
 """
+from __future__ import annotations
+import typing
+
 from .....nyan.nyan_structs import MemberSpecialValue
 from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup,\
     GenieBuildingLineGroup, GenieUnitLineGroup
@@ -18,6 +21,10 @@ from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
 from ..aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
 
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+    from openage.convert.entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
+
 
 class SWGBCCAuxiliarySubprocessor:
     """
@@ -25,7 +32,7 @@ class SWGBCCAuxiliarySubprocessor:
     """
 
     @staticmethod
-    def get_creatable_game_entity(line):
+    def get_creatable_game_entity(line: GenieGameEntityGroup) -> None:
         """
         Creates the CreatableGameEntity object for a unit/building line.
 
@@ -139,7 +146,8 @@ class SWGBCCAuxiliarySubprocessor:
                 resource_name = "Food"
 
             elif resource_id == 1:
-                resource = dataset.pregen_nyan_objects["util.resource.types.Carbon"].get_nyan_object()
+                resource = dataset.pregen_nyan_objects["util.resource.types.Carbon"].get_nyan_object(
+                )
                 resource_name = "Carbon"
 
             elif resource_id == 2:
@@ -364,7 +372,8 @@ class SWGBCCAuxiliarySubprocessor:
                 placement_modes.append(replace_forward_ref)
 
         else:
-            placement_modes.append(dataset.nyan_api_objects["engine.util.placement_mode.type.Eject"])
+            placement_modes.append(
+                dataset.nyan_api_objects["engine.util.placement_mode.type.Eject"])
 
             # OwnStorage mode
             obj_name = f"{game_entity_name}.CreatableGameEntity.OwnStorage"
@@ -396,7 +405,7 @@ class SWGBCCAuxiliarySubprocessor:
         line.add_raw_api_object(cost_raw_api_object)
 
     @staticmethod
-    def get_researchable_tech(tech_group):
+    def get_researchable_tech(tech_group: GenieTechEffectBundleGroup) -> None:
         """
         Creates the ResearchableTech object for a Tech.
 
@@ -470,7 +479,8 @@ class SWGBCCAuxiliarySubprocessor:
                 resource_name = "Food"
 
             elif resource_id == 1:
-                resource = dataset.pregen_nyan_objects["util.resource.types.Carbon"].get_nyan_object()
+                resource = dataset.pregen_nyan_objects["util.resource.types.Carbon"].get_nyan_object(
+                )
                 resource_name = "Carbon"
 
             elif resource_id == 2:
