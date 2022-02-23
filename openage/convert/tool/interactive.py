@@ -3,6 +3,9 @@
 """
 Interactive browser for game asset files.
 """
+from __future__ import annotations
+import typing
+
 
 import os
 import readline  # pylint: disable=unused-import
@@ -15,8 +18,13 @@ from ..service.init.mount_asset_dirs import mount_asset_dirs
 from ..service.init.version_detect import create_version_objects
 from .subtool.version_select import get_game_version
 
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.read.media.colortable import ColorTable
+    from openage.util.fslike.directory import Directory
+    from openage.util.fslike.path import Path
 
-def interactive_browser(cfg, srcdir=None):
+
+def interactive_browser(cfg: Path, srcdir: Directory = None) -> typing.NoReturn:
     """
     launch an interactive view for browsing the original
     archives.
@@ -46,7 +54,7 @@ def interactive_browser(cfg, srcdir=None):
         warn("cannot launch browser as no valid input assets were found.")
         return
 
-    def save(path, target):
+    def save(path: Path, target: Path) -> None:
         """
         save a path to a custom target
         """
@@ -54,7 +62,7 @@ def interactive_browser(cfg, srcdir=None):
             with open(target, "rb") as outfile:
                 outfile.write(infile.read())
 
-    def save_slp(path, target, palette=None):
+    def save_slp(path: Path, target: Path, palette: ColorTable = None) -> None:
         """
         save a slp as png.
         """
@@ -80,7 +88,7 @@ def interactive_browser(cfg, srcdir=None):
                 filename
             )
 
-    def save_smx(path, target, palette=None):
+    def save_smx(path: Path, target: Path, palette: ColorTable = None) -> None:
         """
         save a smx as png.
         """

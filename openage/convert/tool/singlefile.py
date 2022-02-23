@@ -3,6 +3,9 @@
 """
 Convert a single slp/wav file from some drs archive to a png/opus file.
 """
+from __future__ import annotations
+import typing
+
 
 from pathlib import Path
 
@@ -13,6 +16,9 @@ from ...util.fslike.directory import Directory
 from ..entity_object.export.texture import Texture
 from ..value_object.read.media.colortable import ColorTable
 from ..value_object.read.media.drs import DRS
+
+if typing.TYPE_CHECKING:
+    pass
 
 
 def init_subparser(cli):
@@ -75,7 +81,7 @@ def main(args, error):
         raise Exception("format could not be determined")
 
 
-def read_palettes(palettes_path):
+def read_palettes(palettes_path: Path) -> dict[str, ColorTable]:
     """
     Reads the palettes from the palettes folder/archive.
     """
@@ -128,7 +134,12 @@ def read_palettes(palettes_path):
     return palettes
 
 
-def read_slp_file(slp_path, output_path, palettes, compression_level):
+def read_slp_file(
+    slp_path: Path,
+    output_path: Path,
+    palettes: dict[str, ColorTable],
+    compression_level: int
+) -> None:
     """
     Reads a single SLP file.
     """
@@ -162,7 +173,13 @@ def read_slp_file(slp_path, output_path, palettes, compression_level):
     )
 
 
-def read_slp_in_drs_file(drs, slp_path, output_path, palettes, compression_level):
+def read_slp_in_drs_file(
+    drs: Path,
+    slp_path: Path,
+    output_path: Path,
+    palettes: dict[str, ColorTable],
+    compression_level: int
+) -> None:
     """
     Reads a SLP file from a DRS archive.
     """
@@ -200,7 +217,12 @@ def read_slp_in_drs_file(drs, slp_path, output_path, palettes, compression_level
     )
 
 
-def read_smp_file(smp_path, output_path, palettes, compression_level):
+def read_smp_file(
+    smp_path: Path,
+    output_path: Path,
+    palettes: dict[str, ColorTable],
+    compression_level: int
+) -> None:
     """
     Reads a single SMP file.
     """
@@ -234,7 +256,12 @@ def read_smp_file(smp_path, output_path, palettes, compression_level):
     )
 
 
-def read_smx_file(smx_path, output_path, palettes, compression_level):
+def read_smx_file(
+    smx_path: Path,
+    output_path: Path,
+    palettes: dict[str, ColorTable],
+    compression_level: int
+) -> None:
     """
     Reads a single SMX (compressed SMP) file.
     """
@@ -268,7 +295,7 @@ def read_smx_file(smx_path, output_path, palettes, compression_level):
     )
 
 
-def read_wav_file(wav_path, output_path):
+def read_wav_file(wav_path: Path, output_path: Path) -> None:
     """
     Reads a single WAV file.
     """
@@ -292,7 +319,7 @@ def read_wav_file(wav_path, output_path):
     output_file.write_bytes(opus_data)
 
 
-def read_wav_in_drs_file(drs, wav_path, output_path):
+def read_wav_in_drs_file(drs: Path, wav_path: Path, output_path: Path) -> None:
     """
     Reads a WAV file from a DRS archive.
     """

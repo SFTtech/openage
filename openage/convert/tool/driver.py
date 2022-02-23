@@ -4,6 +4,9 @@
 Receives cleaned-up srcdir and targetdir objects from .main, and drives the
 actual conversion process.
 """
+from __future__ import annotations
+import typing
+
 
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
@@ -16,8 +19,13 @@ from ..service.read.palette import get_palettes
 from ..service.read.register_media import get_existing_graphics
 from ..service.read.string_resource import get_string_resources
 
+if typing.TYPE_CHECKING:
+    from argparse import Namespace
 
-def convert(args):
+    from openage.convert.value_object.init.game_version import GameVersion
+
+
+def convert(args: Namespace) -> typing.Generator[str, None, None]:
     """
     args must hold srcdir and targetdir (FS-like objects),
     plus any additional configuration options.
@@ -37,7 +45,7 @@ def convert(args):
     info(f"asset conversion complete; asset version: {ASSET_VERSION}", )
 
 
-def convert_metadata(args):
+def convert_metadata(args: Namespace) -> typing.Generator[str, None, None]:
     """
     Converts the metadata part.
     """
@@ -64,7 +72,7 @@ def convert_metadata(args):
     # Read .dat
     yield "empires.dat"
     debug_gamedata_format(args.debugdir, args.debug_info, args.game_version)
-    gamespec = get_gamespec(args.srcdir, args.game_version, args.flag("no_pickle_cache"))
+    gamespec = get_gamespec(args.srcdir, args.game_version, not args.flag("no_pickle_cache"))
 
     # Blending mode count
     if args.game_version.edition.game_id == "SWGB":
@@ -112,7 +120,7 @@ def convert_metadata(args):
         #     player_palette.save_visualization(outfile)
 
 
-def get_converter(game_version):
+def get_converter(game_version: GameVersion):
     """
     Returns the converter for the specified game version.
     """
