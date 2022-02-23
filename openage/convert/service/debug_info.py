@@ -71,12 +71,12 @@ def debug_game_version(debugdir, loglevel, args):
 
     logtext += (
         f"game edition:\n"
-        f"    - {args.game_version[0]}\n"
+        f"    - {args.game_version.edition}\n"
     )
 
-    if len(args.game_version[1]) > 0:
+    if len(args.game_version.expansions) > 0:
         logtext += "game expansions:\n"
-        for expansion in args.game_version[1]:
+        for expansion in args.game_version.expansions:
             logtext += f"    - {expansion}\n"
 
     else:
@@ -160,7 +160,7 @@ def debug_gamedata_format(debugdir, loglevel, game_version):
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param game_version: Game version the .dat file comes with.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
     if loglevel < 2:
         return
@@ -628,7 +628,7 @@ def debug_media_cache(debugdir, loglevel, sourcedir, cachedata, game_version):
     :param cachedata: Dict with cache data.
     :type cachedata: dict
     :param game_version: Game version.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
     if loglevel < 6:
         return

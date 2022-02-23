@@ -14,7 +14,7 @@ import toml
 
 from ....log import info, warn, dbg
 from ....util.hash import hash_file
-from ...value_object.init.game_version import GameEdition, GameExpansion, Support
+from ...value_object.init.game_version import GameEdition, GameExpansion, GameVersion, Support
 
 if typing.TYPE_CHECKING:
     from openage.util.fslike.directory import Directory
@@ -90,7 +90,7 @@ def iterate_game_versions(
     else:
         # Either no version or an unsupported or broken was found
         # Return the last detected edition
-        return best_edition, []
+        return GameVersion(edition=best_edition)
 
     for game_expansion in best_edition.expansions:
         for existing_game_expansion in avail_game_exps:
@@ -126,7 +126,7 @@ def iterate_game_versions(
 
             expansions.append(game_expansion)
 
-    return best_edition, expansions
+    return GameVersion(edition=best_edition, expansions=expansions)
 
 
 def create_version_objects(srcdir: Directory) -> tuple[list[GameEdition], list[GameExpansion]]:

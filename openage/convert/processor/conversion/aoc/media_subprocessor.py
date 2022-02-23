@@ -126,7 +126,7 @@ class AoCMediaSubprocessor:
         export_request = MediaExportRequest(
             MediaType.BLEND,
             "data/blend/",
-            full_data_set.game_version[0].media_paths[MediaType.BLEND][0],
+            full_data_set.game_version.edition.media_paths[MediaType.BLEND][0],
             "blendmode"
         )
         full_data_set.blend_exports.update({0: export_request})

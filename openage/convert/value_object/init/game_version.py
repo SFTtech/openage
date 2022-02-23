@@ -6,6 +6,7 @@
 Stores information about base game editions and expansions.
 """
 
+from dataclasses import dataclass
 import enum
 
 from ..read.media_types import MediaType
@@ -145,3 +146,13 @@ class GameEdition(GameBase):
 
     def __str__(self):
         return self.edition_name
+
+
+@dataclass(frozen=True)
+class GameVersion:
+    """
+    Combination of edition and expansions that defines the exact version
+    of a detected game in a folder.
+    """
+    edition: GameEdition
+    expansions: tuple[GameExpansion, ...] = tuple()

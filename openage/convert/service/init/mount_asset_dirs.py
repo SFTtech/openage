@@ -14,14 +14,13 @@ from ....util.fslike.union import Union
 from ...value_object.read.media.drs import DRS
 
 if typing.TYPE_CHECKING:
-    from openage.convert.value_object.init.game_version import GameEdition
-    from openage.convert.value_object.init.game_version import GameExpansion
+    from openage.convert.value_object.init.game_version import GameVersion
     from openage.util.fslike.directory import Directory
 
 
 def mount_asset_dirs(
     srcdir: Directory,
-    game_version: tuple[GameEdition, list[GameExpansion]]
+    game_version: GameVersion
 ) -> Directory:
     """
     Returns a Union path where srcdir is mounted at /,
@@ -37,10 +36,10 @@ def mount_asset_dirs(
         """
 
         drspath = srcdir[filename]
-        result[target].mount(DRS(drspath.open('rb'), game_version[0].game_id).root)
+        result[target].mount(DRS(drspath.open('rb'), game_version.edition.game_id).root)
 
     # Mount the media sources of the game edition
-    for media_type, media_paths in game_version[0].media_paths.items():
+    for media_type, media_paths in game_version.edition.media_paths.items():
         for media_path in media_paths:
             path_to_media = srcdir[media_path]
             if path_to_media.is_dir():
@@ -56,7 +55,7 @@ def mount_asset_dirs(
                 raise Exception(f"Media at path {path_to_media} could not be found")
 
     # Mount the media sources of the game edition
-    for expansion in game_version[1]:
+    for expansion in game_version.expansions:
         for media_type, media_paths in expansion.media_paths.items():
             for media_path in media_paths:
                 path_to_media = srcdir[media_path]

@@ -67,7 +67,7 @@ def convert_metadata(args):
     gamespec = get_gamespec(args.srcdir, args.game_version, args.flag("no_pickle_cache"))
 
     # Blending mode count
-    if args.game_version[0].game_id == "SWGB":
+    if args.game_version.edition.game_id == "SWGB":
         args.blend_mode_count = gamespec[0]["blend_mode_count_swgb"].get_value()
 
     else:
@@ -116,8 +116,8 @@ def get_converter(game_version):
     """
     Returns the converter for the specified game version.
     """
-    game_edition = game_version[0]
-    game_expansions = game_version[1]
+    game_edition = game_version.edition
+    game_expansions = game_version.expansions
 
     if game_edition.game_id == "ROR":
         from ..processor.conversion.ror.processor import RoRProcessor

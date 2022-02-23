@@ -2,9 +2,15 @@
 
 # TODO pylint: disable=C,too-many-function-args
 
+from __future__ import annotations
+import typing
+
 from collections import defaultdict
 
 from ...entity_object.conversion.genie_structure import GenieStructure
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameVersion
 
 
 class StringResource(GenieStructure):
@@ -27,7 +33,7 @@ class StringResource(GenieStructure):
         return self.strings
 
     @classmethod
-    def get_data_format_members(cls, game_version: tuple) -> tuple:
+    def get_data_format_members(cls, game_version: GameVersion) -> tuple:
         """
         Return the members in this struct.
         """

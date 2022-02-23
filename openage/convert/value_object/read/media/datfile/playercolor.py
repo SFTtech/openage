@@ -15,7 +15,7 @@ class PlayerColor(GenieStructure):
         Return the members in this struct.
         """
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format = [
                 (READ_GEN, "id", StorageType.ID_MEMBER, "int32_t"),
                 # palette index offset, where the 8 player colors start

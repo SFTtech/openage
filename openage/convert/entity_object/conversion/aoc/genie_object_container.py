@@ -35,7 +35,7 @@ if typing.TYPE_CHECKING:
         GenieGameEntityGroup
     from openage.convert.entity_object.export.media_export_request import MediaExportRequest
     from openage.convert.entity_object.export.metadata_export import MetadataExport
-    from openage.convert.value_object.init.game_version import GameEdition, GameExpansion
+    from openage.convert.value_object.init.game_version import GameVersion
     from openage.nyan.nyan_structs import NyanObject
 
 
@@ -48,7 +48,7 @@ class GenieObjectContainer(ConverterObjectContainer):
     def __init__(self):
 
         # Game version
-        self.game_version: tuple[GameEdition, list[GameExpansion]] = None
+        self.game_version: GameVersion = None
 
         # API reference
         self.nyan_api_objects: dict[str, NyanObject] = None

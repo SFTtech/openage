@@ -20,7 +20,7 @@ class Civ(GenieStructure):
             (SKIP, "player_type", StorageType.INT_MEMBER, "int8_t"),
         ]
 
-        if game_version[0].game_id in ("AOE1DE", "AOE2DE"):
+        if game_version.edition.game_id in ("AOE1DE", "AOE2DE"):
             data_format.extend([
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
@@ -37,11 +37,11 @@ class Civ(GenieStructure):
             (READ_GEN, "tech_tree_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             # links to tech id as well
             data_format.append((READ_GEN, "team_bonus_id", StorageType.ID_MEMBER, "int16_t"))
 
-            if game_version[0].game_id == "SWGB":
+            if game_version.edition.game_id == "SWGB":
                 data_format.extend([
                     (READ_GEN, "name2", StorageType.STRING_MEMBER, "char[20]"),
                     (READ_GEN, "unique_unit_techs", StorageType.ARRAY_ID, "int16_t[4]"),

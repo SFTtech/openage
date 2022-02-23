@@ -19,10 +19,10 @@ def get_armor_class_lookups(game_version):
     Return the name lookup dicts for armor classes.
 
     :param game_version: Game edition and expansions for which the lookups should be.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
-    game_edition = game_version[0]
-    # game_expansions = game_version[1]
+    game_edition = game_version.edition
+    # game_expansions = game_version.expansions
 
     if game_edition.game_id == "ROR":
         return ror_internal.ARMOR_CLASS_LOOKUPS
@@ -67,10 +67,10 @@ def get_civ_lookups(game_version):
     Return the name lookup dicts for civs.
 
     :param game_version: Game edition and expansions for which the lookups should be.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
-    game_edition = game_version[0]
-    # game_expansions = game_version[1]
+    game_edition = game_version.edition
+    # game_expansions = game_version.expansions
 
     if game_edition.game_id == "ROR":
         return ror_internal.CIV_GROUP_LOOKUPS
@@ -111,10 +111,10 @@ def get_class_lookups(game_version):
     Return the name lookup dicts for unit classes.
 
     :param game_version: Game edition and expansions for which the lookups should be.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
-    game_edition = game_version[0]
-    # game_expansions = game_version[1]
+    game_edition = game_version.edition
+    # game_expansions = game_version.expansions
 
     if game_edition.game_id in ("ROR", "AOE1DE"):
         return ror_internal.CLASS_ID_LOOKUPS
@@ -134,10 +134,10 @@ def get_command_lookups(game_version):
     Return the name lookup dicts for unit commands.
 
     :param game_version: Game edition and expansions for which the lookups should be.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
-    game_edition = game_version[0]
-    # game_expansions = game_version[1]
+    game_edition = game_version.edition
+    # game_expansions = game_version.expansions
 
     if game_edition.game_id in ("ROR", "AOE1DE"):
         return ror_internal.COMMAND_TYPE_LOOKUPS
@@ -157,10 +157,10 @@ def get_entity_lookups(game_version):
     Return the name lookup dicts for game entities.
 
     :param game_version: Game edition and expansions for which the lookups should be.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
-    game_edition = game_version[0]
-    # game_expansions = game_version[1]
+    game_edition = game_version.edition
+    # game_expansions = game_version.expansions
 
     entity_lookup_dict = {}
 
@@ -243,10 +243,10 @@ def get_gather_lookups(game_version):
     Return the name lookup dicts for gather tasks.
 
     :param game_version: Game edition and expansions for which the lookups should be.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
-    game_edition = game_version[0]
-    # game_expansions = game_version[1]
+    game_edition = game_version.edition
+    # game_expansions = game_version.expansions
 
     if game_edition.game_id in ("ROR", "AOE1DE"):
         return ror_internal.GATHER_TASK_LOOKUPS
@@ -266,10 +266,10 @@ def get_graphic_set_lookups(game_version):
     Return the name lookup dicts for civ graphic sets.
 
     :param game_version: Game edition and expansions for which the lookups should be.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
-    game_edition = game_version[0]
-    # game_expansions = game_version[1]
+    game_edition = game_version.edition
+    # game_expansions = game_version.expansions
 
     if game_edition.game_id == "ROR":
         return ror_internal.GRAPHICS_SET_LOOKUPS
@@ -310,10 +310,10 @@ def get_restock_lookups(game_version):
     Return the name lookup dicts for restock targets.
 
     :param game_version: Game edition and expansions for which the lookups should be.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
-    game_edition = game_version[0]
-    # game_expansions = game_version[1]
+    game_edition = game_version.edition
+    # game_expansions = game_version.expansions
 
     if game_edition.game_id == "ROR":
         return None
@@ -337,10 +337,10 @@ def get_tech_lookups(game_version):
     Return the name lookup dicts for tech groups.
 
     :param game_version: Game edition and expansions for which the lookups should be.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
-    game_edition = game_version[0]
-    # game_expansions = game_version[1]
+    game_edition = game_version.edition
+    # game_expansions = game_version.expansions
 
     if game_edition.game_id == "ROR":
         return ror_internal.TECH_GROUP_LOOKUPS
@@ -381,10 +381,10 @@ def get_terrain_lookups(game_version):
     Return the name lookup dicts for terrain groups.
 
     :param game_version: Game edition and expansions for which the lookups should be.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
-    game_edition = game_version[0]
-    # game_expansions = game_version[1]
+    game_edition = game_version.edition
+    # game_expansions = game_version.expansions
 
     if game_edition.game_id == "ROR":
         return ror_internal.TERRAIN_GROUP_LOOKUPS
@@ -425,10 +425,10 @@ def get_terrain_type_lookups(game_version):
     Return the name lookup dicts for terrain types.
 
     :param game_version: Game edition and expansions for which the lookups should be.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
-    game_edition = game_version[0]
-    # game_expansions = game_version[1]
+    game_edition = game_version.edition
+    # game_expansions = game_version.expansions
 
     if game_edition.game_id == "ROR":
         return ror_internal.TERRAIN_TYPE_LOOKUPS

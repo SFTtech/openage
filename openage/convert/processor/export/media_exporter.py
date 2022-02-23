@@ -23,7 +23,7 @@ if typing.TYPE_CHECKING:
 
     from openage.convert.entity_object.export.media_export_request import MediaExportRequest
     from openage.convert.value_object.read.media.colortable import ColorTable
-    from openage.convert.value_object.init.game_version import GameEdition, GameExpansion
+    from openage.convert.value_object.init.game_version import GameVersion
     from openage.util.fslike.path import Path
 
 
@@ -55,8 +55,8 @@ class MediaExporter:
         :type args: Namespace
         """
         cache_info = {}
-        if args.game_version[0].media_cache:
-            cache_info = load_media_cache(args.game_version[0].media_cache)
+        if args.game_version.edition.media_cache:
+            cache_info = load_media_cache(args.game_version.edition.media_cache)
 
         for media_type in export_requests.keys():
             cur_export_requests = export_requests[media_type]
@@ -325,7 +325,7 @@ class MediaExporter:
         sourcedir: Path,
         exportdir: Path,
         palettes: dict[int, ColorTable],
-        game_version: tuple[GameEdition, list[GameExpansion]],
+        game_version: GameVersion,
         compression_level: int
     ) -> None:
         """
@@ -343,7 +343,7 @@ class MediaExporter:
         :type sourcedir: Directory
         :type exportdir: Directory
         :type palettes: dict
-        :type game_version: tuple
+        :type game_version: GameVersion
         :type compression_level: int
         """
         source_file = sourcedir[
@@ -372,7 +372,7 @@ class MediaExporter:
             raise Exception(f"Source file {source_file.name} has an unrecognized extension: "
                             f"{source_file.suffix.lower()}")
 
-        if game_version[0].game_id in ("AOC", "SWGB"):
+        if game_version.edition.game_id in ("AOC", "SWGB"):
             from .terrain_merge import merge_terrain
             texture = Texture(image, palettes)
             merge_terrain(texture)

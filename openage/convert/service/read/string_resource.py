@@ -19,7 +19,7 @@ def get_string_resources(args):
     stringres = StringResource()
 
     srcdir = args.srcdir
-    game_edition = args.game_version[0]
+    game_edition = args.game_version.edition
 
     language_files = game_edition.media_paths[MediaType.LANGUAGE]
 

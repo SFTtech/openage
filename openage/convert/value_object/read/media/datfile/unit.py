@@ -75,7 +75,7 @@ class UnitCommand(GenieStructure):
             (READ_GEN, "resource_deposit_sound_id", StorageType.ID_MEMBER, "int16_t"),
         ]
 
-        if game_version[0].game_id == "AOE2DE":
+        if game_version.edition.game_id == "AOE2DE":
             data_format.extend([
                 (READ_GEN, "wwise_resource_gather_sound_id", StorageType.ID_MEMBER, "uint32_t"),
                 # sound to play on resource drop
@@ -230,7 +230,7 @@ class UnitObject(GenieStructure):
         """
         Return the members in this struct.
         """
-        if game_version[0].game_id not in ("AOE1DE", "AOE2DE"):
+        if game_version.edition.game_id not in ("AOE1DE", "AOE2DE"):
             data_format = [
                 (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
             ]
@@ -241,7 +241,7 @@ class UnitObject(GenieStructure):
             (READ_GEN, "id0", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0].game_id == "AOE2DE":
+        if game_version.edition.game_id == "AOE2DE":
             data_format.extend([
                 (READ_GEN, "language_dll_name", StorageType.ID_MEMBER, "uint32_t"),
                 (READ_GEN, "language_dll_creation", StorageType.ID_MEMBER, "uint32_t"),
@@ -261,7 +261,7 @@ class UnitObject(GenieStructure):
             (READ_GEN, "idle_graphic0", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
                 (READ_GEN, "idle_graphic1", StorageType.ID_MEMBER, "int16_t"),
             ])
@@ -283,7 +283,7 @@ class UnitObject(GenieStructure):
             (READ_GEN, "train_sound_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format.append((READ_GEN, "damage_sound_id", StorageType.ID_MEMBER, "int16_t"))
 
         data_format.extend([
@@ -291,7 +291,7 @@ class UnitObject(GenieStructure):
             (READ_GEN, "dead_unit_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0].game_id in ("AOE1DE", "AOE2DE"):
+        if game_version.edition.game_id in ("AOE1DE", "AOE2DE"):
             data_format.extend([
                 (READ_GEN, "blood_unit_id", StorageType.ID_MEMBER, "int16_t"),
             ])
@@ -300,14 +300,15 @@ class UnitObject(GenieStructure):
             # 0=placable on top of others in scenario editor, 5=can't
             (READ_GEN, "placement_mode", StorageType.ID_MEMBER, "int8_t"),
             (READ_GEN, "can_be_built_on", StorageType.BOOLEAN_MEMBER, "int8_t"),  # 1=no footprints
-            (READ_GEN, "icon_id", StorageType.ID_MEMBER, "int16_t"),      # frame id of the icon slp (57029) to place on the creation button
+            # frame id of the icon slp (57029) to place on the creation button
+            (READ_GEN, "icon_id", StorageType.ID_MEMBER, "int16_t"),
             (SKIP, "hidden_in_editor", StorageType.BOOLEAN_MEMBER, "int8_t"),
             (SKIP, "old_portrait_icon_id", StorageType.ID_MEMBER, "int16_t"),
             # 0=unlocked by research, 1=insta-available
             (READ_GEN, "enabled", StorageType.BOOLEAN_MEMBER, "int8_t"),
         ])
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format.append((READ, "disabled", StorageType.BOOLEAN_MEMBER, "int8_t"))
 
         data_format.extend([
@@ -387,7 +388,7 @@ class UnitObject(GenieStructure):
             (READ_GEN, "resource_gather_drop", StorageType.INT_MEMBER, "int8_t"),
         ])
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             # bit 0 == 1 && val != 7: mask shown behind buildings,
             # bit 0 == 0 && val != {6, 10}: no mask displayed,
             # val == {-1, 7}: in open area mask is partially displayed
@@ -415,7 +416,7 @@ class UnitObject(GenieStructure):
                 # leftover from trait+civ variable
                 (SKIP, "attribute_piece", StorageType.INT_MEMBER, "int16_t"),
             ])
-        elif game_version[0].game_id == "AOE1DE":
+        elif game_version.edition.game_id == "AOE1DE":
             data_format.extend([
                 (READ_GEN, "obstruction_type", StorageType.ID_MEMBER, EnumLookupMember(
                     raw_type="int8_t",
@@ -440,7 +441,7 @@ class UnitObject(GenieStructure):
             (READ_GEN, "selection_shape_z", StorageType.FLOAT_MEMBER, "float"),
         ])
 
-        if game_version[0].game_id == "AOE2DE":
+        if game_version.edition.game_id == "AOE2DE":
             data_format.extend([
                 (READ, "scenario_trigger_data0", StorageType.ID_MEMBER, "uint32_t"),
                 (READ, "scenario_trigger_data1", StorageType.ID_MEMBER, "uint32_t"),
@@ -460,7 +461,7 @@ class UnitObject(GenieStructure):
             (READ_GEN, "dying_sound_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0].game_id == "AOE2DE":
+        if game_version.edition.game_id == "AOE2DE":
             data_format.extend([
                 (READ_GEN, "wwise_creation_sound_id", StorageType.ID_MEMBER, "uint32_t"),
                 (READ_GEN, "wwise_damage_sound_id", StorageType.ID_MEMBER, "uint32_t"),
@@ -474,10 +475,11 @@ class UnitObject(GenieStructure):
                 type_name="attack_modes",
                 lookup_dict=ATTACK_MODES
             )),
-            (SKIP, "convert_terrain", StorageType.INT_MEMBER, "int8_t"),        # leftover from alpha. would et units change terrain under them
+            # leftover from alpha. would et units change terrain under them
+            (SKIP, "convert_terrain", StorageType.INT_MEMBER, "int8_t"),
         ])
 
-        if game_version[0].game_id in ("AOE1DE", "AOE2DE"):
+        if game_version.edition.game_id in ("AOE1DE", "AOE2DE"):
             data_format.extend([
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
@@ -489,7 +491,7 @@ class UnitObject(GenieStructure):
                 (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_length]"),
             ])
 
-            if game_version[0].game_id == "SWGB":
+            if game_version.edition.game_id == "SWGB":
                 data_format.extend([
                     (READ, "name2_length", StorageType.INT_MEMBER, "uint16_t"),
                     (READ_GEN, "name2", StorageType.STRING_MEMBER, "char[name2_length]"),
@@ -499,9 +501,9 @@ class UnitObject(GenieStructure):
 
         data_format.append((READ_GEN, "id1", StorageType.ID_MEMBER, "int16_t"))
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format.append((READ_GEN, "id2", StorageType.ID_MEMBER, "int16_t"))
-        elif game_version[0].game_id == "AOE1DE":
+        elif game_version.edition.game_id == "AOE1DE":
             data_format.append((READ_GEN, "telemetry_id", StorageType.ID_MEMBER, "int16_t"))
 
         return data_format
@@ -587,7 +589,7 @@ class MovingUnit(DoppelgangerUnit):
             (SKIP, "old_move_algorithm", StorageType.ID_MEMBER, "int8_t"),
         ]
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
                 (READ_GEN, "turn_radius", StorageType.FLOAT_MEMBER, "float"),
                 (READ_GEN, "turn_radius_speed", StorageType.FLOAT_MEMBER, "float"),
@@ -596,7 +598,7 @@ class MovingUnit(DoppelgangerUnit):
                 (READ_GEN, "max_yaw_per_sec_stationary", StorageType.FLOAT_MEMBER, "float"),
             ])
 
-            if game_version[0].game_id == "AOE2DE":
+            if game_version.edition.game_id == "AOE2DE":
                 data_format.extend([
                     (READ_GEN, "min_collision_size_multiplier", StorageType.FLOAT_MEMBER, "float"),
                 ])
@@ -626,7 +628,7 @@ class ActionUnit(MovingUnit):
             (READ_GEN, "work_rate", StorageType.FLOAT_MEMBER, "float"),
         ]
 
-        if game_version[0].game_id == "AOE2DE":
+        if game_version.edition.game_id == "AOE2DE":
             data_format.extend([
                 (READ_GEN, "drop_sites", StorageType.ARRAY_ID, "int16_t[3]"),
             ])
@@ -636,7 +638,8 @@ class ActionUnit(MovingUnit):
             ])
 
         data_format.extend([
-            (READ_GEN, "task_group", StorageType.ID_MEMBER, "int8_t"),   # 1: male villager; 2: female villager; 3+: free slots
+            # 1: male villager; 2: female villager; 3+: free slots
+            (READ_GEN, "task_group", StorageType.ID_MEMBER, "int8_t"),
             # basically this
             # creates a "swap
             # group id" where you
@@ -649,7 +652,7 @@ class ActionUnit(MovingUnit):
             (READ_GEN, "stop_sound_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0].game_id == "AOE2DE":
+        if game_version.edition.game_id == "AOE2DE":
             data_format.extend([
                 (READ_GEN, "wwise_command_sound_id", StorageType.ID_MEMBER, "uint32_t"),
                 (READ_GEN, "wwise_stop_sound_id", StorageType.ID_MEMBER, "uint32_t"),
@@ -660,7 +663,7 @@ class ActionUnit(MovingUnit):
             (SKIP, "run_pattern", StorageType.ID_MEMBER, "int8_t"),
         ])
 
-        if game_version[0].game_id in ("ROR", "AOE1DE", "AOE2DE"):
+        if game_version.edition.game_id in ("ROR", "AOE1DE", "AOE2DE"):
             data_format.extend([
                 (READ, "unit_command_count", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_GEN, "unit_commands", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -687,7 +690,7 @@ class ProjectileUnit(ActionUnit):
             (READ_GEN, None, None, IncludeMembers(cls=ActionUnit)),
         ]
 
-        if game_version[0].game_id == "ROR":
+        if game_version.edition.game_id == "ROR":
             data_format.append((READ_GEN, "default_armor", StorageType.INT_MEMBER, "uint8_t"))
         else:
             data_format.append((READ_GEN, "default_armor", StorageType.INT_MEMBER, "int16_t"))
@@ -712,8 +715,9 @@ class ProjectileUnit(ActionUnit):
             )),
         ])
 
-        if game_version[0].game_id == "AOE2DE":
-            data_format.append((READ_GEN, "bonus_damage_resistance", StorageType.FLOAT_MEMBER, "float"))
+        if game_version.edition.game_id == "AOE2DE":
+            data_format.append((READ_GEN, "bonus_damage_resistance",
+                               StorageType.FLOAT_MEMBER, "float"))
 
         data_format.extend([
             (READ_GEN, "weapon_range_max", StorageType.FLOAT_MEMBER, "float"),
@@ -739,7 +743,7 @@ class ProjectileUnit(ActionUnit):
             (READ_GEN, "weapon_range_min", StorageType.FLOAT_MEMBER, "float"),
         ])
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format.append((READ_GEN, "accuracy_dispersion", StorageType.FLOAT_MEMBER, "float"))
 
         data_format.extend([
@@ -799,7 +803,8 @@ class LivingUnit(ProjectileUnit):
                 length=3,
             )),
             (READ_GEN, "creation_time", StorageType.INT_MEMBER, "int16_t"),     # in seconds
-            (READ_GEN, "train_location_id", StorageType.ID_MEMBER, "int16_t"),  # e.g. 118 = villager builder
+            (READ_GEN, "train_location_id", StorageType.ID_MEMBER,
+             "int16_t"),  # e.g. 118 = villager builder
 
             # where to place the button with the given icon
             # creation page:
@@ -822,8 +827,8 @@ class LivingUnit(ProjectileUnit):
             (READ, "creation_button_id", StorageType.ID_MEMBER, "int8_t"),
         ]
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
-            if game_version[0].game_id == "AOE2DE":
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
+            if game_version.edition.game_id == "AOE2DE":
                 data_format.extend([
                     (READ_GEN, "heal_timer", StorageType.FLOAT_MEMBER, "float"),
                 ])
@@ -848,7 +853,7 @@ class LivingUnit(ProjectileUnit):
                 # duplicated projectiles
             ])
 
-            if game_version[0].game_id == "AOE2DE":
+            if game_version.edition.game_id == "AOE2DE":
                 data_format.extend([
                     (READ_GEN, "spawn_graphic_id", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "upgrade_graphic_id", StorageType.ID_MEMBER, "int16_t"),
@@ -907,10 +912,10 @@ class BuildingUnit(LivingUnit):
             (READ_GEN, "construction_graphic_id", StorageType.ID_MEMBER, "int16_t"),
         ]
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format.append((READ_GEN, "snow_graphic_id", StorageType.ID_MEMBER, "int16_t"))
 
-            if game_version[0].game_id == "AOE2DE":
+            if game_version.edition.game_id == "AOE2DE":
                 data_format.extend([
                     (READ_GEN, "destruction_graphic_id", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "destruction_rubble_graphic_id", StorageType.ID_MEMBER, "int16_t"),
@@ -934,7 +939,7 @@ class BuildingUnit(LivingUnit):
             (READ_GEN, "research_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
                 (SKIP, "can_burn", StorageType.BOOLEAN_MEMBER, "int8_t"),
                 (READ_GEN, "building_annex", StorageType.ARRAY_CONTAINER, SubdataMember(
@@ -950,8 +955,8 @@ class BuildingUnit(LivingUnit):
 
         data_format.append((READ_GEN, "construction_sound_id", StorageType.ID_MEMBER, "int16_t"))
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
-            if game_version[0].game_id == "AOE2DE":
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
+            if game_version.edition.game_id == "AOE2DE":
                 data_format.extend([
                     (READ_GEN, "wwise_construction_sound_id", StorageType.ID_MEMBER, "uint32_t"),
                     (READ_GEN, "wwise_transform_sound_id", StorageType.ID_MEMBER, "uint32_t"),

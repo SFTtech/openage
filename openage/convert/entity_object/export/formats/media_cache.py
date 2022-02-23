@@ -16,6 +16,7 @@ FILE_VERSION = "1.0"
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.media_types import MediaType
+    from openage.convert.value_object.init.game_version import GameVersion
 
 
 class MediaCacheFile(DataDefinition):
@@ -23,7 +24,7 @@ class MediaCacheFile(DataDefinition):
     Used for creating a media cache file.
     """
 
-    def __init__(self, targetdir: str, filename: str, game_version: tuple):
+    def __init__(self, targetdir: str, filename: str, game_version: GameVersion):
         super().__init__(targetdir, filename)
 
         self.game_version = game_version

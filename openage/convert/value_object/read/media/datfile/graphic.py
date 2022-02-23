@@ -73,7 +73,7 @@ class GraphicAttackSound(GenieStructure):
         """
         Return the members in this struct.
         """
-        if game_version[0].game_id == "AOE2DE":
+        if game_version.edition.game_id == "AOE2DE":
             data_format = [
                 (READ_GEN, "sound_props", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=DE2SoundProp,
@@ -102,7 +102,7 @@ class Graphic(GenieStructure):
         data_format = []
 
         # internal name: e.g. ARRG2NNE = archery range feudal Age north european
-        if game_version[0].game_id in ("AOE1DE", "AOE2DE"):
+        if game_version.edition.game_id in ("AOE1DE", "AOE2DE"):
             data_format.extend([
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
@@ -111,18 +111,19 @@ class Graphic(GenieStructure):
                 (READ, "filename_len", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_GEN, "filename", StorageType.STRING_MEMBER, "char[filename_len]"),
             ])
-            if game_version[0].game_id == "AOE2DE":
+            if game_version.edition.game_id == "AOE2DE":
                 data_format.extend([
                     (SKIP, "particle_effect_name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                     (READ, "particle_effect_name_len", StorageType.INT_MEMBER, "uint16_t"),
-                    (READ_GEN, "particle_effect_name", StorageType.STRING_MEMBER, "char[particle_effect_name_len]"),
+                    (READ_GEN, "particle_effect_name", StorageType.STRING_MEMBER,
+                     "char[particle_effect_name_len]"),
                 ])
-            if game_version[0].game_id == "AOE1DE":
+            if game_version.edition.game_id == "AOE1DE":
                 data_format.extend([
                     (READ_GEN, "first_frame", StorageType.ID_MEMBER, "uint16_t"),
                 ])
 
-        elif game_version[0].game_id == "SWGB":
+        elif game_version.edition.game_id == "SWGB":
             data_format.extend([
                 (READ_GEN, "name", StorageType.STRING_MEMBER, "char[25]"),
                 (READ_GEN, "filename", StorageType.STRING_MEMBER, "char[25]"),
@@ -134,7 +135,8 @@ class Graphic(GenieStructure):
             ])
 
         data_format.extend([
-            (READ_GEN, "slp_id", StorageType.ID_MEMBER, "int32_t"),             # id of the graphics file in the drs
+            # id of the graphics file in the drs
+            (READ_GEN, "slp_id", StorageType.ID_MEMBER, "int32_t"),
             (SKIP, "is_loaded", StorageType.BOOLEAN_MEMBER, "int8_t"),             # unused
             (SKIP, "old_color_flag", StorageType.BOOLEAN_MEMBER, "int8_t"),        # unused
             (READ_GEN, "layer", StorageType.ID_MEMBER, EnumLookupMember(       # originally 40 layers, higher -> drawn on top
@@ -142,32 +144,39 @@ class Graphic(GenieStructure):
                 type_name   = "graphics_layer",
                 lookup_dict = GRAPHICS_LAYER
             )),
-            (READ_GEN, "player_color_force_id", StorageType.ID_MEMBER, "int8_t"),    # force given player color
-            (READ_GEN, "adapt_color", StorageType.INT_MEMBER, "int8_t"),             # playercolor can be changed on sight (like sheep)
+            (READ_GEN, "player_color_force_id", StorageType.ID_MEMBER,
+             "int8_t"),    # force given player color
+            # playercolor can be changed on sight (like sheep)
+            (READ_GEN, "adapt_color", StorageType.INT_MEMBER, "int8_t"),
             (READ_GEN, "transparent_selection", StorageType.INT_MEMBER, "uint8_t"),  # loop animation
             (READ, "coordinates", StorageType.ARRAY_INT, "int16_t[4]"),
             (READ, "delta_count", StorageType.INT_MEMBER, "uint16_t"),
             (READ_GEN, "sound_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
-        if game_version[0].game_id == "AOE2DE":
+        if game_version.edition.game_id == "AOE2DE":
             data_format.extend([
                 (READ_GEN, "wwise_sound_id", StorageType.ID_MEMBER, "uint32_t"),
             ])
 
         data_format.extend([
             (READ, "attack_sound_used", StorageType.INT_MEMBER, "uint8_t"),
-            (READ_GEN, "frame_count", StorageType.INT_MEMBER, "uint16_t"),           # number of frames per angle
-            (READ_GEN, "angle_count", StorageType.INT_MEMBER, "uint16_t"),           # number of heading angles stored, some of the frames must be mirrored
-            (READ_GEN, "speed_adjust", StorageType.FLOAT_MEMBER, "float"),                  # multiplies the speed of the unit this graphic is applied to
-            (READ_GEN, "frame_rate", StorageType.FLOAT_MEMBER, "float"),             # how long a frame is displayed
-            (READ_GEN, "replay_delay", StorageType.FLOAT_MEMBER, "float"),           # seconds to wait before current_frame=0 again
+            (READ_GEN, "frame_count", StorageType.INT_MEMBER,
+             "uint16_t"),           # number of frames per angle
+            # number of heading angles stored, some of the frames must be mirrored
+            (READ_GEN, "angle_count", StorageType.INT_MEMBER, "uint16_t"),
+            # multiplies the speed of the unit this graphic is applied to
+            (READ_GEN, "speed_adjust", StorageType.FLOAT_MEMBER, "float"),
+            (READ_GEN, "frame_rate", StorageType.FLOAT_MEMBER,
+             "float"),             # how long a frame is displayed
+            # seconds to wait before current_frame=0 again
+            (READ_GEN, "replay_delay", StorageType.FLOAT_MEMBER, "float"),
             (READ_GEN, "sequence_type", StorageType.ID_MEMBER, "int8_t"),
             (READ_GEN, "graphic_id", StorageType.ID_MEMBER, "int16_t"),
             (READ_GEN, "mirroring_mode", StorageType.ID_MEMBER, "int8_t"),
         ])
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             # sprite editor thing for AoK
             data_format.append((SKIP, "editor_flag", StorageType.BOOLEAN_MEMBER, "int8_t"))
 

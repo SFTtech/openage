@@ -32,7 +32,7 @@ def get_game_version(
         srcdir, avail_game_eds, avail_game_exps)
 
     no_support = False
-    if not game_version[0] or game_version[0].support == Support.NOPE:
+    if not game_version.edition or game_version.edition.support == Support.NOPE:
         warn("No valid game version(s) could not be detected "
              f"in {srcdir.resolve_native_path()}")
 
@@ -41,16 +41,16 @@ def get_game_version(
 
     else:
         # Check for broken edition
-        broken_edition = game_version[0].support == Support.BREAKS
+        broken_edition = game_version.edition.support == Support.BREAKS
 
         # a broken edition is installed
         if broken_edition:
             warn("You have installed an incompatible game edition:")
-            warn(" * \x1b[31;1m%s\x1b[m", game_version[0])
+            warn(" * \x1b[31;1m%s\x1b[m", game_version.edition)
             no_support = True
 
         broken_expansions = []
-        for expansion in game_version[1]:
+        for expansion in game_version.expansions:
             if expansion.support == Support.BREAKS:
                 broken_expansions.append(expansion)
 
@@ -70,10 +70,10 @@ def get_game_version(
         return (False, set())
 
     info("Compatible game edition detected:")
-    info(" * %s", game_version[0].edition_name)
-    if game_version[1]:
+    info(" * %s", game_version.edition.edition_name)
+    if game_version.expansions:
         info("Compatible expansions detected:")
-        for expansion in game_version[1]:
+        for expansion in game_version.expansions:
             info(" * %s", expansion.expansion_name)
 
     return game_version

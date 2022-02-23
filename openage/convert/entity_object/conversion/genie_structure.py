@@ -3,6 +3,7 @@
 # TODO pylint: disable=C,R
 
 from __future__ import annotations
+import typing
 
 import math
 import re
@@ -17,6 +18,9 @@ from ...value_object.read.read_members import (IncludeMembers, ContinueReadMembe
 from ...value_object.read.value_members import ContainerMember, ArrayMember, IntMember, FloatMember,\
     StringMember, BooleanMember, IDMember, BitfieldMember, ValueMember
 from ...value_object.read.value_members import MemberTypes as StorageType
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameVersion
 
 
 class GenieStructure:
@@ -64,7 +68,7 @@ class GenieStructure:
         self,
         raw: bytes,
         offset: int,
-        game_version: tuple,
+        game_version: GameVersion,
         cls: GenieStructure = None,
         members: tuple = None
     ) -> tuple[int, list[ValueMember]]:
@@ -515,7 +519,7 @@ class GenieStructure:
     @classmethod
     def get_data_format(
         cls,
-        game_version: tuple,
+        game_version: GameVersion,
         allowed_modes: tuple[MemberAccess] = None,
         flatten_includes: bool = False,
         is_parent: bool = False
@@ -556,7 +560,7 @@ class GenieStructure:
             yield member_entry
 
     @classmethod
-    def get_data_format_members(cls, game_version: tuple):
+    def get_data_format_members(cls, game_version: GameVersion):
         """
         Return the members in this struct.
 

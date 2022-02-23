@@ -11,7 +11,7 @@ def get_palettes(srcdir, game_version, index=None):
     """
     Read and create the color palettes.
     """
-    game_edition = game_version[0]
+    game_edition = game_version.edition
 
     palettes = {}
 

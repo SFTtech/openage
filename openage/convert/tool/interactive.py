@@ -36,7 +36,7 @@ def interactive_browser(cfg, srcdir=None):
 
     # Acquire game version info
     game_version = get_game_version(srcdir, avail_game_eds, avail_game_exps)
-    if not game_version[0]:
+    if not game_version.edition:
         warn("cannot launch browser as no valid game version was found.")
         return
 

@@ -31,7 +31,7 @@ if typing.TYPE_CHECKING:
     from argparse import Namespace
     from openage.convert.entity_object.conversion.stringresource import StringResource
     from openage.convert.entity_object.conversion.modpack import Modpack
-    from openage.convert.value_object.init.game_version import GameEdition, GameExpansion
+    from openage.convert.value_object.init.game_version import GameVersion
 
 
 class DE2Processor:
@@ -82,7 +82,7 @@ class DE2Processor:
     def _pre_processor(
         cls,
         gamespec: ArrayMember,
-        game_version: tuple[GameEdition, list[GameExpansion]],
+        game_version: GameVersion,
         string_resources: StringResource,
         existing_graphics: list[str]
     ) -> GenieObjectContainer:
