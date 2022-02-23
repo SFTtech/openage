@@ -4,6 +4,9 @@
 Provides functions that retrieve name lookup dicts for internal nyan object
 names or filenames.
 """
+from __future__ import annotations
+import typing
+
 import openage.convert.value_object.conversion.aoc.internal_nyan_names as aoc_internal
 import openage.convert.value_object.conversion.de1.internal_nyan_names as de1_internal
 import openage.convert.value_object.conversion.de2.internal_nyan_names as de2_internal
@@ -13,8 +16,11 @@ import openage.convert.value_object.conversion.hd.raj.internal_nyan_names as raj
 import openage.convert.value_object.conversion.ror.internal_nyan_names as ror_internal
 import openage.convert.value_object.conversion.swgb.internal_nyan_names as swgb_internal
 
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameVersion
 
-def get_armor_class_lookups(game_version):
+
+def get_armor_class_lookups(game_version: GameVersion) -> dict[int, str]:
     """
     Return the name lookup dicts for armor classes.
 
@@ -62,7 +68,7 @@ def get_armor_class_lookups(game_version):
                     % game_edition.edition_name)
 
 
-def get_civ_lookups(game_version):
+def get_civ_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
     """
     Return the name lookup dicts for civs.
 
@@ -106,7 +112,7 @@ def get_civ_lookups(game_version):
                     % game_edition.edition_name)
 
 
-def get_class_lookups(game_version):
+def get_class_lookups(game_version: GameVersion) -> dict[int, str]:
     """
     Return the name lookup dicts for unit classes.
 
@@ -129,7 +135,7 @@ def get_class_lookups(game_version):
                     % game_edition.edition_name)
 
 
-def get_command_lookups(game_version):
+def get_command_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
     """
     Return the name lookup dicts for unit commands.
 
@@ -152,7 +158,7 @@ def get_command_lookups(game_version):
                     % game_edition.edition_name)
 
 
-def get_entity_lookups(game_version):
+def get_entity_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
     """
     Return the name lookup dicts for game entities.
 
@@ -238,7 +244,7 @@ def get_entity_lookups(game_version):
                     % game_edition.edition_name)
 
 
-def get_gather_lookups(game_version):
+def get_gather_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
     """
     Return the name lookup dicts for gather tasks.
 
@@ -261,7 +267,7 @@ def get_gather_lookups(game_version):
                     % game_edition.edition_name)
 
 
-def get_graphic_set_lookups(game_version):
+def get_graphic_set_lookups(game_version: GameVersion) -> dict[int, tuple[tuple[int, ...], str, str]]:
     """
     Return the name lookup dicts for civ graphic sets.
 
@@ -305,7 +311,7 @@ def get_graphic_set_lookups(game_version):
                     % game_edition.edition_name)
 
 
-def get_restock_lookups(game_version):
+def get_restock_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
     """
     Return the name lookup dicts for restock targets.
 
@@ -332,7 +338,7 @@ def get_restock_lookups(game_version):
                     % game_edition.edition_name)
 
 
-def get_tech_lookups(game_version):
+def get_tech_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
     """
     Return the name lookup dicts for tech groups.
 
@@ -376,7 +382,7 @@ def get_tech_lookups(game_version):
                     % game_edition.edition_name)
 
 
-def get_terrain_lookups(game_version):
+def get_terrain_lookups(game_version: GameVersion) -> dict[int, tuple[tuple[int, ...], str, str]]:
     """
     Return the name lookup dicts for terrain groups.
 
@@ -420,7 +426,7 @@ def get_terrain_lookups(game_version):
                     % game_edition.edition_name)
 
 
-def get_terrain_type_lookups(game_version):
+def get_terrain_type_lookups(game_version: GameVersion) -> dict[int, tuple]:
     """
     Return the name lookup dicts for terrain types.
 

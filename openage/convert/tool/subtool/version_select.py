@@ -5,7 +5,6 @@ Initial version detection based on user input.
 TODO: Version selection.
 """
 from __future__ import annotations
-
 import typing
 
 
@@ -14,8 +13,7 @@ from ...service.init.version_detect import iterate_game_versions
 from ...value_object.init.game_version import Support
 
 if typing.TYPE_CHECKING:
-    from openage.convert.value_object.init.game_version import GameEdition
-    from openage.convert.value_object.init.game_version import GameExpansion
+    from openage.convert.value_object.init.game_version import GameEdition, GameExpansion, GameVersion
     from openage.util.fslike.directory import Directory
 
 
@@ -23,7 +21,7 @@ def get_game_version(
     srcdir: Directory,
     avail_game_eds: list[GameEdition],
     avail_game_exps: list[GameExpansion]
-) -> typing.Union[tuple[GameEdition, list[GameExpansion]], tuple[bool, set]]:
+) -> GameVersion:
     """
     Mount the input folders for conversion.
     """
@@ -67,7 +65,7 @@ def get_game_version(
             if edition.support == Support.YES:
                 warn(" * \x1b[34m%s\x1b[m", edition)
 
-        return (False, set())
+        return GameVersion(edition=None)
 
     info("Compatible game edition detected:")
     info(" * %s", game_version.edition.edition_name)

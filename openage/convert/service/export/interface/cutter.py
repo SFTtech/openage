@@ -1,6 +1,11 @@
 # Copyright 2016-2020 the openage authors. See copying.md for legal info.
 
-""" Cutting some user interface assets into subtextures """
+"""
+Cutting some user interface assets into subtextures.
+"""
+
+from __future__ import annotations
+import typing
 
 from ....entity_object.export.texture import TextureImage
 from ....value_object.read.media.hardcoded.interface import (TOP_STRIP_PATTERN_CORNERS,
@@ -12,16 +17,19 @@ from ....value_object.read.media.hardcoded.interface import (TOP_STRIP_PATTERN_C
                                                              INGAME_HUD_BACKGROUNDS_SET)
 from .visgrep import visgrep, crop_array
 
+if typing.TYPE_CHECKING:
+    from numpy import ndarray
+
 
 class InterfaceCutter:
     """
     Cuts interface textures into repeatable parts.
     """
 
-    def __init__(self, idx):
+    def __init__(self, idx: int):
         self.idx = idx
 
-    def cut(self, image):
+    def cut(self, image: TextureImage) -> TextureImage:
         """
         Create subtextures by searching for patterns at hardcoded positions.
         """
@@ -45,7 +53,12 @@ class InterfaceCutter:
         else:
             yield image
 
-    def cut_strip(self, img_array, pattern_corners, search_area_corners):
+    def cut_strip(
+        self,
+        img_array: ndarray,
+        pattern_corners: tuple[int, int, int, int],
+        search_area_corners: tuple[int, int, int, int]
+    ) -> TextureImage:
         """
         Finds a horizontally tilable piece of the strip (ex. the top of the HUD).
 
@@ -77,14 +90,14 @@ class InterfaceCutter:
         )
 
 
-def ingame_hud_background_index(idx):
+def ingame_hud_background_index(idx: int):
     """
     Index in the hardcoded list of the known ingame hud backgrounds to match the civ.
     """
     return INGAME_HUD_BACKGROUNDS.index(int(idx))
 
 
-def is_ingame_hud_background(idx):
+def is_ingame_hud_background(idx: int):
     """
     True if in the hardcoded list of the known ingame hud backgrounds.
     """

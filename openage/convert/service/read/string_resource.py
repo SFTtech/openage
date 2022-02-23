@@ -3,8 +3,12 @@
 """
 Module for reading plaintext-based language files.
 """
+from __future__ import annotations
+import typing
+
 
 import re
+
 
 from ....log import dbg
 from ...entity_object.conversion.stringresource import StringResource
@@ -12,8 +16,15 @@ from ...value_object.read.media.langcodes import LANGCODES_DE1, LANGCODES_DE2, L
 from ...value_object.read.media.pefile import PEFile
 from ...value_object.read.media_types import MediaType
 
+if typing.TYPE_CHECKING:
+    from argparse import Namespace
 
-def get_string_resources(args):
+    from openage.util.fslike.directory import Directory
+    from openage.util.fslike.path import Path
+    from openage.util.fslike.wrapper import GuardedFile
+
+
+def get_string_resources(args: Namespace) -> StringResource:
     """ reads the (language) string resources """
 
     stringres = StringResource()
@@ -53,7 +64,7 @@ def get_string_resources(args):
     return stringres
 
 
-def read_age2_hd_fe_stringresources(stringres, path):
+def read_age2_hd_fe_stringresources(stringres: StringResource, path: Path) -> int:
     """
     Fill the string resources from text specifications found
     in the given path.
@@ -62,7 +73,6 @@ def read_age2_hd_fe_stringresources(stringres, path):
 
     The data is stored in the `stringres` storage.
     """
-
     count = 0
 
     # multiple string files in the program source dir
@@ -91,7 +101,7 @@ def read_age2_hd_fe_stringresources(stringres, path):
     return count
 
 
-def read_age2_hd_3x_stringresources(stringres, srcdir):
+def read_age2_hd_3x_stringresources(stringres: StringResource, srcdir: Directory) -> int:
     """
     HD Edition 3.x and below store language .txt files
     in the Bin/ folder.
@@ -99,7 +109,6 @@ def read_age2_hd_3x_stringresources(stringres, srcdir):
 
     The data is stored in the `stringres` storage.
     """
-
     count = 0
 
     for lang in srcdir["bin"].list():
@@ -137,11 +146,14 @@ def read_age2_hd_3x_stringresources(stringres, srcdir):
     return count
 
 
-def read_hd_language_file_old(fileobj, langcode, enc='utf-8'):
+def read_hd_language_file_old(
+    fileobj: GuardedFile,
+    langcode: str,
+    enc: str = 'utf-8'
+) -> dict[str, StringResource]:
     """
     Takes a file object, and the file's language code.
     """
-
     dbg("parse HD Language file %s", langcode)
     strings = {}
 
@@ -166,7 +178,11 @@ def read_hd_language_file_old(fileobj, langcode, enc='utf-8'):
     return {lang: strings}
 
 
-def read_hd_language_file(srcdir, language_file, enc='utf-8'):
+def read_hd_language_file(
+    srcdir: Directory,
+    language_file: GuardedFile,
+    enc: str = 'utf-8'
+) -> dict[str, StringResource]:
     """
     HD Edition stores language .txt files in the resources/ folder.
     Specific language strings are in resources/$LANG/strings/key-value/*.txt.
@@ -202,7 +218,10 @@ def read_hd_language_file(srcdir, language_file, enc='utf-8'):
     return {lang: strings}
 
 
-def read_de1_language_file(srcdir, language_file):
+def read_de1_language_file(
+    srcdir: Directory,
+    language_file: GuardedFile
+) -> dict[str, StringResource]:
     """
     Definitve Edition stores language .txt files in the Localization folder.
     Specific language strings are in Data/Localization/$LANG/strings.txt.
@@ -239,7 +258,10 @@ def read_de1_language_file(srcdir, language_file):
     return {lang: strings}
 
 
-def read_de2_language_file(srcdir, language_file):
+def read_de2_language_file(
+    srcdir: Directory,
+    language_file: GuardedFile
+) -> dict[str, StringResource]:
     """
     Definitve Edition stores language .txt files in the resources/ folder.
     Specific language strings are in resources/$LANG/strings/key-value/*.txt.

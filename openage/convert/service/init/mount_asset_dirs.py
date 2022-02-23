@@ -4,9 +4,7 @@
 """
 Mount asset dirs of a game version into the conversion folder.
 """
-
 from __future__ import annotations
-
 import typing
 
 
@@ -21,7 +19,7 @@ if typing.TYPE_CHECKING:
 def mount_asset_dirs(
     srcdir: Directory,
     game_version: GameVersion
-) -> Directory:
+) -> Union:
     """
     Returns a Union path where srcdir is mounted at /,
     and all the asset files are mounted in subfolders.
@@ -34,7 +32,6 @@ def mount_asset_dirs(
         """
         Mounts the DRS file from srcdir's filename at result's target.
         """
-
         drspath = srcdir[filename]
         result[target].mount(DRS(drspath.open('rb'), game_version.edition.game_id).root)
 

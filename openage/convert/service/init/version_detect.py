@@ -25,7 +25,7 @@ def iterate_game_versions(
     srcdir: Directory,
     avail_game_eds: list[GameEdition],
     avail_game_exps: list[GameExpansion]
-) -> tuple[GameEdition, list[GameExpansion]]:
+) -> GameVersion:
     """
     Determine what editions and expansions of a game are installed in srcdir
     by iterating through all versions the converter knows about.

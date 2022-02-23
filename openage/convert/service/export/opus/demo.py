@@ -10,7 +10,7 @@ from . import opusenc
 from .....log import info, crit
 
 
-def convert(args):
+def convert(args) -> int:
     """ Demonstrates the usage of the opusenc module. """
 
     cli = argparse.ArgumentParser()
