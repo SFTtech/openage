@@ -17,7 +17,7 @@ from ...value_object.read.read_members import (IncludeMembers, ContinueReadMembe
                                                EnumLookupMember)
 from ...value_object.read.value_members import ContainerMember, ArrayMember, IntMember, FloatMember,\
     StringMember, BooleanMember, IDMember, BitfieldMember, ValueMember
-from ...value_object.read.value_members import MemberTypes as StorageType
+from ...value_object.read.value_members import StorageType
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
@@ -504,7 +504,7 @@ class GenieStructure:
                     if is_custom_member:
                         result = var_type.entry_hook(result)
 
-                        if result == ContinueReadMember.Result.ABORT:
+                        if result == ContinueReadMember.result.ABORT:
                             # don't go through all other members of this class!
                             stop_reading_members = True
 
@@ -560,7 +560,10 @@ class GenieStructure:
             yield member_entry
 
     @classmethod
-    def get_data_format_members(cls, game_version: GameVersion):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
 
@@ -573,7 +576,7 @@ class GenieStructure:
         var_name: The stored name of the extracted variable.
                   Must be unique for each ConverterObject
         storage_type: ValueMember type for storage
-                      (see value_members.MemberTypes)
+                      (see value_members.StorageType)
         read_type: ReadMember type for reading the values from bytes
                    (see read_members.py)
         ===========================================================

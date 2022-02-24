@@ -1,18 +1,29 @@
 # Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
+from __future__ import annotations
+import typing
+
 
 from .....entity_object.conversion.genie_structure import GenieStructure
 from ....read.member_access import READ, READ_GEN, SKIP
 from ....read.read_members import SubdataMember, EnumLookupMember
-from ....read.value_members import MemberTypes as StorageType
+from ....read.value_members import StorageType
 from .lookup_dicts import EFFECT_APPLY_TYPE, CONNECTION_MODE
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.member_access import MemberAccess
+    from openage.convert.value_object.read.read_members import ReadMember
 
 
 class Effect(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -34,7 +45,10 @@ class Effect(GenieStructure):
 class EffectBundle(GenieStructure):  # also called techage in some other tools
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -64,7 +78,10 @@ class EffectBundle(GenieStructure):  # also called techage in some other tools
 class OtherConnection(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -82,7 +99,10 @@ class OtherConnection(GenieStructure):
 class AgeTechTree(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -177,7 +197,10 @@ class AgeTechTree(GenieStructure):
 class BuildingConnection(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -264,7 +287,10 @@ class BuildingConnection(GenieStructure):
 class UnitConnection(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -340,7 +366,10 @@ class UnitConnection(GenieStructure):
 class ResearchConnection(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """

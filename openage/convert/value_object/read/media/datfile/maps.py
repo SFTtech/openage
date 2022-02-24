@@ -1,17 +1,28 @@
 # Copyright 2015-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
+from __future__ import annotations
+import typing
+
 
 from .....entity_object.conversion.genie_structure import GenieStructure
 from ....read.member_access import READ, SKIP
 from ....read.read_members import SubdataMember
-from ....read.value_members import MemberTypes as StorageType
+from ....read.value_members import StorageType
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.member_access import MemberAccess
+    from openage.convert.value_object.read.read_members import ReadMember
 
 
 class MapInfo(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -42,7 +53,10 @@ class MapInfo(GenieStructure):
 class MapLand(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -70,7 +84,10 @@ class MapLand(GenieStructure):
 class MapTerrain(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -89,7 +106,10 @@ class MapTerrain(GenieStructure):
 class MapUnit(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -115,7 +135,10 @@ class MapUnit(GenieStructure):
 class MapElevation(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -134,7 +157,10 @@ class MapElevation(GenieStructure):
 class Map(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """

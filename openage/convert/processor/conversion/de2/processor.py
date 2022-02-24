@@ -8,7 +8,7 @@ from __future__ import annotations
 import typing
 
 
-from openage.convert.value_object.read.value_members import ArrayMember, MemberTypes
+from openage.convert.value_object.read.value_members import ArrayMember, StorageType
 import openage.convert.value_object.conversion.aoc.internal_nyan_names as aoc_internal
 import openage.convert.value_object.conversion.de2.internal_nyan_names as de2_internal
 
@@ -224,7 +224,7 @@ class DE2Processor:
                 else:
                     # Create empty member if no headers are present
                     unit_commands = ArrayMember("unit_commands",
-                                                MemberTypes.CONTAINER_MEMBER,
+                                                StorageType.CONTAINER_MEMBER,
                                                 members=[])
                     unit.add_member(unit_commands)
 

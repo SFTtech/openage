@@ -1,17 +1,25 @@
 # Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,too-many-lines
+from __future__ import annotations
+import typing
+
 
 from .....entity_object.conversion.genie_structure import GenieStructure
 from ....read.member_access import READ, READ_GEN, SKIP
 from ....read.read_members import EnumLookupMember, ContinueReadMember, IncludeMembers, SubdataMember
-from ....read.value_members import MemberTypes as StorageType
+from ....read.value_members import StorageType
 from .lookup_dicts import COMMAND_ABILITY, OWNER_TYPE, RESOURCE_HANDLING, RESOURCE_TYPES,\
     DAMAGE_DRAW_TYPE, ARMOR_CLASS, UNIT_CLASSES, ELEVATION_MODES, FOG_VISIBILITY,\
     TERRAIN_RESTRICTIONS, BLAST_DEFENSE_TYPES, COMBAT_LEVELS, INTERACTION_MODES,\
     MINIMAP_MODES, UNIT_LEVELS, OBSTRUCTION_TYPES, SELECTION_EFFECTS,\
     ATTACK_MODES, BOUNDARY_IDS, BLAST_OFFENSE_TYPES, CREATABLE_TYPES,\
     GARRISON_TYPES
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.member_access import MemberAccess
+    from openage.convert.value_object.read.read_members import ReadMember
 
 
 class UnitCommand(GenieStructure):
@@ -21,7 +29,10 @@ class UnitCommand(GenieStructure):
     """
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -88,7 +99,10 @@ class UnitCommand(GenieStructure):
 class UnitHeader(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -108,7 +122,10 @@ class UnitHeader(GenieStructure):
 class UnitLine(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -126,7 +143,10 @@ class UnitLine(GenieStructure):
 class ResourceStorage(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -146,7 +166,10 @@ class ResourceStorage(GenieStructure):
 class DamageGraphic(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -168,7 +191,10 @@ class DamageGraphic(GenieStructure):
 class HitType(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -187,7 +213,10 @@ class HitType(GenieStructure):
 class ResourceCost(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -207,7 +236,10 @@ class ResourceCost(GenieStructure):
 class BuildingAnnex(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -226,7 +258,10 @@ class UnitObject(GenieStructure):
     """
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -515,7 +550,10 @@ class TreeUnit(UnitObject):
     """
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -533,7 +571,10 @@ class AnimatedUnit(UnitObject):
     """
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -551,7 +592,10 @@ class DoppelgangerUnit(AnimatedUnit):
     """
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -569,7 +613,10 @@ class MovingUnit(DoppelgangerUnit):
     """
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -613,7 +660,10 @@ class ActionUnit(MovingUnit):
     """
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -682,7 +732,10 @@ class ProjectileUnit(ActionUnit):
     """
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -764,7 +817,10 @@ class MissileUnit(ProjectileUnit):
     """
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -792,7 +848,10 @@ class LivingUnit(ProjectileUnit):
     """
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -903,7 +962,10 @@ class BuildingUnit(LivingUnit):
     """
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """

@@ -10,6 +10,7 @@ import typing
 from pathlib import Path
 
 from openage.convert.processor.export.media_exporter import MediaExporter
+from openage.convert.value_object.init.game_version import GameEdition, GameVersion
 
 from ...log import info
 from ...util.fslike.directory import Directory
@@ -17,8 +18,12 @@ from ..entity_object.export.texture import Texture
 from ..value_object.read.media.colortable import ColorTable
 from ..value_object.read.media.drs import DRS
 
-if typing.TYPE_CHECKING:
-    pass
+AOC_GAME_VERSION = GameVersion(
+    edition=GameEdition("Dummy AOC", "AOC", "YES", [], [], [], [])
+)
+SWGB_GAME_VERSION = GameVersion(
+    edition=GameEdition("Dummy SWGB", "SWGB", "YES", [], [], [], [])
+)
 
 
 def init_subparser(cli):
@@ -119,7 +124,7 @@ def read_palettes(palettes_path: Path) -> dict[str, ColorTable]:
         # open from drs archive
         # TODO: Also allow SWGB's DRS files
         palette_file = Path(palettes_path).open("rb")
-        game_version = ("AOC", [])
+        game_version = AOC_GAME_VERSION
         palette_dir = DRS(palette_file, game_version)
 
         info("parsing palette data...")
@@ -187,7 +192,7 @@ def read_slp_in_drs_file(
 
     # open from drs archive
     # TODO: Also allow SWGB's DRS files
-    game_version = ("AOC", [])
+    game_version = AOC_GAME_VERSION
     drs_file = DRS(drs, game_version)
 
     info("opening slp in drs '%s:%s'...", drs.name, slp_path)
@@ -327,7 +332,7 @@ def read_wav_in_drs_file(drs: Path, wav_path: Path, output_path: Path) -> None:
 
     # open from drs archive
     # TODO: Also allow SWGB's DRS files
-    game_version = ("AOC", [])
+    game_version = AOC_GAME_VERSION
     drs_file = DRS(drs, game_version)
 
     info("opening wav in drs '%s:%s'...", drs.name, wav_path)

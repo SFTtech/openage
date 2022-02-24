@@ -33,7 +33,7 @@ def mount_asset_dirs(
         Mounts the DRS file from srcdir's filename at result's target.
         """
         drspath = srcdir[filename]
-        result[target].mount(DRS(drspath.open('rb'), game_version.edition.game_id).root)
+        result[target].mount(DRS(drspath.open('rb'), game_version).root)
 
     # Mount the media sources of the game edition
     for media_type, media_paths in game_version.edition.media_paths.items():

@@ -1,19 +1,31 @@
 # Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,too-many-function-args
+from __future__ import annotations
+import typing
 
 import math
 
 import numpy
 
+
 from .....log import dbg
 from ....entity_object.conversion.genie_structure import GenieStructure
+
+if typing.TYPE_CHECKING:
+    from PIL import Image
+
+    from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.member_access import MemberAccess
+    from openage.convert.value_object.read.read_members import ReadMember
+    from openage.convert.value_object.read.value_members import StorageType
+    from openage.util.fslike.wrapper import GuardedFile
 
 
 class ColorTable(GenieStructure):
     __slots__ = ('header', 'version', 'palette')
 
-    def __init__(self, data):
+    def __init__(self, data: typing.Union[list, tuple, bytes]):
         super().__init__()
 
         if isinstance(data, list) or isinstance(data, tuple):
@@ -24,10 +36,10 @@ class ColorTable(GenieStructure):
         # Fast access for media conversion
         self.array = self.get_ndarray()
 
-    def fill_from_array(self, ar):
+    def fill_from_array(self, ar: typing.Union[list, tuple]) -> None:
         self.palette = [tuple(e) for e in ar]
 
-    def fill(self, data):
+    def fill(self, data: bytes) -> None:
         # split all lines of the input data
         # \r\n windows windows windows baby
         lines = data.decode('ascii').split('\r\n')
@@ -81,7 +93,7 @@ class ColorTable(GenieStructure):
     def __str__(self):
         return f"{repr(self)}\n{self.palette}"
 
-    def gen_image(self, draw_text=True, squaresize=100):
+    def gen_image(self, draw_text: bool = True, squaresize: int = 100) -> Image:
         """
         writes this color table (palette) to a png image.
         """
@@ -144,14 +156,17 @@ class ColorTable(GenieStructure):
 
         return palette_image
 
-    def get_ndarray(self):
+    def get_ndarray(self) -> numpy.array:
         return numpy.array(self.palette, dtype=numpy.uint8, order='C')
 
-    def save_visualization(self, fileobj):
+    def save_visualization(self, fileobj: GuardedFile) -> None:
         self.gen_image().save(fileobj, 'png')
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
@@ -175,7 +190,7 @@ class PlayerColorTable(GenieStructure):
 
     __slots__ = ('header', 'version', 'palette')
 
-    def __init__(self, base_table):
+    def __init__(self, base_table: ColorTable):
         super().__init__()
 
         if not isinstance(base_table, ColorTable):
@@ -196,7 +211,10 @@ class PlayerColorTable(GenieStructure):
                 self.palette.append((r, g, b))
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """

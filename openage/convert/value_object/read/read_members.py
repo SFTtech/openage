@@ -2,7 +2,16 @@
 #
 # TODO pylint: disable=C,R,abstract-method
 
+from __future__ import annotations
+import typing
+
 from enum import Enum
+
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.genie_structure import GenieStructure
+    from openage.convert.value_object.read.member_access import MemberAccess
+    from openage.convert.value_object.read.value_members import StorageType
 
 
 class ReadMember:
@@ -18,7 +27,7 @@ class ReadMember:
         self.raw_type = None
         self.do_raw_read = True
 
-    def entry_hook(self, data):
+    def entry_hook(self, data: typing.Any) -> typing.Any:
         """
         allows the data member class to modify the input data
 
@@ -26,17 +35,17 @@ class ReadMember:
         """
         return data
 
-    def get_empty_value(self):
+    def get_empty_value(self) -> int:
         """
         when this data field is not filled, use the returned value instead.
         """
         return 0
 
-    def get_length(self, obj=None):
+    def get_length(self, obj: typing.Any = None) -> int:
         del obj  # unused
         return self.length
 
-    def verify_read_data(self, obj, data):
+    def verify_read_data(self, obj: typing.Any, data: typing.Any) -> bool:
         """
         gets called for each entry. used to check for storage validity (e.g. 0 expected)
         """
@@ -56,7 +65,7 @@ class GroupMember(ReadMember):
     this is just a reference to a single struct instance.
     """
 
-    def __init__(self, cls):
+    def __init__(self, cls: ReadMember):
         super().__init__()
         self.cls = cls
 
@@ -85,7 +94,7 @@ class DynLengthMember(ReadMember):
 
     any_length = "any_length"
 
-    def __init__(self, length):
+    def __init__(self, length: typing.Union[typing.Callable, int, str, typing.Literal["any_length"]]):
         super().__init__()
 
         type_ok = False
@@ -102,7 +111,7 @@ class DynLengthMember(ReadMember):
 
         self.length = length
 
-    def get_length(self, obj=None):
+    def get_length(self, obj: typing.Any = None) -> int:
         if self.is_dynamic_length():
             if self.length is self.any_length:
                 return self.any_length
@@ -137,7 +146,10 @@ class DynLengthMember(ReadMember):
             # non-dynamic length (aka plain number) gets returned directly
             return self.length
 
-    def is_dynamic_length(self, target=None):
+    def is_dynamic_length(
+        self,
+        target: typing.Union[typing.Callable, int, str, typing.Literal["any_length"]] = None
+    ):
         if target is None:
             target = self.length
 
@@ -158,7 +170,7 @@ class RefMember(ReadMember):
     a struct member that can be referenced/references another struct.
     """
 
-    def __init__(self, type_name, file_name):
+    def __init__(self, type_name: str, file_name: str):
         ReadMember.__init__(self)
         self.type_name = type_name
         self.file_name = file_name
@@ -187,7 +199,7 @@ class NumberMember(ReadMember):
         "float":         "f",
     }
 
-    def __init__(self, number_def):
+    def __init__(self, number_def: str):
         super().__init__()
         if number_def not in self.type_scan_lookup:
             raise Exception(
@@ -207,11 +219,11 @@ class ZeroMember(NumberMember):
     neat for finding offset errors.
     """
 
-    def __init__(self, raw_type, length=1):
+    def __init__(self, raw_type: ReadMember, length: int = 1):
         super().__init__(raw_type)
         self.length = length
 
-    def verify_read_data(self, obj, data):
+    def verify_read_data(self, obj: typing.Any, data: typing.Collection) -> bool:
         # fail if a single value of data != 0
         if any(False if v == 0 else True for v in data):
             return False
@@ -233,15 +245,15 @@ class ContinueReadMember(NumberMember):
     when its value == 0.
     """
 
-    Result = ContinueReadMemberResult
+    result = ContinueReadMemberResult
 
-    def entry_hook(self, data):
+    def entry_hook(self, data: int) -> str:
         if data == 0:
-            return self.Result.ABORT
+            return self.result.ABORT
         else:
-            return self.Result.CONTINUE
+            return self.result.CONTINUE
 
-    def get_empty_value(self):
+    def get_empty_value(self) -> int:
         return 0
 
 
@@ -250,12 +262,17 @@ class EnumMember(RefMember):
     this struct member/data column is a enum.
     """
 
-    def __init__(self, type_name, values, file_name=None):
+    def __init__(
+        self,
+        type_name: str,
+        values: dict[typing.Any, typing.Any],
+        file_name: str = None
+    ):
         super().__init__(type_name, file_name)
         self.values = values
         self.resolved = True    # TODO, xrefs not supported yet.
 
-    def validate_value(self, value):
+    def validate_value(self, value: typing.Any) -> bool:
         return value in self.values
 
     def __repr__(self):
@@ -267,7 +284,13 @@ class EnumLookupMember(EnumMember):
     enum definition, does lookup of raw datfile data => enum value
     """
 
-    def __init__(self, type_name, lookup_dict, raw_type, file_name=None):
+    def __init__(
+        self,
+        type_name: str,
+        lookup_dict: dict[typing.Any, typing.Any],
+        raw_type: str,
+        file_name: str = None
+    ):
         super().__init__(
             type_name,
             [v for k, v in sorted(lookup_dict.items())],
@@ -276,7 +299,7 @@ class EnumLookupMember(EnumMember):
         self.lookup_dict = lookup_dict
         self.raw_type = raw_type
 
-    def entry_hook(self, data):
+    def entry_hook(self, data: typing.Any) -> typing.Any:
         """
         perform lookup of raw data -> enum member name
         """
@@ -297,11 +320,11 @@ class CharArrayMember(DynLengthMember):
     struct member/column type that allows to store equal-length char[n].
     """
 
-    def __init__(self, length):
+    def __init__(self, length: int):
         super().__init__(length)
         self.raw_type = "char[]"
 
-    def get_empty_value(self):
+    def get_empty_value(self) -> typing.Literal[""]:
         return ""
 
     def __repr__(self):
@@ -323,10 +346,18 @@ class MultisubtypeMember(RefMember, DynLengthMember):
     multiple other data sets.
     """
 
-    def __init__(self, type_name, subtype_definition, class_lookup, length,
-                 passed_args=None, ref_to=None,
-                 offset_to=None, file_name=None,
-                 ref_type_params=None):
+    def __init__(
+        self,
+        type_name: str,
+        subtype_definition: tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]],
+        class_lookup: dict[typing.Any, GenieStructure],
+        length: typing.Union[typing.Callable, int, str, typing.Literal["any_length"]],
+        passed_args: list[str] = None,
+        ref_to: str = None,
+        offset_to: tuple[str, typing.Callable] = None,
+        file_name: str = None,
+        ref_type_params=None
+    ):
 
         RefMember.__init__(self, type_name, file_name)
         DynLengthMember.__init__(self, length)
@@ -353,7 +384,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         # no xrefs supported yet.. just set to true as if they were resolved.
         self.resolved = True
 
-    def get_empty_value(self):
+    def get_empty_value(self) -> list:
         return list()
 
     def get_contained_types(self):
@@ -372,8 +403,15 @@ class SubdataMember(MultisubtypeMember):
     It's a special case of the multisubtypemember with one subtype.
     """
 
-    def __init__(self, ref_type, length, offset_to=None,
-                 ref_to=None, ref_type_params=None, passed_args=None):
+    def __init__(
+        self,
+        ref_type: GenieStructure,
+        length: typing.Union[typing.Callable, int, str, typing.Literal["any_length"]],
+        offset_to: tuple[str, typing.Callable] = None,
+        ref_to: str = None,
+        ref_type_params=None,
+        passed_args=None
+    ):
         super().__init__(
             type_name=None,
             subtype_definition=None,
@@ -397,7 +435,7 @@ class ArrayMember(DynLengthMember):
     subdata member for C-type arrays like float[8].
     """
 
-    def __init__(self, raw_type, length):
+    def __init__(self, raw_type: ReadMember, length: int):
         super().__init__(length)
         self.raw_type = raw_type
 

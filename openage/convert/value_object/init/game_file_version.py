@@ -12,7 +12,7 @@ class GameFileVersion:
     """
     hash_algo = "SHA3-256"
 
-    def __init__(self, filepaths, hashes):
+    def __init__(self, filepaths: list[str], hashes: dict[str, str]):
         """
         Create a new file hash to version association.
 
@@ -30,13 +30,13 @@ class GameFileVersion:
 
         self.hashes = hashes
 
-    def get_paths(self):
+    def get_paths(self) -> list[str]:
         """
         Return all known paths to the file.
         """
         return self.paths
 
-    def get_hashes(self):
+    def get_hashes(self) -> dict[str, str]:
         """
         Return the hash-version association for the file paths.
         """

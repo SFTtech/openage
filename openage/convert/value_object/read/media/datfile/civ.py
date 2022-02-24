@@ -1,17 +1,28 @@
 # Copyright 2013-2021 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
+from __future__ import annotations
+import typing
+
 from . import unit
 from .....entity_object.conversion.genie_structure import GenieStructure
 from ....read.member_access import READ, READ_GEN, SKIP
 from ....read.read_members import MultisubtypeMember, EnumLookupMember
-from ....read.value_members import MemberTypes as StorageType
+from ....read.value_members import StorageType
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.member_access import MemberAccess
+    from openage.convert.value_object.read.read_members import ReadMember
 
 
 class Civ(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
