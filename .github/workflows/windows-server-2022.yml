@@ -42,7 +42,7 @@ jobs:
     - name: Install dependencies [Python]
       run: |
         python -m pip install --upgrade pip
-        python -m pip install --upgrade Cython wheel numpy lz4 toml pillow pygments Jinja2
+        python -m pip install --upgrade Cython wheel numpy lz4 toml pillow pygments pyreadline3 Jinja2
       shell: pwsh
     - name: Build
       run: |
