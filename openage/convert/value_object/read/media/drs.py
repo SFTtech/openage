@@ -98,7 +98,7 @@ class DRS(FileCollection):
         self.fileobj = fileobj
 
         # read header
-        if game_version.edition.edition_name == "SWGB":
+        if game_version.edition.game_id == "SWGB":
             header = DRSHeaderLucasArts.read(fileobj)
 
         else:
