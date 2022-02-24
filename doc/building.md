@@ -28,7 +28,7 @@ Dependencies are needed for:
 Dependency list:
 
     C     gcc >=10 or clang >=10
-    CRA   python >=3.6
+    CRA   python >=3.9
     C     cython >=0.25
     C     cmake >=3.16
       A   numpy

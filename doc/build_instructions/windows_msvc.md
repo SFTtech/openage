@@ -29,8 +29,6 @@ __NOTE:__ You need to manually make sure and doublecheck if the system you are b
    - If in doubt, run the installer again and choose "Modify".
    - You are going to need the 64-bit version of python if you are planning to build the 64-bit version of openage, and vice versa.
 
-    __Note:__ You need to install Python 3.7.x currently, because 3.8 deals with finding DLLs differently (see [#1201](https://github.com/SFTtech/openage/issues/1201)) which would result in errors down the line
-
  - [CMake](https://cmake.org/download/)
 
 ### Python Modules
@@ -87,10 +85,6 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
     - `nyan.dll` (The location depends on the procedure chosen to get nyan.)
     - DLLs from vcpkg-installed dependencies. Normally, these DLLs should be copied to `<openage directory>\build\libopenage\<config built>` during the build process. If they are not, you can find them in `<vcpkg directory>\installed\<relevant config>\bin`.
       - If prebuilt QT5 was installed, the original location of QT5 DLLs is `<QT5 directory>\bin`.
-
-    You need to ensure Python can locate these DLL files.
-    Up to Python 3.7, this can be done by adding the paths into the global system variables `PATH` (not the user-specific `PATH`).
-    For Python 3.8+, you should use the `--add-dll-search-path` option when running the `openage` module.
 
   - Now, to run the openage:
     - Open a CMD window in `<openage directory>\build\` and run `python -m openage game`
