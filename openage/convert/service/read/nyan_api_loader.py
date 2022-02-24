@@ -1,4 +1,4 @@
-# Copyright 2019-2021 the openage authors. See copying.md for legal info.
+# Copyright 2019-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-lines,too-many-statements
 """
@@ -7,6 +7,7 @@ Loads the API into the converter.
 TODO: Implement a parser instead of hardcoded
 object creation.
 """
+from __future__ import annotations
 
 from ....nyan.nyan_structs import NyanMemberType
 from ....nyan.nyan_structs import NyanObject, NyanMember, MemberType, MemberSpecialValue,\
@@ -21,7 +22,7 @@ N_FILE = NyanMemberType("file")
 N_BOOL = NyanMemberType("bool")
 
 
-def load_api():
+def load_api() -> dict[str, NyanObject]:
     """
     Returns a dict with the API object's fqon as keys
     and the API objects as values.
@@ -34,7 +35,7 @@ def load_api():
     return api_objects
 
 
-def _create_objects(api_objects):
+def _create_objects(api_objects) -> None:
     """
     Creates the API objects.
     """
@@ -2413,7 +2414,7 @@ def _create_objects(api_objects):
     return api_objects
 
 
-def _insert_members(api_objects):
+def _insert_members(api_objects) -> None:
     """
     Creates members for API objects.
     """
@@ -2815,13 +2816,16 @@ def _insert_members(api_objects):
     # engine.ability.type.Named
     api_object = api_objects["engine.ability.type.Named"]
 
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("name", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
     member = NyanMember("description", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
     member = NyanMember("long_description", member_type, None, None, 0)
     api_object.add_member(member)
 
@@ -3176,10 +3180,12 @@ def _insert_members(api_objects):
     # engine.util.attribute.Attribute
     api_object = api_objects["engine.util.attribute.Attribute"]
 
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("name", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("abbreviation", member_type, None, None, 0)
     api_object.add_member(member)
 
@@ -3850,7 +3856,8 @@ def _insert_members(api_objects):
     # engine.util.resource.Resource
     api_object = api_objects["engine.util.resource.Resource"]
 
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("name", member_type, None, None, 0)
     api_object.add_member(member)
     member = NyanMember("max_storage", N_INT, None, None, 0)
@@ -3906,13 +3913,16 @@ def _insert_members(api_objects):
     # engine.util.setup.PlayerSetup
     api_object = api_objects["engine.util.setup.PlayerSetup"]
 
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("name", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
     member = NyanMember("description", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
     member = NyanMember("long_description", member_type, None, None, 0)
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
@@ -4053,7 +4063,8 @@ def _insert_members(api_objects):
 
     member = NyanMember("activation_message", N_TEXT, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("display_message", member_type, None, None, 0)
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.util.sound.Sound"])
@@ -4068,13 +4079,16 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("types", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("name", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
     member = NyanMember("description", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
     member = NyanMember("long_description", member_type, None, None, 0)
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.util.patch.Patch"])
@@ -4090,7 +4104,8 @@ def _insert_members(api_objects):
     member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("types", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(
+        api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("name", member_type, None, None, 0)
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.util.graphics.Terrain"])

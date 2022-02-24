@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
 #
@@ -8,11 +8,20 @@
 """
 Creates upgrade patches for attribute modification effects in AoC.
 """
+from __future__ import annotations
+import typing
+
+
 from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
 from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+    from openage.nyan.nyan_structs import MemberOperator
 
 
 class AoCUpgradeAttributeSubprocessor:
@@ -21,7 +30,13 @@ class AoCUpgradeAttributeSubprocessor:
     """
 
     @staticmethod
-    def accuracy_upgrade(converter_group, line, value, operator, team=False):
+    def accuracy_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the accuracy modify effect (ID: 11).
 
@@ -30,7 +45,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -89,7 +104,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -106,7 +122,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def armor_upgrade(converter_group, line, value, operator, team=False):
+    def armor_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the armor modify effect (ID: 8).
 
@@ -115,7 +137,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -192,7 +214,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -209,7 +232,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def attack_upgrade(converter_group, line, value, operator, team=False):
+    def attack_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the attack modify effect (ID: 9).
 
@@ -218,7 +247,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -255,7 +284,8 @@ class AoCUpgradeAttributeSubprocessor:
         class_name = armor_lookup_dict[armor_class]
 
         if line.is_projectile_shooter():
-            primary_projectile_id = line.get_head_unit()["attack_projectile_primary_unit_id"].get_value()
+            primary_projectile_id = line.get_head_unit(
+            )["attack_projectile_primary_unit_id"].get_value()
             if primary_projectile_id == -1:
                 # Upgrade is skipped if the primary projectile is not defined
                 return patches
@@ -304,7 +334,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -321,7 +352,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def ballistics_upgrade(converter_group, line, value, operator, team=False):
+    def ballistics_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: int,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the ballistics modify effect (ID: 19).
 
@@ -330,7 +367,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -408,7 +445,8 @@ class AoCUpgradeAttributeSubprocessor:
                                                   "engine.util.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+                )
                 properties = {
                     dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
                 }
@@ -458,7 +496,8 @@ class AoCUpgradeAttributeSubprocessor:
                                                   "engine.util.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+                )
                 properties = {
                     dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
                 }
@@ -475,7 +514,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def blast_radius_upgrade(converter_group, line, value, operator, team=False):
+    def blast_radius_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the blast radius modify effect (ID: 22).
 
@@ -484,7 +529,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -497,7 +542,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def carry_capacity_upgrade(converter_group, line, value, operator, team=False):
+    def carry_capacity_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the carry capacity modify effect (ID: 14).
 
@@ -506,7 +557,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -519,7 +570,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def cost_food_upgrade(converter_group, line, value, operator, team=False):
+    def cost_food_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the food cost modify effect (ID: 103).
 
@@ -528,7 +585,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -600,7 +657,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -617,7 +675,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def cost_wood_upgrade(converter_group, line, value, operator, team=False):
+    def cost_wood_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the wood cost modify effect (ID: 104).
 
@@ -626,7 +690,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -698,7 +762,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -715,7 +780,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def cost_gold_upgrade(converter_group, line, value, operator, team=False):
+    def cost_gold_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the gold cost modify effect (ID: 105).
 
@@ -724,7 +795,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -796,7 +867,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -813,7 +885,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def cost_stone_upgrade(converter_group, line, value, operator, team=False):
+    def cost_stone_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the stone cost modify effect (ID: 106).
 
@@ -822,7 +900,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -894,7 +972,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -911,7 +990,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def creation_time_upgrade(converter_group, line, value, operator, team=False):
+    def creation_time_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the creation time modify effect (ID: 101).
 
@@ -920,7 +1005,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -979,7 +1064,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -996,7 +1082,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def garrison_capacity_upgrade(converter_group, line, value, operator, team=False):
+    def garrison_capacity_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the garrison capacity modify effect (ID: 2).
 
@@ -1005,7 +1097,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1068,7 +1160,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -1085,7 +1178,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def garrison_heal_upgrade(converter_group, line, value, operator, team=False):
+    def garrison_heal_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the garrison heal rate modify effect (ID: 108).
 
@@ -1094,7 +1193,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1107,7 +1206,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def graphics_angle_upgrade(converter_group, line, value, operator, team=False):
+    def graphics_angle_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: int,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the graphics angle modify effect (ID: 17).
 
@@ -1116,7 +1221,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1129,16 +1234,22 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def gold_counter_upgrade(converter_group, line, value, operator, team=False):
+    def gold_counter_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
-        Creates a patch for the gold cunter effect (ID: 49).
+        Creates a patch for the gold counter effect (ID: 49).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1151,7 +1262,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def hp_upgrade(converter_group, line, value, operator, team=False):
+    def hp_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the HP modify effect (ID: 0).
 
@@ -1160,7 +1277,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1224,7 +1341,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -1241,7 +1359,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def imperial_tech_id_upgrade(converter_group, line, value, operator, team=False):
+    def imperial_tech_id_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the imperial tech ID effect (ID: 24).
 
@@ -1250,7 +1374,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1263,7 +1387,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def kidnap_storage_upgrade(converter_group, line, value, operator, team=False):
+    def kidnap_storage_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the kidnap storage effect (ID: 57).
 
@@ -1272,7 +1402,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1285,7 +1415,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def los_upgrade(converter_group, line, value, operator, team=False):
+    def los_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the line of sight modify effect (ID: 1).
 
@@ -1353,7 +1489,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -1370,7 +1507,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def max_projectiles_upgrade(converter_group, line, value, operator, team=False):
+    def max_projectiles_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the max projectiles modify effect (ID: 107).
 
@@ -1379,7 +1522,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1438,7 +1581,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -1455,7 +1599,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def min_projectiles_upgrade(converter_group, line, value, operator, team=False):
+    def min_projectiles_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the min projectiles modify effect (ID: 102).
 
@@ -1464,7 +1614,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1523,7 +1673,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -1540,7 +1691,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def max_range_upgrade(converter_group, line, value, operator, team=False):
+    def max_range_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the max range modify effect (ID: 12).
 
@@ -1549,7 +1706,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1629,7 +1786,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -1646,7 +1804,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def min_range_upgrade(converter_group, line, value, operator, team=False):
+    def min_range_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the min range modify effect (ID: 20).
 
@@ -1655,7 +1819,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1726,7 +1890,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -1743,7 +1908,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def move_speed_upgrade(converter_group, line, value, operator, team=False):
+    def move_speed_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the move speed modify effect (ID: 5).
 
@@ -1752,7 +1923,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1811,7 +1982,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -1828,7 +2000,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def projectile_unit_upgrade(converter_group, line, value, operator, team=False):
+    def projectile_unit_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the projectile modify effect (ID: 16).
 
@@ -1837,7 +2015,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1850,7 +2028,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def reload_time_upgrade(converter_group, line, value, operator, team=False):
+    def reload_time_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the reload time modify effect (ID: 10).
 
@@ -1859,7 +2043,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1934,7 +2118,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -1951,7 +2136,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def resource_cost_upgrade(converter_group, line, value, operator, team=False):
+    def resource_cost_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the resource modify effect (ID: 100).
 
@@ -1960,7 +2151,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -2050,7 +2241,8 @@ class AoCUpgradeAttributeSubprocessor:
                                                   "engine.util.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+                )
                 properties = {
                     dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
                 }
@@ -2067,7 +2259,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def resource_storage_1_upgrade(converter_group, line, value, operator, team=False):
+    def resource_storage_1_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the resource storage 1 modify effect (ID: 21).
 
@@ -2076,7 +2274,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -2149,7 +2347,8 @@ class AoCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -2166,7 +2365,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def rotation_speed_upgrade(converter_group, line, value, operator, team=False):
+    def rotation_speed_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the move speed modify effect (ID: 6).
 
@@ -2175,7 +2380,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -2188,7 +2393,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def search_radius_upgrade(converter_group, line, value, operator, team=False):
+    def search_radius_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the search radius modify effect (ID: 23).
 
@@ -2197,7 +2408,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -2263,7 +2474,8 @@ class AoCUpgradeAttributeSubprocessor:
                                                   "engine.util.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+                )
                 properties = {
                     dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
                 }
@@ -2280,7 +2492,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def standing_wonders_upgrade(converter_group, line, value, operator, team=False):
+    def standing_wonders_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the standing wonders effect (ID: 42).
 
@@ -2289,7 +2507,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -2302,7 +2520,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def tc_available_upgrade(converter_group, line, value, operator, team=False):
+    def tc_available_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the TC available effect (ID: 48).
 
@@ -2311,7 +2535,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -2324,7 +2548,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def terrain_defense_upgrade(converter_group, line, value, operator, team=False):
+    def terrain_defense_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the terrain defense modify effect (ID: 18).
 
@@ -2333,7 +2563,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -2346,7 +2576,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def tribute_inefficiency_upgrade(converter_group, line, value, operator, team=False):
+    def tribute_inefficiency_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the tribute inefficiency effect (ID: 46).
 
@@ -2355,7 +2591,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -2368,7 +2604,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def unit_size_x_upgrade(converter_group, line, value, operator, team=False):
+    def unit_size_x_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the unit size x modify effect (ID: 3).
 
@@ -2390,7 +2632,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def unit_size_y_upgrade(converter_group, line, value, operator, team=False):
+    def unit_size_y_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the unit size y modify effect (ID: 4).
 
@@ -2399,7 +2647,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -2412,7 +2660,13 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def work_rate_upgrade(converter_group, line, value, operator, team=False):
+    def work_rate_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the work rate modify effect (ID: 13).
 
@@ -2421,7 +2675,7 @@ class AoCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.

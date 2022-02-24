@@ -1,8 +1,18 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 
 """
 References a graphic in the game that has to be converted.
 """
+
+from __future__ import annotations
+
+import typing
+
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectContainer
+    from openage.convert.entity_object.conversion.converter_object import ConverterObject
+    from openage.convert.entity_object.conversion.aoc.genie_graphic import GenieGraphic
 
 
 class CombinedSprite:
@@ -14,7 +24,12 @@ class CombinedSprite:
 
     __slots__ = ('head_sprite_id', 'filename', 'data', 'metadata', '_refs')
 
-    def __init__(self, head_sprite_id, filename, full_data_set):
+    def __init__(
+        self,
+        head_sprite_id: int,
+        filename: str,
+        full_data_set: ConverterObjectContainer
+    ):
         """
         Creates a new CombinedSprite instance.
 
@@ -22,7 +37,7 @@ class CombinedSprite:
         :type head_sprite_id: int
         :param filename: Name of the sprite and definition file.
         :type filename: str
-        :param full_data_set: GenieObjectContainer instance that
+        :param full_data_set: ConverterObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
         :type full_data_set: class: ...dataformat.converter_object.ConverterObjectContainer
@@ -40,25 +55,19 @@ class CombinedSprite:
         # >1 = store in 'shared' resources;
         self._refs = []
 
-    def add_reference(self, referer):
+    def add_reference(self, referer: ConverterObject) -> None:
         """
         Add an object that is referencing this sprite.
         """
         self._refs.append(referer)
 
-    def add_metadata(self, metadata):
-        """
-        Add a metadata file to the sprite.
-        """
-        self.metadata = metadata
-
-    def get_filename(self):
+    def get_filename(self) -> str:
         """
         Returns the desired filename of the sprite.
         """
         return self.filename
 
-    def get_graphics(self):
+    def get_graphics(self) -> list[GenieGraphic]:
         """
         Return all graphics referenced by this sprite.
         """
@@ -73,13 +82,13 @@ class CombinedSprite:
 
         return existing_graphics
 
-    def get_id(self):
+    def get_id(self) -> int:
         """
         Returns the head sprite ID of the sprite.
         """
         return self.head_sprite_id
 
-    def get_relative_sprite_location(self):
+    def get_relative_sprite_location(self) -> str:
         """
         Return the sprite file location relative to where the file
         is expected to be in the modpack.
@@ -92,13 +101,13 @@ class CombinedSprite:
 
         return None
 
-    def remove_reference(self, referer):
+    def remove_reference(self, referer: ConverterObject) -> None:
         """
         Remove an object that is referencing this sprite.
         """
         self._refs.remove(referer)
 
-    def resolve_graphics_location(self):
+    def resolve_graphics_location(self) -> str:
         """
         Returns the planned location in the modpack of all image files
         referenced by the sprite.
@@ -114,7 +123,7 @@ class CombinedSprite:
 
         return location_dict
 
-    def resolve_sprite_location(self):
+    def resolve_sprite_location(self) -> str:
         """
         Returns the planned location of the definition file in the modpack.
         """

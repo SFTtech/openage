@@ -1,17 +1,23 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals
 
 """
 Holds the game entry point for openage.
 """
+from __future__ import annotations
+import typing
+
 
 import sys
 from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
 from ..log import err, info
 
+if typing.TYPE_CHECKING:
+    from argparse import ArgumentParser
 
-def init_subparser(cli):
+
+def init_subparser(cli: ArgumentParser) -> None:
     """ Initializes the parser for game-specific args. """
     cli.set_defaults(entrypoint=main)
 

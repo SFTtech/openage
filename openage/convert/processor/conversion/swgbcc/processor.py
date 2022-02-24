@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-branches,too-many-statements,too-many-locals
 #
@@ -7,6 +7,9 @@
 """
 Convert data from SWGB:CC to openage formats.
 """
+from __future__ import annotations
+import typing
+
 
 from openage.convert.entity_object.conversion.aoc.genie_tech import BuildingUnlock
 from .....log import info
@@ -32,6 +35,13 @@ from .modpack_subprocessor import SWGBCCModpackSubprocessor
 from .nyan_subprocessor import SWGBCCNyanSubprocessor
 from .pregen_subprocessor import SWGBCCPregenSubprocessor
 
+if typing.TYPE_CHECKING:
+    from argparse import Namespace
+    from openage.convert.entity_object.conversion.stringresource import StringResource
+    from openage.convert.entity_object.conversion.modpack import Modpack
+    from openage.convert.value_object.read.value_members import ArrayMember
+    from openage.convert.value_object.init.game_version import GameVersion
+
 
 class SWGBCCProcessor:
     """
@@ -39,7 +49,13 @@ class SWGBCCProcessor:
     """
 
     @classmethod
-    def convert(cls, gamespec, args, string_resources, existing_graphics):
+    def convert(
+        cls,
+        gamespec: ArrayMember,
+        args: Namespace,
+        string_resources: StringResource,
+        existing_graphics: list[str]
+    ) -> list[Modpack]:
         """
         Input game specification and media here and get a set of
         modpacks back.
@@ -72,7 +88,13 @@ class SWGBCCProcessor:
         return modpacks
 
     @classmethod
-    def _pre_processor(cls, gamespec, game_version, string_resources, existing_graphics):
+    def _pre_processor(
+        cls,
+        gamespec: ArrayMember,
+        game_version: GameVersion,
+        string_resources: StringResource,
+        existing_graphics: list[str]
+    ) -> GenieObjectContainer:
         """
         Store data from the reader in a conversion container.
 
@@ -108,7 +130,7 @@ class SWGBCCProcessor:
         return dataset
 
     @classmethod
-    def _processor(cls, full_data_set):
+    def _processor(cls, full_data_set: GenieObjectContainer) -> GenieObjectContainer:
         """
         Transfer structures used in Genie games to more openage-friendly
         Python objects.
@@ -149,7 +171,7 @@ class SWGBCCProcessor:
         return full_data_set
 
     @classmethod
-    def _post_processor(cls, full_data_set):
+    def _post_processor(cls, full_data_set: GenieObjectContainer) -> list[Modpack]:
         """
         Convert API-like Python objects to nyan.
 
@@ -170,7 +192,7 @@ class SWGBCCProcessor:
         return SWGBCCModpackSubprocessor.get_modpacks(full_data_set)
 
     @staticmethod
-    def create_unit_lines(full_data_set):
+    def create_unit_lines(full_data_set: GenieObjectContainer) -> None:
         """
         Sort units into lines, based on information in the unit connections.
 
@@ -309,7 +331,7 @@ class SWGBCCProcessor:
         full_data_set.unit_lines.update(final_unit_lines)
 
     @staticmethod
-    def create_extra_unit_lines(full_data_set):
+    def create_extra_unit_lines(full_data_set: GenieObjectContainer) -> None:
         """
         Create additional units that are not in the unit connections.
 
@@ -329,7 +351,7 @@ class SWGBCCProcessor:
             full_data_set.unit_ref.update({unit_id: unit_line})
 
     @staticmethod
-    def create_building_lines(full_data_set):
+    def create_building_lines(full_data_set: GenieObjectContainer) -> None:
         """
         Establish building lines, based on information in the building connections.
         Because of how Genie building lines work, this will only find the first
@@ -378,7 +400,8 @@ class SWGBCCProcessor:
                     if not age_up:
                         # Add an unlock tech group to the data set
                         building_unlock = BuildingUnlock(tech_id, unit_id_a, full_data_set)
-                        full_data_set.building_unlocks.update({building_unlock.get_id(): building_unlock})
+                        full_data_set.building_unlocks.update(
+                            {building_unlock.get_id(): building_unlock})
 
                 elif effect_type == 2 and unit_id_a in full_data_set.genie_units.keys():
                     # Check if this is a stacked unit (gate or command center)
@@ -392,7 +415,8 @@ class SWGBCCProcessor:
 
                         if not age_up:
                             building_unlock = BuildingUnlock(tech_id, unit_id_a, full_data_set)
-                            full_data_set.building_unlocks.update({building_unlock.get_id(): building_unlock})
+                            full_data_set.building_unlocks.update(
+                                {building_unlock.get_id(): building_unlock})
 
                 if effect_type == 3 and unit_id_b in building_connections.keys():
                     # Upgrades
@@ -487,7 +511,7 @@ class SWGBCCProcessor:
             full_data_set.building_upgrades.update({building_upgrade.get_id(): building_upgrade})
 
     @staticmethod
-    def create_villager_groups(full_data_set):
+    def create_villager_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create task groups and assign the relevant worker group to a
         villager group.
@@ -543,7 +567,7 @@ class SWGBCCProcessor:
             full_data_set.unit_ref.update({unit_id: villager})
 
     @staticmethod
-    def create_ambient_groups(full_data_set):
+    def create_ambient_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create ambient groups, mostly for resources and scenery.
 
@@ -562,7 +586,7 @@ class SWGBCCProcessor:
             full_data_set.unit_ref.update({ambient_id: ambient_group})
 
     @staticmethod
-    def create_variant_groups(full_data_set):
+    def create_variant_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create variant groups.
 
@@ -582,7 +606,7 @@ class SWGBCCProcessor:
                 full_data_set.unit_ref.update({variant_id: variant_group})
 
     @staticmethod
-    def create_tech_groups(full_data_set):
+    def create_tech_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create techs from tech connections and unit upgrades/unlocks
         from unit connections.
@@ -752,7 +776,7 @@ class SWGBCCProcessor:
             full_data_set.civ_boni.update({civ_bonus.get_id(): civ_bonus})
 
     @staticmethod
-    def link_garrison(full_data_set):
+    def link_garrison(full_data_set: GenieObjectContainer) -> None:
         """
         Link a garrison unit to the lines that are stored and vice versa. This is done
         to provide quick access during conversion.
@@ -870,7 +894,7 @@ class SWGBCCProcessor:
                             garrison_line.garrison_entities.append(unit_line)
 
     @staticmethod
-    def link_repairables(full_data_set):
+    def link_repairables(full_data_set: GenieObjectContainer) -> None:
         """
         Set units/buildings as repairable
 

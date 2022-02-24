@@ -1,12 +1,18 @@
-# Copyright 2021-2021 the openage authors. See copying.md for legal info.
+# Copyright 2021-2022 the openage authors. See copying.md for legal info.
 
 """
 Load data of media cache files.
 """
+from __future__ import annotations
+import typing
+
 import toml
 
+if typing.TYPE_CHECKING:
+    from openage.util.fslike.path import Path
 
-def load_media_cache(filepath):
+
+def load_media_cache(filepath: Path) -> dict[str, dict[str, tuple]]:
     """
     Parses a media cache file and returns it as a dict.
     """

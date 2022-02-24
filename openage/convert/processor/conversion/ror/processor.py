@@ -1,9 +1,12 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-lines,too-many-branches,too-many-statements,too-many-locals
 """
 Convert data from RoR to openage formats.
 """
+from __future__ import annotations
+import typing
+
 from .....log import info
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 from ....entity_object.conversion.aoc.genie_tech import InitiatedTech
@@ -26,6 +29,13 @@ from .modpack_subprocessor import RoRModpackSubprocessor
 from .nyan_subprocessor import RoRNyanSubprocessor
 from .pregen_subprocessor import RoRPregenSubprocessor
 
+if typing.TYPE_CHECKING:
+    from argparse import Namespace
+    from openage.convert.entity_object.conversion.stringresource import StringResource
+    from openage.convert.entity_object.conversion.modpack import Modpack
+    from openage.convert.value_object.read.value_members import ArrayMember
+    from openage.convert.value_object.init.game_version import GameVersion
+
 
 class RoRProcessor:
     """
@@ -33,7 +43,13 @@ class RoRProcessor:
     """
 
     @classmethod
-    def convert(cls, gamespec, args, string_resources, existing_graphics):
+    def convert(
+        cls,
+        gamespec: ArrayMember,
+        args: Namespace,
+        string_resources: StringResource,
+        existing_graphics: list[str]
+    ) -> list[Modpack]:
         """
         Input game specification and media here and get a set of
         modpacks back.
@@ -66,7 +82,13 @@ class RoRProcessor:
         return modpacks
 
     @classmethod
-    def _pre_processor(cls, gamespec, game_version, string_resources, existing_graphics):
+    def _pre_processor(
+        cls,
+        gamespec: ArrayMember,
+        game_version: GameVersion,
+        string_resources: StringResource,
+        existing_graphics: list[str]
+    ) -> GenieObjectContainer:
         """
         Store data from the reader in a conversion container.
 
@@ -98,7 +120,7 @@ class RoRProcessor:
         return dataset
 
     @classmethod
-    def _processor(cls, gamespec, full_data_set):
+    def _processor(cls, gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> GenieObjectContainer:
         """
         Transfer structures used in Genie games to more openage-friendly
         Python objects.
@@ -136,7 +158,7 @@ class RoRProcessor:
         return full_data_set
 
     @classmethod
-    def _post_processor(cls, full_data_set):
+    def _post_processor(cls, full_data_set: GenieObjectContainer) -> list[Modpack]:
         """
         Convert API-like Python objects to nyan.
 
@@ -156,7 +178,7 @@ class RoRProcessor:
         return RoRModpackSubprocessor.get_modpacks(full_data_set)
 
     @staticmethod
-    def extract_genie_units(gamespec, full_data_set):
+    def extract_genie_units(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract units from the game data.
 
@@ -201,7 +223,7 @@ class RoRProcessor:
         full_data_set.genie_units = dict(sorted(full_data_set.genie_units.items()))
 
     @staticmethod
-    def extract_genie_sounds(gamespec, full_data_set):
+    def extract_genie_sounds(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract sound definitions from the game data.
 
@@ -219,7 +241,7 @@ class RoRProcessor:
             full_data_set.genie_sounds.update({sound.get_id(): sound})
 
     @staticmethod
-    def create_entity_lines(gamespec, full_data_set):
+    def create_entity_lines(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Sort units/buildings into lines, based on information from techs and civs.
 
@@ -322,7 +344,8 @@ class RoRProcessor:
                     break
 
                 if required_tech_id in full_data_set.unit_upgrades.keys():
-                    source_id = full_data_set.unit_upgrades[required_tech_id].get_upgrade_target_id()
+                    source_id = full_data_set.unit_upgrades[required_tech_id].get_upgrade_target_id(
+                    )
                     break
 
             unit_line = full_data_set.unit_lines[line_id]
@@ -356,7 +379,8 @@ class RoRProcessor:
                     break
 
                 if required_tech_id in full_data_set.building_upgrades.keys():
-                    source_id = full_data_set.building_upgrades[required_tech_id].get_upgrade_target_id()
+                    source_id = full_data_set.building_upgrades[required_tech_id].get_upgrade_target_id(
+                    )
                     break
 
             building_line = full_data_set.building_lines[line_id]
@@ -383,7 +407,7 @@ class RoRProcessor:
                     full_data_set.unit_ref.update({target_id: unit_line})
 
     @staticmethod
-    def create_ambient_groups(full_data_set):
+    def create_ambient_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create ambient groups, mostly for resources and scenery.
 
@@ -402,7 +426,7 @@ class RoRProcessor:
             full_data_set.unit_ref.update({ambient_id: ambient_group})
 
     @staticmethod
-    def create_variant_groups(full_data_set):
+    def create_variant_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create variant groups.
 
@@ -422,7 +446,7 @@ class RoRProcessor:
                 full_data_set.unit_ref.update({variant_id: variant_group})
 
     @staticmethod
-    def create_tech_groups(full_data_set):
+    def create_tech_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create techs from tech connections and unit upgrades/unlocks
         from unit connections.
@@ -559,7 +583,7 @@ class RoRProcessor:
             full_data_set.initiated_techs.update({initiated_tech.get_id(): initiated_tech})
 
     @staticmethod
-    def link_garrison(full_data_set):
+    def link_garrison(full_data_set: GenieObjectContainer) -> None:
         """
         Link a garrison unit to the lines that are stored and vice versa. This is done
         to provide quick access during conversion.
@@ -602,7 +626,7 @@ class RoRProcessor:
                     line.garrison_locations.append(garrison)
 
     @staticmethod
-    def link_repairables(full_data_set):
+    def link_repairables(full_data_set: GenieObjectContainer) -> None:
         """
         Set units/buildings as repairable
 

@@ -1,12 +1,17 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,arguments-differ
 """
 Specifies a request for a media resource that should be
 converted and exported into a modpack.
 """
+from __future__ import annotations
+import typing
 
 from ....util.observer import Observable
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.read.media_types import MediaType
 
 
 class MediaExportRequest(Observable):
@@ -16,7 +21,13 @@ class MediaExportRequest(Observable):
 
     __slots__ = ("media_type", "targetdir", "source_filename", "target_filename")
 
-    def __init__(self, media_type, targetdir, source_filename, target_filename):
+    def __init__(
+        self,
+        media_type: MediaType,
+        targetdir: str,
+        source_filename: str,
+        target_filename: str
+    ):
         """
         Create a request for a media file.
 
@@ -32,17 +43,17 @@ class MediaExportRequest(Observable):
         super().__init__()
 
         self.media_type = media_type
-        self.set_targetdir(targetdir)
-        self.set_source_filename(source_filename)
-        self.set_target_filename(target_filename)
+        self.targetdir = targetdir
+        self.source_filename = source_filename
+        self.target_filename = target_filename
 
-    def get_type(self):
+    def get_type(self) -> MediaType:
         """
         Return the media type.
         """
         return self.media_type
 
-    def set_source_filename(self, filename):
+    def set_source_filename(self, filename: str) -> None:
         """
         Sets the filename for the source file.
 
@@ -54,7 +65,7 @@ class MediaExportRequest(Observable):
 
         self.source_filename = filename
 
-    def set_target_filename(self, filename):
+    def set_target_filename(self, filename: str) -> None:
         """
         Sets the filename for the target file.
 
@@ -66,7 +77,7 @@ class MediaExportRequest(Observable):
 
         self.target_filename = filename
 
-    def set_targetdir(self, targetdir):
+    def set_targetdir(self, targetdir: str) -> None:
         """
         Sets the target directory for the file.
 

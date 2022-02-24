@@ -1,14 +1,22 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides PEResources, which reads the resource section from a PEFile.
 """
+from __future__ import annotations
+import typing
+
 
 from collections import defaultdict
+
 
 from .....util.filelike.stream import StreamFragment
 from .....util.struct import NamedStruct
 from .langcodes import LANGCODES_AOC
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.read.media.pefile import PEFile
+    from openage.util.fslike.wrapper import GuardedFile
 
 
 # types for id in resource directory root node
@@ -107,7 +115,7 @@ class ResourceLeaf(NamedStruct):
     # filled in later
     fileobj               = None    # used for open
 
-    def open(self):
+    def open(self) -> StreamFragment:
         """
         Returns a file-like object for this resource.
         """
@@ -127,10 +135,10 @@ class StringLiteral(NamedStruct):
     length             = "H"
 
     # filled later by read_content()
-    value              = None
+    value: str         = None
 
     @classmethod
-    def readall(cls, fileobj):
+    def readall(cls, fileobj: GuardedFile) -> StringLiteral:
         """
         In addition to the static data, reads the string.
         """
@@ -146,7 +154,7 @@ class PEResources:
     The constructor takes a PEFile object.
     """
 
-    def __init__(self, pefile):
+    def __init__(self, pefile: PEFile):
         self.data, self.datava = pefile.open_section('.rsrc')
 
         # self.data is at position 0 (i.e. it points at the root directory).
@@ -156,7 +164,7 @@ class PEResources:
     def __getitem__(self, key):
         return self.rootdir[key]
 
-    def read_directory(self):
+    def read_directory(self) -> dict[str, typing.Any]:
         """
         reads the directory that's currently pointed at by self.data.
 
@@ -208,7 +216,7 @@ class PEResources:
 
         return result
 
-    def read_strings(self):
+    def read_strings(self) -> dict[str, dict[int, str]]:
         """
         reads all ressource strings from self.root;
         returns a dict of dicts: {languageid: {stringid: str}}

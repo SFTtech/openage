@@ -1,7 +1,9 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 """
 Downloads the SFT test cab archive and uses it to test the cabextract code.
 """
+from __future__ import annotations
+import typing
 
 import os
 from tempfile import gettempdir
@@ -9,6 +11,9 @@ from hashlib import md5
 from urllib.request import urlopen
 
 from .cab import CABFile
+
+if typing.TYPE_CHECKING:
+    from io import BufferedReader
 
 # the test archive file has been generated using ./gen_test_arc.sh
 
@@ -41,7 +46,7 @@ def open_cached_test_archive():
     return open(TEST_ARCHIVE_FILENAME, 'rb')
 
 
-def open_test_archive():
+def open_test_archive() -> BufferedReader:
     """
     Opens the cached test archive file, or downloads it if necessary.
     """

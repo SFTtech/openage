@@ -1,9 +1,10 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2022 the openage authors. See copying.md for legal info.
 
 """ CLI module for running all tests. """
 
 import argparse
 import sys
+import typing
 
 from ..util.strings import format_progress
 
@@ -11,8 +12,11 @@ from .benchmark import benchmark
 from .testing import TestError
 from .list_processor import get_all_targets
 
+if typing.TYPE_CHECKING:
+    from argparse import Namespace
 
-def print_test_list(test_list):
+
+def print_test_list(test_list: typing.OrderedDict) -> None:
     """
     Prints a list of all tests and demos in test_list.
     """
@@ -49,7 +53,7 @@ def init_subparser(cli):
     cli.add_argument("test", nargs='*', help="run this test")
 
 
-def process_args(args, error):
+def process_args(args: argparse.Namespace, error):
     """ Processes the given args, detecting errors. """
     if not (args.run_all_tests or args.demo or args.test or args.benchmark):
         args.list = True

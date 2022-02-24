@@ -1,4 +1,4 @@
-# Copyright 2021-2021 the openage authors. See copying.md for legal info.
+# Copyright 2021-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-few-public-methods,too-many-locals
 
@@ -6,10 +6,16 @@
 Derives and adds abilities to lines. Subroutine of the
 nyan subprocessor.
 """
+from __future__ import annotations
+import typing
+
 
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
 
 
 class DE2AbilitySubprocessor:
@@ -18,7 +24,7 @@ class DE2AbilitySubprocessor:
     """
 
     @staticmethod
-    def regenerate_attribute_ability(line):
+    def regenerate_attribute_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the RegenerateAttribute ability to a line.
 

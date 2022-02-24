@@ -1,10 +1,12 @@
-# Copyright 2021-2021 the openage authors. See copying.md for legal info.
+# Copyright 2021-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments
 
 """
 Blendmask definition file.
 """
+from __future__ import annotations
+import typing
 
 from ..data_definition import DataDefinition
 
@@ -17,14 +19,14 @@ class BlendmaskMetadata(DataDefinition):
     as a .blmask custom format
     """
 
-    def __init__(self, targetdir, filename):
+    def __init__(self, targetdir: str, filename: str):
         super().__init__(targetdir, filename)
 
-        self.image_files = {}
-        self.scalefactor = 1
-        self.masks = {}
+        self.image_files: dict[int, dict[str, typing.Any]] = {}
+        self.scalefactor = 1.0
+        self.masks: dict[int, dict[str, int]] = {}
 
-    def add_image(self, img_id, filename):
+    def add_image(self, img_id: int, filename: str) -> None:
         """
         Add an image and the relative file name.
 
@@ -38,7 +40,15 @@ class BlendmaskMetadata(DataDefinition):
             "filename": filename,
         }
 
-    def add_mask(self, directions, img_id, xpos, ypos, xsize, ysize):
+    def add_mask(
+        self,
+        directions: int,
+        img_id: int,
+        xpos: int,
+        ypos: int,
+        xsize: int,
+        ysize: int
+    ) -> None:
         """
         Add a mask for directions.
 
@@ -64,7 +74,7 @@ class BlendmaskMetadata(DataDefinition):
             "ysize": ysize,
         }
 
-    def set_scalefactor(self, factor):
+    def set_scalefactor(self, factor: typing.Union[int, float]) -> None:
         """
         Set the scale factor of the animation.
 
@@ -73,7 +83,7 @@ class BlendmaskMetadata(DataDefinition):
         """
         self.scalefactor = float(factor)
 
-    def dump(self):
+    def dump(self) -> str:
         output_str = ""
 
         # header

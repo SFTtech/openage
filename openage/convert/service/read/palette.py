@@ -1,17 +1,28 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 
 """
 Module for reading palette files.
 """
+from __future__ import annotations
+import typing
+
 from ...value_object.read.media.colortable import ColorTable
 from ...value_object.read.media_types import MediaType
 
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameVersion
+    from openage.util.fslike.directory import Directory
 
-def get_palettes(srcdir, game_version, index=None):
+
+def get_palettes(
+    srcdir: Directory,
+    game_version: GameVersion,
+    index: int = None
+) -> dict[int, ColorTable]:
     """
     Read and create the color palettes.
     """
-    game_edition = game_version[0]
+    game_edition = game_version.edition
 
     palettes = {}
 

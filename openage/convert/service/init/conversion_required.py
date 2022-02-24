@@ -1,13 +1,21 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 
 """
 Test whether there already are converted modpacks present.
 """
+from __future__ import annotations
+import typing
+
 from . import changelog
 from ....log import info, dbg
 
+if typing.TYPE_CHECKING:
+    from argparse import Namespace
 
-def conversion_required(asset_dir, args):
+    from openage.util.fslike.directory import Directory
+
+
+def conversion_required(asset_dir: Directory, args: Namespace) -> bool:
     """
     Returns true if an asset conversion is required to run the game.
 

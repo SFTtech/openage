@@ -1,11 +1,14 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Some utility function decorators
 """
 
 
-def run_once(func):
+from typing import Callable
+
+
+def run_once(func: Callable) -> Callable:
     """
     Decorator to run func only at its first invocation.
 

@@ -1,48 +1,64 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 
 """
 Module for reading .dat files.
 """
+from __future__ import annotations
+import typing
+
 import os
 import pickle
 from tempfile import gettempdir
 from zlib import decompress
 
+
 from ....log import spam, dbg, info, warn
 from ...value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
 from ...value_object.read.media_types import MediaType
 
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.read_members import ArrayMember
+    from openage.util.fslike.directory import Directory
+    from openage.util.fslike.wrapper import GuardedFile
 
-def get_gamespec(srcdir, game_version, dont_pickle):
+
+def get_gamespec(srcdir: Directory, game_version: GameVersion, pickle_cache: bool) -> ArrayMember:
     """
     Reads empires.dat file.
     """
-    if game_version[0].game_id in ("ROR", "AOE1DE", "AOC", "HDEDITION", "AOE2DE"):
-        filepath = srcdir.joinpath(game_version[0].media_paths[MediaType.DATFILE][0])
+    if game_version.edition.game_id in ("ROR", "AOE1DE", "AOC", "HDEDITION", "AOE2DE"):
+        filepath = srcdir.joinpath(game_version.edition.media_paths[MediaType.DATFILE][0])
 
-    elif game_version[0].game_id == "SWGB":
-        if "SWGB_CC" in [expansion.game_id for expansion in game_version[1]]:
-            filepath = srcdir.joinpath(game_version[1][0].media_paths[MediaType.DATFILE][0])
+    elif game_version.edition.game_id == "SWGB":
+        if "SWGB_CC" in [expansion.game_id for expansion in game_version.expansions]:
+            filepath = srcdir.joinpath(game_version.expansions[0].media_paths[MediaType.DATFILE][0])
 
         else:
-            filepath = srcdir.joinpath(game_version[0].media_paths[MediaType.DATFILE][0])
+            filepath = srcdir.joinpath(game_version.edition.media_paths[MediaType.DATFILE][0])
 
     else:
         raise Exception("No service found for reading data file of version %s"
-                        % game_version[0].game_id)
+                        % game_version.edition.game_id)
 
-    cache_file = os.path.join(gettempdir(), f"{game_version[0].game_id}_{filepath.name}.pickle")
+    cache_file = os.path.join(
+        gettempdir(), f"{game_version.edition.game_id}_{filepath.name}.pickle")
 
     with filepath.open('rb') as empiresdat_file:
         gamespec = load_gamespec(empiresdat_file,
                                  game_version,
                                  cache_file,
-                                 not dont_pickle)
+                                 pickle_cache)
 
     return gamespec
 
 
-def load_gamespec(fileobj, game_version, cachefile_name=None, load_cache=False):
+def load_gamespec(
+    fileobj: GuardedFile,
+    game_version: GameVersion,
+    cachefile_name: str = None,
+    pickle_cache: bool = False
+) -> ArrayMember:
     """
     Helper method that loads the contents of a 'empires.dat' gzipped wrapper
     file.
@@ -51,7 +67,7 @@ def load_gamespec(fileobj, game_version, cachefile_name=None, load_cache=False):
     load.
     """
     # try to use the cached result from a previous run
-    if cachefile_name and load_cache:
+    if cachefile_name:
         try:
             with open(cachefile_name, "rb") as cachefile:
                 # pickle.load() can fail in many ways, we need to catch all.
@@ -88,7 +104,7 @@ def load_gamespec(fileobj, game_version, cachefile_name=None, load_cache=False):
     # Remove the list sorrounding the converted data
     gamespec = gamespec[0]
 
-    if cachefile_name:
+    if cachefile_name and pickle_cache:
         dbg("dumping dat file contents to cache file: %s", cachefile_name)
         with open(cachefile_name, "wb") as cachefile:
             pickle.dump(gamespec, cachefile)

@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-branches,too-many-nested-blocks,too-many-statements
 
@@ -6,12 +6,18 @@
 Derives and adds abilities to lines or civ groups. Subroutine of the
 nyan subprocessor.
 """
+from __future__ import annotations
+import typing
+
 from ....entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup,\
     GenieBuildingLineGroup, GenieVillagerGroup, GenieAmbientGroup,\
     GenieVariantGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
+
+if typing.TYPE_CHECKING:
+    from openage.nyan.nyan_structs import NyanObject
 
 
 class AoCModifierSubprocessor:
@@ -20,7 +26,7 @@ class AoCModifierSubprocessor:
     """
 
     @staticmethod
-    def elevation_attack_modifiers(converter_obj_group):
+    def elevation_attack_modifiers(converter_obj_group: GenieGameEntityGroup) -> list[NyanObject]:
         """
         Adds the pregenerated elevation damage multipliers to a line or civ group.
 
@@ -42,7 +48,7 @@ class AoCModifierSubprocessor:
         return modifiers
 
     @staticmethod
-    def flyover_effect_modifier(converter_obj_group):
+    def flyover_effect_modifier(converter_obj_group: GenieGameEntityGroup) -> NyanObject:
         """
         Adds the pregenerated fly-over-cliff damage multiplier to a line or civ group.
 
@@ -59,7 +65,7 @@ class AoCModifierSubprocessor:
         return modifier
 
     @staticmethod
-    def gather_rate_modifier(converter_obj_group):
+    def gather_rate_modifier(converter_obj_group: GenieGameEntityGroup) -> list[ForwardRef]:
         """
         Adds Gather modifiers to a line or civ group.
 
@@ -173,7 +179,7 @@ class AoCModifierSubprocessor:
         return modifiers
 
     @staticmethod
-    def move_speed_modifier(converter_obj_group, value=None):
+    def move_speed_modifier(converter_obj_group: GenieGameEntityGroup, value: float) -> ForwardRef:
         """
         Adds a MoveSpeed modifier to a line or civ group.
 

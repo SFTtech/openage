@@ -1,12 +1,18 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 
 """
 Converter objects for SWGB. Reimplements the ConverterObjectGroup
 instances from AoC.
 """
+from __future__ import annotations
+import typing
 
 from ..aoc.genie_unit import GenieUnitLineGroup, GenieUnitTransformGroup,\
     GenieMonkGroup, GenieStackBuildingGroup
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container\
+        import GenieObjectContainer
 
 
 class SWGBUnitLineGroup(GenieUnitLineGroup):
@@ -23,7 +29,11 @@ class SWGBUnitLineGroup(GenieUnitLineGroup):
 
     __slots__ = ('civ_lines',)
 
-    def __init__(self, line_id, full_data_set):
+    def __init__(
+        self,
+        line_id: int,
+        full_data_set: GenieObjectContainer
+    ):
         """
         Creates a new SWGBUnitLineGroup.
 
@@ -35,9 +45,9 @@ class SWGBUnitLineGroup(GenieUnitLineGroup):
         super().__init__(line_id, full_data_set)
 
         # References to alternative lines from other civs
-        self.civ_lines = {}
+        self.civ_lines: dict[int, SWGBUnitLineGroup] = {}
 
-    def add_civ_line(self, other_line):
+    def add_civ_line(self, other_line: SWGBUnitLineGroup) -> None:
         """
         Adds a reference to an alternative line from another civ
         to this line.
@@ -45,14 +55,14 @@ class SWGBUnitLineGroup(GenieUnitLineGroup):
         other_civ_id = other_line.get_civ_id()
         self.civ_lines[other_civ_id] = other_line
 
-    def get_civ_id(self):
+    def get_civ_id(self) -> int:
         """
         Returns the ID of the civ that the line belongs to.
         """
         head_unit = self.get_head_unit()
         return head_unit["civilization_id"].get_value()
 
-    def is_civ_unique(self):
+    def is_civ_unique(self) -> bool:
         """
         Groups are civ unique if there are alternative lines for this unit line..
 
@@ -60,7 +70,7 @@ class SWGBUnitLineGroup(GenieUnitLineGroup):
         """
         return len(self.civ_lines) > 0
 
-    def is_unique(self):
+    def is_unique(self) -> bool:
         """
         Groups are unique if they belong to a specific civ.
 
@@ -83,7 +93,7 @@ class SWGBStackBuildingGroup(GenieStackBuildingGroup):
     Examples: Gate, Command Center
     """
 
-    def get_enabling_research_id(self):
+    def get_enabling_research_id(self) -> int:
         """
         Returns the enabling tech id of the unit
         """
@@ -111,7 +121,12 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
 
     __slots__ = ('civ_lines',)
 
-    def __init__(self, line_id, head_unit_id, full_data_set):
+    def __init__(
+        self,
+        line_id: int,
+        head_unit_id: int,
+        full_data_set: GenieObjectContainer
+    ):
         """
         Creates a new SWGB transform group.
 
@@ -124,9 +139,9 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
         super().__init__(line_id, head_unit_id, full_data_set)
 
         # References to alternative lines from other civs
-        self.civ_lines = {}
+        self.civ_lines: dict[int, SWGBUnitTransformGroup] = {}
 
-    def add_civ_line(self, other_line):
+    def add_civ_line(self, other_line: SWGBUnitLineGroup) -> None:
         """
         Adds a reference to an alternative line from another civ
         to this line.
@@ -134,14 +149,14 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
         other_civ_id = other_line.get_civ_id()
         self.civ_lines[other_civ_id] = other_line
 
-    def get_civ_id(self):
+    def get_civ_id(self) -> int:
         """
         Returns the ID of the civ that the line belongs to.
         """
         head_unit = self.get_head_unit()
         return head_unit["civilization_id"].get_value()
 
-    def is_civ_unique(self):
+    def is_civ_unique(self) -> bool:
         """
         Groups are civ unique if there are alternative lines for this unit line..
 
@@ -149,7 +164,7 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
         """
         return len(self.civ_lines) > 0
 
-    def is_unique(self):
+    def is_unique(self) -> bool:
         """
         Groups are unique if they belong to a specific civ.
 
@@ -158,7 +173,7 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
         """
         return False
 
-    def get_enabling_research_id(self):
+    def get_enabling_research_id(self) -> int:
         """
         Returns the enabling tech id of the unit
         """
@@ -182,7 +197,13 @@ class SWGBMonkGroup(GenieMonkGroup):
 
     __slots__ = ('civ_lines',)
 
-    def __init__(self, line_id, head_unit_id, switch_unit_id, full_data_set):
+    def __init__(
+        self,
+        line_id: int,
+        head_unit_id: int,
+        switch_unit_id: int,
+        full_data_set: GenieObjectContainer,
+    ):
         """
         Creates a new Genie monk group.
 
@@ -197,9 +218,9 @@ class SWGBMonkGroup(GenieMonkGroup):
         super().__init__(line_id, head_unit_id, switch_unit_id, full_data_set)
 
         # References to alternative lines from other civs
-        self.civ_lines = {}
+        self.civ_lines: dict[int, SWGBMonkGroup] = {}
 
-    def add_civ_line(self, other_line):
+    def add_civ_line(self, other_line: SWGBMonkGroup) -> None:
         """
         Adds a reference to an alternative line from another civ
         to this line.
@@ -207,14 +228,14 @@ class SWGBMonkGroup(GenieMonkGroup):
         other_civ_id = other_line.get_civ_id()
         self.civ_lines[other_civ_id] = other_line
 
-    def get_civ_id(self):
+    def get_civ_id(self) -> int:
         """
         Returns the ID of the civ that the line belongs to.
         """
         head_unit = self.get_head_unit()
         return head_unit["civilization_id"].get_value()
 
-    def is_civ_unique(self):
+    def is_civ_unique(self) -> bool:
         """
         Groups are civ unique if there are alternative lines for this unit line..
 
@@ -222,7 +243,7 @@ class SWGBMonkGroup(GenieMonkGroup):
         """
         return len(self.civ_lines) > 0
 
-    def is_unique(self):
+    def is_unique(self) -> bool:
         """
         Groups are unique if they belong to a specific civ.
 

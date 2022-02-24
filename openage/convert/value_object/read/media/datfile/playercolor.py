@@ -1,21 +1,32 @@
-# Copyright 2013-2021 the openage authors. See copying.md for legal info.
+# Copyright 2013-2022 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
+from __future__ import annotations
+import typing
+
 
 from .....entity_object.conversion.genie_structure import GenieStructure
 from ....read.member_access import READ_GEN
-from ....read.value_members import MemberTypes as StorageType
+from ....read.value_members import StorageType
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.member_access import MemberAccess
+    from openage.convert.value_object.read.read_members import ReadMember
 
 
 class PlayerColor(GenieStructure):
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
 
-        if game_version[0].game_id not in ("ROR", "AOE1DE"):
+        if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format = [
                 (READ_GEN, "id", StorageType.ID_MEMBER, "int32_t"),
                 # palette index offset, where the 8 player colors start

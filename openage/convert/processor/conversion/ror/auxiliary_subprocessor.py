@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-locals,too-many-branches,too-many-statements
 # pylint: disable=too-few-public-methods
@@ -7,6 +7,9 @@
 Derives complex auxiliary objects from unit lines, techs
 or other objects.
 """
+from __future__ import annotations
+import typing
+
 from .....nyan.nyan_structs import MemberSpecialValue
 from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup,\
     GenieBuildingLineGroup, GenieUnitLineGroup
@@ -16,6 +19,9 @@ from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
 from ..aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
 
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+
 
 class RoRAuxiliarySubprocessor:
     """
@@ -23,7 +29,7 @@ class RoRAuxiliarySubprocessor:
     """
 
     @staticmethod
-    def get_creatable_game_entity(line):
+    def get_creatable_game_entity(line: GenieGameEntityGroup) -> None:
         """
         Creates the CreatableGameEntity object for a unit/building line. In comparison
         to the AoC version, ths replaces some unit class IDs and removes garrison
@@ -129,7 +135,8 @@ class RoRAuxiliarySubprocessor:
                 resource_name = "Wood"
 
             elif resource_id == 2:
-                resource = dataset.pregen_nyan_objects["util.resource.types.Stone"].get_nyan_object()
+                resource = dataset.pregen_nyan_objects["util.resource.types.Stone"].get_nyan_object(
+                )
                 resource_name = "Stone"
 
             elif resource_id == 3:
@@ -324,7 +331,8 @@ class RoRAuxiliarySubprocessor:
             placement_modes.append(place_forward_ref)
 
         else:
-            placement_modes.append(dataset.nyan_api_objects["engine.util.placement_mode.type.Eject"])
+            placement_modes.append(
+                dataset.nyan_api_objects["engine.util.placement_mode.type.Eject"])
 
         creatable_raw_api_object.add_raw_member("placement_modes",
                                                 placement_modes,

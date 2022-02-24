@@ -1,9 +1,14 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 """
 Creates debug output from data in a conversion run.
 """
+
+from __future__ import annotations
+import typing
+
+
 from openage.convert.entity_object.conversion.aoc.genie_tech import AgeUpgrade,\
     UnitLineUpgrade, BuildingLineUpgrade, UnitUnlock, BuildingUnlock
 from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
@@ -18,8 +23,17 @@ from openage.util.fslike.filecollection import FileCollectionPath
 from openage.util.fslike.path import Path
 from openage.util.hash import hash_file
 
+if typing.TYPE_CHECKING:
+    from argparse import Namespace
 
-def debug_cli_args(debugdir, loglevel, args):
+    from openage.convert.entity_object.conversion.modpack import Modpack
+    from openage.convert.entity_object.conversion.stringresource import StringResource
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.value_object.init.game_version import GameVersion
+    from openage.util.fslike.directory import Directory
+
+
+def debug_cli_args(debugdir: Directory, loglevel: int, args: Namespace) -> None:
     """
     Create debug output for the converter CLI args.
 
@@ -51,7 +65,7 @@ def debug_cli_args(debugdir, loglevel, args):
         log.write(logtext)
 
 
-def debug_game_version(debugdir, loglevel, args):
+def debug_game_version(debugdir: Directory, loglevel: int, args: Namespace) -> None:
     """
     Create debug output for the detected game version.
 
@@ -71,12 +85,12 @@ def debug_game_version(debugdir, loglevel, args):
 
     logtext += (
         f"game edition:\n"
-        f"    - {args.game_version[0]}\n"
+        f"    - {args.game_version.edition}\n"
     )
 
-    if len(args.game_version[1]) > 0:
+    if len(args.game_version.expansions) > 0:
         logtext += "game expansions:\n"
-        for expansion in args.game_version[1]:
+        for expansion in args.game_version.expansions:
             logtext += f"    - {expansion}\n"
 
     else:
@@ -86,7 +100,7 @@ def debug_game_version(debugdir, loglevel, args):
         log.write(logtext)
 
 
-def debug_mounts(debugdir, loglevel, args):
+def debug_mounts(debugdir: Directory, loglevel: int, args: Namespace) -> None:
     """
     Create debug output for the mounted files and folders.
 
@@ -151,7 +165,7 @@ def debug_mounts(debugdir, loglevel, args):
         log.write(logtext)
 
 
-def debug_gamedata_format(debugdir, loglevel, game_version):
+def debug_gamedata_format(debugdir: Directory, loglevel: int, game_version: GameVersion) -> None:
     """
     Create debug output for the converted .dat format.
 
@@ -160,7 +174,7 @@ def debug_gamedata_format(debugdir, loglevel, game_version):
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param game_version: Game version the .dat file comes with.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
     if loglevel < 2:
         return
@@ -212,7 +226,7 @@ def debug_gamedata_format(debugdir, loglevel, game_version):
         log.write(logtext)
 
 
-def debug_string_resources(debugdir, loglevel, string_resources):
+def debug_string_resources(debugdir: Directory, loglevel: int, string_resources: StringResource) -> None:
     """
     Create debug output for found string resources.
 
@@ -240,7 +254,7 @@ def debug_string_resources(debugdir, loglevel, string_resources):
         log.write(logtext)
 
 
-def debug_registered_graphics(debugdir, loglevel, existing_graphics):
+def debug_registered_graphics(debugdir: Directory, loglevel: int, existing_graphics: list[str]) -> None:
     """
     Create debug output for found graphics files.
 
@@ -266,7 +280,7 @@ def debug_registered_graphics(debugdir, loglevel, existing_graphics):
         log.write(logtext)
 
 
-def debug_converter_objects(debugdir, loglevel, dataset):
+def debug_converter_objects(debugdir: Directory, loglevel: int, dataset: GenieObjectContainer) -> None:
     """
     Create debug output for ConverterObject instances from the
     conversion preprocessor.
@@ -302,7 +316,7 @@ def debug_converter_objects(debugdir, loglevel, dataset):
         log.write(logtext)
 
 
-def debug_converter_object_groups(debugdir, loglevel, dataset):
+def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: GenieObjectContainer) -> None:
     """
     Create debug output for ConverterObjectGroup instances from the
     conversion preprocessor.
@@ -557,7 +571,7 @@ def debug_converter_object_groups(debugdir, loglevel, dataset):
             log.write(logtext)
 
 
-def debug_modpack(debugdir, loglevel, modpack):
+def debug_modpack(debugdir: Directory, loglevel: int, modpack: Modpack) -> None:
     """
     Create debug output for a modpack.
 
@@ -614,7 +628,13 @@ def debug_modpack(debugdir, loglevel, modpack):
         log.write(logtext)
 
 
-def debug_media_cache(debugdir, loglevel, sourcedir, cachedata, game_version):
+def debug_media_cache(
+    debugdir: Directory,
+    loglevel: int,
+    sourcedir: Directory,
+    cachedata: dict,
+    game_version: GameVersion
+) -> None:
     """
     Create media cache data for graphics files. This allows using deterministic
     packer and compression settings for graphics file conversion.
@@ -624,11 +644,11 @@ def debug_media_cache(debugdir, loglevel, sourcedir, cachedata, game_version):
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param sourcedir: Sourcedir where the graphics files are mounted.
-    :type sourcedir: int
+    :type sourcedir: Directory
     :param cachedata: Dict with cache data.
     :type cachedata: dict
     :param game_version: Game version.
-    :type game_version: tuple
+    :type game_version: GameVersion
     """
     if loglevel < 6:
         return

@@ -1,4 +1,4 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides FileLikeObject for binary stream interaction.
@@ -33,7 +33,8 @@ class StreamSeekBuffer(PosSavingReadOnlyFileLikeObject):
         of bytes (performance optimization).
         By default, entire megabytes are read at once.
     """
-    def __init__(self, wrappee, keepbuffered=INF, minread=1048576):
+
+    def __init__(self, wrappee, keepbuffered: int = INF, minread: int = 1048576):
         super().__init__()
 
         self.wrapped = wrappee
@@ -43,14 +44,14 @@ class StreamSeekBuffer(PosSavingReadOnlyFileLikeObject):
         # invariant: len(self.buf) == self.wrapped.tell()
         self.buf = ByteBuffer()
 
-    def resetwrappeed(self):
+    def resetwrappeed(self) -> None:
         """
         resets the wrappeed object, and clears self.buf.
         """
         self.wrapped.reset()
         self.buf = ByteBuffer()
 
-    def read(self, size=-1):
+    def read(self, size: int = -1) -> bytes:
         if size < 0:
             size = INF
 
@@ -125,7 +126,7 @@ class StreamFragment(PosSavingReadOnlyFileLikeObject):
         if size < 0:
             raise ValueError("size must be positive")
 
-    def read(self, size=-1):
+    def read(self, size: int = -1) -> None:
         if size < 0:
             size = INF
 
@@ -144,9 +145,9 @@ class StreamFragment(PosSavingReadOnlyFileLikeObject):
         self.pos += len(data)
         return data
 
-    def get_size(self):
+    def get_size(self) -> int:
         return self.size
 
-    def close(self):
+    def close(self) -> None:
         self.closed = True
         del self.stream

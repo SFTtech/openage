@@ -1,13 +1,20 @@
-# Copyright 2016-2020 the openage authors. See copying.md for legal info.
+# Copyright 2016-2022 the openage authors. See copying.md for legal info.
 
 """
 Load and save the configuration : file <-> console var system
 """
 
+from __future__ import annotations
+import typing
+
 from ..log import info, spam
 
 
-def load_config_file(path, set_cvar_func, loaded_files=None):
+if typing.TYPE_CHECKING:
+    from openage.util.fslike.path import Path
+
+
+def load_config_file(path: Path, set_cvar_func: typing.Callable, loaded_files: set = None) -> None:
     """
     Load a config file, with possible subfile, into the cvar system.
 

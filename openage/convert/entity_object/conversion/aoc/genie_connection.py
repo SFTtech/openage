@@ -1,11 +1,19 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2022 the openage authors. See copying.md for legal info.
 
 """
 Contains structures and API-like objects for connections from AoC.
 """
 
+from __future__ import annotations
+import typing
+
 
 from ..converter_object import ConverterObject
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container\
+        import GenieObjectContainer
+    from openage.convert.value_object.read.value_members import ValueMember
 
 
 class GenieAgeConnection(ConverterObject):
@@ -15,7 +23,12 @@ class GenieAgeConnection(ConverterObject):
 
     __slots__ = ('data',)
 
-    def __init__(self, age_id, full_data_set, members=None):
+    def __init__(
+        self,
+        age_id: int,
+        full_data_set: GenieObjectContainer,
+        members: dict[str, ValueMember] = None
+    ):
         """
         Creates a new Genie age connection.
 
@@ -41,7 +54,12 @@ class GenieBuildingConnection(ConverterObject):
 
     __slots__ = ('data',)
 
-    def __init__(self, building_id, full_data_set, members=None):
+    def __init__(
+        self,
+        building_id: int,
+        full_data_set: GenieObjectContainer,
+        members: dict[str, ValueMember] = None
+    ):
         """
         Creates a new Genie building connection.
 
@@ -67,7 +85,12 @@ class GenieTechConnection(ConverterObject):
 
     __slots__ = ('data',)
 
-    def __init__(self, tech_id, full_data_set, members=None):
+    def __init__(
+        self,
+        tech_id: int,
+        full_data_set: GenieObjectContainer,
+        members: dict[str, ValueMember] = None
+    ):
         """
         Creates a new Genie tech connection.
 
@@ -93,7 +116,12 @@ class GenieUnitConnection(ConverterObject):
 
     __slots__ = ('data',)
 
-    def __init__(self, unit_id, full_data_set, members=None):
+    def __init__(
+        self,
+        unit_id: int,
+        full_data_set: GenieObjectContainer,
+        members: dict[str, ValueMember] = None
+    ):
         """
         Creates a new Genie unit connection.
 

@@ -1,4 +1,4 @@
-# Copyright 2018-2021 the openage authors. See copying.md for legal info.
+# Copyright 2018-2022 the openage authors. See copying.md for legal info.
 """
 Demo for the opusenc module.
 """
@@ -10,7 +10,7 @@ from . import opusenc
 from .....log import info, crit
 
 
-def convert(args):
+def convert(args) -> int:
     """ Demonstrates the usage of the opusenc module. """
 
     cli = argparse.ArgumentParser()

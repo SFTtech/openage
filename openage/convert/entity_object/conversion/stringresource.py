@@ -1,10 +1,16 @@
-# Copyright 2014-2021 the openage authors. See copying.md for legal info.
+# Copyright 2014-2022 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,too-many-function-args
+
+from __future__ import annotations
+import typing
 
 from collections import defaultdict
 
 from ...entity_object.conversion.genie_structure import GenieStructure
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameVersion
 
 
 class StringResource(GenieStructure):
@@ -13,21 +19,21 @@ class StringResource(GenieStructure):
         super().__init__()
         self.strings = defaultdict(lambda: {})
 
-    def fill_from(self, stringtable):
+    def fill_from(self, stringtable: dict[str, dict[str, str]]) -> None:
         """
         stringtable is a dict {langcode: {id: string}}
         """
         for lang, langstrings in stringtable.items():
             self.strings[lang].update(langstrings)
 
-    def get_tables(self):
+    def get_tables(self) -> dict[str, dict[str, str]]:
         """
         Returns the stringtable.
         """
         return self.strings
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(cls, game_version: GameVersion) -> tuple:
         """
         Return the members in this struct.
         """

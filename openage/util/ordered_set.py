@@ -1,10 +1,13 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides a very simple implementation of an ordered set. We use the
 Python dictionaries as a basis because they are guaranteed to
 be ordered since Python 3.6.
 """
+
+
+from typing import Hashable
 
 
 class OrderedSet:
@@ -14,19 +17,19 @@ class OrderedSet:
 
     __slots__ = ('ordered_set',)
 
-    def __init__(self, elements=None):
+    def __init__(self, elements: Hashable = None):
         self.ordered_set = {}
 
         if elements:
             self.update(elements)
 
-    def add(self, elem):
+    def add(self, elem: Hashable) -> None:
         """
         Set-like add that calls append_right().
         """
         self.append_right(elem)
 
-    def append_left(self, elem):
+    def append_left(self, elem: Hashable) -> None:
         """
         Add an element to the front of the set.
         """
@@ -40,14 +43,14 @@ class OrderedSet:
             temp_set.update(self.ordered_set)
             self.ordered_set = temp_set
 
-    def append_right(self, elem):
+    def append_right(self, elem: Hashable) -> None:
         """
         Add an element to the back of the set.
         """
         if elem not in self.ordered_set:
             self.ordered_set[elem] = len(self)
 
-    def discard(self, elem):
+    def discard(self, elem: Hashable) -> None:
         """
         Remove an element from the set.
         """
@@ -59,13 +62,13 @@ class OrderedSet:
                 if value > index:
                     self.ordered_set[key] -= 1
 
-    def get_list(self):
+    def get_list(self) -> list:
         """
         Returns a normal list containing the values from the ordered set.
         """
         return list(self.ordered_set.keys())
 
-    def index(self, elem):
+    def index(self, elem: Hashable) -> int:
         """
         Returns the index of the element in the set or
         -1 if it is not in the set.
@@ -94,7 +97,7 @@ class OrderedSet:
         element_list = self.get_list() + other.get_list()
         return OrderedSet(element_list)
 
-    def update(self, other):
+    def update(self, other) -> None:
         """
         Append the elements of another iterable to the right of the
         ordered set.

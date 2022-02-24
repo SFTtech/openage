@@ -1,16 +1,22 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-statements,too-many-branches
 
 """
 Creates patches and modifiers for civs.
 """
+from __future__ import annotations
+import typing
+
 from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
 from ..aoc.civ_subprocessor import AoCCivSubprocessor
 from .tech_subprocessor import DE2TechSubprocessor
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup
 
 
 class DE2CivSubprocessor:
@@ -19,7 +25,7 @@ class DE2CivSubprocessor:
     """
 
     @classmethod
-    def get_civ_setup(cls, civ_group):
+    def get_civ_setup(cls, civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Returns the patches for the civ setup which configures architecture sets
         unique units, unique techs, team boni and unique stat upgrades.
@@ -37,7 +43,7 @@ class DE2CivSubprocessor:
         return patches
 
     @classmethod
-    def setup_civ_bonus(cls, civ_group):
+    def setup_civ_bonus(cls, civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Returns global modifiers of a civ.
         """

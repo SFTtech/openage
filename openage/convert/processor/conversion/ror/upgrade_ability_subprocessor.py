@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements
 # pylint: disable=too-few-public-methods,too-many-branches
@@ -9,6 +9,9 @@
 """
 Creates upgrade patches for abilities.
 """
+from __future__ import annotations
+import typing
+
 from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
@@ -17,6 +20,11 @@ from ....value_object.conversion.forward_ref import ForwardRef
 from ....value_object.read.value_members import NoDiffMember
 from ..aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
 
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObject,\
+        ConverterObjectGroup
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+
 
 class RoRUpgradeAbilitySubprocessor:
     """
@@ -24,8 +32,13 @@ class RoRUpgradeAbilitySubprocessor:
     """
 
     @staticmethod
-    def shoot_projectile_ability(converter_group, line, container_obj_ref,
-                                 command_id, diff=None):
+    def shoot_projectile_ability(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        container_obj_ref: str,
+        command_id: int,
+        diff: ConverterObject = None
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the Selectable ability of a line.
 

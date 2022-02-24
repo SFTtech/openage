@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods,invalid-name
 #
@@ -8,11 +8,18 @@
 """
 Creates upgrade patches for resource modification effects in AoC.
 """
+from __future__ import annotations
+import typing
+
 from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
+    from openage.nyan.nyan_structs import MemberOperator
 
 
 class AoCUpgradeResourceSubprocessor:
@@ -21,14 +28,19 @@ class AoCUpgradeResourceSubprocessor:
     """
 
     @staticmethod
-    def berserk_heal_rate_upgrade(converter_group, value, operator, team=False):
+    def berserk_heal_rate_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the berserk heal rate modify effect (ID: 96).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -90,7 +102,8 @@ class AoCUpgradeResourceSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -107,14 +120,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def bonus_population_upgrade(converter_group, value, operator, team=False):
+    def bonus_population_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the bonus population effect (ID: 32).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -168,7 +186,8 @@ class AoCUpgradeResourceSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -185,14 +204,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def building_conversion_upgrade(converter_group, value, operator, team=False):
+    def building_conversion_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the building conversion effect (ID: 28).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -244,7 +268,8 @@ class AoCUpgradeResourceSubprocessor:
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # New allowed types
-        allowed_types = [dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()]
+        allowed_types = [
+            dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()]
         nyan_patch_raw_api_object.add_raw_patch_member("allowed_types",
                                                        allowed_types,
                                                        "engine.ability.type.ApplyDiscreteEffect",
@@ -329,7 +354,8 @@ class AoCUpgradeResourceSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -346,14 +372,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def chinese_tech_discount_upgrade(converter_group, value, operator, team=False):
+    def chinese_tech_discount_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the chinese tech discount effect (ID: 85).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -366,14 +397,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def construction_speed_upgrade(converter_group, value, operator, team=False):
+    def construction_speed_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the construction speed modify effect (ID: 195).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -386,14 +422,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def conversion_resistance_upgrade(converter_group, value, operator, team=False):
+    def conversion_resistance_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the conversion resistance modify effect (ID: 77).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -406,14 +447,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def conversion_resistance_min_rounds_upgrade(converter_group, value, operator, team=False):
+    def conversion_resistance_min_rounds_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the conversion resistance modify effect (ID: 178).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -426,14 +472,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def conversion_resistance_max_rounds_upgrade(converter_group, value, operator, team=False):
+    def conversion_resistance_max_rounds_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the conversion resistance modify effect (ID: 179).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -446,14 +497,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def crenellations_upgrade(converter_group, value, operator, team=False):
+    def crenellations_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the crenellations effect (ID: 194).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -466,14 +522,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def faith_recharge_rate_upgrade(converter_group, value, operator, team=False):
+    def faith_recharge_rate_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the faith_recharge_rate modify effect (ID: 35).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -533,7 +594,8 @@ class AoCUpgradeResourceSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -550,14 +612,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def farm_food_upgrade(converter_group, value, operator, team=False):
+    def farm_food_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the farm food modify effect (ID: 36).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -617,7 +684,8 @@ class AoCUpgradeResourceSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -634,14 +702,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def gather_food_efficiency_upgrade(converter_group, value, operator, team=False):
+    def gather_food_efficiency_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the food gathering efficiency modify effect (ID: 190).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -654,14 +727,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def gather_wood_efficiency_upgrade(converter_group, value, operator, team=False):
+    def gather_wood_efficiency_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the wood gathering efficiency modify effect (ID: 189).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -674,14 +752,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def gather_gold_efficiency_upgrade(converter_group, value, operator, team=False):
+    def gather_gold_efficiency_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the gold gathering efficiency modify effect (ID: 47).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -694,14 +777,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def gather_stone_efficiency_upgrade(converter_group, value, operator, team=False):
+    def gather_stone_efficiency_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the stone gathering efficiency modify effect (ID: 79).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -714,14 +802,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def heal_range_upgrade(converter_group, value, operator, team=False):
+    def heal_range_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the heal range modify effect (ID: 90).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -781,7 +874,8 @@ class AoCUpgradeResourceSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -798,14 +892,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def heal_rate_upgrade(converter_group, value, operator, team=False):
+    def heal_rate_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the heal rate modify effect (ID: 89).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -818,14 +917,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def herding_dominance_upgrade(converter_group, value, operator, team=False):
+    def herding_dominance_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the herding dominance effect (ID: 97).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -838,14 +942,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def heresy_upgrade(converter_group, value, operator, team=False):
+    def heresy_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the heresy effect (ID: 192).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -858,14 +967,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def monk_conversion_upgrade(converter_group, value, operator, team=False):
+    def monk_conversion_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the monk conversion effect (ID: 27).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -926,7 +1040,8 @@ class AoCUpgradeResourceSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -943,14 +1058,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def relic_gold_bonus_upgrade(converter_group, value, operator, team=False):
+    def relic_gold_bonus_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the relic gold bonus modify effect (ID: 191).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -961,14 +1081,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def research_time_upgrade(converter_group, value, operator, team=False):
+    def research_time_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the research time modify effect (ID: 86).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -981,14 +1106,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def reveal_ally_upgrade(converter_group, value, operator, team=False):
+    def reveal_ally_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the reveal ally modify effect (ID: 50).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1001,14 +1131,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def reveal_enemy_upgrade(converter_group, value, operator, team=False):
+    def reveal_enemy_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the reveal enemy modify effect (ID: 183).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1021,14 +1156,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def ship_conversion_upgrade(converter_group, value, operator, team=False):
+    def ship_conversion_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the ship conversion effect (ID: 87).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1041,14 +1181,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def spies_discount_upgrade(converter_group, value, operator, team=False):
+    def spies_discount_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the spies discount effect (ID: 197).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1061,7 +1206,12 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def starting_food_upgrade(converter_group, value, operator, team=False):
+    def starting_food_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the starting food modify effect (ID: 91).
 
@@ -1081,14 +1231,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def starting_wood_upgrade(converter_group, value, operator, team=False):
+    def starting_wood_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the starting wood modify effect (ID: 92).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1101,14 +1256,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def starting_stone_upgrade(converter_group, value, operator, team=False):
+    def starting_stone_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the starting stone modify effect (ID: 93).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1121,14 +1281,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def starting_gold_upgrade(converter_group, value, operator, team=False):
+    def starting_gold_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the starting gold modify effect (ID: 94).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1141,14 +1306,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def starting_villagers_upgrade(converter_group, value, operator, team=False):
+    def starting_villagers_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the starting villagers modify effect (ID: 84).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1161,14 +1331,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def starting_population_space_upgrade(converter_group, value, operator, team=False):
+    def starting_population_space_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the starting popspace modify effect (ID: 4).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1222,7 +1397,8 @@ class AoCUpgradeResourceSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -1239,14 +1415,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def theocracy_upgrade(converter_group, value, operator, team=False):
+    def theocracy_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the theocracy effect (ID: 193).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1259,14 +1440,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def trade_penalty_upgrade(converter_group, value, operator, team=False):
+    def trade_penalty_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the trade penalty modify effect (ID: 78).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1279,14 +1465,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def tribute_inefficiency_upgrade(converter_group, value, operator, team=False):
+    def tribute_inefficiency_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the tribute inefficiency modify effect (ID: 46).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -1299,14 +1490,19 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def wonder_time_increase_upgrade(converter_group, value, operator, team=False):
+    def wonder_time_increase_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the wonder time modify effect (ID: 196).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.

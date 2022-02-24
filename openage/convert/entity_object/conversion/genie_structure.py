@@ -1,20 +1,26 @@
-# Copyright 2014-2021 the openage authors. See copying.md for legal info.
+# Copyright 2014-2022 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
+
+from __future__ import annotations
+import typing
 
 import math
 import re
 import struct
 
 from ....util.strings import decode_until_null
-from ...value_object.read.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP
+from ...value_object.read.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP, MemberAccess
 from ...value_object.read.read_members import (IncludeMembers, ContinueReadMember,
                                                MultisubtypeMember, GroupMember, SubdataMember,
                                                ReadMember,
                                                EnumLookupMember)
 from ...value_object.read.value_members import ContainerMember, ArrayMember, IntMember, FloatMember,\
-    StringMember, BooleanMember, IDMember, BitfieldMember
-from ...value_object.read.value_members import MemberTypes as StorageType
+    StringMember, BooleanMember, IDMember, BitfieldMember, ValueMember
+from ...value_object.read.value_members import StorageType
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameVersion
 
 
 class GenieStructure:
@@ -58,7 +64,14 @@ class GenieStructure:
         # store passed arguments as members
         self.__dict__.update(args)
 
-    def read(self, raw, offset, game_version, cls=None, members=None):
+    def read(
+        self,
+        raw: bytes,
+        offset: int,
+        game_version: GameVersion,
+        cls: GenieStructure = None,
+        members: tuple = None
+    ) -> tuple[int, list[ValueMember]]:
         """
         recursively read defined binary data from raw at given offset.
 
@@ -491,7 +504,7 @@ class GenieStructure:
                     if is_custom_member:
                         result = var_type.entry_hook(result)
 
-                        if result == ContinueReadMember.Result.ABORT:
+                        if result == ContinueReadMember.result.ABORT:
                             # don't go through all other members of this class!
                             stop_reading_members = True
 
@@ -504,8 +517,13 @@ class GenieStructure:
         return offset, generated_value_members
 
     @classmethod
-    def get_data_format(cls, game_version, allowed_modes=False,
-                        flatten_includes=False, is_parent=False):
+    def get_data_format(
+        cls,
+        game_version: GameVersion,
+        allowed_modes: tuple[MemberAccess] = None,
+        flatten_includes: bool = False,
+        is_parent: bool = False
+    ):
         """
         return all members of this exportable (a struct.)
 
@@ -542,7 +560,10 @@ class GenieStructure:
             yield member_entry
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
 
@@ -555,7 +576,7 @@ class GenieStructure:
         var_name: The stored name of the extracted variable.
                   Must be unique for each ConverterObject
         storage_type: ValueMember type for storage
-                      (see value_members.MemberTypes)
+                      (see value_members.StorageType)
         read_type: ReadMember type for reading the values from bytes
                    (see read_members.py)
         ===========================================================

@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-locals,too-many-statements
 #
@@ -9,11 +9,17 @@
 Creates nyan objects for things that are hardcoded into the Genie Engine,
 but configurable in openage. E.g. HP.
 """
+from __future__ import annotations
+import typing
+
 from .....nyan.nyan_structs import MemberSpecialValue
 from ....entity_object.conversion.converter_object import RawAPIObject,\
     ConverterObjectGroup
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 
 
 class AoCPregenSubprocessor:
@@ -22,28 +28,28 @@ class AoCPregenSubprocessor:
     """
 
     @classmethod
-    def generate(cls, gamedata):
+    def generate(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Create nyan objects for hardcoded properties.
         """
         # Stores pregenerated raw API objects as a container
         pregen_converter_group = ConverterObjectGroup("pregen")
 
-        cls.generate_attributes(gamedata, pregen_converter_group)
-        cls.generate_diplomatic_stances(gamedata, pregen_converter_group)
-        cls.generate_team_property(gamedata, pregen_converter_group)
-        cls.generate_entity_types(gamedata, pregen_converter_group)
-        cls.generate_effect_types(gamedata, pregen_converter_group)
-        cls.generate_exchange_objects(gamedata, pregen_converter_group)
-        cls.generate_formation_types(gamedata, pregen_converter_group)
-        cls.generate_language_objects(gamedata, pregen_converter_group)
-        cls.generate_misc_effect_objects(gamedata, pregen_converter_group)
-        cls.generate_modifiers(gamedata, pregen_converter_group)
-        cls.generate_terrain_types(gamedata, pregen_converter_group)
-        cls.generate_resources(gamedata, pregen_converter_group)
-        cls.generate_death_condition(gamedata, pregen_converter_group)
+        cls.generate_attributes(full_data_set, pregen_converter_group)
+        cls.generate_diplomatic_stances(full_data_set, pregen_converter_group)
+        cls.generate_team_property(full_data_set, pregen_converter_group)
+        cls.generate_entity_types(full_data_set, pregen_converter_group)
+        cls.generate_effect_types(full_data_set, pregen_converter_group)
+        cls.generate_exchange_objects(full_data_set, pregen_converter_group)
+        cls.generate_formation_types(full_data_set, pregen_converter_group)
+        cls.generate_language_objects(full_data_set, pregen_converter_group)
+        cls.generate_misc_effect_objects(full_data_set, pregen_converter_group)
+        cls.generate_modifiers(full_data_set, pregen_converter_group)
+        cls.generate_terrain_types(full_data_set, pregen_converter_group)
+        cls.generate_resources(full_data_set, pregen_converter_group)
+        cls.generate_death_condition(full_data_set, pregen_converter_group)
 
-        pregen_nyan_objects = gamedata.pregen_nyan_objects
+        pregen_nyan_objects = full_data_set.pregen_nyan_objects
         # Create nyan objects from the raw API objects
         for pregen_object in pregen_nyan_objects.values():
             pregen_object.create_nyan_object()
@@ -57,7 +63,10 @@ class AoCPregenSubprocessor:
                                 "Member or object not initialized." % (pregen_object))
 
     @staticmethod
-    def generate_attributes(full_data_set, pregen_converter_group):
+    def generate_attributes(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate Attribute objects.
 
@@ -167,7 +176,10 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects.update({faith_abbrv_ref_in_modpack: faith_abbrv_value})
 
     @staticmethod
-    def generate_diplomatic_stances(full_data_set, pregen_converter_group):
+    def generate_diplomatic_stances(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate DiplomaticStance objects.
 
@@ -239,7 +251,10 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects.update({gaia_ref_in_modpack: gaia_raw_api_object})
 
     @staticmethod
-    def generate_team_property(full_data_set, pregen_converter_group):
+    def generate_team_property(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate the property used in team patches objects.
 
@@ -275,7 +290,10 @@ class AoCPregenSubprocessor:
                                            "engine.util.patch.property.type.Diplomatic")
 
     @staticmethod
-    def generate_entity_types(full_data_set, pregen_converter_group):
+    def generate_entity_types(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate GameEntityType objects.
 
@@ -399,7 +417,10 @@ class AoCPregenSubprocessor:
             pregen_nyan_objects.update({class_obj_name: new_game_entity_type})
 
     @staticmethod
-    def generate_effect_types(full_data_set, pregen_converter_group):
+    def generate_effect_types(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate types for effects and resistances.
 
@@ -416,7 +437,8 @@ class AoCPregenSubprocessor:
         api_objects = full_data_set.nyan_api_objects
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(full_data_set.game_version)
-        armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(full_data_set.game_version)
+        armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(
+            full_data_set.game_version)
 
         # =======================================================================
         # Armor types
@@ -541,7 +563,10 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
 
     @staticmethod
-    def generate_exchange_objects(full_data_set, pregen_converter_group):
+    def generate_exchange_objects(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate objects for market trading (ExchangeResources).
 
@@ -831,7 +856,10 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects.update({price_mode_ref_in_modpack: price_mode_raw_api_object})
 
     @staticmethod
-    def generate_formation_types(full_data_set, pregen_converter_group):
+    def generate_formation_types(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate Formation and Subformation objects.
 
@@ -1041,7 +1069,10 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects.update({subformation_ref_in_modpack: subformation_raw_api_object})
 
     @staticmethod
-    def generate_language_objects(full_data_set, pregen_converter_group):
+    def generate_language_objects(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate language objects from the string resources
 
@@ -1079,7 +1110,10 @@ class AoCPregenSubprocessor:
             pregen_nyan_objects.update({language_ref_in_modpack: language_raw_api_object})
 
     @staticmethod
-    def generate_misc_effect_objects(full_data_set, pregen_converter_group):
+    def generate_misc_effect_objects(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate fallback types and other standard objects for effects and resistances.
 
@@ -1398,7 +1432,10 @@ class AoCPregenSubprocessor:
                                            "engine.resistance.property.type.Stacked")
 
     @staticmethod
-    def generate_modifiers(full_data_set, pregen_converter_group):
+    def generate_modifiers(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate standard modifiers.
 
@@ -1551,7 +1588,10 @@ class AoCPregenSubprocessor:
                                                modifier_parent)
 
     @staticmethod
-    def generate_terrain_types(full_data_set, pregen_converter_group):
+    def generate_terrain_types(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate TerrainType objects.
 
@@ -1567,7 +1607,8 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
         api_objects = full_data_set.nyan_api_objects
 
-        terrain_type_lookup_dict = internal_name_lookups.get_terrain_type_lookups(full_data_set.game_version)
+        terrain_type_lookup_dict = internal_name_lookups.get_terrain_type_lookups(
+            full_data_set.game_version)
 
         type_parent = "engine.util.terrain_type.TerrainType"
         types_location = "data/util/terrain_type/"
@@ -1587,7 +1628,10 @@ class AoCPregenSubprocessor:
             pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
 
     @staticmethod
-    def generate_resources(full_data_set, pregen_converter_group):
+    def generate_resources(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate Attribute objects.
 
@@ -1784,7 +1828,10 @@ class AoCPregenSubprocessor:
         pregen_nyan_objects.update({pop_name_ref_in_modpack: pop_name_value})
 
     @staticmethod
-    def generate_death_condition(full_data_set, pregen_converter_group):
+    def generate_death_condition(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
         """
         Generate DeathCondition objects.
 

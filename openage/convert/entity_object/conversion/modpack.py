@@ -1,8 +1,10 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 
 """
 Defines a modpack that can be exported.
 """
+
+from __future__ import annotations
 
 from ..export.data_definition import DataDefinition
 from ..export.formats.modpack_info import ModpackInfo
@@ -16,7 +18,7 @@ class Modpack:
     A collection of data and media files.
     """
 
-    def __init__(self, name):
+    def __init__(self, name: str):
 
         self.name = name
 
@@ -27,11 +29,11 @@ class Modpack:
         self.manifest = ManifestFile("", "manifest.toml")
 
         # Data/media export
-        self.data_export_files = []
-        self.media_export_files = {}
-        self.metadata_files = []
+        self.data_export_files: list[DataDefinition] = []
+        self.media_export_files: list[MediaExportRequest] = {}
+        self.metadata_files: list[MetadataExport] = []
 
-    def add_data_export(self, export_file):
+    def add_data_export(self, export_file: DataDefinition) -> None:
         """
         Add a data file to the modpack for exporting.
         """
@@ -41,7 +43,7 @@ class Modpack:
 
         self.data_export_files.append(export_file)
 
-    def add_media_export(self, export_request):
+    def add_media_export(self, export_request: MediaExportRequest) -> None:
         """
         Add a media export request to the modpack.
         """
@@ -55,7 +57,7 @@ class Modpack:
         else:
             self.media_export_files[export_request.get_type()] = [export_request]
 
-    def add_metadata_export(self, export_file):
+    def add_metadata_export(self, export_file: MetadataExport) -> None:
         """
         Add a metadata file to the modpack for exporting.
         """
@@ -65,25 +67,25 @@ class Modpack:
 
         self.metadata_files.append(export_file)
 
-    def get_info(self):
+    def get_info(self) -> ModpackInfo:
         """
         Return the modpack definition file.
         """
         return self.info
 
-    def get_data_files(self):
+    def get_data_files(self) -> list[DataDefinition]:
         """
         Returns the data files for exporting.
         """
         return self.data_export_files
 
-    def get_media_files(self):
+    def get_media_files(self) -> list[MediaExportRequest]:
         """
         Returns the media requests for exporting.
         """
         return self.media_export_files
 
-    def get_metadata_files(self):
+    def get_metadata_files(self) -> list[MetadataExport]:
         """
         Returns the metadata exports.
         """

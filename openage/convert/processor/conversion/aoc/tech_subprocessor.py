@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-statements,too-many-branches
 #
@@ -8,6 +8,10 @@
 """
 Creates patches for technologies.
 """
+from __future__ import annotations
+import typing
+
+
 from openage.log import warn
 from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup,\
@@ -20,6 +24,10 @@ from ....value_object.conversion.forward_ref import ForwardRef
 from .upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
 from .upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from .upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
+    from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject
 
 
 class AoCTechSubprocessor:
@@ -103,7 +111,7 @@ class AoCTechSubprocessor:
     }
 
     @classmethod
-    def get_patches(cls, converter_group):
+    def get_patches(cls, converter_group: ConverterObjectGroup) -> list[ForwardRef]:
         """
         Returns the patches for a converter group, depending on the type
         of its effects.
@@ -116,14 +124,14 @@ class AoCTechSubprocessor:
             effects = converter_group.get_effects()
 
             # Change converter group here, so that the Civ object gets the patches
-            converter_group = dataset.civ_groups[converter_group.get_civilization()]
+            converter_group = dataset.civ_groups[converter_group.get_civilization_id()]
             team_bonus = True
 
         elif isinstance(converter_group, CivBonus):
             effects = converter_group.get_effects()
 
             # Change converter group here, so that the Civ object gets the patches
-            converter_group = dataset.civ_groups[converter_group.get_civilization()]
+            converter_group = dataset.civ_groups[converter_group.get_civilization_id()]
 
         else:
             effects = converter_group.get_effects()
@@ -172,7 +180,11 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def attribute_modify_effect(converter_group, effect, team=False):
+    def attribute_modify_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates the patches for modifying attributes of entities.
         """
@@ -237,7 +249,11 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def resource_modify_effect(converter_group, effect, team=False):
+    def resource_modify_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates the patches for modifying resources.
         """
@@ -276,7 +292,10 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def upgrade_unit_effect(converter_group, effect):
+    def upgrade_unit_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject
+    ) -> list[ForwardRef]:
         """
         Creates the patches for upgrading entities in a line.
         """
@@ -320,15 +339,24 @@ class AoCTechSubprocessor:
 
         diff = upgrade_source.diff(upgrade_target)
 
-        patches.extend(AoCUpgradeAbilitySubprocessor.death_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.despawn_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.idle_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.live_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.los_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.named_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.resistance_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.selectable_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.turn_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.death_ability(
+            converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.despawn_ability(
+            converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.idle_ability(
+            converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.live_ability(
+            converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.los_ability(
+            converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.named_ability(
+            converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.resistance_ability(
+            converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.selectable_ability(
+            converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.turn_ability(
+            converter_group, line, tech_name, diff))
 
         if line.is_projectile_shooter():
             patches.extend(AoCUpgradeAbilitySubprocessor.shoot_projectile_ability(converter_group, line,
@@ -356,7 +384,11 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def tech_cost_modify_effect(converter_group, effect, team=False):
+    def tech_cost_modify_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates the patches for modifying tech costs.
         """
@@ -449,7 +481,8 @@ class AoCTechSubprocessor:
                                                        operator)
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -471,7 +504,11 @@ class AoCTechSubprocessor:
         return patches
 
     @staticmethod
-    def tech_time_modify_effect(converter_group, effect, team=False):
+    def tech_time_modify_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates the patches for modifying tech research times.
         """
@@ -535,7 +572,8 @@ class AoCTechSubprocessor:
                                                        operator)
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }

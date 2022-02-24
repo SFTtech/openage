@@ -1,10 +1,18 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2022 the openage authors. See copying.md for legal info.
 
 """
 Contains structures and API-like objects for effects from AoC.
 """
 
+from __future__ import annotations
+import typing
+
 from ..converter_object import ConverterObject
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container\
+        import GenieObjectContainer
+    from openage.convert.value_object.read.value_members import ValueMember
 
 
 class GenieEffectObject(ConverterObject):
@@ -14,7 +22,13 @@ class GenieEffectObject(ConverterObject):
 
     __slots__ = ('bundle_id', 'data')
 
-    def __init__(self, effect_id, bundle_id, full_data_set, members=None):
+    def __init__(
+        self,
+        effect_id: int,
+        bundle_id: int,
+        full_data_set: GenieObjectContainer,
+        members: dict[str, ValueMember] = None
+    ):
         """
         Creates a new Genie effect object.
 
@@ -32,7 +46,7 @@ class GenieEffectObject(ConverterObject):
         self.bundle_id = bundle_id
         self.data = full_data_set
 
-    def get_type(self):
+    def get_type(self) -> int:
         """
         Returns the effect's type.
         """
@@ -49,7 +63,13 @@ class GenieEffectBundle(ConverterObject):
 
     __slots__ = ('effects', 'sanitized', 'data')
 
-    def __init__(self, bundle_id, effects, full_data_set, members=None):
+    def __init__(
+        self,
+        bundle_id: int,
+        effects: list[GenieEffectObject],
+        full_data_set: GenieObjectContainer,
+        members: dict[str, ValueMember] = None
+    ):
         """
         Creates a new Genie effect bundle.
 
@@ -70,11 +90,11 @@ class GenieEffectBundle(ConverterObject):
         #     - effects that do nothing
         #     - effects without a type        #
         # Processors should set this to True, once the bundle is sanitized.
-        self.sanitized = False
+        self.sanitized: bool = False
 
         self.data = full_data_set
 
-    def get_effects(self, effect_type=None):
+    def get_effects(self, effect_type: int = None) -> list[GenieEffectObject]:
         """
         Returns the effects in the bundle, optionally only effects with a specific
         type.
@@ -94,7 +114,7 @@ class GenieEffectBundle(ConverterObject):
 
         return list(self.effects.values())
 
-    def is_sanitized(self):
+    def is_sanitized(self) -> bool:
         """
         Returns whether the effect bundle has been sanitized.
         """

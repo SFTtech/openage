@@ -1,9 +1,12 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Methods for printing paths and other file system-related info.
 """
 
+from __future__ import annotations
+
+import typing
 from collections import OrderedDict
 
 from .strings import colorize
@@ -11,8 +14,11 @@ from .math import INF
 
 RULE_CACHE = OrderedDict()
 
+if typing.TYPE_CHECKING:
+    from openage.util.fslike.abstract import FSLikeObject
 
-def get_color_rules():
+
+def get_color_rules() -> OrderedDict[str, str]:
     """
     Returns a dict of pattern : colorcode, retrieved from LS_COLORS.
     """
@@ -43,7 +49,7 @@ def get_color_rules():
     return RULE_CACHE
 
 
-def colorize_filename(filename):
+def colorize_filename(filename: str) -> str:
     """
     Colorizes the filename, using the globbing rules from LS_COLORS.
     """
@@ -58,14 +64,19 @@ def colorize_filename(filename):
     return colorize(filename, rules.get('fi'))
 
 
-def colorize_dirname(dirname):
+def colorize_dirname(dirname: str) -> str:
     """
     Colorizes the dirname, using the 'di' rule from LS_COLORS.
     """
     return colorize(dirname, get_color_rules().get('di'))
 
 
-def print_tree(obj, path="", prefix="", max_entries=INF):
+def print_tree(
+    obj: FSLikeObject,
+    path: str = "",
+    prefix: str = "",
+    max_entries: str = INF
+) -> None:
     """
     Obj is a filesystem-like object; path must be a string.
 

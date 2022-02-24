@@ -1,4 +1,4 @@
-# Copyright 2015-2019 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides ByteQueue, a high-performance queue for bytes objects.
@@ -6,6 +6,7 @@ Provides ByteQueue, a high-performance queue for bytes objects.
 
 from collections import deque
 from bisect import bisect
+from typing import Generator
 
 
 class ByteQueue:
@@ -41,7 +42,7 @@ class ByteQueue:
         """
         return self.size
 
-    def append(self, data):
+    def append(self, data: bytes) -> None:
         """
         Adds bytes to the buffer.
         """
@@ -51,7 +52,7 @@ class ByteQueue:
         self.bufs.append(data)
         self.size += len(data)
 
-    def popleft(self, size):
+    def popleft(self, size: int) -> bytes:
         """
         Returns the requested amount of bytes from the buffer.
         """
@@ -86,6 +87,7 @@ class ByteBuffer:
     Similar to ByteQueue, but instead of popleft, allows reading random slices,
     and trimleft, which discards data from the left.
     """
+
     def __init__(self):
         # holds all appended bytes objects
         # discarded bytes objects are replaced by None.
@@ -103,7 +105,7 @@ class ByteBuffer:
     def __len__(self):
         return self.index[-1]
 
-    def append(self, data):
+    def append(self, data: bytes) -> None:
         """
         appends new data to the right of the buffer
         """
@@ -113,7 +115,7 @@ class ByteBuffer:
         self.bufs.append(data)
         self.index.append(len(self) + len(data))
 
-    def discardleft(self, keep):
+    def discardleft(self, keep: int) -> None:
         """
         discards data at the beginning of the buffer.
         keeps at least the 'keep' most recent bytes.
@@ -131,7 +133,7 @@ class ByteBuffer:
         self.discardedbufs = discardto
         self.discardedbytes = discardamount
 
-    def hasbeendiscarded(self, position):
+    def hasbeendiscarded(self, position: int) -> bool:
         """
         returns True if the given position has already been discarded
         and is no longer valid.
@@ -175,7 +177,7 @@ class ByteBuffer:
         data has already been discarded.
         """
 
-    def get_buffers(self, start, end):
+    def get_buffers(self, start: int, end: int) -> Generator[bytes, None, None]:
         """
         yields any amount of bytes objects that constitute the data
         between start and end.

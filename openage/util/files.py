@@ -1,12 +1,19 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 """
 Some file handling utilities
 """
 
+from __future__ import annotations
+
+import typing
 import os
+from typing import Union
+
+if typing.TYPE_CHECKING:
+    from openage.util.fslike.abstract import FSLikeObject
 
 
-def read_guaranteed(fileobj, size):
+def read_guaranteed(fileobj: FSLikeObject, size: int) -> bytes:
     """
     As regular fileobj.read(size), but raises EOFError if fewer bytes
     than requested are returned.
@@ -25,7 +32,7 @@ def read_guaranteed(fileobj, size):
     return b"".join(result)
 
 
-def read_nullterminated_string(fileobj, maxlen=255):
+def read_nullterminated_string(fileobj: FSLikeObject, maxlen: int = 255) -> bytes:
     """
     Reads bytes until a null terminator is reached.
     """
@@ -45,13 +52,13 @@ def read_nullterminated_string(fileobj, maxlen=255):
     return bytes(result)
 
 
-def which(filename):
+def which(filename: str) -> Union[str, None]:
     """
     Like the which (1) tool to get the full path of a command
     by looking at the PATH environment variable.
     """
 
-    def is_executable(fpath):
+    def is_executable(fpath: str) -> bool:
         """
         Test if the given file exists and has an executable bit.
         """

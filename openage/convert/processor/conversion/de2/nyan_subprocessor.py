@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-locals,too-many-statements,too-many-branches
 #
@@ -8,6 +8,9 @@
 Convert API-like objects to nyan objects. Subroutine of the
 main DE2 processor.
 """
+from __future__ import annotations
+import typing
+
 from ....entity_object.conversion.aoc.genie_tech import UnitLineUpgrade
 from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup,\
     GenieGarrisonMode, GenieMonkGroup, GenieStackBuildingGroup
@@ -24,6 +27,14 @@ from .ability_subprocessor import DE2AbilitySubprocessor
 from .civ_subprocessor import DE2CivSubprocessor
 from .tech_subprocessor import DE2TechSubprocessor
 
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
+    from openage.convert.entity_object.conversion.aoc.genie_terrain import GenieTerrainGroup
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
+        GenieBuildingLineGroup
+
 
 class DE2NyanSubprocessor:
     """
@@ -31,18 +42,18 @@ class DE2NyanSubprocessor:
     """
 
     @classmethod
-    def convert(cls, gamedata):
+    def convert(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Create nyan objects from the given dataset.
         """
-        cls._process_game_entities(gamedata)
-        cls._create_nyan_objects(gamedata)
-        cls._create_nyan_members(gamedata)
+        cls._process_game_entities(full_data_set)
+        cls._create_nyan_objects(full_data_set)
+        cls._create_nyan_members(full_data_set)
 
-        cls._check_objects(gamedata)
+        cls._check_objects(full_data_set)
 
     @classmethod
-    def _check_objects(cls, full_data_set):
+    def _check_objects(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Check if objects are valid.
         """
@@ -68,7 +79,7 @@ class DE2NyanSubprocessor:
             civ_group.check_readiness()
 
     @classmethod
-    def _create_nyan_objects(cls, full_data_set):
+    def _create_nyan_objects(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Creates nyan objects from the API objects.
         """
@@ -101,7 +112,7 @@ class DE2NyanSubprocessor:
             civ_group.execute_raw_member_pushs()
 
     @classmethod
-    def _create_nyan_members(cls, full_data_set):
+    def _create_nyan_members(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Fill nyan member values of the API objects.
         """
@@ -127,7 +138,7 @@ class DE2NyanSubprocessor:
             civ_group.create_nyan_members()
 
     @classmethod
-    def _process_game_entities(cls, full_data_set):
+    def _process_game_entities(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Create the RawAPIObject representation of the objects.
         """
@@ -154,7 +165,7 @@ class DE2NyanSubprocessor:
             cls.civ_group_to_civ(civ_group)
 
     @staticmethod
-    def unit_line_to_game_entity(unit_line):
+    def unit_line_to_game_entity(unit_line: GenieUnitLineGroup) -> None:
         """
         Creates raw API objects for a unit line.
 
@@ -191,7 +202,8 @@ class DE2NyanSubprocessor:
         unit_type = current_unit["unit_type"].get_value()
 
         if unit_type >= 70:
-            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object()
+            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object(
+            )
             types_set.append(type_obj)
 
         unit_class = current_unit["unit_class"].get_value()
@@ -358,7 +370,7 @@ class DE2NyanSubprocessor:
             AoCAuxiliarySubprocessor.get_creatable_game_entity(unit_line)
 
     @staticmethod
-    def building_line_to_game_entity(building_line):
+    def building_line_to_game_entity(building_line: GenieBuildingLineGroup) -> None:
         """
         Creates raw API objects for a building line.
 
@@ -396,7 +408,8 @@ class DE2NyanSubprocessor:
         unit_type = current_building["unit_type"].get_value()
 
         if unit_type >= 80:
-            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()
+            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(
+            )
             types_set.append(type_obj)
 
         unit_class = current_building["unit_class"].get_value()
@@ -406,7 +419,8 @@ class DE2NyanSubprocessor:
         types_set.append(type_obj)
 
         if building_line.is_dropsite():
-            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.DropSite"].get_nyan_object()
+            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.DropSite"].get_nyan_object(
+            )
             types_set.append(type_obj)
 
         raw_api_object.add_raw_member("types", types_set, "engine.util.game_entity.GameEntity")
@@ -471,7 +485,8 @@ class DE2NyanSubprocessor:
             garrison_mode = building_line.get_garrison_mode()
 
             if garrison_mode == GenieGarrisonMode.NATURAL:
-                abilities_set.append(AoCAbilitySubprocessor.send_back_to_task_ability(building_line))
+                abilities_set.append(
+                    AoCAbilitySubprocessor.send_back_to_task_ability(building_line))
 
             if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
                 abilities_set.append(AoCAbilitySubprocessor.rally_point_ability(building_line))
@@ -515,7 +530,7 @@ class DE2NyanSubprocessor:
             AoCAuxiliarySubprocessor.get_creatable_game_entity(building_line)
 
     @staticmethod
-    def tech_group_to_tech(tech_group):
+    def tech_group_to_tech(tech_group: GenieTechEffectBundleGroup) -> None:
         """
         Creates raw API objects for a tech group.
 
@@ -582,7 +597,8 @@ class DE2NyanSubprocessor:
         description_raw_api_object = RawAPIObject(description_ref,
                                                   f"{tech_name}Description",
                                                   dataset.nyan_api_objects)
-        description_raw_api_object.add_raw_parent("engine.util.language.translated.type.TranslatedMarkupFile")
+        description_raw_api_object.add_raw_parent(
+            "engine.util.language.translated.type.TranslatedMarkupFile")
         description_location = ForwardRef(tech_group, tech_name)
         description_raw_api_object.set_location(description_location)
 
@@ -603,7 +619,8 @@ class DE2NyanSubprocessor:
         long_description_raw_api_object = RawAPIObject(long_description_ref,
                                                        f"{tech_name}LongDescription",
                                                        dataset.nyan_api_objects)
-        long_description_raw_api_object.add_raw_parent("engine.util.language.translated.type.TranslatedMarkupFile")
+        long_description_raw_api_object.add_raw_parent(
+            "engine.util.language.translated.type.TranslatedMarkupFile")
         long_description_location = ForwardRef(tech_group, tech_name)
         long_description_raw_api_object.set_location(long_description_location)
 
@@ -631,7 +648,7 @@ class DE2NyanSubprocessor:
             AoCAuxiliarySubprocessor.get_researchable_tech(tech_group)
 
     @staticmethod
-    def terrain_group_to_terrain(terrain_group):
+    def terrain_group_to_terrain(terrain_group: GenieTerrainGroup) -> None:
         """
         Creates raw API objects for a terrain group.
 
@@ -644,7 +661,8 @@ class DE2NyanSubprocessor:
 
         # name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         terrain_lookup_dict = internal_name_lookups.get_terrain_lookups(dataset.game_version)
-        terrain_type_lookup_dict = internal_name_lookups.get_terrain_type_lookups(dataset.game_version)
+        terrain_type_lookup_dict = internal_name_lookups.get_terrain_type_lookups(
+            dataset.game_version)
 
         if terrain_index not in terrain_lookup_dict:
             # TODO: Not all terrains are used in DE2; filter out the unused terrains
@@ -798,7 +816,7 @@ class DE2NyanSubprocessor:
                                       "engine.util.terrain.Terrain")
 
     @staticmethod
-    def civ_group_to_civ(civ_group):
+    def civ_group_to_civ(civ_group: GenieCivilizationGroup) -> None:
         """
         Creates raw API objects for a civ group.
 
@@ -849,7 +867,8 @@ class DE2NyanSubprocessor:
         description_raw_api_object = RawAPIObject(description_ref,
                                                   f"{tech_name}Description",
                                                   dataset.nyan_api_objects)
-        description_raw_api_object.add_raw_parent("engine.util.language.translated.type.TranslatedMarkupFile")
+        description_raw_api_object.add_raw_parent(
+            "engine.util.language.translated.type.TranslatedMarkupFile")
         description_location = ForwardRef(civ_group, tech_name)
         description_raw_api_object.set_location(description_location)
 
@@ -870,7 +889,8 @@ class DE2NyanSubprocessor:
         long_description_raw_api_object = RawAPIObject(long_description_ref,
                                                        f"{tech_name}LongDescription",
                                                        dataset.nyan_api_objects)
-        long_description_raw_api_object.add_raw_parent("engine.util.language.translated.type.TranslatedMarkupFile")
+        long_description_raw_api_object.add_raw_parent(
+            "engine.util.language.translated.type.TranslatedMarkupFile")
         long_description_location = ForwardRef(civ_group, tech_name)
         long_description_raw_api_object.set_location(long_description_location)
 

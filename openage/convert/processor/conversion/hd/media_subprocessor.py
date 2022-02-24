@@ -1,4 +1,4 @@
-# Copyright 2021-2021 the openage authors. See copying.md for legal info.
+# Copyright 2021-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals
 
@@ -6,10 +6,17 @@
 Convert media information to metadata definitions and export
 requests. Subroutine of the main HD processor.
 """
+from __future__ import annotations
+import typing
+
 from ....entity_object.export.formats.sprite_metadata import LayerMode
 from ....entity_object.export.media_export_request import MediaExportRequest
 from ....entity_object.export.metadata_export import SpriteMetadataExport
 from ....value_object.read.media_types import MediaType
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container\
+        import GenieObjectContainer
 
 
 class HDMediaSubprocessor:
@@ -18,7 +25,7 @@ class HDMediaSubprocessor:
     """
 
     @classmethod
-    def convert(cls, full_data_set):
+    def convert(cls, full_data_set: GenieObjectContainer) -> None:
         """
         Create all export requests for the dataset.
         """
@@ -26,7 +33,7 @@ class HDMediaSubprocessor:
         cls.create_sound_requests(full_data_set)
 
     @staticmethod
-    def create_graphics_requests(full_data_set):
+    def create_graphics_requests(full_data_set: GenieObjectContainer) -> None:
         """
         Create export requests for graphics referenced by CombinedSprite objects.
         """
@@ -111,7 +118,7 @@ class HDMediaSubprocessor:
             full_data_set.graphics_exports.update({slp_id: export_request})
 
     @staticmethod
-    def create_sound_requests(full_data_set):
+    def create_sound_requests(full_data_set: GenieObjectContainer) -> None:
         """
         Create export requests for sounds referenced by CombinedSound objects.
         """

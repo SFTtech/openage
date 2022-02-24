@@ -25,6 +25,6 @@ execute_process(COMMAND
 
 execute_process(COMMAND
 	"${PYTHON}" "${buildsystem_dir}/scripts/copy_modules.py"
-	numpy PIL readline
+	numpy PIL pyreadline3 readline
 	"${CMAKE_INSTALL_PREFIX}/${py_install_prefix}"
 )

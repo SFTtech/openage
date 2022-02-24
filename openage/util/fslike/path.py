@@ -1,4 +1,4 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides Path, which is analogous to pathlib.Path,
@@ -6,6 +6,7 @@ and the type of FSLikeObject.root.
 """
 
 from io import UnsupportedOperation, TextIOWrapper
+from typing import NoReturn
 
 
 class Path:
@@ -74,19 +75,19 @@ class Path:
 
         return f"Path({repr(self.fsobj)}, {repr(self.parts)})"
 
-    def exists(self):
+    def exists(self) -> bool:
         """ True if path exists """
         return self.fsobj.exists(self.parts)
 
-    def is_dir(self):
+    def is_dir(self) -> bool:
         """ True if path points to dir (or symlink to one) """
         return self.fsobj.is_dir(self.parts)
 
-    def is_file(self):
+    def is_file(self) -> bool:
         """ True if path points to file (or symlink to one) """
         return self.fsobj.is_file(self.parts)
 
-    def writable(self):
+    def writable(self) -> bool:
         """ True if path is probably writable """
         return self.fsobj.writable(self.parts)
 
@@ -99,7 +100,7 @@ class Path:
         for name in self.fsobj.list(self.parts):
             yield type(self)(self.fsobj, self.parts + (name,))
 
-    def mkdirs(self):
+    def mkdirs(self) -> None:
         """ Creates this path (including parents). No-op if path exists. """
         return self.fsobj.mkdirs(self.parts)
 
@@ -321,7 +322,7 @@ class Path:
 
         return self.parent.joinpath(self.stem + suffix)
 
-    def mount(self, pathobj, priority=0):
+    def mount(self, pathobj, priority=0) -> NoReturn:
         """This is only valid for UnionPath, don't call here"""
         # pylint: disable=no-self-use,unused-argument
         # TODO: https://github.com/PyCQA/pylint/issues/2329

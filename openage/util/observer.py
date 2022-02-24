@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-few-public-methods
 
@@ -15,6 +15,7 @@ ignored the garbage collection. Weakrefs with dead references
 are removed during notification of the observers.
 """
 
+from typing import Any, Optional
 import weakref
 
 
@@ -23,7 +24,7 @@ class Observer:
     Implements a Java 8-like Observer interface.
     """
 
-    def update(self, observable, message=None):
+    def update(self, observable, message: Optional[Any] = None):
         """
         Called by an Observable object that has registered this observer
         whenever it changes.
@@ -45,7 +46,7 @@ class Observable:
         self.observers = set()
         self.changed = False
 
-    def add_observer(self, observer):
+    def add_observer(self, observer: Observer) -> None:
         """
         Adds an observer to this object's set of observers.
 
@@ -58,13 +59,13 @@ class Observable:
 
         self.observers.add(weakref.ref(observer))
 
-    def clear_changed(self):
+    def clear_changed(self) -> None:
         """
         Indicate that this object has no longer changed.
         """
         self.changed = True
 
-    def delete_observer(self, observer):
+    def delete_observer(self, observer: Observer) -> None:
         """
         Remove an observer from the set.
 
@@ -73,25 +74,25 @@ class Observable:
         """
         self.observers.remove(observer)
 
-    def delete_observers(self):
+    def delete_observers(self) -> None:
         """
         Remove all currently registered observers.
         """
         self.observers.clear()
 
-    def get_observer_count(self):
+    def get_observer_count(self) -> int:
         """
         Return the number of registered observers.
         """
         return len(self.observers)
 
-    def has_changed(self):
+    def has_changed(self) -> bool:
         """
         Return whether the object has changed.
         """
         return self.changed
 
-    def notify_observers(self, message=None):
+    def notify_observers(self, message: Optional[Any] = None) -> None:
         """
         Notify the observers if the object has changed. Include
         an optional message.
@@ -106,7 +107,7 @@ class Observable:
                 else:
                     self.delete_observer(observer)
 
-    def set_changed(self):
+    def set_changed(self) -> None:
         """
         Indicate that the object has changed.
         """

@@ -1,4 +1,4 @@
-# Copyright 2013-2021 the openage authors. See copying.md for legal info.
+# Copyright 2013-2022 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=too-many-function-args
 
@@ -8,12 +8,26 @@ Those originate from blendomatic.dat.
 
 For more information, see doc/media/blendomatic.md
 """
+from __future__ import annotations
+import typing
+
 
 from math import sqrt
 from struct import Struct, unpack_from
+import numpy
+
 
 from .....log import dbg
 from ....entity_object.conversion.genie_structure import GenieStructure
+
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.export.texture import Texture
+    from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.member_access import MemberAccess
+    from openage.convert.value_object.read.read_members import ReadMember
+    from openage.convert.value_object.read.value_members import StorageType
+    from openage.util.fslike.wrapper import GuardedFile
 
 
 class BlendingTile:
@@ -24,18 +38,15 @@ class BlendingTile:
 
     # pylint: disable=too-few-public-methods
 
-    def __init__(self, row_data, width, height):
+    def __init__(self, row_data: list[list[int]], width: int, height: int):
         self.row_data = row_data
         self.width = width
         self.height = height
 
-    def get_picture_data(self):
+    def get_picture_data(self) -> numpy.array:
         """
         Return a numpy array of image data for a blending tile.
         """
-
-        import numpy
-
         tile_rows = []
 
         for picture_row in self.row_data:
@@ -72,7 +83,13 @@ class BlendingMode:
 
     # pylint: disable=too-few-public-methods
 
-    def __init__(self, idx, data_file, tile_count, header):
+    def __init__(
+        self,
+        idx: int,
+        data_file: GuardedFile,
+        tile_count: int,
+        header: tuple
+    ):
         """
         initialize one blending mode,
         consisting of multiple frames for all blending directions
@@ -133,7 +150,7 @@ class BlendingMode:
 
             self.bitmasks.append(self.get_tile_from_data(pixels))
 
-    def get_tile_from_data(self, data):
+    def get_tile_from_data(self, data: list[int]) -> BlendingTile:
         """
         get the data pixels, interprete them in isometric tile format
 
@@ -215,7 +232,7 @@ class Blendomatic(GenieStructure):
     # };
     blendomatic_header = Struct("< I I")
 
-    def __init__(self, fileobj, custom_mode_count=None):
+    def __init__(self, fileobj: GuardedFile, custom_mode_count: int = None):
         super().__init__()
 
         buf = fileobj.read(Blendomatic.blendomatic_header.size)
@@ -246,7 +263,7 @@ class Blendomatic(GenieStructure):
 
         fileobj.close()
 
-    def get_textures(self):
+    def get_textures(self) -> list[Texture]:
         """
         generate a list of textures.
 
@@ -257,7 +274,10 @@ class Blendomatic(GenieStructure):
         return [Texture(b_mode) for b_mode in self.blending_modes]
 
     @classmethod
-    def get_data_format_members(cls, game_version):
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """

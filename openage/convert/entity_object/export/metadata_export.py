@@ -1,13 +1,20 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments,too-many-locals
 
 """
 Export requests for media metadata.
 """
+from __future__ import annotations
+import typing
+
 
 from ....util.observer import Observer
 from .formats.sprite_metadata import SpriteMetadata
+
+if typing.TYPE_CHECKING:
+    from openage.util.observer import Observable
+    from openage.convert.entity_object.export.formats.sprite_metadata import LayerMode
 
 
 class MetadataExport(Observer):
@@ -16,13 +23,13 @@ class MetadataExport(Observer):
     observers so they can receive data from media conversion.
     """
 
-    def __init__(self, targetdir, target_filename):
+    def __init__(self, targetdir: str, target_filename: str):
 
         self.targetdir = targetdir
         self.filename = target_filename
 
-    def update(self, observable, message=None):
-        return NotImplemented
+    def update(self, observable: Observable, message=None):
+        return NotImplementedError("Interface does not implement update()")
 
     def __repr__(self):
         return f"MetadataExport<{type(self)}>"
@@ -36,12 +43,20 @@ class SpriteMetadataExport(MetadataExport):
     def __init__(self, targetdir, target_filename):
         super().__init__(targetdir, target_filename)
 
-        self.graphics_metadata = {}
-        self.frame_metadata = {}
+        self.graphics_metadata: dict[int, tuple] = {}
+        self.frame_metadata: dict[int, tuple] = {}
 
-    def add_graphics_metadata(self, img_filename, layer_mode,
-                              layer_pos, frame_rate, replay_delay,
-                              frame_count, angle_count, mirror_mode):
+    def add_graphics_metadata(
+        self,
+        img_filename: str,
+        layer_mode: LayerMode,
+        layer_pos: int,
+        frame_rate: float,
+        replay_delay: float,
+        frame_count: int,
+        angle_count: int,
+        mirror_mode: int
+    ):
         """
         Add metadata from the GenieGraphic object.
 
@@ -50,7 +65,7 @@ class SpriteMetadataExport(MetadataExport):
         self.graphics_metadata[img_filename] = (layer_mode, layer_pos, frame_rate, replay_delay,
                                                 frame_count, angle_count, mirror_mode)
 
-    def dump(self):
+    def dump(self) -> str:
         """
         Creates a human-readable string that can be written to a file.
         """
@@ -101,7 +116,7 @@ class SpriteMetadataExport(MetadataExport):
 
         return sprite_file.dump()
 
-    def update(self, observable, message=None):
+    def update(self, observable: Observable, message: dict = None):
         """
         Receive metdata from the graphics file export.
 

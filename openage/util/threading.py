@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Threading utilities.
@@ -57,6 +57,7 @@ class ClosableQueue(Queue):
     Behaves like Queue until close() has been called.
     After that, any call to put() raises RuntimeError.
     """
+
     def __init__(self):
         super().__init__()
         self.closed = False
@@ -95,7 +96,7 @@ class GeneratorEvent(Enum):
     STOP_ITERATION = 2
 
 
-def generator_to_queue(generator, queue):
+def generator_to_queue(generator, queue: ClosableQueue) -> None:
     """
     For use by concurrent_chain.
     Appends all of the generator's events to the queue,
@@ -111,7 +112,7 @@ def generator_to_queue(generator, queue):
         queue.put((GeneratorEvent.EXCEPTION, exc))
 
 
-def test_concurrent_chain():
+def test_concurrent_chain() -> None:
     """ Tests concurrent_chain """
     from ..testing.testing import assert_value, assert_raises, result
 

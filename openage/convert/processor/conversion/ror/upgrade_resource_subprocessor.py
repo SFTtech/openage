@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
 #
@@ -8,11 +8,18 @@
 """
 Creates upgrade patches for resource modification effects in RoR.
 """
+from __future__ import annotations
+import typing
+
 from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
+    from openage.nyan.nyan_structs import MemberOperator
 
 
 class RoRUpgradeResourceSubprocessor:
@@ -21,14 +28,19 @@ class RoRUpgradeResourceSubprocessor:
     """
 
     @staticmethod
-    def building_conversion_upgrade(converter_group, value, operator, team=False):
+    def building_conversion_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the building conversion effect (ID: 28).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -118,14 +130,19 @@ class RoRUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def heal_bonus_upgrade(converter_group, value, operator, team=False):
+    def heal_bonus_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the AoE1 heal bonus effect (ID: 56).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -138,14 +155,19 @@ class RoRUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
-    def martyrdom_upgrade(converter_group, value, operator, team=False):
+    def martyrdom_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the martyrdom effect (ID: 57).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: Any
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.

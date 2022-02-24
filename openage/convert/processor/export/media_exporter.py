@@ -1,11 +1,15 @@
-# Copyright 2021-2021 the openage authors. See copying.md for legal info.
+# Copyright 2021-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments,too-many-locals
 """
 Converts media requested by export requests to files.
 """
+from __future__ import annotations
+import typing
+
 import logging
 import os
+
 
 from openage.convert.entity_object.export.texture import Texture
 from openage.convert.service import debug_info
@@ -14,6 +18,14 @@ from openage.convert.value_object.read.media.blendomatic import Blendomatic
 from openage.convert.value_object.read.media_types import MediaType
 from openage.log import dbg, get_loglevel
 
+if typing.TYPE_CHECKING:
+    from argparse import Namespace
+
+    from openage.convert.entity_object.export.media_export_request import MediaExportRequest
+    from openage.convert.value_object.read.media.colortable import ColorTable
+    from openage.convert.value_object.init.game_version import GameVersion
+    from openage.util.fslike.path import Path
+
 
 class MediaExporter:
     """
@@ -21,7 +33,12 @@ class MediaExporter:
     """
 
     @staticmethod
-    def export(export_requests, sourcedir, exportdir, args):
+    def export(
+        export_requests: dict[MediaType, list[MediaExportRequest]],
+        sourcedir: Path,
+        exportdir: Path,
+        args: Namespace
+    ) -> None:
         """
         Converts files requested by MediaExportRequests.
 
@@ -33,13 +50,13 @@ class MediaExporter:
                           and target filename should be stored in the export request.
         :param args: Converter arguments.
         :type export_requests: dict
-        :type sourcedir: Directory
-        :type exportdir: Directory
+        :type sourcedir: Path
+        :type exportdir: Path
         :type args: Namespace
         """
         cache_info = {}
-        if args.game_version[0].media_cache:
-            cache_info = load_media_cache(args.game_version[0].media_cache)
+        if args.game_version.edition.media_cache:
+            cache_info = load_media_cache(args.game_version.edition.media_cache)
 
         for media_type in export_requests.keys():
             cur_export_requests = export_requests[media_type]
@@ -94,7 +111,12 @@ class MediaExporter:
             )
 
     @staticmethod
-    def _export_blend(export_request, sourcedir, exportdir, blend_mode_count=None):
+    def _export_blend(
+        export_request: MediaExportRequest,
+        sourcedir: Path,
+        exportdir: Path,
+        blend_mode_count: int = None
+    ) -> None:
         """
         Convert and export a blending mode.
 
@@ -105,8 +127,8 @@ class MediaExporter:
                           and target filename should be stored in the export request.
         :param blend_mode_count: Number of blending modes extracted from the source file.
         :type export_request: MediaExportRequest
-        :type sourcedir: Directory
-        :type exportdir: Directory
+        :type sourcedir: Path
+        :type exportdir: Path
         :type blend_mode_count: int
         """
         source_file = sourcedir.joinpath(export_request.source_filename)
@@ -133,8 +155,14 @@ class MediaExporter:
                 )
 
     @staticmethod
-    def _export_graphics(export_request, sourcedir, exportdir, palettes,
-                         compression_level, cache_info=None):
+    def _export_graphics(
+        export_request: MediaExportRequest,
+        sourcedir: Path,
+        exportdir: Path,
+        palettes: dict[int, ColorTable],
+        compression_level: int,
+        cache_info: dict = None
+    ) -> None:
         """
         Convert and export a graphics file.
 
@@ -147,8 +175,8 @@ class MediaExporter:
         :param compression_level: PNG compression level for the resulting image file.
         :param cache_info: Media cache information with compression parameters from a previous run.
         :type export_request: MediaExportRequest
-        :type sourcedir: Directory
-        :type exportdir: Directory
+        :type sourcedir: Path
+        :type exportdir: Path
         :type palettes: dict
         :type compression_level: int
         :type cache_info: tuple
@@ -218,21 +246,33 @@ class MediaExporter:
             )
 
     @staticmethod
-    def _export_interface(export_request, sourcedir, **kwargs):
+    def _export_interface(
+        export_request: MediaExportRequest,
+        sourcedir: Path,
+        **kwargs
+    ) -> None:
         """
         Convert and export a sprite file.
         """
         # TODO: Implement
 
     @staticmethod
-    def _export_palette(export_request, sourcedir, **kwargs):
+    def _export_palette(
+        export_request: MediaExportRequest,
+        sourcedir: Path,
+        **kwargs
+    ) -> None:
         """
         Convert and export a palette file.
         """
         # TODO: Implement
 
     @staticmethod
-    def _export_sound(export_request, sourcedir, exportdir):
+    def _export_sound(
+        export_request: MediaExportRequest,
+        sourcedir: Path,
+        exportdir: Path,
+    ) -> None:
         """
         Convert and export a sound file.
 
@@ -242,8 +282,8 @@ class MediaExporter:
         :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
                           and target filename should be stored in the export request.
         :type export_request: MediaExportRequest
-        :type sourcedir: Directory
-        :type exportdir: DirectoryVersion of the game
+        :type sourcedir: Path
+        :type exportdir: Path
         """
         source_file = sourcedir[
             export_request.get_type().value,
@@ -280,8 +320,14 @@ class MediaExporter:
             )
 
     @staticmethod
-    def _export_terrain(export_request, sourcedir, exportdir, palettes,
-                        game_version, compression_level):
+    def _export_terrain(
+        export_request: MediaExportRequest,
+        sourcedir: Path,
+        exportdir: Path,
+        palettes: dict[int, ColorTable],
+        game_version: GameVersion,
+        compression_level: int
+    ) -> None:
         """
         Convert and export a terrain graphics file.
 
@@ -297,7 +343,7 @@ class MediaExporter:
         :type sourcedir: Directory
         :type exportdir: Directory
         :type palettes: dict
-        :type game_version: tuple
+        :type game_version: GameVersion
         :type compression_level: int
         """
         source_file = sourcedir[
@@ -326,7 +372,7 @@ class MediaExporter:
             raise Exception(f"Source file {source_file.name} has an unrecognized extension: "
                             f"{source_file.suffix.lower()}")
 
-        if game_version[0].game_id in ("AOC", "SWGB"):
+        if game_version.edition.game_id in ("AOC", "SWGB"):
             from .terrain_merge import merge_terrain
             texture = Texture(image, palettes)
             merge_terrain(texture)
@@ -350,7 +396,12 @@ class MediaExporter:
             )
 
     @staticmethod
-    def _get_media_cache(export_request, sourcedir, palettes, compression_level):
+    def _get_media_cache(
+        export_request: MediaExportRequest,
+        sourcedir: Path,
+        palettes: dict[int, ColorTable],
+        compression_level: int
+    ) -> None:
         """
         Convert a media file and return the used settings. This performs
         a dry run, i.e. the graphics media is not saved on the filesystem.
@@ -363,8 +414,8 @@ class MediaExporter:
         :param palettes: Palettes used by the game.
         :param compression_level: PNG compression level for the resulting image file.
         :type export_request: MediaExportRequest
-        :type sourcedir: Directory
-        :type exportdir: Directory
+        :type sourcedir: Path
+        :type exportdir: Path
         :type palettes: dict
         :type compression_level: int
         """
@@ -414,7 +465,14 @@ class MediaExporter:
         return texture.get_cache_params()
 
     @staticmethod
-    def save_png(texture, targetdir, filename, compression_level=1, cache=None, dry_run=False):
+    def save_png(
+        texture: Texture,
+        targetdir: Path,
+        filename: str,
+        compression_level: int = 1,
+        cache: dict = None,
+        dry_run: bool = False
+    ) -> None:
         """
         Store the image data into the target directory path,
         with given filename="dir/out.png".
@@ -466,7 +524,10 @@ class MediaExporter:
             texture.best_compr = (compression_level, *compr_params)
 
     @staticmethod
-    def log_fileinfo(source_file, target_file):
+    def log_fileinfo(
+        source_file: Path,
+        target_file: Path
+    ) -> None:
         """
         Log source and target file information to the shell.
         """

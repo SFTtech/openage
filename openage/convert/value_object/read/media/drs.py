@@ -1,4 +1,4 @@
-# Copyright 2013-2020 the openage authors. See copying.md for legal info.
+# Copyright 2013-2022 the openage authors. See copying.md for legal info.
 
 """
 Code for reading Genie .DRS archives.
@@ -6,12 +6,19 @@ Code for reading Genie .DRS archives.
 Note that .DRS archives can't store file names; they just store the file
 extension, and a file number.
 """
+from __future__ import annotations
+import typing
+
 
 from .....log import spam, dbg
 from .....util.filelike.stream import StreamFragment
 from .....util.fslike.filecollection import FileCollection
 from .....util.strings import decode_until_null
 from .....util.struct import NamedStruct
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameVersion
+    from openage.util.fslike.wrapper import GuardedFile
 
 
 # version of the drs files, hardcoded for now
@@ -84,14 +91,14 @@ class DRS(FileCollection):
     represents a file archive in DRS format.
     """
 
-    def __init__(self, fileobj, game_version):
+    def __init__(self, fileobj: GuardedFile, game_version: GameVersion):
         super().__init__()
 
         # queried from the outside
         self.fileobj = fileobj
 
         # read header
-        if game_version == "SWGB":
+        if game_version.edition.game_id == "SWGB":
             header = DRSHeaderLucasArts.read(fileobj)
 
         else:
@@ -105,7 +112,7 @@ class DRS(FileCollection):
         dbg(header)
 
         # read table info
-        self.tables = []
+        self.tables: list[tuple[str, int, int]] = []
         for _ in range(header.table_count):
             table_header = DRSTableInfo.read(fileobj)
 
@@ -128,7 +135,7 @@ class DRS(FileCollection):
                 (open_r, None, lambda size=size: size, None)
             )
 
-    def read_tables(self):
+    def read_tables(self) -> typing.Generator[tuple[str, str, str], None, None]:
         """
         Reads the tables from self.tables, and yields tuples of
         filename, offset, size.

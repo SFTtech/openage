@@ -1,11 +1,14 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-lines,too-many-branches,too-many-statements
 """
 Convert data from DE2 to openage formats.
 """
+from __future__ import annotations
+import typing
 
-from openage.convert.value_object.read.value_members import ArrayMember, MemberTypes
+
+from openage.convert.value_object.read.value_members import ArrayMember, StorageType
 import openage.convert.value_object.conversion.aoc.internal_nyan_names as aoc_internal
 import openage.convert.value_object.conversion.de2.internal_nyan_names as de2_internal
 
@@ -24,6 +27,12 @@ from .media_subprocessor import DE2MediaSubprocessor
 from .modpack_subprocessor import DE2ModpackSubprocessor
 from .nyan_subprocessor import DE2NyanSubprocessor
 
+if typing.TYPE_CHECKING:
+    from argparse import Namespace
+    from openage.convert.entity_object.conversion.stringresource import StringResource
+    from openage.convert.entity_object.conversion.modpack import Modpack
+    from openage.convert.value_object.init.game_version import GameVersion
+
 
 class DE2Processor:
     """
@@ -31,7 +40,13 @@ class DE2Processor:
     """
 
     @classmethod
-    def convert(cls, gamespec, args, string_resources, existing_graphics):
+    def convert(
+        cls,
+        gamespec: ArrayMember,
+        args: Namespace,
+        string_resources: StringResource,
+        existing_graphics: list[str]
+    ) -> list[Modpack]:
         """
         Input game speification and media here and get a set of
         modpacks back.
@@ -64,7 +79,13 @@ class DE2Processor:
         return modpacks
 
     @classmethod
-    def _pre_processor(cls, gamespec, game_version, string_resources, existing_graphics):
+    def _pre_processor(
+        cls,
+        gamespec: ArrayMember,
+        game_version: GameVersion,
+        string_resources: StringResource,
+        existing_graphics: list[str]
+    ) -> GenieObjectContainer:
         """
         Store data from the reader in a conversion container.
 
@@ -96,7 +117,7 @@ class DE2Processor:
         return dataset
 
     @classmethod
-    def _processor(cls, full_data_set):
+    def _processor(cls, full_data_set: GenieObjectContainer) -> GenieObjectContainer:
         """
         Transfer structures used in Genie games to more openage-friendly
         Python objects.
@@ -138,7 +159,7 @@ class DE2Processor:
         return full_data_set
 
     @classmethod
-    def _post_processor(cls, full_data_set):
+    def _post_processor(cls, full_data_set: GenieObjectContainer) -> list[Modpack]:
         """
         Convert API-like Python objects to nyan.
 
@@ -158,7 +179,7 @@ class DE2Processor:
         return DE2ModpackSubprocessor.get_modpacks(full_data_set)
 
     @staticmethod
-    def extract_genie_units(gamespec, full_data_set):
+    def extract_genie_units(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract units from the game data.
 
@@ -203,12 +224,12 @@ class DE2Processor:
                 else:
                     # Create empty member if no headers are present
                     unit_commands = ArrayMember("unit_commands",
-                                                MemberTypes.CONTAINER_MEMBER,
+                                                StorageType.CONTAINER_MEMBER,
                                                 members=[])
                     unit.add_member(unit_commands)
 
     @staticmethod
-    def extract_genie_graphics(gamespec, full_data_set):
+    def extract_genie_graphics(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract graphic definitions from the game data.
 
@@ -238,7 +259,7 @@ class DE2Processor:
             genie_graphic.detect_subgraphics()
 
     @staticmethod
-    def create_ambient_groups(full_data_set):
+    def create_ambient_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create ambient groups, mostly for resources and scenery.
 
@@ -259,7 +280,7 @@ class DE2Processor:
             full_data_set.unit_ref.update({ambient_id: ambient_group})
 
     @staticmethod
-    def create_variant_groups(full_data_set):
+    def create_variant_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create variant groups.
 
@@ -281,7 +302,7 @@ class DE2Processor:
                 full_data_set.unit_ref.update({variant_id: variant_group})
 
     @staticmethod
-    def create_extra_building_lines(full_data_set):
+    def create_extra_building_lines(full_data_set: GenieObjectContainer) -> None:
         """
         Create additional units that are not in the building connections.
 

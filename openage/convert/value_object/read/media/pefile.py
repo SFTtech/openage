@@ -1,4 +1,4 @@
-# Copyright 2013-2020 the openage authors. See copying.md for legal info.
+# Copyright 2013-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides PEFile, a class for reading MS portable executable files.
@@ -7,9 +7,16 @@ Primary doc sources:
 http://www.csn.ul.ie/~caolan/pub/winresdump/winresdump/doc/pefile2.html
 http://en.wikibooks.org/wiki/X86_Disassembly/Windows_Executable_Files
 """
+from __future__ import annotations
+import typing
+
 
 from .....util.filelike.stream import StreamFragment
 from .....util.struct import NamedStruct
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.read.media.peresource import PEResources
+    from openage.util.fslike.wrapper import GuardedFile
 
 
 class PEDOSHeader(NamedStruct):
@@ -153,7 +160,7 @@ class PEFile:
     The constructor takes a file-like object.
     """
 
-    def __init__(self, fileobj):
+    def __init__(self, fileobj: GuardedFile):
         # read DOS header
         doshdr = PEDOSHeader.read(fileobj)
         if doshdr.signature != b'MZ':
@@ -181,7 +188,7 @@ class PEFile:
             opthdr.data_directories.append(PEDataDirectory.read(fileobj))
 
         # read section headers
-        sections = {}
+        sections: dict[str, tuple] = {}
 
         for _ in range(coffhdr.number_of_sections):
             section = PESection.read(fileobj)
@@ -201,7 +208,7 @@ class PEFile:
 
         self.sections = sections
 
-    def open_section(self, section_name):
+    def open_section(self, section_name: str) -> StreamFragment:
         """
         Returns a tuple of data, va for the given section.
 
@@ -218,7 +225,7 @@ class PEFile:
             section.file_offset,
             section.virtual_size), section.virtual_address
 
-    def resources(self):
+    def resources(self) -> PEResources:
         """
         Returns a PEResources object for self.
         """

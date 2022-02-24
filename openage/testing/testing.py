@@ -1,8 +1,9 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2022 the openage authors. See copying.md for legal info.
 
 """ Testing utilities, such as TestError, assert_value, assert_raises. """
 
 from contextlib import contextmanager
+from typing import NoReturn
 
 
 class TestError(Exception):
@@ -35,7 +36,7 @@ def assert_value(value, expected=None, validator=None):
     raise TestError("unexpected result: " + repr(value))
 
 
-def result(value):
+def result(value) -> NoReturn:
     """
     Shall be called when a result is unexpectedly returned in an assert_raises
     block.

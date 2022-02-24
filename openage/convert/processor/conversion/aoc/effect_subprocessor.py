@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-statements,invalid-name
 #
@@ -9,11 +9,17 @@
 Creates effects and resistances for the Apply*Effect and Resistance
 abilities.
 """
+from __future__ import annotations
+import typing
+
 from ....entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
     GenieBuildingLineGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
 
 
 class AoCEffectSubprocessor:
@@ -22,7 +28,11 @@ class AoCEffectSubprocessor:
     """
 
     @staticmethod
-    def get_attack_effects(line, location_ref, projectile=-1):
+    def get_attack_effects(
+        line: GenieGameEntityGroup,
+        location_ref: str,
+        projectile: int = -1
+    ) -> list[ForwardRef]:
         """
         Creates effects that are used for attacking (unit command: 7)
 
@@ -84,7 +94,8 @@ class AoCEffectSubprocessor:
             # Change value
             # =================================================================================
             amount_name = f"{location_ref}.{class_name}.ChangeAmount"
-            amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", dataset.nyan_api_objects)
+            amount_raw_api_object = RawAPIObject(
+                amount_name, "ChangeAmount", dataset.nyan_api_objects)
             amount_raw_api_object.add_raw_parent("engine.util.attribute.AttributeAmount")
             amount_location = ForwardRef(line, attack_ref)
             amount_raw_api_object.set_location(amount_location)
@@ -121,7 +132,10 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_convert_effects(line, location_ref):
+    def get_convert_effects(
+        line: GenieGameEntityGroup,
+        location_ref: str
+    ) -> list[ForwardRef]:
         """
         Creates effects that are used for conversion (unit command: 104)
 
@@ -174,7 +188,8 @@ class AoCEffectSubprocessor:
         # Max success (optional; not added because there is none in AoE2)
 
         # Chance
-        chance_success = dataset.genie_civs[0]["resources"][182].get_value() / 100  # hardcoded resource
+        # hardcoded resource
+        chance_success = dataset.genie_civs[0]["resources"][182].get_value() / 100
         convert_raw_api_object.add_raw_member("chance_success",
                                               chance_success,
                                               effect_parent)
@@ -215,7 +230,8 @@ class AoCEffectSubprocessor:
         # Max success (optional; not added because there is none in AoE2)
 
         # Chance
-        chance_success = dataset.genie_civs[0]["resources"][182].get_value() / 100  # hardcoded resource
+        # hardcoded resource
+        chance_success = dataset.genie_civs[0]["resources"][182].get_value() / 100
         convert_raw_api_object.add_raw_member("chance_success",
                                               chance_success,
                                               effect_parent)
@@ -239,7 +255,10 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_heal_effects(line, location_ref):
+    def get_heal_effects(
+        line: GenieGameEntityGroup,
+        location_ref: str
+    ) -> list[ForwardRef]:
         """
         Creates effects that are used for healing (unit command: 105)
 
@@ -334,7 +353,10 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_repair_effects(line, location_ref):
+    def get_repair_effects(
+        line: GenieGameEntityGroup,
+        location_ref: str
+    ) -> list[ForwardRef]:
         """
         Creates effects that are used for repairing (unit command: 106)
 
@@ -456,7 +478,10 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_construct_effects(line, location_ref):
+    def get_construct_effects(
+        line: GenieGameEntityGroup,
+        location_ref: str
+    ) -> list[ForwardRef]:
         """
         Creates effects that are used for construction (unit command: 101)
 
@@ -546,7 +571,10 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_attack_resistances(line, ability_ref):
+    def get_attack_resistances(
+        line: GenieGameEntityGroup,
+        ability_ref: str
+    ) -> list[ForwardRef]:
         """
         Creates resistances that are used for attacking (unit command: 7)
 
@@ -596,7 +624,8 @@ class AoCEffectSubprocessor:
             # Block value
             # =================================================================================
             amount_name = f"{ability_ref}.{class_name}.BlockAmount"
-            amount_raw_api_object = RawAPIObject(amount_name, "BlockAmount", dataset.nyan_api_objects)
+            amount_raw_api_object = RawAPIObject(
+                amount_name, "BlockAmount", dataset.nyan_api_objects)
             amount_raw_api_object.add_raw_parent("engine.util.attribute.AttributeAmount")
             amount_location = ForwardRef(line, armor_ref)
             amount_raw_api_object.set_location(amount_location)
@@ -628,7 +657,10 @@ class AoCEffectSubprocessor:
         return resistances
 
     @staticmethod
-    def get_convert_resistances(line, ability_ref):
+    def get_convert_resistances(
+        line: GenieGameEntityGroup,
+        ability_ref: str
+    ) -> list[ForwardRef]:
         """
         Creates resistances that are used for conversion (unit command: 104)
 
@@ -648,7 +680,8 @@ class AoCEffectSubprocessor:
         convert_parent = "engine.resistance.discrete.convert.type.AoE2Convert"
 
         resistance_ref = f"{ability_ref}.Convert"
-        resistance_raw_api_object = RawAPIObject(resistance_ref, "Convert", dataset.nyan_api_objects)
+        resistance_raw_api_object = RawAPIObject(
+            resistance_ref, "Convert", dataset.nyan_api_objects)
         resistance_raw_api_object.add_raw_parent(convert_parent)
         resistance_location = ForwardRef(line, ability_ref)
         resistance_raw_api_object.set_location(resistance_location)
@@ -666,7 +699,8 @@ class AoCEffectSubprocessor:
                                                  resistance_parent)
 
         # Chance resist
-        chance_resist = dataset.genie_civs[0]["resources"][77].get_value() / 100  # hardcoded resource
+        # hardcoded resource
+        chance_resist = dataset.genie_civs[0]["resources"][77].get_value() / 100
         resistance_raw_api_object.add_raw_member("chance_resist",
                                                  chance_resist,
                                                  resistance_parent)
@@ -701,7 +735,10 @@ class AoCEffectSubprocessor:
         return resistances
 
     @staticmethod
-    def get_heal_resistances(line, ability_ref):
+    def get_heal_resistances(
+        line: GenieGameEntityGroup,
+        ability_ref: str
+    ) -> list[ForwardRef]:
         """
         Creates resistances that are used for healing (unit command: 105)
 
@@ -764,7 +801,10 @@ class AoCEffectSubprocessor:
         return resistances
 
     @staticmethod
-    def get_repair_resistances(line, ability_ref):
+    def get_repair_resistances(
+        line: GenieGameEntityGroup,
+        ability_ref: str
+    ) -> list[ForwardRef]:
         """
         Creates resistances that are used for repairing (unit command: 106)
 
@@ -827,7 +867,8 @@ class AoCEffectSubprocessor:
                                                  resistance_parent)
 
         # Stacking of villager repair HP increase
-        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingRepair"].get_nyan_object()
+        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingRepair"].get_nyan_object(
+        )
         properties = {
             api_objects["engine.resistance.property.type.Stacked"]: construct_property
         }
@@ -844,7 +885,10 @@ class AoCEffectSubprocessor:
         return resistances
 
     @staticmethod
-    def get_construct_resistances(line, ability_ref):
+    def get_construct_resistances(
+        line: GenieGameEntityGroup,
+        ability_ref: str
+    ) -> list[ForwardRef]:
         """
         Creates resistances that are used for constructing (unit command: 101)
 
@@ -891,7 +935,8 @@ class AoCEffectSubprocessor:
         resistances.append(resistance_forward_ref)
 
         # Stacking of villager construction times
-        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingConstruct"].get_nyan_object()
+        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingConstruct"].get_nyan_object(
+        )
         properties = {
             api_objects["engine.resistance.property.type.Stacked"]: construct_property
         }
@@ -918,7 +963,8 @@ class AoCEffectSubprocessor:
                                                  attr_resistance_parent)
 
         # Stacking of villager construction HP increase
-        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingConstruct"].get_nyan_object()
+        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingConstruct"].get_nyan_object(
+        )
         properties = {
             api_objects["engine.resistance.property.type.Stacked"]: construct_property
         }

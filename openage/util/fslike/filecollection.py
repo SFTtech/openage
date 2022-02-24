@@ -1,4 +1,4 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides Filecollection, a utility class for combining multiple file-like
@@ -7,6 +7,7 @@ objects to a FSLikeObject.
 
 from collections import OrderedDict
 from io import UnsupportedOperation
+from typing import NoReturn
 
 from .abstract import FSLikeObject
 from .path import Path
@@ -30,7 +31,7 @@ class FileCollection(FSLikeObject):
     def root(self):
         return FileCollectionPath(self, [])
 
-    def get_direntries(self, parts=None, create=False):
+    def get_direntries(self, parts=None, create: bool = False) -> tuple[OrderedDict, OrderedDict]:
         """
         Fetches the fileentries, subdirentries tuple for the given dir.
 
@@ -100,7 +101,7 @@ class FileCollection(FSLikeObject):
 
         return entries[0][name]
 
-    def open_r(self, parts):
+    def open_r(self, parts) -> None:
         open_r, _, _, _ = self.get_fileentry(parts)
 
         if open_r is None:
@@ -110,7 +111,7 @@ class FileCollection(FSLikeObject):
 
         return open_r()
 
-    def open_w(self, parts):
+    def open_w(self, parts) -> None:
         _, open_w, _, _ = self.get_fileentry(parts)
 
         if open_w is None:
@@ -124,7 +125,7 @@ class FileCollection(FSLikeObject):
         yield from subdirs
         yield from fileentries
 
-    def filesize(self, parts):
+    def filesize(self, parts) -> int:
         _, _, filesize, _ = self.get_fileentry(parts)
 
         if filesize is None:
@@ -132,7 +133,7 @@ class FileCollection(FSLikeObject):
 
         return filesize()
 
-    def mtime(self, parts):
+    def mtime(self, parts) -> float:
         _, _, _, mtime = self.get_fileentry(parts)
 
         if mtime is None:
@@ -140,10 +141,10 @@ class FileCollection(FSLikeObject):
 
         return mtime()
 
-    def mkdirs(self, parts):
+    def mkdirs(self, parts) -> None:
         self.get_direntries(parts, create=True)
 
-    def rmdir(self, parts):
+    def rmdir(self, parts) -> None:
         if not parts:
             raise UnsupportedOperation("can't rmdir FileCollection.root")
 
@@ -164,7 +165,7 @@ class FileCollection(FSLikeObject):
 
         del parent_dirs[name]
 
-    def unlink(self, parts):
+    def unlink(self, parts) -> None:
         if not parts:
             raise IsADirectoryError("FileCollection.root")
 
@@ -179,27 +180,27 @@ class FileCollection(FSLikeObject):
         except KeyError:
             raise FileNotFoundError(b'/'.join(parts)) from None
 
-    def touch(self, parts):
+    def touch(self, parts) -> NoReturn:
         raise UnsupportedOperation("FileCollection.touch")
 
-    def rename(self, srcparts, tgtparts):
+    def rename(self, srcparts, tgtparts) -> NoReturn:
         raise UnsupportedOperation("FileCollection.rename")
 
-    def is_file(self, parts):
+    def is_file(self, parts) -> bool:
         try:
             self.get_fileentry(parts)
             return True
         except IOError:
             return False
 
-    def is_dir(self, parts):
+    def is_dir(self, parts) -> bool:
         try:
             self.get_direntries(parts)
             return True
         except IOError:
             return False
 
-    def writable(self, parts):
+    def writable(self, parts) -> bool:
         try:
             _, open_w, _, _ = self.get_fileentry(parts)
             return open_w is not None
@@ -208,11 +209,11 @@ class FileCollection(FSLikeObject):
             # though some of the existing files inside might be.
             return False
 
-    def watch(self, parts, callback):
+    def watch(self, parts, callback) -> bool:
         del self, parts, callback  # unused
         return False
 
-    def poll_watches(self):
+    def poll_watches(self) -> None:
         pass
 
 
@@ -221,7 +222,13 @@ class FileCollectionPath(Path):
     Provides an additional method for adding a file at this path.
     """
 
-    def add_file(self, open_r=None, open_w=None, filesize=None, mtime=None):
+    def add_file(
+        self,
+        open_r=None,
+        open_w=None,
+        filesize: int = None,
+        mtime: float = None
+    ) -> bool:
         """
         All parent directories are 'created', if needed.
 
@@ -231,7 +238,7 @@ class FileCollectionPath(Path):
         return self.fsobj.add_fileentry(
             self.parts, (open_r, open_w, filesize, mtime))
 
-    def add_file_from_path(self, path):
+    def add_file_from_path(self, path: Path) -> None:
         """
         Like add_file, but uses a Path object instead of callables.
         """

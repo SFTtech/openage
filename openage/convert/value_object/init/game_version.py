@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments
 
@@ -6,6 +6,7 @@
 Stores information about base game editions and expansions.
 """
 
+from dataclasses import dataclass
 import enum
 
 from ..read.media_types import MediaType
@@ -27,8 +28,15 @@ class GameBase:
     Common base class for GameEdition and GameExpansion
     """
 
-    def __init__(self, game_id, support, game_version_info, media_paths,
-                 modpacks, **flags):
+    def __init__(
+        self,
+        game_id: str,
+        support: bool,
+        game_version_info: list[tuple[list[str], dict[str, str]]],
+        media_paths: list[tuple[str, list[str]]],
+        modpacks: list[str],
+        **flags
+    ):
         """
         :param game_id: Unique id for the given game.
         :type_param: str
@@ -62,7 +70,7 @@ class GameBase:
         for media_type, paths in media_paths:
             self.add_media_paths(media_type, paths)
 
-    def add_game_file_versions(self, filepaths, hashes):
+    def add_game_file_versions(self, filepaths: list[str], hashes: dict[str, str]) -> None:
         """
         Add a GameFileVersion object for files which are unique
         to this version of the game.
@@ -77,7 +85,7 @@ class GameBase:
         """
         self.game_file_versions.append(GameFileVersion(filepaths, hashes))
 
-    def add_media_paths(self, media_type, paths):
+    def add_media_paths(self, media_type: str, paths: list[str]) -> None:
         """
         Add a media type with the associated files.
 
@@ -94,18 +102,30 @@ class GameExpansion(GameBase):
     An optional expansion to a GameEdition.
     """
 
-    def __init__(self, name, game_id, support, game_hashes, media_paths,
-                 modpacks, **flags):
+    def __init__(
+        self,
+        name: str,
+        game_id: str,
+        support: bool,
+        game_version_info: list[tuple[list[str], dict[str, str]]],
+        media_paths: list[tuple[str, list[str]]],
+        modpacks: list[str],
+        **flags
+    ):
         """
         Create a new GameExpansion instance.
 
         :param name: Name of the game.
         :type name: str
-        :param game_id: Unique id for the given game.
-        :type game_id: str
         """
-        super().__init__(game_id, support, game_hashes, media_paths,
-                         modpacks, **flags)
+        super().__init__(
+            game_id,
+            support,
+            game_version_info,
+            media_paths,
+            modpacks,
+            **flags
+        )
 
         self.expansion_name = name
 
@@ -123,25 +143,46 @@ class GameEdition(GameBase):
     The Conquerors are considered "downgrade" expansions.
     """
 
-    def __init__(self, name, game_id, support, game_hashes, media_paths,
-                 modpacks, expansions, **flags):
+    def __init__(
+        self,
+        name: str,
+        game_id: str,
+        support: bool,
+        game_version_info: list[tuple[list[str], dict[str, str]]],
+        media_paths: list[tuple[str, list[str]]],
+        modpacks: list[str],
+        expansions: list[str],
+        **flags
+    ):
         """
         Create a new GameEdition instance.
 
         :param name: Name of the game.
         :type name: str
-        :param game_id: Unique id for the given game.
-        :type game_id: str
         :param expansions: A list of expansions.
         :type expansion: list
-        :param flags: Anything else specific to this version which is useful
-                      for the converter.
         """
-        super().__init__(game_id, support, game_hashes, media_paths,
-                         modpacks, **flags)
+        super().__init__(
+            game_id,
+            support,
+            game_version_info,
+            media_paths,
+            modpacks,
+            **flags
+        )
 
         self.edition_name = name
         self.expansions = expansions
 
     def __str__(self):
         return self.edition_name
+
+
+@dataclass(frozen=True)
+class GameVersion:
+    """
+    Combination of edition and expansions that defines the exact version
+    of a detected game in a folder.
+    """
+    edition: GameEdition
+    expansions: tuple[GameExpansion, ...] = tuple()

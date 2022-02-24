@@ -1,13 +1,18 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Main engine entry point for openage.
 """
+from __future__ import annotations
+import typing
 
 from ..log import err, info
 
+if typing.TYPE_CHECKING:
+    from argparse import ArgumentParser
 
-def init_subparser(cli):
+
+def init_subparser(cli: ArgumentParser):
     """ Initializes the parser for game-specific args. """
     cli.set_defaults(entrypoint=main)
 

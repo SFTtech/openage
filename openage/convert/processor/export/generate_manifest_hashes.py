@@ -1,14 +1,24 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 """
 Provides functions for traversing a directory and
 generating hash values for all the items inside.
 """
 
+from __future__ import annotations
+import typing
+
+
 import os
+
 from openage.util.hash import hash_file
 
+if typing.TYPE_CHECKING:
+    from openage.util.fslike.directory import Directory
+    from openage.util.fslike.path import Path
+    from openage.convert.entity_object.conversion.modpack import Modpack
 
-def bfs_directory(root):
+
+def bfs_directory(root: Path) -> typing.Generator[Path, None, None]:
     """
     Traverse the given directory with breadth-first way.
 
@@ -34,7 +44,12 @@ def bfs_directory(root):
         dirs = next_level
 
 
-def generate_hashes(modpack, exportdir, hash_algo='sha3_256', bufsize=32768):
+def generate_hashes(
+    modpack: Modpack,
+    exportdir: Directory,
+    hash_algo: str = 'sha3_256',
+    bufsize: int = 32768
+) -> None:
     """
     Generate hashes for all the items in a
     given modpack and adds them to the manifest

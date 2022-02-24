@@ -1,18 +1,31 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments,too-many-locals,too-many-branches
 """
 Detects the base version of the game and installed expansions.
 """
 
+from __future__ import annotations
+
+import typing
+
 import toml
+
 
 from ....log import info, warn, dbg
 from ....util.hash import hash_file
-from ...value_object.init.game_version import GameEdition, GameExpansion, Support
+from ...value_object.init.game_version import GameEdition, GameExpansion, GameVersion, Support
+
+if typing.TYPE_CHECKING:
+    from openage.util.fslike.directory import Directory
+    from openage.util.fslike.path import Path
 
 
-def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
+def iterate_game_versions(
+    srcdir: Directory,
+    avail_game_eds: list[GameEdition],
+    avail_game_exps: list[GameExpansion]
+) -> GameVersion:
     """
     Determine what editions and expansions of a game are installed in srcdir
     by iterating through all versions the converter knows about.
@@ -77,7 +90,7 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
     else:
         # Either no version or an unsupported or broken was found
         # Return the last detected edition
-        return best_edition, []
+        return GameVersion(edition=best_edition)
 
     for game_expansion in best_edition.expansions:
         for existing_game_expansion in avail_game_exps:
@@ -113,10 +126,10 @@ def iterate_game_versions(srcdir, avail_game_eds, avail_game_exps):
 
             expansions.append(game_expansion)
 
-    return best_edition, expansions
+    return GameVersion(edition=best_edition, expansions=expansions)
 
 
-def create_version_objects(srcdir):
+def create_version_objects(srcdir: Directory) -> tuple[list[GameEdition], list[GameExpansion]]:
     """
     Create GameEdition and GameExpansion objects from auxiliary
     config files.
@@ -152,7 +165,11 @@ def create_version_objects(srcdir):
     return game_edition_list, game_expansion_list
 
 
-def create_game_obj(game_info, aux_path, expansion=False):
+def create_game_obj(
+    game_info: dict[str, str],
+    aux_path: Path,
+    expansion: bool = False
+) -> typing.Union[GameEdition, GameExpansion]:
     """
     Create a GameEdition or GameExpansion object from the contents
     of the game_info dictionary and its version hash file.

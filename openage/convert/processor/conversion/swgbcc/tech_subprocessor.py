@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-branches
 #
@@ -8,6 +8,9 @@
 """
 Creates patches for technologies.
 """
+from __future__ import annotations
+import typing
+
 from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.aoc.genie_tech import CivTeamBonus, CivBonus
 from ..aoc.tech_subprocessor import AoCTechSubprocessor
@@ -15,6 +18,11 @@ from ..aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from ..aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
 from .upgrade_attribute_subprocessor import SWGBCCUpgradeAttributeSubprocessor
 from .upgrade_resource_subprocessor import SWGBCCUpgradeResourceSubprocessor
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
+    from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject
+    from openage.convert.value_object.conversion.forward_ref import ForwardRef
 
 
 class SWGBCCTechSubprocessor:
@@ -101,7 +109,7 @@ class SWGBCCTechSubprocessor:
     }
 
     @classmethod
-    def get_patches(cls, converter_group):
+    def get_patches(cls, converter_group: ConverterObjectGroup) -> list[ForwardRef]:
         """
         Returns the patches for a converter group, depending on the type
         of its effects.
@@ -114,14 +122,14 @@ class SWGBCCTechSubprocessor:
             effects = converter_group.get_effects()
 
             # Change converter group here, so that the Civ object gets the patches
-            converter_group = dataset.civ_groups[converter_group.get_civilization()]
+            converter_group = dataset.civ_groups[converter_group.get_civilization_id()]
             team_bonus = True
 
         elif isinstance(converter_group, CivBonus):
             effects = converter_group.get_effects()
 
             # Change converter group here, so that the Civ object gets the patches
-            converter_group = dataset.civ_groups[converter_group.get_civilization()]
+            converter_group = dataset.civ_groups[converter_group.get_civilization_id()]
 
         else:
             effects = converter_group.get_effects()
@@ -176,7 +184,11 @@ class SWGBCCTechSubprocessor:
         return patches
 
     @staticmethod
-    def attribute_modify_effect(converter_group, effect, team=False):
+    def attribute_modify_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates the patches for modifying attributes of entities.
         """
@@ -241,7 +253,11 @@ class SWGBCCTechSubprocessor:
         return patches
 
     @staticmethod
-    def resource_modify_effect(converter_group, effect, team=False):
+    def resource_modify_effect(
+        converter_group: ConverterObjectGroup,
+        effect: GenieEffectObject,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates the patches for modifying resources.
         """

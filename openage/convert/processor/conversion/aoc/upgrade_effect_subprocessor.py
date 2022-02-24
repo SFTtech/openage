@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-statements,too-many-branches
 #
@@ -9,6 +9,10 @@
 Upgrades effects and resistances for the Apply*Effect and Resistance
 abilities.
 """
+from __future__ import annotations
+import typing
+
+
 from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
@@ -17,6 +21,11 @@ from ....value_object.conversion.forward_ref import ForwardRef
 from ....value_object.read.value_members import NoDiffMember,\
     LeftMissingMember, RightMissingMember
 
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObject
+    from openage.convert.entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+
 
 class AoCUpgradeEffectSubprocessor:
     """
@@ -24,7 +33,12 @@ class AoCUpgradeEffectSubprocessor:
     """
 
     @staticmethod
-    def get_attack_effects(tech_group, line, diff, ability_ref):
+    def get_attack_effects(
+        tech_group: GenieTechEffectBundleGroup,
+        line: GenieGameEntityGroup,
+        diff: ConverterObject,
+        ability_ref: str
+    ) -> list[ForwardRef]:
         """
         Upgrades effects that are used for attacking (unit command: 7)
 
@@ -133,12 +147,14 @@ class AoCUpgradeEffectSubprocessor:
                 # Change value
                 # =================================================================================
                 amount_name = f"{nyan_patch_ref}.{class_name}.ChangeAmount"
-                amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", dataset.nyan_api_objects)
+                amount_raw_api_object = RawAPIObject(
+                    amount_name, "ChangeAmount", dataset.nyan_api_objects)
                 amount_raw_api_object.add_raw_parent("engine.util.attribute.AttributeAmount")
                 amount_location = ForwardRef(line, attack_ref)
                 amount_raw_api_object.set_location(amount_location)
 
-                attribute = dataset.pregen_nyan_objects["util.attribute.types.Health"].get_nyan_object()
+                attribute = dataset.pregen_nyan_objects["util.attribute.types.Health"].get_nyan_object(
+                )
                 amount_raw_api_object.add_raw_member("type",
                                                      attribute,
                                                      "engine.util.attribute.AttributeAmount")
@@ -299,7 +315,12 @@ class AoCUpgradeEffectSubprocessor:
         return patches
 
     @staticmethod
-    def get_attack_resistances(tech_group, line, diff, ability_ref):
+    def get_attack_resistances(
+        tech_group: GenieTechEffectBundleGroup,
+        line: GenieGameEntityGroup,
+        diff: ConverterObject,
+        ability_ref: str
+    ) -> list[ForwardRef]:
         """
         Upgrades resistances that are used for attacking (unit command: 7)
 
@@ -399,12 +420,14 @@ class AoCUpgradeEffectSubprocessor:
                 # Block value
                 # =================================================================================
                 amount_name = f"{nyan_patch_ref}.{class_name}.BlockAmount"
-                amount_raw_api_object = RawAPIObject(amount_name, "BlockAmount", dataset.nyan_api_objects)
+                amount_raw_api_object = RawAPIObject(
+                    amount_name, "BlockAmount", dataset.nyan_api_objects)
                 amount_raw_api_object.add_raw_parent("engine.util.attribute.AttributeAmount")
                 amount_location = ForwardRef(line, attack_ref)
                 amount_raw_api_object.set_location(amount_location)
 
-                attribute = dataset.pregen_nyan_objects["util.attribute.types.Health"].get_nyan_object()
+                attribute = dataset.pregen_nyan_objects["util.attribute.types.Health"].get_nyan_object(
+                )
                 amount_raw_api_object.add_raw_member("type",
                                                      attribute,
                                                      "engine.util.attribute.AttributeAmount")

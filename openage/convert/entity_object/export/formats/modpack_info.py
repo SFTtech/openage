@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-instance-attributes,too-many-arguments
 
@@ -19,31 +19,39 @@ class ModpackInfo(DataDefinition):
     and about the creators of the modpack.
     """
 
-    def __init__(self, targetdir, filename):
+    def __init__(self, targetdir: str, filename: str):
         super().__init__(targetdir, filename)
 
         # Info
-        self.packagename = None
-        self.version = None
-        self.extra_info = {}
+        self.packagename: str = None
+        self.version: str = None
+        self.extra_info: dict[str, str] = {}
 
         # Assets
-        self.includes = []
-        self.excludes = []
+        self.includes: list[str] = []
+        self.excludes: list[str] = []
 
         # Dependency
-        self.requires = []
+        self.requires: list[str] = []
 
         # Conflict
-        self.conflicts = []
+        self.conflicts: list[str] = []
 
         # Authors
-        self.authors = {}
+        self.authors: dict[str, str] = {}
 
         # Author groups
-        self.author_groups = {}
+        self.author_groups: dict[str, str] = {}
 
-    def add_author(self, name, fullname=None, since=None, until=None, roles=None, contact=None):
+    def add_author(
+        self,
+        name: str,
+        fullname: str = None,
+        since: str = None,
+        until: str = None,
+        roles: str = None,
+        contact: str = None
+    ) -> None:
         """
         Adds an author with optional contact info.
 
@@ -80,7 +88,12 @@ class ModpackInfo(DataDefinition):
 
         self.authors[name] = author
 
-    def add_author_group(self, name, authors, description=None):
+    def add_author_group(
+        self,
+        name: str,
+        authors: list[str],
+        description: str = None
+    ) -> None:
         """
         Adds an author with optional contact info.
 
@@ -100,7 +113,7 @@ class ModpackInfo(DataDefinition):
 
         self.author_groups[name] = author_group
 
-    def add_include(self, path):
+    def add_include(self, path: str) -> None:
         """
         Add a path to an asset that is loaded by the modpack.
 
@@ -109,7 +122,7 @@ class ModpackInfo(DataDefinition):
         """
         self.includes.append(path)
 
-    def add_exclude(self, path):
+    def add_exclude(self, path: str) -> None:
         """
         Add a path to an asset that excluded from loading.
 
@@ -118,7 +131,7 @@ class ModpackInfo(DataDefinition):
         """
         self.excludes.append(path)
 
-    def add_conflict(self, modpack_id):
+    def add_conflict(self, modpack_id: str) -> None:
         """
         Add an identifier of another modpack that has a conflict with this modpack.
 
@@ -127,7 +140,7 @@ class ModpackInfo(DataDefinition):
         """
         self.conflicts.append(modpack_id)
 
-    def add_dependency(self, modpack_id):
+    def add_dependency(self, modpack_id: str) -> None:
         """
         Add an identifier of another modpack that is a dependency of this modpack.
 
@@ -136,8 +149,18 @@ class ModpackInfo(DataDefinition):
         """
         self.requires.append(modpack_id)
 
-    def set_info(self, packagename, version, repo=None, alias=None, title=None,
-                 description=None, long_description=None, url=None, licenses=None):
+    def set_info(
+        self,
+        packagename: str,
+        version: str,
+        repo: str = None,
+        alias: str = None,
+        title: str = None,
+        description: str = None,
+        long_description: str = None,
+        url: str = None,
+        licenses: str = None
+    ) -> None:
         """
         Set the general information about the modpack.
 
@@ -184,7 +207,7 @@ class ModpackInfo(DataDefinition):
         if licenses:
             self.extra_info["licenses"] = licenses
 
-    def dump(self):
+    def dump(self) -> str:
         """
         Outputs the modpack info to the TOML output format.
         """

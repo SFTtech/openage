@@ -1,11 +1,17 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2022 the openage authors. See copying.md for legal info.
 
 """
 Contains structures and API-like objects for terrain from AoC.
 """
-
+from __future__ import annotations
+import typing
 
 from ..converter_object import ConverterObject, ConverterObjectGroup
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container\
+        import GenieObjectContainer
+    from openage.convert.value_object.read.value_members import ValueMember
 
 
 class GenieTerrainObject(ConverterObject):
@@ -15,7 +21,12 @@ class GenieTerrainObject(ConverterObject):
 
     __slots__ = ('data',)
 
-    def __init__(self, terrain_id, full_data_set, members=None):
+    def __init__(
+        self,
+        terrain_id: int,
+        full_data_set: GenieObjectContainer,
+        members: dict[str, ValueMember] = None
+    ):
         """
         Creates a new Genie terrain object.
 
@@ -42,7 +53,11 @@ class GenieTerrainGroup(ConverterObjectGroup):
 
     __slots__ = ('data', 'terrain')
 
-    def __init__(self, terrain_id, full_data_set):
+    def __init__(
+        self,
+        terrain_id: int,
+        full_data_set: GenieObjectContainer,
+    ):
         """
         Creates a new Genie tech group object.
 
@@ -59,19 +74,19 @@ class GenieTerrainGroup(ConverterObjectGroup):
         # The terrain that belongs to the index
         self.terrain = self.data.genie_terrains[terrain_id]
 
-    def has_subterrain(self):
+    def has_subterrain(self) -> bool:
         """
         Checks if this terrain uses a subterrain for its graphics.
         """
         return self.terrain["terrain_replacement_id"].get_value() > -1
 
-    def get_subterrain(self):
+    def get_subterrain(self) -> GenieTerrainObject:
         """
         Return the subterrain used for the graphics.
         """
         return self.data.genie_terrains[self.terrain["terrain_replacement_id"].get_value()]
 
-    def get_terrain(self):
+    def get_terrain(self) -> GenieTerrainObject:
         """
         Return the subterrain used for the graphics.
         """

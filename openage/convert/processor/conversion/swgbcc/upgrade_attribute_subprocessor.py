@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
 #
@@ -8,10 +8,18 @@
 """
 Creates upgrade patches for attribute modification effects in SWGB.
 """
+from __future__ import annotations
+import typing
+
 from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
+
+if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+    from openage.nyan.nyan_structs import MemberOperator
 
 
 class SWGBCCUpgradeAttributeSubprocessor:
@@ -20,7 +28,13 @@ class SWGBCCUpgradeAttributeSubprocessor:
     """
 
     @staticmethod
-    def cost_carbon_upgrade(converter_group, line, value, operator, team=False):
+    def cost_carbon_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the carbon cost modify effect (ID: 104).
 
@@ -29,7 +43,7 @@ class SWGBCCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -89,7 +103,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -106,7 +121,13 @@ class SWGBCCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def cost_nova_upgrade(converter_group, line, value, operator, team=False):
+    def cost_nova_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the nova cost modify effect (ID: 105).
 
@@ -115,7 +136,7 @@ class SWGBCCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -175,7 +196,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -192,7 +214,13 @@ class SWGBCCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def cost_ore_upgrade(converter_group, line, value, operator, team=False):
+    def cost_ore_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the ore cost modify effect (ID: 106).
 
@@ -201,7 +229,7 @@ class SWGBCCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -261,7 +289,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
                                               "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+            )
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
@@ -278,7 +307,13 @@ class SWGBCCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
-    def resource_cost_upgrade(converter_group, line, value, operator, team=False):
+    def resource_cost_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
         """
         Creates a patch for the resource modify effect (ID: 100).
 
@@ -287,7 +322,7 @@ class SWGBCCUpgradeAttributeSubprocessor:
         :param line: Unit/Building line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
         :param value: Value used for patching the member.
-        :type value: MemberOperator
+        :type value: int, float
         :param operator: Operator used for patching the member.
         :type operator: MemberOperator
         :returns: The forward references for the generated patches.
@@ -377,7 +412,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
                                                   "engine.util.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
+                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
+                )
                 properties = {
                     dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
                 }

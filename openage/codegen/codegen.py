@@ -1,4 +1,4 @@
-# Copyright 2014-2021 the openage authors. See copying.md for legal info.
+# Copyright 2014-2022 the openage authors. See copying.md for legal info.
 
 """
 Utility and driver module for C++ code generation.
@@ -11,6 +11,7 @@ from itertools import chain
 import os
 from sys import modules
 import sys
+from typing import Generator
 
 from ..log import err
 from ..util.filelike.fifo import FIFO
@@ -43,10 +44,10 @@ class WriteCatcher(FIFO):
     and read() fails if eof is not set.
     """
 
-    def close(self):
+    def close(self) -> None:
         self.eof = True
 
-    def read(self, size=-1):
+    def read(self, size: int = -1) -> bytes:
         if not self.eof:
             raise UnsupportedOperation(
                 "can not read from WriteCatcher while not closed for writing")
@@ -80,7 +81,7 @@ class CodegenDirWrapper(Wrapper):
         self.writes.append((parts, intercept_obj))
         return intercept_obj
 
-    def get_reads(self):
+    def get_reads(self) -> None:
         """
         Returns an iterable of all path component tuples for files that have
         been read.
@@ -90,7 +91,7 @@ class CodegenDirWrapper(Wrapper):
 
         self.reads.clear()
 
-    def get_writes(self):
+    def get_writes(self) -> None:
         """
         Returns an iterable of all (path components, data_written) tuples for
         files that have been written.
@@ -104,7 +105,7 @@ class CodegenDirWrapper(Wrapper):
         return f"CodegenDirWrapper({repr(self.obj)})"
 
 
-def codegen(mode, input_dir, output_dir):
+def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[list[str], list[str]]:
     """
     Calls .listing.generate_all(), and post-processes the generated
     data, checking them and adding a header.
@@ -190,7 +191,7 @@ def depend_module_blacklist():
         pass
 
 
-def get_codegen_depends(outputwrapper):
+def get_codegen_depends(outputwrapper: CodegenDirWrapper) -> Generator[str, None, None]:
     """
     Yields all codegen dependencies.
 
@@ -238,7 +239,7 @@ def get_codegen_depends(outputwrapper):
         yield filename
 
 
-def get_header_lines():
+def get_header_lines() -> Generator[str, None, None]:
     """
     Yields the lines for the automatically-added file header.
     """
@@ -254,7 +255,7 @@ def get_header_lines():
     yield ""
 
 
-def postprocess_write(parts, data):
+def postprocess_write(parts, data: str) -> str:
     """
     Post-processes a single write operation, as intercepted during codegen.
     """

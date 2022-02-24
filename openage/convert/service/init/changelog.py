@@ -1,4 +1,4 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Asset version change log
@@ -6,7 +6,8 @@ Asset version change log
 used to determine whether assets that were converted by an earlier version of
 openage are still up to date.
 """
-
+from __future__ import annotations
+import typing
 from ....log import warn
 from ....testing.testing import TestError
 
@@ -41,11 +42,10 @@ CHANGES = (
 ASSET_VERSION = len(CHANGES) - 1
 
 
-def changes(asset_version):
+def changes(asset_version: int) -> set:
     """
     return all changed components since the passed version number.
     """
-
     if asset_version >= len(CHANGES):
         warn("asset version from the future: %d", asset_version)
         warn("current version is: %d", ASSET_VERSION)
@@ -59,11 +59,10 @@ def changes(asset_version):
     return changed_components
 
 
-def test():
+def test() -> typing.NoReturn:
     """
     verify only allowed versions are stored in the changes
     """
-
     for entry in CHANGES:
         if entry > COMPONENTS:
             invalid = entry - COMPONENTS
