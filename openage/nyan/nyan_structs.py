@@ -41,9 +41,9 @@ class NyanObject:
     def __init__(
         self,
         name: str,
-        parents: OrderedSet = None,
-        members: OrderedSet = None,
-        nested_objects: OrderedSet = None
+        parents: OrderedSet[NyanObject] = None,
+        members: OrderedSet[NyanMember] = None,
+        nested_objects: OrderedSet[NyanObject] = None
     ):
         """
         Initializes the object and does some correctness
@@ -82,7 +82,7 @@ class NyanObject:
         if len(self._parents) > 0:
             self._process_inheritance()
 
-    def add_nested_object(self, new_nested_object) -> None:
+    def add_nested_object(self, new_nested_object: NyanObject) -> None:
         """
         Adds a nested object to the nyan object.
         """
@@ -98,7 +98,7 @@ class NyanObject:
         new_nested_object.set_fqon((*self._fqon,
                                     new_nested_object.get_name()))
 
-    def add_member(self, new_member) -> None:
+    def add_member(self, new_member: NyanMember) -> None:
         """
         Adds a member to the nyan object.
         """
@@ -124,7 +124,7 @@ class NyanObject:
             )
             child.update_inheritance(inherited_member)
 
-    def add_child(self, new_child) -> None:
+    def add_child(self, new_child: NyanObject) -> None:
         """
         Registers another object as a child.
         """
@@ -160,7 +160,7 @@ class NyanObject:
             )
             new_child.update_inheritance(inherited_member)
 
-    def has_member(self, member_name: str, origin=None) -> bool:
+    def has_member(self, member_name: str, origin: NyanObject = None) -> bool:
         """
         Returns True if the NyanMember with the specified name exists.
         """
@@ -183,13 +183,13 @@ class NyanObject:
         """
         return self._fqon
 
-    def get_members(self) -> OrderedSet:
+    def get_members(self) -> OrderedSet[NyanMember]:
         """
         Returns all NyanMembers of the object, including inherited members.
         """
         return self._members.union(self._inherited_members)
 
-    def get_member_by_name(self, member_name: str, origin=None):
+    def get_member_by_name(self, member_name: str, origin: NyanObject = None) -> NyanMember:
         """
         Returns the NyanMember with the specified name.
         """
@@ -227,19 +227,19 @@ class NyanObject:
         """
         return self.name
 
-    def get_nested_objects(self) -> OrderedSet:
+    def get_nested_objects(self) -> OrderedSet[NyanObject]:
         """
         Returns all nested NyanObjects of this object.
         """
         return self._nested_objects
 
-    def get_parents(self) -> OrderedSet:
+    def get_parents(self) -> OrderedSet[NyanObject]:
         """
         Returns all nested parents of this object.
         """
         return self._parents
 
-    def has_ancestor(self, nyan_object) -> bool:
+    def has_ancestor(self, nyan_object: NyanObject) -> bool:
         """
         Returns True if the given nyan object is an ancestor
         of this nyan object.
@@ -285,7 +285,7 @@ class NyanObject:
             nested_fqon = (*new_fqon, nested_object.get_name())
             nested_object.set_fqon(nested_fqon)
 
-    def update_inheritance(self, new_inherited_member) -> None:
+    def update_inheritance(self, new_inherited_member: InheritedNyanMember) -> None:
         """
         Add an inherited member to the object. Should only be used by
         parent objects.
@@ -620,8 +620,8 @@ class NyanMemberType:
 
     def __init__(
         self,
-        member_type,
-        element_types=None
+        member_type: typing.Union[MemberType, NyanObject],
+        element_types: typing.Collection[NyanMemberType] = None
     ):
         """
         Initializes the member type and does some correctness
@@ -640,13 +640,13 @@ class NyanMemberType:
         # check for errors in the initilization
         self._sanity_check()
 
-    def get_type(self):
+    def get_type(self) -> MemberType:
         """
         Returns the member type.
         """
         return self._member_type
 
-    def get_real_type(self):
+    def get_real_type(self) -> MemberType:
         """
         Returns the member type without wrapping modifiers.
         """
@@ -655,13 +655,13 @@ class NyanMemberType:
 
         return self._member_type
 
-    def get_element_types(self) -> tuple:
+    def get_element_types(self) -> tuple[NyanMemberType, ...]:
         """
         Returns the element types.
         """
         return self._element_types
 
-    def get_real_element_types(self) -> tuple:
+    def get_real_element_types(self) -> tuple[NyanMemberType, ...]:
         """
         Returns the element types without wrapping modifiers.
         """
@@ -680,7 +680,7 @@ class NyanMemberType:
                                      MemberType.FILE,
                                      MemberType.BOOLEAN)
 
-    def is_real_primitive(self) -> tuple:
+    def is_real_primitive(self) -> bool:
         """
         Returns True if the member type is a primitive wrapped in a modifier.
         """
@@ -689,7 +689,7 @@ class NyanMemberType:
 
         return self.is_primitive()
 
-    def is_complex(self) -> tuple:
+    def is_complex(self) -> bool:
         """
         Returns True if the member type is a collection.
         """
@@ -697,7 +697,7 @@ class NyanMemberType:
                                      MemberType.ORDEREDSET,
                                      MemberType.DICT)
 
-    def is_real_complex(self) -> tuple:
+    def is_real_complex(self) -> bool:
         """
         Returns True if the member type is a collection wrapped in a modifier.
         """
@@ -706,13 +706,13 @@ class NyanMemberType:
 
         return self.is_complex()
 
-    def is_object(self) -> tuple:
+    def is_object(self) -> bool:
         """
         Returns True if the member type is an object.
         """
         return isinstance(self._member_type, NyanObject)
 
-    def is_real_object(self) -> tuple:
+    def is_real_object(self) -> bool:
         """
         Returns True if the member type is an object wrapped in a modifier.
         """
@@ -721,7 +721,7 @@ class NyanMemberType:
 
         return self.is_object()
 
-    def is_modifier(self) -> tuple:
+    def is_modifier(self) -> bool:
         """
         Returns True if the member type is a modifier.
         """
@@ -729,13 +729,13 @@ class NyanMemberType:
                                      MemberType.CHILDREN,
                                      MemberType.OPTIONAL)
 
-    def is_composite(self) -> tuple:
+    def is_composite(self) -> bool:
         """
         Returns True if the member is a composite type with at least one element type.
         """
         return self.is_complex() or self.is_modifier()
 
-    def accepts_op(self, operator) -> tuple:
+    def accepts_op(self, operator: MemberOperator) -> bool:
         """
         Check if an operator is compatible with the member type.
         """
@@ -791,7 +791,7 @@ class NyanMemberType:
 
         return True
 
-    def accepts_value(self, value) -> tuple:
+    def accepts_value(self, value) -> bool:
         """
         Check if a value is compatible with the member type.
         """
@@ -880,9 +880,9 @@ class NyanMember:
     def __init__(
         self,
         name: str,
-        member_type,
+        member_type: NyanMemberType,
         value=None,
-        operator=None,
+        operator: MemberOperator = None,
         override_depth: int = 0
     ):
         """
@@ -918,13 +918,13 @@ class NyanMember:
         """
         return self.name
 
-    def get_member_type(self):
+    def get_member_type(self) -> NyanMemberType:
         """
         Returns the type of the member.
         """
         return self._member_type
 
-    def get_operator(self):
+    def get_operator(self) -> MemberOperator:
         """
         Returns the operator of the member.
         """
@@ -979,7 +979,7 @@ class NyanMember:
         """
         return self.value is not None
 
-    def set_value(self, value, operator=None) -> None:
+    def set_value(self, value, operator: MemberOperator = None) -> None:
         """
         Set the value of the nyan member to the specified value and
         optionally, the operator.
@@ -1105,7 +1105,7 @@ class NyanMember:
 
     @staticmethod
     def _get_primitive_value_str(
-        member_type,
+        member_type: NyanMemberType,
         value,
         import_tree: ImportTree = None,
         namespace: tuple[str] = None
@@ -1135,7 +1135,7 @@ class NyanMember:
     def _get_complex_value_str(
         self,
         indent_depth: int,
-        member_type,
+        member_type: NyanMemberType,
         value,
         import_tree: ImportTree = None,
         namespace: tuple[str] = None
@@ -1293,7 +1293,7 @@ class NyanPatchMember(NyanMember):
         patch_target: NyanObject,
         member_origin: NyanObject,
         value,
-        operator,
+        operator: MemberOperator,
         override_depth: int = 0
     ):
         """
@@ -1386,11 +1386,11 @@ class InheritedNyanMember(NyanMember):
     def __init__(
         self,
         name: str,
-        member_type,
+        member_type: NyanMemberType,
         parent: NyanObject,
         origin: NyanObject,
         value=None,
-        operator=None,
+        operator: MemberOperator = None,
         override_depth: int = 0
     ):
         """
@@ -1490,21 +1490,21 @@ class MemberType(Enum):
     """
 
     # Primitive types
-    INT = "int"
-    FLOAT = "float"
-    TEXT = "text"
-    FILE = "file"
-    BOOLEAN = "bool"
+    INT        = "int"
+    FLOAT      = "float"
+    TEXT       = "text"
+    FILE       = "file"
+    BOOLEAN    = "bool"
 
     # Complex types
-    SET = "set"
+    SET        = "set"
     ORDEREDSET = "orderedset"
-    DICT = "dict"
+    DICT       = "dict"
 
     # Modifier types
-    ABSTRACT = "abstract"
-    CHILDREN = "children"
-    OPTIONAL = "optional"
+    ABSTRACT   = "abstract"
+    CHILDREN   = "children"
+    OPTIONAL   = "optional"
 
 
 class MemberSpecialValue(Enum):
@@ -1515,7 +1515,7 @@ class MemberSpecialValue(Enum):
     NYAN_NONE = "None"
 
     # infinite value for float and int
-    NYAN_INF = "inf"
+    NYAN_INF  = "inf"
 
 
 class MemberOperator(Enum):
@@ -1523,10 +1523,10 @@ class MemberOperator(Enum):
     Symbols for nyan member operators.
     """
 
-    ASSIGN = "="        # assignment
-    ADD = "+="          # addition, append, insertion, union
-    SUBTRACT = "-="     # subtraction, remove
-    MULTIPLY = "*="     # multiplication
-    DIVIDE = "/="       # division
-    AND = "&="          # logical AND, intersect
-    OR = "|="           # logical OR, union
+    ASSIGN    = "="      # assignment
+    ADD       = "+="     # addition, append, insertion, union
+    SUBTRACT  = "-="     # subtraction, remove
+    MULTIPLY  = "*="     # multiplication
+    DIVIDE    = "/="     # division
+    AND       = "&="     # logical AND, intersect
+    OR        = "|="     # logical OR, union
