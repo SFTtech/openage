@@ -1,4 +1,4 @@
-# Copyright 2018-2021 the openage authors. See copying.md for legal info.
+# Copyright 2018-2022 the openage authors. See copying.md for legal info.
 """
 Demo for the opusenc module.
 """

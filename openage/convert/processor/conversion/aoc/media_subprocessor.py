@@ -1,4 +1,4 @@
-# Copyright 2019-2021 the openage authors. See copying.md for legal info.
+# Copyright 2019-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-few-public-methods
 """
@@ -15,7 +15,8 @@ from ....entity_object.export.media_export_request import MediaExportRequest
 from ....entity_object.export.metadata_export import SpriteMetadataExport
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container\
+        import GenieObjectContainer
 
 
 class AoCMediaSubprocessor:

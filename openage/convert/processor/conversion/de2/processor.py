@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-lines,too-many-branches,too-many-statements
 """
@@ -280,7 +280,7 @@ class DE2Processor:
             full_data_set.unit_ref.update({ambient_id: ambient_group})
 
     @staticmethod
-    def create_ambient_groups(full_data_set: GenieObjectContainer) -> None:
+    def create_variant_groups(full_data_set: GenieObjectContainer) -> None:
         """
         Create variant groups.
 

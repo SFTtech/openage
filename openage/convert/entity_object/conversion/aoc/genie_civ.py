@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2022 the openage authors. See copying.md for legal info.
 
 """
 Contains structures and API-like objects for civilization from AoC.
@@ -12,7 +12,8 @@ from .genie_tech import CivTeamBonus, CivTechTree
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject
-    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container\
+        import GenieObjectContainer
     from openage.convert.entity_object.conversion.aoc.genie_tech import CivBonus, GenieTechObject
     from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
     from openage.convert.value_object.read.value_members import ValueMember

@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2022 the openage authors. See copying.md for legal info.
 
 """
 Forward references point to an object that is not created yet.
@@ -12,7 +12,8 @@ import typing
 
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup, RawAPIObject
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup,\
+        RawAPIObject
     from openage.nyan.nyan_structs import NyanObject
 
 

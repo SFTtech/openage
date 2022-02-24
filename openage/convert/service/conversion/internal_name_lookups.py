@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides functions that retrieve name lookup dicts for internal nyan object
@@ -267,7 +267,9 @@ def get_gather_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
                     % game_edition.edition_name)
 
 
-def get_graphic_set_lookups(game_version: GameVersion) -> dict[int, tuple[tuple[int, ...], str, str]]:
+def get_graphic_set_lookups(
+    game_version: GameVersion
+) -> dict[int, tuple[tuple[int, ...], str, str]]:
     """
     Return the name lookup dicts for civ graphic sets.
 
@@ -382,7 +384,9 @@ def get_tech_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
                     % game_edition.edition_name)
 
 
-def get_terrain_lookups(game_version: GameVersion) -> dict[int, tuple[tuple[int, ...], str, str]]:
+def get_terrain_lookups(
+    game_version: GameVersion
+) -> dict[int, tuple[tuple[int, ...], str, str]]:
     """
     Return the name lookup dicts for terrain groups.
 

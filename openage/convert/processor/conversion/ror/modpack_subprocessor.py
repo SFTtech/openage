@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-few-public-methods
 
@@ -14,7 +14,8 @@ from ....entity_object.conversion.modpack import Modpack
 from ..aoc.modpack_subprocessor import AoCModpackSubprocessor
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container\
+        import GenieObjectContainer
 
 
 class RoRModpackSubprocessor:

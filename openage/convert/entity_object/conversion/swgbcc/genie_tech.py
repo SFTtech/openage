@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 
 """
 SWGB tech objects. These extend the normal Genie techs to reflect
@@ -10,7 +10,8 @@ import typing
 from ..aoc.genie_tech import UnitUnlock, UnitLineUpgrade
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container\
+        import GenieObjectContainer
 
 
 class SWGBUnitLineUpgrade(UnitLineUpgrade):

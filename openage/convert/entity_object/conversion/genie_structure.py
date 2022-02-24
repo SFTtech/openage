@@ -1,4 +1,4 @@
-# Copyright 2014-2021 the openage authors. See copying.md for legal info.
+# Copyright 2014-2022 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 

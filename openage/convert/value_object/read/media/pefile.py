@@ -1,4 +1,4 @@
-# Copyright 2013-2020 the openage authors. See copying.md for legal info.
+# Copyright 2013-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides PEFile, a class for reading MS portable executable files.

@@ -1,4 +1,4 @@
-# Copyright 2021-2021 the openage authors. See copying.md for legal info.
+# Copyright 2021-2022 the openage authors. See copying.md for legal info.
 
 """
 Convert data from DE1 to openage formats.
@@ -111,7 +111,11 @@ class DE1Processor:
         return dataset
 
     @classmethod
-    def _processor(cls, full_data_set: GenieObjectContainer) -> GenieObjectContainer:
+    def _processor(
+        cls,
+        gamespec: ArrayMember,
+        full_data_set: GenieObjectContainer
+    ) -> GenieObjectContainer:
         """
         Transfer structures used in Genie games to more openage-friendly
         Python objects.
@@ -169,7 +173,7 @@ class DE1Processor:
         return RoRModpackSubprocessor.get_modpacks(full_data_set)
 
     @staticmethod
-    def extract_genie_units(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
+    def extract_genie_graphics(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract graphic definitions from the game data.
 

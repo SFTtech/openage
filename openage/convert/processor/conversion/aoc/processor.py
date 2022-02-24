@@ -1,4 +1,4 @@
-# Copyright 2019-2021 the openage authors. See copying.md for legal info.
+# Copyright 2019-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-branches,too-many-statements
 # pylint: disable=too-many-locals,too-many-public-methods
@@ -262,7 +262,10 @@ class AoCProcessor:
             index += 1
 
     @staticmethod
-    def extract_genie_effect_bundles(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
+    def extract_genie_effect_bundles(
+        gamespec: ArrayMember,
+        full_data_set: GenieObjectContainer
+    ) -> None:
         """
         Extract effects and effect bundles from the game data.
 
@@ -305,7 +308,10 @@ class AoCProcessor:
             index_bundle += 1
 
     @staticmethod
-    def extract_genie_civs(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
+    def extract_genie_civs(
+        gamespec: ArrayMember,
+        full_data_set: GenieObjectContainer
+    ) -> None:
         """
         Extract civs from the game data.
 
@@ -349,7 +355,10 @@ class AoCProcessor:
             full_data_set.age_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def extract_building_connections(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
+    def extract_building_connections(
+        gamespec: ArrayMember,
+        full_data_set: GenieObjectContainer
+    ) -> None:
         """
         Extract building connections from the game data.
 
@@ -368,7 +377,10 @@ class AoCProcessor:
             full_data_set.building_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def extract_unit_connections(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
+    def extract_unit_connections(
+        gamespec: ArrayMember,
+        full_data_set: GenieObjectContainer
+    ) -> None:
         """
         Extract unit connections from the game data.
 
@@ -386,7 +398,10 @@ class AoCProcessor:
             full_data_set.unit_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def extract_tech_connections(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
+    def extract_tech_connections(
+        gamespec: ArrayMember,
+        full_data_set: GenieObjectContainer
+    ) -> None:
         """
         Extract tech connections from the game data.
 

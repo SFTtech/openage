@@ -1,4 +1,4 @@
-# Copyright 2019-2021 the openage authors. See copying.md for legal info.
+# Copyright 2019-2022 the openage authors. See copying.md for legal info.
 
 """
 Contains structures and API-like objects for techs from AoC.
@@ -9,9 +9,12 @@ import typing
 from ..converter_object import ConverterObject, ConverterObjectGroup
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject, GenieEffectBundle
-    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup, GenieBuildingLineGroup
+    from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject,\
+        GenieEffectBundle
+    from openage.convert.entity_object.conversion.aoc.genie_object_container\
+        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
+        GenieBuildingLineGroup
     from openage.convert.value_object.read.value_members import ValueMember
 
 
@@ -487,6 +490,9 @@ class CivBonus(GenieTechEffectBundleGroup):
         self.civ_id = civ_id
 
     def get_civilization_id(self) -> int:
+        """
+        Get the ID of the civilization that receives the bonus.
+        """
         return self.civ_id
 
     def replaces_researchable_tech(self) -> typing.Union[GenieTechEffectBundleGroup, None]:

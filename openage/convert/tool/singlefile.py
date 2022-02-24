@@ -1,10 +1,9 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Convert a single slp/wav file from some drs archive to a png/opus file.
 """
 from __future__ import annotations
-import typing
 
 
 from pathlib import Path

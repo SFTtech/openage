@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 
 """
 Converter objects for SWGB. Reimplements the ConverterObjectGroup
@@ -11,7 +11,8 @@ from ..aoc.genie_unit import GenieUnitLineGroup, GenieUnitTransformGroup,\
     GenieMonkGroup, GenieStackBuildingGroup
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container\
+        import GenieObjectContainer
 
 
 class SWGBUnitLineGroup(GenieUnitLineGroup):

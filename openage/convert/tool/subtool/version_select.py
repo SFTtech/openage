@@ -13,7 +13,8 @@ from ...service.init.version_detect import iterate_game_versions
 from ...value_object.init.game_version import Support
 
 if typing.TYPE_CHECKING:
-    from openage.convert.value_object.init.game_version import GameEdition, GameExpansion, GameVersion
+    from openage.convert.value_object.init.game_version import GameEdition,\
+        GameExpansion, GameVersion
     from openage.util.fslike.directory import Directory
 
 
