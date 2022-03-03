@@ -206,10 +206,10 @@ class AoCTechSubprocessor:
             raise Exception("Effect type %s is not a valid attribute effect"
                             % str(effect_type))
 
-        unit_id = effect["attr_a"].get_value()
-        class_id = effect["attr_b"].get_value()
-        attribute_type = effect["attr_c"].get_value()
-        value = effect["attr_d"].get_value()
+        unit_id = effect["attr_a"].value
+        class_id = effect["attr_b"].value
+        attribute_type = effect["attr_c"].value
+        value = effect["attr_d"].value
 
         if attribute_type == -1:
             return patches
@@ -262,7 +262,7 @@ class AoCTechSubprocessor:
         effect_type = effect.get_type()
         operator = None
         if effect_type in (1, 11):
-            mode = effect["attr_b"].get_value()
+            mode = effect["attr_b"].value
 
             if mode == 0:
                 operator = MemberOperator.ASSIGN
@@ -277,8 +277,8 @@ class AoCTechSubprocessor:
             raise Exception("Effect type %s is not a valid resource effect"
                             % str(effect_type))
 
-        resource_id = effect["attr_a"].get_value()
-        value = effect["attr_d"].get_value()
+        resource_id = effect["attr_a"].value
+        value = effect["attr_d"].value
 
         if resource_id in (-1, 6, 21):
             # -1 = invalid ID
@@ -305,8 +305,8 @@ class AoCTechSubprocessor:
 
         tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
-        upgrade_source_id = effect["attr_a"].get_value()
-        upgrade_target_id = effect["attr_b"].get_value()
+        upgrade_source_id = effect["attr_a"].value
+        upgrade_target_id = effect["attr_b"].value
 
         if upgrade_source_id not in dataset.unit_ref.keys() or\
                 upgrade_target_id not in dataset.unit_ref.keys():
@@ -405,10 +405,10 @@ class AoCTechSubprocessor:
         else:
             obj_name = civ_lookup_dict[obj_id][0]
 
-        tech_id = effect["attr_a"].get_value()
-        resource_id = effect["attr_b"].get_value()
-        mode = effect["attr_c"].get_value()
-        amount = int(effect["attr_d"].get_value())
+        tech_id = effect["attr_a"].value
+        resource_id = effect["attr_b"].value
+        mode = effect["attr_c"].value
+        amount = int(effect["attr_d"].value)
 
         if tech_id not in tech_lookup_dict.keys():
             # Skips some legacy techs from AoK such as the tech for bombard cannon
@@ -433,8 +433,8 @@ class AoCTechSubprocessor:
             raise Exception("no valid resource ID found")
 
         # Check if the tech actually costs an amount of the defined resource
-        for resource_amount in tech_group.tech["research_resource_costs"].get_value():
-            cost_resource_id = resource_amount["type_id"].get_value()
+        for resource_amount in tech_group.tech["research_resource_costs"].value:
+            cost_resource_id = resource_amount["type_id"].value
 
             if cost_resource_id == resource_id:
                 break
@@ -525,9 +525,9 @@ class AoCTechSubprocessor:
         else:
             obj_name = civ_lookup_dict[obj_id][0]
 
-        tech_id = effect["attr_a"].get_value()
-        mode = effect["attr_c"].get_value()
-        research_time = effect["attr_d"].get_value()
+        tech_id = effect["attr_a"].value
+        mode = effect["attr_c"].value
+        research_time = effect["attr_d"].value
 
         if tech_id not in tech_lookup_dict.keys():
             # Skips some legacy techs from AoK such as the tech for bombard cannon

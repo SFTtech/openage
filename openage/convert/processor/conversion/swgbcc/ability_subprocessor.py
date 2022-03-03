@@ -91,7 +91,7 @@ class SWGBCCAbilitySubprocessor:
         """
         if isinstance(line, GenieVillagerGroup):
             current_unit = line.get_units_with_command(command_id)[0]
-            current_unit_id = current_unit["id0"].get_value()
+            current_unit_id = current_unit["id0"].value
 
         else:
             current_unit = line.get_head_unit()
@@ -123,7 +123,7 @@ class SWGBCCAbilitySubprocessor:
             ability_location = ForwardRef(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
 
-            ability_animation_id = current_unit["attack_sprite_id"].get_value()
+            ability_animation_id = current_unit["attack_sprite_id"].value
 
         else:
             ability_ref = f"{game_entity_name}.ShootProjectile.Projectile{str(projectile)}.{ability_name}"
@@ -175,10 +175,10 @@ class SWGBCCAbilitySubprocessor:
                 civ_id = civ_group.get_id()
 
                 # Only proceed if the civ stores the unit in the line
-                if current_unit_id not in civ["units"].get_value().keys():
+                if current_unit_id not in civ["units"].value.keys():
                     continue
 
-                civ_animation_id = civ["units"][current_unit_id]["attack_sprite_id"].get_value()
+                civ_animation_id = civ["units"][current_unit_id]["attack_sprite_id"].value
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
@@ -206,7 +206,7 @@ class SWGBCCAbilitySubprocessor:
 
         # Command Sound
         if projectile == -1:
-            ability_comm_sound_id = current_unit["command_sound_id"].get_value()
+            ability_comm_sound_id = current_unit["command_sound_id"].value
 
         else:
             ability_comm_sound_id = -1
@@ -269,13 +269,13 @@ class SWGBCCAbilitySubprocessor:
 
         if ranged:
             # Min range
-            min_range = current_unit["weapon_range_min"].get_value()
+            min_range = current_unit["weapon_range_min"].value
             ability_raw_api_object.add_raw_member("min_range",
                                                   min_range,
                                                   "engine.ability.type.RangedDiscreteEffect")
 
             # Max range
-            max_range = current_unit["weapon_range_max"].get_value()
+            max_range = current_unit["weapon_range_max"].value
             ability_raw_api_object.add_raw_member("max_range",
                                                   max_range,
                                                   "engine.ability.type.RangedDiscreteEffect")
@@ -313,7 +313,7 @@ class SWGBCCAbilitySubprocessor:
 
         # Reload time
         if projectile == -1:
-            reload_time = current_unit["attack_speed"].get_value()
+            reload_time = current_unit["attack_speed"].value
 
         else:
             reload_time = 0
@@ -324,10 +324,10 @@ class SWGBCCAbilitySubprocessor:
 
         # Application delay
         if projectile == -1:
-            attack_graphic_id = current_unit["attack_sprite_id"].get_value()
+            attack_graphic_id = current_unit["attack_sprite_id"].value
             attack_graphic = dataset.genie_graphics[attack_graphic_id]
             frame_rate = attack_graphic.get_frame_rate()
-            frame_delay = current_unit["frame_delay"].get_value()
+            frame_delay = current_unit["frame_delay"].value
             application_delay = frame_rate * frame_delay
 
         else:
@@ -421,13 +421,13 @@ class SWGBCCAbilitySubprocessor:
                                               "engine.ability.type.AttributeChangeTracker")
 
         # Change progress
-        damage_graphics = current_unit["damage_graphics"].get_value()
+        damage_graphics = current_unit["damage_graphics"].value
         progress_forward_refs = []
 
         # Damage graphics are ordered ascending, so we start from 0
         interval_left_bound = 0
         for damage_graphic_member in damage_graphics:
-            interval_right_bound = damage_graphic_member["damage_percent"].get_value()
+            interval_right_bound = damage_graphic_member["damage_percent"].value
             progress_ref = f"{game_entity_name}.AttributeChangeTracker.ChangeProgress{interval_right_bound}"
             progress_raw_api_object = RawAPIObject(progress_ref,
                                                    f"ChangeProgress{interval_right_bound}",
@@ -456,7 +456,7 @@ class SWGBCCAbilitySubprocessor:
             # =====================================================================================
             # AnimationOverlay property
             # =====================================================================================
-            progress_animation_id = damage_graphic_member["graphic_id"].get_value()
+            progress_animation_id = damage_graphic_member["graphic_id"].value
             if progress_animation_id > -1:
                 property_ref = f"{progress_ref}.AnimationOverlay"
                 property_raw_api_object = RawAPIObject(property_ref,
@@ -628,7 +628,7 @@ class SWGBCCAbilitySubprocessor:
 
         abilities = []
         for gatherer in gatherers:
-            unit_commands = gatherer["unit_commands"].get_value()
+            unit_commands = gatherer["unit_commands"].value
             resource = None
             ability_animation_id = -1
             harvestable_class_ids = OrderedSet()
@@ -637,24 +637,24 @@ class SWGBCCAbilitySubprocessor:
             for command in unit_commands:
                 # Find a gather ability. It doesn't matter which one because
                 # they should all produce the same resource for one genie unit.
-                type_id = command["type"].get_value()
+                type_id = command["type"].value
 
                 if type_id not in (5, 110):
                     continue
 
-                target_class_id = command["class_id"].get_value()
+                target_class_id = command["class_id"].value
                 if target_class_id > -1:
                     harvestable_class_ids.add(target_class_id)
 
-                target_unit_id = command["unit_id"].get_value()
+                target_unit_id = command["unit_id"].value
                 if target_unit_id > -1:
                     harvestable_unit_ids.add(target_unit_id)
 
-                resource_id = command["resource_out"].get_value()
+                resource_id = command["resource_out"].value
 
                 # If resource_out is not specified, the gatherer harvests resource_in
                 if resource_id == -1:
-                    resource_id = command["resource_in"].get_value()
+                    resource_id = command["resource_in"].value
 
                 if resource_id == 0:
                     resource = dataset.pregen_nyan_objects["util.resource.types.Food"].get_nyan_object(
@@ -676,10 +676,10 @@ class SWGBCCAbilitySubprocessor:
                     continue
 
                 if type_id == 110:
-                    ability_animation_id = command["work_sprite_id"].get_value()
+                    ability_animation_id = command["work_sprite_id"].value
 
                 else:
-                    ability_animation_id = command["proceed_sprite_id"].get_value()
+                    ability_animation_id = command["proceed_sprite_id"].value
 
             # Look for the harvestable groups that match the class IDs and unit IDs
             check_groups = []
@@ -797,7 +797,7 @@ class SWGBCCAbilitySubprocessor:
             rate_raw_api_object.add_raw_member(
                 "type", resource, "engine.util.resource.ResourceRate")
 
-            gather_rate = gatherer["work_rate"].get_value()
+            gather_rate = gatherer["work_rate"].value
             rate_raw_api_object.add_raw_member(
                 "rate", gather_rate, "engine.util.resource.ResourceRate")
 
@@ -863,10 +863,10 @@ class SWGBCCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Resource spot
-        resource_storage = current_unit["resource_storage"].get_value()
+        resource_storage = current_unit["resource_storage"].value
 
         for storage in resource_storage:
-            resource_id = storage["type"].get_value()
+            resource_id = storage["type"].value
 
             # IDs 15, 16, 17 are other types of food (meat, berries, fish)
             if resource_id in (0, 15, 16, 17):
@@ -901,15 +901,15 @@ class SWGBCCAbilitySubprocessor:
             # Start amount (equals max amount)
             if line.get_id() == 50:
                 # Farm food amount (hardcoded in civ)
-                starting_amount = dataset.genie_civs[1]["resources"][36].get_value()
+                starting_amount = dataset.genie_civs[1]["resources"][36].value
 
             elif line.get_id() == 199:
                 # Aqua harvester food amount (hardcoded in civ)
-                starting_amount = storage["amount"].get_value()
-                starting_amount += dataset.genie_civs[1]["resources"][88].get_value()
+                starting_amount = storage["amount"].value
+                starting_amount += dataset.genie_civs[1]["resources"][88].value
 
             else:
-                starting_amount = storage["amount"].get_value()
+                starting_amount = storage["amount"].value
 
             spot_raw_api_object.add_raw_member("starting_amount",
                                                starting_amount,
@@ -921,7 +921,7 @@ class SWGBCCAbilitySubprocessor:
                                                "engine.util.resource_spot.ResourceSpot")
 
             # Decay rate
-            decay_rate = current_unit["resource_decay"].get_value()
+            decay_rate = current_unit["resource_decay"].value
             spot_raw_api_object.add_raw_member("decay_rate",
                                                decay_rate,
                                                "engine.util.resource_spot.ResourceSpot")
@@ -1204,7 +1204,7 @@ class SWGBCCAbilitySubprocessor:
                                               "engine.ability.type.Harvestable")
 
         # Unit have to die before they are harvestable (except for farms)
-        harvestable_by_default = current_unit["hit_points"].get_value() == 0
+        harvestable_by_default = current_unit["hit_points"].value == 0
         if line.get_class_id() == 7:
             harvestable_by_default = True
 
@@ -1389,11 +1389,11 @@ class SWGBCCAbilitySubprocessor:
         attribute_rate = 0
         if current_unit_id in (115, 180):
             # stored in civ resources
-            attribute_rate = dataset.genie_civs[0]["resources"][35].get_value()
+            attribute_rate = dataset.genie_civs[0]["resources"][35].value
 
         elif current_unit_id == 8:
             # stored in civ resources
-            heal_timer = dataset.genie_civs[0]["resources"][96].get_value()
+            heal_timer = dataset.genie_civs[0]["resources"][96].value
             attribute_rate = heal_timer
 
         rate_raw_api_object.add_raw_member("rate",
@@ -1448,23 +1448,23 @@ class SWGBCCAbilitySubprocessor:
         # Create containers
         containers = []
         for gatherer in gatherers:
-            unit_commands = gatherer["unit_commands"].get_value()
+            unit_commands = gatherer["unit_commands"].value
             resource = None
 
             used_command = None
             for command in unit_commands:
                 # Find a gather ability. It doesn't matter which one because
                 # they should all produce the same resource for one genie unit.
-                type_id = command["type"].get_value()
+                type_id = command["type"].value
 
                 if type_id not in (5, 110, 111):
                     continue
 
-                resource_id = command["resource_out"].get_value()
+                resource_id = command["resource_out"].value
 
                 # If resource_out is not specified, the gatherer harvests resource_in
                 if resource_id == -1:
-                    resource_id = command["resource_in"].get_value()
+                    resource_id = command["resource_in"].value
 
                 if resource_id == 0:
                     resource = dataset.pregen_nyan_objects["util.resource.types.Food"].get_nyan_object(
@@ -1483,7 +1483,7 @@ class SWGBCCAbilitySubprocessor:
                     )
 
                 elif type_id == 111:
-                    target_id = command["unit_id"].get_value()
+                    target_id = command["unit_id"].value
                     if target_id not in dataset.building_lines.keys():
                         # Skips the trade workshop trading which is never used
                         continue
@@ -1509,7 +1509,7 @@ class SWGBCCAbilitySubprocessor:
 
                 container_name = f"{gather_lookup_dict[gatherer_unit_id][0]}Container"
 
-            elif used_command["type"].get_value() == 111:
+            elif used_command["type"].value == 111:
                 # Trading
                 container_name = "TradeContainer"
 
@@ -1528,14 +1528,14 @@ class SWGBCCAbilitySubprocessor:
                                                     "engine.util.storage.ResourceContainer")
 
             # Carry capacity
-            carry_capacity = gatherer["resource_capacity"].get_value()
+            carry_capacity = gatherer["resource_capacity"].value
             container_raw_api_object.add_raw_member("max_amount",
                                                     carry_capacity,
                                                     "engine.util.storage.ResourceContainer")
 
             # Carry progress
             carry_progress = []
-            carry_move_animation_id = used_command["carry_sprite_id"].get_value()
+            carry_move_animation_id = used_command["carry_sprite_id"].value
             if carry_move_animation_id > -1:
                 # ===========================================================================================
                 progress_ref = f"{ability_ref}.{container_name}CarryProgress"
@@ -1767,15 +1767,15 @@ class SWGBCCAbilitySubprocessor:
         # Trade route (use the trade route o the market)
         trade_routes = []
 
-        unit_commands = current_unit["unit_commands"].get_value()
+        unit_commands = current_unit["unit_commands"].value
         for command in unit_commands:
             # Find the trade command and the trade post id
-            type_id = command["type"].get_value()
+            type_id = command["type"].value
 
             if type_id != 111:
                 continue
 
-            trade_post_id = command["unit_id"].get_value()
+            trade_post_id = command["unit_id"].value
             if trade_post_id == 530:
                 # Ignore Tattoine Spaceport
                 continue

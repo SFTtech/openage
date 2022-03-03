@@ -49,7 +49,7 @@ class AoCEffectSubprocessor:
             current_unit = line.get_head_unit()
 
         else:
-            projectile_id = line.get_head_unit()["attack_projectile_secondary_unit_id"].get_value()
+            projectile_id = line.get_head_unit()["attack_projectile_secondary_unit_id"].value
             current_unit = dataset.genie_units[projectile_id]
 
         effects = []
@@ -60,11 +60,11 @@ class AoCEffectSubprocessor:
         effect_parent = "engine.effect.discrete.flat_attribute_change.FlatAttributeChange"
         attack_parent = "engine.effect.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"
 
-        attacks = current_unit["attacks"].get_value()
+        attacks = current_unit["attacks"].value
 
         for attack in attacks.values():
-            armor_class = attack["type_id"].get_value()
-            attack_amount = attack["amount"].get_value()
+            armor_class = attack["type_id"].value
+            attack_amount = attack["amount"].value
             class_name = armor_lookup_dict[armor_class]
 
             attack_ref = f"{location_ref}.{class_name}"
@@ -154,14 +154,14 @@ class AoCEffectSubprocessor:
         effect_parent = "engine.effect.discrete.convert.Convert"
         convert_parent = "engine.effect.discrete.convert.type.AoE2Convert"
 
-        unit_commands = current_unit["unit_commands"].get_value()
+        unit_commands = current_unit["unit_commands"].value
         for command in unit_commands:
             # Find the Heal command.
-            type_id = command["type"].get_value()
+            type_id = command["type"].value
 
             if type_id == 104:
-                skip_guaranteed_rounds = -1 * command["work_value1"].get_value()
-                skip_protected_rounds = -1 * command["work_value2"].get_value()
+                skip_guaranteed_rounds = -1 * command["work_value1"].value
+                skip_protected_rounds = -1 * command["work_value2"].value
                 break
 
         else:
@@ -189,7 +189,7 @@ class AoCEffectSubprocessor:
 
         # Chance
         # hardcoded resource
-        chance_success = dataset.genie_civs[0]["resources"][182].get_value() / 100
+        chance_success = dataset.genie_civs[0]["resources"][182].value / 100
         convert_raw_api_object.add_raw_member("chance_success",
                                               chance_success,
                                               effect_parent)
@@ -231,7 +231,7 @@ class AoCEffectSubprocessor:
 
         # Chance
         # hardcoded resource
-        chance_success = dataset.genie_civs[0]["resources"][182].get_value() / 100
+        chance_success = dataset.genie_civs[0]["resources"][182].value / 100
         convert_raw_api_object.add_raw_member("chance_success",
                                               chance_success,
                                               effect_parent)
@@ -277,12 +277,12 @@ class AoCEffectSubprocessor:
         effect_parent = "engine.effect.continuous.flat_attribute_change.FlatAttributeChange"
         heal_parent = "engine.effect.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"
 
-        unit_commands = current_unit["unit_commands"].get_value()
+        unit_commands = current_unit["unit_commands"].value
         heal_command = None
 
         for command in unit_commands:
             # Find the Heal command.
-            type_id = command["type"].get_value()
+            type_id = command["type"].value
 
             if type_id == 105:
                 heal_command = command
@@ -292,7 +292,7 @@ class AoCEffectSubprocessor:
             # Return the empty set
             return effects
 
-        heal_rate = heal_command["work_value1"].get_value()
+        heal_rate = heal_command["work_value1"].value
 
         heal_ref = f"{location_ref}.HealEffect"
         heal_raw_api_object = RawAPIObject(heal_ref,
@@ -527,7 +527,7 @@ class AoCEffectSubprocessor:
                                                             progress_effect_parent)
 
             # Total change time
-            change_time = constructable_line.get_head_unit()["creation_time"].get_value()
+            change_time = constructable_line.get_head_unit()["creation_time"].value
             contruct_progress_raw_api_object.add_raw_member("total_change_time",
                                                             change_time,
                                                             progress_effect_parent)
@@ -554,7 +554,7 @@ class AoCEffectSubprocessor:
                                                       attr_effect_parent)
 
             # Total change time
-            change_time = constructable_line.get_head_unit()["creation_time"].get_value()
+            change_time = constructable_line.get_head_unit()["creation_time"].value
             contruct_hp_raw_api_object.add_raw_member("total_change_time",
                                                       change_time,
                                                       attr_effect_parent)
@@ -597,15 +597,15 @@ class AoCEffectSubprocessor:
         armor_parent = "engine.resistance.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"
 
         if current_unit.has_member("armors"):
-            armors = current_unit["armors"].get_value()
+            armors = current_unit["armors"].value
 
         else:
             # TODO: Trees and blast defense
             armors = {}
 
         for armor in armors.values():
-            armor_class = armor["type_id"].get_value()
-            armor_amount = armor["amount"].get_value()
+            armor_class = armor["type_id"].value
+            armor_amount = armor["amount"].value
             class_name = armor_lookup_dict[armor_class]
 
             armor_ref = f"{ability_ref}.{class_name}"
@@ -700,18 +700,18 @@ class AoCEffectSubprocessor:
 
         # Chance resist
         # hardcoded resource
-        chance_resist = dataset.genie_civs[0]["resources"][77].get_value() / 100
+        chance_resist = dataset.genie_civs[0]["resources"][77].value / 100
         resistance_raw_api_object.add_raw_member("chance_resist",
                                                  chance_resist,
                                                  resistance_parent)
 
         if isinstance(line, GenieUnitLineGroup):
-            guaranteed_rounds = dataset.genie_civs[0]["resources"][178].get_value()
-            protected_rounds = dataset.genie_civs[0]["resources"][179].get_value()
+            guaranteed_rounds = dataset.genie_civs[0]["resources"][178].value
+            protected_rounds = dataset.genie_civs[0]["resources"][179].value
 
         else:
-            guaranteed_rounds = dataset.genie_civs[0]["resources"][180].get_value()
-            protected_rounds = dataset.genie_civs[0]["resources"][181].get_value()
+            guaranteed_rounds = dataset.genie_civs[0]["resources"][180].value
+            protected_rounds = dataset.genie_civs[0]["resources"][181].value
 
         # Guaranteed rounds
         resistance_raw_api_object.add_raw_member("guaranteed_resist_rounds",

@@ -65,7 +65,7 @@ class AoCUpgradeEffectSubprocessor:
 
         tech_name = tech_lookup_dict[tech_id][0]
 
-        diff_attacks = diff["attacks"].get_value()
+        diff_attacks = diff["attacks"].value
         for diff_attack in diff_attacks.values():
             if isinstance(diff_attack, NoDiffMember):
                 continue
@@ -74,8 +74,8 @@ class AoCUpgradeEffectSubprocessor:
                 # Create a new attack effect, then patch it in
                 attack = diff_attack.get_reference()
 
-                armor_class = attack["type_id"].get_value()
-                attack_amount = attack["amount"].get_value()
+                armor_class = attack["type_id"].value
+                attack_amount = attack["amount"].value
 
                 if armor_class == -1:
                     continue
@@ -198,7 +198,7 @@ class AoCUpgradeEffectSubprocessor:
                 # Patch the effect out of the ability
                 attack = diff_attack.get_reference()
 
-                armor_class = attack["type_id"].get_value()
+                armor_class = attack["type_id"].value
                 class_name = armor_lookup_dict[armor_class]
 
                 patch_target_ref = f"{ability_ref}.Batch"
@@ -259,8 +259,8 @@ class AoCUpgradeEffectSubprocessor:
                     raise Exception("Could not create effect upgrade for line %s: Out of order"
                                     % (line))
 
-                armor_class = diff_armor_class.get_reference().get_value()
-                attack_amount = diff_attack["amount"].get_value()
+                armor_class = diff_armor_class.get_reference().value
+                attack_amount = diff_attack["amount"].value
 
                 class_name = armor_lookup_dict[armor_class]
 
@@ -347,7 +347,7 @@ class AoCUpgradeEffectSubprocessor:
 
         tech_name = tech_lookup_dict[tech_id][0]
 
-        diff_armors = diff["armors"].get_value()
+        diff_armors = diff["armors"].value
         for diff_armor in diff_armors.values():
             if isinstance(diff_armor, NoDiffMember):
                 continue
@@ -356,8 +356,8 @@ class AoCUpgradeEffectSubprocessor:
                 # Create a new attack resistance, then patch it in
                 armor = diff_armor.get_reference()
 
-                armor_class = armor["type_id"].get_value()
-                armor_amount = armor["amount"].get_value()
+                armor_class = armor["type_id"].value
+                armor_amount = armor["amount"].value
 
                 if armor_class == -1:
                     continue
@@ -466,7 +466,7 @@ class AoCUpgradeEffectSubprocessor:
                 # Patch the resistance out of the ability
                 armor = diff_armor.get_reference()
 
-                armor_class = armor["type_id"].get_value()
+                armor_class = armor["type_id"].value
                 class_name = armor_lookup_dict[armor_class]
 
                 patch_target_ref = f"{ability_ref}"
@@ -527,8 +527,8 @@ class AoCUpgradeEffectSubprocessor:
                     raise Exception("Could not create effect upgrade for line %s: Out of order"
                                     % (line))
 
-                armor_class = diff_armor_class.get_reference().get_value()
-                armor_amount = diff_armor["amount"].get_value()
+                armor_class = diff_armor_class.get_reference().value
+                armor_amount = diff_armor["amount"].value
 
                 class_name = armor_lookup_dict[armor_class]
 

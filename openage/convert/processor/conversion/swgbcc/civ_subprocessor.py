@@ -71,10 +71,10 @@ class SWGBCCCivSubprocessor:
         civ_name = civ_lookup_dict[civ_id][0]
 
         # Find starting resource amounts
-        food_amount = civ_group.civ["resources"][91].get_value()
-        carbon_amount = civ_group.civ["resources"][92].get_value()
-        nova_amount = civ_group.civ["resources"][93].get_value()
-        ore_amount = civ_group.civ["resources"][94].get_value()
+        food_amount = civ_group.civ["resources"][91].value
+        carbon_amount = civ_group.civ["resources"][92].value
+        nova_amount = civ_group.civ["resources"][93].value
+        ore_amount = civ_group.civ["resources"][94].value
 
         # Find civ unique starting resources
         tech_tree = civ_group.get_tech_tree_effects()
@@ -84,8 +84,8 @@ class SWGBCCCivSubprocessor:
             if type_id != 1:
                 continue
 
-            resource_id = effect["attr_a"].get_value()
-            amount = effect["attr_d"].get_value()
+            resource_id = effect["attr_a"].value
+            amount = effect["attr_d"].value
             if resource_id == 91:
                 food_amount += amount
 

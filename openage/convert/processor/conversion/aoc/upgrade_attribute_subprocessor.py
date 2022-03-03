@@ -285,7 +285,7 @@ class AoCUpgradeAttributeSubprocessor:
 
         if line.is_projectile_shooter():
             primary_projectile_id = line.get_head_unit(
-            )["attack_projectile_primary_unit_id"].get_value()
+            )["attack_projectile_primary_unit_id"].value
             if primary_projectile_id == -1:
                 # Upgrade is skipped if the primary projectile is not defined
                 return patches
@@ -406,8 +406,8 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        projectile_id0 = head_unit["attack_projectile_primary_unit_id"].get_value()
-        projectile_id1 = head_unit["attack_projectile_secondary_unit_id"].get_value()
+        projectile_id0 = head_unit["attack_projectile_primary_unit_id"].value
+        projectile_id1 = head_unit["attack_projectile_secondary_unit_id"].value
 
         if projectile_id0 > -1:
             patch_target_ref = f"{game_entity_name}.ShootProjectile.Projectile0.Projectile"
@@ -598,8 +598,8 @@ class AoCUpgradeAttributeSubprocessor:
         patches = []
 
         # Check if the unit line actually costs food
-        for resource_amount in head_unit["resource_cost"].get_value():
-            resource_id = resource_amount["type_id"].get_value()
+        for resource_amount in head_unit["resource_cost"].value:
+            resource_id = resource_amount["type_id"].value
 
             if resource_id == 0:
                 break
@@ -703,8 +703,8 @@ class AoCUpgradeAttributeSubprocessor:
         patches = []
 
         # Check if the unit line actually costs wood
-        for resource_amount in head_unit["resource_cost"].get_value():
-            resource_id = resource_amount["type_id"].get_value()
+        for resource_amount in head_unit["resource_cost"].value:
+            resource_id = resource_amount["type_id"].value
 
             if resource_id == 1:
                 break
@@ -808,8 +808,8 @@ class AoCUpgradeAttributeSubprocessor:
         patches = []
 
         # Check if the unit line actually costs gold
-        for resource_amount in head_unit["resource_cost"].get_value():
-            resource_id = resource_amount["type_id"].get_value()
+        for resource_amount in head_unit["resource_cost"].value:
+            resource_id = resource_amount["type_id"].value
 
             if resource_id == 3:
                 break
@@ -913,8 +913,8 @@ class AoCUpgradeAttributeSubprocessor:
         patches = []
 
         # Check if the unit line actually costs stone
-        for resource_amount in head_unit["resource_cost"].get_value():
-            resource_id = resource_amount["type_id"].get_value()
+        for resource_amount in head_unit["resource_cost"].value:
+            resource_id = resource_amount["type_id"].value
 
             if resource_id == 2:
                 break
@@ -2176,8 +2176,8 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        for resource_amount in head_unit["resource_cost"].get_value():
-            resource_id = resource_amount["type_id"].get_value()
+        for resource_amount in head_unit["resource_cost"].value:
+            resource_id = resource_amount["type_id"].value
 
             resource_name = ""
             if resource_id == -1:
@@ -2201,7 +2201,7 @@ class AoCUpgradeAttributeSubprocessor:
                 continue
 
             # Skip resources that are only expected to be there
-            if not resource_amount["enabled"].get_value():
+            if not resource_amount["enabled"].value:
                 continue
 
             patch_target_ref = "%s.CreatableGameEntity.%sCost.%sAmount" % (game_entity_name,

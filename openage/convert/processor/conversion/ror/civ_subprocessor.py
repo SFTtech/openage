@@ -36,10 +36,10 @@ class RoRCivSubprocessor:
         civ_name = civ_lookup_dict[civ_id][0]
 
         # Find starting resource amounts
-        food_amount = civ_group.civ["resources"][0].get_value()
-        wood_amount = civ_group.civ["resources"][1].get_value()
-        gold_amount = civ_group.civ["resources"][2].get_value()
-        stone_amount = civ_group.civ["resources"][3].get_value()
+        food_amount = civ_group.civ["resources"][0].value
+        wood_amount = civ_group.civ["resources"][1].value
+        gold_amount = civ_group.civ["resources"][2].value
+        stone_amount = civ_group.civ["resources"][3].value
 
         # Find civ unique starting resources
         tech_tree = civ_group.get_tech_tree_effects()
@@ -49,8 +49,8 @@ class RoRCivSubprocessor:
             if type_id != 1:
                 continue
 
-            resource_id = effect["attr_a"].get_value()
-            amount = effect["attr_d"].get_value()
+            resource_id = effect["attr_a"].value
+            amount = effect["attr_d"].value
             if resource_id == 0:
                 food_amount += amount
 

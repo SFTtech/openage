@@ -123,10 +123,10 @@ class RoRTechSubprocessor:
             raise Exception("Effect type %s is not a valid attribute effect"
                             % str(effect_type))
 
-        unit_id = effect["attr_a"].get_value()
-        class_id = effect["attr_b"].get_value()
-        attribute_type = effect["attr_c"].get_value()
-        value = effect["attr_d"].get_value()
+        unit_id = effect["attr_a"].value
+        class_id = effect["attr_b"].value
+        attribute_type = effect["attr_c"].value
+        value = effect["attr_d"].value
 
         if attribute_type == -1:
             return patches
@@ -179,7 +179,7 @@ class RoRTechSubprocessor:
         effect_type = effect.get_type()
         operator = None
         if effect_type == 1:
-            mode = effect["attr_b"].get_value()
+            mode = effect["attr_b"].value
 
             if mode == 0:
                 operator = MemberOperator.ASSIGN
@@ -194,8 +194,8 @@ class RoRTechSubprocessor:
             raise Exception("Effect type %s is not a valid resource effect"
                             % str(effect_type))
 
-        resource_id = effect["attr_a"].get_value()
-        value = effect["attr_d"].get_value()
+        resource_id = effect["attr_a"].value
+        value = effect["attr_d"].value
 
         if resource_id in (-1, 6, 21, 30):
             # -1 = invalid ID
@@ -223,8 +223,8 @@ class RoRTechSubprocessor:
 
         tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
 
-        head_unit_id = effect["attr_a"].get_value()
-        upgrade_target_id = effect["attr_b"].get_value()
+        head_unit_id = effect["attr_a"].value
+        upgrade_target_id = effect["attr_b"].value
 
         if head_unit_id not in dataset.unit_ref.keys() or\
                 upgrade_target_id not in dataset.unit_ref.keys():

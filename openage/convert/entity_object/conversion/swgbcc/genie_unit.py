@@ -60,7 +60,7 @@ class SWGBUnitLineGroup(GenieUnitLineGroup):
         Returns the ID of the civ that the line belongs to.
         """
         head_unit = self.get_head_unit()
-        return head_unit["civilization_id"].get_value()
+        return head_unit["civilization_id"].value
 
     def is_civ_unique(self) -> bool:
         """
@@ -98,9 +98,9 @@ class SWGBStackBuildingGroup(GenieStackBuildingGroup):
         Returns the enabling tech id of the unit
         """
         stack_unit = self.get_stack_unit()
-        stack_unit_id = stack_unit["id0"].get_value()
+        stack_unit_id = stack_unit["id0"].value
         stack_unit_connection = self.data.building_connections[stack_unit_id]
-        enabling_research_id = stack_unit_connection["enabling_research"].get_value()
+        enabling_research_id = stack_unit_connection["enabling_research"].value
 
         return enabling_research_id
 
@@ -154,7 +154,7 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
         Returns the ID of the civ that the line belongs to.
         """
         head_unit = self.get_head_unit()
-        return head_unit["civilization_id"].get_value()
+        return head_unit["civilization_id"].value
 
     def is_civ_unique(self) -> bool:
         """
@@ -178,7 +178,7 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
         Returns the enabling tech id of the unit
         """
         head_unit_connection = self.data.unit_connections[self.get_transform_unit_id()]
-        enabling_research_id = head_unit_connection["enabling_research"].get_value()
+        enabling_research_id = head_unit_connection["enabling_research"].value
 
         return enabling_research_id
 
@@ -233,7 +233,7 @@ class SWGBMonkGroup(GenieMonkGroup):
         Returns the ID of the civ that the line belongs to.
         """
         head_unit = self.get_head_unit()
-        return head_unit["civilization_id"].get_value()
+        return head_unit["civilization_id"].value
 
     def is_civ_unique(self) -> bool:
         """

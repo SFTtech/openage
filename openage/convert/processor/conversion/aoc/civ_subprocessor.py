@@ -73,10 +73,10 @@ class AoCCivSubprocessor:
         civ_name = civ_lookup_dict[civ_id][0]
 
         # Find starting resource amounts
-        food_amount = civ_group.civ["resources"][91].get_value()
-        wood_amount = civ_group.civ["resources"][92].get_value()
-        gold_amount = civ_group.civ["resources"][93].get_value()
-        stone_amount = civ_group.civ["resources"][94].get_value()
+        food_amount = civ_group.civ["resources"][91].value
+        wood_amount = civ_group.civ["resources"][92].value
+        gold_amount = civ_group.civ["resources"][93].value
+        stone_amount = civ_group.civ["resources"][94].value
 
         # Find civ unique starting resources
         tech_tree = civ_group.get_tech_tree_effects()
@@ -86,8 +86,8 @@ class AoCCivSubprocessor:
             if type_id != 1:
                 continue
 
-            resource_id = effect["attr_a"].get_value()
-            amount = effect["attr_d"].get_value()
+            resource_id = effect["attr_a"].value
+            amount = effect["attr_d"].value
             if resource_id == 91:
                 food_amount += amount
 
@@ -207,13 +207,13 @@ class AoCCivSubprocessor:
 
                 # civ boni might be unlocked by age ups. if so, patch them into the age up
                 # patches are queued here
-                required_tech_count = civ_bonus.tech["required_tech_count"].get_value()
+                required_tech_count = civ_bonus.tech["required_tech_count"].value
                 if required_tech_count > 0 and len(bonus_patches) > 0:
                     if required_tech_count == 1:
-                        tech_id = civ_bonus.tech["required_techs"][0].get_value()
+                        tech_id = civ_bonus.tech["required_techs"][0].value
 
                     elif required_tech_count == 2:
-                        tech_id = civ_bonus.tech["required_techs"][1].get_value()
+                        tech_id = civ_bonus.tech["required_techs"][1].value
 
                     if tech_id == 104:
                         # Skip Dark Age; it is not a tech in openage
@@ -453,7 +453,7 @@ class AoCCivSubprocessor:
                 continue
 
             # Get tech id
-            tech_id = int(effect["attr_d"].get_value())
+            tech_id = int(effect["attr_d"].value)
 
             # Check what the purpose of the tech is
             if tech_id in dataset.unit_unlocks.keys():

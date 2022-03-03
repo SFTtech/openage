@@ -76,7 +76,7 @@ def convert_metadata(args: Namespace) -> typing.Generator[str, None, None]:
 
     # Blending mode count
     if args.game_version.edition.game_id == "SWGB":
-        args.blend_mode_count = gamespec[0]["blend_mode_count_swgb"].get_value()
+        args.blend_mode_count = gamespec[0]["blend_mode_count_swgb"].value
 
     else:
         args.blend_mode_count = None

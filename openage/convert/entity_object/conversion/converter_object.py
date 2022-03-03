@@ -61,8 +61,7 @@ class ConverterObject:
         """
         Adds a member to the object.
         """
-        key = member.get_name()
-        self.members.update({key: member})
+        self.members.update({member.name: member})
 
     def add_members(self, members: dict[str, ValueMember]) -> None:
         """

@@ -207,9 +207,9 @@ class SWGBCCProcessor:
 
         # First only handle the line heads (first units in a line)
         for connection in unit_connections.values():
-            unit_id = connection["id"].get_value()
+            unit_id = connection["id"].value
             unit = full_data_set.genie_units[unit_id]
-            line_mode = connection["line_mode"].get_value()
+            line_mode = connection["line_mode"].value
 
             if line_mode != 2:
                 # It's an upgrade. Skip and handle later
@@ -217,11 +217,11 @@ class SWGBCCProcessor:
 
             # Check for special cases first
             if unit.has_member("transform_unit_id")\
-                    and unit["transform_unit_id"].get_value() > -1:
+                    and unit["transform_unit_id"].value > -1:
                 # Cannon
                 # SWGB stores the deployed cannon in the connections, but we
                 # want the undeployed cannon
-                transform_id = unit["transform_unit_id"].get_value()
+                transform_id = unit["transform_unit_id"].value
                 unit_line = SWGBUnitTransformGroup(transform_id, transform_id, full_data_set)
 
             elif unit_id in MONK_GROUP_ASSOCS.keys():
@@ -232,7 +232,7 @@ class SWGBCCProcessor:
                 unit_line = SWGBMonkGroup(unit_id, unit_id, switch_unit_id, full_data_set)
 
             elif unit.has_member("task_group")\
-                    and unit["task_group"].get_value() > 0:
+                    and unit["task_group"].value > 0:
                 # Villager
                 # done somewhere else because they are special^TM
                 continue
@@ -247,18 +247,18 @@ class SWGBCCProcessor:
 
         # Second, handle all upgraded units
         for connection in unit_connections.values():
-            unit_id = connection["id"].get_value()
+            unit_id = connection["id"].value
             unit = full_data_set.genie_units[unit_id]
-            line_mode = connection["line_mode"].get_value()
+            line_mode = connection["line_mode"].value
 
             if line_mode != 3:
                 # This unit is not an upgrade and was handled in the last for-loop
                 continue
 
             # Search other_connections for the previous unit in line
-            connected_types = connection["other_connections"].get_value()
+            connected_types = connection["other_connections"].value
             for index, _ in enumerate(connected_types):
-                connected_type = connected_types[index]["other_connection"].get_value()
+                connected_type = connected_types[index]["other_connection"].value
                 if connected_type == 2:
                     # 2 == Unit
                     connected_index = index
@@ -268,8 +268,8 @@ class SWGBCCProcessor:
                 raise Exception("Unit %s is not first in line, but no previous unit can"
                                 " be found in other_connections" % (unit_id))
 
-            connected_ids = connection["other_connected_ids"].get_value()
-            previous_unit_id = connected_ids[connected_index].get_value()
+            connected_ids = connection["other_connected_ids"].value
+            previous_unit_id = connected_ids[connected_index].value
 
             # Search for the first unit ID in the line recursively
             previous_id = previous_unit_id
@@ -279,17 +279,17 @@ class SWGBCCProcessor:
                     # Short-circuit here, if we the previous unit was already handled
                     break
 
-                connected_types = previous_connection["other_connections"].get_value()
+                connected_types = previous_connection["other_connections"].value
                 connected_index = -1
                 for index, _ in enumerate(connected_types):
-                    connected_type = connected_types[index]["other_connection"].get_value()
+                    connected_type = connected_types[index]["other_connection"].value
                     if connected_type == 2:
                         # 2 == Unit
                         connected_index = index
                         break
 
-                connected_ids = previous_connection["other_connected_ids"].get_value()
-                previous_id = connected_ids[connected_index].get_value()
+                connected_ids = previous_connection["other_connected_ids"].value
+                previous_id = connected_ids[connected_index].value
                 previous_connection = unit_connections[previous_id]
 
             unit_line = unit_ref[previous_id]
@@ -375,7 +375,7 @@ class SWGBCCProcessor:
         # Search all techs for building upgrades. This is necessary because they are
         # not stored in tech connections in SWGB
         for tech_id, tech in genie_techs.items():
-            tech_effect_id = tech["tech_effect_id"].get_value()
+            tech_effect_id = tech["tech_effect_id"].value
             if tech_effect_id < 0:
                 continue
 
@@ -384,11 +384,11 @@ class SWGBCCProcessor:
             # Search for upgrade or unlock effects
             age_up = False
             for effect in tech_effects:
-                effect_type = effect["type_id"].get_value()
-                unit_id_a = effect["attr_a"].get_value()
-                unit_id_b = effect["attr_b"].get_value()
+                effect_type = effect["type_id"].value
+                unit_id_a = effect["attr_a"].value
+                unit_id_b = effect["attr_b"].value
 
-                if effect_type == 1 and effect["attr_a"].get_value() == 6:
+                if effect_type == 1 and effect["attr_a"].value == 6:
                     # if this is an age up tech, we do not need to create any additional
                     # unlock techs
                     age_up = True
@@ -409,8 +409,8 @@ class SWGBCCProcessor:
                     building = full_data_set.genie_units[unit_id_a]
 
                     if building.has_member("stack_unit_id") and \
-                            building["stack_unit_id"].get_value() > -1:
-                        unit_id_a = building["stack_unit_id"].get_value()
+                            building["stack_unit_id"].value > -1:
+                        unit_id_a = building["stack_unit_id"].value
                         unlocked_by_tech.add(unit_id_a)
 
                         if not age_up:
@@ -424,7 +424,7 @@ class SWGBCCProcessor:
 
         # First only handle the line heads (first buildings in a line)
         for connection in building_connections.values():
-            building_id = connection["id"].get_value()
+            building_id = connection["id"].value
 
             if building_id not in unlocked_by_tech:
                 continue
@@ -433,14 +433,14 @@ class SWGBCCProcessor:
 
             # Check if we have to create a GenieStackBuildingGroup
             if building.has_member("stack_unit_id") and \
-                    building["stack_unit_id"].get_value() > -1:
+                    building["stack_unit_id"].value > -1:
                 # we don't care about head units because we process
                 # them with their stack unit
                 continue
 
             if building.has_member("head_unit_id") and \
-                    building["head_unit_id"].get_value() > -1:
-                head_unit_id = building["head_unit_id"].get_value()
+                    building["head_unit_id"].value > -1:
+                head_unit_id = building["head_unit_id"].value
                 building_line = SWGBStackBuildingGroup(building_id, head_unit_id, full_data_set)
 
             else:
@@ -452,7 +452,7 @@ class SWGBCCProcessor:
 
         # Second, handle all upgraded buildings
         for connection in building_connections.values():
-            building_id = connection["id"].get_value()
+            building_id = connection["id"].value
 
             if building_id not in upgraded_by_tech.keys():
                 continue
@@ -460,9 +460,9 @@ class SWGBCCProcessor:
             building = full_data_set.genie_units[building_id]
 
             # Search other_connections for the previous unit in line
-            connected_types = connection["other_connections"].get_value()
+            connected_types = connection["other_connections"].value
             for index, _ in enumerate(connected_types):
-                connected_type = connected_types[index]["other_connection"].get_value()
+                connected_type = connected_types[index]["other_connection"].value
                 if connected_type == 1:
                     # 1 == Building
                     connected_index = index
@@ -472,8 +472,8 @@ class SWGBCCProcessor:
                 raise Exception("Building %s is not first in line, but no previous building can"
                                 " be found in other_connections" % (building_id))
 
-            connected_ids = connection["other_connected_ids"].get_value()
-            previous_unit_id = connected_ids[connected_index].get_value()
+            connected_ids = connection["other_connected_ids"].value
+            previous_unit_id = connected_ids[connected_index].value
 
             # Search for the first unit ID in the line recursively
             previous_id = previous_unit_id
@@ -483,17 +483,17 @@ class SWGBCCProcessor:
                     # Short-circuit here, if we the previous unit was already handled
                     break
 
-                connected_types = previous_connection["other_connections"].get_value()
+                connected_types = previous_connection["other_connections"].value
                 connected_index = -1
                 for index, _ in enumerate(connected_types):
-                    connected_type = connected_types[index]["other_connection"].get_value()
+                    connected_type = connected_types[index]["other_connection"].value
                     if connected_type == 1:
                         # 1 == Building
                         connected_index = index
                         break
 
-                connected_ids = previous_connection["other_connected_ids"].get_value()
-                previous_id = connected_ids[connected_index].get_value()
+                connected_ids = previous_connection["other_connected_ids"].value
+                previous_id = connected_ids[connected_index].value
                 previous_connection = building_connections[previous_id]
 
             building_line = full_data_set.unit_ref[previous_id]
@@ -528,7 +528,7 @@ class SWGBCCProcessor:
         # Find task groups in the dataset
         for unit in units.values():
             if unit.has_member("task_group"):
-                task_group_id = unit["task_group"].get_value()
+                task_group_id = unit["task_group"].value
 
             else:
                 task_group_id = 0
@@ -555,7 +555,7 @@ class SWGBCCProcessor:
                 full_data_set.task_groups.update({task_group_id: task_group})
 
             task_group_ids.add(task_group_id)
-            unit_ids.add(unit["id0"].get_value())
+            unit_ids.add(unit["id0"].value)
 
         # Create the villager task group
         villager = GenieVillagerGroup(118, task_group_ids, full_data_set)
@@ -619,10 +619,10 @@ class SWGBCCProcessor:
         tech_connections = full_data_set.tech_connections
 
         for connection in tech_connections.values():
-            tech_id = connection["id"].get_value()
+            tech_id = connection["id"].value
             tech = full_data_set.genie_techs[tech_id]
 
-            effect_id = tech["tech_effect_id"].get_value()
+            effect_id = tech["tech_effect_id"].value
             if effect_id < 0:
                 continue
 
@@ -633,10 +633,10 @@ class SWGBCCProcessor:
             resource_effects = tech_effects.get_effects(effect_type=1)
             for effect in resource_effects:
                 # Resource ID 6: Current Age
-                if effect["attr_a"].get_value() != 6:
+                if effect["attr_a"].value != 6:
                     continue
 
-                age_id = effect["attr_b"].get_value()
+                age_id = effect["attr_b"].value
                 age_up = AgeUpgrade(tech_id, age_id, full_data_set)
                 full_data_set.tech_groups.update({age_up.get_id(): age_up})
                 full_data_set.age_upgrades.update({age_up.get_id(): age_up})
@@ -658,10 +658,10 @@ class SWGBCCProcessor:
         unit_unlocks = {}
         unit_upgrades = {}
         for connection in unit_connections.values():
-            unit_id = connection["id"].get_value()
-            required_research_id = connection["required_research"].get_value()
-            enabling_research_id = connection["enabling_research"].get_value()
-            line_mode = connection["line_mode"].get_value()
+            unit_id = connection["id"].value
+            required_research_id = connection["required_research"].value
+            enabling_research_id = connection["enabling_research"].value
+            line_mode = connection["line_mode"].value
             line_id = full_data_set.unit_ref[unit_id].get_id()
 
             if required_research_id == -1 and enabling_research_id == -1:
@@ -736,8 +736,8 @@ class SWGBCCProcessor:
             if not genie_unit.has_member("research_id"):
                 continue
 
-            building_id = genie_unit["id0"].get_value()
-            initiated_tech_id = genie_unit["research_id"].get_value()
+            building_id = genie_unit["id0"].value
+            initiated_tech_id = genie_unit["research_id"].value
 
             if initiated_tech_id == -1:
                 continue
@@ -757,17 +757,17 @@ class SWGBCCProcessor:
             tech_id = index
 
             # Civ ID must be positive and non-zero
-            civ_id = genie_techs[index]["civilization_id"].get_value()
+            civ_id = genie_techs[index]["civilization_id"].value
             if civ_id <= 0:
                 continue
 
             # Passive boni are not researched anywhere
-            research_location_id = genie_techs[index]["research_location_id"].get_value()
+            research_location_id = genie_techs[index]["research_location_id"].value
             if research_location_id > 0:
                 continue
 
             # Passive boni are not available in full tech mode
-            full_tech_mode = genie_techs[index]["full_tech_mode"].get_value()
+            full_tech_mode = genie_techs[index]["full_tech_mode"].value
             if full_tech_mode:
                 continue
 
@@ -800,14 +800,14 @@ class SWGBCCProcessor:
             garrison_units = []
 
             if unit_line.has_command(3):
-                unit_commands = unit_line.get_head_unit()["unit_commands"].get_value()
+                unit_commands = unit_line.get_head_unit()["unit_commands"].value
                 for command in unit_commands:
-                    type_id = command["type"].get_value()
+                    type_id = command["type"].value
 
                     if type_id != 3:
                         continue
 
-                    class_id = command["class_id"].get_value()
+                    class_id = command["class_id"].value
                     if class_id > -1:
                         garrison_classes.append(class_id)
 
@@ -815,7 +815,7 @@ class SWGBCCProcessor:
                             # Towers because LucasArts ALSO didn't like consistent rules
                             garrison_classes.append(10)
 
-                    unit_id = command["unit_id"].get_value()
+                    unit_id = command["unit_id"].value
                     if unit_id > -1:
                         garrison_units.append(unit_id)
 
@@ -827,13 +827,13 @@ class SWGBCCProcessor:
                 garrison_mode = garrison_line.get_garrison_mode()
                 if garrison_mode == GenieGarrisonMode.NATURAL:
                     if unit_line.get_head_unit().has_member("creatable_type"):
-                        creatable_type = unit_line.get_head_unit()["creatable_type"].get_value()
+                        creatable_type = unit_line.get_head_unit()["creatable_type"].value
 
                     else:
                         creatable_type = 0
 
                     if garrison_line.get_head_unit().has_member("garrison_type"):
-                        garrison_type = garrison_line.get_head_unit()["garrison_type"].get_value()
+                        garrison_type = garrison_line.get_head_unit()["garrison_type"].value
 
                     else:
                         garrison_type = 0
@@ -881,14 +881,14 @@ class SWGBCCProcessor:
                 # Jedi/Sith inventories
                 elif garrison_mode == GenieGarrisonMode.MONK:
                     # Search for a pickup command
-                    unit_commands = garrison_line.get_head_unit()["unit_commands"].get_value()
+                    unit_commands = garrison_line.get_head_unit()["unit_commands"].value
                     for command in unit_commands:
-                        type_id = command["type"].get_value()
+                        type_id = command["type"].value
 
                         if type_id != 132:
                             continue
 
-                        unit_id = command["unit_id"].get_value()
+                        unit_id = command["unit_id"].value
                         if unit_id == unit_line.get_head_unit_id():
                             unit_line.garrison_locations.append(garrison_line)
                             garrison_line.garrison_entities.append(unit_line)
@@ -912,14 +912,14 @@ class SWGBCCProcessor:
         repair_classes = []
         for villager in villager_groups.values():
             repair_unit = villager.get_units_with_command(106)[0]
-            unit_commands = repair_unit["unit_commands"].get_value()
+            unit_commands = repair_unit["unit_commands"].value
             for command in unit_commands:
-                type_id = command["type"].get_value()
+                type_id = command["type"].value
 
                 if type_id != 106:
                     continue
 
-                class_id = command["class_id"].get_value()
+                class_id = command["class_id"].value
                 if class_id == -1:
                     # Buildings/Siege
                     repair_classes.append(10)

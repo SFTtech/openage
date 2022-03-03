@@ -210,10 +210,10 @@ class SWGBCCTechSubprocessor:
             raise Exception("Effect type %s is not a valid attribute effect"
                             % str(effect_type))
 
-        unit_id = effect["attr_a"].get_value()
-        class_id = effect["attr_b"].get_value()
-        attribute_type = effect["attr_c"].get_value()
-        value = effect["attr_d"].get_value()
+        unit_id = effect["attr_a"].value
+        class_id = effect["attr_b"].value
+        attribute_type = effect["attr_c"].value
+        value = effect["attr_d"].value
 
         if attribute_type == -1:
             return patches
@@ -266,7 +266,7 @@ class SWGBCCTechSubprocessor:
         effect_type = effect.get_type()
         operator = None
         if effect_type == 1:
-            mode = effect["attr_b"].get_value()
+            mode = effect["attr_b"].value
 
             if mode == 0:
                 operator = MemberOperator.ASSIGN
@@ -281,8 +281,8 @@ class SWGBCCTechSubprocessor:
             raise Exception("Effect type %s is not a valid resource effect"
                             % str(effect_type))
 
-        resource_id = effect["attr_a"].get_value()
-        value = effect["attr_d"].get_value()
+        resource_id = effect["attr_a"].value
+        value = effect["attr_d"].value
 
         if resource_id in (-1, 6, 21):
             # -1 = invalid ID

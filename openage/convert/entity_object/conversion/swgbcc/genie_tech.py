@@ -49,7 +49,7 @@ class SWGBUnitLineUpgrade(UnitLineUpgrade):
         Adds a reference to an alternative unlock tech for another civ
         to this tech group.
         """
-        other_civ_id = other_unlock.tech["civilization_id"].get_value()
+        other_civ_id = other_unlock.tech["civilization_id"].value
         self.civ_unlocks[other_civ_id] = other_unlock
 
     def is_unique(self) -> bool:
@@ -94,7 +94,7 @@ class SWGBUnitUnlock(UnitUnlock):
         Adds a reference to an alternative unlock tech for another civ
         to this tech group.
         """
-        other_civ_id = other_unlock.tech["civilization_id"].get_value()
+        other_civ_id = other_unlock.tech["civilization_id"].value
         self.civ_unlocks[other_civ_id] = other_unlock
 
     def is_unique(self) -> bool:

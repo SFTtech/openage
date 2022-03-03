@@ -23,9 +23,9 @@ class RoRSound(GenieSound):
         a .dat entry for that.
         """
         sound_ids = []
-        sound_items = self["sound_items"].get_value()
+        sound_items = self["sound_items"].value
         for item in sound_items:
-            sound_id = item["resource_id"].get_value()
+            sound_id = item["resource_id"].value
             sound_ids.append(sound_id)
 
         return sound_ids

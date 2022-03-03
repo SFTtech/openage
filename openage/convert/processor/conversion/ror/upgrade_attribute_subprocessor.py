@@ -74,7 +74,7 @@ class RoRUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        projectile_id0 = head_unit["attack_projectile_primary_unit_id"].get_value()
+        projectile_id0 = head_unit["attack_projectile_primary_unit_id"].value
         if projectile_id0 > -1:
             patch_target_ref = f"{game_entity_name}.ShootProjectile.Projectile0.Projectile"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)

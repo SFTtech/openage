@@ -82,7 +82,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         self.tech = self.data.genie_techs[tech_id]
 
         # Effects of the tech
-        effect_bundle_id: int = self.tech["tech_effect_id"].get_value()
+        effect_bundle_id: int = self.tech["tech_effect_id"].value
 
         self.effects: GenieEffectBundle = None
         if effect_bundle_id > -1:
@@ -97,8 +97,8 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         :returns: True if the research time is greater than zero
                   and research location greater than -1.
         """
-        research_time = self.tech["research_time"].get_value()
-        research_location_id = self.tech["research_location_id"].get_value()
+        research_time = self.tech["research_time"].value
+        research_location_id = self.tech["research_location_id"].value
 
         return research_time > 0 and research_location_id > -1
 
@@ -108,7 +108,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
 
         :returns: True if the civilization id is greater than zero.
         """
-        civilization_id = self.tech["civilization_id"].get_value()
+        civilization_id = self.tech["civilization_id"].value
 
         # -1 = no train location
         return civilization_id > -1
@@ -118,7 +118,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         Returns the civilization id if the tech is unique, otherwise return None.
         """
         if self.is_unique():
-            return self.tech["civilization_id"].get_value()
+            return self.tech["civilization_id"].value
 
         return None
 
@@ -135,12 +135,12 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         """
         Returns the techs that are required for this tech.
         """
-        required_tech_ids = self.tech["required_techs"].get_value()
+        required_tech_ids = self.tech["required_techs"].value
 
         required_techs = []
 
         for tech_id_member in required_tech_ids:
-            tech_id = tech_id_member.get_value()
+            tech_id = tech_id_member.value
             if tech_id == -1:
                 break
 
@@ -152,7 +152,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         """
         Returns the number of required techs necessary to unlock this  tech.
         """
-        return self.tech["required_tech_count"].get_value()
+        return self.tech["required_tech_count"].value
 
     def get_research_location_id(self) -> int:
         """
@@ -160,7 +160,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         researchable, otherwise return None.
         """
         if self.is_researchable():
-            return self.tech["research_location_id"].get_value()
+            return self.tech["research_location_id"].value
 
         return None
 
@@ -502,8 +502,8 @@ class CivBonus(GenieTechEffectBundleGroup):
         """
         for tech_group in self.data.tech_groups.values():
             if tech_group.is_researchable():
-                bonus_effect_id = self.tech["tech_effect_id"].get_value()
-                tech_group_effect_id = tech_group.tech["tech_effect_id"].get_value()
+                bonus_effect_id = self.tech["tech_effect_id"].value
+                tech_group_effect_id = tech_group.tech["tech_effect_id"].value
 
                 if bonus_effect_id == tech_group_effect_id:
                     return tech_group

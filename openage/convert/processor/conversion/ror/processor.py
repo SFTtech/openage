@@ -192,20 +192,19 @@ class RoRProcessor:
 
         # Gaia units
         # call hierarchy: wrapper[0]->civs[0]->units
-        raw_units.extend(gamespec[0]["civs"][0]["units"].get_value())
+        raw_units.extend(gamespec[0]["civs"][0]["units"].value)
 
         # Egyptians
         # call hierarchy: wrapper[0]->civs[1]->units
-        raw_units.extend(gamespec[0]["civs"][1]["units"].get_value())
+        raw_units.extend(gamespec[0]["civs"][1]["units"].value)
 
         for raw_unit in raw_units:
-            unit_id = raw_unit["id0"].get_value()
+            unit_id = raw_unit["id0"].value
 
             if unit_id in full_data_set.genie_units.keys():
                 continue
 
-            unit_members = raw_unit.get_value()
-
+            unit_members = raw_unit.value
             # Turn attack and armor into containers to make diffing work
             if "attacks" in unit_members.keys():
                 attacks_member = unit_members.pop("attacks")
@@ -231,11 +230,10 @@ class RoRProcessor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->sounds
-        raw_sounds = gamespec[0]["sounds"].get_value()
-
+        raw_sounds = gamespec[0]["sounds"].value
         for raw_sound in raw_sounds:
-            sound_id = raw_sound["sound_id"].get_value()
-            sound_members = raw_sound.get_value()
+            sound_id = raw_sound["sound_id"].value
+            sound_members = raw_sound.value
 
             sound = RoRSound(sound_id, full_data_set, members=sound_members)
             full_data_set.genie_sounds.update({sound.get_id(): sound})
@@ -251,25 +249,25 @@ class RoRProcessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
         # Search a player civ (egyptians) for the starting units
-        player_civ_units = gamespec[0]["civs"][1]["units"].get_value()
+        player_civ_units = gamespec[0]["civs"][1]["units"].value
         task_group_ids = set()
         villager_unit_ids = set()
 
         for raw_unit in player_civ_units.values():
-            unit_id = raw_unit["id0"].get_value()
-            enabled = raw_unit["enabled"].get_value()
+            unit_id = raw_unit["id0"].value
+            enabled = raw_unit["enabled"].value
             entity = full_data_set.genie_units[unit_id]
 
             if not enabled:
                 # Unlocked by tech
                 continue
 
-            unit_type = entity["unit_type"].get_value()
+            unit_type = entity["unit_type"].value
 
             if unit_type == 70:
                 if entity.has_member("task_group") and\
-                        entity["task_group"].get_value() > 0:
-                    task_group_id = entity["task_group"].get_value()
+                        entity["task_group"].value > 0:
+                    task_group_id = entity["task_group"].value
                     villager_unit_ids.add(unit_id)
 
                     if task_group_id in task_group_ids:
@@ -319,7 +317,7 @@ class RoRProcessor:
             # TODO: Make this cleaner
             unlock_effects = unit_unlock.get_effects(effect_type=2)
             for unlock_effect in unlock_effects:
-                line_id = unlock_effect["attr_a"].get_value()
+                line_id = unlock_effect["attr_a"].value
                 unit = full_data_set.genie_units[line_id]
 
                 if line_id not in full_data_set.unit_lines.keys():
@@ -336,9 +334,9 @@ class RoRProcessor:
             unit = full_data_set.genie_units[target_id]
 
             # Find the previous unit in the line
-            required_techs = unit_upgrade.tech["required_techs"].get_value()
+            required_techs = unit_upgrade.tech["required_techs"].value
             for required_tech in required_techs:
-                required_tech_id = required_tech.get_value()
+                required_tech_id = required_tech.value
                 if required_tech_id in full_data_set.unit_unlocks.keys():
                     source_id = full_data_set.unit_unlocks[required_tech_id].get_line_id()
                     break
@@ -371,9 +369,9 @@ class RoRProcessor:
             unit = full_data_set.genie_units[target_id]
 
             # Find the previous unit in the line
-            required_techs = building_upgrade.tech["required_techs"].get_value()
+            required_techs = building_upgrade.tech["required_techs"].value
             for required_tech in required_techs:
-                required_tech_id = required_tech.get_value()
+                required_tech_id = required_tech.value
                 if required_tech_id in full_data_set.building_unlocks.keys():
                     source_id = full_data_set.building_unlocks[required_tech_id].get_line_id()
                     break
@@ -392,8 +390,8 @@ class RoRProcessor:
         for age_up in age_ups.values():
             effects = age_up.get_effects(effect_type=3)
             for effect in effects:
-                source_id = effect["attr_a"].get_value()
-                target_id = effect["attr_b"].get_value()
+                source_id = effect["attr_a"].value
+                target_id = effect["attr_b"].value
                 unit = full_data_set.genie_units[target_id]
 
                 if source_id in full_data_set.building_lines.keys():
@@ -459,15 +457,15 @@ class RoRProcessor:
         genie_techs = full_data_set.genie_techs
 
         for tech_id, tech in genie_techs.items():
-            tech_type = tech["tech_type"].get_value()
+            tech_type = tech["tech_type"].value
 
             # Test if a tech exist and skip it if it doesn't
-            required_techs = tech["required_techs"].get_value()
-            if all(required_tech.get_value() == 0 for required_tech in required_techs):
+            required_techs = tech["required_techs"].value
+            if all(required_tech.value == 0 for required_tech in required_techs):
                 # If all required techs are tech ID 0, the tech doesnt exist
                 continue
 
-            effect_bundle_id = tech["tech_effect_id"].get_value()
+            effect_bundle_id = tech["tech_effect_id"].value
 
             if effect_bundle_id == -1:
                 continue
@@ -483,10 +481,10 @@ class RoRProcessor:
                 # Age ID is set as resource value
                 setr_effects = effect_bundle.get_effects(effect_type=1)
                 for effect in setr_effects:
-                    resource_id = effect["attr_a"].get_value()
+                    resource_id = effect["attr_a"].value
 
                     if resource_id == 6:
-                        age_id = int(effect["attr_d"].get_value())
+                        age_id = int(effect["attr_d"].value)
                         break
 
                 age_up = RoRAgeUpgrade(tech_id, age_id, full_data_set)
@@ -498,9 +496,9 @@ class RoRProcessor:
                 for effect in effects:
                     # Enabling techs
                     if effect.get_type() == 2:
-                        unit_id = effect["attr_a"].get_value()
+                        unit_id = effect["attr_a"].value
                         unit = full_data_set.genie_units[unit_id]
-                        unit_type = unit["unit_type"].get_value()
+                        unit_type = unit["unit_type"].value
 
                         if unit_type == 70:
                             unit_unlock = RoRUnitUnlock(tech_id, unit_id, full_data_set)
@@ -524,10 +522,10 @@ class RoRProcessor:
 
                     # Upgrades
                     elif effect.get_type() == 3:
-                        source_unit_id = effect["attr_a"].get_value()
-                        target_unit_id = effect["attr_b"].get_value()
+                        source_unit_id = effect["attr_a"].value
+                        target_unit_id = effect["attr_b"].value
                         unit = full_data_set.genie_units[source_unit_id]
-                        unit_type = unit["unit_type"].get_value()
+                        unit_type = unit["unit_type"].value
 
                         if unit_type == 70:
                             unit_upgrade = RoRUnitLineUpgrade(tech_id,
@@ -568,8 +566,8 @@ class RoRProcessor:
             if not genie_unit.has_member("research_id"):
                 continue
 
-            building_id = genie_unit["id0"].get_value()
-            initiated_tech_id = genie_unit["research_id"].get_value()
+            building_id = genie_unit["id0"].value
+            initiated_tech_id = genie_unit["research_id"].value
 
             if initiated_tech_id == -1:
                 continue
@@ -600,14 +598,14 @@ class RoRProcessor:
         for unit_line in unit_lines.values():
             head_unit = unit_line.get_head_unit()
 
-            unit_commands = head_unit["unit_commands"].get_value()
+            unit_commands = head_unit["unit_commands"].value
             for command in unit_commands:
-                command_type = command["type"].get_value()
+                command_type = command["type"].value
 
                 if not command_type == 3:
                     continue
 
-                class_id = command["class_id"].get_value()
+                class_id = command["class_id"].value
 
                 if class_id in garrison_class_assignments.keys():
                     garrison_class_assignments[class_id].append(unit_line)
@@ -644,14 +642,14 @@ class RoRProcessor:
         repair_classes = []
         for villager in villager_groups.values():
             repair_unit = villager.get_units_with_command(106)[0]
-            unit_commands = repair_unit["unit_commands"].get_value()
+            unit_commands = repair_unit["unit_commands"].value
             for command in unit_commands:
-                type_id = command["type"].get_value()
+                type_id = command["type"].value
 
                 if type_id != 106:
                     continue
 
-                class_id = command["class_id"].get_value()
+                class_id = command["class_id"].value
                 if class_id == -1:
                     # Buildings/Siege
                     repair_classes.append(3)

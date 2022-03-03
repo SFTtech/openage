@@ -199,14 +199,14 @@ class AoCNyanSubprocessor:
         # =======================================================================
         # Create or use existing auxiliary types
         types_set = []
-        unit_type = current_unit["unit_type"].get_value()
+        unit_type = current_unit["unit_type"].value
 
         if unit_type >= 70:
             type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object(
             )
             types_set.append(type_obj)
 
-        unit_class = current_unit["unit_class"].get_value()
+        unit_class = current_unit["unit_class"].value
         class_name = class_lookup_dict[unit_class]
         class_obj_name = f"util.game_entity_type.types.{class_name}"
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
@@ -405,14 +405,14 @@ class AoCNyanSubprocessor:
         # =======================================================================
         # Create or use existing auxiliary types
         types_set = []
-        unit_type = current_building["unit_type"].get_value()
+        unit_type = current_building["unit_type"].value
 
         if unit_type >= 80:
             type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(
             )
             types_set.append(type_obj)
 
-        unit_class = current_building["unit_class"].get_value()
+        unit_class = current_building["unit_class"].value
         class_name = class_lookup_dict[unit_class]
         class_obj_name = f"util.game_entity_type.types.{class_name}"
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
@@ -568,7 +568,7 @@ class AoCNyanSubprocessor:
         )
         types_set.append(type_obj)
 
-        unit_class = ambient_unit["unit_class"].get_value()
+        unit_class = ambient_unit["unit_class"].value
         class_name = class_lookup_dict[unit_class]
         class_obj_name = f"util.game_entity_type.types.{class_name}"
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
@@ -581,7 +581,7 @@ class AoCNyanSubprocessor:
         # =======================================================================
         abilities_set = []
 
-        interaction_mode = ambient_unit["interaction_mode"].get_value()
+        interaction_mode = ambient_unit["interaction_mode"].value
 
         if interaction_mode >= 0:
             abilities_set.append(AoCAbilitySubprocessor.death_ability(ambient_group))
@@ -660,7 +660,7 @@ class AoCNyanSubprocessor:
         )
         types_set.append(type_obj)
 
-        unit_class = variant_main_unit["unit_class"].get_value()
+        unit_class = variant_main_unit["unit_class"].value
         class_name = class_lookup_dict[unit_class]
         class_obj_name = f"util.game_entity_type.types.{class_name}"
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
@@ -681,7 +681,7 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(variant_group))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(variant_group))
 
-        if variant_main_unit.has_member("speed") and variant_main_unit["speed"].get_value() > 0.0001\
+        if variant_main_unit.has_member("speed") and variant_main_unit["speed"].value > 0.0001\
                 and variant_main_unit.has_member("command_sound_id"):
             # TODO: Let variant groups be converted without having command_sound_id member
             abilities_set.append(AoCAbilitySubprocessor.move_ability(variant_group))
@@ -750,7 +750,7 @@ class AoCNyanSubprocessor:
                                                                        variant_ref,
                                                                        diff_variant))
 
-            if variant_main_unit.has_member("speed") and variant_main_unit["speed"].get_value() > 0.0001\
+            if variant_main_unit.has_member("speed") and variant_main_unit["speed"].value > 0.0001\
                     and variant_main_unit.has_member("command_sound_id"):
                 # TODO: Let variant groups be converted without having command_sound_id member:
                 patches.extend(AoCUpgradeAbilitySubprocessor.move_ability(variant_group,
@@ -995,11 +995,11 @@ class AoCNyanSubprocessor:
         # Ambience
         # =======================================================================
         terrain = terrain_group.get_terrain()
-        ambients_count = terrain["terrain_units_used_count"].get_value()
+        ambients_count = terrain["terrain_units_used_count"].value
 
         ambience = []
         for ambient_index in range(ambients_count):
-            ambient_id = terrain["terrain_unit_id"][ambient_index].get_value()
+            ambient_id = terrain["terrain_unit_id"][ambient_index].value
 
             if ambient_id == -1:
                 continue
@@ -1022,7 +1022,7 @@ class AoCNyanSubprocessor:
                                                   "engine.util.terrain.TerrainAmbient")
 
             # Max density
-            max_density = terrain["terrain_unit_density"][ambient_index].get_value()
+            max_density = terrain["terrain_unit_density"][ambient_index].value
             ambient_raw_api_object.add_raw_member("max_density",
                                                   max_density,
                                                   "engine.util.terrain.TerrainAmbient")
@@ -1210,11 +1210,11 @@ class AoCNyanSubprocessor:
         projectiles_location = f"data/game_entity/generic/{game_entity_filename}/projectiles/"
 
         projectile_indices = []
-        projectile_primary = current_unit["attack_projectile_primary_unit_id"].get_value()
+        projectile_primary = current_unit["attack_projectile_primary_unit_id"].value
         if projectile_primary > -1:
             projectile_indices.append(0)
 
-        projectile_secondary = current_unit["attack_projectile_secondary_unit_id"].get_value()
+        projectile_secondary = current_unit["attack_projectile_secondary_unit_id"].value
         if projectile_secondary > -1:
             projectile_indices.append(1)
 
