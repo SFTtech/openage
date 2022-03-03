@@ -185,7 +185,7 @@ class RoRUpgradeAbilitySubprocessor:
                     attack_graphic_id = diff_animation.value
 
                 else:
-                    attack_graphic_id = diff_animation.value.value
+                    attack_graphic_id = diff_animation.ref.value
 
                 attack_graphic = dataset.genie_graphics[attack_graphic_id]
                 frame_rate = attack_graphic.get_frame_rate()

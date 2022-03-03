@@ -537,18 +537,20 @@ class NoDiffMember(ValueMember):
 
         self._value = value
 
-    def get_reference(self) -> ValueMember:
+    @property
+    def ref(self) -> ValueMember:
         """
         Returns the reference to the diffed object.
         """
-        return self.value
+        return self._value
 
-    def get_value(self) -> typing.NoReturn:
+    @property
+    def value(self) -> typing.Any:
         """
         Returns the value of a member.
         """
         raise NotImplementedError(
-            f"{type(self)} cannot have values; use get_reference() instead")
+            f"{type(self)} cannot have values; use 'ref' instead")
 
     def get_type(self) -> typing.NoReturn:
         """
@@ -584,18 +586,20 @@ class LeftMissingMember(ValueMember):
 
         self._value = value
 
-    def get_reference(self) -> ValueMember:
+    @property
+    def ref(self) -> ValueMember:
         """
         Returns the reference to the diffed object.
         """
         return self._value
 
-    def get_value(self) -> typing.NoReturn:
+    @property
+    def value(self) -> typing.Any:
         """
         Returns the value of a member.
         """
         raise NotImplementedError(
-            f"{type(self)} cannot have values; use get_reference() instead")
+            f"{type(self)} cannot have values; use 'ref' instead")
 
     def get_type(self) -> typing.NoReturn:
         """
@@ -631,18 +635,20 @@ class RightMissingMember(ValueMember):
 
         self._value = value
 
-    def get_reference(self) -> ValueMember:
+    @property
+    def ref(self) -> ValueMember:
         """
         Returns the reference to the diffed object.
         """
         return self._value
 
-    def get_value(self) -> typing.NoReturn:
+    @property
+    def value(self) -> typing.Any:
         """
         Returns the value of a member.
         """
         raise NotImplementedError(
-            f"{type(self)} cannot have values; use get_reference() instead")
+            f"{type(self)} cannot have values; use 'ref' instead")
 
     def get_type(self) -> typing.NoReturn:
         """

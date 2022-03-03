@@ -170,7 +170,7 @@ class AoCUpgradeAbilitySubprocessor:
                     attack_graphic_id = diff_animation.value
 
                 else:
-                    attack_graphic_id = diff_animation.value.value
+                    attack_graphic_id = diff_animation.ref.value
 
                 attack_graphic = dataset.genie_graphics[attack_graphic_id]
                 frame_rate = attack_graphic.get_frame_rate()
@@ -351,7 +351,7 @@ class AoCUpgradeAbilitySubprocessor:
                     attack_graphic_id = diff_animation.value
 
                 else:
-                    attack_graphic_id = diff_animation.value.value
+                    attack_graphic_id = diff_animation.ref.value
 
                 attack_graphic = dataset.genie_graphics[attack_graphic_id]
                 frame_rate = attack_graphic.get_frame_rate()
@@ -457,7 +457,7 @@ class AoCUpgradeAbilitySubprocessor:
                 continue
 
             # This should be a NoDiffMember
-            percentage = diff_damage_animation["damage_percent"].value.value
+            percentage = diff_damage_animation["damage_percent"].ref.value
 
             patch_target_ref = "%s.AttributeChangeTracker.ChangeProgress%s" % (game_entity_name,
                                                                                str(percentage))
@@ -1675,7 +1675,7 @@ class AoCUpgradeAbilitySubprocessor:
                     attack_graphic_id = diff_animation.value
 
                 else:
-                    attack_graphic_id = diff_animation.value.value
+                    attack_graphic_id = diff_animation.ref.value
 
                 attack_graphic = dataset.genie_graphics[attack_graphic_id]
                 frame_rate = attack_graphic.get_frame_rate()

@@ -72,7 +72,7 @@ class AoCUpgradeEffectSubprocessor:
 
             if isinstance(diff_attack, LeftMissingMember):
                 # Create a new attack effect, then patch it in
-                attack = diff_attack.get_reference()
+                attack = diff_attack.ref
 
                 armor_class = attack["type_id"].value
                 attack_amount = attack["amount"].value
@@ -196,7 +196,7 @@ class AoCUpgradeEffectSubprocessor:
 
             elif isinstance(diff_attack, RightMissingMember):
                 # Patch the effect out of the ability
-                attack = diff_attack.get_reference()
+                attack = diff_attack.ref
 
                 armor_class = attack["type_id"].value
                 class_name = armor_lookup_dict[armor_class]
@@ -259,7 +259,7 @@ class AoCUpgradeEffectSubprocessor:
                     raise Exception("Could not create effect upgrade for line %s: Out of order"
                                     % (line))
 
-                armor_class = diff_armor_class.get_reference().value
+                armor_class = diff_armor_class.ref.value
                 attack_amount = diff_attack["amount"].value
 
                 class_name = armor_lookup_dict[armor_class]
@@ -354,7 +354,7 @@ class AoCUpgradeEffectSubprocessor:
 
             if isinstance(diff_armor, LeftMissingMember):
                 # Create a new attack resistance, then patch it in
-                armor = diff_armor.get_reference()
+                armor = diff_armor.ref
 
                 armor_class = armor["type_id"].value
                 armor_amount = armor["amount"].value
@@ -464,7 +464,7 @@ class AoCUpgradeEffectSubprocessor:
 
             elif isinstance(diff_armor, RightMissingMember):
                 # Patch the resistance out of the ability
-                armor = diff_armor.get_reference()
+                armor = diff_armor.ref
 
                 armor_class = armor["type_id"].value
                 class_name = armor_lookup_dict[armor_class]
@@ -527,7 +527,7 @@ class AoCUpgradeEffectSubprocessor:
                     raise Exception("Could not create effect upgrade for line %s: Out of order"
                                     % (line))
 
-                armor_class = diff_armor_class.get_reference().value
+                armor_class = diff_armor_class.ref.value
                 armor_amount = diff_armor["amount"].value
 
                 class_name = armor_lookup_dict[armor_class]
