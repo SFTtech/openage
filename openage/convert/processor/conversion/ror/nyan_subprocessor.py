@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-locals,too-many-statements,too-many-branches
 #
@@ -995,9 +995,8 @@ class RoRNyanSubprocessor:
             projectile_indices.append(0)
 
         for projectile_num in projectile_indices:
-            obj_ref = "%s.ShootProjectile.Projectile%s" % (game_entity_name,
-                                                           str(projectile_num))
-            obj_name = f"Projectile{str(projectile_num)}"
+            obj_ref = f"{game_entity_name}.ShootProjectile.Projectile{projectile_num}"
+            obj_name = f"Projectile{projectile_num}"
             proj_raw_api_object = RawAPIObject(obj_ref, obj_name, dataset.nyan_api_objects)
             proj_raw_api_object.add_raw_parent("engine.util.game_entity.GameEntity")
             proj_raw_api_object.set_location(projectiles_location)

@@ -504,7 +504,7 @@ class MediaExporter:
             # only allow png
             if ext != ".png":
                 raise ValueError("Filename invalid, a texture must be saved"
-                                 "as 'filename.png', not '%s'" % (filename))
+                                 f"as '*.png', not '*.{ext}'")
 
         compression_method = compression_levels.get(
             compression_level,

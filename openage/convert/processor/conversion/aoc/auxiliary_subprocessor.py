@@ -112,8 +112,8 @@ class AoCAuxiliarySubprocessor:
 
         if line.is_repairable():
             # Cost (repair) for buildings
-            cost_repair_name = "%s.CreatableGameEntity.%sRepairCost" % (game_entity_name,
-                                                                        game_entity_name)
+            cost_repair_name = (f"{game_entity_name}.CreatableGameEntity."
+                                f"{game_entity_name}RepairCost")
             cost_repair_raw_api_object = RawAPIObject(cost_repair_name,
                                                       f"{game_entity_name}RepairCost",
                                                       dataset.nyan_api_objects)
@@ -381,8 +381,8 @@ class AoCAuxiliarySubprocessor:
 
             # Container
             container_forward_ref = ForwardRef(train_location,
-                                               "%s.Storage.%sContainer"
-                                               % (train_location_name, train_location_name))
+                                               (f"{train_location_name}.Storage."
+                                                f"{train_location_name}Container"))
             own_storage_raw_api_object.add_raw_member("container",
                                                       container_forward_ref,
                                                       "engine.util.placement_mode.type.OwnStorage")
@@ -608,8 +608,7 @@ class AoCAuxiliarySubprocessor:
                 literal_parent = "engine.util.logic.literal.type.TechResearched"
 
             else:
-                raise Exception("Required tech id %s is neither intiated nor researchable"
-                                % (tech_id))
+                raise Exception("Required tech id {tech_id} is neither intiated nor researchable")
 
             literal_ref = f"{obj_ref}.{literal_name}"
             literal_raw_api_object = RawAPIObject(literal_ref,

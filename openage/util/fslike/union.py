@@ -35,13 +35,11 @@ class Union(FSLikeObject):
         self.dirstructure = {}
 
     def __str__(self):
-        return "Union({})".format(
-            ", ".join(["%s @ %s" % (repr(pnt[1]),
-                                    repr(pnt[0]))
-                       for pnt in self.mounts])
-        )
+        content = ", ".join([f"{repr(pnt[1])} @ {repr(pnt[0])}"
+                             for pnt in self.mounts])
+        return f"Union({content})"
 
-    @property
+    @ property
     def root(self):
         return UnionPath(self, [])
 

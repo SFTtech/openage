@@ -203,8 +203,7 @@ class AoCTechSubprocessor:
             operator = MemberOperator.MULTIPLY
 
         else:
-            raise Exception("Effect type %s is not a valid attribute effect"
-                            % str(effect_type))
+            raise Exception(f"Effect type {effect_type} is not a valid attribute effect")
 
         unit_id = effect["attr_a"].value
         class_id = effect["attr_b"].value
@@ -274,8 +273,7 @@ class AoCTechSubprocessor:
             operator = MemberOperator.MULTIPLY
 
         else:
-            raise Exception("Effect type %s is not a valid resource effect"
-                            % str(effect_type))
+            raise Exception(f"Effect type {effect_type} is not a valid resource effect")
 
         resource_id = effect["attr_a"].value
         value = effect["attr_d"].value
@@ -449,9 +447,7 @@ class AoCTechSubprocessor:
         else:
             operator = MemberOperator.ADD
 
-        patch_target_ref = "%s.ResearchableTech.%sCost.%sAmount" % (tech_name,
-                                                                    tech_name,
-                                                                    resource_name)
+        patch_target_ref = f"{tech_name}.ResearchableTech.{tech_name}Cost.{resource_name}Amount"
         patch_target_forward_ref = ForwardRef(tech_group, patch_target_ref)
 
         # Wrapper

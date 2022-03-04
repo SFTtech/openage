@@ -166,7 +166,7 @@ def main(args):
     issues_count = 0
     for title, text, apply_fix in find_all_issues(args, check_files):
         issues_count += 1
-        print("\x1b[33;1mWARNING\x1b[m {}: {}".format(title, text))
+        print(f"\x1b[33;1mWARNING\x1b[m {title}: {text}")
 
         if apply_fix:
             fixes_possible = True
@@ -181,8 +181,7 @@ def main(args):
         print()
 
     if args.fix and auto_fixes:
-        print("\x1b[33;1mApplying %d "
-              "automatic fixes...\x1b[m" % len(auto_fixes))
+        print(f"\x1b[33;1mApplying {len(auto_fixes):d} automatic fixes...\x1b[m")
 
         for auto_fix in auto_fixes:
             print(auto_fix())
@@ -198,10 +197,7 @@ def main(args):
         else:
             remainfound = ("were" if issues_count > 1 else "was") + " found"
 
-        print("==> \x1b[33;1m{num} issue{plural}\x1b[m {remainfound}."
-              "".format(num=issues_count,
-                        plural=plural,
-                        remainfound=remainfound))
+        print(f"==> \x1b[33;1m{issues_count} issue{plural}\x1b[m {remainfound}.")
 
         if not args.fix and fixes_possible:
             print("When invoked with --fix, I can try "

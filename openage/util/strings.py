@@ -62,8 +62,7 @@ def colorize(string: str, colorcode: str) -> str:
     '\\x1b[31;1mfoo\\x1b[m'
     """
     if colorcode:
-        colorized = '\x1b[{colorcode}m{string}\x1b[m'.format(
-            colorcode=colorcode, string=string)
+        colorized = f'\x1b[{colorcode}m{string}\x1b[m'
     else:
         colorized = string
 
@@ -107,6 +106,4 @@ def format_progress(progress: int, total: int) -> str:
     >>> format_progress(5, 20)
     ' 5/20'
     """
-    return "{progress:>{width}}/{total}".format(progress=progress,
-                                                width=len(str(total)),
-                                                total=total)
+    return f"{progress:>{len(str(total))}}/{total}"

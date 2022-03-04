@@ -1,4 +1,4 @@
-# Copyright 2017-2020 the openage authors. See copying.md for legal info.
+# Copyright 2017-2022 the openage authors. See copying.md for legal info.
 
 """
 
@@ -78,12 +78,10 @@ def get_dir(which):
     elif default_template:
         env_vars = {var: os.environ.get(var) for var in required_envs}
         if not all(env_vars.values()):
-            raise Exception("could not reconstruct {}, "
-                            "missing env variables: '{}'".format(
-                                which,
-                                [var for (var, val) in env_vars.items()
-                                 if val is None].join(", ")
-                            ))
+            env_var_str = ', '.join([var for (var, val) in env_vars.items()
+                                     if val is None])
+            raise Exception(f"could not reconstruct {which}, "
+                            f"missing env variables: '{env_var_str}'")
 
         path = default_template.format(**env_vars)
 

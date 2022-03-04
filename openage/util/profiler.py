@@ -27,10 +27,10 @@ class Profiler:
     profile_stats: pstats.Stats = None
     profile_stream = None
 
-    def __init__(self, oStream=None):
-        # oStream can be a file if the profile results want to be saved.
+    def __init__(self, o_stream=None):
+        # o_stream can be a file if the profile results want to be saved.
         self.profile = cProfile.Profile()
-        self.profile_stream = oStream
+        self.profile_stream = o_stream
 
     def __enter__(self):
         """
@@ -89,9 +89,9 @@ class Tracemalloc:
 
     snapshot = None
 
-    def __init__(self, oStream=None):
-        # oStream can be a file if the profile results want to be saved.
-        self.tracemalloc_stream = oStream
+    def __init__(self, o_stream=None):
+        # o_stream can be a file if the profile results want to be saved.
+        self.tracemalloc_stream = o_stream
 
     def __enter__(self):
         """

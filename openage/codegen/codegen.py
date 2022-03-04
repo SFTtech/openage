@@ -148,7 +148,7 @@ def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[list[st
             # write new content to file
             wpath.parent.mkdirs()
             with wpath.open('wb') as outfile:
-                print("\x1b[36mcodegen: %s\x1b[0m" % b'/'.join(parts).decode(errors='replace'))
+                print(f"\x1b[36mcodegen: {b'/'.join(parts).decode(errors='replace')}\x1b[0m")
                 outfile.write(data)
 
         elif mode == CodegenMode.DRYRUN:
@@ -245,9 +245,9 @@ def get_header_lines() -> Generator[str, None, None]:
     """
 
     yield (
-        "Copyright 2013-{year} the openage authors. "
+        f"Copyright 2013-{datetime.now().year} the openage authors. "
         "See copying.md for legal info."
-    ).format(year=datetime.now().year)
+    )
 
     yield ""
     yield "Warning: this file was auto-generated; manual changes are futile."

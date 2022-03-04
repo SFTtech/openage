@@ -627,9 +627,7 @@ class AoCCivSubprocessor:
             animation_sprite = dataset.combined_sprites[animation_id]
 
         else:
-            animation_filename = "%s%s" % (filename_prefix,
-                                           name_lookup_dict[line.get_head_unit_id()][1])
-
+            animation_filename = f"{filename_prefix}{name_lookup_dict[line.get_head_unit_id()][1]}"
             animation_sprite = CombinedSprite(animation_id,
                                               animation_filename,
                                               dataset)

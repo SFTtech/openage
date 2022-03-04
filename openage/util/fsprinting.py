@@ -97,7 +97,7 @@ def print_tree(
 
     if len(entries) > max_entries:
         omit = len(entries) - max_entries + 1
-        entries = entries[:-omit] + [("[%d omitted]" % omit, False, True)]
+        entries = entries[:-omit] + [(f"[{omit} omitted]", False, True)]
 
     from .iterators import denote_last
     for (name, isdir, is_meta), is_last in denote_last(entries):

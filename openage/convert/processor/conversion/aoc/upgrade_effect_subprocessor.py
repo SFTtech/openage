@@ -100,8 +100,8 @@ class AoCUpgradeEffectSubprocessor:
                 if isinstance(line, GenieBuildingLineGroup):
                     # Store building upgrades next to their game entity definition,
                     # not in the Age up techs.
-                    wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                        % (name_lookup_dict[head_unit_id][1]))
+                    wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                         f"{name_lookup_dict[head_unit_id][1]}/"))
                     wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
                 else:
@@ -215,8 +215,8 @@ class AoCUpgradeEffectSubprocessor:
                 if isinstance(line, GenieBuildingLineGroup):
                     # Store building upgrades next to their game entity definition,
                     # not in the Age up techs.
-                    wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                        % (name_lookup_dict[head_unit_id][1]))
+                    wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                         f"{name_lookup_dict[head_unit_id][1]}/"))
                     wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
                 else:
@@ -256,8 +256,8 @@ class AoCUpgradeEffectSubprocessor:
                 if not isinstance(diff_armor_class, NoDiffMember):
                     # If this happens then the attacks are out of order
                     # and we have to try something else
-                    raise Exception("Could not create effect upgrade for line %s: Out of order"
-                                    % (line))
+                    raise Exception(f"Could not create effect upgrade for line {repr(line)}: "
+                                    "Out of order")
 
                 armor_class = diff_armor_class.ref.value
                 attack_amount = diff_attack["amount"].value
@@ -278,8 +278,8 @@ class AoCUpgradeEffectSubprocessor:
                 if isinstance(line, GenieBuildingLineGroup):
                     # Store building upgrades next to their game entity definition,
                     # not in the Age up techs.
-                    wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                        % (name_lookup_dict[head_unit_id][1]))
+                    wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                         f"{name_lookup_dict[head_unit_id][1]}/"))
                     wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
                 else:
@@ -382,8 +382,8 @@ class AoCUpgradeEffectSubprocessor:
                 if isinstance(line, GenieBuildingLineGroup):
                     # Store building upgrades next to their game entity definition,
                     # not in the Age up techs.
-                    wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                        % (name_lookup_dict[head_unit_id][1]))
+                    wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                         f"{name_lookup_dict[head_unit_id][1]}/"))
                     wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
                 else:
@@ -483,8 +483,8 @@ class AoCUpgradeEffectSubprocessor:
                 if isinstance(line, GenieBuildingLineGroup):
                     # Store building upgrades next to their game entity definition,
                     # not in the Age up techs.
-                    wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                        % (name_lookup_dict[head_unit_id][1]))
+                    wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                         f"{name_lookup_dict[head_unit_id][1]}/"))
                     wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
                 else:
@@ -524,8 +524,8 @@ class AoCUpgradeEffectSubprocessor:
                 if not isinstance(diff_armor_class, NoDiffMember):
                     # If this happens then the armors are out of order
                     # and we have to try something else
-                    raise Exception("Could not create effect upgrade for line %s: Out of order"
-                                    % (line))
+                    raise Exception(f"Could not create effect upgrade for line {repr(line)}: "
+                                    "Out of order")
 
                 armor_class = diff_armor_class.ref.value
                 armor_amount = diff_armor["amount"].value
@@ -546,8 +546,8 @@ class AoCUpgradeEffectSubprocessor:
                 if isinstance(line, GenieBuildingLineGroup):
                     # Store building upgrades next to their game entity definition,
                     # not in the Age up techs.
-                    wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                        % (name_lookup_dict[head_unit_id][1]))
+                    wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                         f"{name_lookup_dict[head_unit_id][1]}/"))
                     wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
                 else:

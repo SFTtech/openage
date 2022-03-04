@@ -101,8 +101,8 @@ class RoRUpgradeAbilitySubprocessor:
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                     f"{name_lookup_dict[head_unit_id][1]}/"))
                 wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
@@ -124,13 +124,14 @@ class RoRUpgradeAbilitySubprocessor:
                 diff_animation_id = diff_animation.value
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(converter_group,
-                                                                                           line,
-                                                                                           diff_animation_id,
-                                                                                           nyan_patch_ref,
-                                                                                           ability_name,
-                                                                                           "%s_"
-                                                                                           % command_lookup_dict[command_id][1])
+                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
+                        converter_group,
+                        line,
+                        diff_animation_id,
+                        nyan_patch_ref,
+                        ability_name,
+                        f"{command_lookup_dict[command_id][1]}_"
+                    )
                     animations_set.append(animation_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -143,12 +144,13 @@ class RoRUpgradeAbilitySubprocessor:
                 diff_comm_sound_id = diff_comm_sound.value
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(converter_group,
-                                                                                   diff_comm_sound_id,
-                                                                                   nyan_patch_ref,
-                                                                                   ability_name,
-                                                                                   "%s_"
-                                                                                   % command_lookup_dict[command_id][1])
+                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(
+                        converter_group,
+                        diff_comm_sound_id,
+                        nyan_patch_ref,
+                        ability_name,
+                        f"{command_lookup_dict[command_id][1]}_"
+                    )
                     sounds_set.append(sound_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",

@@ -122,7 +122,7 @@ class BlendingMode:
         # each of these images gets 2353 bit as data.
         # TODO: why 32 images? isn't that depending on tile_count?
 
-        alpha_masks_raw = unpack_from("%dB" % (self.pxcount * 4),
+        alpha_masks_raw = unpack_from(f"{self.pxcount * 4:d}B",
                                       data_file.read(self.pxcount * 4))
 
         # list of alpha-mask tiles
@@ -130,7 +130,7 @@ class BlendingMode:
 
         # draw mask tiles for this blending mode
         for _ in range(tile_count):
-            pixels = unpack_from("%dB" % self.pxcount,
+            pixels = unpack_from(f"{self.pxcount:d}B",
                                  data_file.read(self.pxcount))
             self.alphamasks.append(self.get_tile_from_data(pixels))
 
@@ -185,7 +185,7 @@ class BlendingMode:
             if read_values > (tile_size - read_so_far):
                 raise Exception("reading more bytes than tile has left")
             if read_values < 0:
-                raise Exception("reading negative count: %d" % read_values)
+                raise Exception(f"reading negative count: {read_values:d}")
 
             # grab the pixels out of the big list
             pixels = list(data[read_so_far:(read_so_far + read_values)])
@@ -204,7 +204,7 @@ class BlendingMode:
             tilerows.append(pixels)
 
         if read_so_far != tile_size:
-            raise Exception("got leftover bytes: %d" % (tile_size - read_so_far))
+            raise Exception(f"got leftover bytes: {tile_size - read_so_far:d}")
 
         return BlendingTile(tilerows, max_width, self.row_count)
 
@@ -249,7 +249,7 @@ class Blendomatic(GenieStructure):
             dbg("reading only the first %d blending modes",
                 custom_mode_count)
 
-        blending_mode = Struct("< I %dB" % (tile_count))
+        blending_mode = Struct(f"< I {tile_count:d}B")
 
         self.blending_modes = []
 

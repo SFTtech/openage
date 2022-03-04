@@ -100,16 +100,15 @@ class RoRAbilitySubprocessor:
                 ability_animation_id = current_unit["attack_sprite_id"].value
 
         else:
-            ability_ref = "%s.ShootProjectile.Projectile%s.%s" % (game_entity_name,
-                                                                  str(projectile),
-                                                                  ability_name)
+            ability_ref = (f"{game_entity_name}.ShootProjectile."
+                           f"Projectile{projectile}.{ability_name}")
             ability_raw_api_object = RawAPIObject(ability_ref,
                                                   ability_name,
                                                   dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent(ability_parent)
             ability_location = ForwardRef(line,
-                                          "%s.ShootProjectile.Projectile%s"
-                                          % (game_entity_name, str(projectile)))
+                                          (f"{game_entity_name}.ShootProjectile."
+                                           f"Projectile{projectile}"))
             ability_raw_api_object.set_location(ability_location)
 
             ability_animation_id = -1
@@ -130,12 +129,13 @@ class RoRAbilitySubprocessor:
             line.add_raw_api_object(property_raw_api_object)
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
-                                                                            ability_animation_id,
-                                                                            property_ref,
-                                                                            ability_name,
-                                                                            "%s_"
-                                                                            % command_lookup_dict[command_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(
+                line,
+                ability_animation_id,
+                property_ref,
+                ability_name,
+                f"{command_lookup_dict[command_id][1]}_"
+            )
             animations_set.append(animation_forward_ref)
             property_raw_api_object.add_raw_member("animations", animations_set,
                                                    "engine.ability.property.type.Animated")
@@ -171,8 +171,8 @@ class RoRAbilitySubprocessor:
                         handled_graphics_set_ids.add(graphics_set_id)
 
                     obj_prefix = f"{gset_lookup_dict[graphics_set_id][1]}{ability_name}"
-                    filename_prefix = "%s_%s_" % (command_lookup_dict[command_id][1],
-                                                  gset_lookup_dict[graphics_set_id][2],)
+                    filename_prefix = (f"{command_lookup_dict[command_id][1]}_"
+                                       f"{gset_lookup_dict[graphics_set_id][2]}_")
                     AoCAbilitySubprocessor.create_civ_animation(line,
                                                                 civ_group,
                                                                 civ_animation_id,
@@ -523,9 +523,8 @@ class RoRAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         # First projectile is mandatory
-        obj_ref = f"{game_entity_name}.ShootProjectile.Projectile{str(position)}"
-        ability_ref = "%s.ShootProjectile.Projectile%s.Projectile" % (game_entity_name,
-                                                                      str(position))
+        obj_ref = f"{game_entity_name}.ShootProjectile.Projectile{position}"
+        ability_ref = f"{game_entity_name}.ShootProjectile.Projectile{position}.Projectile"
         ability_raw_api_object = RawAPIObject(ability_ref,
                                               "Projectile",
                                               dataset.nyan_api_objects)
@@ -547,8 +546,8 @@ class RoRAbilitySubprocessor:
                                               "engine.ability.type.Projectile")
 
         # Accuracy
-        accuracy_name = "%s.ShootProjectile.Projectile%s.Projectile.Accuracy"\
-                        % (game_entity_name, str(position))
+        accuracy_name = (f"{game_entity_name}.ShootProjectile."
+                         f"Projectile{position}.Projectile.Accuracy")
         accuracy_raw_api_object = RawAPIObject(accuracy_name, "Accuracy", dataset.nyan_api_objects)
         accuracy_raw_api_object.add_raw_parent("engine.util.accuracy.Accuracy")
         accuracy_location = ForwardRef(line, ability_ref)
@@ -705,12 +704,13 @@ class RoRAbilitySubprocessor:
             line.add_raw_api_object(property_raw_api_object)
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
-                                                                            ability_animation_id,
-                                                                            property_ref,
-                                                                            ability_name,
-                                                                            "%s_"
-                                                                            % command_lookup_dict[command_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(
+                line,
+                ability_animation_id,
+                property_ref,
+                ability_name,
+                f"{command_lookup_dict[command_id][1]}_"
+            )
             animations_set.append(animation_forward_ref)
             property_raw_api_object.add_raw_member("animations",
                                                    animations_set,

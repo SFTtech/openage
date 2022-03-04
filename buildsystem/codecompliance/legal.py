@@ -1,4 +1,4 @@
-# Copyright 2014-2021 the openage authors. See copying.md for legal info.
+# Copyright 2014-2022 the openage authors. See copying.md for legal info.
 
 """
 Checks the legal headers of all files.
@@ -184,8 +184,8 @@ def test_headers(check_files, paths, git_change_years, third_party_files):
             yield (
                 "Bad copyright year",
                 (filename + "\n" +
-                 "\tExpected %d\n" % expected_end_year +
-                 "\tFound    %d" % found_end_year),
+                 f"\tExpected {expected_end_year}\n" +
+                 f"\tFound    {found_end_year}"),
                 fix
             )
 
@@ -215,8 +215,8 @@ def find_issues(check_files, paths, git_change_years=False):
         if has_ext(filename, EXTENSIONS_REQUIRING_LEGAL_HEADERS):
             yield (
                 "third-party file listing issue",
-                ("{}\n\tlisted in copying.md, but has no "
-                 "third-party license header.").format(filename),
+                (f"{filename}\n\tlisted in copying.md, but has no "
+                 "third-party license header."),
                 None
             )
 
@@ -224,7 +224,7 @@ def find_issues(check_files, paths, git_change_years=False):
     for filename in sorted(third_party_files - listed_files):
         yield (
             "third-party file listing issue",
-            ("{}\n\thas a third-party license header, but isn't "
-             "listed in copying.md").format(filename),
+            (f"{filename}\n\thas a third-party license header, but isn't "
+             "listed in copying.md"),
             None
         )

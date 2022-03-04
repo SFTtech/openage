@@ -144,8 +144,7 @@ class AoCModifierSubprocessor:
                         elif isinstance(resource_line, GenieVariantGroup):
                             resource_line_name = name_lookup_dict[head_unit_id][1]
 
-                        modifier_ref = "%s.%sGatheringRate" % (target_obj_name,
-                                                               resource_line_name)
+                        modifier_ref = f"{target_obj_name}.{resource_line_name}GatheringRate"
                         modifier_raw_api_object = RawAPIObject(modifier_ref,
                                                                "%sGatheringRate",
                                                                dataset.nyan_api_objects)
@@ -162,8 +161,8 @@ class AoCModifierSubprocessor:
                         )
 
                         # Resource spot
-                        spot_ref = "%s.Harvestable.%sResourceSpot" % (resource_line_name,
-                                                                      resource_line_name)
+                        spot_ref = (f"{resource_line_name}.Harvestable."
+                                    f"{resource_line_name}ResourceSpot")
                         spot_forward_ref = ForwardRef(resource_line, spot_ref)
                         modifier_raw_api_object.add_raw_member(
                             "resource_spot",

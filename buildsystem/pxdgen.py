@@ -1,4 +1,4 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Auto-generates PXD files from annotated C++ headers.
@@ -237,7 +237,7 @@ class PXDGenerator:
 
             if (token, val) != (Token.Punctuation, '{'):
                 raise self.parser_error("expected '{' or '::' after "
-                                        "'namespace %s'" % self.stack[-1])
+                                        f"'namespace {self.stack[-1]}'")
             # { found, so fill the stack
             self.stack.append('::'.join(namespace_parts))
             namespace_parts.clear()
@@ -284,8 +284,8 @@ class PXDGenerator:
 
         from datetime import datetime
         year = datetime.now().year
-        yield ("# Copyright 2013-{} the openage authors. "
-               "See copying.md for legal info.".format(year))
+        yield (f"# Copyright 2013-{year} the openage authors. "
+               "See copying.md for legal info.")
 
         yield ""
 
@@ -382,11 +382,11 @@ class PXDGenerator:
                     return False
 
         with open(pxdfile, 'w', encoding='utf8') as outfile:
-            print("\x1b[36mpxdgen: generate %s\x1b[0m" % os.path.relpath(pxdfile, CWD))
+            print(f"\x1b[36mpxdgen: generate {os.path.relpath(pxdfile, CWD)}\x1b[0m")
             outfile.write(result)
 
         if print_warnings and self.warnings:
-            print("\x1b[33;1mWARNING\x1b[m pxdgen[%s]:" % self.filename)
+            print(f"\x1b[33;1mWARNING\x1b[m pxdgen[{self.filename}]:")
             for warning in self.warnings:
                 print(warning)
 
@@ -472,8 +472,8 @@ def main():
             for extension in ("py", "pxd"):
                 initfile = template.with_suffix("." + extension)
                 if not initfile.exists():
-                    print("\x1b[36mpxdgen: create package index %s\x1b[0m" % (
-                        initfile.relative_to(args.output_dir)))
+                    print("\x1b[36mpxdgen: create package index "
+                          f"{initfile.relative_to(args.output_dir)}\x1b[0m")
 
                     initfile.touch()
 

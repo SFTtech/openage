@@ -621,8 +621,8 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.CreatableGameEntity.%sCost.FoodAmount" % (game_entity_name,
-                                                                         game_entity_name)
+        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                            f"{game_entity_name}Cost.FoodAmount")
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -726,8 +726,8 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.CreatableGameEntity.%sCost.WoodAmount" % (game_entity_name,
-                                                                         game_entity_name)
+        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                            f"{game_entity_name}Cost.WoodAmount")
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -831,8 +831,8 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.CreatableGameEntity.%sCost.GoldAmount" % (game_entity_name,
-                                                                         game_entity_name)
+        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                            f"{game_entity_name}Cost.GoldAmount")
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -936,8 +936,8 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.CreatableGameEntity.%sCost.StoneAmount" % (game_entity_name,
-                                                                          game_entity_name)
+        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                            f"{game_entity_name}Cost.StoneAmount")
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -2204,9 +2204,8 @@ class AoCUpgradeAttributeSubprocessor:
             if not resource_amount["enabled"].value:
                 continue
 
-            patch_target_ref = "%s.CreatableGameEntity.%sCost.%sAmount" % (game_entity_name,
-                                                                           game_entity_name,
-                                                                           resource_name)
+            patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                                f"{game_entity_name}Cost.{resource_name}Amount")
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper

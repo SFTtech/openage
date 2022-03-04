@@ -227,8 +227,7 @@ class DE2TechSubprocessor:
             operator = MemberOperator.MULTIPLY
 
         else:
-            raise Exception("Effect type %s is not a valid attribute effect"
-                            % str(effect_type))
+            raise Exception(f"Effect type {effect_type} is not a valid attribute effect")
 
         unit_id = effect["attr_a"].value
         class_id = effect["attr_b"].value
@@ -298,8 +297,7 @@ class DE2TechSubprocessor:
             operator = MemberOperator.MULTIPLY
 
         else:
-            raise Exception("Effect type %s is not a valid resource effect"
-                            % str(effect_type))
+            raise Exception(f"Effect type {effect_type} is not a valid attribute effect")
 
         resource_id = effect["attr_a"].value
         value = effect["attr_d"].value

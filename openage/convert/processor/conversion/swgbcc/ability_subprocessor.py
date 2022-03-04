@@ -131,8 +131,8 @@ class SWGBCCAbilitySubprocessor:
                 ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent(ability_parent)
             ability_location = ForwardRef(line,
-                                          "%s.ShootProjectile.Projectile%s"
-                                          % (game_entity_name, str(projectile)))
+                                          (f"{game_entity_name}.ShootProjectile."
+                                           f"Projectile{projectile}"))
             ability_raw_api_object.set_location(ability_location)
 
             ability_animation_id = -1
@@ -153,12 +153,13 @@ class SWGBCCAbilitySubprocessor:
             line.add_raw_api_object(property_raw_api_object)
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
-                                                                            ability_animation_id,
-                                                                            property_ref,
-                                                                            ability_name,
-                                                                            "%s_"
-                                                                            % command_lookup_dict[command_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(
+                line,
+                ability_animation_id,
+                property_ref,
+                ability_name,
+                f"{command_lookup_dict[command_id][1]}_"
+            )
             animations_set.append(animation_forward_ref)
             property_raw_api_object.add_raw_member("animations", animations_set,
                                                    "engine.ability.property.type.Animated")
@@ -194,8 +195,8 @@ class SWGBCCAbilitySubprocessor:
                         handled_graphics_set_ids.add(graphics_set_id)
 
                     obj_prefix = f"{gset_lookup_dict[graphics_set_id][1]}{ability_name}"
-                    filename_prefix = "%s_%s_" % (command_lookup_dict[command_id][1],
-                                                  gset_lookup_dict[graphics_set_id][2],)
+                    filename_prefix = (f"{command_lookup_dict[command_id][1]}_"
+                                       f"{gset_lookup_dict[graphics_set_id][2]}_")
                     AoCAbilitySubprocessor.create_civ_animation(line,
                                                                 civ_group,
                                                                 civ_animation_id,
@@ -471,12 +472,13 @@ class SWGBCCAbilitySubprocessor:
 
                 # Animation
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
-                                                                                progress_animation_id,
-                                                                                property_ref,
-                                                                                "Idle",
-                                                                                "idle_damage_override_%s_"
-                                                                                % (interval_right_bound))
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(
+                    line,
+                    progress_animation_id,
+                    property_ref,
+                    "Idle",
+                    f"idle_damage_override_{interval_right_bound}_"
+                )
                 animations_set.append(animation_forward_ref)
                 property_raw_api_object.add_raw_member("overlays",
                                                        animations_set,
@@ -577,18 +579,18 @@ class SWGBCCAbilitySubprocessor:
                                                   "engine.ability.type.ExchangeResources")
 
             # Exchange rate
-            exchange_rate = dataset.pregen_nyan_objects[("util.resource.market_trading.Market%sExchangeRate"
-                                                         % (resource_name))].get_nyan_object()
+            exchange_rate_ref = f"util.resource.market_trading.Market{resource_name}ExchangeRate"
+            exchange_rate = dataset.pregen_nyan_objects[exchange_rate_ref].get_nyan_object()
             ability_raw_api_object.add_raw_member("exchange_rate",
                                                   exchange_rate,
                                                   "engine.ability.type.ExchangeResources")
 
             # Exchange modes
+            buy_exchange_ref = "util.resource.market_trading.MarketBuyExchangeMode"
+            sell_exchange_ref = "util.resource.market_trading.MarketSellExchangeMode"
             exchange_modes = [
-                dataset.pregen_nyan_objects["util.resource.market_trading.MarketBuyExchangeMode"].get_nyan_object(
-                ),
-                dataset.pregen_nyan_objects["util.resource.market_trading.MarketSellExchangeMode"].get_nyan_object(
-                ),
+                dataset.pregen_nyan_objects[buy_exchange_ref].get_nyan_object(),
+                dataset.pregen_nyan_objects[sell_exchange_ref].get_nyan_object(),
             ]
             ability_raw_api_object.add_raw_member("exchange_modes",
                                                   exchange_modes,
@@ -737,12 +739,13 @@ class SWGBCCAbilitySubprocessor:
                 line.add_raw_api_object(property_raw_api_object)
 
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
-                                                                                ability_animation_id,
-                                                                                property_ref,
-                                                                                ability_name,
-                                                                                "%s_"
-                                                                                % gather_lookup_dict[gatherer_unit_id][1])
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(
+                    line,
+                    ability_animation_id,
+                    property_ref,
+                    ability_name,
+                    f"{gather_lookup_dict[gatherer_unit_id][1]}_"
+                )
                 animations_set.append(animation_forward_ref)
                 property_raw_api_object.add_raw_member("animations", animations_set,
                                                        "engine.ability.property.type.Animated")
@@ -809,8 +812,8 @@ class SWGBCCAbilitySubprocessor:
                                                   "engine.ability.type.Gather")
 
             # Resource container
-            container_ref = "%s.ResourceStorage.%sContainer" % (game_entity_name,
-                                                                gather_lookup_dict[gatherer_unit_id][0])
+            container_ref = (f"{game_entity_name}.ResourceStorage."
+                             f"{gather_lookup_dict[gatherer_unit_id][0]}Container")
             container_forward_ref = ForwardRef(line, container_ref)
             ability_raw_api_object.add_raw_member("container",
                                                   container_forward_ref,
@@ -823,9 +826,10 @@ class SWGBCCAbilitySubprocessor:
                 group_id = group.get_head_unit_id()
                 group_name = entity_lookups[group_id][0]
 
-                spot_forward_ref = ForwardRef(group,
-                                              "%s.Harvestable.%sResourceSpot"
-                                              % (group_name, group_name))
+                spot_forward_ref = ForwardRef(
+                    group,
+                    f"{group_name}.Harvestable.{group_name}ResourceSpot"
+                )
                 spot_forward_refs.append(spot_forward_ref)
 
             ability_raw_api_object.add_raw_member("targets",

@@ -100,8 +100,8 @@ class RoRAuxiliarySubprocessor:
 
         if isinstance(line, GenieBuildingLineGroup) or line.get_class_id() in (2, 13, 20, 21, 22):
             # Cost (repair) for buildings
-            cost_repair_name = "%s.CreatableGameEntity.%sRepairCost" % (game_entity_name,
-                                                                        game_entity_name)
+            cost_repair_name = (f"{game_entity_name}.CreatableGameEntity."
+                                f"{game_entity_name}RepairCost")
             cost_repair_raw_api_object = RawAPIObject(cost_repair_name,
                                                       f"{game_entity_name}RepairCost",
                                                       dataset.nyan_api_objects)

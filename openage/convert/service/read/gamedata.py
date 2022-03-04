@@ -38,8 +38,8 @@ def get_gamespec(srcdir: Directory, game_version: GameVersion, pickle_cache: boo
             filepath = srcdir.joinpath(game_version.edition.media_paths[MediaType.DATFILE][0])
 
     else:
-        raise Exception("No service found for reading data file of version %s"
-                        % game_version.edition.game_id)
+        raise Exception("No service found for reading data file of "
+                        f"version {game_version.edition.game_id}")
 
     cache_file = os.path.join(
         gettempdir(), f"{game_version.edition.game_id}_{filepath.name}.pickle")

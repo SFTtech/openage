@@ -557,8 +557,8 @@ class AoCProcessor:
                     break
 
             else:
-                raise Exception("Unit %s is not first in line, but no previous unit can"
-                                " be found in other_connections" % (unit_id))
+                raise Exception(f"Unit {unit_id} is not first in line, but no previous unit can "
+                                "be found in other_connections")
 
             connected_ids = connection["other_connected_ids"].value
             previous_unit_id = connected_ids[connected_index].value
@@ -690,9 +690,8 @@ class AoCProcessor:
                         break
 
                 else:
-                    raise Exception("Building %s is not first in line, but no previous "
-                                    "building could be found in other_connections"
-                                    % (building_id))
+                    raise Exception(f"Building {building_id} is not first in line, but no "
+                                    "previous building could be found in other_connections")
 
                 previous_building_id = connected_ids[connected_index].value
                 break

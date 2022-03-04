@@ -63,8 +63,7 @@ class DE1MediaSubprocessor:
 
                 # TODO: Also convert x2 and x4 variants
                 source_filename = f"{source_str}x1.slp"
-                target_filename = "%s_%s.png" % (sprite.get_filename(),
-                                                 str(graphic["slp_id"].value))
+                target_filename = f"{sprite.get_filename()}_{str(graphic['slp_id'].value)}.png"
 
                 export_request = MediaExportRequest(MediaType.GRAPHICS,
                                                     targetdir,

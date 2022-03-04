@@ -79,7 +79,7 @@ class Node:
             if current_node.parent is ancestor_node:
                 return True
 
-            elif not current_node.parent:
+            if not current_node.parent:
                 return False
 
             current_node = current_node.parent
