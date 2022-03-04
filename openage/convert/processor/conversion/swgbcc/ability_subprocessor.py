@@ -708,7 +708,7 @@ class SWGBCCAbilitySubprocessor:
                 continue
 
             gatherer_unit_id = gatherer.get_id()
-            if gatherer_unit_id not in gather_lookup_dict.keys():
+            if gatherer_unit_id not in gather_lookup_dict:
                 # Skips hunting wolves
                 continue
 
@@ -1507,7 +1507,7 @@ class SWGBCCAbilitySubprocessor:
 
             if line.is_gatherer():
                 gatherer_unit_id = gatherer.get_id()
-                if gatherer_unit_id not in gather_lookup_dict.keys():
+                if gatherer_unit_id not in gather_lookup_dict:
                     # Skips hunting wolves
                     continue
 

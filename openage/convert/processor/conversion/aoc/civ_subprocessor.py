@@ -219,7 +219,7 @@ class AoCCivSubprocessor:
                         # Skip Dark Age; it is not a tech in openage
                         patches.extend(bonus_patches)
 
-                    elif tech_id in tech_patches.keys():
+                    elif tech_id in tech_patches:
                         tech_patches[tech_id].extend(bonus_patches)
 
                     else:
@@ -467,7 +467,7 @@ class AoCCivSubprocessor:
                 else:
                     train_location = dataset.building_lines[train_location_id]
 
-                if train_location in disabled_entities.keys():
+                if train_location in disabled_entities:
                     disabled_entities[train_location].append(unlocked_line)
 
                 else:
@@ -483,7 +483,7 @@ class AoCCivSubprocessor:
                     research_location_id = tech_group.get_research_location_id()
                     research_location = dataset.building_lines[research_location_id]
 
-                    if research_location in disabled_techs.keys():
+                    if research_location in disabled_techs:
                         disabled_techs[research_location].append(tech_group)
 
                     else:

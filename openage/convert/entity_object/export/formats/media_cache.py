@@ -80,7 +80,7 @@ class MediaCacheFile(DataDefinition):
         :param packer_settings: Settings for the packing algorithm.
         :type packer_settings: tuple
         """
-        if media_type not in self.cache.keys():
+        if media_type not in self.cache:
             self.cache[media_type] = []
 
         self.cache[media_type].append(

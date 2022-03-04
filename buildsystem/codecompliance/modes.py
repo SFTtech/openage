@@ -1,4 +1,4 @@
-# Copyright 2016-2020 the openage authors. See copying.md for legal info.
+# Copyright 2016-2022 the openage authors. See copying.md for legal info.
 
 """
 Checks the mode of all files and prevents executable source files.
@@ -39,7 +39,7 @@ def check_mode(filename):
         if path.suffix in EXTENSIONS_SHEBANG_XBIT:
             # if the file is allowed to have a shebang,
             # allow its executable bit if it actually has a shebang
-            with path.open() as file:
+            with path.open(encoding='utf-8') as file:
                 firstline = file.readline()
 
                 if SHEBANG_RE.match(firstline):

@@ -408,7 +408,7 @@ class AoCTechSubprocessor:
         mode = effect["attr_c"].value
         amount = int(effect["attr_d"].value)
 
-        if tech_id not in tech_lookup_dict.keys():
+        if tech_id not in tech_lookup_dict:
             # Skips some legacy techs from AoK such as the tech for bombard cannon
             return patches
 
@@ -525,7 +525,7 @@ class AoCTechSubprocessor:
         mode = effect["attr_c"].value
         research_time = effect["attr_d"].value
 
-        if tech_id not in tech_lookup_dict.keys():
+        if tech_id not in tech_lookup_dict:
             # Skips some legacy techs from AoK such as the tech for bombard cannon
             return patches
 

@@ -607,7 +607,7 @@ class RoRProcessor:
 
                 class_id = command["class_id"].value
 
-                if class_id in garrison_class_assignments.keys():
+                if class_id in garrison_class_assignments:
                     garrison_class_assignments[class_id].append(unit_line)
 
                 else:
@@ -618,7 +618,7 @@ class RoRProcessor:
         for garrison in unit_lines.values():
             class_id = garrison.get_class_id()
 
-            if class_id in garrison_class_assignments.keys():
+            if class_id in garrison_class_assignments:
                 for line in garrison_class_assignments[class_id]:
                     garrison.garrison_entities.append(line)
                     line.garrison_locations.append(garrison)

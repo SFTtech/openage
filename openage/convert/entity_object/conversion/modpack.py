@@ -51,7 +51,7 @@ class Modpack:
             raise Exception(f"{repr(self)}: export file must be of type MediaExportRequest "
                             f"not {type(export_request)}")
 
-        if export_request.get_type() in self.media_export_files.keys():
+        if export_request.get_type() in self.media_export_files:
             self.media_export_files[export_request.get_type()].append(export_request)
 
         else:

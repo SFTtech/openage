@@ -99,7 +99,7 @@ class DE2CivSubprocessor:
                         # TODO: Bonus unlocked by something else
                         continue
 
-                    if tech_id in tech_patches.keys():
+                    if tech_id in tech_patches:
                         tech_patches[tech_id].extend(bonus_patches)
 
                     else:

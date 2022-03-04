@@ -224,7 +224,7 @@ class SWGBCCProcessor:
                 transform_id = unit["transform_unit_id"].value
                 unit_line = SWGBUnitTransformGroup(transform_id, transform_id, full_data_set)
 
-            elif unit_id in MONK_GROUP_ASSOCS.keys():
+            elif unit_id in MONK_GROUP_ASSOCS:
                 # Jedi/Sith
                 # Switch to monk with relic is hardcoded :(
                 # for every civ (WTF LucasArts)
@@ -275,7 +275,7 @@ class SWGBCCProcessor:
             previous_id = previous_unit_id
             previous_connection = unit_connections[previous_unit_id]
             while previous_connection["line_mode"] != 2:
-                if previous_id in unit_ref.keys():
+                if previous_id in unit_ref:
                     # Short-circuit here, if we the previous unit was already handled
                     break
 
@@ -299,7 +299,7 @@ class SWGBCCProcessor:
         final_unit_lines = {}
         final_unit_lines.update(unit_lines)
         for line in unit_lines.values():
-            if line.get_head_unit_id() not in CIV_LINE_ASSOCS.keys():
+            if line.get_head_unit_id() not in CIV_LINE_ASSOCS:
                 for main_head_unit_id, civ_head_unit_ids in CIV_LINE_ASSOCS.items():
                     if line.get_head_unit_id() in civ_head_unit_ids:
                         # The line is an alternative civ line and should be stored
@@ -454,7 +454,7 @@ class SWGBCCProcessor:
         for connection in building_connections.values():
             building_id = connection["id"].value
 
-            if building_id not in upgraded_by_tech.keys():
+            if building_id not in upgraded_by_tech:
                 continue
 
             building = full_data_set.genie_units[building_id]
@@ -683,7 +683,7 @@ class SWGBCCProcessor:
         final_unit_unlocks = {}
         for unit_unlock in unit_unlocks.values():
             line = unit_unlock.get_unlocked_line()
-            if line.get_head_unit_id() not in CIV_LINE_ASSOCS.keys():
+            if line.get_head_unit_id() not in CIV_LINE_ASSOCS:
                 for main_head_unit_id, civ_head_unit_ids in CIV_LINE_ASSOCS.items():
                     if line.get_head_unit_id() in civ_head_unit_ids:
                         if isinstance(line, SWGBUnitTransformGroup):
@@ -710,7 +710,7 @@ class SWGBCCProcessor:
         final_unit_upgrades = {}
         for unit_upgrade in unit_upgrades.values():
             tech_id = unit_upgrade.tech.get_id()
-            if tech_id not in CIV_TECH_ASSOCS.keys():
+            if tech_id not in CIV_TECH_ASSOCS:
                 for main_tech_id, civ_tech_ids in CIV_TECH_ASSOCS.items():
                     if tech_id in civ_tech_ids:
                         # The tech is upgrade for an alternative civ so the upgrade
