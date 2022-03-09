@@ -12,6 +12,8 @@ from __future__ import annotations
 
 import typing
 
+from openage.convert.entity_object.conversion.dynamic_loader import DynamicLoader
+
 from ....nyan.nyan_structs import NyanObject, NyanPatch, NyanPatchMember, MemberOperator
 from ...value_object.conversion.forward_ref import ForwardRef
 from ...value_object.read.value_members import NoDiffMember, ValueMember
@@ -47,6 +49,9 @@ class ConverterObject:
         if members:
             if all(isinstance(member, ValueMember) for member in members.values()):
                 self.members.update(members)
+
+            elif isinstance(members, DynamicLoader):
+                self.members = members
 
             else:
                 raise Exception("members must be an instance of ValueMember")

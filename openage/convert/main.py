@@ -203,6 +203,10 @@ def init_subparser(cli: ArgumentParser):
         "--debug-info", type=int, choices=[0, 1, 2, 3, 4, 5, 6],
         help="create debug output for the converter run; verbosity levels 0-6")
 
+    cli.add_argument(
+        "--low-memory", action='store_true',
+        help="Activate low memory mode")
+
 
 def main(args, error):
     """ CLI entry point """
