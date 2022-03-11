@@ -87,7 +87,8 @@ class Tracemalloc:
     p.enable() and p.disable().
     """
 
-    snapshot = None
+    snapshot0 = None
+    snapshot1 = None
 
     def __init__(self, o_stream=None):
         # o_stream can be a file if the profile results want to be saved.
@@ -105,6 +106,22 @@ class Tracemalloc:
         """
         self.disable()
 
+    def snapshot(self):
+        """
+        Take a manual snapshot. Up to two snapshots can be saved.
+        report() compares the last two snapshots.
+        """
+        if self.snapshot0 is None:
+            self.snapshot0 = tracemalloc.take_snapshot()
+
+        elif self.snapshot1 is None:
+            self.snapshot1 = tracemalloc.take_snapshot()
+
+        else:
+            # Push back
+            self.snapshot0 = self.snapshot1
+            self.snapshot1 = tracemalloc.take_snapshot()
+
     def report(
         self,
         sortby: str = 'lineno',
@@ -114,7 +131,13 @@ class Tracemalloc:
         """
         Return the snapshot statistics to the console.
         """
-        for stat in self.snapshot.statistics(sortby, cumulative)[:limit]:
+        if self.snapshot1:
+            stats = self.snapshot1.compare_to(self.snapshot0, sortby, cumulative)[:limit]
+
+        else:
+            stats = self.snapshot0.statistics(sortby, cumulative)[:limit]
+
+        for stat in stats:
             print(stat)
 
     @staticmethod
@@ -128,4 +151,7 @@ class Tracemalloc:
         """
         Stop profiling calls.
         """
-        self.snapshot = tracemalloc.take_snapshot()
+        if self.snapshot0 is None:
+            self.snapshot()
+
+        tracemalloc.stop()
