@@ -89,6 +89,7 @@ class Tracemalloc:
 
     snapshot0 = None
     snapshot1 = None
+    peak = None
 
     def __init__(self, o_stream=None):
         # o_stream can be a file if the profile results want to be saved.
@@ -125,7 +126,7 @@ class Tracemalloc:
     def report(
         self,
         sortby: str = 'lineno',
-        cumulative: bool = True,
+        cumulative: bool = False,
         limit: int = 100
     ) -> None:
         """
@@ -140,6 +141,15 @@ class Tracemalloc:
         for stat in stats:
             print(stat)
 
+    def get_peak(self) -> int:
+        """
+        Return the peak memory consumption.
+        """
+        if not self.peak:
+            return tracemalloc.get_traced_memory()[1]
+
+        return self.peak
+
     @staticmethod
     def enable() -> None:
         """
@@ -153,5 +163,7 @@ class Tracemalloc:
         """
         if self.snapshot0 is None:
             self.snapshot()
+
+        self.peak = tracemalloc.get_traced_memory()[1]
 
         tracemalloc.stop()

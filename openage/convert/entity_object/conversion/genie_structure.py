@@ -9,6 +9,8 @@ import math
 import re
 import struct
 
+from openage.convert.entity_object.conversion.dynamic_loader import DynamicLoader
+
 from ....util.strings import decode_until_null
 from ...value_object.read.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP, MemberAccess
 from ...value_object.read.read_members import (IncludeMembers, ContinueReadMember,
@@ -23,42 +25,45 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
 
 
+# regex for matching type array definitions like int[1337]
+# group 1: type name, group 2: length
+VARARRAY_MATCH = re.compile("([{0}]+) *\\[([{0}]+)\\] *;?".format("a-zA-Z0-9_"))
+
+# match a simple number
+INTEGER_MATCH = re.compile("\\d+")
+
+# type lookup for C -> python struct
+STRUCT_TYPE_LOOKUP = {
+    "char":               "b",
+    "unsigned char":      "B",
+    "int8_t":             "b",
+    "uint8_t":            "B",
+    "short":              "h",
+    "unsigned short":     "H",
+    "int16_t":            "h",
+    "uint16_t":           "H",
+    "int":                "i",
+    "unsigned int":       "I",
+    "int32_t":            "i",
+    "uint32_t":           "I",
+    "long":               "l",
+    "unsigned long":      "L",
+    "long long":          "q",
+    "unsigned long long": "Q",
+    "int64_t":            "q",
+    "uint64_t":           "Q",
+    "float":              "f",
+    "double":             "d",
+    "char[]":             "s",
+}
+
+
 class GenieStructure:
     """
     superclass for all structures from Genie Engine games.
     """
 
-    # regex for matching type array definitions like int[1337]
-    # group 1: type name, group 2: length
-    vararray_match = re.compile("([{0}]+) *\\[([{0}]+)\\] *;?".format("a-zA-Z0-9_"))
-
-    # match a simple number
-    integer_match = re.compile("\\d+")
-
-    # type lookup for C -> python struct
-    struct_type_lookup = {
-        "char":               "b",
-        "unsigned char":      "B",
-        "int8_t":             "b",
-        "uint8_t":            "B",
-        "short":              "h",
-        "unsigned short":     "H",
-        "int16_t":            "h",
-        "uint16_t":           "H",
-        "int":                "i",
-        "unsigned int":       "I",
-        "int32_t":            "i",
-        "uint32_t":           "I",
-        "long":               "l",
-        "unsigned long":      "L",
-        "long long":          "q",
-        "unsigned long long": "Q",
-        "int64_t":            "q",
-        "uint64_t":           "Q",
-        "float":              "f",
-        "double":             "d",
-        "char[]":             "s",
-    }
+    dynamic_load = False
 
     def __init__(self, **args):
         # store passed arguments as members
@@ -70,7 +75,8 @@ class GenieStructure:
         offset: int,
         game_version: GameVersion,
         cls: GenieStructure = None,
-        members: tuple = None
+        members: tuple = None,
+        dynamic_load = True
     ) -> tuple[int, list[ValueMember]]:
         """
         recursively read defined binary data from raw at given offset.
@@ -98,8 +104,11 @@ class GenieStructure:
                                                                   SKIP),
                                                    flatten_includes=False)
 
+        # Save the start offset in case dynamic loading is active
+        # we still need to read over the whole structure to know
+        # where it stops
+        start_offset = offset
         for _, export, var_name, storage_type, var_type in members:
-
             if stop_reading_members:
                 if isinstance(var_type, ReadMember):
                     replacement_value = var_type.get_empty_value()
@@ -129,6 +138,9 @@ class GenieStructure:
                     storage_type, var_type
                 )
                 generated_value_members.extend(gen_members)
+
+        if dynamic_load and self.dynamic_load:
+            return offset, DynamicLoader("", self.__class__, game_version, raw, start_offset)
 
         return offset, generated_value_members
 
@@ -180,7 +192,7 @@ class GenieStructure:
                 elif storage_type is StorageType.ARRAY_CONTAINER:
                     # create a container for the members first, then push the
                     # container into an array
-                    container = ContainerMember(var_name, gen_members)
+                    container = ContainerMember("", gen_members)
                     allowed_member_type = StorageType.CONTAINER_MEMBER
                     array = ArrayMember(var_name, allowed_member_type, [container])
 
@@ -305,7 +317,7 @@ class GenieStructure:
                     sub_members.extend(gen_members)
                     gen_members = sub_members
                     # create a container for the retrieved members
-                    container = ContainerMember(var_name, gen_members)
+                    container = ContainerMember("", gen_members)
 
                     # Save the container to a list
                     # The array is created after the for-loop
@@ -346,7 +358,7 @@ class GenieStructure:
         is_custom_member = False
 
         if isinstance(var_type, str):
-            is_array = self.vararray_match.match(var_type)
+            is_array = VARARRAY_MATCH.match(var_type)
 
             if is_array:
                 struct_type = is_array.group(1)
@@ -354,7 +366,7 @@ class GenieStructure:
                 if struct_type == "char":
                     struct_type = "char[]"
 
-                if self.integer_match.match(data_count):
+                if INTEGER_MATCH.match(data_count):
                     # integer length
                     data_count = int(data_count)
                 else:
@@ -392,7 +404,7 @@ class GenieStructure:
             raise Exception("invalid length %d < 0 in %s for member '%s'" % (
                 data_count, var_type, var_name))
 
-        if struct_type not in self.struct_type_lookup:
+        if struct_type not in STRUCT_TYPE_LOOKUP:
             raise Exception("%s: member %s requests unknown data type %s" % (
                 repr(self), var_name, struct_type))
 
@@ -402,7 +414,7 @@ class GenieStructure:
             var_name = "unknown-0x%08x" % offset
 
         # lookup c type to python struct scan type
-        symbol = self.struct_type_lookup[struct_type]
+        symbol = STRUCT_TYPE_LOOKUP[struct_type]
 
         # read that stuff!!11
         struct_format = "< %d%s" % (data_count, symbol)

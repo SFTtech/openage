@@ -11,6 +11,8 @@ import pickle
 from tempfile import gettempdir
 from zlib import decompress
 
+from openage.convert.entity_object.conversion.dynamic_loader import DynamicLoader
+
 
 from ....log import spam, dbg, info, warn
 from ...value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
@@ -57,7 +59,8 @@ def load_gamespec(
     fileobj: GuardedFile,
     game_version: GameVersion,
     cachefile_name: str = None,
-    pickle_cache: bool = False
+    pickle_cache: bool = False,
+    dynamic_load = False
 ) -> ArrayMember:
     """
     Helper method that loads the contents of a 'empires.dat' gzipped wrapper
@@ -103,6 +106,7 @@ def load_gamespec(
 
     # Remove the list sorrounding the converted data
     gamespec = gamespec[0]
+    del wrapper
 
     if cachefile_name and pickle_cache:
         dbg("dumping dat file contents to cache file: %s", cachefile_name)

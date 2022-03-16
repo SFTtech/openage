@@ -131,6 +131,8 @@ class TerrainAnimation(GenieStructure):
 
 class Terrain(GenieStructure):
 
+    dynamic_load = True
+
     @classmethod
     def get_data_format_members(
         cls,
@@ -292,6 +294,8 @@ class Terrain(GenieStructure):
 
 
 class TerrainBorder(GenieStructure):
+
+    dynamic_load = True
 
     @classmethod
     def get_data_format_members(

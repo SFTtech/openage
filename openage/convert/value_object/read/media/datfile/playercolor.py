@@ -17,6 +17,8 @@ if typing.TYPE_CHECKING:
 
 class PlayerColor(GenieStructure):
 
+    dynamic_load = True
+
     @classmethod
     def get_data_format_members(
         cls,
