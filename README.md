@@ -85,7 +85,7 @@ Installation Packages
 
 **Supported Platforms:** Linux, Windows 10, macOS (both Intel and ARM)
 
-* For **Linux** check at [repology](https://repology.org/project/openage/versions) if your distribution has any packages available or [here](https://bintray.com/simonsan/openage-packages/openage-linux-releases) for any future updates on *.deb and AppImage packages.
+* For **Linux** check at [repology](https://repology.org/project/openage/versions) if your distribution has any packages available.
 * For **Windows** check our [release page](https://github.com/SFTtech/openage/releases) for the latest installer or [here](https://dl.bintray.com/simonsan/openage-packages/) for nightly builds.
 
     * **NOTE:** If you have any problems starting conversion or starting *openage* take a look into the [package instructions](doc/build_instructions/packages.md) and our [troubleshooting guide](/doc/troubleshooting.md).
