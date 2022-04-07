@@ -1,4 +1,4 @@
-# Copyright 2014-2021 the openage authors. See copying.md for legal info.
+# Copyright 2014-2022 the openage authors. See copying.md for legal info.
 
 """
 Entry point for the code compliance checker.
@@ -10,6 +10,8 @@ import os
 import shutil
 import subprocess
 import sys
+
+from .util import log_setup
 
 
 def parse_args():
@@ -51,6 +53,11 @@ def parse_args():
     cli.add_argument("--fix", action="store_true",
                      help=("try to automatically fix the found issues"))
 
+    cli.add_argument("-v", "--verbose", action="count", default=0,
+                     help="increase program verbosity")
+    cli.add_argument("-q", "--quiet", action="count", default=0,
+                     help="decrease program verbosity")
+
     args = cli.parse_args()
     process_args(args, cli.error)
 
@@ -65,6 +72,9 @@ def process_args(args, error):
     """
     # this method is very flat; artificially nesting it would be bullshit.
     # pylint: disable=too-many-branches
+
+    # set up log level
+    log_setup(args.verbose - args.quiet)
 
     if args.fast or args.all:
         # enable "fast" tests
