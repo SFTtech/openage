@@ -1,4 +1,4 @@
-// Copyright 2016-2019 the openage authors. See copying.md for legal info.
+// Copyright 2016-2022 the openage authors. See copying.md for legal info.
 
 #include "gui.h"
 
@@ -133,7 +133,7 @@ void Gui::init() {
 	int row = (y - buffer.size()) / 2;;
 	int col = (x - colwidth) / 2;
 	for (const auto &c : buffer) {
-		mvprintw(row++, col, c);
+		mvprintw(row++, col, "%c", c);
 	}
 
 	attroff(COLOR_PAIR(COLOR_DEBUG));
@@ -206,7 +206,7 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 	// show log
 	int msg_i = 0;
 	for (auto & msg : this->log_msgs) {
-		mvprintw((6 + msg_i), state->display_boundary[0]/2 + 10, msg.c_str());
+		mvprintw((6 + msg_i), state->display_boundary[0]/2 + 10, "%s", msg.c_str());
 		msg_i += 1;
 	}
 

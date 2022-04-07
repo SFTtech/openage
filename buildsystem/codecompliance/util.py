@@ -1,9 +1,10 @@
-# Copyright 2014-2021 the openage authors. See copying.md for legal info.
+# Copyright 2014-2022 the openage authors. See copying.md for legal info.
 
 """
 Some utilities.
 """
 
+import logging
 import os
 
 
@@ -11,6 +12,44 @@ SHEBANG = "#!/.*\n(#?\n)?"
 
 FILECACHE = {}
 BADUTF8FILES = set()
+
+
+def log_setup(setting, default=1):
+    """
+    Perform setup for the logger.
+    Run before any logging.log thingy is called.
+
+    if setting is 0: the default is used, which is WARNING.
+    else: setting + default is used.
+    """
+
+    levels = (logging.ERROR, logging.WARNING, logging.INFO,
+              logging.DEBUG, logging.NOTSET)
+
+    factor = clamp(default + setting, 0, len(levels) - 1)
+    level = levels[factor]
+
+    logging.basicConfig(level=level, format="[%(asctime)s] %(message)s")
+    logging.captureWarnings(True)
+
+
+def clamp(number, smallest, largest):
+    """ return number but limit it to the inclusive given value range """
+    return max(smallest, min(number, largest))
+
+
+class Strlazy:
+    # pylint: disable=too-few-public-methods
+    """
+    to be used like this: logging.debug("rolf %s", strlazy(lambda: do_something()))
+    so do_something is only called when the debug message is actually printed
+    do_something could also be an f-string.
+    """
+    def __init__(self, fun):
+        self.fun = fun
+
+    def __str__(self):
+        return self.fun()
 
 
 def has_ext(fname, exts):

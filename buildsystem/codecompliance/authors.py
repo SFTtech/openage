@@ -1,10 +1,14 @@
-# Copyright 2014-2021 the openage authors. See copying.md for legal info.
+# Copyright 2014-2022 the openage authors. See copying.md for legal info.
 
 """
 Checks whether all authors are properly listed in copying.md.
 """
 
 import re
+
+import logging
+
+from .util import Strlazy
 
 
 def deobfuscate_email(string):
@@ -35,7 +39,7 @@ def get_author_emails_copying_md():
     """
     with open("copying.md", encoding='utf8') as fobj:
         for line in fobj:
-            match = re.match("^.*\\|[^|]*\\|[^|]*\\|([^|]*)\\|.*$", line)
+            match = re.match("^.*\\|[^|]*\\|[^|]*\\|([^|]+)\\|.*$", line)
             if not match:
                 continue
 
@@ -43,8 +47,9 @@ def get_author_emails_copying_md():
             if 'à' in email:
                 email = deobfuscate_email(email)
 
-            if '@' not in email:
-                continue
+            if not any(email.startswith(prefix) for prefix in ("E-Mail", "-" * 15))\
+               and '@' not in email:
+                raise Exception(f"no @ or à was found in email: {email}")
 
             yield email
 
@@ -83,7 +88,12 @@ def find_issues():
                      '.qml')
 
     copying_md_emails = set(get_author_emails_copying_md())
+    logging.debug("scanned authors in copying.md:\n%s",
+                  Strlazy(lambda: f"{chr(10).join(sorted(copying_md_emails))}"))
+
     git_shortlog_emails = set(get_author_emails_git_shortlog(relevant_exts))
+    logging.debug("scanned authors from git shortlog:\n%s",
+                  Strlazy(lambda: f"{chr(10).join(sorted(git_shortlog_emails))}"))
 
     # look for git emails that are unlisted in copying.md
     for email in git_shortlog_emails - copying_md_emails:
