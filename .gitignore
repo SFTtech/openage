@@ -4,6 +4,7 @@
 *~
 .*.swp
 /CMakeLists.txt.user
+*.temp
 
 # ELF files
 *.o
