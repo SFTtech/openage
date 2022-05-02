@@ -6,7 +6,7 @@ jobs:
   build-devenv:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Build the Docker image
       run: sudo DOCKER_BUILDKIT=1 docker build ./docker/devenv --file ./docker/devenv/Dockerfile.ubuntu.2104 --tag openage-devenv:latest
       shell: bash
