@@ -7,17 +7,19 @@
 #include <QObject>
 
 #include "coord/pixel.h"
-#include "input/input_context.h"
-#include "rng/rng.h"
 #include "gamestate/old/game_main.h"
+#include "gui/guisys/link/gui_item_link.h"
+#include "handlers.h"
+#include "input/input_context.h"
+#include "presenter/legacy/legacy.h"
+#include "rng/rng.h"
 #include "unit/command.h"
 #include "unit/selection.h"
 #include "unit/unit_type.h"
-#include "handlers.h"
 
 namespace qtsdl {
 class GuiItemLink;
-} // qtsdl
+} // namespace qtsdl
 
 namespace openage {
 
@@ -45,7 +47,7 @@ signals:
 	 * Signal is triggered when the bindings of the mode change.
 	 * binds: list of strings that describe keybindings.
 	 */
-	void binds_changed(const std::vector<std::string>& binds);
+	void binds_changed(const std::vector<std::string> &binds);
 };
 
 
@@ -357,11 +359,12 @@ public:
 	explicit GameControl(qtsdl::GuiItemLink *gui_link);
 
 	void set_engine(Engine *engine);
+	void set_display(presenter::LegacyDisplay *engine);
 	void set_game(GameMainHandle *game);
 
-	void set_modes(const std::vector<OutputMode*> &modes);
+	void set_modes(const std::vector<OutputMode *> &modes);
 
-	void set_mode(int mode, bool signal_if_unchanged=false);
+	void set_mode(int mode, bool signal_if_unchanged = false);
 	void announce_mode();
 	void announce_current_player_name();
 
@@ -369,13 +372,15 @@ public:
 
 	Player *get_current_player() const;
 	Engine *get_engine() const;
+	presenter::LegacyDisplay *get_display() const;
 
 private:
 	Engine *engine;
+	presenter::LegacyDisplay *display;
 	GameMainHandle *game;
 
 	// control modes
-	std::vector<OutputMode*> modes;
+	std::vector<OutputMode *> modes;
 
 	OutputMode *active_mode;
 	int active_mode_index;
@@ -387,4 +392,4 @@ public:
 	qtsdl::GuiItemLink *gui_link;
 };
 
-} // openage
+} // namespace openage

@@ -2,9 +2,9 @@
 
 #pragma once
 
+#include "../presenter/legacy/legacy.h"
 #include "../util/path.h"
 #include "guisys/public/gui_singleton_items_info.h"
-
 
 namespace openage {
 class Engine;
@@ -30,10 +30,16 @@ public:
 	Engine *engine;
 
 	/**
+	 * The openage display.
+	 */
+	presenter::LegacyDisplay *display;
+
+	/**
 	 * Search path for finding assets n stuff.
 	 */
 	util::Path asset_dir;
 };
 
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

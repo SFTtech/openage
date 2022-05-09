@@ -1,6 +1,7 @@
 // Copyright 2020-2020 the openage authors. See copying.md for legal info.
 
 #include "legacy.h"
+#include <SDL2/SDL_image.h>
 
 #include "../../config.h"
 #include "../../error/error.h"
@@ -16,27 +17,25 @@
 #include "../../util/strings.h"
 #include "../../util/timer.h"
 #include "../../version.h"
-
+#include "engine.h"
 
 namespace openage::presenter {
 
 
-LegacyDisplay::LegacyDisplay(const util::Path &path)
-	:
+LegacyDisplay::LegacyDisplay(const util::Path &path, Engine *engine) :
 	OptionNode{"Engine"},
 	drawing_debug_overlay{this, "drawing_debug_overlay", false},
 	drawing_huds{this, "drawing_huds", true},
-	screenshot_manager{&this->job_manager},
-	action_manager{&this->input_manager, this->cvar_manager},
-	audio_manager{&this->job_manager},
-	input_manager{&this->action_manager},
-	profiler{this} {
-
+	screenshot_manager{engine->get_job_manager()},
+	action_manager{&this->input_manager, std::shared_ptr<openage::cvar::CVarManager>(engine->get_cvar_manager())},
+	audio_manager{engine->get_job_manager()},
+	input_manager{&this->action_manager} {
 	// TODO get this from config system (cvar)
 	int32_t fps_limit = 0;
 	if (fps_limit > 0) {
 		this->ns_per_frame = 1e9 / fps_limit;
-	} else {
+	}
+	else {
 		this->ns_per_frame = 0;
 	}
 
@@ -45,17 +44,14 @@ LegacyDisplay::LegacyDisplay(const util::Path &path)
 		fonts[size] = this->font_manager->get_font("DejaVu Serif", "Book", size);
 	}
 
-	// temporary log to the filesystem.
-	// some housekeeping should be implemented as this file is only ever appended to
-	this->logsink_file = std::make_unique<log::FileSink>("/tmp/openage-log", true);
-
 	// enqueue the engine's own input handler to the
 	// execution list.
 	this->register_resize_action(this);
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		throw Error(MSG(err) << "SDL video initialization: " << SDL_GetError());
-	} else {
+	}
+	else {
 		log::log(MSG(info) << "Initialized SDL video subsystems.");
 	}
 
@@ -73,8 +69,7 @@ LegacyDisplay::LegacyDisplay(const util::Path &path)
 		SDL_WINDOWPOS_CENTERED,
 		this->coord.viewport_size.x,
 		this->coord.viewport_size.y,
-		window_flags
-	);
+		window_flags);
 
 	if (this->window == nullptr) {
 		throw Error(MSG(err) << "Failed to create SDL window: " << SDL_GetError());
@@ -135,7 +130,7 @@ LegacyDisplay::LegacyDisplay(const util::Path &path)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	//// -- initialize the gui
-	util::Path qml_root = this->root_dir / "assets" / "qml";
+	util::Path qml_root = engine->get_root_dir() / "assets" / "qml";
 	if (not qml_root.is_dir()) {
 		throw Error{ERR << "could not find qml root folder " << qml_root};
 	}
@@ -153,10 +148,10 @@ LegacyDisplay::LegacyDisplay(const util::Path &path)
 	std::string qml_root_file_str = qml_root_file.resolve_native_path();
 
 	this->gui = std::make_unique<gui::GUI>(
-		this->window,                // sdl window for the gui
-		qml_root_file_str,           // entry qml file, absolute path.
-		qml_root_str,                // directory to watch for qml file changes
-		&this->qml_info              // qml data: Engine *, the data directory, ...
+		this->window, // sdl window for the gui
+		qml_root_file_str, // entry qml file, absolute path.
+		qml_root_str // directory to watch for qml file changes
+		// &engine->get_qml_info() // qml data: Engine *, the data directory, ...
 	);
 	//// -- gui initialization
 
@@ -169,8 +164,8 @@ LegacyDisplay::LegacyDisplay(const util::Path &path)
 	auto &global_input_context = this->get_input_manager().get_global_context();
 
 	input::ActionManager &action = this->get_action_manager();
-	global_input_context.bind(action.get("STOP_GAME"), [this](const input::action_arg_t &) {
-		this->stop();
+	global_input_context.bind(action.get("STOP_GAME"), [engine](const input::action_arg_t &) {
+		engine->stop();
 	});
 	global_input_context.bind(action.get("TOGGLE_HUD"), [this](const input::action_arg_t &) {
 		this->drawing_huds.value = !this->drawing_huds.value;
@@ -181,17 +176,17 @@ LegacyDisplay::LegacyDisplay(const util::Path &path)
 	global_input_context.bind(action.get("TOGGLE_DEBUG_OVERLAY"), [this](const input::action_arg_t &) {
 		this->drawing_debug_overlay.value = !this->drawing_debug_overlay.value;
 	});
-	global_input_context.bind(action.get("TOGGLE_PROFILER"), [this](const input::action_arg_t &) {
-		if (this->external_profiler.currently_profiling) {
-			this->external_profiler.stop();
-			this->external_profiler.show_results();
-		} else {
-			this->external_profiler.start();
+	global_input_context.bind(action.get("TOGGLE_PROFILER"), [engine](const input::action_arg_t &) {
+		if (engine->external_profiler.currently_profiling) {
+			engine->external_profiler.stop();
+			engine->external_profiler.show_results();
+		}
+		else {
+			engine->external_profiler.start();
 		}
 	});
 	global_input_context.bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
-		if (arg.e.cc.has_class(input::event_class::MOUSE_MOTION) &&
-			this->get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 2)) {
+		if (arg.e.cc.has_class(input::event_class::MOUSE_MOTION) && this->get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 2)) {
 			this->move_phys_camera(arg.motion.x, arg.motion.y);
 			return true;
 		}
@@ -199,7 +194,7 @@ LegacyDisplay::LegacyDisplay(const util::Path &path)
 	});
 
 	this->text_renderer = std::make_unique<renderer::TextRenderer>();
-	this->unit_selection = std::make_unique<UnitSelection>(this);
+	this->unit_selection = std::make_unique<UnitSelection>(engine);
 }
 
 
@@ -220,21 +215,27 @@ LegacyDisplay::~LegacyDisplay() {
 bool LegacyDisplay::draw_debug_overlay() {
 	// Draw FPS counter in the lower right corner
 	this->render_text(
-		{this->coord.viewport_size.x - 70, 15}, 20, renderer::Colors::WHITE,
-		"%.0f fps", this->fps_counter.display_fps
-	);
+		{this->coord.viewport_size.x - 70, 15},
+		20,
+		renderer::Colors::WHITE,
+		"%.0f fps",
+		this->fps_counter.display_fps);
 
 	// Draw version string in the lower left corner
 	this->render_text(
-		{5, 35}, 20, renderer::Colors::WHITE,
-		"openage %s", version::version
-	);
+		{5, 35},
+		20,
+		renderer::Colors::WHITE,
+		"openage %s",
+		version::version);
 	this->render_text(
-		{5, 15}, 12, renderer::Colors::WHITE,
-		"%s", config::config_option_string
-	);
+		{5, 15},
+		12,
+		renderer::Colors::WHITE,
+		"%s",
+		config::config_option_string);
 
-	this->profiler.show(true);
+	// this->profiler.show(true);
 
 	return true;
 }
@@ -253,7 +254,8 @@ void LegacyDisplay::register_tick_action(TickHandler *handler) {
 void LegacyDisplay::register_drawhud_action(HudHandler *handler, int order) {
 	if (order < 0) {
 		this->on_drawhud.insert(this->on_drawhud.begin(), handler);
-	} else {
+	}
+	else {
 		this->on_drawhud.push_back(handler);
 	}
 }
@@ -273,7 +275,7 @@ bool LegacyDisplay::on_resize(coord::viewport_delta new_size) {
 	// TODO: move all this to the renderer!
 
 	log::log(MSG(dbg) << "engine window resize to "
-	         << new_size.x << "x" << new_size.y);
+	                  << new_size.x << "x" << new_size.y);
 
 	// update engine window size
 	this->coord.viewport_size = new_size;
@@ -313,9 +315,8 @@ time_nsec_t LegacyDisplay::lastframe_duration_nsec() const {
 
 
 void LegacyDisplay::announce_global_binds() {
-	emit this->gui_signals.global_binds_changed(
-		this->get_input_manager().get_global_context().active_binds()
-	);
+	// emit this->gui_signals.global_binds_changed(
+	// 	this->get_input_manager().get_global_context().active_binds());
 }
 
 
@@ -348,8 +349,7 @@ void LegacyDisplay::move_phys_camera(float x, float y, float amount) {
 	// calculate camera position delta from velocity and frame duration
 	coord::camgame_delta cam_delta{
 		static_cast<coord::pixel_t>(+x * amount),
-		static_cast<coord::pixel_t>(-y * amount)
-	};
+		static_cast<coord::pixel_t>(-y * amount)};
 
 	// update camera phys position
 	this->coord.camgame_phys += cam_delta.to_phys3(this->coord, 0);
@@ -361,7 +361,7 @@ GameMain *LegacyDisplay::get_game() {
 }
 
 
-void LecacyDisplay::start_game(std::unique_ptr<GameMain> &&game) {
+void LegacyDisplay::start_game(std::unique_ptr<GameMain> &&game) {
 	// TODO: maybe implement a proper 1-to-1 connection
 	ENSURE(game, "linking game to engine problem");
 
@@ -370,164 +370,160 @@ void LecacyDisplay::start_game(std::unique_ptr<GameMain> &&game) {
 }
 
 
-void LecacyDisplay::start_game(const Generator &generator) {
+void LegacyDisplay::start_game(const Generator &generator) {
 	this->game = std::make_unique<GameMain>(generator);
 	this->game->set_parent(this);
 }
 
 
-void LecacyDisplay::end_game() {
+void LegacyDisplay::end_game() {
 	this->game = nullptr;
 	this->unit_selection->clear();
 }
 
 
-void Engine::loop() {
-	SDL_Event event;
-	util::Timer cap_timer;
-
-	while (this->running) {
-		this->profiler.start_frame_measure();
-		this->fps_counter.frame();
-		cap_timer.reset(false);
-
-		this->job_manager.execute_callbacks();
-
-		this->profiler.start_measure("events", {1.0, 0.0, 0.0});
-		// top level input handling
-		while (SDL_PollEvent(&event)) {
-			switch (event.type) {
-
-			case SDL_QUIT:
-				this->stop();
-				break;
-
-			case SDL_WINDOWEVENT: {
-				if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
-					coord::viewport_delta new_size{event.window.data1, event.window.data2};
-
-					// call additional handlers for the resize event
-					for (auto &handler : on_resize_handler) {
-						if (!handler->on_resize(new_size)) {
-							break;
-						}
-					}
-				}
-				break;
-			}
-
-			default:
-				for (auto &action : this->on_input_event) {
-					if (false == action->on_input(&event)) {
-						break;
-					}
-				}
-			} // switch event
-		}
-
-		// here, call to Qt and process all the gui events.
-		this->gui->process_events();
-
-		if (this->game) {
-			// read camera movement input keys and/or cursor location,
-			// and move camera accordingly.
-
-			// camera movement speed, in pixels per millisecond
-			// one pixel per millisecond equals 14.3 tiles/second
-			float mov_x = 0.0, mov_y = 0.0, cam_movement_speed_keyboard = 0.5;
-			Uint32 win_flags = SDL_GetWindowFlags(this->window);
-			bool inp_focus = win_flags & SDL_WINDOW_INPUT_FOCUS;
-
-			input::InputManager &input = this->get_input_manager();
-			using Edge = input::InputManager::Edge;
-
-			if (inp_focus and (input.is_down(SDLK_LEFT) or
-			    input.is_mouse_at_edge(Edge::LEFT, coord.viewport_size.x))) {
-				mov_x = -cam_movement_speed_keyboard;
-			}
-			if (inp_focus and (input.is_down(SDLK_RIGHT) or
-			    input.is_mouse_at_edge(Edge::RIGHT, coord.viewport_size.x))) {
-				mov_x = cam_movement_speed_keyboard;
-			}
-			if (inp_focus and (input.is_down(SDLK_DOWN) or
-			    input.is_mouse_at_edge(Edge::DOWN, coord.viewport_size.y))) {
-				mov_y = cam_movement_speed_keyboard;
-			}
-			if (inp_focus and (input.is_down(SDLK_UP) or
-			    input.is_mouse_at_edge(Edge::UP, coord.viewport_size.y))) {
-				mov_y = -cam_movement_speed_keyboard;
-			}
-
-			// perform camera movement
-			this->move_phys_camera(
-				mov_x, mov_y,
-				static_cast<float>(this->lastframe_duration_nsec()) / 1e6);
-
-			// update the currently running game
-			this->game->update(this->lastframe_duration_nsec());
-		}
-		this->profiler.end_measure("events");
-
-		// call engine tick callback methods
-		for (auto &action : this->on_engine_tick) {
-			if (false == action->on_tick()) {
-				break;
-			}
-		}
-
-		this->profiler.start_measure("rendering", {0.0, 1.0, 0.0});
-
-		// clear the framebuffer to black
-		// in the future, we might disable it for lazy drawing
-		glClearColor(0.0, 0.0, 0.0, 0.0);
-		glClear(GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
-		// invoke all game drawing handlers
-		for (auto &action : this->on_drawgame) {
-			if (false == action->on_draw()) {
-				break;
-			}
-		}
-
-		util::gl_check_error();
-
-		// draw the fps overlay
-		if (this->drawing_debug_overlay.value) {
-			this->draw_debug_overlay();
-		}
-
-		// invoke all hud drawing callback methods
-		if (this->drawing_huds.value) {
-			for (auto &action : this->on_drawhud) {
-				if (false == action->on_drawhud()) {
-					break;
-				}
-			}
-		}
-
-		this->text_renderer->render();
-
-		util::gl_check_error();
-
-		this->profiler.end_measure("rendering");
-
-		this->profiler.start_measure("idle", {0.0, 0.0, 1.0});
-
-		// the rendering is done
-		// swap the drawing buffers to actually show the frame
-		SDL_GL_SwapWindow(window);
-
-		if (this->ns_per_frame != 0) {
-			uint64_t ns_for_current_frame = cap_timer.getval();
-			if (ns_for_current_frame < this->ns_per_frame) {
-				SDL_Delay((this->ns_per_frame - ns_for_current_frame) / 1e6);
-			}
-		}
-
-		this->profiler.end_measure("idle");
-
-		this->profiler.end_frame_measure();
-	}
+void LegacyDisplay::loop() {
+	//SDL_Event event;
+	//util::Timer cap_timer;
+	//
+	//while (this->running) {
+	//	this->profiler.start_frame_measure();
+	//	this->fps_counter.frame();
+	//	cap_timer.reset(false);
+	//
+	//	this->job_manager.execute_callbacks();
+	//
+	//	this->profiler.start_measure("events", {1.0, 0.0, 0.0});
+	//	// top level input handling
+	//	while (SDL_PollEvent(&event)) {
+	//		switch (event.type) {
+	//		case SDL_QUIT:
+	//			this->stop();
+	//			break;
+	//
+	//		case SDL_WINDOWEVENT: {
+	//			if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
+	//				coord::viewport_delta new_size{event.window.data1, event.window.data2};
+	//
+	//				// call additional handlers for the resize event
+	//				for (auto &handler : on_resize_handler) {
+	//					if (!handler->on_resize(new_size)) {
+	//						break;
+	//					}
+	//				}
+	//			}
+	//			break;
+	//		}
+	//
+	//		default:
+	//			for (auto &action : this->on_input_event) {
+	//				if (false == action->on_input(&event)) {
+	//					break;
+	//				}
+	//			}
+	//		} // switch event
+	//	}
+	//
+	//	// here, call to Qt and process all the gui events.
+	//	this->gui->process_events();
+	//
+	//	if (this->game) {
+	//		// read camera movement input keys and/or cursor location,
+	//		// and move camera accordingly.
+	//
+	//		// camera movement speed, in pixels per millisecond
+	//		// one pixel per millisecond equals 14.3 tiles/second
+	//		float mov_x = 0.0, mov_y = 0.0, cam_movement_speed_keyboard = 0.5;
+	//		Uint32 win_flags = SDL_GetWindowFlags(this->window);
+	//		bool inp_focus = win_flags & SDL_WINDOW_INPUT_FOCUS;
+	//
+	//		input::InputManager &input = this->get_input_manager();
+	//		using Edge = input::InputManager::Edge;
+	//
+	//		if (inp_focus and (input.is_down(SDLK_LEFT) or input.is_mouse_at_edge(Edge::LEFT, coord.viewport_size.x))) {
+	//			mov_x = -cam_movement_speed_keyboard;
+	//		}
+	//		if (inp_focus and (input.is_down(SDLK_RIGHT) or input.is_mouse_at_edge(Edge::RIGHT, coord.viewport_size.x))) {
+	//			mov_x = cam_movement_speed_keyboard;
+	//		}
+	//		if (inp_focus and (input.is_down(SDLK_DOWN) or input.is_mouse_at_edge(Edge::DOWN, coord.viewport_size.y))) {
+	//			mov_y = cam_movement_speed_keyboard;
+	//		}
+	//		if (inp_focus and (input.is_down(SDLK_UP) or input.is_mouse_at_edge(Edge::UP, coord.viewport_size.y))) {
+	//			mov_y = -cam_movement_speed_keyboard;
+	//		}
+	//
+	//		// perform camera movement
+	//		this->move_phys_camera(
+	//			mov_x,
+	//			mov_y,
+	//			static_cast<float>(this->lastframe_duration_nsec()) / 1e6);
+	//
+	//		// update the currently running game
+	//		this->game->update(this->lastframe_duration_nsec());
+	//	}
+	//	this->profiler.end_measure("events");
+	//
+	//	// call engine tick callback methods
+	//	for (auto &action : this->on_engine_tick) {
+	//		if (false == action->on_tick()) {
+	//			break;
+	//		}
+	//	}
+	//
+	//	this->profiler.start_measure("rendering", {0.0, 1.0, 0.0});
+	//
+	//	// clear the framebuffer to black
+	//	// in the future, we might disable it for lazy drawing
+	//	glClearColor(0.0, 0.0, 0.0, 0.0);
+	//	glClear(GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+	//
+	//	// invoke all game drawing handlers
+	//	for (auto &action : this->on_drawgame) {
+	//		if (false == action->on_draw()) {
+	//			break;
+	//		}
+	//	}
+	//
+	//	util::gl_check_error();
+	//
+	//	// draw the fps overlay
+	//	if (this->drawing_debug_overlay.value) {
+	//		this->draw_debug_overlay();
+	//	}
+	//
+	//	// invoke all hud drawing callback methods
+	//	if (this->drawing_huds.value) {
+	//		for (auto &action : this->on_drawhud) {
+	//			if (false == action->on_drawhud()) {
+	//				break;
+	//			}
+	//		}
+	//	}
+	//
+	//	this->text_renderer->render();
+	//
+	//	util::gl_check_error();
+	//
+	//	this->profiler.end_measure("rendering");
+	//
+	//	this->profiler.start_measure("idle", {0.0, 0.0, 1.0});
+	//
+	//	// the rendering is done
+	//	// swap the drawing buffers to actually show the frame
+	//	SDL_GL_SwapWindow(window);
+	//
+	//	if (this->ns_per_frame != 0) {
+	//		uint64_t ns_for_current_frame = cap_timer.getval();
+	//		if (ns_for_current_frame < this->ns_per_frame) {
+	//			SDL_Delay((this->ns_per_frame - ns_for_current_frame) / 1e6);
+	//		}
+	//	}
+	//
+	//	this->profiler.end_measure("idle");
+	//
+	//	this->profiler.end_frame_measure();
+	//}
 }
 
 
@@ -549,7 +545,6 @@ input::ActionManager &LegacyDisplay::get_action_manager() {
 input::InputManager &LegacyDisplay::get_input_manager() {
 	return this->input_manager;
 }
-
 
 
 } // namespace openage::presenter

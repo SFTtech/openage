@@ -8,12 +8,13 @@
 #include <vector>
 
 #include "../../coord/tile.h"
+#include "../../gamestate/old/game_spec.h"
 #include "../../handlers.h"
 #include "../../options.h"
+#include "legacy.h"
 
 namespace openage {
 
-class LegacyDisplay;
 class GameMain;
 
 /**
@@ -37,7 +38,7 @@ public:
  */
 class LegacyRenderer : DrawHandler {
 public:
-	LegacyRenderer(LegacyDisplay *e);
+	LegacyRenderer(Engine *e, presenter::LegacyDisplay *d);
 	~LegacyRenderer();
 
 	bool on_draw() override;
@@ -57,7 +58,8 @@ public:
 	RenderOptions settings;
 
 private:
-	LegacyDisplay *display;
+	Engine *engine;
+	presenter::LegacyDisplay *display;
 };
 
-} // openage
+} // namespace openage

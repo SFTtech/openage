@@ -1,8 +1,8 @@
 // Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 // include first to make opengl and libepoxy happy.
-#include "../shader/shader.h"
 #include "../shader/program.h"
+#include "../shader/shader.h"
 
 #include "gui.h"
 
@@ -18,45 +18,36 @@ namespace gui {
 GUI::GUI(SDL_Window *window,
          const std::string &source,
          const std::string &rootdir,
-         EngineQMLInfo *info)
-	:
+         EngineQMLInfo *info) :
 	application{},
 	render_updater{},
 	renderer{window},
 	game_logic_updater{},
 	image_provider_by_filename{
 		&render_updater,
-		GuiGameSpecImageProvider::Type::ByFilename
-	},
+		GuiGameSpecImageProvider::Type::ByFilename},
 	image_provider_by_graphic_id{
 		&render_updater,
-		GuiGameSpecImageProvider::Type::ByGraphicId
-	},
+		GuiGameSpecImageProvider::Type::ByGraphicId},
 	image_provider_by_terrain_id{
 		&render_updater,
-		GuiGameSpecImageProvider::Type::ByTerrainId
-	},
+		GuiGameSpecImageProvider::Type::ByTerrainId},
 	engine{
 		&renderer,
-		{
-			&image_provider_by_filename,
-			&image_provider_by_graphic_id,
-			&image_provider_by_terrain_id
-		},
-		info
-	},
+		{&image_provider_by_filename,
+         &image_provider_by_graphic_id,
+         &image_provider_by_terrain_id},
+		info},
 	subtree{
 		&renderer,
 		&game_logic_updater,
 		&engine,
 		source,
-		rootdir
-	},
+		rootdir},
 	input{&renderer, &game_logic_updater} {
-
-	info->engine->register_resize_action(this);
-	info->engine->register_input_action(this);
-	info->engine->register_drawhud_action(this);
+	info->display->register_resize_action(this);
+	info->display->register_input_action(this);
+	info->display->register_drawhud_action(this);
 
 	util::Path shader_dir = info->asset_dir / "shaders";
 
@@ -66,22 +57,19 @@ GUI::GUI(SDL_Window *window,
 	std::string texture_vert_code = text_vert_file.read();
 	auto plaintexture_vert = std::make_unique<shader::Shader>(
 		GL_VERTEX_SHADER,
-		std::initializer_list<const char *>{ shader_header_code, texture_vert_code.c_str() }
-	);
+		std::initializer_list<const char *>{shader_header_code, texture_vert_code.c_str()});
 	text_vert_file.close();
 
 	auto text_frag_file = (shader_dir / "maptexture.frag.glsl").open();
 	std::string texture_frag_code = text_frag_file.read();
 	auto plaintexture_frag = std::make_unique<shader::Shader>(
 		GL_FRAGMENT_SHADER,
-		std::initializer_list<const char *>{ shader_header_code, texture_frag_code.c_str() }
-	);
+		std::initializer_list<const char *>{shader_header_code, texture_frag_code.c_str()});
 	text_vert_file.close();
 
 	this->textured_screen_quad_shader = std::make_unique<shader::Program>(
 		plaintexture_vert.get(),
-		plaintexture_frag.get()
-	);
+		plaintexture_frag.get());
 
 	this->textured_screen_quad_shader->link();
 	this->tex_loc = this->textured_screen_quad_shader->get_uniform_id("texture");
@@ -90,10 +78,14 @@ GUI::GUI(SDL_Window *window,
 	this->textured_screen_quad_shader->stopusing();
 
 	const float screen_quad[] = {
-		-1.f, -1.f,
-		1.f, -1.f,
-		1.f, 1.f,
-		-1.f, 1.f,
+		-1.f,
+		-1.f,
+		1.f,
+		-1.f,
+		1.f,
+		1.f,
+		-1.f,
+		1.f,
 	};
 
 	glGenBuffers(1, &this->screen_quad_vbo);
@@ -127,12 +119,10 @@ namespace {
  */
 class BlendPreserver {
 public:
-	BlendPreserver()
-		:
+	BlendPreserver() :
 		was_on{},
 		src{},
 		dst{} {
-
 		glGetBooleanv(GL_BLEND, &this->was_on);
 
 		if (this->was_on != GL_FALSE) {
@@ -145,7 +135,8 @@ public:
 		if (this->was_on != GL_FALSE) {
 			glEnable(GL_BLEND);
 			glBlendFunc(this->src, this->dst);
-		} else {
+		}
+		else {
 			glDisable(GL_BLEND);
 		}
 	}
@@ -156,7 +147,7 @@ private:
 	GLint dst;
 };
 
-}
+} // namespace
 
 bool GUI::on_drawhud() {
 	this->render_updater.process_callbacks();
@@ -181,8 +172,8 @@ bool GUI::on_drawhud() {
 		2,
 		GL_FLOAT,
 		GL_FALSE,
-		2 * sizeof(float), 0
-	);
+		2 * sizeof(float),
+		0);
 
 	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 
@@ -196,4 +187,5 @@ bool GUI::on_drawhud() {
 	return true;
 }
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

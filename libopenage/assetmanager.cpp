@@ -8,20 +8,18 @@
 #include <unistd.h>
 #endif
 
-#include "util/compiler.h"
-#include "util/file.h"
 #include "error/error.h"
 #include "log/log.h"
+#include "util/compiler.h"
+#include "util/file.h"
 
 #include "texture.h"
 
 namespace openage {
 
-AssetManager::AssetManager(qtsdl::GuiItemLink *gui_link)
-	:
+AssetManager::AssetManager(qtsdl::GuiItemLink *gui_link) :
 	missing_tex{nullptr},
 	gui_link{gui_link} {
-
 #if WITH_INOTIFY
 	// initialize the inotify instance
 	this->inotify_fd = inotify_init1(IN_NONBLOCK);
@@ -37,7 +35,7 @@ const util::Path &AssetManager::get_asset_dir() {
 }
 
 
-void AssetManager::set_asset_dir(const util::Path& new_path) {
+void AssetManager::set_asset_dir(const util::Path &new_path) {
 	if (this->asset_path != new_path) {
 		this->asset_path = new_path;
 		this->clear();
@@ -45,10 +43,18 @@ void AssetManager::set_asset_dir(const util::Path& new_path) {
 }
 
 
+void AssetManager::set_display(presenter::LegacyDisplay *display) {
+	this->display = display;
+}
+
+
+presenter::LegacyDisplay *AssetManager::get_display() const {
+	return this->display;
+}
+
 void AssetManager::set_engine(Engine *engine) {
 	this->engine = engine;
 }
-
 
 Engine *AssetManager::get_engine() const {
 	return this->engine;
@@ -58,7 +64,6 @@ Engine *AssetManager::get_engine() const {
 std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name,
                                                     bool use_metafile,
                                                     bool null_if_missing) {
-
 	// the texture to be associated with the given filename
 	std::shared_ptr<Texture> tex;
 
@@ -91,12 +96,12 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name,
 			int wd = inotify_add_watch(
 				this->inotify_fd,
 				native_path.c_str(),
-				IN_CLOSE_WRITE
-			);
+				IN_CLOSE_WRITE);
 
 			if (wd < 0) {
 				log::log(WARN << "Failed to add inotify watch for " << native_path);
-			} else {
+			}
+			else {
 				this->watch_fds[wd] = tex;
 			}
 		}
@@ -108,8 +113,7 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name,
 }
 
 
-Texture *AssetManager::get_texture(const std::string &name, bool use_metafile,
-                                   bool null_if_missing) {
+Texture *AssetManager::get_texture(const std::string &name, bool use_metafile, bool null_if_missing) {
 	// check whether the requested texture was loaded already
 	auto tex_it = this->textures.find(name);
 
@@ -144,7 +148,8 @@ void AssetManager::check_updates() {
 			if (errno == EAGAIN) {
 				// no events, nothing to do.
 				break;
-			} else {
+			}
+			else {
 				// something went wrong
 				log::log(WARN << "Failed to read inotify events!");
 				break;
@@ -170,13 +175,11 @@ void AssetManager::check_updates() {
 }
 
 std::shared_ptr<Texture> AssetManager::get_missing_tex() {
-
 	// if not loaded, fetch the "missing" texture (big red X).
 	if (unlikely(this->missing_tex.get() == nullptr)) {
 		this->missing_tex = std::make_shared<Texture>(
 			this->asset_path["missing.png"],
-			false
-		);
+			false);
 	}
 
 	return this->missing_tex;
@@ -184,7 +187,7 @@ std::shared_ptr<Texture> AssetManager::get_missing_tex() {
 
 void AssetManager::clear() {
 #if WITH_INOTIFY
-	for (auto& watch_fd : this->watch_fds) {
+	for (auto &watch_fd : this->watch_fds) {
 		int result = inotify_rm_watch(this->inotify_fd, watch_fd.first);
 		if (result < 0) {
 			log::log(WARN << "Failed to remove inotify watches");
@@ -196,4 +199,4 @@ void AssetManager::clear() {
 	this->textures.clear();
 }
 
-} // openage
+} // namespace openage

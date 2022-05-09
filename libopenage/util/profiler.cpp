@@ -12,8 +12,7 @@
 
 namespace openage::util {
 
-Profiler::Profiler(Engine *engine)
-	:
+Profiler::Profiler(Engine *engine) :
 	engine{engine} {}
 
 
@@ -95,7 +94,7 @@ void Profiler::draw_component_performance(const std::string &com) {
 	float offset_factor = static_cast<float>(PROFILER_CANVAS_WIDTH) / static_cast<float>(MAX_DURATION_HISTORY);
 	float percentage_factor = static_cast<float>(PROFILER_CANVAS_HEIGHT) / 100.0;
 
-	for (auto i = this->insert_pos; mod(i, MAX_DURATION_HISTORY) != mod(this->insert_pos-1, MAX_DURATION_HISTORY); ++i) {
+	for (auto i = this->insert_pos; mod(i, MAX_DURATION_HISTORY) != mod(this->insert_pos - 1, MAX_DURATION_HISTORY); ++i) {
 		i = mod(i, MAX_DURATION_HISTORY);
 
 		auto percentage = this->components[com].history.at(i);
@@ -115,7 +114,6 @@ void Profiler::show(bool debug_mode) {
 }
 
 void Profiler::show() {
-
 	this->draw_canvas();
 	this->draw_legend();
 
@@ -124,7 +122,7 @@ void Profiler::show() {
 	}
 }
 
-bool Profiler::registered(const std::string& com) const {
+bool Profiler::registered(const std::string &com) const {
 	return this->components.find(com) != this->components.end();
 }
 
@@ -172,7 +170,7 @@ void Profiler::draw_legend() {
 
 		glColor4f(0.2, 0.2, 0.2, 1);
 		coord::viewport position = coord::viewport{box_x + PROFILER_COM_BOX_WIDTH + 2, box_y + 2};
-		this->engine->render_text(position, 12, renderer::Colors::WHITE, "%s", com.second.display_name.c_str());
+		// this->display->render_text(position, 12, renderer::Colors::WHITE, "%s", com.second.display_name.c_str());
 
 		offset += PROFILER_COM_BOX_HEIGHT + 2;
 	}
@@ -185,7 +183,7 @@ double Profiler::duration_to_percentage(std::chrono::high_resolution_clock::dura
 	return percentage;
 }
 
-void Profiler::append_to_history(const std::string& com, double percentage) {
+void Profiler::append_to_history(const std::string &com, double percentage) {
 	if (this->insert_pos == MAX_DURATION_HISTORY) {
 		this->insert_pos = 0;
 	}
@@ -193,11 +191,13 @@ void Profiler::append_to_history(const std::string& com, double percentage) {
 }
 
 bool Profiler::engine_in_debug_mode() {
-	if (this->engine->drawing_debug_overlay.value) {
-		return true;
-	} else {
-		return false;
-	}
+	// if (this->display->drawing_debug_overlay.value) {
+	// 	return true;
+	// }
+	// else {
+	// 	return false;
+	// }
+	return true;
 }
 
-} // openage::util
+} // namespace openage::util

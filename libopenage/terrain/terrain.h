@@ -4,8 +4,8 @@
 
 #include <functional>
 #include <memory>
-#include <stddef.h>
 #include <set>
+#include <stddef.h>
 #include <unordered_map>
 #include <vector>
 
@@ -37,7 +37,7 @@ using terrain_t = int;
  * this allows storage of chunk coords as keys in an unordered map.
  */
 struct coord_chunk_hash {
-	size_t operator ()(const coord::chunk &input) const {
+	size_t operator()(const coord::chunk &input) const {
 		constexpr int half_size_t_bits = sizeof(size_t) * 4;
 
 		return ((size_t)input.ne << half_size_t_bits) | input.se;
@@ -64,25 +64,24 @@ public:
  * coordinate offsets for getting tile neighbors by their id.
  */
 constexpr coord::tile_delta const neigh_offsets[] = {
-	{ 1, -1},
-	{ 1,  0},
-	{ 1,  1},
-	{ 0,  1},
-	{-1,  1},
-	{-1,  0},
+	{1, -1},
+	{1, 0},
+	{1, 1},
+	{0, 1},
+	{-1, 1},
+	{-1, 0},
 	{-1, -1},
-	{ 0, -1}
-};
+	{0, -1}};
 
 
 /**
  * describes the state of a terrain tile.
  */
 enum class tile_state {
-	missing,    //!< tile is not created yet
-	existing,   //!< tile is already existing
-	creatable,  //!< tile does not exist but can be created
-	invalid,    //!< tile does not exist and can not be created
+	missing, //!< tile is not created yet
+	existing, //!< tile is already existing
+	creatable, //!< tile does not exist but can be created
+	invalid, //!< tile does not exist and can not be created
 };
 
 
@@ -90,8 +89,8 @@ enum class tile_state {
  * storage for influences by neighbor tiles.
  */
 struct influence {
-	uint8_t direction;    //!< bitmask for influence directions, bit 0 = neighbor 0, etc.
-	int priority;         //!< the blending priority for this influence
+	uint8_t direction; //!< bitmask for influence directions, bit 0 = neighbor 0, etc.
+	int priority; //!< the blending priority for this influence
 	terrain_t terrain_id; //!< the terrain id of the influence
 };
 
@@ -201,7 +200,7 @@ public:
 	 * @param position The chunk position where the chunk will be placed
 	 * @param manually_created Was this chunk created manually? If true, it will not be free'd automatically
 	 */
-	void attach_chunk(TerrainChunk *new_chunk, const coord::chunk &position, bool manual=true);
+	void attach_chunk(TerrainChunk *new_chunk, const coord::chunk &position, bool manual = true);
 
 	/**
 	 * get a terrain chunk by a given chunk position.
@@ -326,9 +325,9 @@ public:
 
 	/**
 	 * draw the currently visible terrain area on screen.
-	 * @param engine: the engine where the terrain should be drawn to.
+	 * @param display: the display where the terrain should be drawn to.
 	 */
-	void draw(Engine *engine, RenderOptions *settings);
+	void draw(presenter::LegacyDisplay *display, RenderOptions *settings);
 
 	/**
 	 * create the drawing instruction data.
@@ -391,7 +390,6 @@ public:
 	                     struct influence_group *influences);
 
 private:
-
 	/**
 	 * terrain meta data
 	 */
@@ -401,7 +399,6 @@ private:
 	 * maps chunk coordinates to chunks.
 	 */
 	std::unordered_map<coord::chunk, TerrainChunk *, coord_chunk_hash> chunks;
-
 };
 
 } // namespace openage

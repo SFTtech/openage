@@ -4,12 +4,13 @@
 
 #include "config.h"
 
-#include <unordered_map>
-#include <string>
 #include <memory>
+#include <string>
+#include <unordered_map>
 
 #include "util/path.h"
 
+#include "presenter/legacy/legacy.h"
 
 namespace qtsdl {
 class GuiItemLink;
@@ -36,7 +37,18 @@ public:
 	/**
 	 * Set the asset search path.
 	 */
-	void set_asset_dir(const util::Path& asset_dir);
+	void set_asset_dir(const util::Path &asset_dir);
+
+	/**
+	 * Set the game display of this asset manager.
+	 * Called from QML.
+	 */
+	void set_display(presenter::LegacyDisplay *display);
+
+	/**
+	 * Return the display responsible for this asset manager.
+	 */
+	presenter::LegacyDisplay *get_display() const;
 
 	/**
 	 * Set the game engine of this asset manager.
@@ -58,8 +70,7 @@ public:
 	 *                         return nullptr.
 	 * @returns the queried texture handle.
 	 */
-	Texture *get_texture(const std::string &name, bool use_metafile=true,
-	                     bool null_if_missing=false);
+	Texture *get_texture(const std::string &name, bool use_metafile = true, bool null_if_missing = false);
 
 	/**
 	 * Ask the kernel whether there were updates to watched files.
@@ -71,8 +82,8 @@ protected:
 	 * Create an internal texture handle.
 	 */
 	std::shared_ptr<Texture> load_texture(const std::string &name,
-	                                      bool use_metafile=true,
-	                                      bool null_if_missing=false);
+	                                      bool use_metafile = true,
+	                                      bool null_if_missing = false);
 
 	/**
 	 * Retrieves the texture for missing textures.
@@ -81,6 +92,11 @@ protected:
 
 private:
 	void clear();
+
+	/**
+	 * The display this asset manager is attached to.
+	 */
+	presenter::LegacyDisplay *display;
 
 	/**
 	 * The engine this asset manager is attached to.
@@ -119,4 +135,4 @@ public:
 	qtsdl::GuiItemLink *gui_link;
 };
 
-}
+} // namespace openage

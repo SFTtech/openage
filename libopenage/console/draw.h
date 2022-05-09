@@ -2,13 +2,15 @@
 
 #pragma once
 
+#include "../presenter/legacy/legacy.h"
+
 namespace openage {
 
 class Engine;
 
 namespace util {
 class FD;
-} // openage::util
+} // namespace util
 
 namespace console {
 
@@ -20,12 +22,13 @@ namespace draw {
 /**
  * experimental and totally inefficient opengl draw of a terminal buffer.
  */
-void to_opengl(Engine *engine, Console *console);
+void to_opengl(presenter::LegacyDisplay *engine, Console *console);
 
 /**
  * very early and inefficient printing of the console to a pty.
  */
-void to_terminal(Buf *buf, util::FD *fd,
-                 bool clear=false);
+void to_terminal(Buf *buf, util::FD *fd, bool clear = false);
 
-}}} // openage::console::draw
+} // namespace draw
+} // namespace console
+} // namespace openage

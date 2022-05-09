@@ -5,14 +5,14 @@
 #include "console/console.h"
 #include "cvar/cvar.h"
 #include "engine.h"
-#include "game_control.h"
-#include "game_renderer.h"
 #include "gamedata/color_dummy.h"
 #include "log/log.h"
+#include "presenter/legacy/game_control.h"
+#include "presenter/legacy/legacy_renderer.h"
 #include "shader/program.h"
 #include "shader/shader.h"
 #include "util/file.h"
-
+#include "util/timer.h"
 
 namespace openage {
 
@@ -38,31 +38,9 @@ int run_game(const main_arguments &args) {
 	cvar_manager->load_all();
 
 	// TODO: select run_mode by launch argument
-	Engine::mode run_mode = Engine::mode::LEGACY;
-
-	// TODO: remove all legacy mode!
-	if (run_mode == Engine::mode::LEGACY) {
-
-		Engine engine{Engine::mode::LEGACY, args.root_path, cvar_manager};
-
-		log::log(MSG(info).fmt("Loading time [engine]: %5.3f s", timer.getval() / 1.0e9));
-
-		timer.start();
-
-		{
-			// create components that use the engine.
-			GameRenderer renderer{&engine};
-
-			log::log(MSG(info).fmt("Loading time   [game]: %5.3f s", timer.getval() / 1.0e9));
-
-			// run main loop
-			engine.run();
-		}
-
-		log::log(INFO << "cya!");
-	}
+	openage::Engine::mode run_mode = Engine::mode::LEGACY;
 
 	return 0;
 }
 
-} // openage
+} // namespace openage

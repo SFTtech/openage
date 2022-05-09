@@ -12,13 +12,11 @@
 
 namespace openage {
 
-GameMain::GameMain(const Generator &generator)
-	:
+GameMain::GameMain(const Generator &generator) :
 	OptionNode{"GameMain"},
 	terrain{generator.terrain()},
 	placed_units{},
 	spec{generator.get_spec()} {
-
 	// players
 	this->players.reserve(generator.player_names().size());
 	unsigned int i = 0;
@@ -69,8 +67,7 @@ Civilisation *GameMain::add_civ(int civ_id) {
 	return new_civ.get();
 }
 
-GameMainHandle::GameMainHandle(qtsdl::GuiItemLink *gui_link)
-	:
+GameMainHandle::GameMainHandle(qtsdl::GuiItemLink *gui_link) :
 	game{},
 	engine{},
 	gui_link{gui_link} {
@@ -84,7 +81,7 @@ void GameMainHandle::set_engine(Engine *engine) {
 void GameMainHandle::clear() {
 	if (this->engine) {
 		this->game = nullptr;
-		this->engine->end_game();
+		this->display->end_game();
 		announce_running();
 	}
 }
@@ -97,7 +94,7 @@ void GameMainHandle::set_game(std::unique_ptr<GameMain> &&game) {
 		this->game = game.get();
 
 		// then pass on the game to the engine
-		this->engine->start_game(std::move(game));
+		this->display->start_game(std::move(game));
 
 		announce_running();
 	}
@@ -115,4 +112,4 @@ void GameMainHandle::announce_running() {
 	emit this->gui_signals.game_running(this->game);
 }
 
-} // openage
+} // namespace openage

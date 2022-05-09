@@ -2,13 +2,13 @@
 
 #include "engine.h"
 
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
 #include <epoxy/gl.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 
 #include "config.h"
 #include "error/error.h"
@@ -21,19 +21,17 @@ namespace openage {
 
 Engine::Engine(enum mode mode,
                const util::Path &root_dir,
-               const std::shared_ptr<cvar::CVarManager> &cvar_manager)
-	:
+               const std::shared_ptr<cvar::CVarManager> &cvar_manager) :
 	running{false},
-	mode{mode},
+	run_mode{mode},
 	root_dir{root_dir},
 	job_manager{SDL_GetCPUCount()},
 	qml_info{this, root_dir["assets"]},
 	cvar_manager{cvar_manager},
 	profiler{this},
 	gui_link{} {
-
 	if (mode == mode::LEGACY) {
-		this->old_display = std::make_unique<presenter::LegacyDisplay>(root_dir);
+		this->old_display = std::make_unique<presenter::LegacyDisplay>(root_dir, this);
 		return;
 	}
 
@@ -49,12 +47,13 @@ void Engine::run() {
 		this->job_manager.start();
 		this->running = true;
 
-		if (this->mode == mode::LEGACY) {
+		if (this->run_mode == mode::LEGACY) {
 			this->old_display->loop();
 		}
 
 		this->running = false;
-	} catch (...) {
+	}
+	catch (...) {
 		this->job_manager.stop();
 		throw;
 	}
@@ -77,8 +76,12 @@ job::JobManager *Engine::get_job_manager() {
 }
 
 
-cvar::CVarManager &Engine::get_cvar_manager() {
-	return *this->cvar_manager;
+std::shared_ptr<cvar::CVarManager> Engine::get_cvar_manager() {
+	return this->cvar_manager;
 }
 
-} // openage
+gui::EngineQMLInfo Engine::get_qml_info() {
+	return this->qml_info;
+}
+
+} // namespace openage

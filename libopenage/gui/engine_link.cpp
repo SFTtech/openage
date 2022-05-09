@@ -17,11 +17,10 @@ namespace {
 // this pushes the EngineLink in the QML engine.
 // a qml engine calls the static provider() to obtain a handle.
 const int registration = qmlRegisterSingletonType<EngineLink>("yay.sfttech.openage", 1, 0, "Engine", &EngineLink::provider);
-}
+} // namespace
 
 
-EngineLink::EngineLink(QObject *parent, Engine *engine)
-	:
+EngineLink::EngineLink(QObject *parent, Engine *engine) :
 	GuiSingletonItem{parent},
 	core{engine} {
 	Q_UNUSED(registration);
@@ -34,12 +33,11 @@ EngineLink::EngineLink(QObject *parent, Engine *engine)
 		&unwrap(this)->gui_signals,
 		&EngineSignals::global_binds_changed,
 		this,
-		&EngineLink::on_global_binds_changed
-	);
+		&EngineLink::on_global_binds_changed);
 
 	// trigger the engine signal,
 	// which then triggers this->on_global_binds_changed.
-	unwrap(this)->announce_global_binds();
+	// unwrap(this)->announce_global_binds();
 }
 
 EngineLink::~EngineLink() {
@@ -50,15 +48,13 @@ EngineLink::~EngineLink() {
 // method we do this by extracting the per-qmlengine singleton from the
 // engine (the qmlenginewithsingletoninfo), then just return the new link
 // instance
-QObject* EngineLink::provider(QQmlEngine *engine, QJSEngine*) {
-
+QObject *EngineLink::provider(QQmlEngine *engine, QJSEngine *) {
 	// cast the engine to our specialization
-	qtsdl::QmlEngineWithSingletonItemsInfo *engine_with_singleton_items_info = qtsdl::checked_static_cast<qtsdl::QmlEngineWithSingletonItemsInfo*>(engine);
+	qtsdl::QmlEngineWithSingletonItemsInfo *engine_with_singleton_items_info = qtsdl::checked_static_cast<qtsdl::QmlEngineWithSingletonItemsInfo *>(engine);
 
 	// get the singleton container out of the custom qml engine
-	auto info = static_cast<gui::EngineQMLInfo*>(
-		engine_with_singleton_items_info->get_singleton_items_info()
-	);
+	auto info = static_cast<gui::EngineQMLInfo *>(
+		engine_with_singleton_items_info->get_singleton_items_info());
 	ENSURE(info, "qml-globals were lost or not passed to the gui subsystem");
 
 	// owned by the QML engine
@@ -75,7 +71,7 @@ void EngineLink::stop() {
 	this->core->stop();
 }
 
-void EngineLink::on_global_binds_changed(const std::vector<std::string>& global_binds) {
+void EngineLink::on_global_binds_changed(const std::vector<std::string> &global_binds) {
 	QStringList new_global_binds;
 
 	// create the qstring list from the std string list
@@ -84,10 +80,9 @@ void EngineLink::on_global_binds_changed(const std::vector<std::string>& global_
 		std::begin(global_binds),
 		std::end(global_binds),
 		std::back_inserter(new_global_binds),
-		[] (const std::string &s) {
+		[](const std::string &s) {
 			return QString::fromStdString(s);
-		}
-	);
+		});
 
 	new_global_binds.sort();
 

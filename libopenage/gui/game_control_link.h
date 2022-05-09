@@ -4,7 +4,7 @@
 
 #include <QQmlParserStatus>
 
-#include "../game_control.h"
+#include "../presenter/legacy/game_control.h"
 #include "guisys/link/gui_item.h"
 
 namespace openage {
@@ -14,15 +14,16 @@ class GameControlLink;
 
 class OutputModeLink;
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage
 
 namespace qtsdl {
-template<>
+template <>
 struct Wrap<openage::OutputMode> {
 	using Type = openage::gui::OutputModeLink;
 };
 
-template<>
+template <>
 struct Unwrap<openage::gui::OutputModeLink> {
 	using Type = openage::OutputMode;
 };
@@ -32,7 +33,9 @@ struct Unwrap<openage::gui::OutputModeLink> {
 namespace openage {
 namespace gui {
 
-class OutputModeLink : public qtsdl::GuiItemQObject, public QQmlParserStatus, public qtsdl::GuiItemInterface<OutputModeLink> {
+class OutputModeLink : public qtsdl::GuiItemQObject
+	, public QQmlParserStatus
+	, public qtsdl::GuiItemInterface<OutputModeLink> {
 	Q_OBJECT
 
 	Q_INTERFACES(QQmlParserStatus)
@@ -40,7 +43,7 @@ class OutputModeLink : public qtsdl::GuiItemQObject, public QQmlParserStatus, pu
 	Q_PROPERTY(QStringList binds READ get_binds NOTIFY binds_changed)
 
 public:
-	OutputModeLink(QObject *parent=nullptr);
+	OutputModeLink(QObject *parent = nullptr);
 	virtual ~OutputModeLink();
 
 	QString get_name() const;
@@ -52,7 +55,7 @@ signals:
 
 private slots:
 	void on_announced(const std::string &name);
-	void on_binds_changed(const std::vector<std::string>& binds);
+	void on_binds_changed(const std::vector<std::string> &binds);
 
 protected:
 	virtual void classBegin() override;
@@ -66,15 +69,16 @@ private:
 
 class CreateModeLink;
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage
 
 namespace qtsdl {
-template<>
+template <>
 struct Wrap<openage::CreateMode> {
 	using Type = openage::gui::CreateModeLink;
 };
 
-template<>
+template <>
 struct Unwrap<openage::gui::CreateModeLink> {
 	using Type = openage::CreateMode;
 };
@@ -88,21 +92,22 @@ class CreateModeLink : public qtsdl::Inherits<OutputModeLink, CreateModeLink> {
 	Q_OBJECT
 
 public:
-	CreateModeLink(QObject *parent=nullptr);
+	CreateModeLink(QObject *parent = nullptr);
 	virtual ~CreateModeLink();
 };
 
 class ActionModeLink;
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage
 
 namespace qtsdl {
-template<>
+template <>
 struct Wrap<openage::ActionMode> {
 	using Type = openage::gui::ActionModeLink;
 };
 
-template<>
+template <>
 struct Unwrap<openage::gui::ActionModeLink> {
 	using Type = openage::ActionMode;
 };
@@ -129,7 +134,7 @@ class ActionModeLink : public qtsdl::Inherits<OutputModeLink, ActionModeLink> {
 	Q_PROPERTY(QString selection_attrs MEMBER selection_attrs NOTIFY selection_changed)
 
 public:
-	ActionModeLink(QObject *parent=nullptr);
+	ActionModeLink(QObject *parent = nullptr);
 	virtual ~ActionModeLink();
 
 	QString get_ability() const;
@@ -172,15 +177,16 @@ private:
 
 class EditorModeLink;
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage
 
 namespace qtsdl {
-template<>
+template <>
 struct Wrap<openage::EditorMode> {
 	using Type = openage::gui::EditorModeLink;
 };
 
-template<>
+template <>
 struct Unwrap<openage::gui::EditorModeLink> {
 	using Type = openage::EditorMode;
 };
@@ -199,7 +205,7 @@ class EditorModeLink : public qtsdl::Inherits<OutputModeLink, EditorModeLink> {
 	Q_PROPERTY(QStringList categories READ get_categories NOTIFY categories_changed)
 
 public:
-	EditorModeLink(QObject *parent=nullptr);
+	EditorModeLink(QObject *parent = nullptr);
 	virtual ~EditorModeLink();
 
 	int get_current_type_id() const;
@@ -237,15 +243,16 @@ class EngineLink;
 class GameMainLink;
 class GameControlLink;
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage
 
 namespace qtsdl {
-template<>
+template <>
 struct Wrap<openage::GameControl> {
 	using Type = openage::gui::GameControlLink;
 };
 
-template<>
+template <>
 struct Unwrap<openage::gui::GameControlLink> {
 	using Type = openage::GameControl;
 };
@@ -255,24 +262,26 @@ struct Unwrap<openage::gui::GameControlLink> {
 namespace openage {
 namespace gui {
 
-class GameControlLink : public qtsdl::GuiItemQObject, public QQmlParserStatus, public qtsdl::GuiItem<GameControlLink> {
+class GameControlLink : public qtsdl::GuiItemQObject
+	, public QQmlParserStatus
+	, public qtsdl::GuiItem<GameControlLink> {
 	Q_OBJECT
 
 	Q_INTERFACES(QQmlParserStatus)
-	Q_PROPERTY(openage::gui::OutputModeLink* mode READ get_mode NOTIFY mode_changed)
+	Q_PROPERTY(openage::gui::OutputModeLink *mode READ get_mode NOTIFY mode_changed)
 	Q_PROPERTY(int effectiveModeIndex READ get_effective_mode_index NOTIFY mode_changed)
 	Q_PROPERTY(int modeIndex READ get_mode_index WRITE set_mode_index)
 	Q_PROPERTY(QVariantList modes READ get_modes WRITE set_modes NOTIFY modes_changed)
-	Q_PROPERTY(openage::gui::EngineLink* engine READ get_engine WRITE set_engine)
-	Q_PROPERTY(openage::gui::GameMainLink* game READ get_game WRITE set_game)
+	Q_PROPERTY(openage::gui::EngineLink *engine READ get_engine WRITE set_engine)
+	Q_PROPERTY(openage::gui::GameMainLink *game READ get_game WRITE set_game)
 	Q_PROPERTY(QString currentPlayerName READ get_current_player_name NOTIFY current_player_name_changed)
 	Q_PROPERTY(int currentCivIndex READ get_current_civ_index NOTIFY current_civ_index_changed)
 
 public:
-	explicit GameControlLink(QObject *parent=nullptr);
+	explicit GameControlLink(QObject *parent = nullptr);
 	virtual ~GameControlLink();
 
-	OutputModeLink* get_mode() const;
+	OutputModeLink *get_mode() const;
 	int get_effective_mode_index() const;
 
 	int get_mode_index() const;
@@ -281,10 +290,10 @@ public:
 	QVariantList get_modes() const;
 	void set_modes(const QVariantList &modes);
 
-	EngineLink* get_engine() const;
+	EngineLink *get_engine() const;
 	void set_engine(EngineLink *engine);
 
-	GameMainLink* get_game() const;
+	GameMainLink *get_game() const;
 	void set_game(GameMainLink *game);
 
 	QString get_current_player_name() const;
@@ -318,4 +327,5 @@ private:
 	int current_civ_index;
 };
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

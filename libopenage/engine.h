@@ -2,27 +2,27 @@
 
 #pragma once
 
+#include <QObject>
+#include <SDL2/SDL.h>
 #include <cstdint>
 #include <memory>
-#include <SDL2/SDL.h>
 #include <unordered_map>
 #include <vector>
-#include <QObject>
 
-#include "log/log.h"
 #include "log/file_logsink.h"
+#include "log/log.h"
 // pxd: from libopenage.cvar cimport CVarManager
 #include "cvar/cvar.h"
 #include "gui/engine_info.h"
 #include "handlers.h"
-#include "job/job_manager.h"
 #include "input/action.h"
+#include "job/job_manager.h"
 #include "options.h"
 #include "presenter/presenter.h"
+#include "unit/selection.h"
 #include "util/externalprofiler.h"
 #include "util/path.h"
 #include "util/profiler.h"
-#include "unit/selection.h"
 #include "util/strings.h"
 
 
@@ -36,11 +36,11 @@ namespace openage {
 
 namespace gui {
 class GuiItemLink;
-} // openage::gui
+} // namespace gui
 
 namespace presenter {
 class LegacyDisplay;
-} // openage::presenter
+} // namespace presenter
 
 
 /**
@@ -51,7 +51,7 @@ class EngineSignals : public QObject {
 
 public:
 signals:
-	void global_binds_changed(const std::vector<std::string>& global_binds);
+	void global_binds_changed(const std::vector<std::string> &global_binds);
 };
 
 
@@ -68,7 +68,6 @@ signals:
  *     CVarManager &get_cvar_manager() except +
  */
 class Engine final {
-
 public:
 	enum class mode {
 		LEGACY,
@@ -138,7 +137,12 @@ public:
 	/**
 	 * return this engine's cvar manager.
 	 */
-	cvar::CVarManager &get_cvar_manager();
+	std::shared_ptr<cvar::CVarManager> get_cvar_manager();
+
+	/**
+	 * return this engine's qml info.
+	 */
+	gui::EngineQMLInfo get_qml_info();
 
 	/**
 	 * current engine state variable.
@@ -150,11 +154,12 @@ public:
 	 * profiler used by the engine
 	 */
 	util::ExternalProfiler external_profiler;
+
 private:
 	/**
 	 * Run-mode of the engine, this determines the basic modules to be loaded.
 	 */
-	mode mode;
+	mode run_mode;
 
 	/**
 	 * The engine root directory.

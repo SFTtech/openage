@@ -18,65 +18,63 @@
 
 namespace openage {
 
-UnitSelection::UnitSelection(Engine *engine)
-	:
+UnitSelection::UnitSelection(Engine *engine) :
 	selection_type{selection_type_t::nothing},
 	drag_active{false},
 	engine{engine} {
 }
 
 bool UnitSelection::on_drawhud() {
-
-	// the drag selection box
-	if (drag_active) {
-		coord::viewport s = this->start.to_viewport(this->engine->coord);
-		coord::viewport e = this->end.to_viewport(this->engine->coord);
-		glLineWidth(1);
-		glColor3f(1.0, 1.0, 1.0);
-		glBegin(GL_LINE_LOOP); {
-			glVertex3f(s.x, s.y, 0);
-			glVertex3f(e.x, s.y, 0);
-			glVertex3f(e.x, e.y, 0);
-			glVertex3f(s.x, e.y, 0);
-		}
-		glEnd();
-	}
-
-	// draw hp bars for each selected unit
-	glLineWidth(3);
-	for (auto u : this->units) {
-		if (u.second.is_valid()) {
-			Unit *unit_ptr = u.second.get();
-			if (unit_ptr->location &&
-			    unit_ptr->has_attribute(attr_type::hitpoints) &&
-			    unit_ptr->has_attribute(attr_type::damaged)) {
-
-				auto &hp = unit_ptr->get_attribute<attr_type::hitpoints>();
-				auto &dm = unit_ptr->get_attribute<attr_type::damaged>();
-				float percent = static_cast<float>(dm.hp) / static_cast<float>(hp.hp);
-				int mid = percent * 28.0f - 14.0f;
-
-				coord::phys3 &pos_phys3 = unit_ptr->location->pos.draw;
-				auto pos = pos_phys3.to_viewport(this->engine->coord);
-				// green part
-				glColor3f(0.0, 1.0, 0.0);
-				glBegin(GL_LINES); {
-					glVertex3f(pos.x - 14, pos.y + 60, 0);
-					glVertex3f(pos.x + mid, pos.y + 60, 0);
-				}
-				glEnd();
-
-				// red part
-				glColor3f(1.0, 0.0, 0.0);
-				glBegin(GL_LINES); {
-					glVertex3f(pos.x + mid, pos.y + 60, 0);
-					glVertex3f(pos.x + 14, pos.y + 60, 0);
-				}
-				glEnd();
-			}
-		}
-	}
-	glColor3f(1.0, 1.0, 1.0); // reset
+	// // the drag selection box
+	// if (drag_active) {
+	// 	coord::viewport s = this->start.to_viewport(this->engine->coord);
+	// 	coord::viewport e = this->end.to_viewport(this->engine->coord);
+	// 	glLineWidth(1);
+	// 	glColor3f(1.0, 1.0, 1.0);
+	// 	glBegin(GL_LINE_LOOP); {
+	// 		glVertex3f(s.x, s.y, 0);
+	// 		glVertex3f(e.x, s.y, 0);
+	// 		glVertex3f(e.x, e.y, 0);
+	// 		glVertex3f(s.x, e.y, 0);
+	// 	}
+	// 	glEnd();
+	// }
+	//
+	// // draw hp bars for each selected unit
+	// glLineWidth(3);
+	// for (auto u : this->units) {
+	// 	if (u.second.is_valid()) {
+	// 		Unit *unit_ptr = u.second.get();
+	// 		if (unit_ptr->location &&
+	// 		    unit_ptr->has_attribute(attr_type::hitpoints) &&
+	// 		    unit_ptr->has_attribute(attr_type::damaged)) {
+	//
+	// 			auto &hp = unit_ptr->get_attribute<attr_type::hitpoints>();
+	// 			auto &dm = unit_ptr->get_attribute<attr_type::damaged>();
+	// 			float percent = static_cast<float>(dm.hp) / static_cast<float>(hp.hp);
+	// 			int mid = percent * 28.0f - 14.0f;
+	//
+	// 			coord::phys3 &pos_phys3 = unit_ptr->location->pos.draw;
+	// 			auto pos = pos_phys3.to_viewport(this->engine->coord);
+	// 			// green part
+	// 			glColor3f(0.0, 1.0, 0.0);
+	// 			glBegin(GL_LINES); {
+	// 				glVertex3f(pos.x - 14, pos.y + 60, 0);
+	// 				glVertex3f(pos.x + mid, pos.y + 60, 0);
+	// 			}
+	// 			glEnd();
+	//
+	// 			// red part
+	// 			glColor3f(1.0, 0.0, 0.0);
+	// 			glBegin(GL_LINES); {
+	// 				glVertex3f(pos.x + mid, pos.y + 60, 0);
+	// 				glVertex3f(pos.x + 14, pos.y + 60, 0);
+	// 			}
+	// 			glEnd();
+	// 		}
+	// 	}
+	// }
+	// glColor3f(1.0, 1.0, 1.0); // reset
 
 	// ui graphics 3404 and 3405
 	return true;
@@ -120,16 +118,15 @@ void UnitSelection::clear() {
 void UnitSelection::toggle_unit(const Player &player, Unit *u, bool append) {
 	if (this->units.count(u->id) == 0) {
 		this->add_unit(player, u, append);
-	} else {
+	}
+	else {
 		this->remove_unit(u);
 	}
 }
 
 void UnitSelection::add_unit(const Player &player, Unit *u, bool append) {
 	// Only select resources and units with hitpoints > 0
-	if (u->has_attribute(attr_type::resource) ||
-	   (u->has_attribute(attr_type::damaged) && u->get_attribute<attr_type::damaged>().hp > 0)) {
-
+	if (u->has_attribute(attr_type::resource) || (u->has_attribute(attr_type::damaged) && u->get_attribute<attr_type::damaged>().hp > 0)) {
 		selection_type_t unit_type = get_unit_selection_type(player, u);
 		int unit_type_i = static_cast<int>(unit_type);
 		int selection_type_i = static_cast<int>(this->selection_type);
@@ -146,9 +143,7 @@ void UnitSelection::add_unit(const Player &player, Unit *u, bool append) {
 		}
 
 		// Can't select multiple enemies at once
-		if (not (unit_type == selection_type_t::own_units ||
-		        (unit_type == selection_type_t::own_buildings && append))) {
-
+		if (not(unit_type == selection_type_t::own_units || (unit_type == selection_type_t::own_buildings && append))) {
 			this->clear();
 			this->selection_type = unit_type; // Clear resets selection_type
 		}
@@ -184,7 +179,8 @@ void UnitSelection::kill_unit(const Player &player) {
 		if (this->units.empty()) {
 			this->selection_type = selection_type_t::nothing;
 		}
-	} else {
+	}
+	else {
 		Unit *u = ref.get();
 
 		// Check color: you can only kill your own units
@@ -197,9 +193,7 @@ void UnitSelection::kill_unit(const Player &player) {
 
 bool UnitSelection::contains_builders(const Player &player) {
 	for (auto &it : units) {
-		if (it.second.is_valid() &&
-		    it.second.get()->get_ability(ability_type::build) &&
-		    it.second.get()->is_own_unit(player)) {
+		if (it.second.is_valid() && it.second.get()->get_ability(ability_type::build) && it.second.get()->is_own_unit(player)) {
 			return true;
 		}
 	}
@@ -208,35 +202,31 @@ bool UnitSelection::contains_builders(const Player &player) {
 
 bool UnitSelection::contains_military(const Player &player) {
 	for (auto &it : units) {
-		if (it.second.is_valid() &&
-		    !it.second.get()->get_ability(ability_type::build) &&
-		    it.second.get()->is_own_unit(player)) {
+		if (it.second.is_valid() && !it.second.get()->get_ability(ability_type::build) && it.second.get()->is_own_unit(player)) {
 			return true;
 		}
 	}
 	return false;
 }
 
-void UnitSelection::select_point(const Player &player, Terrain *terrain,
-                                 coord::camgame point, bool append) {
-	if (!append) {
-		this->clear();
-	}
-
-	if (!terrain) {
-		log::log(MSG(warn) << "selection terrain not specified");
-		return;
-	}
-
-	// find any object at selected point
-	auto obj = terrain->obj_at_point(point.to_phys3(this->engine->coord));
-	if (obj) {
-		this->toggle_unit(player, &obj->unit);
-	}
+void UnitSelection::select_point(const Player &player, Terrain *terrain, coord::camgame point, bool append) {
+	//if (!append) {
+	//	this->clear();
+	//}
+	//
+	//if (!terrain) {
+	//	log::log(MSG(warn) << "selection terrain not specified");
+	//	return;
+	//}
+	//
+	//// find any object at selected point
+	//auto obj = terrain->obj_at_point(point.to_phys3(this->engine->coord));
+	//if (obj) {
+	//	this->toggle_unit(player, &obj->unit);
+	//}
 }
 
-void UnitSelection::select_space(const Player &player, Terrain *terrain,
-                                 coord::camgame point0, coord::camgame point1, bool append) {
+void UnitSelection::select_space(const Player &player, Terrain *terrain, coord::camgame point0, coord::camgame point1, bool append) {
 	if (!append) {
 		this->clear();
 	}
@@ -245,26 +235,24 @@ void UnitSelection::select_space(const Player &player, Terrain *terrain,
 	coord::camgame max{std::max(point0.x, point1.x), std::max(point0.y, point1.y)};
 
 	// look at each tile in the range and find all units
-	for (coord::tile check_pos : tiles_in_range(point0, point1, this->engine->coord)) {
-		TileContent *tc = terrain->get_data(check_pos);
-		if (tc) {
-			// find objects within selection box
-			for (auto unit_location : tc->obj) {
-				coord::camgame pos = unit_location->pos.draw.to_camgame(this->engine->coord);
-
-				if ((pos.x > min.x and pos.x < max.x) and
-				     (pos.y > min.y and pos.y < max.y)) {
-					this->add_unit(player, &unit_location->unit, append);
-				}
-			}
-		}
-	}
+	//for (coord::tile check_pos : tiles_in_range(point0, point1, this->engine->coord)) {
+	//	TileContent *tc = terrain->get_data(check_pos);
+	//	if (tc) {
+	//		// find objects within selection box
+	//		for (auto unit_location : tc->obj) {
+	//			coord::camgame pos = unit_location->pos.draw.to_camgame(this->engine->coord);
+	//
+	//			if ((pos.x > min.x and pos.x < max.x) and (pos.y > min.y and pos.y < max.y)) {
+	//				this->add_unit(player, &unit_location->unit, append);
+	//			}
+	//		}
+	//	}
+	//}
 }
 
 void UnitSelection::all_invoke(Command &cmd) {
 	for (auto u : this->units) {
 		if (u.second.is_valid() && u.second.get()->is_own_unit(cmd.player)) {
-
 			// allow unit to find best use of the command
 			// TODO: queue_cmd returns ability which allows playing of sound
 			u.second.get()->queue_cmd(cmd);
@@ -279,7 +267,8 @@ selection_type_t UnitSelection::get_unit_selection_type(const Player &player, Un
 	// TODO implement allied units
 	if (u->is_own_unit(player)) {
 		return is_building ? selection_type_t::own_buildings : selection_type_t::own_units;
-	} else {
+	}
+	else {
 		return is_building ? selection_type_t::enemy_building : selection_type_t::enemy_unit;
 	}
 }
@@ -288,7 +277,7 @@ std::vector<coord::tile> tiles_in_range(coord::camgame p1, coord::camgame p2, co
 	// the remaining corners
 	coord::camgame p3 = coord::camgame{p1.x, p2.y};
 	coord::camgame p4 = coord::camgame{p2.x, p1.y};
-	coord::camgame pts[4] {p1, p2, p3, p4};
+	coord::camgame pts[4]{p1, p2, p3, p4};
 
 	// find the range of tiles covered
 	coord::tile t1 = pts[0].to_tile(coord);

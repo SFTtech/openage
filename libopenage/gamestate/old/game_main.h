@@ -2,20 +2,20 @@
 
 #pragma once
 
+#include <SDL2/SDL.h>
 #include <memory>
 #include <vector>
-#include <SDL2/SDL.h>
 
 #include <QObject>
 
-#include "market.h"
-#include "player.h"
-#include "team.h"
 #include "../../options.h"
+#include "../../presenter/legacy/legacy.h"
 #include "../../terrain/terrain.h"
 #include "../../unit/unit_container.h"
 #include "../../util/timing.h"
-
+#include "market.h"
+#include "player.h"
+#include "team.h"
 
 namespace openage {
 
@@ -87,7 +87,6 @@ public:
 	UnitContainer placed_units;
 
 private:
-
 	/**
 	 * all players in the game
 	 * no objects should be added of removed once populated
@@ -107,11 +106,11 @@ private:
 	std::shared_ptr<GameSpec> spec;
 };
 
-} // openage
+} // namespace openage
 
 namespace qtsdl {
 class GuiItemLink;
-} // qtsdl
+} // namespace qtsdl
 
 namespace openage {
 
@@ -147,7 +146,7 @@ public:
 	/**
 	 * Return the game.
 	 */
-	GameMain* get_game() const;
+	GameMain *get_game() const;
 
 	/**
 	 * Test if there is a game running.
@@ -171,9 +170,14 @@ private:
 	 */
 	Engine *engine;
 
+	/**
+	 * The engine the main game handle is attached to.
+	 */
+	presenter::LegacyDisplay *display;
+
 public:
 	GameMainSignals gui_signals;
 	qtsdl::GuiItemLink *gui_link;
 };
 
-} // openage
+} // namespace openage

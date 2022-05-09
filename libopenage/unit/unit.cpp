@@ -4,8 +4,8 @@
 #include <cmath>
 #include <limits>
 
-#include "../terrain/terrain.h"
 #include "../engine.h"
+#include "../terrain/terrain.h"
 
 #include "ability.h"
 #include "action.h"
@@ -16,8 +16,7 @@
 
 namespace openage {
 
-Unit::Unit(UnitContainer *c, id_t id)
-	:
+Unit::Unit(UnitContainer *c, id_t id) :
 	id{id},
 	unit_type{nullptr},
 	selected{false},
@@ -25,7 +24,6 @@ Unit::Unit(UnitContainer *c, id_t id)
 	container(c) {}
 
 Unit::~Unit() {
-
 	// remove any used location from the map
 	if (this->location) {
 		this->location->remove();
@@ -65,15 +63,13 @@ UnitAction *Unit::before(const UnitAction *action) const {
 			return action == a.get();
 		});
 
-	if (start != std::begin(this->action_stack) &&
-	    start != std::end(this->action_stack)) {
+	if (start != std::begin(this->action_stack) && start != std::end(this->action_stack)) {
 		return (*(start - 1)).get();
 	}
 	return nullptr;
 }
 
 bool Unit::update(time_nsec_t lastframe_duration) {
-
 	// if unit is not on the map then do nothing
 	if (!this->location) {
 		return true;
@@ -84,7 +80,8 @@ bool Unit::update(time_nsec_t lastframe_duration) {
 		this->erase_after(
 			[](std::unique_ptr<UnitAction> &e) {
 				return e->allow_interrupt() || e->allow_control();
-			}, false);
+			},
+			false);
 	}
 
 	/*
@@ -154,7 +151,6 @@ void Unit::apply_cmd(std::shared_ptr<UnitAbility> ability, const Command &cmd) {
 
 
 void Unit::draw(const Engine &engine) {
-
 	// the top action decides the graphic type and action
 	this->draw(this->location.get(), this->top()->current_graphics(), engine);
 }
@@ -185,7 +181,6 @@ void Unit::draw(TerrainObject *loc, const graphic_set &grpc, const Engine &engin
 	if (grpc.count(graphic_type::shadow) > 0) {
 		auto draw_shadow = grpc.at(graphic_type::shadow);
 		if (draw_shadow) {
-
 			// position without height component
 			// TODO: terrain elevation
 			coord::phys3 shadow_pos = loc->pos.draw;
@@ -200,7 +195,6 @@ void Unit::draw(TerrainObject *loc, const graphic_set &grpc, const Engine &engin
 
 
 void Unit::draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, unsigned int frame, const Engine &engine) {
-
 	// players color if available
 	unsigned color = 0;
 	if (this->has_attribute(attr_type::owner)) {
@@ -210,14 +204,13 @@ void Unit::draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, uns
 
 	// check if object has a direction
 	if (this->has_attribute(attr_type::direction)) {
-
 		// directional textures
 		auto &d_attr = this->get_attribute<attr_type::direction>();
 		coord::phys3_delta draw_dir = d_attr.unit_dir;
-		graphic->draw(engine.coord, draw_pos.to_camgame(engine.coord), draw_dir, frame, color);
+		// graphic->draw(engine.coord, draw_pos.to_camgame(engine.coord), draw_dir, frame, color);
 	}
 	else {
-		graphic->draw(engine.coord, draw_pos.to_camgame(engine.coord), frame, color);
+		// graphic->draw(engine.coord, draw_pos.to_camgame(engine.coord), frame, color);
 	}
 }
 
@@ -235,7 +228,7 @@ UnitAbility *Unit::get_ability(ability_type type) {
 void Unit::push_action(std::unique_ptr<UnitAction> action, bool force) {
 	// unit not being deleted -- can control unit
 	if (force || this->accept_commands()) {
-	    this->action_stack.push_back(std::move(action));
+		this->action_stack.push_back(std::move(action));
 	}
 }
 
@@ -266,8 +259,7 @@ std::shared_ptr<UnitAbility> Unit::queue_cmd(const Command &cmd) {
 	// find suitable ability for this target if available
 	for (auto &ability : ability_priority) {
 		auto pair = this->ability_available.find(ability);
-		if (pair != this->ability_available.end() &&
-		    cmd.ability()[static_cast<int>(pair->first)] && pair->second->can_invoke(*this, cmd)) {
+		if (pair != this->ability_available.end() && cmd.ability()[static_cast<int>(pair->first)] && pair->second->can_invoke(*this, cmd)) {
 			command_queue.push(std::make_pair(pair->second, cmd));
 			return pair->second;
 		}
@@ -283,11 +275,11 @@ void Unit::stop_gather() {
 	this->erase_after(
 		[](std::unique_ptr<UnitAction> &e) {
 			return e->name() == "gather";
-		}, false);
+		},
+		false);
 }
 
 void Unit::stop_actions() {
-
 	// work around for workers continuing to work after retasking
 	if (this->has_attribute(attr_type::worker)) {
 		this->stop_gather();
@@ -331,4 +323,4 @@ void Unit::erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func, 
 	}
 }
 
-} // openage
+} // namespace openage

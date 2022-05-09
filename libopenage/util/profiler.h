@@ -4,9 +4,9 @@
 
 #include <array>
 #include <chrono>
+#include <string>
 #include <unordered_map>
 #include <vector>
-#include <string>
 
 constexpr int MAX_DURATION_HISTORY = 100;
 constexpr int PROFILER_CANVAS_WIDTH = 250;
@@ -69,7 +69,7 @@ public:
 	 * registered, its getting registered and the profiler uses the color
 	 * information given by component_color. The default value is white.
 	 */
-	void start_measure(const std::string &com, color component_color={1.0, 1.0, 1.0});
+	void start_measure(const std::string &com, color component_color = {1.0, 1.0, 1.0});
 
 	/*
 	 * stops the measurement for the component com. If com is not yet
@@ -126,4 +126,5 @@ private:
 	Engine *engine;
 };
 
-}} // openage::util
+} // namespace util
+} // namespace openage

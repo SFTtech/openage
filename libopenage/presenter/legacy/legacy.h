@@ -32,7 +32,7 @@ class UnitSelection;
 
 namespace gui {
 class GUI;
-} // gui
+} // namespace gui
 
 namespace renderer {
 
@@ -41,7 +41,7 @@ class FontManager;
 class TextRenderer;
 class Color;
 
-} // renderer
+} // namespace renderer
 
 
 namespace presenter {
@@ -49,10 +49,10 @@ namespace presenter {
 /**
  * Temporary container class for the legacy renderer implementation.
  */
-class LegacyDisplay final : public ResizeHandler,
-                            public options::OptionNode {
+class LegacyDisplay final : public ResizeHandler
+	, public options::OptionNode {
 public:
-	LegacyDisplay(const util::Path &path);
+	LegacyDisplay(const util::Path &path, Engine *engine);
 
 	~LegacyDisplay();
 
@@ -124,7 +124,7 @@ public:
 	/**
 	 * move the phys3 camera incorporated in the engine
 	 */
-	void move_phys_camera(float x, float y, float amount=1.0);
+	void move_phys_camera(float x, float y, float amount = 1.0);
 
 	/**
 	 * Start a game with the given game generator.
@@ -157,7 +157,6 @@ public:
 	void loop();
 
 public:
-
 	/**
 	 * return this engine's audio manager.
 	 */
@@ -299,4 +298,5 @@ private:
 	std::unique_ptr<renderer::TextRenderer> text_renderer;
 };
 
-}} // openage::presenter
+} // namespace presenter
+} // namespace openage

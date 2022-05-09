@@ -2,17 +2,17 @@
 
 #pragma once
 
-#include "../types.h"
-#include "../../job/job.h"
 #include "../../gamedata/gamedata_dummy.h"
 #include "../../gamedata/graphic_dummy.h"
-#include "../../terrain/terrain.h"
+#include "../../job/job.h"
 #include "../../unit/unit_texture.h"
 #include "../../util/csv.h"
+#include "../types.h"
+#include "terrain/terrain.h"
 
-#include <unordered_map>
-#include <memory>
 #include <QObject>
+#include <memory>
+#include <unordered_map>
 
 
 namespace openage {
@@ -37,8 +37,7 @@ using unit_meta_list = std::vector<std::shared_ptr<UnitTypeMeta>>;
  */
 class Sound {
 public:
-	Sound(GameSpec *spec, std::vector<int> &&sound_items)
-		:
+	Sound(GameSpec *spec, std::vector<int> &&sound_items) :
 		sound_items{sound_items},
 		game_spec{spec} {}
 
@@ -99,7 +98,7 @@ public:
 	/**
 	 * lookup using a texture file name
 	 */
-	Texture *get_texture(const std::string &file_name, bool use_metafile=true) const;
+	Texture *get_texture(const std::string &file_name, bool use_metafile = true) const;
 
 	/**
 	 * get unit texture by graphic id -- this is an directional texture
@@ -228,11 +227,11 @@ private:
 	bool gamedata_loaded;
 };
 
-} // openage
+} // namespace openage
 
 namespace qtsdl {
 class GuiItemLink;
-} // qtsdl
+} // namespace qtsdl
 
 namespace openage {
 
@@ -328,4 +327,4 @@ signals:
 	void game_spec_loaded(std::shared_ptr<GameSpec> loaded_game_spec);
 };
 
-}
+} // namespace openage
