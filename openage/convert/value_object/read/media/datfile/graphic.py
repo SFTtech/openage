@@ -114,6 +114,8 @@ class GraphicAttackSound(GenieStructure):
 
 class Graphic(GenieStructure):
 
+    dynamic_load = True
+
     @classmethod
     def get_data_format_members(
         cls,
