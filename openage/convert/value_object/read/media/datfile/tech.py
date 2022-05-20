@@ -98,6 +98,8 @@ class OtherConnection(GenieStructure):
 
 class AgeTechTree(GenieStructure):
 
+    dynamic_load = True
+
     @classmethod
     def get_data_format_members(
         cls,
@@ -196,6 +198,8 @@ class AgeTechTree(GenieStructure):
 
 class BuildingConnection(GenieStructure):
 
+    dynamic_load = True
+
     @classmethod
     def get_data_format_members(
         cls,
@@ -286,6 +290,8 @@ class BuildingConnection(GenieStructure):
 
 class UnitConnection(GenieStructure):
 
+    dynamic_load = True
+
     @classmethod
     def get_data_format_members(
         cls,
@@ -364,6 +370,8 @@ class UnitConnection(GenieStructure):
 
 
 class ResearchConnection(GenieStructure):
+
+    dynamic_load = True
 
     @classmethod
     def get_data_format_members(

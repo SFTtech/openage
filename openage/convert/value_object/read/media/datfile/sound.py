@@ -59,6 +59,8 @@ class SoundItem(GenieStructure):
 
 class Sound(GenieStructure):
 
+    dynamic_load = True
+
     @classmethod
     def get_data_format_members(
         cls,
