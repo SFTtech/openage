@@ -109,6 +109,10 @@ class GenieStructure:
         # where it stops
         start_offset = offset
         for _, export, var_name, storage_type, var_type in members:
+            if export == READ_GEN and dynamic_load and self.dynamic_load:
+                # Do not create members if dynamic loading is active
+                export = READ
+
             if stop_reading_members:
                 if isinstance(var_type, ReadMember):
                     replacement_value = var_type.get_empty_value()
