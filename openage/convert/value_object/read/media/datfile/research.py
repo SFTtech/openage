@@ -92,11 +92,11 @@ class Tech(GenieStructure):
             # 0: normal tech, 2: show in Age progress bar
             (READ_GEN, "tech_type", StorageType.ID_MEMBER, "int16_t"),
             # frame id - 1 in icon slp (57029)
-            (READ_GEN, "icon_id", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "icon_id", StorageType.ID_MEMBER, "int16_t"),
             # button id as defined in the unit.py button matrix
             (READ_GEN, "button_id", StorageType.ID_MEMBER, "int8_t"),
             # 100000 + the language file id for the name/description
-            (READ_GEN, "language_dll_help", StorageType.ID_MEMBER, "int32_t"),
+            (SKIP, "language_dll_help", StorageType.ID_MEMBER, "int32_t"),
             (READ_GEN, "language_dll_techtree", StorageType.ID_MEMBER,
              "int32_t"),     # 149000 + lang_dll_description
             (READ_GEN, "hotkey", StorageType.ID_MEMBER, "int32_t"),                    # -1 for every tech
@@ -106,7 +106,7 @@ class Tech(GenieStructure):
             data_format.extend([
                 (SKIP, "name_length_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_length]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[name_length]"),
             ])
 
             if game_version.edition.game_id == "AOE2DE":
@@ -117,13 +117,13 @@ class Tech(GenieStructure):
         else:
             data_format.extend([
                 (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_length]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[name_length]"),
             ])
 
             if game_version.edition.game_id == "SWGB":
                 data_format.extend([
                     (READ, "name2_length", StorageType.INT_MEMBER, "uint16_t"),
-                    (READ_GEN, "name2", StorageType.STRING_MEMBER, "char[name2_length]"),
+                    (SKIP, "name2", StorageType.STRING_MEMBER, "char[name2_length]"),
                 ])
 
         return data_format

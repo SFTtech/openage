@@ -49,7 +49,7 @@ class AoCEffectSubprocessor:
             current_unit = line.get_head_unit()
 
         else:
-            projectile_id = line.get_head_unit()["attack_projectile_secondary_unit_id"].value
+            projectile_id = line.get_head_unit()["projectile_id1"].value
             current_unit = dataset.genie_units[projectile_id]
 
         effects = []

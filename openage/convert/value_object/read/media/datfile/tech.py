@@ -56,12 +56,12 @@ class EffectBundle(GenieStructure):  # also called techage in some other tools
             data_format = [
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_len]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[name_len]"),
             ]
         else:
             data_format = [
                 # always CHUN4 (change unit 4-arg) in AoE1-AoC, later versions name them
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[31]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[31]"),
             ]
 
         data_format.extend([

@@ -4503,12 +4503,12 @@ class AoCAbilitySubprocessor:
 
         if position == 0:
             current_unit_id = line.get_head_unit_id()
-            projectile_id = line.get_head_unit()["attack_projectile_primary_unit_id"].value
+            projectile_id = line.get_head_unit()["projectile_id0"].value
             current_unit = dataset.genie_units[projectile_id]
 
         elif position == 1:
             current_unit_id = line.get_head_unit_id()
-            projectile_id = line.get_head_unit()["attack_projectile_secondary_unit_id"].value
+            projectile_id = line.get_head_unit()["projectile_id1"].value
             current_unit = dataset.genie_units[projectile_id]
 
         else:
@@ -4892,10 +4892,10 @@ class AoCAbilitySubprocessor:
 
         # Arc
         if position == 0:
-            projectile_id = current_unit["attack_projectile_primary_unit_id"].value
+            projectile_id = current_unit["projectile_id0"].value
 
         elif position == 1:
-            projectile_id = current_unit["attack_projectile_secondary_unit_id"].value
+            projectile_id = current_unit["projectile_id1"].value
 
         else:
             raise Exception("Invalid position")
@@ -6082,12 +6082,12 @@ class AoCAbilitySubprocessor:
 
         # Projectile
         projectiles = []
-        projectile_primary = current_unit["attack_projectile_primary_unit_id"].value
+        projectile_primary = current_unit["projectile_id0"].value
         if projectile_primary > -1:
             projectiles.append(ForwardRef(line,
                                           f"{game_entity_name}.ShootProjectile.Projectile0"))
 
-        projectile_secondary = current_unit["attack_projectile_secondary_unit_id"].value
+        projectile_secondary = current_unit["projectile_id1"].value
         if projectile_secondary > -1:
             projectiles.append(ForwardRef(line,
                                           f"{game_entity_name}.ShootProjectile.Projectile1"))
@@ -6097,8 +6097,8 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
 
         # Projectile count
-        min_projectiles = current_unit["attack_projectile_count"].value
-        max_projectiles = current_unit["attack_projectile_max_count"].value
+        min_projectiles = current_unit["projectile_min_count"].value
+        max_projectiles = current_unit["projectile_max_count"].value
 
         if projectile_primary == -1:
             # Special case where only the second projectile is defined (town center)
@@ -6191,9 +6191,9 @@ class AoCAbilitySubprocessor:
                                               spawning_area_offset_z,
                                               "engine.ability.type.ShootProjectile")
 
-        spawning_area_width = current_unit["attack_projectile_spawning_area_width"].value
-        spawning_area_height = current_unit["attack_projectile_spawning_area_length"].value
-        spawning_area_randomness = current_unit["attack_projectile_spawning_area_randomness"].value
+        spawning_area_width = current_unit["projectile_spawning_area_width"].value
+        spawning_area_height = current_unit["projectile_spawning_area_length"].value
+        spawning_area_randomness = current_unit["projectile_spawning_area_randomness"].value
 
         ability_raw_api_object.add_raw_member("spawning_area_width",
                                               spawning_area_width,

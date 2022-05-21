@@ -35,11 +35,11 @@ class Civ(GenieStructure):
             data_format.extend([
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_len]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[name_len]"),
             ])
         else:
             data_format.extend([
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[20]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[20]"),
             ])
 
         data_format.extend([

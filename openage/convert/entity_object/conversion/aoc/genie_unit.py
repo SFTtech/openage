@@ -275,10 +275,10 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        projectile_id_0 = head_unit["attack_projectile_primary_unit_id"].value
+        projectile_id_0 = head_unit["projectile_id0"].value
         projectile_id_1 = -2
-        if head_unit.has_member("attack_projectile_secondary_unit_id"):
-            projectile_id_1 = head_unit["attack_projectile_secondary_unit_id"].value
+        if head_unit.has_member("projectile_id1"):
+            projectile_id_1 = head_unit["projectile_id1"].value
 
         return projectile_id in (projectile_id_0, projectile_id_1)
 
@@ -403,16 +403,16 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        if not head_unit.has_member("attack_projectile_primary_unit_id"):
+        if not head_unit.has_member("projectile_id0"):
             return False
 
         # Get the projectiles' obj_id for the first unit in the line. AoE's
         # units stay ranged with upgrades, so this should be fine.
-        projectile_id_0 = head_unit["attack_projectile_primary_unit_id"].value
+        projectile_id_0 = head_unit["projectile_id0"].value
 
         projectile_id_1 = -1
-        if head_unit.has_member("attack_projectile_secondary_unit_id"):
-            projectile_id_1 = head_unit["attack_projectile_secondary_unit_id"].value
+        if head_unit.has_member("projectile_id1"):
+            projectile_id_1 = head_unit["projectile_id1"].value
 
         # -1 -> no projectile
         return projectile_id_0 > -1 or projectile_id_1 > -1
@@ -866,10 +866,10 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
 
         :returns: True if one of the projectile IDs is greater than zero.
         """
-        projectile_id_0 = self.head_unit["attack_projectile_primary_unit_id"].value
-        projectile_id_1 = self.head_unit["attack_projectile_secondary_unit_id"].value
-        projectile_id_2 = self.transform_unit["attack_projectile_primary_unit_id"].value
-        projectile_id_3 = self.transform_unit["attack_projectile_secondary_unit_id"].value
+        projectile_id_0 = self.head_unit["projectile_id0"].value
+        projectile_id_1 = self.head_unit["projectile_id1"].value
+        projectile_id_2 = self.transform_unit["projectile_id0"].value
+        projectile_id_3 = self.transform_unit["projectile_id1"].value
 
         # -1 -> no projectile
         return (projectile_id_0 > -1 or projectile_id_1 > -1

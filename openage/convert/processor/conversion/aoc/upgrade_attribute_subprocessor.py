@@ -285,7 +285,7 @@ class AoCUpgradeAttributeSubprocessor:
 
         if line.is_projectile_shooter():
             primary_projectile_id = line.get_head_unit(
-            )["attack_projectile_primary_unit_id"].value
+            )["projectile_id0"].value
             if primary_projectile_id == -1:
                 # Upgrade is skipped if the primary projectile is not defined
                 return patches
@@ -406,8 +406,8 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        projectile_id0 = head_unit["attack_projectile_primary_unit_id"].value
-        projectile_id1 = head_unit["attack_projectile_secondary_unit_id"].value
+        projectile_id0 = head_unit["projectile_id0"].value
+        projectile_id1 = head_unit["projectile_id1"].value
 
         if projectile_id0 > -1:
             patch_target_ref = f"{game_entity_name}.ShootProjectile.Projectile0.Projectile"

@@ -534,7 +534,7 @@ class RoRAbilitySubprocessor:
 
         # Arc
         if position == 0:
-            projectile_id = current_unit["attack_projectile_primary_unit_id"].value
+            projectile_id = current_unit["projectile_id0"].value
 
         else:
             raise Exception("Invalid position")
@@ -776,7 +776,7 @@ class RoRAbilitySubprocessor:
 
         # Projectile
         projectiles = []
-        projectile_primary = current_unit["attack_projectile_primary_unit_id"].value
+        projectile_primary = current_unit["projectile_id0"].value
         if projectile_primary > -1:
             projectiles.append(ForwardRef(line,
                                           f"{game_entity_name}.ShootProjectile.Projectile0"))

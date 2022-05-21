@@ -48,7 +48,7 @@ class UnitCommand(GenieStructure):
             )),
             (READ_GEN, "class_id", StorageType.ID_MEMBER, "int16_t"),
             (READ_GEN, "unit_id", StorageType.ID_MEMBER, "int16_t"),
-            (READ_GEN, "terrain_id", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "terrain_id", StorageType.ID_MEMBER, "int16_t"),
             (READ_GEN, "resource_in", StorageType.INT_MEMBER, "int16_t"),        # carry resource
             # resource that multiplies the amount you can gather
             (READ_GEN, "resource_multiplier", StorageType.INT_MEMBER, "int16_t"),
@@ -56,22 +56,22 @@ class UnitCommand(GenieStructure):
             (SKIP, "unused_resource", StorageType.INT_MEMBER, "int16_t"),
             (READ_GEN, "work_value1", StorageType.FLOAT_MEMBER, "float"),        # quantity
             (READ_GEN, "work_value2", StorageType.FLOAT_MEMBER, "float"),        # execution radius?
-            (READ_GEN, "work_range", StorageType.FLOAT_MEMBER, "float"),
-            (READ_GEN, "search_mode", StorageType.BOOLEAN_MEMBER, "int8_t"),
-            (READ_GEN, "search_time", StorageType.FLOAT_MEMBER, "float"),
-            (READ_GEN, "enable_targeting", StorageType.BOOLEAN_MEMBER, "int8_t"),
-            (READ_GEN, "combat_level_flag", StorageType.ID_MEMBER, "int8_t"),
-            (READ_GEN, "gather_type", StorageType.INT_MEMBER, "int16_t"),
-            (READ, "work_mode2", StorageType.INT_MEMBER, "int16_t"),
-            (READ_GEN, "owner_type", StorageType.ID_MEMBER, EnumLookupMember(
+            (SKIP, "work_range", StorageType.FLOAT_MEMBER, "float"),
+            (SKIP, "search_mode", StorageType.BOOLEAN_MEMBER, "int8_t"),
+            (SKIP, "search_time", StorageType.FLOAT_MEMBER, "float"),
+            (SKIP, "enable_targeting", StorageType.BOOLEAN_MEMBER, "int8_t"),
+            (SKIP, "combat_level_flag", StorageType.ID_MEMBER, "int8_t"),
+            (SKIP, "gather_type", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "work_mode2", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "owner_type", StorageType.ID_MEMBER, EnumLookupMember(
                 # what can be selected as a target for the unit command?
                 raw_type="int8_t",
                 type_name="selection_type",
                 lookup_dict=OWNER_TYPE
             )),
             # checks if the targeted unit has > 0 resources
-            (READ_GEN, "carry_check", StorageType.BOOLEAN_MEMBER, "int8_t"),
-            (READ_GEN, "state_build", StorageType.BOOLEAN_MEMBER, "int8_t"),
+            (SKIP, "carry_check", StorageType.BOOLEAN_MEMBER, "int8_t"),
+            (SKIP, "state_build", StorageType.BOOLEAN_MEMBER, "int8_t"),
             # walking with tool but no resource
             (READ_GEN, "move_sprite_id", StorageType.ID_MEMBER, "int16_t"),
             # proceeding resource gathering or attack
@@ -132,7 +132,7 @@ class UnitLine(GenieStructure):
         data_format = [
             (READ_GEN, "id", StorageType.ID_MEMBER, "int16_t"),
             (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
-            (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_length]"),
+            (SKIP, "name", StorageType.STRING_MEMBER, "char[name_length]"),
             (READ, "unit_ids_count", StorageType.INT_MEMBER, "uint16_t"),
             (READ_GEN, "unit_ids", StorageType.ARRAY_ID, "int16_t[unit_ids_count]"),
         ]
@@ -153,7 +153,7 @@ class ResourceStorage(GenieStructure):
         data_format = [
             (READ_GEN, "type", StorageType.ID_MEMBER, "int16_t"),
             (READ_GEN, "amount", StorageType.FLOAT_MEMBER, "float"),
-            (READ_GEN, "used_mode", StorageType.ID_MEMBER, EnumLookupMember(
+            (SKIP, "used_mode", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int8_t",
                 type_name="resource_handling",
                 lookup_dict=RESOURCE_HANDLING
@@ -178,7 +178,7 @@ class DamageGraphic(GenieStructure):
             (READ_GEN, "damage_percent", StorageType.INT_MEMBER, "int8_t"),
             # gets overwritten in aoe memory by the real apply_mode:
             (SKIP, "old_apply_mode", StorageType.ID_MEMBER, "int8_t"),
-            (READ_GEN, "apply_mode", StorageType.ID_MEMBER, EnumLookupMember(
+            (SKIP, "apply_mode", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int8_t",
                 type_name="damage_draw_type",
                 lookup_dict=DAMAGE_DRAW_TYPE
@@ -244,9 +244,9 @@ class BuildingAnnex(GenieStructure):
         Return the members in this struct.
         """
         data_format = [
-            (READ_GEN, "unit_id", StorageType.ID_MEMBER, "int16_t"),
-            (READ_GEN, "misplaced0", StorageType.FLOAT_MEMBER, "float"),
-            (READ_GEN, "misplaced1", StorageType.FLOAT_MEMBER, "float"),
+            (SKIP, "unit_id", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "misplaced0", StorageType.FLOAT_MEMBER, "float"),
+            (SKIP, "misplaced1", StorageType.FLOAT_MEMBER, "float"),
         ]
 
         return data_format
@@ -279,12 +279,12 @@ class UnitObject(GenieStructure):
         if game_version.edition.game_id == "AOE2DE":
             data_format.extend([
                 (READ_GEN, "language_dll_name", StorageType.ID_MEMBER, "uint32_t"),
-                (READ_GEN, "language_dll_creation", StorageType.ID_MEMBER, "uint32_t"),
+                (SKIP, "language_dll_creation", StorageType.ID_MEMBER, "uint32_t"),
             ])
         else:
             data_format.extend([
                 (READ_GEN, "language_dll_name", StorageType.ID_MEMBER, "uint16_t"),
-                (READ_GEN, "language_dll_creation", StorageType.ID_MEMBER, "uint16_t"),
+                (SKIP, "language_dll_creation", StorageType.ID_MEMBER, "uint16_t"),
             ])
 
         data_format.extend([
@@ -298,14 +298,14 @@ class UnitObject(GenieStructure):
 
         if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
-                (READ_GEN, "idle_graphic1", StorageType.ID_MEMBER, "int16_t"),
+                (SKIP, "idle_graphic1", StorageType.ID_MEMBER, "int16_t"),
             ])
 
         data_format.extend([
             (READ_GEN, "dying_graphic", StorageType.ID_MEMBER, "int16_t"),
-            (READ_GEN, "undead_graphic", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "undead_graphic", StorageType.ID_MEMBER, "int16_t"),
             # 1 = become `dead_unit_id` (reviving does not make it usable again)
-            (READ_GEN, "death_mode", StorageType.ID_MEMBER, "int8_t"),
+            (SKIP, "death_mode", StorageType.ID_MEMBER, "int8_t"),
             # unit health. -1=insta-die
             (READ_GEN, "hit_points", StorageType.INT_MEMBER, "int16_t"),
             (READ_GEN, "line_of_sight", StorageType.FLOAT_MEMBER, "float"),
@@ -333,10 +333,10 @@ class UnitObject(GenieStructure):
 
         data_format.extend([
             # 0=placable on top of others in scenario editor, 5=can't
-            (READ_GEN, "placement_mode", StorageType.ID_MEMBER, "int8_t"),
-            (READ_GEN, "can_be_built_on", StorageType.BOOLEAN_MEMBER, "int8_t"),  # 1=no footprints
+            (SKIP, "placement_mode", StorageType.ID_MEMBER, "int8_t"),
+            (SKIP, "can_be_built_on", StorageType.BOOLEAN_MEMBER, "int8_t"),  # 1=no footprints
             # frame id of the icon slp (57029) to place on the creation button
-            (READ_GEN, "icon_id", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "icon_id", StorageType.ID_MEMBER, "int16_t"),
             (SKIP, "hidden_in_editor", StorageType.BOOLEAN_MEMBER, "int8_t"),
             (SKIP, "old_portrait_icon_id", StorageType.ID_MEMBER, "int16_t"),
             # 0=unlocked by research, 1=insta-available
@@ -349,12 +349,12 @@ class UnitObject(GenieStructure):
         data_format.extend([
             # terrain id that's needed somewhere on the foundation (e.g. dock
             # water)
-            (READ_GEN, "placement_side_terrain0", StorageType.ID_MEMBER, "int16_t"),
-            (READ_GEN, "placement_side_terrain1", StorageType.ID_MEMBER, "int16_t"),    # second slot for ^
+            (SKIP, "placement_side_terrain0", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "placement_side_terrain1", StorageType.ID_MEMBER, "int16_t"),    # second slot for ^
             # terrain needed for placement (e.g. dock: water)
-            (READ_GEN, "placement_terrain0", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "placement_terrain0", StorageType.ID_MEMBER, "int16_t"),
             # alternative terrain needed for placement (e.g. dock: shallows)
-            (READ_GEN, "placement_terrain1", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "placement_terrain1", StorageType.ID_MEMBER, "int16_t"),
             # minimum space required to allow placement in editor
             (READ_GEN, "clearance_size_x", StorageType.FLOAT_MEMBER, "float"),
             (READ_GEN, "clearance_size_y", StorageType.FLOAT_MEMBER, "float"),
@@ -386,7 +386,7 @@ class UnitObject(GenieStructure):
                 type_name="blast_types",
                 lookup_dict=BLAST_DEFENSE_TYPES
             )),
-            (READ_GEN, "combat_level", StorageType.ID_MEMBER, EnumLookupMember(
+            (SKIP, "combat_level", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int8_t",
                 type_name="combat_levels",
                 lookup_dict=COMBAT_LEVELS
@@ -397,30 +397,30 @@ class UnitObject(GenieStructure):
                 type_name="interaction_modes",
                 lookup_dict=INTERACTION_MODES
             )),
-            (READ_GEN, "map_draw_level", StorageType.ID_MEMBER, EnumLookupMember(
+            (SKIP, "map_draw_level", StorageType.ID_MEMBER, EnumLookupMember(
                 # how does the unit show up on the minimap?
                 raw_type="int8_t",
                 type_name="minimap_modes",
                 lookup_dict=MINIMAP_MODES
             )),
-            (READ_GEN, "unit_level", StorageType.ID_MEMBER, EnumLookupMember(
+            (SKIP, "unit_level", StorageType.ID_MEMBER, EnumLookupMember(
                 # selects the available ui command buttons for the unit
                 raw_type="int8_t",
                 type_name="command_attributes",
                 lookup_dict=UNIT_LEVELS
             )),
-            (READ_GEN, "attack_reaction", StorageType.FLOAT_MEMBER, "float"),
+            (SKIP, "attack_reaction", StorageType.FLOAT_MEMBER, "float"),
             # palette color id for the minimap
-            (READ_GEN, "minimap_color", StorageType.ID_MEMBER, "int8_t"),
+            (SKIP, "minimap_color", StorageType.ID_MEMBER, "int8_t"),
             # help text for this unit, stored in the translation dll.
-            (READ_GEN, "language_dll_help", StorageType.ID_MEMBER, "int32_t"),
-            (READ_GEN, "language_dll_hotkey_text", StorageType.ID_MEMBER, "int32_t"),
+            (SKIP, "language_dll_help", StorageType.ID_MEMBER, "int32_t"),
+            (SKIP, "language_dll_hotkey_text", StorageType.ID_MEMBER, "int32_t"),
             # language dll dependent (kezb lazouts!)
-            (READ_GEN, "hot_keys", StorageType.ID_MEMBER, "int32_t"),
+            (SKIP, "hot_keys", StorageType.ID_MEMBER, "int32_t"),
             (SKIP, "recyclable", StorageType.BOOLEAN_MEMBER, "int8_t"),
-            (READ_GEN, "enable_auto_gather", StorageType.BOOLEAN_MEMBER, "int8_t"),
-            (READ_GEN, "doppelgaenger_on_death", StorageType.BOOLEAN_MEMBER, "int8_t"),
-            (READ_GEN, "resource_gather_drop", StorageType.INT_MEMBER, "int8_t"),
+            (SKIP, "enable_auto_gather", StorageType.BOOLEAN_MEMBER, "int8_t"),
+            (SKIP, "doppelgaenger_on_death", StorageType.BOOLEAN_MEMBER, "int8_t"),
+            (SKIP, "resource_gather_drop", StorageType.INT_MEMBER, "int8_t"),
         ])
 
         if game_version.edition.game_id not in ("ROR", "AOE1DE"):
@@ -429,7 +429,7 @@ class UnitObject(GenieStructure):
             # val == {-1, 7}: in open area mask is partially displayed
             # val == {6, 10}: building, causes mask to appear on units behind it
             data_format.extend([
-                (READ_GEN, "occlusion_mode", StorageType.ID_MEMBER, "uint8_t"),
+                (SKIP, "occlusion_mode", StorageType.ID_MEMBER, "uint8_t"),
                 (READ_GEN, "obstruction_type", StorageType.ID_MEMBER, EnumLookupMember(
                     raw_type="int8_t",
                     type_name="obstruction_types",
@@ -462,7 +462,7 @@ class UnitObject(GenieStructure):
             ])
 
         data_format.extend([
-            (READ_GEN, "selection_effect", StorageType.ID_MEMBER, EnumLookupMember(
+            (SKIP, "selection_effect", StorageType.ID_MEMBER, EnumLookupMember(
                 # things that happen when the unit was selected
                 raw_type="int8_t",
                 type_name="selection_effects",
@@ -518,12 +518,12 @@ class UnitObject(GenieStructure):
             data_format.extend([
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_len]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[name_len]"),
             ])
 
         else:
             data_format.extend([
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_length]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[name_length]"),
             ])
 
             if game_version.edition.game_id == "SWGB":
@@ -534,10 +534,10 @@ class UnitObject(GenieStructure):
                     (READ_GEN, "min_tech_level", StorageType.ID_MEMBER, "int8_t"),
                 ])
 
-        data_format.append((READ_GEN, "id1", StorageType.ID_MEMBER, "int16_t"))
+        data_format.append((SKIP, "id1", StorageType.ID_MEMBER, "int16_t"))
 
         if game_version.edition.game_id not in ("ROR", "AOE1DE"):
-            data_format.append((READ_GEN, "id2", StorageType.ID_MEMBER, "int16_t"))
+            data_format.append((SKIP, "id2", StorageType.ID_MEMBER, "int16_t"))
         elif game_version.edition.game_id == "AOE1DE":
             data_format.append((READ_GEN, "telemetry_id", StorageType.ID_MEMBER, "int16_t"))
 
@@ -623,26 +623,26 @@ class MovingUnit(DoppelgangerUnit):
         data_format = [
             (READ_GEN, None, None, IncludeMembers(cls=DoppelgangerUnit)),
             (READ_GEN, "move_graphics", StorageType.ID_MEMBER, "int16_t"),
-            (READ_GEN, "run_graphics", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "run_graphics", StorageType.ID_MEMBER, "int16_t"),
             (READ_GEN, "turn_speed", StorageType.FLOAT_MEMBER, "float"),
             (SKIP, "old_size_class", StorageType.ID_MEMBER, "int8_t"),
             # unit id for the ground traces
-            (READ_GEN, "trail_unit_id", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "trail_unit_id", StorageType.ID_MEMBER, "int16_t"),
             # ground traces: -1: no tracking present, 2: projectiles with tracking unit
-            (READ_GEN, "trail_opsions", StorageType.ID_MEMBER, "uint8_t"),
+            (SKIP, "trail_opsions", StorageType.ID_MEMBER, "uint8_t"),
             # ground trace spacing: 0: no tracking, 0.5: trade cart, 0.12: some
             # projectiles, 0.4: other projectiles
-            (READ_GEN, "trail_spacing", StorageType.FLOAT_MEMBER, "float"),
+            (SKIP, "trail_spacing", StorageType.FLOAT_MEMBER, "float"),
             (SKIP, "old_move_algorithm", StorageType.ID_MEMBER, "int8_t"),
         ]
 
         if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
-                (READ_GEN, "turn_radius", StorageType.FLOAT_MEMBER, "float"),
-                (READ_GEN, "turn_radius_speed", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "turn_radius", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "turn_radius_speed", StorageType.FLOAT_MEMBER, "float"),
                 (READ_GEN, "max_yaw_per_sec_moving", StorageType.FLOAT_MEMBER, "float"),
-                (READ_GEN, "stationary_yaw_revolution_time", StorageType.FLOAT_MEMBER, "float"),
-                (READ_GEN, "max_yaw_per_sec_stationary", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "stationary_yaw_revolution_time", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "max_yaw_per_sec_stationary", StorageType.FLOAT_MEMBER, "float"),
             ])
 
             if game_version.edition.game_id == "AOE2DE":
@@ -673,7 +673,7 @@ class ActionUnit(MovingUnit):
             # monument and sheep: 107 = enemy convert.
             # all auto-convertible units: 0, most other units: -1
             # e.g. when sheep are discovered
-            (READ_GEN, "default_task_id", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "default_task_id", StorageType.ID_MEMBER, "int16_t"),
             (READ_GEN, "search_radius", StorageType.FLOAT_MEMBER, "float"),
             (READ_GEN, "work_rate", StorageType.FLOAT_MEMBER, "float"),
         ]
@@ -699,7 +699,7 @@ class ActionUnit(MovingUnit):
             # sound played when a command is instanciated
             (READ_GEN, "command_sound_id", StorageType.ID_MEMBER, "int16_t"),
             # sound when the command is done (e.g. unit stops at target position)
-            (READ_GEN, "stop_sound_id", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "stop_sound_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
         if game_version.edition.game_id == "AOE2DE":
@@ -744,9 +744,9 @@ class ProjectileUnit(ActionUnit):
         ]
 
         if game_version.edition.game_id == "ROR":
-            data_format.append((READ_GEN, "default_armor", StorageType.INT_MEMBER, "uint8_t"))
+            data_format.append((SKIP, "default_armor", StorageType.INT_MEMBER, "uint8_t"))
         else:
-            data_format.append((READ_GEN, "default_armor", StorageType.INT_MEMBER, "int16_t"))
+            data_format.append((SKIP, "default_armor", StorageType.INT_MEMBER, "int16_t"))
 
         data_format.extend([
             (READ, "attack_count", StorageType.INT_MEMBER, "uint16_t"),
@@ -759,7 +759,7 @@ class ProjectileUnit(ActionUnit):
                 ref_type=HitType,
                 length="armor_count",
             )),
-            (READ_GEN, "boundary_id", StorageType.ID_MEMBER, EnumLookupMember(
+            (SKIP, "boundary_id", StorageType.ID_MEMBER, EnumLookupMember(
                 # the damage received by this unit is multiplied by
                 # the accessible values on the specified terrain restriction
                 raw_type="int16_t",
@@ -777,7 +777,7 @@ class ProjectileUnit(ActionUnit):
             (READ_GEN, "blast_range", StorageType.FLOAT_MEMBER, "float"),
             (READ_GEN, "attack_speed", StorageType.FLOAT_MEMBER, "float"),  # = "reload time"
             # which projectile to use?
-            (READ_GEN, "attack_projectile_primary_unit_id", StorageType.ID_MEMBER, "int16_t"),
+            (READ_GEN, "projectile_id0", StorageType.ID_MEMBER, "int16_t"),
             # probablity of attack hit in percent
             (READ_GEN, "accuracy", StorageType.INT_MEMBER, "int16_t"),
             # = tower mode?; not used anywhere
@@ -905,7 +905,7 @@ class LivingUnit(ProjectileUnit):
                 )),
                 # if building: "others" tab in editor, if living unit: "heroes" tab,
                 # regenerate health + monk immunity
-                (READ_GEN, "hero_mode", StorageType.BOOLEAN_MEMBER, "int8_t"),
+                (SKIP, "hero_mode", StorageType.BOOLEAN_MEMBER, "int8_t"),
                 # graphic to display when units are garrisoned
                 (READ_GEN, "garrison_graphic", StorageType.ID_MEMBER, "int32_t"),
                 # projectile count when nothing garrisoned, including both normal and
@@ -924,20 +924,20 @@ class LivingUnit(ProjectileUnit):
                 ])
 
             data_format.extend([
-                (READ_GEN, "attack_projectile_count", StorageType.INT_MEMBER, "float"),
+                (READ_GEN, "projectile_min_count", StorageType.INT_MEMBER, "float"),
                 # total projectiles when fully garrisoned
-                (READ_GEN, "attack_projectile_max_count", StorageType.INT_MEMBER, "int8_t"),
-                (READ_GEN, "attack_projectile_spawning_area_width", StorageType.FLOAT_MEMBER, "float"),
-                (READ_GEN, "attack_projectile_spawning_area_length", StorageType.FLOAT_MEMBER, "float"),
+                (READ_GEN, "projectile_max_count", StorageType.INT_MEMBER, "int8_t"),
+                (READ_GEN, "projectile_spawning_area_width", StorageType.FLOAT_MEMBER, "float"),
+                (READ_GEN, "projectile_spawning_area_length", StorageType.FLOAT_MEMBER, "float"),
                 # placement randomness, 0=from single spot, 1=random, 1<less random
-                (READ_GEN, "attack_projectile_spawning_area_randomness", StorageType.FLOAT_MEMBER, "float"),
+                (READ_GEN, "projectile_spawning_area_randomness", StorageType.FLOAT_MEMBER, "float"),
                 # uses its own attack values
-                (READ_GEN, "attack_projectile_secondary_unit_id", StorageType.ID_MEMBER, "int32_t"),
+                (READ_GEN, "projectile_id1", StorageType.ID_MEMBER, "int32_t"),
                 # used just before unit reaches its target enemy, configuration:
-                (READ_GEN, "special_graphic_id", StorageType.ID_MEMBER, "int32_t"),
+                (SKIP, "special_graphic_id", StorageType.ID_MEMBER, "int32_t"),
                 # determines adjacent unit graphics, if 1: building can adapt graphics
                 # by adjacent buildings
-                (READ_GEN, "special_activation", StorageType.ID_MEMBER, "int8_t"),
+                (SKIP, "special_activation", StorageType.ID_MEMBER, "int8_t"),
                 # 0: default: only works when facing the hit angle.
                 # 1: block: activates special graphic when receiving damage and not pursuing the attacker.
                 # while idle, blocking decreases damage taken by 1/3.
@@ -975,7 +975,7 @@ class BuildingUnit(LivingUnit):
         ]
 
         if game_version.edition.game_id not in ("ROR", "AOE1DE"):
-            data_format.append((READ_GEN, "snow_graphic_id", StorageType.ID_MEMBER, "int16_t"))
+            data_format.append((SKIP, "snow_graphic_id", StorageType.ID_MEMBER, "int16_t"))
 
             if game_version.edition.game_id == "AOE2DE":
                 data_format.extend([
@@ -987,9 +987,9 @@ class BuildingUnit(LivingUnit):
 
         data_format.extend([
             # 1=adjacent units may change the graphics
-            (READ_GEN, "adjacent_mode", StorageType.BOOLEAN_MEMBER, "int8_t"),
-            (READ_GEN, "graphics_angle", StorageType.INT_MEMBER, "int16_t"),
-            (READ_GEN, "disappears_when_built", StorageType.BOOLEAN_MEMBER, "int8_t"),
+            (SKIP, "adjacent_mode", StorageType.BOOLEAN_MEMBER, "int8_t"),
+            (SKIP, "graphics_angle", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "disappears_when_built", StorageType.BOOLEAN_MEMBER, "int8_t"),
             # second building to place directly on top
             (READ_GEN, "stack_unit_id", StorageType.ID_MEMBER, "int16_t"),
             # change underlying terrain to this id when building completed
@@ -1004,7 +1004,7 @@ class BuildingUnit(LivingUnit):
         if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
                 (SKIP, "can_burn", StorageType.BOOLEAN_MEMBER, "int8_t"),
-                (READ_GEN, "building_annex", StorageType.ARRAY_CONTAINER, SubdataMember(
+                (SKIP, "building_annex", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=BuildingAnnex,
                     length=4
                 )),

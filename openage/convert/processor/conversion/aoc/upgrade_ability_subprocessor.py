@@ -1514,17 +1514,17 @@ class AoCUpgradeAbilitySubprocessor:
         if diff:
             diff_animation = diff["attack_sprite_id"]
             diff_comm_sound = diff["command_sound_id"]
-            diff_min_projectiles = diff["attack_projectile_count"]
-            diff_max_projectiles = diff["attack_projectile_max_count"]
+            diff_min_projectiles = diff["projectile_min_count"]
+            diff_max_projectiles = diff["projectile_max_count"]
             diff_min_range = diff["weapon_range_min"]
             diff_max_range = diff["weapon_range_min"]
             diff_reload_time = diff["attack_speed"]
             # spawn delay also depends on animation
             diff_spawn_delay = diff["frame_delay"]
             diff_spawn_area_offsets = diff["weapon_offset"]
-            diff_spawn_area_width = diff["attack_projectile_spawning_area_width"]
-            diff_spawn_area_height = diff["attack_projectile_spawning_area_length"]
-            diff_spawn_area_randomness = diff["attack_projectile_spawning_area_randomness"]
+            diff_spawn_area_width = diff["projectile_spawning_area_width"]
+            diff_spawn_area_height = diff["projectile_spawning_area_length"]
+            diff_spawn_area_randomness = diff["projectile_spawning_area_randomness"]
 
             if any(not isinstance(value, NoDiffMember) for value in (diff_animation,
                                                                      diff_comm_sound,
@@ -1614,10 +1614,10 @@ class AoCUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_min_projectiles, NoDiffMember):
                 min_projectiles = diff_min_projectiles.value
-                source_min_count = upgrade_source["attack_projectile_count"].value
-                source_max_count = upgrade_source["attack_projectile_max_count"].value
-                target_min_count = upgrade_target["attack_projectile_count"].value
-                target_max_count = upgrade_target["attack_projectile_max_count"].value
+                source_min_count = upgrade_source["projectile_min_count"].value
+                source_max_count = upgrade_source["projectile_max_count"].value
+                target_min_count = upgrade_target["projectile_min_count"].value
+                target_max_count = upgrade_target["projectile_max_count"].value
 
                 # Account for a special case where the number of projectiles are 0
                 # in the .dat, but the game still counts this as 1 when a projectile
@@ -1636,10 +1636,10 @@ class AoCUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_max_projectiles, NoDiffMember):
                 max_projectiles = diff_max_projectiles.value
-                source_min_count = upgrade_source["attack_projectile_count"].value
-                source_max_count = upgrade_source["attack_projectile_max_count"].value
-                target_min_count = upgrade_target["attack_projectile_count"].value
-                target_max_count = upgrade_target["attack_projectile_max_count"].value
+                source_min_count = upgrade_source["projectile_min_count"].value
+                source_max_count = upgrade_source["projectile_max_count"].value
+                target_min_count = upgrade_target["projectile_min_count"].value
+                target_max_count = upgrade_target["projectile_max_count"].value
 
                 # Account for a special case where the number of projectiles are 0
                 # in the .dat, but the game still counts this as 1 when a projectile

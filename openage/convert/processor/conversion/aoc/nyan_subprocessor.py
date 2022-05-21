@@ -1210,11 +1210,11 @@ class AoCNyanSubprocessor:
         projectiles_location = f"data/game_entity/generic/{game_entity_filename}/projectiles/"
 
         projectile_indices = []
-        projectile_primary = current_unit["attack_projectile_primary_unit_id"].value
+        projectile_primary = current_unit["projectile_id0"].value
         if projectile_primary > -1:
             projectile_indices.append(0)
 
-        projectile_secondary = current_unit["attack_projectile_secondary_unit_id"].value
+        projectile_secondary = current_unit["projectile_id1"].value
         if projectile_secondary > -1:
             projectile_indices.append(1)
 
