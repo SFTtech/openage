@@ -47,11 +47,11 @@ class ConverterObject:
         self.members = {}
 
         if members:
-            if all(isinstance(member, ValueMember) for member in members.values()):
-                self.members.update(members)
-
-            elif isinstance(members, DynamicLoader):
+            if isinstance(members, DynamicLoader):
                 self.members = members
+
+            elif all(isinstance(member, ValueMember) for member in members.values()):
+                self.members.update(members)
 
             else:
                 raise Exception("members must be an instance of ValueMember")

@@ -14,9 +14,9 @@ from openage.convert.value_object.read.dynamic_loader import DynamicLoader
 from ....util.strings import decode_until_null
 from .member_access import READ, READ_GEN, READ_UNKNOWN, SKIP, MemberAccess
 from .read_members import (IncludeMembers, ContinueReadMember,
-                                               MultisubtypeMember, GroupMember, SubdataMember,
-                                               ReadMember,
-                                               EnumLookupMember)
+                           MultisubtypeMember, GroupMember, SubdataMember,
+                           ReadMember,
+                           EnumLookupMember)
 from .value_members import ContainerMember, ArrayMember, IntMember, FloatMember,\
     StringMember, BooleanMember, IDMember, BitfieldMember, ValueMember
 from .value_members import StorageType
@@ -76,7 +76,7 @@ class GenieStructure:
         game_version: GameVersion,
         cls: GenieStructure = None,
         members: tuple = None,
-        dynamic_load = True
+        dynamic_load = False
     ) -> tuple[int, list[ValueMember]]:
         """
         recursively read defined binary data from raw at given offset.

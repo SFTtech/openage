@@ -29,6 +29,8 @@ from enum import Enum
 from math import isclose
 from abc import ABC, abstractmethod
 
+from .dynamic_loader import DynamicLoader
+
 
 class ValueMember(ABC):
     """
@@ -302,12 +304,13 @@ class ContainerMember(ValueMember):
 
         self._value = {}
 
-        # submembers is a list of members
-        if not isinstance(submembers, dict):
-            self._create_dict(submembers)
+        if isinstance(submembers, (dict, DynamicLoader)):
+            # submembers is a list or loads dynamically
+            self._value = submembers
 
         else:
-            self._value = submembers
+            # submembers is a list of members
+            self._create_dict(submembers)
 
     def get_type(self) -> StorageType:
         return StorageType.CONTAINER_MEMBER
