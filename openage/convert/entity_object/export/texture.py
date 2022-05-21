@@ -14,7 +14,7 @@ import numpy
 from ....log import spam
 from ...value_object.read.media.blendomatic import BlendingMode
 from ...value_object.read.media.hardcoded.terrain_tile_size import TILE_HALFSIZE
-from ..conversion.genie_structure import GenieStructure
+from ...value_object.read.genie_structure import GenieStructure
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.media.colortable import ColorTable

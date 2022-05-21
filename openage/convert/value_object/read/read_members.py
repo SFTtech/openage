@@ -9,7 +9,7 @@ from enum import Enum
 
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.genie_structure import GenieStructure
+    from openage.convert.value_object.read.genie_structure import GenieStructure
     from openage.convert.value_object.read.member_access import MemberAccess
     from openage.convert.value_object.read.value_members import StorageType
 

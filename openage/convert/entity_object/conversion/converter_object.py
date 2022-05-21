@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import typing
 
-from openage.convert.entity_object.conversion.dynamic_loader import DynamicLoader
+from openage.convert.value_object.read.dynamic_loader import DynamicLoader
 
 from ....nyan.nyan_structs import NyanObject, NyanPatch, NyanPatchMember, MemberOperator
 from ...value_object.conversion.forward_ref import ForwardRef

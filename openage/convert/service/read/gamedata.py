@@ -11,7 +11,7 @@ import pickle
 from tempfile import gettempdir
 from zlib import decompress
 
-from openage.convert.entity_object.conversion.dynamic_loader import DynamicLoader
+from openage.convert.value_object.read.dynamic_loader import DynamicLoader
 
 
 from ....log import spam, dbg, info, warn

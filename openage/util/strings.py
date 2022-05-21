@@ -4,6 +4,8 @@ Misc string helper functions; this includes encoding, decoding,
 manipulation, ...
 """
 
+from sys import stdout
+
 
 def decode_until_null(data: bytes, encoding: str = 'utf-8') -> str:
     """
@@ -107,3 +109,11 @@ def format_progress(progress: int, total: int) -> str:
     ' 5/20'
     """
     return f"{progress:>{len(str(total))}}/{total}"
+
+
+def print_progress(progress: int, total: int) -> str:
+    """
+    Print an "x out of y" string with fixed width to stdout.
+    The output overwrites itself.
+    """
+    stdout.write(format_progress(progress, total) + "\r")

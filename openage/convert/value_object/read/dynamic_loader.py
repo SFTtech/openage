@@ -10,7 +10,7 @@ from __future__ import annotations
 import typing
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.genie_structure import GenieStructure
+    from openage.convert.value_object.read.genie_structure import GenieStructure
     from openage.convert.value_object.init.game_version import GameVersion
     from openage.convert.value_object.read.value_members import ValueMember
 

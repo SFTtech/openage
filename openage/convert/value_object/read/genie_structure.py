@@ -9,17 +9,17 @@ import math
 import re
 import struct
 
-from openage.convert.entity_object.conversion.dynamic_loader import DynamicLoader
+from openage.convert.value_object.read.dynamic_loader import DynamicLoader
 
 from ....util.strings import decode_until_null
-from ...value_object.read.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP, MemberAccess
-from ...value_object.read.read_members import (IncludeMembers, ContinueReadMember,
+from .member_access import READ, READ_GEN, READ_UNKNOWN, SKIP, MemberAccess
+from .read_members import (IncludeMembers, ContinueReadMember,
                                                MultisubtypeMember, GroupMember, SubdataMember,
                                                ReadMember,
                                                EnumLookupMember)
-from ...value_object.read.value_members import ContainerMember, ArrayMember, IntMember, FloatMember,\
+from .value_members import ContainerMember, ArrayMember, IntMember, FloatMember,\
     StringMember, BooleanMember, IDMember, BitfieldMember, ValueMember
-from ...value_object.read.value_members import StorageType
+from .value_members import StorageType
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion

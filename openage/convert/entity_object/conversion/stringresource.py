@@ -7,7 +7,7 @@ import typing
 
 from collections import defaultdict
 
-from ...entity_object.conversion.genie_structure import GenieStructure
+from ...value_object.read.genie_structure import GenieStructure
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
