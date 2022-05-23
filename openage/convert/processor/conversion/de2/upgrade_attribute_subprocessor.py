@@ -25,7 +25,7 @@ class DE2UpgradeAttributeSubprocessor:
     """
 
     @staticmethod
-    def herdable_garrison_capacity_upgrade(
+    def herdable_capacity_upgrade(
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         value: typing.Union[int, float],

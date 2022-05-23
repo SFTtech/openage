@@ -62,7 +62,7 @@ class DE2TechSubprocessor:
         49: AoCUpgradeAttributeSubprocessor.gold_counter_upgrade,
         57: AoCUpgradeAttributeSubprocessor.kidnap_storage_upgrade,
 
-        30: DE2UpgradeAttributeSubprocessor.herdable_garrison_capacity_upgrade,
+        30: DE2UpgradeAttributeSubprocessor.herdable_capacity_upgrade,
         63: AoCUpgradeAttributeSubprocessor.ignore_armor_upgrade,
         100: AoCUpgradeAttributeSubprocessor.resource_cost_upgrade,
         101: AoCUpgradeAttributeSubprocessor.creation_time_upgrade,

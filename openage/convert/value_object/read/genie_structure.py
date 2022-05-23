@@ -662,4 +662,4 @@ class GenieStructure:
         raise NotImplementedError("Subclass has not implemented this function")
 
     def __repr__(self) -> str:
-        return self.__class__.name
+        return self.__class__.__name__

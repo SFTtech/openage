@@ -11,9 +11,6 @@ import pickle
 from tempfile import gettempdir
 from zlib import decompress
 
-from openage.convert.value_object.read.dynamic_loader import DynamicLoader
-
-
 from ....log import spam, dbg, info, warn
 from ...value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
 from ...value_object.read.media_types import MediaType
@@ -102,7 +99,7 @@ def load_gamespec(
     spam("length of decompressed data: %d", len(file_data))
 
     wrapper = EmpiresDatWrapper()
-    _, gamespec = wrapper.read(file_data, 0, game_version)
+    _, gamespec = wrapper.read(file_data, 0, game_version, dynamic_load=dynamic_load)
 
     # Remove the list sorrounding the converted data
     gamespec = gamespec[0]
