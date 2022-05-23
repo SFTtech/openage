@@ -154,6 +154,7 @@ CIV_GROUP_LOOKUPS = {
 GRAPHICS_SET_LOOKUPS = {
     0: ((0, 1, 2, 13, 14, 36), "WesternEuropean", "western_european"),
     4: ((7, 37), "Byzantine", "byzantine"),
+    7: ((20, 40, 41, 42), "Indian", "indian"),
     8: ((22, 23, 32, 35, 38, 39), "EasternEuropean", "eastern_european"),
     11: ((33, 34), "CentralAsian", "central_asian"),
 }

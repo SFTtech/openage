@@ -128,7 +128,7 @@ expansions = [ ]
 
   [AOE2DE.mediapaths]
   datfile = [ "resources/_common/dat/empires2_x2_p1.dat" ]
-  gamedata = [ "resources/_common/drs/gamedata_x1/" ]
+  gamedata = [ "resources/_common/drs/gamedata_x2/" ]
   graphics = [ "resources/_common/drs/graphics/" ]
   language = [
   "resources/br/strings/key-value/key-value-strings-utf8.txt",

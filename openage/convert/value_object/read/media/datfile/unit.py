@@ -788,7 +788,7 @@ class ProjectileUnit(ActionUnit):
             (READ_GEN, "weapon_offset", StorageType.ARRAY_FLOAT, "float[3]"),
             (READ_GEN, "blast_level_offence", StorageType.ID_MEMBER, EnumLookupMember(
                 # blasts damage units that have higher or same blast_defense_level
-                raw_type="int8_t",
+                raw_type="uint8_t",
                 type_name="range_damage_type",
                 lookup_dict=BLAST_OFFENSE_TYPES
             )),

@@ -83,8 +83,20 @@ class Tech(GenieStructure):
         data_format.extend([
             # unit id, where the tech will appear to be researched
             (READ_GEN, "research_location_id", StorageType.ID_MEMBER, "int16_t"),
-            (READ_GEN, "language_dll_name", StorageType.ID_MEMBER, "uint16_t"),
-            (READ_GEN, "language_dll_description", StorageType.ID_MEMBER, "uint16_t"),
+        ])
+
+        if game_version.edition.game_id == "AOE2DE":
+            data_format.extend([
+                (READ_GEN, "language_dll_name", StorageType.ID_MEMBER, "uint32_t"),
+                (READ_GEN, "language_dll_description", StorageType.ID_MEMBER, "uint32_t"),
+            ])
+        else:
+            data_format.extend([
+                (READ_GEN, "language_dll_name", StorageType.ID_MEMBER, "uint16_t"),
+                (READ_GEN, "language_dll_description", StorageType.ID_MEMBER, "uint16_t"),
+            ])
+
+        data_format.extend([
             # time in seconds that are needed to finish this research
             (READ_GEN, "research_time", StorageType.INT_MEMBER, "int16_t"),
             # techage id that actually contains the research effect information
