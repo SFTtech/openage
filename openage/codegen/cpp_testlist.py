@@ -1,4 +1,4 @@
-# Copyright 2015-2020 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Generates code for C++ testing, mostly the table to look up symbols from test
@@ -14,6 +14,7 @@ class Namespace:
 
     gen_prototypes() generates the code for the namespace.
     """
+
     def __init__(self):
         self.namespaces = collections.defaultdict(self.__class__)
         self.functions = []
@@ -42,10 +43,10 @@ class Namespace:
             yield f"void {name}();\n"
 
         for namespacename, namespace in sorted(self.namespaces.items()):
-            yield "namespace %s {\n" % namespacename
+            yield f"namespace {namespacename} {{\n"
             for line in namespace.gen_prototypes():
                 yield line
-            yield "} // %s\n\n" % namespacename
+            yield f"}} // {namespacename}\n\n"
 
     def get_functionnames(self):
         """
@@ -76,8 +77,9 @@ def generate_testlist(projectdir):
     func_prototypes = list(root_namespace.gen_prototypes())
 
     method_mappings = [
-        "{\"%s\", ::%s}" % (functionname, functionname)
-        for functionname in root_namespace.get_functionnames()]
+        f"{{\"{functionname}\", ::{functionname}}}"
+        for functionname in root_namespace.get_functionnames()
+    ]
 
     tmpl_path = projectdir.joinpath("libopenage/testing/testlist.cpp.template")
     with tmpl_path.open() as tmpl:

@@ -101,8 +101,8 @@ class RoRUpgradeAbilitySubprocessor:
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                     f"{name_lookup_dict[head_unit_id][1]}/"))
                 wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
@@ -121,16 +121,17 @@ class RoRUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_animation, NoDiffMember):
                 animations_set = []
-                diff_animation_id = diff_animation.get_value()
+                diff_animation_id = diff_animation.value
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(converter_group,
-                                                                                           line,
-                                                                                           diff_animation_id,
-                                                                                           nyan_patch_ref,
-                                                                                           ability_name,
-                                                                                           "%s_"
-                                                                                           % command_lookup_dict[command_id][1])
+                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
+                        converter_group,
+                        line,
+                        diff_animation_id,
+                        nyan_patch_ref,
+                        ability_name,
+                        f"{command_lookup_dict[command_id][1]}_"
+                    )
                     animations_set.append(animation_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -140,15 +141,16 @@ class RoRUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_comm_sound, NoDiffMember):
                 sounds_set = []
-                diff_comm_sound_id = diff_comm_sound.get_value()
+                diff_comm_sound_id = diff_comm_sound.value
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(converter_group,
-                                                                                   diff_comm_sound_id,
-                                                                                   nyan_patch_ref,
-                                                                                   ability_name,
-                                                                                   "%s_"
-                                                                                   % command_lookup_dict[command_id][1])
+                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(
+                        converter_group,
+                        diff_comm_sound_id,
+                        nyan_patch_ref,
+                        ability_name,
+                        f"{command_lookup_dict[command_id][1]}_"
+                    )
                     sounds_set.append(sound_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
@@ -157,7 +159,7 @@ class RoRUpgradeAbilitySubprocessor:
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_min_range, NoDiffMember):
-                min_range = diff_min_range.get_value()
+                min_range = diff_min_range.value
 
                 nyan_patch_raw_api_object.add_raw_patch_member("min_range",
                                                                min_range,
@@ -165,7 +167,7 @@ class RoRUpgradeAbilitySubprocessor:
                                                                MemberOperator.ADD)
 
             if not isinstance(diff_max_range, NoDiffMember):
-                max_range = diff_max_range.get_value()
+                max_range = diff_max_range.value
 
                 nyan_patch_raw_api_object.add_raw_patch_member("max_range",
                                                                max_range,
@@ -173,7 +175,7 @@ class RoRUpgradeAbilitySubprocessor:
                                                                MemberOperator.ADD)
 
             if not isinstance(diff_reload_time, NoDiffMember):
-                reload_time = diff_reload_time.get_value()
+                reload_time = diff_reload_time.value
 
                 nyan_patch_raw_api_object.add_raw_patch_member("reload_time",
                                                                reload_time,
@@ -182,14 +184,14 @@ class RoRUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_spawn_delay, NoDiffMember):
                 if not isinstance(diff_animation, NoDiffMember):
-                    attack_graphic_id = diff_animation.get_value()
+                    attack_graphic_id = diff_animation.value
 
                 else:
-                    attack_graphic_id = diff_animation.value.get_value()
+                    attack_graphic_id = diff_animation.ref.value
 
                 attack_graphic = dataset.genie_graphics[attack_graphic_id]
                 frame_rate = attack_graphic.get_frame_rate()
-                frame_delay = diff_spawn_delay.get_value()
+                frame_delay = diff_spawn_delay.value
                 spawn_delay = frame_rate * frame_delay
 
                 nyan_patch_raw_api_object.add_raw_patch_member("spawn_delay",
@@ -203,7 +205,7 @@ class RoRUpgradeAbilitySubprocessor:
                 diff_spawn_area_z = diff_spawn_area_offsets[2]
 
                 if not isinstance(diff_spawn_area_x, NoDiffMember):
-                    spawn_area_x = diff_spawn_area_x.get_value()
+                    spawn_area_x = diff_spawn_area_x.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member("spawning_area_offset_x",
                                                                    spawn_area_x,
@@ -211,7 +213,7 @@ class RoRUpgradeAbilitySubprocessor:
                                                                    MemberOperator.ADD)
 
                 if not isinstance(diff_spawn_area_y, NoDiffMember):
-                    spawn_area_y = diff_spawn_area_y.get_value()
+                    spawn_area_y = diff_spawn_area_y.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member("spawning_area_offset_y",
                                                                    spawn_area_y,
@@ -219,7 +221,7 @@ class RoRUpgradeAbilitySubprocessor:
                                                                    MemberOperator.ADD)
 
                 if not isinstance(diff_spawn_area_z, NoDiffMember):
-                    spawn_area_z = diff_spawn_area_z.get_value()
+                    spawn_area_z = diff_spawn_area_z.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member("spawning_area_offset_z",
                                                                    spawn_area_z,

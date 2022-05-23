@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Provides some classes designed to expand the functionality of struct.struct
@@ -63,8 +63,8 @@ class NamedStructMeta(type):
                 pass
             else:
                 raise TypeError(
-                    "NamedStruct member %s: expected str, but got %s"
-                    % (membername, repr(value)))
+                    f"NamedStruct member {membername}: expected str, but got {repr(value)}"
+                )
 
             specstr += value
 

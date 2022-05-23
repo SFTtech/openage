@@ -61,7 +61,7 @@ class GameBase:
         self.media_paths = {}
 
         self.media_cache = None
-        if "media_cache" in flags.keys():
+        if "media_cache" in flags:
             self.media_cache = flags["media_cache"]
 
         for path, hash_map in game_version_info:

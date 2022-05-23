@@ -5,7 +5,7 @@ from __future__ import annotations
 import typing
 
 
-from .....entity_object.conversion.genie_structure import GenieStructure
+from ...genie_structure import GenieStructure
 from ....read.member_access import READ, READ_GEN, SKIP
 from ....read.read_members import SubdataMember, EnumLookupMember
 from ....read.value_members import StorageType
@@ -51,15 +51,15 @@ class DE2SoundProp(GenieStructure):
         Return the members in this struct.
         """
         data_format = [
-            (READ_GEN, "sound_delay0", StorageType.INT_MEMBER, "int16_t"),
-            (READ_GEN, "sound_id0", StorageType.ID_MEMBER, "int16_t"),
-            (READ_GEN, "wwise_sound0", StorageType.ID_MEMBER, "uint32_t"),
-            (READ_GEN, "sound_delay1", StorageType.INT_MEMBER, "int16_t"),
-            (READ_GEN, "wwise_sound1", StorageType.ID_MEMBER, "uint32_t"),
-            (READ_GEN, "sound_id1", StorageType.ID_MEMBER, "int16_t"),
-            (READ_GEN, "sound_delay2", StorageType.INT_MEMBER, "int16_t"),
-            (READ_GEN, "wwise_sound2", StorageType.ID_MEMBER, "uint32_t"),
-            (READ_GEN, "sound_id2", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "sound_delay0", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "sound_id0", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "wwise_sound0", StorageType.ID_MEMBER, "uint32_t"),
+            (SKIP, "sound_delay1", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "wwise_sound1", StorageType.ID_MEMBER, "uint32_t"),
+            (SKIP, "sound_id1", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "sound_delay2", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "wwise_sound2", StorageType.ID_MEMBER, "uint32_t"),
+            (SKIP, "sound_id2", StorageType.ID_MEMBER, "int16_t"),
         ]
 
         return data_format
@@ -76,8 +76,8 @@ class SoundProp(GenieStructure):
         Return the members in this struct.
         """
         data_format = [
-            (READ_GEN, "sound_delay", StorageType.INT_MEMBER, "int16_t"),
-            (READ_GEN, "sound_id", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "sound_delay", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "sound_id", StorageType.ID_MEMBER, "int16_t"),
         ]
 
         return data_format
@@ -95,7 +95,7 @@ class GraphicAttackSound(GenieStructure):
         """
         if game_version.edition.game_id == "AOE2DE":
             data_format = [
-                (READ_GEN, "sound_props", StorageType.ARRAY_CONTAINER, SubdataMember(
+                (SKIP, "sound_props", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=DE2SoundProp,
                     length=1,
                 )),
@@ -103,7 +103,7 @@ class GraphicAttackSound(GenieStructure):
 
         else:
             data_format = [
-                (READ_GEN, "sound_props", StorageType.ARRAY_CONTAINER, SubdataMember(
+                (SKIP, "sound_props", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=SoundProp,
                     length=3,
                 )),
@@ -113,6 +113,8 @@ class GraphicAttackSound(GenieStructure):
 
 
 class Graphic(GenieStructure):
+
+    dynamic_load = True
 
     @classmethod
     def get_data_format_members(
@@ -129,7 +131,7 @@ class Graphic(GenieStructure):
             data_format.extend([
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_len]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[name_len]"),
                 (SKIP, "filename_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "filename_len", StorageType.INT_MEMBER, "uint16_t"),
                 (READ_GEN, "filename", StorageType.STRING_MEMBER, "char[filename_len]"),
@@ -148,12 +150,12 @@ class Graphic(GenieStructure):
 
         elif game_version.edition.game_id == "SWGB":
             data_format.extend([
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[25]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[25]"),
                 (READ_GEN, "filename", StorageType.STRING_MEMBER, "char[25]"),
             ])
         else:
             data_format.extend([
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[21]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[21]"),
                 (READ_GEN, "filename", StorageType.STRING_MEMBER, "char[13]"),
             ])
 
@@ -167,14 +169,14 @@ class Graphic(GenieStructure):
                 type_name   = "graphics_layer",
                 lookup_dict = GRAPHICS_LAYER
             )),
-            (READ_GEN, "player_color_force_id", StorageType.ID_MEMBER,
+            (SKIP, "player_color_force_id", StorageType.ID_MEMBER,
              "int8_t"),    # force given player color
             # playercolor can be changed on sight (like sheep)
-            (READ_GEN, "adapt_color", StorageType.INT_MEMBER, "int8_t"),
-            (READ_GEN, "transparent_selection", StorageType.INT_MEMBER, "uint8_t"),  # loop animation
+            (SKIP, "adapt_color", StorageType.INT_MEMBER, "int8_t"),
+            (SKIP, "transparent_selection", StorageType.INT_MEMBER, "uint8_t"),  # loop animation
             (READ, "coordinates", StorageType.ARRAY_INT, "int16_t[4]"),
             (READ, "delta_count", StorageType.INT_MEMBER, "uint16_t"),
-            (READ_GEN, "sound_id", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "sound_id", StorageType.ID_MEMBER, "int16_t"),
         ])
 
         if game_version.edition.game_id == "AOE2DE":
@@ -189,7 +191,7 @@ class Graphic(GenieStructure):
             # number of heading angles stored, some of the frames must be mirrored
             (READ_GEN, "angle_count", StorageType.INT_MEMBER, "uint16_t"),
             # multiplies the speed of the unit this graphic is applied to
-            (READ_GEN, "speed_adjust", StorageType.FLOAT_MEMBER, "float"),
+            (SKIP, "speed_adjust", StorageType.FLOAT_MEMBER, "float"),
             (READ_GEN, "frame_rate", StorageType.FLOAT_MEMBER,
              "float"),             # how long a frame is displayed
             # seconds to wait before current_frame=0 again
@@ -210,7 +212,7 @@ class Graphic(GenieStructure):
             )),
 
             # if attack_sound_used:
-            (READ_GEN, "graphic_attack_sounds", StorageType.ARRAY_CONTAINER, SubdataMember(
+            (SKIP, "graphic_attack_sounds", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=GraphicAttackSound,
                 length=lambda o: "angle_count" if o.attack_sound_used != 0 else 0,
             )),

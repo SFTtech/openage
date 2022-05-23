@@ -1,4 +1,4 @@
-# Copyright 2021-2021 the openage authors. See copying.md for legal info.
+# Copyright 2021-2022 the openage authors. See copying.md for legal info.
 
 """
 Lookup dicts for the EnumLookupMember instances.
@@ -13,6 +13,7 @@ GRAPHICS_LAYER = {
     5: "SHADOW",       # farm fields as well
     6: "RUBBLE",
     7: "PLANT",
+    8: "DE2_BRIDGE",
     9: "SWGB_EFFECT",
     10: "UNIT_LOW",    # constructions, dead units, tree stumps, flowers, paths
     11: "FISH",
@@ -305,6 +306,9 @@ EFFECT_APPLY_TYPE = {
 
     # a == unit_id, b == building_id, c == amount
     7: "SPAWN_UNIT",
+
+    # a == tech_id, b == action_id (5 = set?), c == amount
+    8: "RESEARCH_TIME_MODIFY",
 
     # same as 0-6 but applied to team members
     10: "TEAM_ATTRIBUTE_ABSSET",
@@ -719,6 +723,7 @@ BLAST_OFFENSE_TYPES = {
     18: "UNKNOWN_18",
     34: "UNKNOWN_34",
     66: "UNKNOWN_66",
+    138: "PIERCE",      # attack units behind target (Ghulam)
 }
 
 CREATABLE_TYPES = {

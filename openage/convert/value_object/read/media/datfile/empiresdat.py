@@ -14,7 +14,7 @@ from . import sound
 from . import tech
 from . import terrain
 from . import unit
-from .....entity_object.conversion.genie_structure import GenieStructure
+from ...genie_structure import GenieStructure
 from ....read.member_access import READ, READ_GEN, READ_UNKNOWN, SKIP
 from ....read.read_members import SubdataMember
 from ....read.value_members import StorageType

@@ -59,12 +59,11 @@ class DE1MediaSubprocessor:
                 # DE1 stores most graphics filenames as 'whatever_<x#>'
                 # where '<x#>' must be replaced by x1, x2 or x4
                 # which corresponds to the graphics resolution variant
-                source_str = graphic['filename'].get_value()[:-4]
+                source_str = graphic['filename'].value[:-4]
 
                 # TODO: Also convert x2 and x4 variants
                 source_filename = f"{source_str}x1.slp"
-                target_filename = "%s_%s.png" % (sprite.get_filename(),
-                                                 str(graphic["slp_id"].get_value()))
+                target_filename = f"{sprite.get_filename()}_{str(graphic['slp_id'].value)}.png"
 
                 export_request = MediaExportRequest(MediaType.GRAPHICS,
                                                     targetdir,
@@ -73,7 +72,7 @@ class DE1MediaSubprocessor:
                 full_data_set.graphics_exports.update({graphic_id: export_request})
 
                 # Metadata from graphics
-                sequence_type = graphic["sequence_type"].get_value()
+                sequence_type = graphic["sequence_type"].value
                 if sequence_type == 0x00:
                     layer_mode = LayerMode.OFF
 
@@ -83,18 +82,18 @@ class DE1MediaSubprocessor:
                 else:
                     layer_mode = LayerMode.LOOP
 
-                layer_pos = graphic["layer"].get_value()
-                frame_rate = round(graphic["frame_rate"].get_value(), ndigits=6)
+                layer_pos = graphic["layer"].value
+                frame_rate = round(graphic["frame_rate"].value, ndigits=6)
                 if frame_rate < 0.000001:
                     frame_rate = None
 
-                replay_delay = round(graphic["replay_delay"].get_value(), ndigits=6)
+                replay_delay = round(graphic["replay_delay"].value, ndigits=6)
                 if replay_delay < 0.000001:
                     replay_delay = None
 
-                frame_count = graphic["frame_count"].get_value()
-                angle_count = graphic["angle_count"].get_value()
-                mirror_mode = graphic["mirroring_mode"].get_value()
+                frame_count = graphic["frame_count"].value
+                angle_count = graphic["angle_count"].value
+                mirror_mode = graphic["mirroring_mode"].value
                 metadata_export.add_graphics_metadata(target_filename,
                                                       layer_mode,
                                                       layer_pos,

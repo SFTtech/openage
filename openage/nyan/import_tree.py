@@ -79,7 +79,7 @@ class Node:
             if current_node.parent is ancestor_node:
                 return True
 
-            elif not current_node.parent:
+            if not current_node.parent:
                 return False
 
             current_node = current_node.parent
@@ -94,7 +94,7 @@ class Node:
         :param name: Name of the child node.
         :type name: str
         """
-        return name in self.children.keys()
+        return name in self.children
 
     def get_child(self, name: str):
         """
@@ -153,7 +153,7 @@ class ImportTree:
             try:
                 current_node = current_node.get_child(node_str)
 
-            except KeyError as err:
+            except KeyError:  # as err:
                 # TODO: Do not silently fail
                 return
                 # raise KeyError(f"fqon '{'.'.join(fqon)}' "
@@ -246,7 +246,12 @@ class ImportTree:
 
                 index += 1
 
-        # Recursively search the nyan objects for nested objects
+        self._expand_nested_objects(nyan_object)
+
+    def _expand_nested_objects(self, nyan_object: NyanObject):
+        """
+        Recursively search the nyan objects for nested objects
+        """
         unsearched_objects = []
         unsearched_objects.extend(nyan_object.get_nested_objects())
         found_nested_objects = []
@@ -286,7 +291,7 @@ class ImportTree:
         """
         aliases = {}
         for current_node in self.alias_nodes:
-            if current_node.alias in aliases.keys():
+            if current_node.alias in aliases:
                 raise Exception(f"duplicate alias: {current_node.alias}")
 
             aliases.update({current_node.alias: current_node.get_fqon()})
@@ -313,10 +318,10 @@ class ImportTree:
 
             if len(namespace) <= len(fqon):
                 # Check if the fqon is in the namespace by comparing their identifiers
-                for index in range(len(namespace)):
-                    current_node = current_node.get_child(namespace[index])
+                for index, namespace_part in enumerate(namespace):
+                    current_node = current_node.get_child(namespace_part)
 
-                    if namespace[index] != fqon[index]:
+                    if namespace_part != fqon[index]:
                         break
 
                 else:

@@ -4,6 +4,8 @@ Misc string helper functions; this includes encoding, decoding,
 manipulation, ...
 """
 
+from sys import stdout
+
 
 def decode_until_null(data: bytes, encoding: str = 'utf-8') -> str:
     """
@@ -62,8 +64,7 @@ def colorize(string: str, colorcode: str) -> str:
     '\\x1b[31;1mfoo\\x1b[m'
     """
     if colorcode:
-        colorized = '\x1b[{colorcode}m{string}\x1b[m'.format(
-            colorcode=colorcode, string=string)
+        colorized = f'\x1b[{colorcode}m{string}\x1b[m'
     else:
         colorized = string
 
@@ -107,6 +108,12 @@ def format_progress(progress: int, total: int) -> str:
     >>> format_progress(5, 20)
     ' 5/20'
     """
-    return "{progress:>{width}}/{total}".format(progress=progress,
-                                                width=len(str(total)),
-                                                total=total)
+    return f"{progress:>{len(str(total))}}/{total}"
+
+
+def print_progress(progress: int, total: int) -> str:
+    """
+    Print an "x out of y" string with fixed width to stdout.
+    The output overwrites itself.
+    """
+    stdout.write(format_progress(progress, total) + "\r")

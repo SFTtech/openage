@@ -11,7 +11,6 @@ import pickle
 from tempfile import gettempdir
 from zlib import decompress
 
-
 from ....log import spam, dbg, info, warn
 from ...value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
 from ...value_object.read.media_types import MediaType
@@ -38,8 +37,8 @@ def get_gamespec(srcdir: Directory, game_version: GameVersion, pickle_cache: boo
             filepath = srcdir.joinpath(game_version.edition.media_paths[MediaType.DATFILE][0])
 
     else:
-        raise Exception("No service found for reading data file of version %s"
-                        % game_version.edition.game_id)
+        raise Exception("No service found for reading data file of "
+                        f"version {game_version.edition.game_id}")
 
     cache_file = os.path.join(
         gettempdir(), f"{game_version.edition.game_id}_{filepath.name}.pickle")
@@ -57,7 +56,8 @@ def load_gamespec(
     fileobj: GuardedFile,
     game_version: GameVersion,
     cachefile_name: str = None,
-    pickle_cache: bool = False
+    pickle_cache: bool = False,
+    dynamic_load = False
 ) -> ArrayMember:
     """
     Helper method that loads the contents of a 'empires.dat' gzipped wrapper
@@ -99,10 +99,11 @@ def load_gamespec(
     spam("length of decompressed data: %d", len(file_data))
 
     wrapper = EmpiresDatWrapper()
-    _, gamespec = wrapper.read(file_data, 0, game_version)
+    _, gamespec = wrapper.read(file_data, 0, game_version, dynamic_load=dynamic_load)
 
     # Remove the list sorrounding the converted data
     gamespec = gamespec[0]
+    del wrapper
 
     if cachefile_name and pickle_cache:
         dbg("dumping dat file contents to cache file: %s", cachefile_name)

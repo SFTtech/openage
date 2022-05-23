@@ -103,14 +103,14 @@ class AoCAbilitySubprocessor:
         properties = {}
 
         # Get animation from commands proceed sprite
-        unit_commands = current_unit["unit_commands"].get_value()
+        unit_commands = current_unit["unit_commands"].value
         for command in unit_commands:
-            type_id = command["type"].get_value()
+            type_id = command["type"].value
 
             if type_id != command_id:
                 continue
 
-            ability_animation_id = command["proceed_sprite_id"].get_value()
+            ability_animation_id = command["proceed_sprite_id"].value
             break
 
         else:
@@ -128,12 +128,13 @@ class AoCAbilitySubprocessor:
             line.add_raw_api_object(property_raw_api_object)
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
-                                                                            ability_animation_id,
-                                                                            property_ref,
-                                                                            ability_name,
-                                                                            "%s_"
-                                                                            % command_lookup_dict[command_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(
+                line,
+                ability_animation_id,
+                property_ref,
+                ability_name,
+                f"{command_lookup_dict[command_id][1]}_"
+            )
             animations_set.append(animation_forward_ref)
             property_raw_api_object.add_raw_member("animations", animations_set,
                                                    "engine.ability.property.type.Animated")
@@ -150,10 +151,10 @@ class AoCAbilitySubprocessor:
                 civ_id = civ_group.get_id()
 
                 # Only proceed if the civ stores the unit in the line
-                if current_unit_id not in civ["units"].get_value().keys():
+                if current_unit_id not in civ["units"].value.keys():
                     continue
 
-                civ_animation_id = civ["units"][current_unit_id]["attack_sprite_id"].get_value()
+                civ_animation_id = civ["units"][current_unit_id]["attack_sprite_id"].value
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
@@ -169,8 +170,8 @@ class AoCAbilitySubprocessor:
                         handled_graphics_set_ids.add(graphics_set_id)
 
                     obj_prefix = f"{gset_lookup_dict[graphics_set_id][1]}{ability_name}"
-                    filename_prefix = "%s_%s_" % (command_lookup_dict[command_id][1],
-                                                  gset_lookup_dict[graphics_set_id][2],)
+                    filename_prefix = (f"{command_lookup_dict[command_id][1]}_"
+                                       f"{gset_lookup_dict[graphics_set_id][2]}_")
                     AoCAbilitySubprocessor.create_civ_animation(line,
                                                                 civ_group,
                                                                 civ_animation_id,
@@ -180,7 +181,7 @@ class AoCAbilitySubprocessor:
                                                                 obj_exists)
 
         # Command Sound
-        ability_comm_sound_id = current_unit["command_sound_id"].get_value()
+        ability_comm_sound_id = current_unit["command_sound_id"].value
         if ability_comm_sound_id > -1:
             property_ref = f"{ability_ref}.CommandSound"
             property_raw_api_object = RawAPIObject(property_ref,
@@ -232,7 +233,7 @@ class AoCAbilitySubprocessor:
 
         if ranged:
             # Min range
-            min_range = current_unit["weapon_range_min"].get_value()
+            min_range = current_unit["weapon_range_min"].value
             ability_raw_api_object.add_raw_member("min_range",
                                                   min_range,
                                                   "engine.ability.type.RangedContinuousEffect")
@@ -243,7 +244,7 @@ class AoCAbilitySubprocessor:
                 max_range = 4
 
             else:
-                max_range = current_unit["weapon_range_max"].get_value()
+                max_range = current_unit["weapon_range_max"].value
 
             ability_raw_api_object.add_raw_member("max_range",
                                                   max_range,
@@ -280,7 +281,7 @@ class AoCAbilitySubprocessor:
         # Application delay
         apply_graphic = dataset.genie_graphics[ability_animation_id]
         frame_rate = apply_graphic.get_frame_rate()
-        frame_delay = current_unit["frame_delay"].get_value()
+        frame_delay = current_unit["frame_delay"].value
         application_delay = frame_rate * frame_delay
         ability_raw_api_object.add_raw_member("application_delay",
                                               application_delay,
@@ -315,7 +316,7 @@ class AoCAbilitySubprocessor:
         """
         if isinstance(line, GenieVillagerGroup):
             current_unit = line.get_units_with_command(command_id)[0]
-            current_unit_id = current_unit["id0"].get_value()
+            current_unit_id = current_unit["id0"].value
 
         else:
             current_unit = line.get_head_unit()
@@ -348,18 +349,18 @@ class AoCAbilitySubprocessor:
             ability_location = ForwardRef(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
 
-            ability_animation_id = current_unit["attack_sprite_id"].get_value()
+            ability_animation_id = current_unit["attack_sprite_id"].value
 
         else:
-            ability_ref = "%s.ShootProjectile.Projectile%s.%s" % (game_entity_name,
-                                                                  str(projectile),
-                                                                  ability_name)
+            ability_ref = (f"{game_entity_name}.ShootProjectile.Projectile{projectile}."
+                           f"{ability_name}")
             ability_raw_api_object = RawAPIObject(
                 ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent(ability_parent)
-            ability_location = ForwardRef(line,
-                                          "%s.ShootProjectile.Projectile%s"
-                                          % (game_entity_name, str(projectile)))
+            ability_location = ForwardRef(
+                line,
+                f"{game_entity_name}.ShootProjectile.Projectile{projectile}"
+            )
             ability_raw_api_object.set_location(ability_location)
 
             ability_animation_id = -1
@@ -382,12 +383,13 @@ class AoCAbilitySubprocessor:
             line.add_raw_api_object(property_raw_api_object)
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
-                                                                            ability_animation_id,
-                                                                            property_ref,
-                                                                            ability_name,
-                                                                            "%s_"
-                                                                            % command_lookup_dict[command_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(
+                line,
+                ability_animation_id,
+                property_ref,
+                ability_name,
+                f"{command_lookup_dict[command_id][1]}_"
+            )
             animations_set.append(animation_forward_ref)
             property_raw_api_object.add_raw_member("animations", animations_set,
                                                    "engine.ability.property.type.Animated")
@@ -404,10 +406,10 @@ class AoCAbilitySubprocessor:
                 civ_id = civ_group.get_id()
 
                 # Only proceed if the civ stores the unit in the line
-                if current_unit_id not in civ["units"].get_value().keys():
+                if current_unit_id not in civ["units"].value.keys():
                     continue
 
-                civ_animation_id = civ["units"][current_unit_id]["attack_sprite_id"].get_value()
+                civ_animation_id = civ["units"][current_unit_id]["attack_sprite_id"].value
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
@@ -423,8 +425,8 @@ class AoCAbilitySubprocessor:
                         handled_graphics_set_ids.add(graphics_set_id)
 
                     obj_prefix = f"{gset_lookup_dict[graphics_set_id][1]}{ability_name}"
-                    filename_prefix = "%s_%s_" % (command_lookup_dict[command_id][1],
-                                                  gset_lookup_dict[graphics_set_id][2],)
+                    filename_prefix = (f"{command_lookup_dict[command_id][1]}_"
+                                       f"{gset_lookup_dict[graphics_set_id][2]}_")
                     AoCAbilitySubprocessor.create_civ_animation(line,
                                                                 civ_group,
                                                                 civ_animation_id,
@@ -435,7 +437,7 @@ class AoCAbilitySubprocessor:
 
         # Command Sound
         if projectile == -1:
-            ability_comm_sound_id = current_unit["command_sound_id"].get_value()
+            ability_comm_sound_id = current_unit["command_sound_id"].value
 
         else:
             ability_comm_sound_id = -1
@@ -498,13 +500,13 @@ class AoCAbilitySubprocessor:
 
         if ranged:
             # Min range
-            min_range = current_unit["weapon_range_min"].get_value()
+            min_range = current_unit["weapon_range_min"].value
             ability_raw_api_object.add_raw_member("min_range",
                                                   min_range,
                                                   "engine.ability.type.RangedDiscreteEffect")
 
             # Max range
-            max_range = current_unit["weapon_range_max"].get_value()
+            max_range = current_unit["weapon_range_max"].value
             ability_raw_api_object.add_raw_member("max_range",
                                                   max_range,
                                                   "engine.ability.type.RangedDiscreteEffect")
@@ -541,7 +543,7 @@ class AoCAbilitySubprocessor:
 
         # Reload time
         if projectile == -1:
-            reload_time = current_unit["attack_speed"].get_value()
+            reload_time = current_unit["attack_speed"].value
 
         else:
             reload_time = 0
@@ -552,10 +554,10 @@ class AoCAbilitySubprocessor:
 
         # Application delay
         if projectile == -1:
-            attack_graphic_id = current_unit["attack_sprite_id"].get_value()
+            attack_graphic_id = current_unit["attack_sprite_id"].value
             attack_graphic = dataset.genie_graphics[attack_graphic_id]
             frame_rate = attack_graphic.get_frame_rate()
-            frame_delay = current_unit["frame_delay"].get_value()
+            frame_delay = current_unit["frame_delay"].value
             application_delay = frame_rate * frame_delay
 
         else:
@@ -644,13 +646,13 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.AttributeChangeTracker")
 
         # Change progress
-        damage_graphics = current_unit["damage_graphics"].get_value()
+        damage_graphics = current_unit["damage_graphics"].value
         progress_forward_refs = []
 
         # Damage graphics are ordered ascending, so we start from 0
         interval_left_bound = 0
         for damage_graphic_member in damage_graphics:
-            interval_right_bound = damage_graphic_member["damage_percent"].get_value()
+            interval_right_bound = damage_graphic_member["damage_percent"].value
             progress_ref = f"{ability_ref}.ChangeProgress{interval_right_bound}"
             progress_raw_api_object = RawAPIObject(progress_ref,
                                                    f"ChangeProgress{interval_right_bound}",
@@ -679,7 +681,7 @@ class AoCAbilitySubprocessor:
             # =====================================================================================
             # AnimationOverlay property
             # =====================================================================================
-            progress_animation_id = damage_graphic_member["graphic_id"].get_value()
+            progress_animation_id = damage_graphic_member["graphic_id"].value
             if progress_animation_id > -1:
                 property_ref = f"{progress_ref}.AnimationOverlay"
                 property_raw_api_object = RawAPIObject(property_ref,
@@ -694,12 +696,13 @@ class AoCAbilitySubprocessor:
 
                 # Animation
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
-                                                                                progress_animation_id,
-                                                                                property_ref,
-                                                                                "Idle",
-                                                                                "idle_damage_override_%s_"
-                                                                                % (interval_right_bound))
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(
+                    line,
+                    progress_animation_id,
+                    property_ref,
+                    "Idle",
+                    f"idle_damage_override_{interval_right_bound}_"
+                )
                 animations_set.append(animation_forward_ref)
                 property_raw_api_object.add_raw_member("overlays",
                                                        animations_set,
@@ -808,7 +811,7 @@ class AoCAbilitySubprocessor:
                                               0,
                                               "engine.ability.type.Constructable")
 
-        construction_animation_id = current_unit["construction_graphic_id"].get_value()
+        construction_animation_id = current_unit["construction_graphic_id"].value
 
         # Construction progress
         progress_forward_refs = []
@@ -918,8 +921,8 @@ class AoCAbilitySubprocessor:
                 disabled_forward_refs.append(ForwardRef(line,
                                                         f"{game_entity_name}.Create"))
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.ProductionQueue"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.ProductionQueue"))
+
             if len(line.researches) > 0:
                 disabled_forward_refs.append(ForwardRef(line,
                                                         f"{game_entity_name}.Research"))
@@ -932,25 +935,21 @@ class AoCAbilitySubprocessor:
                 disabled_forward_refs.append(ForwardRef(line,
                                                         f"{game_entity_name}.Storage"))
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.RemoveStorage"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.RemoveStorage"))
 
                 garrison_mode = line.get_garrison_mode()
 
                 if garrison_mode == GenieGarrisonMode.NATURAL:
                     disabled_forward_refs.append(ForwardRef(line,
-                                                            "%s.SendBackToTask"
-                                                            % (game_entity_name)))
+                                                            f"{game_entity_name}.SendBackToTask"))
 
                 if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
                     disabled_forward_refs.append(ForwardRef(line,
-                                                            "%s.RallyPoint"
-                                                            % (game_entity_name)))
+                                                            f"{game_entity_name}.RallyPoint"))
 
             if line.is_harvestable():
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.Harvestable"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.Harvestable"))
 
             if line.is_dropsite():
                 disabled_forward_refs.append(ForwardRef(line,
@@ -958,8 +957,7 @@ class AoCAbilitySubprocessor:
 
             if line.is_trade_post():
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.TradePost"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.TradePost"))
 
             init_state_raw_api_object.add_raw_member("disable_abilities",
                                                      disabled_forward_refs,
@@ -1079,14 +1077,12 @@ class AoCAbilitySubprocessor:
 
             # Disabled abilities
             disabled_forward_refs = [ForwardRef(line,
-                                                "%s.AttributeChangeTracker"
-                                                % (game_entity_name))]
+                                                f"{game_entity_name}.AttributeChangeTracker")]
             if len(line.creates) > 0:
                 disabled_forward_refs.append(ForwardRef(line,
                                                         f"{game_entity_name}.Create"))
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.ProductionQueue"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.ProductionQueue"))
             if len(line.researches) > 0:
                 disabled_forward_refs.append(ForwardRef(line,
                                                         f"{game_entity_name}.Research"))
@@ -1099,25 +1095,21 @@ class AoCAbilitySubprocessor:
                 disabled_forward_refs.append(ForwardRef(line,
                                                         f"{game_entity_name}.Storage"))
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.RemoveStorage"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.RemoveStorage"))
 
                 garrison_mode = line.get_garrison_mode()
 
                 if garrison_mode == GenieGarrisonMode.NATURAL:
                     disabled_forward_refs.append(ForwardRef(line,
-                                                            "%s.SendBackToTask"
-                                                            % (game_entity_name)))
+                                                            f"{game_entity_name}.SendBackToTask"))
 
                 if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
                     disabled_forward_refs.append(ForwardRef(line,
-                                                            "%s.RallyPoint"
-                                                            % (game_entity_name)))
+                                                            f"{game_entity_name}.RallyPoint"))
 
             if line.is_harvestable():
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.Harvestable"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.Harvestable"))
 
             if line.is_dropsite():
                 disabled_forward_refs.append(ForwardRef(line,
@@ -1125,8 +1117,7 @@ class AoCAbilitySubprocessor:
 
             if line.is_trade_post():
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.TradePost"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.TradePost"))
 
             construct_state_raw_api_object.add_raw_member("disable_abilities",
                                                           disabled_forward_refs,
@@ -1458,8 +1449,7 @@ class AoCAbilitySubprocessor:
                 disabled_forward_refs.append(ForwardRef(line,
                                                         f"{game_entity_name}.Create"))
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.ProductionQueue"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.ProductionQueue"))
             if len(line.researches) > 0:
                 disabled_forward_refs.append(ForwardRef(line,
                                                         f"{game_entity_name}.Research"))
@@ -1472,25 +1462,21 @@ class AoCAbilitySubprocessor:
                 disabled_forward_refs.append(ForwardRef(line,
                                                         f"{game_entity_name}.Storage"))
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.RemoveStorage"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.RemoveStorage"))
 
                 garrison_mode = line.get_garrison_mode()
 
                 if garrison_mode == GenieGarrisonMode.NATURAL:
                     disabled_forward_refs.append(ForwardRef(line,
-                                                            "%s.SendBackToTask"
-                                                            % (game_entity_name)))
+                                                            f"{game_entity_name}.SendBackToTask"))
 
                 if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
                     disabled_forward_refs.append(ForwardRef(line,
-                                                            "%s.RallyPoint"
-                                                            % (game_entity_name)))
+                                                            f"{game_entity_name}.RallyPoint"))
 
             if line.is_harvestable():
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.Harvestable"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.Harvestable"))
 
             if line.is_dropsite():
                 disabled_forward_refs.append(ForwardRef(line,
@@ -1498,8 +1484,7 @@ class AoCAbilitySubprocessor:
 
             if line.is_trade_post():
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.TradePost"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.TradePost"))
 
             init_state_raw_api_object.add_raw_member("disable_abilities",
                                                      disabled_forward_refs,
@@ -1654,14 +1639,12 @@ class AoCAbilitySubprocessor:
 
             # Disabled abilities
             disabled_forward_refs = [ForwardRef(line,
-                                                "%s.AttributeChangeTracker"
-                                                % (game_entity_name))]
+                                                f"{game_entity_name}.AttributeChangeTracker")]
             if len(line.creates) > 0:
                 disabled_forward_refs.append(ForwardRef(line,
                                                         f"{game_entity_name}.Create"))
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.ProductionQueue"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.ProductionQueue"))
             if len(line.researches) > 0:
                 disabled_forward_refs.append(ForwardRef(line,
                                                         f"{game_entity_name}.Research"))
@@ -1674,25 +1657,21 @@ class AoCAbilitySubprocessor:
                 disabled_forward_refs.append(ForwardRef(line,
                                                         f"{game_entity_name}.Storage"))
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.RemoveStorage"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.RemoveStorage"))
 
                 garrison_mode = line.get_garrison_mode()
 
                 if garrison_mode == GenieGarrisonMode.NATURAL:
                     disabled_forward_refs.append(ForwardRef(line,
-                                                            "%s.SendBackToTask"
-                                                            % (game_entity_name)))
+                                                            f"{game_entity_name}.SendBackToTask"))
 
                 if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
                     disabled_forward_refs.append(ForwardRef(line,
-                                                            "%s.RallyPoint"
-                                                            % (game_entity_name)))
+                                                            f"{game_entity_name}.RallyPoint"))
 
             if line.is_harvestable():
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.Harvestable"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.Harvestable"))
 
             if line.is_dropsite():
                 disabled_forward_refs.append(ForwardRef(line,
@@ -1700,8 +1679,7 @@ class AoCAbilitySubprocessor:
 
             if line.is_trade_post():
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.TradePost"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.TradePost"))
 
             construct_state_raw_api_object.add_raw_member("disable_abilities",
                                                           disabled_forward_refs,
@@ -2086,7 +2064,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def create_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Create ability to a line.
@@ -2160,7 +2138,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def death_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds a PassiveTransformTo ability to a line that is used to make entities die.
@@ -2192,7 +2170,7 @@ class AoCAbilitySubprocessor:
         properties = {}
 
         # Animation
-        ability_animation_id = current_unit["dying_graphic"].get_value()
+        ability_animation_id = current_unit["dying_graphic"].value
         if ability_animation_id > -1:
             property_ref = f"{ability_ref}.Animated"
             property_raw_api_object = RawAPIObject(property_ref,
@@ -2226,10 +2204,10 @@ class AoCAbilitySubprocessor:
                 civ_id = civ_group.get_id()
 
                 # Only proceed if the civ stores the unit in the line
-                if current_unit_id not in civ["units"].get_value().keys():
+                if current_unit_id not in civ["units"].value.keys():
                     continue
 
-                civ_animation_id = civ["units"][current_unit_id]["dying_graphic"].get_value()
+                civ_animation_id = civ["units"][current_unit_id]["dying_graphic"].value
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
@@ -2308,8 +2286,7 @@ class AoCAbilitySubprocessor:
 
         if isinstance(line, GenieBuildingLineGroup):
             disabled_forward_refs.append(ForwardRef(line,
-                                                    "%s.AttributeChangeTracker"
-                                                    % (game_entity_name)))
+                                                    f"{game_entity_name}.AttributeChangeTracker"))
 
         if len(line.creates) > 0:
             disabled_forward_refs.append(ForwardRef(line,
@@ -2317,8 +2294,7 @@ class AoCAbilitySubprocessor:
 
             if isinstance(line, GenieBuildingLineGroup):
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.ProductionQueue"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.ProductionQueue"))
         if len(line.researches) > 0:
             disabled_forward_refs.append(ForwardRef(line,
                                                     f"{game_entity_name}.Research"))
@@ -2331,20 +2307,17 @@ class AoCAbilitySubprocessor:
             disabled_forward_refs.append(ForwardRef(line,
                                                     f"{game_entity_name}.Storage"))
             disabled_forward_refs.append(ForwardRef(line,
-                                                    "%s.RemoveStorage"
-                                                    % (game_entity_name)))
+                                                    f"{game_entity_name}.RemoveStorage"))
 
             garrison_mode = line.get_garrison_mode()
 
             if garrison_mode == GenieGarrisonMode.NATURAL:
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.SendBackToTask"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.SendBackToTask"))
 
             if garrison_mode in (GenieGarrisonMode.NATURAL, GenieGarrisonMode.SELF_PRODUCED):
                 disabled_forward_refs.append(ForwardRef(line,
-                                                        "%s.RallyPoint"
-                                                        % (game_entity_name)))
+                                                        f"{game_entity_name}.RallyPoint"))
 
         if line.is_harvestable():
             disabled_forward_refs.append(ForwardRef(line,
@@ -2442,7 +2415,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def delete_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds a PassiveTransformTo ability to a line that is used to make entities die.
@@ -2471,7 +2444,7 @@ class AoCAbilitySubprocessor:
         properties = {}
 
         # Animation
-        ability_animation_id = current_unit["dying_graphic"].get_value()
+        ability_animation_id = current_unit["dying_graphic"].value
         if ability_animation_id > -1:
             property_ref = f"{ability_ref}.Animated"
             property_raw_api_object = RawAPIObject(property_ref,
@@ -2553,7 +2526,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def despawn_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Despawn ability to a line.
@@ -2569,8 +2542,8 @@ class AoCAbilitySubprocessor:
         api_objects = dataset.nyan_api_objects
 
         # Animation and time come from dead unit
-        death_animation_id = current_unit["dying_graphic"].get_value()
-        dead_unit_id = current_unit["dead_unit_id"].get_value()
+        death_animation_id = current_unit["dying_graphic"].value
+        dead_unit_id = current_unit["dead_unit_id"].value
         dead_unit = None
         if dead_unit_id > -1:
             dead_unit = dataset.genie_units[dead_unit_id]
@@ -2594,7 +2567,7 @@ class AoCAbilitySubprocessor:
         # Animation
         ability_animation_id = -1
         if dead_unit:
-            ability_animation_id = dead_unit["idle_graphic0"].get_value()
+            ability_animation_id = dead_unit["idle_graphic0"].value
 
         if ability_animation_id > -1:
             property_ref = f"{ability_ref}.Animated"
@@ -2630,16 +2603,16 @@ class AoCAbilitySubprocessor:
                 civ_id = civ_group.get_id()
 
                 # Only proceed if the civ stores the unit in the line
-                if current_unit_id not in civ["units"].get_value().keys():
+                if current_unit_id not in civ["units"].value.keys():
                     continue
 
                 civ_unit = civ["units"][current_unit_id]
-                civ_dead_unit_id = civ_unit["dead_unit_id"].get_value()
+                civ_dead_unit_id = civ_unit["dead_unit_id"].value
                 civ_dead_unit = None
                 if civ_dead_unit_id > -1:
                     civ_dead_unit = dataset.genie_units[civ_dead_unit_id]
 
-                civ_animation_id = civ_dead_unit["idle_graphic0"].get_value()
+                civ_animation_id = civ_dead_unit["idle_graphic0"].value
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
@@ -2686,12 +2659,12 @@ class AoCAbilitySubprocessor:
         # Despawn time = corpse decay time (dead unit) or Death animation time (if no dead unit exist)
         despawn_time = 0
         if dead_unit:
-            resource_storage = dead_unit["resource_storage"].get_value()
+            resource_storage = dead_unit["resource_storage"].value
             for storage in resource_storage:
-                resource_id = storage["type"].get_value()
+                resource_id = storage["type"].value
 
                 if resource_id == 12:
-                    despawn_time = storage["amount"].get_value()
+                    despawn_time = storage["amount"].value
 
         elif death_animation_id > -1:
             despawn_time = dataset.genie_graphics[death_animation_id].get_animation_length()
@@ -2704,7 +2677,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def drop_resources_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the DropResources ability to a line.
@@ -2742,23 +2715,23 @@ class AoCAbilitySubprocessor:
         # Resource containers
         containers = []
         for gatherer in gatherers:
-            unit_commands = gatherer["unit_commands"].get_value()
+            unit_commands = gatherer["unit_commands"].value
 
             for command in unit_commands:
                 # Find a gather ability. It doesn't matter which one because
                 # they should all produce the same resource for one genie unit.
-                type_id = command["type"].get_value()
+                type_id = command["type"].value
 
                 if type_id in (5, 110):
                     break
 
             gatherer_unit_id = gatherer.get_id()
-            if gatherer_unit_id not in gather_lookup_dict.keys():
+            if gatherer_unit_id not in gather_lookup_dict:
                 # Skips hunting wolves
                 continue
 
-            container_ref = "%s.ResourceStorage.%sContainer" % (game_entity_name,
-                                                                gather_lookup_dict[gatherer_unit_id][0])
+            container_ref = (f"{game_entity_name}.ResourceStorage."
+                             f"{gather_lookup_dict[gatherer_unit_id][0]}Container")
             container_forward_ref = ForwardRef(line, container_ref)
             containers.append(container_forward_ref)
 
@@ -2811,7 +2784,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def drop_site_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the DropSite ability to a line.
@@ -2843,7 +2816,7 @@ class AoCAbilitySubprocessor:
 
         containers = []
         for gatherer_id in gatherer_ids:
-            if gatherer_id not in gather_lookup_dict.keys():
+            if gatherer_id not in gather_lookup_dict:
                 # Skips hunting wolves
                 continue
 
@@ -2851,8 +2824,8 @@ class AoCAbilitySubprocessor:
             gatherer_head_unit_id = gatherer_line.get_head_unit_id()
             gatherer_name = name_lookup_dict[gatherer_head_unit_id][0]
 
-            container_ref = "%s.ResourceStorage.%sContainer" % (gatherer_name,
-                                                                gather_lookup_dict[gatherer_id][0])
+            container_ref = (f"{gatherer_name}.ResourceStorage."
+                             f"{gather_lookup_dict[gatherer_id][0]}Container")
             container_forward_ref = ForwardRef(gatherer_line, container_ref)
             containers.append(container_forward_ref)
 
@@ -2888,7 +2861,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def enter_container_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the EnterContainer ability to a line.
@@ -2955,7 +2928,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def exchange_resources_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the ExchangeResources ability to a line.
@@ -3000,18 +2973,18 @@ class AoCAbilitySubprocessor:
                                                   "engine.ability.type.ExchangeResources")
 
             # Exchange rate
-            exchange_rate = dataset.pregen_nyan_objects[("util.resource.market_trading.Market%sExchangeRate"
-                                                         % (resource_name))].get_nyan_object()
+            exchange_rate_ref = f"util.resource.market_trading.Market{resource_name}ExchangeRate"
+            exchange_rate = dataset.pregen_nyan_objects[exchange_rate_ref].get_nyan_object()
             ability_raw_api_object.add_raw_member("exchange_rate",
                                                   exchange_rate,
                                                   "engine.ability.type.ExchangeResources")
 
             # Exchange modes
+            buy_exchange_ref = "util.resource.market_trading.MarketBuyExchangeMode"
+            sell_exchange_ref = "util.resource.market_trading.MarketSellExchangeMode"
             exchange_modes = [
-                dataset.pregen_nyan_objects["util.resource.market_trading.MarketBuyExchangeMode"].get_nyan_object(
-                ),
-                dataset.pregen_nyan_objects["util.resource.market_trading.MarketSellExchangeMode"].get_nyan_object(
-                ),
+                dataset.pregen_nyan_objects[buy_exchange_ref].get_nyan_object(),
+                dataset.pregen_nyan_objects[sell_exchange_ref].get_nyan_object(),
             ]
             ability_raw_api_object.add_raw_member("exchange_modes",
                                                   exchange_modes,
@@ -3022,7 +2995,7 @@ class AoCAbilitySubprocessor:
 
         return abilities
 
-    @staticmethod
+    @ staticmethod
     def exit_container_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the ExitContainer ability to a line.
@@ -3076,7 +3049,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def game_entity_stance_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the GameEntityStance ability to a line.
@@ -3103,7 +3076,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Stances
-        search_range = current_unit["search_radius"].get_value()
+        search_range = current_unit["search_radius"].value
         stance_names = ["Aggressive", "Defensive", "StandGround", "Passive"]
 
         # Attacking is prefered
@@ -3163,7 +3136,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def formation_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Formation ability to a line.
@@ -3246,7 +3219,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def foundation_ability(line: GenieGameEntityGroup, terrain_id: int = -1) -> ForwardRef:
         """
         Adds the Foundation abilities to a line. Optionally chooses the specified
@@ -3278,7 +3251,7 @@ class AoCAbilitySubprocessor:
 
         # Terrain
         if terrain_id == -1:
-            terrain_id = current_unit["foundation_terrain_id"].get_value()
+            terrain_id = current_unit["foundation_terrain_id"].value
 
         terrain = dataset.terrain_groups[terrain_id]
         terrain_forward_ref = ForwardRef(terrain, terrain_lookup_dict[terrain_id][1])
@@ -3290,7 +3263,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def gather_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Gather abilities to a line. Unlike the other methods, this
@@ -3318,7 +3291,7 @@ class AoCAbilitySubprocessor:
 
         abilities = []
         for gatherer in gatherers:
-            unit_commands = gatherer["unit_commands"].get_value()
+            unit_commands = gatherer["unit_commands"].value
             resource = None
             ability_animation_id = -1
             harvestable_class_ids = OrderedSet()
@@ -3327,24 +3300,24 @@ class AoCAbilitySubprocessor:
             for command in unit_commands:
                 # Find a gather ability. It doesn't matter which one because
                 # they should all produce the same resource for one genie unit.
-                type_id = command["type"].get_value()
+                type_id = command["type"].value
 
                 if type_id not in (5, 110):
                     continue
 
-                target_class_id = command["class_id"].get_value()
+                target_class_id = command["class_id"].value
                 if target_class_id > -1:
                     harvestable_class_ids.add(target_class_id)
 
-                target_unit_id = command["unit_id"].get_value()
+                target_unit_id = command["unit_id"].value
                 if target_unit_id > -1:
                     harvestable_unit_ids.add(target_unit_id)
 
-                resource_id = command["resource_out"].get_value()
+                resource_id = command["resource_out"].value
 
                 # If resource_out is not specified, the gatherer harvests resource_in
                 if resource_id == -1:
-                    resource_id = command["resource_in"].get_value()
+                    resource_id = command["resource_in"].value
 
                 if resource_id == 0:
                     resource = dataset.pregen_nyan_objects["util.resource.types.Food"].get_nyan_object(
@@ -3366,10 +3339,10 @@ class AoCAbilitySubprocessor:
                     continue
 
                 if type_id == 110:
-                    ability_animation_id = command["work_sprite_id"].get_value()
+                    ability_animation_id = command["work_sprite_id"].value
 
                 else:
-                    ability_animation_id = command["proceed_sprite_id"].get_value()
+                    ability_animation_id = command["proceed_sprite_id"].value
 
             # Look for the harvestable groups that match the class IDs and unit IDs
             check_groups = []
@@ -3396,7 +3369,7 @@ class AoCAbilitySubprocessor:
                 continue
 
             gatherer_unit_id = gatherer.get_id()
-            if gatherer_unit_id not in gather_lookup_dict.keys():
+            if gatherer_unit_id not in gather_lookup_dict:
                 # Skips hunting wolves
                 continue
 
@@ -3427,12 +3400,13 @@ class AoCAbilitySubprocessor:
                 line.add_raw_api_object(property_raw_api_object)
 
                 animations_set = []
-                animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
-                                                                                ability_animation_id,
-                                                                                property_ref,
-                                                                                ability_name,
-                                                                                "%s_"
-                                                                                % gather_lookup_dict[gatherer_unit_id][1])
+                animation_forward_ref = AoCAbilitySubprocessor.create_animation(
+                    line,
+                    ability_animation_id,
+                    property_ref,
+                    ability_name,
+                    f"{gather_lookup_dict[gatherer_unit_id][1]}_"
+                )
                 animations_set.append(animation_forward_ref)
                 property_raw_api_object.add_raw_member("animations", animations_set,
                                                        "engine.ability.property.type.Animated")
@@ -3487,7 +3461,7 @@ class AoCAbilitySubprocessor:
             rate_raw_api_object.add_raw_member(
                 "type", resource, "engine.util.resource.ResourceRate")
 
-            gather_rate = gatherer["work_rate"].get_value()
+            gather_rate = gatherer["work_rate"].value
             rate_raw_api_object.add_raw_member(
                 "rate", gather_rate, "engine.util.resource.ResourceRate")
 
@@ -3499,8 +3473,8 @@ class AoCAbilitySubprocessor:
                                                   "engine.ability.type.Gather")
 
             # Resource container
-            container_ref = "%s.ResourceStorage.%sContainer" % (game_entity_name,
-                                                                gather_lookup_dict[gatherer_unit_id][0])
+            container_ref = (f"{game_entity_name}.ResourceStorage."
+                             f"{gather_lookup_dict[gatherer_unit_id][0]}Container")
             container_forward_ref = ForwardRef(line, container_ref)
             ability_raw_api_object.add_raw_member("container",
                                                   container_forward_ref,
@@ -3514,8 +3488,7 @@ class AoCAbilitySubprocessor:
                 group_name = entity_lookups[group_id][0]
 
                 spot_forward_ref = ForwardRef(group,
-                                              "%s.Harvestable.%sResourceSpot"
-                                              % (group_name, group_name))
+                                              f"{group_name}.Harvestable.{group_name}ResourceSpot")
                 spot_forward_refs.append(spot_forward_ref)
 
             ability_raw_api_object.add_raw_member("targets",
@@ -3527,7 +3500,7 @@ class AoCAbilitySubprocessor:
 
         return abilities
 
-    @staticmethod
+    @ staticmethod
     def harvestable_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Harvestable ability to a line.
@@ -3553,10 +3526,10 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Resource spot
-        resource_storage = current_unit["resource_storage"].get_value()
+        resource_storage = current_unit["resource_storage"].value
 
         for storage in resource_storage:
-            resource_id = storage["type"].get_value()
+            resource_id = storage["type"].value
 
             # IDs 15, 16, 17 are other types of food (meat, berries, fish)
             if resource_id in (0, 15, 16, 17):
@@ -3591,15 +3564,15 @@ class AoCAbilitySubprocessor:
             # Start amount (equals max amount)
             if line.get_id() == 50:
                 # Farm food amount (hardcoded in civ)
-                starting_amount = dataset.genie_civs[1]["resources"][36].get_value()
+                starting_amount = dataset.genie_civs[1]["resources"][36].value
 
             elif line.get_id() == 199:
                 # Fish trap food amount (hardcoded in civ)
-                starting_amount = storage["amount"].get_value()
-                starting_amount += dataset.genie_civs[1]["resources"][88].get_value()
+                starting_amount = storage["amount"].value
+                starting_amount += dataset.genie_civs[1]["resources"][88].value
 
             else:
-                starting_amount = storage["amount"].get_value()
+                starting_amount = storage["amount"].value
 
             spot_raw_api_object.add_raw_member("starting_amount",
                                                starting_amount,
@@ -3611,7 +3584,7 @@ class AoCAbilitySubprocessor:
                                                "engine.util.resource_spot.ResourceSpot")
 
             # Decay rate
-            decay_rate = current_unit["resource_decay"].get_value()
+            decay_rate = current_unit["resource_decay"].value
             spot_raw_api_object.add_raw_member("decay_rate",
                                                decay_rate,
                                                "engine.util.resource_spot.ResourceSpot")
@@ -3894,7 +3867,7 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Harvestable")
 
         # Unit have to die before they are harvestable (except for farms)
-        harvestable_by_default = current_unit["hit_points"].get_value() == 0
+        harvestable_by_default = current_unit["hit_points"].value == 0
         if line.get_class_id() == 49:
             harvestable_by_default = True
 
@@ -3908,7 +3881,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def herd_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Herd ability to a line.
@@ -3960,7 +3933,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def herdable_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Herdable ability to a line.
@@ -4000,7 +3973,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def hitbox_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Hitbox ability to a line.
@@ -4033,9 +4006,9 @@ class AoCAbilitySubprocessor:
         hitbox_location = ForwardRef(line, ability_ref)
         hitbox_raw_api_object.set_location(hitbox_location)
 
-        radius_x = current_unit["radius_x"].get_value()
-        radius_y = current_unit["radius_y"].get_value()
-        radius_z = current_unit["radius_z"].get_value()
+        radius_x = current_unit["radius_x"].value
+        radius_y = current_unit["radius_y"].value
+        radius_z = current_unit["radius_z"].value
 
         hitbox_raw_api_object.add_raw_member("radius_x",
                                              radius_x,
@@ -4059,7 +4032,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def idle_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Idle ability to a line.
@@ -4091,7 +4064,7 @@ class AoCAbilitySubprocessor:
         properties = {}
 
         # Animation
-        ability_animation_id = current_unit["idle_graphic0"].get_value()
+        ability_animation_id = current_unit["idle_graphic0"].value
         if ability_animation_id > -1:
             property_ref = f"{ability_ref}.Animated"
             property_raw_api_object = RawAPIObject(property_ref,
@@ -4126,10 +4099,10 @@ class AoCAbilitySubprocessor:
                 civ_id = civ_group.get_id()
 
                 # Only proceed if the civ stores the unit in the line
-                if current_unit_id not in civ["units"].get_value().keys():
+                if current_unit_id not in civ["units"].value.keys():
                     continue
 
-                civ_animation_id = civ["units"][current_unit_id]["idle_graphic0"].get_value()
+                civ_animation_id = civ["units"][current_unit_id]["idle_graphic0"].value
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
@@ -4164,7 +4137,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def live_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Live ability to a line.
@@ -4210,7 +4183,7 @@ class AoCAbilitySubprocessor:
                                              "engine.util.attribute.AttributeSetting")
 
         # Max HP and starting HP
-        max_hp_value = current_unit["hit_points"].get_value()
+        max_hp_value = current_unit["hit_points"].value
         health_raw_api_object.add_raw_member("max_value",
                                              max_hp_value,
                                              "engine.util.attribute.AttributeSetting")
@@ -4270,7 +4243,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def los_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the LineOfSight ability to a line.
@@ -4298,7 +4271,7 @@ class AoCAbilitySubprocessor:
         line.add_raw_api_object(ability_raw_api_object)
 
         # Line of sight
-        line_of_sight = current_unit["line_of_sight"].get_value()
+        line_of_sight = current_unit["line_of_sight"].value
         ability_raw_api_object.add_raw_member("range", line_of_sight,
                                               "engine.ability.type.LineOfSight")
 
@@ -4329,7 +4302,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def move_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Move ability to a line.
@@ -4361,7 +4334,7 @@ class AoCAbilitySubprocessor:
         properties = {}
 
         # Animation
-        ability_animation_id = current_unit["move_graphics"].get_value()
+        ability_animation_id = current_unit["move_graphics"].value
         if ability_animation_id > -1:
             property_ref = f"{ability_ref}.Animated"
             property_raw_api_object = RawAPIObject(property_ref,
@@ -4400,10 +4373,10 @@ class AoCAbilitySubprocessor:
                 civ_id = civ_group.get_id()
 
                 # Only proceed if the civ stores the unit in the line
-                if current_unit_id not in civ["units"].get_value().keys():
+                if current_unit_id not in civ["units"].value.keys():
                     continue
 
-                civ_animation_id = civ["units"][current_unit_id]["move_graphics"].get_value()
+                civ_animation_id = civ["units"][current_unit_id]["move_graphics"].value
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
@@ -4429,7 +4402,7 @@ class AoCAbilitySubprocessor:
                                                                 obj_exists)
 
         # Command Sound
-        ability_comm_sound_id = current_unit["command_sound_id"].get_value()
+        ability_comm_sound_id = current_unit["command_sound_id"].value
         if ability_comm_sound_id > -1:
             property_ref = f"{ability_ref}.CommandSound"
             property_raw_api_object = RawAPIObject(property_ref,
@@ -4483,7 +4456,7 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.Ability")
 
         # Speed
-        speed = current_unit["speed"].get_value()
+        speed = current_unit["speed"].value
         ability_raw_api_object.add_raw_member("speed", speed, "engine.ability.type.Move")
 
         # Standard move modes
@@ -4500,7 +4473,7 @@ class AoCAbilitySubprocessor:
         follow_location = ForwardRef(line, f"{game_entity_name}.Move")
         follow_raw_api_object.set_location(follow_location)
 
-        follow_range = current_unit["line_of_sight"].get_value() - 1
+        follow_range = current_unit["line_of_sight"].value - 1
         follow_raw_api_object.add_raw_member("range",
                                              follow_range,
                                              "engine.util.move_mode.type.Follow")
@@ -4515,7 +4488,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def move_projectile_ability(line: GenieGameEntityGroup, position: int = -1) -> ForwardRef:
         """
         Adds the Move ability to a projectile of the specified line.
@@ -4530,12 +4503,12 @@ class AoCAbilitySubprocessor:
 
         if position == 0:
             current_unit_id = line.get_head_unit_id()
-            projectile_id = line.get_head_unit()["attack_projectile_primary_unit_id"].get_value()
+            projectile_id = line.get_head_unit()["projectile_id0"].value
             current_unit = dataset.genie_units[projectile_id]
 
         elif position == 1:
             current_unit_id = line.get_head_unit_id()
-            projectile_id = line.get_head_unit()["attack_projectile_secondary_unit_id"].get_value()
+            projectile_id = line.get_head_unit()["projectile_id1"].value
             current_unit = dataset.genie_units[projectile_id]
 
         else:
@@ -4549,8 +4522,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object = RawAPIObject(ability_ref, "Move", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Move")
         ability_location = ForwardRef(line,
-                                      "%s.ShootProjectile.Projectile%s"
-                                      % (game_entity_name, position))
+                                      f"{game_entity_name}.ShootProjectile.Projectile{position}")
         ability_raw_api_object.set_location(ability_location)
 
         line.add_raw_api_object(ability_raw_api_object)
@@ -4559,7 +4531,7 @@ class AoCAbilitySubprocessor:
         properties = {}
 
         # Animation
-        ability_animation_id = current_unit["move_graphics"].get_value()
+        ability_animation_id = current_unit["move_graphics"].value
         if ability_animation_id > -1:
             property_ref = f"{ability_ref}.Animated"
             property_raw_api_object = RawAPIObject(property_ref,
@@ -4596,7 +4568,7 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.Ability")
 
         # Speed
-        speed = current_unit["speed"].get_value()
+        speed = current_unit["speed"].value
         ability_raw_api_object.add_raw_member("speed", speed, "engine.ability.type.Move")
 
         # Move modes
@@ -4609,7 +4581,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def named_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Named ability to a line.
@@ -4642,12 +4614,11 @@ class AoCAbilitySubprocessor:
         name_location = ForwardRef(line, ability_ref)
         name_raw_api_object.set_location(name_location)
 
-        name_string_id = current_unit["language_dll_name"].get_value()
+        name_string_id = current_unit["language_dll_name"].value
         translations = AoCAbilitySubprocessor.create_language_strings(line,
                                                                       name_string_id,
                                                                       name_ref,
-                                                                      "%sName"
-                                                                      % (game_entity_name))
+                                                                      f"{game_entity_name}Name")
         name_raw_api_object.add_raw_member("translations",
                                            translations,
                                            "engine.util.language.translated.type.TranslatedString")
@@ -4702,7 +4673,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def overlay_terrain_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the OverlayTerrain to a line.
@@ -4730,7 +4701,7 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Terrain (Use foundation terrain)
-        terrain_id = current_unit["foundation_terrain_id"].get_value()
+        terrain_id = current_unit["foundation_terrain_id"].value
         terrain = dataset.terrain_groups[terrain_id]
         terrain_forward_ref = ForwardRef(terrain, terrain_lookup_dict[terrain_id][1])
         ability_raw_api_object.add_raw_member("terrain_overlay",
@@ -4743,7 +4714,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def passable_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Passable ability to a line.
@@ -4828,7 +4799,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def production_queue_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the ProductionQueue ability to a line.
@@ -4888,7 +4859,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def projectile_ability(line: GenieGameEntityGroup, position: int = 0) -> ForwardRef:
         """
         Adds a Projectile ability to projectiles in a line. Which projectile should
@@ -4911,8 +4882,7 @@ class AoCAbilitySubprocessor:
 
         # First projectile is mandatory
         obj_ref = f"{game_entity_name}.ShootProjectile.Projectile{str(position)}"
-        ability_ref = "%s.ShootProjectile.Projectile%s.Projectile"\
-            % (game_entity_name, str(position))
+        ability_ref = f"{game_entity_name}.ShootProjectile.Projectile{position}.Projectile"
         ability_raw_api_object = RawAPIObject(ability_ref,
                                               "Projectile",
                                               dataset.nyan_api_objects)
@@ -4922,23 +4892,23 @@ class AoCAbilitySubprocessor:
 
         # Arc
         if position == 0:
-            projectile_id = current_unit["attack_projectile_primary_unit_id"].get_value()
+            projectile_id = current_unit["projectile_id0"].value
 
         elif position == 1:
-            projectile_id = current_unit["attack_projectile_secondary_unit_id"].get_value()
+            projectile_id = current_unit["projectile_id1"].value
 
         else:
             raise Exception("Invalid position")
 
         projectile = dataset.genie_units[projectile_id]
-        arc = degrees(projectile["projectile_arc"].get_value())
+        arc = degrees(projectile["projectile_arc"].value)
         ability_raw_api_object.add_raw_member("arc",
                                               arc,
                                               "engine.ability.type.Projectile")
 
         # Accuracy
-        accuracy_name = "%s.ShootProjectile.Projectile%s.Projectile.Accuracy"\
-                        % (game_entity_name, str(position))
+        accuracy_name = (f"{game_entity_name}.ShootProjectile."
+                         f"Projectile{position}.Projectile.Accuracy")
         accuracy_raw_api_object = RawAPIObject(accuracy_name,
                                                "Accuracy",
                                                dataset.nyan_api_objects)
@@ -4946,12 +4916,12 @@ class AoCAbilitySubprocessor:
         accuracy_location = ForwardRef(line, ability_ref)
         accuracy_raw_api_object.set_location(accuracy_location)
 
-        accuracy_value = current_unit["accuracy"].get_value()
+        accuracy_value = current_unit["accuracy"].value
         accuracy_raw_api_object.add_raw_member("accuracy",
                                                accuracy_value,
                                                "engine.util.accuracy.Accuracy")
 
-        accuracy_dispersion = current_unit["accuracy_dispersion"].get_value()
+        accuracy_dispersion = current_unit["accuracy_dispersion"].value
         accuracy_raw_api_object.add_raw_member("accuracy_dispersion",
                                                accuracy_dispersion,
                                                "engine.util.accuracy.Accuracy")
@@ -5000,7 +4970,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def provide_contingent_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the ProvideContingent ability to a line.
@@ -5023,11 +4993,11 @@ class AoCAbilitySubprocessor:
         ability_ref = f"{game_entity_name}.ProvideContingent"
 
         # Stores the pop space
-        resource_storage = current_unit["resource_storage"].get_value()
+        resource_storage = current_unit["resource_storage"].value
 
         contingents = []
         for storage in resource_storage:
-            type_id = storage["type"].get_value()
+            type_id = storage["type"].value
 
             if type_id == 4:
                 resource = dataset.pregen_nyan_objects["util.resource.types.PopulationSpace"].get_nyan_object(
@@ -5037,7 +5007,7 @@ class AoCAbilitySubprocessor:
             else:
                 continue
 
-            amount = storage["amount"].get_value()
+            amount = storage["amount"].value
 
             contingent_amount_name = f"{game_entity_name}.ProvideContingent.{resource_name}"
             contingent_amount = RawAPIObject(contingent_amount_name, resource_name,
@@ -5079,7 +5049,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def rally_point_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the RallyPoint ability to a line.
@@ -5108,7 +5078,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def regenerate_attribute_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the RegenerateAttribute ability to a line.
@@ -5165,11 +5135,11 @@ class AoCAbilitySubprocessor:
         attribute_rate = 0
         if current_unit_id == 125:
             # stored in civ resources
-            attribute_rate = dataset.genie_civs[0]["resources"][35].get_value()
+            attribute_rate = dataset.genie_civs[0]["resources"][35].value
 
         elif current_unit_id == 692:
             # stored in civ resources, but has to get converted to amount/second
-            heal_timer = dataset.genie_civs[0]["resources"][96].get_value()
+            heal_timer = dataset.genie_civs[0]["resources"][96].value
             attribute_rate = 1 / heal_timer
 
         rate_raw_api_object.add_raw_member("rate",
@@ -5189,7 +5159,7 @@ class AoCAbilitySubprocessor:
 
         return [ability_forward_ref]
 
-    @staticmethod
+    @ staticmethod
     def regenerate_resource_spot_ability(line: GenieGameEntityGroup) -> None:
         """
         Adds the RegenerateResourceSpot ability to a line.
@@ -5201,7 +5171,7 @@ class AoCAbilitySubprocessor:
         """
         # Unused in AoC
 
-    @staticmethod
+    @ staticmethod
     def remove_storage_ability(line) -> ForwardRef:
         """
         Adds the RemoveStorage ability to a line.
@@ -5251,7 +5221,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def restock_ability(line: GenieGameEntityGroup, restock_target_id: int) -> ForwardRef:
         """
         Adds the Restock ability to a line.
@@ -5295,12 +5265,12 @@ class AoCAbilitySubprocessor:
         if isinstance(line, GenieVillagerGroup) and restock_target_id == 50:
             # Search for the build graphic of farms
             restock_unit = line.get_units_with_command(101)[0]
-            commands = restock_unit["unit_commands"].get_value()
+            commands = restock_unit["unit_commands"].value
             for command in commands:
-                type_id = command["type"].get_value()
+                type_id = command["type"].value
 
                 if type_id == 101:
-                    ability_animation_id = command["work_sprite_id"].get_value()
+                    ability_animation_id = command["work_sprite_id"].value
 
         if ability_animation_id > -1:
             # Make the ability animated
@@ -5315,13 +5285,13 @@ class AoCAbilitySubprocessor:
             line.add_raw_api_object(property_raw_api_object)
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
-                                                                            ability_animation_id,
-                                                                            property_ref,
-                                                                            restock_lookup_dict[restock_target_id][0],
-                                                                            "%s_"
-                                                                            % restock_lookup_dict[restock_target_id][1])
-
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(
+                line,
+                ability_animation_id,
+                property_ref,
+                restock_lookup_dict[restock_target_id][0],
+                f"{restock_lookup_dict[restock_target_id][1]}_"
+            )
             animations_set.append(animation_forward_ref)
             property_raw_api_object.add_raw_member("animations",
                                                    animations_set,
@@ -5345,15 +5315,14 @@ class AoCAbilitySubprocessor:
         restock_target_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         restock_target_name = restock_target_lookup_dict[restock_target_id][0]
         spot_forward_ref = ForwardRef(restock_target,
-                                      "%s.Harvestable.%sResourceSpot"
-                                      % (restock_target_name,
-                                         restock_target_name))
+                                      (f"{restock_target_name}.Harvestable."
+                                       f"{restock_target_name}ResourceSpot"))
         ability_raw_api_object.add_raw_member("target",
                                               spot_forward_ref,
                                               "engine.ability.type.Restock")
 
         # restock time
-        restock_time = restock_target.get_head_unit()["creation_time"].get_value()
+        restock_time = restock_target.get_head_unit()["creation_time"].value
         ability_raw_api_object.add_raw_member("restock_time",
                                               restock_time,
                                               "engine.ability.type.Restock")
@@ -5361,8 +5330,8 @@ class AoCAbilitySubprocessor:
         # Manual/Auto Cost
         # Link to the same Cost object as Create
         cost_forward_ref = ForwardRef(restock_target,
-                                      "%s.CreatableGameEntity.%sCost"
-                                      % (restock_target_name, restock_target_name))
+                                      (f"{restock_target_name}.CreatableGameEntity."
+                                       f"{restock_target_name}Cost"))
         ability_raw_api_object.add_raw_member("manual_cost",
                                               cost_forward_ref,
                                               "engine.ability.type.Restock")
@@ -5371,14 +5340,14 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.Restock")
 
         # Amount
-        restock_amount = restock_target.get_head_unit()["resource_capacity"].get_value()
+        restock_amount = restock_target.get_head_unit()["resource_capacity"].value
         if restock_target_id == 50:
             # Farm food amount (hardcoded in civ)
-            restock_amount = dataset.genie_civs[1]["resources"][36].get_value()
+            restock_amount = dataset.genie_civs[1]["resources"][36].value
 
         elif restock_target_id == 199:
             # Fish trap added food amount (hardcoded in civ)
-            restock_amount += dataset.genie_civs[1]["resources"][88].get_value()
+            restock_amount += dataset.genie_civs[1]["resources"][88].value
 
         ability_raw_api_object.add_raw_member("amount",
                                               restock_amount,
@@ -5390,7 +5359,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def research_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Research ability to a line.
@@ -5466,7 +5435,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def resistance_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Resistance ability to a line.
@@ -5516,7 +5485,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def resource_storage_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the ResourceStorage ability to a line.
@@ -5552,23 +5521,23 @@ class AoCAbilitySubprocessor:
         # Create containers
         containers = []
         for gatherer in gatherers:
-            unit_commands = gatherer["unit_commands"].get_value()
+            unit_commands = gatherer["unit_commands"].value
             resource = None
 
             used_command = None
             for command in unit_commands:
                 # Find a gather ability. It doesn't matter which one because
                 # they should all produce the same resource for one genie unit.
-                type_id = command["type"].get_value()
+                type_id = command["type"].value
 
                 if type_id not in (5, 110, 111):
                     continue
 
-                resource_id = command["resource_out"].get_value()
+                resource_id = command["resource_out"].value
 
                 # If resource_out is not specified, the gatherer harvests resource_in
                 if resource_id == -1:
-                    resource_id = command["resource_in"].get_value()
+                    resource_id = command["resource_in"].value
 
                 if resource_id == 0:
                     resource = dataset.pregen_nyan_objects["util.resource.types.Food"].get_nyan_object(
@@ -5587,7 +5556,7 @@ class AoCAbilitySubprocessor:
                     )
 
                 elif type_id == 111:
-                    target_id = command["unit_id"].get_value()
+                    target_id = command["unit_id"].value
                     if target_id not in dataset.building_lines.keys():
                         # Skips the trade workshop trading which is never used
                         continue
@@ -5607,13 +5576,13 @@ class AoCAbilitySubprocessor:
 
             if line.is_gatherer():
                 gatherer_unit_id = gatherer.get_id()
-                if gatherer_unit_id not in gather_lookup_dict.keys():
+                if gatherer_unit_id not in gather_lookup_dict:
                     # Skips hunting wolves
                     continue
 
                 container_name = f"{gather_lookup_dict[gatherer_unit_id][0]}Container"
 
-            elif used_command["type"].get_value() == 111:
+            elif used_command["type"].value == 111:
                 # Trading
                 container_name = "TradeContainer"
 
@@ -5632,9 +5601,9 @@ class AoCAbilitySubprocessor:
 
             # Carry capacity
             if line.is_gatherer():
-                carry_capacity = gatherer["resource_capacity"].get_value()
+                carry_capacity = gatherer["resource_capacity"].value
 
-            elif used_command["type"].get_value() == 111:
+            elif used_command["type"].value == 111:
                 # No restriction for trading
                 carry_capacity = MemberSpecialValue.NYAN_INF
 
@@ -5644,7 +5613,7 @@ class AoCAbilitySubprocessor:
 
             # Carry progress
             carry_progress = []
-            carry_move_animation_id = used_command["carry_sprite_id"].get_value()
+            carry_move_animation_id = used_command["carry_sprite_id"].value
             if carry_move_animation_id > -1:
                 # =================================================================================
                 progress_ref = f"{ability_ref}.{container_name}CarryProgress"
@@ -5765,7 +5734,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def selectable_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds Selectable abilities to a line. Units will get two of these,
@@ -5868,7 +5837,7 @@ class AoCAbilitySubprocessor:
         properties = {}
 
         # Command Sound
-        ability_comm_sound_id = current_unit["command_sound_id"].get_value()
+        ability_comm_sound_id = current_unit["command_sound_id"].value
         if ability_comm_sound_id > -1:
             property_ref = f"{ability_ref}.CommandSound"
             property_raw_api_object = RawAPIObject(property_ref,
@@ -5927,12 +5896,12 @@ class AoCAbilitySubprocessor:
         box_location = ForwardRef(line, ability_ref)
         box_raw_api_object.set_location(box_location)
 
-        width = current_unit["selection_shape_x"].get_value()
+        width = current_unit["selection_shape_x"].value
         box_raw_api_object.add_raw_member("width",
                                           width,
                                           "engine.util.selection_box.type.Rectangle")
 
-        height = current_unit["selection_shape_y"].get_value()
+        height = current_unit["selection_shape_y"].value
         box_raw_api_object.add_raw_member("height",
                                           height,
                                           "engine.util.selection_box.type.Rectangle")
@@ -5952,7 +5921,7 @@ class AoCAbilitySubprocessor:
 
         return abilities
 
-    @staticmethod
+    @ staticmethod
     def send_back_to_task_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the SendBackToTask ability to a line.
@@ -5993,7 +5962,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def shoot_projectile_ability(line: GenieGameEntityGroup, command_id: int) -> ForwardRef:
         """
         Adds the ShootProjectile ability to a line.
@@ -6028,7 +5997,7 @@ class AoCAbilitySubprocessor:
         properties = {}
 
         # Animation
-        ability_animation_id = current_unit["attack_sprite_id"].get_value()
+        ability_animation_id = current_unit["attack_sprite_id"].value
         if ability_animation_id > -1:
             property_ref = f"{ability_ref}.Animated"
             property_raw_api_object = RawAPIObject(property_ref,
@@ -6041,12 +6010,13 @@ class AoCAbilitySubprocessor:
             line.add_raw_api_object(property_raw_api_object)
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
-                                                                            ability_animation_id,
-                                                                            property_ref,
-                                                                            ability_name,
-                                                                            "%s_"
-                                                                            % command_lookup_dict[command_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(
+                line,
+                ability_animation_id,
+                property_ref,
+                ability_name,
+                f"{command_lookup_dict[command_id][1]}_"
+            )
             animations_set.append(animation_forward_ref)
             property_raw_api_object.add_raw_member("animations",
                                                    animations_set,
@@ -6058,7 +6028,7 @@ class AoCAbilitySubprocessor:
             })
 
         # Command Sound
-        ability_comm_sound_id = current_unit["command_sound_id"].get_value()
+        ability_comm_sound_id = current_unit["command_sound_id"].value
         if ability_comm_sound_id > -1:
             property_ref = f"{ability_ref}.CommandSound"
             property_raw_api_object = RawAPIObject(property_ref,
@@ -6112,12 +6082,12 @@ class AoCAbilitySubprocessor:
 
         # Projectile
         projectiles = []
-        projectile_primary = current_unit["attack_projectile_primary_unit_id"].get_value()
+        projectile_primary = current_unit["projectile_id0"].value
         if projectile_primary > -1:
             projectiles.append(ForwardRef(line,
                                           f"{game_entity_name}.ShootProjectile.Projectile0"))
 
-        projectile_secondary = current_unit["attack_projectile_secondary_unit_id"].get_value()
+        projectile_secondary = current_unit["projectile_id1"].value
         if projectile_secondary > -1:
             projectiles.append(ForwardRef(line,
                                           f"{game_entity_name}.ShootProjectile.Projectile1"))
@@ -6127,8 +6097,8 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
 
         # Projectile count
-        min_projectiles = current_unit["attack_projectile_count"].get_value()
-        max_projectiles = current_unit["attack_projectile_max_count"].get_value()
+        min_projectiles = current_unit["projectile_min_count"].value
+        max_projectiles = current_unit["projectile_max_count"].value
 
         if projectile_primary == -1:
             # Special case where only the second projectile is defined (town center)
@@ -6154,18 +6124,18 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
 
         # Range
-        min_range = current_unit["weapon_range_min"].get_value()
+        min_range = current_unit["weapon_range_min"].value
         ability_raw_api_object.add_raw_member("min_range",
                                               min_range,
                                               "engine.ability.type.ShootProjectile")
 
-        max_range = current_unit["weapon_range_max"].get_value()
+        max_range = current_unit["weapon_range_max"].value
         ability_raw_api_object.add_raw_member("max_range",
                                               max_range,
                                               "engine.ability.type.ShootProjectile")
 
         # Reload time and delay
-        reload_time = current_unit["attack_speed"].get_value()
+        reload_time = current_unit["attack_speed"].value
         ability_raw_api_object.add_raw_member("reload_time",
                                               reload_time,
                                               "engine.ability.type.ShootProjectile")
@@ -6177,7 +6147,7 @@ class AoCAbilitySubprocessor:
         else:
             frame_rate = 0
 
-        spawn_delay_frames = current_unit["frame_delay"].get_value()
+        spawn_delay_frames = current_unit["frame_delay"].value
         spawn_delay = frame_rate * spawn_delay_frames
         ability_raw_api_object.add_raw_member("spawn_delay",
                                               spawn_delay,
@@ -6207,9 +6177,9 @@ class AoCAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
 
         # Spawning area
-        spawning_area_offset_x = current_unit["weapon_offset"][0].get_value()
-        spawning_area_offset_y = current_unit["weapon_offset"][1].get_value()
-        spawning_area_offset_z = current_unit["weapon_offset"][2].get_value()
+        spawning_area_offset_x = current_unit["weapon_offset"][0].value
+        spawning_area_offset_y = current_unit["weapon_offset"][1].value
+        spawning_area_offset_z = current_unit["weapon_offset"][2].value
 
         ability_raw_api_object.add_raw_member("spawning_area_offset_x",
                                               spawning_area_offset_x,
@@ -6221,10 +6191,9 @@ class AoCAbilitySubprocessor:
                                               spawning_area_offset_z,
                                               "engine.ability.type.ShootProjectile")
 
-        spawning_area_width = current_unit["attack_projectile_spawning_area_width"].get_value()
-        spawning_area_height = current_unit["attack_projectile_spawning_area_length"].get_value()
-        spawning_area_randomness = current_unit["attack_projectile_spawning_area_randomness"].get_value(
-        )
+        spawning_area_width = current_unit["projectile_spawning_area_width"].value
+        spawning_area_height = current_unit["projectile_spawning_area_length"].value
+        spawning_area_randomness = current_unit["projectile_spawning_area_randomness"].value
 
         ability_raw_api_object.add_raw_member("spawning_area_width",
                                               spawning_area_width,
@@ -6252,7 +6221,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def stop_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Stop ability to a line.
@@ -6306,7 +6275,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def storage_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Storage ability to a line.
@@ -6363,9 +6332,9 @@ class AoCAbilitySubprocessor:
         if garrison_mode is GenieGarrisonMode.UNIT_GARRISON:
             for storage_element in line.garrison_entities:
                 storage_element_name = name_lookup_dict[storage_element.get_head_unit_id()][0]
-                storage_def_ref = "%s.Storage.%sContainer.%sStorageDef" % (game_entity_name,
-                                                                           game_entity_name,
-                                                                           storage_element_name)
+                storage_def_ref = (f"{game_entity_name}.Storage."
+                                   f"{game_entity_name}Container."
+                                   f"{storage_element_name}StorageDef")
                 storage_def_raw_api_object = RawAPIObject(storage_def_ref,
                                                           f"{storage_element_name}StorageDef",
                                                           dataset.nyan_api_objects)
@@ -6401,7 +6370,7 @@ class AoCAbilitySubprocessor:
                                                 "engine.util.storage.EntityContainer")
 
         # Container slots
-        slots = current_unit["garrison_capacity"].get_value()
+        slots = current_unit["garrison_capacity"].value
         if garrison_mode is GenieGarrisonMode.MONK:
             slots = 1
 
@@ -6413,8 +6382,8 @@ class AoCAbilitySubprocessor:
         carry_progress = []
         if garrison_mode is GenieGarrisonMode.MONK and isinstance(line, GenieMonkGroup):
             switch_unit = line.get_switch_unit()
-            carry_idle_animation_id = switch_unit["idle_graphic0"].get_value()
-            carry_move_animation_id = switch_unit["move_graphics"].get_value()
+            carry_idle_animation_id = switch_unit["idle_graphic0"].value
+            carry_move_animation_id = switch_unit["move_graphics"].value
 
             progress_ref = f"{ability_ref}.CarryProgress"
             progress_raw_api_object = RawAPIObject(progress_ref,
@@ -6615,7 +6584,7 @@ class AoCAbilitySubprocessor:
         else:
             # Garrison graphics
             if current_unit.has_member("garrison_graphic"):
-                garrison_animation_id = current_unit["garrison_graphic"].get_value()
+                garrison_animation_id = current_unit["garrison_graphic"].value
 
             else:
                 garrison_animation_id = -1
@@ -6743,7 +6712,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def terrain_requirement_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the TerrainRequirement to a line.
@@ -6773,7 +6742,7 @@ class AoCAbilitySubprocessor:
 
         # Allowed types
         allowed_types = []
-        terrain_restriction = current_unit["terrain_restriction"].get_value()
+        terrain_restriction = current_unit["terrain_restriction"].value
         for terrain_type in terrain_type_lookup_dict.values():
             # Check if terrain type is covered by terrain restriction
             if terrain_restriction in terrain_type[1]:
@@ -6796,7 +6765,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def trade_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Trade ability to a line.
@@ -6823,15 +6792,15 @@ class AoCAbilitySubprocessor:
         # Trade route (use the trade route to the market)
         trade_routes = []
 
-        unit_commands = current_unit["unit_commands"].get_value()
+        unit_commands = current_unit["unit_commands"].value
         for command in unit_commands:
             # Find the trade command and the trade post id
-            type_id = command["type"].get_value()
+            type_id = command["type"].value
 
             if type_id != 111:
                 continue
 
-            trade_post_id = command["unit_id"].get_value()
+            trade_post_id = command["unit_id"].value
             if trade_post_id not in dataset.building_lines.keys():
                 # Skips trade workshop
                 continue
@@ -6860,7 +6829,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def trade_post_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the TradePost ability to a line.
@@ -6927,7 +6896,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def transfer_storage_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the TransferStorage ability to a line.
@@ -6956,7 +6925,7 @@ class AoCAbilitySubprocessor:
         storage_entity = None
         garrisoned_forward_ref = None
         for garrisoned in line.garrison_entities:
-            creatable_type = garrisoned.get_head_unit()["creatable_type"].get_value()
+            creatable_type = garrisoned.get_head_unit()["creatable_type"].value
 
             if creatable_type == 4:
                 storage_name = name_lookup_dict[garrisoned.get_id()][0]
@@ -6978,13 +6947,13 @@ class AoCAbilitySubprocessor:
 
         # Target container
         target = None
-        unit_commands = line.get_switch_unit()["unit_commands"].get_value()
+        unit_commands = line.get_switch_unit()["unit_commands"].value
         for command in unit_commands:
-            type_id = command["type"].get_value()
+            type_id = command["type"].value
 
             # Deposit
             if type_id == 136:
-                target_id = command["unit_id"].get_value()
+                target_id = command["unit_id"].value
                 target = dataset.building_lines[target_id]
 
         target_name = name_lookup_dict[target.get_id()][0]
@@ -7000,7 +6969,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def turn_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Turn ability to a line.
@@ -7029,14 +6998,14 @@ class AoCAbilitySubprocessor:
         line.add_raw_api_object(ability_raw_api_object)
 
         # Speed
-        turn_speed_unmodified = current_unit["turn_speed"].get_value()
+        turn_speed_unmodified = current_unit["turn_speed"].value
 
         # Default case: Instant turning
         turn_speed = MemberSpecialValue.NYAN_INF
 
         # Ships/Trebuchets turn slower
         if turn_speed_unmodified > 0:
-            turn_yaw = current_unit["max_yaw_per_sec_moving"].get_value()
+            turn_yaw = current_unit["max_yaw_per_sec_moving"].value
             turn_speed = degrees(turn_yaw)
 
         ability_raw_api_object.add_raw_member("turn_speed",
@@ -7072,7 +7041,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def use_contingent_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the UseContingent ability to a line.
@@ -7093,10 +7062,10 @@ class AoCAbilitySubprocessor:
         # Check if contingents are stored in the unit before creating the ability
 
         # Stores the pop space
-        resource_storage = current_unit["resource_storage"].get_value()
+        resource_storage = current_unit["resource_storage"].value
         contingents = []
         for storage in resource_storage:
-            type_id = storage["type"].get_value()
+            type_id = storage["type"].value
 
             if type_id == 11:
                 resource = dataset.pregen_nyan_objects["util.resource.types.PopulationSpace"].get_nyan_object(
@@ -7106,7 +7075,7 @@ class AoCAbilitySubprocessor:
             else:
                 continue
 
-            amount = storage["amount"].get_value()
+            amount = storage["amount"].value
 
             contingent_amount_name = f"{game_entity_name}.UseContingent.{resource_name}"
             contingent_amount = RawAPIObject(contingent_amount_name, resource_name,
@@ -7148,7 +7117,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def visibility_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Visibility ability to a line.
@@ -7267,7 +7236,7 @@ class AoCAbilitySubprocessor:
 
         return ability_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def create_animation(
         line: GenieGameEntityGroup,
         animation_id: int,
@@ -7307,8 +7276,8 @@ class AoCAbilitySubprocessor:
 
         else:
             ability_sprite = CombinedSprite(animation_id,
-                                            "%s%s" % (filename_prefix,
-                                                      name_lookup_dict[head_unit_id][1]),
+                                            (f"{filename_prefix}"
+                                             f"{name_lookup_dict[head_unit_id][1]}"),
                                             dataset)
             dataset.combined_sprites.update({ability_sprite.get_id(): ability_sprite})
 
@@ -7323,7 +7292,7 @@ class AoCAbilitySubprocessor:
 
         return animation_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def create_civ_animation(
         line: GenieGameEntityGroup,
         civ_group: GenieCivilizationGroup,
@@ -7433,7 +7402,7 @@ class AoCAbilitySubprocessor:
                                     [wrapper_forward_ref])
         civ_group.add_raw_member_push(push_object)
 
-    @staticmethod
+    @ staticmethod
     def create_sound(
         line: GenieGameEntityGroup,
         sound_id: int,
@@ -7498,7 +7467,7 @@ class AoCAbilitySubprocessor:
 
         return sound_forward_ref
 
-    @staticmethod
+    @ staticmethod
     def create_language_strings(
         line: GenieGameEntityGroup,
         string_id: int,

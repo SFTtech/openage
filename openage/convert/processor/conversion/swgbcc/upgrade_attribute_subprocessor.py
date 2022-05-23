@@ -67,8 +67,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.CreatableGameEntity.%sCost.CarbonAmount" % (game_entity_name,
-                                                                           game_entity_name)
+        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                            f"{game_entity_name}Cost.CarbonAmount")
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -160,8 +160,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.CreatableGameEntity.%sCost.NovaAmount" % (game_entity_name,
-                                                                         game_entity_name)
+        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                            f"{game_entity_name}Cost.NovaAmount")
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -253,8 +253,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.CreatableGameEntity.%sCost.OreAmount" % (game_entity_name,
-                                                                        game_entity_name)
+        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                            f"{game_entity_name}Cost.OreAmount")
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -347,9 +347,8 @@ class SWGBCCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        for resource_amount in head_unit["resource_cost"].get_value():
-            resource_id = resource_amount["type_id"].get_value()
-
+        for resource_amount in head_unit["resource_cost"].value:
+            resource_id = resource_amount["type_id"].value
             resource_name = ""
             if resource_id == -1:
                 # Not a valid resource
@@ -372,12 +371,12 @@ class SWGBCCUpgradeAttributeSubprocessor:
                 continue
 
             # Skip resources that are only expected to be there
-            if not resource_amount["enabled"].get_value():
+            if not resource_amount["enabled"].value:
                 continue
 
-            patch_target_ref = "%s.CreatableGameEntity.%sCost.%sAmount" % (game_entity_name,
-                                                                           game_entity_name,
-                                                                           resource_name)
+            patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                                f"{game_entity_name}Cost."
+                                f"{resource_name}Amount")
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper

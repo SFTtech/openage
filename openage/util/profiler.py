@@ -27,10 +27,10 @@ class Profiler:
     profile_stats: pstats.Stats = None
     profile_stream = None
 
-    def __init__(self, oStream=None):
-        # oStream can be a file if the profile results want to be saved.
+    def __init__(self, o_stream=None):
+        # o_stream can be a file if the profile results want to be saved.
         self.profile = cProfile.Profile()
-        self.profile_stream = oStream
+        self.profile_stream = o_stream
 
     def __enter__(self):
         """
@@ -87,11 +87,13 @@ class Tracemalloc:
     p.enable() and p.disable().
     """
 
-    snapshot = None
+    snapshot0 = None
+    snapshot1 = None
+    peak = None
 
-    def __init__(self, oStream=None):
-        # oStream can be a file if the profile results want to be saved.
-        self.tracemalloc_stream = oStream
+    def __init__(self, o_stream=None):
+        # o_stream can be a file if the profile results want to be saved.
+        self.tracemalloc_stream = o_stream
 
     def __enter__(self):
         """
@@ -105,17 +107,48 @@ class Tracemalloc:
         """
         self.disable()
 
+    def snapshot(self):
+        """
+        Take a manual snapshot. Up to two snapshots can be saved.
+        report() compares the last two snapshots.
+        """
+        if self.snapshot0 is None:
+            self.snapshot0 = tracemalloc.take_snapshot()
+
+        elif self.snapshot1 is None:
+            self.snapshot1 = tracemalloc.take_snapshot()
+
+        else:
+            # Push back
+            self.snapshot0 = self.snapshot1
+            self.snapshot1 = tracemalloc.take_snapshot()
+
     def report(
         self,
         sortby: str = 'lineno',
-        cumulative: bool = True,
+        cumulative: bool = False,
         limit: int = 100
     ) -> None:
         """
         Return the snapshot statistics to the console.
         """
-        for stat in self.snapshot.statistics(sortby, cumulative)[:limit]:
+        if self.snapshot1:
+            stats = self.snapshot1.compare_to(self.snapshot0, sortby, cumulative)[:limit]
+
+        else:
+            stats = self.snapshot0.statistics(sortby, cumulative)[:limit]
+
+        for stat in stats:
             print(stat)
+
+    def get_peak(self) -> int:
+        """
+        Return the peak memory consumption.
+        """
+        if not self.peak:
+            return tracemalloc.get_traced_memory()[1]
+
+        return self.peak
 
     @staticmethod
     def enable() -> None:
@@ -128,4 +161,9 @@ class Tracemalloc:
         """
         Stop profiling calls.
         """
-        self.snapshot = tracemalloc.take_snapshot()
+        if self.snapshot0 is None:
+            self.snapshot()
+
+        self.peak = tracemalloc.get_traced_memory()[1]
+
+        tracemalloc.stop()

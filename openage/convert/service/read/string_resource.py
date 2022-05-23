@@ -53,8 +53,8 @@ def get_string_resources(args: Namespace) -> StringResource:
             stringres.fill_from(strings)
 
         else:
-            raise Exception("No service found for parsing language files of version %s"
-                            % game_edition.game_id)
+            raise Exception("No service found for parsing language files "
+                            f"of version {game_edition.game_id}")
 
         # TODO: Other game versions
 

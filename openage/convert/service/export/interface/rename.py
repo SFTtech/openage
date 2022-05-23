@@ -20,10 +20,9 @@ def hud_rename(filepath: Path) -> Path:
     and hardcoded metadata.
     """
     try:
-        return filepath.parent["hud{}{}".format(
-            str(ingame_hud_background_index(int(filepath.stem))).zfill(4),
-            filepath.suffix
-        )]
+        return filepath.parent[
+            f"hud{str(ingame_hud_background_index(int(filepath.stem))).zfill(4)}{filepath.suffix}"
+        ]
 
     except ValueError:
         return asset_rename(filepath)

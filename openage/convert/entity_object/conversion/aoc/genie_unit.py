@@ -148,7 +148,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
                       is not present, the unit is appended at the end
                       of the line.
         """
-        unit_id = genie_unit["id0"].get_value()
+        unit_id = genie_unit["id0"].value
 
         # Only add unit if it is not already in the list
         if not self.contains_entity(unit_id):
@@ -209,9 +209,9 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         :returns: True if the train location obj_id is greater than zero.
         """
         head_unit = self.get_head_unit()
-        armors = head_unit["armors"].get_value()
+        armors = head_unit["armors"].value
         for armor in armors.values():
-            type_id = armor["type_id"].get_value()
+            type_id = armor["type_id"].value
 
             if type_id == armor_class:
                 return True
@@ -227,9 +227,9 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         :returns: True if the train location obj_id is greater than zero.
         """
         head_unit = self.get_head_unit()
-        attacks = head_unit["attacks"].get_value()
+        attacks = head_unit["attacks"].value
         for attack in attacks.values():
-            type_id = attack["type_id"].get_value()
+            type_id = attack["type_id"].value
 
             if type_id == armor_class:
                 return True
@@ -251,9 +251,9 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        commands = head_unit["unit_commands"].get_value()
+        commands = head_unit["unit_commands"].value
         for command in commands:
-            type_id = command["type"].get_value()
+            type_id = command["type"].value
 
             if type_id == command_id:
                 return True
@@ -275,10 +275,10 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        projectile_id_0 = head_unit["attack_projectile_primary_unit_id"].get_value()
+        projectile_id_0 = head_unit["projectile_id0"].value
         projectile_id_1 = -2
-        if head_unit.has_member("attack_projectile_secondary_unit_id"):
-            projectile_id_1 = head_unit["attack_projectile_secondary_unit_id"].get_value()
+        if head_unit.has_member("projectile_id1"):
+            projectile_id_1 = head_unit["projectile_id1"].value
 
         return projectile_id in (projectile_id_0, projectile_id_1)
 
@@ -296,7 +296,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        train_location_id = head_unit["train_location_id"].get_value()
+        train_location_id = head_unit["train_location_id"].value
 
         # -1 = no train location
         return train_location_id > -1
@@ -315,8 +315,8 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        for resource_storage in head_unit["resource_storage"].get_value():
-            type_id = resource_storage["type"].get_value()
+        for resource_storage in head_unit["resource_storage"].value:
+            type_id = resource_storage["type"].value
 
             if type_id in (0, 1, 2, 3, 15, 16, 17):
                 return True
@@ -344,20 +344,20 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        trait = head_unit["trait"].get_value()
+        trait = head_unit["trait"].value
 
         # Transport ship/ram
         if trait & 0x01:
             return True
 
         # Production garrison
-        type_id = head_unit["unit_type"].get_value()
+        type_id = head_unit["unit_type"].value
         if len(self.creates) > 0 and type_id == 80:
             return True
 
         # Natural garrison
         if head_unit.has_member("garrison_type"):
-            garrison_type = head_unit["garrison_type"].get_value()
+            garrison_type = head_unit["garrison_type"].value
 
             if garrison_type > 0:
                 return True
@@ -388,7 +388,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        return head_unit["obstruction_type"].get_value() == 0
+        return head_unit["obstruction_type"].value == 0
 
     def is_projectile_shooter(self, civ_id: int = -1) -> bool:
         """
@@ -403,16 +403,16 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        if not head_unit.has_member("attack_projectile_primary_unit_id"):
+        if not head_unit.has_member("projectile_id0"):
             return False
 
         # Get the projectiles' obj_id for the first unit in the line. AoE's
         # units stay ranged with upgrades, so this should be fine.
-        projectile_id_0 = head_unit["attack_projectile_primary_unit_id"].get_value()
+        projectile_id_0 = head_unit["projectile_id0"].value
 
         projectile_id_1 = -1
-        if head_unit.has_member("attack_projectile_secondary_unit_id"):
-            projectile_id_1 = head_unit["attack_projectile_secondary_unit_id"].get_value()
+        if head_unit.has_member("projectile_id1"):
+            projectile_id_1 = head_unit["projectile_id1"].value
 
         # -1 -> no projectile
         return projectile_id_0 > -1 or projectile_id_1 > -1
@@ -430,7 +430,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        return head_unit["weapon_range_max"].get_value() > 0
+        return head_unit["weapon_range_max"].value > 0
 
     def is_melee(self, civ_id: int = -1) -> bool:
         """
@@ -459,7 +459,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         # Get the enabling research obj_id for the first unit in the line
         head_unit = self.get_head_unit()
-        head_unit_id = head_unit["id0"].get_value()
+        head_unit_id = head_unit["id0"].value
 
         if isinstance(self, GenieUnitLineGroup):
             if head_unit_id in self.data.unit_connections.keys():
@@ -477,7 +477,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
                 # AoE1
                 return False
 
-        enabling_research_id = head_unit_connection["enabling_research"].get_value()
+        enabling_research_id = head_unit_connection["enabling_research"].value
 
         # does not need to be enabled -> not unique
         if enabling_research_id == -1:
@@ -485,7 +485,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         # Get enabling civ
         enabling_research = self.data.genie_techs[enabling_research_id]
-        enabling_civ_id = enabling_research["civilization_id"].get_value()
+        enabling_civ_id = enabling_research["civilization_id"].value
 
         # Enabling tech has no specific civ -> not unique
         return enabling_civ_id > -1
@@ -494,7 +494,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         Return the class ID for units in the group.
         """
-        return self.get_head_unit()["unit_class"].get_value()
+        return self.get_head_unit()["unit_class"].value
 
     def get_garrison_mode(self, civ_id: int = -1) -> GenieGarrisonMode:
         """
@@ -511,7 +511,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        trait = head_unit["trait"].get_value()
+        trait = head_unit["trait"].value
 
         # Ram
         if trait == 1:
@@ -523,13 +523,13 @@ class GenieGameEntityGroup(ConverterObjectGroup):
 
         # Natural garrison
         if head_unit.has_member("garrison_type"):
-            garrison_type = head_unit["garrison_type"].get_value()
+            garrison_type = head_unit["garrison_type"].value
 
             if garrison_type > 0:
                 return GenieGarrisonMode.NATURAL
 
         # Production garrison
-        type_id = head_unit["unit_type"].get_value()
+        type_id = head_unit["unit_type"].value
         if len(self.creates) > 0 and type_id == 80:
             return GenieGarrisonMode.SELF_PRODUCED
 
@@ -540,7 +540,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         Return the obj_id of the first unit in the line.
         """
         head_unit = self.get_head_unit()
-        return head_unit["id0"].get_value()
+        return head_unit["id0"].value
 
     def get_head_unit(self) -> GenieUnitObject:
         """
@@ -561,7 +561,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         if self.is_creatable():
             head_unit = self.get_head_unit()
-            return head_unit["train_location_id"].get_value()
+            return head_unit["train_location_id"].value
 
         return None
 
@@ -593,12 +593,12 @@ class GenieUnitLineGroup(GenieGameEntityGroup):
         """
         if self.is_unique():
             head_unit = self.get_head_unit()
-            head_unit_id = head_unit["id0"].get_value()
+            head_unit_id = head_unit["id0"].value
             head_unit_connection = self.data.unit_connections[head_unit_id]
-            enabling_research_id = head_unit_connection["enabling_research"].get_value()
+            enabling_research_id = head_unit_connection["enabling_research"].value
 
             enabling_research = self.data.genie_techs[enabling_research_id]
-            return enabling_research["civilization_id"].get_value()
+            return enabling_research["civilization_id"].value
 
         return None
 
@@ -612,14 +612,14 @@ class GenieUnitLineGroup(GenieGameEntityGroup):
         TODO: Move function into GeneGameEntityGroup after doing the above.
         """
         head_unit = self.get_head_unit()
-        head_unit_id = head_unit["id0"].get_value()
+        head_unit_id = head_unit["id0"].value
 
         if head_unit_id not in self.data.unit_connections.keys():
             # TODO: Remove this check, see TODOs above
             return -1
 
         head_unit_connection = self.data.unit_connections[head_unit_id]
-        enabling_research_id = head_unit_connection["enabling_research"].get_value()
+        enabling_research_id = head_unit_connection["enabling_research"].value
 
         return enabling_research_id
 
@@ -686,7 +686,7 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         Returns True if the building has a foundation terrain.
         """
         head_unit = self.get_head_unit()
-        return head_unit["foundation_terrain_id"].get_value() > -1
+        return head_unit["foundation_terrain_id"].value > -1
 
     def is_dropsite(self) -> bool:
         """
@@ -714,10 +714,10 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         Returns the enabling tech id of the unit
         """
         head_unit = self.get_head_unit()
-        head_unit_id = head_unit["id0"].get_value()
+        head_unit_id = head_unit["id0"].value
         if head_unit_id in self.data.building_connections.keys():
             head_unit_connection = self.data.building_connections[head_unit_id]
-            enabling_research_id = head_unit_connection["enabling_research"].get_value()
+            enabling_research_id = head_unit_connection["enabling_research"].value
 
         else:
             # Assume it is avialable from the start
@@ -769,7 +769,7 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
 
         :returns: True if the train location obj_id is greater than zero.
         """
-        train_location_id = self.head["train_location_id"].get_value()
+        train_location_id = self.head["train_location_id"].value
 
         # -1 = no train location
         if train_location_id == -1:
@@ -784,7 +784,7 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
         :returns: True if the building has obstruction class 4.
         """
         head_unit = self.get_head_unit()
-        return head_unit["obstruction_class"].get_value() == 4
+        return head_unit["obstruction_class"].value == 4
 
     def get_head_unit(self) -> GenieUnitObject:
         """
@@ -808,7 +808,7 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
         """
         Returns the stack unit ID.
         """
-        return self.stack["id0"].get_value()
+        return self.stack["id0"].value
 
     def get_train_location_id(self) -> int:
         """
@@ -818,7 +818,7 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
         creatable, otherwise return None.
         """
         if self.is_creatable():
-            return self.head["train_location_id"].get_value()
+            return self.head["train_location_id"].value
 
         return None
 
@@ -856,7 +856,7 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
 
         self.head_unit = self.data.genie_units[head_unit_id]
 
-        transform_id = self.head_unit["transform_unit_id"].get_value()
+        transform_id = self.head_unit["transform_unit_id"].value
         self.transform_unit = self.data.genie_units[transform_id]
 
     def is_projectile_shooter(self, civ_id: int = -1) -> int:
@@ -866,10 +866,10 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
 
         :returns: True if one of the projectile IDs is greater than zero.
         """
-        projectile_id_0 = self.head_unit["attack_projectile_primary_unit_id"].get_value()
-        projectile_id_1 = self.head_unit["attack_projectile_secondary_unit_id"].get_value()
-        projectile_id_2 = self.transform_unit["attack_projectile_primary_unit_id"].get_value()
-        projectile_id_3 = self.transform_unit["attack_projectile_secondary_unit_id"].get_value()
+        projectile_id_0 = self.head_unit["projectile_id0"].value
+        projectile_id_1 = self.head_unit["projectile_id1"].value
+        projectile_id_2 = self.transform_unit["projectile_id0"].value
+        projectile_id_3 = self.transform_unit["projectile_id1"].value
 
         # -1 -> no projectile
         return (projectile_id_0 > -1 or projectile_id_1 > -1
@@ -879,7 +879,7 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
         """
         Returns the ID of the head unit.
         """
-        return self.head_unit["id0"].get_value()
+        return self.head_unit["id0"].value
 
     def get_head_unit(self) -> GenieUnitObject:
         """
@@ -891,7 +891,7 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
         """
         Returns the ID of the transform unit.
         """
-        return self.transform_unit["id0"].get_value()
+        return self.transform_unit["id0"].value
 
     def get_transform_unit(self) -> GenieUnitObject:
         """
@@ -1069,8 +1069,8 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         after: GenieUnitObject = None
     ) -> None:
         # Force the idle/combat units at the beginning of the line
-        if genie_unit["id0"].get_value() in (GenieUnitTaskGroup.male_line_id,
-                                             GenieUnitTaskGroup.female_line_id):
+        if genie_unit["id0"].value in (GenieUnitTaskGroup.male_line_id,
+                                       GenieUnitTaskGroup.female_line_id):
             super().add_unit(genie_unit, 0, after)
 
         else:
@@ -1083,7 +1083,7 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         :returns: True if any train location obj_id is greater than zero.
         """
         for unit in self.line:
-            train_location_id = unit["train_location_id"].get_value()
+            train_location_id = unit["train_location_id"].value
             # -1 = no train location
             if train_location_id > -1:
                 return True
@@ -1096,7 +1096,7 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         creatable, otherwise return None.
         """
         for unit in self.line:
-            train_location_id = unit["train_location_id"].get_value()
+            train_location_id = unit["train_location_id"].value
             # -1 = no train location
             if train_location_id > -1:
                 return train_location_id
@@ -1165,10 +1165,10 @@ class GenieVillagerGroup(GenieUnitLineGroup):
     def has_command(self, command_id: int, civ_id: int = -1) -> bool:
         for variant in self.variants:
             for genie_unit in variant.line:
-                commands = genie_unit["unit_commands"].get_value()
+                commands = genie_unit["unit_commands"].value
 
                 for command in commands:
-                    type_id = command["type"].get_value()
+                    type_id = command["type"].value
 
                     if type_id == command_id:
                         return True
@@ -1229,10 +1229,10 @@ class GenieVillagerGroup(GenieUnitLineGroup):
 
         for variant in self.variants:
             for genie_unit in variant.line:
-                commands = genie_unit["unit_commands"].get_value()
+                commands = genie_unit["unit_commands"].value
 
                 for command in commands:
-                    type_id = command["type"].get_value()
+                    type_id = command["type"].value
 
                     if type_id == command_id:
                         matching_units.append(genie_unit)

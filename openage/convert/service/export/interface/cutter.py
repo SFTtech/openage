@@ -77,7 +77,7 @@ class InterfaceCutter:
         matches = visgrep(search_area, pattern, 100000)
 
         if len(matches) < 2:
-            raise Exception("visgrep failed to find repeating pattern in id=%d)\n" % self.idx)
+            raise Exception(f"visgrep failed to find repeating pattern in id={self.idx})\n")
 
         # create the found pattern texture
         return TextureImage(

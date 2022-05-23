@@ -10,7 +10,7 @@ import numpy
 
 
 from .....log import dbg
-from ....entity_object.conversion.genie_structure import GenieStructure
+from ..genie_structure import GenieStructure
 
 if typing.TYPE_CHECKING:
     from PIL import Image

@@ -1,4 +1,4 @@
-# Copyright 2020-2021 the openage authors. See copying.md for legal info.
+# Copyright 2020-2022 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long
 
@@ -34,7 +34,18 @@ UNIT_LINE_LOOKUPS = {
     # DOTD
     1701: ("Obuch", "obuch"),
     1704: ("HussiteWagon", "hussite_wagon"),
-    1709: ("Obuch", "obuch"),
+    1709: ("Houfnice", "houfnice"),
+
+    # DOI
+    1735: ("UrumiSwordsman", "urumi_swordsman"),
+    1738: ("MRatha", "mratha"),                 # Melee Rhata
+    1741: ("ChakramThrower", "chakram_thrower"),
+    1744: ("ArmoredElephant", "armored_elephant"),
+    1747: ("Ghulam", "ghulam"),
+    1750: ("Thirisadai", "thirisadai"),
+    1751: ("ShrivamshaRider", "shrivamsha_rider"),
+    1755: ("CamelScout", "camel_scout"),        # technically in line with Camel rider
+    1759: ("RRatha", "rratha"),                 # Ranged Rhata
 }
 
 # key: head unit id; value: (nyan object name, filename prefix)
@@ -47,6 +58,9 @@ BUILDING_LINE_LOOKUPS = {
 
     # DOTD
     1734: ("Folwark", "folwark"),
+
+    # DOI
+    1754: ("Caravanserai", "caravanserai"),
 }
 
 # key: (head) unit id; value: (nyan object name, filename prefix)
@@ -97,6 +111,19 @@ TECH_GROUP_LOOKUPS = {
     786: ("WingedHussar", "winged_hussar"),
     787: ("Houfnice", "houfnice"),
     793: ("Folwark", "folwark"),
+
+    # DOI
+    828: ("EliteRatha", "elite_ratha"),
+    830: ("EliteChakramThrower", "elite_chakram_thrower"),
+    831: ("MedicalCorps", "medical_corps"),
+    832: ("WootzSteel", "wootz_steel"),
+    833: ("Paiks", "paiks"),
+    834: ("Mahayana", "mahayana"),
+    835: ("Kshatriyas", "kshatriyas"),
+    836: ("FrontierGuards", "frontier_guards"),
+    838: ("SiegeElephant", "siege_elephant"),
+    840: ("EliteGhulam", "elite_ghulam"),
+    843: ("EliteSHrivamshaRider", "elite_shrivamsha_rider"),
 }
 
 # key: civ index; value: (nyan object name, filename prefix)
@@ -114,6 +141,12 @@ CIV_GROUP_LOOKUPS = {
     # DOTD
     38: ("Poles", "poles"),
     39: ("Bohemians", "bohemians"),
+
+    # DOI
+    20: ("Hindustanis", "hindustanis"),     # Indians in HD
+    40: ("Dravidians", "dravidians"),
+    41: ("Bengalis", "bengalis"),
+    42: ("Gurjaras", "gurjaras"),
 }
 
 # key: civ index; value: (civ ids, nyan object name, filename prefix)
@@ -121,6 +154,7 @@ CIV_GROUP_LOOKUPS = {
 GRAPHICS_SET_LOOKUPS = {
     0: ((0, 1, 2, 13, 14, 36), "WesternEuropean", "western_european"),
     4: ((7, 37), "Byzantine", "byzantine"),
+    7: ((20, 40, 41, 42), "Indian", "indian"),
     8: ((22, 23, 32, 35, 38, 39), "EasternEuropean", "eastern_european"),
     11: ((33, 34), "CentralAsian", "central_asian"),
 }

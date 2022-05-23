@@ -181,11 +181,11 @@ class DE1Processor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->graphics
-        raw_graphics = gamespec[0]["graphics"].get_value()
+        raw_graphics = gamespec[0]["graphics"].value
 
         for raw_graphic in raw_graphics:
             # Can be ignored if there is no filename associated
-            filename = raw_graphic["filename"].get_value()
+            filename = raw_graphic["filename"].value
             if not filename:
                 continue
 
@@ -197,8 +197,8 @@ class DE1Processor:
             if filename.endswith("<x#>"):
                 filename = f"{filename[:-4]}x1"
 
-            graphic_id = raw_graphic["graphic_id"].get_value()
-            graphic_members = raw_graphic.get_value()
+            graphic_id = raw_graphic["graphic_id"].value
+            graphic_members = raw_graphic.value
 
             graphic = GenieGraphic(graphic_id, full_data_set, members=graphic_members)
             if filename not in full_data_set.existing_graphics:

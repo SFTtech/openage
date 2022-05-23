@@ -54,8 +54,7 @@ class Observable:
         :type observer: Observer
         """
         if not isinstance(observer, Observer):
-            raise Exception("%s does not inherit from Observer sperclass"
-                            % (type(observer)))
+            raise Exception(f"{type(observer)} does not inherit from Observer sperclass")
 
         self.observers.add(weakref.ref(observer))
 

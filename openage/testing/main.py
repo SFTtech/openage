@@ -2,9 +2,11 @@
 
 """ CLI module for running all tests. """
 
+from __future__ import annotations
+import typing
+
 import argparse
 import sys
-import typing
 
 from ..util.strings import format_progress
 
@@ -25,7 +27,7 @@ def print_test_list(test_list: typing.OrderedDict) -> None:
     for current_type in ['test', 'demo', 'benchmark']:
         for (name, type_), (_, lang, desc, _) in test_list.items():
             if type_ == current_type:
-                print("[%s %3s] %-*s  %s" % (type_, lang, namelen, name, desc))
+                print(f"[{type_} {lang:3}] {name:{namelen}}  {desc}")
 
     print("")
     print("To see how to run them, add --help to your invocation!")
@@ -53,7 +55,7 @@ def init_subparser(cli):
     cli.add_argument("test", nargs='*', help="run this test")
 
 
-def process_args(args: argparse.Namespace, error):
+def process_args(args: Namespace, error):
     """ Processes the given args, detecting errors. """
     if not (args.run_all_tests or args.demo or args.test or args.benchmark):
         args.list = True
@@ -125,10 +127,7 @@ def main(args, error):
         for idx, name in enumerate(args.test):
             _, lang, _, testfun = test_list[name, 'test']
 
-            print("\x1b[32m[%s]\x1b[m %3s %s" % (
-                format_progress(idx, len(args.test)),
-                lang,
-                name))
+            print(f"\x1b[32m[{format_progress(idx, len(args.test))}]\x1b[m {lang:3} {name}")
 
             try:
                 testfun()
@@ -141,9 +140,7 @@ def main(args, error):
                 traceback.print_exc()
 
         if failed:
-            print("\x1b[31;1m%d out of %d tests have failed\x1b[m" % (
-                failed,
-                len(args.test)))
+            print(f"\x1b[31;1m{failed:d} out of {len(args.test):d} tests have failed\x1b[m")
 
             sys.exit(1)
 

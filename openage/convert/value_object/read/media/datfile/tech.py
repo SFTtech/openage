@@ -5,7 +5,7 @@ from __future__ import annotations
 import typing
 
 
-from .....entity_object.conversion.genie_structure import GenieStructure
+from ...genie_structure import GenieStructure
 from ....read.member_access import READ, READ_GEN, SKIP
 from ....read.read_members import SubdataMember, EnumLookupMember
 from ....read.value_members import StorageType
@@ -56,12 +56,12 @@ class EffectBundle(GenieStructure):  # also called techage in some other tools
             data_format = [
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_len]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[name_len]"),
             ]
         else:
             data_format = [
                 # always CHUN4 (change unit 4-arg) in AoE1-AoC, later versions name them
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[31]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[31]"),
             ]
 
         data_format.extend([
@@ -97,6 +97,8 @@ class OtherConnection(GenieStructure):
 
 
 class AgeTechTree(GenieStructure):
+
+    dynamic_load = True
 
     @classmethod
     def get_data_format_members(
@@ -196,6 +198,8 @@ class AgeTechTree(GenieStructure):
 
 class BuildingConnection(GenieStructure):
 
+    dynamic_load = True
+
     @classmethod
     def get_data_format_members(
         cls,
@@ -286,6 +290,8 @@ class BuildingConnection(GenieStructure):
 
 class UnitConnection(GenieStructure):
 
+    dynamic_load = True
+
     @classmethod
     def get_data_format_members(
         cls,
@@ -364,6 +370,8 @@ class UnitConnection(GenieStructure):
 
 
 class ResearchConnection(GenieStructure):
+
+    dynamic_load = True
 
     @classmethod
     def get_data_format_members(

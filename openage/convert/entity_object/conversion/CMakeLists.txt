@@ -4,7 +4,6 @@ add_py_modules(
 	combined_sound.py
 	combined_terrain.py
 	converter_object.py
-	genie_structure.py
 	modpack.py
 	stringresource.py
 )

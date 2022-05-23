@@ -54,8 +54,8 @@ class RoRPregenSubprocessor:
             pregen_object.create_nyan_members()
 
             if not pregen_object.is_ready():
-                raise Exception("%s: Pregenerated object is not ready for export: "
-                                "Member or object not initialized." % (pregen_object))
+                raise Exception(f"{repr(pregen_object)}: Pregenerated object is not ready "
+                                "for export. Member or object not initialized.")
 
     @staticmethod
     def generate_death_condition(

@@ -5,8 +5,8 @@ from __future__ import annotations
 import typing
 
 
-from .....entity_object.conversion.genie_structure import GenieStructure
-from ....read.member_access import READ_GEN
+from ...genie_structure import GenieStructure
+from ....read.member_access import READ_GEN, SKIP
 from ....read.value_members import StorageType
 
 if typing.TYPE_CHECKING:
@@ -16,6 +16,8 @@ if typing.TYPE_CHECKING:
 
 
 class PlayerColor(GenieStructure):
+
+    dynamic_load = True
 
     @classmethod
     def get_data_format_members(
@@ -43,7 +45,7 @@ class PlayerColor(GenieStructure):
             ]
         else:
             data_format = [
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[30]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[30]"),
                 (READ_GEN, "id", StorageType.ID_MEMBER, "int16_t"),
                 (READ_GEN, "resource_id", StorageType.ID_MEMBER, "int16_t"),
                 (READ_GEN, "minimap_color", StorageType.ID_MEMBER, "uint8_t"),

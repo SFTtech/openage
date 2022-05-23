@@ -110,8 +110,8 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                     f"{name_lookup_dict[head_unit_id][1]}/"))
                 wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
@@ -129,17 +129,18 @@ class AoCUpgradeAbilitySubprocessor:
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_animation, NoDiffMember):
-                diff_animation_id = diff_animation.get_value()
+                diff_animation_id = diff_animation.value
                 animations_set = []
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(converter_group,
-                                                                                           line,
-                                                                                           diff_animation_id,
-                                                                                           nyan_patch_ref,
-                                                                                           ability_name,
-                                                                                           "%s_"
-                                                                                           % command_lookup_dict[command_id][1])
+                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
+                        converter_group,
+                        line,
+                        diff_animation_id,
+                        nyan_patch_ref,
+                        ability_name,
+                        f"{command_lookup_dict[command_id][1]}_"
+                    )
                     animations_set.append(animation_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -149,15 +150,16 @@ class AoCUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_comm_sound, NoDiffMember):
                 sounds_set = []
-                diff_comm_sound_id = diff_comm_sound.get_value()
+                diff_comm_sound_id = diff_comm_sound.value
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(converter_group,
-                                                                                   diff_comm_sound_id,
-                                                                                   nyan_patch_ref,
-                                                                                   ability_name,
-                                                                                   "%s_"
-                                                                                   % command_lookup_dict[command_id][1])
+                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(
+                        converter_group,
+                        diff_comm_sound_id,
+                        nyan_patch_ref,
+                        ability_name,
+                        f"{command_lookup_dict[command_id][1]}_"
+                    )
                     sounds_set.append(sound_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
@@ -167,14 +169,14 @@ class AoCUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_frame_delay, NoDiffMember):
                 if not isinstance(diff_animation, NoDiffMember):
-                    attack_graphic_id = diff_animation.get_value()
+                    attack_graphic_id = diff_animation.value
 
                 else:
-                    attack_graphic_id = diff_animation.value.get_value()
+                    attack_graphic_id = diff_animation.ref.value
 
                 attack_graphic = dataset.genie_graphics[attack_graphic_id]
                 frame_rate = attack_graphic.get_frame_rate()
-                frame_delay = diff_frame_delay.get_value()
+                frame_delay = diff_frame_delay.value
                 application_delay = frame_rate * frame_delay
 
                 nyan_patch_raw_api_object.add_raw_patch_member("application_delay",
@@ -184,7 +186,7 @@ class AoCUpgradeAbilitySubprocessor:
 
             if ranged:
                 if not isinstance(diff_min_range, NoDiffMember):
-                    min_range = diff_min_range.get_value()
+                    min_range = diff_min_range.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member("min_range",
                                                                    min_range,
@@ -192,7 +194,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                    MemberOperator.ADD)
 
                 if not isinstance(diff_max_range, NoDiffMember):
-                    max_range = diff_max_range.get_value()
+                    max_range = diff_max_range.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member("max_range",
                                                                    max_range,
@@ -283,8 +285,8 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                     f"{name_lookup_dict[head_unit_id][1]}/"))
                 wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
@@ -302,17 +304,18 @@ class AoCUpgradeAbilitySubprocessor:
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_animation, NoDiffMember):
-                diff_animation_id = diff_animation.get_value()
+                diff_animation_id = diff_animation.value
                 animations_set = []
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(converter_group,
-                                                                                           line,
-                                                                                           diff_animation_id,
-                                                                                           nyan_patch_ref,
-                                                                                           ability_name,
-                                                                                           "%s_"
-                                                                                           % command_lookup_dict[command_id][1])
+                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
+                        converter_group,
+                        line,
+                        diff_animation_id,
+                        nyan_patch_ref,
+                        ability_name,
+                        f"{command_lookup_dict[command_id][1]}_"
+                    )
                     animations_set.append(animation_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -322,15 +325,16 @@ class AoCUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_comm_sound, NoDiffMember):
                 sounds_set = []
-                diff_comm_sound_id = diff_comm_sound.get_value()
+                diff_comm_sound_id = diff_comm_sound.value
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(converter_group,
-                                                                                   diff_comm_sound_id,
-                                                                                   nyan_patch_ref,
-                                                                                   ability_name,
-                                                                                   "%s_"
-                                                                                   % command_lookup_dict[command_id][1])
+                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(
+                        converter_group,
+                        diff_comm_sound_id,
+                        nyan_patch_ref,
+                        ability_name,
+                        f"{command_lookup_dict[command_id][1]}_"
+                    )
                     sounds_set.append(sound_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
@@ -339,7 +343,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_reload_time, NoDiffMember):
-                reload_time = diff_reload_time.get_value()
+                reload_time = diff_reload_time.value
 
                 nyan_patch_raw_api_object.add_raw_patch_member("reload_time",
                                                                reload_time,
@@ -348,14 +352,14 @@ class AoCUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_frame_delay, NoDiffMember):
                 if not isinstance(diff_animation, NoDiffMember):
-                    attack_graphic_id = diff_animation.get_value()
+                    attack_graphic_id = diff_animation.value
 
                 else:
-                    attack_graphic_id = diff_animation.value.get_value()
+                    attack_graphic_id = diff_animation.ref.value
 
                 attack_graphic = dataset.genie_graphics[attack_graphic_id]
                 frame_rate = attack_graphic.get_frame_rate()
-                frame_delay = diff_frame_delay.get_value()
+                frame_delay = diff_frame_delay.value
                 application_delay = frame_rate * frame_delay
 
                 nyan_patch_raw_api_object.add_raw_patch_member("application_delay",
@@ -365,7 +369,7 @@ class AoCUpgradeAbilitySubprocessor:
 
             if ranged:
                 if not isinstance(diff_min_range, NoDiffMember):
-                    min_range = diff_min_range.get_value()
+                    min_range = diff_min_range.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member("min_range",
                                                                    min_range,
@@ -373,7 +377,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                    MemberOperator.ADD)
 
                 if not isinstance(diff_max_range, NoDiffMember):
-                    max_range = diff_max_range.get_value()
+                    max_range = diff_max_range.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member("max_range",
                                                                    max_range,
@@ -445,7 +449,7 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(diff_damage_graphics, NoDiffMember):
                 return patches
 
-            diff_damage_animations = diff_damage_graphics.get_value()
+            diff_damage_animations = diff_damage_graphics.value
 
         else:
             return patches
@@ -457,15 +461,14 @@ class AoCUpgradeAbilitySubprocessor:
                 continue
 
             # This should be a NoDiffMember
-            percentage = diff_damage_animation["damage_percent"].value.get_value()
+            percentage = diff_damage_animation["damage_percent"].ref.value
 
-            patch_target_ref = "%s.AttributeChangeTracker.ChangeProgress%s" % (game_entity_name,
-                                                                               str(percentage))
+            patch_target_ref = (f"{game_entity_name}.AttributeChangeTracker."
+                                f"ChangeProgress{percentage}")
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = "Change%sDamageGraphic%sWrapper" % (game_entity_name,
-                                                               str(percentage))
+            wrapper_name = (f"Change{game_entity_name}DamageGraphic{percentage}Wrapper")
             wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,
@@ -475,8 +478,8 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                     f"{name_lookup_dict[head_unit_id][1]}/"))
                 wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
@@ -494,16 +497,17 @@ class AoCUpgradeAbilitySubprocessor:
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             animations_set = []
-            diff_animation_id = diff_damage_animation["graphic_id"].get_value()
+            diff_animation_id = diff_damage_animation["graphic_id"].value
             if diff_animation_id > -1:
                 # Patch the new animation in
-                animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(converter_group,
-                                                                                       line,
-                                                                                       diff_animation_id,
-                                                                                       nyan_patch_ref,
-                                                                                       "Idle",
-                                                                                       "idle_damage_override_%s_"
-                                                                                       % (str(percentage)))
+                animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
+                    converter_group,
+                    line,
+                    diff_animation_id,
+                    nyan_patch_ref,
+                    "Idle",
+                    f"idle_damage_override_{percentage}_"
+                )
                 animations_set.append(animation_forward_ref)
 
             nyan_patch_raw_api_object.add_raw_patch_member("overlays",
@@ -561,7 +565,7 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(diff_animation, NoDiffMember):
                 return patches
 
-            diff_animation_id = diff_animation.get_value()
+            diff_animation_id = diff_animation.value
 
         else:
             return patches
@@ -580,8 +584,8 @@ class AoCUpgradeAbilitySubprocessor:
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
-            wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                % (name_lookup_dict[head_unit_id][1]))
+            wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                 f"{name_lookup_dict[head_unit_id][1]}/"))
             wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         else:
@@ -664,8 +668,7 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(diff_dead_unit, NoDiffMember):
                 return patches
 
-            diff_animation_id = dataset.genie_units[diff_dead_unit.get_value(
-            )]["idle_graphic0"].get_value()
+            diff_animation_id = dataset.genie_units[diff_dead_unit.value]["idle_graphic0"].value
 
         else:
             return patches
@@ -684,8 +687,8 @@ class AoCUpgradeAbilitySubprocessor:
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
-            wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                % (name_lookup_dict[head_unit_id][1]))
+            wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                 f"{name_lookup_dict[head_unit_id][1]}/"))
             wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         else:
@@ -768,7 +771,7 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(diff_animation, NoDiffMember):
                 return patches
 
-            diff_animation_id = diff_animation.get_value()
+            diff_animation_id = diff_animation.value
 
         else:
             return patches
@@ -787,8 +790,8 @@ class AoCUpgradeAbilitySubprocessor:
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
-            wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                % (name_lookup_dict[head_unit_id][1]))
+            wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                 f"{name_lookup_dict[head_unit_id][1]}/"))
             wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         else:
@@ -871,7 +874,7 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(diff_hp, NoDiffMember):
                 return patches
 
-            diff_hp_value = diff_hp.get_value()
+            diff_hp_value = diff_hp.value
 
         else:
             return patches
@@ -890,8 +893,8 @@ class AoCUpgradeAbilitySubprocessor:
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
-            wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                % (name_lookup_dict[head_unit_id][1]))
+            wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                 f"{name_lookup_dict[head_unit_id][1]}/"))
             wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         else:
@@ -970,7 +973,7 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(diff_line_of_sight, NoDiffMember):
                 return patches
 
-            diff_los_range = diff_line_of_sight.get_value()
+            diff_los_range = diff_line_of_sight.value
 
         else:
             return patches
@@ -989,8 +992,8 @@ class AoCUpgradeAbilitySubprocessor:
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
-            wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                % (name_lookup_dict[head_unit_id][1]))
+            wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                 f"{name_lookup_dict[head_unit_id][1]}/"))
             wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         else:
@@ -1082,8 +1085,8 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                     f"{name_lookup_dict[head_unit_id][1]}/"))
                 wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
@@ -1102,7 +1105,7 @@ class AoCUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_move_animation, NoDiffMember):
                 animations_set = []
-                diff_animation_id = diff_move_animation.get_value()
+                diff_animation_id = diff_move_animation.value
                 if diff_animation_id > -1:
                     # Patch the new animation in
                     animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(converter_group,
@@ -1120,7 +1123,7 @@ class AoCUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_comm_sound, NoDiffMember):
                 sounds_set = []
-                diff_comm_sound_id = diff_comm_sound.get_value()
+                diff_comm_sound_id = diff_comm_sound.value
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
                     sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(converter_group,
@@ -1136,7 +1139,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_move_speed, NoDiffMember):
-                diff_speed_value = diff_move_speed.get_value()
+                diff_speed_value = diff_move_speed.value
 
                 nyan_patch_raw_api_object.add_raw_patch_member("speed",
                                                                diff_speed_value,
@@ -1209,8 +1212,8 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                     f"{name_lookup_dict[head_unit_id][1]}/"))
                 wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[group_id][1]}_upgrade")
 
             else:
@@ -1227,12 +1230,13 @@ class AoCUpgradeAbilitySubprocessor:
             nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-            name_string_id = diff_name.get_value()
-            translations = AoCUpgradeAbilitySubprocessor.create_language_strings(converter_group,
-                                                                                 name_string_id,
-                                                                                 nyan_patch_ref,
-                                                                                 "%sName"
-                                                                                 % (obj_prefix))
+            name_string_id = diff_name.value
+            translations = AoCUpgradeAbilitySubprocessor.create_language_strings(
+                converter_group,
+                name_string_id,
+                nyan_patch_ref,
+                f"{obj_prefix}Name"
+            )
             nyan_patch_raw_api_object.add_raw_patch_member("translations",
                                                            translations,
                                                            "engine.util.language.translated.type.TranslatedString",
@@ -1352,8 +1356,8 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                     f"{name_lookup_dict[head_unit_id][1]}/"))
                 wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
@@ -1371,7 +1375,7 @@ class AoCUpgradeAbilitySubprocessor:
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             # Change sound
-            diff_selection_sound_id = diff_selection_sound.get_value()
+            diff_selection_sound_id = diff_selection_sound.value
             sounds_set = []
             if diff_selection_sound_id > -1:
                 # Patch the new sound in
@@ -1422,8 +1426,8 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                     f"{name_lookup_dict[head_unit_id][1]}/"))
                 wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
@@ -1441,7 +1445,7 @@ class AoCUpgradeAbilitySubprocessor:
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_radius_x, NoDiffMember):
-                diff_width_value = diff_radius_x.get_value()
+                diff_width_value = diff_radius_x.value
 
                 nyan_patch_raw_api_object.add_raw_patch_member("width",
                                                                diff_width_value,
@@ -1449,7 +1453,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                MemberOperator.ADD)
 
             if not isinstance(diff_radius_y, NoDiffMember):
-                diff_height_value = diff_radius_y.get_value()
+                diff_height_value = diff_radius_y.value
 
                 nyan_patch_raw_api_object.add_raw_patch_member("height",
                                                                diff_height_value,
@@ -1510,17 +1514,17 @@ class AoCUpgradeAbilitySubprocessor:
         if diff:
             diff_animation = diff["attack_sprite_id"]
             diff_comm_sound = diff["command_sound_id"]
-            diff_min_projectiles = diff["attack_projectile_count"]
-            diff_max_projectiles = diff["attack_projectile_max_count"]
+            diff_min_projectiles = diff["projectile_min_count"]
+            diff_max_projectiles = diff["projectile_max_count"]
             diff_min_range = diff["weapon_range_min"]
             diff_max_range = diff["weapon_range_min"]
             diff_reload_time = diff["attack_speed"]
             # spawn delay also depends on animation
             diff_spawn_delay = diff["frame_delay"]
             diff_spawn_area_offsets = diff["weapon_offset"]
-            diff_spawn_area_width = diff["attack_projectile_spawning_area_width"]
-            diff_spawn_area_height = diff["attack_projectile_spawning_area_length"]
-            diff_spawn_area_randomness = diff["attack_projectile_spawning_area_randomness"]
+            diff_spawn_area_width = diff["projectile_spawning_area_width"]
+            diff_spawn_area_height = diff["projectile_spawning_area_length"]
+            diff_spawn_area_randomness = diff["projectile_spawning_area_randomness"]
 
             if any(not isinstance(value, NoDiffMember) for value in (diff_animation,
                                                                      diff_comm_sound,
@@ -1551,8 +1555,8 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                    % (name_lookup_dict[head_unit_id][1]))
+                wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                     f"{name_lookup_dict[head_unit_id][1]}/"))
                 wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
@@ -1571,16 +1575,17 @@ class AoCUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_animation, NoDiffMember):
                 animations_set = []
-                diff_animation_id = diff_animation.get_value()
+                diff_animation_id = diff_animation.value
                 if diff_animation_id > -1:
                     # Patch the new animation in
-                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(converter_group,
-                                                                                           line,
-                                                                                           diff_animation_id,
-                                                                                           nyan_patch_ref,
-                                                                                           ability_name,
-                                                                                           "%s_"
-                                                                                           % command_lookup_dict[command_id][1])
+                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
+                        converter_group,
+                        line,
+                        diff_animation_id,
+                        nyan_patch_ref,
+                        ability_name,
+                        f"{command_lookup_dict[command_id][1]}_"
+                    )
                     animations_set.append(animation_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -1590,15 +1595,16 @@ class AoCUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_comm_sound, NoDiffMember):
                 sounds_set = []
-                diff_comm_sound_id = diff_comm_sound.get_value()
+                diff_comm_sound_id = diff_comm_sound.value
                 if diff_comm_sound_id > -1:
                     # Patch the new sound in
-                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(converter_group,
-                                                                                   diff_comm_sound_id,
-                                                                                   nyan_patch_ref,
-                                                                                   ability_name,
-                                                                                   "%s_"
-                                                                                   % command_lookup_dict[command_id][1])
+                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(
+                        converter_group,
+                        diff_comm_sound_id,
+                        nyan_patch_ref,
+                        ability_name,
+                        f"{command_lookup_dict[command_id][1]}_"
+                    )
                     sounds_set.append(sound_forward_ref)
 
                 nyan_patch_raw_api_object.add_raw_patch_member("sounds",
@@ -1607,11 +1613,11 @@ class AoCUpgradeAbilitySubprocessor:
                                                                MemberOperator.ASSIGN)
 
             if not isinstance(diff_min_projectiles, NoDiffMember):
-                min_projectiles = diff_min_projectiles.get_value()
-                source_min_count = upgrade_source["attack_projectile_count"].get_value()
-                source_max_count = upgrade_source["attack_projectile_max_count"].get_value()
-                target_min_count = upgrade_target["attack_projectile_count"].get_value()
-                target_max_count = upgrade_target["attack_projectile_max_count"].get_value()
+                min_projectiles = diff_min_projectiles.value
+                source_min_count = upgrade_source["projectile_min_count"].value
+                source_max_count = upgrade_source["projectile_max_count"].value
+                target_min_count = upgrade_target["projectile_min_count"].value
+                target_max_count = upgrade_target["projectile_max_count"].value
 
                 # Account for a special case where the number of projectiles are 0
                 # in the .dat, but the game still counts this as 1 when a projectile
@@ -1629,11 +1635,11 @@ class AoCUpgradeAbilitySubprocessor:
                                                                    MemberOperator.ADD)
 
             if not isinstance(diff_max_projectiles, NoDiffMember):
-                max_projectiles = diff_max_projectiles.get_value()
-                source_min_count = upgrade_source["attack_projectile_count"].get_value()
-                source_max_count = upgrade_source["attack_projectile_max_count"].get_value()
-                target_min_count = upgrade_target["attack_projectile_count"].get_value()
-                target_max_count = upgrade_target["attack_projectile_max_count"].get_value()
+                max_projectiles = diff_max_projectiles.value
+                source_min_count = upgrade_source["projectile_min_count"].value
+                source_max_count = upgrade_source["projectile_max_count"].value
+                target_min_count = upgrade_target["projectile_min_count"].value
+                target_max_count = upgrade_target["projectile_max_count"].value
 
                 # Account for a special case where the number of projectiles are 0
                 # in the .dat, but the game still counts this as 1 when a projectile
@@ -1651,24 +1657,21 @@ class AoCUpgradeAbilitySubprocessor:
                                                                    MemberOperator.ADD)
 
             if not isinstance(diff_min_range, NoDiffMember):
-                min_range = diff_min_range.get_value()
-
+                min_range = diff_min_range.value
                 nyan_patch_raw_api_object.add_raw_patch_member("min_range",
                                                                min_range,
                                                                "engine.ability.type.ShootProjectile",
                                                                MemberOperator.ADD)
 
             if not isinstance(diff_max_range, NoDiffMember):
-                max_range = diff_max_range.get_value()
-
+                max_range = diff_max_range.value
                 nyan_patch_raw_api_object.add_raw_patch_member("max_range",
                                                                max_range,
                                                                "engine.ability.type.ShootProjectile",
                                                                MemberOperator.ADD)
 
             if not isinstance(diff_reload_time, NoDiffMember):
-                reload_time = diff_reload_time.get_value()
-
+                reload_time = diff_reload_time.value
                 nyan_patch_raw_api_object.add_raw_patch_member("reload_time",
                                                                reload_time,
                                                                "engine.ability.type.ShootProjectile",
@@ -1676,14 +1679,14 @@ class AoCUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_spawn_delay, NoDiffMember):
                 if not isinstance(diff_animation, NoDiffMember):
-                    attack_graphic_id = diff_animation.get_value()
+                    attack_graphic_id = diff_animation.value
 
                 else:
-                    attack_graphic_id = diff_animation.value.get_value()
+                    attack_graphic_id = diff_animation.ref.value
 
                 attack_graphic = dataset.genie_graphics[attack_graphic_id]
                 frame_rate = attack_graphic.get_frame_rate()
-                frame_delay = diff_spawn_delay.get_value()
+                frame_delay = diff_spawn_delay.value
                 spawn_delay = frame_rate * frame_delay
 
                 nyan_patch_raw_api_object.add_raw_patch_member("spawn_delay",
@@ -1697,7 +1700,7 @@ class AoCUpgradeAbilitySubprocessor:
                 diff_spawn_area_z = diff_spawn_area_offsets[2]
 
                 if not isinstance(diff_spawn_area_x, NoDiffMember):
-                    spawn_area_x = diff_spawn_area_x.get_value()
+                    spawn_area_x = diff_spawn_area_x.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member("spawning_area_offset_x",
                                                                    spawn_area_x,
@@ -1705,7 +1708,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                    MemberOperator.ADD)
 
                 if not isinstance(diff_spawn_area_y, NoDiffMember):
-                    spawn_area_y = diff_spawn_area_y.get_value()
+                    spawn_area_y = diff_spawn_area_y.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member("spawning_area_offset_y",
                                                                    spawn_area_y,
@@ -1713,7 +1716,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                    MemberOperator.ADD)
 
                 if not isinstance(diff_spawn_area_z, NoDiffMember):
-                    spawn_area_z = diff_spawn_area_z.get_value()
+                    spawn_area_z = diff_spawn_area_z.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member("spawning_area_offset_z",
                                                                    spawn_area_z,
@@ -1721,7 +1724,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                    MemberOperator.ADD)
 
             if not isinstance(diff_spawn_area_width, NoDiffMember):
-                spawn_area_width = diff_spawn_area_width.get_value()
+                spawn_area_width = diff_spawn_area_width.value
 
                 nyan_patch_raw_api_object.add_raw_patch_member("spawning_area_width",
                                                                spawn_area_width,
@@ -1729,7 +1732,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                MemberOperator.ADD)
 
             if not isinstance(diff_spawn_area_height, NoDiffMember):
-                spawn_area_height = diff_spawn_area_height.get_value()
+                spawn_area_height = diff_spawn_area_height.value
 
                 nyan_patch_raw_api_object.add_raw_patch_member("spawning_area_height",
                                                                spawn_area_height,
@@ -1737,7 +1740,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                MemberOperator.ADD)
 
             if not isinstance(diff_spawn_area_randomness, NoDiffMember):
-                spawn_area_randomness = diff_spawn_area_randomness.get_value()
+                spawn_area_randomness = diff_spawn_area_randomness.value
 
                 nyan_patch_raw_api_object.add_raw_patch_member("spawning_area_randomness",
                                                                spawn_area_randomness,
@@ -1794,7 +1797,7 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(diff_turn_speed, NoDiffMember):
                 return patches
 
-            diff_turn_speed_value = diff_turn_speed.get_value()
+            diff_turn_speed_value = diff_turn_speed.value
 
         else:
             return patches
@@ -1813,8 +1816,8 @@ class AoCUpgradeAbilitySubprocessor:
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
-            wrapper_raw_api_object.set_location("data/game_entity/generic/%s/"
-                                                % (name_lookup_dict[head_unit_id][1]))
+            wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                 f"{name_lookup_dict[head_unit_id][1]}/"))
             wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         else:
@@ -1836,7 +1839,7 @@ class AoCUpgradeAbilitySubprocessor:
         turn_speed = MemberSpecialValue.NYAN_INF
         # Ships/Trebuchets turn slower
         if turn_speed_unmodified > 0:
-            turn_yaw = diff["max_yaw_per_sec_moving"].get_value()
+            turn_yaw = diff["max_yaw_per_sec_moving"].value
             turn_speed = degrees(turn_yaw)
 
         nyan_patch_raw_api_object.add_raw_patch_member("turn_speed",
@@ -1894,9 +1897,9 @@ class AoCUpgradeAbilitySubprocessor:
 
         else:
             if isinstance(line, GenieBuildingLineGroup):
-                animation_filename = "%s%s_%s" % (filename_prefix,
-                                                  name_lookup_dict[line.get_head_unit_id()][1],
-                                                  group_name)
+                animation_filename = (f"{filename_prefix}"
+                                      f"{name_lookup_dict[line.get_head_unit_id()][1]}_"
+                                      f"{group_name}")
 
             else:
                 animation_filename = f"{filename_prefix}{group_name}"

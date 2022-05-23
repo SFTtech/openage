@@ -191,14 +191,14 @@ class DE2Processor:
         # Gaia also seems to have the most units, so we only read from Gaia
         #
         # call hierarchy: wrapper[0]->civs[0]->units
-        raw_units = gamespec[0]["civs"][0]["units"].get_value()
+        raw_units = gamespec[0]["civs"][0]["units"].value
 
         # Unit headers store the things units can do
-        raw_unit_headers = gamespec[0]["unit_headers"].get_value()
+        raw_unit_headers = gamespec[0]["unit_headers"].value
 
         for raw_unit in raw_units:
-            unit_id = raw_unit["id0"].get_value()
-            unit_members = raw_unit.get_value()
+            unit_id = raw_unit["id0"].value
+            unit_members = raw_unit.value
 
             # Turn attack and armor into containers to make diffing work
             if "attacks" in unit_members.keys():
@@ -216,7 +216,7 @@ class DE2Processor:
             # Commands
             if "unit_commands" not in unit_members.keys():
                 # Only ActionUnits with type >= 40 should have commands
-                unit_type = raw_unit["unit_type"].get_value()
+                unit_type = raw_unit["unit_type"].value
                 if unit_type >= 40:
                     unit_commands = raw_unit_headers[unit_id]["unit_commands"]
                     unit.add_member(unit_commands)
@@ -237,16 +237,16 @@ class DE2Processor:
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
         # call hierarchy: wrapper[0]->graphics
-        raw_graphics = gamespec[0]["graphics"].get_value()
+        raw_graphics = gamespec[0]["graphics"].value
 
         for raw_graphic in raw_graphics:
             # Can be ignored if there is no filename associated
-            filename = raw_graphic["filename"].get_value().lower()
+            filename = raw_graphic["filename"].value.lower()
             if not filename:
                 continue
 
-            graphic_id = raw_graphic["graphic_id"].get_value()
-            graphic_members = raw_graphic.get_value()
+            graphic_id = raw_graphic["graphic_id"].value
+            graphic_members = raw_graphic.value
             graphic = GenieGraphic(graphic_id, full_data_set, members=graphic_members)
 
             if filename not in full_data_set.existing_graphics:

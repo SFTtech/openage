@@ -1,4 +1,4 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 """
 Compiles python modules with cpython to pyc/pyo files.
@@ -96,9 +96,8 @@ def main():
     maxwidth = len(str(len(to_compile)))
     for idx, (module, outputfile) in enumerate(to_compile):
         try:
-            print("[%*d/%d] Compiling %s to %s" % (maxwidth, idx + 1,
-                                                   len(to_compile), module,
-                                                   outputfile))
+            print(f"[{idx+1:{maxwidth}}/{len(to_compile)}] "
+                  f"Compiling {module} to {outputfile}")
             py_compile.compile(module, cfile=outputfile, doraise=True)
 
         except py_compile.PyCompileError as exc:

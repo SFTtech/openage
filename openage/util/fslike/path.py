@@ -44,7 +44,7 @@ class Path:
 
         if not isinstance(parts, (list, tuple)):
             raise ValueError("path parts must be str, bytes, list or tuple, "
-                             "but not: %s" % type(parts))
+                             f"but not: {type(parts)}")
 
         result = []
         for part in parts:

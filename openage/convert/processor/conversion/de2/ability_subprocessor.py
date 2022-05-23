@@ -81,11 +81,11 @@ class DE2AbilitySubprocessor:
         attribute_rate = 0
         if current_unit_id == 125:
             # stored in civ resources
-            attribute_rate = dataset.genie_civs[0]["resources"][35].get_value()
+            attribute_rate = dataset.genie_civs[0]["resources"][35].value
 
         elif current_unit_id == 692:
             # stored in unit, but has to get converted to amount/second
-            heal_timer = current_unit["heal_timer"].get_value()
+            heal_timer = current_unit["heal_timer"].value
             attribute_rate = 1 / heal_timer
 
         rate_raw_api_object.add_raw_member("rate",

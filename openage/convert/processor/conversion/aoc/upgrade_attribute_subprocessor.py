@@ -285,7 +285,7 @@ class AoCUpgradeAttributeSubprocessor:
 
         if line.is_projectile_shooter():
             primary_projectile_id = line.get_head_unit(
-            )["attack_projectile_primary_unit_id"].get_value()
+            )["projectile_id0"].value
             if primary_projectile_id == -1:
                 # Upgrade is skipped if the primary projectile is not defined
                 return patches
@@ -406,8 +406,8 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        projectile_id0 = head_unit["attack_projectile_primary_unit_id"].get_value()
-        projectile_id1 = head_unit["attack_projectile_secondary_unit_id"].get_value()
+        projectile_id0 = head_unit["projectile_id0"].value
+        projectile_id1 = head_unit["projectile_id1"].value
 
         if projectile_id0 > -1:
             patch_target_ref = f"{game_entity_name}.ShootProjectile.Projectile0.Projectile"
@@ -514,6 +514,34 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
+    def attack_warning_sound_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the attack warning sound modify effect (ID: 26).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: int, float
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
     def blast_radius_upgrade(
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
@@ -598,8 +626,8 @@ class AoCUpgradeAttributeSubprocessor:
         patches = []
 
         # Check if the unit line actually costs food
-        for resource_amount in head_unit["resource_cost"].get_value():
-            resource_id = resource_amount["type_id"].get_value()
+        for resource_amount in head_unit["resource_cost"].value:
+            resource_id = resource_amount["type_id"].value
 
             if resource_id == 0:
                 break
@@ -621,8 +649,8 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.CreatableGameEntity.%sCost.FoodAmount" % (game_entity_name,
-                                                                         game_entity_name)
+        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                            f"{game_entity_name}Cost.FoodAmount")
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -703,8 +731,8 @@ class AoCUpgradeAttributeSubprocessor:
         patches = []
 
         # Check if the unit line actually costs wood
-        for resource_amount in head_unit["resource_cost"].get_value():
-            resource_id = resource_amount["type_id"].get_value()
+        for resource_amount in head_unit["resource_cost"].value:
+            resource_id = resource_amount["type_id"].value
 
             if resource_id == 1:
                 break
@@ -726,8 +754,8 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.CreatableGameEntity.%sCost.WoodAmount" % (game_entity_name,
-                                                                         game_entity_name)
+        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                            f"{game_entity_name}Cost.WoodAmount")
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -808,8 +836,8 @@ class AoCUpgradeAttributeSubprocessor:
         patches = []
 
         # Check if the unit line actually costs gold
-        for resource_amount in head_unit["resource_cost"].get_value():
-            resource_id = resource_amount["type_id"].get_value()
+        for resource_amount in head_unit["resource_cost"].value:
+            resource_id = resource_amount["type_id"].value
 
             if resource_id == 3:
                 break
@@ -831,8 +859,8 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.CreatableGameEntity.%sCost.GoldAmount" % (game_entity_name,
-                                                                         game_entity_name)
+        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                            f"{game_entity_name}Cost.GoldAmount")
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -913,8 +941,8 @@ class AoCUpgradeAttributeSubprocessor:
         patches = []
 
         # Check if the unit line actually costs stone
-        for resource_amount in head_unit["resource_cost"].get_value():
-            resource_id = resource_amount["type_id"].get_value()
+        for resource_amount in head_unit["resource_cost"].value:
+            resource_id = resource_amount["type_id"].value
 
             if resource_id == 2:
                 break
@@ -936,8 +964,8 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = "%s.CreatableGameEntity.%sCost.StoneAmount" % (game_entity_name,
-                                                                          game_entity_name)
+        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                            f"{game_entity_name}Cost.StoneAmount")
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -1355,6 +1383,34 @@ class AoCUpgradeAttributeSubprocessor:
 
         wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
         patches.append(wrapper_forward_ref)
+
+        return patches
+
+    @staticmethod
+    def ignore_armor_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the ignore armor effect (ID: 63).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: int, float
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -2176,8 +2232,8 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        for resource_amount in head_unit["resource_cost"].get_value():
-            resource_id = resource_amount["type_id"].get_value()
+        for resource_amount in head_unit["resource_cost"].value:
+            resource_id = resource_amount["type_id"].value
 
             resource_name = ""
             if resource_id == -1:
@@ -2201,12 +2257,11 @@ class AoCUpgradeAttributeSubprocessor:
                 continue
 
             # Skip resources that are only expected to be there
-            if not resource_amount["enabled"].get_value():
+            if not resource_amount["enabled"].value:
                 continue
 
-            patch_target_ref = "%s.CreatableGameEntity.%sCost.%sAmount" % (game_entity_name,
-                                                                           game_entity_name,
-                                                                           resource_name)
+            patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
+                                f"{game_entity_name}Cost.{resource_name}Amount")
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
@@ -2572,6 +2627,34 @@ class AoCUpgradeAttributeSubprocessor:
         patches = []
 
         # Unused in AoC
+
+        return patches
+
+    @staticmethod
+    def train_button_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the train button modify effect (ID: 43).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: int, float
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
 
         return patches
 

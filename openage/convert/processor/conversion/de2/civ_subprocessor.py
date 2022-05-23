@@ -66,15 +66,15 @@ class DE2CivSubprocessor:
 
                 # civ boni might be unlocked by age ups. if so, patch them into the age up
                 # patches are queued here
-                required_tech_count = civ_bonus.tech["required_tech_count"].get_value()
+                required_tech_count = civ_bonus.tech["required_tech_count"].value
                 if required_tech_count > 0 and len(bonus_patches) > 0:
                     if required_tech_count == 1:
-                        tech_id = civ_bonus.tech["required_techs"][0].get_value()
+                        tech_id = civ_bonus.tech["required_techs"][0].value
 
                     elif required_tech_count == 2:
                         # Try to patch them into the second listed tech
                         # This tech is usually unlocked by an age up
-                        tech_id = civ_bonus.tech["required_techs"][1].get_value()
+                        tech_id = civ_bonus.tech["required_techs"][1].value
 
                         if tech_id == 232:
                             # Synergies with other civs (usually chinese farming bonus)
@@ -84,11 +84,11 @@ class DE2CivSubprocessor:
                         if tech_id not in dataset.tech_groups.keys():
                             # Circumvents a "funny" duplicate castle age up tech for Incas
                             # The required tech of the duplicate is the age up we are looking for
-                            tech_id = dataset.genie_techs[tech_id]["required_techs"][0].get_value()
+                            tech_id = dataset.genie_techs[tech_id]["required_techs"][0].value
 
                         if not dataset.tech_groups[tech_id].is_researchable():
                             # Fall back to the first tech if the second is not researchable
-                            tech_id = civ_bonus.tech["required_techs"][0].get_value()
+                            tech_id = civ_bonus.tech["required_techs"][0].value
 
                     if tech_id == 104:
                         # Skip Dark Age; it is not a tech in openage
@@ -99,7 +99,7 @@ class DE2CivSubprocessor:
                         # TODO: Bonus unlocked by something else
                         continue
 
-                    if tech_id in tech_patches.keys():
+                    if tech_id in tech_patches:
                         tech_patches[tech_id].extend(bonus_patches)
 
                     else:

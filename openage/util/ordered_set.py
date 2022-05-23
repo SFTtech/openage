@@ -7,10 +7,12 @@ be ordered since Python 3.6.
 """
 
 
-from typing import Hashable
+from typing import Generic, Hashable, TypeVar
+
+OrderedSetItem = TypeVar("OrderedSetItem")
 
 
-class OrderedSet:
+class OrderedSet(Generic[OrderedSetItem]):
     """
     Set that saves the input order of elements.
     """

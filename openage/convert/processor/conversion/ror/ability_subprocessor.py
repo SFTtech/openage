@@ -48,7 +48,7 @@ class RoRAbilitySubprocessor:
         """
         if isinstance(line, GenieVillagerGroup):
             current_unit = line.get_units_with_command(command_id)[0]
-            current_unit_id = current_unit["id0"].get_value()
+            current_unit_id = current_unit["id0"].value
 
         else:
             current_unit = line.get_head_unit()
@@ -83,33 +83,32 @@ class RoRAbilitySubprocessor:
 
             if command_id == 104:
                 # Get animation from commands proceed sprite
-                unit_commands = current_unit["unit_commands"].get_value()
+                unit_commands = current_unit["unit_commands"].value
                 for command in unit_commands:
-                    type_id = command["type"].get_value()
+                    type_id = command["type"].value
 
                     if type_id != command_id:
                         continue
 
-                    ability_animation_id = command["proceed_sprite_id"].get_value()
+                    ability_animation_id = command["proceed_sprite_id"].value
                     break
 
                 else:
                     ability_animation_id = -1
 
             else:
-                ability_animation_id = current_unit["attack_sprite_id"].get_value()
+                ability_animation_id = current_unit["attack_sprite_id"].value
 
         else:
-            ability_ref = "%s.ShootProjectile.Projectile%s.%s" % (game_entity_name,
-                                                                  str(projectile),
-                                                                  ability_name)
+            ability_ref = (f"{game_entity_name}.ShootProjectile."
+                           f"Projectile{projectile}.{ability_name}")
             ability_raw_api_object = RawAPIObject(ability_ref,
                                                   ability_name,
                                                   dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent(ability_parent)
             ability_location = ForwardRef(line,
-                                          "%s.ShootProjectile.Projectile%s"
-                                          % (game_entity_name, str(projectile)))
+                                          (f"{game_entity_name}.ShootProjectile."
+                                           f"Projectile{projectile}"))
             ability_raw_api_object.set_location(ability_location)
 
             ability_animation_id = -1
@@ -130,12 +129,13 @@ class RoRAbilitySubprocessor:
             line.add_raw_api_object(property_raw_api_object)
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
-                                                                            ability_animation_id,
-                                                                            property_ref,
-                                                                            ability_name,
-                                                                            "%s_"
-                                                                            % command_lookup_dict[command_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(
+                line,
+                ability_animation_id,
+                property_ref,
+                ability_name,
+                f"{command_lookup_dict[command_id][1]}_"
+            )
             animations_set.append(animation_forward_ref)
             property_raw_api_object.add_raw_member("animations", animations_set,
                                                    "engine.ability.property.type.Animated")
@@ -152,10 +152,10 @@ class RoRAbilitySubprocessor:
                 civ_id = civ_group.get_id()
 
                 # Only proceed if the civ stores the unit in the line
-                if current_unit_id not in civ["units"].get_value().keys():
+                if current_unit_id not in civ["units"].value.keys():
                     continue
 
-                civ_animation_id = civ["units"][current_unit_id]["attack_sprite_id"].get_value()
+                civ_animation_id = civ["units"][current_unit_id]["attack_sprite_id"].value
 
                 if civ_animation_id != ability_animation_id:
                     # Find the corresponding graphics set
@@ -171,8 +171,8 @@ class RoRAbilitySubprocessor:
                         handled_graphics_set_ids.add(graphics_set_id)
 
                     obj_prefix = f"{gset_lookup_dict[graphics_set_id][1]}{ability_name}"
-                    filename_prefix = "%s_%s_" % (command_lookup_dict[command_id][1],
-                                                  gset_lookup_dict[graphics_set_id][2],)
+                    filename_prefix = (f"{command_lookup_dict[command_id][1]}_"
+                                       f"{gset_lookup_dict[graphics_set_id][2]}_")
                     AoCAbilitySubprocessor.create_civ_animation(line,
                                                                 civ_group,
                                                                 civ_animation_id,
@@ -183,7 +183,7 @@ class RoRAbilitySubprocessor:
 
         # Command Sound
         if projectile == -1:
-            ability_comm_sound_id = current_unit["command_sound_id"].get_value()
+            ability_comm_sound_id = current_unit["command_sound_id"].value
 
         else:
             ability_comm_sound_id = -1
@@ -246,13 +246,13 @@ class RoRAbilitySubprocessor:
 
         if ranged:
             # Min range
-            min_range = current_unit["weapon_range_min"].get_value()
+            min_range = current_unit["weapon_range_min"].value
             ability_raw_api_object.add_raw_member("min_range",
                                                   min_range,
                                                   "engine.ability.type.RangedDiscreteEffect")
 
             # Max range
-            max_range = current_unit["weapon_range_max"].get_value()
+            max_range = current_unit["weapon_range_max"].value
             ability_raw_api_object.add_raw_member("max_range",
                                                   max_range,
                                                   "engine.ability.type.RangedDiscreteEffect")
@@ -292,7 +292,7 @@ class RoRAbilitySubprocessor:
 
         # Reload time
         if projectile == -1:
-            reload_time = current_unit["attack_speed"].get_value()
+            reload_time = current_unit["attack_speed"].value
 
         else:
             reload_time = 0
@@ -305,7 +305,7 @@ class RoRAbilitySubprocessor:
         if projectile == -1:
             apply_graphic = dataset.genie_graphics[ability_animation_id]
             frame_rate = apply_graphic.get_frame_rate()
-            frame_delay = current_unit["frame_delay"].get_value()
+            frame_delay = current_unit["frame_delay"].value
             application_delay = frame_rate * frame_delay
 
         else:
@@ -383,7 +383,7 @@ class RoRAbilitySubprocessor:
         ability_raw_api_object.set_location(ability_location)
 
         # Stances
-        search_range = current_unit["search_radius"].get_value()
+        search_range = current_unit["search_radius"].value
         stance_names = ["Aggressive", "StandGround"]
 
         # Attacking is preferred
@@ -523,9 +523,8 @@ class RoRAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         # First projectile is mandatory
-        obj_ref = f"{game_entity_name}.ShootProjectile.Projectile{str(position)}"
-        ability_ref = "%s.ShootProjectile.Projectile%s.Projectile" % (game_entity_name,
-                                                                      str(position))
+        obj_ref = f"{game_entity_name}.ShootProjectile.Projectile{position}"
+        ability_ref = f"{game_entity_name}.ShootProjectile.Projectile{position}.Projectile"
         ability_raw_api_object = RawAPIObject(ability_ref,
                                               "Projectile",
                                               dataset.nyan_api_objects)
@@ -535,26 +534,26 @@ class RoRAbilitySubprocessor:
 
         # Arc
         if position == 0:
-            projectile_id = current_unit["attack_projectile_primary_unit_id"].get_value()
+            projectile_id = current_unit["projectile_id0"].value
 
         else:
             raise Exception("Invalid position")
 
         projectile = dataset.genie_units[projectile_id]
-        arc = degrees(projectile["projectile_arc"].get_value())
+        arc = degrees(projectile["projectile_arc"].value)
         ability_raw_api_object.add_raw_member("arc",
                                               arc,
                                               "engine.ability.type.Projectile")
 
         # Accuracy
-        accuracy_name = "%s.ShootProjectile.Projectile%s.Projectile.Accuracy"\
-                        % (game_entity_name, str(position))
+        accuracy_name = (f"{game_entity_name}.ShootProjectile."
+                         f"Projectile{position}.Projectile.Accuracy")
         accuracy_raw_api_object = RawAPIObject(accuracy_name, "Accuracy", dataset.nyan_api_objects)
         accuracy_raw_api_object.add_raw_parent("engine.util.accuracy.Accuracy")
         accuracy_location = ForwardRef(line, ability_ref)
         accuracy_raw_api_object.set_location(accuracy_location)
 
-        accuracy_value = current_unit["accuracy"].get_value()
+        accuracy_value = current_unit["accuracy"].value
         accuracy_raw_api_object.add_raw_member("accuracy",
                                                accuracy_value,
                                                "engine.util.accuracy.Accuracy")
@@ -692,7 +691,7 @@ class RoRAbilitySubprocessor:
         properties = {}
 
         # Animation
-        ability_animation_id = current_unit["attack_sprite_id"].get_value()
+        ability_animation_id = current_unit["attack_sprite_id"].value
         if ability_animation_id > -1:
             property_ref = f"{ability_ref}.Animated"
             property_raw_api_object = RawAPIObject(property_ref,
@@ -705,12 +704,13 @@ class RoRAbilitySubprocessor:
             line.add_raw_api_object(property_raw_api_object)
 
             animations_set = []
-            animation_forward_ref = AoCAbilitySubprocessor.create_animation(line,
-                                                                            ability_animation_id,
-                                                                            property_ref,
-                                                                            ability_name,
-                                                                            "%s_"
-                                                                            % command_lookup_dict[command_id][1])
+            animation_forward_ref = AoCAbilitySubprocessor.create_animation(
+                line,
+                ability_animation_id,
+                property_ref,
+                ability_name,
+                f"{command_lookup_dict[command_id][1]}_"
+            )
             animations_set.append(animation_forward_ref)
             property_raw_api_object.add_raw_member("animations",
                                                    animations_set,
@@ -722,7 +722,7 @@ class RoRAbilitySubprocessor:
             })
 
         # Command Sound
-        ability_comm_sound_id = current_unit["command_sound_id"].get_value()
+        ability_comm_sound_id = current_unit["command_sound_id"].value
         if ability_comm_sound_id > -1:
             property_ref = f"{ability_ref}.CommandSound"
             property_raw_api_object = RawAPIObject(property_ref,
@@ -776,7 +776,7 @@ class RoRAbilitySubprocessor:
 
         # Projectile
         projectiles = []
-        projectile_primary = current_unit["attack_projectile_primary_unit_id"].get_value()
+        projectile_primary = current_unit["projectile_id0"].value
         if projectile_primary > -1:
             projectiles.append(ForwardRef(line,
                                           f"{game_entity_name}.ShootProjectile.Projectile0"))
@@ -797,18 +797,18 @@ class RoRAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
 
         # Range
-        min_range = current_unit["weapon_range_min"].get_value()
+        min_range = current_unit["weapon_range_min"].value
         ability_raw_api_object.add_raw_member("min_range",
                                               min_range,
                                               "engine.ability.type.ShootProjectile")
 
-        max_range = current_unit["weapon_range_max"].get_value()
+        max_range = current_unit["weapon_range_max"].value
         ability_raw_api_object.add_raw_member("max_range",
                                               max_range,
                                               "engine.ability.type.ShootProjectile")
 
         # Reload time and delay
-        reload_time = current_unit["attack_speed"].get_value()
+        reload_time = current_unit["attack_speed"].value
         ability_raw_api_object.add_raw_member("reload_time",
                                               reload_time,
                                               "engine.ability.type.ShootProjectile")
@@ -820,7 +820,7 @@ class RoRAbilitySubprocessor:
         else:
             frame_rate = 0
 
-        spawn_delay_frames = current_unit["frame_delay"].get_value()
+        spawn_delay_frames = current_unit["frame_delay"].value
         spawn_delay = frame_rate * spawn_delay_frames
         ability_raw_api_object.add_raw_member("spawn_delay",
                                               spawn_delay,
@@ -849,9 +849,9 @@ class RoRAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
 
         # Spawning area
-        spawning_area_offset_x = current_unit["weapon_offset"][0].get_value()
-        spawning_area_offset_y = current_unit["weapon_offset"][1].get_value()
-        spawning_area_offset_z = current_unit["weapon_offset"][2].get_value()
+        spawning_area_offset_x = current_unit["weapon_offset"][0].value
+        spawning_area_offset_y = current_unit["weapon_offset"][1].value
+        spawning_area_offset_z = current_unit["weapon_offset"][2].value
 
         ability_raw_api_object.add_raw_member("spawning_area_offset_x",
                                               spawning_area_offset_x,

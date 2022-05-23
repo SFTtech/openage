@@ -333,7 +333,7 @@ class CABFile(FileCollection):
 
             elif compression_type == 3:
                 window_bits = (folder.typeCompress >> 8) & 0x1f
-                folder.comp_name = "LZX (window_bits = %d)" % window_bits
+                folder.comp_name = f"LZX (window_bits = {window_bits:d})"
 
                 from .lzxdstream import LZXDStream
                 from ..util.filelike.stream import StreamSeekBuffer
@@ -346,8 +346,7 @@ class CABFile(FileCollection):
                 folder.plain_stream = StreamSeekBuffer(unseekable_plain_stream)
 
             else:
-                raise Exception("Unknown compression type %d"
-                                % compression_type)
+                raise Exception(f"Unknown compression type {compression_type:d}")
 
             dbg(folder)
             yield folder

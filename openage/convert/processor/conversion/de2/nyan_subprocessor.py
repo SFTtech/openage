@@ -199,14 +199,14 @@ class DE2NyanSubprocessor:
         # =======================================================================
         # Create or use existing auxiliary types
         types_set = []
-        unit_type = current_unit["unit_type"].get_value()
+        unit_type = current_unit["unit_type"].value
 
         if unit_type >= 70:
             type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object(
             )
             types_set.append(type_obj)
 
-        unit_class = current_unit["unit_class"].get_value()
+        unit_class = current_unit["unit_class"].value
         class_name = class_lookup_dict[unit_class]
         class_obj_name = f"util.game_entity_type.types.{class_name}"
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
@@ -405,14 +405,14 @@ class DE2NyanSubprocessor:
         # =======================================================================
         # Create or use existing auxiliary types
         types_set = []
-        unit_type = current_building["unit_type"].get_value()
+        unit_type = current_building["unit_type"].value
 
         if unit_type >= 80:
             type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(
             )
             types_set.append(type_obj)
 
-        unit_class = current_building["unit_class"].get_value()
+        unit_class = current_building["unit_class"].value
         class_name = class_lookup_dict[unit_class]
         class_obj_name = f"util.game_entity_type.types.{class_name}"
         type_obj = dataset.pregen_nyan_objects[class_obj_name].get_nyan_object()
@@ -742,13 +742,13 @@ class DE2NyanSubprocessor:
         # Ambience
         # =======================================================================
         terrain = terrain_group.get_terrain()
-        # ambients_count = terrain["terrain_units_used_count"].get_value()
+        # ambients_count = terrain["terrain_units_used_count"].value
 
         ambience = []
         # TODO: Ambience
 # ===============================================================================
 #         for ambient_index in range(ambients_count):
-#             ambient_id = terrain["terrain_unit_id"][ambient_index].get_value()
+#             ambient_id = terrain["terrain_unit_id"][ambient_index].value
 #
 #             if ambient_id == -1:
 #                 continue
@@ -771,7 +771,7 @@ class DE2NyanSubprocessor:
 #                                                   "engine.util.terrain.TerrainAmbient")
 #
 #             # Max density
-#             max_density = terrain["terrain_unit_density"][ambient_index].get_value()
+#             max_density = terrain["terrain_unit_density"][ambient_index].value
 #             ambient_raw_api_object.add_raw_member("max_density",
 #                                                   max_density,
 #                                                   "engine.util.terrain.TerrainAmbient")

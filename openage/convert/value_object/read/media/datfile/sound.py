@@ -5,7 +5,7 @@ from __future__ import annotations
 import typing
 
 
-from .....entity_object.conversion.genie_structure import GenieStructure
+from ...genie_structure import GenieStructure
 from ....read.member_access import READ_GEN, READ, SKIP
 from ....read.read_members import SubdataMember
 from ....read.value_members import StorageType
@@ -32,7 +32,7 @@ class SoundItem(GenieStructure):
             data_format.extend([
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_len]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[name_len]"),
             ])
         elif game_version.edition.game_id == "SWGB":
             data_format.extend([
@@ -58,6 +58,8 @@ class SoundItem(GenieStructure):
 
 
 class Sound(GenieStructure):
+
+    dynamic_load = True
 
     @classmethod
     def get_data_format_members(

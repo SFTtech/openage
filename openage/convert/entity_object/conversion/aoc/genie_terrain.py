@@ -78,13 +78,13 @@ class GenieTerrainGroup(ConverterObjectGroup):
         """
         Checks if this terrain uses a subterrain for its graphics.
         """
-        return self.terrain["terrain_replacement_id"].get_value() > -1
+        return self.terrain["terrain_replacement_id"].value > -1
 
     def get_subterrain(self) -> GenieTerrainObject:
         """
         Return the subterrain used for the graphics.
         """
-        return self.data.genie_terrains[self.terrain["terrain_replacement_id"].get_value()]
+        return self.data.genie_terrains[self.terrain["terrain_replacement_id"].value]
 
     def get_terrain(self) -> GenieTerrainObject:
         """

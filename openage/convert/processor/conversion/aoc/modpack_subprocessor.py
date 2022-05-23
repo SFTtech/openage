@@ -97,7 +97,7 @@ class AoCModpackSubprocessor:
             obj_filename = raw_api_object.get_filename()
             nyan_file_path = f"{modpack.name}/{obj_location}{obj_filename}"
 
-            if nyan_file_path in created_nyan_files.keys():
+            if nyan_file_path in created_nyan_files:
                 nyan_file = created_nyan_files[nyan_file_path]
 
             else:

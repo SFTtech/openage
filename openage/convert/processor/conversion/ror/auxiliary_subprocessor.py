@@ -100,8 +100,8 @@ class RoRAuxiliarySubprocessor:
 
         if isinstance(line, GenieBuildingLineGroup) or line.get_class_id() in (2, 13, 20, 21, 22):
             # Cost (repair) for buildings
-            cost_repair_name = "%s.CreatableGameEntity.%sRepairCost" % (game_entity_name,
-                                                                        game_entity_name)
+            cost_repair_name = (f"{game_entity_name}.CreatableGameEntity."
+                                f"{game_entity_name}RepairCost")
             cost_repair_raw_api_object = RawAPIObject(cost_repair_name,
                                                       f"{game_entity_name}RepairCost",
                                                       dataset.nyan_api_objects)
@@ -117,8 +117,8 @@ class RoRAuxiliarySubprocessor:
 
         cost_amounts = []
         cost_repair_amounts = []
-        for resource_amount in current_unit["resource_cost"].get_value():
-            resource_id = resource_amount["type_id"].get_value()
+        for resource_amount in current_unit["resource_cost"].value:
+            resource_id = resource_amount["type_id"].value
 
             resource = None
             resource_name = ""
@@ -148,10 +148,10 @@ class RoRAuxiliarySubprocessor:
                 continue
 
             # Skip resources that are only expected to be there
-            if not resource_amount["enabled"].get_value():
+            if not resource_amount["enabled"].value:
                 continue
 
-            amount = resource_amount["amount"].get_value()
+            amount = resource_amount["amount"].value
 
             cost_amount_name = f"{cost_name}.{resource_name}Amount"
             cost_amount = RawAPIObject(cost_amount_name,
@@ -209,7 +209,7 @@ class RoRAuxiliarySubprocessor:
                                                 "engine.util.create.CreatableGameEntity")
         # Creation time
         if isinstance(line, GenieUnitLineGroup):
-            creation_time = current_unit["creation_time"].get_value()
+            creation_time = current_unit["creation_time"].value
 
         else:
             # Buildings are created immediately
@@ -220,7 +220,7 @@ class RoRAuxiliarySubprocessor:
                                                 "engine.util.create.CreatableGameEntity")
 
         # Creation sound
-        creation_sound_id = current_unit["train_sound_id"].get_value()
+        creation_sound_id = current_unit["train_sound_id"].value
 
         # Create sound object
         obj_name = f"{game_entity_name}.CreatableGameEntity.Sound"
@@ -296,8 +296,8 @@ class RoRAuxiliarySubprocessor:
                                                 1.0,
                                                 "engine.util.placement_mode.type.Place")
             # Clearance size
-            clearance_size_x = current_unit["clearance_size_x"].get_value()
-            clearance_size_y = current_unit["clearance_size_y"].get_value()
+            clearance_size_x = current_unit["clearance_size_x"].value
+            clearance_size_y = current_unit["clearance_size_y"].value
             place_raw_api_object.add_raw_member("clearance_size_x",
                                                 clearance_size_x,
                                                 "engine.util.placement_mode.type.Place")
@@ -311,7 +311,7 @@ class RoRAuxiliarySubprocessor:
                                                 "engine.util.placement_mode.type.Place")
 
             # Max elevation difference
-            elevation_mode = current_unit["elevation_mode"].get_value()
+            elevation_mode = current_unit["elevation_mode"].value
             if elevation_mode == 2:
                 max_elevation_difference = 0
 

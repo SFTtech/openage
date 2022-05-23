@@ -5,7 +5,7 @@ from __future__ import annotations
 import typing
 
 from . import unit
-from .....entity_object.conversion.genie_structure import GenieStructure
+from ...genie_structure import GenieStructure
 from ....read.member_access import READ, READ_GEN, SKIP
 from ....read.read_members import MultisubtypeMember, EnumLookupMember
 from ....read.value_members import StorageType
@@ -35,11 +35,11 @@ class Civ(GenieStructure):
             data_format.extend([
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[name_len]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[name_len]"),
             ])
         else:
             data_format.extend([
-                (READ_GEN, "name", StorageType.STRING_MEMBER, "char[20]"),
+                (SKIP, "name", StorageType.STRING_MEMBER, "char[20]"),
             ])
 
         data_format.extend([

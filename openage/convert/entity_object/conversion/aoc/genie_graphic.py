@@ -63,10 +63,10 @@ class GenieGraphic(ConverterObject):
         """
         Add references for the direct subgraphics to this object.
         """
-        graphic_deltas = self["graphic_deltas"].get_value()
+        graphic_deltas = self["graphic_deltas"].value
 
         for subgraphic in graphic_deltas:
-            graphic_id = subgraphic["graphic_id"].get_value()
+            graphic_id = subgraphic["graphic_id"].value
 
             # Ignore invalid IDs
             if graphic_id not in self.data.genie_graphics.keys():
@@ -82,7 +82,7 @@ class GenieGraphic(ConverterObject):
         Returns the time taken to display all frames in this graphic.
         """
         head_graphic = self.data.genie_graphics[self.get_id()]
-        return head_graphic["frame_rate"].get_value() * head_graphic["frame_count"].get_value()
+        return head_graphic["frame_rate"].value * head_graphic["frame_count"].value
 
     def get_subgraphics(self) -> list[GenieGraphic]:
         """
@@ -95,7 +95,7 @@ class GenieGraphic(ConverterObject):
         Returns the time taken to display a single frame in this graphic.
         """
         head_graphic = self.data.genie_graphics[self.get_id()]
-        return head_graphic["frame_rate"].get_value()
+        return head_graphic["frame_rate"].value
 
     def is_shared(self) -> bool:
         """
