@@ -514,6 +514,34 @@ class AoCUpgradeAttributeSubprocessor:
         return patches
 
     @staticmethod
+    def attack_warning_sound_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the attack warning sound modify effect (ID: 26).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: int, float
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
     def blast_radius_upgrade(
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
@@ -1355,6 +1383,34 @@ class AoCUpgradeAttributeSubprocessor:
 
         wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
         patches.append(wrapper_forward_ref)
+
+        return patches
+
+    @staticmethod
+    def ignore_armor_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the ignore armor effect (ID: 63).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: int, float
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
 
         return patches
 
@@ -2571,6 +2627,34 @@ class AoCUpgradeAttributeSubprocessor:
         patches = []
 
         # Unused in AoC
+
+        return patches
+
+    @staticmethod
+    def train_button_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the train button modify effect (ID: 43).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: int, float
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
 
         return patches
 

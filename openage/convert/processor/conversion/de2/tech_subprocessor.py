@@ -54,12 +54,16 @@ class DE2TechSubprocessor:
 
         # TODO: These refer to different atributes in DE2
         24: AoCUpgradeAttributeSubprocessor.imperial_tech_id_upgrade,
+        26: AoCUpgradeAttributeSubprocessor.attack_warning_sound_upgrade,
         42: AoCUpgradeAttributeSubprocessor.standing_wonders_upgrade,
+        43: AoCUpgradeAttributeSubprocessor.train_button_upgrade,
         46: AoCUpgradeAttributeSubprocessor.tribute_inefficiency_upgrade,
         48: AoCUpgradeAttributeSubprocessor.tc_available_upgrade,
         49: AoCUpgradeAttributeSubprocessor.gold_counter_upgrade,
         57: AoCUpgradeAttributeSubprocessor.kidnap_storage_upgrade,
 
+        30: DE2UpgradeAttributeSubprocessor.herdable_garrison_capacity_upgrade,
+        63: AoCUpgradeAttributeSubprocessor.ignore_armor_upgrade,
         100: AoCUpgradeAttributeSubprocessor.resource_cost_upgrade,
         101: AoCUpgradeAttributeSubprocessor.creation_time_upgrade,
         102: AoCUpgradeAttributeSubprocessor.min_projectiles_upgrade,
@@ -70,6 +74,7 @@ class DE2TechSubprocessor:
         107: AoCUpgradeAttributeSubprocessor.max_projectiles_upgrade,
         108: AoCUpgradeAttributeSubprocessor.garrison_heal_upgrade,
         109: DE2UpgradeAttributeSubprocessor.regeneration_rate_upgrade,
+        110: DE2UpgradeAttributeSubprocessor.villager_pop_space_upgrade,
     }
 
     upgrade_resource_funcs = {
@@ -131,6 +136,14 @@ class DE2TechSubprocessor:
         238: DE2UpgradeResourceSubprocessor.folwark_flag_upgrade,
         239: DE2UpgradeResourceSubprocessor.folwark_mill_id_upgrade,
         241: DE2UpgradeResourceSubprocessor.stone_gold_gen_upgrade,
+        242: DE2UpgradeResourceSubprocessor.workshop_food_gen_upgrade,
+        243: DE2UpgradeResourceSubprocessor.workshop_wood_gen_upgrade,
+        244: DE2UpgradeResourceSubprocessor.workshop_stone_gen_upgrade,
+        245: DE2UpgradeResourceSubprocessor.workshop_gold_gen_upgrade,
+        251: DE2UpgradeResourceSubprocessor.trade_food_bonus_upgrade,
+        254: DE2UpgradeResourceSubprocessor.herdable_garrison_upgrade,
+        262: DE2UpgradeResourceSubprocessor.bengali_conversion_resistance_upgrade,
+        266: DE2UpgradeResourceSubprocessor.doi_paper_money_upgrade,
     }
 
     @classmethod

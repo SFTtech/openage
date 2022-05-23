@@ -25,6 +25,36 @@ class DE2UpgradeAttributeSubprocessor:
     """
 
     @staticmethod
+    def herdable_garrison_capacity_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the herdable garrison capacity modify effect (ID: 30).
+
+        TODO: Move into AK processor.
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: int, float
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
     def regeneration_rate_upgrade(
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
@@ -34,6 +64,36 @@ class DE2UpgradeAttributeSubprocessor:
     ) -> list[ForwardRef]:
         """
         Creates a patch for the regeneration rate modify effect (ID: 109).
+
+        TODO: Move into AK processor.
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Unit/Building line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: int, float
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def villager_pop_space_upgrade(
+        converter_group: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the villager pop space modify effect (ID: 110).
 
         TODO: Move into AK processor.
 

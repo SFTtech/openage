@@ -24,6 +24,31 @@ class DE2UpgradeResourceSubprocessor:
     """
 
     @staticmethod
+    def bengali_conversion_resistance_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the bengali conversion resistance effect (ID: 262).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
     def burgundian_vineyards_upgrade(
         converter_group: ConverterObjectGroup,
         value: typing.Union[int, float],
@@ -342,6 +367,31 @@ class DE2UpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
+    def doi_paper_money_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the Paper Money effect in Dynasties of India (ID: 266).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
     def elevation_attack_upgrade(
         converter_group: ConverterObjectGroup,
         value: typing.Union[int, float],
@@ -550,6 +600,31 @@ class DE2UpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
+    def herdable_garrison_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the herdable garrison effect (ID: 254).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
     def relic_food_production_upgrade(
         converter_group: ConverterObjectGroup,
         value: typing.Union[int, float],
@@ -635,6 +710,131 @@ class DE2UpgradeResourceSubprocessor:
     ) -> list[ForwardRef]:
         """
         Creates a patch for the polish stone gold generation effect (ID: 241).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def trade_food_bonus_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the trade food bonus effect (ID: 251).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def workshop_food_gen_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the workshop food generation effect (ID: 242).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def workshop_wood_gen_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the workshop wood generation effect (ID: 243).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def workshop_stone_gen_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the workshop stone generation effect (ID: 244).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def workshop_gold_gen_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the workshop gold generation effect (ID: 245).
 
         :param converter_group: Tech/Civ that gets the patch.
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
