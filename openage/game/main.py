@@ -91,10 +91,10 @@ def main(args, error):
 
     # Exit here with an explanation because the converted assets are incompatible!
     # Remove this when the gamestate works again
-    info("Generated nyan assets are not yet compatible to the engine.")
-    info("Please revert to release v0.4.1 if you want to test the previous working gamestate.")
-    info("Exiting...")
-    sys.exit()
+    # info("Generated nyan assets are not yet compatible to the engine.")
+    # info("Please revert to release v0.4.1 if you want to test the previous working gamestate.")
+    # info("Exiting...")
+    # sys.exit()
 
     # start the game, continue in main_cpp.pyx!
     return run_game(args, root)
