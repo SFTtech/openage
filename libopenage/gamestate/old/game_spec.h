@@ -17,7 +17,7 @@
 
 namespace openage {
 
-class AssetManager;
+class LegacyAssetManager;
 class GameSpec;
 class UnitType;
 class UnitTypeMeta;
@@ -54,7 +54,7 @@ public:
  * this currently includes unit types and terrain types
  * This provides a system which can easily allow game modding
  *
- * uses the AssetManager to gather
+ * uses the LegacyAssetManager to gather
  * graphic data, composite textures and sounds.
  *
  * all types are sorted and stored by id values,
@@ -65,7 +65,7 @@ public:
  */
 class GameSpec {
 public:
-	GameSpec(AssetManager *am);
+	GameSpec(LegacyAssetManager *am);
 	virtual ~GameSpec();
 
 	/**
@@ -137,7 +137,7 @@ public:
 	 * Return the asset manager used for loading resources
 	 * of this game specification.
 	 */
-	AssetManager *get_asset_manager() const;
+	LegacyAssetManager *get_asset_manager() const;
 
 private:
 	/**
@@ -184,7 +184,7 @@ private:
 	/**
 	 * Asset management entity that is responsible for textures, sounds, etc.
 	 */
-	AssetManager *assetmanager;
+	LegacyAssetManager *assetmanager;
 
 	/**
 	 * The full original gamedata tree.
@@ -256,7 +256,7 @@ public:
 	/**
 	 * invoked from qml when the asset_manager member is set.
 	 */
-	void set_asset_manager(AssetManager *asset_manager);
+	void set_asset_manager(LegacyAssetManager *asset_manager);
 
 	/**
 	 * Return if the specification was fully loaded.
@@ -305,7 +305,7 @@ private:
 	 */
 	bool active;
 
-	AssetManager *asset_manager;
+	LegacyAssetManager *asset_manager;
 
 public:
 	std::shared_ptr<GameSpecSignals> gui_signals;

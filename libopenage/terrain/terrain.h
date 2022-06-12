@@ -9,13 +9,13 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../assetmanager.h"
 #include "../coord/chunk.h"
 #include "../coord/phys.h"
 #include "../coord/pixel.h"
 #include "../coord/tile.h"
 #include "../texture.h"
 #include "../util/misc.h"
+#include "assets/assetmanager.h"
 
 namespace openage {
 

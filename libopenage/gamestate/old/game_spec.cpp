@@ -4,7 +4,6 @@
 
 #include <tuple>
 
-#include "../../assetmanager.h"
 #include "../../audio/error.h"
 #include "../../audio/resource_def.h"
 #include "../../engine.h"
@@ -17,12 +16,13 @@
 #include "../../util/compiler.h"
 #include "../../util/strings.h"
 #include "../../util/timer.h"
+#include "assets/assetmanager.h"
 #include "civilisation.h"
 
 
 namespace openage {
 
-GameSpec::GameSpec(AssetManager *am) :
+GameSpec::GameSpec(LegacyAssetManager *am) :
 	assetmanager{am},
 	gamedata_loaded{false} {
 }
@@ -180,7 +180,7 @@ void GameSpec::create_unit_types(unit_meta_list &objects, int civ_id) const {
 }
 
 
-AssetManager *GameSpec::get_asset_manager() const {
+LegacyAssetManager *GameSpec::get_asset_manager() const {
 	return this->assetmanager;
 }
 
@@ -442,7 +442,7 @@ void GameSpecHandle::set_active(bool active) {
 	this->start_loading_if_needed();
 }
 
-void GameSpecHandle::set_asset_manager(AssetManager *asset_manager) {
+void GameSpecHandle::set_asset_manager(LegacyAssetManager *asset_manager) {
 	if (this->asset_manager != asset_manager) {
 		this->asset_manager = asset_manager;
 

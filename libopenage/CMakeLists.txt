@@ -329,7 +329,6 @@ get_codegen_scu_file()
 # are specified above the source file list.
 
 add_sources(libopenage
-	assetmanager.cpp
 	engine.cpp
 	handlers.cpp
 	main.cpp
@@ -347,6 +346,7 @@ pxdgen(
 )
 
 # add subsystem folders
+add_subdirectory("assets")
 add_subdirectory("audio")
 add_subdirectory("console")
 add_subdirectory("control")

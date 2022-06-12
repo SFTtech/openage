@@ -8,9 +8,8 @@
 #include <string>
 #include <unordered_map>
 
-#include "util/path.h"
-
 #include "presenter/legacy/legacy.h"
+#include "util/path.h"
 
 namespace qtsdl {
 class GuiItemLink;
@@ -25,9 +24,9 @@ class Texture;
  * Container class for all available assets.
  * Responsible for loading, providing and updating requested files.
  */
-class AssetManager final {
+class LegacyAssetManager final {
 public:
-	explicit AssetManager(qtsdl::GuiItemLink *gui_link);
+	explicit LegacyAssetManager(qtsdl::GuiItemLink *gui_link);
 
 	/**
 	 * Return the path where assets are found in.
