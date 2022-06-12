@@ -4,15 +4,14 @@
 
 #include <eigen3/Eigen/Dense>
 
-#include "../log/log.h"
 #include "../gui/gui.h"
+#include "../log/log.h"
 #include "../util/path.h"
 
 
 namespace openage::presenter {
 
-Presenter::Presenter(const util::Path &root_dir)
-	:
+Presenter::Presenter(const util::Path &root_dir) :
 	root_dir{root_dir} {}
 
 
@@ -23,15 +22,15 @@ void Presenter::run() {
 
 	this->renderer = this->window->make_renderer();
 
-	this->window->add_resize_callback([&] (size_t w, size_t h) {
+	this->window->add_resize_callback([&](size_t w, size_t h) {
 		float aspectRatio = float(w) / float(h);
 		float x_scale = 1.0 / aspectRatio;
 
 		Eigen::Matrix4f pmat;
 		pmat << x_scale, 0, 0, 0,
-		              0, 1, 0, 0,
-		              0, 0, 1, 0,
-		              0, 0, 0, 1;
+			0, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 0, 0, 1;
 
 		// TODO!
 		/*
@@ -67,14 +66,14 @@ void Presenter::run() {
 	std::string qml_root_str = qml_root.resolve_native_path();
 	std::string qml_root_file_str = qml_root_file.resolve_native_path();
 
-	/*
-	this->gui = std::make_unique<gui::GUI>(
-		this->window,                // sdl window for the gui
-		qml_root_file_str,           // entry qml file, absolute path.
-		qml_root_str,                // directory to watch for qml file changes
-		&this->qml_info              // qml data: Engine *, the data directory, ...
-	);
-	*/
+
+	/* this->gui = std::make_unique<gui::GUI>(
+		this->window, // sdl window for the gui
+		qml_root_file_str, // entry qml file, absolute path.
+		qml_root_str, // directory to watch for qml file changes
+		qml_info // qml data: Engine *, the data directory, ...
+	); */
+
 	//// -- gui initialization
 
 	while (not this->window->should_close()) {
@@ -86,4 +85,4 @@ void Presenter::run() {
 	}
 }
 
-} // openage::presenter
+} // namespace openage::presenter

@@ -2,8 +2,9 @@
 
 #pragma once
 
-#include "../renderer/window.h"
-#include "../util/path.h"
+#include "gui/gui.h"
+#include "renderer/window.h"
+#include "util/path.h"
 
 
 namespace openage::presenter {
@@ -18,8 +19,9 @@ protected:
 	// TODO: remove and move into our config/settings system
 	util::Path root_dir;
 
+	std::shared_ptr<gui::GUI> gui;
 	std::shared_ptr<renderer::Window> window;
 	std::shared_ptr<renderer::Renderer> renderer;
 };
 
-} // openage::presenter
+} // namespace openage::presenter

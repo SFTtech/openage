@@ -38,7 +38,12 @@ int run_game(const main_arguments &args) {
 	cvar_manager->load_all();
 
 	// TODO: select run_mode by launch argument
-	openage::Engine::mode run_mode = Engine::mode::LEGACY;
+	openage::Engine::mode run_mode = Engine::mode::FULL;
+
+	if (run_mode != Engine::mode::LEGACY) {
+		auto presenter = presenter::Presenter(args.root_path);
+		presenter.run();
+	}
 
 	return 0;
 }
