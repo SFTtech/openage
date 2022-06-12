@@ -3,3 +3,5 @@ add_sources(libopenage
 )
 
 add_subdirectory("legacy")
+add_subdirectory("assets")
+
