@@ -18,6 +18,7 @@ pxdgen(
 )
 
 add_subdirectory(font/)
+add_subdirectory(gui/)
 add_subdirectory(resources/)
 
 if(OPENGL_FOUND)

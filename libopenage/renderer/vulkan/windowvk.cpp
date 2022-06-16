@@ -25,10 +25,9 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL vlk_debug_cb(
 	uint64_t /*obj*/,
 	size_t /*location*/,
 	int32_t /*code*/,
-	const char* layerPrefix,
-	const char* msg,
-	void* /*userData*/)
-{
+	const char *layerPrefix,
+	const char *msg,
+	void * /*userData*/) {
 	log::log(MSG(dbg) << layerPrefix << " " << msg);
 
 	return VK_FALSE;
@@ -43,7 +42,7 @@ static vlk_capabilities find_capabilities() {
 	auto layers = vk_do_ritual(vkEnumerateInstanceLayerProperties);
 
 	log::log(MSG(dbg) << "Available Vulkan layers:");
-	for (auto const& lr : layers) {
+	for (auto const &lr : layers) {
 		caps.layers.insert(lr.layerName);
 		log::log(MSG(dbg) << "\t" << lr.layerName);
 	}
@@ -56,41 +55,39 @@ static vlk_capabilities find_capabilities() {
 	// First retrieve non-layer extensions.
 	auto props = vk_do_ritual(vkEnumerateInstanceExtensionProperties, nullptr);
 
-	for (auto const& p : props) {
+	for (auto const &p : props) {
 		caps.extensions.emplace(p.extensionName);
 	}
 
 	// Then retrieve extensions from layers.
-	for (auto const& lr : layers) {
+	for (auto const &lr : layers) {
 		auto lr_props = vk_do_ritual(vkEnumerateInstanceExtensionProperties, lr.layerName);
 
-		for (auto const& p : lr_props) {
+		for (auto const &p : lr_props) {
 			caps.extensions.emplace(p.extensionName);
 		}
 	}
 
 	log::log(MSG(dbg) << "Available Vulkan extensions:");
-	for (const auto& ext : caps.extensions) {
+	for (const auto &ext : caps.extensions) {
 		log::log(MSG(dbg) << "\t" << ext);
 	}
 
 	return caps;
 }
 
-VlkWindow::VlkWindow(const char* title)
-	: Window(800, 600)
-	, capabilities(find_capabilities())
-{
+VlkWindow::VlkWindow(const char *title) :
+	Window(800, 600), capabilities(find_capabilities()) {
 	make_sdl_available();
 
+	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
 	this->window = SDL_CreateWindow(
 		title,
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
 		this->size[0],
 		this->size[1],
-		SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED
-	);
+		window_flags);
 
 	if (this->window == nullptr) {
 		throw Error{MSG(err) << "Failed to create SDL window: " << SDL_GetError()};
@@ -117,7 +114,7 @@ VlkWindow::VlkWindow(const char* title)
 	}
 
 	// The names of Vulkan layers which we need.
-	std::vector<const char*> layer_names;
+	std::vector<const char *> layer_names;
 #ifndef NDEBUG
 	layer_names.push_back("VK_LAYER_LUNARG_standard_validation");
 #endif
@@ -130,7 +127,7 @@ VlkWindow::VlkWindow(const char* title)
 	}
 
 	// Setup application description.
-	VkApplicationInfo app_info  = {};
+	VkApplicationInfo app_info = {};
 	app_info.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 	app_info.pApplicationName = title;
 	app_info.apiVersion = VK_MAKE_VERSION(1, 0, 57);
@@ -153,11 +150,11 @@ VlkWindow::VlkWindow(const char* title)
 	VkDebugReportCallbackCreateInfoEXT cb_info = {};
 	cb_info.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
 	cb_info.flags =
-	VK_DEBUG_REPORT_ERROR_BIT_EXT
-	| VK_DEBUG_REPORT_WARNING_BIT_EXT
-	| VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT
-	| VK_DEBUG_REPORT_INFORMATION_BIT_EXT
-	| VK_DEBUG_REPORT_DEBUG_BIT_EXT;
+		VK_DEBUG_REPORT_ERROR_BIT_EXT
+		| VK_DEBUG_REPORT_WARNING_BIT_EXT
+		| VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT
+		| VK_DEBUG_REPORT_INFORMATION_BIT_EXT
+		| VK_DEBUG_REPORT_DEBUG_BIT_EXT;
 	cb_info.pfnCallback = vlk_debug_cb;
 
 	VK_CALL_CHECKED(this->loader.vkCreateDebugReportCallbackEXT, this->instance, &cb_info, nullptr, &this->debug_callback);
@@ -178,6 +175,15 @@ VlkWindow::~VlkWindow() {
 	vkDestroyInstance(this->instance, nullptr);
 }
 
+std::shared_ptr<SDL_Window> VlkWindow::get_sdl_window() {
+	return std::shared_ptr<SDL_Window>(
+		this->window,
+		[](SDL_Window *window) {
+			log::log(MSG(info) << "Destroying SDL window...");
+			SDL_DestroyWindow(window);
+		});
+}
+
 VkInstance VlkWindow::get_instance() const {
 	return this->instance;
 }
@@ -186,4 +192,6 @@ VkSurfaceKHR VlkWindow::get_surface() const {
 	return this->surface;
 }
 
-}}} // openage::renderer::vulkan
+} // namespace vulkan
+} // namespace renderer
+} // namespace openage

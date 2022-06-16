@@ -76,6 +76,13 @@ public:
 	void add_resize_callback(const resize_cb_t &cb);
 
 	/**
+	 * Get the underlying SDL_Window that is used for drawing.
+	 *
+	 * @return Pointer to the SDL_Window.
+	 */
+	virtual std::shared_ptr<SDL_Window> get_sdl_window() = 0;
+
+	/**
 	 * Force this window to the given size. It's generally not a good idea to use this,
 	 * as it makes the window jump around wierdly.
 	 *

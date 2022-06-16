@@ -19,6 +19,8 @@ public:
 	GlWindow(const std::string &title, size_t width, size_t height);
 	~GlWindow() = default;
 
+	std::shared_ptr<SDL_Window> get_sdl_window() override;
+
 	void set_size(size_t width, size_t height) override;
 
 	void update() override;
@@ -43,4 +45,6 @@ private:
 	std::shared_ptr<opengl::GlContext> context;
 };
 
-}}} // namespace openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage
