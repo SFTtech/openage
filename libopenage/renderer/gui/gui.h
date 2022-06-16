@@ -21,8 +21,6 @@ namespace gui {
 
 /**
  * Main entry point for the openage Qt-based user interface.
- *
- * Legacy variant for the "old" renderer.
  */
 class GUI {
 public:

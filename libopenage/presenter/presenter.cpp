@@ -32,17 +32,16 @@ void Presenter::run() {
 			0, 0, 0, 1;
 
 		// TODO!
-		/*
-		proj_unif->update("proj", pmat);
+		/* proj_unif->update("proj", pmat);
 
-		color_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::rgba8));
-		id_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::r32ui));
-		depth_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::depth24));
-		fbo = renderer->create_texture_target( { color_texture, id_texture, depth_texture } );
+		auto color_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::rgba8));
+		auto id_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::r32ui));
+		auto depth_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::depth24));
+		auto fbo = renderer->create_texture_target({color_texture, id_texture, depth_texture});
 
 		color_texture_unif->update("color_texture", color_texture);
 
-		texture_data_valid = false;
+		auto texture_data_valid = false;
 		pass1->set_target(fbo);
 		*/
 	});
