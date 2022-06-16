@@ -1,5 +1,10 @@
 // Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
+/**
+ * TODO: Deprecated in favor of presenter/assets/asset_manager.h
+ *
+ */
+
 #pragma once
 
 #include "config.h"
