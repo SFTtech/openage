@@ -214,7 +214,6 @@ def bindir_creation(args, defines):
     if not args.dry_run:
         os.makedirs(bindir, exist_ok=True)
 
-
     def forcesymlink(linkto, name):
         """ similar in function to ln -sf """
         if args.dry_run:
@@ -247,7 +246,7 @@ def invoke_cmake(args, bindir, defines, options):
     for key, val in sorted(defines.items()):
         print('%s | %s' % (key.rjust(maxkeylen), val))
 
-        if key in {'cxx_compiler',}:
+        if key in ('cxx_compiler', ):
             # work around this cmake 'feature':
             # when run in an existing build directory, if CXX is given,
             # all other arguments are ignored... this is retarded.
