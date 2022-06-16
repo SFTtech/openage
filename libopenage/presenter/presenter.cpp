@@ -4,9 +4,8 @@
 
 #include <eigen3/Eigen/Dense>
 
-#include "../gui/gui.h"
-#include "../log/log.h"
-#include "../util/path.h"
+#include "log/log.h"
+#include "util/path.h"
 
 
 namespace openage::presenter {
@@ -54,6 +53,11 @@ void Presenter::run() {
 		throw Error{ERR << "could not find qml root folder " << qml_root};
 	}
 
+	util::Path qml_assets = this->root_dir / "assets";
+	if (not qml_assets.is_dir()) {
+		throw Error{ERR << "could not find asset root folder " << qml_assets};
+	}
+
 	util::Path qml_root_file = qml_root / "main.qml";
 	if (not qml_root_file.is_file()) {
 		throw Error{ERR << "could not find main.qml file " << qml_root_file};
@@ -63,16 +67,13 @@ void Presenter::run() {
 	//       library has to be integrated into qt. For now,
 	//       figure out the absolute paths here and pass them in.
 
-	std::string qml_root_str = qml_root.resolve_native_path();
-	std::string qml_root_file_str = qml_root_file.resolve_native_path();
-
-
-	/* this->gui = std::make_unique<gui::GUI>(
-		this->window, // sdl window for the gui
-		qml_root_file_str, // entry qml file, absolute path.
-		qml_root_str, // directory to watch for qml file changes
-		qml_info // qml data: Engine *, the data directory, ...
-	); */
+	this->gui = std::make_shared<renderer::gui::GUI>(
+		this->window, // window for the gui
+		qml_root, // entry qml file, absolute path.
+		qml_root_file, // directory to watch for qml file changes
+		qml_assets, // qml data: Engine *, the data directory, ...
+		this->renderer // renderer
+	);
 
 	//// -- gui initialization
 

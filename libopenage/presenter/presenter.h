@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "gui/gui.h"
+#include "renderer/gui/gui.h"
 #include "renderer/window.h"
 #include "util/path.h"
 
@@ -13,13 +13,17 @@ class Presenter {
 public:
 	Presenter(const util::Path &path);
 
+	/**
+	 * Start the presenter and initialize subsystems.
+	 *
+	 */
 	void run();
 
 protected:
 	// TODO: remove and move into our config/settings system
 	util::Path root_dir;
 
-	std::shared_ptr<gui::GUI> gui;
+	std::shared_ptr<renderer::gui::GUI> gui;
 	std::shared_ptr<renderer::Window> window;
 	std::shared_ptr<renderer::Renderer> renderer;
 };
