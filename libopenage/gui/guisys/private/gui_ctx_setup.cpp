@@ -6,24 +6,21 @@
 
 #include <QOpenGLDebugLogger>
 
-#include "platforms/context_extraction.h"
 #include "opengl_debug_logger.h"
+#include "platforms/context_extraction.h"
 
 namespace qtsdl {
 
-CtxExtractionException::CtxExtractionException(const std::string &what_arg)
-	:
+CtxExtractionException::CtxExtractionException(const std::string &what_arg) :
 	std::runtime_error{what_arg} {
 }
 
-QOpenGLContext* CtxExtractionMode::get_ctx() {
+QOpenGLContext *CtxExtractionMode::get_ctx() {
 	return &this->ctx;
 }
 
-GuiUniqueRenderingContext::GuiUniqueRenderingContext(SDL_Window *window)
-	:
+GuiUniqueRenderingContext::GuiUniqueRenderingContext(SDL_Window *window) :
 	CtxExtractionMode{} {
-
 	QVariant handle;
 	WId id;
 
@@ -36,7 +33,7 @@ GuiUniqueRenderingContext::GuiUniqueRenderingContext(SDL_Window *window)
 		assert(this->ctx.isValid());
 
 		// reuse the sdl window
-		QWindow *w = QWindow::fromWinId(id);
+		QWindow *w = QWindow::fromWinId(id); // fails on Wayland!
 		w->setSurfaceType(QSurface::OpenGLSurface);
 
 		if (this->ctx.makeCurrent(w)) {
@@ -53,10 +50,8 @@ void GuiUniqueRenderingContext::pre_render() {
 void GuiUniqueRenderingContext::post_render() {
 }
 
-GuiSeparateRenderingContext::GuiSeparateRenderingContext(SDL_Window *window)
-	:
+GuiSeparateRenderingContext::GuiSeparateRenderingContext(SDL_Window *window) :
 	CtxExtractionMode{} {
-
 	QVariant handle;
 
 	std::tie(handle, this->make_current_back) = extract_native_context_and_switchback_func(window);
@@ -80,7 +75,8 @@ GuiSeparateRenderingContext::GuiSeparateRenderingContext(SDL_Window *window)
 		this->pre_render();
 		apply_opengl_debug_parameters(context_debug_parameters, this->ctx);
 		this->post_render();
-	} else {
+	}
+	else {
 		throw CtxExtractionException("creating separate context for GUI failed");
 	}
 }

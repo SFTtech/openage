@@ -17,7 +17,9 @@ class GuiSingletonItemsInfo;
  */
 class GuiEngine {
 public:
-	explicit GuiEngine(GuiRenderer *renderer, const std::vector<GuiImageProvider*> &image_providers=std::vector<GuiImageProvider*>(), GuiSingletonItemsInfo *singleton_items_info=nullptr);
+	explicit GuiEngine(GuiRenderer *renderer,
+	                   const std::vector<GuiImageProvider *> &image_providers = std::vector<GuiImageProvider *>(),
+	                   GuiSingletonItemsInfo *singleton_items_info = nullptr);
 	~GuiEngine();
 
 private:
