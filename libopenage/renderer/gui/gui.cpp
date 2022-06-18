@@ -62,6 +62,22 @@ GUI::GUI(std::shared_ptr<Window> window,
 	text_frag_file.close();
 
 	this->textured_screen_quad_shader = renderer->add_shader({text_vert_shader, text_frag_shader});
+
+	window->add_key_callback([&](SDL_KeyboardEvent const &event) {
+		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
+		this->input.process(&ev);
+	});
+	window->add_mouse_button_callback([&](SDL_MouseButtonEvent const &event) {
+		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
+		this->input.process(&ev);
+	});
+	window->add_mouse_wheel_callback([&](SDL_MouseWheelEvent const &event) {
+		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
+		this->input.process(&ev);
+	});
+	window->add_resize_callback([&](size_t width, size_t height) {
+		this->gui_renderer.resize(width, height);
+	});
 }
 
 void GUI::process_events() {

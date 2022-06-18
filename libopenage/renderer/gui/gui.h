@@ -53,6 +53,7 @@ private:
 	qtsdl::GuiSubtree subtree;
 	qtsdl::GuiInput input;
 
+	// useless?
 	std::shared_ptr<ShaderProgram> textured_screen_quad_shader;
 };
 
