@@ -33,6 +33,7 @@ public:
 	~VlkWindow();
 
 	std::shared_ptr<SDL_Window> get_sdl_window() override;
+	// SDL_Window *get_sdl_window() override;
 
 	VkInstance get_instance() const;
 	VkSurfaceKHR get_surface() const;

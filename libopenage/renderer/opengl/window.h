@@ -20,6 +20,7 @@ public:
 	~GlWindow() = default;
 
 	std::shared_ptr<SDL_Window> get_sdl_window() override;
+	// SDL_Window *get_sdl_window() override;
 
 	void set_size(size_t width, size_t height) override;
 

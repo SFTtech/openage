@@ -56,18 +56,21 @@ public:
 	 * @param cb Callback function.
 	 */
 	void add_key_callback(const key_cb_t &cb);
+
 	/**
 	 * Register a function that executes when a mouse button is pressed.
 	 *
 	 * @param cb Callback function.
 	 */
 	void add_mouse_button_callback(const mouse_button_cb_t &cb);
+
 	/**
 	 * Register a function that executes when a mouse wheel action is used.
 	 *
 	 * @param cb Callback function.
 	 */
 	void add_mouse_wheel_callback(const mouse_wheel_cb_t &cb);
+
 	/**
 	 * Register a function that executes when the window is resized.
 	 *
@@ -81,6 +84,7 @@ public:
 	 * @return Pointer to the SDL_Window.
 	 */
 	virtual std::shared_ptr<SDL_Window> get_sdl_window() = 0;
+	// virtual SDL_Window *get_sdl_window() = 0;
 
 	/**
 	 * Force this window to the given size. It's generally not a good idea to use this,

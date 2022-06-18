@@ -47,6 +47,10 @@ std::shared_ptr<SDL_Window> GlWindow::get_sdl_window() {
 	return this->window;
 }
 
+/* SDL_Window *GlWindow::get_sdl_window() {
+	return this->window.get();
+} */
+
 void GlWindow::set_size(size_t width, size_t height) {
 	if (this->size[0] != width || this->size[1] != height) {
 		SDL_SetWindowSize(this->window.get(), width, height);
