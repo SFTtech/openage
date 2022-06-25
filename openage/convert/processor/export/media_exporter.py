@@ -17,6 +17,7 @@ from openage.convert.service.export.load_media_cache import load_media_cache
 from openage.convert.value_object.read.media.blendomatic import Blendomatic
 from openage.convert.value_object.read.media_types import MediaType
 from openage.log import dbg, get_loglevel
+from openage.util.strings import format_progress
 
 if typing.TYPE_CHECKING:
     from argparse import Namespace
@@ -69,22 +70,30 @@ class MediaExporter:
                 kwargs["palettes"] = args.palettes
                 kwargs["compression_level"] = args.compression_level
                 export_func = MediaExporter._export_terrain
+                print("-- Exporting terrain files...")
 
             elif media_type is MediaType.GRAPHICS:
                 kwargs["palettes"] = args.palettes
                 kwargs["compression_level"] = args.compression_level
                 kwargs["cache_info"] = cache_info
                 export_func = MediaExporter._export_graphics
+                print("-- Exporting graphics files...")
 
             elif media_type is MediaType.SOUNDS:
                 export_func = MediaExporter._export_sound
+                print("-- Exporting sound files...")
 
             elif media_type is MediaType.BLEND:
                 kwargs["blend_mode_count"] = args.blend_mode_count
                 export_func = MediaExporter._export_blend
+                print("-- Exporting blend files...")
 
+            export_count = 1
+            total_count = len(cur_export_requests)
             for request in cur_export_requests:
                 export_func(request, sourcedir, exportdir, **kwargs)
+                print(f"-- Files done: {format_progress(export_count, total_count)}", end = "\r", flush = True)
+                export_count += 1
 
         if args.debug_info > 5:
             cachedata = {}
