@@ -92,7 +92,8 @@ class MediaExporter:
             total_count = len(cur_export_requests)
             for request in cur_export_requests:
                 export_func(request, sourcedir, exportdir, **kwargs)
-                print(f"-- Files done: {format_progress(export_count, total_count)}", end = "\r", flush = True)
+                print(f"-- Files done: {format_progress(export_count, total_count)}",
+                      end = "\r", flush = True)
                 export_count += 1
 
         if args.debug_info > 5:
