@@ -39,6 +39,12 @@ On Linux, you may have to use additional measures to download DE2 versions from 
 
 `./steamcmd.sh +@sSteamCmdForcePlatformType windows +login USERNAME +force_install_dir ASSET_DIR +app_update GAME_APP_ID validate +quit`
 
+The game version vs Game_ID table such as below:
+Age of Empires(2013): 221380
+Age of Empires: Definitive Edition: 1017900
+Age of Empires II (Rise of the Rajas): 488060
+Age of Empires II: Definitive Edition: 813780
+
 In the future, using installation disks may be supported.
 
 ## Conversion
