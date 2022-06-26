@@ -35,9 +35,15 @@ On Linux, you may have to use additional measures to download DE2 versions from 
 ```
 * Alternatively, you may download the game assets using [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD).
   1. Install SteamCMD by following the instructions on [Valve's developer wiki](https://developer.valvesoftware.com/wiki/SteamCMD).
-  2. Download the assets with the following command (replacing `USERNAME` and `ASSET_DIR` as appropriate):
+  2. Download the assets with the following command (replacing `USERNAME` `GAME_APP_ID` and `ASSET_DIR` as appropriate):
 
-`./steamcmd.sh +@sSteamCmdForcePlatformType windows +login USERNAME +force_install_dir ASSET_DIR +app_update 221380 validate +quit`
+`./steamcmd.sh +@sSteamCmdForcePlatformType windows +login USERNAME +force_install_dir ASSET_DIR +app_update GAME_APP_ID validate +quit`
+
+The game version vs Game_ID table such as below:
+ Age of Empires(2013): 221380
+ Age of Empires: Definitive Edition: 1017900
+ Age of Empires II (Rise of the Rajas): 488060
+ Age of Empires II: Definitive Edition: 813780
 
 In the future, using installation disks may be supported.
 
