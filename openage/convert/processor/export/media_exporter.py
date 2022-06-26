@@ -88,13 +88,11 @@ class MediaExporter:
                 export_func = MediaExporter._export_blend
                 print("-- Exporting blend files...")
 
-            export_count = 1
             total_count = len(cur_export_requests)
-            for request in cur_export_requests:
+            for count, request in enumerate(cur_export_requests, start = 1):
                 export_func(request, sourcedir, exportdir, **kwargs)
-                print(f"-- Files done: {format_progress(export_count, total_count)}",
+                print(f"-- Files done: {format_progress(count, total_count)}",
                       end = "\r", flush = True)
-                export_count += 1
 
         if args.debug_info > 5:
             cachedata = {}
