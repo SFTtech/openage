@@ -141,6 +141,7 @@ _the openage authors_ are:
 | Damien Lejay                | dlejay                      | lejay à paracompact dawt space                    |
 | Talha Aamir                 | sarcxd                      | sarcxd à gmail dawt com                           |
 | Matthias Geiger             | CountOmega                  | matthias dawt geiger1024 à outlook dawt com       |
+| Yuvraj Tetarwal             | YuviTz1                     | yuvi56789 à gmail dawt com                        |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
