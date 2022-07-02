@@ -35,7 +35,7 @@ If you need some inspiration [what to work on, see above](#what-can-i-do).
 
 
 
-**Please at least skip over this whole file if you want to contribute some code to *openage**!
+**Please at least skim over this whole file if you want to contribute some code to *openage**!
 
 
 
