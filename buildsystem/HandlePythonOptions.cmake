@@ -1,4 +1,4 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 # finds the python interpreter, install destination and extension flags.
 
@@ -45,7 +45,7 @@ if(NOT CMAKE_PY_INSTALL_PREFIX)
 	if(MSVC)
 		set(CMAKE_PY_INSTALL_PREFIX "python")
 	else()
-		py_exec("from distutils.sysconfig import get_python_lib; print(get_python_lib(prefix='${CMAKE_INSTALL_PREFIX}'))" PREFIX)
+		py_exec("import sysconfig, os; print(os.path.join('${CMAKE_INSTALL_PREFIX}', os.path.relpath(sysconfig.get_path('purelib'), sysconfig.get_path('data'))))" PREFIX)
 		set(CMAKE_PY_INSTALL_PREFIX "${PREFIX}")
 	endif()
 endif()

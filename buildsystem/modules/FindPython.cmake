@@ -133,7 +133,7 @@ endfunction()
 function(py_get_config_var VAR RESULTVAR)
 	# uses py_exec to determine a config var as in distutils.sysconfig.get_config_var().
 	py_exec(
-		"from distutils.sysconfig import get_config_var; print(get_config_var('${VAR}'))"
+		"from sysconfig import get_config_var; print(get_config_var('${VAR}'))"
 		RESULT
 	)
 
