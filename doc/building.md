@@ -60,9 +60,13 @@ Dependency list:
       A   An installed version of any of the following (wine is your friend).
           Other versions _might_ work:
 
+     - Age of Empires I: Rise of Rome Patch 1.0a
+     - Age of Empires I: Definitive Edition
      - Age of Empires II: The Conquerors Patch 1.0c
      - Age of Empires II: Forgotten Empires
-     - Age of Empires II HD
+     - Age of Empires II: HD (now also called: Age of Empires II (2013))
+     - Age of Empires II: Definitive Edition
+     - Star Wars: Galactic Battlegrounds: Clone Campaigns
 
 
 ### Dependency installation
