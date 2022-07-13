@@ -1,11 +1,11 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 # python modules
 # a list of imported modules may be obtained via
 #
 # grep -RE '^ *(import |from [^.])' | cut -d: -f2- | \
 #     sed 's/^ *//g' | sort -u | grep -v openage
-set(REQUIRED_PYTHON_MODULES "PIL.Image" "PIL.ImageDraw" "numpy" "pygments" "jinja2")
+set(REQUIRED_PYTHON_MODULES "PIL.Image" "PIL.ImageDraw" "numpy" "pygments" "jinja2" "toml" "lz4")
 
 # command-line tools
 # example: set(REQUIRED_UTILITIES "foobar")
