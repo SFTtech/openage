@@ -25,28 +25,39 @@
 # to CMake. It's used as a hint where to look at
 if(PYTHON_DIR)
 	set(Python3_ROOT_DIR "${PYTHON_DIR}")
+	set(PYTHON_USED_VERSION "${PYTHON_MIN_VERSION}")
+
+else()
+	# when there are multiple pythons, preferrably use the version of
+	# the default `python3` executable.
+	execute_process(
+		COMMAND "python3" -c "import platform; print(platform.python_version())"
+		OUTPUT_VARIABLE PYVER_OUTPUT
+		RESULT_VARIABLE PYVER_RETVAL
+	)
+
+	# if a system version exists, check if it's compatible with our min requirements
+	if(PYVER_RETVAL EQUAL 0)
+		string(REGEX MATCH "^[0-9]+\\.[0-9]+" PYTHON_USED_VERSION "${PYVER_OUTPUT}")
+
+		if(PYTHON_USED_VERSION VERSION_GREATER_EQUAL PYTHON_MIN_VERSION)
+			# set EXACT so we get the system version from find_package
+			set(need_exact_version "EXACT")
+
+		else()
+			# search for alternatives if version doesn't fulfill min requirements
+			set(PYTHON_USED_VERSION "${PYTHON_MIN_VERSION}")
+
+		endif()
+	endif()
 endif()
 ###############################################################
-
 
 # Never use the Windows Registry to find python
 set(Python3_FIND_REGISTRY "NEVER")
 
-# when there are multiple pythons, preferrably use the version of
-# the default `python3` executable.
-execute_process(
-	COMMAND "python3" -c "import platform; print(platform.python_version())"
-	OUTPUT_VARIABLE PYVER_OUTPUT
-	RESULT_VARIABLE PYVER_RETVAL
-)
-
-if(PYVER_RETVAL EQUAL 0)
-	string(REGEX MATCH "^[0-9]+\\.[0-9]+" PYTHON_MIN_VERSION "${PYVER_OUTPUT}")
-	set(need_exact_version "EXACT")
-endif()
-
 # use cmake's FindPython3 to locate library and interpreter
-find_package(Python3 ${PYTHON_MIN_VERSION} ${need_exact_version} COMPONENTS Interpreter Development NumPy)
+find_package(Python3 ${PYTHON_USED_VERSION} ${need_exact_version} COMPONENTS Interpreter Development NumPy)
 
 # python version string to cpython api test in modules/FindPython_test.cpp
 # we use the solution from CPython's header (see https://github.com/SFTtech/openage/issues/1438#issuecomment-1036311012):
@@ -122,7 +133,7 @@ endfunction()
 function(py_get_config_var VAR RESULTVAR)
 	# uses py_exec to determine a config var as in distutils.sysconfig.get_config_var().
 	py_exec(
-		"from distutils.sysconfig import get_config_var; print(get_config_var('${VAR}'))"
+		"from sysconfig import get_config_var; print(get_config_var('${VAR}'))"
 		RESULT
 	)
 
