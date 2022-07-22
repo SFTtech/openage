@@ -140,14 +140,14 @@ Fortunately for you, there is a lot to do and we are very grateful for help.
 
 * The engine has several [core parts](https://github.com/SFTtech/openage/projects) that need help.
   You can look at the project related issues and find something for you, for example:
-    * **Asset Converter:** Converts whatever properietary format used by a Age of Empires 2 into
+    * **Asset Converter:** Converts whatever proprietary format used by a Age of Empires 2 into
     open formats. Written mostly in Python 3. There are a lot of TODOs and beginner issues available
     right now, so it's a good place to get your feet wet.
     * **Game simulation:** Also known as the gameplay implementation. Written in C++, using the
     Entity-Component-System paradigm in addition to an event-driven simulation.
     * **Documentation:** We not only document code, but also anything technical about the Genie engine
     and its games. If you like documenting [file formats](/doc/media)
-    or thouroughly investigating [game mechanics](/doc/reverse_engineering),
+    or thoroughly investigating [game mechanics](/doc/reverse_engineering),
     then this might be the right place to start.
 * **Check the issues** [labelled with good first issues](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22). These are tasks that you can start right away
   and don't require much previous knowledge.
