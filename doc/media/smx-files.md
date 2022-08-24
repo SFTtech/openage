@@ -75,7 +75,7 @@ struct smx_frame_header {
 Python format: `Struct("< 2B I")`
 
 `frame_type` is a bit field. This means that every bit set to `1`
-in this values tells us something about the frame.
+indicates that the frame contains a specific type of layer.
 
 Bit index | Description
 ----------|------------
@@ -89,7 +89,7 @@ Bit index | Description
 **Example**
 
 ```
-frame_type = 0x0B = 0000 1011
+frame_type = 0x0B = 0b0000 1011
 ```
 
 This frame would contain a *main graphic layer*, a *shadow layer*
@@ -146,7 +146,7 @@ Length   | Type   | Description                | Example
 
 The commands are the same as in the SMP files except that their pixel
 data has to be read from the pixel data array. Data from the
-pixel data array has to be read sequentially, The first *Draw*
+pixel data array has to be read sequentially. The first *Draw*
 command will start reading at index 0 of the pixel data array.
 The next *Draw* command will continue reading where the previous command
 stopped.
