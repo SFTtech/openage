@@ -27,9 +27,9 @@ struct sld_header {
   char  file_descriptor[4];
   uint16 version;
   uint16 num_frames;
-  uint16 unknown_1;
-  uint16 unknown_2;
-  uint32 unknown_3;
+  uint16 unknown1;
+  uint16 unknown2;
+  uint32 unknown3;
 };
 ```
 Python format: `Struct("< 4s 4H I")`
@@ -64,13 +64,13 @@ Length   | Type   | Description   | Example
 
 ```cpp
 struct sld_frame_header {
-  uint16  unknown_1;
-  uint16  unknown_2;
-  uint16  unknown_3;
-  uint16  unknown_4;
-  uint8  frame_type;
-  uint8  unknown_5;
-  uint16 frame_index;
+  uint16  unknown1;
+  uint16  unknown2;
+  uint16  unknown3;
+  uint16  unknown4;
+  uint8   frame_type;
+  uint8   unknown5;
+  uint16  frame_index;
 };
 ```
 Python format: `Struct("< 4H 2B H")`
@@ -173,8 +173,8 @@ struct sld_graphics_header {
   uint16  alpha_padding_height;
   uint16  total_width;
   uint16  total_height;
-  uint8   unknown_1;
-  uint8   unknown_2;
+  uint8   unknown1;
+  uint8   unknown2;
 };
 ```
 Python format: `Struct("< 4H 2B")`
@@ -303,8 +303,8 @@ Length   | Type   | Description          | Example
 
 ```cpp
 struct sld_mask_header {
-  uint8   unknown_1;
-  uint8   unknown_2;
+  uint8   unknown1;
+  uint8   unknown2;
 };
 ```
 Python format: `Struct("< 2B")`

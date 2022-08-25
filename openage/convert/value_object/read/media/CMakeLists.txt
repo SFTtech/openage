@@ -9,6 +9,7 @@ add_py_modules(
 )
 
 add_cython_modules(
+	sld.pyx
 	slp.pyx
 	smp.pyx
 	smx.pyx

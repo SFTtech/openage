@@ -1,4 +1,4 @@
-# Copyright 2019-2021 the openage authors. See copying.md for legal info.
+# Copyright 2019-2022 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 
@@ -21,14 +21,6 @@ from libcpp.vector cimport vector
 
 # SMX files have little endian byte order
 endianness = "< "
-
-
-cdef struct palette_entry:
-    uint8_t r
-    uint8_t g
-    uint8_t b
-    uint8_t a
-
 
 cdef struct boundary_def:
     Py_ssize_t left
@@ -56,7 +48,7 @@ cdef struct pixel:
 
 class SMX:
     """
-    Class for reading/converting compressed SMP files (delivered
+    Class for reading/converting compressed SMX files (delivered
     with AoE2:DE by default).
     """
 
@@ -80,8 +72,8 @@ class SMX:
     # struct smx_layer_header {
     #   unsigned short width;
     #   unsigned short height;
-    #   short hotspot_x;
-    #   short hotspot_y;
+    #   short          hotspot_x;
+    #   short          hotspot_y;
     #   unsigned int   distance_next_frame;
     #   int            4 bytes;
     # };
@@ -100,12 +92,13 @@ class SMX:
             file_size_uncomp, comment = smx_header
 
         dbg("SMX")
-        dbg(" frame count:              %s",   frame_count)
-        dbg(" file size compressed:     %s B", file_size_comp + 0x20)   # 0x20 = SMX header size
-        dbg(" file size uncompressed:   %s B", file_size_uncomp + 0x40) # 0x80 = SMP header size
-        dbg(" comment:                  %s",   comment.decode('ascii'))
+        dbg(" version:                %s",   version)
+        dbg(" frame count:            %s",   frame_count)
+        dbg(" file size compressed:   %s B", file_size_comp + 0x20)   # 0x20 = SMX header size
+        dbg(" file size uncompressed: %s B", file_size_uncomp + 0x40) # 0x80 = SMP header size
+        dbg(" comment:                %s",   comment.decode('ascii'))
 
-        # SMP graphic frames are created from overlaying
+        # SMX graphic frames are created from overlaying
         # the main graphic frame with a shadow layer and
         # and (for units) an outline layer
         self.main_frames = list()
@@ -189,7 +182,7 @@ class SMX:
         ret = list()
 
         ret.extend([repr(self), "\n", SMXLayerHeader.repr_header(), "\n"])
-        for frame in self.frames:
+        for frame in self.main_frames:
             ret.extend([repr(frame), "\n"])
         return "".join(ret)
 
