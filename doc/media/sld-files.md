@@ -11,7 +11,7 @@ SLD files can organized into frames, layers and color data.
 
 ### Header
 
-The SMX file starts with a header:
+The SLD file starts with a header:
 
 Length   | Type   | Description                 | Example
 ---------|--------|-----------------------------|--------
@@ -441,7 +441,7 @@ the two reference color values (that means their 16-Bit integer values) is great
 If `color0` is **greater than** `color1`, the color values for the remaining
 indices are calculated as follows:
 
-Index | color Value
+Index | Color Value
 ------|-------
 10    | `color2 = (2/3) * color0 + (1/3) * color1`
 11    | `color3 = (1/3) * color0 + (2/3) * color1`
@@ -453,7 +453,7 @@ channels.)
 If `color0` is **smaller than or equal to** `color1`, only the color value of `color2`
 is interpolated, while `color3` represents a color value with full transparency:
 
-Index | color Value
+Index | Color Value
 ------|-------
 10    | `color2 = (1/2) * color0 + (1/2) * color1`
 11    | `color3 = (0, 0, 0, 0)`
@@ -548,7 +548,7 @@ color3 = (0, 0, 0, 0)   (full transparency)
 In the end, our lookup table looks like this (using RGBA16 format):
 
 
-Index | color Value
+Index | Color Value
 ------|-------
 00    | `c0 = (2, 4, 2, 1)`
 01    | `c1 = (0, 0, 0, 1)`
@@ -629,7 +629,7 @@ indices.
 The lookup table has 8 entries that map a 3-Bit index to a 8-Bit red channel color
 value. The first 2 entries are the reference colors `color0` and `color1`.
 
-Index | color Value
+Index | Color Value
 ------|-------
 000   | `color0`
 001   | `color1`
@@ -641,7 +641,7 @@ the two reference color values (that means their 8-Bit integer values) is greate
 If `color0` is **greater than** `color1`, the color values for the remaining
 indices are calculated as follows:
 
-Index | color Value
+Index | Color Value
 ------|-------
 010   | `color2 = (6 * color0 + 1 * color1) / 7.0`
 011   | `color3 = (5 * color0 + 2 * color1) / 7.0`
@@ -654,7 +654,7 @@ If `color0` is **smaller than or equal to** `color1`, only the color value of 4 
 `color3`, `color4`, `color5`) are interpolated. `color6` is set to `0` and `color7` is set to
 `255`.
 
-Index | color Value
+Index | Color Value
 ------|-------
 010   | `color2 = (4 * color0 + 1 * color1) / 5.0`
 011   | `color3 = (3 * color0 + 2 * color1) / 5.0`
@@ -750,7 +750,7 @@ color7 = 255
 
 In the end, our lookup table looks like this:
 
-Index  | color Value
+Index  | Color Value
 -------|-------
 000    | `c0 = 16`
 000    | `c1 = 130`
