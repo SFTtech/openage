@@ -55,7 +55,7 @@ def main(args, error):
     file_path = Path(args.filename)
     file_extension = file_path.suffix[1:].lower()
 
-    if not (args.mode in ["drs-wav", "wav"] or file_extension == "wav"):
+    if not (args.mode in ("sld", "drs-wav", "wav") or file_extension in ("sld", "wav")):
         if not args.palettes_path:
             raise Exception("palettes-path needs to be specified")
 
@@ -74,6 +74,9 @@ def main(args, error):
 
     elif args.mode == "smx" or file_extension == "smx":
         read_smx_file(args.filename, args.output, palettes, compression_level)
+
+    elif args.mode == "sld" or file_extension == "sld":
+        read_sld_file(args.filename, args.output, compression_level)
 
     elif args.mode == "wav" or (file_extension == "wav" and not args.drs):
         read_wav_file(args.filename, args.output)
@@ -286,6 +289,44 @@ def read_smx_file(
     # create texture
     info("packing texture...")
     tex = Texture(smx_image, palettes)
+
+    from ..processor.export.texture_merge import merge_frames
+    merge_frames(tex)
+
+    # save as png
+    MediaExporter.save_png(
+        tex,
+        Directory(output_file.parent).root,
+        output_file.name,
+        compression_level
+    )
+
+
+def read_sld_file(
+    sld_path: Path,
+    output_path: Path,
+    compression_level: int
+) -> None:
+    """
+    Reads a single SMX (compressed SMP) file.
+    """
+    output_file = Path(output_path)
+
+    # open the smx
+    info("opening sld file at '%s'", sld_path)
+    smx_file = Path(sld_path).open("rb")
+
+    # import here to prevent that the __main__ depends on SMP
+    # just by importing this singlefile.py.
+    from ..value_object.read.media.sld import SLD
+
+    # parse the smx_path image
+    info("parsing sld image...")
+    sld_image = SLD(smx_file.read())
+
+    # create texture
+    info("packing texture...")
+    tex = Texture(sld_image)
 
     from ..processor.export.texture_merge import merge_frames
     merge_frames(tex)

@@ -221,6 +221,10 @@ class MediaExporter:
             from ...value_object.read.media.smx import SMX
             image = SMX(media_file.read())
 
+        elif source_file.suffix.lower() == ".sld":
+            from ...value_object.read.media.sld import SLD
+            image = SLD(media_file.read())
+
         packer_cache = None
         compr_cache = None
         if cache_info:

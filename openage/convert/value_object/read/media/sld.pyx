@@ -127,8 +127,7 @@ class SLD:
             main_width = 0
             main_height = 0
             for layer_type in layer_types:
-                layer_length = SLD.sld_layer_length.unpack_from(
-                    data, current_offset)
+                layer_length = SLD.sld_layer_length.unpack_from(data, current_offset)[0]
                 start_offset = current_offset
                 current_offset += SLD.sld_layer_length.size
 
@@ -238,18 +237,22 @@ class SLDLayerHeader:
 
     def __repr__(self):
         ret = (
-            "% s | " % self.layer_type,
+            "% 11s | " % self.layer_type,
             "% 5d x% 7d | " % self.size,
             "% 14d | " % self.command_array_size,
-            "% 16d | " % self.command_array_offset,
-            "% 10d | " % self.compressed_data_offset,
+            "% 16x | " % self.command_array_offset,
+            "% 10x | " % self.compressed_data_offset,
         )
         return "".join(ret)
+
 
 cdef class SLDLayer:
     """
     Layer inside the SLD frame.
     """
+    # layer and frame information
+    cdef object info
+
     # matrix representing the 4x4 blocks and the pixels in the image
     cdef vector[vector[pixel]] pcolor
 
@@ -283,13 +286,13 @@ cdef class SLDLayer:
     @cython.wraparound(False)
     cdef void process_drawing_cmds(self,
                                    const uint8_t[:] &data_raw,
-                                   Py_ssize_t cmd_size,
-                                   Py_ssize_t first_cmd_offset,
-                                   Py_ssize_t first_data_offset):
+                                   unsigned int cmd_size,
+                                   unsigned int first_cmd_offset,
+                                   unsigned int first_data_offset):
         """
         Process skip and draw commands from the command array.
         """
-        cdef vector[pixel] transparent_block = vector[pixel](16, pixel(0,0,0,0))
+        cdef vector[pixel] transparent_block = vector[pixel](16)
 
         cdef unsigned char skip_count
         cdef unsigned char draw_count
@@ -302,7 +305,7 @@ cdef class SLDLayer:
             for _ in range(skip_count):
                 self.pcolor.push_back(transparent_block)
 
-            cmd_offset =+ 1
+            cmd_offset += 1
 
             draw_count = data_raw[cmd_offset]
             for _ in range(draw_count):
@@ -349,11 +352,12 @@ cdef class SLDLayerBC1(SLDLayer):
         """
         Decompress a 4x4 pixel block.
         """
-        cdef unsigned char offset
+        cdef size_t offset
         cdef unsigned char byte_val
         cdef unsigned char index
         cdef unsigned char mask = 0b00000011
-        cdef vector[pixel] block = vector[pixel](16)
+        cdef vector[pixel] block
+        block.reserve(16)
 
         # Lookup table
         cdef pixel c0
@@ -369,6 +373,11 @@ cdef class SLDLayerBC1(SLDLayer):
         c0.g = ((data_raw[block_offset + 1] & 0b00000111) << 3) +\
             ((data_raw[block_offset] & 0b11100000) >> 5)
         c0.b = data_raw[block_offset] & 0b00011111
+
+        # Expand to RGBA32 color space
+        c0.r *= 8
+        c0.g *= 4
+        c0.b *= 8
         c0.a = 255
 
         # Color 1
@@ -376,6 +385,11 @@ cdef class SLDLayerBC1(SLDLayer):
         c1.g = ((data_raw[block_offset + 3] & 0b00000111) << 3) +\
             ((data_raw[block_offset + 2] & 0b11100000) >> 5)
         c1.b = data_raw[block_offset + 2] & 0b00011111
+
+        # Expand to RGBA32 color space
+        c1.r *= 8
+        c1.g *= 4
+        c1.b *= 8
         c1.a = 255
 
         # Color 2 + 3
@@ -402,8 +416,8 @@ cdef class SLDLayerBC1(SLDLayer):
             c3.a = 0
 
         # Lookup pixels
+        offset = block_offset + 4
         for _ in range(4):
-            offset = block_offset + 4
             byte_val = data_raw[offset]
             for _ in range(4):
                 index = byte_val & mask
@@ -454,7 +468,8 @@ cdef class SLDLayerBC4(SLDLayer):
         cdef unsigned char byte_val
         cdef unsigned char index
         cdef unsigned char mask = 0b00000111
-        cdef vector[pixel] block = vector[pixel](16)
+        cdef vector[pixel] block
+        block.reserve(16)
 
         # Lookup table
         cdef pixel c0
@@ -532,8 +547,8 @@ cdef class SLDLayerBC4(SLDLayer):
             c7.a = 255
 
         # Lookup pixels
+        offset = block_offset + 5
         for _ in range(2):
-            offset = block_offset + 5
             for _ in range(3):
                 byte_val = data_raw[offset]
                 for _ in range(4):
@@ -622,7 +637,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &block_matrix,
                 block_y += 1
 
         img_x += 4
-        if img_x > width:
+        if img_x >= width:
             img_x = 0
             img_y += 4
 
@@ -667,7 +682,7 @@ cdef numpy.ndarray determine_greyscale_matrix(vector[vector[pixel]] &block_matri
                 block_y += 1
 
         img_x += 4
-        if img_x > width:
+        if img_x >= width:
             img_x = 0
             img_y += 4
 

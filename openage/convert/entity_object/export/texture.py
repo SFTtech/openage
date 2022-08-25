@@ -78,7 +78,7 @@ class Texture(GenieStructure):
 
     def __init__(
         self,
-        input_data: typing.Union[SLP, SMP, SMX, BlendingMode],
+        input_data: typing.Union[SLP, SMP, SMX, SLD, BlendingMode],
         palettes: dict[int, ColorTable] = None,
         custom_cutter: InterfaceCutter = None
     ):
@@ -98,6 +98,7 @@ class Texture(GenieStructure):
         from ...value_object.read.media.slp import SLP
         from ...value_object.read.media.smp import SMP
         from ...value_object.read.media.smx import SMX
+        from ...value_object.read.media.sld import SLD
 
         self.frames = []
         if isinstance(input_data, (SLP, SMP, SMX)):
@@ -115,6 +116,14 @@ class Texture(GenieStructure):
                                                    main_palette,
                                                    custom_cutter):
                     self.frames.append(subtex)
+
+        elif isinstance(input_data, SLD):
+            for frame in input_data.main_frames:
+                subtex = TextureImage(
+                    frame.get_picture_data(),
+                    hotspot=(0, 0)
+                )
+                self.frames.append(subtex)
 
         elif isinstance(input_data, BlendingMode):
             self.frames = [
