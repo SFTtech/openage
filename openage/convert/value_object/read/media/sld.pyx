@@ -42,10 +42,10 @@ class SLD:
     sld_header = Struct(endianness + "4s 4H I")
 
     # struct sld_frame_header {
-    #   unsigned short unknown1;
-    #   unsigned short unknown2;
-    #   unsigned short unknown3;
-    #   unsigned short unknown4;
+    #   unsigned short canvas_width;
+    #   unsigned short canvas_height;
+    #   unsigned short canvas_hotspot_x;
+    #   unsigned short canvas_hotspot_y;
     #   char           frame_type;
     #   char           unknown5;
     #   unsigned short frame_index;
@@ -58,10 +58,10 @@ class SLD:
     sld_layer_length = Struct(endianness + "I")
 
     # struct sld_layer_header_graphics {
-    #   unsigned short alpha_padding_width;
-    #   unsigned short alpha_padding_height;
-    #   unsigned short total_width;
-    #   unsigned short total_height;
+    #   unsigned short offset_x1;
+    #   unsigned short offset_y1;
+    #   unsigned short offset_x2;
+    #   unsigned short offset_y2;
     #   char           unknown1;
     #   char           unknown2;
     # };
@@ -82,7 +82,7 @@ class SLD:
         """
 
         sld_header = SLD.sld_header.unpack_from(data)
-        _, version, frame_count, _, _, _ = sld_header
+        self.sld_type, version, frame_count, _, _, _ = sld_header
 
         dbg("SLD")
         dbg(" version:     %s",   version)
@@ -103,7 +103,8 @@ class SLD:
             frame_header = SLD.sld_frame_header.unpack_from(
                 data, current_offset)
 
-            self.sld_type, _, _, _, frame_type , _, frame_index = frame_header
+            canvas_width, canvas_height, canvas_hotspot_x, canvas_hotspot_y,\
+                frame_type , _, frame_index = frame_header
 
             current_offset += SLD.sld_frame_header.size
 
@@ -126,6 +127,8 @@ class SLD:
 
             main_width = 0
             main_height = 0
+            main_hotspot_x = 0
+            main_hotspot_y = 0
             for layer_type in layer_types:
                 layer_length = SLD.sld_layer_length.unpack_from(data, current_offset)[0]
                 start_offset = current_offset
@@ -134,14 +137,17 @@ class SLD:
                 # Header unpacking
                 if layer_type in ("main", "shadow"):
                     layer_header = SLD.sld_layer_header_graphics.unpack_from(data, current_offset)
-                    a_width, a_height, t_width, t_height, _, _ = layer_header
+                    offset_x1, offset_y1, offset_x2, offset_y2, _, _ = layer_header
 
-                    layer_width = t_width - a_width
-                    layer_height = t_height - a_height
-
+                    layer_width = offset_x2 - offset_x1
+                    layer_height = offset_y2 - offset_y1
+                    layer_hotspot_x = canvas_hotspot_x - offset_x1
+                    layer_hotspot_y = canvas_hotspot_y - offset_y1
                     if layer_type == "main":
                         main_width = layer_width
                         main_height = layer_height
+                        main_hotspot_x = layer_hotspot_x
+                        main_hotspot_y = layer_hotspot_y
 
                     current_offset += SLD.sld_layer_header_graphics.size
 
@@ -154,6 +160,8 @@ class SLD:
 
                     layer_width = main_width
                     layer_height = main_height
+                    layer_hotspot_x = main_hotspot_x
+                    layer_hotspot_y = main_hotspot_y
 
                     current_offset += SLD.sld_layer_header_graphics.size
 
@@ -170,6 +178,7 @@ class SLD:
                     layer_type,
                     frame_type,
                     layer_width, layer_height,
+                    layer_hotspot_x, layer_hotspot_y,
                     command_array_size,
                     command_array_offset,
                     compressed_data_offset
@@ -217,11 +226,13 @@ class SLDLayerHeader:
         layer_type,
         frame_type,
         width, height,
+        hotspot_x, hotspot_y,
         command_array_size,
         command_array_offset,
         compressed_data_offset
     ):
         self.size = (width, height)
+        self.hotspot = (hotspot_x, hotspot_y)
 
         self.layer_type = layer_type
         self.frame_type = frame_type
@@ -233,14 +244,15 @@ class SLDLayerHeader:
     @staticmethod
     def repr_header():
         return (
-            "layer type | width x height | cmd array size | "
-            "cmd array offset | data block | "
+            "layer type | width x height |  hotspot  | "
+            "cmd array size | cmd array offset | data block | "
         )
 
     def __repr__(self):
         ret = (
             "% 11s | " % self.layer_type,
             "% 5d x% 7d | " % self.size,
+            "% 3d x% 3d | " % self.hotspot,
             "% 14d | " % self.command_array_size,
             "% 16x | " % self.command_array_offset,
             "% 10x | " % self.compressed_data_offset,
@@ -335,6 +347,12 @@ cdef class SLDLayer:
         :rtype: numpy.ndarray
         """
         return determine_rgba_matrix(self.pcolor, self.info.size[0], self.info.size[1])
+
+    def get_hotspot(self):
+        """
+        Return the layer's hotspot (the "center" of the image)
+        """
+        return self.info.hotspot
 
     def __repr__(self):
         return repr(self.info)

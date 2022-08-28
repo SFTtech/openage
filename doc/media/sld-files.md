@@ -52,28 +52,34 @@ in the frame header.
 
 The frame header contains 7 values:
 
-Length   | Type   | Description   | Example
----------|--------|---------------|--------
-2 bytes  | uint16 | Unknown       | 200, 0xC8
-2 bytes  | uint16 | Unknown       | 200, 0xC8
-2 bytes  | uint16 | Unknown       | 100, 0x64
-2 bytes  | uint16 | Unknown       | 200, 0x64
-1 bytes  | uint8  | Frame Type    | 7, 0b00000111 (bit field)
-1 bytes  | uint8  | Unkown        | 1, 0x01
-2 bytes  | uint16 | Frame index   | 5, 0x0005
+Length   | Type   | Description     | Example
+---------|--------|-----------------|--------
+2 bytes  | uint16 | Canvas Width    | 200, 0xC8
+2 bytes  | uint16 | Canvas Height   | 200, 0xC8
+2 bytes  | uint16 | Canvas Center X | 100, 0x64
+2 bytes  | uint16 | Canvas Center Y | 100, 0x64
+1 bytes  | uint8  | Frame Type      | 7, 0b00000111 (bit field)
+1 bytes  | uint8  | Unkown          | 1, 0x01
+2 bytes  | uint16 | Frame index     | 5, 0x0005
 
 ```cpp
 struct sld_frame_header {
-  uint16  unknown1;
-  uint16  unknown2;
-  uint16  unknown3;
-  uint16  unknown4;
+  uint16  canvas_width;
+  uint16  canvas_height;
+  uint16  canvas_hotspot_x;
+  uint16  canvas_hotspot_y;
   uint8   frame_type;
   uint8   unknown5;
   uint16  frame_index;
 };
 ```
 Python format: `Struct("< 4H 2B H")`
+
+Frames define a *canvas* which is a square texture that the layers get drawn
+into. The canvas size is dertermined by `canvas_width` and `canvas_height`.
+Every canvas also has a *hotspot* which is an anchor point for the ingame mouse
+pointer. When a unit/building is placed (e.g. in the editor or for building foundation),
+the frame texture is attached to the mouse pointer at this position.
 
 `frame_type` is a bit field. This means that every bit set to `1`
 indicates that the frame contains a specific type of layer.
@@ -158,32 +164,44 @@ This layer always exists and is not optional.
 
 The main graphics layer header contains 6 values:
 
-Length   | Type   | Description          | Example
----------|--------|----------------------|--------
-2 bytes  | uint16 | Alpha padding width  | 72, 0x48
-2 bytes  | uint16 | Alpha padding height | 72, 0x48
-2 bytes  | uint16 | Total width          | 132, 0x84
-2 bytes  | uint16 | Total height         | 108, 0x6C
-1 bytes  | uint8  | Unknown              | 0, 0x00 (sometimes 0x08)
-1 bytes  | uint8  | Unknown              | 1, 0x01
+Length   | Type   | Description                    | Example
+---------|--------|--------------------------------|--------
+2 bytes  | uint16 | Layer Offset X1 (top left)     | 72, 0x48
+2 bytes  | uint16 | Layer Offset Y1 (top left)     | 72, 0x48
+2 bytes  | uint16 | Layer Offset X2 (bottom right) | 132, 0x84
+2 bytes  | uint16 | Layer Offset Y2 (bottom right) | 108, 0x6C
+1 bytes  | uint8  | Unknown                        | 0, 0x00 (sometimes 0x08)
+1 bytes  | uint8  | Unknown                        | 1, 0x01
 
 ```cpp
 struct sld_graphics_header {
-  uint16  alpha_padding_width;
-  uint16  alpha_padding_height;
-  uint16  total_width;
-  uint16  total_height;
+  uint16  offset_x1;
+  uint16  offset_y1;
+  uint16  offset_x2;
+  uint16  offset_y2;
   uint8   unknown1;
   uint8   unknown2;
 };
 ```
 Python format: `Struct("< 4H 2B")`
 
-Width and height of the layer have to be calculated from the first 4 values.
+There are 4 offset values which define the position of the layer inside its
+frame's canvas. `offset_x1` and `offset_y1` signify the position of the top left corner
+of the layer, while `offset_x2` and `offset_y2` define the position of the
+bottom right corner.
+
+Width and height of the layer can be calculated from the 4 offset values.
 
 ```
-width = total_width - alpha_padding_width
-height = total_height - alpha_padding_height
+width = offset_x2 - offset_x1
+height = offset_y2 - offset_y1
+```
+
+You can also calculate the position of the canvas hotspot relative to the layer.
+
+```
+layer_hotspot_x = canvas_hotspot_x - offset_x1
+layer_hotspot_y = canvas_hotspot_y - offset_y1
 ```
 
 ##### Pixel Data
