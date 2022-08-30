@@ -22,6 +22,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.media.slp import SLP, SLPFrame
     from openage.convert.value_object.read.media.smp import SMP, SMPLayer
     from openage.convert.value_object.read.media.smx import SMX, SMXLayer
+    from openage.convert.value_object.read.media.sld import SLD, SLDLayer
 
 
 class TextureImage:
@@ -78,7 +79,7 @@ class Texture(GenieStructure):
 
     def __init__(
         self,
-        input_data: typing.Union[SLP, SMP, SMX, BlendingMode],
+        input_data: typing.Union[SLP, SMP, SMX, SLD, BlendingMode],
         palettes: dict[int, ColorTable] = None,
         custom_cutter: InterfaceCutter = None
     ):
@@ -98,6 +99,7 @@ class Texture(GenieStructure):
         from ...value_object.read.media.slp import SLP
         from ...value_object.read.media.smp import SMP
         from ...value_object.read.media.smx import SMX
+        from ...value_object.read.media.sld import SLD
 
         self.frames = []
         if isinstance(input_data, (SLP, SMP, SMX)):
@@ -115,6 +117,19 @@ class Texture(GenieStructure):
                                                    main_palette,
                                                    custom_cutter):
                     self.frames.append(subtex)
+
+        elif isinstance(input_data, SLD):
+            input_frames = input_data.main_frames
+            if len(input_frames) == 0:
+                # Use shadows if no main graphics are inside
+                input_frames = input_data.shadow_frames
+
+            for frame in input_frames:
+                subtex = TextureImage(
+                    frame.get_picture_data(),
+                    hotspot=frame.get_hotspot()
+                )
+                self.frames.append(subtex)
 
         elif isinstance(input_data, BlendingMode):
             self.frames = [

@@ -1,4 +1,4 @@
-# Copyright 2019-2021 the openage authors. See copying.md for legal info.
+# Copyright 2019-2022 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 
@@ -21,14 +21,6 @@ from libcpp.vector cimport vector
 
 # SMX files have little endian byte order
 endianness = "< "
-
-
-cdef struct palette_entry:
-    uint8_t r
-    uint8_t g
-    uint8_t b
-    uint8_t a
-
 
 cdef struct boundary_def:
     Py_ssize_t left
@@ -54,9 +46,18 @@ cdef struct pixel:
     uint8_t damage_modifier_2   # modifier for damage (part 2)
 
 
+class LayerType(Enum):
+    """
+    SMX layer types.
+    """
+    MAIN        = "main"
+    SHADOW      = "shadow"
+    OUTLINE     = "outline"
+
+
 class SMX:
     """
-    Class for reading/converting compressed SMP files (delivered
+    Class for reading/converting compressed SMX files (delivered
     with AoE2:DE by default).
     """
 
@@ -80,8 +81,8 @@ class SMX:
     # struct smx_layer_header {
     #   unsigned short width;
     #   unsigned short height;
-    #   short hotspot_x;
-    #   short hotspot_y;
+    #   short          hotspot_x;
+    #   short          hotspot_y;
     #   unsigned int   distance_next_frame;
     #   int            4 bytes;
     # };
@@ -100,12 +101,13 @@ class SMX:
             file_size_uncomp, comment = smx_header
 
         dbg("SMX")
-        dbg(" frame count:              %s",   frame_count)
-        dbg(" file size compressed:     %s B", file_size_comp + 0x20)   # 0x20 = SMX header size
-        dbg(" file size uncompressed:   %s B", file_size_uncomp + 0x40) # 0x80 = SMP header size
-        dbg(" comment:                  %s",   comment.decode('ascii'))
+        dbg(" version:                %s",   version)
+        dbg(" frame count:            %s",   frame_count)
+        dbg(" file size compressed:   %s B", file_size_comp + 0x20)   # 0x20 = SMX header size
+        dbg(" file size uncompressed: %s B", file_size_uncomp + 0x40) # 0x80 = SMP header size
+        dbg(" comment:                %s",   comment.decode('ascii'))
 
-        # SMP graphic frames are created from overlaying
+        # SMX graphic frames are created from overlaying
         # the main graphic frame with a shadow layer and
         # and (for units) an outline layer
         self.main_frames = list()
@@ -127,13 +129,13 @@ class SMX:
             layer_types = []
 
             if frame_type & 0x01:
-                layer_types.append("main")
+                layer_types.append(LayerType.MAIN)
 
             if frame_type & 0x02:
-                layer_types.append("shadow")
+                layer_types.append(LayerType.SHADOW)
 
             if frame_type & 0x04:
-                layer_types.append("outline")
+                layer_types.append(LayerType.OUTLINE)
 
             for layer_type in layer_types:
                 layer_header_data = SMX.smx_layer_header.unpack_from(
@@ -153,7 +155,7 @@ class SMX:
                 current_offset += 4
 
                 # Read length of color table
-                if layer_type == "main":
+                if layer_type is LayerType.MAIN:
                     qdl_color_table_size = Struct("< I").unpack_from(data, current_offset)[0]
                     current_offset += 4
                     qdl_color_table_offset = current_offset + qdl_command_array_size
@@ -172,24 +174,24 @@ class SMX:
                                               qdl_command_table_offset,
                                               qdl_color_table_offset)
 
-                if layer_type == "main":
+                if layer_type is LayerType.MAIN:
                     if layer_header.compression_type == 0x08:
                         self.main_frames.append(SMXMainLayer8to5(layer_header, data))
 
                     elif layer_header.compression_type == 0x00:
                         self.main_frames.append(SMXMainLayer4plus1(layer_header, data))
 
-                elif layer_type == "shadow":
+                elif layer_type is LayerType.SHADOW:
                     self.shadow_frames.append(SMXShadowLayer(layer_header, data))
 
-                elif layer_type == "outline":
+                elif layer_type is LayerType.OUTLINE:
                     self.outline_frames.append(SMXOutlineLayer(layer_header, data))
 
     def __str__(self):
         ret = list()
 
         ret.extend([repr(self), "\n", SMXLayerHeader.repr_header(), "\n"])
-        for frame in self.frames:
+        for frame in self.main_frames:
             ret.extend([repr(frame), "\n"])
         return "".join(ret)
 

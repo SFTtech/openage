@@ -288,8 +288,9 @@ the palette with the index `palette_index`.
 #### Damage Info
 
 The last two bytes of the pixel (read with little endian byte order) contain a
-modifier value that is internally used to calculate the darkening effect of units.
-From this modifier and the current damage percentage, the game internally calculates
+modifier value that is internally used to realize the darkening effect of damaged/buidings
+units.
+Using this modifier and the current damage percentage, the game internally calculates
 a multiplier that is applied to the RGB values of the pixel. More on how that works
 is described further below.
 

@@ -54,7 +54,7 @@ class DE2MediaSubprocessor:
                     continue
 
                 targetdir = graphic_targetdirs[graphic_id]
-                source_filename = f"{str(graphic['filename'].value)}.smx"
+                source_filename = f"{str(graphic['filename'].value)}.sld"
                 target_filename = f"{sprite.get_filename()}_{str(graphic['slp_id'].value)}.png"
 
                 export_request = MediaExportRequest(MediaType.GRAPHICS,

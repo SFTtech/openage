@@ -16,7 +16,7 @@ from openage.convert.service import debug_info
 from openage.convert.service.export.load_media_cache import load_media_cache
 from openage.convert.value_object.read.media.blendomatic import Blendomatic
 from openage.convert.value_object.read.media_types import MediaType
-from openage.log import dbg, get_loglevel
+from openage.log import dbg, info, get_loglevel
 from openage.util.strings import format_progress
 
 if typing.TYPE_CHECKING:
@@ -70,23 +70,23 @@ class MediaExporter:
                 kwargs["palettes"] = args.palettes
                 kwargs["compression_level"] = args.compression_level
                 export_func = MediaExporter._export_terrain
-                print("-- Exporting terrain files...")
+                info("-- Exporting terrain files...")
 
             elif media_type is MediaType.GRAPHICS:
                 kwargs["palettes"] = args.palettes
                 kwargs["compression_level"] = args.compression_level
                 kwargs["cache_info"] = cache_info
                 export_func = MediaExporter._export_graphics
-                print("-- Exporting graphics files...")
+                info("-- Exporting graphics files...")
 
             elif media_type is MediaType.SOUNDS:
                 export_func = MediaExporter._export_sound
-                print("-- Exporting sound files...")
+                info("-- Exporting sound files...")
 
             elif media_type is MediaType.BLEND:
                 kwargs["blend_mode_count"] = args.blend_mode_count
                 export_func = MediaExporter._export_blend
-                print("-- Exporting blend files...")
+                info("-- Exporting blend files...")
 
             total_count = len(cur_export_requests)
             for count, request in enumerate(cur_export_requests, start = 1):
@@ -198,9 +198,9 @@ class MediaExporter:
             media_file = source_file.open("rb")
 
         except FileNotFoundError:
-            if source_file.suffix.lower() == ".smx":
+            if source_file.suffix.lower() in (".smx", ".sld"):
                 # Rename extension to SMP and try again
-                other_filename = export_request.source_filename[:-1] + "p"
+                other_filename = export_request.source_filename[:-3] + "smp"
                 source_file = sourcedir[
                     export_request.get_type().value,
                     other_filename
@@ -220,6 +220,10 @@ class MediaExporter:
         elif source_file.suffix.lower() == ".smx":
             from ...value_object.read.media.smx import SMX
             image = SMX(media_file.read())
+
+        elif source_file.suffix.lower() == ".sld":
+            from ...value_object.read.media.sld import SLD
+            image = SLD(media_file.read())
 
         packer_cache = None
         compr_cache = None
