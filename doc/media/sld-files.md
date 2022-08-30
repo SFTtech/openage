@@ -1,6 +1,6 @@
 # SLD files
 
-SLD is the sprite storage format introduced in Build ASDF of Age of Empires 2: Definitive Edition.
+SLD is the sprite storage format introduced in Build 66692 of Age of Empires 2: Definitive Edition.
 Unlike the [SMX](smx-files.md) and [SLP](slp-files.md) formats, the SLD format does not use
 indexed palettes for pixel data. Instead, SLD image data utilizes lossy texture compression
 algorithms [DXT1](https://en.wikipedia.org/wiki/S3_Texture_Compression#DXT1) and [DXT4](https://en.wikipedia.org/wiki/S3_Texture_Compression#DXT1) (also known as BC1 and BC4, respectively).
@@ -149,7 +149,7 @@ is padded with null bytes until its length is a multiple of 4. Therefore,
 the actual length of the layer in bytes should be calculated like this:
 
 ```
-actual_length = content_length + (4 - (content_length % 4))
+actual_length = content_length + ((4 - content_length) % 4)
 ```
 
 

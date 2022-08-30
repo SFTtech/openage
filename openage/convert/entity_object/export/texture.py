@@ -22,6 +22,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.media.slp import SLP, SLPFrame
     from openage.convert.value_object.read.media.smp import SMP, SMPLayer
     from openage.convert.value_object.read.media.smx import SMX, SMXLayer
+    from openage.convert.value_object.read.media.sld import SLD, SLDLayer
 
 
 class TextureImage:

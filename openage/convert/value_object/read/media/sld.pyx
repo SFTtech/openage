@@ -28,7 +28,7 @@ cdef struct pixel:
 class SLD:
     """
     Class for reading/converting compressed SLD files (delivered
-    with AoE2:DE since version ASDF by default).
+    with AoE2:DE since version 66692 by default).
     """
 
     # struct sld_header {
@@ -202,9 +202,8 @@ class SLD:
 
                 # Jump to next layer offset
                 current_offset = start_offset + layer_length
-                if current_offset % 4 != 0:
-                    # padding to size % 4
-                    current_offset += 4 - (current_offset % 4)
+                # padding to size % 4
+                current_offset += (4 - current_offset) % 4
 
     def __str__(self):
         ret = list()
