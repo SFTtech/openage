@@ -25,6 +25,17 @@ cdef struct pixel:
     uint8_t a
 
 
+class LayerType(Enum):
+    """
+    SLD layer types.
+    """
+    MAIN        = "main"
+    SHADOW      = "shadow"
+    OUTLINE     = "outline"
+    DAMAGE      = "damage"
+    PLAYERCOLOR = "playercolor"
+
+
 class SLD:
     """
     Class for reading/converting compressed SLD files (delivered
@@ -99,7 +110,7 @@ class SLD:
 
         # SLD files have no offsets, we have to calculate them
         current_offset = SLD.sld_header.size
-        for i in range(frame_count):
+        for _ in range(frame_count):
             frame_header = SLD.sld_frame_header.unpack_from(
                 data, current_offset)
 
@@ -111,19 +122,19 @@ class SLD:
             layer_types = []
 
             if frame_type & 0x01:
-                layer_types.append("main")
+                layer_types.append(LayerType.MAIN)
 
             if frame_type & 0x02:
-                layer_types.append("shadow")
+                layer_types.append(LayerType.SHADOW)
 
             if frame_type & 0x04:
-                layer_types.append("outline")
+                layer_types.append(LayerType.OUTLINE)
 
             if frame_type & 0x08:
-                layer_types.append("damage")
+                layer_types.append(LayerType.DAMAGE)
 
             if frame_type & 0x10:
-                layer_types.append("playercolor")
+                layer_types.append(LayerType.PLAYERCOLOR)
 
             main_width = 0
             main_height = 0
@@ -135,7 +146,7 @@ class SLD:
                 current_offset += SLD.sld_layer_length.size
 
                 # Header unpacking
-                if layer_type in ("main", "shadow"):
+                if layer_type in (LayerType.MAIN, LayerType.SHADOW):
                     layer_header = SLD.sld_layer_header_graphics.unpack_from(data, current_offset)
                     offset_x1, offset_y1, offset_x2, offset_y2, _, _ = layer_header
 
@@ -151,11 +162,11 @@ class SLD:
 
                     current_offset += SLD.sld_layer_header_graphics.size
 
-                elif layer_type in ("outline", ):
+                elif layer_type in (LayerType.OUTLINE, ):
                     # TODO
                     pass
 
-                elif layer_type in ("damage", "playercolor"):
+                elif layer_type in (LayerType.DAMAGE, LayerType.PLAYERCOLOR):
                     layer_header = SLD.sld_layer_header_mask.unpack_from(data, current_offset)
 
                     layer_width = main_width
@@ -163,7 +174,7 @@ class SLD:
                     layer_hotspot_x = main_hotspot_x
                     layer_hotspot_y = main_hotspot_y
 
-                    current_offset += SLD.sld_layer_header_graphics.size
+                    current_offset += SLD.sld_layer_header_mask.size
 
                 # Command array
                 command_array_size = Struct("< H").unpack_from(data, current_offset)[0]
@@ -184,21 +195,21 @@ class SLD:
                     compressed_data_offset
                 )
 
-                if layer_type == "main":
+                if layer_type is LayerType.MAIN:
                     self.main_frames.append(SLDLayerBC1(layer_header, data))
 
-                elif layer_type == "shadow":
+                elif layer_type is LayerType.SHADOW:
                     self.shadow_frames.append(SLDLayerBC4(layer_header, data))
 
-                elif layer_type == "outline":
+                elif layer_type is LayerType.OUTLINE:
                     # TODO
                     pass
 
-                elif layer_type == "damage":
+                elif layer_type is LayerType.DAMAGE:
                     self.dmg_mask_frames.append(SLDLayerBC1(layer_header, data))
 
-                elif layer_type == "playercolor":
-                    self.shadow_frames.append(SLDLayerBC4(layer_header, data))
+                elif layer_type is LayerType.PLAYERCOLOR:
+                    self.playercolor_mask_frames.append(SLDLayerBC4(layer_header, data))
 
                 # Jump to next layer offset
                 current_offset = start_offset + layer_length
@@ -249,7 +260,7 @@ class SLDLayerHeader:
 
     def __repr__(self):
         ret = (
-            "% 11s | " % self.layer_type,
+            "% 11s | " % self.layer_type.value,
             "% 5d x% 7d | " % self.size,
             "% 3d x% 3d | " % self.hotspot,
             "% 14d | " % self.command_array_size,
@@ -283,6 +294,8 @@ cdef class SLDLayer:
 
         if not (isinstance(data, bytes) or isinstance(data, bytearray)):
             raise ValueError("Layer data must be some bytes object")
+
+        # self.pcolor.reserve((self.info.size[0] // 4) * (self.info.size[1] // 4))
 
         # memory pointer
         # convert the bytes obj to char*
@@ -483,7 +496,7 @@ cdef class SLDLayerBC4(SLDLayer):
         """
         Decompress a 4x4 pixel block.
         """
-        cdef unsigned char offset
+        cdef size_t offset
         cdef unsigned char byte_val
         cdef unsigned char index
         cdef unsigned char mask = 0b00000111
@@ -612,7 +625,9 @@ cdef class SLDLayerBC4(SLDLayer):
         :return: Array of RGBA values.
         :rtype: numpy.ndarray
         """
-        return determine_greyscale_matrix(self.pcolor, self.info.size[0], self.info.size[1])
+        # TODO: Greyscale export support
+        # return determine_greyscale_matrix(self.pcolor, self.info.size[0], self.info.size[1])
+        return determine_rgba_matrix(self.pcolor, self.info.size[0], self.info.size[1])
 
 
 @cython.boundscheck(False)

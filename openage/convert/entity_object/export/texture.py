@@ -119,10 +119,15 @@ class Texture(GenieStructure):
                     self.frames.append(subtex)
 
         elif isinstance(input_data, SLD):
-            for frame in input_data.main_frames:
+            input_frames = input_data.main_frames
+            if len(input_frames) == 0:
+                # Use shadows if no main graphics are inside
+                input_frames = input_data.shadow_frames
+
+            for frame in input_frames:
                 subtex = TextureImage(
                     frame.get_picture_data(),
-                    hotspot=(0, 0)
+                    hotspot=frame.get_hotspot()
                 )
                 self.frames.append(subtex)
 

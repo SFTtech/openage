@@ -46,6 +46,15 @@ cdef struct pixel:
     uint8_t damage_modifier_2   # modifier for damage (part 2)
 
 
+class LayerType(Enum):
+    """
+    SMX layer types.
+    """
+    MAIN        = "main"
+    SHADOW      = "shadow"
+    OUTLINE     = "outline"
+
+
 class SMX:
     """
     Class for reading/converting compressed SMX files (delivered
@@ -120,13 +129,13 @@ class SMX:
             layer_types = []
 
             if frame_type & 0x01:
-                layer_types.append("main")
+                layer_types.append(LayerType.MAIN)
 
             if frame_type & 0x02:
-                layer_types.append("shadow")
+                layer_types.append(LayerType.SHADOW)
 
             if frame_type & 0x04:
-                layer_types.append("outline")
+                layer_types.append(LayerType.OUTLINE)
 
             for layer_type in layer_types:
                 layer_header_data = SMX.smx_layer_header.unpack_from(
@@ -146,7 +155,7 @@ class SMX:
                 current_offset += 4
 
                 # Read length of color table
-                if layer_type == "main":
+                if layer_type is LayerType.MAIN:
                     qdl_color_table_size = Struct("< I").unpack_from(data, current_offset)[0]
                     current_offset += 4
                     qdl_color_table_offset = current_offset + qdl_command_array_size
@@ -165,17 +174,17 @@ class SMX:
                                               qdl_command_table_offset,
                                               qdl_color_table_offset)
 
-                if layer_type == "main":
+                if layer_type is LayerType.MAIN:
                     if layer_header.compression_type == 0x08:
                         self.main_frames.append(SMXMainLayer8to5(layer_header, data))
 
                     elif layer_header.compression_type == 0x00:
                         self.main_frames.append(SMXMainLayer4plus1(layer_header, data))
 
-                elif layer_type == "shadow":
+                elif layer_type is LayerType.SHADOW:
                     self.shadow_frames.append(SMXShadowLayer(layer_header, data))
 
-                elif layer_type == "outline":
+                elif layer_type is LayerType.OUTLINE:
                     self.outline_frames.append(SMXOutlineLayer(layer_header, data))
 
     def __str__(self):

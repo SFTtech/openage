@@ -198,9 +198,9 @@ class MediaExporter:
             media_file = source_file.open("rb")
 
         except FileNotFoundError:
-            if source_file.suffix.lower() == ".smx":
+            if source_file.suffix.lower() in (".smx", ".sld"):
                 # Rename extension to SMP and try again
-                other_filename = export_request.source_filename[:-1] + "p"
+                other_filename = export_request.source_filename[:-3] + "smp"
                 source_file = sourcedir[
                     export_request.get_type().value,
                     other_filename
