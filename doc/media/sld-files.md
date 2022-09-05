@@ -170,7 +170,7 @@ Length   | Type   | Description                    | Example
 2 bytes  | uint16 | Layer Offset Y1 (top left)     | 72, 0x48
 2 bytes  | uint16 | Layer Offset X2 (bottom right) | 132, 0x84
 2 bytes  | uint16 | Layer Offset Y2 (bottom right) | 108, 0x6C
-1 bytes  | uint8  | Unknown                        | 0, 0x00 (sometimes 0x08)
+1 bytes  | uint8  | Flag 1                         | 128, 0x80
 1 bytes  | uint8  | Unknown                        | 1, 0x01
 
 ```cpp
@@ -179,8 +179,8 @@ struct sld_graphics_header {
   uint16  offset_y1;
   uint16  offset_x2;
   uint16  offset_y2;
+  uint8   flag1;
   uint8   unknown1;
-  uint8   unknown2;
 };
 ```
 Python format: `Struct("< 4H 2B")`
@@ -203,6 +203,15 @@ You can also calculate the position of the canvas hotspot relative to the layer.
 layer_hotspot_x = canvas_hotspot_x - offset_x1
 layer_hotspot_y = canvas_hotspot_y - offset_y1
 ```
+
+`flag1` is (presumably) a bit field that contains settings for drawing the layer.
+
+Indices are read from left to right:
+
+Bit index | Description
+----------|------------
+7         | If set to `1`, the pixel data from previous frames is reused.
+0-6       | Unknown
 
 ##### Pixel Data
 
@@ -229,6 +238,10 @@ The command array is then followed by `command_array_length` commands with lengt
 Each command is a pair of bytes that tells us how many 4x4 pixel blocks are skipped (i.e.
 fully transparent) and how many 4x4 pixel blocks are drawn using the compressed DXT1 data blocks
 from the **compressed block array**.
+
+**Important:** If bitfield `flag1` in the layer header has bit 7 set, skipping works
+slightly different. Instead of drawing a fully transparent block, the pixel block
+in the previous *frame* (same position, same layer) is copied.
 
 Length   | Type   | Description              | Example
 ---------|--------|--------------------------|-----------------
@@ -316,19 +329,23 @@ The damage mask layer header contains 2 values:
 
 Length   | Type   | Description          | Example
 ---------|--------|----------------------|--------
-1 bytes  | uint8  | Unknown              | 0, 0x00 (sometimes 0x08)
+1 bytes  | uint8  | Flag 1               | 128, 0x80
 1 bytes  | uint8  | Unknown              | 1, 0x01
 
 ```cpp
 struct sld_mask_header {
+  uint8   flag1;
   uint8   unknown1;
-  uint8   unknown2;
 };
 ```
 Python format: `Struct("< 2B")`
 
-There is no width and height information for the damage mask layer as it is exactly the same
+This presumably is a shortened version of the header for the main graphics layer
+and the shadow layer. There is no width and height information as it should have the exact same
 size as the main graphics layer of the frame.
+
+`flag1` is (presumably) a bit field that contains settings for drawing the layer.
+
 
 ##### Pixel Data
 
