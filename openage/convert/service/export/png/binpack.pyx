@@ -1,4 +1,4 @@
-# Copyright 2016-2021 the openage authors. See copying.md for legal info.
+# Copyright 2016-2022 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True,profile=False
 # TODO pylint: disable=C,R

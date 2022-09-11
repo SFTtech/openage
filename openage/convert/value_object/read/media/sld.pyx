@@ -120,6 +120,13 @@ cdef class SLD:
         cdef vector[vector[pixel]] *previous_layer = NULL
         cdef SLDLayerHeader layer_header
 
+        cdef unsigned short main_width
+        cdef unsigned short main_height
+        cdef unsigned short main_hotspot_x
+        cdef unsigned short main_hotspot_y
+
+        cdef unsigned int current_offset
+
         spam(SLDLayerHeader.repr_header())
 
         # SLD files have no offsets, we have to calculate them
@@ -219,7 +226,7 @@ cdef class SLD:
                 )
 
                 if layer_type is SLDLayerType.MAIN:
-                    layer_def = SLDLayerBC1(frame_header, layer_header, data)
+                    layer_def = SLDLayerBC1(frame_header, layer_header)
                     if previous_layer != NULL and flag0 & 0x80:
                         layer_def.set_previous_layer(
                             previous_size[0],
@@ -243,7 +250,7 @@ cdef class SLD:
 
                 elif layer_type is SLDLayerType.SHADOW:
                     self.shadow_frames.append(
-                        SLDLayerBC4(frame_header, layer_header, data)
+                        SLDLayerBC4(frame_header, layer_header)
                     )
 
                 elif layer_type is SLDLayerType.OUTLINE:
@@ -252,12 +259,12 @@ cdef class SLD:
 
                 elif layer_type is SLDLayerType.DAMAGE:
                     self.dmg_mask_frames.append(
-                        SLDLayerBC1(frame_header, layer_header, data)
+                        SLDLayerBC1(frame_header, layer_header)
                     )
 
                 elif layer_type is SLDLayerType.PLAYERCOLOR:
                     self.playercolor_mask_frames.append(
-                        SLDLayerBC4(frame_header, layer_header, data)
+                        SLDLayerBC4(frame_header, layer_header)
                     )
 
                 # Jump to next layer offset
@@ -275,6 +282,7 @@ cdef class SLD:
 
     def __repr__(self):
         return f"{self.sld_type} image<{len(self.main_frames):d} frames>"
+
 
 cdef class SLDFrameHeader:
     """
@@ -310,6 +318,7 @@ cdef class SLDFrameHeader:
             "% 3d x% 3d | " % self.hotspot,
         )
         return "".join(ret)
+
 
 cdef class SLDLayerHeader:
     """
@@ -383,21 +392,18 @@ cdef class SLDLayer:
     cdef (unsigned short, unsigned short) previous_offset
     cdef vector[vector[pixel]] *previous_layer
 
-    def __init__(self, frame_header, layer_header, data):
+    def __init__(self, frame_header, layer_header):
         """
         SMX layer definition superclass. There can be various types of
         layers inside an SMX frame.
 
+        :param frame_header: Header definition of the frame.
+        :type frame_header: SLDFrameHeader
         :param layer_header: Header definition of the layer.
-        :param data: File content as bytes.
-        :type layer_header: SMXLayerHeader
-        :type data: bytes, bytearray
+        :type layer_header: SLDLayerHeader
         """
         self.frame_info = frame_header
         self.layer_info = layer_header
-
-        if not (isinstance(data, bytes) or isinstance(data, bytearray)):
-            raise ValueError("Layer data must be some bytes object")
 
         self.pcolor.reserve((self.layer_info.size[0] // 4) * (self.layer_info.size[1] // 4))
 
@@ -518,8 +524,8 @@ cdef class SLDLayerBC1(SLDLayer):
     """
     Compressed SLD layer using BC1 block compression.
     """
-    def __init__(self, frame_header, layer_header, data):
-        super().__init__(frame_header, layer_header, data)
+    def __init__(self, frame_header, layer_header):
+        super().__init__(frame_header, layer_header)
 
     @cython.boundscheck(False)
     cdef inline vector[pixel] decompress_block(self,
@@ -634,8 +640,8 @@ cdef class SLDLayerBC4(SLDLayer):
     """
     Compressed SLD layer using BC4 block compression.
     """
-    def __init__(self, frame_header, layer_header, data):
-        super().__init__(frame_header, layer_header, data)
+    def __init__(self, frame_header, layer_header):
+        super().__init__(frame_header, layer_header)
 
     @cython.boundscheck(False)
     cdef inline vector[pixel] decompress_block(self,
