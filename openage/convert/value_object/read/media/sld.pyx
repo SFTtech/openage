@@ -326,7 +326,7 @@ cdef class SLDLayerHeader:
     """
     cdef (unsigned short, unsigned short) size
     cdef (unsigned short, unsigned short) offset
-    cdef (unsigned short, unsigned short) hotspot
+    cdef (short, short) hotspot
     cdef object layer_type
     cdef unsigned char frame_type
     cdef size_t command_array_size
