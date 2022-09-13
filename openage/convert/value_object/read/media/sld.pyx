@@ -537,7 +537,7 @@ cdef class SLDLayerBC1(SLDLayer):
         cdef size_t offset
         cdef unsigned char byte_val
         cdef unsigned char index
-        cdef unsigned char mask = 0b00000011
+        cdef unsigned char mask = 0b0000_0011
         cdef vector[pixel] block
         block.reserve(16)
 
@@ -551,10 +551,10 @@ cdef class SLDLayerBC1(SLDLayer):
         cdef unsigned short c1_val = data_raw[block_offset + 2] + (data_raw[block_offset + 3] << 8)
 
         # Color 0
-        c0.r = (data_raw[block_offset + 1] & 0b11111000) >> 3
-        c0.g = ((data_raw[block_offset + 1] & 0b00000111) << 3) +\
-            ((data_raw[block_offset] & 0b11100000) >> 5)
-        c0.b = data_raw[block_offset] & 0b00011111
+        c0.r = (data_raw[block_offset + 1] & 0b1111_1000) >> 3
+        c0.g = ((data_raw[block_offset + 1] & 0b0000_0111) << 3) +\
+            ((data_raw[block_offset] & 0b1110_0000) >> 5)
+        c0.b = data_raw[block_offset] & 0b0001_1111
 
         # Expand to RGBA32 color space
         c0.r *= 8
@@ -563,10 +563,10 @@ cdef class SLDLayerBC1(SLDLayer):
         c0.a = 255
 
         # Color 1
-        c1.r = (data_raw[block_offset + 3] & 0b11111000) >> 3
-        c1.g = ((data_raw[block_offset + 3] & 0b00000111) << 3) +\
-            ((data_raw[block_offset + 2] & 0b11100000) >> 5)
-        c1.b = data_raw[block_offset + 2] & 0b00011111
+        c1.r = (data_raw[block_offset + 3] & 0b1111_1000) >> 3
+        c1.g = ((data_raw[block_offset + 3] & 0b0000_0111) << 3) +\
+            ((data_raw[block_offset + 2] & 0b1110_0000) >> 5)
+        c1.b = data_raw[block_offset + 2] & 0b0001_1111
 
         # Expand to RGBA32 color space
         c1.r *= 8
@@ -653,7 +653,7 @@ cdef class SLDLayerBC4(SLDLayer):
         cdef size_t offset
         cdef unsigned char byte_val
         cdef unsigned char index
-        cdef unsigned char mask = 0b00000111
+        cdef unsigned char mask = 0b0000_0111
         cdef vector[pixel] block
         block.reserve(16)
 
