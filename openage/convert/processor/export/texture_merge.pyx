@@ -47,7 +47,7 @@ def merge_frames(texture, custom_packer=PackerType.BINPACK, cache=None):
 @cython.boundscheck(False)
 @cython.wraparound(False)
 @cython.cdivision(True)
-cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None):
+cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) except *:
     """
     merge all given frames in a texture into a single image atlas.
 

@@ -174,7 +174,12 @@ def read_slp_file(
     tex = Texture(slp_image, palettes)
 
     from ..processor.export.texture_merge import merge_frames
-    merge_frames(tex)
+    try:
+        merge_frames(tex)
+
+    except Exception:
+        info(f"slp contains 0 frames! aborting texture export.")
+        return
 
     # save as png
     MediaExporter.save_png(
@@ -218,7 +223,12 @@ def read_slp_in_drs_file(
     tex = Texture(slp_image, palettes)
 
     from ..processor.export.texture_merge import merge_frames
-    merge_frames(tex)
+    try:
+        merge_frames(tex)
+
+    except Exception:
+        info(f"slp contains 0 frames! aborting texture export.")
+        return
 
     # save as png
     MediaExporter.save_png(
@@ -258,7 +268,12 @@ def read_smp_file(
     tex = Texture(smp_image, palettes)
 
     from ..processor.export.texture_merge import merge_frames
-    merge_frames(tex)
+    try:
+        merge_frames(tex)
+
+    except Exception:
+        info(f"layer {layer} contains 0 frames! aborting texture export.")
+        return
 
     # save as png
     MediaExporter.save_png(
@@ -295,10 +310,15 @@ def read_smx_file(
 
     # create texture
     info("packing texture...")
-    tex = Texture(smx_image, palettes)
+    tex = Texture(smx_image, palettes, layer=layer)
 
     from ..processor.export.texture_merge import merge_frames
-    merge_frames(tex)
+    try:
+        merge_frames(tex)
+
+    except Exception:
+        info(f"layer {layer} contains 0 frames! aborting texture export.")
+        return
 
     # save as png
     MediaExporter.save_png(
@@ -337,7 +357,12 @@ def read_sld_file(
     tex = Texture(sld_image, layer=layer)
 
     from ..processor.export.texture_merge import merge_frames
-    merge_frames(tex)
+    try:
+        merge_frames(tex)
+
+    except Exception:
+        info(f"layer {layer} contains 0 frames! aborting texture export.")
+        return
 
     # save as png
     MediaExporter.save_png(
