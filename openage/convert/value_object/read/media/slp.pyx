@@ -70,6 +70,20 @@ cdef struct pixel32:
     uint8_t a
 
 
+class SLPLayerType(Enum):
+    """
+    SLP layer types.
+    """
+    MAIN    = "main"
+    SHADOW  = "shadow"
+
+
+cdef public dict LAYER_TYPES = {
+    0: SLPLayerType.MAIN,
+    1: SLPLayerType.SHADOW,
+}
+
+
 class SLP:
     """
     Class for reading/converting the greatest image format ever: SLP.
@@ -189,6 +203,33 @@ class SLP:
                     data, frame_header_offset), self.version, slp_shadow)
                 spam(frame_info)
                 self.shadow_frames.append(SLPShadowFrame(frame_info, data))
+
+    def get_frames(self, layer: int = 0):
+        """
+        Get the frames in the SLP.
+
+        :param layer: Position of the layer (see LAYER_TYPES)
+                        - 0 = main graphics
+                        - 1 = shadow graphics
+        :type layer: int
+        """
+        cdef list frames
+
+        layer_type = LAYER_TYPES.get(
+            layer,
+            SLPLayerType.MAIN
+        )
+
+        if layer_type is SLPLayerType.MAIN:
+            frames = self.main_frames
+
+        elif layer_type is SLPLayerType.SHADOW:
+            frames = self.shadow_frames
+
+        else:
+            frames = []
+
+        return frames
 
     def __str__(self):
         ret = list()

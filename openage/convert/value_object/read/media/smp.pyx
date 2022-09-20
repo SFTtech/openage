@@ -47,6 +47,22 @@ cdef struct pixel:
     uint8_t damage_modifier_2   # modifier for damage (part 2)
 
 
+class SMPLayerType(Enum):
+    """
+    SMP layer types.
+    """
+    MAIN    = "main"
+    SHADOW  = "shadow"
+    OUTLINE = "outline"
+
+
+cdef public dict LAYER_TYPES = {
+    0: SMPLayerType.MAIN,
+    1: SMPLayerType.SHADOW,
+    2: SMPLayerType.OUTLINE,
+}
+
+
 class SMP:
     """
     Class for reading/converting the SMP image format (successor of SLP).
@@ -156,6 +172,37 @@ class SMP:
                         f"unknown layer type: {layer_header.layer_type:#x} at offset {layer_header_offset:#x}"
                     )
                 spam(layer_header)
+
+    def get_frames(self, layer: int = 0):
+        """
+        Get the frames in the SMP.
+
+        :param layer: Position of the layer (see LAYER_TYPES)
+                        - 0 = main graphics
+                        - 1 = shadow graphics
+                        - 2 = outline
+        :type layer: int
+        """
+        cdef list frames
+
+        layer_type = LAYER_TYPES.get(
+            layer,
+            SMPLayerType.MAIN
+        )
+
+        if layer_type is SMPLayerType.MAIN:
+            frames = self.main_frames
+
+        elif layer_type is SMPLayerType.SHADOW:
+            frames = self.shadow_frames
+
+        elif layer_type is SMPLayerType.OUTLINE:
+            frames = self.outline_frames
+
+        else:
+            frames = []
+
+        return frames
 
     def __str__(self):
         ret = list()

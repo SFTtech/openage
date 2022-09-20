@@ -37,6 +37,15 @@ class SLDLayerType(Enum):
     PLAYERCOLOR = "playercolor"
 
 
+cdef public dict LAYER_TYPES = {
+    0: SLDLayerType.MAIN,
+    1: SLDLayerType.SHADOW,
+    2: SLDLayerType.OUTLINE,
+    3: SLDLayerType.DAMAGE,
+    4: SLDLayerType.PLAYERCOLOR,
+}
+
+
 cdef class SLD:
     """
     Class for reading/converting compressed SLD files (delivered
@@ -92,6 +101,8 @@ cdef class SLD:
     cdef public list dmg_mask_frames
     cdef public list playercolor_mask_frames
 
+    cdef const uint8_t[:] data
+
     def __init__(self, data):
         """
         Read an SLD image file.
@@ -114,6 +125,8 @@ cdef class SLD:
         self.outline_frames = list()
         self.dmg_mask_frames = list()
         self.playercolor_mask_frames = list()
+
+        self.data = data
 
         cdef (unsigned short, unsigned short) previous_size = (0, 0)
         cdef (unsigned short, unsigned short) previous_offset = (0, 0)
@@ -236,12 +249,6 @@ cdef class SLD:
                             previous_layer
                         )
 
-                    layer_def.process_drawing_cmds(
-                        data,
-                        layer_header.command_array_size,
-                        layer_header.command_array_offset,
-                        layer_header.compressed_data_offset
-                    )
                     self.main_frames.append(layer_def)
 
                     previous_size = layer_header.size
@@ -271,6 +278,54 @@ cdef class SLD:
                 current_offset = start_offset + layer_length
                 # padding to size % 4
                 current_offset += (4 - current_offset) % 4
+
+    cpdef get_frames(self, layer: int = 0):
+        """
+        Get the frames in the SLD.
+
+        :param layer: Position of the layer (see LAYER_TYPES)
+                        - 0 = main graphics
+                        - 1 = shadow graphics
+                        - 2 = ???
+                        - 3 = damage mask
+                        - 4 = playercolor mask
+        :type layer: int
+        """
+        cdef list frames
+        cdef SLDLayer layer_def
+
+        layer_type = LAYER_TYPES.get(
+            layer,
+            SLDLayerType.MAIN
+        )
+
+        if layer_type is SLDLayerType.MAIN:
+            frames = self.main_frames
+
+        elif layer_type is SLDLayerType.SHADOW:
+            frames = self.shadow_frames
+
+        elif layer_type is SLDLayerType.OUTLINE:
+            frames = self.outline_frames
+
+        elif layer_type is SLDLayerType.DAMAGE:
+            frames = self.dmg_mask_frames
+
+        elif layer_type is SLDLayerType.PLAYERCOLOR:
+            frames = self.playercolor_mask_frames
+
+        else:
+            frames = []
+
+        for layer_def in frames:
+            layer_def.process_drawing_cmds(
+                self.data,
+                layer_def.layer_info.command_array_size,
+                layer_def.layer_info.command_array_offset,
+                layer_def.layer_info.compressed_data_offset
+            )
+
+        return frames
 
     def __str__(self):
         ret = list()
