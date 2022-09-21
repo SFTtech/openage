@@ -101,7 +101,7 @@ cdef class SLD:
     cdef public list dmg_mask_frames
     cdef public list playercolor_mask_frames
 
-    cdef const uint8_t[:] data
+    cdef const uint8_t[::1] data
 
     def __init__(self, data):
         """
@@ -469,7 +469,7 @@ cdef class SLDLayer:
     @cython.boundscheck(False)
     @cython.wraparound(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    unsigned int cmd_size,
                                    unsigned int first_cmd_offset,
                                    unsigned int first_data_offset):
@@ -525,7 +525,7 @@ cdef class SLDLayer:
 
     @cython.boundscheck(False)
     cdef vector[pixel] decompress_block(self,
-                                        const uint8_t[:] &data_raw,
+                                        const uint8_t[::1] &data_raw,
                                         Py_ssize_t block_offset):
         """
         Decompress a 4x4 pixel block.
@@ -584,7 +584,7 @@ cdef class SLDLayerBC1(SLDLayer):
 
     @cython.boundscheck(False)
     cdef inline vector[pixel] decompress_block(self,
-                                               const uint8_t[:] &data_raw,
+                                               const uint8_t[::1] &data_raw,
                                                Py_ssize_t block_offset):
         """
         Decompress a 4x4 pixel block.
@@ -700,7 +700,7 @@ cdef class SLDLayerBC4(SLDLayer):
 
     @cython.boundscheck(False)
     cdef inline vector[pixel] decompress_block(self,
-                                               const uint8_t[:] &data_raw,
+                                               const uint8_t[::1] &data_raw,
                                                Py_ssize_t block_offset):
         """
         Decompress a 4x4 pixel block.

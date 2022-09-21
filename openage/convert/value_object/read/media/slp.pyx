@@ -1,4 +1,4 @@
-# Copyright 2013-2021 the openage authors. See copying.md for legal info.
+# Copyright 2013-2022 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 
@@ -322,7 +322,7 @@ cdef class SLPFrame:
 
         # memory pointer
         # convert the bytes obj to char*
-        cdef const uint8_t[:] data_raw = data
+        cdef const uint8_t[::1] data_raw = data
 
         cdef unsigned short left
         cdef unsigned short right
@@ -361,7 +361,7 @@ cdef class SLPFrame:
             self.pcolor.push_back(self.create_palette_color_row(data_raw, i))
 
     cdef vector[pixel] create_palette_color_row(self,
-                                                const uint8_t[:] &data_raw,
+                                                const uint8_t[::1] &data_raw,
                                                 Py_ssize_t rowid) except +:
         """
         create palette indices (colors) for the given rowid.
@@ -417,7 +417,7 @@ cdef class SLPFrame:
 
     @cython.boundscheck(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    vector[pixel] &row_data,
                                    Py_ssize_t rowid,
                                    Py_ssize_t first_cmd_offset,
@@ -467,7 +467,7 @@ cdef class SLPMainFrameAoC(SLPFrame):
 
     @cython.boundscheck(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    vector[pixel] &row_data,
                                    Py_ssize_t rowid,
                                    Py_ssize_t first_cmd_offset,
@@ -696,7 +696,7 @@ cdef class SLPMainFrameDE(SLPFrame):
 
     @cython.boundscheck(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    vector[pixel] &row_data,
                                    Py_ssize_t rowid,
                                    Py_ssize_t first_cmd_offset,
@@ -925,7 +925,7 @@ cdef class SLPShadowFrame(SLPFrame):
 
     @cython.boundscheck(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    vector[pixel] &row_data,
                                    Py_ssize_t rowid,
                                    Py_ssize_t first_cmd_offset,
@@ -1095,7 +1095,7 @@ cdef class SLPFrame32:
 
         # memory pointer
         # convert the bytes obj to char*
-        cdef const uint8_t[:] data_raw = data
+        cdef const uint8_t[::1] data_raw = data
 
         cdef unsigned short left
         cdef unsigned short right
@@ -1134,7 +1134,7 @@ cdef class SLPFrame32:
             self.pcolor.push_back(self.create_palette_color_row(data_raw, i))
 
     cdef vector[pixel32] create_palette_color_row(self,
-                                                  const uint8_t[:] &data_raw,
+                                                  const uint8_t[::1] &data_raw,
                                                   Py_ssize_t rowid) except +:
         """
         create palette indices (colors) for the given rowid.
@@ -1189,7 +1189,7 @@ cdef class SLPFrame32:
 
     @cython.boundscheck(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    vector[pixel32] &row_data,
                                    Py_ssize_t rowid,
                                    Py_ssize_t first_cmd_offset,
@@ -1471,7 +1471,7 @@ cdef class SLPFrame32:
 
 
 @cython.boundscheck(False)
-cdef inline cmd_pack cmd_or_next(const uint8_t[:] &data_raw,
+cdef inline cmd_pack cmd_or_next(const uint8_t[::1] &data_raw,
                                  uint8_t cmd,
                                  uint8_t n,
                                  Py_ssize_t pos):

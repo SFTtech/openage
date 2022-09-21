@@ -337,7 +337,7 @@ cdef class SMXLayer:
 
         # memory pointer
         # convert the bytes obj to char*
-        cdef const uint8_t[:] data_raw = data
+        cdef const uint8_t[::1] data_raw = data
 
         cdef unsigned short left
         cdef unsigned short right
@@ -373,7 +373,7 @@ cdef class SMXLayer:
             self.pcolor.push_back(row_data)
 
     cdef inline (int, int, int, vector[pixel]) create_color_row(self,
-                                                                const uint8_t[:] &data_raw,
+                                                                const uint8_t[::1] &data_raw,
                                                                 Py_ssize_t rowid,
                                                                 int cmd_offset,
                                                                 int color_offset,
@@ -440,7 +440,7 @@ cdef class SMXLayer:
         return next_cmd_offset, next_color_offset, chunk_pos, row_data
 
     cdef (int, int, int, vector[pixel]) process_drawing_cmds(self,
-                                                             const uint8_t[:] &data_raw,
+                                                             const uint8_t[::1] &data_raw,
                                                              vector[pixel] &row_data,
                                                              Py_ssize_t rowid,
                                                              Py_ssize_t first_cmd_offset,
@@ -503,7 +503,7 @@ cdef class SMXMainLayer8to5(SMXLayer):
 
     @cython.boundscheck(False)
     cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self,
-                                                                    const uint8_t[:] &data_raw,
+                                                                    const uint8_t[::1] &data_raw,
                                                                     vector[pixel] &row_data,
                                                                     Py_ssize_t rowid,
                                                                     Py_ssize_t first_cmd_offset,
@@ -713,7 +713,7 @@ cdef class SMXMainLayer4plus1(SMXLayer):
 
     @cython.boundscheck(False)
     cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self,
-                                                                    const uint8_t[:] &data_raw,
+                                                                    const uint8_t[::1] &data_raw,
                                                                     vector[pixel] &row_data,
                                                                     Py_ssize_t rowid,
                                                                     Py_ssize_t first_cmd_offset,
@@ -854,7 +854,7 @@ cdef class SMXShadowLayer(SMXLayer):
 
     @cython.boundscheck(False)
     cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self,
-                                                                    const uint8_t[:] &data_raw,
+                                                                    const uint8_t[::1] &data_raw,
                                                                     vector[pixel] &row_data,
                                                                     Py_ssize_t rowid,
                                                                     Py_ssize_t first_cmd_offset,
@@ -957,7 +957,7 @@ cdef class SMXOutlineLayer(SMXLayer):
 
     @cython.boundscheck(False)
     cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self,
-                                                                    const uint8_t[:] &data_raw,
+                                                                    const uint8_t[::1] &data_raw,
                                                                     vector[pixel] &row_data,
                                                                     Py_ssize_t rowid,
                                                                     Py_ssize_t first_cmd_offset,

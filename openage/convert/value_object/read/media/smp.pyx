@@ -1,4 +1,4 @@
-# Copyright 2013-2021 the openage authors. See copying.md for legal info.
+# Copyright 2013-2022 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 
@@ -291,7 +291,7 @@ cdef class SMPLayer:
 
         # memory pointer
         # convert the bytes obj to char*
-        cdef const uint8_t[:] data_raw = data
+        cdef const uint8_t[::1] data_raw = data
 
         cdef unsigned short left
         cdef unsigned short right
@@ -330,7 +330,7 @@ cdef class SMPLayer:
             self.pcolor.push_back(self.create_color_row(data_raw, i))
 
     cdef vector[pixel] create_color_row(self,
-                                        const uint8_t[:] &data_raw,
+                                        const uint8_t[::1] &data_raw,
                                         Py_ssize_t rowid) except +:
         """
         extract colors (pixels) for the given rowid.
@@ -386,7 +386,7 @@ cdef class SMPLayer:
 
     @cython.boundscheck(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    vector[pixel] &row_data,
                                    Py_ssize_t rowid,
                                    Py_ssize_t first_cmd_offset,
@@ -428,7 +428,7 @@ cdef class SMPMainLayer(SMPLayer):
 
     @cython.boundscheck(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    vector[pixel] &row_data,
                                    Py_ssize_t rowid,
                                    Py_ssize_t first_cmd_offset,
@@ -555,7 +555,7 @@ cdef class SMPShadowLayer(SMPLayer):
 
     @cython.boundscheck(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    vector[pixel] &row_data,
                                    Py_ssize_t rowid,
                                    Py_ssize_t first_cmd_offset,
@@ -658,7 +658,7 @@ cdef class SMPOutlineLayer(SMPLayer):
 
     @cython.boundscheck(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    vector[pixel] &row_data,
                                    Py_ssize_t rowid,
                                    Py_ssize_t first_cmd_offset,
