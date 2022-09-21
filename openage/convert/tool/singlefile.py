@@ -47,7 +47,7 @@ def init_subparser(cli):
     cli.add_argument("filename", help=("filename or, if inside a drs archive "
                                        "given by --drs, the filename within "
                                        "the drs archive"))
-    cli.add_argument("output", help="output path name")
+    cli.add_argument("output", help="output path")
 
 
 def main(args, error):
@@ -129,7 +129,6 @@ def read_palettes(palettes_path: Path) -> dict[str, ColorTable]:
         info("opening palette files in drs archive '%s'", palettes_path.name)
 
         # open from drs archive
-        # TODO: Also allow SWGB's DRS files
         palette_file = Path(palettes_path).open("rb")
         game_version = AOC_GAME_VERSION
         palette_dir = DRS(palette_file, game_version)
@@ -204,7 +203,6 @@ def read_slp_in_drs_file(
     output_file = Path(output_path)
 
     # open from drs archive
-    # TODO: Also allow SWGB's DRS files
     game_version = AOC_GAME_VERSION
     drs_file = DRS(drs, game_version)
 
@@ -409,7 +407,6 @@ def read_wav_in_drs_file(drs: Path, wav_path: Path, output_path: Path) -> None:
     output_file = Path(output_path)
 
     # open from drs archive
-    # TODO: Also allow SWGB's DRS files
     game_version = AOC_GAME_VERSION
     drs_file = DRS(drs, game_version)
 
