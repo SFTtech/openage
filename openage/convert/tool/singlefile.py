@@ -37,19 +37,23 @@ def init_subparser(cli):
     cli.add_argument("--drs", type=argparse.FileType('rb'),
                      help=("drs archive filename that contains an slp or wav "
                            "e.g. path ~/games/aoe/graphics.drs"))
-    cli.add_argument("--mode", choices=['drs-slp', 'drs-wav', 'slp', 'smp', 'smx', 'wav'],
-                     help=("choose between drs-slp, drs-wav, slp, smp, smx or wav; "
+    cli.add_argument("--mode", choices=['drs-slp', 'drs-wav', 'sld', 'slp', 'smp', 'smx', 'wav'],
+                     help=("choose between drs-slp, drs-wav, sld, slp, smp, smx or wav; "
                            "otherwise, this is determined by the file extension"))
     cli.add_argument("--compression-level", type=int, default=1, choices=[0, 1, 2, 3],
                      help="set PNG compression level")
+    cli.add_argument("--layer", type=int, default=0, choices=[0, 1, 2, 3, 4],
+                     help="ID of SLD/SMP/SMX layer that should be exported to image file")
     cli.add_argument("filename", help=("filename or, if inside a drs archive "
                                        "given by --drs, the filename within "
                                        "the drs archive"))
-    cli.add_argument("output", help="output path name")
+    cli.add_argument("output", help="output path")
 
 
 def main(args, error):
-    """ CLI entry point for single file conversions """
+    """
+    CLI entry point for single file conversions
+    """
     del error  # unused
 
     file_path = Path(args.filename)
@@ -63,6 +67,7 @@ def main(args, error):
         palettes = read_palettes(palettes_path)
 
     compression_level = args.compression_level
+    layer = args.layer
     if args.mode == "slp" or (file_extension == "slp" and not args.drs):
         read_slp_file(args.filename, args.output, palettes, compression_level)
 
@@ -70,13 +75,13 @@ def main(args, error):
         read_slp_in_drs_file(args.drs, args.filename, args.output, palettes, compression_level)
 
     elif args.mode == "smp" or file_extension == "smp":
-        read_smp_file(args.filename, args.output, palettes, compression_level)
+        read_smp_file(args.filename, args.output, palettes, compression_level, layer)
 
     elif args.mode == "smx" or file_extension == "smx":
-        read_smx_file(args.filename, args.output, palettes, compression_level)
+        read_smx_file(args.filename, args.output, palettes, compression_level, layer)
 
     elif args.mode == "sld" or file_extension == "sld":
-        read_sld_file(args.filename, args.output, compression_level)
+        read_sld_file(args.filename, args.output, compression_level, layer)
 
     elif args.mode == "wav" or (file_extension == "wav" and not args.drs):
         read_wav_file(args.filename, args.output)
@@ -124,7 +129,6 @@ def read_palettes(palettes_path: Path) -> dict[str, ColorTable]:
         info("opening palette files in drs archive '%s'", palettes_path.name)
 
         # open from drs archive
-        # TODO: Also allow SWGB's DRS files
         palette_file = Path(palettes_path).open("rb")
         game_version = AOC_GAME_VERSION
         palette_dir = DRS(palette_file, game_version)
@@ -169,9 +173,15 @@ def read_slp_file(
     tex = Texture(slp_image, palettes)
 
     from ..processor.export.texture_merge import merge_frames
-    merge_frames(tex)
+    try:
+        merge_frames(tex)
+
+    except ValueError:
+        info("slp contains 0 frames! aborting texture export.")
+        return
 
     # save as png
+    info("saving png file at '%s'", output_path)
     MediaExporter.save_png(
         tex,
         Directory(output_file.parent).root,
@@ -193,7 +203,6 @@ def read_slp_in_drs_file(
     output_file = Path(output_path)
 
     # open from drs archive
-    # TODO: Also allow SWGB's DRS files
     game_version = AOC_GAME_VERSION
     drs_file = DRS(drs, game_version)
 
@@ -213,9 +222,15 @@ def read_slp_in_drs_file(
     tex = Texture(slp_image, palettes)
 
     from ..processor.export.texture_merge import merge_frames
-    merge_frames(tex)
+    try:
+        merge_frames(tex)
+
+    except ValueError:
+        info("slp contains 0 frames! aborting texture export.")
+        return
 
     # save as png
+    info("saving png file at '%s'", output_path)
     MediaExporter.save_png(
         tex,
         Directory(output_file.parent).root,
@@ -228,7 +243,8 @@ def read_smp_file(
     smp_path: Path,
     output_path: Path,
     palettes: dict[str, ColorTable],
-    compression_level: int
+    compression_level: int,
+    layer: int
 ) -> None:
     """
     Reads a single SMP file.
@@ -252,9 +268,15 @@ def read_smp_file(
     tex = Texture(smp_image, palettes)
 
     from ..processor.export.texture_merge import merge_frames
-    merge_frames(tex)
+    try:
+        merge_frames(tex)
+
+    except ValueError:
+        info("layer %s contains 0 frames! aborting texture export.", layer)
+        return
 
     # save as png
+    info("saving png file at '%s'", output_path)
     MediaExporter.save_png(
         tex,
         Directory(output_file.parent).root,
@@ -267,7 +289,8 @@ def read_smx_file(
     smx_path: Path,
     output_path: Path,
     palettes: dict[str, ColorTable],
-    compression_level: int
+    compression_level: int,
+    layer: int
 ) -> None:
     """
     Reads a single SMX (compressed SMP) file.
@@ -288,12 +311,18 @@ def read_smx_file(
 
     # create texture
     info("packing texture...")
-    tex = Texture(smx_image, palettes)
+    tex = Texture(smx_image, palettes, layer=layer)
 
     from ..processor.export.texture_merge import merge_frames
-    merge_frames(tex)
+    try:
+        merge_frames(tex)
+
+    except ValueError:
+        info("layer %s contains 0 frames! aborting texture export.", layer)
+        return
 
     # save as png
+    info("saving png file at '%s'", output_path)
     MediaExporter.save_png(
         tex,
         Directory(output_file.parent).root,
@@ -305,7 +334,8 @@ def read_smx_file(
 def read_sld_file(
     sld_path: Path,
     output_path: Path,
-    compression_level: int
+    compression_level: int,
+    layer: int
 ) -> None:
     """
     Reads a single SMX (compressed SMP) file.
@@ -326,12 +356,18 @@ def read_sld_file(
 
     # create texture
     info("packing texture...")
-    tex = Texture(sld_image)
+    tex = Texture(sld_image, layer=layer)
 
     from ..processor.export.texture_merge import merge_frames
-    merge_frames(tex)
+    try:
+        merge_frames(tex)
+
+    except ValueError:
+        info("layer %s contains 0 frames! aborting texture export.", layer)
+        return
 
     # save as png
+    info("saving png file at '%s'", output_path)
     MediaExporter.save_png(
         tex,
         Directory(output_file.parent).root,
@@ -371,7 +407,6 @@ def read_wav_in_drs_file(drs: Path, wav_path: Path, output_path: Path) -> None:
     output_file = Path(output_path)
 
     # open from drs archive
-    # TODO: Also allow SWGB's DRS files
     game_version = AOC_GAME_VERSION
     drs_file = DRS(drs, game_version)
 

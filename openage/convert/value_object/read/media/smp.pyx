@@ -1,4 +1,4 @@
-# Copyright 2013-2021 the openage authors. See copying.md for legal info.
+# Copyright 2013-2022 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 
@@ -45,6 +45,22 @@ cdef struct pixel:
     uint8_t palette             # palette number and palette section
     uint8_t damage_modifier_1   # modifier for damage (part 1)
     uint8_t damage_modifier_2   # modifier for damage (part 2)
+
+
+class SMPLayerType(Enum):
+    """
+    SMP layer types.
+    """
+    MAIN    = "main"
+    SHADOW  = "shadow"
+    OUTLINE = "outline"
+
+
+cdef public dict LAYER_TYPES = {
+    0: SMPLayerType.MAIN,
+    1: SMPLayerType.SHADOW,
+    2: SMPLayerType.OUTLINE,
+}
 
 
 class SMP:
@@ -157,6 +173,37 @@ class SMP:
                     )
                 spam(layer_header)
 
+    def get_frames(self, layer: int = 0):
+        """
+        Get the frames in the SMP.
+
+        :param layer: Position of the layer (see LAYER_TYPES)
+                        - 0 = main graphics
+                        - 1 = shadow graphics
+                        - 2 = outline
+        :type layer: int
+        """
+        cdef list frames
+
+        layer_type = LAYER_TYPES.get(
+            layer,
+            SMPLayerType.MAIN
+        )
+
+        if layer_type is SMPLayerType.MAIN:
+            frames = self.main_frames
+
+        elif layer_type is SMPLayerType.SHADOW:
+            frames = self.shadow_frames
+
+        elif layer_type is SMPLayerType.OUTLINE:
+            frames = self.outline_frames
+
+        else:
+            frames = []
+
+        return frames
+
     def __str__(self):
         ret = list()
 
@@ -244,7 +291,7 @@ cdef class SMPLayer:
 
         # memory pointer
         # convert the bytes obj to char*
-        cdef const uint8_t[:] data_raw = data
+        cdef const uint8_t[::1] data_raw = data
 
         cdef unsigned short left
         cdef unsigned short right
@@ -283,7 +330,7 @@ cdef class SMPLayer:
             self.pcolor.push_back(self.create_color_row(data_raw, i))
 
     cdef vector[pixel] create_color_row(self,
-                                        const uint8_t[:] &data_raw,
+                                        const uint8_t[::1] &data_raw,
                                         Py_ssize_t rowid) except +:
         """
         extract colors (pixels) for the given rowid.
@@ -339,7 +386,7 @@ cdef class SMPLayer:
 
     @cython.boundscheck(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    vector[pixel] &row_data,
                                    Py_ssize_t rowid,
                                    Py_ssize_t first_cmd_offset,
@@ -381,7 +428,7 @@ cdef class SMPMainLayer(SMPLayer):
 
     @cython.boundscheck(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    vector[pixel] &row_data,
                                    Py_ssize_t rowid,
                                    Py_ssize_t first_cmd_offset,
@@ -508,7 +555,7 @@ cdef class SMPShadowLayer(SMPLayer):
 
     @cython.boundscheck(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    vector[pixel] &row_data,
                                    Py_ssize_t rowid,
                                    Py_ssize_t first_cmd_offset,
@@ -611,7 +658,7 @@ cdef class SMPOutlineLayer(SMPLayer):
 
     @cython.boundscheck(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    vector[pixel] &row_data,
                                    Py_ssize_t rowid,
                                    Py_ssize_t first_cmd_offset,

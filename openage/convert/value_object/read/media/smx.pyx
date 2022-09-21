@@ -46,13 +46,20 @@ cdef struct pixel:
     uint8_t damage_modifier_2   # modifier for damage (part 2)
 
 
-class LayerType(Enum):
+class SMXLayerType(Enum):
     """
     SMX layer types.
     """
-    MAIN        = "main"
-    SHADOW      = "shadow"
-    OUTLINE     = "outline"
+    MAIN    = "main"
+    SHADOW  = "shadow"
+    OUTLINE = "outline"
+
+
+cdef public dict LAYER_TYPES = {
+    0: SMXLayerType.MAIN,
+    1: SMXLayerType.SHADOW,
+    2: SMXLayerType.OUTLINE,
+}
 
 
 class SMX:
@@ -129,13 +136,13 @@ class SMX:
             layer_types = []
 
             if frame_type & 0x01:
-                layer_types.append(LayerType.MAIN)
+                layer_types.append(SMXLayerType.MAIN)
 
             if frame_type & 0x02:
-                layer_types.append(LayerType.SHADOW)
+                layer_types.append(SMXLayerType.SHADOW)
 
             if frame_type & 0x04:
-                layer_types.append(LayerType.OUTLINE)
+                layer_types.append(SMXLayerType.OUTLINE)
 
             for layer_type in layer_types:
                 layer_header_data = SMX.smx_layer_header.unpack_from(
@@ -155,7 +162,7 @@ class SMX:
                 current_offset += 4
 
                 # Read length of color table
-                if layer_type is LayerType.MAIN:
+                if layer_type is SMXLayerType.MAIN:
                     qdl_color_table_size = Struct("< I").unpack_from(data, current_offset)[0]
                     current_offset += 4
                     qdl_color_table_offset = current_offset + qdl_command_array_size
@@ -174,18 +181,49 @@ class SMX:
                                               qdl_command_table_offset,
                                               qdl_color_table_offset)
 
-                if layer_type is LayerType.MAIN:
+                if layer_type is SMXLayerType.MAIN:
                     if layer_header.compression_type == 0x08:
                         self.main_frames.append(SMXMainLayer8to5(layer_header, data))
 
                     elif layer_header.compression_type == 0x00:
                         self.main_frames.append(SMXMainLayer4plus1(layer_header, data))
 
-                elif layer_type is LayerType.SHADOW:
+                elif layer_type is SMXLayerType.SHADOW:
                     self.shadow_frames.append(SMXShadowLayer(layer_header, data))
 
-                elif layer_type is LayerType.OUTLINE:
+                elif layer_type is SMXLayerType.OUTLINE:
                     self.outline_frames.append(SMXOutlineLayer(layer_header, data))
+
+    def get_frames(self, layer: int = 0):
+        """
+        Get the frames in the SMX.
+
+        :param layer: Position of the layer (see LAYER_TYPES)
+                        - 0 = main graphics
+                        - 1 = shadow graphics
+                        - 2 = outline
+        :type layer: int
+        """
+        cdef list frames
+
+        layer_type = LAYER_TYPES.get(
+            layer,
+            SMXLayerType.MAIN
+        )
+
+        if layer_type is SMXLayerType.MAIN:
+            frames = self.main_frames
+
+        elif layer_type is SMXLayerType.SHADOW:
+            frames = self.shadow_frames
+
+        elif layer_type is SMXLayerType.OUTLINE:
+            frames = self.outline_frames
+
+        else:
+            frames = []
+
+        return frames
 
     def __str__(self):
         ret = list()
@@ -299,7 +337,7 @@ cdef class SMXLayer:
 
         # memory pointer
         # convert the bytes obj to char*
-        cdef const uint8_t[:] data_raw = data
+        cdef const uint8_t[::1] data_raw = data
 
         cdef unsigned short left
         cdef unsigned short right
@@ -335,7 +373,7 @@ cdef class SMXLayer:
             self.pcolor.push_back(row_data)
 
     cdef inline (int, int, int, vector[pixel]) create_color_row(self,
-                                                                const uint8_t[:] &data_raw,
+                                                                const uint8_t[::1] &data_raw,
                                                                 Py_ssize_t rowid,
                                                                 int cmd_offset,
                                                                 int color_offset,
@@ -402,7 +440,7 @@ cdef class SMXLayer:
         return next_cmd_offset, next_color_offset, chunk_pos, row_data
 
     cdef (int, int, int, vector[pixel]) process_drawing_cmds(self,
-                                                             const uint8_t[:] &data_raw,
+                                                             const uint8_t[::1] &data_raw,
                                                              vector[pixel] &row_data,
                                                              Py_ssize_t rowid,
                                                              Py_ssize_t first_cmd_offset,
@@ -465,7 +503,7 @@ cdef class SMXMainLayer8to5(SMXLayer):
 
     @cython.boundscheck(False)
     cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self,
-                                                                    const uint8_t[:] &data_raw,
+                                                                    const uint8_t[::1] &data_raw,
                                                                     vector[pixel] &row_data,
                                                                     Py_ssize_t rowid,
                                                                     Py_ssize_t first_cmd_offset,
@@ -675,7 +713,7 @@ cdef class SMXMainLayer4plus1(SMXLayer):
 
     @cython.boundscheck(False)
     cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self,
-                                                                    const uint8_t[:] &data_raw,
+                                                                    const uint8_t[::1] &data_raw,
                                                                     vector[pixel] &row_data,
                                                                     Py_ssize_t rowid,
                                                                     Py_ssize_t first_cmd_offset,
@@ -816,7 +854,7 @@ cdef class SMXShadowLayer(SMXLayer):
 
     @cython.boundscheck(False)
     cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self,
-                                                                    const uint8_t[:] &data_raw,
+                                                                    const uint8_t[::1] &data_raw,
                                                                     vector[pixel] &row_data,
                                                                     Py_ssize_t rowid,
                                                                     Py_ssize_t first_cmd_offset,
@@ -919,7 +957,7 @@ cdef class SMXOutlineLayer(SMXLayer):
 
     @cython.boundscheck(False)
     cdef inline (int, int, int, vector[pixel]) process_drawing_cmds(self,
-                                                                    const uint8_t[:] &data_raw,
+                                                                    const uint8_t[::1] &data_raw,
                                                                     vector[pixel] &row_data,
                                                                     Py_ssize_t rowid,
                                                                     Py_ssize_t first_cmd_offset,

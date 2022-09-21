@@ -81,7 +81,8 @@ class Texture(GenieStructure):
         self,
         input_data: typing.Union[SLP, SMP, SMX, SLD, BlendingMode],
         palettes: dict[int, ColorTable] = None,
-        custom_cutter: InterfaceCutter = None
+        custom_cutter: InterfaceCutter = None,
+        layer: int = 0
     ):
         super().__init__()
 
@@ -103,7 +104,8 @@ class Texture(GenieStructure):
 
         self.frames = []
         if isinstance(input_data, (SLP, SMP, SMX)):
-            for frame in input_data.main_frames:
+            input_frames = input_data.get_frames(layer)
+            for frame in input_frames:
                 # Palette can be different for every frame
                 palette_number = frame.get_palette_number()
 
@@ -119,10 +121,10 @@ class Texture(GenieStructure):
                     self.frames.append(subtex)
 
         elif isinstance(input_data, SLD):
-            input_frames = input_data.main_frames
-            if len(input_frames) == 0:
+            input_frames = input_data.get_frames(layer)
+            if layer == 0 and len(input_frames) == 0:
                 # Use shadows if no main graphics are inside
-                input_frames = input_data.shadow_frames
+                input_frames = input_data.get_frames(layer=1)
 
             for frame in input_frames:
                 subtex = TextureImage(

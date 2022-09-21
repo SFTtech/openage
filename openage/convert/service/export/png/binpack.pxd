@@ -1,10 +1,12 @@
 # Copyright 2021-2021 the openage authors. See copying.md for legal info.
 
+from libcpp.memory cimport shared_ptr
+
 cdef class Packer:
     cdef unsigned int margin
     cdef dict mapping
 
-    cdef void pack(self, blocks)
+    cdef void pack(self, list blocks)
     cdef (unsigned int, unsigned int) pos(self, block)
     cdef unsigned int width(self)
     cdef unsigned int height(self)
@@ -16,7 +18,7 @@ cdef class BestPacker:
     cdef list packers
     cdef Packer current_best
 
-    cdef void pack(self, blocks)
+    cdef void pack(self, list blocks)
     cdef Packer best_packer(self)
     cdef (unsigned int, unsigned int) pos(self, block)
     cdef unsigned int width(self)
@@ -30,16 +32,20 @@ cdef class ColumnPacker(Packer):
 
 cdef class BinaryTreePacker(Packer):
     cdef unsigned int aspect_ratio
-    cdef PackerNode root
+    cdef packer_node *root
 
     cdef void fit(self, block)
-    cdef PackerNode find_node(self, PackerNode root, unsigned int width, unsigned int height)
-    cdef PackerNode split_node(self, PackerNode node, unsigned int width, unsigned int height)
-    cdef PackerNode grow_node(self, unsigned int width, unsigned int height)
-    cdef PackerNode grow_right(self, unsigned int width, unsigned int height)
-    cdef PackerNode grow_down(self, unsigned int width, unsigned int height)
+    cdef packer_node *find_node(self, packer_node *root, unsigned int width, unsigned int height)
+    cdef packer_node *split_node(self, packer_node *node, unsigned int width, unsigned int height)
+    cdef packer_node *grow_node(self, unsigned int width, unsigned int height)
+    cdef packer_node *grow_right(self, unsigned int width, unsigned int height)
+    cdef packer_node *grow_down(self, unsigned int width, unsigned int height)
 
-cdef class PackerNode:
-    cdef public unsigned int x, y, width, height
-    cdef public bint used
-    cdef public PackerNode down, right
+cdef struct packer_node:
+    unsigned int x
+    unsigned int y
+    unsigned int width
+    unsigned int height
+    bint used
+    packer_node *down
+    packer_node *right

@@ -22,6 +22,7 @@ if typing.TYPE_CHECKING:
 
 
 # version of the drs files, hardcoded for now
+COPYRIGHT_ENSEMBLE = b"Copyright (c) 1997 Ensemble Studios"
 COPYRIGHT_SIZE_ENSEMBLE = 40
 COPYRIGHT_SIZE_LUCAS = 60
 
@@ -102,7 +103,13 @@ class DRS(FileCollection):
             header = DRSHeaderLucasArts.read(fileobj)
 
         else:
+            # Try Ensemble header by default
             header = DRSHeaderEnsemble.read(fileobj)
+
+            if not header.copyright.startswith(COPYRIGHT_ENSEMBLE):
+                # different copyright string probably means it's SWGB
+                fileobj.seek(0)
+                header = DRSHeaderLucasArts.read(fileobj)
 
         header.copyright = decode_until_null(header.copyright).strip()
         header.version = decode_until_null(header.version)
@@ -112,7 +119,7 @@ class DRS(FileCollection):
         dbg(header)
 
         # read table info
-        self.tables: list[tuple[str, int, int]] = []
+        self.tables: list[DRSTableInfo] = []
         for _ in range(header.table_count):
             table_header = DRSTableInfo.read(fileobj)
 

@@ -1,4 +1,4 @@
-# Copyright 2014-2021 the openage authors. See copying.md for legal info.
+# Copyright 2014-2022 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 # pylint: disable=too-many-locals
@@ -7,6 +7,7 @@ Merges texture frames into a spritesheet or terrain tiles into
 a terrain texture.
 """
 import numpy
+from enum import Enum
 
 from ....log import spam
 from ...entity_object.export.texture import TextureImage
@@ -17,27 +18,36 @@ from ...value_object.read.media.hardcoded.texture import (MAX_TEXTURE_DIMENSION,
 cimport cython
 cimport numpy
 
+class PackerType(Enum):
+    """
+    Packer types
+    """
+    BEST    = 0x00
 
-def merge_frames(texture, custom_packer=None, cache=None):
+    ROW     = 0x01
+    COLUMN  = 0x02
+    BINPACK = 0x03
+
+
+def merge_frames(texture, custom_packer=PackerType.BINPACK, cache=None):
     """
     Python wrapper for the Cython function.
 
     :param texture: Texture containing animation frames.
     :param custom_packer: Packer implementation for efficient packing of frames.
-                          If none is specified, the function will try several
-                          packer and chooses the most efficient one.
+                          Uses 2D binpacking by default.
     :param cache: Media cache information with packer settings from a previous run.
     :type texture: Texture
-    :type custom_packer: Packer
+    :type custom_packer: PackerType
     :type cache: list
     """
-    cmerge_frames(texture, cache)
+    cmerge_frames(texture, custom_packer, cache=cache)
 
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
 @cython.cdivision(True)
-cdef void cmerge_frames(texture, cache=None):
+cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) except *:
     """
     merge all given frames in a texture into a single image atlas.
 
@@ -49,7 +59,7 @@ cdef void cmerge_frames(texture, cache=None):
     cdef list frames = texture.frames
 
     if len(frames) == 0:
-        raise Exception("cannot create texture with empty input frame list")
+        raise ValueError("cannot create texture with empty input frame list")
 
     cdef BestPacker packer
 
@@ -57,11 +67,19 @@ cdef void cmerge_frames(texture, cache=None):
         packer = BestPacker([DeterministicPacker(margin=MARGIN,hints=cache)])
 
     else:
-        packer = BestPacker([BinaryTreePacker(margin=MARGIN, aspect_ratio=1),
-                             BinaryTreePacker(margin=MARGIN,
-                                              aspect_ratio=TERRAIN_ASPECT_RATIO),
-                             RowPacker(margin=MARGIN),
-                             ColumnPacker(margin=MARGIN)])
+        if packer_type == PackerType.ROW:
+            packer = BestPacker([RowPacker(margin=MARGIN, aspect_ratio=1)])
+
+        elif packer_type == PackerType.COLUMN:
+            packer = BestPacker([ColumnPacker(margin=MARGIN, aspect_ratio=1)])
+
+        elif packer_type == PackerType.BINPACK:
+            packer = BestPacker([BinaryTreePacker(margin=MARGIN, aspect_ratio=1)])
+
+        else:
+            packer = BestPacker([BinaryTreePacker(margin=MARGIN, aspect_ratio=1),
+                                 RowPacker(margin=MARGIN),
+                                 ColumnPacker(margin=MARGIN)])
 
     packer.pack(frames)
 

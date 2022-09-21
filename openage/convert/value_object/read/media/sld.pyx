@@ -13,6 +13,7 @@ cimport numpy
 
 from libc.stdint cimport uint8_t
 from libcpp cimport bool
+from libcpp.pair cimport pair
 from libcpp.vector cimport vector
 
 # SLD files have little endian byte order
@@ -25,7 +26,7 @@ cdef struct pixel:
     uint8_t a
 
 
-class LayerType(Enum):
+class SLDLayerType(Enum):
     """
     SLD layer types.
     """
@@ -36,7 +37,16 @@ class LayerType(Enum):
     PLAYERCOLOR = "playercolor"
 
 
-class SLD:
+cdef public dict LAYER_TYPES = {
+    0: SLDLayerType.MAIN,
+    1: SLDLayerType.SHADOW,
+    2: SLDLayerType.OUTLINE,
+    3: SLDLayerType.DAMAGE,
+    4: SLDLayerType.PLAYERCOLOR,
+}
+
+
+cdef class SLD:
     """
     Class for reading/converting compressed SLD files (delivered
     with AoE2:DE since version 66692 by default).
@@ -84,6 +94,15 @@ class SLD:
     # };
     sld_layer_header_mask = Struct(endianness + "2B")
 
+    cdef bytes sld_type
+    cdef public list main_frames
+    cdef public list shadow_frames
+    cdef public list outline_frames
+    cdef public list dmg_mask_frames
+    cdef public list playercolor_mask_frames
+
+    cdef const uint8_t[::1] data
+
     def __init__(self, data):
         """
         Read an SLD image file.
@@ -93,7 +112,8 @@ class SLD:
         """
 
         sld_header = SLD.sld_header.unpack_from(data)
-        self.sld_type, version, frame_count, _, _, _ = sld_header
+        self.sld_type = sld_header[0]
+        version, frame_count, _, _, _ = sld_header[1:]
 
         dbg("SLD")
         dbg(" version:     %s",   version)
@@ -106,35 +126,57 @@ class SLD:
         self.dmg_mask_frames = list()
         self.playercolor_mask_frames = list()
 
+        self.data = data
+
+        cdef (unsigned short, unsigned short) previous_size = (0, 0)
+        cdef (unsigned short, unsigned short) previous_offset = (0, 0)
+        cdef vector[vector[pixel]] *previous_layer = NULL
+        cdef SLDLayerHeader layer_header
+
+        cdef unsigned short main_width
+        cdef unsigned short main_height
+        cdef unsigned short main_hotspot_x
+        cdef unsigned short main_hotspot_y
+
+        cdef unsigned int current_offset
+
         spam(SLDLayerHeader.repr_header())
 
         # SLD files have no offsets, we have to calculate them
         current_offset = SLD.sld_header.size
         for _ in range(frame_count):
-            frame_header = SLD.sld_frame_header.unpack_from(
-                data, current_offset)
 
             canvas_width, canvas_height, canvas_hotspot_x, canvas_hotspot_y,\
-                frame_type , _, frame_index = frame_header
+                frame_type , _, frame_index = SLD.sld_frame_header.unpack_from(
+                data, current_offset)
+
+            frame_header = SLDFrameHeader(
+                canvas_width,
+                canvas_height,
+                canvas_hotspot_x,
+                canvas_hotspot_y,
+                frame_type,
+                frame_index
+            )
 
             current_offset += SLD.sld_frame_header.size
 
             layer_types = []
 
             if frame_type & 0x01:
-                layer_types.append(LayerType.MAIN)
+                layer_types.append(SLDLayerType.MAIN)
 
             if frame_type & 0x02:
-                layer_types.append(LayerType.SHADOW)
+                layer_types.append(SLDLayerType.SHADOW)
 
             if frame_type & 0x04:
-                layer_types.append(LayerType.OUTLINE)
+                layer_types.append(SLDLayerType.OUTLINE)
 
             if frame_type & 0x08:
-                layer_types.append(LayerType.DAMAGE)
+                layer_types.append(SLDLayerType.DAMAGE)
 
             if frame_type & 0x10:
-                layer_types.append(LayerType.PLAYERCOLOR)
+                layer_types.append(SLDLayerType.PLAYERCOLOR)
 
             main_width = 0
             main_height = 0
@@ -146,9 +188,9 @@ class SLD:
                 current_offset += SLD.sld_layer_length.size
 
                 # Header unpacking
-                if layer_type in (LayerType.MAIN, LayerType.SHADOW):
-                    layer_header = SLD.sld_layer_header_graphics.unpack_from(data, current_offset)
-                    offset_x1, offset_y1, offset_x2, offset_y2, _, _ = layer_header
+                if layer_type in (SLDLayerType.MAIN, SLDLayerType.SHADOW):
+                    offset_x1, offset_y1, offset_x2, offset_y2, flag0, flag1 = \
+                        SLD.sld_layer_header_graphics.unpack_from(data, current_offset)
 
                     layer_width = offset_x2 - offset_x1
                     layer_height = offset_y2 - offset_y1
@@ -162,12 +204,12 @@ class SLD:
 
                     current_offset += SLD.sld_layer_header_graphics.size
 
-                elif layer_type in (LayerType.OUTLINE, ):
+                elif layer_type in (SLDLayerType.OUTLINE, ):
                     # TODO
                     pass
 
-                elif layer_type in (LayerType.DAMAGE, LayerType.PLAYERCOLOR):
-                    layer_header = SLD.sld_layer_header_mask.unpack_from(data, current_offset)
+                elif layer_type in (SLDLayerType.DAMAGE, SLDLayerType.PLAYERCOLOR):
+                    flag0, flag1 = SLD.sld_layer_header_mask.unpack_from(data, current_offset)
 
                     layer_width = main_width
                     layer_height = main_height
@@ -188,6 +230,7 @@ class SLD:
                 layer_header = SLDLayerHeader(
                     layer_type,
                     frame_type,
+                    offset_x1, offset_y1,
                     layer_width, layer_height,
                     layer_hotspot_x, layer_hotspot_y,
                     command_array_size,
@@ -195,26 +238,94 @@ class SLD:
                     compressed_data_offset
                 )
 
-                if layer_type is LayerType.MAIN:
-                    self.main_frames.append(SLDLayerBC1(layer_header, data))
+                if layer_type is SLDLayerType.MAIN:
+                    layer_def = SLDLayerBC1(frame_header, layer_header)
+                    if previous_layer != NULL and flag0 & 0x80:
+                        layer_def.set_previous_layer(
+                            previous_size[0],
+                            previous_size[1],
+                            previous_offset[0],
+                            previous_offset[1],
+                            previous_layer
+                        )
 
-                elif layer_type is LayerType.SHADOW:
-                    self.shadow_frames.append(SLDLayerBC4(layer_header, data))
+                    self.main_frames.append(layer_def)
 
-                elif layer_type is LayerType.OUTLINE:
+                    previous_size = layer_header.size
+                    previous_offset = layer_header.offset
+                    previous_layer = layer_def.get_pcolor()
+
+                elif layer_type is SLDLayerType.SHADOW:
+                    self.shadow_frames.append(
+                        SLDLayerBC4(frame_header, layer_header)
+                    )
+
+                elif layer_type is SLDLayerType.OUTLINE:
                     # TODO
                     pass
 
-                elif layer_type is LayerType.DAMAGE:
-                    self.dmg_mask_frames.append(SLDLayerBC1(layer_header, data))
+                elif layer_type is SLDLayerType.DAMAGE:
+                    self.dmg_mask_frames.append(
+                        SLDLayerBC1(frame_header, layer_header)
+                    )
 
-                elif layer_type is LayerType.PLAYERCOLOR:
-                    self.playercolor_mask_frames.append(SLDLayerBC4(layer_header, data))
+                elif layer_type is SLDLayerType.PLAYERCOLOR:
+                    self.playercolor_mask_frames.append(
+                        SLDLayerBC4(frame_header, layer_header)
+                    )
 
                 # Jump to next layer offset
                 current_offset = start_offset + layer_length
                 # padding to size % 4
                 current_offset += (4 - current_offset) % 4
+
+    cpdef get_frames(self, layer: int = 0):
+        """
+        Get the frames in the SLD.
+
+        :param layer: Position of the layer (see LAYER_TYPES)
+                        - 0 = main graphics
+                        - 1 = shadow graphics
+                        - 2 = ???
+                        - 3 = damage mask
+                        - 4 = playercolor mask
+        :type layer: int
+        """
+        cdef list frames
+        cdef SLDLayer layer_def
+
+        layer_type = LAYER_TYPES.get(
+            layer,
+            SLDLayerType.MAIN
+        )
+
+        if layer_type is SLDLayerType.MAIN:
+            frames = self.main_frames
+
+        elif layer_type is SLDLayerType.SHADOW:
+            frames = self.shadow_frames
+
+        elif layer_type is SLDLayerType.OUTLINE:
+            frames = self.outline_frames
+
+        elif layer_type is SLDLayerType.DAMAGE:
+            frames = self.dmg_mask_frames
+
+        elif layer_type is SLDLayerType.PLAYERCOLOR:
+            frames = self.playercolor_mask_frames
+
+        else:
+            frames = []
+
+        for layer_def in frames:
+            layer_def.process_drawing_cmds(
+                self.data,
+                layer_def.layer_info.command_array_size,
+                layer_def.layer_info.command_array_offset,
+                layer_def.layer_info.compressed_data_offset
+            )
+
+        return frames
 
     def __str__(self):
         ret = list()
@@ -228,13 +339,60 @@ class SLD:
         return f"{self.sld_type} image<{len(self.main_frames):d} frames>"
 
 
+cdef class SLDFrameHeader:
+    """
+    Header info for an SLD frame.
+    """
+    cdef (unsigned short, unsigned short) canvas_size
+    cdef (unsigned short, unsigned short) hotspot
+    cdef unsigned char frame_type
+    cdef unsigned short frame_index
+
+    def __init__(
+        self,
+        width, height,
+        hotspot_x, hotspot_y,
+        frame_type,
+        frame_index
+    ):
+        self.canvas_size = (width, height)
+        self.hotspot = (hotspot_x, hotspot_y)
+
+        self.frame_type = frame_type
+        self.frame_index = frame_index
+
+    @staticmethod
+    def repr_header():
+        return " index | frame type | width x height |  hotspot  | "
+
+    def __repr__(self):
+        ret = (
+            "% 5d | " % self.frame_index,
+            "% 10x | " % self.frame_type,
+            "% 5d x% 7d | " % self.size,
+            "% 3d x% 3d | " % self.hotspot,
+        )
+        return "".join(ret)
 
 
-class SLDLayerHeader:
+cdef class SLDLayerHeader:
+    """
+    Header info for an SLD layer.
+    """
+    cdef (unsigned short, unsigned short) size
+    cdef (unsigned short, unsigned short) offset
+    cdef (short, short) hotspot
+    cdef object layer_type
+    cdef unsigned char frame_type
+    cdef size_t command_array_size
+    cdef unsigned int command_array_offset
+    cdef unsigned int compressed_data_offset
+
     def __init__(
         self,
         layer_type,
         frame_type,
+        offset_x, offset_y,
         width, height,
         hotspot_x, hotspot_y,
         command_array_size,
@@ -242,6 +400,7 @@ class SLDLayerHeader:
         compressed_data_offset
     ):
         self.size = (width, height)
+        self.offset = (offset_x, offset_y)
         self.hotspot = (hotspot_x, hotspot_y)
 
         self.layer_type = layer_type
@@ -274,44 +433,43 @@ cdef class SLDLayer:
     """
     Layer inside the SLD frame.
     """
-    # layer and frame information
-    cdef object info
+    # frame information
+    cdef SLDFrameHeader frame_info
+
+    # layer information
+    cdef SLDLayerHeader layer_info
 
     # matrix representing the 4x4 blocks and the pixels in the image
     cdef vector[vector[pixel]] pcolor
 
-    def __init__(self, layer_header, data):
+    # Previous layer
+    cdef (unsigned short, unsigned short) previous_size
+    cdef (unsigned short, unsigned short) previous_offset
+    cdef vector[vector[pixel]] *previous_layer
+
+    def __init__(self, frame_header, layer_header):
         """
         SMX layer definition superclass. There can be various types of
         layers inside an SMX frame.
 
+        :param frame_header: Header definition of the frame.
+        :type frame_header: SLDFrameHeader
         :param layer_header: Header definition of the layer.
-        :param data: File content as bytes.
-        :type layer_header: SMXLayerHeader
-        :type data: bytes, bytearray
+        :type layer_header: SLDLayerHeader
         """
-        self.info = layer_header
+        self.frame_info = frame_header
+        self.layer_info = layer_header
 
-        if not (isinstance(data, bytes) or isinstance(data, bytearray)):
-            raise ValueError("Layer data must be some bytes object")
+        self.pcolor.reserve((self.layer_info.size[0] // 4) * (self.layer_info.size[1] // 4))
 
-        # self.pcolor.reserve((self.info.size[0] // 4) * (self.info.size[1] // 4))
-
-        # memory pointer
-        # convert the bytes obj to char*
-        cdef const uint8_t[:] data_raw = data
-
-        cdef unsigned int cmd_size = self.info.command_array_size
-        cdef unsigned int cmd_offset = self.info.command_array_offset
-        cdef unsigned int data_offset = self.info.compressed_data_offset
-
-        # process cmd table
-        self.process_drawing_cmds(data, cmd_size, cmd_offset, data_offset)
+        self.previous_size = (0, 0)
+        self.previous_offset = (0, 0)
+        self.previous_layer = NULL
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
     cdef void process_drawing_cmds(self,
-                                   const uint8_t[:] &data_raw,
+                                   const uint8_t[::1] &data_raw,
                                    unsigned int cmd_size,
                                    unsigned int first_cmd_offset,
                                    unsigned int first_data_offset):
@@ -325,11 +483,33 @@ cdef class SLDLayer:
 
         cdef unsigned int cmd_offset = first_cmd_offset
         cdef unsigned int data_offset = first_data_offset
+        cdef unsigned int block_idx = 0
 
         for _ in range(cmd_size):
             skip_count = data_raw[cmd_offset]
             for _ in range(skip_count):
-                self.pcolor.push_back(transparent_block)
+                if self.previous_layer == NULL:
+                    self.pcolor.push_back(transparent_block)
+
+                else:
+                    previous_block_idx = get_block_index(
+                        self.layer_info.size[0],
+                        self.previous_size[0],
+                        self.previous_size[1],
+                        self.layer_info.offset[0],
+                        self.layer_info.offset[1],
+                        self.previous_offset[0],
+                        self.previous_offset[1],
+                        block_idx
+                    )
+                    if previous_block_idx >= 0:
+                        prev_block = self.previous_layer.at(previous_block_idx)
+                        self.pcolor.push_back(prev_block)
+
+                    else:
+                        self.pcolor.push_back(transparent_block)
+
+                block_idx += 1
 
             cmd_offset += 1
 
@@ -337,6 +517,7 @@ cdef class SLDLayer:
             for _ in range(draw_count):
                 self.pcolor.push_back(self.decompress_block(data_raw, data_offset))
                 data_offset += 8
+                block_idx += 1
 
             cmd_offset += 1
 
@@ -344,12 +525,32 @@ cdef class SLDLayer:
 
     @cython.boundscheck(False)
     cdef vector[pixel] decompress_block(self,
-                                        const uint8_t[:] &data_raw,
+                                        const uint8_t[::1] &data_raw,
                                         Py_ssize_t block_offset):
         """
         Decompress a 4x4 pixel block.
         """
         pass
+
+    cdef inline void set_previous_layer(self,
+        unsigned short width,
+        unsigned short height,
+        unsigned short offset_x,
+        unsigned short offset_y,
+        vector[vector[pixel]] *previous
+    ):
+        """
+        Set a reference to the previous layer.
+        """
+        self.previous_size = (width, height)
+        self.previous_offset = (offset_x, offset_y)
+        self.previous_layer = previous
+
+    cdef inline vector[vector[pixel]] *get_pcolor(self):
+        """
+        Get the pixel data for the layer.
+        """
+        return &self.pcolor
 
     def get_picture_data(self):
         """
@@ -358,28 +559,32 @@ cdef class SLDLayer:
         :return: Array of RGBA values.
         :rtype: numpy.ndarray
         """
-        return determine_rgba_matrix(self.pcolor, self.info.size[0], self.info.size[1])
+        return determine_rgba_matrix(
+            self.pcolor,
+            self.layer_info.size[0],
+            self.layer_info.size[1]
+        )
 
     def get_hotspot(self):
         """
         Return the layer's hotspot (the "center" of the image)
         """
-        return self.info.hotspot
+        return self.layer_info.hotspot
 
     def __repr__(self):
-        return repr(self.info)
+        return repr(self.layer_info)
 
 
 cdef class SLDLayerBC1(SLDLayer):
     """
     Compressed SLD layer using BC1 block compression.
     """
-    def __init__(self, layer_header, data):
-        super().__init__(layer_header, data)
+    def __init__(self, frame_header, layer_header):
+        super().__init__(frame_header, layer_header)
 
     @cython.boundscheck(False)
     cdef inline vector[pixel] decompress_block(self,
-                                               const uint8_t[:] &data_raw,
+                                               const uint8_t[::1] &data_raw,
                                                Py_ssize_t block_offset):
         """
         Decompress a 4x4 pixel block.
@@ -387,7 +592,7 @@ cdef class SLDLayerBC1(SLDLayer):
         cdef size_t offset
         cdef unsigned char byte_val
         cdef unsigned char index
-        cdef unsigned char mask = 0b00000011
+        cdef unsigned char mask = 0b0000_0011
         cdef vector[pixel] block
         block.reserve(16)
 
@@ -401,10 +606,10 @@ cdef class SLDLayerBC1(SLDLayer):
         cdef unsigned short c1_val = data_raw[block_offset + 2] + (data_raw[block_offset + 3] << 8)
 
         # Color 0
-        c0.r = (data_raw[block_offset + 1] & 0b11111000) >> 3
-        c0.g = ((data_raw[block_offset + 1] & 0b00000111) << 3) +\
-            ((data_raw[block_offset] & 0b11100000) >> 5)
-        c0.b = data_raw[block_offset] & 0b00011111
+        c0.r = (data_raw[block_offset + 1] & 0b1111_1000) >> 3
+        c0.g = ((data_raw[block_offset + 1] & 0b0000_0111) << 3) +\
+            ((data_raw[block_offset] & 0b1110_0000) >> 5)
+        c0.b = data_raw[block_offset] & 0b0001_1111
 
         # Expand to RGBA32 color space
         c0.r *= 8
@@ -413,10 +618,10 @@ cdef class SLDLayerBC1(SLDLayer):
         c0.a = 255
 
         # Color 1
-        c1.r = (data_raw[block_offset + 3] & 0b11111000) >> 3
-        c1.g = ((data_raw[block_offset + 3] & 0b00000111) << 3) +\
-            ((data_raw[block_offset + 2] & 0b11100000) >> 5)
-        c1.b = data_raw[block_offset + 2] & 0b00011111
+        c1.r = (data_raw[block_offset + 3] & 0b1111_1000) >> 3
+        c1.g = ((data_raw[block_offset + 3] & 0b0000_0111) << 3) +\
+            ((data_raw[block_offset + 2] & 0b1110_0000) >> 5)
+        c1.b = data_raw[block_offset + 2] & 0b0001_1111
 
         # Expand to RGBA32 color space
         c1.r *= 8
@@ -479,19 +684,23 @@ cdef class SLDLayerBC1(SLDLayer):
         :return: Array of RGBA values.
         :rtype: numpy.ndarray
         """
-        return determine_rgba_matrix(self.pcolor, self.info.size[0], self.info.size[1])
+        return determine_rgba_matrix(
+            self.pcolor,
+            self.layer_info.size[0],
+            self.layer_info.size[1]
+        )
 
 
 cdef class SLDLayerBC4(SLDLayer):
     """
     Compressed SLD layer using BC4 block compression.
     """
-    def __init__(self, layer_header, data):
-        super().__init__(layer_header, data)
+    def __init__(self, frame_header, layer_header):
+        super().__init__(frame_header, layer_header)
 
     @cython.boundscheck(False)
     cdef inline vector[pixel] decompress_block(self,
-                                               const uint8_t[:] &data_raw,
+                                               const uint8_t[::1] &data_raw,
                                                Py_ssize_t block_offset):
         """
         Decompress a 4x4 pixel block.
@@ -499,7 +708,7 @@ cdef class SLDLayerBC4(SLDLayer):
         cdef size_t offset
         cdef unsigned char byte_val
         cdef unsigned char index
-        cdef unsigned char mask = 0b00000111
+        cdef unsigned char mask = 0b0000_0111
         cdef vector[pixel] block
         block.reserve(16)
 
@@ -626,8 +835,60 @@ cdef class SLDLayerBC4(SLDLayer):
         :rtype: numpy.ndarray
         """
         # TODO: Greyscale export support
-        # return determine_greyscale_matrix(self.pcolor, self.info.size[0], self.info.size[1])
-        return determine_rgba_matrix(self.pcolor, self.info.size[0], self.info.size[1])
+        # return determine_greyscale_matrix(self.pcolor, self.layer_info.size[0], self.layer_info.size[1])
+        return determine_rgba_matrix(
+            self.pcolor,
+            self.layer_info.size[0],
+            self.layer_info.size[1]
+        )
+
+
+@cython.cdivision(True)
+cdef inline short get_block_index(
+    unsigned short width1,
+    unsigned short width2,
+    unsigned short height2,
+    unsigned short offset1_x,
+    unsigned short offset1_y,
+    unsigned short offset2_x,
+    unsigned short offset2_y,
+    unsigned short block_idx1
+):
+    """
+    Get the vector index of a pixel block for a previous layer.
+
+    SLDs allow layers to reuse/copy pixel blocks from previous frames.
+    The pixel block is at the same in the current frame and the
+    previous frame. Because we only store the SLD layers and never the
+    full frame, we have to find the position of the pixel block
+    in the previous layer by diffing the layer offsets and
+    calculating the index in the block array of the previous layer.
+    """
+    cdef unsigned short w1_blocks = width1 // 4
+    cdef unsigned short w2_blocks = width2 // 4
+    cdef unsigned short h2_blocks = height2 // 4
+
+    # Relative (x,y) coordinates of the block in the current layer
+    cdef unsigned short block1_pos_x = block_idx1 % w1_blocks
+    cdef unsigned short block1_pos_y = block_idx1 // w1_blocks
+
+    # Difference between the layer offsets (i.e. their positions in the frame)
+    # in blocks
+    cdef short offset_diff_x = (offset1_x - offset2_x) // 4
+    cdef short offset_diff_y = (offset1_y - offset2_y) // 4
+
+    # Relative (x,y) coordinates of the block in the previous layer
+    cdef short block2_pos_x = block1_pos_x + offset_diff_x
+    cdef short block2_pos_y = block1_pos_y + offset_diff_y
+
+    # Check if the coordinates in the previous layer are outside
+    # of the layer
+    if not (0 <= block2_pos_x < w2_blocks and 0 <= block2_pos_y < h2_blocks):
+        return -1
+
+    cdef unsigned short block_idx2 = block2_pos_x + block2_pos_y * w2_blocks
+
+    return block_idx2
 
 
 @cython.boundscheck(False)

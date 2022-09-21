@@ -1,4 +1,4 @@
-# Copyright 2016-2021 the openage authors. See copying.md for legal info.
+# Copyright 2016-2022 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True,profile=False
 # TODO pylint: disable=C,R
@@ -10,6 +10,8 @@ Routines for 2D binpacking
 from enum import Enum
 
 cimport cython
+from libc.stdint cimport uintptr_t
+from libc.stdlib cimport malloc
 
 from libc.math cimport sqrt
 
@@ -35,7 +37,7 @@ cdef class Packer:
         self.margin = margin
         self.mapping = {}
 
-    cdef void pack(self, blocks):
+    cdef void pack(self, list blocks):
         """
         Pack all the blocks.
 
@@ -81,7 +83,7 @@ cdef class DeterministicPacker(Packer):
         super().__init__(margin)
         self.hints = hints
 
-    cdef void pack(self, blocks):
+    cdef void pack(self, list blocks):
         for idx, block in enumerate(blocks):
             self.mapping[block] = self.hints[idx]
 
@@ -94,7 +96,7 @@ cdef class BestPacker:
         self.packers = packers
         self.current_best = None
 
-    cdef void pack(self, blocks):
+    cdef void pack(self, list blocks):
         cdef Packer p
         for packer in self.packers:
             p = packer
@@ -126,7 +128,7 @@ cdef class RowPacker(Packer):
     Packs blocks into rows, greedily trying to minimize the maximum width.
     """
 
-    cdef void pack(self, blocks):
+    cdef void pack(self, list blocks):
         self.mapping = {}
 
         cdef unsigned int num_rows
@@ -157,7 +159,7 @@ cdef class ColumnPacker(Packer):
     Packs blocks into columns, greedily trying to minimize the maximum height.
     """
 
-    cdef void pack(self, blocks):
+    cdef void pack(self, list blocks):
         self.mapping = {}
 
         num_columns, _ = factor(len(blocks))
@@ -199,47 +201,54 @@ cdef class BinaryTreePacker(Packer):
     Aditionally can target a given aspect ratio. 97/49 is optimal for terrain
     textures.
     """
+
     def __init__(self, margin, aspect_ratio=1):
         # ASF: what about heuristic=max_heuristic?
         super().__init__(margin)
         self.aspect_ratio = aspect_ratio
-        self.root = None
+        self.root = NULL
 
-    cdef void pack(self, blocks):
+    cdef void pack(self, list blocks):
         self.mapping = {}
-        self.root = None
+        self.root = NULL
 
         for block in sorted(blocks, key=maxside_heuristic, reverse=True):
             self.fit(block)
 
     cdef (unsigned int, unsigned int) pos(self, block):
         node = self.mapping[block]
-        return node.x, node.y
+        return node[0], node[1]
 
     def get_packer_settings(self):
         return (self.margin,)
 
     cdef void fit(self, block):
-        if self.root is None:
-            self.root = PackerNode(0, 0,
-                                   block.width + self.margin,
-                                   block.height + self.margin)
+        cdef packer_node *node
+        if self.root == NULL:
+            self.root = <packer_node *>malloc(sizeof(packer_node))
+            self.root.x = 0
+            self.root.y = 0
+            self.root.width = block.width + self.margin
+            self.root.height = block.height + self.margin
+            self.root.used = False
+            self.root.down = NULL
+            self.root.right = NULL
 
         node = self.find_node(self.root,
                               block.width + self.margin,
                               block.height + self.margin)
 
-        if node is not None:
-            node = self.split_node(node,
+        if node != NULL:
+            res =  self.split_node(node,
                                    block.width + self.margin,
                                    block.height + self.margin)
         else:
             node = self.grow_node(block.width + self.margin,
                                   block.height + self.margin)
 
-        self.mapping[block] = node
+        self.mapping[block] = (node.x, node.y)
 
-    cdef PackerNode find_node(self, PackerNode root, unsigned int width, unsigned int height):
+    cdef packer_node *find_node(self, packer_node *root, unsigned int width, unsigned int height):
         if root.used:
             return (self.find_node(root.right, width, height) or
                     self.find_node(root.down, width, height))
@@ -247,18 +256,34 @@ cdef class BinaryTreePacker(Packer):
         elif width <= root.width and height <= root.height:
             return root
 
-    cdef PackerNode split_node(self, PackerNode node, unsigned int width, unsigned int height):
+    cdef packer_node *split_node(self, packer_node *node, unsigned int width, unsigned int height):
         node.used = True
-        node.down = PackerNode(node.x, node.y + height,
-                               node.width, node.height - height)
-        node.right = PackerNode(node.x + width, node.y,
-                                node.width - width, height)
+
+        node.down = <packer_node *>malloc(sizeof(packer_node))
+        node.down.x = node.x
+        node.down.y = node.y + height
+        node.down.width = node.width
+        node.down.height = node.height - height
+        node.down.used = False
+        node.down.down = NULL
+        node.down.right = NULL
+
+        node.right = <packer_node *>malloc(sizeof(packer_node))
+        node.right.x = node.x + width
+        node.right.y = node.y
+        node.right.width = node.width - width
+        node.right.height = height
+        node.right.used = False
+        node.right.down = NULL
+        node.right.right = NULL
+
         return node
 
-    cdef PackerNode grow_node(self, unsigned int width, unsigned int height):
+    @cython.cdivision(True)
+    cdef packer_node *grow_node(self, unsigned int width, unsigned int height):
         cdef bint can_grow_down = width <= self.root.width
         cdef bint can_grow_right = height <= self.root.height
-        assert can_grow_down or can_grow_right, "Bad block ordering heuristic"
+        # assert can_grow_down or can_grow_right, "Bad block ordering heuristic"
 
         cdef bint should_grow_right = ((self.root.height * self.aspect_ratio) >=
                                        (self.root.width + width))
@@ -277,41 +302,62 @@ cdef class BinaryTreePacker(Packer):
         else:
             return self.grow_down(width, height)
 
-    cdef PackerNode grow_right(self, unsigned int width, unsigned int height):
+    cdef packer_node *grow_right(self, unsigned int width, unsigned int height):
         old_root = self.root
 
-        self.root = PackerNode(0, 0, old_root.width + width, old_root.height)
+        self.root = <packer_node *>malloc(sizeof(packer_node))
+        self.root.x = 0
+        self.root.y = 0
+        self.root.width = old_root.width + width
+        self.root.height = old_root.height
         self.root.used = True
         self.root.down = old_root
-        self.root.right = PackerNode(old_root.width, 0, width, old_root.height)
+        # self.root.right = NULL   (see below)
+
+        self.root.right = <packer_node *>malloc(sizeof(packer_node))
+        self.root.right.x = old_root.width
+        self.root.right.y = 0
+        self.root.right.width = width
+        self.root.right.height = old_root.height
+        self.root.right.used = False
+        self.root.right.down = NULL
+        self.root.right.right = NULL
 
         node = self.find_node(self.root, width, height)
-        if node is not None:
+        if node != NULL:
             return self.split_node(node, width, height)
 
-    cdef PackerNode grow_down(self, unsigned int width, unsigned int height):
+    cdef packer_node *grow_down(self, unsigned int width, unsigned int height):
         old_root = self.root
 
-        self.root = PackerNode(0, 0, old_root.width, old_root.height + height)
+        self.root = <packer_node *>malloc(sizeof(packer_node))
+        self.root.x = 0
+        self.root.y = 0
+        self.root.width = old_root.width
+        self.root.height = old_root.height + height
         self.root.used = True
-        self.root.down = PackerNode(0, old_root.height, old_root.width, height)
+        # self.root.down = NULL  (see below)
         self.root.right = old_root
 
+        self.root.down = <packer_node *>malloc(sizeof(packer_node))
+        self.root.down.x = 0
+        self.root.down.y = old_root.height
+        self.root.down.width = old_root.width
+        self.root.down.height = height
+        self.root.down.used = False
+        self.root.down.down = NULL
+        self.root.down.right = NULL
+
         node = self.find_node(self.root, width, height)
-        if node is not None:
+        if node != NULL:
             return self.split_node(node, width, height)
 
 
-cdef class PackerNode:
-    """
-    A node in a binary packing tree.
-    """
-    def __cinit__(self, unsigned int x, unsigned int y, unsigned int width, unsigned int height):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-
-        self.used = False
-        self.down = None
-        self.right = None
+cdef struct packer_node:
+    unsigned int x
+    unsigned int y
+    unsigned int width
+    unsigned int height
+    bint used
+    packer_node *down
+    packer_node *right
