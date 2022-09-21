@@ -177,11 +177,12 @@ def read_slp_file(
     try:
         merge_frames(tex)
 
-    except Exception:
-        info(f"slp contains 0 frames! aborting texture export.")
+    except ValueError:
+        info("slp contains 0 frames! aborting texture export.")
         return
 
     # save as png
+    info("saving png file at '%s'", output_path)
     MediaExporter.save_png(
         tex,
         Directory(output_file.parent).root,
@@ -226,11 +227,12 @@ def read_slp_in_drs_file(
     try:
         merge_frames(tex)
 
-    except Exception:
-        info(f"slp contains 0 frames! aborting texture export.")
+    except ValueError:
+        info("slp contains 0 frames! aborting texture export.")
         return
 
     # save as png
+    info("saving png file at '%s'", output_path)
     MediaExporter.save_png(
         tex,
         Directory(output_file.parent).root,
@@ -271,11 +273,12 @@ def read_smp_file(
     try:
         merge_frames(tex)
 
-    except Exception:
-        info(f"layer {layer} contains 0 frames! aborting texture export.")
+    except ValueError:
+        info("layer %s contains 0 frames! aborting texture export.", layer)
         return
 
     # save as png
+    info("saving png file at '%s'", output_path)
     MediaExporter.save_png(
         tex,
         Directory(output_file.parent).root,
@@ -316,11 +319,12 @@ def read_smx_file(
     try:
         merge_frames(tex)
 
-    except Exception:
-        info(f"layer {layer} contains 0 frames! aborting texture export.")
+    except ValueError:
+        info("layer %s contains 0 frames! aborting texture export.", layer)
         return
 
     # save as png
+    info("saving png file at '%s'", output_path)
     MediaExporter.save_png(
         tex,
         Directory(output_file.parent).root,
@@ -360,11 +364,12 @@ def read_sld_file(
     try:
         merge_frames(tex)
 
-    except Exception:
-        info(f"layer {layer} contains 0 frames! aborting texture export.")
+    except ValueError:
+        info("layer %s contains 0 frames! aborting texture export.", layer)
         return
 
     # save as png
+    info("saving png file at '%s'", output_path)
     MediaExporter.save_png(
         tex,
         Directory(output_file.parent).root,

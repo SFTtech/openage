@@ -59,7 +59,7 @@ cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) exc
     cdef list frames = texture.frames
 
     if len(frames) == 0:
-        raise Exception("cannot create texture with empty input frame list")
+        raise ValueError("cannot create texture with empty input frame list")
 
     cdef BestPacker packer
 
