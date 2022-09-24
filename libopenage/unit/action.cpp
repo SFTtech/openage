@@ -126,7 +126,7 @@ const graphic_set &UnitAction::current_graphics() const {
 	return this->entity->unit_type->graphics;
 }
 
-void UnitAction::draw_debug(const Engine &engine) {
+void UnitAction::draw_debug(const LegacyEngine &engine) {
 	// draw debug content if available
 	if (show_debug && this->debug_draw_action) {
 		this->debug_draw_action(engine);

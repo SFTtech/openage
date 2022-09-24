@@ -732,7 +732,7 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 	annex_loc->place(t, start_tile, state);
 
 	// create special drawing functions for annexes,
-	annex_loc->draw = [annex_loc, annex_type, &u, c](const Engine &e) {
+	annex_loc->draw = [annex_loc, annex_type, &u, c](const LegacyEngine &e) {
 		// hack which draws the outline in the right order
 		// removable once rendering system is improved
 		if (c && u.selected) {
@@ -847,7 +847,7 @@ TerrainObject *ProjectileProducer::place(Unit *u, std::shared_ptr<Terrain> terra
 		return true;
 	};
 
-	u->location->draw = [u](const Engine &e) {
+	u->location->draw = [u](const LegacyEngine &e) {
 		u->draw(e);
 	};
 

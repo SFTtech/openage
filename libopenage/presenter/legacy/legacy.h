@@ -52,7 +52,7 @@ namespace presenter {
 class LegacyDisplay final : public ResizeHandler
 	, public options::OptionNode {
 public:
-	LegacyDisplay(const util::Path &path, Engine *engine);
+	LegacyDisplay(const util::Path &path, LegacyEngine *engine);
 
 	~LegacyDisplay();
 

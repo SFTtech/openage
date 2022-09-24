@@ -11,11 +11,11 @@
 
 namespace openage {
 
-class Engine;
+class LegacyEngine;
 
 namespace cvar {
 class CVarManager;
-} // cvar
+} // namespace cvar
 
 namespace input {
 
@@ -44,7 +44,7 @@ public:
 	bool is(const std::string &type, const action_t action);
 
 private:
-	bool create(const std::string& type);
+	bool create(const std::string &type);
 
 	// mapping from action name to numbers
 	std::unordered_map<std::string, action_t> actions;
@@ -69,7 +69,6 @@ using action_id_t = action_t;
  * Contains information about a triggered event.
  */
 struct action_arg_t {
-
 	// Triggering event
 	const Event e;
 
@@ -96,4 +95,5 @@ using action_func_t = std::function<void(const action_arg_t &)>;
 using action_check_t = std::function<bool(const action_arg_t &)>;
 
 
-}} // openage::input
+} // namespace input
+} // namespace openage

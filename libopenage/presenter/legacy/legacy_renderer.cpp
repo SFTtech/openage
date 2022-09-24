@@ -34,7 +34,7 @@ RenderOptions::RenderOptions() :
 	terrain_blending{this, "terrain_blending", true} {}
 
 
-LegacyRenderer::LegacyRenderer(Engine *e, presenter::LegacyDisplay *d) :
+LegacyRenderer::LegacyRenderer(LegacyEngine *e, presenter::LegacyDisplay *d) :
 	engine{e},
 	display{d} {
 	// set options structure

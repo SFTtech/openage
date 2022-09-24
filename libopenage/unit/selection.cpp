@@ -18,7 +18,7 @@
 
 namespace openage {
 
-UnitSelection::UnitSelection(Engine *engine) :
+UnitSelection::UnitSelection(LegacyEngine *engine) :
 	selection_type{selection_type_t::nothing},
 	drag_active{false},
 	engine{engine} {

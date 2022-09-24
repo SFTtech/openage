@@ -57,11 +57,11 @@ presenter::LegacyDisplay *LegacyAssetManager::get_display() const {
 	return this->display;
 }
 
-void LegacyAssetManager::set_engine(Engine *engine) {
+void LegacyAssetManager::set_engine(LegacyEngine *engine) {
 	this->engine = engine;
 }
 
-Engine *LegacyAssetManager::get_engine() const {
+LegacyEngine *LegacyAssetManager::get_engine() const {
 	return this->engine;
 }
 

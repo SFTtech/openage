@@ -38,7 +38,7 @@ public:
  */
 class LegacyRenderer : DrawHandler {
 public:
-	LegacyRenderer(Engine *e, presenter::LegacyDisplay *d);
+	LegacyRenderer(LegacyEngine *e, presenter::LegacyDisplay *d);
 	~LegacyRenderer();
 
 	bool on_draw() override;
@@ -58,7 +58,7 @@ public:
 	RenderOptions settings;
 
 private:
-	Engine *engine;
+	LegacyEngine *engine;
 	presenter::LegacyDisplay *display;
 };
 

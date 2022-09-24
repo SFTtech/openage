@@ -22,7 +22,7 @@
 namespace openage::presenter {
 
 
-LegacyDisplay::LegacyDisplay(const util::Path &path, Engine *engine) :
+LegacyDisplay::LegacyDisplay(const util::Path &path, LegacyEngine *engine) :
 	OptionNode{"Engine"},
 	drawing_debug_overlay{this, "drawing_debug_overlay", false},
 	drawing_huds{this, "drawing_huds", true},

@@ -94,7 +94,7 @@ ActionMode::ActionMode(qtsdl::GuiItemLink *gui_link) :
 void ActionMode::on_game_control_set() {
 	ENSURE(this->game_control != nullptr, "no control was actually set");
 
-	Engine *engine = this->game_control->get_engine();
+	LegacyEngine *engine = this->game_control->get_engine();
 	presenter::LegacyDisplay *display = this->game_control->get_display();
 	ENSURE(engine != nullptr, "engine must be known!");
 
@@ -425,7 +425,7 @@ bool ActionMode::place_selection(coord::phys3 point) {
 
 void ActionMode::render() {
 	ENSURE(this->game_control != nullptr, "game_control is unset");
-	Engine *engine = this->game_control->get_engine();
+	LegacyEngine *engine = this->game_control->get_engine();
 	presenter::LegacyDisplay *display = this->game_control->get_display();
 
 	ENSURE(engine != nullptr, "engine is needed to render ActionMode");
@@ -707,7 +707,7 @@ GameControl::GameControl(qtsdl::GuiItemLink *gui_link) :
 	gui_link{gui_link} {
 }
 
-void GameControl::set_engine(Engine *engine) {
+void GameControl::set_engine(LegacyEngine *engine) {
 	// TODO: decide to either go for a full Engine QML-singleton or for a regular object
 	ENSURE(!this->engine || this->engine == engine, "relinking GameControl to another engine is not supported and not caught properly");
 
@@ -896,7 +896,7 @@ void GameControl::set_mode(int mode_index, bool signal_if_unchanged) {
 	}
 }
 
-Engine *GameControl::get_engine() const {
+LegacyEngine *GameControl::get_engine() const {
 	if (this->engine == nullptr) {
 		throw Error{MSG(err) << "game control doesn't have a valid engine pointer yet"};
 	}

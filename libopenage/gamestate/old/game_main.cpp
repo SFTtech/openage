@@ -73,7 +73,7 @@ GameMainHandle::GameMainHandle(qtsdl::GuiItemLink *gui_link) :
 	gui_link{gui_link} {
 }
 
-void GameMainHandle::set_engine(Engine *engine) {
+void GameMainHandle::set_engine(LegacyEngine *engine) {
 	ENSURE(!this->engine || this->engine == engine, "relinking GameMain to another engine is not supported and not caught properly");
 	this->engine = engine;
 }

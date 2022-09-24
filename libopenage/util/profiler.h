@@ -19,7 +19,7 @@ constexpr int PROFILER_COM_BOX_HEIGHT = 15;
 
 namespace openage {
 
-class Engine;
+class LegacyEngine;
 
 
 namespace util {
@@ -38,7 +38,7 @@ struct component_time_data {
 
 class Profiler {
 public:
-	Profiler(Engine *engine);
+	Profiler(LegacyEngine *engine);
 	~Profiler();
 
 	/**
@@ -123,7 +123,7 @@ private:
 	std::unordered_map<std::string, component_time_data> components;
 	int insert_pos = 0;
 
-	Engine *engine;
+	LegacyEngine *engine;
 };
 
 } // namespace util

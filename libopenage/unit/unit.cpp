@@ -150,13 +150,13 @@ void Unit::apply_cmd(std::shared_ptr<UnitAbility> ability, const Command &cmd) {
 }
 
 
-void Unit::draw(const Engine &engine) {
+void Unit::draw(const LegacyEngine &engine) {
 	// the top action decides the graphic type and action
 	this->draw(this->location.get(), this->top()->current_graphics(), engine);
 }
 
 
-void Unit::draw(TerrainObject *loc, const graphic_set &grpc, const Engine &engine) {
+void Unit::draw(TerrainObject *loc, const graphic_set &grpc, const LegacyEngine &engine) {
 	ENSURE(loc != nullptr, "there should always be a location for a placed unit");
 
 	auto top_action = this->top();
@@ -194,7 +194,7 @@ void Unit::draw(TerrainObject *loc, const graphic_set &grpc, const Engine &engin
 }
 
 
-void Unit::draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, unsigned int frame, const Engine &engine) {
+void Unit::draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, unsigned int frame, const LegacyEngine &engine) {
 	// players color if available
 	unsigned color = 0;
 	if (this->has_attribute(attr_type::owner)) {

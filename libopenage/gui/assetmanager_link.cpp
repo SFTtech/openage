@@ -8,7 +8,7 @@
 
 namespace openage {
 
-class Engine;
+class LegacyEngine;
 
 namespace gui {
 
@@ -44,7 +44,7 @@ EngineLink *AssetManagerLink::get_engine() const {
 
 
 void AssetManagerLink::set_engine(EngineLink *engine_link) {
-	static auto f = [](LegacyAssetManager *_this, Engine *engine) {
+	static auto f = [](LegacyAssetManager *_this, LegacyEngine *engine) {
 		_this->set_engine(engine);
 	};
 	this->s(f, this->engine, engine_link);

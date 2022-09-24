@@ -2,7 +2,7 @@
 
 #include "presenter.h"
 
-#include "../../presenter/presenter.h"
+#include "presenter/presenter.h"
 
 
 namespace openage::main::tests::presenter {
@@ -14,4 +14,4 @@ void demo(const util::Path &path) {
 	presenter.run();
 }
 
-} // nameopenage::main::tests::presenter
+} // namespace openage::main::tests::presenter

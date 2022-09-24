@@ -62,12 +62,12 @@ signals:
  *
  * pxd:
  *
- * cppclass Engine:
+ * cppclass LegacyEngine:
  *
  *     InputManager &get_input_manager() except +
  *     CVarManager &get_cvar_manager() except +
  */
-class Engine final {
+class LegacyEngine final {
 public:
 	enum class mode {
 		LEGACY,
@@ -75,42 +75,42 @@ public:
 		FULL,
 	};
 
-	Engine();
+	LegacyEngine();
 
 	/**
 	 * engine initialization method.
 	 * starts the engine subsystems depending on the requested run mode.
 	 */
-	Engine(mode mode,
-	       const util::Path &root_dir,
-	       const std::shared_ptr<cvar::CVarManager> &cvar_manager);
+	LegacyEngine(mode mode,
+	             const util::Path &root_dir,
+	             const std::shared_ptr<cvar::CVarManager> &cvar_manager);
 
 	/**
 	 * engine copy constructor.
 	 */
-	Engine(const Engine &copy) = delete;
+	LegacyEngine(const LegacyEngine &copy) = delete;
 
 	/**
 	 * engine assignment operator.
 	 */
-	Engine &operator=(const Engine &copy) = delete;
+	LegacyEngine &operator=(const LegacyEngine &copy) = delete;
 
 	/**
 	 * engine move constructor.
 	 */
-	Engine(Engine &&other) = delete;
+	LegacyEngine(LegacyEngine &&other) = delete;
 
 	/**
 	 * engine move operator.
 	 */
-	Engine &operator=(Engine &&other) = delete;
+	LegacyEngine &operator=(LegacyEngine &&other) = delete;
 
 public:
 	/**
 	 * engine destructor, cleans up memory etc.
 	 * deletes opengl context, the SDL window, and engine variables.
 	 */
-	~Engine();
+	~LegacyEngine();
 
 	/**
 	 * starts the engine loop.

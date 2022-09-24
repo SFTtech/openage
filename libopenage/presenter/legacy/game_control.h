@@ -25,7 +25,7 @@ namespace openage {
 
 class ActionMode;
 class EditorMode;
-class Engine;
+class LegacyEngine;
 class GameControl;
 
 
@@ -358,7 +358,7 @@ class GameControl : public openage::HudHandler {
 public:
 	explicit GameControl(qtsdl::GuiItemLink *gui_link);
 
-	void set_engine(Engine *engine);
+	void set_engine(LegacyEngine *engine);
 	void set_display(presenter::LegacyDisplay *engine);
 	void set_game(GameMainHandle *game);
 
@@ -371,11 +371,11 @@ public:
 	bool on_drawhud() override;
 
 	Player *get_current_player() const;
-	Engine *get_engine() const;
+	LegacyEngine *get_engine() const;
 	presenter::LegacyDisplay *get_display() const;
 
 private:
-	Engine *engine;
+	LegacyEngine *engine;
 	presenter::LegacyDisplay *display;
 	GameMainHandle *game;
 

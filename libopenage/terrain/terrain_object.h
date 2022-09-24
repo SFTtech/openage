@@ -5,12 +5,12 @@
 #include <memory>
 #include <stddef.h>
 
-#include "../coord/tile.h"
 #include "../coord/phys.h"
+#include "../coord/tile.h"
 
 namespace openage {
 
-class Engine;
+class LegacyEngine;
 class Terrain;
 class TerrainChunk;
 class Texture;
@@ -34,8 +34,8 @@ enum class object_state {
  */
 struct tile_range {
 	coord::tile start{0, 0};
-	coord::tile end{0, 0};         // start <= end
-	coord::phys3 draw{0, 0, 0};    // gets used as center point of radial objects
+	coord::tile end{0, 0}; // start <= end
+	coord::phys3 draw{0, 0, 0}; // gets used as center point of radial objects
 };
 
 /**
@@ -75,8 +75,8 @@ bool complete_building(Unit &);
 class TerrainObject : public std::enable_shared_from_this<TerrainObject> {
 public:
 	TerrainObject(Unit &u);
-	TerrainObject(const TerrainObject &) = delete;	// disable copy constructor
-	TerrainObject(TerrainObject &&) = delete;	// disable move constructor
+	TerrainObject(const TerrainObject &) = delete; // disable copy constructor
+	TerrainObject(TerrainObject &&) = delete; // disable move constructor
 	virtual ~TerrainObject();
 
 	/**
@@ -121,7 +121,7 @@ public:
 	/**
 	 * specifies content to be drawn
 	 */
-	std::function<void(const Engine &e)> draw;
+	std::function<void(const LegacyEngine &e)> draw;
 
 	/**
 	 * draws outline of this terrain space in current position
@@ -160,7 +160,7 @@ public:
 	 * @param id: the terrain id to which the ground is set
 	 * @param additional: amount of additional space arround the building
 	 */
-	void set_ground(int id, int additional=0);
+	void set_ground(int id, int additional = 0);
 
 
 	/**
@@ -168,10 +168,9 @@ public:
 	 *
 	 * this does not replace any existing annex
 	 */
-	template<class T, typename ... Arg>
-	TerrainObject *make_annex(Arg ... args) {
-
-		this->children.emplace_back(std::unique_ptr<T>(new T(this->unit, args ...)));
+	template <class T, typename... Arg>
+	TerrainObject *make_annex(Arg... args) {
+		this->children.emplace_back(std::unique_ptr<T>(new T(this->unit, args...)));
 		auto &annex_ptr = this->children.back();
 		annex_ptr->parent = this;
 		return annex_ptr.get();
@@ -209,7 +208,7 @@ public:
 	 * by using this order algorithm, the overlapping order
 	 * is optimal so the objects can be drawn in correct order.
 	 */
-	bool operator <(const TerrainObject &other);
+	bool operator<(const TerrainObject &other);
 
 	/**
 	 * returns the range of tiles covered if the object was in the given pos
@@ -225,7 +224,7 @@ public:
 	/**
 	 * get a position on the edge of this object
 	 */
-	virtual coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra=0) const = 0;
+	virtual coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra = 0) const = 0;
 
 	/**
 	 * does this space contain a given point
@@ -273,8 +272,7 @@ protected:
  * terrain object class represents one immobile object on the map (building, trees, fish, ...).
  * can only be constructed by unit->make_location<SquareObject>(...)
  */
-class SquareObject: public TerrainObject {
-
+class SquareObject : public TerrainObject {
 public:
 	virtual ~SquareObject();
 
@@ -304,7 +302,7 @@ public:
 	tile_range get_range(const coord::phys3 &pos, const Terrain &terrain) const override;
 
 	coord::phys_t from_edge(const coord::phys3 &point) const override;
-	coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra=0) const override;
+	coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra = 0) const override;
 	bool contains(const coord::phys3 &other) const override;
 	bool intersects(const TerrainObject &other, const coord::phys3 &position) const override;
 	coord::phys_t min_axis() const override;
@@ -322,7 +320,7 @@ private:
  * Represents circular shaped objects (movable game units)
  * can only be constructed by unit->make_location<RadialObject>(...)
  */
-class RadialObject: public TerrainObject {
+class RadialObject : public TerrainObject {
 public:
 	virtual ~RadialObject();
 
@@ -337,7 +335,7 @@ public:
 	tile_range get_range(const coord::phys3 &pos, const Terrain &terrain) const override;
 
 	coord::phys_t from_edge(const coord::phys3 &point) const override;
-	coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra=0) const override;
+	coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra = 0) const override;
 	bool contains(const coord::phys3 &other) const override;
 	bool intersects(const TerrainObject &other, const coord::phys3 &position) const override;
 	coord::phys_t min_axis() const override;
@@ -350,4 +348,4 @@ private:
 	friend class Unit;
 };
 
-} // openage
+} // namespace openage

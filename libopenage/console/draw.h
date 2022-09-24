@@ -6,7 +6,7 @@
 
 namespace openage {
 
-class Engine;
+class LegacyEngine;
 
 namespace util {
 class FD;

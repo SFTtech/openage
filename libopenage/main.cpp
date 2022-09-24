@@ -2,17 +2,10 @@
 
 #include "main.h"
 
-#include "console/console.h"
 #include "cvar/cvar.h"
-#include "engine.h"
-#include "gamedata/color_dummy.h"
+#include "engine/engine.h"
 #include "log/log.h"
-#include "presenter/legacy/game_control.h"
-#include "presenter/legacy/legacy_renderer.h"
-#include "shader/program.h"
-#include "shader/shader.h"
-#include "util/file.h"
-#include "util/timer.h"
+#include "presenter/presenter.h"
 
 namespace openage {
 
@@ -38,9 +31,9 @@ int run_game(const main_arguments &args) {
 	cvar_manager->load_all();
 
 	// TODO: select run_mode by launch argument
-	openage::Engine::mode run_mode = Engine::mode::FULL;
+	openage::engine::Engine::mode run_mode = engine::Engine::mode::FULL;
 
-	if (run_mode != Engine::mode::LEGACY) {
+	if (run_mode != engine::Engine::mode::LEGACY) {
 		auto presenter = presenter::Presenter(args.root_path);
 		presenter.run();
 	}

@@ -13,8 +13,7 @@ namespace {
 const int registration = qmlRegisterType<GameMainLink>("yay.sfttech.openage", 1, 0, "GameMain");
 }
 
-GameMainLink::GameMainLink(QObject *parent)
-	:
+GameMainLink::GameMainLink(QObject *parent) :
 	GuiItemQObject{parent},
 	QQmlParserStatus{},
 	GuiItem{this},
@@ -34,7 +33,7 @@ void GameMainLink::on_core_adopted() {
 }
 
 void GameMainLink::componentComplete() {
-	static auto f = [] (GameMainHandle *_this) {
+	static auto f = [](GameMainHandle *_this) {
 		_this->announce_running();
 	};
 	this->i(f);
@@ -44,19 +43,19 @@ GameMainLink::State GameMainLink::get_state() const {
 	return this->state;
 }
 
-EngineLink* GameMainLink::get_engine() const {
+EngineLink *GameMainLink::get_engine() const {
 	return this->engine;
 }
 
 void GameMainLink::set_engine(EngineLink *engine) {
-	static auto f = [] (GameMainHandle *_this, Engine *engine) {
+	static auto f = [](GameMainHandle *_this, LegacyEngine *engine) {
 		_this->set_engine(engine);
 	};
 	this->s(f, this->engine, engine);
 }
 
 void GameMainLink::clear() {
-	static auto f = [] (GameMainHandle *_this) {
+	static auto f = [](GameMainHandle *_this) {
 		_this->clear();
 	};
 	this->i(f);

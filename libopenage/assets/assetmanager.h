@@ -22,7 +22,7 @@ class GuiItemLink;
 
 namespace openage {
 
-class Engine;
+class LegacyEngine;
 class Texture;
 
 /**
@@ -58,12 +58,12 @@ public:
 	 * Set the game engine of this asset manager.
 	 * Called from QML.
 	 */
-	void set_engine(Engine *engine);
+	void set_engine(LegacyEngine *engine);
 
 	/**
 	 * Return the engine responsible for this asset manager.
 	 */
-	Engine *get_engine() const;
+	LegacyEngine *get_engine() const;
 
 	/**
 	 * Query the Texture for a given filename.
@@ -105,7 +105,7 @@ private:
 	/**
 	 * The engine this asset manager is attached to.
 	 */
-	Engine *engine;
+	LegacyEngine *engine;
 
 	/**
 	 * The root directory for the available assets.

@@ -12,7 +12,7 @@
 
 namespace openage::util {
 
-Profiler::Profiler(Engine *engine) :
+Profiler::Profiler(LegacyEngine *engine) :
 	engine{engine} {}
 
 

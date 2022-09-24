@@ -19,9 +19,9 @@
 
 namespace openage {
 
-Engine::Engine(enum mode mode,
-               const util::Path &root_dir,
-               const std::shared_ptr<cvar::CVarManager> &cvar_manager) :
+LegacyEngine::LegacyEngine(enum mode mode,
+                           const util::Path &root_dir,
+                           const std::shared_ptr<cvar::CVarManager> &cvar_manager) :
 	running{false},
 	run_mode{mode},
 	root_dir{root_dir},
@@ -39,10 +39,10 @@ Engine::Engine(enum mode mode,
 }
 
 
-Engine::~Engine() {}
+LegacyEngine::~LegacyEngine() {}
 
 
-void Engine::run() {
+void LegacyEngine::run() {
 	try {
 		this->job_manager.start();
 		this->running = true;
@@ -60,27 +60,27 @@ void Engine::run() {
 }
 
 
-void Engine::stop() {
+void LegacyEngine::stop() {
 	this->job_manager.stop();
 	this->running = false;
 }
 
 
-const util::Path &Engine::get_root_dir() {
+const util::Path &LegacyEngine::get_root_dir() {
 	return this->root_dir;
 }
 
 
-job::JobManager *Engine::get_job_manager() {
+job::JobManager *LegacyEngine::get_job_manager() {
 	return &this->job_manager;
 }
 
 
-std::shared_ptr<cvar::CVarManager> Engine::get_cvar_manager() {
+std::shared_ptr<cvar::CVarManager> LegacyEngine::get_cvar_manager() {
 	return this->cvar_manager;
 }
 
-gui::EngineQMLInfo Engine::get_qml_info() {
+gui::EngineQMLInfo LegacyEngine::get_qml_info() {
 	return this->qml_info;
 }
 
