@@ -16,7 +16,7 @@
 #include "../../util/compiler.h"
 #include "../../util/strings.h"
 #include "../../util/timer.h"
-#include "assets/assetmanager.h"
+#include "assets/legacy_assetmanager.h"
 #include "civilisation.h"
 
 

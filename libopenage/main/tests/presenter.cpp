@@ -2,6 +2,7 @@
 
 #include "presenter.h"
 
+#include "log/log.h"
 #include "presenter/presenter.h"
 
 

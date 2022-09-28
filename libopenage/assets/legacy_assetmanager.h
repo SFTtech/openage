@@ -21,19 +21,17 @@ class GuiItemLink;
 } // namespace qtsdl
 
 namespace openage {
-class Texture;
 
-namespace engine {
-class Engine;
-}
+class LegacyEngine;
+class Texture;
 
 /**
  * Container class for all available assets.
  * Responsible for loading, providing and updating requested files.
  */
-class AssetManager final {
+class LegacyAssetManager final {
 public:
-	explicit AssetManager(qtsdl::GuiItemLink *gui_link);
+	explicit LegacyAssetManager(qtsdl::GuiItemLink *gui_link);
 
 	/**
 	 * Return the path where assets are found in.
@@ -60,12 +58,12 @@ public:
 	 * Set the game engine of this asset manager.
 	 * Called from QML.
 	 */
-	void set_engine(engine::Engine *engine);
+	void set_engine(LegacyEngine *engine);
 
 	/**
 	 * Return the engine responsible for this asset manager.
 	 */
-	engine::Engine *get_engine() const;
+	LegacyEngine *get_engine() const;
 
 	/**
 	 * Query the Texture for a given filename.
@@ -107,7 +105,7 @@ private:
 	/**
 	 * The engine this asset manager is attached to.
 	 */
-	engine::Engine *engine;
+	LegacyEngine *engine;
 
 	/**
 	 * The root directory for the available assets.

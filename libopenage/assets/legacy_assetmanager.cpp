@@ -5,7 +5,7 @@
  *
  */
 
-#include "assetmanager.h"
+#include "legacy_assetmanager.h"
 
 #if WITH_INOTIFY
 #include <climits> /* for NAME_MAX */
@@ -22,7 +22,7 @@
 
 namespace openage {
 
-AssetManager::AssetManager(qtsdl::GuiItemLink *gui_link) :
+LegacyAssetManager::LegacyAssetManager(qtsdl::GuiItemLink *gui_link) :
 	missing_tex{nullptr},
 	gui_link{gui_link} {
 #if WITH_INOTIFY
@@ -35,12 +35,12 @@ AssetManager::AssetManager(qtsdl::GuiItemLink *gui_link) :
 }
 
 
-const util::Path &AssetManager::get_asset_dir() {
+const util::Path &LegacyAssetManager::get_asset_dir() {
 	return this->asset_path;
 }
 
 
-void AssetManager::set_asset_dir(const util::Path &new_path) {
+void LegacyAssetManager::set_asset_dir(const util::Path &new_path) {
 	if (this->asset_path != new_path) {
 		this->asset_path = new_path;
 		this->clear();
@@ -48,27 +48,27 @@ void AssetManager::set_asset_dir(const util::Path &new_path) {
 }
 
 
-void AssetManager::set_display(presenter::LegacyDisplay *display) {
+void LegacyAssetManager::set_display(presenter::LegacyDisplay *display) {
 	this->display = display;
 }
 
 
-presenter::LegacyDisplay *AssetManager::get_display() const {
+presenter::LegacyDisplay *LegacyAssetManager::get_display() const {
 	return this->display;
 }
 
-void AssetManager::set_engine(engine::Engine *engine) {
+void LegacyAssetManager::set_engine(LegacyEngine *engine) {
 	this->engine = engine;
 }
 
-engine::Engine *AssetManager::get_engine() const {
+LegacyEngine *LegacyAssetManager::get_engine() const {
 	return this->engine;
 }
 
 
-std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name,
-                                                    bool use_metafile,
-                                                    bool null_if_missing) {
+std::shared_ptr<Texture> LegacyAssetManager::load_texture(const std::string &name,
+                                                          bool use_metafile,
+                                                          bool null_if_missing) {
 	// the texture to be associated with the given filename
 	std::shared_ptr<Texture> tex;
 
@@ -118,7 +118,7 @@ std::shared_ptr<Texture> AssetManager::load_texture(const std::string &name,
 }
 
 
-Texture *AssetManager::get_texture(const std::string &name, bool use_metafile, bool null_if_missing) {
+Texture *LegacyAssetManager::get_texture(const std::string &name, bool use_metafile, bool null_if_missing) {
 	// check whether the requested texture was loaded already
 	auto tex_it = this->textures.find(name);
 
@@ -139,7 +139,7 @@ Texture *AssetManager::get_texture(const std::string &name, bool use_metafile, b
 }
 
 
-void AssetManager::check_updates() {
+void LegacyAssetManager::check_updates() {
 #if WITH_INOTIFY
 	// buffer for at least 4 inotify events
 	char buf[4 * (sizeof(struct inotify_event) + NAME_MAX + 1)];
@@ -179,7 +179,7 @@ void AssetManager::check_updates() {
 #endif
 }
 
-std::shared_ptr<Texture> AssetManager::get_missing_tex() {
+std::shared_ptr<Texture> LegacyAssetManager::get_missing_tex() {
 	// if not loaded, fetch the "missing" texture (big red X).
 	if (unlikely(this->missing_tex.get() == nullptr)) {
 		this->missing_tex = std::make_shared<Texture>(
@@ -190,7 +190,7 @@ std::shared_ptr<Texture> AssetManager::get_missing_tex() {
 	return this->missing_tex;
 }
 
-void AssetManager::clear() {
+void LegacyAssetManager::clear() {
 #if WITH_INOTIFY
 	for (auto &watch_fd : this->watch_fds) {
 		int result = inotify_rm_watch(this->inotify_fd, watch_fd.first);

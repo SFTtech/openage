@@ -15,7 +15,7 @@
 #include "../coord/tile.h"
 #include "../texture.h"
 #include "../util/misc.h"
-#include "assets/assetmanager.h"
+#include "assets/legacy_assetmanager.h"
 
 namespace openage {
 

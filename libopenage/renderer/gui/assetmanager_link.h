@@ -2,33 +2,34 @@
 
 #pragma once
 
-#include "../util/path.h"
-#include "assets/legacy_assetmanager.h"
-#include "guisys/link/gui_item.h"
+#include "assets/assetmanager.h"
+#include "gui/guisys/link/gui_item.h"
+#include "util/path.h"
 
 
 namespace openage {
-namespace gui {
+namespace renderer::gui {
 class AssetManagerLink;
 class EngineLink;
-} // namespace gui
+} // namespace renderer::gui
 } // namespace openage
 
 namespace qtsdl {
 template <>
-struct Wrap<openage::LegacyAssetManager> {
-	using Type = openage::gui::AssetManagerLink;
+struct Wrap<openage::AssetManager> {
+	using Type = openage::renderer::gui::AssetManagerLink;
 };
 
 template <>
-struct Unwrap<openage::gui::AssetManagerLink> {
-	using Type = openage::LegacyAssetManager;
+struct Unwrap<openage::renderer::gui::AssetManagerLink> {
+	using Type = openage::AssetManager;
 };
 
 } // namespace qtsdl
 
 
 namespace openage {
+namespace renderer {
 namespace gui {
 
 class AssetManagerLink : public qtsdl::GuiItemQObject
@@ -36,7 +37,7 @@ class AssetManagerLink : public qtsdl::GuiItemQObject
 	Q_OBJECT
 
 	Q_PROPERTY(openage::util::Path assetDir READ get_asset_dir WRITE set_asset_dir)
-	Q_PROPERTY(openage::gui::EngineLink *engine READ get_engine WRITE set_engine)
+	Q_PROPERTY(EngineLink *engine READ get_engine WRITE set_engine)
 
 public:
 	explicit AssetManagerLink(QObject *parent = nullptr);
@@ -54,4 +55,5 @@ private:
 };
 
 } // namespace gui
+} // namespace renderer
 } // namespace openage
