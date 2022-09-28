@@ -6,6 +6,7 @@
 #include "engine/engine.h"
 #include "log/log.h"
 #include "presenter/presenter.h"
+#include "util/timer.h"
 
 namespace openage {
 
