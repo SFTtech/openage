@@ -6,7 +6,8 @@ namespace openage {
 namespace renderer {
 namespace gui {
 
-QMLInfo::QMLInfo(const util::Path &asset_dir) :
+QMLInfo::QMLInfo(engine::Engine *engine, const util::Path &asset_dir) :
+	engine{engine},
 	asset_dir{asset_dir} {}
 
 } // namespace gui

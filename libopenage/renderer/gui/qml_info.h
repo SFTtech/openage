@@ -7,12 +7,33 @@
 
 namespace openage {
 
+namespace engine {
+class Engine;
+}
+
+namespace presenter {
+class Presenter;
+}
+
 namespace renderer {
 namespace gui {
 
 class QMLInfo : public qtsdl::GuiSingletonItemsInfo {
 public:
-	QMLInfo(const util::Path &asset_dir);
+	QMLInfo(engine::Engine *engine, const util::Path &asset_dir);
+
+	/**
+	 * The openage engine, so it can be "used" in QML as a "QML Singleton".
+	 * With this pointer, all of QML can find back to the engine.
+	 */
+	engine::Engine *engine;
+
+	/**
+	 * ASDF: Useful?
+	 * 
+	 * The openage display.
+	 */
+	presenter::Presenter *display;
 
 	/**
 	 * Search path for finding assets n stuff.

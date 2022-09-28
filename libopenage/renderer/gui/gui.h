@@ -20,12 +20,13 @@ class Path;
 }
 
 namespace renderer {
-
+class RenderPass;
 class Renderer;
 class Window;
 
 namespace gui {
 
+class QMLInfo;
 
 /**
  * Main entry point for the openage Qt-based user interface.
@@ -36,12 +37,21 @@ public:
 	             const util::Path &source,
 	             const util::Path &rootdir,
 	             const util::Path &assetdir,
-	             std::shared_ptr<Renderer> renderer);
+	             std::shared_ptr<Renderer> renderer,
+	             QMLInfo *info = nullptr);
 	virtual ~GUI() = default;
 
+	std::shared_ptr<renderer::RenderPass> get_render_pass();
+
 	void process_events();
+	bool drawhud();
 
 private:
+	void initialize_render_pass(size_t width,
+	                            size_t height,
+	                            std::shared_ptr<Renderer> renderer,
+	                            const util::Path &shaderdir);
+
 	openage::gui::GuiApplicationWithLogger application;
 	qtsdl::GuiEventQueue render_updater;
 	qtsdl::GuiRenderer gui_renderer;
@@ -52,6 +62,8 @@ private:
 	qtsdl::GuiEngine engine;
 	qtsdl::GuiSubtree subtree;
 	qtsdl::GuiInput input;
+
+	std::shared_ptr<renderer::RenderPass> render_pass;
 
 	// useless?
 	std::shared_ptr<ShaderProgram> textured_screen_quad_shader;
