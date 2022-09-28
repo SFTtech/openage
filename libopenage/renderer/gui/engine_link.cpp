@@ -4,36 +4,36 @@
 
 #include <QtQml>
 
-#include "../error/error.h"
+#include "error/error.h"
 
-#include "../engine.h"
+#include "engine/engine.h"
 
-#include "guisys/link/qml_engine_with_singleton_items_info.h"
-#include "guisys/link/qtsdl_checked_static_cast.h"
+#include "gui/guisys/link/qml_engine_with_singleton_items_info.h"
+#include "gui/guisys/link/qtsdl_checked_static_cast.h"
 
-namespace openage::gui {
+namespace openage::renderer::gui {
 
 namespace {
 // this pushes the EngineLink in the QML engine.
 // a qml engine calls the static provider() to obtain a handle.
-const int registration = qmlRegisterSingletonType<EngineLink>("yay.sfttech.openage", 1, 0, "LegacyEngine", &EngineLink::provider);
+const int registration = qmlRegisterSingletonType<EngineLink>("yay.sfttech.openage", 1, 0, "Engine", &EngineLink::provider);
 } // namespace
 
 
-EngineLink::EngineLink(QObject *parent, LegacyEngine *engine) :
+EngineLink::EngineLink(QObject *parent, engine::Engine *engine) :
 	GuiSingletonItem{parent},
 	core{engine} {
 	Q_UNUSED(registration);
 
-	ENSURE(!unwrap(this)->gui_link, "Sharing singletons between QML engines is not supported for now.");
+	// ENSURE(!unwrap(this)->gui_link, "Sharing singletons between QML engines is not supported for now.");
 
 	// when the engine announces that the global key bindings
 	// changed, update the display.
-	QObject::connect(
-		&unwrap(this)->gui_signals,
-		&EngineSignals::global_binds_changed,
-		this,
-		&EngineLink::on_global_binds_changed);
+	// QObject::connect(
+	// 	&unwrap(this)->gui_signals,
+	// 	&EngineSignals::global_binds_changed,
+	// 	this,
+	// 	&EngineLink::on_global_binds_changed);
 
 	// trigger the engine signal,
 	// which then triggers this->on_global_binds_changed.
@@ -41,7 +41,7 @@ EngineLink::EngineLink(QObject *parent, LegacyEngine *engine) :
 }
 
 EngineLink::~EngineLink() {
-	unwrap(this)->gui_link = nullptr;
+	// unwrap(this)->gui_link = nullptr;
 }
 
 // a qml engine requests a handle to the engine link with that static
@@ -53,7 +53,7 @@ QObject *EngineLink::provider(QQmlEngine *engine, QJSEngine *) {
 	qtsdl::QmlEngineWithSingletonItemsInfo *engine_with_singleton_items_info = qtsdl::checked_static_cast<qtsdl::QmlEngineWithSingletonItemsInfo *>(engine);
 
 	// get the singleton container out of the custom qml engine
-	auto info = static_cast<gui::EngineQMLInfo *>(
+	auto info = static_cast<renderer::gui::QMLInfo *>(
 		engine_with_singleton_items_info->get_singleton_items_info());
 	ENSURE(info, "qml-globals were lost or not passed to the gui subsystem");
 
@@ -92,4 +92,4 @@ void EngineLink::on_global_binds_changed(const std::vector<std::string> &global_
 	}
 }
 
-} // namespace openage::gui
+} // namespace openage::renderer::gui

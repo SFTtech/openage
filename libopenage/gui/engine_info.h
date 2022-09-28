@@ -9,6 +9,10 @@
 namespace openage {
 class LegacyEngine;
 
+namespace presenter {
+class LegacyDisplay;
+}
+
 namespace gui {
 
 /**
