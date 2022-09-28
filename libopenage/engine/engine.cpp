@@ -12,7 +12,7 @@ Engine::Engine(enum mode mode,
 	run_mode{mode},
 	root_dir{root_dir},
 	cvar_manager{cvar_manager},
-	qml_info{root_dir["assets"]} {
+	qml_info{this, this->root_dir["assets"]} {
 }
 
 

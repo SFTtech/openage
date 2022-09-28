@@ -3,7 +3,6 @@
 #pragma once
 
 #include "cvar/cvar.h"
-#include "gui/engine_info.h"
 #include "renderer/gui/qml_info.h"
 #include "util/path.h"
 
