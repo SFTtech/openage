@@ -5,8 +5,11 @@
 #include <eigen3/Eigen/Dense>
 
 #include "log/log.h"
+#include "renderer/gui/gui.h"
+#include "renderer/gui/qml_info.h"
+#include "renderer/resources/texture_info.h"
+#include "renderer/window.h"
 #include "util/path.h"
-
 
 namespace openage::presenter {
 
@@ -22,6 +25,9 @@ void Presenter::run() {
 	this->renderer = this->window->make_renderer();
 
 	this->window->add_resize_callback([&](size_t w, size_t h) {
+		log::log(MSG(info) << "engine window resize to "
+		                   << w << "x" << h);
+
 		float aspectRatio = float(w) / float(h);
 		float x_scale = 1.0 / aspectRatio;
 
@@ -32,21 +38,23 @@ void Presenter::run() {
 			0, 0, 0, 1;
 
 		// TODO!
-		/* proj_unif->update("proj", pmat);
+		// proj_unif->update("proj", pmat);
 
-		auto color_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::rgba8));
-		auto id_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::r32ui));
-		auto depth_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::depth24));
-		auto fbo = renderer->create_texture_target({color_texture, id_texture, depth_texture});
+		// auto color_texture = renderer->add_texture(
+		// 	renderer::resources::Texture2dInfo(w, h, renderer::resources::pixel_format::rgba8));
+		// auto id_texture = renderer->add_texture(
+		// 	renderer::resources::Texture2dInfo(w, h, renderer::resources::pixel_format::r32ui));
+		// auto depth_texture = renderer->add_texture(
+		// 	renderer::resources::Texture2dInfo(w, h, renderer::resources::pixel_format::depth24));
+		// auto fbo = renderer->create_texture_target({color_texture, id_texture, depth_texture});
 
-		color_texture_unif->update("color_texture", color_texture);
+		// color_texture_unif->update("color_texture", color_texture);
 
 		auto texture_data_valid = false;
-		pass1->set_target(fbo);
-		*/
+		// gui_pass->set_target(fbo);
 	});
 
-	//// -- initialize the gui
+	//// -- gui initialization
 	util::Path qml_root = this->root_dir / "assets" / "qml";
 	if (not qml_root.is_dir()) {
 		throw Error{ERR << "could not find qml root folder " << qml_root};
@@ -66,20 +74,26 @@ void Presenter::run() {
 	//       library has to be integrated into qt. For now,
 	//       figure out the absolute paths here and pass them in.
 
+	renderer::gui::QMLInfo qml_info{this->engine.get(), qml_root};
+
 	this->gui = std::make_shared<renderer::gui::GUI>(
 		this->window, // window for the gui
-		qml_root, // entry qml file, absolute path.
-		qml_root_file, // directory to watch for qml file changes
+		qml_root_file, // entry qml file, absolute path.
+		qml_root, // directory to watch for qml file changes
 		qml_assets, // qml data: Engine *, the data directory, ...
-		this->renderer // renderer
+		this->renderer, // gui renderer
+		&qml_info //
 	);
+
+	auto gui_pass = this->gui->get_render_pass();
 
 	//// -- gui initialization
 
 	while (not this->window->should_close()) {
-		//this->renderer->render(pass1);
-
+		this->renderer->render(gui_pass);
 		this->window->update();
+		this->gui->process_events();
+		this->gui->drawhud();
 
 		this->renderer->check_error();
 	}

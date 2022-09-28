@@ -2,12 +2,26 @@
 
 #pragma once
 
-#include "renderer/gui/gui.h"
-#include "renderer/window.h"
 #include "util/path.h"
 
 
-namespace openage::presenter {
+namespace openage {
+
+namespace engine {
+class Engine;
+}
+
+namespace renderer {
+class Renderer;
+class Window;
+
+namespace gui {
+class GUI;
+}
+
+} // namespace renderer
+
+namespace presenter {
 
 class Presenter {
 public:
@@ -26,6 +40,10 @@ protected:
 	std::shared_ptr<renderer::gui::GUI> gui;
 	std::shared_ptr<renderer::Window> window;
 	std::shared_ptr<renderer::Renderer> renderer;
+
+	// TODO: Activate
+	std::shared_ptr<engine::Engine> engine = nullptr;
 };
 
-} // namespace openage::presenter
+} // namespace presenter
+} // namespace openage
