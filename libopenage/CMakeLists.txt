@@ -29,7 +29,7 @@ if(APPLE)
 		OUTPUT_VARIABLE HOMEBREW_PREFIX
 		OUTPUT_STRIP_TRAILING_WHITESPACE
 		)
-	list(APPEND CMAKE_PREFIX_PATH ${HOMEBREW_PREFIX}/opt/qt5)
+	list(APPEND CMAKE_PREFIX_PATH ${HOMEBREW_PREFIX}/opt/qt6)
 endif()
 
 # windows does not have libm
@@ -63,9 +63,9 @@ find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 find_package(Threads REQUIRED)
 
-set(QT_VERSION_REQ "5.9")
-find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
-find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
+set(QT_VERSION_REQ "6.2")
+find_package(Qt6Core ${QT_VERSION_REQ} REQUIRED)
+find_package(Qt6Quick ${QT_VERSION_REQ} REQUIRED)
 
 if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)
@@ -256,7 +256,7 @@ configure_file(
 if(APPLE)
 	find_path(
 		QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders
-		"${HOMEBREW_PREFIX}/opt/qt5/include"
+		"${HOMEBREW_PREFIX}/opt/qt6/include"
 		)
 	find_library(COCOA_LIBRARY Cocoa)
 	target_include_directories(libopenage PRIVATE ${COCOA_LIBRARY})
@@ -305,8 +305,8 @@ target_link_libraries(libopenage
 		${HarfBuzz_LIBRARIES}
 		${RT_LIB}
 		${EXECINFO_LIB}
-		Qt5::Core
-		Qt5::Quick
+		Qt6::Core
+		Qt6::Quick
 )
 
 ##################################################

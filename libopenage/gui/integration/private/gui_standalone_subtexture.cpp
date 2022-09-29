@@ -5,8 +5,7 @@
 namespace openage {
 namespace gui {
 
-GuiStandaloneSubtexture::GuiStandaloneSubtexture(GLuint id, const QSize &size)
-	:
+GuiStandaloneSubtexture::GuiStandaloneSubtexture(GLuint id, const QSize &size) :
 	id(id),
 	size(size) {
 }
@@ -17,6 +16,11 @@ GuiStandaloneSubtexture::~GuiStandaloneSubtexture() {
 
 void GuiStandaloneSubtexture::bind() {
 	glBindTexture(GL_TEXTURE_2D, this->textureId());
+}
+
+qint64 GuiStandaloneSubtexture::comparisonKey() const {
+	// ASDF: Qt5 What does this do??????
+	return 0;
 }
 
 bool GuiStandaloneSubtexture::hasAlphaChannel() const {
@@ -40,4 +44,5 @@ QSize GuiStandaloneSubtexture::textureSize() const {
 	return this->size;
 }
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

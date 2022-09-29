@@ -1,19 +1,16 @@
 // Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
-#include "gui_texture.h"
-
 #include <array>
 
 #include <QTransform>
 
 #include "../../../texture.h"
-
 #include "gui_make_standalone_subtexture.h"
+#include "gui_texture.h"
 
 namespace openage::gui {
 
-GuiTexture::GuiTexture(const SizedTextureHandle &texture_handle)
-	:
+GuiTexture::GuiTexture(const SizedTextureHandle &texture_handle) :
 	QSGTexture{},
 	texture_handle(texture_handle) {
 }
@@ -22,6 +19,11 @@ GuiTexture::~GuiTexture() = default;
 
 void GuiTexture::bind() {
 	glBindTexture(GL_TEXTURE_2D, this->textureId());
+}
+
+qint64 GuiTexture::comparisonKey() const {
+	// ASDF: Qt5 What does this do??????
+	return 0;
 }
 
 bool GuiTexture::hasAlphaChannel() const {
@@ -62,9 +64,9 @@ GLuint create_compatible_texture(GLuint texture_id, GLsizei w, GLsizei h) {
 
 	return new_texture_id;
 }
-}
+} // namespace
 
-QSGTexture* GuiTexture::removedFromAtlas() const {
+QSGTexture *GuiTexture::removedFromAtlas(QRhiResourceUpdateBatch *resourceUpdates /* = nullptr */) const {
 	if (this->isAtlasTexture()) {
 		if (!this->standalone) {
 			auto tex = this->texture_handle.texture;
@@ -72,7 +74,7 @@ QSGTexture* GuiTexture::removedFromAtlas() const {
 
 			GLuint sub_texture_id = create_compatible_texture(tex->get_texture_id(), sub->w, sub->h);
 
-			std::array<GLuint, 2>  fbo;
+			std::array<GLuint, 2> fbo;
 			glGenFramebuffers(fbo.size(), &fbo.front());
 
 			glBindFramebuffer(GL_READ_FRAMEBUFFER, fbo[0]);
@@ -103,7 +105,8 @@ QRectF GuiTexture::normalizedTextureSubRect() const {
 		auto tex = this->texture_handle.texture;
 		auto sub = tex->get_subtexture(this->texture_handle.subid);
 		return QTransform::fromScale(tex->w, tex->h).inverted().mapRect(QRectF(sub->x, sub->y, sub->w, sub->h));
-	} else {
+	}
+	else {
 		return QSGTexture::normalizedTextureSubRect();
 	}
 }

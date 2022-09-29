@@ -4,58 +4,60 @@
 
 #include "context_extraction.h"
 
-#include <QtPlatformHeaders/QGLXNativeContext>
-#include <SDL2/SDL_syswm.h>
+// #include <QtPlatformHeaders/QGLXNativeContext>
 #include <GL/glx.h>
+#include <SDL2/SDL_syswm.h>
 
 // DO NOT INCLUDE ANYTHING HERE, X11 HEADERS BREAK STUFF
 
 namespace qtsdl {
 
-std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
-	assert(window);
+// ASDF: Qt5
 
-	GLXContext current_context = nullptr;
-	SDL_SysWMinfo wm_info;
-	SDL_VERSION(&wm_info.version);
+// std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
+// 	assert(window);
 
-	if (SDL_GetWindowWMInfo(window, &wm_info)) {
-		assert(wm_info.info.x11.display);
+// 	GLXContext current_context = nullptr;
+// 	SDL_SysWMinfo wm_info;
+// 	SDL_VERSION(&wm_info.version);
 
-		current_context = glXGetCurrentContext();
-		assert(current_context);
+// 	if (SDL_GetWindowWMInfo(window, &wm_info)) {
+// 		assert(wm_info.info.x11.display);
 
-		return std::make_tuple(
-			QVariant::fromValue<QGLXNativeContext>(
-				QGLXNativeContext(current_context,
-				                  wm_info.info.x11.display,
-				                  wm_info.info.x11.window)),
-			wm_info.info.x11.window
-		);
-	}
+// 		current_context = glXGetCurrentContext();
+// 		assert(current_context);
 
-	return std::tuple<QVariant, WId>{};
-}
+// 		return std::make_tuple(
+// 			QVariant::fromValue<QGLXNativeContext>(
+// 				QGLXNativeContext(current_context,
+// 				                  wm_info.info.x11.display,
+// 				                  wm_info.info.x11.window)),
+// 			wm_info.info.x11.window
+// 		);
+// 	}
 
-std::tuple<QVariant, std::function<void()>> extract_native_context_and_switchback_func(SDL_Window *window) {
-	assert(window);
+// 	return std::tuple<QVariant, WId>{};
+// }
 
-	GLXContext current_context;
-	SDL_SysWMinfo wm_info;
-	SDL_VERSION(&wm_info.version);
+// std::tuple<QVariant, std::function<void()>> extract_native_context_and_switchback_func(SDL_Window *window) {
+// 	assert(window);
 
-	if (SDL_GetWindowWMInfo(window, &wm_info)) {
-		assert(wm_info.info.x11.display);
+// 	GLXContext current_context;
+// 	SDL_SysWMinfo wm_info;
+// 	SDL_VERSION(&wm_info.version);
 
-		current_context = glXGetCurrentContext();
-		assert(current_context);
+// 	if (SDL_GetWindowWMInfo(window, &wm_info)) {
+// 		assert(wm_info.info.x11.display);
 
-		return std::make_tuple(QVariant::fromValue<QGLXNativeContext>(QGLXNativeContext(current_context, wm_info.info.x11.display, wm_info.info.x11.window)), [wm_info, current_context] {
-			glXMakeCurrent(wm_info.info.x11.display, wm_info.info.x11.window, current_context);
-		});
-	}
+// 		current_context = glXGetCurrentContext();
+// 		assert(current_context);
 
-	return std::tuple<QVariant, std::function<void()>>{};
-}
+// 		return std::make_tuple(QVariant::fromValue<QGLXNativeContext>(QGLXNativeContext(current_context, wm_info.info.x11.display, wm_info.info.x11.window)), [wm_info, current_context] {
+// 			glXMakeCurrent(wm_info.info.x11.display, wm_info.info.x11.window, current_context);
+// 		});
+// 	}
+
+// 	return std::tuple<QVariant, std::function<void()>>{};
+// }
 
 } // namespace qtsdl

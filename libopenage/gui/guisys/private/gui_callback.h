@@ -4,8 +4,8 @@
 
 #include <functional>
 
-#include <QObject>
 #include <QMetaType>
+#include <QObject>
 
 namespace qtsdl {
 
@@ -25,4 +25,5 @@ public slots:
 
 } // namespace qtsdl
 
-Q_DECLARE_METATYPE(std::function<void()>)
+// ASDF: Qt5
+// Q_DECLARE_METATYPE(std::function<void()>)

@@ -2,11 +2,11 @@
 
 #pragma once
 
+#include <epoxy/gl.h>
+
 #include <memory>
 
 #include <QSGTexture>
-
-#include <epoxy/gl.h>
 
 namespace openage {
 namespace gui {
@@ -20,4 +20,5 @@ namespace gui {
  */
 std::unique_ptr<QSGTexture> make_standalone_subtexture(GLuint id, const QSize &size);
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

@@ -272,6 +272,8 @@ class GameControlLink : public qtsdl::GuiItemQObject
 	Q_PROPERTY(int effectiveModeIndex READ get_effective_mode_index NOTIFY mode_changed)
 	Q_PROPERTY(int modeIndex READ get_mode_index WRITE set_mode_index)
 	Q_PROPERTY(QVariantList modes READ get_modes WRITE set_modes NOTIFY modes_changed)
+	Q_MOC_INCLUDE("gui/engine_link.h")
+	Q_MOC_INCLUDE("gui/game_main_link.h")
 	Q_PROPERTY(openage::gui::EngineLink *engine READ get_engine WRITE set_engine)
 	Q_PROPERTY(openage::gui::GameMainLink *game READ get_game WRITE set_game)
 	Q_PROPERTY(QString currentPlayerName READ get_current_player_name NOTIFY current_player_name_changed)

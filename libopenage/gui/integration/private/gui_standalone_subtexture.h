@@ -2,8 +2,8 @@
 
 #pragma once
 
-#include <QtGui>
 #include <QSGTexture>
+#include <QtGui>
 
 namespace openage {
 namespace gui {
@@ -16,15 +16,19 @@ public:
 	virtual ~GuiStandaloneSubtexture();
 
 private:
-	virtual void bind() override;
+	virtual qint64 comparisonKey() const override;
 	virtual bool hasAlphaChannel() const override;
 	virtual bool hasMipmaps() const override;
 	virtual bool isAtlasTexture() const override;
-	virtual int textureId() const override;
 	virtual QSize textureSize() const override;
+
+	// ASDF: Qt5
+	virtual void bind();
+	virtual int textureId() const;
 
 	const GLuint id;
 	const QSize size;
 };
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

@@ -16,12 +16,15 @@ class GameCreator : public QObject {
 
 	Q_ENUMS(State)
 	Q_PROPERTY(QString errorString READ get_error_string NOTIFY error_string_changed)
-	Q_PROPERTY(openage::gui::GameMainLink* game MEMBER game NOTIFY game_changed)
-	Q_PROPERTY(openage::gui::GameSpecLink* gameSpec MEMBER game_spec NOTIFY game_spec_changed)
-	Q_PROPERTY(openage::gui::GeneratorLink* generatorParameters MEMBER generator_parameters NOTIFY generator_parameters_changed)
+	Q_MOC_INCLUDE("gui/game_main_link.h")
+	Q_MOC_INCLUDE("gui/game_spec_link.h")
+	Q_MOC_INCLUDE("gui/generator_link.h")
+	Q_PROPERTY(openage::gui::GameMainLink *game MEMBER game NOTIFY game_changed)
+	Q_PROPERTY(openage::gui::GameSpecLink *gameSpec MEMBER game_spec NOTIFY game_spec_changed)
+	Q_PROPERTY(openage::gui::GeneratorLink *generatorParameters MEMBER generator_parameters NOTIFY generator_parameters_changed)
 
 public:
-	explicit GameCreator(QObject *parent=nullptr);
+	explicit GameCreator(QObject *parent = nullptr);
 	virtual ~GameCreator();
 
 	QString get_error_string() const;
@@ -53,4 +56,5 @@ signals:
 	void error_message(const QString &error);
 };
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

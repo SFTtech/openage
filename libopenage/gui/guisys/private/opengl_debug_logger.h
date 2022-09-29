@@ -30,7 +30,7 @@ struct gl_debug_parameters {
  * @param current_source_context current GL context
  * @return debugging settings
  */
-gl_debug_parameters get_current_opengl_debug_parameters(const QOpenGLContext &current_source_context);
+gl_debug_parameters get_current_opengl_debug_parameters(QOpenGLContext &current_source_context);
 
 /**
  * Create a GL logger in the current GL context
@@ -40,4 +40,4 @@ gl_debug_parameters get_current_opengl_debug_parameters(const QOpenGLContext &cu
  */
 void apply_opengl_debug_parameters(gl_debug_parameters params, QOpenGLContext &current_dest_context);
 
-}
+} // namespace qtsdl

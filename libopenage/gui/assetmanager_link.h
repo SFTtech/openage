@@ -36,6 +36,7 @@ class AssetManagerLink : public qtsdl::GuiItemQObject
 	Q_OBJECT
 
 	Q_PROPERTY(openage::util::Path assetDir READ get_asset_dir WRITE set_asset_dir)
+	Q_MOC_INCLUDE("gui/engine_link.h")
 	Q_PROPERTY(openage::gui::EngineLink *engine READ get_engine WRITE set_engine)
 
 public:
