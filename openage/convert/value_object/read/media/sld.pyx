@@ -196,7 +196,7 @@ cdef class SLD:
                     layer_height = offset_y2 - offset_y1
                     layer_hotspot_x = canvas_hotspot_x - offset_x1
                     layer_hotspot_y = canvas_hotspot_y - offset_y1
-                    if layer_type == "main":
+                    if layer_type is SLDLayerType.MAIN:
                         main_width = layer_width
                         main_height = layer_height
                         main_hotspot_x = layer_hotspot_x
