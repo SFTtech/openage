@@ -781,49 +781,64 @@ cdef class SLDLayerBC4(SLDLayer):
             c6.r = 0
             c6.g = 0
             c6.b = 0
-            c6.a = 255
+            c6.a = 0
             c7.r = 255
             c7.g = 0
             c7.b = 0
             c7.a = 255
 
         # Lookup pixels
-        offset = block_offset + 5
+        offset = block_offset + 2
         for _ in range(2):
-            for _ in range(3):
-                byte_val = data_raw[offset]
-                for _ in range(4):
-                    index = byte_val & mask
+            shift = 0
+            for _ in range(8):
+                # Shift data for a pixel lookup to the correct position
+                # so that we can extract 3 bits each time.
+                if shift > 5:
+                    # If the shift value is bigger than 5, we have to read a few its from the next byte
+                    # (because 1 byte = 8 bit)
+                    shift_next = 8 - shift
+                    byte_val = (data_raw[offset] >> shift) | (data_raw[offset + 1] << shift_next)
 
-                    if index == 0b000:
-                        block.push_back(c0)
+                    # Increment the offset to read from the next byte in the next iteration
+                    # and reset the shift
+                    offset += 1
+                    shift -= 5
 
-                    elif index == 0b001:
-                        block.push_back(c1)
+                else:
+                    byte_val = data_raw[offset] >> shift
 
-                    elif index == 0b010:
-                        block.push_back(c2)
+                    # Increase shift to read next 3 bits in next iteration
+                    shift += 3
 
-                    elif index == 0b011:
-                        block.push_back(c3)
+                # apply mask 0b111 to get 3 bits for index
+                index = byte_val & mask
 
-                    elif index == 0b100:
-                        block.push_back(c4)
+                if index == 0b000:
+                    block.push_back(c0)
 
-                    elif index == 0b101:
-                        block.push_back(c5)
+                elif index == 0b001:
+                    block.push_back(c1)
 
-                    elif index == 0b110:
-                        block.push_back(c6)
+                elif index == 0b010:
+                    block.push_back(c2)
 
-                    elif index == 0b111:
-                        block.push_back(c7)
+                elif index == 0b011:
+                    block.push_back(c3)
 
-                    byte_val = byte_val >> 2
+                elif index == 0b100:
+                    block.push_back(c4)
 
-                offset -= 1
+                elif index == 0b101:
+                    block.push_back(c5)
 
-            offset += 6
+                elif index == 0b110:
+                    block.push_back(c6)
+
+                elif index == 0b111:
+                    block.push_back(c7)
+
+            offset += 1
 
         return block
 
