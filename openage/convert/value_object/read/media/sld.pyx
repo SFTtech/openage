@@ -706,7 +706,7 @@ cdef class SLDLayerBC4(SLDLayer):
         Decompress a 4x4 pixel block.
         """
         cdef size_t offset
-        cdef unsigned char byte_val
+        cdef unsigned int pixel_indices
         cdef unsigned char index
         cdef unsigned char mask = 0b0000_0111
         cdef vector[pixel] block
@@ -790,29 +790,10 @@ cdef class SLDLayerBC4(SLDLayer):
         # Lookup pixels
         offset = block_offset + 2
         for _ in range(2):
-            shift = 0
+            pixel_indices = data_raw[offset] | (data_raw[offset + 1] << 8) | (data_raw[offset + 2] << 16)
             for _ in range(8):
-                # Shift data for a pixel lookup to the correct position
-                # so that we can extract 3 bits each time.
-                if shift > 5:
-                    # If the shift value is bigger than 5, we have to read a few its from the next byte
-                    # (because 1 byte = 8 bit)
-                    shift_next = 8 - shift
-                    byte_val = (data_raw[offset] >> shift) | (data_raw[offset + 1] << shift_next)
-
-                    # Increment the offset to read from the next byte in the next iteration
-                    # and reset the shift
-                    offset += 1
-                    shift -= 5
-
-                else:
-                    byte_val = data_raw[offset] >> shift
-
-                    # Increase shift to read next 3 bits in next iteration
-                    shift += 3
-
                 # apply mask 0b111 to get 3 bits for index
-                index = byte_val & mask
+                index = pixel_indices & mask
 
                 if index == 0b000:
                     block.push_back(c0)
@@ -838,7 +819,10 @@ cdef class SLDLayerBC4(SLDLayer):
                 elif index == 0b111:
                     block.push_back(c7)
 
-            offset += 1
+                # Shift indices to read next 3 bits
+                pixel_indices = pixel_indices >> 3
+
+            offset += 3
 
         return block
 
