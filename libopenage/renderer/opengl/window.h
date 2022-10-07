@@ -8,6 +8,12 @@
 
 #include "context.h"
 
+QT_FORWARD_DECLARE_CLASS(QWindow)
+QT_FORWARD_DECLARE_CLASS(QOpenGLContext)
+
+namespace qtsdl {
+class GuiApplication;
+}
 
 namespace openage {
 namespace renderer {
@@ -20,7 +26,7 @@ public:
 	~GlWindow() = default;
 
 	std::shared_ptr<SDL_Window> get_sdl_window() override;
-	// SDL_Window *get_sdl_window() override;
+	std::shared_ptr<QWindow> get_qt_window() override;
 
 	void set_size(size_t width, size_t height) override;
 
@@ -44,6 +50,12 @@ private:
 	/// The SDL window is also held within this context, because when the window is deallocated,
 	/// the context is gone.
 	std::shared_ptr<opengl::GlContext> context;
+
+	/// The Qt window to which the OpenGL context is associated.
+	std::shared_ptr<QWindow> qwindow;
+
+	// OpenGL Context in Qt
+	std::shared_ptr<QOpenGLContext> qcontext;
 };
 
 } // namespace opengl

@@ -6,7 +6,13 @@
 #include "../../log/log.h"
 #include "../sdl_global.h"
 
+#include "gui/guisys/public/gui_application.h"
 #include "renderer.h"
+
+#include <QGuiApplication>
+#include <QOpenGLContext>
+#include <QQuickWindow>
+#include <QString>
 
 
 namespace openage {
@@ -14,7 +20,7 @@ namespace renderer {
 namespace opengl {
 
 GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
-	Window(width, height) {
+	Window{width, height} {
 	make_sdl_available();
 
 	// We need HIGHDPI for eventual support of GUI scaling.
@@ -36,20 +42,41 @@ GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 	if (this->window == nullptr) {
 		throw Error{MSG(err) << "Failed to create SDL window: " << SDL_GetError()};
 	}
-
 	this->context = std::make_shared<opengl::GlContext>(this->window);
 	this->add_resize_callback([](size_t w, size_t h) { glViewport(0, 0, w, h); });
 
 	log::log(MSG(info) << "Created SDL window with OpenGL context.");
+
+	// ASDF: Qt port
+	if (QGuiApplication::instance() == nullptr) {
+		// Qt windows need to attach to a QtGuiApplication
+		throw Error{MSG(err) << "Failed to create Qt window: QGuiApplication has not been created yet."};
+	}
+
+	QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGL);
+	this->qwindow = std::make_shared<QQuickWindow>();
+	this->qwindow->setTitle(QString::fromStdString(title));
+	this->qwindow->resize(width, height);
+	this->qwindow->show();
+
+	this->qcontext = std::make_shared<QOpenGLContext>(this->qwindow.get());
+	// TODO: Setup context format, screen, share context
+	if (!this->qcontext->create()) {
+		throw Error{MSG(err) << "Failed to create Qt OpenGL context."};
+	}
+	// this->context = std::make_shared<opengl::GlContext>(this->qwindow);
+	// this->add_resize_callback([](size_t w, size_t h) { glViewport(0, 0, w, h); });
+
+	log::log(MSG(info) << "Created Qt window with OpenGL context.");
 }
 
 std::shared_ptr<SDL_Window> GlWindow::get_sdl_window() {
 	return this->window;
 }
 
-/* SDL_Window *GlWindow::get_sdl_window() {
-	return this->window.get();
-} */
+std::shared_ptr<QWindow> GlWindow::get_qt_window() {
+	return this->qwindow;
+}
 
 void GlWindow::set_size(size_t width, size_t height) {
 	if (this->size[0] != width || this->size[1] != height) {

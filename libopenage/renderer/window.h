@@ -11,6 +11,9 @@
 #include "../util/vector.h"
 #include "renderer.h"
 
+#include <QObject>
+
+QT_FORWARD_DECLARE_CLASS(QWindow)
 
 namespace openage {
 namespace renderer {
@@ -84,7 +87,13 @@ public:
 	 * @return Pointer to the SDL_Window.
 	 */
 	virtual std::shared_ptr<SDL_Window> get_sdl_window() = 0;
-	// virtual SDL_Window *get_sdl_window() = 0;
+
+	/**
+	 * Get the underlying QWindow that is used for drawing.
+	 *
+	 * @return Pointer to the QWindow.
+	 */
+	virtual std::shared_ptr<QWindow> get_qt_window() = 0;
 
 	/**
 	 * Force this window to the given size. It's generally not a good idea to use this,

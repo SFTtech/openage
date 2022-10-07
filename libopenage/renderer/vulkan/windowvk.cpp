@@ -184,9 +184,9 @@ std::shared_ptr<SDL_Window> VlkWindow::get_sdl_window() {
 		});
 }
 
-/* SDL_Window *VlkWindow::get_sdl_window() {
-	return this->window;
-} */
+std::shared_ptr<QWindow> VlkWindow::get_qt_window() {
+	return this->qwindow;
+}
 
 VkInstance VlkWindow::get_instance() const {
 	return this->instance;

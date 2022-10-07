@@ -12,6 +12,7 @@
 
 #include "loader.h"
 
+QT_FORWARD_DECLARE_CLASS(QWindow)
 
 namespace openage {
 namespace renderer {
@@ -33,13 +34,14 @@ public:
 	~VlkWindow();
 
 	std::shared_ptr<SDL_Window> get_sdl_window() override;
-	// SDL_Window *get_sdl_window() override;
+	std::shared_ptr<QWindow> get_qt_window() override;
 
 	VkInstance get_instance() const;
 	VkSurfaceKHR get_surface() const;
 
 private:
 	SDL_Window *window;
+	std::shared_ptr<QWindow> qwindow;
 
 	vlk_capabilities capabilities;
 
