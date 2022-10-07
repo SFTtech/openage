@@ -5,24 +5,24 @@
 #include <memory>
 #include <string>
 
-#include "integration/public/gui_application_with_logger.h"
-#include "integration/public/gui_game_spec_image_provider.h"
+#include "../handlers.h"
 #include "guisys/public/gui_engine.h"
 #include "guisys/public/gui_event_queue.h"
 #include "guisys/public/gui_input.h"
 #include "guisys/public/gui_renderer.h"
 #include "guisys/public/gui_subtree.h"
-#include "../handlers.h"
+#include "integration/public/gui_application_with_logger.h"
+#include "integration/public/gui_game_spec_image_provider.h"
 
 
 namespace qtsdl {
 class GuiSingletonItemsInfo;
-} // qtsdl
+} // namespace qtsdl
 
 namespace openage {
 namespace shader {
 class Program;
-} // shader
+} // namespace shader
 
 namespace gui {
 
@@ -34,12 +34,14 @@ class EngineQMLInfo;
  *
  * Legacy variant for the "old" renderer.
  */
-class GUI : public InputHandler, public ResizeHandler, public HudHandler {
+class GUI : public InputHandler
+	, public ResizeHandler
+	, public HudHandler {
 public:
 	explicit GUI(SDL_Window *window,
 	             const std::string &source,
 	             const std::string &rootdir,
-	             EngineQMLInfo *info=nullptr);
+	             EngineQMLInfo *info = nullptr);
 	virtual ~GUI();
 
 	void process_events();
@@ -69,4 +71,5 @@ private:
 	std::unique_ptr<shader::Program> textured_screen_quad_shader;
 };
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

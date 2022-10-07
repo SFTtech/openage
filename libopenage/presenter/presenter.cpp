@@ -4,6 +4,7 @@
 
 #include <eigen3/Eigen/Dense>
 
+#include "gui/integration/public/gui_application_with_logger.h"
 #include "log/log.h"
 #include "renderer/gui/gui.h"
 #include "renderer/gui/qml_info.h"
@@ -20,6 +21,7 @@ Presenter::Presenter(const util::Path &root_dir) :
 void Presenter::run() {
 	log::log(INFO << "presenter launching...");
 
+	this->gui_app = this->init_window_system();
 	this->window = renderer::Window::create("openage presenter test", 800, 600);
 
 	this->renderer = this->window->make_renderer();
@@ -77,6 +79,7 @@ void Presenter::run() {
 	renderer::gui::QMLInfo qml_info{this->engine.get(), qml_root};
 
 	this->gui = std::make_shared<renderer::gui::GUI>(
+		this->gui_app, // Qt application wrapper
 		this->window, // window for the gui
 		qml_root_file, // entry qml file, absolute path.
 		qml_root, // directory to watch for qml file changes
@@ -97,6 +100,10 @@ void Presenter::run() {
 
 		this->renderer->check_error();
 	}
+}
+
+std::shared_ptr<qtsdl::GuiApplication> Presenter::init_window_system() {
+	return std::make_shared<gui::GuiApplicationWithLogger>();
 }
 
 } // namespace openage::presenter

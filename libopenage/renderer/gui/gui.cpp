@@ -53,30 +53,23 @@ void GUI::initialize_render_pass(size_t width,
 }
 
 
-GUI::GUI(std::shared_ptr<Window> window,
+GUI::GUI(std::shared_ptr<qtsdl::GuiApplication> app,
+         std::shared_ptr<Window> window,
          const util::Path &source,
          const util::Path &rootdir,
          const util::Path &assetdir,
          std::shared_ptr<Renderer> renderer,
          QMLInfo *info) :
-	application{},
+	application{app},
 	render_updater{},
 	gui_renderer{window->get_sdl_window().get()},
 	game_logic_updater{},
 	image_provider_by_filename{
 		&render_updater,
 		openage::gui::GuiGameSpecImageProvider::Type::ByFilename},
-	image_provider_by_graphic_id{
-		&render_updater,
-		openage::gui::GuiGameSpecImageProvider::Type::ByGraphicId},
-	image_provider_by_terrain_id{
-		&render_updater,
-		openage::gui::GuiGameSpecImageProvider::Type::ByTerrainId},
 	engine{
 		&gui_renderer,
-		{&image_provider_by_filename,
-         &image_provider_by_graphic_id,
-         &image_provider_by_terrain_id},
+		{&image_provider_by_filename},
 		info},
 	subtree{
 		&gui_renderer,
@@ -113,7 +106,7 @@ std::shared_ptr<renderer::RenderPass> GUI::get_render_pass() {
 
 void GUI::process_events() {
 	this->game_logic_updater.process_callbacks();
-	this->application.processEvents();
+	this->application->processEvents();
 }
 
 bool GUI::drawhud() {

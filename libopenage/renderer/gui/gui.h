@@ -33,7 +33,8 @@ class QMLInfo;
  */
 class GUI {
 public:
-	explicit GUI(std::shared_ptr<Window> window,
+	explicit GUI(std::shared_ptr<qtsdl::GuiApplication> app,
+	             std::shared_ptr<Window> window,
 	             const util::Path &source,
 	             const util::Path &rootdir,
 	             const util::Path &assetdir,
@@ -52,13 +53,11 @@ private:
 	                            std::shared_ptr<Renderer> renderer,
 	                            const util::Path &shaderdir);
 
-	openage::gui::GuiApplicationWithLogger application;
+	std::shared_ptr<qtsdl::GuiApplication> application;
 	qtsdl::GuiEventQueue render_updater;
 	qtsdl::GuiRenderer gui_renderer;
 	qtsdl::GuiEventQueue game_logic_updater;
 	openage::gui::GuiGameSpecImageProvider image_provider_by_filename;
-	openage::gui::GuiGameSpecImageProvider image_provider_by_graphic_id;
-	openage::gui::GuiGameSpecImageProvider image_provider_by_terrain_id;
 	qtsdl::GuiEngine engine;
 	qtsdl::GuiSubtree subtree;
 	qtsdl::GuiInput input;
