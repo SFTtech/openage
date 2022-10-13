@@ -8,10 +8,10 @@
 #include "gui/guisys/public/gui_engine.h"
 #include "gui/guisys/public/gui_event_queue.h"
 #include "gui/guisys/public/gui_input.h"
-#include "gui/guisys/public/gui_renderer.h"
 #include "gui/guisys/public/gui_subtree.h"
 #include "gui/integration/public/gui_application_with_logger.h"
 #include "gui/integration/public/gui_game_spec_image_provider.h"
+#include "renderer/gui/guisys/public/gui_renderer.h"
 #include "renderer/shader_program.h"
 
 namespace openage {
@@ -55,12 +55,12 @@ private:
 
 	std::shared_ptr<qtsdl::GuiApplication> application;
 	qtsdl::GuiEventQueue render_updater;
-	qtsdl::GuiRenderer gui_renderer;
-	qtsdl::GuiEventQueue game_logic_updater;
-	openage::gui::GuiGameSpecImageProvider image_provider_by_filename;
-	qtsdl::GuiEngine engine;
-	qtsdl::GuiSubtree subtree;
-	qtsdl::GuiInput input;
+	qtgui::GuiRenderer gui_renderer;
+	// qtsdl::GuiEventQueue game_logic_updater;
+	// openage::gui::GuiGameSpecImageProvider image_provider_by_filename;
+	// qtsdl::GuiEngine engine;
+	// qtsdl::GuiSubtree subtree;
+	// qtsdl::GuiInput input;
 
 	std::shared_ptr<renderer::RenderPass> render_pass;
 

@@ -57,16 +57,26 @@ GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 	this->qwindow = std::make_shared<QQuickWindow>();
 	this->qwindow->setTitle(QString::fromStdString(title));
 	this->qwindow->resize(width, height);
-	this->qwindow->show();
 
-	this->qcontext = std::make_shared<QOpenGLContext>(this->qwindow.get());
+	this->qwindow->setSurfaceType(QSurface::OpenGLSurface);
+
+	QSurfaceFormat format;
+	format.setDepthBufferSize(16);
+	format.setStencilBufferSize(8);
+	this->qwindow->setFormat(format);
+
+	this->qcontext = std::make_shared<QOpenGLContext>();
+	this->qcontext->setFormat(format);
+	this->qcontext->create();
+
 	// TODO: Setup context format, screen, share context
-	if (!this->qcontext->create()) {
+	if (!this->qcontext->isValid()) {
 		throw Error{MSG(err) << "Failed to create Qt OpenGL context."};
 	}
 	// this->context = std::make_shared<opengl::GlContext>(this->qwindow);
 	// this->add_resize_callback([](size_t w, size_t h) { glViewport(0, 0, w, h); });
 
+	this->qwindow->show();
 	log::log(MSG(info) << "Created Qt window with OpenGL context.");
 }
 
@@ -81,6 +91,10 @@ std::shared_ptr<QWindow> GlWindow::get_qt_window() {
 void GlWindow::set_size(size_t width, size_t height) {
 	if (this->size[0] != width || this->size[1] != height) {
 		SDL_SetWindowSize(this->window.get(), width, height);
+		this->size = {width, height};
+
+		// ASDF: Qt port
+		this->qwindow->resize(width, height);
 		this->size = {width, height};
 	}
 

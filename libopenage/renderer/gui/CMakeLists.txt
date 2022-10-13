@@ -4,3 +4,9 @@ add_sources(libopenage
 	gui.cpp
 	qml_info.cpp
 )
+
+add_subdirectory("guisys")
+
+add_sources(libopenage
+	${QTGUI_SOURCES}
+)

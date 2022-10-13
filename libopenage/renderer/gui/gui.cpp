@@ -13,6 +13,63 @@ namespace openage {
 namespace renderer {
 namespace gui {
 
+GUI::GUI(std::shared_ptr<qtsdl::GuiApplication> app,
+         std::shared_ptr<Window> window,
+         const util::Path &source,
+         const util::Path &rootdir,
+         const util::Path &assetdir,
+         std::shared_ptr<Renderer> renderer,
+         QMLInfo *info) :
+	application{app},
+	render_updater{},
+	gui_renderer{window}
+//game_logic_updater{},
+//image_provider_by_filename{
+//	&render_updater,
+//	openage::gui::GuiGameSpecImageProvider::Type::ByFilename},
+//engine{
+//	&gui_renderer,
+//	{&image_provider_by_filename},
+//	info},
+//subtree{
+//	&gui_renderer,
+//	&game_logic_updater,
+//	&engine,
+//	source.resolve_native_path(),
+//	rootdir.resolve_native_path()},
+//input{&gui_renderer, &game_logic_updater}
+{
+	util::Path shaderdir = assetdir["shaders"];
+
+	auto size = window->get_size();
+	initialize_render_pass(size[0], size[1], renderer, shaderdir);
+
+	window->add_key_callback([&](SDL_KeyboardEvent const &event) {
+		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
+		// this->input.process(&ev);
+	});
+	window->add_mouse_button_callback([&](SDL_MouseButtonEvent const &event) {
+		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
+		// this->input.process(&ev);
+	});
+	window->add_mouse_wheel_callback([&](SDL_MouseWheelEvent const &event) {
+		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
+		// this->input.process(&ev);
+	});
+	window->add_resize_callback([&](size_t width, size_t height) {
+		this->gui_renderer.resize(width, height);
+	});
+}
+
+std::shared_ptr<renderer::RenderPass> GUI::get_render_pass() {
+	return this->render_pass;
+}
+
+void GUI::process_events() {
+	// this->game_logic_updater.process_callbacks();
+	this->application->processEvents();
+}
+
 void GUI::initialize_render_pass(size_t width,
                                  size_t height,
                                  std::shared_ptr<Renderer> renderer,
@@ -52,63 +109,6 @@ void GUI::initialize_render_pass(size_t width,
 	this->render_pass = renderer->add_render_pass({/* display_obj */}, renderer->get_display_target());
 }
 
-
-GUI::GUI(std::shared_ptr<qtsdl::GuiApplication> app,
-         std::shared_ptr<Window> window,
-         const util::Path &source,
-         const util::Path &rootdir,
-         const util::Path &assetdir,
-         std::shared_ptr<Renderer> renderer,
-         QMLInfo *info) :
-	application{app},
-	render_updater{},
-	gui_renderer{window->get_sdl_window().get()},
-	game_logic_updater{},
-	image_provider_by_filename{
-		&render_updater,
-		openage::gui::GuiGameSpecImageProvider::Type::ByFilename},
-	engine{
-		&gui_renderer,
-		{&image_provider_by_filename},
-		info},
-	subtree{
-		&gui_renderer,
-		&game_logic_updater,
-		&engine,
-		source.resolve_native_path(),
-		rootdir.resolve_native_path()},
-	input{&gui_renderer, &game_logic_updater} {
-	util::Path shaderdir = assetdir["shaders"];
-
-	auto size = window->get_size();
-	initialize_render_pass(size[0], size[1], renderer, shaderdir);
-
-	window->add_key_callback([&](SDL_KeyboardEvent const &event) {
-		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
-		this->input.process(&ev);
-	});
-	window->add_mouse_button_callback([&](SDL_MouseButtonEvent const &event) {
-		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
-		this->input.process(&ev);
-	});
-	window->add_mouse_wheel_callback([&](SDL_MouseWheelEvent const &event) {
-		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
-		this->input.process(&ev);
-	});
-	window->add_resize_callback([&](size_t width, size_t height) {
-		this->gui_renderer.resize(width, height);
-	});
-}
-
-std::shared_ptr<renderer::RenderPass> GUI::get_render_pass() {
-	return this->render_pass;
-}
-
-void GUI::process_events() {
-	this->game_logic_updater.process_callbacks();
-	this->application->processEvents();
-}
-
 bool GUI::drawhud() {
 	this->render_updater.process_callbacks();
 
@@ -142,7 +142,7 @@ bool GUI::drawhud() {
 
 	// this->textured_screen_quad_shader->stopusing();
 
-	// return true;
+	return true;
 }
 
 } // namespace gui
