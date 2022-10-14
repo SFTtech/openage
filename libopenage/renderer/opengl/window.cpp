@@ -8,6 +8,7 @@
 
 #include "gui/guisys/public/gui_application.h"
 #include "renderer.h"
+#include "renderer/event_handling_window.h"
 
 #include <QGuiApplication>
 #include <QOpenGLContext>
@@ -54,7 +55,7 @@ GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 	}
 
 	QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGL);
-	this->qwindow = std::make_shared<QQuickWindow>();
+	this->qwindow = std::make_shared<renderer::EventHandlingQuickWindow>();
 	this->qwindow->setTitle(QString::fromStdString(title));
 	this->qwindow->resize(width, height);
 
@@ -141,6 +142,46 @@ void GlWindow::update() {
 
 	SDL_GL_SwapWindow(this->window.get());
 }
+
+void GlWindow::qupdate() {
+	// ASDF: Qt port
+	auto events = this->qwindow->poll_events();
+
+	for (auto event : events) {
+		if (event->type() == QEvent::Resize) {
+			auto ev = reinterpret_cast<QResizeEvent const *>(event);
+			size_t width = ev->size().width();
+			size_t height = ev->size().height();
+			log::log(MSG(dbg) << "Window resized to: " << width << "x" << height);
+
+			this->size = {width, height};
+			for (auto &cb : this->on_resize) {
+				cb(width, height);
+			}
+		}
+		else if (event->type() == QEvent::Quit) {
+			this->should_be_closed = true;
+			// TODO call on_destroy
+		}
+		else if (event->type() == QEvent::KeyRelease) {
+			auto const ev = reinterpret_cast<QKeyEvent const *>(&event);
+			for (auto &cb : this->on_key) {
+				// cb(ev);
+			}
+			// TODO handle keydown
+		}
+		else if (event->type() == QEvent::MouseButtonRelease) {
+			auto const ev = reinterpret_cast<QMouseEvent const *>(&event);
+			for (auto &cb : this->on_mouse_button) {
+				// cb(ev);
+			}
+			// TODO handle mousedown
+		}
+	}
+
+	this->qcontext->swapBuffers(this->qwindow.get());
+}
+
 
 std::shared_ptr<Renderer> GlWindow::make_renderer() {
 	return std::make_shared<GlRenderer>(this->get_context());

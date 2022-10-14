@@ -17,6 +17,9 @@ class GuiApplication;
 
 namespace openage {
 namespace renderer {
+
+class EventHandlingQuickWindow;
+
 namespace opengl {
 
 class GlWindow final : public Window {
@@ -31,6 +34,7 @@ public:
 	void set_size(size_t width, size_t height) override;
 
 	void update() override;
+	void qupdate();
 
 	std::shared_ptr<Renderer> make_renderer() override;
 
@@ -52,7 +56,7 @@ private:
 	std::shared_ptr<opengl::GlContext> context;
 
 	/// The Qt window to which the OpenGL context is associated.
-	std::shared_ptr<QWindow> qwindow;
+	std::shared_ptr<EventHandlingQuickWindow> qwindow;
 
 	// OpenGL Context in Qt
 	std::shared_ptr<QOpenGLContext> qcontext;

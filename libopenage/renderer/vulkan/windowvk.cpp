@@ -6,11 +6,16 @@
 
 #include <SDL2/SDL_vulkan.h>
 
+#include <QGuiApplication>
+#include <QQuickWindow>
+#include <QVulkanInstance>
+
 #include "../../error/error.h"
 #include "../../log/log.h"
 #include "../sdl_global.h"
 
 #include "graphics_device.h"
+#include "renderer/event_handling_window.h"
 #include "util.h"
 
 
@@ -76,8 +81,8 @@ static vlk_capabilities find_capabilities() {
 	return caps;
 }
 
-VlkWindow::VlkWindow(const char *title) :
-	Window(800, 600), capabilities(find_capabilities()) {
+VlkWindow::VlkWindow(const char *title, size_t width, size_t height) :
+	Window(width, height), capabilities(find_capabilities()) {
 	make_sdl_available();
 
 	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
@@ -165,6 +170,33 @@ VlkWindow::VlkWindow(const char *title) :
 	if (succ != SDL_TRUE) {
 		throw Error(MSG(err) << "Failed to create Vulkan surface on SDL window.");
 	}
+
+	// ASDF: Qt Port
+	if (QGuiApplication::instance() == nullptr) {
+		// Qt windows need to attach to a QtGuiApplication
+		throw Error{MSG(err) << "Failed to create Qt window: QGuiApplication has not been created yet."};
+	}
+
+	QQuickWindow::setGraphicsApi(QSGRendererInterface::Vulkan);
+	this->qwindow = std::make_shared<renderer::EventHandlingQuickWindow>();
+	this->qwindow->setTitle(QString::fromStdString(title));
+	this->qwindow->resize(width, height);
+	this->qwindow->setSurfaceType(QSurface::VulkanSurface);
+
+	// Attach vulkan instance
+	QVulkanInstance qinstance;
+	qinstance.setVkInstance(this->instance);
+	qinstance.create();
+	QVulkanInstance::surfaceForWindow(this->qwindow.get());
+	this->qwindow->setVulkanInstance(&qinstance);
+
+	QSurfaceFormat format;
+	format.setDepthBufferSize(16);
+	format.setStencilBufferSize(8);
+	this->qwindow->setFormat(format);
+
+	this->qwindow->show();
+	log::log(MSG(info) << "Created Qt window with Vulkan instance.");
 }
 
 VlkWindow::~VlkWindow() {
