@@ -6,7 +6,6 @@
 
 #include <optional>
 
-#include "context.h"
 
 QT_FORWARD_DECLARE_CLASS(QWindow)
 QT_FORWARD_DECLARE_CLASS(QOpenGLContext)
@@ -21,6 +20,9 @@ namespace renderer {
 class EventHandlingQuickWindow;
 
 namespace opengl {
+
+class GlContext;
+class QGlContext;
 
 class GlWindow final : public Window {
 public:
@@ -59,7 +61,7 @@ private:
 	std::shared_ptr<EventHandlingQuickWindow> qwindow;
 
 	// OpenGL Context in Qt
-	std::shared_ptr<QOpenGLContext> qcontext;
+	std::shared_ptr<opengl::QGlContext> qcontext;
 };
 
 } // namespace opengl

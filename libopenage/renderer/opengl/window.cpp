@@ -9,6 +9,8 @@
 #include "gui/guisys/public/gui_application.h"
 #include "renderer.h"
 #include "renderer/event_handling_window.h"
+#include "renderer/opengl/context.h"
+#include "renderer/opengl/context_qt.h"
 
 #include <QGuiApplication>
 #include <QOpenGLContext>
@@ -61,21 +63,16 @@ GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 
 	this->qwindow->setSurfaceType(QSurface::OpenGLSurface);
 
-	QSurfaceFormat format;
-	format.setDepthBufferSize(16);
-	format.setStencilBufferSize(8);
-	this->qwindow->setFormat(format);
+	// QSurfaceFormat format;
+	// format.setDepthBufferSize(16);
+	// format.setStencilBufferSize(8);
+	// this->qwindow->setFormat(format);
 
-	this->qcontext = std::make_shared<QOpenGLContext>();
-	this->qcontext->setFormat(format);
-	this->qcontext->create();
-
-	// TODO: Setup context format, screen, share context
-	if (!this->qcontext->isValid()) {
+	this->qcontext = std::make_shared<QGlContext>(this->qwindow);
+	if (!this->qcontext->get_raw_context()->isValid()) {
 		throw Error{MSG(err) << "Failed to create Qt OpenGL context."};
 	}
-	// this->context = std::make_shared<opengl::GlContext>(this->qwindow);
-	// this->add_resize_callback([](size_t w, size_t h) { glViewport(0, 0, w, h); });
+	this->add_resize_callback([](size_t w, size_t h) { glViewport(0, 0, w, h); });
 
 	this->qwindow->show();
 	log::log(MSG(info) << "Created Qt window with OpenGL context.");
@@ -179,7 +176,7 @@ void GlWindow::qupdate() {
 		}
 	}
 
-	this->qcontext->swapBuffers(this->qwindow.get());
+	this->qcontext->get_raw_context()->swapBuffers(this->qwindow.get());
 }
 
 
