@@ -126,23 +126,36 @@ cdef class SLD:
         self.dmg_mask_frames = list()
         self.playercolor_mask_frames = list()
 
+        # File bytes
         self.data = data
 
+        # Reference to previous layer
+        # SLD reuses their pixel data on some occasions
         cdef (unsigned short, unsigned short) previous_size = (0, 0)
         cdef (unsigned short, unsigned short) previous_offset = (0, 0)
         cdef vector[vector[pixel]] *previous_layer = NULL
+        cdef SLDLayer previous_main
+        cdef SLDLayer previous_shadow
+        cdef SLDLayer previous_outline
+        cdef SLDLayer previous_dmg_mask
+        cdef SLDLayer previous_playercolor
+
+        # Header info
         cdef SLDLayerHeader layer_header
 
+        # Dimensions of main layer (reused for dmg mask and playercolor)
         cdef unsigned short main_width
         cdef unsigned short main_height
         cdef unsigned short main_hotspot_x
         cdef unsigned short main_hotspot_y
 
+        # Our position in the file bytes
         cdef unsigned int current_offset
 
         spam(SLDLayerHeader.repr_header())
 
         # SLD files have no offsets, we have to calculate them
+        # from length fields
         current_offset = SLD.sld_header.size
         for _ in range(frame_count):
 
@@ -240,7 +253,14 @@ cdef class SLD:
 
                 if layer_type is SLDLayerType.MAIN:
                     layer_def = SLDLayerBC1(frame_header, layer_header)
-                    if previous_layer != NULL and flag0 & 0x80:
+                    self.main_frames.append(layer_def)
+
+                    if flag0 & 0x80 and frame_index > 0:
+                        previous = previous_main
+                        previous_layer = previous.get_pcolor()
+                        previous_size = previous.layer_info.size
+                        previous_offset = previous.layer_info.offset
+
                         layer_def.set_previous_layer(
                             previous_size[0],
                             previous_size[1],
@@ -249,30 +269,71 @@ cdef class SLD:
                             previous_layer
                         )
 
-                    self.main_frames.append(layer_def)
-
-                    previous_size = layer_header.size
-                    previous_offset = layer_header.offset
-                    previous_layer = layer_def.get_pcolor()
+                    previous_main = layer_def
 
                 elif layer_type is SLDLayerType.SHADOW:
-                    self.shadow_frames.append(
-                        SLDLayerBC4(frame_header, layer_header)
-                    )
+                    layer_def = SLDLayerBC4(frame_header, layer_header)
+                    self.shadow_frames.append(layer_def)
+
+                    if flag0 & 0x80 and frame_index > 0:
+                        previous = previous_shadow
+                        previous_layer = previous.get_pcolor()
+                        previous_size = previous.layer_info.size
+                        previous_offset = previous.layer_info.offset
+
+                        layer_def.set_previous_layer(
+                            previous_size[0],
+                            previous_size[1],
+                            previous_offset[0],
+                            previous_offset[1],
+                            previous_layer
+                        )
+
+                    previous_shadow = layer_def
 
                 elif layer_type is SLDLayerType.OUTLINE:
                     # TODO
                     pass
 
                 elif layer_type is SLDLayerType.DAMAGE:
-                    self.dmg_mask_frames.append(
-                        SLDLayerBC1(frame_header, layer_header)
-                    )
+                    layer_def = SLDLayerBC1(frame_header, layer_header)
+                    self.dmg_mask_frames.append(layer_def)
+
+                    if flag0 & 0x80 and frame_index > 0:
+                        previous = previous_dmg_mask
+                        previous_layer = previous.get_pcolor()
+                        previous_size = previous.layer_info.size
+                        previous_offset = previous.layer_info.offset
+
+                        layer_def.set_previous_layer(
+                            previous_size[0],
+                            previous_size[1],
+                            previous_offset[0],
+                            previous_offset[1],
+                            previous_layer
+                        )
+
+                    previous_dmg_mask = layer_def
 
                 elif layer_type is SLDLayerType.PLAYERCOLOR:
-                    self.playercolor_mask_frames.append(
-                        SLDLayerBC4(frame_header, layer_header)
-                    )
+                    layer_def = SLDLayerBC4(frame_header, layer_header)
+                    self.playercolor_mask_frames.append(layer_def)
+
+                    if flag0 & 0x80 and frame_index > 0:
+                        previous = previous_playercolor
+                        previous_layer = previous.get_pcolor()
+                        previous_size = previous.layer_info.size
+                        previous_offset = previous.layer_info.offset
+
+                        layer_def.set_previous_layer(
+                            previous_size[0],
+                            previous_size[1],
+                            previous_offset[0],
+                            previous_offset[1],
+                            previous_layer
+                        )
+
+                    previous_playercolor = layer_def
 
                 # Jump to next layer offset
                 current_offset = start_offset + layer_length
