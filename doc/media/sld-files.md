@@ -210,8 +210,9 @@ Indices are read from left to right:
 
 Bit index | Description
 ----------|------------
-7         | If set to `1`, the pixel data from previous frames is reused.
-0-6       | Unknown
+0         | If set to `1`, the pixel data from previous frames is reused.
+1-6       | Unknown
+7         | Set to `1` in playercolor layers.
 
 ##### Pixel Data
 
