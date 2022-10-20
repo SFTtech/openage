@@ -186,6 +186,7 @@ std::shared_ptr<Renderer> GlWindow::make_renderer() {
 
 void GlWindow::make_context_current() {
 	SDL_GL_MakeCurrent(this->window.get(), this->context->get_raw_context());
+	this->qcontext->get_raw_context()->makeCurrent(this->qwindow.get());
 }
 
 const std::shared_ptr<opengl::GlContext> &GlWindow::get_context() const {
