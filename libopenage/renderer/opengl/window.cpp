@@ -74,7 +74,7 @@ GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 	}
 	this->add_resize_callback([](size_t w, size_t h) { glViewport(0, 0, w, h); });
 
-	this->qwindow->show();
+	this->qwindow->setVisible(true);
 	log::log(MSG(info) << "Created Qt window with OpenGL context.");
 }
 

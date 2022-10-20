@@ -5,6 +5,7 @@
 
 #include "context_qt.h"
 
+#include <QOffscreenSurface>
 #include <QOpenGLContext>
 #include <QWindow>
 
@@ -48,17 +49,20 @@ static qgl_context_capabilities find_capabilities() {
 	}
 
 	QOpenGLContext test_context{};
-	test_context.setFormat(test_format);
 	test_context.create();
 	if (!test_context.isValid()) {
 		throw Error(MSG(err) << "Failed to create OpenGL context which previously succeeded. This should not happen!");
 	}
 
-	QWindow test_window{};
-	test_context.makeCurrent(&test_window);
+	QOffscreenSurface test_surface{};
+	test_surface.setFormat(test_format);
+	test_surface.create();
+
+	test_context.makeCurrent(&test_surface);
 
 	qgl_context_capabilities caps{};
 
+	// Texture parameters
 	GLint temp;
 	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &temp);
 	caps.max_texture_size = temp;
@@ -71,6 +75,7 @@ static qgl_context_capabilities find_capabilities() {
 	glGetIntegerv(GL_MAX_UNIFORM_BUFFER_BINDINGS, &temp);
 	caps.max_uniform_buffer_bindings = temp;
 
+	// OpenGL version
 	glGetIntegerv(GL_MAJOR_VERSION, &caps.major_version);
 	glGetIntegerv(GL_MINOR_VERSION, &caps.minor_version);
 
@@ -90,12 +95,14 @@ QGlContext::QGlContext(const std::shared_ptr<QWindow> &window) :
 	format.setMinorVersion(capabilities.minor_version);
 
 	this->gl_context = std::make_shared<QOpenGLContext>();
-	this->gl_context->setFormat(format);
 	this->gl_context->create();
-
 	if (!this->gl_context->isValid()) {
 		throw Error(MSG(err) << "OpenGL context creation failed.");
 	}
+
+	this->window->setFormat(format);
+	this->window->create();
+	this->gl_context->makeCurrent(window.get());
 
 	// We still have to verify that our version of libepoxy supports this version of OpenGL.
 	int epoxy_glv = capabilities.major_version * 10 + capabilities.minor_version;
