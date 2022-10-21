@@ -4,8 +4,8 @@
 
 #include <vector>
 
-#include "texture.h"
 #include "simple_object.h"
+#include "texture.h"
 
 
 namespace openage {
@@ -15,13 +15,13 @@ namespace opengl {
 /// Represents an OpenGL Framebuffer Object.
 /// It is a collection of bitmap targets that can be drawn into
 /// and read from.
-class GlFramebuffer final :  public GlSimpleObject {
+class GlFramebuffer final : public GlSimpleObject {
 public:
 	/// Construct a framebuffer pointing at the given textures.
 	/// Texture are attached to points specific to their pixel format,
 	/// e.g. a depth texture will be set as the depth target.
-	GlFramebuffer(const std::shared_ptr<GlContext> &context,
-	              std::vector<std::shared_ptr<GlTexture2d>> const& textures);
+	GlFramebuffer(const std::shared_ptr<QGlContext> &context,
+	              std::vector<std::shared_ptr<GlTexture2d>> const &textures);
 
 	/// Bind this framebuffer to GL_READ_FRAMEBUFFER.
 	void bind_read() const;
@@ -30,4 +30,6 @@ public:
 	void bind_write() const;
 };
 
-}}} // openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage

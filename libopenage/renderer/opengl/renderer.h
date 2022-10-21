@@ -5,7 +5,6 @@
 #include <memory>
 
 #include "../renderer.h"
-#include "context.h"
 #include "render_pass.h"
 #include "render_target.h"
 #include "shader_program.h"
@@ -18,7 +17,7 @@ namespace opengl {
 /// The OpenGL specialization of the rendering interface.
 class GlRenderer final : public Renderer {
 public:
-	GlRenderer(const std::shared_ptr<GlContext> &);
+	GlRenderer(const std::shared_ptr<QGlContext> &);
 
 	std::shared_ptr<Texture2d> add_texture(resources::Texture2dData const &) override;
 	std::shared_ptr<Texture2d> add_texture(resources::Texture2dInfo const &) override;
@@ -45,7 +44,7 @@ private:
 	static void optimise(const std::shared_ptr<GlRenderPass> &);
 
 	/// The GL context.
-	std::shared_ptr<GlContext> gl_context;
+	std::shared_ptr<QGlContext> gl_context;
 
 	std::shared_ptr<GlRenderTarget> display;
 };

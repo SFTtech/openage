@@ -6,15 +6,16 @@
 #include <cstdio>
 #include <unordered_set>
 
+#include "../../datastructure/constexpr_map.h"
 #include "../../error/error.h"
 #include "../../log/log.h"
-#include "../../datastructure/constexpr_map.h"
 #include "../../util/opengl.h"
 
-#include "texture.h"
-#include "shader.h"
-#include "geometry.h"
-#include "lookup.h"
+#include "renderer/opengl/context_qt.h"
+#include "renderer/opengl/geometry.h"
+#include "renderer/opengl/lookup.h"
+#include "renderer/opengl/shader.h"
+#include "renderer/opengl/texture.h"
 
 
 namespace openage::renderer::opengl {
@@ -23,7 +24,7 @@ static void check_program_status(GLuint program, GLenum what_to_check) {
 	GLint status = GL_FALSE;
 	glGetProgramiv(program, what_to_check, &status);
 
-	GlContext::check_error();
+	QGlContext::check_error();
 
 	if (status != GL_TRUE) {
 		const char *what_str = [=] {
@@ -51,23 +52,24 @@ static void check_program_status(GLuint program, GLenum what_to_check) {
 			gl_message = infolog.data();
 		}
 
-		throw Error(ERR << "OpenGL shader program " << what_str << " failed (len " << loglen << ", real: " << real_loglen << "):\n" << gl_message, true);
+		throw Error(ERR << "OpenGL shader program " << what_str << " failed (len " << loglen << ", real: " << real_loglen << "):\n"
+		                << gl_message,
+		            true);
 	}
 }
 
-GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
-                                 const std::vector<resources::ShaderSource> &srcs)
-	: GlSimpleObject(context,
-	                 [] (GLuint handle) { glDeleteProgram(handle); } )
-	, validated(false) {
-
-	const gl_context_capabilities& caps = context->get_capabilities();
+GlShaderProgram::GlShaderProgram(const std::shared_ptr<QGlContext> &context,
+                                 const std::vector<resources::ShaderSource> &srcs) :
+	GlSimpleObject(context,
+                   [](GLuint handle) { glDeleteProgram(handle); }),
+	validated(false) {
+	const qgl_context_capabilities &caps = context->get_capabilities();
 
 	GLuint handle = glCreateProgram();
 	this->handle = handle;
 
 	std::vector<GlShader> shaders;
-	for (auto const& src : srcs) {
+	for (auto const &src : srcs) {
 		GlShader shader{context, src};
 		glAttachShader(handle, shader.get_handle());
 		shaders.push_back(std::move(shader));
@@ -77,7 +79,7 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 	check_program_status(handle, GL_LINK_STATUS);
 
 	// after linking we can delete the shaders
-	for (auto const& shdr : shaders) {
+	for (auto const &shdr : shaders) {
 		glDetachShader(handle, shdr.get_handle());
 	}
 
@@ -109,8 +111,7 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 			i_unif_block,
 			name.size(),
 			nullptr,
-			name.data()
-		);
+			name.data());
 
 		std::string block_name(name.data());
 
@@ -135,8 +136,7 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 				nullptr,
 				&count,
 				&type,
-				name.data()
-			);
+				name.data());
 
 			glGetActiveUniformsiv(handle, 1, &i_unif, GL_UNIFORM_OFFSET, &offset);
 			glGetActiveUniformsiv(handle, 1, &i_unif, GL_UNIFORM_ARRAY_STRIDE, &stride);
@@ -151,33 +151,28 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 
 			uniforms.insert(std::make_pair(
 				name.data(),
-				GlInBlockUniform {
+				GlInBlockUniform{
 					type,
 					size_t(offset),
 					size_t(count) * GL_SHADER_TYPE_SIZE.get(type),
 					size_t(stride),
-					size_t(count)
-				}
-			));
+					size_t(count)}));
 		}
 
 		ENSURE(block_binding < caps.max_uniform_buffer_bindings,
-			"Tried to create an OpenGL shader that uses more uniform blocks "
-			<< "than there are binding points (" << caps.max_uniform_buffer_bindings
-			<< " available)."
-		);
+		       "Tried to create an OpenGL shader that uses more uniform blocks "
+		           << "than there are binding points (" << caps.max_uniform_buffer_bindings
+		           << " available).");
 
 		glUniformBlockBinding(handle, i_unif_block, block_binding);
 
 		this->uniform_blocks.insert(std::make_pair(
 			block_name,
-			GlUniformBlock {
+			GlUniformBlock{
 				i_unif_block,
 				size_t(data_size),
 				std::move(uniforms),
-				block_binding
-			}
-		));
+				block_binding}));
 
 		block_binding += 1;
 	}
@@ -200,24 +195,20 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 			nullptr,
 			&count,
 			&type,
-			name.data()
-		);
+			name.data());
 
 		GLuint loc = glGetUniformLocation(handle, name.data());
 
 		this->uniforms.insert(std::make_pair(
 			name.data(),
-			GlUniform {
+			GlUniform{
 				type,
-				loc
-			}
-		));
+				loc}));
 
 		if (type == GL_SAMPLER_2D) {
 			ENSURE(tex_unit < caps.max_texture_slots,
-				"Tried to create an OpenGL shader that uses more texture sampler uniforms "
-				<< "than there are texture unit slots (" << caps.max_texture_slots << " available)."
-			);
+			       "Tried to create an OpenGL shader that uses more texture sampler uniforms "
+			           << "than there are texture unit slots (" << caps.max_texture_slots << " available).");
 
 			this->texunits_per_unifs.insert(std::make_pair(name.data(), tex_unit));
 
@@ -236,27 +227,25 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 			nullptr,
 			&size,
 			&type,
-			name.data()
-		);
+			name.data());
 
 		this->attribs.insert(std::make_pair(
 			name.data(),
-			GlVertexAttrib {
+			GlVertexAttrib{
 				type,
 				GLint(i_attrib),
 				size,
-			}
-		));
+			}));
 	}
 
 	log::log(MSG(info) << "Created OpenGL shader program");
 
 	if (!this->uniform_blocks.empty()) {
 		log::log(MSG(dbg) << "Uniform blocks: ");
-		for (auto const& pair : this->uniform_blocks) {
+		for (auto const &pair : this->uniform_blocks) {
 			log::log(MSG(dbg) << "(" << pair.second.index << ") " << pair.first
 			                  << " (size: " << pair.second.data_size << ") {");
-			for (auto const& unif_pair : pair.second.uniforms) {
+			for (auto const &unif_pair : pair.second.uniforms) {
 				log::log(MSG(dbg) << "\t+" << unif_pair.second.offset
 				                  << " " << unif_pair.first << ": "
 				                  << GLSL_TYPE_NAME.get(unif_pair.second.type));
@@ -267,7 +256,7 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 
 	if (!this->uniforms.empty()) {
 		log::log(MSG(dbg) << "Uniforms: ");
-		for (auto const& pair : this->uniforms) {
+		for (auto const &pair : this->uniforms) {
 			log::log(MSG(dbg) << "(" << pair.second.location << ") " << pair.first << ": "
 			                  << GLSL_TYPE_NAME.get(pair.second.type));
 		}
@@ -275,7 +264,7 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 
 	if (!this->attribs.empty()) {
 		log::log(MSG(dbg) << "Vertex attributes: ");
-		for (auto const& pair : this->attribs) {
+		for (auto const &pair : this->attribs) {
 			log::log(MSG(dbg) << "(" << pair.second.location << ") " << pair.first << ": "
 			                  << GLSL_TYPE_NAME.get(pair.second.type));
 		}
@@ -303,9 +292,7 @@ void GlShaderProgram::use() {
 	// store this program as the active one
 	this->context->set_current_program(
 		std::static_pointer_cast<GlShaderProgram>(
-			this->shared_from_this()
-		)
-	);
+			this->shared_from_this()));
 
 	for (auto const &pair : this->textures_per_texunits) {
 		// We have to bind the texture to their texture units here because
@@ -331,7 +318,7 @@ bool GlShaderProgram::in_use() const {
 }
 
 
-void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const& unif_in) {
+void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &unif_in) {
 	ENSURE(unif_in->get_program() == this->shared_from_this(), "Uniform input passed to different shader than it was created with.");
 
 	// TODO: use glProgramUniform when we're on OpenGL 4.1
@@ -341,49 +328,49 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const& uni
 		this->use();
 	}
 
-	uint8_t const* data = unif_in->update_data.data();
+	uint8_t const *data = unif_in->update_data.data();
 	for (auto const &pair : unif_in->update_offs) {
-		uint8_t const* ptr = data + pair.second;
+		uint8_t const *ptr = data + pair.second;
 		auto loc = this->uniforms[pair.first].location;
 
 		switch (this->uniforms[pair.first].type) {
 		case GL_INT:
-			glUniform1i(loc, *reinterpret_cast<const GLint*>(ptr));
+			glUniform1i(loc, *reinterpret_cast<const GLint *>(ptr));
 			break;
 		case GL_UNSIGNED_INT:
-			glUniform1ui(loc, *reinterpret_cast<const GLuint*>(ptr));
+			glUniform1ui(loc, *reinterpret_cast<const GLuint *>(ptr));
 			break;
 		case GL_FLOAT:
-			glUniform1f(loc, *reinterpret_cast<const float*>(ptr));
+			glUniform1f(loc, *reinterpret_cast<const float *>(ptr));
 			break;
 		case GL_DOUBLE:
 			// TODO requires an extension
-			glUniform1d(loc, *reinterpret_cast<const double*>(ptr));
+			glUniform1d(loc, *reinterpret_cast<const double *>(ptr));
 			break;
 		case GL_FLOAT_VEC2:
-			glUniform2fv(loc, 1, reinterpret_cast<const float*>(ptr));
+			glUniform2fv(loc, 1, reinterpret_cast<const float *>(ptr));
 			break;
 		case GL_FLOAT_VEC3:
-			glUniform3fv(loc, 1, reinterpret_cast<const float*>(ptr));
+			glUniform3fv(loc, 1, reinterpret_cast<const float *>(ptr));
 			break;
 		case GL_FLOAT_VEC4:
-			glUniform4fv(loc, 1, reinterpret_cast<const float*>(ptr));
+			glUniform4fv(loc, 1, reinterpret_cast<const float *>(ptr));
 			break;
 		case GL_FLOAT_MAT3:
-			glUniformMatrix3fv(loc, 1, GLboolean(false), reinterpret_cast<const float*>(ptr));
+			glUniformMatrix3fv(loc, 1, GLboolean(false), reinterpret_cast<const float *>(ptr));
 			break;
 		case GL_FLOAT_MAT4:
-			glUniformMatrix4fv(loc, 1, GLboolean(false), reinterpret_cast<const float*>(ptr));
+			glUniformMatrix4fv(loc, 1, GLboolean(false), reinterpret_cast<const float *>(ptr));
 			break;
 		case GL_INT_VEC2:
-			glUniform2iv(loc, 1, reinterpret_cast<const GLint*>(ptr));
+			glUniform2iv(loc, 1, reinterpret_cast<const GLint *>(ptr));
 			break;
 		case GL_INT_VEC3:
-			glUniform3iv(loc, 1, reinterpret_cast<const GLint*>(ptr));
+			glUniform3iv(loc, 1, reinterpret_cast<const GLint *>(ptr));
 			break;
 		case GL_SAMPLER_2D: {
 			GLuint tex_unit = this->texunits_per_unifs[pair.first];
-			GLuint tex = *reinterpret_cast<const GLuint*>(ptr);
+			GLuint tex = *reinterpret_cast<const GLuint *>(ptr);
 			glActiveTexture(GL_TEXTURE0 + tex_unit);
 			glBindTexture(GL_TEXTURE_2D, tex);
 			// TODO: maybe call this at a more appropriate position
@@ -400,7 +387,7 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const& uni
 std::map<size_t, resources::vertex_input_t> GlShaderProgram::vertex_attributes() const {
 	std::map<size_t, resources::vertex_input_t> attrib_map;
 
-	for (auto const& attr : this->attribs) {
+	for (auto const &attr : this->attribs) {
 		attrib_map[attr.second.location] = GL_VERT_IN_TYPE.get(attr.second.type);
 	}
 
@@ -409,28 +396,25 @@ std::map<size_t, resources::vertex_input_t> GlShaderProgram::vertex_attributes()
 
 std::shared_ptr<UniformInput> GlShaderProgram::new_unif_in() {
 	auto in = std::make_shared<GlUniformInput>(
-		this->shared_from_this()
-	);
+		this->shared_from_this());
 
 	return in;
 }
 
-bool GlShaderProgram::has_uniform(const char* name) {
+bool GlShaderProgram::has_uniform(const char *name) {
 	return this->uniforms.count(name) == 1;
 }
 
-void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const& in, const char *unif, void const* val, GLenum type) {
+void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const &in, const char *unif, void const *val, GLenum type) {
 	auto unif_in = std::dynamic_pointer_cast<GlUniformInput>(in);
 
 	ENSURE(this->uniforms.count(unif) != 0,
-		"Tried to set uniform " << unif << " that does not exist in the shader program."
-	);
+	       "Tried to set uniform " << unif << " that does not exist in the shader program.");
 
-	auto const& unif_data = this->uniforms.at(unif);
+	auto const &unif_data = this->uniforms.at(unif);
 
 	ENSURE(type == unif_data.type,
-		"Tried to set uniform " << unif << " to a value of the wrong type."
-	);
+	       "Tried to set uniform " << unif << " to a value of the wrong type.");
 
 	size_t size = GL_SHADER_TYPE_SIZE.get(unif_data.type);
 
@@ -438,7 +422,8 @@ void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const& in, const ch
 		// already wrote to this uniform since last upload
 		size_t off = unif_in->update_offs[unif];
 		memcpy(unif_in->update_data.data() + off, val, size);
-	} else {
+	}
+	else {
 		// first time writing to this uniform since last upload, so
 		// extend the buffer before storing the uniform value
 		size_t prev_size = unif_in->update_data.size();
@@ -448,43 +433,43 @@ void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const& in, const ch
 	}
 }
 
-void GlShaderProgram::set_i32(std::shared_ptr<UniformInput> const& in, const char *unif, int32_t val) {
+void GlShaderProgram::set_i32(std::shared_ptr<UniformInput> const &in, const char *unif, int32_t val) {
 	this->set_unif(in, unif, &val, GL_INT);
 }
 
-void GlShaderProgram::set_u32(std::shared_ptr<UniformInput> const& in, const char *unif, uint32_t val) {
+void GlShaderProgram::set_u32(std::shared_ptr<UniformInput> const &in, const char *unif, uint32_t val) {
 	this->set_unif(in, unif, &val, GL_UNSIGNED_INT);
 }
 
-void GlShaderProgram::set_f32(std::shared_ptr<UniformInput> const& in, const char *unif, float val) {
+void GlShaderProgram::set_f32(std::shared_ptr<UniformInput> const &in, const char *unif, float val) {
 	this->set_unif(in, unif, &val, GL_FLOAT);
 }
 
-void GlShaderProgram::set_f64(std::shared_ptr<UniformInput> const& in, const char *unif, double val) {
+void GlShaderProgram::set_f64(std::shared_ptr<UniformInput> const &in, const char *unif, double val) {
 	// TODO requires extension
 	this->set_unif(in, unif, &val, GL_DOUBLE);
 }
 
-void GlShaderProgram::set_v2f32(std::shared_ptr<UniformInput> const& in, const char *unif, Eigen::Vector2f const& val) {
+void GlShaderProgram::set_v2f32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Vector2f const &val) {
 	this->set_unif(in, unif, &val, GL_FLOAT_VEC2);
 }
 
-void GlShaderProgram::set_v3f32(std::shared_ptr<UniformInput> const& in, const char *unif, Eigen::Vector3f const& val) {
+void GlShaderProgram::set_v3f32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Vector3f const &val) {
 	this->set_unif(in, unif, &val, GL_FLOAT_VEC3);
 }
 
-void GlShaderProgram::set_v4f32(std::shared_ptr<UniformInput> const& in, const char *unif, Eigen::Vector4f const& val) {
+void GlShaderProgram::set_v4f32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Vector4f const &val) {
 	this->set_unif(in, unif, &val, GL_FLOAT_VEC4);
 }
 
-void GlShaderProgram::set_m4f32(std::shared_ptr<UniformInput> const& in, const char *unif, Eigen::Matrix4f const& val) {
+void GlShaderProgram::set_m4f32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Matrix4f const &val) {
 	this->set_unif(in, unif, val.data(), GL_FLOAT_MAT4);
 }
 
-void GlShaderProgram::set_tex(std::shared_ptr<UniformInput> const& in, const char *unif, std::shared_ptr<Texture2d> const& val) {
+void GlShaderProgram::set_tex(std::shared_ptr<UniformInput> const &in, const char *unif, std::shared_ptr<Texture2d> const &val) {
 	auto tex = std::dynamic_pointer_cast<GlTexture2d>(val);
 	GLuint handle = tex->get_handle();
 	this->set_unif(in, unif, &handle, GL_SAMPLER_2D);
 }
 
-} // openage::renderer::opengl
+} // namespace openage::renderer::opengl

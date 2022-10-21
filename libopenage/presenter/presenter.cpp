@@ -12,6 +12,8 @@
 #include "renderer/window.h"
 #include "util/path.h"
 
+#include "renderer/opengl/context_qt.h"
+
 namespace openage::presenter {
 
 Presenter::Presenter(const util::Path &root_dir) :
@@ -77,6 +79,8 @@ void Presenter::run() {
 	//       figure out the absolute paths here and pass them in.
 
 	renderer::gui::QMLInfo qml_info{this->engine.get(), qml_root};
+
+	renderer::opengl::QGlContext::check_error(); // success
 
 	this->gui = std::make_shared<renderer::gui::GUI>(
 		this->gui_app, // Qt application wrapper

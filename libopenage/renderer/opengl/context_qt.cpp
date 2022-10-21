@@ -91,6 +91,7 @@ QGlContext::QGlContext(const std::shared_ptr<QWindow> &window) :
 	format.setProfile(QSurfaceFormat::OpenGLContextProfile::CoreProfile);
 	format.setSwapBehavior(QSurfaceFormat::SwapBehavior::DoubleBuffer);
 	format.setDepthBufferSize(24);
+	format.setStencilBufferSize(8);
 	format.setMajorVersion(capabilities.major_version);
 	format.setMinorVersion(capabilities.minor_version);
 

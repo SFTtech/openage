@@ -8,7 +8,7 @@
 
 #include "../../log/log.h"
 #include "../../renderer/geometry.h"
-#include "../../renderer/opengl/context.h"
+#include "../../renderer/opengl/context_qt.h"
 #include "../../renderer/opengl/shader.h"
 #include "../../renderer/opengl/window.h"
 #include "../../renderer/resources/mesh_data.h"
@@ -232,7 +232,7 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 
 	this->renderer->render(this->render_pass);
 	this->window.update();
-	renderer::opengl::GlContext::check_error();
+	renderer::opengl::QGlContext::check_error();
 
 	this->exit_requested = window.should_close();
 	if (this->exit_requested) {

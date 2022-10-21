@@ -45,7 +45,7 @@ public:
 	void make_context_current();
 
 	/// Return a pointer to this window's GL context.
-	const std::shared_ptr<opengl::GlContext> &get_context() const;
+	const std::shared_ptr<opengl::QGlContext> &get_context() const;
 
 private:
 	/// The SDL window to which the OpenGL context is associated.

@@ -13,7 +13,7 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-class GlContext;
+class QGlContext;
 
 
 /// A base class for all classes representing OpenGL Objects to inherit from.
@@ -23,13 +23,13 @@ class GlContext;
 class GlSimpleObject {
 public:
 	// Moving the representation is okay.
-	GlSimpleObject(GlSimpleObject&&);
-	GlSimpleObject &operator =(GlSimpleObject&&);
+	GlSimpleObject(GlSimpleObject &&);
+	GlSimpleObject &operator=(GlSimpleObject &&);
 
 	// Generally, copying GL objects is costly and if we want to allow it,
 	// we do so through an explicit copy() function.
-	GlSimpleObject(GlSimpleObject const&) = delete;
-	GlSimpleObject &operator =(GlSimpleObject const&) = delete;
+	GlSimpleObject(GlSimpleObject const &) = delete;
+	GlSimpleObject &operator=(GlSimpleObject const &) = delete;
 
 	/// Uses delete_fun to destroy the underlying object,
 	/// but only if the handle is present (hasn't been moved out).
@@ -39,13 +39,13 @@ public:
 	GLuint get_handle() const;
 
 protected:
-	explicit GlSimpleObject(const std::shared_ptr<GlContext> &,
+	explicit GlSimpleObject(const std::shared_ptr<QGlContext> &,
 	                        std::function<void(GLuint)> &&delete_fun);
 
 	/// Context, in which this object is valid in.
 	/// We hold this reference to keep the context active as long as this object
 	/// is not deconstructed.
-	std::shared_ptr<GlContext> context;
+	std::shared_ptr<QGlContext> context;
 
 	/// The handle to the OpenGL Object that this class represents.
 	std::optional<GLuint> handle;
@@ -54,4 +54,6 @@ protected:
 	std::function<void(GLuint)> delete_fun;
 };
 
-}}} // openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage

@@ -9,6 +9,8 @@
 #include "renderer/window.h"
 #include "util/path.h"
 
+#include "renderer/opengl/context_qt.h"
+
 namespace openage {
 namespace renderer {
 namespace gui {
@@ -39,6 +41,8 @@ GUI::GUI(std::shared_ptr<qtsdl::GuiApplication> app,
 //	rootdir.resolve_native_path()},
 //input{&gui_renderer, &game_logic_updater}
 {
+	renderer::opengl::QGlContext::check_error(); // failure
+
 	util::Path shaderdir = assetdir["shaders"];
 
 	auto size = window->get_size();

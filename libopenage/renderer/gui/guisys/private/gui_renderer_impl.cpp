@@ -93,6 +93,16 @@ GuiRendererImpl::GuiRendererImpl(std::shared_ptr<openage::renderer::Window> wind
 	this->render_control.initialize();
 }
 
+GuiRendererImpl::~GuiRendererImpl() {
+	// Make sure the context is current while doing cleanup.
+	this->gui_context.pre_render();
+
+	if (this->target_texture_id) {
+		this->gui_context.get_ctx()->functions()->glDeleteTextures(1, &this->target_texture_id);
+	}
+	this->gui_context.get_ctx()->doneCurrent();
+}
+
 void GuiRendererImpl::create_texture() {
 	auto m_dpr = this->target_window->devicePixelRatio();
 	auto m_textureSize = this->target_window->size() * m_dpr;
@@ -122,16 +132,6 @@ GLuint GuiRendererImpl::render() {
 	this->gui_context.post_render();
 
 	return this->target_texture_id;
-}
-
-GuiRendererImpl::~GuiRendererImpl() {
-	// Make sure the context is current while doing cleanup.
-	this->gui_context.pre_render();
-
-	if (this->target_texture_id) {
-		this->gui_context.get_ctx()->functions()->glDeleteTextures(1, &this->target_texture_id);
-	}
-	this->gui_context.get_ctx()->doneCurrent();
 }
 
 GuiRendererImpl *GuiRendererImpl::impl(GuiRenderer *renderer) {

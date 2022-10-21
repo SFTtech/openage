@@ -12,19 +12,22 @@ namespace renderer {
 namespace opengl {
 
 /// A handle to an OpenGL texture.
-class GlTexture2d final : public Texture2d, public GlSimpleObject {
+class GlTexture2d final : public Texture2d
+	, public GlSimpleObject {
 public:
 	/// Constructs a texture and fills it with the given data.
-	explicit GlTexture2d(const std::shared_ptr<GlContext> &context,
-	                     const resources::Texture2dData&);
+	explicit GlTexture2d(const std::shared_ptr<QGlContext> &context,
+	                     const resources::Texture2dData &);
 
 	/// Constructs an empty texture with the given parameters.
-	GlTexture2d(const std::shared_ptr<GlContext> &context,
-	            resources::Texture2dInfo const&);
+	GlTexture2d(const std::shared_ptr<QGlContext> &context,
+	            resources::Texture2dInfo const &);
 
 	resources::Texture2dData into_data() override;
 
-	void upload(resources::Texture2dData const&) override;
+	void upload(resources::Texture2dData const &) override;
 };
 
-}}} // openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage

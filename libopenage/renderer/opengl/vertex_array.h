@@ -34,16 +34,16 @@ public:
 	///
 	/// A shader input mapping is only allowed when there is a single element in `buffers`. In such a case,
 	/// the vertex inputs are paired with VAO attributes according to the mapping instead of in ascending order.
-	GlVertexArray(const std::shared_ptr<GlContext> &context,
+	GlVertexArray(const std::shared_ptr<QGlContext> &context,
 	              std::vector<std::pair<GlBuffer const&, resources::VertexInputInfo const&>> buffers);
 
 	/// Executes the buffer list constructor with one element.
-	GlVertexArray(const std::shared_ptr<GlContext> &context,
+	GlVertexArray(const std::shared_ptr<QGlContext> &context,
 	              GlBuffer const&, resources::VertexInputInfo const&);
 
 	/// The default constructor initializes an empty VAO with no attributes.
 	/// This is useful for bufferless drawing.
-	GlVertexArray(const std::shared_ptr<GlContext> &context);
+	GlVertexArray(const std::shared_ptr<QGlContext> &context);
 
 	/// Make this vertex array object the current one.
 	void bind() const;

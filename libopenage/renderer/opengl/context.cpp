@@ -5,8 +5,8 @@
 #include <array>
 #include <epoxy/gl.h>
 
-#include "../../log/log.h"
 #include "../../error/error.h"
+#include "../../log/log.h"
 
 
 namespace openage {
@@ -14,7 +14,7 @@ namespace renderer {
 namespace opengl {
 
 /// The first element is the lowest version we need, last is highest version we support.
-static constexpr std::array<std::pair<int, int>, 1> gl_versions = {{ { 3, 3 } }}; // for now we don't need any higher versions
+static constexpr std::array<std::pair<int, int>, 1> gl_versions = {{{3, 3}}}; // for now we don't need any higher versions
 
 /// Finds out the supported graphics functions and OpenGL version of the device.
 static gl_context_capabilities find_capabilities() {
@@ -83,8 +83,7 @@ static gl_context_capabilities find_capabilities() {
 	return caps;
 }
 
-GlContext::GlContext(const std::shared_ptr<SDL_Window> &window)
-	:
+GlContext::GlContext(const std::shared_ptr<SDL_Window> &window) :
 	window{window} {
 	this->capabilities = find_capabilities();
 	auto const &capabilities = this->capabilities;
@@ -136,13 +135,12 @@ GlContext::~GlContext() {
 	}
 }
 
-GlContext::GlContext(GlContext &&other)
-	: gl_context(other.gl_context)
-	, capabilities(other.capabilities) {
+GlContext::GlContext(GlContext &&other) :
+	gl_context(other.gl_context), capabilities(other.capabilities) {
 	other.gl_context = nullptr;
 }
 
-GlContext& GlContext::operator=(GlContext &&other) {
+GlContext &GlContext::operator=(GlContext &&other) {
 	this->gl_context = other.gl_context;
 	this->capabilities = other.capabilities;
 	other.gl_context = nullptr;
@@ -205,8 +203,7 @@ void GlContext::check_error() {
 
 		throw Error(
 			MSG(err) << "An OpenGL error has occured.\n\t"
-			<< "(" << error_state << "): " << msg
-		);
+					 << "(" << error_state << "): " << msg);
 	}
 }
 
@@ -234,4 +231,6 @@ void GlContext::set_current_program(const std::shared_ptr<GlShaderProgram> &prog
 }
 
 
-}}} // openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage
