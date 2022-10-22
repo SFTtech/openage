@@ -4,7 +4,7 @@
 
 #include <eigen3/Eigen/Dense>
 
-#include "gui/integration/public/gui_application_with_logger.h"
+#include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "log/log.h"
 #include "renderer/gui/gui.h"
 #include "renderer/gui/qml_info.h"
@@ -109,8 +109,8 @@ void Presenter::run() {
 	this->window->close();
 }
 
-std::shared_ptr<qtsdl::GuiApplication> Presenter::init_window_system() {
-	return std::make_shared<gui::GuiApplicationWithLogger>();
+std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {
+	return std::make_shared<renderer::gui::GuiApplicationWithLogger>();
 }
 
 } // namespace openage::presenter

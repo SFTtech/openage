@@ -15,7 +15,7 @@ namespace openage {
 namespace renderer {
 namespace gui {
 
-GUI::GUI(std::shared_ptr<qtsdl::GuiApplication> app,
+GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
          std::shared_ptr<Window> window,
          const util::Path &source,
          const util::Path &rootdir,
@@ -48,6 +48,7 @@ GUI::GUI(std::shared_ptr<qtsdl::GuiApplication> app,
 	auto size = window->get_size();
 	initialize_render_pass(size[0], size[1], renderer, shaderdir);
 
+	/*
 	window->add_key_callback([&](SDL_KeyboardEvent const &event) {
 		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
 		// this->input.process(&ev);
@@ -60,6 +61,7 @@ GUI::GUI(std::shared_ptr<qtsdl::GuiApplication> app,
 		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
 		// this->input.process(&ev);
 	});
+	*/
 	window->add_resize_callback([&](size_t width, size_t height) {
 		this->gui_renderer.resize(width, height);
 	});
@@ -71,7 +73,7 @@ std::shared_ptr<renderer::RenderPass> GUI::get_render_pass() {
 
 void GUI::process_events() {
 	// this->game_logic_updater.process_callbacks();
-	this->application->processEvents();
+	this->application->process_events();
 }
 
 void GUI::initialize_render_pass(size_t width,

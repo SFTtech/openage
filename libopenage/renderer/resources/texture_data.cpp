@@ -55,6 +55,7 @@ static constexpr size_t guess_row_alignment(size_t width, pixel_format fmt, size
 Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 	std::string native_path = path.resolve_native_path();
 	QImage image{native_path.c_str()};
+	image = image.convertToFormat(QImage::Format_RGBA8888);
 
 	log::log(MSG(dbg) << "Texture has been loaded from " << native_path);
 
@@ -62,6 +63,8 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 
 	pixel_format pix_fmt;
 	switch (surf_fmt) {
+	case QImage::Format_RGB32:
+		throw Error{MSG(err) << "Qt ARGB format not supported, needs conversion first."};
 	case QImage::Format_RGB888:
 		pix_fmt = pixel_format::rgb8;
 		break;
@@ -72,7 +75,7 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 		pix_fmt = pixel_format::rgba8;
 		break;
 	default:
-		throw Error(MSG(err) << "Texture " << native_path << " uses an unsupported format.");
+		throw Error(MSG(err) << "Texture " << native_path << " uses an unsupported format: " << static_cast<int>(surf_fmt));
 	}
 
 	auto w = uint32_t(image.width());
@@ -82,7 +85,7 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 
 	// copy pixel data from surface
 	this->data = std::vector<uint8_t>(data_size);
-	memcpy(this->data.data(), image.bits(), data_size);
+	std::memcpy(this->data.data(), image.bits(), data_size);
 
 	std::vector<Texture2dSubInfo> subtextures;
 	if (use_metafile) {

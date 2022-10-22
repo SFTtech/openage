@@ -14,6 +14,9 @@
 #include <QObject>
 
 QT_FORWARD_DECLARE_CLASS(QWindow)
+QT_FORWARD_DECLARE_CLASS(QKeyEvent)
+QT_FORWARD_DECLARE_CLASS(QMouseEvent)
+QT_FORWARD_DECLARE_CLASS(QWheelEvent)
 
 namespace openage::renderer {
 
@@ -49,9 +52,9 @@ public:
 	 */
 	bool should_close() const;
 
-	using key_cb_t = std::function<void(SDL_KeyboardEvent const &)>;
-	using mouse_button_cb_t = std::function<void(SDL_MouseButtonEvent const &)>;
-	using mouse_wheel_cb_t = std::function<void(SDL_MouseWheelEvent const &)>;
+	using key_cb_t = std::function<void(const QKeyEvent &)>;
+	using mouse_button_cb_t = std::function<void(const QMouseEvent &)>;
+	using mouse_wheel_cb_t = std::function<void(const QWheelEvent &)>;
 	using resize_cb_t = std::function<void(size_t, size_t)>;
 
 	/**

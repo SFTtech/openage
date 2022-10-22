@@ -91,22 +91,19 @@ void GlWindow::update() {
 		} break;
 		case QEvent::Close: {
 			this->should_be_closed = true;
-			// TODO call on_destroy
 		} break;
 
 		case QEvent::KeyRelease: {
 			auto const ev = std::dynamic_pointer_cast<QKeyEvent>(event);
 			for (auto &cb : this->on_key) {
-				// cb(ev);
+				cb(*ev);
 			}
-			// TODO handle keydown
 		} break;
 		case QEvent::MouseButtonRelease: {
 			auto const ev = std::dynamic_pointer_cast<QMouseEvent>(event);
 			for (auto &cb : this->on_mouse_button) {
-				// cb(ev);
+				cb(*ev);
 			}
-			// TODO handle mousedown
 		} break;
 		default:
 			break; // unhandled event

@@ -9,7 +9,7 @@
 #include "gui/guisys/public/gui_event_queue.h"
 #include "gui/guisys/public/gui_input.h"
 #include "gui/guisys/public/gui_subtree.h"
-#include "gui/integration/public/gui_application_with_logger.h"
+#include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "gui/integration/public/gui_game_spec_image_provider.h"
 #include "renderer/gui/guisys/public/gui_renderer.h"
 #include "renderer/shader_program.h"
@@ -33,7 +33,7 @@ class QMLInfo;
  */
 class GUI {
 public:
-	explicit GUI(std::shared_ptr<qtsdl::GuiApplication> app,
+	explicit GUI(std::shared_ptr<qtgui::GuiApplication> app,
 	             std::shared_ptr<Window> window,
 	             const util::Path &source,
 	             const util::Path &rootdir,
@@ -53,7 +53,7 @@ private:
 	                            std::shared_ptr<Renderer> renderer,
 	                            const util::Path &shaderdir);
 
-	std::shared_ptr<qtsdl::GuiApplication> application;
+	std::shared_ptr<qtgui::GuiApplication> application;
 	qtsdl::GuiEventQueue render_updater;
 	qtgui::GuiRenderer gui_renderer;
 	// qtsdl::GuiEventQueue game_logic_updater;

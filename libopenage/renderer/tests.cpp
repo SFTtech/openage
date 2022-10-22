@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include <memory>
 #include <eigen3/Eigen/Dense>
+#include <QMouseEvent>
 
 #include "../log/log.h"
 #include "../error/error.h"
@@ -19,11 +20,10 @@
 #include "shader_program.h"
 #include "geometry.h"
 #include "opengl/window.h"
+#include "renderer/gui/integration/public/gui_application_with_logger.h"
 
 
-namespace openage {
-namespace renderer {
-namespace tests {
+namespace openage::renderer::tests {
 
 // Macro for debugging OpenGL state.
 #define DBG_GL(txt)                    \
@@ -32,6 +32,8 @@ namespace tests {
 	printf("after %s\n", txt);
 
 void renderer_demo_0(const util::Path& path) {
+	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
+
 	opengl::GlWindow window("openage renderer test", 800, 600);
 	auto renderer = window.make_renderer();
 
@@ -225,9 +227,10 @@ void main() {
 	glDepthRange(0.0, 1.0);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	window.add_mouse_button_callback([&] (SDL_MouseButtonEvent const& ev) {
-		auto x = ev.x;
-		auto y = ev.y;
+	window.add_mouse_button_callback([&] (const QMouseEvent &ev) {
+		auto qpos = ev.position();
+		ssize_t x = qpos.x();
+		ssize_t y = qpos.y();
 
 		log::log(INFO << "Clicked at location (" << x << ", " << y << ")");
 		if (!texture_data_valid) {
@@ -272,9 +275,11 @@ void main() {
 		renderer->render(pass1);
 		renderer->render(pass2);
 		window.update();
+		qtapp->process_events();
 
 		renderer->check_error();
 	}
+	window.close();
 }
 
 void renderer_demo(int demo_id, const util::Path &path) {
@@ -289,4 +294,4 @@ void renderer_demo(int demo_id, const util::Path &path) {
 	}
 }
 
-}}} // namespace openage::renderer::tests
+} // namespace openage::renderer::tests
