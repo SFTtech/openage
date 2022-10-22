@@ -34,7 +34,7 @@ public:
 	/**
 	 * @return context that can be used by Qt
 	 */
-	QOpenGLContext *get_ctx();
+	const std::shared_ptr<QOpenGLContext> &get_ctx() const;
 
 	/**
 	 * Function that must be called before rendering the GUI.
@@ -52,7 +52,7 @@ public:
 	virtual QQuickGraphicsDevice get_device() = 0;
 
 protected:
-	QOpenGLContext ctx;
+	std::shared_ptr<QOpenGLContext> ctx;
 };
 
 /**

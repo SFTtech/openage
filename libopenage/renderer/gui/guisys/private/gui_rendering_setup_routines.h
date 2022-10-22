@@ -27,7 +27,7 @@ public:
 	explicit GuiRenderingSetupRoutines(std::shared_ptr<openage::renderer::Window> window);
 	~GuiRenderingSetupRoutines();
 
-	QOpenGLContext *get_ctx();
+	const std::shared_ptr<QOpenGLContext> &get_ctx() const;
 
 private:
 	friend class GuiRenderingCtxActivator;

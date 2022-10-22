@@ -29,7 +29,7 @@ GuiRenderingSetupRoutines::GuiRenderingSetupRoutines(std::shared_ptr<openage::re
 
 GuiRenderingSetupRoutines::~GuiRenderingSetupRoutines() = default;
 
-QOpenGLContext *GuiRenderingSetupRoutines::get_ctx() {
+const std::shared_ptr<QOpenGLContext> &GuiRenderingSetupRoutines::get_ctx() const {
 	return this->ctx_extraction_mode->get_ctx();
 }
 

@@ -104,6 +104,9 @@ void Presenter::run() {
 
 		this->renderer->check_error();
 	}
+	log::log(MSG(info) << "draw loop exited");
+
+	this->window->close();
 }
 
 std::shared_ptr<qtsdl::GuiApplication> Presenter::init_window_system() {

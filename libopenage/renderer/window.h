@@ -15,8 +15,9 @@
 
 QT_FORWARD_DECLARE_CLASS(QWindow)
 
-namespace openage {
-namespace renderer {
+namespace openage::renderer {
+
+class WindowEventHandler;
 
 class Window {
 public:
@@ -82,18 +83,11 @@ public:
 	void add_resize_callback(const resize_cb_t &cb);
 
 	/**
-	 * Get the underlying SDL_Window that is used for drawing.
-	 *
-	 * @return Pointer to the SDL_Window.
-	 */
-	virtual std::shared_ptr<SDL_Window> get_sdl_window() = 0;
-
-	/**
 	 * Get the underlying QWindow that is used for drawing.
 	 *
 	 * @return Pointer to the QWindow.
 	 */
-	virtual std::shared_ptr<QWindow> get_qt_window() = 0;
+	const std::shared_ptr<QWindow> &get_qt_window() const;
 
 	/**
 	 * Force this window to the given size. It's generally not a good idea to use this,
@@ -116,6 +110,11 @@ public:
 	 * @return The created Renderer instance.
 	 */
 	virtual std::shared_ptr<Renderer> make_renderer() = 0;
+
+	/**
+	 * Instruct the Window widget to disappear.
+	 */
+	void close();
 
 protected:
 	Window(size_t width, size_t height);
@@ -149,7 +148,17 @@ protected:
 	 * Callbacks for resize actions.
 	 */
 	std::vector<resize_cb_t> on_resize;
+
+	/**
+	 * Main Qt window handle.
+	 */
+	std::shared_ptr<QWindow> window;
+
+	/**
+	 * Observes and filters events from the Qt window.
+	 * Gets attached to window in the window subclasses.
+	 */
+	std::shared_ptr<WindowEventHandler> event_handler;
 };
 
-} // namespace renderer
-} // namespace openage
+} // namespace openage::renderer

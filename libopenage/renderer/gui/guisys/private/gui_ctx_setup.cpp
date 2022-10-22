@@ -10,6 +10,8 @@
 #include "gui/guisys/private/platforms/context_extraction.h"
 #include "renderer/gui/guisys/private/opengl_debug_logger.h"
 #include "renderer/window.h"
+#include "renderer/opengl/window.h"
+#include "renderer/opengl/context_qt.h"
 
 namespace qtgui {
 
@@ -17,28 +19,30 @@ CtxExtractionException::CtxExtractionException(const std::string &what_arg) :
 	std::runtime_error{what_arg} {
 }
 
-QOpenGLContext *CtxExtractionMode::get_ctx() {
-	return &this->ctx;
+const std::shared_ptr<QOpenGLContext> &CtxExtractionMode::get_ctx() const {
+	return this->ctx;
 }
 
 GlGuiRenderingContext::GlGuiRenderingContext(std::shared_ptr<openage::renderer::Window> window) :
 	CtxExtractionMode{},
 	offscreen_surface{} {
-	auto format = window->get_qt_window()->format();
-	this->ctx.setFormat(format);
-	this->ctx.create();
-	assert(this->ctx.isValid());
+	//auto format = window->get_qt_window()->format();
+	//this->ctx.setFormat(format);
+	//this->ctx.create();
+	//assert(this->ctx.isValid());
 
-	auto context_debug_parameters = get_current_opengl_debug_parameters(this->ctx);
+	this->ctx = std::dynamic_pointer_cast<openage::renderer::opengl::GlWindow>(window)->get_context()->get_raw_context();
 
-	this->offscreen_surface.setFormat(this->ctx.format());
+	auto context_debug_parameters = get_current_opengl_debug_parameters(*this->ctx);
+
+	this->offscreen_surface.setFormat(this->ctx->format());
 	this->offscreen_surface.create();
 
-	apply_opengl_debug_parameters(context_debug_parameters, this->ctx);
+	apply_opengl_debug_parameters(context_debug_parameters, *this->ctx);
 }
 
 void GlGuiRenderingContext::pre_render() {
-	if (!this->ctx.makeCurrent(&this->offscreen_surface)) {
+	if (!this->ctx->makeCurrent(&this->offscreen_surface)) {
 		assert(false);
 		return;
 	}
@@ -46,23 +50,23 @@ void GlGuiRenderingContext::pre_render() {
 
 void GlGuiRenderingContext::post_render() {
 	QOpenGLFramebufferObject::bindDefault();
-	this->ctx.functions()->glFlush();
+	this->ctx->functions()->glFlush();
 }
 
 QQuickGraphicsDevice GlGuiRenderingContext::get_device() {
-	return QQuickGraphicsDevice::fromOpenGLContext(&this->ctx);
+	return QQuickGraphicsDevice::fromOpenGLContext(this->ctx.get());
 }
 
 GuiUniqueRenderingContext::GuiUniqueRenderingContext(std::shared_ptr<openage::renderer::Window> window) :
 	CtxExtractionMode{} {
 	auto format = window->get_qt_window()->format();
-	this->ctx.setFormat(format);
-	this->ctx.create();
-	assert(this->ctx.isValid());
+	this->ctx->setFormat(format);
+	this->ctx->create();
+	assert(this->ctx->isValid());
 
 	std::shared_ptr<QWindow> w = window->get_qt_window();
 
-	if (this->ctx.makeCurrent(w.get())) {
+	if (this->ctx->makeCurrent(w.get())) {
 		return;
 	}
 
@@ -76,7 +80,7 @@ void GuiUniqueRenderingContext::post_render() {
 }
 
 QQuickGraphicsDevice GuiUniqueRenderingContext::get_device() {
-	return QQuickGraphicsDevice::fromOpenGLContext(&this->ctx);
+	return QQuickGraphicsDevice::fromOpenGLContext(this->ctx.get());
 }
 
 GuiSeparateRenderingContext::GuiSeparateRenderingContext() :
@@ -86,17 +90,17 @@ GuiSeparateRenderingContext::GuiSeparateRenderingContext() :
 
 	auto context_debug_parameters = get_current_opengl_debug_parameters(this->main_ctx);
 
-	this->ctx.setFormat(this->main_ctx.format());
-	this->ctx.setShareContext(&this->main_ctx);
-	this->ctx.create();
-	assert(this->ctx.isValid());
-	assert(!(this->main_ctx.format().options() ^ this->ctx.format().options()).testFlag(QSurfaceFormat::DebugContext));
+	this->ctx->setFormat(this->main_ctx.format());
+	this->ctx->setShareContext(&this->main_ctx);
+	this->ctx->create();
+	assert(this->ctx->isValid());
+	assert(!(this->main_ctx.format().options() ^ this->ctx->format().options()).testFlag(QSurfaceFormat::DebugContext));
 
-	this->offscreen_surface.setFormat(this->ctx.format());
+	this->offscreen_surface.setFormat(this->ctx->format());
 	this->offscreen_surface.create();
 
 	this->pre_render();
-	apply_opengl_debug_parameters(context_debug_parameters, this->ctx);
+	apply_opengl_debug_parameters(context_debug_parameters, *this->ctx);
 }
 
 GuiSeparateRenderingContext::~GuiSeparateRenderingContext() {
@@ -106,7 +110,7 @@ GuiSeparateRenderingContext::~GuiSeparateRenderingContext() {
 }
 
 void GuiSeparateRenderingContext::pre_render() {
-	if (!this->ctx.makeCurrent(&this->offscreen_surface)) {
+	if (!this->ctx->makeCurrent(&this->offscreen_surface)) {
 		assert(false);
 		return;
 	}
@@ -117,7 +121,7 @@ void GuiSeparateRenderingContext::post_render() {
 }
 
 QQuickGraphicsDevice GuiSeparateRenderingContext::get_device() {
-	return QQuickGraphicsDevice::fromOpenGLContext(&this->ctx);
+	return QQuickGraphicsDevice::fromOpenGLContext(this->ctx.get());
 }
 
 } // namespace qtgui

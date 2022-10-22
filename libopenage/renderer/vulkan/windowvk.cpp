@@ -1,4 +1,4 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2022 the openage authors. See copying.md for legal info.
 
 #include "windowvk.h"
 
@@ -13,9 +13,9 @@
 #include "../../error/error.h"
 #include "../../log/log.h"
 #include "../sdl_global.h"
+#include "../window_event_handler.h"
 
 #include "graphics_device.h"
-#include "renderer/event_handling_window.h"
 #include "util.h"
 
 
@@ -83,28 +83,8 @@ static vlk_capabilities find_capabilities() {
 
 VlkWindow::VlkWindow(const char *title, size_t width, size_t height) :
 	Window(width, height), capabilities(find_capabilities()) {
-	make_sdl_available();
 
-	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
-	this->window = SDL_CreateWindow(
-		title,
-		SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED,
-		this->size[0],
-		this->size[1],
-		window_flags);
-
-	if (this->window == nullptr) {
-		throw Error{MSG(err) << "Failed to create SDL window: " << SDL_GetError()};
-	}
-
-	// Find which extensions the SDL window requires.
-	auto extension_names = vk_do_ritual(SDL_Vulkan_GetInstanceExtensions, this->window);
-	/*
-	if (succ != SDL_TRUE) {
-		throw Error(MSG(err) << "Failed to obtain required Vulkan extension names from SDL.");
-	}
-	*/
+	std::vector<const char *> extension_names;
 
 #ifndef NDEBUG
 	extension_names.push_back(VK_EXT_DEBUG_REPORT_EXTENSION_NAME);
@@ -165,11 +145,6 @@ VlkWindow::VlkWindow(const char *title, size_t width, size_t height) :
 	VK_CALL_CHECKED(this->loader.vkCreateDebugReportCallbackEXT, this->instance, &cb_info, nullptr, &this->debug_callback);
 #endif
 
-	// Surface is an object that we draw into, corresponding to the window area.
-	auto succ = SDL_Vulkan_CreateSurface(this->window, this->instance, &this->surface);
-	if (succ != SDL_TRUE) {
-		throw Error(MSG(err) << "Failed to create Vulkan surface on SDL window.");
-	}
 
 	// ASDF: Qt Port
 	if (QGuiApplication::instance() == nullptr) {
@@ -178,24 +153,26 @@ VlkWindow::VlkWindow(const char *title, size_t width, size_t height) :
 	}
 
 	QQuickWindow::setGraphicsApi(QSGRendererInterface::Vulkan);
-	this->qwindow = std::make_shared<renderer::EventHandlingQuickWindow>();
-	this->qwindow->setTitle(QString::fromStdString(title));
-	this->qwindow->resize(width, height);
-	this->qwindow->setSurfaceType(QSurface::VulkanSurface);
+	this->window = std::make_shared<QWindow>();
+	this->window->setTitle(QString::fromStdString(title));
+	this->window->resize(width, height);
+	this->window->setSurfaceType(QSurface::VulkanSurface);
 
 	// Attach vulkan instance
 	QVulkanInstance qinstance;
 	qinstance.setVkInstance(this->instance);
 	qinstance.create();
-	QVulkanInstance::surfaceForWindow(this->qwindow.get());
-	this->qwindow->setVulkanInstance(&qinstance);
+	QVulkanInstance::surfaceForWindow(this->window.get());
+	this->window->setVulkanInstance(&qinstance);
 
 	QSurfaceFormat format;
 	format.setDepthBufferSize(16);
 	format.setStencilBufferSize(8);
-	this->qwindow->setFormat(format);
+	this->window->setFormat(format);
 
-	this->qwindow->show();
+	this->window->installEventFilter(this->event_handler.get());
+
+	this->window->show();
 	log::log(MSG(info) << "Created Qt window with Vulkan instance.");
 }
 
@@ -207,22 +184,11 @@ VlkWindow::~VlkWindow() {
 	vkDestroyInstance(this->instance, nullptr);
 }
 
-std::shared_ptr<SDL_Window> VlkWindow::get_sdl_window() {
-	return std::shared_ptr<SDL_Window>(
-		this->window,
-		[](SDL_Window *window) {
-			log::log(MSG(info) << "Destroying SDL window...");
-			SDL_DestroyWindow(window);
-		});
-}
-
-std::shared_ptr<QWindow> VlkWindow::get_qt_window() {
-	return this->qwindow;
-}
 
 VkInstance VlkWindow::get_instance() const {
 	return this->instance;
 }
+
 
 VkSurfaceKHR VlkWindow::get_surface() const {
 	return this->surface;

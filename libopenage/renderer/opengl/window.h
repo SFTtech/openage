@@ -30,13 +30,9 @@ public:
 	GlWindow(const std::string &title, size_t width, size_t height);
 	~GlWindow() = default;
 
-	std::shared_ptr<SDL_Window> get_sdl_window() override;
-	std::shared_ptr<QWindow> get_qt_window() override;
-
 	void set_size(size_t width, size_t height) override;
 
 	void update() override;
-	void qupdate();
 
 	std::shared_ptr<Renderer> make_renderer() override;
 
@@ -48,20 +44,8 @@ public:
 	const std::shared_ptr<opengl::QGlContext> &get_context() const;
 
 private:
-	/// The SDL window to which the OpenGL context is associated.
-	std::shared_ptr<SDL_Window> window;
-
-	/// The window's OpenGL context. It can't be constructed immediately,
-	/// but after the constructor runs it's guaranteed to be available.
-	/// The SDL window is also held within this context, because when the window is deallocated,
-	/// the context is gone.
-	std::shared_ptr<opengl::GlContext> context;
-
-	/// The Qt window to which the OpenGL context is associated.
-	std::shared_ptr<EventHandlingQuickWindow> qwindow;
-
 	// OpenGL Context in Qt
-	std::shared_ptr<opengl::QGlContext> qcontext;
+	std::shared_ptr<opengl::QGlContext> context;
 };
 
 } // namespace opengl

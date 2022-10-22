@@ -1,6 +1,5 @@
 add_sources(libopenage
 	color.cpp
-	event_handling_window.cpp
 	geometry.cpp
 	renderer.cpp
 	sdl_global.cpp
@@ -12,6 +11,7 @@ add_sources(libopenage
 	uniform_input.cpp
 	util.cpp
 	window.cpp
+	window_event_handler.cpp
 )
 
 pxdgen(

@@ -80,16 +80,17 @@ void EventHandlingQuickWindow::on_resized(const QSize &size) {
 
 GuiRendererImpl::GuiRendererImpl(std::shared_ptr<openage::renderer::Window> window) :
 	QObject{},
-	render_control{window->get_qt_window().get()},
+	render_control{},
 	gui_context{window} {
-	this->target_window = std::make_unique<QQuickWindow>(&this->render_control);
+
+	this->target_window = std::make_unique<QQuickWindow>();
 	this->resize(window->get_qt_window()->size());
 
 	QObject::connect(&*this->target_window, &QQuickWindow::sceneGraphInitialized, this, &GuiRendererImpl::create_texture);
 	QObject::connect(&*this->target_window, &QQuickWindow::sceneGraphInvalidated, this, &GuiRendererImpl::destroy_texture);
 
 	this->gui_context.pre_render();
-	this->target_window->setGraphicsDevice(QQuickGraphicsDevice::fromOpenGLContext(this->gui_context.get_ctx()));
+	this->target_window->setGraphicsDevice(QQuickGraphicsDevice::fromOpenGLContext(this->gui_context.get_ctx().get()));
 	this->render_control.initialize();
 }
 
