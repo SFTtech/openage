@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "renderer/texture.h"
 #include <GL/gl.h>
 
 #include <atomic>
@@ -27,38 +28,23 @@ namespace qtgui {
 
 class GuiRenderer;
 
-class EventHandlingQuickWindow : public QQuickWindow {
-	Q_OBJECT
-
-public:
-	explicit EventHandlingQuickWindow(QQuickRenderControl *render_control);
-	virtual ~EventHandlingQuickWindow();
-
-public slots:
-	void on_input_event(std::atomic<bool> *processed, QEvent *event, bool only_if_grabbed);
-	void on_resized(const QSize &size);
-
-private:
-	// TODO: to remove when the proper focus for the foreign (that obtained from QWindow::fromWinId()) windows is implemented (Qt 5.6).
-	QQuickItem *focused_item;
-};
 
 /**
  * Passes the native graphic context to Qt.
  */
-class GuiRendererImpl : public QObject {
+class GuiRendererImpl final : public QObject {
 	Q_OBJECT
 
 public:
 	explicit GuiRendererImpl(std::shared_ptr<openage::renderer::Window> window);
-	~GuiRendererImpl();
+	~GuiRendererImpl() = default;
 
 	static GuiRendererImpl *impl(GuiRenderer *renderer);
 
 	/**
-	 * @return texture ID where GUI was rendered
+	 * draw the gui into our texture.
 	 */
-	GLuint render();
+	void render();
 
 	/**
 	 * Adjust the target window's geometry.
@@ -67,28 +53,21 @@ public:
 	 * @param height Target height.
 	 */
 	void resize(const size_t width, const size_t height);
-	void resize(const QSize &size);
 
 	QQuickWindow *get_window();
 
+	/**
+	 * update the texture where the gui shall be rendered into.
+	 */
+	void set_texture(const std::shared_ptr<openage::renderer::Texture2d> &texture);
+
 signals:
+	/**
+	 * emitted when the off-screen gui window was resized through `resize`.
+	 */
 	void resized(const QSize &size);
 
-private slots:
-	/**
-	 * ASDF: Qt port.
-	 * Create the GUI texture that QT writes into.
-	 */
-	void create_texture();
-
-	/**
-	 * ASDF: Qt port.
-	 * Destroy the GUI texture that QT writes into.
-	 */
-	void destroy_texture();
-
 private:
-	// ASDF: Qt port
 	/**
 	 * Object for sending render command to Qt.
 	 */
@@ -104,32 +83,16 @@ private:
 	std::unique_ptr<QQuickWindow> target_window;
 
 	/**
-	 * Rendering context.
+	 * Texture that is targeted by the gui renderer.
 	 */
-	GlGuiRenderingContext gui_context;
+	std::shared_ptr<openage::renderer::Texture2d> texture;
 
 	/**
-	 * ID of the texture that is targeted by the gui renderer.
-	 *
-	 * TODO: Use renderer::Texture2d class.
+	 * Rendering context.
+	 * Beware: in the member order, put _after_ all context-affine resources (e.g. texture).
+	 * otherwise the context will be deleted before the resource in it.
 	 */
-	GLuint target_texture_id;
-};
-
-class TemporaryDisableGuiRendererSync {
-public:
-	explicit TemporaryDisableGuiRendererSync(GuiRendererImpl &renderer);
-	~TemporaryDisableGuiRendererSync();
-
-private:
-	TemporaryDisableGuiRendererSync(const TemporaryDisableGuiRendererSync &) = delete;
-	TemporaryDisableGuiRendererSync &operator=(const TemporaryDisableGuiRendererSync &) = delete;
-
-	GuiRendererImpl &renderer;
-	const bool need_sync;
+	GlGuiRenderingContext gui_context;
 };
 
 } // namespace qtgui
-
-// ASDF: Qt5
-// Q_DECLARE_METATYPE(std::atomic<bool>*)

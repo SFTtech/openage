@@ -1,20 +1,11 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <memory>
 
-#ifndef __APPLE__
-#ifdef _MSC_VER
-#define NOMINMAX
-#include <windows.h>
-#endif //_MSC_VER
-#include <GL/gl.h>
-#else // __APPLE__
-#include <OpenGL/gl.h>
-#endif
-
 namespace openage::renderer {
+class Texture2d;
 class Window;
 }
 
@@ -28,11 +19,12 @@ class GuiRendererImpl;
 class GuiRenderer {
 public:
 	// TODO: allow FBO variant
-	explicit GuiRenderer(std::shared_ptr<openage::renderer::Window> window);
+	explicit GuiRenderer(const std::shared_ptr<openage::renderer::Window> &window);
 	~GuiRenderer();
 
-	GLuint render();
+	void render();
 	void resize(int w, int h);
+	void set_texture(const std::shared_ptr<openage::renderer::Texture2d> &texture);
 
 private:
 	friend class GuiRendererImpl;

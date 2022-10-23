@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "renderer/texture.h"
 #include <memory>
 #include <string>
 
@@ -38,7 +39,7 @@ public:
 	             const util::Path &source,
 	             const util::Path &rootdir,
 	             const util::Path &assetdir,
-	             std::shared_ptr<Renderer> renderer,
+	             const std::shared_ptr<Renderer> &renderer,
 	             QMLInfo *info = nullptr);
 	virtual ~GUI() = default;
 
@@ -50,8 +51,12 @@ public:
 private:
 	void initialize_render_pass(size_t width,
 	                            size_t height,
-	                            std::shared_ptr<Renderer> renderer,
 	                            const util::Path &shaderdir);
+
+	/**
+	 * Update GUI texture size and propagate the change to GUI render pass.
+	 */
+	void resize(size_t width, size_t height);
 
 	std::shared_ptr<qtgui::GuiApplication> application;
 	qtsdl::GuiEventQueue render_updater;
@@ -62,6 +67,20 @@ private:
 	// qtsdl::GuiSubtree subtree;
 	// qtsdl::GuiInput input;
 
+	/**
+	 * The renderer displaying this GUI.
+	 * We use it to fetch new textures n shit.
+	 */
+	std::shared_ptr<Renderer> renderer;
+
+	/**
+	 * Where the GUI is rendered into.
+	 */
+	std::shared_ptr<renderer::Texture2d> texture;
+
+	/**
+	 * How the GUI is rendered.
+	 */
 	std::shared_ptr<renderer::RenderPass> render_pass;
 
 	// useless?

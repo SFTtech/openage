@@ -11,20 +11,19 @@
 
 #include "renderer/opengl/context_qt.h"
 
-namespace openage {
-namespace renderer {
-namespace gui {
+namespace openage::renderer::gui {
 
 GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
          std::shared_ptr<Window> window,
          const util::Path &source,
          const util::Path &rootdir,
          const util::Path &assetdir,
-         std::shared_ptr<Renderer> renderer,
-         QMLInfo *info) :
-	application{app},
-	render_updater{},
-	gui_renderer{window}
+         const std::shared_ptr<Renderer> &renderer,
+         QMLInfo *info)
+	: application{app}
+	, render_updater{}
+	, gui_renderer{window}
+	, renderer{renderer}
 //game_logic_updater{},
 //image_provider_by_filename{
 //	&render_updater,
@@ -41,12 +40,15 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
 //	rootdir.resolve_native_path()},
 //input{&gui_renderer, &game_logic_updater}
 {
-	renderer::opengl::QGlContext::check_error(); // failure
-
-	util::Path shaderdir = assetdir["shaders"];
+	// everything alright before we create the gui stuff?
+	renderer::opengl::QGlContext::check_error();
 
 	auto size = window->get_size();
-	initialize_render_pass(size[0], size[1], renderer, shaderdir);
+	// create the appropriate texture
+	this->resize(size[0], size[1]);
+
+	util::Path shaderdir = assetdir["shaders"];
+	this->initialize_render_pass(size[0], size[1], shaderdir);
 
 	/*
 	window->add_key_callback([&](SDL_KeyboardEvent const &event) {
@@ -62,8 +64,8 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
 		// this->input.process(&ev);
 	});
 	*/
-	window->add_resize_callback([&](size_t width, size_t height) {
-		this->gui_renderer.resize(width, height);
+	window->add_resize_callback([this](size_t width, size_t height) {
+		this->resize(width, height);
 	});
 }
 
@@ -78,33 +80,29 @@ void GUI::process_events() {
 
 void GUI::initialize_render_pass(size_t width,
                                  size_t height,
-                                 std::shared_ptr<Renderer> renderer,
                                  const util::Path &shaderdir) {
-	const std::string shader_header_code = "#version 120\n";
-
 	auto id_vert_file = (shaderdir / "identity.vert.glsl").open();
 	auto id_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
-		shader_header_code + id_vert_file.read());
+		id_vert_file.read());
 	id_vert_file.close();
 
 	auto text_frag_file = (shaderdir / "maptexture.frag.glsl").open();
 	auto maptex_frag_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
-		shader_header_code + text_frag_file.read());
+		text_frag_file.read());
 	text_frag_file.close();
 
-	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
-	auto maptex_shader = renderer->add_shader({id_shader_src, maptex_frag_shader_src});
+	auto quad = this->renderer->add_mesh_geometry(resources::MeshData::make_quad());
+	auto maptex_shader = this->renderer->add_shader({id_shader_src, maptex_frag_shader_src});
 	this->textured_screen_quad_shader = maptex_shader;
 
-	auto gui_texture = renderer->add_texture(
-		resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
-	auto fbo = renderer->create_texture_target({gui_texture});
+	// GUI draw surface. gets drawn on top of the gameworld in the presenter.
+	auto fbo = this->renderer->create_texture_target({this->texture});
 
-	auto color_texture_unif = maptex_shader->new_uniform_input("texture", gui_texture);
+	auto color_texture_unif = maptex_shader->new_uniform_input("texture", this->texture);
 	Renderable display_obj{
 		color_texture_unif,
 		quad,
@@ -112,45 +110,30 @@ void GUI::initialize_render_pass(size_t width,
 		true,
 	};
 
-	this->render_pass = renderer->add_render_pass({/* display_obj */}, renderer->get_display_target());
+	this->render_pass = renderer->add_render_pass({ display_obj }, renderer->get_display_target());
 }
+
+
+void GUI::resize(size_t width, size_t height) {
+	// TODO: this texture has to be bigger because of highdpi scaling
+	//       width and height are not the real window pixel surface.
+	this->texture = this->renderer->add_texture(
+		resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
+
+	//fbo = this->renderer->create_texture_target( { this->texture } );
+	//this->render_pass->set_target(fbo)
+
+	// update new texture to gui renderer
+	this->gui_renderer.resize(width, height);
+	this->gui_renderer.set_texture(this->texture);
+}
+
 
 bool GUI::drawhud() {
 	this->render_updater.process_callbacks();
 
-	auto tex = this->gui_renderer.render();
-
-	// glEnable(GL_BLEND);
-	// glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-
-	// this->textured_screen_quad_shader->use();
-
-	// glActiveTexture(GL_TEXTURE0);
-	// glBindTexture(GL_TEXTURE_2D, tex);
-
-	// glEnableVertexAttribArray(this->textured_screen_quad_shader->pos_id);
-
-	// glBindBuffer(GL_ARRAY_BUFFER, this->screen_quad_vbo);
-	// glVertexAttribPointer(
-	// 	this->textured_screen_quad_shader->pos_id,
-	// 	2,
-	// 	GL_FLOAT,
-	// 	GL_FALSE,
-	// 	2 * sizeof(float),
-	// 	0);
-
-	// glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-
-	// glDisableVertexAttribArray(this->textured_screen_quad_shader->pos_id);
-	// glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-	// glBindTexture(GL_TEXTURE_2D, 0);
-
-	// this->textured_screen_quad_shader->stopusing();
-
+	this->gui_renderer.render();
 	return true;
 }
 
-} // namespace gui
-} // namespace renderer
-} // namespace openage
+} // namespace openage::renderer::gui

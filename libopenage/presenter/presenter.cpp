@@ -28,35 +28,6 @@ void Presenter::run() {
 
 	this->renderer = this->window->make_renderer();
 
-	this->window->add_resize_callback([&](size_t w, size_t h) {
-		log::log(MSG(info) << "engine window resize to "
-		                   << w << "x" << h);
-
-		float aspectRatio = float(w) / float(h);
-		float x_scale = 1.0 / aspectRatio;
-
-		Eigen::Matrix4f pmat;
-		pmat << x_scale, 0, 0, 0,
-			0, 1, 0, 0,
-			0, 0, 1, 0,
-			0, 0, 0, 1;
-
-		// TODO!
-		// proj_unif->update("proj", pmat);
-
-		// auto color_texture = renderer->add_texture(
-		// 	renderer::resources::Texture2dInfo(w, h, renderer::resources::pixel_format::rgba8));
-		// auto id_texture = renderer->add_texture(
-		// 	renderer::resources::Texture2dInfo(w, h, renderer::resources::pixel_format::r32ui));
-		// auto depth_texture = renderer->add_texture(
-		// 	renderer::resources::Texture2dInfo(w, h, renderer::resources::pixel_format::depth24));
-		// auto fbo = renderer->create_texture_target({color_texture, id_texture, depth_texture});
-
-		// color_texture_unif->update("color_texture", color_texture);
-
-		auto texture_data_valid = false;
-		// gui_pass->set_target(fbo);
-	});
 
 	//// -- gui initialization
 	util::Path qml_root = this->root_dir / "assets" / "qml";

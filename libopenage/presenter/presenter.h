@@ -49,9 +49,9 @@ protected:
 	util::Path root_dir;
 
 	std::shared_ptr<qtgui::GuiApplication> gui_app;
-	std::shared_ptr<renderer::gui::GUI> gui;
 	std::shared_ptr<renderer::Window> window;
 	std::shared_ptr<renderer::Renderer> renderer;
+	std::shared_ptr<renderer::gui::GUI> gui;
 
 	// TODO: Activate
 	std::shared_ptr<engine::Engine> engine = nullptr;

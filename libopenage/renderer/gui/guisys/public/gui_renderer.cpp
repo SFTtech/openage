@@ -8,18 +8,22 @@
 
 namespace qtgui {
 
-GuiRenderer::GuiRenderer(std::shared_ptr<openage::renderer::Window> window) :
+GuiRenderer::GuiRenderer(const std::shared_ptr<openage::renderer::Window> &window) :
 	impl{std::make_unique<GuiRendererImpl>(window)} {
 }
 
 GuiRenderer::~GuiRenderer() = default;
 
-GLuint GuiRenderer::render() {
-	return this->impl->render();
+void GuiRenderer::render() {
+	this->impl->render();
 }
 
 void GuiRenderer::resize(int w, int h) {
-	this->impl->resize(QSize{w, h});
+	this->impl->resize(w, h);
+}
+
+void GuiRenderer::set_texture(const std::shared_ptr<openage::renderer::Texture2d> &texture) {
+	this->impl->set_texture(texture);
 }
 
 } // namespace qtgui
