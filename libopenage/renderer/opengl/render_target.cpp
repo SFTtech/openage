@@ -18,6 +18,7 @@ void GlRenderTarget::bind_write() const {
 		this->framebuffer->bind_write();
 	}
 	else {
+		// 0 is the default, window framebuffer
 		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
 	}
 }
@@ -27,6 +28,7 @@ void GlRenderTarget::bind_read() const {
 		this->framebuffer->bind_read();
 	}
 	else {
+		// 0 is the default, window framebuffer
 		glBindFramebuffer(GL_READ_FRAMEBUFFER, 0);
 	}
 }

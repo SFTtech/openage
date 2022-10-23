@@ -22,8 +22,7 @@ public:
 	/// @param[in] use_metafile determines whether the loading should read an accompanying
 	///                         metadata file to split the texture into subtextures
 	///
-	/// Uses SDL Image internally. For supported image file types,
-	/// see the SDL_Image initialization in the engine.
+	/// Uses QImage internally.
 	Texture2dData(const util::Path& path, bool use_metafile = false);
 
 	/// Construct by moving the information and raw texture data from somewhere else.
@@ -47,7 +46,7 @@ public:
 	T read_pixel(size_t x, size_t y) const {
 		const uint8_t *data = this->data.data();
 		auto dims = this->info.get_size();
-		size_t off = (dims.second - y) * this->info.get_row_size();
+		size_t off = (dims.second - y - 1) * this->info.get_row_size();
 		off += x * pixel_size(this->info.get_format());
 
 		if ((off + sizeof(T)) > this->info.get_data_size()) {

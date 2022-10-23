@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 #include "texture_data.h"
 
@@ -9,9 +9,7 @@
 #include "../../util/csv.h"
 
 
-namespace openage {
-namespace renderer {
-namespace resources {
+namespace openage::renderer::resources {
 
 /// Tries to guess the alignment of image rows based on image parameters. Kinda
 /// black magic and might not actually work.
@@ -54,8 +52,10 @@ static constexpr size_t guess_row_alignment(size_t width, pixel_format fmt, size
 
 Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 	std::string native_path = path.resolve_native_path();
+
+	// TODO: use QImageIOHandler to directly create the correct surface format.
 	QImage image{native_path.c_str()};
-	image = image.convertToFormat(QImage::Format_RGBA8888);
+	image.convertTo(QImage::Format_RGBA8888);
 
 	log::log(MSG(dbg) << "Texture has been loaded from " << native_path);
 
@@ -167,6 +167,4 @@ void Texture2dData::store(const util::Path &file) const {
 	image.save(path.c_str());
 }
 
-} // namespace resources
-} // namespace renderer
-} // namespace openage
+} // namespace openage::renderer::resources

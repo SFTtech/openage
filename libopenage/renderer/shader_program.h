@@ -34,10 +34,16 @@ public:
 	/// "color" to { 0.5, 0.5, 0.5, 0.5 } and "num" to 5. Types are important here and a type
 	/// mismatch between the uniform variable and the input might result in an error.
 	template<typename... Ts>
-	std::shared_ptr<UniformInput> new_uniform_input(Ts... vals) {
+	std::shared_ptr<UniformInput> new_uniform_input(Ts&&... vals) {
 		auto input = this->new_unif_in();
 		input->update(vals...);
 		return input;
+	}
+
+	/// Alias for the above function - makes more sense name-wise when the
+	/// shader doesn't have any uniforms.
+	std::shared_ptr<UniformInput> create_render_input() {
+		return this->new_uniform_input();
 	}
 
 	/// Returns a list of _active_ vertex attributes in the shader program. Active attributes

@@ -46,6 +46,7 @@ private:
 	/// The GL context.
 	std::shared_ptr<QGlContext> gl_context;
 
+	/// The main screen surface as a render target.
 	std::shared_ptr<GlRenderTarget> display;
 };
 

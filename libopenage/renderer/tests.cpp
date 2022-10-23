@@ -158,7 +158,7 @@ void main() {
 
 	/* The objects are using built-in quadrilateral geometry. */
 	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
-	Renderable obj1 {
+	Renderable obj1{
 		obj1_unifs,
 		quad,
 		true,
@@ -172,7 +172,7 @@ void main() {
 		true,
 	};
 
-	Renderable obj3 {
+	Renderable obj3{
 		obj3_unifs,
 		quad,
 		true,
@@ -194,7 +194,7 @@ void main() {
 	 * it is sufficient to set it once at the beginning of the pass. To do this, we use an object with no
 	 * geometry, which will set the uniform but not render anything. */
 	auto proj_unif = obj_shader->new_uniform_input();
-	Renderable proj_update {
+	Renderable proj_update{
 		proj_unif,
 		nullptr,
 		false,
@@ -282,10 +282,71 @@ void main() {
 	window.close();
 }
 
+
+void renderer_demo_2(const util::Path& path) {
+	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
+
+	opengl::GlWindow window("openage renderer test", 800, 600);
+	auto renderer = window.make_renderer();
+
+	auto display_vshader_src = resources::ShaderSource(
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::vertex,
+		R"s(
+#version 330
+
+layout(location=0) in vec2 position;
+
+void main() {
+	gl_Position = vec4(position, 0.0, 1.0);
+}
+)s");
+
+	auto display_fshader_src = resources::ShaderSource(
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::fragment,
+		R"s(
+#version 330
+
+out vec4 col;
+
+void main() {
+    col = vec4(1.0, 0.4, 0.0, 0.8);
+}
+)s");
+
+	auto display_shader = renderer->add_shader( { display_vshader_src, display_fshader_src } );
+
+	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
+	Renderable display_stuff{
+		display_shader->create_render_input(),
+		quad,
+		false,
+		false,
+	};
+
+	auto pass = renderer->add_render_pass({ display_stuff }, renderer->get_display_target());
+
+	while (not window.should_close()) {
+		renderer->render(pass);
+		window.update();
+		qtapp->process_events();
+
+		renderer->check_error();
+	}
+	window.close();
+
+}
+
+
 void renderer_demo(int demo_id, const util::Path &path) {
 	switch (demo_id) {
 	case 0:
 		renderer_demo_0(path);
+		break;
+
+	case 2:
+		renderer_demo_2(path);
 		break;
 
 	default:
