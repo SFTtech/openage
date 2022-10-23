@@ -73,7 +73,7 @@ procedure is selected by their file extension. Graphics are stored in the
 Original metadata files
 -----------------------
 
-This data describes the configuration ane behavior of the original game and its
+This data describes the configuration and behavior of the original game and its
 entities. Namely this defines the available buildings, units, their creation
 cost, etc.
 
