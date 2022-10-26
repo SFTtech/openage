@@ -18,7 +18,7 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-class QGlContext;
+class GlContext;
 
 /// A handle to an OpenGL shader program.
 class GlShaderProgram final : public ShaderProgram
@@ -26,7 +26,7 @@ class GlShaderProgram final : public ShaderProgram
 public:
 	/// Tries to create a shader program from the given sources.
 	/// Throws an exception on compile/link errors.
-	explicit GlShaderProgram(const std::shared_ptr<QGlContext> &,
+	explicit GlShaderProgram(const std::shared_ptr<GlContext> &,
 	                         const std::vector<resources::ShaderSource> &);
 
 	/// Bind this program as the currently used one in the OpenGL context.

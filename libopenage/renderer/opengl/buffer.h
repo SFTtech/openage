@@ -15,13 +15,13 @@ class GlBuffer final : public GlSimpleObject {
 public:
 	/// Creates an empty buffer of the specified size.
 	/// Binds the GL_COPY_WRITE_BUFFER target.
-	GlBuffer(const std::shared_ptr<QGlContext> &context,
+	GlBuffer(const std::shared_ptr<GlContext> &context,
 	         size_t size,
 	         GLenum usage = GL_STATIC_DRAW);
 
 	/// Creates a buffer of the specified size and fills it with the given data.
 	/// Binds the GL_COPY_WRITE_BUFFER target.
-	GlBuffer(const std::shared_ptr<QGlContext> &context,
+	GlBuffer(const std::shared_ptr<GlContext> &context,
 	         const uint8_t *data,
 	         size_t size,
 	         GLenum usage = GL_STATIC_DRAW);

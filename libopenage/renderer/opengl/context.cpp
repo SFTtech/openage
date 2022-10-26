@@ -1,67 +1,66 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
-
-#include "context.h"
+// Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 #include <array>
 #include <epoxy/gl.h>
 
-#include "../../error/error.h"
-#include "../../log/log.h"
+#include "context.h"
+
+#include <QOffscreenSurface>
+#include <QOpenGLContext>
+#include <QWindow>
+
+#include "error/error.h"
+#include "log/log.h"
 
 
-namespace openage {
-namespace renderer {
-namespace opengl {
+namespace openage::renderer::opengl {
 
 /// The first element is the lowest version we need, last is highest version we support.
 static constexpr std::array<std::pair<int, int>, 1> gl_versions = {{{3, 3}}}; // for now we don't need any higher versions
 
 /// Finds out the supported graphics functions and OpenGL version of the device.
 static gl_context_capabilities find_capabilities() {
-	// This is really hacky. We try to create a context starting with
-	// the lowest GL version and retry until one version is not supported and fails.
-	// There is no other way to do this. (https://gamedev.stackexchange.com/a/28457)
+	QSurfaceFormat test_format{};
+	test_format.setProfile(QSurfaceFormat::OpenGLContextProfile::CoreProfile);
+	test_format.setSwapBehavior(QSurfaceFormat::SwapBehavior::DoubleBuffer);
+	test_format.setDepthBufferSize(24);
 
-	SDL_Window *test_window = SDL_CreateWindow("test", 0, 0, 2, 2, SDL_WINDOW_OPENGL | SDL_WINDOW_HIDDEN);
-	if (test_window == nullptr) {
-		throw Error(MSG(err) << "Failed creating window for OpenGL context testing. SDL Error: " << SDL_GetError());
-	}
-
-	// Check each version for availability
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-
-	SDL_GLContext test_context;
 	for (size_t i_ver = 0; i_ver < gl_versions.size(); ++i_ver) {
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, gl_versions[i_ver].first);
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, gl_versions[i_ver].second);
-		test_context = SDL_GL_CreateContext(test_window);
+		QOpenGLContext test_context{};
+		auto tf = test_format;
+		test_format.setMajorVersion(gl_versions[i_ver].first);
+		test_format.setMinorVersion(gl_versions[i_ver].second);
 
-		if (test_context == nullptr) {
+		test_context.create();
+
+		if (!test_context.isValid()) {
 			if (i_ver == 0) {
 				throw Error(MSG(err) << "OpenGL version "
 				                     << gl_versions[0].first << "." << gl_versions[0].second
 				                     << " is not available. It is the minimal required version.");
 			}
 
-			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, gl_versions[i_ver - 1].first);
-			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, gl_versions[i_ver - 1].second);
+			test_format.setMajorVersion(gl_versions[i_ver - 1].first);
+			test_format.setMinorVersion(gl_versions[i_ver - 1].second);
 			break;
 		}
-
-		SDL_GL_DeleteContext(test_context);
 	}
 
-	test_context = SDL_GL_CreateContext(test_window);
-	if (test_context == nullptr) {
-		throw Error(MSG(err) << "Failed to create OpenGL context which previously succeeded. This should not happen! SDL Error: " << SDL_GetError());
+	QOpenGLContext test_context{};
+	test_context.create();
+	if (!test_context.isValid()) {
+		throw Error(MSG(err) << "Failed to create OpenGL context which previously succeeded. This should not happen!");
 	}
-	SDL_GL_MakeCurrent(test_window, test_context);
+
+	QOffscreenSurface test_surface{};
+	test_surface.setFormat(test_format);
+	test_surface.create();
+
+	test_context.makeCurrent(&test_surface);
 
 	gl_context_capabilities caps{};
 
+	// Texture parameters
 	GLint temp;
 	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &temp);
 	caps.max_texture_size = temp;
@@ -74,32 +73,35 @@ static gl_context_capabilities find_capabilities() {
 	glGetIntegerv(GL_MAX_UNIFORM_BUFFER_BINDINGS, &temp);
 	caps.max_uniform_buffer_bindings = temp;
 
+	// OpenGL version
 	glGetIntegerv(GL_MAJOR_VERSION, &caps.major_version);
 	glGetIntegerv(GL_MINOR_VERSION, &caps.minor_version);
-
-	SDL_GL_DeleteContext(test_context);
-	SDL_DestroyWindow(test_window);
 
 	return caps;
 }
 
-GlContext::GlContext(const std::shared_ptr<SDL_Window> &window) :
+GlContext::GlContext(const std::shared_ptr<QWindow> &window) :
 	window{window} {
 	this->capabilities = find_capabilities();
 	auto const &capabilities = this->capabilities;
 
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, capabilities.major_version);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, capabilities.minor_version);
+	QSurfaceFormat format{};
+	format.setProfile(QSurfaceFormat::OpenGLContextProfile::CoreProfile);
+	format.setSwapBehavior(QSurfaceFormat::SwapBehavior::DoubleBuffer);
+	format.setDepthBufferSize(24);
+	format.setStencilBufferSize(8);
+	format.setMajorVersion(capabilities.major_version);
+	format.setMinorVersion(capabilities.minor_version);
 
-	this->gl_context = SDL_GL_CreateContext(window.get());
-
-	if (this->gl_context == nullptr) {
-		throw Error(MSG(err) << "OpenGL context creation failed. SDL error: " << SDL_GetError());
+	this->gl_context = std::make_shared<QOpenGLContext>();
+	this->gl_context->create();
+	if (!this->gl_context->isValid()) {
+		throw Error(MSG(err) << "OpenGL context creation failed.");
 	}
+
+	this->window->setFormat(format);
+	this->window->create();
+	this->gl_context->makeCurrent(window.get());
 
 	// We still have to verify that our version of libepoxy supports this version of OpenGL.
 	int epoxy_glv = capabilities.major_version * 10 + capabilities.minor_version;
@@ -128,13 +130,6 @@ GlContext::GlContext(const std::shared_ptr<SDL_Window> &window) :
 	}
 }
 
-GlContext::~GlContext() {
-	if (this->gl_context != nullptr) {
-		log::log(MSG(info) << "Destroying OpenGL context...");
-		SDL_GL_DeleteContext(this->gl_context);
-	}
-}
-
 GlContext::GlContext(GlContext &&other) :
 	gl_context(other.gl_context), capabilities(other.capabilities) {
 	other.gl_context = nullptr;
@@ -148,7 +143,7 @@ GlContext &GlContext::operator=(GlContext &&other) {
 	return *this;
 }
 
-SDL_GLContext GlContext::get_raw_context() const {
+std::shared_ptr<QOpenGLContext> GlContext::get_raw_context() const {
 	return this->gl_context;
 }
 
@@ -209,14 +204,10 @@ void GlContext::check_error() {
 
 void GlContext::set_vsync(bool on) {
 	if (on) {
-		// try to use swap control tearing (adaptive vsync)
-		if (SDL_GL_SetSwapInterval(-1) == -1) {
-			// otherwise fall back to standard vsync
-			SDL_GL_SetSwapInterval(1);
-		}
+		this->gl_context->format().setSwapInterval(1);
 	}
 	else {
-		SDL_GL_SetSwapInterval(0);
+		this->gl_context->format().setSwapInterval(0);
 	}
 }
 
@@ -231,6 +222,4 @@ void GlContext::set_current_program(const std::shared_ptr<GlShaderProgram> &prog
 }
 
 
-} // namespace opengl
-} // namespace renderer
-} // namespace openage
+} // namespace openage::renderer::opengl

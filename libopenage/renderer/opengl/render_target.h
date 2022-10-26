@@ -32,7 +32,7 @@ public:
 	/// Construct a render target pointing at the given textures.
 	/// Texture are attached to points specific to their pixel format,
 	/// e.g. a depth texture will be set as the depth target.
-	GlRenderTarget(const std::shared_ptr<QGlContext> &context,
+	GlRenderTarget(const std::shared_ptr<GlContext> &context,
 	               std::vector<std::shared_ptr<GlTexture2d>> const &textures);
 
 	/// Bind this render target to be drawn into.

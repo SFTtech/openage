@@ -9,7 +9,7 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-GlSimpleObject::GlSimpleObject(const std::shared_ptr<QGlContext> &context,
+GlSimpleObject::GlSimpleObject(const std::shared_ptr<GlContext> &context,
                                std::function<void(GLuint)> &&delete_fun) :
 	context{context},
 	delete_fun(std::move(delete_fun)) {}

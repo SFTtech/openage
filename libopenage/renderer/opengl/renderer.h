@@ -17,7 +17,7 @@ namespace opengl {
 /// The OpenGL specialization of the rendering interface.
 class GlRenderer final : public Renderer {
 public:
-	GlRenderer(const std::shared_ptr<QGlContext> &);
+	GlRenderer(const std::shared_ptr<GlContext> &);
 
 	std::shared_ptr<Texture2d> add_texture(resources::Texture2dData const &) override;
 	std::shared_ptr<Texture2d> add_texture(resources::Texture2dInfo const &) override;
@@ -44,7 +44,7 @@ private:
 	static void optimise(const std::shared_ptr<GlRenderPass> &);
 
 	/// The GL context.
-	std::shared_ptr<QGlContext> gl_context;
+	std::shared_ptr<GlContext> gl_context;
 
 	/// The main screen surface as a render target.
 	std::shared_ptr<GlRenderTarget> display;

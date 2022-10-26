@@ -1,15 +1,15 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <memory>
 
-#include <SDL2/SDL.h>
+#include <QObject>
 
+QT_FORWARD_DECLARE_CLASS(QWindow)
+QT_FORWARD_DECLARE_CLASS(QOpenGLContext)
 
-namespace openage {
-namespace renderer {
-namespace opengl {
+namespace openage::renderer::opengl {
 
 class GlShaderProgram;
 
@@ -32,20 +32,20 @@ struct gl_context_capabilities {
 /// Manages an OpenGL context.
 class GlContext {
 public:
-	/// Create a GL context in the given SDL window.
-	explicit GlContext(const std::shared_ptr<SDL_Window> &);
-	~GlContext();
+	/// Create a GL context in the given Qt window.
+	explicit GlContext(const std::shared_ptr<QWindow> &);
+	~GlContext() = default;
 
 	/// It doesn't make sense to have more than one instance of the same context.
-	GlContext(const GlContext&) = delete;
-	GlContext& operator=(const GlContext&) = delete;
+	GlContext(const GlContext &) = delete;
+	GlContext &operator=(const GlContext &) = delete;
 
 	/// We have to support moving to avoid a mess somewhere else.
-	GlContext(GlContext&&);
-	GlContext& operator=(GlContext&&);
+	GlContext(GlContext &&);
+	GlContext &operator=(GlContext &&);
 
-	/// Returns the underlying SDL context pointer.
-	SDL_GLContext get_raw_context() const;
+	/// Returns the underlying Qt context pointer.
+	std::shared_ptr<QOpenGLContext> get_raw_context() const;
 
 	/// Returns the capabilities of this context.
 	gl_context_capabilities get_capabilities() const;
@@ -64,11 +64,11 @@ public:
 	void set_current_program(const std::shared_ptr<GlShaderProgram> &);
 
 private:
-	/// The associated SDL window is held here so the context remains active.
-	std::shared_ptr<SDL_Window> window;
+	/// The associated Qt window is held here so the context remains active.
+	std::shared_ptr<QWindow> window;
 
-	/// Pointer to SDL struct representing the GL context.
-	SDL_GLContext gl_context;
+	/// Pointer to Qt struct representing the GL context.
+	std::shared_ptr<QOpenGLContext> gl_context;
 
 	/// Context capabilities.
 	gl_context_capabilities capabilities{};
@@ -77,4 +77,4 @@ private:
 	std::weak_ptr<GlShaderProgram> last_program;
 };
 
-}}} // openage::renderer::opengl
+} // namespace openage::renderer::opengl

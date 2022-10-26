@@ -19,7 +19,7 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-GlTexture2d::GlTexture2d(const std::shared_ptr<QGlContext> &context,
+GlTexture2d::GlTexture2d(const std::shared_ptr<GlContext> &context,
                          const resources::Texture2dData &data) :
 	Texture2d(data.get_info()),
 	GlSimpleObject(context,
@@ -57,7 +57,7 @@ GlTexture2d::GlTexture2d(const std::shared_ptr<QGlContext> &context,
 	log::log(MSG(dbg) << "Created OpenGL texture from data");
 }
 
-GlTexture2d::GlTexture2d(const std::shared_ptr<QGlContext> &context,
+GlTexture2d::GlTexture2d(const std::shared_ptr<GlContext> &context,
                          const resources::Texture2dInfo &info) :
 	Texture2d(info),
 	GlSimpleObject(context,

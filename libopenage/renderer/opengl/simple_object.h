@@ -13,7 +13,7 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-class QGlContext;
+class GlContext;
 
 
 /// A base class for all classes representing OpenGL Objects to inherit from.
@@ -39,13 +39,13 @@ public:
 	GLuint get_handle() const;
 
 protected:
-	explicit GlSimpleObject(const std::shared_ptr<QGlContext> &,
+	explicit GlSimpleObject(const std::shared_ptr<GlContext> &,
 	                        std::function<void(GLuint)> &&delete_fun);
 
 	/// Context, in which this object is valid in.
 	/// We hold this reference to keep the context active as long as this object
 	/// is not deconstructed.
-	std::shared_ptr<QGlContext> context;
+	std::shared_ptr<GlContext> context;
 
 	/// The handle to the OpenGL Object that this class represents.
 	std::optional<GLuint> handle;

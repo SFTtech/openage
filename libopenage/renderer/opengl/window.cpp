@@ -2,15 +2,13 @@
 
 #include "window.h"
 
-#include "../../error/error.h"
-#include "../../log/log.h"
-#include "../sdl_global.h"
-#include "../window_event_handler.h"
-
+#include "error/error.h"
 #include "gui/guisys/public/gui_application.h"
-#include "renderer.h"
-#include "context.h"
-#include "context_qt.h"
+#include "log/log.h"
+#include "renderer/opengl/context.h"
+#include "renderer/opengl/renderer.h"
+#include "renderer/sdl_global.h"
+#include "renderer/window_event_handler.h"
 
 #include <QGuiApplication>
 #include <QOpenGLContext>
@@ -22,7 +20,6 @@ namespace openage::renderer::opengl {
 
 GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 	Window{width, height} {
-
 	if (QGuiApplication::instance() == nullptr) {
 		// Qt windows need to attach to a QtGuiApplication
 		throw Error{MSG(err) << "Failed to create Qt window: QGuiApplication has not been created yet."};
@@ -36,7 +33,7 @@ GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 
 	this->window->setSurfaceType(QSurface::OpenGLSurface);
 
-	this->context = std::make_shared<QGlContext>(this->window);
+	this->context = std::make_shared<GlContext>(this->window);
 	if (not this->context->get_raw_context()->isValid()) {
 		throw Error{MSG(err) << "Failed to create Qt OpenGL context."};
 	}
@@ -65,7 +62,7 @@ GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 	this->window->setVisible(true);
 	log::log(MSG(info) << "Created Qt window with OpenGL context.");
 
-	QGlContext::check_error();
+	GlContext::check_error();
 }
 
 
@@ -136,7 +133,7 @@ void GlWindow::make_context_current() {
 }
 
 
-const std::shared_ptr<opengl::QGlContext> &GlWindow::get_context() const {
+const std::shared_ptr<opengl::GlContext> &GlWindow::get_context() const {
 	return this->context;
 }
 

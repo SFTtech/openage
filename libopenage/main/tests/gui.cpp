@@ -6,18 +6,18 @@
 #include <eigen3/Eigen/Dense>
 #include <vector>
 
-#include "../../log/log.h"
-#include "../../renderer/geometry.h"
-#include "../../renderer/opengl/context_qt.h"
-#include "../../renderer/opengl/shader.h"
-#include "../../renderer/opengl/window.h"
-#include "../../renderer/resources/mesh_data.h"
-#include "../../renderer/resources/shader_source.h"
-#include "../../renderer/resources/texture_data.h"
-#include "../../renderer/shader_program.h"
-#include "../../renderer/texture.h"
-#include "../../renderer/util.h"
 #include "gamestate.h"
+#include "log/log.h"
+#include "renderer/geometry.h"
+#include "renderer/opengl/context.h"
+#include "renderer/opengl/shader.h"
+#include "renderer/opengl/window.h"
+#include "renderer/resources/mesh_data.h"
+#include "renderer/resources/shader_source.h"
+#include "renderer/resources/texture_data.h"
+#include "renderer/shader_program.h"
+#include "renderer/texture.h"
+#include "renderer/util.h"
 
 
 namespace openage::main::tests::pong {
@@ -232,7 +232,7 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 
 	this->renderer->render(this->render_pass);
 	this->window.update();
-	renderer::opengl::QGlContext::check_error();
+	renderer::opengl::GlContext::check_error();
 
 	this->exit_requested = window.should_close();
 	if (this->exit_requested) {

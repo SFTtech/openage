@@ -2,36 +2,36 @@
 
 #include "tests.h"
 
+#include <QMouseEvent>
 #include <cstdlib>
+#include <eigen3/Eigen/Dense>
 #include <epoxy/gl.h>
 #include <functional>
-#include <unordered_map>
 #include <memory>
-#include <eigen3/Eigen/Dense>
-#include <QMouseEvent>
+#include <unordered_map>
 
-#include "../log/log.h"
-#include "../error/error.h"
-#include "../util/math_constants.h"
-#include "resources/shader_source.h"
-#include "resources/texture_data.h"
-#include "resources/mesh_data.h"
-#include "texture.h"
-#include "shader_program.h"
-#include "geometry.h"
-#include "opengl/window.h"
+#include "error/error.h"
+#include "log/log.h"
+#include "renderer/geometry.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
+#include "renderer/opengl/window.h"
+#include "renderer/resources/mesh_data.h"
+#include "renderer/resources/shader_source.h"
+#include "renderer/resources/texture_data.h"
+#include "renderer/shader_program.h"
+#include "renderer/texture.h"
+#include "util/math_constants.h"
 
 
 namespace openage::renderer::tests {
 
 // Macro for debugging OpenGL state.
-#define DBG_GL(txt)                    \
-	printf("before %s\n", txt);          \
-	opengl::GlContext::check_error();    \
+#define DBG_GL(txt) \
+	printf("before %s\n", txt); \
+	opengl::GlContext::check_error(); \
 	printf("after %s\n", txt);
 
-void renderer_demo_0(const util::Path& path) {
+void renderer_demo_0(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
 	opengl::GlWindow window("openage renderer test", 800, 600);
@@ -112,8 +112,8 @@ void main() {
 }
 )s");
 
-	auto obj_shader = renderer->add_shader( { obj_vshader_src, obj_fshader_src } );
-	auto display_shader = renderer->add_shader( { display_vshader_src, display_fshader_src } );
+	auto obj_shader = renderer->add_shader({obj_vshader_src, obj_fshader_src});
+	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
 
 	/* Texture for the clickable objects. */
 	auto tex = resources::Texture2dData(path / "/assets/gaben.png");
@@ -127,10 +127,12 @@ void main() {
 	/* Clickable objects on the screen consist of a transform (matrix which places each object
 	 * in the correct location), an identifier and a reference to the texture. */
 	auto obj1_unifs = obj_shader->new_uniform_input(
-		"mv", transform1.matrix(),
-		"u_id", 1u,
-		"tex", gltex
-	);
+		"mv",
+		transform1.matrix(),
+		"u_id",
+		1u,
+		"tex",
+		gltex);
 
 	auto transform2 = Eigen::Affine3f::Identity();
 	transform2.prescale(Eigen::Vector3f(0.3f, 0.1f, 1.0f));
@@ -141,20 +143,24 @@ void main() {
 	transform2.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.3f));
 
 	auto obj2_unifs = obj_shader->new_uniform_input(
-		"mv", transform2.matrix(),
-		"u_id", 2u,
+		"mv",
+		transform2.matrix(),
+		"u_id",
+		2u,
 		// TODO bug: this tex input spills over to all the other uniform inputs!
-		"tex", gltex
-	);
+		"tex",
+		gltex);
 
 	transform3.prerotate(Eigen::AngleAxisf(90.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
 	transform3.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.5f));
 
 	auto obj3_unifs = obj_shader->new_uniform_input(
-		"mv", transform3.matrix(),
-		"u_id", 3u,
-		"tex", gltex
-	);
+		"mv",
+		transform3.matrix(),
+		"u_id",
+		3u,
+		"tex",
+		gltex);
 
 	/* The objects are using built-in quadrilateral geometry. */
 	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
@@ -187,7 +193,7 @@ void main() {
 	auto color_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::rgba8));
 	auto id_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::r32ui));
 	auto depth_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::depth24));
-	auto fbo = renderer->create_texture_target( { color_texture, id_texture, depth_texture } );
+	auto fbo = renderer->create_texture_target({color_texture, id_texture, depth_texture});
 
 	/* Make an object to update the projection matrix in pass 1 according to changes in the screen size.
 	 * Because uniform values are preserved across objects using the same shader in a single render pass,
@@ -202,21 +208,20 @@ void main() {
 	};
 
 	auto pass1 = renderer->add_render_pass(
-		{ proj_update, obj1, obj2, obj3 },
-		fbo
-	);
+		{proj_update, obj1, obj2, obj3},
+		fbo);
 
 	/* Make an object encompassing the entire screen for the second render pass. The object
 	 * will be textured with the color output of pass 1, effectively copying its framebuffer. */
 	auto color_texture_unif = display_shader->new_uniform_input("color_texture", color_texture);
-	Renderable display_obj {
+	Renderable display_obj{
 		color_texture_unif,
 		quad,
 		false,
 		false,
 	};
 
-	auto pass2 = renderer->add_render_pass({ display_obj }, renderer->get_display_target());
+	auto pass2 = renderer->add_render_pass({display_obj}, renderer->get_display_target());
 
 	/* Data retrieved from the object index texture. */
 	resources::Texture2dData id_texture_data = id_texture->into_data();
@@ -227,7 +232,7 @@ void main() {
 	glDepthRange(0.0, 1.0);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	window.add_mouse_button_callback([&] (const QMouseEvent &ev) {
+	window.add_mouse_button_callback([&](const QMouseEvent &ev) {
 		auto qpos = ev.position();
 		ssize_t x = qpos.x();
 		ssize_t y = qpos.y();
@@ -241,21 +246,22 @@ void main() {
 		log::log(INFO << "Id-texture-value at location: " << id);
 		if (id == 0) {
 			log::log(INFO << "Clicked at non existent object");
-		} else {
+		}
+		else {
 			log::log(INFO << "Object number " << id << " clicked.");
 		}
 	});
 
-	window.add_resize_callback([&] (size_t w, size_t h) {
+	window.add_resize_callback([&](size_t w, size_t h) {
 		/* Calculate a projection matrix for the new screen size. */
-		float aspectRatio = float(w)/float(h);
-		float xScale = 1.0/aspectRatio;
+		float aspectRatio = float(w) / float(h);
+		float xScale = 1.0 / aspectRatio;
 
 		Eigen::Matrix4f pmat;
 		pmat << xScale, 0, 0, 0,
-		             0, 1, 0, 0,
-		             0, 0, 1, 0,
-		             0, 0, 0, 1;
+			0, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 0, 0, 1;
 
 		proj_unif->update("proj", pmat);
 
@@ -263,7 +269,7 @@ void main() {
 		color_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::rgba8));
 		id_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::r32ui));
 		depth_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::depth24));
-		fbo = renderer->create_texture_target( { color_texture, id_texture, depth_texture } );
+		fbo = renderer->create_texture_target({color_texture, id_texture, depth_texture});
 
 		color_texture_unif->update("color_texture", color_texture);
 
@@ -283,7 +289,7 @@ void main() {
 }
 
 
-void renderer_demo_2(const util::Path& path) {
+void renderer_demo_2(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
 	opengl::GlWindow window("openage renderer test", 800, 600);
@@ -315,7 +321,7 @@ void main() {
 }
 )s");
 
-	auto display_shader = renderer->add_shader( { display_vshader_src, display_fshader_src } );
+	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
 
 	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
 	Renderable display_stuff{
@@ -325,7 +331,7 @@ void main() {
 		false,
 	};
 
-	auto pass = renderer->add_render_pass({ display_stuff }, renderer->get_display_target());
+	auto pass = renderer->add_render_pass({display_stuff}, renderer->get_display_target());
 
 	while (not window.should_close()) {
 		renderer->render(pass);
@@ -335,7 +341,6 @@ void main() {
 		renderer->check_error();
 	}
 	window.close();
-
 }
 
 

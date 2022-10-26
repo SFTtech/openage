@@ -16,7 +16,7 @@ static constexpr auto gl_shdr_type = datastructure::create_const_map<resources::
 	std::make_pair(resources::shader_stage_t::tesselation_evaluation, GL_TESS_EVALUATION_SHADER),
 	std::make_pair(resources::shader_stage_t::fragment, GL_FRAGMENT_SHADER));
 
-GlShader::GlShader(const std::shared_ptr<QGlContext> &context,
+GlShader::GlShader(const std::shared_ptr<GlContext> &context,
                    const resources::ShaderSource &src) :
 	GlSimpleObject(context,
                    [](GLuint handle) { glDeleteShader(handle); }),

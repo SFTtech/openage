@@ -1,6 +1,5 @@
 add_sources(libopenage
 	buffer.cpp
-	context_qt.cpp
 	context.cpp
 	framebuffer.cpp
 	geometry.cpp

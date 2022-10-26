@@ -11,7 +11,7 @@
 #include "../../log/log.h"
 #include "../../util/opengl.h"
 
-#include "renderer/opengl/context_qt.h"
+#include "renderer/opengl/context.h"
 #include "renderer/opengl/geometry.h"
 #include "renderer/opengl/lookup.h"
 #include "renderer/opengl/shader.h"
@@ -24,7 +24,7 @@ static void check_program_status(GLuint program, GLenum what_to_check) {
 	GLint status = GL_FALSE;
 	glGetProgramiv(program, what_to_check, &status);
 
-	QGlContext::check_error();
+	GlContext::check_error();
 
 	if (status != GL_TRUE) {
 		const char *what_str = [=] {
@@ -58,12 +58,12 @@ static void check_program_status(GLuint program, GLenum what_to_check) {
 	}
 }
 
-GlShaderProgram::GlShaderProgram(const std::shared_ptr<QGlContext> &context,
+GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
                                  const std::vector<resources::ShaderSource> &srcs) :
 	GlSimpleObject(context,
                    [](GLuint handle) { glDeleteProgram(handle); }),
 	validated(false) {
-	const qgl_context_capabilities &caps = context->get_capabilities();
+	const gl_context_capabilities &caps = context->get_capabilities();
 
 	GLuint handle = glCreateProgram();
 	this->handle = handle;

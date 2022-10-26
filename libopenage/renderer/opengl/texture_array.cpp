@@ -19,7 +19,7 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-GlTexture2dArray::GlTexture2dArray(const std::shared_ptr<QGlContext> &context,
+GlTexture2dArray::GlTexture2dArray(const std::shared_ptr<GlContext> &context,
                                    const std::vector<resources::Texture2dData> &data)
 	// Call the data-less constructor first.
 	:
@@ -47,7 +47,7 @@ GlTexture2dArray::GlTexture2dArray(const std::shared_ptr<QGlContext> &context,
 	}
 }
 
-GlTexture2dArray::GlTexture2dArray(const std::shared_ptr<QGlContext> &context,
+GlTexture2dArray::GlTexture2dArray(const std::shared_ptr<GlContext> &context,
                                    size_t n_layers,
                                    resources::Texture2dInfo const &layer_info) :
 	Texture2dArray(layer_info),

@@ -8,7 +8,7 @@ namespace openage::renderer::opengl {
 GlRenderTarget::GlRenderTarget() :
 	type(gl_render_target_t::display) {}
 
-GlRenderTarget::GlRenderTarget(const std::shared_ptr<QGlContext> &context,
+GlRenderTarget::GlRenderTarget(const std::shared_ptr<GlContext> &context,
                                const std::vector<std::shared_ptr<GlTexture2d>> &textures) :
 	type(gl_render_target_t::textures),
 	framebuffer({context, textures}) {}

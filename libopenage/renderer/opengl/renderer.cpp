@@ -4,18 +4,18 @@
 
 #include <algorithm>
 
-#include "../../error/error.h"
-#include "../../log/log.h"
-#include "geometry.h"
-#include "renderer/opengl/context_qt.h"
-#include "shader_program.h"
-#include "texture.h"
-#include "uniform_input.h"
+#include "error/error.h"
+#include "log/log.h"
+#include "renderer/opengl/context.h"
+#include "renderer/opengl/geometry.h"
+#include "renderer/opengl/shader_program.h"
+#include "renderer/opengl/texture.h"
+#include "renderer/opengl/uniform_input.h"
 
 
 namespace openage::renderer::opengl {
 
-GlRenderer::GlRenderer(const std::shared_ptr<QGlContext> &ctx) :
+GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx) :
 	gl_context{ctx},
 	display{std::make_shared<GlRenderTarget>()} {
 	log::log(MSG(info) << "Created OpenGL renderer");
@@ -97,7 +97,7 @@ void GlRenderer::optimise(const std::shared_ptr<GlRenderPass> &pass) {
 
 void GlRenderer::check_error() {
 	// thanks for the global state, opengl!
-	QGlContext::check_error();
+	GlContext::check_error();
 }
 
 void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {

@@ -22,7 +22,7 @@ public:
 	GlGeometry();
 
 	/// Initialize a meshed geometry. Relatively costly, has to initialize GL buffers and copy vertex data.
-	explicit GlGeometry(const std::shared_ptr<QGlContext> &context, resources::MeshData const &);
+	explicit GlGeometry(const std::shared_ptr<GlContext> &context, resources::MeshData const &);
 
 	/// Executes a draw command for the geometry on the currently active context.
 	/// Assumes bound and valid shader program and all other necessary state.

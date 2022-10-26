@@ -14,7 +14,7 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-GlVertexArray::GlVertexArray(const std::shared_ptr<QGlContext> &context,
+GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
                              std::vector<std::pair<GlBuffer const &,
                                                    resources::VertexInputInfo const &>> buffers) :
 	GlSimpleObject(context, [](GLuint handle) { glDeleteVertexArrays(1, &handle); }) {
@@ -142,12 +142,12 @@ GlVertexArray::GlVertexArray(const std::shared_ptr<QGlContext> &context,
 	}
 }
 
-GlVertexArray::GlVertexArray(const std::shared_ptr<QGlContext> &context,
+GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
                              GlBuffer const &buf,
                              resources::VertexInputInfo const &info) :
 	GlVertexArray(context, {{buf, info}}) {}
 
-GlVertexArray::GlVertexArray(const std::shared_ptr<QGlContext> &context) :
+GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context) :
 	GlSimpleObject(context,
                    [](GLuint handle) { glDeleteVertexArrays(1, &handle); }) {
 	GLuint handle;

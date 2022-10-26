@@ -9,9 +9,9 @@
 
 #include "gui/guisys/private/platforms/context_extraction.h"
 #include "renderer/gui/guisys/private/opengl_debug_logger.h"
-#include "renderer/window.h"
+#include "renderer/opengl/context.h"
 #include "renderer/opengl/window.h"
-#include "renderer/opengl/context_qt.h"
+#include "renderer/window.h"
 
 namespace qtgui {
 
@@ -26,11 +26,6 @@ const std::shared_ptr<QOpenGLContext> &CtxExtractionMode::get_ctx() const {
 GlGuiRenderingContext::GlGuiRenderingContext(std::shared_ptr<openage::renderer::Window> window) :
 	CtxExtractionMode{},
 	offscreen_surface{} {
-	//auto format = window->get_qt_window()->format();
-	//this->ctx.setFormat(format);
-	//this->ctx.create();
-	//assert(this->ctx.isValid());
-
 	this->ctx = std::dynamic_pointer_cast<openage::renderer::opengl::GlWindow>(window)->get_context()->get_raw_context();
 
 	auto context_debug_parameters = get_current_opengl_debug_parameters(*this->ctx);

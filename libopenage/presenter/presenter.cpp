@@ -4,15 +4,13 @@
 
 #include <eigen3/Eigen/Dense>
 
-#include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "log/log.h"
 #include "renderer/gui/gui.h"
+#include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/gui/qml_info.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/window.h"
 #include "util/path.h"
-
-#include "renderer/opengl/context_qt.h"
 
 namespace openage::presenter {
 
@@ -27,7 +25,6 @@ void Presenter::run() {
 	this->window = renderer::Window::create("openage presenter test", 800, 600);
 
 	this->renderer = this->window->make_renderer();
-
 
 	//// -- gui initialization
 	util::Path qml_root = this->root_dir / "assets" / "qml";
@@ -50,8 +47,6 @@ void Presenter::run() {
 	//       figure out the absolute paths here and pass them in.
 
 	renderer::gui::QMLInfo qml_info{this->engine.get(), qml_root};
-
-	renderer::opengl::QGlContext::check_error(); // success
 
 	this->gui = std::make_shared<renderer::gui::GUI>(
 		this->gui_app, // Qt application wrapper

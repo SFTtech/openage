@@ -10,18 +10,16 @@
 #include <QQuickWindow>
 #include <QVulkanInstance>
 
-#include "../../error/error.h"
-#include "../../log/log.h"
-#include "../sdl_global.h"
-#include "../window_event_handler.h"
+#include "error/error.h"
+#include "log/log.h"
+#include "renderer/sdl_global.h"
+#include "renderer/window_event_handler.h"
 
-#include "graphics_device.h"
-#include "util.h"
+#include "renderer/vulkan/graphics_device.h"
+#include "renderer/vulkan/util.h"
 
 
-namespace openage {
-namespace renderer {
-namespace vulkan {
+namespace openage::renderer::vulkan {
 
 #ifndef NDEBUG
 static VKAPI_ATTR VkBool32 VKAPI_CALL vlk_debug_cb(
@@ -83,7 +81,6 @@ static vlk_capabilities find_capabilities() {
 
 VlkWindow::VlkWindow(const char *title, size_t width, size_t height) :
 	Window(width, height), capabilities(find_capabilities()) {
-
 	std::vector<const char *> extension_names;
 
 #ifndef NDEBUG
@@ -145,8 +142,6 @@ VlkWindow::VlkWindow(const char *title, size_t width, size_t height) :
 	VK_CALL_CHECKED(this->loader.vkCreateDebugReportCallbackEXT, this->instance, &cb_info, nullptr, &this->debug_callback);
 #endif
 
-
-	// ASDF: Qt Port
 	if (QGuiApplication::instance() == nullptr) {
 		// Qt windows need to attach to a QtGuiApplication
 		throw Error{MSG(err) << "Failed to create Qt window: QGuiApplication has not been created yet."};
@@ -194,6 +189,4 @@ VkSurfaceKHR VlkWindow::get_surface() const {
 	return this->surface;
 }
 
-} // namespace vulkan
-} // namespace renderer
-} // namespace openage
+} // namespace openage::renderer::vulkan

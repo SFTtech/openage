@@ -16,11 +16,11 @@ class GlTexture2d final : public Texture2d
 	, public GlSimpleObject {
 public:
 	/// Constructs a texture and fills it with the given data.
-	explicit GlTexture2d(const std::shared_ptr<QGlContext> &context,
+	explicit GlTexture2d(const std::shared_ptr<GlContext> &context,
 	                     const resources::Texture2dData &);
 
 	/// Constructs an empty texture with the given parameters.
-	GlTexture2d(const std::shared_ptr<QGlContext> &context,
+	GlTexture2d(const std::shared_ptr<GlContext> &context,
 	            resources::Texture2dInfo const &);
 
 	resources::Texture2dData into_data() override;

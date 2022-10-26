@@ -14,7 +14,7 @@ namespace opengl {
 class GlShader final : public GlSimpleObject {
 public:
 	/// Compiles the shader from the given source.
-	explicit GlShader(const std::shared_ptr<QGlContext> &context,
+	explicit GlShader(const std::shared_ptr<GlContext> &context,
 	                  const resources::ShaderSource &);
 
 	/// Returns the stage of the rendering pipeline this shader defines.

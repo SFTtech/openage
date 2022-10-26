@@ -22,12 +22,12 @@ public:
 	/// vector, and fills the layers with the corresponding vector element. The
 	/// texture formats in all vector elements must be the same as defined by
 	/// Textur2dInfo::operator==.
-	GlTexture2dArray(const std::shared_ptr<QGlContext> &context,
+	GlTexture2dArray(const std::shared_ptr<GlContext> &context,
 	                 const std::vector<resources::Texture2dData> &);
 
 	/// Constructs an array of ln_layers empty layers, with the per-layer texture
 	/// format specified in layer_info.
-	GlTexture2dArray(const std::shared_ptr<QGlContext> &context,
+	GlTexture2dArray(const std::shared_ptr<GlContext> &context,
 	                 size_t n_layers,
 	                 resources::Texture2dInfo const &layer_info);
 

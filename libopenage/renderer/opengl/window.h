@@ -2,17 +2,13 @@
 
 #pragma once
 
-#include "../window.h"
+#include "renderer/window.h"
 
 #include <optional>
 
 
 QT_FORWARD_DECLARE_CLASS(QWindow)
 QT_FORWARD_DECLARE_CLASS(QOpenGLContext)
-
-namespace qtsdl {
-class GuiApplication;
-}
 
 namespace openage {
 namespace renderer {
@@ -22,7 +18,6 @@ class EventHandlingQuickWindow;
 namespace opengl {
 
 class GlContext;
-class QGlContext;
 
 class GlWindow final : public Window {
 public:
@@ -41,11 +36,11 @@ public:
 	void make_context_current();
 
 	/// Return a pointer to this window's GL context.
-	const std::shared_ptr<opengl::QGlContext> &get_context() const;
+	const std::shared_ptr<opengl::GlContext> &get_context() const;
 
 private:
 	// OpenGL Context in Qt
-	std::shared_ptr<opengl::QGlContext> context;
+	std::shared_ptr<opengl::GlContext> context;
 };
 
 } // namespace opengl

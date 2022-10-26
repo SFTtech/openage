@@ -17,7 +17,7 @@ namespace opengl {
 GlGeometry::GlGeometry() :
 	Geometry(geometry_t::bufferless_quad) {}
 
-GlGeometry::GlGeometry(const std::shared_ptr<QGlContext> &context, const resources::MeshData &mesh) :
+GlGeometry::GlGeometry(const std::shared_ptr<GlContext> &context, const resources::MeshData &mesh) :
 	Geometry(geometry_t::mesh) {
 	GlBuffer verts_buf{context, mesh.get_data().data(), mesh.get_data().size()};
 	GlVertexArray verts_array(context, verts_buf, mesh.get_info());

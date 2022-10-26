@@ -3,13 +3,12 @@
 #include "renderer/gui/gui.h"
 
 #include "renderer/gui/qml_info.h"
+#include "renderer/opengl/context.h"
 #include "renderer/renderer.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/window.h"
 #include "util/path.h"
-
-#include "renderer/opengl/context_qt.h"
 
 namespace openage::renderer::gui {
 
@@ -19,11 +18,9 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
          const util::Path &rootdir,
          const util::Path &assetdir,
          const std::shared_ptr<Renderer> &renderer,
-         QMLInfo *info)
-	: application{app}
-	, render_updater{}
-	, gui_renderer{window}
-	, renderer{renderer}
+         QMLInfo *info) :
+	application{app},
+	render_updater{}, gui_renderer{window}, renderer{renderer}
 //game_logic_updater{},
 //image_provider_by_filename{
 //	&render_updater,
@@ -41,7 +38,7 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
 //input{&gui_renderer, &game_logic_updater}
 {
 	// everything alright before we create the gui stuff?
-	renderer::opengl::QGlContext::check_error();
+	renderer::opengl::GlContext::check_error();
 
 	auto size = window->get_size();
 	// create the appropriate texture
@@ -110,7 +107,7 @@ void GUI::initialize_render_pass(size_t width,
 		true,
 	};
 
-	this->render_pass = renderer->add_render_pass({ display_obj }, renderer->get_display_target());
+	this->render_pass = renderer->add_render_pass({display_obj}, renderer->get_display_target());
 }
 
 
