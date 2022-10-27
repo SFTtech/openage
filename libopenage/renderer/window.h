@@ -6,8 +6,6 @@
 #include <memory>
 #include <vector>
 
-#include <SDL2/SDL.h>
-
 #include "../util/vector.h"
 #include "renderer.h"
 

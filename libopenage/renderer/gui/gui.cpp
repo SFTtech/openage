@@ -48,17 +48,14 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
 	this->initialize_render_pass(size[0], size[1], shaderdir);
 
 	/*
-	window->add_key_callback([&](SDL_KeyboardEvent const &event) {
-		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
-		// this->input.process(&ev);
+	window->add_key_callback([&](const QKeyEvent &event) {
+		this->input.process(&ev);
 	});
-	window->add_mouse_button_callback([&](SDL_MouseButtonEvent const &event) {
-		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
-		// this->input.process(&ev);
+	window->add_mouse_button_callback([&](const QMouseEvent &event) {
+		this->input.process(&ev);
 	});
-	window->add_mouse_wheel_callback([&](SDL_MouseWheelEvent const &event) {
-		auto ev = *reinterpret_cast<SDL_Event const *>(&event);
-		// this->input.process(&ev);
+	window->add_mouse_wheel_callback([&](const QWheelEvent &event) {
+		this->input.process(&ev);
 	});
 	*/
 	window->add_resize_callback([this](size_t width, size_t height) {

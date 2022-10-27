@@ -16,15 +16,15 @@ bool WindowEventHandler::eventFilter(QObject *, QEvent *event) {
 	};
 
 	switch (event->type()) {
-	case QEvent::Resize:
-		add_to_queue();
-		// pass on the event
-		return false;
 	case QEvent::KeyPress:
 	case QEvent::KeyRelease:
 	case QEvent::MouseButtonDblClick:
 	case QEvent::MouseButtonPress:
 	case QEvent::MouseButtonRelease:
+	case QEvent::Resize:
+		add_to_queue();
+		// pass on the event
+		return false;
 	case QEvent::Close:
 		add_to_queue();
 		// filter out the event
@@ -47,4 +47,4 @@ std::vector<std::shared_ptr<QEvent>> WindowEventHandler::pop_events() {
 }
 
 
-} // openage::renderer
+} // namespace openage::renderer

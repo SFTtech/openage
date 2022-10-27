@@ -4,15 +4,12 @@
 
 #include <set>
 
-#include <SDL2/SDL_vulkan.h>
-
 #include <QGuiApplication>
 #include <QQuickWindow>
 #include <QVulkanInstance>
 
 #include "error/error.h"
 #include "log/log.h"
-#include "renderer/sdl_global.h"
 #include "renderer/window_event_handler.h"
 
 #include "renderer/vulkan/graphics_device.h"

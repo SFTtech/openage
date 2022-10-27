@@ -6,6 +6,8 @@
 #include <unordered_map>
 #include <memory>
 
+#include <SDL2/SDL.h>
+
 #include <nyan/nyan.h>
 
 #include "aicontroller.h"
