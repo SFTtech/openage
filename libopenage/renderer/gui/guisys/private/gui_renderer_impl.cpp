@@ -31,7 +31,6 @@ GuiRendererImpl::GuiRendererImpl(std::shared_ptr<openage::renderer::Window> wind
 	QObject{},
 	render_control{},
 	gui_context{window} {
-
 	// use of undocumented as of qt6.4 constructor
 	// QQuickWindow(QQuickRenderControl *renderControl)
 	// which associates the render controller with a qwindow.
@@ -73,10 +72,6 @@ void GuiRendererImpl::render() {
 
 GuiRendererImpl *GuiRendererImpl::impl(GuiRenderer *renderer) {
 	return renderer->impl.get();
-}
-
-QQuickWindow *GuiRendererImpl::get_window() {
-	return &*this->target_window;
 }
 
 void GuiRendererImpl::resize(const size_t width, const size_t height) {

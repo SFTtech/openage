@@ -66,7 +66,7 @@ void Presenter::run() {
 		this->renderer->render(gui_pass);
 		this->window->update();
 		this->gui->process_events();
-		this->gui->drawhud();
+		this->gui->render();
 
 		this->renderer->check_error();
 	}

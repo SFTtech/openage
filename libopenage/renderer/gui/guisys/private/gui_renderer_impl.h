@@ -30,7 +30,13 @@ class GuiRenderer;
 
 
 /**
- * Passes the native graphic context to Qt.
+ * Renderer for drawing a Qt QML GUI into an openage texture.
+ *
+ * The method ued in this class closely follows the QQuickRenderControl flow
+ * provided by Qt. Essentially, we tell Qt to render its GUI into an offscreen
+ * surface (our texture). See
+ * https://doc.qt.io/qt-6/qquickrendercontrol.html#details
+ * for more info.
  */
 class GuiRendererImpl final : public QObject {
 	Q_OBJECT
@@ -42,28 +48,26 @@ public:
 	static GuiRendererImpl *impl(GuiRenderer *renderer);
 
 	/**
-	 * draw the gui into our texture.
+	 * Draw the QML GUI into the assigned GUI texture.
 	 */
 	void render();
 
 	/**
-	 * Adjust the target window's geometry.
+	 * Adjust the offscreen surface's geometry.
 	 *
 	 * @param width Target width.
 	 * @param height Target height.
 	 */
 	void resize(const size_t width, const size_t height);
 
-	QQuickWindow *get_window();
-
 	/**
-	 * update the texture where the gui shall be rendered into.
+	 * Set the texture that the GUI is rendered into.
 	 */
 	void set_texture(const std::shared_ptr<openage::renderer::Texture2d> &texture);
 
 signals:
 	/**
-	 * emitted when the off-screen gui window was resized through `resize`.
+	 * Emitted when the off-screen gui window was resized through `resize`.
 	 */
 	void resized(const QSize &size);
 
@@ -83,12 +87,13 @@ private:
 	std::unique_ptr<QQuickWindow> target_window;
 
 	/**
-	 * Texture that is targeted by the gui renderer.
+	 * GUI texture that is targeted by the render control.
 	 */
 	std::shared_ptr<openage::renderer::Texture2d> texture;
 
 	/**
 	 * Rendering context.
+	 *
 	 * Beware: in the member order, put _after_ all context-affine resources (e.g. texture).
 	 * otherwise the context will be deleted before the resource in it.
 	 */

@@ -52,18 +52,22 @@ public:
 	virtual QQuickGraphicsDevice get_device() = 0;
 
 protected:
+	/**
+	 * OpenGL Context for drawing. Should be acquired from the
+	 * displayed openage window.
+	 */
 	std::shared_ptr<QOpenGLContext> ctx;
 };
 
 /**
- * Use the same context to render the GUI.
+ * OpenGL Context manager for rendering the GUI.
  */
 class GlGuiRenderingContext : public CtxExtractionMode {
 public:
 	explicit GlGuiRenderingContext(std::shared_ptr<openage::renderer::Window> window);
 
 	/**
-	 * Makes the OpenGL context current.
+	 * Makes the OpenGL context current to the offscreen surface.
 	 */
 	virtual void pre_render() override;
 
@@ -73,13 +77,15 @@ public:
 	virtual void post_render() override;
 
 	/**
-	 * Get a device object associated with the context.
+	 * Get a Qt device object associated with the context.
+	 *
+	 * @return Device object of the OpenGL context.
 	 */
 	virtual QQuickGraphicsDevice get_device() override;
 
 private:
 	/**
-	 * Surface that is needed to make the GUI context current
+	 * Surface that is needed to make the GUI context current.
 	 */
 	QOffscreenSurface offscreen_surface;
 };

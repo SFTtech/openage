@@ -91,7 +91,6 @@ void GUI::initialize_render_pass(size_t width,
 
 	auto quad = this->renderer->add_mesh_geometry(resources::MeshData::make_quad());
 	auto maptex_shader = this->renderer->add_shader({id_shader_src, maptex_frag_shader_src});
-	this->textured_screen_quad_shader = maptex_shader;
 
 	// GUI draw surface. gets drawn on top of the gameworld in the presenter.
 	auto fbo = this->renderer->create_texture_target({this->texture});
@@ -104,6 +103,7 @@ void GUI::initialize_render_pass(size_t width,
 		true,
 	};
 
+	// TODO: Render into FBO instead of screen
 	this->render_pass = renderer->add_render_pass({display_obj}, renderer->get_display_target());
 }
 
@@ -111,6 +111,7 @@ void GUI::initialize_render_pass(size_t width,
 void GUI::resize(size_t width, size_t height) {
 	// TODO: this texture has to be bigger because of highdpi scaling
 	//       width and height are not the real window pixel surface.
+	// Hint: Use effectiveDevicePixelRatio() method
 	this->texture = this->renderer->add_texture(
 		resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
 
@@ -123,11 +124,10 @@ void GUI::resize(size_t width, size_t height) {
 }
 
 
-bool GUI::drawhud() {
+void GUI::render() {
 	this->render_updater.process_callbacks();
 
 	this->gui_renderer.render();
-	return true;
 }
 
 } // namespace openage::renderer::gui
