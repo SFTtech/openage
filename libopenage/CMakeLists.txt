@@ -71,6 +71,12 @@ if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)
 endif()
 
+if(WANT_IWYU)
+	# include-what-you-use warnings during C++ compilation
+	find_program(IWYU_PATH NAMES include-what-you-use iwyu REQUIRED)
+	set_property(TARGET libopenage PROPERTY CXX_INCLUDE_WHAT_YOU_USE "${IWYU_PATH}")
+endif()
+
 ##################################################
 # nyan integration
 

@@ -122,6 +122,13 @@ else() # "Intel", etc..
 	message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
 endif()
 
+# optional code warnings from include-what-you-use
+if("${CXX_INCLUDE_WHAT_YOU_USE}" STREQUAL "warn")
+	set(CXX_INCLUDE_WHAT_YOU_USE)
+elseif("${CXX_INCLUDE_WHAT_YOU_USE}" STREQUAL "error")
+	set(CXX_INCLUDE_WHAT_YOU_USE "--error_always")
+endif()
+
 # optimization settings.
 # TODO: multi-configuration support for xcode, vstudio, ...
 #       the following code just makes sense for single-config

@@ -43,6 +43,7 @@ Dependency list:
     CR    freetype2
     CR    fontconfig
     CR    harfbuzz
+    C   O include-what-you-use
     CR    nyan  (https://github.com/SFTtech/nyan)
     CR  O ncurses
     C     jinja2

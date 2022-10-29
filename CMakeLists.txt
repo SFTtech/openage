@@ -98,6 +98,10 @@ if(NOT DEFINED WANT_NCURSES)
 	set(WANT_NCURSES if_available)
 endif()
 
+if(NOT DEFINED WANT_IWYU)
+	set(WANT_IWYU false)
+endif()
+
 ##################################################
 # static content filesystem locations
 if(NOT DEFINED GLOBAL_ASSET_DIR)
