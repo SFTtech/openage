@@ -21,6 +21,7 @@ bool WindowEventHandler::eventFilter(QObject *, QEvent *event) {
 	case QEvent::MouseButtonDblClick:
 	case QEvent::MouseButtonPress:
 	case QEvent::MouseButtonRelease:
+	case QEvent::MouseMove:
 	case QEvent::Resize:
 		add_to_queue();
 		// pass on the event

@@ -4,10 +4,14 @@
 
 #include <memory>
 
+#include <QObject>
+
+QT_FORWARD_DECLARE_CLASS(QQuickWindow)
+
 namespace openage::renderer {
 class Texture2d;
 class Window;
-}
+} // namespace openage::renderer
 
 namespace qtgui {
 
@@ -18,13 +22,13 @@ class GuiRendererImpl;
  */
 class GuiRenderer {
 public:
-	// TODO: allow FBO variant
 	explicit GuiRenderer(const std::shared_ptr<openage::renderer::Window> &window);
 	~GuiRenderer();
 
 	void render();
 	void resize(int w, int h);
 	void set_texture(const std::shared_ptr<openage::renderer::Texture2d> &texture);
+	std::shared_ptr<QQuickWindow> get_window();
 
 private:
 	friend class GuiRendererImpl;

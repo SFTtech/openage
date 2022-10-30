@@ -26,4 +26,8 @@ void GuiRenderer::set_texture(const std::shared_ptr<openage::renderer::Texture2d
 	this->impl->set_texture(texture);
 }
 
+std::shared_ptr<QQuickWindow> GuiRenderer::get_window() {
+	return this->impl->get_window();
+}
+
 } // namespace qtgui

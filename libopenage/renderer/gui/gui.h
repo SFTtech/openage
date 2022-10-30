@@ -6,11 +6,11 @@
 #include <memory>
 #include <string>
 
-#include "gui/guisys/public/gui_engine.h"
 #include "gui/guisys/public/gui_event_queue.h"
 #include "gui/guisys/public/gui_input.h"
 #include "gui/guisys/public/gui_subtree.h"
 #include "gui/integration/public/gui_game_spec_image_provider.h"
+#include "renderer/gui/guisys/public/gui_engine.h"
 #include "renderer/gui/guisys/public/gui_renderer.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/shader_program.h"
@@ -101,16 +101,25 @@ private:
 	 * TODO
 	 */
 	qtsdl::GuiEventQueue render_updater;
+	/**
+	 * TODO
+	 */
+	qtsdl::GuiEventQueue game_logic_updater;
 
 	/**
-	 * Qt-based renderer for the GUI texture.
+	 * Qt-based renderer for the GUI texture. Draws into
+	 * \p gui_texture.
 	 */
-	qtgui::GuiRenderer gui_renderer;
-	// qtsdl::GuiEventQueue game_logic_updater;
+	std::shared_ptr<qtgui::GuiRenderer> gui_renderer;
+
+	/**
+	 * Qt QML Engine wrapper.
+	 */
+	qtgui::GuiQmlEngine engine;
+
 	// openage::gui::GuiGameSpecImageProvider image_provider_by_filename;
-	// qtsdl::GuiEngine engine;
-	// qtsdl::GuiSubtree subtree;
-	// qtsdl::GuiInput input;
+	// qtgui::GuiSubtree subtree;
+	// qtgui::GuiInput input;		// Obsolete?
 
 	/**
 	 * Reference to the openage renderer.
@@ -119,13 +128,14 @@ private:
 	std::shared_ptr<Renderer> renderer;
 
 	/**
-	 * GUI texture (where the GUI is rendered into).
+	 * GUI texture handle. The GUI renderer ( \p gui_renderer ) draws
+	 * into this texture.
 	 */
 	std::shared_ptr<renderer::Texture2d> texture;
 
 	/**
 	 * Render pass for the whole GUI. The GUI texture is attached to
-	 * this pass via a renderer::resources::Renderable.
+	 * this pass via a \p renderer::resources::Renderable.
 	 */
 	std::shared_ptr<renderer::RenderPass> render_pass;
 };

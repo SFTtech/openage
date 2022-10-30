@@ -20,23 +20,25 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
          const std::shared_ptr<Renderer> &renderer,
          QMLInfo *info) :
 	application{app},
-	render_updater{}, gui_renderer{window}, renderer{renderer}
-//game_logic_updater{},
-//image_provider_by_filename{
-//	&render_updater,
-//	openage::gui::GuiGameSpecImageProvider::Type::ByFilename},
-//engine{
-//	&gui_renderer,
-//	{&image_provider_by_filename},
-//	info},
-//subtree{
-//	&gui_renderer,
-//	&game_logic_updater,
-//	&engine,
-//	source.resolve_native_path(),
-//	rootdir.resolve_native_path()},
-//input{&gui_renderer, &game_logic_updater}
-{
+	render_updater{},
+	game_logic_updater{},
+	gui_renderer{std::make_shared<qtgui::GuiRenderer>(window)},
+	engine{gui_renderer},
+	//image_provider_by_filename{
+	//	&render_updater,
+	//	openage::gui::GuiGameSpecImageProvider::Type::ByFilename},
+	//engine{
+	//	&gui_renderer,
+	//	{&image_provider_by_filename},
+	//	info},
+	//subtree{
+	//	&gui_renderer,
+	//	&game_logic_updater,
+	//	&engine,
+	//	source.resolve_native_path(),
+	//	rootdir.resolve_native_path()},
+	//input{&gui_renderer, &game_logic_updater}
+	renderer{renderer} {
 	// everything alright before we create the gui stuff?
 	renderer::opengl::GlContext::check_error();
 
@@ -119,15 +121,15 @@ void GUI::resize(size_t width, size_t height) {
 	//this->render_pass->set_target(fbo)
 
 	// update new texture to gui renderer
-	this->gui_renderer.resize(width, height);
-	this->gui_renderer.set_texture(this->texture);
+	this->gui_renderer->resize(width, height);
+	this->gui_renderer->set_texture(this->texture);
 }
 
 
 void GUI::render() {
 	this->render_updater.process_callbacks();
 
-	this->gui_renderer.render();
+	this->gui_renderer->render();
 }
 
 } // namespace openage::renderer::gui

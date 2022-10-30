@@ -70,6 +70,10 @@ void GuiRendererImpl::render() {
 	this->gui_context.post_render();
 }
 
+std::shared_ptr<QQuickWindow> GuiRendererImpl::get_window() {
+	return this->target_window;
+}
+
 GuiRendererImpl *GuiRendererImpl::impl(GuiRenderer *renderer) {
 	return renderer->impl.get();
 }

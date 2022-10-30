@@ -65,6 +65,11 @@ public:
 	 */
 	void set_texture(const std::shared_ptr<openage::renderer::Texture2d> &texture);
 
+	/**
+	 * Get the offscreen window.
+	 */
+	std::shared_ptr<QQuickWindow> get_window();
+
 signals:
 	/**
 	 * Emitted when the off-screen gui window was resized through `resize`.
@@ -84,7 +89,7 @@ private:
 	 * to control the rendering process. It draws into a texture
 	 * that we pass it via QQuickWindow::setRenderTarget().
 	 */
-	std::unique_ptr<QQuickWindow> target_window;
+	std::shared_ptr<QQuickWindow> target_window;
 
 	/**
 	 * GUI texture that is targeted by the render control.
