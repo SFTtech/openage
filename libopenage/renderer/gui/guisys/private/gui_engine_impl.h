@@ -13,6 +13,7 @@
 QT_FORWARD_DECLARE_CLASS(QQmlEngine)
 
 namespace qtgui {
+class GuiQmlEngine;
 class GuiRenderer;
 class GuiRendererImpl;
 
@@ -32,6 +33,8 @@ public:
 	 */
 	GuiQmlEngineImpl(std::shared_ptr<GuiRenderer> renderer);
 	virtual ~GuiQmlEngineImpl();
+
+	static GuiQmlEngineImpl *impl(GuiQmlEngine *engine);
 
 	/**
 	* Get the underlying QQmlEngine object.

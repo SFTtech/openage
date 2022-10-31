@@ -9,8 +9,8 @@
 #include <QQmlEngine>
 #include <QQuickWindow>
 
+#include "renderer/gui/guisys/private/gui_renderer_impl.h"
 #include "renderer/gui/guisys/public/gui_engine.h"
-#include "renderer/gui/guisys/public/gui_renderer.h"
 
 namespace qtgui {
 
@@ -38,9 +38,14 @@ GuiQmlEngineImpl::GuiQmlEngineImpl(std::shared_ptr<GuiRenderer> renderer) :
 
 GuiQmlEngineImpl::~GuiQmlEngineImpl() = default;
 
+GuiQmlEngineImpl *GuiQmlEngineImpl::impl(GuiQmlEngine *engine) {
+	return engine->impl.get();
+}
+
 void GuiQmlEngineImpl::attach_to(std::shared_ptr<GuiRenderer> renderer) {
 	this->renderer = renderer;
-	this->engine->setIncubationController(renderer->get_window()->incubationController());
+	auto renderer_impl = GuiRendererImpl::impl(renderer.get());
+	this->engine->setIncubationController(renderer_impl->get_window()->incubationController());
 }
 
 std::shared_ptr<QQmlEngine> GuiQmlEngineImpl::get_qml_engine() {

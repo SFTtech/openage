@@ -23,21 +23,16 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
 	render_updater{},
 	game_logic_updater{},
 	gui_renderer{std::make_shared<qtgui::GuiRenderer>(window)},
-	engine{gui_renderer},
+	engine{std::make_shared<qtgui::GuiQmlEngine>(gui_renderer)},
+	subtree{
+		gui_renderer,
+		engine,
+		source.resolve_native_path(),
+		rootdir.resolve_native_path()},
+	//input{&gui_renderer, &game_logic_updater}
 	//image_provider_by_filename{
 	//	&render_updater,
 	//	openage::gui::GuiGameSpecImageProvider::Type::ByFilename},
-	//engine{
-	//	&gui_renderer,
-	//	{&image_provider_by_filename},
-	//	info},
-	//subtree{
-	//	&gui_renderer,
-	//	&game_logic_updater,
-	//	&engine,
-	//	source.resolve_native_path(),
-	//	rootdir.resolve_native_path()},
-	//input{&gui_renderer, &game_logic_updater}
 	renderer{renderer} {
 	// everything alright before we create the gui stuff?
 	renderer::opengl::GlContext::check_error();
@@ -49,17 +44,6 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
 	util::Path shaderdir = assetdir["shaders"];
 	this->initialize_render_pass(size[0], size[1], shaderdir);
 
-	/*
-	window->add_key_callback([&](const QKeyEvent &event) {
-		this->input.process(&ev);
-	});
-	window->add_mouse_button_callback([&](const QMouseEvent &event) {
-		this->input.process(&ev);
-	});
-	window->add_mouse_wheel_callback([&](const QWheelEvent &event) {
-		this->input.process(&ev);
-	});
-	*/
 	window->add_resize_callback([this](size_t width, size_t height) {
 		this->resize(width, height);
 	});
@@ -70,7 +54,6 @@ std::shared_ptr<renderer::RenderPass> GUI::get_render_pass() {
 }
 
 void GUI::process_events() {
-	// this->game_logic_updater.process_callbacks();
 	this->application->process_events();
 }
 
@@ -97,16 +80,16 @@ void GUI::initialize_render_pass(size_t width,
 	// GUI draw surface. gets drawn on top of the gameworld in the presenter.
 	auto fbo = this->renderer->create_texture_target({this->texture});
 
-	auto color_texture_unif = maptex_shader->new_uniform_input("texture", this->texture);
+	this->texture_unif = maptex_shader->new_uniform_input("texture", this->texture);
 	Renderable display_obj{
-		color_texture_unif,
+		this->texture_unif,
 		quad,
 		true,
 		true,
 	};
 
 	// TODO: Render into FBO instead of screen
-	this->render_pass = renderer->add_render_pass({display_obj}, renderer->get_display_target());
+	this->render_pass = renderer->add_render_pass({display_obj}, this->renderer->get_display_target());
 }
 
 
@@ -117,8 +100,10 @@ void GUI::resize(size_t width, size_t height) {
 	this->texture = this->renderer->add_texture(
 		resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
 
-	//fbo = this->renderer->create_texture_target( { this->texture } );
-	//this->render_pass->set_target(fbo)
+	// pass the new texture to shader uniform
+	if (this->texture_unif) {
+		this->texture_unif->update("texture", this->texture);
+	}
 
 	// update new texture to gui renderer
 	this->gui_renderer->resize(width, height);
@@ -127,7 +112,7 @@ void GUI::resize(size_t width, size_t height) {
 
 
 void GUI::render() {
-	this->render_updater.process_callbacks();
+	// this->render_updater.process_callbacks();
 
 	this->gui_renderer->render();
 }

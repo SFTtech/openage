@@ -8,10 +8,10 @@
 
 #include "gui/guisys/public/gui_event_queue.h"
 #include "gui/guisys/public/gui_input.h"
-#include "gui/guisys/public/gui_subtree.h"
 #include "gui/integration/public/gui_game_spec_image_provider.h"
 #include "renderer/gui/guisys/public/gui_engine.h"
 #include "renderer/gui/guisys/public/gui_renderer.h"
+#include "renderer/gui/guisys/public/gui_subtree.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/shader_program.h"
 
@@ -115,17 +115,26 @@ private:
 	/**
 	 * Qt QML Engine wrapper.
 	 */
-	qtgui::GuiQmlEngine engine;
+	std::shared_ptr<qtgui::GuiQmlEngine> engine;
+
+	/**
+	 * Manages Qt QML components and items.
+	 */
+	qtgui::GuiSubtree subtree;
 
 	// openage::gui::GuiGameSpecImageProvider image_provider_by_filename;
-	// qtgui::GuiSubtree subtree;
-	// qtgui::GuiInput input;		// Obsolete?
+	// qtgui::GuiInput input;
 
 	/**
 	 * Reference to the openage renderer.
 	 * Used to fetch texture objects for the GUI texture.
 	 */
 	std::shared_ptr<Renderer> renderer;
+
+	/**
+	 * Uniform input for the GUI texture handle.
+	 */
+	std::shared_ptr<renderer::UniformInput> texture_unif;
 
 	/**
 	 * GUI texture handle. The GUI renderer ( \p gui_renderer ) draws
