@@ -38,6 +38,7 @@ GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 		throw Error{MSG(err) << "Failed to create Qt OpenGL context."};
 	}
 
+	glViewport(0, 0, width * this->window->devicePixelRatio(), height * this->window->devicePixelRatio());
 	this->add_resize_callback([this](size_t w, size_t h) {
 		// since qt respects Xft.dpi and others, the "window size" of w and h
 		// is actually w and h * devicepixelratio.
