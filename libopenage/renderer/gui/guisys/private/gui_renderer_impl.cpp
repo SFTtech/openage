@@ -29,8 +29,8 @@ namespace qtgui {
 
 GuiRendererImpl::GuiRendererImpl(std::shared_ptr<openage::renderer::Window> window) :
 	QObject{},
-	render_control{},
-	gui_context{window} {
+	gui_context{window},
+	render_control{} {
 	// use of undocumented as of qt6.4 constructor
 	// QQuickWindow(QQuickRenderControl *renderControl)
 	// which associates the render controller with a qwindow.

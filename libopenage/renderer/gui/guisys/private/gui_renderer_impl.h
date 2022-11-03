@@ -78,6 +78,14 @@ signals:
 
 private:
 	/**
+	 * Rendering context.
+	 *
+	 * Beware: in the member order, put _before_ all context-affine resources (e.g. texture).
+	 * otherwise the context will be deleted before the resource in it.
+	 */
+	GlGuiRenderingContext gui_context;
+
+	/**
 	 * Object for sending render command to Qt.
 	 */
 	QQuickRenderControl render_control;
@@ -95,14 +103,6 @@ private:
 	 * GUI texture that is targeted by the render control.
 	 */
 	std::shared_ptr<openage::renderer::Texture2d> texture;
-
-	/**
-	 * Rendering context.
-	 *
-	 * Beware: in the member order, put _after_ all context-affine resources (e.g. texture).
-	 * otherwise the context will be deleted before the resource in it.
-	 */
-	GlGuiRenderingContext gui_context;
 };
 
 } // namespace qtgui
