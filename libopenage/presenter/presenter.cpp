@@ -60,15 +60,16 @@ void Presenter::run() {
 
 	auto gui_pass = this->gui->get_render_pass();
 
-	//// -- gui initialization
-
 	while (not this->window->should_close()) {
-		this->renderer->render(gui_pass);
-		this->window->update();
-		this->gui->process_events();
+		this->gui_app->process_events();
+		// this->gui->process_events();
+
 		this->gui->render();
+		this->renderer->render(gui_pass);
 
 		this->renderer->check_error();
+
+		this->window->update();
 	}
 	log::log(MSG(info) << "draw loop exited");
 
