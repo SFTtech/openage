@@ -27,7 +27,8 @@ GlGuiRenderingContext::GlGuiRenderingContext(std::shared_ptr<openage::renderer::
 	CtxExtractionMode{},
 	offscreen_surface{},
 	window{window} {
-	auto window_ctx = std::dynamic_pointer_cast<openage::renderer::opengl::GlWindow>(window)->get_context()->get_raw_context();
+	auto win = std::dynamic_pointer_cast<openage::renderer::opengl::GlWindow>(this->window);
+	auto window_ctx = win->get_context()->get_raw_context();
 	this->ctx = std::make_shared<QOpenGLContext>();
 	this->ctx->setShareContext(window_ctx.get());
 	this->ctx->setFormat(window->get_qt_window()->requestedFormat());
@@ -38,18 +39,28 @@ GlGuiRenderingContext::GlGuiRenderingContext(std::shared_ptr<openage::renderer::
 }
 
 void GlGuiRenderingContext::pre_render() {
+	// Make the share context current, so Qt draw into its window.
 	if (!this->ctx->makeCurrent(&this->offscreen_surface)) {
 		assert(false);
 		return;
 	}
+
+	// Our renderer saves the current shader program loaded in OpenGL
+	// to prevent unnecessary reloads. However, Qt loads its own shaders
+	// when the GUI is rendered, so any shaders present in our own render
+	// passes have to be reloaded. We do this by setting the current program to nullptr.
+	auto win = std::dynamic_pointer_cast<openage::renderer::opengl::GlWindow>(this->window);
+	auto window_ctx = win->get_context();
+	window_ctx->set_current_program(nullptr);
 }
 
 void GlGuiRenderingContext::post_render() {
 	QOpenGLFramebufferObject::bindDefault();
 	this->ctx->functions()->glFlush();
 
+	// switch back to the window context, so our own renderer can continue drawing
 	this->ctx->doneCurrent();
-	auto window_ctx = std::dynamic_pointer_cast<openage::renderer::opengl::GlWindow>(window)->get_context()->get_raw_context();
+	auto window_ctx = std::dynamic_pointer_cast<openage::renderer::opengl::GlWindow>(this->window)->get_context()->get_raw_context();
 	if (!window_ctx->makeCurrent(this->window->get_qt_window().get())) {
 		assert(false);
 		return;
