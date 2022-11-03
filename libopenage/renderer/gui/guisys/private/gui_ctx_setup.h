@@ -88,6 +88,11 @@ private:
 	 * Surface that is needed to make the GUI context current.
 	 */
 	QOffscreenSurface offscreen_surface;
+
+	/**
+	 * TODO: Actual window (for switching back context).
+	 */
+	std::shared_ptr<openage::renderer::Window> window;
 };
 
 /**

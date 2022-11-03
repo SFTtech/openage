@@ -25,15 +25,16 @@ const std::shared_ptr<QOpenGLContext> &CtxExtractionMode::get_ctx() const {
 
 GlGuiRenderingContext::GlGuiRenderingContext(std::shared_ptr<openage::renderer::Window> window) :
 	CtxExtractionMode{},
-	offscreen_surface{} {
-	this->ctx = std::dynamic_pointer_cast<openage::renderer::opengl::GlWindow>(window)->get_context()->get_raw_context();
-
-	auto context_debug_parameters = get_current_opengl_debug_parameters(*this->ctx);
+	offscreen_surface{},
+	window{window} {
+	auto window_ctx = std::dynamic_pointer_cast<openage::renderer::opengl::GlWindow>(window)->get_context()->get_raw_context();
+	this->ctx = std::make_shared<QOpenGLContext>();
+	this->ctx->setShareContext(window_ctx.get());
+	this->ctx->setFormat(window->get_qt_window()->requestedFormat());
+	this->ctx->create();
 
 	this->offscreen_surface.setFormat(this->ctx->format());
 	this->offscreen_surface.create();
-
-	apply_opengl_debug_parameters(context_debug_parameters, *this->ctx);
 }
 
 void GlGuiRenderingContext::pre_render() {
@@ -46,6 +47,13 @@ void GlGuiRenderingContext::pre_render() {
 void GlGuiRenderingContext::post_render() {
 	QOpenGLFramebufferObject::bindDefault();
 	this->ctx->functions()->glFlush();
+
+	this->ctx->doneCurrent();
+	auto window_ctx = std::dynamic_pointer_cast<openage::renderer::opengl::GlWindow>(window)->get_context()->get_raw_context();
+	if (!window_ctx->makeCurrent(this->window->get_qt_window().get())) {
+		assert(false);
+		return;
+	}
 }
 
 QQuickGraphicsDevice GlGuiRenderingContext::get_device() {
