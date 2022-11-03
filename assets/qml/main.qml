@@ -1,9 +1,9 @@
 // Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 import QtQuick 2.4
-import QtQuick.Controls 1.1
-import QtQuick.Layouts 1.1
-import QtQuick.Controls.Styles 1.3
+// import QtQuick.Controls 1.1
+// import QtQuick.Layouts 1.1
+// import QtQuick.Controls.Styles 1.3
 
 import yay.sfttech.livereload 1.0
 import yay.sfttech.openage 1.0 as OA
@@ -12,17 +12,22 @@ Item {
 	id: root
 
 	Rectangle {
-		id: r
+		width: 200
+		height: 200
+		color: "red"
 
-		x: 0
-		y: 0
-		width: 100
-		height: 100
-		color: "green"
+		Rectangle {
+			x: 100
+			y: 100
+			width: 100
+			height: 100
+			color: "blue"
 
-		MouseArea {
-			anchors.fill: parent
-			onClicked: r.color = "blue"
+			Rectangle {
+				width: 50
+				height: 50
+				color: "green"
+			}
 		}
 	}
 
