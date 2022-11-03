@@ -8,9 +8,11 @@
 
 QT_FORWARD_DECLARE_CLASS(QWindow)
 QT_FORWARD_DECLARE_CLASS(QOpenGLContext)
+QT_FORWARD_DECLARE_CLASS(QOpenGLDebugLogger)
 
 namespace openage::renderer::opengl {
 
+class GlDebugLogHandler;
 class GlShaderProgram;
 
 /// Stores information about context capabilities and limitations.
@@ -66,6 +68,12 @@ public:
 private:
 	/// The associated Qt window is held here so the context remains active.
 	std::shared_ptr<QWindow> window;
+
+	/// Logger for OpenGL debug messages
+	std::shared_ptr<QOpenGLDebugLogger> logger;
+
+	/// Logger for OpenGL debug messages
+	std::shared_ptr<GlDebugLogHandler> log_handler;
 
 	/// Pointer to Qt struct representing the GL context.
 	std::shared_ptr<QOpenGLContext> gl_context;

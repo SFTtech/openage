@@ -7,10 +7,12 @@
 
 #include <QOffscreenSurface>
 #include <QOpenGLContext>
+#include <QOpenGLDebugLogger>
 #include <QWindow>
 
 #include "error/error.h"
 #include "log/log.h"
+#include "renderer/opengl/debug.h"
 
 
 namespace openage::renderer::opengl {
@@ -81,27 +83,45 @@ static gl_context_capabilities find_capabilities() {
 }
 
 GlContext::GlContext(const std::shared_ptr<QWindow> &window) :
-	window{window} {
+	window{window},
+	logger{std::make_shared<QOpenGLDebugLogger>()},
+	log_handler{std::make_shared<GlDebugLogHandler>()} {
 	this->capabilities = find_capabilities();
 	auto const &capabilities = this->capabilities;
 
 	QSurfaceFormat format{};
 	format.setProfile(QSurfaceFormat::OpenGLContextProfile::CoreProfile);
 	format.setSwapBehavior(QSurfaceFormat::SwapBehavior::DoubleBuffer);
-	format.setDepthBufferSize(24);
-	format.setStencilBufferSize(8);
 	format.setMajorVersion(capabilities.major_version);
 	format.setMinorVersion(capabilities.minor_version);
 
+	format.setAlphaBufferSize(8);
+	format.setDepthBufferSize(24);
+	format.setStencilBufferSize(8);
+
+	// TODO: Make debug context optional
+	format.setOption(QSurfaceFormat::DebugContext);
+
+	// TODO: Set format as default for all windows with QSurface::setDefaultFormat()
+	this->window->setFormat(format);
+	this->window->create();
+
 	this->gl_context = std::make_shared<QOpenGLContext>();
+	this->gl_context->setFormat(this->window->requestedFormat());
 	this->gl_context->create();
 	if (!this->gl_context->isValid()) {
 		throw Error(MSG(err) << "OpenGL context creation failed.");
 	}
 
-	this->window->setFormat(format);
-	this->window->create();
 	this->gl_context->makeCurrent(window.get());
+
+	// TODO: Make debug context optional
+	this->logger->initialize();
+	QObject::connect(this->logger.get(),
+	                 &QOpenGLDebugLogger::messageLogged,
+	                 this->log_handler.get(),
+	                 &GlDebugLogHandler::log);
+	this->logger->startLogging();
 
 	// We still have to verify that our version of libepoxy supports this version of OpenGL.
 	int epoxy_glv = capabilities.major_version * 10 + capabilities.minor_version;
