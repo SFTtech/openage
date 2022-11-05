@@ -84,7 +84,6 @@ static gl_context_capabilities find_capabilities() {
 
 GlContext::GlContext(const std::shared_ptr<QWindow> &window) :
 	window{window},
-	logger{std::make_shared<QOpenGLDebugLogger>()},
 	log_handler{std::make_shared<GlDebugLogHandler>()} {
 	this->capabilities = find_capabilities();
 	auto const &capabilities = this->capabilities;
@@ -115,13 +114,9 @@ GlContext::GlContext(const std::shared_ptr<QWindow> &window) :
 
 	this->gl_context->makeCurrent(window.get());
 
-	// TODO: Make debug context optional
-	this->logger->initialize();
-	QObject::connect(this->logger.get(),
-	                 &QOpenGLDebugLogger::messageLogged,
-	                 this->log_handler.get(),
-	                 &GlDebugLogHandler::log);
-	this->logger->startLogging();
+	// Log handler requires a current context, so we start it after associating
+	// it with the window.
+	this->log_handler->start();
 
 	// We still have to verify that our version of libepoxy supports this version of OpenGL.
 	int epoxy_glv = capabilities.major_version * 10 + capabilities.minor_version;
