@@ -29,8 +29,6 @@ public:
 	engine::Engine *engine;
 
 	/**
-	 * ASDF: Useful?
-	 * 
 	 * The openage display.
 	 */
 	presenter::Presenter *display;

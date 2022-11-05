@@ -121,7 +121,7 @@ bool GuiInputImpl::process(SDL_Event *e) {
 			pos,
 			QPoint{},
 			QPoint{e->wheel.x, e->wheel.y},
-			this->mouse_buttons_state, // ASDF: Qt5
+			this->mouse_buttons_state,
 			Qt::KeyboardModifier::NoModifier, // Correct states?
 			Qt::ScrollPhase::NoScrollPhase, // ^
 			false,

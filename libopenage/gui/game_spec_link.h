@@ -108,6 +108,3 @@ private:
 
 } // namespace gui
 } // namespace openage
-
-// ASDF: Qt5
-// Q_DECLARE_METATYPE(std::shared_ptr<openage::GameSpec>)

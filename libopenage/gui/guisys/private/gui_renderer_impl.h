@@ -160,6 +160,3 @@ private:
 };
 
 } // namespace qtsdl
-
-// ASDF: Qt5
-// Q_DECLARE_METATYPE(std::atomic<bool>*)

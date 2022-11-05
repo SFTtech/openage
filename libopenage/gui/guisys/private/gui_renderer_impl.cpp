@@ -93,7 +93,6 @@ GuiRendererImpl::GuiRendererImpl(SDL_Window *window) :
 	this->window = std::make_unique<EventHandlingQuickWindow>(&this->render_control);
 	this->window->moveToThread(QCoreApplication::instance()->thread());
 	QObject::connect(this, &GuiRendererImpl::resized, this->window.get(), &EventHandlingQuickWindow::on_resized);
-	// ASDF: Qt5
 	// this->window->setClearBeforeRendering(true);
 	this->window->setColor(QColor{0, 0, 0, 0});
 
@@ -125,7 +124,6 @@ void GuiRendererImpl::reinit_fbo_if_needed() {
 	if (this->need_fbo_resize) {
 		this->fbo = std::make_unique<QOpenGLFramebufferObject>(QSize(this->new_fbo_width, this->new_fbo_height), QOpenGLFramebufferObject::CombinedDepthStencil);
 
-		// ASDF: Qt5
 		// dirty workaround; texture id from our own implementation should be passed here
 		QQuickRenderTarget target = QQuickRenderTarget::fromOpenGLTexture(this->fbo->texture(), this->fbo->size());
 
@@ -186,7 +184,6 @@ GLuint GuiRendererImpl::render() {
 	this->render_control.render();
 	this->render_control.endFrame();
 
-	// ASDF: Qt5
 	// this->window->resetOpenGLState();
 
 	return this->fbo->texture();

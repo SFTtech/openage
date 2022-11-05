@@ -12,8 +12,6 @@
 
 namespace qtsdl {
 
-// ASDF: Qt5
-
 // std::tuple<QVariant, WId> extract_native_context(SDL_Window *window) {
 // 	assert(window);
 

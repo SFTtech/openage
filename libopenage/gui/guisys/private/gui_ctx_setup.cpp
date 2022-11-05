@@ -27,7 +27,6 @@ GuiUniqueRenderingContext::GuiUniqueRenderingContext(SDL_Window *window) :
 	// std::tie(handle, id) = extract_native_context(window);
 
 	// if (handle.isValid()) {
-	// ASDF: Qt5
 	// // pass the SDL opengl context so qt can use it
 	// this->ctx.setNativeHandle(handle);
 	this->ctx.create();
@@ -58,7 +57,6 @@ GuiSeparateRenderingContext::GuiSeparateRenderingContext(SDL_Window *window) :
 	// std::tie(handle, this->make_current_back) = extract_native_context_and_switchback_func(window);
 
 	// if (handle.isValid()) {
-	// ASDF: Qt5
 	// this->main_ctx.setNativeHandle(handle);
 	this->main_ctx.create();
 	assert(this->main_ctx.isValid());

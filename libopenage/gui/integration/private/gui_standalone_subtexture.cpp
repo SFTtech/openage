@@ -19,7 +19,6 @@ void GuiStandaloneSubtexture::bind() {
 }
 
 qint64 GuiStandaloneSubtexture::comparisonKey() const {
-	// ASDF: Qt5 What does this do??????
 	return 0;
 }
 
