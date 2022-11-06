@@ -31,6 +31,12 @@ namespace openage::renderer::tests {
 	opengl::GlContext::check_error(); \
 	printf("after %s\n", txt);
 
+/**
+ * Shows the renderer's ability to create textured renderable objects and
+ * allow basic interaction with them via mouse/key callbacks.
+ * 
+ * @param path Unused.
+ */
 void renderer_demo_0(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
@@ -288,7 +294,12 @@ void main() {
 	window.close();
 }
 
-
+/**
+ * Basic test for creating a window and displaying a single-color texture
+ * created by a shader.
+ * 
+ * @param path Path to the project rootdir.
+ */
 void renderer_demo_2(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
@@ -325,7 +336,7 @@ void main() {
 
 	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
 	Renderable display_stuff{
-		display_shader->create_render_input(),
+		display_shader->create_empty_input(),
 		quad,
 		false,
 		false,

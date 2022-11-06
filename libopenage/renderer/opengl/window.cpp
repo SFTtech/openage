@@ -7,7 +7,6 @@
 #include "log/log.h"
 #include "renderer/opengl/context.h"
 #include "renderer/opengl/renderer.h"
-#include "renderer/sdl_global.h"
 #include "renderer/window_event_handler.h"
 
 #include <QGuiApplication>

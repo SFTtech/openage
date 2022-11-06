@@ -5,6 +5,8 @@
 #include <QObject>
 #include <QOpenGLDebugMessage>
 
+QT_FORWARD_DECLARE_CLASS(QOpenGLDebugLogger)
+
 namespace openage::renderer::opengl {
 
 class GlDebugLogHandler : public QObject {

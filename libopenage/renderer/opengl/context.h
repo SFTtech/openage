@@ -8,14 +8,15 @@
 
 QT_FORWARD_DECLARE_CLASS(QWindow)
 QT_FORWARD_DECLARE_CLASS(QOpenGLContext)
-QT_FORWARD_DECLARE_CLASS(QOpenGLDebugLogger)
 
 namespace openage::renderer::opengl {
 
 class GlDebugLogHandler;
 class GlShaderProgram;
 
-/// Stores information about context capabilities and limitations.
+/**
+ * Stores information about context capabilities and limitations.
+*/
 struct gl_context_capabilities {
 	/// The maximum number of vertex attributes in a shader.
 	size_t max_vertex_attributes;
@@ -31,7 +32,9 @@ struct gl_context_capabilities {
 	int minor_version;
 };
 
-/// Manages an OpenGL context.
+/**
+ * Manages an OpenGL context.
+*/
 class GlContext {
 public:
 	/**
