@@ -49,7 +49,7 @@ private:
 	// GuiLiveReloader reloader;
 
 	std::unique_ptr<QQmlComponent> root_component;
-	QQuickItem *root;
+	std::shared_ptr<QQuickItem> root;
 	QString root_dir;
 };
 

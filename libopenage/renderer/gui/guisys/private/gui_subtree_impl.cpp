@@ -139,7 +139,8 @@ void GuiSubtreeImpl::component_status_changed(QQmlComponent::Status status) {
 
 		auto engine_impl = GuiQmlEngineImpl::impl(this->engine.get());
 		auto root_context = engine_impl->get_qml_engine()->rootContext();
-		this->root = qobject_cast<QQuickItem *>(this->root_component->beginCreate(root_context));
+		this->root = std::shared_ptr<QQuickItem>{
+			qobject_cast<QQuickItem *>(this->root_component->beginCreate(root_context))};
 		assert(this->root);
 
 		// this->init_persistent_items();
