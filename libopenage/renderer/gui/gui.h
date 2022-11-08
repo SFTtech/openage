@@ -43,8 +43,7 @@ public:
 	             const util::Path &source,
 	             const util::Path &rootdir,
 	             const util::Path &assetdir,
-	             const std::shared_ptr<Renderer> &renderer,
-	             QMLInfo *info = nullptr);
+	             const std::shared_ptr<Renderer> &renderer);
 	virtual ~GUI() = default;
 
 	/**
@@ -58,13 +57,6 @@ public:
 	std::shared_ptr<renderer::RenderPass> get_render_pass();
 
 	/**
-	 * Process all queued Qt events.
-	 *
-	 * TODO: Move event processing out of the GUI.
-	 */
-	void process_events();
-
-	/**
 	 * Render the GUI texture.
 	 */
 	void render();
@@ -75,13 +67,9 @@ private:
 	 *
 	 * Called during initialization of the GUI.
 	 *
-	 * @param width Width of the GUI.
-	 * @param height Height of the GUI.
 	 * @param shaderdir Directory containg the shader source files.
 	 */
-	void initialize_render_pass(size_t width,
-	                            size_t height,
-	                            const util::Path &shaderdir);
+	void initialize_render_pass(const util::Path &shaderdir);
 
 	/**
 	 * Resize the GUI. This updates the GUI texture size and propagates
@@ -123,7 +111,6 @@ private:
 	qtgui::GuiSubtree subtree;
 
 	// openage::gui::GuiGameSpecImageProvider image_provider_by_filename;
-	// qtgui::GuiInput input;
 
 	/**
 	 * Reference to the openage renderer.

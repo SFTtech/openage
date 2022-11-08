@@ -24,10 +24,16 @@ Item {
 			color: "blue"
 
 			Rectangle {
+				id: r
 				width: 50
 				height: 50
 				color: "green"
 			}
+		}
+
+		MouseArea {
+			anchors.fill: parent
+			onClicked: r.color = "yellow"
 		}
 	}
 

@@ -9,14 +9,10 @@
 #include <cassert>
 
 #include <QCoreApplication>
-#include <QOpenGLContext>
-#include <QOpenGLFramebufferObject>
-#include <QOpenGLFunctions>
 #include <QQuickGraphicsDevice>
-#include <QQuickItem>
 #include <QQuickRenderControl>
 #include <QQuickRenderTarget>
-#include <QThread>
+// #include <QThread>
 
 #include "log/log.h"
 
@@ -41,6 +37,37 @@ GuiRendererImpl::GuiRendererImpl(std::shared_ptr<openage::renderer::Window> wind
 
 	// make everything that's not part of the GUI transparent
 	this->target_window->setColor(Qt::transparent);
+
+	// Add callbacks so that input events from the main window are propagated to the
+	// target window's QML scene
+	//
+	// TODO: Currently, events are received by target_window, but have no effect in QML. Why?
+	//
+	// TODO: This solution leads to a 1 frame delay because Qt processing of the events sent here
+	//       does not happen until the start of the next frame. Maybe we can forward them to the
+	//       GUI earlier?
+	window->add_key_callback([this](const QKeyEvent &cb) {
+		auto event = cb.clone();
+		QCoreApplication::sendEvent(this->target_window.get(), event);
+	});
+	window->add_mouse_button_callback([this](const QMouseEvent &cb) {
+		// Quote from the QQuickRenderControl Example:
+		// Use the constructor taking position and globalPosition. That puts position into the
+		// event's position and scenePosition, and globalPosition into the event's globalPosition. This way
+		// the scenePosition in e is ignored and is replaced by position. This is necessary
+		// because QQuickWindow thinks of itself as a top-level window always.
+		QMouseEvent event{cb.type(),
+		                  cb.position(),
+		                  cb.globalPosition(),
+		                  cb.button(),
+		                  cb.buttons(),
+		                  cb.modifiers()};
+		QCoreApplication::sendEvent(this->target_window.get(), &event);
+	});
+	window->add_mouse_wheel_callback([this](const QWheelEvent &cb) {
+		auto event = cb.clone();
+		QCoreApplication::sendEvent(this->target_window.get(), event);
+	});
 
 	auto size = window->get_qt_window()->size();
 	this->resize(size.width(), size.height());

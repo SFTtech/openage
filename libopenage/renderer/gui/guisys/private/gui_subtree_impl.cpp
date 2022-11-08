@@ -162,6 +162,8 @@ void GuiSubtreeImpl::reparent_root() {
 
 		this->root->setParentItem(window->contentItem());
 		this->root->setSize(QSize{window->width(), window->height()});
+		// delegate key input events to root object
+		this->root->forceActiveFocus();
 	}
 }
 

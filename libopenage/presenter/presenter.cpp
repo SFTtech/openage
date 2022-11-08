@@ -46,16 +46,13 @@ void Presenter::run() {
 	//       library has to be integrated into qt. For now,
 	//       figure out the absolute paths here and pass them in.
 
-	renderer::gui::QMLInfo qml_info{this->engine.get(), qml_root};
-
 	this->gui = std::make_shared<renderer::gui::GUI>(
 		this->gui_app, // Qt application wrapper
 		this->window, // window for the gui
 		qml_root_file, // entry qml file, absolute path.
 		qml_root, // directory to watch for qml file changes
 		qml_assets, // qml data: Engine *, the data directory, ...
-		this->renderer, // gui renderer
-		&qml_info //
+		this->renderer // openage renderer
 	);
 
 	auto gui_pass = this->gui->get_render_pass();

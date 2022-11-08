@@ -17,8 +17,7 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
          const util::Path &source,
          const util::Path &rootdir,
          const util::Path &assetdir,
-         const std::shared_ptr<Renderer> &renderer,
-         QMLInfo *info) :
+         const std::shared_ptr<Renderer> &renderer) :
 	application{app},
 	render_updater{},
 	game_logic_updater{},
@@ -42,7 +41,7 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
 	this->resize(size[0], size[1]);
 
 	util::Path shaderdir = assetdir["shaders"];
-	this->initialize_render_pass(size[0], size[1], shaderdir);
+	this->initialize_render_pass(shaderdir);
 
 	window->add_resize_callback([this](size_t width, size_t height) {
 		this->resize(width, height);
@@ -53,13 +52,7 @@ std::shared_ptr<renderer::RenderPass> GUI::get_render_pass() {
 	return this->render_pass;
 }
 
-void GUI::process_events() {
-	this->application->process_events();
-}
-
-void GUI::initialize_render_pass(size_t width,
-                                 size_t height,
-                                 const util::Path &shaderdir) {
+void GUI::initialize_render_pass(const util::Path &shaderdir) {
 	auto id_vert_file = (shaderdir / "identity.vert.glsl").open();
 	auto id_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,

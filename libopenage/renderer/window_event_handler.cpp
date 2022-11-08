@@ -10,7 +10,7 @@
 namespace openage::renderer {
 
 
-bool WindowEventHandler::eventFilter(QObject *, QEvent *event) {
+bool WindowEventHandler::eventFilter(QObject *obj, QEvent *event) {
 	auto add_to_queue = [this, event]() {
 		this->event_queue.push_back(std::shared_ptr<QEvent>(event->clone()));
 	};
