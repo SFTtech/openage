@@ -45,6 +45,15 @@ public:
 	static std::shared_ptr<qtgui::GuiApplication> init_window_system();
 
 protected:
+	/**
+	 * Initialize all graphics subsystems of the presenter, i.e.
+	 *     - window creation
+	 *     - main renderer
+	 *     - component renderers (Terrain, Game Entities, GUI)
+	 */
+	void init_graphics();
+	// void init_audio();
+
 	// TODO: remove and move into our config/settings system
 	util::Path root_dir;
 
