@@ -2,6 +2,9 @@
 
 #pragma once
 
+#include <memory>
+#include <vector>
+
 #include "util/path.h"
 
 namespace qtgui {
@@ -10,11 +13,8 @@ class GuiApplication;
 
 namespace openage {
 
-namespace engine {
-class Engine;
-}
-
 namespace renderer {
+class RenderPass;
 class Renderer;
 class Window;
 
@@ -54,16 +54,20 @@ protected:
 	void init_graphics();
 	// void init_audio();
 
+	/**
+	 * Render all configured render passes in sequence.
+	 */
+	void render();
+
 	// TODO: remove and move into our config/settings system
 	util::Path root_dir;
 
+	// graphics
 	std::shared_ptr<qtgui::GuiApplication> gui_app;
 	std::shared_ptr<renderer::Window> window;
 	std::shared_ptr<renderer::Renderer> renderer;
 	std::shared_ptr<renderer::gui::GUI> gui;
-
-	// TODO: Activate
-	std::shared_ptr<engine::Engine> engine = nullptr;
+	std::vector<std::shared_ptr<renderer::RenderPass>> render_passes;
 };
 
 } // namespace presenter

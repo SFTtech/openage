@@ -15,15 +15,40 @@
 namespace openage::presenter {
 
 Presenter::Presenter(const util::Path &root_dir) :
-	root_dir{root_dir} {}
+	root_dir{root_dir},
+	render_passes{} {}
 
 
 void Presenter::run() {
 	log::log(INFO << "presenter launching...");
 
+	this->init_graphics();
+
+	while (not this->window->should_close()) {
+		this->gui_app->process_events();
+		// this->gui->process_events();
+
+		this->gui->render();
+		this->render();
+
+		this->renderer->check_error();
+
+		this->window->update();
+	}
+	log::log(MSG(info) << "draw loop exited");
+
+	this->window->close();
+}
+
+std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {
+	return std::make_shared<renderer::gui::GuiApplicationWithLogger>();
+}
+
+void Presenter::init_graphics() {
+	log::log(INFO << "initializing graphics...");
+
 	this->gui_app = this->init_window_system();
 	this->window = renderer::Window::create("openage presenter test", 800, 600);
-
 	this->renderer = this->window->make_renderer();
 
 	//// -- gui initialization
@@ -56,25 +81,13 @@ void Presenter::run() {
 	);
 
 	auto gui_pass = this->gui->get_render_pass();
-
-	while (not this->window->should_close()) {
-		this->gui_app->process_events();
-		// this->gui->process_events();
-
-		this->gui->render();
-		this->renderer->render(gui_pass);
-
-		this->renderer->check_error();
-
-		this->window->update();
-	}
-	log::log(MSG(info) << "draw loop exited");
-
-	this->window->close();
+	this->render_passes.push_back(gui_pass);
 }
 
-std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {
-	return std::make_shared<renderer::gui::GuiApplicationWithLogger>();
+void Presenter::render() {
+	for (auto pass : this->render_passes) {
+		this->renderer->render(pass);
+	}
 }
 
 } // namespace openage::presenter
