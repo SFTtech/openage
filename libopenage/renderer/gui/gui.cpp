@@ -41,7 +41,7 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
 	this->resize(size[0], size[1]);
 
 	util::Path shaderdir = assetdir["shaders"];
-	this->initialize_render_pass(shaderdir);
+	this->initialize_render_pass(size[0], size[1], shaderdir);
 
 	window->add_resize_callback([this](size_t width, size_t height) {
 		this->resize(width, height);
@@ -52,7 +52,9 @@ std::shared_ptr<renderer::RenderPass> GUI::get_render_pass() {
 	return this->render_pass;
 }
 
-void GUI::initialize_render_pass(const util::Path &shaderdir) {
+void GUI::initialize_render_pass(size_t width,
+                                 size_t height,
+                                 const util::Path &shaderdir) {
 	auto id_vert_file = (shaderdir / "identity.vert.glsl").open();
 	auto id_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
@@ -71,7 +73,9 @@ void GUI::initialize_render_pass(const util::Path &shaderdir) {
 	auto maptex_shader = this->renderer->add_shader({id_shader_src, maptex_frag_shader_src});
 
 	// GUI draw surface. gets drawn on top of the gameworld in the presenter.
-	auto fbo = this->renderer->create_texture_target({this->texture});
+	auto output_texture = this->renderer->add_texture(
+		resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
+	auto fbo = this->renderer->create_texture_target({output_texture});
 
 	this->texture_unif = maptex_shader->new_uniform_input("texture", this->texture);
 	Renderable display_obj{
@@ -81,8 +85,9 @@ void GUI::initialize_render_pass(const util::Path &shaderdir) {
 		true,
 	};
 
-	// TODO: Render into FBO instead of screen
-	this->render_pass = renderer->add_render_pass({display_obj}, this->renderer->get_display_target());
+	// TODO: Rendering into the FBO is a bit redundant right now because we
+	// just copy the GUI texture into the output texture
+	this->render_pass = renderer->add_render_pass({display_obj}, fbo);
 }
 
 
@@ -93,14 +98,21 @@ void GUI::resize(size_t width, size_t height) {
 	this->texture = this->renderer->add_texture(
 		resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
 
-	// pass the new texture to shader uniform
-	if (this->texture_unif) {
-		this->texture_unif->update("texture", this->texture);
-	}
-
 	// update new texture to gui renderer
 	this->gui_renderer->resize(width, height);
 	this->gui_renderer->set_texture(this->texture);
+
+	// update the fbo size of the render pass
+	if (this->render_pass) {
+		auto output_texture = this->renderer->add_texture(
+			resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
+		auto fbo = renderer->create_texture_target({output_texture});
+
+		// pass the new texture to shader uniform
+		this->texture_unif->update("texture", this->texture);
+
+		this->render_pass->set_target(fbo);
+	}
 }
 
 

@@ -67,16 +67,20 @@ private:
 	 *
 	 * Called during initialization of the GUI.
 	 *
+	 * @param width Width of the GUI.
+	 * @param height Height of the GUI.
 	 * @param shaderdir Directory containg the shader source files.
 	 */
-	void initialize_render_pass(const util::Path &shaderdir);
+	void initialize_render_pass(size_t width,
+	                            size_t height,
+	                            const util::Path &shaderdir);
 
 	/**
 	 * Resize the GUI. This updates the GUI texture size and propagates
 	 * the changes to the GUI render pass.
 	 *
-	 * @param width Width of the GUI.
-	 * @param height Height of the GUI.
+	 * @param width New width of the GUI.
+	 * @param height New height of the GUI.
 	 */
 	void resize(size_t width, size_t height);
 
