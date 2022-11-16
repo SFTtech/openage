@@ -17,7 +17,7 @@ namespace renderer {
 class RenderPass;
 class Renderer;
 class Texture2d;
-class UniformInput;
+class ShaderProgram;
 class Window;
 
 namespace gui {
@@ -114,9 +114,9 @@ protected:
 	std::vector<std::shared_ptr<renderer::Texture2d>> pass_outputs;
 
 	/**
-	 * Uniforms for the final render pass.
+	 * Shader for rendering to the window.
 	 */
-	std::shared_ptr<renderer::UniformInput> texture_unifs;
+	std::shared_ptr<renderer::ShaderProgram> display_shader;
 };
 
 } // namespace presenter

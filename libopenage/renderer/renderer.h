@@ -2,8 +2,8 @@
 
 #pragma once
 
-#include <vector>
 #include <memory>
+#include <vector>
 
 
 namespace openage {
@@ -14,7 +14,7 @@ class Texture2dData;
 class Texture2dInfo;
 class ShaderSource;
 class MeshData;
-}
+} // namespace resources
 
 class ShaderProgram;
 class Geometry;
@@ -29,6 +29,8 @@ protected:
 
 public:
 	virtual ~RenderTarget() = default;
+
+	virtual std::vector<std::shared_ptr<Texture2d>> get_texture_targets() = 0;
 };
 
 /// A renderable is a set of a shader UniformInput and a possible draw call.
@@ -69,11 +71,11 @@ struct Renderable {
 /// the new uniform values (set on the CPU first with unif_in.update(...))
 /// are uploaded to the GPU.
 struct ShaderUpdate : Renderable {
-	ShaderUpdate(std::shared_ptr<UniformInput> const& uniform)
-		: Renderable{uniform, nullptr} {}
+	ShaderUpdate(std::shared_ptr<UniformInput> const &uniform) :
+		Renderable{uniform, nullptr} {}
 
-	ShaderUpdate(std::shared_ptr<UniformInput> && uniform)
-		: Renderable{std::move(uniform), nullptr} {}
+	ShaderUpdate(std::shared_ptr<UniformInput> &&uniform) :
+		Renderable{std::move(uniform), nullptr} {}
 };
 
 
@@ -90,6 +92,7 @@ public:
 	virtual ~RenderPass() = default;
 	void set_target(const std::shared_ptr<RenderTarget> &);
 	const std::shared_ptr<RenderTarget> &get_target() const;
+
 private:
 	/// The render target to write into.
 	std::shared_ptr<RenderTarget> target;
@@ -104,18 +107,18 @@ public:
 
 	/// Uploads the given texture data (usually loaded from disk) to graphics hardware and makes it available
 	/// as a Texture object that can be used for various operations.
-	virtual std::shared_ptr<Texture2d> add_texture(resources::Texture2dData const&) = 0;
+	virtual std::shared_ptr<Texture2d> add_texture(resources::Texture2dData const &) = 0;
 
 	/// Creates a new empty texture with the given parameters on the graphics hardware.
-	virtual std::shared_ptr<Texture2d> add_texture(resources::Texture2dInfo const&) = 0;
+	virtual std::shared_ptr<Texture2d> add_texture(resources::Texture2dInfo const &) = 0;
 
 	/// Compiles the given shader source code into a shader program. A shader program is the main tool used
 	/// for graphics rendering.
-	virtual std::shared_ptr<ShaderProgram> add_shader(std::vector<resources::ShaderSource> const&) = 0;
+	virtual std::shared_ptr<ShaderProgram> add_shader(std::vector<resources::ShaderSource> const &) = 0;
 
 	/// Creates a Geometry object from the given mesh data, uploading it to the GPU by creating appropriate buffer.
 	/// The vertex attributes will be passed to the shader as described in the mesh data.
-	virtual std::shared_ptr<Geometry> add_mesh_geometry(resources::MeshData const&) = 0;
+	virtual std::shared_ptr<Geometry> add_mesh_geometry(resources::MeshData const &) = 0;
 
 	/// Adds a Geometry object that passes a simple 4-vertex drawing command with no vertex attributes to the shader.
 	/// Useful for generating positions in the vertex shader.
@@ -129,7 +132,7 @@ public:
 	/// target will write to these textures. Textures are attached to the target in the order in which they
 	/// appear within the vector. Depth textures are attached as depth components. Textures of every other
 	/// type are attached as color components.
-	virtual std::shared_ptr<RenderTarget> create_texture_target(std::vector<std::shared_ptr<Texture2d>> const&) = 0;
+	virtual std::shared_ptr<RenderTarget> create_texture_target(std::vector<std::shared_ptr<Texture2d>> const &) = 0;
 
 	/// Returns the built-in display target that represents the window. Passes pointed at this target will have
 	/// their output visible on the screen.
@@ -146,4 +149,5 @@ public:
 	virtual void render(const std::shared_ptr<RenderPass> &) = 0;
 };
 
-}}
+} // namespace renderer
+} // namespace openage
