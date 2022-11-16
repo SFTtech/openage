@@ -16,6 +16,8 @@ namespace openage {
 namespace renderer {
 class RenderPass;
 class Renderer;
+class Texture2d;
+class UniformInput;
 class Window;
 
 namespace gui {
@@ -52,6 +54,17 @@ protected:
 	 *     - component renderers (Terrain, Game Entities, GUI)
 	 */
 	void init_graphics();
+
+	/**
+	 * Initialize the GUI.
+	 */
+	void init_gui();
+
+	/**
+	 * Initialize the final render pass that renders the results of all previous
+	 * render passes to the window screen.
+	 */
+	void init_render_pass();
 	// void init_audio();
 
 	/**
@@ -59,15 +72,51 @@ protected:
 	 */
 	void render();
 
+	/**
+	 * Update the render pass uniforms. This must be done if
+	 * the output textures of the render passes change, e.g. after
+	 * a resize action.
+	 */
+	void update_render_pass_unifs();
+
 	// TODO: remove and move into our config/settings system
 	util::Path root_dir;
 
-	// graphics
+	// graphis components
+	/**
+	 * Windowing GUI Application wrapper.
+	 */
 	std::shared_ptr<qtgui::GuiApplication> gui_app;
+
+	/**
+	 * Display window.
+	 */
 	std::shared_ptr<renderer::Window> window;
+
+	/**
+	 * openage's graphics renderer.
+	 */
 	std::shared_ptr<renderer::Renderer> renderer;
+
+	/**
+	 * Qt-based GUI for interface.
+	 */
 	std::shared_ptr<renderer::gui::GUI> gui;
+
+	/**
+	 * Render passes in the openage renderer.
+	 */
 	std::vector<std::shared_ptr<renderer::RenderPass>> render_passes;
+
+	/**
+	 * Results of the individual render stages.
+	 */
+	std::vector<std::shared_ptr<renderer::Texture2d>> pass_outputs;
+
+	/**
+	 * Uniforms for the final render pass.
+	 */
+	std::shared_ptr<renderer::UniformInput> texture_unifs;
 };
 
 } // namespace presenter
