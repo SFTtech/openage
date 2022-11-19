@@ -13,6 +13,7 @@
 #include "renderer/gui/qml_info.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
+#include "renderer/terrain/terrain_renderer.h"
 #include "renderer/window.h"
 #include "util/path.h"
 
@@ -54,6 +55,12 @@ void Presenter::init_graphics() {
 	this->gui_app = this->init_window_system();
 	this->window = renderer::Window::create("openage presenter test", 800, 600);
 	this->renderer = this->window->make_renderer();
+
+	this->terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderer>(
+		this->window,
+		this->renderer,
+		this->root_dir["assets"]["shaders"]);
+	this->render_passes.push_back(this->terrain_renderer->get_render_pass());
 
 	this->init_gui();
 	this->init_render_pass();

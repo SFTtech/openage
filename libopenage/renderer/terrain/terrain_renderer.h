@@ -9,9 +9,13 @@
 namespace openage::renderer {
 class Renderer;
 class RenderPass;
+class Texture2d;
 class Window;
 
 namespace terrain {
+class TerrainRenderEntity;
+class TerrainRenderMesh;
+class TerrainRenderModel;
 
 /**
  * Manage and render terrain geometry and graphics.
@@ -50,18 +54,34 @@ private:
 	 *
 	 * Called during initialization of the terrain renderer.
 	 *
+	 * @param width Width of the FBO.
+	 * @param height Height of the FBO.
 	 * @param shaderdir Directory containg the shader source files.
 	 */
-	void initialize_render_pass(const util::Path &shaderdir);
+	void initialize_render_pass(size_t width,
+	                            size_t height,
+	                            const util::Path &shaderdir);
 
-	// Interface for the engine
-	//std::shared_ptr<TerrainRenderEntity> render_entity;
 
-	// Vertex mesh data for terrain geometry
-	//std::shared_ptr<TerrainTextureMap> texture_map;
+	/**
+	 * Reference to the openage renderer.
+	 */
+	std::shared_ptr<renderer::Renderer> renderer;
 
-	// Vertex mesh data for terrain geometry
-	//std::shared_ptr<TerrainMesh> mesh;
+	/**
+	 * Engine interface for updating terrain draw information.
+	 */
+	std::shared_ptr<TerrainRenderEntity> render_entity;
+
+	/**
+	 * 3D model of the terrain.
+	 */
+	std::shared_ptr<TerrainRenderModel> model;
+
+	/**
+	 * Vertex information of the terrain.
+	 */
+	std::shared_ptr<TerrainRenderMesh> mesh;
 
 	/**
 	 * Render pass for the terrain drawing.
@@ -69,9 +89,9 @@ private:
 	std::shared_ptr<renderer::RenderPass> render_pass;
 
 	/**
-	 * Reference to the openage renderer.
+	 * Output texture.
 	 */
-	std::shared_ptr<renderer::Renderer> renderer;
+	std::shared_ptr<renderer::Texture2d> output_texture;
 };
 
 } // namespace terrain

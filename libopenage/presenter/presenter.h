@@ -24,6 +24,10 @@ namespace gui {
 class GUI;
 }
 
+namespace terrain {
+class TerrainRenderer;
+}
+
 } // namespace renderer
 
 namespace presenter {
@@ -54,6 +58,11 @@ protected:
 	 *     - component renderers (Terrain, Game Entities, GUI)
 	 */
 	void init_graphics();
+
+	/**
+	 * Initialize the terrain renderer.
+	 */
+	void init_terrain_renderer();
 
 	/**
 	 * Initialize the GUI.
@@ -102,6 +111,11 @@ protected:
 	 * Qt-based GUI for interface.
 	 */
 	std::shared_ptr<renderer::gui::GUI> gui;
+
+	/**
+	 * Graphics output for terrain.
+	 */
+	std::shared_ptr<renderer::terrain::TerrainRenderer> terrain_renderer;
 
 	/**
 	 * Render passes in the openage renderer.
