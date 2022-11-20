@@ -7,12 +7,15 @@
 
 namespace openage::renderer::terrain {
 
-// TODO: Dimetric/Orthographic version
+// Dimetric/Orthographic projection
+// Basically rotates the scene by 45 degrees to the right
+// and by 60 degrees along the vertical axis
+// TODO: Move to camera?
 static const Eigen::Matrix4f proj_matrix{
-	{1, 0, 0, 0},
-	{0, 1, 0, 0},
-	{0, 0, 1, 0},
-	{0, 0, 0, 1}};
+	{1.0f, -1.0f, 0.0f, 0.0f},
+	{0.5f, 0.5f, 0.0f, 0.0f},
+	{0.0f, 0.0f, 1.0f, 0.0f},
+	{0.0f, 0.0f, 0.0f, 1.0f}};
 
 class TerrainRenderModel {
 public:
