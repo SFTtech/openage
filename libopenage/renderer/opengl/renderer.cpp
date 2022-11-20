@@ -113,6 +113,7 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 	for (auto obj : gl_pass->get_renderables()) {
 		if (obj.alpha_blending) {
 			glEnable(GL_BLEND);
+			// TODO: Set only once or make selectable
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		}
 		else {
@@ -121,6 +122,7 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 
 		if (obj.depth_test) {
 			glEnable(GL_DEPTH_TEST);
+			// TODO: Set only once or make selectable
 			glDepthFunc(GL_LEQUAL);
 			glDepthRange(0.0, 1.0);
 		}
