@@ -7,8 +7,8 @@
 #include "../../job/job.h"
 #include "../../unit/unit_texture.h"
 #include "../../util/csv.h"
-#include "../types.h"
 #include "terrain/terrain.h"
+#include "types.h"
 
 #include <QObject>
 #include <memory>

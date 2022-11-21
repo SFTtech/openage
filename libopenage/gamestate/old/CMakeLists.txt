@@ -8,7 +8,8 @@ add_sources(libopenage
 	market.cpp
 	player.cpp
 	population_tracker.cpp
+	resource.cpp
 	score.cpp
 	team.cpp
-	resource.cpp
+	types.cpp
 )

@@ -2,6 +2,8 @@
 
 #include "engine.h"
 
+#include "event/loop.h"
+
 namespace openage {
 namespace engine {
 
@@ -12,7 +14,7 @@ Engine::Engine(enum mode mode,
 	run_mode{mode},
 	root_dir{root_dir},
 	cvar_manager{cvar_manager},
-	qml_info{this, this->root_dir["assets"]} {
+	event_loop{std::make_shared<event::Loop>()} {
 }
 
 
@@ -35,10 +37,6 @@ const util::Path &Engine::get_root_dir() {
 
 std::shared_ptr<cvar::CVarManager> Engine::get_cvar_manager() {
 	return this->cvar_manager;
-}
-
-renderer::gui::QMLInfo Engine::get_qml_info() {
-	return this->qml_info;
 }
 
 } // namespace engine

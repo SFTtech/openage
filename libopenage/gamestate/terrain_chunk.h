@@ -5,8 +5,10 @@
 
 namespace openage::gamestate {
 
+/**
+ * Subdivision of the main terrain entity.
+ */
 class TerrainChunk {
-
 };
 
-} // openage::gamestate
+} // namespace openage::gamestate

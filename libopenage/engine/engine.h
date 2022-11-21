@@ -2,32 +2,25 @@
 
 #pragma once
 
-#include "cvar/cvar.h"
-#include "renderer/gui/qml_info.h"
 #include "util/path.h"
 
-
-/**
- * Main openage namespace to store all things that make the have to do with the game.
- *
- * Game entity management, graphics drawing, gui stuff, input handling etc.
- * So basically everything that makes the game work lies in here...
- */
 namespace openage {
+
+namespace cvar {
+class CVarManager;
+}
+
+namespace event {
+class Loop;
+}
+
 namespace engine {
 
 
 /**
- * main engine container.
+ * Gameplay subsystem of the engine.
  *
- * central foundation for everything the openage engine is capable of.
- *
- * pxd:
- *
- * cppclass Engine:
- *
- *     InputManager &get_input_manager() except +
- *     CVarManager &get_cvar_manager() except +
+ * Manages the state of the game world and the event loop.
  */
 class Engine final {
 public:
@@ -95,11 +88,6 @@ public:
 	std::shared_ptr<cvar::CVarManager> get_cvar_manager();
 
 	/**
-	 * return this engine's qml info.
-	 */
-	renderer::gui::QMLInfo get_qml_info();
-
-	/**
 	 * current engine state variable.
 	 * to be set to false to stop the engine loop.
 	 */
@@ -128,12 +116,12 @@ private:
 	std::shared_ptr<cvar::CVarManager> cvar_manager;
 
 	/**
-	 * This stores information to be accessible from the QML engine.
-	 *
-	 * Information in there (such as a pointer to the this engine)
-	 * is then usable from within qml files, after some additional magic.
+	 * Event loop for creating and sending events.
 	 */
-	renderer::gui::QMLInfo qml_info;
+	std::shared_ptr<event::Loop> event_loop;
+
+	// Something that manages the clock
+	// auto time_manager;
 };
 
 } // namespace engine

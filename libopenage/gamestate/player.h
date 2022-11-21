@@ -5,8 +5,13 @@
 
 namespace openage::gamestate {
 
+/**
+ * Entity for managing a player inside the game world.
+ */
 class Player {
-
+public:
+	Player() = default;
+	~Player() = default;
 };
 
-} // openage
+} // namespace openage::gamestate

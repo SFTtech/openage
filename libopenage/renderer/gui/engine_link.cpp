@@ -10,6 +10,7 @@
 
 #include "gui/guisys/link/qml_engine_with_singleton_items_info.h"
 #include "gui/guisys/link/qtsdl_checked_static_cast.h"
+#include "renderer/gui/qml_info.h"
 
 namespace openage::renderer::gui {
 

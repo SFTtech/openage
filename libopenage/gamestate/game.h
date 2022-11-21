@@ -2,13 +2,21 @@
 
 #pragma once
 
-#include "world.h"
+#include <memory>
 
 namespace openage::gamestate {
+class Universe;
 
+/**
+ * Manages a game session (settings, win conditions, etc.).
+ */
 class Game {
 public:
-	World world;
+	Game() = default;
+	~Game() = default;
+
+private:
+	std::shared_ptr<Universe> universe;
 };
 
-} // openage
+} // namespace openage::gamestate

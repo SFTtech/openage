@@ -3,8 +3,8 @@ add_sources(libopenage
 	player.cpp
 	terrain.cpp
 	terrain_chunk.cpp
-	types.cpp
 	world.cpp
+	universe.cpp
 )
 
 # TODO: remove once migration is done.

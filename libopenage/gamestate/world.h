@@ -4,6 +4,10 @@
 
 namespace openage::gamestate {
 
+/**
+ * Entity for managing "physical" things (units, buildings) inside
+ * the game.
+ */
 class World {
 
 };

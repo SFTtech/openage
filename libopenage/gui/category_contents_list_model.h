@@ -2,12 +2,12 @@
 
 #pragma once
 
-#include <vector>
+#include <memory>
 #include <string>
 #include <tuple>
-#include <memory>
+#include <vector>
 
-#include "../gamestate/types.h"
+#include "../gamestate/old/types.h"
 
 #include <QAbstractListModel>
 
@@ -23,16 +23,16 @@ class CategoryContentsListModel : public QAbstractListModel {
 	Q_OBJECT
 
 	Q_PROPERTY(QString name READ get_name WRITE set_name)
-	Q_PROPERTY(openage::gui::EditorModeLink* editorMode READ get_editor_mode WRITE set_editor_mode)
+	Q_PROPERTY(openage::gui::EditorModeLink *editorMode READ get_editor_mode WRITE set_editor_mode)
 
 public:
-	CategoryContentsListModel(QObject *parent=nullptr);
+	CategoryContentsListModel(QObject *parent = nullptr);
 	virtual ~CategoryContentsListModel();
 
 	QString get_name() const;
 	void set_name(const QString &name);
 
-	EditorModeLink* get_editor_mode() const;
+	EditorModeLink *get_editor_mode() const;
 	void set_editor_mode(EditorModeLink *editor_mode);
 
 private slots:
@@ -41,8 +41,8 @@ private slots:
 
 private:
 	virtual QHash<int, QByteArray> roleNames() const override;
-	virtual int rowCount(const QModelIndex&) const override;
-	virtual QVariant data(const QModelIndex &index, int role=Qt::DisplayRole) const override;
+	virtual int rowCount(const QModelIndex &) const override;
+	virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
 	std::vector<std::tuple<index_t, uint16_t>> type_and_texture;
 
@@ -50,4 +50,5 @@ private:
 	EditorModeLink *editor_mode;
 };
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage
