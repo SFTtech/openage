@@ -12,8 +12,8 @@ namespace openage::renderer::terrain {
 // and by 60 degrees along the vertical axis
 // TODO: Move to camera?
 static const Eigen::Matrix4f proj_matrix{
-	{1.0f, -1.0f, 0.0f, 0.0f},
 	{0.5f, 0.5f, 0.0f, 0.0f},
+	{1.0f, -1.0f, 0.0f, 0.0f},
 	{0.0f, 0.0f, 1.0f, 0.0f},
 	{0.0f, 0.0f, 0.0f, 1.0f}};
 
