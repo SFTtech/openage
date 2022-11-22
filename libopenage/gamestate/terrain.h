@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "util/path.h"
+#include "util/vector.h"
 
 namespace openage {
 namespace renderer::terrain {
@@ -16,20 +17,12 @@ class TerrainRenderEntity;
 namespace gamestate {
 
 /**
- * Position inside the map coordinates.
- */
-struct TerrainNode {
-	float x;
-	float y;
-	float h;
-};
-
-/**
  * Entity for managing the map terrain of a game.
  */
 class Terrain {
 public:
-	Terrain();
+	Terrain(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &render_entity,
+	        util::Path &texture_path);
 	~Terrain() = default;
 
 private:
@@ -37,8 +30,13 @@ private:
 	void push_to_render();
 
 	// ASDF: testing
-	// Vertexes of the terrain grid
-	std::vector<std::vector<TerrainNode>> height_map;
+
+	// size of the map
+	// origin is the left corner
+	// x = top left edge; y = top right edge
+	util::Vector2s size;
+	// Heights of the terrain grid
+	std::vector<float> height_map;
 	// path to a texture
 	util::Path texture_path;
 
