@@ -20,8 +20,7 @@ pxdgen(
 add_subdirectory(font/)
 add_subdirectory(gui/)
 add_subdirectory(resources/)
-add_subdirectory(terrain/)
-add_subdirectory(world/)
+add_subdirectory(stages/)
 
 if(OPENGL_FOUND)
     add_subdirectory(opengl/)

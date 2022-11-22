@@ -2,7 +2,7 @@
 
 #include "terrain.h"
 
-#include "renderer/terrain/terrain_render_entity.h"
+#include "renderer/stages/terrain/terrain_render_entity.h"
 
 namespace openage::gamestate {
 

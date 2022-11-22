@@ -8,9 +8,9 @@
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/shader_program.h"
-#include "renderer/terrain/terrain_mesh.h"
-#include "renderer/terrain/terrain_model.h"
-#include "renderer/terrain/terrain_render_entity.h"
+#include "renderer/stages/terrain/terrain_mesh.h"
+#include "renderer/stages/terrain/terrain_model.h"
+#include "renderer/stages/terrain/terrain_render_entity.h"
 #include "renderer/window.h"
 
 namespace openage::renderer::terrain {

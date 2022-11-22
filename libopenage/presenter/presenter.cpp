@@ -13,7 +13,7 @@
 #include "renderer/gui/qml_info.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
-#include "renderer/terrain/terrain_renderer.h"
+#include "renderer/stages/terrain/terrain_renderer.h"
 #include "renderer/window.h"
 #include "util/path.h"
 

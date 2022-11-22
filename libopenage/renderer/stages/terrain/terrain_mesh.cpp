@@ -3,7 +3,7 @@
 #include "terrain_mesh.h"
 
 #include "renderer/resources/mesh_data.h"
-#include "renderer/terrain/terrain_render_entity.h"
+#include "renderer/stages/terrain/terrain_render_entity.h"
 
 namespace openage::renderer::terrain {
 
