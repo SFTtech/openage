@@ -13,6 +13,7 @@
 #include "renderer/gui/qml_info.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
+#include "renderer/stages/skybox/skybox_renderer.h"
 #include "renderer/stages/terrain/terrain_renderer.h"
 #include "renderer/window.h"
 #include "util/path.h"
@@ -55,6 +56,13 @@ void Presenter::init_graphics() {
 	this->gui_app = this->init_window_system();
 	this->window = renderer::Window::create("openage presenter test", 800, 600);
 	this->renderer = this->window->make_renderer();
+
+	this->skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
+		this->window,
+		this->renderer,
+		this->root_dir["assets"]["shaders"]);
+	this->skybox_renderer->set_color(1.0f, 0.5f, 0.0f, 1.0f);
+	this->render_passes.push_back(this->skybox_renderer->get_render_pass());
 
 	this->terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderer>(
 		this->window,

@@ -24,6 +24,10 @@ namespace gui {
 class GUI;
 }
 
+namespace skybox {
+class SkyboxRenderer;
+}
+
 namespace terrain {
 class TerrainRenderer;
 }
@@ -111,6 +115,11 @@ protected:
 	 * Qt-based GUI for interface.
 	 */
 	std::shared_ptr<renderer::gui::GUI> gui;
+
+	/**
+	 * Graphics output for the map backbround.
+	 */
+	std::shared_ptr<renderer::skybox::SkyboxRenderer> skybox_renderer;
 
 	/**
 	 * Graphics output for terrain.
