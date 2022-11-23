@@ -13,6 +13,7 @@
 #include "renderer/gui/qml_info.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
+#include "renderer/stages/screen/screen_renderer.h"
 #include "renderer/stages/skybox/skybox_renderer.h"
 #include "renderer/stages/terrain/terrain_renderer.h"
 #include "renderer/window.h"
@@ -57,6 +58,7 @@ void Presenter::init_graphics() {
 	this->window = renderer::Window::create("openage presenter test", 800, 600);
 	this->renderer = this->window->make_renderer();
 
+	// Skybox
 	this->skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
 		this->window,
 		this->renderer,
@@ -64,6 +66,7 @@ void Presenter::init_graphics() {
 	this->skybox_renderer->set_color(1.0f, 0.5f, 0.0f, 1.0f);
 	this->render_passes.push_back(this->skybox_renderer->get_render_pass());
 
+	// Terrain
 	this->terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderer>(
 		this->window,
 		this->renderer,
@@ -71,7 +74,7 @@ void Presenter::init_graphics() {
 	this->render_passes.push_back(this->terrain_renderer->get_render_pass());
 
 	this->init_gui();
-	this->init_render_pass();
+	this->init_final_render_pass();
 }
 
 void Presenter::init_gui() {
@@ -108,57 +111,35 @@ void Presenter::init_gui() {
 	this->render_passes.push_back(gui_pass);
 }
 
-void Presenter::init_render_pass() {
-	util::Path shaderdir = this->root_dir["assets"]["shaders"];
-
-	auto vert_shader_file = (shaderdir / "final.vert.glsl").open();
-	auto vert_shader_src = renderer::resources::ShaderSource(
-		renderer::resources::shader_lang_t::glsl,
-		renderer::resources::shader_stage_t::vertex,
-		vert_shader_file.read());
-	vert_shader_file.close();
-
-	auto frag_shader_file = (shaderdir / "final.frag.glsl").open();
-	auto frag_shader_src = renderer::resources::ShaderSource(
-		renderer::resources::shader_lang_t::glsl,
-		renderer::resources::shader_stage_t::fragment,
-		frag_shader_file.read());
-	frag_shader_file.close();
-
-	auto quad = renderer->add_mesh_geometry(renderer::resources::MeshData::make_quad());
-	this->display_shader = renderer->add_shader({vert_shader_src, frag_shader_src});
-
-	std::vector<renderer::Renderable> output_layers{};
-	output_layers.reserve(this->render_passes.size());
-	for (size_t i = 0; i < this->render_passes.size(); ++i) {
-		auto pass = this->render_passes[i];
-		auto textures = pass->get_target()->get_texture_targets();
-		auto texture_unif = this->display_shader->create_empty_input();
-
-		// TODO: Dirty hack that only selects color textures
-		// use this->pass_outputs in the future to assign output
-		// textures we want to render
-		for (auto tex : textures) {
-			auto format = tex->get_info().get_format();
-			if (format == renderer::resources::pixel_format::rgba8) {
-				texture_unif->update("tex", tex);
-				break;
-			}
-		}
-		renderer::Renderable display_obj{
-			texture_unif,
-			quad,
-			true,
-			false,
-		};
-		output_layers.push_back(display_obj);
+void Presenter::init_final_render_pass() {
+	// Final output to window
+	this->screen_renderer = std::make_shared<renderer::screen::ScreenRenderer>(
+		this->window,
+		this->renderer,
+		this->root_dir["assets"]["shaders"]);
+	std::vector<std::shared_ptr<renderer::RenderTarget>> targets{};
+	for (auto pass : this->render_passes) {
+		targets.push_back(pass->get_target());
 	}
-	auto final_pass = renderer->add_render_pass(output_layers, renderer->get_display_target());
-	this->render_passes.push_back(final_pass);
+	this->screen_renderer->set_render_targets(targets);
+	this->render_passes.push_back(this->screen_renderer->get_render_pass());
 
-	// Update render pass if the textures are reassigned on resize
+	// Update final render pass if the textures are reassigned on resize
+	// TODO: This REQUIRES that all other render passes have already been
+	//       resized
 	this->window->add_resize_callback([this](size_t, size_t) {
-		this->update_render_pass_unifs();
+		// remove the final pass
+		this->render_passes.pop_back();
+
+		// Acquire the render targets for all previous passes
+		std::vector<std::shared_ptr<renderer::RenderTarget>> targets{};
+		for (auto pass : this->render_passes) {
+			targets.push_back(pass->get_target());
+		}
+		// this will recreate this renderer's pass
+		// so we have to add it to the list of passes again
+		this->screen_renderer->set_render_targets(targets);
+		this->render_passes.push_back(this->screen_renderer->get_render_pass());
 	});
 }
 
@@ -166,42 +147,6 @@ void Presenter::render() {
 	for (auto pass : this->render_passes) {
 		this->renderer->render(pass);
 	}
-}
-
-void Presenter::update_render_pass_unifs() {
-	// Remove the final pass because we have to replace it
-	// TODO: We should update the renderables instead
-	this->render_passes.pop_back();
-
-	auto quad = renderer->add_mesh_geometry(renderer::resources::MeshData::make_quad());
-
-	std::vector<renderer::Renderable> output_layers{};
-	output_layers.reserve(this->render_passes.size());
-	for (size_t i = 0; i < this->render_passes.size(); ++i) {
-		auto pass = this->render_passes[i];
-		auto textures = pass->get_target()->get_texture_targets();
-		auto texture_unif = this->display_shader->create_empty_input();
-
-		// TODO: Dirty hack that only selects color textures
-		// use this->pass_outputs in the future to assign output
-		// textures we want to render
-		for (auto tex : textures) {
-			auto format = tex->get_info().get_format();
-			if (format == renderer::resources::pixel_format::rgba8) {
-				texture_unif->update("tex", tex);
-				break;
-			}
-		}
-		renderer::Renderable display_obj{
-			texture_unif,
-			quad,
-			true,
-			false,
-		};
-		output_layers.push_back(display_obj);
-	}
-	auto final_pass = renderer->add_render_pass(output_layers, renderer->get_display_target());
-	this->render_passes.push_back(final_pass);
 }
 
 } // namespace openage::presenter

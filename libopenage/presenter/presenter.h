@@ -24,6 +24,10 @@ namespace gui {
 class GUI;
 }
 
+namespace screen {
+class ScreenRenderer;
+}
+
 namespace skybox {
 class SkyboxRenderer;
 }
@@ -77,20 +81,14 @@ protected:
 	 * Initialize the final render pass that renders the results of all previous
 	 * render passes to the window screen.
 	 */
-	void init_render_pass();
+	void init_final_render_pass();
+
 	// void init_audio();
 
 	/**
 	 * Render all configured render passes in sequence.
 	 */
 	void render();
-
-	/**
-	 * Update the render pass uniforms. This must be done if
-	 * the output textures of the render passes change, e.g. after
-	 * a resize action.
-	 */
-	void update_render_pass_unifs();
 
 	// TODO: remove and move into our config/settings system
 	util::Path root_dir;
@@ -117,7 +115,7 @@ protected:
 	std::shared_ptr<renderer::gui::GUI> gui;
 
 	/**
-	 * Graphics output for the map backbround.
+	 * Graphics output for the map background.
 	 */
 	std::shared_ptr<renderer::skybox::SkyboxRenderer> skybox_renderer;
 
@@ -127,19 +125,14 @@ protected:
 	std::shared_ptr<renderer::terrain::TerrainRenderer> terrain_renderer;
 
 	/**
+	 * Final graphics output to the window screen.
+	 */
+	std::shared_ptr<renderer::screen::ScreenRenderer> screen_renderer;
+
+	/**
 	 * Render passes in the openage renderer.
 	 */
 	std::vector<std::shared_ptr<renderer::RenderPass>> render_passes;
-
-	/**
-	 * Results of the individual render stages.
-	 */
-	std::vector<std::shared_ptr<renderer::Texture2d>> pass_outputs;
-
-	/**
-	 * Shader for rendering to the window.
-	 */
-	std::shared_ptr<renderer::ShaderProgram> display_shader;
 };
 
 } // namespace presenter
