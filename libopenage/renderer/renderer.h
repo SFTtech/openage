@@ -93,6 +93,15 @@ public:
 	void set_target(const std::shared_ptr<RenderTarget> &);
 	const std::shared_ptr<RenderTarget> &get_target() const;
 
+	// Replace the current renderables
+	void set_renderables(std::vector<Renderable>);
+	// Append renderables to the end of the list of renderables
+	void add_renderables(std::vector<Renderable>);
+	// Append a single renderable to the end of the list of renderables
+	void add_renderables(Renderable);
+	// Clear the list of renderables
+	void clear_renderables();
+
 private:
 	/// The render target to write into.
 	std::shared_ptr<RenderTarget> target;
