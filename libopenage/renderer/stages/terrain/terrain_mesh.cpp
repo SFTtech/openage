@@ -2,26 +2,31 @@
 
 #include "terrain_mesh.h"
 
+#include "renderer/resources/assets/texture_manager.h"
 #include "renderer/resources/mesh_data.h"
+#include "renderer/resources/texture_data.h"
 #include "renderer/stages/terrain/terrain_render_entity.h"
 
 namespace openage::renderer::terrain {
 
-TerrainRenderMesh::TerrainRenderMesh(const std::shared_ptr<TerrainRenderEntity> &entity) :
+TerrainRenderMesh::TerrainRenderMesh(const std::shared_ptr<renderer::Renderer> &renderer,
+                                     const std::shared_ptr<TerrainRenderEntity> &entity) :
+	texture_manager{std::make_shared<renderer::resources::TextureManager>(renderer)},
 	render_entity{entity},
-	// texture{},
+	texture{},
 	mesh{renderer::resources::MeshData::make_quad()} {
-	// TODO
-
-	// ASDF: testing
-	this->texture = this->render_entity->get_textures();
 }
 
 void TerrainRenderMesh::set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity) {
 	this->render_entity = entity;
+	this->update();
 }
 
 void TerrainRenderMesh::update() {
+	if (not this->render_entity->is_changed()) {
+		return;
+	}
+
 	// Update mesh
 	auto size = this->render_entity->get_size();
 	auto src_verts = this->render_entity->get_vertices();
@@ -39,16 +44,16 @@ void TerrainRenderMesh::update() {
 	// split the grid into triangles
 	// with an index array
 	std::vector<uint16_t> idxs;
-	for (size_t i = 0; i < size[1]; ++i) {
-		for (size_t j = 0; j < size[0]; ++j) {
+	for (size_t i = 0; i < size[1] - 1; ++i) {
+		for (size_t j = 0; j < size[0] - 1; ++j) {
 			// since we are working on tiles, we split each tile into two triangles
 			// with counter-clockwise vertex order
-			idxs.push_back(i); // bottom left
-			idxs.push_back(i + 1); // bottom right
-			idxs.push_back(i + size[0]); // top left
-			idxs.push_back(i + 1); // bottom right
-			idxs.push_back(i + size[0] + 1); // top right
-			idxs.push_back(i + size[0]); // top left
+			idxs.push_back(i * size[0] + j); // bottom left
+			idxs.push_back(i * size[0] + j + 1); // bottom right
+			idxs.push_back(i * size[0] + j + size[0]); // top left
+			idxs.push_back(i * size[0] + j + 1); // bottom right
+			idxs.push_back(i * size[0] + j + size[0] + 1); // top right
+			idxs.push_back(i * size[0] + j + size[0]); // top left
 		}
 	}
 
@@ -69,8 +74,14 @@ void TerrainRenderMesh::update() {
 	resources::MeshData new_mesh{std::move(vert_data), std::move(idx_data), info};
 	this->mesh = new_mesh;
 
-	// TODO: Update textures
-	this->texture = this->render_entity->get_textures();
+	// ASDF: testing
+	this->mesh = resources::MeshData::make_quad();
+
+	// Update textures
+	this->texture = this->texture_manager->request(this->render_entity->get_texture_path());
+
+	// Indicate to the render entity that its updates have been processed.
+	this->render_entity->clear_changed_flag();
 }
 
 const renderer::resources::MeshData &TerrainRenderMesh::get_mesh() {

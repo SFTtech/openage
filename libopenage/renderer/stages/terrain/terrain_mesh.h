@@ -9,7 +9,12 @@
 #include <eigen3/Eigen/Dense>
 
 namespace openage::renderer {
+class Renderer;
 class Texture2d;
+
+namespace resources {
+class TextureManager;
+}
 
 namespace terrain {
 class TerrainRenderEntity;
@@ -21,7 +26,8 @@ public:
      *
      * @param entity Terrain render entity for updating vertex coordinates.
      */
-	TerrainRenderMesh(const std::shared_ptr<TerrainRenderEntity> &entity);
+	TerrainRenderMesh(const std::shared_ptr<renderer::Renderer> &renderer,
+	                  const std::shared_ptr<TerrainRenderEntity> &entity);
 	~TerrainRenderMesh() = default;
 
 	/**
@@ -53,15 +59,22 @@ public:
 
 private:
 	/**
+	 * Texture manager for central accessing and loading textures.
+	 * 
+      * TODO: Replace with asset manager
+      */
+	std::shared_ptr<renderer::resources::TextureManager> texture_manager;
+
+	/**
      * Source for ingame terrain coordinates. These coordinates are translated into
      * our render vertex mesh when \p update() is called.
      */
 	std::shared_ptr<TerrainRenderEntity> render_entity;
 
-     /**
+	/**
       * Texture used for the mesh.
       */
-     std::shared_ptr<renderer::Texture2d> texture;
+	std::shared_ptr<renderer::Texture2d> texture;
 
 	/**
      * Pre-transformation vertices for the terrain model.

@@ -9,6 +9,7 @@
 namespace openage::renderer {
 class Renderer;
 class RenderPass;
+class ShaderProgram;
 class Texture2d;
 class Window;
 
@@ -33,6 +34,13 @@ public:
 	 * @return Render pass for terrain drawing.
 	 */
 	std::shared_ptr<renderer::RenderPass> get_render_pass();
+
+	/**
+	 * Set the current render entity of the terrain renderer.
+	 * 
+	 * @param render_entity New render entity.
+	 */
+	void set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity);
 
 	/**
 	 * Update the terrain mesh and texture information.
@@ -87,6 +95,8 @@ private:
 	 * Render pass for the terrain drawing.
 	 */
 	std::shared_ptr<renderer::RenderPass> render_pass;
+
+	std::shared_ptr<renderer::ShaderProgram> display_shader;
 
 	/**
 	 * Output texture.

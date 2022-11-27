@@ -11,7 +11,6 @@
 namespace openage::renderer {
 // ASDF: testing
 class Renderer;
-class Texture2d;
 
 namespace terrain {
 
@@ -23,15 +22,23 @@ struct TerrainVertex {
 
 class TerrainRenderEntity {
 public:
-	TerrainRenderEntity(const std::shared_ptr<renderer::Renderer> &renderer,
-	                    const util::Path &assetdir);
+	TerrainRenderEntity(
+		// const std::shared_ptr<renderer::Renderer> &renderer,
+		// const util::Path &assetdir
+	);
 	~TerrainRenderEntity() = default;
 
 	/**
-     * TODO: Update the render entity with information from the
+     * Update the render entity with information from the
      * gamestate.
+	 * 
+	 * @param size Size of the terrain in tiles (width x length)
+	 * @param height_map Height of terrain tiles.
+	 * @param texture_path Path to the terrain texture.
      */
-	void update();
+	void update(util::Vector2s size,
+	            std::vector<float> height_map,
+	            const util::Path &texture_path);
 
 	/**
      * Get the vertices of the terrain.
@@ -47,7 +54,7 @@ public:
      *
      * @return Texture mapping of textures to vertex area.
      */
-	const std::shared_ptr<renderer::Texture2d> &get_textures();
+	const util::Path &get_texture_path();
 
 	/**
      * Get the number of vertices on each side of the terrain.
@@ -56,19 +63,35 @@ public:
      */
 	const util::Vector2s &get_size();
 
+	/**
+	 * Check whether the render entity has received new updates from the
+	 * gamestate.
+	 * 
+	 * @return true if updates have been received, else false.
+	 */
+	bool is_changed();
+
+	/**
+	 * Clear the update flag by setting it to false.
+	 */
+	void clear_changed_flag();
+
 private:
+	/**
+	 * Flag for determining if the render entity has been updated by the
+	 * corresponding gamestate entity. Set to true every time \p update()
+	 * is called.
+	 */
+	bool changed;
+
 	/**
      * Terrain dimensions (width x height).
      */
 	util::Vector2s size;
 
 	std::vector<TerrainVertex> vertices;
-	std::shared_ptr<renderer::Texture2d> texture;
+	util::Path texture_path;
 	// std::unordered_map<Texture2d, size_t> texture_map; // texture -> vertex indices
-
-	// ASDF: testing
-	std::shared_ptr<renderer::Renderer> renderer;
-	util::Path assetdir;
 };
 } // namespace terrain
 } // namespace openage::renderer

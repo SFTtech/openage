@@ -8,34 +8,87 @@
 
 namespace openage::renderer::terrain {
 
-TerrainRenderEntity::TerrainRenderEntity(const std::shared_ptr<renderer::Renderer> &renderer,
-                                         const util::Path &assetdir) :
+TerrainRenderEntity::TerrainRenderEntity(
+	// const std::shared_ptr<renderer::Renderer> &renderer,
+	// const util::Path &assetdir
+	) :
+	changed{false},
 	size{0, 0},
 	vertices{},
-	texture{},
-	renderer{renderer},
-	assetdir{assetdir} {
+	texture_path{}
+// renderer{renderer},
+// assetdir{assetdir}
+{
 }
 
-void TerrainRenderEntity::update() {
-	// TODO: Update from gamestate
+void TerrainRenderEntity::update(util::Vector2s size,
+                                 std::vector<float> height_map,
+                                 const util::Path &texture_path) {
+	// increase by 1 in every dimension because height_map
+	// size is number of tiles, but we want number of vertices
+	util::Vector2i tile_size{size[0], size[1]};
+	this->size = util::Vector2s{size[0] + 1, size[1] + 1};
+
+	// transfer mesh
+	auto vert_count = this->size[0] * this->size[1];
+	this->vertices.clear();
+	this->vertices.reserve(vert_count);
+	for (int i = 0; i < (int)this->size[0]; ++i) {
+		for (int j = 0; j < (int)this->size[1]; ++j) {
+			// for each vertex, compare the surrounding tiles
+			std::vector<float> surround{};
+			if (j - 1 >= 0 and i - 1 >= 0) {
+				surround.push_back(height_map[(i - 1) * size[1] + j - 1]);
+			}
+			if (j < tile_size[1] and i - 1 >= 0) {
+				surround.push_back(height_map[(i - 1) * size[1] + j]);
+			}
+			if (j < tile_size[1] and i < tile_size[0]) {
+				surround.push_back(height_map[i * size[1] + j]);
+			}
+			if (j - 1 >= 0 and i < tile_size[0]) {
+				surround.push_back(height_map[i * size[1] + j - 1]);
+			}
+			// select the height of the highest surrounding tile
+			auto max_height = *std::max_element(surround.begin(), surround.end());
+			TerrainVertex v{
+				(float)i,
+				(float)j,
+				max_height,
+			};
+			this->vertices.push_back(v);
+		}
+	}
+
+	// set texture path
+	this->texture_path = texture_path;
+
+	this->changed = true;
 }
 
 const std::vector<TerrainVertex> &TerrainRenderEntity::get_vertices() {
 	return this->vertices;
 }
 
-const std::shared_ptr<renderer::Texture2d> &TerrainRenderEntity::get_textures() {
+const util::Path &TerrainRenderEntity::get_texture_path() {
 	// ASDF: testing
-	auto test_path = this->assetdir / "textures" / "test_terrain_tex.png";
-	const auto tex_data = renderer::resources::Texture2dData(test_path);
-	this->texture = this->renderer->add_texture(tex_data);
+	// auto test_path = this->assetdir / "textures" / "test_terrain_tex.png";
+	// const auto tex_data = renderer::resources::Texture2dData(test_path);
+	// this->texture = this->renderer->add_texture(tex_data);
 
-	return this->texture;
+	return this->texture_path;
 }
 
 const util::Vector2s &TerrainRenderEntity::get_size() {
 	return this->size;
+}
+
+bool TerrainRenderEntity::is_changed() {
+	return this->changed;
+}
+
+void TerrainRenderEntity::clear_changed_flag() {
+	this->changed = false;
 }
 
 } // namespace openage::renderer::terrain
