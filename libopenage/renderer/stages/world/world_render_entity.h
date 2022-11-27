@@ -5,5 +5,8 @@
 namespace openage::renderer::world {
 
 class WorldRenderEntity {
+public:
+	WorldRenderEntity() = default;
+	~WorldRenderEntity() = default;
 };
 } // namespace openage::renderer::world
