@@ -6,12 +6,11 @@
 
 namespace openage::gamestate {
 
-Terrain::Terrain(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &render_entity,
-                 util::Path &texture_path) :
+Terrain::Terrain(util::Path &texture_path) :
 	size{0, 0},
 	height_map{},
 	texture_path{texture_path},
-	render_entity{render_entity} {
+	render_entity{} {
 	// ASDF: testing
 	this->size = util::Vector2s{10, 10};
 
@@ -40,8 +39,16 @@ Terrain::Terrain(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &
 
 void Terrain::push_to_render() {
 	if (this->render_entity != nullptr) {
-		this->render_entity->update();
+		this->render_entity->update(this->size,
+		                            this->height_map,
+		                            this->texture_path);
 	}
+}
+
+void Terrain::set_render_entity(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &entity) {
+	this->render_entity = entity;
+
+	this->push_to_render();
 }
 
 } // namespace openage::gamestate

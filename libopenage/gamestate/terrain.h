@@ -21,9 +21,15 @@ namespace gamestate {
  */
 class Terrain {
 public:
-	Terrain(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &render_entity,
-	        util::Path &texture_path);
+	Terrain(util::Path &texture_path);
 	~Terrain() = default;
+
+	/**
+	 * Set the current render entity of the terrain.
+	 * 
+	 * @param render_entity New render entity.
+	 */
+	void set_render_entity(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &entity);
 
 private:
 	// test connection to renderer

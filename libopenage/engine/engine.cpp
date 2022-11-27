@@ -4,6 +4,9 @@
 
 #include "event/loop.h"
 
+// TODO
+#include "gamestate/game.h"
+
 namespace openage {
 namespace engine {
 
@@ -14,7 +17,8 @@ Engine::Engine(enum mode mode,
 	run_mode{mode},
 	root_dir{root_dir},
 	cvar_manager{cvar_manager},
-	event_loop{std::make_shared<event::Loop>()} {
+	event_loop{std::make_shared<event::Loop>()},
+	game{std::make_shared<gamestate::Game>(root_dir)} {
 }
 
 
@@ -37,6 +41,10 @@ const util::Path &Engine::get_root_dir() {
 
 std::shared_ptr<cvar::CVarManager> Engine::get_cvar_manager() {
 	return this->cvar_manager;
+}
+
+void Engine::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
+	this->game->attach_renderer(render_factory);
 }
 
 } // namespace engine

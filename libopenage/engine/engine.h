@@ -14,6 +14,14 @@ namespace event {
 class Loop;
 }
 
+namespace gamestate {
+class Game;
+}
+
+namespace renderer {
+class RenderFactory;
+}
+
 namespace engine {
 
 
@@ -29,8 +37,6 @@ public:
 		HEADLESS,
 		FULL,
 	};
-
-	Engine();
 
 	/**
 	 * engine initialization method.
@@ -60,7 +66,6 @@ public:
 	 */
 	Engine &operator=(Engine &&other) = delete;
 
-public:
 	/**
 	 * engine destructor, cleans up memory etc.
 	 * deletes opengl context, the SDL window, and engine variables.
@@ -86,6 +91,13 @@ public:
 	 * return this engine's cvar manager.
 	 */
 	std::shared_ptr<cvar::CVarManager> get_cvar_manager();
+
+	/**
+	 * Attach a renderer to the engine.
+	 * 
+	 * @param factory Factory for creating render entities.
+	 */
+	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
 
 	/**
 	 * current engine state variable.
@@ -122,6 +134,9 @@ private:
 
 	// Something that manages the clock
 	// auto time_manager;
+
+	// TODO: The game run by the engine
+	std::shared_ptr<gamestate::Game> game;
 };
 
 } // namespace engine

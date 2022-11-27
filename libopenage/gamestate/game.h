@@ -4,7 +4,15 @@
 
 #include <memory>
 
-namespace openage::gamestate {
+#include "util/path.h"
+
+namespace openage {
+
+namespace renderer {
+class RenderFactory;
+}
+
+namespace gamestate {
 class Universe;
 
 /**
@@ -12,11 +20,14 @@ class Universe;
  */
 class Game {
 public:
-	Game() = default;
+	Game(const util::Path &root_dir);
 	~Game() = default;
+
+	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
 
 private:
 	std::shared_ptr<Universe> universe;
 };
 
-} // namespace openage::gamestate
+} // namespace gamestate
+} // namespace openage

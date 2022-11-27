@@ -19,6 +19,11 @@
 #include "renderer/window.h"
 #include "util/path.h"
 
+// ASDF: testing
+#include "cvar/cvar.h"
+#include "engine/engine.h"
+#include "renderer/entity_factory.h"
+
 namespace openage::presenter {
 
 Presenter::Presenter(const util::Path &root_dir) :
@@ -31,11 +36,18 @@ void Presenter::run() {
 
 	this->init_graphics();
 
+	// ASDF: testing
+	auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer, nullptr);
+	openage::engine::Engine test_engine{
+		engine::Engine::mode::LEGACY,
+		this->root_dir,
+		std::make_shared<cvar::CVarManager>(this->root_dir)};
+	test_engine.attach_renderer(render_factory);
+
 	while (not this->window->should_close()) {
 		this->gui_app->process_events();
 		// this->gui->process_events();
 
-		this->gui->render();
 		this->render();
 
 		this->renderer->check_error();
@@ -144,6 +156,9 @@ void Presenter::init_final_render_pass() {
 }
 
 void Presenter::render() {
+	this->terrain_renderer->update();
+	this->gui->render();
+
 	for (auto pass : this->render_passes) {
 		this->renderer->render(pass);
 	}
