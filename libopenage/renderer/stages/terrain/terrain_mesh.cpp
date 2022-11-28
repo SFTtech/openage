@@ -6,15 +6,19 @@
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/texture_data.h"
 #include "renderer/stages/terrain/terrain_render_entity.h"
+#include "renderer/uniform_input.h"
 
 namespace openage::renderer::terrain {
 
 TerrainRenderMesh::TerrainRenderMesh(const std::shared_ptr<renderer::Renderer> &renderer,
                                      const std::shared_ptr<TerrainRenderEntity> &entity) :
+	require_renderable{true},
+	changed{false},
 	texture_manager{std::make_shared<renderer::resources::TextureManager>(renderer)},
 	render_entity{entity},
-	texture{},
-	mesh{renderer::resources::MeshData::make_quad()} {
+	texture{nullptr},
+	mesh{renderer::resources::MeshData::make_quad()},
+	uniforms{nullptr} {
 }
 
 void TerrainRenderMesh::set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity) {
@@ -72,13 +76,22 @@ void TerrainRenderMesh::update() {
 	std::memcpy(idx_data.data(), reinterpret_cast<const uint8_t *>(idxs.data()), idx_data_size);
 
 	resources::MeshData new_mesh{std::move(vert_data), std::move(idx_data), info};
-	this->mesh = new_mesh;
+	this->mesh = std::move(new_mesh);
+
+	// ASDF: New renderable is only required if the mesh is changed
+	this->require_renderable = true;
 
 	// ASDF: testing
 	this->mesh = resources::MeshData::make_quad();
+	// ASDF
 
 	// Update textures
 	this->texture = this->texture_manager->request(this->render_entity->get_texture_path());
+	if (this->uniforms != nullptr) {
+		this->uniforms->update("tex", this->texture);
+	}
+
+	this->changed = true;
 
 	// Indicate to the render entity that its updates have been processed.
 	this->render_entity->clear_changed_flag();
@@ -90,6 +103,26 @@ const renderer::resources::MeshData &TerrainRenderMesh::get_mesh() {
 
 const std::shared_ptr<renderer::Texture2d> &TerrainRenderMesh::get_texture() {
 	return this->texture;
+}
+
+bool TerrainRenderMesh::requires_renderable() {
+	return this->require_renderable;
+}
+
+void TerrainRenderMesh::clear_requires_renderable() {
+	this->require_renderable = false;
+}
+
+bool TerrainRenderMesh::is_changed() {
+	return this->changed;
+}
+
+void TerrainRenderMesh::clear_changed_flag() {
+	this->changed = false;
+}
+
+void TerrainRenderMesh::set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms) {
+	this->uniforms = uniforms;
 }
 
 } // namespace openage::renderer::terrain

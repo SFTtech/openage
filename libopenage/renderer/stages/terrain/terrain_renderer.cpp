@@ -45,30 +45,34 @@ void TerrainRenderer::set_render_entity(const std::shared_ptr<TerrainRenderEntit
 void TerrainRenderer::update() {
 	this->mesh->update();
 
-	auto tex = this->mesh->get_texture();
-	if (tex != nullptr) {
-		// TODO: Update mesh and geometry individually, depending on what changed
-		// TODO: Update existing renderable instead of recreating it
-		auto geometry = this->renderer->add_mesh_geometry(this->mesh->get_mesh());
-		auto transform_unifs = this->display_shader->new_uniform_input(
-			"model", // local space -> world space
-			this->model->get_model_matrix(),
-			"view", // camera
-			this->model->get_view_matrix(),
-			"proj", // orthographic view
-			this->model->get_proj_matrix(),
-			"tex", // terrain texture
-			this->mesh->get_texture());
+	if (this->mesh->is_changed()) {
+		if (this->mesh->requires_renderable()) [[unlikely]] /*probably doesn't happen that often?*/ {
+			// TODO: Update mesh and geometry individually, depending on what changed
+			// TODO: Update existing renderable instead of recreating it
+			auto geometry = this->renderer->add_mesh_geometry(this->mesh->get_mesh());
+			auto transform_unifs = this->display_shader->new_uniform_input(
+				"model", // local space -> world space
+				this->model->get_model_matrix(),
+				"view", // camera
+				this->model->get_view_matrix(),
+				"proj", // orthographic view
+				this->model->get_proj_matrix(),
+				"tex", // terrain texture
+				this->mesh->get_texture());
 
-		Renderable display_obj{
-			transform_unifs, // TODO
-			geometry,
-			true,
-			true, // it's a 3D object, so we need depth testing
-		};
+			Renderable display_obj{
+				transform_unifs,
+				geometry,
+				true,
+				true, // it's a 3D object, so we need depth testing
+			};
 
-		this->render_pass->clear_renderables();
-		this->render_pass->add_renderables(display_obj);
+			this->render_pass->clear_renderables();
+			this->render_pass->add_renderables(display_obj);
+
+			this->mesh->set_uniforms(transform_unifs);
+			this->mesh->clear_requires_renderable();
+		}
 	}
 }
 
