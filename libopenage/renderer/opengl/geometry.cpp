@@ -34,7 +34,7 @@ GlGeometry::GlGeometry(const std::shared_ptr<GlContext> &context, const resource
 	if (mesh.get_ids()) {
 		this->mesh->indices = GlBuffer{context, mesh.get_ids()->data(), mesh.get_ids()->size()};
 		this->mesh->index_type = GL_INDEX_TYPE.get(*mesh.get_info().get_index_type());
-		this->mesh->vert_count = mesh.get_ids()->size() / sizeof(GLuint);
+		this->mesh->vert_count = mesh.get_ids()->size() / GL_INDEX_SIZE.get(*mesh.get_info().get_index_type());
 	}
 }
 
