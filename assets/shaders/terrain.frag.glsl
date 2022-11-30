@@ -9,8 +9,5 @@ uniform sampler2D tex;
 void main()
 {
     vec4 tex_val = texture(tex, tex_pos);
-    if (tex_val.a == 0) {
-		discard;
-	}
 	out_col = tex_val;
 }

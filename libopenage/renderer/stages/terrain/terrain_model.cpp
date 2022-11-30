@@ -9,7 +9,10 @@ TerrainRenderModel::TerrainRenderModel() {
 
 Eigen::Matrix4f TerrainRenderModel::get_model_matrix() {
 	// TODO: Needs input from engine
-	return Eigen::Matrix4f::Identity();
+	auto transform = Eigen::Affine3f::Identity();
+	transform.prescale(Eigen::Vector3f(0.2f, 0.2f, 0.2f));
+	transform.pretranslate(Eigen::Vector3f(-1.0f, -1.0f, -1.0f));
+	return transform.matrix();
 }
 
 Eigen::Matrix4f TerrainRenderModel::get_view_matrix() {
@@ -19,6 +22,7 @@ Eigen::Matrix4f TerrainRenderModel::get_view_matrix() {
 
 const Eigen::Matrix4f TerrainRenderModel::get_proj_matrix() {
 	return proj_matrix;
+	// return Eigen::Matrix4f::Identity();
 }
 
 } // namespace openage::renderer::terrain

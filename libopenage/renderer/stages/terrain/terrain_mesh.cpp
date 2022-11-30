@@ -38,31 +38,34 @@ void TerrainRenderMesh::update() {
 	// dst_verts places vertices in order
 	// (left to right, bottom to top)
 	std::vector<float> dst_verts{};
-	dst_verts.reserve(src_verts.size() * 3);
+	dst_verts.reserve(src_verts.size() * 5);
 	for (auto v : src_verts) {
 		dst_verts.push_back(v.x);
 		dst_verts.push_back(v.y);
 		dst_verts.push_back(v.height);
+		// TODO: Texture scaling
+		dst_verts.push_back(v.x / 10);
+		dst_verts.push_back(v.y / 10);
 	}
 
-	// split the grid into triangles
-	// with an index array
+	// split the grid into triangles using an index array
 	std::vector<uint16_t> idxs;
+	idxs.reserve((size[0] - 1) * (size[1] - 1) * 6);
 	for (size_t i = 0; i < size[1] - 1; ++i) {
 		for (size_t j = 0; j < size[0] - 1; ++j) {
 			// since we are working on tiles, we split each tile into two triangles
 			// with counter-clockwise vertex order
 			idxs.push_back(i * size[0] + j); // bottom left
 			idxs.push_back(i * size[0] + j + 1); // bottom right
-			idxs.push_back(i * size[0] + j + size[0]); // top left
+			idxs.push_back(i * size[0] + j + size[1]); // top left
 			idxs.push_back(i * size[0] + j + 1); // bottom right
-			idxs.push_back(i * size[0] + j + size[0] + 1); // top right
-			idxs.push_back(i * size[0] + j + size[0]); // top left
+			idxs.push_back(i * size[0] + j + size[1] + 1); // top right
+			idxs.push_back(i * size[0] + j + size[1]); // top left
 		}
 	}
 
 	resources::VertexInputInfo info{
-		{resources::vertex_input_t::V2F32, resources::vertex_input_t::V2F32},
+		{resources::vertex_input_t::V3F32, resources::vertex_input_t::V2F32},
 		resources::vertex_layout_t::AOS,
 		resources::vertex_primitive_t::TRIANGLES,
 		resources::index_t::U16};
@@ -80,10 +83,6 @@ void TerrainRenderMesh::update() {
 
 	// ASDF: New renderable is only required if the mesh is changed
 	this->require_renderable = true;
-
-	// ASDF: testing
-	this->mesh = resources::MeshData::make_quad();
-	// ASDF
 
 	// Update textures
 	this->texture = this->texture_manager->request(this->render_entity->get_texture_path());

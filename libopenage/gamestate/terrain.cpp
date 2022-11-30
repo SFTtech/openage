@@ -20,13 +20,13 @@ Terrain::Terrain(util::Path &texture_path) :
 		this->height_map.push_back(0.0f);
 	}
 
-	// Create "test bumps" in the terrain to check if rendering works
+	// // Create "test bumps" in the terrain to check if rendering works
 	this->height_map[11] = 1.0f;
 	this->height_map[23] = 2.3f;
 	this->height_map[42] = 4.2f;
 	this->height_map[69] = 6.9f; // nice
 
-	// A hill
+	// // A hill
 	this->height_map[55] = 3.0f; // center
 	this->height_map[45] = 2.0f; // bottom left slope
 	this->height_map[35] = 1.0f;
