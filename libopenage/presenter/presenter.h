@@ -36,6 +36,11 @@ namespace terrain {
 class TerrainRenderer;
 }
 
+
+namespace world {
+class WorldRenderer;
+}
+
 } // namespace renderer
 
 namespace presenter {
@@ -123,6 +128,11 @@ protected:
 	 * Graphics output for terrain.
 	 */
 	std::shared_ptr<renderer::terrain::TerrainRenderer> terrain_renderer;
+
+	/**
+	 * Graphics output for units/buildings.
+	 */
+	std::shared_ptr<renderer::world::WorldRenderer> world_renderer;
 
 	/**
 	 * Final graphics output to the window screen.

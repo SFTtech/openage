@@ -16,6 +16,7 @@
 #include "renderer/stages/screen/screen_renderer.h"
 #include "renderer/stages/skybox/skybox_renderer.h"
 #include "renderer/stages/terrain/terrain_renderer.h"
+#include "renderer/stages/world/world_renderer.h"
 #include "renderer/window.h"
 #include "util/path.h"
 
@@ -77,6 +78,13 @@ void Presenter::init_graphics() {
 		this->root_dir["assets"]["shaders"]);
 	this->skybox_renderer->set_color(1.0f, 0.5f, 0.0f, 1.0f);
 	this->render_passes.push_back(this->skybox_renderer->get_render_pass());
+
+	// Units/buildings
+	this->world_renderer = std::make_shared<renderer::world::WorldRenderer>(
+		this->window,
+		this->renderer,
+		this->root_dir["assets"]["shaders"]);
+	this->render_passes.push_back(this->world_renderer->get_render_pass());
 
 	// Terrain
 	this->terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderer>(
