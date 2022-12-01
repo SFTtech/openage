@@ -37,7 +37,7 @@ public:
 
 	/**
 	 * Set the current render entity of the terrain renderer.
-	 * 
+	 *
 	 * @param render_entity New render entity.
 	 */
 	void set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity);
@@ -96,6 +96,9 @@ private:
 	 */
 	std::shared_ptr<renderer::RenderPass> render_pass;
 
+	/**
+	 * Shader for rendering the world objects.
+	 */
 	std::shared_ptr<renderer::ShaderProgram> display_shader;
 
 	/**

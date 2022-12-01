@@ -3,19 +3,23 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 
 #include "util/path.h"
 
 namespace openage::renderer {
 class Renderer;
 class RenderPass;
+class ShaderProgram;
+class Texture2d;
 class Window;
 
 namespace world {
+class WorldRenderEntity;
+class WorldObject;
 
 /**
- * @brief Renderer for drawing and displaying entities in the game world (units, buildings, etc.)
- * 
+ * Renderer for drawing and displaying entities in the game world (units, buildings, etc.)
  */
 class WorldRenderer {
 public:
@@ -30,6 +34,13 @@ public:
 	 * @return Render pass for world drawing.
 	 */
 	std::shared_ptr<renderer::RenderPass> get_render_pass();
+
+	/**
+	 * Add a new render entity of the world renderer.
+	 *
+	 * @param render_entity New render entity.
+	 */
+	void add_render_entity(const std::shared_ptr<WorldRenderEntity> &entity);
 
 	/**
 	 * Update the render entities and render positions.
@@ -51,22 +62,38 @@ private:
 	 *
 	 * Called during initialization of the world renderer.
 	 *
+	 * @param width Width of the FBO.
+	 * @param height Height of the FBO.
 	 * @param shaderdir Directory containg the shader source files.
 	 */
-	void initialize_render_pass(const util::Path &shaderdir);
-
-	// Render entities requested by the game world
-	// std::vector<std::shared_ptr<WorldRenderEntity>> render_entities;
-
-	/**
-	 * Render pass for the terrain drawing.
-	 */
-	std::shared_ptr<renderer::RenderPass> render_pass;
+	void initialize_render_pass(size_t width,
+	                            size_t height,
+	                            const util::Path &shaderdir);
 
 	/**
 	 * Reference to the openage renderer.
 	 */
 	std::shared_ptr<renderer::Renderer> renderer;
+
+	/**
+	 * Render pass for the world drawing.
+	 */
+	std::shared_ptr<renderer::RenderPass> render_pass;
+
+	/**
+	 * Render entities requested by the game world.
+	 */
+	std::vector<std::shared_ptr<WorldObject>> render_objects;
+
+	/**
+	 * Shader for rendering the world objects.
+	 */
+	std::shared_ptr<renderer::ShaderProgram> display_shader;
+
+	/**
+	 * Output texture.
+	 */
+	std::shared_ptr<renderer::Texture2d> output_texture;
 };
 } // namespace world
 } // namespace openage::renderer

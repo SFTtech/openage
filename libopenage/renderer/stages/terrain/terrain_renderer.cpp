@@ -47,7 +47,7 @@ void TerrainRenderer::update() {
 
 	if (this->mesh->is_changed()) {
 		if (this->mesh->requires_renderable()) [[unlikely]] /*probably doesn't happen that often?*/ {
-			// TODO: Update mesh and geometry individually, depending on what changed
+			// TODO: Update uniforms and geometry individually, depending on what changed
 			// TODO: Update existing renderable instead of recreating it
 			auto geometry = this->renderer->add_mesh_geometry(this->mesh->get_mesh());
 			auto transform_unifs = this->display_shader->new_uniform_input(
@@ -102,28 +102,10 @@ void TerrainRenderer::initialize_render_pass(size_t width,
 
 	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
 
-	// auto geometry = this->renderer->add_mesh_geometry(this->mesh->get_mesh());
 	this->display_shader = this->renderer->add_shader({vert_shader_src, frag_shader_src});
 
-	// auto transform_unifs = shader->new_uniform_input(
-	// 	"model", // local space -> world space
-	// 	this->model->get_model_matrix(),
-	// 	"view", // camera
-	// 	this->model->get_view_matrix(),
-	// 	"proj", // orthographic view
-	// 	this->model->get_proj_matrix(),
-	// 	"tex", // terrain texture
-	// 	this->mesh->get_texture());
-
-	// Renderable display_obj{
-	// 	transform_unifs, // TODO
-	// 	geometry,
-	// 	true,
-	// 	true, // it's a 3D object, so we need depth testing
-	// };
-
 	auto fbo = this->renderer->create_texture_target({this->output_texture});
-	this->render_pass = this->renderer->add_render_pass({/* display_obj */}, fbo);
+	this->render_pass = this->renderer->add_render_pass({}, fbo);
 }
 
 } // namespace openage::renderer::terrain
