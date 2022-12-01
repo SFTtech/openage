@@ -18,7 +18,6 @@
 #include "input/action.h"
 #include "job/job_manager.h"
 #include "options.h"
-#include "presenter/presenter.h"
 #include "unit/selection.h"
 #include "util/externalprofiler.h"
 #include "util/path.h"
@@ -171,11 +170,6 @@ private:
 	 * TODO: move this to a settings class, which then also hosts cvar and the options system.
 	 */
 	util::Path root_dir;
-
-	/**
-	 * Presenter module: encapsulates all user interaction and graphics.
-	 */
-	std::shared_ptr<presenter::Presenter> presenter;
 
 	/**
 	 * the engine's job manager, for asynchronous background task queuing.
