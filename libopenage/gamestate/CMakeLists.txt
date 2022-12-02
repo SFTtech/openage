@@ -1,4 +1,5 @@
 add_sources(libopenage
+	game_entity.cpp
 	game.cpp
 	player.cpp
 	terrain.cpp

@@ -10,7 +10,7 @@ Terrain::Terrain(util::Path &texture_path) :
 	size{0, 0},
 	height_map{},
 	texture_path{texture_path},
-	render_entity{} {
+	render_entity{nullptr} {
 	// ASDF: testing
 	this->size = util::Vector2s{10, 10};
 
