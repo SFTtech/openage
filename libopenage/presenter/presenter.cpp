@@ -38,12 +38,14 @@ void Presenter::run() {
 	this->init_graphics();
 
 	// ASDF: testing
-	auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer, nullptr);
+	auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
+	                                                                this->world_renderer);
 	openage::engine::Engine test_engine{
 		engine::Engine::mode::LEGACY,
 		this->root_dir,
 		std::make_shared<cvar::CVarManager>(this->root_dir)};
 	test_engine.attach_renderer(render_factory);
+	// ASDF
 
 	while (not this->window->should_close()) {
 		this->gui_app->process_events();
@@ -79,19 +81,19 @@ void Presenter::init_graphics() {
 	this->skybox_renderer->set_color(1.0f, 0.5f, 0.0f, 1.0f);
 	this->render_passes.push_back(this->skybox_renderer->get_render_pass());
 
-	// Units/buildings
-	this->world_renderer = std::make_shared<renderer::world::WorldRenderer>(
-		this->window,
-		this->renderer,
-		this->root_dir["assets"]["shaders"]);
-	this->render_passes.push_back(this->world_renderer->get_render_pass());
-
 	// Terrain
 	this->terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderer>(
 		this->window,
 		this->renderer,
 		this->root_dir["assets"]["shaders"]);
 	this->render_passes.push_back(this->terrain_renderer->get_render_pass());
+
+	// Units/buildings
+	this->world_renderer = std::make_shared<renderer::world::WorldRenderer>(
+		this->window,
+		this->renderer,
+		this->root_dir["assets"]["shaders"]);
+	this->render_passes.push_back(this->world_renderer->get_render_pass());
 
 	this->init_gui();
 	this->init_final_render_pass();
@@ -165,6 +167,7 @@ void Presenter::init_final_render_pass() {
 
 void Presenter::render() {
 	this->terrain_renderer->update();
+	this->world_renderer->update();
 	this->gui->render();
 
 	for (auto pass : this->render_passes) {
