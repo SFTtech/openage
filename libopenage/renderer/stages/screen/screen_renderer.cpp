@@ -23,7 +23,6 @@ ScreenRenderer::ScreenRenderer(const std::shared_ptr<Window> &window,
 	pass_outputs{} {
 	renderer::opengl::GlContext::check_error();
 
-	auto size = window->get_size();
 	this->initialize_render_pass(shaderdir);
 }
 
@@ -85,9 +84,8 @@ void ScreenRenderer::update_render_pass() {
 		};
 		output_layers.push_back(display_obj);
 	}
-	// TODO: We should update the renderables in the existing pass
-	// instead of recreating the pass
-	this->render_pass = renderer->add_render_pass(output_layers, renderer->get_display_target());
+	this->render_pass->clear_renderables();
+	this->render_pass->add_renderables(output_layers);
 }
 
 } // namespace openage::renderer::screen

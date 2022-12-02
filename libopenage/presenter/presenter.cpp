@@ -150,18 +150,12 @@ void Presenter::init_final_render_pass() {
 	// TODO: This REQUIRES that all other render passes have already been
 	//       resized
 	this->window->add_resize_callback([this](size_t, size_t) {
-		// remove the final pass
-		this->render_passes.pop_back();
-
 		// Acquire the render targets for all previous passes
 		std::vector<std::shared_ptr<renderer::RenderTarget>> targets{};
-		for (auto pass : this->render_passes) {
-			targets.push_back(pass->get_target());
+		for (size_t i = 0; i < this->render_passes.size() - 1; ++i) {
+			targets.push_back(this->render_passes[i]->get_target());
 		}
-		// this will recreate this renderer's pass
-		// so we have to add it to the list of passes again
 		this->screen_renderer->set_render_targets(targets);
-		this->render_passes.push_back(this->screen_renderer->get_render_pass());
 	});
 }
 
