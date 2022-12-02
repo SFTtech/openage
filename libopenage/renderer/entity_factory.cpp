@@ -21,9 +21,11 @@ std::shared_ptr<terrain::TerrainRenderEntity> RenderFactory::add_terrain_render_
 	return entity;
 }
 
-std::shared_ptr<world::WorldRenderEntity> add_world_render_entity() {
-	// TODO: registration
-	return std::make_shared<world::WorldRenderEntity>();
+std::shared_ptr<world::WorldRenderEntity> RenderFactory::add_world_render_entity() {
+	auto entity = std::make_shared<world::WorldRenderEntity>();
+	this->world_renderer->add_render_entity(entity);
+
+	return entity;
 }
 
 } // namespace openage::renderer

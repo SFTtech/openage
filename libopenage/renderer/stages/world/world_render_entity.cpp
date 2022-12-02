@@ -10,14 +10,20 @@ WorldRenderEntity::WorldRenderEntity() :
 	texture_path{} {
 }
 
-void WorldRenderEntity::update(const util::Vector3f position,
+void WorldRenderEntity::update(const uint32_t ref_id,
+                               const util::Vector3f position,
                                const util::Path texture_path) {
-	this->position = position;
+	this->ref_id = ref_id;
+	this->position = Eigen::Vector3f{position[0], position[1], position[2]};
 	this->texture_path = texture_path;
 	this->changed = true;
 }
 
-const util::Vector3f WorldRenderEntity::get_position() {
+uint32_t WorldRenderEntity::get_id() {
+	return this->ref_id;
+}
+
+const Eigen::Vector3f WorldRenderEntity::get_position() {
 	return this->position;
 }
 

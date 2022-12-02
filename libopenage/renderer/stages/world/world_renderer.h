@@ -14,6 +14,10 @@ class ShaderProgram;
 class Texture2d;
 class Window;
 
+namespace resources {
+class TextureManager;
+}
+
 namespace world {
 class WorldRenderEntity;
 class WorldObject;
@@ -38,6 +42,7 @@ public:
 	/**
 	 * Add a new render entity of the world renderer.
 	 *
+	 * @param texture_manager Texture manager for loading textures.
 	 * @param render_entity New render entity.
 	 */
 	void add_render_entity(const std::shared_ptr<WorldRenderEntity> &entity);
@@ -76,6 +81,11 @@ private:
 	std::shared_ptr<renderer::Renderer> renderer;
 
 	/**
+	 * Texture manager for loading assets.
+	 */
+	std::shared_ptr<renderer::resources::TextureManager> texture_manager;
+
+	/**
 	 * Render pass for the world drawing.
 	 */
 	std::shared_ptr<renderer::RenderPass> render_pass;
@@ -94,6 +104,11 @@ private:
 	 * Output texture.
 	 */
 	std::shared_ptr<renderer::Texture2d> output_texture;
+
+	/**
+	 * ID texture.
+	 */
+	std::shared_ptr<renderer::Texture2d> id_texture;
 };
 } // namespace world
 } // namespace openage::renderer

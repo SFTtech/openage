@@ -4,6 +4,8 @@
 
 #include <memory>
 
+#include <eigen3/Eigen/Dense>
+
 #include "renderer/resources/mesh_data.h"
 #include "util/vector.h"
 
@@ -21,7 +23,7 @@ class WorldRenderEntity;
 
 class WorldObject {
 public:
-	WorldObject();
+	WorldObject(const std::shared_ptr<renderer::resources::TextureManager> &texture_manager);
 	~WorldObject() = default;
 
 	/**
@@ -38,17 +40,31 @@ public:
 	void update();
 
 	/**
-     * Get the quad for creating the geometry.
-     *
-     * @return Mesh for creating a renderer geometry object.
-     */
+	 * Get the ID of the corresponding game entity.
+	 *
+	 * @return Game entity ID.
+	 */
+	uint32_t get_id();
+
+	/**
+	 * Get the position of the object inside the scene.
+	 *
+	 * @return Position of the object.
+	 */
+	const Eigen::Vector3f get_position();
+
+	/**
+       * Get the quad for creating the geometry.
+       *
+       * @return Mesh for creating a renderer geometry object.
+       */
 	const renderer::resources::MeshData get_mesh();
 
 	/**
-      * Get the texture that should be drawn onto the mesh.
-      *
-      * @return Texture object.
-      */
+       * Get the texture that should be drawn onto the mesh.
+       *
+       * @return Texture object.
+       */
 	const std::shared_ptr<renderer::Texture2d> &get_texture();
 
 	/**
@@ -103,23 +119,29 @@ private:
 	/**
 	 * Texture manager for central accessing and loading textures.
 	 *
-       * TODO: Replace with asset manager
-       */
+	 * TODO: Replace with asset manager
+	 */
 	std::shared_ptr<renderer::resources::TextureManager> texture_manager;
 
 	/**
-       * Source for positional and texture data.
-       */
+	 * Source for positional and texture data.
+	 */
 	std::shared_ptr<WorldRenderEntity> render_entity;
 
 	/**
-        * Texture used for the mesh.
-        */
-	util::Vector3f position;
+	 * Reference ID for passing interaction with the graphic (e.g. mouse clicks) back to
+	 * the engine.
+	 */
+	uint32_t ref_id;
 
 	/**
-        * Texture used for the mesh.
-        */
+	* Position of the object.
+	*/
+	Eigen::Vector3f position;
+
+	/**
+	* Texture used for the mesh.
+	*/
 	std::shared_ptr<renderer::Texture2d> texture;
 
 	/**

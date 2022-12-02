@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include <eigen3/Eigen/Dense>
+
 #include "util/path.h"
 #include "util/vector.h"
 
@@ -15,18 +17,27 @@ public:
 	/**
 	 * Update the render entity with informatio from the gamestate.
 	 *
+	 * @param ref_id Game entity ID.
 	 * @param position Position of the game entity inside the game world.
 	 * @param texture_path Path to the animation texture.
 	 */
-	void update(const util::Vector3f position,
+	void update(const uint32_t ref_id,
+	            const util::Vector3f position,
 	            const util::Path texture_path);
+
+	/**
+	 * Get the ID of the corresponding game entity.
+	 *
+	 * @return Game entity ID.
+	 */
+	uint32_t get_id();
 
 	/**
 	 * Get the position of the entity inside the game world.
 	 *
 	 * @return Position of the entity.
 	 */
-	const util::Vector3f get_position();
+	const Eigen::Vector3f get_position();
 
 	/**
      * Get the texture path.
@@ -36,7 +47,6 @@ public:
      * @return Path to the texture.
      */
 	const util::Path &get_texture_path();
-
 
 	/**
 	 * Check whether the render entity has received new updates from the
@@ -60,9 +70,14 @@ private:
 	bool changed;
 
 	/**
+	 * ID of the game entity in the gamestate.
+	 */
+	uint32_t ref_id;
+
+	/**
 	 * Position inside the game world.
 	 */
-	util::Vector3f position;
+	Eigen::Vector3f position;
 
 	/**
 	 * Path to the texture.

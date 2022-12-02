@@ -10,11 +10,12 @@
 
 namespace openage::renderer::world {
 
-WorldObject::WorldObject() :
+WorldObject::WorldObject(const std::shared_ptr<renderer::resources::TextureManager> &texture_manager) :
 	require_renderable{true},
 	changed{false},
-	texture_manager{nullptr},
+	texture_manager{texture_manager},
 	render_entity{nullptr},
+	ref_id{0},
 	position{0.0f, 0.0f, 0.0f},
 	texture{nullptr},
 	uniforms{nullptr} {
@@ -30,7 +31,11 @@ void WorldObject::update() {
 		return;
 	}
 
-	// TODO: Get position
+	// Get ID
+	this->ref_id = this->render_entity->get_id();
+
+	// Get position
+	this->position = this->render_entity->get_position();
 
 	// ASDF: New renderable is only required if the mesh is changed
 	this->require_renderable = true;
@@ -38,13 +43,25 @@ void WorldObject::update() {
 	// Update textures
 	this->texture = this->texture_manager->request(this->render_entity->get_texture_path());
 	if (this->uniforms != nullptr) {
-		this->uniforms->update("tex", this->texture);
+		this->uniforms->update(
+			"tex",
+			this->texture,
+			"u_id",
+			this->ref_id);
 	}
 
 	this->changed = true;
 
 	// Indicate to the render entity that its updates have been processed.
 	this->render_entity->clear_changed_flag();
+}
+
+uint32_t WorldObject::get_id() {
+	return this->ref_id;
+}
+
+const Eigen::Vector3f WorldObject::get_position() {
+	return this->position;
 }
 
 const renderer::resources::MeshData WorldObject::get_mesh() {
