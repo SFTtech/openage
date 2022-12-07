@@ -18,6 +18,7 @@ pxdgen(
 	tests.h
 )
 
+add_subdirectory(camera/)
 add_subdirectory(font/)
 add_subdirectory(gui/)
 add_subdirectory(resources/)
