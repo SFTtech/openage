@@ -25,6 +25,10 @@ void Camera::look_at_scene(Eigen::Vector3f scene_pos) {
 		//       higher than it's own position
 	}
 
+	// TODO: Although the below method should be faster, calculating and adding the direction
+	//       vector from scene_pos to new_pos may be easier to understand
+	//       i.e. new_pos = scene_pos + b/sin(30) * direction_vec
+
 	// due to the fixed angle, the centered scene position
 	// and the new camera position form a right triangle.
 	//
@@ -48,7 +52,7 @@ void Camera::look_at_scene(Eigen::Vector3f scene_pos) {
 		this->scene_pos[1], // height unchanged
 		scene_pos[2] - side_length);
 
-	this->scene_pos = new_pos;
+	this->move(new_pos);
 }
 
 void Camera::look_at_coord(util::Vector3f coord_pos) {
@@ -60,8 +64,14 @@ void Camera::look_at_coord(util::Vector3f coord_pos) {
 	this->look_at_scene(scene_pos);
 }
 
-void Camera::move(Eigen::Vector3f direction, float delta) {
-	this->scene_pos = this->scene_pos + (direction * delta);
+void Camera::move(Eigen::Vector3f scene_pos) {
+	// TODO: Check and set bounds for where the camera can go and check them here
+
+	this->scene_pos = scene_pos;
+}
+
+void Camera::move_rel(Eigen::Vector3f direction, float delta) {
+	this->move(this->scene_pos + (direction * delta));
 }
 
 void Camera::set_zoom(float zoom) {

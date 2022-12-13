@@ -58,12 +58,19 @@ public:
 	/**
      * Move the camera position in the direction of a given vector.
      *
+     * @param scene_pos New 3D position of the camera in the scene.
+     */
+	void move(Eigen::Vector3f scene_pos);
+
+	/**
+     * Move the camera position in the direction of a given vector.
+     *
      * @param direction Direction vector. Added to the current position.
      * @param delta Delta for controlling the amount by which the camera is moved. The
      *              value is multiplied with the directional vector before its applied to
      *              the positional vector.
      */
-	void move(Eigen::Vector3f direction, float delta = 1.0f);
+	void move_rel(Eigen::Vector3f direction, float delta = 1.0f);
 
 	/**
       * Set the zoom level of the camera. Values smaller than 1.0f let the
@@ -80,12 +87,21 @@ public:
 	void set_zoom(float zoom);
 
 	/**
-      * Zoom into the scene by an incremental value.
+      * Zoom into the scene.
       * 
-      * @param zoom_delta 
+      * Decreases the current zoom level.
+      * 
+      * @param zoom_delta How far the camera should zoom in.
       */
 	void zoom_in(float zoom_delta);
 
+	/**
+      * Zoom out of the scene.
+      * 
+      * Increases the current zoom level.
+      * 
+      * @param zoom_delta How far the camera should zoom out.
+      */
 	void zoom_out(float zoom_delta);
 
 	/**
