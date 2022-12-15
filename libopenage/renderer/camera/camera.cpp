@@ -99,9 +99,9 @@ void Camera::resize(size_t width, size_t height) {
 Eigen::Matrix4f Camera::get_view_matrix() {
 	// Fixed angle
 	// yaw   = -135 degrees
-	// pitch = -30 degrees
+	// pitch = 30 degrees
 	float direction_x = -1 * (sqrt(6) / 4);
-	float direction_y = -1 * (sqrt(3) / 2);
+	float direction_y = 0.5f;
 	float direction_z = -1 * (sqrt(6) / 4);
 
 	Eigen::Vector3f direction{
@@ -111,7 +111,7 @@ Eigen::Matrix4f Camera::get_view_matrix() {
 	direction.normalize();
 
 	Eigen::Vector3f eye = this->scene_pos;
-	Eigen::Vector3f center = this->scene_pos + direction;
+	Eigen::Vector3f center = this->scene_pos - direction; // look in the direction of the camera
 	Eigen::Vector3f up = Eigen::Vector3f(0.0f, 1.0f, 0.0f);
 
 	Eigen::Vector3f f = center - eye;
@@ -132,31 +132,31 @@ Eigen::Matrix4f Camera::get_view_matrix() {
 	mat(2, 2) = -f[2];
 	mat(3, 0) = -s.dot(eye);
 	mat(3, 1) = -u.dot(eye);
-	mat(3, 2) = -f.dot(eye);
+	mat(3, 2) = f.dot(eye);
 
 	return mat;
 }
 
 Eigen::Matrix4f Camera::get_projection_matrix() {
 	// get center of viewport as the focus point
-	float halfwidth = viewport_size[0];
-	float halfheight = viewport_size[1];
+	float halfwidth = viewport_size[0] / 2;
+	float halfheight = viewport_size[1] / 2;
 
 	// zoom by narrowing or widening viewport around focus point.
 	// narrow viewport => zoom in (projected area gets *smaller* while screen size stays the same)
 	// widen viewport => zoom out (projected area gets *bigger* while screen size stays the same)
-	float left = halfwidth - (this->zoom * halfwidth);
-	float right = halfwidth + (this->zoom * halfwidth);
-	float bottom = halfheight - (this->zoom * halfheight);
-	float top = halfheight + (this->zoom * halfheight);
+	float left = -(this->zoom * halfwidth);
+	float right = this->zoom * halfwidth;
+	float bottom = -(this->zoom * halfheight);
+	float top = this->zoom * halfheight;
 
 	Eigen::Matrix4f mat = Eigen::Matrix4f::Identity();
 	mat(0, 0) = 2.0f / (right - left);
 	mat(1, 1) = 2.0f / (top - bottom);
-	mat(2, 2) = -2.0f / (1000.0f + (-1.0f)); // clip near and far planes (TODO: necessary?)
+	mat(2, 2) = -2.0f / (100.0f - (-1.0f)); // clip near and far planes (TODO: necessary?)
 	mat(3, 0) = -(right + left) / (right - left);
 	mat(3, 1) = -(top + bottom) / (top - bottom);
-	mat(3, 2) = -(1000.0f + (-1.0f)) / (1000.0f - 1.0f); // clip near and far planes (TODO: necessary?)
+	mat(3, 2) = -(100.0f + (-1.0f)) / (100.0f - (-1.0f)); // clip near and far planes (TODO: necessary?)
 
 	return mat;
 }
