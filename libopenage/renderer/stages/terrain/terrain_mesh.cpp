@@ -40,9 +40,10 @@ void TerrainRenderMesh::update() {
 	std::vector<float> dst_verts{};
 	dst_verts.reserve(src_verts.size() * 5);
 	for (auto v : src_verts) {
-		dst_verts.push_back(v.x);
-		dst_verts.push_back(v.y);
+		// Transform to scene coords
+		dst_verts.push_back(-v.y);
 		dst_verts.push_back(v.height);
+		dst_verts.push_back(v.x);
 		// TODO: Texture scaling
 		dst_verts.push_back(v.x / 10);
 		dst_verts.push_back(v.y / 10);

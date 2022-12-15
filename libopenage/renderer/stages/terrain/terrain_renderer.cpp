@@ -3,6 +3,7 @@
 #include "terrain_renderer.h"
 
 
+#include "renderer/camera/camera.h"
 #include "renderer/opengl/context.h"
 #include "renderer/renderer.h"
 #include "renderer/resources/shader_source.h"
@@ -17,8 +18,10 @@ namespace openage::renderer::terrain {
 
 TerrainRenderer::TerrainRenderer(const std::shared_ptr<Window> &window,
                                  const std::shared_ptr<renderer::Renderer> &renderer,
+                                 const std::shared_ptr<renderer::camera::Camera> &camera,
                                  const util::Path &shaderdir) :
 	renderer{renderer},
+	camera{camera},
 	render_entity{},
 	model{std::make_shared<TerrainRenderModel>()},
 	mesh{std::make_shared<TerrainRenderMesh>(renderer, this->render_entity)} {
@@ -53,10 +56,10 @@ void TerrainRenderer::update() {
 			auto transform_unifs = this->display_shader->new_uniform_input(
 				"model", // local space -> world space
 				this->model->get_model_matrix(),
-				"view", // camera
-				this->model->get_view_matrix(),
-				"proj", // orthographic view
-				this->model->get_proj_matrix(),
+				"view", // camera view
+				this->camera->get_view_matrix(),
+				"proj", // orthographic projection
+				this->camera->get_projection_matrix(),
 				"tex", // terrain texture
 				this->mesh->get_texture());
 

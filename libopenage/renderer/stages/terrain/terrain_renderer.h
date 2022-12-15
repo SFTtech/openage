@@ -13,6 +13,10 @@ class ShaderProgram;
 class Texture2d;
 class Window;
 
+namespace camera {
+class Camera;
+}
+
 namespace terrain {
 class TerrainRenderEntity;
 class TerrainRenderMesh;
@@ -25,6 +29,7 @@ class TerrainRenderer {
 public:
 	TerrainRenderer(const std::shared_ptr<Window> &window,
 	                const std::shared_ptr<renderer::Renderer> &renderer,
+	                const std::shared_ptr<renderer::camera::Camera> &camera,
 	                const util::Path &shaderdir);
 	~TerrainRenderer() = default;
 
@@ -75,6 +80,11 @@ private:
 	 * Reference to the openage renderer.
 	 */
 	std::shared_ptr<renderer::Renderer> renderer;
+
+	/**
+	 * Camera for view and projection matrices.
+	 */
+	std::shared_ptr<renderer::camera::Camera> camera;
 
 	/**
 	 * Engine interface for updating terrain draw information.

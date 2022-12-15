@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "log/log.h"
+#include "renderer/camera/camera.h"
 #include "renderer/gui/gui.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/gui/qml_info.h"
@@ -73,6 +74,11 @@ void Presenter::init_graphics() {
 	this->window = renderer::Window::create("openage presenter test", 800, 600);
 	this->renderer = this->window->make_renderer();
 
+	this->camera = std::make_shared<renderer::camera::Camera>(this->window->get_size());
+	this->window->add_resize_callback([this](size_t w, size_t h) {
+		this->camera->resize(w, h);
+	});
+
 	// Skybox
 	this->skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
 		this->window,
@@ -85,6 +91,7 @@ void Presenter::init_graphics() {
 	this->terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderer>(
 		this->window,
 		this->renderer,
+		this->camera,
 		this->root_dir["assets"]["shaders"]);
 	this->render_passes.push_back(this->terrain_renderer->get_render_pass());
 

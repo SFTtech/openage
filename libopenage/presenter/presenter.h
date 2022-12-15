@@ -20,6 +20,10 @@ class Texture2d;
 class ShaderProgram;
 class Window;
 
+namespace camera {
+class Camera;
+}
+
 namespace gui {
 class GUI;
 }
@@ -113,6 +117,11 @@ protected:
 	 * openage's graphics renderer.
 	 */
 	std::shared_ptr<renderer::Renderer> renderer;
+
+	/**
+	 * Camera for viewing things.
+	 */
+	std::shared_ptr<renderer::camera::Camera> camera;
 
 	/**
 	 * Qt-based GUI for interface.
