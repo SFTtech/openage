@@ -7,7 +7,7 @@ namespace openage::renderer::camera {
 Camera::Camera(util::Vector2s viewport_size) :
 	scene_pos{Eigen::Vector3f(0.0f, 10.0f, 0.0f)},
 	viewport_size{viewport_size},
-	zoom{1.0f} {
+	zoom{0.025f} {
 	this->look_at_scene(Eigen::Vector3f(0.0f, 0.0f, 0.0f));
 }
 
@@ -120,19 +120,24 @@ Eigen::Matrix4f Camera::get_view_matrix() {
 	s.normalize();
 	Eigen::Vector3f u = s.cross(f);
 
+	// View matrix
+	// |  s[0]  s[1]  s[2] -dot(s,eye) |
+	// |  u[0]  u[1]  u[2] -dot(u,eye) |
+	// | -f[0] -f[1] -f[2]  dot(f,eye) |
+	// |   0     0     0        1      |
 	Eigen::Matrix4f mat = Eigen::Matrix4f::Identity();
 	mat(0, 0) = s[0];
-	mat(1, 0) = s[1];
-	mat(2, 0) = s[2];
-	mat(0, 1) = u[0];
+	mat(0, 1) = s[1];
+	mat(0, 2) = s[2];
+	mat(1, 0) = u[0];
 	mat(1, 1) = u[1];
-	mat(2, 1) = u[2];
-	mat(0, 2) = -f[0];
-	mat(1, 2) = -f[1];
+	mat(1, 2) = u[2];
+	mat(2, 0) = -f[0];
+	mat(2, 1) = -f[1];
 	mat(2, 2) = -f[2];
-	mat(3, 0) = -s.dot(eye);
-	mat(3, 1) = -u.dot(eye);
-	mat(3, 2) = f.dot(eye);
+	mat(0, 3) = -s.dot(eye);
+	mat(1, 3) = -u.dot(eye);
+	mat(2, 3) = f.dot(eye);
 
 	return mat;
 }
@@ -153,10 +158,10 @@ Eigen::Matrix4f Camera::get_projection_matrix() {
 	Eigen::Matrix4f mat = Eigen::Matrix4f::Identity();
 	mat(0, 0) = 2.0f / (right - left);
 	mat(1, 1) = 2.0f / (top - bottom);
-	mat(2, 2) = -2.0f / (100.0f - (-1.0f)); // clip near and far planes (TODO: necessary?)
-	mat(3, 0) = -(right + left) / (right - left);
-	mat(3, 1) = -(top + bottom) / (top - bottom);
-	mat(3, 2) = -(100.0f + (-1.0f)) / (100.0f - (-1.0f)); // clip near and far planes (TODO: necessary?)
+	mat(2, 2) = -2.0f / (1000.0f - (-1.0f)); // clip near and far planes (TODO: necessary?)
+	mat(0, 3) = -(right + left) / (right - left);
+	mat(1, 3) = -(top + bottom) / (top - bottom);
+	mat(2, 3) = -(1000.0f + (-1.0f)) / (1000.0f - (-1.0f)); // clip near and far planes (TODO: necessary?)
 
 	return mat;
 }
