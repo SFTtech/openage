@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 #include "tests.h"
 
@@ -22,6 +22,15 @@
 #include "renderer/texture.h"
 #include "util/math_constants.h"
 
+#include "renderer/camera/camera.h"
+#include "renderer/entity_factory.h"
+#include "renderer/stages/screen/screen_renderer.h"
+#include "renderer/stages/skybox/skybox_renderer.h"
+#include "renderer/stages/terrain/terrain_render_entity.h"
+#include "renderer/stages/terrain/terrain_renderer.h"
+#include "renderer/stages/world/world_render_entity.h"
+#include "renderer/stages/world/world_renderer.h"
+
 
 namespace openage::renderer::tests {
 
@@ -34,7 +43,7 @@ namespace openage::renderer::tests {
 /**
  * Shows the renderer's ability to create textured renderable objects and
  * allow basic interaction with them via mouse/key callbacks.
- * 
+ *
  * @param path Unused.
  */
 void renderer_demo_0(const util::Path &path) {
@@ -297,7 +306,7 @@ void main() {
 /**
  * Basic test for creating a window and displaying a single-color texture
  * created by a shader.
- * 
+ *
  * @param path Path to the project rootdir.
  */
 void renderer_demo_2(const util::Path &path) {
@@ -355,6 +364,124 @@ void main() {
 }
 
 
+/**
+ * Shows the different render stages and camera.
+ *
+ * @param path Path to the project rootdir.
+ */
+void renderer_demo_3(const util::Path &path) {
+	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
+
+	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", 800, 600);
+	auto renderer = window->make_renderer();
+
+	// Camera
+	auto camera = std::make_shared<renderer::camera::Camera>(window->get_size());
+	window->add_resize_callback([&](size_t w, size_t h) {
+		camera->resize(w, h);
+	});
+
+	// Render stages
+	std::vector<std::shared_ptr<RenderPass>> render_passes{};
+	auto skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
+		window,
+		renderer,
+		path["assets"]["shaders"]);
+	skybox_renderer->set_color(1.0f, 0.5f, 0.0f, 1.0f);
+
+	auto terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderer>(
+		window,
+		renderer,
+		camera,
+		path["assets"]["shaders"]);
+
+	auto world_renderer = std::make_shared<renderer::world::WorldRenderer>(
+		window,
+		renderer,
+		path["assets"]["shaders"]);
+
+	render_passes.push_back(skybox_renderer->get_render_pass());
+	render_passes.push_back(terrain_renderer->get_render_pass());
+	render_passes.push_back(world_renderer->get_render_pass());
+
+	// Final output on screen
+	auto screen_renderer = std::make_shared<renderer::screen::ScreenRenderer>(
+		window,
+		renderer,
+		path["assets"]["shaders"]);
+	std::vector<std::shared_ptr<renderer::RenderTarget>> targets{};
+	for (auto pass : render_passes) {
+		targets.push_back(pass->get_target());
+	}
+	screen_renderer->set_render_targets(targets);
+
+	render_passes.push_back(screen_renderer->get_render_pass());
+
+	window->add_resize_callback([&](size_t, size_t) {
+		std::vector<std::shared_ptr<renderer::RenderTarget>> targets{};
+		for (size_t i = 0; i < render_passes.size() - 1; ++i) {
+			targets.push_back(render_passes[i]->get_target());
+		}
+		screen_renderer->set_render_targets(targets);
+	});
+
+	// Create some entities to populate the scene
+	auto render_factory = std::make_shared<RenderFactory>(terrain_renderer, world_renderer);
+
+	// Terrain
+	auto terrain0 = render_factory->add_terrain_render_entity();
+
+	// fill a terrain grid with height values
+	auto terrain_size = util::Vector2s{10, 10};
+	std::vector<float> height_map{};
+	height_map.reserve(terrain_size[0] * terrain_size[1]);
+	for (size_t i = 0; i < terrain_size[0] * terrain_size[1]; ++i) {
+		height_map.push_back(0.0f);
+	}
+
+	// Create "test bumps" in the terrain to check if rendering works
+	height_map[11] = 1.0f;
+	height_map[23] = 2.3f;
+	height_map[42] = 4.2f;
+	height_map[69] = 6.9f; // nice
+
+	// A hill
+	height_map[55] = 3.0f; // center
+	height_map[45] = 2.0f; // bottom left slope
+	height_map[35] = 1.0f;
+	height_map[56] = 1.0f; // bottom right slope (little steeper)
+	height_map[65] = 2.0f; // top right slope
+	height_map[75] = 1.0f;
+	height_map[54] = 2.0f; // top left slope
+	height_map[53] = 1.0f;
+
+	terrain0->update(terrain_size, height_map, path["assets"]["textures"]["test_terrain_tex.png"]);
+
+	// Game entities
+	auto world0 = render_factory->add_world_render_entity();
+	world0->update(0, util::Vector3f(3.0f, 3.0f, 0.0f), path["assets"]["gaben.png"]);
+
+	auto world1 = render_factory->add_world_render_entity();
+	world1->update(1, util::Vector3f(7.5f, 6.0f, 0.0f), path["assets"]["missing.png"]);
+
+	while (not window->should_close()) {
+		qtapp->process_events();
+
+		terrain_renderer->update();
+		world_renderer->update();
+
+		for (auto pass : render_passes) {
+			renderer->render(pass);
+		}
+
+		renderer->check_error();
+
+		window->update();
+	}
+	window->close();
+}
+
+
 void renderer_demo(int demo_id, const util::Path &path) {
 	switch (demo_id) {
 	case 0:
@@ -363,6 +490,10 @@ void renderer_demo(int demo_id, const util::Path &path) {
 
 	case 2:
 		renderer_demo_2(path);
+		break;
+
+	case 3:
+		renderer_demo_3(path);
 		break;
 
 	default:
