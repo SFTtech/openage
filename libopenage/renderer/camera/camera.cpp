@@ -7,7 +7,11 @@ namespace openage::renderer::camera {
 Camera::Camera(util::Vector2s viewport_size) :
 	scene_pos{Eigen::Vector3f(0.0f, 10.0f, 0.0f)},
 	viewport_size{viewport_size},
-	zoom{0.025f} {
+	zoom{0.025f},
+	moved{true},
+	zoom_changed{true},
+	view{Eigen::Matrix4f::Identity()},
+	proj{Eigen::Matrix4f::Identity()} {
 	this->look_at_scene(Eigen::Vector3f(0.0f, 0.0f, 0.0f));
 }
 
@@ -16,7 +20,11 @@ Camera::Camera(util::Vector2s viewport_size,
                float zoom) :
 	scene_pos{scene_pos},
 	viewport_size{viewport_size},
-	zoom{zoom} {
+	zoom{zoom},
+	moved{true},
+	zoom_changed{true},
+	view{Eigen::Matrix4f::Identity()},
+	proj{Eigen::Matrix4f::Identity()} {
 }
 
 void Camera::look_at_scene(Eigen::Vector3f scene_pos) {
@@ -52,7 +60,7 @@ void Camera::look_at_scene(Eigen::Vector3f scene_pos) {
 		this->scene_pos[1], // height unchanged
 		scene_pos[2] - side_length);
 
-	this->move(new_pos);
+	this->move_to(new_pos);
 }
 
 void Camera::look_at_coord(util::Vector3f coord_pos) {
@@ -64,14 +72,15 @@ void Camera::look_at_coord(util::Vector3f coord_pos) {
 	this->look_at_scene(scene_pos);
 }
 
-void Camera::move(Eigen::Vector3f scene_pos) {
+void Camera::move_to(Eigen::Vector3f scene_pos) {
 	// TODO: Check and set bounds for where the camera can go and check them here
 
 	this->scene_pos = scene_pos;
+	this->moved = true;
 }
 
 void Camera::move_rel(Eigen::Vector3f direction, float delta) {
-	this->move(this->scene_pos + (direction * delta));
+	this->move_to(this->scene_pos + (direction * delta));
 }
 
 void Camera::set_zoom(float zoom) {
@@ -80,6 +89,7 @@ void Camera::set_zoom(float zoom) {
 	}
 
 	this->zoom = zoom;
+	this->zoom_changed = true;
 }
 
 void Camera::zoom_in(float zoom_delta) {
@@ -97,18 +107,11 @@ void Camera::resize(size_t width, size_t height) {
 }
 
 Eigen::Matrix4f Camera::get_view_matrix() {
-	// Fixed angle
-	// yaw   = -135 degrees
-	// pitch = 30 degrees
-	float direction_x = -1 * (sqrt(6) / 4);
-	float direction_y = 0.5f;
-	float direction_z = -1 * (sqrt(6) / 4);
+	if (not this->moved) {
+		return this->view;
+	}
 
-	Eigen::Vector3f direction{
-		direction_x,
-		direction_y,
-		direction_z};
-	direction.normalize();
+	auto direction = cam_direction.normalized();
 
 	Eigen::Vector3f eye = this->scene_pos;
 	Eigen::Vector3f center = this->scene_pos - direction; // look in the direction of the camera
@@ -139,10 +142,18 @@ Eigen::Matrix4f Camera::get_view_matrix() {
 	mat(1, 3) = -u.dot(eye);
 	mat(2, 3) = f.dot(eye);
 
+	// Cache matrix for subsequent calls
+	this->view = mat;
+	this->moved = false;
+
 	return mat;
 }
 
 Eigen::Matrix4f Camera::get_projection_matrix() {
+	if (not this->zoom_changed) {
+		return this->proj;
+	}
+
 	// get center of viewport as the focus point
 	float halfwidth = viewport_size[0] / 2;
 	float halfheight = viewport_size[1] / 2;
@@ -162,6 +173,10 @@ Eigen::Matrix4f Camera::get_projection_matrix() {
 	mat(0, 3) = -(right + left) / (right - left);
 	mat(1, 3) = -(top + bottom) / (top - bottom);
 	mat(2, 3) = -(1000.0f + (-1.0f)) / (1000.0f - (-1.0f)); // clip near and far planes (TODO: necessary?)
+
+	// Cache matrix for subsequent calls
+	this->proj = mat;
+	this->zoom_changed = false;
 
 	return mat;
 }
