@@ -494,17 +494,21 @@ void renderer_demo_3(const util::Path &path) {
 		auto key = ev.key();
 
 		switch (key) {
-		case Qt::Key_W: {
+		case Qt::Key_W: { // forward
 			camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.5f);
 		} break;
-		case Qt::Key_A: {
-			camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.5f);
+		case Qt::Key_A: { // left
+			// half the speed because the relationship between forward/back and
+			// left/right is 1:2 in our ortho projection.
+			camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.25f);
 		} break;
-		case Qt::Key_S: {
+		case Qt::Key_S: { // back
 			camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.5f);
 		} break;
-		case Qt::Key_D: {
-			camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.5f);
+		case Qt::Key_D: { // right
+			// half the speed because the relationship between forward/back and
+			// left/right is 1:2 in our ortho projection.
+			camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.25f);
 		} break;
 		default:
 			break;
