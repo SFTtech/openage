@@ -11,7 +11,6 @@
 #include "renderer/shader_program.h"
 #include "renderer/stages/terrain/terrain_mesh.h"
 #include "renderer/stages/terrain/terrain_model.h"
-#include "renderer/stages/terrain/terrain_render_entity.h"
 #include "renderer/window.h"
 
 namespace openage::renderer::terrain {
@@ -22,9 +21,8 @@ TerrainRenderer::TerrainRenderer(const std::shared_ptr<Window> &window,
                                  const util::Path &shaderdir) :
 	renderer{renderer},
 	camera{camera},
-	render_entity{},
-	model{std::make_shared<TerrainRenderModel>()},
-	mesh{std::make_shared<TerrainRenderMesh>(renderer, this->render_entity)} {
+	render_entity{nullptr},
+	model{std::make_shared<TerrainRenderModel>(renderer)} {
 	renderer::opengl::GlContext::check_error();
 
 	auto size = window->get_size();
@@ -33,6 +31,8 @@ TerrainRenderer::TerrainRenderer(const std::shared_ptr<Window> &window,
 	window->add_resize_callback([this](size_t width, size_t height) {
 		this->resize(width, height);
 	});
+
+	this->model->set_camera(this->camera);
 }
 
 std::shared_ptr<renderer::RenderPass> TerrainRenderer::get_render_pass() {
@@ -41,27 +41,27 @@ std::shared_ptr<renderer::RenderPass> TerrainRenderer::get_render_pass() {
 
 void TerrainRenderer::set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity) {
 	this->render_entity = entity;
-	this->mesh->set_render_entity(this->render_entity);
+	this->model->set_render_entity(this->render_entity);
 	this->update();
 }
 
 void TerrainRenderer::update() {
-	this->mesh->update();
+	this->model->update();
 
-	if (this->mesh->is_changed()) {
-		if (this->mesh->requires_renderable()) [[unlikely]] /*probably doesn't happen that often?*/ {
+	for (auto mesh : this->model->get_meshes()) {
+		if (mesh->requires_renderable()) [[unlikely]] { /*probably doesn't happen that often?*/
 			// TODO: Update uniforms and geometry individually, depending on what changed
 			// TODO: Update existing renderable instead of recreating it
-			auto geometry = this->renderer->add_mesh_geometry(this->mesh->get_mesh());
+			auto geometry = this->renderer->add_mesh_geometry(mesh->get_mesh());
 			auto transform_unifs = this->display_shader->new_uniform_input(
 				"model", // local space -> world space
-				this->model->get_model_matrix(),
+				mesh->get_model_matrix(),
 				"view", // camera view
 				this->camera->get_view_matrix(),
 				"proj", // orthographic projection
 				this->camera->get_projection_matrix(),
 				"tex", // terrain texture
-				this->mesh->get_texture());
+				mesh->get_texture());
 
 			Renderable display_obj{
 				transform_unifs,
@@ -70,11 +70,12 @@ void TerrainRenderer::update() {
 				true, // it's a 3D object, so we need depth testing
 			};
 
+			// TODO: Remove old renderable instead of clearing everything
 			this->render_pass->clear_renderables();
 			this->render_pass->add_renderables(display_obj);
 
-			this->mesh->set_uniforms(transform_unifs);
-			this->mesh->clear_requires_renderable();
+			mesh->set_uniforms(transform_unifs);
+			mesh->clear_requires_renderable();
 		}
 	}
 }

@@ -97,11 +97,6 @@ private:
 	std::shared_ptr<TerrainRenderModel> model;
 
 	/**
-	 * Vertex information of the terrain.
-	 */
-	std::shared_ptr<TerrainRenderMesh> mesh;
-
-	/**
 	 * Render pass for the terrain drawing.
 	 */
 	std::shared_ptr<renderer::RenderPass> render_pass;

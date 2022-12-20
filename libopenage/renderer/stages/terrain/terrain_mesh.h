@@ -28,26 +28,45 @@ class TerrainRenderEntity;
 class TerrainRenderMesh {
 public:
 	/**
+     * Create a new terrain render mesh with empty values.
+     *
+     * Mesh and texture ave to be set before the terrain mesh becomes renderable.
+     */
+	TerrainRenderMesh();
+
+	/**
      * Create a new terrain render mesh.
      *
-     * @param entity Terrain render entity for updating vertex coordinates.
+     * @param texture Texture drawn onto the mesh.
+     * @param mesh Vertex data of the mesh.
      */
-	TerrainRenderMesh(const std::shared_ptr<renderer::Renderer> &renderer,
-	                  const std::shared_ptr<TerrainRenderEntity> &entity);
+	TerrainRenderMesh(const std::shared_ptr<renderer::Texture2d> &texture,
+	                  renderer::resources::MeshData &&mesh);
+
 	~TerrainRenderMesh() = default;
 
 	/**
-     * Set the terrain render entity for vertex updates of this mesh.
+     * Set the reference to the uniform inputs of the renderable
+     * associated with this mesh. Relevant uniforms are updated
+     * when calling \p update().
      *
-     * @param entity New terrain render entity.
+     * @param uniforms Uniform inputs of this mesh's renderable.
      */
-	void set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity);
+	void set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms);
 
 	/**
-     * Recalculate the vertex positions for this mesh with information
-     * from the currently set terrain render entity.
+     * Get the reference to the uniform inputs of the mesh's renderable.
+     *
+     * @return Uniform inputs of the renderable.
      */
-	void update();
+	const std::shared_ptr<renderer::UniformInput> &get_uniforms();
+
+	/**
+     * Set the vertex mesh for the terrain.
+     *
+     * @param mesh Mesh for creating a renderer geometry object.
+     */
+	void set_mesh(renderer::resources::MeshData &&mesh);
 
 	/**
      * Get the vertex mesh for the terrain.
@@ -57,31 +76,45 @@ public:
 	const renderer::resources::MeshData &get_mesh();
 
 	/**
-      * Get the texture that should be drawn onto the mesh.
-      *
-      * @return Texture object.
-      */
+     * Set the texture that should be drawn onto the mesh.
+     *
+     * @param texture Texture object.
+     */
+	void set_texture(const std::shared_ptr<renderer::Texture2d> &texture);
+
+	/**
+     * Get the texture that should be drawn onto the mesh.
+     *
+     * @return Texture object.
+     */
 	const std::shared_ptr<renderer::Texture2d> &get_texture();
 
 	/**
-      * Check whether a new renderable needs to be created for this mesh.
-      * 
-      * If true, the old renderable should be removed from the render pass.
-      * The updated uniforms and geometry should be passed to this mesh.
-      * Afterwards, clear the requirement flag with \p clear_requires_renderable().
-      * 
-      * @return true if a new renderable is required, else false.
-      */
+     * Check whether a new renderable needs to be created for this mesh.
+     *
+     * If true, the old renderable should be removed from the render pass.
+     * The updated uniforms and geometry should be passed to this mesh.
+     * Afterwards, clear the requirement flag with \p clear_requires_renderable().
+     *
+     * @return true if a new renderable is required, else false.
+     */
 	bool requires_renderable();
 
 	/**
-      * Indicate to this mesh that a new renderable has been created.
-      */
+     * Indicate to this mesh that a new renderable has been created.
+     */
 	void clear_requires_renderable();
 
 	/**
-	 * Check whether the mesh or texture were changed by \p update().
-	 * 
+	 * Get the model transformation matrix for rendering.
+	 *
+	 * @return Model matrix.
+	 */
+	Eigen::Matrix4f get_model_matrix();
+
+	/**
+	 * Check whether the mesh or texture were changed.
+	 *
 	 * @return true if changes were made, else false.
 	 */
 	bool is_changed();
@@ -91,55 +124,32 @@ public:
 	 */
 	void clear_changed_flag();
 
-	/**
-      * Set the reference to the uniform inputs of the renderable
-      * associated with this mesh. Relevant uniforms are updated
-      * when calling \p update().
-      * 
-      * @param uniforms Uniform inputs of this mesh's renderable.
-      */
-	void set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms);
-
 private:
 	/**
-      * Stores whether a new renderable for this mesh needs to be created
-      * for the render pass.
-      */
+     * Stores whether a new renderable for this mesh needs to be created
+     * for the render pass.
+     */
 	bool require_renderable;
 
 	/**
-	 * Stores whether the \p update() call changed the mesh or the texture
-      * value.
+	 * Stores whether the the mesh or the texture are updated.
 	 */
 	bool changed;
 
 	/**
-	 * Texture manager for central accessing and loading textures.
-	 * 
-      * TODO: Replace with asset manager
-      */
-	std::shared_ptr<renderer::resources::TextureManager> texture_manager;
-
-	/**
-     * Source for ingame terrain coordinates. These coordinates are translated into
-     * our render vertex mesh when \p update() is called.
+     * Texture used for the mesh.
      */
-	std::shared_ptr<TerrainRenderEntity> render_entity;
+	std::shared_ptr<renderer::Texture2d> texture;
 
 	/**
-      * Texture used for the mesh.
-      */
-	std::shared_ptr<renderer::Texture2d> texture;
+     * Shader uniforms for the renderable in the terrain render pass.
+     */
+	std::shared_ptr<renderer::UniformInput> uniforms;
 
 	/**
      * Pre-transformation vertices for the terrain model.
      */
 	renderer::resources::MeshData mesh;
-
-	/**
-      * Shader uniforms for the renderable in the terrain render pass.
-      */
-	std::shared_ptr<renderer::UniformInput> uniforms;
 };
 } // namespace terrain
 } // namespace openage::renderer
