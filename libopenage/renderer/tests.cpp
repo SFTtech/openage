@@ -376,35 +376,47 @@ void renderer_demo_3(const util::Path &path) {
 	auto renderer = window->make_renderer();
 
 	// Camera
+	// our viewport into the game world
 	auto camera = std::make_shared<renderer::camera::Camera>(window->get_size());
 	window->add_resize_callback([&](size_t w, size_t h) {
 		camera->resize(w, h);
 	});
 
 	// Render stages
+	// every stage use a different subrenderer that manages renderables,
+	// shaders, textures & more.
 	std::vector<std::shared_ptr<RenderPass>> render_passes{};
+
+	// Renders the background
 	auto skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
 		window,
 		renderer,
 		path["assets"]["shaders"]);
-	skybox_renderer->set_color(1.0f, 0.5f, 0.0f, 1.0f);
+	skybox_renderer->set_color(1.0f, 0.5f, 0.0f, 1.0f); // orange color
 
+	// Renders the terrain in 3D
 	auto terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderer>(
 		window,
 		renderer,
 		camera,
 		path["assets"]["shaders"]);
 
+	// Renders units/buildings/other objects
 	auto world_renderer = std::make_shared<renderer::world::WorldRenderer>(
 		window,
 		renderer,
 		path["assets"]["shaders"]);
 
+	// Store the render passes of the renderers
+	// The order is important as its also the order in which they
+	// are rendered and drawn onto the screen.
 	render_passes.push_back(skybox_renderer->get_render_pass());
 	render_passes.push_back(terrain_renderer->get_render_pass());
 	render_passes.push_back(world_renderer->get_render_pass());
 
-	// Final output on screen
+	// Final output on screen has its own subrenderer
+	// It takes the outputs of all previous render passes
+	// and blends them together
 	auto screen_renderer = std::make_shared<renderer::screen::ScreenRenderer>(
 		window,
 		renderer,
@@ -431,7 +443,7 @@ void renderer_demo_3(const util::Path &path) {
 	// Terrain
 	auto terrain0 = render_factory->add_terrain_render_entity();
 
-	// fill a terrain grid with height values
+	// Fill a 10x10 terrain grid with height values
 	auto terrain_size = util::Vector2s{10, 10};
 	std::vector<float> height_map{};
 	height_map.reserve(terrain_size[0] * terrain_size[1]);
@@ -455,6 +467,7 @@ void renderer_demo_3(const util::Path &path) {
 	height_map[54] = 2.0f; // top left slope
 	height_map[53] = 1.0f;
 
+	// send the terrain data to the terrain renderer
 	terrain0->update(terrain_size, height_map, path["assets"]["textures"]["test_terrain_tex.png"]);
 
 	// Game entities
@@ -464,18 +477,56 @@ void renderer_demo_3(const util::Path &path) {
 	auto world1 = render_factory->add_world_render_entity();
 	world1->update(1, util::Vector3f(7.5f, 6.0f, 0.0f), path["assets"]["missing.png"]);
 
+	// Zoom in/out with mouse wheel
+	window->add_mouse_wheel_callback([&](const QWheelEvent &ev) {
+		auto delta = ev.angleDelta().y() / 120;
+
+		if (delta < 0) {
+			camera->zoom_out(0.005f);
+		}
+		else if (delta > 0) {
+			camera->zoom_in(0.005f);
+		}
+	});
+
+	// Move around the scene with WASD
+	window->add_key_callback([&](const QKeyEvent &ev) {
+		auto key = ev.key();
+
+		switch (key) {
+		case Qt::Key_W: {
+			camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.5f);
+		} break;
+		case Qt::Key_A: {
+			camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.5f);
+		} break;
+		case Qt::Key_S: {
+			camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.5f);
+		} break;
+		case Qt::Key_D: {
+			camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.5f);
+		} break;
+		default:
+			break;
+		}
+	});
+
 	while (not window->should_close()) {
 		qtapp->process_events();
 
+		// Update the renderables of the subrenderers
+		// camera zoom/position changes are also handled in here
 		terrain_renderer->update();
 		world_renderer->update();
 
+		// Draw everything
 		for (auto pass : render_passes) {
 			renderer->render(pass);
 		}
 
 		renderer->check_error();
 
+		// Display final output on screen
 		window->update();
 	}
 	window->close();

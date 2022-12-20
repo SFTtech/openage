@@ -13,7 +13,7 @@ namespace openage::renderer::camera {
  *
  * Has to be above 0.0f, otherwise we get zero division errors.
  */
-static const float MAX_ZOOM_IN = 0.05f;
+static const float MAX_ZOOM_IN = 0.005f;
 
 /**
  * Camera direction (= where it looks at).
