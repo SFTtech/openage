@@ -23,6 +23,7 @@ bool WindowEventHandler::eventFilter(QObject *obj, QEvent *event) {
 	case QEvent::MouseButtonRelease:
 	case QEvent::MouseMove:
 	case QEvent::Resize:
+	case QEvent::Wheel:
 		add_to_queue();
 		// pass on the event
 		return false;

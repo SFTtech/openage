@@ -113,6 +113,12 @@ void GlWindow::update() {
 				cb(*ev);
 			}
 		} break;
+		case QEvent::Wheel: {
+			auto const ev = std::dynamic_pointer_cast<QWheelEvent>(event);
+			for (auto &cb : this->on_mouse_wheel) {
+				cb(*ev);
+			}
+		} break;
 		default:
 			break; // unhandled event
 		}
