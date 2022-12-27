@@ -3,6 +3,7 @@
 #pragma once
 
 #include <memory>
+#include <shared_mutex>
 #include <vector>
 
 #include "util/path.h"
@@ -45,7 +46,7 @@ public:
 	 * @param texture_manager Texture manager for loading textures.
 	 * @param render_entity New render entity.
 	 */
-	void add_render_entity(const std::shared_ptr<WorldRenderEntity> &entity);
+	void add_render_entity(const std::shared_ptr<WorldRenderEntity> entity);
 
 	/**
 	 * Update the render entities and render positions.
@@ -109,6 +110,11 @@ private:
 	 * ID texture.
 	 */
 	std::shared_ptr<renderer::Texture2d> id_texture;
+
+	/**
+	 * Mutex for protecting threaded access.
+	 */
+	std::shared_mutex mutex;
 };
 } // namespace world
 } // namespace openage::renderer

@@ -13,6 +13,10 @@ class GuiApplication;
 
 namespace openage {
 
+namespace engine {
+class Engine;
+}
+
 namespace renderer {
 class RenderPass;
 class Renderer;
@@ -51,13 +55,23 @@ namespace presenter {
 
 class Presenter {
 public:
-	Presenter(const util::Path &path);
+	/**
+	 * Create a new presenter.
+	 *
+	 * @param path Root directory path.
+	 * @param engine openage engine. Can be set later with \p set_engine()
+	 */
+	Presenter(const util::Path &path,
+	          const std::shared_ptr<engine::Engine> engine = nullptr);
+
+	~Presenter() = default;
 
 	/**
 	 * Start the presenter and initialize subsystems.
-	 *
 	 */
 	void run();
+
+	void set_engine(const std::shared_ptr<engine::Engine> &engine);
 
 	/**
 	 * Initialize the Qt application managing the graphical views. Required
@@ -152,6 +166,11 @@ protected:
 	 * Render passes in the openage renderer.
 	 */
 	std::vector<std::shared_ptr<renderer::RenderPass>> render_passes;
+
+	/**
+	 * Engine reference.
+	 */
+	std::shared_ptr<engine::Engine> engine;
 };
 
 } // namespace presenter

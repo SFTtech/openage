@@ -8,8 +8,8 @@
 #include "renderer/stages/world/world_renderer.h"
 
 namespace openage::renderer {
-RenderFactory::RenderFactory(const std::shared_ptr<terrain::TerrainRenderer> &terrain_renderer,
-                             const std::shared_ptr<world::WorldRenderer> &world_renderer) :
+RenderFactory::RenderFactory(const std::shared_ptr<terrain::TerrainRenderer> terrain_renderer,
+                             const std::shared_ptr<world::WorldRenderer> world_renderer) :
 	terrain_renderer{terrain_renderer},
 	world_renderer{world_renderer} {
 }

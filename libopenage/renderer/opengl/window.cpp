@@ -65,6 +65,10 @@ GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 	GlContext::check_error();
 }
 
+GlWindow::~GlWindow() {
+	this->make_context_current();
+}
+
 
 void GlWindow::set_size(size_t width, size_t height) {
 	if (this->size[0] != width || this->size[1] != height) {
@@ -135,6 +139,11 @@ std::shared_ptr<Renderer> GlWindow::make_renderer() {
 
 void GlWindow::make_context_current() {
 	this->context->get_raw_context()->makeCurrent(this->window.get());
+}
+
+
+void GlWindow::done_context_current() {
+	this->context->get_raw_context()->doneCurrent();
 }
 
 

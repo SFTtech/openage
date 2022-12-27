@@ -39,7 +39,9 @@ std::shared_ptr<renderer::RenderPass> TerrainRenderer::get_render_pass() {
 	return this->render_pass;
 }
 
-void TerrainRenderer::set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity) {
+void TerrainRenderer::set_render_entity(const std::shared_ptr<TerrainRenderEntity> entity) {
+	std::unique_lock lock{this->mutex};
+
 	this->render_entity = entity;
 	this->model->set_render_entity(this->render_entity);
 	this->update();

@@ -3,6 +3,7 @@
 #pragma once
 
 #include <memory>
+#include <shared_mutex>
 
 #include "util/path.h"
 
@@ -45,7 +46,7 @@ public:
 	 *
 	 * @param render_entity New render entity.
 	 */
-	void set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity);
+	void set_render_entity(const std::shared_ptr<TerrainRenderEntity> entity);
 
 	/**
 	 * Update the terrain mesh and texture information.
@@ -110,6 +111,11 @@ private:
 	 * Output texture.
 	 */
 	std::shared_ptr<renderer::Texture2d> output_texture;
+
+	/**
+	 * Mutex for protecting threaded access.
+	 */
+	std::shared_mutex mutex;
 };
 
 } // namespace terrain

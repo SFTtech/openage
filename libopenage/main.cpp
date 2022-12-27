@@ -2,6 +2,8 @@
 
 #include "main.h"
 
+#include <thread>
+
 #include "cvar/cvar.h"
 #include "engine/engine.h"
 #include "log/log.h"
@@ -17,7 +19,7 @@ namespace openage {
  */
 int run_game(const main_arguments &args) {
 	log::log(MSG(info)
-	         << "launching legacy engine with "
+	         << "launching engine with "
 	         << args.root_path
 	         << " and fps limit "
 	         << args.fps_limit);
@@ -34,10 +36,21 @@ int run_game(const main_arguments &args) {
 	// TODO: select run_mode by launch argument
 	openage::engine::Engine::mode run_mode = engine::Engine::mode::FULL;
 
-	if (run_mode != engine::Engine::mode::LEGACY) {
-		auto presenter = presenter::Presenter(args.root_path);
-		presenter.run();
-	}
+	auto engine = std::make_shared<engine::Engine>(run_mode, args.root_path, cvar_manager);
+	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, engine);
+
+	std::jthread engine_thread([&]() {
+		engine->run();
+
+		engine.reset();
+	});
+	std::jthread presenter_thread([&]() {
+		presenter->run();
+
+		// Make sure that the presenter gets destructed in the same thread
+		// otherwise OpenGL complains about missing contexts
+		presenter.reset();
+	});
 
 	return 0;
 }

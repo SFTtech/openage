@@ -30,8 +30,8 @@ public:
      * @param terrain_renderer Terrain renderer.
      * @param world_renderer World renderer.
      */
-	RenderFactory(const std::shared_ptr<terrain::TerrainRenderer> &terrain_renderer,
-	              const std::shared_ptr<world::WorldRenderer> &world_renderer);
+	RenderFactory(const std::shared_ptr<terrain::TerrainRenderer> terrain_renderer,
+	              const std::shared_ptr<world::WorldRenderer> world_renderer);
 	~RenderFactory() = default;
 
 	/**

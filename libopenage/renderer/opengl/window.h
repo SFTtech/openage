@@ -23,7 +23,7 @@ class GlWindow final : public Window {
 public:
 	/// Create a shiny window with the given title.
 	GlWindow(const std::string &title, size_t width, size_t height);
-	~GlWindow() = default;
+	~GlWindow();
 
 	void set_size(size_t width, size_t height) override;
 
@@ -34,6 +34,10 @@ public:
 	/// Make this window's context the current rendering context of the current thread.
 	/// Only use this and most other GL functions on a dedicated window thread.
 	void make_context_current();
+
+	/// Release this window's context from the current thread.
+	/// Only use this and most other GL functions on a dedicated window thread.
+	void done_context_current();
 
 	/// Return a pointer to this window's GL context.
 	const std::shared_ptr<opengl::GlContext> &get_context() const;

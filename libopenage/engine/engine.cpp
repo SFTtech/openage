@@ -19,6 +19,7 @@ Engine::Engine(enum mode mode,
 	cvar_manager{cvar_manager},
 	event_loop{std::make_shared<event::Loop>()},
 	game{std::make_shared<gamestate::Game>(root_dir)} {
+	log::log(MSG(info) << "Created engine");
 }
 
 
@@ -26,12 +27,29 @@ Engine::~Engine() {}
 
 
 void Engine::run() {
+	this->start();
+	while (this->running) {
+		// TODO: Do sometthing
+	}
+	log::log(MSG(info) << "engine loop exited");
+}
+
+
+void Engine::start() {
+	std::unique_lock lock{this->mutex};
+
 	this->running = true;
+
+	log::log(MSG(info) << "Engine started");
 }
 
 
 void Engine::stop() {
+	std::unique_lock lock{this->mutex};
+
 	this->running = false;
+
+	log::log(MSG(info) << "Engine stopped");
 }
 
 

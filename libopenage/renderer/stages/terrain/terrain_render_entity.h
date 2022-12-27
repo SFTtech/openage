@@ -3,6 +3,7 @@
 #pragma once
 
 #include <memory>
+#include <shared_mutex>
 #include <vector>
 
 #include "util/path.h"
@@ -31,14 +32,14 @@ public:
 	/**
      * Update the render entity with information from the
      * gamestate.
-	 * 
+	 *
 	 * @param size Size of the terrain in tiles (width x length)
 	 * @param height_map Height of terrain tiles.
 	 * @param texture_path Path to the terrain texture.
      */
 	void update(util::Vector2s size,
 	            std::vector<float> height_map,
-	            const util::Path &texture_path);
+	            const util::Path texture_path);
 
 	/**
      * Get the vertices of the terrain.
@@ -66,7 +67,7 @@ public:
 	/**
 	 * Check whether the render entity has received new updates from the
 	 * gamestate.
-	 * 
+	 *
 	 * @return true if updates have been received, else false.
 	 */
 	bool is_changed();
@@ -89,9 +90,25 @@ private:
      */
 	util::Vector2s size;
 
+	/**
+	 * Terrain vertices (ingame coordinates).
+	 *
+	 * TODO: Use coordinate system.
+	 */
 	std::vector<TerrainVertex> vertices;
+
+	/**
+	 * Terrain texture-
+	 *
+	 * TODO: Use texture mapping.
+	 */
 	util::Path texture_path;
 	// std::unordered_map<Texture2d, size_t> texture_map; // texture -> vertex indices
+
+	/**
+	 * Mutex for protecting threaded access.
+	 */
+	std::shared_mutex mutex;
 };
 } // namespace terrain
 } // namespace openage::renderer

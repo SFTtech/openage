@@ -23,7 +23,9 @@ TerrainRenderEntity::TerrainRenderEntity(
 
 void TerrainRenderEntity::update(util::Vector2s size,
                                  std::vector<float> height_map,
-                                 const util::Path &texture_path) {
+                                 const util::Path texture_path) {
+	std::unique_lock lock{this->mutex};
+
 	// increase by 1 in every dimension because height_map
 	// size is number of tiles, but we want number of vertices
 	util::Vector2i tile_size{size[0], size[1]};
@@ -67,27 +69,32 @@ void TerrainRenderEntity::update(util::Vector2s size,
 }
 
 const std::vector<TerrainVertex> &TerrainRenderEntity::get_vertices() {
+	std::shared_lock lock{this->mutex};
+
 	return this->vertices;
 }
 
 const util::Path &TerrainRenderEntity::get_texture_path() {
-	// ASDF: testing
-	// auto test_path = this->assetdir / "textures" / "test_terrain_tex.png";
-	// const auto tex_data = renderer::resources::Texture2dData(test_path);
-	// this->texture = this->renderer->add_texture(tex_data);
+	std::shared_lock lock{this->mutex};
 
 	return this->texture_path;
 }
 
 const util::Vector2s &TerrainRenderEntity::get_size() {
+	std::shared_lock lock{this->mutex};
+
 	return this->size;
 }
 
 bool TerrainRenderEntity::is_changed() {
+	std::shared_lock lock{this->mutex};
+
 	return this->changed;
 }
 
 void TerrainRenderEntity::clear_changed_flag() {
+	std::unique_lock lock{this->mutex};
+
 	this->changed = false;
 }
 

@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include <shared_mutex>
+
 #include "util/path.h"
 
 namespace openage {
@@ -73,9 +75,14 @@ public:
 	~Engine();
 
 	/**
-	 * starts the engine loop.
+	 * Run the engine loop.
 	 */
 	void run();
+
+	/**
+	 * Start the engine loop.
+	 */
+	void start();
 
 	/**
 	 * enqueues the stop of the main loop.
@@ -94,7 +101,7 @@ public:
 
 	/**
 	 * Attach a renderer to the engine.
-	 * 
+	 *
 	 * @param factory Factory for creating render entities.
 	 */
 	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
@@ -137,6 +144,8 @@ private:
 
 	// TODO: The game run by the engine
 	std::shared_ptr<gamestate::Game> game;
+
+	std::shared_mutex mutex;
 };
 
 } // namespace engine

@@ -1,4 +1,4 @@
-// Copyright 2019-2020 the openage authors. See copying.md for legal info.
+// Copyright 2019-2022 the openage authors. See copying.md for legal info.
 
 #include "presenter.h"
 
@@ -28,9 +28,11 @@
 
 namespace openage::presenter {
 
-Presenter::Presenter(const util::Path &root_dir) :
+Presenter::Presenter(const util::Path &root_dir,
+                     const std::shared_ptr<engine::Engine> engine) :
 	root_dir{root_dir},
-	render_passes{} {}
+	render_passes{},
+	engine{engine} {}
 
 
 void Presenter::run() {
@@ -38,15 +40,11 @@ void Presenter::run() {
 
 	this->init_graphics();
 
-	// ASDF: testing
-	auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
-	                                                                this->world_renderer);
-	openage::engine::Engine test_engine{
-		engine::Engine::mode::LEGACY,
-		this->root_dir,
-		std::make_shared<cvar::CVarManager>(this->root_dir)};
-	test_engine.attach_renderer(render_factory);
-	// ASDF
+	if (this->engine) {
+		auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
+		                                                                this->world_renderer);
+		this->engine->attach_renderer(render_factory);
+	}
 
 	while (not this->window->should_close()) {
 		this->gui_app->process_events();
@@ -60,7 +58,18 @@ void Presenter::run() {
 	}
 	log::log(MSG(info) << "draw loop exited");
 
+	if (this->engine) {
+		engine->stop();
+	}
+
 	this->window->close();
+}
+
+void Presenter::set_engine(const std::shared_ptr<engine::Engine> &engine) {
+	this->engine = engine;
+	auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
+	                                                                this->world_renderer);
+	this->engine->attach_renderer(render_factory);
 }
 
 std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {

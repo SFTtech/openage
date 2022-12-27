@@ -3,6 +3,7 @@
 #pragma once
 
 #include <eigen3/Eigen/Dense>
+#include <shared_mutex>
 
 #include "util/path.h"
 #include "util/vector.h"
@@ -83,5 +84,10 @@ private:
 	 * Path to the texture.
 	 */
 	util::Path texture_path;
+
+	/**
+	 * Mutex for protecting threaded access.
+	 */
+	std::shared_mutex mutex;
 };
 } // namespace openage::renderer::world

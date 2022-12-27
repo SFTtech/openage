@@ -35,7 +35,9 @@ std::shared_ptr<renderer::RenderPass> WorldRenderer::get_render_pass() {
 	return this->render_pass;
 }
 
-void WorldRenderer::add_render_entity(const std::shared_ptr<WorldRenderEntity> &entity) {
+void WorldRenderer::add_render_entity(const std::shared_ptr<WorldRenderEntity> entity) {
+	std::unique_lock lock{this->mutex};
+
 	auto world_object = std::make_shared<WorldObject>(this->texture_manager);
 	world_object->set_render_entity(entity);
 	this->render_objects.push_back(world_object);

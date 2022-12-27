@@ -17,7 +17,10 @@ namespace opengl {
 GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
                              std::vector<std::pair<GlBuffer const &,
                                                    resources::VertexInputInfo const &>> buffers) :
-	GlSimpleObject(context, [](GLuint handle) { glDeleteVertexArrays(1, &handle); }) {
+	GlSimpleObject(context,
+                   [](GLuint handle) {
+					   glDeleteVertexArrays(1, &handle);
+				   }) {
 	GLuint handle;
 	glGenVertexArrays(1, &handle);
 	this->handle = handle;
