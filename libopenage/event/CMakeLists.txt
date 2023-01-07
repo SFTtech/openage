@@ -1,4 +1,5 @@
 add_sources(libopenage
+	clock.cpp
 	event.cpp
 	evententity.cpp
 	eventhandler.cpp
