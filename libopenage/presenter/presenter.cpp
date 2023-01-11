@@ -7,8 +7,10 @@
 #include <string>
 #include <vector>
 
+#include "engine/engine.h"
 #include "log/log.h"
 #include "renderer/camera/camera.h"
+#include "renderer/entity_factory.h"
 #include "renderer/gui/gui.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/gui/qml_info.h"
@@ -20,11 +22,6 @@
 #include "renderer/stages/world/world_renderer.h"
 #include "renderer/window.h"
 #include "util/path.h"
-
-// ASDF: testing
-#include "cvar/cvar.h"
-#include "engine/engine.h"
-#include "renderer/entity_factory.h"
 
 namespace openage::presenter {
 

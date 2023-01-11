@@ -10,8 +10,6 @@
 #include "util/vector.h"
 
 namespace openage::renderer {
-// ASDF: testing
-class Renderer;
 
 namespace terrain {
 
@@ -23,10 +21,7 @@ struct TerrainVertex {
 
 class TerrainRenderEntity {
 public:
-	TerrainRenderEntity(
-		// const std::shared_ptr<renderer::Renderer> &renderer,
-		// const util::Path &assetdir
-	);
+	TerrainRenderEntity();
 	~TerrainRenderEntity() = default;
 
 	/**

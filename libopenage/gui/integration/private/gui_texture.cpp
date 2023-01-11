@@ -22,7 +22,7 @@ void GuiTexture::bind() {
 }
 
 qint64 GuiTexture::comparisonKey() const {
-	// ASDF: Qt5 What does this do??????
+	// TODO: Qt5 What does this do??????
 	return 0;
 }
 

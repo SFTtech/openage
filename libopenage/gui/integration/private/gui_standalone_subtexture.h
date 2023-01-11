@@ -22,7 +22,7 @@ private:
 	virtual bool isAtlasTexture() const override;
 	virtual QSize textureSize() const override;
 
-	// ASDF: Qt5
+	// TODO: Leftover from Qt5; not used in Qt6
 	virtual void bind();
 	virtual int textureId() const;
 

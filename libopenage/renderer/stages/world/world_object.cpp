@@ -37,7 +37,7 @@ void WorldObject::update() {
 	// Get position
 	this->position = this->render_entity->get_position();
 
-	// ASDF: New renderable is only required if the mesh is changed
+	// TODO: New renderable is only required if the mesh is changed
 	this->require_renderable = true;
 
 	// Update textures

@@ -34,7 +34,6 @@ private:
 	// test connection to renderer
 	void push_to_render();
 
-	// ASDF: testing
 	// Unique identifier
 	uint32_t id;
 	// position in the game world

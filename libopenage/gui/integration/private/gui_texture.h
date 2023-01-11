@@ -27,7 +27,7 @@ private:
 	virtual QRectF normalizedTextureSubRect() const override;
 	virtual QSize textureSize() const override;
 
-	// ASDF: Qt5
+	// TODO: Leftover from Qt5
 	void bind();
 	int textureId() const;
 
