@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 // epoxy needs to be loaded before qt stuff
 #include "renderer/opengl/texture.h"

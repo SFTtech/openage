@@ -1,4 +1,4 @@
-// Copyright 2019-2022 the openage authors. See copying.md for legal info.
+// Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 #include "presenter.h"
 

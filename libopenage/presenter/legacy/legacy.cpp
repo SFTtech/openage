@@ -1,4 +1,4 @@
-// Copyright 2020-2020 the openage authors. See copying.md for legal info.
+// Copyright 2020-2023 the openage authors. See copying.md for legal info.
 
 #include "legacy.h"
 #include <SDL2/SDL_image.h>

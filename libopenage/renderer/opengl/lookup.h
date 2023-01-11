@@ -1,4 +1,4 @@
-// Copyright 2018-2018 the openage authors. See copying.md for legal info.
+// Copyright 2018-2023 the openage authors. See copying.md for legal info.
 
 // Lookup tables for translating between OpenGL-specific values and generic renderer values,
 // as well as mapping things like type sizes within OpenGL.

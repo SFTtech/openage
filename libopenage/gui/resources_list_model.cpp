@@ -1,4 +1,4 @@
-// Copyright 2016-2019 the openage authors. See copying.md for legal info.
+// Copyright 2016-2023 the openage authors. See copying.md for legal info.
 
 #include "resources_list_model.h"
 
