@@ -33,7 +33,7 @@ pkgs.mkShell {
     pkgs.libopus
     pkgs.python39Packages.pylint
     pkgs.python39Packages.toml
-    pkgs.libsForQt5.qt5.qtdeclarative
-    pkgs.libsForQt5.qt5.qtquickcontrols
+    pkgs.libsForQt6.qt6.qtdeclarative
+    pkgs.libsForQt6.qt6.qtquickcontrols
   ];
 }

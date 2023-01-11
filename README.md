@@ -30,7 +30,7 @@ Technology     | Component
 ---------------|----------
 **C++20**      | Engine core
 **Python3**    | Scripting, media conversion, in-game console, code generation
-**Qt5**        | Graphical user interface
+**Qt6**        | Graphical user interface
 **Cython**     | Python/C++ Glue code
 **CMake**      | Build system
 **OpenGL3.3**  | Rendering, shaders
