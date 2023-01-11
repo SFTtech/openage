@@ -25,9 +25,9 @@ class UniformInput : public std::enable_shared_from_this<UniformInput> {
 protected:
 	/**
 	 * Create a new uniform input for a given shader program.
-	 * 
-	 * @param prog Shader program the uniform input belongs to. 
-	*/
+	 *
+	 * @param prog Shader program the uniform input belongs to.
+	 */
 	UniformInput(std::shared_ptr<ShaderProgram> const &prog);
 
 public:
@@ -36,7 +36,7 @@ public:
 	/**
 	 * Template dispatches for uniform variable setting. Each method is used
 	 * for a specific input type.
-	 * 
+	 *
 	 * @param unif ID of the uniform.
 	 * @param val New uniform value.
 	 */
@@ -52,11 +52,11 @@ public:
 	void update(const char *unif, std::shared_ptr<Texture2d> &val);
 	void update(const char *unif, Eigen::Matrix4f const &val);
 
-	/** 
+	/**
 	 * Catch-all template in order to handle unsupported types and avoid infinite recursion.
-	 * 
+	 *
 	 * @param unif ID of the uniform.
-	*/
+	 */
 	template <typename T>
 	void update(const char *unif, T) {
 		// TODO: maybe craft an static_assert that contains the `unif` content
@@ -68,9 +68,9 @@ public:
 	 * Updates the given uniform input with new uniform values similarly to new_uniform_input.
 	 * For example, update_uniform_input(in, "awesome", true) will set the "awesome" uniform
 	 * in addition to whatever values were in the uniform input before.
-	 * 
+	 *
 	 * @param unif ID of the uniform.
-	*/
+	 */
 	template <typename T, typename... Ts>
 	void update(const char *unif, T val, Ts... vals) {
 		this->update(unif, val);
@@ -79,8 +79,8 @@ public:
 
 	/**
 	 * Get the shader program the uniform input is used for.
-	 * 
-	 * @return std::shared_ptr<ShaderProgram> const& 
+	 *
+	 * @return Shader program.
 	 */
 	std::shared_ptr<ShaderProgram> const &get_program() const {
 		return this->program;
@@ -89,7 +89,7 @@ public:
 protected:
 	/**
 	 * The program that this uniform input handle was created for.
-	*/
+	 */
 	std::shared_ptr<ShaderProgram> program;
 };
 

@@ -1,4 +1,4 @@
-// Copyright 2022-2022 the openage authors. See copying.md for legal info.
+// Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -39,13 +39,13 @@ public:
 	/**
 	 * Set the render targets whose outputs should be drawn into the
 	 * display target.
-	 * 
+	 *
 	 * Targets are drawn in the order they appear in the vector.
 	 * Alpha blending is enabled.
-	 * 
+	 *
 	 * TODO: Replace this with a \p set_textures() method that
 	 * only receives the output textures.
-	 * 
+	 *
 	 * @param targets Render targets that should be drawn.
 	 */
 	void set_render_targets(const std::vector<std::shared_ptr<renderer::RenderTarget>> &targets);
@@ -84,7 +84,7 @@ private:
 
 	/**
 	 * FBO render targets that are drawn to the screen.
-	 * 
+	 *
 	 * TODO: Use pass_outputs instead
 	 */
 	std::vector<std::shared_ptr<renderer::RenderTarget>> render_targets;

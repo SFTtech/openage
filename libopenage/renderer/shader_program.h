@@ -26,22 +26,22 @@ public:
 
 	/**
 	 * Check whether the shader program contains a uniform variable with the given ID.
-	 * 
+	 *
 	 * @param unif ID of the uniform.
-	 * 
+	 *
 	 * @return true if the shader program contains the uniform, false otherwise.
-	*/
+	 */
 	virtual bool has_uniform(const char *unif) = 0;
 
 	/**
 	 * Creates a new uniform input (a binding of uniform names to values) for this shader
 	 * and optionally sets some uniform values. To do that, just pass two arguments -
 	 * - a string literal and the value for that uniform for any uniform you want to set.
-	 * 
+	 *
 	 * For example new_uniform_input("color", { 0.5, 0.5, 0.5, 1.0 }, "num", 5) will set
 	 * "color" to { 0.5, 0.5, 0.5, 0.5 } and "num" to 5. Types are important here and a type
 	 * mismatch between the uniform variable and the input might result in an error.
-	*/
+	 */
 	template <typename... Ts>
 	std::shared_ptr<UniformInput> new_uniform_input(Ts &&...vals) {
 		auto input = this->new_unif_in();
@@ -52,7 +52,7 @@ public:
 	/**
 	 * Alias for the \p new_uniform_input() function to create empty shader program inputs. Makes more sense
 	 * name-wise when the shader doesn't have any uniforms.
-	*/
+	 */
 	std::shared_ptr<UniformInput> create_empty_input() {
 		return this->new_uniform_input();
 	}
@@ -62,9 +62,9 @@ public:
 	 * are those which have an effect on the shader output, meaning they are included in the
 	 * output calculation and are not unused. Inactive attributes may or may not be present
 	 * in the list - in particular, in the OpenGL implementation they will most likely be missing.
-	 * 
+	 *
 	 * @return Map from the attribute location to its type. Locations do not need to be consecutive.
-	*/
+	 */
 	virtual std::map<size_t, resources::vertex_input_t> vertex_attributes() const = 0;
 
 protected:

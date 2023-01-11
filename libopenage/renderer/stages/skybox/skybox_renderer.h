@@ -1,4 +1,4 @@
-// Copyright 2022-2022 the openage authors. See copying.md for legal info.
+// Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -19,7 +19,7 @@ namespace skybox {
 
 /**
  * Draws the dark background thingy behind the terrain.
- * 
+ *
  * (Technically not a skybox because we look down from above into
  * a black devilish void of nothingness. Maybe "hellbox" is more
  * appropriate.)
@@ -41,7 +41,7 @@ public:
 	/**
      * Set the color used for the skybox using integer values
      * for each channel (0 to 255).
-     * 
+     *
      * @param col RGBA color value.
      */
 	void set_color(const Eigen::Vector4i col);
@@ -50,7 +50,7 @@ public:
 	/**
      * Set the color used for the skybox using float values
      * for each channel (0.0 to 1.0).
-     * 
+     *
      * @param col RGBA color value.
      */
 	void set_color(const Eigen::Vector4f col);
