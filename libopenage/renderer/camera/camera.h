@@ -27,6 +27,11 @@ static const Eigen::Vector3f cam_direction{
 	-1 * (sqrt(6) / 4),
 };
 
+/**
+ * Camera for selecting what part of the ingame world is displayed.
+ *
+ * TODO: Vulkan version.
+ */
 class Camera {
 public:
 	/**

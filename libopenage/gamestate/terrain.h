@@ -27,7 +27,7 @@ public:
 	/**
 	 * Set the current render entity of the terrain.
 	 *
-	 * @param render_entity New render entity.
+	 * @param entity New render entity.
 	 */
 	void set_render_entity(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &entity);
 

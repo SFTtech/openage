@@ -19,14 +19,31 @@ class GameEntity;
  */
 class World {
 public:
+	/**
+	 * Create a new world.
+	 *
+	 * @param root_dir openage root directory.
+	 */
 	World(const util::Path &root_dir);
 	~World() = default;
 
+	/**
+	 * Attach a renderer which enables graphical display options for all ingame entities.
+	 *
+	 * @param render_factory Factory for creating connector objects for gamestate->renderer
+	 *                       communication.
+	 */
 	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
 
 private:
+	/**
+	 * List of game entities inside the game world.
+	 */
 	std::vector<std::shared_ptr<GameEntity>> game_entities;
 
+	/**
+	 * Factory for creating connector objects to the renderer which make game entities displayable.
+	 */
 	std::shared_ptr<renderer::RenderFactory> render_factory;
 };
 
