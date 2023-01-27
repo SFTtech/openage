@@ -11,7 +11,14 @@ Terrain::Terrain(util::Path &texture_path) :
 	height_map{},
 	texture_path{texture_path},
 	render_entity{nullptr} {
-	// TODO
+	// TODO: Actual terrain generation code
+	this->size = util::Vector2s{10, 10};
+
+	// fill the terrain grid with height values
+	this->height_map.reserve(this->size[0] * this->size[1]);
+	for (size_t i = 0; i < this->size[0] * this->size[1]; ++i) {
+		this->height_map.push_back(0.0f);
+	}
 }
 
 void Terrain::push_to_render() {
