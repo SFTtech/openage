@@ -484,10 +484,10 @@ void renderer_demo_3(const util::Path &path) {
 		auto delta = ev.angleDelta().y() / 120;
 
 		if (delta < 0) {
-			camera->zoom_out(0.005f);
+			camera->zoom_out(0.05f);
 		}
 		else if (delta > 0) {
-			camera->zoom_in(0.005f);
+			camera->zoom_in(0.05f);
 		}
 	});
 
