@@ -3,25 +3,24 @@
 #include <cstdlib>
 #include <epoxy/gl.h>
 #include <functional>
-#include <unordered_map>
 #include <memory>
+#include <unordered_map>
 
 #include <SDL2/SDL.h>
 
 #include <nyan/nyan.h>
 
-#include "aicontroller.h"
-#include "gui.h"
-#include "physics.h"
 #include "../../error/error.h"
 #include "../../event/loop.h"
 #include "../../log/log.h"
 #include "../../util/math_constants.h"
 #include "../../util/path.h"
+#include "aicontroller.h"
+#include "gui.h"
+#include "physics.h"
 
 
 namespace openage::main::tests::pong {
-
 
 
 using Clock = std::chrono::high_resolution_clock;
@@ -35,7 +34,7 @@ enum class timescale {
 	FAST,
 };
 
-void main(const util::Path& path) {
+void main(const util::Path &path) {
 	bool human_player = false;
 
 	timescale speed = timescale::REALTIME;
@@ -44,17 +43,15 @@ void main(const util::Path& path) {
 
 	db->load(
 		"pong.nyan",
-		[&path] (const std::string &filename) {
+		[&path](const std::string &filename) {
 			// TODO: nyan should provide a file api that we can inherit from
 			// then we can natively interface to the openage file abstraction
 			// and do not need to read the whole file here.
 			// ideally, the returned file lazily accesses all data through openage::util::File.
 			return std::make_shared<nyan::File>(
 				filename,
-				(path / ("assets/nyan/" + filename)).open_r().read()
-			);
-		}
-	);
+				(path / ("assets/test/nyan/" + filename)).open_r().read());
+		});
 
 	std::shared_ptr<nyan::View> dbview = db->new_view();
 	std::shared_ptr<Gui> gui = std::make_shared<Gui>();
@@ -75,13 +72,12 @@ void main(const util::Path& path) {
 
 		gui->clear_resize_callbacks();
 		gui->add_resize_callback(
-			[&] (size_t w, size_t h) {
+			[&](size_t w, size_t h) {
 				log::log(INFO << "update pong area size=("
-				         << w << "," << h << ")...");
+			                  << w << "," << h << ")...");
 
 				state->area_size->set_last(now, {w, h});
-			}
-		);
+			});
 
 		// process one round of window events, mainly to get the initial screen size.
 		gui->update();
@@ -106,10 +102,7 @@ void main(const util::Path& path) {
 		log::log(INFO << "starting game loop...");
 
 		// this is the game loop, running while both players live!
-		while (running and
-		       state->p1->lives->get(now) > 0 and
-		       state->p2->lives->get(now) > 0) {
-
+		while (running and state->p1->lives->get(now) > 0 and state->p2->lives->get(now) > 0) {
 			log::log(DBG << "=================== LOOPING ====================");
 
 			auto loop_start = Clock::now();
@@ -118,20 +111,13 @@ void main(const util::Path& path) {
 			// player 1 can be AI or human.
 
 			if (human_player) {
-				phys.process_input(state, state->p1,
-				                   inputs, loop, now);
+				phys.process_input(state, state->p1, inputs, loop, now);
 			}
 			else {
-				phys.process_input(state, state->p1,
-				                   get_ai_inputs(state->p1, state->ball,
-				                                 state->area_size, now, false),
-				                   loop, now);
+				phys.process_input(state, state->p1, get_ai_inputs(state->p1, state->ball, state->area_size, now, false), loop, now);
 			}
 
-			phys.process_input(state, state->p2,
-			                   get_ai_inputs(state->p2, state->ball,
-			                                 state->area_size, now, true),
-			                   loop, now);
+			phys.process_input(state, state->p2, get_ai_inputs(state->p2, state->ball, state->area_size, now, true), loop, now);
 
 			// evaluate the event queue to reach the desired game time!
 			loop->reach_time(now, state);
@@ -202,4 +188,4 @@ void main(const util::Path& path) {
 }
 
 
-} // openage::main::tests::pong
+} // namespace openage::main::tests::pong

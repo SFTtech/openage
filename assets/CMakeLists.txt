@@ -2,6 +2,7 @@
 
 add_subdirectory(logo/)
 add_subdirectory(shaders/)
+add_subdirectory(test/)
 add_subdirectory(textures/)
 
 

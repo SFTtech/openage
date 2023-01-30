@@ -1,4 +1,4 @@
-// Copyright 2015-2022 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "tests.h"
 
@@ -468,7 +468,9 @@ void renderer_demo_3(const util::Path &path) {
 	height_map[53] = 1.0f;
 
 	// send the terrain data to the terrain renderer
-	terrain0->update(terrain_size, height_map, path["assets"]["textures"]["test_terrain_tex.png"]);
+	terrain0->update(terrain_size,
+	                 height_map,
+	                 path["assets"]["test"]["textures"]["test_terrain_tex.png"]);
 
 	// Game entities
 	auto world0 = render_factory->add_world_render_entity();

@@ -114,7 +114,8 @@ void Presenter::init_graphics() {
 
 void Presenter::init_gui() {
 	//// -- gui initialization
-	util::Path qml_root = this->root_dir / "assets" / "qml";
+	// TODO: Do not use test GUI
+	util::Path qml_root = this->root_dir / "assets" / "test" / "qml";
 	if (not qml_root.is_dir()) {
 		throw Error{ERR << "could not find qml root folder " << qml_root};
 	}
