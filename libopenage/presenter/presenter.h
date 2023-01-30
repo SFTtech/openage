@@ -1,4 +1,4 @@
-// Copyright 2019-2022 the openage authors. See copying.md for legal info.
+// Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -62,7 +62,7 @@ public:
 	 * @param engine openage engine. Can be set later with \p set_engine()
 	 */
 	Presenter(const util::Path &path,
-	          const std::shared_ptr<engine::Engine> engine = nullptr);
+	          const std::shared_ptr<engine::Engine> &engine = nullptr);
 
 	~Presenter() = default;
 

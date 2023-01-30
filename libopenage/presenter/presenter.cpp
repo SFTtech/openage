@@ -26,7 +26,7 @@
 namespace openage::presenter {
 
 Presenter::Presenter(const util::Path &root_dir,
-                     const std::shared_ptr<engine::Engine> engine) :
+                     const std::shared_ptr<engine::Engine> &engine) :
 	root_dir{root_dir},
 	render_passes{},
 	engine{engine} {}
@@ -45,7 +45,7 @@ void Presenter::run() {
 
 	while (not this->window->should_close()) {
 		this->gui_app->process_events();
-		// this->gui->process_events();
+		// TODO: pass button presses and events from GUI to controller
 
 		this->render();
 
