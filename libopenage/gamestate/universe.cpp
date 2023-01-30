@@ -4,7 +4,7 @@
 
 #include "gamestate/terrain.h"
 #include "gamestate/world.h"
-#include "renderer/entity_factory.h"
+#include "renderer/render_factory.h"
 
 namespace openage::gamestate {
 

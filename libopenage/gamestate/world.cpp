@@ -3,7 +3,7 @@
 #include "world.h"
 
 #include "gamestate/game_entity.h"
-#include "renderer/entity_factory.h"
+#include "renderer/render_factory.h"
 
 
 namespace openage::gamestate {

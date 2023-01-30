@@ -23,7 +23,7 @@
 #include "util/math_constants.h"
 
 #include "renderer/camera/camera.h"
-#include "renderer/entity_factory.h"
+#include "renderer/render_factory.h"
 #include "renderer/stages/screen/screen_renderer.h"
 #include "renderer/stages/skybox/skybox_renderer.h"
 #include "renderer/stages/terrain/terrain_render_entity.h"

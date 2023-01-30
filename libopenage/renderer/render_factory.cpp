@@ -1,6 +1,6 @@
 // Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
-#include "entity_factory.h"
+#include "render_factory.h"
 
 #include "renderer/stages/terrain/terrain_render_entity.h"
 #include "renderer/stages/terrain/terrain_renderer.h"

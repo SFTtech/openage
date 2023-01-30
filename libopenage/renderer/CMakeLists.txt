@@ -1,7 +1,7 @@
 add_sources(libopenage
 	color.cpp
-	entity_factory.cpp
 	geometry.cpp
+	render_factory.cpp
 	renderer.cpp
 	shader_program.cpp
 	tests.cpp
