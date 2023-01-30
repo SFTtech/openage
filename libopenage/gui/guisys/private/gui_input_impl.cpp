@@ -29,11 +29,11 @@ GuiInputImpl::GuiInputImpl(GuiRenderer *renderer, GuiEventQueue *game_logic_upda
 GuiInputImpl::~GuiInputImpl() = default;
 
 namespace {
-static_assert(!(Qt::LeftButton & ((uint)Qt::LeftButton - 1)), "Qt non-one-bit mask.");
-static_assert(!(Qt::RightButton & ((uint)Qt::RightButton - 1)), "Qt non-one-bit mask.");
-static_assert(!(Qt::MiddleButton & ((uint)Qt::MiddleButton - 1)), "Qt non-one-bit mask.");
-static_assert(!(Qt::XButton1 & ((uint)Qt::XButton1 - 1)), "Qt non-one-bit mask.");
-static_assert(!(Qt::XButton2 & ((uint)Qt::XButton2 - 1)), "Qt non-one-bit mask.");
+static_assert(!(Qt::LeftButton & (static_cast<uint>(Qt::LeftButton) - 1)), "Qt non-one-bit mask.");
+static_assert(!(Qt::RightButton & (static_cast<uint>(Qt::RightButton) - 1)), "Qt non-one-bit mask.");
+static_assert(!(Qt::MiddleButton & (static_cast<uint>(Qt::MiddleButton) - 1)), "Qt non-one-bit mask.");
+static_assert(!(Qt::XButton1 & (static_cast<uint>(Qt::XButton1) - 1)), "Qt non-one-bit mask.");
+static_assert(!(Qt::XButton2 & (static_cast<uint>(Qt::XButton2) - 1)), "Qt non-one-bit mask.");
 
 static_assert(SDL_BUTTON_LMASK == Qt::LeftButton, "SDL/Qt mouse button mask incompatibility.");
 static_assert(1 << (SDL_BUTTON_LEFT - 1) == Qt::LeftButton, "SDL/Qt mouse button mask incompatibility.");
