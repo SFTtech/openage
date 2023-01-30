@@ -136,15 +136,21 @@ void Console::interpret(const std::string &command) {
 		if (first_space != std::string::npos && second_space != std::string::npos) {
 			std::string name = command.substr(first_space + 1, second_space - first_space - 1);
 			std::string value = command.substr(second_space + 1, std::string::npos);
+			// TODO: Use new engine class
 			// this->engine->get_cvar_manager().set(name, value);
+			log::log(MSG(dbg) << "Tried setting cvar " << name << " with " << value
+			                  << " but engine is not implemented yet.");
 		}
 	}
 	else if (command.substr(0, 3) == "get") {
 		std::size_t first_space = command.find(" ");
 		if (first_space != std::string::npos) {
 			std::string name = command.substr(first_space + 1, std::string::npos);
+			// TODO: Use new engine class
 			// std::string value = this->engine->get_cvar_manager().get(name);
 			// this->write(value.c_str());
+			log::log(MSG(dbg) << "Tried getting cvar " << name
+			                  << " but engine is not implemented yet.");
 		}
 	}
 }
