@@ -16,15 +16,17 @@ namespace openage::control {
  * Controllers handle inputs from outside of a game (e.g. GUI, AI, scripts, ...)
  * and pass the resulting events to game entities. They also act as a form of
  * access control for using in-game functionality of game entities.
+ *
+ * TODO: Connection to engine
  */
 class Controller {
 public:
-	Controller(/*Engine *engine,*/
+	Controller(/*std::shared_ptr<engine::Engine> engine,*/
 	           /*GameMainHandle *game,*/
 	           const std::unordered_set<size_t> controlled_factions,
 	           size_t active_faction_id);
 
-	// void set_engine(Engine *engine);
+	// void set_engine(std::shared_ptr<engine::Engine> &engine);
 	// void set_game(GameMainHandle *game);
 
 	/**
@@ -35,7 +37,7 @@ public:
      */
 	void set_active_faction_id(size_t faction_id);
 
-	// Engine *get_engine() const;
+	// std::shared_ptr<engine::Engine> &get_engine() const;
 	// GameMainHandle *get_game() const;
 	// Player *get_active_faction() const;
 
@@ -44,10 +46,11 @@ public:
      *
      * @return ID of the active faction.
      */
-	const size_t get_active_faction_id() const;
+	size_t get_active_faction_id();
 
 private:
-	// Engine *engine;
+	// TODO: Connection to engine
+	// std::shared_ptr<engine::Engine> engine;
 	// GameMainHandle *game;
 
 	/**

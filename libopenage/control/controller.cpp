@@ -17,7 +17,7 @@ void Controller::set_active_faction_id(size_t faction_id) {
 	}
 }
 
-const size_t Controller::get_active_faction_id() const {
+size_t Controller::get_active_faction_id() {
 	return this->active_faction_id;
 }
 
