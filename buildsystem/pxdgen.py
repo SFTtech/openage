@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 """
 Auto-generates PXD files from annotated C++ headers.
@@ -444,7 +444,7 @@ def main():
     for filename in args.all_files:
         filename = Path(filename).resolve()
         if cppdir not in filename.parents:
-            print("pxdgen source file is not in " + cppdir + ": " + filename)
+            print("pxdgen source file is not in " + str(cppdir) + ": " + str(filename))
             sys.exit(1)
 
         # join out_cppdir with relative path from cppdir

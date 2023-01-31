@@ -6,17 +6,13 @@
 Creates valid PNG files as bytearrays by utilizing libpng.
 """
 
-from libc.stdio cimport SEEK_END, fclose, fread, fseek, ftell, rewind, tmpfile
 from libc.stdint cimport uint8_t
 from libc.stdlib cimport malloc, free
 from libc.string cimport memcpy, memset
 
-# TODO: Use an in-memory file for much better speed
-#       Currently deactivated because it doesn't work on Windows :(
-# from posix.stdio cimport open_memstream
-
 from ..opus.bytearray cimport PyByteArray_AS_STRING
 from . cimport libpng
+from . cimport png_tmp_file
 from enum import Enum
 
 cimport cython
@@ -61,7 +57,7 @@ def save(numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] imagedata not None,
          compr_method=CompressionMethod.COMPR_DEFAULT, compr_settings=None):
     """
     Convert an image matrix with RGBA colors to a PNG. The PNG is returned
-    as a bytearray.
+    as a bytearray or bytes object.
 
     The function provides the option to reduce the resulting PNG size by
     doing multiple compression trials.
@@ -188,7 +184,7 @@ cdef bytearray optimize_default(numpy.uint8_t[:,:,::1] imagedata, int width, int
 cdef optimize_greedy(numpy.uint8_t[:,:,::1] imagedata, int width, int height, greedy_cache_param cache):
     """
     Create an in-memory PNG by greedily searching for the result with the
-    smallest file size and copying it to a bytearray.
+    smallest file size and copying it to a bytes object.
 
     The function provides the option to run the PNG generation with a fixed set of
     (optimal) compression parameters that were found in a previous run. In this
@@ -211,41 +207,21 @@ cdef optimize_greedy(numpy.uint8_t[:,:,::1] imagedata, int width, int height, gr
     if cache.compr_lvl == 0xFF:
         cache = optimize_greedy_iterate(imagedata, width, height)
 
-    # TODO: Create an in-memory stream of a file
-    # cdef char *outbuffer
-    # cdef size_t outbuffer_len
-    # cdef libpng.png_FILE_p fp = open_memstream(&outbuffer, &outbuffer_len)
+    cdef png_tmp_file.tmp_file_buffer_state bufstate
+    bufstate.buffer = NULL
+    bufstate.size = 0
 
-    # Create a tmp file
-    cdef libpng.png_FILE_p fp = tmpfile()
+    write_to_buffer(imagedata,
+                    &bufstate,
+                    cache.compr_lvl,
+                    cache.mem_lvl,
+                    cache.strat,
+                    cache.filters,
+                    width, height)
 
-    write_to_file(imagedata, fp,
-                  cache.compr_lvl,
-                  cache.mem_lvl,
-                  cache.strat,
-                  cache.filters,
-                  width, height)
+    outbuffer = <bytes>bufstate.buffer[:bufstate.size]
 
-    # Copy file data to bytearray
-    fseek(fp, 0, SEEK_END)
-    filesize = ftell(fp)
-    rewind(fp)
-
-    outdata = bytearray(filesize)
-    cdef char *out = PyByteArray_AS_STRING(outdata)
-    wresult = fread(out, 1, filesize, fp)
-
-    if wresult != filesize:
-        raise MemoryError("Copy to bytearray failed for PNG conversion.")
-
-    # Free memory
-    fclose(fp)
-
-    # TODO: Free memory of outbuffer of in-memory file
-    # free(outbuffer)
-
-    return outdata, cache
-
+    return outbuffer, cache
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
@@ -279,13 +255,7 @@ cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata
 
     cdef greedy_cache_param result
 
-    # TODO: Create a memory buffer that the PNG trials are written into
-    # cdef char *buf
-    # cdef size_t len
-    # cdef libpng.png_FILE_p fp
-
-    # tmp file for the trials
-    cdef libpng.png_FILE_p fp
+    cdef png_tmp_file.tmp_file_buffer_state bufstate
 
     for filters in range(GREEDY_FILTER_0, GREEDY_FILTER_5 + 1):
         if filters != GREEDY_FILTER_0 and filters != GREEDY_FILTER_5:
@@ -294,19 +264,21 @@ cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata
         for strategy in range(GREEDY_COMPR_STRAT_MIN, GREEDY_COMPR_STRAT_MAX + 1):
             for compr_lvl in range(GREEDY_COMPR_LVL_MIN, GREEDY_COMPR_LVL_MAX + 1):
                 for mem_lvl in range(GREEDY_COMPR_MEM_LVL_MIN, GREEDY_COMPR_MEM_LVL_MAX + 1):
-                    # TODO: Create an in-memory stream of a file
-                    # fp = open_memstream(&buf, &len)
+                    bufstate.buffer = NULL
+                    bufstate.size = 0
 
-                    # Create a tmp file
-                    fp = tmpfile()
+                    write_to_buffer(
+                        imagedata,
+                        &bufstate,
+                        compr_lvl,
+                        mem_lvl,
+                        strategy,
+                        filters,
+                        width,
+                        height
+                    )
 
-                    # Write the file to the memory stream
-                    write_to_file(imagedata, fp, compr_lvl, mem_lvl,
-                                   strategy, filters, width, height)
-
-                    # Check the size of the resulting file
-                    fseek(fp, 0, SEEK_END)
-                    current_filesize = ftell(fp)
+                    current_filesize = bufstate.size
 
                     if current_filesize < best_filesize:
                         # Save the settings if we found a better result
@@ -315,11 +287,6 @@ cdef greedy_cache_param optimize_greedy_iterate(numpy.uint8_t[:,:,::1] imagedata
                         best_compr_strat = strategy
                         best_filters = filters
                         best_filesize = current_filesize
-
-                    fclose(fp)
-
-    # TODO: Activate memmory buffer conversion
-    # free(buf)
 
     result.compr_lvl = best_compr_lvl
     result.mem_lvl = best_compr_mem_lvl
@@ -379,6 +346,72 @@ cdef void write_to_file(numpy.uint8_t[:,:,::1] imagedata,
                         libpng.PNG_INTERLACE_NONE,
                         libpng.PNG_COMPRESSION_TYPE_DEFAULT,
                         libpng.PNG_FILTER_TYPE_DEFAULT)
+
+    # Write the data
+    libpng.png_write_info(write_ptr, write_info_ptr)
+
+    for row_idx in range(height):
+        libpng.png_write_row(write_ptr, &imagedata[row_idx,0,0])
+
+    libpng.png_write_end(write_ptr, write_info_ptr)
+
+    # Destroy the write struct
+    libpng.png_destroy_write_struct(&write_ptr, &write_info_ptr)
+
+
+@cython.boundscheck(False)
+@cython.wraparound(False)
+cdef void write_to_buffer(numpy.uint8_t[:,:,::1] imagedata,
+                          png_tmp_file.tmp_file_buffer_state *bufstate,
+                          int compression_level, int memory_level,
+                          int compression_strategy, int filters,
+                          int width, int height):
+    """
+    Write an image matrix with RGBA color values to a given buffer.
+
+    :param imagedata: A memory view of a 3-dimensional array with RGBA color
+                      values for pixels. The array is expected to be C-aligned.
+    :type imagedata: uint8_t[:,:,::1]
+    :param bufstate: Struct containing the pointer to and the size of a buffer.
+    :type bufstate: png_tmp_file.tmp_file_buffer_state*
+    :param compression_level: libpng compression level setting. (allowed: 1-9)
+    :type compression_level: int
+    :param memory_level: libpng compression memory level setting. (allowed: 1-9)
+    :type memory_level: int
+    :param compression_strategy: libpng compression strategy setting.  (allowed: 0-3)
+    :type compression_strategy: int
+    :param filters: libpng filter flags bitfield. (allowed: 0x08, 0x10, 0x20, 0x40, 0x80, 0xF8)
+    :type filters: int
+    :param width: Width of the image in pixels.
+    :type width: int
+    :param height: Height of the image in pixels.
+    :type height: int
+    """
+    write_ptr = libpng.png_create_write_struct(libpng.PNG_LIBPNG_VER_STRING,
+                                               NULL,
+                                               NULL,
+                                               NULL)
+    write_info_ptr = libpng.png_create_info_struct(write_ptr)
+
+    # Configure write settings
+    libpng.png_set_compression_level(write_ptr, compression_level)
+    libpng.png_set_compression_mem_level(write_ptr, memory_level)
+    libpng.png_set_compression_strategy(write_ptr, compression_strategy)
+    libpng.png_set_filter(write_ptr, libpng.PNG_FILTER_TYPE_DEFAULT, filters)
+
+    libpng.png_set_IHDR(write_ptr, write_info_ptr,
+                        width, height,
+                        8,
+                        libpng.PNG_COLOR_TYPE_RGBA,
+                        libpng.PNG_INTERLACE_NONE,
+                        libpng.PNG_COMPRESSION_TYPE_DEFAULT,
+                        libpng.PNG_FILTER_TYPE_DEFAULT)
+
+    # Set ur write function for writing to buffer
+    libpng.png_set_write_fn(write_ptr,
+                            bufstate,
+                            &png_tmp_file.tmp_file_png_write_fn,
+                            &png_tmp_file.tmp_file_flush_fn)
 
     # Write the data
     libpng.png_write_info(write_ptr, write_info_ptr)
