@@ -22,14 +22,14 @@ set_target_properties(libopenage PROPERTIES
 # freetype includedir hint for ubuntu...
 find_path(FREETYPE_INCLUDE_DIRS freetype/freetype.h HINTS /usr/include/freetype2)
 
-# provide apple qt5 location
+# provide apple qt location
 if(APPLE)
 	execute_process(
 		COMMAND brew --prefix
 		OUTPUT_VARIABLE HOMEBREW_PREFIX
 		OUTPUT_STRIP_TRAILING_WHITESPACE
 		)
-	list(APPEND CMAKE_PREFIX_PATH ${HOMEBREW_PREFIX}/opt/qt6)
+	list(APPEND CMAKE_PREFIX_PATH ${HOMEBREW_PREFIX}/opt/qt)
 endif()
 
 # windows does not have libm
@@ -262,7 +262,7 @@ configure_file(
 if(APPLE)
 	find_path(
 		QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders
-		"${HOMEBREW_PREFIX}/opt/qt6/include"
+		"${HOMEBREW_PREFIX}/opt/qt/include"
 		)
 	find_library(COCOA_LIBRARY Cocoa)
 	target_include_directories(libopenage PRIVATE ${COCOA_LIBRARY})
