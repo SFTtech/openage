@@ -40,18 +40,4 @@ list(APPEND QT_SDL_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/private/livereload/recursive_directory_watcher_worker.cpp
 )
 
-if(APPLE AND UNIX)
-	list(APPEND QT_SDL_SOURCES
-		${CMAKE_CURRENT_SOURCE_DIR}/private/platforms/context_extraction_cocoa.mm
-	)
-elseif(WIN32)
-	list(APPEND QT_SDL_SOURCES
-		${CMAKE_CURRENT_SOURCE_DIR}/private/platforms/context_extraction_win32.cpp
-	)
-else(APPLE AND UNIX)
-	list(APPEND QT_SDL_SOURCES
-		${CMAKE_CURRENT_SOURCE_DIR}/private/platforms/context_extraction_x11.cpp
-	)
-endif(APPLE AND UNIX)
-
 set(QT_SDL_SOURCES ${QT_SDL_SOURCES} PARENT_SCOPE)

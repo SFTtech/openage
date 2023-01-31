@@ -256,20 +256,6 @@ configure_file(
 	"${CMAKE_BINARY_DIR}/openage/config.py"
 )
 
-
-##################################################
-# platform specifics
-if(APPLE)
-	find_path(
-		QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders
-		"${HOMEBREW_PREFIX}/opt/qt/include"
-		)
-	find_library(COCOA_LIBRARY Cocoa)
-	target_include_directories(libopenage PRIVATE ${COCOA_LIBRARY})
-	target_link_libraries(libopenage PRIVATE ${COCOA_LIBRARY})
-endif()
-
-
 ##################################################
 # directories for header inclusion
 target_include_directories(libopenage

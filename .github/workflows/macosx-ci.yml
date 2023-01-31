@@ -40,18 +40,18 @@ jobs:
         run: brew update-reset
       - name: Brew update
         run: brew update
-      - name: Install clang / LLVM 13.0.0
+      - name: Install clang / LLVM 15.0.0
         run: |
           set -x
           brew install wget
           mkdir -p /tmp/clang
           cd /tmp/clang
-          wget https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/clang+llvm-13.0.0-x86_64-apple-darwin.tar.xz -O clang-13.0.0.tar.xz
+          wget https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.0/clang+llvm-15.0.0-x86_64-apple-darwin.tar.xz -O clang-15.0.0.tar.xz
           ls
-          tar -xvf clang-13.0.0.tar.xz -C ~
+          tar -xvf clang-15.0.0.tar.xz -C ~
           cd ~
-          mv clang+llvm-13.0.0-x86_64-apple-darwin clang-13.0.0
-          ~/clang-13.0.0/bin/clang++ --version
+          mv clang+llvm-15.0.0-x86_64-apple-darwin clang-15.0.0
+          ~/clang-15.0.0/bin/clang++ --version
       - name: Brew install DeJaVu fonts
         run: brew tap homebrew/cask-fonts && brew install font-dejavu
       - name: Remove python's 2to3 link so that 'brew link' does not fail
@@ -69,7 +69,7 @@ jobs:
         run: pip3 install --upgrade cython numpy jinja2 lz4 pillow pygments toml
       - name: Configure
         run: |
-          CLANG_PATH="$HOME/clang-13.0.0/bin/clang++"
+          CLANG_PATH="$HOME/clang-15.0.0/bin/clang++"
           ./configure --compiler="$CLANG_PATH" --mode=debug --ccache --download-nyan
       - name: Build
         run: make -j$(sysctl -n hw.logicalcpu) VERBOSE=1
