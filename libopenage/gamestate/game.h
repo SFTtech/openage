@@ -17,6 +17,13 @@ class Universe;
 
 /**
  * Manages a game session (settings, win conditions, etc.).
+ *
+ * TODO: Create sensible structure of gamestate classes. Right now it's
+ *
+ *       Game->Universe|->World->GameEntity
+ *                     |->Terrain
+ *
+ * 		which can be confusing.
  */
 class Game {
 public:

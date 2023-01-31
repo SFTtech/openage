@@ -69,7 +69,7 @@ private:
 	/**
      * Stores the time of the latest simulation iteration. It is updated whenever
 	 * \p get_time() is called or the clock stops/resumes.
-	 * 
+	 *
 	 * The value essentially signifies how much time (in milliseconds) has passed
 	 * _inside_ the simulation between starting the clock and the latest time check.
      */
