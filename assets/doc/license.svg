@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="115.2" height="20" role="img" aria-label="license GPLv3+">
+
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+             xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema"
+             xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <rdf:Description dc:format="image/svg+xml"
+                       dc:rights="CC-BY-SA 4.0"
+                       dc:language="en">
+      </rdf:Description>
+    </rdf:RDF>
+  </metadata>
+
+  <title>license GPLv3+</title>
+
+  <defs>
+    <linearGradient id="leftfill" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#444d56" stop-opacity="1"></stop>
+      <stop offset="100%" stop-color="#1c1f22" stop-opacity="1"></stop>
+    </linearGradient>
+    <linearGradient id="rightfill" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#008bc6" stop-opacity="1"></stop>
+      <stop offset="100%" stop-color="#005eb6" stop-opacity="1"></stop>
+    </linearGradient>
+  </defs>
+
+  <clipPath id="round">
+    <rect width="115.2" height="20" rx="3" fill="#fff"/>
+  </clipPath>
+
+  <g clip-path="url(#round)" id="surface">
+    <rect id="leftsurface" width="57.6" height="20" fill="url(#leftfill)"/>
+    <rect id="rightsurface" x="57.6" width="57.6" height="20" fill="url(#rightfill)"/>
+  </g>
+
+  <g id="texts"
+     fill="#fff"
+     text-anchor="middle"
+     font-family="DejaVu Sans,Verdana,Geneva,sans-serif"
+     text-rendering="geometricPrecision" font-size="11">
+
+    <text id="leftshadow" x="28.8" y="15"
+          pointer-events="none"
+          transform="scale(1)"
+          fill="#010101" fill-opacity=".3">
+    license
+    </text>
+    <text id="lefttext" x="28.8" y="14"
+          transform="scale(1)"
+          fill="#fff">
+    license
+    </text>
+    <text id="rightshadow"
+          x="86.4" y="15"
+          pointer-events="none"
+          transform="scale(1)"
+          fill="#010101" fill-opacity=".3">
+    GPLv3+
+    </text>
+    <text id="righttext"
+          x="86.4" y="14"
+          transform="scale(1)"
+          fill="#fff">
+    GPLv3+
+    </text>
+  </g>
+</svg>
