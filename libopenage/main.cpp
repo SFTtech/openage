@@ -3,12 +3,29 @@
 #include "main.h"
 
 #include <thread>
+#include <version>
 
 #include "cvar/cvar.h"
 #include "engine/engine.h"
 #include "log/log.h"
 #include "presenter/presenter.h"
 #include "util/timer.h"
+
+// TODO: Remove custom jthread definition when clang/libc++ finally supports it
+#if __llvm__
+#if !__cpp_lib_jthread
+namespace std {
+class jthread : public thread {
+public:
+	using thread::thread; // needed constructors
+	~jthread() {
+		this->join();
+	}
+};
+} // namespace std
+#endif
+#endif
+
 
 namespace openage {
 
