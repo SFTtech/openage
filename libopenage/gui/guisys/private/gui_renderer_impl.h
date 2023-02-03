@@ -2,7 +2,11 @@
 
 #pragma once
 
+#ifndef __APPLE__
 #include <GL/gl.h>
+#else // __APPLE__
+#include <OpenGL/gl.h>
+#endif
 
 #include <atomic>
 #include <condition_variable>

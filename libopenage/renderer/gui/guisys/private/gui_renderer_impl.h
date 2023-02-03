@@ -3,7 +3,6 @@
 #pragma once
 
 #include "renderer/texture.h"
-#include <GL/gl.h>
 
 #include <atomic>
 #include <condition_variable>
