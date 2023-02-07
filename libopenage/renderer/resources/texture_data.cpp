@@ -95,29 +95,25 @@ Texture2dData::Texture2dData(const util::Path &path) {
 	subtextures.push_back(s);
 
 	size_t align = guess_row_alignment(w, pix_fmt, image.bytesPerLine());
-	this->info = Texture2dInfo(w, h, pix_fmt, align, std::move(subtextures));
+	std::shared_ptr<util::Path> imagepath = std::make_shared<util::Path>(path);
+	this->info = Texture2dInfo(w, h, pix_fmt, align, imagepath, std::move(subtextures));
 }
 
 Texture2dData::Texture2dData(Texture2dInfo const &info) :
 	info{info} {
 	std::string native_path = info.get_image_path()->resolve_native_path();
-	std::unique_ptr<SDL_Surface, decltype(&SDL_FreeSurface)> surface(
-		IMG_Load(native_path.c_str()),
-		&SDL_FreeSurface);
 
-	if (!surface) {
-		throw Error(MSG(err)
-		            << "Could not load texture from " << native_path
-		            << ": " << IMG_GetError());
-	}
+	// TODO: use QImageIOHandler to directly create the correct surface format.
+	QImage image{native_path.c_str()};
+	image.convertTo(QImage::Format_RGBA8888);
 
 	log::log(MSG(dbg) << "Texture has been loaded from " << native_path);
 
-	size_t data_size = pixel_size(info.get_format()) * surface->w * surface->h;
+	size_t data_size = image.sizeInBytes();
 
 	// copy pixel data from surface
 	this->data = std::vector<uint8_t>(data_size);
-	memcpy(this->data.data(), surface->pixels, data_size);
+	std::memcpy(this->data.data(), image.bits(), data_size);
 }
 
 Texture2dData::Texture2dData(Texture2dInfo const &info, std::vector<uint8_t> &&data) :

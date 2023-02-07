@@ -312,6 +312,8 @@ void main() {
  * @param path Path to the openage asset directory.
  */
 void renderer_demo_1(const util::Path &path) {
+	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
+
 	opengl::GlWindow window("openage renderer test", 800, 600);
 	auto renderer = window.make_renderer();
 
@@ -583,9 +585,10 @@ void main() {
 	/* Register callbacks */
 	log::log(INFO << "Register callbacks...");
 
-	window.add_mouse_button_callback([&](SDL_MouseButtonEvent const &ev) {
-		auto x = ev.x;
-		auto y = ev.y;
+	window.add_mouse_button_callback([&](const QMouseEvent &ev) {
+		auto qpos = ev.position();
+		ssize_t x = qpos.x();
+		ssize_t y = qpos.y();
 
 		log::log(INFO << "Clicked at location (" << x << ", " << y << ")");
 		if (!texture_data_valid) {
@@ -628,9 +631,9 @@ void main() {
 	});
 
 	/* Iterate through subtextures with left/right arrows */
-	window.add_key_callback([&](SDL_KeyboardEvent event) {
-		if (event.type == SDL_KEYUP) {
-			if (event.keysym.sym == SDLK_RIGHT) {
+	window.add_key_callback([&](const QKeyEvent &ev) {
+		if (ev.type() == QEvent::KeyRelease) {
+			if (ev.key() == Qt::Key_Right) {
 				log::log(INFO << "Key pressed (Right arrow)");
 
 				++subtexture_index;
@@ -638,7 +641,7 @@ void main() {
 					subtexture_index = 0;
 				}
 			}
-			else if (event.keysym.sym == SDLK_LEFT) {
+			else if (ev.key() == Qt::Key_Left) {
 				log::log(INFO << "Key pressed (Left arrow)");
 				if (subtexture_index == 0) {
 					subtexture_index = tex.get_info().get_subtexture_count() - 1;
@@ -681,10 +684,13 @@ void main() {
 	log::log(INFO << "  2. Press LEFT/RIGHT ARROW to cycle through available subtextures");
 
 	while (not window.should_close()) {
+		qtapp->process_events();
+
 		renderer->render(pass1);
 		renderer->render(pass2);
 		window.update();
-		opengl::GlContext::check_error();
+
+		renderer->check_error();
 	}
 }
 
