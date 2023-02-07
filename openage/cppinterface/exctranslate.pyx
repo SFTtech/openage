@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 """
 Provides the raise_py_exception and describe_py_exception callbacks for
@@ -41,59 +41,21 @@ from ..testing.testing import TestError
 from ..log import err, info
 
 cdef extern from "Python.h":
-    cdef cppclass PyCodeObject:
-        pass
     int PyException_SetTraceback(PyObject *ex, PyObject *tb)
-    PyCodeObject *PyCode_NewEmpty(const char *filename, const char *funcname, int firstlineno)
 
-
-cdef extern from "frameobject.h":
-    cdef cppclass PyFrameObject:
-        int f_lineno
-    PyFrameObject *PyFrame_New(PyThreadState *, PyCodeObject *, PyObject *, PyObject *)
-
-
-cdef extern from "Python.h":
-    int PyTraceBack_Here(PyFrameObject *)
-
+cdef extern from "traceback.h":
+    void _PyTraceback_Add(const char *funcname, const char *filename, int lineno)
 
 
 cdef void PyTraceback_Add(const char *functionname, const char *filename, int lineno) with gil:
-    """ This function is identical to Python 3.4.3's _PyTraceback_Add. """
-    # TODO remove once we update our minimum Python requirement to 3.4.3 or higher.
-    # note that there's a slight difference in the function prototype:
-    # Python 3.4.3's PyTraceback_Add has non-const functionname and filename,
-    # though it doesn't actually use them in a non-const way.
-    # see http://bugs.python.org/issue24436.
-    cdef PyObject *exc_type = NULL
-    cdef PyObject *exc_value = NULL
-    cdef PyObject *exc_tb = NULL
+    """
+    Add a new traceback stack frame.
+    Redirects to Python's internal _PyTraceback_Add function.
+    """
+    # possible since 3.4.3 due to http://bugs.python.org/issue24436.
+    # the function will likely remain internal due to https://bugs.python.org/issue24743
 
-    # save and clear the current exception.
-    # Python functions must not be called with an exception set.
-    # Calling Python functions happens when the codec of the filesystem
-    # encoding is implemented in pure Python.
-    PyErr_Fetch(&exc_type, &exc_value, &exc_tb)
-
-    cdef PyCodeObject *code = PyCode_NewEmpty(filename, functionname, lineno)
-    if code == NULL:
-        PyErr_Restore(exc_type, exc_value, exc_tb)
-        return
-
-    globals_ = dict()
-    cdef PyFrameObject *frame = PyFrame_New(PyThreadState_Get(), code, <PyObject *> globals_, NULL)
-    if frame == NULL:
-        Py_XDECREF(<PyObject *> code)
-        PyErr_Restore(exc_type, exc_value, exc_tb)
-        return
-
-    frame.f_lineno = lineno
-
-    PyErr_Restore(exc_type, exc_value, exc_tb)
-    PyTraceBack_Here(frame)
-
-    Py_XDECREF(<PyObject *> code)
-    Py_XDECREF(<PyObject *> frame)
+    _PyTraceback_Add(functionname, filename, lineno)
 
 
 cdef class CPPMessageObject:
