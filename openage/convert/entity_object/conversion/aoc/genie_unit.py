@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-public-methods,too-many-instance-attributes,consider-iterating-dictionary
 
@@ -1115,7 +1115,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
     variants of the common villager game entity.
     """
 
-    __slots__ = ('data', 'variants', 'creates')
+    __slots__ = ('variants', )
 
     valid_switch_tasks_lookup = {
         5: "GATHER",    # Gather from resource spots
