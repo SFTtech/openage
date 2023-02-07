@@ -2,6 +2,7 @@ add_sources(libopenage
 	base_curve.cpp
 	continuous.cpp
 	curve.cpp
+	discrete_ring.cpp
 	discrete.cpp
 	interpolated.cpp
 	iterator.cpp
