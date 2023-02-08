@@ -1,12 +1,12 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <optional>
 
 #include "../renderer.h"
-#include "texture.h"
 #include "framebuffer.h"
+#include "texture.h"
 
 
 namespace openage {
@@ -33,7 +33,10 @@ public:
 	/// Texture are attached to points specific to their pixel format,
 	/// e.g. a depth texture will be set as the depth target.
 	GlRenderTarget(const std::shared_ptr<GlContext> &context,
-	               std::vector<std::shared_ptr<GlTexture2d>> const& textures);
+	               std::vector<std::shared_ptr<GlTexture2d>> const &textures);
+
+	// Get the targeted textures
+	std::vector<std::shared_ptr<Texture2d>> get_texture_targets() override;
 
 	/// Bind this render target to be drawn into.
 	void bind_write() const;
@@ -46,6 +49,11 @@ private:
 
 	/// For textures target type, the framebuffer.
 	std::optional<GlFramebuffer> framebuffer;
+
+	// target textures if the render target is an fbo
+	std::optional<std::vector<std::shared_ptr<GlTexture2d>>> textures;
 };
 
-}}} // openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage

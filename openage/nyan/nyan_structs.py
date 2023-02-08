@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-arguments,too-many-return-statements,too-many-locals
 
@@ -506,7 +506,8 @@ class NyanPatch(NyanObject):
         """
         return super().is_abstract() or not self._target
 
-    def is_patch(self) -> bool:
+    @staticmethod
+    def is_patch() -> bool:
         """
         Returns True if the object is a nyan patch.
         """
@@ -519,7 +520,7 @@ class NyanPatch(NyanObject):
         self._target = target
 
         if not isinstance(self._target, NyanObject):
-            raise Exception(f"{self.__repr__()}: '_target' must have NyanObject type")
+            raise Exception(f"{repr(self)}: '_target' must have NyanObject type")
 
     def dump(self, indent_depth: int = 0, import_tree: ImportTree = None) -> str:
         """
@@ -1394,7 +1395,8 @@ class InheritedNyanMember(NyanMember):
         """
         return self._parent
 
-    def is_inherited(self) -> bool:
+    @staticmethod
+    def is_inherited() -> bool:
         """
         Returns True if the member is inherited from another object.
         """
@@ -1445,11 +1447,11 @@ class InheritedNyanMember(NyanMember):
 
         # parent must be a nyan object
         if not isinstance(self._parent, NyanObject):
-            raise Exception(f"{self.__repr__()}: '_parent' must have NyanObject type")
+            raise Exception(f"{repr(self)}: '_parent' must have NyanObject type")
 
         # origin must be a nyan object
         if not isinstance(self._origin, NyanObject):
-            raise Exception(f"{self.__repr__()}: '_origin' must have NyanObject type")
+            raise Exception(f"{repr(self)}: '_origin' must have NyanObject type")
 
     def __repr__(self):
         return f"InheritedNyanMember<{self.name}: {self._member_type}>"

@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,7 +11,7 @@
 
 namespace openage {
 
-class Engine;
+class LegacyEngine;
 class Terrain;
 
 std::vector<coord::tile> tiles_in_range(coord::camgame p1, coord::camgame p2, const coord::CoordManager &coord);
@@ -35,19 +35,19 @@ enum class selection_type_t {
 /**
  * a user interface component allowing control of a selected group
  */
-class UnitSelection: public HudHandler {
+class UnitSelection : public HudHandler {
 public:
-	UnitSelection(Engine *engine);
+	UnitSelection(LegacyEngine *engine);
 
 	bool on_drawhud() override;
 	void drag_begin(coord::camgame pos);
 	void drag_update(coord::camgame pos);
-	void drag_release(const Player &player, Terrain *terrain, bool append=false);
+	void drag_release(const Player &player, Terrain *terrain, bool append = false);
 
 	void clear();
 
-	void toggle_unit(const Player &player, Unit *u, bool append=false);
-	void add_unit(const Player &player, Unit *u, bool append=false);
+	void toggle_unit(const Player &player, Unit *u, bool append = false);
+	void add_unit(const Player &player, Unit *u, bool append = false);
 	void remove_unit(Unit *u);
 
 	selection_type_t get_selection_type();
@@ -70,24 +70,27 @@ public:
 	/**
 	 * point unit selection
 	 */
-	void select_point(const Player &player, Terrain *terrain, coord::camgame p, bool append=false);
+	void select_point(const Player &player, Terrain *terrain, coord::camgame p, bool append = false);
 
 	/**
 	 * boxed unit selection
 	 */
-	void select_space(const Player &player, Terrain *terrain, coord::camgame p1, coord::camgame p2, bool append=false);
+	void select_space(const Player &player, Terrain *terrain, coord::camgame p1, coord::camgame p2, bool append = false);
 
 	/**
 	 * uses command on every selected unit
 	 */
 	void all_invoke(Command &cmd);
 
-	int get_units_count() const { return this->units.size(); }
+	int get_units_count() const {
+		return this->units.size();
+	}
 
-	const UnitReference & get_first_unit() const { return this->units.begin()->second; }
+	const UnitReference &get_first_unit() const {
+		return this->units.begin()->second;
+	}
 
 private:
-
 	/**
 	 * Check whether the currently selected units may be selected at the same time
 	 * If not, deselect some units
@@ -109,7 +112,7 @@ private:
 	/**
 	 * Engine where this selection is attached to.
 	 */
-	Engine *engine;
+	LegacyEngine *engine;
 };
 
 } // namespace openage

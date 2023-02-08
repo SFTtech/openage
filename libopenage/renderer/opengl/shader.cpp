@@ -1,4 +1,4 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #include "shader.h"
 
@@ -14,15 +14,13 @@ static constexpr auto gl_shdr_type = datastructure::create_const_map<resources::
 	std::make_pair(resources::shader_stage_t::geometry, GL_GEOMETRY_SHADER),
 	std::make_pair(resources::shader_stage_t::tesselation_control, GL_TESS_CONTROL_SHADER),
 	std::make_pair(resources::shader_stage_t::tesselation_evaluation, GL_TESS_EVALUATION_SHADER),
-	std::make_pair(resources::shader_stage_t::fragment, GL_FRAGMENT_SHADER)
-);
+	std::make_pair(resources::shader_stage_t::fragment, GL_FRAGMENT_SHADER));
 
 GlShader::GlShader(const std::shared_ptr<GlContext> &context,
-                   const resources::ShaderSource &src)
-	: GlSimpleObject(context,
-	                 [] (GLuint handle) { glDeleteShader(handle); } )
-	, type(gl_shdr_type.get(src.get_stage()))
-{
+                   const resources::ShaderSource &src) :
+	GlSimpleObject(context,
+                   [](GLuint handle) { glDeleteShader(handle); }),
+	type(gl_shdr_type.get(src.get_stage())) {
 	if (src.get_lang() != resources::shader_lang_t::glsl) {
 		throw Error(MSG(err) << "Unsupported shader language passed to OpenGL renderer.");
 	}
@@ -32,7 +30,7 @@ GlShader::GlShader(const std::shared_ptr<GlContext> &context,
 	this->handle = handle;
 
 	// load shader source
-	const char* data = src.get_source().c_str();
+	const char *data = src.get_source().c_str();
 	glShaderSource(handle, 1, &data, nullptr);
 
 	// compile shader source
@@ -49,7 +47,8 @@ GlShader::GlShader(const std::shared_ptr<GlContext> &context,
 		std::vector<char> infolog(loglen);
 		glGetShaderInfoLog(handle, loglen, nullptr, infolog.data());
 
-		throw Error(MSG(err) << "Failed to compile shader:\n" << infolog.data() );
+		throw Error(MSG(err) << "Failed to compile shader:\n"
+		                     << infolog.data());
 	}
 }
 
@@ -57,4 +56,6 @@ GLenum GlShader::get_type() const {
 	return this->type;
 }
 
-}}} // openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage

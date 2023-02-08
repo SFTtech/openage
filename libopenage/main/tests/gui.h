@@ -1,4 +1,4 @@
-// Copyright 2019-2019 the openage authors. See copying.md for legal info.
+// Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -39,7 +39,7 @@ public:
 
 private:
 	renderer::opengl::GlWindow window;
-	std::unique_ptr<renderer::Renderer> renderer;
+	std::shared_ptr<renderer::Renderer> renderer;
 
 	std::vector<PongEvent> input_cache;
 	std::deque<std::string> log_msgs;

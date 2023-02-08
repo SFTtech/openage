@@ -8,7 +8,7 @@
 brew update-reset && brew update
 brew tap homebrew/cask-fonts
 brew install font-dejavu
-brew install cmake python3 libepoxy freetype fontconfig harfbuzz sdl2 sdl2_image opus opusfile qt5 libogg libpng eigen
+brew install cmake python3 libepoxy freetype fontconfig harfbuzz sdl2 sdl2_image opus opusfile qt6 libogg libpng eigen
 brew install llvm
 pip3 install cython numpy jinja2 lz4 pillow pygments toml
 

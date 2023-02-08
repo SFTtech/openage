@@ -1,22 +1,23 @@
-// Copyright 2019-2021 the openage authors. See copying.md for legal info.
+// Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 #include "gui.h"
 
 #include <algorithm>
-#include <vector>
 #include <eigen3/Eigen/Dense>
+#include <vector>
 
 #include "gamestate.h"
-#include "../../log/log.h"
-#include "../../renderer/opengl/shader.h"
-#include "../../renderer/resources/shader_source.h"
-#include "../../renderer/resources/texture_data.h"
-#include "../../renderer/resources/mesh_data.h"
-#include "../../renderer/texture.h"
-#include "../../renderer/shader_program.h"
-#include "../../renderer/util.h"
-#include "../../renderer/geometry.h"
-#include "../../renderer/opengl/window.h"
+#include "log/log.h"
+#include "renderer/geometry.h"
+#include "renderer/opengl/context.h"
+#include "renderer/opengl/shader.h"
+#include "renderer/opengl/window.h"
+#include "renderer/resources/mesh_data.h"
+#include "renderer/resources/shader_source.h"
+#include "renderer/resources/texture_data.h"
+#include "renderer/shader_program.h"
+#include "renderer/texture.h"
+#include "renderer/util.h"
 
 
 namespace openage::main::tests::pong {
@@ -76,11 +77,9 @@ const std::vector<PongEvent> &Gui::get_inputs(const std::shared_ptr<PongPlayer> 
 constexpr const int max_log_msgs = 10;
 
 
-Gui::Gui()
-	:
+Gui::Gui() :
 	window{"openage engine test", 800, 600},
 	renderer{window.make_renderer()} {
-
 	auto vshader_src = renderer::resources::ShaderSource(
 		renderer::resources::shader_lang_t::glsl,
 		renderer::resources::shader_stage_t::vertex,
@@ -110,25 +109,25 @@ void main() {
 }
 )s");
 
-	auto shader = renderer->add_shader( { vshader_src, fshader_src } );
+	auto shader = renderer->add_shader({vshader_src, fshader_src});
 
 	auto proj_in = shader->new_uniform_input(
-		"proj", Eigen::Affine3f::Identity().matrix()
-	);
+		"proj",
+		Eigen::Affine3f::Identity().matrix());
 
 	auto col_in = shader->new_uniform_input(
-		"col", Eigen::Vector3f()
-	);
+		"col",
+		Eigen::Vector3f());
 	auto col_red_in = shader->new_uniform_input(
-		"col", Eigen::Vector3f(1, 0, 0)
-	);
+		"col",
+		Eigen::Vector3f(1, 0, 0));
 
 	auto quad = renderer->add_mesh_geometry(renderer::resources::MeshData::make_quad());
 
 	this->ball = renderer::Renderable{
 		shader->new_uniform_input(
-			"pos", Eigen::Affine3f::Identity().matrix()
-		),
+			"pos",
+			Eigen::Affine3f::Identity().matrix()),
 		quad,
 		true,
 		true,
@@ -136,8 +135,8 @@ void main() {
 
 	this->p1paddle = renderer::Renderable{
 		shader->new_uniform_input(
-			"pos", Eigen::Affine3f::Identity().matrix()
-		),
+			"pos",
+			Eigen::Affine3f::Identity().matrix()),
 		quad,
 		true,
 		true,
@@ -145,8 +144,8 @@ void main() {
 
 	this->p2paddle = renderer::Renderable{
 		shader->new_uniform_input(
-			"pos", Eigen::Affine3f::Identity().matrix()
-		),
+			"pos",
+			Eigen::Affine3f::Identity().matrix()),
 		quad,
 		true,
 		true,
@@ -163,33 +162,33 @@ void main() {
 			this->ball,
 			std::move(set_col_red),
 			this->p1paddle,
-			this->p2paddle
-		},
-		this->renderer->get_display_target()
-	);
+			this->p2paddle},
+		this->renderer->get_display_target());
 
 	glDepthFunc(GL_LEQUAL);
 	glDepthRange(0.0, 1.0);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	this->window.add_resize_callback(
-		[=, this] (size_t w, size_t h) {
+		[=, this](size_t w, size_t h) {
 			Eigen::Matrix4f proj_matrix = renderer::util::ortho_matrix_f(
-				0.0f, w, 0.0f, h, 0.0f, 1.0f
-			);
+				0.0f,
+				w,
+				0.0f,
+				h,
+				0.0f,
+				1.0f);
 
 			proj_in->update("proj", proj_matrix);
 
 			for (auto &cb : this->resize_callbacks) {
 				cb(w, h);
 			}
-		}
-	);
+		});
 }
 
 
 void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now) {
-
 	constexpr float ball_size = 50.0f;
 	constexpr float paddle_width = 20.0f;
 
@@ -215,8 +214,7 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 			ballcolor.get_int("r", now.to_int()) / 255.0f,
 			ballcolor.get_int("g", now.to_int()) / 255.0f,
 			ballcolor.get_int("b", now.to_int()) / 255.0f,
-		}
-	);
+		});
 
 	auto p1_pos = state->p1->position->get(now);
 	auto p1_size = state->p1->size->get(now);
@@ -249,7 +247,6 @@ const util::Vector2s &Gui::get_window_size() const {
 
 
 void Gui::log(const std::string &msg) {
-
 	log::log(INFO << "Gui::log: " << msg);
 
 	if (this->log_msgs.size() >= max_log_msgs) {
@@ -259,7 +256,7 @@ void Gui::log(const std::string &msg) {
 }
 
 
-void Gui::add_resize_callback(const renderer::Window::resize_cb_t& cb) {
+void Gui::add_resize_callback(const renderer::Window::resize_cb_t &cb) {
 	this->resize_callbacks.push_back(cb);
 }
 
@@ -272,4 +269,4 @@ void Gui::update() {
 	this->window.update();
 }
 
-} // openage::main::tests::pong
+} // namespace openage::main::tests::pong

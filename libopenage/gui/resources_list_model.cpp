@@ -1,4 +1,4 @@
-// Copyright 2016-2019 the openage authors. See copying.md for legal info.
+// Copyright 2016-2023 the openage authors. See copying.md for legal info.
 
 #include "resources_list_model.h"
 
@@ -9,7 +9,7 @@
 
 #include "../error/error.h"
 
-#include "../game_control.h"
+#include "../presenter/legacy/game_control.h"
 #include "game_control_link.h"
 
 namespace openage::gui {
@@ -19,10 +19,9 @@ const int registration = qmlRegisterType<ResourcesListModel>("yay.sfttech.openag
 
 const auto resource_type_count = static_cast<std::underlying_type<game_resource>::type>(game_resource::RESOURCE_TYPE_COUNT);
 
-}
+} // namespace
 
-ResourcesListModel::ResourcesListModel(QObject *parent)
-	:
+ResourcesListModel::ResourcesListModel(QObject *parent) :
 	QAbstractListModel(parent),
 	amounts(resource_type_count),
 	action_mode() {
@@ -31,7 +30,7 @@ ResourcesListModel::ResourcesListModel(QObject *parent)
 
 ResourcesListModel::~ResourcesListModel() = default;
 
-ActionModeLink* ResourcesListModel::get_action_mode() const {
+ActionModeLink *ResourcesListModel::get_action_mode() const {
 	return this->action_mode;
 }
 
@@ -61,7 +60,7 @@ void ResourcesListModel::on_resource_changed(game_resource resource, int amount)
 	}
 }
 
-int ResourcesListModel::rowCount(const QModelIndex&) const {
+int ResourcesListModel::rowCount(const QModelIndex &) const {
 	ENSURE(resource_type_count == this->amounts.size(), "Res type count is compile-time const '" << resource_type_count << "', but got '" << this->amounts.size() << "'.");
 	return this->amounts.size();
 }

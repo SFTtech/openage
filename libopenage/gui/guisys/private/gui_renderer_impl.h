@@ -1,17 +1,23 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <memory>
-#include <atomic>
-#include <mutex>
-#include <condition_variable>
+#ifndef __APPLE__
+#include <GL/gl.h>
+#else // __APPLE__
+#include <OpenGL/gl.h>
+#endif
 
-#include <QtGlobal>
+#include <atomic>
+#include <condition_variable>
+#include <memory>
+#include <mutex>
+
 #include <QObject>
-#include <QQuickWindow>
-#include <QQuickRenderControl>
 #include <QOffscreenSurface>
+#include <QQuickRenderControl>
+#include <QQuickWindow>
+#include <QtGlobal>
 
 #include "gui_rendering_setup_routines.h"
 
@@ -49,7 +55,7 @@ public:
 	explicit GuiRendererImpl(SDL_Window *window);
 	~GuiRendererImpl();
 
-	static GuiRendererImpl* impl(GuiRenderer *renderer);
+	static GuiRendererImpl *impl(GuiRenderer *renderer);
 
 	/**
 	 * @return texture ID where GUI was rendered
@@ -58,7 +64,7 @@ public:
 
 	void resize(const QSize &size);
 
-	EventHandlingQuickWindow* get_window();
+	EventHandlingQuickWindow *get_window();
 
 	/**
 	 * When render thread is locked waiting for the gui thread to finish its current event and
@@ -150,13 +156,11 @@ public:
 	~TemporaryDisableGuiRendererSync();
 
 private:
-	TemporaryDisableGuiRendererSync(const TemporaryDisableGuiRendererSync&) = delete;
-	TemporaryDisableGuiRendererSync& operator=(const TemporaryDisableGuiRendererSync&) = delete;
+	TemporaryDisableGuiRendererSync(const TemporaryDisableGuiRendererSync &) = delete;
+	TemporaryDisableGuiRendererSync &operator=(const TemporaryDisableGuiRendererSync &) = delete;
 
 	GuiRendererImpl &renderer;
 	const bool need_sync;
 };
 
 } // namespace qtsdl
-
-Q_DECLARE_METATYPE(std::atomic<bool>*)

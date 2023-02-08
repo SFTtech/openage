@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -23,13 +23,13 @@ class GlContext;
 class GlSimpleObject {
 public:
 	// Moving the representation is okay.
-	GlSimpleObject(GlSimpleObject&&);
-	GlSimpleObject &operator =(GlSimpleObject&&);
+	GlSimpleObject(GlSimpleObject &&);
+	GlSimpleObject &operator=(GlSimpleObject &&);
 
 	// Generally, copying GL objects is costly and if we want to allow it,
 	// we do so through an explicit copy() function.
-	GlSimpleObject(GlSimpleObject const&) = delete;
-	GlSimpleObject &operator =(GlSimpleObject const&) = delete;
+	GlSimpleObject(GlSimpleObject const &) = delete;
+	GlSimpleObject &operator=(GlSimpleObject const &) = delete;
 
 	/// Uses delete_fun to destroy the underlying object,
 	/// but only if the handle is present (hasn't been moved out).
@@ -54,4 +54,6 @@ protected:
 	std::function<void(GLuint)> delete_fun;
 };
 
-}}} // openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage

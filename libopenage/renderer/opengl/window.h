@@ -1,46 +1,52 @@
-// Copyright 2018-2019 the openage authors. See copying.md for legal info.
+// Copyright 2018-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "../window.h"
+#include "renderer/window.h"
 
 #include <optional>
 
-#include "context.h"
 
+QT_FORWARD_DECLARE_CLASS(QWindow)
+QT_FORWARD_DECLARE_CLASS(QOpenGLContext)
 
 namespace openage {
 namespace renderer {
+
+class EventHandlingQuickWindow;
+
 namespace opengl {
+
+class GlContext;
 
 class GlWindow final : public Window {
 public:
 	/// Create a shiny window with the given title.
 	GlWindow(const std::string &title, size_t width, size_t height);
-	~GlWindow() = default;
+	~GlWindow();
 
 	void set_size(size_t width, size_t height) override;
 
 	void update() override;
 
-	std::unique_ptr<Renderer> make_renderer() override;
+	std::shared_ptr<Renderer> make_renderer() override;
 
 	/// Make this window's context the current rendering context of the current thread.
 	/// Only use this and most other GL functions on a dedicated window thread.
 	void make_context_current();
 
+	/// Release this window's context from the current thread.
+	/// Only use this and most other GL functions on a dedicated window thread.
+	void done_context_current();
+
 	/// Return a pointer to this window's GL context.
 	const std::shared_ptr<opengl::GlContext> &get_context() const;
 
 private:
-	/// The SDL window to which the OpenGL context is associated.
-	std::shared_ptr<SDL_Window> window;
-
-	/// The window's OpenGL context. It can't be constructed immediately,
-	/// but after the constructor runs it's guaranteed to be available.
-	/// The SDL window is also held within this context, because when the window is deallocated,
-	/// the context is gone.
+	// OpenGL Context in Qt
 	std::shared_ptr<opengl::GlContext> context;
 };
 
-}}} // namespace openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage

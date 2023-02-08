@@ -1,4 +1,4 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,13 +11,13 @@
 
 #include "category.h"
 #include "hash_functions.h"
-#include "sound.h"
 #include "resource_def.h"
+#include "sound.h"
 
 
 namespace openage {
 
-class Engine;
+class LegacyEngine;
 
 namespace job {
 class JobManager;
@@ -36,12 +36,12 @@ public:
 	 * If the name is empty, the default device is used.
 	 */
 	AudioManager(job::JobManager *job_manager,
-	             const std::string &device_name="");
+	             const std::string &device_name = "");
 
 	~AudioManager();
 
 	AudioManager(const AudioManager &) = delete;
-	AudioManager(AudioManager &&)      = delete;
+	AudioManager(AudioManager &&) = delete;
 
 	AudioManager &operator=(const AudioManager &) = delete;
 	AudioManager &operator=(AudioManager &&) = delete;
@@ -120,11 +120,11 @@ private:
 	 */
 	std::unique_ptr<int32_t[]> mix_buffer;
 
-	std::unordered_map<std::tuple<category_t,int>,std::shared_ptr<Resource>> resources;
+	std::unordered_map<std::tuple<category_t, int>, std::shared_ptr<Resource>> resources;
 
-	std::unordered_map<category_t,std::vector<std::shared_ptr<SoundImpl>>> playing_sounds;
+	std::unordered_map<category_t, std::vector<std::shared_ptr<SoundImpl>>> playing_sounds;
 
-// static functions
+	// static functions
 public:
 	/**
 	 * Returns a vector of all available device names.
@@ -142,4 +142,5 @@ public:
 	static std::string get_current_driver();
 };
 
-}} // openage::audio
+} // namespace audio
+} // namespace openage

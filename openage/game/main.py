@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals
 
@@ -9,7 +9,6 @@ from __future__ import annotations
 import typing
 
 
-import sys
 from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
 from ..log import err, info
 
@@ -88,13 +87,6 @@ def main(args, error):
         else:
             err("game asset conversion failed")
             return 1
-
-    # Exit here with an explanation because the converted assets are incompatible!
-    # Remove this when the gamestate works again
-    info("Generated nyan assets are not yet compatible to the engine.")
-    info("Please revert to release v0.4.1 if you want to test the previous working gamestate.")
-    info("Exiting...")
-    sys.exit()
 
     # start the game, continue in main_cpp.pyx!
     return run_game(args, root)

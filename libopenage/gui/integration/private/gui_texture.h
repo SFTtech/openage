@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -19,17 +19,21 @@ public:
 	virtual ~GuiTexture();
 
 private:
-	virtual void bind() override;
+	virtual qint64 comparisonKey() const override;
 	virtual bool hasAlphaChannel() const override;
 	virtual bool hasMipmaps() const override;
 	virtual bool isAtlasTexture() const override;
-	virtual QSGTexture* removedFromAtlas() const override;
+	virtual QSGTexture *removedFromAtlas(QRhiResourceUpdateBatch *resourceUpdates = nullptr) const override;
 	virtual QRectF normalizedTextureSubRect() const override;
-	virtual int textureId() const override;
 	virtual QSize textureSize() const override;
+
+	// TODO: Leftover from Qt5
+	void bind();
+	int textureId() const;
 
 	const SizedTextureHandle texture_handle;
 	mutable std::unique_ptr<QSGTexture> standalone;
 };
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

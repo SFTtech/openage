@@ -1,109 +1,155 @@
-// Copyright 2018-2019 the openage authors. See copying.md for legal info.
+// Copyright 2018-2023 the openage authors. See copying.md for legal info.
 
 #include "window.h"
 
-#include "../../log/log.h"
-#include "../../error/error.h"
-#include "../sdl_global.h"
+#include "error/error.h"
+#include "gui/guisys/public/gui_application.h"
+#include "log/log.h"
+#include "renderer/opengl/context.h"
+#include "renderer/opengl/renderer.h"
+#include "renderer/window_event_handler.h"
 
-#include "renderer.h"
+#include <QGuiApplication>
+#include <QOpenGLContext>
+#include <QQuickWindow>
+#include <QString>
 
 
-namespace openage {
-namespace renderer {
-namespace opengl {
+namespace openage::renderer::opengl {
 
-GlWindow::GlWindow(const std::string &title, size_t width, size_t height)
-	: Window(width, height)
-{
-	make_sdl_available();
-
-	// We need HIGHDPI for eventual support of GUI scaling.
-	// TODO HIGHDPI fails (requires newer SDL2?)
-	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
-	this->window = std::shared_ptr<SDL_Window>(
-		SDL_CreateWindow(
-			title.c_str(),
-			SDL_WINDOWPOS_CENTERED,
-			SDL_WINDOWPOS_CENTERED,
-			this->size[0],
-			this->size[1],
-			window_flags
-		),
-		[] (SDL_Window *window) {
-			log::log(MSG(info) << "Destroying SDL window...");
-			SDL_DestroyWindow(window);
-		}
-	);
-
-	if (this->window == nullptr) {
-		throw Error{MSG(err) << "Failed to create SDL window: " << SDL_GetError()};
+GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
+	Window{width, height} {
+	if (QGuiApplication::instance() == nullptr) {
+		// Qt windows need to attach to a QtGuiApplication
+		throw Error{MSG(err) << "Failed to create Qt window: QGuiApplication has not been created yet."};
 	}
 
-	this->context = std::make_shared<opengl::GlContext>(this->window);
-	this->add_resize_callback([] (size_t w, size_t h) { glViewport(0, 0, w, h); } );
+	QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGL);
+	this->window = std::make_shared<QWindow>();
 
-	log::log(MSG(info) << "Created SDL window with OpenGL context.");
+	this->window->setTitle(QString::fromStdString(title));
+	this->window->resize(width, height);
+
+	this->window->setSurfaceType(QSurface::OpenGLSurface);
+
+	this->context = std::make_shared<GlContext>(this->window);
+	if (not this->context->get_raw_context()->isValid()) {
+		throw Error{MSG(err) << "Failed to create Qt OpenGL context."};
+	}
+
+	glViewport(0, 0, width * this->window->devicePixelRatio(), height * this->window->devicePixelRatio());
+	this->add_resize_callback([this](size_t w, size_t h) {
+		// since qt respects Xft.dpi and others, the "window size" of w and h
+		// is actually w and h * devicepixelratio.
+		// so a window is "bigger" because we have highdpi scaling.
+		// opengl of course only has a raw real pixel buffer.
+		// now, we tell opengl to use the real window pixel size for its drawing.
+		// this took 3h to figure out...
+		double factor = this->window->devicePixelRatio();
+
+		// this up-scales all our drawing to the "bigger" highdpi window.
+		// TODO: we could render at native resolution, and then do "zoom" depending
+		//       on the pixel ratio.
+		//       if we want to do that, we need to apply this factor in
+		//       the QResizeEvent handler, which triggers this very callback.
+		//       so that all callbacks get the real pixel resolution,
+		//       and thus render with higher resolution.
+		glViewport(0, 0, w * factor, h * factor);
+	});
+
+	this->window->installEventFilter(this->event_handler.get());
+
+	this->window->setVisible(true);
+	log::log(MSG(info) << "Created Qt window with OpenGL context.");
+
+	GlContext::check_error();
+}
+
+GlWindow::~GlWindow() {
+	this->make_context_current();
 }
 
 
 void GlWindow::set_size(size_t width, size_t height) {
 	if (this->size[0] != width || this->size[1] != height) {
-		SDL_SetWindowSize(this->window.get(), width, height);
+		this->window->resize(width, height);
 		this->size = {width, height};
 	}
 
-	for (auto& cb : this->on_resize) {
+	for (auto &cb : this->on_resize) {
 		cb(width, height);
 	}
 }
 
+
 void GlWindow::update() {
-	SDL_Event event;
+	// TODO: move this event handling to presenter
 
-	while (SDL_PollEvent(&event) != 0) {
-		if (event.type == SDL_WINDOWEVENT) {
-			if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
-				size_t width = event.window.data1;
-				size_t height = event.window.data2;
-				log::log(MSG(dbg) << "Window resized to: " << width << "x" << height);
+	auto events = this->event_handler->pop_events();
 
-				this->size = {width, height};
-				for (auto& cb : this->on_resize) {
-					cb(width, height);
-				}
+	for (auto &&event : events) {
+		switch (event->type()) {
+		case QEvent::Resize: {
+			// TODO: resize can be handled before the engine event processing
+			auto ev = std::dynamic_pointer_cast<QResizeEvent>(event);
+			size_t width = ev->size().width();
+			size_t height = ev->size().height();
+			log::log(MSG(dbg) << "Window resized to: " << width << "x" << height);
+
+			this->size = {width, height};
+			for (auto &cb : this->on_resize) {
+				cb(width, height);
 			}
-		} else if (event.type == SDL_QUIT) {
+		} break;
+		case QEvent::Close: {
 			this->should_be_closed = true;
-			// TODO call on_destroy
-		} else if (event.type == SDL_KEYUP) {
-			auto const ev = *reinterpret_cast<SDL_KeyboardEvent const*>(&event);
-			for (auto& cb : this->on_key) {
-				cb(ev);
+		} break;
+
+		case QEvent::KeyRelease: {
+			auto const ev = std::dynamic_pointer_cast<QKeyEvent>(event);
+			for (auto &cb : this->on_key) {
+				cb(*ev);
 			}
-			// TODO handle keydown
-		} else if (event.type == SDL_MOUSEBUTTONUP) {
-			auto const ev = *reinterpret_cast<SDL_MouseButtonEvent const*>(&event);
-			for (auto& cb : this->on_mouse_button) {
-				cb(ev);
+		} break;
+		case QEvent::MouseButtonRelease: {
+			auto const ev = std::dynamic_pointer_cast<QMouseEvent>(event);
+			for (auto &cb : this->on_mouse_button) {
+				cb(*ev);
 			}
-			// TODO handle mousedown
+		} break;
+		case QEvent::Wheel: {
+			auto const ev = std::dynamic_pointer_cast<QWheelEvent>(event);
+			for (auto &cb : this->on_mouse_wheel) {
+				cb(*ev);
+			}
+		} break;
+		default:
+			break; // unhandled event
 		}
 	}
 
-	SDL_GL_SwapWindow(this->window.get());
+	this->context->get_raw_context()->swapBuffers(this->window.get());
 }
 
-std::unique_ptr<Renderer> GlWindow::make_renderer() {
-	return std::make_unique<GlRenderer>(this->get_context());
+
+std::shared_ptr<Renderer> GlWindow::make_renderer() {
+	return std::make_shared<GlRenderer>(this->get_context());
 }
+
 
 void GlWindow::make_context_current() {
-	SDL_GL_MakeCurrent(this->window.get(), this->context->get_raw_context());
+	this->context->get_raw_context()->makeCurrent(this->window.get());
 }
+
+
+void GlWindow::done_context_current() {
+	this->context->get_raw_context()->doneCurrent();
+}
+
 
 const std::shared_ptr<opengl::GlContext> &GlWindow::get_context() const {
 	return this->context;
 }
 
-}}} // namespace openage::renderer::opengl
+
+} // namespace openage::renderer::opengl

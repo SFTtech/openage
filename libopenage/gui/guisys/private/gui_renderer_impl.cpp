@@ -1,14 +1,16 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "gui_renderer_impl.h"
 
 #include <cassert>
 
+#include <QCoreApplication>
 #include <QOpenGLContext>
 #include <QOpenGLFramebufferObject>
-#include <QQuickRenderControl>
+#include <QQuickGraphicsDevice>
 #include <QQuickItem>
-#include <QCoreApplication>
+#include <QQuickRenderControl>
+#include <QQuickRenderTarget>
 #include <QThread>
 
 #include "../public/gui_renderer.h"
@@ -17,11 +19,10 @@
 namespace qtsdl {
 
 namespace {
-const int registration = qRegisterMetaType<std::atomic<bool>*>("atomic_bool_ptr");
+const int registration = qRegisterMetaType<std::atomic<bool> *>("atomic_bool_ptr");
 }
 
-EventHandlingQuickWindow::EventHandlingQuickWindow(QQuickRenderControl *render_control)
-	:
+EventHandlingQuickWindow::EventHandlingQuickWindow(QQuickRenderControl *render_control) :
 	QQuickWindow{render_control},
 	focused_item{} {
 	Q_UNUSED(registration);
@@ -33,10 +34,11 @@ void EventHandlingQuickWindow::on_input_event(std::atomic<bool> *processed, QEve
 	if (!only_if_grabbed || this->mouseGrabberItem()) {
 		if (this->focused_item && (event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease)) {
 			QCoreApplication::instance()->sendEvent(this->focused_item, event);
-		} else {
+		}
+		else {
 			QCoreApplication::instance()->sendEvent(this, event);
 
-			auto change_focus = [this] (QQuickItem *item) {
+			auto change_focus = [this](QQuickItem *item) {
 				if (this->focused_item != item) {
 					if (this->focused_item) {
 						QFocusEvent focus_out{QEvent::FocusOut, Qt::ActiveWindowFocusReason};
@@ -72,8 +74,7 @@ void EventHandlingQuickWindow::on_resized(const QSize &size) {
 	this->resize(size);
 }
 
-GuiRendererImpl::GuiRendererImpl(SDL_Window *window)
-	:
+GuiRendererImpl::GuiRendererImpl(SDL_Window *window) :
 	QObject{},
 	gui_rendering_setup_routines{window},
 	need_fbo_resize{true},
@@ -81,10 +82,9 @@ GuiRendererImpl::GuiRendererImpl(SDL_Window *window)
 	need_render{},
 	gui_locked{},
 	renderer_waiting_on_cond{} {
-
 	this->moveToThread(QCoreApplication::instance()->thread());
 
-	QObject::connect(&this->render_control, &QQuickRenderControl::renderRequested, [&] () {
+	QObject::connect(&this->render_control, &QQuickRenderControl::renderRequested, [&]() {
 		this->need_render = true;
 	});
 
@@ -93,7 +93,7 @@ GuiRendererImpl::GuiRendererImpl(SDL_Window *window)
 	this->window = std::make_unique<EventHandlingQuickWindow>(&this->render_control);
 	this->window->moveToThread(QCoreApplication::instance()->thread());
 	QObject::connect(this, &GuiRendererImpl::resized, this->window.get(), &EventHandlingQuickWindow::on_resized);
-	this->window->setClearBeforeRendering(true);
+	// this->window->setClearBeforeRendering(true);
 	this->window->setColor(QColor{0, 0, 0, 0});
 
 	QObject::connect(&*this->window, &QQuickWindow::sceneGraphInitialized, this, [this] {
@@ -106,7 +106,10 @@ GuiRendererImpl::GuiRendererImpl(SDL_Window *window)
 
 	GuiRenderingCtxActivator activate_render(this->gui_rendering_setup_routines);
 
-	this->render_control.initialize(this->gui_rendering_setup_routines.get_ctx());
+	// TODO: Make independent from OpenGL
+	this->window->setGraphicsDevice(
+		QQuickGraphicsDevice::fromOpenGLContext(this->gui_rendering_setup_routines.get_ctx()));
+	this->render_control.initialize();
 }
 
 void GuiRendererImpl::on_scene_changed() {
@@ -120,7 +123,11 @@ void GuiRendererImpl::reinit_fbo_if_needed() {
 
 	if (this->need_fbo_resize) {
 		this->fbo = std::make_unique<QOpenGLFramebufferObject>(QSize(this->new_fbo_width, this->new_fbo_height), QOpenGLFramebufferObject::CombinedDepthStencil);
-		this->window->setRenderTarget(&*this->fbo);
+
+		// dirty workaround; texture id from our own implementation should be passed here
+		QQuickRenderTarget target = QQuickRenderTarget::fromOpenGLTexture(this->fbo->texture(), this->fbo->size());
+
+		this->window->setRenderTarget(target);
 		this->need_fbo_resize = false;
 	}
 
@@ -137,7 +144,7 @@ GuiRendererImpl::~GuiRendererImpl() {
 	// https://doc.qt.io/qt-5/qopenglcontext.html#setNativeHandle
 }
 
-GuiRendererImpl* GuiRendererImpl::impl(GuiRenderer *renderer) {
+GuiRendererImpl *GuiRendererImpl::impl(GuiRenderer *renderer) {
 	return renderer->impl.get();
 }
 
@@ -145,6 +152,8 @@ GLuint GuiRendererImpl::render() {
 	GuiRenderingCtxActivator activate_render(this->gui_rendering_setup_routines);
 
 	this->reinit_fbo_if_needed();
+
+	this->render_control.beginFrame();
 
 	// QQuickRenderControl::sync() must be called from the render thread while the gui thread is stopped.
 	if (this->need_sync) {
@@ -155,7 +164,7 @@ GLuint GuiRendererImpl::render() {
 				QCoreApplication::instance()->postEvent(this, new QEvent{QEvent::User}, INT_MAX);
 
 				this->renderer_waiting_on_cond = true;
-				this->gui_locked_cond.wait(lck, [this] {return this->gui_locked;});
+				this->gui_locked_cond.wait(lck, [this] { return this->gui_locked; });
 				this->renderer_waiting_on_cond = false;
 
 				this->render_control.sync();
@@ -166,14 +175,16 @@ GLuint GuiRendererImpl::render() {
 				lck.unlock();
 				this->gui_locked_cond.notify_one();
 			}
-		} else {
+		}
+		else {
 			this->render_control.sync();
 		}
 	}
 
 	this->render_control.render();
+	this->render_control.endFrame();
 
-	this->window->resetOpenGLState();
+	// this->window->resetOpenGLState();
 
 	return this->fbo->texture();
 }
@@ -201,7 +212,8 @@ bool GuiRendererImpl::make_sure_render_thread_wont_sync() {
 			this->process_freeze(std::move(lck));
 			QCoreApplication::instance()->removePostedEvents(this, QEvent::User);
 			assert(!this->need_sync);
-		} else {
+		}
+		else {
 			assert(this->need_sync);
 			this->need_sync = false;
 			return true;
@@ -221,7 +233,8 @@ bool GuiRendererImpl::event(QEvent *e) {
 		std::unique_lock<std::mutex> lck{this->gui_guard};
 		this->process_freeze(std::move(lck));
 		return true;
-	} else {
+	}
+	else {
 		return this->QObject::event(e);
 	}
 }
@@ -233,19 +246,18 @@ void GuiRendererImpl::process_freeze(std::unique_lock<std::mutex> lck) {
 	this->gui_locked_cond.notify_one();
 
 	lck.lock();
-	this->gui_locked_cond.wait(lck, [this] {return !this->gui_locked;});
+	this->gui_locked_cond.wait(lck, [this] { return !this->gui_locked; });
 }
 
-EventHandlingQuickWindow* GuiRendererImpl::get_window() {
-    return &*this->window;
+EventHandlingQuickWindow *GuiRendererImpl::get_window() {
+	return &*this->window;
 }
 
 void GuiRendererImpl::resize(const QSize &size) {
 	emit this->resized(size);
 }
 
-TemporaryDisableGuiRendererSync::TemporaryDisableGuiRendererSync(GuiRendererImpl &renderer)
-	:
+TemporaryDisableGuiRendererSync::TemporaryDisableGuiRendererSync(GuiRendererImpl &renderer) :
 	renderer{renderer},
 	need_sync{renderer.make_sure_render_thread_wont_sync()} {
 }

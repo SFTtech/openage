@@ -1,23 +1,23 @@
-// Copyright 2015-2021 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "../types.h"
-#include "../../job/job.h"
 #include "../../gamedata/gamedata_dummy.h"
 #include "../../gamedata/graphic_dummy.h"
-#include "../../terrain/terrain.h"
+#include "../../job/job.h"
 #include "../../unit/unit_texture.h"
 #include "../../util/csv.h"
+#include "terrain/terrain.h"
+#include "types.h"
 
-#include <unordered_map>
-#include <memory>
 #include <QObject>
+#include <memory>
+#include <unordered_map>
 
 
 namespace openage {
 
-class AssetManager;
+class LegacyAssetManager;
 class GameSpec;
 class UnitType;
 class UnitTypeMeta;
@@ -37,8 +37,7 @@ using unit_meta_list = std::vector<std::shared_ptr<UnitTypeMeta>>;
  */
 class Sound {
 public:
-	Sound(GameSpec *spec, std::vector<int> &&sound_items)
-		:
+	Sound(GameSpec *spec, std::vector<int> &&sound_items) :
 		sound_items{sound_items},
 		game_spec{spec} {}
 
@@ -55,7 +54,7 @@ public:
  * this currently includes unit types and terrain types
  * This provides a system which can easily allow game modding
  *
- * uses the AssetManager to gather
+ * uses the LegacyAssetManager to gather
  * graphic data, composite textures and sounds.
  *
  * all types are sorted and stored by id values,
@@ -66,7 +65,7 @@ public:
  */
 class GameSpec {
 public:
-	GameSpec(AssetManager *am);
+	GameSpec(LegacyAssetManager *am);
 	virtual ~GameSpec();
 
 	/**
@@ -99,7 +98,7 @@ public:
 	/**
 	 * lookup using a texture file name
 	 */
-	Texture *get_texture(const std::string &file_name, bool use_metafile=true) const;
+	Texture *get_texture(const std::string &file_name, bool use_metafile = true) const;
 
 	/**
 	 * get unit texture by graphic id -- this is an directional texture
@@ -138,7 +137,7 @@ public:
 	 * Return the asset manager used for loading resources
 	 * of this game specification.
 	 */
-	AssetManager *get_asset_manager() const;
+	LegacyAssetManager *get_asset_manager() const;
 
 private:
 	/**
@@ -185,7 +184,7 @@ private:
 	/**
 	 * Asset management entity that is responsible for textures, sounds, etc.
 	 */
-	AssetManager *assetmanager;
+	LegacyAssetManager *assetmanager;
 
 	/**
 	 * The full original gamedata tree.
@@ -228,11 +227,11 @@ private:
 	bool gamedata_loaded;
 };
 
-} // openage
+} // namespace openage
 
 namespace qtsdl {
 class GuiItemLink;
-} // qtsdl
+} // namespace qtsdl
 
 namespace openage {
 
@@ -257,7 +256,7 @@ public:
 	/**
 	 * invoked from qml when the asset_manager member is set.
 	 */
-	void set_asset_manager(AssetManager *asset_manager);
+	void set_asset_manager(LegacyAssetManager *asset_manager);
 
 	/**
 	 * Return if the specification was fully loaded.
@@ -306,7 +305,7 @@ private:
 	 */
 	bool active;
 
-	AssetManager *asset_manager;
+	LegacyAssetManager *asset_manager;
 
 public:
 	std::shared_ptr<GameSpecSignals> gui_signals;
@@ -328,4 +327,4 @@ signals:
 	void game_spec_loaded(std::shared_ptr<GameSpec> loaded_game_spec);
 };
 
-}
+} // namespace openage

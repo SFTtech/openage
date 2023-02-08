@@ -16,8 +16,8 @@ import shutil
 import subprocess
 import sys
 
-if sys.version_info < (3, 6):
-    print("openage requires Python 3.6 or higher")
+if sys.version_info < (3, 9):
+    print("openage requires Python 3.9 or higher")
     exit(1)
 
 
@@ -73,7 +73,7 @@ OPTIONS = {
     "vulkan": "if_available",
     "gperftools-tcmalloc": False,
     "gperftools-profiler": "if_available",
-    "ncurses": "if_available",
+    "ncurses": "if_available"
 }
 
 
@@ -214,7 +214,6 @@ def bindir_creation(args, defines):
     if not args.dry_run:
         os.makedirs(bindir, exist_ok=True)
 
-
     def forcesymlink(linkto, name):
         """ similar in function to ln -sf """
         if args.dry_run:
@@ -247,7 +246,7 @@ def invoke_cmake(args, bindir, defines, options):
     for key, val in sorted(defines.items()):
         print('%s | %s' % (key.rjust(maxkeylen), val))
 
-        if key in {'cxx_compiler',}:
+        if key in ('cxx_compiler', ):
             # work around this cmake 'feature':
             # when run in an existing build directory, if CXX is given,
             # all other arguments are ignored... this is retarded.
@@ -269,6 +268,11 @@ def invoke_cmake(args, bindir, defines, options):
         invocation.append("-DDOWNLOAD_NYAN=YES")
 
     cxx_options = dict()
+    if args.iwyu:
+        cxx_options["CXX_INCLUDE_WHAT_YOU_USE"] = args.iwyu
+
+        invocation.append('-DWANT_IWYU=true')
+
     cxx_options["CXX_OPTIMIZATION_LEVEL"] = args.optimize
     cxx_options["CXX_SANITIZE_MODE"] = args.sanitize
     cxx_options["CXX_SANITIZE_FATAL"] = args.sanitize_fatal
@@ -372,6 +376,11 @@ def parse_args():
     cli.add_argument("--compiler", "-c",
                      default=getenv("CXX"),
                      help="c++ compiler executable, default=$ENV[CXX]")
+    cli.add_argument("--iwyu",
+                     choices=["warn", "error"],
+                     default=None,
+                     help="use include-what-you-use tool to check "
+                          "for unnecessary imports, default=\"warn\"")
     cli.add_argument("--with", action='append', dest='with_', metavar='OPTION',
                      help="enable optional functionality. "
                           "for a list of available features, "

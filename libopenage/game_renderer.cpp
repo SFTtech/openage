@@ -1,41 +1,38 @@
-// Copyright 2015-2021 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
-#include <epoxy/gl.h>
 #include <SDL2/SDL.h>
+#include <epoxy/gl.h>
+#include <sstream>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <sstream>
 
 #include "console/console.h"
 #include "engine.h"
+#include "game_renderer.h"
 #include "gamedata/color_dummy.h"
 #include "gamestate/old/game_main.h"
 #include "gamestate/old/game_spec.h"
 #include "input/input_manager.h"
 #include "log/log.h"
+#include "renderer/text.h"
 #include "terrain/terrain.h"
 #include "unit/action.h"
 #include "unit/command.h"
 #include "unit/producer.h"
 #include "unit/unit.h"
 #include "unit/unit_texture.h"
-#include "util/timer.h"
 #include "util/externalprofiler.h"
-#include "renderer/text.h"
-#include "game_renderer.h"
+#include "util/timer.h"
 
 namespace openage {
 
-RenderOptions::RenderOptions()
-	:
+RenderOptions::RenderOptions() :
 	OptionNode{"RendererOptions"},
 	draw_debug{this, "draw_debug", false},
 	terrain_blending{this, "terrain_blending", true} {}
 
-GameRenderer::GameRenderer(Engine *e)
-	:
+GameRenderer::GameRenderer(LegacyEngine *e) :
 	engine{e} {
-
 	// set options structure
 	this->settings.set_parent(this->engine);
 
@@ -49,16 +46,15 @@ GameRenderer::GameRenderer(Engine *e)
 	gaben = new Texture{asset_dir["gaben.png"]};
 
 	std::vector<gamedata::palette_color> player_color_lines = util::read_csv_file<gamedata::palette_color>(
-		asset_dir["converted/player_palette.docx"]
-	);
+		asset_dir["converted/player_palette.docx"]);
 
 	std::unique_ptr<GLfloat[]> playercolors = std::make_unique<GLfloat[]>(player_color_lines.size() * 4);
 	for (size_t i = 0; i < player_color_lines.size(); i++) {
 		auto line = &player_color_lines[i];
-		playercolors[i*4]     = line->r / 255.0;
-		playercolors[i*4 + 1] = line->g / 255.0;
-		playercolors[i*4 + 2] = line->b / 255.0;
-		playercolors[i*4 + 3] = line->a / 255.0;
+		playercolors[i * 4] = line->r / 255.0;
+		playercolors[i * 4 + 1] = line->g / 255.0;
+		playercolors[i * 4 + 2] = line->b / 255.0;
+		playercolors[i * 4 + 3] = line->a / 255.0;
 	}
 
 	// shader initialisation
@@ -68,14 +64,12 @@ GameRenderer::GameRenderer(Engine *e)
 	std::string texture_vert_code = asset_dir["shaders/maptexture.vert.glsl"].open().read();
 	auto plaintexture_vert = std::make_unique<shader::Shader>(
 		GL_VERTEX_SHADER,
-		std::initializer_list<const char *>{shader_header_code, texture_vert_code.c_str()}
-	);
+		std::initializer_list<const char *>{shader_header_code, texture_vert_code.c_str()});
 
 	std::string texture_frag_code = asset_dir["shaders/maptexture.frag.glsl"].open().read();
 	auto plaintexture_frag = std::make_unique<shader::Shader>(
 		GL_FRAGMENT_SHADER,
-		std::initializer_list<const char *>{shader_header_code, texture_frag_code.c_str()}
-	);
+		std::initializer_list<const char *>{shader_header_code, texture_frag_code.c_str()});
 
 	std::string teamcolor_frag_code = asset_dir["shaders/teamcolors.frag.glsl"].open().read();
 	std::stringstream ss;
@@ -86,33 +80,27 @@ GameRenderer::GameRenderer(Engine *e)
 			shader_header_code,
 			("#define NUM_OF_PLAYER_COLORS " + ss.str() + "\n").c_str(),
 			equals_epsilon_code.c_str(),
-			teamcolor_frag_code.c_str()
-		}
-	);
+			teamcolor_frag_code.c_str()});
 
 	std::string alphamask_vert_code = asset_dir["shaders/alphamask.vert.glsl"].open().read();
 	auto alphamask_vert = std::make_unique<shader::Shader>(
 		GL_VERTEX_SHADER,
-		std::initializer_list<const char *>{shader_header_code, alphamask_vert_code.c_str()}
-	);
+		std::initializer_list<const char *>{shader_header_code, alphamask_vert_code.c_str()});
 
 	std::string alphamask_frag_code = asset_dir["shaders/alphamask.frag.glsl"].open().read();
 	auto alphamask_frag = std::make_unique<shader::Shader>(
 		GL_FRAGMENT_SHADER,
-		std::initializer_list<const char *>{shader_header_code, alphamask_frag_code.c_str()}
-	);
+		std::initializer_list<const char *>{shader_header_code, alphamask_frag_code.c_str()});
 
 	std::string texturefont_vert_code = asset_dir["shaders/texturefont.vert.glsl"].open().read();
 	auto texturefont_vert = std::make_unique<shader::Shader>(
 		GL_VERTEX_SHADER,
-		std::initializer_list<const char *>{shader_header_code, texturefont_vert_code.c_str()}
-	);
+		std::initializer_list<const char *>{shader_header_code, texturefont_vert_code.c_str()});
 
 	std::string texturefont_frag_code = asset_dir["shaders/texturefont.frag.glsl"].open().read();
 	auto texturefont_frag = std::make_unique<shader::Shader>(
 		GL_FRAGMENT_SHADER,
-		std::initializer_list<const char *>{shader_header_code, texturefont_frag_code.c_str()}
-	);
+		std::initializer_list<const char *>{shader_header_code, texturefont_frag_code.c_str()});
 
 	// create program for rendering simple textures
 	texture_shader::program = new shader::Program(plaintexture_vert.get(), plaintexture_frag.get());
@@ -135,7 +123,7 @@ GameRenderer::GameRenderer(Engine *e)
 	teamcolor_shader::player_color_var = teamcolor_shader::program->get_uniform_id("player_color");
 	teamcolor_shader::program->use();
 	glUniform1i(teamcolor_shader::texture, 0);
-	glUniform1f(teamcolor_shader::alpha_marker_var, 254.0/255.0);
+	glUniform1f(teamcolor_shader::alpha_marker_var, 254.0 / 255.0);
 	// fill the teamcolor shader's player color table:
 	glUniform4fv(teamcolor_shader::player_color_var, 64, playercolors.get());
 	teamcolor_shader::program->stopusing();
@@ -219,4 +207,4 @@ GameSpec *GameRenderer::game_spec() const {
 	return this->game()->get_spec();
 }
 
-} // openage
+} // namespace openage

@@ -1,31 +1,33 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <unordered_map>
 #include <vector>
 
-#include "../shader_program.h"
-#include "../resources/shader_source.h"
 #include "../renderer.h"
+#include "../resources/shader_source.h"
+#include "../shader_program.h"
 
-#include "uniform_input.h"
-#include "context.h"
 #include "geometry.h"
 #include "simple_object.h"
+#include "uniform_input.h"
 
 
 namespace openage {
 namespace renderer {
 namespace opengl {
 
+class GlContext;
+
 /// A handle to an OpenGL shader program.
-class GlShaderProgram final : public ShaderProgram, public GlSimpleObject {
+class GlShaderProgram final : public ShaderProgram
+	, public GlSimpleObject {
 public:
 	/// Tries to create a shader program from the given sources.
 	/// Throws an exception on compile/link errors.
 	explicit GlShaderProgram(const std::shared_ptr<GlContext> &,
-	                         const std::vector<resources::ShaderSource>&);
+	                         const std::vector<resources::ShaderSource> &);
 
 	/// Bind this program as the currently used one in the OpenGL context.
 	void use();
@@ -34,26 +36,26 @@ public:
 	bool in_use() const;
 
 	/// Updates the uniform values with the given input specification.
-	void update_uniforms(std::shared_ptr<GlUniformInput> const&);
+	void update_uniforms(std::shared_ptr<GlUniformInput> const &);
 
-	bool has_uniform(const char*) override;
+	bool has_uniform(const char *) override;
 
 	std::map<size_t, resources::vertex_input_t> vertex_attributes() const override;
 
 protected:
 	std::shared_ptr<UniformInput> new_unif_in() override;
-	void set_i32(std::shared_ptr<UniformInput> const&, const char*, int32_t) override;
-	void set_u32(std::shared_ptr<UniformInput> const&, const char*, uint32_t) override;
-	void set_f32(std::shared_ptr<UniformInput> const&, const char*, float) override;
-	void set_f64(std::shared_ptr<UniformInput> const&, const char*, double) override;
-	void set_v2f32(std::shared_ptr<UniformInput> const&, const char*, Eigen::Vector2f const&) override;
-	void set_v3f32(std::shared_ptr<UniformInput> const&, const char*, Eigen::Vector3f const&) override;
-	void set_v4f32(std::shared_ptr<UniformInput> const&, const char*, Eigen::Vector4f const&) override;
-	void set_m4f32(std::shared_ptr<UniformInput> const&, const char*, Eigen::Matrix4f const&) override;
-	void set_tex(std::shared_ptr<UniformInput> const&, const char*, std::shared_ptr<Texture2d> const&) override;
+	void set_i32(std::shared_ptr<UniformInput> const &, const char *, int32_t) override;
+	void set_u32(std::shared_ptr<UniformInput> const &, const char *, uint32_t) override;
+	void set_f32(std::shared_ptr<UniformInput> const &, const char *, float) override;
+	void set_f64(std::shared_ptr<UniformInput> const &, const char *, double) override;
+	void set_v2f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector2f const &) override;
+	void set_v3f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector3f const &) override;
+	void set_v4f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector4f const &) override;
+	void set_m4f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Matrix4f const &) override;
+	void set_tex(std::shared_ptr<UniformInput> const &, const char *, std::shared_ptr<Texture2d> const &) override;
 
 private:
-	void set_unif(std::shared_ptr<UniformInput> const&, const char*, void const*, GLenum);
+	void set_unif(std::shared_ptr<UniformInput> const &, const char *, void const *, GLenum);
 
 	/// Represents a uniform in the default block, i.e. not within a named block.
 	struct GlUniform {
@@ -120,4 +122,6 @@ private:
 	bool validated;
 };
 
-}}} // openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage

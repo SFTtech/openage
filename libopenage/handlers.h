@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,7 +9,7 @@
 
 namespace openage {
 
-class Engine;
+class LegacyEngine;
 
 /**
  * superclass for all possible drawing operations in the game.
@@ -76,4 +76,4 @@ public:
 	virtual bool on_resize(coord::viewport_delta new_size) = 0;
 };
 
-}
+} // namespace openage

@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,11 +11,11 @@
 
 namespace openage {
 
-class Engine;
+class LegacyEngine;
 
 namespace cvar {
 class CVarManager;
-} // cvar
+} // namespace cvar
 
 namespace input {
 
@@ -36,7 +36,7 @@ using action_t = unsigned int;
 class ActionManager {
 public:
 	ActionManager(InputManager *input_manager,
-	              cvar::CVarManager *cvar_manager);
+	              const std::shared_ptr<cvar::CVarManager> &cvar_manager);
 
 public:
 	action_t get(const std::string &type);
@@ -44,7 +44,7 @@ public:
 	bool is(const std::string &type, const action_t action);
 
 private:
-	bool create(const std::string& type);
+	bool create(const std::string &type);
 
 	// mapping from action name to numbers
 	std::unordered_map<std::string, action_t> actions;
@@ -52,7 +52,7 @@ private:
 	std::unordered_map<action_t, std::string> reverse_map;
 
 	InputManager *const input_manager;
-	cvar::CVarManager *const cvar_manager;
+	const std::shared_ptr<cvar::CVarManager> cvar_manager;
 
 	// the id of the next action that is added via create().
 	action_t next_action_id = 0;
@@ -69,7 +69,6 @@ using action_id_t = action_t;
  * Contains information about a triggered event.
  */
 struct action_arg_t {
-
 	// Triggering event
 	const Event e;
 
@@ -96,4 +95,5 @@ using action_func_t = std::function<void(const action_arg_t &)>;
 using action_check_t = std::function<bool(const action_arg_t &)>;
 
 
-}} // openage::input
+} // namespace input
+} // namespace openage

@@ -1,12 +1,12 @@
-// Copyright 2014-2021 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <memory>
 #include <vector>
 
-#include "../pathfinding/path.h"
 #include "../gamestate/old/resource.h"
+#include "../pathfinding/path.h"
 #include "attribute.h"
 #include "research.h"
 #include "unit.h"
@@ -24,7 +24,6 @@ class TerrainSearch;
  */
 class IntervalTimer {
 public:
-
 	/**
 	 * Constructs a timer with a given interval
 	 */
@@ -60,14 +59,19 @@ public:
 	/**
 	 * Returns the number of intervals passed.
 	 */
-	int get_triggers() const { return this->triggers; }
+	int get_triggers() const {
+		return this->triggers;
+	}
 
-	unsigned int get_interval() const { return this->interval; }
+	unsigned int get_interval() const {
+		return this->interval;
+	}
 
-	void set_interval(unsigned int interval) { this->interval = interval; }
+	void set_interval(unsigned int interval) {
+		this->interval = interval;
+	}
 
 private:
-
 	unsigned int interval;
 
 	int max_triggers;
@@ -75,7 +79,6 @@ private:
 	unsigned int time_left;
 
 	int triggers;
-
 };
 
 
@@ -87,7 +90,6 @@ private:
  */
 class UnitAction {
 public:
-
 	/**
 	 * Require unit to be updated and an initial graphic type
 	 */
@@ -153,7 +155,7 @@ public:
 	 */
 	virtual const graphic_set &current_graphics() const;
 
-	void draw_debug(const Engine &engine);
+	void draw_debug(const LegacyEngine &engine);
 
 	/**
 	 * common functions for actions
@@ -165,7 +167,7 @@ public:
 	 */
 	bool damage_unit(Unit &target);
 
-	void move_to(Unit &target, bool use_range=true);
+	void move_to(Unit &target, bool use_range = true);
 
 	/**
 	 * produce debug info such as visualising paths
@@ -206,7 +208,7 @@ protected:
 	/**
 	 * additional drawing for debug purposes
 	 */
-	std::function<void(const Engine &)> debug_draw_action;
+	std::function<void(const LegacyEngine &)> debug_draw_action;
 };
 
 /**
@@ -214,9 +216,8 @@ protected:
  * gather, attack, heal and convert
  * TODO implement min range
  */
-class TargetAction: public UnitAction {
+class TargetAction : public UnitAction {
 public:
-
 	/**
 	 * action_rad is how close a unit must come to another
 	 * unit to be considered to touch the other, for example in
@@ -234,8 +235,12 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interrupt() const override { return true; }
-	bool allow_control() const override { return true; }
+	bool allow_interrupt() const override {
+		return true;
+	}
+	bool allow_control() const override {
+		return true;
+	}
 	virtual std::string name() const override = 0;
 
 	/**
@@ -266,13 +271,12 @@ private:
 	 * tracks distance to target from last update
 	 */
 	coord::phys_t dist_to_target, radius;
-
 };
 
 /**
  * plays a fixed number of frames for the units dying animation
  */
-class DecayAction: public UnitAction {
+class DecayAction : public UnitAction {
 public:
 	DecayAction(Unit *e);
 	virtual ~DecayAction() {}
@@ -280,60 +284,77 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interrupt() const override { return false; }
-	bool allow_control() const override { return false; }
-	std::string name() const override { return "decay"; }
+	bool allow_interrupt() const override {
+		return false;
+	}
+	bool allow_control() const override {
+		return false;
+	}
+	std::string name() const override {
+		return "decay";
+	}
 
 private:
 	float end_frame;
-
 };
 
 /**
  * plays a fixed number of frames for the units dying animation
  */
-class DeadAction: public UnitAction {
+class DeadAction : public UnitAction {
 public:
-	DeadAction(Unit *e, std::function<void()> on_complete=[]() {});
+	DeadAction(
+		Unit *e,
+		std::function<void()> on_complete = []() {});
 	virtual ~DeadAction() {}
 
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interrupt() const override { return false; }
-	bool allow_control() const override { return false; }
-	std::string name() const override { return "dead"; }
+	bool allow_interrupt() const override {
+		return false;
+	}
+	bool allow_control() const override {
+		return false;
+	}
+	std::string name() const override {
+		return "dead";
+	}
 
 private:
 	float end_frame;
 	std::function<void()> on_complete_func;
-
 };
 
 /**
  * places an idle action on the stack once building is complete
  */
-class FoundationAction: public UnitAction {
+class FoundationAction : public UnitAction {
 public:
-	FoundationAction(Unit *e, bool add_destuction=false);
+	FoundationAction(Unit *e, bool add_destuction = false);
 	virtual ~FoundationAction() {}
 
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interrupt() const override { return true; }
-	bool allow_control() const override { return false; }
-	std::string name() const override { return "foundation"; }
+	bool allow_interrupt() const override {
+		return true;
+	}
+	bool allow_control() const override {
+		return false;
+	}
+	std::string name() const override {
+		return "foundation";
+	}
 
 private:
 	bool add_destruct_effect, cancel;
-
 };
 
 /**
  * keeps an entity in a fixed position
  */
-class IdleAction: public UnitAction {
+class IdleAction : public UnitAction {
 public:
 	IdleAction(Unit *e);
 	virtual ~IdleAction() {}
@@ -341,26 +362,31 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interrupt() const override { return false; }
-	bool allow_control() const override { return true; }
-	std::string name() const override { return "idle"; }
+	bool allow_interrupt() const override {
+		return false;
+	}
+	bool allow_control() const override {
+		return true;
+	}
+	std::string name() const override {
+		return "idle";
+	}
 
 private:
 	// look for auto task actions
 	std::shared_ptr<TerrainSearch> search;
 	ability_set auto_abilities;
-
 };
 
 /**
  * moves an entity to another location
  */
-class MoveAction: public UnitAction {
+class MoveAction : public UnitAction {
 public:
 	/**
 	 * moves unit to a given fixed location
 	 */
-	MoveAction(Unit *e, coord::phys3 tar, bool repath=true);
+	MoveAction(Unit *e, coord::phys3 tar, bool repath = true);
 
 	/**
 	 * moves a unit to within a distance to another unit
@@ -371,9 +397,15 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interrupt() const override { return true; }
-	bool allow_control() const override { return true; }
-	std::string name() const override { return "move"; }
+	bool allow_interrupt() const override {
+		return true;
+	}
+	bool allow_control() const override {
+		return true;
+	}
+	std::string name() const override {
+		return "move";
+	}
 
 	coord::phys3 next_waypoint() const;
 
@@ -405,15 +437,19 @@ private:
 /**
  * garrison inside a building
  */
-class GarrisonAction: public TargetAction {
+class GarrisonAction : public TargetAction {
 public:
 	GarrisonAction(Unit *e, UnitReference build);
 	virtual ~GarrisonAction() {}
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	void on_completion_in_range(int) override {}
-	bool completed_in_range(Unit *) const override { return this->complete; }
-	std::string name() const override { return "garrison"; }
+	bool completed_in_range(Unit *) const override {
+		return this->complete;
+	}
+	std::string name() const override {
+		return "garrison";
+	}
 
 private:
 	bool complete;
@@ -422,17 +458,25 @@ private:
 /**
  * garrison inside a building
  */
-class UngarrisonAction: public UnitAction {
+class UngarrisonAction : public UnitAction {
 public:
 	UngarrisonAction(Unit *e, const coord::phys3 &pos);
 	virtual ~UngarrisonAction() {}
 
 	void update(unsigned int time) override;
 	void on_completion() override;
-	bool completed() const override { return this->complete; }
-	bool allow_interrupt() const override { return true; }
-	bool allow_control() const override { return true; }
-	std::string name() const override { return "ungarrison"; }
+	bool completed() const override {
+		return this->complete;
+	}
+	bool allow_interrupt() const override {
+		return true;
+	}
+	bool allow_control() const override {
+		return true;
+	}
+	std::string name() const override {
+		return "ungarrison";
+	}
 
 private:
 	coord::phys3 position;
@@ -442,19 +486,29 @@ private:
 /**
  * trains a new unit
  */
-class TrainAction: public UnitAction {
+class TrainAction : public UnitAction {
 public:
 	TrainAction(Unit *e, UnitType *pp);
 	virtual ~TrainAction() {}
 
 	void update(unsigned int time) override;
 	void on_completion() override;
-	bool completed() const override { return this->complete; }
-	bool allow_interrupt() const override { return false; }
-	bool allow_control() const override { return true; }
-	std::string name() const override { return "train"; }
+	bool completed() const override {
+		return this->complete;
+	}
+	bool allow_interrupt() const override {
+		return false;
+	}
+	bool allow_control() const override {
+		return true;
+	}
+	std::string name() const override {
+		return "train";
+	}
 
-	float get_progress() const { return this->timer.get_progress(); }
+	float get_progress() const {
+		return this->timer.get_progress();
+	}
 
 private:
 	UnitType *trained;
@@ -467,23 +521,34 @@ private:
 /**
  * trains a new unit
  */
-class ResearchAction: public UnitAction {
+class ResearchAction : public UnitAction {
 public:
 	ResearchAction(Unit *e, Research *research);
 	virtual ~ResearchAction() {}
 
 	void update(unsigned int time) override;
 	void on_completion() override;
-	bool completed() const override { return this->complete; }
-	bool allow_interrupt() const override { return false; }
-	bool allow_control() const override { return true; }
-	std::string name() const override { return "train"; }
+	bool completed() const override {
+		return this->complete;
+	}
+	bool allow_interrupt() const override {
+		return false;
+	}
+	bool allow_control() const override {
+		return true;
+	}
+	std::string name() const override {
+		return "train";
+	}
 
-	float get_progress() const { return this->timer.get_progress(); }
-	const ResearchType* get_research_type() const { return this->research->type; }
+	float get_progress() const {
+		return this->timer.get_progress();
+	}
+	const ResearchType *get_research_type() const {
+		return this->research->type;
+	}
 
 private:
-
 	Research *research;
 
 	IntervalTimer timer;
@@ -493,40 +558,48 @@ private:
 /**
  * builds a building
  */
-class BuildAction: public TargetAction {
+class BuildAction : public TargetAction {
 public:
 	BuildAction(Unit *e, UnitReference foundation);
 	virtual ~BuildAction() {}
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	void on_completion_in_range(int) override {}
-	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
+	bool completed_in_range(Unit *) const override {
+		return this->complete >= 1.0f;
+	}
 	void on_completion() override;
-	std::string name() const override { return "build"; }
+	std::string name() const override {
+		return "build";
+	}
 
-	float get_progress() const { return this->complete; }
+	float get_progress() const {
+		return this->complete;
+	}
 
 private:
 	float complete, build_rate;
 	static constexpr float search_tile_distance = 9.0f;
-
 };
 
 /**
  * repairs a unit
  */
-class RepairAction: public TargetAction {
+class RepairAction : public TargetAction {
 public:
 	RepairAction(Unit *e, UnitReference tar);
 	virtual ~RepairAction() {}
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	void on_completion_in_range(int) override {}
-	bool completed_in_range(Unit *) const override { return this->complete; }
-	std::string name() const override { return "repair"; }
+	bool completed_in_range(Unit *) const override {
+		return this->complete;
+	}
+	std::string name() const override {
+		return "repair";
+	}
 
 private:
-
 	/**
 	 * stores the cost of the repair for 1hp
 	 */
@@ -539,15 +612,19 @@ private:
 /**
  * gathers resource from another object
  */
-class GatherAction: public TargetAction {
+class GatherAction : public TargetAction {
 public:
 	GatherAction(Unit *e, UnitReference tar);
 	virtual ~GatherAction();
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	void on_completion_in_range(int target_type) override;
-	bool completed_in_range(Unit *) const override { return this->complete; }
-	std::string name() const override { return "gather"; }
+	bool completed_in_range(Unit *) const override {
+		return this->complete;
+	}
+	std::string name() const override {
+		return "gather";
+	}
 
 private:
 	bool complete, target_resource;
@@ -559,7 +636,7 @@ private:
 /**
  * attacks another unit
  */
-class AttackAction: public TargetAction {
+class AttackAction : public TargetAction {
 public:
 	AttackAction(Unit *e, UnitReference tar);
 	virtual ~AttackAction();
@@ -567,10 +644,11 @@ public:
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	void on_completion_in_range(int) override {}
 	bool completed_in_range(Unit *) const override;
-	std::string name() const override { return "attack"; }
+	std::string name() const override {
+		return "attack";
+	}
 
 private:
-
 	IntervalTimer timer;
 
 	/**
@@ -587,7 +665,7 @@ private:
 /**
  * heals another unit
  */
-class HealAction: public TargetAction {
+class HealAction : public TargetAction {
 public:
 	HealAction(Unit *e, UnitReference tar);
 	virtual ~HealAction();
@@ -595,10 +673,11 @@ public:
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	void on_completion_in_range(int) override {}
 	bool completed_in_range(Unit *) const override;
-	std::string name() const override { return "heal"; }
+	std::string name() const override {
+		return "heal";
+	}
 
 private:
-
 	IntervalTimer timer;
 
 	/**
@@ -610,25 +689,28 @@ private:
 /**
  * convert an object
  */
-class ConvertAction: public TargetAction {
+class ConvertAction : public TargetAction {
 public:
 	ConvertAction(Unit *e, UnitReference tar);
 	virtual ~ConvertAction() {}
 
 	void update_in_range(unsigned int time, Unit *target_unit) override;
 	void on_completion_in_range(int) override {}
-	bool completed_in_range(Unit *) const override { return this->complete >= 1.0f; }
-	std::string name() const override { return "convert"; }
+	bool completed_in_range(Unit *) const override {
+		return this->complete >= 1.0f;
+	}
+	std::string name() const override {
+		return "convert";
+	}
 
 private:
 	float complete;
-
 };
 
 /**
  * moves object to fly in a parabolic shape
  */
-class ProjectileAction: public UnitAction {
+class ProjectileAction : public UnitAction {
 public:
 	ProjectileAction(Unit *e, coord::phys3 target);
 	virtual ~ProjectileAction();
@@ -636,9 +718,15 @@ public:
 	void update(unsigned int time) override;
 	void on_completion() override;
 	bool completed() const override;
-	bool allow_interrupt() const override { return false; }
-	bool allow_control() const override { return false; }
-	std::string name() const override { return "projectile"; }
+	bool allow_interrupt() const override {
+		return false;
+	}
+	bool allow_control() const override {
+		return false;
+	}
+	std::string name() const override {
+		return "projectile";
+	}
 
 private:
 	double grav;

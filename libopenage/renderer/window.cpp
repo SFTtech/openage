@@ -1,12 +1,14 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2022 the openage authors. See copying.md for legal info.
 
 #include "window.h"
 
+#include <QWindow>
+
 #include "opengl/window.h"
+#include "window_event_handler.h"
 
 
-namespace openage {
-namespace renderer {
+namespace openage::renderer {
 
 std::shared_ptr<Window> Window::create(const std::string &title,
                                        size_t width, size_t height) {
@@ -18,7 +20,8 @@ std::shared_ptr<Window> Window::create(const std::string &title,
 
 
 Window::Window(size_t width, size_t height)
-	: size{width, height} {}
+	: size{width, height}
+	, event_handler{std::make_shared<WindowEventHandler>()} {}
 
 
 const util::Vector2s &Window::get_size() const {
@@ -45,4 +48,13 @@ void Window::add_resize_callback(const resize_cb_t& cb) {
 	this->on_resize.push_back(cb);
 }
 
-}} //openage::renderer
+const std::shared_ptr<QWindow> &Window::get_qt_window() const {
+	return this->window;
+}
+
+void Window::close() {
+	this->window->close();
+}
+
+
+} // namespace openage::renderer

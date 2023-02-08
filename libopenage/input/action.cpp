@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include <functional>
 
@@ -102,7 +102,7 @@ const std::vector<std::string> DEFAULT_ACTIONS = {
 
 
 ActionManager::ActionManager(InputManager *input_manager,
-                             cvar::CVarManager *cvar_manager)
+                             const std::shared_ptr<cvar::CVarManager> &cvar_manager)
 	:
 	input_manager{input_manager},
 	cvar_manager{cvar_manager} {
@@ -114,13 +114,14 @@ ActionManager::ActionManager(InputManager *input_manager,
 	}
 } // anonymous namespace
 
+
 bool ActionManager::create(const std::string& type) {
 	if (this->actions.find(type) != this->actions.end()) {
 		// that action is already in the list. fail.
 		// TODO: throw an exception instead?
 		// for now, just print a warning log message
 		log::log(WARN << "can not create action "
-			      << util::repr(type) << ": already exists");
+		              << util::repr(type) << ": already exists");
 		return false;
 	}
 

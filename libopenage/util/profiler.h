@@ -1,12 +1,12 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <array>
 #include <chrono>
+#include <string>
 #include <unordered_map>
 #include <vector>
-#include <string>
 
 constexpr int MAX_DURATION_HISTORY = 100;
 constexpr int PROFILER_CANVAS_WIDTH = 250;
@@ -19,7 +19,7 @@ constexpr int PROFILER_COM_BOX_HEIGHT = 15;
 
 namespace openage {
 
-class Engine;
+class LegacyEngine;
 
 
 namespace util {
@@ -38,7 +38,7 @@ struct component_time_data {
 
 class Profiler {
 public:
-	Profiler(Engine *engine);
+	Profiler(LegacyEngine *engine);
 	~Profiler();
 
 	/**
@@ -69,7 +69,7 @@ public:
 	 * registered, its getting registered and the profiler uses the color
 	 * information given by component_color. The default value is white.
 	 */
-	void start_measure(const std::string &com, color component_color={1.0, 1.0, 1.0});
+	void start_measure(const std::string &com, color component_color = {1.0, 1.0, 1.0});
 
 	/*
 	 * stops the measurement for the component com. If com is not yet
@@ -123,7 +123,8 @@ private:
 	std::unordered_map<std::string, component_time_data> components;
 	int insert_pos = 0;
 
-	Engine *engine;
+	LegacyEngine *engine;
 };
 
-}} // openage::util
+} // namespace util
+} // namespace openage

@@ -1,11 +1,11 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "vertex_array.h"
 
 #include <map>
 
-#include "../../error/error.h"
 #include "../../datastructure/constexpr_map.h"
+#include "../../error/error.h"
 
 #include "lookup.h"
 
@@ -15,10 +15,12 @@ namespace renderer {
 namespace opengl {
 
 GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
-                             std::vector<std::pair<GlBuffer const&,
-                                         resources::VertexInputInfo const&>> buffers)
-	: GlSimpleObject(context, [] (GLuint handle) { glDeleteVertexArrays(1, &handle); } )
-{
+                             std::vector<std::pair<GlBuffer const &,
+                                                   resources::VertexInputInfo const &>> buffers) :
+	GlSimpleObject(context,
+                   [](GLuint handle) {
+					   glDeleteVertexArrays(1, &handle);
+				   }) {
 	GLuint handle;
 	glGenVertexArrays(1, &handle);
 	this->handle = handle;
@@ -26,11 +28,11 @@ GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
 	this->bind();
 
 	if (buffers.size() == 1 and buffers[0].second.get_shader_input_map()) { // Map inputs according to specified pairing
-		auto const& info = buffers[0].second;
-		auto const& in_map = *info.get_shader_input_map();
-		auto const& in = info.get_inputs();
+		auto const &info = buffers[0].second;
+		auto const &in_map = *info.get_shader_input_map();
+		auto const &in = info.get_inputs();
 
-		auto& buf = buffers[0].first;
+		auto &buf = buffers[0].first;
 		buf.bind(GL_ARRAY_BUFFER);
 
 		std::map<size_t, size_t> in_map_sorted(in_map.begin(), in_map.end());
@@ -53,13 +55,13 @@ GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
 					GL_VERT_IN_ELEM_TYPE.get(in[mapping.first]),
 					GL_FALSE,
 					info.vert_size(),
-					reinterpret_cast<void*>(offset)
-				);
+					reinterpret_cast<void *>(offset));
 
 				offset += resources::vertex_input_size(in[mapping.first]);
 				next_idx = mapping.first + 1;
 			}
-		} else if (info.get_layout() == resources::vertex_layout_t::SOA) {
+		}
+		else if (info.get_layout() == resources::vertex_layout_t::SOA) {
 			size_t vert_count = buf.get_size() / info.vert_size();
 
 			for (auto mapping : in_map_sorted) {
@@ -76,16 +78,17 @@ GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
 					GL_VERT_IN_ELEM_TYPE.get(in[mapping.first]),
 					GL_FALSE,
 					0,
-					reinterpret_cast<void*>(offset)
-				);
+					reinterpret_cast<void *>(offset));
 
 				offset += resources::vertex_input_size(in[mapping.first]) * vert_count;
 				next_idx = mapping.first + 1;
 			}
-		} else {
+		}
+		else {
 			throw Error(MSG(err) << "Unknown vertex format.");
 		}
-	} else { // Map inputs in ascending order
+	}
+	else { // Map inputs in ascending order
 		GLuint attrib = 0;
 
 		for (auto buf_info : buffers) {
@@ -110,13 +113,13 @@ GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
 						GL_VERT_IN_ELEM_TYPE.get(in),
 						GL_FALSE,
 						info.vert_size(),
-						reinterpret_cast<void*>(offset)
-					);
+						reinterpret_cast<void *>(offset));
 
 					offset += resources::vertex_input_size(in);
 					attrib += 1;
 				}
-			} else if (info.get_layout() == resources::vertex_layout_t::SOA) {
+			}
+			else if (info.get_layout() == resources::vertex_layout_t::SOA) {
 				size_t offset = 0;
 				size_t vert_count = buf.get_size() / info.vert_size();
 
@@ -129,13 +132,13 @@ GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
 						GL_VERT_IN_ELEM_TYPE.get(in),
 						GL_FALSE,
 						0,
-						reinterpret_cast<void*>(offset)
-					);
+						reinterpret_cast<void *>(offset));
 
 					offset += resources::vertex_input_size(in) * vert_count;
 					attrib += 1;
 				}
-			} else {
+			}
+			else {
 				throw Error(MSG(err) << "Unknown vertex layout.");
 			}
 		}
@@ -143,14 +146,13 @@ GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
 }
 
 GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
-                             GlBuffer const& buf,
-                             resources::VertexInputInfo const& info)
-	: GlVertexArray(context, { { buf, info } } ) {}
+                             GlBuffer const &buf,
+                             resources::VertexInputInfo const &info) :
+	GlVertexArray(context, {{buf, info}}) {}
 
-GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context)
-	: GlSimpleObject(context,
-	                 [] (GLuint handle) { glDeleteVertexArrays(1, &handle); } )
-{
+GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context) :
+	GlSimpleObject(context,
+                   [](GLuint handle) { glDeleteVertexArrays(1, &handle); }) {
 	GLuint handle;
 	glGenVertexArrays(1, &handle);
 	this->handle = handle;
@@ -163,4 +165,6 @@ void GlVertexArray::bind() const {
 	// because the VAO bind does it anyway.
 }
 
-}}} // openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage

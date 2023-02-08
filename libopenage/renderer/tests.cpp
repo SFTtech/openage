@@ -1,37 +1,54 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "tests.h"
 
+#include <QMouseEvent>
 #include <cstdlib>
+#include <eigen3/Eigen/Dense>
 #include <epoxy/gl.h>
 #include <functional>
-#include <unordered_map>
 #include <memory>
-#include <eigen3/Eigen/Dense>
+#include <unordered_map>
 
-#include "../log/log.h"
-#include "../error/error.h"
-#include "../util/math_constants.h"
-#include "resources/shader_source.h"
-#include "resources/texture_data.h"
-#include "resources/mesh_data.h"
-#include "texture.h"
-#include "shader_program.h"
-#include "geometry.h"
-#include "opengl/window.h"
+#include "error/error.h"
+#include "log/log.h"
+#include "renderer/geometry.h"
+#include "renderer/gui/integration/public/gui_application_with_logger.h"
+#include "renderer/opengl/window.h"
+#include "renderer/resources/mesh_data.h"
+#include "renderer/resources/shader_source.h"
+#include "renderer/resources/texture_data.h"
+#include "renderer/shader_program.h"
+#include "renderer/texture.h"
+#include "util/math_constants.h"
+
+#include "renderer/camera/camera.h"
+#include "renderer/render_factory.h"
+#include "renderer/stages/screen/screen_renderer.h"
+#include "renderer/stages/skybox/skybox_renderer.h"
+#include "renderer/stages/terrain/terrain_render_entity.h"
+#include "renderer/stages/terrain/terrain_renderer.h"
+#include "renderer/stages/world/world_render_entity.h"
+#include "renderer/stages/world/world_renderer.h"
 
 
-namespace openage {
-namespace renderer {
-namespace tests {
+namespace openage::renderer::tests {
 
 // Macro for debugging OpenGL state.
-#define DBG_GL(txt)                    \
-	printf("before %s\n", txt);          \
-	opengl::GlContext::check_error();    \
+#define DBG_GL(txt) \
+	printf("before %s\n", txt); \
+	opengl::GlContext::check_error(); \
 	printf("after %s\n", txt);
 
-void renderer_demo_0(const util::Path& path) {
+/**
+ * Shows the renderer's ability to create textured renderable objects and
+ * allow basic interaction with them via mouse/key callbacks.
+ *
+ * @param path Unused.
+ */
+void renderer_demo_0(const util::Path &path) {
+	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
+
 	opengl::GlWindow window("openage renderer test", 800, 600);
 	auto renderer = window.make_renderer();
 
@@ -50,7 +67,7 @@ out vec2 v_uv;
 
 void main() {
 	gl_Position = proj * mv * vec4(position, 0.0, 1.0);
-  v_uv = vec2(uv.x, 1.0 - uv.y);
+    v_uv = vec2(uv.x, 1.0 - uv.y);
 }
 )s");
 
@@ -110,8 +127,8 @@ void main() {
 }
 )s");
 
-	auto obj_shader = renderer->add_shader( { obj_vshader_src, obj_fshader_src } );
-	auto display_shader = renderer->add_shader( { display_vshader_src, display_fshader_src } );
+	auto obj_shader = renderer->add_shader({obj_vshader_src, obj_fshader_src});
+	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
 
 	/* Texture for the clickable objects. */
 	auto tex = resources::Texture2dData(path / "/assets/gaben.png");
@@ -125,10 +142,12 @@ void main() {
 	/* Clickable objects on the screen consist of a transform (matrix which places each object
 	 * in the correct location), an identifier and a reference to the texture. */
 	auto obj1_unifs = obj_shader->new_uniform_input(
-		"mv", transform1.matrix(),
-		"u_id", 1u,
-		"tex", gltex
-	);
+		"mv",
+		transform1.matrix(),
+		"u_id",
+		1u,
+		"tex",
+		gltex);
 
 	auto transform2 = Eigen::Affine3f::Identity();
 	transform2.prescale(Eigen::Vector3f(0.3f, 0.1f, 1.0f));
@@ -139,24 +158,28 @@ void main() {
 	transform2.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.3f));
 
 	auto obj2_unifs = obj_shader->new_uniform_input(
-		"mv", transform2.matrix(),
-		"u_id", 2u,
+		"mv",
+		transform2.matrix(),
+		"u_id",
+		2u,
 		// TODO bug: this tex input spills over to all the other uniform inputs!
-		"tex", gltex
-	);
+		"tex",
+		gltex);
 
 	transform3.prerotate(Eigen::AngleAxisf(90.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
 	transform3.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.5f));
 
 	auto obj3_unifs = obj_shader->new_uniform_input(
-		"mv", transform3.matrix(),
-		"u_id", 3u,
-		"tex", gltex
-	);
+		"mv",
+		transform3.matrix(),
+		"u_id",
+		3u,
+		"tex",
+		gltex);
 
 	/* The objects are using built-in quadrilateral geometry. */
 	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
-	Renderable obj1 {
+	Renderable obj1{
 		obj1_unifs,
 		quad,
 		true,
@@ -170,7 +193,7 @@ void main() {
 		true,
 	};
 
-	Renderable obj3 {
+	Renderable obj3{
 		obj3_unifs,
 		quad,
 		true,
@@ -185,14 +208,14 @@ void main() {
 	auto color_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::rgba8));
 	auto id_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::r32ui));
 	auto depth_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::depth24));
-	auto fbo = renderer->create_texture_target( { color_texture, id_texture, depth_texture } );
+	auto fbo = renderer->create_texture_target({color_texture, id_texture, depth_texture});
 
 	/* Make an object to update the projection matrix in pass 1 according to changes in the screen size.
 	 * Because uniform values are preserved across objects using the same shader in a single render pass,
 	 * it is sufficient to set it once at the beginning of the pass. To do this, we use an object with no
 	 * geometry, which will set the uniform but not render anything. */
 	auto proj_unif = obj_shader->new_uniform_input();
-	Renderable proj_update {
+	Renderable proj_update{
 		proj_unif,
 		nullptr,
 		false,
@@ -200,21 +223,20 @@ void main() {
 	};
 
 	auto pass1 = renderer->add_render_pass(
-		{ proj_update, obj1, obj2, obj3 },
-		fbo
-	);
+		{proj_update, obj1, obj2, obj3},
+		fbo);
 
 	/* Make an object encompassing the entire screen for the second render pass. The object
 	 * will be textured with the color output of pass 1, effectively copying its framebuffer. */
 	auto color_texture_unif = display_shader->new_uniform_input("color_texture", color_texture);
-	Renderable display_obj {
+	Renderable display_obj{
 		color_texture_unif,
 		quad,
 		false,
 		false,
 	};
 
-	auto pass2 = renderer->add_render_pass({ display_obj }, renderer->get_display_target());
+	auto pass2 = renderer->add_render_pass({display_obj}, renderer->get_display_target());
 
 	/* Data retrieved from the object index texture. */
 	resources::Texture2dData id_texture_data = id_texture->into_data();
@@ -225,9 +247,10 @@ void main() {
 	glDepthRange(0.0, 1.0);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	window.add_mouse_button_callback([&] (SDL_MouseButtonEvent const& ev) {
-		auto x = ev.x;
-		auto y = ev.y;
+	window.add_mouse_button_callback([&](const QMouseEvent &ev) {
+		auto qpos = ev.position();
+		ssize_t x = qpos.x();
+		ssize_t y = qpos.y();
 
 		log::log(INFO << "Clicked at location (" << x << ", " << y << ")");
 		if (!texture_data_valid) {
@@ -238,21 +261,22 @@ void main() {
 		log::log(INFO << "Id-texture-value at location: " << id);
 		if (id == 0) {
 			log::log(INFO << "Clicked at non existent object");
-		} else {
+		}
+		else {
 			log::log(INFO << "Object number " << id << " clicked.");
 		}
 	});
 
-	window.add_resize_callback([&] (size_t w, size_t h) {
+	window.add_resize_callback([&](size_t w, size_t h) {
 		/* Calculate a projection matrix for the new screen size. */
-		float aspectRatio = float(w)/float(h);
-		float xScale = 1.0/aspectRatio;
+		float aspectRatio = float(w) / float(h);
+		float xScale = 1.0 / aspectRatio;
 
 		Eigen::Matrix4f pmat;
 		pmat << xScale, 0, 0, 0,
-		             0, 1, 0, 0,
-		             0, 0, 1, 0,
-		             0, 0, 0, 1;
+			0, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 0, 0, 1;
 
 		proj_unif->update("proj", pmat);
 
@@ -260,7 +284,7 @@ void main() {
 		color_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::rgba8));
 		id_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::r32ui));
 		depth_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::depth24));
-		fbo = renderer->create_texture_target( { color_texture, id_texture, depth_texture } );
+		fbo = renderer->create_texture_target({color_texture, id_texture, depth_texture});
 
 		color_texture_unif->update("color_texture", color_texture);
 
@@ -272,14 +296,261 @@ void main() {
 		renderer->render(pass1);
 		renderer->render(pass2);
 		window.update();
-		opengl::GlContext::check_error();
+		qtapp->process_events();
+
+		renderer->check_error();
 	}
+	window.close();
 }
+
+/**
+ * Basic test for creating a window and displaying a single-color texture
+ * created by a shader.
+ *
+ * @param path Path to the project rootdir.
+ */
+void renderer_demo_2(const util::Path &path) {
+	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
+
+	opengl::GlWindow window("openage renderer test", 800, 600);
+	auto renderer = window.make_renderer();
+
+	auto display_vshader_src = resources::ShaderSource(
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::vertex,
+		R"s(
+#version 330
+
+layout(location=0) in vec2 position;
+
+void main() {
+	gl_Position = vec4(position, 0.0, 1.0);
+}
+)s");
+
+	auto display_fshader_src = resources::ShaderSource(
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::fragment,
+		R"s(
+#version 330
+
+out vec4 col;
+
+void main() {
+    col = vec4(1.0, 0.4, 0.0, 0.8);
+}
+)s");
+
+	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
+
+	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
+	Renderable display_stuff{
+		display_shader->create_empty_input(),
+		quad,
+		false,
+		false,
+	};
+
+	auto pass = renderer->add_render_pass({display_stuff}, renderer->get_display_target());
+
+	while (not window.should_close()) {
+		renderer->render(pass);
+		window.update();
+		qtapp->process_events();
+
+		renderer->check_error();
+	}
+	window.close();
+}
+
+
+/**
+ * Shows the different render stages and camera.
+ *
+ * @param path Path to the project rootdir.
+ */
+void renderer_demo_3(const util::Path &path) {
+	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
+
+	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", 800, 600);
+	auto renderer = window->make_renderer();
+
+	// Camera
+	// our viewport into the game world
+	auto camera = std::make_shared<renderer::camera::Camera>(window->get_size());
+	window->add_resize_callback([&](size_t w, size_t h) {
+		camera->resize(w, h);
+	});
+
+	// Render stages
+	// every stage use a different subrenderer that manages renderables,
+	// shaders, textures & more.
+	std::vector<std::shared_ptr<RenderPass>> render_passes{};
+
+	// Renders the background
+	auto skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
+		window,
+		renderer,
+		path["assets"]["shaders"]);
+	skybox_renderer->set_color(1.0f, 0.5f, 0.0f, 1.0f); // orange color
+
+	// Renders the terrain in 3D
+	auto terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderer>(
+		window,
+		renderer,
+		camera,
+		path["assets"]["shaders"]);
+
+	// Renders units/buildings/other objects
+	auto world_renderer = std::make_shared<renderer::world::WorldRenderer>(
+		window,
+		renderer,
+		path["assets"]["shaders"]);
+
+	// Store the render passes of the renderers
+	// The order is important as its also the order in which they
+	// are rendered and drawn onto the screen.
+	render_passes.push_back(skybox_renderer->get_render_pass());
+	render_passes.push_back(terrain_renderer->get_render_pass());
+	render_passes.push_back(world_renderer->get_render_pass());
+
+	// Final output on screen has its own subrenderer
+	// It takes the outputs of all previous render passes
+	// and blends them together
+	auto screen_renderer = std::make_shared<renderer::screen::ScreenRenderer>(
+		window,
+		renderer,
+		path["assets"]["shaders"]);
+	std::vector<std::shared_ptr<renderer::RenderTarget>> targets{};
+	for (auto pass : render_passes) {
+		targets.push_back(pass->get_target());
+	}
+	screen_renderer->set_render_targets(targets);
+
+	render_passes.push_back(screen_renderer->get_render_pass());
+
+	window->add_resize_callback([&](size_t, size_t) {
+		std::vector<std::shared_ptr<renderer::RenderTarget>> targets{};
+		for (size_t i = 0; i < render_passes.size() - 1; ++i) {
+			targets.push_back(render_passes[i]->get_target());
+		}
+		screen_renderer->set_render_targets(targets);
+	});
+
+	// Create some entities to populate the scene
+	auto render_factory = std::make_shared<RenderFactory>(terrain_renderer, world_renderer);
+
+	// Terrain
+	auto terrain0 = render_factory->add_terrain_render_entity();
+
+	// Fill a 10x10 terrain grid with height values
+	auto terrain_size = util::Vector2s{10, 10};
+	std::vector<float> height_map{};
+	height_map.reserve(terrain_size[0] * terrain_size[1]);
+	for (size_t i = 0; i < terrain_size[0] * terrain_size[1]; ++i) {
+		height_map.push_back(0.0f);
+	}
+
+	// Create "test bumps" in the terrain to check if rendering works
+	height_map[11] = 1.0f;
+	height_map[23] = 2.3f;
+	height_map[42] = 4.2f;
+	height_map[69] = 6.9f; // nice
+
+	// A hill
+	height_map[55] = 3.0f; // center
+	height_map[45] = 2.0f; // bottom left slope
+	height_map[35] = 1.0f;
+	height_map[56] = 1.0f; // bottom right slope (little steeper)
+	height_map[65] = 2.0f; // top right slope
+	height_map[75] = 1.0f;
+	height_map[54] = 2.0f; // top left slope
+	height_map[53] = 1.0f;
+
+	// send the terrain data to the terrain renderer
+	terrain0->update(terrain_size,
+	                 height_map,
+	                 path["assets"]["test"]["textures"]["test_terrain_tex.png"]);
+
+	// Game entities
+	auto world0 = render_factory->add_world_render_entity();
+	world0->update(0, util::Vector3f(3.0f, 3.0f, 0.0f), path["assets"]["gaben.png"]);
+
+	auto world1 = render_factory->add_world_render_entity();
+	world1->update(1, util::Vector3f(7.5f, 6.0f, 0.0f), path["assets"]["missing.png"]);
+
+	// Zoom in/out with mouse wheel
+	window->add_mouse_wheel_callback([&](const QWheelEvent &ev) {
+		auto delta = ev.angleDelta().y() / 120;
+
+		if (delta < 0) {
+			camera->zoom_out(0.005f);
+		}
+		else if (delta > 0) {
+			camera->zoom_in(0.005f);
+		}
+	});
+
+	// Move around the scene with WASD
+	window->add_key_callback([&](const QKeyEvent &ev) {
+		auto key = ev.key();
+
+		switch (key) {
+		case Qt::Key_W: { // forward
+			camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.5f);
+		} break;
+		case Qt::Key_A: { // left
+			// half the speed because the relationship between forward/back and
+			// left/right is 1:2 in our ortho projection.
+			camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.25f);
+		} break;
+		case Qt::Key_S: { // back
+			camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.5f);
+		} break;
+		case Qt::Key_D: { // right
+			// half the speed because the relationship between forward/back and
+			// left/right is 1:2 in our ortho projection.
+			camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.25f);
+		} break;
+		default:
+			break;
+		}
+	});
+
+	while (not window->should_close()) {
+		qtapp->process_events();
+
+		// Update the renderables of the subrenderers
+		// camera zoom/position changes are also handled in here
+		terrain_renderer->update();
+		world_renderer->update();
+
+		// Draw everything
+		for (auto pass : render_passes) {
+			renderer->render(pass);
+		}
+
+		renderer->check_error();
+
+		// Display final output on screen
+		window->update();
+	}
+	window->close();
+}
+
 
 void renderer_demo(int demo_id, const util::Path &path) {
 	switch (demo_id) {
 	case 0:
 		renderer_demo_0(path);
+		break;
+
+	case 2:
+		renderer_demo_2(path);
+		break;
+
+	case 3:
+		renderer_demo_3(path);
 		break;
 
 	default:
@@ -288,4 +559,4 @@ void renderer_demo(int demo_id, const util::Path &path) {
 	}
 }
 
-}}} // namespace openage::renderer::tests
+} // namespace openage::renderer::tests

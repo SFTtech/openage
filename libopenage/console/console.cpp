@@ -1,12 +1,12 @@
-// Copyright 2013-2019 the openage authors. See copying.md for legal info.
+// Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 #include "console.h"
 
-#include "../log/log.h"
+#include "../engine.h"
 #include "../error/error.h"
+#include "../log/log.h"
 #include "../util/strings.h"
 #include "../util/unicode.h"
-#include "../engine.h"
 
 #include "draw.h"
 
@@ -22,8 +22,7 @@ namespace console {
  * log console, command console
  */
 
-Console::Console(Engine *engine)
-	:
+Console::Console(presenter::LegacyDisplay *engine) :
 	engine{engine},
 	bottomleft{0, 0},
 	topright{1, 1},
@@ -31,7 +30,6 @@ Console::Console(Engine *engine)
 	visible(false),
 	buf{{80, 25}, 1337, 80},
 	font{{"DejaVu Sans Mono", "Book", 12}} {
-
 	termcolors.reserve(256);
 
 	// this better be representative for the width of all other characters
@@ -45,7 +43,7 @@ Console::Console(Engine *engine)
 	topright.y = charsize.y * this->buf.get_dims().y;
 }
 
-Console::~Console () {}
+Console::~Console() {}
 
 void Console::load_colors(std::vector<gamedata::palette_color> &colortable) {
 	for (auto &c : colortable) {
@@ -87,21 +85,21 @@ void Console::register_to_engine() {
 	});
 	this->input_context.bind(input::event_class::NONPRINT, [this](const input::action_arg_t &arg) {
 		switch (arg.e.as_char()) {
-			case 8: // remove a single UTF-8 character
-				if (this->command.size() > 0) {
-					util::utf8_pop_back(this->command);
-					this->buf.pop_last_char();
-				}
-				return true;
+		case 8: // remove a single UTF-8 character
+			if (this->command.size() > 0) {
+				util::utf8_pop_back(this->command);
+				this->buf.pop_last_char();
+			}
+			return true;
 
-			case 13: // interpret command
-				this->buf.write('\n');
-				this->interpret(this->command);
-				this->command = "";
-				return true;
+		case 13: // interpret command
+			this->buf.write('\n');
+			this->interpret(this->command);
+			this->command = "";
+			return true;
 
-			default:
-				return false;
+		default:
+			return false;
 		}
 	});
 	this->input_context.utf8_mode = true;
@@ -132,21 +130,27 @@ void Console::interpret(const std::string &command) {
 			this->write(line.c_str());
 		}
 	}
-	else if (command.substr(0,3) ==  "set") {
+	else if (command.substr(0, 3) == "set") {
 		std::size_t first_space = command.find(" ");
-		std::size_t second_space = command.find(" ", first_space+1);
+		std::size_t second_space = command.find(" ", first_space + 1);
 		if (first_space != std::string::npos && second_space != std::string::npos) {
-			std::string name = command.substr(first_space+1, second_space-first_space-1);
-			std::string value = command.substr(second_space+1, std::string::npos);
-			this->engine->get_cvar_manager().set(name,value);
+			std::string name = command.substr(first_space + 1, second_space - first_space - 1);
+			std::string value = command.substr(second_space + 1, std::string::npos);
+			// TODO: Use new engine class
+			// this->engine->get_cvar_manager().set(name, value);
+			log::log(MSG(dbg) << "Tried setting cvar " << name << " with " << value
+			                  << " but engine is not implemented yet.");
 		}
 	}
-	else if (command.substr(0,3) == "get") {
+	else if (command.substr(0, 3) == "get") {
 		std::size_t first_space = command.find(" ");
 		if (first_space != std::string::npos) {
-			std::string name = command.substr(first_space+1, std::string::npos);
-			std::string value = this->engine->get_cvar_manager().get(name);
-			this->write(value.c_str());
+			std::string name = command.substr(first_space + 1, std::string::npos);
+			// TODO: Use new engine class
+			// std::string value = this->engine->get_cvar_manager().get(name);
+			// this->write(value.c_str());
+			log::log(MSG(dbg) << "Tried getting cvar " << name
+			                  << " but engine is not implemented yet.");
 		}
 	}
 }
@@ -198,4 +202,5 @@ bool Console::on_resize(coord::viewport_delta new_size) {
 	return true;
 }
 
-}} // openage::console
+} // namespace console
+} // namespace openage

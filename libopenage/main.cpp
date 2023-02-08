@@ -1,16 +1,30 @@
-// Copyright 2015-2021 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "main.h"
 
-#include "console/console.h"
-#include "engine.h"
-#include "game_control.h"
-#include "game_renderer.h"
-#include "gamedata/color_dummy.h"
+#include <thread>
+#include <version>
+
+#include "cvar/cvar.h"
+#include "engine/engine.h"
 #include "log/log.h"
-#include "shader/program.h"
-#include "shader/shader.h"
-#include "util/file.h"
+#include "presenter/presenter.h"
+#include "util/timer.h"
+
+// TODO: Remove custom jthread definition when clang/libc++ finally supports it
+#if __llvm__
+#if !__cpp_lib_jthread
+namespace std {
+class jthread : public thread {
+public:
+	using thread::thread; // needed constructors
+	~jthread() {
+		this->join();
+	}
+};
+} // namespace std
+#endif
+#endif
 
 
 namespace openage {
@@ -27,42 +41,35 @@ int run_game(const main_arguments &args) {
 	         << " and fps limit "
 	         << args.fps_limit);
 
+	// TODO: store args.fps_limit and args.gl_debug as default in the cvar system.
+
 	util::Timer timer;
 	timer.start();
 
-	Engine engine{args.root_path, args.fps_limit, args.gl_debug, "openage"};
-
 	// read and apply the configuration files
-	engine.get_cvar_manager().load_all();
+	auto cvar_manager = std::make_shared<cvar::CVarManager>(args.root_path["cfg"]);
+	cvar_manager->load_all();
 
-	// initialize terminal colors
-	std::vector<gamedata::palette_color> termcolors = util::read_csv_file<gamedata::palette_color>(
-		args.root_path["assets/converted/termcolors.docx"]
-	);
+	// TODO: select run_mode by launch argument
+	openage::engine::Engine::mode run_mode = engine::Engine::mode::FULL;
 
-	// TODO: move inside the engine
-	// TODO: support multiple consoles
-	console::Console console{&engine};
-	console.load_colors(termcolors);
-	console.register_to_engine();
+	auto engine = std::make_shared<engine::Engine>(run_mode, args.root_path, cvar_manager);
+	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, engine);
 
-	log::log(MSG(info).fmt("Loading time [engine]: %5.3f s", timer.getval() / 1.0e9));
+	std::jthread engine_thread([&]() {
+		engine->run();
 
-	timer.start();
+		engine.reset();
+	});
+	std::jthread presenter_thread([&]() {
+		presenter->run();
 
-	{
-		// create components that use the engine.
-		GameRenderer renderer{&engine};
-
-		log::log(MSG(info).fmt("Loading time   [game]: %5.3f s", timer.getval() / 1.0e9));
-
-		// run main loop
-		engine.run();
-	}
-
-	log::log(INFO << "cya!");
+		// Make sure that the presenter gets destructed in the same thread
+		// otherwise OpenGL complains about missing contexts
+		presenter.reset();
+	});
 
 	return 0;
 }
 
-} // openage
+} // namespace openage

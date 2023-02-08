@@ -39,7 +39,7 @@ Item {
 		LR.tag: "spec"
 	}
 
-	OA.AssetManager {
+	OA.LegacyAssetManager {
 		id: amObj
 
 		assetDir: OA.MainArgs.assetDir

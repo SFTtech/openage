@@ -1,4 +1,4 @@
-// Copyright 2017-2020 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -26,19 +26,17 @@ public:
 	std::vector<VkImageView> image_views;
 	std::vector<VkFramebuffer> framebuffers;
 
-	VkSurfaceFormatKHR choose_best_surface_format(std::vector<VkSurfaceFormatKHR> const& formats) {
+	VkSurfaceFormatKHR choose_best_surface_format(std::vector<VkSurfaceFormatKHR> const &formats) {
 		// If the implementation doesn't have preferred formats, choose our own
 		if (formats.size() == 1
-		    && formats[0].format == VK_FORMAT_UNDEFINED)
-		{
-			return { VK_FORMAT_B8G8R8A8_UNORM, VK_COLOR_SPACE_SRGB_NONLINEAR_KHR };
+		    && formats[0].format == VK_FORMAT_UNDEFINED) {
+			return {VK_FORMAT_B8G8R8A8_UNORM, VK_COLOR_SPACE_SRGB_NONLINEAR_KHR};
 		}
 
 		// Otherwise if one of the preferred formats is good, choose that
-		for (const auto& fmt : formats) {
+		for (const auto &fmt : formats) {
 			if (fmt.format == VK_FORMAT_B8G8R8_UNORM
-			    && fmt.colorSpace == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR)
-			{
+			    && fmt.colorSpace == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR) {
 				return fmt;
 			}
 		}
@@ -47,22 +45,23 @@ public:
 		return formats[0];
 	}
 
-	VkPresentModeKHR choose_best_present_mode(std::vector<VkPresentModeKHR> const& modes) {
+	VkPresentModeKHR choose_best_present_mode(std::vector<VkPresentModeKHR> const &modes) {
 		VkPresentModeKHR ret = VK_PRESENT_MODE_MAILBOX_KHR;
 
-		for (const auto& mode : modes) {
+		for (const auto &mode : modes) {
 			if (mode == VK_PRESENT_MODE_MAILBOX_KHR) {
 				return mode;
-			} else if (mode == VK_PRESENT_MODE_FIFO_KHR) {
+			}
+			else if (mode == VK_PRESENT_MODE_FIFO_KHR) {
 				ret = mode;
-			} else if (mode == VK_PRESENT_MODE_FIFO_RELAXED_KHR
-			           && ret != VK_PRESENT_MODE_FIFO_KHR)
-			{
+			}
+			else if (mode == VK_PRESENT_MODE_FIFO_RELAXED_KHR
+			         && ret != VK_PRESENT_MODE_FIFO_KHR) {
 				ret = mode;
-			} else if (mode == VK_PRESENT_MODE_IMMEDIATE_KHR
-			           && ret != VK_PRESENT_MODE_FIFO_KHR
-			           && ret != VK_PRESENT_MODE_FIFO_RELAXED_KHR)
-			{
+			}
+			else if (mode == VK_PRESENT_MODE_IMMEDIATE_KHR
+			         && ret != VK_PRESENT_MODE_FIFO_KHR
+			         && ret != VK_PRESENT_MODE_FIFO_RELAXED_KHR) {
 				ret = mode;
 			}
 		}
@@ -70,8 +69,8 @@ public:
 		return ret;
 	}
 
-	VlkDrawableDisplay(VkDevice device, SurfaceSupportDetails details)
-		: device(device) {
+	VlkDrawableDisplay(VkDevice device, SurfaceSupportDetails details) :
+		device(device) {
 		VkSurfaceFormatKHR format = choose_best_surface_format(details.surface_formats);
 		this->format = format.format;
 
@@ -79,7 +78,8 @@ public:
 
 		if (details.surface_caps.currentExtent.width != std::numeric_limits<uint32_t>::max()) {
 			this->extent = details.surface_caps.currentExtent;
-		} else {
+		}
+		else {
 			// TODO choose a size from this->size in this case
 			throw Error(MSG(err) << "Window manager does not provide a window size.");
 		}
@@ -106,9 +106,10 @@ public:
 			// We have to share the swapchain between different queues in this case
 			cr_swap.imageSharingMode = VK_SHARING_MODE_CONCURRENT;
 			cr_swap.queueFamilyIndexCount = 2;
-			std::array<uint32_t, 2> q_fams = {{ details.graphics_fam, *details.maybe_present_fam }};
+			std::array<uint32_t, 2> q_fams = {{details.graphics_fam, *details.maybe_present_fam}};
 			cr_swap.pQueueFamilyIndices = q_fams.data();
-		} else {
+		}
+		else {
 			// Otherwise only one queue can access it
 			cr_swap.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
 		}
@@ -158,9 +159,17 @@ class VlkFramebuffer final : public RenderTarget {
 	//VkViewport viewport;
 
 public:
-	VlkFramebuffer(VkRenderPass /*pass*/, std::vector<VkImageView> const& /*attachments*/) {
+	VlkFramebuffer(VkRenderPass /*pass*/, std::vector<VkImageView> const & /*attachments*/) {
 		// TODO.
+	}
+
+	std::vector<std::shared_ptr<Texture2d>> get_texture_targets() override {
+		// TODO
+		std::vector<std::shared_ptr<Texture2d>> textures{};
+		return textures;
 	}
 };
 
-}}} // openage::renderer::vulkan
+} // namespace vulkan
+} // namespace renderer
+} // namespace openage

@@ -32,6 +32,7 @@ __pycache__
 /build
 /deps
 /.ccls-cache
+/.cache
 
 # root dir run script
 /run

@@ -1,12 +1,12 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
+
+#include <epoxy/gl.h>
 
 #include <memory>
 
 #include <QSGTexture>
-
-#include <epoxy/gl.h>
 
 namespace openage {
 namespace gui {
@@ -20,4 +20,5 @@ namespace gui {
  */
 std::unique_ptr<QSGTexture> make_standalone_subtexture(GLuint id, const QSize &size);
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

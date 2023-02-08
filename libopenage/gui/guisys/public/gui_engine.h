@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -17,7 +17,9 @@ class GuiSingletonItemsInfo;
  */
 class GuiEngine {
 public:
-	explicit GuiEngine(GuiRenderer *renderer, const std::vector<GuiImageProvider*> &image_providers=std::vector<GuiImageProvider*>(), GuiSingletonItemsInfo *singleton_items_info=nullptr);
+	explicit GuiEngine(GuiRenderer *renderer,
+	                   const std::vector<GuiImageProvider *> &image_providers = std::vector<GuiImageProvider *>(),
+	                   GuiSingletonItemsInfo *singleton_items_info = nullptr);
 	~GuiEngine();
 
 private:

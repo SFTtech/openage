@@ -1,3 +1,6 @@
 add_sources(libopenage
-	test.cpp
+	presenter.cpp
 )
+
+add_subdirectory("legacy")
+add_subdirectory("assets")

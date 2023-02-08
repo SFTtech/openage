@@ -1,13 +1,17 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
+#include "../presenter/legacy/legacy.h"
 #include "../util/path.h"
 #include "guisys/public/gui_singleton_items_info.h"
 
-
 namespace openage {
-class Engine;
+class LegacyEngine;
+
+namespace presenter {
+class LegacyDisplay;
+}
 
 namespace gui {
 
@@ -21,13 +25,18 @@ namespace gui {
  */
 class EngineQMLInfo : public qtsdl::GuiSingletonItemsInfo {
 public:
-	EngineQMLInfo(Engine *engine, const util::Path &asset_dir);
+	EngineQMLInfo(LegacyEngine *engine, const util::Path &asset_dir);
 
 	/**
 	 * The openage engine, so it can be "used" in QML as a "QML Singleton".
 	 * With this pointer, all of QML can find back to the engine.
 	 */
-	Engine *engine;
+	LegacyEngine *engine;
+
+	/**
+	 * The openage display.
+	 */
+	presenter::LegacyDisplay *display;
 
 	/**
 	 * Search path for finding assets n stuff.
@@ -36,4 +45,5 @@ public:
 };
 
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

@@ -1,12 +1,12 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <memory>
 #include <mutex>
+#include <queue>
 #include <unordered_map>
 #include <vector>
-#include <queue>
 
 #include "../coord/phys.h"
 #include "../handlers.h"
@@ -74,9 +74,8 @@ public:
 	 * uses same args as the location constructor
 	 * except the first which will filled automatically
 	 */
-	template<class T, typename ... Arg>
-	void make_location(Arg ... args) {
-
+	template <class T, typename... Arg>
+	void make_location(Arg... args) {
 		// remove any existing location first
 		if (this->location) {
 			this->location->remove();
@@ -84,7 +83,7 @@ public:
 
 		// since Unit is a friend of the location
 		// make_shared will not work
-		this->location = std::unique_ptr<T>(new T(*this, args ...));
+		this->location = std::unique_ptr<T>(new T(*this, args...));
 	}
 
 	/**
@@ -131,17 +130,17 @@ public:
 	 *
 	 * this function should be used for most draw purposes
 	 */
-	void draw(const Engine &engine);
+	void draw(const LegacyEngine &engine);
 
 	/**
 	 * an generalized draw function which is useful for drawing annexes
 	 */
-	void draw(TerrainObject *loc, const graphic_set &graphics, const Engine &engine);
+	void draw(TerrainObject *loc, const graphic_set &graphics, const LegacyEngine &engine);
 
 	/**
 	 * draws with a specific graphic and frame
 	 */
-	void draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, unsigned int frame, const Engine &engine);
+	void draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, unsigned int frame, const LegacyEngine &engine);
 
 	/**
 	 * adds an available ability to this unit
@@ -161,7 +160,7 @@ public:
 	 * adds a new action on top of the action stack
 	 * will be performed immediately
 	 */
-	void push_action(std::unique_ptr<UnitAction> action, bool force=false);
+	void push_action(std::unique_ptr<UnitAction> action, bool force = false);
 
 	/**
 	 * adds a secondary action which is always updated
@@ -195,7 +194,7 @@ public:
 	/**
 	 * returns attribute based on templated value
 	 */
-	template<attr_type T>
+	template <attr_type T>
 	Attribute<T> &get_attribute() {
 		return *reinterpret_cast<Attribute<T> *>(attributes.get(T).get());
 		// TODO change to (templates errors)
@@ -318,8 +317,7 @@ private:
 	 * @param run_completed usually each action has an on_complete() function called when it is removed
 	 * but when run_completed is false this on_complete() function is not called for all popped actions
 	 */
-	void erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func, bool run_completed=true);
-
+	void erase_after(std::function<bool(std::unique_ptr<UnitAction> &)> func, bool run_completed = true);
 };
 
 } // namespace openage

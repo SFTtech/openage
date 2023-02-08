@@ -1,4 +1,4 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,7 +15,7 @@ class GlShader final : public GlSimpleObject {
 public:
 	/// Compiles the shader from the given source.
 	explicit GlShader(const std::shared_ptr<GlContext> &context,
-	                  const resources::ShaderSource&);
+	                  const resources::ShaderSource &);
 
 	/// Returns the stage of the rendering pipeline this shader defines.
 	GLenum get_type() const;
@@ -25,4 +25,6 @@ private:
 	GLenum type;
 };
 
-}}} // openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage

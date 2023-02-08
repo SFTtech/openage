@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "buffer.h"
 
@@ -10,9 +10,10 @@ namespace renderer {
 namespace opengl {
 
 GlBuffer::GlBuffer(const std::shared_ptr<GlContext> &context,
-                   size_t size, GLenum usage)
-	: GlSimpleObject(context, [] (GLuint handle) { glDeleteBuffers(1, &handle); } )
-	, size(size) {
+                   size_t size,
+                   GLenum usage) :
+	GlSimpleObject(context, [](GLuint handle) { glDeleteBuffers(1, &handle); }),
+	size(size) {
 	GLuint handle;
 	glGenBuffers(1, &handle);
 	this->handle = handle;
@@ -22,9 +23,11 @@ GlBuffer::GlBuffer(const std::shared_ptr<GlContext> &context,
 }
 
 GlBuffer::GlBuffer(const std::shared_ptr<GlContext> &context,
-                   const uint8_t *data, size_t size, GLenum usage)
-	: GlSimpleObject(context, [] (GLuint handle) { glDeleteBuffers(1, &handle); } )
-	, size(size) {
+                   const uint8_t *data,
+                   size_t size,
+                   GLenum usage) :
+	GlSimpleObject(context, [](GLuint handle) { glDeleteBuffers(1, &handle); }),
+	size(size) {
 	GLuint handle;
 	glGenBuffers(1, &handle);
 	this->handle = handle;
@@ -54,4 +57,6 @@ void GlBuffer::bind(GLenum target) const {
 	glBindBuffer(target, *this->handle);
 }
 
-}}} // openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage

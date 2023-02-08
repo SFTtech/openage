@@ -1,19 +1,22 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <memory>
 
-#include <SDL2/SDL.h>
+#include <QObject>
 
+QT_FORWARD_DECLARE_CLASS(QWindow)
+QT_FORWARD_DECLARE_CLASS(QOpenGLContext)
 
-namespace openage {
-namespace renderer {
-namespace opengl {
+namespace openage::renderer::opengl {
 
+class GlDebugLogHandler;
 class GlShaderProgram;
 
-/// Stores information about context capabilities and limitations.
+/**
+ * Stores information about context capabilities and limitations.
+*/
 struct gl_context_capabilities {
 	/// The maximum number of vertex attributes in a shader.
 	size_t max_vertex_attributes;
@@ -29,52 +32,114 @@ struct gl_context_capabilities {
 	int minor_version;
 };
 
-/// Manages an OpenGL context.
+/**
+ * Manages an OpenGL context.
+ */
 class GlContext {
 public:
-	/// Create a GL context in the given SDL window.
-	explicit GlContext(const std::shared_ptr<SDL_Window> &);
-	~GlContext();
+	/**
+	 * Create a GL context for the given Qt window.
+	 *
+	 * TODO: Currently, this also sets up the Qt window with QWindow::create() because
+	 * the constructur also creates the context format. Ideally, QWindow creation should
+	 * be handed to our own Window class.
+	 *
+	 * @param window Window for the context. The context is made current to this window.
+	*/
+	explicit GlContext(const std::shared_ptr<QWindow> &window);
+	~GlContext() = default;
 
-	/// It doesn't make sense to have more than one instance of the same context.
-	GlContext(const GlContext&) = delete;
-	GlContext& operator=(const GlContext&) = delete;
+	/**
+	 * Copy this context.
+	 *
+	 * It doesn't make sense to have more than one instance of the same context.
+	 */
+	GlContext(const GlContext &) = delete;
+	GlContext &operator=(const GlContext &) = delete;
 
-	/// We have to support moving to avoid a mess somewhere else.
-	GlContext(GlContext&&);
-	GlContext& operator=(GlContext&&);
+	/**
+	 * Move this context.
+	 *
+	 * We have to support moving to avoid a mess somewhere else.
+	 */
+	GlContext(GlContext &&);
+	GlContext &operator=(GlContext &&);
 
-	/// Returns the underlying SDL context pointer.
-	SDL_GLContext get_raw_context() const;
+	/**
+	 * Get the underlying Qt OpenGL context object.
+	 *
+	 * @return Qt's OpenGL context object.
+	 */
+	std::shared_ptr<QOpenGLContext> get_raw_context() const;
 
-	/// Returns the capabilities of this context.
+	/**
+	 * Get the capabilities of this context.
+	 */
 	gl_context_capabilities get_capabilities() const;
 
-	/// Turns VSYNC on or off for this context.
+	/**
+	 * Activate or deactivate VSync for this context.
+	 *
+	 * @param on Pass \p true to activate VSync, \p false to deactivate.
+	 */
 	void set_vsync(bool on);
 
-	/// Checks whether the current GL context on this thread reported any errors
-	/// and throws an exception if it did. Note that it's static.
+	/**
+	 * Check whether the current GL context on this thread reported any errors.
+	 * If any OpenGL error is found, throw an exception.
+	 *
+	 * @throw openage::error::Error Error with OpenGL error type.
+	 */
 	static void check_error();
 
-	/// Returns a handle to the last-activated shader program
+	/**
+	 * Get the currently active shader program.
+	 *
+	 * If \p nullptr is returned, the current shader program is unknown. There
+	 * may be an active shader loaded by external libraries or scripts.
+	 *
+	 * @return Currently active shader program.
+	 */
 	const std::weak_ptr<GlShaderProgram> &get_current_program() const;
 
-	/// Store the last-activated shader program
-	void set_current_program(const std::shared_ptr<GlShaderProgram> &);
+	/**
+	 * Store the currently active shader program for this context.
+	 *
+	 * Note that this method does not load the shader in OpenGL. It is merely
+	 * a conveniance function so that the renderer can check which program
+	 * is currently used.
+	 *
+	 * @param prog Currently active shader program.
+	 */
+	void set_current_program(const std::shared_ptr<GlShaderProgram> &prog);
 
 private:
-	/// The associated SDL window is held here so the context remains active.
-	std::shared_ptr<SDL_Window> window;
+	/**
+	 * Associated Qt window. Held here so the context remains active.
+	 */
+	std::shared_ptr<QWindow> window;
 
-	/// Pointer to SDL struct representing the GL context.
-	SDL_GLContext gl_context;
+	/**
+	 * Logger for OpenGL debug messages.
+	 *
+	 * TODO: Make debug logging optional
+	 */
+	std::shared_ptr<GlDebugLogHandler> log_handler;
 
-	/// Context capabilities.
+	/**
+	 * Pointer to Qt struct representing the GL context.
+	 */
+	std::shared_ptr<QOpenGLContext> gl_context;
+
+	/**
+	 * Context capabilities, i.e. available OpenGL features and version.
+	 */
 	gl_context_capabilities capabilities{};
 
-	// The last-active shader program
+	/**
+	 * The last-active shader program
+	 */
 	std::weak_ptr<GlShaderProgram> last_program;
 };
 
-}}} // openage::renderer::opengl
+} // namespace openage::renderer::opengl

@@ -1,11 +1,11 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <functional>
 
-#include <QObject>
 #include <QMetaType>
+#include <QObject>
 
 namespace qtsdl {
 
@@ -24,5 +24,3 @@ public slots:
 };
 
 } // namespace qtsdl
-
-Q_DECLARE_METATYPE(std::function<void()>)

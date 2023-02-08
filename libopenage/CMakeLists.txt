@@ -22,14 +22,14 @@ set_target_properties(libopenage PROPERTIES
 # freetype includedir hint for ubuntu...
 find_path(FREETYPE_INCLUDE_DIRS freetype/freetype.h HINTS /usr/include/freetype2)
 
-# provide apple qt5 location
+# provide apple qt location
 if(APPLE)
 	execute_process(
 		COMMAND brew --prefix
 		OUTPUT_VARIABLE HOMEBREW_PREFIX
 		OUTPUT_STRIP_TRAILING_WHITESPACE
 		)
-	list(APPEND CMAKE_PREFIX_PATH ${HOMEBREW_PREFIX}/opt/qt5)
+	list(APPEND CMAKE_PREFIX_PATH ${HOMEBREW_PREFIX}/opt/qt)
 endif()
 
 # windows does not have libm
@@ -63,12 +63,18 @@ find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 find_package(Threads REQUIRED)
 
-set(QT_VERSION_REQ "5.9")
-find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
-find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
+set(QT_VERSION_REQ "6.2")
+find_package(Qt6Core ${QT_VERSION_REQ} REQUIRED)
+find_package(Qt6Quick ${QT_VERSION_REQ} REQUIRED)
 
 if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)
+endif()
+
+if(WANT_IWYU)
+	# include-what-you-use warnings during C++ compilation
+	find_program(IWYU_PATH NAMES include-what-you-use iwyu REQUIRED)
+	set_property(TARGET libopenage PROPERTY CXX_INCLUDE_WHAT_YOU_USE "${IWYU_PATH}")
 endif()
 
 ##################################################
@@ -250,20 +256,6 @@ configure_file(
 	"${CMAKE_BINARY_DIR}/openage/config.py"
 )
 
-
-##################################################
-# platform specifics
-if(APPLE)
-	find_path(
-		QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders
-		"${HOMEBREW_PREFIX}/opt/qt5/include"
-		)
-	find_library(COCOA_LIBRARY Cocoa)
-	target_include_directories(libopenage PRIVATE ${COCOA_LIBRARY})
-	target_link_libraries(libopenage PRIVATE ${COCOA_LIBRARY})
-endif()
-
-
 ##################################################
 # directories for header inclusion
 target_include_directories(libopenage
@@ -305,8 +297,8 @@ target_link_libraries(libopenage
 		${HarfBuzz_LIBRARIES}
 		${RT_LIB}
 		${EXECINFO_LIB}
-		Qt5::Core
-		Qt5::Quick
+		Qt6::Core
+		Qt6::Quick
 )
 
 ##################################################
@@ -329,10 +321,7 @@ get_codegen_scu_file()
 # are specified above the source file list.
 
 add_sources(libopenage
-	assetmanager.cpp
 	engine.cpp
-	game_control.cpp
-	game_renderer.cpp
 	handlers.cpp
 	main.cpp
 	options.cpp
@@ -349,12 +338,15 @@ pxdgen(
 )
 
 # add subsystem folders
+add_subdirectory("assets")
 add_subdirectory("audio")
 add_subdirectory("console")
+add_subdirectory("control")
 add_subdirectory("coord")
 add_subdirectory("curve")
 add_subdirectory("cvar")
 add_subdirectory("datastructure")
+add_subdirectory("engine")
 add_subdirectory("error")
 add_subdirectory("event")
 add_subdirectory("gamedata")

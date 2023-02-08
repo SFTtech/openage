@@ -43,6 +43,7 @@ Dependency list:
     CR    freetype2
     CR    fontconfig
     CR    harfbuzz
+    C   O include-what-you-use
     CR    nyan  (https://github.com/SFTtech/nyan)
     CR  O ncurses
     C     jinja2
@@ -54,7 +55,7 @@ Dependency list:
        S  pycodestyle
     C     pygments
        S  pylint
-    CR    qt5 >=5.9 (Core, Quick, QuickControls modules)
+    CR    qt6 >=6.2 (Core, Quick, QuickControls modules)
     CR  O vulkan
 
       A   An installed version of any of the following (wine is your friend).

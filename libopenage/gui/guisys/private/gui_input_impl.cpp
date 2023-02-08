@@ -1,10 +1,10 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "gui_input_impl.h"
 
+#include <QCoreApplication>
 #include <QMouseEvent>
 #include <QThread>
-#include <QCoreApplication>
 
 #include <SDL2/SDL_mouse.h>
 
@@ -15,12 +15,10 @@
 
 namespace qtsdl {
 
-GuiInputImpl::GuiInputImpl(GuiRenderer *renderer, GuiEventQueue *game_logic_updater)
-	:
+GuiInputImpl::GuiInputImpl(GuiRenderer *renderer, GuiEventQueue *game_logic_updater) :
 	QObject{},
 	mouse_buttons_state{},
 	game_logic_updater{GuiEventQueueImpl::impl(game_logic_updater)} {
-
 	const bool logic_diff_input = this->game_logic_updater->get_thread() != QThread::currentThread();
 	const bool gui_diff_input = QCoreApplication::instance()->thread() != QThread::currentThread();
 	const Qt::ConnectionType input_to_gui = gui_diff_input ? logic_diff_input ? Qt::BlockingQueuedConnection : Qt::QueuedConnection : Qt::DirectConnection;
@@ -31,11 +29,11 @@ GuiInputImpl::GuiInputImpl(GuiRenderer *renderer, GuiEventQueue *game_logic_upda
 GuiInputImpl::~GuiInputImpl() = default;
 
 namespace {
-static_assert(!(Qt::LeftButton & (Qt::LeftButton - 1)), "Qt non-one-bit mask.");
-static_assert(!(Qt::RightButton & (Qt::RightButton - 1)), "Qt non-one-bit mask.");
-static_assert(!(Qt::MiddleButton & (Qt::MiddleButton - 1)), "Qt non-one-bit mask.");
-static_assert(!(Qt::XButton1 & (Qt::XButton1 - 1)), "Qt non-one-bit mask.");
-static_assert(!(Qt::XButton2 & (Qt::XButton2 - 1)), "Qt non-one-bit mask.");
+static_assert(!(Qt::LeftButton & (static_cast<uint>(Qt::LeftButton) - 1)), "Qt non-one-bit mask.");
+static_assert(!(Qt::RightButton & (static_cast<uint>(Qt::RightButton) - 1)), "Qt non-one-bit mask.");
+static_assert(!(Qt::MiddleButton & (static_cast<uint>(Qt::MiddleButton) - 1)), "Qt non-one-bit mask.");
+static_assert(!(Qt::XButton1 & (static_cast<uint>(Qt::XButton1) - 1)), "Qt non-one-bit mask.");
+static_assert(!(Qt::XButton2 & (static_cast<uint>(Qt::XButton2) - 1)), "Qt non-one-bit mask.");
 
 static_assert(SDL_BUTTON_LMASK == Qt::LeftButton, "SDL/Qt mouse button mask incompatibility.");
 static_assert(1 << (SDL_BUTTON_LEFT - 1) == Qt::LeftButton, "SDL/Qt mouse button mask incompatibility.");
@@ -77,10 +75,9 @@ int sdl_key_to_qt(SDL_Keycode sym) {
 		return 0;
 	}
 }
-}
+} // namespace
 
 bool GuiInputImpl::process(SDL_Event *e) {
-
 	switch (e->type) {
 	case SDL_MOUSEMOTION: {
 		QMouseEvent ev{QEvent::MouseMove, QPoint{e->motion.x, e->motion.y}, Qt::MouseButton::NoButton, this->mouse_buttons_state = sdl_mouse_state_to_qt(e->motion.state), Qt::KeyboardModifier::NoModifier};
@@ -119,7 +116,16 @@ bool GuiInputImpl::process(SDL_Event *e) {
 		QPoint pos;
 		SDL_GetMouseState(&pos.rx(), &pos.ry());
 
-		QWheelEvent ev{pos, pos, QPoint{}, QPoint{e->wheel.x, e->wheel.y}, 0, Qt::Orientation{}, this->mouse_buttons_state, Qt::KeyboardModifier::NoModifier};
+		QWheelEvent ev{
+			pos,
+			pos,
+			QPoint{},
+			QPoint{e->wheel.x, e->wheel.y},
+			this->mouse_buttons_state,
+			Qt::KeyboardModifier::NoModifier, // Correct states?
+			Qt::ScrollPhase::NoScrollPhase, // ^
+			false,
+		};
 		ev.setAccepted(false);
 
 		return relay_input_event(&ev);

@@ -5,3 +5,5 @@ add_sources(libopenage
 	texture_info.cpp
 	texture_subinfo.cpp
 )
+
+add_subdirectory(assets/)

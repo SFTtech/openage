@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,12 +16,15 @@ public:
 	/// Creates an empty buffer of the specified size.
 	/// Binds the GL_COPY_WRITE_BUFFER target.
 	GlBuffer(const std::shared_ptr<GlContext> &context,
-	         size_t size, GLenum usage = GL_STATIC_DRAW);
+	         size_t size,
+	         GLenum usage = GL_STATIC_DRAW);
 
 	/// Creates a buffer of the specified size and fills it with the given data.
 	/// Binds the GL_COPY_WRITE_BUFFER target.
 	GlBuffer(const std::shared_ptr<GlContext> &context,
-	         const uint8_t *data, size_t size, GLenum usage = GL_STATIC_DRAW);
+	         const uint8_t *data,
+	         size_t size,
+	         GLenum usage = GL_STATIC_DRAW);
 
 	/// The size in bytes of this buffer.
 	size_t get_size() const;
@@ -39,4 +42,6 @@ private:
 	size_t size;
 };
 
-}}} // openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage

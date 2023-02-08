@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,25 +11,25 @@ QT_FORWARD_DECLARE_CLASS(QQmlEngine)
 QT_FORWARD_DECLARE_CLASS(QJSEngine)
 
 namespace openage {
-class Engine;
+class LegacyEngine;
 
 namespace gui {
 class EngineLink;
-} // gui
-} // openage
+} // namespace gui
+} // namespace openage
 
 namespace qtsdl {
-template<>
-struct Wrap<openage::Engine> {
+template <>
+struct Wrap<openage::LegacyEngine> {
 	using Type = openage::gui::EngineLink;
 };
 
-template<>
+template <>
 struct Unwrap<openage::gui::EngineLink> {
-	using Type = openage::Engine;
+	using Type = openage::LegacyEngine;
 };
 
-} // qtsdl
+} // namespace qtsdl
 
 namespace openage {
 namespace gui {
@@ -42,17 +42,17 @@ class EngineLink : public qtsdl::GuiSingletonItem {
 	 * displayed so one can see what keys are active.
 	 */
 	Q_PROPERTY(QStringList globalBinds
-	           READ get_global_binds
-	           NOTIFY global_binds_changed)
+	               READ get_global_binds
+	                   NOTIFY global_binds_changed)
 
 public:
-	explicit EngineLink(QObject *parent, Engine *engine);
+	explicit EngineLink(QObject *parent, LegacyEngine *engine);
 	virtual ~EngineLink();
 
-	static QObject* provider(QQmlEngine*, QJSEngine*);
+	static QObject *provider(QQmlEngine *, QJSEngine *);
 
-	template<typename U>
-	U* get() const {
+	template <typename U>
+	U *get() const {
 		return core;
 	}
 
@@ -64,12 +64,13 @@ signals:
 	void global_binds_changed();
 
 private slots:
-	void on_global_binds_changed(const std::vector<std::string>& global_binds);
+	void on_global_binds_changed(const std::vector<std::string> &global_binds);
 
 private:
-	Engine *core;
+	LegacyEngine *core;
 
 	QStringList global_binds;
 };
 
-}} // openage::gui
+} // namespace gui
+} // namespace openage

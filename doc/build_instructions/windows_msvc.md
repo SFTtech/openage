@@ -42,11 +42,11 @@ _Note:_ Also ensure that `python` and `python3` both point to the correct and th
 ### vcpkg packages
  Set up [vcpkg](https://github.com/Microsoft/vcpkg#quick-start). Open a command prompt at `<vcpkg directory>`
 
-    vcpkg install dirent eigen3 fontconfig freetype harfbuzz libepoxy libogg libpng opus opusfile qt5-base qt5-declarative qt5-quickcontrols sdl2 sdl2-image
+    vcpkg install dirent eigen3 fontconfig freetype harfbuzz libepoxy libogg libpng opus opusfile qtbase qtdeclarative sdl2 sdl2-image
 
- _Note:_ The `qt5` port in vcpkg has been split into multiple packages, build times are acceptable now.
+ _Note:_ The `qt6` port in vcpkg has been split into multiple packages, build times are acceptable now.
  If you want, you can still use [the prebuilt version](https://www.qt.io/download-open-source/) instead.
- If you do so, include `-DCMAKE_PREFIX_PATH=<QT5 directory>` in the cmake configure command.
+ If you do so, include `-DCMAKE_PREFIX_PATH=<QT6 directory>` in the cmake configure command.
 
  _Note:_ If you are planning to build the 64-bit version of openage, you are going to need 64-bit libraries. Add command line option `--triplet x64-windows` to the above command or add the environment variable `VCPKG_DEFAULT_TRIPLET=x64-windows` to build x64 libraries. [See here](https://github.com/Microsoft/vcpkg/issues/1254)
 
@@ -84,7 +84,7 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
     - `openage.dll` (Usually in `<openage directory>\build\libopenage\<config built>`.)
     - `nyan.dll` (The location depends on the procedure chosen to get nyan.)
     - DLLs from vcpkg-installed dependencies. Normally, these DLLs should be copied to `<openage directory>\build\libopenage\<config built>` during the build process. If they are not, you can find them in `<vcpkg directory>\installed\<relevant config>\bin`.
-      - If prebuilt QT5 was installed, the original location of QT5 DLLs is `<QT5 directory>\bin`.
+      - If prebuilt QT6 was installed, the original location of QT6 DLLs is `<QT6 directory>\bin`.
 
   - Now, to run the openage:
     - Open a CMD window in `<openage directory>\build\` and run `python -m openage game`

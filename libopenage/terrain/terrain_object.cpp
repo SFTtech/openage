@@ -1,16 +1,16 @@
-// Copyright 2013-2019 the openage authors. See copying.md for legal info.
+// Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 #include "terrain_object.h"
 
 #include <algorithm>
 #include <cmath>
 
+#include "../coord/phys.h"
+#include "../coord/pixel.h"
+#include "../coord/tile.h"
 #include "../engine.h"
 #include "../error/error.h"
 #include "../texture.h"
-#include "../coord/tile.h"
-#include "../coord/phys.h"
-#include "../coord/pixel.h"
 #include "../unit/unit.h"
 
 #include "terrain.h"
@@ -19,11 +19,10 @@
 
 namespace openage {
 
-TerrainObject::TerrainObject(Unit &u)
-	:
+TerrainObject::TerrainObject(Unit &u) :
 	unit(u),
-	passable{[](const coord::phys3 &) -> bool {return true;}},
-	draw{[](const Engine &/*e*/) {}},
+	passable{[](const coord::phys3 &) -> bool { return true; }},
+	draw{[](const LegacyEngine & /*e*/) {}},
 	state{object_state::removed},
 	occupied_chunk_count{0},
 	parent{nullptr} {
@@ -36,7 +35,6 @@ TerrainObject::~TerrainObject() {
 }
 
 bool TerrainObject::is_floating() const {
-
 	// if parent is floating then all children also are
 	if (this->parent && this->parent->is_floating()) {
 		return true;
@@ -45,18 +43,15 @@ bool TerrainObject::is_floating() const {
 }
 
 bool TerrainObject::is_placed() const {
-
 	// if object has a parent it must be placed
 	if (this->parent && !this->parent->is_placed()) {
 		return false;
 	}
-	return this->state == object_state::placed ||
-	       this->state == object_state::placed_no_collision;
+	return this->state == object_state::placed || this->state == object_state::placed_no_collision;
 }
 
 
 bool TerrainObject::check_collisions() const {
-
 	// if object has a parent it must be placed
 	if (this->parent && !this->parent->is_placed()) {
 		return false;
@@ -86,18 +81,13 @@ bool TerrainObject::place(object_state init_state) {
 		}
 
 		for (auto obj : chunk->get_data(temp_pos)->obj) {
-
 			// ignore self and annexes of self
-			if (obj != this &&
-				obj->get_parent() != this) {
-
+			if (obj != this && obj->get_parent() != this) {
 				if (obj->is_floating()) {
-
 					// floating objects get removed
 					to_remove.push_back(obj);
 				}
 				else if (obj->check_collisions()) {
-
 					// solid objects obstruct placement
 					return false;
 				}
@@ -159,8 +149,7 @@ void TerrainObject::remove() {
 	}
 	this->children.clear();
 
-	if (this->occupied_chunk_count == 0 ||
-	    this->state == object_state::removed) {
+	if (this->occupied_chunk_count == 0 || this->state == object_state::removed) {
 		return;
 	}
 
@@ -214,29 +203,28 @@ const TerrainObject *TerrainObject::get_parent() const {
 }
 
 std::vector<TerrainObject *> TerrainObject::get_children() const {
-
 	// TODO: a better performing way of doing this
 	// for example accept a lambda to use for each element
 	// or maintain a duplicate class field for raw pointers
 
 	std::vector<TerrainObject *> result;
-	for (auto &obj: this->children) {
+	for (auto &obj : this->children) {
 		result.push_back(obj.get());
 	}
 	return result;
 }
 
-bool TerrainObject::operator <(const TerrainObject &other) {
+bool TerrainObject::operator<(const TerrainObject &other) {
 	if (this == &other) {
 		return false;
 	}
 
-	auto this_ne    = this->pos.draw.ne;
-	auto this_se    = this->pos.draw.se;
-	auto other_ne   = other.pos.draw.ne;
-	auto other_se   = other.pos.draw.se;
+	auto this_ne = this->pos.draw.ne;
+	auto this_se = this->pos.draw.se;
+	auto other_ne = other.pos.draw.ne;
+	auto other_se = other.pos.draw.se;
 
-	auto this_ypos  = this_ne  - this_se;
+	auto this_ypos = this_ne - this_se;
 	auto other_ypos = other_ne - other_se;
 
 	if (this_ypos < other_ypos) {
@@ -281,7 +269,8 @@ void TerrainObject::place_unchecked(const std::shared_ptr<Terrain> &t, coord::ph
 		if (not chunk_known) {
 			this->occupied_chunk[this->occupied_chunk_count] = chunk;
 			this->occupied_chunk_count += 1;
-		} else {
+		}
+		else {
 			chunk_known = false;
 		}
 
@@ -289,13 +278,11 @@ void TerrainObject::place_unchecked(const std::shared_ptr<Terrain> &t, coord::ph
 	}
 }
 
-SquareObject::SquareObject(Unit &u, coord::tile_delta foundation_size)
-	:
+SquareObject::SquareObject(Unit &u, coord::tile_delta foundation_size) :
 	SquareObject(u, foundation_size, square_outline(foundation_size)) {
 }
 
-SquareObject::SquareObject(Unit &u, coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex)
-	:
+SquareObject::SquareObject(Unit &u, coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex) :
 	TerrainObject(u),
 	size(foundation_size) {
 	this->outline_texture = out_tex;
@@ -381,13 +368,11 @@ coord::phys_t SquareObject::min_axis() const {
 	return std::min(this->size.ne, this->size.se);
 }
 
-RadialObject::RadialObject(Unit &u, float rad)
-	:
+RadialObject::RadialObject(Unit &u, float rad) :
 	RadialObject(u, rad, radial_outline(rad)) {
 }
 
-RadialObject::RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex)
-	:
+RadialObject::RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex) :
 	TerrainObject(u),
 	phys_radius(rad) {
 	this->outline_texture = out_tex;
@@ -395,7 +380,7 @@ RadialObject::RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex)
 
 RadialObject::~RadialObject() = default;
 
-tile_range RadialObject::get_range(const coord::phys3 &pos, const Terrain &/*terrain*/) const {
+tile_range RadialObject::get_range(const coord::phys3 &pos, const Terrain & /*terrain*/) const {
 	tile_range result;
 
 	// create bounds
@@ -406,8 +391,8 @@ tile_range RadialObject::get_range(const coord::phys3 &pos, const Terrain &/*ter
 	p_end.se += this->phys_radius;
 
 	// set result
-	result.start   = p_start.to_tile3().to_tile();
-	result.end     = p_end.to_tile3().to_tile() + coord::tile_delta{ 1, 1 };
+	result.start = p_start.to_tile3().to_tile();
+	result.end = p_end.to_tile3().to_tile() + coord::tile_delta{1, 1};
 	result.draw = pos;
 	return result;
 }
@@ -415,8 +400,7 @@ tile_range RadialObject::get_range(const coord::phys3 &pos, const Terrain &/*ter
 coord::phys_t RadialObject::from_edge(const coord::phys3 &point) const {
 	return std::max(
 		coord::phys_t(point.to_phys2().distance(this->pos.draw.to_phys2())) - this->phys_radius,
-		static_cast<coord::phys_t>(0)
-	);
+		static_cast<coord::phys_t>(0));
 }
 
 coord::phys3 RadialObject::on_edge(const coord::phys3 &angle, coord::phys_t extra) const {
@@ -459,7 +443,6 @@ std::vector<coord::tile> tile_list(const tile_range &rng) {
 		tiles.push_back(rng.start);
 	}
 	return tiles;
-
 }
 
 tile_range building_center(coord::phys3 west, coord::tile_delta size, const Terrain &terrain) {
@@ -468,14 +451,14 @@ tile_range building_center(coord::phys3 west, coord::tile_delta size, const Terr
 	// TODO it should be possible that the building is placed on any position,
 	//      not just tile positions.
 	result.start = west.to_tile();
-	result.end   = result.start + size;
+	result.end = result.start + size;
 
 	coord::phys2 draw_pos = result.start.to_phys2();
 
 	draw_pos.ne += coord::phys_t(size.ne / 2.0f);
 	draw_pos.se += coord::phys_t(size.se / 2.0f);
 
-	result.draw  = draw_pos.to_phys3(terrain);
+	result.draw = draw_pos.to_phys3(terrain);
 	return result;
 }
 
@@ -495,4 +478,4 @@ bool complete_building(Unit &u) {
 	return false;
 }
 
-} // openage
+} // namespace openage

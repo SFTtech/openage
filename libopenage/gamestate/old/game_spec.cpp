@@ -1,10 +1,9 @@
-// Copyright 2015-2021 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "game_spec.h"
 
 #include <tuple>
 
-#include "../../assetmanager.h"
 #include "../../audio/error.h"
 #include "../../audio/resource_def.h"
 #include "../../engine.h"
@@ -17,13 +16,13 @@
 #include "../../util/compiler.h"
 #include "../../util/strings.h"
 #include "../../util/timer.h"
+#include "assets/legacy_assetmanager.h"
 #include "civilisation.h"
 
 
 namespace openage {
 
-GameSpec::GameSpec(AssetManager *am)
-	:
+GameSpec::GameSpec(LegacyAssetManager *am) :
 	assetmanager{am},
 	gamedata_loaded{false} {
 }
@@ -40,19 +39,16 @@ bool GameSpec::initialize() {
 	log::log(MSG(info) << "Loading game specification files...");
 
 	std::vector<gamedata::string_resource> string_resources = util::read_csv_file<gamedata::string_resource>(
-		asset_dir["converted/string_resources.docx"]
-	);
+		asset_dir["converted/string_resources.docx"]);
 
 	try {
 		// read the packed csv file
 		util::CSVCollection raw_gamedata{
-			asset_dir["converted/gamedata/gamedata.docx"]
-		};
+			asset_dir["converted/gamedata/gamedata.docx"]};
 
 		// parse the original game description files
 		this->gamedata = raw_gamedata.read<gamedata::empiresdat>(
-			"gamedata-empiresdat.docx"
-		);
+			"gamedata-empiresdat.docx");
 
 		this->load_terrain(this->gamedata[0]);
 
@@ -68,7 +64,7 @@ bool GameSpec::initialize() {
 		// unfortunately we have no idea of the std::exception backtrace
 		throw Error{ERR << "gamedata could not be loaded: "
 		                << util::typestring(exc)
-		                << ": "<< exc.what()};
+		                << ": " << exc.what()};
 	}
 
 	log::log(MSG(info).fmt("Loading time  [data]: %5.3f s",
@@ -184,7 +180,7 @@ void GameSpec::create_unit_types(unit_meta_list &objects, int civ_id) const {
 }
 
 
-AssetManager *GameSpec::get_asset_manager() const {
+LegacyAssetManager *GameSpec::get_asset_manager() const {
 	return this->assetmanager;
 }
 
@@ -219,7 +215,6 @@ void GameSpec::on_gamedata_loaded(const gamedata::empiresdat &gamedata) {
 		// processed in this loop
 		// these are the single sound files.
 		for (const gamedata::sound_item &item : sound.sound_items.data) {
-
 			if (item.resource_id < 0) {
 				log::log(SPAM << "   Invalid sound resource id < 0");
 				continue;
@@ -236,32 +231,28 @@ void GameSpec::on_gamedata_loaded(const gamedata::empiresdat &gamedata) {
 			sound_items.push_back(item.resource_id);
 
 			// the single sound will be loaded in the audio system.
-			audio::resource_def resource {
+			audio::resource_def resource{
 				audio::category_t::GAME,
 				item.resource_id,
 				snd_path,
 				audio::format_t::OPUS,
-				audio::loader_policy_t::DYNAMIC
-			};
+				audio::loader_policy_t::DYNAMIC};
 			load_sound_files.push_back(resource);
 		}
 
 
 		// create test sound objects that can be played later
-		this->available_sounds.insert({
-			sound.sound_id,
-			Sound{
-				this,
-				std::move(sound_items)
-			}
-		});
+		this->available_sounds.insert({sound.sound_id,
+		                               Sound{
+										   this,
+										   std::move(sound_items)}});
 	}
 
 	// TODO: move out the loading of the sound.
 	//       this class only provides the names and locations
 
 	// load the requested sounds.
-	audio::AudioManager &am = this->assetmanager->get_engine()->get_audio_manager();
+	audio::AudioManager &am = this->assetmanager->get_display()->get_audio_manager();
 	am.load_resources(load_sound_files);
 
 	// this final step occurs after loading media
@@ -280,7 +271,6 @@ bool GameSpec::valid_graphic_id(index_t graphic_id) const {
 }
 
 void GameSpec::load_building(const gamedata::building_unit &building, unit_meta_list &list) const {
-
 	// check graphics
 	if (this->valid_graphic_id(building.idle_graphic0)) {
 		auto meta_type = std::make_shared<UnitTypeMeta>("Building", building.id0, [this, &building](const Player &owner) {
@@ -291,11 +281,8 @@ void GameSpec::load_building(const gamedata::building_unit &building, unit_meta_
 }
 
 void GameSpec::load_living(const gamedata::living_unit &unit, unit_meta_list &list) const {
-
 	// check graphics
-	if (this->valid_graphic_id(unit.dying_graphic) &&
-		this->valid_graphic_id(unit.idle_graphic0) &&
-		this->valid_graphic_id(unit.move_graphics)) {
+	if (this->valid_graphic_id(unit.dying_graphic) && this->valid_graphic_id(unit.idle_graphic0) && this->valid_graphic_id(unit.move_graphics)) {
 		auto meta_type = std::make_shared<UnitTypeMeta>("Living", unit.id0, [this, &unit](const Player &owner) {
 			return std::make_shared<LivingProducer>(owner, *this, &unit);
 		});
@@ -304,7 +291,6 @@ void GameSpec::load_living(const gamedata::living_unit &unit, unit_meta_list &li
 }
 
 void GameSpec::load_object(const gamedata::unit_object &object, unit_meta_list &list) const {
-
 	// check graphics
 	if (this->valid_graphic_id(object.idle_graphic0)) {
 		auto meta_type = std::make_shared<UnitTypeMeta>("Object", object.id0, [this, &object](const Player &owner) {
@@ -315,7 +301,6 @@ void GameSpec::load_object(const gamedata::unit_object &object, unit_meta_list &
 }
 
 void GameSpec::load_missile(const gamedata::missile_unit &proj, unit_meta_list &list) const {
-
 	// check graphics
 	if (this->valid_graphic_id(proj.idle_graphic0)) {
 		auto meta_type = std::make_shared<UnitTypeMeta>("Projectile", proj.id0, [this, &proj](const Player &owner) {
@@ -327,12 +312,10 @@ void GameSpec::load_missile(const gamedata::missile_unit &proj, unit_meta_list &
 
 
 void GameSpec::load_terrain(const gamedata::empiresdat &gamedata) {
-
 	// fetch blending modes
 	util::Path convert_dir = this->assetmanager->get_asset_dir()["converted"];
 	std::vector<gamedata::blending_mode> blending_meta = util::read_csv_file<gamedata::blending_mode>(
-		convert_dir["blending_modes.docx"]
-	);
+		convert_dir["blending_modes.docx"]);
 
 	// copy the terrain metainformation
 	std::vector<gamedata::terrain_type> terrain_meta = gamedata.terrains.data;
@@ -342,42 +325,37 @@ void GameSpec::load_terrain(const gamedata::empiresdat &gamedata) {
 		std::remove_if(
 			terrain_meta.begin(),
 			terrain_meta.end(),
-			[] (const gamedata::terrain_type &t) {
+			[](const gamedata::terrain_type &t) {
 				return not t.enabled;
-			}
-		),
-		terrain_meta.end()
-	);
+			}),
+		terrain_meta.end());
 
 	// result attributes
-	this->terrain_data.terrain_id_count         = terrain_meta.size();
-	this->terrain_data.blendmode_count          = blending_meta.size();
+	this->terrain_data.terrain_id_count = terrain_meta.size();
+	this->terrain_data.blendmode_count = blending_meta.size();
 	this->terrain_data.textures.resize(terrain_data.terrain_id_count);
 	this->terrain_data.blending_masks.reserve(terrain_data.blendmode_count);
-	this->terrain_data.terrain_id_priority_map  = std::make_unique<int[]>(
-		this->terrain_data.terrain_id_count
-	);
+	this->terrain_data.terrain_id_priority_map = std::make_unique<int[]>(
+		this->terrain_data.terrain_id_count);
 	this->terrain_data.terrain_id_blendmode_map = std::make_unique<int[]>(
-		this->terrain_data.terrain_id_count
-	);
-	this->terrain_data.influences_buf           = std::make_unique<struct influence[]>(
-		this->terrain_data.terrain_id_count
-	);
+		this->terrain_data.terrain_id_count);
+	this->terrain_data.influences_buf = std::make_unique<struct influence[]>(
+		this->terrain_data.terrain_id_count);
 
 
-	log::log(MSG(dbg) << "Terrain prefs: " <<
-		"tiletypes=" << terrain_data.terrain_id_count << ", "
-		"blendmodes=" << terrain_data.blendmode_count);
+	log::log(MSG(dbg) << "Terrain prefs: "
+	                  << "tiletypes=" << terrain_data.terrain_id_count << ", "
+	                                                                      "blendmodes="
+	                  << terrain_data.blendmode_count);
 
 	// create tile textures (snow, ice, grass, whatever)
 	for (size_t terrain_id = 0;
 	     terrain_id < terrain_data.terrain_id_count;
 	     terrain_id++) {
-
 		auto line = &terrain_meta[terrain_id];
 
 		// TODO: terrain double-define check?
-		terrain_data.terrain_id_priority_map[terrain_id]  = line->blend_priority;
+		terrain_data.terrain_id_priority_map[terrain_id] = line->blend_priority;
 		terrain_data.terrain_id_blendmode_map[terrain_id] = line->blend_mode;
 
 		// TODO: remove hardcoding and rely on nyan data
@@ -403,12 +381,11 @@ void GameSpec::load_terrain(const gamedata::empiresdat &gamedata) {
 
 void GameSpec::create_abilities(const gamedata::empiresdat &gamedata) {
 	// use game data unit commands
-	int headers =  gamedata.unit_headers.data.size();
+	int headers = gamedata.unit_headers.data.size();
 	int total = 0;
 
 	// it seems the index of the header indicates the unit
 	for (int i = 0; i < headers; ++i) {
-
 		// init unit command vector
 		std::vector<const gamedata::unit_command *> list;
 
@@ -438,7 +415,7 @@ void Sound::play() const {
 
 	try {
 		// TODO: buhuuuu gnargghh this has to be moved to the asset loading subsystem hnnnng
-		audio::AudioManager &am = this->game_spec->get_asset_manager()->get_engine()->get_audio_manager();
+		audio::AudioManager &am = this->game_spec->get_asset_manager()->get_display()->get_audio_manager();
 
 		if (not am.is_available()) {
 			return;
@@ -452,8 +429,7 @@ void Sound::play() const {
 	}
 }
 
-GameSpecHandle::GameSpecHandle(qtsdl::GuiItemLink *gui_link)
-	:
+GameSpecHandle::GameSpecHandle(qtsdl::GuiItemLink *gui_link) :
 	active{},
 	asset_manager{},
 	gui_signals{std::make_shared<GameSpecSignals>()},
@@ -466,7 +442,7 @@ void GameSpecHandle::set_active(bool active) {
 	this->start_loading_if_needed();
 }
 
-void GameSpecHandle::set_asset_manager(AssetManager *asset_manager) {
+void GameSpecHandle::set_asset_manager(LegacyAssetManager *asset_manager) {
 	if (this->asset_manager != asset_manager) {
 		this->asset_manager = asset_manager;
 
@@ -498,7 +474,6 @@ std::shared_ptr<GameSpec> GameSpecHandle::get_spec() {
 
 void GameSpecHandle::start_loading_if_needed() {
 	if (this->active && this->asset_manager && !this->spec) {
-
 		// create the game specification
 		this->spec = std::make_shared<GameSpec>(this->asset_manager);
 
@@ -518,7 +493,7 @@ void GameSpecHandle::start_load_job() {
 		return std::get<std::shared_ptr<GameSpec>>(*spec_and_job_ptr)->initialize();
 	};
 
-	auto load_finished = [gui_signals_ptr = this->gui_signals.get()] (job::result_function_t<bool> result) {
+	auto load_finished = [gui_signals_ptr = this->gui_signals.get()](job::result_function_t<bool> result) {
 		bool load_ok;
 		try {
 			load_ok = result();
@@ -541,8 +516,8 @@ void GameSpecHandle::start_load_job() {
 	job::JobManager *job_mgr = this->asset_manager->get_engine()->get_job_manager();
 
 	std::get<job::Job<bool>>(*spec_and_job_ptr) = job_mgr->enqueue<bool>(
-		perform_load, load_finished
-	);
+		perform_load,
+		load_finished);
 }
 
-} // openage
+} // namespace openage

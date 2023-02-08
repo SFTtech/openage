@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -35,11 +35,12 @@ public:
 	/// A shader input mapping is only allowed when there is a single element in `buffers`. In such a case,
 	/// the vertex inputs are paired with VAO attributes according to the mapping instead of in ascending order.
 	GlVertexArray(const std::shared_ptr<GlContext> &context,
-	              std::vector<std::pair<GlBuffer const&, resources::VertexInputInfo const&>> buffers);
+	              std::vector<std::pair<GlBuffer const &, resources::VertexInputInfo const &>> buffers);
 
 	/// Executes the buffer list constructor with one element.
 	GlVertexArray(const std::shared_ptr<GlContext> &context,
-	              GlBuffer const&, resources::VertexInputInfo const&);
+	              GlBuffer const &,
+	              resources::VertexInputInfo const &);
 
 	/// The default constructor initializes an empty VAO with no attributes.
 	/// This is useful for bufferless drawing.
@@ -49,4 +50,6 @@ public:
 	void bind() const;
 };
 
-}}} // openage::renderer::opengl
+} // namespace opengl
+} // namespace renderer
+} // namespace openage

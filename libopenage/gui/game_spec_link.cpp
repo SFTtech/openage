@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "game_spec_link.h"
 
@@ -95,7 +95,7 @@ AssetManagerLink* GameSpecLink::get_asset_manager() const {
 }
 
 void GameSpecLink::set_asset_manager(AssetManagerLink *asset_manager) {
-	static auto f = [] (GameSpecHandle *_this, AssetManager *asset_manager) {
+	static auto f = [] (GameSpecHandle *_this, LegacyAssetManager *asset_manager) {
 		_this->set_asset_manager(asset_manager);
 	};
 	this->s(f, this->asset_manager, asset_manager);

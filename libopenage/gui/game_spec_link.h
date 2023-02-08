@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -20,15 +20,16 @@ namespace gui {
 class AssetManagerLink;
 class GameSpecLink;
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage
 
 namespace qtsdl {
-template<>
+template <>
 struct Wrap<openage::GameSpecHandle> {
 	using Type = openage::gui::GameSpecLink;
 };
 
-template<>
+template <>
 struct Unwrap<openage::gui::GameSpecLink> {
 	using Type = openage::GameSpecHandle;
 };
@@ -38,22 +39,26 @@ struct Unwrap<openage::gui::GameSpecLink> {
 namespace openage {
 namespace gui {
 
-class GameSpecLink : public qtsdl::GuiItemQObject, public QQmlParserStatus, public qtsdl::GuiItem<GameSpecLink> {
+class GameSpecLink : public qtsdl::GuiItemQObject
+	, public QQmlParserStatus
+	, public qtsdl::GuiItem<GameSpecLink> {
 	Q_OBJECT
 
 	Q_INTERFACES(QQmlParserStatus)
 	Q_ENUMS(State)
 	Q_PROPERTY(State state READ get_state NOTIFY state_changed)
 	Q_PROPERTY(bool active READ get_active WRITE set_active)
-	Q_PROPERTY(openage::gui::AssetManagerLink* assetManager READ get_asset_manager WRITE set_asset_manager)
+	Q_PROPERTY(openage::gui::AssetManagerLink *assetManager READ get_asset_manager WRITE set_asset_manager)
 	Q_PROPERTY(int terrainIdCount READ get_terrain_id_count NOTIFY terrain_id_count_changed)
 
 public:
-	explicit GameSpecLink(QObject *parent=nullptr);
+	explicit GameSpecLink(QObject *parent = nullptr);
 	virtual ~GameSpecLink();
 
 	enum class State {
-		Null, Loading, Ready
+		Null,
+		Loading,
+		Ready
 	};
 
 	State get_state() const;
@@ -61,7 +66,7 @@ public:
 	bool get_active() const;
 	void set_active(bool active);
 
-	AssetManagerLink* get_asset_manager() const;
+	AssetManagerLink *get_asset_manager() const;
 	void set_asset_manager(AssetManagerLink *asset_manager);
 
 	int get_terrain_id_count() const;
@@ -101,6 +106,5 @@ private:
 	std::shared_ptr<GameSpec> loaded_game_spec;
 };
 
-}} // namespace openage::gui
-
-Q_DECLARE_METATYPE(std::shared_ptr<openage::GameSpec>)
+} // namespace gui
+} // namespace openage
