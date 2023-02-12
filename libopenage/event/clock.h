@@ -40,6 +40,13 @@ public:
 	curve::time_t get_time();
 
 	/**
+     * Set the speed of the clock.
+     *
+     * @param speed New speed of the clock.
+     */
+	void set_speed(util::FixedPoint<int64_t, 16> speed);
+
+	/**
 	 * Start the simulation timer.
 	 */
 	void start();
@@ -56,19 +63,28 @@ public:
 
 private:
 	/**
+     * Update the simulation time.
+     */
+	void update_time();
+
+	/**
      * Status of the clock (init, running, stopped, ...).
      */
 	ClockState state;
 
 	/**
-     * Reference to an absolute point in time. \p sim_time is calculated
-	 * by diffing \p ref_time and \p simclock_t::now().
+     * How fast time passes relative to real time.
      */
-	timepoint_t ref_time;
+	util::FixedPoint<int64_t, 16> speed;
+
+	/**
+     * Last point in time where the clock was updated.
+     */
+	timepoint_t last_check;
 
 	/**
      * Stores the time of the latest simulation iteration. It is updated whenever
-	 * \p get_time() is called or the clock stops/resumes.
+	 * \p update_time() is called.
 	 *
 	 * The value essentially signifies how much time (in milliseconds) has passed
 	 * _inside_ the simulation between starting the clock and the latest time check.

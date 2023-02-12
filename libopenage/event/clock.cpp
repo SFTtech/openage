@@ -6,27 +6,41 @@ namespace openage::event {
 
 Clock::Clock() :
 	state{ClockState::INIT},
-	ref_time{simclock_t::now()},
+	speed{1.0f},
+	last_check{simclock_t::now()},
 	sim_time{dt_ms_t::zero()} {
 }
 
-curve::time_t Clock::get_time() {
+void Clock::update_time() {
 	if (this->state == ClockState::RUNNING) {
-		this->sim_time = std::chrono::duration_cast<std::chrono::milliseconds>(simclock_t::now() - this->ref_time);
+		auto now = simclock_t::now();
+		dt_ms_t offset = std::chrono::duration_cast<std::chrono::milliseconds>(now - this->last_check);
+		curve::time_t t = this->speed * offset.count();
+		this->sim_time += dt_ms_t(t.to_int());
+		this->last_check = now;
 	}
+}
 
+curve::time_t Clock::get_time() {
+	this->update_time();
 	return this->sim_time.count();
 }
 
+void Clock::set_speed(util::FixedPoint<int64_t, 16> speed) {
+	this->update_time();
+	this->speed = speed;
+}
+
 void Clock::start() {
-	this->ref_time = simclock_t::now();
-	this->sim_time = std::chrono::duration_cast<std::chrono::milliseconds>(simclock_t::now() - this->ref_time);
+	this->last_check = simclock_t::now();
 	this->state = ClockState::RUNNING;
+
+	this->update_time();
 }
 
 void Clock::stop() {
 	if (this->state == ClockState::RUNNING) {
-		this->sim_time = std::chrono::duration_cast<std::chrono::milliseconds>(simclock_t::now() - this->ref_time);
+		this->update_time();
 	}
 
 	this->state = ClockState::STOPPED;
@@ -34,8 +48,8 @@ void Clock::stop() {
 
 void Clock::resume() {
 	if (this->state == ClockState::STOPPED) [[likely]] {
-		this->ref_time = simclock_t::now() - this->sim_time;
 		this->state = ClockState::RUNNING;
+		this->update_time();
 	}
 }
 
