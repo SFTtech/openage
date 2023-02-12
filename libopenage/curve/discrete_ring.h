@@ -22,8 +22,19 @@ public:
 	 */
 	std::string idstr() const override;
 
+	/**
+	 * Get the raw value of the last keyframe with time <= (t - start) % time_length.
+	 */
 	T get_mod(const time_t &t, const time_t &start) const;
+
+	/**
+	 * Get the last time and keyframe with time <= (t - start) % time_length.
+	 */
 	std::pair<time_t, T> get_time_mod(const time_t &t, const time_t &start) const;
+
+	/**
+	 * Get, if existing, the time and value of keyframe with time < (t - start) % time_length.
+	 */
 	std::optional<std::pair<time_t, T>> get_previous_mod(const time_t &t, const time_t &start) const;
 
 private:
@@ -51,8 +62,7 @@ std::string DiscreteRing<T>::idstr() const {
 template <typename T>
 T DiscreteRing<T>::get_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
-	auto div = (offset / this->time_length).to_int();
-	time_t mod = offset - (offset * div);
+	time_t mod = offset % time_length;
 
 	auto e = this->container.last(mod, this->last_element);
 	this->last_element = e; // TODO if Caching?
@@ -62,8 +72,7 @@ T DiscreteRing<T>::get_mod(const time_t &time, const time_t &start) const {
 template <typename T>
 std::pair<time_t, T> DiscreteRing<T>::get_time_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
-	auto div = (offset / this->time_length).to_int();
-	time_t mod = offset - (offset * div);
+	time_t mod = offset % time_length;
 
 	auto e = this->container.last(mod, this->last_element);
 	this->last_element = e; // TODO if Caching?
@@ -73,8 +82,7 @@ std::pair<time_t, T> DiscreteRing<T>::get_time_mod(const time_t &time, const tim
 template <typename T>
 std::optional<std::pair<time_t, T>> DiscreteRing<T>::get_previous_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
-	auto div = (offset / this->time_length).to_int();
-	time_t mod = offset - (offset * div);
+	time_t mod = offset % time_length;
 
 	auto e = this->container.last(mod, this->last_element);
 	this->last_element = e; // TODO if Caching?
@@ -88,6 +96,5 @@ std::optional<std::pair<time_t, T>> DiscreteRing<T>::get_previous_mod(const time
 	e--;
 	return std::make_pair(e->time, e->value);
 }
-
 
 } // namespace openage::curve

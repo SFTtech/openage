@@ -2,9 +2,8 @@
 
 #include "discrete_ring.h"
 
-
 namespace openage::curve {
 
 // This file is intended to be empty
 
-}
+} // namespace openage::curve
