@@ -36,12 +36,6 @@ public:
 	 * Get, if existing, the time and value of keyframe with time < (t - start) % time_length.
 	 */
 	std::optional<std::pair<time_t, T>> get_previous_mod(const time_t &t, const time_t &start) const;
-
-private:
-	/**
-     * Time between first and last keyframe.
-     */
-	time_t time_length;
 };
 
 
@@ -62,7 +56,7 @@ std::string DiscreteRing<T>::idstr() const {
 template <typename T>
 T DiscreteRing<T>::get_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
-	time_t mod = offset % time_length;
+	time_t mod = offset % this->last_element->time;
 
 	auto e = this->container.last(mod, this->last_element);
 	this->last_element = e; // TODO if Caching?
@@ -72,7 +66,7 @@ T DiscreteRing<T>::get_mod(const time_t &time, const time_t &start) const {
 template <typename T>
 std::pair<time_t, T> DiscreteRing<T>::get_time_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
-	time_t mod = offset % time_length;
+	time_t mod = offset % this->last_element->time;
 
 	auto e = this->container.last(mod, this->last_element);
 	this->last_element = e; // TODO if Caching?
@@ -82,7 +76,7 @@ std::pair<time_t, T> DiscreteRing<T>::get_time_mod(const time_t &time, const tim
 template <typename T>
 std::optional<std::pair<time_t, T>> DiscreteRing<T>::get_previous_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
-	time_t mod = offset % time_length;
+	time_t mod = offset % this->last_element->time;
 
 	auto e = this->container.last(mod, this->last_element);
 	this->last_element = e; // TODO if Caching?
