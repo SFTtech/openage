@@ -8,7 +8,7 @@
 namespace openage::curve {
 
 template <typename T>
-class DiscreteRing : public Discrete<T> {
+class DiscreteMod : public Discrete<T> {
 	static_assert(std::is_copy_assignable<T>::value,
 	              "Template type is not copy assignable");
 	static_assert(std::is_copy_constructible<T>::value,
@@ -40,7 +40,7 @@ public:
 
 
 template <typename T>
-std::string DiscreteRing<T>::idstr() const {
+std::string DiscreteMod<T>::idstr() const {
 	std::stringstream ss;
 	ss << "DiscreteRingCurve[";
 	if (this->_idstr.size()) {
@@ -54,7 +54,7 @@ std::string DiscreteRing<T>::idstr() const {
 }
 
 template <typename T>
-T DiscreteRing<T>::get_mod(const time_t &time, const time_t &start) const {
+T DiscreteMod<T>::get_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
 	time_t mod = offset % this->last_element->time;
 
@@ -64,7 +64,7 @@ T DiscreteRing<T>::get_mod(const time_t &time, const time_t &start) const {
 }
 
 template <typename T>
-std::pair<time_t, T> DiscreteRing<T>::get_time_mod(const time_t &time, const time_t &start) const {
+std::pair<time_t, T> DiscreteMod<T>::get_time_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
 	time_t mod = offset % this->last_element->time;
 
@@ -74,7 +74,7 @@ std::pair<time_t, T> DiscreteRing<T>::get_time_mod(const time_t &time, const tim
 }
 
 template <typename T>
-std::optional<std::pair<time_t, T>> DiscreteRing<T>::get_previous_mod(const time_t &time, const time_t &start) const {
+std::optional<std::pair<time_t, T>> DiscreteMod<T>::get_previous_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
 	time_t mod = offset % this->last_element->time;
 
