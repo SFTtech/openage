@@ -1,24 +1,23 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <sstream>
 
-#include "keyframe_container.h"
 #include "../event/evententity.h"
 #include "../event/loop.h"
+#include "keyframe_container.h"
 
 
 namespace openage::curve {
 
-template<typename T>
+template <typename T>
 class BaseCurve : public event::EventEntity {
 public:
 	BaseCurve(const std::shared_ptr<event::Loop> &loop,
 	          size_t id,
-	          const std::string &idstr="",
-	          const EventEntity::single_change_notifier &notifier=nullptr)
-		:
+	          const std::string &idstr = "",
+	          const EventEntity::single_change_notifier &notifier = nullptr) :
 		EventEntity(loop, notifier),
 		_id{id},
 		_idstr{idstr},
@@ -29,7 +28,7 @@ public:
 
 	virtual T get(const time_t &t) const = 0;
 
-	virtual T operator ()(const time_t &now) {
+	virtual T operator()(const time_t &now) {
 		return get(now);
 	}
 
@@ -132,8 +131,10 @@ void BaseCurve<T>::set_last(const time_t &at, const T &value) {
 
 template <typename T>
 void BaseCurve<T>::set_insert(const time_t &at, const T &value) {
-	this->container.insert_after(at, value, this->last_element);
-	// TODO: check if this is now the last element, then remember it
+	auto hint = this->container.insert_after(at, value, this->last_element);
+	if (hint->time > this->last_element->time) {
+		this->last_element = hint;
+	}
 	this->changes(at);
 }
 
@@ -153,14 +154,14 @@ void BaseCurve<T>::erase(const time_t &at) {
 
 
 template <typename T>
-std::pair<time_t, const T&> BaseCurve<T>::frame(const time_t &time) const {
+std::pair<time_t, const T &> BaseCurve<T>::frame(const time_t &time) const {
 	auto e = this->container.last(time, this->container.end());
 	return std::make_pair(e->time, e->value);
 }
 
 
 template <typename T>
-std::pair<time_t, const T&> BaseCurve<T>::next_frame(const time_t &time) const {
+std::pair<time_t, const T &> BaseCurve<T>::next_frame(const time_t &time) const {
 	auto e = this->container.last(time, this->container.end());
 	e++;
 	return std::make_pair(e->time, e->value);
@@ -190,4 +191,4 @@ void BaseCurve<T>::check_integrity() const {
 }
 
 
-} // openage::curve
+} // namespace openage::curve
