@@ -7,6 +7,17 @@
 
 namespace openage::curve {
 
+/**
+ * Specialized discrete curve that allows wrapping simulation time values into an
+ * interval defined by the first and last keyframe. This is useful for
+ * data mapping to (pre-defined) consistent intervals that repeat very often, e.g.
+ * animation keyframes.
+ *
+ * When using this curve, consider that all keyframe times should be relative to
+ * the local interval time (and not simulation time), so the first keyframe should
+ * always be inserted at t = 0. Also, the last keyframe should have the same value
+ * as the first keyframe as a convention.
+ */
 template <typename T>
 class DiscreteMod : public Discrete<T> {
 	static_assert(std::is_copy_assignable<T>::value,
@@ -23,17 +34,17 @@ public:
 	std::string idstr() const override;
 
 	/**
-	 * Get the raw value of the last keyframe with time <= (t - start) % time_length.
+	 * Get the raw value of the last keyframe with time <= (t - start) % interval_length.
 	 */
 	T get_mod(const time_t &t, const time_t &start) const;
 
 	/**
-	 * Get the last time and keyframe with time <= (t - start) % time_length.
+	 * Get the last time and keyframe with time <= (t - start) % interval_length.
 	 */
 	std::pair<time_t, T> get_time_mod(const time_t &t, const time_t &start) const;
 
 	/**
-	 * Get, if existing, the time and value of keyframe with time < (t - start) % time_length.
+	 * Get, if existing, the time and value of keyframe with time < (t - start) % interval_length.
 	 */
 	std::optional<std::pair<time_t, T>> get_previous_mod(const time_t &t, const time_t &start) const;
 };
@@ -58,9 +69,7 @@ T DiscreteMod<T>::get_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
 	time_t mod = offset % this->last_element->time;
 
-	auto e = this->container.last(mod, this->last_element);
-	this->last_element = e; // TODO if Caching?
-	return e->value;
+	return Discrete<T>::get(mod);
 }
 
 template <typename T>
@@ -68,9 +77,7 @@ std::pair<time_t, T> DiscreteMod<T>::get_time_mod(const time_t &time, const time
 	time_t offset = time - start;
 	time_t mod = offset % this->last_element->time;
 
-	auto e = this->container.last(mod, this->last_element);
-	this->last_element = e; // TODO if Caching?
-	return std::make_pair(e->time, e->value);
+	return Discrete<T>::get_time(mod);
 }
 
 template <typename T>
@@ -78,17 +85,7 @@ std::optional<std::pair<time_t, T>> DiscreteMod<T>::get_previous_mod(const time_
 	time_t offset = time - start;
 	time_t mod = offset % this->last_element->time;
 
-	auto e = this->container.last(mod, this->last_element);
-	this->last_element = e; // TODO if Caching?
-
-	// if we're not at the container head
-	// go back one entry.
-	if (e == std::begin(this->container)) {
-		return {};
-	}
-
-	e--;
-	return std::make_pair(e->time, e->value);
+	return Discrete<T>::get_previous(mod);
 }
 
 } // namespace openage::curve
