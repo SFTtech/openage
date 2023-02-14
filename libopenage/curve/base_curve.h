@@ -105,7 +105,7 @@ protected:
 	const std::shared_ptr<event::Loop> loop;
 
 	/**
-	 * Cache the iterator for quickly finding the end
+	 * Cache the iterator for quickly finding the last accessed element (usually the end)
 	 */
 	mutable typename KeyframeContainer<T>::iterator last_element;
 };
@@ -132,6 +132,7 @@ void BaseCurve<T>::set_last(const time_t &at, const T &value) {
 template <typename T>
 void BaseCurve<T>::set_insert(const time_t &at, const T &value) {
 	auto hint = this->container.insert_after(at, value, this->last_element);
+	// check if this is now the final keyframe
 	if (hint->time > this->last_element->time) {
 		this->last_element = hint;
 	}
