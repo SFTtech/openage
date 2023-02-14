@@ -426,6 +426,14 @@ typename std::enable_if<std::is_arithmetic<N>::value, FixedPoint<I, F>>::type co
     -> a.rawvalue * a.rawvalue == 2^64 => pwnt
 */
 
+/**
+ * FixedPoint / FixedPoint
+ */
+template <typename I, unsigned int F>
+constexpr FixedPoint<I, F> operator/(const FixedPoint<I, F> lhs, const FixedPoint<I, F> rhs) {
+	return FixedPoint<I, F>::from_raw_value(div(lhs.get_raw_value(), rhs.get_raw_value()) << F);
+}
+
 
 /**
  * FixedPoint / N
@@ -440,8 +448,9 @@ constexpr FixedPoint<I, F> operator/(const FixedPoint<I, F> lhs, const N &rhs) {
  */
 template <typename I, unsigned int F>
 constexpr FixedPoint<I, F> operator%(const FixedPoint<I, F> lhs, const FixedPoint<I, F> rhs) {
-	auto div = (lhs / rhs).to_int();
-	return lhs - (lhs * div);
+	auto div = (lhs / rhs);
+	auto n = div.to_int();
+	return lhs - (rhs * n);
 }
 
 } // namespace util
