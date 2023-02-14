@@ -23,6 +23,9 @@ enum class ClockState {
 
 /**
  * Clock for timing simulation events.
+ *
+ * Time values have a precision of milliseconds which should
+ * be accurate enough for all applications.
  */
 class Clock {
 public:
@@ -30,12 +33,12 @@ public:
 	~Clock() = default;
 
 	/**
-	 * Get the current simulation time.
+	 * Get the current simulation time in seconds.
+     *
+     * The returned value has a precision of milliseconds, so it is
+     * accurate to three decimal places.
 	 *
-	 * This signifies the time that has passed between the start of the clock
-	 * and the current time. Time ratios are given in milliseconds.
-	 *
-	 * @return Time passed (in milliseconds).
+	 * @return Time passed (in seconds).
 	 */
 	curve::time_t get_time();
 

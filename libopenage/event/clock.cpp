@@ -16,6 +16,8 @@ void Clock::update_time() {
 		auto now = simclock_t::now();
 		dt_ms_t offset = std::chrono::duration_cast<std::chrono::milliseconds>(now - this->last_check);
 		curve::time_t t = this->speed * offset.count();
+
+		// save time in milliseconds
 		this->sim_time += dt_ms_t(t.to_int());
 		this->last_check = now;
 	}
@@ -23,7 +25,9 @@ void Clock::update_time() {
 
 curve::time_t Clock::get_time() {
 	this->update_time();
-	return this->sim_time.count();
+
+	// convert time unit from milliseconds to seconds
+	return curve::time_t(this->sim_time.count()) / 1000;
 }
 
 void Clock::set_speed(util::FixedPoint<int64_t, 16> speed) {
