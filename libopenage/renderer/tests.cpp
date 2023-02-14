@@ -15,9 +15,9 @@
 #include "renderer/geometry.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
+#include "renderer/resources/mesh_data.h"
 #include "renderer/resources/parser/parse_sprite.h"
 #include "renderer/resources/parser/parse_texture.h"
-#include "renderer/resources/mesh_data.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_data.h"
 #include "renderer/shader_program.h"
@@ -909,6 +909,10 @@ void renderer_demo_3(const util::Path &path) {
 		}
 	});
 
+	log::log(INFO << "Instructions:");
+	log::log(INFO << "  1. Move the camera with WASD");
+	log::log(INFO << "  2. Zoom in and out with MOUSE WHEEL");
+
 	while (not window->should_close()) {
 		qtapp->process_events();
 
@@ -947,6 +951,7 @@ void renderer_demo(int demo_id, const util::Path &path) {
 
 	case 3:
 		renderer_demo_3(path);
+		break;
 
 	default:
 		log::log(MSG(err) << "Unknown renderer demo requested: " << demo_id << ".");
