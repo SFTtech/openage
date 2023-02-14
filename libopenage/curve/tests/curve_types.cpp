@@ -1,15 +1,16 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
-#include "../../event/loop.h"
-#include "../../log/log.h"
-#include "../../testing/testing.h"
-#include "../continuous.h"
-#include "../curve.h"
-#include "../discrete.h"
-#include "../keyframe_container.h"
-#include "../segmented.h"
+#include "curve/curve.h"
+#include "curve/continuous.h"
+#include "curve/discrete.h"
+#include "curve/discrete_mod.h"
+#include "curve/keyframe_container.h"
+#include "curve/segmented.h"
+#include "event/loop.h"
+#include "log/log.h"
+#include "testing/testing.h"
 
-#include "../../util/compiler.h"
+#include "util/compiler.h"
 
 namespace openage::curve::tests {
 
@@ -217,6 +218,39 @@ void curve_types() {
 		TESTEQUALS(complex.get(10), "Test 10");
 	}
 
+	//Check the discrete mod type
+	{
+		auto f = std::make_shared<event::Loop>();
+		DiscreteMod<int> c(f, 0);
+		c.set_insert(0, 0);
+		c.set_insert(5, 20);
+		c.set_insert(10, 10);
+
+		TESTEQUALS(c.get(0), 0);
+		TESTEQUALS(c.get(1), 0);
+		TESTEQUALS(c.get(5), 20);
+		TESTEQUALS(c.get(10), 10);
+		TESTEQUALS(c.get(15), 10);
+
+		TESTEQUALS(c.get_mod(0, 0), 0);
+		TESTEQUALS(c.get_mod(1, 0), 0);
+		TESTEQUALS(c.get_mod(5, 0), 20);
+
+		// wraparound
+		TESTEQUALS(c.get_mod(10, 0), 0);
+		TESTEQUALS(c.get_mod(11, 0), 0);
+		TESTEQUALS(c.get_mod(16, 0), 20);
+
+		// start offsets
+		TESTEQUALS(c.get_mod(101, 100), 0);
+		TESTEQUALS(c.get_mod(1337, 1000), 20);
+
+		c.erase(10);
+		TESTEQUALS(c.get(15), 20);
+		TESTEQUALS(c.get_mod(5, 0), 0);
+		TESTEQUALS(c.get_mod(15, 0), 0);
+	}
+
 	//check set_last
 	{
 		auto f = std::make_shared<event::Loop>();
@@ -315,4 +349,4 @@ void curve_types() {
 	}
 }
 
-} // openage::curve::tests
+} // namespace openage::curve::tests
