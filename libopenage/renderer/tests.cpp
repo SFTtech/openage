@@ -33,6 +33,7 @@
 #include "renderer/stages/world/world_render_entity.h"
 #include "renderer/stages/world/world_renderer.h"
 
+#include "event/clock.h"
 
 namespace openage::renderer::tests {
 
@@ -934,6 +935,22 @@ void renderer_demo_3(const util::Path &path) {
 	window->close();
 }
 
+/**
+ * Demo the timing of animation keyframes with the simulation clock.
+ *
+ * @param path Path to the openage asset directory.
+ */
+void renderer_demo_4(const util::Path &path) {
+	auto clock = event::Clock();
+
+	clock.start();
+
+	while (true) {
+		log::log(INFO << "Time: " << clock.get_time());
+		sleep(1);
+	}
+}
+
 
 void renderer_demo(int demo_id, const util::Path &path) {
 	switch (demo_id) {
@@ -951,6 +968,10 @@ void renderer_demo(int demo_id, const util::Path &path) {
 
 	case 3:
 		renderer_demo_3(path);
+		break;
+
+	case 4:
+		renderer_demo_4(path);
 		break;
 
 	default:
