@@ -11,6 +11,8 @@ namespace openage::event {
 using simclock_t = std::chrono::steady_clock;
 using timepoint_t = std::chrono::time_point<simclock_t>;
 
+using speed_t = util::FixedPoint<int64_t, 16>;
+
 using dt_s_t = std::chrono::duration<long, std::ratio<1>>;
 using dt_ms_t = std::chrono::duration<long, std::milli>;
 
@@ -33,7 +35,12 @@ public:
 	~Clock() = default;
 
 	/**
-	 * Get the current simulation time in seconds.
+     * Update the simulation time.
+     */
+	void update_time();
+
+	/**
+	 * Get the current simulation time (in seconds).
      *
      * The returned value has a precision of milliseconds, so it is
      * accurate to three decimal places.
@@ -43,11 +50,23 @@ public:
 	curve::time_t get_time();
 
 	/**
+	 * Get the current simulation time without speed adjustments.
+     *
+     * The returned value has a precision of milliseconds, so it is
+     * accurate to three decimal places.
+	 *
+	 * @return Time passed (in seconds).
+	 */
+	curve::time_t get_real_time();
+
+	/**
      * Set the speed of the clock.
+	 * 
+	 * Simulation time is updated before changing speed.
      *
      * @param speed New speed of the clock.
      */
-	void set_speed(util::FixedPoint<int64_t, 16> speed);
+	void set_speed(speed_t speed);
 
 	/**
 	 * Start the simulation timer.
@@ -56,6 +75,8 @@ public:
 
 	/**
 	 * Stop the simulation timer.
+	 * 
+	 * Simulation time is updated before stopping.
 	 */
 	void stop();
 
@@ -66,19 +87,19 @@ public:
 
 private:
 	/**
-     * Update the simulation time.
-     */
-	void update_time();
-
-	/**
      * Status of the clock (init, running, stopped, ...).
      */
 	ClockState state;
 
 	/**
+	 * Maximum length of a simulation iteration (in milliseconds).
+	 */
+	uint16_t max_tick_time;
+
+	/**
      * How fast time passes relative to real time.
      */
-	util::FixedPoint<int64_t, 16> speed;
+	speed_t speed;
 
 	/**
      * Last point in time where the clock was updated.
@@ -86,13 +107,20 @@ private:
 	timepoint_t last_check;
 
 	/**
-     * Stores the time of the latest simulation iteration. It is updated whenever
-	 * \p update_time() is called.
-	 *
-	 * The value essentially signifies how much time (in milliseconds) has passed
-	 * _inside_ the simulation between starting the clock and the latest time check.
+     * Start of the simulation in real time.
      */
-	dt_ms_t sim_time;
+	timepoint_t start_time;
+
+	/**
+     * Stores how much time has passed inside the simulation (in milliseconds).
+     */
+	curve::time_t sim_time;
+
+	/**
+     * Stores how much time has passed inside the simulation (in milliseconds)
+	 * _without_ speed adjustments (i.e. it acts as if speed = 1.0).
+     */
+	curve::time_t sim_real_time;
 };
 
 } // namespace openage::event
