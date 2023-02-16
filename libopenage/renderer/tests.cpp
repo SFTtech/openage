@@ -946,8 +946,8 @@ void renderer_demo_4(const util::Path &path) {
 	clock.start();
 
 	while (true) {
-		log::log(INFO << "Time: " << clock.get_time());
-		sleep(1);
+		clock.update_time();
+		log::log(INFO << "Time: " << clock.get_time() << " (real = " << clock.get_real_time() << ")");
 	}
 }
 
