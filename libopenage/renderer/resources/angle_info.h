@@ -2,21 +2,24 @@
 
 #pragma once
 
+#include "frame_info.h"
+
+#include <cstddef>
 #include <memory>
 #include <vector>
-
-#include "frame_info.h"
 
 namespace openage::renderer::resources {
 
 class FrameInfo;
 
-// enum class flip_type
-// {
-// 	NONE,
-// 	FLIP_X,
-// 	FLIP_Y
-// };
+/**
+ * Describe whether/how the frame is mirrored
+ */
+enum class flip_type {
+	NONE, // do not flip
+	FLIP_X, // flip across x axis
+	FLIP_Y // flip across y axis
+};
 
 /**
  * Contains information about a 2D animation angle. It defines the
@@ -34,8 +37,9 @@ public:
      *                    defined frames.
 	 */
 	AngleInfo(const float angle_start,
-	          std::vector<FrameInfo> &frames,
-	          std::shared_ptr<AngleInfo> mirror_from = nullptr);
+	          std::vector<std::shared_ptr<FrameInfo>> &frames,
+	          std::shared_ptr<AngleInfo> mirror_from = nullptr,
+	          flip_type mirror_type = flip_type::NONE);
 
 	AngleInfo() = default;
 	~AngleInfo() = default;
@@ -75,7 +79,7 @@ public:
 	 *
 	 * @return A frame information object.
 	 */
-	const FrameInfo &get_frame(size_t idx) const;
+	const std::shared_ptr<FrameInfo> &get_frame(size_t idx) const;
 
 private:
 	/**
@@ -83,17 +87,20 @@ private:
      */
 	float angle_start;
 
-	// flip_type mirror_type;
-
 	/**
      * Frame information.
      */
-	std::vector<FrameInfo> frames;
+	std::vector<std::shared_ptr<FrameInfo>> frames;
 
 	/**
      * Mirrored angle information.
      */
 	std::shared_ptr<AngleInfo> mirror_from = nullptr;
+
+	/**
+	 * How the frame should be displayed if its mirrored.
+	 */
+	flip_type mirror_type = flip_type::NONE;
 };
 
 } // namespace openage::renderer::resources

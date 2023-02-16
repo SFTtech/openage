@@ -362,20 +362,20 @@ void renderer_demo_1(const util::Path &path) {
 		for (size_t i = 0; i < layer_info.get_angle_count(); ++i) {
 			auto angle_info = layer_info.get_angle(i);
 			log::log(INFO << "      angle " << i << ":");
-			log::log(INFO << "        degree: " << angle_info.get_angle_start());
-			log::log(INFO << "        frame count: " << angle_info.get_frame_count());
-			log::log(INFO << "        mirrored: " << angle_info.is_mirrored());
+			log::log(INFO << "        degree: " << angle_info->get_angle_start());
+			log::log(INFO << "        frame count: " << angle_info->get_frame_count());
+			log::log(INFO << "        mirrored: " << angle_info->is_mirrored());
 
-			if (angle_info.is_mirrored()) {
+			if (angle_info->is_mirrored()) {
 				log::log(INFO << "        mirrored angle: "
-				              << angle_info.get_mirrored_angle().get()->get_angle_start());
+				              << angle_info->get_mirrored_angle().get()->get_angle_start());
 			}
 			else {
-				for (size_t i = 0; i < angle_info.get_frame_count(); ++i) {
-					auto frame_info = angle_info.get_frame(i);
+				for (size_t i = 0; i < angle_info->get_frame_count(); ++i) {
+					auto frame_info = angle_info->get_frame(i);
 					log::log(INFO << "        frame " << i << ":");
-					log::log(INFO << "          texture idx: " << frame_info.get_texture_idx());
-					log::log(INFO << "          subtexture idx: " << frame_info.get_subtexture_idx());
+					log::log(INFO << "          texture idx: " << frame_info->get_texture_idx());
+					log::log(INFO << "          subtexture idx: " << frame_info->get_subtexture_idx());
 				}
 			}
 		}

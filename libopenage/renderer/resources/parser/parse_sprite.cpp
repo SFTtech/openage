@@ -1,11 +1,12 @@
 // Copyright 2021-2021 the openage authors. See copying.md for legal info.
 
+#include "parse_sprite.h"
+
 #include <functional>
 
-#include "../../../error/error.h"
-#include "../../../util/strings.h"
-#include "parse_sprite.h"
-#include "parse_texture.h"
+#include "error/error.h"
+#include "renderer/resources/parser/parse_texture.h"
+#include "util/strings.h"
 
 namespace openage::renderer::resources::parser {
 
@@ -175,6 +176,9 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 	std::vector<LayerData> layers;
 	std::vector<AngleData> angles;
 
+	// largest frame index = total length of animation
+	size_t largest_frame_idx = 0;
+
 	// Map frame data to angle
 	std::unordered_map<size_t, std::vector<FrameData>> frames;
 
@@ -208,6 +212,12 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 				frames.emplace(std::make_pair(frame.angle, angle_frames));
 			}
 			frames.at(frame.angle).push_back(frame);
+
+			// check for the largest index, so we can use it to
+			// interpolate the total animation length
+			if (frame.index > largest_frame_idx) {
+				largest_frame_idx = frame.index;
+			}
 		}));
 
 	for (auto line : lines) {
@@ -228,9 +238,9 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 	}
 
 	// Order frames by index
-	for (auto frame : frames) {
-		std::sort(frame.second.begin(),
-		          frame.second.end(),
+	for (auto angle_frames : frames) {
+		std::sort(angle_frames.second.begin(),
+		          angle_frames.second.end(),
 		          [](FrameData &f1, FrameData &f2) {
 					  return f1.index < f2.index;
 				  });
@@ -248,30 +258,35 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 
 	std::vector<LayerInfo> layer_infos;
 	for (auto layer : layers) {
-		std::vector<AngleInfo> angle_infos;
-		std::vector<std::shared_ptr<AngleInfo>> angle_info_ptrs;
+		std::vector<std::shared_ptr<AngleInfo>> angle_infos;
 		for (auto angle : angles) {
-			std::vector<FrameInfo> frame_infos;
+			std::vector<std::shared_ptr<FrameInfo>> frame_infos;
 			if (angle.mirror_from < 0) {
 				for (auto frame : frames[angle.degree]) {
 					if (frame.layer_id != layer.layer_id) {
 						continue;
 					}
 					if (frame.index > frame_infos.size()) {
-						// TODO: Add empty frames if no frame exists for an index
+						// set empty frames if an index is missing
 						for (size_t i = frame_infos.size() - 1; i < frame.index; ++i) {
-							// frame_infos.emplace_back();
+							frame_infos.push_back(nullptr);
 						}
 					}
-					frame_infos.emplace_back(texture_id_map[frame.texture_id],
-					                         frame.subtex_id);
+					frame_infos.push_back(std::make_shared<FrameInfo>(
+						texture_id_map[frame.texture_id],
+						frame.subtex_id));
 				}
-				angle_info_ptrs.emplace_back(std::make_shared<AngleInfo>(angle.degree, frame_infos));
-				angle_infos.emplace_back(angle.degree, frame_infos);
+				if (frame_infos.size() < largest_frame_idx) {
+					// insert empty frames at the end if an indices are missing
+					for (size_t i = frame_infos.size() - 1; i < largest_frame_idx; ++i) {
+						frame_infos.push_back(nullptr);
+					}
+				}
+				angle_infos.push_back(std::make_shared<AngleInfo>(angle.degree, frame_infos));
 			}
 			else {
-				auto angle_info_ptr = angle_info_ptrs[angle_id_map[angle.mirror_from]];
-				angle_infos.emplace_back(angle.degree, frame_infos, angle_info_ptr);
+				auto angle_info_ptr = angle_infos[angle_id_map[angle.mirror_from]];
+				angle_infos.push_back(angle_info_ptr);
 			}
 		}
 
@@ -283,7 +298,6 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 	}
 
 	// Parse textures
-	// TODO: Check if texture is already loaded
 	std::vector<Texture2dInfo> texture_infos;
 	for (auto texture : textures) {
 		util::Path texturepath = (file.get_parent() / texture.path);

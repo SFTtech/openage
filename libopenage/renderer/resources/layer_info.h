@@ -2,16 +2,18 @@
 
 #pragma once
 
+#include "angle_info.h"
+
+#include <cstddef>
 #include <vector>
 
-#include "angle_info.h"
+#include "curve/discrete_mod.h"
 
 namespace openage::renderer::resources {
 
 class AngleInfo;
 
-enum class display_mode
-{
+enum class display_mode {
 	OFF, // Only show first frame
 	ONCE, // Play loop once
 	LOOP // Loop indefinitely
@@ -33,13 +35,12 @@ public:
 	 * @param replay_delay Additional time (in seconds) to display the last frame in a loop.
 	 * @param angles Angle information.
 	 */
-	LayerInfo(std::vector<AngleInfo> &angles,
+	LayerInfo(std::vector<std::shared_ptr<AngleInfo>> &angles,
 	          const display_mode mode = display_mode::OFF,
 	          const size_t position = 0,
 	          const float time_per_frame = 0.0,
 	          const float replay_delay = 0.0);
 
-	LayerInfo() = default;
 	~LayerInfo() = default;
 
 	/**
@@ -84,7 +85,14 @@ public:
 	 *
 	 * @return An angle information object.
 	 */
-	const AngleInfo &get_angle(size_t idx) const;
+	const std::shared_ptr<AngleInfo> &get_angle(size_t idx) const;
+
+	/**
+	 * Get the frame timing information of this layer.
+	 *
+	 * @return Curve associating time with frame indices.
+	 */
+	const std::shared_ptr<curve::DiscreteMod<size_t>> &get_frame_timing() const;
 
 
 private:
@@ -111,7 +119,12 @@ private:
 	/**
 	 * Angle information.
 	 */
-	std::vector<AngleInfo> angles;
+	std::vector<std::shared_ptr<AngleInfo>> angles;
+
+	/**
+	 * Frame timing in the animated sequence.
+	 */
+	std::shared_ptr<curve::DiscreteMod<size_t>> frame_timing;
 };
 
 } // namespace openage::renderer::resources

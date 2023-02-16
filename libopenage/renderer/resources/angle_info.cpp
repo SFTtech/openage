@@ -5,11 +5,13 @@
 namespace openage::renderer::resources {
 
 AngleInfo::AngleInfo(const float angle_start,
-                     std::vector<FrameInfo> &frames,
-                     std::shared_ptr<AngleInfo> mirror_from) :
+                     std::vector<std::shared_ptr<FrameInfo>> &frames,
+                     std::shared_ptr<AngleInfo> mirror_from,
+                     flip_type mirror_type) :
 	angle_start{angle_start},
 	frames{frames},
-	mirror_from{mirror_from} {}
+	mirror_from{mirror_from},
+	mirror_type{mirror_type} {}
 
 float AngleInfo::get_angle_start() const {
 	return this->angle_start;
@@ -27,7 +29,7 @@ size_t AngleInfo::get_frame_count() const {
 	return this->frames.size();
 }
 
-const FrameInfo &AngleInfo::get_frame(size_t idx) const {
+const std::shared_ptr<FrameInfo> &AngleInfo::get_frame(size_t idx) const {
 	if (!(this->mirror_from == nullptr)) {
 		return this->mirror_from->get_frame(idx);
 	}
