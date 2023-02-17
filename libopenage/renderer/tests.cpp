@@ -47,7 +47,7 @@ namespace openage::renderer::tests {
  * Shows the renderer's ability to create textured renderable objects and
  * allow basic interaction with them via mouse/key callbacks.
  *
- * @param path Unused.
+ * @param path Path to project rootdir.
  */
 void renderer_demo_0(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
@@ -55,80 +55,37 @@ void renderer_demo_0(const util::Path &path) {
 	opengl::GlWindow window("openage renderer test", 800, 600);
 	auto renderer = window.make_renderer();
 
+	auto shaderdir = path / "assets" / "test" / "shaders";
+
 	/* Shader for individual objects in pass 1. */
+	auto obj_vshader_file = (shaderdir / "demo_0_obj.vert.glsl").open();
 	auto obj_vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
-		R"s(
-#version 330
+		obj_vshader_file.read());
+	obj_vshader_file.close();
 
-layout(location=0) in vec2 position;
-layout(location=1) in vec2 uv;
-uniform mat4 mv;
-uniform mat4 proj;
-out vec2 v_uv;
-
-void main() {
-	gl_Position = proj * mv * vec4(position, 0.0, 1.0);
-	v_uv = vec2(uv.x, 1.0 - uv.y);
-}
-)s");
-
+	auto obj_fshader_file = (shaderdir / "demo_0_obj.frag.glsl").open();
 	auto obj_fshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
-		R"s(
-#version 330
-
-in vec2 v_uv;
-uniform sampler2D tex;
-uniform uint u_id;
-
-layout(location=0) out vec4 col;
-layout(location=1) out uint id;
-
-void main() {
-	vec4 tex_val = texture(tex, v_uv);
-	if (tex_val.a == 0) {
-		discard;
-	}
-	col = tex_val;
-	id = u_id;
-}
-)s");
+		obj_fshader_file.read());
+	obj_fshader_file.close();
 
 	/* Shader for copying the framebuffer in pass 2. */
+	auto display_vshader_file = (shaderdir / "demo_0_display.vert.glsl").open();
 	auto display_vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
-		R"s(
-#version 330
+		display_vshader_file.read());
+	display_vshader_file.close();
 
-layout(location=0) in vec2 position;
-layout(location=1) in vec2 uv;
-out vec2 v_uv;
-
-void main() {
-	gl_Position =  vec4(position, 0.0, 1.0);
-	v_uv = uv;
-}
-)s");
-
+	auto display_fshader_file = (shaderdir / "demo_0_display.frag.glsl").open();
 	auto display_fshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
-		R"s(
-#version 330
-
-uniform sampler2D color_texture;
-
-in vec2 v_uv;
-out vec4 col;
-
-void main() {
-	col = texture(color_texture, v_uv);
-}
-)s");
+		display_fshader_file.read());
+	display_fshader_file.close();
 
 	auto obj_shader = renderer->add_shader({obj_vshader_src, obj_fshader_src});
 	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
@@ -384,100 +341,37 @@ void renderer_demo_1(const util::Path &path) {
 	/* Display the subtextures using the meta information */
 	log::log(INFO << "Loading shaders...");
 
+	auto shaderdir = path / "assets" / "test" / "shaders";
+
 	/* Shader for individual objects in pass 1. */
+	auto obj_vshader_file = (shaderdir / "demo_1_obj.vert.glsl").open();
 	auto obj_vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
-		R"s(
-#version 330
+		obj_vshader_file.read());
+	obj_vshader_file.close();
 
-layout(location=0) in vec2 position;
-layout(location=1) in vec2 uv;
-
-uniform mat4 mv;
-uniform mat4 proj;
-uniform vec4 offset_tile;
-
-float width = offset_tile.y - offset_tile.x;
-float height = offset_tile.w - offset_tile.z;
-
-out vec2 v_uv;
-
-void main() {
-	gl_Position = proj * mv * vec4(position, 0.0, 1.0);
-    v_uv = vec2((uv.x * width) + offset_tile.x, (((1.0 - uv.y) * height) + offset_tile.z));
-}
-)s");
-
+	auto obj_fshader_file = (shaderdir / "demo_1_obj.frag.glsl").open();
 	auto obj_fshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
-		R"s(
-#version 330
-
-in vec2 v_uv;
-uniform sampler2D tex;
-uniform uint u_id;
-
-layout(location=0) out vec4 col;
-layout(location=1) out uint id;
-
-void main() {
-	vec4 tex_val = texture(tex, v_uv);
-	int alpha = int(round(tex_val.a * 255));
-	switch (alpha) {
-		case 0:
-		discard;
-		break;
-		case 254:
-		col = vec4(1.0f, 0.0f, 0.0f, 1.0f);
-		break;
-		case 252:
-		col = vec4(0.0f, 1.0f, 0.0f, 1.0f);
-		break;
-		case 250:
-		col = vec4(0.0f, 0.0f, 1.0f, 1.0f);
-		break;
-		default:
-	    col = tex_val;
-		break;
-	}
-	id = u_id;
-}
-)s");
+		obj_fshader_file.read());
+	obj_fshader_file.close();
 
 	/* Shader for copying the framebuffer in pass 2. */
+	auto display_vshader_file = (shaderdir / "demo_1_display.vert.glsl").open();
 	auto display_vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
-		R"s(
-#version 330
+		display_vshader_file.read());
+	display_vshader_file.close();
 
-layout(location=0) in vec2 position;
-layout(location=1) in vec2 uv;
-out vec2 v_uv;
-
-void main() {
-	gl_Position = vec4(position, 0.0, 1.0);
-	v_uv = uv;
-}
-)s");
-
+	auto display_fshader_file = (shaderdir / "demo_1_display.frag.glsl").open();
 	auto display_fshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
-		R"s(
-#version 330
-
-uniform sampler2D color_texture;
-
-in vec2 v_uv;
-out vec4 col;
-
-void main() {
-	col = texture(color_texture, v_uv);
-}
-)s");
+		display_fshader_file.read());
+	display_fshader_file.close();
 
 	auto obj_shader = renderer->add_shader({obj_vshader_src, obj_fshader_src});
 	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
@@ -700,37 +594,28 @@ void main() {
  * Basic test for creating a window and displaying a single-color texture
  * created by a shader.
  */
-void renderer_demo_2() {
+void renderer_demo_2(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
 	opengl::GlWindow window("openage renderer test", 800, 600);
 	auto renderer = window.make_renderer();
 
+	auto shaderdir = path / "assets" / "test" / "shaders";
+
+	/* Shader for copying the framebuffer in pass 2. */
+	auto display_vshader_file = (shaderdir / "demo_2_display.vert.glsl").open();
 	auto display_vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
-		R"s(
-#version 330
+		display_vshader_file.read());
+	display_vshader_file.close();
 
-layout(location=0) in vec2 position;
-
-void main() {
-	gl_Position = vec4(position, 0.0, 1.0);
-}
-)s");
-
+	auto display_fshader_file = (shaderdir / "demo_2_display.frag.glsl").open();
 	auto display_fshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
-		R"s(
-#version 330
-
-out vec4 col;
-
-void main() {
-    col = vec4(1.0, 0.4, 0.0, 0.8);
-}
-)s");
+		display_fshader_file.read());
+	display_fshader_file.close();
 
 	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
 
@@ -955,100 +840,37 @@ void renderer_demo_4(const util::Path &path) {
 	/* Display the subtextures using the meta information */
 	log::log(INFO << "Loading shaders...");
 
+	auto shaderdir = path / "assets" / "test" / "shaders";
+
 	/* Shader for individual objects in pass 1. */
+	auto obj_vshader_file = (shaderdir / "demo_4_obj.vert.glsl").open();
 	auto obj_vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
-		R"s(
-#version 330
+		obj_vshader_file.read());
+	obj_vshader_file.close();
 
-layout(location=0) in vec2 position;
-layout(location=1) in vec2 uv;
-
-uniform mat4 mv;
-uniform mat4 proj;
-uniform vec4 offset_tile;
-
-float width = offset_tile.y - offset_tile.x;
-float height = offset_tile.w - offset_tile.z;
-
-out vec2 v_uv;
-
-void main() {
-	gl_Position = proj * mv * vec4(position, 0.0, 1.0);
-    v_uv = vec2((uv.x * width) + offset_tile.x, (((1.0 - uv.y) * height) + offset_tile.z));
-}
-)s");
-
+	auto obj_fshader_file = (shaderdir / "demo_4_obj.frag.glsl").open();
 	auto obj_fshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
-		R"s(
-#version 330
-
-in vec2 v_uv;
-uniform sampler2D tex;
-uniform uint u_id;
-
-layout(location=0) out vec4 col;
-layout(location=1) out uint id;
-
-void main() {
-	vec4 tex_val = texture(tex, v_uv);
-	int alpha = int(round(tex_val.a * 255));
-	switch (alpha) {
-		case 0:
-		discard;
-		break;
-		case 254:
-		col = vec4(1.0f, 0.0f, 0.0f, 1.0f);
-		break;
-		case 252:
-		col = vec4(0.0f, 1.0f, 0.0f, 1.0f);
-		break;
-		case 250:
-		col = vec4(0.0f, 0.0f, 1.0f, 1.0f);
-		break;
-		default:
-	    col = tex_val;
-		break;
-	}
-	id = u_id;
-}
-)s");
+		obj_fshader_file.read());
+	obj_fshader_file.close();
 
 	/* Shader for copying the framebuffer in pass 2. */
+	auto display_vshader_file = (shaderdir / "demo_4_display.vert.glsl").open();
 	auto display_vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
-		R"s(
-#version 330
+		display_vshader_file.read());
+	display_vshader_file.close();
 
-layout(location=0) in vec2 position;
-layout(location=1) in vec2 uv;
-out vec2 v_uv;
-
-void main() {
-	gl_Position = vec4(position, 0.0, 1.0);
-	v_uv = uv;
-}
-)s");
-
+	auto display_fshader_file = (shaderdir / "demo_4_display.frag.glsl").open();
 	auto display_fshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
-		R"s(
-#version 330
-
-uniform sampler2D color_texture;
-
-in vec2 v_uv;
-out vec4 col;
-
-void main() {
-	col = texture(color_texture, v_uv);
-}
-)s");
+		display_fshader_file.read());
+	display_fshader_file.close();
 
 	auto obj_shader = renderer->add_shader({obj_vshader_src, obj_fshader_src});
 	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
@@ -1229,7 +1051,7 @@ void renderer_demo(int demo_id, const util::Path &path) {
 		break;
 
 	case 2:
-		renderer_demo_2();
+		renderer_demo_2(path);
 		break;
 
 	case 3:
