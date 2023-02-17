@@ -319,7 +319,7 @@ void renderer_demo_1(const util::Path &path) {
 	auto renderer = window.make_renderer();
 
 	/* Load texture file standalone. */
-	auto tex_path = path / "assets/tests/renderer/1/test_texture.texture";
+	auto tex_path = path / "assets/test/textures/test_texture.texture";
 	auto tex_info = renderer::resources::parser::parse_texture_file(tex_path);
 
 	log::log(INFO << "Loaded texture " << tex_path.resolve_native_path());
@@ -339,7 +339,7 @@ void renderer_demo_1(const util::Path &path) {
 	log::log(INFO << "  subtex count: " << tex_info.get_subtexture_count());
 
 	/* Load animation file using the texture. */
-	auto sprite_path = path / "assets/tests/renderer/1/test_animation.sprite";
+	auto sprite_path = path / "assets/test/textures/test_animation.sprite";
 	auto sprite_info = renderer::resources::parser::parse_sprite_file(sprite_path);
 
 	log::log(INFO << "Loaded animation " << sprite_path.resolve_native_path());
@@ -951,7 +951,7 @@ void renderer_demo_4(const util::Path &path) {
 	auto clock = event::Clock();
 
 	/* Load animation file */
-	auto sprite_path = path / "assets/tests/renderer/1/test_animation.sprite";
+	auto sprite_path = path / "assets/test/textures/test_animation.sprite";
 	auto sprite_info = renderer::resources::parser::parse_sprite_file(sprite_path);
 
 	/* Display the subtextures using the meta information */
