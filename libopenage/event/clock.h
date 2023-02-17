@@ -66,6 +66,13 @@ public:
 	curve::time_t get_real_time();
 
 	/**
+     * Get the current speed of the clock.
+	 * 
+	 * @return Speed of the clock.
+     */
+	speed_t get_speed();
+
+	/**
      * Set the speed of the clock.
 	 * 
 	 * Simulation time is updated before changing speed.

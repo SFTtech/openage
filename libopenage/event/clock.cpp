@@ -55,10 +55,15 @@ curve::time_t Clock::get_real_time() {
 	return this->sim_real_time / 1000;
 }
 
-void Clock::set_speed(speed_t speed) {
-	std::unique_lock lock{this->mutex};
+speed_t Clock::get_speed() {
+	std::shared_lock lock{this->mutex};
+	return this->speed;
+}
 
+void Clock::set_speed(speed_t speed) {
 	this->update_time();
+
+	std::unique_lock lock{this->mutex};
 	this->speed = speed;
 }
 
@@ -72,12 +77,11 @@ void Clock::start() {
 }
 
 void Clock::stop() {
-	std::unique_lock lock{this->mutex};
-
 	if (this->state == ClockState::RUNNING) [[likely]] {
 		this->update_time();
 	}
 
+	std::unique_lock lock{this->mutex};
 	this->state = ClockState::STOPPED;
 }
 
