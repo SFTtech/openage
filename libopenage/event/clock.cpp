@@ -14,6 +14,11 @@ Clock::Clock() :
 	sim_real_time{0} {
 }
 
+ClockState Clock::get_state() {
+	std::shared_lock lock{this->mutex};
+	return this->state;
+}
+
 void Clock::update_time() {
 	if (this->state == ClockState::RUNNING) {
 		std::unique_lock lock{this->mutex};

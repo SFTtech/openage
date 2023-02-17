@@ -36,6 +36,11 @@ public:
 	~Clock() = default;
 
 	/**
+     * Get the current state of the clock.
+     */
+	ClockState get_state();
+
+	/**
      * Update the simulation time.
      */
 	void update_time();
