@@ -833,6 +833,11 @@ void renderer_demo_4(const util::Path &path) {
 	/* Clock for timed display */
 	auto clock = event::Clock();
 
+	/* Controls whether animations are use "real" time for frame timings (if true)
+	   or the actual simulation time (if false). When simulation time is used,
+	   the animation speed increases with the clock speed.*/
+	bool real_time_animation = true;
+
 	/* Load animation file */
 	auto sprite_path = path / "assets/test/textures/test_animation.sprite";
 	auto sprite_info = renderer::resources::parser::parse_sprite_file(sprite_path);
@@ -983,6 +988,48 @@ void renderer_demo_4(const util::Path &path) {
 		pass1->set_target(fbo);
 	});
 
+	// Control simulation clock
+	window.add_key_callback([&](const QKeyEvent &ev) {
+		auto key = ev.key();
+
+		switch (key) {
+		case Qt::Key_Space: {
+			if (clock.get_state() == event::ClockState::RUNNING) {
+				clock.stop();
+				log::log(INFO << "Stopped simulation at " << clock.get_time() << " (real = " << clock.get_real_time() << ")");
+			}
+			else if (clock.get_state() == event::ClockState::STOPPED) {
+				clock.resume();
+				log::log(INFO << "Resumed simulation at " << clock.get_time() << " (real = " << clock.get_real_time() << ")");
+			}
+		} break;
+		case Qt::Key_Return: {
+			real_time_animation = not real_time_animation;
+			if (real_time_animation) {
+				log::log(INFO << "Animation speed switched to REAL time");
+			}
+			else {
+				log::log(INFO << "Animation speed switched to SIMULATION time");
+			}
+		} break;
+		case Qt::Key_Minus: {
+			clock.set_speed(clock.get_speed() - 0.5);
+			log::log(INFO << "Increased clock speed to: " << clock.get_speed());
+		} break;
+		case Qt::Key_Plus: {
+			clock.set_speed(clock.get_speed() + 0.5);
+			log::log(INFO << "Decreased clock speed to: " << clock.get_speed());
+		} break;
+		default:
+			break;
+		}
+	});
+
+	log::log(INFO << "Instructions:");
+	log::log(INFO << "  1. Press SPACE to pause/resume simulation clock");
+	log::log(INFO << "  2. Press PLUS and MINUS keys to increase/decrease simulation speed");
+	log::log(INFO << "  2. Press RETURN to toggle between real time and simulation time for animation speed");
+
 	/* Get layer and angle that we want to display. For this texture, there is only
 	   one layer and one angle. */
 	size_t frame_idx = 0;
@@ -996,7 +1043,17 @@ void renderer_demo_4(const util::Path &path) {
 
 		/* Check simulation time to see if we have to switch to the next frame. */
 		clock.update_time();
-		auto timed_frame_idx = timing->get_mod(clock.get_real_time(), 0);
+		size_t timed_frame_idx = 0;
+		if (real_time_animation) {
+			// use real time for animation speed
+			timed_frame_idx = timing->get_mod(clock.get_real_time(), 0);
+		}
+		else {
+			// use simulation time for animation speed (which is potentially sped up/slowed down)
+			timed_frame_idx = timing->get_mod(clock.get_time(), 0);
+		}
+
+		/* Update uniforms if new frame should be displayed */
 		if (timed_frame_idx != frame_idx) {
 			frame_idx = timed_frame_idx;
 
