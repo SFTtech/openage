@@ -16,6 +16,8 @@ Clock::Clock() :
 
 void Clock::update_time() {
 	if (this->state == ClockState::RUNNING) {
+		std::unique_lock lock{this->mutex};
+
 		auto now = simclock_t::now();
 		auto passed = std::chrono::duration_cast<std::chrono::milliseconds>(now - this->last_check);
 		if (passed.count() > this->max_tick_time) {
@@ -35,21 +37,29 @@ void Clock::update_time() {
 }
 
 curve::time_t Clock::get_time() {
+	std::shared_lock lock{this->mutex};
+
 	// convert time unit from milliseconds to seconds
 	return this->sim_time / 1000;
 }
 
 curve::time_t Clock::get_real_time() {
+	std::shared_lock lock{this->mutex};
+
 	// convert time unit from milliseconds to seconds
 	return this->sim_real_time / 1000;
 }
 
 void Clock::set_speed(speed_t speed) {
+	std::unique_lock lock{this->mutex};
+
 	this->update_time();
 	this->speed = speed;
 }
 
 void Clock::start() {
+	std::unique_lock lock{this->mutex};
+
 	auto now = simclock_t::now();
 	this->start_time = now;
 	this->last_check = now;
@@ -57,6 +67,8 @@ void Clock::start() {
 }
 
 void Clock::stop() {
+	std::unique_lock lock{this->mutex};
+
 	if (this->state == ClockState::RUNNING) [[likely]] {
 		this->update_time();
 	}
@@ -65,6 +77,8 @@ void Clock::stop() {
 }
 
 void Clock::resume() {
+	std::unique_lock lock{this->mutex};
+
 	if (this->state == ClockState::STOPPED) [[likely]] {
 		this->last_check = simclock_t::now();
 		this->state = ClockState::RUNNING;

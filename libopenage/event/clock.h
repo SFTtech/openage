@@ -3,6 +3,7 @@
 #pragma once
 
 #include <chrono>
+#include <shared_mutex>
 
 #include "curve/curve.h"
 
@@ -121,6 +122,11 @@ private:
 	 * _without_ speed adjustments (i.e. it acts as if speed = 1.0).
      */
 	curve::time_t sim_real_time;
+
+	/**
+	 * Mutex for protecting threaded access.
+	 */
+	std::shared_mutex mutex;
 };
 
 } // namespace openage::event
