@@ -699,10 +699,8 @@ void main() {
 /**
  * Basic test for creating a window and displaying a single-color texture
  * created by a shader.
- *
- * @param path Path to the project rootdir.
  */
-void renderer_demo_2(const util::Path &path) {
+void renderer_demo_2() {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
 	opengl::GlWindow window("openage renderer test", 800, 600);
@@ -1182,7 +1180,7 @@ void main() {
 
 			/* Get index of texture and subtexture where the frame's pixels are located */
 			auto frame_info = angle->get_frame(frame_idx);
-			auto tex_idx = frame_info->get_texture_idx();
+			// auto tex_idx = frame_info->get_texture_idx();  // already loaded as 'tex'
 			auto subtex_idx = frame_info->get_subtexture_idx();
 
 			/* Rescale the transformation matrix. */
@@ -1231,7 +1229,7 @@ void renderer_demo(int demo_id, const util::Path &path) {
 		break;
 
 	case 2:
-		renderer_demo_2(path);
+		renderer_demo_2();
 		break;
 
 	case 3:
