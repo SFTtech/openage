@@ -37,7 +37,7 @@ layer <layer_id> mode=loop position=<int> time_per_frame=<float> replay_delay=<f
 
 # definition of a terrain frames
 # these are iterated for an animation
-frame <layer_id> <texture_id> <subtex_id>  priority=<int> blend_mode=<int>
+frame <layer_id> <texture_id> <subtex_id> priority=<int> blend_mode=<int>
 ```
 
 
