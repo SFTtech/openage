@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 # Find Python
 # ~~~~~~~~~~~
@@ -7,7 +7,7 @@
 #
 # This is a wrapper around FindPython3.cmake,
 # which sets many more variables:
-# https://cmake.org/cmake/help/v3.12/module/FindPython3.html
+# https://cmake.org/cmake/help/latest/module/FindPython3.html
 #
 # This file defines the following variables:
 #
@@ -18,14 +18,19 @@
 #
 # Also defines py_exec and py_get_config_var.
 
-
 ###############################################################
+
+set(PYTHON_USED_VERSION "${PYTHON_MIN_VERSION}")
+
 # You can manually pass the directory to an interpreter
 # by defining PYTHON_DIR or passing -DPYTHON_DIR="<DIRECTORY>"
 # to CMake. It's used as a hint where to look at
+# https://cmake.org/cmake/help/latest/module/FindPython3.html#hints
 if(PYTHON_DIR)
 	set(Python3_ROOT_DIR "${PYTHON_DIR}")
-	set(PYTHON_USED_VERSION "${PYTHON_MIN_VERSION}")
+
+elseif(Python3_ROOT_DIR OR Python3_EXECUTABLE)
+	# python paths given directly
 
 else()
 	# when there are multiple pythons, preferrably use the version of
@@ -69,6 +74,7 @@ find_package(Python3 ${PYTHON_USED_VERSION} ${need_exact_version} COMPONENTS Int
 math(EXPR BIT_SHIFT_HEX "${Python3_VERSION_MAJOR} << 24 | ${Python3_VERSION_MINOR} << 16" OUTPUT_FORMAT HEXADECIMAL)
 set(PYTHON_MIN_VERSION_HEX "${BIT_SHIFT_HEX}")
 
+
 # there's a static_assert that tests the Python version.
 # that way, we verify the interpreter and the library version.
 # (the interpreter provided us the library location)
@@ -76,15 +82,24 @@ try_compile(PYTHON_TEST_RESULT
 	"${CMAKE_BINARY_DIR}"
 	SOURCES "${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
 	LINK_LIBRARIES Python3::Python
-	CXX_STANDARD 17
+	CXX_STANDARD ${CMAKE_CXX_STANDARD}
 	COMPILE_DEFINITIONS "-DTARGET_VERSION=${PYTHON_MIN_VERSION_HEX}"
 	OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
 )
 
 if(NOT PYTHON_TEST_RESULT)
-	message(WARNING "!! No suitable Python interpreter was found !!\n")
-	message(WARNING "We need a Python interpreter >= ${PYTHON_MIN_VERSION} that is shipped with libpython and header files.\n")
-	message(WARNING "Specify the directory to your own with -DPYTHON_DIR=/dir/of/executable\n\n\n")
+	message(STATUS "!! No suitable Python interpreter was found !!
+
+We need a Python interpreter >= ${PYTHON_MIN_VERSION} that is shipped with libpython and header files.
+You can tell the python find module where your python is installed:
+  Executable location: -DPython3_EXECUTABLE=/path/to/executable
+  Root directory: -DPython3_ROOT_DIR=/directory/of/executable/
+
+We tried with Python ${PYTHON_FIND_VERSION}, but test compilation failed:
+
+${PYTHON_TEST_OUTPUT}
+")
+	message(FATAL_ERROR "No suitable Python was found!")
 
 elseif(PYTHON_TEST_RESULT)
 	# Interfacing
@@ -131,7 +146,7 @@ endfunction()
 
 
 function(py_get_config_var VAR RESULTVAR)
-	# uses py_exec to determine a config var as in distutils.sysconfig.get_config_var().
+	# uses py_exec to determine a config var as in sysconfig.get_config_var().
 	py_exec(
 		"from sysconfig import get_config_var; print(get_config_var('${VAR}'))"
 		RESULT
