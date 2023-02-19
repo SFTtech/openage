@@ -1,4 +1,4 @@
-// Copyright 2015-2021 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -428,7 +428,7 @@ public:
 	PyIfFunc &operator =(PyIfFunc<ReturnType, ArgTypes ...> &&other) = delete;
 
 	// but you may convert this to a regular Func object.
-	operator Func<ReturnType, ArgTypes ...> &() const {
+	operator const Func<ReturnType, ArgTypes ...> &() const {
 		return static_cast<Func<ReturnType, ArgTypes ...>>(this->fptr);
 	}
 };
