@@ -381,8 +381,16 @@ class PXDGenerator:
                     # don't write the file if the content is up to date
                     return False
 
-        with open(pxdfile, 'w', encoding='utf8') as outfile:
-            print(f"\x1b[36mpxdgen: generate {os.path.relpath(pxdfile, CWD)}\x1b[0m")
+        if not pxdfile.parent.is_dir():
+            pxdfile.parent.mkdir()
+
+        with pxdfile.open('w', encoding='utf8') as outfile:
+            if pxdfile.is_absolute():
+                printpath = pxdfile
+            else:
+                printpath = os.path.relpath(pxdfile, CWD)
+            print(f"\x1b[36mpxdgen: generate {printpath}\x1b[0m")
+
             outfile.write(result)
 
         if print_warnings and self.warnings:
@@ -404,13 +412,14 @@ def parse_args():
     cli.add_argument('files', nargs='*', metavar='HEADERFILE',
                      help="input files (usually cpp .h files).")
     cli.add_argument('--file-list',
-                     help="semicolon-separated list of input files.")
+                     help=("a file containing a semicolon-separated "
+                           "list of input files."))
     cli.add_argument('--ignore-timestamps', action='store_true',
-                     help="force generating even if the output file is already"
-                          "up to date")
+                     help=("force generating even if the output file is already"
+                           " up to date"))
     cli.add_argument('--output-dir',
-                     help="build directory corresponding to the CWD to write"
-                          " the generated file(s) in.")
+                     help=("build directory corresponding to the CWD to write"
+                           " the generated file(s) in."))
     cli.add_argument('-v', '--verbose', action="store_true",
                      help="increase logging verbosity")
 
@@ -444,7 +453,7 @@ def main():
     for filename in args.all_files:
         filename = Path(filename).resolve()
         if cppdir not in filename.parents:
-            print("pxdgen source file is not in " + str(cppdir) + ": " + str(filename))
+            print(f"pxdgen source file is not in {cppdir!r}: {filename!r}")
             sys.exit(1)
 
         # join out_cppdir with relative path from cppdir
