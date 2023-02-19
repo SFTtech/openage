@@ -2,8 +2,8 @@
 
 #pragma once
 
-#include "../../../util/path.h"
-#include "../../animation.h"
+#include "renderer/animation.h"
+#include "util/path.h"
 
 namespace openage::renderer::resources::parser {
 

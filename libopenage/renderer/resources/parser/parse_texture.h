@@ -2,8 +2,8 @@
 
 #pragma once
 
-#include "../../../util/path.h"
-#include "../texture_data.h"
+#include "renderer/resources/texture_data.h"
+#include "util/path.h"
 
 namespace openage::renderer::resources::parser {
 

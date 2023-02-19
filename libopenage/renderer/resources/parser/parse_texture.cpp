@@ -1,9 +1,9 @@
 // Copyright 2021-2023 the openage authors. See copying.md for legal info.
 
 #include "parse_texture.h"
-#include "../../../datastructure/constexpr_map.h"
-#include "../../../error/error.h"
-#include "../../../util/strings.h"
+
+#include "error/error.h"
+#include "util/strings.h"
 
 namespace openage::renderer::resources::parser {
 
@@ -149,8 +149,8 @@ Texture2dInfo parse_texture_file(const util::Path &file) {
 	PixelFormatData pxformat;
 	std::vector<SubtextureData> subtexs;
 
-	const auto keywordfuncs = datastructure::create_const_map<std::string, std::function<void(std::vector<std::string>)>>(
-		std::make_pair("version", [&](std::vector<std::string> args) {
+	auto keywordfuncs = std::unordered_map<std::string, std::function<void(const std::vector<std::string> &)>>{
+		std::make_pair("version", [&](const std::vector<std::string> &args) {
 			size_t version_no = parse_texversion(args);
 
 			if (version_no != 1) {
@@ -160,18 +160,18 @@ Texture2dInfo parse_texture_file(const util::Path &file) {
 			                         << version_no << " not supported");
 			}
 		}),
-		std::make_pair("imagefile", [&](std::vector<std::string> args) {
+		std::make_pair("imagefile", [&](const std::vector<std::string> &args) {
 			imagefile = parse_imagefile(args);
 		}),
-		std::make_pair("size", [&](std::vector<std::string> args) {
+		std::make_pair("size", [&](const std::vector<std::string> &args) {
 			size = parse_size(args);
 		}),
-		std::make_pair("pxformat", [&](std::vector<std::string> args) {
+		std::make_pair("pxformat", [&](const std::vector<std::string> &args) {
 			pxformat = parse_pxformat(args);
 		}),
-		std::make_pair("subtex", [&](std::vector<std::string> args) {
+		std::make_pair("subtex", [&](const std::vector<std::string> &args) {
 			subtexs.push_back(parse_subtex(args));
-		}));
+		})};
 
 	for (auto line : lines) {
 		// Skip empty lines and comments

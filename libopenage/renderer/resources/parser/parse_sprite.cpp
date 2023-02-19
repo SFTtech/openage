@@ -185,8 +185,8 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 	// Map frame data to angle
 	std::unordered_map<size_t, std::vector<FrameData>> frames;
 
-	const auto keywordfuncs = datastructure::create_const_map<std::string, std::function<void(std::vector<std::string>)>>(
-		std::make_pair("version", [&](std::vector<std::string> args) {
+	auto keywordfuncs = std::unordered_map<std::string, std::function<void(const std::vector<std::string> &)>>{
+		std::make_pair("version", [&](const std::vector<std::string> &args) {
 			size_t version_no = parse_spriteversion(args);
 
 			if (version_no != 2) {
@@ -196,19 +196,19 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 			                         << version_no << " not supported");
 			}
 		}),
-		std::make_pair("texture", [&](std::vector<std::string> args) {
+		std::make_pair("texture", [&](const std::vector<std::string> &args) {
 			textures.push_back(parse_texture(args));
 		}),
-		std::make_pair("scalefactor", [&](std::vector<std::string> args) {
+		std::make_pair("scalefactor", [&](const std::vector<std::string> &args) {
 			scalefactor = parse_scalefactor(args);
 		}),
-		std::make_pair("layer", [&](std::vector<std::string> args) {
+		std::make_pair("layer", [&](const std::vector<std::string> &args) {
 			layers.push_back(parse_layer(args));
 		}),
-		std::make_pair("angle", [&](std::vector<std::string> args) {
+		std::make_pair("angle", [&](const std::vector<std::string> &args) {
 			angles.push_back(parse_angle(args));
 		}),
-		std::make_pair("frame", [&](std::vector<std::string> args) {
+		std::make_pair("frame", [&](const std::vector<std::string> &args) {
 			auto frame = parse_frame(args);
 			if (frames.count(frame.angle) == 0) {
 				std::vector<FrameData> angle_frames{};
@@ -221,7 +221,7 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 			if (frame.index > largest_frame_idx) {
 				largest_frame_idx = frame.index;
 			}
-		}));
+		})};
 
 	for (auto line : lines) {
 		// Skip empty lines and comments
