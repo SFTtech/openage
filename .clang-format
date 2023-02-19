@@ -5,6 +5,7 @@
 Language:        Cpp
 AccessModifierOffset: -4
 AlignAfterOpenBracket: Align
+AlignArrayOfStructures: None
 AlignConsecutiveAssignments: false
 AlignConsecutiveBitFields: false
 AlignConsecutiveDeclarations: false
@@ -12,9 +13,8 @@ AlignConsecutiveMacros: false
 AlignEscapedNewlines: DontAlign
 AlignOperands:   Align
 AlignTrailingComments: false
-AllowAllArgumentsOnNextLine: false
-AllowAllConstructorInitializersOnNextLine: false
-AllowAllParametersOfDeclarationOnNextLine: false
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortBlocksOnASingleLine: Never
 AllowShortCaseLabelsOnASingleLine: false
 AllowShortEnumsOnASingleLine: false
@@ -61,8 +61,6 @@ ConstructorInitializerAllOnOneLineOrOnePerLine: false
 ConstructorInitializerIndentWidth: 4
 ContinuationIndentWidth: 4
 Cpp11BracedListStyle: true
-# waiting for https://reviews.llvm.org/D33029
-# DanglingParenthesis: true
 DeriveLineEnding: true
 DerivePointerAlignment: false
 DisableFormat:   false
@@ -86,7 +84,7 @@ IndentGotoLabels: false
 IndentPPDirectives: None
 IndentWidth:     4
 IndentWrappedFunctionNames: false
-InsertNewlineAtEOF: true
+# clang-format-16 InsertNewlineAtEOF: true
 InsertTrailingCommas: Wrapped
 KeepEmptyLinesAtTheStartOfBlocks: false
 MacroBlockBegin: ''
@@ -103,12 +101,13 @@ PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 200
 PointerAlignment: Right
 ReflowComments: false
-SortIncludes:    true
+SortIncludes:    CaseInsensitive
 SortUsingDeclarations: true
 SpaceAfterCStyleCast: false
 SpaceAfterLogicalNot: false
 SpaceAfterTemplateKeyword: true
 SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
 SpaceBeforeCpp11BracedList: false
 SpaceBeforeCtorInitializerColon: true
 SpaceBeforeInheritanceColon: true
@@ -118,14 +117,14 @@ SpaceBeforeSquareBrackets: false
 SpaceInEmptyBlock: false
 SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 1
-SpacesInAngles:  false
+SpacesInAngles:  Never
 SpacesInCStyleCastParentheses: false
 SpacesInConditionalStatement: false
 SpacesInContainerLiterals: false
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
-Standard:        Auto
-TabWidth: 4
+Standard:        Latest
+TabWidth:        4
 UseCRLF:         false
 UseTab:          AlignWithSpaces
 ...
