@@ -1,4 +1,4 @@
-# Copyright 2014-2022 the openage authors. See copying.md for legal info.
+# Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 """
 Entry point for the code compliance checker.
@@ -99,7 +99,7 @@ def process_args(args, error):
         error("no checks were specified")
 
     has_git = bool(shutil.which('git'))
-    is_git_repo = os.path.isdir('.git')
+    is_git_repo = os.path.exists('.git')
 
     if args.only_changed_files and not all((has_git, is_git_repo)):
         error("can not check only changed files: git is required")
