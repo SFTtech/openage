@@ -21,7 +21,7 @@ namespace openage::renderer::resources::parser {
  *
  * @return Version number.
  */
-size_t parse_spriteversion(std::vector<std::string> args) {
+size_t parse_spriteversion(const std::vector<std::string> &args) {
 	return std::stoul(args[1]);
 }
 
@@ -33,7 +33,7 @@ size_t parse_spriteversion(std::vector<std::string> args) {
  *
  * @return Struct containing the attribute data.
  */
-TextureData parse_texture(std::vector<std::string> args) {
+TextureData parse_texture(const std::vector<std::string> &args) {
 	// TODO: Splitting at the space char assumes that the path string contains no
 	// space. While the space char is not allowed because of nyan naming requirements,
 	// it should result in an error if wrongly used here.
@@ -55,7 +55,7 @@ TextureData parse_texture(std::vector<std::string> args) {
  *
  * @return Scalefactor value.
  */
-float parse_scalefactor(std::vector<std::string> args) {
+float parse_scalefactor(const std::vector<std::string> &args) {
 	return std::stof(args[1]);
 }
 
@@ -67,7 +67,7 @@ float parse_scalefactor(std::vector<std::string> args) {
  *
  * @return Struct containing the attribute data.
  */
-LayerData parse_layer(std::vector<std::string> args) {
+LayerData parse_layer(const std::vector<std::string> &args) {
 	LayerData layer;
 
 	layer.layer_id = std::stoul(args[1]);
@@ -118,7 +118,7 @@ LayerData parse_layer(std::vector<std::string> args) {
  *
  * @return Struct containing the attribute data.
  */
-AngleData parse_angle(std::vector<std::string> args) {
+AngleData parse_angle(const std::vector<std::string> &args) {
 	AngleData angle;
 
 	angle.degree = std::stoul(args[1]);
@@ -152,7 +152,7 @@ AngleData parse_angle(std::vector<std::string> args) {
  *
  * @return Struct containing the attribute data.
  */
-FrameData parse_frame(std::vector<std::string> args) {
+FrameData parse_frame(const std::vector<std::string> &args) {
 	FrameData frame;
 
 	frame.index = std::stoul(args[1]);

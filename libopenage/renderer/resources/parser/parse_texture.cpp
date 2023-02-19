@@ -34,7 +34,7 @@ static constexpr size_t guess_row_alignment(size_t width) {
  *
  * @return Version number.
  */
-size_t parse_texversion(std::vector<std::string> args) {
+size_t parse_texversion(const std::vector<std::string> &args) {
 	return std::stoul(args[1]);
 }
 
@@ -46,7 +46,7 @@ size_t parse_texversion(std::vector<std::string> args) {
  *
  * @return Path to the image resource.
  */
-std::string parse_imagefile(std::vector<std::string> args) {
+std::string parse_imagefile(const std::vector<std::string> &args) {
 	// TODO: Splitting at the space char assumes that the path string contains no
 	// space. While the space char is not allowed because of nyan naming requirements,
 	// it should result in an error if wrongly used here.
@@ -63,7 +63,7 @@ std::string parse_imagefile(std::vector<std::string> args) {
  *
  * @return Struct containing the attribute data.
  */
-SizeData parse_size(std::vector<std::string> args) {
+SizeData parse_size(const std::vector<std::string> &args) {
 	SizeData size;
 
 	size.width = std::stoul(args[1]);
@@ -80,7 +80,7 @@ SizeData parse_size(std::vector<std::string> args) {
  *
  * @return Struct containing the attribute data.
  */
-PixelFormatData parse_pxformat(std::vector<std::string> args) {
+PixelFormatData parse_pxformat(const std::vector<std::string> &args) {
 	PixelFormatData pxformat;
 
 	// Only accepted format
@@ -121,7 +121,7 @@ PixelFormatData parse_pxformat(std::vector<std::string> args) {
  *
  * @return Struct containing the attribute data.
  */
-SubtextureData parse_subtex(std::vector<std::string> args) {
+SubtextureData parse_subtex(const std::vector<std::string> &args) {
 	SubtextureData subtex;
 
 	subtex.xpos = std::stoul(args[1]);
