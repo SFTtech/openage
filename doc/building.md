@@ -150,21 +150,26 @@ Also, you don't need to `make install`, you can run `openage` within its git rep
 
 ### For packagers
 
- - Don't use `./configure`; instead, handle openage like a regular
-   `cmake` project. In doubt, have a look at `./configure`'s cmake
-   invocation.
- - Use `make install DESTDIR=/tmp/your_temporary_packaging_dir`,
-   which will then be packed/installed by your package manager.
+The reference package is [created for Gentoo](https://github.com/SFTtech/gentoo-overlay/blob/master/games-strategy/openage/).
+
+- Don't use `./configure`; instead, handle openage like a regular
+  `cmake` project. In doubt, have a look at `./configure`'s cmake
+  invocation.
+- To specify the to-be-used python version (or rather, executable),
+  pass `-DPython3_EXECUTABLE=...` or `-DPython3_ROOT_DIR=...` to `cmake`
+- Use `make install DESTDIR=/tmp/your_temporary_packaging_dir`,
+  which will then be packed/installed by your package manager.
 
 
 ### Troubleshooting
 
 - I wanna see compiler invocations
   - `make VERBOSE=1`
-- My `SDL2_Image`/`PythonInterp`/whatever is installed somewhere, but `cmake` can't find it!
+- My `SDL2_Image`/`Python`/whatever is installed somewhere, but `cmake` can't find it!
   - Run `ccmake` or `cmake-gui` in the build directory to see and change config variables.
   - You can manually tell `cmake` where to look. Try something along the lines of
-    `./configure -- -DSDL2IMAGE_INCLUDE_DIRS=/whereever/sdl2_image/include/`
+    - `./configure -- -DSDL2IMAGE_INCLUDE_DIRS=/whereever/sdl2_image/include/`
+    - `-DPython3_EXECUTABLE=/your/py3/directory/`
 
 - I get compiler errors about missing header files
   - Make sure to install the developer version (including header files) of the library in question.

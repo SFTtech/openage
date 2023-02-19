@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -99,27 +99,6 @@ private:
 	std::array<std::pair<K, V>, count> values;
 };
 
-/**
- * Specialization for size 0.
- * Needed until https://bugs.llvm.org/show_bug.cgi?id=40124 is resolved.
- */
-template<typename K, typename V>
-class ConstMap<K, V, 0> {
-public:
-	/**
-	 * Empty map has 0 size.
-	 */
-	constexpr int size() const {
-		return 0;
-	}
-
-	/**
-	 * Empty map contains no key/value pairs.
-	 */
-	constexpr bool contains(const K &) const {
-		return false;
-	}
-};
 
 /**
  * Creates a compiletime lookup table from
@@ -141,8 +120,8 @@ constexpr auto create_const_map(Entries&&... entry) {
  * Note: Use when automatic type deduction is desirable.
  *       For manually specifying types, use the other method.
  */
-template<typename Entry, typename... Rest,
-         typename = std::enable_if_t<std::conjunction_v<std::is_same<Entry, Rest>...>>>
+template<typename Entry, typename... Rest>
+requires std::conjunction_v<std::is_same<Entry, Rest>...>
 ConstMap(Entry, Rest&&...) -> ConstMap<typename Entry::first_type,
                                        typename Entry::second_type,
                                        1 + sizeof...(Rest)>;

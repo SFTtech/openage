@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: sudo DOCKER_BUILDKIT=1 docker build ./docker/devenv --file ./docker/devenv/Dockerfile.ubuntu.2204 --tag openage-devenv:latest
+      run: sudo DOCKER_BUILDKIT=1 docker build ./packaging/docker/devenv --file ./packaging/docker/devenv/Dockerfile.ubuntu.2204 --tag openage-devenv:latest
       shell: bash
     - name: Save the Docker image
       run: |

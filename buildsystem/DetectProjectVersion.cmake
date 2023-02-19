@@ -1,11 +1,10 @@
-# Copyright 2015-2019 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 # Determines the version of the project
 # stores a full version string with commit hash and number in the variable `PROJECT_VERSION`
 
 # If the project version was already defined or previously retrieved, don't bother.
 if(PROJECT_VERSION)
-	message(STATUS "Project version already set")
 	return()
 endif()
 
@@ -29,7 +28,6 @@ endif()
 # Fallback for downloaded zip's or git unavailability
 set(PROJECT_VERSION_FILE "${CMAKE_SOURCE_DIR}/openage_version")
 if(EXISTS ${PROJECT_VERSION_FILE})
-	message(STATUS "Set PROJECT_VERSION from file.")
 	file(STRINGS ${PROJECT_VERSION_FILE} FILE_DESCRIBE_VERSION)
 
 	STRING(REGEX REPLACE "v([0-9]+\\.[0-9]+\\.[0-9]+)"

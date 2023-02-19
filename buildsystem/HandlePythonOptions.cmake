@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 # finds the python interpreter, install destination and extension flags.
 
@@ -45,7 +45,8 @@ if(NOT CMAKE_PY_INSTALL_PREFIX)
 	if(MSVC)
 		set(CMAKE_PY_INSTALL_PREFIX "python")
 	else()
-		py_exec("import sysconfig, os; print(os.path.join('${CMAKE_INSTALL_PREFIX}', os.path.relpath(sysconfig.get_path('purelib'), sysconfig.get_path('data'))))" PREFIX)
+		# get site-packages directory, prepended with cmake's install prefix
+		py_exec("import sys, sysconfig, os; print(os.path.join('${CMAKE_INSTALL_PREFIX}', os.path.relpath(sysconfig.get_path('purelib'), os.path.normpath(sys.prefix))))" PREFIX)
 		set(CMAKE_PY_INSTALL_PREFIX "${PREFIX}")
 	endif()
 endif()

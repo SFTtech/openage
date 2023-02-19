@@ -155,8 +155,6 @@ endif()
 
 # option processing is now done.
 
-message("========================================================")
-
 ##################################################
 # include buildsystem features
 
