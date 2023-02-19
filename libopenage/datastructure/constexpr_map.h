@@ -120,8 +120,8 @@ constexpr auto create_const_map(Entries&&... entry) {
  * Note: Use when automatic type deduction is desirable.
  *       For manually specifying types, use the other method.
  */
-template<typename Entry, typename... Rest,
-         typename = std::enable_if_t<std::conjunction_v<std::is_same<Entry, Rest>...>>>
+template<typename Entry, typename... Rest>
+requires std::conjunction_v<std::is_same<Entry, Rest>...>
 ConstMap(Entry, Rest&&...) -> ConstMap<typename Entry::first_type,
                                        typename Entry::second_type,
                                        1 + sizeof...(Rest)>;
