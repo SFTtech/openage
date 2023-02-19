@@ -2,8 +2,6 @@
 
 #pragma once
 
-#include "angle_info.h"
-
 #include <cstddef>
 #include <vector>
 

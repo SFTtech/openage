@@ -11,29 +11,29 @@
 #include <unordered_map>
 
 #include "error/error.h"
+#include "event/clock.h"
 #include "log/log.h"
+#include "renderer/camera/camera.h"
 #include "renderer/geometry.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
+#include "renderer/render_factory.h"
+#include "renderer/resources/angle_info.h"
+#include "renderer/resources/frame_info.h"
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/parser/parse_sprite.h"
 #include "renderer/resources/parser/parse_texture.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_data.h"
 #include "renderer/shader_program.h"
-#include "renderer/texture.h"
-#include "util/math_constants.h"
-
-#include "renderer/camera/camera.h"
-#include "renderer/render_factory.h"
 #include "renderer/stages/screen/screen_renderer.h"
 #include "renderer/stages/skybox/skybox_renderer.h"
 #include "renderer/stages/terrain/terrain_render_entity.h"
 #include "renderer/stages/terrain/terrain_renderer.h"
 #include "renderer/stages/world/world_render_entity.h"
 #include "renderer/stages/world/world_renderer.h"
-
-#include "event/clock.h"
+#include "renderer/texture.h"
+#include "util/math_constants.h"
 
 namespace openage::renderer::tests {
 

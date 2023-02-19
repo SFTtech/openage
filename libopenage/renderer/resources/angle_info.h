@@ -2,8 +2,6 @@
 
 #pragma once
 
-#include "frame_info.h"
-
 #include <cstddef>
 #include <memory>
 #include <vector>

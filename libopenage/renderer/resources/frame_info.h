@@ -2,9 +2,7 @@
 
 #pragma once
 
-#include "angle_info.h"
-#include "layer_info.h"
-#include "texture_subinfo.h"
+#include <cstddef>
 
 namespace openage::renderer::resources {
 

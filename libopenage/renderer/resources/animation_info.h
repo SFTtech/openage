@@ -4,8 +4,6 @@
 
 #include <vector>
 
-#include "angle_info.h"
-#include "frame_info.h"
 #include "layer_info.h"
 #include "texture_info.h"
 

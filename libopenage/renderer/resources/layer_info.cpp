@@ -2,6 +2,8 @@
 
 #include "layer_info.h"
 
+#include "renderer/resources/angle_info.h"
+
 namespace openage::renderer::resources {
 
 LayerInfo::LayerInfo(std::vector<std::shared_ptr<AngleInfo>> &angles,
