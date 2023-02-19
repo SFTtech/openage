@@ -4,7 +4,7 @@
 
 #include <vector>
 
-#include "resources/animation_info.h"
+#include "renderer/resources/animation/animation_info.h"
 
 namespace openage::renderer {
 

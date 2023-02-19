@@ -1,11 +1,11 @@
-// Copyright 2021-2021 the openage authors. See copying.md for legal info.
+// Copyright 2021-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <vector>
 
-#include "layer_info.h"
-#include "texture_info.h"
+#include "renderer/resources/animation/layer_info.h"
+#include "renderer/resources/texture_info.h"
 
 namespace openage::renderer::resources {
 

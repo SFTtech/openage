@@ -1,4 +1,4 @@
-// Copyright 2021-2021 the openage authors. See copying.md for legal info.
+// Copyright 2021-2023 the openage authors. See copying.md for legal info.
 
 #include "parse_texture.h"
 #include "../../../datastructure/constexpr_map.h"

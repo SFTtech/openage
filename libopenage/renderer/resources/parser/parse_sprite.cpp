@@ -5,9 +5,9 @@
 #include <functional>
 
 #include "error/error.h"
-#include "renderer/resources/angle_info.h"
-#include "renderer/resources/frame_info.h"
-#include "renderer/resources/layer_info.h"
+#include "renderer/resources/animation/angle_info.h"
+#include "renderer/resources/animation/frame_info.h"
+#include "renderer/resources/animation/layer_info.h"
 #include "renderer/resources/parser/parse_texture.h"
 #include "util/strings.h"
 

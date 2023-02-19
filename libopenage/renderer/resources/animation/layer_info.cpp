@@ -1,8 +1,8 @@
-// Copyright 2021-2021 the openage authors. See copying.md for legal info.
+// Copyright 2021-2023 the openage authors. See copying.md for legal info.
 
 #include "layer_info.h"
 
-#include "renderer/resources/angle_info.h"
+#include "renderer/resources/animation/angle_info.h"
 
 namespace openage::renderer::resources {
 
