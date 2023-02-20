@@ -12,11 +12,6 @@ namespace openage::renderer::resources::parser {
  *
  * Definition according to doc/media/openage/sprite_format_spec.md.
  */
-struct TextureData {
-	size_t texture_id;
-	std::string path;
-};
-
 struct LayerData {
 	size_t layer_id;
 	display_mode mode{display_mode::OFF};
