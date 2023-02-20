@@ -72,7 +72,7 @@ private:
 
 	/**
      * Decides which blending table of the two adjacent terrain textures is selected.
-     * 
+     *
      * If two adjacent terrains have equal priority, the blending table of the terrain
      * with a lower x coordinate value is selected. If the x coordinate value is also
      * equal, the blending table of the terrain with the lowest y coordinate is selected.

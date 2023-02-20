@@ -67,14 +67,14 @@ public:
 
 	/**
      * Get the current speed of the clock.
-	 * 
+	 *
 	 * @return Speed of the clock.
      */
 	speed_t get_speed();
 
 	/**
      * Set the speed of the clock.
-	 * 
+	 *
 	 * Simulation time is updated before changing speed.
      *
      * @param speed New speed of the clock.
@@ -88,7 +88,7 @@ public:
 
 	/**
 	 * Stop the simulation timer.
-	 * 
+	 *
 	 * Simulation time is updated before stopping.
 	 */
 	void stop();

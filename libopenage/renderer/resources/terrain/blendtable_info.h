@@ -19,7 +19,7 @@ public:
 	 * Create a blending table Info.
 	 *
 	 * @param table Lookup table for blending pattern IDs.
-	 * @param patterns Blending pattern information. 
+	 * @param patterns Blending pattern information.
 	 */
 	BlendTableInfo(const std::vector<size_t> &table,
 	               const std::vector<std::shared_ptr<BlendPatternInfo>> &patterns);
@@ -29,7 +29,7 @@ public:
 
 	/**
 	 * Get the blending lookup table.
-     * 
+     *
      * @return Lookup table for blending patterns.
 	 */
 	const std::vector<size_t> &get_table() const;

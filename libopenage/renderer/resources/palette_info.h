@@ -32,14 +32,14 @@ public:
 
 	/**
      * Get a color in the palette with a specified index.
-     * 
+     *
      * @return Normalized RGBA color vector.
      */
 	Eigen::Vector4f get_color(size_t idx);
 
 	/**
      * Get the colors of the palette.
-     * 
+     *
      * @return List of normalized RGBA colors.
      */
 	const std::vector<Eigen::Vector4f> get_colors();
