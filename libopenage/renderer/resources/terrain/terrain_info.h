@@ -22,11 +22,12 @@ public:
 	 *                    recommended.
 	 * @param textures Information object of textures used by the terrain.
 	 * @param layers Layer information.
+	 * @param blendtable Blending table for setting edge blending patterns.
 	 */
-	TerrainInfo(const std::shared_ptr<BlendTableInfo> &blendtable,
-	            const float scalefactor,
+	TerrainInfo(const float scalefactor,
 	            std::vector<Texture2dInfo> &textures,
-	            std::vector<TerrainLayerInfo> &layers);
+	            std::vector<TerrainLayerInfo> &layers,
+	            const std::shared_ptr<BlendTableInfo> &blendtable = nullptr);
 
 	TerrainInfo() = default;
 	~TerrainInfo() = default;
@@ -58,7 +59,7 @@ public:
 	/**
 	 * Get the blend table information of the layer.
 	 *
-	 * @return Blend table information object.
+	 * @return Blend table information object or \p nullptr if no blendtable is used.
 	 */
 	const std::shared_ptr<BlendTableInfo> &get_blendtable() const;
 
@@ -85,11 +86,6 @@ private:
 	float scalefactor;
 
 	/**
-	 * Blending patterns at terrain edges.
-	 */
-	std::shared_ptr<BlendTableInfo> blendtable;
-
-	/**
 	 * Information about textures used by the terrain.
 	 */
 	std::vector<Texture2dInfo> textures;
@@ -98,6 +94,11 @@ private:
 	 * Layer information.
 	 */
 	std::vector<TerrainLayerInfo> layers;
+
+	/**
+	 * Blending patterns at terrain edges.
+	 */
+	std::shared_ptr<BlendTableInfo> blendtable;
 };
 
 } // namespace openage::renderer::resources

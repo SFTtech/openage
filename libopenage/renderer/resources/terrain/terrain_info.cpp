@@ -4,14 +4,14 @@
 
 namespace openage::renderer::resources {
 
-TerrainInfo::TerrainInfo(const std::shared_ptr<BlendTableInfo> &blendtable,
-                         const float scalefactor,
+TerrainInfo::TerrainInfo(const float scalefactor,
                          std::vector<Texture2dInfo> &textures,
-                         std::vector<TerrainLayerInfo> &layers) :
+                         std::vector<TerrainLayerInfo> &layers,
+                         const std::shared_ptr<BlendTableInfo> &blendtable) :
 	scalefactor{scalefactor},
-	blendtable{blendtable},
 	textures{textures},
-	layers{layers} {}
+	layers{layers},
+	blendtable{blendtable} {}
 
 float TerrainInfo::get_scalefactor() const {
 	return this->scalefactor;

@@ -26,15 +26,13 @@ public:
 	/**
 	 * Create a 2D Terrain Layer Info.
 	 *
-	 * @param blend_table Blend table for setting edge blending patterns.
 	 * @param frames Frame information.
 	 * @param mode Determines how often the layer loops its frames.
 	 * @param position Absolute position of the layer on the screen.
 	 * @param time_per_frame Time that each frame is displayed in seconds.
 	 * @param replay_delay Additional time (in seconds) to display the last frame in a loop.
 	 */
-	TerrainLayerInfo(
-	                 const std::vector<std::shared_ptr<TerrainFrameInfo>> &frames,
+	TerrainLayerInfo(const std::vector<std::shared_ptr<TerrainFrameInfo>> &frames,
 	                 const terrain_display_mode mode = terrain_display_mode::OFF,
 	                 const size_t position = 0,
 	                 const float time_per_frame = 0.0,
