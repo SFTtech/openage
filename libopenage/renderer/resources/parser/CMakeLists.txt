@@ -2,6 +2,7 @@ add_sources(libopenage
     common.cpp
     parse_blendmask.cpp
     parse_blendtable.cpp
+    parse_palette.cpp
     parse_sprite.cpp
     parse_terrain.cpp
     parse_texture.cpp
