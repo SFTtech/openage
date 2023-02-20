@@ -3,6 +3,7 @@
 #include "parse_texture.h"
 
 #include "error/error.h"
+#include "renderer/resources/texture_data.h"
 #include "util/strings.h"
 
 namespace openage::renderer::resources::parser {
@@ -87,7 +88,7 @@ PixelFormatData parse_pxformat(const std::vector<std::string> &args) {
 	pxformat.format = pixel_format::rgba8;
 
 	// Optional arguments
-	const auto keywordfuncs = datastructure::create_const_map<std::string, std::function<void(std::vector<std::string>)>>(
+	auto keywordfuncs = std::unordered_map<std::string, std::function<void(std::vector<std::string>)>>{
 		std::make_pair("cbits", [&](std::vector<std::string> keywordargs) {
 			if (keywordargs[1] == "True") {
 				pxformat.cbits = true;
@@ -95,7 +96,7 @@ PixelFormatData parse_pxformat(const std::vector<std::string> &args) {
 			else if (keywordargs[1] == "False") {
 				pxformat.cbits = false;
 			}
-		}));
+		})};
 
 	// Optional arguments
 	for (size_t i = 2; i < args.size(); ++i) {

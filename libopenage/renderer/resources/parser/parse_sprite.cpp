@@ -73,8 +73,8 @@ LayerData parse_layer(const std::vector<std::string> &args) {
 	layer.layer_id = std::stoul(args[1]);
 
 	// Optional arguments
-	const auto keywordfuncs = datastructure::create_const_map<std::string, std::function<void(std::vector<std::string>)>>(
-		std::make_pair("mode", [&](std::vector<std::string> keywordargs) {
+	auto keywordfuncs = std::unordered_map<std::string, std::function<void(std::vector<std::string>)>>{
+		std::make_pair("mode", [&](const std::vector<std::string> &keywordargs) {
 			if (keywordargs[1] == "off") {
 				layer.mode = display_mode::OFF;
 			}
@@ -85,15 +85,15 @@ LayerData parse_layer(const std::vector<std::string> &args) {
 				layer.mode = display_mode::LOOP;
 			}
 		}),
-		std::make_pair("position", [&](std::vector<std::string> keywordargs) {
+		std::make_pair("position", [&](const std::vector<std::string> &keywordargs) {
 			layer.position = std::stoul(keywordargs[1]);
 		}),
-		std::make_pair("time_per_frame", [&](std::vector<std::string> keywordargs) {
+		std::make_pair("time_per_frame", [&](const std::vector<std::string> &keywordargs) {
 			layer.time_per_frame = std::stof(keywordargs[1]);
 		}),
-		std::make_pair("replay_delay", [&](std::vector<std::string> keywordargs) {
+		std::make_pair("replay_delay", [&](const std::vector<std::string> &keywordargs) {
 			layer.replay_delay = std::stof(keywordargs[1]);
-		}));
+		})};
 
 	for (size_t i = 2; i < args.size(); ++i) {
 		std::vector<std::string> keywordargs{util::split(args[i], '=')};
@@ -124,10 +124,10 @@ AngleData parse_angle(const std::vector<std::string> &args) {
 	angle.degree = std::stoul(args[1]);
 
 	// Optional arguments
-	const auto keywordfuncs = datastructure::create_const_map<std::string, std::function<void(std::vector<std::string>)>>(
-		std::make_pair("mirror_from", [&](std::vector<std::string> keywordargs) {
+	auto keywordfuncs = std::unordered_map<std::string, std::function<void(std::vector<std::string>)>>{
+		std::make_pair("mirror_from", [&](const std::vector<std::string> &keywordargs) {
 			angle.mirror_from = std::stoul(keywordargs[1]);
-		}));
+		})};
 
 	for (size_t i = 2; i < args.size(); ++i) {
 		std::vector<std::string> keywordargs{util::split(args[i], '=')};
