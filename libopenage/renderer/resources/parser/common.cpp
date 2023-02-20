@@ -4,14 +4,10 @@
 
 namespace openage::renderer::resources::parser {
 
-/**
- * Parse the texture attribute.
- *
- * @param args Arguments from the line with a \p texture attribute.
- *             The first argument is expected to be the attribute keyword.
- *
- * @return Struct containing the attribute data.
- */
+size_t parse_version(const std::vector<std::string> &args) {
+	return std::stoul(args[1]);
+}
+
 TextureData parse_texture(const std::vector<std::string> &args) {
 	// TODO: Splitting at the space char assumes that the path string contains no
 	// space. While the space char is not allowed because of nyan naming requirements,
@@ -26,14 +22,6 @@ TextureData parse_texture(const std::vector<std::string> &args) {
 	return texture;
 }
 
-/**
- * Parse the scalefactor attribute.
- *
- * @param args Arguments from the line with a \p scalefactor attribute.
- *             The first argument is expected to be the attribute keyword.
- *
- * @return Scalefactor value.
- */
 float parse_scalefactor(const std::vector<std::string> &args) {
 	return std::stof(args[1]);
 }

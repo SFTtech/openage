@@ -5,24 +5,13 @@
 #include <functional>
 
 #include "error/error.h"
+#include "renderer/resources/parser/common.h"
 #include "renderer/resources/parser/parse_blendmask.h"
 #include "renderer/resources/terrain/blendpattern_info.h"
 #include "renderer/resources/terrain/blendtable_info.h"
 #include "util/strings.h"
 
 namespace openage::renderer::resources::parser {
-
-/**
- * Parse the file version attribute.
- *
- * @param args Arguments from the line with a \p version attribute.
- *             The first argument is expected to be the attribute keyword.
- *
- * @return Version number.
- */
-size_t parse_blendtable_version(const std::vector<std::string> &args) {
-	return std::stoul(args[1]);
-}
 
 /**
  * Parse the blendtable attribute.
@@ -83,7 +72,7 @@ BlendTableInfo parse_blendtable_file(const util::Path &file) {
 
 	auto keywordfuncs = std::unordered_map<std::string, std::function<void(const std::vector<std::string> &)>>{
 		std::make_pair("version", [&](const std::vector<std::string> &args) {
-			size_t version_no = parse_blendtable_version(args);
+			size_t version_no = parse_version(args);
 
 			if (version_no != 1) {
 				throw Error(MSG(err) << "Reading .bltable file '"

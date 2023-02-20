@@ -34,6 +34,16 @@ struct TextureData {
  */
 
 /**
+ * Parse the file version attribute.
+ *
+ * @param args Arguments from the line with a \p version attribute.
+ *             The first argument is expected to be the attribute keyword.
+ *
+ * @return Version number.
+ */
+size_t parse_version(const std::vector<std::string> &args);
+
+/**
  * Parse the texture attribute.
  *
  * @param args Arguments from the line with a \p texture attribute.

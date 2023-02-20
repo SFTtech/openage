@@ -7,7 +7,6 @@
 #include "error/error.h"
 #include "renderer/resources/parser/common.h"
 #include "renderer/resources/parser/parse_blendtable.h"
-#include "renderer/resources/parser/parse_sprite.h"
 #include "renderer/resources/parser/parse_texture.h"
 #include "renderer/resources/terrain/frame_info.h"
 #include "renderer/resources/terrain/layer_info.h"
@@ -15,18 +14,6 @@
 #include "util/strings.h"
 
 namespace openage::renderer::resources::parser {
-
-/**
- * Parse the file version attribute.
- *
- * @param args Arguments from the line with a \p version attribute.
- *             The first argument is expected to be the attribute keyword.
- *
- * @return Version number.
- */
-size_t parse_terrain_version(const std::vector<std::string> &args) {
-	return std::stoul(args[1]);
-}
 
 /**
  * Parse the blendtable attribute.
@@ -160,7 +147,7 @@ TerrainInfo parse_terrain_file(const util::Path &file) {
 
 	auto keywordfuncs = std::unordered_map<std::string, std::function<void(const std::vector<std::string> &)>>{
 		std::make_pair("version", [&](const std::vector<std::string> &args) {
-			size_t version_no = parse_terrain_version(args);
+			size_t version_no = parse_version(args);
 
 			if (version_no != 2) {
 				throw Error(MSG(err) << "Reading .terrain file '"

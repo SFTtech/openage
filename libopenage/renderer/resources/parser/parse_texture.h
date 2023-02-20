@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "renderer/resources/texture_data.h"
+#include "renderer/resources/texture_info.h"
 #include "util/path.h"
 
 namespace openage::renderer::resources::parser {

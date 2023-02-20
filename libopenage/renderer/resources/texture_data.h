@@ -1,4 +1,4 @@
-// Copyright 2017-2021 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
