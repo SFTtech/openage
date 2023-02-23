@@ -21,6 +21,7 @@ using dt_ms_t = std::chrono::duration<long, std::milli>;
 enum class ClockState {
 	INIT,
 	STOPPED,
+	PAUSED,
 	RUNNING
 };
 
@@ -89,9 +90,16 @@ public:
 	/**
 	 * Stop the simulation timer.
 	 *
-	 * Simulation time is updated before stopping.
+	 * Indicates that the simulation has ended.
 	 */
 	void stop();
+
+	/**
+	 * Pause the simulation timer.
+	 *
+	 * Simulation time is updated before stopping.
+	 */
+	void pause();
 
 	/**
 	 * Resume the simulation timer if the clock is stopped.

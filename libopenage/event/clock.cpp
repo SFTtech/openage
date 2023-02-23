@@ -85,10 +85,19 @@ void Clock::stop() {
 	this->state = ClockState::STOPPED;
 }
 
+void Clock::pause() {
+	if (this->state == ClockState::RUNNING) [[likely]] {
+		this->update_time();
+	}
+
+	std::unique_lock lock{this->mutex};
+	this->state = ClockState::PAUSED;
+}
+
 void Clock::resume() {
 	std::unique_lock lock{this->mutex};
 
-	if (this->state == ClockState::STOPPED) [[likely]] {
+	if (this->state == ClockState::PAUSED) [[likely]] {
 		this->last_check = simclock_t::now();
 		this->state = ClockState::RUNNING;
 	}
