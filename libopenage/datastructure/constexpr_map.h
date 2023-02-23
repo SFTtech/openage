@@ -6,7 +6,7 @@
 #include <type_traits>
 #include <utility>
 
-#include "../error/error.h"
+#include "error/error.h"
 
 
 namespace openage::datastructure {
@@ -15,7 +15,9 @@ namespace openage::datastructure {
  * Compiletime generic lookup map.
  *
  * Stores the map entries in an array and uses constexpr methods
- * to search and retrieve them at compile-time.
+ * to search and retrieve them at compile-time. Note that for this to
+ * work, the keys and values put into the map must be avilable at
+ * compile time (obviously).
  *
  * If you experience compiler errors, make sure you request _existing_ keys.
  * We intentionally trigger compiler failures when a key doesn't exist.
@@ -119,9 +121,9 @@ constexpr auto create_const_map(Entries &&...entry) {
  * Note: Use when automatic type deduction is desirable.
  *       For manually specifying types, use the other method.
  */
-template<typename Entry, typename... Rest>
-requires std::conjunction_v<std::is_same<Entry, Rest>...>
-ConstMap(Entry, Rest&&...) -> ConstMap<typename Entry::first_type,
-                                       typename Entry::second_type,
-                                       1 + sizeof...(Rest)>;
+template <typename Entry, typename... Rest>
+	requires std::conjunction_v<std::is_same<Entry, Rest>...>
+ConstMap(Entry, Rest &&...) -> ConstMap<typename Entry::first_type,
+                                        typename Entry::second_type,
+                                        1 + sizeof...(Rest)>;
 } // namespace openage::datastructure
