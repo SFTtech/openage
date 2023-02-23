@@ -9,6 +9,7 @@
 #include "engine/engine.h"
 #include "event/clock.h"
 #include "event/loop.h"
+#include "event/simulation.h"
 #include "event/state.h"
 #include "log/log.h"
 #include "presenter/presenter.h"
@@ -56,18 +57,15 @@ int run_game(const main_arguments &args) {
 	// TODO: select run_mode by launch argument
 	openage::engine::Engine::mode run_mode = engine::Engine::mode::FULL;
 
-	auto loop = std::make_shared<event::Loop>();
-	auto state = std::make_shared<event::State>(loop);
-	auto clock = std::make_shared<event::Clock>();
+	auto simulation = std::make_shared<event::Simulation>();
 
 	auto engine = std::make_shared<engine::Engine>(run_mode, args.root_path, cvar_manager);
 	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, engine);
 
 	std::jthread event_loop_thread([&]() {
-		while (clock->get_state() != event::ClockState::STOPPED) {
-			clock->update_time();
-			loop->reach_time(clock->get_time(), state);
-		}
+		simulation->run();
+
+		simulation.reset();
 	});
 	std::jthread engine_thread([&]() {
 		engine->run();

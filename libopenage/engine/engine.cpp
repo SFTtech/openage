@@ -29,7 +29,7 @@ Engine::~Engine() {}
 void Engine::run() {
 	this->start();
 	while (this->running) {
-		// TODO: Do sometthing
+		// TODO: Do something
 	}
 	log::log(MSG(info) << "engine loop exited");
 }
