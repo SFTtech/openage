@@ -3,9 +3,9 @@
 #include "loop.h"
 
 #include "event.h"
+#include "evententity.h"
 #include "eventhandler.h"
 #include "eventqueue.h"
-#include "evententity.h"
 
 #include "../log/log.h"
 
@@ -14,6 +14,8 @@ namespace openage::event {
 
 
 void Loop::add_event_class(const std::shared_ptr<EventHandler> &cls) {
+	std::unique_lock lock{this->mutex};
+
 	classstore.insert(std::make_pair(cls->id(), cls));
 }
 
@@ -23,6 +25,8 @@ std::shared_ptr<Event> Loop::create_event(const std::string &name,
                                           const std::shared_ptr<State> &state,
                                           const curve::time_t &reference_time,
                                           const EventHandler::param_map &params) {
+	std::unique_lock lock{this->mutex};
+
 	auto it = classstore.find(name);
 	if (it == classstore.end()) {
 		throw Error{MSG(err) << "Trying to subscribe to eventhandler "
@@ -38,13 +42,15 @@ std::shared_ptr<Event> Loop::create_event(const std::shared_ptr<EventHandler> &e
                                           const std::shared_ptr<State> &state,
                                           const curve::time_t &reference_time,
                                           const EventHandler::param_map &params) {
+	std::unique_lock lock{this->mutex};
 
 	auto it = this->classstore.find(eventhandler->id());
 	if (it == this->classstore.end()) {
 		auto res = this->classstore.insert(std::make_pair(eventhandler->id(), eventhandler));
 		if (res.second) {
 			it = res.first;
-		} else {
+		}
+		else {
 			throw Error{ERR << "could not insert eventhandler into class store"};
 		}
 	}
@@ -55,7 +61,6 @@ std::shared_ptr<Event> Loop::create_event(const std::shared_ptr<EventHandler> &e
 
 void Loop::reach_time(const curve::time_t &max_time,
                       const std::shared_ptr<State> &state) {
-
 	// TODO detect infinite loops (is this a halting problem?)
 	// this happens when the events don't settle:
 	// at least one processed event adds another event so
@@ -69,7 +74,7 @@ void Loop::reach_time(const curve::time_t &max_time,
 	do {
 		if (attempts > max_attempts) {
 			throw Error(ERR << "Loop: reached event settling threshold of "
-			            << max_attempts << ", giving up.");
+			                << max_attempts << ", giving up.");
 			break;
 		}
 
@@ -78,10 +83,11 @@ void Loop::reach_time(const curve::time_t &max_time,
 		cnt = this->execute_events(max_time, state);
 
 		log::log(DBG << "Loop: to reach t=" << max_time
-		         << ", n=" << cnt << " events were executed");
+		             << ", n=" << cnt << " events were executed");
 
 		attempts += 1;
-	} while (cnt != 0);
+	}
+	while (cnt != 0);
 
 	// Swap in the end of the execution, else we might skip changes that happen
 	// in the main loop for one frame - which is bad btw.
@@ -92,15 +98,14 @@ void Loop::reach_time(const curve::time_t &max_time,
 
 int Loop::execute_events(const curve::time_t &time_until,
                          const std::shared_ptr<State> &state) {
-
 	log::log(DBG << "Loop: Pending events in the queue (# = "
-	         << this->queue.get_event_queue().size() << "):");
+	             << this->queue.get_event_queue().size() << "):");
 
 	{
 		size_t i = 0;
 		for (const auto &e : this->queue.get_event_queue().get_sorted_events()) {
 			log::log(DBG << "  event "
-			         << i << ": t=" << e->get_time() << ": " << e->get_eventhandler()->id());
+			             << i << ": t=" << e->get_time() << ": " << e->get_eventhandler()->id());
 			i++;
 		}
 	}
@@ -118,16 +123,14 @@ int Loop::execute_events(const curve::time_t &time_until,
 
 		if (target) {
 			log::log(DBG << "Loop: invoking event \"" << event->get_eventhandler()->id()
-			         << "\" on target \"" << target->idstr()
-			         << "\" for time t=" << event->get_time());
+			             << "\" on target \"" << target->idstr()
+			             << "\" for time t=" << event->get_time());
 
 			this->active_event = event;
 
 			// apply the event effects
 			event->get_eventhandler()->invoke(
-				*this, target, state,
-				event->get_time(), event->get_params()
-			);
+				*this, target, state, event->get_time(), event->get_params());
 
 			this->active_event = nullptr;
 			cnt += 1;
@@ -135,15 +138,14 @@ int Loop::execute_events(const curve::time_t &time_until,
 			// if the event is REPEAT, readd the event.
 			if (event->get_eventhandler()->type == EventHandler::trigger_type::REPEAT) {
 				curve::time_t new_time = event->get_eventhandler()->predict_invoke_time(
-					target, state, event->get_time()
-				);
+					target, state, event->get_time());
 
 				if (new_time != std::numeric_limits<curve::time_t>::min()) {
 					event->set_time(new_time);
 
 					log::log(DBG << "Loop: repeating event \"" << event->get_eventhandler()->id()
-					         << "\" on target \"" << target->idstr()
-					         << "\" will be reenqueued for time t=" << event->get_time());
+					             << "\" on target \"" << target->idstr()
+					             << "\" will be reenqueued for time t=" << event->get_time());
 
 					this->queue.reenqueue(event);
 				}
@@ -160,14 +162,15 @@ int Loop::execute_events(const curve::time_t &time_until,
 
 void Loop::create_change(const std::shared_ptr<Event> &evnt,
                          const curve::time_t &changes_at) {
+	std::unique_lock lock{this->mutex};
+
 	this->queue.add_change(evnt, changes_at);
 }
 
 
 void Loop::update_changes(const std::shared_ptr<State> &state) {
-
 	log::log(DBG << "Loop: " << this->queue.get_changes().size()
-	         << " target changes have to be processed");
+	             << " target changes have to be processed");
 
 	size_t i = 0;
 
@@ -178,7 +181,7 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 		auto evnt = change.evnt.lock();
 		if (evnt) {
 			log::log(DBG << "  change " << i++ << ": " << evnt->get_eventhandler()->id());
-			switch(evnt->get_eventhandler()->type) {
+			switch (evnt->get_eventhandler()->type) {
 			case EventHandler::trigger_type::ONCE:
 			case EventHandler::trigger_type::DEPENDENCY: {
 				auto entity = evnt->get_entity().lock();
@@ -189,10 +192,10 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 
 					if (new_time != std::numeric_limits<curve::time_t>::min()) {
 						log::log(DBG << "Loop: due to a change, rescheduling event of '"
-						         << evnt->get_eventhandler()->id()
-						         << "' on entity '" << entity->idstr()
-						         << "' at time t=" << change.time
-						         << " to NEW TIME t=" << new_time);
+						             << evnt->get_eventhandler()->id()
+						             << "' on entity '" << entity->idstr()
+						             << "' at time t=" << change.time
+						             << " to NEW TIME t=" << new_time);
 
 						evnt->set_time(new_time);
 
@@ -200,9 +203,9 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 					}
 					else {
 						log::log(DBG << "Loop: due to a change, canceled execution of '"
-						         << evnt->get_eventhandler()->id()
-						         << "' on entity '" << entity->idstr()
-						         << "' at time t=" << change.time);
+						             << evnt->get_eventhandler()->id()
+						             << "' on entity '" << entity->idstr()
+						             << "' at time t=" << change.time);
 
 						this->queue.remove(evnt);
 					}
