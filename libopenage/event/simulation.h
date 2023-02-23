@@ -31,7 +31,7 @@ public:
 
 	/**
 	 * Run the simulation loop.
-     * 
+     *
      * Updates the clock and dispatches events that happened.
 	 */
 	void run();
@@ -48,22 +48,21 @@ public:
 
 	/**
      * Get the clock used by this simulation.
-     * 
+     *
      * @return Simulation clock.
      */
 	std::shared_ptr<Clock> get_clock() const;
 
 	/**
      * Get the event loop used by this simulation.
-     * 
+     *
      * @return Event loop.
      */
 	std::shared_ptr<Clock> get_loop() const;
 
 private:
 	/**
-	 * current engine state variable.
-	 * set to false to stop the simulation loop.
+	 * State of the simulation loop.
 	 */
 	bool running;
 
@@ -73,7 +72,7 @@ private:
 	std::shared_ptr<Loop> loop;
 
 	/**
-     * State.
+     * TODO: Why is this necessary?
      */
 	std::shared_ptr<State> state;
 
