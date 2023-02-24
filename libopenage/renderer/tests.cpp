@@ -2,12 +2,12 @@
 
 #include "tests.h"
 
-#include <QMouseEvent>
 #include <cstdlib>
 #include <eigen3/Eigen/Dense>
 #include <epoxy/gl.h>
 #include <functional>
 #include <memory>
+#include <QMouseEvent>
 #include <unordered_map>
 
 #include "error/error.h"
@@ -280,7 +280,7 @@ void renderer_demo_1(const util::Path &path) {
 	auto tex_info = renderer::resources::parser::parse_texture_file(tex_path);
 
 	log::log(INFO << "Loaded texture " << tex_path.resolve_native_path());
-	log::log(INFO << "  imagefile: " << tex_info.get_image_path().get()->resolve_native_path());
+	log::log(INFO << "  imagefile: " << tex_info.get_image_path().value().resolve_native_path());
 	log::log(INFO << "  size:");
 	log::log(INFO << "    width: " << tex_info.get_size().first);
 	log::log(INFO << "    height: " << tex_info.get_size().second);
@@ -303,7 +303,7 @@ void renderer_demo_1(const util::Path &path) {
 	log::log(INFO << "  texture count: " << sprite_info.get_texture_count());
 	for (size_t i = 0; i < sprite_info.get_texture_count(); ++i) {
 		log::log(INFO << "    texture " << i << ": "
-		              << sprite_info.get_texture(i).get_image_path().get()->resolve_native_path());
+		              << sprite_info.get_texture(i).get_image_path().value().resolve_native_path());
 	}
 
 	log::log(INFO << "  scalefactor: " << sprite_info.get_scalefactor());

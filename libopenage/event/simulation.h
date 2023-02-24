@@ -72,7 +72,7 @@ private:
 	std::shared_ptr<Loop> loop;
 
 	/**
-     * TODO: Why is this necessary?
+     * TODO: Gamestate implementation.
      */
 	std::shared_ptr<State> state;
 

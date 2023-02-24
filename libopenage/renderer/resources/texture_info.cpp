@@ -1,30 +1,28 @@
-// Copyright 2017-2021 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #include "texture_info.h"
 
 
-namespace openage {
-namespace renderer {
-namespace resources {
+namespace openage::renderer::resources {
 
 Texture2dInfo::Texture2dInfo(size_t width,
                              size_t height,
                              pixel_format fmt,
+                             std::optional<util::Path> imagepath,
                              size_t row_alignment,
-                             std::shared_ptr<util::Path> image,
                              std::vector<Texture2dSubInfo> &&subs) :
-	w(width),
-	h(height),
-	format(fmt),
-	row_alignment(row_alignment),
-	image(image),
-	subtextures(std::move(subs)) {}
+	w{width},
+	h{height},
+	format{fmt},
+	row_alignment{row_alignment},
+	imagepath{imagepath},
+	subtextures{std::move(subs)} {}
 
 bool Texture2dInfo::operator==(Texture2dInfo const &other) {
 	return other.w == this->w
-		   and other.h == this->h
-		   and other.format == this->format
-		   and other.row_alignment == this->row_alignment;
+	       and other.h == this->h
+	       and other.format == this->format
+	       and other.row_alignment == this->row_alignment;
 }
 
 bool Texture2dInfo::operator!=(Texture2dInfo const &other) {
@@ -60,29 +58,29 @@ size_t Texture2dInfo::get_data_size() const {
 	return this->get_row_size() * this->h;
 }
 
-std::shared_ptr<util::Path> Texture2dInfo::get_image_path() const {
-	return this->image;
+std::optional<util::Path> Texture2dInfo::get_image_path() const {
+	return this->imagepath;
 }
 
 size_t Texture2dInfo::get_subtexture_count() const {
 	return this->subtextures.size();
 }
 
-const Texture2dSubInfo &Texture2dInfo::get_subtexture(size_t subid) const {
-	if (subid < this->subtextures.size()) {
-		return this->subtextures[subid];
+const Texture2dSubInfo &Texture2dInfo::get_subtexture(size_t subidx) const {
+	if (subidx < this->subtextures.size()) {
+		return this->subtextures[subidx];
 	}
 
-	throw Error(MSG(err) << "Unknown subtexture requested: " << subid);
+	throw Error(MSG(err) << "Unknown subtexture requested: " << subidx);
 }
 
-std::pair<int, int> Texture2dInfo::get_subtexture_size(size_t subid) const {
-	auto subtex = this->get_subtexture(subid);
+std::pair<int32_t, int32_t> Texture2dInfo::get_subtexture_size(size_t subidx) const {
+	auto subtex = this->get_subtexture(subidx);
 	return std::make_pair(subtex.w, subtex.h);
 }
 
-std::tuple<float, float, float, float> Texture2dInfo::get_subtexture_coordinates(size_t subid) const {
-	auto tx = this->get_subtexture(subid);
+std::tuple<float, float, float, float> Texture2dInfo::get_subtexture_coordinates(size_t subidx) const {
+	auto tx = this->get_subtexture(subidx);
 	return std::make_tuple(
 		(static_cast<float>(tx.x)) / this->w,
 		(static_cast<float>(tx.x + tx.w)) / this->w,
@@ -90,6 +88,4 @@ std::tuple<float, float, float, float> Texture2dInfo::get_subtexture_coordinates
 		(static_cast<float>(tx.y + tx.h)) / this->h);
 }
 
-} // namespace resources
-} // namespace renderer
-} // namespace openage
+} // namespace openage::renderer::resources

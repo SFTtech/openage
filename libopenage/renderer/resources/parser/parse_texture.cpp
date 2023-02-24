@@ -190,10 +190,10 @@ Texture2dInfo parse_texture_file(const util::Path &file) {
 		                      subtex.yanchor);
 	}
 
-	std::shared_ptr<util::Path> image = std::make_shared<util::Path>(file.get_parent() / imagefile);
+	auto imagepath = file.get_parent() / imagefile;
 
 	auto align = guess_row_alignment(size.width);
-	return Texture2dInfo(size.width, size.height, pxformat.format, align, image, std::move(subinfos));
+	return Texture2dInfo(size.width, size.height, pxformat.format, imagepath, align, std::move(subinfos));
 }
 
 } // namespace openage::renderer::resources::parser

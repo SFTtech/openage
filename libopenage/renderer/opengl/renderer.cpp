@@ -66,7 +66,7 @@ resources::Texture2dData GlRenderer::display_into_data() {
 	GLint width = params[2];
 	GLint height = params[3];
 
-	resources::Texture2dInfo tex_info(width, height, resources::pixel_format::rgba8, 4);
+	resources::Texture2dInfo tex_info(width, height, resources::pixel_format::rgba8);
 	std::vector<uint8_t> data(tex_info.get_data_size());
 
 	std::static_pointer_cast<GlRenderTarget>(this->get_display_target())->bind_read();

@@ -95,13 +95,12 @@ Texture2dData::Texture2dData(const util::Path &path) {
 	subtextures.push_back(s);
 
 	size_t align = guess_row_alignment(w, pix_fmt, image.bytesPerLine());
-	std::shared_ptr<util::Path> imagepath = std::make_shared<util::Path>(path);
-	this->info = Texture2dInfo(w, h, pix_fmt, align, imagepath, std::move(subtextures));
+	this->info = Texture2dInfo(w, h, pix_fmt, path, align, std::move(subtextures));
 }
 
 Texture2dData::Texture2dData(Texture2dInfo const &info) :
 	info{info} {
-	std::string native_path = info.get_image_path()->resolve_native_path();
+	std::string native_path = info.get_image_path().value().resolve_native_path();
 
 	// TODO: use QImageIOHandler to directly create the correct surface format.
 	QImage image{native_path.c_str()};
