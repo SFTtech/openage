@@ -7,8 +7,8 @@
 #include <vector>
 
 #include "datastructure/constexpr_map.h"
-
-#include "texture_subinfo.h"
+#include "renderer/resources/texture_subinfo.h"
+#include "util/path.h"
 
 
 namespace openage::renderer::resources {
