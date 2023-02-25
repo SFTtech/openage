@@ -2,13 +2,11 @@
 
 #pragma once
 
-#include <queue>
-#include <stddef.h>
 #include <unordered_set>
 
-#include "../curve/discrete.h"
+#include "curve/discrete.h"
 
-namespace openage::control {
+namespace openage::input {
 
 /**
  * Interface for game controllers.
@@ -21,13 +19,8 @@ namespace openage::control {
  */
 class Controller {
 public:
-	Controller(/*std::shared_ptr<engine::Engine> engine,*/
-	           /*GameMainHandle *game,*/
-	           const std::unordered_set<size_t> controlled_factions,
+	Controller(const std::unordered_set<size_t> &controlled_factions,
 	           size_t active_faction_id);
-
-	// void set_engine(std::shared_ptr<engine::Engine> &engine);
-	// void set_game(GameMainHandle *game);
 
 	/**
      * Switch the actively controlled faction by the controller.
@@ -35,24 +28,16 @@ public:
      *
      * @param faction_id ID of the new active faction.
      */
-	void set_active_faction_id(size_t faction_id);
-
-	// std::shared_ptr<engine::Engine> &get_engine() const;
-	// GameMainHandle *get_game() const;
-	// Player *get_active_faction() const;
+	void set_control(size_t faction_id);
 
 	/**
      * Get the ID of the faction actively controlled by the controller.
      *
      * @return ID of the active faction.
      */
-	size_t get_active_faction_id();
+	size_t get_controlled();
 
 private:
-	// TODO: Connection to engine
-	// std::shared_ptr<engine::Engine> engine;
-	// GameMainHandle *game;
-
 	/**
      * List of factions controllable by this controller.
      */
@@ -62,11 +47,6 @@ private:
      * ID of the currently active faction.
      */
 	size_t active_faction_id;
-
-	/**
-     * IDs of the currently controlled game objects (aka selection queue).
-     */
-	std::vector<size_t> control_queue;
 };
 
-} // namespace openage::control
+} // namespace openage::input

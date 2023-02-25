@@ -1,5 +1,6 @@
 add_sources(libopenage
 	action.cpp
+	controller.cpp
 	event.cpp
 	input_context.cpp
 	input_manager.cpp
