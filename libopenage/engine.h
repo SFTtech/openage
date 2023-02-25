@@ -2,10 +2,10 @@
 
 #pragma once
 
-#include <QObject>
-#include <SDL2/SDL.h>
 #include <cstdint>
 #include <memory>
+#include <QObject>
+#include <SDL2/SDL.h>
 #include <unordered_map>
 #include <vector>
 
@@ -15,7 +15,7 @@
 #include "cvar/cvar.h"
 #include "gui/engine_info.h"
 #include "handlers.h"
-#include "input/action.h"
+#include "input/legacy/action.h"
 #include "job/job_manager.h"
 #include "options.h"
 #include "unit/selection.h"

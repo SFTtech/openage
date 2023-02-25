@@ -1,12 +1,12 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <array>
 
-#include "../log/log.h"
-#include "action.h"
-#include "input_manager.h"
-#include "text_to_event.h"
+#include "log/log.h"
+#include "input/legacy/action.h"
+#include "input/legacy/input_manager.h"
+#include "input/legacy/text_to_event.h"
 
 
 namespace openage::input {

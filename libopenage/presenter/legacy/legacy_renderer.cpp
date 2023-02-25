@@ -2,8 +2,8 @@
 
 #include "legacy_renderer.h"
 
-#include <SDL2/SDL.h>
 #include <epoxy/gl.h>
+#include <SDL2/SDL.h>
 #include <sstream>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -13,7 +13,7 @@
 #include "../../gamedata/color_dummy.h"
 #include "../../gamestate/old/game_main.h"
 #include "../../gamestate/old/game_spec.h"
-#include "../../input/input_manager.h"
+#include "../../input/legacy/input_manager.h"
 #include "../../log/log.h"
 #include "../../renderer/text.h"
 #include "../../unit/action.h"

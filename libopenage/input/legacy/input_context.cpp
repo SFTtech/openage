@@ -1,23 +1,20 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "input_context.h"
 
-#include "input_manager.h"
+#include "input/legacy/input_manager.h"
 
 
 namespace openage {
 namespace input {
 
 
-InputContext::InputContext()
-	:
+InputContext::InputContext() :
 	InputContext{nullptr} {}
 
 
-InputContext::InputContext(InputManager *manager)
-	:
+InputContext::InputContext(InputManager *manager) :
 	utf8_mode{false} {
-
 	this->register_to(manager);
 }
 
@@ -44,7 +41,6 @@ void InputContext::bind(event_class ec, const action_check_t act) {
 }
 
 bool InputContext::execute_if_bound(const action_arg_t &arg) {
-
 	// arg type hints are highest priority
 	for (auto &h : arg.hints) {
 		auto action = this->by_type.find(h);
@@ -64,8 +60,7 @@ bool InputContext::execute_if_bound(const action_arg_t &arg) {
 	// check all possible class mappings
 	for (auto &c : arg.e.cc.get_classes()) {
 		auto action = this->by_class.find(c);
-		if (action != this->by_class.end() &&
-		    action->second(arg)) {
+		if (action != this->by_class.end() && action->second(arg)) {
 			return true;
 		}
 	}
@@ -84,5 +79,5 @@ void InputContext::unregister() {
 }
 
 
-
-}} // openage::input
+} // namespace input
+} // namespace openage

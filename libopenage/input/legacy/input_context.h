@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,8 +7,8 @@
 #include <unordered_map>
 #include <vector>
 
-#include "action.h"
-#include "event.h"
+#include "input/legacy/action.h"
+#include "input/legacy/event.h"
 
 namespace openage {
 namespace input {
@@ -25,7 +25,6 @@ class InputManager;
  * decides, which one to trigger.
  */
 class InputContext {
-
 public:
 	/**
 	 * Create an unbound input context.
@@ -92,7 +91,6 @@ public:
 	bool utf8_mode;
 
 private:
-
 	/**
 	 * Input manager this context is bound to.
 	 */
@@ -113,7 +111,7 @@ private:
 	 * event_class as key, to ensure all events can be mapped
 	 */
 	std::unordered_map<event_class, action_check_t, event_class_hash> by_class;
-
 };
 
-}} // openage::input
+} // namespace input
+} // namespace openage

@@ -10,7 +10,7 @@
 #include "gamestate/old/game_main.h"
 #include "gui/guisys/link/gui_item_link.h"
 #include "handlers.h"
-#include "input/input_context.h"
+#include "input/legacy/input_context.h"
 #include "presenter/legacy/legacy.h"
 #include "rng/rng.h"
 #include "unit/command.h"

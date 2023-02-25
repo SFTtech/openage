@@ -1,13 +1,14 @@
 // Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
+#include "action.h"
+
 #include <functional>
 
-#include "../cvar/cvar.h"
-#include "action.h"
-#include "input_manager.h"
-#include "../log/log.h"
-#include "../log/message.h"
-#include "../util/repr.h"
+#include "cvar/cvar.h"
+#include "input/legacy/input_manager.h"
+#include "log/log.h"
+#include "log/message.h"
+#include "util/repr.h"
 
 
 namespace openage {
@@ -95,18 +96,15 @@ const std::vector<std::string> DEFAULT_ACTIONS = {
 	"BUILD",
 	"KEEP_BUILDING",
 	"INCREASE_SELECTION",
-	"ORDER_SELECT"
-};
+	"ORDER_SELECT"};
 
 } // anonymous namespace
 
 
 ActionManager::ActionManager(InputManager *input_manager,
-                             const std::shared_ptr<cvar::CVarManager> &cvar_manager)
-	:
+                             const std::shared_ptr<cvar::CVarManager> &cvar_manager) :
 	input_manager{input_manager},
 	cvar_manager{cvar_manager} {
-
 	this->create("UNDEFINED");
 
 	for (auto &type : DEFAULT_ACTIONS) {
@@ -115,7 +113,7 @@ ActionManager::ActionManager(InputManager *input_manager,
 } // anonymous namespace
 
 
-bool ActionManager::create(const std::string& type) {
+bool ActionManager::create(const std::string &type) {
 	if (this->actions.find(type) != this->actions.end()) {
 		// that action is already in the list. fail.
 		// TODO: throw an exception instead?
@@ -134,15 +132,14 @@ bool ActionManager::create(const std::string& type) {
 	// TODO: this has nothing to do with the actionmanager!
 	//       remove the cvarmanager-access here!
 	this->cvar_manager->create(type, std::make_pair(
-		// the cvar's getter
-		[type, this]() {
-			return this->input_manager->get_bind(type);
-		},
-		// the cvar's setter
-		[type, this](const std::string &value) {
-			this->input_manager->set_bind(value.c_str(), type);
-		}
-	));
+										 // the cvar's getter
+										 [type, this]() {
+											 return this->input_manager->get_bind(type);
+										 },
+										 // the cvar's setter
+										 [type, this](const std::string &value) {
+											 this->input_manager->set_bind(value.c_str(), type);
+										 }));
 
 	return true;
 }
@@ -152,7 +149,8 @@ action_t ActionManager::get(const std::string &type) {
 	auto it = this->actions.find(type);
 	if (it != this->actions.end()) {
 		return it->second;
-	} else {
+	}
+	else {
 		return this->actions.at("UNDEFINED");
 	}
 }
@@ -162,7 +160,8 @@ std::string ActionManager::get_name(const action_t action) {
 	auto it = this->reverse_map.find(action);
 	if (it != this->reverse_map.end()) {
 		return it->second;
-	} else {
+	}
+	else {
 		return "UNDEFINED";
 	}
 }
@@ -173,4 +172,5 @@ bool ActionManager::is(const std::string &type, const action_t action) {
 }
 
 
-}} // openage::input
+} // namespace input
+} // namespace openage

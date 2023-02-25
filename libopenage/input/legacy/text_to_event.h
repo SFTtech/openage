@@ -1,10 +1,10 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <string>
 
-#include "event.h"
+#include "input/legacy/event.h"
 
 namespace openage {
 namespace input {
@@ -14,4 +14,5 @@ namespace input {
  */
 Event text_to_event(const std::string &event_str);
 
-}} // openage::input
+} // namespace input
+} // namespace openage

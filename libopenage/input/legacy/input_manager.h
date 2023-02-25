@@ -1,17 +1,17 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 // pxd: from libcpp cimport bool
 #include <functional>
 // pxd: from libcpp.string cimport string
-#include <string>
 #include <SDL2/SDL.h>
+#include <string>
 
-#include "../handlers.h"
-#include "action.h"
-#include "event.h"
-#include "input_context.h"
+#include "handlers.h"
+#include "input/legacy/action.h"
+#include "input/legacy/event.h"
+#include "input/legacy/input_context.h"
 
 
 namespace openage {
@@ -252,4 +252,5 @@ private:
 	friend InputContext;
 };
 
-}} // openage::input
+} // namespace input
+} // namespace openage

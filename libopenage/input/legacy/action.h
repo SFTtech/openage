@@ -6,8 +6,8 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../coord/pixel.h"
-#include "event.h"
+#include "coord/pixel.h"
+#include "input/legacy/event.h"
 
 namespace openage {
 
