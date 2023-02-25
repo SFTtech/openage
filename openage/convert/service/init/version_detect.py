@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments,too-many-locals,too-many-branches
 """
@@ -126,7 +126,7 @@ def iterate_game_versions(
 
             expansions.append(game_expansion)
 
-    return GameVersion(edition=best_edition, expansions=expansions)
+    return GameVersion(edition=best_edition, expansions=tuple(expansions))
 
 
 def create_version_objects(srcdir: Directory) -> tuple[list[GameEdition], list[GameExpansion]]:

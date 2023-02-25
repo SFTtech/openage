@@ -1,9 +1,10 @@
-# Copyright 2013-2022 the openage authors. See copying.md for legal info.
+# Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,too-many-lines
 from __future__ import annotations
 import typing
 
+from functools import cache
 
 from ...genie_structure import GenieStructure
 from ....read.member_access import READ, READ_GEN, SKIP
@@ -29,6 +30,7 @@ class UnitCommand(GenieStructure):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -99,6 +101,7 @@ class UnitCommand(GenieStructure):
 class UnitHeader(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -122,6 +125,7 @@ class UnitHeader(GenieStructure):
 class UnitLine(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -143,6 +147,7 @@ class UnitLine(GenieStructure):
 class ResourceStorage(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -166,6 +171,7 @@ class ResourceStorage(GenieStructure):
 class DamageGraphic(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -191,6 +197,7 @@ class DamageGraphic(GenieStructure):
 class HitType(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -213,6 +220,7 @@ class HitType(GenieStructure):
 class ResourceCost(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -236,6 +244,7 @@ class ResourceCost(GenieStructure):
 class BuildingAnnex(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -258,6 +267,7 @@ class UnitObject(GenieStructure):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -550,6 +560,7 @@ class TreeUnit(UnitObject):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -571,6 +582,7 @@ class AnimatedUnit(UnitObject):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -592,6 +604,7 @@ class DoppelgangerUnit(AnimatedUnit):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -613,6 +626,7 @@ class MovingUnit(DoppelgangerUnit):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -660,6 +674,7 @@ class ActionUnit(MovingUnit):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -732,6 +747,7 @@ class ProjectileUnit(ActionUnit):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -817,6 +833,7 @@ class MissileUnit(ProjectileUnit):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -848,6 +865,7 @@ class LivingUnit(ProjectileUnit):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -962,6 +980,7 @@ class BuildingUnit(LivingUnit):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion

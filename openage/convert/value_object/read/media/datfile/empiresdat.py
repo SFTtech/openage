@@ -1,9 +1,10 @@
-# Copyright 2013-2022 the openage authors. See copying.md for legal info.
+# Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
 import typing
 
+from functools import cache
 
 from . import civ
 from . import graphic
@@ -40,6 +41,7 @@ class EmpiresDat(GenieStructure):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -353,6 +355,7 @@ class EmpiresDatWrapper(GenieStructure):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
