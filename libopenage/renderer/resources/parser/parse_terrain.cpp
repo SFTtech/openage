@@ -270,8 +270,7 @@ TerrainInfo parse_terrain_file(const util::Path &file,
 			blendtable_info = table_cache.at(flat_path);
 		}
 		else {
-			blendtable_info = std::make_shared<BlendTableInfo>(
-				std::move(parse_blendtable_file(tablepath)));
+			blendtable_info = std::make_shared<BlendTableInfo>(parse_blendtable_file(tablepath));
 		}
 	}
 

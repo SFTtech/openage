@@ -139,8 +139,7 @@ BlendTableInfo parse_blendtable_file(const util::Path &file,
 			pattern_infos.push_back(pattern_cache.at(flat_path));
 		}
 		else {
-			pattern_infos.push_back(std::make_shared<BlendPatternInfo>(
-				std::move(parse_blendmask_file(maskpath))));
+			pattern_infos.push_back(std::make_shared<BlendPatternInfo>(parse_blendmask_file(maskpath)));
 		}
 	}
 
