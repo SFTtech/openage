@@ -57,7 +57,8 @@ PatternData parse_pattern(const std::vector<std::string> &args) {
 	return pattern;
 }
 
-BlendTableInfo parse_blendtable_file(const util::Path &file) {
+BlendTableInfo parse_blendtable_file(const util::Path &file,
+                                     const blpattern_cache_t &pattern_cache) {
 	if (unlikely(!file.is_file())) {
 		throw Error(MSG(err) << "Reading .bltable file '"
 		                     << file.get_name()
@@ -131,8 +132,16 @@ BlendTableInfo parse_blendtable_file(const util::Path &file) {
 	std::vector<std::shared_ptr<BlendPatternInfo>> pattern_infos;
 	for (auto pattern : patterns) {
 		util::Path maskpath = (file.get_parent() / pattern.path);
-		pattern_infos.push_back(std::make_shared<BlendPatternInfo>(
-			std::move(parse_blendmask_file(maskpath))));
+		auto flat_path = maskpath.resolve_native_path();
+
+		// Check if already loaded
+		if (pattern_cache.contains(flat_path)) {
+			pattern_infos.push_back(pattern_cache.at(flat_path));
+		}
+		else {
+			pattern_infos.push_back(std::make_shared<BlendPatternInfo>(
+				std::move(parse_blendmask_file(maskpath))));
+		}
 	}
 
 	return BlendTableInfo(blendtable, pattern_infos);

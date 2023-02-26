@@ -10,6 +10,7 @@
 #include "renderer/resources/animation/layer_info.h"
 #include "renderer/resources/parser/common.h"
 #include "renderer/resources/parser/parse_texture.h"
+#include "renderer/texture.h"
 #include "util/strings.h"
 
 namespace openage::renderer::resources::parser {
@@ -119,7 +120,8 @@ FrameData parse_frame(const std::vector<std::string> &args) {
 	return frame;
 }
 
-Animation2dInfo parse_sprite_file(const util::Path &file) {
+Animation2dInfo parse_sprite_file(const util::Path &file,
+                                  const texture_cache_t &texture_cache) {
 	if (unlikely(!file.is_file())) {
 		throw Error(MSG(err) << "Reading .sprite file '"
 		                     << file.get_name()
@@ -259,7 +261,15 @@ Animation2dInfo parse_sprite_file(const util::Path &file) {
 	std::vector<Texture2dInfo> texture_infos;
 	for (auto texture : textures) {
 		util::Path texturepath = (file.get_parent() / texture.path);
-		texture_infos.push_back(parse_texture_file(texturepath));
+		auto flat_path = texturepath.resolve_native_path();
+
+		// Check if the texture is already loaded
+		if (texture_cache.contains(flat_path)) {
+			texture_infos.push_back(texture_cache.at(flat_path)->get_info());
+		}
+		else {
+			texture_infos.push_back(parse_texture_file(texturepath));
+		}
 	}
 
 	return Animation2dInfo(scalefactor, texture_infos, layer_infos);

@@ -4,15 +4,14 @@
 
 #include "renderer/resources/animation/animation_info.h"
 #include "renderer/resources/palette_info.h"
-#include "renderer/resources/terrain/blendpattern_info.h"
-#include "renderer/resources/terrain/blendtable_info.h"
-#include "renderer/resources/terrain/terrain_info.h"
-
 #include "renderer/resources/parser/parse_blendmask.h"
 #include "renderer/resources/parser/parse_blendtable.h"
 #include "renderer/resources/parser/parse_palette.h"
 #include "renderer/resources/parser/parse_sprite.h"
 #include "renderer/resources/parser/parse_terrain.h"
+#include "renderer/resources/terrain/blendpattern_info.h"
+#include "renderer/resources/terrain/blendtable_info.h"
+#include "renderer/resources/terrain/terrain_info.h"
 
 namespace openage::renderer::resources {
 
@@ -29,7 +28,7 @@ const std::shared_ptr<Animation2dInfo> &AssetManager::request_animation(const ut
 	auto flat_path = path.resolve_native_path();
 	if (not this->loaded_animations.contains(flat_path)) {
 		// create if not loaded
-		auto anim_info = parser::parse_sprite_file(path);
+		auto anim_info = parser::parse_sprite_file(path, this->texture_manager.get_cache());
 		auto anim = std::make_shared<Animation2dInfo>(std::move(anim_info));
 		this->loaded_animations.insert({flat_path, anim});
 	}
@@ -40,7 +39,7 @@ const std::shared_ptr<BlendPatternInfo> &AssetManager::request_blpattern(const u
 	auto flat_path = path.resolve_native_path();
 	if (not this->loaded_blpatterns.contains(flat_path)) {
 		// create if not loaded
-		auto pattern_info = parser::parse_blendmask_file(path);
+		auto pattern_info = parser::parse_blendmask_file(path, this->texture_manager.get_cache());
 		auto pattern = std::make_shared<BlendPatternInfo>(std::move(pattern_info));
 		this->loaded_blpatterns.insert({flat_path, pattern});
 	}
@@ -51,7 +50,7 @@ const std::shared_ptr<BlendTableInfo> &AssetManager::request_bltable(const util:
 	auto flat_path = path.resolve_native_path();
 	if (not this->loaded_bltables.contains(flat_path)) {
 		// create if not loaded
-		auto table_info = parser::parse_blendtable_file(path);
+		auto table_info = parser::parse_blendtable_file(path, this->loaded_blpatterns);
 		auto table = std::make_shared<BlendTableInfo>(std::move(table_info));
 		this->loaded_bltables.insert({flat_path, table});
 	}
@@ -73,7 +72,9 @@ const std::shared_ptr<TerrainInfo> &AssetManager::request_terrain(const util::Pa
 	auto flat_path = path.resolve_native_path();
 	if (not this->loaded_terrains.contains(flat_path)) {
 		// create if not loaded
-		auto terrain_info = parser::parse_terrain_file(path);
+		auto terrain_info = parser::parse_terrain_file(path,
+		                                               this->texture_manager.get_cache(),
+		                                               this->loaded_bltables);
 		auto terrain = std::make_shared<TerrainInfo>(std::move(terrain_info));
 		this->loaded_terrains.insert({flat_path, terrain});
 	}

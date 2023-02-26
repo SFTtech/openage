@@ -70,30 +70,36 @@ private:
      */
 	TextureManager texture_manager;
 
+	using anim_cache_t = std::unordered_map<std::string, std::shared_ptr<Animation2dInfo>>;
+	using blpattern_cache_t = std::unordered_map<std::string, std::shared_ptr<BlendPatternInfo>>;
+	using bltable_cache_t = std::unordered_map<std::string, std::shared_ptr<BlendTableInfo>>;
+	using palette_cache_t = std::unordered_map<std::string, std::shared_ptr<PaletteInfo>>;
+	using terrain_cache_t = std::unordered_map<std::string, std::shared_ptr<TerrainInfo>>;
+
 	/**
      * Cache of already loaded animations.
      */
-	std::unordered_map<std::string, std::shared_ptr<Animation2dInfo>> loaded_animations;
+	anim_cache_t loaded_animations;
 
 	/**
      * Cache of already loaded blending patterns.
      */
-	std::unordered_map<std::string, std::shared_ptr<BlendPatternInfo>> loaded_blpatterns;
+	blpattern_cache_t loaded_blpatterns;
 
 	/**
      * Cache of already loaded blending tables.
      */
-	std::unordered_map<std::string, std::shared_ptr<BlendTableInfo>> loaded_bltables;
+	bltable_cache_t loaded_bltables;
 
 	/**
      * Cache of already loaded colour palettes.
      */
-	std::unordered_map<std::string, std::shared_ptr<PaletteInfo>> loaded_palettes;
+	palette_cache_t loaded_palettes;
 
 	/**
      * Cache of already loaded terrains.
      */
-	std::unordered_map<std::string, std::shared_ptr<TerrainInfo>> loaded_terrains;
+	terrain_cache_t loaded_terrains;
 };
 
 } // namespace resources

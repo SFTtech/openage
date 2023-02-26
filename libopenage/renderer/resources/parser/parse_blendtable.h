@@ -7,6 +7,8 @@
 
 namespace openage::renderer::resources::parser {
 
+using blpattern_cache_t = std::unordered_map<std::string, std::shared_ptr<BlendPatternInfo>>;
+
 /**
  * Containers for the raw data.
  *
@@ -21,9 +23,11 @@ struct PatternData {
  * Parse an blending table definition from a .bltable format file.
  *
  * @param file Path to the blendtable file.
+ * @param pattern_cache Cache of already loaded blending patterns (optional).
  *
  * @return The corresponding blendtable definition.
  */
-BlendTableInfo parse_blendtable_file(const util::Path &file);
+BlendTableInfo parse_blendtable_file(const util::Path &file,
+                                     const blpattern_cache_t &pattern_cache = {});
 
 } // namespace openage::renderer::resources::parser

@@ -5,15 +5,23 @@
 #include "renderer/resources/terrain/blendpattern_info.h"
 #include "util/path.h"
 
-namespace openage::renderer::resources::parser {
+namespace openage::renderer {
+class Texture2d;
+
+namespace resources::parser {
+
+using texture_cache_t = std::unordered_map<std::string, std::shared_ptr<Texture2d>>;
 
 /**
  * Parse an blending table definition from a .blmask format file.
  *
  * @param file Path to the blendmask file.
+ * @param texture_cache Cache of already loaded textures (optional).
  *
  * @return The corresponding blendmask definition.
  */
-BlendPatternInfo parse_blendmask_file(const util::Path &file);
+BlendPatternInfo parse_blendmask_file(const util::Path &file,
+                                      const texture_cache_t &texture_cache = {});
 
-} // namespace openage::renderer::resources::parser
+} // namespace resources::parser
+} // namespace openage::renderer

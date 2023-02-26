@@ -49,4 +49,9 @@ void TextureManager::remove(const util::Path &path) {
 	this->loaded.erase(flat_path);
 }
 
+const texture_cache_t &TextureManager::get_cache() {
+	return this->loaded;
+}
+
+
 } // namespace openage::renderer::resources

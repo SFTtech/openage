@@ -14,6 +14,8 @@ class Texture2d;
 
 namespace resources {
 
+using texture_cache_t = std::unordered_map<std::string, std::shared_ptr<Texture2d>>;
+
 /**
  * Loads and stores references to shared texture assets.
  *
@@ -69,6 +71,13 @@ public:
      */
 	void remove(const util::Path &path);
 
+	/**
+     * Get the cache with the loaded textures.
+     *
+     * @param path Map of filenames and loaded textures.
+     */
+	const texture_cache_t &get_cache();
+
 private:
 	/**
      * openage renderer.
@@ -78,7 +87,7 @@ private:
 	/**
      * Cache of already created textures.
      */
-	std::unordered_map<std::string, std::shared_ptr<Texture2d>> loaded;
+	texture_cache_t loaded;
 };
 
 } // namespace resources
