@@ -7,7 +7,11 @@
 #include "renderer/resources/animation/layer_info.h"
 #include "renderer/resources/texture_info.h"
 
-namespace openage::renderer::resources {
+namespace openage::renderer {
+
+class Texture2d;
+
+namespace resources {
 
 /**
  * Contains information about a 2D animation. The animation data can be
@@ -84,7 +88,7 @@ private:
 	/**
 	 * Information about textures used by the animation.
 	 */
-	std::vector<Texture2dInfo> textures;
+	std::vector<Texture2dInfo> texture_infos;
 
 	/**
 	 * Layer information.
@@ -92,4 +96,5 @@ private:
 	std::vector<LayerInfo> layers;
 };
 
-} // namespace openage::renderer::resources
+} // namespace resources
+} // namespace openage::renderer

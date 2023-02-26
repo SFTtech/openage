@@ -8,7 +8,7 @@ Animation2dInfo::Animation2dInfo(const float scalefactor,
                                  std::vector<Texture2dInfo> &textures,
                                  std::vector<LayerInfo> &layers) :
 	scalefactor{scalefactor},
-	textures{textures},
+	texture_infos{textures},
 	layers{layers} {}
 
 float Animation2dInfo::get_scalefactor() const {
@@ -16,11 +16,11 @@ float Animation2dInfo::get_scalefactor() const {
 }
 
 size_t Animation2dInfo::get_texture_count() const {
-	return this->textures.size();
+	return this->texture_infos.size();
 }
 
 const Texture2dInfo &Animation2dInfo::get_texture(size_t idx) const {
-	return this->textures[idx];
+	return this->texture_infos[idx];
 }
 
 size_t Animation2dInfo::get_layer_count() const {

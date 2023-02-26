@@ -37,10 +37,12 @@ public:
      * using the given path.
      *
      * @param path Path to the texture resource.
+     * @param info_file If true, interpret the path as a texture info file, else as
+     *                  an image data file.
      *
      * @return Texture resource at the given path.
      */
-	std::shared_ptr<Texture2d> request(const util::Path &path);
+	const std::shared_ptr<Texture2d> &request(const util::Path &path, bool info_file = false);
 
 	/**
      * Load the texture at the given path. Does nothing if the path
@@ -55,6 +57,7 @@ public:
      * textures references if the path already exists in the cache.
      *
      * @param path Path to the texture resource.
+     * @param texture Existing texture object.
      */
 	void add(const util::Path &path,
 	         const std::shared_ptr<Texture2d> &texture);
