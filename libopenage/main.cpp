@@ -60,7 +60,7 @@ int run_game(const main_arguments &args) {
 	auto simulation = std::make_shared<event::Simulation>();
 
 	auto engine = std::make_shared<engine::Engine>(run_mode, args.root_path, cvar_manager);
-	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, engine);
+	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, engine, simulation);
 
 	std::jthread event_loop_thread([&]() {
 		simulation->run();

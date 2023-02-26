@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "engine/engine.h"
+#include "event/simulation.h"
 #include "log/log.h"
 #include "renderer/camera/camera.h"
 #include "renderer/gui/gui.h"
@@ -26,10 +27,12 @@
 namespace openage::presenter {
 
 Presenter::Presenter(const util::Path &root_dir,
-                     const std::shared_ptr<engine::Engine> &engine) :
+                     const std::shared_ptr<engine::Engine> &engine,
+                     const std::shared_ptr<event::Simulation> &simulation) :
 	root_dir{root_dir},
 	render_passes{},
-	engine{engine} {}
+	engine{engine},
+	simulation{simulation} {}
 
 
 void Presenter::run() {
@@ -56,7 +59,11 @@ void Presenter::run() {
 	log::log(MSG(info) << "draw loop exited");
 
 	if (this->engine) {
-		engine->stop();
+		this->engine->stop();
+	}
+
+	if (this->simulation) {
+		this->simulation->stop();
 	}
 
 	this->window->close();
@@ -67,6 +74,10 @@ void Presenter::set_engine(const std::shared_ptr<engine::Engine> &engine) {
 	auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
 	                                                                this->world_renderer);
 	this->engine->attach_renderer(render_factory);
+}
+
+void Presenter::set_simulation(const std::shared_ptr<event::Simulation> &simulation) {
+	this->simulation = simulation;
 }
 
 std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {
