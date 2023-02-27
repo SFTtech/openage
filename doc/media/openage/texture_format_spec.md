@@ -35,7 +35,7 @@ pxformat <format> cbit=<token>
 # Defines a subtexture inside the image resource
 # Subtextures have x and y coordinates, width and height
 # as well as anchor points.
-subtex <id> <xpos> <ypos> <xsize> <ysize> <xhotspot> <yhotspot>
+subtex <xpos> <ypos> <xsize> <ysize> <xhotspot> <yhotspot>
 ```
 
 
@@ -188,7 +188,7 @@ This must be a non-negative value.
 **xanchor**<br>
 Horizontal position of the anchor in the subtexture relative to
 its width and height. The anchor is used for pinning the subtexture
-to a game world object.
+to a game world object, i.e. the actual *zero* position of the subtexture.
 
 This can be a negative value.
 
