@@ -5,6 +5,7 @@
 #include <eigen3/Eigen/Dense>
 #include <shared_mutex>
 
+#include "curve/curve.h"
 #include "util/path.h"
 #include "util/vector.h"
 
@@ -21,10 +22,12 @@ public:
 	 * @param ref_id Game entity ID.
 	 * @param position Position of the game entity inside the game world.
 	 * @param sprite_path Path to the animation definition.
+	 * @param time Simulation time of the update.
 	 */
 	void update(const uint32_t ref_id,
 	            const util::Vector3f position,
-	            const util::Path sprite_path);
+	            const util::Path sprite_path,
+	            const curve::time_t time = 0.0);
 
 	/**
 	 * Get the ID of the corresponding game entity.
@@ -48,6 +51,13 @@ public:
      * @return Path to the texture.
      */
 	const util::Path &get_texture_path();
+
+	/**
+	 * Get the time of the last update.
+	 *
+	 * @return Time of last update.
+	 */
+	curve::time_t get_update_time();
 
 	/**
 	 * Check whether the render entity has received new updates from the
@@ -84,6 +94,11 @@ private:
 	 * Path to the texture.
 	 */
 	util::Path sprite_path;
+
+	/**
+	 * Time of the last texture update.
+	 */
+	curve::time_t last_update;
 
 	/**
 	 * Mutex for protecting threaded access.

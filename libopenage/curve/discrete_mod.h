@@ -107,8 +107,12 @@ std::string DiscreteMod<T>::idstr() const {
 template <typename T>
 T DiscreteMod<T>::get_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
-	time_t mod = offset % this->time_length;
+	if (offset == 0) {
+		// modulo would fail here so return early
+		return Discrete<T>::get(0);
+	}
 
+	time_t mod = offset % this->time_length;
 	return Discrete<T>::get(mod);
 }
 

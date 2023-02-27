@@ -59,6 +59,8 @@ void TerrainRenderModel::update() {
 					"tex",
 					mesh->get_texture());
 			}
+
+			// TODO: Animated terrain
 		}
 	}
 }

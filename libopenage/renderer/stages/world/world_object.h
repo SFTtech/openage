@@ -6,6 +6,7 @@
 
 #include <eigen3/Eigen/Dense>
 
+#include "curve/curve.h"
 #include "renderer/resources/mesh_data.h"
 #include "util/vector.h"
 
@@ -36,8 +37,10 @@ public:
 	/**
      * Recalculate the vertex positions for this mesh with information
      * from the currently set render entity.
+	 *
+	 * @param time Current simulation time.
      */
-	void update();
+	void update(const curve::time_t &time = 0.0);
 
 	/**
 	 * Get the ID of the corresponding game entity.
