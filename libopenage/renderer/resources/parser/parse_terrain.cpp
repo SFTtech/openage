@@ -111,13 +111,13 @@ TerrainFrameData parse_terrain_frame(const std::vector<std::string> &args) {
 			frame.blend_mode = std::stoul(keywordargs[1]);
 		})};
 
-	for (size_t i = 4; i < args.size(); ++i) {
+	for (size_t i = 4; i < args.size() - 1; ++i) {
 		std::vector<std::string> keywordargs{util::split(args[i], '=')};
 
 		if (unlikely(!keywordfuncs.contains(keywordargs[0]))) {
 			throw Error(MSG(err) << "Keyword argument "
 			                     << keywordargs[0]
-			                     << " of 'layer' attribute is not defined");
+			                     << " of 'frame' attribute is not defined");
 		}
 
 		keywordfuncs[keywordargs[0]](keywordargs);
