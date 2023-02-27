@@ -37,18 +37,18 @@ layer <layer_id> mode=loop position=<int> time_per_frame=<float> replay_delay=<f
 
 # definition of a terrain frames
 # these are iterated for an animation
-frame <layer_id> <texture_id> <subtex_id> priority=<int> blend_mode=<int>
+frame <frame_idx> <layer_id> <texture_id> <subtex_id> priority=<int> blend_mode=<int>
 ```
 
 
 ## Data Type Formatting
 
-Type     | Example | Description
----------|---------|---------
-int      | `5`     | Signed Integer
-float    | `1.2`   | Float
-string   | `"bla"` | String of characters enclosed by `"`
-token    | `off`   | Alphanumeric predefined keyword
+| Type   | Example | Description                          |
+| ------ | ------- | ------------------------------------ |
+| int    | `5`     | Signed Integer                       |
+| float  | `1.2`   | Float                                |
+| string | `"bla"` | String of characters enclosed by `"` |
+| token  | `off`   | Alphanumeric predefined keyword      |
 
 
 ## Attributes
@@ -58,9 +58,9 @@ token    | `off`   | Alphanumeric predefined keyword
 Version of the terrain format. Increments every time the syntax
 or keywords of the format change.
 
-Parameter  | Type   | Optional | Default value
------------|--------|----------|--------------
-version_no | int    | No       | -
+| Parameter  | Type | Optional | Default value |
+| ---------- | ---- | -------- | ------------- |
+| version_no | int  | No       | -             |
 
 **version_no**<br>
 Version number of the format.
@@ -78,10 +78,10 @@ version 2
 Tells the renderer which texture resources it has to load.
 There has to be at least one `texture` defined.
 
-Parameter  | Type   | Optional | Default value
------------|--------|----------|--------------
-texture_id | int    | No       | -
-filename   | string | No       | -
+| Parameter  | Type   | Optional | Default value |
+| ---------- | ------ | -------- | ------------- |
+| texture_id | int    | No       | -             |
+| filename   | string | No       | -             |
 
 **texture_id**<br>
 Reference ID for the resource used in this file. IDs should start at `0`.
@@ -111,10 +111,10 @@ in the [blending table format](blendtable_format_spec.md) and
 
 Blending patterns/tables are **optional** and do not need to be used.
 
-Parameter  | Type   | Optional | Default value
------------|--------|----------|--------------
-table_id   | int    | No       | -
-filename   | string | No       | -
+| Parameter | Type   | Optional | Default value |
+| --------- | ------ | -------- | ------------- |
+| table_id  | int    | No       | -             |
+| filename  | string | No       | -             |
 
 **table_id**<br>
 Reference ID for the blending table used in this file. IDs should start at `0`.
@@ -138,9 +138,9 @@ blendtable 2 "/{aoe2_base}/blend8.bltable" 90 1
 
 Defines a downscaling factor for the texture.
 
-Parameter | Type  | Optional | Default value
-----------|-------|----------|--------------
-factor    | float | No       | -
+| Parameter | Type  | Optional | Default value |
+| --------- | ----- | -------- | ------------- |
+| factor    | float | No       | -             |
 
 **factor**<br>
 Factor by which textures are scaled *down* at default zoom level.
@@ -170,13 +170,13 @@ to be delegated into the foreground or background of the final result.
 All frames are assigned to a specific layer. At least one `layer`
 has to be defined.
 
-Parameter      | Type  | Optional | Default value
----------------|-------|----------|--------------
-layer_id       | int   | No       | -
-mode           | token | Yes      | `off`
-position       | int   | Yes      | `0`
-time_per_frame | float | Yes      | `1.0`
-replay_delay   | float | Yes      | `0.0`
+| Parameter      | Type  | Optional | Default value |
+| -------------- | ----- | -------- | ------------- |
+| layer_id       | int   | No       | -             |
+| mode           | token | Yes      | `off`         |
+| position       | int   | Yes      | `0`           |
+| time_per_frame | float | Yes      | `1.0`         |
+| replay_delay   | float | Yes      | `0.0`         |
 
 **layer_id**<br>
 Reference ID for the layer used in this file. IDs should start at `0`.
@@ -184,10 +184,10 @@ Reference ID for the layer used in this file. IDs should start at `0`.
 **mode**<br>
 Tells the renderer how often the animation on this layer repeats.
 
-Mode   | Description
--------|------------
-`off`  | Layer is not animated. Only the first frame is shown.
-`loop` | Animation loops indefinitely. The renderer waits `replay_delay` seconds after every loop.
+| Mode   | Description                                                                               |
+| ------ | ----------------------------------------------------------------------------------------- |
+| `off`  | Layer is not animated. Only the first frame is shown.                                     |
+| `loop` | Animation loops indefinitely. The renderer waits `replay_delay` seconds after every loop. |
 
 **position**<br>
 Position of the layer in the final animation. Layers with a higher position
@@ -216,14 +216,14 @@ supposed to be animated, only frame `0` has to be defined.
 Textures displayed in the frame are taken from an image resource
 defined by the `imagefile` attribute.
 
-Parameter  | Type  | Optional | Default value
------------|-------|----------|--------------
-frame_idx  | int   | No       | -
-layer_id   | int   | No       | -
-texture_id | int   | No       | -
-subtex_id  | int   | No       | -
-priority   | int   | Yes      | -
-blend_mode | int   | Yes      | -
+| Parameter  | Type | Optional | Default value |
+| ---------- | ---- | -------- | ------------- |
+| frame_idx  | int  | No       | -             |
+| layer_id   | int  | No       | -             |
+| texture_id | int  | No       | -             |
+| subtex_id  | int  | No       | -             |
+| priority   | int  | Yes      | -             |
+| blend_mode | int  | Yes      | -             |
 
 **frame_idx**<br>
 Index of the frame in the animation. The first usable index value
