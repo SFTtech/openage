@@ -20,6 +20,7 @@
 #include "renderer/render_factory.h"
 #include "renderer/resources/animation/angle_info.h"
 #include "renderer/resources/animation/frame_info.h"
+#include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/parser/parse_sprite.h"
 #include "renderer/resources/parser/parse_texture.h"
@@ -663,6 +664,9 @@ void renderer_demo_3(const util::Path &path) {
 	// shaders, textures & more.
 	std::vector<std::shared_ptr<RenderPass>> render_passes{};
 
+	// TODO: Make this optional for subrenderers?
+	auto asset_manager = std::make_shared<renderer::resources::AssetManager>(renderer);
+
 	// Renders the background
 	auto skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
 		window,
@@ -675,13 +679,15 @@ void renderer_demo_3(const util::Path &path) {
 		window,
 		renderer,
 		camera,
-		path["assets"]["shaders"]);
+		path["assets"]["shaders"],
+		asset_manager);
 
 	// Renders units/buildings/other objects
 	auto world_renderer = std::make_shared<renderer::world::WorldRenderer>(
 		window,
 		renderer,
-		path["assets"]["shaders"]);
+		path["assets"]["shaders"],
+		asset_manager);
 
 	// Store the render passes of the renderers
 	// The order is important as its also the order in which they

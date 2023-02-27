@@ -18,11 +18,12 @@ namespace openage::renderer::terrain {
 TerrainRenderer::TerrainRenderer(const std::shared_ptr<Window> &window,
                                  const std::shared_ptr<renderer::Renderer> &renderer,
                                  const std::shared_ptr<renderer::camera::Camera> &camera,
-                                 const util::Path &shaderdir) :
+                                 const util::Path &shaderdir,
+                                 const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
 	renderer{renderer},
 	camera{camera},
 	render_entity{nullptr},
-	model{std::make_shared<TerrainRenderModel>(renderer)} {
+	model{std::make_shared<TerrainRenderModel>(asset_manager)} {
 	renderer::opengl::GlContext::check_error();
 
 	auto size = window->get_size();

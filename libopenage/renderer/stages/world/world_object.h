@@ -15,7 +15,7 @@ class Texture2d;
 class UniformInput;
 
 namespace resources {
-class TextureManager;
+class AssetManager;
 }
 
 namespace world {
@@ -23,7 +23,7 @@ class WorldRenderEntity;
 
 class WorldObject {
 public:
-	WorldObject(const std::shared_ptr<renderer::resources::TextureManager> &texture_manager);
+	WorldObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
 	~WorldObject() = default;
 
 	/**
@@ -117,11 +117,9 @@ private:
 	bool changed;
 
 	/**
-	 * Texture manager for central accessing and loading textures.
-	 *
-	 * TODO: Replace with asset manager
+	 * Asset manager for central accessing and loading asset resources.
 	 */
-	std::shared_ptr<renderer::resources::TextureManager> texture_manager;
+	std::shared_ptr<renderer::resources::AssetManager> asset_manager;
 
 	/**
 	 * Source for positional and texture data.

@@ -3,6 +3,7 @@
 #include "terrain_model.h"
 
 #include "renderer/camera/camera.h"
+#include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/assets/texture_manager.h"
 #include "renderer/stages/terrain/terrain_mesh.h"
 #include "renderer/stages/terrain/terrain_render_entity.h"
@@ -10,10 +11,10 @@
 
 namespace openage::renderer::terrain {
 
-TerrainRenderModel::TerrainRenderModel(const std::shared_ptr<renderer::Renderer> &renderer) :
+TerrainRenderModel::TerrainRenderModel(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
 	meshes{},
 	camera{nullptr},
-	texture_manager{std::make_shared<renderer::resources::TextureManager>(renderer)},
+	asset_manager{asset_manager},
 	render_entity{nullptr} {
 }
 
@@ -116,7 +117,8 @@ std::shared_ptr<TerrainRenderMesh> TerrainRenderModel::create_mesh() {
 
 	resources::MeshData meshdata{std::move(vert_data), std::move(idx_data), info};
 
-	auto texture = this->texture_manager->request(this->render_entity->get_texture_path());
+	auto tex_manager = this->asset_manager->get_texture_manager();
+	auto texture = tex_manager.request(this->render_entity->get_texture_path());
 
 	auto terrain_mesh = std::make_shared<TerrainRenderMesh>(texture, std::move(meshdata));
 

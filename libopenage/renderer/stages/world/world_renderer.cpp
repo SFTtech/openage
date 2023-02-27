@@ -3,7 +3,7 @@
 #include "world_renderer.h"
 
 #include "renderer/opengl/context.h"
-#include "renderer/resources/assets/texture_manager.h"
+#include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/shader_program.h"
@@ -15,9 +15,10 @@ namespace openage::renderer::world {
 
 WorldRenderer::WorldRenderer(const std::shared_ptr<Window> &window,
                              const std::shared_ptr<renderer::Renderer> &renderer,
-                             const util::Path &shaderdir) :
+                             const util::Path &shaderdir,
+                             const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
 	renderer{renderer},
-	texture_manager{std::make_shared<renderer::resources::TextureManager>(renderer)},
+	asset_manager{asset_manager},
 	render_objects{} {
 	renderer::opengl::GlContext::check_error();
 
@@ -38,7 +39,7 @@ std::shared_ptr<renderer::RenderPass> WorldRenderer::get_render_pass() {
 void WorldRenderer::add_render_entity(const std::shared_ptr<WorldRenderEntity> entity) {
 	std::unique_lock lock{this->mutex};
 
-	auto world_object = std::make_shared<WorldObject>(this->texture_manager);
+	auto world_object = std::make_shared<WorldObject>(this->asset_manager);
 	world_object->set_render_entity(entity);
 	this->render_objects.push_back(world_object);
 

@@ -48,9 +48,12 @@ namespace terrain {
 class TerrainRenderer;
 }
 
-
 namespace world {
 class WorldRenderer;
+}
+
+namespace resources {
+class AssetManager;
 }
 
 } // namespace renderer
@@ -174,6 +177,11 @@ protected:
 	 * Final graphics output to the window screen.
 	 */
 	std::shared_ptr<renderer::screen::ScreenRenderer> screen_renderer;
+
+	/**
+	 * Manager for loading/storing asset resources.
+	 */
+	std::shared_ptr<renderer::resources::AssetManager> asset_manager;
 
 	/**
 	 * Render passes in the openage renderer.

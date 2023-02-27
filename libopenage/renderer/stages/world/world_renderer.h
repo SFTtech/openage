@@ -16,7 +16,7 @@ class Texture2d;
 class Window;
 
 namespace resources {
-class TextureManager;
+class AssetManager;
 }
 
 namespace world {
@@ -30,7 +30,8 @@ class WorldRenderer {
 public:
 	WorldRenderer(const std::shared_ptr<Window> &window,
 	              const std::shared_ptr<renderer::Renderer> &renderer,
-	              const util::Path &shaderdir);
+	              const util::Path &shaderdir,
+	              const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
 	~WorldRenderer() = default;
 
 	/**
@@ -43,7 +44,6 @@ public:
 	/**
 	 * Add a new render entity of the world renderer.
 	 *
-	 * @param texture_manager Texture manager for loading textures.
 	 * @param render_entity New render entity.
 	 */
 	void add_render_entity(const std::shared_ptr<WorldRenderEntity> entity);
@@ -84,7 +84,7 @@ private:
 	/**
 	 * Texture manager for loading assets.
 	 */
-	std::shared_ptr<renderer::resources::TextureManager> texture_manager;
+	std::shared_ptr<renderer::resources::AssetManager> asset_manager;
 
 	/**
 	 * Render pass for the world drawing.

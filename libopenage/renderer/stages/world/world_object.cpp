@@ -2,6 +2,7 @@
 
 #include "world_object.h"
 
+#include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/assets/texture_manager.h"
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/texture_data.h"
@@ -10,10 +11,10 @@
 
 namespace openage::renderer::world {
 
-WorldObject::WorldObject(const std::shared_ptr<renderer::resources::TextureManager> &texture_manager) :
+WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
 	require_renderable{true},
 	changed{false},
-	texture_manager{texture_manager},
+	asset_manager{asset_manager},
 	render_entity{nullptr},
 	ref_id{0},
 	position{0.0f, 0.0f, 0.0f},
@@ -41,7 +42,8 @@ void WorldObject::update() {
 	this->require_renderable = true;
 
 	// Update textures
-	this->texture = this->texture_manager->request(this->render_entity->get_texture_path());
+	auto tex_manager = this->asset_manager->get_texture_manager();
+	this->texture = tex_manager.request(this->render_entity->get_texture_path());
 	if (this->uniforms != nullptr) {
 		this->uniforms->update(
 			"tex",

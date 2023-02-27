@@ -15,10 +15,6 @@ class Renderer;
 class Texture2d;
 class UniformInput;
 
-namespace resources {
-class TextureManager;
-}
-
 namespace terrain {
 class TerrainRenderEntity;
 
