@@ -51,14 +51,14 @@ public:
      *
      * @return Simulation clock.
      */
-	std::shared_ptr<Clock> get_clock() const;
+	const std::shared_ptr<Clock> get_clock();
 
 	/**
      * Get the event loop used by this simulation.
      *
      * @return Event loop.
      */
-	std::shared_ptr<Clock> get_loop() const;
+	const std::shared_ptr<Loop> get_loop();
 
 private:
 	/**

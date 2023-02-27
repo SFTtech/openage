@@ -53,4 +53,16 @@ void Simulation::stop() {
 	log::log(MSG(info) << "simulation stopped");
 }
 
+const std::shared_ptr<Clock> Simulation::get_clock() {
+	std::shared_lock lock{this->mutex};
+
+	return this->clock;
+}
+
+const std::shared_ptr<Loop> Simulation::get_loop() {
+	std::shared_lock lock{this->mutex};
+
+	return this->loop;
+}
+
 } // namespace openage::event
