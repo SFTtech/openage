@@ -60,7 +60,7 @@ PatternData parse_pattern(const std::vector<std::string> &args) {
 
 BlendTableInfo parse_blendtable_file(const util::Path &file,
                                      const std::shared_ptr<AssetCache> &cache) {
-	if (unlikely(!file.is_file())) {
+	if (unlikely(not file.is_file())) {
 		throw Error(MSG(err) << "Reading .bltable file '"
 		                     << file.get_name()
 		                     << "' failed. Reason: File not found");
@@ -98,7 +98,8 @@ BlendTableInfo parse_blendtable_file(const util::Path &file,
 		}
 		std::vector<std::string> args{util::split(line, ' ')};
 
-		if (unlikely(!keywordfuncs.contains(args[0]))) {
+		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
+		if (unlikely(not keywordfuncs.contains(args[0]))) {
 			throw Error(MSG(err) << "Reading .bltable file '"
 			                     << file.get_name()
 			                     << "' failed. Reason: Keyword "

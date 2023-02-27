@@ -55,7 +55,8 @@ LayerData parse_layer(const std::vector<std::string> &args) {
 	for (size_t i = 2; i < args.size(); ++i) {
 		std::vector<std::string> keywordargs{util::split(args[i], '=')};
 
-		if (unlikely(!keywordfuncs.contains(keywordargs[0]))) {
+		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
+		if (unlikely(not keywordfuncs.contains(keywordargs[0]))) {
 			throw Error(MSG(err) << "Keyword argument "
 			                     << keywordargs[0]
 			                     << " of 'layer' attribute is not defined");
@@ -89,7 +90,8 @@ AngleData parse_angle(const std::vector<std::string> &args) {
 	for (size_t i = 2; i < args.size(); ++i) {
 		std::vector<std::string> keywordargs{util::split(args[i], '=')};
 
-		if (unlikely(!keywordfuncs.contains(keywordargs[0]))) {
+		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
+		if (unlikely(not keywordfuncs.contains(keywordargs[0]))) {
 			throw Error(MSG(err) << "Keyword argument "
 			                     << keywordargs[0]
 			                     << " of 'angle' attribute is not defined");
@@ -123,7 +125,7 @@ FrameData parse_frame(const std::vector<std::string> &args) {
 
 Animation2dInfo parse_sprite_file(const util::Path &file,
                                   const std::shared_ptr<AssetCache> &cache) {
-	if (unlikely(!file.is_file())) {
+	if (unlikely(not file.is_file())) {
 		throw Error(MSG(err) << "Reading .sprite file '"
 		                     << file.get_name()
 		                     << "' failed. Reason: File not found");
@@ -188,7 +190,8 @@ Animation2dInfo parse_sprite_file(const util::Path &file,
 		}
 		std::vector<std::string> args{util::split(line, ' ')};
 
-		if (unlikely(!keywordfuncs.contains(args[0]))) {
+		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
+		if (unlikely(not keywordfuncs.contains(args[0]))) {
 			throw Error(MSG(err) << "Reading .sprite file '"
 			                     << file.get_name()
 			                     << "' failed. Reason: Keyword "

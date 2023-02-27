@@ -91,7 +91,8 @@ PixelFormatData parse_pxformat(const std::vector<std::string> &args) {
 	for (size_t i = 2; i < args.size(); ++i) {
 		std::vector<std::string> keywordargs{util::split(args[i], '=')};
 
-		if (unlikely(!keywordfuncs.contains(keywordargs[0]))) {
+		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
+		if (unlikely(not keywordfuncs.contains(keywordargs[0]))) {
 			throw Error(MSG(err) << "Keyword argument "
 			                     << keywordargs[0]
 			                     << " of 'pxformat' attribute is not defined");
@@ -125,7 +126,7 @@ SubtextureData parse_subtex(const std::vector<std::string> &args) {
 }
 
 Texture2dInfo parse_texture_file(const util::Path &file) {
-	if (unlikely(!file.is_file())) {
+	if (unlikely(not file.is_file())) {
 		throw Error(MSG(err) << "Reading .texture file '"
 		                     << file.get_name()
 		                     << "' failed. Reason: File not found");
@@ -170,13 +171,13 @@ Texture2dInfo parse_texture_file(const util::Path &file) {
 		}
 		std::vector<std::string> args{util::split(line, ' ')};
 
-		if (unlikely(!keywordfuncs.contains(args[0]))) {
+		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
+		if (unlikely(not keywordfuncs.contains(args[0]))) {
 			throw Error(MSG(err) << "Reading .texture file '"
 			                     << file.get_name()
 			                     << "' failed. Reason: Keyword "
 			                     << args[0] << " is not defined");
 		}
-
 		keywordfuncs[args[0]](args);
 	}
 

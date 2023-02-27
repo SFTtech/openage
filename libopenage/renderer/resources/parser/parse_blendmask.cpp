@@ -49,7 +49,7 @@ blending_mask parse_mask(const std::vector<std::string> &args) {
 
 BlendPatternInfo parse_blendmask_file(const util::Path &file,
                                       const std::shared_ptr<AssetCache> &cache) {
-	if (unlikely(!file.is_file())) {
+	if (unlikely(not file.is_file())) {
 		throw Error(MSG(err) << "Reading .blmask file '"
 		                     << file.get_name()
 		                     << "' failed. Reason: File not found");
@@ -90,7 +90,8 @@ BlendPatternInfo parse_blendmask_file(const util::Path &file,
 		}
 		std::vector<std::string> args{util::split(line, ' ')};
 
-		if (unlikely(!keywordfuncs.contains(args[0]))) {
+		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
+		if (unlikely(not keywordfuncs.contains(args[0]))) {
 			throw Error(MSG(err) << "Reading .blmask file '"
 			                     << file.get_name()
 			                     << "' failed. Reason: Keyword "

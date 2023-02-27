@@ -52,7 +52,7 @@ std::vector<uint8_t> parse_colours(const std::vector<std::string> &lines) {
 }
 
 PaletteInfo parse_palette_file(const util::Path &file) {
-	if (unlikely(!file.is_file())) {
+	if (unlikely(not file.is_file())) {
 		throw Error(MSG(err) << "Reading .opal file '"
 		                     << file.get_name()
 		                     << "' failed. Reason: File not found");
@@ -90,7 +90,8 @@ PaletteInfo parse_palette_file(const util::Path &file) {
 		}
 		std::vector<std::string> args{util::split(line, ' ')};
 
-		if (unlikely(!keywordfuncs.contains(args[0]))) {
+		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
+		if (unlikely(not keywordfuncs.contains(args[0]))) {
 			throw Error(MSG(err) << "Reading .opal file '"
 			                     << file.get_name()
 			                     << "' failed. Reason: Keyword "
