@@ -303,7 +303,7 @@ void renderer_demo_1(const util::Path &path) {
 	log::log(INFO << "  texture count: " << sprite_info.get_texture_count());
 	for (size_t i = 0; i < sprite_info.get_texture_count(); ++i) {
 		log::log(INFO << "    texture " << i << ": "
-		              << sprite_info.get_texture(i).get_image_path().value().resolve_native_path());
+		              << sprite_info.get_texture(i)->get_image_path().value().resolve_native_path());
 	}
 
 	log::log(INFO << "  scalefactor: " << sprite_info.get_scalefactor());
@@ -380,7 +380,7 @@ void renderer_demo_1(const util::Path &path) {
 
 	/* Load texture image using the metafile. */
 	log::log(INFO << "Loading texture image...");
-	auto tex = resources::Texture2dData(sprite_info.get_texture(0));
+	auto tex = resources::Texture2dData(*sprite_info.get_texture(0));
 	auto gltex = renderer->add_texture(tex);
 
 	/* Read location of the subtexture in the texture image */
@@ -884,7 +884,7 @@ void renderer_demo_4(const util::Path &path) {
 
 	/* Load texture image using the metafile. */
 	log::log(INFO << "Loading texture image...");
-	auto tex = resources::Texture2dData(sprite_info.get_texture(0));
+	auto tex = resources::Texture2dData(*sprite_info.get_texture(0));
 	auto gltex = renderer->add_texture(tex);
 
 	/* Read location of the first subtexture in the texture image */
@@ -895,7 +895,7 @@ void renderer_demo_4(const util::Path &path) {
 	Eigen::Vector4f subtex_coords{s_left, s_right, s_top, s_bottom};
 
 	/* Upscale subtexture for better visibility */
-	auto tex_size = sprite_info.get_texture(0).get_size();
+	auto tex_size = sprite_info.get_texture(0)->get_size();
 	unsigned char upscale_factor = 3;
 	float scale_x = upscale_factor * (float)subtex_size[1] / tex_size.first;
 	float scale_y = upscale_factor * (float)subtex_size[0] / tex_size.second;

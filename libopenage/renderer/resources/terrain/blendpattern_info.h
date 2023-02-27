@@ -31,7 +31,7 @@ public:
 	 * @param masks Layer information.
 	 */
 	BlendPatternInfo(const float scalefactor,
-	                 std::vector<Texture2dInfo> &textures,
+	                 std::vector<std::shared_ptr<Texture2dInfo>> &textures,
 	                 std::vector<blending_mask> &masks);
 
 	BlendPatternInfo() = default;
@@ -59,7 +59,7 @@ public:
 	 * @return A texture information object containing the metadata of the
 	 *         referenced texture.
 	 */
-	const Texture2dInfo &get_texture(size_t idx) const;
+	const std::shared_ptr<Texture2dInfo> &get_texture(size_t idx) const;
 
 	/**
 	 * Get number of masks in the blending pattern.
@@ -86,7 +86,7 @@ private:
 	/**
 	 * Information about textures used by the animation.
 	 */
-	std::vector<Texture2dInfo> textures;
+	std::vector<std::shared_ptr<Texture2dInfo>> textures;
 
 	/**
 	 * Layer information.

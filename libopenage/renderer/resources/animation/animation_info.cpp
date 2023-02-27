@@ -5,7 +5,7 @@
 namespace openage::renderer::resources {
 
 Animation2dInfo::Animation2dInfo(const float scalefactor,
-                                 std::vector<Texture2dInfo> &textures,
+                                 std::vector<std::shared_ptr<Texture2dInfo>> &textures,
                                  std::vector<LayerInfo> &layers) :
 	scalefactor{scalefactor},
 	texture_infos{textures},
@@ -19,7 +19,7 @@ size_t Animation2dInfo::get_texture_count() const {
 	return this->texture_infos.size();
 }
 
-const Texture2dInfo &Animation2dInfo::get_texture(size_t idx) const {
+const std::shared_ptr<Texture2dInfo> &Animation2dInfo::get_texture(size_t idx) const {
 	return this->texture_infos[idx];
 }
 

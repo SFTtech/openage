@@ -5,7 +5,7 @@
 namespace openage::renderer::resources {
 
 BlendPatternInfo::BlendPatternInfo(const float scalefactor,
-                                   std::vector<Texture2dInfo> &textures,
+                                   std::vector<std::shared_ptr<Texture2dInfo>> &textures,
                                    std::vector<blending_mask> &masks) :
 	scalefactor{scalefactor},
 	textures{textures} {
@@ -23,7 +23,7 @@ size_t BlendPatternInfo::get_texture_count() const {
 	return this->textures.size();
 }
 
-const Texture2dInfo &BlendPatternInfo::get_texture(size_t idx) const {
+const std::shared_ptr<Texture2dInfo> &BlendPatternInfo::get_texture(size_t idx) const {
 	return this->textures[idx];
 }
 

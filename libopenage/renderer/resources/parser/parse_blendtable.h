@@ -5,9 +5,10 @@
 #include "renderer/resources/terrain/blendtable_info.h"
 #include "util/path.h"
 
-namespace openage::renderer::resources::parser {
+namespace openage::renderer::resources {
+class AssetCache;
 
-using blpattern_cache_t = std::unordered_map<std::string, std::shared_ptr<BlendPatternInfo>>;
+namespace parser {
 
 /**
  * Containers for the raw data.
@@ -23,11 +24,12 @@ struct PatternData {
  * Parse an blending table definition from a .bltable format file.
  *
  * @param file Path to the blendtable file.
- * @param pattern_cache Cache of already loaded blending patterns (optional).
+ * @param cache Cache of already loaded assets (optional).
  *
  * @return The corresponding blendtable definition.
  */
 BlendTableInfo parse_blendtable_file(const util::Path &file,
-                                     const blpattern_cache_t &pattern_cache = {});
+                                     const std::shared_ptr<AssetCache> &cache = nullptr);
 
-} // namespace openage::renderer::resources::parser
+} // namespace parser
+} // namespace openage::renderer::resources

@@ -13,18 +13,12 @@ TextureManager::TextureManager(const std::shared_ptr<Renderer> &renderer) :
 	loaded{} {
 }
 
-const std::shared_ptr<Texture2d> &TextureManager::request(const util::Path &path, bool info_file) {
+const std::shared_ptr<Texture2d> &TextureManager::request(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
 	if (not this->loaded.contains(flat_path)) {
 		// create if not loaded
-		if (info_file) {
-			auto tex_info = parser::parse_texture_file(path);
-			this->loaded.insert({flat_path, this->renderer->add_texture(tex_info)});
-		}
-		else {
-			auto tex_data = resources::Texture2dData(path);
-			this->loaded.insert({flat_path, this->renderer->add_texture(tex_data)});
-		}
+		auto tex_data = resources::Texture2dData(path);
+		this->loaded.insert({flat_path, this->renderer->add_texture(tex_data)});
 	}
 	return this->loaded[flat_path];
 }
@@ -48,10 +42,5 @@ void TextureManager::remove(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
 	this->loaded.erase(flat_path);
 }
-
-const texture_cache_t &TextureManager::get_cache() {
-	return this->loaded;
-}
-
 
 } // namespace openage::renderer::resources

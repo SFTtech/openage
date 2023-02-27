@@ -14,8 +14,6 @@ class Texture2d;
 
 namespace resources {
 
-using texture_cache_t = std::unordered_map<std::string, std::shared_ptr<Texture2d>>;
-
 /**
  * Loads and stores references to shared texture assets.
  *
@@ -39,12 +37,10 @@ public:
      * using the given path.
      *
      * @param path Path to the texture resource.
-     * @param info_file If true, interpret the path as a texture info file, else as
-     *                  an image data file.
      *
      * @return Texture resource at the given path.
      */
-	const std::shared_ptr<Texture2d> &request(const util::Path &path, bool info_file = false);
+	const std::shared_ptr<Texture2d> &request(const util::Path &path);
 
 	/**
      * Load the texture at the given path. Does nothing if the path
@@ -71,18 +67,13 @@ public:
      */
 	void remove(const util::Path &path);
 
-	/**
-     * Get the cache with the loaded textures.
-     *
-     * @param path Map of filenames and loaded textures.
-     */
-	const texture_cache_t &get_cache();
-
 private:
 	/**
      * openage renderer.
      */
 	std::shared_ptr<Renderer> renderer;
+
+	using texture_cache_t = std::unordered_map<std::string, std::shared_ptr<Texture2d>>;
 
 	/**
      * Cache of already created textures.

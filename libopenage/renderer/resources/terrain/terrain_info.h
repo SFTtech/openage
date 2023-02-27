@@ -25,7 +25,7 @@ public:
 	 * @param blendtable Blending table for setting edge blending patterns.
 	 */
 	TerrainInfo(const float scalefactor,
-	            std::vector<Texture2dInfo> &textures,
+	            std::vector<std::shared_ptr<Texture2dInfo>> &textures,
 	            std::vector<TerrainLayerInfo> &layers,
 	            const std::shared_ptr<BlendTableInfo> &blendtable = nullptr);
 
@@ -54,7 +54,7 @@ public:
 	 * @return A texture information object containing the metadata of the
 	 *         referenced texture.
 	 */
-	const Texture2dInfo &get_texture(size_t idx) const;
+	const std::shared_ptr<Texture2dInfo> &get_texture(size_t idx) const;
 
 	/**
 	 * Get the blend table information of the layer.
@@ -88,7 +88,7 @@ private:
 	/**
 	 * Information about textures used by the terrain.
 	 */
-	std::vector<Texture2dInfo> textures;
+	std::vector<std::shared_ptr<Texture2dInfo>> textures;
 
 	/**
 	 * Layer information.

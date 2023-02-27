@@ -8,6 +8,7 @@
 #include "renderer/resources/animation/angle_info.h"
 #include "renderer/resources/animation/frame_info.h"
 #include "renderer/resources/animation/layer_info.h"
+#include "renderer/resources/assets/cache.h"
 #include "renderer/resources/parser/common.h"
 #include "renderer/resources/parser/parse_texture.h"
 #include "renderer/texture.h"
@@ -121,7 +122,7 @@ FrameData parse_frame(const std::vector<std::string> &args) {
 }
 
 Animation2dInfo parse_sprite_file(const util::Path &file,
-                                  const texture_cache_t &texture_cache) {
+                                  const std::shared_ptr<AssetCache> &cache) {
 	if (unlikely(!file.is_file())) {
 		throw Error(MSG(err) << "Reading .sprite file '"
 		                     << file.get_name()
@@ -258,17 +259,19 @@ Animation2dInfo parse_sprite_file(const util::Path &file,
 	}
 
 	// Parse textures
-	std::vector<Texture2dInfo> texture_infos;
+	std::vector<std::shared_ptr<Texture2dInfo>> texture_infos;
 	for (auto texture : textures) {
 		util::Path texturepath = (file.get_parent() / texture.path);
-		auto flat_path = texturepath.resolve_native_path();
 
-		// Check if the texture is already loaded
-		if (texture_cache.contains(flat_path)) {
-			texture_infos.push_back(texture_cache.at(flat_path)->get_info());
+		// Check if already loaded
+		auto cached = cache->get_texture(texturepath);
+		if (cached) {
+			texture_infos.push_back(cached);
 		}
 		else {
-			texture_infos.push_back(parse_texture_file(texturepath));
+			auto info = std::make_shared<Texture2dInfo>(parse_texture_file(texturepath));
+			texture_infos.push_back(info);
+			cache->add_texture(texturepath, info);
 		}
 	}
 

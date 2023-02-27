@@ -5,7 +5,7 @@
 namespace openage::renderer::resources {
 
 TerrainInfo::TerrainInfo(const float scalefactor,
-                         std::vector<Texture2dInfo> &textures,
+                         std::vector<std::shared_ptr<Texture2dInfo>> &textures,
                          std::vector<TerrainLayerInfo> &layers,
                          const std::shared_ptr<BlendTableInfo> &blendtable) :
 	scalefactor{scalefactor},
@@ -21,7 +21,7 @@ size_t TerrainInfo::get_texture_count() const {
 	return this->textures.size();
 }
 
-const Texture2dInfo &TerrainInfo::get_texture(size_t idx) const {
+const std::shared_ptr<Texture2dInfo> &TerrainInfo::get_texture(size_t idx) const {
 	return this->textures[idx];
 }
 

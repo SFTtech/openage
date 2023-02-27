@@ -33,7 +33,7 @@ public:
 	 * @param layers Layer information.
 	 */
 	Animation2dInfo(const float scalefactor,
-	                std::vector<Texture2dInfo> &textures,
+	                std::vector<std::shared_ptr<Texture2dInfo>> &textures,
 	                std::vector<LayerInfo> &layers);
 
 	Animation2dInfo() = default;
@@ -61,7 +61,7 @@ public:
 	 * @return A texture information object containing the metadata of the
 	 *         referenced texture.
 	 */
-	const Texture2dInfo &get_texture(size_t idx) const;
+	const std::shared_ptr<Texture2dInfo> &get_texture(size_t idx) const;
 
 	/**
 	 * Get number of layers in the animation.
@@ -88,7 +88,7 @@ private:
 	/**
 	 * Information about textures used by the animation.
 	 */
-	std::vector<Texture2dInfo> texture_infos;
+	std::vector<std::shared_ptr<Texture2dInfo>> texture_infos;
 
 	/**
 	 * Layer information.

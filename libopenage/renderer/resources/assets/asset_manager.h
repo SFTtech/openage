@@ -13,11 +13,14 @@ namespace openage::renderer {
 class Renderer;
 
 namespace resources {
+class AssetCache;
+
 class Animation2dInfo;
 class BlendPatternInfo;
 class BlendTableInfo;
 class PaletteInfo;
 class TerrainInfo;
+class Texture2dInfo;
 
 /**
  * Loads and stores references to shared graphics assets such as textures,
@@ -51,55 +54,31 @@ public:
 	const std::shared_ptr<BlendTableInfo> &request_bltable(const util::Path &path);
 	const std::shared_ptr<PaletteInfo> &request_palette(const util::Path &path);
 	const std::shared_ptr<TerrainInfo> &request_terrain(const util::Path &path);
+	const std::shared_ptr<Texture2dInfo> &request_texture(const util::Path &path);
 
 	/**
-     * Remove an asset reference from the cache.
-     *
-     * @param path Path to the asset resource.
-     */
-	void remove_animation(const util::Path &path);
-	void remove_blpattern(const util::Path &path);
-	void remove_bltable(const util::Path &path);
-	void remove_palette(const util::Path &path);
-	void remove_terrain(const util::Path &path);
+      * Get the texture manager for accessing cached image resources.
+      *
+      * @return Texture manager.
+      */
+	const TextureManager &get_texture_manager();
 
 private:
+	/**
+     * openage renderer.
+     */
+	std::shared_ptr<Renderer> renderer;
+
+	/**
+     * Cache of already loaded assets.
+     */
+	std::shared_ptr<AssetCache> cache;
+
 	/**
      * Manages individual textures/image resources used by the
      * high level asset formats cached by the asset manager.
      */
 	TextureManager texture_manager;
-
-	using anim_cache_t = std::unordered_map<std::string, std::shared_ptr<Animation2dInfo>>;
-	using blpattern_cache_t = std::unordered_map<std::string, std::shared_ptr<BlendPatternInfo>>;
-	using bltable_cache_t = std::unordered_map<std::string, std::shared_ptr<BlendTableInfo>>;
-	using palette_cache_t = std::unordered_map<std::string, std::shared_ptr<PaletteInfo>>;
-	using terrain_cache_t = std::unordered_map<std::string, std::shared_ptr<TerrainInfo>>;
-
-	/**
-     * Cache of already loaded animations.
-     */
-	anim_cache_t loaded_animations;
-
-	/**
-     * Cache of already loaded blending patterns.
-     */
-	blpattern_cache_t loaded_blpatterns;
-
-	/**
-     * Cache of already loaded blending tables.
-     */
-	bltable_cache_t loaded_bltables;
-
-	/**
-     * Cache of already loaded colour palettes.
-     */
-	palette_cache_t loaded_palettes;
-
-	/**
-     * Cache of already loaded terrains.
-     */
-	terrain_cache_t loaded_terrains;
 };
 
 } // namespace resources

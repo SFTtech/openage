@@ -5,7 +5,11 @@
 #include "renderer/resources/texture_info.h"
 #include "util/path.h"
 
-namespace openage::renderer::resources::parser {
+namespace openage::renderer {
+class Renderer;
+class Texture2d;
+
+namespace resources::parser {
 
 /**
  * Containers for the raw data.
@@ -32,7 +36,7 @@ struct SubtextureData {
 };
 
 /**
- * Parse an Texture definition from a .texture format file.
+ * Parse a texture definition from a .texture format file.
  *
  * @param file Path to the texture file.
  *
@@ -40,4 +44,5 @@ struct SubtextureData {
  */
 Texture2dInfo parse_texture_file(const util::Path &file);
 
-} // namespace openage::renderer::resources::parser
+} // namespace resources::parser
+} // namespace openage::renderer

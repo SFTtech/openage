@@ -5,12 +5,10 @@
 #include "renderer/animation.h"
 #include "util/path.h"
 
-namespace openage::renderer {
-class Texture2d;
+namespace openage::renderer::resources {
+class AssetCache;
 
-namespace resources::parser {
-
-using texture_cache_t = std::unordered_map<std::string, std::shared_ptr<Texture2d>>;
+namespace parser {
 
 /**
  * Containers for the raw data.
@@ -42,12 +40,12 @@ struct FrameData {
  * Parse an Animation2d definition from a .sprite format file.
  *
  * @param file Path to the sprite file.
- * @param texture_cache Cache of already loaded textures (optional).
+ * @param cache Cache of already loaded assets (optional).
  *
  * @return The corresponding animation definition.
  */
 Animation2dInfo parse_sprite_file(const util::Path &file,
-                                  const texture_cache_t &texture_cache = {});
+                                  const std::shared_ptr<AssetCache> &cache = nullptr);
 
 } // namespace resources::parser
 } // namespace openage::renderer

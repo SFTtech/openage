@@ -5,6 +5,7 @@
 #include <functional>
 
 #include "error/error.h"
+#include "renderer/resources/assets/cache.h"
 #include "renderer/resources/parser/common.h"
 #include "renderer/resources/parser/parse_blendmask.h"
 #include "renderer/resources/terrain/blendpattern_info.h"
@@ -58,7 +59,7 @@ PatternData parse_pattern(const std::vector<std::string> &args) {
 }
 
 BlendTableInfo parse_blendtable_file(const util::Path &file,
-                                     const blpattern_cache_t &pattern_cache) {
+                                     const std::shared_ptr<AssetCache> &cache) {
 	if (unlikely(!file.is_file())) {
 		throw Error(MSG(err) << "Reading .bltable file '"
 		                     << file.get_name()
@@ -132,14 +133,16 @@ BlendTableInfo parse_blendtable_file(const util::Path &file,
 	std::vector<std::shared_ptr<BlendPatternInfo>> pattern_infos;
 	for (auto pattern : patterns) {
 		util::Path maskpath = (file.get_parent() / pattern.path);
-		auto flat_path = maskpath.resolve_native_path();
 
 		// Check if already loaded
-		if (pattern_cache.contains(flat_path)) {
-			pattern_infos.push_back(pattern_cache.at(flat_path));
+		auto cached = cache->get_blpattern(maskpath);
+		if (cached) {
+			pattern_infos.push_back(cached);
 		}
 		else {
-			pattern_infos.push_back(std::make_shared<BlendPatternInfo>(parse_blendmask_file(maskpath)));
+			auto info = std::make_shared<BlendPatternInfo>(parse_blendmask_file(maskpath));
+			pattern_infos.push_back(info);
+			cache->add_blpattern(maskpath, info);
 		}
 	}
 

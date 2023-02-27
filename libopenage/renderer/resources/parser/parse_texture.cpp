@@ -3,6 +3,7 @@
 #include "parse_texture.h"
 
 #include "error/error.h"
+#include "renderer/renderer.h"
 #include "renderer/resources/parser/common.h"
 #include "util/strings.h"
 

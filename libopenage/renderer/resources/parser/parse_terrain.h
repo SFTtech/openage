@@ -7,13 +7,10 @@
 #include "renderer/resources/terrain/terrain_info.h"
 #include "util/path.h"
 
-namespace openage::renderer {
-class Texture2d;
+namespace openage::renderer::resources {
+class AssetCache;
 
-namespace resources::parser {
-
-using texture_cache_t = std::unordered_map<std::string, std::shared_ptr<Texture2d>>;
-using bltable_cache_t = std::unordered_map<std::string, std::shared_ptr<BlendTableInfo>>;
+namespace parser {
 
 /**
  * Containers for the raw data.
@@ -46,14 +43,12 @@ struct TerrainFrameData {
  * Parse an Terrain definition from a .terrain format file.
  *
  * @param file Path to the terrain file.
- * @param texture_cache Cache of already loaded textures (optional).
- * @param table_cache Cache of already loaded blending tables (optional).
+ * @param cache Cache of already loaded assets (optional).
  *
  * @return The corresponding terrain definition.
  */
 TerrainInfo parse_terrain_file(const util::Path &file,
-                               const texture_cache_t &texture_cache = {},
-                               const bltable_cache_t &table_cache = {});
+                               const std::shared_ptr<AssetCache> &cache = nullptr);
 
-} // namespace resources::parser
-} // namespace openage::renderer
+} // namespace parser
+} // namespace openage::renderer::resources
