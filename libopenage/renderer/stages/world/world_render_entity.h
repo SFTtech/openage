@@ -20,11 +20,11 @@ public:
 	 *
 	 * @param ref_id Game entity ID.
 	 * @param position Position of the game entity inside the game world.
-	 * @param texture_path Path to the animation texture.
+	 * @param sprite_path Path to the animation definition.
 	 */
 	void update(const uint32_t ref_id,
 	            const util::Vector3f position,
-	            const util::Path texture_path);
+	            const util::Path sprite_path);
 
 	/**
 	 * Get the ID of the corresponding game entity.
@@ -83,7 +83,7 @@ private:
 	/**
 	 * Path to the texture.
 	 */
-	util::Path texture_path;
+	util::Path sprite_path;
 
 	/**
 	 * Mutex for protecting threaded access.

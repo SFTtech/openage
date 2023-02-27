@@ -7,17 +7,17 @@ namespace openage::renderer::world {
 WorldRenderEntity::WorldRenderEntity() :
 	changed{false},
 	position{0.0f, 0.0f, 0.0f},
-	texture_path{} {
+	sprite_path{} {
 }
 
 void WorldRenderEntity::update(const uint32_t ref_id,
                                const util::Vector3f position,
-                               const util::Path texture_path) {
+                               const util::Path sprite_path) {
 	std::unique_lock lock{this->mutex};
 
 	this->ref_id = ref_id;
 	this->position = Eigen::Vector3f{position[0], position[1], position[2]};
-	this->texture_path = texture_path;
+	this->sprite_path = sprite_path;
 	this->changed = true;
 }
 
@@ -36,7 +36,7 @@ const Eigen::Vector3f WorldRenderEntity::get_position() {
 const util::Path &WorldRenderEntity::get_texture_path() {
 	std::shared_lock lock{this->mutex};
 
-	return this->texture_path;
+	return this->sprite_path;
 }
 
 bool WorldRenderEntity::is_changed() {

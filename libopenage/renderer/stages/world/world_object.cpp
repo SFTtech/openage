@@ -2,6 +2,7 @@
 
 #include "world_object.h"
 
+#include "renderer/resources/animation/animation_info.h"
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/assets/texture_manager.h"
 #include "renderer/resources/mesh_data.h"
@@ -43,7 +44,10 @@ void WorldObject::update() {
 
 	// Update textures
 	auto tex_manager = this->asset_manager->get_texture_manager();
-	this->texture = tex_manager.request(this->render_entity->get_texture_path());
+	auto anim_info = this->asset_manager->request_animation(this->render_entity->get_texture_path());
+	this->texture = tex_manager.request(anim_info->get_texture(0)->get_image_path().value());
+	// TODO: Support multiple textures per animation
+
 	if (this->uniforms != nullptr) {
 		this->uniforms->update(
 			"tex",
