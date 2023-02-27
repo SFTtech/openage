@@ -92,7 +92,7 @@ void renderer_demo_0(const util::Path &path) {
 	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
 
 	/* Texture for the clickable objects. */
-	auto tex = resources::Texture2dData(path / "/assets/gaben.png");
+	auto tex = resources::Texture2dData(path / "/assets/test/textures/gaben.png");
 	auto gltex = renderer->add_texture(tex);
 
 	auto transform1 = Eigen::Affine3f::Identity();
@@ -756,10 +756,10 @@ void renderer_demo_3(const util::Path &path) {
 
 	// Game entities
 	auto world0 = render_factory->add_world_render_entity();
-	world0->update(0, util::Vector3f(3.0f, 3.0f, 0.0f), path["assets"]["gaben.png"]);
+	world0->update(0, util::Vector3f(3.0f, 3.0f, 0.0f), path["assets"]["test"]["textures"]["gaben.png"]);
 
 	auto world1 = render_factory->add_world_render_entity();
-	world1->update(1, util::Vector3f(7.5f, 6.0f, 0.0f), path["assets"]["missing.png"]);
+	world1->update(1, util::Vector3f(7.5f, 6.0f, 0.0f), path["assets"]["test"]["textures"]["missing.png"]);
 
 	// Zoom in/out with mouse wheel
 	window->add_mouse_wheel_callback([&](const QWheelEvent &ev) {

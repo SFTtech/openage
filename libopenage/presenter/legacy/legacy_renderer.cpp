@@ -47,7 +47,7 @@ LegacyRenderer::LegacyRenderer(LegacyEngine *e, presenter::LegacyDisplay *d) :
 	util::Path asset_dir = this->engine->get_root_dir()["assets"];
 
 	// load textures and stuff
-	gaben = new Texture{asset_dir["gaben.png"]};
+	gaben = new Texture{asset_dir["test"]["textures"]["gaben.png"]};
 
 	std::vector<gamedata::palette_color> player_color_lines = util::read_csv_file<gamedata::palette_color>(
 		asset_dir["converted/player_palette.docx"]);

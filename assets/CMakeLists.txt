@@ -5,13 +5,6 @@ add_subdirectory(shaders/)
 add_subdirectory(test/)
 add_subdirectory(textures/)
 
-
-install(FILES
-	"missing.png"
-	"gaben.png"
-	DESTINATION "${ASSET_DIR}"
-)
-
 install(DIRECTORY "qml"
 	DESTINATION "${ASSET_DIR}"
 )
