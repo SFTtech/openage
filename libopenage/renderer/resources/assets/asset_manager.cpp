@@ -29,7 +29,7 @@ AssetManager::AssetManager(const std::shared_ptr<Renderer> &renderer) :
 const std::shared_ptr<Animation2dInfo> &AssetManager::request_animation(const util::Path &path) {
 	if (not this->cache->check_animation_cache(path)) {
 		// create if not loaded
-		auto info = std::make_shared<Animation2dInfo>(parser::parse_sprite_file(path));
+		auto info = std::make_shared<Animation2dInfo>(parser::parse_sprite_file(path, this->cache));
 		this->cache->add_animation(path, info);
 	}
 	return this->cache->get_animation(path);
@@ -38,7 +38,7 @@ const std::shared_ptr<Animation2dInfo> &AssetManager::request_animation(const ut
 const std::shared_ptr<BlendPatternInfo> &AssetManager::request_blpattern(const util::Path &path) {
 	if (not this->cache->check_blpattern_cache(path)) {
 		// create if not loaded
-		auto info = std::make_shared<BlendPatternInfo>(parser::parse_blendmask_file(path));
+		auto info = std::make_shared<BlendPatternInfo>(parser::parse_blendmask_file(path, this->cache));
 		this->cache->add_blpattern(path, info);
 	}
 	return this->cache->get_blpattern(path);
@@ -47,7 +47,7 @@ const std::shared_ptr<BlendPatternInfo> &AssetManager::request_blpattern(const u
 const std::shared_ptr<BlendTableInfo> &AssetManager::request_bltable(const util::Path &path) {
 	if (not this->cache->check_bltable_cache(path)) {
 		// create if not loaded
-		auto info = std::make_shared<BlendTableInfo>(parser::parse_blendtable_file(path));
+		auto info = std::make_shared<BlendTableInfo>(parser::parse_blendtable_file(path, this->cache));
 		this->cache->add_bltable(path, info);
 	}
 	return this->cache->get_bltable(path);
@@ -65,7 +65,7 @@ const std::shared_ptr<PaletteInfo> &AssetManager::request_palette(const util::Pa
 const std::shared_ptr<TerrainInfo> &AssetManager::request_terrain(const util::Path &path) {
 	if (not this->cache->check_terrain_cache(path)) {
 		// create if not loaded
-		auto info = std::make_shared<TerrainInfo>(parser::parse_terrain_file(path));
+		auto info = std::make_shared<TerrainInfo>(parser::parse_terrain_file(path, this->cache));
 		this->cache->add_terrain(path, info);
 	}
 	return this->cache->get_terrain(path);

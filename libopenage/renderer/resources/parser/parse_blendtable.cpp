@@ -134,16 +134,18 @@ BlendTableInfo parse_blendtable_file(const util::Path &file,
 	for (auto pattern : patterns) {
 		util::Path maskpath = (file.get_parent() / pattern.path);
 
-		// Check if already loaded
-		auto cached = cache->get_blpattern(maskpath);
-		if (cached) {
-			pattern_infos.push_back(cached);
+		if (cache) {
+			// Check if already loaded
+			auto cached = cache->get_blpattern(maskpath);
+			if (cached) {
+				pattern_infos.push_back(cached);
+				continue;
+			}
 		}
-		else {
-			auto info = std::make_shared<BlendPatternInfo>(parse_blendmask_file(maskpath));
-			pattern_infos.push_back(info);
-			cache->add_blpattern(maskpath, info);
-		}
+
+		auto info = std::make_shared<BlendPatternInfo>(parse_blendmask_file(maskpath));
+		pattern_infos.push_back(info);
+		cache->add_blpattern(maskpath, info);
 	}
 
 	return BlendTableInfo(blendtable, pattern_infos);
