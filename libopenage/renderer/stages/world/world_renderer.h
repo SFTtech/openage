@@ -8,7 +8,13 @@
 
 #include "util/path.h"
 
-namespace openage::renderer {
+namespace openage {
+
+namespace event {
+class Clock;
+}
+
+namespace renderer {
 class Renderer;
 class RenderPass;
 class ShaderProgram;
@@ -31,7 +37,8 @@ public:
 	WorldRenderer(const std::shared_ptr<Window> &window,
 	              const std::shared_ptr<renderer::Renderer> &renderer,
 	              const util::Path &shaderdir,
-	              const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
+	              const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+	              const std::shared_ptr<event::Clock> clock);
 	~WorldRenderer() = default;
 
 	/**
@@ -102,6 +109,11 @@ private:
 	std::shared_ptr<renderer::ShaderProgram> display_shader;
 
 	/**
+	 * Simulation clock for timing animations.
+	 */
+	std::shared_ptr<event::Clock> clock;
+
+	/**
 	 * Output texture.
 	 */
 	std::shared_ptr<renderer::Texture2d> output_texture;
@@ -117,4 +129,5 @@ private:
 	std::shared_mutex mutex;
 };
 } // namespace world
-} // namespace openage::renderer
+} // namespace renderer
+} // namespace openage

@@ -2,6 +2,7 @@
 
 #include "world_renderer.h"
 
+#include "event/clock.h"
 #include "renderer/opengl/context.h"
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/shader_source.h"
@@ -16,10 +17,12 @@ namespace openage::renderer::world {
 WorldRenderer::WorldRenderer(const std::shared_ptr<Window> &window,
                              const std::shared_ptr<renderer::Renderer> &renderer,
                              const util::Path &shaderdir,
-                             const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
+                             const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+                             const std::shared_ptr<event::Clock> clock) :
 	renderer{renderer},
 	asset_manager{asset_manager},
-	render_objects{} {
+	render_objects{},
+	clock{clock} {
 	renderer::opengl::GlContext::check_error();
 
 	auto size = window->get_size();
@@ -47,8 +50,9 @@ void WorldRenderer::add_render_entity(const std::shared_ptr<WorldRenderEntity> e
 }
 
 void WorldRenderer::update() {
+	auto current_time = this->clock->get_real_time();
 	for (auto obj : this->render_objects) {
-		obj->update();
+		obj->update(current_time);
 
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {

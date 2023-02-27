@@ -652,6 +652,10 @@ void renderer_demo_3(const util::Path &path) {
 	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", 800, 600);
 	auto renderer = window->make_renderer();
 
+	// Clock required by world renderer for timing animation frames
+	// (we never advance time in this demo though, so it has no significance)
+	auto clock = std::make_shared<event::Clock>();
+
 	// Camera
 	// our viewport into the game world
 	auto camera = std::make_shared<renderer::camera::Camera>(window->get_size());
@@ -687,7 +691,8 @@ void renderer_demo_3(const util::Path &path) {
 		window,
 		renderer,
 		path["assets"]["shaders"],
-		asset_manager);
+		asset_manager,
+		clock);
 
 	// Store the render passes of the renderers
 	// The order is important as its also the order in which they

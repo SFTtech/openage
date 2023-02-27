@@ -121,7 +121,8 @@ void Presenter::init_graphics() {
 		this->window,
 		this->renderer,
 		this->root_dir["assets"]["shaders"],
-		this->asset_manager);
+		this->asset_manager,
+		this->simulation->get_clock());
 	this->render_passes.push_back(this->world_renderer->get_render_pass());
 
 	this->init_gui();
