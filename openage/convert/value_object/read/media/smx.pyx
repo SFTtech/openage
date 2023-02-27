@@ -1112,7 +1112,9 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
             elif px_type == color_shadow:
                 r, g, b, alpha = 0, 0, 0, px_index
 
-                # Only odd alphas are used in openage; even alphas are used for commands
+                # change alpha values to match openage texture formats
+                # even alphas are used for commands marking *special* pixels (player color, etc.)
+                # odd alphas are used for normal pixels (= displayed as-is with transparency)
                 alpha = alpha | 0x01
 
             else:
