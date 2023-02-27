@@ -1,0 +1,12 @@
+# Copyright 2023-2023 the openage authors.
+# openage texture definition file
+
+version 1
+
+imagefile "missing.png"
+
+size 32 32
+
+pxformat rgba8 cbits=True
+
+subtex 0 0 32 32 16 16

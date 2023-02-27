@@ -1,0 +1,14 @@
+# Copyright 2023-2023 the openage authors. See copying.md for legal info.
+# openage sprite definition file
+
+version 2
+
+texture 0 "test_gaben.texture"
+
+scalefactor 1
+
+layer 0 mode=once
+
+angle 0
+
+frame 0 0 0 0 0

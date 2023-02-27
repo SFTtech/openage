@@ -752,7 +752,7 @@ void renderer_demo_3(const util::Path &path) {
 	// send the terrain data to the terrain renderer
 	terrain0->update(terrain_size,
 	                 height_map,
-	                 path["assets"]["test"]["textures"]["test_terrain_tex.png"]);
+	                 path["assets"]["test"]["textures"]["test_terrain.png"]);
 
 	// Game entities
 	auto world0 = render_factory->add_world_render_entity();
