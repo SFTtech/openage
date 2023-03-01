@@ -1006,10 +1006,10 @@ void renderer_demo_4(const util::Path &path) {
 		switch (key) {
 		case Qt::Key_Space: {
 			if (clock.get_state() == event::ClockState::RUNNING) {
-				clock.stop();
+				clock.pause();
 				log::log(INFO << "Stopped simulation at " << clock.get_time() << " (real = " << clock.get_real_time() << ")");
 			}
-			else if (clock.get_state() == event::ClockState::STOPPED) {
+			else if (clock.get_state() == event::ClockState::PAUSED) {
 				clock.resume();
 				log::log(INFO << "Resumed simulation at " << clock.get_time() << " (real = " << clock.get_real_time() << ")");
 			}
