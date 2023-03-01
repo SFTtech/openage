@@ -110,7 +110,7 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 	auto gl_pass = std::dynamic_pointer_cast<GlRenderPass>(pass);
 	GlRenderer::optimise(gl_pass);
 
-	for (auto obj : gl_pass->get_renderables()) {
+	for (auto const &obj : gl_pass->get_renderables()) {
 		if (obj.alpha_blending) {
 			glEnable(GL_BLEND);
 			// TODO: Set only once or make selectable
