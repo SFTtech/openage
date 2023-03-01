@@ -253,38 +253,34 @@ TerrainInfo parse_terrain_file(const util::Path &file,
 	for (auto texture : textures) {
 		util::Path texturepath = (file.get_parent() / texture.path);
 
-		if (cache) {
-			// Check if already loaded
-			auto cached = cache->get_texture(texturepath);
-			if (cached) {
-				texture_infos.push_back(cached);
-				continue;
+		if (cache && cache->check_texture_cache(texturepath)) {
+			// already loaded
+			texture_infos.push_back(cache->get_texture(texturepath));
+		}
+		else {
+			// load (and cache if possible)
+			auto info = std::make_shared<Texture2dInfo>(parse_texture_file(texturepath));
+			texture_infos.push_back(info);
+			if (cache) {
+				cache->add_texture(texturepath, info);
 			}
 		}
-
-		auto info = std::make_shared<Texture2dInfo>(parse_texture_file(texturepath));
-		texture_infos.push_back(info);
-		cache->add_texture(texturepath, info);
 	}
 
 	std::shared_ptr<BlendTableInfo> blendtable_info;
 	if (blendtable) {
 		util::Path tablepath = (file.get_parent() / blendtable.value().path);
 
-		if (cache) {
-			// Check if already loaded
-			auto cached = cache->get_bltable(tablepath);
-			if (cached) {
-				blendtable_info = cached;
-			}
-			else {
-				blendtable_info = std::make_shared<BlendTableInfo>(parse_blendtable_file(tablepath));
-				cache->add_bltable(tablepath, blendtable_info);
-			}
+		if (cache && cache->check_bltable_cache(tablepath)) {
+			// already loaded
+			blendtable_info = cache->get_bltable(tablepath);
 		}
 		else {
+			// load (and cache if possible)
 			blendtable_info = std::make_shared<BlendTableInfo>(parse_blendtable_file(tablepath));
-			cache->add_bltable(tablepath, blendtable_info);
+			if (cache) {
+				cache->add_bltable(tablepath, blendtable_info);
+			}
 		}
 	}
 

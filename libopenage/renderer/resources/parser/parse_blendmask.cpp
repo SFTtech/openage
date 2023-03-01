@@ -119,18 +119,18 @@ BlendPatternInfo parse_blendmask_file(const util::Path &file,
 	for (auto texture : textures) {
 		util::Path texturepath = (file.get_parent() / texture.path);
 
-		if (cache) {
-			// Check if already loaded
-			auto cached = cache->get_texture(texturepath);
-			if (cached) {
-				texture_infos.push_back(cached);
-				continue;
+		if (cache && cache->check_texture_cache(texturepath)) {
+			// already loaded
+			texture_infos.push_back(cache->get_texture(texturepath));
+		}
+		else {
+			// load (and cache if possible)
+			auto info = std::make_shared<Texture2dInfo>(parse_texture_file(texturepath));
+			texture_infos.push_back(info);
+			if (cache) {
+				cache->add_texture(texturepath, info);
 			}
 		}
-
-		auto info = std::make_shared<Texture2dInfo>(parse_texture_file(texturepath));
-		texture_infos.push_back(info);
-		cache->add_texture(texturepath, info);
 	}
 
 	return BlendPatternInfo(scalefactor, texture_infos, masks);
