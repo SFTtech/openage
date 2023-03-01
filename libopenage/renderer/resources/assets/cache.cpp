@@ -12,54 +12,36 @@ namespace openage::renderer::resources {
 
 const std::shared_ptr<Animation2dInfo> &AssetCache::get_animation(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
-	if (not this->loaded_animations.contains(flat_path)) {
-		return nullptr;
-	}
 	return this->loaded_animations[flat_path];
 }
 
 
 const std::shared_ptr<BlendPatternInfo> &AssetCache::get_blpattern(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
-	if (not this->loaded_blpatterns.contains(flat_path)) {
-		return nullptr;
-	}
 	return this->loaded_blpatterns[flat_path];
 }
 
 
 const std::shared_ptr<BlendTableInfo> &AssetCache::get_bltable(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
-	if (not this->loaded_bltables.contains(flat_path)) {
-		return nullptr;
-	}
 	return this->loaded_bltables[flat_path];
 }
 
 
 const std::shared_ptr<PaletteInfo> &AssetCache::get_palette(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
-	if (not this->loaded_palettes.contains(flat_path)) {
-		return nullptr;
-	}
 	return this->loaded_palettes[flat_path];
 }
 
 
 const std::shared_ptr<TerrainInfo> &AssetCache::get_terrain(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
-	if (not this->loaded_terrains.contains(flat_path)) {
-		return nullptr;
-	}
 	return this->loaded_terrains[flat_path];
 }
 
 
 const std::shared_ptr<Texture2dInfo> &AssetCache::get_texture(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
-	if (not this->loaded_textures.contains(flat_path)) {
-		return nullptr;
-	}
 	return this->loaded_textures[flat_path];
 }
 

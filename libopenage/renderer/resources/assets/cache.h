@@ -36,12 +36,10 @@ public:
 	/**
      * Get the corresponding asset for the specified path.
      *
-     * If the asset does not exist in the cache, \p nullptr is returned instead.
-     *
      * @param path Path to the asset resource.
      *
-     * @return Texture resource at the given path or \p nullptr if the resource is not in
-     *         the cache.
+     * @return Asset resource at the given path.
+	 * @throw Error if the resource is not in the cache.
      */
 	const std::shared_ptr<Animation2dInfo> &get_animation(const util::Path &path);
 	const std::shared_ptr<BlendPatternInfo> &get_blpattern(const util::Path &path);
