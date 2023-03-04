@@ -1,19 +1,20 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-few-public-methods
 
 """
 Implements the Observer design pattern. Observers can be
-notified when an object they observe (so called Observable)
+notified when an object they observe (so-called Observable)
 changes.
 
 The implementation is modelled after the Java 8 specification
-of Observable ad Observer.
+of Observable and Observer.
 
 Observer references are weakrefs to prevent objects from being
 ignored the garbage collection. Weakrefs with dead references
 are removed during notification of the observers.
 """
+from __future__ import annotations
 
 from typing import Any, Optional
 import weakref
@@ -24,7 +25,7 @@ class Observer:
     Implements a Java 8-like Observer interface.
     """
 
-    def update(self, observable, message: Optional[Any] = None):
+    def update(self, observable: Observable, message: Optional[Any] = None):
         """
         Called by an Observable object that has registered this observer
         whenever it changes.
@@ -53,16 +54,13 @@ class Observable:
         :param observer: An observer observing this object.
         :type observer: Observer
         """
-        if not isinstance(observer, Observer):
-            raise Exception(f"{type(observer)} does not inherit from Observer sperclass")
-
         self.observers.add(weakref.ref(observer))
 
     def clear_changed(self) -> None:
         """
         Indicate that this object has no longer changed.
         """
-        self.changed = True
+        self.changed = False
 
     def delete_observer(self, observer: Observer) -> None:
         """
@@ -100,6 +98,7 @@ class Observable:
         """
         if self.changed:
             for observer in self.observers:
+                # resolve weakref by calling it
                 if observer() is not None:
                     observer().update(self, message=message)
 
