@@ -5,10 +5,9 @@
 #include <functional>
 #include <utility>
 
-namespace openage::input {
+namespace openage::input::legacy {
 
-ClassCode::ClassCode(event_class cl, code_t code)
-	:
+ClassCode::ClassCode(event_class cl, code_t code) :
 	eclass(cl),
 	code(code) {
 }
@@ -38,19 +37,17 @@ bool ClassCode::has_class(const event_class &ec) const {
 }
 
 
-bool operator ==(ClassCode a, ClassCode b) {
+bool operator==(ClassCode a, ClassCode b) {
 	return a.eclass == b.eclass && a.code == b.code;
 }
 
 
-Event::Event(event_class cl, code_t code, modset_t mod)
-	:
+Event::Event(event_class cl, code_t code, modset_t mod) :
 	cc(cl, code),
 	mod(std::move(mod)) {}
 
 
-Event::Event(event_class cl, std::string text, modset_t mod)
-	:
+Event::Event(event_class cl, std::string text, modset_t mod) :
 	cc(cl, 0),
 	mod(std::move(mod)),
 	utf8(std::move(text)) {}
@@ -81,7 +78,7 @@ std::string Event::info() const {
 }
 
 
-bool Event::operator ==(const Event &other) const {
+bool Event::operator==(const Event &other) const {
 	return this->cc == other.cc && this->mod == other.mod && this->utf8 == other.utf8;
 }
 
@@ -91,7 +88,7 @@ int event_hash::operator()(const Event &e) const {
 }
 
 
-int event_class_hash::operator()(const event_class& c) const {
+int event_class_hash::operator()(const event_class &c) const {
 	return std::hash<int>()(static_cast<int>(c));
 }
 
@@ -102,8 +99,7 @@ int modifier_hash::operator()(const modifier &m) const {
 
 
 int class_code_hash::operator()(const ClassCode &e) const {
-	return event_class_hash()(e.eclass) ^
-	       std::hash<int>()(e.code) * 3664657;
+	return event_class_hash()(e.eclass) ^ std::hash<int>()(e.code) * 3664657;
 }
 
 
@@ -125,7 +121,6 @@ modset_t sdl_mod(SDL_Keymod mod) {
 
 
 Event sdl_key(SDL_Keycode code, SDL_Keymod mod) {
-
 	// sdl values for non printable keys
 	if (code & (1 << 30)) {
 		return Event(event_class::OTHER, code, sdl_mod(mod));
@@ -166,4 +161,4 @@ Event sdl_wheel(int direction, SDL_Keymod mod) {
 }
 
 
-} // openage::input
+} // namespace openage::input::legacy

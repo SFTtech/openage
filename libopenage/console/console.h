@@ -74,7 +74,7 @@ public:
 	Buf buf;
 	renderer::Font font;
 
-	input::InputContext input_context;
+	input::legacy::InputContext input_context;
 
 	// the command state
 	std::string command;

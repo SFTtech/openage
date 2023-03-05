@@ -3,20 +3,18 @@
 #include <algorithm>
 #include <array>
 
-#include "log/log.h"
 #include "input/legacy/action.h"
 #include "input/legacy/input_manager.h"
 #include "input/legacy/text_to_event.h"
+#include "log/log.h"
 
 
-namespace openage::input {
+namespace openage::input::legacy {
 
-InputManager::InputManager(ActionManager *action_manager)
-	:
+InputManager::InputManager(ActionManager *action_manager) :
 	action_manager{action_manager},
 	global_context{this},
 	relative_mode{false} {
-
 	this->global_context.register_to(this);
 }
 
@@ -41,7 +39,7 @@ std::string mod_set_string(modset_t mod) {
 	return "";
 }
 
-std::string event_as_string(const Event& event) {
+std::string event_as_string(const Event &event) {
 	if (not event.as_utf8().empty()) {
 		return mod_set_string(event.mod) + event.as_utf8();
 	}
@@ -49,7 +47,8 @@ std::string event_as_string(const Event& event) {
 		if (event.cc.eclass == event_class::MOUSE_WHEEL) {
 			if (event.cc.code == -1) {
 				return mod_set_string(event.mod) + "Wheel down";
-			} else {
+			}
+			else {
 				return mod_set_string(event.mod) + "Wheel up";
 			}
 		}
@@ -57,7 +56,7 @@ std::string event_as_string(const Event& event) {
 	}
 }
 
-} // anonymous ns
+} // namespace
 
 
 std::string InputManager::get_bind(const std::string &action_str) {
@@ -72,12 +71,12 @@ std::string InputManager::get_bind(const std::string &action_str) {
 	}
 
 	switch (it->second.cc.eclass) {
-		case event_class::MOUSE_BUTTON :
-			return this->mouse_bind_to_string(it->second);
-		case event_class::MOUSE_WHEEL :
-			return this->wheel_bind_to_string(it->second);
-		default:
-			return this->key_bind_to_string(it->second);
+	case event_class::MOUSE_BUTTON:
+		return this->mouse_bind_to_string(it->second);
+	case event_class::MOUSE_WHEEL:
+		return this->wheel_bind_to_string(it->second);
+	default:
+		return this->key_bind_to_string(it->second);
 	}
 }
 
@@ -108,13 +107,13 @@ std::string InputManager::key_bind_to_string(const Event &ev) {
 
 	auto end = ev.mod.end();
 	if (ev.mod.find(modifier::ALT) != end) {
-		key_str = "Alt "+key_str;
+		key_str = "Alt " + key_str;
 	}
 	if (ev.mod.find(modifier::SHIFT) != end) {
-		key_str = "Shift "+key_str;
+		key_str = "Shift " + key_str;
 	}
 	if (ev.mod.find(modifier::CTRL) != end) {
-		key_str = "Ctrl "+key_str;
+		key_str = "Ctrl " + key_str;
 	}
 	return key_str;
 }
@@ -175,9 +174,7 @@ bool InputManager::ignored(const Event &e) {
 	// filter duplicate utf8 events
 	// these are ignored unless the top mode enables
 	// utf8 mode, in which case regular char codes are ignored
-	return ((e.cc.has_class(event_class::CHAR) ||
-	         e.cc.has_class(event_class::UTF8)) &&
-	        this->get_top_context().utf8_mode != e.cc.has_class(event_class::UTF8));
+	return ((e.cc.has_class(event_class::CHAR) || e.cc.has_class(event_class::UTF8)) && this->get_top_context().utf8_mode != e.cc.has_class(event_class::UTF8));
 }
 
 
@@ -309,10 +306,8 @@ modset_t InputManager::get_mod() const {
 
 
 bool InputManager::on_input(SDL_Event *e) {
-
 	// top level input handler
 	switch (e->type) {
-
 	case SDL_KEYUP: {
 		SDL_Keycode code = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
 		Event ev = sdl_key(code, SDL_GetModState());
@@ -340,7 +335,6 @@ bool InputManager::on_input(SDL_Event *e) {
 	} // case SDL_MOUSEBUTTONUP
 
 	case SDL_MOUSEBUTTONDOWN: {
-
 		// TODO: set which buttons
 		if (e->button.button == 2) {
 			this->set_relative(true);
@@ -378,7 +372,6 @@ bool InputManager::on_input(SDL_Event *e) {
 
 
 std::vector<std::string> InputManager::active_binds(const std::unordered_map<action_t, action_func_t> &ctx_actions) const {
-
 	std::vector<std::string> result;
 
 	// TODO: this only checks the by_type mappings, the others are missing!
@@ -410,4 +403,4 @@ ActionManager *InputManager::get_action_manager() const {
 }
 
 
-} // openage::input
+} // namespace openage::input::legacy
