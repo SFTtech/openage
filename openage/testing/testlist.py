@@ -1,4 +1,4 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 """ Lists of all possible tests; enter your tests here. """
 
@@ -95,7 +95,7 @@ def tests_cpp():
     yield "openage::util::tests::vector"
     yield "openage::util::tests::siphash"
     yield "openage::util::tests::array_conversion"
-    yield "openage::input::tests::parse_event_string", "keybinds parsing"
+    yield "openage::input::legacy::tests::parse_event_string", "keybinds parsing"
     yield "openage::curve::tests::container"
     yield "openage::curve::tests::curve_types"
     yield "openage::event::tests::eventtrigger"

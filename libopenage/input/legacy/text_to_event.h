@@ -7,12 +7,12 @@
 #include "input/legacy/event.h"
 
 namespace openage {
-namespace input {
+namespace input::legacy {
 
 /**
  * Convert a string to an event, throw if the string is not a valid event.
  */
 Event text_to_event(const std::string &event_str);
 
-} // namespace input
+} // namespace input::legacy
 } // namespace openage

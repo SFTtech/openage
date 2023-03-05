@@ -12,7 +12,7 @@
 
 
 namespace openage {
-namespace input {
+namespace input::legacy {
 
 namespace {
 
@@ -172,5 +172,5 @@ bool ActionManager::is(const std::string &type, const action_t action) {
 }
 
 
-} // namespace input
+} // namespace input::legacy
 } // namespace openage

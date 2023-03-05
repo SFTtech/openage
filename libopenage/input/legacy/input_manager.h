@@ -21,7 +21,7 @@ namespace openage {
  * The openage input layer.
  * It gets all the events and processes them accordingly.
  */
-namespace input {
+namespace input::legacy {
 
 /**
  * maps actions to events.
@@ -252,5 +252,5 @@ private:
 	friend InputContext;
 };
 
-} // namespace input
+} // namespace input::legacy
 } // namespace openage
