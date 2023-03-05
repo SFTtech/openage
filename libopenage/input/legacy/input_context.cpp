@@ -6,7 +6,7 @@
 
 
 namespace openage {
-namespace input {
+namespace input::legacy {
 
 
 InputContext::InputContext() :
@@ -79,5 +79,5 @@ void InputContext::unregister() {
 }
 
 
-} // namespace input
+} // namespace input::legacy
 } // namespace openage

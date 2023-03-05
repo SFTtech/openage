@@ -17,7 +17,7 @@ namespace cvar {
 class CVarManager;
 } // namespace cvar
 
-namespace input {
+namespace input::legacy {
 
 class InputManager;
 
@@ -95,5 +95,5 @@ using action_func_t = std::function<void(const action_arg_t &)>;
 using action_check_t = std::function<bool(const action_arg_t &)>;
 
 
-} // namespace input
+} // namespace input::legacy
 } // namespace openage
