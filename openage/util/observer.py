@@ -44,7 +44,7 @@ class Observable:
 
     def __init__(self):
 
-        self.observers = set()
+        self.observers: weakref.WeakSet[Observer] = weakref.WeakSet()
         self.changed = False
 
     def add_observer(self, observer: Observer) -> None:
@@ -54,7 +54,7 @@ class Observable:
         :param observer: An observer observing this object.
         :type observer: Observer
         """
-        self.observers.add(weakref.ref(observer))
+        self.observers.add(observer)
 
     def clear_changed(self) -> None:
         """
@@ -98,12 +98,7 @@ class Observable:
         """
         if self.changed:
             for observer in self.observers:
-                # resolve weakref by calling it
-                if observer() is not None:
-                    observer().update(self, message=message)
-
-                else:
-                    self.delete_observer(observer)
+                observer.update(self, message=message)
 
     def set_changed(self) -> None:
         """
