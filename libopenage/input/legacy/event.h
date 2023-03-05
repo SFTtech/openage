@@ -2,15 +2,15 @@
 
 #pragma once
 
+#include <string>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
-#include <string>
 
 #include <SDL2/SDL.h>
 
 namespace openage {
-namespace input {
+namespace input::legacy {
 
 /**
  * highest level classes of input
@@ -18,13 +18,13 @@ namespace input {
 enum class event_class {
 	ANY,
 	KEYBOARD,
-	CHAR,           // basic keycodes (lower-case, non-modified)
-	ALPHA,          // abc
-	DIGIT,          // 123
-	PRINT,          // remaining printable chars
-	NONPRINT,       // tab, return, backspace, delete
-	OTHER,          // arrows, home, end
-	UTF8,           // events with utf8 encoded data
+	CHAR, // basic keycodes (lower-case, non-modified)
+	ALPHA, // abc
+	DIGIT, // 123
+	PRINT, // remaining printable chars
+	NONPRINT, // tab, return, backspace, delete
+	OTHER, // arrows, home, end
+	UTF8, // events with utf8 encoded data
 	MOUSE,
 	MOUSE_BUTTON,
 	MOUSE_BUTTON_UP,
@@ -42,7 +42,7 @@ struct event_class_hash {
 /**
  * each event type mapped to parent type
  */
-static std::unordered_map<event_class, event_class, event_class_hash> event_base {
+static std::unordered_map<event_class, event_class, event_class_hash> event_base{
 	{event_class::KEYBOARD, event_class::ANY},
 	{event_class::CHAR, event_class::KEYBOARD},
 	{event_class::ALPHA, event_class::CHAR},
@@ -68,7 +68,7 @@ enum class modifier {
 
 
 struct modifier_hash {
-	int operator ()(const modifier &s) const;
+	int operator()(const modifier &s) const;
 };
 
 
@@ -97,11 +97,11 @@ public:
 };
 
 
-bool operator ==(ClassCode a, ClassCode b);
+bool operator==(ClassCode a, ClassCode b);
 
 
 struct class_code_hash {
-	int operator ()(const ClassCode &k) const;
+	int operator()(const ClassCode &k) const;
 };
 
 
@@ -113,7 +113,7 @@ struct class_code_hash {
 class Event {
 public:
 	Event(event_class cl, code_t code, modset_t mod);
-	Event(event_class cl, std::string , modset_t mod);
+	Event(event_class cl, std::string, modset_t mod);
 
 	/**
 	 * Return keyboard text as char
@@ -132,7 +132,7 @@ public:
 	 */
 	std::string info() const;
 
-	bool operator ==(const Event &other) const;
+	bool operator==(const Event &other) const;
 
 	const ClassCode cc;
 	const modset_t mod;
@@ -151,11 +151,12 @@ using event_set_t = std::unordered_set<Event, event_hash>;
 // SDL mapping functions
 
 modset_t sdl_mod(SDL_Keymod mod);
-Event sdl_key(SDL_Keycode code, SDL_Keymod mod=KMOD_NONE);
+Event sdl_key(SDL_Keycode code, SDL_Keymod mod = KMOD_NONE);
 Event utf8(const std::string &text);
-Event sdl_mouse(int button, SDL_Keymod mod=KMOD_NONE);
-Event sdl_mouse_up_down(int button, bool up, SDL_Keymod mod=KMOD_NONE);
-Event sdl_wheel(int direction, SDL_Keymod mod=KMOD_NONE);
+Event sdl_mouse(int button, SDL_Keymod mod = KMOD_NONE);
+Event sdl_mouse_up_down(int button, bool up, SDL_Keymod mod = KMOD_NONE);
+Event sdl_wheel(int direction, SDL_Keymod mod = KMOD_NONE);
 
 
-}} // openage::input
+} // namespace input::legacy
+} // namespace openage

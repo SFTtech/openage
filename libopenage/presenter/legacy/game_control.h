@@ -55,7 +55,7 @@ signals:
  * A target for input handling and gui rendering.
  * This allows to switch to different display UIs.
  */
-class OutputMode : public input::InputContext {
+class OutputMode : public input::legacy::InputContext {
 public:
 	explicit OutputMode(qtsdl::GuiItemLink *gui_link);
 	virtual ~OutputMode();

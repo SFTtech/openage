@@ -12,7 +12,7 @@
 
 
 namespace openage {
-namespace input {
+namespace input::legacy {
 
 namespace {
 const std::vector<int> modifiers{
@@ -128,5 +128,5 @@ void parse_event_string() {
 
 } // namespace tests
 
-} // namespace input
+} // namespace input::legacy
 } // namespace openage
