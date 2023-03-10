@@ -7,6 +7,8 @@
 #include <unordered_set>
 #include <vector>
 
+#include <QKeyCombination>
+
 namespace openage {
 namespace input {
 
@@ -20,11 +22,6 @@ enum class event_class {
 };
 
 
-struct event_class_hash {
-	int operator()(const event_class &s) const;
-};
-
-
 /**
  * Input event, as triggered by some input device like
  * mouse, kezb, joystick, tablet, microwave or dildo.
@@ -34,12 +31,26 @@ class Event {
 public:
 	Event(event_class cl);
 
-	/**
-	 * logable debug info
-	 */
-	std::string info() const;
+	~Event() = default;
 
-	bool operator==(const Event &other) const;
+	virtual int hash() const = 0;
+	virtual bool operator==(const Event &other) const = 0;
+
+	event_class cl;
+};
+
+
+class KeyEvent : public Event {
+public:
+	KeyEvent(QKeyCombination key);
+
+	~KeyEvent() = default;
+
+	int hash() const override;
+	bool operator==(const Event &other) const override;
+
+private:
+	QKeyCombination key;
 };
 
 

@@ -5,6 +5,7 @@
 #include <unordered_set>
 
 #include "curve/discrete.h"
+#include "input/event.h"
 
 namespace openage::input {
 
@@ -37,6 +38,8 @@ public:
      */
 	size_t get_controlled();
 
+	void process(const Event &ev);
+
 private:
 	/**
      * List of factions controllable by this controller.
@@ -47,6 +50,8 @@ private:
      * ID of the currently active faction.
      */
 	size_t active_faction_id;
+
+	std::vector<Event> input_queue;
 };
 
 } // namespace openage::input
