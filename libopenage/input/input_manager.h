@@ -5,6 +5,10 @@
 #include <memory>
 #include <vector>
 
+#include <QKeyEvent>
+#include <QMouseEvent>
+#include <QWheelEvent>
+
 #include "coord/pixel.h"
 
 namespace openage::input {
@@ -52,6 +56,11 @@ public:
 	void push_context(const std::shared_ptr<InputContext> &context);
 
 	/**
+	 * Remove the current top context from the stack.
+	 */
+	void pop_context();
+
+	/**
 	 * removes any matching registered context from the stack.
 	 *
 	 * the removal is done by finding the given pointer
@@ -69,10 +78,11 @@ public:
 	 */
 	void set_motion(int x, int y);
 
-	/**
-	 * enable relative mouse mode
-	 */
-	void set_relative(bool mode);
+	bool process(const QKeyEvent &ev);
+	bool process(const QMouseEvent &ev);
+	bool process(const QWheelEvent &ev);
+	// bool process(/* GUI events like button clicks, etc. */);
+
 
 private:
 	/**

@@ -13,6 +13,19 @@ namespace openage::input {
 
 using action_func_t = std::function<void(const Event &e)>;
 
+enum class action_t {
+	PUSH_CONTEXT,
+	POP_CONTEXT,
+	REMOVE_CONTEXT,
+	CONTROLLER,
+	GUI,
+};
+
+struct InputAction {
+	action_t type;
+	action_func_t action;
+};
+
 /**
  * An input context contains all keybindings and actions
  * active in e.g. the HUD only.
@@ -30,16 +43,34 @@ public:
 	virtual ~InputContext() = default;
 
 	/**
-	 * bind a specific event
-	 * this is the second matching priority
+	 * bind a specific key event to an action
+     *
+     * @param ev Input event triggering the action.
+     * @param act Function executing the action.
 	 */
-	void bind(const Event &ev, const action_func_t act);
+	void bind(const KeyEvent &ev, const InputAction act);
+
+	/**
+     * Check whether a specific key event is bound in this context.
+     *
+     * @param ev Input event.
+     *
+     * @return true if event is bound, else false.
+     */
+	bool is_bound(const KeyEvent &ev) const;
+
+	/**
+     * Get the action(s) bound to a specific event.
+     *
+     * @param ev Input event triggering the action.
+     */
+	const InputAction &lookup(const KeyEvent &ev) const;
 
 private:
 	/**
 	 * map specific overriding events
 	 */
-	std::unordered_map<Event, action_func_t> by_event;
+	std::unordered_map<KeyEvent, InputAction, event_hash> by_keyevent;
 };
 
 } // namespace openage::input
