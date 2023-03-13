@@ -2,9 +2,11 @@
 
 #pragma once
 
+#include <deque>
 #include <unordered_set>
 
 #include "curve/discrete.h"
+#include "input/binding.h"
 #include "input/event.h"
 
 namespace openage::input {
@@ -38,7 +40,7 @@ public:
      */
 	size_t get_controlled();
 
-	void process(const Event &ev);
+	bool process(const input::Event &ev, const Binding &bind);
 
 private:
 	/**
@@ -51,7 +53,7 @@ private:
      */
 	size_t active_faction_id;
 
-	std::vector<Event> input_queue;
+	std::vector<event::Event> outqueue;
 };
 
 } // namespace openage::input

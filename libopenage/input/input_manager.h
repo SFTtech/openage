@@ -10,11 +10,13 @@
 #include <QWheelEvent>
 
 #include "coord/pixel.h"
+#include "input/action.h"
 
 namespace openage::input {
 
-class InputContext;
+class BindingContext;
 class Controller;
+class InputContext;
 
 /**
  * The input manager tracks input signals from peripherals or the
@@ -45,15 +47,22 @@ public:
 	std::vector<std::string> active_binds() const;
 
 	/**
-	 * register a hotkey context by pushing it onto the stack.
-	 *
-	 * this adds the given pointer to the `contexts` list.
-	 * that way the context lays on "top".
+	 * Push a context on top of the stack, making it the
+     * current top context.
 	 *
 	 * if other contexts are registered afterwards,
-	 * it wanders down the stack, i.e. looses priority.
+	 * it wanders down the stack, i.e. loses priority.
 	 */
 	void push_context(const std::shared_ptr<InputContext> &context);
+
+	/**
+	 * Push the context with the specified ID on top of the stack,
+     * making it the current top context.
+	 *
+	 * if other contexts are registered afterwards,
+	 * it wanders down the stack, i.e. loses priority.
+	 */
+	void push_context(const std::string &id);
 
 	/**
 	 * Remove the current top context from the stack.
@@ -61,12 +70,20 @@ public:
 	void pop_context();
 
 	/**
-	 * removes any matching registered context from the stack.
+	 * Removes any matching registered context from the stack.
 	 *
 	 * the removal is done by finding the given pointer
-	 * in the `contexts` lists, then deleting it in there.
+	 * in the `active_contexts` lists, then deleting it in there.
 	 */
 	void remove_context(const std::shared_ptr<InputContext> &context);
+
+	/**
+	 * Removes any registered context matching the specified ID from the stack.
+	 *
+	 * the removal is done by finding the given pointer
+	 * in the `active_contexts` lists, then deleting it in there.
+	 */
+	void remove_context(const std::string &id);
 
 	/**
 	 * updates mouse position state and motion
@@ -85,6 +102,10 @@ public:
 
 
 private:
+	void process_action(const input::Event &ev,
+	                    const InputAction &action,
+	                    const std::shared_ptr<BindingContext> &bind_ctx = nullptr);
+
 	/**
 	 * The global context. Used as fallback.
 	 */
@@ -94,7 +115,14 @@ private:
 	 * Stack of active input contexts.
 	 * The most recent entry is pushed on top of the stack.
 	 */
-	std::vector<std::shared_ptr<InputContext>> contexts;
+	std::vector<std::shared_ptr<InputContext>> active_contexts;
+
+	/**
+	 * Map of all available contexts, referencable by an ID.
+     *
+     * TODO: Move this to cvar manager?
+	 */
+	std::unordered_map<std::string, std::shared_ptr<InputContext>> available_contexts;
 
 	/**
      * Interface to the engine.
