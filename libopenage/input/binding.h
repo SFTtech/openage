@@ -1,0 +1,42 @@
+// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+
+#pragma once
+
+#include <functional>
+#include <unordered_map>
+
+#include "event/event.h"
+#include "input/event.h"
+
+namespace openage::input {
+
+using binding_func_t = std::function<const event::Event &(const input::Event &e)>;
+
+/**
+ * Action type for the event forwarding.
+ *
+ * Determines what is done with the created gamestate event
+ *     - \p SEND forward the event (and all queued events) immediately
+ *     - \p QUEUE queue the event
+ *     - \p CLEAR clear the queue
+ */
+enum class event_action_t {
+	SEND,
+	QUEUE,
+	CLEAR,
+};
+
+/**
+ * Action taken by the input manager when receiving an input.
+ *
+ * @param action Event action type.
+ * @param transform Maps an input event to a gamestate event.
+ * @param flags Additional parameters for the transformation.
+ */
+struct Binding {
+	event_action_t action;
+	binding_func_t transform;
+	std::unordered_map<std::string, std::string> flags = {};
+};
+
+} // namespace openage::input
