@@ -8,6 +8,10 @@
 #include <vector>
 
 #include <QKeyCombination>
+#include <QMouseEvent>
+#include <QWheelEvent>
+
+#include "coord/pixel.h"
 
 namespace openage {
 namespace input {
@@ -18,6 +22,7 @@ namespace input {
 enum class event_class {
 	KEYBOARD,
 	MOUSE,
+	WHEEL,
 	GUI,
 };
 
@@ -30,19 +35,27 @@ enum class event_class {
 class Event {
 public:
 	Event(event_class cl);
+	Event(event_class cl,
+	      coord::input mouse_position,
+	      coord::input_delta mouse_motion);
 
 	~Event() = default;
+
+	event_class get_class() const;
 
 	virtual int hash() const = 0;
 	virtual bool operator==(const Event &other) const = 0;
 
+private:
 	event_class cl;
+	coord::input mouse_position{0, 0};
+	coord::input_delta mouse_motion{0, 0};
 };
 
 
 class KeyEvent : public Event {
 public:
-	KeyEvent(QKeyCombination key);
+	KeyEvent(const QKeyCombination key);
 
 	~KeyEvent() = default;
 
@@ -51,6 +64,38 @@ public:
 
 private:
 	QKeyCombination key;
+};
+
+
+class MouseEvent : public Event {
+public:
+	MouseEvent(const QMouseEvent &ev);
+
+	~MouseEvent() = default;
+
+	int hash() const override;
+	bool operator==(const Event &other) const override;
+
+private:
+	Qt::MouseButtons buttons;
+	Qt::KeyboardModifiers mods;
+};
+
+
+class WheelEvent : public Event {
+public:
+	WheelEvent(const QWheelEvent &ev);
+
+	~WheelEvent() = default;
+
+	int hash() const override;
+	bool operator==(const Event &other) const override;
+
+private:
+	int angle_delta;
+
+	Qt::MouseButtons buttons;
+	Qt::KeyboardModifiers mods;
 };
 
 
