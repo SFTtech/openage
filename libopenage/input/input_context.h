@@ -2,29 +2,14 @@
 
 #pragma once
 
-#include <functional>
-#include <stack>
 #include <unordered_map>
-#include <vector>
 
+#include "input/action.h"
 #include "input/event.h"
 
 namespace openage::input {
 
-using action_func_t = std::function<void(const Event &e)>;
-
-enum class action_t {
-	PUSH_CONTEXT,
-	POP_CONTEXT,
-	REMOVE_CONTEXT,
-	CONTROLLER,
-	GUI,
-};
-
-struct InputAction {
-	action_t type;
-	action_func_t action;
-};
+class BindingContext;
 
 /**
  * An input context contains all keybindings and actions
@@ -38,9 +23,23 @@ public:
 	/**
 	 * Create an input context.
 	 */
-	InputContext();
+	InputContext(const std::string id);
 
 	virtual ~InputContext() = default;
+
+	/**
+     * Get the ID of the context.
+     *
+     * @return Context ID.
+     */
+	const std::string &get_id();
+
+	/**
+     * Get the associated context for binding input events to game events.
+     *
+     * @return Binding context of the input context.
+     */
+	const std::shared_ptr<BindingContext> &get_binding_context();
 
 	/**
 	 * bind a specific key event to an action
@@ -49,6 +48,8 @@ public:
      * @param act Function executing the action.
 	 */
 	void bind(const KeyEvent &ev, const InputAction act);
+	void bind(const MouseEvent &ev, const InputAction act);
+	void bind(const WheelEvent &ev, const InputAction act);
 
 	/**
      * Check whether a specific key event is bound in this context.
@@ -58,6 +59,8 @@ public:
      * @return true if event is bound, else false.
      */
 	bool is_bound(const KeyEvent &ev) const;
+	bool is_bound(const MouseEvent &ev) const;
+	bool is_bound(const WheelEvent &ev) const;
 
 	/**
      * Get the action(s) bound to a specific event.
@@ -65,12 +68,26 @@ public:
      * @param ev Input event triggering the action.
      */
 	const InputAction &lookup(const KeyEvent &ev) const;
+	const InputAction &lookup(const MouseEvent &ev) const;
+	const InputAction &lookup(const WheelEvent &ev) const;
 
 private:
+	/**
+     * Unique ID of the context.
+     */
+	std::string id;
+
 	/**
 	 * map specific overriding events
 	 */
 	std::unordered_map<KeyEvent, InputAction, event_hash> by_keyevent;
+	std::unordered_map<MouseEvent, InputAction, event_hash> by_mouseevent;
+	std::unordered_map<WheelEvent, InputAction, event_hash> by_wheelevent;
+
+	/**
+     * Additional context for gamestate events.
+     */
+	std::shared_ptr<BindingContext> binding_context;
 };
 
 } // namespace openage::input
