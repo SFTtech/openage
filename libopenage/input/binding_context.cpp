@@ -35,6 +35,23 @@ bool BindingContext::is_bound(const WheelEvent &ev) const {
 	return this->by_wheelevent.contains(ev);
 }
 
+const Binding &BindingContext::lookup(const Event &ev) const {
+	if (ev.get_class() == event_class::KEYBOARD) {
+		auto input_ev = dynamic_cast<const KeyEvent &>(ev);
+		return this->lookup(input_ev);
+	}
+	else if (ev.get_class() == event_class::MOUSE) {
+		auto input_ev = dynamic_cast<const MouseEvent &>(ev);
+		return this->lookup(input_ev);
+	}
+	else if (ev.get_class() == event_class::KEYBOARD) {
+		auto input_ev = dynamic_cast<const WheelEvent &>(ev);
+		return this->lookup(input_ev);
+	}
+
+	throw Error{MSG(err) << "Unrecognized event class."};
+}
+
 const Binding &BindingContext::lookup(const KeyEvent &ev) const {
 	return this->by_keyevent.at(ev);
 }

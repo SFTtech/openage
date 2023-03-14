@@ -6,10 +6,11 @@
 #include <unordered_set>
 
 #include "curve/discrete.h"
-#include "input/binding.h"
 #include "input/event.h"
 
 namespace openage::input {
+
+class BindingContext;
 
 /**
  * Interface for game controllers.
@@ -40,7 +41,7 @@ public:
      */
 	size_t get_controlled();
 
-	bool process(const input::Event &ev, const Binding &bind);
+	bool process(const input::Event &ev, const std::shared_ptr<BindingContext> &ctx);
 
 private:
 	/**
@@ -53,7 +54,7 @@ private:
      */
 	size_t active_faction_id;
 
-	std::vector<event::Event> outqueue;
+	std::vector<std::shared_ptr<event::Event>> outqueue;
 };
 
 } // namespace openage::input

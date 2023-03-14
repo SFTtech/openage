@@ -58,6 +58,9 @@ public:
 	const Binding &lookup(const MouseEvent &ev) const;
 	const Binding &lookup(const WheelEvent &ev) const;
 
+	// ASDF: Up and downcasting is a really bad way to do this!
+	const Binding &lookup(const Event &ev) const;
+
 private:
 	/**
 	 * map specific overriding events

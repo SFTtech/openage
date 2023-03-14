@@ -184,19 +184,7 @@ void InputManager::process_action(const input::Event &ev,
 			break;
 		}
 		case action_t::CONTROLLER: {
-			// ASDF: This is a really bad way to do this!
-			if (ev.get_class() == event_class::KEYBOARD) {
-				auto input_ev = dynamic_cast<const KeyEvent &>(ev);
-				this->controller->process(ev, bind_ctx->lookup(input_ev));
-			}
-			else if (ev.get_class() == event_class::MOUSE) {
-				auto input_ev = dynamic_cast<const MouseEvent &>(ev);
-				this->controller->process(ev, bind_ctx->lookup(input_ev));
-			}
-			else if (ev.get_class() == event_class::KEYBOARD) {
-				auto input_ev = dynamic_cast<const WheelEvent &>(ev);
-				this->controller->process(ev, bind_ctx->lookup(input_ev));
-			}
+			this->controller->process(ev, bind_ctx);
 			break;
 		}
 		case action_t::GUI:
