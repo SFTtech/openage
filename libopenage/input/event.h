@@ -120,6 +120,11 @@ public:
 	bool operator==(const Event &other) const;
 
 	/**
+	 * Get loggable debug info about the event.
+	 */
+	std::string info() const;
+
+	/**
 	 * Event class.
 	 */
 	event_class cl;
