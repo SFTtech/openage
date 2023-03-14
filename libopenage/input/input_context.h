@@ -47,9 +47,7 @@ public:
      * @param ev Input event triggering the action.
      * @param act Function executing the action.
 	 */
-	void bind(const KeyEvent &ev, const InputAction act);
-	void bind(const MouseEvent &ev, const InputAction act);
-	void bind(const WheelEvent &ev, const InputAction act);
+	void bind(const Event &ev, const InputAction act);
 
 	/**
      * Check whether a specific key event is bound in this context.
@@ -58,18 +56,14 @@ public:
      *
      * @return true if event is bound, else false.
      */
-	bool is_bound(const KeyEvent &ev) const;
-	bool is_bound(const MouseEvent &ev) const;
-	bool is_bound(const WheelEvent &ev) const;
+	bool is_bound(const Event &ev) const;
 
 	/**
      * Get the action(s) bound to a specific event.
      *
      * @param ev Input event triggering the action.
      */
-	const InputAction &lookup(const KeyEvent &ev) const;
-	const InputAction &lookup(const MouseEvent &ev) const;
-	const InputAction &lookup(const WheelEvent &ev) const;
+	const InputAction &lookup(const Event &ev) const;
 
 private:
 	/**
@@ -80,9 +74,7 @@ private:
 	/**
 	 * map specific overriding events
 	 */
-	std::unordered_map<KeyEvent, InputAction, event_hash> by_keyevent;
-	std::unordered_map<MouseEvent, InputAction, event_hash> by_mouseevent;
-	std::unordered_map<WheelEvent, InputAction, event_hash> by_wheelevent;
+	std::unordered_map<Event, InputAction, event_hash> by_event;
 
 	/**
      * Additional context for gamestate events.

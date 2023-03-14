@@ -90,7 +90,7 @@ void InputManager::set_motion(int x, int y) {
 	this->mouse_motion.y = y;
 }
 
-bool InputManager::process(const QKeyEvent &ev) {
+bool InputManager::process(const QEvent &ev) {
 	// TODO
 	// 1. Create input event (DONE)
 	// 2. Lookup actions from current context (DONE)
@@ -100,47 +100,7 @@ bool InputManager::process(const QKeyEvent &ev) {
 	//   - forward to controller
 	//   - forward to renderer?
 
-	KeyEvent input_ev{ev.keyCombination()};
-
-	// Check context list on top of the stack (most recent bound first)
-	for (auto const &ctx : this->active_contexts) {
-		if (ctx->is_bound(input_ev)) {
-			this->process_action(input_ev, ctx->lookup(input_ev));
-			return true;
-		}
-	}
-
-	// If no local keybinds were bound, check the global keybinds
-	if (this->global_context->is_bound(input_ev)) {
-		this->process_action(input_ev, this->global_context->lookup(input_ev));
-		return true;
-	}
-
-	return false;
-}
-
-bool InputManager::process(const QMouseEvent &ev) {
-	MouseEvent input_ev{ev};
-
-	// Check context list on top of the stack (most recent bound first)
-	for (auto const &ctx : this->active_contexts) {
-		if (ctx->is_bound(input_ev)) {
-			this->process_action(input_ev, ctx->lookup(input_ev));
-			return true;
-		}
-	}
-
-	// If no local keybinds were bound, check the global keybinds
-	if (this->global_context->is_bound(input_ev)) {
-		this->process_action(input_ev, this->global_context->lookup(input_ev));
-		return true;
-	}
-
-	return false;
-}
-
-bool InputManager::process(const QWheelEvent &ev) {
-	WheelEvent input_ev{ev};
+	input::Event input_ev{ev};
 
 	// Check context list on top of the stack (most recent bound first)
 	for (auto const &ctx : this->active_contexts) {

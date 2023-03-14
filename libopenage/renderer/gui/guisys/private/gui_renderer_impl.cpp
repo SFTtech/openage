@@ -48,6 +48,7 @@ GuiRendererImpl::GuiRendererImpl(std::shared_ptr<openage::renderer::Window> wind
 	//       GUI earlier?
 	window->add_key_callback([this](const QKeyEvent &cb) {
 		auto event = cb.clone();
+		// TODO: Use notify() instead of sendEvent() to check if the event was processed
 		QCoreApplication::sendEvent(this->target_window.get(), event);
 	});
 	window->add_mouse_button_callback([this](const QMouseEvent &cb) {
