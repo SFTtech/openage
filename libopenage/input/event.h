@@ -27,6 +27,10 @@ enum class event_class {
 };
 
 
+using state_t = int;
+using code_t = int;
+using modifier_t = int;
+
 /**
  * Input event, as triggered by some input device like
  * mouse, kezb, joystick, tablet, microwave or dildo.
@@ -34,68 +38,21 @@ enum class event_class {
  */
 class Event {
 public:
-	Event(event_class cl);
-	Event(event_class cl,
-	      coord::input mouse_position,
-	      coord::input_delta mouse_motion);
+	Event(const QEvent &ev);
 
 	~Event() = default;
 
-	event_class get_class() const;
+	const std::shared_ptr<QEvent> &get_event() const;
 
-	virtual int hash() const = 0;
-	virtual bool operator==(const Event &other) const = 0;
+	bool operator==(const Event &other) const;
 
-private:
 	event_class cl;
-	coord::input mouse_position{0, 0};
-	coord::input_delta mouse_motion{0, 0};
-};
-
-
-class KeyEvent : public Event {
-public:
-	KeyEvent(const QKeyCombination key);
-
-	~KeyEvent() = default;
-
-	int hash() const override;
-	bool operator==(const Event &other) const override;
+	code_t code; // key/button identifier
+	modifier_t mod_code; // modifier keys (CTRL, ALT, SHIFT, ...)
+	state_t state; // state of the keypress (pressed, released, double click, wheel up/down, ...)
 
 private:
-	QKeyCombination key;
-};
-
-
-class MouseEvent : public Event {
-public:
-	MouseEvent(const QMouseEvent &ev);
-
-	~MouseEvent() = default;
-
-	int hash() const override;
-	bool operator==(const Event &other) const override;
-
-private:
-	Qt::MouseButtons buttons;
-	Qt::KeyboardModifiers mods;
-};
-
-
-class WheelEvent : public Event {
-public:
-	WheelEvent(const QWheelEvent &ev);
-
-	~WheelEvent() = default;
-
-	int hash() const override;
-	bool operator==(const Event &other) const override;
-
-private:
-	int angle_delta;
-
-	Qt::MouseButtons buttons;
-	Qt::KeyboardModifiers mods;
+	std::shared_ptr<QEvent> event;
 };
 
 
