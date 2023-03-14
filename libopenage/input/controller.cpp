@@ -2,6 +2,8 @@
 
 #include "controller.h"
 
+#include "input/binding_context.h"
+
 namespace openage::input {
 
 Controller::Controller(const std::unordered_set<size_t> &controlled_factions,
@@ -20,24 +22,27 @@ size_t Controller::get_controlled() {
 	return this->active_faction_id;
 }
 
-bool Controller::process(const Event &ev, const Binding &bind) {
+bool Controller::process(const input::Event &ev, const std::shared_ptr<BindingContext> &ctx) {
 	// TODO
-	// 1. Lookup input event
+	// 1. Lookup input event (DONE)
 	// 2. check if action is allowed
 	// 3. take 1 of multiple actions:
-	//   - queue input event (aka wait for more)
+	//   - queue input event (aka wait for more) (DONE)
 	//   - create gamestate event (from all input events in queue)
-	//   - clear queue (effectively cancel)
-	auto event = bind.transform(ev);
+	//   - clear queue (effectively cancel) (DONE)
+	auto bind = ctx->lookup(ev);
+	auto game_event = bind.transform(ev);
 
 	switch (bind.action) {
 	case event_action_t::SEND:
-		this->outqueue.push_back(event);
-		// TODO
+		this->outqueue.push_back(game_event);
+		for (auto event : this->outqueue) {
+			// TODO: Send gamestate event
+		}
 		break;
 
 	case event_action_t::QUEUE:
-		this->outqueue.push_back(event);
+		this->outqueue.push_back(game_event);
 		break;
 
 	case event_action_t::CLEAR:
