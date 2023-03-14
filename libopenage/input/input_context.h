@@ -42,12 +42,24 @@ public:
 	const std::shared_ptr<BindingContext> &get_binding_context();
 
 	/**
-	 * bind a specific key event to an action
+	 * Bind a specific key combination to an action.
+	 *
+	 * This is the first matching priority.
      *
      * @param ev Input event triggering the action.
      * @param act Function executing the action.
 	 */
 	void bind(const Event &ev, const InputAction act);
+
+	/**
+	 * Bind an event class to an action.
+	 *
+	 * This is the second matching priority.
+     *
+     * @param ev Input event triggering the action.
+     * @param act Function executing the action.
+	 */
+	void bind(const event_class &cl, const InputAction act);
 
 	/**
      * Check whether a specific key event is bound in this context.
@@ -59,7 +71,7 @@ public:
 	bool is_bound(const Event &ev) const;
 
 	/**
-     * Get the action(s) bound to a specific event.
+     * Get the action(s) bound to the given event.
      *
      * @param ev Input event triggering the action.
      */
@@ -72,9 +84,14 @@ private:
 	std::string id;
 
 	/**
-	 * map specific overriding events
+	 * Maps specific input events to actions.
 	 */
 	std::unordered_map<Event, InputAction, event_hash> by_event;
+
+	/**
+	 * Maps event classes to actions.
+	 */
+	std::unordered_map<event_class, InputAction, event_class_hash> by_class;
 
 	/**
      * Additional context for gamestate events.

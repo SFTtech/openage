@@ -7,6 +7,11 @@
 
 namespace openage::input {
 
+int event_class_hash::operator()(const event_class &c) const {
+	return std::hash<int>()(static_cast<int>(c));
+}
+
+
 Event::Event(const QEvent &ev) :
 	event{std::shared_ptr<QEvent>(ev.clone())} {
 	switch (this->event->type()) {
@@ -31,7 +36,14 @@ Event::Event(const QEvent &ev) :
 	case QEvent::Wheel: {
 		this->cl = event_class::WHEEL;
 		auto event = dynamic_pointer_cast<QWheelEvent>(this->event);
-		this->code = 0;
+		if (event->angleDelta().y() > 0) {
+			// forward
+			this->code = 1;
+		}
+		else {
+			// backwards
+			this->code = -1;
+		}
 		this->mod_code = event->modifiers();
 		this->state = event->type();
 	} break;
@@ -41,9 +53,18 @@ Event::Event(const QEvent &ev) :
 	}
 }
 
+Event::Event(event_class cl, code_t code, modset_t mod, state_t state) :
+	cl{cl},
+	code{code},
+	mod_code{mod},
+	state{state},
+	event{nullptr} {}
+
+
 const std::shared_ptr<QEvent> &Event::get_event() const {
 	return this->event;
 }
+
 
 bool Event::operator==(const Event &other) const {
 	return this->cl == other.cl
@@ -51,6 +72,7 @@ bool Event::operator==(const Event &other) const {
 	       && this->mod_code == other.mod_code
 	       && this->state == other.state;
 }
+
 
 int event_hash::operator()(const Event &e) const {
 	return std::hash<int>()(static_cast<int>(e.cl))
