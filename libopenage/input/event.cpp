@@ -7,67 +7,56 @@
 
 namespace openage::input {
 
-Event::Event(event_class cl) :
-	cl{cl} {}
-
-Event::Event(event_class cl,
-             coord::input mouse_position,
-             coord::input_delta mouse_motion) :
-	cl{cl},
-	mouse_position{mouse_position},
-	mouse_motion{mouse_motion} {}
-
-event_class Event::get_class() const {
-	return this->cl;
-}
-
-
-KeyEvent::KeyEvent(const QKeyCombination key) :
-	Event(event_class::KEYBOARD),
-	key{key} {}
-
-int KeyEvent::hash() const {
-	return key.toCombined();
-}
-
-bool KeyEvent::operator==(const Event &other) const {
-	return this->hash() == other.hash();
-}
-
-
-MouseEvent::MouseEvent(const QMouseEvent &ev) :
-	Event(event_class::MOUSE),
-	buttons{ev.buttons()},
-	mods{ev.modifiers()} {
-}
-
-int MouseEvent::hash() const {
-	return this->buttons ^ this->mods;
-}
-
-bool MouseEvent::operator==(const Event &other) const {
-	return this->hash() == other.hash();
-}
-
-
-WheelEvent::WheelEvent(const QWheelEvent &ev) :
-	Event(event_class::WHEEL),
-	buttons{ev.buttons()},
-	mods{ev.modifiers()} {}
-
-int WheelEvent::hash() const {
-	if (this->angle_delta < 0) {
-		return -1 * this->buttons ^ this->mods;
+Event::Event(const QEvent &ev) :
+	event{std::shared_ptr<QEvent>(ev.clone())} {
+	switch (this->event->type()) {
+	case QEvent::KeyPress:
+	case QEvent::KeyRelease: {
+		this->cl = event_class::KEYBOARD;
+		auto event = dynamic_pointer_cast<QKeyEvent>(this->event);
+		this->code = event->key();
+		this->mod_code = event->modifiers();
+		this->state = event->type();
+	} break;
+	case QEvent::MouseButtonDblClick:
+	case QEvent::MouseButtonPress:
+	case QEvent::MouseButtonRelease:
+	case QEvent::MouseMove: {
+		this->cl = event_class::MOUSE;
+		auto event = dynamic_pointer_cast<QMouseEvent>(this->event);
+		this->code = event->button();
+		this->mod_code = event->modifiers();
+		this->state = event->type();
+	} break;
+	case QEvent::Wheel: {
+		this->cl = event_class::WHEEL;
+		auto event = dynamic_pointer_cast<QWheelEvent>(this->event);
+		this->code = 0;
+		this->mod_code = event->modifiers();
+		this->state = event->type();
+	} break;
+	// TODO: GUI events
+	default:
+		throw Error{MSG(err) << "Unrecognized input event type."};
 	}
-	return this->buttons ^ this->mods;
 }
 
-bool WheelEvent::operator==(const Event &other) const {
-	return this->hash() == other.hash();
+const std::shared_ptr<QEvent> &Event::get_event() const {
+	return this->event;
+}
+
+bool Event::operator==(const Event &other) const {
+	return this->cl == other.cl
+	       && this->code == other.code
+	       && this->mod_code == other.mod_code
+	       && this->state == other.state;
 }
 
 int event_hash::operator()(const Event &e) const {
-	return e.hash();
+	return std::hash<int>()(static_cast<int>(e.cl))
+	       ^ std::hash<int>()(e.code) * 3664657
+	       ^ std::hash<int>()(e.mod_code)
+	       ^ std::hash<int>()(e.state);
 }
 
 

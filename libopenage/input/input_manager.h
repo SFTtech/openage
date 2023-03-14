@@ -95,10 +95,7 @@ public:
 	 */
 	void set_motion(int x, int y);
 
-	bool process(const QKeyEvent &ev);
-	bool process(const QMouseEvent &ev);
-	bool process(const QWheelEvent &ev);
-	// bool process(/* GUI events like button clicks, etc. */);
+	bool process(const QEvent &ev);
 
 
 private:
