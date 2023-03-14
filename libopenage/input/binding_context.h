@@ -22,12 +22,24 @@ public:
 	virtual ~BindingContext() = default;
 
 	/**
-	 * bind a specific key event to an action
+	 * Bind a specific key combination to a binding.
+	 *
+	 * This is the first matching priority.
      *
      * @param ev Input event triggering the action.
      * @param bind Binding for the event.
 	 */
 	void bind(const Event &ev, const Binding bind);
+
+	/**
+	 * Bind an event class to an action.
+	 *
+	 * This is the second matching priority.
+     *
+     * @param ev Input event triggering the action.
+     * @param bind Binding for the event.
+	 */
+	void bind(const event_class &cl, const Binding bind);
 
 	/**
      * Check whether a specific key event is bound in this context.
@@ -47,9 +59,14 @@ public:
 
 private:
 	/**
-	 * map specific overriding events
+	 * Maps specific input events to bindings.
 	 */
 	std::unordered_map<Event, Binding, event_hash> by_event;
+
+	/**
+	 * Maps event classes to bindings.
+	 */
+	std::unordered_map<event_class, Binding, event_class_hash> by_class;
 };
 
 } // namespace openage::input
