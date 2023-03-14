@@ -10,7 +10,7 @@
 
 namespace openage::input {
 
-using binding_func_t = std::function<const event::Event &(const input::Event &e)>;
+using binding_func_t = std::function<const std::shared_ptr<event::Event> (const input::Event &e)>;
 
 /**
  * Action type for the event forwarding.
