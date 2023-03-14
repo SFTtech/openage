@@ -74,6 +74,18 @@ bool Event::operator==(const Event &other) const {
 }
 
 
+std::string Event::info() const {
+	// TODO: human-readable info
+
+	std::string result = "[Event: ";
+	result += "class=" + std::to_string(static_cast<int>(this->cl)) + ", ";
+	result += "code=" + std::to_string(this->code) + ", ";
+	result += "modset=" + std::to_string(this->mod_code) + ", ";
+	result += "state=" + std::to_string(this->state) + "]";
+	return result;
+}
+
+
 int event_hash::operator()(const Event &e) const {
 	return std::hash<int>()(static_cast<int>(e.cl))
 	       ^ std::hash<int>()(e.code) * 3664657
