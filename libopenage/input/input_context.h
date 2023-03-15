@@ -49,7 +49,7 @@ public:
      * @param ev Input event triggering the action.
      * @param act Function executing the action.
 	 */
-	void bind(const Event &ev, const InputAction act);
+	void bind(const Event &ev, const input_action act);
 
 	/**
 	 * Bind an event class to an action.
@@ -59,7 +59,7 @@ public:
      * @param ev Input event triggering the action.
      * @param act Function executing the action.
 	 */
-	void bind(const event_class &cl, const InputAction act);
+	void bind(const event_class &cl, const input_action act);
 
 	/**
      * Check whether a specific key event is bound in this context.
@@ -75,7 +75,7 @@ public:
      *
      * @param ev Input event triggering the action.
      */
-	const InputAction &lookup(const Event &ev) const;
+	const input_action &lookup(const Event &ev) const;
 
 private:
 	/**
@@ -86,12 +86,12 @@ private:
 	/**
 	 * Maps specific input events to actions.
 	 */
-	std::unordered_map<Event, InputAction, event_hash> by_event;
+	std::unordered_map<Event, input_action, event_hash> by_event;
 
 	/**
 	 * Maps event classes to actions.
 	 */
-	std::unordered_map<event_class, InputAction, event_class_hash> by_class;
+	std::unordered_map<event_class, input_action, event_class_hash> by_class;
 
 	/**
      * Additional context for gamestate events.
