@@ -41,8 +41,7 @@ public:
 	const std::shared_ptr<InputContext> &get_top_context();
 
 	/**
-	 * a list of all keys of the active context
-	 * which are bound currently.
+	 * Get the info for all events which are bound currently.
 	 */
 	std::vector<std::string> active_binds() const;
 

@@ -22,13 +22,15 @@ class InputContext {
 public:
 	/**
 	 * Create an input context.
+	 *
+	 * @param id Unique identifier.
 	 */
 	InputContext(const std::string id);
 
 	virtual ~InputContext() = default;
 
 	/**
-     * Get the ID of the context.
+     * Get the unique ID of the context.
      *
      * @return Context ID.
      */
@@ -76,6 +78,21 @@ public:
      * @param ev Input event triggering the action.
      */
 	const input_action &lookup(const Event &ev) const;
+
+	/**
+	 * Get all event->action bindings in this context.
+	 *
+	 * @return Events bound in this context.
+	 */
+	std::vector<Event> get_event_binds() const;
+
+	/**
+	 * Get all class->action bindings in this context.
+	 *
+	 * @return Event classes bound in this context.
+	 */
+	std::vector<event_class> get_class_binds() const;
+
 
 private:
 	/**

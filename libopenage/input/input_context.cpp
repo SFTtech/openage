@@ -45,4 +45,24 @@ const input_action &InputContext::lookup(const Event &ev) const {
 	throw Error{MSG(err) << "Event is not bound in context " << this->id};
 }
 
+std::vector<Event> InputContext::get_event_binds() const {
+	std::vector<Event> result{};
+
+	for (auto bind : this->by_event) {
+		result.push_back(bind.first);
+	}
+
+	return result;
+}
+
+std::vector<event_class> InputContext::get_class_binds() const {
+	std::vector<event_class> result{};
+
+	for (auto bind : this->by_class) {
+		result.push_back(bind.first);
+	}
+
+	return result;
+}
+
 } // namespace openage::input
