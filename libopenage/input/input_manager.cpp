@@ -2,7 +2,6 @@
 
 #include "input_manager.h"
 
-#include "input/binding_context.h"
 #include "input/controller.h"
 #include "input/event.h"
 #include "input/input_context.h"
@@ -33,7 +32,23 @@ const std::shared_ptr<InputContext> &InputManager::get_top_context() {
 std::vector<std::string> InputManager::active_binds() const {
 	std::vector<std::string> result;
 
-	// TODO: Implement
+	// remember events and classes bound in already visited contexts
+	std::unordered_set<Event, event_hash> used_events;
+	std::unordered_set<event_class, event_class_hash> used_classes;
+
+	for (auto it = this->active_contexts.end(); it != this->active_contexts.begin(); --it) {
+		auto event_binds = (*it)->get_event_binds();
+		for (auto ev : event_binds) {
+			if (used_events.contains(ev) or used_classes.contains(ev.cl)) {
+				// event is handled by a context with a higher priority
+				continue;
+			}
+			result.push_back(ev.info());
+			used_events.insert(ev);
+		}
+		auto classes = (*it)->get_class_binds();
+		used_classes.insert(classes.begin(), classes.end());
+	}
 
 	return result;
 }
@@ -91,15 +106,6 @@ void InputManager::set_motion(int x, int y) {
 }
 
 bool InputManager::process(const QEvent &ev) {
-	// TODO
-	// 1. Create input event (DONE)
-	// 2. Lookup actions from current context (DONE)
-	// 3. take any of multiple actions:
-	//   - change context
-	//   - forward to GUI
-	//   - forward to controller
-	//   - forward to renderer?
-
 	input::Event input_ev{ev};
 
 	// Check context list on top of the stack (most recent bound first)
