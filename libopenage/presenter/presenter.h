@@ -21,6 +21,10 @@ namespace event {
 class Simulation;
 }
 
+namespace input {
+class InputManager;
+}
+
 namespace renderer {
 class RenderPass;
 class Renderer;
@@ -117,6 +121,11 @@ protected:
 	void init_gui();
 
 	/**
+	 * Initialize the input management.
+	 */
+	void init_input();
+
+	/**
 	 * Initialize the final render pass that renders the results of all previous
 	 * render passes to the window screen.
 	 */
@@ -197,6 +206,11 @@ protected:
 	 * Simulation reference.
 	 */
 	std::shared_ptr<event::Simulation> simulation;
+
+	/**
+	 * Input manager.
+	 */
+	std::shared_ptr<input::InputManager> input_manager;
 };
 
 } // namespace presenter
