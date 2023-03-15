@@ -160,5 +160,19 @@ struct event_hash {
 };
 
 
+/**
+ * Contains information about a triggered event and other
+ * input meta information.
+ */
+struct event_arguments {
+	// Triggering event
+	const Event e;
+
+	// Mouse position
+	const coord::input mouse;
+	const coord::input_delta motion;
+};
+
+
 } // namespace input
 } // namespace openage
