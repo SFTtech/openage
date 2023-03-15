@@ -9,6 +9,7 @@
 
 #include "engine/engine.h"
 #include "event/simulation.h"
+#include "input/input_manager.h"
 #include "log/log.h"
 #include "renderer/camera/camera.h"
 #include "renderer/gui/gui.h"
@@ -46,6 +47,8 @@ void Presenter::run() {
 		                                                                this->world_renderer);
 		this->engine->attach_renderer(render_factory);
 	}
+
+	this->init_input();
 
 	while (not this->window->should_close()) {
 		this->gui_app->process_events();
@@ -163,6 +166,22 @@ void Presenter::init_gui() {
 
 	auto gui_pass = this->gui->get_render_pass();
 	this->render_passes.push_back(gui_pass);
+}
+
+void Presenter::init_input() {
+	log::log(INFO << "initializing inputs...");
+
+	this->input_manager = std::make_shared<input::InputManager>();
+
+	this->window->add_key_callback([&](const QKeyEvent &ev) {
+		this->input_manager->process(ev);
+	});
+	this->window->add_mouse_button_callback([&](const QMouseEvent &ev) {
+		this->input_manager->process(ev);
+	});
+	this->window->add_mouse_wheel_callback([&](const QWheelEvent &ev) {
+		this->input_manager->process(ev);
+	});
 }
 
 void Presenter::init_final_render_pass() {
