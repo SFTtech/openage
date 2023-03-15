@@ -100,7 +100,7 @@ public:
 
 private:
 	void process_action(const input::Event &ev,
-	                    const InputAction &action,
+	                    const input_action &action,
 	                    const std::shared_ptr<BindingContext> &bind_ctx = nullptr);
 
 	/**

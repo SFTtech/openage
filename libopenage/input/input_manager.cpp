@@ -120,11 +120,12 @@ bool InputManager::process(const QEvent &ev) {
 }
 
 void InputManager::process_action(const input::Event &ev,
-                                  const InputAction &action,
+                                  const input_action &action,
                                   const std::shared_ptr<BindingContext> &bind_ctx) {
 	auto actions = action.action;
+	event_arguments args{ev, this->mouse_position, this->mouse_motion};
 	if (actions) {
-		actions.value()(ev);
+		actions.value()(args);
 	}
 	else {
 		// do default action if possible
@@ -144,7 +145,7 @@ void InputManager::process_action(const input::Event &ev,
 			break;
 		}
 		case action_t::CONTROLLER: {
-			this->controller->process(ev, bind_ctx);
+			this->controller->process(args, bind_ctx);
 			break;
 		}
 		case action_t::GUI:

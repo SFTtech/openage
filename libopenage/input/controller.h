@@ -41,7 +41,7 @@ public:
      */
 	size_t get_controlled();
 
-	bool process(const input::Event &ev, const std::shared_ptr<BindingContext> &ctx);
+	bool process(const event_arguments &ev, const std::shared_ptr<BindingContext> &ctx);
 
 private:
 	/**

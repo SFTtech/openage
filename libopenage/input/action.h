@@ -9,7 +9,9 @@
 
 namespace openage::input {
 
-using action_func_t = std::function<void(const Event &e)>;
+
+using action_func_t = std::function<void(const event_arguments &args)>;
+
 
 /**
  * Action types.
@@ -33,10 +35,11 @@ enum class action_t {
  * @param action Executes custom code for the action based on the received event (optional).
  * @param flags Additional parameters for the (default) action.
  */
-struct InputAction {
+struct input_action {
 	action_t action_type;
 	std::optional<action_func_t> action;
 	std::unordered_map<std::string, std::string> flags = {};
 };
+
 
 } // namespace openage::input

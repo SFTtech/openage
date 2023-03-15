@@ -22,7 +22,7 @@ size_t Controller::get_controlled() {
 	return this->active_faction_id;
 }
 
-bool Controller::process(const input::Event &ev, const std::shared_ptr<BindingContext> &ctx) {
+bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx) {
 	// TODO
 	// 1. Lookup input event (DONE)
 	// 2. check if action is allowed
@@ -30,22 +30,23 @@ bool Controller::process(const input::Event &ev, const std::shared_ptr<BindingCo
 	//   - queue input event (aka wait for more) (DONE)
 	//   - create gamestate event (from all input events in queue)
 	//   - clear queue (effectively cancel) (DONE)
-	auto bind = ctx->lookup(ev);
-	auto game_event = bind.transform(ev);
+	auto bind = ctx->lookup(ev_args.e);
+
+	auto game_event = bind.transform(ev_args);
 
 	switch (bind.action) {
-	case event_action_t::SEND:
+	case forward_action_t::SEND:
 		this->outqueue.push_back(game_event);
 		for (auto event : this->outqueue) {
 			// TODO: Send gamestate event
 		}
 		break;
 
-	case event_action_t::QUEUE:
+	case forward_action_t::QUEUE:
 		this->outqueue.push_back(game_event);
 		break;
 
-	case event_action_t::CLEAR:
+	case forward_action_t::CLEAR:
 		this->outqueue.clear();
 		break;
 
