@@ -49,7 +49,7 @@ struct event_class_hash {
 /**
  * map event class to parent class
  */
-static std::unordered_map<event_class, event_class, event_class_hash> event_base{
+static std::unordered_map<event_class, event_class, event_class_hash> event_class_rel{
 	{event_class::KEYBOARD, event_class::ANY},
 	{event_class::MOUSE, event_class::ANY},
 	{event_class::WHEEL, event_class::ANY},
@@ -64,6 +64,49 @@ static std::unordered_map<event_class, event_class, event_class_hash> event_base
 	{event_class::MOUSE_BUTTON, event_class::MOUSE},
 	{event_class::MOUSE_BUTTON_DBL, event_class::MOUSE},
 	{event_class::MOUSE_MOVE, event_class::MOUSE},
+};
+
+
+/**
+ * Handle class relationships.
+ */
+class ClassCode {
+public:
+	/**
+	 * Get all event classes that are covered by a given event class,
+	 * ordered from most specific to most generic.
+	 *
+	 * @return Event classes.
+	 */
+	static std::vector<event_class> get_classes(const event_class &cl) {
+		std::vector<event_class> result;
+
+		// use event_base to traverse up the class tree
+		event_class c = cl;
+		result.push_back(c);
+		while (event_class_rel.count(c) > 0) {
+			c = event_class_rel.at(c);
+			result.push_back(c);
+		}
+		return result;
+	}
+
+	/**
+	 * Check whether an event class is covered by another event class.
+	 *
+	 * @param a Event class for which coverage is checked.
+	 * @param b Event class that is a suspected ancestor.
+	 *
+	 * @return true if \p a is a descendant of or equal to \p b, else false.
+	 */
+	static bool is_subclass(const event_class &a, const event_class &b) {
+		for (auto cl : ClassCode::get_classes(a)) {
+			if (cl == b) {
+				return true;
+			}
+		}
+		return false;
+	}
 };
 
 
