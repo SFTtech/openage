@@ -23,15 +23,8 @@ size_t Controller::get_controlled() {
 }
 
 bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx) {
-	// TODO
-	// 1. Lookup input event (DONE)
-	// 2. check if action is allowed
-	// 3. take 1 of multiple actions:
-	//   - queue input event (aka wait for more) (DONE)
-	//   - create gamestate event (from all input events in queue)
-	//   - clear queue (effectively cancel) (DONE)
+	// TODO: check if action is allowed
 	auto bind = ctx->lookup(ev_args.e);
-
 	auto game_event = bind.transform(ev_args);
 
 	switch (bind.action) {
