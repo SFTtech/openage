@@ -10,7 +10,9 @@
 
 namespace openage::input {
 
-using binding_func_t = std::function<const std::shared_ptr<event::Event> (const input::Event &e)>;
+
+using binding_func_t = std::function<const std::shared_ptr<event::Event>(const event_arguments &e)>;
+
 
 /**
  * Action type for the event forwarding.
@@ -20,7 +22,7 @@ using binding_func_t = std::function<const std::shared_ptr<event::Event> (const 
  *     - \p QUEUE queue the event
  *     - \p CLEAR clear the queue
  */
-enum class event_action_t {
+enum class forward_action_t {
 	SEND,
 	QUEUE,
 	CLEAR,
@@ -33,8 +35,8 @@ enum class event_action_t {
  * @param transform Maps an input event to a gamestate event.
  * @param flags Additional parameters for the transformation.
  */
-struct Binding {
-	event_action_t action;
+struct binding {
+	forward_action_t action;
 	binding_func_t transform;
 	std::unordered_map<std::string, std::string> flags = {};
 };
