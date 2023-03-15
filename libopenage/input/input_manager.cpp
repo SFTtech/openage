@@ -39,9 +39,15 @@ std::vector<std::string> InputManager::active_binds() const {
 	for (auto it = this->active_contexts.end(); it != this->active_contexts.begin(); --it) {
 		auto event_binds = (*it)->get_event_binds();
 		for (auto ev : event_binds) {
-			if (used_events.contains(ev) or used_classes.contains(ev.cl)) {
+			if (used_events.contains(ev)) {
 				// event is handled by a context with a higher priority
 				continue;
+			}
+			for (auto cl : used_classes) {
+				if (ClassCode::is_subclass(ev.cl, cl)) {
+					// class is handled by a context with a higher priority
+					continue;
+				}
 			}
 			result.push_back(ev.info());
 			used_events.insert(ev);
