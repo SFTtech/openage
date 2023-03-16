@@ -37,7 +37,7 @@ enum class action_t {
  */
 struct input_action {
 	const action_t action_type;
-	const std::optional<action_func_t> action;
+	const std::optional<action_func_t> action = std::nullopt;
 	const action_flags_t flags = {};
 };
 

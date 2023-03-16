@@ -10,7 +10,7 @@
 
 namespace openage::input::tests {
 
-void binding_demo() {
+void action_demo() {
 	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
 
 	renderer::opengl::GlWindow window("openage renderer test", 800, 600);
@@ -30,10 +30,18 @@ void binding_demo() {
 		log::log(INFO << "Current top context: " << mgr.get_top_context()->get_id());
 	}};
 
-	action_func_t pop_context{[&](const event_arguments &args) {
+	action_func_t remove_context{[&](const event_arguments &args) {
 		log::log(INFO << args.e.info());
 		mgr.pop_context(args.flags.at("id"));
 		log::log(INFO << "Context popped: " << args.flags.at("id"));
+		log::log(INFO << "Current top context: " << mgr.get_top_context()->get_id());
+	}};
+
+	action_func_t pop_context{[&](const event_arguments &args) {
+		log::log(INFO << args.e.info());
+		auto popped_id = mgr.get_top_context()->get_id();
+		mgr.pop_context();
+		log::log(INFO << "Context popped: " << popped_id);
 		log::log(INFO << "Current top context: " << mgr.get_top_context()->get_id());
 	}};
 
@@ -48,8 +56,9 @@ void binding_demo() {
 
 	input_action push_a{action_t::PUSH_CONTEXT, push_context, {{"id", "A"}}};
 	input_action push_b{action_t::PUSH_CONTEXT, push_context, {{"id", "B"}}};
-	input_action pop_a{action_t::POP_CONTEXT, pop_context, {{"id", "A"}}};
-	input_action pop_b{action_t::POP_CONTEXT, pop_context, {{"id", "B"}}};
+	input_action remove_a{action_t::REMOVE_CONTEXT, remove_context, {{"id", "A"}}};
+	input_action remove_b{action_t::REMOVE_CONTEXT, remove_context, {{"id", "B"}}};
+	input_action pop{action_t::POP_CONTEXT, pop_context};
 
 	input_action press_w{action_t::CUSTOM, key_press};
 	input_action press_a{action_t::CUSTOM, key_press};
@@ -75,14 +84,14 @@ void binding_demo() {
 	mgr.get_global_context()->bind(ev_up, push_a);
 
 	context1->bind(ev_up, push_b);
-	context1->bind(ev_down, pop_a);
+	context1->bind(ev_down, pop);
 	context1->bind(ev_w, press_w);
 	context1->bind(ev_a, press_a);
 	context1->bind(ev_s, press_s);
 	context1->bind(ev_d, press_d);
 	context1->bind(event_class::ANY, catch_all);
 
-	context2->bind(ev_down, pop_b);
+	context2->bind(ev_down, pop);
 	context2->bind(ev_lmb, press_lmb);
 	context2->bind(ev_rmb, press_rmb);
 	context2->bind(event_class::ANY, catch_all);
