@@ -44,7 +44,7 @@ std::vector<std::string> InputManager::active_binds() const {
 				continue;
 			}
 			for (auto cl : used_classes) {
-				if (ClassCode::is_subclass(ev.cl, cl)) {
+				if (ev.cc.is_subclass(cl)) {
 					// class is handled by a context with a higher priority
 					continue;
 				}
