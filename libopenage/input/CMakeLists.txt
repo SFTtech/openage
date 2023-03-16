@@ -6,6 +6,7 @@ add_sources(libopenage
 	event.cpp
 	input_context.cpp
 	input_manager.cpp
+	tests.cpp
 )
 
 add_subdirectory("legacy")
