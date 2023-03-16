@@ -66,53 +66,67 @@ static std::unordered_map<event_class, event_class, event_class_hash> event_clas
 	{event_class::MOUSE_MOVE, event_class::MOUSE},
 };
 
+/**
+ * Key/button identifiers.
+ */
+using code_t = int;
 
 /**
- * Handle class relationships.
+ * Base event that contains event class and key/button identifier.
  */
 class ClassCode {
 public:
+	ClassCode() = default;
+	ClassCode(event_class cl, code_t code);
+	~ClassCode() = default;
+
 	/**
-	 * Get all event classes that are covered by a given event class,
+	 * Get all event classes that are covered by this class code,
 	 * ordered from most specific to most generic.
 	 *
 	 * @return Event classes.
 	 */
-	static std::vector<event_class> get_classes(const event_class &cl) {
-		std::vector<event_class> result;
-
-		// use event_base to traverse up the class tree
-		event_class c = cl;
-		result.push_back(c);
-		while (event_class_rel.count(c) > 0) {
-			c = event_class_rel.at(c);
-			result.push_back(c);
-		}
-		return result;
-	}
+	std::vector<event_class> get_classes() const;
 
 	/**
-	 * Check whether an event class is covered by another event class.
+	 * Check whether this class code is covered by a given event class.
 	 *
-	 * @param a Event class for which coverage is checked.
-	 * @param b Event class that is a suspected ancestor.
+	 * @param b Event class.
 	 *
-	 * @return true if \p a is a descendant of or equal to \p b, else false.
+	 * @return true if the class code's event class is a descendant of or equal to \p other, else false.
 	 */
-	static bool is_subclass(const event_class &a, const event_class &b) {
-		for (auto cl : ClassCode::get_classes(a)) {
-			if (cl == b) {
-				return true;
-			}
-		}
-		return false;
-	}
+	bool is_subclass(const event_class &other) const;
+
+	/**
+	 * Check whether two events are equal.
+	 *
+	 * Events are equal if their class, code, modset, and state are matching.
+	 */
+	bool operator==(const ClassCode &other) const;
+
+	/**
+	 * Event class.
+	 */
+	event_class cl;
+
+	/**
+	 * Identifier of the key/button that was pressed. It should be unique
+	 * for the given event class.
+	 */
+	code_t code;
 };
 
 
-using state_t = int;
-using code_t = int;
+struct class_code_hash {
+	int operator()(const ClassCode &cc) const;
+};
+
+
+/**
+ * Modifiers and states.
+ */
 using modset_t = int;
+using state_t = int;
 
 /**
  * Input event, as triggered by some input device like
@@ -168,15 +182,9 @@ public:
 	std::string info() const;
 
 	/**
-	 * Event class.
+	 * Class code.
 	 */
-	event_class cl;
-
-	/**
-	 * Identifier of the key/button that was pressed. It should be unique
-	 * for the given event class.
-	 */
-	code_t code;
+	ClassCode cc;
 
 	/**
 	 * Keyboard modifiers (CTRL, ALT, SHIFT, META) that were active when

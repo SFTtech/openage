@@ -17,7 +17,7 @@ void BindingContext::bind(const event_class &cl, const binding bind) {
 }
 
 bool BindingContext::is_bound(const Event &ev) const {
-	return this->by_event.contains(ev) || this->by_class.contains(ev.cl);
+	return this->by_event.contains(ev) || this->by_class.contains(ev.cc.cl);
 }
 
 const binding &BindingContext::lookup(const Event &ev) const {
@@ -26,9 +26,11 @@ const binding &BindingContext::lookup(const Event &ev) const {
 		return (*event_lookup).second;
 	}
 
-	auto class_lookup = this->by_class.find(ev.cl);
-	if (class_lookup != std::end(this->by_class)) {
-		return (*class_lookup).second;
+	for (auto eclass : ev.cc.get_classes()) {
+		auto class_lookup = this->by_class.find(eclass);
+		if (class_lookup != std::end(this->by_class)) {
+			return (*class_lookup).second;
+		}
 	}
 
 	throw Error{MSG(err) << "Event is not bound in binding context."};
