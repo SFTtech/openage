@@ -10,7 +10,7 @@
 
 namespace openage::input {
 
-
+using binding_flags_t = std::unordered_map<std::string, std::string>;
 using binding_func_t = std::function<const std::shared_ptr<event::Event>(const event_arguments &e)>;
 
 
@@ -36,9 +36,9 @@ enum class forward_action_t {
  * @param flags Additional parameters for the transformation.
  */
 struct binding {
-	forward_action_t action;
-	binding_func_t transform;
-	std::unordered_map<std::string, std::string> flags = {};
+	const forward_action_t action;
+	const binding_func_t transform;
+	const binding_flags_t flags = {};
 };
 
 } // namespace openage::input

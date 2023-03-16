@@ -112,6 +112,8 @@ def demos_cpp():
            "showcases console as an interactive terminal on your current tty")
     yield ("openage::error::demo",
            "showcases the openage exceptions, including backtraces")
+    yield ("openage::input::tests::binding_demo",
+           "showcases the input system")
     yield ("openage::log::tests::demo",
            "showcases the logging system")
     yield ("openage::pyinterface::tests::err_py_to_cpp_demo",

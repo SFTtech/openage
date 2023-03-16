@@ -23,15 +23,33 @@ void binding_demo() {
 	mgr.add_context(context1);
 	mgr.add_context(context2);
 
+	action_func_t push_context{[&](const event_arguments &args) {
+		log::log(INFO << args.e.info());
+		mgr.push_context(args.flags.at("id"));
+		log::log(INFO << "Context pushed: " << args.flags.at("id"));
+		log::log(INFO << "Current top context: " << mgr.get_top_context()->get_id());
+	}};
+
+	action_func_t pop_context{[&](const event_arguments &args) {
+		log::log(INFO << args.e.info());
+		mgr.pop_context(args.flags.at("id"));
+		log::log(INFO << "Context popped: " << args.flags.at("id"));
+		log::log(INFO << "Current top context: " << mgr.get_top_context()->get_id());
+	}};
+
 	action_func_t key_press{[&](const event_arguments &args) {
 		log::log(INFO << args.e.info());
 		log::log(INFO << "Mouse position at: " << args.mouse);
 	}};
 
-	input_action push_a{action_t::PUSH_CONTEXT, std::nullopt, {{"id", "A"}}};
-	input_action push_b{action_t::PUSH_CONTEXT, std::nullopt, {{"id", "B"}}};
-	input_action pop_a{action_t::POP_CONTEXT, std::nullopt, {{"id", "A"}}};
-	input_action pop_b{action_t::POP_CONTEXT, std::nullopt, {{"id", "B"}}};
+	action_func_t nop{[&](const event_arguments &args) {
+		// Do nothing
+	}};
+
+	input_action push_a{action_t::PUSH_CONTEXT, push_context, {{"id", "A"}}};
+	input_action push_b{action_t::PUSH_CONTEXT, push_context, {{"id", "B"}}};
+	input_action pop_a{action_t::POP_CONTEXT, pop_context, {{"id", "A"}}};
+	input_action pop_b{action_t::POP_CONTEXT, pop_context, {{"id", "B"}}};
 
 	input_action press_w{action_t::CUSTOM, key_press};
 	input_action press_a{action_t::CUSTOM, key_press};
@@ -40,6 +58,8 @@ void binding_demo() {
 
 	input_action press_lmb{action_t::CUSTOM, key_press};
 	input_action press_rmb{action_t::CUSTOM, key_press};
+
+	input_action catch_all{action_t::CUSTOM, nop};
 
 	Event ev_up{event_class::KEYBOARD, Qt::Key_Up, Qt::NoModifier, QEvent::KeyRelease};
 	Event ev_down{event_class::KEYBOARD, Qt::Key_Down, Qt::NoModifier, QEvent::KeyRelease};
@@ -60,10 +80,12 @@ void binding_demo() {
 	context1->bind(ev_a, press_a);
 	context1->bind(ev_s, press_s);
 	context1->bind(ev_d, press_d);
+	context1->bind(event_class::ANY, catch_all);
 
 	context2->bind(ev_down, pop_b);
-	context1->bind(ev_lmb, press_lmb);
-	context1->bind(ev_rmb, press_rmb);
+	context2->bind(ev_lmb, press_lmb);
+	context2->bind(ev_rmb, press_rmb);
+	context2->bind(event_class::ANY, catch_all);
 
 	window.add_key_callback([&](const QKeyEvent &ev) {
 		mgr.process(ev);

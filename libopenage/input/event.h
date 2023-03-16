@@ -194,7 +194,7 @@ private:
 	 * Associated Qt event from the window manager. May be \p nullptr
 	 * if this event is not generated from a window event.
 	 */
-	std::shared_ptr<QEvent> event;
+	const std::shared_ptr<QEvent> event;
 };
 
 
@@ -202,6 +202,7 @@ struct event_hash {
 	int operator()(const Event &e) const;
 };
 
+using event_flags_t = std::unordered_map<std::string, std::string>;
 
 /**
  * Contains information about a triggered event and other
@@ -214,6 +215,9 @@ struct event_arguments {
 	// Mouse position
 	const coord::input mouse;
 	const coord::input_delta motion;
+
+	// additional settings
+	const event_flags_t flags = {};
 };
 
 
