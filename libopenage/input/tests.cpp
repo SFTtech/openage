@@ -13,7 +13,7 @@ namespace openage::input::tests {
 void action_demo() {
 	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
 
-	renderer::opengl::GlWindow window("openage renderer test", 800, 600);
+	renderer::opengl::GlWindow window("openage input test", 800, 600);
 	auto renderer = window.make_renderer();
 
 	auto mgr = input::InputManager();
@@ -25,9 +25,12 @@ void action_demo() {
 
 	action_func_t push_context{[&](const event_arguments &args) {
 		log::log(INFO << args.e.info());
-		mgr.push_context(args.flags.at("id"));
-		log::log(INFO << "Context pushed: " << args.flags.at("id"));
-		log::log(INFO << "Current top context: " << mgr.get_top_context()->get_id());
+		if (args.flags.at("id") != mgr.get_top_context()->get_id()) {
+			// prevent unnecessary stacking of the same context
+			mgr.push_context(args.flags.at("id"));
+			log::log(INFO << "Context pushed: " << args.flags.at("id"));
+			log::log(INFO << "Current top context: " << mgr.get_top_context()->get_id());
+		}
 	}};
 
 	action_func_t remove_context{[&](const event_arguments &args) {
