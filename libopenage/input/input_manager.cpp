@@ -139,7 +139,10 @@ void InputManager::process_action(const input::Event &ev,
 		switch (action.action_type) {
 		case action_t::PUSH_CONTEXT: {
 			auto ctx_id = action.flags.at("id");
-			this->push_context(ctx_id);
+			if (ctx_id != this->get_top_context()->get_id()) {
+				// prevent unnecessary stacking of the same context
+				this->push_context(ctx_id);
+			}
 			break;
 		}
 		case action_t::POP_CONTEXT:
