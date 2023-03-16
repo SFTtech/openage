@@ -143,12 +143,7 @@ void InputManager::process_action(const input::Event &ev,
 			break;
 		}
 		case action_t::POP_CONTEXT:
-			if (action.flags.contains("id")) {
-				this->pop_context(action.flags.at("id"));
-			}
-			else {
-				this->pop_context();
-			}
+			this->pop_context();
 			break;
 
 		case action_t::REMOVE_CONTEXT: {
