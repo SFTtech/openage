@@ -41,6 +41,14 @@ public:
      */
 	size_t get_controlled();
 
+	/**
+     * Process an input event from the input manager.
+     *
+     * @param ev Input event and arguments.
+     * @param ctx Binding context for looking up the event transformation.
+     *
+     * @return true if the event is accepted, else false.
+     */
 	bool process(const event_arguments &ev, const std::shared_ptr<BindingContext> &ctx);
 
 private:
@@ -54,6 +62,9 @@ private:
      */
 	size_t active_faction_id;
 
+	/**
+     * Queue for gamestate events generated from inputs.
+     */
 	std::vector<std::shared_ptr<event::Event>> outqueue;
 };
 
