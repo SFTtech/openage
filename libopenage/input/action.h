@@ -9,7 +9,7 @@
 
 namespace openage::input {
 
-
+using action_flags_t = std::unordered_map<std::string, std::string>;
 using action_func_t = std::function<void(const event_arguments &args)>;
 
 
@@ -36,9 +36,9 @@ enum class action_t {
  * @param flags Additional parameters for the (default) action.
  */
 struct input_action {
-	action_t action_type;
-	std::optional<action_func_t> action;
-	std::unordered_map<std::string, std::string> flags = {};
+	const action_t action_type;
+	const std::optional<action_func_t> action;
+	const action_flags_t flags = {};
 };
 
 
