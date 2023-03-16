@@ -130,7 +130,7 @@ void InputManager::process_action(const input::Event &ev,
                                   const input_action &action,
                                   const std::shared_ptr<BindingContext> &bind_ctx) {
 	auto actions = action.action;
-	event_arguments args{ev, this->mouse_position, this->mouse_motion};
+	event_arguments args{ev, this->mouse_position, this->mouse_motion, action.flags};
 	if (actions) {
 		actions.value()(args);
 	}
