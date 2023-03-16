@@ -105,13 +105,17 @@ void GlWindow::update() {
 			this->should_be_closed = true;
 		} break;
 
+		case QEvent::KeyPress:
 		case QEvent::KeyRelease: {
 			auto const ev = std::dynamic_pointer_cast<QKeyEvent>(event);
 			for (auto &cb : this->on_key) {
 				cb(*ev);
 			}
 		} break;
-		case QEvent::MouseButtonRelease: {
+		case QEvent::MouseButtonPress:
+		case QEvent::MouseButtonRelease:
+		case QEvent::MouseMove:
+		case QEvent::MouseButtonDblClick: {
 			auto const ev = std::dynamic_pointer_cast<QMouseEvent>(event);
 			for (auto &cb : this->on_mouse_button) {
 				cb(*ev);
