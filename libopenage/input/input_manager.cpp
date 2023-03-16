@@ -36,7 +36,7 @@ std::vector<std::string> InputManager::active_binds() const {
 	std::unordered_set<Event, event_hash> used_events;
 	std::unordered_set<event_class, event_class_hash> used_classes;
 
-	for (auto it = this->active_contexts.end(); it != this->active_contexts.begin(); --it) {
+	for (auto it = this->active_contexts.rbegin(); it != this->active_contexts.rend(); ++it) {
 		auto event_binds = (*it)->get_event_binds();
 		for (auto ev : event_binds) {
 			if (used_events.contains(ev)) {
@@ -74,13 +74,13 @@ void InputManager::pop_context() {
 	}
 }
 
-void InputManager::remove_context(const std::shared_ptr<InputContext> &context) {
+void InputManager::pop_context(const std::string &id) {
 	if (this->active_contexts.empty()) {
 		return;
 	}
 
-	for (auto it = this->active_contexts.end(); it != this->active_contexts.begin(); --it) {
-		if ((*it) == context) {
+	for (auto it = this->active_contexts.begin(); it != this->active_contexts.end(); ++it) {
+		if ((*it)->get_id() == id) {
 			this->active_contexts.erase(it);
 			return;
 		}
@@ -88,16 +88,11 @@ void InputManager::remove_context(const std::shared_ptr<InputContext> &context) 
 }
 
 void InputManager::remove_context(const std::string &id) {
-	if (this->active_contexts.empty()) {
-		return;
-	}
+	this->available_contexts.erase(id);
+}
 
-	for (auto it = this->active_contexts.end(); it != this->active_contexts.begin(); --it) {
-		if ((*it)->get_id() == id) {
-			this->active_contexts.erase(it);
-			return;
-		}
-	}
+void InputManager::add_context(const std::shared_ptr<InputContext> context) {
+	this->available_contexts.emplace(context->get_id(), context);
 }
 
 void InputManager::set_mouse(int x, int y) {
@@ -148,12 +143,17 @@ void InputManager::process_action(const input::Event &ev,
 			break;
 		}
 		case action_t::POP_CONTEXT:
-			this->pop_context();
+			if (action.flags.contains("id")) {
+				this->pop_context(action.flags.at("id"));
+			}
+			else {
+				this->pop_context();
+			}
 			break;
 
 		case action_t::REMOVE_CONTEXT: {
 			auto ctx_id = action.flags.at("id");
-			this->remove_context(ctx_id);
+			this->pop_context(ctx_id);
 			break;
 		}
 		case action_t::CONTROLLER: {

@@ -33,12 +33,12 @@ bool InputContext::is_bound(const Event &ev) const {
 
 const input_action &InputContext::lookup(const Event &ev) const {
 	auto event_lookup = this->by_event.find(ev);
-	if (event_lookup == std::end(this->by_event)) {
+	if (event_lookup != std::end(this->by_event)) {
 		return (*event_lookup).second;
 	}
 
 	auto class_lookup = this->by_class.find(ev.cl);
-	if (class_lookup == std::end(this->by_class)) {
+	if (class_lookup != std::end(this->by_class)) {
 		return (*class_lookup).second;
 	}
 

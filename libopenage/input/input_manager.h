@@ -69,20 +69,22 @@ public:
 	void pop_context();
 
 	/**
-	 * Removes any matching registered context from the stack.
-	 *
-	 * the removal is done by finding the given pointer
-	 * in the `active_contexts` lists, then deleting it in there.
-	 */
-	void remove_context(const std::shared_ptr<InputContext> &context);
-
-	/**
 	 * Removes any registered context matching the specified ID from the stack.
 	 *
 	 * the removal is done by finding the given pointer
 	 * in the `active_contexts` lists, then deleting it in there.
 	 */
+	void pop_context(const std::string &id);
+
+	/**
+	 * Remove a context from the available contexts.
+	 */
 	void remove_context(const std::string &id);
+
+	/**
+	 * Add a context to the available contexts.
+	 */
+	void add_context(const std::shared_ptr<InputContext> context);
 
 	/**
 	 * updates mouse position state and motion
