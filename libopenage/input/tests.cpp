@@ -13,33 +13,46 @@ namespace openage::input::tests {
 void action_demo() {
 	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
 
+	// create a window where we get our inputs from
 	renderer::opengl::GlWindow window("openage input test", 800, 600);
-	auto renderer = window.make_renderer();
 
+	// manager that receives window inputs
+	// the manager creates its own global context with ID "main"
 	auto mgr = input::InputManager();
 
+	// create 2 additional input contexts to switch to
+	// context A accepts WASD inputs
+	// context B accepts LMB + RMB inputs
 	auto context1 = std::make_shared<input::InputContext>("A");
 	auto context2 = std::make_shared<input::InputContext>("B");
 	mgr.add_context(context1);
 	mgr.add_context(context2);
 
+	// get the inputs from the Qt window management and forward them to the input manager
+	window.add_key_callback([&](const QKeyEvent &ev) {
+		mgr.process(ev);
+	});
+	window.add_mouse_button_callback([&](const QMouseEvent &ev) {
+		mgr.set_mouse(ev.position().x(), ev.position().y());
+		mgr.process(ev);
+	});
+
+	// create action functions
+	// these are run when an input event is detected
 	action_func_t push_context{[&](const event_arguments &args) {
 		log::log(INFO << args.e.info());
 		if (args.flags.at("id") != mgr.get_top_context()->get_id()) {
-			// prevent unnecessary stacking of the same context
 			mgr.push_context(args.flags.at("id"));
 			log::log(INFO << "Context pushed: " << args.flags.at("id"));
 			log::log(INFO << "Current top context: " << mgr.get_top_context()->get_id());
 		}
 	}};
-
 	action_func_t remove_context{[&](const event_arguments &args) {
 		log::log(INFO << args.e.info());
 		mgr.pop_context(args.flags.at("id"));
 		log::log(INFO << "Context popped: " << args.flags.at("id"));
 		log::log(INFO << "Current top context: " << mgr.get_top_context()->get_id());
 	}};
-
 	action_func_t pop_context{[&](const event_arguments &args) {
 		log::log(INFO << args.e.info());
 		auto popped_id = mgr.get_top_context()->get_id();
@@ -47,16 +60,15 @@ void action_demo() {
 		log::log(INFO << "Context popped: " << popped_id);
 		log::log(INFO << "Current top context: " << mgr.get_top_context()->get_id());
 	}};
-
 	action_func_t key_press{[&](const event_arguments &args) {
 		log::log(INFO << args.e.info());
 		log::log(INFO << "Mouse position at: " << args.mouse);
 	}};
-
 	action_func_t nop{[&](const event_arguments &args) {
 		// Do nothing
 	}};
 
+	// create the actual actions which have a type, an optional function, and some flags
 	input_action push_a{action_t::PUSH_CONTEXT, push_context, {{"id", "A"}}};
 	input_action push_b{action_t::PUSH_CONTEXT, push_context, {{"id", "B"}}};
 	input_action remove_a{action_t::REMOVE_CONTEXT, remove_context, {{"id", "A"}}};
@@ -73,6 +85,7 @@ void action_demo() {
 
 	input_action catch_all{action_t::CUSTOM, nop};
 
+	// events that map to specific keys/buttons
 	Event ev_up{event_class::KEYBOARD, Qt::Key_Up, Qt::NoModifier, QEvent::KeyRelease};
 	Event ev_down{event_class::KEYBOARD, Qt::Key_Down, Qt::NoModifier, QEvent::KeyRelease};
 
@@ -84,6 +97,7 @@ void action_demo() {
 	Event ev_lmb{event_class::MOUSE, Qt::LeftButton, Qt::NoModifier, QEvent::MouseButtonRelease};
 	Event ev_rmb{event_class::MOUSE, Qt::RightButton, Qt::NoModifier, QEvent::MouseButtonRelease};
 
+	// bind events to actions in the contexts
 	mgr.get_global_context()->bind(ev_up, push_a);
 
 	context1->bind(ev_up, push_b);
@@ -99,13 +113,10 @@ void action_demo() {
 	context2->bind(ev_rmb, press_rmb);
 	context2->bind(event_class::ANY, catch_all);
 
-	window.add_key_callback([&](const QKeyEvent &ev) {
-		mgr.process(ev);
-	});
-	window.add_mouse_button_callback([&](const QMouseEvent &ev) {
-		mgr.set_mouse(ev.position().x(), ev.position().y());
-		mgr.process(ev);
-	});
+	log::log(INFO << "Instructions:");
+	log::log(INFO << "  1. Press UP and DOWN to add/remove contexts");
+	log::log(INFO << "  2. Context A accepts WASD events as inputs");
+	log::log(INFO << "  3. Context B accepts LMB+RMB as inputs");
 
 	while (not window.should_close()) {
 		qtapp->process_events();

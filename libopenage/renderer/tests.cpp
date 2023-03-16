@@ -1037,7 +1037,7 @@ void renderer_demo_4(const util::Path &path) {
 	log::log(INFO << "Instructions:");
 	log::log(INFO << "  1. Press SPACE to pause/resume simulation clock");
 	log::log(INFO << "  2. Press PLUS and MINUS keys to increase/decrease simulation speed");
-	log::log(INFO << "  2. Press RETURN to toggle between real time and simulation time for animation speed");
+	log::log(INFO << "  3. Press RETURN to toggle between real time and simulation time for animation speed");
 
 	/* Get layer and angle that we want to display. For this texture, there is only
 	   one layer and one angle. */
