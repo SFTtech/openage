@@ -209,22 +209,24 @@ void renderer_demo_0(const util::Path &path) {
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	window.add_mouse_button_callback([&](const QMouseEvent &ev) {
-		auto qpos = ev.position();
-		ssize_t x = qpos.x();
-		ssize_t y = qpos.y();
+		if (ev.type() == QEvent::MouseButtonRelease) {
+			auto qpos = ev.position();
+			ssize_t x = qpos.x();
+			ssize_t y = qpos.y();
 
-		log::log(INFO << "Clicked at location (" << x << ", " << y << ")");
-		if (!texture_data_valid) {
-			id_texture_data = id_texture->into_data();
-			texture_data_valid = true;
-		}
-		auto id = id_texture_data.read_pixel<uint32_t>(x, y);
-		log::log(INFO << "Id-texture-value at location: " << id);
-		if (id == 0) {
-			log::log(INFO << "Clicked at non existent object");
-		}
-		else {
-			log::log(INFO << "Object number " << id << " clicked.");
+			log::log(INFO << "Clicked at location (" << x << ", " << y << ")");
+			if (!texture_data_valid) {
+				id_texture_data = id_texture->into_data();
+				texture_data_valid = true;
+			}
+			auto id = id_texture_data.read_pixel<uint32_t>(x, y);
+			log::log(INFO << "Id-texture-value at location: " << id);
+			if (id == 0) {
+				log::log(INFO << "Clicked at non existent object");
+			}
+			else {
+				log::log(INFO << "Object number " << id << " clicked.");
+			}
 		}
 	});
 
@@ -481,22 +483,24 @@ void renderer_demo_1(const util::Path &path) {
 	log::log(INFO << "Register callbacks...");
 
 	window.add_mouse_button_callback([&](const QMouseEvent &ev) {
-		auto qpos = ev.position();
-		ssize_t x = qpos.x();
-		ssize_t y = qpos.y();
+		if (ev.type() == QEvent::MouseButtonRelease) {
+			auto qpos = ev.position();
+			ssize_t x = qpos.x();
+			ssize_t y = qpos.y();
 
-		log::log(INFO << "Clicked at location (" << x << ", " << y << ")");
-		if (!texture_data_valid) {
-			id_texture_data = id_texture->into_data();
-			texture_data_valid = true;
-		}
-		auto id = id_texture_data.read_pixel<uint32_t>(x, y);
-		log::log(INFO << "Id-texture-value at location: " << id);
-		if (id == 0) {
-			log::log(INFO << "Clicked at non existent object");
-		}
-		else {
-			log::log(INFO << "Object number " << id << " clicked.");
+			log::log(INFO << "Clicked at location (" << x << ", " << y << ")");
+			if (!texture_data_valid) {
+				id_texture_data = id_texture->into_data();
+				texture_data_valid = true;
+			}
+			auto id = id_texture_data.read_pixel<uint32_t>(x, y);
+			log::log(INFO << "Id-texture-value at location: " << id);
+			if (id == 0) {
+				log::log(INFO << "Clicked at non existent object");
+			}
+			else {
+				log::log(INFO << "Object number " << id << " clicked.");
+			}
 		}
 	});
 
@@ -779,27 +783,29 @@ void renderer_demo_3(const util::Path &path) {
 
 	// Move around the scene with WASD
 	window->add_key_callback([&](const QKeyEvent &ev) {
-		auto key = ev.key();
+		if (ev.type() == QEvent::KeyPress) {
+			auto key = ev.key();
 
-		switch (key) {
-		case Qt::Key_W: { // forward
-			camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.5f);
-		} break;
-		case Qt::Key_A: { // left
-			// half the speed because the relationship between forward/back and
-			// left/right is 1:2 in our ortho projection.
-			camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.25f);
-		} break;
-		case Qt::Key_S: { // back
-			camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.5f);
-		} break;
-		case Qt::Key_D: { // right
-			// half the speed because the relationship between forward/back and
-			// left/right is 1:2 in our ortho projection.
-			camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.25f);
-		} break;
-		default:
-			break;
+			switch (key) {
+			case Qt::Key_W: { // forward
+				camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.5f);
+			} break;
+			case Qt::Key_A: { // left
+				// half the speed because the relationship between forward/back and
+				// left/right is 1:2 in our ortho projection.
+				camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.25f);
+			} break;
+			case Qt::Key_S: { // back
+				camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.5f);
+			} break;
+			case Qt::Key_D: { // right
+				// half the speed because the relationship between forward/back and
+				// left/right is 1:2 in our ortho projection.
+				camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.25f);
+			} break;
+			default:
+				break;
+			}
 		}
 	});
 
@@ -999,38 +1005,40 @@ void renderer_demo_4(const util::Path &path) {
 
 	// Control simulation clock
 	window.add_key_callback([&](const QKeyEvent &ev) {
-		auto key = ev.key();
+		if (ev.type() == QEvent::KeyRelease) {
+			auto key = ev.key();
 
-		switch (key) {
-		case Qt::Key_Space: {
-			if (clock.get_state() == event::ClockState::RUNNING) {
-				clock.pause();
-				log::log(INFO << "Stopped simulation at " << clock.get_time() << " (real = " << clock.get_real_time() << ")");
+			switch (key) {
+			case Qt::Key_Space: {
+				if (clock.get_state() == event::ClockState::RUNNING) {
+					clock.pause();
+					log::log(INFO << "Stopped simulation at " << clock.get_time() << " (real = " << clock.get_real_time() << ")");
+				}
+				else if (clock.get_state() == event::ClockState::PAUSED) {
+					clock.resume();
+					log::log(INFO << "Resumed simulation at " << clock.get_time() << " (real = " << clock.get_real_time() << ")");
+				}
+			} break;
+			case Qt::Key_Return: {
+				real_time_animation = not real_time_animation;
+				if (real_time_animation) {
+					log::log(INFO << "Animation speed switched to REAL time");
+				}
+				else {
+					log::log(INFO << "Animation speed switched to SIMULATION time");
+				}
+			} break;
+			case Qt::Key_Minus: {
+				clock.set_speed(clock.get_speed() - 0.5);
+				log::log(INFO << "Increased clock speed to: " << clock.get_speed());
+			} break;
+			case Qt::Key_Plus: {
+				clock.set_speed(clock.get_speed() + 0.5);
+				log::log(INFO << "Decreased clock speed to: " << clock.get_speed());
+			} break;
+			default:
+				break;
 			}
-			else if (clock.get_state() == event::ClockState::PAUSED) {
-				clock.resume();
-				log::log(INFO << "Resumed simulation at " << clock.get_time() << " (real = " << clock.get_real_time() << ")");
-			}
-		} break;
-		case Qt::Key_Return: {
-			real_time_animation = not real_time_animation;
-			if (real_time_animation) {
-				log::log(INFO << "Animation speed switched to REAL time");
-			}
-			else {
-				log::log(INFO << "Animation speed switched to SIMULATION time");
-			}
-		} break;
-		case Qt::Key_Minus: {
-			clock.set_speed(clock.get_speed() - 0.5);
-			log::log(INFO << "Decreased clock speed to: " << clock.get_speed());
-		} break;
-		case Qt::Key_Plus: {
-			clock.set_speed(clock.get_speed() + 0.5);
-			log::log(INFO << "Increased clock speed to: " << clock.get_speed());
-		} break;
-		default:
-			break;
 		}
 	});
 
