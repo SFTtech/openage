@@ -96,10 +96,24 @@ public:
 	 */
 	void set_motion(int x, int y);
 
+	/**
+     * Process an input event from the Qt window management.
+     *
+     * @param ev Qt input event.
+     *
+     * @return true if the event is accepted, else false.
+     */
 	bool process(const QEvent &ev);
 
 
 private:
+	/**
+     * Process the (default) action for an input event.
+     *
+     * @param ev Input event.
+     * @param action Action bound to the event.
+     * @param bind_ctx Binding context for the controller if the action is a controller action.
+     */
 	void process_action(const input::Event &ev,
 	                    const input_action &action,
 	                    const std::shared_ptr<BindingContext> &bind_ctx = nullptr);
