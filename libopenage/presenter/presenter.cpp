@@ -183,6 +183,11 @@ void Presenter::init_input() {
 	this->window->add_mouse_wheel_callback([&](const QWheelEvent &ev) {
 		this->input_manager->process(ev);
 	});
+
+	// attach GUI if it's initialized
+	if (this->gui) {
+		this->input_manager->attach_gui(this->gui->get_input_handler());
+	}
 }
 
 void Presenter::init_final_render_pass() {
