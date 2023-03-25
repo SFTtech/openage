@@ -6,14 +6,21 @@
 #include "input/event.h"
 #include "input/input_context.h"
 
+#include "renderer/gui/guisys/public/gui_input.h"
+
 namespace openage::input {
 
 InputManager::InputManager() :
 	global_context{std::make_shared<InputContext>("main")},
 	active_contexts{},
-	available_contexts{} {
+	available_contexts{},
+	gui_input{nullptr} {
 	std::unordered_set<size_t> factions{{0, 1, 2, 3}};
 	this->controller = std::make_shared<Controller>(factions, 0);
+}
+
+void InputManager::attach_gui(const std::shared_ptr<qtgui::GuiInput> &gui_input) {
+	this->gui_input = gui_input;
 }
 
 const std::shared_ptr<InputContext> &InputManager::get_global_context() {
@@ -159,7 +166,7 @@ void InputManager::process_action(const input::Event &ev,
 			break;
 		}
 		case action_t::GUI:
-			// TODO
+			this->gui_input->process(args.e.get_event());
 			break;
 
 		case action_t::CUSTOM:
