@@ -12,6 +12,10 @@
 #include "coord/pixel.h"
 #include "input/action.h"
 
+namespace qtgui {
+class GuiInput;
+}
+
 namespace openage::input {
 
 class BindingContext;
@@ -25,6 +29,13 @@ class InputContext;
 class InputManager {
 public:
 	InputManager();
+
+	~InputManager() = default;
+
+	/**
+	 * Attach a GUI input handler.
+	 */
+	void attach_gui(const std::shared_ptr<qtgui::GuiInput> &gui_input);
 
 	/**
 	 * returns the global keybind context.
@@ -140,6 +151,11 @@ private:
      * Interface to the engine.
      */
 	std::shared_ptr<Controller> controller;
+
+	/**
+     * Interface to the GUI.
+     */
+	std::shared_ptr<qtgui::GuiInput> gui_input;
 
 	/**
 	 * mouse position in the window
