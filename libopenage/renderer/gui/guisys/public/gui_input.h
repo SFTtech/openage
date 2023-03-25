@@ -6,6 +6,8 @@
 
 #include <QEvent>
 
+#include "renderer/gui/guisys/private/gui_input_impl.h"
+
 namespace qtgui {
 
 class GuiRenderer;
