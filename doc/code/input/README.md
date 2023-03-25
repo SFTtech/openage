@@ -51,6 +51,16 @@ from input devices such as
 - ... (anything else that Qt can detect as an input device)
 
 
+### Workflow
+
+![Workflow](images/workflow_input_controller.svg)
+
+
+### Class Relationships
+
+![Class Relationships](images/class_relationships_input_controller.svg)
+
+
 ### Low-level Interface
 
 The central component of the low-level interface is the `InputManager` which is managed by
