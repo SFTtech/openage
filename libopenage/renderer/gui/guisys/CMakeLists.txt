@@ -7,6 +7,7 @@ list(APPEND QTGUI_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_application_impl.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_ctx_setup.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_engine_impl.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_input_impl.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_renderer_impl.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_rendering_setup_routines.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/gui_subtree_impl.cpp
@@ -16,6 +17,7 @@ list(APPEND QTGUI_SOURCES
 list(APPEND QTGUI_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_application.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_engine.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_input.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_renderer.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/public/gui_subtree.cpp
 )
