@@ -1,12 +1,17 @@
-// Copyright 2015-2022 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
-#include "renderer/gui/gui.h"
+#include "gui.h"
 
+#include "renderer/gui/guisys/public/gui_engine.h"
+#include "renderer/gui/guisys/public/gui_input.h"
+#include "renderer/gui/guisys/public/gui_renderer.h"
+#include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/gui/qml_info.h"
 #include "renderer/opengl/context.h"
 #include "renderer/renderer.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
+#include "renderer/shader_program.h"
 #include "renderer/window.h"
 #include "util/path.h"
 
@@ -22,6 +27,7 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
 	render_updater{},
 	game_logic_updater{},
 	gui_renderer{std::make_shared<qtgui::GuiRenderer>(window)},
+	gui_input{std::make_shared<qtgui::GuiInput>(gui_renderer)},
 	engine{std::make_shared<qtgui::GuiQmlEngine>(gui_renderer)},
 	subtree{
 		gui_renderer,
@@ -48,7 +54,11 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
 	});
 }
 
-std::shared_ptr<renderer::RenderPass> GUI::get_render_pass() {
+std::shared_ptr<qtgui::GuiInput> GUI::get_input_handler() const {
+	return this->gui_input;
+}
+
+std::shared_ptr<renderer::RenderPass> GUI::get_render_pass() const {
 	return this->render_pass;
 }
 

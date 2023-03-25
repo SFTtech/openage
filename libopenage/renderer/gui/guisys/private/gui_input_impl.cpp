@@ -4,6 +4,7 @@
 
 #include <QCoreApplication>
 #include <QEvent>
+#include <QQuickWindow>
 
 #include "renderer/gui/guisys/public/gui_renderer.h"
 

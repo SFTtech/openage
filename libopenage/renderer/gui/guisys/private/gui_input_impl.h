@@ -5,7 +5,9 @@
 #include <memory>
 
 #include <QObject>
-#include <QQuickWindow>
+
+Q_FORWARD_DECLARE_OBJC_CLASS(QEvent);
+Q_FORWARD_DECLARE_OBJC_CLASS(QQuickWindow);
 
 namespace qtgui {
 
