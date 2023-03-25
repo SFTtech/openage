@@ -35,7 +35,7 @@ enum class forward_action_t {
  * @param transform Maps an input event to a gamestate event.
  * @param flags Additional parameters for the transformation.
  */
-struct binding {
+struct binding_action {
 	const forward_action_t action;
 	const binding_func_t transform;
 	const binding_flags_t flags = {};

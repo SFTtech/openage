@@ -29,7 +29,7 @@ public:
      * @param ev Input event triggering the action.
      * @param bind Binding for the event.
 	 */
-	void bind(const Event &ev, const binding bind);
+	void bind(const Event &ev, const binding_action bind);
 
 	/**
 	 * Bind an event class to an action.
@@ -39,7 +39,7 @@ public:
      * @param ev Input event triggering the action.
      * @param bind Binding for the event.
 	 */
-	void bind(const event_class &cl, const binding bind);
+	void bind(const event_class &cl, const binding_action bind);
 
 	/**
      * Check whether a specific key event is bound in this context.
@@ -55,18 +55,18 @@ public:
      *
      * @param ev Input event mapped to the binding.
      */
-	const binding &lookup(const Event &ev) const;
+	const binding_action &lookup(const Event &ev) const;
 
 private:
 	/**
 	 * Maps specific input events to bindings.
 	 */
-	std::unordered_map<Event, binding, event_hash> by_event;
+	std::unordered_map<Event, binding_action, event_hash> by_event;
 
 	/**
 	 * Maps event classes to bindings.
 	 */
-	std::unordered_map<event_class, binding, event_class_hash> by_class;
+	std::unordered_map<event_class, binding_action, event_class_hash> by_class;
 };
 
 } // namespace openage::input
