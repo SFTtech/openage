@@ -4,8 +4,10 @@
 
 namespace openage::input {
 
-CameraController::CameraController(const std::shared_ptr<renderer::camera::Camera> &camera) :
-	camera{camera} {}
+CameraController::CameraController(const std::shared_ptr<renderer::camera::Camera> &camera,
+                                   const std::shared_ptr<renderer::camera::CameraManager> &manager) :
+	camera{camera},
+	manager{manager} {}
 
 bool CameraController::process(const event_arguments &ev) {
 	return false;

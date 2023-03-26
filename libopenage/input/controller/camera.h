@@ -10,7 +10,8 @@ namespace openage {
 
 namespace renderer::camera {
 class Camera;
-}
+class CameraManager;
+} // namespace renderer::camera
 
 namespace input {
 
@@ -19,7 +20,8 @@ namespace input {
  */
 class CameraController {
 public:
-	CameraController(const std::shared_ptr<renderer::camera::Camera> &camera);
+	CameraController(const std::shared_ptr<renderer::camera::Camera> &camera,
+	                 const std::shared_ptr<renderer::camera::CameraManager> &manager);
 
 	/**
      * Process an input event from the input manager.
@@ -35,6 +37,11 @@ private:
      * Camera to control.
      */
 	std::shared_ptr<renderer::camera::Camera> camera;
+
+	/**
+     * Camera manager for persistent movements/zooms.
+     */
+	std::shared_ptr<renderer::camera::CameraManager> manager;
 };
 
 } // namespace input

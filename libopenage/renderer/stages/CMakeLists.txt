@@ -1,3 +1,4 @@
+add_subdirectory(camera/)
 add_subdirectory(screen/)
 add_subdirectory(skybox/)
 add_subdirectory(terrain/)

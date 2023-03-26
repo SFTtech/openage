@@ -34,7 +34,8 @@ class Window;
 
 namespace camera {
 class Camera;
-}
+class CameraManager;
+} // namespace camera
 
 namespace gui {
 class GUI;
@@ -166,6 +167,11 @@ protected:
 	 * Qt-based GUI for interface.
 	 */
 	std::shared_ptr<renderer::gui::GUI> gui;
+
+	/**
+	 * Camera manager for camera controls.
+	 */
+	std::shared_ptr<renderer::camera::CameraManager> camera_manager;
 
 	/**
 	 * Graphics output for the map background.
