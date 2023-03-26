@@ -2,7 +2,7 @@
 
 #include "input_manager.h"
 
-#include "input/controller.h"
+#include "input/controller/engine.h"
 #include "input/event.h"
 #include "input/input_context.h"
 
@@ -16,7 +16,7 @@ InputManager::InputManager() :
 	available_contexts{},
 	gui_input{nullptr} {
 	std::unordered_set<size_t> factions{{0, 1, 2, 3}};
-	this->controller = std::make_shared<Controller>(factions, 0);
+	this->controller = std::make_shared<EngineController>(factions, 0);
 }
 
 void InputManager::attach_gui(const std::shared_ptr<qtgui::GuiInput> &gui_input) {
