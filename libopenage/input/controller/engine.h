@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include <deque>
 #include <unordered_set>
 
 #include "curve/discrete.h"
@@ -21,10 +20,10 @@ class BindingContext;
  *
  * TODO: Connection to engine
  */
-class Controller {
+class EngineController {
 public:
-	Controller(const std::unordered_set<size_t> &controlled_factions,
-	           size_t active_faction_id);
+	EngineController(const std::unordered_set<size_t> &controlled_factions,
+	                 size_t active_faction_id);
 
 	/**
      * Switch the actively controlled faction by the controller.
