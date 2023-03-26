@@ -19,7 +19,7 @@ class GuiInput;
 namespace openage::input {
 
 class BindingContext;
-class Controller;
+class EngineController;
 class InputContext;
 
 /**
@@ -150,7 +150,7 @@ private:
 	/**
      * Interface to the engine.
      */
-	std::shared_ptr<Controller> controller;
+	std::shared_ptr<EngineController> controller;
 
 	/**
      * Interface to the GUI.
