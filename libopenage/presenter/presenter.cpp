@@ -19,6 +19,7 @@
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
+#include "renderer/stages/camera/manager.h"
 #include "renderer/stages/screen/screen_renderer.h"
 #include "renderer/stages/skybox/skybox_renderer.h"
 #include "renderer/stages/terrain/terrain_renderer.h"
@@ -95,11 +96,15 @@ void Presenter::init_graphics() {
 	this->window = renderer::Window::create("openage presenter test", 800, 600);
 	this->renderer = this->window->make_renderer();
 
+	// Camera
 	this->camera = std::make_shared<renderer::camera::Camera>(this->window->get_size());
 	this->window->add_resize_callback([this](size_t w, size_t h) {
 		this->camera->resize(w, h);
 	});
 
+	this->camera_manager = std::make_shared<renderer::camera::CameraManager>(this->camera);
+
+	// Asset mangement
 	this->asset_manager = std::make_shared<renderer::resources::AssetManager>(this->renderer);
 
 	// Skybox
@@ -217,6 +222,7 @@ void Presenter::init_final_render_pass() {
 }
 
 void Presenter::render() {
+	this->camera_manager->update();
 	this->terrain_renderer->update();
 	this->world_renderer->update();
 	this->gui->render();
