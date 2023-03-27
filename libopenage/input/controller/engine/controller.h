@@ -7,7 +7,7 @@
 #include "curve/discrete.h"
 #include "input/event.h"
 
-namespace openage::input {
+namespace openage::input::engine {
 
 class BindingContext;
 
@@ -20,10 +20,10 @@ class BindingContext;
  *
  * TODO: Connection to engine
  */
-class EngineController {
+class Controller {
 public:
-	EngineController(const std::unordered_set<size_t> &controlled_factions,
-	                 size_t active_faction_id);
+	Controller(const std::unordered_set<size_t> &controlled_factions,
+	           size_t active_faction_id);
 
 	/**
      * Switch the actively controlled faction by the controller.
@@ -43,12 +43,12 @@ public:
 	/**
      * Process an input event from the input manager.
      *
-     * @param ev Input event and arguments.
+     * @param ev_args Input event and arguments.
      * @param ctx Binding context for looking up the event transformation.
      *
      * @return true if the event is accepted, else false.
      */
-	bool process(const event_arguments &ev, const std::shared_ptr<BindingContext> &ctx);
+	bool process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx);
 
 private:
 	/**
@@ -67,4 +67,4 @@ private:
 	std::vector<std::shared_ptr<event::Event>> outqueue;
 };
 
-} // namespace openage::input
+} // namespace openage::input::engine

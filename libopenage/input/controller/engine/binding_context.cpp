@@ -3,7 +3,7 @@
 #include "binding_context.h"
 
 
-namespace openage::input {
+namespace openage::input::engine {
 
 BindingContext::BindingContext() :
 	by_event{} {}
@@ -36,4 +36,4 @@ const binding_action &BindingContext::lookup(const Event &ev) const {
 	throw Error{MSG(err) << "Event is not bound in binding_action context."};
 }
 
-} // namespace openage::input
+} // namespace openage::input::engine
