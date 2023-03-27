@@ -11,15 +11,15 @@ class Camera;
 enum class MoveDirection {
 	NONE = 0x0000,
 	LEFT = 0x0001,
-	RIGHT = 0x0010,
-	TOP = 0x0100,
-	BOTTOM = 0x1000,
+	RIGHT = 0x0002,
+	TOP = 0x0004,
+	BOTTOM = 0x0008,
 };
 
 enum class ZoomDirection {
 	NONE = 0x0000,
 	IN = 0x0001,
-	OUT = 0x0010,
+	OUT = 0x0002,
 };
 
 /**
@@ -43,14 +43,14 @@ public:
      *
      * @param directions Bitfield of the move directions.
      */
-	void set_move_directions(unsigned char directions);
+	void set_move_directions(int directions);
 
 	/**
      * Set the zoom direction of the camera.
      *
      * @param direction Zoom direction.
      */
-	void set_zoom_direction(unsigned char direction);
+	void set_zoom_direction(int direction);
 
 	/**
      * Set the move speed of the camera.
@@ -75,12 +75,12 @@ private:
 	/**
      * Bitfield of the current move directions.
      */
-	unsigned char move_directions;
+	int move_directions;
 
 	/**
      * Bitfield of the current zoom direction.
      */
-	unsigned char zoom_direction;
+	int zoom_direction;
 
 	/**
      * Move speed of the camera.
