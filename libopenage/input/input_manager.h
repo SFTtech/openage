@@ -18,8 +18,11 @@ class GuiInput;
 
 namespace openage::input {
 
+namespace camera {
+class Controller;
+} // namespace camera
+
 namespace engine {
-class BindingContext;
 class Controller;
 } // namespace engine
 
@@ -126,11 +129,11 @@ private:
      *
      * @param ev Input event.
      * @param action Action bound to the event.
-     * @param bind_ctx Binding context for the controller if the action is a controller action.
+     * @param bind_ctx Context the action is bound in.
      */
 	void process_action(const input::Event &ev,
 	                    const input_action &action,
-	                    const std::shared_ptr<engine::BindingContext> &bind_ctx = nullptr);
+	                    const std::shared_ptr<InputContext> &ctx);
 
 	/**
 	 * The global context. Used as fallback.
@@ -153,7 +156,12 @@ private:
 	/**
      * Interface to the engine.
      */
-	std::shared_ptr<engine::Controller> controller;
+	std::shared_ptr<engine::Controller> engine_controller;
+
+	/**
+     * Interface to the camera.
+     */
+	std::shared_ptr<camera::Controller> camera_controller;
 
 	/**
      * Interface to the GUI.
