@@ -25,6 +25,8 @@ public:
 	Controller(const std::shared_ptr<renderer::camera::Camera> &camera,
 	           const std::shared_ptr<renderer::camera::CameraManager> &manager);
 
+	~Controller() = default;
+
 	/**
      * Process an input event from the input manager.
      *
