@@ -23,7 +23,8 @@ enum class input_action_t {
 	PUSH_CONTEXT,
 	POP_CONTEXT,
 	REMOVE_CONTEXT,
-	CONTROLLER,
+	ENGINE,
+	CAMERA,
 	GUI,
 	CUSTOM,
 };
