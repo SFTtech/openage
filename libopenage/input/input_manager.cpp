@@ -2,6 +2,7 @@
 
 #include "input_manager.h"
 
+#include "input/controller/camera/controller.h"
 #include "input/controller/engine/controller.h"
 #include "input/event.h"
 #include "input/input_context.h"
@@ -15,7 +16,7 @@ InputManager::InputManager() :
 	available_contexts{},
 	gui_input{nullptr} {
 	std::unordered_set<size_t> factions{{0, 1, 2, 3}};
-	this->controller = std::make_shared<engine::Controller>(factions, 0);
+	this->engine_controller = std::make_shared<engine::Controller>(factions, 0);
 }
 
 void InputManager::attach_gui(const std::shared_ptr<qtgui::GuiInput> &gui_input) {
@@ -118,14 +119,18 @@ bool InputManager::process(const QEvent &ev) {
 	// Check context list on top of the stack (most recent bound first)
 	for (auto const &ctx : this->active_contexts) {
 		if (ctx->is_bound(input_ev)) {
-			this->process_action(input_ev, ctx->lookup(input_ev));
+			this->process_action(input_ev,
+			                     ctx->lookup(input_ev),
+			                     ctx);
 			return true;
 		}
 	}
 
 	// If no local keybinds were bound, check the global keybinds
 	if (this->global_context->is_bound(input_ev)) {
-		this->process_action(input_ev, this->global_context->lookup(input_ev));
+		this->process_action(input_ev,
+		                     this->global_context->lookup(input_ev),
+		                     this->global_context);
 		return true;
 	}
 
@@ -134,7 +139,7 @@ bool InputManager::process(const QEvent &ev) {
 
 void InputManager::process_action(const input::Event &ev,
                                   const input_action &action,
-                                  const std::shared_ptr<engine::BindingContext> &bind_ctx) {
+                                  const std::shared_ptr<InputContext> &ctx) {
 	auto actions = action.action;
 	event_arguments args{ev, this->mouse_position, this->mouse_motion, action.flags};
 	if (actions) {
@@ -160,10 +165,14 @@ void InputManager::process_action(const input::Event &ev,
 			this->pop_context(ctx_id);
 			break;
 		}
-		case input_action_t::CONTROLLER: {
-			this->controller->process(args, bind_ctx);
+		case input_action_t::ENGINE:
+			this->engine_controller->process(args, ctx->get_engine_bindings());
 			break;
-		}
+
+		case input_action_t::CAMERA:
+			this->camera_controller->process(args, ctx->get_camera_bindings());
+			break;
+
 		case input_action_t::GUI:
 			this->gui_input->process(args.e.get_event());
 			break;
