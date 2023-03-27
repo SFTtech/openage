@@ -9,6 +9,10 @@
 
 namespace openage::input {
 
+namespace camera {
+class BindingContext;
+}
+
 namespace engine {
 class BindingContext;
 }
@@ -43,7 +47,14 @@ public:
      *
      * @return Binding context of the input context.
      */
-	const std::shared_ptr<engine::BindingContext> &get_binding_context();
+	const std::shared_ptr<engine::BindingContext> &get_engine_bindings();
+
+	/**
+     * Get the associated context for binding input events to camera actions.
+     *
+     * @return Binding context of the input context.
+     */
+	const std::shared_ptr<camera::BindingContext> &get_camera_bindings();
 
 	/**
 	 * Bind a specific key combination to an action.
@@ -113,9 +124,14 @@ private:
 	std::unordered_map<event_class, input_action, event_class_hash> by_class;
 
 	/**
-     * Additional context for gamestate events.
+     * Additional context for engine events.
      */
 	std::shared_ptr<engine::BindingContext> binding_context;
+
+	/**
+     * Additional context for camera actions.
+     */
+	std::shared_ptr<camera::BindingContext> camera_bindings;
 };
 
 } // namespace openage::input
