@@ -15,11 +15,11 @@ namespace openage::input::camera {
 class BindingContext {
 public:
 	/**
-	 * Create a binding context.
+	 * Create a new binding context.
 	 */
 	BindingContext();
 
-	virtual ~BindingContext() = default;
+	~BindingContext() = default;
 
 	/**
 	 * Bind a specific key combination to a binding.
