@@ -8,7 +8,7 @@
 #include "event/event.h"
 #include "input/event.h"
 
-namespace openage::input {
+namespace openage::input::engine {
 
 using binding_flags_t = std::unordered_map<std::string, std::string>;
 using binding_func_t = std::function<const std::shared_ptr<event::Event>(const event_arguments &e)>;
@@ -29,16 +29,16 @@ enum class forward_action_t {
 };
 
 /**
- * Action taken by the input manager when receiving an input.
+ * Action taken by the controller when receiving an input.
  *
- * @param action Event action type.
+ * @param action_type Event action type.
  * @param transform Maps an input event to a gamestate event.
  * @param flags Additional parameters for the transformation.
  */
 struct binding_action {
-	const forward_action_t action;
+	const forward_action_t action_type;
 	const binding_func_t transform;
 	const binding_flags_t flags = {};
 };
 
-} // namespace openage::input
+} // namespace openage::input::engine

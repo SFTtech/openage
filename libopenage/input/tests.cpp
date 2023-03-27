@@ -69,21 +69,21 @@ void action_demo() {
 	}};
 
 	// create the actual actions which have a type, an optional function, and some flags
-	input_action push_a{action_t::PUSH_CONTEXT, push_context, {{"id", "A"}}};
-	input_action push_b{action_t::PUSH_CONTEXT, push_context, {{"id", "B"}}};
-	input_action remove_a{action_t::REMOVE_CONTEXT, remove_context, {{"id", "A"}}};
-	input_action remove_b{action_t::REMOVE_CONTEXT, remove_context, {{"id", "B"}}};
-	input_action pop{action_t::POP_CONTEXT, pop_context};
+	input_action push_a{input_action_t::PUSH_CONTEXT, push_context, {{"id", "A"}}};
+	input_action push_b{input_action_t::PUSH_CONTEXT, push_context, {{"id", "B"}}};
+	input_action remove_a{input_action_t::REMOVE_CONTEXT, remove_context, {{"id", "A"}}};
+	input_action remove_b{input_action_t::REMOVE_CONTEXT, remove_context, {{"id", "B"}}};
+	input_action pop{input_action_t::POP_CONTEXT, pop_context};
 
-	input_action press_w{action_t::CUSTOM, key_press};
-	input_action press_a{action_t::CUSTOM, key_press};
-	input_action press_s{action_t::CUSTOM, key_press};
-	input_action press_d{action_t::CUSTOM, key_press};
+	input_action press_w{input_action_t::CUSTOM, key_press};
+	input_action press_a{input_action_t::CUSTOM, key_press};
+	input_action press_s{input_action_t::CUSTOM, key_press};
+	input_action press_d{input_action_t::CUSTOM, key_press};
 
-	input_action press_lmb{action_t::CUSTOM, key_press};
-	input_action press_rmb{action_t::CUSTOM, key_press};
+	input_action press_lmb{input_action_t::CUSTOM, key_press};
+	input_action press_rmb{input_action_t::CUSTOM, key_press};
 
-	input_action catch_all{action_t::CUSTOM, nop};
+	input_action catch_all{input_action_t::CUSTOM, nop};
 
 	// events that map to specific keys/buttons
 	Event ev_up{event_class::KEYBOARD, Qt::Key_Up, Qt::NoModifier, QEvent::KeyRelease};

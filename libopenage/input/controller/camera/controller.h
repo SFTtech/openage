@@ -13,15 +13,17 @@ class Camera;
 class CameraManager;
 } // namespace renderer::camera
 
-namespace input {
+namespace input::camera {
+
+class BindingContext;
 
 /**
  * Control a camera with input from the input manager.
  */
-class CameraController {
+class Controller {
 public:
-	CameraController(const std::shared_ptr<renderer::camera::Camera> &camera,
-	                 const std::shared_ptr<renderer::camera::CameraManager> &manager);
+	Controller(const std::shared_ptr<renderer::camera::Camera> &camera,
+	           const std::shared_ptr<renderer::camera::CameraManager> &manager);
 
 	/**
      * Process an input event from the input manager.
@@ -30,7 +32,7 @@ public:
      *
      * @return true if the event is accepted, else false.
      */
-	bool process(const event_arguments &ev);
+	bool process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx);
 
 private:
 	/**
@@ -44,5 +46,5 @@ private:
 	std::shared_ptr<renderer::camera::CameraManager> manager;
 };
 
-} // namespace input
+} // namespace input::camera
 } // namespace openage

@@ -18,8 +18,11 @@ class GuiInput;
 
 namespace openage::input {
 
+namespace engine {
 class BindingContext;
-class EngineController;
+class Controller;
+} // namespace engine
+
 class InputContext;
 
 /**
@@ -127,7 +130,7 @@ private:
      */
 	void process_action(const input::Event &ev,
 	                    const input_action &action,
-	                    const std::shared_ptr<BindingContext> &bind_ctx = nullptr);
+	                    const std::shared_ptr<engine::BindingContext> &bind_ctx = nullptr);
 
 	/**
 	 * The global context. Used as fallback.
@@ -150,7 +153,7 @@ private:
 	/**
      * Interface to the engine.
      */
-	std::shared_ptr<EngineController> controller;
+	std::shared_ptr<engine::Controller> controller;
 
 	/**
      * Interface to the GUI.
