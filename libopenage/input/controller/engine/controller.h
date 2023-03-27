@@ -25,6 +25,8 @@ public:
 	Controller(const std::unordered_set<size_t> &controlled_factions,
 	           size_t active_faction_id);
 
+	~Controller() = default;
+
 	/**
      * Switch the actively controlled faction by the controller.
      * The ID must be in the list of controlled factions.
