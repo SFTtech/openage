@@ -16,10 +16,10 @@ using action_func_t = std::function<void(const event_arguments &args)>;
 /**
  * Action types.
  *
- * All action types (except \p action_t::CUSTOM) have a default
+ * All action types (except \p input_action_t::CUSTOM) have a default
  * action.
  */
-enum class action_t {
+enum class input_action_t {
 	PUSH_CONTEXT,
 	POP_CONTEXT,
 	REMOVE_CONTEXT,
@@ -36,7 +36,7 @@ enum class action_t {
  * @param flags Additional parameters for the (default) action.
  */
 struct input_action {
-	const action_t action_type;
+	const input_action_t action_type;
 	const std::optional<action_func_t> action = std::nullopt;
 	const action_flags_t flags = {};
 };
