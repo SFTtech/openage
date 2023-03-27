@@ -1,33 +1,33 @@
 // Copyright 2021-2023 the openage authors. See copying.md for legal info.
 
-#include "engine.h"
+#include "controller.h"
 
-#include "input/binding_context.h"
+#include "input/controller/engine/binding_context.h"
 
-namespace openage::input {
+namespace openage::input::engine {
 
-EngineController::EngineController(const std::unordered_set<size_t> &controlled_factions,
-                                   size_t active_faction_id) :
+Controller::Controller(const std::unordered_set<size_t> &controlled_factions,
+                       size_t active_faction_id) :
 	controlled_factions{controlled_factions},
 	active_faction_id{active_faction_id},
 	outqueue{} {}
 
-void EngineController::set_control(size_t faction_id) {
+void Controller::set_control(size_t faction_id) {
 	if (this->controlled_factions.find(faction_id) != this->controlled_factions.end()) {
 		this->active_faction_id = faction_id;
 	}
 }
 
-size_t EngineController::get_controlled() {
+size_t Controller::get_controlled() {
 	return this->active_faction_id;
 }
 
-bool EngineController::process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx) {
+bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx) {
 	// TODO: check if action is allowed
 	auto bind = ctx->lookup(ev_args.e);
 	auto game_event = bind.transform(ev_args);
 
-	switch (bind.action) {
+	switch (bind.action_type) {
 	case forward_action_t::SEND:
 		this->outqueue.push_back(game_event);
 		for (auto event : this->outqueue) {
@@ -50,4 +50,4 @@ bool EngineController::process(const event_arguments &ev_args, const std::shared
 	return true;
 }
 
-} // namespace openage::input
+} // namespace openage::input::engine

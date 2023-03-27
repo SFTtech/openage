@@ -15,7 +15,7 @@ const std::string &InputContext::get_id() {
 	return this->id;
 }
 
-const std::shared_ptr<BindingContext> &InputContext::get_binding_context() {
+const std::shared_ptr<engine::BindingContext> &InputContext::get_binding_context() {
 	return this->binding_context;
 }
 

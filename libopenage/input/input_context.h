@@ -9,7 +9,9 @@
 
 namespace openage::input {
 
+namespace engine {
 class BindingContext;
+}
 
 /**
  * An input context contains all keybindings and actions
@@ -41,7 +43,7 @@ public:
      *
      * @return Binding context of the input context.
      */
-	const std::shared_ptr<BindingContext> &get_binding_context();
+	const std::shared_ptr<engine::BindingContext> &get_binding_context();
 
 	/**
 	 * Bind a specific key combination to an action.
@@ -113,7 +115,7 @@ private:
 	/**
      * Additional context for gamestate events.
      */
-	std::shared_ptr<BindingContext> binding_context;
+	std::shared_ptr<engine::BindingContext> binding_context;
 };
 
 } // namespace openage::input

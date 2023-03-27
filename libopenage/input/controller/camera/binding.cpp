@@ -2,6 +2,6 @@
 
 #include "binding.h"
 
-namespace openage::input {
+namespace openage::input::camera {
 
-} // namespace openage::input
+} // namespace openage::input::camera

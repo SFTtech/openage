@@ -2,10 +2,9 @@
 
 #include "input_manager.h"
 
-#include "input/controller/engine.h"
+#include "input/controller/engine/controller.h"
 #include "input/event.h"
 #include "input/input_context.h"
-
 #include "renderer/gui/guisys/public/gui_input.h"
 
 namespace openage::input {
@@ -16,7 +15,7 @@ InputManager::InputManager() :
 	available_contexts{},
 	gui_input{nullptr} {
 	std::unordered_set<size_t> factions{{0, 1, 2, 3}};
-	this->controller = std::make_shared<EngineController>(factions, 0);
+	this->controller = std::make_shared<engine::Controller>(factions, 0);
 }
 
 void InputManager::attach_gui(const std::shared_ptr<qtgui::GuiInput> &gui_input) {
@@ -135,7 +134,7 @@ bool InputManager::process(const QEvent &ev) {
 
 void InputManager::process_action(const input::Event &ev,
                                   const input_action &action,
-                                  const std::shared_ptr<BindingContext> &bind_ctx) {
+                                  const std::shared_ptr<engine::BindingContext> &bind_ctx) {
 	auto actions = action.action;
 	event_arguments args{ev, this->mouse_position, this->mouse_motion, action.flags};
 	if (actions) {
@@ -144,7 +143,7 @@ void InputManager::process_action(const input::Event &ev,
 	else {
 		// do default action if possible
 		switch (action.action_type) {
-		case action_t::PUSH_CONTEXT: {
+		case input_action_t::PUSH_CONTEXT: {
 			auto ctx_id = action.flags.at("id");
 			if (ctx_id != this->get_top_context()->get_id()) {
 				// prevent unnecessary stacking of the same context
@@ -152,24 +151,24 @@ void InputManager::process_action(const input::Event &ev,
 			}
 			break;
 		}
-		case action_t::POP_CONTEXT:
+		case input_action_t::POP_CONTEXT:
 			this->pop_context();
 			break;
 
-		case action_t::REMOVE_CONTEXT: {
+		case input_action_t::REMOVE_CONTEXT: {
 			auto ctx_id = action.flags.at("id");
 			this->pop_context(ctx_id);
 			break;
 		}
-		case action_t::CONTROLLER: {
+		case input_action_t::CONTROLLER: {
 			this->controller->process(args, bind_ctx);
 			break;
 		}
-		case action_t::GUI:
+		case input_action_t::GUI:
 			this->gui_input->process(args.e.get_event());
 			break;
 
-		case action_t::CUSTOM:
+		case input_action_t::CUSTOM:
 			throw Error{MSG(err) << "CUSTOM action type has no default action."};
 
 		default:
