@@ -14,13 +14,21 @@ InputManager::InputManager() :
 	global_context{std::make_shared<InputContext>("main")},
 	active_contexts{},
 	available_contexts{},
+	engine_controller{nullptr},
+	camera_controller{nullptr},
 	gui_input{nullptr} {
-	std::unordered_set<size_t> factions{{0, 1, 2, 3}};
-	this->engine_controller = std::make_shared<engine::Controller>(factions, 0);
 }
 
-void InputManager::attach_gui(const std::shared_ptr<qtgui::GuiInput> &gui_input) {
+void InputManager::set_gui(const std::shared_ptr<qtgui::GuiInput> &gui_input) {
 	this->gui_input = gui_input;
+}
+
+void InputManager::set_camera_controller(const std::shared_ptr<camera::Controller> &controller) {
+	this->camera_controller = controller;
+}
+
+void InputManager::set_engine_controller(const std::shared_ptr<engine::Controller> &controller) {
+	this->engine_controller = controller;
 }
 
 const std::shared_ptr<InputContext> &InputManager::get_global_context() {
