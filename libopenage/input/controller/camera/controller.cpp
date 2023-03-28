@@ -14,6 +14,10 @@ Controller::Controller() {}
 
 bool Controller::process(const event_arguments &ev_args,
                          const std::shared_ptr<BindingContext> &ctx) {
+	if (not ctx->is_bound(ev_args.e)) {
+		return false;
+	}
+
 	auto bind = ctx->lookup(ev_args.e);
 	bind.action(ev_args);
 
