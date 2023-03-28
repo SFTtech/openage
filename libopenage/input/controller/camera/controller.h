@@ -6,14 +6,7 @@
 
 #include "input/event.h"
 
-namespace openage {
-
-namespace renderer::camera {
-class Camera;
-class CameraManager;
-} // namespace renderer::camera
-
-namespace input::camera {
+namespace openage::input::camera {
 
 class BindingContext;
 
@@ -22,8 +15,7 @@ class BindingContext;
  */
 class Controller {
 public:
-	Controller(const std::shared_ptr<renderer::camera::Camera> &camera,
-	           const std::shared_ptr<renderer::camera::CameraManager> &manager);
+	Controller();
 
 	~Controller() = default;
 
@@ -35,18 +27,6 @@ public:
      * @return true if the event is accepted, else false.
      */
 	bool process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx);
-
-private:
-	/**
-     * Camera to control.
-     */
-	std::shared_ptr<renderer::camera::Camera> camera;
-
-	/**
-     * Camera manager for persistent movements/zooms.
-     */
-	std::shared_ptr<renderer::camera::CameraManager> manager;
 };
 
-} // namespace input::camera
-} // namespace openage
+} // namespace openage::input::camera
