@@ -39,9 +39,25 @@ public:
 	~InputManager() = default;
 
 	/**
-	 * Attach a GUI input handler.
+	 * Set the GUI input handler.
+     *
+     * @param gui_input GUI input handler.
 	 */
-	void attach_gui(const std::shared_ptr<qtgui::GuiInput> &gui_input);
+	void set_gui(const std::shared_ptr<qtgui::GuiInput> &gui_input);
+
+	/**
+     * Set the controller for the camera.
+     *
+     * @param controller Camera controller.
+     */
+	void set_camera_controller(const std::shared_ptr<camera::Controller> &controller);
+
+	/**
+     * Set the controller for the engine.
+     *
+     * @param controller Engine controller.
+     */
+	void set_engine_controller(const std::shared_ptr<engine::Controller> &controller);
 
 	/**
 	 * returns the global keybind context.
