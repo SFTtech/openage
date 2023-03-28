@@ -191,7 +191,7 @@ void Presenter::init_input() {
 
 	// attach GUI if it's initialized
 	if (this->gui) {
-		this->input_manager->attach_gui(this->gui->get_input_handler());
+		this->input_manager->set_gui(this->gui->get_input_handler());
 	}
 }
 
