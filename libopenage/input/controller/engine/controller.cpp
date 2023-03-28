@@ -23,6 +23,10 @@ size_t Controller::get_controlled() {
 }
 
 bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx) {
+	if (not ctx->is_bound(ev_args.e)) {
+		return false;
+	}
+
 	// TODO: check if action is allowed
 	auto bind = ctx->lookup(ev_args.e);
 	auto game_event = bind.transform(ev_args);
