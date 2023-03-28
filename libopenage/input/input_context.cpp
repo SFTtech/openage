@@ -15,8 +15,16 @@ const std::string &InputContext::get_id() {
 	return this->id;
 }
 
+void InputContext::set_engine_bindings(const std::shared_ptr<engine::BindingContext> &bindings) {
+	this->engine_bindings = bindings;
+}
+
+void InputContext::set_camera_bindings(const std::shared_ptr<camera::BindingContext> &bindings) {
+	this->camera_bindings = bindings;
+}
+
 const std::shared_ptr<engine::BindingContext> &InputContext::get_engine_bindings() {
-	return this->binding_context;
+	return this->engine_bindings;
 }
 
 const std::shared_ptr<camera::BindingContext> &InputContext::get_camera_bindings() {

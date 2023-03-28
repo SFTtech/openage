@@ -195,4 +195,15 @@ private:
 	coord::input_delta mouse_motion{0, 0};
 };
 
+/**
+ * Setup default input actions:
+ *
+ * - Camera movement
+ *
+ * TODO: Make this configurable.
+ *
+ * @param ctx Input context the actions are added to.
+ */
+void setup_defaults(const std::shared_ptr<InputContext> &ctx);
+
 } // namespace openage::input

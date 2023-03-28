@@ -43,6 +43,20 @@ public:
 	const std::string &get_id();
 
 	/**
+     * Set the associated context for binding input events to game events.
+     *
+     * @param bindings Binding context for gamestate events.
+     */
+	void set_engine_bindings(const std::shared_ptr<engine::BindingContext> &bindings);
+
+	/**
+     * Set the associated context for binding input events to camera actions.
+     *
+     * @param bindings Binding context for camera actions.
+     */
+	void set_camera_bindings(const std::shared_ptr<camera::BindingContext> &bindings);
+
+	/**
      * Get the associated context for binding input events to game events.
      *
      * @return Binding context of the input context.
@@ -126,7 +140,7 @@ private:
 	/**
      * Additional context for engine events.
      */
-	std::shared_ptr<engine::BindingContext> binding_context;
+	std::shared_ptr<engine::BindingContext> engine_bindings;
 
 	/**
      * Additional context for camera actions.
