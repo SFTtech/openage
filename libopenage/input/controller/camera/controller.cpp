@@ -6,10 +6,7 @@
 
 namespace openage::input::camera {
 
-Controller::Controller(const std::shared_ptr<renderer::camera::Camera> &camera,
-                       const std::shared_ptr<renderer::camera::CameraManager> &manager) :
-	camera{camera},
-	manager{manager} {}
+Controller::Controller() {}
 
 bool Controller::process(const event_arguments &ev_args,
                          const std::shared_ptr<BindingContext> &ctx) {
