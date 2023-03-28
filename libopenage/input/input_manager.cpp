@@ -194,4 +194,25 @@ void InputManager::process_action(const input::Event &ev,
 	}
 }
 
+
+void setup_defaults(const std::shared_ptr<InputContext> &ctx) {
+	input_action camera_action{input_action_t::CAMERA};
+
+	Event ev_left{event_class::KEYBOARD, Qt::Key_Left, Qt::NoModifier, QEvent::KeyPress};
+	Event ev_right{event_class::KEYBOARD, Qt::Key_Right, Qt::NoModifier, QEvent::KeyPress};
+	Event ev_up{event_class::KEYBOARD, Qt::Key_Up, Qt::NoModifier, QEvent::KeyPress};
+	Event ev_down{event_class::KEYBOARD, Qt::Key_Down, Qt::NoModifier, QEvent::KeyPress};
+	Event ev_wheel_up{event_class::WHEEL, 1, Qt::NoModifier, QEvent::Wheel};
+	Event ev_wheel_down{event_class::WHEEL, -1, Qt::NoModifier, QEvent::Wheel};
+
+	ctx->bind(ev_left, camera_action);
+	ctx->bind(ev_right, camera_action);
+	ctx->bind(ev_up, camera_action);
+	ctx->bind(ev_down, camera_action);
+	ctx->bind(ev_wheel_up, camera_action);
+	ctx->bind(ev_wheel_down, camera_action);
+	ctx->bind(event_class::MOUSE_MOVE, camera_action);
+}
+
+
 } // namespace openage::input
