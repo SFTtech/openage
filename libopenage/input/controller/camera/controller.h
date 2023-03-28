@@ -6,7 +6,14 @@
 
 #include "input/event.h"
 
-namespace openage::input::camera {
+namespace openage {
+
+namespace renderer::camera {
+class Camera;
+class CameraManager;
+} // namespace renderer::camera
+
+namespace input::camera {
 
 class BindingContext;
 
@@ -29,4 +36,22 @@ public:
 	bool process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx);
 };
 
-} // namespace openage::input::camera
+/**
+ * Setup default camera action bindings:
+ *
+ * - Keyboard arrows: move camera.
+ * - Mouse movement to window edge: move camera.
+ * - Mouse wheel: zoom camera.
+ *
+ * TODO: Make this configurable.
+ *
+ * @param ctx Binding context the actions are added to.
+ * @param cam Controlled camera.
+ * @param cam_manager Camera manager for persistent movements.
+ */
+void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
+                    const std::shared_ptr<renderer::camera::Camera> &cam,
+                    const std::shared_ptr<renderer::camera::CameraManager> &cam_manager);
+
+} // namespace input::camera
+} // namespace openage

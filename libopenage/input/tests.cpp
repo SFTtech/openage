@@ -64,7 +64,7 @@ void action_demo() {
 		log::log(INFO << args.e.info());
 		log::log(INFO << "Mouse position at: " << args.mouse);
 	}};
-	action_func_t nop{[&](const event_arguments &args) {
+	action_func_t nop{[&](const event_arguments & /*args*/) {
 		// Do nothing
 	}};
 
