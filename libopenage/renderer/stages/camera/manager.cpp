@@ -12,7 +12,7 @@ CameraManager::CameraManager(const std::shared_ptr<renderer::camera::Camera> &ca
 	camera{camera},
 	move_directions{static_cast<int>(MoveDirection::NONE)},
 	zoom_direction{static_cast<int>(ZoomDirection::NONE)},
-	move_speed{0.5f},
+	move_speed{0.2f},
 	zoom_speed{0.05f} {
 }
 

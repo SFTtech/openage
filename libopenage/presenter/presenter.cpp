@@ -9,6 +9,9 @@
 
 #include "engine/engine.h"
 #include "event/simulation.h"
+#include "input/controller/camera/binding_context.h"
+#include "input/controller/camera/controller.h"
+#include "input/input_context.h"
 #include "input/input_manager.h"
 #include "log/log.h"
 #include "renderer/camera/camera.h"
@@ -192,6 +195,18 @@ void Presenter::init_input() {
 	// attach GUI if it's initialized
 	if (this->gui) {
 		this->input_manager->set_gui(this->gui->get_input_handler());
+	}
+
+	// setup camera controls
+	if (this->camera) {
+		auto camera_controller = std::make_shared<input::camera::Controller>();
+		auto camera_context = std::make_shared<input::camera::BindingContext>();
+		input::camera::setup_defaults(camera_context, this->camera, this->camera_manager);
+		this->input_manager->set_camera_controller(camera_controller);
+
+		auto input_ctx = this->input_manager->get_global_context();
+		input::setup_defaults(input_ctx);
+		input_ctx->set_camera_bindings(camera_context);
 	}
 }
 

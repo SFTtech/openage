@@ -28,21 +28,21 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 		const auto move_dir = Eigen::Vector3f(1.0f, 0.0f, -1.0f);
 		// half the speed because the relationship between forward/back and
 		// left/right is 1:2 in our ortho projection.
-		cam->move_rel(move_dir, 0.5f);
+		cam->move_rel(move_dir, 0.25f);
 	}};
 	binding_func_t move_right{[&](const event_arguments & /*args*/) {
 		const auto move_dir = Eigen::Vector3f(-1.0f, 0.0f, 1.0f);
 		// half the speed because the relationship between forward/back and
 		// left/right is 1:2 in our ortho projection.
-		cam->move_rel(move_dir, 0.5f);
+		cam->move_rel(move_dir, 0.25f);
 	}};
 	binding_func_t move_forward{[&](const event_arguments & /*args*/) {
 		const auto move_dir = Eigen::Vector3f(1.0f, 0.0f, 1.0f);
-		cam->move_rel(move_dir);
+		cam->move_rel(move_dir, 0.5f);
 	}};
 	binding_func_t move_backward{[&](const event_arguments & /*args*/) {
 		const auto move_dir = Eigen::Vector3f(-1.0f, 0.0f, -1.0f);
-		cam->move_rel(move_dir);
+		cam->move_rel(move_dir, 0.5f);
 	}};
 
 	binding_action move_left_action{move_left};
@@ -92,6 +92,7 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 		else if (pos_x > cam->get_viewport_size()[0] - 10) {
 			move_directions = move_directions | static_cast<int>(renderer::camera::MoveDirection::RIGHT);
 		}
+
 		if (pos_y < 10) {
 			move_directions = move_directions | static_cast<int>(renderer::camera::MoveDirection::TOP);
 		}
@@ -99,9 +100,7 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 			move_directions = move_directions | static_cast<int>(renderer::camera::MoveDirection::BOTTOM);
 		}
 
-		if (move_directions != 0) {
-			cam_manager->set_move_directions(move_directions);
-		}
+		cam_manager->set_move_directions(move_directions);
 	}};
 
 	binding_action edge_move_action{edge_move};
