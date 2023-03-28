@@ -62,12 +62,22 @@ Event::Event(const QEvent &ev) :
 		this->mod_code = event->modifiers();
 		this->state = event->type();
 	} break;
-	case QEvent::MouseButtonDblClick:
 	case QEvent::MouseButtonPress:
-	case QEvent::MouseButtonRelease:
+	case QEvent::MouseButtonRelease: {
+		auto event = dynamic_pointer_cast<QMouseEvent>(this->event);
+		this->cc = ClassCode(event_class::MOUSE_BUTTON, event->button());
+		this->mod_code = event->modifiers();
+		this->state = event->type();
+	} break;
+	case QEvent::MouseButtonDblClick: {
+		auto event = dynamic_pointer_cast<QMouseEvent>(this->event);
+		this->cc = ClassCode(event_class::MOUSE_BUTTON_DBL, event->button());
+		this->mod_code = event->modifiers();
+		this->state = event->type();
+	} break;
 	case QEvent::MouseMove: {
 		auto event = dynamic_pointer_cast<QMouseEvent>(this->event);
-		this->cc = ClassCode(event_class::MOUSE, event->button());
+		this->cc = ClassCode(event_class::MOUSE_MOVE, event->button());
 		this->mod_code = event->modifiers();
 		this->state = event->type();
 	} break;
