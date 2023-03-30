@@ -12,13 +12,14 @@ namespace engine {
 
 Engine::Engine(enum mode mode,
                const util::Path &root_dir,
-               const std::shared_ptr<cvar::CVarManager> &cvar_manager) :
+               const std::shared_ptr<cvar::CVarManager> &cvar_manager,
+               const std::shared_ptr<event::Simulation> simulation) :
 	running{false},
 	run_mode{mode},
 	root_dir{root_dir},
 	cvar_manager{cvar_manager},
-	event_loop{std::make_shared<event::Loop>()},
-	game{std::make_shared<gamestate::Game>(root_dir)} {
+	simulation{simulation},
+	game{std::make_shared<gamestate::Game>(root_dir, this->simulation)} {
 	log::log(MSG(info) << "Created engine");
 }
 

@@ -8,8 +8,9 @@
 
 namespace openage::gamestate {
 
-Universe::Universe(const util::Path &root_dir) :
-	world{std::make_shared<World>(root_dir)} {
+Universe::Universe(const util::Path &root_dir,
+                   const std::shared_ptr<GameState> &state) :
+	world{std::make_shared<World>(root_dir, state)} {
 	// TODO
 	auto texpath = root_dir / "assets" / "test" / "textures" / "test_terrain.terrain";
 	this->terrain = std::make_shared<Terrain>(texpath);
