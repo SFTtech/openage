@@ -13,6 +13,7 @@ class RenderFactory;
 }
 
 namespace gamestate {
+class GameState;
 class Terrain;
 class World;
 
@@ -26,8 +27,10 @@ public:
 	 * Create a new universe.
 	 *
 	 * @param root_dir openage root directory.
+     * @param state State of the game.
 	 */
-	Universe(const util::Path &root_dir);
+	Universe(const util::Path &root_dir,
+	         const std::shared_ptr<GameState> &state);
 	~Universe() = default;
 
 	/**

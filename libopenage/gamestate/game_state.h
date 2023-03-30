@@ -40,6 +40,21 @@ public:
      */
 	void add_game_entity(const std::shared_ptr<GameEntity> &entity);
 
+	/**
+     * Get a game entity by its ID.
+     *
+     * @param id ID of the game entity.
+     * @return Game entity with the given ID.
+     */
+	const std::shared_ptr<GameEntity> &get_game_entity(entity_id_t id) const;
+
+	/**
+     * Get all game entities in the current game.
+     *
+     * @return Map of all game entities in the current game by their ID.
+     */
+	const std::unordered_map<entity_id_t, std::shared_ptr<GameEntity>> &get_game_entities() const;
+
 private:
 	/**
      * ID of the next game entity to be created.

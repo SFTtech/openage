@@ -2,12 +2,17 @@
 
 #include "game.h"
 
+#include "event/simulation.h"
+#include "gamestate/game_state.h"
 #include "gamestate/universe.h"
 
 namespace openage::gamestate {
 
-Game::Game(const util::Path &root_dir) :
-	universe{std::make_shared<Universe>(root_dir)} {
+Game::Game(const util::Path &root_dir,
+           const std::shared_ptr<event::Simulation> &simulation) :
+	state{std::make_shared<GameState>(simulation->get_loop())},
+	universe{std::make_shared<Universe>(root_dir, state)},
+	simulation{simulation} {
 }
 
 void Game::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
