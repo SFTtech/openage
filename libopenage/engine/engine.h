@@ -13,7 +13,7 @@ class CVarManager;
 }
 
 namespace event {
-class Loop;
+class Simulation;
 }
 
 namespace gamestate {
@@ -46,7 +46,8 @@ public:
 	 */
 	Engine(mode mode,
 	       const util::Path &root_dir,
-	       const std::shared_ptr<cvar::CVarManager> &cvar_manager);
+	       const std::shared_ptr<cvar::CVarManager> &cvar_manager,
+	       const std::shared_ptr<event::Simulation> simulation);
 
 	/**
 	 * engine copy constructor.
@@ -135,9 +136,9 @@ private:
 	std::shared_ptr<cvar::CVarManager> cvar_manager;
 
 	/**
-	 * Event loop for creating and sending events.
+	 * Event simulation for creating and sending events.
 	 */
-	std::shared_ptr<event::Loop> event_loop;
+	std::shared_ptr<event::Simulation> simulation;
 
 	// Something that manages the clock
 	// auto time_manager;

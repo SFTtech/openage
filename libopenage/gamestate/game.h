@@ -8,11 +8,16 @@
 
 namespace openage {
 
+namespace event {
+class Simulation;
+}
+
 namespace renderer {
 class RenderFactory;
 }
 
 namespace gamestate {
+class GameState;
 class Universe;
 
 /**
@@ -31,8 +36,10 @@ public:
 	 * Create a new game.
 	 *
 	 * @param root_dir openage root directory.
+     * @param simulation Event simulation.
 	 */
-	Game(const util::Path &root_dir);
+	Game(const util::Path &root_dir,
+	     const std::shared_ptr<event::Simulation> &simulation);
 	~Game() = default;
 
 	/**
@@ -46,9 +53,19 @@ public:
 
 private:
 	/**
+     * State of the current game.
+     */
+	std::shared_ptr<GameState> state;
+
+	/**
 	 * Object that controls entities in the game world.
 	 */
 	std::shared_ptr<Universe> universe;
+
+	/**
+     * Event simulation.
+     */
+	std::shared_ptr<event::Simulation> simulation;
 };
 
 } // namespace gamestate
