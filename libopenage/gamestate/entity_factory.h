@@ -7,8 +7,13 @@
 #include "util/path.h"
 #include "util/vector.h"
 
-namespace openage::gamestate {
+namespace openage {
 
+namespace renderer {
+class RenderFactory;
+}
+
+namespace gamestate {
 class GameEntity;
 class GameState;
 
@@ -33,10 +38,24 @@ public:
 	std::shared_ptr<GameEntity> add_game_entity(util::Vector3f pos,
 	                                            util::Path &texture_path);
 
+	/**
+	 * Attach a renderer which enables graphical display options for all ingame entities.
+	 *
+	 * @param render_factory Factory for creating connector objects for gamestate->renderer
+	 *                       communication.
+	 */
+	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
+
 private:
 	/**
      * State of the current game.
      */
 	std::shared_ptr<GameState> state;
+
+	/**
+	 * Factory for creating connector objects to the renderer which make game entities displayable.
+	 */
+	std::shared_ptr<renderer::RenderFactory> render_factory;
 };
-} // namespace openage::gamestate
+} // namespace gamestate
+} // namespace openage
