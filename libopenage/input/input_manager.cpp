@@ -196,6 +196,7 @@ void InputManager::process_action(const input::Event &ev,
 
 
 void setup_defaults(const std::shared_ptr<InputContext> &ctx) {
+	// camera
 	input_action camera_action{input_action_t::CAMERA};
 
 	Event ev_left{event_class::KEYBOARD, Qt::Key_Left, Qt::NoModifier, QEvent::KeyPress};
@@ -212,6 +213,13 @@ void setup_defaults(const std::shared_ptr<InputContext> &ctx) {
 	ctx->bind(ev_wheel_up, camera_action);
 	ctx->bind(ev_wheel_down, camera_action);
 	ctx->bind(event_class::MOUSE_MOVE, camera_action);
+
+	// engine
+	input_action engine_action{input_action_t::ENGINE};
+
+	Event ev_mouse_lmb{event_class::MOUSE_BUTTON, Qt::LeftButton, Qt::NoModifier, QEvent::MouseButtonRelease};
+
+	ctx->bind(ev_mouse_lmb, engine_action);
 }
 
 
