@@ -11,5 +11,7 @@ add_sources(libopenage
 	universe.cpp
 )
 
+add_subdirectory(event/)
+
 # TODO: remove once migration is done.
 add_subdirectory(old/)
