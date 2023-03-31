@@ -8,17 +8,23 @@
 
 namespace openage::gamestate {
 
-EntityFactory::EntityFactory(const std::shared_ptr<GameState> &state) :
-	state{state},
+EntityFactory::EntityFactory() :
+	next_id{0},
 	render_factory{nullptr} {
+}
+
+entity_id_t EntityFactory::get_next_id() {
+	auto new_id = this->next_id;
+	this->next_id++;
+
+	return new_id;
 }
 
 std::shared_ptr<GameEntity> EntityFactory::add_game_entity(util::Vector3f pos,
                                                            util::Path &texture_path) {
-	auto entity = std::make_shared<GameEntity>(this->state->get_next_id(),
+	auto entity = std::make_shared<GameEntity>(this->get_next_id(),
 	                                           pos,
 	                                           texture_path);
-	this->state->add_game_entity(entity);
 
 	if (this->render_factory) {
 		entity->set_render_entity(this->render_factory->add_world_render_entity());
