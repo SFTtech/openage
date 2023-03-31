@@ -11,6 +11,8 @@
 #include "event/simulation.h"
 #include "input/controller/camera/binding_context.h"
 #include "input/controller/camera/controller.h"
+#include "input/controller/engine/binding_context.h"
+#include "input/controller/engine/controller.h"
 #include "input/input_context.h"
 #include "input/input_manager.h"
 #include "log/log.h"
@@ -192,6 +194,20 @@ void Presenter::init_input() {
 		this->input_manager->process(ev);
 	});
 
+	auto input_ctx = this->input_manager->get_global_context();
+	input::setup_defaults(input_ctx);
+
+	// setup engine controls
+	if (this->engine) {
+		// TODO: Remove hardcoding
+		auto engine_controller = std::make_shared<input::engine::Controller>(
+			std::unordered_set<size_t>{0, 1, 2, 3}, 0);
+		auto engine_context = std::make_shared<input::engine::BindingContext>();
+		input::engine::setup_defaults(engine_context, this->simulation, this->engine);
+		this->input_manager->set_engine_controller(engine_controller);
+		input_ctx->set_engine_bindings(engine_context);
+	}
+
 	// attach GUI if it's initialized
 	if (this->gui) {
 		this->input_manager->set_gui(this->gui->get_input_handler());
@@ -203,9 +219,6 @@ void Presenter::init_input() {
 		auto camera_context = std::make_shared<input::camera::BindingContext>();
 		input::camera::setup_defaults(camera_context, this->camera, this->camera_manager);
 		this->input_manager->set_camera_controller(camera_controller);
-
-		auto input_ctx = this->input_manager->get_global_context();
-		input::setup_defaults(input_ctx);
 		input_ctx->set_camera_bindings(camera_context);
 	}
 }

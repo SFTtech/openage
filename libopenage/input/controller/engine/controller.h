@@ -7,7 +7,17 @@
 #include "curve/discrete.h"
 #include "input/event.h"
 
-namespace openage::input::engine {
+namespace openage {
+
+namespace engine {
+class Engine;
+}
+
+namespace event {
+class Simulation;
+}
+
+namespace input::engine {
 
 class BindingContext;
 
@@ -69,4 +79,17 @@ private:
 	std::vector<std::shared_ptr<event::Event>> outqueue;
 };
 
-} // namespace openage::input::engine
+/**
+ * Setup default controller action bindings:
+ *
+ * - Mouse click: Create game entity.
+ *
+ * @param ctx Binding context the actions are added to.
+ * @param simulation Simulation with event loop.
+ */
+void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
+                    const std::shared_ptr<event::Simulation> &simulation,
+                    const std::shared_ptr<openage::engine::Engine> &engine);
+
+} // namespace input::engine
+} // namespace openage

@@ -48,9 +48,8 @@ void SpawnEntityHandler::invoke(openage::event::Loop & /* loop */,
 
 curve::time_t SpawnEntityHandler::predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> & /* target */,
                                                       const std::shared_ptr<openage::event::State> & /* state */,
-                                                      const curve::time_t & /* at */) {
-	// TODO
-	return std::numeric_limits<curve::time_t>::min();
+                                                      const curve::time_t &at) {
+	return at;
 }
 
 } // namespace openage::gamestate::event
