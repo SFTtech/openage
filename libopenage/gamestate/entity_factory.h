@@ -4,6 +4,7 @@
 
 #include <memory>
 
+#include "gamestate/types.h"
 #include "util/path.h"
 #include "util/vector.h"
 
@@ -24,10 +25,8 @@ class EntityFactory {
 public:
 	/**
      * Create a new entity factory for game entities.
-     *
-     * @param state State of the game.
      */
-	EntityFactory(const std::shared_ptr<GameState> &state);
+	EntityFactory();
 	~EntityFactory() = default;
 
 	/**
@@ -48,9 +47,16 @@ public:
 
 private:
 	/**
-     * State of the current game.
+     * Get a unique ID for creating a game entity.
+     *
+     * @return Unique ID for a game entity.
      */
-	std::shared_ptr<GameState> state;
+	entity_id_t get_next_id();
+
+	/**
+     * ID of the next game entity to be created.
+     */
+	entity_id_t next_id;
 
 	/**
 	 * Factory for creating connector objects to the renderer which make game entities displayable.

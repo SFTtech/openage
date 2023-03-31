@@ -6,16 +6,8 @@
 
 namespace openage::gamestate {
 
-GameState::GameState(const std::shared_ptr<event::Loop> &event_loop) :
-	event::State{event_loop},
-	next_id{0} {
-}
-
-entity_id_t GameState::get_next_id() {
-	auto new_id = this->next_id;
-	this->next_id++;
-
-	return new_id;
+GameState::GameState(const std::shared_ptr<openage::event::Loop> &event_loop) :
+	event::State{event_loop} {
 }
 
 void GameState::add_game_entity(const std::shared_ptr<GameEntity> &entity) {
