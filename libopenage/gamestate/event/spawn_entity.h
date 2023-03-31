@@ -22,7 +22,7 @@ class EntityFactory;
 namespace event {
 
 // TODO: This is only for testing
-class Spawner : protected openage::event::EventEntity {
+class Spawner : public openage::event::EventEntity {
 public:
 	Spawner(const std::shared_ptr<openage::event::Loop> &loop);
 	~Spawner() = default;

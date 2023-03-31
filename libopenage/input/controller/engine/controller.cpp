@@ -2,6 +2,14 @@
 
 #include "controller.h"
 
+#include "engine/engine.h"
+#include "event/clock.h"
+#include "event/evententity.h"
+#include "event/simulation.h"
+#include "event/state.h"
+#include "gamestate/event/spawn_entity.h"
+#include "gamestate/game.h"
+#include "gamestate/game_state.h"
 #include "input/controller/engine/binding_context.h"
 
 namespace openage::input::engine {
@@ -53,5 +61,25 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 
 	return true;
 }
+
+void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
+                    const std::shared_ptr<event::Simulation> &simulation,
+                    const std::shared_ptr<openage::engine::Engine> &engine) {
+	binding_func_t create_entity_event{[&](const event_arguments & /* args */) {
+		auto loop = simulation->get_loop();
+		auto event = loop->create_event(
+			"game.spawn_entity",
+			std::static_pointer_cast<openage::event::EventEntity>(std::make_shared<gamestate::event::Spawner>(simulation->get_loop())),
+			std::static_pointer_cast<openage::event::State>(engine->get_game()->get_state()),
+			simulation->get_clock()->get_time());
+		return event;
+	}};
+
+	binding_action create_entity_action{forward_action_t::SEND, create_entity_event};
+	Event ev_mouse_lmb{event_class::MOUSE_BUTTON, Qt::MouseButton::LeftButton, Qt::NoModifier, QEvent::MouseButtonRelease};
+
+	ctx->bind(ev_mouse_lmb, create_entity_action);
+}
+
 
 } // namespace openage::input::engine

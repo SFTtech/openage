@@ -3,6 +3,10 @@
 #include "engine.h"
 
 #include "event/loop.h"
+#include "event/simulation.h"
+
+#include "gamestate/entity_factory.h"
+#include "gamestate/event/spawn_entity.h"
 
 // TODO
 #include "gamestate/game.h"
@@ -19,6 +23,7 @@ Engine::Engine(enum mode mode,
 	root_dir{root_dir},
 	cvar_manager{cvar_manager},
 	simulation{simulation},
+	entity_factory{std::make_shared<gamestate::EntityFactory>()},
 	game{std::make_shared<gamestate::Game>(root_dir, this->simulation)} {
 	log::log(MSG(info) << "Created engine");
 }
@@ -39,6 +44,8 @@ void Engine::run() {
 void Engine::start() {
 	std::unique_lock lock{this->mutex};
 
+	this->init_event_handlers();
+
 	this->running = true;
 
 	log::log(MSG(info) << "Engine started");
@@ -58,12 +65,23 @@ const util::Path &Engine::get_root_dir() {
 	return this->root_dir;
 }
 
-std::shared_ptr<cvar::CVarManager> Engine::get_cvar_manager() {
+const std::shared_ptr<cvar::CVarManager> Engine::get_cvar_manager() {
 	return this->cvar_manager;
+}
+
+const std::shared_ptr<gamestate::Game> Engine::get_game() {
+	return this->game;
 }
 
 void Engine::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
 	this->game->attach_renderer(render_factory);
+	this->entity_factory->attach_renderer(render_factory);
+}
+
+void Engine::init_event_handlers() {
+	auto handler = std::make_shared<gamestate::event::SpawnEntityHandler>(this->entity_factory,
+	                                                                      this->root_dir["assets/test/textures/test_gaben.sprite"]);
+	this->simulation->get_loop()->add_event_class(handler);
 }
 
 } // namespace engine

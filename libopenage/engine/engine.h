@@ -17,8 +17,9 @@ class Simulation;
 }
 
 namespace gamestate {
+class EntityFactory;
 class Game;
-}
+} // namespace gamestate
 
 namespace renderer {
 class RenderFactory;
@@ -96,9 +97,18 @@ public:
 	const util::Path &get_root_dir();
 
 	/**
-	 * return this engine's cvar manager.
+	 * Get this engine's cvar manager.
+     *
+     * @return CVarManager instance.
 	 */
-	std::shared_ptr<cvar::CVarManager> get_cvar_manager();
+	const std::shared_ptr<cvar::CVarManager> get_cvar_manager();
+
+	/**
+     * Get the game running in the engine.
+     *
+     * @return Game instance.
+     */
+	const std::shared_ptr<gamestate::Game> get_game();
 
 	/**
 	 * Attach a renderer to the engine.
@@ -114,6 +124,11 @@ public:
 	bool running;
 
 private:
+	/**
+     * Initialize event handlers.
+     */
+	void init_event_handlers();
+
 	/**
 	 * Run-mode of the engine, this determines the basic modules to be loaded.
 	 */
@@ -140,8 +155,10 @@ private:
 	 */
 	std::shared_ptr<event::Simulation> simulation;
 
-	// Something that manages the clock
-	// auto time_manager;
+	/**
+     * Factory for creating game entities.
+     */
+	std::shared_ptr<gamestate::EntityFactory> entity_factory;
 
 	// TODO: The game run by the engine
 	std::shared_ptr<gamestate::Game> game;

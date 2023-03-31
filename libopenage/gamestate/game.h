@@ -39,8 +39,13 @@ public:
      * @param simulation Event simulation.
 	 */
 	Game(const util::Path &root_dir,
-	     const std::shared_ptr<event::Simulation> &simulation);
+	     const std::shared_ptr<openage::event::Simulation> &simulation);
 	~Game() = default;
+
+	/**
+     * Get the current game state.
+     */
+	const std::shared_ptr<GameState> &get_state() const;
 
 	/**
 	 * Attach a renderer to the game which enables graphical display options for
@@ -65,7 +70,7 @@ private:
 	/**
      * Event simulation.
      */
-	std::shared_ptr<event::Simulation> simulation;
+	std::shared_ptr<openage::event::Simulation> simulation;
 };
 
 } // namespace gamestate

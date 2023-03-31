@@ -9,10 +9,14 @@
 namespace openage::gamestate {
 
 Game::Game(const util::Path &root_dir,
-           const std::shared_ptr<event::Simulation> &simulation) :
+           const std::shared_ptr<openage::event::Simulation> &simulation) :
 	state{std::make_shared<GameState>(simulation->get_loop())},
 	universe{std::make_shared<Universe>(root_dir, state)},
 	simulation{simulation} {
+}
+
+const std::shared_ptr<GameState> &Game::get_state() const {
+	return this->state;
 }
 
 void Game::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
