@@ -17,21 +17,14 @@ class GameEntity;
  * Contains index structures for looking up game entities and other
  * information for the current game.
  */
-class GameState : public event::State {
+class GameState : public openage::event::State {
 public:
 	/**
      * Create a new game state.
      *
      * @param event_loop Event loop for the game state.
      */
-	explicit GameState(const std::shared_ptr<event::Loop> &event_loop);
-
-	/**
-     * Get a unique ID for creating a game entity.
-     *
-     * @return Unique ID for a game entity.
-     */
-	entity_id_t get_next_id();
+	explicit GameState(const std::shared_ptr<openage::event::Loop> &event_loop);
 
 	/**
      * Add a new game entity to the index.
@@ -56,11 +49,6 @@ public:
 	const std::unordered_map<entity_id_t, std::shared_ptr<GameEntity>> &get_game_entities() const;
 
 private:
-	/**
-     * ID of the next game entity to be created.
-     */
-	entity_id_t next_id;
-
 	/**
      * Map of all game entities in the current game by their ID.
      */
