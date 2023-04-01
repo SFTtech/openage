@@ -69,8 +69,8 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 		auto loop = simulation->get_loop();
 		auto event = loop->create_event(
 			"game.spawn_entity",
-			std::static_pointer_cast<openage::event::EventEntity>(std::make_shared<gamestate::event::Spawner>(simulation->get_loop())),
-			std::static_pointer_cast<openage::event::State>(engine->get_game()->get_state()),
+			engine->get_spawner(),
+			engine->get_game()->get_state(),
 			simulation->get_clock()->get_time());
 		return event;
 	}};
