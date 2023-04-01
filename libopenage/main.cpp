@@ -11,6 +11,7 @@
 #include "event/loop.h"
 #include "event/simulation.h"
 #include "event/state.h"
+#include "gamestate/game.h"
 #include "log/log.h"
 #include "presenter/presenter.h"
 #include "util/timer.h"
@@ -57,10 +58,15 @@ int run_game(const main_arguments &args) {
 	// TODO: select run_mode by launch argument
 	openage::engine::Engine::mode run_mode = engine::Engine::mode::FULL;
 
+	// TODO: Order of initializing presenter, simulation and engine is not intuitive
+	//       ideally it should be presenter->engine->simulation
 	auto simulation = std::make_shared<event::Simulation>();
 
 	auto engine = std::make_shared<engine::Engine>(run_mode, args.root_path, cvar_manager, simulation);
 	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, engine, simulation);
+
+	// TODO: Pass state sooner
+	simulation->set_state(engine->get_game()->get_state());
 
 	std::jthread event_loop_thread([&]() {
 		simulation->run();
