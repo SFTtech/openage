@@ -24,6 +24,7 @@ Engine::Engine(enum mode mode,
 	cvar_manager{cvar_manager},
 	simulation{simulation},
 	entity_factory{std::make_shared<gamestate::EntityFactory>()},
+	spawner{std::make_shared<gamestate::event::Spawner>(this->simulation->get_loop())},
 	game{std::make_shared<gamestate::Game>(root_dir, this->simulation)} {
 	log::log(MSG(info) << "Created engine");
 }
@@ -71,6 +72,10 @@ const std::shared_ptr<cvar::CVarManager> Engine::get_cvar_manager() {
 
 const std::shared_ptr<gamestate::Game> Engine::get_game() {
 	return this->game;
+}
+
+const std::shared_ptr<gamestate::event::Spawner> Engine::get_spawner() {
+	return this->spawner;
 }
 
 void Engine::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
