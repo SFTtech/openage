@@ -19,6 +19,11 @@ class Simulation;
 namespace gamestate {
 class EntityFactory;
 class Game;
+
+namespace event {
+class Spawner;
+}
+
 } // namespace gamestate
 
 namespace renderer {
@@ -111,6 +116,15 @@ public:
 	const std::shared_ptr<gamestate::Game> get_game();
 
 	/**
+     * Get the spawner event entity.
+     *
+     * TODO: Move somewhere else or remove.
+     *
+     * @return Spawner for entity creation.
+     */
+	const std::shared_ptr<gamestate::event::Spawner> get_spawner();
+
+	/**
 	 * Attach a renderer to the engine.
 	 *
 	 * @param factory Factory for creating render entities.
@@ -159,6 +173,9 @@ private:
      * Factory for creating game entities.
      */
 	std::shared_ptr<gamestate::EntityFactory> entity_factory;
+
+	// TODO: move somewhere sensible or remove
+	std::shared_ptr<gamestate::event::Spawner> spawner;
 
 	// TODO: The game run by the engine
 	std::shared_ptr<gamestate::Game> game;
