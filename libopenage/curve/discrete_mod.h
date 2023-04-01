@@ -107,7 +107,7 @@ std::string DiscreteMod<T>::idstr() const {
 template <typename T>
 T DiscreteMod<T>::get_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
-	if (offset == 0) {
+	if (this->time_length == 0) {
 		// modulo would fail here so return early
 		return Discrete<T>::get(0);
 	}
@@ -120,8 +120,12 @@ T DiscreteMod<T>::get_mod(const time_t &time, const time_t &start) const {
 template <typename T>
 std::pair<time_t, T> DiscreteMod<T>::get_time_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
-	time_t mod = offset % this->time_length;
+	if (this->time_length == 0) {
+		// modulo would fail here so return early
+		return Discrete<T>::get_time(0);
+	}
 
+	time_t mod = offset % this->time_length;
 	return Discrete<T>::get_time(mod);
 }
 
@@ -129,8 +133,12 @@ std::pair<time_t, T> DiscreteMod<T>::get_time_mod(const time_t &time, const time
 template <typename T>
 std::optional<std::pair<time_t, T>> DiscreteMod<T>::get_previous_mod(const time_t &time, const time_t &start) const {
 	time_t offset = time - start;
-	time_t mod = offset % this->time_length;
+	if (this->time_length == 0) {
+		// modulo would fail here so return early
+		return Discrete<T>::get_previous(0);
+	}
 
+	time_t mod = offset % this->time_length;
 	return Discrete<T>::get_previous(mod);
 }
 
