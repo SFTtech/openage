@@ -61,6 +61,8 @@ std::shared_ptr<Event> Loop::create_event(const std::shared_ptr<EventHandler> &e
 
 void Loop::reach_time(const curve::time_t &max_time,
                       const std::shared_ptr<State> &state) {
+	std::unique_lock lock{this->mutex};
+
 	// TODO detect infinite loops (is this a halting problem?)
 	// this happens when the events don't settle:
 	// at least one processed event adds another event so
