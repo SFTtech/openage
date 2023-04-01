@@ -1025,11 +1025,11 @@ void renderer_demo_4(const util::Path &path) {
 		} break;
 		case Qt::Key_Minus: {
 			clock.set_speed(clock.get_speed() - 0.5);
-			log::log(INFO << "Increased clock speed to: " << clock.get_speed());
+			log::log(INFO << "Decreased clock speed to: " << clock.get_speed());
 		} break;
 		case Qt::Key_Plus: {
 			clock.set_speed(clock.get_speed() + 0.5);
-			log::log(INFO << "Decreased clock speed to: " << clock.get_speed());
+			log::log(INFO << "Increased clock speed to: " << clock.get_speed());
 		} break;
 		default:
 			break;
