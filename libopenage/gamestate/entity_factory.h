@@ -3,6 +3,7 @@
 #pragma once
 
 #include <memory>
+#include <shared_mutex>
 
 #include "gamestate/types.h"
 #include "util/path.h"
@@ -62,6 +63,11 @@ private:
 	 * Factory for creating connector objects to the renderer which make game entities displayable.
 	 */
 	std::shared_ptr<renderer::RenderFactory> render_factory;
+
+	/**
+     * Mutex for thread safety.
+     */
+	std::shared_mutex mutex;
 };
 } // namespace gamestate
 } // namespace openage
