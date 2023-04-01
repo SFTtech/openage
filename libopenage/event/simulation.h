@@ -5,11 +5,16 @@
 #include <memory>
 #include <shared_mutex>
 
-namespace openage::event {
+namespace openage {
+
+namespace gamestate {
+class GameState;
+}
+
+namespace event {
 
 class Clock;
 class Loop;
-class State;
 
 /**
  * Manage event loop and clock.
@@ -46,6 +51,8 @@ public:
 	 */
 	void stop();
 
+	void set_state(const std::shared_ptr<gamestate::GameState> state);
+
 	/**
      * Get the clock used by this simulation.
      *
@@ -72,14 +79,14 @@ private:
 	std::shared_ptr<Loop> loop;
 
 	/**
-     * TODO: Gamestate implementation.
-     */
-	std::shared_ptr<State> state;
-
-	/**
      * Manage time and speed inside the simulation.
      */
 	std::shared_ptr<Clock> clock;
+
+	/**
+     * State of the game.
+     */
+	std::shared_ptr<gamestate::GameState> state;
 
 	/**
 	 * Mutex for protecting threaded access.
@@ -88,4 +95,5 @@ private:
 };
 
 
-} // namespace openage::event
+} // namespace event
+} // namespace openage

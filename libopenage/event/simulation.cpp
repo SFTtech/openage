@@ -7,6 +7,7 @@
 #include "event/clock.h"
 #include "event/loop.h"
 #include "event/state.h"
+#include "gamestate/game_state.h"
 #include "log/log.h"
 
 namespace openage::event {
@@ -14,21 +15,22 @@ namespace openage::event {
 Simulation::Simulation() :
 	running{false},
 	loop{std::make_shared<Loop>()},
-	state{std::make_shared<State>(this->loop)},
-	clock{std::make_shared<Clock>()} {}
+	clock{std::make_shared<Clock>()},
+	state{nullptr} {}
 
 Simulation::Simulation(const std::shared_ptr<Loop> loop,
                        const std::shared_ptr<Clock> clock) :
 	running{false},
 	loop{loop},
-	state{std::make_shared<State>(this->loop)},
-	clock{clock} {}
+	clock{clock},
+	state{nullptr} {}
 
 void Simulation::run() {
 	this->start();
 	while (this->running) {
 		this->clock->update_time();
-		this->loop->reach_time(this->clock->get_time(), this->state);
+		this->loop->reach_time(this->clock->get_time(),
+		                       this->state);
 	}
 	log::log(MSG(info) << "simulation loop exited");
 }
@@ -37,6 +39,10 @@ void Simulation::start() {
 	std::unique_lock lock{this->mutex};
 
 	this->running = true;
+
+	if (this->state == nullptr) {
+		throw Error(MSG(err) << "Game state not set");
+	}
 
 	if (this->clock->get_state() == ClockState::INIT) {
 		this->clock->start();
@@ -51,6 +57,10 @@ void Simulation::stop() {
 	this->running = false;
 
 	log::log(MSG(info) << "simulation stopped");
+}
+
+void Simulation::set_state(const std::shared_ptr<gamestate::GameState> state) {
+	this->state = state;
 }
 
 const std::shared_ptr<Clock> Simulation::get_clock() {
