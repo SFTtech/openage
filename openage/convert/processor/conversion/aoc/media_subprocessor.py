@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-few-public-methods
 """
@@ -13,6 +13,8 @@ from openage.convert.value_object.read.media_types import MediaType
 from ....entity_object.export.formats.sprite_metadata import LayerMode
 from ....entity_object.export.media_export_request import MediaExportRequest
 from ....entity_object.export.metadata_export import SpriteMetadataExport
+from ....entity_object.export.metadata_export import TextureMetadataExport
+from ....value_object.read.media_types import MediaType
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_object_container\
@@ -45,16 +47,18 @@ class AoCMediaSubprocessor:
             ref_graphics = sprite.get_graphics()
             graphic_targetdirs = sprite.resolve_graphics_location()
 
-            metadata_filename = f"{sprite.get_filename()}.{'sprite'}"
-            metadata_export = SpriteMetadataExport(sprite.resolve_sprite_location(),
-                                                   metadata_filename)
-            full_data_set.metadata_exports.append(metadata_export)
+            # Animation metadata file definiton
+            sprite_meta_filename = f"{sprite.get_filename()}.sprite"
+            sprite_meta_export = SpriteMetadataExport(sprite.resolve_sprite_location(),
+                                                      sprite_meta_filename)
+            full_data_set.metadata_exports.append(sprite_meta_export)
 
             for graphic in ref_graphics:
                 graphic_id = graphic.get_id()
                 if graphic_id in handled_graphic_ids:
                     continue
 
+                # Texture image file definiton
                 targetdir = graphic_targetdirs[graphic_id]
                 source_filename = f"{str(graphic['slp_id'].value)}.slp"
                 target_filename = f"{sprite.get_filename()}_{str(graphic['slp_id'].value)}.png"
@@ -65,7 +69,17 @@ class AoCMediaSubprocessor:
                                                     target_filename)
                 full_data_set.graphics_exports.update({graphic_id: export_request})
 
-                # Metadata from graphics
+                # Texture metadata file definiton
+                # Same file stem as the image file and same targetdir
+                texture_meta_filename = f"{target_filename[:-4]}.texture"
+                texture_meta_export = TextureMetadataExport(targetdir,
+                                                            texture_meta_filename)
+                full_data_set.metadata_exports.append(texture_meta_export)
+
+                # Add texture image filename to texture metadata
+                texture_meta_export.add_imagefile(target_filename)
+
+                # Add metadata from graphics to animation metadata
                 sequence_type = graphic["sequence_type"].value
                 if sequence_type == 0x00:
                     layer_mode = LayerMode.OFF
@@ -88,17 +102,19 @@ class AoCMediaSubprocessor:
                 frame_count = graphic["frame_count"].value
                 angle_count = graphic["angle_count"].value
                 mirror_mode = graphic["mirroring_mode"].value
-                metadata_export.add_graphics_metadata(target_filename,
-                                                      layer_mode,
-                                                      layer_pos,
-                                                      frame_rate,
-                                                      replay_delay,
-                                                      frame_count,
-                                                      angle_count,
-                                                      mirror_mode)
+                sprite_meta_export.add_graphics_metadata(target_filename,
+                                                         texture_meta_filename,
+                                                         layer_mode,
+                                                         layer_pos,
+                                                         frame_rate,
+                                                         replay_delay,
+                                                         frame_count,
+                                                         angle_count,
+                                                         mirror_mode)
 
                 # Notify metadata export about SLP metadata when the file is exported
-                export_request.add_observer(metadata_export)
+                export_request.add_observer(texture_meta_export)
+                export_request.add_observer(sprite_meta_export)
 
                 handled_graphic_ids.add(graphic_id)
 

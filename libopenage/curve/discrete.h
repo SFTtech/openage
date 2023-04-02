@@ -1,10 +1,10 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <optional>
-#include <utility>
 #include <sstream>
+#include <utility>
 
 #include "base_curve.h"
 
@@ -15,12 +15,13 @@ namespace openage::curve {
  * Does not interpolate between values. The template type does only need to
  * implement `operator=` and copy ctor.
  */
-template<typename T>
+template <typename T>
 class Discrete : public BaseCurve<T> {
 	static_assert(std::is_copy_assignable<T>::value,
 	              "Template type is not copy assignable");
 	static_assert(std::is_copy_constructible<T>::value,
 	              "Template type is not copy constructible");
+
 public:
 	using BaseCurve<T>::BaseCurve;
 
@@ -30,7 +31,9 @@ public:
 	 */
 	T get(const time_t &t) const override;
 
-	/** human readable id string */
+	/**
+	 * Get a human readable id string.
+	 */
 	std::string idstr() const override;
 
 	/**
@@ -48,7 +51,7 @@ public:
 template <typename T>
 T Discrete<T>::get(const time_t &time) const {
 	auto e = this->container.last(time, this->last_element);
-	this->last_element = e;   // TODO if Caching?
+	this->last_element = e; // TODO if Caching?
 	return e->value;
 }
 
@@ -91,4 +94,4 @@ std::optional<std::pair<time_t, T>> Discrete<T>::get_previous(const time_t &time
 	return std::make_pair(e->time, e->value);
 }
 
-} // openage::curve
+} // namespace openage::curve

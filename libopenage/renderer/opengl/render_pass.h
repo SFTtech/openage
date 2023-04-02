@@ -1,4 +1,4 @@
-// Copyright 2019-2019 the openage authors. See copying.md for legal info.
+// Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -12,7 +12,7 @@ public:
 	             const std::shared_ptr<RenderTarget> &);
 
 	void set_renderables(std::vector<Renderable>);
-	std::vector<Renderable> get_renderables() const;
+	const std::vector<Renderable> &get_renderables() const;
 	void set_is_optimised(bool);
 	bool get_is_optimised() const;
 
@@ -21,4 +21,4 @@ private:
 	bool is_optimised;
 };
 
-} // openage::renderer::opengl
+} // namespace openage::renderer::opengl

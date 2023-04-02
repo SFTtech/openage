@@ -1,11 +1,10 @@
-# Copyright 2013-2022 the openage authors. See copying.md for legal info.
+# Copyright 2013-2023 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 
 from enum import Enum
-from struct import Struct, unpack_from
-
 import numpy
+from struct import Struct, unpack_from
 
 from .....log import spam, dbg
 
@@ -816,12 +815,17 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
             elif px_type == color_shadow:
                 r, g, b, alpha = 0, 0, 0, px_index
 
+                # change alpha values to match openage texture formats
+                # even alphas are used for commands marking *special* pixels (player color, etc.)
+                # odd alphas are used for normal pixels (= displayed as-is with transparency)
+                alpha = alpha | 0x01
+
             else:
                 if px_type == color_player:
-                    alpha = 255
+                    alpha = 254
 
                 elif px_type == color_outline:
-                    alpha = 253
+                    alpha = 252
 
                 else:
                     raise ValueError("unknown pixel type: %d" % px_type)

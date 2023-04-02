@@ -1,9 +1,10 @@
-# Copyright 2013-2022 the openage authors. See copying.md for legal info.
+# Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
 import typing
 
+from functools import cache
 
 from ...genie_structure import GenieStructure
 from ....read.member_access import READ, READ_GEN, SKIP
@@ -19,6 +20,7 @@ if typing.TYPE_CHECKING:
 class FrameData(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -38,6 +40,7 @@ class FrameData(GenieStructure):
 class TerrainPassGraphic(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -66,6 +69,7 @@ class TerrainRestriction(GenieStructure):
     """
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -98,6 +102,7 @@ class TerrainRestriction(GenieStructure):
 class TerrainAnimation(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -134,6 +139,7 @@ class Terrain(GenieStructure):
     dynamic_load = True
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -298,6 +304,7 @@ class TerrainBorder(GenieStructure):
     dynamic_load = True
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -333,6 +340,7 @@ class TerrainBorder(GenieStructure):
 class TileSize(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion

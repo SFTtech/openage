@@ -1,4 +1,4 @@
-// Copyright 2014-2022 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #include "asset_manager.h"
 
@@ -170,7 +170,7 @@ std::shared_ptr<Texture> AssetManager::get_missing_tex() {
 	// if not loaded, fetch the "missing" texture (big red X).
 	if (unlikely(this->missing_tex.get() == nullptr)) {
 		this->missing_tex = std::make_shared<Texture>(
-			this->asset_dir["missing.png"],
+			this->asset_dir["test"]["textures"]["missing.png"],
 			false);
 	}
 

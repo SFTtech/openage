@@ -6,6 +6,7 @@
 
 #include <eigen3/Eigen/Dense>
 
+#include "curve/curve.h"
 #include "renderer/resources/mesh_data.h"
 #include "util/vector.h"
 
@@ -15,7 +16,7 @@ class Texture2d;
 class UniformInput;
 
 namespace resources {
-class TextureManager;
+class AssetManager;
 }
 
 namespace world {
@@ -23,7 +24,7 @@ class WorldRenderEntity;
 
 class WorldObject {
 public:
-	WorldObject(const std::shared_ptr<renderer::resources::TextureManager> &texture_manager);
+	WorldObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
 	~WorldObject() = default;
 
 	/**
@@ -36,8 +37,10 @@ public:
 	/**
      * Recalculate the vertex positions for this mesh with information
      * from the currently set render entity.
+	 *
+	 * @param time Current simulation time.
      */
-	void update();
+	void update(const curve::time_t &time = 0.0);
 
 	/**
 	 * Get the ID of the corresponding game entity.
@@ -117,11 +120,9 @@ private:
 	bool changed;
 
 	/**
-	 * Texture manager for central accessing and loading textures.
-	 *
-	 * TODO: Replace with asset manager
+	 * Asset manager for central accessing and loading asset resources.
 	 */
-	std::shared_ptr<renderer::resources::TextureManager> texture_manager;
+	std::shared_ptr<renderer::resources::AssetManager> asset_manager;
 
 	/**
 	 * Source for positional and texture data.

@@ -2,6 +2,10 @@
 
 #include "world_object.h"
 
+#include "renderer/resources/animation/angle_info.h"
+#include "renderer/resources/animation/animation_info.h"
+#include "renderer/resources/animation/frame_info.h"
+#include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/assets/texture_manager.h"
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/texture_data.h"
@@ -10,10 +14,10 @@
 
 namespace openage::renderer::world {
 
-WorldObject::WorldObject(const std::shared_ptr<renderer::resources::TextureManager> &texture_manager) :
+WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
 	require_renderable{true},
 	changed{false},
-	texture_manager{texture_manager},
+	asset_manager{asset_manager},
 	render_entity{nullptr},
 	ref_id{0},
 	position{0.0f, 0.0f, 0.0f},
@@ -26,34 +30,56 @@ void WorldObject::set_render_entity(const std::shared_ptr<WorldRenderEntity> &en
 	this->update();
 }
 
-void WorldObject::update() {
-	if (not this->render_entity->is_changed()) {
+void WorldObject::update(const curve::time_t &time) {
+	if (this->render_entity->is_changed()) {
+		// Get ID
+		this->ref_id = this->render_entity->get_id();
+
+		// Get position
+		this->position = this->render_entity->get_position();
+
+		// TODO: New renderable is only required if the mesh is changed
+		this->require_renderable = true;
+
+		// Update textures
+		auto anim_info = this->asset_manager->request_animation(this->render_entity->get_texture_path());
+		auto tex_manager = this->asset_manager->get_texture_manager();
+		this->texture = tex_manager.request(anim_info->get_texture(0)->get_image_path().value());
+		// TODO: Support multiple textures per animation
+
+		this->changed = true;
+
+		// Indicate to the render entity that its updates have been processed.
+		this->render_entity->clear_changed_flag();
+
+		// Return to let the renderer create a new renderable
 		return;
 	}
 
-	// Get ID
-	this->ref_id = this->render_entity->get_id();
-
-	// Get position
-	this->position = this->render_entity->get_position();
-
-	// TODO: New renderable is only required if the mesh is changed
-	this->require_renderable = true;
-
-	// Update textures
-	this->texture = this->texture_manager->request(this->render_entity->get_texture_path());
 	if (this->uniforms != nullptr) {
-		this->uniforms->update(
-			"tex",
-			this->texture,
-			"u_id",
-			this->ref_id);
+		// Update uniforms if new frame should be displayed
+		auto anim_info = this->asset_manager->request_animation(this->render_entity->get_texture_path());
+		auto layer = anim_info->get_layer(0); // TODO: Support multiple layers
+		auto angle = layer.get_angle(0); // TODO: Support multiple angles
+
+		// Current frame index considering current time
+		auto timing = layer.get_frame_timing();
+		size_t frame_idx = timing->get_mod(time, this->render_entity->get_update_time());
+
+		// Get index of texture and subtexture where the frame's pixels are located
+		auto frame_info = angle->get_frame(frame_idx);
+		auto tex_idx = frame_info->get_texture_idx();
+		auto subtex_idx = frame_info->get_subtexture_idx();
+
+		// Get the texture info
+		auto tex_info = anim_info->get_texture(tex_idx);
+
+		/* Pass the new subtexture coordinates. */
+		auto [s_left, s_right, s_top, s_bottom] = tex_info->get_subtexture_coordinates(subtex_idx);
+		Eigen::Vector4f subtex_coords{s_left, s_right, s_top, s_bottom};
+
+		this->uniforms->update("offset_tile", subtex_coords);
 	}
-
-	this->changed = true;
-
-	// Indicate to the render entity that its updates have been processed.
-	this->render_entity->clear_changed_flag();
 }
 
 uint32_t WorldObject::get_id() {

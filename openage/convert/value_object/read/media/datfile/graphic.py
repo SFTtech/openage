@@ -1,9 +1,10 @@
-# Copyright 2013-2022 the openage authors. See copying.md for legal info.
+# Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
 import typing
 
+from functools import cache
 
 from ...genie_structure import GenieStructure
 from ....read.member_access import READ, READ_GEN, SKIP
@@ -20,6 +21,7 @@ if typing.TYPE_CHECKING:
 class GraphicDelta(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -43,6 +45,7 @@ class GraphicDelta(GenieStructure):
 class DE2SoundProp(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -68,6 +71,7 @@ class DE2SoundProp(GenieStructure):
 class SoundProp(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -86,6 +90,7 @@ class SoundProp(GenieStructure):
 class GraphicAttackSound(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -117,6 +122,7 @@ class Graphic(GenieStructure):
     dynamic_load = True
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion

@@ -15,7 +15,7 @@ TerrainRenderEntity::TerrainRenderEntity(
 	changed{false},
 	size{0, 0},
 	vertices{},
-	texture_path{}
+	terrain_path{}
 // renderer{renderer},
 // assetdir{assetdir}
 {
@@ -23,7 +23,7 @@ TerrainRenderEntity::TerrainRenderEntity(
 
 void TerrainRenderEntity::update(util::Vector2s size,
                                  std::vector<float> height_map,
-                                 const util::Path texture_path) {
+                                 const util::Path terrain_path) {
 	std::unique_lock lock{this->mutex};
 
 	// increase by 1 in every dimension because height_map
@@ -63,7 +63,7 @@ void TerrainRenderEntity::update(util::Vector2s size,
 	}
 
 	// set texture path
-	this->texture_path = texture_path;
+	this->terrain_path = terrain_path;
 
 	this->changed = true;
 }
@@ -77,7 +77,7 @@ const std::vector<TerrainVertex> &TerrainRenderEntity::get_vertices() {
 const util::Path &TerrainRenderEntity::get_texture_path() {
 	std::shared_lock lock{this->mutex};
 
-	return this->texture_path;
+	return this->terrain_path;
 }
 
 const util::Vector2s &TerrainRenderEntity::get_size() {

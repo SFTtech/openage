@@ -8,7 +8,7 @@
 #include "../../error/gl_debug.h"
 #include "../../handlers.h"
 // pxd: from libopenage.input.input_manager cimport InputManager
-#include "../../input/input_manager.h"
+#include "../../input/legacy/input_manager.h"
 #include "../../options.h"
 #include "../../renderer/font/font.h"
 #include "../../renderer/font/font_manager.h"

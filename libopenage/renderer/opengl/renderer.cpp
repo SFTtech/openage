@@ -66,7 +66,7 @@ resources::Texture2dData GlRenderer::display_into_data() {
 	GLint width = params[2];
 	GLint height = params[3];
 
-	resources::Texture2dInfo tex_info(width, height, resources::pixel_format::rgba8, 4);
+	resources::Texture2dInfo tex_info(width, height, resources::pixel_format::rgba8);
 	std::vector<uint8_t> data(tex_info.get_data_size());
 
 	std::static_pointer_cast<GlRenderTarget>(this->get_display_target())->bind_read();
@@ -110,7 +110,7 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 	auto gl_pass = std::dynamic_pointer_cast<GlRenderPass>(pass);
 	GlRenderer::optimise(gl_pass);
 
-	for (auto obj : gl_pass->get_renderables()) {
+	for (auto const &obj : gl_pass->get_renderables()) {
 		if (obj.alpha_blending) {
 			glEnable(GL_BLEND);
 			// TODO: Set only once or make selectable

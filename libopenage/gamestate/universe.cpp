@@ -11,7 +11,7 @@ namespace openage::gamestate {
 Universe::Universe(const util::Path &root_dir) :
 	world{std::make_shared<World>(root_dir)} {
 	// TODO
-	auto texpath = root_dir / "assets" / "test" / "textures" / "test_terrain_tex.png";
+	auto texpath = root_dir / "assets" / "test" / "textures" / "test_terrain.terrain";
 	this->terrain = std::make_shared<Terrain>(texpath);
 }
 

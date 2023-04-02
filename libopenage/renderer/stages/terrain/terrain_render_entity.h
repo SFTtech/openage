@@ -30,11 +30,11 @@ public:
 	 *
 	 * @param size Size of the terrain in tiles (width x length)
 	 * @param height_map Height of terrain tiles.
-	 * @param texture_path Path to the terrain texture.
+	 * @param terrain_path Path to the terrain definition.
      */
 	void update(util::Vector2s size,
 	            std::vector<float> height_map,
-	            const util::Path texture_path);
+	            const util::Path terrain_path);
 
 	/**
      * Get the vertices of the terrain.
@@ -97,7 +97,7 @@ private:
 	 *
 	 * TODO: Use texture mapping.
 	 */
-	util::Path texture_path;
+	util::Path terrain_path;
 	// std::unordered_map<Texture2d, size_t> texture_map; // texture -> vertex indices
 
 	/**

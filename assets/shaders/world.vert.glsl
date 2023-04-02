@@ -15,6 +15,5 @@ float height = offset_tile.w - offset_tile.z;
 
 void main() {
 	gl_Position = proj * view * model * vec4(position, 0.0, 1.0);
-	// gl_Position = vec4(position, 0.0, 1.0);
     v_uv = vec2((uv.x * width) + offset_tile.x, (((1.0 - uv.y) * height) + offset_tile.z));
 }

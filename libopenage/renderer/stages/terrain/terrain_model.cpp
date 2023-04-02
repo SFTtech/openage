@@ -3,17 +3,19 @@
 #include "terrain_model.h"
 
 #include "renderer/camera/camera.h"
+#include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/assets/texture_manager.h"
+#include "renderer/resources/terrain/terrain_info.h"
 #include "renderer/stages/terrain/terrain_mesh.h"
 #include "renderer/stages/terrain/terrain_render_entity.h"
 #include "renderer/uniform_input.h"
 
 namespace openage::renderer::terrain {
 
-TerrainRenderModel::TerrainRenderModel(const std::shared_ptr<renderer::Renderer> &renderer) :
+TerrainRenderModel::TerrainRenderModel(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
 	meshes{},
 	camera{nullptr},
-	texture_manager{std::make_shared<renderer::resources::TextureManager>(renderer)},
+	asset_manager{asset_manager},
 	render_entity{nullptr} {
 }
 
@@ -57,6 +59,8 @@ void TerrainRenderModel::update() {
 					"tex",
 					mesh->get_texture());
 			}
+
+			// TODO: Animated terrain
 		}
 	}
 }
@@ -116,7 +120,11 @@ std::shared_ptr<TerrainRenderMesh> TerrainRenderModel::create_mesh() {
 
 	resources::MeshData meshdata{std::move(vert_data), std::move(idx_data), info};
 
-	auto texture = this->texture_manager->request(this->render_entity->get_texture_path());
+	// Update textures
+	auto tex_manager = this->asset_manager->get_texture_manager();
+	auto terrain_info = this->asset_manager->request_terrain(this->render_entity->get_texture_path());
+	auto texture = tex_manager.request(terrain_info->get_texture(0)->get_image_path().value());
+	// TODO: Support multiple textures per terrain
 
 	auto terrain_mesh = std::make_shared<TerrainRenderMesh>(texture, std::move(meshdata));
 

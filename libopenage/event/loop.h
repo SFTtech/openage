@@ -1,16 +1,17 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <functional>
 #include <list>
 #include <memory>
+#include <mutex>
 #include <unordered_map>
 
 #include "../curve/curve.h"
-#include "eventqueue.h"
-#include "event.h"
 #include "../log/log.h"
+#include "event.h"
+#include "eventqueue.h"
 
 namespace openage::event {
 
@@ -24,12 +25,10 @@ class EventEntity;
 class State;
 
 
-
 /**
  * The core class to manage event handler and targets.
  */
 class Loop {
-
 	// because the demo function displays internal info.
 	friend int demo::curvepong();
 
@@ -48,7 +47,7 @@ public:
 	                                    const std::shared_ptr<EventEntity> &target,
 	                                    const std::shared_ptr<State> &state,
 	                                    const curve::time_t &reference_time,
-	                                    const EventHandler::param_map &params=EventHandler::param_map({}));
+	                                    const EventHandler::param_map &params = EventHandler::param_map({}));
 
 	/**
 	 * This will generate a new randomly named eventhandler for this specific element
@@ -59,13 +58,13 @@ public:
 	                                    const std::shared_ptr<EventEntity> &target,
 	                                    const std::shared_ptr<State> &state,
 	                                    const curve::time_t &reference_time,
-	                                    const EventHandler::param_map &params=EventHandler::param_map({}));
+	                                    const EventHandler::param_map &params = EventHandler::param_map({}));
 
 	/**
 	 * Execute all events that are registered until a certain point in time.
 	 */
 	void reach_time(const curve::time_t &max_time,
-	                   const std::shared_ptr<State> &state);
+	                const std::shared_ptr<State> &state);
 
 	/**
 	 * Register that a given event must be reevaluated at a time,
@@ -110,6 +109,11 @@ private:
 	 * This is useful for event cancelations (so one can't cancel itself).
 	 */
 	std::shared_ptr<Event> active_event;
+
+	/**
+	 * Mutex for protecting threaded access.
+	 */
+	std::mutex mutex;
 };
 
-} // openage::event
+} // namespace openage::event

@@ -1,4 +1,4 @@
-// Copyright 2022-2022 the openage authors. See copying.md for legal info.
+// Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
 #include "camera.h"
 
@@ -7,7 +7,9 @@ namespace openage::renderer::camera {
 Camera::Camera(util::Vector2s viewport_size) :
 	scene_pos{Eigen::Vector3f(0.0f, 10.0f, 0.0f)},
 	viewport_size{viewport_size},
-	zoom{0.025f},
+	zoom{1.0f},
+	max_zoom_out{64.0f},
+	default_zoom_ratio{1.0f / 49},
 	moved{true},
 	zoom_changed{true},
 	view{Eigen::Matrix4f::Identity()},
@@ -17,10 +19,14 @@ Camera::Camera(util::Vector2s viewport_size) :
 
 Camera::Camera(util::Vector2s viewport_size,
                Eigen::Vector3f scene_pos,
-               float zoom) :
+               float zoom,
+               float max_zoom_out,
+               float default_zoom_ratio) :
 	scene_pos{scene_pos},
 	viewport_size{viewport_size},
 	zoom{zoom},
+	max_zoom_out{max_zoom_out},
+	default_zoom_ratio{default_zoom_ratio},
 	moved{true},
 	zoom_changed{true},
 	view{Eigen::Matrix4f::Identity()},
@@ -84,8 +90,11 @@ void Camera::move_rel(Eigen::Vector3f direction, float delta) {
 }
 
 void Camera::set_zoom(float zoom) {
-	if (zoom < MAX_ZOOM_IN) {
-		zoom = MAX_ZOOM_IN;
+	if (zoom < Camera::MAX_ZOOM_IN) {
+		zoom = Camera::MAX_ZOOM_IN;
+	}
+	else if (zoom > this->max_zoom_out) {
+		zoom = this->max_zoom_out;
 	}
 
 	this->zoom = zoom;
@@ -158,13 +167,16 @@ Eigen::Matrix4f Camera::get_projection_matrix() {
 	float halfwidth = viewport_size[0] / 2;
 	float halfheight = viewport_size[1] / 2;
 
+	// get zoom level
+	float real_zoom = 0.5f * this->default_zoom_ratio * this->zoom;
+
 	// zoom by narrowing or widening viewport around focus point.
 	// narrow viewport => zoom in (projected area gets *smaller* while screen size stays the same)
 	// widen viewport => zoom out (projected area gets *bigger* while screen size stays the same)
-	float left = -(this->zoom * halfwidth);
-	float right = this->zoom * halfwidth;
-	float bottom = -(this->zoom * halfheight);
-	float top = this->zoom * halfheight;
+	float left = -(real_zoom * halfwidth);
+	float right = real_zoom * halfwidth;
+	float bottom = -(real_zoom * halfheight);
+	float top = real_zoom * halfheight;
 
 	Eigen::Matrix4f mat = Eigen::Matrix4f::Identity();
 	mat(0, 0) = 2.0f / (right - left);

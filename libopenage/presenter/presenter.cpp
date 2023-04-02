@@ -8,12 +8,14 @@
 #include <vector>
 
 #include "engine/engine.h"
+#include "event/simulation.h"
 #include "log/log.h"
 #include "renderer/camera/camera.h"
 #include "renderer/gui/gui.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/gui/qml_info.h"
 #include "renderer/render_factory.h"
+#include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/stages/screen/screen_renderer.h"
@@ -26,10 +28,12 @@
 namespace openage::presenter {
 
 Presenter::Presenter(const util::Path &root_dir,
-                     const std::shared_ptr<engine::Engine> &engine) :
+                     const std::shared_ptr<engine::Engine> &engine,
+                     const std::shared_ptr<event::Simulation> &simulation) :
 	root_dir{root_dir},
 	render_passes{},
-	engine{engine} {}
+	engine{engine},
+	simulation{simulation} {}
 
 
 void Presenter::run() {
@@ -56,7 +60,11 @@ void Presenter::run() {
 	log::log(MSG(info) << "draw loop exited");
 
 	if (this->engine) {
-		engine->stop();
+		this->engine->stop();
+	}
+
+	if (this->simulation) {
+		this->simulation->stop();
 	}
 
 	this->window->close();
@@ -67,6 +75,10 @@ void Presenter::set_engine(const std::shared_ptr<engine::Engine> &engine) {
 	auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
 	                                                                this->world_renderer);
 	this->engine->attach_renderer(render_factory);
+}
+
+void Presenter::set_simulation(const std::shared_ptr<event::Simulation> &simulation) {
+	this->simulation = simulation;
 }
 
 std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {
@@ -85,6 +97,8 @@ void Presenter::init_graphics() {
 		this->camera->resize(w, h);
 	});
 
+	this->asset_manager = std::make_shared<renderer::resources::AssetManager>(this->renderer);
+
 	// Skybox
 	this->skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
 		this->window,
@@ -98,14 +112,17 @@ void Presenter::init_graphics() {
 		this->window,
 		this->renderer,
 		this->camera,
-		this->root_dir["assets"]["shaders"]);
+		this->root_dir["assets"]["shaders"],
+		this->asset_manager);
 	this->render_passes.push_back(this->terrain_renderer->get_render_pass());
 
 	// Units/buildings
 	this->world_renderer = std::make_shared<renderer::world::WorldRenderer>(
 		this->window,
 		this->renderer,
-		this->root_dir["assets"]["shaders"]);
+		this->root_dir["assets"]["shaders"],
+		this->asset_manager,
+		this->simulation->get_clock());
 	this->render_passes.push_back(this->world_renderer->get_render_pass());
 
 	this->init_gui();

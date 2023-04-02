@@ -6,6 +6,7 @@ add_sources(libopenage
 	eventqueue.cpp
 	eventstore.cpp
 	loop.cpp
+	simulation.cpp
 	state.cpp
 	tests.cpp
 )

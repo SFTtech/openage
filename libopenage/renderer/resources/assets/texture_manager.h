@@ -40,7 +40,7 @@ public:
      *
      * @return Texture resource at the given path.
      */
-	std::shared_ptr<Texture2d> request(const util::Path &path);
+	const std::shared_ptr<Texture2d> &request(const util::Path &path);
 
 	/**
      * Load the texture at the given path. Does nothing if the path
@@ -55,6 +55,7 @@ public:
      * textures references if the path already exists in the cache.
      *
      * @param path Path to the texture resource.
+     * @param texture Existing texture object.
      */
 	void add(const util::Path &path,
 	         const std::shared_ptr<Texture2d> &texture);
@@ -72,10 +73,12 @@ private:
      */
 	std::shared_ptr<Renderer> renderer;
 
+	using texture_cache_t = std::unordered_map<std::string, std::shared_ptr<Texture2d>>;
+
 	/**
      * Cache of already created textures.
      */
-	std::unordered_map<std::string, std::shared_ptr<Texture2d>> loaded;
+	texture_cache_t loaded;
 };
 
 } // namespace resources

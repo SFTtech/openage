@@ -1,9 +1,10 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
 import typing
 
+from functools import cache
 
 from ...genie_structure import GenieStructure
 from ....read.member_access import READ, SKIP
@@ -19,6 +20,7 @@ if typing.TYPE_CHECKING:
 class MapInfo(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -53,6 +55,7 @@ class MapInfo(GenieStructure):
 class MapLand(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -84,6 +87,7 @@ class MapLand(GenieStructure):
 class MapTerrain(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -106,6 +110,7 @@ class MapTerrain(GenieStructure):
 class MapUnit(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -135,6 +140,7 @@ class MapUnit(GenieStructure):
 class MapElevation(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -157,6 +163,7 @@ class MapElevation(GenieStructure):
 class Map(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion

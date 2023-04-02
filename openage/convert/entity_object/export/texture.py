@@ -1,4 +1,4 @@
-# Copyright 2014-2022 the openage authors. See copying.md for legal info.
+# Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 """ Routines for texture generation etc """
 
@@ -93,7 +93,7 @@ class Texture(GenieStructure):
         self.best_packer_hints: tuple = None
 
         self.image_data: TextureImage = None
-        self.image_metadata: list[dict[str, int]] = None
+        self.image_metadata: list[dict[str, int]] = {}
 
         spam("creating Texture from %s", repr(input_data))
 

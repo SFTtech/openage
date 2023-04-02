@@ -8,7 +8,7 @@
 #include "../coord/pixel.h"
 #include "../gamedata/color_dummy.h"
 #include "../handlers.h"
-#include "../input/input_manager.h"
+#include "../input/legacy/input_manager.h"
 #include "../presenter/legacy/legacy.h"
 #include "../renderer/font/font.h"
 #include "../util/color.h"

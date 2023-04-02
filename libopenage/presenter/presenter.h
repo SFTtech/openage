@@ -17,6 +17,10 @@ namespace engine {
 class Engine;
 }
 
+namespace event {
+class Simulation;
+}
+
 namespace renderer {
 class RenderPass;
 class Renderer;
@@ -44,9 +48,12 @@ namespace terrain {
 class TerrainRenderer;
 }
 
-
 namespace world {
 class WorldRenderer;
+}
+
+namespace resources {
+class AssetManager;
 }
 
 } // namespace renderer
@@ -60,9 +67,11 @@ public:
 	 *
 	 * @param path Root directory path.
 	 * @param engine openage engine. Can be set later with \p set_engine()
+	 * @param simulation event simulation. Can be set later with \p set_simulation()
 	 */
 	Presenter(const util::Path &path,
-	          const std::shared_ptr<engine::Engine> &engine = nullptr);
+	          const std::shared_ptr<engine::Engine> &engine = nullptr,
+	          const std::shared_ptr<event::Simulation> &simulation = nullptr);
 
 	~Presenter() = default;
 
@@ -71,7 +80,19 @@ public:
 	 */
 	void run();
 
+	/**
+	 * Set the openage engine controlled by this presenter.
+	 *
+	 * @param engine openage engine.
+	 */
 	void set_engine(const std::shared_ptr<engine::Engine> &engine);
+
+	/**
+	 * Set the event simulation controlled by this presenter.
+	 *
+	 * @param simulation event simulation.
+	 */
+	void set_simulation(const std::shared_ptr<event::Simulation> &simulation);
 
 	/**
 	 * Initialize the Qt application managing the graphical views. Required
@@ -89,11 +110,6 @@ protected:
 	 *     - component renderers (Terrain, Game Entities, GUI)
 	 */
 	void init_graphics();
-
-	/**
-	 * Initialize the terrain renderer.
-	 */
-	void init_terrain_renderer();
 
 	/**
 	 * Initialize the GUI.
@@ -163,6 +179,11 @@ protected:
 	std::shared_ptr<renderer::screen::ScreenRenderer> screen_renderer;
 
 	/**
+	 * Manager for loading/storing asset resources.
+	 */
+	std::shared_ptr<renderer::resources::AssetManager> asset_manager;
+
+	/**
 	 * Render passes in the openage renderer.
 	 */
 	std::vector<std::shared_ptr<renderer::RenderPass>> render_passes;
@@ -171,6 +192,11 @@ protected:
 	 * Engine reference.
 	 */
 	std::shared_ptr<engine::Engine> engine;
+
+	/**
+	 * Simulation reference.
+	 */
+	std::shared_ptr<event::Simulation> simulation;
 };
 
 } // namespace presenter

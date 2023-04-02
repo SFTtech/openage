@@ -1,8 +1,10 @@
-# Copyright 2013-2022 the openage authors. See copying.md for legal info.
+# Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
 import typing
+
+from functools import cache
 
 from . import unit
 from ...genie_structure import GenieStructure
@@ -19,6 +21,7 @@ if typing.TYPE_CHECKING:
 class Civ(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion

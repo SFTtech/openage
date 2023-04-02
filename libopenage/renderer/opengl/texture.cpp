@@ -52,7 +52,7 @@ GlTexture2d::GlTexture2d(const std::shared_ptr<GlContext> &context,
 	// drawing settings
 	// TODO these are outdated, use sampler settings
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
 	log::log(MSG(dbg) << "Created OpenGL texture from data");
 }

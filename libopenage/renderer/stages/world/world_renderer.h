@@ -8,7 +8,13 @@
 
 #include "util/path.h"
 
-namespace openage::renderer {
+namespace openage {
+
+namespace event {
+class Clock;
+}
+
+namespace renderer {
 class Renderer;
 class RenderPass;
 class ShaderProgram;
@@ -16,7 +22,7 @@ class Texture2d;
 class Window;
 
 namespace resources {
-class TextureManager;
+class AssetManager;
 }
 
 namespace world {
@@ -30,7 +36,9 @@ class WorldRenderer {
 public:
 	WorldRenderer(const std::shared_ptr<Window> &window,
 	              const std::shared_ptr<renderer::Renderer> &renderer,
-	              const util::Path &shaderdir);
+	              const util::Path &shaderdir,
+	              const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+	              const std::shared_ptr<event::Clock> clock);
 	~WorldRenderer() = default;
 
 	/**
@@ -43,7 +51,6 @@ public:
 	/**
 	 * Add a new render entity of the world renderer.
 	 *
-	 * @param texture_manager Texture manager for loading textures.
 	 * @param render_entity New render entity.
 	 */
 	void add_render_entity(const std::shared_ptr<WorldRenderEntity> entity);
@@ -84,7 +91,7 @@ private:
 	/**
 	 * Texture manager for loading assets.
 	 */
-	std::shared_ptr<renderer::resources::TextureManager> texture_manager;
+	std::shared_ptr<renderer::resources::AssetManager> asset_manager;
 
 	/**
 	 * Render pass for the world drawing.
@@ -102,6 +109,11 @@ private:
 	std::shared_ptr<renderer::ShaderProgram> display_shader;
 
 	/**
+	 * Simulation clock for timing animations.
+	 */
+	std::shared_ptr<event::Clock> clock;
+
+	/**
 	 * Output texture.
 	 */
 	std::shared_ptr<renderer::Texture2d> output_texture;
@@ -117,4 +129,5 @@ private:
 	std::shared_mutex mutex;
 };
 } // namespace world
-} // namespace openage::renderer
+} // namespace renderer
+} // namespace openage

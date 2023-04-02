@@ -9,13 +9,6 @@
 namespace openage::renderer::camera {
 
 /**
- * Maximum possible zoom in level.
- *
- * Has to be above 0.0f, otherwise we get zero division errors.
- */
-static const float MAX_ZOOM_IN = 0.005f;
-
-/**
  * Camera direction (= where it looks at).
  * Uses a dimetric perspective like in AoE with the (fixed) angles
  *    yaw   = -135 degrees
@@ -50,10 +43,14 @@ public:
      * @param viewport_size Viewport size of the camera (width x height).
      * @param scene_pos Position of the camera in the scene.
      * @param zoom Zoom level of the camera (defaults to 1.0f).
+     * @param max_zoom_out Maximum zoom out level (defaults to 64.0f).
+     * @param default_zoom_ratio Default zoom level calibration (defaults to 1.0f).
      */
 	Camera(util::Vector2s viewport_size,
 	       Eigen::Vector3f scene_pos,
-	       float zoom = 1.0f);
+	       float zoom = 1.0f,
+	       float max_zoom_out = 64.0f,
+	       float default_zoom_ratio = 1.0f);
 	~Camera() = default;
 
 	/**
@@ -162,6 +159,33 @@ private:
       * z > 1.0f        => zoom out
       */
 	float zoom;
+
+	/**
+     * Maximum possible zoom in level.
+     *
+     * Has to be above 0.0f, otherwise we get zero division errors.
+     */
+	static constexpr float MAX_ZOOM_IN = 0.005f;
+
+	/**
+     * Maximum possible zoom out level.
+     *
+     * This can be set per camera.
+     */
+	float max_zoom_out;
+
+	/**
+     * Modifier that controls what the default zoom level (zoom = 1.0f)
+     * looks like. Essentially, this value is also a zoom that is pre-applied
+     * before other calculations.
+     *
+     * This value is important for calibrating the default zoom to match
+     * the pixel size of assets. For example, terrain in AoE2 has a height
+     * of 49 pixels, while in the renderer scene the height is always 1.0.
+     * Setting \p default_zoom_ratio to 1 / 49 ensure that the default zoom
+     * level matches the pixel ration of the original game.
+     */
+	float default_zoom_ratio;
 
 	/**
       * Flag set when the camera is moved.

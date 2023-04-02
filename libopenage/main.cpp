@@ -7,6 +7,10 @@
 
 #include "cvar/cvar.h"
 #include "engine/engine.h"
+#include "event/clock.h"
+#include "event/loop.h"
+#include "event/simulation.h"
+#include "event/state.h"
 #include "log/log.h"
 #include "presenter/presenter.h"
 #include "util/timer.h"
@@ -53,9 +57,16 @@ int run_game(const main_arguments &args) {
 	// TODO: select run_mode by launch argument
 	openage::engine::Engine::mode run_mode = engine::Engine::mode::FULL;
 
-	auto engine = std::make_shared<engine::Engine>(run_mode, args.root_path, cvar_manager);
-	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, engine);
+	auto simulation = std::make_shared<event::Simulation>();
 
+	auto engine = std::make_shared<engine::Engine>(run_mode, args.root_path, cvar_manager);
+	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, engine, simulation);
+
+	std::jthread event_loop_thread([&]() {
+		simulation->run();
+
+		simulation.reset();
+	});
 	std::jthread engine_thread([&]() {
 		engine->run();
 

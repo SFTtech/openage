@@ -1,4 +1,5 @@
 add_sources(libopenage
+	animation.cpp
 	color.cpp
 	geometry.cpp
 	render_factory.cpp

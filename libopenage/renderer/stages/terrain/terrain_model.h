@@ -13,7 +13,7 @@ class Camera;
 }
 
 namespace resources {
-class TextureManager;
+class AssetManager;
 }
 
 namespace terrain {
@@ -26,7 +26,7 @@ class TerrainRenderMesh;
  */
 class TerrainRenderModel {
 public:
-	TerrainRenderModel(const std::shared_ptr<renderer::Renderer> &renderer);
+	TerrainRenderModel(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
 	~TerrainRenderModel() = default;
 
 	/**
@@ -71,7 +71,7 @@ private:
 	 *
      * TODO: Replace with asset manager
      */
-	std::shared_ptr<renderer::resources::TextureManager> texture_manager;
+	std::shared_ptr<renderer::resources::AssetManager> asset_manager;
 
 	/**
      * Source for ingame terrain coordinates. These coordinates are translated into

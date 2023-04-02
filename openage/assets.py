@@ -1,4 +1,4 @@
-# Copyright 2014-2022 the openage authors. See copying.md for legal info.
+# Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 """
 Code for locating the game assets.
@@ -75,4 +75,4 @@ def test():
     fakecli.add_argument("--asset-dir", default=None)
     args = fakecli.parse_args([])
 
-    assert_value(get_asset_path(args.asset_dir)['missing.png'].filesize, 580)
+    assert_value(get_asset_path(args.asset_dir)['test']['textures']['missing.png'].filesize, 580)

@@ -1,9 +1,10 @@
-# Copyright 2013-2022 the openage authors. See copying.md for legal info.
+# Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
 import typing
 
+from functools import cache
 
 from ...genie_structure import GenieStructure
 from ....read.member_access import READ, READ_GEN, SKIP
@@ -20,6 +21,7 @@ if typing.TYPE_CHECKING:
 class Effect(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -45,6 +47,7 @@ class Effect(GenieStructure):
 class EffectBundle(GenieStructure):  # also called techage in some other tools
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -78,6 +81,7 @@ class EffectBundle(GenieStructure):  # also called techage in some other tools
 class OtherConnection(GenieStructure):
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -101,6 +105,7 @@ class AgeTechTree(GenieStructure):
     dynamic_load = True
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -201,6 +206,7 @@ class BuildingConnection(GenieStructure):
     dynamic_load = True
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -293,6 +299,7 @@ class UnitConnection(GenieStructure):
     dynamic_load = True
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion
@@ -374,6 +381,7 @@ class ResearchConnection(GenieStructure):
     dynamic_load = True
 
     @classmethod
+    @cache
     def get_data_format_members(
         cls,
         game_version: GameVersion

@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments
 
@@ -13,7 +13,7 @@ from enum import Enum
 
 from ..data_definition import DataDefinition
 
-FORMAT_VERSION = '1'
+FORMAT_VERSION = '2'
 
 
 class LayerMode(Enum):
@@ -33,23 +33,23 @@ class TerrainMetadata(DataDefinition):
     def __init__(self, targetdir: str, filename: str):
         super().__init__(targetdir, filename)
 
+        self.texture_files: dict[int, dict[str, typing.Any]] = {}
         self.scalefactor = 1.0
-        self.image_files: dict[int, dict[str, typing.Any]] = {}
         self.blendtable: dict[str, typing.Any] = None
         self.layers: dict[int, dict[str, typing.Any]] = {}
         self.frames: list[dict[str, int]] = []
 
-    def add_image(self, img_id: int, filename: str) -> None:
+    def add_texture(self, texture_id: int, filename: str) -> None:
         """
-        Add an image and the relative file name.
+        Add a texture and the relative file name.
 
-        :param img_id: Image identifier.
-        :type img_id: int
+        :param texture_id: Texture identifier.
+        :type texture_id: int
         :param filename: Path to the image file.
         :type filename: str
         """
-        self.image_files[img_id] = {
-            "image_id": img_id,
+        self.texture_files[texture_id] = {
+            "texture_id": texture_id,
             "filename": filename,
         }
 
@@ -87,13 +87,10 @@ class TerrainMetadata(DataDefinition):
         self,
         frame_idx: int,
         layer_id: int,
-        img_id: int,
-        xpos: int,
-        ypos: int,
-        xsize: int,
-        ysize: int,
-        priority: int,
-        blend_mode: int
+        texture_id: int,
+        subtex_id: int,
+        priority=None,
+        blend_mode=None
     ) -> None:
         """
         Add frame with all its spacial information.
@@ -102,16 +99,10 @@ class TerrainMetadata(DataDefinition):
         :type frame_idx: int
         :param layer_id: ID of the layer to which the frame belongs.
         :type layer_id: int
-        :param img_id: ID of the image used by this frame.
-        :type img_id: int
-        :param xpos: X position of the frame on the image canvas.
-        :type xpos: int
-        :param ypos: Y position of the frame on the image canvas.
-        :type ypos: int
-        :param xsize: Width of the frame.
-        :type xsize: int
-        :param ysize: Height of the frame.
-        :type ysize: int
+        :param texture_id: ID of the texture used by this frame.
+        :type texture_id: int
+        :param subtex_id: ID of the subtexture from the texture used by this frame.
+        :type subtex_id: int
         :param priority: Priority for blending.
         :type priority: int
         :param blend_mode: Used for looking up the blending pattern index in the blending table.
@@ -121,11 +112,8 @@ class TerrainMetadata(DataDefinition):
             {
                 "frame_idx": frame_idx,
                 "layer_id": layer_id,
-                "img_id": img_id,
-                "xpos": xpos,
-                "ypos": ypos,
-                "xsize": xsize,
-                "ysize": ysize,
+                "texture_id": texture_id,
+                "subtex_id": subtex_id,
                 "priority": priority,
                 "blend_mode": blend_mode,
             }
@@ -163,9 +151,9 @@ class TerrainMetadata(DataDefinition):
         # version
         output_str += f"version {FORMAT_VERSION}\n\n"
 
-        # image files
-        for image in self.image_files.values():
-            output_str += f"imagefile {image['image_id']} {image['filename']}\n"
+        # texture files
+        for texture in self.texture_files.values():
+            output_str += f"texture {texture['texture_id']} \"{texture['filename']}\"\n"
 
         output_str += "\n"
 

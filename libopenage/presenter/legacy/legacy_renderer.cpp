@@ -2,8 +2,8 @@
 
 #include "legacy_renderer.h"
 
-#include <SDL2/SDL.h>
 #include <epoxy/gl.h>
+#include <SDL2/SDL.h>
 #include <sstream>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -13,7 +13,7 @@
 #include "../../gamedata/color_dummy.h"
 #include "../../gamestate/old/game_main.h"
 #include "../../gamestate/old/game_spec.h"
-#include "../../input/input_manager.h"
+#include "../../input/legacy/input_manager.h"
 #include "../../log/log.h"
 #include "../../renderer/text.h"
 #include "../../unit/action.h"
@@ -47,7 +47,7 @@ LegacyRenderer::LegacyRenderer(LegacyEngine *e, presenter::LegacyDisplay *d) :
 	util::Path asset_dir = this->engine->get_root_dir()["assets"];
 
 	// load textures and stuff
-	gaben = new Texture{asset_dir["gaben.png"]};
+	gaben = new Texture{asset_dir["test"]["textures"]["gaben.png"]};
 
 	std::vector<gamedata::palette_color> player_color_lines = util::read_csv_file<gamedata::palette_color>(
 		asset_dir["converted/player_palette.docx"]);
