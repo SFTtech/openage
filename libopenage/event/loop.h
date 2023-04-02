@@ -113,7 +113,7 @@ private:
 	/**
 	 * Mutex for protecting threaded access.
 	 */
-	std::mutex mutex;
+	std::recursive_mutex mutex;
 };
 
 } // namespace openage::event
