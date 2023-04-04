@@ -15,7 +15,7 @@
 
 namespace openage::renderer::screen {
 
-ScreenRenderer::ScreenRenderer(const std::shared_ptr<Window> &window,
+ScreenRenderer::ScreenRenderer(const std::shared_ptr<Window> & /* window */,
                                const std::shared_ptr<renderer::Renderer> &renderer,
                                const util::Path &shaderdir) :
 	renderer{renderer},
