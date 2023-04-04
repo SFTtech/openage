@@ -115,7 +115,7 @@ void Camera::resize(size_t width, size_t height) {
 	this->viewport_size = util::Vector2s(width, height);
 }
 
-Eigen::Matrix4f Camera::get_view_matrix() {
+const Eigen::Matrix4f &Camera::get_view_matrix() {
 	if (not this->moved) {
 		return this->view;
 	}
@@ -155,10 +155,10 @@ Eigen::Matrix4f Camera::get_view_matrix() {
 	this->view = mat;
 	this->moved = false;
 
-	return mat;
+	return this->view;
 }
 
-Eigen::Matrix4f Camera::get_projection_matrix() {
+const Eigen::Matrix4f &Camera::get_projection_matrix() {
 	if (not this->zoom_changed) {
 		return this->proj;
 	}
@@ -190,7 +190,7 @@ Eigen::Matrix4f Camera::get_projection_matrix() {
 	this->proj = mat;
 	this->zoom_changed = false;
 
-	return mat;
+	return this->proj;
 }
 
 const util::Vector2s &Camera::get_viewport_size() const {

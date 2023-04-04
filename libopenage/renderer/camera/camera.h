@@ -131,14 +131,14 @@ public:
       *
       * @return Camera view matrix.
       */
-	Eigen::Matrix4f get_view_matrix();
+	const Eigen::Matrix4f &get_view_matrix();
 
 	/**
       * Get the projection matrix for this camera.
       *
       * @return Camera projection matrix.
       */
-	Eigen::Matrix4f get_projection_matrix();
+	const Eigen::Matrix4f &get_projection_matrix();
 
 	/**
      * Get the size of the camera viewport.
