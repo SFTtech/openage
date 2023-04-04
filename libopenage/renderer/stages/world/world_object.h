@@ -57,33 +57,33 @@ public:
 	const Eigen::Vector3f get_position();
 
 	/**
-       * Get the quad for creating the geometry.
-       *
-       * @return Mesh for creating a renderer geometry object.
-       */
-	const renderer::resources::MeshData get_mesh();
+     * Get the quad for creating the geometry.
+     *
+     * @return Mesh for creating a renderer geometry object.
+     */
+	static const renderer::resources::MeshData get_mesh();
 
 	/**
-       * Get the texture that should be drawn onto the mesh.
-       *
-       * @return Texture object.
-       */
+     * Get the texture that should be drawn onto the mesh.
+     *
+     * @return Texture object.
+     */
 	const std::shared_ptr<renderer::Texture2d> &get_texture();
 
 	/**
-      * Check whether a new renderable needs to be created for this mesh.
-      *
-      * If true, the old renderable should be removed from the render pass.
-      * The updated uniforms and geometry should be passed to this mesh.
-      * Afterwards, clear the requirement flag with \p clear_requires_renderable().
-      *
-      * @return true if a new renderable is required, else false.
-      */
+     * Check whether a new renderable needs to be created for this mesh.
+     *
+     * If true, the old renderable should be removed from the render pass.
+     * The updated uniforms and geometry should be passed to this mesh.
+     * Afterwards, clear the requirement flag with \p clear_requires_renderable().
+     *
+     * @return true if a new renderable is required, else false.
+     */
 	bool requires_renderable();
 
 	/**
-      * Indicate to this mesh that a new renderable has been created.
-      */
+     * Indicate to this mesh that a new renderable has been created.
+     */
 	void clear_requires_renderable();
 
 	/**
@@ -99,19 +99,19 @@ public:
 	void clear_changed_flag();
 
 	/**
-      * Set the reference to the uniform inputs of the renderable
-      * associated with this object. Relevant uniforms are updated
-      * when calling \p update().
-      *
-      * @param uniforms Uniform inputs of this object's renderable.
-      */
+     * Set the reference to the uniform inputs of the renderable
+     * associated with this object. Relevant uniforms are updated
+     * when calling \p update().
+     *
+     * @param uniforms Uniform inputs of this object's renderable.
+     */
 	void set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms);
 
 private:
 	/**
-      * Stores whether a new renderable for this object needs to be created
-      * for the render pass.
-      */
+     * Stores whether a new renderable for this object needs to be created
+     * for the render pass.
+     */
 	bool require_renderable;
 
 	/**
@@ -136,18 +136,18 @@ private:
 	uint32_t ref_id;
 
 	/**
-	* Position of the object.
-	*/
+	 * Position of the object.
+	 */
 	Eigen::Vector3f position;
 
 	/**
-	* Texture used for the mesh.
-	*/
+     * Texture used for the mesh.
+     */
 	std::shared_ptr<renderer::Texture2d> texture;
 
 	/**
-        * Shader uniforms for the renderable in the terrain render pass.
-        */
+     * Shader uniforms for the renderable in the terrain render pass.
+     */
 	std::shared_ptr<renderer::UniformInput> uniforms;
 };
 } // namespace world

@@ -15,6 +15,7 @@ class Clock;
 }
 
 namespace renderer {
+class Geometry;
 class Renderer;
 class RenderPass;
 class ShaderProgram;
@@ -112,6 +113,15 @@ private:
 	 * Simulation clock for timing animations.
 	 */
 	std::shared_ptr<event::Clock> clock;
+
+	/**
+     * Default geometry for every world object.
+     *
+     * Since all world objects are sprites, their mesh is always quad
+     * with the same vertex info. Reusing the geometry allows us to
+     * use the same vetrex buffer for every object.
+     */
+	const std::shared_ptr<renderer::Geometry> default_geometry;
 
 	/**
 	 * Output texture.

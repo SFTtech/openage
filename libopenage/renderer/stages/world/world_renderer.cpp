@@ -22,7 +22,8 @@ WorldRenderer::WorldRenderer(const std::shared_ptr<Window> &window,
 	renderer{renderer},
 	asset_manager{asset_manager},
 	render_objects{},
-	clock{clock} {
+	clock{clock},
+	default_geometry{this->renderer->add_mesh_geometry(WorldObject::get_mesh())} {
 	renderer::opengl::GlContext::check_error();
 
 	auto size = window->get_size();
@@ -57,8 +58,6 @@ void WorldRenderer::update() {
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {
 				// TODO: Update existing renderable instead of recreating it
-				auto geometry = this->renderer->add_mesh_geometry(obj->get_mesh());
-
 				// TODO: Use correct mvp matrices
 				auto model = Eigen::Affine3f::Identity();
 				auto screen_size = this->output_texture->get_info().get_size();
@@ -99,7 +98,7 @@ void WorldRenderer::update() {
 
 				Renderable display_obj{
 					transform_unifs,
-					geometry,
+					this->default_geometry,
 					true,
 					true,
 				};
