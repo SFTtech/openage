@@ -6,6 +6,8 @@
 #include <optional>
 #include <vector>
 
+#include <eigen3/Eigen/Dense>
+
 #include "datastructure/constexpr_map.h"
 #include "renderer/resources/texture_subinfo.h"
 #include "util/path.h"
@@ -166,6 +168,15 @@ public:
 	std::pair<int32_t, int32_t> get_subtexture_size(size_t subidx) const;
 
 	/**
+     * Get the dimensions of a specific subtexture.
+     *
+     * @param idx Index of the subtexture.
+     *
+     * @return Size of texture as 2-dimensional Eigen vector: (width, height)
+     */
+	Eigen::Vector2i get_subtex_size(size_t idx) const;
+
+	/**
 	 * Get the coordinates of a specific subtexture inside the main texture.
 	 * Coordinates are returned as normalized values (floats in range 0.0 to 1.0).
 	 *
@@ -174,6 +185,25 @@ public:
 	 * @return 4-tuple with normalized coordinates: (left, right, top, bottom)
 	 */
 	std::tuple<float, float, float, float> get_subtexture_coordinates(size_t subidx) const;
+
+	/**
+     * Get the coordinates of a specific subtexture inside the main texture.
+     * Coordinates are returned as pixel offsets in the main texture.
+     *
+     * @param idx Index of the subtexture.
+     *
+     * @return Pixel coordinates as 4-dimensional eigen vector: (left, right, top, bottom)
+     */
+	Eigen::Vector4i get_subtex_coord(size_t idx) const;
+
+	/**
+     * Get the anchor point of a specific subtexture inside the main texture.
+     *
+     * @param idx Index of the subtexture.
+     *
+     * @return Anchor point as 2-dimensional eigen vector: (anchor_x, anchor_y)
+     */
+	Eigen::Vector2i get_subtex_anchor(size_t idx) const;
 
 private:
 	/**

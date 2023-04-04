@@ -79,6 +79,11 @@ std::pair<int32_t, int32_t> Texture2dInfo::get_subtexture_size(size_t subidx) co
 	return std::make_pair(subtex.w, subtex.h);
 }
 
+Eigen::Vector2i Texture2dInfo::get_subtex_size(size_t idx) const {
+	auto subtex = this->get_subtexture(idx);
+	return Eigen::Vector2i(subtex.w, subtex.h);
+}
+
 std::tuple<float, float, float, float> Texture2dInfo::get_subtexture_coordinates(size_t subidx) const {
 	auto tx = this->get_subtexture(subidx);
 	return std::make_tuple(
@@ -86,6 +91,16 @@ std::tuple<float, float, float, float> Texture2dInfo::get_subtexture_coordinates
 		(static_cast<float>(tx.x + tx.w)) / this->w,
 		(static_cast<float>(tx.y)) / this->h,
 		(static_cast<float>(tx.y + tx.h)) / this->h);
+}
+
+Eigen::Vector4i Texture2dInfo::get_subtex_coord(size_t idx) const {
+	auto tx = this->get_subtexture(idx);
+	return Eigen::Vector4i(tx.x, tx.x + tx.w, tx.y, tx.y + tx.h);
+}
+
+Eigen::Vector2i Texture2dInfo::get_subtex_anchor(size_t idx) const {
+	auto tx = this->get_subtexture(idx);
+	return Eigen::Vector2i(tx.cx, tx.cy);
 }
 
 } // namespace openage::renderer::resources
