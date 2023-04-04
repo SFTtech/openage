@@ -140,6 +140,13 @@ public:
       */
 	Eigen::Matrix4f get_projection_matrix();
 
+	/**
+     * Get the size of the camera viewport.
+     *
+     * @return Viewport size as a 2D vector (x, y).
+     */
+	const util::Vector2s &get_viewport_size() const;
+
 private:
 	/**
      * Position in the 3D scene.

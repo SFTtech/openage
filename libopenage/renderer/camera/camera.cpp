@@ -193,4 +193,8 @@ Eigen::Matrix4f Camera::get_projection_matrix() {
 	return mat;
 }
 
+const util::Vector2s &Camera::get_viewport_size() const {
+	return this->viewport_size;
+}
+
 } // namespace openage::renderer::camera

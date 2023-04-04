@@ -688,6 +688,7 @@ void renderer_demo_3(const util::Path &path) {
 	auto world_renderer = std::make_shared<renderer::world::WorldRenderer>(
 		window,
 		renderer,
+		camera,
 		path["assets"]["shaders"],
 		asset_manager,
 		clock);

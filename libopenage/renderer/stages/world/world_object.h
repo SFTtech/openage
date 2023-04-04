@@ -15,6 +15,10 @@ class Renderer;
 class Texture2d;
 class UniformInput;
 
+namespace camera {
+class Camera;
+}
+
 namespace resources {
 class AssetManager;
 }
@@ -35,12 +39,26 @@ public:
 	void set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity);
 
 	/**
+     * Set the current camera of the scene.
+     *
+     * @param camera Camera object viewing the scene.
+     */
+	void set_camera(const std::shared_ptr<renderer::camera::Camera> &camera);
+
+	/**
      * Recalculate the vertex positions for this mesh with information
      * from the currently set render entity.
 	 *
 	 * @param time Current simulation time.
      */
 	void update(const curve::time_t &time = 0.0);
+
+	/**
+     * Update the uniforms of the renderable associated with this object.
+     *
+     * @param time Current simulation time.
+     */
+	void update_uniforms(const curve::time_t &time = 0.0);
 
 	/**
 	 * Get the ID of the corresponding game entity.
@@ -118,6 +136,11 @@ private:
 	 * Stores whether the \p update() call changed the object.
 	 */
 	bool changed;
+
+	/**
+	 * Camera for model uniforms.
+	 */
+	std::shared_ptr<renderer::camera::Camera> camera;
 
 	/**
 	 * Asset manager for central accessing and loading asset resources.

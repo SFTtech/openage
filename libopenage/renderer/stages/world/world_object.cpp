@@ -2,6 +2,9 @@
 
 #include "world_object.h"
 
+#include <eigen3/Eigen/Dense>
+
+#include "renderer/camera/camera.h"
 #include "renderer/resources/animation/angle_info.h"
 #include "renderer/resources/animation/animation_info.h"
 #include "renderer/resources/animation/frame_info.h"
@@ -17,6 +20,7 @@ namespace openage::renderer::world {
 WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
 	require_renderable{true},
 	changed{false},
+	camera{nullptr},
 	asset_manager{asset_manager},
 	render_entity{nullptr},
 	ref_id{0},
@@ -28,6 +32,10 @@ WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager
 void WorldObject::set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity) {
 	this->render_entity = entity;
 	this->update();
+}
+
+void WorldObject::set_camera(const std::shared_ptr<renderer::camera::Camera> &camera) {
+	this->camera = camera;
 }
 
 void WorldObject::update(const curve::time_t &time) {
@@ -56,8 +64,13 @@ void WorldObject::update(const curve::time_t &time) {
 		return;
 	}
 
-	if (this->uniforms != nullptr) {
-		// Update uniforms if new frame should be displayed
+	// Update uniforms if no render entity changes are detected
+	this->update_uniforms(time);
+}
+
+void WorldObject::update_uniforms(const curve::time_t &time) {
+	if (this->uniforms != nullptr) [[likely]] {
+		/* Frame subtexture */
 		auto anim_info = this->asset_manager->request_animation(this->render_entity->get_texture_path());
 		auto layer = anim_info->get_layer(0); // TODO: Support multiple layers
 		auto angle = layer.get_angle(0); // TODO: Support multiple angles
@@ -77,6 +90,33 @@ void WorldObject::update(const curve::time_t &time) {
 		// Pass the new subtexture coordinates.
 		auto coords = tex_info->get_subtex_info(subtex_idx).get_tile_params();
 		this->uniforms->update("tile_params", coords);
+
+		/* Model matrix */
+		auto model = Eigen::Affine3f::Identity();
+
+		// scale and keep widthxheight ratio of texture
+		// when the viewport size changes
+		auto screen_size = this->camera->get_viewport_size();
+		auto tex_size = tex_info->get_subtex_info(subtex_idx).get_size();
+
+		// TODO: Use scale factor from texture
+		auto scale = 1.0f;
+		if (tex_size[0] > 100) {
+			scale = 0.15f;
+		}
+		model.prescale(Eigen::Vector3f{
+			scale * ((float)tex_size[0] / screen_size[0]),
+			scale * ((float)tex_size[1] / screen_size[1]),
+			1.0f});
+
+		// TODO: Use actual position from coordinate system
+		auto pos = this->position;
+		pos = pos + Eigen::Vector3f(-5.0f, -5.0f, 0.0f);
+		pos = pos * 0.1f;
+		model.pretranslate(pos);
+		auto model_m = model.matrix();
+
+		this->uniforms->update("model", model_m);
 	}
 }
 
