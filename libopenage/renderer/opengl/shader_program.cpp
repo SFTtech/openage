@@ -356,17 +356,29 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 		case GL_FLOAT_VEC4:
 			glUniform4fv(loc, 1, reinterpret_cast<const float *>(ptr));
 			break;
-		case GL_FLOAT_MAT3:
-			glUniformMatrix3fv(loc, 1, GLboolean(false), reinterpret_cast<const float *>(ptr));
-			break;
-		case GL_FLOAT_MAT4:
-			glUniformMatrix4fv(loc, 1, GLboolean(false), reinterpret_cast<const float *>(ptr));
-			break;
 		case GL_INT_VEC2:
 			glUniform2iv(loc, 1, reinterpret_cast<const GLint *>(ptr));
 			break;
 		case GL_INT_VEC3:
 			glUniform3iv(loc, 1, reinterpret_cast<const GLint *>(ptr));
+			break;
+		case GL_INT_VEC4:
+			glUniform4iv(loc, 1, reinterpret_cast<const GLint *>(ptr));
+			break;
+		case GL_UNSIGNED_INT_VEC2:
+			glUniform2uiv(loc, 1, reinterpret_cast<const GLuint *>(ptr));
+			break;
+		case GL_UNSIGNED_INT_VEC3:
+			glUniform3uiv(loc, 1, reinterpret_cast<const GLuint *>(ptr));
+			break;
+		case GL_UNSIGNED_INT_VEC4:
+			glUniform4uiv(loc, 1, reinterpret_cast<const GLuint *>(ptr));
+			break;
+		case GL_FLOAT_MAT3:
+			glUniformMatrix3fv(loc, 1, GLboolean(false), reinterpret_cast<const float *>(ptr));
+			break;
+		case GL_FLOAT_MAT4:
+			glUniformMatrix4fv(loc, 1, GLboolean(false), reinterpret_cast<const float *>(ptr));
 			break;
 		case GL_SAMPLER_2D: {
 			GLuint tex_unit = this->texunits_per_unifs[pair.first];
@@ -460,6 +472,30 @@ void GlShaderProgram::set_v3f32(std::shared_ptr<UniformInput> const &in, const c
 
 void GlShaderProgram::set_v4f32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Vector4f const &val) {
 	this->set_unif(in, unif, &val, GL_FLOAT_VEC4);
+}
+
+void GlShaderProgram::set_v2i32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Vector2i const &val) {
+	this->set_unif(in, unif, &val, GL_INT_VEC2);
+}
+
+void GlShaderProgram::set_v3i32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Vector3i const &val) {
+	this->set_unif(in, unif, &val, GL_INT_VEC3);
+}
+
+void GlShaderProgram::set_v4i32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Vector4i const &val) {
+	this->set_unif(in, unif, &val, GL_INT_VEC4);
+}
+
+void GlShaderProgram::set_v2ui32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Vector2<uint32_t> const &val) {
+	this->set_unif(in, unif, &val, GL_UNSIGNED_INT_VEC2);
+}
+
+void GlShaderProgram::set_v3ui32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Vector3<uint32_t> const &val) {
+	this->set_unif(in, unif, &val, GL_UNSIGNED_INT_VEC3);
+}
+
+void GlShaderProgram::set_v4ui32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Vector4<uint32_t> const &val) {
+	this->set_unif(in, unif, &val, GL_UNSIGNED_INT_VEC4);
 }
 
 void GlShaderProgram::set_m4f32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Matrix4f const &val) {
