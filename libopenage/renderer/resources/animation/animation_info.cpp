@@ -20,7 +20,7 @@ size_t Animation2dInfo::get_texture_count() const {
 }
 
 const std::shared_ptr<Texture2dInfo> &Animation2dInfo::get_texture(size_t idx) const {
-	return this->texture_infos[idx];
+	return this->texture_infos.at(idx);
 }
 
 size_t Animation2dInfo::get_layer_count() const {
@@ -28,7 +28,7 @@ size_t Animation2dInfo::get_layer_count() const {
 }
 
 const LayerInfo &Animation2dInfo::get_layer(size_t idx) const {
-	return this->layers[idx];
+	return this->layers.at(idx);
 }
 
 } // namespace openage::renderer::resources

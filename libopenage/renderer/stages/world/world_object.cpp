@@ -92,6 +92,7 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 		this->uniforms->update("tile_params", coords);
 
 		/* Model matrix */
+		// TODO: Only update on resize
 		auto model = Eigen::Affine3f::Identity();
 
 		// scale and keep widthxheight ratio of texture

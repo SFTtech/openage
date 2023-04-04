@@ -52,7 +52,7 @@ size_t LayerInfo::get_angle_count() const {
 }
 
 const std::shared_ptr<AngleInfo> &LayerInfo::get_angle(size_t idx) const {
-	return this->angles[idx];
+	return this->angles.at(idx);
 }
 
 const std::shared_ptr<curve::DiscreteMod<size_t>> &LayerInfo::get_frame_timing() const {

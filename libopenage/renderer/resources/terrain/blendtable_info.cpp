@@ -14,7 +14,7 @@ const std::vector<size_t> &BlendTableInfo::get_table() const {
 }
 
 const std::shared_ptr<BlendPatternInfo> &BlendTableInfo::get_pattern(size_t idx) const {
-	return this->patterns[idx];
+	return this->patterns.at(idx);
 }
 
 } // namespace openage::renderer::resources

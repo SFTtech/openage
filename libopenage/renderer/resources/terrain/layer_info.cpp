@@ -48,7 +48,7 @@ size_t TerrainLayerInfo::get_frame_count() const {
 }
 
 const std::shared_ptr<TerrainFrameInfo> &TerrainLayerInfo::get_frame(size_t idx) const {
-	return this->frames[idx];
+	return this->frames.at(idx);
 }
 
 const std::shared_ptr<curve::DiscreteMod<size_t>> &TerrainLayerInfo::get_frame_timing() const {
