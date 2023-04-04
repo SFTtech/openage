@@ -39,48 +39,69 @@ public:
 	Texture2dSubInfo() = default;
 
 	/**
-     * Get the normalized coordinates of the subtexture.
+     * Get the position of the subtexture within the atlas.
+     *
+     * @return Pixel coordinates as 2-dimensional Eigen vector: (x, y)
+     */
+	const Eigen::Vector2<uint32_t> &get_pos() const;
+
+	/**
+     * Get the size of the subtexture.
+     *
+     * @return Pixel coordinates as 2-dimensional Eigen vector: (width, height)
+     */
+	const Eigen::Vector2<uint32_t> &get_size() const;
+
+	/**
+     * Get the position of the subtexture anchor within the atlas.
+     *
+     * @return Anchor coordinates as 2-dimensional Eigen vector: (x, y)
+     */
+	const Eigen::Vector2<uint32_t> &get_anchor_pos() const;
+
+	/**
+     * Get the normalized shader parameters of the subtexture.
      *
      * Coordinates are in range (0.0, 1.0) and can be passed directly to a shader uniform.
      *
-     * @return Pixel coordinates as 4-dimensional Eigen vector: (x, y, width, height)
+     * @return Tile parameters as 4-dimensional Eigen vector: (x, y, width, height)
      */
-	const Eigen::Vector4f &get_tile_coords() const;
+	const Eigen::Vector4f &get_tile_params() const;
 
 	/**
-     * Get the normalized coordinates of the subtexture center.
+     * Get the normalized shader parameters of the subtexture center.
      *
      * Coordinates are in range (0.0, 1.0) and can be passed directly to a shader uniform.
      *
      * @return Pixel coordinates as 2-dimensional Eigen vector: (x, y)
      */
-	const Eigen::Vector2f &get_anchor_coords() const;
-
-	/**
-	 * Position within the atlas (top left corner).
-	 */
-	uint32_t x{}, y{};
-
-	/**
-	 * Size in pixels.
-	 */
-	uint32_t w{}, h{};
-
-	/**
-	 * Subtexture anchor within the atlas.
-	 */
-	uint32_t cx{}, cy{};
+	const Eigen::Vector2f &get_anchor_params() const;
 
 private:
 	/**
+	 * Position within the atlas (top left corner: x, y).
+	 */
+	Eigen::Vector2<uint32_t> pos;
+
+	/**
+	 * Size in pixels (width, height).
+	 */
+	Eigen::Vector2<uint32_t> size;
+
+	/**
+	 * Subtexture anchor within the atlas (x, y).
+	 */
+	Eigen::Vector2<uint32_t> anchor_pos;
+
+	/**
      * Pre-computed normalized coordinates of the subtexture.
      */
-	Eigen::Vector4f tile_coords;
+	Eigen::Vector4f tile_params;
 
 	/**
      * Pre-computed normalized coordinates of the subtexture anchor.
      */
-	Eigen::Vector2f anchor_coords;
+	Eigen::Vector2f anchor_params;
 };
 
 } // namespace openage::renderer::resources
