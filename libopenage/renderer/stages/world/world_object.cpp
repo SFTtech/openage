@@ -74,11 +74,9 @@ void WorldObject::update(const curve::time_t &time) {
 		// Get the texture info
 		auto tex_info = anim_info->get_texture(tex_idx);
 
-		/* Pass the new subtexture coordinates. */
-		auto [s_left, s_right, s_top, s_bottom] = tex_info->get_subtexture_coordinates(subtex_idx);
-		Eigen::Vector4f subtex_coords{s_left, s_right, s_top, s_bottom};
-
-		this->uniforms->update("offset_tile", subtex_coords);
+		// Pass the new subtexture coordinates.
+		auto coords = tex_info->get_subtex_info(subtex_idx).get_tile_params();
+		this->uniforms->update("tile_params", coords);
 	}
 }
 

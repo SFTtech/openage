@@ -80,7 +80,7 @@ void WorldRenderer::update() {
 				Eigen::Matrix4f proj_m = Eigen::Matrix4f::Identity();
 
 				// TODO: Use subtex coordinates instead of whole texture
-				auto offsets = Eigen::Vector4f{0.0f, 1.0f, 0.0f, 1.0f};
+				auto coords = Eigen::Vector4f{0.0f, 0.0f, 1.0f, 1.0f};
 
 				auto transform_unifs = this->display_shader->new_uniform_input(
 					"model",
@@ -89,8 +89,8 @@ void WorldRenderer::update() {
 					view_m,
 					"proj",
 					proj_m,
-					"offset_tile",
-					offsets,
+					"tile_params",
+					coords,
 					"tex",
 					obj->get_texture(),
 					"u_id",
@@ -123,14 +123,14 @@ void WorldRenderer::resize(size_t width, size_t height) {
 void WorldRenderer::initialize_render_pass(size_t width,
                                            size_t height,
                                            const util::Path &shaderdir) {
-	auto vert_shader_file = (shaderdir / "world.vert.glsl").open();
+	auto vert_shader_file = (shaderdir / "world.vert_new.glsl").open();
 	auto vert_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
 		vert_shader_file.read());
 	vert_shader_file.close();
 
-	auto frag_shader_file = (shaderdir / "world.frag.glsl").open();
+	auto frag_shader_file = (shaderdir / "world.frag_new.glsl").open();
 	auto frag_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
