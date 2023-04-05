@@ -16,13 +16,16 @@ namespace openage::renderer::world {
 
 WorldRenderer::WorldRenderer(const std::shared_ptr<Window> &window,
                              const std::shared_ptr<renderer::Renderer> &renderer,
+                             const std::shared_ptr<renderer::camera::Camera> &camera,
                              const util::Path &shaderdir,
                              const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
                              const std::shared_ptr<event::Clock> clock) :
 	renderer{renderer},
+	camera{camera},
 	asset_manager{asset_manager},
 	render_objects{},
-	clock{clock} {
+	clock{clock},
+	default_geometry{this->renderer->add_mesh_geometry(WorldObject::get_mesh())} {
 	renderer::opengl::GlContext::check_error();
 
 	auto size = window->get_size();
@@ -31,8 +34,6 @@ WorldRenderer::WorldRenderer(const std::shared_ptr<Window> &window,
 	window->add_resize_callback([this](size_t width, size_t height) {
 		this->resize(width, height);
 	});
-
-	// TODO: Mouse button callbacks for analyzing ID texture
 }
 
 std::shared_ptr<renderer::RenderPass> WorldRenderer::get_render_pass() {
@@ -44,9 +45,8 @@ void WorldRenderer::add_render_entity(const std::shared_ptr<WorldRenderEntity> e
 
 	auto world_object = std::make_shared<WorldObject>(this->asset_manager);
 	world_object->set_render_entity(entity);
+	world_object->set_camera(this->camera);
 	this->render_objects.push_back(world_object);
-
-	this->update();
 }
 
 void WorldRenderer::update() {
@@ -56,42 +56,16 @@ void WorldRenderer::update() {
 
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {
-				// TODO: Update existing renderable instead of recreating it
-				auto geometry = this->renderer->add_mesh_geometry(obj->get_mesh());
-
-				// TODO: Use correct mvp matrices
-				auto model = Eigen::Affine3f::Identity();
-				auto screen_size = this->output_texture->get_info().get_size();
-				auto tex_size = obj->get_texture()->get_info().get_size();
-				// scale and keep widthxheight ratio of texture
-				auto scale = 1.0f;
-				if (tex_size.first > 100) {
-					scale = 0.15f;
-				}
-				model.prescale(Eigen::Vector3f{
-					scale * ((float)tex_size.first / screen_size.first),
-					scale * ((float)tex_size.second / screen_size.second),
-					1.0f});
-				auto pos = obj->get_position();
-				pos = pos + Eigen::Vector3f(-5.0f, -5.0f, 0.0f);
-				pos = pos * 0.1f;
-				model.pretranslate(pos);
-				auto model_m = model.matrix();
+				// TODO: Use zoom level from camera for view matrix
 				Eigen::Matrix4f view_m = Eigen::Matrix4f::Identity();
 				Eigen::Matrix4f proj_m = Eigen::Matrix4f::Identity();
 
-				// TODO: Use subtex coordinates instead of whole texture
-				auto offsets = Eigen::Vector4f{0.0f, 1.0f, 0.0f, 1.0f};
-
+				// TODO: Update existing renderable instead of recreating it
 				auto transform_unifs = this->display_shader->new_uniform_input(
-					"model",
-					model_m,
 					"view",
 					view_m,
 					"proj",
 					proj_m,
-					"offset_tile",
-					offsets,
 					"tex",
 					obj->get_texture(),
 					"u_id",
@@ -99,15 +73,17 @@ void WorldRenderer::update() {
 
 				Renderable display_obj{
 					transform_unifs,
-					geometry,
+					this->default_geometry,
 					true,
 					true,
 				};
 
 				this->render_pass->add_renderables(display_obj);
-
-				obj->set_uniforms(transform_unifs);
 				obj->clear_requires_renderable();
+
+				// update remaining uniforms for the object
+				obj->set_uniforms(transform_unifs);
+				obj->update_uniforms(current_time);
 			}
 		}
 	}

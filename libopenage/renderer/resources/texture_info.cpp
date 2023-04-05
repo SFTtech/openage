@@ -62,30 +62,25 @@ std::optional<util::Path> Texture2dInfo::get_image_path() const {
 	return this->imagepath;
 }
 
-size_t Texture2dInfo::get_subtexture_count() const {
+size_t Texture2dInfo::get_subtex_count() const {
 	return this->subtextures.size();
 }
 
-const Texture2dSubInfo &Texture2dInfo::get_subtexture(size_t subidx) const {
-	if (subidx < this->subtextures.size()) {
+const Texture2dSubInfo &Texture2dInfo::get_subtex_info(size_t subidx) const {
+	if (subidx < this->subtextures.size()) [[likely]] {
 		return this->subtextures[subidx];
 	}
 
 	throw Error(MSG(err) << "Unknown subtexture requested: " << subidx);
 }
 
-std::pair<int32_t, int32_t> Texture2dInfo::get_subtexture_size(size_t subidx) const {
-	auto subtex = this->get_subtexture(subidx);
-	return std::make_pair(subtex.w, subtex.h);
-}
-
 std::tuple<float, float, float, float> Texture2dInfo::get_subtexture_coordinates(size_t subidx) const {
-	auto tx = this->get_subtexture(subidx);
+	auto tx = this->get_subtex_info(subidx);
 	return std::make_tuple(
-		(static_cast<float>(tx.x)) / this->w,
-		(static_cast<float>(tx.x + tx.w)) / this->w,
-		(static_cast<float>(tx.y)) / this->h,
-		(static_cast<float>(tx.y + tx.h)) / this->h);
+		(static_cast<float>(tx.get_pos()[0])) / this->w,
+		(static_cast<float>(tx.get_pos()[0] + tx.get_size()[0])) / this->w,
+		(static_cast<float>(tx.get_pos()[1])) / this->h,
+		(static_cast<float>(tx.get_pos()[1] + tx.get_size()[1])) / this->h);
 }
 
 } // namespace openage::renderer::resources

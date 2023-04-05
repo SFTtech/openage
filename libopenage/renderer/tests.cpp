@@ -294,7 +294,7 @@ void renderer_demo_1(const util::Path &path) {
 	              << ")");
 	log::log(INFO << "    cbits: "
 	              << "(currently unused)");
-	log::log(INFO << "  subtex count: " << tex_info.get_subtexture_count());
+	log::log(INFO << "  subtex count: " << tex_info.get_subtex_count());
 
 	/* Load animation file using the texture. */
 	auto sprite_path = path / "assets/test/textures/test_animation.sprite";
@@ -386,8 +386,7 @@ void renderer_demo_1(const util::Path &path) {
 
 	/* Read location of the subtexture in the texture image */
 	size_t subtexture_index = 0;
-	util::Vector2s subtex_size = {tex.get_info().get_subtexture_size(subtexture_index).first,
-	                              tex.get_info().get_subtexture_size(subtexture_index).second};
+	auto subtex_size = tex.get_info().get_subtex_info(subtexture_index).get_size();
 	auto [s_left, s_right, s_top, s_bottom] = tex.get_info().get_subtexture_coordinates(subtexture_index);
 	Eigen::Vector4f subtex_coords{s_left, s_right, s_top, s_bottom};
 
@@ -533,14 +532,14 @@ void renderer_demo_1(const util::Path &path) {
 				log::log(INFO << "Key pressed (Right arrow)");
 
 				++subtexture_index;
-				if (subtexture_index >= tex.get_info().get_subtexture_count()) {
+				if (subtexture_index >= tex.get_info().get_subtex_count()) {
 					subtexture_index = 0;
 				}
 			}
 			else if (ev.key() == Qt::Key_Left) {
 				log::log(INFO << "Key pressed (Left arrow)");
 				if (subtexture_index == 0) {
-					subtexture_index = tex.get_info().get_subtexture_count() - 1;
+					subtexture_index = tex.get_info().get_subtex_count() - 1;
 				}
 				else {
 					--subtexture_index;
@@ -554,8 +553,7 @@ void renderer_demo_1(const util::Path &path) {
 
 			/* Rescale the transformation matrix. */
 			tex_size = tex_info.get_size();
-			subtex_size = {tex.get_info().get_subtexture_size(subtexture_index).first,
-			               tex.get_info().get_subtexture_size(subtexture_index).second};
+			subtex_size = tex.get_info().get_subtex_info(subtexture_index).get_size();
 			scale_x = upscale_factor * (float)subtex_size[1] / tex_size.first;
 			scale_y = upscale_factor * (float)subtex_size[0] / tex_size.second;
 
@@ -690,6 +688,7 @@ void renderer_demo_3(const util::Path &path) {
 	auto world_renderer = std::make_shared<renderer::world::WorldRenderer>(
 		window,
 		renderer,
+		camera,
 		path["assets"]["shaders"],
 		asset_manager,
 		clock);
@@ -900,8 +899,7 @@ void renderer_demo_4(const util::Path &path) {
 
 	/* Read location of the first subtexture in the texture image */
 	size_t subtexture_index = 0;
-	util::Vector2s subtex_size = {tex.get_info().get_subtexture_size(subtexture_index).first,
-	                              tex.get_info().get_subtexture_size(subtexture_index).second};
+	auto subtex_size = tex.get_info().get_subtex_info(subtexture_index).get_size();
 	auto [s_left, s_right, s_top, s_bottom] = tex.get_info().get_subtexture_coordinates(subtexture_index);
 	Eigen::Vector4f subtex_coords{s_left, s_right, s_top, s_bottom};
 
@@ -1075,8 +1073,7 @@ void renderer_demo_4(const util::Path &path) {
 
 			/* Rescale the transformation matrix. */
 			tex_size = tex.get_info().get_size();
-			subtex_size = {tex.get_info().get_subtexture_size(subtex_idx).first,
-			               tex.get_info().get_subtexture_size(subtex_idx).second};
+			subtex_size = tex.get_info().get_subtex_info(subtex_idx).get_size();
 			scale_x = upscale_factor * (float)subtex_size[1] / tex_size.first;
 			scale_y = upscale_factor * (float)subtex_size[0] / tex_size.second;
 

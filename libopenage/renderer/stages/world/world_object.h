@@ -15,6 +15,10 @@ class Renderer;
 class Texture2d;
 class UniformInput;
 
+namespace camera {
+class Camera;
+}
+
 namespace resources {
 class AssetManager;
 }
@@ -35,12 +39,26 @@ public:
 	void set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity);
 
 	/**
+     * Set the current camera of the scene.
+     *
+     * @param camera Camera object viewing the scene.
+     */
+	void set_camera(const std::shared_ptr<renderer::camera::Camera> &camera);
+
+	/**
      * Recalculate the vertex positions for this mesh with information
      * from the currently set render entity.
 	 *
 	 * @param time Current simulation time.
      */
 	void update(const curve::time_t &time = 0.0);
+
+	/**
+     * Update the uniforms of the renderable associated with this object.
+     *
+     * @param time Current simulation time.
+     */
+	void update_uniforms(const curve::time_t &time = 0.0);
 
 	/**
 	 * Get the ID of the corresponding game entity.
@@ -57,33 +75,33 @@ public:
 	const Eigen::Vector3f get_position();
 
 	/**
-       * Get the quad for creating the geometry.
-       *
-       * @return Mesh for creating a renderer geometry object.
-       */
-	const renderer::resources::MeshData get_mesh();
+     * Get the quad for creating the geometry.
+     *
+     * @return Mesh for creating a renderer geometry object.
+     */
+	static const renderer::resources::MeshData get_mesh();
 
 	/**
-       * Get the texture that should be drawn onto the mesh.
-       *
-       * @return Texture object.
-       */
+     * Get the texture that should be drawn onto the mesh.
+     *
+     * @return Texture object.
+     */
 	const std::shared_ptr<renderer::Texture2d> &get_texture();
 
 	/**
-      * Check whether a new renderable needs to be created for this mesh.
-      *
-      * If true, the old renderable should be removed from the render pass.
-      * The updated uniforms and geometry should be passed to this mesh.
-      * Afterwards, clear the requirement flag with \p clear_requires_renderable().
-      *
-      * @return true if a new renderable is required, else false.
-      */
+     * Check whether a new renderable needs to be created for this mesh.
+     *
+     * If true, the old renderable should be removed from the render pass.
+     * The updated uniforms and geometry should be passed to this mesh.
+     * Afterwards, clear the requirement flag with \p clear_requires_renderable().
+     *
+     * @return true if a new renderable is required, else false.
+     */
 	bool requires_renderable();
 
 	/**
-      * Indicate to this mesh that a new renderable has been created.
-      */
+     * Indicate to this mesh that a new renderable has been created.
+     */
 	void clear_requires_renderable();
 
 	/**
@@ -99,25 +117,30 @@ public:
 	void clear_changed_flag();
 
 	/**
-      * Set the reference to the uniform inputs of the renderable
-      * associated with this object. Relevant uniforms are updated
-      * when calling \p update().
-      *
-      * @param uniforms Uniform inputs of this object's renderable.
-      */
+     * Set the reference to the uniform inputs of the renderable
+     * associated with this object. Relevant uniforms are updated
+     * when calling \p update().
+     *
+     * @param uniforms Uniform inputs of this object's renderable.
+     */
 	void set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms);
 
 private:
 	/**
-      * Stores whether a new renderable for this object needs to be created
-      * for the render pass.
-      */
+     * Stores whether a new renderable for this object needs to be created
+     * for the render pass.
+     */
 	bool require_renderable;
 
 	/**
 	 * Stores whether the \p update() call changed the object.
 	 */
 	bool changed;
+
+	/**
+	 * Camera for model uniforms.
+	 */
+	std::shared_ptr<renderer::camera::Camera> camera;
 
 	/**
 	 * Asset manager for central accessing and loading asset resources.
@@ -136,18 +159,18 @@ private:
 	uint32_t ref_id;
 
 	/**
-	* Position of the object.
-	*/
+	 * Position of the object.
+	 */
 	Eigen::Vector3f position;
 
 	/**
-	* Texture used for the mesh.
-	*/
+     * Texture used for the mesh.
+     */
 	std::shared_ptr<renderer::Texture2d> texture;
 
 	/**
-        * Shader uniforms for the renderable in the terrain render pass.
-        */
+     * Shader uniforms for the renderable in the terrain render pass.
+     */
 	std::shared_ptr<renderer::UniformInput> uniforms;
 };
 } // namespace world

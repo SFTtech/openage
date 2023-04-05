@@ -34,7 +34,7 @@ size_t TerrainInfo::get_layer_count() const {
 }
 
 const TerrainLayerInfo &TerrainInfo::get_layer(size_t idx) const {
-	return this->layers[idx];
+	return this->layers.at(idx);
 }
 
 } // namespace openage::renderer::resources

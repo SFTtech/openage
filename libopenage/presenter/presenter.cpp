@@ -120,6 +120,7 @@ void Presenter::init_graphics() {
 	this->world_renderer = std::make_shared<renderer::world::WorldRenderer>(
 		this->window,
 		this->renderer,
+		this->camera,
 		this->root_dir["assets"]["shaders"],
 		this->asset_manager,
 		this->simulation->get_clock());

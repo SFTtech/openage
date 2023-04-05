@@ -189,7 +189,9 @@ Texture2dInfo parse_texture_file(const util::Path &file) {
 		                      subtex.xsize,
 		                      subtex.ysize,
 		                      subtex.xanchor,
-		                      subtex.yanchor);
+		                      subtex.yanchor,
+		                      size.width,
+		                      size.height);
 	}
 
 	auto imagepath = file.get_parent() / imagefile;

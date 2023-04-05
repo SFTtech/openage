@@ -48,6 +48,12 @@ public:
 	void update(const char *unif, Eigen::Vector2f const &val);
 	void update(const char *unif, Eigen::Vector3f const &val);
 	void update(const char *unif, Eigen::Vector4f const &val);
+	void update(const char *unif, Eigen::Vector2i const &val);
+	void update(const char *unif, Eigen::Vector3i const &val);
+	void update(const char *unif, Eigen::Vector4i const &val);
+	void update(const char *unif, Eigen::Vector2<uint32_t> const &val);
+	void update(const char *unif, Eigen::Vector3<uint32_t> const &val);
+	void update(const char *unif, Eigen::Vector4<uint32_t> const &val);
 	void update(const char *unif, std::shared_ptr<Texture2d> const &val);
 	void update(const char *unif, std::shared_ptr<Texture2d> &val);
 	void update(const char *unif, Eigen::Matrix4f const &val);

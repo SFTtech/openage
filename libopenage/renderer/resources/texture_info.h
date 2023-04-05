@@ -6,6 +6,8 @@
 #include <optional>
 #include <vector>
 
+#include <eigen3/Eigen/Dense>
+
 #include "datastructure/constexpr_map.h"
 #include "renderer/resources/texture_subinfo.h"
 #include "util/path.h"
@@ -146,7 +148,7 @@ public:
 	 *
 	 * @return Number of subtextures.
 	 */
-	size_t get_subtexture_count() const;
+	size_t get_subtex_count() const;
 
 	/**
 	 * Get the subtexture information for a specific subtexture.
@@ -154,20 +156,13 @@ public:
 	 * @param subidx Index of the subtexture.
 	 * @return Subtexture information object.
 	 */
-	const Texture2dSubInfo &get_subtexture(size_t subidx) const;
-
-	/**
-	 * Get the dimensions of a specific subtexture.
-	 *
-	 * @param subidx Index of the subtexture.
-	 *
-	 * @return Size of texture as (width, height) tuple.
-	 */
-	std::pair<int32_t, int32_t> get_subtexture_size(size_t subidx) const;
+	const Texture2dSubInfo &get_subtex_info(size_t subidx) const;
 
 	/**
 	 * Get the coordinates of a specific subtexture inside the main texture.
 	 * Coordinates are returned as normalized values (floats in range 0.0 to 1.0).
+     *
+     * @deprecated Use \p get_subtex_tile_params() instead.
 	 *
 	 * @param subidx Index of the subtexture.
 	 *

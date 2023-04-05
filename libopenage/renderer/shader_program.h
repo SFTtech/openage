@@ -80,6 +80,12 @@ protected:
 	virtual void set_v2f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector2f const &) = 0;
 	virtual void set_v3f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector3f const &) = 0;
 	virtual void set_v4f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector4f const &) = 0;
+	virtual void set_v2i32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector2i const &) = 0;
+	virtual void set_v3i32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector3i const &) = 0;
+	virtual void set_v4i32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector4i const &) = 0;
+	virtual void set_v2ui32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector2<uint32_t> const &) = 0;
+	virtual void set_v3ui32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector3<uint32_t> const &) = 0;
+	virtual void set_v4ui32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector4<uint32_t> const &) = 0;
 	virtual void set_m4f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Matrix4f const &) = 0;
 	virtual void set_tex(std::shared_ptr<UniformInput> const &, const char *, std::shared_ptr<Texture2d> const &) = 0;
 };

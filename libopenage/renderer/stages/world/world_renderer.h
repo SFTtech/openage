@@ -15,11 +15,16 @@ class Clock;
 }
 
 namespace renderer {
+class Geometry;
 class Renderer;
 class RenderPass;
 class ShaderProgram;
 class Texture2d;
 class Window;
+
+namespace camera {
+class Camera;
+}
 
 namespace resources {
 class AssetManager;
@@ -36,6 +41,7 @@ class WorldRenderer {
 public:
 	WorldRenderer(const std::shared_ptr<Window> &window,
 	              const std::shared_ptr<renderer::Renderer> &renderer,
+	              const std::shared_ptr<renderer::camera::Camera> &camera,
 	              const util::Path &shaderdir,
 	              const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
 	              const std::shared_ptr<event::Clock> clock);
@@ -89,6 +95,11 @@ private:
 	std::shared_ptr<renderer::Renderer> renderer;
 
 	/**
+	 * Camera for model uniforms.
+	 */
+	std::shared_ptr<renderer::camera::Camera> camera;
+
+	/**
 	 * Texture manager for loading assets.
 	 */
 	std::shared_ptr<renderer::resources::AssetManager> asset_manager;
@@ -112,6 +123,15 @@ private:
 	 * Simulation clock for timing animations.
 	 */
 	std::shared_ptr<event::Clock> clock;
+
+	/**
+     * Default geometry for every world object.
+     *
+     * Since all world objects are sprites, their mesh is always quad
+     * with the same vertex info. Reusing the geometry allows us to
+     * use the same vetrex buffer for every object.
+     */
+	const std::shared_ptr<renderer::Geometry> default_geometry;
 
 	/**
 	 * Output texture.

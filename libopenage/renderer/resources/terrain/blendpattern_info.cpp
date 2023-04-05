@@ -24,7 +24,7 @@ size_t BlendPatternInfo::get_texture_count() const {
 }
 
 const std::shared_ptr<Texture2dInfo> &BlendPatternInfo::get_texture(size_t idx) const {
-	return this->textures[idx];
+	return this->textures.at(idx);
 }
 
 size_t BlendPatternInfo::get_mask_count() const {
