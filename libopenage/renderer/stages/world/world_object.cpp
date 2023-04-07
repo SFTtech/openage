@@ -100,14 +100,11 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 		auto screen_size = this->camera->get_viewport_size();
 		auto tex_size = tex_info->get_subtex_info(subtex_idx).get_size();
 
-		// TODO: Use scale factor from texture
-		auto scale = 1.0f;
-		if (tex_size[0] > 100) {
-			scale = 0.15f;
-		}
+		// Use scalefactor from animation
+		auto scale = anim_info->get_scalefactor();
 		model.prescale(Eigen::Vector3f{
-			scale * ((float)tex_size[0] / screen_size[0]),
-			scale * ((float)tex_size[1] / screen_size[1]),
+			scale * (static_cast<float>(tex_size[0]) / screen_size[0]),
+			scale * (static_cast<float>(tex_size[1]) / screen_size[1]),
 			1.0f});
 
 		// TODO: Use actual position from coordinate system
