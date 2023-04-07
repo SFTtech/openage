@@ -27,8 +27,8 @@ version 2
 # texture file reference, relative to this file's location
 texture <texture_id> <filename>
 
-# the zoom level at which the texture is shown in full detail
-# e.g. scalefactor 2.0 -> full detail at 200% zoom
+# the zoom level at which the animation is shown in full detail
+# e.g. scalefactor 0.5 -> full detail at 200% zoom
 scalefactor <factor>
 
 # selection of blendomatic borders
@@ -106,23 +106,23 @@ Parameter | Type  | Optional | Default value
 factor    | float | No       | -
 
 **factor**<br>
-Factor by which textures are scaled *down* at default zoom level.
-This allows for high resolution textures to be displayed at an
-arbitrary scale. Zooming in counteracts the downscaling. Thus,
-this factor can be used for textures that should retain high
-image quality with higher zoom levels.
+Factor by which sprite images are scaled at default zoom level.
+This allows for high resolution sprites to be displayed at an
+arbitrary scale. It can be used for sprites that should retain
+high image quality with higher zoom levels.
 
 
 #### Example
 
 ```
-# Assume the texture image has a size of 100x100
-scalefactor 1.0  # No scaling, 100x100 at default zoom
-scalefactor 2.0  # scaled down to 50x50 at default zoom; original 100x100 at 2x zoom in
-scalefactor 4.0  # scaled down to 25x25 at default zoom; original 100x100 at 4x zoom in
+# Assume the sprite image has a size of 100x100
+# Factors <1 result in downscaling
+scalefactor 1.0   # No scaling, 100x100 at default zoom
+scalefactor 0.5   # 50x50 at default zoom; 100x100 at 2x zoom
+scalefactor 0.25  # 25x25 at default zoom; 100x100 at 4x zoom
 
-# Factors <1 result in upscaling
-scalefactor 0.5  # scaled up to 200x200 at default zoom; original 100x100 at 2x zoom out
+# Factors >1 result in upscaling
+scalefactor 2.0  # 200x200 at default zoom; 100x100 at 2x zoom
 ```
 
 
