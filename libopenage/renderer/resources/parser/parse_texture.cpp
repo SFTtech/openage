@@ -115,8 +115,8 @@ PixelFormatData parse_pxformat(const std::vector<std::string> &args) {
 SubtextureData parse_subtex(const std::vector<std::string> &args) {
 	SubtextureData subtex;
 
-	subtex.xpos = std::stoul(args[1]);
-	subtex.ypos = std::stoul(args[2]);
+	subtex.xpos = std::stoi(args[1]);
+	subtex.ypos = std::stoi(args[2]);
 	subtex.xsize = std::stoul(args[3]);
 	subtex.ysize = std::stoul(args[4]);
 	subtex.xanchor = std::stoi(args[5]);
