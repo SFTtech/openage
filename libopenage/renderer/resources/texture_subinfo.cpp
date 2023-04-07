@@ -23,8 +23,8 @@ Texture2dSubInfo::Texture2dSubInfo(int32_t x,
 		static_cast<float>(h) / atlas_height,
 	},
 	anchor_params{
-		static_cast<float>(cx) / atlas_width,
-		static_cast<float>(cy) / atlas_height} {}
+		static_cast<float>(cx) / w,
+		static_cast<float>(cy) / h} {}
 
 const Eigen::Vector2i &Texture2dSubInfo::get_pos() const {
 	return this->pos;
