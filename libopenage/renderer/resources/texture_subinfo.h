@@ -27,12 +27,12 @@ public:
      * @param atlas_width Width of the texture atlas containing the subtexture.
      * @param atlas_height Height of the texture atlas containing the subtexture.
 	 */
-	Texture2dSubInfo(uint32_t x,
-	                 uint32_t y,
+	Texture2dSubInfo(int32_t x,
+	                 int32_t y,
 	                 uint32_t w,
 	                 uint32_t h,
-	                 uint32_t cx,
-	                 uint32_t cy,
+	                 int32_t cx,
+	                 int32_t cy,
 	                 uint32_t atlas_width,
 	                 uint32_t atlas_height);
 
@@ -43,7 +43,7 @@ public:
      *
      * @return Pixel coordinates as 2-dimensional Eigen vector: (x, y)
      */
-	const Eigen::Vector2<uint32_t> &get_pos() const;
+	const Eigen::Vector2i &get_pos() const;
 
 	/**
      * Get the size of the subtexture.
@@ -53,11 +53,11 @@ public:
 	const Eigen::Vector2<uint32_t> &get_size() const;
 
 	/**
-     * Get the position of the subtexture anchor within the atlas.
+     * Get the position of the subtexture anchor.
      *
      * @return Anchor coordinates as 2-dimensional Eigen vector: (x, y)
      */
-	const Eigen::Vector2<uint32_t> &get_anchor_pos() const;
+	const Eigen::Vector2i &get_anchor_pos() const;
 
 	/**
      * Get the normalized shader parameters of the subtexture.
@@ -81,7 +81,7 @@ private:
 	/**
 	 * Position within the atlas (top left corner: x, y).
 	 */
-	Eigen::Vector2<uint32_t> pos;
+	Eigen::Vector2i pos;
 
 	/**
 	 * Size in pixels (width, height).
@@ -89,9 +89,9 @@ private:
 	Eigen::Vector2<uint32_t> size;
 
 	/**
-	 * Subtexture anchor within the atlas (x, y).
+	 * Subtexture anchor relative to the subtexture's top left (x, y).
 	 */
-	Eigen::Vector2<uint32_t> anchor_pos;
+	Eigen::Vector2i anchor_pos;
 
 	/**
      * Pre-computed normalized coordinates of the subtexture.
