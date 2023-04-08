@@ -23,8 +23,8 @@ Texture2dSubInfo::Texture2dSubInfo(int32_t x,
 		static_cast<float>(h) / atlas_height,
 	},
 	anchor_params{
-		static_cast<float>(cx) / w,
-		static_cast<float>(cy) / h} {}
+		w - 2 * cx,
+		-h + 2 * cy} {}
 
 const Eigen::Vector2i &Texture2dSubInfo::get_pos() const {
 	return this->pos;
@@ -42,7 +42,7 @@ const Eigen::Vector4f &Texture2dSubInfo::get_tile_params() const {
 	return this->tile_params;
 }
 
-const Eigen::Vector2f &Texture2dSubInfo::get_anchor_params() const {
+const Eigen::Vector2i &Texture2dSubInfo::get_anchor_params() const {
 	return this->anchor_params;
 }
 

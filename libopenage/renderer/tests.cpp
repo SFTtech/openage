@@ -764,10 +764,10 @@ void renderer_demo_3(const util::Path &path) {
 
 	// Game entities
 	auto world0 = render_factory->add_world_render_entity();
-	world0->update(0, util::Vector3f(3.0f, 3.0f, 0.0f), path["assets"]["test"]["textures"]["test_gaben.sprite"]);
+	world0->update(0, util::Vector3f(-0.3f, -0.3f, 0.0f), path["assets"]["test"]["textures"]["test_gaben.sprite"]);
 
 	auto world1 = render_factory->add_world_render_entity();
-	world1->update(1, util::Vector3f(7.5f, 6.0f, 0.0f), path["assets"]["test"]["textures"]["test_missing.sprite"]);
+	world1->update(1, util::Vector3f(0.75f, 0.60f, 0.0f), path["assets"]["test"]["textures"]["test_missing.sprite"]);
 
 	// Zoom in/out with mouse wheel
 	window->add_mouse_wheel_callback([&](const QWheelEvent &ev) {
