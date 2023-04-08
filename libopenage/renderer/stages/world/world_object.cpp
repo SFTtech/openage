@@ -109,8 +109,13 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 
 		// TODO: Use actual position from coordinate system
 		auto pos = this->position;
-		pos = pos + Eigen::Vector3f(-5.0f, -5.0f, 0.0f);
-		pos = pos * 0.1f;
+		// Positional offset using anchor point
+		auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
+		auto anchor_offset = Eigen::Vector3f(
+			scale * (static_cast<float>(anchor[0]) / screen_size[0]),
+			scale * (static_cast<float>(anchor[1]) / screen_size[1]),
+			0.0f);
+		pos = pos + anchor_offset;
 		model.pretranslate(pos);
 		auto model_m = model.matrix();
 

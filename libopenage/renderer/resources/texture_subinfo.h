@@ -60,22 +60,32 @@ public:
 	const Eigen::Vector2i &get_anchor_pos() const;
 
 	/**
-     * Get the normalized shader parameters of the subtexture.
+     * Get the normalized shader parameters of the subtexture. Use in the shader
+     * to sample the subtexture from the atlas.
      *
-     * Coordinates are in range (0.0, 1.0) and can be passed directly to a shader uniform.
+     * Values are in range (0.0, 1.0) and can be passed directly to a shader uniform.
+     * These parameters pre-computed and should be used whenever possible.
      *
      * @return Tile parameters as 4-dimensional Eigen vector: (x, y, width, height)
      */
 	const Eigen::Vector4f &get_tile_params() const;
 
 	/**
-     * Get the normalized shader parameters of the subtexture center.
+     * Get the anchor parameters of the subtexture center. Used in the model matrix
+     * to calculate the offset position for displaying the subtexture inside
+     * the OpenGL viewport.
      *
-     * Coordinates are in range (0.0, 1.0) and can be passed directly to a shader uniform.
+     * The parameters represent the pixel distance of the anchor point to the subtexture
+     * center, multiplied by 2 to account for the normalized viewport size (which is 2.0
+     * because it spans from -1.0 to 1.0).
      *
-     * @return Pixel coordinates as 2-dimensional Eigen vector: (x, y)
+     * To get the normalized offset distance, the parameters have to be divided by the
+     * viewport size and then multiplied by additional scaling factors (e.g. from the
+     * animation).
+     *
+     * @return Parameters as 2-dimensional Eigen vector: (x, y)
      */
-	const Eigen::Vector2f &get_anchor_params() const;
+	const Eigen::Vector2i &get_anchor_params() const;
 
 private:
 	/**
@@ -101,7 +111,7 @@ private:
 	/**
      * Pre-computed normalized coordinates of the subtexture anchor.
      */
-	Eigen::Vector2f anchor_params;
+	Eigen::Vector2i anchor_params;
 };
 
 } // namespace openage::renderer::resources
