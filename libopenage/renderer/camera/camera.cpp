@@ -115,6 +115,10 @@ void Camera::resize(size_t width, size_t height) {
 	this->viewport_size = util::Vector2s(width, height);
 }
 
+float Camera::get_zoom() const {
+	return this->zoom;
+}
+
 const Eigen::Matrix4f &Camera::get_view_matrix() {
 	if (not this->moved) {
 		return this->view;
