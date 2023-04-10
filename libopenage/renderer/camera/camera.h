@@ -127,6 +127,13 @@ public:
 	void resize(size_t width, size_t height);
 
 	/**
+      * Get the current zoom level of the camera.
+      *
+      * @return Zoom level.
+      */
+	float get_zoom() const;
+
+	/**
       * Get the view matrix for this camera.
       *
       * @return Camera view matrix.
