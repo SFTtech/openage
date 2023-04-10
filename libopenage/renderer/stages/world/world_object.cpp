@@ -100,8 +100,8 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 		auto screen_size = this->camera->get_viewport_size();
 		auto tex_size = tex_info->get_subtex_info(subtex_idx).get_size();
 
-		// Use scalefactor from animation
-		auto scale = anim_info->get_scalefactor();
+		// Scale using scalefactor from animation adjusted by zoom
+		auto scale = anim_info->get_scalefactor() / this->camera->get_zoom();
 		model.prescale(Eigen::Vector3f{
 			scale * (static_cast<float>(tex_size[0]) / screen_size[0]),
 			scale * (static_cast<float>(tex_size[1]) / screen_size[1]),
