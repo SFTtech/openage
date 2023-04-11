@@ -12,7 +12,13 @@
 #include "coord/declarations.h"
 #include "coord/phys.h"
 
-namespace openage::coord {
+namespace openage {
+
+namespace renderer::camera {
+class Camera;
+}
+
+namespace coord {
 
 
 /*
@@ -29,6 +35,8 @@ struct scene2_delta : CoordNeSeRelative<scene_t, scene2, scene2_delta> {
 
 	scene3_delta to_scene3() const;
 	phys2_delta to_phys2() const;
+	Eigen::Vector3f to_gl() const;
+	Eigen::Vector3f to_vulkan() const;
 };
 
 struct scene2 : CoordNeSeAbsolute<scene_t, scene2, scene2_delta> {
@@ -46,13 +54,12 @@ struct scene3_delta : CoordNeSeUpRelative<scene_t, scene3, scene3_delta> {
 	using CoordNeSeUpRelative<scene_t, scene3, scene3_delta>::CoordNeSeUpRelative;
 
 	double length() const;
+	scene3_delta normalize(double length = 1) const;
 
 	scene2_delta to_scene2() const;
 	phys3_delta to_phys3() const;
-
-	scene3_delta normalize(double length = 1) const;
-
-	camgame_delta to_camgame(const CoordManager &mgr) const;
+	Eigen::Vector3f to_gl() const;
+	Eigen::Vector3f to_vulkan() const;
 };
 
 struct scene3 : CoordNeSeUpAbsolute<scene_t, scene3, scene3_delta> {
@@ -62,14 +69,11 @@ struct scene3 : CoordNeSeUpAbsolute<scene_t, scene3, scene3_delta> {
 	phys3 to_phys3() const;
 	Eigen::Vector3f to_gl() const;
 	Eigen::Vector3f to_vulkan() const;
-
-	camgame to_camgame(const CoordManager &mgr) const;
-	viewport to_viewport(const CoordManager &mgr) const;
-	camhud to_camhud(const CoordManager &mgr) const;
 };
 
 
-} // namespace openage::coord
+} // namespace coord
+} // namespace openage
 
 namespace std {
 
