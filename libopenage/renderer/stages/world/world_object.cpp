@@ -108,7 +108,7 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 			1.0f});
 
 		// TODO: Use actual position from coordinate system
-		auto pos = this->position;
+		auto pos = this->position.to_gl();
 		// Positional offset using anchor point
 		auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
 		auto anchor_offset = Eigen::Vector3f(
@@ -127,7 +127,7 @@ uint32_t WorldObject::get_id() {
 	return this->ref_id;
 }
 
-const Eigen::Vector3f WorldObject::get_position() {
+const coord::scene3 WorldObject::get_position() {
 	return this->position;
 }
 

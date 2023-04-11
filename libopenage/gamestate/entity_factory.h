@@ -5,9 +5,9 @@
 #include <memory>
 #include <shared_mutex>
 
+#include "coord/phys.h"
 #include "gamestate/types.h"
 #include "util/path.h"
-#include "util/vector.h"
 
 namespace openage {
 
@@ -35,7 +35,7 @@ public:
      *
      * @return New game entity.
      */
-	std::shared_ptr<GameEntity> add_game_entity(util::Vector3f pos,
+	std::shared_ptr<GameEntity> add_game_entity(coord::phys3 pos,
 	                                            util::Path &texture_path);
 
 	/**
