@@ -1,13 +1,13 @@
-// Copyright 2016-2019 the openage authors. See copying.md for legal info.
+// Copyright 2016-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "../util/misc.h"
 #include "../util/hash.h"
+#include "../util/misc.h"
 
-#include "declarations.h"
 #include "coord_nese.gen.h"
 #include "coord_neseup.gen.h"
+#include "declarations.h"
 
 namespace openage {
 
@@ -26,7 +26,7 @@ struct phys2_delta : CoordNeSeRelative<phys_t, phys2, phys2_delta> {
 	using CoordNeSeRelative<phys_t, phys2, phys2_delta>::CoordNeSeRelative;
 
 	double length() const;
-	phys2_delta normalize(double length=1) const;
+	phys2_delta normalize(double length = 1) const;
 	phys3_delta to_phys3() const;
 };
 
@@ -34,7 +34,7 @@ struct phys2 : CoordNeSeAbsolute<phys_t, phys2, phys2_delta> {
 	using CoordNeSeAbsolute<phys_t, phys2, phys2_delta>::CoordNeSeAbsolute;
 
 	tile to_tile() const;
-	phys3 to_phys3(const Terrain &terrain, phys_t altitude=0) const;
+	phys3 to_phys3(const Terrain &terrain, phys_t altitude = 0) const;
 
 	double distance(phys2 other) const;
 };
@@ -48,9 +48,9 @@ struct phys3_delta : CoordNeSeUpRelative<phys_t, phys3, phys3_delta> {
 	// we don't allow ambiguous conversions.
 
 	double length() const;
-	phys3_delta normalize(double length=1) const;
+	phys3_delta normalize(double length = 1) const;
 
-	camgame_delta to_camgame(const CoordManager &mgr) const;
+	[[deprecated]] camgame_delta to_camgame(const CoordManager &mgr) const;
 	phys2_delta to_phys2() const;
 };
 
@@ -61,9 +61,9 @@ struct phys3 : CoordNeSeUpAbsolute<phys_t, phys3, phys3_delta> {
 	tile to_tile() const;
 	phys2 to_phys2() const;
 
-	camgame to_camgame(const CoordManager &mgr) const;
-	viewport to_viewport(const CoordManager &mgr) const;
-	camhud to_camhud(const CoordManager &mgr) const;
+	[[deprecated]] camgame to_camgame(const CoordManager &mgr) const;
+	[[deprecated]] viewport to_viewport(const CoordManager &mgr) const;
+	[[deprecated]] camhud to_camhud(const CoordManager &mgr) const;
 };
 
 
@@ -72,9 +72,9 @@ struct phys3 : CoordNeSeUpAbsolute<phys_t, phys3, phys3_delta> {
 
 namespace std {
 
-template<>
+template <>
 struct hash<openage::coord::phys3> {
-	size_t operator ()(const openage::coord::phys3 &pos) const {
+	size_t operator()(const openage::coord::phys3 &pos) const {
 		size_t hash = openage::util::type_hash<openage::coord::phys3>();
 		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(pos.ne));
 		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(pos.se));

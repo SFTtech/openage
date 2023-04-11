@@ -1,4 +1,4 @@
-// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+// Copyright 2016-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -24,7 +24,7 @@ struct camgame_delta : CoordXYRelative<pixel_t, camgame, camgame_delta> {
 	 *
 	 * The user needs to manually give the 'up' value of the phys3 result.
 	 */
-	phys3_delta to_phys3(const CoordManager &mgr, phys_t up=phys_t::zero()) const;
+	phys3_delta to_phys3(const CoordManager &mgr, phys_t up = phys_t::zero()) const;
 	viewport_delta to_viewport() const;
 };
 
@@ -42,8 +42,8 @@ struct camgame : CoordXYAbsolute<pixel_t, camgame, camgame_delta> {
 	 */
 	viewport to_viewport(const CoordManager &mgr) const;
 	camhud to_camhud(const CoordManager &mgr) const;
-	phys3 to_phys3(const CoordManager &mgr, phys_t up=phys_t::zero()) const;
-	tile to_tile(const CoordManager &mgr, phys_t up=phys_t::zero()) const;
+	phys3 to_phys3(const CoordManager &mgr, phys_t up = phys_t::zero()) const;
+	tile to_tile(const CoordManager &mgr, phys_t up = phys_t::zero()) const;
 };
 
 
@@ -78,8 +78,8 @@ struct viewport : CoordXYAbsolute<pixel_t, viewport, viewport_delta> {
 	using CoordXYAbsolute<pixel_t, viewport, viewport_delta>::CoordXYAbsolute;
 
 	camgame to_camgame(const CoordManager &mgr) const;
-	phys3 to_phys3(const CoordManager &mgr, phys_t up=phys_t::zero()) const;
-	tile to_tile(const CoordManager &mgr, phys_t up=phys_t::zero()) const;
+	phys3 to_phys3(const CoordManager &mgr, phys_t up = phys_t::zero()) const;
+	tile to_tile(const CoordManager &mgr, phys_t up = phys_t::zero()) const;
 	camhud to_camhud(const CoordManager &mgr) const;
 };
 
@@ -89,7 +89,7 @@ struct input_delta : CoordXYRelative<pixel_t, input, input_delta> {
 
 	viewport_delta to_viewport(const CoordManager &mgr) const;
 	camgame_delta to_camgame(const CoordManager &mgr) const;
-	phys3_delta to_phys3(const CoordManager &mgr, phys_t up=phys_t::zero()) const;
+	phys3_delta to_phys3(const CoordManager &mgr, phys_t up = phys_t::zero()) const;
 };
 
 
@@ -98,8 +98,9 @@ struct input : CoordXYAbsolute<pixel_t, input, input_delta> {
 
 	viewport to_viewport(const CoordManager &mgr) const;
 	camgame to_camgame(const CoordManager &mgr) const;
-	phys3 to_phys3(const CoordManager &mgr, phys_t up=phys_t::zero()) const;
+	phys3 to_phys3(const CoordManager &mgr, phys_t up = phys_t::zero()) const;
 };
 
 
-}} // openage::coord
+} // namespace coord
+} // namespace openage
