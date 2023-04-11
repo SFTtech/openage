@@ -7,6 +7,7 @@ add_sources(libopenage
 	declarations.cpp
 	phys.cpp
 	pixel.cpp
+    scene.cpp
 	term.cpp
 	tile.cpp
 )
