@@ -5,9 +5,10 @@
 #include <eigen3/Eigen/Dense>
 #include <shared_mutex>
 
+#include "coord/phys.h"
+#include "coord/scene.h"
 #include "curve/curve.h"
 #include "util/path.h"
-#include "util/vector.h"
 
 namespace openage::renderer::world {
 
@@ -25,7 +26,7 @@ public:
 	 * @param time Simulation time of the update.
 	 */
 	void update(const uint32_t ref_id,
-	            const util::Vector3f position,
+	            const coord::phys3 position,
 	            const util::Path sprite_path,
 	            const curve::time_t time = 0.0);
 
@@ -41,7 +42,7 @@ public:
 	 *
 	 * @return Position of the entity.
 	 */
-	const Eigen::Vector3f get_position();
+	const coord::scene3 get_position();
 
 	/**
      * Get the texture path.
@@ -88,7 +89,7 @@ private:
 	/**
 	 * Position inside the game world.
 	 */
-	Eigen::Vector3f position;
+	coord::scene3 position;
 
 	/**
 	 * Path to the texture.

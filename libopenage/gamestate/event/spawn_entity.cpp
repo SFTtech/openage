@@ -2,9 +2,9 @@
 
 #include "spawn_entity.h"
 
+#include "coord/phys.h"
 #include "gamestate/entity_factory.h"
 #include "gamestate/game_state.h"
-#include "util/vector.h"
 
 namespace openage::gamestate::event {
 
@@ -41,7 +41,7 @@ void SpawnEntityHandler::invoke(openage::event::Loop & /* loop */,
                                 const param_map & /* params */) {
 	auto gstate = std::dynamic_pointer_cast<gamestate::GameState>(state);
 
-	auto entity = this->factory->add_game_entity(util::Vector3f(0, 0, 0),
+	auto entity = this->factory->add_game_entity(coord::phys3(0, 0, 0),
 	                                             this->texture_path);
 	gstate->add_game_entity(entity);
 }

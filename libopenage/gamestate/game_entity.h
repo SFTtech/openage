@@ -2,9 +2,9 @@
 
 #pragma once
 
+#include "coord/phys.h"
 #include "gamestate/types.h"
 #include "util/path.h"
-#include "util/vector.h"
 
 namespace openage {
 
@@ -20,7 +20,7 @@ namespace gamestate {
 class GameEntity {
 public:
 	GameEntity(const entity_id_t id,
-	           util::Vector3f pos,
+	           coord::phys3 pos,
 	           util::Path &texture_path);
 	~GameEntity() = default;
 
@@ -45,7 +45,7 @@ private:
 	// Unique identifier
 	entity_id_t id;
 	// position in the game world
-	util::Vector3f pos;
+	coord::phys3 pos;
 	// path to a texture
 	util::Path texture_path;
 
