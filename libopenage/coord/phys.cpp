@@ -1,12 +1,13 @@
-// Copyright 2016-2019 the openage authors. See copying.md for legal info.
+// Copyright 2016-2023 the openage authors. See copying.md for legal info.
 
 #include "phys.h"
 
-#include "coordmanager.h"
-#include "tile.h"
-#include "pixel.h"
-#include "../terrain/terrain.h"
-#include "../util/math.h"
+#include "coord/coordmanager.h"
+#include "coord/pixel.h"
+#include "coord/scene.h"
+#include "coord/tile.h"
+#include "terrain/terrain.h"
+#include "util/math.h"
 
 
 namespace openage::coord {
@@ -26,6 +27,10 @@ phys2 phys3::to_phys2() const {
 	return phys2{this->ne, this->se};
 }
 
+scene3 phys3::to_scene3() const {
+	return scene3{this->ne, this->se, this->up};
+}
+
 
 double phys2_delta::length() const {
 	return std::hypot(this->ne.to_double(), this->se.to_double());
@@ -41,18 +46,26 @@ phys3_delta phys2_delta::to_phys3() const {
 	return phys3_delta{this->ne, this->se, 0};
 }
 
+scene2_delta phys2_delta::to_scene2() const {
+	return scene2_delta(this->ne, this->se);
+}
+
 
 double phys2::distance(phys2 other) const {
 	return (*this - other).length();
 }
 
 
-phys3 phys2::to_phys3(const Terrain &/* terrain */, phys_t altitude) const {
+phys3 phys2::to_phys3(const Terrain & /* terrain */, phys_t altitude) const {
 	// TODO: once terrain elevations have been implemented,
 	//       query the terrain elevation at {ne, se}.
 	phys_t elevation = 0;
 
 	return phys3{this->ne, this->se, elevation + altitude};
+}
+
+scene2 phys2::to_scene2() const {
+	return scene2(this->ne, this->se);
 }
 
 
@@ -67,13 +80,16 @@ camgame_delta phys3_delta::to_camgame(const CoordManager &mgr) const {
 	// add scaling (w/2 for x, h/2 for y)
 	return camgame_delta{
 		static_cast<camgame_delta::elem_t>((x * (mgr.tile_size.x / 2)).to_int()),
-		static_cast<camgame_delta::elem_t>((y * (mgr.tile_size.y / 2)).to_int())
-	};
+		static_cast<camgame_delta::elem_t>((y * (mgr.tile_size.y / 2)).to_int())};
 }
 
 
 phys2_delta phys3_delta::to_phys2() const {
 	return phys2_delta{this->ne, this->se};
+}
+
+scene3_delta phys3_delta::to_scene3() const {
+	return scene3_delta{this->ne, this->se, this->up};
 }
 
 
