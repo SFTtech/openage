@@ -12,13 +12,13 @@ WorldRenderEntity::WorldRenderEntity() :
 }
 
 void WorldRenderEntity::update(const uint32_t ref_id,
-                               const util::Vector3f position,
+                               const coord::phys3 position,
                                const util::Path sprite_path,
                                const curve::time_t time) {
 	std::unique_lock lock{this->mutex};
 
 	this->ref_id = ref_id;
-	this->position = Eigen::Vector3f{position[0], position[1], position[2]};
+	this->position = position.to_scene3();
 	this->sprite_path = sprite_path;
 	this->changed = true;
 	this->last_update = time;
@@ -30,7 +30,7 @@ uint32_t WorldRenderEntity::get_id() {
 	return this->ref_id;
 }
 
-const Eigen::Vector3f WorldRenderEntity::get_position() {
+const coord::scene3 WorldRenderEntity::get_position() {
 	std::shared_lock lock{this->mutex};
 
 	return this->position;

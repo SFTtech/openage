@@ -7,7 +7,7 @@
 namespace openage::gamestate {
 
 GameEntity::GameEntity(uint32_t id,
-                       util::Vector3f pos,
+                       coord::phys3 pos,
                        util::Path &texture_path) :
 	id{id},
 	pos{pos},

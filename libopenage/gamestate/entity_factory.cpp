@@ -13,7 +13,7 @@ EntityFactory::EntityFactory() :
 	render_factory{nullptr} {
 }
 
-std::shared_ptr<GameEntity> EntityFactory::add_game_entity(util::Vector3f pos,
+std::shared_ptr<GameEntity> EntityFactory::add_game_entity(coord::phys3 pos,
                                                            util::Path &texture_path) {
 	std::unique_lock lock{this->mutex};
 
