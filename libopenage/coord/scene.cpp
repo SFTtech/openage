@@ -1,11 +1,11 @@
-// Copyright 2016-2019 the openage authors. See copying.md for legal info.
+// Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
 #include "scene.h"
 
-#include "../util/math.h"
-#include "coordmanager.h"
-#include "pixel.h"
-#include "tile.h"
+#include "coord/coordmanager.h"
+#include "coord/pixel.h"
+#include "coord/tile.h"
+#include "util/math.h"
 
 
 namespace openage::coord {
@@ -24,6 +24,14 @@ scene3_delta scene2_delta::to_scene3() const {
 
 phys2_delta scene2_delta::to_phys2() const {
 	return phys2_delta(this->ne, this->se);
+}
+
+Eigen::Vector3f scene2_delta::to_gl() const {
+	return Eigen::Vector3f(this->se.to_float(), 0.0f, -this->ne.to_float());
+}
+
+Eigen::Vector3f scene2_delta::to_vulkan() const {
+	return Eigen::Vector3f(this->se.to_float(), -0.0f, -this->ne.to_float());
 }
 
 double scene2::distance(scene2 other) const {
@@ -62,8 +70,12 @@ phys3_delta scene3_delta::to_phys3() const {
 	return phys3_delta(this->ne, this->se, this->up);
 }
 
-camgame_delta scene3_delta::to_camgame(const CoordManager &mgr) const {
-	// TODO
+Eigen::Vector3f scene3_delta::to_gl() const {
+	return Eigen::Vector3f(this->se.to_float(), this->up.to_float(), -this->ne.to_float());
+}
+
+Eigen::Vector3f scene3_delta::to_vulkan() const {
+	return Eigen::Vector3f(this->se.to_float(), -this->up.to_float(), -this->ne.to_float());
 }
 
 scene2 scene3::to_scene2() const {
@@ -80,18 +92,6 @@ Eigen::Vector3f scene3::to_gl() const {
 
 Eigen::Vector3f scene3::to_vulkan() const {
 	return Eigen::Vector3f(this->se.to_float(), -this->up.to_float(), -this->ne.to_float());
-}
-
-camgame scene3::to_camgame(const CoordManager &mgr) const {
-	// TODO
-}
-
-viewport scene3::to_viewport(const CoordManager &mgr) const {
-	return this->to_camgame(mgr).to_viewport(mgr);
-}
-
-camhud scene3::to_camhud(const CoordManager &mgr) const {
-	return this->to_viewport(mgr).to_camhud(mgr);
 }
 
 } // namespace openage::coord
