@@ -57,11 +57,14 @@ void WorldRenderer::update() {
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {
 				// TODO: Use zoom level from camera for view matrix
+				Eigen::Matrix4f model_m = Eigen::Matrix4f::Identity();
 				Eigen::Matrix4f view_m = Eigen::Matrix4f::Identity();
 				Eigen::Matrix4f proj_m = Eigen::Matrix4f::Identity();
 
 				// TODO: Update existing renderable instead of recreating it
 				auto transform_unifs = this->display_shader->new_uniform_input(
+					"model",
+					model_m,
 					"view",
 					view_m,
 					"proj",
@@ -100,7 +103,7 @@ void WorldRenderer::resize(size_t width, size_t height) {
 void WorldRenderer::initialize_render_pass(size_t width,
                                            size_t height,
                                            const util::Path &shaderdir) {
-	auto vert_shader_file = (shaderdir / "world.vert.glsl").open();
+	auto vert_shader_file = (shaderdir / "world_sprite.vert.glsl").open();
 	auto vert_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
