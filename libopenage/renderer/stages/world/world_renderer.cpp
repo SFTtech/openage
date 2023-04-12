@@ -56,7 +56,6 @@ void WorldRenderer::update() {
 
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {
-				// TODO: Use zoom level from camera for view matrix
 				Eigen::Matrix4f model_m = Eigen::Matrix4f::Identity();
 				Eigen::Matrix4f view_m = Eigen::Matrix4f::Identity();
 				Eigen::Matrix4f proj_m = Eigen::Matrix4f::Identity();
@@ -103,14 +102,14 @@ void WorldRenderer::resize(size_t width, size_t height) {
 void WorldRenderer::initialize_render_pass(size_t width,
                                            size_t height,
                                            const util::Path &shaderdir) {
-	auto vert_shader_file = (shaderdir / "world_sprite.vert.glsl").open();
+	auto vert_shader_file = (shaderdir / "world2d.vert.glsl").open();
 	auto vert_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
 		vert_shader_file.read());
 	vert_shader_file.close();
 
-	auto frag_shader_file = (shaderdir / "world.frag.glsl").open();
+	auto frag_shader_file = (shaderdir / "world2d.frag.glsl").open();
 	auto frag_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
