@@ -91,96 +91,31 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 		auto coords = tex_info->get_subtex_info(subtex_idx).get_tile_params();
 		this->uniforms->update("tile_params", coords);
 
-		/* Model matrix */
-		// TODO: Only update on resize
-		auto model = Eigen::Affine3f::Identity();
-
 		// scale and keep widthxheight ratio of texture
 		// when the viewport size changes
 		auto screen_size = this->camera->get_viewport_size();
-		auto tex_size = tex_info->get_subtex_info(subtex_idx).get_size();
+		auto subtex_size = tex_info->get_subtex_info(subtex_idx).get_size();
+		auto scale = anim_info->get_scalefactor() / this->camera->get_zoom();
 
+		// Transformation matrices for finding object position in clip space
 		this->uniforms->update("view", this->camera->get_view_matrix());
 		this->uniforms->update("proj", this->camera->get_projection_matrix());
 
 		// Object world position
-		this->uniforms->update("obj_world_position", this->position.to_gl());
+		this->uniforms->update("obj_world_position", this->position.to_vector());
 
-		auto scale = anim_info->get_scalefactor() / this->camera->get_zoom();
-		// Sprite positional offset using anchor point
+		// Subtex positional offset using anchor point
 		auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
-		auto anchor_offset = Eigen::Vector3f{
+		auto anchor_offset = Eigen::Vector2f{
 			scale * (static_cast<float>(anchor[0]) / screen_size[0]),
-			scale * (static_cast<float>(anchor[1]) / screen_size[1]),
-			0.0f};
+			scale * (static_cast<float>(anchor[1]) / screen_size[1])};
 		this->uniforms->update("anchor_offset", anchor_offset);
 
-		auto scale_vec = Eigen::Vector3f{
-			scale * (static_cast<float>(tex_size[0]) / screen_size[0]),
-			scale * (static_cast<float>(tex_size[1]) / screen_size[1]),
-			1.0f};
+		// Scaling with viewport size and zoom
+		auto scale_vec = Eigen::Vector2f{
+			scale * (static_cast<float>(subtex_size[0]) / screen_size[0]),
+			scale * (static_cast<float>(subtex_size[1]) / screen_size[1])};
 		this->uniforms->update("scale", scale_vec);
-
-		// Scale using scalefactor from animation adjusted by zoom
-		// auto scale = anim_info->get_scalefactor() / this->camera->get_zoom();
-		// model.prescale(Eigen::Vector3f{
-		// 	scale * (static_cast<float>(tex_size[0]) / screen_size[0]),
-		// 	scale * (static_cast<float>(tex_size[1]) / screen_size[1]),
-		// 	1.0f});
-
-		// // TODO: Use actual position from coordinate system
-		// auto pos = this->position.to_gl();
-		// // Positional offset using anchor point
-		// auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
-		// auto anchor_offset = Eigen::Vector3f(
-		// 	scale * (static_cast<float>(anchor[0]) / screen_size[0]),
-		// 	scale * (static_cast<float>(anchor[1]) / screen_size[1]),
-		// 	0.0f);
-		// pos = pos + anchor_offset;
-		// model.pretranslate(pos);
-		// auto model_m = model.matrix();
-
-		// this->uniforms->update("model", model_m);
-		// this->uniforms->update("view", this->camera->get_view_matrix());
-		// this->uniforms->update("proj", this->camera->get_projection_matrix());
-
-		// /* View matrix */
-		// auto view_m = this->camera->get_view_matrix();
-		// auto proj_m = this->camera->get_projection_matrix();
-		// auto v_loc = this->position.to_gl();
-		// Eigen::Vector4f v_view = view_m * Eigen::Vector4f(v_loc[0], v_loc[1], v_loc[2], 1.0f);
-		// Eigen::Vector4f v_proj = proj_m * v_view;
-
-		// auto m_model_move = Eigen::Affine3f::Identity();
-		// m_model_move.prescale(Eigen::Vector3f{
-		// 	scale * (static_cast<float>(tex_size[0]) / screen_size[0]),
-		// 	scale * (static_cast<float>(tex_size[1]) / screen_size[1]),
-		// 	1.0f});
-		// m_model_move.pretranslate(Eigen::Vector3f(v_proj[0], v_proj[1], v_proj[2]) + anchor_offset);
-		// Eigen::Vector4f v_mod = m_model_move.matrix() * Eigen::Vector4f(-1.0f, -1.0f, 0.0f, 1.0f);
-		// log::log(MSG(dbg) << "model" << m_model_move.matrix());
-		// log::log(MSG(dbg) << "view" << v_view);
-		// log::log(MSG(dbg) << "proj" << v_proj);
-		// Eigen::Vector4f v = v_proj;
-
-
-		// Eigen::Vector4f obj_world = proj_m * view_m * Eigen::Vector4f(v_loc[0], v_loc[1], v_loc[2], 1.0f);
-		// obj_world += Eigen::Vector4f(anchor_offset[0],
-		//                              anchor_offset[1],
-		//                              anchor_offset[2],
-		//                              0.0f);
-		// Eigen::Matrix4f ptestmat;
-		// ptestmat << scale * (static_cast<float>(tex_size[0]) / screen_size[0]), 0, 0, obj_world[0],
-		// 	0, scale * (static_cast<float>(tex_size[1]) / screen_size[1]), 0, obj_world[1],
-		// 	0, 0, 1, obj_world[2],
-		// 	0, 0, 0, 1;
-		// log::log(MSG(dbg) << "model" << m_model_move.matrix());
-		// log::log(MSG(dbg) << "ptestmat" << ptestmat);
-		// log::log(MSG(dbg) << "oldmat" << proj_m * view_m * model_m);
-		// log::log(MSG(dbg) << "old_v"
-		//                   << model_m * Eigen::Vector4f(1.0f, -1.0f, 0.0f, 1.0f));
-		// log::log(MSG(dbg) << "new_v"
-		//                   << ptestmat * Eigen::Vector4f(1.0f, -1.0f, 0.0f, 1.0f));
 	}
 }
 

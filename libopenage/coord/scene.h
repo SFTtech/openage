@@ -35,8 +35,7 @@ struct scene2_delta : CoordNeSeRelative<scene_t, scene2, scene2_delta> {
 
 	scene3_delta to_scene3() const;
 	phys2_delta to_phys2() const;
-	Eigen::Vector3f to_gl() const;
-	Eigen::Vector3f to_vulkan() const;
+	Eigen::Vector3f to_vector() const;
 };
 
 struct scene2 : CoordNeSeAbsolute<scene_t, scene2, scene2_delta> {
@@ -46,8 +45,7 @@ struct scene2 : CoordNeSeAbsolute<scene_t, scene2, scene2_delta> {
 
 	scene3 to_scene3(phys_t altitude = 0) const;
 	phys2 to_phys2() const;
-	Eigen::Vector3f to_gl() const;
-	Eigen::Vector3f to_vulkan() const;
+	Eigen::Vector3f to_vector() const;
 };
 
 struct scene3_delta : CoordNeSeUpRelative<scene_t, scene3, scene3_delta> {
@@ -58,8 +56,7 @@ struct scene3_delta : CoordNeSeUpRelative<scene_t, scene3, scene3_delta> {
 
 	scene2_delta to_scene2() const;
 	phys3_delta to_phys3() const;
-	Eigen::Vector3f to_gl() const;
-	Eigen::Vector3f to_vulkan() const;
+	Eigen::Vector3f to_vector() const;
 };
 
 struct scene3 : CoordNeSeUpAbsolute<scene_t, scene3, scene3_delta> {
@@ -67,8 +64,7 @@ struct scene3 : CoordNeSeUpAbsolute<scene_t, scene3, scene3_delta> {
 
 	scene2 to_scene2() const;
 	phys3 to_phys3() const;
-	Eigen::Vector3f to_gl() const;
-	Eigen::Vector3f to_vulkan() const;
+	Eigen::Vector3f to_vector() const;
 };
 
 
