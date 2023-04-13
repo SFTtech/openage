@@ -13,11 +13,11 @@ namespace openage::renderer::camera {
  * Camera direction (= where it looks at).
  * Uses a dimetric perspective like in AoE with the (fixed) angles
  *    yaw   = -135 degrees
- *    pitch = 30 degrees
+ *    pitch = -30 degrees
  */
 static const Eigen::Vector3f cam_direction{
 	-1 * (sqrt(6) / 4),
-	0.5f,
+	-0.5f,
 	-1 * (sqrt(6) / 4),
 };
 

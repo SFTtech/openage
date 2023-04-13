@@ -29,23 +29,23 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<renderer::camera::CameraManager> &cam_manager) {
 	// arrow movements
 	binding_func_t move_left{[&](const event_arguments & /*args*/) {
-		const auto move_dir = Eigen::Vector3f(1.0f, 0.0f, -1.0f);
-		// half the speed because the relationship between forward/back and
-		// left/right is 1:2 in our ortho projection.
-		cam->move_rel(move_dir, 0.25f);
-	}};
-	binding_func_t move_right{[&](const event_arguments & /*args*/) {
 		const auto move_dir = Eigen::Vector3f(-1.0f, 0.0f, 1.0f);
 		// half the speed because the relationship between forward/back and
 		// left/right is 1:2 in our ortho projection.
 		cam->move_rel(move_dir, 0.25f);
 	}};
+	binding_func_t move_right{[&](const event_arguments & /*args*/) {
+		const auto move_dir = Eigen::Vector3f(1.0f, 0.0f, -1.0f);
+		// half the speed because the relationship between forward/back and
+		// left/right is 1:2 in our ortho projection.
+		cam->move_rel(move_dir, 0.25f);
+	}};
 	binding_func_t move_forward{[&](const event_arguments & /*args*/) {
-		const auto move_dir = Eigen::Vector3f(1.0f, 0.0f, 1.0f);
+		const auto move_dir = Eigen::Vector3f(-1.0f, 0.0f, -1.0f);
 		cam->move_rel(move_dir, 0.5f);
 	}};
 	binding_func_t move_backward{[&](const event_arguments & /*args*/) {
-		const auto move_dir = Eigen::Vector3f(-1.0f, 0.0f, -1.0f);
+		const auto move_dir = Eigen::Vector3f(1.0f, 0.0f, 1.0f);
 		cam->move_rel(move_dir, 0.5f);
 	}};
 
