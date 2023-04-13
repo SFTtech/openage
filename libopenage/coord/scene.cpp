@@ -27,7 +27,7 @@ phys2_delta scene2_delta::to_phys2() const {
 }
 
 Eigen::Vector3f scene2_delta::to_vector() const {
-	return Eigen::Vector3f(-this->se.to_float(), 0.0f, this->ne.to_float());
+	return Eigen::Vector3f(this->se.to_float(), 0.0f, -this->ne.to_float());
 }
 
 double scene2::distance(scene2 other) const {
@@ -43,7 +43,7 @@ phys2 scene2::to_phys2() const {
 }
 
 Eigen::Vector3f scene2::to_vector() const {
-	return Eigen::Vector3f(-this->se.to_float(), 0.0f, this->ne.to_float());
+	return Eigen::Vector3f(this->se.to_float(), 0.0f, -this->ne.to_float());
 }
 
 double scene3_delta::length() const {
@@ -63,7 +63,7 @@ phys3_delta scene3_delta::to_phys3() const {
 }
 
 Eigen::Vector3f scene3_delta::to_vector() const {
-	return Eigen::Vector3f(-this->se.to_float(), this->up.to_float(), this->ne.to_float());
+	return Eigen::Vector3f(this->se.to_float(), this->up.to_float(), -this->ne.to_float());
 }
 
 scene2 scene3::to_scene2() const {
@@ -75,7 +75,7 @@ phys3 scene3::to_phys3() const {
 }
 
 Eigen::Vector3f scene3::to_vector() const {
-	return Eigen::Vector3f(-this->se.to_float(), this->up.to_float(), this->ne.to_float());
+	return Eigen::Vector3f(this->se.to_float(), this->up.to_float(), -this->ne.to_float());
 }
 
 } // namespace openage::coord

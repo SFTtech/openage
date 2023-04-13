@@ -143,14 +143,14 @@ As you can see, the workflow for both render stages is roughly the same and invo
 
 ### Camera
 
-What parts of the scene is shown on screen is controlled by the `Camera` class. The camera is handled like an object in the rendered 3D scene that determines what is displayed depending on its position, zoom level and angle. Position and zoom level of the camera can be changed at runtime, while the angle is fixed to the dimetric/isometric view used in Age of Empires games. More precisely, the camera uses a yaw of `-135` degrees and a pitch of `30` degrees.
+What parts of the scene is shown on screen is controlled by the `Camera` class. The camera is handled like an object in the rendered 3D scene that determines what is displayed depending on its position, zoom level and angle. Position and zoom level of the camera can be changed at runtime, while the angle is fixed to the dimetric/isometric view used in Age of Empires games. More precisely, the camera uses a yaw of `-135` degrees and a pitch of `-30` degrees (pointed in the `(-x, -y, -z)` direction in the OpenGL coordinate system).
 
 The `Camera` class provides the following methods for positioning the camera in the scene:
 
 - `move_to(...)`: Move to a specific scene position.
 - `move_rel(...)`: Move relative to the position using a direction vector. This is usually used to move the camera with key presses or mouse movements.
 - `look_at_scene(...)`: Point the camera on a position in the scene. This will move the camera in such a way that the target position is in the center of the viewport.
-- `look_at_coord(...)`: Same as `look_at_scene(...)` but using ingame coordinates as input.
+- `look_at_coord(...)`: Same as `look_at_scene(...)` but using openage's `coord::scene3` coordinates as input.
 
 Zoom levels can also be adjusted with these methods:
 
