@@ -4,14 +4,21 @@ Comprehensive list of all coordinate systems
 Physical Coordinates
 --------------------
 
-A coordinate in such a system describes positions in the game world.
+A coordinate in such a system describes positions in the 3D space of the game world and rendering scene.
 
-Game world positions are stored in NE (northeast), SE (southeast) and UP (elevation).
+Positions are stored in NE (northeast), SE (southeast) and UP (elevation).
 
+Units for distances are terrain units (tu) and terrain elevation units (teu).
 
 ### `phys2/phys3`
 
-Physics coordinates
+Physics coordinates in the game world.
+
+Used in these systems:
+* Core engine
+* Gamestate
+* Game entity (unit/building/projectile/...) positions
+
 Orthonormal 2D/3D (NE, SE)/(NE, SE, UP), in tu/teu
 Fixed-point integer with a 16-bit fractional part.
 
@@ -27,13 +34,37 @@ A unit at `(8, 8)` is at the center of chunk `(0, 0)`.
  * SE: south-east, in tu (terrain length unit)
  * UP: guess what, in teu (terrain elevation unit)
 
-We believe that `1 teu = 1 tu / sqrt(8)` (from aspect ration calculations).
-The actual relation is pretty irrelevant, though.
+### `scene2/scene3`
 
-Given in these systems:
- * Camera position (where does the cam look at?)
- * Unit positions
- * Projectiles
+Same as `phys2/phys3` but for usage in the renderer. All `phys2/phys3`
+passed to the renderer are eventually converted to `scene2/scene3`.
+
+Used in these systems:
+* World renderer (sprite renderer)
+* Terrain renderer
+* Camera positioning
+
+`scene2/scene3` types can be converted to Eigen vectors that are used for
+rendering operations, e.g. creating uniforms, matrix transformations,
+vertex calculations, etc.
+
+Eigen vectors are created from `scene3` coordinates using this transformation:
+
+`Eigen(x, y, z) = (-SE, UP / sqrt(8), NE)`
+
+This will ensure that objects at coordinates are correctly displayed when using
+the camera (i.e. the *north east* of a coordinate will also be display in the
+*north east* when using the renderer camera).
+
+UP is divided by `sqrt(8)` to mimic AoE2 terrain heights (from aspect ration calculations),
+This means that a coordinate elevation of `1 teu` is displayed at height `1 / sqrt(8)` in
+the 3D scene. The actual relation is pretty irrelevant though and could be adjusted
+with other values.
+
+Eigen vectors created from `scene2` coordinates have a fixed `y` value of
+`0.0f` but are otherwise the same:
+
+`Eigen(x, y, z) = (-SE, 0.0, NE)`
 
 
 ### `tile/tile3`
@@ -45,8 +76,8 @@ Identical to phys2/phys3 systems, but uses integers
 
 The center of a tile has phys coordinates `(0.5, 0.5)`.
 
-Given in these systems:
- * Terrain tiles
+Used in these systems:
+ * Terrain
  * Buildings
 
 
@@ -57,7 +88,7 @@ Orthonormal 2D (NE, SE), integer, in 16tu/16teu
 
 Similar to tile system, but describes chunks of `16x16` tiles
 
-Given in these systems:
+Used in these systems:
  * Chunks
 
 
@@ -69,15 +100,17 @@ Coordinates in these systems designate a position on the screen plane.
 
 ### `viewport`
 
+**Deprecated:** *replaced by `scene2/scene3` and new renderer*
+
 Viewport coordinates. Used for rendering.
 Orthonormal 2D `(x, y)`, integer, in pixels
 
 Origin is bottom left corner of viewport, positive in right and up directions
 
-Given in this system:
+Used in these systems:
  * Renderer OpenGL viewport
 
-** For display, all other coordinates are converted to `viewport` eventually. **
+**For display, all other coordinates are converted to `viewport` eventually.**
 
 
 ### `input`
@@ -86,6 +119,9 @@ Coordinates used for input events.
 Orthonormal 2D `(x, y)`, integer, in pixels
 
 Origin is the top left corner of the viewport, positive in right and down directions
+
+Used in these systems:
+* Input manager
 
 
 ### `camgame`
@@ -117,17 +153,18 @@ Conversions
 
 ### For rendering
 
-Depending on whether objects are rendered as part of hud or by the game
-camera, their coordinates are transformed to `camgame` or `camhud`,
-then to `viewport` coordinates which are then drawn on screen.
+Depending on whether objects are inside the game world, rendered as part of hud or
+the GUI, different conversion take place.
 
+* Object that are part of the game world are converted from `phys` to `scene` when passed to the renderer, and finally from `scene` to Eigen vectors when passed to the GPU
+* HUD objects for ingame objects (e.g. HP bars for units) are transformed from `phys` to `camhud`
 
 ### For input processing
 
 Again depending on whether inputs were aimed at an HUD object or an
 entity rendered by the game camera, they (i.e. mouse clicks) are
-transformed from input to camgame or camhud.
-camgame coordinates can then further be converted to phys coordinates,
+transformed from input to `phys` or `camhud`.
+`camgame` coordinates can then further be converted to `phys` coordinates,
 for mapping the inputs to physics objects.
 
 Idea: HUD drawing code will register HUD objects with the engine
@@ -138,21 +175,21 @@ and checks whether the mouse click lies within one of the rectangles
 ### Possible conversions
 
 ```
-
-phys2 <--------> tile <--------> chunk
-  |                |
-  |                |
-phys3 <--------> tile3
-  |
-  |
-camgame
-  |
-  |
-viewport <----------> camhud <------> term
-  |
-  |
-input
-
+scene2 <---> phys2 <--------> tile <--------> chunk
+   |           |                |
+   |           |                |
+   |           |                |
+scene3 <---> phys3 <--------> tile3
+               |
+               |
+               |
+             camgame
+               |
+               |
+             viewport <----------> camhud <------> term
+               |
+               |
+             input
 ```
 
 ### Translation details
@@ -177,8 +214,9 @@ when translating a coordinate of one system to another.
 
 * `chunk` -> `tile`: needs tile-on-chunk coordinates
 * `tile` -> `phys2`: needs position-on-tile coordinates
-* `phys2` -> `phys3`: needs z component ()
-* `tile` -> `tile3`: needs z component (elevation)
-* `camgame` -> `phys3`: needs z component (elevation above terrain.
+* `phys2` -> `phys3`: needs UP component ()
+* `scene2` -> `scene3`: needs UP component ()
+* `tile` -> `tile3`: needs UP component (elevation)
+* `camgame` -> `phys3`: needs UP component (elevation above terrain.
   reason: intersection between ray through camera and the terrain,
   e.g. for 'move here' command on a hill)
