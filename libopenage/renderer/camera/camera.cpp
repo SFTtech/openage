@@ -69,12 +69,9 @@ void Camera::look_at_scene(Eigen::Vector3f scene_pos) {
 	this->move_to(new_pos);
 }
 
-void Camera::look_at_coord(util::Vector3f coord_pos) {
+void Camera::look_at_coord(coord::scene3 coord_pos) {
 	// convert coord pos to scene pos
-	auto scene_pos = Eigen::Vector3f(
-		-coord_pos[1],
-		coord_pos[2],
-		coord_pos[0]);
+	auto scene_pos = coord_pos.to_vector();
 	this->look_at_scene(scene_pos);
 }
 
