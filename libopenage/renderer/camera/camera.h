@@ -4,6 +4,7 @@
 
 #include <eigen3/Eigen/Dense>
 
+#include "coord/scene.h"
 #include "util/vector.h"
 
 namespace openage::renderer::camera {
@@ -67,7 +68,7 @@ public:
      *
      * @param scene_pos Position of the ingame coordinates that the camera should center on.
      */
-	void look_at_coord(util::Vector3f coord_pos);
+	void look_at_coord(coord::scene3 coord_pos);
 
 	/**
      * Move the camera position in the direction of a given vector.
