@@ -10,6 +10,18 @@
 
 namespace openage::coord {
 
+/**
+ * Ratio for converting the scene coordinate UP direction to OpenGL/Vulkan
+ * coordinates, i.e. translating ingame "height" to displayed height.
+ * The ratio is 1 / sqrt(8), which is an approximation of the ratio used in AoE2.
+ *
+ * @return Multiplier for the UP direction.
+ */
+constexpr float up_ratio() {
+	// approx. 1.0 / sqrt(8)
+	return 0.353553391f;
+}
+
 double scene2_delta::length() const {
 	return std::hypot(this->ne.to_double(), this->se.to_double());
 }
@@ -63,7 +75,7 @@ phys3_delta scene3_delta::to_phys3() const {
 }
 
 Eigen::Vector3f scene3_delta::to_vector() const {
-	return Eigen::Vector3f(this->se.to_float(), this->up.to_float(), -this->ne.to_float());
+	return Eigen::Vector3f(this->se.to_float(), this->up.to_float() * up_ratio(), -this->ne.to_float());
 }
 
 scene2 scene3::to_scene2() const {
@@ -75,7 +87,7 @@ phys3 scene3::to_phys3() const {
 }
 
 Eigen::Vector3f scene3::to_vector() const {
-	return Eigen::Vector3f(this->se.to_float(), this->up.to_float(), -this->ne.to_float());
+	return Eigen::Vector3f(this->se.to_float(), this->up.to_float() * up_ratio(), -this->ne.to_float());
 }
 
 } // namespace openage::coord
