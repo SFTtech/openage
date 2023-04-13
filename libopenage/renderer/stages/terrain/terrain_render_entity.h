@@ -6,18 +6,13 @@
 #include <shared_mutex>
 #include <vector>
 
+#include "coord/scene.h"
 #include "util/path.h"
 #include "util/vector.h"
 
 namespace openage::renderer {
 
 namespace terrain {
-
-struct TerrainVertex {
-	float x;
-	float y;
-	float height;
-};
 
 class TerrainRenderEntity {
 public:
@@ -41,7 +36,7 @@ public:
      *
      * @return Vector of vertex coordinates.
      */
-	const std::vector<TerrainVertex> &get_vertices();
+	const std::vector<coord::scene3> &get_vertices();
 
 	/**
      * Get the texture mapping for the terrain.
@@ -90,7 +85,7 @@ private:
 	 *
 	 * TODO: Use coordinate system.
 	 */
-	std::vector<TerrainVertex> vertices;
+	std::vector<coord::scene3> vertices;
 
 	/**
 	 * Terrain texture-
