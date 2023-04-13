@@ -57,14 +57,14 @@ void Camera::look_at_scene(Eigen::Vector3f scene_pos) {
 	auto xz_distance = y_delta * sqrt(3); // a (horizontal distance); a = b * (cos(30°) / sin(30°))
 
 	// get x and z offsets
-	// the camera is pointed diagonally to the positive x and z axis
+	// the camera is pointed diagonally to the negative x and z axis
 	// a is the length of the diagonal from camera.xz to scene_pos.xz
 	// so the x and z offest are sides of a square with the same diagonal
 	auto side_length = xz_distance / (sqrt(2));
 	auto new_pos = Eigen::Vector3f(
-		scene_pos[0] - side_length,
+		scene_pos[0] + side_length,
 		this->scene_pos[1], // height unchanged
-		scene_pos[2] - side_length);
+		scene_pos[2] + side_length);
 
 	this->move_to(new_pos);
 }
@@ -124,7 +124,7 @@ const Eigen::Matrix4f &Camera::get_view_matrix() {
 	auto direction = cam_direction.normalized();
 
 	Eigen::Vector3f eye = this->scene_pos;
-	Eigen::Vector3f center = this->scene_pos - direction; // look in the direction of the camera
+	Eigen::Vector3f center = this->scene_pos + direction; // look in the direction of the camera
 	Eigen::Vector3f up = Eigen::Vector3f(0.0f, 1.0f, 0.0f);
 
 	Eigen::Vector3f f = center - eye;

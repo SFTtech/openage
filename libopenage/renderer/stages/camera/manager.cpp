@@ -21,16 +21,16 @@ void CameraManager::update() {
 		Eigen::Vector3f move_dir{0.0f, 0.0f, 0.0f};
 
 		if (this->move_directions & static_cast<int>(MoveDirection::LEFT)) {
-			move_dir += Eigen::Vector3f(1.0f, 0.0f, -1.0f);
-		}
-		if (this->move_directions & static_cast<int>(MoveDirection::RIGHT)) {
 			move_dir += Eigen::Vector3f(-1.0f, 0.0f, 1.0f);
 		}
+		if (this->move_directions & static_cast<int>(MoveDirection::RIGHT)) {
+			move_dir += Eigen::Vector3f(1.0f, 0.0f, -1.0f);
+		}
 		if (this->move_directions & static_cast<int>(MoveDirection::TOP)) {
-			move_dir += Eigen::Vector3f(1.0f, 0.0f, 1.0f);
+			move_dir += Eigen::Vector3f(-1.0f, 0.0f, -1.0f);
 		}
 		if (this->move_directions & static_cast<int>(MoveDirection::BOTTOM)) {
-			move_dir += Eigen::Vector3f(-1.0f, 0.0f, -1.0f);
+			move_dir += Eigen::Vector3f(1.0f, 0.0f, 1.0f);
 		}
 
 		this->camera->move_rel(move_dir, this->move_speed);
