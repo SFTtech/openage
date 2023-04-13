@@ -80,12 +80,13 @@ std::shared_ptr<TerrainRenderMesh> TerrainRenderModel::create_mesh() {
 	dst_verts.reserve(src_verts.size() * 5);
 	for (auto v : src_verts) {
 		// Transform to scene coords
-		dst_verts.push_back(-v.y);
-		dst_verts.push_back(v.height);
-		dst_verts.push_back(v.x);
+		auto v_vec = v.to_vector();
+		dst_verts.push_back(v_vec[0]);
+		dst_verts.push_back(v_vec[1]);
+		dst_verts.push_back(v_vec[2]);
 		// TODO: Texture scaling
-		dst_verts.push_back(v.x / 10);
-		dst_verts.push_back(v.y / 10);
+		dst_verts.push_back((v.ne / 10).to_float());
+		dst_verts.push_back((v.se / 10).to_float());
 	}
 
 	// split the grid into triangles using an index array

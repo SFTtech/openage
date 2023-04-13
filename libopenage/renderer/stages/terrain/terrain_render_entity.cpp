@@ -53,9 +53,9 @@ void TerrainRenderEntity::update(util::Vector2s size,
 			}
 			// select the height of the highest surrounding tile
 			auto max_height = *std::max_element(surround.begin(), surround.end());
-			TerrainVertex v{
-				(float)i,
-				(float)j,
+			coord::scene3 v{
+				static_cast<float>(i),
+				static_cast<float>(j),
 				max_height,
 			};
 			this->vertices.push_back(v);
@@ -68,7 +68,7 @@ void TerrainRenderEntity::update(util::Vector2s size,
 	this->changed = true;
 }
 
-const std::vector<TerrainVertex> &TerrainRenderEntity::get_vertices() {
+const std::vector<coord::scene3> &TerrainRenderEntity::get_vertices() {
 	std::shared_lock lock{this->mutex};
 
 	return this->vertices;
