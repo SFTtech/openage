@@ -76,9 +76,9 @@ void TerrainRenderer::update() {
 			// TODO: Remove old renderable instead of clearing everything
 			this->render_pass->clear_renderables();
 			this->render_pass->add_renderables(display_obj);
+			mesh->clear_requires_renderable();
 
 			mesh->set_uniforms(transform_unifs);
-			mesh->clear_requires_renderable();
 		}
 	}
 }

@@ -28,7 +28,7 @@ void TerrainRenderModel::set_camera(const std::shared_ptr<renderer::camera::Came
 	this->camera = camera;
 }
 
-void TerrainRenderModel::update() {
+void TerrainRenderModel::update(const curve::time_t &time) {
 	// Check render entity for updates
 	if (this->render_entity->is_changed()) {
 		// TODO: Multiple meshes
@@ -38,9 +38,15 @@ void TerrainRenderModel::update() {
 
 		// Indicate to the render entity that its updates have been processed.
 		this->render_entity->clear_changed_flag();
+
+		// Return to let the renderer create a new renderable
+		return;
 	}
 
-	// update uniforms
+	this->update_uniforms(time);
+}
+
+void TerrainRenderModel::update_uniforms(const curve::time_t &time) {
 	for (auto mesh : this->meshes) {
 		auto unifs = mesh->get_uniforms();
 		if (unifs != nullptr) [[likely]] {
@@ -126,7 +132,7 @@ std::shared_ptr<TerrainRenderMesh> TerrainRenderModel::create_mesh() {
 
 	// Update textures
 	auto tex_manager = this->asset_manager->get_texture_manager();
-	auto terrain_info = this->asset_manager->request_terrain(this->render_entity->get_texture_path());
+	auto terrain_info = this->asset_manager->request_terrain(this->render_entity->get_terrain_path());
 	auto texture = tex_manager.request(terrain_info->get_texture(0)->get_image_path().value());
 	// TODO: Support multiple textures per terrain
 

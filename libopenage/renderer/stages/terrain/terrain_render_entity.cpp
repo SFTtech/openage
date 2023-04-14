@@ -8,17 +8,11 @@
 
 namespace openage::renderer::terrain {
 
-TerrainRenderEntity::TerrainRenderEntity(
-	// const std::shared_ptr<renderer::Renderer> &renderer,
-	// const util::Path &assetdir
-	) :
+TerrainRenderEntity::TerrainRenderEntity() :
 	changed{false},
 	size{0, 0},
 	vertices{},
-	terrain_path{}
-// renderer{renderer},
-// assetdir{assetdir}
-{
+	terrain_path{} {
 }
 
 void TerrainRenderEntity::update(util::Vector2s size,
@@ -74,7 +68,7 @@ const std::vector<coord::scene3> &TerrainRenderEntity::get_vertices() {
 	return this->vertices;
 }
 
-const util::Path &TerrainRenderEntity::get_texture_path() {
+const util::Path &TerrainRenderEntity::get_terrain_path() {
 	std::shared_lock lock{this->mutex};
 
 	return this->terrain_path;
