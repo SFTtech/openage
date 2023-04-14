@@ -107,6 +107,9 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	// TODO: Option for face culling
+	// glEnable(GL_CULL_FACE);
+
 	auto gl_pass = std::dynamic_pointer_cast<GlRenderPass>(pass);
 	GlRenderer::optimise(gl_pass);
 
