@@ -50,7 +50,7 @@ void WorldObject::update(const curve::time_t &time) {
 		this->require_renderable = true;
 
 		// Update textures
-		auto anim_info = this->asset_manager->request_animation(this->render_entity->get_texture_path());
+		auto anim_info = this->asset_manager->request_animation(this->render_entity->get_animation_path());
 		auto tex_manager = this->asset_manager->get_texture_manager();
 		this->texture = tex_manager.request(anim_info->get_texture(0)->get_image_path().value());
 		// TODO: Support multiple textures per animation
@@ -71,7 +71,7 @@ void WorldObject::update(const curve::time_t &time) {
 void WorldObject::update_uniforms(const curve::time_t &time) {
 	if (this->uniforms != nullptr) [[likely]] {
 		/* Frame subtexture */
-		auto anim_info = this->asset_manager->request_animation(this->render_entity->get_texture_path());
+		auto anim_info = this->asset_manager->request_animation(this->render_entity->get_animation_path());
 		auto layer = anim_info->get_layer(0); // TODO: Support multiple layers
 		auto angle = layer.get_angle(0); // TODO: Support multiple angles
 
