@@ -742,10 +742,10 @@ void renderer_demo_3(const util::Path &path) {
 	}
 
 	// Create "test bumps" in the terrain to check if rendering works
-	// height_map[11] = 1.0f;
-	// height_map[23] = 2.3f;
-	// height_map[42] = 4.2f;
-	// height_map[69] = 6.9f; // nice
+	height_map[11] = 1.0f;
+	height_map[23] = 2.3f;
+	height_map[42] = 4.2f;
+	height_map[69] = 6.9f; // nice
 
 	// A hill
 	height_map[55] = 3.0f; // center
@@ -766,8 +766,12 @@ void renderer_demo_3(const util::Path &path) {
 	auto world0 = render_factory->add_world_render_entity();
 	world0->update(0, coord::phys3(3.0f, 3.0f, 0.0f), path["assets"]["test"]["textures"]["test_gaben.sprite"]);
 
+	// should behind gaben and caught by depth test
 	auto world1 = render_factory->add_world_render_entity();
-	world1->update(1, coord::phys3(1.0f, 3.0f, 0.0f), path["assets"]["test"]["textures"]["test_missing.sprite"]);
+	world1->update(1, coord::phys3(4.0f, 1.0f, 0.0f), path["assets"]["test"]["textures"]["test_missing.sprite"]);
+
+	auto world2 = render_factory->add_world_render_entity();
+	world2->update(2, coord::phys3(1.0f, 3.0f, 0.0f), path["assets"]["test"]["textures"]["test_missing.sprite"]);
 
 	// Zoom in/out with mouse wheel
 	window->add_mouse_wheel_callback([&](const QWheelEvent &ev) {

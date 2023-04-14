@@ -118,6 +118,11 @@ private:
 	std::shared_ptr<renderer::Texture2d> output_texture;
 
 	/**
+	 * Depth texture.
+	 */
+	std::shared_ptr<renderer::Texture2d> depth_texture;
+
+	/**
 	 * Mutex for protecting threaded access.
 	 */
 	std::shared_mutex mutex;

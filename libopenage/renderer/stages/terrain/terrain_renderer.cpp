@@ -85,8 +85,9 @@ void TerrainRenderer::update() {
 
 void TerrainRenderer::resize(size_t width, size_t height) {
 	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
+	this->depth_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::depth24));
 
-	auto fbo = this->renderer->create_texture_target({this->output_texture});
+	auto fbo = this->renderer->create_texture_target({this->output_texture, this->depth_texture});
 	this->render_pass->set_target(fbo);
 }
 
@@ -108,10 +109,11 @@ void TerrainRenderer::initialize_render_pass(size_t width,
 	frag_shader_file.close();
 
 	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
+	this->depth_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::depth24));
 
 	this->display_shader = this->renderer->add_shader({vert_shader_src, frag_shader_src});
 
-	auto fbo = this->renderer->create_texture_target({this->output_texture});
+	auto fbo = this->renderer->create_texture_target({this->output_texture, this->depth_texture});
 	this->render_pass = this->renderer->add_render_pass({}, fbo);
 }
 
