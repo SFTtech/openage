@@ -62,6 +62,7 @@ void GlGeometry::draw() const {
 		mesh.vao.bind();
 
 		if (mesh.indices) {
+			// TODO: Binding the EBO may not be necessary if the VAO is already bound.
 			mesh.indices->bind(GL_ELEMENT_ARRAY_BUFFER);
 
 			glDrawElements(mesh.primitive, mesh.vert_count, *mesh.index_type, nullptr);
