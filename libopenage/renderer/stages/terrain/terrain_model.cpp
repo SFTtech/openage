@@ -92,16 +92,19 @@ std::shared_ptr<TerrainRenderMesh> TerrainRenderModel::create_mesh() {
 	// split the grid into triangles using an index array
 	std::vector<uint16_t> idxs;
 	idxs.reserve((size[0] - 1) * (size[1] - 1) * 6);
-	for (size_t i = 0; i < size[1] - 1; ++i) {
-		for (size_t j = 0; j < size[0] - 1; ++j) {
+	// iterate over all tiles in the grid by columns, i.e. starting
+	// from the left corner to the bottom corner if you imagine it from
+	// the camera's point of view
+	for (size_t i = 0; i < size[0] - 1; ++i) {
+		for (size_t j = 0; j < size[1] - 1; ++j) {
 			// since we are working on tiles, we split each tile into two triangles
 			// with counter-clockwise vertex order
-			idxs.push_back(i * size[0] + j); // bottom left
-			idxs.push_back(i * size[0] + j + 1); // bottom right
-			idxs.push_back(i * size[0] + j + size[1]); // top left
-			idxs.push_back(i * size[0] + j + 1); // bottom right
-			idxs.push_back(i * size[0] + j + size[1] + 1); // top right
-			idxs.push_back(i * size[0] + j + size[1]); // top left
+			idxs.push_back(j + i * size[1]); // bottom left
+			idxs.push_back(j + 1 + i * size[1]); // bottom right
+			idxs.push_back(j + size[1] + i * size[1]); // top left
+			idxs.push_back(j + 1 + i * size[1]); // bottom right
+			idxs.push_back(j + size[1] + 1 + i * size[1]); // top right
+			idxs.push_back(j + size[1] + i * size[1]); // top left
 		}
 	}
 

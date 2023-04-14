@@ -742,10 +742,10 @@ void renderer_demo_3(const util::Path &path) {
 	}
 
 	// Create "test bumps" in the terrain to check if rendering works
-	height_map[11] = 1.0f;
-	height_map[23] = 2.3f;
-	height_map[42] = 4.2f;
-	height_map[69] = 6.9f; // nice
+	// height_map[11] = 1.0f;
+	// height_map[23] = 2.3f;
+	// height_map[42] = 4.2f;
+	// height_map[69] = 6.9f; // nice
 
 	// A hill
 	height_map[55] = 3.0f; // center
