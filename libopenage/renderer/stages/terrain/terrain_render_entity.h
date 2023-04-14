@@ -45,7 +45,7 @@ public:
      *
      * @return Texture mapping of textures to vertex area.
      */
-	const util::Path &get_texture_path();
+	const util::Path &get_terrain_path();
 
 	/**
      * Get the number of vertices on each side of the terrain.
@@ -82,13 +82,11 @@ private:
 
 	/**
 	 * Terrain vertices (ingame coordinates).
-	 *
-	 * TODO: Use coordinate system.
 	 */
 	std::vector<coord::scene3> vertices;
 
 	/**
-	 * Terrain texture-
+	 * Path to the terrain definition file.
 	 *
 	 * TODO: Use texture mapping.
 	 */

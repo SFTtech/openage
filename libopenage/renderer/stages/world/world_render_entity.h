@@ -22,12 +22,12 @@ public:
 	 *
 	 * @param ref_id Game entity ID.
 	 * @param position Position of the game entity inside the game world.
-	 * @param sprite_path Path to the animation definition.
+	 * @param animation_path Path to the animation definition.
 	 * @param time Simulation time of the update.
 	 */
 	void update(const uint32_t ref_id,
 	            const coord::phys3 position,
-	            const util::Path sprite_path,
+	            const util::Path animation_path,
 	            const curve::time_t time = 0.0);
 
 	/**
@@ -45,13 +45,11 @@ public:
 	const coord::scene3 get_position();
 
 	/**
-     * Get the texture path.
+     * Get the animation definition path.
      *
-     * TODO: Return the animation.
-     *
-     * @return Path to the texture.
+     * @return Path to the animation definition file.
      */
-	const util::Path &get_texture_path();
+	const util::Path &get_animation_path();
 
 	/**
 	 * Get the time of the last update.
@@ -94,7 +92,7 @@ private:
 	/**
 	 * Path to the texture.
 	 */
-	util::Path sprite_path;
+	util::Path animation_path;
 
 	/**
 	 * Time of the last texture update.
