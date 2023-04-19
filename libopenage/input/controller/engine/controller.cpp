@@ -12,6 +12,8 @@
 #include "gamestate/game_state.h"
 #include "input/controller/engine/binding_context.h"
 
+#include "coord/phys.h"
+
 namespace openage::input::engine {
 
 Controller::Controller(const std::unordered_set<size_t> &controlled_factions,
@@ -64,8 +66,11 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<event::Simulation> &simulation,
-                    const std::shared_ptr<openage::engine::Engine> &engine) {
-	binding_func_t create_entity_event{[&](const event_arguments & /* args */) {
+                    const std::shared_ptr<openage::engine::Engine> &engine,
+                    const std::shared_ptr<renderer::camera::Camera> &camera) {
+	binding_func_t create_entity_event{[&](const event_arguments &args) {
+		auto mouse_pos = args.mouse.to_phys3(camera);
+
 		auto loop = simulation->get_loop();
 		auto event = loop->create_event(
 			"game.spawn_entity",
