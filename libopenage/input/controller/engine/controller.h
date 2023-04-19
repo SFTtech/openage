@@ -89,7 +89,8 @@ private:
  */
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<event::Simulation> &simulation,
-                    const std::shared_ptr<openage::engine::Engine> &engine);
+                    const std::shared_ptr<openage::engine::Engine> &engine,
+                    const std::shared_ptr<renderer::camera::Camera> &camera);
 
 } // namespace input::engine
 } // namespace openage
