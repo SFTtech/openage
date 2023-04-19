@@ -203,7 +203,7 @@ void Presenter::init_input() {
 		auto engine_controller = std::make_shared<input::engine::Controller>(
 			std::unordered_set<size_t>{0, 1, 2, 3}, 0);
 		auto engine_context = std::make_shared<input::engine::BindingContext>();
-		input::engine::setup_defaults(engine_context, this->simulation, this->engine);
+		input::engine::setup_defaults(engine_context, this->simulation, this->engine, this->camera);
 		this->input_manager->set_engine_controller(engine_controller);
 		input_ctx->set_engine_bindings(engine_context);
 	}

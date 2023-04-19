@@ -6,6 +6,11 @@
 #include "declarations.h"
 
 namespace openage {
+
+namespace renderer::camera {
+class Camera;
+}
+
 namespace coord {
 
 
@@ -99,6 +104,8 @@ struct input : CoordXYAbsolute<pixel_t, input, input_delta> {
 	viewport to_viewport(const CoordManager &mgr) const;
 	camgame to_camgame(const CoordManager &mgr) const;
 	phys3 to_phys3(const CoordManager &mgr, phys_t up = phys_t::zero()) const;
+	phys3 to_phys3(const std::shared_ptr<renderer::camera::Camera> &camera) const;
+	scene3 to_scene3(const std::shared_ptr<renderer::camera::Camera> &camera) const;
 };
 
 
