@@ -110,6 +110,7 @@ void Camera::zoom_out(float zoom_delta) {
 
 void Camera::resize(size_t width, size_t height) {
 	this->viewport_size = util::Vector2s(width, height);
+	this->viewport_changed = true;
 }
 
 float Camera::get_zoom() const {
@@ -160,7 +161,7 @@ const Eigen::Matrix4f &Camera::get_view_matrix() {
 }
 
 const Eigen::Matrix4f &Camera::get_projection_matrix() {
-	if (not this->zoom_changed) {
+	if (not(this->zoom_changed or this->viewport_changed)) {
 		return this->proj;
 	}
 
@@ -190,12 +191,17 @@ const Eigen::Matrix4f &Camera::get_projection_matrix() {
 	// Cache matrix for subsequent calls
 	this->proj = mat;
 	this->zoom_changed = false;
+	this->viewport_changed = false;
 
 	return this->proj;
 }
 
 const util::Vector2s &Camera::get_viewport_size() const {
 	return this->viewport_size;
+}
+
+const Eigen::Vector3f &Camera::get_scene_pos() const {
+	return this->scene_pos;
 }
 
 } // namespace openage::renderer::camera
