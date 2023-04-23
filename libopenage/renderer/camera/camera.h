@@ -155,6 +155,13 @@ public:
      */
 	const util::Vector2s &get_viewport_size() const;
 
+	/**
+     * Get the position of the camera in the 3D scene.
+     *
+     * @return Position of the camera in the 3D scene.
+     */
+	const Eigen::Vector3f &get_scene_pos() const;
+
 private:
 	/**
      * Position in the 3D scene.
@@ -167,12 +174,12 @@ private:
 	util::Vector2s viewport_size;
 
 	/**
-      * Zoom level.
-      *
-      * 0.0f < z < 1.0f => zoom in
-      * z = 1.0f        => default view
-      * z > 1.0f        => zoom out
-      */
+     * Zoom level.
+     *
+     * 0.0f < z < 1.0f => zoom in
+     * z = 1.0f        => default view
+     * z > 1.0f        => zoom out
+     */
 	float zoom;
 
 	/**
@@ -203,31 +210,38 @@ private:
 	float default_zoom_ratio;
 
 	/**
-      * Flag set when the camera is moved.
-      *
-      * If true, the view matrix needs to be recalculated.
-      */
+     * Flag set when the camera is moved.
+     *
+     * If true, the view matrix needs to be recalculated.
+     */
 	bool moved;
 
 	/**
-      * Flag set when the camera zoom is changed.
-      *
-      * If true, the projection matrix needs to be recalculated.
-      */
+     * Flag set when the camera zoom is changed.
+     *
+     * If true, the projection matrix needs to be recalculated.
+     */
 	bool zoom_changed;
 
 	/**
-      * Current view matrix for the camera.
-      *
-      * Cached because it may be requested many times.
-      */
+     * Flag set when the camera viewport is resized.
+     *
+     * If true, the projection matrix needs to be recalculated.
+     */
+	bool viewport_changed;
+
+	/**
+     * Current view matrix for the camera.
+     *
+     * Cached because it may be requested many times.
+     */
 	Eigen::Matrix4f view;
 
 	/**
-      * Current projection matrix for the camera.
-      *
-      * Cached because it may be requested many times.
-      */
+     * Current projection matrix for the camera.
+     *
+     * Cached because it may be requested many times.
+     */
 	Eigen::Matrix4f proj;
 };
 
