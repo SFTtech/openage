@@ -4,6 +4,7 @@
 
 #include <eigen3/Eigen/Dense>
 
+#include "coord/pixel.h"
 #include "coord/scene.h"
 #include "util/vector.h"
 
@@ -156,11 +157,15 @@ public:
 	const util::Vector2s &get_viewport_size() const;
 
 	/**
-     * Get the position of the camera in the 3D scene.
+     * Get the corresponding 3D position of a 2D input coordinate in the viewport.
+     * The position is on the plane created by the camera's orthographic projection.
      *
-     * @return Position of the camera in the 3D scene.
+     * This may be used to get the 3D position of a mouse click and subsequent
+     * ray casting calculations.
+     *
+     * @return Position of the input in the 3D scene.
      */
-	const Eigen::Vector3f &get_scene_pos() const;
+	Eigen::Vector3f get_input_pos(const coord::input &coord) const;
 
 private:
 	/**
