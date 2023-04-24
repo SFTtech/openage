@@ -166,8 +166,8 @@ const Eigen::Matrix4f &Camera::get_projection_matrix() {
 	}
 
 	// get center of viewport as the focus point
-	float halfwidth = viewport_size[0] / 2;
-	float halfheight = viewport_size[1] / 2;
+	float halfwidth = this->viewport_size[0] / 2;
+	float halfheight = this->viewport_size[1] / 2;
 
 	// get zoom level
 	float real_zoom = 0.5f * this->default_zoom_ratio * this->zoom;
@@ -200,8 +200,36 @@ const util::Vector2s &Camera::get_viewport_size() const {
 	return this->viewport_size;
 }
 
-const Eigen::Vector3f &Camera::get_scene_pos() const {
-	return this->scene_pos;
+Eigen::Vector3f Camera::get_input_pos(const coord::input &coord) const {
+	// calculate up (u) and right (s) vectors for camera
+	// these define the camera plane in 3D space that the input
+	// coord exists on
+	auto direction = cam_direction.normalized();
+	Eigen::Vector3f eye = this->scene_pos;
+	Eigen::Vector3f center = this->scene_pos + direction;
+	Eigen::Vector3f up = Eigen::Vector3f(0.0f, 1.0f, 0.0f);
+
+	Eigen::Vector3f f = center - eye;
+	f.normalize();
+	Eigen::Vector3f s = f.cross(up);
+	s.normalize();
+	Eigen::Vector3f u = s.cross(f);
+	u.normalize();
+
+	// offsets are adjusted by zoom
+	// this is the same calculation as for the projection matrix
+	float halfwidth = this->viewport_size[0] / 2;
+	float halfheight = this->viewport_size[1] / 2;
+	float real_zoom = 0.5f * this->default_zoom_ratio * this->zoom;
+
+	// calculate x and y offset on the camera plane relative to the camera position
+	float x = +(2.0f * coord.x / this->viewport_size[0] - 1) * (halfwidth * real_zoom);
+	float y = -(2.0f * coord.y / this->viewport_size[1] - 1) * (halfheight * real_zoom);
+
+	// calculate the absolutive position of the input coordinates on the camera plane
+	Eigen::Vector3f input_pos = this->scene_pos + s * x + u * y;
+
+	return input_pos;
 }
 
 } // namespace openage::renderer::camera
