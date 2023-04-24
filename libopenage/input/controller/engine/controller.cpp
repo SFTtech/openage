@@ -70,13 +70,17 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<renderer::camera::Camera> &camera) {
 	binding_func_t create_entity_event{[&](const event_arguments &args) {
 		auto mouse_pos = args.mouse.to_phys3(camera);
+		event::EventHandler::param_map::map_t params{
+			{"position", mouse_pos},
+		};
 
 		auto loop = simulation->get_loop();
 		auto event = loop->create_event(
 			"game.spawn_entity",
 			engine->get_spawner(),
 			engine->get_game()->get_state(),
-			simulation->get_clock()->get_time());
+			simulation->get_clock()->get_time(),
+			params);
 		return event;
 	}};
 

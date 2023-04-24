@@ -38,10 +38,10 @@ void SpawnEntityHandler::invoke(openage::event::Loop & /* loop */,
                                 const std::shared_ptr<openage::event::EventEntity> & /* target */,
                                 const std::shared_ptr<openage::event::State> &state,
                                 const curve::time_t & /* time */,
-                                const param_map & /* params */) {
+                                const param_map &params) {
 	auto gstate = std::dynamic_pointer_cast<gamestate::GameState>(state);
 
-	auto entity = this->factory->add_game_entity(coord::phys3(1, 2, 0),
+	auto entity = this->factory->add_game_entity(params.get("position", coord::phys3{0, 0, 0}),
 	                                             this->texture_path);
 	gstate->add_game_entity(entity);
 }
