@@ -1,4 +1,4 @@
-// Copyright 2021-2021 the openage authors. See copying.md for legal info.
+// Copyright 2021-2023 the openage authors. See copying.md for legal info.
 
 #include "live.h"
 #include "../component_type.h"
@@ -16,7 +16,7 @@ Live::Live(const std::shared_ptr<event::Loop> &loop,
 	for (nyan::ValueHolder attr_setting : this->ability.get_set("attributes")) {
 		nyan::ObjectValue setting_val{
 			*std::dynamic_pointer_cast<nyan::ObjectValue>(attr_setting.get_ptr())};
-		nyan::fqon_t setting_fqon{setting_val.get()};
+		nyan::fqon_t setting_fqon{setting_val.get_name()};
 		nyan::Object setting{view.get_object(setting_fqon)};
 
 		nyan::fqon_t attribute_fqon{setting.get_object("attribute").get_name()};
