@@ -143,7 +143,7 @@ As you can see, the workflow for both render stages is roughly the same and invo
 
 ### Camera
 
-What parts of the scene is shown on screen is controlled by the `Camera` class. The camera is handled like an object in the rendered 3D scene that determines what is displayed depending on its position, zoom level and angle. Position and zoom level of the camera can be changed at runtime, while the angle is fixed to the dimetric/isometric view used in Age of Empires games. More precisely, the camera uses a yaw of `-135` degrees and a pitch of `-30` degrees (pointed in the `(-x, -y, -z)` direction in the OpenGL coordinate system).
+What parts of the scene is shown on screen is controlled by the `Camera` class. The camera is handled like an object in the rendered 3D scene that determines what is displayed depending on its position, zoom level and angle. Position and zoom level of the camera can be changed at runtime, while the angle is fixed to the dimetric/isometric view used in Age of Empires games. More precisely, the camera has a yaw of `-135` degrees and a pitch of `-30` degrees (pointed in the `(-x, -y, -z)` direction in the OpenGL coordinate system). The projection method used by the camera is orthographic projection.
 
 The `Camera` class provides the following methods for positioning the camera in the scene:
 
@@ -159,3 +159,5 @@ Zoom levels can also be adjusted with these methods:
 - `zoom_out(...)`: Let the camera incrementally zoom out.
 
 For displaying 3D objects, the `Camera` can also calculate a view matrix (`get_view_matrix()`) and projection matrix (`get_projection_matrix()`) that take current position and zoom level into account.
+
+Camera parameters may be used for raycasting operations, e.g. mouse picking/selection. Since the camera utilizes orthographic projection and a fied angle, the ray direction is exactly the same as the camera direction vector (accessible as `cam_direction`). To find the origin point of a ray for a pixel coordinate in the viewport, the `get_input_pos(..)` method can be used. This method calculates the position of the pixel coordinate on the othographic camera plane that represents the viewport. The result is the absolute position of the pixel coordinate inside the 3D scene. Ray origin point and direction can then be used to perform calculations for line-plane or line sphere intersections.
