@@ -10,6 +10,7 @@ Positions are stored in NE (northeast), SE (southeast) and UP (elevation).
 
 Units for distances are terrain units (tu) and terrain elevation units (teu).
 
+
 ### `phys2/phys3`
 
 Physics coordinates in the game world.
@@ -34,6 +35,7 @@ A unit at `(8, 8)` is at the center of chunk `(0, 0)`.
  * SE: south-east, in tu (terrain length unit)
  * UP: guess what, in teu (terrain elevation unit)
 
+
 ### `scene2/scene3`
 
 Same as `phys2/phys3` but for usage in the renderer. All `phys2/phys3`
@@ -50,10 +52,10 @@ vertex calculations, etc.
 
 Eigen vectors are created from `scene3` coordinates using this transformation:
 
-`Eigen(x, y, z) = (-SE, UP / sqrt(8), NE)`
+`Eigen(x, y, z) = (SE, UP / sqrt(8), -NE)`
 
 This will ensure that objects at coordinates are correctly displayed when using
-the camera (i.e. the *north east* of a coordinate will also be display in the
+the camera (i.e. the *north east* of a coordinate will also be displayed in the
 *north east* when using the renderer camera).
 
 UP is divided by `sqrt(8)` to mimic AoE2 terrain heights (from aspect ration calculations),
@@ -64,7 +66,7 @@ with other values.
 Eigen vectors created from `scene2` coordinates have a fixed `y` value of
 `0.0f` but are otherwise the same:
 
-`Eigen(x, y, z) = (-SE, 0.0, NE)`
+`Eigen(x, y, z) = (SE, 0.0, -NE)`
 
 
 ### `tile/tile3`
@@ -97,22 +99,6 @@ Pixel Coordinates
 
 Coordinates in these systems designate a position on the screen plane.
 
-
-### `viewport`
-
-**Deprecated:** *replaced by `scene2/scene3` and new renderer*
-
-Viewport coordinates. Used for rendering.
-Orthonormal 2D `(x, y)`, integer, in pixels
-
-Origin is bottom left corner of viewport, positive in right and up directions
-
-Used in these systems:
- * Renderer OpenGL viewport
-
-**For display, all other coordinates are converted to `viewport` eventually.**
-
-
 ### `input`
 
 Coordinates used for input events.
@@ -124,12 +110,15 @@ Used in these systems:
 * Input manager
 
 
-### `camgame`
+### `viewport`
 
-Game camera coordinates.
+Viewport coordinates. Used for rendering generic objects in the viewport.
 Orthonormal 2D `(x, y)`, integer, in pixels
 
-Origin is center of viewport, positive in right and up directions
+Origin is bottom left corner of viewport, positive in right and up directions
+
+Used in these systems:
+* Debugging
 
 
 ### `camhud`
@@ -139,6 +128,9 @@ Orthonormal 2D `(x, y)`, integer, in pixels
 
 Origin is bottom left corner of viewport, positive in right and up directions
 
+Used in these systems:
+* HUD drawing
+
 
 ### `term`
 
@@ -146,6 +138,19 @@ Terminal character coordinates.
 Orthonormal 2D `(x, y)`, integer, in characters
 
 Origin is top left corner of console area, positive in right and down directions
+
+Used in these systems:
+* Console drawing
+
+
+### `camgame`
+
+**Deprecated:** *replaced by `scene2/scene3` and new camera system*
+
+Game camera coordinates.
+Orthonormal 2D `(x, y)`, integer, in pixels
+
+Origin is center of viewport, positive in right and up directions
 
 
 Conversions
@@ -156,7 +161,7 @@ Conversions
 Depending on whether objects are inside the game world, rendered as part of hud or
 the GUI, different conversion take place.
 
-* Object that are part of the game world are converted from `phys` to `scene` when passed to the renderer, and finally from `scene` to Eigen vectors when passed to the GPU
+* Object that are part of the game world are converted from `phys` to `scene` when passed to the renderer, and finally from `scene` to Eigen vectors when passed to OpenGL/Vulkan shaders
 * HUD objects for ingame objects (e.g. HP bars for units) are transformed from `phys` to `camhud`
 
 ### For input processing
@@ -164,32 +169,36 @@ the GUI, different conversion take place.
 Again depending on whether inputs were aimed at an HUD object or an
 entity rendered by the game camera, they (i.e. mouse clicks) are
 transformed from input to `phys` or `camhud`.
-`camgame` coordinates can then further be converted to `phys` coordinates,
-for mapping the inputs to physics objects.
-
-Idea: HUD drawing code will register HUD objects with the engine
-the engine then memorizes the areas where HUD objects are drawn,
-and checks whether the mouse click lies within one of the rectangles
 
 
-### Possible conversions
+### Possible conversions between coordinate types
 
 ```
-scene2 <---> phys2 <--------> tile <--------> chunk
-   |           |                |
-   |           |                |
-   |           |                |
-scene3 <---> phys3 <--------> tile3
-               |
-               |
-               |
-             camgame
-               |
-               |
-             viewport <----------> camhud <------> term
-               |
-               |
-             input
+           scene2 <----> phys2 <--------> tile <--------> chunk
+              |           |                |
+              |           |                |
+              |           |                |
+input ***> scene3 <----> phys3 <--------> tile3
+   |          |
+   |          |
+   ------> viewport <--> term
+              |
+              |
+           camhud
+```
+
+- Conversions from `input` to `scene3` are realized with raycasting using the camera direction and position. As the calculation is done with floating point values, the result is subject to float rounding errors and therefore **not precise**.
+
+### Possible conversions to/from renderer types
+
+```
+scene2 ----> world space (Eigen::Vector2f)
+   |
+   |
+scene3 ----> world space (Eigen::Vector3f)
+   |
+   |
+viewport --> normalized device space (Eigen::Vector2f)
 ```
 
 ### Translation details
