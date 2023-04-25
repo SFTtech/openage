@@ -102,7 +102,7 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 		this->uniforms->update("proj", this->camera->get_projection_matrix());
 
 		// Object world position
-		this->uniforms->update("obj_world_position", this->position.to_vector());
+		this->uniforms->update("obj_world_position", this->position.to_world_space());
 
 		// Subtex positional offset using anchor point
 		auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
