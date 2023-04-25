@@ -163,6 +163,8 @@ public:
      * This may be used to get the 3D position of a mouse click and subsequent
      * ray casting calculations.
      *
+     * @param coord 2D input coordinate in the viewport.
+     *
      * @return Position of the input in the 3D scene.
      */
 	Eigen::Vector3f get_input_pos(const coord::input &coord) const;
