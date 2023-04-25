@@ -33,9 +33,12 @@ struct scene2_delta : CoordNeSeRelative<scene_t, scene2, scene2_delta> {
 	double length() const;
 	scene2_delta normalize(double length = 1) const;
 
+	// coordinate conversions
 	scene3_delta to_scene3() const;
 	phys2_delta to_phys2() const;
-	Eigen::Vector3f to_vector() const;
+
+	// renderer conversions
+	Eigen::Vector3f to_world_space() const;
 };
 
 struct scene2 : CoordNeSeAbsolute<scene_t, scene2, scene2_delta> {
@@ -43,9 +46,12 @@ struct scene2 : CoordNeSeAbsolute<scene_t, scene2, scene2_delta> {
 
 	double distance(scene2 other) const;
 
+	// coordinate conversions
 	scene3 to_scene3(phys_t altitude = 0) const;
 	phys2 to_phys2() const;
-	Eigen::Vector3f to_vector() const;
+
+	// renderer conversions
+	Eigen::Vector3f to_world_space() const;
 };
 
 struct scene3_delta : CoordNeSeUpRelative<scene_t, scene3, scene3_delta> {
@@ -54,17 +60,23 @@ struct scene3_delta : CoordNeSeUpRelative<scene_t, scene3, scene3_delta> {
 	double length() const;
 	scene3_delta normalize(double length = 1) const;
 
+	// coordinate conversions
 	scene2_delta to_scene2() const;
 	phys3_delta to_phys3() const;
-	Eigen::Vector3f to_vector() const;
+
+	// renderer conversions
+	Eigen::Vector3f to_world_space() const;
 };
 
 struct scene3 : CoordNeSeUpAbsolute<scene_t, scene3, scene3_delta> {
 	using CoordNeSeUpAbsolute<scene_t, scene3, scene3_delta>::CoordNeSeUpAbsolute;
 
+	// coordinate conversions
 	scene2 to_scene2() const;
 	phys3 to_phys3() const;
-	Eigen::Vector3f to_vector() const;
+
+	// renderer conversions
+	Eigen::Vector3f to_world_space() const;
 };
 
 

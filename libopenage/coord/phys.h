@@ -27,6 +27,8 @@ struct phys2_delta : CoordNeSeRelative<phys_t, phys2, phys2_delta> {
 
 	double length() const;
 	phys2_delta normalize(double length = 1) const;
+
+	// coordinate conversions
 	phys3_delta to_phys3() const;
 	scene2_delta to_scene2() const;
 };
@@ -34,11 +36,15 @@ struct phys2_delta : CoordNeSeRelative<phys_t, phys2, phys2_delta> {
 struct phys2 : CoordNeSeAbsolute<phys_t, phys2, phys2_delta> {
 	using CoordNeSeAbsolute<phys_t, phys2, phys2_delta>::CoordNeSeAbsolute;
 
+	double distance(phys2 other) const;
+
+	// coordinate conversions
 	tile to_tile() const;
-	phys3 to_phys3(const Terrain &terrain, phys_t altitude = 0) const;
+	phys3 to_phys3(phys_t up = 0) const;
 	scene2 to_scene2() const;
 
-	double distance(phys2 other) const;
+	// TODO: Remove
+	[[deprecated]] phys3 to_phys3(const Terrain &terrain, phys_t altitude = 0) const;
 };
 
 struct phys3_delta : CoordNeSeUpRelative<phys_t, phys3, phys3_delta> {
@@ -52,19 +58,24 @@ struct phys3_delta : CoordNeSeUpRelative<phys_t, phys3, phys3_delta> {
 	double length() const;
 	phys3_delta normalize(double length = 1) const;
 
-	[[deprecated]] camgame_delta to_camgame(const CoordManager &mgr) const;
+	// coordinate conversions
 	phys2_delta to_phys2() const;
 	scene3_delta to_scene3() const;
+
+	// TODO: Remove
+	[[deprecated]] camgame_delta to_camgame(const CoordManager &mgr) const;
 };
 
 struct phys3 : CoordNeSeUpAbsolute<phys_t, phys3, phys3_delta> {
 	using CoordNeSeUpAbsolute<phys_t, phys3, phys3_delta>::CoordNeSeUpAbsolute;
 
+	// coordinate conversions
 	tile3 to_tile3() const;
 	tile to_tile() const;
 	phys2 to_phys2() const;
 	scene3 to_scene3() const;
 
+	// TODO: Remove
 	[[deprecated]] camgame to_camgame(const CoordManager &mgr) const;
 	[[deprecated]] viewport to_viewport(const CoordManager &mgr) const;
 	[[deprecated]] camhud to_camhud(const CoordManager &mgr) const;

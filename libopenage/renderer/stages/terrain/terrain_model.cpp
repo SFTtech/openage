@@ -86,7 +86,7 @@ std::shared_ptr<TerrainRenderMesh> TerrainRenderModel::create_mesh() {
 	dst_verts.reserve(src_verts.size() * 5);
 	for (auto v : src_verts) {
 		// Transform to scene coords
-		auto v_vec = v.to_vector();
+		auto v_vec = v.to_world_space();
 		dst_verts.push_back(v_vec[0]);
 		dst_verts.push_back(v_vec[1]);
 		dst_verts.push_back(v_vec[2]);

@@ -29,6 +29,7 @@ Camera::Camera(util::Vector2s viewport_size,
 	default_zoom_ratio{default_zoom_ratio},
 	moved{true},
 	zoom_changed{true},
+	viewport_changed{true},
 	view{Eigen::Matrix4f::Identity()},
 	proj{Eigen::Matrix4f::Identity()} {
 }
@@ -71,7 +72,7 @@ void Camera::look_at_scene(Eigen::Vector3f scene_pos) {
 
 void Camera::look_at_coord(coord::scene3 coord_pos) {
 	// convert coord pos to scene pos
-	auto scene_pos = coord_pos.to_vector();
+	auto scene_pos = coord_pos.to_world_space();
 	this->look_at_scene(scene_pos);
 }
 
