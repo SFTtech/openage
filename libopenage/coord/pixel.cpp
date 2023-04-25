@@ -38,8 +38,8 @@ phys3_delta camgame_delta::to_phys3(const CoordManager &mgr, phys_t up) const {
 }
 
 
-phys3 camgame::to_phys3(const CoordManager &mgr, phys_t up) const {
-	return (*this - camgame{0, 0}).to_phys3(mgr, up) + mgr.camgame_phys;
+viewport_delta camgame_delta::to_viewport() const {
+	return viewport_delta{this->x, this->y};
 }
 
 
@@ -49,34 +49,13 @@ viewport camgame::to_viewport(const CoordManager &mgr) const {
 }
 
 
-phys3 viewport::to_phys3(const CoordManager &mgr, phys_t up) const {
-	return this->to_camgame(mgr).to_phys3(mgr, up);
-}
-
-
 camhud camgame::to_camhud(const CoordManager &mgr) const {
 	return this->to_viewport(mgr).to_camhud(mgr);
 }
 
 
-viewport_delta camgame_delta::to_viewport() const {
-	return viewport_delta{this->x, this->y};
-}
-
-
-phys3_delta viewport_delta::to_phys3(const CoordManager &mgr, phys_t up) const {
-	return this->to_camgame().to_phys3(mgr, up);
-}
-
-
-camgame viewport::to_camgame(const CoordManager &mgr) const {
-	// mgr.camgame_viewport describes the coordinates of camgame{0, 0} in the viewport system.
-	return camgame{0, 0} + (*this - mgr.camgame_viewport).to_camgame();
-}
-
-
-tile viewport::to_tile(const CoordManager &mgr, phys_t up) const {
-	return this->to_camgame(mgr).to_tile(mgr, up);
+phys3 camgame::to_phys3(const CoordManager &mgr, phys_t up) const {
+	return (*this - camgame{0, 0}).to_phys3(mgr, up) + mgr.camgame_phys;
 }
 
 
@@ -85,8 +64,8 @@ tile camgame::to_tile(const CoordManager &mgr, phys_t up) const {
 }
 
 
-camhud viewport::to_camhud(const CoordManager &mgr) const {
-	return camhud{0, 0} + (*this - mgr.camhud_viewport).to_camhud();
+viewport_delta camhud_delta::to_viewport() const {
+	return viewport_delta{this->x, this->y};
 }
 
 
@@ -96,8 +75,36 @@ viewport camhud::to_viewport(const CoordManager &mgr) const {
 }
 
 
-viewport_delta camhud_delta::to_viewport() const {
-	return viewport_delta{this->x, this->y};
+[[deprecated]] phys3_delta viewport_delta::to_phys3(const CoordManager &mgr, phys_t up) const {
+	return this->to_camgame().to_phys3(mgr, up);
+}
+
+
+camhud viewport::to_camhud(const CoordManager &mgr) const {
+	return camhud{0, 0} + (*this - mgr.camhud_viewport).to_camhud();
+}
+
+
+Eigen::Vector2f viewport::to_ndc_space(const std::shared_ptr<renderer::camera::Camera> &camera) const {
+	return Eigen::Vector2f(
+		2.0f * this->x / camera->get_viewport_size()[0] - 1,
+		2.0f * this->y / camera->get_viewport_size()[1] - 1);
+}
+
+
+[[deprecated]] camgame viewport::to_camgame(const CoordManager &mgr) const {
+	// mgr.camgame_viewport describes the coordinates of camgame{0, 0} in the viewport system.
+	return camgame{0, 0} + (*this - mgr.camgame_viewport).to_camgame();
+}
+
+
+[[deprecated]] phys3 viewport::to_phys3(const CoordManager &mgr, phys_t up) const {
+	return this->to_camgame(mgr).to_phys3(mgr, up);
+}
+
+
+[[deprecated]] tile viewport::to_tile(const CoordManager &mgr, phys_t up) const {
+	return this->to_camgame(mgr).to_tile(mgr, up);
 }
 
 
@@ -111,12 +118,12 @@ viewport_delta input_delta::to_viewport(const CoordManager &mgr) const {
 }
 
 
-camgame_delta input_delta::to_camgame(const CoordManager &mgr) const {
+[[deprecated]] camgame_delta input_delta::to_camgame(const CoordManager &mgr) const {
 	return this->to_viewport(mgr).to_camgame();
 }
 
 
-phys3_delta input_delta::to_phys3(const CoordManager &mgr, phys_t up) const {
+[[deprecated]] phys3_delta input_delta::to_phys3(const CoordManager &mgr, phys_t up) const {
 	return this->to_viewport(mgr).to_camgame().to_phys3(mgr, up);
 }
 
@@ -126,18 +133,10 @@ viewport input::to_viewport(const CoordManager &mgr) const {
 }
 
 
-camgame input::to_camgame(const CoordManager &mgr) const {
-	return this->to_viewport(mgr).to_camgame(mgr);
-}
-
-
-phys3 input::to_phys3(const CoordManager &mgr, phys_t up) const {
-	return this->to_viewport(mgr).to_camgame(mgr).to_phys3(mgr, up);
-}
-
 phys3 input::to_phys3(const std::shared_ptr<renderer::camera::Camera> &camera) const {
 	return this->to_scene3(camera).to_phys3();
 }
+
 
 scene3 input::to_scene3(const std::shared_ptr<renderer::camera::Camera> &camera) const {
 	// Use raycasting to find the position
@@ -155,6 +154,17 @@ scene3 input::to_scene3(const std::shared_ptr<renderer::camera::Camera> &camera)
 
 	return scene3(-p_intersect.z(), p_intersect.x(), 0.0f);
 }
+
+
+[[deprecated]] phys3 input::to_phys3(const CoordManager &mgr, phys_t up) const {
+	return this->to_viewport(mgr).to_camgame(mgr).to_phys3(mgr, up);
+}
+
+
+[[deprecated]] camgame input::to_camgame(const CoordManager &mgr) const {
+	return this->to_viewport(mgr).to_camgame(mgr);
+}
+
 
 } // namespace coord
 } // namespace openage
