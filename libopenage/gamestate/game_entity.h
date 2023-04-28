@@ -60,10 +60,10 @@ public:
      */
 	void add_component(const std::shared_ptr<component::Component> &component);
 
-private:
 	// test connection to renderer
 	void push_to_render();
 
+private:
 	// Unique identifier
 	const entity_id_t id;
 	// position in the game world
