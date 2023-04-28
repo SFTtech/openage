@@ -25,6 +25,8 @@ public:
 
 	component_t get_component_type() const override;
 
+	const curve::Continuous<coord::phys3> &get_position() const;
+
 private:
 	/**
      * Entity position storage over time.
