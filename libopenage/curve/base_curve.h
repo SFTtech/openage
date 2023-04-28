@@ -4,9 +4,9 @@
 
 #include <sstream>
 
-#include "../event/evententity.h"
-#include "../event/loop.h"
-#include "keyframe_container.h"
+#include "curve/keyframe_container.h"
+#include "event/evententity.h"
+#include "event/loop.h"
 
 
 namespace openage::curve {
@@ -17,8 +17,10 @@ public:
 	BaseCurve(const std::shared_ptr<event::Loop> &loop,
 	          size_t id,
 	          const std::string &idstr = "",
-	          const EventEntity::single_change_notifier &notifier = nullptr) :
+	          const EventEntity::single_change_notifier &notifier = nullptr,
+	          const T &defaultval = T()) :
 		EventEntity(loop, notifier),
+		container{defaultval},
 		_id{id},
 		_idstr{idstr},
 		loop{loop},
@@ -68,30 +70,47 @@ public:
 	void check_integrity() const;
 
 	/**
-     * Copy keyframes from another curve.
+     * Sync this curve with another curve of the same type by replacing all keyframes
+     * >= a given time with the keyframes of \p other.
      *
-     * @param other
-     * @param start
+     * @param other Curve that keyframes are copied from.
+     * @param start Start time at which keyframes are replaced (default = -INF).
+     *              Using the default value replaces ALL keyframes of \p this with
+     *              the keyframes of \p other.
      */
 	void sync(const BaseCurve<T> &other,
 	          const time_t &start = std::numeric_limits<time_t>::min());
 
 	/**
-     * Copy keyframes from another curve.
+     * Sync this curve with another curve of a different by replacing all keyframes
+     * >= a given time with the keyframes of \p other.
      *
-     * @param other
-     * @param start
+     * @param other Curve that keyframes are copied from.
+     * @param converter Function that converts the value type of \p other to the
+     *                  value type of \p this.
+     * @param start Start time at which keyframes are replaced (default = -INF).
+     *              Using the default value replaces ALL keyframes of \p this with
+     *              the keyframes of \p other.
      */
 	template <typename O>
-	void sync(
-		const BaseCurve<O> &other,
-		const std::function<T(const O &)> &converter,
-		const time_t &start = std::numeric_limits<time_t>::min());
+	void sync(const BaseCurve<O> &other,
+	          const std::function<T(const O &)> &converter,
+	          const time_t &start = std::numeric_limits<time_t>::min());
 
+	/**
+     * Get the identifier of this curve.
+     *
+     * @return Identifier.
+     */
 	size_t id() const override {
 		return this->_id;
 	}
 
+	/**
+     * Get the human-readable identifier of this curve.
+     *
+     * @return Human-readable identifier.
+     */
 	std::string idstr() const override {
 		if (this->_idstr.size() == 0) {
 			return std::to_string(this->id());
@@ -104,7 +123,11 @@ public:
 	 */
 	std::string str() const;
 
-	// ASDF: testing
+	/**
+     * Get the container containing all keyframes of this curve.
+     *
+     * @return Keyframe container.
+     */
 	const KeyframeContainer<T> &get_container() const {
 		return this->container;
 	}
@@ -220,22 +243,16 @@ void BaseCurve<T>::check_integrity() const {
 template <typename T>
 inline void BaseCurve<T>::sync(const BaseCurve<T> &other,
                                const time_t &start) {
-	// if (start == std::numeric_limits<time_t>::min()) {
-	// 	this->container = other.container;
-	// }
-	// else {
 	// Erase all elements in this after start time
 	auto hint = this->container.last(start, this->container.end());
 	hint = this->container.erase_after(hint);
-	this->last_element = hint;
 
 	for (const auto &keyframe : other.container) {
 		if (keyframe.time >= start) {
-			hint = this->container.insert_after(keyframe, this->last_element);
-			this->last_element = hint;
+			hint = this->container.insert_after(keyframe, hint);
 		}
 	}
-	// }
+	this->last_element = hint;
 
 	this->changes(start);
 }
@@ -246,22 +263,16 @@ template <typename O>
 inline void BaseCurve<T>::sync(const BaseCurve<O> &other,
                                const std::function<T(const O &)> &converter,
                                const time_t &start) {
-	// if (start == std::numeric_limits<time_t>::min()) {
-	// 	this->container = other.container;
-	// }
-	// else {
 	// Erase all elements in this after start time
 	auto hint = this->container.last(start, this->container.end());
 	hint = this->container.erase_after(hint);
-	this->last_element = hint;
 
 	for (const auto &keyframe : other.get_container()) {
 		if (keyframe.time >= start) {
-			this->container.insert_after(keyframe.time, converter(keyframe.value), this->last_element);
-			this->last_element = hint;
+			hint = this->container.insert_after(keyframe.time, converter(keyframe.value), hint);
 		}
 	}
-	// }
+	this->last_element = hint;
 
 	this->changes(start);
 }

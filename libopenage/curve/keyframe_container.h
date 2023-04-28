@@ -6,10 +6,10 @@
 #include <limits>
 #include <list>
 
-#include "curve.h"
-#include "keyframe.h"
-#include "../error/error.h"
-#include "../util/compiler.h"
+#include "curve/curve.h"
+#include "curve/keyframe.h"
+#include "error/error.h"
+#include "util/compiler.h"
 
 namespace openage::curve {
 
@@ -45,8 +45,27 @@ public:
 	using iterator = typename container_t::const_iterator;
 	using const_iterator = typename container_t::const_iterator;
 
-	/** need the datamanger for change management **/
+	/**
+     * Create a new container.
+     *
+     * Inserts a default element with value \p T() at \p time = -INF to ensure
+     * that accessing the container always returns an element.
+     *
+     * TODO: need the datamanger for change management
+     */
 	KeyframeContainer();
+
+	/**
+     * Create a new container.
+     *
+     * Inserts a default element at \p time = -INF to ensure
+     * that accessing the container always returns an element.
+     *
+     * @param defaultval Value of default element at -INF.
+     *
+     * TODO: need the datamanger for change management
+     */
+	KeyframeContainer(const T &defaultval);
 
 	/**
 	 * Return the number of elements in this container.
@@ -60,7 +79,7 @@ public:
 	 * (i.e. elem->time <= time). Given a hint where to start the search.
 	 */
 	iterator last(const time_t &time,
-	              const iterator & hint) const;
+	              const iterator &hint) const;
 
 	/**
 	 * Get the last element with elem->time <= time, without a hint where to start
@@ -109,8 +128,7 @@ public:
 	 * If there is a value with identical time, this will insert the new value
 	 * before the old one.
 	 */
-	iterator insert_before(const time_t &time, const T &value,
-	                       const iterator &hint) {
+	iterator insert_before(const time_t &time, const T &value, const iterator &hint) {
 		return this->insert_before(keyframe_t(time, value), hint);
 	}
 
@@ -123,7 +141,7 @@ public:
 	 */
 	iterator insert_overwrite(const keyframe_t &value,
 	                          const iterator &hint,
-	                          bool overwrite_all=false);
+	                          bool overwrite_all = false);
 
 	/**
 	 * Insert a new value at given time which will overwrite the last of the
@@ -146,7 +164,7 @@ public:
 	iterator insert_overwrite(const time_t &time,
 	                          const T &value,
 	                          const iterator &hint,
-	                          bool overwrite_all=false) {
+	                          bool overwrite_all = false) {
 		return this->insert_overwrite(keyframe_t(time, value), hint, overwrite_all);
 	}
 
@@ -232,8 +250,8 @@ public:
 			std::cout << "Element: time: " << e.time << " v: " << e.value << std::endl;
 		}
 	}
-private:
 
+private:
 	/**
 	 * Erase elements with this time.
 	 * The iterator has to point to the last element of the same-time group.
@@ -248,12 +266,19 @@ private:
 };
 
 
-template<typename T>
+template <typename T>
 KeyframeContainer<T>::KeyframeContainer() {
-
 	// Create a default element at -Inf, that can always be dereferenced - so
 	// there will by definition never be a element that cannot be dereferenced
 	this->container.push_back(keyframe_t(std::numeric_limits<time_t>::min(), T()));
+}
+
+
+template <typename T>
+KeyframeContainer<T>::KeyframeContainer(const T &defaultval) {
+	// Create a default element at -Inf, that can always be dereferenced - so
+	// there will by definition never be a element that cannot be dereferenced
+	this->container.push_back(keyframe_t(std::numeric_limits<time_t>::min(), defaultval));
 }
 
 
@@ -277,7 +302,6 @@ size_t KeyframeContainer<T>::size() const {
 template <typename T>
 typename KeyframeContainer<T>::iterator KeyframeContainer<T>::last(const time_t &time,
                                                                    const iterator &hint) const {
-
 	iterator e = hint;
 	auto end = std::end(this->container);
 
@@ -332,7 +356,6 @@ KeyframeContainer<T>::insert_overwrite(
 	const KeyframeContainer<T>::keyframe_t &e,
 	const KeyframeContainer<T>::iterator &hint,
 	bool overwrite_all) {
-
 	iterator at = this->last(e.time, hint);
 
 	if (overwrite_all) {
@@ -360,7 +383,6 @@ typename KeyframeContainer<T>::iterator
 KeyframeContainer<T>::insert_after(
 	const KeyframeContainer<T>::keyframe_t &e,
 	const KeyframeContainer<T>::iterator &hint) {
-
 	iterator at = this->last(e.time, hint);
 
 	if (at != std::end(this->container)) {
@@ -376,7 +398,6 @@ KeyframeContainer<T>::insert_after(
 template <typename T>
 typename KeyframeContainer<T>::iterator
 KeyframeContainer<T>::erase_after(KeyframeContainer<T>::iterator last_valid) {
-
 	// exclude the last_valid element from deletion
 	if (last_valid != this->container.end()) {
 		++last_valid;
@@ -404,7 +425,6 @@ template <typename T>
 typename KeyframeContainer<T>::iterator
 KeyframeContainer<T>::erase_group(const time_t &time,
                                   const iterator &last_elem) {
-
 	iterator at = last_elem;
 
 	// if the time what we're looking for
@@ -425,4 +445,4 @@ KeyframeContainer<T>::erase_group(const time_t &time,
 	return at;
 }
 
-} // openage::curve
+} // namespace openage::curve
