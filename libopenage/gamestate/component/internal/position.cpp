@@ -2,17 +2,18 @@
 
 #include "position.h"
 
-#include "../component_type.h"
+#include "gamestate/component/component_type.h"
+#include "gamestate/definitions.h"
 
 
 namespace openage::gamestate::component {
 Position::Position(const std::shared_ptr<openage::event::Loop> &loop,
                    const coord::phys3 &initial_pos,
                    const curve::time_t &creation_time) :
-	position(loop, 0) {
+	position(loop, 0, "", nullptr, WORLD_ORIGIN) {
 	this->position.set_insert(creation_time, initial_pos);
 
-	// ASDF: testing
+	// TODO: testing values
 	this->position.set_insert(creation_time + 3, initial_pos + coord::phys3_delta{0, 2, 0});
 	this->position.set_insert(creation_time + 6, initial_pos + coord::phys3_delta{2, 2, 0});
 	this->position.set_insert(creation_time + 9, initial_pos + coord::phys3_delta{2, 0, 0});

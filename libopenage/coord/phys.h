@@ -69,10 +69,6 @@ struct phys3_delta : CoordNeSeUpRelative<phys_t, phys3, phys3_delta> {
 struct phys3 : CoordNeSeUpAbsolute<phys_t, phys3, phys3_delta> {
 	using CoordNeSeUpAbsolute<phys_t, phys3, phys3_delta>::CoordNeSeUpAbsolute;
 
-	// ASDF: Requires definition of origin
-	phys3() :
-		CoordNeSeUpAbsolute{0.0, 0.0, 0.0} {};
-
 	// coordinate conversions
 	tile3 to_tile3() const;
 	tile to_tile() const;
