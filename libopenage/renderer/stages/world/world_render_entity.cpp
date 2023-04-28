@@ -2,11 +2,13 @@
 
 #include "world_render_entity.h"
 
+#include "renderer/definitions.h"
+
 namespace openage::renderer::world {
 
 WorldRenderEntity::WorldRenderEntity() :
 	changed{false},
-	position{nullptr, 0},
+	position{nullptr, 0, "", nullptr, SCENE_ORIGIN},
 	animation_path{},
 	last_update{0.0} {
 }

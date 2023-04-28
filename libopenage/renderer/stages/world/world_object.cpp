@@ -5,6 +5,7 @@
 #include <eigen3/Eigen/Dense>
 
 #include "renderer/camera/camera.h"
+#include "renderer/definitions.h"
 #include "renderer/resources/animation/angle_info.h"
 #include "renderer/resources/animation/animation_info.h"
 #include "renderer/resources/animation/frame_info.h"
@@ -15,6 +16,7 @@
 #include "renderer/stages/world/world_render_entity.h"
 #include "renderer/uniform_input.h"
 
+
 namespace openage::renderer::world {
 
 WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
@@ -24,7 +26,7 @@ WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager
 	asset_manager{asset_manager},
 	render_entity{nullptr},
 	ref_id{0},
-	position{nullptr, 0},
+	position{nullptr, 0, "", nullptr, SCENE_ORIGIN},
 	texture{nullptr},
 	uniforms{nullptr} {
 }
