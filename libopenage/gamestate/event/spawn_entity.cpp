@@ -55,6 +55,8 @@ void SpawnEntityHandler::invoke(openage::event::Loop & /* loop */,
 	                                                      time);
 	entity->add_component(static_pointer_cast<component::Component>(position));
 
+	entity->push_to_render();
+
 	gstate->add_game_entity(entity);
 }
 
