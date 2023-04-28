@@ -67,6 +67,27 @@ public:
 	 */
 	void check_integrity() const;
 
+	/**
+     * Copy keyframes from another curve.
+     *
+     * @param other
+     * @param start
+     */
+	void sync(const BaseCurve<T> &other,
+	          const time_t &start = std::numeric_limits<time_t>::min());
+
+	/**
+     * Copy keyframes from another curve.
+     *
+     * @param other
+     * @param start
+     */
+	template <typename O>
+	void sync(
+		const BaseCurve<O> &other,
+		const std::function<T(const O &)> &converter,
+		const time_t &start = std::numeric_limits<time_t>::min());
+
 	size_t id() const override {
 		return this->_id;
 	}
@@ -82,6 +103,11 @@ public:
 	 * Get a string representation of the curve.
 	 */
 	std::string str() const;
+
+	// ASDF: testing
+	const KeyframeContainer<T> &get_container() const {
+		return this->container;
+	}
 
 protected:
 	/**
@@ -191,5 +217,53 @@ void BaseCurve<T>::check_integrity() const {
 	}
 }
 
+template <typename T>
+inline void BaseCurve<T>::sync(const BaseCurve<T> &other,
+                               const time_t &start) {
+	// if (start == std::numeric_limits<time_t>::min()) {
+	// 	this->container = other.container;
+	// }
+	// else {
+	// Erase all elements in this after start time
+	auto hint = this->container.last(start, this->container.end());
+	hint = this->container.erase_after(hint);
+	this->last_element = hint;
+
+	for (const auto &keyframe : other.container) {
+		if (keyframe.time >= start) {
+			hint = this->container.insert_after(keyframe, this->last_element);
+			this->last_element = hint;
+		}
+	}
+	// }
+
+	this->changes(start);
+}
+
+
+template <typename T>
+template <typename O>
+inline void BaseCurve<T>::sync(const BaseCurve<O> &other,
+                               const std::function<T(const O &)> &converter,
+                               const time_t &start) {
+	// if (start == std::numeric_limits<time_t>::min()) {
+	// 	this->container = other.container;
+	// }
+	// else {
+	// Erase all elements in this after start time
+	auto hint = this->container.last(start, this->container.end());
+	hint = this->container.erase_after(hint);
+	this->last_element = hint;
+
+	for (const auto &keyframe : other.get_container()) {
+		if (keyframe.time >= start) {
+			this->container.insert_after(keyframe.time, converter(keyframe.value), this->last_element);
+			this->last_element = hint;
+		}
+	}
+	// }
+
+	this->changes(start);
+}
 
 } // namespace openage::curve
