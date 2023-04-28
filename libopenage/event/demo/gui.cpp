@@ -1,4 +1,4 @@
-// Copyright 2016-2022 the openage authors. See copying.md for legal info.
+// Copyright 2016-2023 the openage authors. See copying.md for legal info.
 
 #include "gui.h"
 
@@ -46,7 +46,7 @@ const std::vector<PongEvent> &Gui::get_inputs(const std::shared_ptr<PongPlayer> 
 			mvprintw(1, 40, "UP");
 			break;
 
-		case 27:  // esc or alt
+		case 27: // esc or alt
 			erase();
 			refresh();
 			endwin();
@@ -78,8 +78,8 @@ const std::vector<PongEvent> &Gui::get_inputs(const std::shared_ptr<PongPlayer> 
 enum {
 	COLOR_PLAYER1 = 1,
 	COLOR_PLAYER2 = 2,
-	COLOR_BALL    = 3,
-	COLOR_DEBUG   = 4,
+	COLOR_BALL = 3,
+	COLOR_DEBUG = 4,
 
 	COLOR_0 = 5,
 	COLOR_1 = 6,
@@ -116,7 +116,7 @@ void Gui::init() {
 
 	attron(COLOR_PAIR(COLOR_DEBUG));
 
-	std::vector<const char*> buffer{
+	std::vector<const char *> buffer{
 		"oooooooooo                                   ",
 		" 888    888  ooooooo    ooooooo    oooooooo8 ",
 		" 888oooo88 888     888 888   888  888    88o ",
@@ -130,10 +130,10 @@ void Gui::init() {
 		colwidth = std::max(colwidth, strlen(c));
 	}
 
-	int row = (y - buffer.size()) / 2;;
+	int row = (y - buffer.size()) / 2;
 	int col = (x - colwidth) / 2;
 	for (const auto &c : buffer) {
-		mvprintw(row++, col, "%c", c);
+		mvprintw(row++, col, "%c", *c);
 	}
 
 	attroff(COLOR_PAIR(COLOR_DEBUG));
@@ -151,7 +151,7 @@ void Gui::clear() {
 
 
 void Gui::get_display_size(const std::shared_ptr<PongState> &state,
-                           const curve::time_t &/*now*/) {
+                           const curve::time_t & /*now*/) {
 	// record the screen dimensions in the game state
 
 	// TODO: make the display_boundary a curve as well.
@@ -177,36 +177,19 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 	// debug information
 	mvprintw(0, 1, "NOW:  %f", now.to_double());
 	mvprintw(1, 1, "SCR:  %f | %f", state->display_boundary[0], state->display_boundary[1]);
-	mvprintw(2, 1,
-	         "P1:   %f, %f, %i",
-	         state->p1->position->get(now),
-	         state->p1->paddle_x,
-	         state->p1->state->get(now).state);
-	mvprintw(3, 1,
-	         "P2:   %f, %f, %i",
-	         state->p2->position->get(now),
-	         state->p2->paddle_x,
-	         state->p2->state->get(now).state);
+	mvprintw(2, 1, "P1:   %f, %f, %i", state->p1->position->get(now), state->p1->paddle_x, state->p1->state->get(now).state);
+	mvprintw(3, 1, "P2:   %f, %f, %i", state->p2->position->get(now), state->p2->paddle_x, state->p2->state->get(now).state);
 
 	// ball position predictions, 10s into the future
 	for (int i = 0; i < 10; i++) {
 		auto i_as_ctt = curve::time_t::from_int(i);
-		mvprintw((5 + i), 1,
-		         "BALL in %03f: %f | %f; SPEED: %f | %f | PLpos: %f, PRpos: %f",
-		         i_as_ctt.to_double(),
-		         state->ball->position->get(now + i_as_ctt)[0],
-		         state->ball->position->get(now + i_as_ctt)[1],
-		         state->ball->speed->get(now + i_as_ctt)[0],
-		         state->ball->speed->get(now + i_as_ctt)[1],
-		         state->p1->position->get(now + i_as_ctt),
-		         state->p2->position->get(now + i_as_ctt)
-		);
+		mvprintw((5 + i), 1, "BALL in %03f: %f | %f; SPEED: %f | %f | PLpos: %f, PRpos: %f", i_as_ctt.to_double(), state->ball->position->get(now + i_as_ctt)[0], state->ball->position->get(now + i_as_ctt)[1], state->ball->speed->get(now + i_as_ctt)[0], state->ball->speed->get(now + i_as_ctt)[1], state->p1->position->get(now + i_as_ctt), state->p2->position->get(now + i_as_ctt));
 	}
 
 	// show log
 	int msg_i = 0;
-	for (auto & msg : this->log_msgs) {
-		mvprintw((6 + msg_i), state->display_boundary[0]/2 + 10, "%s", msg.c_str());
+	for (auto &msg : this->log_msgs) {
+		mvprintw((6 + msg_i), state->display_boundary[0] / 2 + 10, "%s", msg.c_str());
 		msg_i += 1;
 	}
 
@@ -232,7 +215,7 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 	// ball position prediction 10s into the future
 	attron(COLOR_PAIR(COLOR_1));
 	for (int i = 1; i < 100; ++i) {
-		auto i_as_ctt = curve::time_t::from_double(i/10.0);
+		auto i_as_ctt = curve::time_t::from_double(i / 10.0);
 		draw_ball(state->ball->position->get(now + i_as_ctt), "x");
 	}
 
@@ -262,6 +245,6 @@ void Gui::log(const std::string &msg) {
 	this->log_msgs.push_front(msg);
 }
 
-} // openage::event::demo
+} // namespace openage::event::demo
 
 #endif
