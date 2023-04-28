@@ -84,7 +84,8 @@ void Engine::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &ren
 }
 
 void Engine::init_event_handlers() {
-	auto handler = std::make_shared<gamestate::event::SpawnEntityHandler>(this->entity_factory,
+	auto handler = std::make_shared<gamestate::event::SpawnEntityHandler>(this->simulation->get_loop(),
+	                                                                      this->entity_factory,
 	                                                                      this->root_dir["assets/test/textures/test_gaben.sprite"]);
 	this->simulation->get_loop()->add_event_class(handler);
 }

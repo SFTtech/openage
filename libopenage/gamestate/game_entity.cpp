@@ -2,25 +2,20 @@
 
 #include "game_entity.h"
 
+#include "gamestate/component/base_component.h"
+#include "gamestate/component/internal/position.h"
 #include "renderer/stages/world/world_render_entity.h"
 
 namespace openage::gamestate {
 
-GameEntity::GameEntity(uint32_t id,
-                       coord::phys3 pos,
+GameEntity::GameEntity(entity_id_t id,
+                       coord::phys3 &initial_pos,
                        util::Path &texture_path) :
 	id{id},
-	pos{pos},
+	pos{initial_pos},
 	texture_path{texture_path},
+	components{},
 	render_entity{nullptr} {
-}
-
-void GameEntity::push_to_render() {
-	if (this->render_entity != nullptr) {
-		this->render_entity->update(this->id,
-		                            this->pos,
-		                            this->texture_path);
-	}
 }
 
 entity_id_t GameEntity::get_id() const {
@@ -31,6 +26,18 @@ void GameEntity::set_render_entity(const std::shared_ptr<renderer::world::WorldR
 	this->render_entity = entity;
 
 	this->push_to_render();
+}
+
+void GameEntity::add_component(const std::shared_ptr<component::Component> &component) {
+	this->components.emplace(component->get_component_type(), component);
+}
+
+void GameEntity::push_to_render() {
+	if (this->render_entity != nullptr) {
+		this->render_entity->update(this->id,
+		                            this->pos,
+		                            this->texture_path);
+	}
 }
 
 } // namespace openage::gamestate

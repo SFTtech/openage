@@ -2,7 +2,11 @@
 
 #pragma once
 
+#include <memory>
+#include <unordered_map>
+
 #include "coord/phys.h"
+#include "gamestate/component/component_type.h"
 #include "gamestate/types.h"
 #include "util/path.h"
 
@@ -14,13 +18,24 @@ class WorldRenderEntity;
 
 namespace gamestate {
 
+namespace component {
+class Component;
+}
+
 /**
  * Entity for a "physical" thing (unit, building, etc.) in the game world.
  */
 class GameEntity {
 public:
-	GameEntity(const entity_id_t id,
-	           coord::phys3 pos,
+	/**
+     * Create a new game entity.
+     *
+     * @param id Unique identifier.
+     * @param initial_pos Initial position in the game world.
+     * @param texture_path Path to the texture.
+     */
+	GameEntity(entity_id_t id,
+	           coord::phys3 &initial_pos,
 	           util::Path &texture_path);
 	~GameEntity() = default;
 
@@ -38,16 +53,28 @@ public:
 	 */
 	void set_render_entity(const std::shared_ptr<renderer::world::WorldRenderEntity> &entity);
 
+	/**
+     * Add a component to this entity.
+     *
+     * @param component Component to add.
+     */
+	void add_component(const std::shared_ptr<component::Component> &component);
+
 private:
 	// test connection to renderer
 	void push_to_render();
 
 	// Unique identifier
-	entity_id_t id;
+	const entity_id_t id;
 	// position in the game world
 	coord::phys3 pos;
 	// path to a texture
 	util::Path texture_path;
+
+	/**
+     * Data components.
+     */
+	std::unordered_map<component::component_t, std::shared_ptr<component::Component>> components;
 
 	// render entity for pushing updates to
 	std::shared_ptr<renderer::world::WorldRenderEntity> render_entity;
