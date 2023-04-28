@@ -6,9 +6,28 @@ namespace openage::renderer::world {
 
 WorldRenderEntity::WorldRenderEntity() :
 	changed{false},
-	position{0.0f, 0.0f, 0.0f},
+	position{nullptr, 0},
 	animation_path{},
 	last_update{0.0} {
+}
+
+void WorldRenderEntity::update(const uint32_t ref_id,
+                               const curve::Continuous<coord::phys3> position,
+                               const util::Path animation_path,
+                               const curve::time_t time) {
+	std::unique_lock lock{this->mutex};
+
+	this->ref_id = ref_id;
+	std::function<coord::scene3(const coord::phys3 &)> to_scene3 = [](const coord::phys3 &pos) {
+		return pos.to_scene3();
+	};
+	this->position.sync(position,
+	                    std::function<coord::scene3(const coord::phys3 &)>([](const coord::phys3 &pos) {
+							return pos.to_scene3();
+						}));
+	this->animation_path = animation_path;
+	this->changed = true;
+	this->last_update = time;
 }
 
 void WorldRenderEntity::update(const uint32_t ref_id,
@@ -18,7 +37,7 @@ void WorldRenderEntity::update(const uint32_t ref_id,
 	std::unique_lock lock{this->mutex};
 
 	this->ref_id = ref_id;
-	this->position = position.to_scene3();
+	this->position.set_insert(time, position.to_scene3());
 	this->animation_path = animation_path;
 	this->changed = true;
 	this->last_update = time;
@@ -30,7 +49,7 @@ uint32_t WorldRenderEntity::get_id() {
 	return this->ref_id;
 }
 
-const coord::scene3 WorldRenderEntity::get_position() {
+const curve::Continuous<coord::scene3> &WorldRenderEntity::get_position() {
 	std::shared_lock lock{this->mutex};
 
 	return this->position;

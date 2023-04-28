@@ -24,7 +24,7 @@ WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager
 	asset_manager{asset_manager},
 	render_entity{nullptr},
 	ref_id{0},
-	position{0.0f, 0.0f, 0.0f},
+	position{nullptr, 0},
 	texture{nullptr},
 	uniforms{nullptr} {
 }
@@ -44,7 +44,7 @@ void WorldObject::update(const curve::time_t &time) {
 		this->ref_id = this->render_entity->get_id();
 
 		// Get position
-		this->position = this->render_entity->get_position();
+		this->position.sync(this->render_entity->get_position());
 
 		// TODO: New renderable is only required if the mesh is changed
 		this->require_renderable = true;
@@ -102,7 +102,8 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 		this->uniforms->update("proj", this->camera->get_projection_matrix());
 
 		// Object world position
-		this->uniforms->update("obj_world_position", this->position.to_world_space());
+		auto current_pos = this->position.get(time);
+		this->uniforms->update("obj_world_position", current_pos.to_world_space());
 
 		// Subtex positional offset using anchor point
 		auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
@@ -123,7 +124,7 @@ uint32_t WorldObject::get_id() {
 	return this->ref_id;
 }
 
-const coord::scene3 WorldObject::get_position() {
+const curve::Continuous<coord::scene3> WorldObject::get_position() {
 	return this->position;
 }
 

@@ -7,6 +7,7 @@
 #include <eigen3/Eigen/Dense>
 
 #include "coord/scene.h"
+#include "curve/continuous.h"
 #include "curve/curve.h"
 #include "renderer/resources/mesh_data.h"
 #include "util/vector.h"
@@ -73,7 +74,7 @@ public:
 	 *
 	 * @return Position of the object.
 	 */
-	const coord::scene3 get_position();
+	const curve::Continuous<coord::scene3> get_position();
 
 	/**
      * Get the quad for creating the geometry.
@@ -162,7 +163,7 @@ private:
 	/**
 	 * Position of the object.
 	 */
-	coord::scene3 position;
+	curve::Continuous<coord::scene3> position;
 
 	/**
      * Texture used for the mesh.
