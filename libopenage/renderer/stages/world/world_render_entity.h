@@ -7,6 +7,7 @@
 
 #include "coord/phys.h"
 #include "coord/scene.h"
+#include "curve/continuous.h"
 #include "curve/curve.h"
 #include "util/path.h"
 
@@ -18,7 +19,22 @@ public:
 	~WorldRenderEntity() = default;
 
 	/**
-	 * Update the render entity with informatio from the gamestate.
+	 * Update the render entity with information from the gamestate.
+	 *
+	 * @param ref_id Game entity ID.
+	 * @param position Position of the game entity inside the game world.
+	 * @param animation_path Path to the animation definition.
+	 * @param time Simulation time of the update.
+	 */
+	void update(const uint32_t ref_id,
+	            const curve::Continuous<coord::phys3> position,
+	            const util::Path animation_path,
+	            const curve::time_t time = 0.0);
+
+	/**
+	 * Thus function is for DEBUGGING and should not be used.
+     *
+	 * Update the render entity with information from the gamestate.
 	 *
 	 * @param ref_id Game entity ID.
 	 * @param position Position of the game entity inside the game world.
@@ -42,7 +58,7 @@ public:
 	 *
 	 * @return Position of the entity.
 	 */
-	const coord::scene3 get_position();
+	const curve::Continuous<coord::scene3> &get_position();
 
 	/**
      * Get the animation definition path.
@@ -87,7 +103,7 @@ private:
 	/**
 	 * Position inside the game world.
 	 */
-	coord::scene3 position;
+	curve::Continuous<coord::scene3> position;
 
 	/**
 	 * Path to the texture.
