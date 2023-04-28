@@ -3,7 +3,9 @@
 #include "spawn_entity.h"
 
 #include "coord/phys.h"
+#include "gamestate/component/internal/position.h"
 #include "gamestate/entity_factory.h"
+#include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
 
 namespace openage::gamestate::event {
@@ -22,10 +24,12 @@ std::string Spawner::idstr() const {
 }
 
 
-SpawnEntityHandler::SpawnEntityHandler(const std::shared_ptr<gamestate::EntityFactory> &factory,
+SpawnEntityHandler::SpawnEntityHandler(const std::shared_ptr<openage::event::Loop> &loop,
+                                       const std::shared_ptr<gamestate::EntityFactory> &factory,
                                        const util::Path &texture_path) :
 	OnceEventHandler("game.spawn_entity"),
 	factory{factory},
+	loop{loop},
 	texture_path{texture_path} {
 }
 
@@ -37,12 +41,20 @@ void SpawnEntityHandler::setup_event(const std::shared_ptr<openage::event::Event
 void SpawnEntityHandler::invoke(openage::event::Loop & /* loop */,
                                 const std::shared_ptr<openage::event::EventEntity> & /* target */,
                                 const std::shared_ptr<openage::event::State> &state,
-                                const curve::time_t & /* time */,
+                                const curve::time_t &time,
                                 const param_map &params) {
 	auto gstate = std::dynamic_pointer_cast<gamestate::GameState>(state);
 
+	// Create entity
 	auto entity = this->factory->add_game_entity(params.get("position", coord::phys3{0, 0, 0}),
 	                                             this->texture_path);
+
+	// Setup components
+	auto position = std::make_shared<component::Position>(this->loop,
+	                                                      params.get("position", coord::phys3{0, 0, 0}),
+	                                                      time);
+	entity->add_component(static_pointer_cast<component::Component>(position));
+
 	gstate->add_game_entity(entity);
 }
 
