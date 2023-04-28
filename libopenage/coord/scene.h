@@ -71,10 +71,6 @@ struct scene3_delta : CoordNeSeUpRelative<scene_t, scene3, scene3_delta> {
 struct scene3 : CoordNeSeUpAbsolute<scene_t, scene3, scene3_delta> {
 	using CoordNeSeUpAbsolute<scene_t, scene3, scene3_delta>::CoordNeSeUpAbsolute;
 
-	// ASDF: Requires definition of origin
-	scene3() :
-		CoordNeSeUpAbsolute(0.0, 0.0, 0.0) {}
-
 	// coordinate conversions
 	scene2 to_scene2() const;
 	phys3 to_phys3() const;
