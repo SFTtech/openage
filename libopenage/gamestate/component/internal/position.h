@@ -7,8 +7,11 @@
 #include "coord/phys.h"
 #include "curve/continuous.h"
 #include "gamestate/component/internal_component.h"
+#include "util/fixed_point.h"
 
 namespace openage::gamestate::component {
+
+using angle_t = util::FixedPoint<uint32_t, 16>;
 
 class Position : public InternalComponent {
 public:
@@ -23,15 +26,35 @@ public:
 	         const coord::phys3 &initial_pos,
 	         const curve::time_t &creation_time);
 
-	component_t get_component_type() const override;
+	component_t get_type() const override;
 
-	const curve::Continuous<coord::phys3> &get_position() const;
+	/**
+     * Get the positions in the world coordinate system over time.
+     *
+     * @return Position curve.
+     */
+	const curve::Continuous<coord::phys3> &get_positions() const;
+
+	/**
+     * Get the directions in degrees over time.
+     *
+     * @return Direction curve.
+     */
+	const curve::Continuous<angle_t> &get_angles() const;
 
 private:
 	/**
-     * Entity position storage over time.
+     * Position storage over time.
      */
 	curve::Continuous<coord::phys3> position;
+
+	/**
+     * Angle the entity is facing over time.
+     *
+     * Represents degrees in the range [0, 360). At angle 0, the entity is facing
+     * towards the camera.
+     */
+	curve::Continuous<angle_t> angle;
 };
 
 } // namespace openage::gamestate::component

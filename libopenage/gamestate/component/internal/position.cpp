@@ -2,7 +2,7 @@
 
 #include "position.h"
 
-#include "gamestate/component/component_type.h"
+#include "gamestate/component/types.h"
 #include "gamestate/definitions.h"
 
 
@@ -10,7 +10,8 @@ namespace openage::gamestate::component {
 Position::Position(const std::shared_ptr<openage::event::Loop> &loop,
                    const coord::phys3 &initial_pos,
                    const curve::time_t &creation_time) :
-	position(loop, 0, "", nullptr, WORLD_ORIGIN) {
+	position(loop, 0, "", nullptr, WORLD_ORIGIN),
+	angle(loop, 0) {
 	this->position.set_insert(creation_time, initial_pos);
 
 	// TODO: testing values
@@ -21,12 +22,16 @@ Position::Position(const std::shared_ptr<openage::event::Loop> &loop,
 }
 
 
-inline component_t Position::get_component_type() const {
+inline component_t Position::get_type() const {
 	return component_t::POSITION;
 }
 
-const curve::Continuous<coord::phys3> &Position::get_position() const {
+const curve::Continuous<coord::phys3> &Position::get_positions() const {
 	return this->position;
+}
+
+const curve::Continuous<angle_t> &Position::get_angles() const {
+	return this->angle;
 }
 
 } // namespace openage::gamestate::component

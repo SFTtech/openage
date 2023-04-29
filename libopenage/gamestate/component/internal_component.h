@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "base_component.h"
+#include "gamestate/component/base_component.h"
 
 namespace openage::gamestate::component {
 

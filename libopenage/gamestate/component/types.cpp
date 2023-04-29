@@ -1,6 +1,6 @@
 // Copyright 2021-2023 the openage authors. See copying.md for legal info.
 
-#include "internal_component.h"
+#include "types.h"
 
 namespace openage::gamestate::component {
 

@@ -1,11 +1,11 @@
-// Copyright 2021-2021 the openage authors. See copying.md for legal info.
+// Copyright 2021-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <nyan/nyan.h>
 
-#include "../../curve/discrete.h"
-#include "base_component.h"
+#include "curve/discrete.h"
+#include "gamestate/component/base_component.h"
 
 namespace openage::gamestate::component {
 
