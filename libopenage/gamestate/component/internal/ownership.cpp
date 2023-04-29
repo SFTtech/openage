@@ -18,4 +18,8 @@ inline component_t Ownership::get_type() const {
 	return component_t::OWNERSHIP;
 }
 
+const curve::Discrete<ownership_id_t> &Ownership::get_owners() const {
+	return this->owner;
+}
+
 } // namespace openage::gamestate::component

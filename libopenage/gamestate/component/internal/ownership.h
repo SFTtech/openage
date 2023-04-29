@@ -24,6 +24,13 @@ public:
 
 	component_t get_type() const override;
 
+	/**
+     * Get the owner IDs over time.
+     *
+     * @return Owner ID curve.
+     */
+	const curve::Discrete<ownership_id_t> &get_owners() const;
+
 private:
 	/**
      * Owner ID storage over time.
