@@ -70,8 +70,10 @@ public:
 	void check_integrity() const;
 
 	/**
-     * Sync this curve with another curve of the same type by replacing all keyframes
-     * >= a given time with the keyframes of \p other.
+     * Copy keyframes from another curve to this curve. After syncing, the two curves
+     * are guaranteed to return the same values for t >= start.
+     *
+     * The operation may insert new keyframes at \p start on the curve.
      *
      * @param other Curve that keyframes are copied from.
      * @param start Start time at which keyframes are replaced (default = -INF).
@@ -82,8 +84,11 @@ public:
 	          const time_t &start = std::numeric_limits<time_t>::min());
 
 	/**
-     * Sync this curve with another curve of a different by replacing all keyframes
-     * >= a given time with the keyframes of \p other.
+     * Copy keyframes from another curve (with a different element type) to this curve.
+     * After syncing, the two curves are guaranteed to return the same values
+     * for t >= start.
+     *
+     * The operation may insert new keyframes at \p start on the curve.
      *
      * @param other Curve that keyframes are copied from.
      * @param converter Function that converts the value type of \p other to the
@@ -241,18 +246,17 @@ void BaseCurve<T>::check_integrity() const {
 }
 
 template <typename T>
-inline void BaseCurve<T>::sync(const BaseCurve<T> &other,
-                               const time_t &start) {
-	// Erase all elements in this after start time
-	auto hint = this->container.last(start, this->container.end());
-	hint = this->container.erase_after(hint);
+void BaseCurve<T>::sync(const BaseCurve<T> &other,
+                        const time_t &start) {
+	// Copy keyframes between containers for t >= start
+	this->last_element = this->container.sync_after(other.container, start);
 
-	for (const auto &keyframe : other.container) {
-		if (keyframe.time >= start) {
-			hint = this->container.insert_after(keyframe, hint);
-		}
+	// Check if this->get() returns the same value as other->get() for t = start
+	// If not, insert a new keyframe at start
+	auto get_other = other.get(start);
+	if (this->get(start) != get_other) {
+		this->set_insert(start, get_other);
 	}
-	this->last_element = hint;
 
 	this->changes(start);
 }
@@ -260,19 +264,18 @@ inline void BaseCurve<T>::sync(const BaseCurve<T> &other,
 
 template <typename T>
 template <typename O>
-inline void BaseCurve<T>::sync(const BaseCurve<O> &other,
-                               const std::function<T(const O &)> &converter,
-                               const time_t &start) {
-	// Erase all elements in this after start time
-	auto hint = this->container.last(start, this->container.end());
-	hint = this->container.erase_after(hint);
+void BaseCurve<T>::sync(const BaseCurve<O> &other,
+                        const std::function<T(const O &)> &converter,
+                        const time_t &start) {
+	// Copy keyframes between containers for t >= start
+	this->last_element = this->container.sync_after(other.get_container(), converter, start);
 
-	for (const auto &keyframe : other.get_container()) {
-		if (keyframe.time >= start) {
-			hint = this->container.insert_after(keyframe.time, converter(keyframe.value), hint);
-		}
+	// Check if this->get() returns the same value as other->get() for t = start
+	// If not, insert a new keyframe at start
+	auto get_other = converter(other.get(start));
+	if (this->get(start) != get_other) {
+		this->set_insert(start, get_other);
 	}
-	this->last_element = hint;
 
 	this->changes(start);
 }
