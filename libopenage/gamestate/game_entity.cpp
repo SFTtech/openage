@@ -29,7 +29,7 @@ void GameEntity::set_render_entity(const std::shared_ptr<renderer::world::WorldR
 }
 
 void GameEntity::add_component(const std::shared_ptr<component::Component> &component) {
-	this->components.insert({component->get_component_type(), component});
+	this->components.insert({component->get_type(), component});
 }
 
 void GameEntity::push_to_render() {
@@ -38,7 +38,7 @@ void GameEntity::push_to_render() {
 			return;
 		}
 
-		const auto &pos = dynamic_pointer_cast<component::Position>(this->components.at(component::component_t::POSITION))->get_position();
+		const auto &pos = dynamic_pointer_cast<component::Position>(this->components.at(component::component_t::POSITION))->get_positions();
 		this->render_entity->update(this->id, pos, this->texture_path);
 	}
 }

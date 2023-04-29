@@ -1,8 +1,8 @@
 add_sources(libopenage
     api_component.cpp
     base_component.cpp
-    component_type.cpp
     internal_component.cpp
+    types.cpp
 )
 
 add_subdirectory(api/)

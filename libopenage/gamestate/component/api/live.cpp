@@ -1,7 +1,8 @@
 // Copyright 2021-2023 the openage authors. See copying.md for legal info.
 
 #include "live.h"
-#include "../component_type.h"
+
+#include "gamestate/component/types.h"
 
 
 namespace openage::gamestate::component {
@@ -29,7 +30,7 @@ Live::Live(const std::shared_ptr<event::Loop> &loop,
 	}
 }
 
-inline component_t Live::get_component_type() const {
+inline component_t Live::get_type() const {
 	return component_t::LIVE;
 }
 
