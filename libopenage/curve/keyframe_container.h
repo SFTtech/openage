@@ -243,6 +243,48 @@ public:
 	}
 
 	/**
+     * Remove all keyframes from the container, EXCEPT for the default value
+     * at -INF.
+     *
+     * Essentially, the container is reset to the state immediately after construction.
+     */
+	void clear() {
+		this->container.erase(++this->begin(), this->end());
+	}
+
+	/**
+     * Copy keyframes from another container to this container.
+     *
+     * Replaces all keyframes beginning at t >= start with keyframes from \p other.
+     *
+     * @param other Curve that keyframes are copied from.
+     * @param converter Function that converts the value type of \p other to the
+     *                  value type of \p this.
+     * @param start Start time at which keyframes are replaced (default = -INF).
+     *              Using the default value replaces ALL keyframes of \p this with
+     *              the keyframes of \p other.
+     */
+	iterator sync_after(const KeyframeContainer<T> &other,
+	                    const time_t &start = std::numeric_limits<time_t>::min());
+
+	/**
+     * Copy keyframes from another container (with a different element type) to this container.
+     *
+     * Replaces all keyframes beginning at t >= start with keyframes from \p other.
+     *
+     * @param other Curve that keyframes are copied from.
+     * @param converter Function that converts the value type of \p other to the
+     *                  value type of \p this.
+     * @param start Start time at which keyframes are replaced (default = -INF).
+     *              Using the default value replaces ALL keyframes of \p this with
+     *              the keyframes of \p other.
+     */
+	template <typename O>
+	iterator sync_after(const KeyframeContainer<O> &other,
+	                    const std::function<T(const O &)> &converter,
+	                    const time_t &start = std::numeric_limits<time_t>::min());
+
+	/**
 	 * Debugging method to be used from gdb to understand bugs better.
 	 */
 	void dump() const {
@@ -418,6 +460,55 @@ template <typename T>
 typename KeyframeContainer<T>::iterator
 KeyframeContainer<T>::erase(KeyframeContainer<T>::iterator e) {
 	return this->container.erase(e);
+}
+
+
+template <typename T>
+typename KeyframeContainer<T>::iterator
+KeyframeContainer<T>::sync_after(const KeyframeContainer<T> &other,
+                                 const time_t &start) {
+	// Delete elements after start time
+	iterator at = this->last(start, this->end());
+	at = this->erase_after(at);
+
+	auto at_other = other.begin();
+	++at_other; // always skip the first element (because it's the default value)
+
+	// Copy all elements from other with time >= start
+	while (at_other != other.end()) {
+		if (at_other->time >= start) {
+			at = this->insert_after(*at_other, at);
+		}
+		++at_other;
+	}
+
+	return at;
+}
+
+
+template <typename T>
+template <typename O>
+typename KeyframeContainer<T>::iterator
+KeyframeContainer<T>::sync_after(const KeyframeContainer<O> &other,
+                                 const std::function<T(const O &)> &converter,
+                                 const time_t &start) {
+	// Delete elements after start time
+	iterator at = this->last(start, this->end());
+	at = this->erase_after(at);
+
+	auto at_other = other.begin();
+	++at_other; // always skip the first element (because it's the default value)
+
+	// Copy all elements from other with time >= start
+	while (at_other != other.end()) {
+		if (at_other->time >= start) {
+			// Convert the value to the type of this container
+			at = this->insert_after(at_other->time, converter(at_other->value), at);
+		}
+		++at_other;
+	}
+
+	return at;
 }
 
 
