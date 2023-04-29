@@ -28,8 +28,8 @@ SpawnEntityHandler::SpawnEntityHandler(const std::shared_ptr<openage::event::Loo
                                        const std::shared_ptr<gamestate::EntityFactory> &factory,
                                        const util::Path &texture_path) :
 	OnceEventHandler("game.spawn_entity"),
-	factory{factory},
 	loop{loop},
+	factory{factory},
 	texture_path{texture_path} {
 }
 

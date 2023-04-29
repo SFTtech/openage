@@ -22,7 +22,7 @@ public:
 	          const ownership_id_t owner_id,
 	          const curve::time_t &creation_time);
 
-	component_t get_component_type() const override;
+	component_t get_type() const override;
 
 private:
 	/**
