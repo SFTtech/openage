@@ -1,16 +1,79 @@
 # SLP files
 
-SLP files are stored in the DRS files. They contain all the (animation)
-textures. Like the DRS format, it can also be read sequentially.
+SLP files store graphics data for the AoE games. They contain all the (animation)
+textures. In older releases, SLPs are packed into a DRS archive. Like the DRS format,
+it can also be read sequentially.
 
-In addition to the format description found in this document, we also
-provide a [pattern file](/doc/media/patterns/slp.hexpat) for the [imHex](https://imhex.werwolv.net/)
-editor which can be used to explore the SLP data visually.
+There are 5 known versions of SLP: `2.0N`, `3.0`, `4.0X`, `4.1X` and `4.2P`.
+Below, you can find a table that shows which versions are used in which games.
+
+Version | Games
+--------|-------------------
+`2.0N`  | AoE1 (1997), AoE2 (1999), SWGB (2000), AoE2:HD (2013)
+`3.0`   | AoE1:DE
+`4.0X`  | AoE1:DE
+`4.1X`  | AoE1:DE
+`4.2P`  | AoE1:DE (since Build 38862)
+
+AoE1, AoE2 (up to HD), and SWGB all use the `2.0N` version. With AoE1: Definitive
+Edition (AoE1:DE), three new versions were introduced; `3.0`, `4.0X`, and `4.1X`.
+Version `3.0` isn't much different from `2.0N` SLPs and seems to be used
+for rescaled SLPs and terrains.
+`4.0X` and `4.1X` SLPs have additional variables in the header and support multiple
+layers for each frame. `4.1X` was introduced in a patch for AoE1 DE (probably Update 9).
+It only seems to be used with decay SLPs and adds additional metadata to individual pixels,
+e.g. for displaying 'decay' of units.
+
+1. [SLP File Format](#slp-file-format)
+    1. [Header (up to version 3.0)](#header-up-to-version-30)
+    1. [Header (since version 4.0)](#header-since-version-40)
+    1. [Frame Info](#frame-info)
+    1. Frame Data
+        1. [Outline Table](#outline-table)
+        1. [Command Offset Table](#command-offset-table)
+        1. [Draw Commands](#draw-commands)
+1. [Palette Files](#palette-files)
+    1. [AoE1, AoE2, AoE2:HD, SWGB](#palette-files-in-older-versions-of-aoe1-and-aoe2-up-until-aoe2hd)
+    1. [AoE1:DE](#palette-files-in-aoe1de)
+1. [SLP types](#slp-types)
+    1. [Moving objects](#slp-files-for-moving-objects)
+    1. [Static objects](#slp-files-for-static-objects)
+    1. [Projectiles](#slp-files-for-projectiles)
+    1. [Shadows](#slp-files-for-shadows)
 
 ## SLP file format
 
+SLPs from version `2.0` to `3.0` are mostly used by the games released before
+the Definitive Editions as well as the beta and early releases of AoE1:DE.
+
+SLPs from version `4.0` onwards are used in AoE1:DE. There are a number of changes
+to the previous versions that were made to accomodate the new graphical features
+of the Definitive Edition. However, the basic structure remains similar to
+versions `2.0` and `3.0`.
+
+Note that SLPs with version `4.2P` need to be decompressed first (see section about the [compressed format](#compression-since-version-42p)).
+
+In addition to the format description found here, we also
+provide [pattern files](/doc/media/patterns/) for the [imHex](https://imhex.werwolv.net/)
+editor which can be used to explore the SLP data visually.
+
+### Compression (since version 4.2P)
+SLP version `4.2P` introduced in Update 38862 of Age of Empires 1: Definitive Edition
+is a container format that stores a compressed SLP file (regardless of version).
+The format uses the [LZ4](https://en.wikipedia.org/wiki/LZ4_(compression_algorithm))
+compression method. Additionally, there are two uncompressed header entries preceding
+the compressed data stream. The full structure can be seen below.
+
+Length   | Type    | Description                   | Example
+---------|---------|-------------------------------|--------
+4 bytes  | string  | Version                       | 4.2P
+4 bytes  | uint32  | Uncompressed size of SLP file | 10637, 0x298D
+Variable | LZ4     | Compressed SLP file           | -
+
+Decompressing the LZ4 stream of `4.2P` SLPs must always yield a valid uncompressed
+SLP file.
+
 ### Header (up to version 3.0)
-The SLP file starts with a header:
 
 Length   | Type   | Description      | Example
 ---------|--------|------------------|--------
@@ -27,10 +90,8 @@ struct slp_header {
 ```
 Python format: `Struct("< 4s i 24s")`
 
-### Header (since version 4.0X)
-Age of Empires 1: Definitive Edition SLPs (v4.0 and v4.1) use a differently structured header.
 
-Note that SLPs with version v4.2 or higher need to be decompressed first (see section about the [compressed format](#compressed-format-since-version-42p)).
+### Header (since version 4.0)
 
 Length   | Type    | Description             | Example
 ---------|---------|-------------------------|--------
@@ -59,16 +120,6 @@ struct slp_header_v4 {
 ```
 Python format: `Struct("< 4s H H H H i i i 8x")`
 
-There are 4 known versions of SLP: '2.0N', '3.0', '4.0X', and '4.1X'. AoE1,
-AoK (including HD), and SWGB all use the '2.0N' version. With AoE1: Definitive
-Edition (AoE1 DE), three new versions were created; '3.0' '4.0X', and '4.1X'.
-Version 3.0 doesn't seem to be much different from 2.0N SLPs (seems to be used
-for rescaled SLPs and terrains), whereas 4.0X and 4.1X SLPs have additional
-variables in the header that replace the comment field. '4.1X' was introduced
-in a patch for AoE1 DE (probably Update 9). It uses the same structure as '4.0X',
-but only seems to be used with decay SLPs. It was likely updated to include the
-'decay' type of SLP which apparently darkens bodies on decay.
-
 The Type field designates what type of graphic the SLP is:
 
 Value    | Description
@@ -76,55 +127,38 @@ Value    | Description
 0x00     | "Normal"
 0x01     | "Color Mask" (Possibly unused, there are no examples of it being used)
 0x02     | "Shadow Layer"
-0x04     | "Outline" (Possibly unused, outlines were never implemented in AoE1 DE)
+0x04     | "Outline" (Possibly unused, outlines were never implemented in AoE1:DE)
 0x08     | "VFX Color" (Used for effects, like fire or smoke)
 0x10     | "VFX Alpha" (Uses "0x08" instead as it's frame type marker when used in attached data)
 0x20     | "Decay" (Introduced in 4.1X SLPs)
 
 The `num_directions` and `frames_per_direction` fields are for reference only as
-these values are still determined within the .dat file. All official 4.0X SLPs
+these values are still determined within the .dat file. All official `4.0X` SLPs
 don't appear to even use these fields correctly, since `num_directions` is always
-set to 0x0001 and `frames_per_direction` is always set to the same value as
-`num_frames`. In 4.1X, these fields are not used at all.
+set to `0x0001` and `frames_per_direction` is always set to the same value as
+`num_frames`. In `4.1X`, these fields are not used at all.
 
-`palette_id` may also be for reference only and is always unused in 4.0X SLPs.
-In 4.1X, an unknown value seems to have replaced it.
+`palette_id` may also be for reference only and is always unused in `4.0X` SLPs.
+In `4.1X`, an unknown value seems to have replaced it.
 
-`offset_main` points to the location of where frame data begins. This value is
-usually set to 0x20 for the third line where frame headers are located. This value
-could pontentially be changed to a value such as 0x30 to make room for a comment
-field or something.
+`offset_main` points to the location of where frame data for the main graphic begins.
+This value is usually set to `0x20` pointing to the location immediately after the header.
 
-`offset_secondary` points to the location of where attached data begins. Usually,
+`offset_secondary` points to the location of where secondary frame data begins. Usually,
 this is where shadow data is stored, but is also used to store alpha values to the
-VFX type SLPs that use a palette. The attached data essentially works like a SLP
+VFX type SLPs that use a palette. The secondary data essentially works like a SLP
 within a SLP as they contain their own frame info headers, edge outline tables,
-command offset tables, and draw commands. Shadows in 4.0X SLPs don't use the
+command offset tables, and draw commands. Shadows in `4.0X` SLPs don't use the
 shadow draw commands of previous version SLPs.
 
-### Compressed Format (since version 4.2P)
-SLP version 4.2P introduced in Update 38862 of Age of Empires 1: Definitive Edition
-is a container format that stores a compressed SLP file (regardless of version).
-The format uses the [LZ4](https://github.com/lz4/lz4) compression method. Additionally,
-there are two uncompressed header entries preceding the compressed data stream.
-The full structure can be seen below.
-
-Length   | Type    | Description                   | Example
----------|---------|-------------------------------|--------
-4 bytes  | string  | Version                       | 4.2P
-4 bytes  | uint32  | Uncompressed size of SLP file | 10637, 0x298D
-Variable | LZ4     | Compressed SLP file           | -
-
-Decompressing the LZ4 stream of 4.2P SLPs must always yield a valid uncompressed
-SLP file.
-
-### SLP Frame info
-After the header, there are `num_frames` entries of `slp_frame_info`.
+### Frame info
+There are `num_frames` entries of `slp_frame_info` after the header.
 Every `slp_frame_info` stores meta-information about a single frame (texture)
 within the SLP.
 
-SLPs with version 4.0X or higher have `num_frames` additional entries of
-`slp_frame_info` at `offset_secondary` if the offset is a non-zero value.
+For versions since `4.0`, if `slp_header_v4.offset_secondary` is non-zero,
+there are an additional `num_frames` entries of `slp_frame_info` for the
+secondary frame data at this offset.
 
 Length   | Type   | Description                | Example
 ---------|--------|----------------------------|--------
@@ -201,9 +235,13 @@ Value      | Description
 0x360000   | effects
 0x08000000 | effects
 
-### SLP Frame row edge
-At `outline_table_offset` (after the `slp_frame_info` structs), an array of
-  `slp_frame_row_edge` (of length `height`) structs begins.
+### Outline Table
+At `slp_frame_info.outline_table_offset`, an array of `slp_frame_row_edge` (of length `height`)
+structs begins.
+
+Note that for version `4.1X` the order of the outline table and the [command offset table](#command-offset-table)
+may be switched. Therefore, you should avoid trying to read them sequentially and always use
+the respective offsets from the frame info struct.
 
 Length   | Type   | Description   | Example
 ---------|--------|---------------|--------
@@ -231,10 +269,12 @@ Note that there are no command bytes for these rows, so will have to be skipped
 `width - left_space - right_space` = number of pixels in this line.
 
 
-### SLP command table
+### Command Offset Table
+At `slp_frame_info.cmd_table_offset`, an array of uint32 offsets (of length `height`) begins.
 
-After those padding frames, at `slp_frame_info.cmd_table_offset`, an array of
-uint32 (of length `height`) begins:
+Note that for version `4.1X` the order of the [outline table](#outline-table) and the command offset table
+may be switched. Therefore, you should avoid trying to read them sequentially and always use
+the respective offsets from the frame info struct.
 
 ```cpp
 struct slp_command_offset {
@@ -254,7 +294,7 @@ The actual command data starts after the end of the command offsets, or:
 `slp_frame_info.cmd_table_offset + 4 * slp_frame_info.height`.
 
 
-### SLP drawing commands
+### Draw Commands
 
 The image is drawn line by line, a line is finished with the "End of line"
 command (0x0F). A command is a one-byte number (`cmd_byte`), followed
@@ -273,6 +313,7 @@ All the commands tell you to draw a palette_index, for n pixels.
 Commands can be identified by examining the 4 least significant bits of `cmd_byte`.
 
 For examples of drawing commands, see the [Examples](#examples) section.
+
 
 ### Full drawing command list
 
@@ -486,63 +527,6 @@ For later drawing, a graphics file needs flags for:
 Now the palette indices for all the colors of the unit are known, but a palette
 is needed for them to be drawn.
 
-#### Examples
-
-##### Lesser draw and skip
-
-```
-Row example: 0x08 0x55 0xF4 0x19 0x28 0x99 0x35 0xF4 0x6D 0x67 0x6E 0xA5 0x01 0x4D 0x8E 0x0F
-
-first cmd_byte = 0x08 = 0b00001000
-```
-
-The first `cmd_byte` value has the 2 least significant bits set to `0b00`,
-so we know it has to be a *lesser draw*. We can now calculate the pixel
-count by shifting the command byte to the right 2 times:
-
-```
-pixel_count = cmd_byte >> 2 = 0b00000010 = 0x02 = 2
-```
-
-The pixel count is 2 which tells us that an array of 2 indices will follow
-`cmd_byte`. Therefore, the bytes `0x55` and `0xF4` belong to the drawing
-command.
-
-The next `cmd_byte` is `0x19`:
-
-```
-second cmd_byte = 0x19 = 0b00011001
-```
-
-The 2 least significant bits of this command are `0b01`, so this can be
-identified as a *lesser skip* command. Here, we also have to calculate
-the pixel count by shifting 2 times to the right:
-
-```
-pixel_count = cmd_byte >> 2 = 0b00000110 = 0x06 = 6
-```
-
-This tells us that 6 transparent pixels have to be drawn. *Lesser skips* do
-not reference any other bytes, so the following byte `0x28` is our next
-command byte.
-
-```
-third cmd_byte = 0x28 = 0b00101000
-```
-
-This again is a *lesser draw* command because the 2 least significant bits
-are set to `0b00`, albeit with a different pixel count.
-
-```
-pixel_count = cmd_byte >> 2 = 0b00001010 = 0x0A = 10
-```
-
-This time, the next 10 bytes are palette indices that belong to the drawing
-command (`0x99 0x35 0xF4 0x6D 0x67 0x6E 0xA5 0x01 0x4D 0x8E`).
-
-Our next command byte is `0x0F`. This is the *end of row* command which tells
-us that the row is finished.
-
 
 ### Secondary Frame info (since version 4.0X)
 SLPs with versions of 4.0X or higher store an attached secondary graphic data located
@@ -614,6 +598,63 @@ shadow_alpha = 255 - (shadow_value << 2)
 ```
 
 For VFX alphas, the values can be read as-is and are not inverted or altered in any way:
+
+## Examples
+
+### Lesser draw and skip
+
+```
+Row example: 0x08 0x55 0xF4 0x19 0x28 0x99 0x35 0xF4 0x6D 0x67 0x6E 0xA5 0x01 0x4D 0x8E 0x0F
+
+first cmd_byte = 0x08 = 0b00001000
+```
+
+The first `cmd_byte` value has the 2 least significant bits set to `0b00`,
+so we know it has to be a *lesser draw*. We can now calculate the pixel
+count by shifting the command byte to the right 2 times:
+
+```
+pixel_count = cmd_byte >> 2 = 0b00000010 = 0x02 = 2
+```
+
+The pixel count is 2 which tells us that an array of 2 indices will follow
+`cmd_byte`. Therefore, the bytes `0x55` and `0xF4` belong to the drawing
+command.
+
+The next `cmd_byte` is `0x19`:
+
+```
+second cmd_byte = 0x19 = 0b00011001
+```
+
+The 2 least significant bits of this command are `0b01`, so this can be
+identified as a *lesser skip* command. Here, we also have to calculate
+the pixel count by shifting 2 times to the right:
+
+```
+pixel_count = cmd_byte >> 2 = 0b00000110 = 0x06 = 6
+```
+
+This tells us that 6 transparent pixels have to be drawn. *Lesser skips* do
+not reference any other bytes, so the following byte `0x28` is our next
+command byte.
+
+```
+third cmd_byte = 0x28 = 0b00101000
+```
+
+This again is a *lesser draw* command because the 2 least significant bits
+are set to `0b00`, albeit with a different pixel count.
+
+```
+pixel_count = cmd_byte >> 2 = 0b00001010 = 0x0A = 10
+```
+
+This time, the next 10 bytes are palette indices that belong to the drawing
+command (`0x99 0x35 0xF4 0x6D 0x67 0x6E 0xA5 0x01 0x4D 0x8E`).
+
+Our next command byte is `0x0F`. This is the *end of row* command which tells
+us that the row is finished.
 
 
 ## Palette Files
