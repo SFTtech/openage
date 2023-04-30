@@ -13,13 +13,11 @@ EntityFactory::EntityFactory() :
 	render_factory{nullptr} {
 }
 
-std::shared_ptr<GameEntity> EntityFactory::add_game_entity(coord::phys3 pos,
-                                                           util::Path &texture_path) {
+std::shared_ptr<GameEntity> EntityFactory::add_game_entity(util::Path &animation_path) {
 	std::unique_lock lock{this->mutex};
 
 	auto entity = std::make_shared<GameEntity>(this->get_next_id(),
-	                                           pos,
-	                                           texture_path);
+	                                           animation_path);
 
 	if (this->render_factory) {
 		entity->set_render_entity(this->render_factory->add_world_render_entity());
