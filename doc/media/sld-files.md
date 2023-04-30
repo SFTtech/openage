@@ -1,9 +1,22 @@
 # SLD files
 
 SLD is the sprite storage format introduced in Build 66692 of Age of Empires 2: Definitive Edition.
+
 Unlike the [SMX](smx-files.md) and [SLP](slp-files.md) formats, the SLD format does not use
 indexed palettes for pixel data. Instead, SLD image data utilizes lossy texture compression
 algorithms [DXT1](https://en.wikipedia.org/wiki/S3_Texture_Compression#DXT1) and [DXT4](https://en.wikipedia.org/wiki/S3_Texture_Compression#DXT1) (also known as BC1 and BC4, respectively).
+
+1. [SLD File Format](#sld-file-format)
+    1. [Header](#header)
+    1. [Frame Header](#sld-frame-header)
+    1. [Layers](#sld-layers)
+        1. [Main Graphics](#sld-main-graphics-layer)
+        1. [Shadow](#sld-shadow-graphics-layer)
+        1. [Damage Mask](#sld-damage-mask-layer)
+        1. [Playercolor Mask](#sld-playercolor-mask-layer)
+1. [Excursion: DXT1/BC1 Block Compression](#excursion-dxt1bc1-block-compression)
+1. [Excursion: DXT4/BC4 Block Compression](#excursion-dxt4bc4-block-compression)
+1. [Processing the Command Array (Example)](#processing-the-command-array-example)
 
 ## SLD file format
 
