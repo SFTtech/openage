@@ -41,11 +41,11 @@ public:
      *
      * @param loop: Event loop that the components register on.
      * @param factory: Factory that is used to create the entity.
-     * @param texture_path: Path to the texture that is used for the entity.
+     * @param animation_path: Path to the texture that is used for the entity.
      */
 	SpawnEntityHandler(const std::shared_ptr<openage::event::Loop> &loop,
 	                   const std::shared_ptr<gamestate::EntityFactory> &factory,
-	                   const util::Path &texture_path);
+	                   const util::Path &animation_path);
 	~SpawnEntityHandler() = default;
 
 	/**
@@ -100,7 +100,7 @@ private:
 	std::shared_ptr<gamestate::EntityFactory> factory;
 
 	// TODO: Testing. Move this to config
-	util::Path texture_path;
+	util::Path animation_path;
 };
 
 } // namespace event

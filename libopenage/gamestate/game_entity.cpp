@@ -9,11 +9,9 @@
 namespace openage::gamestate {
 
 GameEntity::GameEntity(entity_id_t id,
-                       coord::phys3 &initial_pos,
-                       util::Path &texture_path) :
+                       util::Path &animation_path) :
 	id{id},
-	pos{initial_pos},
-	texture_path{texture_path},
+	animation_path{animation_path},
 	components{},
 	render_entity{nullptr} {
 }
@@ -39,7 +37,7 @@ void GameEntity::push_to_render() {
 		}
 
 		const auto &pos = dynamic_pointer_cast<component::Position>(this->components.at(component::component_t::POSITION))->get_positions();
-		this->render_entity->update(this->id, pos, this->texture_path);
+		this->render_entity->update(this->id, pos, this->animation_path);
 	}
 }
 

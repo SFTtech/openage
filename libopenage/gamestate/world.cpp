@@ -9,8 +9,7 @@
 
 namespace openage::gamestate {
 
-World::World(const util::Path &root_dir,
-             const std::shared_ptr<GameState> &state) :
+World::World(const std::shared_ptr<GameState> &state) :
 	state{state} {
 	// TODO
 }

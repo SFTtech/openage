@@ -23,11 +23,9 @@ public:
 	/**
 	 * Create a new world.
 	 *
-	 * @param root_dir openage root directory.
      * @param state State of the game.
 	 */
-	World(const util::Path &root_dir,
-	      const std::shared_ptr<GameState> &state);
+	World(const std::shared_ptr<GameState> &state);
 	~World() = default;
 
 	/**

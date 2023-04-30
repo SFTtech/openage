@@ -35,8 +35,7 @@ public:
      *
      * @return New game entity.
      */
-	std::shared_ptr<GameEntity> add_game_entity(coord::phys3 pos,
-	                                            util::Path &texture_path);
+	std::shared_ptr<GameEntity> add_game_entity(util::Path &animation_path);
 
 	/**
 	 * Attach a renderer which enables graphical display options for all ingame entities.
