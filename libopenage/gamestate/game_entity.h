@@ -31,12 +31,10 @@ public:
      * Create a new game entity.
      *
      * @param id Unique identifier.
-     * @param initial_pos Initial position in the game world.
-     * @param texture_path Path to the texture.
+     * @param animation_path Path to the texture.
      */
 	GameEntity(entity_id_t id,
-	           coord::phys3 &initial_pos,
-	           util::Path &texture_path);
+	           util::Path &animation_path);
 	~GameEntity() = default;
 
 	/**
@@ -66,10 +64,8 @@ public:
 private:
 	// Unique identifier
 	const entity_id_t id;
-	// position in the game world
-	coord::phys3 pos;
 	// path to a texture
-	util::Path texture_path;
+	util::Path animation_path;
 
 	/**
      * Data components.

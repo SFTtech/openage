@@ -26,11 +26,11 @@ std::string Spawner::idstr() const {
 
 SpawnEntityHandler::SpawnEntityHandler(const std::shared_ptr<openage::event::Loop> &loop,
                                        const std::shared_ptr<gamestate::EntityFactory> &factory,
-                                       const util::Path &texture_path) :
+                                       const util::Path &animation_path) :
 	OnceEventHandler("game.spawn_entity"),
 	loop{loop},
 	factory{factory},
-	texture_path{texture_path} {
+	animation_path{animation_path} {
 }
 
 void SpawnEntityHandler::setup_event(const std::shared_ptr<openage::event::Event> & /* event */,
@@ -46,8 +46,7 @@ void SpawnEntityHandler::invoke(openage::event::Loop & /* loop */,
 	auto gstate = std::dynamic_pointer_cast<gamestate::GameState>(state);
 
 	// Create entity
-	auto entity = this->factory->add_game_entity(params.get("position", coord::phys3{0, 0, 0}),
-	                                             this->texture_path);
+	auto entity = this->factory->add_game_entity(this->animation_path);
 
 	// Setup components
 	auto position = std::make_shared<component::Position>(this->loop,
