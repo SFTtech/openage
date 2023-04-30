@@ -161,7 +161,23 @@ void curve_types() {
 			TESTEQUALS(it->value, 25);
 		}
 
-		// TODO test c.insert_overwrite and c.insert_after
+		// TODO: test c.insert_overwrite and c.insert_after
+
+		KeyframeContainer<int> c2;
+		c2.sync_after(c, 1);
+		// now c2 should be [-inf: 0, 1: 15, 2: 20, 3: 25]
+		TESTEQUALS(c2.last(0)->value, 0);
+		TESTEQUALS(c2.last(1)->value, 15);
+		TESTEQUALS(c2.last(2)->value, 20);
+		TESTEQUALS(c2.last(3)->value, 25);
+		TESTEQUALS(c2.last(10)->value, 25);
+		TESTEQUALS(c2.size(), 4);
+
+		c.clear();
+		// now it should be [-inf: 0]
+		TESTEQUALS(c.last(0)->value, 0);
+		TESTEQUALS(c.last(1)->value, 0);
+		TESTEQUALS(c.size(), 1);
 	}
 
 	// Check the Simple Continuous type
@@ -175,6 +191,25 @@ void curve_types() {
 		TESTEQUALS(c.get(0), 0);
 
 		TESTEQUALS_FLOAT(c.get(1), 0.1, 1e-7);
+
+		Continuous<float> c2(f, 0);
+		c2.sync(c, 0);
+
+		c2.set_insert(0, 5);
+		c2.set_insert(10, 0);
+
+		TESTEQUALS(c2.get(0), 5);
+		TESTEQUALS(c2.get(10), 0);
+
+		TESTEQUALS_FLOAT(c2.get(1), 4.5, 1e-7);
+
+		c2.sync(c, 5);
+		TESTEQUALS(c2.get(10), 1);
+
+		// for t >= 5 c and c2 should have the same values after sync
+		TESTEQUALS_FLOAT(c.get(5), c2.get(5), 1e-7);
+		TESTEQUALS_FLOAT(c.get(7), c2.get(7), 1e-7);
+		TESTEQUALS_FLOAT(c.get(10), c2.get(10), 1e-7);
 	}
 
 	{
