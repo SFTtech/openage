@@ -4,7 +4,7 @@ SLP files are stored in the DRS files. They contain all the (animation)
 textures. Like the DRS format, it can also be read sequentially.
 
 In addition to the format description found in this document, we also
-provide a [pattern file](doc/media/patterns/slp.hexpat) for the [imHex](https://imhex.werwolv.net/)
+provide a [pattern file](/doc/media/patterns/slp.hexpat) for the [imHex](https://imhex.werwolv.net/)
 editor which can be used to explore the SLP data visually.
 
 ## SLP file format

@@ -1,5 +1,10 @@
 // Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
+#pragma endian little
+
+// only show a specific frame (at the specified index)
+// if this value is -1 all frames are shown
+#define SHOW_FRAME -1
 
 struct slp_header {
     char version[4];
@@ -63,11 +68,11 @@ struct slp_frame_row_edge {
 
 struct slp_cmd {
     u8 cmd;
-    
+
     low_crumb = cmd & 0x03;
     low_nibble = cmd & 0x0f;
     high_nibble = cmd & 0xf0;
-    
+
     if (low_crumb == 0b00) {
         cmd_len = cmd >> 2;
         payload_len = cmd_len;
@@ -144,15 +149,15 @@ struct slp_cmd {
         cmd_len = 0;
         payload_len = 0;
     }
-    
+
     u8 payload[payload_len];
-    
+
     cur_cmd = cmd;
 };
 
 struct slp_cmd_row {
     slp_cmd commands[while(cur_cmd != 0x0F)];
-    
+
     cur_cmd = 0x00;
 };
 
@@ -164,12 +169,14 @@ struct slp_frame {
     slp_frame_row_edge outline_offsets[cur_height];
     u32 cmd_offsets[cur_height];
     slp_cmd_table table;
-    
+
     if (cur_frame < header.num_frames - 1)
         next_frame();
+
+    if (SHOW_FRAME >= 0 && cur_frame - 1 != SHOW_FRAME)
+        continue;
 };
 
 offset += sizeof(infos);
 
 slp_frame frames[header.num_frames] @ offset;
-
