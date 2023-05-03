@@ -1,12 +1,26 @@
 # SMP Files
 
-SMP files are the successor format to SLP files. Like SLP files,
+SMP files are a successor format to SLP files. Like SLP files,
 they contain animations, shadows and outlines for units. SMPs
-were introduced with Age of Empires 2: Definitive Edition.
-
-The Age of Empires 2: Definitive Edition almost exclusively stores
-sprites in a compressed version of the format that is called SMX.
+were introduced in the beta release of Age of Empires 2: Definitive Edition.
+It was mostly phased out before the final release in favor of a
+compressed version of the format that is called SMX.
 You can read more about SMX files [here](smx-files.md).
+
+1. [SMP File Format](#smp-file-format)
+    1. [Header](#header)
+    1. [Frame Header](#smp-frame-header)
+    1. [Layer Header](#smp-layer-header)
+    1. Layer Data
+        1. [Outline Table](#outline-table)
+        1. [Command Offset Table](#command-offset-table)
+        1. [Draw Commands](#draw-commands)
+        1. [SMP Pixel Data](#smp-pixel)
+            1. [Palette Info](#palette-info)
+            1. [Damage Info](#damage-info)
+1. [Examples](#examples)
+    1. [Retrieving a color value](#retrieving-a-color-value-from-a-smp-pixel)
+    1. [Calculating an RGB damage modifier value](#calculating-an-rgb-damage-modifier-value-for-an-smp-pixel)
 
 ## SMP File Format
 
@@ -130,7 +144,7 @@ Remarks:
 * Outline and command table offsets **are always relative to the frame offset**.
 
 
-### SMP Layer Row Edge
+### Outline Table
 
 At `outline_table_offset` (after the `smp_layer_header` structs), an array of
 `smp_layer_row_edge` (of length `height`) structs begins.
@@ -161,7 +175,7 @@ Note that there are no command bytes for these rows, so it has to be skipped
 `width - left_space - right_space` = number of pixels in this line.
 
 
-### SMP Command Table
+### Command Offset Table
 
 At `smp_layer_header.cmd_table_offset`, an array of
 uint32 (of length `height`) begins:
@@ -182,7 +196,7 @@ since the commands can be read sequentially, although they can be used for
 validation purposes.
 
 
-### SMP Drawing Commands
+### Draw Commands
 
 The image is drawn line by line, a line is finished with the *End of Row*
 command (0x03). A command is a one-byte number (`cmd_byte`), followed

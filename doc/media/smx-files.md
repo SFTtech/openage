@@ -1,12 +1,25 @@
 # SMX files
 
-SMX is the sprite storage format of Age of Empires 2: Definitive Edition.
-The SMX format is a compressed version of the SMP format that was
-used during the Beta of the game. In the release version almost all
-sprite media files are compressed SMX files.
+SMX is a sprite storage format of Age of Empires 2: Definitive Edition.
+The SMX format is a compressed version of the [SMP format](smp-files.md) that was
+used during the Beta release of the game.
 
-It is recommended to read the [SMP documentation](smp-files.md) first
-to get a better understanding of the concepts of the format.
+The current release of Age of Empires 2: Definitive Edition uses a different
+graphics format called [SLD](sld-files.md).
+
+1. [SMX File Format](#smx-file-format)
+    1. [Header](#header)
+    1. [Frame Header](#smx-frame-header)
+    1. [Layer Header](#smx-layer-header)
+    1. Layer Data
+        1. [Outline Table](#outline-table)
+        1. [SMX Pixel Data](#smx-pixel-data)
+            1. [Main Graphics](#main-graphics-type)
+            1. [Shadow](#shadow-type)
+            1. [Outline](#outline-type)
+1. [Compression Methods](#compression-algorithms)
+    1. [4plus1 method](#4plus1-method)
+    1. [8to5 method](#8to5-method)
 
 ## SMX file format
 
@@ -122,11 +135,11 @@ struct smx_layer_header {
 ```
 Python format: `Struct("< 4H 2I")`
 
-#### SMX Layer row edge
+#### Outline Table
 
 Directly after the layer header, an array of `smp_layer_row_edge`
 (of length `height`) structs begins. These work exactly like the row edges
-in the [SMP files](smp-files.md#smp-layer-row-edge).
+in the [SMP files](smp-files.md#outline-table).
 
 
 #### SMX Pixel data

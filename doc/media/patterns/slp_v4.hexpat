@@ -1,6 +1,11 @@
 // Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
 #pragma endian little
+#pragma pattern_limit 3000000
+
+// Decode the secondary offsets if set to 1
+// switch off if you have performance problems
+#define DECODE_SECONDARY 0
 
 // only show a specific frame (at the specified index)
 // if this value is -1 all frames are shown
@@ -8,13 +13,7 @@
 
 struct slp_header {
     char version[4];
-    s32 num_frames;
-    char comment[24];
-};
-
-struct slp_header_v4 {
-    char version[4];
-    s32 num_frames;
+    s16 num_frames;
     s16 type;
     s16 num_directions;
     s16 frames_per_direction;
@@ -35,6 +34,12 @@ struct slp_frame_info {
     s32 hotspot_y;
 };
 
+enum pixel_type : u8 {
+    index,
+    index_modifier,
+    bgra,
+};
+
 u32 offset = 0x00;
 
 char version[4] @ offset;
@@ -47,6 +52,13 @@ slp_frame_info infos[header.num_frames] @ offset;
 s32 cur_frame = 0;
 s32 cur_height = infos[cur_frame].height;
 s32 cur_width = infos[cur_frame].width;
+s32 cur_outline_table_offset = infos[cur_frame].outline_table_offset;
+s32 cur_cmd_table_offset = infos[cur_frame].cmd_table_offset;
+pixel_type cur_pixel_type = pixel_type::index;
+if (infos[cur_frame].properties & 0x07)
+    cur_pixel_type = pixel_type::bgra;
+else if (version == "4.1X")
+    cur_pixel_type = pixel_type::index_modifier;
 
 char cur_cmd = 0x00;
 char low_crumb = 0;
@@ -59,6 +71,15 @@ fn next_frame() {
     cur_frame += 1;
     cur_height = infos[cur_frame].height;
     cur_width = infos[cur_frame].width;
+    cur_outline_table_offset = infos[cur_frame].outline_table_offset;
+    cur_cmd_table_offset = infos[cur_frame].cmd_table_offset;
+
+    if (infos[cur_frame].properties & 0x07)
+        cur_pixel_type = pixel_type::bgra;
+    else if (version == "4.1X")
+        cur_pixel_type = pixel_type::index_modifier;
+    else
+        cur_pixel_type = pixel_type::index;
 };
 
 struct slp_frame_row_edge {
@@ -150,7 +171,12 @@ struct slp_cmd {
         payload_len = 0;
     }
 
-    u8 payload[payload_len];
+    if (cur_pixel_type == pixel_type::index_modifier)
+        u16 payload[payload_len];
+    else if (cur_pixel_type == pixel_type::bgra)
+        u32 payload[payload_len];
+    else
+        u8 payload[payload_len];
 
     cur_cmd = cmd;
 };
@@ -166,8 +192,13 @@ struct slp_cmd_table {
 };
 
 struct slp_frame {
+    $ = cur_outline_table_offset;
     slp_frame_row_edge outline_offsets[cur_height];
+
+    $ = cur_cmd_table_offset;
     u32 cmd_offsets[cur_height];
+
+    $ = cmd_offsets[0];
     slp_cmd_table table;
 
     if (cur_frame < header.num_frames - 1)
@@ -180,3 +211,44 @@ struct slp_frame {
 offset += sizeof(infos);
 
 slp_frame frames[header.num_frames] @ offset;
+
+offset = header.offset_secondary;
+
+if (offset == 0x00 || !DECODE_SECONDARY)
+    return;
+
+slp_frame_info infos_secondary[header.num_frames] @ offset;
+
+cur_frame = 0;
+cur_height = infos_secondary[cur_frame].height;
+cur_width = infos_secondary[cur_frame].width;
+cur_outline_table_offset = infos_secondary[cur_frame].outline_table_offset;
+cur_cmd_table_offset = infos_secondary[cur_frame].cmd_table_offset;
+cur_pixel_type = pixel_type::index;
+
+fn next_frame_secondary() {
+    cur_frame += 1;
+    cur_height = infos_secondary[cur_frame].height;
+    cur_width = infos_secondary[cur_frame].width;
+    cur_outline_table_offset = infos_secondary[cur_frame].outline_table_offset;
+    cur_cmd_table_offset = infos_secondary[cur_frame].cmd_table_offset;
+};
+
+struct slp_frame_secondary {
+    $ = cur_outline_table_offset;
+    slp_frame_row_edge outline_offsets[cur_height];
+
+    $ = cur_cmd_table_offset;
+    u32 cmd_offsets[cur_height];
+    slp_cmd_table table;
+
+    if (cur_frame < header.num_frames - 1)
+        next_frame_secondary();
+
+    if (SHOW_FRAME >= 0 && cur_frame - 1 != SHOW_FRAME)
+        continue;
+};
+
+offset += sizeof(infos_secondary);
+
+slp_frame_secondary frames_secondary[header.num_frames] @ offset;
