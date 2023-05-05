@@ -18,26 +18,30 @@ algorithms [DXT1](https://en.wikipedia.org/wiki/S3_Texture_Compression#DXT1) and
 1. [Excursion: DXT4/BC4 Block Compression](#excursion-dxt4bc4-block-compression)
 1. [Processing the Command Array (Example)](#processing-the-command-array-example)
 
+In addition to the format description found here, we also
+provide a [pattern file](/doc/media/patterns/sld.hexpat) for the [imHex](https://imhex.werwolv.net/)
+editor which can be used to explore the SLP data visually.
+
 ## SLD file format
 
-SLD files can organized into frames, layers and color data.
+SLD files are hierarchically structured into frames, layers and (compressed) color data.
 
 ### Header
 
 The SLD file starts with a header:
 
-Length   | Type   | Description                 | Example
----------|--------|-----------------------------|--------
-4 bytes  | string | Signature                   | SLDX
-2 bytes  | uint16 | Version                     | 4, 0x0004
-2 bytes  | uint16 | Number of frames            | 721, 0x02D1
-2 bytes  | uint32 | Unknown                     | always 0x0000
-2 bytes  | uint32 | Unknown                     | always 0x0010
-4 bytes  | uint32 | Unknown                     | always 0xFF000000
+| Length  | Type   | Description      | Example           |
+| ------- | ------ | ---------------- | ----------------- |
+| 4 bytes | string | Signature        | SLDX              |
+| 2 bytes | uint16 | Version          | 4, 0x0004         |
+| 2 bytes | uint16 | Number of frames | 721, 0x02D1       |
+| 2 bytes | uint16 | Unknown          | always 0x0000     |
+| 2 bytes | uint16 | Unknown          | always 0x0010     |
+| 4 bytes | uint32 | Unknown          | always 0xFF000000 |
 
 ```cpp
 struct sld_header {
-  char  file_descriptor[4];
+  char   file_descriptor[4];
   uint16 version;
   uint16 num_frames;
   uint16 unknown1;
@@ -50,7 +54,8 @@ Python format: `Struct("< 4s 4H I")`
 
 ### SLD Frame
 
-Frame definitions start directly after the file header. Frames can contain up to 5 layers:
+Frame definitions start directly after the file header. There are `sld_header.num_frames` frame
+entries that can be read sequentially. Frames can contain up to 5 layers:
 
 * main graphic layer
 * shadow layer (optional)
@@ -65,15 +70,15 @@ in the frame header.
 
 The frame header contains 7 values:
 
-Length   | Type   | Description     | Example
----------|--------|-----------------|--------
-2 bytes  | uint16 | Canvas Width    | 200, 0xC8
-2 bytes  | uint16 | Canvas Height   | 200, 0xC8
-2 bytes  | uint16 | Canvas Center X | 100, 0x64
-2 bytes  | uint16 | Canvas Center Y | 100, 0x64
-1 bytes  | uint8  | Frame Type      | 7, 0b00000111 (bit field)
-1 bytes  | uint8  | Unkown          | 1, 0x01
-2 bytes  | uint16 | Frame index     | 5, 0x0005
+| Length  | Type   | Description     | Example                   |
+| ------- | ------ | --------------- | ------------------------- |
+| 2 bytes | uint16 | Canvas Width    | 200, 0xC8                 |
+| 2 bytes | uint16 | Canvas Height   | 200, 0xC8                 |
+| 2 bytes | uint16 | Canvas Center X | 100, 0x64                 |
+| 2 bytes | uint16 | Canvas Center Y | 100, 0x64                 |
+| 1 bytes | uint8  | Frame Type      | 7, 0b00000111 (bit field) |
+| 1 bytes | uint8  | Unkown          | 1, 0x01                   |
+| 2 bytes | uint16 | Frame index     | 5, 0x0005                 |
 
 ```cpp
 struct sld_frame_header {
@@ -82,7 +87,7 @@ struct sld_frame_header {
   uint16  canvas_hotspot_x;
   uint16  canvas_hotspot_y;
   uint8   frame_type;
-  uint8   unknown5;
+  uint8   unknown1;
   uint16  frame_index;
 };
 ```
@@ -99,14 +104,14 @@ indicates that the frame contains a specific type of layer.
 
 Indices are read from left to right:
 
-Bit index | Description
-----------|------------
-7         | If set to `1`, the frame contains a main graphic layer
-6         | If set to `1`, the frame contains a shadow layer
-5         | If set to `1`, the frame contains a ??? layer
-4         | If set to `1`, the frame contains a damage mask layer
-3         | If set to `1`, the frame contains a player color mask layer
-0-2       | Unused
+| Bit index | Description                                                 |
+| --------- | ----------------------------------------------------------- |
+| 7         | If set to `1`, the frame contains a main graphic layer      |
+| 6         | If set to `1`, the frame contains a shadow layer            |
+| 5         | If set to `1`, the frame contains a ??? layer               |
+| 4         | If set to `1`, the frame contains a damage mask layer       |
+| 3         | If set to `1`, the frame contains a player color mask layer |
+| 0-2       | Unused                                                      |
 
 **Example**
 
@@ -126,29 +131,29 @@ value. The order of layers is always the same:
 1. [shadow graphics layer](#sld-shadow-graphics-layer)
 1. ??? layer
 1. [damage mask layer](#sld-damage-mask-layer)
-1. [playercolor mask layer]()
+1. [playercolor mask layer](#sld-playercolor-mask-layer)
 
 Layers that are not indicated by `frame_type` are skipped.
 
 The layers use different compression methods for the pixel data they store. Here
 you can see an overview over the used compression methods per layer.
 
-Layer             | Compression
-------------------|---------------
-Main Graphics     | DXT1
-Shadow Graphics   | DXT4
-???               | ???
-Damage Mask       | DXT1
-Playercolor Mask  | DXT4
+| Layer            | Compression |
+| ---------------- | ----------- |
+| Main Graphics    | DXT1        |
+| Shadow Graphics  | DXT4        |
+| ???              | ???         |
+| Damage Mask      | DXT1        |
+| Playercolor Mask | DXT4        |
 
 #### Layer Content Length
 
 Every layer starts with 4 Bytes values that signify the number of bytes
 in the layer (including the content length value).
 
-Length   | Type   | Description          | Example
----------|--------|----------------------|--------
-4 bytes  | uint32 | Content Length       | 618, 0x026A
+| Length  | Type   | Description    | Example     |
+| ------- | ------ | -------------- | ----------- |
+| 4 bytes | uint32 | Content Length | 618, 0x026A |
 
 ```cpp
 struct sld_layer_length {
@@ -177,14 +182,14 @@ This layer always exists and is not optional.
 
 The main graphics layer header contains 6 values:
 
-Length   | Type   | Description                    | Example
----------|--------|--------------------------------|--------
-2 bytes  | uint16 | Layer Offset X1 (top left)     | 72, 0x48
-2 bytes  | uint16 | Layer Offset Y1 (top left)     | 72, 0x48
-2 bytes  | uint16 | Layer Offset X2 (bottom right) | 132, 0x84
-2 bytes  | uint16 | Layer Offset Y2 (bottom right) | 108, 0x6C
-1 bytes  | uint8  | Flag 1                         | 128, 0x80
-1 bytes  | uint8  | Unknown                        | 1, 0x01
+| Length  | Type   | Description                    | Example   |
+| ------- | ------ | ------------------------------ | --------- |
+| 2 bytes | uint16 | Layer Offset X1 (top left)     | 72, 0x48  |
+| 2 bytes | uint16 | Layer Offset Y1 (top left)     | 72, 0x48  |
+| 2 bytes | uint16 | Layer Offset X2 (bottom right) | 132, 0x84 |
+| 2 bytes | uint16 | Layer Offset Y2 (bottom right) | 108, 0x6C |
+| 1 bytes | uint8  | Flag 1                         | 128, 0x80 |
+| 1 bytes | uint8  | Unknown                        | 1, 0x01   |
 
 ```cpp
 struct sld_graphics_header {
@@ -221,11 +226,11 @@ layer_hotspot_y = canvas_hotspot_y - offset_y1
 
 Indices are read from left to right:
 
-Bit index | Description
-----------|------------
-0         | If set to `1`, the pixel data from previous frames is reused.
-1-6       | Unknown
-7         | Set to `1` in playercolor layers.
+| Bit index | Description                                                   |
+| --------- | ------------------------------------------------------------- |
+| 0         | If set to `1`, the pixel data from previous frames is reused. |
+| 1-6       | Unknown                                                       |
+| 7         | Set to `1` in playercolor layers.                             |
 
 ##### Pixel Data
 
@@ -242,9 +247,9 @@ in two separate arrays: The **command array** and the **compressed block array**
 Immediately after the SLD main graphics layer header, there is a length field
 containing the number of commands for the command array:
 
-Length   | Type   | Description                | Example
----------|--------|----------------------------|-----------------
-2 bytes  | uint16 | Command array length       | 11, 0x000B
+| Length  | Type   | Description          | Example    |
+| ------- | ------ | -------------------- | ---------- |
+| 2 bytes | uint16 | Command array length | 11, 0x000B |
 
 The command array is then followed by `command_array_length` commands with length 2 Bytes
 (i.e. a total number of `2 * command_array_length` bytes).
@@ -257,10 +262,10 @@ from the **compressed block array**.
 slightly different. Instead of drawing a fully transparent block, the pixel block
 in the previous *frame* (same position, same layer) is copied.
 
-Length   | Type   | Description              | Example
----------|--------|--------------------------|-----------------
-1 bytes  | uint8  | Skipped blocks count     | 8, 0x08
-1 bytes  | uint8  | Draw blocks count        | 3, 0x03
+| Length  | Type  | Description          | Example |
+| ------- | ----- | -------------------- | ------- |
+| 1 bytes | uint8 | Skipped blocks count | 8, 0x08 |
+| 1 bytes | uint8 | Draw blocks count    | 3, 0x03 |
 
 Blocks from the compressed block array are read sequentially. The first *Draw*
 call will start reading at index 0 of the array. The next *Draw* command will continue
@@ -341,15 +346,15 @@ This layer is optional.
 
 The damage mask layer header contains 2 values:
 
-Length   | Type   | Description          | Example
----------|--------|----------------------|--------
-1 bytes  | uint8  | Flag 1               | 128, 0x80
-1 bytes  | uint8  | Unknown              | 1, 0x01
+| Length  | Type  | Description | Example   |
+| ------- | ----- | ----------- | --------- |
+| 1 bytes | uint8 | Flag 1      | 128, 0x80 |
+| 1 bytes | uint8 | Unknown     | 1, 0x01   |
 
 ```cpp
 struct sld_mask_header {
-  uint8   flag1;
-  uint8   unknown1;
+  uint8 flag1;
+  uint8 unknown1;
 };
 ```
 Python format: `Struct("< 2B")`
@@ -438,17 +443,17 @@ block are represented by 2-Bit indices for a lookup table referencing the 4 RGBA
 
 The 8 byte block is organized as follows:
 
-Length   | Type   | Description
----------|--------|-------------------
-2 bytes  | uint16 | Reference color 0
-2 bytes  | uint16 | Reference color 1
-4 bytes  | uint32 | Pixel indices
+| Length  | Type   | Description       |
+| ------- | ------ | ----------------- |
+| 2 bytes | uint16 | Reference color 0 |
+| 2 bytes | uint16 | Reference color 1 |
+| 4 bytes | uint32 | Pixel indices     |
 
 ```cpp
 struct bc1_block {
-  uint16  color0;
-  uint16  color1;
-  uint32  pixel_indices;
+  uint16 color0;
+  uint16 color1;
+  uint32 pixel_indices;
 };
 ```
 Python format: `Struct("< 2H I")`
@@ -478,10 +483,10 @@ indices.
 The lookup table has 4 entries that map a 2-Bit index to a 16-Bit RGB color
 value. The first 2 entries are the reference colors `color0` and `color1`.
 
-Index | color Value
-------|-------
-00    | `color0`
-01    | `color1`
+| Index | color Value |
+| ----- | ----------- |
+| 00    | `color0`    |
+| 01    | `color1`    |
 
 Using the reference colors, we have to interpolate the color values for the
 other two indices. The interpolation works differently depending on which of
@@ -490,10 +495,10 @@ the two reference color values (that means their 16-Bit integer values) is great
 If `color0` is **greater than** `color1`, the color values for the remaining
 indices are calculated as follows:
 
-Index | Color Value
-------|-------
-10    | `color2 = (2/3) * color0 + (1/3) * color1`
-11    | `color3 = (1/3) * color0 + (2/3) * color1`
+| Index | Color Value                                |
+| ----- | ------------------------------------------ |
+| 10    | `color2 = (2/3) * color0 + (1/3) * color1` |
+| 11    | `color3 = (1/3) * color0 + (2/3) * color1` |
 
 (The factors above are applied to each of the three color channels. Similarly,
 the addition of coulour values is the addition of the colors' respective color
@@ -502,10 +507,10 @@ channels.)
 If `color0` is **smaller than or equal to** `color1`, only the color value of `color2`
 is interpolated, while `color3` represents a color value with full transparency:
 
-Index | Color Value
-------|-------
-10    | `color2 = (1/2) * color0 + (1/2) * color1`
-11    | `color3 = (0, 0, 0, 0)`
+| Index | Color Value                                |
+| ----- | ------------------------------------------ |
+| 10    | `color2 = (1/2) * color0 + (1/2) * color1` |
+| 11    | `color3 = (0, 0, 0, 0)`                    |
 
 The latter case allows a pixel block to contain transparent pixels, although that
 sacrifices one of the possible color values.
@@ -597,12 +602,12 @@ color3 = (0, 0, 0, 0)   (full transparency)
 In the end, our lookup table looks like this (using RGBA16 format):
 
 
-Index | Color Value
-------|-------
-00    | `c0 = (2, 4, 2, 1)`
-01    | `c1 = (0, 0, 0, 1)`
-10    | `c2 = (1, 2, 1, 1)`
-11    | `c3 = (0, 0, 0, 0)`
+| Index | Color Value         |
+| ----- | ------------------- |
+| 00    | `c0 = (2, 4, 2, 1)` |
+| 01    | `c1 = (0, 0, 0, 1)` |
+| 10    | `c2 = (1, 2, 1, 1)` |
+| 11    | `c3 = (0, 0, 0, 0)` |
 
 All we have to do now is to fill the pixel block using the `pixel_indices` values.
 Using the algorithm from the previous section, we can read it from the back
@@ -620,21 +625,21 @@ pixel_indices (Binary): 01110111000101110011011111111011
 When we assign the indices from left to right and top to bottom, the assignment
 looks like this:
 
-Coord | x0   | x1   | x2   | x3   |
-------|------|------|------|------|
-**y0**| `11` | `10` | `11` | `11` |
-**y1**| `11` | `01` | `11` | `00` |
-**y2**| `11` | `01` | `01` | `00` |
-**y3**| `11` | `01` | `11` | `01` |
+| Coord  | x0   | x1   | x2   | x3   |
+| ------ | ---- | ---- | ---- | ---- |
+| **y0** | `11` | `10` | `11` | `11` |
+| **y1** | `11` | `01` | `11` | `00` |
+| **y2** | `11` | `01` | `01` | `00` |
+| **y3** | `11` | `01` | `11` | `01` |
 
 Or alternatively, using the color lookups:
 
-Coord | x0   | x1   | x2   | x3   |
-------|------|------|------|------|
-**y0**| c3   | c2   | c3   | c3   |
-**y1**| c3   | c1   | c3   | c0   |
-**y2**| c3   | c1   | c1   | c0   |
-**y3**| c3   | c1   | c3   | c1   |
+| Coord  | x0  | x1  | x2  | x3  |
+| ------ | --- | --- | --- | --- |
+| **y0** | c3  | c2  | c3  | c3  |
+| **y1** | c3  | c1  | c3  | c0  |
+| **y2** | c3  | c1  | c1  | c0  |
+| **y3** | c3  | c1  | c3  | c1  |
 
 
 ## Excursion: DXT4/BC4 Block Compression
@@ -650,17 +655,17 @@ referencing the 8 single-channel colors.
 
 The 8 byte block is organized as follows:
 
-Length   | Type    | Description
----------|---------|-------------------
-1 bytes  | uint8   | Reference color 0
-1 bytes  | uint8   | Reference color 1
-6 bytes  | char[6] | Pixel indices
+| Length  | Type    | Description       |
+| ------- | ------- | ----------------- |
+| 1 bytes | uint8   | Reference color 0 |
+| 1 bytes | uint8   | Reference color 1 |
+| 6 bytes | char[6] | Pixel indices     |
 
 ```cpp
 struct bc4_block {
-  uint8   color0;
-  uint8   color1;
-  char[6] pixel_indices;
+  uint8 color0;
+  uint8 color1;
+  uint8 pixel_indices[6];
 };
 ```
 Python format: `Struct("< 8B")`
@@ -678,10 +683,10 @@ indices.
 The lookup table has 8 entries that map a 3-Bit index to a 8-Bit red channel color
 value. The first 2 entries are the reference colors `color0` and `color1`.
 
-Index | Color Value
-------|-------
-000   | `color0`
-001   | `color1`
+| Index | Color Value |
+| ----- | ----------- |
+| 000   | `color0`    |
+| 001   | `color1`    |
 
 Using the reference colors, we have to interpolate the color values for the
 other 6 indices. The interpolation works differently depending on which of
@@ -690,27 +695,27 @@ the two reference color values (that means their 8-Bit integer values) is greate
 If `color0` is **greater than** `color1`, the color values for the remaining
 indices are calculated as follows:
 
-Index | Color Value
-------|-------
-010   | `color2 = (6 * color0 + 1 * color1) / 7.0`
-011   | `color3 = (5 * color0 + 2 * color1) / 7.0`
-100   | `color4 = (4 * color0 + 3 * color1) / 7.0`
-101   | `color5 = (3 * color0 + 4 * color1) / 7.0`
-110   | `color6 = (2 * color0 + 5 * color1) / 7.0`
-111   | `color7 = (1 * color0 + 6 * color1) / 7.0`
+| Index | Color Value                                |
+| ----- | ------------------------------------------ |
+| 010   | `color2 = (6 * color0 + 1 * color1) / 7.0` |
+| 011   | `color3 = (5 * color0 + 2 * color1) / 7.0` |
+| 100   | `color4 = (4 * color0 + 3 * color1) / 7.0` |
+| 101   | `color5 = (3 * color0 + 4 * color1) / 7.0` |
+| 110   | `color6 = (2 * color0 + 5 * color1) / 7.0` |
+| 111   | `color7 = (1 * color0 + 6 * color1) / 7.0` |
 
 If `color0` is **smaller than or equal to** `color1`, only the color value of 4 other colors (`color2`,
 `color3`, `color4`, `color5`) are interpolated. `color6` is set to `0` and `color7` is set to
 `255`.
 
-Index | Color Value
-------|-------
-010   | `color2 = (4 * color0 + 1 * color1) / 5.0`
-011   | `color3 = (3 * color0 + 2 * color1) / 5.0`
-100   | `color4 = (2 * color0 + 3 * color1) / 5.0`
-101   | `color5 = (1 * color0 + 4 * color1) / 5.0`
-110   | `color6 = 0`
-111   | `color7 = 255`
+| Index | Color Value                                |
+| ----- | ------------------------------------------ |
+| 010   | `color2 = (4 * color0 + 1 * color1) / 5.0` |
+| 011   | `color3 = (3 * color0 + 2 * color1) / 5.0` |
+| 100   | `color4 = (2 * color0 + 3 * color1) / 5.0` |
+| 101   | `color5 = (1 * color0 + 4 * color1) / 5.0` |
+| 110   | `color6 = 0`                               |
+| 111   | `color7 = 255`                             |
 
 ### Constructing the Pixel Block
 
@@ -799,16 +804,16 @@ color7 = 255
 
 In the end, our lookup table looks like this:
 
-Index  | Color Value
--------|-------
-000    | `c0 = 16`
-000    | `c1 = 130`
-010    | `c2 = 38`
-011    | `c3 = 61`
-100    | `c3 = 84`
-101    | `c3 = 107`
-110    | `c3 = 0`
-111    | `c3 = 255`
+| Index | Color Value |
+| ----- | ----------- |
+| 000   | `c0 = 16`   |
+| 000   | `c1 = 130`  |
+| 010   | `c2 = 38`   |
+| 011   | `c3 = 61`   |
+| 100   | `c3 = 84`   |
+| 101   | `c3 = 107`  |
+| 110   | `c3 = 0`    |
+| 111   | `c3 = 255`  |
 
 All we have to do now is to fill the pixel block using the `pixel_indices` values.
 Using the algorithm from the previous section, we can read it from the back
@@ -832,21 +837,21 @@ pixel_indices1 (Binary): 011101110001011100110111
 When we assign the indices from left to right and top to bottom, the assignment
 looks like this:
 
-Coord | x0    | x1    | x2    | x3    |
-------|-------|-------|-------|-------|
-**y0**| `011` | `110` | `100` | `010` |
-**y1**| `100` | `110` | `110` | `111` |
-**y2**| `111` | `110` | `100` | `011` |
-**y3**| `001` | `110` | `101` | `011` |
+| Coord  | x0    | x1    | x2    | x3    |
+| ------ | ----- | ----- | ----- | ----- |
+| **y0** | `011` | `110` | `100` | `010` |
+| **y1** | `100` | `110` | `110` | `111` |
+| **y2** | `111` | `110` | `100` | `011` |
+| **y3** | `001` | `110` | `101` | `011` |
 
 Or alternatively, using the color lookups:
 
-Coord | x0   | x1   | x2   | x3   |
-------|------|------|------|------|
-**y0**| c3   | c6   | c4   | c2   |
-**y1**| c4   | c6   | c6   | c7   |
-**y2**| c7   | c6   | c4   | c3   |
-**y3**| c1   | c6   | c5   | c3   |
+| Coord  | x0  | x1  | x2  | x3  |
+| ------ | --- | --- | --- | --- |
+| **y0** | c3  | c6  | c4  | c2  |
+| **y1** | c4  | c6  | c6  | c7  |
+| **y2** | c7  | c6  | c4  | c3  |
+| **y3** | c1  | c6  | c5  | c3  |
 
 
 ## Processing the Command Array (Example)
@@ -862,21 +867,21 @@ The sprite in this example has the dimensions 32x12 (width x height). Since
 we are operating on 4x4 blocks, that means the sprite demensions in blocks
 are 8x3.
 
-Block | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    |
-------|------|------|------|------|------|------|------|------|
-**0** | -    | -    | -    | -    | -    | -    | -    | -    |
-**1** | -    | -    | -    | -    | -    | -    | -    | -    |
-**2** | -    | -    | -    | -    | -    | -    | -    | -    |
+| Block | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+| ----- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **0** | -   | -   | -   | -   | -   | -   | -   | -   |
+| **1** | -   | -   | -   | -   | -   | -   | -   | -   |
+| **2** | -   | -   | -   | -   | -   | -   | -   | -   |
 
 We start in the top left corner at block (0, 0). The first command is `03 01`
 which means we need 3 transparent blocks ((0, 0), (1, 0) and (2, 0)) and
 then draw 1 block from the compressed block array at (3,0).
 
-Block | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    |
-------|------|------|------|------|------|------|------|------|
-**0** |      |      |      | X    | -    | -    | -    | -    |
-**1** | -    | -    | -    | -    | -    | -    | -    | -    |
-**2** | -    | -    | -    | -    | -    | -    | -    | -    |
+| Block | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+| ----- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **0** |     |     |     | X   | -   | -   | -   | -   |
+| **1** | -   | -   | -   | -   | -   | -   | -   | -   |
+| **2** | -   | -   | -   | -   | -   | -   | -   | -   |
 
 The next command is `07 04` which means we move the draw pointer
 forwards by 7 blocks. Since the current row only has 4 blocks remaining
@@ -885,11 +890,11 @@ skip 3 blocks at the beginning of this row. Afterwards, we have
 to draw 4 blocks from the compressed block array starting at
 (3, 1).
 
-Block | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    |
-------|------|------|------|------|------|------|------|------|
-**0** |      |      |      | X    |      |      |      |      |
-**1** |      |      |      | X    | X    | X    | X    | -    |
-**2** | -    | -    | -    | -    | -    | -    | -    | -    |
+| Block | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+| ----- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **0** |     |     |     | X   |     |     |     |     |
+| **1** |     |     |     | X   | X   | X   | X   | -   |
+| **2** | -   | -   | -   | -   | -   | -   | -   | -   |
 
 The final command is `05 04`, so 5 skipped blocks followed by
 4 draw blocks. We first skip the remaining block in the current
@@ -898,8 +903,8 @@ Then we draw 4 blocks from the compressed block array. Since
 this is the last command, there should be no more blocks to draw
 and the sprite is successfully decompressed.
 
-Block | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    |
-------|------|------|------|------|------|------|------|------|
-**0** |      |      |      | X    |      |      |      |      |
-**1** |      |      |      | X    | X    | X    | X    |      |
-**2** |      |      |      |      | X    | X    | X    | X    |
+| Block | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+| ----- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **0** |     |     |     | X   |     |     |     |     |
+| **1** |     |     |     | X   | X   | X   | X   |     |
+| **2** |     |     |     |     | X   | X   | X   | X   |
