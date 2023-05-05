@@ -1,9 +1,9 @@
 // Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
 #pragma endian little
+#pragma pattern_limit 500000
 
-#include <std/bit.pat>
-#include <std/core.pat>
+u16 cur_total_draw_length = 0;
 
 // unknown layer tests
 u32 entries_size = 0;
@@ -15,7 +15,7 @@ u16 cur_main_height = 0;
 u16 cur_main_height_blocks = 0;
 
 fn pad_length() {
-    return (4 - $) % 4;
+    return (4 - $) & 0b11;
 };
 
 struct sld_header {
@@ -54,20 +54,15 @@ struct sld_mask_header {
 struct cmd_pack {
     u8 skip_length;
     u8 draw_length;
-} [[static]];
 
-struct sld_command_array {
-    u16 length;
-    cmd_pack cmds[length];
+    cur_total_draw_length += draw_length;
 };
 
-fn compr_array_len(sld_command_array cmds) {
-    u16 size = 0;
-    for (u16 i = 0, i < cmds.length, i = i + 1) {
-        size += cmds.cmds[i].draw_length;
-    }
+struct sld_command_array {
+    cur_total_draw_length = 0;
 
-    return size;
+    u16 len;
+    cmd_pack cmds[len];
 };
 
 struct bc1_block {
@@ -89,13 +84,13 @@ struct sld_layer {
 struct sld_main_layer : sld_layer {
     sld_graphics_header header;
     sld_command_array cmds;
-    bc1_block compr_blocks[compr_array_len(cmds)];
+    bc1_block compr_blocks[cur_total_draw_length];
 };
 
 struct sld_shadow_layer : sld_layer {
     sld_graphics_header header;
     sld_command_array cmds;
-    bc4_block compr_blocks[compr_array_len(cmds)];
+    bc4_block compr_blocks[cur_total_draw_length];
 };
 
 struct unknown_entry {
@@ -112,7 +107,7 @@ struct unknown_entry {
     prev_loc = entry_loc;
 } [[inline]];
 
-struct sld_unkown_layer : sld_layer {
+struct sld_unknown_layer : sld_layer {
     u16 unknown0;
 
     cur_offset = $;
@@ -130,13 +125,13 @@ struct sld_unkown_layer : sld_layer {
 struct sld_dmg_mask_layer : sld_layer {
     sld_mask_header header;
     sld_command_array cmds;
-    bc1_block compr_blocks[compr_array_len(cmds)];
+    bc1_block compr_blocks[cur_total_draw_length];
 };
 
 struct sld_playcol_mask_layer : sld_layer {
     sld_mask_header header;
     sld_command_array cmds;
-    bc4_block compr_blocks[compr_array_len(cmds)];
+    bc4_block compr_blocks[cur_total_draw_length];
 };
 
 struct sld_frame {
@@ -156,7 +151,7 @@ struct sld_frame {
         padding[pad_length()];
     }
     if (header.frame_type & 0x04) {
-        sld_unkown_layer unknown_layer;
+        sld_unknown_layer unknown_layer;
 
         padding[pad_length()];
     }
