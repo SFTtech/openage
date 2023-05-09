@@ -80,12 +80,12 @@ void Loop::reach_time(const curve::time_t &max_time,
 			break;
 		}
 
-		log::log(DBG << "Loop: Attempt " << attempts << " to reach t=" << max_time);
+		log::log(SPAM << "Loop: Attempt " << attempts << " to reach t=" << max_time);
 		this->update_changes(state);
 		cnt = this->execute_events(max_time, state);
 
-		log::log(DBG << "Loop: to reach t=" << max_time
-		             << ", n=" << cnt << " events were executed");
+		log::log(SPAM << "Loop: to reach t=" << max_time
+					  << ", n=" << cnt << " events were executed");
 
 		attempts += 1;
 	}
@@ -100,8 +100,8 @@ void Loop::reach_time(const curve::time_t &max_time,
 
 int Loop::execute_events(const curve::time_t &time_until,
                          const std::shared_ptr<State> &state) {
-	log::log(DBG << "Loop: Pending events in the queue (# = "
-	             << this->queue.get_event_queue().size() << "):");
+	log::log(SPAM << "Loop: Pending events in the queue (# = "
+				  << this->queue.get_event_queue().size() << "):");
 
 	{
 		size_t i = 0;
@@ -171,8 +171,8 @@ void Loop::create_change(const std::shared_ptr<Event> &evnt,
 
 
 void Loop::update_changes(const std::shared_ptr<State> &state) {
-	log::log(DBG << "Loop: " << this->queue.get_changes().size()
-	             << " target changes have to be processed");
+	log::log(SPAM << "Loop: " << this->queue.get_changes().size()
+				  << " target changes have to be processed");
 
 	size_t i = 0;
 
