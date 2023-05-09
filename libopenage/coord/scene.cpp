@@ -47,6 +47,18 @@ Eigen::Vector3f scene2_delta::to_world_space() const {
 	return Eigen::Vector3f(this->se.to_float(), 0.0f, -this->ne.to_float());
 }
 
+float scene2_delta::to_angle(const coord::scene2_delta &other) const {
+	auto det = this->ne.to_float() * other.se.to_float() - other.ne.to_float() * this->se.to_float();
+	auto dot = this->ne.to_float() * other.ne.to_float() + this->se.to_float() * other.se.to_float();
+
+	auto angle = std::atan2(det, dot) * 180 / std::numbers::pi;
+	if (angle < 0) {
+		angle += 360;
+	}
+
+	return angle;
+}
+
 
 double scene2::distance(scene2 other) const {
 	return (*this - other).length();
@@ -92,6 +104,9 @@ Eigen::Vector3f scene3_delta::to_world_space() const {
 	return Eigen::Vector3f(this->se.to_float(), this->up.to_float() * up_ratio(), -this->ne.to_float());
 }
 
+float scene3_delta::to_angle(const coord::scene2_delta &other) const {
+	return this->to_scene2().to_angle();
+}
 
 scene2 scene3::to_scene2() const {
 	return scene2{this->ne, this->se};

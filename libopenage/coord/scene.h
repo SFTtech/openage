@@ -39,6 +39,7 @@ struct scene2_delta : CoordNeSeRelative<scene_t, scene2, scene2_delta> {
 
 	// renderer conversions
 	Eigen::Vector3f to_world_space() const;
+	float to_angle(const coord::scene2_delta &other = {-1, 1}) const; // TODO: other = cam direction?
 };
 
 struct scene2 : CoordNeSeAbsolute<scene_t, scene2, scene2_delta> {
@@ -66,6 +67,7 @@ struct scene3_delta : CoordNeSeUpRelative<scene_t, scene3, scene3_delta> {
 
 	// renderer conversions
 	Eigen::Vector3f to_world_space() const;
+	float to_angle(const coord::scene2_delta &other = {-1, 1}) const; // TODO: other = cam direction?
 };
 
 struct scene3 : CoordNeSeUpAbsolute<scene_t, scene3, scene3_delta> {
