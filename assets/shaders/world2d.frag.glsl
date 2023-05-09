@@ -22,6 +22,8 @@ void main() {
 	switch (alpha) {
 		case 0:
 			col = tex_val;
+			discard;
+
 			// do not save the ID
 			return;
 		case 254:
