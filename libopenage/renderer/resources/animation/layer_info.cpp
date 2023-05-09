@@ -2,6 +2,8 @@
 
 #include "layer_info.h"
 
+#include <algorithm>
+
 #include "renderer/resources/animation/angle_info.h"
 
 namespace openage::renderer::resources {
@@ -53,6 +55,20 @@ size_t LayerInfo::get_angle_count() const {
 
 const std::shared_ptr<AngleInfo> &LayerInfo::get_angle(size_t idx) const {
 	return this->angles.at(idx);
+}
+
+const std::shared_ptr<AngleInfo> &LayerInfo::get_direction_angle(float direction) const {
+	// clamp to possible degrees values
+	direction = std::clamp(direction, 0.0f, 360.0f);
+
+	for (auto const &angle : this->angles) {
+		if (direction < angle->get_angle_start()) {
+			continue;
+		}
+		return angle;
+	}
+
+	return this->get_angle(0);
 }
 
 const std::shared_ptr<curve::DiscreteMod<size_t>> &LayerInfo::get_frame_timing() const {
