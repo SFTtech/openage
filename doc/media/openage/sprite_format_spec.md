@@ -196,8 +196,8 @@ Acts as the ID and center point for the angle. Has to be an integer between
 Frames at an angle are drawn until the angle of the game world object is
 closer to another defined angle.  In other words, as long as the game world
 objects's angle is between
-`(degree - previous_angle_degree) / 2`
-and `(next_angle_degree - degree) / 2`.
+`previous_angle_degree + (degree - previous_angle_degree) / 2`
+and `degree + (next_angle_degree - degree) / 2`.
 
 ```
 angle 0
