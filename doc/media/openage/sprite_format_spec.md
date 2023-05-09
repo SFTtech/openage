@@ -193,6 +193,10 @@ mirror_from | int   | Yes      | -
 Acts as the ID and center point for the angle. Has to be an integer between
 `0` and `359`.
 
+The angle with center point `degree = 0` is facing the camera, i.e. the game object
+direction should be *towards* the camera. Subsequent angles are ordered *clockwise*, e.g.
+`90` faces left from the camera's point of view, `180` faces up, and `270` faces right.
+
 Frames at an angle are drawn until the angle of the game world object is
 closer to another defined angle.  In other words, as long as the game world
 objects's angle is between

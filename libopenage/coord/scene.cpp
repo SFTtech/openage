@@ -48,7 +48,7 @@ Eigen::Vector3f scene2_delta::to_world_space() const {
 }
 
 float scene2_delta::to_angle(const coord::scene2_delta &other) const {
-	auto det = this->ne.to_float() * other.se.to_float() - other.ne.to_float() * this->se.to_float();
+	auto det = other.ne.to_float() * this->se.to_float() - this->ne.to_float() * other.se.to_float();
 	auto dot = this->ne.to_float() * other.ne.to_float() + this->se.to_float() * other.se.to_float();
 
 	auto angle = std::atan2(det, dot) * 180 / std::numbers::pi;
