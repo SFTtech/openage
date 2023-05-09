@@ -22,10 +22,10 @@ size 153 178
 pxformat rgba8 cbits=False
 
 subtex 109 101 32 45 16 22
-subtex 1 132 68 45 34 22
-subtex 1 1 79 37 38 18
-subtex 1 79 70 51 35 25
-subtex 73 101 34 54 17 27
-subtex 82 1 70 52 35 26
-subtex 1 40 78 37 39 18
 subtex 81 55 68 44 34 22
+subtex 1 40 78 37 39 18
+subtex 82 1 70 52 35 26
+subtex 73 101 34 54 17 27
+subtex 1 79 70 51 35 25
+subtex 1 1 79 37 38 18
+subtex 1 132 68 45 34 22
