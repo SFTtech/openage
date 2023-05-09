@@ -210,48 +210,83 @@ Animation2dInfo parse_sprite_file(const util::Path &file,
 				  });
 	}
 
+	// Order angles by degree
+	std::sort(angles.begin(),
+	          angles.end(),
+	          [](AngleData &a1, AngleData &a2) {
+				  return a1.degree < a2.degree;
+			  });
+
 	// Create ID map. Resolves IDs used in the file to array indices
 	std::unordered_map<size_t, size_t> texture_id_map;
 	for (size_t i = 0; i < textures.size(); ++i) {
-		texture_id_map.insert(std::make_pair(textures[i].texture_id, i));
+		texture_id_map.insert(std::make_pair(textures.at(i).texture_id, i));
 	}
 	std::unordered_map<size_t, size_t> angle_id_map;
 	for (size_t i = 0; i < angles.size(); ++i) {
-		angle_id_map.insert(std::make_pair(angles[i].degree, i));
+		angle_id_map.insert(std::make_pair(angles.at(i).degree, i));
 	}
 
 	std::vector<LayerInfo> layer_infos;
 	for (auto layer : layers) {
 		std::vector<std::shared_ptr<AngleInfo>> angle_infos;
+
+		// degree in the file is the angle center
+		// we have to calculate the angle start
+		// (between the angle center and the previous angle's center)
+		float prev_angle_degree = angles.at(angles.size() - 1).degree;
+		float angle_start = 0;
+
 		for (auto angle : angles) {
 			std::vector<std::shared_ptr<FrameInfo>> frame_infos;
-			if (angle.mirror_from < 0) {
-				for (auto frame : frames[angle.degree]) {
-					if (frame.layer_id != layer.layer_id) {
-						continue;
-					}
-					if (frame.index > frame_infos.size()) {
-						// set empty frames if an index is missing
-						for (size_t i = frame_infos.size() - 1; i < frame.index; ++i) {
-							frame_infos.push_back(nullptr);
-						}
-					}
-					frame_infos.push_back(std::make_shared<FrameInfo>(
-						texture_id_map[frame.texture_id],
-						frame.subtex_id));
+
+			// get the degree where the angle starts
+			if (prev_angle_degree > angle.degree) {
+				// when previous angle > current angle, it wraps around at 360 degrees
+				angle_start = prev_angle_degree + (360 + angle.degree - prev_angle_degree) / 2;
+				if (angle_start >= 360) {
+					// ensure that result is in 360 degrees range
+					angle_start -= 360;
 				}
-				if (frame_infos.size() < largest_frame_idx) {
-					// insert empty frames at the end if an indices are missing
-					for (size_t i = frame_infos.size() - 1; i < largest_frame_idx; ++i) {
+			}
+			else {
+				angle_start = prev_angle_degree + (angle.degree - prev_angle_degree) / 2;
+			}
+			prev_angle_degree = angle.degree;
+
+			if (angle.mirror_from >= 0) {
+				// we can exit early if the angle is mirrored
+				// because we don't need to store the frames
+				auto angle_info_ptr = angle_infos.at(angle_id_map.at(angle.mirror_from));
+				angle_infos.push_back(std::make_shared<AngleInfo>(angle_start,
+				                                                  frame_infos,
+				                                                  angle_info_ptr,
+				                                                  flip_type::FLIP_X));
+				continue;
+			}
+
+			for (auto frame : frames.at(angle.degree)) {
+				if (frame.layer_id != layer.layer_id) {
+					continue;
+				}
+				if (frame.index > frame_infos.size()) {
+					// set empty frames if an index is missing
+					for (size_t i = frame_infos.size() - 1; i < frame.index; ++i) {
 						frame_infos.push_back(nullptr);
 					}
 				}
-				angle_infos.push_back(std::make_shared<AngleInfo>(angle.degree, frame_infos));
+				frame_infos.push_back(std::make_shared<FrameInfo>(
+					texture_id_map.at(frame.texture_id),
+					frame.subtex_id));
 			}
-			else {
-				auto angle_info_ptr = angle_infos[angle_id_map[angle.mirror_from]];
-				angle_infos.push_back(angle_info_ptr);
+			if (frame_infos.size() < largest_frame_idx) {
+				// insert empty frames at the end if an indices are missing
+				for (size_t i = frame_infos.size() - 1; i < largest_frame_idx; ++i) {
+					frame_infos.push_back(nullptr);
+				}
 			}
+
+			angle_infos.push_back(std::make_shared<AngleInfo>(angle_start, frame_infos));
 		}
 
 		layer_infos.emplace_back(angle_infos,
