@@ -31,7 +31,7 @@ public:
 	 * @param position Absolute position of the layer on the screen.
 	 * @param time_per_frame Time that each frame is displayed in seconds.
 	 * @param replay_delay Additional time (in seconds) to display the last frame in a loop.
-	 * @param angles Angle information.
+	 * @param angles Angle information. Angles should be ordered counter-clockwise, starting with the front-facing angle.
 	 */
 	LayerInfo(std::vector<std::shared_ptr<AngleInfo>> &angles,
 	          const display_mode mode = display_mode::OFF,

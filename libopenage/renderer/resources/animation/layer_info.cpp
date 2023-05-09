@@ -61,15 +61,25 @@ const std::shared_ptr<AngleInfo> &LayerInfo::get_direction_angle(float direction
 	// clamp to possible degrees values
 	direction = std::clamp(direction, 0.0f, 360.0f);
 
-	auto idx = 0;
+	// special case for front facing angle because values wrap
+	// around at 360 degrees, e.g. 337,5 to 22,5
+	if (direction > this->angles.at(0)->get_angle_start()
+	    or direction < this->angles.at(1)->get_angle_start()) {
+		return this->get_angle(0);
+	}
+
+	// check if angles with index = angles.size() - 2 match
+	// since they are ordered, we only need one comparison
+	// (check if the NEXT angle start is larger than the supplied
+	// direction)
 	for (size_t i = 1; i < this->angles.size(); ++i) {
 		if (direction < this->angles.at(i)->get_angle_start()) {
-			idx = i - 1;
-			break;
+			return this->get_angle(i - 1);
 		}
 	}
 
-	return this->get_angle(idx);
+	// last angle in the list is the only one remaining that could match
+	return this->get_angle(this->angles.size() - 1);
 }
 
 const std::shared_ptr<curve::DiscreteMod<size_t>> &LayerInfo::get_frame_timing() const {
