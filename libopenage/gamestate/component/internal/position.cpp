@@ -15,10 +15,14 @@ Position::Position(const std::shared_ptr<openage::event::Loop> &loop,
 	this->position.set_insert(creation_time, initial_pos);
 
 	// TODO: testing values
-	this->position.set_insert(creation_time + 3, initial_pos + coord::phys3_delta{0, 2, 0});
-	this->position.set_insert(creation_time + 6, initial_pos + coord::phys3_delta{2, 2, 0});
-	this->position.set_insert(creation_time + 9, initial_pos + coord::phys3_delta{2, 0, 0});
-	this->position.set_insert(creation_time + 12, initial_pos);
+	this->position.set_insert(creation_time + 1, initial_pos + coord::phys3_delta{0, 1, 0});
+	this->position.set_insert(creation_time + 2, initial_pos + coord::phys3_delta{1, 2, 0});
+	this->position.set_insert(creation_time + 3, initial_pos + coord::phys3_delta{2, 2, 0});
+	this->position.set_insert(creation_time + 4, initial_pos + coord::phys3_delta{3, 1, 0});
+	this->position.set_insert(creation_time + 5, initial_pos + coord::phys3_delta{3, 0, 0});
+	this->position.set_insert(creation_time + 6, initial_pos + coord::phys3_delta{2, -1, 0});
+	this->position.set_insert(creation_time + 7, initial_pos + coord::phys3_delta{1, -1, 0});
+	this->position.set_insert(creation_time + 8, initial_pos);
 }
 
 
