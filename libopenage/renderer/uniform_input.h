@@ -45,6 +45,7 @@ public:
 	void update(const char *unif, uint32_t val);
 	void update(const char *unif, float val);
 	void update(const char *unif, double val);
+	void update(const char *unif, bool val);
 	void update(const char *unif, Eigen::Vector2f const &val);
 	void update(const char *unif, Eigen::Vector3f const &val);
 	void update(const char *unif, Eigen::Vector4f const &val);

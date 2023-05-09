@@ -347,6 +347,9 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 			// TODO requires an extension
 			glUniform1d(loc, *reinterpret_cast<const double *>(ptr));
 			break;
+		case GL_BOOL:
+			glUniform1ui(loc, *reinterpret_cast<const bool *>(ptr));
+			break;
 		case GL_FLOAT_VEC2:
 			glUniform2fv(loc, 1, reinterpret_cast<const float *>(ptr));
 			break;
@@ -460,6 +463,10 @@ void GlShaderProgram::set_f32(std::shared_ptr<UniformInput> const &in, const cha
 void GlShaderProgram::set_f64(std::shared_ptr<UniformInput> const &in, const char *unif, double val) {
 	// TODO requires extension
 	this->set_unif(in, unif, &val, GL_DOUBLE);
+}
+
+void GlShaderProgram::set_bool(std::shared_ptr<UniformInput> const &in, const char *unif, bool val) {
+	this->set_unif(in, unif, &val, GL_BOOL);
 }
 
 void GlShaderProgram::set_v2f32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Vector2f const &val) {

@@ -28,6 +28,10 @@ void UniformInput::update(const char *unif, double val) {
 	this->program->set_f64(this->shared_from_this(), unif, val);
 }
 
+void UniformInput::update(const char *unif, bool val) {
+	this->program->set_bool(this->shared_from_this(), unif, val);
+}
+
 void UniformInput::update(const char *unif, Eigen::Vector2f const &val) {
 	this->program->set_v2f32(this->shared_from_this(), unif, val);
 }

@@ -57,6 +57,13 @@ public:
 	bool is_mirrored() const;
 
 	/**
+	 * Get the mirror direction of the angle.
+	 *
+	 * @return const flip_type&
+	 */
+	const flip_type &get_mirror_type();
+
+	/**
 	 * Get the mirrored angle information.
 	 *
 	 * @return An angle information object.

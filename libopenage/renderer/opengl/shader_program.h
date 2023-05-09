@@ -48,6 +48,7 @@ protected:
 	void set_u32(std::shared_ptr<UniformInput> const &, const char *, uint32_t) override;
 	void set_f32(std::shared_ptr<UniformInput> const &, const char *, float) override;
 	void set_f64(std::shared_ptr<UniformInput> const &, const char *, double) override;
+	void set_bool(std::shared_ptr<UniformInput> const &, const char *, bool) override;
 	void set_v2f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector2f const &) override;
 	void set_v3f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector3f const &) override;
 	void set_v4f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector4f const &) override;

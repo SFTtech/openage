@@ -1,0 +1,25 @@
+# Copyright 2023-2023 the openage authors. See copying.md for legal info.
+# openage sprite definition file
+
+version 2
+
+texture 0 "test_tank.texture"
+
+scalefactor 2.0
+
+layer 0 mode=off
+
+angle 0
+angle 45
+angle 90
+angle 135
+angle 180
+angle 225 mirror_from=135
+angle 270 mirror_from=90
+angle 315 mirror_from=45
+
+frame 0 0 0 0 0
+frame 0 45 0 0 1
+frame 0 90 0 0 2
+frame 0 135 0 0 3
+frame 0 180 0 0 4

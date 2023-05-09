@@ -112,6 +112,13 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 		// Object world position
 		this->uniforms->update("obj_world_position", current_pos.to_world_space());
 
+		if (angle->is_mirrored()) {
+			this->uniforms->update("flip_x", true);
+		}
+		else {
+			this->uniforms->update("flip_x", false);
+		}
+
 		// Subtex positional offset using anchor point
 		auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
 		auto anchor_offset = Eigen::Vector2f{
