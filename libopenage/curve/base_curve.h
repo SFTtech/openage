@@ -34,8 +34,19 @@ public:
 		return get(now);
 	}
 
-	virtual std::pair<time_t, const T &> frame(const time_t &) const;
-	virtual std::pair<time_t, const T &> next_frame(const time_t &) const;
+	/**
+	 * Get the closest keyframe with t <= time.
+	 *
+	 * @return Keyframe time and value.
+	 */
+	virtual std::pair<time_t, const T> frame(const time_t &time) const;
+
+	/**
+	 * Get the closest keyframe with t > time.
+	 *
+	 * @return Keyframe time and value.
+	 */
+	virtual std::pair<time_t, const T> next_frame(const time_t &time) const;
 
 	/**
 	 * Insert/overwrite given value at given time and erase all elements
@@ -209,14 +220,14 @@ void BaseCurve<T>::erase(const time_t &at) {
 
 
 template <typename T>
-std::pair<time_t, const T &> BaseCurve<T>::frame(const time_t &time) const {
+std::pair<time_t, const T> BaseCurve<T>::frame(const time_t &time) const {
 	auto e = this->container.last(time, this->container.end());
 	return std::make_pair(e->time, e->value);
 }
 
 
 template <typename T>
-std::pair<time_t, const T &> BaseCurve<T>::next_frame(const time_t &time) const {
+std::pair<time_t, const T> BaseCurve<T>::next_frame(const time_t &time) const {
 	auto e = this->container.last(time, this->container.end());
 	e++;
 	return std::make_pair(e->time, e->value);
