@@ -61,14 +61,15 @@ const std::shared_ptr<AngleInfo> &LayerInfo::get_direction_angle(float direction
 	// clamp to possible degrees values
 	direction = std::clamp(direction, 0.0f, 360.0f);
 
-	for (auto const &angle : this->angles) {
-		if (direction < angle->get_angle_start()) {
-			continue;
+	auto idx = 0;
+	for (size_t i = 1; i < this->angles.size(); ++i) {
+		if (direction < this->angles.at(i)->get_angle_start()) {
+			idx = i - 1;
+			break;
 		}
-		return angle;
 	}
 
-	return this->get_angle(0);
+	return this->get_angle(idx);
 }
 
 const std::shared_ptr<curve::DiscreteMod<size_t>> &LayerInfo::get_frame_timing() const {

@@ -35,14 +35,14 @@ public:
 	}
 
 	/**
-	 * Get the closest keyframe with t <= time.
+	 * Get the closest keyframe with t <= \p time.
 	 *
 	 * @return Keyframe time and value.
 	 */
 	virtual std::pair<time_t, const T> frame(const time_t &time) const;
 
 	/**
-	 * Get the closest keyframe with t > time.
+	 * Get the closest keyframe with t > \p time.
 	 *
 	 * @return Keyframe time and value.
 	 */
