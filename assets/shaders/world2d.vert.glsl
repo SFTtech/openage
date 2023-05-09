@@ -18,6 +18,9 @@ uniform mat4 model;
 // position of the object in world space
 uniform vec3 obj_world_position;
 
+uniform bool flip_x;
+uniform bool flip_y;
+
 // parameters for scaling and moving the subtex
 // to the correct position in clip space
 
@@ -47,5 +50,7 @@ void main() {
 
     // finally calculate the vertex position
     gl_Position = move * vec4(v_position, 0.0, 1.0);
-    vert_uv = vec2(uv.x, 1.0 - uv.y);
+    float uv_x = float(!flip_x) * uv.x + float(flip_x) * (1.0 - uv.x);
+    float uv_y = float(flip_y) * uv.y + float(!flip_y) * (1.0 - uv.y);
+    vert_uv = vec2(uv_x, uv_y);
 }

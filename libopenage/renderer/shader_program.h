@@ -77,6 +77,7 @@ protected:
 	virtual void set_u32(std::shared_ptr<UniformInput> const &, const char *, uint32_t) = 0;
 	virtual void set_f32(std::shared_ptr<UniformInput> const &, const char *, float) = 0;
 	virtual void set_f64(std::shared_ptr<UniformInput> const &, const char *, double) = 0;
+	virtual void set_bool(std::shared_ptr<UniformInput> const &, const char *, bool) = 0;
 	virtual void set_v2f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector2f const &) = 0;
 	virtual void set_v3f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector3f const &) = 0;
 	virtual void set_v4f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector4f const &) = 0;

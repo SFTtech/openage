@@ -21,6 +21,10 @@ bool AngleInfo::is_mirrored() const {
 	return this->mirror_from != nullptr;
 }
 
+const flip_type &AngleInfo::get_mirror_type() {
+	return this->mirror_type;
+}
+
 const std::shared_ptr<AngleInfo> &AngleInfo::get_mirrored_angle() const {
 	return this->mirror_from;
 }
@@ -33,7 +37,7 @@ const std::shared_ptr<FrameInfo> &AngleInfo::get_frame(size_t idx) const {
 	if (!(this->mirror_from == nullptr)) {
 		return this->mirror_from->get_frame(idx);
 	}
-	return this->frames[idx];
+	return this->frames.at(idx);
 }
 
 } // namespace openage::renderer::resources
