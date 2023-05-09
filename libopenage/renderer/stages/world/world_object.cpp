@@ -72,10 +72,16 @@ void WorldObject::update(const curve::time_t &time) {
 
 void WorldObject::update_uniforms(const curve::time_t &time) {
 	if (this->uniforms != nullptr) [[likely]] {
+		auto current_pos = this->position.get(time);
+		auto pos_frame = this->position.frame(time).second;
+		auto pos_next_frame = this->position.next_frame(time).second;
+		auto pos_delta = pos_next_frame - pos_frame;
+		auto angle_degrees = pos_delta.to_angle();
+
 		/* Frame subtexture */
 		auto anim_info = this->asset_manager->request_animation(this->render_entity->get_animation_path());
 		auto layer = anim_info->get_layer(0); // TODO: Support multiple layers
-		auto angle = layer.get_angle(0); // TODO: Support multiple angles
+		auto angle = layer.get_direction_angle(angle_degrees);
 
 		// Current frame index considering current time
 		auto timing = layer.get_frame_timing();
@@ -104,7 +110,6 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 		this->uniforms->update("proj", this->camera->get_projection_matrix());
 
 		// Object world position
-		auto current_pos = this->position.get(time);
 		this->uniforms->update("obj_world_position", current_pos.to_world_space());
 
 		// Subtex positional offset using anchor point
