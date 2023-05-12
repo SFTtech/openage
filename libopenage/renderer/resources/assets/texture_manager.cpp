@@ -20,7 +20,7 @@ const std::shared_ptr<Texture2d> &TextureManager::request(const util::Path &path
 		auto tex_data = resources::Texture2dData(path);
 		this->loaded.insert({flat_path, this->renderer->add_texture(tex_data)});
 	}
-	return this->loaded[flat_path];
+	return this->loaded.at(flat_path);
 }
 
 void TextureManager::add(const util::Path &path) {
