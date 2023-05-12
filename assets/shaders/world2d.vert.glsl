@@ -18,6 +18,7 @@ uniform mat4 model;
 // position of the object in world space
 uniform vec3 obj_world_position;
 
+// flip the subtexture horizontally/vertically
 uniform bool flip_x;
 uniform bool flip_y;
 
