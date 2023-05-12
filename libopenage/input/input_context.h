@@ -13,7 +13,7 @@ namespace camera {
 class BindingContext;
 }
 
-namespace engine {
+namespace game {
 class BindingContext;
 }
 
@@ -47,7 +47,7 @@ public:
      *
      * @param bindings Binding context for gamestate events.
      */
-	void set_engine_bindings(const std::shared_ptr<engine::BindingContext> &bindings);
+	void set_engine_bindings(const std::shared_ptr<game::BindingContext> &bindings);
 
 	/**
      * Set the associated context for binding input events to camera actions.
@@ -61,7 +61,7 @@ public:
      *
      * @return Binding context of the input context.
      */
-	const std::shared_ptr<engine::BindingContext> &get_engine_bindings();
+	const std::shared_ptr<game::BindingContext> &get_engine_bindings();
 
 	/**
      * Get the associated context for binding input events to camera actions.
@@ -140,7 +140,7 @@ private:
 	/**
      * Additional context for engine events.
      */
-	std::shared_ptr<engine::BindingContext> engine_bindings;
+	std::shared_ptr<game::BindingContext> engine_bindings;
 
 	/**
      * Additional context for camera actions.

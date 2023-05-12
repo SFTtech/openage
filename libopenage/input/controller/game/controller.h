@@ -17,7 +17,7 @@ namespace gamestate {
 class GameSimulation;
 }
 
-namespace input::engine {
+namespace input::game {
 
 class BindingContext;
 
@@ -94,5 +94,5 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<openage::gamestate::GameSimulation> &simulation,
                     const std::shared_ptr<renderer::camera::Camera> &camera);
 
-} // namespace input::engine
+} // namespace input::game
 } // namespace openage

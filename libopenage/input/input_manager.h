@@ -22,7 +22,7 @@ namespace camera {
 class Controller;
 } // namespace camera
 
-namespace engine {
+namespace game {
 class Controller;
 } // namespace engine
 
@@ -57,7 +57,7 @@ public:
      *
      * @param controller Engine controller.
      */
-	void set_engine_controller(const std::shared_ptr<engine::Controller> &controller);
+	void set_engine_controller(const std::shared_ptr<game::Controller> &controller);
 
 	/**
 	 * returns the global keybind context.
@@ -172,7 +172,7 @@ private:
 	/**
      * Interface to the engine.
      */
-	std::shared_ptr<engine::Controller> engine_controller;
+	std::shared_ptr<game::Controller> engine_controller;
 
 	/**
      * Interface to the camera.

@@ -3,7 +3,7 @@
 #include "input_manager.h"
 
 #include "input/controller/camera/controller.h"
-#include "input/controller/engine/controller.h"
+#include "input/controller/game/controller.h"
 #include "input/event.h"
 #include "input/input_context.h"
 #include "renderer/gui/guisys/public/gui_input.h"
@@ -27,7 +27,7 @@ void InputManager::set_camera_controller(const std::shared_ptr<camera::Controlle
 	this->camera_controller = controller;
 }
 
-void InputManager::set_engine_controller(const std::shared_ptr<engine::Controller> &controller) {
+void InputManager::set_engine_controller(const std::shared_ptr<game::Controller> &controller) {
 	this->engine_controller = controller;
 }
 
