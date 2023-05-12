@@ -2,11 +2,11 @@
 
 #include "controller.h"
 
-#include "engine/engine.h"
 #include "event/clock.h"
 #include "event/evententity.h"
 #include "event/state.h"
 #include "event/time_loop.h"
+#include "gamestate/engine.h"
 #include "gamestate/event/spawn_entity.h"
 #include "gamestate/game.h"
 #include "gamestate/game_state.h"
@@ -66,7 +66,7 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<event::TimeLoop> &time_loop,
-                    const std::shared_ptr<openage::engine::GameSimulation> &simulation,
+                    const std::shared_ptr<openage::gamestate::GameSimulation> &simulation,
                     const std::shared_ptr<renderer::camera::Camera> &camera) {
 	binding_func_t create_entity_event{[&](const event_arguments &args) {
 		auto mouse_pos = args.mouse.to_phys3(camera);

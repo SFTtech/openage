@@ -17,6 +17,10 @@ class EventLoop;
 class TimeLoop;
 } // namespace event
 
+namespace renderer {
+class RenderFactory;
+}
+
 namespace gamestate {
 class EntityFactory;
 class Game;
@@ -24,15 +28,6 @@ class Game;
 namespace event {
 class Spawner;
 } // namespace event
-
-} // namespace gamestate
-
-namespace renderer {
-class RenderFactory;
-}
-
-namespace engine {
-
 
 /**
  * Gameplay subsystem of the engine.
@@ -54,7 +49,7 @@ public:
 	GameSimulation(mode mode,
 	               const util::Path &root_dir,
 	               const std::shared_ptr<cvar::CVarManager> &cvar_manager,
-	               const std::shared_ptr<event::TimeLoop> time_loop);
+	               const std::shared_ptr<openage::event::TimeLoop> time_loop);
 
 	/**
 	 * engine copy constructor.
@@ -115,7 +110,7 @@ public:
      *
      * @return Event loop.
      */
-	const std::shared_ptr<event::EventLoop> get_event_loop();
+	const std::shared_ptr<openage::event::EventLoop> get_event_loop();
 
 	/**
      * Get the spawner event entity.
@@ -169,12 +164,12 @@ private:
 	/**
 	 * Event time_loop for creating and sending events.
 	 */
-	std::shared_ptr<event::TimeLoop> time_loop;
+	std::shared_ptr<openage::event::TimeLoop> time_loop;
 
 	/**
      * Event loop for processing events in the game.
      */
-	std::shared_ptr<event::EventLoop> event_loop;
+	std::shared_ptr<openage::event::EventLoop> event_loop;
 
 	/**
      * Factory for creating game entities.
@@ -190,5 +185,5 @@ private:
 	std::shared_mutex mutex;
 };
 
-} // namespace engine
+} // namespace gamestate
 } // namespace openage
