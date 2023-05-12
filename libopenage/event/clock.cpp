@@ -4,6 +4,9 @@
 
 #include <thread>
 
+#include "log/log.h"
+
+
 namespace openage::event {
 
 Clock::Clock() :
@@ -71,6 +74,8 @@ void Clock::set_speed(speed_t speed) {
 
 	std::unique_lock lock{this->mutex};
 	this->speed = speed;
+
+	log::log(MSG(info) << "Clock speed set to " << this->speed);
 }
 
 void Clock::start() {
@@ -89,6 +94,8 @@ void Clock::stop() {
 
 	std::unique_lock lock{this->mutex};
 	this->state = ClockState::STOPPED;
+
+	log::log(MSG(info) << "Clock stopped at " << this->get_time() << "s");
 }
 
 void Clock::pause() {
@@ -98,6 +105,8 @@ void Clock::pause() {
 
 	std::unique_lock lock{this->mutex};
 	this->state = ClockState::PAUSED;
+
+	log::log(MSG(info) << "Clock paused at " << this->get_time() << "s");
 }
 
 void Clock::resume() {
@@ -107,6 +116,8 @@ void Clock::resume() {
 		this->last_check = simclock_t::now();
 		this->state = ClockState::RUNNING;
 	}
+
+	log::log(MSG(info) << "Clock resumed at " << this->get_time() << "s");
 }
 
 } // namespace openage::event
