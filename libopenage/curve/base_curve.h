@@ -5,8 +5,8 @@
 #include <sstream>
 
 #include "curve/keyframe_container.h"
+#include "event/event_loop.h"
 #include "event/evententity.h"
-#include "event/loop.h"
 
 
 namespace openage::curve {
@@ -14,7 +14,7 @@ namespace openage::curve {
 template <typename T>
 class BaseCurve : public event::EventEntity {
 public:
-	BaseCurve(const std::shared_ptr<event::Loop> &loop,
+	BaseCurve(const std::shared_ptr<event::EventLoop> &loop,
 	          size_t id,
 	          const std::string &idstr = "",
 	          const EventEntity::single_change_notifier &notifier = nullptr,
@@ -167,7 +167,7 @@ protected:
 	/**
 	 * The eventloop this curve was registered to
 	 */
-	const std::shared_ptr<event::Loop> loop;
+	const std::shared_ptr<event::EventLoop> loop;
 
 	/**
 	 * Cache the iterator for quickly finding the last accessed element (usually the end)

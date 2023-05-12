@@ -22,7 +22,7 @@ public:
      * @param initial_pos Initial position at creation time.
      * @param creation_time Ingame creation time of the component.
      */
-	Position(const std::shared_ptr<openage::event::Loop> &loop,
+	Position(const std::shared_ptr<openage::event::EventLoop> &loop,
 	         const coord::phys3 &initial_pos,
 	         const curve::time_t &creation_time);
 

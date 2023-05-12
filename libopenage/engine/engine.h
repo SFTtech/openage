@@ -13,8 +13,8 @@ class CVarManager;
 }
 
 namespace event {
-class Loop;
-class Simulation;
+class EventLoop;
+class TimeLoop;
 } // namespace event
 
 namespace gamestate {
@@ -54,7 +54,7 @@ public:
 	Engine(mode mode,
 	       const util::Path &root_dir,
 	       const std::shared_ptr<cvar::CVarManager> &cvar_manager,
-	       const std::shared_ptr<event::Simulation> simulation);
+	       const std::shared_ptr<event::TimeLoop> time_loop);
 
 	/**
 	 * engine copy constructor.
@@ -76,11 +76,7 @@ public:
 	 */
 	Engine &operator=(Engine &&other) = delete;
 
-	/**
-	 * engine destructor, cleans up memory etc.
-	 * deletes opengl context, the SDL window, and engine variables.
-	 */
-	~Engine();
+	~Engine() = default;
 
 	/**
 	 * Run the engine loop.
@@ -121,7 +117,7 @@ public:
      *
      * @return Event loop.
      */
-	const std::shared_ptr<event::Loop> get_loop();
+	const std::shared_ptr<event::EventLoop> get_event_loop();
 
 	/**
      * Get the spawner event entity.
@@ -173,14 +169,14 @@ private:
 	std::shared_ptr<cvar::CVarManager> cvar_manager;
 
 	/**
-	 * Event simulation for creating and sending events.
+	 * Event time_loop for creating and sending events.
 	 */
-	std::shared_ptr<event::Simulation> simulation;
+	std::shared_ptr<event::TimeLoop> time_loop;
 
 	/**
      * Event loop for processing events in the game.
      */
-	std::shared_ptr<event::Loop> event_loop;
+	std::shared_ptr<event::EventLoop> event_loop;
 
 	/**
      * Factory for creating game entities.

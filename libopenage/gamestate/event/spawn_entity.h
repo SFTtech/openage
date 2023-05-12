@@ -9,7 +9,7 @@
 namespace openage {
 
 namespace event {
-class Loop;
+class EventLoop;
 class Event;
 class EventEntity;
 class State;
@@ -24,7 +24,7 @@ namespace event {
 // TODO: This is only for testing
 class Spawner : public openage::event::EventEntity {
 public:
-	Spawner(const std::shared_ptr<openage::event::Loop> &loop);
+	Spawner(const std::shared_ptr<openage::event::EventLoop> &loop);
 	~Spawner() = default;
 
 	size_t id() const override;
@@ -43,7 +43,7 @@ public:
      * @param factory: Factory that is used to create the entity.
      * @param animation_path: Path to the texture that is used for the entity.
      */
-	SpawnEntityHandler(const std::shared_ptr<openage::event::Loop> &loop,
+	SpawnEntityHandler(const std::shared_ptr<openage::event::EventLoop> &loop,
 	                   const std::shared_ptr<gamestate::EntityFactory> &factory,
 	                   const util::Path &animation_path);
 	~SpawnEntityHandler() = default;
@@ -62,7 +62,7 @@ public:
 	 *
 	 * Called from the Loop.
 	 */
-	void invoke(openage::event::Loop &loop,
+	void invoke(openage::event::EventLoop &loop,
 	            const std::shared_ptr<openage::event::EventEntity> &target,
 	            const std::shared_ptr<openage::event::State> &state,
 	            const curve::time_t &time,
@@ -92,7 +92,7 @@ private:
 	/**
      * Event loop that the entity components are registered on.
      */
-	std::shared_ptr<openage::event::Loop> loop;
+	std::shared_ptr<openage::event::EventLoop> loop;
 
 	/**
      * The factory that is used to create the entity.

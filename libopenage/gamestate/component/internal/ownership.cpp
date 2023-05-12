@@ -7,7 +7,7 @@
 
 namespace openage::gamestate::component {
 
-Ownership::Ownership(const std::shared_ptr<openage::event::Loop> &loop,
+Ownership::Ownership(const std::shared_ptr<openage::event::EventLoop> &loop,
                      const ownership_id_t owner_id,
                      const curve::time_t &creation_time) :
 	owner(loop, 0) {

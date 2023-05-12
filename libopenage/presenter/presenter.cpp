@@ -8,7 +8,7 @@
 #include <vector>
 
 #include "engine/engine.h"
-#include "event/simulation.h"
+#include "event/time_loop.h"
 #include "input/controller/camera/binding_context.h"
 #include "input/controller/camera/controller.h"
 #include "input/controller/engine/binding_context.h"
@@ -36,11 +36,11 @@ namespace openage::presenter {
 
 Presenter::Presenter(const util::Path &root_dir,
                      const std::shared_ptr<engine::Engine> &engine,
-                     const std::shared_ptr<event::Simulation> &simulation) :
+                     const std::shared_ptr<event::TimeLoop> &time_loop) :
 	root_dir{root_dir},
 	render_passes{},
 	engine{engine},
-	simulation{simulation} {}
+	time_loop{time_loop} {}
 
 
 void Presenter::run() {
@@ -72,8 +72,8 @@ void Presenter::run() {
 		this->engine->stop();
 	}
 
-	if (this->simulation) {
-		this->simulation->stop();
+	if (this->time_loop) {
+		this->time_loop->stop();
 	}
 
 	this->window->close();
@@ -86,8 +86,8 @@ void Presenter::set_engine(const std::shared_ptr<engine::Engine> &engine) {
 	this->engine->attach_renderer(render_factory);
 }
 
-void Presenter::set_simulation(const std::shared_ptr<event::Simulation> &simulation) {
-	this->simulation = simulation;
+void Presenter::set_time_loop(const std::shared_ptr<event::TimeLoop> &time_loop) {
+	this->time_loop = time_loop;
 }
 
 std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {
@@ -127,7 +127,7 @@ void Presenter::init_graphics() {
 		this->camera,
 		this->root_dir["assets"]["shaders"],
 		this->asset_manager,
-		this->simulation->get_clock());
+		this->time_loop->get_clock());
 	this->render_passes.push_back(this->terrain_renderer->get_render_pass());
 
 	// Units/buildings
@@ -137,7 +137,7 @@ void Presenter::init_graphics() {
 		this->camera,
 		this->root_dir["assets"]["shaders"],
 		this->asset_manager,
-		this->simulation->get_clock());
+		this->time_loop->get_clock());
 	this->render_passes.push_back(this->world_renderer->get_render_pass());
 
 	this->init_gui();
@@ -204,7 +204,7 @@ void Presenter::init_input() {
 		auto engine_controller = std::make_shared<input::engine::Controller>(
 			std::unordered_set<size_t>{0, 1, 2, 3}, 0);
 		auto engine_context = std::make_shared<input::engine::BindingContext>();
-		input::engine::setup_defaults(engine_context, this->simulation, this->engine, this->camera);
+		input::engine::setup_defaults(engine_context, this->time_loop, this->engine, this->camera);
 		this->input_manager->set_engine_controller(engine_controller);
 		input_ctx->set_engine_bindings(engine_context);
 	}

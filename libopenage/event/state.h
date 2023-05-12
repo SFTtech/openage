@@ -1,4 +1,4 @@
-// Copyright 2018-2018 the openage authors. See copying.md for legal info.
+// Copyright 2018-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,12 +7,12 @@
 
 namespace openage::event {
 
-class Loop;
+class EventLoop;
 
 
 class State {
 public:
-	State(const std::shared_ptr<Loop> &/*mgr*/) {}
+	State(const std::shared_ptr<EventLoop> &/*mgr*/) {}
 	virtual ~State() = default;
 };
 

@@ -6,7 +6,7 @@
 
 namespace openage::gamestate {
 
-GameState::GameState(const std::shared_ptr<openage::event::Loop> &event_loop) :
+GameState::GameState(const std::shared_ptr<openage::event::EventLoop> &event_loop) :
 	event::State{event_loop} {
 }
 

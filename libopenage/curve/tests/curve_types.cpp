@@ -6,7 +6,7 @@
 #include "curve/discrete_mod.h"
 #include "curve/keyframe_container.h"
 #include "curve/segmented.h"
-#include "event/loop.h"
+#include "event/event_loop.h"
 #include "log/log.h"
 #include "testing/testing.h"
 
@@ -17,7 +17,7 @@ namespace openage::curve::tests {
 void curve_types() {
 	// Check the base container type
 	{
-		auto loop = std::make_shared<event::Loop>();
+		auto loop = std::make_shared<event::EventLoop>();
 		KeyframeContainer<int> c;
 
 		auto p0 = c.insert_before(0, 0);
@@ -182,7 +182,7 @@ void curve_types() {
 
 	// Check the Simple Continuous type
 	{
-		auto f = std::make_shared<event::Loop>();
+		auto f = std::make_shared<event::EventLoop>();
 		Continuous<float> c(f, 0);
 
 		c.set_insert(0, 0);
@@ -213,7 +213,7 @@ void curve_types() {
 	}
 
 	{
-		auto f = std::make_shared<event::Loop>();
+		auto f = std::make_shared<event::EventLoop>();
 		Continuous<float> c(f, 0);
 		c.set_insert(0, 0);
 		c.set_insert(20, 20);
@@ -230,7 +230,7 @@ void curve_types() {
 
 	//Check the discrete type
 	{
-		auto f = std::make_shared<event::Loop>();
+		auto f = std::make_shared<event::EventLoop>();
 		Discrete<int> c(f, 0);
 		c.set_insert(0, 0);
 		c.set_insert(10, 10);
@@ -255,7 +255,7 @@ void curve_types() {
 
 	//Check the discrete mod type
 	{
-		auto f = std::make_shared<event::Loop>();
+		auto f = std::make_shared<event::EventLoop>();
 		DiscreteMod<int> c(f, 0);
 		c.set_insert(0, 0);
 		c.set_insert(5, 20);
@@ -288,7 +288,7 @@ void curve_types() {
 
 	//check set_last
 	{
-		auto f = std::make_shared<event::Loop>();
+		auto f = std::make_shared<event::EventLoop>();
 		Discrete<int> c(f, 0);
 		c.set_insert(0, 0);
 		c.set_insert(1, 1);
@@ -302,7 +302,7 @@ void curve_types() {
 
 	// Encountered Errors
 	{
-		auto f = std::make_shared<event::Loop>();
+		auto f = std::make_shared<event::EventLoop>();
 		Continuous<int> c(f, 0);
 		c.set_insert(0, 1);
 		c.set_insert(1, 1);
@@ -341,7 +341,7 @@ void curve_types() {
 
 	// check jumps of Segmented
 	{
-		auto f = std::make_shared<event::Loop>();
+		auto f = std::make_shared<event::EventLoop>();
 		Segmented<int> c(f, 0);
 
 		c.set_insert(0, 0);

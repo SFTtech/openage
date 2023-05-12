@@ -5,8 +5,8 @@
 #include "engine/engine.h"
 #include "event/clock.h"
 #include "event/evententity.h"
-#include "event/simulation.h"
 #include "event/state.h"
+#include "event/time_loop.h"
 #include "gamestate/event/spawn_entity.h"
 #include "gamestate/game.h"
 #include "gamestate/game_state.h"
@@ -65,7 +65,7 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 }
 
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
-                    const std::shared_ptr<event::Simulation> &simulation,
+                    const std::shared_ptr<event::TimeLoop> &time_loop,
                     const std::shared_ptr<openage::engine::Engine> &engine,
                     const std::shared_ptr<renderer::camera::Camera> &camera) {
 	binding_func_t create_entity_event{[&](const event_arguments &args) {
@@ -74,12 +74,11 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 			{"position", mouse_pos},
 		};
 
-		auto loop = simulation->get_loop();
-		auto event = loop->create_event(
+		auto event = engine->get_event_loop()->create_event(
 			"game.spawn_entity",
 			engine->get_spawner(),
 			engine->get_game()->get_state(),
-			simulation->get_clock()->get_time(),
+			time_loop->get_clock()->get_time(),
 			params);
 		return event;
 	}};

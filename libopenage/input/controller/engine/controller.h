@@ -14,7 +14,7 @@ class Engine;
 }
 
 namespace event {
-class Simulation;
+class TimeLoop;
 }
 
 namespace input::engine {
@@ -85,10 +85,12 @@ private:
  * - Mouse click: Create game entity.
  *
  * @param ctx Binding context the actions are added to.
- * @param simulation Simulation with event loop.
+ * @param time_loop Time loop for getting simulation time.
+ * @param engine Engine.
+ * @param camera Active game camera.
  */
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
-                    const std::shared_ptr<event::Simulation> &simulation,
+                    const std::shared_ptr<event::TimeLoop> &time_loop,
                     const std::shared_ptr<openage::engine::Engine> &engine,
                     const std::shared_ptr<renderer::camera::Camera> &camera);
 

@@ -28,7 +28,7 @@ class State;
 /**
  * The core class to manage event handler and targets.
  */
-class Loop {
+class EventLoop {
 	// because the demo function displays internal info.
 	friend int demo::curvepong();
 
@@ -36,8 +36,8 @@ public:
 	/**
      * Create a new event loop.
      */
-	Loop() = default;
-	~Loop() = default;
+	EventLoop() = default;
+	~EventLoop() = default;
 
 	/**
      * Register a new event handler.

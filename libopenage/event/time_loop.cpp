@@ -1,0 +1,54 @@
+// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+
+#include "time_loop.h"
+
+#include <mutex>
+
+#include "event/clock.h"
+#include "log/log.h"
+
+namespace openage::event {
+
+TimeLoop::TimeLoop() :
+	running{false},
+	clock{std::make_shared<Clock>()} {}
+
+TimeLoop::TimeLoop(const std::shared_ptr<Clock> clock) :
+	running{false},
+	clock{clock} {}
+
+void TimeLoop::run() {
+	this->start();
+	while (this->running) {
+		this->clock->update_time();
+	}
+	log::log(MSG(info) << "time loop exited");
+}
+
+void TimeLoop::start() {
+	std::unique_lock lock{this->mutex};
+
+	this->running = true;
+
+	if (this->clock->get_state() == ClockState::INIT) {
+		this->clock->start();
+	}
+
+	log::log(MSG(info) << "time loop started");
+}
+
+void TimeLoop::stop() {
+	std::unique_lock lock{this->mutex};
+
+	this->running = false;
+
+	log::log(MSG(info) << "time loop stopped");
+}
+
+const std::shared_ptr<Clock> TimeLoop::get_clock() {
+	std::shared_lock lock{this->mutex};
+
+	return this->clock;
+}
+
+} // namespace openage::event

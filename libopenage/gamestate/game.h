@@ -9,7 +9,7 @@
 namespace openage {
 
 namespace event {
-class Simulation;
+class EventLoop;
 }
 
 namespace renderer {
@@ -36,10 +36,10 @@ public:
 	 * Create a new game.
 	 *
 	 * @param root_dir openage root directory.
-     * @param simulation Event simulation.
+     * @param event_loop Event simulation loop for the gamestate.
 	 */
 	Game(const util::Path &root_dir,
-	     const std::shared_ptr<openage::event::Simulation> &simulation);
+	     const std::shared_ptr<openage::event::EventLoop> &event_loop);
 	~Game() = default;
 
 	/**
@@ -66,11 +66,6 @@ private:
 	 * Object that controls entities in the game world.
 	 */
 	std::shared_ptr<Universe> universe;
-
-	/**
-     * Event simulation.
-     */
-	std::shared_ptr<openage::event::Simulation> simulation;
 };
 
 } // namespace gamestate

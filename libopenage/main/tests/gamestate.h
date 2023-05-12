@@ -1,4 +1,4 @@
-// Copyright 2019-2019 the openage authors. See copying.md for legal info.
+// Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,13 +7,13 @@
 #include <nyan/nyan.h>
 
 #include "config.h"
-#include "../../curve/continuous.h"
-#include "../../curve/discrete.h"
-#include "../../curve/segmented.h"
-#include "../../event/evententity.h"
-#include "../../event/loop.h"
-#include "../../event/state.h"
-#include "../../util/vector.h"
+#include "curve/continuous.h"
+#include "curve/discrete.h"
+#include "curve/segmented.h"
+#include "event/event_loop.h"
+#include "event/evententity.h"
+#include "event/state.h"
+#include "util/vector.h"
 
 
 namespace openage::main::tests::pong {
@@ -24,11 +24,17 @@ class Gui;
 class PongEvent {
 public:
 	enum state_e {
-		UP, DOWN, START, IDLE, LOST
+		UP,
+		DOWN,
+		START,
+		IDLE,
+		LOST
 	};
 
-	PongEvent(size_t id, state_e s) : player(id), state(s) {}
-	PongEvent() : player(0), state(IDLE) {}
+	PongEvent(size_t id, state_e s) :
+		player(id), state(s) {}
+	PongEvent() :
+		player(0), state(IDLE) {}
 
 	size_t player;
 	state_e state;
@@ -37,7 +43,7 @@ public:
 
 class PongPlayer : public event::EventEntity {
 public:
-	PongPlayer(const std::shared_ptr<event::Loop> &mgr, size_t id);
+	PongPlayer(const std::shared_ptr<event::EventLoop> &mgr, size_t id);
 
 	size_t id() const override;
 	std::string idstr() const override;
@@ -57,7 +63,7 @@ private:
 
 class PongBall : public event::EventEntity {
 public:
-	PongBall(const std::shared_ptr<event::Loop> &mgr, size_t id);
+	PongBall(const std::shared_ptr<event::EventLoop> &mgr, size_t id);
 
 	size_t id() const override;
 	std::string idstr() const override;
@@ -73,7 +79,7 @@ private:
 
 class PongState : public event::State {
 public:
-	PongState(const std::shared_ptr<event::Loop> &mgr,
+	PongState(const std::shared_ptr<event::EventLoop> &mgr,
 	          const std::shared_ptr<Gui> &gui,
 	          const std::shared_ptr<nyan::View> &dbroot);
 
@@ -89,4 +95,4 @@ public:
 };
 
 
-} // openage::main::tests::pong
+} // namespace openage::main::tests::pong

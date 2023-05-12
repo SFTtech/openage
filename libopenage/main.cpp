@@ -7,11 +7,7 @@
 
 #include "cvar/cvar.h"
 #include "engine/engine.h"
-#include "event/clock.h"
-#include "event/loop.h"
-#include "event/simulation.h"
-#include "event/state.h"
-#include "gamestate/game.h"
+#include "event/time_loop.h"
 #include "log/log.h"
 #include "presenter/presenter.h"
 #include "util/timer.h"
@@ -60,18 +56,15 @@ int run_game(const main_arguments &args) {
 
 	// TODO: Order of initializing presenter, simulation and engine is not intuitive
 	//       ideally it should be presenter->engine->simulation
-	auto simulation = std::make_shared<event::Simulation>();
+	auto time_loop = std::make_shared<event::TimeLoop>();
 
-	auto engine = std::make_shared<engine::Engine>(run_mode, args.root_path, cvar_manager, simulation);
-	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, engine, simulation);
-
-	// TODO: Pass state sooner
-	simulation->set_state(engine->get_game()->get_state());
+	auto engine = std::make_shared<engine::Engine>(run_mode, args.root_path, cvar_manager, time_loop);
+	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, engine, time_loop);
 
 	std::jthread event_loop_thread([&]() {
-		simulation->run();
+		time_loop->run();
 
-		simulation.reset();
+		time_loop.reset();
 	});
 	std::jthread engine_thread([&]() {
 		engine->run();
