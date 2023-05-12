@@ -13,18 +13,18 @@
 namespace openage::event {
 
 
-void Loop::add_event_class(const std::shared_ptr<EventHandler> &cls) {
+void Loop::add_event_handler(const std::shared_ptr<EventHandler> eventhandler) {
 	std::unique_lock lock{this->mutex};
 
-	classstore.insert(std::make_pair(cls->id(), cls));
+	classstore.insert(std::make_pair(eventhandler->id(), eventhandler));
 }
 
 
-std::shared_ptr<Event> Loop::create_event(const std::string &name,
-                                          const std::shared_ptr<EventEntity> &target,
-                                          const std::shared_ptr<State> &state,
-                                          const curve::time_t &reference_time,
-                                          const EventHandler::param_map &params) {
+std::shared_ptr<Event> Loop::create_event(const std::string name,
+                                          const std::shared_ptr<EventEntity> target,
+                                          const std::shared_ptr<State> state,
+                                          const curve::time_t reference_time,
+                                          const EventHandler::param_map params) {
 	std::unique_lock lock{this->mutex};
 
 	auto it = classstore.find(name);
@@ -37,11 +37,11 @@ std::shared_ptr<Event> Loop::create_event(const std::string &name,
 }
 
 
-std::shared_ptr<Event> Loop::create_event(const std::shared_ptr<EventHandler> &eventhandler,
-                                          const std::shared_ptr<EventEntity> &target,
-                                          const std::shared_ptr<State> &state,
-                                          const curve::time_t &reference_time,
-                                          const EventHandler::param_map &params) {
+std::shared_ptr<Event> Loop::create_event(const std::shared_ptr<EventHandler> eventhandler,
+                                          const std::shared_ptr<EventEntity> target,
+                                          const std::shared_ptr<State> state,
+                                          const curve::time_t reference_time,
+                                          const EventHandler::param_map params) {
 	std::unique_lock lock{this->mutex};
 
 	auto it = this->classstore.find(eventhandler->id());
@@ -59,7 +59,7 @@ std::shared_ptr<Event> Loop::create_event(const std::shared_ptr<EventHandler> &e
 }
 
 
-void Loop::reach_time(const curve::time_t &max_time,
+void Loop::reach_time(const curve::time_t &time_until,
                       const std::shared_ptr<State> &state) {
 	std::unique_lock lock{this->mutex};
 
@@ -80,12 +80,12 @@ void Loop::reach_time(const curve::time_t &max_time,
 			break;
 		}
 
-		log::log(SPAM << "Loop: Attempt " << attempts << " to reach t=" << max_time);
+		log::log(SPAM << "Loop: Attempt " << attempts << " to reach t=" << time_until);
 		this->update_changes(state);
-		cnt = this->execute_events(max_time, state);
+		cnt = this->execute_events(time_until, state);
 
-		log::log(SPAM << "Loop: to reach t=" << max_time
-					  << ", n=" << cnt << " events were executed");
+		log::log(SPAM << "Loop: to reach t=" << time_until
+		              << ", n=" << cnt << " events were executed");
 
 		attempts += 1;
 	}
@@ -94,14 +94,14 @@ void Loop::reach_time(const curve::time_t &max_time,
 	// Swap in the end of the execution, else we might skip changes that happen
 	// in the main loop for one frame - which is bad btw.
 	this->queue.swap_changesets();
-	log::log(DBG << "Loop: t=" << max_time << " was reached! ========");
+	log::log(DBG << "Loop: t=" << time_until << " was reached! ========");
 }
 
 
 int Loop::execute_events(const curve::time_t &time_until,
                          const std::shared_ptr<State> &state) {
 	log::log(SPAM << "Loop: Pending events in the queue (# = "
-				  << this->queue.get_event_queue().size() << "):");
+	              << this->queue.get_event_queue().size() << "):");
 
 	{
 		size_t i = 0;
@@ -162,8 +162,8 @@ int Loop::execute_events(const curve::time_t &time_until,
 }
 
 
-void Loop::create_change(const std::shared_ptr<Event> &evnt,
-                         const curve::time_t &changes_at) {
+void Loop::create_change(const std::shared_ptr<Event> evnt,
+                         const curve::time_t changes_at) {
 	std::unique_lock lock{this->mutex};
 
 	this->queue.add_change(evnt, changes_at);
@@ -172,7 +172,7 @@ void Loop::create_change(const std::shared_ptr<Event> &evnt,
 
 void Loop::update_changes(const std::shared_ptr<State> &state) {
 	log::log(SPAM << "Loop: " << this->queue.get_changes().size()
-				  << " target changes have to be processed");
+	              << " target changes have to be processed");
 
 	size_t i = 0;
 

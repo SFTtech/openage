@@ -243,8 +243,8 @@ void eventtrigger() {
 		// Test with one event handler
 		auto loop = std::make_shared<Loop>();
 
-		loop->add_event_class(std::make_shared<TestEventHandler>("test_on_A", 0));
-		loop->add_event_class(std::make_shared<TestEventHandler>("test_on_B", 1));
+		loop->add_event_handler(std::make_shared<TestEventHandler>("test_on_A", 0));
+		loop->add_event_handler(std::make_shared<TestEventHandler>("test_on_B", 1));
 
 		auto state = std::make_shared<TestState>(loop);
 		auto gstate = std::static_pointer_cast<State>(state);
@@ -302,8 +302,8 @@ void eventtrigger() {
 		// Test with two event handleres to check interplay
 		auto loop = std::make_shared<Loop>();
 
-		loop->add_event_class(std::make_shared<TestEventHandler>("test_on_A", 0));
-		loop->add_event_class(std::make_shared<TestEventHandlerTwo>("test_on_B"));
+		loop->add_event_handler(std::make_shared<TestEventHandler>("test_on_A", 0));
+		loop->add_event_handler(std::make_shared<TestEventHandlerTwo>("test_on_B"));
 
 		auto state = std::make_shared<TestState>(loop);
 		auto gstate = std::static_pointer_cast<State>(state);
@@ -355,19 +355,19 @@ void eventtrigger() {
 	{
 		auto loop = std::make_shared<Loop>();
 
-		loop->add_event_class(std::make_shared<EventTypeTestClass>(
+		loop->add_event_handler(std::make_shared<EventTypeTestClass>(
 			                         "object_modify",
 			                         EventHandler::trigger_type::DEPENDENCY));
-		loop->add_event_class(std::make_shared<EventTypeTestClass>(
+		loop->add_event_handler(std::make_shared<EventTypeTestClass>(
 			                         "object_modify_immediately",
 			                         EventHandler::trigger_type::DEPENDENCY_IMMEDIATELY));
-		loop->add_event_class(std::make_shared<EventTypeTestClass>(
+		loop->add_event_handler(std::make_shared<EventTypeTestClass>(
 			                         "object_trigger",
 			                         EventHandler::trigger_type::TRIGGER));
-		loop->add_event_class(std::make_shared<EventTypeTestClass>(
+		loop->add_event_handler(std::make_shared<EventTypeTestClass>(
 			                         "repeat_exec",
 			                         EventHandler::trigger_type::REPEAT));
-		loop->add_event_class(std::make_shared<EventTypeTestClass>(
+		loop->add_event_handler(std::make_shared<EventTypeTestClass>(
 			                         "once",
 			                         EventHandler::trigger_type::ONCE));
 
@@ -546,7 +546,7 @@ void eventtrigger() {
 		using namespace std::literals;
 
 		auto loop = std::make_shared<Loop>();
-		loop->add_event_class(std::make_shared<EventParameterMapTestClass>());
+		loop->add_event_handler(std::make_shared<EventParameterMapTestClass>());
 		auto state = std::make_shared<TestState>(loop);
 		auto gstate = std::dynamic_pointer_cast<State>(state);
 

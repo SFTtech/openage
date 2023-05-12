@@ -340,9 +340,9 @@ void Physics::init(const std::shared_ptr<PongState> &state,
                    const std::shared_ptr<event::Loop> &loop,
                    const curve::time_t &now) {
 
-	loop->add_event_class(std::make_shared<BallReflectPanel>());
-	loop->add_event_class(std::make_shared<BallReflectWall>());
-	loop->add_event_class(std::make_shared<ResetGame>());
+	loop->add_event_handler(std::make_shared<BallReflectPanel>());
+	loop->add_event_handler(std::make_shared<BallReflectWall>());
+	loop->add_event_handler(std::make_shared<ResetGame>());
 
 	loop->create_event("demo.ball.reflect_wall", state->ball->position, state, now);
 	loop->create_event("demo.ball.reflect_panel", state->ball->position, state, now);
