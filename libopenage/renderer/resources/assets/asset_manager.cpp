@@ -23,7 +23,7 @@ namespace openage::renderer::resources {
 AssetManager::AssetManager(const std::shared_ptr<Renderer> &renderer) :
 	renderer{renderer},
 	cache{std::make_shared<AssetCache>()},
-	texture_manager{renderer} {
+	texture_manager{std::make_shared<TextureManager>(renderer)} {
 }
 
 const std::shared_ptr<Animation2dInfo> &AssetManager::request_animation(const util::Path &path) {
@@ -80,7 +80,7 @@ const std::shared_ptr<Texture2dInfo> &AssetManager::request_texture(const util::
 	return this->cache->get_texture(path);
 }
 
-const TextureManager &AssetManager::get_texture_manager() {
+const std::shared_ptr<TextureManager> &AssetManager::get_texture_manager() {
 	return this->texture_manager;
 }
 

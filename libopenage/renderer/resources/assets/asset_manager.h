@@ -61,7 +61,7 @@ public:
       *
       * @return Texture manager.
       */
-	const TextureManager &get_texture_manager();
+	const std::shared_ptr<TextureManager> &get_texture_manager();
 
 private:
 	/**
@@ -78,7 +78,7 @@ private:
      * Manages individual textures/image resources used by the
      * high level asset formats cached by the asset manager.
      */
-	TextureManager texture_manager;
+	std::shared_ptr<TextureManager> texture_manager;
 };
 
 } // namespace resources
