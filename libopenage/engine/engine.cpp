@@ -95,7 +95,7 @@ void Engine::init_event_handlers() {
 	auto handler = std::make_shared<gamestate::event::SpawnEntityHandler>(this->simulation->get_loop(),
 	                                                                      this->entity_factory,
 	                                                                      this->root_dir["assets/test/textures/test_tank_mirrored.sprite"]);
-	this->simulation->get_loop()->add_event_class(handler);
+	this->simulation->get_loop()->add_event_handler(handler);
 }
 
 } // namespace engine
