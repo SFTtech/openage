@@ -14,7 +14,7 @@ class GuiApplication;
 namespace openage {
 
 namespace engine {
-class Engine;
+class GameSimulation;
 }
 
 namespace event {
@@ -71,11 +71,11 @@ public:
 	 * Create a new presenter.
 	 *
 	 * @param path Root directory path.
-	 * @param engine openage engine. Can be set later with \p set_engine()
+	 * @param simulation Game simulation. Can be set later with \p set_engine()
 	 * @param time_loop Time loop which controls simulation time. Can be set later with \p set_time_loop()
 	 */
 	Presenter(const util::Path &path,
-	          const std::shared_ptr<engine::Engine> &engine = nullptr,
+	          const std::shared_ptr<engine::GameSimulation> &simulation = nullptr,
 	          const std::shared_ptr<event::TimeLoop> &time_loop = nullptr);
 
 	~Presenter() = default;
@@ -86,11 +86,11 @@ public:
 	void run();
 
 	/**
-	 * Set the openage engine controlled by this presenter.
+	 * Set the game simulation controlled by this presenter.
 	 *
-	 * @param engine openage engine.
+	 * @param simulation Game simulation.
 	 */
-	void set_engine(const std::shared_ptr<engine::Engine> &engine);
+	void set_simulation(const std::shared_ptr<engine::GameSimulation> &simulation);
 
 	/**
 	 * Set the time loop controlled by this presenter.
@@ -206,7 +206,7 @@ protected:
 	/**
 	 * Engine reference.
 	 */
-	std::shared_ptr<engine::Engine> engine;
+	std::shared_ptr<engine::GameSimulation> simulation;
 
 	/**
 	 * Simulation reference.

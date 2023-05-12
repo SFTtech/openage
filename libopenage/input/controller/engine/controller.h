@@ -10,7 +10,7 @@
 namespace openage {
 
 namespace engine {
-class Engine;
+class GameSimulation;
 }
 
 namespace event {
@@ -86,12 +86,12 @@ private:
  *
  * @param ctx Binding context the actions are added to.
  * @param time_loop Time loop for getting simulation time.
- * @param engine Engine.
+ * @param simulation Game simulation.
  * @param camera Active game camera.
  */
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<event::TimeLoop> &time_loop,
-                    const std::shared_ptr<openage::engine::Engine> &engine,
+                    const std::shared_ptr<openage::engine::GameSimulation> &simulation,
                     const std::shared_ptr<renderer::camera::Camera> &camera);
 
 } // namespace input::engine

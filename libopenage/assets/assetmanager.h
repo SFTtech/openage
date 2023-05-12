@@ -19,7 +19,7 @@ namespace openage {
 class Texture;
 
 namespace engine {
-class Engine;
+class GameSimulation;
 }
 
 /**
@@ -55,12 +55,12 @@ public:
 	 * Set the game engine of this asset manager.
 	 * Called from QML.
 	 */
-	void set_engine(engine::Engine *engine);
+	void set_engine(engine::GameSimulation *engine);
 
 	/**
 	 * Return the engine responsible for this asset manager.
 	 */
-	engine::Engine *get_engine() const;
+	engine::GameSimulation *get_engine() const;
 
 	/**
 	 * Query the Texture for a given filename.
@@ -102,7 +102,7 @@ private:
 	/**
 	 * The engine this asset manager is attached to.
 	 */
-	engine::Engine *engine;
+	engine::GameSimulation *engine;
 
 	/**
 	 * The root directory for the available assets.
