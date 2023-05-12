@@ -10,11 +10,11 @@
 #include "gamestate/event/spawn_entity.h"
 #include "gamestate/game.h"
 #include "gamestate/game_state.h"
-#include "input/controller/engine/binding_context.h"
+#include "input/controller/game/binding_context.h"
 
 #include "coord/phys.h"
 
-namespace openage::input::engine {
+namespace openage::input::game {
 
 Controller::Controller(const std::unordered_set<size_t> &controlled_factions,
                        size_t active_faction_id) :
@@ -90,4 +90,4 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 }
 
 
-} // namespace openage::input::engine
+} // namespace openage::input::game

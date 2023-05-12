@@ -3,7 +3,7 @@
 #include "binding_context.h"
 
 
-namespace openage::input::engine {
+namespace openage::input::game {
 
 BindingContext::BindingContext() :
 	by_event{} {}

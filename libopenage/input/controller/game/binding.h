@@ -8,7 +8,7 @@
 #include "event/event.h"
 #include "input/event.h"
 
-namespace openage::input::engine {
+namespace openage::input::game {
 
 using binding_flags_t = std::unordered_map<std::string, std::string>;
 using binding_func_t = std::function<const std::shared_ptr<event::Event>(const event_arguments &e)>;

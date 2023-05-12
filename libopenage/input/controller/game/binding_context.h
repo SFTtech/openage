@@ -4,10 +4,10 @@
 
 #include <unordered_map>
 
-#include "input/controller/engine/binding.h"
+#include "input/controller/game/binding.h"
 #include "input/event.h"
 
-namespace openage::input::engine {
+namespace openage::input::game {
 
 /**
  * Maps input events to gamestate events.
