@@ -33,6 +33,12 @@ class Loop {
 	friend int demo::curvepong();
 
 public:
+	/**
+     * Create a new event loop.
+     */
+	Loop() = default;
+	~Loop() = default;
+
 	/** register a new event handler */
 	void add_event_class(const std::shared_ptr<EventHandler> &cls);
 
