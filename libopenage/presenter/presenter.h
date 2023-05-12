@@ -13,12 +13,12 @@ class GuiApplication;
 
 namespace openage {
 
-namespace engine {
-class GameSimulation;
-}
-
 namespace event {
 class TimeLoop;
+}
+
+namespace gamestate {
+class GameSimulation;
 }
 
 namespace input {
@@ -75,7 +75,7 @@ public:
 	 * @param time_loop Time loop which controls simulation time. Can be set later with \p set_time_loop()
 	 */
 	Presenter(const util::Path &path,
-	          const std::shared_ptr<engine::GameSimulation> &simulation = nullptr,
+	          const std::shared_ptr<gamestate::GameSimulation> &simulation = nullptr,
 	          const std::shared_ptr<event::TimeLoop> &time_loop = nullptr);
 
 	~Presenter() = default;
@@ -90,7 +90,7 @@ public:
 	 *
 	 * @param simulation Game simulation.
 	 */
-	void set_simulation(const std::shared_ptr<engine::GameSimulation> &simulation);
+	void set_simulation(const std::shared_ptr<gamestate::GameSimulation> &simulation);
 
 	/**
 	 * Set the time loop controlled by this presenter.
@@ -204,12 +204,12 @@ protected:
 	std::vector<std::shared_ptr<renderer::RenderPass>> render_passes;
 
 	/**
-	 * Engine reference.
+	 * Game simulation.
 	 */
-	std::shared_ptr<engine::GameSimulation> simulation;
+	std::shared_ptr<gamestate::GameSimulation> simulation;
 
 	/**
-	 * Simulation reference.
+	 * Time loop.
 	 */
 	std::shared_ptr<event::TimeLoop> time_loop;
 

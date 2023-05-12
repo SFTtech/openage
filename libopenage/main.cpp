@@ -6,8 +6,8 @@
 #include <version>
 
 #include "cvar/cvar.h"
-#include "engine/engine.h"
 #include "event/time_loop.h"
+#include "gamestate/engine.h"
 #include "log/log.h"
 #include "presenter/presenter.h"
 #include "util/timer.h"
@@ -52,13 +52,13 @@ int run_game(const main_arguments &args) {
 	cvar_manager->load_all();
 
 	// TODO: select run_mode by launch argument
-	openage::engine::GameSimulation::mode run_mode = engine::GameSimulation::mode::FULL;
+	openage::gamestate::GameSimulation::mode run_mode = gamestate::GameSimulation::mode::FULL;
 
 	// TODO: Order of initializing presenter, simulation and engine is not intuitive
 	//       ideally it should be presenter->engine->simulation
 	auto time_loop = std::make_shared<event::TimeLoop>();
 
-	auto engine = std::make_shared<engine::GameSimulation>(run_mode, args.root_path, cvar_manager, time_loop);
+	auto engine = std::make_shared<gamestate::GameSimulation>(run_mode, args.root_path, cvar_manager, time_loop);
 	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, engine, time_loop);
 
 	std::jthread event_loop_thread([&]() {

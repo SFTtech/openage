@@ -14,18 +14,18 @@
 #include "gamestate/game_state.h"
 
 namespace openage {
-namespace engine {
+namespace gamestate {
 
 GameSimulation::GameSimulation(enum mode mode,
                                const util::Path &root_dir,
                                const std::shared_ptr<cvar::CVarManager> &cvar_manager,
-                               const std::shared_ptr<event::TimeLoop> time_loop) :
+                               const std::shared_ptr<openage::event::TimeLoop> time_loop) :
 	running{false},
 	run_mode{mode},
 	root_dir{root_dir},
 	cvar_manager{cvar_manager},
 	time_loop{time_loop},
-	event_loop{std::make_shared<event::EventLoop>()},
+	event_loop{std::make_shared<openage::event::EventLoop>()},
 	entity_factory{std::make_shared<gamestate::EntityFactory>()},
 	spawner{std::make_shared<gamestate::event::Spawner>(this->event_loop)},
 	game{std::make_shared<gamestate::Game>(root_dir, event_loop)} {
@@ -75,7 +75,7 @@ const std::shared_ptr<gamestate::Game> GameSimulation::get_game() {
 	return this->game;
 }
 
-const std::shared_ptr<event::EventLoop> GameSimulation::get_event_loop() {
+const std::shared_ptr<openage::event::EventLoop> GameSimulation::get_event_loop() {
 	return this->event_loop;
 }
 
@@ -95,5 +95,5 @@ void GameSimulation::init_event_handlers() {
 	this->event_loop->add_event_handler(handler);
 }
 
-} // namespace engine
+} // namespace gamestate
 } // namespace openage

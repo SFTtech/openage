@@ -7,8 +7,8 @@
 #include <string>
 #include <vector>
 
-#include "engine/engine.h"
 #include "event/time_loop.h"
+#include "gamestate/engine.h"
 #include "input/controller/camera/binding_context.h"
 #include "input/controller/camera/controller.h"
 #include "input/controller/engine/binding_context.h"
@@ -35,7 +35,7 @@
 namespace openage::presenter {
 
 Presenter::Presenter(const util::Path &root_dir,
-                     const std::shared_ptr<engine::GameSimulation> &simulation,
+                     const std::shared_ptr<gamestate::GameSimulation> &simulation,
                      const std::shared_ptr<event::TimeLoop> &time_loop) :
 	root_dir{root_dir},
 	render_passes{},
@@ -79,7 +79,7 @@ void Presenter::run() {
 	this->window->close();
 }
 
-void Presenter::set_simulation(const std::shared_ptr<engine::GameSimulation> &simulation) {
+void Presenter::set_simulation(const std::shared_ptr<gamestate::GameSimulation> &simulation) {
 	this->simulation = simulation;
 	auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
 	                                                                this->world_renderer);

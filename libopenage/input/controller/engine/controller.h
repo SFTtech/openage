@@ -9,12 +9,12 @@
 
 namespace openage {
 
-namespace engine {
-class GameSimulation;
-}
-
 namespace event {
 class TimeLoop;
+}
+
+namespace gamestate {
+class GameSimulation;
 }
 
 namespace input::engine {
@@ -91,7 +91,7 @@ private:
  */
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<event::TimeLoop> &time_loop,
-                    const std::shared_ptr<openage::engine::GameSimulation> &simulation,
+                    const std::shared_ptr<openage::gamestate::GameSimulation> &simulation,
                     const std::shared_ptr<renderer::camera::Camera> &camera);
 
 } // namespace input::engine
