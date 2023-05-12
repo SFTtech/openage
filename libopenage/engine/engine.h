@@ -13,8 +13,9 @@ class CVarManager;
 }
 
 namespace event {
+class Loop;
 class Simulation;
-}
+} // namespace event
 
 namespace gamestate {
 class EntityFactory;
@@ -22,7 +23,7 @@ class Game;
 
 namespace event {
 class Spawner;
-}
+} // namespace event
 
 } // namespace gamestate
 
@@ -116,6 +117,13 @@ public:
 	const std::shared_ptr<gamestate::Game> get_game();
 
 	/**
+     * Get the event loop for the gamestate.
+     *
+     * @return Event loop.
+     */
+	const std::shared_ptr<event::Loop> get_loop();
+
+	/**
      * Get the spawner event entity.
      *
      * TODO: Move somewhere else or remove.
@@ -168,6 +176,11 @@ private:
 	 * Event simulation for creating and sending events.
 	 */
 	std::shared_ptr<event::Simulation> simulation;
+
+	/**
+     * Event loop for processing events in the game.
+     */
+	std::shared_ptr<event::Loop> event_loop;
 
 	/**
      * Factory for creating game entities.

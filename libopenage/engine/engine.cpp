@@ -2,6 +2,7 @@
 
 #include "engine.h"
 
+#include "event/clock.h"
 #include "event/loop.h"
 #include "event/simulation.h"
 
@@ -10,6 +11,7 @@
 
 // TODO
 #include "gamestate/game.h"
+#include "gamestate/game_state.h"
 
 namespace openage {
 namespace engine {
@@ -23,6 +25,7 @@ Engine::Engine(enum mode mode,
 	root_dir{root_dir},
 	cvar_manager{cvar_manager},
 	simulation{simulation},
+	event_loop{std::make_shared<event::Loop>()},
 	entity_factory{std::make_shared<gamestate::EntityFactory>()},
 	spawner{std::make_shared<gamestate::event::Spawner>(this->simulation->get_loop())},
 	game{std::make_shared<gamestate::Game>(root_dir, this->simulation)} {
@@ -36,7 +39,8 @@ Engine::~Engine() {}
 void Engine::run() {
 	this->start();
 	while (this->running) {
-		// TODO: Do something
+		auto current_time = this->simulation->get_clock()->get_time();
+		this->event_loop->reach_time(current_time, this->game->get_state());
 	}
 	log::log(MSG(info) << "engine loop exited");
 }
@@ -72,6 +76,10 @@ const std::shared_ptr<cvar::CVarManager> Engine::get_cvar_manager() {
 
 const std::shared_ptr<gamestate::Game> Engine::get_game() {
 	return this->game;
+}
+
+const std::shared_ptr<event::Loop> Engine::get_loop() {
+	return this->event_loop;
 }
 
 const std::shared_ptr<gamestate::event::Spawner> Engine::get_spawner() {
