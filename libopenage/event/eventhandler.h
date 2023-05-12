@@ -1,4 +1,4 @@
-// Copyright 2017-2021 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,7 +15,7 @@
 namespace openage::event {
 
 class Event;
-class Loop;
+class EventLoop;
 class EventEntity;
 class State;
 
@@ -154,7 +154,7 @@ public:
 	 *
 	 * Called from the Loop.
 	 */
-	virtual void invoke(Loop &loop,
+	virtual void invoke(EventLoop &loop,
 	                    const std::shared_ptr<EventEntity> &target,
 	                    const std::shared_ptr<State> &state,
 	                    const curve::time_t &time,

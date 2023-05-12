@@ -1,6 +1,6 @@
 // Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
-#include "loop.h"
+#include "event_loop.h"
 
 #include "event.h"
 #include "evententity.h"
@@ -13,18 +13,18 @@
 namespace openage::event {
 
 
-void Loop::add_event_handler(const std::shared_ptr<EventHandler> eventhandler) {
+void EventLoop::add_event_handler(const std::shared_ptr<EventHandler> eventhandler) {
 	std::unique_lock lock{this->mutex};
 
 	classstore.insert(std::make_pair(eventhandler->id(), eventhandler));
 }
 
 
-std::shared_ptr<Event> Loop::create_event(const std::string name,
-                                          const std::shared_ptr<EventEntity> target,
-                                          const std::shared_ptr<State> state,
-                                          const curve::time_t reference_time,
-                                          const EventHandler::param_map params) {
+std::shared_ptr<Event> EventLoop::create_event(const std::string name,
+                                               const std::shared_ptr<EventEntity> target,
+                                               const std::shared_ptr<State> state,
+                                               const curve::time_t reference_time,
+                                               const EventHandler::param_map params) {
 	std::unique_lock lock{this->mutex};
 
 	auto it = classstore.find(name);
@@ -37,11 +37,11 @@ std::shared_ptr<Event> Loop::create_event(const std::string name,
 }
 
 
-std::shared_ptr<Event> Loop::create_event(const std::shared_ptr<EventHandler> eventhandler,
-                                          const std::shared_ptr<EventEntity> target,
-                                          const std::shared_ptr<State> state,
-                                          const curve::time_t reference_time,
-                                          const EventHandler::param_map params) {
+std::shared_ptr<Event> EventLoop::create_event(const std::shared_ptr<EventHandler> eventhandler,
+                                               const std::shared_ptr<EventEntity> target,
+                                               const std::shared_ptr<State> state,
+                                               const curve::time_t reference_time,
+                                               const EventHandler::param_map params) {
 	std::unique_lock lock{this->mutex};
 
 	auto it = this->classstore.find(eventhandler->id());
@@ -59,8 +59,8 @@ std::shared_ptr<Event> Loop::create_event(const std::shared_ptr<EventHandler> ev
 }
 
 
-void Loop::reach_time(const curve::time_t &time_until,
-                      const std::shared_ptr<State> &state) {
+void EventLoop::reach_time(const curve::time_t &time_until,
+                           const std::shared_ptr<State> &state) {
 	std::unique_lock lock{this->mutex};
 
 	// TODO detect infinite loops (is this a halting problem?)
@@ -94,12 +94,12 @@ void Loop::reach_time(const curve::time_t &time_until,
 	// Swap in the end of the execution, else we might skip changes that happen
 	// in the main loop for one frame - which is bad btw.
 	this->queue.swap_changesets();
-	log::log(DBG << "Loop: t=" << time_until << " was reached! ========");
+	log::log(SPAM << "Loop: t=" << time_until << " was reached! ========");
 }
 
 
-int Loop::execute_events(const curve::time_t &time_until,
-                         const std::shared_ptr<State> &state) {
+int EventLoop::execute_events(const curve::time_t &time_until,
+                              const std::shared_ptr<State> &state) {
 	log::log(SPAM << "Loop: Pending events in the queue (# = "
 	              << this->queue.get_event_queue().size() << "):");
 
@@ -162,15 +162,15 @@ int Loop::execute_events(const curve::time_t &time_until,
 }
 
 
-void Loop::create_change(const std::shared_ptr<Event> evnt,
-                         const curve::time_t changes_at) {
+void EventLoop::create_change(const std::shared_ptr<Event> evnt,
+                              const curve::time_t changes_at) {
 	std::unique_lock lock{this->mutex};
 
 	this->queue.add_change(evnt, changes_at);
 }
 
 
-void Loop::update_changes(const std::shared_ptr<State> &state) {
+void EventLoop::update_changes(const std::shared_ptr<State> &state) {
 	log::log(SPAM << "Loop: " << this->queue.get_changes().size()
 	              << " target changes have to be processed");
 

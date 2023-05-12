@@ -26,7 +26,7 @@ class Live : APIComponent {
 	 * @param creation_time Ingame creation time of the component.
 	 * @param enabled If true, enable the component at creation time.
 	 */
-	Live(const std::shared_ptr<event::Loop> &loop,
+	Live(const std::shared_ptr<event::EventLoop> &loop,
 	     nyan::Object &ability,
 	     nyan::View &view,
 	     const time_t &creation_time,

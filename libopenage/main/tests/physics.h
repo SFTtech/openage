@@ -1,4 +1,4 @@
-// Copyright 2019-2019 the openage authors. See copying.md for legal info.
+// Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -10,7 +10,7 @@
 
 namespace openage::event {
 
-class Loop;
+class EventLoop;
 
 } // openage::event
 
@@ -19,17 +19,17 @@ namespace openage::main::tests::pong {
 class Physics {
 public:
 	static void init(const std::shared_ptr<PongState> &,
-	                 const std::shared_ptr<event::Loop> &mgr,
+	                 const std::shared_ptr<event::EventLoop> &mgr,
 	                 const curve::time_t &);
 
 	void process_input(const std::shared_ptr<PongState> &,
 	                   const std::shared_ptr<PongPlayer> &,
 	                   const std::vector<PongEvent> &input,
-	                   const std::shared_ptr<event::Loop> &mgr,
+	                   const std::shared_ptr<event::EventLoop> &mgr,
 	                   const curve::time_t &now);
 
 	static void reset(const std::shared_ptr<event::State> &,
-	                  event::Loop &mgr,
+	                  event::EventLoop &mgr,
 	                  const curve::time_t &);
 };
 

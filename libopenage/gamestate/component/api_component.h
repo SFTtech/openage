@@ -34,7 +34,7 @@ public:
 	 * @param enabled If true, enable the component at creation time.
 	 *
 	 */
-	APIComponent(const std::shared_ptr<event::Loop> &loop,
+	APIComponent(const std::shared_ptr<event::EventLoop> &loop,
 	             nyan::Object &ability,
 	             const time_t &creation_time,
 	             const bool enabled);

@@ -24,7 +24,7 @@ public:
      *
      * @param event_loop Event loop for the game state.
      */
-	explicit GameState(const std::shared_ptr<openage::event::Loop> &event_loop);
+	explicit GameState(const std::shared_ptr<openage::event::EventLoop> &event_loop);
 
 	/**
      * Add a new game entity to the index.

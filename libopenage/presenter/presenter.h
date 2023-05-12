@@ -18,7 +18,7 @@ class Engine;
 }
 
 namespace event {
-class Simulation;
+class TimeLoop;
 }
 
 namespace input {
@@ -72,11 +72,11 @@ public:
 	 *
 	 * @param path Root directory path.
 	 * @param engine openage engine. Can be set later with \p set_engine()
-	 * @param simulation event simulation. Can be set later with \p set_simulation()
+	 * @param time_loop Time loop which controls simulation time. Can be set later with \p set_time_loop()
 	 */
 	Presenter(const util::Path &path,
 	          const std::shared_ptr<engine::Engine> &engine = nullptr,
-	          const std::shared_ptr<event::Simulation> &simulation = nullptr);
+	          const std::shared_ptr<event::TimeLoop> &time_loop = nullptr);
 
 	~Presenter() = default;
 
@@ -93,11 +93,11 @@ public:
 	void set_engine(const std::shared_ptr<engine::Engine> &engine);
 
 	/**
-	 * Set the event simulation controlled by this presenter.
+	 * Set the time loop controlled by this presenter.
 	 *
-	 * @param simulation event simulation.
+	 * @param time_loop Time loop.
 	 */
-	void set_simulation(const std::shared_ptr<event::Simulation> &simulation);
+	void set_time_loop(const std::shared_ptr<event::TimeLoop> &time_loop);
 
 	/**
 	 * Initialize the Qt application managing the graphical views. Required
@@ -211,7 +211,7 @@ protected:
 	/**
 	 * Simulation reference.
 	 */
-	std::shared_ptr<event::Simulation> simulation;
+	std::shared_ptr<event::TimeLoop> time_loop;
 
 	/**
 	 * Input manager.

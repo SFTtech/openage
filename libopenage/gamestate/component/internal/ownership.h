@@ -18,7 +18,7 @@ public:
 	 * @param owner_id Initial owner ID at creation time.
 	 * @param creation_time Ingame creation time of the component.
 	 */
-	Ownership(const std::shared_ptr<openage::event::Loop> &loop,
+	Ownership(const std::shared_ptr<openage::event::EventLoop> &loop,
 	          const ownership_id_t owner_id,
 	          const curve::time_t &creation_time);
 

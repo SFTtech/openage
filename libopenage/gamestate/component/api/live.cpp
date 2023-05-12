@@ -7,7 +7,7 @@
 
 namespace openage::gamestate::component {
 
-Live::Live(const std::shared_ptr<event::Loop> &loop,
+Live::Live(const std::shared_ptr<event::EventLoop> &loop,
            nyan::Object &ability,
            nyan::View &view,
            const time_t &creation_time,

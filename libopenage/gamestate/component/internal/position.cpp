@@ -7,7 +7,7 @@
 
 
 namespace openage::gamestate::component {
-Position::Position(const std::shared_ptr<openage::event::Loop> &loop,
+Position::Position(const std::shared_ptr<openage::event::EventLoop> &loop,
                    const coord::phys3 &initial_pos,
                    const curve::time_t &creation_time) :
 	position(loop, 0, "", nullptr, WORLD_ORIGIN),

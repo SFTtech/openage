@@ -11,7 +11,7 @@
 namespace openage::gamestate::event {
 
 
-Spawner::Spawner(const std::shared_ptr<openage::event::Loop> &loop) :
+Spawner::Spawner(const std::shared_ptr<openage::event::EventLoop> &loop) :
 	EventEntity(loop) {
 }
 
@@ -24,7 +24,7 @@ std::string Spawner::idstr() const {
 }
 
 
-SpawnEntityHandler::SpawnEntityHandler(const std::shared_ptr<openage::event::Loop> &loop,
+SpawnEntityHandler::SpawnEntityHandler(const std::shared_ptr<openage::event::EventLoop> &loop,
                                        const std::shared_ptr<gamestate::EntityFactory> &factory,
                                        const util::Path &animation_path) :
 	OnceEventHandler("game.spawn_entity"),
@@ -38,7 +38,7 @@ void SpawnEntityHandler::setup_event(const std::shared_ptr<openage::event::Event
 	// TODO
 }
 
-void SpawnEntityHandler::invoke(openage::event::Loop & /* loop */,
+void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
                                 const std::shared_ptr<openage::event::EventEntity> & /* target */,
                                 const std::shared_ptr<openage::event::State> &state,
                                 const curve::time_t &time,

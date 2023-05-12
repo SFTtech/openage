@@ -1,17 +1,17 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
-
-#include "../curve/curve.h"
 
 #include <functional>
 #include <list>
 #include <memory>
 
+#include "curve/curve.h"
+
 namespace openage::event {
 
 class Event;
-class Loop;
+class EventLoop;
 class EventHandler;
 
 /**
@@ -36,11 +36,11 @@ protected:
 	 * change up in the tree, this is necessary to make containers with event
 	 * targets inside and listen to any changes on the full.
 	 */
-	EventEntity(const std::shared_ptr<Loop> &loop,
-	            single_change_notifier parent_notifier=nullptr)
-		:
+	EventEntity(const std::shared_ptr<EventLoop> &loop,
+	            single_change_notifier parent_notifier = nullptr) :
 		loop{loop},
 		parent_notifier{parent_notifier} {}
+
 public:
 	virtual ~EventEntity() = default;
 
@@ -69,7 +69,7 @@ protected:
 
 private:
 	/** Event loop this target is registered to */
-	std::shared_ptr<Loop> loop;
+	std::shared_ptr<EventLoop> loop;
 
 	/** List of events that depend on this target */
 	std::list<std::weak_ptr<Event>> dependents;
@@ -77,4 +77,4 @@ private:
 	single_change_notifier parent_notifier;
 };
 
-} // openage::event
+} // namespace openage::event

@@ -1,4 +1,4 @@
-// Copyright 2016-2019 the openage authors. See copying.md for legal info.
+// Copyright 2016-2023 the openage authors. See copying.md for legal info.
 
 #include "main.h"
 
@@ -58,7 +58,7 @@ void curvepong(bool disable_gui, bool no_human) {
 	bool running = true;
 
 	while (running) {
-		auto loop = std::make_shared<Loop>();
+		auto loop = std::make_shared<EventLoop>();
 		curve::time_t now = 1;
 		Physics phys;
 

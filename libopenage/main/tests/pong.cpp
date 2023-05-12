@@ -10,14 +10,14 @@
 
 #include <nyan/nyan.h>
 
-#include "../../error/error.h"
-#include "../../event/loop.h"
-#include "../../log/log.h"
-#include "../../util/math_constants.h"
-#include "../../util/path.h"
 #include "aicontroller.h"
+#include "error/error.h"
+#include "event/event_loop.h"
 #include "gui.h"
+#include "log/log.h"
 #include "physics.h"
+#include "util/math_constants.h"
+#include "util/path.h"
 
 
 namespace openage::main::tests::pong {
@@ -61,7 +61,7 @@ void main(const util::Path &path) {
 	while (running) {
 		log::log(INFO << "initializing new pong game...");
 
-		auto loop = std::make_shared<event::Loop>();
+		auto loop = std::make_shared<event::EventLoop>();
 		curve::time_t now = 0;
 		Physics phys;
 

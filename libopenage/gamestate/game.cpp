@@ -2,17 +2,16 @@
 
 #include "game.h"
 
-#include "event/simulation.h"
+#include "event/time_loop.h"
 #include "gamestate/game_state.h"
 #include "gamestate/universe.h"
 
 namespace openage::gamestate {
 
 Game::Game(const util::Path &root_dir,
-           const std::shared_ptr<openage::event::Simulation> &simulation) :
-	state{std::make_shared<GameState>(simulation->get_loop())},
-	universe{std::make_shared<Universe>(root_dir, state)},
-	simulation{simulation} {
+           const std::shared_ptr<openage::event::EventLoop> &event_loop) :
+	state{std::make_shared<GameState>(event_loop)},
+	universe{std::make_shared<Universe>(root_dir, state)} {
 }
 
 const std::shared_ptr<GameState> &Game::get_state() const {
