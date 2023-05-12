@@ -16,10 +16,10 @@
 namespace openage {
 namespace engine {
 
-Engine::Engine(enum mode mode,
-               const util::Path &root_dir,
-               const std::shared_ptr<cvar::CVarManager> &cvar_manager,
-               const std::shared_ptr<event::TimeLoop> time_loop) :
+GameSimulation::GameSimulation(enum mode mode,
+                               const util::Path &root_dir,
+                               const std::shared_ptr<cvar::CVarManager> &cvar_manager,
+                               const std::shared_ptr<event::TimeLoop> time_loop) :
 	running{false},
 	run_mode{mode},
 	root_dir{root_dir},
@@ -33,62 +33,62 @@ Engine::Engine(enum mode mode,
 }
 
 
-void Engine::run() {
+void GameSimulation::run() {
 	this->start();
 	while (this->running) {
 		auto current_time = this->time_loop->get_clock()->get_time();
 		this->event_loop->reach_time(current_time, this->game->get_state());
 	}
-	log::log(MSG(info) << "engine loop exited");
+	log::log(MSG(info) << "Game simulation loop exited");
 }
 
 
-void Engine::start() {
+void GameSimulation::start() {
 	std::unique_lock lock{this->mutex};
 
 	this->init_event_handlers();
 
 	this->running = true;
 
-	log::log(MSG(info) << "Engine started");
+	log::log(MSG(info) << "Game simulation started");
 }
 
 
-void Engine::stop() {
+void GameSimulation::stop() {
 	std::unique_lock lock{this->mutex};
 
 	this->running = false;
 
-	log::log(MSG(info) << "Engine stopped");
+	log::log(MSG(info) << "Game simulation stopped");
 }
 
 
-const util::Path &Engine::get_root_dir() {
+const util::Path &GameSimulation::get_root_dir() {
 	return this->root_dir;
 }
 
-const std::shared_ptr<cvar::CVarManager> Engine::get_cvar_manager() {
+const std::shared_ptr<cvar::CVarManager> GameSimulation::get_cvar_manager() {
 	return this->cvar_manager;
 }
 
-const std::shared_ptr<gamestate::Game> Engine::get_game() {
+const std::shared_ptr<gamestate::Game> GameSimulation::get_game() {
 	return this->game;
 }
 
-const std::shared_ptr<event::EventLoop> Engine::get_event_loop() {
+const std::shared_ptr<event::EventLoop> GameSimulation::get_event_loop() {
 	return this->event_loop;
 }
 
-const std::shared_ptr<gamestate::event::Spawner> Engine::get_spawner() {
+const std::shared_ptr<gamestate::event::Spawner> GameSimulation::get_spawner() {
 	return this->spawner;
 }
 
-void Engine::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
+void GameSimulation::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
 	this->game->attach_renderer(render_factory);
 	this->entity_factory->attach_renderer(render_factory);
 }
 
-void Engine::init_event_handlers() {
+void GameSimulation::init_event_handlers() {
 	auto handler = std::make_shared<gamestate::event::SpawnEntityHandler>(this->event_loop,
 	                                                                      this->entity_factory,
 	                                                                      this->root_dir["assets/test/textures/test_tank_mirrored.sprite"]);

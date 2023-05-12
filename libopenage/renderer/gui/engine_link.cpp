@@ -21,7 +21,7 @@ const int registration = qmlRegisterSingletonType<EngineLink>("yay.sfttech.opena
 } // namespace
 
 
-EngineLink::EngineLink(QObject *parent, engine::Engine *engine) :
+EngineLink::EngineLink(QObject *parent, engine::GameSimulation *engine) :
 	GuiSingletonItem{parent},
 	core{engine} {
 	Q_UNUSED(registration);

@@ -22,7 +22,7 @@ void TimeLoop::run() {
 	while (this->running) {
 		this->clock->update_time();
 	}
-	log::log(MSG(info) << "time loop exited");
+	log::log(MSG(info) << "Time loop exited");
 }
 
 void TimeLoop::start() {
@@ -34,7 +34,7 @@ void TimeLoop::start() {
 		this->clock->start();
 	}
 
-	log::log(MSG(info) << "time loop started");
+	log::log(MSG(info) << "Time loop started");
 }
 
 void TimeLoop::stop() {
@@ -42,7 +42,7 @@ void TimeLoop::stop() {
 
 	this->running = false;
 
-	log::log(MSG(info) << "time loop stopped");
+	log::log(MSG(info) << "Time loop stopped");
 }
 
 const std::shared_ptr<Clock> TimeLoop::get_clock() {

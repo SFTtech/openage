@@ -66,7 +66,7 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<event::TimeLoop> &time_loop,
-                    const std::shared_ptr<openage::engine::Engine> &engine,
+                    const std::shared_ptr<openage::engine::GameSimulation> &simulation,
                     const std::shared_ptr<renderer::camera::Camera> &camera) {
 	binding_func_t create_entity_event{[&](const event_arguments &args) {
 		auto mouse_pos = args.mouse.to_phys3(camera);
@@ -74,10 +74,10 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 			{"position", mouse_pos},
 		};
 
-		auto event = engine->get_event_loop()->create_event(
+		auto event = simulation->get_event_loop()->create_event(
 			"game.spawn_entity",
-			engine->get_spawner(),
-			engine->get_game()->get_state(),
+			simulation->get_spawner(),
+			simulation->get_game()->get_state(),
 			time_loop->get_clock()->get_time(),
 			params);
 		return event;

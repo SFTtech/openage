@@ -35,11 +35,11 @@
 namespace openage::presenter {
 
 Presenter::Presenter(const util::Path &root_dir,
-                     const std::shared_ptr<engine::Engine> &engine,
+                     const std::shared_ptr<engine::GameSimulation> &simulation,
                      const std::shared_ptr<event::TimeLoop> &time_loop) :
 	root_dir{root_dir},
 	render_passes{},
-	engine{engine},
+	simulation{simulation},
 	time_loop{time_loop} {}
 
 
@@ -48,10 +48,10 @@ void Presenter::run() {
 
 	this->init_graphics();
 
-	if (this->engine) {
+	if (this->simulation) {
 		auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
 		                                                                this->world_renderer);
-		this->engine->attach_renderer(render_factory);
+		this->simulation->attach_renderer(render_factory);
 	}
 
 	this->init_input();
@@ -66,10 +66,10 @@ void Presenter::run() {
 
 		this->window->update();
 	}
-	log::log(MSG(info) << "draw loop exited");
+	log::log(MSG(info) << "Draw loop exited");
 
-	if (this->engine) {
-		this->engine->stop();
+	if (this->simulation) {
+		this->simulation->stop();
 	}
 
 	if (this->time_loop) {
@@ -79,11 +79,11 @@ void Presenter::run() {
 	this->window->close();
 }
 
-void Presenter::set_engine(const std::shared_ptr<engine::Engine> &engine) {
-	this->engine = engine;
+void Presenter::set_simulation(const std::shared_ptr<engine::GameSimulation> &simulation) {
+	this->simulation = simulation;
 	auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
 	                                                                this->world_renderer);
-	this->engine->attach_renderer(render_factory);
+	this->simulation->attach_renderer(render_factory);
 }
 
 void Presenter::set_time_loop(const std::shared_ptr<event::TimeLoop> &time_loop) {
@@ -198,13 +198,13 @@ void Presenter::init_input() {
 	auto input_ctx = this->input_manager->get_global_context();
 	input::setup_defaults(input_ctx);
 
-	// setup engine controls
-	if (this->engine) {
+	// setup simulation controls
+	if (this->simulation) {
 		// TODO: Remove hardcoding
 		auto engine_controller = std::make_shared<input::engine::Controller>(
 			std::unordered_set<size_t>{0, 1, 2, 3}, 0);
 		auto engine_context = std::make_shared<input::engine::BindingContext>();
-		input::engine::setup_defaults(engine_context, this->time_loop, this->engine, this->camera);
+		input::engine::setup_defaults(engine_context, this->time_loop, this->simulation, this->camera);
 		this->input_manager->set_engine_controller(engine_controller);
 		input_ctx->set_engine_bindings(engine_context);
 	}

@@ -39,7 +39,7 @@ namespace engine {
  *
  * Manages the state of the game world and the event loop.
  */
-class Engine final {
+class GameSimulation final {
 public:
 	enum class mode {
 		LEGACY,
@@ -51,32 +51,30 @@ public:
 	 * engine initialization method.
 	 * starts the engine subsystems depending on the requested run mode.
 	 */
-	Engine(mode mode,
-	       const util::Path &root_dir,
-	       const std::shared_ptr<cvar::CVarManager> &cvar_manager,
-	       const std::shared_ptr<event::TimeLoop> time_loop);
+	GameSimulation(mode mode,
+	               const util::Path &root_dir,
+	               const std::shared_ptr<cvar::CVarManager> &cvar_manager,
+	               const std::shared_ptr<event::TimeLoop> time_loop);
 
 	/**
 	 * engine copy constructor.
 	 */
-	Engine(const Engine &copy) = delete;
+	GameSimulation(const GameSimulation &copy) = delete;
 
 	/**
 	 * engine assignment operator.
 	 */
-	Engine &operator=(const Engine &copy) = delete;
+	GameSimulation &operator=(const GameSimulation &copy) = delete;
 
 	/**
 	 * engine move constructor.
 	 */
-	Engine(Engine &&other) = delete;
+	GameSimulation(GameSimulation &&other) = delete;
 
 	/**
-	 * engine move operator.
-	 */
-	Engine &operator=(Engine &&other) = delete;
-
-	~Engine() = default;
+	 * engine move operator.GameSiameSimulation &&other) = delete;
+     */
+	~GameSimulation() = default;
 
 	/**
 	 * Run the engine loop.
