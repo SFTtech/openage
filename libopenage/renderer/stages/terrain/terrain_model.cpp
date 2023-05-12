@@ -46,25 +46,26 @@ void TerrainRenderModel::fetch_updates() {
 void TerrainRenderModel::update_uniforms(const curve::time_t &time) {
 	for (auto mesh : this->meshes) {
 		auto unifs = mesh->get_uniforms();
-		if (unifs != nullptr) [[likely]] {
-			// camera changes
-			unifs->update(
-				"view", // camera view
-				this->camera->get_view_matrix(),
-				"proj", // orthographic projection
-				this->camera->get_projection_matrix());
-
-			if (mesh->is_changed()) {
-				// mesh changes
-				unifs->update(
-					"model", // local space -> world space
-					mesh->get_model_matrix(),
-					"tex", // terrain texture
-					mesh->get_texture());
-			}
-
-			// TODO: Animated terrain
+		if (unifs == nullptr) [[unlikely]] {
+			continue;
 		}
+		// camera changes
+		unifs->update(
+			"view", // camera view
+			this->camera->get_view_matrix(),
+			"proj", // orthographic projection
+			this->camera->get_projection_matrix());
+
+		if (mesh->is_changed()) {
+			// mesh changes
+			unifs->update(
+				"model", // local space -> world space
+				mesh->get_model_matrix(),
+				"tex", // terrain texture
+				mesh->get_texture());
+		}
+
+		// TODO: Animated terrain
 	}
 }
 
