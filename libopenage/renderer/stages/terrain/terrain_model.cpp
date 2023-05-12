@@ -21,29 +21,26 @@ TerrainRenderModel::TerrainRenderModel(const std::shared_ptr<renderer::resources
 
 void TerrainRenderModel::set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity) {
 	this->render_entity = entity;
-	this->update();
+	this->fetch_updates();
 }
 
 void TerrainRenderModel::set_camera(const std::shared_ptr<renderer::camera::Camera> &camera) {
 	this->camera = camera;
 }
 
-void TerrainRenderModel::update(const curve::time_t &time) {
+void TerrainRenderModel::fetch_updates() {
 	// Check render entity for updates
-	if (this->render_entity->is_changed()) {
-		// TODO: Multiple meshes
-		auto new_mesh = this->create_mesh();
-		this->meshes.clear();
-		this->meshes.push_back(new_mesh);
-
-		// Indicate to the render entity that its updates have been processed.
-		this->render_entity->clear_changed_flag();
-
-		// Return to let the renderer create a new renderable
+	if (not this->render_entity->is_changed()) {
 		return;
 	}
+	// TODO: Change mesh instead of recreating it
+	// TODO: Multiple meshes
+	auto new_mesh = this->create_mesh();
+	this->meshes.clear();
+	this->meshes.push_back(new_mesh);
 
-	this->update_uniforms(time);
+	// Indicate to the render entity that its updates have been processed.
+	this->render_entity->clear_changed_flag();
 }
 
 void TerrainRenderModel::update_uniforms(const curve::time_t &time) {
@@ -52,17 +49,17 @@ void TerrainRenderModel::update_uniforms(const curve::time_t &time) {
 		if (unifs != nullptr) [[likely]] {
 			// camera changes
 			unifs->update(
-				"view",
+				"view", // camera view
 				this->camera->get_view_matrix(),
-				"proj",
+				"proj", // orthographic projection
 				this->camera->get_projection_matrix());
 
 			if (mesh->is_changed()) {
 				// mesh changes
 				unifs->update(
-					"model",
+					"model", // local space -> world space
 					mesh->get_model_matrix(),
-					"tex",
+					"tex", // terrain texture
 					mesh->get_texture());
 			}
 
@@ -133,7 +130,7 @@ std::shared_ptr<TerrainRenderMesh> TerrainRenderModel::create_mesh() {
 	// Update textures
 	auto tex_manager = this->asset_manager->get_texture_manager();
 	auto terrain_info = this->asset_manager->request_terrain(this->render_entity->get_terrain_path());
-	auto texture = tex_manager.request(terrain_info->get_texture(0)->get_image_path().value());
+	auto texture = tex_manager->request(terrain_info->get_texture(0)->get_image_path().value());
 	// TODO: Support multiple textures per terrain
 
 	auto terrain_mesh = std::make_shared<TerrainRenderMesh>(texture, std::move(meshdata));

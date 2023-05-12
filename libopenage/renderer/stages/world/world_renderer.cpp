@@ -52,15 +52,14 @@ void WorldRenderer::add_render_entity(const std::shared_ptr<WorldRenderEntity> e
 void WorldRenderer::update() {
 	auto current_time = this->clock->get_real_time();
 	for (auto obj : this->render_objects) {
-		obj->update(current_time);
-
+		obj->fetch_updates();
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {
 				Eigen::Matrix4f model_m = Eigen::Matrix4f::Identity();
 				Eigen::Matrix4f view_m = Eigen::Matrix4f::Identity();
 				Eigen::Matrix4f proj_m = Eigen::Matrix4f::Identity();
 
-				// TODO: Update existing renderable instead of recreating it
+				// Set uniforms that don't change or are not changed often
 				auto transform_unifs = this->display_shader->new_uniform_input(
 					"model",
 					model_m,
@@ -72,8 +71,6 @@ void WorldRenderer::update() {
 					false,
 					"flip_y",
 					false,
-					"tex",
-					obj->get_texture(),
 					"u_id",
 					obj->get_id());
 
@@ -89,9 +86,9 @@ void WorldRenderer::update() {
 
 				// update remaining uniforms for the object
 				obj->set_uniforms(transform_unifs);
-				obj->update_uniforms(current_time);
 			}
 		}
+		obj->update_uniforms(current_time);
 	}
 }
 

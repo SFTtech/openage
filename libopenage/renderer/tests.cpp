@@ -686,7 +686,8 @@ void renderer_demo_3(const util::Path &path) {
 		renderer,
 		camera,
 		path["assets"]["shaders"],
-		asset_manager);
+		asset_manager,
+		clock);
 
 	// Renders units/buildings/other objects
 	auto world_renderer = std::make_shared<renderer::world::WorldRenderer>(

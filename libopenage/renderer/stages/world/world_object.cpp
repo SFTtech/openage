@@ -27,50 +27,36 @@ WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager
 	render_entity{nullptr},
 	ref_id{0},
 	position{nullptr, 0, "", nullptr, SCENE_ORIGIN},
-	texture{nullptr},
+	animation_info{nullptr},
 	uniforms{nullptr} {
 }
 
 void WorldObject::set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity) {
 	this->render_entity = entity;
-	this->update();
+	this->fetch_updates();
 }
 
 void WorldObject::set_camera(const std::shared_ptr<renderer::camera::Camera> &camera) {
 	this->camera = camera;
 }
 
-void WorldObject::update(const curve::time_t &time) {
-	if (this->render_entity->is_changed()) {
-		// Get ID
-		this->ref_id = this->render_entity->get_id();
-
-		// Get position
-		this->position.sync(this->render_entity->get_position());
-
-		// TODO: New renderable is only required if the mesh is changed
-		this->require_renderable = true;
-
-		// Update textures
-		auto anim_info = this->asset_manager->request_animation(this->render_entity->get_animation_path());
-		auto tex_manager = this->asset_manager->get_texture_manager();
-		this->texture = tex_manager.request(anim_info->get_texture(0)->get_image_path().value());
-		// TODO: Support multiple textures per animation
-
-		this->changed = true;
-
-		// Indicate to the render entity that its updates have been processed.
-		this->render_entity->clear_changed_flag();
-
-		// Return to let the renderer create a new renderable
+void WorldObject::fetch_updates() {
+	if (not this->render_entity->is_changed()) {
+		// exit early because there is nothing to do
 		return;
 	}
+	// Get data from render entity
+	this->ref_id = this->render_entity->get_id();
+	this->position.sync(this->render_entity->get_position());
+	this->animation_info = this->asset_manager->request_animation(this->render_entity->get_animation_path());
 
-	// Update uniforms if no render entity changes are detected
-	this->update_uniforms(time);
+	// Set self to changed so that world renderer can update the renderable
+	this->changed = true;
+	this->render_entity->clear_changed_flag();
 }
 
 void WorldObject::update_uniforms(const curve::time_t &time) {
+	// TODO: Only update uniforms that changed since last update
 	if (this->uniforms != nullptr) [[likely]] {
 		auto current_pos = this->position.get(time);
 		auto pos_frame = this->position.frame(time).second;
@@ -78,9 +64,8 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 		auto pos_delta = pos_next_frame - pos_frame;
 		auto angle_degrees = pos_delta.to_angle();
 
-		/* Frame subtexture */
-		auto anim_info = this->asset_manager->request_animation(this->render_entity->get_animation_path());
-		auto layer = anim_info->get_layer(0); // TODO: Support multiple layers
+		// Frame subtexture
+		auto layer = this->animation_info->get_layer(0); // TODO: Support multiple layers
 		auto angle = layer.get_direction_angle(angle_degrees);
 
 		// Current frame index considering current time
@@ -93,7 +78,10 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 		auto subtex_idx = frame_info->get_subtexture_idx();
 
 		// Get the texture info
-		auto tex_info = anim_info->get_texture(tex_idx);
+		auto tex_info = this->animation_info->get_texture(tex_idx);
+		auto tex_manager = this->asset_manager->get_texture_manager();
+		auto texture = tex_manager->request(tex_info->get_image_path().value());
+		this->uniforms->update("tex", texture);
 
 		// Pass the new subtexture coordinates.
 		auto coords = tex_info->get_subtex_info(subtex_idx).get_tile_params();
@@ -103,7 +91,7 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 		// when the viewport size changes
 		auto screen_size = this->camera->get_viewport_size();
 		auto subtex_size = tex_info->get_subtex_info(subtex_idx).get_size();
-		auto scale = anim_info->get_scalefactor() / this->camera->get_zoom();
+		auto scale = this->animation_info->get_scalefactor() / this->camera->get_zoom();
 
 		// Transformation matrices for finding object position in clip space
 		this->uniforms->update("view", this->camera->get_view_matrix());
@@ -112,6 +100,7 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 		// Object world position
 		this->uniforms->update("obj_world_position", current_pos.to_world_space());
 
+		// Flip subtexture horizontally if angle is mirrored
 		if (angle->is_mirrored()) {
 			this->uniforms->update("flip_x", true);
 		}
@@ -144,10 +133,6 @@ const curve::Continuous<coord::scene3> WorldObject::get_position() {
 
 const renderer::resources::MeshData WorldObject::get_mesh() {
 	return resources::MeshData::make_quad();
-}
-
-const std::shared_ptr<renderer::Texture2d> &WorldObject::get_texture() {
-	return this->texture;
 }
 
 bool WorldObject::requires_renderable() {
