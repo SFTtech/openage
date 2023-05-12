@@ -17,9 +17,9 @@ TerrainRenderMesh::TerrainRenderMesh(const std::shared_ptr<renderer::Texture2d> 
                                      renderer::resources::MeshData &&mesh) :
 	require_renderable{true},
 	changed{false},
-	texture{texture},
 	uniforms{nullptr},
 	mesh{std::move(mesh)} {
+	this->set_texture(texture);
 }
 
 void TerrainRenderMesh::set_mesh(renderer::resources::MeshData &&mesh) {

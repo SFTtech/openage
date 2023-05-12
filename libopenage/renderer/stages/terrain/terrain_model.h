@@ -46,12 +46,9 @@ public:
 	void set_camera(const std::shared_ptr<renderer::camera::Camera> &camera);
 
 	/**
-     * Recalculate the vertex positions for this mesh with information
-     * from the currently set render entity.
-	 *
-	 * @param time Current simulation time.
+     * Fetch updates from the render entity.
      */
-	void update(const curve::time_t &time = 0.0);
+	void fetch_updates();
 
 	/**
      * Update the uniforms of the renderable associated with this object.

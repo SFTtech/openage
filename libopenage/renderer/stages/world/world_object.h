@@ -13,8 +13,6 @@
 #include "util/vector.h"
 
 namespace openage::renderer {
-class Renderer;
-class Texture2d;
 class UniformInput;
 
 namespace camera {
@@ -23,7 +21,8 @@ class Camera;
 
 namespace resources {
 class AssetManager;
-}
+class Animation2dInfo;
+} // namespace resources
 
 namespace world {
 class WorldRenderEntity;
@@ -48,12 +47,9 @@ public:
 	void set_camera(const std::shared_ptr<renderer::camera::Camera> &camera);
 
 	/**
-     * Recalculate the vertex positions for this mesh with information
-     * from the currently set render entity.
-	 *
-	 * @param time Current simulation time.
+     * Fetch updates from the render entity.
      */
-	void update(const curve::time_t &time = 0.0);
+	void fetch_updates();
 
 	/**
      * Update the uniforms of the renderable associated with this object.
@@ -82,13 +78,6 @@ public:
      * @return Mesh for creating a renderer geometry object.
      */
 	static const renderer::resources::MeshData get_mesh();
-
-	/**
-     * Get the texture that should be drawn onto the mesh.
-     *
-     * @return Texture object.
-     */
-	const std::shared_ptr<renderer::Texture2d> &get_texture();
 
 	/**
      * Check whether a new renderable needs to be created for this mesh.
@@ -166,9 +155,9 @@ private:
 	curve::Continuous<coord::scene3> position;
 
 	/**
-     * Texture used for the mesh.
+     * Animation information for the renderables.
      */
-	std::shared_ptr<renderer::Texture2d> texture;
+	std::shared_ptr<renderer::resources::Animation2dInfo> animation_info;
 
 	/**
      * Shader uniforms for the renderable in the terrain render pass.

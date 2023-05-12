@@ -126,7 +126,8 @@ void Presenter::init_graphics() {
 		this->renderer,
 		this->camera,
 		this->root_dir["assets"]["shaders"],
-		this->asset_manager);
+		this->asset_manager,
+		this->simulation->get_clock());
 	this->render_passes.push_back(this->terrain_renderer->get_render_pass());
 
 	// Units/buildings

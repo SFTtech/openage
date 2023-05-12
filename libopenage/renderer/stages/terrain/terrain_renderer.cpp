@@ -3,6 +3,7 @@
 #include "terrain_renderer.h"
 
 
+#include "event/clock.h"
 #include "renderer/camera/camera.h"
 #include "renderer/opengl/context.h"
 #include "renderer/renderer.h"
@@ -19,11 +20,13 @@ TerrainRenderer::TerrainRenderer(const std::shared_ptr<Window> &window,
                                  const std::shared_ptr<renderer::Renderer> &renderer,
                                  const std::shared_ptr<renderer::camera::Camera> &camera,
                                  const util::Path &shaderdir,
-                                 const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
+                                 const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+                                 const std::shared_ptr<event::Clock> &clock) :
 	renderer{renderer},
 	camera{camera},
 	render_entity{nullptr},
-	model{std::make_shared<TerrainRenderModel>(asset_manager)} {
+	model{std::make_shared<TerrainRenderModel>(asset_manager)},
+	clock{clock} {
 	renderer::opengl::GlContext::check_error();
 
 	auto size = window->get_size();
@@ -49,22 +52,14 @@ void TerrainRenderer::set_render_entity(const std::shared_ptr<TerrainRenderEntit
 }
 
 void TerrainRenderer::update() {
-	this->model->update();
-
+	this->model->fetch_updates();
+	auto current_time = this->clock->get_real_time();
 	for (auto mesh : this->model->get_meshes()) {
 		if (mesh->requires_renderable()) [[unlikely]] { /*probably doesn't happen that often?*/
 			// TODO: Update uniforms and geometry individually, depending on what changed
 			// TODO: Update existing renderable instead of recreating it
 			auto geometry = this->renderer->add_mesh_geometry(mesh->get_mesh());
-			auto transform_unifs = this->display_shader->new_uniform_input(
-				"model", // local space -> world space
-				mesh->get_model_matrix(),
-				"view", // camera view
-				this->camera->get_view_matrix(),
-				"proj", // orthographic projection
-				this->camera->get_projection_matrix(),
-				"tex", // terrain texture
-				mesh->get_texture());
+			auto transform_unifs = this->display_shader->new_uniform_input();
 
 			Renderable display_obj{
 				transform_unifs,
@@ -81,6 +76,7 @@ void TerrainRenderer::update() {
 			mesh->set_uniforms(transform_unifs);
 		}
 	}
+	this->model->update_uniforms(current_time);
 }
 
 void TerrainRenderer::resize(size_t width, size_t height) {

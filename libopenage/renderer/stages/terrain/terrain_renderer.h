@@ -7,7 +7,12 @@
 
 #include "util/path.h"
 
-namespace openage::renderer {
+namespace openage {
+namespace event {
+class Clock;
+}
+
+namespace renderer {
 class Renderer;
 class RenderPass;
 class ShaderProgram;
@@ -36,7 +41,8 @@ public:
 	                const std::shared_ptr<renderer::Renderer> &renderer,
 	                const std::shared_ptr<renderer::camera::Camera> &camera,
 	                const util::Path &shaderdir,
-	                const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
+	                const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+	                const std::shared_ptr<event::Clock> &clock);
 	~TerrainRenderer() = default;
 
 	/**
@@ -113,6 +119,11 @@ private:
 	std::shared_ptr<renderer::ShaderProgram> display_shader;
 
 	/**
+	 * Simulation clock for timing animations.
+	 */
+	std::shared_ptr<event::Clock> clock;
+
+	/**
 	 * Output texture.
 	 */
 	std::shared_ptr<renderer::Texture2d> output_texture;
@@ -129,4 +140,5 @@ private:
 };
 
 } // namespace terrain
-} // namespace openage::renderer
+} // namespace renderer
+} // namespace openage
