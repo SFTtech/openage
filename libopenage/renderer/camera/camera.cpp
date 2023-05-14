@@ -2,6 +2,8 @@
 
 #include "camera.h"
 
+#include <numbers>
+
 namespace openage::renderer::camera {
 
 Camera::Camera(util::Vector2s viewport_size) :
@@ -55,13 +57,13 @@ void Camera::look_at_scene(Eigen::Vector3f scene_pos) {
 	// we can calculate the new camera position via the offset a
 	// using the angle and length of side b.
 	auto y_delta = this->scene_pos[1] - scene_pos[1]; // b (vertical distance)
-	auto xz_distance = y_delta * sqrt(3); // a (horizontal distance); a = b * (cos(30°) / sin(30°))
+	auto xz_distance = y_delta * std::numbers::sqrt3; // a (horizontal distance); a = b * (cos(30°) / sin(30°))
 
 	// get x and z offsets
 	// the camera is pointed diagonally to the negative x and z axis
 	// a is the length of the diagonal from camera.xz to scene_pos.xz
 	// so the x and z offest are sides of a square with the same diagonal
-	auto side_length = xz_distance / (sqrt(2));
+	auto side_length = xz_distance / std::numbers::sqrt2;
 	auto new_pos = Eigen::Vector3f(
 		scene_pos[0] + side_length,
 		this->scene_pos[1], // height unchanged

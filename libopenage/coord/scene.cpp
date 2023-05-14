@@ -2,6 +2,8 @@
 
 #include "scene.h"
 
+#include <numbers>
+
 #include "coord/coordmanager.h"
 #include "coord/pixel.h"
 #include "coord/tile.h"
