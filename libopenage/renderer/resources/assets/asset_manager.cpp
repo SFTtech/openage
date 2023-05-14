@@ -5,6 +5,7 @@
 #include "renderer/renderer.h"
 #include "renderer/resources/animation/animation_info.h"
 #include "renderer/resources/assets/cache.h"
+#include "renderer/resources/assets/texture_manager.h"
 #include "renderer/resources/palette_info.h"
 #include "renderer/resources/parser/parse_blendmask.h"
 #include "renderer/resources/parser/parse_blendtable.h"
