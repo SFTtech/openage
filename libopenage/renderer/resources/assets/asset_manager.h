@@ -6,7 +6,6 @@
 #include <string>
 #include <unordered_map>
 
-#include "renderer/resources/assets/texture_manager.h"
 #include "util/path.h"
 
 namespace openage::renderer {
@@ -14,6 +13,7 @@ class Renderer;
 
 namespace resources {
 class AssetCache;
+class TextureManager;
 
 class Animation2dInfo;
 class BlendPatternInfo;
@@ -38,6 +38,13 @@ public:
      */
 	AssetManager(const std::shared_ptr<Renderer> &renderer);
 	~AssetManager() = default;
+
+	/**
+     * Prevent accidental copy or assignment because it would defeat the
+     * point of a persistent cache.
+     */
+	AssetManager(const AssetManager &) = delete;
+	AssetManager &operator=(const AssetManager &) = delete;
 
 	/**
      * Get the corresponding asset for the specified path.

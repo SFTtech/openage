@@ -31,6 +31,13 @@ public:
 	~TextureManager() = default;
 
 	/**
+     * Prevent accidental copy or assignment because it would defeat the
+     * point of a persistent cache.
+     */
+	TextureManager(const TextureManager &) = delete;
+	TextureManager &operator=(const TextureManager &) = delete;
+
+	/**
      * Get the corresponding texture for the specified path.
      *
      * If the texture does not exist in the cache yet, it will be loaded
