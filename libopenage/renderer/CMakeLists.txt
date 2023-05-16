@@ -6,7 +6,6 @@ add_sources(libopenage
 	render_factory.cpp
 	renderer.cpp
 	shader_program.cpp
-	tests.cpp
 	text.cpp
 	texture.cpp
 	texture_array.cpp
@@ -17,11 +16,8 @@ add_sources(libopenage
 	window_event_handler.cpp
 )
 
-pxdgen(
-	tests.h
-)
-
 add_subdirectory(camera/)
+add_subdirectory(demo/)
 add_subdirectory(font/)
 add_subdirectory(gui/)
 add_subdirectory(resources/)
