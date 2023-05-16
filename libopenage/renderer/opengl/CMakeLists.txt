@@ -8,10 +8,12 @@ add_sources(libopenage
 	render_target.cpp
 	renderer.cpp
 	shader.cpp
+    shader_data.cpp
 	shader_program.cpp
 	simple_object.cpp
 	texture.cpp
 	texture_array.cpp
+    uniform_buffer.cpp
 	uniform_input.cpp
 	vertex_array.cpp
 	window.cpp

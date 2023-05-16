@@ -1,4 +1,4 @@
-// Copyright 2015-2022 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include <array>
 #include <epoxy/gl.h>
@@ -87,6 +87,8 @@ GlContext::GlContext(const std::shared_ptr<QWindow> &window) :
 	log_handler{std::make_shared<GlDebugLogHandler>()} {
 	this->capabilities = find_capabilities();
 	auto const &capabilities = this->capabilities;
+
+	this->uniform_buffer_bindings = std::vector<bool>(capabilities.max_uniform_buffer_bindings);
 
 	QSurfaceFormat format{};
 	format.setProfile(QSurfaceFormat::OpenGLContextProfile::CoreProfile);
@@ -234,6 +236,25 @@ const std::weak_ptr<GlShaderProgram> &GlContext::get_current_program() const {
 
 void GlContext::set_current_program(const std::shared_ptr<GlShaderProgram> &prog) {
 	this->last_program = prog;
+}
+
+size_t GlContext::get_uniform_buffer_binding() {
+	for (size_t i = 1; i < this->capabilities.max_uniform_buffer_bindings; ++i) {
+		if (not this->uniform_buffer_bindings[i]) {
+			this->uniform_buffer_bindings[i] = true;
+			return i;
+		}
+	}
+
+	throw Error(MSG(err) << "Cannot get free uniform buffer binding point: "
+	                     << "No free uniform buffer binding points available.");
+}
+
+void GlContext::free_uniform_buffer_binding(size_t binding_point) {
+	if (binding_point >= this->capabilities.max_uniform_buffer_bindings) [[unlikely]] {
+		throw Error(MSG(err) << "Cannot free invalid uniform buffer binding point: " << binding_point);
+	}
+	this->uniform_buffer_bindings[binding_point] = false;
 }
 
 
