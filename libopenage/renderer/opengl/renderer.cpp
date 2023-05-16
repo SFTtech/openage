@@ -10,6 +10,7 @@
 #include "renderer/opengl/geometry.h"
 #include "renderer/opengl/shader_program.h"
 #include "renderer/opengl/texture.h"
+#include "renderer/opengl/uniform_buffer.h"
 #include "renderer/opengl/uniform_input.h"
 
 
@@ -57,6 +58,17 @@ std::shared_ptr<RenderTarget> GlRenderer::create_texture_target(std::vector<std:
 
 std::shared_ptr<RenderTarget> GlRenderer::get_display_target() {
 	return this->display;
+}
+
+std::shared_ptr<UniformBuffer> GlRenderer::add_uniform_buffer(std::shared_ptr<ShaderProgram> const &prog,
+                                                              std::string const &block_name) {
+	auto gl_prog = std::dynamic_pointer_cast<GlShaderProgram>(prog);
+	auto block_def = gl_prog->get_uniform_block(block_name.c_str());
+
+	return std::make_shared<GlUniformBuffer>(this->gl_context,
+	                                         block_def.data_size,
+	                                         block_def.uniforms,
+	                                         this->gl_context->get_uniform_buffer_binding());
 }
 
 resources::Texture2dData GlRenderer::display_into_data() {

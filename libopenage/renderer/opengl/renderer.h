@@ -33,6 +33,9 @@ public:
 
 	std::shared_ptr<RenderTarget> get_display_target() override;
 
+	std::shared_ptr<UniformBuffer> add_uniform_buffer(std::shared_ptr<ShaderProgram> const &,
+	                                                  std::string const &) override;
+
 	resources::Texture2dData display_into_data() override;
 
 	void check_error() override;

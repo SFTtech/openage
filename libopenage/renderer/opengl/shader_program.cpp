@@ -6,16 +6,17 @@
 #include <cstdio>
 #include <unordered_set>
 
-#include "../../datastructure/constexpr_map.h"
-#include "../../error/error.h"
-#include "../../log/log.h"
-#include "../../util/opengl.h"
+#include "datastructure/constexpr_map.h"
+#include "error/error.h"
+#include "log/log.h"
+#include "util/opengl.h"
 
 #include "renderer/opengl/context.h"
 #include "renderer/opengl/geometry.h"
 #include "renderer/opengl/lookup.h"
 #include "renderer/opengl/shader.h"
 #include "renderer/opengl/texture.h"
+#include "renderer/opengl/uniform_buffer.h"
 
 
 namespace openage::renderer::opengl {
@@ -159,12 +160,13 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 					size_t(count)}));
 		}
 
-		ENSURE(block_binding < caps.max_uniform_buffer_bindings,
-		       "Tried to create an OpenGL shader that uses more uniform blocks "
-		           << "than there are binding points (" << caps.max_uniform_buffer_bindings
-		           << " available).");
-
-		glUniformBlockBinding(handle, i_unif_block, block_binding);
+		// ENSURE(block_binding < caps.max_uniform_buffer_bindings,
+		//        "Tried to create an OpenGL shader that uses more uniform blocks "
+		//            << "than there are binding points (" << caps.max_uniform_buffer_bindings
+		//            << " available).");
+		//
+		// glUniformBlockBinding(handle, i_unif_block, block_binding);
+		// block_binding += 1;
 
 		this->uniform_blocks.insert(std::make_pair(
 			block_name,
@@ -173,8 +175,6 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 				size_t(data_size),
 				std::move(uniforms),
 				block_binding}));
-
-		block_binding += 1;
 	}
 
 	GLuint tex_unit = 0;
@@ -399,6 +399,10 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 	}
 }
 
+const GlUniformBlock &GlShaderProgram::get_uniform_block(const char *name) const {
+	return this->uniform_blocks.at(name);
+}
+
 std::map<size_t, resources::vertex_input_t> GlShaderProgram::vertex_attributes() const {
 	std::map<size_t, resources::vertex_input_t> attrib_map;
 
@@ -410,14 +414,25 @@ std::map<size_t, resources::vertex_input_t> GlShaderProgram::vertex_attributes()
 }
 
 std::shared_ptr<UniformInput> GlShaderProgram::new_unif_in() {
-	auto in = std::make_shared<GlUniformInput>(
-		this->shared_from_this());
+	auto in = std::make_shared<GlUniformInput>(this->shared_from_this());
 
 	return in;
 }
 
 bool GlShaderProgram::has_uniform(const char *name) {
 	return this->uniforms.count(name) == 1;
+}
+
+void GlShaderProgram::bind_uniform_buffer(std::shared_ptr<GlUniformBuffer> const &buffer, const char *block_name) {
+	ENSURE(this->uniform_blocks.count(block_name) == 1,
+	       "Tried to set binding point for uniform block " << block_name << " that does not exist in the shader program.");
+
+	auto &block = this->uniform_blocks[block_name];
+
+	// TODO: Check if the uniform buffer matches the block definition
+
+	block.binding_point = buffer->get_binding_point();
+	glUniformBlockBinding(*this->handle, block.index, block.binding_point);
 }
 
 void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const &in, const char *unif, void const *val, GLenum type) {
