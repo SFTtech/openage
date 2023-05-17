@@ -20,6 +20,7 @@
 #include "renderer/stages/world/world_renderer.h"
 
 namespace openage::renderer::tests {
+
 void renderer_demo_3(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
