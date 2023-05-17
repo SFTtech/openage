@@ -9,8 +9,9 @@
 
 #include <eigen3/Eigen/Dense>
 
-#include "resources/mesh_data.h"
-#include "uniform_input.h"
+#include "renderer/resources/mesh_data.h"
+#include "renderer/uniform_buffer.h"
+#include "renderer/uniform_input.h"
 
 
 namespace openage {
@@ -32,6 +33,16 @@ public:
 	 * @return true if the shader program contains the uniform, false otherwise.
 	 */
 	virtual bool has_uniform(const char *unif) = 0;
+
+	/**
+     * Binds a uniform block in the shader program to the same binding point as
+     * the given uniform buffer.
+     *
+     * @param buffer Uniform buffer to bind.
+     * @param block_name Name of the uniform block in the shader program.
+     */
+	virtual void bind_uniform_buffer(std::shared_ptr<UniformBuffer> const &,
+	                                 const char *block_name) = 0;
 
 	/**
 	 * Creates a new uniform input (a binding of uniform names to values) for this shader

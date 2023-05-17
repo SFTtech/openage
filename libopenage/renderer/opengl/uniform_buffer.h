@@ -40,12 +40,7 @@ public:
      */
 	void set_binding_point(GLuint binding_point);
 
-	/**
-     * Update the uniforms in the buffer.
-     *
-     * @param unif_in Uniform input to update the buffer with.
-     */
-	void update_uniforms(std::shared_ptr<GlUniformBufferInput> const &unif_in);
+	void update_uniforms(std::shared_ptr<UniformBufferInput> const &unif_in) override;
 
 	bool has_uniform(const char *) override;
 

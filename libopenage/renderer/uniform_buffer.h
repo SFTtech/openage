@@ -18,6 +18,20 @@ class UniformBuffer : public std::enable_shared_from_this<UniformBuffer> {
 public:
 	virtual ~UniformBuffer() = default;
 
+	/**
+     * Update the uniforms in the buffer.
+     *
+     * @param unif_in Uniform input to update the buffer with.
+     */
+	virtual void update_uniforms(std::shared_ptr<UniformBufferInput> const &unif_in) = 0;
+
+	/**
+	 * Check whether the buffer contains a uniform variable with the given ID.
+	 *
+	 * @param unif ID of the uniform.
+	 *
+	 * @return true if the buffer contains the uniform, false otherwise.
+	 */
 	virtual bool has_uniform(const char *unif) = 0;
 
 	template <typename... Ts>
