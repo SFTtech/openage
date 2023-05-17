@@ -95,7 +95,9 @@ void Clock::stop() {
 	std::unique_lock lock{this->mutex};
 	this->state = ClockState::STOPPED;
 
-	log::log(MSG(info) << "Clock stopped at " << this->get_time() << "s");
+	log::log(MSG(info) << "Clock stopped at "
+	                   << this->sim_time << "ms (simulated) / "
+	                   << this->sim_real_time << "ms (real)");
 }
 
 void Clock::pause() {
@@ -106,7 +108,9 @@ void Clock::pause() {
 	std::unique_lock lock{this->mutex};
 	this->state = ClockState::PAUSED;
 
-	log::log(MSG(info) << "Clock paused at " << this->get_time() << "s");
+	log::log(MSG(info) << "Clock paused at "
+	                   << this->sim_time << "ms (simulated) / "
+	                   << this->sim_real_time << "ms (real)");
 }
 
 void Clock::resume() {
@@ -117,7 +121,9 @@ void Clock::resume() {
 		this->state = ClockState::RUNNING;
 	}
 
-	log::log(MSG(info) << "Clock resumed at " << this->get_time() << "s");
+	log::log(MSG(info) << "Clock resumed at "
+	                   << this->sim_time << "ms (simulated) / "
+	                   << this->sim_real_time << "ms (real)");
 }
 
 } // namespace openage::event
