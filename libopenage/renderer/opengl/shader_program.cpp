@@ -423,15 +423,16 @@ bool GlShaderProgram::has_uniform(const char *name) {
 	return this->uniforms.count(name) == 1;
 }
 
-void GlShaderProgram::bind_uniform_buffer(std::shared_ptr<GlUniformBuffer> const &buffer, const char *block_name) {
+void GlShaderProgram::bind_uniform_buffer(std::shared_ptr<UniformBuffer> const &buffer, const char *block_name) {
 	ENSURE(this->uniform_blocks.count(block_name) == 1,
 	       "Tried to set binding point for uniform block " << block_name << " that does not exist in the shader program.");
 
+	auto gl_buffer = std::dynamic_pointer_cast<GlUniformBuffer>(buffer);
 	auto &block = this->uniform_blocks[block_name];
 
 	// TODO: Check if the uniform buffer matches the block definition
 
-	block.binding_point = buffer->get_binding_point();
+	block.binding_point = gl_buffer->get_binding_point();
 	glUniformBlockBinding(*this->handle, block.index, block.binding_point);
 }
 

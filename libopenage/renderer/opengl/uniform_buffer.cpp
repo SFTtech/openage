@@ -41,13 +41,14 @@ void GlUniformBuffer::set_binding_point(GLuint binding_point) {
 	glBindBufferBase(GL_UNIFORM_BUFFER, this->binding_point, *this->handle);
 }
 
-void GlUniformBuffer::update_uniforms(std::shared_ptr<GlUniformBufferInput> const &unif_in) {
-	ENSURE(unif_in->get_buffer() == this->shared_from_this(), "Uniform input passed to different buffer than it was created with.");
+void GlUniformBuffer::update_uniforms(std::shared_ptr<UniformBufferInput> const &unif_in) {
+	auto glunif_in = std::dynamic_pointer_cast<GlUniformBufferInput>(unif_in);
+	ENSURE(glunif_in->get_buffer() == this->shared_from_this(), "Uniform input passed to different buffer than it was created with.");
 
 	this->bind();
 
-	uint8_t const *data = unif_in->update_data.data();
-	for (auto const &pair : unif_in->update_offs) {
+	uint8_t const *data = glunif_in->update_data.data();
+	for (auto const &pair : glunif_in->update_offs) {
 		uint8_t const *ptr = data + pair.second;
 		auto unif_def = this->uniforms[pair.first];
 		auto loc = unif_def.offset;
