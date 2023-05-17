@@ -7,10 +7,16 @@
 namespace openage::renderer::tests {
 
 /**
- * Loads .sprite and .texture meta information files and displays
- * subtextures from the attached texture images.
+ * Shows the level 1 renderer's ability to create textured renderable objects and
+ * allow basic interaction with them via mouse/key callbacks:
+ *     - Window creation
+ *     - Loading shaders
+ *     - Creating multiple render passes
+ *     - Creating multiple renderables for a render pass
+ *     - Configuring and setting uniforms for renderables
+ *     - Changing uniforms via mouse/key callbacks
  *
- * @param path Path to the openage asset directory.
+ * @param path Path to project rootdir.
  */
 void renderer_demo_1(const util::Path &path);
 

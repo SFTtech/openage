@@ -8,6 +8,7 @@
 #include "renderer/demo/demo_2.h"
 #include "renderer/demo/demo_3.h"
 #include "renderer/demo/demo_4.h"
+#include "renderer/demo/demo_5.h"
 
 namespace openage::renderer::tests {
 
@@ -31,6 +32,10 @@ void renderer_demo(int demo_id, const util::Path &path) {
 
 	case 4:
 		renderer_demo_4(path);
+		break;
+
+	case 5:
+		renderer_demo_5(path);
 		break;
 
 	default:

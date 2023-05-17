@@ -8,14 +8,11 @@
 
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
-#include "renderer/resources/animation/angle_info.h"
-#include "renderer/resources/animation/frame_info.h"
-#include "renderer/resources/parser/parse_sprite.h"
-#include "renderer/resources/parser/parse_texture.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_data.h"
 #include "renderer/shader_program.h"
 #include "renderer/texture.h"
+#include "util/math_constants.h"
 
 namespace openage::renderer::tests {
 
@@ -24,72 +21,6 @@ void renderer_demo_1(const util::Path &path) {
 
 	opengl::GlWindow window("openage renderer test", 800, 600);
 	auto renderer = window.make_renderer();
-
-	/* Load texture file standalone. */
-	auto tex_path = path / "assets/test/textures/test_texture.texture";
-	auto tex_info = renderer::resources::parser::parse_texture_file(tex_path);
-
-	log::log(INFO << "Loaded texture " << tex_path.resolve_native_path());
-	log::log(INFO << "  imagefile: " << tex_info.get_image_path().value().resolve_native_path());
-	log::log(INFO << "  size:");
-	log::log(INFO << "    width: " << tex_info.get_size().first);
-	log::log(INFO << "    height: " << tex_info.get_size().second);
-	log::log(INFO << "  pxformat:");
-	log::log(INFO << "    data size: " << tex_info.get_data_size()
-	              << " ("
-	              << tex_info.get_size().first << " x "
-	              << tex_info.get_size().second << " x "
-	              << renderer::resources::pixel_size(tex_info.get_format())
-	              << ")");
-	log::log(INFO << "    cbits: "
-	              << "(currently unused)");
-	log::log(INFO << "  subtex count: " << tex_info.get_subtex_count());
-
-	/* Load animation file using the texture. */
-	auto sprite_path = path / "assets/test/textures/test_animation.sprite";
-	auto sprite_info = renderer::resources::parser::parse_sprite_file(sprite_path);
-
-	log::log(INFO << "Loaded animation " << sprite_path.resolve_native_path());
-	log::log(INFO << "  texture count: " << sprite_info.get_texture_count());
-	for (size_t i = 0; i < sprite_info.get_texture_count(); ++i) {
-		log::log(INFO << "    texture " << i << ": "
-		              << sprite_info.get_texture(i)->get_image_path().value().resolve_native_path());
-	}
-
-	log::log(INFO << "  scalefactor: " << sprite_info.get_scalefactor());
-	log::log(INFO << "  layer count: " << sprite_info.get_layer_count());
-	for (size_t i = 0; i < sprite_info.get_layer_count(); ++i) {
-		auto layer_info = sprite_info.get_layer(i);
-		log::log(INFO << "    layer " << i << ":");
-		log::log(INFO << "      position: " << layer_info.get_position());
-		log::log(INFO << "      time per frame: " << layer_info.get_time_per_frame());
-		log::log(INFO << "      replay delay: " << layer_info.get_replay_delay());
-		log::log(INFO << "      angle count: " << layer_info.get_angle_count());
-
-		for (size_t i = 0; i < layer_info.get_angle_count(); ++i) {
-			auto angle_info = layer_info.get_angle(i);
-			log::log(INFO << "      angle " << i << ":");
-			log::log(INFO << "        degree: " << angle_info->get_angle_start());
-			log::log(INFO << "        frame count: " << angle_info->get_frame_count());
-			log::log(INFO << "        mirrored: " << angle_info->is_mirrored());
-
-			if (angle_info->is_mirrored()) {
-				log::log(INFO << "        mirrored angle: "
-				              << angle_info->get_mirrored_angle().get()->get_angle_start());
-			}
-			else {
-				for (size_t i = 0; i < angle_info->get_frame_count(); ++i) {
-					auto frame_info = angle_info->get_frame(i);
-					log::log(INFO << "        frame " << i << ":");
-					log::log(INFO << "          texture idx: " << frame_info->get_texture_idx());
-					log::log(INFO << "          subtexture idx: " << frame_info->get_subtexture_idx());
-				}
-			}
-		}
-	}
-
-	/* Display the subtextures using the meta information */
-	log::log(INFO << "Loading shaders...");
 
 	auto shaderdir = path / "assets" / "test" / "shaders";
 
@@ -126,42 +57,50 @@ void renderer_demo_1(const util::Path &path) {
 	auto obj_shader = renderer->add_shader({obj_vshader_src, obj_fshader_src});
 	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
 
-	auto window_size = window.get_size();
-
-	/* Load texture image using the metafile. */
-	log::log(INFO << "Loading texture image...");
-	auto tex = resources::Texture2dData(*sprite_info.get_texture(0));
+	/* Texture for the clickable objects. */
+	auto tex = resources::Texture2dData(path / "/assets/test/textures/gaben.png");
 	auto gltex = renderer->add_texture(tex);
 
-	/* Read location of the subtexture in the texture image */
-	size_t subtexture_index = 0;
-	auto subtex_size = tex.get_info().get_subtex_info(subtexture_index).get_size();
-	auto [s_left, s_right, s_top, s_bottom] = tex.get_info().get_subtexture_coordinates(subtexture_index);
-	Eigen::Vector4f subtex_coords{s_left, s_right, s_top, s_bottom};
-
-	/* Upscale subtexture for better visibility */
-	auto tex_size = tex_info.get_size();
-	unsigned char upscale_factor = 3;
-	float scale_x = upscale_factor * (float)subtex_size[1] / tex_size.first;
-	float scale_y = upscale_factor * (float)subtex_size[0] / tex_size.second;
 	auto transform1 = Eigen::Affine3f::Identity();
-	transform1.prescale(Eigen::Vector3f(scale_y,
-	                                    scale_x,
-	                                    1.0f));
+	transform1.prescale(Eigen::Vector3f(0.4f, 0.2f, 1.0f));
+	transform1.prerotate(Eigen::AngleAxisf(30.0f * math::PI / 180.0f, Eigen::Vector3f::UnitX()));
+	transform1.pretranslate(Eigen::Vector3f(-0.4f, -0.6f, 0.0f));
 
-	/* Pass uniforms to the shaders.
-		mv          : The upscaling matrix
-		offset_tile : Subtexture coordinates (as floats relative to texture image size)
-		u_id        : Identifier
-		tex         : OpenGL texture reference
-	*/
+	/* Clickable objects on the screen consist of a transform (matrix which places each object
+	 * in the correct location), an identifier and a reference to the texture. */
 	auto obj1_unifs = obj_shader->new_uniform_input(
 		"mv",
 		transform1.matrix(),
-		"offset_tile",
-		subtex_coords,
 		"u_id",
 		1u,
+		"tex",
+		gltex);
+
+	auto transform2 = Eigen::Affine3f::Identity();
+	transform2.prescale(Eigen::Vector3f(0.3f, 0.1f, 1.0f));
+	transform2.prerotate(Eigen::AngleAxisf(50.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
+
+	auto transform3 = transform2;
+
+	transform2.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.3f));
+
+	auto obj2_unifs = obj_shader->new_uniform_input(
+		"mv",
+		transform2.matrix(),
+		"u_id",
+		2u,
+		// TODO bug: this tex input spills over to all the other uniform inputs!
+		"tex",
+		gltex);
+
+	transform3.prerotate(Eigen::AngleAxisf(90.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
+	transform3.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.5f));
+
+	auto obj3_unifs = obj_shader->new_uniform_input(
+		"mv",
+		transform3.matrix(),
+		"u_id",
+		3u,
 		"tex",
 		gltex);
 
@@ -174,19 +113,28 @@ void renderer_demo_1(const util::Path &path) {
 		true,
 	};
 
+	Renderable obj2{
+		obj2_unifs,
+		quad,
+		true,
+		true,
+	};
+
+	Renderable obj3{
+		obj3_unifs,
+		quad,
+		true,
+		true,
+	};
+
 	/* Make a framebuffer for the first render pass to draw into. The framebuffer consists of a color texture
 	 * to be copied onto the back buffer in pass 2, as well as an id texture which will contain the object ids
 	 * which we can later read in order to determine which object was clicked. The depth texture is required,
 	 * but mostly irrelevant in this case. */
-	auto color_texture = renderer->add_texture(resources::Texture2dInfo(window_size[0],
-	                                                                    window_size[1],
-	                                                                    resources::pixel_format::rgba8));
-	auto id_texture = renderer->add_texture(resources::Texture2dInfo(window_size[0],
-	                                                                 window_size[1],
-	                                                                 resources::pixel_format::r32ui));
-	auto depth_texture = renderer->add_texture(resources::Texture2dInfo(window_size[0],
-	                                                                    window_size[1],
-	                                                                    resources::pixel_format::depth24));
+	auto size = window.get_size();
+	auto color_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::rgba8));
+	auto id_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::r32ui));
+	auto depth_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::depth24));
 	auto fbo = renderer->create_texture_target({color_texture, id_texture, depth_texture});
 
 	/* Make an object to update the projection matrix in pass 1 according to changes in the screen size.
@@ -202,7 +150,7 @@ void renderer_demo_1(const util::Path &path) {
 	};
 
 	auto pass1 = renderer->add_render_pass(
-		{proj_update, obj1},
+		{proj_update, obj1, obj2, obj3},
 		fbo);
 
 	/* Make an object encompassing the entire screen for the second render pass. The object
@@ -225,9 +173,6 @@ void renderer_demo_1(const util::Path &path) {
 	glDepthFunc(GL_LEQUAL);
 	glDepthRange(0.0, 1.0);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	/* Register callbacks */
-	log::log(INFO << "Register callbacks...");
 
 	window.add_mouse_button_callback([&](const QMouseEvent &ev) {
 		if (ev.type() == QEvent::MouseButtonRelease) {
@@ -276,67 +221,14 @@ void renderer_demo_1(const util::Path &path) {
 		pass1->set_target(fbo);
 	});
 
-	/* Iterate through subtextures with left/right arrows */
-	window.add_key_callback([&](const QKeyEvent &ev) {
-		if (ev.type() == QEvent::KeyRelease) {
-			if (ev.key() == Qt::Key_Right) {
-				log::log(INFO << "Key pressed (Right arrow)");
-
-				++subtexture_index;
-				if (subtexture_index >= tex.get_info().get_subtex_count()) {
-					subtexture_index = 0;
-				}
-			}
-			else if (ev.key() == Qt::Key_Left) {
-				log::log(INFO << "Key pressed (Left arrow)");
-				if (subtexture_index == 0) {
-					subtexture_index = tex.get_info().get_subtex_count() - 1;
-				}
-				else {
-					--subtexture_index;
-				}
-			}
-			else {
-				return;
-			}
-
-			log::log(INFO << "Selected subtexture: " << subtexture_index);
-
-			/* Rescale the transformation matrix. */
-			tex_size = tex_info.get_size();
-			subtex_size = tex.get_info().get_subtex_info(subtexture_index).get_size();
-			scale_x = upscale_factor * (float)subtex_size[1] / tex_size.first;
-			scale_y = upscale_factor * (float)subtex_size[0] / tex_size.second;
-
-			transform1 = Eigen::Affine3f::Identity();
-			transform1.prescale(Eigen::Vector3f(scale_y,
-			                                    scale_x,
-			                                    1.0f));
-
-			obj1_unifs->update("mv", transform1.matrix());
-
-			/* Pass the new subtexture coordinates. */
-			auto [s_left, s_right, s_top, s_bottom] = tex.get_info().get_subtexture_coordinates(subtexture_index);
-			Eigen::Vector4f subtex_coords{s_left, s_right, s_top, s_bottom};
-
-			obj1_unifs->update("offset_tile", subtex_coords);
-		}
-	});
-	log::log(INFO << "Success!");
-
-	log::log(INFO << "Instructions:");
-	log::log(INFO << "  1. Click on the texture pixels with LEFT MOUSE BUTTON to get the object ID");
-	log::log(INFO << "  2. Press LEFT/RIGHT ARROW to cycle through available subtextures");
-
 	while (not window.should_close()) {
-		qtapp->process_events();
-
 		renderer->render(pass1);
 		renderer->render(pass2);
 		window.update();
+		qtapp->process_events();
 
 		renderer->check_error();
 	}
+	window.close();
 }
-
 } // namespace openage::renderer::tests

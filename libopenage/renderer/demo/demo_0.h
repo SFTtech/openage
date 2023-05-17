@@ -7,10 +7,13 @@
 namespace openage::renderer::tests {
 
 /**
- * Shows the renderer's ability to create textured renderable objects and
- * allow basic interaction with them via mouse/key callbacks.
+ * Show the window creation functionality of the level 1 renderer:
+ *     - Window creation
+ *     - Loading shaders
+ *     - Creating a render pass
+ *     - Creating a renderable from a mesh
  *
- * @param path Path to project rootdir.
+ * @param path Path to the project rootdir.
  */
 void renderer_demo_0(const util::Path &path);
 

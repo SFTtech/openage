@@ -7,7 +7,13 @@
 namespace openage::renderer::tests {
 
 /**
- * Demo the timing of animation keyframes with the simulation clock.
+ * Show the timing of animation keyframes with a simulation clock.
+ *     - Window creation
+ *     - Loading shaders
+ *     - Creating the simulation clock
+ *     - Loading .sprite and .texture files and accessing subtextures
+ *     - Update of animation keyframes via shader uniforms
+ *     - Switching to correct animation keyframe by using the clock.
  *
  * @param path Path to the openage asset directory.
  */

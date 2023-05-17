@@ -7,7 +7,14 @@
 namespace openage::renderer::tests {
 
 /**
- * Shows the different render stages and camera.
+ * Show off the render stages in the level 2 renderer and the camera
+ * system.
+ *     - Window creation
+ *     - Loading shaders
+ *     - Creating a camera
+ *     - Initializing the level 2 render stages: skybox, terrain, world, screen
+ *     - Adding renderables to the render stages via the render factory
+ *     - Moving camera with mouse/keyboard callbacks
  *
  * @param path Path to the project rootdir.
  */
