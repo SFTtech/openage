@@ -9,6 +9,7 @@
 #include "coord/scene.h"
 #include "curve/continuous.h"
 #include "curve/curve.h"
+#include "curve/discrete.h"
 #include "util/path.h"
 
 namespace openage::renderer::world {
@@ -56,7 +57,7 @@ public:
 	/**
 	 * Get the position of the entity inside the game world.
 	 *
-	 * @return Position of the entity.
+	 * @return Position curve of the entity.
 	 */
 	const curve::Continuous<coord::scene3> &get_position();
 
@@ -65,7 +66,7 @@ public:
      *
      * @return Path to the animation definition file.
      */
-	const util::Path &get_animation_path();
+	const curve::Discrete<util::Path> &get_animation_path();
 
 	/**
 	 * Get the time of the last update.
@@ -108,7 +109,7 @@ private:
 	/**
 	 * Path to the texture.
 	 */
-	util::Path animation_path;
+	curve::Discrete<util::Path> animation_path;
 
 	/**
 	 * Time of the last texture update.
