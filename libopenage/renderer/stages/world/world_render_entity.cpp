@@ -8,8 +8,9 @@ namespace openage::renderer::world {
 
 WorldRenderEntity::WorldRenderEntity() :
 	changed{false},
+	ref_id{0},
 	position{nullptr, 0, "", nullptr, SCENE_ORIGIN},
-	animation_path{},
+	animation_path{nullptr, 0},
 	last_update{0.0} {
 }
 
@@ -27,7 +28,7 @@ void WorldRenderEntity::update(const uint32_t ref_id,
 	                    std::function<coord::scene3(const coord::phys3 &)>([](const coord::phys3 &pos) {
 							return pos.to_scene3();
 						}));
-	this->animation_path = animation_path;
+	this->animation_path.set_last(time, animation_path);
 	this->changed = true;
 	this->last_update = time;
 }
@@ -39,8 +40,8 @@ void WorldRenderEntity::update(const uint32_t ref_id,
 	std::unique_lock lock{this->mutex};
 
 	this->ref_id = ref_id;
-	this->position.set_insert(time, position.to_scene3());
-	this->animation_path = animation_path;
+	this->position.set_last(time, position.to_scene3());
+	this->animation_path.set_last(time, animation_path);
 	this->changed = true;
 	this->last_update = time;
 }
@@ -57,7 +58,7 @@ const curve::Continuous<coord::scene3> &WorldRenderEntity::get_position() {
 	return this->position;
 }
 
-const util::Path &WorldRenderEntity::get_animation_path() {
+const curve::Discrete<util::Path> &WorldRenderEntity::get_animation_path() {
 	std::shared_lock lock{this->mutex};
 
 	return this->animation_path;

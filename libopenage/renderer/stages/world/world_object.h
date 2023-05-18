@@ -9,8 +9,8 @@
 #include "coord/scene.h"
 #include "curve/continuous.h"
 #include "curve/curve.h"
+#include "curve/discrete.h"
 #include "renderer/resources/mesh_data.h"
-#include "util/vector.h"
 
 namespace openage::renderer {
 class UniformInput;
@@ -157,7 +157,7 @@ private:
 	/**
      * Animation information for the renderables.
      */
-	std::shared_ptr<renderer::resources::Animation2dInfo> animation_info;
+	curve::Discrete<std::shared_ptr<renderer::resources::Animation2dInfo>> animation_info;
 
 	/**
      * Shader uniforms for the renderable in the terrain render pass.

@@ -27,7 +27,7 @@ WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager
 	render_entity{nullptr},
 	ref_id{0},
 	position{nullptr, 0, "", nullptr, SCENE_ORIGIN},
-	animation_info{nullptr},
+	animation_info{nullptr, 0},
 	uniforms{nullptr} {
 }
 
@@ -48,7 +48,21 @@ void WorldObject::fetch_updates() {
 	// Get data from render entity
 	this->ref_id = this->render_entity->get_id();
 	this->position.sync(this->render_entity->get_position());
-	this->animation_info = this->asset_manager->request_animation(this->render_entity->get_animation_path());
+	this->animation_info.sync(this->render_entity->get_animation_path(),
+	                          std::function<std::shared_ptr<renderer::resources::Animation2dInfo>(const util::Path &)>(
+								  [&](const util::Path &path) {
+									  try {
+										  return this->asset_manager->request_animation(path);
+									  }
+									  catch (const error::Error &) {
+										  // TODO: We have to catch this error only because the default value in the source
+										  //       curve is a plain Path() object (which does not resolve).
+										  //       This should be either handled by the asset manager (return a "missing"
+										  //       placeholder asset if the path is invalid) or by setting the default value in
+										  //       the source curve to a better value.
+										  return std::shared_ptr<renderer::resources::Animation2dInfo>{nullptr};
+									  }
+								  }));
 
 	// Set self to changed so that world renderer can update the renderable
 	this->changed = true;
@@ -73,7 +87,8 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 	auto angle_degrees = pos_delta.to_angle();
 
 	// Frame subtexture
-	auto layer = this->animation_info->get_layer(0); // TODO: Support multiple layers
+	auto animation_info = this->animation_info.get(time);
+	auto layer = animation_info->get_layer(0); // TODO: Support multiple layers
 	auto angle = layer.get_direction_angle(angle_degrees);
 
 	// Flip subtexture horizontally if angle is mirrored
@@ -93,7 +108,7 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 	auto tex_idx = frame_info->get_texture_idx();
 	auto subtex_idx = frame_info->get_subtexture_idx();
 
-	auto tex_info = this->animation_info->get_texture(tex_idx);
+	auto tex_info = animation_info->get_texture(tex_idx);
 	auto tex_manager = this->asset_manager->get_texture_manager();
 	auto texture = tex_manager->request(tex_info->get_image_path().value());
 	this->uniforms->update("tex", texture);
@@ -104,7 +119,7 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 
 	// scale and keep width x height ratio of texture
 	// when the viewport size changes
-	auto scale = this->animation_info->get_scalefactor() / this->camera->get_zoom();
+	auto scale = animation_info->get_scalefactor() / this->camera->get_zoom();
 	auto screen_size = this->camera->get_viewport_size();
 	auto subtex_size = tex_info->get_subtex_info(subtex_idx).get_size();
 
