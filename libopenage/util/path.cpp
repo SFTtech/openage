@@ -1,16 +1,16 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "path.h"
 
 #include <utility>
 
+#include "../error/error.h"
 #include "compiler.h"
 #include "fslike/directory.h"
 #include "fslike/native.h"
 #include "fslike/python.h"
 #include "misc.h"
 #include "strings.h"
-#include "../error/error.h"
 
 
 namespace openage::util {
@@ -44,7 +44,6 @@ Path::Path() = default;
 
 Path::Path(const py::Obj &fsobj_in,
            const std::vector<std::string> &parts) {
-
 	path_normalizer(this->parts, parts);
 
 	// optimization: the fsobj from python may be convertible to
@@ -54,8 +53,7 @@ Path::Path(const py::Obj &fsobj_in,
 	// test if fsobj is fslike.Directory
 	if (fslike::pyx_fs_is_fslike_directory.call(fsobj_in.get_ref())) {
 		this->fsobj = std::make_shared<fslike::Directory>(
-			fsobj_in.getattr("path").bytes()
-		);
+			fsobj_in.getattr("path").bytes());
 	}
 	else {
 		// we can't create a c++-variant of the path,
@@ -66,10 +64,8 @@ Path::Path(const py::Obj &fsobj_in,
 
 
 Path::Path(std::shared_ptr<fslike::FSLike> fsobj,
-           const parts_t &parts)
-	:
+           const parts_t &parts) :
 	fsobj{std::move(fsobj)} {
-
 	path_normalizer(this->parts, parts);
 }
 
@@ -162,6 +158,11 @@ std::string Path::get_native_path() const {
 
 
 std::string Path::resolve_native_path(const std::string &mode) const {
+	// TODO: Catch other errors that can occur when fsobj is not a native path.
+	if (this->fsobj == nullptr) {
+		throw Error{ERR << "fsobj is nullptr and cannot be resolved"};
+	}
+
 	if (mode == "r") {
 		return this->resolve_native_path_r();
 	}
@@ -203,8 +204,7 @@ bool Path::rename(const Path &target_path) {
 	// maybe a real equality check is better?
 	if (this->fsobj != target_path.fsobj) {
 		throw Error{
-			ERR << "can't rename across two different filesystem like objects"
-		};
+			ERR << "can't rename across two different filesystem like objects"};
 	}
 	return this->fsobj->rename(this->parts, target_path.parts);
 }
@@ -305,15 +305,15 @@ Path Path::joinpath(const part_t &subpath) const {
 	return this->joinpath(util::split(subpath, '/'));
 }
 
-Path Path::operator [](const parts_t &subpaths) const {
+Path Path::operator[](const parts_t &subpaths) const {
 	return this->joinpath(subpaths);
 }
 
-Path Path::operator [](const part_t &subpath) const {
+Path Path::operator[](const part_t &subpath) const {
 	return this->joinpath(subpath);
 }
 
-Path Path::operator /(const part_t &subpath) const {
+Path Path::operator/(const part_t &subpath) const {
 	return this->joinpath(subpath);
 }
 
@@ -325,15 +325,12 @@ Path Path::with_suffix(const part_t &suffix) const {
 	return this->with_name(this->get_stem() + suffix);
 }
 
-bool Path::operator ==(const Path &other) const {
-	return (
-		this->fsobj == other.fsobj and
-		this->parts == other.parts
-	);
+bool Path::operator==(const Path &other) const {
+	return this->fsobj == other.fsobj and this->parts == other.parts;
 }
 
-bool Path::operator !=(const Path &other) const {
-	return not (*this == other);
+bool Path::operator!=(const Path &other) const {
+	return not(*this == other);
 }
 
 
@@ -347,7 +344,7 @@ const Path::parts_t &Path::get_parts() const {
 }
 
 
-std::ostream &operator <<(std::ostream &stream, const Path &path) {
+std::ostream &operator<<(std::ostream &stream, const Path &path) {
 	stream << "Path(";
 	path.fsobj->repr(stream);
 	stream << ":";
@@ -366,7 +363,8 @@ std::string filename(const std::string &fullpath) {
 	size_t rsep_pos = fullpath.rfind(fslike::PATHSEP);
 	if (rsep_pos == std::string::npos) {
 		return "";
-	} else {
+	}
+	else {
 		return fullpath.substr(rsep_pos + 1);
 	}
 }
@@ -376,10 +374,11 @@ std::string dirname(const std::string &fullpath) {
 	size_t rsep_pos = fullpath.rfind(fslike::PATHSEP);
 	if (rsep_pos == std::string::npos) {
 		return "";
-	} else {
+	}
+	else {
 		return fullpath.substr(0, rsep_pos);
 	}
 }
 
 
-} // openage::util
+} // namespace openage::util
