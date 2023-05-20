@@ -41,8 +41,8 @@ public:
      * @param buffer Uniform buffer to bind.
      * @param block_name Name of the uniform block in the shader program.
      */
-	virtual void bind_uniform_buffer(std::shared_ptr<UniformBuffer> const &,
-	                                 const char *block_name) = 0;
+	virtual void bind_uniform_buffer(const char *block_name,
+	                                 std::shared_ptr<UniformBuffer> const &) = 0;
 
 	/**
 	 * Creates a new uniform input (a binding of uniform names to values) for this shader

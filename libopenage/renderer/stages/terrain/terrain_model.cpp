@@ -49,13 +49,6 @@ void TerrainRenderModel::update_uniforms(const curve::time_t &time) {
 		if (unifs == nullptr) [[unlikely]] {
 			continue;
 		}
-		// camera changes
-		unifs->update(
-			"view", // camera view
-			this->camera->get_view_matrix(),
-			"proj", // orthographic projection
-			this->camera->get_projection_matrix());
-
 		if (mesh->is_changed()) {
 			// mesh changes
 			unifs->update(

@@ -3,6 +3,7 @@
 #include "world_renderer.h"
 
 #include "event/clock.h"
+#include "renderer/camera/camera.h"
 #include "renderer/opengl/context.h"
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/shader_source.h"
@@ -56,17 +57,11 @@ void WorldRenderer::update() {
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {
 				Eigen::Matrix4f model_m = Eigen::Matrix4f::Identity();
-				Eigen::Matrix4f view_m = Eigen::Matrix4f::Identity();
-				Eigen::Matrix4f proj_m = Eigen::Matrix4f::Identity();
 
 				// Set uniforms that don't change or are not changed often
 				auto transform_unifs = this->display_shader->new_uniform_input(
 					"model",
 					model_m,
-					"view",
-					view_m,
-					"proj",
-					proj_m,
 					"flip_x",
 					false,
 					"flip_y",
@@ -123,6 +118,7 @@ void WorldRenderer::initialize_render_pass(size_t width,
 	this->id_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::r32ui));
 
 	this->display_shader = this->renderer->add_shader({vert_shader_src, frag_shader_src});
+	this->display_shader->bind_uniform_buffer("camera", this->camera->get_uniform_buffer());
 
 	auto fbo = this->renderer->create_texture_target({this->output_texture, this->depth_texture, this->id_texture});
 	this->render_pass = this->renderer->add_render_pass({}, fbo);

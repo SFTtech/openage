@@ -6,8 +6,10 @@ layout(location=1) in vec2 uv;
 out vec2 vert_uv;
 
 // transformation for object (not vertex!) position to clip space
-uniform mat4 view;
-uniform mat4 proj;
+layout (std140) uniform camera {
+    mat4 view;
+    mat4 proj;
+};
 
 // can be used to move the object position in world space _before_
 // it's transformed to clip space
