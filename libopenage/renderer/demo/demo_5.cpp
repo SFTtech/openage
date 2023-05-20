@@ -27,7 +27,7 @@ void renderer_demo_5(const util::Path &path) {
 	auto size = window.get_size();
 
 	// Camera setup
-	auto camera = std::make_shared<renderer::camera::Camera>(size);
+	auto camera = std::make_shared<renderer::camera::Camera>(renderer, size);
 	window.add_resize_callback([&](size_t w, size_t h) {
 		camera->resize(w, h);
 	});

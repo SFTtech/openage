@@ -5,6 +5,8 @@
 #include <eigen3/Eigen/Dense>
 
 #include "renderer/camera/camera.h"
+#include "renderer/uniform_buffer.h"
+#include "renderer/uniform_input.h"
 
 namespace openage::renderer::camera {
 
@@ -14,9 +16,19 @@ CameraManager::CameraManager(const std::shared_ptr<renderer::camera::Camera> &ca
 	zoom_direction{static_cast<int>(ZoomDirection::NONE)},
 	move_speed{0.2f},
 	zoom_speed{0.05f} {
+	this->uniforms = this->camera->get_uniform_buffer()->new_uniform_input(
+		"view",
+		camera->get_view_matrix(),
+		"proj",
+		camera->get_projection_matrix());
 }
 
 void CameraManager::update() {
+	this->update_motion();
+	this->update_uniforms();
+}
+
+void CameraManager::update_motion() {
 	if (this->move_directions != static_cast<int>(MoveDirection::NONE)) {
 		Eigen::Vector3f move_dir{0.0f, 0.0f, 0.0f};
 
@@ -44,6 +56,15 @@ void CameraManager::update() {
 			this->camera->zoom_out(this->zoom_speed);
 		}
 	}
+}
+
+void CameraManager::update_uniforms() {
+	this->uniforms->update(
+		"view",
+		camera->get_view_matrix(),
+		"proj",
+		camera->get_projection_matrix());
+	this->camera->get_uniform_buffer()->update_uniforms(this->uniforms);
 }
 
 void CameraManager::set_move_directions(int directions) {

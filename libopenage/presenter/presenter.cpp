@@ -102,7 +102,8 @@ void Presenter::init_graphics() {
 	this->renderer = this->window->make_renderer();
 
 	// Camera
-	this->camera = std::make_shared<renderer::camera::Camera>(this->window->get_size());
+	this->camera = std::make_shared<renderer::camera::Camera>(this->renderer,
+	                                                          this->window->get_size());
 	this->window->add_resize_callback([this](size_t w, size_t h) {
 		this->camera->resize(w, h);
 	});

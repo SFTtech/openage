@@ -33,7 +33,7 @@ void renderer_demo_3(const util::Path &path) {
 
 	// Camera
 	// our viewport into the game world
-	auto camera = std::make_shared<renderer::camera::Camera>(window->get_size());
+	auto camera = std::make_shared<renderer::camera::Camera>(renderer, window->get_size());
 	window->add_resize_callback([&](size_t w, size_t h) {
 		camera->resize(w, h);
 	});

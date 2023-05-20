@@ -4,7 +4,11 @@
 
 #include <memory>
 
-namespace openage::renderer::camera {
+namespace openage::renderer {
+class Renderer;
+class UniformBufferInput;
+
+namespace camera {
 
 class Camera;
 
@@ -34,8 +38,11 @@ public:
 	~CameraManager() = default;
 
 	/**
-	 * Update the camera parameters.
-	 */
+     * Update the camera position and zoom level.
+     *
+     * Additionally updates the camera uniform buffer with the view and projection
+     * matrices.
+     */
 	void update();
 
 	/**
@@ -68,6 +75,16 @@ public:
 
 private:
 	/**
+	 * Update the camera parameters.
+	 */
+	void update_motion();
+
+	/**
+     * Update the camera uniform buffer.
+     */
+	void update_uniforms();
+
+	/**
      * Camera.
      */
 	std::shared_ptr<renderer::camera::Camera> camera;
@@ -91,5 +108,12 @@ private:
      * Zoom speed of the camera.
      */
 	float zoom_speed;
+
+	/**
+     * Uniform buffer input for the camera.
+     */
+	std::shared_ptr<renderer::UniformBufferInput> uniforms;
 };
-} // namespace openage::renderer::camera
+
+} // namespace camera
+} // namespace openage::renderer
