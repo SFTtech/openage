@@ -4,9 +4,13 @@
 
 #include <numbers>
 
+#include "renderer/renderer.h"
+#include "renderer/resources/buffer_info.h"
+
 namespace openage::renderer::camera {
 
-Camera::Camera(util::Vector2s viewport_size) :
+Camera::Camera(const std::shared_ptr<Renderer> &renderer,
+               util::Vector2s viewport_size) :
 	scene_pos{Eigen::Vector3f(0.0f, 10.0f, 0.0f)},
 	viewport_size{viewport_size},
 	zoom{1.0f},
@@ -17,9 +21,15 @@ Camera::Camera(util::Vector2s viewport_size) :
 	view{Eigen::Matrix4f::Identity()},
 	proj{Eigen::Matrix4f::Identity()} {
 	this->look_at_scene(Eigen::Vector3f(0.0f, 0.0f, 0.0f));
+
+	resources::UBOInput view_input{"view", resources::ubo_input_t::M4F32};
+	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
+	auto ubo_info = resources::UniformBufferInfo{resources::ubo_layout_t::STD140, {view_input, proj_input}};
+	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
 }
 
-Camera::Camera(util::Vector2s viewport_size,
+Camera::Camera(const std::shared_ptr<Renderer> &renderer,
+               util::Vector2s viewport_size,
                Eigen::Vector3f scene_pos,
                float zoom,
                float max_zoom_out,
@@ -34,6 +44,10 @@ Camera::Camera(util::Vector2s viewport_size,
 	viewport_changed{true},
 	view{Eigen::Matrix4f::Identity()},
 	proj{Eigen::Matrix4f::Identity()} {
+	resources::UBOInput view_input{"view", resources::ubo_input_t::M4F32};
+	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
+	auto ubo_info = resources::UniformBufferInfo{resources::ubo_layout_t::STD140, {view_input, proj_input}};
+	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
 }
 
 void Camera::look_at_scene(Eigen::Vector3f scene_pos) {
@@ -233,6 +247,10 @@ Eigen::Vector3f Camera::get_input_pos(const coord::input &coord) const {
 	Eigen::Vector3f input_pos = this->scene_pos + s * x + u * y;
 
 	return input_pos;
+}
+
+const std::shared_ptr<renderer::UniformBuffer> &Camera::get_uniform_buffer() const {
+	return this->uniform_buffer;
 }
 
 } // namespace openage::renderer::camera

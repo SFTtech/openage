@@ -8,7 +8,11 @@
 #include "coord/scene.h"
 #include "util/vector.h"
 
-namespace openage::renderer::camera {
+namespace openage::renderer {
+class Renderer;
+class UniformBuffer;
+
+namespace camera {
 
 /**
  * Camera direction (= where it looks at).
@@ -37,7 +41,8 @@ public:
      *
      * @param viewport_size Initial viewport size of the camera (width x height).
      */
-	Camera(util::Vector2s viewport_size);
+	Camera(const std::shared_ptr<Renderer> &renderer,
+	       util::Vector2s viewport_size);
 
 	/**
      * Create a new camera for the renderer.
@@ -48,7 +53,8 @@ public:
      * @param max_zoom_out Maximum zoom out level (defaults to 64.0f).
      * @param default_zoom_ratio Default zoom level calibration (defaults to 1.0f).
      */
-	Camera(util::Vector2s viewport_size,
+	Camera(const std::shared_ptr<Renderer> &renderer,
+	       util::Vector2s viewport_size,
 	       Eigen::Vector3f scene_pos,
 	       float zoom = 1.0f,
 	       float max_zoom_out = 64.0f,
@@ -169,6 +175,13 @@ public:
      */
 	Eigen::Vector3f get_input_pos(const coord::input &coord) const;
 
+	/**
+     * Get the uniform buffer for this camera.
+     *
+     * @return Uniform buffer.
+     */
+	const std::shared_ptr<renderer::UniformBuffer> &get_uniform_buffer() const;
+
 private:
 	/**
      * Position in the 3D scene.
@@ -250,6 +263,12 @@ private:
      * Cached because it may be requested many times.
      */
 	Eigen::Matrix4f proj;
+
+	/**
+     * Uniform buffer for the camera matrices.
+     */
+	std::shared_ptr<renderer::UniformBuffer> uniform_buffer;
 };
 
-} // namespace openage::renderer::camera
+} // namespace camera
+} // namespace openage::renderer
