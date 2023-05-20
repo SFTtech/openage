@@ -32,7 +32,7 @@ size_t UniformBufferInfo::get_size() const {
 	return size;
 }
 
-size_t UniformBufferInfo::get_size(const UBOInput &input, ubo_layout_t layout) {
+size_t UniformBufferInfo::get_size(const UBOInput &input, ubo_layout_t /* layout */) {
 	if (input.count == 1) {
 		return STD140_INPUT_SIZE.get(input.type);
 	}
@@ -41,7 +41,7 @@ size_t UniformBufferInfo::get_size(const UBOInput &input, ubo_layout_t layout) {
 	return STD140_INPUT_SIZE.get(ubo_input_t::V4F32) * input.count;
 }
 
-size_t UniformBufferInfo::get_stride_size(ubo_input_t input, ubo_layout_t layout) {
+size_t UniformBufferInfo::get_stride_size(ubo_input_t /* input */, ubo_layout_t /* layout */) {
 	return STD140_INPUT_SIZE.get(ubo_input_t::V4F32);
 }
 

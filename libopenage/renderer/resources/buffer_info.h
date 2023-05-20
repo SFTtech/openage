@@ -44,10 +44,10 @@ enum class ubo_input_t {
  * Uniform block input definition.
  */
 struct UBOInput {
-	// Uniform type.
-	ubo_input_t type;
 	// Uniform name.
 	std::string name;
+	// Uniform type.
+	ubo_input_t type;
 	// Length (values >1 are arrays)
 	uint32_t count = 1;
 };

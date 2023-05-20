@@ -9,6 +9,7 @@
 #include "renderer/camera/camera.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
+#include "renderer/resources/buffer_info.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_data.h"
 #include "renderer/shader_program.h"
@@ -100,7 +101,10 @@ void renderer_demo_5(const util::Path &path) {
 	// create the uniform buffer for the camera matrices
 	// and bind it to the shader
 	// this sets the binding point of the shader to the bindng point of the buffer
-	auto uniform_buffer = renderer->add_uniform_buffer(obj_shader, "cam");
+	resources::UBOInput view_input{"view", resources::ubo_input_t::M4F32};
+	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
+	auto ubo_info = resources::UniformBufferInfo{resources::ubo_layout_t::STD140, {view_input, proj_input}};
+	auto uniform_buffer = renderer->add_uniform_buffer(ubo_info);
 	obj_shader->bind_uniform_buffer(uniform_buffer, "cam");
 
 	// create a uniform buffer storage
