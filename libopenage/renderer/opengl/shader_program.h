@@ -71,8 +71,8 @@ public:
      * @param buffer Uniform buffer to bind.
      * @param block_name Name of the uniform block in the shader program.
      */
-	void bind_uniform_buffer(std::shared_ptr<UniformBuffer> const &,
-	                         const char *block_name) override;
+	void bind_uniform_buffer(const char *block_name,
+	                         std::shared_ptr<UniformBuffer> const &) override;
 
 	std::map<size_t, resources::vertex_input_t> vertex_attributes() const override;
 

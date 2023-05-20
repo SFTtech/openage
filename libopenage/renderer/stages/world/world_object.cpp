@@ -135,10 +135,6 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 		scale * (static_cast<float>(anchor[0]) / screen_size[0]),
 		scale * (static_cast<float>(anchor[1]) / screen_size[1])};
 	this->uniforms->update("anchor_offset", anchor_offset);
-
-	// Transformation matrices from camera
-	this->uniforms->update("view", this->camera->get_view_matrix());
-	this->uniforms->update("proj", this->camera->get_projection_matrix());
 }
 
 uint32_t WorldObject::get_id() {

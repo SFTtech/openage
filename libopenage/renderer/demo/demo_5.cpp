@@ -105,7 +105,7 @@ void renderer_demo_5(const util::Path &path) {
 	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
 	auto ubo_info = resources::UniformBufferInfo{resources::ubo_layout_t::STD140, {view_input, proj_input}};
 	auto uniform_buffer = renderer->add_uniform_buffer(ubo_info);
-	obj_shader->bind_uniform_buffer(uniform_buffer, "cam");
+	obj_shader->bind_uniform_buffer("cam", uniform_buffer);
 
 	// create a uniform buffer storage
 	// pass the camera view and projection matrices to the buffer storage
