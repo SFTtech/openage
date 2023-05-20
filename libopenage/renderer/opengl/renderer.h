@@ -33,6 +33,7 @@ public:
 
 	std::shared_ptr<RenderTarget> get_display_target() override;
 
+	std::shared_ptr<UniformBuffer> add_uniform_buffer(resources::UniformBufferInfo const &) override;
 	std::shared_ptr<UniformBuffer> add_uniform_buffer(std::shared_ptr<ShaderProgram> const &,
 	                                                  std::string const &) override;
 

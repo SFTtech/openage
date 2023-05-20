@@ -14,6 +14,7 @@ class Texture2dData;
 class Texture2dInfo;
 class ShaderSource;
 class MeshData;
+class UniformBufferInfo;
 } // namespace resources
 
 class ShaderProgram;
@@ -149,6 +150,9 @@ public:
 	virtual std::shared_ptr<RenderTarget> get_display_target() = 0;
 
 	/// Creates a new uniform buffer. Uniform buffers to set uniforms across shaders invocations.
+	virtual std::shared_ptr<UniformBuffer> add_uniform_buffer(resources::UniformBufferInfo const &) = 0;
+
+	/// Creates a new uniform buffer from a uniform block in a shader.
 	virtual std::shared_ptr<UniformBuffer> add_uniform_buffer(std::shared_ptr<ShaderProgram> const &,
 	                                                          std::string const &) = 0;
 

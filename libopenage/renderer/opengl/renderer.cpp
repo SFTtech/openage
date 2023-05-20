@@ -8,10 +8,12 @@
 #include "log/log.h"
 #include "renderer/opengl/context.h"
 #include "renderer/opengl/geometry.h"
+#include "renderer/opengl/lookup.h"
 #include "renderer/opengl/shader_program.h"
 #include "renderer/opengl/texture.h"
 #include "renderer/opengl/uniform_buffer.h"
 #include "renderer/opengl/uniform_input.h"
+#include "renderer/resources/buffer_info.h"
 
 
 namespace openage::renderer::opengl {
@@ -58,6 +60,28 @@ std::shared_ptr<RenderTarget> GlRenderer::create_texture_target(std::vector<std:
 
 std::shared_ptr<RenderTarget> GlRenderer::get_display_target() {
 	return this->display;
+}
+
+std::shared_ptr<UniformBuffer> GlRenderer::add_uniform_buffer(resources::UniformBufferInfo const &info) {
+	auto inputs = info.get_inputs();
+	std::unordered_map<std::string, GlInBlockUniform> uniforms{};
+	size_t offset = 0;
+	for (auto const &input : inputs) {
+		auto type = GL_UBO_INPUT_TYPE.get(input.type);
+		uniforms.emplace(
+			std::make_pair(input.name,
+		                   GlInBlockUniform{type,
+		                                    offset,
+		                                    resources::UniformBufferInfo::get_size(input, info.get_layout()),
+		                                    resources::UniformBufferInfo::get_stride_size(input.type, info.get_layout()),
+		                                    input.count}));
+		offset += resources::UniformBufferInfo::get_size(input, info.get_layout());
+	}
+
+	return std::make_shared<GlUniformBuffer>(this->gl_context,
+	                                         info.get_size(),
+	                                         uniforms,
+	                                         this->gl_context->get_uniform_buffer_binding());
 }
 
 std::shared_ptr<UniformBuffer> GlRenderer::add_uniform_buffer(std::shared_ptr<ShaderProgram> const &prog,
