@@ -6,6 +6,10 @@
 
 #include "util/path.h"
 
+namespace nyan {
+class Database;
+}
+
 namespace openage {
 
 namespace event {
@@ -57,6 +61,11 @@ public:
 	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
 
 private:
+	/**
+     * Nyan game data database.
+     */
+	std::shared_ptr<nyan::Database> db;
+
 	/**
      * State of the current game.
      */
