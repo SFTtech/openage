@@ -15,7 +15,7 @@ if typing.TYPE_CHECKING:
     from openage.nyan.import_tree import ImportTree
 
 
-FILE_VERSION = "0.1.0"
+FILE_VERSION = "0.2.0"
 
 
 class NyanFile(DataDefinition):
@@ -42,9 +42,13 @@ class NyanFile(DataDefinition):
 
         self.import_tree = None
 
-        self.fqon = (self.modpack_name,
-                     *self.targetdir.replace("/", ".")[:-1].split("."),
-                     self.filename.split(".")[0])
+        if len(targetdir) == 0 or targetdir == "/":
+            self.fqon = (self.modpack_name, self.filename.split(".")[0])
+
+        else:
+            self.fqon = (self.modpack_name,
+                         *self.targetdir.replace("/", ".")[:-1].split("."),
+                         self.filename.split(".")[0])
 
     def add_nyan_object(self, new_object: NyanObject) -> None:
         """
@@ -80,7 +84,10 @@ class NyanFile(DataDefinition):
 
             import_str += ".".join(fqon)
 
-            import_str += f" as {alias}\n"
+            if len(alias) > 0:
+                import_str += f" as {alias}"
+
+            import_str += "\n"
 
         import_str += "\n"
 

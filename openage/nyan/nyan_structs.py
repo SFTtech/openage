@@ -351,6 +351,7 @@ class NyanObject:
                         namespace=self.get_fqon()
                     )
                     output_str += f"{(indent_depth + 1) * INDENT}{member_str}\n"
+
             if not empty:
                 output_str += "\n"
 
@@ -386,7 +387,7 @@ class NyanObject:
                 )
                 output_str += f"{(indent_depth + 1) * INDENT}{nested_str}\n"
 
-            output_str += "\n"
+            output_str = output_str[:-1]
 
         # Empty objects need a 'pass' line
         if empty:

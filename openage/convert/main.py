@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches
 """
@@ -206,6 +206,10 @@ def init_subparser(cli: ArgumentParser):
     cli.add_argument(
         "--low-memory", action='store_true',
         help="Activate low memory mode")
+
+    cli.add_argument(
+        "--export-api", action='store_true',
+        help="Export the openage nyan API definition as a modpack")
 
 
 def main(args, error):
