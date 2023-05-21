@@ -7,6 +7,11 @@
 #include "event/state.h"
 #include "gamestate/types.h"
 
+namespace nyan {
+class Database;
+class View;
+} // namespace nyan
+
 namespace openage::gamestate {
 
 class GameEntity;
@@ -22,9 +27,11 @@ public:
 	/**
      * Create a new game state.
      *
+     * @param db Nyan game data database.
      * @param event_loop Event loop for the game state.
      */
-	explicit GameState(const std::shared_ptr<openage::event::EventLoop> &event_loop);
+	explicit GameState(const std::shared_ptr<nyan::Database> &db,
+	                   const std::shared_ptr<openage::event::EventLoop> &event_loop);
 
 	/**
      * Add a new game entity to the index.
@@ -49,6 +56,11 @@ public:
 	const std::unordered_map<entity_id_t, std::shared_ptr<GameEntity>> &get_game_entities() const;
 
 private:
+	/**
+     * View for the nyan game data database.
+     */
+	std::shared_ptr<nyan::View> db_view;
+
 	/**
      * Map of all game entities in the current game by their ID.
      */

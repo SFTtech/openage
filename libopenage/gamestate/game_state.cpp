@@ -2,12 +2,16 @@
 
 #include "game_state.h"
 
+#include <nyan/database.h>
+
 #include "gamestate/game_entity.h"
 
 namespace openage::gamestate {
 
-GameState::GameState(const std::shared_ptr<openage::event::EventLoop> &event_loop) :
-	event::State{event_loop} {
+GameState::GameState(const std::shared_ptr<nyan::Database> &db,
+                     const std::shared_ptr<openage::event::EventLoop> &event_loop) :
+	event::State{event_loop},
+	db_view{db->new_view()} {
 }
 
 void GameState::add_game_entity(const std::shared_ptr<GameEntity> &entity) {
