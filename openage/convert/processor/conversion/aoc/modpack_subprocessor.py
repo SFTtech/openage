@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-branches,too-few-public-methods,too-many-statements
 
@@ -18,6 +18,7 @@ from ....value_object.conversion.forward_ref import ForwardRef
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_object_container\
         import GenieObjectContainer
+    from openage.convert.entity_object.conversion.converter_object import RawAPIObject
 
 
 class AoCModpackSubprocessor:
@@ -57,10 +58,10 @@ class AoCModpackSubprocessor:
         """
         Put available nyan objects into a given modpack.
         """
-        created_nyan_files = {}
+        created_nyan_files: dict[str, NyanFile] = {}
 
         # Access all raw API objects
-        raw_api_objects = []
+        raw_api_objects: list[RawAPIObject] = []
         raw_api_objects.extend(full_data_set.pregen_nyan_objects.values())
 
         for unit_line in full_data_set.unit_lines.values():

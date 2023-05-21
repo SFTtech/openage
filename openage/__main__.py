@@ -1,5 +1,6 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
-
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-statements
 """
 Behold: The central entry point for all of openage.
 
@@ -121,6 +122,11 @@ def main(argv=None):
     from .convert.tool.singlefile import init_subparser
     init_subparser(subparsers.add_parser(
         "convert-file",
+        parents=[global_cli]))
+
+    from .convert.tool.api_export import init_subparser
+    init_subparser(subparsers.add_parser(
+        "convert-export-api",
         parents=[global_cli]))
 
     from .codegen.main import init_subparser
