@@ -50,6 +50,7 @@ endif()
 
 find_library(FONTCONFIG_LIB fontconfig)
 
+find_package(toml11 REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(PNG REQUIRED)
 find_package(SDL2 CONFIG REQUIRED)
