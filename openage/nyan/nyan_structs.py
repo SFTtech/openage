@@ -847,7 +847,7 @@ class NyanMemberType:
         # Composite types
         return (
             f"{self._member_type.value}("
-            f"{', '.join(elem_type.dump(import_tree=import_tree) for elem_type in self._element_types)})"
+            f"{', '.join(elem_type.dump(import_tree) for elem_type in self._element_types)})"
         )
 
     def __repr__(self):
@@ -865,7 +865,7 @@ class NyanMember:
         self,
         name: str,
         member_type: NyanMemberType,
-        value=None,
+        value = None,
         operator: MemberOperator = None,
         override_depth: int = 0
     ):
@@ -950,7 +950,7 @@ class NyanMember:
         """
         return self.value is not None
 
-    @staticmethod
+    @ staticmethod
     def is_inherited() -> bool:
         """
         Returns True if the member is inherited from another object.

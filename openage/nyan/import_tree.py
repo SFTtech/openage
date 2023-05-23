@@ -132,12 +132,16 @@ class ImportTree:
     Tree for storing nyan object references.
     """
 
-    __slots__ = ('root', 'alias_nodes')
+    __slots__ = ('root', 'alias_nodes', 'import_nodes')
 
     def __init__(self):
         self.root = Node("", NodeType.ROOT, None)
 
-        self.alias_nodes = set()
+        # Saves nodes for the import dict that have an alias
+        self.alias_nodes: set[Node] = set()
+
+        # Saves nodes for the import dict that don't have an alias
+        self.import_nodes: set[Node] = set()
 
     def add_alias(self, fqon: tuple[str], alias: str) -> None:
         """
@@ -159,6 +163,9 @@ class ImportTree:
                 # raise KeyError(f"fqon '{'.'.join(fqon)}' "
                 #               "could not be found in import tree") from err
 
+        if current_node.node_type is not NodeType.FILESYS:
+            raise Exception("Only nodes of type FILESYS can have aliases")
+
         current_node.set_alias(alias)
 
     def clear_marks(self) -> None:
@@ -166,6 +173,7 @@ class ImportTree:
         Remove all alias marks from the tree.
         """
         self.alias_nodes.clear()
+        self.import_nodes.clear()
 
     def expand_from_file(self, nyan_file: NyanFile) -> None:
         """
@@ -280,9 +288,9 @@ class ImportTree:
                     current_node.add_child(new_node)
                     current_node = new_node
 
-    def get_import_dict(self) -> dict[str, tuple[str]]:
+    def get_alias_dict(self) -> dict[str, tuple[str]]:
         """
-        Get the fqons of the nodes that are used for alias, i.e. fqons of all
+        Get the fqons of the nodes that are used for aliases, i.e. fqons of all
         nodes in self.alias_nodes. The dict can be used for creating imports
         of a nyan file.
 
@@ -300,6 +308,24 @@ class ImportTree:
         aliases = dict(sorted(aliases.items(), key=lambda item: item[1]))
 
         return aliases
+
+    def get_import_list(self) -> list[tuple[str]]:
+        """
+        Get the fqons of the nodes that are plain imports, i.e. fqons of all
+        nodes in self.import_nodes. The dict can be used for creating imports
+        of a nyan file.
+
+        Call this function after all object references in a file have been
+        searched for aliases with get_alias_fqon().
+        """
+        imports = []
+        for current_node in self.import_nodes:
+            imports.append(current_node.get_fqon())
+
+        # Sort by imported name because it looks NICE!
+        imports.sort()
+
+        return imports
 
     def get_alias_fqon(self, fqon: tuple[str], namespace: tuple[str] = None) -> tuple[str]:
         """
@@ -338,7 +364,11 @@ class ImportTree:
 
         # Traverse the tree upwards
         sfqon = []
+        file_node = None
         while current_node.depth > 0:
+            if file_node is None and current_node.node_type == NodeType.FILESYS:
+                file_node = current_node
+
             if current_node.alias:
                 sfqon.insert(0, current_node.alias)
                 self.alias_nodes.add(current_node)
@@ -347,5 +377,10 @@ class ImportTree:
             sfqon.insert(0, current_node.name)
 
             current_node = current_node.parent
+
+        else:
+            # There is no alias so we have to import the correct file
+            if file_node:
+                self.import_nodes.add(file_node)
 
         return tuple(sfqon)
