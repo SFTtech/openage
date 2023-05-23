@@ -39,7 +39,7 @@ def main(args, error):
     path = Union().root
     path.mount(Directory(args.dir).root)
     targetdir = DirectoryCreator(path).root
-    outdir = AccessSynchronizer(targetdir).root / "nyan"
+    outdir = AccessSynchronizer(targetdir).root / "engine"
 
     # Modpack info file
     DataExporter.export([modpack.info], outdir)
@@ -109,4 +109,4 @@ def set_static_aliases(import_tree: ImportTree) -> None:
     """
     Create the import tree for the nyan files.
     """
-    import_tree.add_alias(("engine", ), "engine")
+    import_tree.add_alias(("engine", "root"), "root")
