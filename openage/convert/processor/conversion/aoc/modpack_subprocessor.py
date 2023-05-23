@@ -147,47 +147,43 @@ class AoCModpackSubprocessor:
         and affected nodes are hardcoded in this function.
         """
         # Abilities from the openage API
-        import_tree.add_alias(("engine", "ability", "type"), "ablty")
-        import_tree.add_alias(("engine", "ability", "property", "type"), "ablty_prop")
+        import_tree.add_alias(("engine", "ability", "type"), "ability")
+        import_tree.add_alias(("engine", "ability", "property", "type"), "ability_prop")
 
         # Auxiliary objects
-        import_tree.add_alias(("engine", "util", "accuracy", "Accuracy"), "Accuracy")
+        import_tree.add_alias(("engine", "util", "accuracy"), "accuracy")
         import_tree.add_alias(
-            ("engine", "util", "animation_override", "AnimationOverride"),
-            "AnimationOverride"
+            ("engine", "util", "animation_override"), "animation_override"
         )
         import_tree.add_alias(("engine", "util", "attribute"), "attribute")
-        import_tree.add_alias(("engine", "util", "attribute_change_type"), "AttributeChangeType")
+        import_tree.add_alias(("engine", "util", "attribute_change_type"), "attribute_change_type")
         import_tree.add_alias(("engine", "util", "calculation_type", "type"), "calculation_type")
-        import_tree.add_alias(("engine", "util", "setup", "PlayerSetup"), "Civ")
-        import_tree.add_alias(("engine", "util", "convert_type", "ConvertType"), "ConvertType")
+        import_tree.add_alias(("engine", "util", "setup"), "civ")
+        import_tree.add_alias(("engine", "util", "convert_type"), "convert_type")
         import_tree.add_alias(("engine", "util", "cost", "type"), "cost_type")
         import_tree.add_alias(("engine", "util", "create"), "create")
         import_tree.add_alias(("engine", "util", "diplomatic_stance"), "diplo_stance")
         import_tree.add_alias(
-            ("engine", "util", "diplomatic_stance", "type", "Self"),
-            "diplo_stance_self"
+            ("engine", "util", "diplomatic_stance", "type"),
+            "diplo_stance_type"
         )
         import_tree.add_alias(("engine", "util", "distribution_type", "type"), "distribution_type")
         import_tree.add_alias(("engine", "util", "dropoff_type", "type"), "dropoff_type")
         import_tree.add_alias(("engine", "util", "exchange_mode", "type"), "exchange_mode")
-        import_tree.add_alias(("engine", "util", "exchange_rate", "ExchangeRate"), "ExchangeRate")
+        import_tree.add_alias(("engine", "util", "exchange_rate"), "exchange_rate")
         import_tree.add_alias(("engine", "util", "formation"), "formation")
-        import_tree.add_alias(("engine", "util", "game_entity", "GameEntity"), "GameEntity")
+        import_tree.add_alias(("engine", "util", "game_entity"), "game_entity")
         import_tree.add_alias(
-            ("engine", "util", "game_entity_formation", "GameEntityFormation"),
-            "GameEntityFormation"
+            ("engine", "util", "game_entity_formation"), "ge_formation"
         )
         import_tree.add_alias(("engine", "util", "game_entity_stance", "type"), "ge_stance")
         import_tree.add_alias(("engine", "util", "game_entity_type", "type"), "ge_type")
         import_tree.add_alias(
-            ("engine", "util", "game_entity_type", "GameEntityType"),
-            "GameEntityType"
+            ("engine", "util", "game_entity_type"), "game_entity_type"
         )
-        import_tree.add_alias(("engine", "util", "graphics", "Animation"), "Animation")
-        import_tree.add_alias(("engine", "util", "graphics", "Terrain"), "TerrainGraphics")
+        import_tree.add_alias(("engine", "util", "graphics"), "graphics")
         import_tree.add_alias(("engine", "util", "herdable_mode", "type"), "herdable_mode")
-        import_tree.add_alias(("engine", "util", "hitbox", "Hitbox"), "Hitbox")
+        import_tree.add_alias(("engine", "util", "hitbox"), "hitbox")
         import_tree.add_alias(("engine", "util", "move_mode", "type"), "move_mode")
         import_tree.add_alias(("engine", "util", "language"), "lang")
         import_tree.add_alias(("engine", "util", "language", "translated", "type"), "translated")
@@ -199,34 +195,24 @@ class AoCModpackSubprocessor:
         import_tree.add_alias(("engine", "util", "passable_mode", "type"), "passable_mode")
         import_tree.add_alias(("engine", "util", "payment_mode", "type"), "payment_mode")
         import_tree.add_alias(("engine", "util", "placement_mode", "type"), "placement_mode")
-        import_tree.add_alias(
-            ("engine", "util", "price_mode", "type"),
-            "price_mode"
-        )
-        import_tree.add_alias(("engine", "util", "price_pool", "PricePool"), "PricePool")
+        import_tree.add_alias(("engine", "util", "price_mode", "type"), "price_mode")
+        import_tree.add_alias(("engine", "util", "price_pool"), "price_pool")
         import_tree.add_alias(("engine", "util", "production_mode", "type"), "production_mode")
         import_tree.add_alias(("engine", "util", "progress"), "progress")
         import_tree.add_alias(("engine", "util", "progress", "property", "type"), "progress_prop")
-        import_tree.add_alias(
-            ("engine", "util", "progress_status", "ProgressStatus"),
-            "ProgressStatus"
-        )
+        import_tree.add_alias(("engine", "util", "progress_status"), "progress_status")
         import_tree.add_alias(("engine", "util", "progress_type", "type"), "progress_type")
-        import_tree.add_alias(
-            ("engine", "util", "research", "ResearchableTech"),
-            "ResearchableTech"
-        )
+        import_tree.add_alias(("engine", "util", "research"), "research")
         import_tree.add_alias(("engine", "util", "resource"), "resource")
-        import_tree.add_alias(("engine", "util", "resource_spot", "ResourceSpot"), "ResourceSpot")
+        import_tree.add_alias(("engine", "util", "resource_spot"), "resource_spot")
         import_tree.add_alias(("engine", "util", "selection_box", "type"), "selection_box")
-        import_tree.add_alias(("engine", "util", "sound", "Sound"), "Sound")
-        import_tree.add_alias(("engine", "util", "state_machine", "StateChanger"), "StateChanger")
+        import_tree.add_alias(("engine", "util", "sound",), "sound")
+        import_tree.add_alias(("engine", "util", "state_machine"), "state_machine")
         import_tree.add_alias(("engine", "util", "storage"), "storage")
         import_tree.add_alias(("engine", "util", "target_mode", "type"), "target_mode")
-        import_tree.add_alias(("engine", "util", "tech", "Tech"), "Tech")
-        import_tree.add_alias(("engine", "util", "terrain", "Terrain"), "Terrain")
-        import_tree.add_alias(("engine", "util", "terrain", "TerrainAmbient"), "TerrainAmbient")
-        import_tree.add_alias(("engine", "util", "terrain_type", "TerrainType"), "TerrainType")
+        import_tree.add_alias(("engine", "util", "tech"), "tech")
+        import_tree.add_alias(("engine", "util", "terrain"), "terrain")
+        import_tree.add_alias(("engine", "util", "terrain_type"), "terrain_type")
         import_tree.add_alias(("engine", "util", "trade_route", "type"), "trade_route")
         import_tree.add_alias(("engine", "util", "variant", "type"), "variant")
 
@@ -323,12 +309,12 @@ class AoCModpackSubprocessor:
             prefix + "lang"
         )
         import_tree.add_alias(
-            (modpack.name, "data", "util", "logic", "death", "death", "StandardHealthDeathLiteral"),
+            (modpack.name, "data", "util", "logic", "death", "death"),
             "death_condition"
         )
         import_tree.add_alias(
             (modpack.name, "data", "util", "logic", "garrison_empty",
-             "garrison_empty", "BuildingDamageEmptyLiteral"),
+             "garrison_empty"),
             "empty_garrison_condition"
         )
         import_tree.add_alias(
@@ -347,17 +333,17 @@ class AoCModpackSubprocessor:
         # Effect objects
         import_tree.add_alias(
             (modpack.name, "data", "effect", "discrete", "flat_attribute_change",
-             "fallback", "AoE2AttackFallback"),
+             "fallback"),
             "attack_fallback"
         )
         import_tree.add_alias(
             (modpack.name, "data", "effect", "discrete", "flat_attribute_change",
-             "min_damage", "AoE2MinChangeAmount"),
+             "min_damage"),
             "min_damage"
         )
         import_tree.add_alias(
             (modpack.name, "data", "effect", "discrete", "flat_attribute_change",
-             "min_heal", "AoE2MinChangeAmount"),
+             "min_heal"),
             "min_heal"
         )
         import_tree.add_alias(
@@ -368,23 +354,23 @@ class AoCModpackSubprocessor:
         # Modifier objects
         import_tree.add_alias(
             (modpack.name, "data", "util", "modifier", "elevation_difference",
-             "elevation_difference", "AttackMultiplierHigh"),
+             "elevation_difference"),
             prefix + "mme_elev_high"
         )
         import_tree.add_alias(
             (modpack.name, "data", "util", "modifier", "elevation_difference",
-             "elevation_difference", "AttackMultiplierLow"),
+             "elevation_difference"),
             prefix + "mme_elev_low"
         )
         import_tree.add_alias(
             (modpack.name, "data", "util", "modifier", "flyover_cliff",
-             "flyover_cliff", "AttackMultiplierFlyover"),
+             "flyover_cliff"),
             prefix + "mme_cliff_attack"
         )
 
         # Terrain objects
         import_tree.add_alias(
-            (modpack.name, "data", "terrain", "foundation", "foundation", "Foundation"),
+            (modpack.name, "data", "terrain", "foundation", "foundation"),
             prefix + "foundation"
         )
 

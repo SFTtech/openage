@@ -66,7 +66,9 @@ class NyanFile(DataDefinition):
         """
         Returns the string that represents the nyan file.
         """
-        fileinfo_str = f"# NYAN FILE\nversion {FILE_VERSION}\n\n"
+        fileinfo_str = "# NYAN FILE\n"
+        fileinfo_str += f"!version {FILE_VERSION}\n\n"
+
         import_str = ""
         objects_str = ""
 
@@ -76,20 +78,32 @@ class NyanFile(DataDefinition):
         # Removes one empty newline at the end of the objects definition
         objects_str = objects_str[:-1]
 
-        import_aliases = self.import_tree.get_import_dict()
+        import_aliases = self.import_tree.get_alias_dict()
+        import_files = self.import_tree.get_import_list()
         self.import_tree.clear_marks()
 
-        for alias, fqon in import_aliases.items():
-            import_str += "import "
+        if len(import_files) > 0:
+            for fqon in import_files:
+                import_str += "import "
 
-            import_str += ".".join(fqon)
+                import_str += ".".join(fqon)
 
-            if len(alias) > 0:
-                import_str += f" as {alias}"
+                import_str += "\n"
 
             import_str += "\n"
 
-        import_str += "\n"
+        if len(import_aliases) > 0:
+            for alias, fqon in import_aliases.items():
+                import_str += "import "
+
+                import_str += ".".join(fqon)
+
+                if len(alias) > 0:
+                    import_str += f" as {alias}"
+
+                import_str += "\n"
+
+            import_str += "\n"
 
         output_str = fileinfo_str + import_str + objects_str
 
