@@ -847,7 +847,7 @@ class NyanMemberType:
         # Composite types
         return (
             f"{self._member_type.value}("
-            f"{', '.join(elem_type.dump() for elem_type in self._element_types)})"
+            f"{', '.join(elem_type.dump(import_tree=import_tree) for elem_type in self._element_types)})"
         )
 
     def __repr__(self):
@@ -989,7 +989,7 @@ class NyanMember:
         """
         Returns the nyan string representation of the member.
         """
-        output_str = f"{self.name} : {self._member_type.dump()}"
+        output_str = f"{self.name} : {self._member_type.dump(import_tree=import_tree)}"
 
         if self.is_initialized():
             value_str = self._get_value_str(
