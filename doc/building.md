@@ -56,6 +56,7 @@ Dependency list:
     C     pygments
        S  pylint
     CR    qt6 >=6.2 (Core, Quick, QuickControls modules)
+    CR    tomlplusplus
     CR  O vulkan
 
       A   An installed version of any of the following (wine is your friend).
@@ -79,7 +80,7 @@ described below for some of the most common ones:
 - [Ubuntu](build_instructions/ubuntu.md)
 - [Debian](build_instructions/debian.md)
 - [Fedora](build_instructions/fedora.md)
-- [openSUSE](build_instructions/opensuse_tumbleweed.md)
+- [openSUSE](build_instructions/opensuse.md)
 - [macOS](build_instructions/macos.md)
 - [Arch Linux](build_instructions/arch_linux.md)
 - [FreeBSD](build_instructions/freebsd.md)
