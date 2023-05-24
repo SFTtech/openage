@@ -8,7 +8,7 @@
 #include <vector>
 
 #include "event/time_loop.h"
-#include "gamestate/engine.h"
+#include "gamestate/simulation.h"
 #include "input/controller/camera/binding_context.h"
 #include "input/controller/camera/controller.h"
 #include "input/controller/game/binding_context.h"
