@@ -1,6 +1,6 @@
 // Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
-#include "engine.h"
+#include "simulation.h"
 
 #include "event/clock.h"
 #include "event/event_loop.h"

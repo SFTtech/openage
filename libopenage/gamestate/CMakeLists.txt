@@ -1,11 +1,11 @@
 add_sources(libopenage
     definitions.cpp
-    engine.cpp
     entity_factory.cpp
 	game_entity.cpp
     game_state.cpp
 	game.cpp
 	player.cpp
+    simulation.cpp
 	terrain_chunk.cpp
 	terrain.cpp
     types.cpp

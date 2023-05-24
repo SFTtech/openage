@@ -6,10 +6,10 @@
 #include "event/evententity.h"
 #include "event/state.h"
 #include "event/time_loop.h"
-#include "gamestate/engine.h"
 #include "gamestate/event/spawn_entity.h"
 #include "gamestate/game.h"
 #include "gamestate/game_state.h"
+#include "gamestate/simulation.h"
 #include "input/controller/game/binding_context.h"
 
 #include "coord/phys.h"

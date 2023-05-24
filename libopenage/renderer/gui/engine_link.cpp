@@ -6,7 +6,7 @@
 
 #include "error/error.h"
 
-#include "gamestate/engine.h"
+#include "gamestate/simulation.h"
 
 #include "gui/guisys/link/qml_engine_with_singleton_items_info.h"
 #include "gui/guisys/link/qtsdl_checked_static_cast.h"
