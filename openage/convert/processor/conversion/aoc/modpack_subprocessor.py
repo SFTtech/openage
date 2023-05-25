@@ -346,10 +346,6 @@ class AoCModpackSubprocessor:
              "min_heal"),
             "min_heal"
         )
-        import_tree.add_alias(
-            (modpack.name, "data", "resistance", "discrete", "flat_attribute_change"),
-            prefix + "rdisc_flac"
-        )
 
         # Modifier objects
         import_tree.add_alias(
@@ -388,12 +384,7 @@ class AoCModpackSubprocessor:
             alias_name = f"ge_{current_node.name}"
 
             for subchild in current_node.children.values():
-                if subchild.name in ("graphics", "sounds"):
-                    continue
-
-                if subchild.name == "projectiles":
-                    alias = f"{alias_name}_proj"
-                    subchild.set_alias(alias)
+                if subchild.name in ("graphics", "sounds", "projectiles"):
                     continue
 
                 if subchild.name.endswith("upgrade"):
@@ -401,12 +392,12 @@ class AoCModpackSubprocessor:
                     subchild.set_alias(alias)
                     continue
 
-                alias = f"ge_{subchild.name}"
+                # One level deeper: This should be the nyan file
+                current_node = subchild
 
-                # One level deeper: This should be a nyan object
-                current_node = list(subchild.children.values())[0]
+                alias = f"ge_{current_node.name}"
 
-                # Set the folder name as alias for the object
+                # Use the file name as alias for the file
                 current_node.set_alias(alias)
 
         fqon = (modpack.name, "data", "tech", "generic")
@@ -420,10 +411,10 @@ class AoCModpackSubprocessor:
             # These are folders and should have unique names
             alias_name = "tech_" + current_node.name
 
-            # Two levels deeper: This should be a nyan object
-            current_node = list(current_node.children[current_node.name].children.values())[0]
+            # One level deeper: This should be the nyan file
+            current_node = current_node.children[current_node.name]
 
-            # Set the folder name as alias for the object
+            # Set the folder name as alias for the file
             current_node.set_alias(alias_name)
 
         fqon = (modpack.name, "data", "civ")
@@ -437,10 +428,10 @@ class AoCModpackSubprocessor:
             # These are folders and should have unique names
             alias_name = "civ_" + current_node.name
 
-            # Two levels deeper: This should be a nyan object
-            current_node = list(current_node.children[current_node.name].children.values())[0]
+            # One level deeper: This should be the nyan file
+            current_node = current_node.children[current_node.name]
 
-            # Set the folder name as alias for the object
+            # Set the folder name as alias for the file
             current_node.set_alias(alias_name)
 
         fqon = (modpack.name, "data", "terrain")
@@ -454,8 +445,8 @@ class AoCModpackSubprocessor:
             # These are folders and should have unique names
             alias_name = "terrain_" + current_node.name
 
-            # Two levels deeper: This should be a nyan object
-            current_node = list(current_node.children[current_node.name].children.values())[0]
+            # One level deeper: This should be the nyan file
+            current_node = current_node.children[current_node.name]
 
-            # Set the folder name as alias for the object
+            # Set the folder name as alias for the file
             current_node.set_alias(alias_name)
