@@ -6,6 +6,7 @@
 #include "event/event_loop.h"
 #include "event/time_loop.h"
 
+#include "assets/mod_manager.h"
 #include "gamestate/entity_factory.h"
 #include "gamestate/event/spawn_entity.h"
 
@@ -13,8 +14,7 @@
 #include "gamestate/game.h"
 #include "gamestate/game_state.h"
 
-namespace openage {
-namespace gamestate {
+namespace openage::gamestate {
 
 GameSimulation::GameSimulation(enum mode mode,
                                const util::Path &root_dir,
@@ -27,9 +27,15 @@ GameSimulation::GameSimulation(enum mode mode,
 	time_loop{time_loop},
 	event_loop{std::make_shared<openage::event::EventLoop>()},
 	entity_factory{std::make_shared<gamestate::EntityFactory>()},
-	spawner{std::make_shared<gamestate::event::Spawner>(this->event_loop)},
-	game{std::make_shared<gamestate::Game>(root_dir, event_loop)} {
-	log::log(MSG(info) << "Created engine");
+	mod_manager{std::make_shared<assets::ModManager>()},
+	spawner{std::make_shared<gamestate::event::Spawner>(this->event_loop)} {
+	auto mods = mod_manager->enumerate_modpacks(root_dir / "assets" / "converted");
+	mod_manager->register_modpack(root_dir / "assets" / "converted" / "engine" / "modpack.toml");
+	mod_manager->load_modpacks({"engine"});
+
+	this->game = std::make_shared<gamestate::Game>(root_dir, event_loop, this->mod_manager);
+
+	log::log(MSG(info) << "Created game simulation");
 }
 
 
@@ -95,5 +101,4 @@ void GameSimulation::init_event_handlers() {
 	this->event_loop->add_event_handler(handler);
 }
 
-} // namespace gamestate
-} // namespace openage
+} // namespace openage::gamestate

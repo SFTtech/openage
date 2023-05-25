@@ -48,12 +48,6 @@ void Presenter::run() {
 
 	this->init_graphics();
 
-	if (this->simulation) {
-		auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
-		                                                                this->world_renderer);
-		this->simulation->attach_renderer(render_factory);
-	}
-
 	this->init_input();
 
 	while (not this->window->should_close()) {
@@ -143,6 +137,12 @@ void Presenter::init_graphics() {
 
 	this->init_gui();
 	this->init_final_render_pass();
+
+	if (this->simulation) {
+		auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
+		                                                                this->world_renderer);
+		this->simulation->attach_renderer(render_factory);
+	}
 }
 
 void Presenter::init_gui() {
