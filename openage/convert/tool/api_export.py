@@ -64,7 +64,7 @@ def create_modpack() -> Modpack:
 
     mod_def.set_info("engine", "0.4.0", repo="openage")
 
-    mod_def.add_include("data/*")
+    mod_def.add_include("**")
 
     create_nyan_files(modpack)
 

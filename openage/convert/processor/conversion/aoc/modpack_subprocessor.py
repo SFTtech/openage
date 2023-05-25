@@ -46,7 +46,7 @@ class AoCModpackSubprocessor:
 
         mod_def.set_info("aoe2_base", "1.0c", repo="openage")
 
-        mod_def.add_include("data/*")
+        mod_def.add_include("data/**")
 
         cls.organize_nyan_objects(modpack, full_data_set)
         cls.organize_media_objects(modpack, full_data_set)

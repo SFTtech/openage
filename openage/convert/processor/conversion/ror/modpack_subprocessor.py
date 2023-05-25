@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-few-public-methods
 
@@ -43,7 +43,7 @@ class RoRModpackSubprocessor:
 
         mod_def.set_info("aoe1_base", "1.0a", repo="openage")
 
-        mod_def.add_include("data/*")
+        mod_def.add_include("data/**")
 
         AoCModpackSubprocessor.organize_nyan_objects(modpack, full_data_set)
         AoCModpackSubprocessor.organize_media_objects(modpack, full_data_set)
