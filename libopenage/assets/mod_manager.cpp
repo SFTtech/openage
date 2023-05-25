@@ -11,7 +11,7 @@ void ModManager::register_modpack(const util::Path &info_file) {
 	this->available.emplace(info.id, info);
 }
 
-void ModManager::register_modpacks(const ModpackInfo &info) {
+void ModManager::register_modpack(const ModpackInfo &info) {
 	this->available.emplace(info.id, info);
 }
 
@@ -21,6 +21,7 @@ void ModManager::load_modpacks(const std::vector<std::string> &load_order) {
 	for (const auto &modpack_id : load_order) {
 		auto &modpack = this->available.at(modpack_id);
 		this->loaded.emplace(modpack_id, std::make_shared<Modpack>(modpack));
+		log::log(MSG(info) << "Loaded modpack: " << modpack_id);
 	}
 }
 
@@ -52,5 +53,16 @@ void ModManager::set_load_order(const std::vector<std::string> &load_order) {
 	this->load_order = load_order;
 }
 
+std::shared_ptr<Modpack> ModManager::get_modpack(const std::string &modpack_id) const {
+	if (not this->loaded.contains(modpack_id)) {
+		throw Error{MSG(err) << "Modpack not loaded: " << modpack_id};
+	}
+
+	return this->loaded.at(modpack_id);
+}
+
+const std::vector<std::string> &ModManager::get_load_order() const {
+	return this->load_order;
+}
 
 } // namespace openage::assets

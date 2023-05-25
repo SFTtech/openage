@@ -9,7 +9,8 @@
 namespace openage::assets {
 
 ModpackInfo parse_modepack_def(const util::Path &info_file) {
-	ModpackInfo def{info_file.get_parent()};
+	ModpackInfo def;
+	def.path = info_file.get_parent();
 
 	const auto modpack_def = toml::parse(info_file.resolve_native_path());
 
@@ -33,7 +34,7 @@ ModpackInfo parse_modepack_def(const util::Path &info_file) {
 
 	// optionals
 	if (info.contains("repo")) {
-		def.title = info.at("repo").as_string();
+		def.repo = info.at("repo").as_string();
 	}
 	if (info.contains("alias")) {
 		def.alias = info.at("alias").as_string();
@@ -79,7 +80,13 @@ ModpackInfo parse_modepack_def(const util::Path &info_file) {
 	if (modpack_def.contains("dependency")) {
 		const toml::table &dependency = toml::find<toml::table>(modpack_def, "dependency");
 		std::vector<std::string> deps{};
-		for (const auto &dep : dependency.at("exclude").as_array()) {
+
+		if (not dependency.contains("modpacks")) {
+			throw Error{MSG(err) << "Modpack definition file at " << info_file
+			                     << " 'dependency' table misses 'modpacks' parameter."};
+		}
+
+		for (const auto &dep : dependency.at("modpacks").as_array()) {
 			deps.push_back(dep.as_string());
 		}
 		def.dependencies = deps;
@@ -89,7 +96,13 @@ ModpackInfo parse_modepack_def(const util::Path &info_file) {
 	if (modpack_def.contains("conflict")) {
 		const toml::table &conflict = toml::find<toml::table>(modpack_def, "conflict");
 		std::vector<std::string> conflicts{};
-		for (const auto &cf : conflict.at("exclude").as_array()) {
+
+		if (not conflict.contains("modpacks")) {
+			throw Error{MSG(err) << "Modpack definition file at " << info_file
+			                     << " 'conflict' table misses 'modpacks' parameter."};
+		}
+
+		for (const auto &cf : conflict.at("modpacks").as_array()) {
 			conflicts.push_back(cf.as_string());
 		}
 		def.conflicts = conflicts;
