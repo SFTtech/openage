@@ -68,8 +68,9 @@ void Game::load_path(const util::Path &base_dir,
 
 	// file loading
 	if (search_path.is_file() && search_path.get_suffix() == ".nyan") {
-		this->db->load(mod_dir + "/" + search, fileload_func);
-		log::log(INFO << "Loaded .nyan file: " << search_path);
+		auto loc = mod_dir + "/" + search;
+		this->db->load(loc, fileload_func);
+		log::log(INFO << "Loaded .nyan file: " << loc);
 		return;
 	}
 
