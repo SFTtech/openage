@@ -124,6 +124,9 @@ class Node:
         :param alias: Alias for the node.
         :type alias: str
         """
+        if self.node_type is not NodeType.FILESYS:
+            raise Exception("Only nodes of type FILESYS can have aliases")
+
         self.alias = alias
 
 
@@ -162,9 +165,6 @@ class ImportTree:
                 return
                 # raise KeyError(f"fqon '{'.'.join(fqon)}' "
                 #               "could not be found in import tree") from err
-
-        if current_node.node_type is not NodeType.FILESYS:
-            raise Exception("Only nodes of type FILESYS can have aliases")
 
         current_node.set_alias(alias)
 
