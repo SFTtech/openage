@@ -1182,7 +1182,7 @@ class NyanMember:
             output_str += "\n"
 
             # How much space is left per formatted line
-            space_left = MAX_LINE_WIDTH - len((indent_depth + 2) * INDENT)
+            space_left = MAX_LINE_WIDTH - len((indent_depth + 1) * INDENT)
 
             # Find the longest value's length
             longest_len = len(max(stored_values, key=len))
@@ -1191,7 +1191,7 @@ class NyanMember:
             values_per_line = space_left // longest_len
             values_per_line = max(values_per_line, 1)
 
-            output_str += (indent_depth + 2) * INDENT
+            output_str += (indent_depth + 1) * INDENT
 
             val_index = 0
             end_index = len(stored_values)
@@ -1203,13 +1203,13 @@ class NyanMember:
                     output_str += ",\n"
 
                     if val_index != end_index:
-                        output_str += ((indent_depth + 2) * INDENT)
+                        output_str += ((indent_depth + 1) * INDENT)
 
                 else:
                     output_str += ", "
 
             output_str = output_str[:-2] + "\n"
-            output_str += ((indent_depth + 1) * INDENT)
+            output_str += (indent_depth * INDENT)
 
         output_str = output_str + "}"
 
