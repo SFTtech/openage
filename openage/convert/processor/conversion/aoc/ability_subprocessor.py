@@ -2227,7 +2227,7 @@ class AoCAbilitySubprocessor:
                     AoCAbilitySubprocessor.create_civ_animation(line,
                                                                 civ_group,
                                                                 civ_animation_id,
-                                                                ability_ref,
+                                                                property_ref,
                                                                 obj_prefix,
                                                                 filename_prefix,
                                                                 obj_exists)
@@ -2632,7 +2632,7 @@ class AoCAbilitySubprocessor:
                     AoCAbilitySubprocessor.create_civ_animation(line,
                                                                 civ_group,
                                                                 civ_animation_id,
-                                                                ability_ref,
+                                                                property_ref,
                                                                 obj_prefix,
                                                                 filename_prefix,
                                                                 obj_exists)
@@ -6361,7 +6361,7 @@ class AoCAbilitySubprocessor:
 
                 # TODO: State change (optional) -> speed boost
 
-                storage_def_forward_ref = ForwardRef(storage_element, storage_element_name)
+                storage_def_forward_ref = ForwardRef(line, storage_def_ref)
                 storage_element_defs.append(storage_def_forward_ref)
                 line.add_raw_api_object(storage_def_raw_api_object)
 

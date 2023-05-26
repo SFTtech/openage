@@ -156,7 +156,8 @@ class AoCModpackSubprocessor:
             ("engine", "util", "animation_override"), "animation_override"
         )
         import_tree.add_alias(("engine", "util", "attribute"), "attribute")
-        import_tree.add_alias(("engine", "util", "attribute_change_type"), "attribute_change_type")
+        import_tree.add_alias(("engine", "util", "attribute_change_type", "type"),
+                              "attribute_change_type")
         import_tree.add_alias(("engine", "util", "calculation_type", "type"), "calculation_type")
         import_tree.add_alias(("engine", "util", "setup"), "civ")
         import_tree.add_alias(("engine", "util", "convert_type"), "convert_type")

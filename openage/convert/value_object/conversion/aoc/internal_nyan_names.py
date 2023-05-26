@@ -1,4 +1,4 @@
-# Copyright 2019-2020 the openage authors. See copying.md for legal info.
+# Copyright 2019-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long
 
@@ -45,7 +45,7 @@ UNIT_LINE_LOOKUPS = {
     331: ("Trebuchet", "trebuchet"),
     420: ("CannonGalleon", "cannon_galleon"),
     440: ("Petard", "petard"),
-    448: ("LightCavalry", "light_cavalry"),
+    448: ("ScoutCavalry", "scout_cavalry"),
     527: ("DemolitionShip", "demo_ship"),
     529: ("FireTrireme", "fire_trireme"),
     539: ("Galley", "galley"),
