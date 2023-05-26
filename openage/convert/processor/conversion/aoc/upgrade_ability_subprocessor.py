@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,invalid-name
 # pylint: disable=too-many-public-methods,too-many-branches,too-many-arguments
@@ -138,15 +138,22 @@ class AoCUpgradeAbilitySubprocessor:
                         line,
                         diff_animation_id,
                         nyan_patch_ref,
+                        container_obj_ref,
                         ability_name,
                         f"{command_lookup_dict[command_id][1]}_"
                     )
                     animations_set.append(animation_forward_ref)
 
-                nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                               animations_set,
-                                                               "engine.ability.property.type.Animated",
-                                                               MemberOperator.ASSIGN)
+                # Nyan patch
+                anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
+                    converter_group,
+                    line,
+                    patch_target_ref,
+                    nyan_patch_name,
+                    container_obj_ref,
+                    animations_set,
+                )
+                patches.append(anim_patch_forward_ref)
 
             if not isinstance(diff_comm_sound, NoDiffMember):
                 sounds_set = []
@@ -157,15 +164,22 @@ class AoCUpgradeAbilitySubprocessor:
                         converter_group,
                         diff_comm_sound_id,
                         nyan_patch_ref,
+                        container_obj_ref,
                         ability_name,
                         f"{command_lookup_dict[command_id][1]}_"
                     )
                     sounds_set.append(sound_forward_ref)
 
-                nyan_patch_raw_api_object.add_raw_patch_member("sounds",
-                                                               sounds_set,
-                                                               "engine.ability.property.type.CommandSound",
-                                                               MemberOperator.ASSIGN)
+                # Nyan patch
+                sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
+                    converter_group,
+                    line,
+                    patch_target_ref,
+                    nyan_patch_name,
+                    container_obj_ref,
+                    sounds_set
+                )
+                patches.append(sound_patch_forward_ref)
 
             if not isinstance(diff_frame_delay, NoDiffMember):
                 if not isinstance(diff_animation, NoDiffMember):
@@ -313,15 +327,22 @@ class AoCUpgradeAbilitySubprocessor:
                         line,
                         diff_animation_id,
                         nyan_patch_ref,
+                        container_obj_ref,
                         ability_name,
                         f"{command_lookup_dict[command_id][1]}_"
                     )
                     animations_set.append(animation_forward_ref)
 
-                nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                               animations_set,
-                                                               "engine.ability.property.type.Animated",
-                                                               MemberOperator.ASSIGN)
+                # Nyan patch
+                anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
+                    converter_group,
+                    line,
+                    patch_target_ref,
+                    nyan_patch_name,
+                    container_obj_ref,
+                    animations_set,
+                )
+                patches.append(anim_patch_forward_ref)
 
             if not isinstance(diff_comm_sound, NoDiffMember):
                 sounds_set = []
@@ -332,15 +353,22 @@ class AoCUpgradeAbilitySubprocessor:
                         converter_group,
                         diff_comm_sound_id,
                         nyan_patch_ref,
+                        container_obj_ref,
                         ability_name,
                         f"{command_lookup_dict[command_id][1]}_"
                     )
                     sounds_set.append(sound_forward_ref)
 
-                nyan_patch_raw_api_object.add_raw_patch_member("sounds",
-                                                               sounds_set,
-                                                               "engine.ability.property.type.CommandSound",
-                                                               MemberOperator.ASSIGN)
+                # Nyan patch
+                sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
+                    converter_group,
+                    line,
+                    patch_target_ref,
+                    nyan_patch_name,
+                    container_obj_ref,
+                    sounds_set
+                )
+                patches.append(sound_patch_forward_ref)
 
             if not isinstance(diff_reload_time, NoDiffMember):
                 reload_time = diff_reload_time.value
@@ -464,7 +492,7 @@ class AoCUpgradeAbilitySubprocessor:
             percentage = diff_damage_animation["damage_percent"].ref.value
 
             patch_target_ref = (f"{game_entity_name}.AttributeChangeTracker."
-                                f"ChangeProgress{percentage}")
+                                f"ChangeProgress{percentage}.AnimationOverlay")
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
@@ -505,6 +533,7 @@ class AoCUpgradeAbilitySubprocessor:
                     line,
                     diff_animation_id,
                     nyan_patch_ref,
+                    container_obj_ref,
                     "Idle",
                     f"idle_damage_override_{percentage}_"
                 )
@@ -570,7 +599,7 @@ class AoCUpgradeAbilitySubprocessor:
         else:
             return patches
 
-        patch_target_ref = f"{game_entity_name}.Death"
+        patch_target_ref = f"{game_entity_name}.Death.Animated"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -609,6 +638,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                                    line,
                                                                                    diff_animation_id,
                                                                                    nyan_patch_ref,
+                                                                                   container_obj_ref,
                                                                                    "Death",
                                                                                    "death_")
             animations_set.append(animation_forward_ref)
@@ -673,7 +703,7 @@ class AoCUpgradeAbilitySubprocessor:
         else:
             return patches
 
-        patch_target_ref = f"{game_entity_name}.Despawn"
+        patch_target_ref = f"{game_entity_name}.Despawn.Animated"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -712,6 +742,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                                    line,
                                                                                    diff_animation_id,
                                                                                    nyan_patch_ref,
+                                                                                   container_obj_ref,
                                                                                    "Despawn",
                                                                                    "despawn_")
             animations_set.append(animation_forward_ref)
@@ -776,7 +807,7 @@ class AoCUpgradeAbilitySubprocessor:
         else:
             return patches
 
-        patch_target_ref = f"{game_entity_name}.Idle"
+        patch_target_ref = f"{game_entity_name}.Idle.Animated"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -815,6 +846,7 @@ class AoCUpgradeAbilitySubprocessor:
                                                                                    line,
                                                                                    diff_animation_id,
                                                                                    nyan_patch_ref,
+                                                                                   container_obj_ref,
                                                                                    "Idle",
                                                                                    "idle_")
             animations_set.append(animation_forward_ref)
@@ -1112,14 +1144,21 @@ class AoCUpgradeAbilitySubprocessor:
                                                                                            line,
                                                                                            diff_animation_id,
                                                                                            nyan_patch_ref,
+                                                                                           container_obj_ref,
                                                                                            "Move",
                                                                                            "move_")
                     animations_set.append(animation_forward_ref)
 
-                nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                               animations_set,
-                                                               "engine.ability.property.type.Animated",
-                                                               MemberOperator.ASSIGN)
+                # Nyan patch
+                anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
+                    converter_group,
+                    line,
+                    patch_target_ref,
+                    nyan_patch_name,
+                    container_obj_ref,
+                    animations_set,
+                )
+                patches.append(anim_patch_forward_ref)
 
             if not isinstance(diff_comm_sound, NoDiffMember):
                 sounds_set = []
@@ -1129,14 +1168,21 @@ class AoCUpgradeAbilitySubprocessor:
                     sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(converter_group,
                                                                                    diff_comm_sound_id,
                                                                                    nyan_patch_ref,
+                                                                                   container_obj_ref,
                                                                                    "Move",
                                                                                    "move_")
                     sounds_set.append(sound_forward_ref)
 
-                nyan_patch_raw_api_object.add_raw_patch_member("sounds",
-                                                               sounds_set,
-                                                               "engine.ability.property.type.CommandSound",
-                                                               MemberOperator.ASSIGN)
+                # Nyan patch
+                sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
+                    converter_group,
+                    line,
+                    patch_target_ref,
+                    nyan_patch_name,
+                    container_obj_ref,
+                    sounds_set
+                )
+                patches.append(sound_patch_forward_ref)
 
             if not isinstance(diff_move_speed, NoDiffMember):
                 diff_speed_value = diff_move_speed.value
@@ -1382,6 +1428,7 @@ class AoCUpgradeAbilitySubprocessor:
                 sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(converter_group,
                                                                                diff_selection_sound_id,
                                                                                nyan_patch_ref,
+                                                                               container_obj_ref,
                                                                                ability_name,
                                                                                "select_")
                 sounds_set.append(sound_forward_ref)
@@ -1583,15 +1630,22 @@ class AoCUpgradeAbilitySubprocessor:
                         line,
                         diff_animation_id,
                         nyan_patch_ref,
+                        container_obj_ref,
                         ability_name,
                         f"{command_lookup_dict[command_id][1]}_"
                     )
                     animations_set.append(animation_forward_ref)
 
-                nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                               animations_set,
-                                                               "engine.ability.property.type.Animated",
-                                                               MemberOperator.ASSIGN)
+                # Nyan patch
+                anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
+                    converter_group,
+                    line,
+                    patch_target_ref,
+                    nyan_patch_name,
+                    container_obj_ref,
+                    animations_set,
+                )
+                patches.append(anim_patch_forward_ref)
 
             if not isinstance(diff_comm_sound, NoDiffMember):
                 sounds_set = []
@@ -1602,15 +1656,22 @@ class AoCUpgradeAbilitySubprocessor:
                         converter_group,
                         diff_comm_sound_id,
                         nyan_patch_ref,
+                        container_obj_ref,
                         ability_name,
                         f"{command_lookup_dict[command_id][1]}_"
                     )
                     sounds_set.append(sound_forward_ref)
 
-                nyan_patch_raw_api_object.add_raw_patch_member("sounds",
-                                                               sounds_set,
-                                                               "engine.ability.property.type.CommandSound",
-                                                               MemberOperator.ASSIGN)
+                # Nyan patch
+                sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
+                    converter_group,
+                    line,
+                    patch_target_ref,
+                    nyan_patch_name,
+                    container_obj_ref,
+                    sounds_set
+                )
+                patches.append(sound_patch_forward_ref)
 
             if not isinstance(diff_min_projectiles, NoDiffMember):
                 min_projectiles = diff_min_projectiles.value
@@ -1866,6 +1927,7 @@ class AoCUpgradeAbilitySubprocessor:
         line: GenieGameEntityGroup,
         animation_id: int,
         nyan_patch_ref: str,
+        container_obj_ref: str,
         animation_name: str,
         filename_prefix: str
     ) -> ForwardRef:
@@ -1889,7 +1951,7 @@ class AoCUpgradeAbilitySubprocessor:
         animation_raw_api_object = RawAPIObject(animation_ref, animation_obj_name,
                                                 dataset.nyan_api_objects)
         animation_raw_api_object.add_raw_parent("engine.util.graphics.Animation")
-        animation_location = ForwardRef(converter_group, nyan_patch_ref)
+        animation_location = ForwardRef(converter_group, container_obj_ref)
         animation_raw_api_object.set_location(animation_location)
 
         if animation_id in dataset.combined_sprites.keys():
@@ -1925,6 +1987,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         sound_id: int,
         nyan_patch_ref: str,
+        container_obj_ref: str,
         sound_name: str,
         filename_prefix: str
     ) -> ForwardRef:
@@ -1938,7 +2001,7 @@ class AoCUpgradeAbilitySubprocessor:
         sound_raw_api_object = RawAPIObject(sound_ref, sound_obj_name,
                                             dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.util.sound.Sound")
-        sound_location = ForwardRef(converter_group, nyan_patch_ref)
+        sound_location = ForwardRef(converter_group, container_obj_ref)
         sound_raw_api_object.set_location(sound_location)
 
         # Search for the sound if it exists
@@ -2017,3 +2080,139 @@ class AoCUpgradeAbilitySubprocessor:
                 string_objs.append(string_forward_ref)
 
         return string_objs
+
+    @staticmethod
+    def create_animation_patch(
+        converter_group: ConverterObjectGroup,
+        line: ConverterObjectGroup,
+        ability_ref: str,
+        nyan_patch_name: str,
+        container_obj_ref: str,
+        animations_set: list[ForwardRef]
+    ) -> ForwardRef:
+        """
+        Create a patch for the Animated property of an ability.
+
+        :param converter_group: Converter group for storing the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param ability_ref: Reference of the ability.
+        :type ability_ref: str
+        :param nyan_patch_name: Name of the patch.
+        :type nyan_patch_name: str
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
+        :param animations_set: Set of animations to patch in.
+        :type animations_set: list[ForwardRef]
+        """
+        dataset = converter_group.data
+
+        patch_target_ref = f"{ability_ref}.Animated"
+        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
+
+        # Wrapper
+        wrapper_name = f"{nyan_patch_name}AnimationWrapper"
+        wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects)
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
+        wrapper_location = ForwardRef(converter_group, container_obj_ref)
+        wrapper_raw_api_object.set_location(wrapper_location)
+
+        # Nyan patch
+        nyan_patch_name = f"{nyan_patch_name}Animation"
+        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("animations",
+                                                       animations_set,
+                                                       "engine.ability.property.type.Animated",
+                                                       MemberOperator.ASSIGN)
+
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_forward_ref,
+                                              "engine.util.patch.Patch")
+
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+
+        return wrapper_forward_ref
+
+    @staticmethod
+    def create_command_sound_patch(
+        converter_group: ConverterObjectGroup,
+        line: ConverterObjectGroup,
+        ability_ref: str,
+        nyan_patch_name: str,
+        container_obj_ref: str,
+        sounds_set: list[ForwardRef]
+    ) -> ForwardRef:
+        """
+        Create a patch for the CommandSound property of an ability.
+
+        :param converter_group: Converter group for storing the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param line: Line that has the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :param ability_ref: Reference of the ability.
+        :type ability_ref: str
+        :param nyan_patch_name: Name of the patch.
+        :type nyan_patch_name: str
+        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :type container_obj_ref: str
+        :param sounds_set: Set of sounds to patch in.
+        :type sounds_set: list[ForwardRef]
+        """
+        dataset = converter_group.data
+
+        patch_target_ref = f"{ability_ref}.CommandSound"
+        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
+
+        # Wrapper
+        wrapper_name = f"{nyan_patch_name}CommandSoundWrapper"
+        wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
+        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                              wrapper_name,
+                                              dataset.nyan_api_objects)
+        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
+        wrapper_location = ForwardRef(converter_group, container_obj_ref)
+        wrapper_raw_api_object.set_location(wrapper_location)
+
+        # Nyan patch
+        nyan_patch_name = f"{nyan_patch_name}CommandSound"
+        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
+        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
+        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                 nyan_patch_name,
+                                                 dataset.nyan_api_objects,
+                                                 nyan_patch_location)
+        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
+        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
+
+        nyan_patch_raw_api_object.add_raw_patch_member("sounds",
+                                                       sounds_set,
+                                                       "engine.ability.property.type.CommandSound",
+                                                       MemberOperator.ASSIGN)
+
+        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
+        wrapper_raw_api_object.add_raw_member("patch",
+                                              patch_forward_ref,
+                                              "engine.util.patch.Patch")
+
+        converter_group.add_raw_api_object(wrapper_raw_api_object)
+        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+
+        return wrapper_forward_ref
