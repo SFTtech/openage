@@ -130,19 +130,6 @@ class AoCUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_animation, NoDiffMember):
                 diff_animation_id = diff_animation.value
-                animations_set = []
-                if diff_animation_id > -1:
-                    # Patch the new animation in
-                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
-                        converter_group,
-                        line,
-                        diff_animation_id,
-                        nyan_patch_ref,
-                        container_obj_ref,
-                        ability_name,
-                        f"{command_lookup_dict[command_id][1]}_"
-                    )
-                    animations_set.append(animation_forward_ref)
 
                 # Nyan patch
                 anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
@@ -151,7 +138,9 @@ class AoCUpgradeAbilitySubprocessor:
                     patch_target_ref,
                     nyan_patch_name,
                     container_obj_ref,
-                    animations_set,
+                    ability_name,
+                    f"{command_lookup_dict[command_id][1]}_",
+                    [diff_animation_id]
                 )
                 patches.append(anim_patch_forward_ref)
 
@@ -319,19 +308,6 @@ class AoCUpgradeAbilitySubprocessor:
 
             if not isinstance(diff_animation, NoDiffMember):
                 diff_animation_id = diff_animation.value
-                animations_set = []
-                if diff_animation_id > -1:
-                    # Patch the new animation in
-                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
-                        converter_group,
-                        line,
-                        diff_animation_id,
-                        nyan_patch_ref,
-                        container_obj_ref,
-                        ability_name,
-                        f"{command_lookup_dict[command_id][1]}_"
-                    )
-                    animations_set.append(animation_forward_ref)
 
                 # Nyan patch
                 anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
@@ -340,7 +316,9 @@ class AoCUpgradeAbilitySubprocessor:
                     patch_target_ref,
                     nyan_patch_name,
                     container_obj_ref,
-                    animations_set,
+                    ability_name,
+                    f"{command_lookup_dict[command_id][1]}_",
+                    [diff_animation_id]
                 )
                 patches.append(anim_patch_forward_ref)
 
@@ -533,7 +511,6 @@ class AoCUpgradeAbilitySubprocessor:
                     line,
                     diff_animation_id,
                     nyan_patch_ref,
-                    container_obj_ref,
                     "Idle",
                     f"idle_damage_override_{percentage}_"
                 )
@@ -634,13 +611,14 @@ class AoCUpgradeAbilitySubprocessor:
         animations_set = []
         if diff_animation_id > -1:
             # Patch the new animation in
-            animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(converter_group,
-                                                                                   line,
-                                                                                   diff_animation_id,
-                                                                                   nyan_patch_ref,
-                                                                                   container_obj_ref,
-                                                                                   "Death",
-                                                                                   "death_")
+            animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
+                converter_group,
+                line,
+                diff_animation_id,
+                nyan_patch_ref,
+                "Death",
+                "death_"
+            )
             animations_set.append(animation_forward_ref)
 
         nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -738,13 +716,14 @@ class AoCUpgradeAbilitySubprocessor:
         animations_set = []
         if diff_animation_id > -1:
             # Patch the new animation in
-            animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(converter_group,
-                                                                                   line,
-                                                                                   diff_animation_id,
-                                                                                   nyan_patch_ref,
-                                                                                   container_obj_ref,
-                                                                                   "Despawn",
-                                                                                   "despawn_")
+            animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
+                converter_group,
+                line,
+                diff_animation_id,
+                nyan_patch_ref,
+                "Despawn",
+                "despawn_"
+            )
             animations_set.append(animation_forward_ref)
 
         nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -842,13 +821,14 @@ class AoCUpgradeAbilitySubprocessor:
         animations_set = []
         if diff_animation_id > -1:
             # Patch the new animation in
-            animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(converter_group,
-                                                                                   line,
-                                                                                   diff_animation_id,
-                                                                                   nyan_patch_ref,
-                                                                                   container_obj_ref,
-                                                                                   "Idle",
-                                                                                   "idle_")
+            animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
+                converter_group,
+                line,
+                diff_animation_id,
+                nyan_patch_ref,
+                "Idle",
+                "idle_"
+            )
             animations_set.append(animation_forward_ref)
 
         nyan_patch_raw_api_object.add_raw_patch_member("animations",
@@ -1136,18 +1116,7 @@ class AoCUpgradeAbilitySubprocessor:
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_move_animation, NoDiffMember):
-                animations_set = []
                 diff_animation_id = diff_move_animation.value
-                if diff_animation_id > -1:
-                    # Patch the new animation in
-                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(converter_group,
-                                                                                           line,
-                                                                                           diff_animation_id,
-                                                                                           nyan_patch_ref,
-                                                                                           container_obj_ref,
-                                                                                           "Move",
-                                                                                           "move_")
-                    animations_set.append(animation_forward_ref)
 
                 # Nyan patch
                 anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
@@ -1156,7 +1125,9 @@ class AoCUpgradeAbilitySubprocessor:
                     patch_target_ref,
                     nyan_patch_name,
                     container_obj_ref,
-                    animations_set,
+                    "Move",
+                    "move_",
+                    [diff_animation_id]
                 )
                 patches.append(anim_patch_forward_ref)
 
@@ -1621,20 +1592,7 @@ class AoCUpgradeAbilitySubprocessor:
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_animation, NoDiffMember):
-                animations_set = []
                 diff_animation_id = diff_animation.value
-                if diff_animation_id > -1:
-                    # Patch the new animation in
-                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
-                        converter_group,
-                        line,
-                        diff_animation_id,
-                        nyan_patch_ref,
-                        container_obj_ref,
-                        ability_name,
-                        f"{command_lookup_dict[command_id][1]}_"
-                    )
-                    animations_set.append(animation_forward_ref)
 
                 # Nyan patch
                 anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
@@ -1643,7 +1601,9 @@ class AoCUpgradeAbilitySubprocessor:
                     patch_target_ref,
                     nyan_patch_name,
                     container_obj_ref,
-                    animations_set,
+                    ability_name,
+                    f"{command_lookup_dict[command_id][1]}_",
+                    [diff_animation_id]
                 )
                 patches.append(anim_patch_forward_ref)
 
@@ -1926,7 +1886,6 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         animation_id: int,
-        nyan_patch_ref: str,
         container_obj_ref: str,
         animation_name: str,
         filename_prefix: str
@@ -1946,7 +1905,7 @@ class AoCUpgradeAbilitySubprocessor:
             tech_id = converter_group.get_id()
             group_name = tech_lookup_dict[tech_id][1]
 
-        animation_ref = f"{nyan_patch_ref}.{animation_name}Animation"
+        animation_ref = f"{container_obj_ref}.{animation_name}Animation"
         animation_obj_name = f"{animation_name}Animation"
         animation_raw_api_object = RawAPIObject(animation_ref, animation_obj_name,
                                                 dataset.nyan_api_objects)
@@ -2085,10 +2044,12 @@ class AoCUpgradeAbilitySubprocessor:
     def create_animation_patch(
         converter_group: ConverterObjectGroup,
         line: ConverterObjectGroup,
-        ability_ref: str,
-        nyan_patch_name: str,
+        patch_target_ref: str,
+        patch_name_prefix: str,
         container_obj_ref: str,
-        animations_set: list[ForwardRef]
+        animation_name: str,
+        filename_prefix: str,
+        animation_ids: list[int]
     ) -> ForwardRef:
         """
         Create a patch for the Animated property of an ability.
@@ -2097,22 +2058,24 @@ class AoCUpgradeAbilitySubprocessor:
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param ability_ref: Reference of the ability.
-        :type ability_ref: str
-        :param nyan_patch_name: Name of the patch.
-        :type nyan_patch_name: str
-        :param container_obj_ref: Reference of the raw API object the patch is nested in.
+        :param patch_target_ref: Reference of the patch target. This should be the Animated
+                                 property of the ability.
+        :type patch_target_ref: str
+        :param patch_name_prefix: Prefix to the name of the patch.
+        :type patch_name_prefix: str
+        :param container_obj_ref: Reference of the API object that should contain the
+                                  patch as a nested object.
         :type container_obj_ref: str
-        :param animations_set: Set of animations to patch in.
-        :type animations_set: list[ForwardRef]
+        :param animations_set: IDs of the animations that are patched in.
+        :type animations_set: list[int]
         """
         dataset = converter_group.data
 
-        patch_target_ref = f"{ability_ref}.Animated"
+        patch_target_ref = f"{patch_target_ref}.Animated"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = f"{nyan_patch_name}AnimationWrapper"
+        wrapper_name = f"{patch_name_prefix}AnimationWrapper"
         wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -2122,18 +2085,33 @@ class AoCUpgradeAbilitySubprocessor:
         wrapper_raw_api_object.set_location(wrapper_location)
 
         # Nyan patch
-        nyan_patch_name = f"{nyan_patch_name}Animation"
-        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
+        patch_name_prefix = f"{patch_name_prefix}Animation"
+        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{patch_name_prefix}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
+                                                 patch_name_prefix,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
+        animations: list[ForwardRef] = []
+        for idx, anim_id in enumerate(animation_ids):
+            if anim_id < 0:
+                continue
+
+            anim_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
+                converter_group,
+                line,
+                anim_id,
+                nyan_patch_ref,
+                f"{animation_name}{idx}",
+                filename_prefix
+            )
+            animations.append(anim_forward_ref)
+
         nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                       animations_set,
+                                                       animations,
                                                        "engine.ability.property.type.Animated",
                                                        MemberOperator.ASSIGN)
 
