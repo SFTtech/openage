@@ -132,7 +132,7 @@ class AoCUpgradeAbilitySubprocessor:
                 diff_animation_id = diff_animation.value
 
                 # Nyan patch
-                anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
+                wrapper, anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
                     converter_group,
                     line,
                     patch_target_ref,
@@ -144,31 +144,35 @@ class AoCUpgradeAbilitySubprocessor:
                 )
                 patches.append(anim_patch_forward_ref)
 
+                if isinstance(line, GenieBuildingLineGroup):
+                    # Store building upgrades next to their game entity definition,
+                    # not in the Age up techs.
+                    wrapper.set_location(("data/game_entity/generic/"
+                                          f"{name_lookup_dict[head_unit_id][1]}/"))
+                    wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
+
             if not isinstance(diff_comm_sound, NoDiffMember):
-                sounds_set = []
                 diff_comm_sound_id = diff_comm_sound.value
-                if diff_comm_sound_id > -1:
-                    # Patch the new sound in
-                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(
-                        converter_group,
-                        diff_comm_sound_id,
-                        nyan_patch_ref,
-                        container_obj_ref,
-                        ability_name,
-                        f"{command_lookup_dict[command_id][1]}_"
-                    )
-                    sounds_set.append(sound_forward_ref)
 
                 # Nyan patch
-                sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
+                wrapper, sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
                     converter_group,
                     line,
                     patch_target_ref,
                     nyan_patch_name,
                     container_obj_ref,
-                    sounds_set
+                    ability_name,
+                    f"{command_lookup_dict[command_id][1]}_",
+                    [diff_comm_sound_id]
                 )
                 patches.append(sound_patch_forward_ref)
+
+                if isinstance(line, GenieBuildingLineGroup):
+                    # Store building upgrades next to their game entity definition,
+                    # not in the Age up techs.
+                    wrapper.set_location(("data/game_entity/generic/"
+                                          f"{name_lookup_dict[head_unit_id][1]}/"))
+                    wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             if not isinstance(diff_frame_delay, NoDiffMember):
                 if not isinstance(diff_animation, NoDiffMember):
@@ -310,7 +314,7 @@ class AoCUpgradeAbilitySubprocessor:
                 diff_animation_id = diff_animation.value
 
                 # Nyan patch
-                anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
+                wrapper, anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
                     converter_group,
                     line,
                     patch_target_ref,
@@ -322,31 +326,35 @@ class AoCUpgradeAbilitySubprocessor:
                 )
                 patches.append(anim_patch_forward_ref)
 
+                if isinstance(line, GenieBuildingLineGroup):
+                    # Store building upgrades next to their game entity definition,
+                    # not in the Age up techs.
+                    wrapper.set_location(("data/game_entity/generic/"
+                                          f"{name_lookup_dict[head_unit_id][1]}/"))
+                    wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
+
             if not isinstance(diff_comm_sound, NoDiffMember):
-                sounds_set = []
                 diff_comm_sound_id = diff_comm_sound.value
-                if diff_comm_sound_id > -1:
-                    # Patch the new sound in
-                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(
-                        converter_group,
-                        diff_comm_sound_id,
-                        nyan_patch_ref,
-                        container_obj_ref,
-                        ability_name,
-                        f"{command_lookup_dict[command_id][1]}_"
-                    )
-                    sounds_set.append(sound_forward_ref)
 
                 # Nyan patch
-                sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
+                wrapper, sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
                     converter_group,
                     line,
                     patch_target_ref,
                     nyan_patch_name,
                     container_obj_ref,
-                    sounds_set
+                    ability_name,
+                    f"{command_lookup_dict[command_id][1]}_",
+                    [diff_comm_sound_id]
                 )
                 patches.append(sound_patch_forward_ref)
+
+                if isinstance(line, GenieBuildingLineGroup):
+                    # Store building upgrades next to their game entity definition,
+                    # not in the Age up techs.
+                    wrapper.set_location(("data/game_entity/generic/"
+                                          f"{name_lookup_dict[head_unit_id][1]}/"))
+                    wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             if not isinstance(diff_reload_time, NoDiffMember):
                 reload_time = diff_reload_time.value
@@ -576,66 +584,28 @@ class AoCUpgradeAbilitySubprocessor:
         else:
             return patches
 
-        patch_target_ref = f"{game_entity_name}.Death.Animated"
-        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
+        patch_target_ref = f"{game_entity_name}.Death"
+        nyan_patch_name = f"Change{game_entity_name}Death"
 
-        # Wrapper
-        wrapper_name = f"Change{game_entity_name}DeathAnimationWrapper"
-        wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects)
-        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
+        # Nyan patch
+        wrapper, anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
+            converter_group,
+            line,
+            patch_target_ref,
+            nyan_patch_name,
+            container_obj_ref,
+            "Death",
+            "death_",
+            [diff_animation_id]
+        )
+        patches.append(anim_patch_forward_ref)
 
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
-            wrapper_raw_api_object.set_location(("data/game_entity/generic/"
-                                                 f"{name_lookup_dict[head_unit_id][1]}/"))
-            wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
-
-        else:
-            wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
-
-        # Nyan patch
-        nyan_patch_name = f"Change{game_entity_name}DeathAnimation"
-        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
-        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
-
-        animations_set = []
-        if diff_animation_id > -1:
-            # Patch the new animation in
-            animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
-                converter_group,
-                line,
-                diff_animation_id,
-                nyan_patch_ref,
-                "Death",
-                "death_"
-            )
-            animations_set.append(animation_forward_ref)
-
-        nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                       animations_set,
-                                                       "engine.ability.property.type.Animated",
-                                                       MemberOperator.ASSIGN)
-
-        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
-
-        converter_group.add_raw_api_object(wrapper_raw_api_object)
-        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
-
-        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
-        patches.append(wrapper_forward_ref)
+            wrapper.set_location(("data/game_entity/generic/"
+                                  f"{name_lookup_dict[head_unit_id][1]}/"))
+            wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         return patches
 
@@ -681,66 +651,28 @@ class AoCUpgradeAbilitySubprocessor:
         else:
             return patches
 
-        patch_target_ref = f"{game_entity_name}.Despawn.Animated"
-        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
+        patch_target_ref = f"{game_entity_name}.Despawn"
+        nyan_patch_name = f"Change{game_entity_name}Despawn"
 
-        # Wrapper
-        wrapper_name = f"Change{game_entity_name}DespawnAnimationWrapper"
-        wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects)
-        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
+        # Nyan patch
+        wrapper, anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
+            converter_group,
+            line,
+            patch_target_ref,
+            nyan_patch_name,
+            container_obj_ref,
+            "Despawn",
+            "despawn_",
+            [diff_animation_id]
+        )
+        patches.append(anim_patch_forward_ref)
 
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
-            wrapper_raw_api_object.set_location(("data/game_entity/generic/"
-                                                 f"{name_lookup_dict[head_unit_id][1]}/"))
-            wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
-
-        else:
-            wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
-
-        # Nyan patch
-        nyan_patch_name = f"Change{game_entity_name}DespawnAnimation"
-        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
-        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
-
-        animations_set = []
-        if diff_animation_id > -1:
-            # Patch the new animation in
-            animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
-                converter_group,
-                line,
-                diff_animation_id,
-                nyan_patch_ref,
-                "Despawn",
-                "despawn_"
-            )
-            animations_set.append(animation_forward_ref)
-
-        nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                       animations_set,
-                                                       "engine.ability.property.type.Animated",
-                                                       MemberOperator.ASSIGN)
-
-        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
-
-        converter_group.add_raw_api_object(wrapper_raw_api_object)
-        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
-
-        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
-        patches.append(wrapper_forward_ref)
+            wrapper.set_location(("data/game_entity/generic/"
+                                  f"{name_lookup_dict[head_unit_id][1]}/"))
+            wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         return patches
 
@@ -786,66 +718,28 @@ class AoCUpgradeAbilitySubprocessor:
         else:
             return patches
 
-        patch_target_ref = f"{game_entity_name}.Idle.Animated"
-        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
+        patch_target_ref = f"{game_entity_name}.Idle"
+        nyan_patch_name = f"Change{game_entity_name}Idle"
 
-        # Wrapper
-        wrapper_name = f"Change{game_entity_name}IdleAnimationWrapper"
-        wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects)
-        wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
+        # Nyan patch
+        wrapper, anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
+            converter_group,
+            line,
+            patch_target_ref,
+            nyan_patch_name,
+            container_obj_ref,
+            "Idle",
+            "idle_",
+            [diff_animation_id]
+        )
+        patches.append(anim_patch_forward_ref)
 
         if isinstance(line, GenieBuildingLineGroup):
             # Store building upgrades next to their game entity definition,
             # not in the Age up techs.
-            wrapper_raw_api_object.set_location(("data/game_entity/generic/"
-                                                 f"{name_lookup_dict[head_unit_id][1]}/"))
-            wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
-
-        else:
-            wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
-
-        # Nyan patch
-        nyan_patch_name = f"Change{game_entity_name}IdleAnimation"
-        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
-        nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
-        nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
-        nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
-
-        animations_set = []
-        if diff_animation_id > -1:
-            # Patch the new animation in
-            animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
-                converter_group,
-                line,
-                diff_animation_id,
-                nyan_patch_ref,
-                "Idle",
-                "idle_"
-            )
-            animations_set.append(animation_forward_ref)
-
-        nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                       animations_set,
-                                                       "engine.ability.property.type.Animated",
-                                                       MemberOperator.ASSIGN)
-
-        patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
-
-        converter_group.add_raw_api_object(wrapper_raw_api_object)
-        converter_group.add_raw_api_object(nyan_patch_raw_api_object)
-
-        wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
-        patches.append(wrapper_forward_ref)
+            wrapper.set_location(("data/game_entity/generic/"
+                                  f"{name_lookup_dict[head_unit_id][1]}/"))
+            wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         return patches
 
@@ -1119,7 +1013,7 @@ class AoCUpgradeAbilitySubprocessor:
                 diff_animation_id = diff_move_animation.value
 
                 # Nyan patch
-                anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
+                wrapper, anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
                     converter_group,
                     line,
                     patch_target_ref,
@@ -1131,29 +1025,35 @@ class AoCUpgradeAbilitySubprocessor:
                 )
                 patches.append(anim_patch_forward_ref)
 
+                if isinstance(line, GenieBuildingLineGroup):
+                    # Store building upgrades next to their game entity definition,
+                    # not in the Age up techs.
+                    wrapper.set_location(("data/game_entity/generic/"
+                                          f"{name_lookup_dict[head_unit_id][1]}/"))
+                    wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
+
             if not isinstance(diff_comm_sound, NoDiffMember):
-                sounds_set = []
                 diff_comm_sound_id = diff_comm_sound.value
-                if diff_comm_sound_id > -1:
-                    # Patch the new sound in
-                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(converter_group,
-                                                                                   diff_comm_sound_id,
-                                                                                   nyan_patch_ref,
-                                                                                   container_obj_ref,
-                                                                                   "Move",
-                                                                                   "move_")
-                    sounds_set.append(sound_forward_ref)
 
                 # Nyan patch
-                sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
+                wrapper, sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
                     converter_group,
                     line,
                     patch_target_ref,
                     nyan_patch_name,
                     container_obj_ref,
-                    sounds_set
+                    "Move",
+                    "move_",
+                    [diff_comm_sound_id]
                 )
                 patches.append(sound_patch_forward_ref)
+
+                if isinstance(line, GenieBuildingLineGroup):
+                    # Store building upgrades next to their game entity definition,
+                    # not in the Age up techs.
+                    wrapper.set_location(("data/game_entity/generic/"
+                                          f"{name_lookup_dict[head_unit_id][1]}/"))
+                    wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             if not isinstance(diff_move_speed, NoDiffMember):
                 diff_speed_value = diff_move_speed.value
@@ -1360,65 +1260,29 @@ class AoCUpgradeAbilitySubprocessor:
 
         if changed:
             patch_target_ref = f"{game_entity_name}.{ability_name}"
-            patch_target_forward_ref = ForwardRef(line, patch_target_ref)
+            nyan_patch_name = f"Change{game_entity_name}{ability_name}"
 
-            # Wrapper
-            wrapper_name = f"Change{game_entity_name}{ability_name}Wrapper"
-            wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
-            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                                  wrapper_name,
-                                                  dataset.nyan_api_objects)
-            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
+            # Change sound
+            diff_selection_sound_id = diff_selection_sound.value
+            # Nyan patch
+            wrapper, sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
+                converter_group,
+                line,
+                patch_target_ref,
+                nyan_patch_name,
+                container_obj_ref,
+                ability_name,
+                "select_",
+                [diff_selection_sound_id]
+            )
+            patches.append(sound_patch_forward_ref)
 
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper_raw_api_object.set_location(("data/game_entity/generic/"
-                                                     f"{name_lookup_dict[head_unit_id][1]}/"))
-                wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
-
-            else:
-                wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
-
-            # Nyan patch
-            nyan_patch_name = f"Change{game_entity_name}{ability_name}"
-            nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
-            nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                     nyan_patch_name,
-                                                     dataset.nyan_api_objects,
-                                                     nyan_patch_location)
-            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
-            nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
-
-            # Change sound
-            diff_selection_sound_id = diff_selection_sound.value
-            sounds_set = []
-            if diff_selection_sound_id > -1:
-                # Patch the new sound in
-                sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(converter_group,
-                                                                               diff_selection_sound_id,
-                                                                               nyan_patch_ref,
-                                                                               container_obj_ref,
-                                                                               ability_name,
-                                                                               "select_")
-                sounds_set.append(sound_forward_ref)
-
-            nyan_patch_raw_api_object.add_raw_patch_member("sounds",
-                                                           sounds_set,
-                                                           "engine.ability.property.type.CommandSound",
-                                                           MemberOperator.ASSIGN)
-
-            patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-            wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_forward_ref,
-                                                  "engine.util.patch.Patch")
-
-            converter_group.add_raw_api_object(wrapper_raw_api_object)
-            converter_group.add_raw_api_object(nyan_patch_raw_api_object)
-
-            wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
-            patches.append(wrapper_forward_ref)
+                wrapper.set_location(("data/game_entity/generic/"
+                                      f"{name_lookup_dict[head_unit_id][1]}/"))
+                wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         # Second patch: Selection box
         changed = False
@@ -1595,7 +1459,7 @@ class AoCUpgradeAbilitySubprocessor:
                 diff_animation_id = diff_animation.value
 
                 # Nyan patch
-                anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
+                wrapper, anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
                     converter_group,
                     line,
                     patch_target_ref,
@@ -1607,31 +1471,35 @@ class AoCUpgradeAbilitySubprocessor:
                 )
                 patches.append(anim_patch_forward_ref)
 
+                if isinstance(line, GenieBuildingLineGroup):
+                    # Store building upgrades next to their game entity definition,
+                    # not in the Age up techs.
+                    wrapper.set_location(("data/game_entity/generic/"
+                                          f"{name_lookup_dict[head_unit_id][1]}/"))
+                    wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
+
             if not isinstance(diff_comm_sound, NoDiffMember):
-                sounds_set = []
                 diff_comm_sound_id = diff_comm_sound.value
-                if diff_comm_sound_id > -1:
-                    # Patch the new sound in
-                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(
-                        converter_group,
-                        diff_comm_sound_id,
-                        nyan_patch_ref,
-                        container_obj_ref,
-                        ability_name,
-                        f"{command_lookup_dict[command_id][1]}_"
-                    )
-                    sounds_set.append(sound_forward_ref)
 
                 # Nyan patch
-                sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
+                wrapper, sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
                     converter_group,
                     line,
                     patch_target_ref,
                     nyan_patch_name,
                     container_obj_ref,
-                    sounds_set
+                    ability_name,
+                    f"{command_lookup_dict[command_id][1]}_",
+                    [diff_comm_sound_id]
                 )
                 patches.append(sound_patch_forward_ref)
+
+                if isinstance(line, GenieBuildingLineGroup):
+                    # Store building upgrades next to their game entity definition,
+                    # not in the Age up techs.
+                    wrapper.set_location(("data/game_entity/generic/"
+                                          f"{name_lookup_dict[head_unit_id][1]}/"))
+                    wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             if not isinstance(diff_min_projectiles, NoDiffMember):
                 min_projectiles = diff_min_projectiles.value
@@ -1945,7 +1813,6 @@ class AoCUpgradeAbilitySubprocessor:
     def create_sound(
         converter_group: ConverterObjectGroup,
         sound_id: int,
-        nyan_patch_ref: str,
         container_obj_ref: str,
         sound_name: str,
         filename_prefix: str
@@ -1955,7 +1822,7 @@ class AoCUpgradeAbilitySubprocessor:
         """
         dataset = converter_group.data
 
-        sound_ref = f"{nyan_patch_ref}.{sound_name}Sound"
+        sound_ref = f"{container_obj_ref}.{sound_name}Sound"
         sound_obj_name = f"{sound_name}Sound"
         sound_raw_api_object = RawAPIObject(sound_ref, sound_obj_name,
                                             dataset.nyan_api_objects)
@@ -2044,13 +1911,13 @@ class AoCUpgradeAbilitySubprocessor:
     def create_animation_patch(
         converter_group: ConverterObjectGroup,
         line: ConverterObjectGroup,
-        patch_target_ref: str,
+        ability_ref: str,
         patch_name_prefix: str,
         container_obj_ref: str,
-        animation_name: str,
+        animation_name_prefix: str,
         filename_prefix: str,
         animation_ids: list[int]
-    ) -> ForwardRef:
+    ) -> tuple[RawAPIObject, ForwardRef]:
         """
         Create a patch for the Animated property of an ability.
 
@@ -2058,21 +1925,24 @@ class AoCUpgradeAbilitySubprocessor:
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param patch_target_ref: Reference of the patch target. This should be the Animated
-                                 property of the ability.
-        :type patch_target_ref: str
+        :param ability_ref: Reference of the ability that has the Animated property.
+        :type ability_ref: str
         :param patch_name_prefix: Prefix to the name of the patch.
         :type patch_name_prefix: str
         :param container_obj_ref: Reference of the API object that should contain the
                                   patch as a nested object.
         :type container_obj_ref: str
-        :param animations_set: IDs of the animations that are patched in.
-        :type animations_set: list[int]
+        :param animation_name_prefix: Prefix to the name of the animation.
+        :type animation_name_prefix: str
+        :param filename_prefix: Prefix to the filename of the animation.
+        :type filename_prefix: str
+        :param animation_ids: IDs of the animations to patch in.
+        :type animation_ids: list[int]
         """
         dataset = converter_group.data
 
-        patch_target_ref = f"{patch_target_ref}.Animated"
-        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
+        ability_ref = f"{ability_ref}.Animated"
+        patch_target_forward_ref = ForwardRef(line, ability_ref)
 
         # Wrapper
         wrapper_name = f"{patch_name_prefix}AnimationWrapper"
@@ -2085,11 +1955,11 @@ class AoCUpgradeAbilitySubprocessor:
         wrapper_raw_api_object.set_location(wrapper_location)
 
         # Nyan patch
-        patch_name_prefix = f"{patch_name_prefix}Animation"
-        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{patch_name_prefix}"
+        nyan_patch_name = f"{patch_name_prefix}Animation"
+        nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 patch_name_prefix,
+                                                 nyan_patch_name,
                                                  dataset.nyan_api_objects,
                                                  nyan_patch_location)
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
@@ -2100,12 +1970,19 @@ class AoCUpgradeAbilitySubprocessor:
             if anim_id < 0:
                 continue
 
+            if len(animation_ids) == 1:
+                # don't append index if there is only one animation
+                anim_obj_name = animation_name_prefix
+
+            else:
+                anim_obj_name = f"{animation_name_prefix}{idx}"
+
             anim_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
                 converter_group,
                 line,
                 anim_id,
                 nyan_patch_ref,
-                f"{animation_name}{idx}",
+                anim_obj_name,
                 filename_prefix
             )
             animations.append(anim_forward_ref)
@@ -2125,17 +2002,19 @@ class AoCUpgradeAbilitySubprocessor:
 
         wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
 
-        return wrapper_forward_ref
+        return wrapper_raw_api_object, wrapper_forward_ref
 
     @staticmethod
     def create_command_sound_patch(
         converter_group: ConverterObjectGroup,
         line: ConverterObjectGroup,
         ability_ref: str,
-        nyan_patch_name: str,
+        patch_name_prefix: str,
         container_obj_ref: str,
-        sounds_set: list[ForwardRef]
-    ) -> ForwardRef:
+        sound_name_prefix: str,
+        filename_prefix: str,
+        sound_ids: list[int]
+    ) -> tuple[RawAPIObject, ForwardRef]:
         """
         Create a patch for the CommandSound property of an ability.
 
@@ -2143,14 +2022,6 @@ class AoCUpgradeAbilitySubprocessor:
         :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
         :param line: Line that has the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :param ability_ref: Reference of the ability.
-        :type ability_ref: str
-        :param nyan_patch_name: Name of the patch.
-        :type nyan_patch_name: str
-        :param container_obj_ref: Reference of the raw API object the patch is nested in.
-        :type container_obj_ref: str
-        :param sounds_set: Set of sounds to patch in.
-        :type sounds_set: list[ForwardRef]
         """
         dataset = converter_group.data
 
@@ -2158,7 +2029,7 @@ class AoCUpgradeAbilitySubprocessor:
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
-        wrapper_name = f"{nyan_patch_name}CommandSoundWrapper"
+        wrapper_name = f"{patch_name_prefix}CommandSoundWrapper"
         wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
         wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                               wrapper_name,
@@ -2168,7 +2039,7 @@ class AoCUpgradeAbilitySubprocessor:
         wrapper_raw_api_object.set_location(wrapper_location)
 
         # Nyan patch
-        nyan_patch_name = f"{nyan_patch_name}CommandSound"
+        nyan_patch_name = f"{patch_name_prefix}CommandSound"
         nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
         nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
@@ -2178,8 +2049,29 @@ class AoCUpgradeAbilitySubprocessor:
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
+        sounds: list[ForwardRef] = []
+        for idx, sound_id in enumerate(sound_ids):
+            if sound_id < 0:
+                continue
+
+            if len(sound_ids) == 1:
+                # don't append index if there is only one sound
+                sound_obj_name = sound_name_prefix
+
+            else:
+                sound_obj_name = f"{sound_name_prefix}{idx}"
+
+            sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(
+                converter_group,
+                sound_id,
+                nyan_patch_ref,
+                sound_obj_name,
+                filename_prefix
+            )
+            sounds.append(sound_forward_ref)
+
         nyan_patch_raw_api_object.add_raw_patch_member("sounds",
-                                                       sounds_set,
+                                                       sounds,
                                                        "engine.ability.property.type.CommandSound",
                                                        MemberOperator.ASSIGN)
 
@@ -2193,4 +2085,4 @@ class AoCUpgradeAbilitySubprocessor:
 
         wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
 
-        return wrapper_forward_ref
+        return wrapper_raw_api_object, wrapper_forward_ref
