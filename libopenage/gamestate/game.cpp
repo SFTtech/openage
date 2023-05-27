@@ -63,14 +63,15 @@ void Game::load_path(const util::Path &base_dir,
 	auto fileload_func = [&base_path, &mod_dir](const std::string &filename) {
 		// nyan wants a string filepath, so we have to construct it from the
 		// path and subpath parameters
-		return std::make_shared<nyan::File>(base_path + "/" + filename);
+		log::log(INFO << "Loading .nyan file: " << mod_dir + "/" + filename);
+		auto loc = base_path + "/" + filename;
+		return std::make_shared<nyan::File>(loc);
 	};
 
 	// file loading
 	if (search_path.is_file() && search_path.get_suffix() == ".nyan") {
 		auto loc = mod_dir + "/" + search;
 		this->db->load(loc, fileload_func);
-		log::log(INFO << "Loaded .nyan file: " << loc);
 		return;
 	}
 
