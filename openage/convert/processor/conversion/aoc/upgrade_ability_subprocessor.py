@@ -587,6 +587,15 @@ class AoCUpgradeAbilitySubprocessor:
             if isinstance(diff_animation, NoDiffMember):
                 return patches
 
+            # TODO: If the head unit has an invalid -1 graphic, it doesnt get the Animated
+            #       property for the ability in the ability subprocessor, so
+            #       we can't patch it here.
+            #
+            #       We have to find a solution for this, e.g. patch in the Animated ability
+            #       here or in the ability subprocessor.
+            if line.get_head_unit()["dying_graphic"].value == -1:
+                return patches
+
             diff_animation_id = diff_animation.value
 
         else:
@@ -656,6 +665,21 @@ class AoCUpgradeAbilitySubprocessor:
 
             diff_animation_id = dataset.genie_units[diff_dead_unit.value]["idle_graphic0"].value
 
+            # TODO: If the head unit has an invalid -1 graphic, it doesnt get the Animated
+            #       property for the ability in the ability subprocessor, so
+            #       we can't patch it here.
+            #
+            #       We have to find a solution for this, e.g. patch in the Animated ability
+            #       here or in the ability subprocessor.
+            dead_unit_id = line.get_head_unit()["dead_unit_id"].value
+            if dead_unit_id == -1:
+                return patches
+
+            dead_unit = dataset.genie_units[dead_unit_id]
+            dead_unit_animation_id = dead_unit["idle_graphic0"].value
+            if dead_unit_animation_id == -1:
+                return patches
+
         else:
             return patches
 
@@ -719,6 +743,15 @@ class AoCUpgradeAbilitySubprocessor:
         if diff:
             diff_animation = diff["idle_graphic0"]
             if isinstance(diff_animation, NoDiffMember):
+                return patches
+
+            # TODO: If the head unit has an invalid -1 graphic, it doesnt get the Animated
+            #       property for the ability in the ability subprocessor, so
+            #       we can't patch it here.
+            #
+            #       We have to find a solution for this, e.g. patch in the Animated ability
+            #       here or in the ability subprocessor.
+            if line.get_head_unit()["idle_graphic0"].value == -1:
                 return patches
 
             diff_animation_id = diff_animation.value

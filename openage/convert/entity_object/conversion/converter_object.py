@@ -247,7 +247,7 @@ class ConverterObjectGroup:
                                              push_object.get_push_value(),
                                              push_object.get_member_origin())
 
-    def get_raw_api_object(self, obj_id: RawAPIObject) -> RawAPIObject:
+    def get_raw_api_object(self, obj_id: str) -> RawAPIObject:
         """
         Returns a subobject of the object.
         """
@@ -255,8 +255,8 @@ class ConverterObjectGroup:
             return self.raw_api_objects[obj_id]
 
         except KeyError as missing_raw_api_obj:
-            raise KeyError(f"{repr(self)}: Could not find raw API object "
-                           "with obj_id {obj_id}") from missing_raw_api_obj
+            raise Exception(f"{repr(self)}: Could not find raw API object "
+                            f"with obj_id {obj_id}") from missing_raw_api_obj
 
     def get_raw_api_objects(self) -> dict[str, RawAPIObject]:
         """
