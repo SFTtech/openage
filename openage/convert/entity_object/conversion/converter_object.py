@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-202 the openage authors. See copying.md for legal info.
 
 # pylint: disable=too-many-instance-attributes,too-many-branches,too-few-public-methods
 
@@ -247,7 +247,7 @@ class ConverterObjectGroup:
                                              push_object.get_push_value(),
                                              push_object.get_member_origin())
 
-    def get_raw_api_object(self, obj_id: RawAPIObject) -> RawAPIObject:
+    def get_raw_api_object(self, obj_id: str) -> RawAPIObject:
         """
         Returns a subobject of the object.
         """
@@ -256,7 +256,7 @@ class ConverterObjectGroup:
 
         except KeyError as missing_raw_api_obj:
             raise Exception(f"{repr(self)}: Could not find raw API object "
-                            "with obj_id {obj_id}") from missing_raw_api_obj
+                            f"with obj_id {obj_id}") from missing_raw_api_obj
 
     def get_raw_api_objects(self) -> dict[str, RawAPIObject]:
         """
