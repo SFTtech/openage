@@ -1,7 +1,7 @@
 // Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "profiler.h"
-#include "../engine.h"
+#include "../legacy_engine.h"
 #include "../renderer/color.h"
 #include "misc.h"
 

@@ -9,11 +9,11 @@
 #include <sys/types.h>
 
 #include "../../console/console.h"
-#include "../../engine.h"
 #include "../../gamedata/color_dummy.h"
 #include "../../gamestate/old/game_main.h"
 #include "../../gamestate/old/game_spec.h"
 #include "../../input/legacy/input_manager.h"
+#include "../../legacy_engine.h"
 #include "../../log/log.h"
 #include "../../renderer/text.h"
 #include "../../unit/action.h"

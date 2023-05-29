@@ -2,9 +2,9 @@
 
 #include "game_control.h"
 
-#include "engine.h"
 #include "error/error.h"
 #include "gamestate/old/game_spec.h"
+#include "legacy_engine.h"
 #include "log/log.h"
 #include "renderer/color.h"
 #include "terrain/terrain_chunk.h"

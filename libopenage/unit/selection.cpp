@@ -6,7 +6,7 @@
 #include <cmath>
 
 #include "../coord/tile.h"
-#include "../engine.h"
+#include "../legacy_engine.h"
 #include "../log/log.h"
 #include "../renderer/text.h"
 #include "../terrain/terrain.h"

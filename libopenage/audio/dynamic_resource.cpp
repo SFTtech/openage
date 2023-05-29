@@ -1,18 +1,17 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "dynamic_resource.h"
 
 
-#include "audio_manager.h"
-#include "../engine.h"
 #include "../job/job_manager.h"
+#include "../legacy_engine.h"
 #include "../log/log.h"
+#include "audio_manager.h"
 
 namespace openage::audio {
 
 chunk_info_t::chunk_info_t(chunk_info_t::state_t state,
-                           size_t buffer_size)
-	:
+                           size_t buffer_size) :
 	state{state},
 	size{0},
 	buffer{std::make_unique<int16_t[]>(buffer_size)} {}
@@ -25,8 +24,7 @@ DynamicResource::DynamicResource(AudioManager *manager,
                                  format_t format,
                                  int preload_amount,
                                  size_t chunk_size,
-                                 size_t max_chunks)
-	:
+                                 size_t max_chunks) :
 	Resource{manager, category, id},
 	path{path},
 	format{format},
@@ -49,9 +47,7 @@ void DynamicResource::use() {
 			this->decay_queue.push(
 				std::make_shared<chunk_info_t>(
 					chunk_info_t::state_t::EMPTY,
-					this->chunk_size
-				)
-			);
+					this->chunk_size));
 		}
 
 		// create loader
@@ -96,7 +92,8 @@ audio_chunk_t DynamicResource::get_data(size_t position, size_t data_length) {
 			// calculate actual data length
 			if (chunk_info->size - chunk_offset >= data_length) {
 				return {data, data_length};
-			} else {
+			}
+			else {
 				return {data, chunk_info->size - chunk_offset};
 			}
 		}
@@ -178,13 +175,14 @@ void DynamicResource::load_chunk_async(const std::shared_ptr<chunk_info_t> &chun
 
 	ENSURE(this->loader, "tried to load chunk without audio loader!");
 
-	auto loading_function = [this,chunk_info,resource_chunk_offset]() -> int {
+	auto loading_function = [this, chunk_info, resource_chunk_offset]() -> int {
 		int16_t *buffer = chunk_info->buffer.get();
 		size_t loaded = this->loader->load_chunk(buffer, resource_chunk_offset, this->chunk_size);
 		if (loaded == 0) {
 			chunk_info->state.store(chunk_info_t::state_t::EMPTY);
 			this->decay_queue.push(chunk_info);
-		} else {
+		}
+		else {
 			chunk_info->state.store(chunk_info_t::state_t::READY);
 			chunk_info->size = loaded;
 			this->decay_queue.push(chunk_info);

@@ -6,7 +6,7 @@
 
 #include "gui.h"
 
-#include "../engine.h"
+#include "../legacy_engine.h"
 #include "../util/path.h"
 #include "engine_info.h"
 

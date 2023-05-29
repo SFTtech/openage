@@ -1,16 +1,16 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 #include "terrain_chunk.h"
 
 #include <cmath>
 
-#include "../error/error.h"
-#include "../log/log.h"
-#include "../engine.h"
-#include "../texture.h"
-#include "../coord/tile.h"
 #include "../coord/phys.h"
 #include "../coord/pixel.h"
+#include "../coord/tile.h"
+#include "../error/error.h"
+#include "../legacy_engine.h"
+#include "../log/log.h"
+#include "../texture.h"
 #include "../util/misc.h"
 
 #include "terrain.h"
@@ -19,8 +19,7 @@
 namespace openage {
 
 
-TerrainChunk::TerrainChunk()
-	:
+TerrainChunk::TerrainChunk() :
 	manually_created{true} {
 	this->tile_count = std::pow(chunk_size, 2);
 
@@ -33,9 +32,9 @@ TerrainChunk::TerrainChunk()
 		this->neighbors.neighbor[i] = nullptr;
 	}
 
-	log::log(MSG(dbg) << "Terrain chunk created: " <<
-		"size=" << chunk_size << ", " <<
-		"tiles=" << this->tile_count);
+	log::log(MSG(dbg) << "Terrain chunk created: "
+	                  << "size=" << chunk_size << ", "
+	                  << "tiles=" << this->tile_count);
 }
 
 
@@ -61,7 +60,6 @@ TileContent *TerrainChunk::get_data_neigh(coord::tile_delta pos) {
 
 	// if the location is not on the current chunk, the neighbor id is != -1
 	if (neighbor_id != -1) {
-
 		// get the chunk where the requested neighbor tile lies on.
 		TerrainChunk *neigh_chunk = this->neighbors.neighbor[neighbor_id];
 
@@ -160,8 +158,9 @@ int TerrainChunk::neighbor_id_by_pos(coord::tile_delta pos) {
 size_t TerrainChunk::tile_position(coord::tile_delta pos) {
 	if (this->neighbor_id_by_pos(pos) != -1) {
 		throw Error(MSG(err) << "Tile "
-			"(" << pos.ne << ", " << pos.se << ") "
-			"has been requested, but is not part of this chunk.");
+		                        "("
+		                     << pos.ne << ", " << pos.se << ") "
+		                                                    "has been requested, but is not part of this chunk.");
 	}
 
 	return pos.se * chunk_size + pos.ne;

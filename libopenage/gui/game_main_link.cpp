@@ -4,7 +4,7 @@
 
 #include <QtQml>
 
-#include "../engine.h"
+#include "../legacy_engine.h"
 #include "engine_link.h"
 
 namespace openage::gui {
