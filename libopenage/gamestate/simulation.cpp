@@ -32,7 +32,7 @@ GameSimulation::GameSimulation(enum mode mode,
 	auto mods = mod_manager->enumerate_modpacks(root_dir / "assets" / "converted");
 	mod_manager->register_modpack(root_dir / "assets" / "converted" / "engine" / "modpack.toml");
 	mod_manager->register_modpack(root_dir / "assets" / "converted" / "aoe2_base" / "modpack.toml");
-	mod_manager->load_modpacks({"engine", "aoe2_base"});
+	mod_manager->activate_modpacks({"engine", "aoe2_base"});
 
 	this->game = std::make_shared<gamestate::Game>(root_dir, event_loop, this->mod_manager);
 

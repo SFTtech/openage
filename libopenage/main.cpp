@@ -58,8 +58,8 @@ int run_game(const main_arguments &args) {
 	//       ideally it should be presenter->engine->simulation
 	auto time_loop = std::make_shared<event::TimeLoop>();
 
-	auto engine = std::make_shared<gamestate::GameSimulation>(run_mode, args.root_path, cvar_manager, time_loop);
-	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, engine, time_loop);
+	auto game_sim = std::make_shared<gamestate::GameSimulation>(run_mode, args.root_path, cvar_manager, time_loop);
+	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, game_sim, time_loop);
 
 	std::jthread event_loop_thread([&]() {
 		time_loop->run();
@@ -67,9 +67,9 @@ int run_game(const main_arguments &args) {
 		time_loop.reset();
 	});
 	std::jthread engine_thread([&]() {
-		engine->run();
+		game_sim->run();
 
-		engine.reset();
+		game_sim.reset();
 	});
 	std::jthread presenter_thread([&]() {
 		presenter->run();
