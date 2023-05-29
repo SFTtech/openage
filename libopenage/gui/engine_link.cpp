@@ -6,7 +6,7 @@
 
 #include "../error/error.h"
 
-#include "../engine.h"
+#include "../legacy_engine.h"
 
 #include "guisys/link/qml_engine_with_singleton_items_info.h"
 #include "guisys/link/qtsdl_checked_static_cast.h"

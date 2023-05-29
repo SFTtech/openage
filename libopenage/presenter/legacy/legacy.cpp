@@ -17,7 +17,7 @@
 #include "../../util/strings.h"
 #include "../../util/timer.h"
 #include "../../version.h"
-#include "engine.h"
+#include "legacy_engine.h"
 
 namespace openage::presenter {
 

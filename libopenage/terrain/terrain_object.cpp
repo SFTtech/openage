@@ -8,8 +8,8 @@
 #include "../coord/phys.h"
 #include "../coord/pixel.h"
 #include "../coord/tile.h"
-#include "../engine.h"
 #include "../error/error.h"
+#include "../legacy_engine.h"
 #include "../texture.h"
 #include "../unit/unit.h"
 

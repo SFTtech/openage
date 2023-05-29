@@ -6,7 +6,7 @@
 
 #include <QtQml>
 
-#include "../engine.h"
+#include "../legacy_engine.h"
 #include "../unit/action.h"
 #include "../unit/unit.h"
 #include "engine_link.h"

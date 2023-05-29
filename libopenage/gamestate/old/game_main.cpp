@@ -2,7 +2,7 @@
 
 #include "game_main.h"
 
-#include "../../engine.h"
+#include "../../legacy_engine.h"
 #include "../../log/log.h"
 #include "../../terrain/terrain.h"
 #include "../../unit/unit_type.h"

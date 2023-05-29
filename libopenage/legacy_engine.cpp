@@ -1,14 +1,14 @@
 // Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
-#include "engine.h"
+#include "legacy_engine.h"
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
 #include <epoxy/gl.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 #include "config.h"
 #include "error/error.h"

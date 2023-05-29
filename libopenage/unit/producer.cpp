@@ -2,7 +2,7 @@
 
 #include <initializer_list>
 
-#include "../engine.h"
+#include "../legacy_engine.h"
 #include "../gamedata/unit_dummy.h"
 #include "../log/log.h"
 #include "../terrain/terrain.h"

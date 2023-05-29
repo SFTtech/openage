@@ -322,8 +322,8 @@ get_codegen_scu_file()
 # are specified above the source file list.
 
 add_sources(libopenage
-	engine.cpp
 	handlers.cpp
+	legacy_engine.cpp
 	main.cpp
 	options.cpp
 	screenshot.cpp
@@ -334,8 +334,8 @@ add_sources(libopenage
 )
 
 pxdgen(
+	legacy_engine.h
 	main.h
-	engine.h
 )
 
 # add subsystem folders
