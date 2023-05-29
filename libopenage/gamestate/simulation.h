@@ -40,22 +40,14 @@ class Spawner;
  */
 class GameSimulation final {
 public:
-	enum class mode {
-		LEGACY,
-		HEADLESS,
-		FULL,
-	};
-
 	/**
 	 * Create the game simulation subsystems depending on the requested run mode.
      *
-     * @param mode The run mode to use.
      * @param root_dir openage root directory.
      * @param cvar_manager Environment variable manager.
      * @param time_loop Time management loop.
 	 */
-	GameSimulation(mode mode,
-	               const util::Path &root_dir,
+	GameSimulation(const util::Path &root_dir,
 	               const std::shared_ptr<cvar::CVarManager> &cvar_manager,
 	               const std::shared_ptr<openage::event::TimeLoop> time_loop);
 
@@ -134,11 +126,6 @@ private:
      * Initialize event handlers.
      */
 	void init_event_handlers();
-
-	/**
-	 * Run-mode of the simulation, this determines the basic modules to be loaded.
-	 */
-	mode run_mode;
 
 	/**
 	 * The simulation root directory.

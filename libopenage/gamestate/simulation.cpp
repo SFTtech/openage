@@ -16,12 +16,10 @@
 
 namespace openage::gamestate {
 
-GameSimulation::GameSimulation(enum mode mode,
-                               const util::Path &root_dir,
+GameSimulation::GameSimulation(const util::Path &root_dir,
                                const std::shared_ptr<cvar::CVarManager> &cvar_manager,
                                const std::shared_ptr<openage::event::TimeLoop> time_loop) :
 	running{false},
-	run_mode{mode},
 	root_dir{root_dir},
 	cvar_manager{cvar_manager},
 	time_loop{time_loop},
