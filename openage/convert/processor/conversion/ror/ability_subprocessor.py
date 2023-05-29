@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches,too-many-statements,too-many-locals
 #
@@ -176,7 +176,7 @@ class RoRAbilitySubprocessor:
                     AoCAbilitySubprocessor.create_civ_animation(line,
                                                                 civ_group,
                                                                 civ_animation_id,
-                                                                ability_ref,
+                                                                f"{ability_ref}.Animated",
                                                                 obj_prefix,
                                                                 filename_prefix,
                                                                 obj_exists)

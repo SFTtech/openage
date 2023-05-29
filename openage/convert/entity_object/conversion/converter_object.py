@@ -1,4 +1,4 @@
-# Copyright 2019-202 the openage authors. See copying.md for legal info.
+# Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 # pylint: disable=too-many-instance-attributes,too-many-branches,too-few-public-methods
 
