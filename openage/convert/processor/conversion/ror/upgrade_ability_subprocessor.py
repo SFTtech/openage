@@ -66,7 +66,7 @@ class RoRUpgradeAbilitySubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
         ability_name = command_lookup_dict[command_id][0]
 
-        changed = False
+        data_changed = False
         if diff:
             diff_animation = diff["attack_sprite_id"]
             diff_comm_sound = diff["command_sound_id"]
@@ -77,16 +77,64 @@ class RoRUpgradeAbilitySubprocessor:
             diff_spawn_delay = diff["frame_delay"]
             diff_spawn_area_offsets = diff["weapon_offset"]
 
-            if any(not isinstance(value, NoDiffMember) for value in (diff_animation,
-                                                                     diff_comm_sound,
-                                                                     diff_min_range,
+            if any(not isinstance(value, NoDiffMember) for value in (diff_min_range,
                                                                      diff_max_range,
                                                                      diff_reload_time,
                                                                      diff_spawn_delay,
                                                                      diff_spawn_area_offsets)):
-                changed = True
+                data_changed = True
 
-        if changed:
+        if not isinstance(diff_animation, NoDiffMember):
+            diff_animation_id = diff_animation.value
+
+            # Nyan patch
+            patch_target_ref = f"{game_entity_name}.{ability_name}"
+            nyan_patch_name = f"Change{game_entity_name}{ability_name}"
+            wrapper, anim_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation_patch(
+                converter_group,
+                line,
+                patch_target_ref,
+                nyan_patch_name,
+                container_obj_ref,
+                ability_name,
+                f"{command_lookup_dict[command_id][1]}_",
+                [diff_animation_id]
+            )
+            patches.append(anim_patch_forward_ref)
+
+            if isinstance(line, GenieBuildingLineGroup):
+                # Store building upgrades next to their game entity definition,
+                # not in the Age up techs.
+                wrapper.set_location(("data/game_entity/generic/"
+                                      f"{name_lookup_dict[head_unit_id][1]}/"))
+                wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
+
+        if not isinstance(diff_comm_sound, NoDiffMember):
+            diff_comm_sound_id = diff_comm_sound.value
+
+            # Nyan patch
+            patch_target_ref = f"{game_entity_name}.{ability_name}"
+            nyan_patch_name = f"Change{game_entity_name}{ability_name}"
+            wrapper, sound_patch_forward_ref = AoCUpgradeAbilitySubprocessor.create_command_sound_patch(
+                converter_group,
+                line,
+                patch_target_ref,
+                nyan_patch_name,
+                container_obj_ref,
+                ability_name,
+                f"{command_lookup_dict[command_id][1]}_",
+                [diff_comm_sound_id]
+            )
+            patches.append(sound_patch_forward_ref)
+
+            if isinstance(line, GenieBuildingLineGroup):
+                # Store building upgrades next to their game entity definition,
+                # not in the Age up techs.
+                wrapper.set_location(("data/game_entity/generic/"
+                                      f"{name_lookup_dict[head_unit_id][1]}/"))
+                wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
+
+        if data_changed:
             patch_target_ref = f"{game_entity_name}.{ability_name}"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
@@ -118,45 +166,6 @@ class RoRUpgradeAbilitySubprocessor:
                                                      nyan_patch_location)
             nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
-
-            if not isinstance(diff_animation, NoDiffMember):
-                animations_set = []
-                diff_animation_id = diff_animation.value
-                if diff_animation_id > -1:
-                    # Patch the new animation in
-                    animation_forward_ref = AoCUpgradeAbilitySubprocessor.create_animation(
-                        converter_group,
-                        line,
-                        diff_animation_id,
-                        nyan_patch_ref,
-                        ability_name,
-                        f"{command_lookup_dict[command_id][1]}_"
-                    )
-                    animations_set.append(animation_forward_ref)
-
-                nyan_patch_raw_api_object.add_raw_patch_member("animations",
-                                                               animations_set,
-                                                               "engine.ability.property.type.Animated",
-                                                               MemberOperator.ASSIGN)
-
-            if not isinstance(diff_comm_sound, NoDiffMember):
-                sounds_set = []
-                diff_comm_sound_id = diff_comm_sound.value
-                if diff_comm_sound_id > -1:
-                    # Patch the new sound in
-                    sound_forward_ref = AoCUpgradeAbilitySubprocessor.create_sound(
-                        converter_group,
-                        diff_comm_sound_id,
-                        nyan_patch_ref,
-                        ability_name,
-                        f"{command_lookup_dict[command_id][1]}_"
-                    )
-                    sounds_set.append(sound_forward_ref)
-
-                nyan_patch_raw_api_object.add_raw_patch_member("sounds",
-                                                               sounds_set,
-                                                               "engine.ability.property.type.CommandSound",
-                                                               MemberOperator.ASSIGN)
 
             if not isinstance(diff_min_range, NoDiffMember):
                 min_range = diff_min_range.value
