@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 """
 Main engine entry point for openage.
@@ -24,12 +24,17 @@ def init_subparser(cli: ArgumentParser):
         "--gl-debug", action='store_true',
         help="throw exceptions directly from the OpenGL calls")
 
+    cli.add_argument(
+        "--modpacks", nargs="+",
+        help="list of modpacks to load")
+
 
 def main(args, error):
     """
     Makes sure that the assets have been converted,
     and jumps into the C++ main method.
     """
+    # pylint: disable=too-many-locals
     del error  # unused
 
     # we have to import stuff inside the function
@@ -78,6 +83,14 @@ def main(args, error):
         else:
             err("game asset conversion failed")
             return 1
+
+    # pass modpacks to engine
+    if args.modpacks:
+        mods = []
+        for modpack in args.modpacks:
+            mods.append(modpack.encode("utf-8"))
+
+        args.modpacks = mods
 
     # start the game, continue in main_cpp.pyx!
     return run_game(args, root)

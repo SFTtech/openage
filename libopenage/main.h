@@ -1,9 +1,10 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 // pxd: from libcpp cimport bool
 // pxd: from libcpp.string cimport string
+// pxd: from libcpp.vector cimport vector
 #include <string>
 // pxd: from libc.stdint cimport int32_t
 #include <cstdint>
@@ -23,11 +24,13 @@ namespace openage {
  *     Path root_path
  *     int32_t fps_limit
  *     bool gl_debug
+ *     vector[string] mods
  */
 struct main_arguments {
 	util::Path root_path;
 	int32_t fps_limit;
 	bool gl_debug;
+	std::vector<std::string> mods;
 };
 
 
@@ -38,4 +41,4 @@ struct main_arguments {
  */
 OAAPI int run_game(const main_arguments &args);
 
-} // openage
+} // namespace openage

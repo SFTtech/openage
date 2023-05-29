@@ -21,9 +21,6 @@ public:
 	/**
      * Adds a modpack to the list of available modpacks.
      *
-     * This does not load the modpack yet as we still need to
-     * determine the final load order and resolve dependecies.
-     *
      * @param info_file Path to the modpack definition file.
      */
 	void register_modpack(const util::Path &info_file);
@@ -31,26 +28,32 @@ public:
 	/**
      * Adds a modpack to the list of available modpacks.
      *
-     * This does not load the modpack yet as we still need to
-     * determine the final load order and resolve dependecies.
-     *
      * @param info Modpack definition.
      */
 	void register_modpack(const ModpackInfo &info);
 
 	/**
-     * Load all modpacks with the given IDs. Modpacks must be registered
-     * with \p register_modpack() before loading.
+     * Ready a set of modpacks with the given IDs.
      *
-     * TODO: Mount modpacks into virtual filesystem.
+     * This prepares the modpacks for loading by valiating the integrity of
+     * the contained data, checking if the load order and mounting the
+     * assets into the virtual filesystem.
      *
-     * Note that this technically only loads modpack metadata. The actual gamedata
-     * is loaded by the gamestate when a game is created or, in case of media files,
-     * on-demand by the asset manager.
+     * TODO:
+     *     - Mount modpacks into virtual filesystem.
+     *     - Validate manifest.toml
+     *     - Verify signature of manifest.toml (if signed)
      *
-     * @param modpack_id ID of the modpack to load.
+     * Note that data inside the modpack is not loaded yet. Data
+     * loading is done inside the simulation before the game starts or
+     * in case of media files, when they are requested during the game.
+     *
+     * Modpacks must have been registered with \p register_modpack() before
+     * activating.
+     *
+     * @param load_order Load order of modpacks.
      */
-	void load_modpacks(const std::vector<std::string> &load_order);
+	void activate_modpacks(const std::vector<std::string> &load_order);
 
 	/**
      * Get a loaded modpack by its ID.
@@ -112,12 +115,14 @@ private:
 	void set_load_order(const std::vector<std::string> &load_order);
 
 	/**
-     * Loaded modpacks.
+     * Active modpacks. Maps their ID ('name' in the modpack definition file)
+     * to the modpack.
      */
-	std::unordered_map<std::string, std::shared_ptr<Modpack>> loaded;
+	std::unordered_map<std::string, std::shared_ptr<Modpack>> active;
 
 	/**
-     * Available modpacks (mapping modpack ID to modpack info struct).
+     * Available modpacks that can be activated. Maps their ID ('name' in the modpack
+     * definition file) to the modpack info.
      */
 	std::unordered_map<std::string, ModpackInfo> available;
 
