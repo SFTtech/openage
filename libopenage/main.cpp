@@ -6,6 +6,7 @@
 #include <version>
 
 #include "cvar/cvar.h"
+#include "engine/engine.h"
 #include "event/time_loop.h"
 #include "gamestate/simulation.h"
 #include "log/log.h"
@@ -36,12 +37,6 @@ namespace openage {
  * This is the main entry point to the C++ part.
  */
 int run_game(const main_arguments &args) {
-	log::log(MSG(info)
-	         << "launching engine with "
-	         << args.root_path
-	         << " and fps limit "
-	         << args.fps_limit);
-
 	// TODO: store args.fps_limit and args.gl_debug as default in the cvar system.
 
 	util::Timer timer;
@@ -52,32 +47,10 @@ int run_game(const main_arguments &args) {
 	cvar_manager->load_all();
 
 	// TODO: select run_mode by launch argument
-	openage::gamestate::GameSimulation::mode run_mode = gamestate::GameSimulation::mode::FULL;
+	openage::engine::Engine::mode run_mode = openage::engine::Engine::mode::FULL;
+	openage::engine::Engine engine{run_mode, args.root_path};
 
-	// TODO: Order of initializing presenter, simulation and engine is not intuitive
-	//       ideally it should be presenter->engine->simulation
-	auto time_loop = std::make_shared<event::TimeLoop>();
-
-	auto game_sim = std::make_shared<gamestate::GameSimulation>(run_mode, args.root_path, cvar_manager, time_loop);
-	auto presenter = std::make_shared<presenter::Presenter>(args.root_path, game_sim, time_loop);
-
-	std::jthread event_loop_thread([&]() {
-		time_loop->run();
-
-		time_loop.reset();
-	});
-	std::jthread engine_thread([&]() {
-		game_sim->run();
-
-		game_sim.reset();
-	});
-	std::jthread presenter_thread([&]() {
-		presenter->run();
-
-		// Make sure that the presenter gets destructed in the same thread
-		// otherwise OpenGL complains about missing contexts
-		presenter.reset();
-	});
+	engine.loop();
 
 	return 0;
 }
