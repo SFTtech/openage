@@ -51,6 +51,7 @@ void WorldRenderer::add_render_entity(const std::shared_ptr<WorldRenderEntity> e
 }
 
 void WorldRenderer::update() {
+	std::unique_lock lock{this->mutex};
 	auto current_time = this->clock->get_real_time();
 	for (auto obj : this->render_objects) {
 		obj->fetch_updates();
