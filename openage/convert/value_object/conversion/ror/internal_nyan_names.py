@@ -13,7 +13,7 @@ UNIT_LINE_LOOKUPS = {
     4: ("Bowman", "bowman"),
     5: ("ImprovedBowman", "improved_bowman"),
     11: ("Ballista", "balista"),
-    13: ("FishingShip", "fishing_ship"),
+    13: ("FishingBoat", "fishing_boat"),
     15: ("TradeBoat", "trade_boat"),
     17: ("Transport", "transport"),
     19: ("Galley", "galley"),
