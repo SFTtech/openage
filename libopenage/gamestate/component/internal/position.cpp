@@ -23,6 +23,16 @@ Position::Position(const std::shared_ptr<openage::event::EventLoop> &loop,
 	this->position.set_insert(creation_time + 6, initial_pos + coord::phys3_delta{2, -1, 0});
 	this->position.set_insert(creation_time + 7, initial_pos + coord::phys3_delta{1, -1, 0});
 	this->position.set_insert(creation_time + 8, initial_pos);
+
+	this->angle.set_insert(creation_time, 270);
+	this->angle.set_insert(creation_time + 1, 225);
+	this->angle.set_insert(creation_time + 2, 180);
+	this->angle.set_insert(creation_time + 3, 135);
+	this->angle.set_insert(creation_time + 4, 90);
+	this->angle.set_insert(creation_time + 5, 45);
+	this->angle.set_insert(creation_time + 6, 0);
+	this->angle.set_insert(creation_time + 7, 315);
+	this->angle.set_insert(creation_time + 8, 270);
 }
 
 
