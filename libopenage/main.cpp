@@ -48,7 +48,7 @@ int run_game(const main_arguments &args) {
 
 	// TODO: select run_mode by launch argument
 	openage::engine::Engine::mode run_mode = openage::engine::Engine::mode::FULL;
-	openage::engine::Engine engine{run_mode, args.root_path};
+	openage::engine::Engine engine{run_mode, args.root_path, args.mods};
 
 	engine.loop();
 
