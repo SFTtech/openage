@@ -60,9 +60,11 @@ public:
      *
      * @param mode The run mode to use.
      * @param root_dir openage root directory.
+     * @param mods The mods to load.
 	 */
 	Engine(mode mode,
-	       const util::Path &root_dir);
+	       const util::Path &root_dir,
+	       const std::vector<std::string> &mods);
 
 	// engine should not be copied or moved
 	Engine(const Engine &) = delete;

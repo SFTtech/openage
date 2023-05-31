@@ -116,6 +116,13 @@ public:
 	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
 
 	/**
+     * Set the modpacks to load for a game.
+     *
+     * @param modpacks IDs of the modpacks to load.
+     */
+	void set_modpacks(const std::vector<std::string> &modpacks);
+
+	/**
 	 * current simulation state variable.
 	 * to be set to false to stop the simulation loop.
 	 */
@@ -169,6 +176,9 @@ private:
 	// TODO: The game run by the engine
 	std::shared_ptr<gamestate::Game> game;
 
+	/**
+     * Mutex for thread-safe access to the simulation.
+     */
 	std::shared_mutex mutex;
 };
 

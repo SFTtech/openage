@@ -28,9 +28,9 @@ GameSimulation::GameSimulation(const util::Path &root_dir,
 	mod_manager{std::make_shared<assets::ModManager>()},
 	spawner{std::make_shared<gamestate::event::Spawner>(this->event_loop)} {
 	auto mods = mod_manager->enumerate_modpacks(root_dir / "assets" / "converted");
-	mod_manager->register_modpack(root_dir / "assets" / "converted" / "engine" / "modpack.toml");
-	mod_manager->register_modpack(root_dir / "assets" / "converted" / "aoe2_base" / "modpack.toml");
-	mod_manager->activate_modpacks({"engine", "aoe2_base"});
+	for (const auto &mod : mods) {
+		this->mod_manager->register_modpack(mod);
+	}
 
 	this->game = std::make_shared<gamestate::Game>(root_dir, event_loop, this->mod_manager);
 
@@ -69,28 +69,51 @@ void GameSimulation::stop() {
 
 
 const util::Path &GameSimulation::get_root_dir() {
+	std::shared_lock lock{this->mutex};
+
 	return this->root_dir;
 }
 
 const std::shared_ptr<cvar::CVarManager> GameSimulation::get_cvar_manager() {
+	std::shared_lock lock{this->mutex};
+
 	return this->cvar_manager;
 }
 
 const std::shared_ptr<gamestate::Game> GameSimulation::get_game() {
+	std::shared_lock lock{this->mutex};
+
 	return this->game;
 }
 
 const std::shared_ptr<openage::event::EventLoop> GameSimulation::get_event_loop() {
+	std::shared_lock lock{this->mutex};
+
 	return this->event_loop;
 }
 
 const std::shared_ptr<gamestate::event::Spawner> GameSimulation::get_spawner() {
+	std::shared_lock lock{this->mutex};
+
 	return this->spawner;
 }
 
 void GameSimulation::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
+	std::unique_lock lock{this->mutex};
+
 	this->game->attach_renderer(render_factory);
 	this->entity_factory->attach_renderer(render_factory);
+}
+
+void GameSimulation::set_modpacks(const std::vector<std::string> &modpacks) {
+	std::unique_lock lock{this->mutex};
+
+	std::vector<std::string> mods{"engine"};
+	mods.insert(mods.end(), modpacks.begin(), modpacks.end());
+
+	this->mod_manager->activate_modpacks(mods);
+
+	// TODO: Prevent setting modpacks if a game is already running
 }
 
 void GameSimulation::init_event_handlers() {
