@@ -2,12 +2,11 @@
 
 #pragma once
 
-#include "../util/hash.h"
-#include "../util/misc.h"
-
-#include "coord_nese.gen.h"
-#include "coord_neseup.gen.h"
-#include "declarations.h"
+#include "coord/coord_nese.gen.h"
+#include "coord/coord_neseup.gen.h"
+#include "coord/declarations.h"
+#include "util/hash.h"
+#include "util/misc.h"
 
 namespace openage {
 
@@ -31,6 +30,9 @@ struct phys2_delta : CoordNeSeRelative<phys_t, phys2, phys2_delta> {
 	// coordinate conversions
 	phys3_delta to_phys3() const;
 	scene2_delta to_scene2() const;
+
+	// TODO: This DOES NOT use fixed point math currently
+	phys_angle_t to_angle(const coord::phys2_delta &other = {-1, 1}) const;
 };
 
 struct phys2 : CoordNeSeAbsolute<phys_t, phys2, phys2_delta> {
@@ -61,6 +63,9 @@ struct phys3_delta : CoordNeSeUpRelative<phys_t, phys3, phys3_delta> {
 	// coordinate conversions
 	phys2_delta to_phys2() const;
 	scene3_delta to_scene3() const;
+
+	// TODO: This DOES NOT use fixed point math currently
+	phys_angle_t to_angle(const coord::phys2_delta &other = {-1, 1}) const;
 
 	// TODO: Remove
 	[[deprecated]] camgame_delta to_camgame(const CoordManager &mgr) const;

@@ -11,7 +11,7 @@
 
 #include <cstdint>
 
-#include "../util/fixed_point.h"
+#include "util/fixed_point.h"
 
 namespace openage {
 namespace coord {
@@ -25,6 +25,8 @@ struct phys2_delta;
 struct phys2;
 struct phys3_delta;
 struct phys3;
+
+using phys_angle_t = util::FixedPoint<int32_t, 16>;
 
 // forward declarations of scene.h types
 constexpr unsigned int scene_t_radix_pos = 16;
