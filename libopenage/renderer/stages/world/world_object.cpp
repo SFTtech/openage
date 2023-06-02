@@ -27,6 +27,7 @@ WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager
 	render_entity{nullptr},
 	ref_id{0},
 	position{nullptr, 0, "", nullptr, SCENE_ORIGIN},
+	angle{nullptr, 0, "", nullptr, 0},
 	animation_info{nullptr, 0},
 	uniforms{nullptr} {
 }
@@ -63,6 +64,7 @@ void WorldObject::fetch_updates() {
 										  return std::shared_ptr<renderer::resources::Animation2dInfo>{nullptr};
 									  }
 								  }));
+	this->angle.sync(this->render_entity->get_angle());
 
 	// Set self to changed so that world renderer can update the renderable
 	this->changed = true;
@@ -79,12 +81,8 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 	auto current_pos = this->position.get(time);
 	this->uniforms->update("obj_world_position", current_pos.to_world_space());
 
-	// Direction angle the object is facing towards
-	// calculated from the positional waypoints before and after the current time
-	auto pos_frame = this->position.frame(time).second;
-	auto pos_next_frame = this->position.next_frame(time).second;
-	auto pos_delta = pos_next_frame - pos_frame;
-	auto angle_degrees = pos_delta.to_angle();
+	// Direction angle the object is facing towards currently
+	auto angle_degrees = this->angle.get(time).to_float();
 
 	// Frame subtexture
 	auto animation_info = this->animation_info.get(time);

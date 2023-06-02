@@ -10,6 +10,7 @@
 #include "curve/continuous.h"
 #include "curve/curve.h"
 #include "curve/discrete.h"
+#include "curve/segmented.h"
 #include "renderer/resources/mesh_data.h"
 
 namespace openage::renderer {
@@ -153,6 +154,11 @@ private:
 	 * Position of the object.
 	 */
 	curve::Continuous<coord::scene3> position;
+
+	/**
+     * Angle of the object.
+     */
+	curve::Segmented<coord::phys_angle_t> angle;
 
 	/**
      * Animation information for the renderables.

@@ -37,7 +37,8 @@ void GameEntity::push_to_render() {
 		}
 
 		const auto &pos = dynamic_pointer_cast<component::Position>(this->components.at(component::component_t::POSITION))->get_positions();
-		this->render_entity->update(this->id, pos, this->animation_path);
+		const auto &angle = dynamic_pointer_cast<component::Position>(this->components.at(component::component_t::POSITION))->get_angles();
+		this->render_entity->update(this->id, pos, angle, this->animation_path);
 	}
 }
 

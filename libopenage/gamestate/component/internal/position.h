@@ -6,12 +6,11 @@
 
 #include "coord/phys.h"
 #include "curve/continuous.h"
+#include "curve/segmented.h"
 #include "gamestate/component/internal_component.h"
 #include "util/fixed_point.h"
 
 namespace openage::gamestate::component {
-
-using angle_t = util::FixedPoint<uint32_t, 16>;
 
 class Position : public InternalComponent {
 public:
@@ -40,7 +39,7 @@ public:
      *
      * @return Direction curve.
      */
-	const curve::Continuous<angle_t> &get_angles() const;
+	const curve::Segmented<coord::phys_angle_t> &get_angles() const;
 
 private:
 	/**
@@ -54,7 +53,7 @@ private:
      * Represents degrees in the range [0, 360). At angle 0, the entity is facing
      * towards the camera.
      */
-	curve::Continuous<angle_t> angle;
+	curve::Segmented<coord::phys_angle_t> angle;
 };
 
 } // namespace openage::gamestate::component
