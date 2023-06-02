@@ -10,6 +10,7 @@
 #include "curve/continuous.h"
 #include "curve/curve.h"
 #include "curve/discrete.h"
+#include "curve/segmented.h"
 #include "util/path.h"
 
 namespace openage::renderer::world {
@@ -24,11 +25,13 @@ public:
 	 *
 	 * @param ref_id Game entity ID.
 	 * @param position Position of the game entity inside the game world.
+     * @param angle Angle of the game entity inside the game world.
 	 * @param animation_path Path to the animation definition.
 	 * @param time Simulation time of the update.
 	 */
 	void update(const uint32_t ref_id,
 	            const curve::Continuous<coord::phys3> position,
+	            const curve::Segmented<coord::phys_angle_t> angle,
 	            const util::Path animation_path,
 	            const curve::time_t time = 0.0);
 
@@ -60,6 +63,13 @@ public:
 	 * @return Position curve of the entity.
 	 */
 	const curve::Continuous<coord::scene3> &get_position();
+
+	/**
+     * Get the angle of the entity inside the game world.
+     *
+     * @return Angle curve of the entity.
+     */
+	const curve::Segmented<coord::phys_angle_t> &get_angle();
 
 	/**
      * Get the animation definition path.
@@ -105,6 +115,11 @@ private:
 	 * Position inside the game world.
 	 */
 	curve::Continuous<coord::scene3> position;
+
+	/**
+     * Angle of the entity inside the game world.
+     */
+	curve::Segmented<coord::phys_angle_t> angle;
 
 	/**
 	 * Path to the texture.
