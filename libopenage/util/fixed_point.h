@@ -417,14 +417,30 @@ typename std::enable_if<std::is_arithmetic<N>::value, FixedPoint<I, F>>::type co
 }
 
 /*
- FixedPoint * FixedPoint is missing to prevent surprising overflows.
 
- using fp = FixedPoint<uint64_t, 16>;
- fp a = fp.from_int(1 << 16);
- => a * a will overflow because:
-    a.rawvalue == 2^(16+16) == 2^32
-    -> a.rawvalue * a.rawvalue == 2^64 => pwnt
 */
+
+/**
+ * FixedPoint * FixedPoint
+ *
+ * FixedPoint * FixedPoint can result in surprising overflows.
+ *
+ * using fp = FixedPoint<uint64_t, 16>;
+ * fp a = fp.from_int(1 << 16);
+ * => a * a will overflow because:
+ *    a.rawvalue == 2^(16+16) == 2^32
+ *    -> a.rawvalue * a.rawvalue == 2^64 => pwnt
+ */
+// template <typename I, unsigned int F>
+// constexpr FixedPoint<I, F> operator*(const FixedPoint<I, F> lhs, const FixedPoint<I, F> rhs) {
+// 	I ret = 0;
+// 	if (not __builtin_mul_overflow(lhs.get_raw_value(), rhs.get_raw_value(), &ret)) {
+// 		throw std::overflow_error("FixedPoint multiplication overflow");
+// 	}
+
+// 	return FixedPoint<I, F>::from_raw_value(ret);
+// }
+
 
 /**
  * FixedPoint / FixedPoint
