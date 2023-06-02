@@ -4,8 +4,8 @@
 
 #include <type_traits>
 
-#include "base_curve.h"
 #include "../log/log.h"
+#include "base_curve.h"
 
 namespace openage::curve {
 
@@ -17,7 +17,7 @@ namespace openage::curve {
  * The bound template type T has to implement `operator +(T)` and
  * `operator *(time_t)`.
  */
-template<typename T>
+template <typename T>
 class Interpolated : public BaseCurve<T> {
 public:
 	using BaseCurve<T>::BaseCurve;
@@ -36,7 +36,6 @@ public:
 
 	T get(const time_t &) const override;
 };
-
 
 
 template <typename T>
@@ -60,17 +59,22 @@ T Interpolated<T>::get(const time_t &time) const {
 
 	// If the next element is at the same time, just return the value of this one.
 	if (nxt == this->container.end() // use the last curve value
-	    || offset == 0               // values equal -> don't need to interpolate
-	    || interval == 0) {          // values at the same time -> division-by-zero-error
+	    || offset == 0 // values equal -> don't need to interpolate
+	    || interval == 0) { // values at the same time -> division-by-zero-error
 
 		return e->value;
 	}
 	else {
 		// Interpolation between time(now) and time(next) that has elapsed
+		// TODO: Elapsed time does not use fixed point arithmetic
 		double elapsed_frac = offset.to_double() / interval.to_double();
+
+		// TODO: nxt->value - e->value will produce wrong results if
+		//       the nxt->value < e->value and curve element type is unsigned
+		//       Example: nxt = 2, e = 4; type = uint8_t ==> 2 - 4 = 254
 		return e->value + (nxt->value - e->value) * elapsed_frac;
 	}
 }
 
 
-} // openage::curve
+} // namespace openage::curve
