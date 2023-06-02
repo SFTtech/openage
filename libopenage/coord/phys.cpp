@@ -32,6 +32,20 @@ scene2_delta phys2_delta::to_scene2() const {
 	return scene2_delta(this->ne, this->se);
 }
 
+phys_angle_t phys2_delta::to_angle(const coord::phys2_delta &other) const {
+	// TODO: Using floats here will result in inaccuracies.
+	//       Better use a fixed point version of atan2.
+	auto det = other.ne.to_float() * this->se.to_float() - this->ne.to_float() * other.se.to_float();
+	auto dot = this->ne.to_float() * other.ne.to_float() + this->se.to_float() * other.se.to_float();
+
+	auto angle = std::atan2(det, dot) * 180 / std::numbers::pi;
+	if (angle < 0) {
+		angle += 360;
+	}
+
+	return phys_angle_t::from_float(angle);
+}
+
 
 double phys2::distance(phys2 other) const {
 	return (*this - other).length();
@@ -77,6 +91,20 @@ phys2_delta phys3_delta::to_phys2() const {
 
 scene3_delta phys3_delta::to_scene3() const {
 	return scene3_delta{this->ne, this->se, this->up};
+}
+
+phys_angle_t phys3_delta::to_angle(const coord::phys2_delta &other) const {
+	// TODO: Using floats here will result in inaccuracies.
+	//       Better use a fixed point version of atan2.
+	auto det = other.ne.to_float() * this->se.to_float() - this->ne.to_float() * other.se.to_float();
+	auto dot = this->ne.to_float() * other.ne.to_float() + this->se.to_float() * other.se.to_float();
+
+	auto angle = std::atan2(det, dot) * 180 / std::numbers::pi;
+	if (angle < 0) {
+		angle += 360;
+	}
+
+	return phys_angle_t::from_float(angle);
 }
 
 
