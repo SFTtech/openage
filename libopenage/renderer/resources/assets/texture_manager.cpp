@@ -43,4 +43,13 @@ void TextureManager::remove(const util::Path &path) {
 	this->loaded.erase(flat_path);
 }
 
+void TextureManager::set_placeholder(const util::Path &path) {
+	auto tex_data = resources::Texture2dData(path);
+	this->placeholder = std::make_pair(path, this->renderer->add_texture(tex_data));
+}
+
+const TextureManager::placeholder_t &TextureManager::get_placeholder() const {
+	return this->placeholder;
+}
+
 } // namespace openage::renderer::resources

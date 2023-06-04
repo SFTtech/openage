@@ -106,6 +106,8 @@ void Presenter::init_graphics() {
 
 	// Asset mangement
 	this->asset_manager = std::make_shared<renderer::resources::AssetManager>(this->renderer);
+	auto missing_tex = this->root_dir / "assets" / "test" / "textures" / "test_missing.sprite";
+	this->asset_manager->set_placeholder_animation(missing_tex);
 
 	// Skybox
 	this->skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(

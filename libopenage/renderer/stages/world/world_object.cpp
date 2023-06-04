@@ -52,17 +52,7 @@ void WorldObject::fetch_updates() {
 	this->animation_info.sync(this->render_entity->get_animation_path(),
 	                          std::function<std::shared_ptr<renderer::resources::Animation2dInfo>(const util::Path &)>(
 								  [&](const util::Path &path) {
-									  try {
-										  return this->asset_manager->request_animation(path);
-									  }
-									  catch (const error::Error &) {
-										  // TODO: We have to catch this error only because the default value in the source
-										  //       curve is a plain Path() object (which does not resolve).
-										  //       This should be either handled by the asset manager (return a "missing"
-										  //       placeholder asset if the path is invalid) or by setting the default value in
-										  //       the source curve to a better value.
-										  return std::shared_ptr<renderer::resources::Animation2dInfo>{nullptr};
-									  }
+									  return this->asset_manager->request_animation(path);
 								  }));
 	this->angle.sync(this->render_entity->get_angle());
 
