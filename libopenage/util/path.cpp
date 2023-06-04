@@ -345,6 +345,11 @@ const Path::parts_t &Path::get_parts() const {
 
 
 std::ostream &operator<<(std::ostream &stream, const Path &path) {
+	if (path.fsobj == nullptr) {
+		stream << "INVALID PATH (fsobj == nullptr)";
+		return stream;
+	}
+
 	stream << "Path(";
 	path.fsobj->repr(stream);
 	stream << ":";
