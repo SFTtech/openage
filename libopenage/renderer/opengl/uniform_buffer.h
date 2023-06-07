@@ -24,7 +24,7 @@ public:
 	                size_t size,
 	                std::unordered_map<std::string, GlInBlockUniform> uniforms,
 	                GLuint binding_point = 0,
-	                GLenum usage = GL_STATIC_DRAW);
+	                GLenum usage = GL_DYNAMIC_DRAW);
 
 	/**
      * Get the binding point of the buffer.
