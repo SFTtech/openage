@@ -92,7 +92,7 @@ void Presenter::init_graphics() {
 	log::log(INFO << "initializing graphics...");
 
 	this->gui_app = this->init_window_system();
-	this->window = renderer::Window::create("openage presenter test", 800, 600);
+	this->window = renderer::Window::create("openage presenter test", 1024, 768);
 	this->renderer = this->window->make_renderer();
 
 	// Camera
