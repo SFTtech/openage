@@ -380,7 +380,7 @@ def parse_args():
                      choices=["warn", "error"],
                      default=None,
                      help="use include-what-you-use tool to check "
-                          "for unnecessary imports, default=\"warn\"")
+                          "for unnecessary imports")
     cli.add_argument("--with", action='append', dest='with_', metavar='OPTION',
                      help="enable optional functionality. "
                           "for a list of available features, "

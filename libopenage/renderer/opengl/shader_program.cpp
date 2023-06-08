@@ -17,6 +17,7 @@
 #include "renderer/opengl/shader.h"
 #include "renderer/opengl/texture.h"
 #include "renderer/opengl/uniform_buffer.h"
+#include "renderer/opengl/uniform_input.h"
 
 
 namespace openage::renderer::opengl {

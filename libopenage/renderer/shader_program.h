@@ -10,7 +10,6 @@
 #include <eigen3/Eigen/Dense>
 
 #include "renderer/resources/mesh_data.h"
-#include "renderer/uniform_buffer.h"
 #include "renderer/uniform_input.h"
 
 
@@ -18,6 +17,7 @@ namespace openage {
 namespace renderer {
 
 class Texture2d;
+class UniformBuffer;
 
 class ShaderProgram : public std::enable_shared_from_this<ShaderProgram> {
 	friend UniformInput;
