@@ -34,7 +34,7 @@ void renderer_demo_3(const util::Path &path) {
 	// Camera
 	// our viewport into the game world
 	auto camera = std::make_shared<renderer::camera::Camera>(renderer, window->get_size());
-	window->add_resize_callback([&](size_t w, size_t h) {
+	window->add_resize_callback([&](size_t w, size_t h, double /*scale*/) {
 		camera->resize(w, h);
 	});
 
@@ -93,7 +93,7 @@ void renderer_demo_3(const util::Path &path) {
 
 	render_passes.push_back(screen_renderer->get_render_pass());
 
-	window->add_resize_callback([&](size_t, size_t) {
+	window->add_resize_callback([&](size_t, size_t, double /*scale*/) {
 		std::vector<std::shared_ptr<renderer::RenderTarget>> targets{};
 		for (size_t i = 0; i < render_passes.size() - 1; ++i) {
 			targets.push_back(render_passes[i]->get_target());

@@ -4,24 +4,33 @@
 
 #include <memory>
 
-#include "../renderer.h"
-#include "render_pass.h"
-#include "render_target.h"
-#include "shader_program.h"
+#include "renderer/renderer.h"
+#include "util/vector.h"
 
 
 namespace openage {
 namespace renderer {
-namespace opengl {
+class RenderPass;
+class ShaderProgram;
 
+namespace opengl {
+class GlContext;
+class GlRenderPass;
+class GlRenderTarget;
 class GlWindow;
 
 /// The OpenGL specialization of the rendering interface.
 class GlRenderer final : public Renderer {
 public:
-	GlRenderer(const std::shared_ptr<GlContext> &,
-	           size_t width,
-	           size_t height);
+	/**
+	 * Create a new OpenGL renderer.
+	 *
+	 * @param ctx OpenGL context of the current window.
+	 * @param viewport_size Size of the window viewport.
+	 * 						Must be adjusted by scale for highDPI displays.
+	 */
+	GlRenderer(const std::shared_ptr<GlContext> &ctx,
+	           const util::Vector2s &viewport_size);
 
 	std::shared_ptr<Texture2d> add_texture(resources::Texture2dData const &) override;
 	std::shared_ptr<Texture2d> add_texture(resources::Texture2dInfo const &) override;

@@ -25,7 +25,7 @@ SkyboxRenderer::SkyboxRenderer(const std::shared_ptr<Window> &window,
 	auto size = window->get_size();
 	this->initialize_render_pass(size[0], size[1], shaderdir);
 
-	window->add_resize_callback([this](size_t width, size_t height) {
+	window->add_resize_callback([this](size_t width, size_t height, double /*scale*/) {
 		this->resize(width, height);
 	});
 }

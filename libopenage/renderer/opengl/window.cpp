@@ -42,6 +42,9 @@ GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 	this->window->setVisible(true);
 	log::log(MSG(info) << "Created Qt window with OpenGL context.");
 
+	// Scaling factor if highDPI
+	this->scale_dpr = this->window->devicePixelRatio();
+
 	GlContext::check_error();
 }
 
@@ -57,7 +60,7 @@ void GlWindow::set_size(size_t width, size_t height) {
 	}
 
 	for (auto &cb : this->on_resize) {
-		cb(width, height);
+		cb(width, height, this->scale_dpr);
 	}
 }
 
@@ -78,7 +81,7 @@ void GlWindow::update() {
 
 			this->size = {width, height};
 			for (auto &cb : this->on_resize) {
-				cb(width, height);
+				cb(width, height, this->scale_dpr);
 			}
 		} break;
 		case QEvent::Close: {
@@ -118,27 +121,11 @@ void GlWindow::update() {
 
 std::shared_ptr<Renderer> GlWindow::make_renderer() {
 	auto renderer = std::make_shared<GlRenderer>(this->get_context(),
-	                                             this->size[0] * this->window->devicePixelRatio(),
-	                                             this->size[1] * this->window->devicePixelRatio());
+	                                             this->size * this->scale_dpr);
 
-	this->add_resize_callback([this, renderer](size_t w, size_t h) {
-		// since qt respects Xft.dpi and others, the "window size" of w and h
-		// is actually w and h * devicepixelratio.
-		// so a window is "bigger" because we have highdpi scaling.
-		// opengl of course only has a raw real pixel buffer.
-		// now, we tell opengl to use the real window pixel size for its drawing.
-		// this took 3h to figure out...
-		double factor = this->window->devicePixelRatio();
-
-		// this up-scales all our drawing to the "bigger" highdpi window.
-		// TODO: we could render at native resolution, and then do "zoom" depending
-		//       on the pixel ratio.
-		//       if we want to do that, we need to apply this factor in
-		//       the QResizeEvent handler, which triggers this very callback.
-		//       so that all callbacks get the real pixel resolution,
-		//       and thus render with higher resolution.
-		renderer->resize_display_target(w * factor,
-		                                h * factor);
+	this->add_resize_callback([this, renderer](size_t w, size_t h, double scale) {
+		// this up-scales all the default framebuffer to the "bigger" highdpi window.
+		renderer->resize_display_target(w * scale, h * scale);
 	});
 
 	return renderer;
