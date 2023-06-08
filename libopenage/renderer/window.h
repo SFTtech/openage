@@ -1,4 +1,4 @@
-// Copyright 2015-2022 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -44,6 +44,13 @@ public:
 	const util::Vector2s &get_size() const;
 
 	/**
+	 * Get the scaling factor of the window.
+	 *
+	 * @return Scaling factor.
+	 */
+	double get_scale() const;
+
+	/**
 	 * Returns \p true if this window should be closed.
 	 *
 	 * @return true if the window should close, else false.
@@ -53,7 +60,7 @@ public:
 	using key_cb_t = std::function<void(const QKeyEvent &)>;
 	using mouse_button_cb_t = std::function<void(const QMouseEvent &)>;
 	using mouse_wheel_cb_t = std::function<void(const QWheelEvent &)>;
-	using resize_cb_t = std::function<void(size_t, size_t)>;
+	using resize_cb_t = std::function<void(size_t, size_t, double)>;
 
 	/**
 	 * Register a function that executes when a key is pressed.
@@ -126,9 +133,15 @@ protected:
 	bool should_be_closed = false;
 
 	/**
-	 * Current size of the framebuffer.
+	 * Current size of the window (in pixels).
 	 */
 	util::Vector2s size;
+
+	/**
+	 * Scaling factor for the window size (also known as "device pixel ratio"
+	 * in Qt). Used if OS-level high DPI/fractional scaling is applied.
+	 */
+	double scale_dpr = 1.0;
 
 	/**
 	 * Callbacks for key presses.

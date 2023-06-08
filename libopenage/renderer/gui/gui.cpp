@@ -49,7 +49,7 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
 	util::Path shaderdir = assetdir["shaders"];
 	this->initialize_render_pass(size[0], size[1], shaderdir);
 
-	window->add_resize_callback([this](size_t width, size_t height) {
+	window->add_resize_callback([this](size_t width, size_t height, double /*scale*/) {
 		this->resize(width, height);
 	});
 }

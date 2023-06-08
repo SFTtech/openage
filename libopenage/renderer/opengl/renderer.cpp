@@ -9,6 +9,8 @@
 #include "renderer/opengl/context.h"
 #include "renderer/opengl/geometry.h"
 #include "renderer/opengl/lookup.h"
+#include "renderer/opengl/render_pass.h"
+#include "renderer/opengl/render_target.h"
 #include "renderer/opengl/shader_program.h"
 #include "renderer/opengl/texture.h"
 #include "renderer/opengl/uniform_buffer.h"
@@ -20,10 +22,9 @@
 namespace openage::renderer::opengl {
 
 GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx,
-                       size_t width,
-                       size_t height) :
+                       const util::Vector2s &viewport_size) :
 	gl_context{ctx},
-	display{std::make_shared<GlRenderTarget>(width, height)} {
+	display{std::make_shared<GlRenderTarget>(viewport_size[0], viewport_size[1])} {
 	log::log(MSG(info) << "Created OpenGL renderer");
 }
 

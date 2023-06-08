@@ -72,7 +72,7 @@ void main(const util::Path &path) {
 
 		gui->clear_resize_callbacks();
 		gui->add_resize_callback(
-			[&](size_t w, size_t h) {
+			[&](size_t w, size_t h, double /*scale*/) {
 				log::log(INFO << "update pong area size=("
 			                  << w << "," << h << ")...");
 

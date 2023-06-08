@@ -196,7 +196,7 @@ void renderer_demo_1(const util::Path &path) {
 		}
 	});
 
-	window.add_resize_callback([&](size_t w, size_t h) {
+	window.add_resize_callback([&](size_t w, size_t h, double /*scale*/) {
 		/* Calculate a projection matrix for the new screen size. */
 		float aspectRatio = float(w) / float(h);
 		float xScale = 1.0 / aspectRatio;

@@ -98,7 +98,7 @@ void Presenter::init_graphics() {
 	// Camera
 	this->camera = std::make_shared<renderer::camera::Camera>(this->renderer,
 	                                                          this->window->get_size());
-	this->window->add_resize_callback([this](size_t w, size_t h) {
+	this->window->add_resize_callback([this](size_t w, size_t h, double /*scale*/) {
 		this->camera->resize(w, h);
 	});
 
@@ -243,7 +243,7 @@ void Presenter::init_final_render_pass() {
 	// Update final render pass if the textures are reassigned on resize
 	// TODO: This REQUIRES that all other render passes have already been
 	//       resized
-	this->window->add_resize_callback([this](size_t, size_t) {
+	this->window->add_resize_callback([this](size_t, size_t, double /*scale*/) {
 		// Acquire the render targets for all previous passes
 		std::vector<std::shared_ptr<renderer::RenderTarget>> targets{};
 		for (size_t i = 0; i < this->render_passes.size() - 1; ++i) {
