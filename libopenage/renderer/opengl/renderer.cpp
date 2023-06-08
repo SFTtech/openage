@@ -13,14 +13,17 @@
 #include "renderer/opengl/texture.h"
 #include "renderer/opengl/uniform_buffer.h"
 #include "renderer/opengl/uniform_input.h"
+#include "renderer/opengl/window.h"
 #include "renderer/resources/buffer_info.h"
 
 
 namespace openage::renderer::opengl {
 
-GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx) :
+GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx,
+                       size_t width,
+                       size_t height) :
 	gl_context{ctx},
-	display{std::make_shared<GlRenderTarget>()} {
+	display{std::make_shared<GlRenderTarget>(width, height)} {
 	log::log(MSG(info) << "Created OpenGL renderer");
 }
 
@@ -111,6 +114,10 @@ resources::Texture2dData GlRenderer::display_into_data() {
 
 	resources::Texture2dData img(std::move(tex_info), std::move(data));
 	return img.flip_y();
+}
+
+void GlRenderer::resize_display_target(size_t width, size_t height) {
+	this->display->resize(width, height);
 }
 
 void GlRenderer::optimise(const std::shared_ptr<GlRenderPass> &pass) {

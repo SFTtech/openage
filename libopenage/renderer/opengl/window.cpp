@@ -37,26 +37,6 @@ GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 		throw Error{MSG(err) << "Failed to create Qt OpenGL context."};
 	}
 
-	glViewport(0, 0, width * this->window->devicePixelRatio(), height * this->window->devicePixelRatio());
-	this->add_resize_callback([this](size_t w, size_t h) {
-		// since qt respects Xft.dpi and others, the "window size" of w and h
-		// is actually w and h * devicepixelratio.
-		// so a window is "bigger" because we have highdpi scaling.
-		// opengl of course only has a raw real pixel buffer.
-		// now, we tell opengl to use the real window pixel size for its drawing.
-		// this took 3h to figure out...
-		double factor = this->window->devicePixelRatio();
-
-		// this up-scales all our drawing to the "bigger" highdpi window.
-		// TODO: we could render at native resolution, and then do "zoom" depending
-		//       on the pixel ratio.
-		//       if we want to do that, we need to apply this factor in
-		//       the QResizeEvent handler, which triggers this very callback.
-		//       so that all callbacks get the real pixel resolution,
-		//       and thus render with higher resolution.
-		glViewport(0, 0, w * factor, h * factor);
-	});
-
 	this->window->installEventFilter(this->event_handler.get());
 
 	this->window->setVisible(true);
@@ -137,7 +117,31 @@ void GlWindow::update() {
 
 
 std::shared_ptr<Renderer> GlWindow::make_renderer() {
-	return std::make_shared<GlRenderer>(this->get_context());
+	auto renderer = std::make_shared<GlRenderer>(this->get_context(),
+	                                             this->size[0] * this->window->devicePixelRatio(),
+	                                             this->size[1] * this->window->devicePixelRatio());
+
+	this->add_resize_callback([this, renderer](size_t w, size_t h) {
+		// since qt respects Xft.dpi and others, the "window size" of w and h
+		// is actually w and h * devicepixelratio.
+		// so a window is "bigger" because we have highdpi scaling.
+		// opengl of course only has a raw real pixel buffer.
+		// now, we tell opengl to use the real window pixel size for its drawing.
+		// this took 3h to figure out...
+		double factor = this->window->devicePixelRatio();
+
+		// this up-scales all our drawing to the "bigger" highdpi window.
+		// TODO: we could render at native resolution, and then do "zoom" depending
+		//       on the pixel ratio.
+		//       if we want to do that, we need to apply this factor in
+		//       the QResizeEvent handler, which triggers this very callback.
+		//       so that all callbacks get the real pixel resolution,
+		//       and thus render with higher resolution.
+		renderer->resize_display_target(w * factor,
+		                                h * factor);
+	});
+
+	return renderer;
 }
 
 

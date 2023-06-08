@@ -14,10 +14,14 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
+class GlWindow;
+
 /// The OpenGL specialization of the rendering interface.
 class GlRenderer final : public Renderer {
 public:
-	GlRenderer(const std::shared_ptr<GlContext> &);
+	GlRenderer(const std::shared_ptr<GlContext> &,
+	           size_t width,
+	           size_t height);
 
 	std::shared_ptr<Texture2d> add_texture(resources::Texture2dData const &) override;
 	std::shared_ptr<Texture2d> add_texture(resources::Texture2dInfo const &) override;
@@ -38,6 +42,8 @@ public:
 	                                                  std::string const &) override;
 
 	resources::Texture2dData display_into_data() override;
+
+	void resize_display_target(size_t width, size_t height);
 
 	void check_error() override;
 
