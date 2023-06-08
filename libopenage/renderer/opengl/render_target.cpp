@@ -2,6 +2,7 @@
 
 #include "render_target.h"
 
+#include "renderer/opengl/texture.h"
 
 namespace openage::renderer::opengl {
 

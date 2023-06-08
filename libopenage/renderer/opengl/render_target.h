@@ -4,14 +4,18 @@
 
 #include <optional>
 
-#include "../renderer.h"
-#include "framebuffer.h"
-#include "texture.h"
+#include "renderer/opengl/framebuffer.h"
+#include "renderer/renderer.h"
 
 
 namespace openage {
 namespace renderer {
+
+class Texture2d;
+
 namespace opengl {
+
+class GlTexture2d;
 
 /// The type of OpenGL render target
 enum class gl_render_target_t {

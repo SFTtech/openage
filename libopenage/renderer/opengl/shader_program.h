@@ -5,10 +5,8 @@
 #include <unordered_map>
 #include <vector>
 
-#include "renderer/opengl/geometry.h"
 #include "renderer/opengl/shader_data.h"
 #include "renderer/opengl/simple_object.h"
-#include "renderer/opengl/uniform_input.h"
 #include "renderer/renderer.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/shader_program.h"
@@ -16,10 +14,14 @@
 
 namespace openage {
 namespace renderer {
+
+class UniformInput;
+
 namespace opengl {
 
 class GlContext;
 class GlUniformBuffer;
+class GlUniformInput;
 
 /**
  * A handle to an OpenGL shader program.
