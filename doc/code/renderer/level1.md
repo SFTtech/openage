@@ -4,18 +4,19 @@ Low-level renderer for communicating with the OpenGL and Vulkan APIs.
 
 ## Overview
 
-1. [Architecture](#architecture)
-1. [Basic Usage](#basic-usage)
-    1. [Window/Renderer Creation](#windowrenderer-creation)
-    1. [Adding a Shader Program](#adding-a-shader-program)
-    1. [Creating a Renderable](#creating-a-renderable)
-    1. [Rendering and Displaying the Result](#rendering-and-displaying-the-result)
-1. [Advanced Usage](#advanced-usage)
-    1. [Framebuffers / Multiple Render Passes](#framebuffers--multiple-render-passes)
-    1. [Camera](#camera)
-    1. [Complex Geometry](#complex-geometry)
-    1. [Uniform Buffers](#uniform-buffers)
-1. [Thread Safety](#thread-safety)
+1. [Level 1 Renderer](#level-1-renderer)
+   1. [Overview](#overview)
+   2. [Architecture](#architecture)
+   3. [Basic  Usage](#basic--usage)
+      1. [Window/Renderer Creation](#windowrenderer-creation)
+      2. [Adding a Shader Program](#adding-a-shader-program)
+      3. [Creating a Renderable](#creating-a-renderable)
+      4. [Rendering and Displaying the Result](#rendering-and-displaying-the-result)
+   4. [Advanced Usage](#advanced-usage)
+      1. [Framebuffers / Multiple Render Passes](#framebuffers--multiple-render-passes)
+      2. [Complex Geometry](#complex-geometry)
+      3. [Uniform Buffers](#uniform-buffers)
+   5. [Thread-safety](#thread-safety)
 
 
 ## Architecture
@@ -280,27 +281,6 @@ Renderable obj {
 };
 obj.depth_test = true;
 ```
-
-### Camera
-
-What parts of the scene is shown on screen is controlled by the `Camera` class. The camera is handled like an object in the rendered 3D scene that determines what is displayed depending on its position, zoom level and angle. Position and zoom level of the camera can be changed at runtime, while the angle is fixed to the dimetric/isometric view used in Age of Empires games. More precisely, the camera has a yaw of `-135` degrees and a pitch of `-30` degrees (pointed in the `(-x, -y, -z)` direction in the OpenGL coordinate system). The projection method used by the camera is orthographic projection.
-
-The `Camera` class provides the following methods for positioning the camera in the scene:
-
-- `move_to(...)`: Move to a specific scene position.
-- `move_rel(...)`: Move relative to the position using a direction vector. This is usually used to move the camera with key presses or mouse movements.
-- `look_at_scene(...)`: Point the camera on a position in the scene. This will move the camera in such a way that the target position is in the center of the viewport.
-- `look_at_coord(...)`: Same as `look_at_scene(...)` but using openage's `coord::scene3` coordinates as input.
-
-Zoom levels can also be adjusted with these methods:
-
-- `set_zoom(...)`: Set the zoom level to an absolute value. Values <1.0f zoom the camera in, while values >1.0f zoom the camera out.
-- `zoom_in(...)`: Let the camera incrementally zoom in.
-- `zoom_out(...)`: Let the camera incrementally zoom out.
-
-For displaying 3D objects, the `Camera` can also calculate a view matrix (`get_view_matrix()`) and projection matrix (`get_projection_matrix()`) that take current position and zoom level into account.
-
-Camera parameters may be used for raycasting operations, e.g. mouse picking/selection. Since the camera utilizes orthographic projection and a fied angle, the ray direction is exactly the same as the camera direction vector (accessible as `cam_direction`). To find the origin point of a ray for a pixel coordinate in the viewport, the `get_input_pos(..)` method can be used. This method calculates the position of the pixel coordinate on the othographic camera plane that represents the viewport. The result is the absolute position of the pixel coordinate inside the 3D scene. Ray origin point and direction can then be used to perform calculations for line-plane or line sphere intersections.
 
 ### Complex Geometry
 
