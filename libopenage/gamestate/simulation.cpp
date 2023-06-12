@@ -32,8 +32,6 @@ GameSimulation::GameSimulation(const util::Path &root_dir,
 		this->mod_manager->register_modpack(mod);
 	}
 
-	this->game = std::make_shared<gamestate::Game>(root_dir, event_loop, this->mod_manager);
-
 	log::log(MSG(info) << "Created game simulation");
 }
 
@@ -52,6 +50,8 @@ void GameSimulation::start() {
 	std::unique_lock lock{this->mutex};
 
 	this->init_event_handlers();
+
+	this->game = std::make_shared<gamestate::Game>(root_dir, event_loop, this->mod_manager);
 
 	this->running = true;
 
