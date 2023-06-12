@@ -25,6 +25,13 @@ public:
 	         const coord::phys3 &initial_pos,
 	         const curve::time_t &creation_time);
 
+	/**
+     * Create a Position component.
+     *
+     * @param loop Event loop that all events from the component are registered on.
+     */
+	Position(const std::shared_ptr<openage::event::EventLoop> &loop);
+
 	component_t get_type() const override;
 
 	/**

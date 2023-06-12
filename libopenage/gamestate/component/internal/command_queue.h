@@ -2,14 +2,41 @@
 
 #pragma once
 
+#include "curve/queue.h"
 #include "gamestate/component/internal_component.h"
 
-namespace openage::gamestate::component {
+namespace openage {
 
-class CommandQueue : InternalComponent {
-	// TODO: Add command queue member
+namespace event {
+class EventLoop;
+} // namespace event
 
-	component_t get_type() const override;
+namespace gamestate::component {
+
+// TODO: Commands need payloads
+enum class command_t {
+	NONE,
+	IDLE,
+	MOVE,
 };
 
-} // namespace openage::gamestate::component
+class CommandQueue : public InternalComponent {
+public:
+	/**
+	 * Creates an Ownership component.
+	 *
+	 * @param loop Event loop that all events from the component are registered on.
+	 */
+	CommandQueue(const std::shared_ptr<openage::event::EventLoop> &loop);
+
+	component_t get_type() const override;
+
+private:
+	/**
+	 * Command queue.
+	 */
+	curve::Queue<command_t> command_queue;
+};
+
+} // namespace gamestate::component
+} // namespace openage

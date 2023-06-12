@@ -13,5 +13,16 @@ APIComponent::APIComponent(const std::shared_ptr<event::EventLoop> &loop,
 	this->enabled.set_insert(creation_time, enabled);
 }
 
+APIComponent::APIComponent(const std::shared_ptr<event::EventLoop> &loop,
+                           nyan::Object &ability,
+                           bool enabled) :
+	ability{ability},
+	enabled(loop, 0, "", nullptr, enabled) {
+}
+
+const nyan::Object &APIComponent::get_ability() const {
+	return this->ability;
+}
+
 
 } // namespace openage::gamestate::component

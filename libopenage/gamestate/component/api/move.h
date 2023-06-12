@@ -6,7 +6,10 @@
 
 namespace openage::gamestate::component {
 
-class Move : APIComponent {
+class Move : public APIComponent {
+public:
+	using APIComponent::APIComponent;
+
 	component_t get_type() const override;
 };
 

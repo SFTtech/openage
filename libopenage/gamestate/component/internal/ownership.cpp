@@ -14,6 +14,10 @@ Ownership::Ownership(const std::shared_ptr<openage::event::EventLoop> &loop,
 	this->owner.set_insert(creation_time, owner_id);
 }
 
+Ownership::Ownership(const std::shared_ptr<openage::event::EventLoop> &loop) :
+	owner(loop, 0) {
+}
+
 inline component_t Ownership::get_type() const {
 	return component_t::OWNERSHIP;
 }

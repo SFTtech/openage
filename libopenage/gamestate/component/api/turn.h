@@ -2,11 +2,16 @@
 
 #pragma once
 
+#include <nyan/nyan.h>
+
 #include "gamestate/component/api_component.h"
 
 namespace openage::gamestate::component {
 
-class Turn : APIComponent {
+class Turn : public APIComponent {
+public:
+	using APIComponent::APIComponent;
+
 	component_t get_type() const override;
 };
 

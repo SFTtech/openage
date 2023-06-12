@@ -22,6 +22,13 @@ public:
 	          const ownership_id_t owner_id,
 	          const curve::time_t &creation_time);
 
+	/**
+	 * Creates an Ownership component.
+	 *
+	 * @param loop Event loop that all events from the component are registered on.
+	 */
+	Ownership(const std::shared_ptr<openage::event::EventLoop> &loop);
+
 	component_t get_type() const override;
 
 	/**

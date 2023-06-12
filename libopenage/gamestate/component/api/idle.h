@@ -6,7 +6,10 @@
 
 namespace openage::gamestate::component {
 
-class Idle : APIComponent {
+class Idle : public APIComponent {
+public:
+	using APIComponent::APIComponent;
+
 	component_t get_type() const override;
 };
 

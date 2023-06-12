@@ -36,6 +36,11 @@ Position::Position(const std::shared_ptr<openage::event::EventLoop> &loop,
 }
 
 
+Position::Position(const std::shared_ptr<openage::event::EventLoop> &loop) :
+	position(loop, 0, "", nullptr, WORLD_ORIGIN),
+	angle(loop, 0) {
+}
+
 inline component_t Position::get_type() const {
 	return component_t::POSITION;
 }
