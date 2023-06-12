@@ -16,6 +16,12 @@ GameEntity::GameEntity(entity_id_t id,
 	render_entity{nullptr} {
 }
 
+GameEntity::GameEntity(entity_id_t id) :
+	id{id},
+	components{},
+	render_entity{nullptr} {
+}
+
 entity_id_t GameEntity::get_id() const {
 	return this->id;
 }

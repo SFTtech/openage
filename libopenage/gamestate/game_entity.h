@@ -35,6 +35,14 @@ public:
      */
 	GameEntity(entity_id_t id,
 	           util::Path &animation_path);
+
+	/**
+     * Create a new game entity.
+     *
+     * @param id Unique identifier.
+     */
+	GameEntity(entity_id_t id);
+
 	~GameEntity() = default;
 
 	/**
@@ -72,7 +80,9 @@ private:
      */
 	std::unordered_map<component::component_t, std::shared_ptr<component::Component>> components;
 
-	// render entity for pushing updates to
+	/**
+	 * Render entity for pushing updates to the renderer. Can be \p nullptr.
+	 */
 	std::shared_ptr<renderer::world::WorldRenderEntity> render_entity;
 };
 
