@@ -19,6 +19,7 @@ Game::Game(const util::Path &root_dir,
 	state{std::make_shared<GameState>(this->db, event_loop)},
 	universe{std::make_shared<Universe>(root_dir, state)} {
 	this->load_data(mod_manager);
+	this->universe->load_data();
 }
 
 const std::shared_ptr<GameState> &Game::get_state() const {
@@ -45,7 +46,15 @@ void Game::load_data(const std::shared_ptr<assets::ModManager> &mod_manager) {
 			auto search = include;
 			if (last_part == "**") {
 				recursive = true;
-				search = include.substr(0, include.size() - 2);
+				if (parts.size() == 1) {
+					// include = "**"
+					search = include.substr(0, include.size() - 2);
+				}
+				else {
+					// include = "path/to/somewhere/**"
+					// remove the slash '/' too
+					search = include.substr(0, include.size() - 3);
+				}
 			}
 
 			this->load_path(info.path.get_parent(), info.path.get_name(), search, recursive);
@@ -63,7 +72,7 @@ void Game::load_path(const util::Path &base_dir,
 	auto fileload_func = [&base_path, &mod_dir](const std::string &filename) {
 		// nyan wants a string filepath, so we have to construct it from the
 		// path and subpath parameters
-		log::log(INFO << "Loading .nyan file: " << mod_dir + "/" + filename);
+		log::log(INFO << "Loading .nyan file: " << filename);
 		auto loc = base_path + "/" + filename;
 		return std::make_shared<nyan::File>(loc);
 	};

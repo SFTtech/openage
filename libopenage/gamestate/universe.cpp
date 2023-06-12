@@ -34,4 +34,8 @@ void Universe::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &r
 	this->world->attach_renderer(render_factory);
 }
 
+void Universe::load_data() {
+	this->world->load_data();
+}
+
 } // namespace openage::gamestate
