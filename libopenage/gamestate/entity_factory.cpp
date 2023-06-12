@@ -36,10 +36,10 @@ std::shared_ptr<GameEntity> EntityFactory::add_game_entity(util::Path &animation
 
 std::shared_ptr<GameEntity> EntityFactory::add_game_entity(const std::shared_ptr<openage::event::EventLoop> &loop,
                                                            const std::shared_ptr<GameState> &state,
-                                                           const nyan::fqon_t &entity_name) {
+                                                           const nyan::fqon_t &nyan_entity) {
 	auto entity = std::make_shared<GameEntity>(this->get_next_id());
 
-	initialize_components(loop, state, entity, entity_name);
+	initialize_components(loop, state, entity, nyan_entity);
 
 	return entity;
 }

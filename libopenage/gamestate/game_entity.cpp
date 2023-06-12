@@ -22,6 +22,13 @@ GameEntity::GameEntity(entity_id_t id) :
 	render_entity{nullptr} {
 }
 
+std::shared_ptr<GameEntity> GameEntity::copy(entity_id_t id) {
+	auto copy = std::shared_ptr<GameEntity>(new GameEntity(*this));
+	copy->set_id(id);
+
+	return copy;
+}
+
 entity_id_t GameEntity::get_id() const {
 	return this->id;
 }
@@ -46,6 +53,10 @@ void GameEntity::push_to_render() {
 		const auto &angle = dynamic_pointer_cast<component::Position>(this->components.at(component::component_t::POSITION))->get_angles();
 		this->render_entity->update(this->id, pos, angle, this->animation_path);
 	}
+}
+
+void GameEntity::set_id(entity_id_t id) {
+	this->id = id;
 }
 
 } // namespace openage::gamestate

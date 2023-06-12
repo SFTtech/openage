@@ -45,6 +45,18 @@ public:
 
 	~GameEntity() = default;
 
+	GameEntity(GameEntity &&) = default;
+	GameEntity &operator=(GameEntity &&) = default;
+
+	/**
+	 * Copy this game entity.
+	 *
+	 * @param id Unique identifier.
+	 *
+	 * @return Copy of this game entity.
+	 */
+	std::shared_ptr<GameEntity> copy(entity_id_t id);
+
 	/**
      * Get the unique identifier of this entity.
      *
@@ -69,9 +81,31 @@ public:
 	// test connection to renderer
 	void push_to_render();
 
+protected:
+	/**
+	 * A game entity cannot be default copied because of their unique ID.
+	 *
+	 * \p copy() must be used instead.
+	 */
+	GameEntity(const GameEntity &) = default;
+	GameEntity &operator=(const GameEntity &) = default;
+
 private:
-	// Unique identifier
-	const entity_id_t id;
+	/**
+	 * Set the unique identifier of this game entity.
+	 *
+	 * Only called by \p copy().
+	 *
+	 * @param id New ID.
+	 */
+	void set_id(entity_id_t id);
+
+
+	/**
+	 * Unique identifier.
+	 */
+	entity_id_t id;
+
 	// path to a texture
 	util::Path animation_path;
 

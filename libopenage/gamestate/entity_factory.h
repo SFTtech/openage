@@ -38,6 +38,9 @@ public:
 
 	/**
      * Create a new game entity.
+	 *
+	 * This just creates the entity. The caller is responsible for initializing
+	 * its components and placing it into the game.
      *
      * @return New game entity.
      */
@@ -46,6 +49,9 @@ public:
 	/**
      * Create a new game entity.
 	 *
+	 * This just creates the entity. The caller is responsible for initializing
+	 * its components and placing it into the game.
+     *
 	 * @param loop Event loop for the gamestate.
 	 * @param state State of the game.
 	 * @param nyan_entity fqon of the GameEntity data in the nyan database.
@@ -94,6 +100,8 @@ private:
 	 * Factory for creating connector objects to the renderer which make game entities displayable.
 	 */
 	std::shared_ptr<renderer::RenderFactory> render_factory;
+
+	// TODO: Cache created game entities.
 
 	/**
      * Mutex for thread safety.
