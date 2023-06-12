@@ -14,6 +14,10 @@ GameState::GameState(const std::shared_ptr<nyan::Database> &db,
 	db_view{db->new_view()} {
 }
 
+const std::shared_ptr<nyan::View> &GameState::get_nyan_db() {
+	return this->db_view;
+}
+
 void GameState::add_game_entity(const std::shared_ptr<GameEntity> &entity) {
 	if (this->game_entities.contains(entity->get_id())) [[unlikely]] {
 		throw Error(MSG(err) << "Game entity with ID " << entity->get_id() << " already exists");

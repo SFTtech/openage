@@ -34,6 +34,13 @@ public:
 	                   const std::shared_ptr<openage::event::EventLoop> &event_loop);
 
 	/**
+      * Get the nyan database view of this state.
+      *
+      * @return nyan database view.
+      */
+	const std::shared_ptr<nyan::View> &get_nyan_db();
+
+	/**
      * Add a new game entity to the index.
      *
      * @param entity New game entity.
