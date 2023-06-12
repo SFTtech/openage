@@ -5,11 +5,17 @@
 #include <memory>
 #include <shared_mutex>
 
+#include <nyan/nyan.h>
+
 #include "coord/phys.h"
 #include "gamestate/types.h"
 #include "util/path.h"
 
 namespace openage {
+
+namespace event {
+class EventLoop;
+} // namespace event
 
 namespace renderer {
 class RenderFactory;
@@ -31,11 +37,24 @@ public:
 	~EntityFactory() = default;
 
 	/**
-     * Create a new game entity and register it at the gamestate.
+     * Create a new game entity.
      *
      * @return New game entity.
      */
 	std::shared_ptr<GameEntity> add_game_entity(util::Path &animation_path);
+
+	/**
+     * Create a new game entity.
+	 *
+	 * @param loop Event loop for the gamestate.
+	 * @param state State of the game.
+	 * @param nyan_entity fqon of the GameEntity data in the nyan database.
+	 *
+	 * @return New game entity.
+	 */
+	std::shared_ptr<GameEntity> add_game_entity(const std::shared_ptr<openage::event::EventLoop> &loop,
+	                                            const std::shared_ptr<GameState> &state,
+	                                            const nyan::fqon_t &nyan_entity);
 
 	/**
 	 * Attach a renderer which enables graphical display options for all ingame entities.
@@ -46,6 +65,19 @@ public:
 	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
 
 private:
+	/**
+	 * Initialize components of a game entity.
+	 *
+	 * @param loop Event loop for the gamestate.
+	 * @param state State of the game.
+	 * @param entity Game entity.
+	 * @param nyan_entity fqon of the GameEntity data in the nyan database.
+	 */
+	void initialize_components(const std::shared_ptr<openage::event::EventLoop> &loop,
+	                           const std::shared_ptr<GameState> &state,
+	                           const std::shared_ptr<GameEntity> &entity,
+	                           const nyan::fqon_t &nyan_entity);
+
 	/**
      * Get a unique ID for creating a game entity.
      *
