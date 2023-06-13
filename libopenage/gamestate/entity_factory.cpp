@@ -65,8 +65,13 @@ void EntityFactory::initialize_components(const std::shared_ptr<openage::event::
 
 	auto db_view = state->get_nyan_db();
 	auto nyan_obj = db_view->get_object(nyan_entity);
-	auto abilities = nyan_obj.get_set("abilities");
-	for (auto &ability_val : abilities) {
+	// works
+	std::shared_ptr<nyan::Set> abilities_set = nyan_obj.get<nyan::Set>("GameEntity.abilities");
+	const nyan::set_t &abilities1 = abilities_set->get();
+
+	// no content in set???
+	const nyan::set_t &abilities2 = nyan_obj.get_set_test("GameEntity.abilities");
+	for (const auto &ability_val : abilities1) {
 		auto ability_fqon = std::dynamic_pointer_cast<nyan::ObjectValue>(ability_val.get_ptr())->get_name();
 		auto ability_obj = db_view->get_object(ability_fqon);
 

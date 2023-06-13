@@ -45,15 +45,28 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
                                 const param_map &params) {
 	auto gstate = std::dynamic_pointer_cast<gamestate::GameState>(state);
 
+	auto nyan_db = gstate->get_nyan_db();
+
+	auto game_entities = nyan_db->get_obj_children_all("engine.util.game_entity.GameEntity");
+
+	static uint8_t index = 0;
+	static std::vector<nyan::fqon_t> test_entities = {
+		"aoe1_base.data.game_entity.generic.chariot_archer.chariot_archer.ChariotArcher",
+		"aoe1_base.data.game_entity.generic.bowman.bowman.Bowman",
+		"aoe1_base.data.game_entity.generic.hoplite.hoplite.Hoplite",
+		"aoe1_base.data.game_entity.generic.temple.temple.Temple",
+		"aoe1_base.data.game_entity.generic.academy.academy.Academy",
+	};
+	nyan::fqon_t nyan_entity = test_entities.at(index);
+	++index;
+	if (index >= test_entities.size()) {
+		index = 0;
+	}
+
 	// Create entity
-	auto entity = this->factory->add_game_entity(this->animation_path);
+	auto entity = this->factory->add_game_entity(this->loop, gstate, nyan_entity);
 
 	// Setup components
-	auto position = std::make_shared<component::Position>(this->loop,
-	                                                      params.get("position", coord::phys3{0, 0, 0}),
-	                                                      time);
-	entity->add_component(static_pointer_cast<component::Component>(position));
-
 	entity->push_to_render();
 
 	gstate->add_game_entity(entity);
