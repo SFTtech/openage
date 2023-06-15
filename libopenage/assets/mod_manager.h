@@ -15,7 +15,7 @@ namespace openage::assets {
 
 class ModManager {
 public:
-	ModManager() = default;
+	ModManager(const util::Path &asset_base_dir);
 	~ModManager() = default;
 
 	/**
@@ -113,6 +113,11 @@ private:
      * @param load_order Load order of modpacks.
      */
 	void set_load_order(const std::vector<std::string> &load_order);
+
+	/**
+     * TODO: Mount point for modpacks.
+     */
+	util::Path asset_base_dir;
 
 	/**
      * Active modpacks. Maps their ID ('name' in the modpack definition file)

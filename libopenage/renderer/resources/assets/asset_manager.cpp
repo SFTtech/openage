@@ -21,10 +21,12 @@
 
 namespace openage::renderer::resources {
 
-AssetManager::AssetManager(const std::shared_ptr<Renderer> &renderer) :
+AssetManager::AssetManager(const std::shared_ptr<Renderer> &renderer,
+                           const util::Path &asset_base_dir) :
 	renderer{renderer},
 	cache{std::make_shared<AssetCache>()},
-	texture_manager{std::make_shared<TextureManager>(renderer)} {
+	texture_manager{std::make_shared<TextureManager>(renderer)},
+	asset_base_dir{asset_base_dir} {
 }
 
 const std::shared_ptr<Animation2dInfo> &AssetManager::request_animation(const util::Path &path) {
@@ -157,6 +159,30 @@ const std::shared_ptr<Texture2dInfo> &AssetManager::request_texture(const util::
 		}
 	}
 	return this->cache->get_texture(path);
+}
+
+const std::shared_ptr<Animation2dInfo> &AssetManager::request_animation(const std::string &rel_path) {
+	return this->request_animation(this->asset_base_dir / rel_path);
+}
+
+const std::shared_ptr<BlendPatternInfo> &AssetManager::request_blpattern(const std::string &rel_path) {
+	return this->request_blpattern(this->asset_base_dir / rel_path);
+}
+
+const std::shared_ptr<BlendTableInfo> &AssetManager::request_bltable(const std::string &rel_path) {
+	return this->request_bltable(this->asset_base_dir / rel_path);
+}
+
+const std::shared_ptr<PaletteInfo> &AssetManager::request_palette(const std::string &rel_path) {
+	return this->request_palette(this->asset_base_dir / rel_path);
+}
+
+const std::shared_ptr<TerrainInfo> &AssetManager::request_terrain(const std::string &rel_path) {
+	return this->request_terrain(this->asset_base_dir / rel_path);
+}
+
+const std::shared_ptr<Texture2dInfo> &AssetManager::request_texture(const std::string &rel_path) {
+	return this->request_texture(this->asset_base_dir / rel_path);
 }
 
 void AssetManager::set_placeholder_animation(const util::Path &path) {

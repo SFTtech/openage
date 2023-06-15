@@ -29,6 +29,8 @@ class Texture2dInfo;
  *
  * Using the asset manager allows quick access to already loaded assets and avoids
  * creating unnecessary duplicates.
+ *
+ * TODO: Hot reloading/cache invalidation with inotify.
  */
 class AssetManager {
 public:
@@ -36,8 +38,10 @@ public:
      * Create a new asset manager.
      *
      * @param renderer The openage renderer instance.
+     * @param asset_base_dir Base path for all assets.
      */
-	AssetManager(const std::shared_ptr<Renderer> &renderer);
+	AssetManager(const std::shared_ptr<Renderer> &renderer,
+	             const util::Path &asset_base_dir);
 	~AssetManager() = default;
 
 	/**
@@ -63,6 +67,24 @@ public:
 	const std::shared_ptr<PaletteInfo> &request_palette(const util::Path &path);
 	const std::shared_ptr<TerrainInfo> &request_terrain(const util::Path &path);
 	const std::shared_ptr<Texture2dInfo> &request_texture(const util::Path &path);
+
+	/**
+     * Get the corresponding asset for a path string relative to the
+     * asset base directory.
+     *
+     * If the asset does not exist in the cache yet, it will be loaded
+     * using the given path.
+     *
+     * @param path Relative path to the asset resource (from the asset base dir).
+     *
+     * @return Texture resource at the given path.
+     */
+	const std::shared_ptr<Animation2dInfo> &request_animation(const std::string &rel_path);
+	const std::shared_ptr<BlendPatternInfo> &request_blpattern(const std::string &rel_path);
+	const std::shared_ptr<BlendTableInfo> &request_bltable(const std::string &rel_path);
+	const std::shared_ptr<PaletteInfo> &request_palette(const std::string &rel_path);
+	const std::shared_ptr<TerrainInfo> &request_terrain(const std::string &rel_path);
+	const std::shared_ptr<Texture2dInfo> &request_texture(const std::string &rel_path);
 
 	using placeholder_anim_t = std::optional<std::pair<util::Path, std::shared_ptr<Animation2dInfo>>>;
 	using placeholder_blpattern_t = std::optional<std::pair<util::Path, std::shared_ptr<BlendPatternInfo>>>;
@@ -119,6 +141,13 @@ private:
      * high level asset formats cached by the asset manager.
      */
 	std::shared_ptr<TextureManager> texture_manager;
+
+	/**
+     * Base path for all assets.
+     *
+     * TODO: This should be the mount point of modpacks?
+     */
+	util::Path asset_base_dir;
 
 	/**
      * Placeholder assets that can be used if a resource is not found.

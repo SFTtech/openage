@@ -25,7 +25,7 @@ GameSimulation::GameSimulation(const util::Path &root_dir,
 	time_loop{time_loop},
 	event_loop{std::make_shared<openage::event::EventLoop>()},
 	entity_factory{std::make_shared<gamestate::EntityFactory>()},
-	mod_manager{std::make_shared<assets::ModManager>()},
+	mod_manager{std::make_shared<assets::ModManager>(this->root_dir / "assets" / "converted")},
 	spawner{std::make_shared<gamestate::event::Spawner>(this->event_loop)} {
 	auto mods = mod_manager->enumerate_modpacks(root_dir / "assets" / "converted");
 	for (const auto &mod : mods) {

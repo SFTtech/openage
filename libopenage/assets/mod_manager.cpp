@@ -6,6 +6,10 @@
 
 namespace openage::assets {
 
+ModManager::ModManager(const util::Path &asset_base_dir) :
+	asset_base_dir{asset_base_dir} {
+}
+
 void ModManager::register_modpack(const util::Path &info_file) {
 	auto info = parse_modepack_def(info_file);
 	this->available.emplace(info.id, info);

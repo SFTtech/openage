@@ -105,7 +105,9 @@ void Presenter::init_graphics() {
 	this->camera_manager = std::make_shared<renderer::camera::CameraManager>(this->camera);
 
 	// Asset mangement
-	this->asset_manager = std::make_shared<renderer::resources::AssetManager>(this->renderer);
+	this->asset_manager = std::make_shared<renderer::resources::AssetManager>(
+		this->renderer,
+		this->root_dir / "assets" / "converted");
 	auto missing_tex = this->root_dir / "assets" / "test" / "textures" / "test_missing.sprite";
 	this->asset_manager->set_placeholder_animation(missing_tex);
 

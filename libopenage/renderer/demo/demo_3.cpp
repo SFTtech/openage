@@ -44,7 +44,9 @@ void renderer_demo_3(const util::Path &path) {
 	std::vector<std::shared_ptr<RenderPass>> render_passes{};
 
 	// TODO: Make this optional for subrenderers?
-	auto asset_manager = std::make_shared<renderer::resources::AssetManager>(renderer);
+	auto asset_manager = std::make_shared<renderer::resources::AssetManager>(
+		renderer,
+		path["assets"]["converted"]);
 
 	// Renders the background
 	auto skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
