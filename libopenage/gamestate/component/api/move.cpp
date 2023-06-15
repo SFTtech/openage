@@ -8,7 +8,7 @@
 namespace openage::gamestate::component {
 
 inline component_t Move::get_type() const {
-	return component_t::TURN;
+	return component_t::MOVE;
 }
 
 } // namespace openage::gamestate::component
