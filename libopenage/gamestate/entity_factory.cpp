@@ -38,8 +38,11 @@ std::shared_ptr<GameEntity> EntityFactory::add_game_entity(const std::shared_ptr
                                                            const std::shared_ptr<GameState> &state,
                                                            const nyan::fqon_t &nyan_entity) {
 	auto entity = std::make_shared<GameEntity>(this->get_next_id());
-
 	initialize_components(loop, state, entity, nyan_entity);
+
+	if (this->render_factory) {
+		entity->set_render_entity(this->render_factory->add_world_render_entity());
+	}
 
 	return entity;
 }
@@ -65,13 +68,9 @@ void EntityFactory::initialize_components(const std::shared_ptr<openage::event::
 
 	auto db_view = state->get_nyan_db();
 	auto nyan_obj = db_view->get_object(nyan_entity);
-	// works
-	std::shared_ptr<nyan::Set> abilities_set = nyan_obj.get<nyan::Set>("GameEntity.abilities");
-	const nyan::set_t &abilities1 = abilities_set->get();
+	nyan::set_t abilities = nyan_obj.get_set("GameEntity.abilities");
 
-	// no content in set???
-	const nyan::set_t &abilities2 = nyan_obj.get_set_test("GameEntity.abilities");
-	for (const auto &ability_val : abilities1) {
+	for (const auto &ability_val : abilities) {
 		auto ability_fqon = std::dynamic_pointer_cast<nyan::ObjectValue>(ability_val.get_ptr())->get_name();
 		auto ability_obj = db_view->get_object(ability_fqon);
 
