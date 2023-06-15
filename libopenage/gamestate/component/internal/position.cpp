@@ -49,8 +49,17 @@ const curve::Continuous<coord::phys3> &Position::get_positions() const {
 	return this->position;
 }
 
+void Position::set_position(const curve::time_t &time, const coord::phys3 &pos) {
+	this->position.set_insert(time, pos);
+}
+
 const curve::Segmented<coord::phys_angle_t> &Position::get_angles() const {
 	return this->angle;
+}
+
+void Position::set_angle(const curve::time_t &time, const coord::phys_angle_t &angle) {
+	auto old_angle = this->angle.get(time);
+	this->angle.set_insert_jump(time, old_angle, angle);
 }
 
 } // namespace openage::gamestate::component

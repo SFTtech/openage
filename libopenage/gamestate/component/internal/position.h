@@ -42,11 +42,31 @@ public:
 	const curve::Continuous<coord::phys3> &get_positions() const;
 
 	/**
+     * Set the position at a given time.
+     *
+     * This adds a new keyframe to the position curve.
+     *
+     * @param time Time at which the position is set.
+     * @param pos New position.
+     */
+	void set_position(const curve::time_t &time, const coord::phys3 &pos);
+
+	/**
      * Get the directions in degrees over time.
      *
      * @return Direction curve.
      */
 	const curve::Segmented<coord::phys_angle_t> &get_angles() const;
+
+	/**
+     * Set the angle at a given time.
+     *
+     * This adds a new keyframe to the angle curve.
+     *
+     * @param time Time at which the angle is set.
+     * @param angle New angle.
+     */
+	void set_angle(const curve::time_t &time, const coord::phys_angle_t &angle);
 
 private:
 	/**
