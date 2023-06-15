@@ -2,6 +2,8 @@
 
 #include "game_entity.h"
 
+#include "gamestate/component/api/idle.h"
+#include "gamestate/component/api/move.h"
 #include "gamestate/component/base_component.h"
 #include "gamestate/component/internal/position.h"
 #include "renderer/stages/world/world_render_entity.h"
@@ -39,8 +41,16 @@ void GameEntity::set_render_entity(const std::shared_ptr<renderer::world::WorldR
 	this->push_to_render();
 }
 
+const std::shared_ptr<component::Component> &GameEntity::get_component(component::component_t type) {
+	return this->components.at(type);
+}
+
 void GameEntity::add_component(const std::shared_ptr<component::Component> &component) {
 	this->components.insert({component->get_type(), component});
+}
+
+bool GameEntity::has_component(component::component_t type) {
+	return this->components.contains(type);
 }
 
 void GameEntity::push_to_render() {
@@ -48,6 +58,45 @@ void GameEntity::push_to_render() {
 		if (not this->components.contains(component::component_t::POSITION)) {
 			return;
 		}
+
+		if (this->components.contains(component::component_t::MOVE)) {
+			auto comp = dynamic_pointer_cast<component::Move>(this->components.at(component::component_t::MOVE));
+			if (comp->check_property(component::property_t::ANIMATED)) {
+				auto property = comp->get_property(component::property_t::ANIMATED);
+				auto animations = property.get_set("Animated.animations");
+
+				if (animations.size() < 1) {
+					return;
+				}
+
+				auto animation = std::dynamic_pointer_cast<nyan::ObjectValue>((*animations.begin()).get_ptr());
+				auto db_view = comp->get_ability().get_view();
+				auto animation_obj = db_view->get_object(animation->get_name());
+				auto anim_path = animation_obj.get_file("Animation.sprite");
+
+				auto obj_path = animation_obj.get_info().get_location().get_file()->get_name();
+			}
+		}
+		else if (this->components.contains(component::component_t::IDLE)) {
+			auto comp = dynamic_pointer_cast<component::Idle>(this->components.at(component::component_t::IDLE));
+			if (comp->check_property(component::property_t::ANIMATED)) {
+				auto property = comp->get_property(component::property_t::ANIMATED);
+				auto animations = property.get_set("Animated.animations");
+
+				if (animations.size() < 1) {
+					return;
+				}
+
+				auto animation = std::dynamic_pointer_cast<nyan::ObjectValue>((*animations.begin()).get_ptr());
+				auto db_view = comp->get_ability().get_view();
+				auto animation_obj = db_view->get_object(animation->get_name());
+				auto anim_path = animation_obj.get_file("Animation.sprite");
+			}
+		}
+		else {
+			return;
+		}
+		return;
 
 		const auto &pos = dynamic_pointer_cast<component::Position>(this->components.at(component::component_t::POSITION))->get_positions();
 		const auto &angle = dynamic_pointer_cast<component::Position>(this->components.at(component::component_t::POSITION))->get_angles();

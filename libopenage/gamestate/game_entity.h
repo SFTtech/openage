@@ -72,11 +72,25 @@ public:
 	void set_render_entity(const std::shared_ptr<renderer::world::WorldRenderEntity> &entity);
 
 	/**
+     * Get a component of this entity.
+     *
+     * @param type Component type.
+     */
+	const std::shared_ptr<component::Component> &get_component(component::component_t type);
+
+	/**
      * Add a component to this entity.
      *
      * @param component Component to add.
      */
 	void add_component(const std::shared_ptr<component::Component> &component);
+
+	/**
+     * Check if this entity has a component of the given type.
+     *
+     * @param type Component type.
+     */
+	bool has_component(component::component_t type);
 
 	// test connection to renderer
 	void push_to_render();
