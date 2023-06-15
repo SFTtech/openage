@@ -7,7 +7,13 @@
 #include "curve/discrete.h"
 #include "gamestate/component/base_component.h"
 
-namespace openage::gamestate::component {
+namespace openage {
+
+namespace event {
+class EventLoop;
+}
+
+namespace gamestate::component {
 
 /**
  * Interface for componenta that are represented by a nyan object from
@@ -23,7 +29,7 @@ public:
 	 * @param creation_time Ingame creation time of the component.
 	 * @param enabled If true, enable the component at creation time.
 	 */
-	APIComponent(const std::shared_ptr<event::EventLoop> &loop,
+	APIComponent(const std::shared_ptr<openage::event::EventLoop> &loop,
 	             nyan::Object &ability,
 	             const time_t &creation_time,
 	             bool enabled = true);
@@ -35,7 +41,7 @@ public:
 	 * @param ability nyan ability object for the component.
 	 * @param enabled If true, enable the component at creation time.
 	 */
-	APIComponent(const std::shared_ptr<event::EventLoop> &loop,
+	APIComponent(const std::shared_ptr<openage::event::EventLoop> &loop,
 	             nyan::Object &ability,
 	             bool enabled = true);
 
@@ -46,6 +52,23 @@ public:
 	 */
 	const nyan::Object &get_ability() const;
 
+	/**
+     * Checks if the component has a given property.
+     *
+     * @param property Property type.
+     *
+     * @return true if the component has the property, else false.
+     */
+	bool check_property(property_t property);
+
+	/**
+     * Get a property of the component's ability.
+     *
+     * @param property Property type.
+     *
+     * @return nyan object of the property.
+     */
+	const nyan::Object get_property(property_t property) const;
 
 private:
 	/**
@@ -59,4 +82,5 @@ private:
 	curve::Discrete<bool> enabled;
 };
 
-} // namespace openage::gamestate::component
+} // namespace gamestate::component
+} // namespace openage
