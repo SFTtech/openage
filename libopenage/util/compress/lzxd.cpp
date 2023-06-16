@@ -243,7 +243,7 @@ int HuffmanTable<maxsymbols_p, tablebits_p, allow_empty>::read_sym() {
 	unsigned i = 1 << (sizeof(lzx->bits.bit_buffer) * 8 - tablebits);
 	while (sym >= maxsymbols) {
 		// huff_traverse
-		if (unlikely((i >>= 1) == 0)) {
+		if (((i >>= 1) == 0)) [[unlikely]] {
 			throw Error(MSG(err) << "huff_error in huff_traverse");
 		}
 		sym = table[(sym << 1) | ((lzx->bits.bit_buffer & i) ? 1 : 0)];
@@ -264,7 +264,7 @@ void HuffmanTable<maxsymbols_p, tablebits_p, allow_empty>::make_decode_table() {
 
 			// if any of the symbols has a greater-than-zero length, fail.
 			for (unsigned int i = 0; i < maxsymbols; i++) {
-				if (unlikely(this->len[i] > 0)) {
+				if (this->len[i] > 0) [[unlikely]] {
 					throw Error(MSG(err) << "failed to build HuffmanTable<allow_empty=true>");
 				}
 			}
@@ -540,7 +540,7 @@ int LZXDStream::decode_symbol_from_verbatim_block() {
 	// get match length
 	int match_length = main_element & LZX_NUM_PRIMARY_LENGTHS;
 	if (match_length == LZX_NUM_PRIMARY_LENGTHS) {
-		if (unlikely(this->htlength.is_empty)) {
+		if (this->htlength.is_empty) [[unlikely]] {
 			throw Error(MSG(err) << "decrunch: LENGTH symbol needed byt tree is empty");
 		}
 		int length_footer = this->htlength.read_sym();
@@ -579,7 +579,7 @@ int LZXDStream::decode_symbol_from_verbatim_block() {
 		this->R0 = match_offset;
 	}
 
-	if (unlikely((this->window_posn + match_length) > this->window_size)) {
+	if ((this->window_posn + match_length) > this->window_size) [[unlikely]] {
 		throw Error(MSG(err) << "decrunch: match ran over window wrap");
 	}
 
@@ -590,7 +590,7 @@ int LZXDStream::decode_symbol_from_verbatim_block() {
 	if (match_offset > this->window_posn) {
 		// j = length from match offset to end of window
 		int j = match_offset - this->window_posn;
-		if (unlikely(j > (int) this->window_size)) {
+		if (j > (int) this->window_size) [[unlikely]] {
 			throw Error(MSG(err) << "decrunch: match offset beyond window boundaries");
 		}
 		unsigned char *runsrc = &window[this->window_size - j];
@@ -631,7 +631,7 @@ int LZXDStream::decode_symbol_from_aligned_block() {
 	// get match length
 	int match_length = main_element & LZX_NUM_PRIMARY_LENGTHS;
 	if (match_length == LZX_NUM_PRIMARY_LENGTHS) {
-		if (unlikely(this->htlength.is_empty)) {
+		if (this->htlength.is_empty) [[unlikely]] {
 			throw Error(MSG(err) << "decrunch: length symbol needed byt tree is empty");
 		}
 		int length_footer = this->htlength.read_sym();
@@ -689,7 +689,7 @@ int LZXDStream::decode_symbol_from_aligned_block() {
 		this->R0 = match_offset;
 	}
 
-	if (unlikely((this->window_posn + match_length) > this->window_size)) {
+	if ((this->window_posn + match_length) > this->window_size) [[unlikely]] {
 		throw Error(MSG(err) << "decrunch: match ran over window wrap");
 	}
 
@@ -700,7 +700,7 @@ int LZXDStream::decode_symbol_from_aligned_block() {
 	if (match_offset > this->window_posn) {
 		// j = length from match offset to end of window
 		int j = match_offset - this->window_posn;
-		if (unlikely(j > (int) this->window_size)) {
+		if (j > (int) this->window_size) [[unlikely]] {
 			throw Error(MSG(err) << "decrunch: match offset beyond window boundaries");
 		}
 		unsigned char *runsrc = &window[this->window_size - j];
@@ -741,13 +741,13 @@ unsigned int LZXDStream::read_data_from_uncompressed_block(unsigned int size) {
 
 
 unsigned LZXDStream::decompress_next_frame(unsigned char *output_buf) {
-	if (unlikely(this->bits.eof)) {
+	if (this->bits.eof) [[unlikely]] {
 		return 0;
 	}
 
 	// have we reached the reset interval? (if there is one?)
-	if (unlikely(this->reset_interval && ((this->frame % this->reset_interval) == 0))) {
-		if (unlikely(this->block_remaining)) {
+	if (this->reset_interval && (this->frame % this->reset_interval) == 0) [[unlikely]] {
+		if (this->block_remaining) [[unlikely]] {
 			throw Error(MSG(err) << this->block_remaining << " bytes remaining at reset interval");
 		}
 
@@ -756,7 +756,7 @@ unsigned LZXDStream::decompress_next_frame(unsigned char *output_buf) {
 	}
 
 	// read header if necessary (after initializing or resetting the stream).
-	if (unlikely(!this->header_read)) {
+	if (!this->header_read) [[unlikely]] {
 		// the first bit of the header indicates whether the e8_magic field is present.
 		if (this->bits.read_bits(1)) {
 			// read e8_magic (32 bits).
@@ -773,7 +773,7 @@ unsigned LZXDStream::decompress_next_frame(unsigned char *output_buf) {
 	// counter that stores the amount of data that has been accumulated for this frame.
 	unsigned int frame_size = 0;
 
-	if (unlikely(this->frame_posn - this->window_posn)) {
+	if (this->frame_posn - this->window_posn) [[unlikely]] {
 		// Warning: untested code.
 		// In theory, a symbol may have overshot the last frame's boundary.
 		// If it did, the amount of data would be available in frame_size.
@@ -786,7 +786,7 @@ unsigned LZXDStream::decompress_next_frame(unsigned char *output_buf) {
 	// decode symbols until we have enough data for the frame.
 	while (frame_size < LZX_FRAME_SIZE) {
 		// initialise next block, if one is needed
-		if (unlikely(this->block_remaining == 0)) {
+		if (this->block_remaining == 0) [[unlikely]] {
 			if (this->bits.eof) {
 				// EOF of input stream was reached at a block boundary.
 				// there are no more blocks. Return the frame as-is.
@@ -812,7 +812,7 @@ unsigned LZXDStream::decompress_next_frame(unsigned char *output_buf) {
 			throw Error(MSG(err) << "this->blocktype neither verbatim nor aligned");
 		}
 
-		if (unlikely(symbol_size > this->block_remaining)) {
+		if (symbol_size > this->block_remaining) [[unlikely]] {
 			// we overshot the block boundary.
 			throw Error(MSG(err) << "decrunch: overrun went past end of block by " << symbol_size - this->block_remaining);
 		}
@@ -821,7 +821,7 @@ unsigned LZXDStream::decompress_next_frame(unsigned char *output_buf) {
 		frame_size += symbol_size;
 	}
 
-	if (unlikely(frame_size > LZX_FRAME_SIZE)) {
+	if (frame_size > LZX_FRAME_SIZE) [[unlikely]] {
 		// Warning: untested code.
 		// In theory, a symbol may overshoot a frame boundary. If it does, the data
 		// will get re-used in the next frame, but we have to limit frame_size to LZX_FRAME_SIZE.
@@ -833,7 +833,7 @@ unsigned LZXDStream::decompress_next_frame(unsigned char *output_buf) {
 	}
 
 	// streams don't extend over frame boundaries
-	if (unlikely(this->window_posn != this->frame_posn + frame_size)) {
+	if (this->window_posn != this->frame_posn + frame_size) [[unlikely]] {
 		throw Error(MSG(err) << "decrunch: decode beyond output frame limits");
 	}
 

@@ -256,8 +256,8 @@ public:
 		// 1. link root children pairwise, last node may be alone
 		element_t first_pair = nullptr;
 		element_t previous_pair = nullptr;
-
-		while (unlikely(current_sibling != nullptr)) {
+		
+		while (current_sibling != nullptr) [[unlikely]] {
 			element_t link0 = current_sibling;
 			element_t link1 = current_sibling->next_sibling;
 
@@ -627,7 +627,7 @@ protected:
 	 * insert a node into the heap.
 	 */
 	void root_insert(const element_t &node) {
-		if (unlikely(this->root_node == nullptr)) {
+		if (this->root_node == nullptr) [[unlikely]] {
 			this->root_node = node;
 		} else {
 			this->root_node = this->root_node->link_with(node);

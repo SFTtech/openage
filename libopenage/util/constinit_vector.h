@@ -50,12 +50,12 @@ public:
 	void push_back(const T &val) {
 		std::allocator<T> alloc;
 
-		if (unlikely(this->data == nullptr)) {
+		if (this->data == nullptr) [[unlikely]] {
 			// obj is fresh and needs to allocate memory.
 			this->data = alloc.allocate(this->capacity);
 		}
 
-		if (unlikely(this->count == capacity)) {
+		if (this->count == capacity) [[unlikely]] {
 			// obj is full and needs to resize memory.
 			size_t newcapacity = capacity * 2;
 			T *newdata = alloc.allocate(newcapacity);

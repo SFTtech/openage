@@ -350,10 +350,10 @@ public:
 	friend std::ostream &operator<<(std::ostream &os, const FixedPoint &n) {
 		os << std::fixed << std::setprecision(FixedPoint::approx_decimal_places) << double(n);
 
-		if (unlikely(n == FixedPoint::max_value())) {
+		if (n == FixedPoint::max_value()) [[unlikely]] {
 			os << "[MAX]";
 		}
-		else if (unlikely(n != 0 and n == FixedPoint::min_value())) {
+		else if (n != 0 and n == FixedPoint::min_value()) [[unlikely]] {
 			os << "[MIN]";
 		}
 

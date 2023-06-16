@@ -181,7 +181,7 @@ void LegacyAssetManager::check_updates() {
 
 std::shared_ptr<Texture> LegacyAssetManager::get_missing_tex() {
 	// if not loaded, fetch the "missing" texture (big red X).
-	if (unlikely(this->missing_tex.get() == nullptr)) {
+	if (this->missing_tex.get() == nullptr) [[unlikely]] {
 		this->missing_tex = std::make_shared<Texture>(
 			this->asset_path["test"]["textures"]["missing.png"],
 			false);

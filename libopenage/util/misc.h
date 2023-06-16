@@ -290,7 +290,7 @@ struct SharedPtrLess {
 	bool operator ()(const std::shared_ptr<T> &left,
 	                 const std::shared_ptr<T> &right) {
 
-		if (unlikely(not left or not right)) {
+		if (not left or not right) [[unlikely]] {
 			return false;
 		}
 

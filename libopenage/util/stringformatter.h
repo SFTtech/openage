@@ -232,7 +232,7 @@ private:
 	 * Ensures that we have a valid CachableOSStream object in stream_ptr.
 	 */
 	inline void ensure_stream_obj() {
-		if (unlikely(this->stream_ptr == nullptr)) {
+		if (this->stream_ptr == nullptr) [[unlikely]] {
 			this->stream_ptr = CachableOSStream::acquire(*this->output);
 		}
 	}

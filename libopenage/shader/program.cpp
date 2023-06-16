@@ -115,7 +115,7 @@ GLint Program::get_uniform_id(const char *name) {
 }
 
 GLint Program::get_attribute_id(const char *name) {
-	if (unlikely(!this->is_linked)) {
+	if (!this->is_linked) [[unlikely]] {
 		throw Error(MSG(err) <<
 			"Attribute " << name <<
 			" was queried before program was linked!");
@@ -123,7 +123,7 @@ GLint Program::get_attribute_id(const char *name) {
 
 	GLint aid = glGetAttribLocation(this->id, name);
 
-	if (unlikely(aid == -1)) {
+	if (aid == -1) [[unlikely]] {
 		this->dump_active_attributes();
 		throw Error(MSG(err) <<
 			"Attribute " << name << " queried but not found or active"

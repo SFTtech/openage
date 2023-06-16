@@ -47,7 +47,7 @@ VertexInputInfo::VertexInputInfo(std::vector<vertex_input_t> inputs, vertex_layo
 
 void VertexInputInfo::add_shader_input_map(std::unordered_map<size_t, size_t>&& in_map) {
 	for (auto mapping : in_map) {
-		if (unlikely(mapping.first >= this->inputs.size())) {
+		if (mapping.first >= this->inputs.size()) [[unlikely]] {
 			throw Error(MSG(err) << "A shader input mapping is out-of-range, exceeding the available number of attributes.");
 		}
 	}

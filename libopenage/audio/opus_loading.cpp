@@ -30,7 +30,7 @@ static op_seek_func opus_seeker = [](void *stream,
                                      int whence) -> int {
 
 	auto *file = reinterpret_cast<util::File *>(stream);
-	if (unlikely(not file->seekable())) {
+	if (not file->seekable()) [[unlikely]] {
 		return -1;
 	}
 

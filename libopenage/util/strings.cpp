@@ -40,9 +40,9 @@ size_t vsformat(const char *fmt, va_list ap, std::string &output) {
 	size_t length = vsnprintf(buf.data(), buf.size(), fmt, aq);
 	va_end(aq);
 
-	if (unlikely(length >= buf.size())) {
+	if (length >= buf.size()) [[unlikely]] {
 		size_t target_size = buf.size();
-		if (unlikely(target_size < 64)) {
+		if (target_size < 64) [[unlikely]] {
 			target_size = 64;
 		}
 		while (length >= target_size) {

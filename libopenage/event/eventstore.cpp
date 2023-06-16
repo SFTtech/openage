@@ -13,7 +13,7 @@
 namespace openage::event {
 
 void EventStore::push(const std::shared_ptr<Event> &event) {
-	if (unlikely(event == nullptr)) {
+	if (event == nullptr) [[unlikely]] {
 		throw Error{ERR << "inserting nullptr event to queue"};
 	}
 
@@ -66,7 +66,7 @@ bool EventStore::erase(const std::shared_ptr<Event> &event) {
 
 void EventStore::update(const std::shared_ptr<Event> &event) {
 	auto it = this->events.find(event);
-	if (unlikely(it != std::end(this->events))) {
+	if (it != std::end(this->events)) [[unlikely]] {
 		this->heap.update(it->second);
 	}
 	else {

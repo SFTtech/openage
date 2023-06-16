@@ -32,7 +32,7 @@ int Resource::get_id() const {
 std::shared_ptr<Resource> Resource::create_resource(AudioManager *manager,
                                                     const resource_def &def) {
 
-	if (unlikely(not def.location.is_file())) {
+	if (not def.location.is_file()) [[unlikely]] {
 		throw Error{ERR << "sound file does not exist: " << def.location};
 	}
 

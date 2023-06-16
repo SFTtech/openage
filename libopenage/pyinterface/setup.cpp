@@ -47,7 +47,7 @@ void add_py_if_component(void *thisptr, std::function<bool ()> checker) {
 	std::unique_lock<std::mutex> lock{checkers.lock};
 
 	// enforce that the object has an associated symbol name.
-	if (unlikely(not util::is_symbol(thisptr))) {
+	if (not util::is_symbol(thisptr)) [[unlikely]] {
 		throw Error(
 			MSG(err) <<
 			"Can't instantiate py interface component as non-global object. " <<

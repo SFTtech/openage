@@ -101,7 +101,7 @@ PyObjectRef::~PyObjectRef() {
 
 
 void PyObjectRef::set_ref(PyObject *ref) {
-	if (unlikely(this->ref != nullptr)) {
+	if (this->ref != nullptr) [[unlikely]] {
 		py_xdecref.call(this->ref);
 	}
 
@@ -111,7 +111,7 @@ void PyObjectRef::set_ref(PyObject *ref) {
 
 
 void PyObjectRef::set_ref_without_incrementing(PyObject *ref) {
-	if (unlikely(this->ref != nullptr)) {
+	if (this->ref != nullptr) [[unlikely]] {
 		py_xdecref.call(this->ref);
 	}
 
@@ -259,7 +259,7 @@ std::string PyObjectRef::classname() const {
 
 
 std::ostream &operator <<(std::ostream &os, const PyObjectRef &ref) {
-	if (unlikely(ref.get_ref() == nullptr)) {
+	if (ref.get_ref() == nullptr) [[unlikely]] {
 		os << "PyObjectRef[null]";
 	} else {
 		os << "PyObjectRef[" << ref.repr() << "]";
