@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -256,7 +256,6 @@ public:
 		// 1. link root children pairwise, last node may be alone
 		element_t first_pair = nullptr;
 		element_t previous_pair = nullptr;
-		
 		while (current_sibling != nullptr) [[unlikely]] {
 			element_t link0 = current_sibling;
 			element_t link1 = current_sibling->next_sibling;

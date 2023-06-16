@@ -1,4 +1,4 @@
-// Copyright 2014-2021 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -49,10 +49,8 @@
  */
 #if defined(__GNUC__)
 #define likely(x)    __builtin_expect(!!(x), 1)
-#define unlikely(x)  __builtin_expect(!!(x), 0)
 #else
 #define likely(x)   (x)
-#define unlikely(x) (x)
 #endif
 
 

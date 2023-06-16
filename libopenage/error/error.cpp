@@ -1,4 +1,4 @@
-// Copyright 2013-2021 the openage authors. See copying.md for legal info.
+// Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 #include "error.h"
 
