@@ -12,12 +12,13 @@ TerrainRenderEntity::TerrainRenderEntity() :
 	changed{false},
 	size{0, 0},
 	vertices{},
-	terrain_path{} {
+	terrain_path{nullptr, 0} {
 }
 
 void TerrainRenderEntity::update(util::Vector2s size,
                                  std::vector<float> height_map,
-                                 const util::Path terrain_path) {
+                                 const std::string terrain_path,
+                                 const curve::time_t time) {
 	std::unique_lock lock{this->mutex};
 
 	// increase by 1 in every dimension because height_map
@@ -57,7 +58,7 @@ void TerrainRenderEntity::update(util::Vector2s size,
 	}
 
 	// set texture path
-	this->terrain_path = terrain_path;
+	this->terrain_path.set_last(time, terrain_path);
 
 	this->changed = true;
 }
@@ -68,7 +69,7 @@ const std::vector<coord::scene3> &TerrainRenderEntity::get_vertices() {
 	return this->vertices;
 }
 
-const util::Path &TerrainRenderEntity::get_terrain_path() {
+const curve::Discrete<std::string> &TerrainRenderEntity::get_terrain_path() {
 	std::shared_lock lock{this->mutex};
 
 	return this->terrain_path;

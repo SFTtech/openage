@@ -6,14 +6,21 @@
 #include <optional>
 #include <vector>
 
-#include "renderer/resources/mesh_data.h"
 #include <eigen3/Eigen/Dense>
+
+#include "curve/discrete.h"
+#include "renderer/resources/mesh_data.h"
 
 namespace openage::renderer {
 class Geometry;
 class Renderer;
 class Texture2d;
 class UniformInput;
+
+namespace resources {
+class AssetManager;
+class TerrainInfo;
+} // namespace resources
 
 namespace terrain {
 class TerrainRenderEntity;
@@ -26,17 +33,21 @@ public:
 	/**
      * Create a new terrain render mesh with empty values.
      *
-     * Mesh and texture ave to be set before the terrain mesh becomes renderable.
+     * Mesh and texture need to be set before the terrain mesh becomes renderable.
+     *
+     * @param asset_manager Asset manager for central accessing and loading textures.
      */
-	TerrainRenderMesh();
+	TerrainRenderMesh(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
 
 	/**
      * Create a new terrain render mesh.
      *
-     * @param texture Texture drawn onto the mesh.
+     * @param asset_manager Asset manager for central accessing and loading textures.
+     * @param info Terrain info for the renderable.
      * @param mesh Vertex data of the mesh.
      */
-	TerrainRenderMesh(const std::shared_ptr<renderer::Texture2d> &texture,
+	TerrainRenderMesh(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+	                  const curve::Discrete<std::string> &terrain_path,
 	                  renderer::resources::MeshData &&mesh);
 
 	~TerrainRenderMesh() = default;
@@ -72,18 +83,18 @@ public:
 	const renderer::resources::MeshData &get_mesh();
 
 	/**
-     * Set the texture that should be drawn onto the mesh.
+     * Set the terrain info that is drawn onto the mesh.
      *
-     * @param texture Texture object.
+     * @param texture Terrain info.
      */
-	void set_texture(const std::shared_ptr<renderer::Texture2d> &texture);
+	void set_terrain_path(const curve::Discrete<std::string> &info);
 
 	/**
-     * Get the texture that should be drawn onto the mesh.
+     * Update the uniforms of the renderable associated with this object.
      *
-     * @return Texture object.
+     * @param time Current simulation time.
      */
-	const std::shared_ptr<renderer::Texture2d> &get_texture();
+	void update_uniforms(const curve::time_t &time = 0.0);
 
 	/**
      * Check whether a new renderable needs to be created for this mesh.
@@ -133,9 +144,14 @@ private:
 	bool changed;
 
 	/**
-     * Texture used for the mesh.
+	 * Asset manager for central accessing and loading textures.
      */
-	std::shared_ptr<renderer::Texture2d> texture;
+	std::shared_ptr<renderer::resources::AssetManager> asset_manager;
+
+	/**
+     * Terrain information for the renderables.
+     */
+	curve::Discrete<std::shared_ptr<renderer::resources::TerrainInfo>> terrain_info;
 
 	/**
      * Shader uniforms for the renderable in the terrain render pass.

@@ -44,21 +44,8 @@ void TerrainRenderModel::fetch_updates() {
 }
 
 void TerrainRenderModel::update_uniforms(const curve::time_t &time) {
-	for (auto mesh : this->meshes) {
-		auto unifs = mesh->get_uniforms();
-		if (unifs == nullptr) [[unlikely]] {
-			continue;
-		}
-		if (mesh->is_changed()) {
-			// mesh changes
-			unifs->update(
-				"model", // local space -> world space
-				mesh->get_model_matrix(),
-				"tex", // terrain texture
-				mesh->get_texture());
-		}
-
-		// TODO: Animated terrain
+	for (auto &mesh : this->meshes) {
+		mesh->update_uniforms(time);
 	}
 }
 
@@ -123,11 +110,13 @@ std::shared_ptr<TerrainRenderMesh> TerrainRenderModel::create_mesh() {
 
 	// Update textures
 	auto tex_manager = this->asset_manager->get_texture_manager();
-	auto terrain_info = this->asset_manager->request_terrain(this->render_entity->get_terrain_path());
-	auto texture = tex_manager->request(terrain_info->get_texture(0)->get_image_path().value());
+
 	// TODO: Support multiple textures per terrain
 
-	auto terrain_mesh = std::make_shared<TerrainRenderMesh>(texture, std::move(meshdata));
+	auto terrain_mesh = std::make_shared<TerrainRenderMesh>(
+		this->asset_manager,
+		this->render_entity->get_terrain_path(),
+		std::move(meshdata));
 
 	return terrain_mesh;
 }

@@ -122,7 +122,7 @@ private:
 	curve::Segmented<coord::phys_angle_t> angle;
 
 	/**
-	 * Path to the texture.
+	 * Path to the animation definition file.
 	 */
 	curve::Discrete<std::string> animation_path;
 

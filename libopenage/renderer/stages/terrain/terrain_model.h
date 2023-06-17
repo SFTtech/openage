@@ -6,7 +6,7 @@
 
 #include <eigen3/Eigen/Dense>
 
-#include "curve/curve.h"
+#include "curve/discrete.h"
 
 namespace openage::renderer {
 

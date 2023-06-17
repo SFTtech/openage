@@ -2,42 +2,78 @@
 
 #include "terrain_mesh.h"
 
+#include "renderer/resources/assets/asset_manager.h"
+#include "renderer/resources/assets/texture_manager.h"
+#include "renderer/resources/terrain/terrain_info.h"
+#include "renderer/uniform_input.h"
+
+
 namespace openage::renderer::terrain {
 
 
-TerrainRenderMesh::TerrainRenderMesh() :
+TerrainRenderMesh::TerrainRenderMesh(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
 	require_renderable{false},
 	changed{false},
-	texture{nullptr},
+	asset_manager{asset_manager},
+	terrain_info{nullptr, 0},
 	uniforms{nullptr},
 	mesh{renderer::resources::MeshData::make_quad()} {
 }
 
-TerrainRenderMesh::TerrainRenderMesh(const std::shared_ptr<renderer::Texture2d> &texture,
+TerrainRenderMesh::TerrainRenderMesh(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+                                     const curve::Discrete<std::string> &terrain_path,
                                      renderer::resources::MeshData &&mesh) :
 	require_renderable{true},
-	changed{false},
+	changed{true},
+	asset_manager{asset_manager},
+	terrain_info{nullptr, 0},
 	uniforms{nullptr},
 	mesh{std::move(mesh)} {
-	this->set_texture(texture);
+	this->set_terrain_path(terrain_path);
 }
 
 void TerrainRenderMesh::set_mesh(renderer::resources::MeshData &&mesh) {
 	this->mesh = mesh;
 	this->require_renderable = true;
+	this->changed = true;
 }
 
 const renderer::resources::MeshData &TerrainRenderMesh::get_mesh() {
 	return this->mesh;
 }
 
-void TerrainRenderMesh::set_texture(const std::shared_ptr<renderer::Texture2d> &texture) {
-	this->texture = texture;
+void TerrainRenderMesh::set_terrain_path(const curve::Discrete<std::string> &terrain_path) {
 	this->changed = true;
+	this->terrain_info.sync(terrain_path,
+	                        std::function<std::shared_ptr<renderer::resources::TerrainInfo>(const std::string &)>(
+								[&](const std::string &path) {
+									if (path.empty()) {
+										return std::shared_ptr<renderer::resources::TerrainInfo>{nullptr};
+									}
+									return this->asset_manager->request_terrain(path);
+								}));
 }
 
-const std::shared_ptr<renderer::Texture2d> &TerrainRenderMesh::get_texture() {
-	return this->texture;
+void TerrainRenderMesh::update_uniforms(const curve::time_t &time) {
+	// TODO: Only update uniforms that changed since last update
+	if (this->uniforms == nullptr) [[unlikely]] {
+		return;
+	}
+
+	if (not this->is_changed()) [[likely]] {
+		return;
+	}
+
+	// local space -> world space
+	this->uniforms->update("model", this->get_model_matrix());
+
+	auto tex_info = this->terrain_info.get(time)->get_texture(0);
+	auto tex_manager = this->asset_manager->get_texture_manager();
+	auto texture = tex_manager->request(tex_info->get_image_path().value());
+
+	this->uniforms->update("tex", texture);
+
+	this->changed = false;
 }
 
 bool TerrainRenderMesh::requires_renderable() {

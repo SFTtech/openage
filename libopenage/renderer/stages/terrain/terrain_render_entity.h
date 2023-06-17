@@ -7,7 +7,7 @@
 #include <vector>
 
 #include "coord/scene.h"
-#include "util/path.h"
+#include "curve/discrete.h"
 #include "util/vector.h"
 
 namespace openage::renderer {
@@ -26,10 +26,12 @@ public:
 	 * @param size Size of the terrain in tiles (width x length)
 	 * @param height_map Height of terrain tiles.
 	 * @param terrain_path Path to the terrain definition.
+     * @param time Simulation time of the update.
      */
 	void update(util::Vector2s size,
 	            std::vector<float> height_map,
-	            const util::Path terrain_path);
+	            const std::string terrain_path,
+	            const curve::time_t time = 0.0);
 
 	/**
      * Get the vertices of the terrain.
@@ -45,7 +47,7 @@ public:
      *
      * @return Texture mapping of textures to vertex area.
      */
-	const util::Path &get_terrain_path();
+	const curve::Discrete<std::string> &get_terrain_path();
 
 	/**
      * Get the number of vertices on each side of the terrain.
@@ -87,10 +89,9 @@ private:
 
 	/**
 	 * Path to the terrain definition file.
-	 *
-	 * TODO: Use texture mapping.
 	 */
-	util::Path terrain_path;
+	curve::Discrete<std::string> terrain_path;
+
 	// std::unordered_map<Texture2d, size_t> texture_map; // texture -> vertex indices
 
 	/**
