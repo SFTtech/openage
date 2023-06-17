@@ -8,7 +8,6 @@
 #include "coord/phys.h"
 #include "gamestate/component/types.h"
 #include "gamestate/types.h"
-#include "util/path.h"
 
 namespace openage {
 

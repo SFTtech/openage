@@ -36,11 +36,6 @@ public:
 	 */
 	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
 
-	/**
-	 * ASDF: Placeholder for loading game data.
-	 */
-	void load_data();
-
 private:
 	/**
      * State of the current game.

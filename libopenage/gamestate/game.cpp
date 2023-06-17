@@ -12,14 +12,12 @@
 
 namespace openage::gamestate {
 
-Game::Game(const util::Path &root_dir,
-           const std::shared_ptr<openage::event::EventLoop> &event_loop,
+Game::Game(const std::shared_ptr<openage::event::EventLoop> &event_loop,
            const std::shared_ptr<assets::ModManager> &mod_manager) :
 	db{nyan::Database::create()},
 	state{std::make_shared<GameState>(this->db, event_loop)},
-	universe{std::make_shared<Universe>(root_dir, state)} {
+	universe{std::make_shared<Universe>(state)} {
 	this->load_data(mod_manager);
-	this->universe->load_data();
 }
 
 const std::shared_ptr<GameState> &Game::get_state() const {

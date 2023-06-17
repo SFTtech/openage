@@ -47,8 +47,7 @@ public:
      * @param event_loop Event simulation loop for the gamestate.
      * @param mod_manager Mod manager.
 	 */
-	Game(const util::Path &root_dir,
-	     const std::shared_ptr<openage::event::EventLoop> &event_loop,
+	Game(const std::shared_ptr<openage::event::EventLoop> &event_loop,
 	     const std::shared_ptr<assets::ModManager> &mod_manager);
 	~Game() = default;
 

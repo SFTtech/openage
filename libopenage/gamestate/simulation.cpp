@@ -51,7 +51,7 @@ void GameSimulation::start() {
 
 	this->init_event_handlers();
 
-	this->game = std::make_shared<gamestate::Game>(root_dir, event_loop, this->mod_manager);
+	this->game = std::make_shared<gamestate::Game>(event_loop, this->mod_manager);
 
 	this->running = true;
 
@@ -118,8 +118,7 @@ void GameSimulation::set_modpacks(const std::vector<std::string> &modpacks) {
 
 void GameSimulation::init_event_handlers() {
 	auto handler = std::make_shared<gamestate::event::SpawnEntityHandler>(this->event_loop,
-	                                                                      this->entity_factory,
-	                                                                      this->root_dir["assets/test/textures/test_tank_mirrored.sprite"]);
+	                                                                      this->entity_factory);
 	this->event_loop->add_event_handler(handler);
 }
 

@@ -26,12 +26,10 @@ std::string Spawner::idstr() const {
 
 
 SpawnEntityHandler::SpawnEntityHandler(const std::shared_ptr<openage::event::EventLoop> &loop,
-                                       const std::shared_ptr<gamestate::EntityFactory> &factory,
-                                       const util::Path &animation_path) :
+                                       const std::shared_ptr<gamestate::EntityFactory> &factory) :
 	OnceEventHandler("game.spawn_entity"),
 	loop{loop},
-	factory{factory},
-	animation_path{animation_path} {
+	factory{factory} {
 }
 
 void SpawnEntityHandler::setup_event(const std::shared_ptr<openage::event::Event> & /* event */,

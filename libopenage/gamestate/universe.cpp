@@ -8,11 +8,10 @@
 
 namespace openage::gamestate {
 
-Universe::Universe(const util::Path &root_dir,
-                   const std::shared_ptr<GameState> &state) :
+Universe::Universe(const std::shared_ptr<GameState> &state) :
 	world{std::make_shared<World>(state)} {
 	// TODO
-	auto texpath = root_dir / "assets" / "test" / "textures" / "test_terrain.terrain";
+	auto texpath = "../test/textures/test_terrain.terrain";
 	this->terrain = std::make_shared<Terrain>(texpath);
 }
 
@@ -32,10 +31,6 @@ void Universe::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &r
 	this->terrain->set_render_entity(terrain_render_entity);
 
 	this->world->attach_renderer(render_factory);
-}
-
-void Universe::load_data() {
-	this->world->load_data();
 }
 
 } // namespace openage::gamestate

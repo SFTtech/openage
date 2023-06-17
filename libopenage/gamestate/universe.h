@@ -4,8 +4,6 @@
 
 #include <memory>
 
-#include "util/path.h"
-
 namespace openage {
 
 namespace renderer {
@@ -26,11 +24,9 @@ public:
 	/**
 	 * Create a new universe.
 	 *
-	 * @param root_dir openage root directory.
      * @param state State of the game.
 	 */
-	Universe(const util::Path &root_dir,
-	         const std::shared_ptr<GameState> &state);
+	Universe(const std::shared_ptr<GameState> &state);
 	~Universe() = default;
 
 	/**
@@ -54,11 +50,6 @@ public:
 	 *                       communication.
 	 */
 	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
-
-	/**
-	 * ASDF: Placeholder for loading game data.
-	 */
-	void load_data();
 
 private:
 	/**

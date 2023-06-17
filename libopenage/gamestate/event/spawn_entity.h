@@ -4,7 +4,6 @@
 
 #include "event/evententity.h"
 #include "event/eventhandler.h"
-#include "util/path.h"
 
 namespace openage {
 
@@ -41,11 +40,9 @@ public:
      *
      * @param loop: Event loop that the components register on.
      * @param factory: Factory that is used to create the entity.
-     * @param animation_path: Path to the texture that is used for the entity.
      */
 	SpawnEntityHandler(const std::shared_ptr<openage::event::EventLoop> &loop,
-	                   const std::shared_ptr<gamestate::EntityFactory> &factory,
-	                   const util::Path &animation_path);
+	                   const std::shared_ptr<gamestate::EntityFactory> &factory);
 	~SpawnEntityHandler() = default;
 
 	/**
@@ -98,9 +95,6 @@ private:
      * The factory that is used to create the entity.
      */
 	std::shared_ptr<gamestate::EntityFactory> factory;
-
-	// TODO: Testing. Move this to config
-	util::Path animation_path;
 };
 
 } // namespace event
