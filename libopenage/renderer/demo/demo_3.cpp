@@ -18,6 +18,7 @@
 #include "renderer/stages/terrain/terrain_renderer.h"
 #include "renderer/stages/world/world_render_entity.h"
 #include "renderer/stages/world/world_renderer.h"
+#include "renderer/uniform_buffer.h"
 
 namespace openage::renderer::tests {
 
@@ -38,10 +39,22 @@ void renderer_demo_3(const util::Path &path) {
 		camera->resize(w, h);
 	});
 
+	// Camera matrices are set via a uniform buffer that is shared across shaders
+	// the advantage of the uniform buffer is that we only have to
+	// update it once and not for every renderable
+	auto camera_unif_buffer = camera->get_uniform_buffer();
+	auto camera_unif_input = camera_unif_buffer->new_uniform_input(
+		"view",
+		camera->get_view_matrix(),
+		"proj",
+		camera->get_projection_matrix());
+	camera_unif_buffer->update_uniforms(camera_unif_input);
+
 	// Render stages
 	// every stage use a different subrenderer that manages renderables,
 	// shaders, textures & more.
-	std::vector<std::shared_ptr<RenderPass>> render_passes{};
+	std::vector<std::shared_ptr<RenderPass>>
+		render_passes{};
 
 	// TODO: Make this optional for subrenderers?
 	auto asset_manager = std::make_shared<renderer::resources::AssetManager>(
@@ -186,6 +199,15 @@ void renderer_demo_3(const util::Path &path) {
 			default:
 				break;
 			}
+
+			// Update the camera matrices in the uniform buffer
+			// we only have to do this when the camera position changes
+			camera_unif_input->update(
+				"view",
+				camera->get_view_matrix(),
+				"proj",
+				camera->get_projection_matrix());
+			camera_unif_buffer->update_uniforms(camera_unif_input);
 		}
 	});
 
