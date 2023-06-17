@@ -31,15 +31,6 @@ public:
      * Create a new game entity.
      *
      * @param id Unique identifier.
-     * @param animation_path Path to the texture.
-     */
-	GameEntity(entity_id_t id,
-	           util::Path &animation_path);
-
-	/**
-     * Create a new game entity.
-     *
-     * @param id Unique identifier.
      */
 	GameEntity(entity_id_t id);
 
@@ -92,6 +83,9 @@ public:
      */
 	bool has_component(component::component_t type);
 
+	// test setting animation path
+	void set_animation_path(const std::string &path);
+
 	// test connection to renderer
 	void push_to_render();
 
@@ -120,8 +114,10 @@ private:
 	 */
 	entity_id_t id;
 
-	// path to a texture
-	util::Path animation_path;
+	/**
+	 * Path to the currently used animation definition.
+	 */
+	std::string animation_path;
 
 	/**
      * Data components.

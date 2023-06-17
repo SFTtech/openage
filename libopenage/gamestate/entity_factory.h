@@ -42,16 +42,6 @@ public:
 	 * This just creates the entity. The caller is responsible for initializing
 	 * its components and placing it into the game.
      *
-     * @return New game entity.
-     */
-	std::shared_ptr<GameEntity> add_game_entity(util::Path &animation_path);
-
-	/**
-     * Create a new game entity.
-	 *
-	 * This just creates the entity. The caller is responsible for initializing
-	 * its components and placing it into the game.
-     *
 	 * @param loop Event loop for the gamestate.
 	 * @param state State of the game.
 	 * @param nyan_entity fqon of the GameEntity data in the nyan database.

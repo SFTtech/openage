@@ -21,19 +21,6 @@ EntityFactory::EntityFactory() :
 	render_factory{nullptr} {
 }
 
-std::shared_ptr<GameEntity> EntityFactory::add_game_entity(util::Path &animation_path) {
-	std::unique_lock lock{this->mutex};
-
-	auto entity = std::make_shared<GameEntity>(this->get_next_id(),
-	                                           animation_path);
-
-	if (this->render_factory) {
-		entity->set_render_entity(this->render_factory->add_world_render_entity());
-	}
-
-	return entity;
-}
-
 std::shared_ptr<GameEntity> EntityFactory::add_game_entity(const std::shared_ptr<openage::event::EventLoop> &loop,
                                                            const std::shared_ptr<GameState> &state,
                                                            const nyan::fqon_t &nyan_entity) {

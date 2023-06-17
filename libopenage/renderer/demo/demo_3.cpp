@@ -46,7 +46,7 @@ void renderer_demo_3(const util::Path &path) {
 	// TODO: Make this optional for subrenderers?
 	auto asset_manager = std::make_shared<renderer::resources::AssetManager>(
 		renderer,
-		path["assets"]["converted"]);
+		path["assets"]["test"]);
 
 	// Renders the background
 	auto skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
@@ -138,16 +138,16 @@ void renderer_demo_3(const util::Path &path) {
 	                 height_map,
 	                 path["assets"]["test"]["textures"]["test_terrain.terrain"]);
 
-	// Game entities
+	// World entities
 	auto world0 = render_factory->add_world_render_entity();
-	world0->update(0, coord::phys3(3.0f, 3.0f, 0.0f), path["assets"]["test"]["textures"]["test_gaben.sprite"]);
+	world0->update(0, coord::phys3(3.0f, 3.0f, 0.0f), "./textures/test_gaben.sprite");
 
 	// should behind gaben and caught by depth test
 	auto world1 = render_factory->add_world_render_entity();
-	world1->update(1, coord::phys3(4.0f, 1.0f, 0.0f), path["assets"]["test"]["textures"]["test_missing.sprite"]);
+	world1->update(1, coord::phys3(4.0f, 1.0f, 0.0f), "./textures/test_missing.sprite");
 
 	auto world2 = render_factory->add_world_render_entity();
-	world2->update(2, coord::phys3(1.0f, 3.0f, 0.0f), path["assets"]["test"]["textures"]["test_missing.sprite"]);
+	world2->update(2, coord::phys3(1.0f, 3.0f, 0.0f), "./textures/test_missing.sprite");
 
 	// Zoom in/out with mouse wheel
 	window->add_mouse_wheel_callback([&](const QWheelEvent &ev) {

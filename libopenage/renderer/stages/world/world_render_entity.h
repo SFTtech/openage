@@ -32,7 +32,7 @@ public:
 	void update(const uint32_t ref_id,
 	            const curve::Continuous<coord::phys3> position,
 	            const curve::Segmented<coord::phys_angle_t> angle,
-	            const util::Path animation_path,
+	            const std::string animation_path,
 	            const curve::time_t time = 0.0);
 
 	/**
@@ -47,7 +47,7 @@ public:
 	 */
 	void update(const uint32_t ref_id,
 	            const coord::phys3 position,
-	            const util::Path animation_path,
+	            const std::string animation_path,
 	            const curve::time_t time = 0.0);
 
 	/**
@@ -76,7 +76,7 @@ public:
      *
      * @return Path to the animation definition file.
      */
-	const curve::Discrete<util::Path> &get_animation_path();
+	const curve::Discrete<std::string> &get_animation_path();
 
 	/**
 	 * Get the time of the last update.
@@ -124,7 +124,7 @@ private:
 	/**
 	 * Path to the texture.
 	 */
-	curve::Discrete<util::Path> animation_path;
+	curve::Discrete<std::string> animation_path;
 
 	/**
 	 * Time of the last texture update.

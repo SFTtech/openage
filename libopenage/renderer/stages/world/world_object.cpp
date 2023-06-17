@@ -50,8 +50,11 @@ void WorldObject::fetch_updates() {
 	this->ref_id = this->render_entity->get_id();
 	this->position.sync(this->render_entity->get_position());
 	this->animation_info.sync(this->render_entity->get_animation_path(),
-	                          std::function<std::shared_ptr<renderer::resources::Animation2dInfo>(const util::Path &)>(
-								  [&](const util::Path &path) {
+	                          std::function<std::shared_ptr<renderer::resources::Animation2dInfo>(const std::string &)>(
+								  [&](const std::string &path) {
+									  if (path.empty()) {
+										  return std::shared_ptr<renderer::resources::Animation2dInfo>{nullptr};
+									  }
 									  return this->asset_manager->request_animation(path);
 								  }));
 	this->angle.sync(this->render_entity->get_angle());

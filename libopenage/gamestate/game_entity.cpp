@@ -13,14 +13,6 @@
 
 namespace openage::gamestate {
 
-GameEntity::GameEntity(entity_id_t id,
-                       util::Path &animation_path) :
-	id{id},
-	animation_path{animation_path},
-	components{},
-	render_entity{nullptr} {
-}
-
 GameEntity::GameEntity(entity_id_t id) :
 	id{id},
 	components{},
@@ -56,6 +48,10 @@ bool GameEntity::has_component(component::component_t type) {
 	return this->components.contains(type);
 }
 
+void GameEntity::set_animation_path(const std::string &path) {
+	this->animation_path = path;
+}
+
 void GameEntity::push_to_render() {
 	if (this->render_entity != nullptr) {
 		if (not this->components.contains(component::component_t::POSITION)) {
@@ -72,6 +68,7 @@ void GameEntity::push_to_render() {
 				if (animation_paths.size() < 1) {
 					return;
 				}
+				this->animation_path = animation_paths.at(0);
 			}
 		}
 		else if (this->components.contains(component::component_t::IDLE)) {
@@ -84,12 +81,12 @@ void GameEntity::push_to_render() {
 				if (animation_paths.size() < 1) {
 					return;
 				}
+				this->animation_path = animation_paths.at(0);
 			}
 		}
 		else {
 			return;
 		}
-		return;
 
 		const auto &pos = dynamic_pointer_cast<component::Position>(this->components.at(component::component_t::POSITION))->get_positions();
 		const auto &angle = dynamic_pointer_cast<component::Position>(this->components.at(component::component_t::POSITION))->get_angles();

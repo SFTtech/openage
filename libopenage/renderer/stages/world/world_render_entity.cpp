@@ -18,7 +18,7 @@ WorldRenderEntity::WorldRenderEntity() :
 void WorldRenderEntity::update(const uint32_t ref_id,
                                const curve::Continuous<coord::phys3> position,
                                const curve::Segmented<coord::phys_angle_t> angle,
-                               const util::Path animation_path,
+                               const std::string animation_path,
                                const curve::time_t time) {
 	std::unique_lock lock{this->mutex};
 
@@ -38,7 +38,7 @@ void WorldRenderEntity::update(const uint32_t ref_id,
 
 void WorldRenderEntity::update(const uint32_t ref_id,
                                const coord::phys3 position,
-                               const util::Path animation_path,
+                               const std::string animation_path,
                                const curve::time_t time) {
 	std::unique_lock lock{this->mutex};
 
@@ -67,7 +67,7 @@ const curve::Segmented<coord::phys_angle_t> &WorldRenderEntity::get_angle() {
 	return this->angle;
 }
 
-const curve::Discrete<util::Path> &WorldRenderEntity::get_animation_path() {
+const curve::Discrete<std::string> &WorldRenderEntity::get_animation_path() {
 	std::shared_lock lock{this->mutex};
 
 	return this->animation_path;
