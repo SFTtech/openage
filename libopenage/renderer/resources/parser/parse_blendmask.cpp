@@ -35,7 +35,7 @@ blending_mask parse_mask(const std::vector<std::string> &args) {
 		dir = std::stoul(args[0]);
 	}
 
-	if (unlikely(dir > 255)) {
+	if (dir > 255) [[unlikely]] {
 		throw Error(MSG(err) << "Reading .blmask file failed. Reason: "
 		                     << "directions value " << dir << " is too large");
 	}
@@ -49,7 +49,7 @@ blending_mask parse_mask(const std::vector<std::string> &args) {
 
 BlendPatternInfo parse_blendmask_file(const util::Path &file,
                                       const std::shared_ptr<AssetCache> &cache) {
-	if (unlikely(not file.is_file())) {
+	if (not file.is_file()) [[unlikely]] {
 		throw Error(MSG(err) << "Reading .blmask file '"
 		                     << file.get_name()
 		                     << "' failed. Reason: File not found");
@@ -91,7 +91,7 @@ BlendPatternInfo parse_blendmask_file(const util::Path &file,
 		std::vector<std::string> args{util::split(line, ' ')};
 
 		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
-		if (unlikely(not keywordfuncs.contains(args[0]))) {
+		if (not keywordfuncs.contains(args[0])) [[unlikely]] {
 			throw Error(MSG(err) << "Reading .blmask file '"
 			                     << file.get_name()
 			                     << "' failed. Reason: Keyword "

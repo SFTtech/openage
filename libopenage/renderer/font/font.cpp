@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "font.h"
 
@@ -112,10 +112,10 @@ Font::Font(FontManager *font_manager, const font_description &description)
 
 void Font::initialize(FT_Library ft_library) {
 	FT_Face ft_face;
-	if (unlikely(FT_New_Face(ft_library, this->description.font_file.c_str(), 0, &ft_face))) {
+	if (FT_New_Face(ft_library, this->description.font_file.c_str(), 0, &ft_face)) [[unlikely]] {
 		throw Error(MSG(err) << "Failed to create font from " << this->description.font_file);
 	}
-	if (unlikely(FT_Set_Char_Size(ft_face, 0, this->description.size * FREETYPE_UNIT, 72, 72))) {
+	if (FT_Set_Char_Size(ft_face, 0, this->description.size * FREETYPE_UNIT, 72, 72)) [[unlikely]] {
 		throw Error(MSG(err) << "Failed to set font face size to " << this->description.size);
 	}
 
@@ -213,7 +213,7 @@ std::vector<codepoint_t> Font::get_glyphs(const std::string &text) const {
 
 std::unique_ptr<unsigned char[]> Font::load_glyph(codepoint_t codepoint, Glyph &glyph) const {
 	FT_Face ft_face = hb_ft_font_get_face(this->hb_font);
-	if (unlikely(FT_Load_Glyph(ft_face, codepoint, FT_LOAD_DEFAULT | FT_LOAD_NO_HINTING | FT_LOAD_RENDER))) {
+	if (FT_Load_Glyph(ft_face, codepoint, FT_LOAD_DEFAULT | FT_LOAD_NO_HINTING | FT_LOAD_RENDER)) [[unlikely]] {
 		return nullptr;
 	}
 

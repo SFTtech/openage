@@ -39,7 +39,7 @@ std::vector<uint8_t> parse_colours(const std::vector<std::string> &lines) {
 		for (auto arg : line_args) {
 			auto channel = std::stoul(arg);
 
-			if (unlikely(channel > 255)) {
+			if (channel > 255) [[unlikely]] {
 				throw Error(MSG(err) << "Reading .opal file failed. Reason: "
 				                     << "color channel value " << channel << " is too large");
 			}
@@ -52,7 +52,7 @@ std::vector<uint8_t> parse_colours(const std::vector<std::string> &lines) {
 }
 
 PaletteInfo parse_palette_file(const util::Path &file) {
-	if (unlikely(not file.is_file())) {
+	if (not file.is_file()) [[unlikely]] {
 		throw Error(MSG(err) << "Reading .opal file '"
 		                     << file.get_name()
 		                     << "' failed. Reason: File not found");
@@ -91,7 +91,7 @@ PaletteInfo parse_palette_file(const util::Path &file) {
 		std::vector<std::string> args{util::split(line, ' ')};
 
 		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
-		if (unlikely(not keywordfuncs.contains(args[0]))) {
+		if (not keywordfuncs.contains(args[0])) [[unlikely]] {
 			throw Error(MSG(err) << "Reading .opal file '"
 			                     << file.get_name()
 			                     << "' failed. Reason: Keyword "

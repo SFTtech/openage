@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -290,7 +290,7 @@ struct SharedPtrLess {
 	bool operator ()(const std::shared_ptr<T> &left,
 	                 const std::shared_ptr<T> &right) {
 
-		if (unlikely(not left or not right)) {
+		if (not left or not right) [[unlikely]] {
 			return false;
 		}
 

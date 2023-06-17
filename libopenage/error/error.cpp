@@ -1,4 +1,4 @@
-// Copyright 2013-2021 the openage authors. See copying.md for legal info.
+// Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 #include "error.h"
 
@@ -22,8 +22,7 @@ Error::Error(const log::message &msg, bool generate_backtrace, bool store_cause)
 	:
 	std::runtime_error{runtime_error_message},
 	msg(msg) {
-
-	if (unlikely(enable_break_on_create)) {
+	if (enable_break_on_create) [[unlikely]] {
 		BREAKPOINT;
 	}
 

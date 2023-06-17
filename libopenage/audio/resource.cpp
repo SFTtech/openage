@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #include "resource.h"
 
@@ -32,7 +32,7 @@ int Resource::get_id() const {
 std::shared_ptr<Resource> Resource::create_resource(AudioManager *manager,
                                                     const resource_def &def) {
 
-	if (unlikely(not def.location.is_file())) {
+	if (not def.location.is_file()) [[unlikely]] {
 		throw Error{ERR << "sound file does not exist: " << def.location};
 	}
 

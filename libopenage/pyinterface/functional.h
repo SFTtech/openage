@@ -109,7 +109,7 @@ public:
 	 * raises an Error if this->fptr is still uninitialized.
 	 */
 	inline void check_fptr() const {
-		if (unlikely(not this->fptr)) {
+		if (not this->fptr) [[unlikely]] {
 			throw Error(
 				MSG(err) << "Uninitialized Func object at " <<
 				util::symbol_name(static_cast<const void *>(this)) << ": "

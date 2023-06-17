@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -125,7 +125,7 @@ private:
 	 * returns the number of bytes that are available in the input byte buffer.
 	 */
 	unsigned int input_bytes_available() {
-		if (unlikely(this->i_ptr > this->i_end)) {
+		if (this->i_ptr > this->i_end) [[unlikely]] {
 			throw Error(MSG(err) << "input byte buffer state invalid: i_ptr > i_end");
 		}
 
@@ -145,7 +145,7 @@ private:
 
 			// we might overrun the input stream by asking for bits we don't use,
 			// so fake 2 more bytes at the end of input
-			if (unlikely(read_bytes == 0)) {
+			if (read_bytes == 0) [[unlikely]] {
 				if (this->eof) {
 					throw Error(MSG(err) << "Unexpected EOF in the middle of a block");
 				} else {
@@ -156,7 +156,7 @@ private:
 				}
 			}
 
-			if (unlikely(read_bytes > (int) inbuf_size)) {
+			if (read_bytes > (int) inbuf_size) [[unlikely]] {
 				throw Error(MSG(err) << "read() returned more data than requested");
 			}
 
@@ -166,7 +166,7 @@ private:
 		}
 
 		// check if the reading was successful.
-		if (unlikely(this->i_ptr >= this->i_end)) {
+		if (this->i_ptr >= this->i_end) [[unlikely]] {
 			throw Error(MSG(err) << "input byte buffer empty: failed to ensure_input_bytes");
 		}
 	}
@@ -212,7 +212,7 @@ private:
 	 * ensures there are at least nbits bits in the bit buffer.
 	 */
 	inline void ensure_bits(unsigned int nbits) {
-		if (unlikely(!this->bitstream_mode)) {
+		if (!this->bitstream_mode) [[unlikely]] {
 			throw Error(MSG(err) << "instream: attempted to ensure bits while in bytestream mode");
 		}
 
@@ -272,7 +272,7 @@ private:
 			nbits = 16 - nbits;
 		}
 
-		while (unlikely(nbits < min_discard)) {
+		while (nbits < min_discard) [[unlikely]] {
 			nbits += 16;
 		}
 
@@ -327,7 +327,7 @@ public:
 	 * reads at least 1 and at most count bytes.
 	 */
 	unsigned read_bytes(unsigned char *buf, unsigned count) {
-		if (unlikely(this->bitstream_mode)) {
+		if (this->bitstream_mode) [[unlikely]] {
 			throw Error(MSG(err) << "attempt to read_bytes while in bitstream mode");
 		}
 
@@ -353,7 +353,7 @@ public:
 	unsigned char read_single_byte() {
 		unsigned char buf;
 
-		if (unlikely(this->read_bytes(&buf, 1) != 1)) {
+		if (this->read_bytes(&buf, 1) != 1) [[unlikely]] {
 			throw Error(MSG(err) << "failed to read single byte in bytestream mode");
 		}
 

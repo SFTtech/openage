@@ -41,7 +41,7 @@ size_t GlBuffer::get_size() const {
 }
 
 void GlBuffer::upload_data(const uint8_t *data, size_t offset, size_t size) {
-	if (unlikely(offset + size > this->size)) {
+	if (offset + size > this->size) [[unlikely]] {
 		throw Error(MSG(err) << "Tried to upload more data to OpenGL buffer than can fit.");
 	}
 
@@ -50,7 +50,7 @@ void GlBuffer::upload_data(const uint8_t *data, size_t offset, size_t size) {
 }
 
 void GlBuffer::bind(GLenum target) const {
-	if (unlikely(!bool(this->handle))) {
+	if (!bool(this->handle)) [[unlikely]] {
 		throw Error(MSG(err) << "OpenGL buffer has been moved out of.");
 	}
 

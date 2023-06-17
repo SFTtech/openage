@@ -95,7 +95,7 @@ GlVertexArray::GlVertexArray(const std::shared_ptr<GlContext> &context,
 			auto const &buf = buf_info.first;
 			auto const &info = buf_info.second;
 
-			if (unlikely(info.get_shader_input_map())) {
+			if (info.get_shader_input_map()) [[unlikely]] {
 				throw Error(MSG(err) << "Shader input mapping is unsupported when constructing a VAO from multiple buffers.");
 			}
 
