@@ -21,16 +21,4 @@ enum class component_t {
 	LIVE
 };
 
-/**
- * Types of properties for API abilities.
- */
-enum class property_t {
-	ANIMATED,
-	ANIMATION_OVERRIDE,
-	COMMAND_SOUND,
-	EXECUTION_SOUND,
-	DIPLOMATIC,
-	LOCK,
-};
-
 } // namespace openage::gamestate::component

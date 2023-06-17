@@ -52,24 +52,6 @@ public:
 	 */
 	const nyan::Object &get_ability() const;
 
-	/**
-     * Checks if the component has a given property.
-     *
-     * @param property Property type.
-     *
-     * @return true if the component has the property, else false.
-     */
-	bool check_property(property_t property);
-
-	/**
-     * Get a property of the component's ability.
-     *
-     * @param property Property type.
-     *
-     * @return nyan object of the property.
-     */
-	const nyan::Object get_property(property_t property) const;
-
 private:
 	/**
      * nyan object holding the data for the component.

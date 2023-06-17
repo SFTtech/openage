@@ -2,6 +2,9 @@
 
 #include "game_entity.h"
 
+#include "gamestate/api/ability.h"
+#include "gamestate/api/animation.h"
+#include "gamestate/api/property.h"
 #include "gamestate/component/api/idle.h"
 #include "gamestate/component/api/move.h"
 #include "gamestate/component/base_component.h"
@@ -61,36 +64,26 @@ void GameEntity::push_to_render() {
 
 		if (this->components.contains(component::component_t::MOVE)) {
 			auto comp = dynamic_pointer_cast<component::Move>(this->components.at(component::component_t::MOVE));
-			if (comp->check_property(component::property_t::ANIMATED)) {
-				auto property = comp->get_property(component::property_t::ANIMATED);
-				auto animations = property.get_set("Animated.animations");
+			if (api::APIAbility::check_property(comp->get_ability(), api::property_t::ANIMATED)) {
+				auto property = api::APIAbility::get_property(comp->get_ability(), api::property_t::ANIMATED);
+				auto animations = api::APIProperty::get_animations(property);
+				auto animation_paths = api::APIAnimation::get_animation_paths(animations);
 
-				if (animations.size() < 1) {
+				if (animation_paths.size() < 1) {
 					return;
 				}
-
-				auto animation = std::dynamic_pointer_cast<nyan::ObjectValue>((*animations.begin()).get_ptr());
-				auto db_view = comp->get_ability().get_view();
-				auto animation_obj = db_view->get_object(animation->get_name());
-				auto anim_path = animation_obj.get_file("Animation.sprite");
-
-				auto obj_path = animation_obj.get_info().get_location().get_file()->get_name();
 			}
 		}
 		else if (this->components.contains(component::component_t::IDLE)) {
 			auto comp = dynamic_pointer_cast<component::Idle>(this->components.at(component::component_t::IDLE));
-			if (comp->check_property(component::property_t::ANIMATED)) {
-				auto property = comp->get_property(component::property_t::ANIMATED);
-				auto animations = property.get_set("Animated.animations");
+			if (api::APIAbility::check_property(comp->get_ability(), api::property_t::ANIMATED)) {
+				auto property = api::APIAbility::get_property(comp->get_ability(), api::property_t::ANIMATED);
+				auto animations = api::APIProperty::get_animations(property);
+				auto animation_paths = api::APIAnimation::get_animation_paths(animations);
 
-				if (animations.size() < 1) {
+				if (animation_paths.size() < 1) {
 					return;
 				}
-
-				auto animation = std::dynamic_pointer_cast<nyan::ObjectValue>((*animations.begin()).get_ptr());
-				auto db_view = comp->get_ability().get_view();
-				auto animation_obj = db_view->get_object(animation->get_name());
-				auto anim_path = animation_obj.get_file("Animation.sprite");
 			}
 		}
 		else {

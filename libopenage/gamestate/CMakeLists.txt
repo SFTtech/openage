@@ -13,6 +13,7 @@ add_sources(libopenage
 	universe.cpp
 )
 
+add_subdirectory(api/)
 add_subdirectory(component/)
 add_subdirectory(event/)
 

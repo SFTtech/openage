@@ -5,10 +5,23 @@
 #include <nyan/nyan.h>
 
 #include "datastructure/constexpr_map.h"
-#include "gamestate/component/types.h"
+#include "gamestate/api/types.h"
 
-namespace openage::gamestate::component {
+namespace openage::gamestate::api {
 
+/** Maps internal ability types to nyan API values **/
+static const auto ABILITY_DEFS = datastructure::create_const_map<ability_t, nyan::ValueHolder>(
+	std::pair(ability_t::IDLE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Idle"))),
+	std::pair(ability_t::MOVE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Move"))),
+	std::pair(ability_t::LIVE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Live"))),
+	std::pair(ability_t::TURN,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Turn"))));
+
+
+/** Maps internal property types to nyan API values **/
 static const auto PROPERTY_DEFS = datastructure::create_const_map<property_t, nyan::ValueHolder>(
 	std::pair(property_t::ANIMATED,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.Animated"))),
@@ -23,4 +36,4 @@ static const auto PROPERTY_DEFS = datastructure::create_const_map<property_t, ny
 	std::pair(property_t::LOCK,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.Lock"))));
 
-} // namespace openage::gamestate::component
+} // namespace openage::gamestate::api
