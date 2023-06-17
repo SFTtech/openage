@@ -71,7 +71,7 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 	auto entity_pos = std::dynamic_pointer_cast<component::Position>(
 		entity->get_component(component::component_t::POSITION));
 
-	auto pos = params.get("pos", gamestate::WORLD_ORIGIN);
+	auto pos = params.get("position", gamestate::WORLD_ORIGIN);
 	entity_pos->set_position(time, pos);
 
 	// TODO: Testing values
@@ -85,14 +85,14 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 	entity_pos->set_position(time + 8, pos);
 
 	entity_pos->set_angle(time, coord::phys_angle_t::from_int(315));
-	entity_pos->set_angle(time + 1, coord::phys_angle_t::from_int(315));
-	entity_pos->set_angle(time + 2, coord::phys_angle_t::from_int(270));
-	entity_pos->set_angle(time + 3, coord::phys_angle_t::from_int(225));
-	entity_pos->set_angle(time + 4, coord::phys_angle_t::from_int(180));
-	entity_pos->set_angle(time + 5, coord::phys_angle_t::from_int(135));
-	entity_pos->set_angle(time + 6, coord::phys_angle_t::from_int(90));
-	entity_pos->set_angle(time + 7, coord::phys_angle_t::from_int(45));
-	entity_pos->set_angle(time + 8, coord::phys_angle_t::from_int(0));
+	entity_pos->set_angle(time + 1, coord::phys_angle_t::from_int(279));
+	entity_pos->set_angle(time + 2, coord::phys_angle_t::from_int(225));
+	entity_pos->set_angle(time + 3, coord::phys_angle_t::from_int(180));
+	entity_pos->set_angle(time + 4, coord::phys_angle_t::from_int(135));
+	entity_pos->set_angle(time + 5, coord::phys_angle_t::from_int(90));
+	entity_pos->set_angle(time + 6, coord::phys_angle_t::from_int(45));
+	entity_pos->set_angle(time + 7, coord::phys_angle_t::from_int(0));
+	entity_pos->set_angle(time + 8, coord::phys_angle_t::from_int(315));
 
 	auto test_pos = std::make_shared<component::Position>(this->loop, pos, time);
 
