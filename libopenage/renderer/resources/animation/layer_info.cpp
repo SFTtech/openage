@@ -58,6 +58,11 @@ const std::shared_ptr<AngleInfo> &LayerInfo::get_angle(size_t idx) const {
 }
 
 const std::shared_ptr<AngleInfo> &LayerInfo::get_direction_angle(float direction) const {
+	if (this->angles.size() == 1) {
+		// angle covers all directions
+		return this->get_angle(0);
+	}
+
 	// clamp to possible degrees values
 	direction = std::clamp(direction, 0.0f, 360.0f);
 
