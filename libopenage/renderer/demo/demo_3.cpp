@@ -12,6 +12,7 @@
 #include "renderer/render_factory.h"
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/shader_source.h"
+#include "renderer/stages/camera/manager.h"
 #include "renderer/stages/screen/screen_renderer.h"
 #include "renderer/stages/skybox/skybox_renderer.h"
 #include "renderer/stages/terrain/terrain_render_entity.h"
@@ -39,16 +40,9 @@ void renderer_demo_3(const util::Path &path) {
 		camera->resize(w, h);
 	});
 
-	// Camera matrices are set via a uniform buffer that is shared across shaders
-	// the advantage of the uniform buffer is that we only have to
-	// update it once and not for every renderable
-	auto camera_unif_buffer = camera->get_uniform_buffer();
-	auto camera_unif_input = camera_unif_buffer->new_uniform_input(
-		"view",
-		camera->get_view_matrix(),
-		"proj",
-		camera->get_projection_matrix());
-	camera_unif_buffer->update_uniforms(camera_unif_input);
+	// The camera manager handles camera movement and zooming
+	// it is updated each frame before the render stages
+	auto cam_manager = std::make_shared<renderer::camera::CameraManager>(camera);
 
 	// Render stages
 	// every stage use a different subrenderer that manages renderables,
@@ -166,11 +160,12 @@ void renderer_demo_3(const util::Path &path) {
 	window->add_mouse_wheel_callback([&](const QWheelEvent &ev) {
 		auto delta = ev.angleDelta().y() / 120;
 
+		// zoom_frame updates the camera zoom level in the next drawn frame
 		if (delta < 0) {
-			camera->zoom_out(0.05f);
+			cam_manager->zoom_frame(renderer::camera::ZoomDirection::OUT, 0.05f);
 		}
 		else if (delta > 0) {
-			camera->zoom_in(0.05f);
+			cam_manager->zoom_frame(renderer::camera::ZoomDirection::IN, 0.05f);
 		}
 	});
 
@@ -179,35 +174,23 @@ void renderer_demo_3(const util::Path &path) {
 		if (ev.type() == QEvent::KeyPress) {
 			auto key = ev.key();
 
+			// move_frame moves the camera in the specified direction in the next drawn frame
 			switch (key) {
 			case Qt::Key_W: { // forward
-				camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.5f);
+				cam_manager->move_frame(renderer::camera::MoveDirection::FORWARD, 0.5f);
 			} break;
 			case Qt::Key_A: { // left
-				// half the speed because the relationship between forward/back and
-				// left/right is 1:2 in our ortho projection.
-				camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.25f);
+				cam_manager->move_frame(renderer::camera::MoveDirection::LEFT, 0.5f);
 			} break;
 			case Qt::Key_S: { // back
-				camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.5f);
+				cam_manager->move_frame(renderer::camera::MoveDirection::BACKWARD, 0.5f);
 			} break;
 			case Qt::Key_D: { // right
-				// half the speed because the relationship between forward/back and
-				// left/right is 1:2 in our ortho projection.
-				camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.25f);
+				cam_manager->move_frame(renderer::camera::MoveDirection::RIGHT, 0.5f);
 			} break;
 			default:
 				break;
 			}
-
-			// Update the camera matrices in the uniform buffer
-			// we only have to do this when the camera position changes
-			camera_unif_input->update(
-				"view",
-				camera->get_view_matrix(),
-				"proj",
-				camera->get_projection_matrix());
-			camera_unif_buffer->update_uniforms(camera_unif_input);
 		}
 	});
 
@@ -217,6 +200,9 @@ void renderer_demo_3(const util::Path &path) {
 
 	while (not window->should_close()) {
 		qtapp->process_events();
+
+		// update the camera matrices
+		cam_manager->update();
 
 		// Update the renderables of the subrenderers
 		// camera zoom/position changes are also handled in here
