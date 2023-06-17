@@ -50,7 +50,7 @@ const curve::Continuous<coord::phys3> &Position::get_positions() const {
 }
 
 void Position::set_position(const curve::time_t &time, const coord::phys3 &pos) {
-	this->position.set_insert(time, pos);
+	this->position.set_last(time, pos);
 }
 
 const curve::Segmented<coord::phys_angle_t> &Position::get_angles() const {
