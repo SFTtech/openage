@@ -4,6 +4,8 @@
 
 #include <memory>
 
+#include <eigen3/Eigen/Dense>
+
 namespace openage::renderer {
 class Renderer;
 class UniformBufferInput;
@@ -16,8 +18,8 @@ enum class MoveDirection {
 	NONE = 0x0000,
 	LEFT = 0x0001,
 	RIGHT = 0x0002,
-	TOP = 0x0004,
-	BOTTOM = 0x0008,
+	FORWARD = 0x0004,
+	BACKWARD = 0x0008,
 };
 
 enum class ZoomDirection {
@@ -27,13 +29,27 @@ enum class ZoomDirection {
 };
 
 /**
- * Manages updates to the camera that happen every frame.
+ * Manages per-frame changes to camera parameters.
  *
- * This may be used for smooth camera movements that are not based on
- * input events.
+ * The camera manager operates with directions instead of
+ * scene coordinate, which should make it easier to use.
+ *
+ * There are two update modes:
+ *     - Frame updates: Applies only to the current frame (e.g. from a key press).
+ *     - Motion updates: Applies to the current frame and all subsequent frames
+ *                       until the motion is stopped.
+ *
+ * TODO: Multiple cameras?
+ * TODO: Priority queues (let updates with higher priority override lower ones)?
+ *
  */
 class CameraManager {
 public:
+	/**
+     * Create a new camera manager.
+     *
+     * @param camera Camera to manage.
+     */
 	CameraManager(const std::shared_ptr<renderer::camera::Camera> &camera);
 	~CameraManager() = default;
 
@@ -46,32 +62,48 @@ public:
 	void update();
 
 	/**
+     * Move into the given direction for the current frame.
+     *
+     * @param direction Move direction.
+     * @param delta Move speed, i.e. a distance multiplier.
+     */
+	void move_frame(MoveDirection direction, float speed = 1.0f);
+
+	/**
+     * Zoom into the given direction for the current frame.
+     *
+     * @param direction Zoom direction.
+     * @param delta Zoom speed, i.e. a distance multiplier.
+     */
+	void zoom_frame(ZoomDirection direction, float speed = 1.0f);
+
+	/**
      * Set the move directions of the camera.
      *
      * @param directions Bitfield of the move directions.
      */
-	void set_move_directions(int directions);
+	void set_move_motion_dirs(int directions);
 
 	/**
      * Set the zoom direction of the camera.
      *
      * @param direction Zoom direction.
      */
-	void set_zoom_direction(int direction);
+	void set_zoom_motion_dir(int direction);
 
 	/**
      * Set the move speed of the camera.
      *
      * @param speed Speed of the camera.
      */
-	void set_move_speed(float speed);
+	void set_move_motion_speed(float speed);
 
 	/**
      * Set the zoom speed of the camera.
      *
      * @param speed Speed of the camera.
      */
-	void set_zoom_speed(float speed);
+	void set_zoom_motion_speed(float speed);
 
 private:
 	/**
@@ -90,24 +122,24 @@ private:
 	std::shared_ptr<renderer::camera::Camera> camera;
 
 	/**
-     * Bitfield of the current move directions.
+     * Bitfield of the current move motion directions.
      */
-	int move_directions;
+	int move_motion_directions;
 
 	/**
-     * Bitfield of the current zoom direction.
+     * Bitfield of the current zoom motion direction.
      */
-	int zoom_direction;
+	int zoom_motion_direction;
 
 	/**
-     * Move speed of the camera.
+     * Move motion speed of the camera.
      */
-	float move_speed;
+	float move_motion_speed;
 
 	/**
-     * Zoom speed of the camera.
+     * Zoom motion speed of the camera.
      */
-	float zoom_speed;
+	float zoom_motion_speed;
 
 	/**
      * Uniform buffer input for the camera.

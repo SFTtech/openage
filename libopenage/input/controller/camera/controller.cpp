@@ -29,24 +29,16 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<renderer::camera::CameraManager> &cam_manager) {
 	// arrow movements
 	binding_func_t move_left{[&](const event_arguments & /*args*/) {
-		const auto move_dir = Eigen::Vector3f(-1.0f, 0.0f, 1.0f);
-		// half the speed because the relationship between forward/back and
-		// left/right is 1:2 in our ortho projection.
-		cam->move_rel(move_dir, 0.25f);
+		cam_manager->move_frame(renderer::camera::MoveDirection::LEFT, 0.5f);
 	}};
 	binding_func_t move_right{[&](const event_arguments & /*args*/) {
-		const auto move_dir = Eigen::Vector3f(1.0f, 0.0f, -1.0f);
-		// half the speed because the relationship between forward/back and
-		// left/right is 1:2 in our ortho projection.
-		cam->move_rel(move_dir, 0.25f);
+		cam_manager->move_frame(renderer::camera::MoveDirection::RIGHT, 0.5f);
 	}};
 	binding_func_t move_forward{[&](const event_arguments & /*args*/) {
-		const auto move_dir = Eigen::Vector3f(-1.0f, 0.0f, -1.0f);
-		cam->move_rel(move_dir, 0.5f);
+		cam_manager->move_frame(renderer::camera::MoveDirection::FORWARD, 0.5f);
 	}};
 	binding_func_t move_backward{[&](const event_arguments & /*args*/) {
-		const auto move_dir = Eigen::Vector3f(1.0f, 0.0f, 1.0f);
-		cam->move_rel(move_dir, 0.5f);
+		cam_manager->move_frame(renderer::camera::MoveDirection::BACKWARD, 0.5f);
 	}};
 
 	binding_action move_left_action{move_left};
@@ -67,11 +59,11 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 	// zoom
 	binding_func_t zoom_in{[&](const event_arguments & /* args */) {
 		// TODO: Use delta from QWheelEvent?
-		cam->zoom_in(0.05f);
+		cam_manager->zoom_frame(renderer::camera::ZoomDirection::IN, 0.05f);
 	}};
 	binding_func_t zoom_out{[&](const event_arguments & /* args */) {
 		// TODO: Use delta from QWheelEvent?
-		cam->zoom_out(0.05f);
+		cam_manager->zoom_frame(renderer::camera::ZoomDirection::OUT, 0.05f);
 	}};
 
 	binding_action zoom_in_action{zoom_in};
@@ -98,13 +90,13 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 		}
 
 		if (pos_y < 10) {
-			move_directions = move_directions | static_cast<int>(renderer::camera::MoveDirection::TOP);
+			move_directions = move_directions | static_cast<int>(renderer::camera::MoveDirection::FORWARD);
 		}
 		else if (pos_y > cam->get_viewport_size()[1] - 10) {
-			move_directions = move_directions | static_cast<int>(renderer::camera::MoveDirection::BOTTOM);
+			move_directions = move_directions | static_cast<int>(renderer::camera::MoveDirection::BACKWARD);
 		}
 
-		cam_manager->set_move_directions(move_directions);
+		cam_manager->set_move_motion_dirs(move_directions);
 	}};
 
 	binding_action edge_move_action{edge_move};

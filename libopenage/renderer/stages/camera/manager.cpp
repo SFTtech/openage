@@ -12,10 +12,10 @@ namespace openage::renderer::camera {
 
 CameraManager::CameraManager(const std::shared_ptr<renderer::camera::Camera> &camera) :
 	camera{camera},
-	move_directions{static_cast<int>(MoveDirection::NONE)},
-	zoom_direction{static_cast<int>(ZoomDirection::NONE)},
-	move_speed{0.2f},
-	zoom_speed{0.05f} {
+	move_motion_directions{static_cast<int>(MoveDirection::NONE)},
+	zoom_motion_direction{static_cast<int>(ZoomDirection::NONE)},
+	move_motion_speed{0.2f},
+	zoom_motion_speed{0.05f} {
 	this->uniforms = this->camera->get_uniform_buffer()->new_uniform_input(
 		"view",
 		camera->get_view_matrix(),
@@ -28,32 +28,70 @@ void CameraManager::update() {
 	this->update_uniforms();
 }
 
+void CameraManager::move_frame(MoveDirection direction, float speed) {
+	switch (direction) {
+	case MoveDirection::LEFT:
+		// half the speed because the relationship between forward/back and
+		// left/right is 1:2 in our ortho projection.
+		this->camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), speed / 2);
+		break;
+	case MoveDirection::RIGHT:
+		// half the speed because the relationship between forward/back and
+		// left/right is 1:2 in our ortho projection.
+		this->camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), speed / 2);
+		break;
+	case MoveDirection::FORWARD:
+		this->camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), speed);
+		break;
+	case MoveDirection::BACKWARD:
+		this->camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), speed);
+		break;
+
+	default:
+		break;
+	}
+}
+
+void CameraManager::zoom_frame(ZoomDirection direction, float speed) {
+	switch (direction) {
+	case ZoomDirection::IN:
+		this->camera->zoom_in(speed);
+		break;
+	case ZoomDirection::OUT:
+		this->camera->zoom_out(speed);
+		break;
+
+	default:
+		break;
+	}
+}
+
 void CameraManager::update_motion() {
-	if (this->move_directions != static_cast<int>(MoveDirection::NONE)) {
+	if (this->move_motion_directions != static_cast<int>(MoveDirection::NONE)) {
 		Eigen::Vector3f move_dir{0.0f, 0.0f, 0.0f};
 
-		if (this->move_directions & static_cast<int>(MoveDirection::LEFT)) {
+		if (this->move_motion_directions & static_cast<int>(MoveDirection::LEFT)) {
 			move_dir += Eigen::Vector3f(-1.0f, 0.0f, 1.0f);
 		}
-		if (this->move_directions & static_cast<int>(MoveDirection::RIGHT)) {
+		if (this->move_motion_directions & static_cast<int>(MoveDirection::RIGHT)) {
 			move_dir += Eigen::Vector3f(1.0f, 0.0f, -1.0f);
 		}
-		if (this->move_directions & static_cast<int>(MoveDirection::TOP)) {
+		if (this->move_motion_directions & static_cast<int>(MoveDirection::FORWARD)) {
 			move_dir += Eigen::Vector3f(-1.0f, 0.0f, -1.0f);
 		}
-		if (this->move_directions & static_cast<int>(MoveDirection::BOTTOM)) {
+		if (this->move_motion_directions & static_cast<int>(MoveDirection::BACKWARD)) {
 			move_dir += Eigen::Vector3f(1.0f, 0.0f, 1.0f);
 		}
 
-		this->camera->move_rel(move_dir, this->move_speed);
+		this->camera->move_rel(move_dir, this->move_motion_speed);
 	}
 
-	if (this->zoom_direction != static_cast<int>(ZoomDirection::NONE)) {
-		if (this->zoom_direction & static_cast<int>(ZoomDirection::IN)) {
-			this->camera->zoom_in(this->zoom_speed);
+	if (this->zoom_motion_direction != static_cast<int>(ZoomDirection::NONE)) {
+		if (this->zoom_motion_direction & static_cast<int>(ZoomDirection::IN)) {
+			this->camera->zoom_in(this->zoom_motion_speed);
 		}
-		else if (this->zoom_direction & static_cast<int>(ZoomDirection::OUT)) {
-			this->camera->zoom_out(this->zoom_speed);
+		else if (this->zoom_motion_direction & static_cast<int>(ZoomDirection::OUT)) {
+			this->camera->zoom_out(this->zoom_motion_speed);
 		}
 	}
 }
@@ -67,20 +105,20 @@ void CameraManager::update_uniforms() {
 	this->camera->get_uniform_buffer()->update_uniforms(this->uniforms);
 }
 
-void CameraManager::set_move_directions(int directions) {
-	this->move_directions = directions;
+void CameraManager::set_move_motion_dirs(int directions) {
+	this->move_motion_directions = directions;
 }
 
-void CameraManager::set_zoom_direction(int direction) {
-	this->zoom_direction = direction;
+void CameraManager::set_zoom_motion_dir(int direction) {
+	this->zoom_motion_direction = direction;
 }
 
-void CameraManager::set_move_speed(float speed) {
-	this->move_speed = speed;
+void CameraManager::set_move_motion_speed(float speed) {
+	this->move_motion_speed = speed;
 }
 
-void CameraManager::set_zoom_speed(float speed) {
-	this->zoom_speed = speed;
+void CameraManager::set_zoom_motion_speed(float speed) {
+	this->zoom_motion_speed = speed;
 }
 
 } // namespace openage::renderer::camera
