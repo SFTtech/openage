@@ -256,6 +256,7 @@ public:
 		// 1. link root children pairwise, last node may be alone
 		element_t first_pair = nullptr;
 		element_t previous_pair = nullptr;
+
 		while (current_sibling != nullptr) [[unlikely]] {
 			element_t link0 = current_sibling;
 			element_t link1 = current_sibling->next_sibling;
@@ -377,7 +378,7 @@ public:
 	 * O(1)
 	 */
 	void decrease(const element_t &node) {
-		if (likely(node != this->root_node)) {
+		if (node != this->root_node) [[likely]] {
 			// cut out the node and its subtree
 			node->loosen();
 			this->root_node = node->link_with(this->root_node);
@@ -394,7 +395,7 @@ public:
 	 * O(1) (but slower than decrease), and O(pop) when node is the root.
 	 */
 	void update(const element_t &node) {
-		if (likely(node != this->root_node)) {
+		if (node != this->root_node) [[likely]] {
 			this->unlink_node(node);
 			this->push_node(node);
 		}

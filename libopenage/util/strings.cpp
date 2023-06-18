@@ -144,7 +144,7 @@ std::vector<std::string> split_escape(const std::string &txt, char delim, size_t
 
 	// output vector
 	std::vector<std::string> items;
-	if (likely(size_hint)) {
+	if (size_hint) [[likely]] {
 		items.reserve(size_hint);
 	}
 

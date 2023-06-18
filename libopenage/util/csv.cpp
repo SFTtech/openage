@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 #include "csv.h"
 
@@ -48,7 +48,7 @@ CSVCollection::CSVCollection(const Path &entryfile_path) {
 				continue;
 			}
 
-			if (likely(current_file.size() > 0)) {
+			if (current_file.size() > 0) [[likely]] {
 				// add line to the current file linelist
 				this->data.at(current_file).push_back(line);
 			}
