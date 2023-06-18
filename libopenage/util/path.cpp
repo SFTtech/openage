@@ -28,7 +28,7 @@ void path_normalizer(Path::parts_t &output, const Path::parts_t &input) {
 			continue;
 		}
 		else if (part == "..") {
-			if (likely(output.size() > 0)) {
+			if (output.size() > 0) [[likely]] {
 				output.pop_back();
 			}
 		}
@@ -294,7 +294,7 @@ std::string Path::get_stem() const {
 Path Path::joinpath(const parts_t &subpaths) const {
 	parts_t new_parts = this->parts;
 	for (auto &part : subpaths) {
-		if (likely(part.size() > 0)) {
+		if (part.size() > 0) [[likely]] {
 			new_parts.push_back(part);
 		}
 	}

@@ -55,6 +55,7 @@ void translate_exc_cpp_to_py() {
 		throw;
 
 	} catch (PyException &exc) {
+
 		if (raise_cpp_pyexception == nullptr) [[unlikely]] {
 			throw Error(MSG(err) <<
 				"raise_pyexception_in_py is uninitialized; "
@@ -66,6 +67,7 @@ void translate_exc_cpp_to_py() {
 		raise_cpp_pyexception(&exc);
 
 	} catch (Error &exc) {
+
 		if (raise_cpp_error == nullptr) [[unlikely]] {
 			throw Error(MSG(err) <<
 				"raise_error_in_py is uninitialized; "
@@ -95,7 +97,7 @@ void translate_exc_py_to_cpp() {
 			"can't check for and translate Python exception to C++ exception.");
 	}
 
-	if (likely(not check_for_py_exception())) {
+	if (not check_for_py_exception()) [[likely]] {
 		// no exception has occurred.
 		return;
 	}

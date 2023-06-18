@@ -22,6 +22,7 @@ Error::Error(const log::message &msg, bool generate_backtrace, bool store_cause)
 	:
 	std::runtime_error{runtime_error_message},
 	msg(msg) {
+
 	if (enable_break_on_create) [[unlikely]] {
 		BREAKPOINT;
 	}
@@ -42,7 +43,7 @@ void Error::store_cause() {
 	// we could simply do this->cause = std::current_exception(),
 	// but we need to trim the cause Error's backtrace.
 
-	if (likely(!std::current_exception())) {
+	if (!std::current_exception()) [[likely]] {
 		return;
 	}
 

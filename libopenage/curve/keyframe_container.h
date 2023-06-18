@@ -411,7 +411,7 @@ KeyframeContainer<T>::erase_group(const time_t &time,
 	// erase elements until all element with that time are purged
 	while (at != std::end(this->container) and at->time == time) {
 		at = this->container.erase(at);
-		if (likely(at != std::begin(this->container))) {
+		if (at != std::begin(this->container)) [[likely]] {
 			--at;
 		}
 	}

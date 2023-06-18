@@ -243,7 +243,7 @@ int HuffmanTable<maxsymbols_p, tablebits_p, allow_empty>::read_sym() {
 	unsigned i = 1 << (sizeof(lzx->bits.bit_buffer) * 8 - tablebits);
 	while (sym >= maxsymbols) {
 		// huff_traverse
-		if (((i >>= 1) == 0)) [[unlikely]] {
+		if ((i >>= 1) == 0) [[unlikely]] {
 			throw Error(MSG(err) << "huff_error in huff_traverse");
 		}
 		sym = table[(sym << 1) | ((lzx->bits.bit_buffer & i) ? 1 : 0)];
