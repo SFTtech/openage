@@ -41,18 +41,6 @@
 	#endif // HAVE_SSIZE_T
 #endif // _MSC_VER
 
-/*
- * Branch prediction tuning.
- * the expression is expected to be true (=likely) or false (=unlikely).
- *
- * btw, this implementation was taken from the Linux kernel.
- */
-#if defined(__GNUC__)
-#define likely(x)    __builtin_expect(!!(x), 1)
-#else
-#define likely(x)   (x)
-#endif
-
 
 /**
  * Software breakpoint if you're too lazy
