@@ -112,6 +112,8 @@ def demos_cpp():
            "showcases console as an interactive terminal on your current tty")
     yield ("openage::error::demo",
            "showcases the openage exceptions, including backtraces")
+    yield ("openage::gamestate::tests::activity_demo",
+           "showcases the activity system in the gamestate")
     yield ("openage::input::tests::action_demo",
            "showcases the low-level input system")
     yield ("openage::log::tests::demo",
