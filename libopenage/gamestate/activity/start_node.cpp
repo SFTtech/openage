@@ -6,13 +6,25 @@
 namespace openage::gamestate::activity {
 
 StartNode::StartNode(node_id id,
-                     const std::shared_ptr<Node> &output,
-                     node_label label) :
-	Node{id, label, {output}} {
+                     node_label label,
+                     const std::shared_ptr<Node> &output) :
+	Node{id, label} {
+	if (output) {
+		this->add_output(output);
+	}
+}
+
+void StartNode::add_output(const std::shared_ptr<Node> &output) {
+	this->outputs.clear();
+	this->outputs.emplace(output->get_id(), output);
 }
 
 const std::shared_ptr<Node> &StartNode::visit(const curve::time_t & /* time */) const {
-	return this->outputs.at(0);
+	if (this->outputs.empty()) [[unlikely]] {
+		throw Error{MSG(err) << "Start node " << this->str() << " has no output."};
+	}
+
+	return (*this->outputs.begin()).second;
 }
 
 } // namespace openage::gamestate::activity

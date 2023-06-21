@@ -6,6 +6,7 @@
 #include <unordered_map>
 
 #include "curve/curve.h"
+#include "gamestate/activity/types.h"
 
 
 namespace openage::gamestate::activity {
@@ -31,6 +32,13 @@ public:
 	virtual ~Node() = default;
 
 	/**
+	 * Get the type of this node.
+	 *
+	 * @return Node type.
+	 */
+	virtual node_t get_type() const = 0;
+
+	/**
 	 * Get the unique identifier for this node.
 	 *
 	 * @return The unique identifier.
@@ -43,6 +51,20 @@ public:
 	 * @return Human-readable label.
 	 */
 	const node_label get_label() const;
+
+	/**
+	 * Get a human-readable string representation of this node.
+	 *
+	 * @return Human-readable representation.
+	 */
+	std::string str() const;
+
+	/**
+	 * Add an output node.
+	 *
+	 * @param output Output node.
+	 */
+	virtual void add_output(const std::shared_ptr<Node> &output) = 0;
 
 	/**
 	 * Perform an action like executing a function or evaluating a condition.

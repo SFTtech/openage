@@ -9,6 +9,11 @@ namespace openage::gamestate::activity {
 
 using condition_func_t = std::function<node_id(const curve::time_t &)>;
 
+static const condition_func_t no_condition = [](const curve::time_t &) -> node_id {
+	throw Error{MSG(err) << "No condition function set."};
+};
+
+
 /**
  * Chooses one of its output nodes based on a condition.
  */
@@ -18,17 +23,35 @@ public:
      * Creates a new condition node.
      *
      * @param id Unique identifier of the node.
-     * @param outputs Output nodes.
-     * @param condition_func Function that determines which output node is chosen.
-     *                       This must be a valid node ID of one of the output nodes.
      * @param label Label of the node (optional).
+     * @param outputs Output nodes (can be set later).
+     * @param condition_func Function that determines which output node is chosen (can be set later).
+     *                       This must be a valid node ID of one of the output nodes.
      */
 	ConditionNode(node_id id,
-	              const std::vector<std::shared_ptr<Node>> &outputs,
-	              condition_func_t condition_func,
-	              node_label label = "Condition");
-
+	              node_label label = "Condition",
+	              const std::vector<std::shared_ptr<Node>> &outputs = {},
+	              condition_func_t condition_func = no_condition);
 	virtual ~ConditionNode() = default;
+
+	inline node_t get_type() const override {
+		return node_t::XOR_GATEWAY;
+	}
+
+	/**
+     * Add an output node.
+     *
+     * @param output Output node.
+     */
+	void add_output(const std::shared_ptr<Node> &output) override;
+
+	/**
+     * Set the function that determines which output node is chosen.
+     *
+     * @param condition_func Function that determines which output node is chosen.
+     *                       This must be a valid node ID of one of the output nodes.
+     */
+	void set_condition_func(condition_func_t condition_func);
 
 	/**
      * Checks the condition and returns the next node that matches the condition.

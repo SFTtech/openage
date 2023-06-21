@@ -4,5 +4,7 @@ add_sources(libopenage
     node.cpp
     start_node.cpp
     task_node.cpp
+    tests.cpp
+    types.cpp
     xor_node.cpp
 )

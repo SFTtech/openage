@@ -25,4 +25,16 @@ const node_label Node::get_label() const {
 	return this->label;
 }
 
+std::string Node::str() const {
+	std::stringstream ret;
+	if (this->label.empty()) {
+		ret << this->get_id();
+	}
+	else {
+		ret << this->get_label()
+			<< " (id=" << this->get_id() << ")";
+	}
+	return ret.str();
+}
+
 } // namespace openage::gamestate::activity

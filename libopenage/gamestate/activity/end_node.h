@@ -13,6 +13,9 @@ namespace openage::gamestate::activity {
  * End node of an activity. This is where the control flow for an activity
  * ends. When the activity is a subactivity, the control flow returns to the
  * parent activity.
+ *
+ * inputs: 1
+ * outputs: none
  */
 class EndNode : public Node {
 public:
@@ -21,13 +24,23 @@ public:
      *
      * @param id Unique identifier for this node.
      * @param label Human-readable label (optional).
-     * @param output Hint for the next node to visit (optional).
-     *               This can be ignored by the parent activity.
      */
 	EndNode(node_id id,
-	        const std::shared_ptr<Node> &output = nullptr,
 	        node_label label = "End");
 	virtual ~EndNode() = default;
+
+	inline node_t get_type() const override {
+		return node_t::END;
+	}
+
+	/**
+      * Throws an error since end nodes are not supposed to have outputs
+      *
+      * @param output Output node.
+      *
+      * @throws openage::Error
+      */
+	[[noreturn]] void add_output(const std::shared_ptr<Node> &output) override;
 
 	/**
      * Do nothing and return the next node.
@@ -40,7 +53,7 @@ public:
      * @return Hint for the next node to visit. Can be \p nullptr.
      *         Can be ignored by the parent activity.
      */
-	virtual const std::shared_ptr<Node> &visit(const curve::time_t &time) const override;
+	const std::shared_ptr<Node> &visit(const curve::time_t &time) const override;
 };
 
 } // namespace openage::gamestate::activity
