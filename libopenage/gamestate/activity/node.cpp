@@ -37,4 +37,12 @@ std::string Node::str() const {
 	return ret.str();
 }
 
+const std::shared_ptr<Node> &Node::next(node_id id) const {
+	if (not this->outputs.contains(id)) [[unlikely]] {
+		throw Error{MSG(err) << "Node " << this->str() << " has no output with id " << id};
+	}
+
+	return this->outputs.at(id);
+}
+
 } // namespace openage::gamestate::activity

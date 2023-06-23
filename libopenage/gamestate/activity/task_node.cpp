@@ -25,15 +25,12 @@ void TaskNode::set_task_func(task_func_t task_func) {
 	this->task_func = task_func;
 }
 
-const std::shared_ptr<Node> &TaskNode::visit(const curve::time_t &time) const {
-	if (this->outputs.empty()) [[unlikely]] {
-		throw Error{MSG(err) << "Task node " << this->str() << " has no output."};
-	}
-
-	this->task_func(time);
-
-	return (*this->outputs.begin()).second;
+task_func_t TaskNode::get_task_func() const {
+	return this->task_func;
 }
 
+node_id TaskNode::get_next() const {
+	return (*this->outputs.begin()).first;
+}
 
 } // namespace openage::gamestate::activity

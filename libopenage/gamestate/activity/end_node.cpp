@@ -10,12 +10,8 @@ EndNode::EndNode(node_id id,
 	Node{id, label, {}} {
 }
 
-void EndNode::add_output(const std::shared_ptr<Node> &output) {
+void EndNode::add_output(const std::shared_ptr<Node> & /* output */) {
 	throw Error{ERR << "End node cannot have outputs"};
-}
-
-const std::shared_ptr<Node> &EndNode::visit(const curve::time_t & /* time */) const {
-	return {nullptr};
 }
 
 } // namespace openage::gamestate::activity

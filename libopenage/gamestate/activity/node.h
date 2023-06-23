@@ -60,20 +60,19 @@ public:
 	std::string str() const;
 
 	/**
+	 * Get the output node with the given identifier.
+	 *
+	 * @param id Unique identifier of the output node.
+	 * @return Output node.
+	 */
+	const std::shared_ptr<Node> &next(node_id id) const;
+
+	/**
 	 * Add an output node.
 	 *
 	 * @param output Output node.
 	 */
 	virtual void add_output(const std::shared_ptr<Node> &output) = 0;
-
-	/**
-	 * Perform an action like executing a function or evaluating a condition.
-	 *
-	 * @param time Current time.
-	 *
-	 * @return Next node to visit.
-	 */
-	virtual const std::shared_ptr<Node> &visit(const curve::time_t &) const = 0;
 
 protected:
 	/**

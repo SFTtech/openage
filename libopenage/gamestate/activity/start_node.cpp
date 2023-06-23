@@ -19,12 +19,8 @@ void StartNode::add_output(const std::shared_ptr<Node> &output) {
 	this->outputs.emplace(output->get_id(), output);
 }
 
-const std::shared_ptr<Node> &StartNode::visit(const curve::time_t & /* time */) const {
-	if (this->outputs.empty()) [[unlikely]] {
-		throw Error{MSG(err) << "Start node " << this->str() << " has no output."};
-	}
-
-	return (*this->outputs.begin()).second;
+node_id StartNode::get_next() const {
+	return (*this->outputs.begin()).first;
 }
 
 } // namespace openage::gamestate::activity

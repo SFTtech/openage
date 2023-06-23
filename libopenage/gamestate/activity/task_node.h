@@ -54,13 +54,19 @@ public:
 	void set_task_func(task_func_t task_func);
 
 	/**
-     * Perform the action of this node and return the next node.
-     *
-     * @param time Current time.
-     *
-     * @return Next node to visit.
-     */
-	virtual const std::shared_ptr<Node> &visit(const curve::time_t &time) const override;
+      * Get the task function.
+      *
+      * @return Action to perform when visiting this node.
+      */
+	task_func_t get_task_func() const;
+
+	/**
+	 * Get the next node to visit.
+	 *
+	 * @param time Current time.
+	 * @return Next node to visit.
+	 */
+	node_id get_next() const;
 
 private:
 	/**

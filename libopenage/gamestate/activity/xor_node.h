@@ -54,15 +54,11 @@ public:
 	void set_condition_func(condition_func_t condition_func);
 
 	/**
-     * Checks the condition and returns the next node that matches the condition.
+     * Get the function that determines which output node is chosen.
      *
-     * Conditions are evaluated immediately when visiting the node.
-     *
-     * @param time Current time.
-     *
-     * @return Next node to visit.
+     * @return Function that determines which output node is chosen.
      */
-	const std::shared_ptr<Node> &visit(const curve::time_t &time) const override;
+	condition_func_t get_condition_func() const;
 
 private:
 	/**

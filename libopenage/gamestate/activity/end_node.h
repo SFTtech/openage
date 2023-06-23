@@ -41,19 +41,6 @@ public:
       * @throws openage::Error
       */
 	[[noreturn]] void add_output(const std::shared_ptr<Node> &output) override;
-
-	/**
-     * Do nothing and return the next node.
-     *
-     * End nodes only provide the exit for a (sub-)activity. They don't
-     * perform any action.
-     *
-     * @param time Current time.
-     *
-     * @return Hint for the next node to visit. Can be \p nullptr.
-     *         Can be ignored by the parent activity.
-     */
-	const std::shared_ptr<Node> &visit(const curve::time_t &time) const override;
 };
 
 } // namespace openage::gamestate::activity

@@ -43,16 +43,12 @@ public:
 	void add_output(const std::shared_ptr<Node> &output) override;
 
 	/**
-	 * Do nothing and return the next node.
-	 *
-	 * Start nodes only provide the entry for a (sub-)activity. They don't
-	 * perform any action.
+	 * Get the next node to visit.
 	 *
 	 * @param time Current time.
-	 *
 	 * @return Next node to visit.
 	 */
-	virtual const std::shared_ptr<Node> &visit(const curve::time_t &time) const override;
+	node_id get_next() const;
 };
 
 } // namespace openage::gamestate::activity

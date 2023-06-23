@@ -71,9 +71,9 @@ public:
  * Receives the event when the activity flow and notifies the activity manager
  * to continue the flow.
  */
-class TestActivityHandler : public event::EventHandler {
+class TestActivityHandler : public event::OnceEventHandler {
 public:
-	using event::EventHandler::EventHandler;
+	using event::OnceEventHandler::OnceEventHandler;
 
 	void setup_event(const std::shared_ptr<event::Event> & /* event */,
 	                 const std::shared_ptr<event::State> & /* state */) override {
@@ -101,18 +101,51 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 	auto current = current_node;
 
 	if (current->get_type() == activity::node_t::EVENT_GATEWAY) {
-		current = std::dynamic_pointer_cast<activity::EventNode>(current)->next(0);
+		auto node = std::static_pointer_cast<activity::EventNode>(current);
+		auto event_next = node->get_next_func();
+		auto next_id = event_next(0);
+		current = node->next(next_id);
 	}
 
 	while (current->get_type() != activity::node_t::END) {
 		log::log(INFO << "Visiting node: " << current->str());
-		current = current->visit(0);
-		log::log(INFO << "Next node: " << current->str());
 
-		if (current->get_type() == activity::node_t::EVENT_GATEWAY) {
-			current->visit(0);
+		switch (current->get_type()) {
+		case activity::node_t::START: {
+			auto node = std::static_pointer_cast<activity::StartNode>(current);
+			auto next_id = node->get_next();
+			current = node->next(next_id);
+		} break;
+		case activity::node_t::END: {
+			// TODO
 			return current;
+		} break;
+		case activity::node_t::TASK: {
+			auto node = std::static_pointer_cast<activity::TaskNode>(current);
+			auto task = node->get_task_func();
+			task(0);
+			auto next_id = node->get_next();
+			current = node->next(next_id);
+		} break;
+		case activity::node_t::XOR_GATEWAY: {
+			auto node = std::static_pointer_cast<activity::ConditionNode>(current);
+			auto condition = node->get_condition_func();
+			auto next_id = condition(0);
+			current = node->next(next_id);
+		} break;
+		case activity::node_t::EVENT_GATEWAY: {
+			auto node = std::static_pointer_cast<activity::EventNode>(current);
+			auto event_primer = node->get_primer_func();
+			event_primer(0);
+
+			// wait for event
+			return current;
+		} break;
+		default:
+			throw Error{ERR << "Unhandled node type for node " << current->str()};
 		}
+
+		log::log(INFO << "Next node: " << current->str());
 	}
 
 	log::log(INFO << "Reached end note: " << current->str());
@@ -132,8 +165,7 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 void activity_demo() {
 	// create an event loop for events in the graph
 	auto loop = std::make_shared<event::EventLoop>();
-	auto handler = std::make_shared<TestActivityHandler>("test.activity",
-	                                                     event::EventHandler::trigger_type::ONCE);
+	auto handler = std::make_shared<TestActivityHandler>("test.activity");
 	loop->add_event_handler(handler);
 	auto state = std::make_shared<TestActivityState>(loop);
 

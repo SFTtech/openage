@@ -9,7 +9,7 @@ namespace openage {
 namespace gamestate::activity {
 
 /* Create and register an event on the event loop */
-using event_primer_func_t = std::function<void(const curve::time_t &)>;
+using event_primer_func_t = std::function<void(const curve::time_t & /* time */)>;
 
 /* Decide which node to visit after the event is handled */
 using event_next_func_t = std::function<node_id(const curve::time_t &)>;
@@ -72,25 +72,18 @@ public:
 	void set_next_func(event_next_func_t next_func);
 
 	/**
-     * Create an event and wait for it to be executed.
+     * Get the function to create the event.
      *
-     * The control flow must stop until the event is handled. Event handlers
-     * need to call \p notify() to continue.
-     *
-     * @param time Current time.
-     *
-     * @return Always \p nullptr .
+     * @return Event creation function.
      */
-	const std::shared_ptr<Node> &visit(const curve::time_t &time) const override;
+	event_primer_func_t get_primer_func() const;
 
 	/**
-     * Get the next node to visit after the event is handled.
-     *
-     * @param time Current time.
-     *
-     * @return Next node to visit.
-     */
-	const std::shared_ptr<Node> &next(const curve::time_t &time) const;
+      * Get the function to decide which node to visit after the event is handled.
+      *
+      * @return Next node function.
+      */
+	event_next_func_t get_next_func() const;
 
 private:
 	/**
