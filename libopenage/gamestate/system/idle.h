@@ -4,7 +4,6 @@
 
 #include <memory>
 
-#include "coord/phys.h"
 #include "curve/curve.h"
 
 
@@ -13,18 +12,19 @@ class GameEntity;
 
 namespace system {
 
-class Move {
+class Idle {
 public:
 	/**
-     * Move a game entity to a destination.
+     * Let a game entity idle.
+     *
+     * This does not change the state of a unit. It only changes its animation and
+     * sounds.
      *
      * @param entity Game entity.
-     * @param destination Destination coordinates.
      * @param start_time Start time of change.
      */
-	static void move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
-	                         const coord::phys3 &destination,
-	                         const curve::time_t &start_time);
+	static void idle(const std::shared_ptr<gamestate::GameEntity> &entity,
+	                 const curve::time_t &start_time);
 };
 
 } // namespace system
