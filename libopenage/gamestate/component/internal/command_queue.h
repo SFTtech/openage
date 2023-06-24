@@ -3,6 +3,7 @@
 #pragma once
 
 #include "curve/queue.h"
+#include "gamestate/component/internal/commands/base_command.h"
 #include "gamestate/component/internal_component.h"
 
 namespace openage {
@@ -12,13 +13,6 @@ class EventLoop;
 } // namespace event
 
 namespace gamestate::component {
-
-// TODO: Commands need payloads
-enum class command_t {
-	NONE,
-	IDLE,
-	MOVE,
-};
 
 class CommandQueue : public InternalComponent {
 public:
@@ -35,7 +29,7 @@ private:
 	/**
 	 * Command queue.
 	 */
-	curve::Queue<command_t> command_queue;
+	curve::Queue<std::shared_ptr<command::Command>> command_queue;
 };
 
 } // namespace gamestate::component

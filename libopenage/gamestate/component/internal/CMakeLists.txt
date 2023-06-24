@@ -3,3 +3,5 @@ add_sources(libopenage
     ownership.cpp
     position.cpp
 )
+
+add_subdirectory(commands/)
