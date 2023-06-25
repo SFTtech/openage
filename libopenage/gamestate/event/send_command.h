@@ -17,10 +17,10 @@ class State;
 namespace gamestate::event {
 
 // TODO: This is only for testing
-class CommandTarget : public openage::event::EventEntity {
+class Commander : public openage::event::EventEntity {
 public:
-	CommandTarget(const std::shared_ptr<openage::event::EventLoop> &loop);
-	~CommandTarget() = default;
+	Commander(const std::shared_ptr<openage::event::EventLoop> &loop);
+	~Commander() = default;
 
 	size_t id() const override;
 	std::string idstr() const override;
@@ -31,7 +31,7 @@ public:
  */
 class SendCommandHandler : public openage::event::OnceEventHandler {
 public:
-	SendCommandHandler() = default;
+	SendCommandHandler();
 	~SendCommandHandler() = default;
 
 	void setup_event(const std::shared_ptr<openage::event::Event> &event,

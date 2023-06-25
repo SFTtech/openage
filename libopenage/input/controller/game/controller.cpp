@@ -7,6 +7,7 @@
 #include "event/state.h"
 #include "event/time_loop.h"
 #include "gamestate/component/internal/commands/types.h"
+#include "gamestate/event/send_command.h"
 #include "gamestate/event/spawn_entity.h"
 #include "gamestate/game.h"
 #include "gamestate/game_state.h"
@@ -106,7 +107,7 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 
 		auto event = simulation->get_event_loop()->create_event(
 			"game.send_command",
-			simulation->get_spawner(),
+			simulation->get_commander(),
 			simulation->get_game()->get_state(),
 			time_loop->get_clock()->get_time(),
 			params);

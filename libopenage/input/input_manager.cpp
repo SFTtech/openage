@@ -218,8 +218,10 @@ void setup_defaults(const std::shared_ptr<InputContext> &ctx) {
 	input_action engine_action{input_action_t::ENGINE};
 
 	Event ev_mouse_lmb{event_class::MOUSE_BUTTON, Qt::LeftButton, Qt::NoModifier, QEvent::MouseButtonRelease};
+	Event ev_mouse_rmb{event_class::MOUSE_BUTTON, Qt::RightButton, Qt::NoModifier, QEvent::MouseButtonRelease};
 
 	ctx->bind(ev_mouse_lmb, engine_action);
+	ctx->bind(ev_mouse_rmb, engine_action);
 }
 
 

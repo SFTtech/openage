@@ -10,18 +10,22 @@
 
 namespace openage::gamestate::event {
 
-CommandTarget::CommandTarget(const std::shared_ptr<openage::event::EventLoop> &loop) :
+Commander::Commander(const std::shared_ptr<openage::event::EventLoop> &loop) :
 	openage::event::EventEntity{loop} {
 }
 
-size_t CommandTarget::id() const {
+size_t Commander::id() const {
 	return 0;
 }
 
-std::string CommandTarget::idstr() const {
+std::string Commander::idstr() const {
 	return "command_target";
 }
 
+
+SendCommandHandler::SendCommandHandler() :
+	openage::event::OnceEventHandler{"game.send_command"} {
+}
 
 void SendCommandHandler::setup_event(const std::shared_ptr<openage::event::Event> & /* event */,
                                      const std::shared_ptr<openage::event::State> & /* state */) {

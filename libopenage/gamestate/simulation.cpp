@@ -8,6 +8,7 @@
 
 #include "assets/mod_manager.h"
 #include "gamestate/entity_factory.h"
+#include "gamestate/event/send_command.h"
 #include "gamestate/event/spawn_entity.h"
 
 // TODO
@@ -26,7 +27,8 @@ GameSimulation::GameSimulation(const util::Path &root_dir,
 	event_loop{std::make_shared<openage::event::EventLoop>()},
 	entity_factory{std::make_shared<gamestate::EntityFactory>()},
 	mod_manager{std::make_shared<assets::ModManager>(this->root_dir / "assets" / "converted")},
-	spawner{std::make_shared<gamestate::event::Spawner>(this->event_loop)} {
+	spawner{std::make_shared<gamestate::event::Spawner>(this->event_loop)},
+	commander{std::make_shared<gamestate::event::Commander>(this->event_loop)} {
 	auto mods = mod_manager->enumerate_modpacks(root_dir / "assets" / "converted");
 	for (const auto &mod : mods) {
 		this->mod_manager->register_modpack(mod);
@@ -98,6 +100,12 @@ const std::shared_ptr<gamestate::event::Spawner> GameSimulation::get_spawner() {
 	return this->spawner;
 }
 
+const std::shared_ptr<gamestate::event::Commander> GameSimulation::get_commander() {
+	std::shared_lock lock{this->mutex};
+
+	return this->commander;
+}
+
 void GameSimulation::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
 	std::unique_lock lock{this->mutex};
 
@@ -117,9 +125,11 @@ void GameSimulation::set_modpacks(const std::vector<std::string> &modpacks) {
 }
 
 void GameSimulation::init_event_handlers() {
-	auto handler = std::make_shared<gamestate::event::SpawnEntityHandler>(this->event_loop,
-	                                                                      this->entity_factory);
-	this->event_loop->add_event_handler(handler);
+	auto spawn_handler = std::make_shared<gamestate::event::SpawnEntityHandler>(this->event_loop,
+	                                                                            this->entity_factory);
+	auto command_handler = std::make_shared<gamestate::event::SendCommandHandler>();
+	this->event_loop->add_event_handler(spawn_handler);
+	this->event_loop->add_event_handler(command_handler);
 }
 
 } // namespace openage::gamestate

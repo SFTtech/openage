@@ -30,6 +30,7 @@ class EntityFactory;
 class Game;
 
 namespace event {
+class Commander;
 class Spawner;
 } // namespace event
 
@@ -109,6 +110,15 @@ public:
 	const std::shared_ptr<gamestate::event::Spawner> get_spawner();
 
 	/**
+	 * Get the event entity for sending commands.
+	 *
+	 * TODO: Move somewhere else or remove.
+	 *
+	 * @return Commander for sending commands.
+	 */
+	const std::shared_ptr<gamestate::event::Commander> get_commander();
+
+	/**
 	 * Attach a renderer to the simulation.
 	 *
 	 * @param factory Factory for creating render entities.
@@ -172,6 +182,7 @@ private:
 
 	// TODO: move somewhere sensible or remove
 	std::shared_ptr<gamestate::event::Spawner> spawner;
+	std::shared_ptr<gamestate::event::Commander> commander;
 
 	// TODO: The game run by the engine
 	std::shared_ptr<gamestate::Game> game;
