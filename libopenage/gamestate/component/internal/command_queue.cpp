@@ -15,4 +15,10 @@ inline component_t CommandQueue::get_type() const {
 	return component_t::COMMANDQUEUE;
 }
 
+void CommandQueue::add_command(const curve::time_t &time,
+                               std::shared_ptr<command::Command> command) {
+	this->command_queue.insert(time, command);
+}
+
+
 } // namespace openage::gamestate::component

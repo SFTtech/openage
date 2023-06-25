@@ -9,6 +9,6 @@ namespace openage::gamestate {
 /**
  * Game entity IDs.
  */
-using entity_id_t = uint32_t;
+using entity_id_t = uint64_t;
 
 } // namespace openage::gamestate

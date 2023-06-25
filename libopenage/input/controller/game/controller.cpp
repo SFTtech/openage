@@ -6,6 +6,7 @@
 #include "event/evententity.h"
 #include "event/state.h"
 #include "event/time_loop.h"
+#include "gamestate/component/internal/commands/types.h"
 #include "gamestate/event/spawn_entity.h"
 #include "gamestate/game.h"
 #include "gamestate/game_state.h"
@@ -28,8 +29,12 @@ void Controller::set_control(size_t faction_id) {
 	}
 }
 
-size_t Controller::get_controlled() {
+size_t Controller::get_controlled() const {
 	return this->active_faction_id;
+}
+
+const std::vector<gamestate::entity_id_t> &Controller::get_selected() const {
+	return this->selected;
 }
 
 bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx) {
@@ -39,7 +44,7 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 
 	// TODO: check if action is allowed
 	auto bind = ctx->lookup(ev_args.e);
-	auto game_event = bind.transform(ev_args);
+	auto game_event = bind.transform(ev_args, *this);
 
 	switch (bind.action_type) {
 	case forward_action_t::SEND:
@@ -68,10 +73,12 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<event::TimeLoop> &time_loop,
                     const std::shared_ptr<openage::gamestate::GameSimulation> &simulation,
                     const std::shared_ptr<renderer::camera::Camera> &camera) {
-	binding_func_t create_entity_event{[&](const event_arguments &args) {
+	binding_func_t create_entity_event{[&](const event_arguments &args,
+	                                       const Controller &controller) {
 		auto mouse_pos = args.mouse.to_phys3(camera);
 		event::EventHandler::param_map::map_t params{
 			{"position", mouse_pos},
+			{"owner", controller.get_controlled()},
 		};
 
 		auto event = simulation->get_event_loop()->create_event(
@@ -87,6 +94,29 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 	Event ev_mouse_lmb{event_class::MOUSE_BUTTON, Qt::MouseButton::LeftButton, Qt::NoModifier, QEvent::MouseButtonRelease};
 
 	ctx->bind(ev_mouse_lmb, create_entity_action);
+
+	binding_func_t move_entity{[&](const event_arguments &args,
+	                               const Controller &controller) {
+		auto mouse_pos = args.mouse.to_phys3(camera);
+		event::EventHandler::param_map::map_t params{
+			{"type", gamestate::component::command::command_t::MOVE},
+			{"target", mouse_pos},
+			{"entity_ids", controller.get_selected()},
+		};
+
+		auto event = simulation->get_event_loop()->create_event(
+			"game.send_command",
+			simulation->get_spawner(),
+			simulation->get_game()->get_state(),
+			time_loop->get_clock()->get_time(),
+			params);
+		return event;
+	}};
+
+	binding_action move_entity_action{forward_action_t::SEND, move_entity};
+	Event ev_mouse_rmb{event_class::MOUSE_BUTTON, Qt::MouseButton::RightButton, Qt::NoModifier, QEvent::MouseButtonRelease};
+
+	ctx->bind(ev_mouse_rmb, move_entity_action);
 }
 
 

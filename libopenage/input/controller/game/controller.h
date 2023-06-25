@@ -5,6 +5,7 @@
 #include <unordered_set>
 
 #include "curve/discrete.h"
+#include "gamestate/types.h"
 #include "input/event.h"
 
 namespace openage {
@@ -50,7 +51,14 @@ public:
      *
      * @return ID of the active faction.
      */
-	size_t get_controlled();
+	size_t get_controlled() const;
+
+	/**
+      * Get the currently selected entities.
+      *
+      * @return Selected entities.
+      */
+	const std::vector<gamestate::entity_id_t> &get_selected() const;
 
 	/**
      * Process an input event from the input manager.
@@ -72,6 +80,11 @@ private:
      * ID of the currently active faction.
      */
 	size_t active_faction_id;
+
+	/**
+      * Currently selected entities.
+      */
+	std::vector<gamestate::entity_id_t> selected;
 
 	/**
      * Queue for gamestate events generated from inputs.

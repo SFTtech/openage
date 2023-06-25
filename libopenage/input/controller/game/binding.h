@@ -10,8 +10,11 @@
 
 namespace openage::input::game {
 
+class Controller;
+
 using binding_flags_t = std::unordered_map<std::string, std::string>;
-using binding_func_t = std::function<const std::shared_ptr<event::Event>(const event_arguments &e)>;
+using binding_func_t = std::function<const std::shared_ptr<event::Event>(const event_arguments &,
+                                                                         const Controller &)>;
 
 
 /**
@@ -41,4 +44,4 @@ struct binding_action {
 	const binding_flags_t flags = {};
 };
 
-} // namespace openage::input::engine
+} // namespace openage::input::game

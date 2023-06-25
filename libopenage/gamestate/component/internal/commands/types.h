@@ -9,6 +9,8 @@ namespace openage::gamestate::component::command {
  * Command types.
  */
 enum class command_t {
+	NONE,
+
 	CUSTOM,
 	IDLE,
 	MOVE,

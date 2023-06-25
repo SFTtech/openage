@@ -25,6 +25,15 @@ public:
 
 	component_t get_type() const override;
 
+	/**
+	 * Adds a command to the queue.
+	 *
+	 * @param time Time at which the command is added.
+	 * @param command New command.
+	 */
+	void add_command(const curve::time_t &time,
+	                 std::shared_ptr<command::Command> command);
+
 private:
 	/**
 	 * Command queue.
