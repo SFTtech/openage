@@ -1,11 +1,11 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #include "../../testing/testing.h"
-#include "../curve.h"
 #include "../continuous.h"
+#include "../curve.h"
 #include "../discrete.h"
-#include "../queue.h"
 #include "../map.h"
+#include "../queue.h"
 
 #include <unordered_map>
 #include <unordered_set>
@@ -19,13 +19,12 @@ struct map_test_element {
 	explicit map_test_element(int v) :
 		value(v) {}
 
-	bool operator != (int rhs) {
+	bool operator!=(int rhs) {
 		return this->value != rhs;
 	}
-
 };
 
-std::ostream &operator <<(std::ostream &o, const map_test_element &e) {
+std::ostream &operator<<(std::ostream &o, const map_test_element &e) {
 	o << e.value;
 	return o;
 }
@@ -121,7 +120,7 @@ void test_map() {
 		TESTEQUALS(reference.empty(), true);
 
 		reference[5] = 5;
-		for (auto it = map.between(1,90); it != map.end(); ++it) {
+		for (auto it = map.between(1, 90); it != map.end(); ++it) {
 			auto ri = reference.find(it.key());
 			if (ri != reference.end()) {
 				reference.erase(ri);
@@ -132,7 +131,6 @@ void test_map() {
 }
 
 void test_list() {
-
 }
 
 void test_queue() {
@@ -141,8 +139,9 @@ void test_queue() {
 	static_assert(std::is_copy_assignable<QueueFilterIterator<int, Queue<int>>>::value,
 	              "QueueIterator not Copy Assignable");
 
+	auto loop = std::make_shared<event::EventLoop>();
 
-	Queue<int> q;
+	Queue<int> q{loop, 0};
 	q.insert(0, 1);
 	q.insert(2, 2);
 	q.insert(4, 3);
@@ -159,8 +158,8 @@ void test_queue() {
 	TESTEQUALS(*q.begin(100000), 5);
 
 	{
-		std::unordered_set<int> reference = {1,2,3};
-		for (auto it = q.between(0,6); it != q.end(); ++it) {
+		std::unordered_set<int> reference = {1, 2, 3};
+		for (auto it = q.between(0, 6); it != q.end(); ++it) {
 			auto ri = reference.find(it.value());
 			if (ri != reference.end()) {
 				reference.erase(ri);
@@ -169,8 +168,8 @@ void test_queue() {
 		TESTEQUALS(reference.empty(), true);
 	}
 	{
-		std::unordered_set<int> reference = {2,3,4};
-		for (auto it = q.between(1,40); it != q.end(); ++it) {
+		std::unordered_set<int> reference = {2, 3, 4};
+		for (auto it = q.between(1, 40); it != q.end(); ++it) {
 			auto ri = reference.find(it.value());
 			if (ri != reference.end()) {
 				reference.erase(ri);
@@ -180,7 +179,7 @@ void test_queue() {
 	}
 	{
 		std::unordered_set<int> reference = {};
-		for (auto it = q.between(30,40); it != q.end(); ++it) {
+		for (auto it = q.between(30, 40); it != q.end(); ++it) {
 			auto ri = reference.find(it.value());
 			if (ri != reference.end()) {
 				reference.erase(ri);
@@ -189,8 +188,8 @@ void test_queue() {
 		TESTEQUALS(reference.empty(), true);
 	}
 	{
-		std::unordered_set<int> reference = {1,2,3,4};
-		for (auto it = q.between(0,40); it != q.end(); ++it) {
+		std::unordered_set<int> reference = {1, 2, 3, 4};
+		for (auto it = q.between(0, 40); it != q.end(); ++it) {
 			auto ri = reference.find(it.value());
 			if (ri != reference.end()) {
 				reference.erase(ri);
@@ -198,7 +197,6 @@ void test_queue() {
 		}
 		TESTEQUALS(reference.empty(), true);
 	}
-
 }
 
 
@@ -209,4 +207,4 @@ void container() {
 }
 
 
-} // openage::curve::tests
+} // namespace openage::curve::tests

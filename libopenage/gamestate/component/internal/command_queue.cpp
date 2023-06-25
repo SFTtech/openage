@@ -8,7 +8,7 @@
 namespace openage::gamestate::component {
 
 CommandQueue::CommandQueue(const std::shared_ptr<openage::event::EventLoop> &loop) :
-	command_queue{} {
+	command_queue{loop, 0} {
 }
 
 inline component_t CommandQueue::get_type() const {
