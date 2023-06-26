@@ -109,6 +109,11 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 	auto &queue = const_cast<curve::Queue<std::shared_ptr<component::command::Command>> &>(entity_queue->get_queue());
 	queue.add_dependent(ev);
 
+	// ASDF: Select the unit when it's created
+	// very dumb but it gets the job done
+	auto select_cb = params.get("select_cb", std::function<void(entity_id_t id)>{});
+	select_cb(entity->get_id());
+
 	entity->push_to_render();
 
 	gstate->add_game_entity(entity);

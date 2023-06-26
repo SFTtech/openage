@@ -33,15 +33,21 @@ void Controller::set_control(size_t faction_id) {
 }
 
 size_t Controller::get_controlled() const {
-	std::shared_lock lock{this->mutex};
+	std::unique_lock lock{this->mutex};
 
 	return this->active_faction_id;
 }
 
 const std::vector<gamestate::entity_id_t> &Controller::get_selected() const {
-	std::shared_lock lock{this->mutex};
+	std::unique_lock lock{this->mutex};
 
 	return this->selected;
+}
+
+void Controller::set_selected(std::vector<gamestate::entity_id_t> ids) {
+	std::unique_lock lock{this->mutex};
+
+	this->selected = ids;
 }
 
 bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx) {
@@ -88,6 +94,11 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 		event::EventHandler::param_map::map_t params{
 			{"position", mouse_pos},
 			{"owner", controller.get_controlled()},
+			// ASDF: Remove
+			{"select_cb", std::function<void(gamestate::entity_id_t id)>{[&controller](gamestate::entity_id_t id) {
+				 auto &mut_controller = const_cast<Controller &>(controller);
+				 mut_controller.set_selected({id});
+			 }}},
 		};
 
 		auto event = simulation->get_event_loop()->create_event(

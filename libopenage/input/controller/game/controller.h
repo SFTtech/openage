@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include <shared_mutex>
+#include <mutex>
 #include <unordered_set>
 
 #include "curve/discrete.h"
@@ -62,6 +62,13 @@ public:
 	const std::vector<gamestate::entity_id_t> &get_selected() const;
 
 	/**
+      * Set the currently selected entities.
+      *
+      * @param ids Selected entities.
+      */
+	void set_selected(std::vector<gamestate::entity_id_t> ids);
+
+	/**
      * Process an input event from the input manager.
      *
      * @param ev_args Input event and arguments.
@@ -95,7 +102,7 @@ private:
 	/**
       * Mutex for threaded access.
       */
-	mutable std::shared_mutex mutex;
+	mutable std::recursive_mutex mutex;
 };
 
 /**
