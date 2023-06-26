@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <shared_mutex>
 #include <unordered_set>
 
 #include "curve/discrete.h"
@@ -90,6 +91,11 @@ private:
      * Queue for gamestate events generated from inputs.
      */
 	std::vector<std::shared_ptr<event::Event>> outqueue;
+
+	/**
+      * Mutex for threaded access.
+      */
+	mutable std::shared_mutex mutex;
 };
 
 /**

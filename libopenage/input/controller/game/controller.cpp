@@ -25,20 +25,28 @@ Controller::Controller(const std::unordered_set<size_t> &controlled_factions,
 	outqueue{} {}
 
 void Controller::set_control(size_t faction_id) {
+	std::unique_lock lock{this->mutex};
+
 	if (this->controlled_factions.find(faction_id) != this->controlled_factions.end()) {
 		this->active_faction_id = faction_id;
 	}
 }
 
 size_t Controller::get_controlled() const {
+	std::shared_lock lock{this->mutex};
+
 	return this->active_faction_id;
 }
 
 const std::vector<gamestate::entity_id_t> &Controller::get_selected() const {
+	std::shared_lock lock{this->mutex};
+
 	return this->selected;
 }
 
 bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx) {
+	std::unique_lock lock{this->mutex};
+
 	if (not ctx->is_bound(ev_args.e)) {
 		return false;
 	}
