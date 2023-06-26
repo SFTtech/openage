@@ -3,6 +3,7 @@
 #include "spawn_entity.h"
 
 #include "coord/phys.h"
+#include "gamestate/component/internal/ownership.h"
 #include "gamestate/component/internal/position.h"
 #include "gamestate/definitions.h"
 #include "gamestate/entity_factory.h"
@@ -93,6 +94,10 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 		entity_pos->set_angle(time + 7, coord::phys_angle_t::from_int(0));
 		entity_pos->set_angle(time + 8, coord::phys_angle_t::from_int(315));
 	}
+
+	auto entity_owner = std::dynamic_pointer_cast<component::Ownership>(
+		entity->get_component(component::component_t::OWNERSHIP));
+	entity_owner->set_owner(time, params.get("owner", 0));
 
 	entity->push_to_render();
 

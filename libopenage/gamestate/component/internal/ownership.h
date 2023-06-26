@@ -32,6 +32,14 @@ public:
 	component_t get_type() const override;
 
 	/**
+	 * Set the owner ID at a given time.
+	 *
+	 * @param time Time at which the owner ID is set.
+	 * @param owner_id New owner ID.
+	 */
+	void set_owner(const curve::time_t &time, const ownership_id_t owner_id);
+
+	/**
      * Get the owner IDs over time.
      *
      * @return Owner ID curve.
