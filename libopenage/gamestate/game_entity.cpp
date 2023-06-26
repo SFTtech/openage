@@ -36,6 +36,14 @@ void GameEntity::set_render_entity(const std::shared_ptr<renderer::world::WorldR
 	this->push_to_render();
 }
 
+void GameEntity::set_manager(const std::shared_ptr<GameEntityManager> &manager) {
+	this->manager = manager;
+}
+
+const std::shared_ptr<GameEntityManager> &GameEntity::get_manager() const {
+	return this->manager;
+}
+
 const std::shared_ptr<component::Component> &GameEntity::get_component(component::component_t type) {
 	return this->components.at(type);
 }

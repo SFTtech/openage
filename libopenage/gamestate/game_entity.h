@@ -16,6 +16,7 @@ class WorldRenderEntity;
 }
 
 namespace gamestate {
+class GameEntityManager;
 
 namespace component {
 class Component;
@@ -60,6 +61,20 @@ public:
 	 * @param entity New render entity.
 	 */
 	void set_render_entity(const std::shared_ptr<renderer::world::WorldRenderEntity> &entity);
+
+	/**
+	 * Set the event manager of this entity.
+	 *
+	 * @param manager Event manager.
+	 */
+	void set_manager(const std::shared_ptr<GameEntityManager> &manager);
+
+	/**
+	 * Get the event manager of this entity.
+	 *
+	 * @return Event manager.
+	 */
+	const std::shared_ptr<GameEntityManager> &get_manager() const;
 
 	/**
      * Get a component of this entity.
@@ -127,6 +142,11 @@ private:
 	 * Render entity for pushing updates to the renderer. Can be \p nullptr.
 	 */
 	std::shared_ptr<renderer::world::WorldRenderEntity> render_entity;
+
+	/**
+	 * Event manager.
+	 */
+	std::shared_ptr<GameEntityManager> manager;
 };
 
 } // namespace gamestate

@@ -34,6 +34,13 @@ public:
 	void add_command(const curve::time_t &time,
 	                 std::shared_ptr<command::Command> command);
 
+	/**
+	 * Get the command queue.
+	 *
+	 * @return Command queue.
+	 */
+	const curve::Queue<std::shared_ptr<command::Command>> &get_queue() const;
+
 private:
 	/**
 	 * Command queue.

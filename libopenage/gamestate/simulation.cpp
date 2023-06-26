@@ -8,6 +8,7 @@
 
 #include "assets/mod_manager.h"
 #include "gamestate/entity_factory.h"
+#include "gamestate/event/process_command.h"
 #include "gamestate/event/send_command.h"
 #include "gamestate/event/spawn_entity.h"
 
@@ -128,8 +129,10 @@ void GameSimulation::init_event_handlers() {
 	auto spawn_handler = std::make_shared<gamestate::event::SpawnEntityHandler>(this->event_loop,
 	                                                                            this->entity_factory);
 	auto command_handler = std::make_shared<gamestate::event::SendCommandHandler>();
+	auto manager_handler = std::make_shared<gamestate::event::ProcessCommandHandler>();
 	this->event_loop->add_event_handler(spawn_handler);
 	this->event_loop->add_event_handler(command_handler);
+	this->event_loop->add_event_handler(manager_handler);
 }
 
 } // namespace openage::gamestate
