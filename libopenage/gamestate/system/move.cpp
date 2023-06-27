@@ -2,6 +2,8 @@
 
 #include "move.h"
 
+#include "log/log.h"
+
 #include "gamestate/component/api/move.h"
 #include "gamestate/component/api/turn.h"
 #include "gamestate/component/internal/position.h"
@@ -13,6 +15,11 @@ namespace openage::gamestate::system {
 void Move::move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
                         const coord::phys3 &destination,
                         const curve::time_t &start_time) {
+	if (not entity->has_component(component::component_t::MOVE)) [[unlikely]] {
+		log::log(MSG(warn) << "Entity " << entity->get_id() << " has no move component.");
+		return;
+	}
+
 	auto turn_component = std::dynamic_pointer_cast<component::Turn>(
 		entity->get_component(component::component_t::TURN));
 	auto turn_ability = turn_component->get_ability();
