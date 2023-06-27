@@ -13,6 +13,7 @@ enum class component_t {
 	POSITION,
 	COMMANDQUEUE,
 	OWNERSHIP,
+	ACTIVITY,
 
 	// API
 	IDLE,
