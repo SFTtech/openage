@@ -3,6 +3,7 @@
 #include "spawn_entity.h"
 
 #include "coord/phys.h"
+#include "gamestate/component/internal/activity.h"
 #include "gamestate/component/internal/command_queue.h"
 #include "gamestate/component/internal/ownership.h"
 #include "gamestate/component/internal/position.h"
@@ -108,6 +109,11 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 		entity->get_component(component::component_t::COMMANDQUEUE));
 	auto &queue = const_cast<curve::Queue<std::shared_ptr<component::command::Command>> &>(entity_queue->get_queue());
 	queue.add_dependent(ev);
+
+	auto activity = std::dynamic_pointer_cast<component::Activity>(
+		entity->get_component(component::component_t::ACTIVITY));
+	activity->init(time);
+	entity->get_manager()->run_activity_system();
 
 	// ASDF: Select the unit when it's created
 	// very dumb but it gets the job done

@@ -68,7 +68,7 @@ private:
 	 * @param entity Game entity.
 	 * @param nyan_entity fqon of the GameEntity data in the nyan database.
 	 */
-	void initialize_components(const std::shared_ptr<openage::event::EventLoop> &loop,
+	void init_components(const std::shared_ptr<openage::event::EventLoop> &loop,
 	                           const std::shared_ptr<GameState> &state,
 	                           const std::shared_ptr<GameEntity> &entity,
 	                           const nyan::fqon_t &nyan_entity);
