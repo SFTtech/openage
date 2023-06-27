@@ -1,4 +1,5 @@
 add_sources(libopenage
+    activity.cpp
     end_node.cpp
     event_node.cpp
     node.cpp
