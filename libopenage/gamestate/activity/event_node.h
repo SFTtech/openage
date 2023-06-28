@@ -9,7 +9,7 @@ namespace openage {
 namespace gamestate::activity {
 
 /* Create and register an event on the event loop */
-using event_primer_func_t = std::function<void(const curve::time_t & /* time */)>;
+using event_primer_func_t = std::function<void(const curve::time_t &)>;
 
 /* Decide which node to visit after the event is handled */
 using event_next_func_t = std::function<node_id(const curve::time_t &)>;

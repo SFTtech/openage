@@ -25,9 +25,9 @@ public:
      * Create a new task node.
      *
      * @param id Unique identifier for this node.
+     * @param label Human-readable label (optional).
      * @param task_func Action to perform when visiting this node (can be set later).
      * @param output Next node to visit (optional).
-     * @param label Human-readable label (optional).
      */
 	TaskNode(node_id id,
 	         node_label label = "Task",

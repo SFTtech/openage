@@ -8,9 +8,13 @@
 #include "gamestate/activity/event_node.h"
 #include "gamestate/activity/start_node.h"
 #include "gamestate/activity/task_node.h"
+#include "gamestate/activity/task_system_node.h"
 #include "gamestate/activity/xor_node.h"
 #include "gamestate/component/internal/activity.h"
 #include "gamestate/game_entity.h"
+
+#include "gamestate/system/idle.h"
+#include "gamestate/system/move.h"
 
 
 namespace openage::gamestate::system {
@@ -56,6 +60,11 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 			auto next_id = node->get_next();
 			current_node = node->next(next_id);
 		} break;
+		case activity::node_t::TASK_SYSTEM: {
+			auto node = std::static_pointer_cast<activity::TaskSystemNode>(current_node);
+			auto task = node->get_system_id();
+			Activity::handle_subsystem(entity, start_time, task);
+		} break;
 		case activity::node_t::XOR_GATEWAY: {
 			auto node = std::static_pointer_cast<activity::ConditionNode>(current_node);
 			auto condition = node->get_condition_func();
@@ -77,6 +86,21 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 
 	// save the current node in the component
 	activity_component->set_node(start_time, current_node);
+}
+
+void Activity::handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &entity,
+                                const curve::time_t &start_time,
+                                system_id_t system_id) {
+	switch (system_id) {
+	case system_id_t::IDLE:
+		Idle::idle(entity, start_time);
+		break;
+	case system_id_t::MOVE_DEFAULT:
+		Move::move_default(entity, {1, 1, 1}, start_time);
+		break;
+	default:
+		throw Error{ERR << "Unhandled subsystem " << static_cast<int>(system_id)};
+	}
 }
 
 

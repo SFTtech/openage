@@ -14,6 +14,7 @@ enum class node_t {
 	EVENT_GATEWAY,
 	XOR_GATEWAY,
 	TASK,
+	TASK_SYSTEM,
 };
 
 } // namespace openage::gamestate::activity

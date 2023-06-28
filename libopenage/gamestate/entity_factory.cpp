@@ -23,6 +23,8 @@ namespace openage::gamestate {
 
 /**
  * Create a simple test activity for the game entity.
+ *
+ * TODO: Replace with config
  */
 std::shared_ptr<activity::Activity> create_test_activity() {
 	auto start = std::make_shared<activity::StartNode>(0);

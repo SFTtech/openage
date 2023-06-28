@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "curve/curve.h"
+#include "gamestate/system/types.h"
 
 
 namespace openage::gamestate {
@@ -22,6 +23,11 @@ public:
      */
 	static void advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 	                    const curve::time_t &start_time);
+
+private:
+	static void handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &entity,
+	                             const curve::time_t &start_time,
+	                             system_id_t system_id);
 };
 
 } // namespace system
