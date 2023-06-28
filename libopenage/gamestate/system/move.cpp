@@ -6,11 +6,28 @@
 
 #include "gamestate/component/api/move.h"
 #include "gamestate/component/api/turn.h"
+#include "gamestate/component/internal/command_queue.h"
+#include "gamestate/component/internal/commands/move.h"
 #include "gamestate/component/internal/position.h"
 #include "gamestate/game_entity.h"
 
 
 namespace openage::gamestate::system {
+void Move::move_command(const std::shared_ptr<gamestate::GameEntity> &entity,
+                        const curve::time_t &start_time) {
+	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
+		entity->get_component(component::component_t::COMMANDQUEUE));
+	auto command = std::dynamic_pointer_cast<component::command::MoveCommand>(
+		command_queue->get_queue().front(start_time));
+
+	if (not command) [[unlikely]] {
+		log::log(MSG(warn) << "Command is not a move command.");
+		return;
+	}
+
+	Move::move_default(entity, command->get_target(), start_time);
+}
+
 
 void Move::move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
                         const coord::phys3 &destination,

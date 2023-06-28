@@ -103,7 +103,7 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 	if (current->get_type() == activity::node_t::EVENT_GATEWAY) {
 		auto node = std::static_pointer_cast<activity::EventNode>(current);
 		auto event_next = node->get_next_func();
-		auto next_id = event_next(0);
+		auto next_id = event_next(0, nullptr);
 		current = node->next(next_id);
 	}
 
@@ -123,20 +123,20 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 		case activity::node_t::TASK: {
 			auto node = std::static_pointer_cast<activity::TaskNode>(current);
 			auto task = node->get_task_func();
-			task(0);
+			task(0, nullptr);
 			auto next_id = node->get_next();
 			current = node->next(next_id);
 		} break;
 		case activity::node_t::XOR_GATEWAY: {
 			auto node = std::static_pointer_cast<activity::ConditionNode>(current);
 			auto condition = node->get_condition_func();
-			auto next_id = condition(0);
+			auto next_id = condition(0, nullptr);
 			current = node->next(next_id);
 		} break;
 		case activity::node_t::EVENT_GATEWAY: {
 			auto node = std::static_pointer_cast<activity::EventNode>(current);
 			auto event_primer = node->get_primer_func();
-			event_primer(0);
+			event_primer(0, nullptr);
 
 			// wait for event
 			return current;
@@ -188,7 +188,8 @@ void activity_demo() {
 
 	// task 1
 	task1->add_output(xor_node);
-	task1->set_task_func([](const curve::time_t & /* time */) {
+	task1->set_task_func([](const curve::time_t & /* time */,
+	                        const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
 		log::log(INFO << "Running task 1");
 	});
 
@@ -196,7 +197,8 @@ void activity_demo() {
 	size_t counter = 0;
 	xor_node->add_output(task1);
 	xor_node->add_output(event_node);
-	xor_node->set_condition_func([&](const curve::time_t & /* time */) {
+	xor_node->set_condition_func([&](const curve::time_t & /* time */,
+	                                 const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
 		log::log(INFO << "Checking condition (counter < 4): counter=" << counter);
 		if (counter < 4) {
 			log::log(INFO << "Selecting path 1 (back to task node " << task1->get_id() << ")");
@@ -212,21 +214,24 @@ void activity_demo() {
 
 	// event node
 	event_node->add_output(task2);
-	event_node->set_primer_func([&](const curve::time_t & /* time */) {
+	event_node->set_primer_func([&](const curve::time_t & /* time */,
+	                                const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
 		log::log(INFO << "Setting up event");
 		loop->create_event("test.activity",
 		                   mgr,
 		                   state,
 		                   0);
 	});
-	event_node->set_next_func([&task2](const curve::time_t & /* time */) {
+	event_node->set_next_func([&task2](const curve::time_t & /* time */,
+	                                   const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
 		log::log(INFO << "Selecting next node (task node " << task2->get_id() << ")");
 		return task2->get_id();
 	});
 
 	// task 2
 	task2->add_output(end);
-	task2->set_task_func([](const curve::time_t & /* time */) {
+	task2->set_task_func([](const curve::time_t & /* time */,
+	                        const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
 		log::log(INFO << "Running task 2");
 	});
 

@@ -12,7 +12,10 @@ enum class system_id_t {
 	NONE,
 
 	IDLE,
+
+	MOVE_COMMAND,
 	MOVE_DEFAULT,
+
 	ACTIVITY_ADVANCE,
 };
 

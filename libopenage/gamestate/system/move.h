@@ -16,6 +16,15 @@ namespace system {
 class Move {
 public:
 	/**
+     * Move a game entity to a destination from a move command.
+     *
+     * @param entity Game entity.
+     * @param start_time Start time of change.
+     */
+	static void move_command(const std::shared_ptr<gamestate::GameEntity> &entity,
+	                         const curve::time_t &start_time);
+
+	/**
      * Move a game entity to a destination.
      *
      * @param entity Game entity.

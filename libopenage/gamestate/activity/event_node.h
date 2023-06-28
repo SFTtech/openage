@@ -5,21 +5,27 @@
 #include "gamestate/activity/node.h"
 
 
-namespace openage {
-namespace gamestate::activity {
+namespace openage::gamestate {
+class GameEntity;
+
+namespace activity {
 
 /* Create and register an event on the event loop */
-using event_primer_func_t = std::function<void(const curve::time_t &)>;
+using event_primer_func_t = std::function<void(const curve::time_t &,
+                                               const std::shared_ptr<gamestate::GameEntity> &)>;
 
 /* Decide which node to visit after the event is handled */
-using event_next_func_t = std::function<node_id(const curve::time_t &)>;
+using event_next_func_t = std::function<node_id(const curve::time_t &,
+                                                const std::shared_ptr<gamestate::GameEntity> &)>;
 
 
-static const event_primer_func_t no_event = [](const curve::time_t &) {
+static const event_primer_func_t no_event = [](const curve::time_t &,
+                                               const std::shared_ptr<gamestate::GameEntity> &) {
 	throw Error{ERR << "No event primer function registered."};
 };
 
-static const event_next_func_t no_next = [](const curve::time_t &) {
+static const event_next_func_t no_next = [](const curve::time_t &,
+                                            const std::shared_ptr<gamestate::GameEntity> &) {
 	throw Error{ERR << "No event next function registered."};
 	return 0;
 };
@@ -97,5 +103,5 @@ private:
 	event_next_func_t next_func;
 };
 
-} // namespace gamestate::activity
-} // namespace openage
+} // namespace activity
+} // namespace openage::gamestate

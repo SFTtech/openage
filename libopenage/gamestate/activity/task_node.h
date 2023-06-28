@@ -8,11 +8,16 @@
 #include "gamestate/activity/node.h"
 
 
-namespace openage::gamestate::activity {
+namespace openage::gamestate {
+class GameEntity;
 
-using task_func_t = std::function<void(const curve::time_t &)>;
+namespace activity {
 
-static const task_func_t no_task = [](const curve::time_t &) {
+using task_func_t = std::function<void(const curve::time_t &,
+                                       const std::shared_ptr<gamestate::GameEntity> &)>;
+
+static const task_func_t no_task = [](const curve::time_t &,
+                                      const std::shared_ptr<gamestate::GameEntity> &) {
 	throw Error{ERR << "No task defined for this node."};
 };
 
@@ -75,4 +80,5 @@ private:
 	task_func_t task_func;
 };
 
-} // namespace openage::gamestate::activity
+} // namespace activity
+} // namespace openage::gamestate
