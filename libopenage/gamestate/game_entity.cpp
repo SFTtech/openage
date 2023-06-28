@@ -62,42 +62,12 @@ void GameEntity::set_animation_path(const std::string &path) {
 
 void GameEntity::push_to_render() {
 	if (this->render_entity != nullptr) {
-		if (not this->components.contains(component::component_t::POSITION)) {
-			return;
-		}
-
-		if (this->components.contains(component::component_t::MOVE)) {
-			auto comp = dynamic_pointer_cast<component::Move>(this->components.at(component::component_t::MOVE));
-			if (api::APIAbility::check_property(comp->get_ability(), api::property_t::ANIMATED)) {
-				auto property = api::APIAbility::get_property(comp->get_ability(), api::property_t::ANIMATED);
-				auto animations = api::APIProperty::get_animations(property);
-				auto animation_paths = api::APIAnimation::get_animation_paths(animations);
-
-				if (animation_paths.size() < 1) {
-					return;
-				}
-				this->animation_path = animation_paths.at(0);
-			}
-		}
-		else if (this->components.contains(component::component_t::IDLE)) {
-			auto comp = dynamic_pointer_cast<component::Idle>(this->components.at(component::component_t::IDLE));
-			if (api::APIAbility::check_property(comp->get_ability(), api::property_t::ANIMATED)) {
-				auto property = api::APIAbility::get_property(comp->get_ability(), api::property_t::ANIMATED);
-				auto animations = api::APIProperty::get_animations(property);
-				auto animation_paths = api::APIAnimation::get_animation_paths(animations);
-
-				if (animation_paths.size() < 1) {
-					return;
-				}
-				this->animation_path = animation_paths.at(0);
-			}
-		}
-		else {
-			return;
-		}
-
-		const auto &pos = dynamic_pointer_cast<component::Position>(this->components.at(component::component_t::POSITION))->get_positions();
-		const auto &angle = dynamic_pointer_cast<component::Position>(this->components.at(component::component_t::POSITION))->get_angles();
+		const auto &pos = dynamic_pointer_cast<component::Position>(
+							  this->components.at(component::component_t::POSITION))
+		                      ->get_positions();
+		const auto &angle = dynamic_pointer_cast<component::Position>(
+								this->components.at(component::component_t::POSITION))
+		                        ->get_angles();
 		this->render_entity->update(this->id, pos, angle, this->animation_path);
 	}
 }
