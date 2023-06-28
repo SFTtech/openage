@@ -95,6 +95,9 @@ void Activity::handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &en
 	case system_id_t::IDLE:
 		Idle::idle(entity, start_time);
 		break;
+	case system_id_t::MOVE_COMMAND:
+		Move::move_command(entity, start_time);
+		break;
 	case system_id_t::MOVE_DEFAULT:
 		Move::move_default(entity, {1, 1, 1}, start_time);
 		break;
