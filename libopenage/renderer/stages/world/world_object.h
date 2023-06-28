@@ -67,13 +67,6 @@ public:
 	uint32_t get_id();
 
 	/**
-	 * Get the position of the object inside the scene.
-	 *
-	 * @return Position of the object.
-	 */
-	const curve::Continuous<coord::scene3> get_position();
-
-	/**
      * Get the quad for creating the geometry.
      *
      * @return Mesh for creating a renderer geometry object.

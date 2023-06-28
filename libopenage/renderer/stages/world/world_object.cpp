@@ -53,6 +53,10 @@ void WorldObject::fetch_updates() {
 	                          std::function<std::shared_ptr<renderer::resources::Animation2dInfo>(const std::string &)>(
 								  [&](const std::string &path) {
 									  if (path.empty()) {
+										  auto placeholder = this->asset_manager->get_placeholder_animation();
+										  if (placeholder) {
+											  return (*placeholder).second;
+										  }
 										  return std::shared_ptr<renderer::resources::Animation2dInfo>{nullptr};
 									  }
 									  return this->asset_manager->request_animation(path);
@@ -130,10 +134,6 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 
 uint32_t WorldObject::get_id() {
 	return this->ref_id;
-}
-
-const curve::Continuous<coord::scene3> WorldObject::get_position() {
-	return this->position;
 }
 
 const renderer::resources::MeshData WorldObject::get_mesh() {

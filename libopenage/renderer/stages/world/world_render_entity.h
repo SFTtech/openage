@@ -30,8 +30,8 @@ public:
 	 * @param time Simulation time of the update.
 	 */
 	void update(const uint32_t ref_id,
-	            const curve::Continuous<coord::phys3> position,
-	            const curve::Segmented<coord::phys_angle_t> angle,
+	            const curve::Continuous<coord::phys3> &position,
+	            const curve::Segmented<coord::phys_angle_t> &angle,
 	            const std::string animation_path,
 	            const curve::time_t time = 0.0);
 

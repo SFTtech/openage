@@ -28,6 +28,13 @@ public:
 
 	virtual ~BaseCurve() = default;
 
+	// prevent copying because it invalidates the usage of unique ids and event
+	// registration. If you need to copy a curve, use the sync() method.
+	// TODO: if copying is enabled again, these members have to be reassigned: _id, _idstr, last_element
+	BaseCurve(const BaseCurve &) = delete;
+
+	BaseCurve(BaseCurve &&) = default;
+
 	virtual T get(const time_t &t) const = 0;
 
 	virtual T operator()(const time_t &now) {
