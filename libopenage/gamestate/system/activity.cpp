@@ -33,7 +33,7 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 		// move to the next node here
 		auto node = std::static_pointer_cast<activity::EventNode>(current_node);
 		auto event_next = node->get_next_func();
-		auto next_id = event_next(0);
+		auto next_id = event_next(start_time);
 		current_node = node->next(next_id);
 	}
 
@@ -52,20 +52,20 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 		case activity::node_t::TASK: {
 			auto node = std::static_pointer_cast<activity::TaskNode>(current_node);
 			auto task = node->get_task_func();
-			task(0);
+			task(start_time);
 			auto next_id = node->get_next();
 			current_node = node->next(next_id);
 		} break;
 		case activity::node_t::XOR_GATEWAY: {
 			auto node = std::static_pointer_cast<activity::ConditionNode>(current_node);
 			auto condition = node->get_condition_func();
-			auto next_id = condition(0);
+			auto next_id = condition(start_time);
 			current_node = node->next(next_id);
 		} break;
 		case activity::node_t::EVENT_GATEWAY: {
 			auto node = std::static_pointer_cast<activity::EventNode>(current_node);
 			auto event_primer = node->get_primer_func();
-			event_primer(0);
+			event_primer(start_time);
 
 			// exit and wait for event
 			stop = true;

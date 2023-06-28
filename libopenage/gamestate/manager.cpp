@@ -7,6 +7,7 @@
 #include "gamestate/component/internal/command_queue.h"
 #include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
+#include "gamestate/system/activity.h"
 
 
 namespace openage::gamestate {
@@ -16,8 +17,9 @@ GameEntityManager::GameEntityManager(const std::shared_ptr<openage::event::Event
 	event::EventEntity{loop},
 	game_entity{game_entity} {}
 
-void GameEntityManager::run_activity_system() {
+void GameEntityManager::run_activity_system(const curve::time_t &time) {
 	log::log(DBG << "Running activity system for entity " << this->game_entity->get_id());
+	system::Activity::advance(this->game_entity, time);
 }
 
 size_t GameEntityManager::id() const {

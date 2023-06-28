@@ -113,7 +113,7 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 	auto activity = std::dynamic_pointer_cast<component::Activity>(
 		entity->get_component(component::component_t::ACTIVITY));
 	activity->init(time);
-	entity->get_manager()->run_activity_system();
+	entity->get_manager()->run_activity_system(time);
 
 	// ASDF: Select the unit when it's created
 	// very dumb but it gets the job done
