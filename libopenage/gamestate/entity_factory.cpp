@@ -55,10 +55,10 @@ std::shared_ptr<activity::Activity> create_test_activity(const std::shared_ptr<o
 	condition_moveable->set_condition_func([&](const curve::time_t & /* time */,
 	                                           const std::shared_ptr<GameEntity> &entity) {
 		if (entity->has_component(component::component_t::MOVE)) {
-			return wait_for_command->get_id();
+			return 3; // wait_for_command->get_id();
 		}
 
-		return end->get_id();
+		return 6; // end->get_id();
 	});
 
 	wait_for_command->add_output(move);
@@ -77,7 +77,7 @@ std::shared_ptr<activity::Activity> create_test_activity(const std::shared_ptr<o
 		auto &queue = entity_queue->get_queue();
 
 		if (queue.front(time)->get_type() == component::command::command_t::MOVE) {
-			return move->get_id();
+			return 4; // move->get_id();
 		}
 
 		throw Error{ERR << "Unknown command type"};
@@ -88,6 +88,14 @@ std::shared_ptr<activity::Activity> create_test_activity(const std::shared_ptr<o
 
 	wait_for_move->add_output(idle);
 	wait_for_move->add_output(end);
+	wait_for_move->set_primer_func([&](const curve::time_t &time,
+	                                   const std::shared_ptr<GameEntity> &entity) {
+		// TODO: Wait for move to finish
+	});
+	wait_for_move->set_next_func([&](const curve::time_t &time,
+	                                 const std::shared_ptr<GameEntity> &entity) {
+		return 6; // end->get_id();
+	});
 
 	return std::make_shared<activity::Activity>(0, "test", start);
 }
