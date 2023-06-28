@@ -4,6 +4,9 @@
 
 #include "log/log.h"
 
+#include "gamestate/api/ability.h"
+#include "gamestate/api/animation.h"
+#include "gamestate/api/property.h"
 #include "gamestate/component/api/move.h"
 #include "gamestate/component/api/turn.h"
 #include "gamestate/component/internal/command_queue.h"
@@ -40,7 +43,7 @@ void Move::move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
 	auto turn_component = std::dynamic_pointer_cast<component::Turn>(
 		entity->get_component(component::component_t::TURN));
 	auto turn_ability = turn_component->get_ability();
-	auto turn_speed = turn_ability.get<nyan::Float>("Turn.speed");
+	auto turn_speed = turn_ability.get<nyan::Float>("Turn.turn_speed");
 
 	auto move_component = std::dynamic_pointer_cast<component::Move>(
 		entity->get_component(component::component_t::MOVE));
@@ -50,8 +53,8 @@ void Move::move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
 	auto pos_component = std::dynamic_pointer_cast<component::Position>(
 		entity->get_component(component::component_t::POSITION));
 
-	auto positions = pos_component->get_positions();
-	auto angles = pos_component->get_angles();
+	auto &positions = pos_component->get_positions();
+	auto &angles = pos_component->get_angles();
 	auto current_pos = positions.get(start_time);
 	auto current_angle = angles.get(start_time);
 
@@ -84,7 +87,21 @@ void Move::move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
 		move_time = distance / move_speed->get();
 	}
 
+	pos_component->set_position(start_time, current_pos);
 	pos_component->set_position(start_time + turn_time + move_time, destination);
+
+	auto ability = move_component->get_ability();
+	if (api::APIAbility::check_property(ability, api::property_t::ANIMATED)) {
+		auto property = api::APIAbility::get_property(ability, api::property_t::ANIMATED);
+		auto animations = api::APIProperty::get_animations(property);
+		auto animation_paths = api::APIAnimation::get_animation_paths(animations);
+
+		if (animation_paths.size() < 1) {
+			return;
+		}
+		entity->set_animation_path(animation_paths.at(0));
+		entity->push_to_render();
+	}
 }
 
 } // namespace openage::gamestate::system
