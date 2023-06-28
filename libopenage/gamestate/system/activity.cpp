@@ -64,6 +64,8 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 			auto node = std::static_pointer_cast<activity::TaskSystemNode>(current_node);
 			auto task = node->get_system_id();
 			Activity::handle_subsystem(entity, start_time, task);
+			auto next_id = node->get_next();
+			current_node = node->next(next_id);
 		} break;
 		case activity::node_t::XOR_GATEWAY: {
 			auto node = std::static_pointer_cast<activity::ConditionNode>(current_node);
