@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 """
 Provides PEResources, which reads the resource section from a PEFile.
@@ -186,10 +186,10 @@ class PEResources:
             entry.name_is_str = bool(entry.name & (1 << 31))
 
             if entry.name_is_str and idx >= directory.named_entry_count:
-                raise Exception("expected an id entry, but got a str entry")
+                raise SyntaxError("expected an id entry, but got a str entry")
 
             if not entry.name_is_str and idx < directory.named_entry_count:
-                raise Exception("expected a str entry, but got an id entry")
+                raise SyntaxError("expected a str entry, but got an id entry")
 
             # read the entry name string, if needed
             if entry.name_is_str:
@@ -243,7 +243,7 @@ class PEResources:
                         result[langcode][base_string_id + idx] = string
 
                 if sum(string_table_resource.read()) > 0:
-                    raise Exception("string table invalid: the padding "
-                                    "contains data.")
+                    raise SyntaxError("string table invalid: the padding "
+                                      "contains data.")
 
         return result

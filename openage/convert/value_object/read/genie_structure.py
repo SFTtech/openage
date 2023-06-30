@@ -1,4 +1,4 @@
-# Copyright 2014-2022 the openage authors. See copying.md for legal info.
+# Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -161,7 +161,7 @@ class GenieStructure:
         generated_value_members = []
 
         if not issubclass(var_type.cls, GenieStructure):
-            raise Exception("class where members should be "
+            raise TypeError("class where members should be "
                             "included is not exportable: %s" % (
                                 var_type.cls.__name__))
 
@@ -203,12 +203,12 @@ class GenieStructure:
                     generated_value_members.append(array)
 
                 else:
-                    raise Exception("%s at offset %# 08x: Data read via %s "
-                                    "cannot be stored as %s;"
-                                    " expected %s or %s"
-                                    % (var_name, offset, var_type, storage_type,
-                                        StorageType.CONTAINER_MEMBER,
-                                        StorageType.ARRAY_CONTAINER))
+                    raise SyntaxError("%s at offset %# 08x: Data read via %s "
+                                      "cannot be stored as %s;"
+                                      " expected %s or %s"
+                                      % (var_name, offset, var_type, storage_type,
+                                          StorageType.CONTAINER_MEMBER,
+                                          StorageType.ARRAY_CONTAINER))
 
         return offset, generated_value_members
 
@@ -298,7 +298,7 @@ class GenieStructure:
                 new_data_class = var_type.class_lookup[subtype_name]
 
             if not issubclass(new_data_class, GenieStructure):
-                raise Exception("dumped data "
+                raise TypeError("dumped data "
                                 "is not exportable: %s" % (
                                     new_data_class.__name__))
 
@@ -328,11 +328,11 @@ class GenieStructure:
                     subdata_value_members.append(container)
 
                 else:
-                    raise Exception("%s at offset %# 08x: Data read via %s "
-                                    "cannot be stored as %s;"
-                                    " expected %s"
-                                    % (var_name, offset, var_type, storage_type,
-                                        StorageType.ARRAY_CONTAINER))
+                    raise SyntaxError("%s at offset %# 08x: Data read via %s "
+                                      "cannot be stored as %s;"
+                                      " expected %s"
+                                      % (var_name, offset, var_type, storage_type,
+                                          StorageType.ARRAY_CONTAINER))
 
         if export == READ_GEN:
             # Create an array from the subdata structures
@@ -383,10 +383,10 @@ class GenieStructure:
                                         StorageType.ARRAY_BOOL,
                                         StorageType.ARRAY_ID,
                                         StorageType.ARRAY_STRING):
-                    raise Exception("%s at offset %# 08x: Data read via %s "
-                                    "cannot be stored as %s;"
-                                    " expected ArrayMember format"
-                                    % (var_name, offset, var_type, storage_type))
+                    raise SyntaxError("%s at offset %# 08x: Data read via %s "
+                                      "cannot be stored as %s;"
+                                      " expected ArrayMember format"
+                                      % (var_name, offset, var_type, storage_type))
 
             else:
                 struct_type = var_type
@@ -401,15 +401,15 @@ class GenieStructure:
             is_custom_member = True
 
         else:
-            raise Exception(
+            raise TypeError(
                 f"unknown data member definition {var_type} for member '{var_name}'")
 
         if data_count < 0:
-            raise Exception("invalid length %d < 0 in %s for member '%s'" % (
+            raise SyntaxError("invalid length %d < 0 in %s for member '%s'" % (
                 data_count, var_type, var_name))
 
         if struct_type not in STRUCT_TYPE_LOOKUP:
-            raise Exception("%s: member %s requests unknown data type %s" % (
+            raise TypeError("%s: member %s requests unknown data type %s" % (
                 repr(self), var_name, struct_type))
 
         if export == READ_UNKNOWN:
@@ -428,9 +428,8 @@ class GenieStructure:
 
             if is_custom_member:
                 if not var_type.verify_read_data(self, result):
-                    raise Exception("invalid data when reading %s "
-                                    "at offset %# 08x" % (
-                                        var_name, offset))
+                    raise SyntaxError("invalid data when reading %s "
+                                      "at offset %# 08x" % (var_name, offset))
 
             # TODO: move these into a read entry hook/verification method
             if symbol == "s":
@@ -442,11 +441,11 @@ class GenieStructure:
                         gen_member = StringMember(var_name, result)
 
                     else:
-                        raise Exception("%s at offset %# 08x: Data read via %s "
-                                        "cannot be stored as %s;"
-                                        " expected %s"
-                                        % (var_name, offset, var_type, storage_type,
-                                            StorageType.STRING_MEMBER))
+                        raise SyntaxError("%s at offset %# 08x: Data read via %s "
+                                          "cannot be stored as %s;"
+                                          " expected %s"
+                                          % (var_name, offset, var_type, storage_type,
+                                              StorageType.STRING_MEMBER))
 
                     generated_value_members.append(gen_member)
 
@@ -484,15 +483,15 @@ class GenieStructure:
                             array_members.append(gen_member)
 
                         else:
-                            raise Exception("%s at offset %# 08x: Data read via %s "
-                                            "cannot be stored as %s;"
-                                            " expected %s, %s, %s, %s or %s"
-                                            % (var_name, offset, var_type, storage_type,
-                                                StorageType.ARRAY_INT,
-                                                StorageType.ARRAY_FLOAT,
-                                                StorageType.ARRAY_BOOL,
-                                                StorageType.ARRAY_ID,
-                                                StorageType.ARRAY_STRING))
+                            raise SyntaxError("%s at offset %# 08x: Data read via %s "
+                                              "cannot be stored as %s;"
+                                              " expected %s, %s, %s, %s or %s"
+                                              % (var_name, offset, var_type, storage_type,
+                                                  StorageType.ARRAY_INT,
+                                                  StorageType.ARRAY_FLOAT,
+                                                  StorageType.ARRAY_BOOL,
+                                                  StorageType.ARRAY_ID,
+                                                  StorageType.ARRAY_STRING))
 
                     # Create the array
                     array = ArrayMember(var_name, allowed_member_type, array_members)
@@ -504,9 +503,9 @@ class GenieStructure:
 
                 if symbol == "f":
                     if not math.isfinite(result):
-                        raise Exception("invalid float when "
-                                        "reading %s at offset %# 08x" % (
-                                            var_name, offset))
+                        raise SyntaxError("invalid float when "
+                                          "reading %s at offset %# 08x" % (
+                                              var_name, offset))
 
                 if export == READ_GEN:
                     # Store the member as ValueMember
@@ -532,25 +531,25 @@ class GenieStructure:
                                 gen_member = StringMember(var_name, lookup_result)
 
                             else:
-                                raise Exception("%s at offset %# 08x: Data read via %s "
-                                                "cannot be stored as %s;"
-                                                " expected %s, %s, %s or %s"
-                                                % (var_name, offset, var_type, storage_type,
-                                                    StorageType.INT_MEMBER,
-                                                    StorageType.ID_MEMBER,
-                                                    StorageType.BITFIELD_MEMBER,
-                                                    StorageType.STRING_MEMBER))
+                                raise SyntaxError("%s at offset %# 08x: Data read via %s "
+                                                  "cannot be stored as %s;"
+                                                  " expected %s, %s, %s or %s"
+                                                  % (var_name, offset, var_type, storage_type,
+                                                      StorageType.INT_MEMBER,
+                                                      StorageType.ID_MEMBER,
+                                                      StorageType.BITFIELD_MEMBER,
+                                                      StorageType.STRING_MEMBER))
 
                         elif isinstance(var_type, ContinueReadMember):
                             if storage_type is StorageType.BOOLEAN_MEMBER:
                                 gen_member = StringMember(var_name, lookup_result)
 
                             else:
-                                raise Exception("%s at offset %# 08x: Data read via %s "
-                                                "cannot be stored as %s;"
-                                                " expected %s"
-                                                % (var_name, offset, var_type, storage_type,
-                                                    StorageType.BOOLEAN_MEMBER))
+                                raise SyntaxError("%s at offset %# 08x: Data read via %s "
+                                                  "cannot be stored as %s;"
+                                                  " expected %s"
+                                                  % (var_name, offset, var_type, storage_type,
+                                                      StorageType.BOOLEAN_MEMBER))
 
                     else:
                         if storage_type is StorageType.INT_MEMBER:
@@ -566,14 +565,14 @@ class GenieStructure:
                             gen_member = IDMember(var_name, result)
 
                         else:
-                            raise Exception("%s at offset %# 08x: Data read via %s "
-                                            "cannot be stored as %s;"
-                                            " expected %s, %s, %s or %s"
-                                            % (var_name, offset, var_type, storage_type,
-                                                StorageType.INT_MEMBER,
-                                                StorageType.FLOAT_MEMBER,
-                                                StorageType.BOOLEAN_MEMBER,
-                                                StorageType.ID_MEMBER))
+                            raise SyntaxError("%s at offset %# 08x: Data read via %s "
+                                              "cannot be stored as %s;"
+                                              " expected %s, %s, %s or %s"
+                                              % (var_name, offset, var_type, storage_type,
+                                                  StorageType.INT_MEMBER,
+                                                  StorageType.FLOAT_MEMBER,
+                                                  StorageType.BOOLEAN_MEMBER,
+                                                  StorageType.ID_MEMBER))
 
                     generated_value_members.append(gen_member)
 

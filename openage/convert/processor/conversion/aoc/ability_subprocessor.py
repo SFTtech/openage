@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-public-methods,too-many-lines,too-many-locals
 # pylint: disable=too-many-branches,too-many-statements,too-many-arguments
@@ -4112,7 +4112,7 @@ class AoCAbilitySubprocessor:
                             break
 
                     else:
-                        raise Exception(f"No graphics set found for civ id {civ_id}")
+                        raise RuntimeError(f"No graphics set found for civ id {civ_id}")
 
                     # Check if the object for the animation has been created before
                     obj_exists = graphics_set_id in handled_graphics_set_ids
@@ -4512,7 +4512,7 @@ class AoCAbilitySubprocessor:
             current_unit = dataset.genie_units[projectile_id]
 
         else:
-            raise Exception(f"Invalid projectile number: {position}")
+            raise ValueError(f"Invalid projectile number: {position}")
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
 
@@ -4898,7 +4898,7 @@ class AoCAbilitySubprocessor:
             projectile_id = current_unit["projectile_id1"].value
 
         else:
-            raise Exception("Invalid position")
+            raise ValueError(f"Invalid projectile position {position}")
 
         projectile = dataset.genie_units[projectile_id]
         arc = degrees(projectile["projectile_arc"].value)
@@ -5244,7 +5244,7 @@ class AoCAbilitySubprocessor:
         restock_target = converter_groups[restock_target_id]
 
         if not restock_target.is_harvestable():
-            raise Exception(f"{restock_target} cannot be restocked: is not harvestable")
+            raise RuntimeError(f"{restock_target} cannot be restocked: is not harvestable")
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         restock_lookup_dict = internal_name_lookups.get_restock_lookups(dataset.game_version)

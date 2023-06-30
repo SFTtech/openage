@@ -217,7 +217,7 @@ def create_game_obj(
             ))
 
         else:
-            raise Exception(
+            raise SyntaxError(
                 f"{game_hash_path}: Unrecognized file version: '{file_version}'")
 
     # Check if there is a media cache file and save the path if it exists

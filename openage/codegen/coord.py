@@ -1,4 +1,4 @@
-# Copyright 2016-2021 the openage authors. See copying.md for legal info.
+# Copyright 2016-2023 the openage authors. See copying.md for legal info.
 
 """
 Generates libopenage/coord/coord_{xy, xyz, ne_se, ne_se_up}.{h, cpp}
@@ -49,11 +49,11 @@ def generate_coord_basetypes(projectdir):
             """
             return join_with.join(formatstring.format(m) for m in member_list)
 
-        template_dict = dict(
-            members=member_list,
-            formatted_members=format_members,
-            camelcase="".join(member.title() for member in member_list),
-        )
+        template_dict = {
+            "members": member_list,
+            "formatted_members": format_members,
+            "camelcase": "".join(member.title() for member in member_list),
+        }
 
         for template, output_filename_template in templates:
             output_filename = output_filename_template.render(template_dict)

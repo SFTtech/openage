@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 
 """
 Associate files or filepaths with hash values to determine the exact version of a game.
@@ -26,7 +26,7 @@ class GameFileVersion:
         """
         self.paths = filepaths
         if len(self.paths) < 1:
-            raise Exception(f"{self}: List of paths cannot be empty.")
+            raise ValueError(f"{self}: List of paths cannot be empty.")
 
         self.hashes = hashes
 

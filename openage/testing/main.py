@@ -1,4 +1,4 @@
-# Copyright 2014-2022 the openage authors. See copying.md for legal info.
+# Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 """ CLI module for running all tests. """
 
@@ -51,7 +51,7 @@ def init_subparser(cli):
                      help=("run the given demo; the remaining arguments "
                            "are passed to the demo."))
     cli.add_argument("--benchmark", "-b", nargs=argparse.REMAINDER,
-                     help=("run the given benchmark"))
+                     help="run the given benchmark")
     cli.add_argument("test", nargs='*', help="run this test")
 
 

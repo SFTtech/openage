@@ -1,4 +1,4 @@
-# Copyright 2014-2022 the openage authors. See copying.md for legal info.
+# Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 """
 Checks the legal headers of all files.
@@ -115,7 +115,7 @@ def create_year_fix(filename, file_content, expected_end_year,
         )
 
         if not success:
-            raise Exception("copyright year fix did not suceeed")
+            raise ValueError("copyright year fix did not suceeed")
 
         writefile(filename, fixed_file)
 

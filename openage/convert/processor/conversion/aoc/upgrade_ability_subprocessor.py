@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,invalid-name
 # pylint: disable=too-many-public-methods,too-many-branches,too-many-arguments
@@ -468,7 +468,7 @@ class AoCUpgradeAbilitySubprocessor:
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
-            wrapper_name = (f"Change{game_entity_name}DamageGraphic{percentage}Wrapper")
+            wrapper_name = f"Change{game_entity_name}DamageGraphic{percentage}Wrapper"
             wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
             wrapper_raw_api_object = RawAPIObject(wrapper_ref,
                                                   wrapper_name,

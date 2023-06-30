@@ -29,9 +29,9 @@ def parse_args():
                      help=("check whether all git authors are in copying.md. "
                            "repo must be a git repository."))
     cli.add_argument("--cppstyle", action="store_true",
-                     help=("check the cpp code style"))
+                     help="check the cpp code style")
     cli.add_argument("--cython", action="store_true",
-                     help=("check if cython is turned off"))
+                     help="check if cython is turned off")
     cli.add_argument("--headerguards", action="store_true",
                      help="check all header guards")
     cli.add_argument("--legal", action="store_true",
@@ -40,7 +40,7 @@ def parse_args():
                      help=("check whether files in the repo have the "
                            "correct access bits (-> 0644) "))
     cli.add_argument("--pylint", action="store_true",
-                     help=("run pylint on the python code"))
+                     help="run pylint on the python code")
     cli.add_argument("--pystyle", action="store_true",
                      help=("check whether the python code complies with "
                            "(a selected subset of) pep8."))
@@ -51,7 +51,7 @@ def parse_args():
                            "copyright year matches the git history."))
 
     cli.add_argument("--fix", action="store_true",
-                     help=("try to automatically fix the found issues"))
+                     help="try to automatically fix the found issues")
 
     cli.add_argument("-v", "--verbose", action="count", default=0,
                      help="increase program verbosity")
@@ -140,7 +140,7 @@ def get_changed_files(gitref):
         file_list = subprocess.check_output(invocation)
 
     except subprocess.CalledProcessError as exc:
-        raise Exception(
+        raise RuntimeError(
             "could not determine list of recently-changed files with git"
         ) from exc
 

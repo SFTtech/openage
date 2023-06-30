@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-statements,too-many-branches
 #
@@ -203,7 +203,7 @@ class AoCTechSubprocessor:
             operator = MemberOperator.MULTIPLY
 
         else:
-            raise Exception(f"Effect type {effect_type} is not a valid attribute effect")
+            raise TypeError(f"Effect type {effect_type} is not a valid attribute effect")
 
         unit_id = effect["attr_a"].value
         class_id = effect["attr_b"].value
@@ -273,7 +273,7 @@ class AoCTechSubprocessor:
             operator = MemberOperator.MULTIPLY
 
         else:
-            raise Exception(f"Effect type {effect_type} is not a valid resource effect")
+            raise TypeError(f"Effect type {effect_type} is not a valid resource effect")
 
         resource_id = effect["attr_a"].value
         value = effect["attr_d"].value
@@ -428,7 +428,7 @@ class AoCTechSubprocessor:
             resource_name = "Gold"
 
         else:
-            raise Exception("no valid resource ID found")
+            raise ValueError("no valid resource ID found")
 
         # Check if the tech actually costs an amount of the defined resource
         for resource_amount in tech_group.tech["research_resource_costs"].value:

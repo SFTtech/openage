@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches
 """
@@ -49,7 +49,7 @@ def mount_asset_dirs(
                     mount_drs(media_path, media_type.value)
 
             else:
-                raise Exception(f"Media at path {path_to_media} could not be found")
+                raise FileNotFoundError(f"Media at path {path_to_media} could not be found")
 
     # Mount the media sources of the game edition
     for expansion in game_version.expansions:
@@ -66,6 +66,6 @@ def mount_asset_dirs(
                         mount_drs(media_path, media_type.value)
 
                 else:
-                    raise Exception(f"Media at path {path_to_media} could not be found")
+                    raise FileNotFoundError(f"Media at path {path_to_media} could not be found")
 
     return result

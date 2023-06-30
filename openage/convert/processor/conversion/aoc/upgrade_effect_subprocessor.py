@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-statements,too-many-branches
 #
@@ -256,8 +256,8 @@ class AoCUpgradeEffectSubprocessor:
                 if not isinstance(diff_armor_class, NoDiffMember):
                     # If this happens then the attacks are out of order
                     # and we have to try something else
-                    raise Exception(f"Could not create effect upgrade for line {repr(line)}: "
-                                    "Out of order")
+                    raise ValueError(f"Could not create effect upgrade for line {repr(line)}: "
+                                     "Out of order")
 
                 armor_class = diff_armor_class.ref.value
                 attack_amount = diff_attack["amount"].value
@@ -524,8 +524,8 @@ class AoCUpgradeEffectSubprocessor:
                 if not isinstance(diff_armor_class, NoDiffMember):
                     # If this happens then the armors are out of order
                     # and we have to try something else
-                    raise Exception(f"Could not create effect upgrade for line {repr(line)}: "
-                                    "Out of order")
+                    raise ValueError(f"Could not create effect upgrade for line {repr(line)}: "
+                                     "Out of order")
 
                 armor_class = diff_armor_class.ref.value
                 armor_amount = diff_armor["amount"].value

@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 """
 Provides CABFile, an extractor for the MSCAB format.
@@ -239,8 +239,8 @@ class CABFile(FileCollection):
 
         # verify magic number
         if header.signature != b"MSCF":
-            raise Exception("invalid CAB file signature: " +
-                            repr(header.signature))
+            raise SyntaxError("invalid CAB file signature: " +
+                              repr(header.signature))
 
         # read reserve header, if present
         if header.flags.reserve_present:
@@ -326,10 +326,10 @@ class CABFile(FileCollection):
                 folder.plain_stream = compressed_data_stream
 
             elif compression_type == 1:
-                raise Exception("MSZIP compression is unsupported")
+                raise SyntaxError("MSZIP compression is unsupported")
 
             elif compression_type == 2:
-                raise Exception("Quantum compression is unsupported")
+                raise SyntaxError("Quantum compression is unsupported")
 
             elif compression_type == 3:
                 window_bits = (folder.typeCompress >> 8) & 0x1f
@@ -346,7 +346,7 @@ class CABFile(FileCollection):
                 folder.plain_stream = StreamSeekBuffer(unseekable_plain_stream)
 
             else:
-                raise Exception(f"Unknown compression type {compression_type:d}")
+                raise SyntaxError(f"Unknown compression type {compression_type:d}")
 
             dbg(folder)
             yield folder
@@ -397,7 +397,7 @@ class CABFile(FileCollection):
             day = (fileobj.date >> 0) & 0x001f
 
             # it's sort of sad that there's no bit for AM/PM.
-            hour = (fileobj.time >> 11)
+            hour = fileobj.time >> 11
             minute = (fileobj.time >> 5) & 0x003f
             sec = (fileobj.time << 1) & 0x003f
 

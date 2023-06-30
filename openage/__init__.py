@@ -1,4 +1,4 @@
-# Copyright 2013-2022 the openage authors. See copying.md for legal info.
+# Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 """
 The Python part of openage, a free engine re-write of
@@ -13,8 +13,8 @@ from sys import version_info as py_version
 
 from .log import setup_logging
 
-if py_version < (3, 6):
-    raise Exception("openage requires python 3.6 or higher.")
+if py_version < (3, 9):
+    raise RuntimeError("openage requires python 3.9 or higher.")
 
 
 try:

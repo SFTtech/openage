@@ -1,4 +1,4 @@
-# Copyright 2021-2022 the openage authors. See copying.md for legal info.
+# Copyright 2021-2023 the openage authors. See copying.md for legal info.
 
 """
 Blendtable definition file.
@@ -98,8 +98,8 @@ class BlendtableMetadata(DataDefinition):
         table_width = self._get_table_width()
 
         if table_width * table_width != len(self.blendtable):
-            raise Exception(f"blendtable entries malformed: "
-                            f"{len(self.blendtable)} is not an integer square")
+            raise ValueError(f"blendtable entries malformed: "
+                             f"{len(self.blendtable)} is not an integer square")
 
     def __repr__(self):
         return f'BlendtableMetadata<{self.filename}>'

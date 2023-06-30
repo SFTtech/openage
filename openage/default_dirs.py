@@ -1,4 +1,4 @@
-# Copyright 2017-2022 the openage authors. See copying.md for legal info.
+# Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 """
 
@@ -55,13 +55,13 @@ def get_dir(which):
         platform_table = LINUX_DIRS
 
     elif sys.platform.startswith("darwin"):
-        raise Exception("macOS not really supported")
+        raise RuntimeError("macOS not really supported")
 
     elif sys.platform.startswith("win32"):
         platform_table = WINDOWS_DIRS
 
     else:
-        raise Exception(f"unsupported platform: '{sys.platform}'")
+        raise RuntimeError(f"unsupported platform: '{sys.platform}'")
 
     if which not in platform_table:
         raise ValueError(f"unknown directory requested: '{which}'")
@@ -80,12 +80,12 @@ def get_dir(which):
         if not all(env_vars.values()):
             env_var_str = ', '.join([var for (var, val) in env_vars.items()
                                      if val is None])
-            raise Exception(f"could not reconstruct {which}, "
-                            f"missing env variables: '{env_var_str}'")
+            raise RuntimeError(f"could not reconstruct {which}, "
+                               f"missing env variables: '{env_var_str}'")
 
         path = default_template.format(**env_vars)
 
     else:
-        raise Exception(f"could not find '{which}' in environment")
+        raise RuntimeError(f"could not find '{which}' in environment")
 
     return pathlib.Path(path)

@@ -1,4 +1,4 @@
-# Copyright 2013-2022 the openage authors. See copying.md for legal info.
+# Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 """
 Provides PEFile, a class for reading MS portable executable files.
@@ -164,23 +164,23 @@ class PEFile:
         # read DOS header
         doshdr = PEDOSHeader.read(fileobj)
         if doshdr.signature != b'MZ':
-            raise Exception("not a PE file")
+            raise SyntaxError("not a PE file")
 
         # read COFF header
         fileobj.seek(doshdr.coffheaderpos)
         coffhdr = PECOFFHeader.read(fileobj)
 
         if coffhdr.signature != b'PE\0\0':
-            raise Exception("not a Win32 PE file")
+            raise SyntaxError("not a Win32 PE file")
 
         if coffhdr.opt_header_size != 224:
-            raise Exception("unknown optional header size")
+            raise SyntaxError("unknown optional header size")
 
         # read optional header
         opthdr = PEOptionalHeader.read(fileobj)
 
         if opthdr.signature not in {267, 523}:
-            raise Exception("Not an x86{_64} file")
+            raise SyntaxError("Not an x86{_64} file")
 
         # read data directories
         opthdr.data_directories = []
@@ -195,7 +195,7 @@ class PEFile:
 
             section.name = section.name.decode('ascii').rstrip('\0')
             if not section.name.startswith('.'):
-                raise Exception("Invalid section name: " + section.name)
+                raise SyntaxError("Invalid section name: " + section.name)
 
             sections[section.name] = section
 
@@ -216,7 +216,7 @@ class PEFile:
         and va is the RVA of the section start.
         """
         if section_name not in self.sections:
-            raise Exception("no such section in PE file: " + section_name)
+            raise SyntaxError("no such section in PE file: " + section_name)
 
         section = self.sections[section_name]
 

@@ -1,4 +1,4 @@
-# Copyright 2017-2018 the openage authors. See copying.md for legal info.
+# Copyright 2017-2023 the openage authors. See copying.md for legal info.
 """
 Tests for the filesystem-like abstraction.
 """
@@ -21,7 +21,7 @@ def test_path(root_path, root_dir):
     """
 
     # multi dir creation
-    deeper = (root_path / "let's go" / "deeper")
+    deeper = root_path / "let's go" / "deeper"
     assert_value(deeper.parent, root_path["let's go"])
     deeper.mkdirs()
     assert_value(deeper.is_dir(), True)

@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-locals,too-many-branches,too-many-statements,no-else-return
 
@@ -608,7 +608,7 @@ class AoCAuxiliarySubprocessor:
                 literal_parent = "engine.util.logic.literal.type.TechResearched"
 
             else:
-                raise Exception("Required tech id {tech_id} is neither intiated nor researchable")
+                raise ValueError("Required tech id {tech_id} is neither intiated nor researchable")
 
             literal_ref = f"{obj_ref}.{literal_name}"
             literal_raw_api_object = RawAPIObject(literal_ref,
