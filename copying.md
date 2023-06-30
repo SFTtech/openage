@@ -142,8 +142,8 @@ _the openage authors_ are:
 | Talha Aamir                 | sarcxd                      | sarcxd à gmail dawt com                           |
 | Matthias Geiger             | CountOmega                  | matthias dawt geiger1024 à outlook dawt com       |
 | Yuvraj Tetarwal             | YuviTz1                     | yuvi56789 à gmail dawt com                        |
-| Tarun Samanta               | TS                          | tarunsamanta77@gmail.com                          |
-| Derek Frogget               | FoggyLight                  | fro22003@byui.edu                                 |
+| Tarun Samanta               | TS                          | tarunsamanta77 à gmail dawt com                   |
+| Derek Frogget               | FoggyLight                  | fro22003 à byui dawt edu                          |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
