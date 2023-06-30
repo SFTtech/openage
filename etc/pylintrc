@@ -321,4 +321,4 @@ exclude-protected=_asdict,_fields,_replace,_source,_make
 
 # Exceptions that will emit a warning when being caught. Defaults to
 # "Exception"
-overgeneral-exceptions=Exception
+overgeneral-exceptions=builtins.Exception
