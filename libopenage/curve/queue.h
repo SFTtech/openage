@@ -42,7 +42,11 @@ public:
 	      const std::string &idstr = "") :
 		EventEntity{loop},
 		_id{id},
-		_idstr{idstr} {}
+		_idstr{idstr},
+		last_front{this->container.begin()} {}
+
+	// prevent accidental copy of queue
+	Queue(const Queue &) = delete;
 
 	// Reading Access
 
@@ -52,9 +56,22 @@ public:
 	 * @param time The time to get the element at.
 	 * @return Queue element.
 	 */
-	const T
-		&
-		front(const time_t &time) const;
+	const T &front(const time_t &time) const;
+
+	/**
+	 * Get the first element in the queue at the given time.
+	 *
+	 * @param time The time to get the element at.
+	 * @param value Queue element.
+	 */
+	const T &pop_front(const time_t &time);
+
+	/**
+	 * Check if the queue is empty at a given time.
+	 *
+	 * @return true if the queue is empty, false otherwise.
+	 */
+	bool empty(const time_t &time) const;
 
 	// Modifying access
 
@@ -142,11 +159,6 @@ public:
 
 private:
 	/**
-	 * The container that stores the queue elements.
-	 */
-	container_t container;
-
-	/**
 	 * Identifier for the container
 	 */
 	const size_t _id;
@@ -155,6 +167,13 @@ private:
 	 * Human-readable identifier for the container
 	 */
 	const std::string _idstr;
+
+	/**
+	 * The container that stores the queue elements.
+	 */
+	container_t container;
+
+	iterator last_front;
 };
 
 
@@ -163,6 +182,16 @@ const T &Queue<T>::front(const time_t &t) const {
 	return this->begin(t).value();
 }
 
+template <class T>
+bool Queue<T>::empty(const time_t &time) const {
+	return this->last_front == this->begin(time).get_base();
+}
+
+template <class T>
+inline const T &Queue<T>::pop_front(const time_t &time) {
+	this->last_front = this->begin(time).get_base();
+	return this->front(time);
+}
 
 template <typename T>
 QueueFilterIterator<T, Queue<T>> Queue<T>::begin(const time_t &t) const {
@@ -208,7 +237,7 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::between(
 
 template <typename T>
 void Queue<T>::erase(const CurveIterator<T, Queue<T>> &it) {
-	container.erase(it.base());
+	container.erase(it.get_base());
 	return;
 }
 

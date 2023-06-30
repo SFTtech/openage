@@ -16,28 +16,28 @@
 
 
 namespace openage::gamestate::system {
-void Move::move_command(const std::shared_ptr<gamestate::GameEntity> &entity,
-                        const curve::time_t &start_time) {
+const curve::time_t Move::move_command(const std::shared_ptr<gamestate::GameEntity> &entity,
+                                       const curve::time_t &start_time) {
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
 	auto command = std::dynamic_pointer_cast<component::command::MoveCommand>(
-		command_queue->get_queue().front(start_time));
+		command_queue->pop_command(start_time));
 
 	if (not command) [[unlikely]] {
 		log::log(MSG(warn) << "Command is not a move command.");
-		return;
+		return curve::time_t::from_int(0);
 	}
 
-	Move::move_default(entity, command->get_target(), start_time);
+	return Move::move_default(entity, command->get_target(), start_time);
 }
 
 
-void Move::move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
-                        const coord::phys3 &destination,
-                        const curve::time_t &start_time) {
+const curve::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
+                                       const coord::phys3 &destination,
+                                       const curve::time_t &start_time) {
 	if (not entity->has_component(component::component_t::MOVE)) [[unlikely]] {
-		log::log(MSG(warn) << "Entity " << entity->get_id() << " has no move component.");
-		return;
+		log::log(WARN << "Entity " << entity->get_id() << " has no move component.");
+		return curve::time_t::from_int(0);
 	}
 
 	auto turn_component = std::dynamic_pointer_cast<component::Turn>(
@@ -96,12 +96,13 @@ void Move::move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
 		auto animations = api::APIProperty::get_animations(property);
 		auto animation_paths = api::APIAnimation::get_animation_paths(animations);
 
-		if (animation_paths.size() < 1) {
-			return;
+		if (animation_paths.size() > 0) [[likely]] {
+			entity->set_animation_path(animation_paths.at(0));
+			entity->push_to_render();
 		}
-		entity->set_animation_path(animation_paths.at(0));
-		entity->push_to_render();
 	}
+
+	return turn_time + move_time;
 }
 
 } // namespace openage::gamestate::system

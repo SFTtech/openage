@@ -103,7 +103,7 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 	if (current->get_type() == activity::node_t::EVENT_GATEWAY) {
 		auto node = std::static_pointer_cast<activity::EventNode>(current);
 		auto event_next = node->get_next_func();
-		auto next_id = event_next(0, nullptr);
+		auto next_id = event_next(0, nullptr, nullptr, nullptr);
 		current = node->next(next_id);
 	}
 
@@ -136,7 +136,7 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 		case activity::node_t::EVENT_GATEWAY: {
 			auto node = std::static_pointer_cast<activity::EventNode>(current);
 			auto event_primer = node->get_primer_func();
-			event_primer(0, nullptr);
+			event_primer(0, nullptr, nullptr, nullptr);
 
 			// wait for event
 			return current;
@@ -215,7 +215,9 @@ void activity_demo() {
 	// event node
 	event_node->add_output(task2);
 	event_node->set_primer_func([&](const curve::time_t & /* time */,
-	                                const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
+	                                const std::shared_ptr<gamestate::GameEntity> & /* entity */,
+	                                const std::shared_ptr<event::EventLoop> & /* loop */,
+	                                const std::shared_ptr<gamestate::GameState> & /* state */) {
 		log::log(INFO << "Setting up event");
 		loop->create_event("test.activity",
 		                   mgr,
@@ -223,7 +225,9 @@ void activity_demo() {
 		                   0);
 	});
 	event_node->set_next_func([&task2](const curve::time_t & /* time */,
-	                                   const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
+	                                   const std::shared_ptr<gamestate::GameEntity> & /* entity */,
+	                                   const std::shared_ptr<event::EventLoop> & /* loop */,
+	                                   const std::shared_ptr<gamestate::GameState> & /* state */) {
 		log::log(INFO << "Selecting next node (task node " << task2->get_id() << ")");
 		return task2->get_id();
 	});

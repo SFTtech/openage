@@ -13,13 +13,16 @@
 namespace openage::gamestate {
 
 GameEntityManager::GameEntityManager(const std::shared_ptr<openage::event::EventLoop> &loop,
+                                     const std::shared_ptr<openage::gamestate::GameState> &state,
                                      const std::shared_ptr<GameEntity> &game_entity) :
 	event::EventEntity{loop},
+	loop{loop},
+	state{state},
 	game_entity{game_entity} {}
 
 void GameEntityManager::run_activity_system(const curve::time_t &time) {
 	log::log(DBG << "Running activity system for entity " << this->game_entity->get_id());
-	system::Activity::advance(this->game_entity, time);
+	system::Activity::advance(this->game_entity, time, this->loop, this->state);
 }
 
 size_t GameEntityManager::id() const {

@@ -13,8 +13,8 @@
 
 namespace openage::gamestate::system {
 
-void Idle::idle(const std::shared_ptr<gamestate::GameEntity> &entity,
-                const curve::time_t & /* start_time */) {
+const curve::time_t Idle::idle(const std::shared_ptr<gamestate::GameEntity> &entity,
+                               const curve::time_t & /* start_time */) {
 	if (not entity->has_component(component::component_t::IDLE)) [[unlikely]] {
 		throw Error{ERR << "Entity " << entity->get_id() << " has no idle component."};
 	}
@@ -27,14 +27,15 @@ void Idle::idle(const std::shared_ptr<gamestate::GameEntity> &entity,
 		auto animations = api::APIProperty::get_animations(property);
 		auto animation_paths = api::APIAnimation::get_animation_paths(animations);
 
-		if (animation_paths.size() < 1) {
-			return;
+		if (animation_paths.size() > 0) [[likely]] {
+			entity->set_animation_path(animation_paths.at(0));
+			entity->push_to_render();
 		}
-		entity->set_animation_path(animation_paths.at(0));
-		entity->push_to_render();
 	}
 
 	// TODO: play sound
+
+	return curve::time_t::from_int(0);
 }
 
 } // namespace openage::gamestate::system

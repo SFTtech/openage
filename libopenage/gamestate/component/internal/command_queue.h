@@ -41,6 +41,15 @@ public:
 	 */
 	const curve::Queue<std::shared_ptr<command::Command>> &get_queue() const;
 
+	/**
+	 * Get the command in the front of the queue.
+	 *
+	 * @param time Time at which the command is retrieved.
+	 *
+	 * @return Command in the front of the queue or nullptr if the queue is empty.
+	 */
+	std::shared_ptr<command::Command> pop_command(const curve::time_t &time);
+
 private:
 	/**
 	 * Command queue.

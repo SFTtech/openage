@@ -22,9 +22,11 @@ public:
      *
      * @param entity Game entity.
      * @param start_time Start time of change.
+     *
+     * @return Runtime of the change in simulation time.
      */
-	static void idle(const std::shared_ptr<gamestate::GameEntity> &entity,
-	                 const curve::time_t &start_time);
+	static const curve::time_t idle(const std::shared_ptr<gamestate::GameEntity> &entity,
+	                                const curve::time_t &start_time);
 };
 
 } // namespace system

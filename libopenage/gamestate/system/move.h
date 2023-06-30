@@ -20,9 +20,11 @@ public:
      *
      * @param entity Game entity.
      * @param start_time Start time of change.
+     *
+     * @return Runtime of the change in simulation time.
      */
-	static void move_command(const std::shared_ptr<gamestate::GameEntity> &entity,
-	                         const curve::time_t &start_time);
+	static const curve::time_t move_command(const std::shared_ptr<gamestate::GameEntity> &entity,
+	                                        const curve::time_t &start_time);
 
 	/**
      * Move a game entity to a destination.
@@ -30,10 +32,12 @@ public:
      * @param entity Game entity.
      * @param destination Destination coordinates.
      * @param start_time Start time of change.
+     *
+     * @return Runtime of the change in simulation time.
      */
-	static void move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
-	                         const coord::phys3 &destination,
-	                         const curve::time_t &start_time);
+	static const curve::time_t move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
+	                                        const coord::phys3 &destination,
+	                                        const curve::time_t &start_time);
 };
 
 } // namespace system

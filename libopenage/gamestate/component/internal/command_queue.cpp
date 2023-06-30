@@ -24,5 +24,9 @@ const curve::Queue<std::shared_ptr<command::Command>> &CommandQueue::get_queue()
 	return this->command_queue;
 }
 
+std::shared_ptr<command::Command> CommandQueue::pop_command(const curve::time_t &time) {
+	return this->command_queue.pop_front(time);
+}
+
 
 } // namespace openage::gamestate::component

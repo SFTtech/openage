@@ -21,7 +21,9 @@ namespace openage::gamestate::system {
 
 
 void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
-                       const curve::time_t &start_time) {
+                       const curve::time_t &start_time,
+                       const std::shared_ptr<openage::event::EventLoop> &loop,
+                       const std::shared_ptr<openage::gamestate::GameState> &state) {
 	auto activity_component = std::dynamic_pointer_cast<component::Activity>(
 		entity->get_component(component::component_t::ACTIVITY));
 	auto current_node = activity_component->get_node(start_time);
@@ -37,10 +39,11 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 		// move to the next node here
 		auto node = std::static_pointer_cast<activity::EventNode>(current_node);
 		auto event_next = node->get_next_func();
-		auto next_id = event_next(start_time, entity);
+		auto next_id = event_next(start_time, entity, loop, state);
 		current_node = node->next(next_id);
 	}
 
+	curve::time_t event_wait_time = 0;
 	auto stop = false;
 	while (not stop) {
 		switch (current_node->get_type()) {
@@ -63,7 +66,7 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 		case activity::node_t::TASK_SYSTEM: {
 			auto node = std::static_pointer_cast<activity::TaskSystemNode>(current_node);
 			auto task = node->get_system_id();
-			Activity::handle_subsystem(entity, start_time, task);
+			event_wait_time = Activity::handle_subsystem(entity, start_time, task);
 			auto next_id = node->get_next();
 			current_node = node->next(next_id);
 		} break;
@@ -76,7 +79,8 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 		case activity::node_t::EVENT_GATEWAY: {
 			auto node = std::static_pointer_cast<activity::EventNode>(current_node);
 			auto event_primer = node->get_primer_func();
-			event_primer(start_time, entity);
+			event_primer(start_time + event_wait_time, entity, loop, state);
+			event_wait_time = 0;
 
 			// exit and wait for event
 			stop = true;
@@ -90,22 +94,24 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 	activity_component->set_node(start_time, current_node);
 }
 
-void Activity::handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &entity,
-                                const curve::time_t &start_time,
-                                system_id_t system_id) {
+const curve::time_t Activity::handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &entity,
+                                               const curve::time_t &start_time,
+                                               system_id_t system_id) {
 	switch (system_id) {
 	case system_id_t::IDLE:
-		Idle::idle(entity, start_time);
+		return Idle::idle(entity, start_time);
 		break;
 	case system_id_t::MOVE_COMMAND:
-		Move::move_command(entity, start_time);
+		return Move::move_command(entity, start_time);
 		break;
 	case system_id_t::MOVE_DEFAULT:
-		Move::move_default(entity, {1, 1, 1}, start_time);
+		return Move::move_default(entity, {1, 1, 1}, start_time);
 		break;
 	default:
 		throw Error{ERR << "Unhandled subsystem " << static_cast<int>(system_id)};
 	}
+
+	return curve::time_t::from_int(0);
 }
 
 

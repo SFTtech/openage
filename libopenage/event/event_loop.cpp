@@ -106,8 +106,8 @@ int EventLoop::execute_events(const curve::time_t &time_until,
 	{
 		size_t i = 0;
 		for (const auto &e : this->queue.get_event_queue().get_sorted_events()) {
-			log::log(DBG << "  event "
-			             << i << ": t=" << e->get_time() << ": " << e->get_eventhandler()->id());
+			log::log(SPAM << "  event "
+			              << i << ": t=" << e->get_time() << ": " << e->get_eventhandler()->id());
 			i++;
 		}
 	}

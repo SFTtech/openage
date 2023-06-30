@@ -5,27 +5,41 @@
 #include "gamestate/activity/node.h"
 
 
-namespace openage::gamestate {
+namespace openage {
+namespace event {
+class EventLoop;
+}
+
+namespace gamestate {
 class GameEntity;
+class GameState;
 
 namespace activity {
 
 /* Create and register an event on the event loop */
 using event_primer_func_t = std::function<void(const curve::time_t &,
-                                               const std::shared_ptr<gamestate::GameEntity> &)>;
+                                               const std::shared_ptr<gamestate::GameEntity> &,
+                                               const std::shared_ptr<event::EventLoop> &,
+                                               const std::shared_ptr<gamestate::GameState> &)>;
 
 /* Decide which node to visit after the event is handled */
 using event_next_func_t = std::function<node_id(const curve::time_t &,
-                                                const std::shared_ptr<gamestate::GameEntity> &)>;
+                                                const std::shared_ptr<gamestate::GameEntity> &,
+                                                const std::shared_ptr<event::EventLoop> &,
+                                                const std::shared_ptr<gamestate::GameState> &)>;
 
 
 static const event_primer_func_t no_event = [](const curve::time_t &,
-                                               const std::shared_ptr<gamestate::GameEntity> &) {
+                                               const std::shared_ptr<gamestate::GameEntity> &,
+                                               const std::shared_ptr<event::EventLoop> &,
+                                               const std::shared_ptr<gamestate::GameState> &) {
 	throw Error{ERR << "No event primer function registered."};
 };
 
 static const event_next_func_t no_next = [](const curve::time_t &,
-                                            const std::shared_ptr<gamestate::GameEntity> &) {
+                                            const std::shared_ptr<gamestate::GameEntity> &,
+                                            const std::shared_ptr<event::EventLoop> &,
+                                            const std::shared_ptr<gamestate::GameState> &) {
 	throw Error{ERR << "No event next function registered."};
 	return 0;
 };
@@ -104,4 +118,5 @@ private:
 };
 
 } // namespace activity
-} // namespace openage::gamestate
+} // namespace gamestate
+} // namespace openage

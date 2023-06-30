@@ -69,8 +69,6 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 	// Create entity
 	auto entity = this->factory->add_game_entity(this->loop, gstate, nyan_entity);
 
-	entity->set_manager(std::make_shared<GameEntityManager>(loop, entity));
-
 	// Setup components
 	auto entity_pos = std::dynamic_pointer_cast<component::Position>(
 		entity->get_component(component::component_t::POSITION));
@@ -82,12 +80,6 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 	auto entity_owner = std::dynamic_pointer_cast<component::Ownership>(
 		entity->get_component(component::component_t::OWNERSHIP));
 	entity_owner->set_owner(time, params.get("owner", 0));
-
-	auto ev = loop->create_event("game.process_command", entity->get_manager(), state, time);
-	auto entity_queue = std::dynamic_pointer_cast<component::CommandQueue>(
-		entity->get_component(component::component_t::COMMANDQUEUE));
-	auto &queue = const_cast<curve::Queue<std::shared_ptr<component::command::Command>> &>(entity_queue->get_queue());
-	queue.add_dependent(ev);
 
 	auto activity = std::dynamic_pointer_cast<component::Activity>(
 		entity->get_component(component::component_t::ACTIVITY));
