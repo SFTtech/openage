@@ -83,7 +83,7 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 
 	// Frame subtexture
 	auto animation_info = this->animation_info.get(time);
-	auto layer = animation_info->get_layer(0); // TODO: Support multiple layers
+	auto &layer = animation_info->get_layer(0); // TODO: Support multiple layers
 	auto angle = layer.get_direction_angle(angle_degrees);
 
 	// Flip subtexture horizontally if angle is mirrored

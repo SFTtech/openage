@@ -141,7 +141,7 @@ public:
 	 *
 	 * @return Image path to texture.
 	 */
-	std::optional<util::Path> get_image_path() const;
+	const std::optional<util::Path> &get_image_path() const;
 
 	/**
 	 * Get the number of subtextures in this texture.
