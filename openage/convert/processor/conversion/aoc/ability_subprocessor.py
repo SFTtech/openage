@@ -5781,6 +5781,9 @@ class AoCAbilitySubprocessor:
                                               box_ref,
                                               "engine.ability.type.Selectable")
 
+        # Ability properties
+        properties = {}
+
         # Diplomacy setting (for units)
         if isinstance(line, GenieUnitLineGroup):
             property_ref = f"{ability_ref}.Diplomatic"
@@ -5805,13 +5808,44 @@ class AoCAbilitySubprocessor:
                                                    "engine.ability.property.type.Diplomatic")
 
             property_forward_ref = ForwardRef(line, property_ref)
-            properties = {
+            properties.update({
                 api_objects["engine.ability.property.type.Diplomatic"]: property_forward_ref
-            }
+            })
 
             ability_raw_api_object.add_raw_member("properties",
                                                   properties,
                                                   "engine.ability.Ability")
+        else:
+            ability_comm_sound_id = current_unit["selection_sound_id"].value
+            if ability_comm_sound_id > -1:
+                property_ref = f"{ability_ref}.CommandSound"
+                property_raw_api_object = RawAPIObject(property_ref,
+                                                    "CommandSound",
+                                                    dataset.nyan_api_objects)
+                property_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
+                property_location = ForwardRef(line, ability_ref)
+                property_raw_api_object.set_location(property_location)
+
+                line.add_raw_api_object(property_raw_api_object)
+
+                sounds_set = []
+                sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
+                                                                        ability_comm_sound_id,
+                                                                        property_ref,
+                                                                        ability_name,
+                                                                        "command_")
+                sounds_set.append(sound_forward_ref)
+                property_raw_api_object.add_raw_member("sounds",
+                                                    sounds_set,
+                                                    "engine.ability.property.type.CommandSound")
+
+                property_forward_ref = ForwardRef(line, property_ref)
+                properties.update({
+                    api_objects["engine.ability.property.type.CommandSound"]: property_forward_ref
+                })
+                ability_raw_api_object.add_raw_member("properties",
+                                                      properties,
+                                                      "engine.ability.Ability")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -5837,7 +5871,7 @@ class AoCAbilitySubprocessor:
         properties = {}
 
         # Command Sound
-        ability_comm_sound_id = current_unit["command_sound_id"].value
+        ability_comm_sound_id = current_unit["selection_sound_id"].value
         if ability_comm_sound_id > -1:
             property_ref = f"{ability_ref}.CommandSound"
             property_raw_api_object = RawAPIObject(property_ref,
