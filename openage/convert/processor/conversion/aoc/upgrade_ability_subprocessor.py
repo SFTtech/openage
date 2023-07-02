@@ -1988,8 +1988,8 @@ class AoCUpgradeAbilitySubprocessor:
         """
         dataset = converter_group.data
 
-        ability_ref = f"{ability_ref}.Animated"
-        patch_target_forward_ref = ForwardRef(line, ability_ref)
+        patch_target_ref = f"{ability_ref}.Animated"
+        patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = f"{patch_name_prefix}AnimationWrapper"
