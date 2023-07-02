@@ -80,7 +80,8 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 		auto ev = loop->create_event("game.process_command",
 		                             entity->get_manager(),
 		                             state,
-		                             time);
+		                             // event is not executed until a command is available
+		                             std::numeric_limits<curve::time_t>::max());
 		auto entity_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 			entity->get_component(component::component_t::COMMANDQUEUE));
 		auto &queue = const_cast<curve::Queue<std::shared_ptr<component::command::Command>> &>(entity_queue->get_queue());
@@ -97,7 +98,7 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 		if (queue.empty(time)) {
 			throw Error{ERR << "Command queue is empty"};
 		}
-		auto com = queue.front(time);
+		auto &com = queue.front(time);
 		if (com->get_type() == component::command::command_t::MOVE) {
 			return 5; // move->get_id();
 		}

@@ -19,7 +19,7 @@ namespace gamestate::event {
 /**
  * Process a command from a game entity command queue.
  */
-class ProcessCommandHandler : public openage::event::DependencyEventHandler {
+class ProcessCommandHandler : public openage::event::OnceEventHandler {
 public:
 	ProcessCommandHandler();
 	~ProcessCommandHandler() = default;

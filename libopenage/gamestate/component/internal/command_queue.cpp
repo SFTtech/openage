@@ -16,7 +16,7 @@ inline component_t CommandQueue::get_type() const {
 }
 
 void CommandQueue::add_command(const curve::time_t &time,
-                               std::shared_ptr<command::Command> command) {
+                               const std::shared_ptr<command::Command> &command) {
 	this->command_queue.insert(time, command);
 }
 

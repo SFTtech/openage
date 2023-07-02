@@ -32,7 +32,7 @@ public:
 	 * @param command New command.
 	 */
 	void add_command(const curve::time_t &time,
-	                 std::shared_ptr<command::Command> command);
+	                 const std::shared_ptr<command::Command> &command);
 
 	/**
 	 * Get the command queue.

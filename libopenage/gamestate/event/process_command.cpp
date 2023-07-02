@@ -8,7 +8,7 @@
 namespace openage::gamestate::event {
 
 ProcessCommandHandler::ProcessCommandHandler() :
-	DependencyEventHandler{"game.process_command"} {}
+	OnceEventHandler{"game.process_command"} {}
 
 void ProcessCommandHandler::setup_event(const std::shared_ptr<openage::event::Event> & /* event */,
                                         const std::shared_ptr<openage::event::State> & /* state */) {
