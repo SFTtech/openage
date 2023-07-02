@@ -18,6 +18,12 @@ Game::Game(const std::shared_ptr<openage::event::EventLoop> &event_loop,
 	state{std::make_shared<GameState>(this->db, event_loop)},
 	universe{std::make_shared<Universe>(state)} {
 	this->load_data(mod_manager);
+
+	// TODO: This lets the spawner event check which modpacks are loaded,
+	//       so that it can decide which entities it can spawn.
+	//       This can be removed when we spawn based on game logic rather than
+	//       hardcoded entity types.
+	this->state->set_mod_manager(mod_manager);
 }
 
 const std::shared_ptr<GameState> &Game::get_state() const {

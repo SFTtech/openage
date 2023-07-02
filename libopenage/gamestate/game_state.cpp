@@ -36,4 +36,12 @@ const std::unordered_map<entity_id_t, std::shared_ptr<GameEntity>> &GameState::g
 	return this->game_entities;
 }
 
+const std::shared_ptr<assets::ModManager> &GameState::get_mod_manager() const {
+	return this->mod_manager;
+}
+
+void GameState::set_mod_manager(const std::shared_ptr<assets::ModManager> &mod_manager) {
+	this->mod_manager = mod_manager;
+}
+
 } // namespace openage::gamestate

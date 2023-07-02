@@ -12,8 +12,13 @@ class Database;
 class View;
 } // namespace nyan
 
-namespace openage::gamestate {
+namespace openage {
 
+namespace assets {
+class ModManager;
+}
+
+namespace gamestate {
 class GameEntity;
 
 /**
@@ -62,6 +67,12 @@ public:
      */
 	const std::unordered_map<entity_id_t, std::shared_ptr<GameEntity>> &get_game_entities() const;
 
+	/**
+      * TODO: Only for testing.
+      */
+	const std::shared_ptr<assets::ModManager> &get_mod_manager() const;
+	void set_mod_manager(const std::shared_ptr<assets::ModManager> &mod_manager);
+
 private:
 	/**
      * View for the nyan game data database.
@@ -72,5 +83,11 @@ private:
      * Map of all game entities in the current game by their ID.
      */
 	std::unordered_map<entity_id_t, std::shared_ptr<GameEntity>> game_entities;
+
+	/**
+     * TODO: Only for testing
+     */
+	std::shared_ptr<assets::ModManager> mod_manager;
 };
-} // namespace openage::gamestate
+} // namespace gamestate
+} // namespace openage
