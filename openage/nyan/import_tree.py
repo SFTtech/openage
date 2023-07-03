@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 
 """
 Tree structure for resolving imports.
@@ -47,7 +47,7 @@ class Node:
         self.parent: Node = parent
 
         if not self.parent and self.node_type is not NodeType.ROOT:
-            raise Exception("Only node with type ROOT are allowed to have no parent")
+            raise TypeError("Only node with type ROOT are allowed to have no parent")
 
         self.depth = 0
         if self.node_type is NodeType.ROOT:
@@ -292,7 +292,7 @@ class ImportTree:
         aliases = {}
         for current_node in self.alias_nodes:
             if current_node.alias in aliases:
-                raise Exception(f"duplicate alias: {current_node.alias}")
+                raise ValueError(f"duplicate alias: {current_node.alias}")
 
             aliases.update({current_node.alias: current_node.get_fqon()})
 

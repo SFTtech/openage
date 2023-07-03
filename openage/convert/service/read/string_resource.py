@@ -1,4 +1,4 @@
-# Copyright 2014-2022 the openage authors. See copying.md for legal info.
+# Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 """
 Module for reading plaintext-based language files.
@@ -53,8 +53,8 @@ def get_string_resources(args: Namespace) -> StringResource:
             stringres.fill_from(strings)
 
         else:
-            raise Exception("No service found for parsing language files "
-                            f"of version {game_edition.game_id}")
+            raise KeyError("No service found for parsing language files "
+                           f"of version {game_edition.game_id}")
 
         # TODO: Other game versions
 

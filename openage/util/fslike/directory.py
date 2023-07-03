@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 """
 FSLikeObjects that represent actual file system paths:
@@ -36,7 +36,7 @@ class Directory(FSLikeObject):
         elif isinstance(path_, bytes):
             path = path_
         else:
-            raise Exception(f"incompatible type for path: {type(path_)}")
+            raise TypeError(f"incompatible type for path: {type(path_)}")
 
         if not os.path.isdir(path):
             if create_if_missing:

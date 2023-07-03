@@ -1,4 +1,4 @@
-# Copyright 2016-2022 the openage authors. See copying.md for legal info.
+# Copyright 2016-2023 the openage authors. See copying.md for legal info.
 
 """
 Cutting some user interface assets into subtextures.
@@ -77,7 +77,7 @@ class InterfaceCutter:
         matches = visgrep(search_area, pattern, 100000)
 
         if len(matches) < 2:
-            raise Exception(f"visgrep failed to find repeating pattern in id={self.idx})\n")
+            raise RuntimeError(f"visgrep failed to find repeating pattern in id={self.idx})\n")
 
         # create the found pattern texture
         return TextureImage(

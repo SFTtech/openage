@@ -1,4 +1,4 @@
-# Copyright 2013-2022 the openage authors. See copying.md for legal info.
+# Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=too-many-function-args
 
@@ -183,9 +183,9 @@ class BlendingMode:
                                (4 * (y_pos - half_row_count)))
 
             if read_values > (tile_size - read_so_far):
-                raise Exception("reading more bytes than tile has left")
+                raise SyntaxError("reading more bytes than tile has left")
             if read_values < 0:
-                raise Exception(f"reading negative count: {read_values:d}")
+                raise SyntaxError(f"reading negative count: {read_values:d}")
 
             # grab the pixels out of the big list
             pixels = list(data[read_so_far:(read_so_far + read_values)])
@@ -194,7 +194,7 @@ class BlendingMode:
             space_count = self.row_count - 1 - (read_values // 2)
 
             # insert padding to the left and right (-1 for fully transparent)
-            padding = ([-1] * space_count)
+            padding = [-1] * space_count
             pixels = padding + pixels + padding
 
             if len(pixels) > max_width:
@@ -204,7 +204,7 @@ class BlendingMode:
             tilerows.append(pixels)
 
         if read_so_far != tile_size:
-            raise Exception(f"got leftover bytes: {tile_size - read_so_far:d}")
+            raise SyntaxError(f"got leftover bytes: {tile_size - read_so_far:d}")
 
         return BlendingTile(tilerows, max_width, self.row_count)
 

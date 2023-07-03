@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-2023 the openage authors. See copying.md for legal info.
 # TODO pylint: disable=C,R,abstract-method
 
 """
@@ -104,7 +104,7 @@ class IntMember(ValueMember):
                 return IntMember(self.name, diff_value)
 
         else:
-            raise Exception(
+            raise TypeError(
                 f"type {type(self)} member cannot be diffed with type {type(other)}")
 
 
@@ -136,7 +136,7 @@ class FloatMember(ValueMember):
                 return FloatMember(self.name, diff_value)
 
         else:
-            raise Exception(
+            raise TypeError(
                 f"type {type(self)} member cannot be diffed with type {type(other)}")
 
 
@@ -165,7 +165,7 @@ class BooleanMember(ValueMember):
                 return BooleanMember(self.name, other.value)
 
         else:
-            raise Exception(
+            raise TypeError(
                 f"type {type(self)} member cannot be diffed with type {type(other)}")
 
 
@@ -194,7 +194,7 @@ class IDMember(ValueMember):
                 return IDMember(self.name, other.value)
 
         else:
-            raise Exception(
+            raise TypeError(
                 f"type {type(self)} member cannot be diffed with type {type(other)}")
 
 
@@ -237,7 +237,7 @@ class BitfieldMember(ValueMember):
                 return BitfieldMember(self.name, difference)
 
         else:
-            raise Exception(
+            raise TypeError(
                 f"type {type(self)} member cannot be diffed with type {type(other)}")
 
     def __len__(self):
@@ -269,7 +269,7 @@ class StringMember(ValueMember):
                 return StringMember(self.name, other.value)
 
         else:
-            raise Exception(
+            raise TypeError(
                 f"type {type(self)} member cannot be diffed with type {type(other)}")
 
     def __len__(self):
@@ -346,7 +346,7 @@ class ContainerMember(ValueMember):
             return ContainerMember(self.name, diff_dict)
 
         else:
-            raise Exception(
+            raise TypeError(
                 f"type {type(self)} member cannot be diffed with type {type(other)}")
 
     def _create_dict(self, member_list: list[typing.Union[IntMember,
@@ -403,7 +403,7 @@ class ArrayMember(ValueMember):
         for member in members:
             if not isinstance(member, (NoDiffMember, LeftMissingMember, RightMissingMember)):
                 if member.get_type() is not self._allowed_member_type:
-                    raise Exception("%s has type %s, but this ArrayMember only allows %s"
+                    raise TypeError("%s has type %s, but this ArrayMember only allows %s"
                                     % (member, member.get_type(), allowed_member_type))
 
     def get_type(self) -> StorageType:
@@ -428,7 +428,7 @@ class ArrayMember(ValueMember):
         elif self._allowed_member_type is StorageType.CONTAINER_MEMBER:
             return StorageType.ARRAY_CONTAINER
 
-        raise Exception(f"{self} has no valid member type")
+        raise TypeError(f"{self} has no valid member type")
 
     def get_container(
         self,
@@ -450,7 +450,7 @@ class ArrayMember(ValueMember):
         :type force_duplicate: bool
         """
         if self.get_type() is not StorageType.ARRAY_CONTAINER:
-            raise Exception("%s: Container can only be generated from arrays with"
+            raise TypeError("%s: Container can only be generated from arrays with"
                             " type 'contarray', not %s"
                             % (self, self.get_type()))
 
@@ -460,8 +460,8 @@ class ArrayMember(ValueMember):
                 if force_not_found:
                     continue
 
-                raise Exception("%s: Container %s has no member called %s"
-                                % (self, container, key_member_name))
+                raise KeyError("%s: Container %s has no member called %s"
+                               % (self, container, key_member_name))
 
             key_member_value = container[key_member_name].value
 
@@ -469,8 +469,8 @@ class ArrayMember(ValueMember):
                 if force_duplicate:
                     continue
 
-                raise Exception("%s: Duplicate key %s for container member %s"
-                                % (self, key_member_value, key_member_name))
+                raise KeyError("%s: Duplicate key %s for container member %s"
+                               % (self, key_member_value, key_member_name))
 
             member_dict.update({key_member_value: container})
 
@@ -513,7 +513,7 @@ class ArrayMember(ValueMember):
             return ArrayMember(self.name, self._allowed_member_type, diff_list)
 
         else:
-            raise Exception(
+            raise TypeError(
                 f"type {type(self)} member cannot be diffed with type {type(other)}")
 
     def __getitem__(self, key):

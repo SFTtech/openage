@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-branches,too-many-statements
 # pylint: disable=too-many-locals,too-many-public-methods
@@ -557,8 +557,8 @@ class AoCProcessor:
                     break
 
             else:
-                raise Exception(f"Unit {unit_id} is not first in line, but no previous unit can "
-                                "be found in other_connections")
+                raise RuntimeError(f"Unit {unit_id} is not first in line, but no previous "
+                                   "unit can be found in other_connections")
 
             connected_ids = connection["other_connected_ids"].value
             previous_unit_id = connected_ids[connected_index].value
@@ -690,8 +690,8 @@ class AoCProcessor:
                         break
 
                 else:
-                    raise Exception(f"Building {building_id} is not first in line, but no "
-                                    "previous building could be found in other_connections")
+                    raise RuntimeError(f"Building {building_id} is not first in line, but no "
+                                       "previous building could be found in other_connections")
 
                 previous_building_id = connected_ids[connected_index].value
                 break

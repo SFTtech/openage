@@ -272,7 +272,7 @@ class PXDGenerator:
                 state = transitions[state](self, token, val, namespace_parts)
 
             except KeyError as exp:
-                raise Exception("reached invalid state in pxdgen") from exp
+                raise ValueError("reached invalid state in pxdgen") from exp
 
         if self.stack:
             raise self.parser_error("expected '}', but found EOF")

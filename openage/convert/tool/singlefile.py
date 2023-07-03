@@ -61,7 +61,8 @@ def main(args, error):
 
     if not (args.mode in ("sld", "drs-wav", "wav") or file_extension in ("sld", "wav")):
         if not args.palettes_path:
-            raise Exception("palettes-path needs to be specified")
+            raise RuntimeError("palettes-path needs to be specified for "
+                               f"file type '{file_extension}'")
 
         palettes_path = Path(args.palettes_path)
         palettes = read_palettes(palettes_path)
@@ -90,7 +91,7 @@ def main(args, error):
         read_wav_in_drs_file(args.drs, args.filename, args.output)
 
     else:
-        raise Exception("format could not be determined")
+        raise SyntaxError("format could not be determined")
 
 
 def read_palettes(palettes_path: Path) -> dict[str, ColorTable]:
@@ -129,18 +130,18 @@ def read_palettes(palettes_path: Path) -> dict[str, ColorTable]:
         info("opening palette files in drs archive '%s'", palettes_path.name)
 
         # open from drs archive
-        palette_file = Path(palettes_path).open("rb")
-        game_version = AOC_GAME_VERSION
-        palette_dir = DRS(palette_file, game_version)
+        with Path(palettes_path).open("rb") as palette_file:
+            game_version = AOC_GAME_VERSION
+            palette_dir = DRS(palette_file, game_version)
 
-        info("parsing palette data...")
-        for palette_file in palette_dir.root.iterdir():
-            # Only 505XX.bina files are usable palettes
-            if palette_file.stem.startswith("505"):
-                palette = ColorTable(palette_file.open("rb").read())
-                palette_id = int(palette_file.stem)
+            info("parsing palette data...")
+            for palette_file in palette_dir.root.iterdir():
+                # Only 505XX.bina files are usable palettes
+                if palette_file.stem.startswith("505"):
+                    palette = ColorTable(palette_file.open("rb").read())
+                    palette_id = int(palette_file.stem)
 
-                palettes[palette_id] = palette
+                    palettes[palette_id] = palette
 
     return palettes
 
@@ -158,15 +159,14 @@ def read_slp_file(
 
     # open the slp
     info("opening slp file at '%s'", Path(slp_path).name)
-    slp_file = Path(slp_path).open("rb")
+    with Path(slp_path).open("rb") as slp_file:
+        # import here to prevent that the __main__ depends on SLP
+        # just by importing this singlefile.py.
+        from ..value_object.read.media.slp import SLP
 
-    # import here to prevent that the __main__ depends on SLP
-    # just by importing this singlefile.py.
-    from ..value_object.read.media.slp import SLP
-
-    # parse the slp_path image
-    info("parsing slp image...")
-    slp_image = SLP(slp_file.read())
+        # parse the slp_path image
+        info("parsing slp image...")
+        slp_image = SLP(slp_file.read())
 
     # create texture
     info("packing texture...")
@@ -207,15 +207,14 @@ def read_slp_in_drs_file(
     drs_file = DRS(drs, game_version)
 
     info("opening slp in drs '%s:%s'...", drs.name, slp_path)
-    slp_file = drs_file.root[slp_path].open("rb")
+    with drs_file.root[slp_path].open("rb") as slp_file:
+        # import here to prevent that the __main__ depends on SLP
+        # just by importing this singlefile.py.
+        from ..value_object.read.media.slp import SLP
 
-    # import here to prevent that the __main__ depends on SLP
-    # just by importing this singlefile.py.
-    from ..value_object.read.media.slp import SLP
-
-    # parse the slp image
-    info("parsing slp image...")
-    slp_image = SLP(slp_file.read())
+        # parse the slp image
+        info("parsing slp image...")
+        slp_image = SLP(slp_file.read())
 
     # create texture
     info("packing texture...")
@@ -253,15 +252,14 @@ def read_smp_file(
 
     # open the smp
     info("opening smp file at '%s'", smp_path)
-    smp_file = Path(smp_path).open("rb")
+    with Path(smp_path).open("rb") as smp_file:
+        # import here to prevent that the __main__ depends on SMP
+        # just by importing this singlefile.py.
+        from ..value_object.read.media.smp import SMP
 
-    # import here to prevent that the __main__ depends on SMP
-    # just by importing this singlefile.py.
-    from ..value_object.read.media.smp import SMP
-
-    # parse the smp_path image
-    info("parsing smp image...")
-    smp_image = SMP(smp_file.read())
+        # parse the smp_path image
+        info("parsing smp image...")
+        smp_image = SMP(smp_file.read())
 
     # create texture
     info("packing texture...")
@@ -299,15 +297,14 @@ def read_smx_file(
 
     # open the smx
     info("opening smx file at '%s'", smx_path)
-    smx_file = Path(smx_path).open("rb")
+    with Path(smx_path).open("rb") as smx_file:
+        # import here to prevent that the __main__ depends on SMP
+        # just by importing this singlefile.py.
+        from ..value_object.read.media.smx import SMX
 
-    # import here to prevent that the __main__ depends on SMP
-    # just by importing this singlefile.py.
-    from ..value_object.read.media.smx import SMX
-
-    # parse the smx_path image
-    info("parsing smx image...")
-    smx_image = SMX(smx_file.read())
+        # parse the smx_path image
+        info("parsing smx image...")
+        smx_image = SMX(smx_file.read())
 
     # create texture
     info("packing texture...")
@@ -342,17 +339,16 @@ def read_sld_file(
     """
     output_file = Path(output_path)
 
-    # open the smx
+    # open the sld
     info("opening sld file at '%s'", sld_path)
-    smx_file = Path(sld_path).open("rb")
+    with Path(sld_path).open("rb") as smx_file:
+        # import here to prevent that the __main__ depends on SMP
+        # just by importing this singlefile.py.
+        from ..value_object.read.media.sld import SLD
 
-    # import here to prevent that the __main__ depends on SMP
-    # just by importing this singlefile.py.
-    from ..value_object.read.media.sld import SLD
-
-    # parse the smx_path image
-    info("parsing sld image...")
-    sld_image = SLD(smx_file.read())
+        # parse the smx_path image
+        info("parsing sld image...")
+        sld_image = SLD(smx_file.read())
 
     # create texture
     info("packing texture...")
@@ -385,15 +381,14 @@ def read_wav_file(wav_path: Path, output_path: Path) -> None:
 
     # open the wav file
     info("opening wav file at '%s'", wav_path)
-    wav_file = Path(wav_path).open("rb")
+    with Path(wav_path).open("rb") as wav_file:
+        # import here to prevent that the __main__ depends on opusenc
+        # just by importing this singlefile.py.
+        from ..service.export.opus.opusenc import encode
 
-    # import here to prevent that the __main__ depends on opusenc
-    # just by importing this singlefile.py.
-    from ..service.export.opus.opusenc import encode
-
-    # convert wav to opus
-    info("converting wav to opus...")
-    opus_data = encode(wav_file.read())
+        # convert wav to opus
+        info("converting wav to opus...")
+        opus_data = encode(wav_file.read())
 
     # save converted opus data to target directory
     info("saving opus file...")

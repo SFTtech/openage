@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 """
 Provides Path, which is analogous to pathlib.Path,
@@ -326,4 +326,4 @@ class Path:
         """This is only valid for UnionPath, don't call here"""
         # pylint: disable=no-self-use,unused-argument
         # TODO: https://github.com/PyCQA/pylint/issues/2329
-        raise Exception("Do not call mount on Path instances!")
+        raise PermissionError("Do not call mount on Path instances!")

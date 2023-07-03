@@ -183,6 +183,9 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         elif isinstance(self, GenieBuildingLineGroup):
             line = self.data.unit_lines[line_id]
 
+        else:
+            raise ValueError(f"Unknown creatable line ID {line_id} for {repr(self)}")
+
         return line in self.creates
 
     def contains_entity(self, unit_id: int) -> bool:

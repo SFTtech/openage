@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 """
 Some file handling utilities
 """
@@ -47,7 +47,7 @@ def read_nullterminated_string(fileobj: FSLikeObject, maxlen: int = 255) -> byte
         result.append(char)
 
         if len(result) > maxlen:
-            raise Exception("Null-terminated string too long.")
+            raise SyntaxError("Null-terminated string too long.")
 
     return bytes(result)
 

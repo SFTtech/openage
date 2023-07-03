@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 """
 Provides some classes designed to expand the functionality of struct.struct
@@ -45,17 +45,17 @@ class NamedStructMeta(type):
 
             if membername == 'endianness':
                 if specstr is not None:
-                    raise Exception("endianness has been given multiple times")
+                    raise SyntaxError("endianness has been given multiple times")
 
                 if value not in "@=<>!":
-                    raise ValueError("endianess: expected one of @=<>!")
+                    raise SyntaxError("endianess: expected one of @=<>!")
 
                 specstr = value
                 continue
 
             if specstr is None:
-                raise Exception("NamedStruct: endianness expected before "
-                                "attribute " + membername)
+                raise SyntaxError("NamedStruct: endianness expected before "
+                                  "attribute " + membername)
 
             if valuehasspecstr:
                 postprocessors[membername], value = value, value.specstr
@@ -124,9 +124,8 @@ class NamedStruct(metaclass=NamedStructMeta):
         values = self._struct.unpack(data)
 
         if len(self._attributes) != len(values):
-            raise Exception("internal error: "
-                            "number of attributes differs from number of "
-                            "struct fields")
+            raise SyntaxError("number of attributes differs from number of "
+                              "struct fields")
 
         for name, value in zip(self._attributes, values):
             # pylint: disable=unsupported-membership-test
@@ -242,7 +241,7 @@ class FlagsMeta(type):
             flags[flagvalue] = membername
 
         if flags and not specstr_found:
-            raise Exception("expected a 'specstr' attribute")
+            raise SyntaxError("expected a 'specstr' attribute")
 
         classdict["_flags"] = flags
 

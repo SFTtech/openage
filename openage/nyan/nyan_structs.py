@@ -87,10 +87,10 @@ class NyanObject:
         Adds a nested object to the nyan object.
         """
         if not isinstance(new_nested_object, NyanObject):
-            raise Exception("nested object must have <NyanObject> type")
+            raise TypeError("nested object must have <NyanObject> type")
 
         if new_nested_object is self:
-            raise Exception(
+            raise ValueError(
                 "nyan object must not contain itself as nested object")
 
         self._nested_objects.add(new_nested_object)
@@ -103,10 +103,10 @@ class NyanObject:
         Adds a member to the nyan object.
         """
         if new_member.is_inherited():
-            raise Exception("added member cannot be inherited")
+            raise TypeError("added member cannot be inherited")
 
         if not isinstance(new_member, NyanMember):
-            raise Exception("added member must have <NyanMember> type")
+            raise TypeError("added member must have <NyanMember> type")
 
         self._members.add(new_member)
 
@@ -129,7 +129,7 @@ class NyanObject:
         Registers another object as a child.
         """
         if not isinstance(new_child, NyanObject):
-            raise Exception("children must have <NyanObject> type")
+            raise TypeError("children must have <NyanObject> type")
 
         self._children.add(new_child)
 
@@ -200,14 +200,14 @@ class NyanObject:
                     if inherited_member.get_name() == member_name:
                         return inherited_member
 
-            raise Exception(f"{repr(self)} has no member '{member_name}' with origin '{origin}'")
+            raise ValueError(f"{repr(self)} has no member '{member_name}' with origin '{origin}'")
 
         # Else: Member should be a direct member of this nyan object
         for member in self._members:
             if member.get_name() == member_name:
                 return member
 
-        raise Exception(f"{self} has no member '{member_name}'")
+        raise ValueError(f"{self} has no member '{member_name}'")
 
     def get_uninitialized_members(self) -> list:
         """
@@ -277,7 +277,7 @@ class NyanObject:
             self._fqon = new_fqon
 
         else:
-            raise Exception(f"{self}: Fqon must be a tuple(str) not {type(new_fqon)}")
+            raise TypeError(f"{self}: Fqon must be a tuple(str) not {type(new_fqon)}")
 
         # Recursively set fqon for nested objects
         for nested_object in self._nested_objects:
@@ -290,13 +290,13 @@ class NyanObject:
         parent objects.
         """
         if not self.has_ancestor(new_inherited_member.get_origin()):
-            raise Exception(f"{repr(self)}: cannot add inherited member "
-                            f"{new_inherited_member} because "
-                            f"{new_inherited_member.get_origin()} is not "
-                            f"an ancestor of {repr(self)}")
+            raise ValueError(f"{repr(self)}: cannot add inherited member "
+                             f"{new_inherited_member} because "
+                             f"{new_inherited_member.get_origin()} is not "
+                             f"an ancestor of {repr(self)}")
 
         if not isinstance(new_inherited_member, InheritedNyanMember):
-            raise Exception("added member must have <InheritedNyanMember> type")
+            raise TypeError("added member must have <InheritedNyanMember> type")
 
         # Only add it, if it was not inherited before
         if not self.has_member(new_inherited_member.get_name(),
@@ -436,34 +436,34 @@ class NyanObject:
         """
         # self.name must be a string
         if not isinstance(self.name, str):
-            raise Exception(f"{repr(self)}: 'name' must be a string")
+            raise TypeError(f"{repr(self)}: 'name' must be a string")
 
         # self.name must conform to nyan grammar rules
         if not re.fullmatch(r"[a-zA-Z_][a-zA-Z0-9_]*", self.name):
-            raise Exception(f"{repr(self)}: 'name' is not well-formed")
+            raise SyntaxError(f"{repr(self)}: 'name' is not well-formed")
 
         # self._parents must be NyanObjects
         for parent in self._parents:
             if not isinstance(parent, NyanObject):
-                raise Exception(f"{repr(self)}: {repr(parent)} must have NyanObject type")
+                raise TypeError(f"{repr(self)}: {repr(parent)} must have NyanObject type")
 
         # self._members must be NyanMembers
         for member in self._members:
             if not isinstance(member, NyanMember):
-                raise Exception(f"{repr(self)}: {repr(member)} must have NyanMember type")
+                raise TypeError(f"{repr(self)}: {repr(member)} must have NyanMember type")
 
             # a member in self._members must also not be inherited
             if isinstance(member, InheritedNyanMember):
-                raise Exception(f"{repr(self)}: regular member {repr(member)} must not "
+                raise TypeError(f"{repr(self)}: regular member {repr(member)} must not "
                                 "have InheritedNyanMember type")
 
         # self._nested_objects must be NyanObjects
         for nested_object in self._nested_objects:
             if not isinstance(nested_object, NyanObject):
-                raise Exception(f"{repr(self)}: {repr(nested_object)} must have NyanObject type")
+                raise TypeError(f"{repr(self)}: {repr(nested_object)} must have NyanObject type")
 
             if nested_object is self:
-                raise Exception(f"{repr(self)}: must not contain itself as nested object")
+                raise ValueError(f"{repr(self)}: must not contain itself as nested object")
 
     def __repr__(self):
         return f"NyanObject<{self.name}>"
@@ -520,7 +520,7 @@ class NyanPatch(NyanObject):
         self._target = target
 
         if not isinstance(self._target, NyanObject):
-            raise Exception(f"{repr(self)}: '_target' must have NyanObject type")
+            raise TypeError(f"{repr(self)}: '_target' must have NyanObject type")
 
     def dump(self, indent_depth: int = 0, import_tree: ImportTree = None) -> str:
         """
@@ -572,23 +572,23 @@ class NyanPatch(NyanObject):
         # Target must be a nyan object
         if self._target:
             if not isinstance(self._target, NyanObject):
-                raise Exception(f"{repr(self)}: '_target' must have NyanObject type")
+                raise TypeError(f"{repr(self)}: '_target' must have NyanObject type")
 
         # Added inheritance must be tuples of "FRONT"/"BACK"
         # and a nyan object
         if len(self._add_inheritance) > 0:
             for inherit in self._add_inheritance:
                 if not isinstance(inherit, tuple):
-                    raise Exception(f"{repr(self)}: '_add_inheritance' must be a tuple")
+                    raise TypeError(f"{repr(self)}: '_add_inheritance' must be a tuple")
 
                 if len(inherit) != 2:
-                    raise Exception(f"{repr(self)}: '_add_inheritance' tuples must have length 2")
+                    raise SyntaxError(f"{repr(self)}: '_add_inheritance' tuples must have length 2")
 
                 if inherit[0] not in ("FRONT", "BACK"):
-                    raise Exception(f"{repr(self)}: added inheritance must be FRONT or BACK mode")
+                    raise ValueError(f"{repr(self)}: added inheritance must be FRONT or BACK mode")
 
                 if not isinstance(inherit[1], NyanObject):
-                    raise Exception(f"{repr(self)}: added inheritance must contain NyanObject")
+                    raise ValueError(f"{repr(self)}: added inheritance must contain NyanObject")
 
     def __repr__(self):
         return f"NyanPatch<{self.name}<{self._target.name}>>"
@@ -807,20 +807,20 @@ class NyanMemberType:
             # if the member type is a composite, then the element types need
             # to be initialized
             if not self._element_types:
-                raise Exception(f"{repr(self)}: element types are required for composite types")
+                raise TypeError(f"{repr(self)}: element types are required for composite types")
 
             if self.is_complex():
                 # element types of complex types cannot be complex
                 for elem_type in self._element_types:
                     if elem_type.is_real_complex():
-                        raise Exception(
+                        raise TypeError(
                             f"{repr(self)}: element types cannot be complex "
                             f"but contains {elem_type}")
 
         else:
             # if the member is not a composite, the element types should be None
             if self._element_types:
-                raise Exception(
+                raise TypeError(
                     f"{repr(self)}: member type has element types "
                     "but is not a composite")
 
@@ -878,7 +878,7 @@ class NyanMember:
             self._member_type = member_type
 
         else:
-            raise Exception(f"NyanMember<{self.name}>: Expected NyanMemberType for member_type "
+            raise TypeError(f"NyanMember<{self.name}>: Expected NyanMemberType for member_type "
                             f"but got {type(member_type)}")
 
         self._override_depth = override_depth           # override depth
@@ -968,8 +968,8 @@ class NyanMember:
         optionally, the operator.
         """
         if not self.value and not operator:
-            raise Exception("Setting a value for an uninitialized member "
-                            "requires also setting the operator")
+            raise ValueError(f"Setting a value for an uninitialized member {repr(self)} "
+                             "requires also setting the operator")
 
         self.value = value
         self._operator = operator
@@ -1024,29 +1024,29 @@ class NyanMember:
         """
         # self.name must be a string
         if not isinstance(self.name, str):
-            raise Exception(f"{repr(self)}: 'name' must be a string")
+            raise TypeError(f"{repr(self)}: 'name' must be a string")
 
         # self.name must conform to nyan grammar rules
         if not re.fullmatch(r"[a-zA-Z_][a-zA-Z0-9_]*", self.name[0]):
-            raise Exception(f"{repr(self)}: 'name' is not well-formed")
+            raise SyntaxError(f"{repr(self)}: 'name' is not well-formed")
 
         if (self.is_initialized() and not self.is_inherited()) or\
                 (self.is_inherited() and self.has_value()):
             # override depth must be a non-negative integer
             if not (isinstance(self._override_depth, int) and
                     self._override_depth >= 0):
-                raise Exception(f"{repr(self)}: override depth must be a non-negative integer")
+                raise ValueError(f"{repr(self)}: override depth must be a non-negative integer")
 
             # Check if operator type matches with member type
             if not self._member_type.accepts_op(self._operator):
-                raise Exception((
+                raise TypeError((
                     f"{repr(self)}: {self._operator} is not a valid"
                     f"operator for member type {self._member_type}"
                 ))
 
             # Check if value is compatible with member type
             if not self._member_type.accepts_value(self.value):
-                raise Exception(f"{repr(self)}: value '{self.value}' is not compatible "
+                raise TypeError(f"{repr(self)}: value '{self.value}' is not compatible "
                                 f"with type '{self._member_type}'")
 
     def _type_conversion(self) -> None:
@@ -1249,7 +1249,7 @@ class NyanMember:
                 namespace=namespace
             )
 
-        raise Exception(f"{repr(self)} has no valid type")
+        raise TypeError(f"{repr(self)} has no valid type")
 
     def __str__(self):
         return self._get_value_str(indent_depth=0)
@@ -1333,11 +1333,11 @@ class NyanPatchMember(NyanMember):
 
         # patch target must be a nyan object
         if not isinstance(self._patch_target, NyanObject):
-            raise Exception(f"{self}: '_patch_target' must have NyanObject type")
+            raise TypeError(f"{self}: '_patch_target' must have NyanObject type")
 
         # member origin must be a nyan object
         if not isinstance(self._member_origin, NyanObject):
-            raise Exception(f"{self}: '_member_origin' must have NyanObject type")
+            raise TypeError(f"{self}: '_member_origin' must have NyanObject type")
 
     def _get_target_member_type(self, name: str, origin: NyanObject):
         """
@@ -1447,11 +1447,11 @@ class InheritedNyanMember(NyanMember):
 
         # parent must be a nyan object
         if not isinstance(self._parent, NyanObject):
-            raise Exception(f"{repr(self)}: '_parent' must have NyanObject type")
+            raise TypeError(f"{repr(self)}: '_parent' must have NyanObject type")
 
         # origin must be a nyan object
         if not isinstance(self._origin, NyanObject):
-            raise Exception(f"{repr(self)}: '_origin' must have NyanObject type")
+            raise TypeError(f"{repr(self)}: '_origin' must have NyanObject type")
 
     def __repr__(self):
         return f"InheritedNyanMember<{self.name}: {self._member_type}>"

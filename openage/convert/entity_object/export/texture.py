@@ -143,7 +143,7 @@ class Texture(GenieStructure):
                 for tile in input_data.alphamasks
             ]
         else:
-            raise Exception("cannot create Texture "
+            raise TypeError("cannot create Texture "
                             "from unknown source type: %s" % (type(input_data)))
 
     def _to_subtextures(

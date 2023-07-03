@@ -67,7 +67,7 @@ def get_armor_class_lookups(game_version: GameVersion) -> dict[int, str]:
     if game_edition.game_id == "SWGB":
         return swgb_internal.ARMOR_CLASS_LOOKUPS
 
-    raise Exception(f"No lookup dict found for game version {game_edition.edition_name}")
+    raise RuntimeError(f"No lookup dict found for game version {game_edition.edition_name}")
 
 
 @cache
@@ -111,7 +111,7 @@ def get_civ_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
     if game_edition.game_id == "SWGB":
         return swgb_internal.CIV_GROUP_LOOKUPS
 
-    raise Exception(f"No lookup dict found for game version {game_edition.edition_name}")
+    raise RuntimeError(f"No lookup dict found for game version {game_edition.edition_name}")
 
 
 @cache
@@ -134,7 +134,7 @@ def get_class_lookups(game_version: GameVersion) -> dict[int, str]:
     if game_edition.game_id == "SWGB":
         return swgb_internal.CLASS_ID_LOOKUPS
 
-    raise Exception(f"No lookup dict found for game version {game_edition.edition_name}")
+    raise RuntimeError(f"No lookup dict found for game version {game_edition.edition_name}")
 
 
 @cache
@@ -157,7 +157,7 @@ def get_command_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]
     if game_edition.game_id == "SWGB":
         return swgb_internal.COMMAND_TYPE_LOOKUPS
 
-    raise Exception(f"No lookup dict found for game version {game_edition.edition_name}")
+    raise RuntimeError(f"No lookup dict found for game version {game_edition.edition_name}")
 
 
 @cache
@@ -243,7 +243,7 @@ def get_entity_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
 
         return entity_lookup_dict
 
-    raise Exception(f"No lookup dict found for game version {game_edition.edition_name}")
+    raise RuntimeError(f"No lookup dict found for game version {game_edition.edition_name}")
 
 
 @cache
@@ -266,7 +266,7 @@ def get_gather_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
     if game_edition.game_id == "SWGB":
         return swgb_internal.GATHER_TASK_LOOKUPS
 
-    raise Exception(f"No lookup dict found for game version {game_edition.edition_name}")
+    raise RuntimeError(f"No lookup dict found for game version {game_edition.edition_name}")
 
 
 @cache
@@ -312,7 +312,7 @@ def get_graphic_set_lookups(
     if game_edition.game_id == "SWGB":
         return swgb_internal.GRAPHICS_SET_LOOKUPS
 
-    raise Exception(f"No lookup dict found for game version {game_edition.edition_name}")
+    raise KeyError(f"No lookup dict found for game version {game_edition.edition_name}")
 
 
 @cache
@@ -339,7 +339,7 @@ def get_restock_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]
     if game_edition.game_id == "SWGB":
         return swgb_internal.RESTOCK_TARGET_LOOKUPS
 
-    raise Exception(f"No lookup dict found for game version {game_edition.edition_name}")
+    raise RuntimeError(f"No lookup dict found for game version {game_edition.edition_name}")
 
 
 @cache
@@ -383,7 +383,7 @@ def get_tech_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
     if game_edition.game_id == "SWGB":
         return swgb_internal.TECH_GROUP_LOOKUPS
 
-    raise Exception(f"No lookup dict found for game version {game_edition.edition_name}")
+    raise RuntimeError(f"No lookup dict found for game version {game_edition.edition_name}")
 
 
 @cache
@@ -429,7 +429,7 @@ def get_terrain_lookups(
     if game_edition.game_id == "SWGB":
         return swgb_internal.TERRAIN_GROUP_LOOKUPS
 
-    raise Exception(f"No lookup dict found for game version {game_edition.edition_name}")
+    raise RuntimeError(f"No lookup dict found for game version {game_edition.edition_name}")
 
 
 @cache
@@ -473,4 +473,4 @@ def get_terrain_type_lookups(game_version: GameVersion) -> dict[int, tuple]:
     if game_edition.game_id == "SWGB":
         return swgb_internal.TERRAIN_TYPE_LOOKUPS
 
-    raise Exception(f"No lookup dict found for game version {game_edition.edition_name}")
+    raise RuntimeError(f"No lookup dict found for game version {game_edition.edition_name}")

@@ -1,4 +1,4 @@
-# Copyright 2013-2022 the openage authors. See copying.md for legal info.
+# Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,too-many-function-args
 from __future__ import annotations
@@ -49,11 +49,11 @@ class ColorTable(GenieStructure):
 
         # check for palette header
         if not (self.header == "JASC-PAL" or self.header == "JASC-PALX"):
-            raise Exception("No palette header 'JASC-PAL' or 'JASC-PALX' found, "
-                            "instead: %r" % self.header)
+            raise SyntaxError("No palette header 'JASC-PAL' or 'JASC-PALX' found, "
+                              "instead: %r" % self.header)
 
         if self.version != "0100":
-            raise Exception(f"palette version mispatch, got {self.version}")
+            raise SyntaxError(f"palette version mispatch, got {self.version}")
 
         entry_count = int(lines[2])
 
@@ -77,9 +77,9 @@ class ColorTable(GenieStructure):
             self.palette.append(tuple(int(val) for val in line.split()))
 
         if len(self.palette) != entry_count:
-            raise Exception("read a %d palette entries "
-                            "but expected %d." % (
-                                len(self.palette), entry_count))
+            raise SyntaxError("read a %d palette entries "
+                              "but expected %d." % (
+                                  len(self.palette), entry_count))
 
     def __getitem__(self, index):
         return self.palette[index]
@@ -152,7 +152,7 @@ class ColorTable(GenieStructure):
                         drawn = drawn + 1
 
         else:
-            raise Exception("fak u, no negative values for squaresize pls.")
+            raise ValueError("fak u, no negative values for squaresize pls.")
 
         return palette_image
 
@@ -194,7 +194,7 @@ class PlayerColorTable(GenieStructure):
         super().__init__()
 
         if not isinstance(base_table, ColorTable):
-            raise Exception(f"no ColorTable supplied, instead: {type(base_table)}")
+            raise TypeError(f"no ColorTable supplied, instead: {type(base_table)}")
 
         self.header = base_table.header
         self.version = base_table.version

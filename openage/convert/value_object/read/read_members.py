@@ -1,4 +1,4 @@
-# Copyright 2014-2022 the openage authors. See copying.md for legal info.
+# Copyright 2014-2023 the openage authors. See copying.md for legal info.
 #
 # TODO pylint: disable=C,R,abstract-method
 
@@ -106,7 +106,7 @@ class DynLengthMember(ReadMember):
             type_ok = True
 
         if not type_ok:
-            raise Exception("invalid length type passed to %s: %s<%s>" % (
+            raise TypeError("invalid length type passed to %s: %s<%s>" % (
                 type(self), length, type(length)))
 
         self.length = length
@@ -117,7 +117,7 @@ class DynLengthMember(ReadMember):
                 return self.any_length
 
             if not obj:
-                raise Exception("dynamic length query requires source object")
+                raise ValueError("dynamic length query requires source object")
 
             if callable(self.length):
                 # length is a lambda that determines the length by some fancy manner
@@ -137,7 +137,7 @@ class DynLengthMember(ReadMember):
 
             # look up the given member name and return the value.
             if not isinstance(length_def, str):
-                raise Exception("length lookup definition is not str: %s<%s>" % (
+                raise TypeError("length lookup definition is not str: %s<%s>" % (
                     length_def, type(length_def)))
 
             return getattr(obj, length_def)
@@ -162,7 +162,7 @@ class DynLengthMember(ReadMember):
         elif callable(target):
             return True
         else:
-            raise Exception(f"unknown length definition supplied: {target}")
+            raise TypeError(f"unknown length definition supplied: {target}")
 
 
 class RefMember(ReadMember):
@@ -202,7 +202,7 @@ class NumberMember(ReadMember):
     def __init__(self, number_def: str):
         super().__init__()
         if number_def not in self.type_scan_lookup:
-            raise Exception(
+            raise TypeError(
                 f"created number column from unknown type {number_def}")
 
         # type used for the output struct
@@ -311,8 +311,8 @@ class EnumLookupMember(EnumMember):
                 h = f" = {hex(data)}"
             except TypeError:
                 h = ""
-            raise Exception("failed to find %s%s in lookup dict %s!" %
-                            (str(data), h, self.type_name)) from None
+            raise KeyError("failed to find %s%s in lookup dict %s!" %
+                           (str(data), h, self.type_name)) from None
 
 
 class CharArrayMember(DynLengthMember):

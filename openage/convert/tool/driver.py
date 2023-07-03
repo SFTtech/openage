@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 """
 Receives cleaned-up srcdir and targetdir objects from .main, and drives the
@@ -152,4 +152,4 @@ def get_converter(game_version: GameVersion):
             from ..processor.conversion.swgbcc.processor import SWGBCCProcessor
             return SWGBCCProcessor
 
-    raise Exception(f"no valid converter found for game edition {game_edition.edition_name}")
+    raise RuntimeError(f"no valid converter found for game edition {game_edition.edition_name}")

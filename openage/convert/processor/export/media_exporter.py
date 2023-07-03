@@ -1,4 +1,4 @@
-# Copyright 2021-2022 the openage authors. See copying.md for legal info.
+# Copyright 2021-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments,too-many-locals
 """
@@ -315,7 +315,7 @@ class MediaExporter:
         soundata = encode(media_file)
 
         if isinstance(soundata, (str, int)):
-            raise Exception(f"opusenc failed: {soundata}")
+            raise RuntimeError(f"opusenc failed: {soundata}")
 
         export_file = exportdir[
             export_request.targetdir,
@@ -381,8 +381,8 @@ class MediaExporter:
             return
 
         else:
-            raise Exception(f"Source file {source_file.name} has an unrecognized extension: "
-                            f"{source_file.suffix.lower()}")
+            raise SyntaxError(f"Source file {source_file.name} has an unrecognized extension: "
+                              f"{source_file.suffix.lower()}")
 
         if game_version.edition.game_id in ("AOC", "SWGB"):
             from .terrain_merge import merge_terrain

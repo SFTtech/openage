@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 # pylint: disable=too-many-instance-attributes,too-many-branches,too-few-public-methods
 
@@ -54,7 +54,7 @@ class ConverterObject:
                 self.members.update(members)
 
             else:
-                raise Exception("members must be an instance of ValueMember")
+                raise TypeError("members must be an instance of ValueMember")
 
     def get_id(self) -> typing.Union[str, int]:
         """
@@ -104,7 +104,7 @@ class ConverterObject:
         that are different. It does not contain NoDiffMembers.
         """
         if type(self) is not type(other):
-            raise Exception(f"type {type(self)} cannot be diffed with type {type(other)}")
+            raise TypeError(f"type {type(self)} cannot be diffed with type {type(other)}")
 
         obj_diff = {}
 
@@ -121,7 +121,7 @@ class ConverterObject:
         Returns the obj_diff between two objects as another ConverterObject.
         """
         if type(self) is not type(other):
-            raise Exception(f"type {type(self)} cannot be diffed with type {type(other)}")
+            raise TypeError(f"type {type(self)} cannot be diffed with type {type(other)}")
 
         obj_diff = {}
 
@@ -228,13 +228,13 @@ class ConverterObjectGroup:
         for raw_api_object in self.raw_api_objects.values():
             if not raw_api_object.is_ready():
                 if not raw_api_object.nyan_object:
-                    raise Exception(f"{raw_api_object}: object is not ready for export: "
-                                    "Nyan object not initialized.")
+                    raise ValueError(f"{raw_api_object}: object is not ready for export: "
+                                     "Nyan object not initialized.")
 
                 uninit_members = raw_api_object.get_nyan_object().get_uninitialized_members()
                 concat_names = ", ".join(f"'{member.get_name()}'" for member in uninit_members)
-                raise Exception(f"{raw_api_object}: object is not ready for export: "
-                                f"Member(s) {concat_names} not initialized.")
+                raise ValueError(f"{raw_api_object}: object is not ready for export: "
+                                 f"Member(s) {concat_names} not initialized.")
 
     def execute_raw_member_pushs(self) -> None:
         """
@@ -255,8 +255,8 @@ class ConverterObjectGroup:
             return self.raw_api_objects[obj_id]
 
         except KeyError as missing_raw_api_obj:
-            raise Exception(f"{repr(self)}: Could not find raw API object "
-                            "with obj_id {obj_id}") from missing_raw_api_obj
+            raise KeyError(f"{repr(self)}: Could not find raw API object "
+                           "with obj_id {obj_id}") from missing_raw_api_obj
 
     def get_raw_api_objects(self) -> dict[str, RawAPIObject]:
         """
@@ -418,8 +418,8 @@ class RawAPIObject:
                 break
 
         else:
-            raise Exception(f"{repr(self)}: Cannot extend raw member {name} "
-                            f"with origin {origin}: member not found")
+            raise ValueError(f"{repr(self)}: Cannot extend raw member {name} "
+                             f"with origin {origin}: member not found")
 
     def create_nyan_object(self) -> None:
         """
@@ -442,8 +442,8 @@ class RawAPIObject:
         The nyan object has to be created before this function can be called.
         """
         if self.nyan_object is None:
-            raise Exception(f"{repr(self)}: nyan object needs to be created before "
-                            "member values can be assigned")
+            raise RuntimeError(f"{repr(self)}: nyan object needs to be created before "
+                               "member values can be assigned")
 
         for raw_member in self.raw_members:
             member_name = raw_member[0]
@@ -470,7 +470,7 @@ class RawAPIObject:
         Set the target NyanObject for a patch.
         """
         if not self.is_patch():
-            raise Exception(f"Cannot link patch target: {self} is not a patch")
+            raise TypeError(f"Cannot link patch target: {self} is not a patch")
 
         if isinstance(self._patch_target, ForwardRef):
             target = self._patch_target.resolve()
@@ -529,7 +529,7 @@ class RawAPIObject:
         if self.nyan_object:
             return self.nyan_object
 
-        raise Exception(f"nyan object for {self} has not been created yet")
+        raise RuntimeError(f"nyan object for {self} has not been created yet")
 
     def is_ready(self) -> bool:
         """

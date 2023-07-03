@@ -1,4 +1,4 @@
-# Copyright 2014-2022 the openage authors. See copying.md for legal info.
+# Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 """
 Checks whether all authors are properly listed in copying.md.
@@ -49,7 +49,7 @@ def get_author_emails_copying_md():
 
             if not any(email.startswith(prefix) for prefix in ("E-Mail", "-" * 15))\
                and '@' not in email:
-                raise Exception(f"no @ or à was found in email: {email}")
+                raise ValueError(f"no @ or à was found in email: {email}")
 
             yield email
 

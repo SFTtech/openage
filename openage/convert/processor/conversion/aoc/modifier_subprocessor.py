@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-branches,too-many-nested-blocks,too-many-statements
 
@@ -130,7 +130,7 @@ class AoCModifierSubprocessor:
                                 lines.append(line)
 
                     else:
-                        raise Exception("Gather task has no valid target ID.")
+                        raise ValueError("Gather task has no valid target ID.")
 
                     # Create a modifier for each matching resource spot
                     for resource_line in lines:

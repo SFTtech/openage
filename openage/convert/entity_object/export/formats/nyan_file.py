@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 """
 Nyan file struct that stores a bunch of objects and
@@ -51,7 +51,7 @@ class NyanFile(DataDefinition):
         Adds a nyan object to the file.
         """
         if not isinstance(new_object, NyanObject):
-            raise Exception(f"nyan file cannot contain non-nyan object {new_object}")
+            raise TypeError(f"nyan file cannot contain non-nyan object {new_object}")
 
         self.nyan_objects.add(new_object)
 
