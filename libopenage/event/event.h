@@ -1,11 +1,11 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <memory>
 
-#include "eventhandler.h"
 #include "../curve/curve.h"
+#include "eventhandler.h"
 
 namespace openage::event {
 
@@ -61,9 +61,14 @@ public:
 	void depend_on(const std::shared_ptr<EventEntity> &dependency);
 
 	/**
+     * Cancel the event.
+     */
+	void cancel(const curve::time_t reference_time);
+
+	/**
 	 * For sorting events by their trigger time.
 	 */
-	bool operator <(const Event &other) const;
+	bool operator<(const Event &other) const;
 
 	/**
 	 * When a change happens on an EventEntity (this->entity),
@@ -110,4 +115,4 @@ private:
 };
 
 
-} // openage::event
+} // namespace openage::event

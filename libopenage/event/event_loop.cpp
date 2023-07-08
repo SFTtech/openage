@@ -156,6 +156,9 @@ int EventLoop::execute_events(const curve::time_t &time_until,
 		else {
 			// The element was already removed from the queue, so we can safely
 			// kill it by ignoring it.
+			log::log(DBG << "Loop: event \"" << event->get_eventhandler()->id()
+			             << "\" ignored because its target does not exist anymore "
+			             << "\" for time t=" << event->get_time());
 		}
 	}
 	return cnt;

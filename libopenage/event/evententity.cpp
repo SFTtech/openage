@@ -30,7 +30,7 @@ void EventEntity::changes(const curve::time_t &time) {
 	// This is a maybe-erase construct so obsolete dependents are cleaned up.
 	for (auto it = this->dependents.begin(); it != this->dependents.end();) {
 		auto dependent = it->lock();
-		if (dependent) {
+		if (dependent and not dependent->get_entity().expired()) {
 			switch (dependent->get_eventhandler()->type) {
 			case EventHandler::trigger_type::DEPENDENCY_IMMEDIATELY:
 			case EventHandler::trigger_type::DEPENDENCY:
