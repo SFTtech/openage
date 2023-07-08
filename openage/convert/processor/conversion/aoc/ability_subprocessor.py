@@ -5820,8 +5820,8 @@ class AoCAbilitySubprocessor:
             if ability_comm_sound_id > -1:
                 property_ref = f"{ability_ref}.CommandSound"
                 property_raw_api_object = RawAPIObject(property_ref,
-                                                    "CommandSound",
-                                                    dataset.nyan_api_objects)
+                                                       "CommandSound",
+                                                       dataset.nyan_api_objects)
                 property_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
                 property_location = ForwardRef(line, ability_ref)
                 property_raw_api_object.set_location(property_location)
@@ -5836,8 +5836,8 @@ class AoCAbilitySubprocessor:
                                                                         "command_")
                 sounds_set.append(sound_forward_ref)
                 property_raw_api_object.add_raw_member("sounds",
-                                                    sounds_set,
-                                                    "engine.ability.property.type.CommandSound")
+                                                       sounds_set,
+                                                       "engine.ability.property.type.CommandSound")
 
                 property_forward_ref = ForwardRef(line, property_ref)
                 properties.update({
