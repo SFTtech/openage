@@ -94,7 +94,7 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 		event::EventHandler::param_map::map_t params{
 			{"position", mouse_pos},
 			{"owner", controller.get_controlled()},
-			// ASDF: Remove
+			// TODO: Remove
 			{"select_cb", std::function<void(gamestate::entity_id_t id)>{[&controller](gamestate::entity_id_t id) {
 				 auto &mut_controller = const_cast<Controller &>(controller);
 				 mut_controller.set_selected({id});
