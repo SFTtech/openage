@@ -11,9 +11,9 @@ bool APIAbility::is_ability(const nyan::Object &obj) {
 	return immediate_parent == "engine.ability.Ability";
 }
 
-bool APIAbility::check_property(const nyan::Object &ability, const property_t &property) {
+bool APIAbility::check_property(const nyan::Object &ability, const ability_property_t &property) {
 	std::shared_ptr<nyan::Dict> properties = ability.get<nyan::Dict>("Ability.properties");
-	nyan::ValueHolder property_type = PROPERTY_DEFS.get(property);
+	nyan::ValueHolder property_type = ABILITY_PROPERTY_DEFS.get(property);
 
 	if (properties->contains(property_type)) {
 		return true;
@@ -23,9 +23,9 @@ bool APIAbility::check_property(const nyan::Object &ability, const property_t &p
 }
 
 
-const nyan::Object APIAbility::get_property(const nyan::Object &ability, const property_t &property) {
+const nyan::Object APIAbility::get_property(const nyan::Object &ability, const ability_property_t &property) {
 	std::shared_ptr<nyan::Dict> properties = ability.get<nyan::Dict>("Ability.properties");
-	nyan::ValueHolder property_type = PROPERTY_DEFS.get(property);
+	nyan::ValueHolder property_type = ABILITY_PROPERTY_DEFS.get(property);
 
 	std::shared_ptr<nyan::View> db_view = ability.get_view();
 	std::shared_ptr<nyan::ObjectValue> property_val = std::dynamic_pointer_cast<nyan::ObjectValue>(

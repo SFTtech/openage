@@ -30,7 +30,8 @@ public:
      *
      * @return true if the ability has the property, else false.
      */
-	static bool check_property(const nyan::Object &ability, const property_t &property);
+	static bool check_property(const nyan::Object &ability,
+	                           const ability_property_t &property);
 
 	/**
      * Get the nyan object for a property from an ability.
@@ -40,7 +41,8 @@ public:
      *
      * @return \p Property nyan object (type == \p engine.ability.property.Property).
      */
-	static const nyan::Object get_property(const nyan::Object &ability, const property_t &property);
+	static const nyan::Object get_property(const nyan::Object &ability,
+	                                       const ability_property_t &property);
 };
 
 } // namespace openage::gamestate::api

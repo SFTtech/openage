@@ -91,9 +91,9 @@ const curve::time_t Move::move_default(const std::shared_ptr<gamestate::GameEnti
 	pos_component->set_position(start_time + turn_time + move_time, destination);
 
 	auto ability = move_component->get_ability();
-	if (api::APIAbility::check_property(ability, api::property_t::ANIMATED)) {
-		auto property = api::APIAbility::get_property(ability, api::property_t::ANIMATED);
-		auto animations = api::APIProperty::get_animations(property);
+	if (api::APIAbility::check_property(ability, api::ability_property_t::ANIMATED)) {
+		auto property = api::APIAbility::get_property(ability, api::ability_property_t::ANIMATED);
+		auto animations = api::APIAbilityProperty::get_animations(property);
 		auto animation_paths = api::APIAnimation::get_animation_paths(animations);
 
 		if (animation_paths.size() > 0) [[likely]] {

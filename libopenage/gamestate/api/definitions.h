@@ -22,18 +22,22 @@ static const auto ABILITY_DEFS = datastructure::create_const_map<ability_t, nyan
 
 
 /** Maps internal property types to nyan API values **/
-static const auto PROPERTY_DEFS = datastructure::create_const_map<property_t, nyan::ValueHolder>(
-	std::pair(property_t::ANIMATED,
+static const auto ABILITY_PROPERTY_DEFS = datastructure::create_const_map<ability_property_t, nyan::ValueHolder>(
+	std::pair(ability_property_t::ANIMATED,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.Animated"))),
-	std::pair(property_t::ANIMATION_OVERRIDE,
+	std::pair(ability_property_t::ANIMATION_OVERRIDE,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.AnimationOverride"))),
-	std::pair(property_t::COMMAND_SOUND,
+	std::pair(ability_property_t::COMMAND_SOUND,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.CommandSound"))),
-	std::pair(property_t::EXECUTION_SOUND,
+	std::pair(ability_property_t::EXECUTION_SOUND,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.ExecutionSound"))),
-	std::pair(property_t::DIPLOMATIC,
+	std::pair(ability_property_t::DIPLOMATIC,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.Diplomatic"))),
-	std::pair(property_t::LOCK,
+	std::pair(ability_property_t::LOCK,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.Lock"))));
+
+static const auto PATCH_PROPERTY_DEFS = datastructure::create_const_map<patch_property_t, nyan::ValueHolder>(
+	std::pair(patch_property_t::DIPLOMATIC,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.patch.property.type.Diplomatic"))));
 
 } // namespace openage::gamestate::api

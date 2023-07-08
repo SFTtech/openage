@@ -20,7 +20,7 @@ enum class ability_t {
 /**
  * Types of properties for API abilities.
  */
-enum class property_t {
+enum class ability_property_t {
 	ANIMATED,
 	ANIMATION_OVERRIDE,
 	COMMAND_SOUND,
@@ -29,5 +29,11 @@ enum class property_t {
 	LOCK,
 };
 
+/**
+ * Types of properties for API patches.
+ */
+enum class patch_property_t {
+	DIPLOMATIC,
+};
 
 } // namespace openage::gamestate::api
