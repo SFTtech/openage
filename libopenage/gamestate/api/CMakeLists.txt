@@ -4,4 +4,5 @@ add_sources(libopenage
     definitions.cpp
     property.cpp
     types.cpp
+    util.cpp
 )

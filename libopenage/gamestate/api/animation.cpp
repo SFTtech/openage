@@ -2,6 +2,8 @@
 
 #include "animation.h"
 
+#include "gamestate/api/util.h"
+
 namespace openage::gamestate::api {
 
 bool APIAnimation::is_animation(nyan::Object &obj) {
@@ -10,18 +12,17 @@ bool APIAnimation::is_animation(nyan::Object &obj) {
 }
 
 const std::string APIAnimation::get_animation_path(const nyan::Object &animation) {
-	std::string obj_path = animation.get_info().get_namespace().to_dirpath();
-	return obj_path + "/" + animation.get_file("Animation.sprite");
+	return resolve_file_path(animation, animation.get_file("Animation.sprite"));
 }
 
 const std::vector<std::string> APIAnimation::get_animation_paths(const std::vector<nyan::Object> &animations) {
-	std::vector<std::string> ret;
+	std::vector<std::string> result;
 
 	for (auto &animation : animations) {
-		ret.push_back(get_animation_path(animation));
+		result.push_back(get_animation_path(animation));
 	}
 
-	return ret;
+	return result;
 }
 
 } // namespace openage::gamestate::api
