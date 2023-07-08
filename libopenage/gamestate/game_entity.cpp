@@ -31,9 +31,9 @@ entity_id_t GameEntity::get_id() const {
 }
 
 void GameEntity::set_render_entity(const std::shared_ptr<renderer::world::WorldRenderEntity> &entity) {
-	this->render_entity = entity;
+	// TODO: Transfer state from old render entity to new one?
 
-	this->push_to_render();
+	this->render_entity = entity;
 }
 
 void GameEntity::set_manager(const std::shared_ptr<GameEntityManager> &manager) {
@@ -56,11 +56,8 @@ bool GameEntity::has_component(component::component_t type) {
 	return this->components.contains(type);
 }
 
-void GameEntity::set_animation_path(const std::string &path) {
-	this->animation_path = path;
-}
-
-void GameEntity::push_to_render() {
+void GameEntity::render_update(const curve::time_t &time,
+                               const std::string &animation_path) {
 	if (this->render_entity != nullptr) {
 		const auto &pos = dynamic_pointer_cast<component::Position>(
 							  this->components.at(component::component_t::POSITION))
@@ -68,7 +65,7 @@ void GameEntity::push_to_render() {
 		const auto &angle = dynamic_pointer_cast<component::Position>(
 								this->components.at(component::component_t::POSITION))
 		                        ->get_angles();
-		this->render_entity->update(this->id, pos, angle, this->animation_path);
+		this->render_entity->update(this->id, pos, angle, animation_path);
 	}
 }
 

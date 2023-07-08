@@ -14,7 +14,7 @@
 namespace openage::gamestate::system {
 
 const curve::time_t Idle::idle(const std::shared_ptr<gamestate::GameEntity> &entity,
-                               const curve::time_t & /* start_time */) {
+                               const curve::time_t &start_time) {
 	if (not entity->has_component(component::component_t::IDLE)) [[unlikely]] {
 		throw Error{ERR << "Entity " << entity->get_id() << " has no idle component."};
 	}
@@ -28,8 +28,7 @@ const curve::time_t Idle::idle(const std::shared_ptr<gamestate::GameEntity> &ent
 		auto animation_paths = api::APIAnimation::get_animation_paths(animations);
 
 		if (animation_paths.size() > 0) [[likely]] {
-			entity->set_animation_path(animation_paths.at(0));
-			entity->push_to_render();
+			entity->render_update(start_time, animation_paths[0]);
 		}
 	}
 

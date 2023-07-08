@@ -6,6 +6,7 @@
 #include <unordered_map>
 
 #include "coord/phys.h"
+#include "curve/curve.h"
 #include "gamestate/component/types.h"
 #include "gamestate/types.h"
 
@@ -97,11 +98,14 @@ public:
      */
 	bool has_component(component::component_t type);
 
-	// test setting animation path
-	void set_animation_path(const std::string &path);
-
-	// test connection to renderer
-	void push_to_render();
+	/**
+     * Update the render entity.
+     *
+     * @param time Simulation time of the update.
+     * @param animation_path Animation path used at \p time.
+     */
+	void render_update(const curve::time_t &time,
+	                   const std::string &animation_path);
 
 protected:
 	/**
@@ -122,16 +126,10 @@ private:
 	 */
 	void set_id(entity_id_t id);
 
-
 	/**
 	 * Unique identifier.
 	 */
 	entity_id_t id;
-
-	/**
-	 * Path to the currently used animation definition.
-	 */
-	std::string animation_path;
 
 	/**
      * Data components.

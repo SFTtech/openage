@@ -97,8 +97,7 @@ const curve::time_t Move::move_default(const std::shared_ptr<gamestate::GameEnti
 		auto animation_paths = api::APIAnimation::get_animation_paths(animations);
 
 		if (animation_paths.size() > 0) [[likely]] {
-			entity->set_animation_path(animation_paths.at(0));
-			entity->push_to_render();
+			entity->render_update(start_time, animation_paths[0]);
 		}
 	}
 
