@@ -54,7 +54,7 @@ void WorldRenderer::update() {
 	std::unique_lock lock{this->mutex};
 	auto current_time = this->clock->get_real_time();
 	for (auto obj : this->render_objects) {
-		obj->fetch_updates();
+		obj->fetch_updates(current_time);
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {
 				Eigen::Matrix4f model_m = Eigen::Matrix4f::Identity();

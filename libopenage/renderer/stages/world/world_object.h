@@ -49,8 +49,10 @@ public:
 
 	/**
      * Fetch updates from the render entity.
+     *
+     * @param time Current simulation time.
      */
-	void fetch_updates();
+	void fetch_updates(const curve::time_t &time = 0.0);
 
 	/**
      * Update the uniforms of the renderable associated with this object.
@@ -162,6 +164,11 @@ private:
      * Shader uniforms for the renderable in the terrain render pass.
      */
 	std::shared_ptr<renderer::UniformInput> uniforms;
+
+	/**
+	 * Time of the last update call.
+	 */
+	curve::time_t last_update;
 };
 } // namespace world
 } // namespace openage::renderer

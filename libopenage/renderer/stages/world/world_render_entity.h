@@ -127,7 +127,7 @@ private:
 	curve::Discrete<std::string> animation_path;
 
 	/**
-	 * Time of the last texture update.
+	 * Time of the last update call.
 	 */
 	curve::time_t last_update;
 

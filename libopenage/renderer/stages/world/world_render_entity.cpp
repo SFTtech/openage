@@ -29,8 +29,9 @@ void WorldRenderEntity::update(const uint32_t ref_id,
 	this->position.sync(position,
 	                    std::function<coord::scene3(const coord::phys3 &)>([](const coord::phys3 &pos) {
 							return pos.to_scene3();
-						}));
-	this->angle.sync(angle);
+						}),
+	                    this->last_update);
+	this->angle.sync(angle, this->last_update);
 	this->animation_path.set_last(time, animation_path);
 	this->changed = true;
 	this->last_update = time;

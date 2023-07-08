@@ -65,7 +65,7 @@ void GameEntity::render_update(const curve::time_t &time,
 		const auto &angle = dynamic_pointer_cast<component::Position>(
 								this->components.at(component::component_t::POSITION))
 		                        ->get_angles();
-		this->render_entity->update(this->id, pos, angle, animation_path);
+		this->render_entity->update(this->id, pos, angle, animation_path, time);
 	}
 }
 

@@ -29,7 +29,8 @@ WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager
 	position{nullptr, 0, "", nullptr, SCENE_ORIGIN},
 	angle{nullptr, 0, "", nullptr, 0},
 	animation_info{nullptr, 0},
-	uniforms{nullptr} {
+	uniforms{nullptr},
+	last_update{0.0} {
 }
 
 void WorldObject::set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity) {
@@ -41,7 +42,7 @@ void WorldObject::set_camera(const std::shared_ptr<renderer::camera::Camera> &ca
 	this->camera = camera;
 }
 
-void WorldObject::fetch_updates() {
+void WorldObject::fetch_updates(const curve::time_t &time) {
 	if (not this->render_entity->is_changed()) {
 		// exit early because there is nothing to do
 		return;
@@ -60,12 +61,14 @@ void WorldObject::fetch_updates() {
 										  return std::shared_ptr<renderer::resources::Animation2dInfo>{nullptr};
 									  }
 									  return this->asset_manager->request_animation(path);
-								  }));
-	this->angle.sync(this->render_entity->get_angle());
+								  }),
+	                          this->last_update);
+	this->angle.sync(this->render_entity->get_angle(), this->last_update);
 
 	// Set self to changed so that world renderer can update the renderable
 	this->changed = true;
 	this->render_entity->clear_changed_flag();
+	this->last_update = time;
 }
 
 void WorldObject::update_uniforms(const curve::time_t &time) {

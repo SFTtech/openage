@@ -75,7 +75,7 @@ public:
 	size_t size() const;
 
 	/**
-	 * Get the last element in the curve which is before the given time.
+	 * Get the last element in the curve which is at or before the given time.
 	 * (i.e. elem->time <= time). Given a hint where to start the search.
 	 */
 	iterator last(const time_t &time,
@@ -91,6 +91,21 @@ public:
 	 */
 	iterator last(const time_t &time) const {
 		return this->last(time, std::end(this->container));
+	}
+
+	/**
+	 * Get the last element in the curve which is before the given time.
+	 * (i.e. elem->time < time). Given a hint where to start the search.
+	 */
+	iterator last_before(const time_t &time,
+	                     const iterator &hint) const;
+
+	/**
+	 * Get the last element with elem->time < time, without a hint where to start
+	 * searching.
+	 */
+	iterator last_before(const time_t &time) const {
+		return this->last_before(time, std::end(this->container));
 	}
 
 	/**
@@ -335,9 +350,6 @@ size_t KeyframeContainer<T>::size() const {
  * If there is multiple elements with the same time, return the last of them.
  * If there is no element with such time, return the next element before the time.
  *
- * Without a hint, start to iterate at the beginning of the buffer, and return
- * the element last element before e->time > time.
- *
  * Intuitively, this function returns the element that set the last value
  * that determines the curve value for a searched time.
  */
@@ -356,9 +368,43 @@ typename KeyframeContainer<T>::iterator KeyframeContainer<T>::last(const time_t 
 		e--;
 	}
 	else { // e == end or e->time > time
-		// walk to the left until the element time is smaller or equal the searched time
+		// walk to the left until the element time is smaller than or equal to the searched time
 		auto begin = std::begin(this->container);
 		while (e != begin and (e == end or e->time > time)) {
+			e--;
+		}
+	}
+
+	return e;
+}
+
+
+/*
+ * Select the last element that is < a given time.
+ * If there is multiple elements with the same time, return the last of them.
+ * If there is no element with such time, return the next element before the time.
+ *
+ * Intuitively, this function returns the element that comes right before the
+ * first element that matches the search time.
+ */
+template <typename T>
+typename KeyframeContainer<T>::iterator KeyframeContainer<T>::last_before(const time_t &time,
+                                                                          const iterator &hint) const {
+	iterator e = hint;
+	auto end = std::end(this->container);
+
+	if (e != end and e->time < time) {
+		// walk to the right until the time is larget than the searched
+		// then go one to the left to get the last item with <= requested time
+		while (e != end && e->time <= time) {
+			e++;
+		}
+		e--;
+	}
+	else { // e == end or e->time > time
+		// walk to the left until the element time is smaller than the searched time
+		auto begin = std::begin(this->container);
+		while (e != begin and (e == end or e->time >= time)) {
 			e--;
 		}
 	}
@@ -468,7 +514,7 @@ typename KeyframeContainer<T>::iterator
 KeyframeContainer<T>::sync_after(const KeyframeContainer<T> &other,
                                  const time_t &start) {
 	// Delete elements after start time
-	iterator at = this->last(start, this->end());
+	iterator at = this->last_before(start, this->end());
 	at = this->erase_after(at);
 
 	auto at_other = other.begin();
@@ -493,7 +539,7 @@ KeyframeContainer<T>::sync_after(const KeyframeContainer<O> &other,
                                  const std::function<T(const O &)> &converter,
                                  const time_t &start) {
 	// Delete elements after start time
-	iterator at = this->last(start, this->end());
+	iterator at = this->last_before(start, this->end());
 	at = this->erase_after(at);
 
 	auto at_other = other.begin();
