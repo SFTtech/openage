@@ -191,6 +191,22 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 		else if (ability_parent == "engine.ability.type.Live") {
 			auto live = std::make_shared<component::Live>(loop, ability_obj);
 			entity->add_component(live);
+
+			auto attr_settings = ability_obj.get_set("Live.attributes");
+			for (auto &setting : attr_settings) {
+				auto setting_obj_val = std::dynamic_pointer_cast<nyan::ObjectValue>(setting.get_ptr());
+				auto setting_obj = db_view->get_object(setting_obj_val->get_name());
+				auto attribute = setting_obj.get_object("AttributeSetting.attribute");
+				auto start_value = setting_obj.get_int("AttributeSetting.starting_value");
+
+				live->add_attribute(std::numeric_limits<curve::time_t>::min(),
+				                    attribute.get_name(),
+				                    std::make_shared<curve::Discrete<int64_t>>(loop,
+				                                                               0,
+				                                                               "",
+				                                                               nullptr,
+				                                                               start_value));
+			}
 		}
 	}
 

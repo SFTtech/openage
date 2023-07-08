@@ -4,48 +4,47 @@
 
 #include <nyan/nyan.h>
 
-#include "curve/continuous.h"
 #include "curve/map.h"
+#include "curve/segmented.h"
 #include "gamestate/component/api_component.h"
 
 namespace openage::gamestate::component {
 class Live : public APIComponent {
 public:
-	/**
-	 * Creates a Live component.
-	 *
-	 * @param loop Event loop that all events from the component are registered on.
-	 * @param ability nyan ability object for the component.
-	 * @param view nyan view of the owner of the component's entity.
-	 * @param creation_time Ingame creation time of the component.
-	 * @param enabled If true, enable the component at creation time.
-	 */
-	Live(const std::shared_ptr<event::EventLoop> &loop,
-	     nyan::Object &ability,
-	     nyan::View &view,
-	     const time_t &creation_time,
-	     bool enabled = true);
-
-	/**
-	 * Creates a Live component.
-	 *
-	 * @param loop Event loop that all events from the component are registered on.
-	 * @param ability nyan ability object for the component.
-	 * @param enabled If true, enable the component at creation time.
-	 */
-	Live(const std::shared_ptr<event::EventLoop> &loop,
-	     nyan::Object &ability,
-	     bool enabled = true);
+	using APIComponent::APIComponent;
 
 	component_t get_type() const override;
 
+	/**
+     * Add a new attribute to the component attributes.
+     *
+     * @param time The time at which the attribute is added.
+     * @param attribute Attribute identifier (fqon of the nyan object).
+     * @param starting_values Attribute values at the time of addition.
+     */
+	void add_attribute(const curve::time_t &time,
+	                   const nyan::fqon_t &attribute,
+	                   std::shared_ptr<curve::Discrete<int64_t>> starting_values);
+
+	/**
+     * Set the value of an attribute at a given time.
+     *
+     * @param time The time at which the attribute is set.
+     * @param attribute Attribute identifier (fqon of the nyan object).
+     * @param value New attribute value.
+     */
+	void set_attribute(const curve::time_t &time,
+	                   const nyan::fqon_t &attribute,
+	                   int64_t value);
+
 private:
+	using attribute_storage_t = curve::UnorderedMap<nyan::fqon_t,
+	                                                std::shared_ptr<curve::Discrete<int64_t>>>;
+
 	/**
 	 * Map of attribute values by attribute type.
 	 */
-	curve::UnorderedMap<nyan::fqon_t,
-	                    std::shared_ptr<curve::Discrete<uint64_t>>>
-		attribute_values;
+	attribute_storage_t attribute_values;
 };
 
 } // namespace openage::gamestate::component

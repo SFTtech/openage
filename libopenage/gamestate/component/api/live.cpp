@@ -7,37 +7,26 @@
 
 namespace openage::gamestate::component {
 
-Live::Live(const std::shared_ptr<event::EventLoop> &loop,
-           nyan::Object &ability,
-           nyan::View &view,
-           const time_t &creation_time,
-           bool enabled) :
-	APIComponent(loop, ability, creation_time, enabled),
-	attribute_values{} {
-	for (nyan::ValueHolder attr_setting : this->get_ability().get_set("attributes")) {
-		nyan::ObjectValue setting_val{
-			*std::dynamic_pointer_cast<nyan::ObjectValue>(attr_setting.get_ptr())};
-		nyan::fqon_t setting_fqon{setting_val.get_name()};
-		nyan::Object setting{view.get_object(setting_fqon)};
-
-		nyan::fqon_t attribute_fqon{setting.get_object("attribute").get_name()};
-		auto starting_value{setting.get_int("starting_value")};
-
-		auto attr_curve{std::make_shared<curve::Discrete<uint64_t>>(loop, 0)};
-		attr_curve->set_insert(creation_time, starting_value);
-
-		this->attribute_values.insert(creation_time, attribute_fqon, attr_curve);
-	}
-}
-
-Live::Live(const std::shared_ptr<event::EventLoop> &loop,
-           nyan::Object &ability,
-           bool enabled) :
-	APIComponent(loop, ability, enabled),
-	attribute_values{} {}
-
 inline component_t Live::get_type() const {
 	return component_t::LIVE;
 }
 
+void Live::add_attribute(const curve::time_t &time,
+                         const nyan::fqon_t &attribute,
+                         std::shared_ptr<curve::Discrete<int64_t>> starting_values) {
+	this->attribute_values.insert(time, attribute, starting_values);
+}
+
+void Live::set_attribute(const curve::time_t &time,
+                         const nyan::fqon_t &attribute,
+                         int64_t value) {
+	auto attribute_value = this->attribute_values.at(time, attribute);
+
+	if (attribute_value) {
+		(**attribute_value)->set_last(time, value);
+	}
+	else {
+		// TODO: fail here
+	}
+}
 } // namespace openage::gamestate::component
