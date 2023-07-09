@@ -34,4 +34,15 @@ void Activity::init(const curve::time_t &time) {
 	this->set_node(time, this->start_activity->get_start());
 }
 
+void Activity::add_event(const std::shared_ptr<event::Event> &event) {
+	this->scheduled_events.push_back(event);
+}
+
+void Activity::cancel_events(const curve::time_t &time) {
+	for (auto &event : this->scheduled_events) {
+		event->cancel(time);
+	}
+	this->scheduled_events.clear();
+}
+
 } // namespace openage::gamestate::component

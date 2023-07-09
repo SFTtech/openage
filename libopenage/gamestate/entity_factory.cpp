@@ -73,7 +73,7 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 	});
 
 	wait_for_command->add_output(move);
-	wait_for_command->set_primer_func([](const curve::time_t &time,
+	wait_for_command->set_primer_func([](const curve::time_t & /* time */,
 	                                     const std::shared_ptr<GameEntity> &entity,
 	                                     const std::shared_ptr<event::EventLoop> &loop,
 	                                     const std::shared_ptr<gamestate::GameState> &state) {
@@ -86,6 +86,8 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 			entity->get_component(component::component_t::COMMANDQUEUE));
 		auto &queue = const_cast<curve::Queue<std::shared_ptr<component::command::Command>> &>(entity_queue->get_queue());
 		queue.add_dependent(ev);
+
+		return activity::event_store_t{ev};
 	});
 	wait_for_command->set_next_func([](const curve::time_t &time,
 	                                   const std::shared_ptr<GameEntity> &entity,
@@ -116,7 +118,12 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 	                                  const std::shared_ptr<GameEntity> &entity,
 	                                  const std::shared_ptr<event::EventLoop> &loop,
 	                                  const std::shared_ptr<gamestate::GameState> &state) {
-		loop->create_event("game.wait", entity->get_manager(), state, time);
+		auto ev = loop->create_event("game.wait",
+		                             entity->get_manager(),
+		                             state,
+		                             time);
+
+		return activity::event_store_t{ev};
 	});
 	wait_for_move->set_next_func([&](const curve::time_t &,
 	                                 const std::shared_ptr<GameEntity> &,

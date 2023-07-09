@@ -219,10 +219,11 @@ void activity_demo() {
 	                                const std::shared_ptr<event::EventLoop> & /* loop */,
 	                                const std::shared_ptr<gamestate::GameState> & /* state */) {
 		log::log(INFO << "Setting up event");
-		loop->create_event("test.activity",
-		                   mgr,
-		                   state,
-		                   0);
+		auto ev = loop->create_event("test.activity",
+		                             mgr,
+		                             state,
+		                             0);
+		return activity::event_store_t{ev};
 	});
 	event_node->set_next_func([&task2](const curve::time_t & /* time */,
 	                                   const std::shared_ptr<gamestate::GameEntity> & /* entity */,

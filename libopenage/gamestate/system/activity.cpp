@@ -41,6 +41,9 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 		auto event_next = node->get_next_func();
 		auto next_id = event_next(start_time, entity, loop, state);
 		current_node = node->next(next_id);
+
+		// cancel all other events that the manager may have been waiting for
+		activity_component->cancel_events(start_time);
 	}
 
 	curve::time_t event_wait_time = 0;
@@ -79,10 +82,13 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 		case activity::node_t::EVENT_GATEWAY: {
 			auto node = std::static_pointer_cast<activity::EventNode>(current_node);
 			auto event_primer = node->get_primer_func();
-			event_primer(start_time + event_wait_time, entity, loop, state);
-			event_wait_time = 0;
+			auto evs = event_primer(start_time + event_wait_time, entity, loop, state);
+			for (auto &ev : evs) {
+				activity_component->add_event(ev);
+			}
 
 			// exit and wait for event
+			event_wait_time = 0;
 			stop = true;
 		} break;
 		default:

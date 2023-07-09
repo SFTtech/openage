@@ -11,6 +11,7 @@
 namespace openage {
 
 namespace event {
+class Event;
 class EventLoop;
 } // namespace event
 
@@ -52,7 +53,7 @@ public:
 	const std::shared_ptr<activity::Node> get_node(const curve::time_t &time) const;
 
 	/**
-     * Sets the node in the activity flow graph at a given time.
+     * Sets the current node in the activity flow graph at a given time.
      *
      * @param time Time at which the node is set.
      * @param node Current node in the flow graph.
@@ -66,6 +67,20 @@ public:
      * @param time Time at which the node is set.
      */
 	void init(const curve::time_t &time);
+
+	/**
+     * Add a scheduled event that is waited for to progress in the node graph.
+     *
+     * @param event Event to add.
+     */
+	void add_event(const std::shared_ptr<openage::event::Event> &event);
+
+	/**
+     * Cancel all scheduled events.
+     *
+     * @param time Time at which the events are cancelled.
+     */
+	void cancel_events(const curve::time_t &time);
 
 private:
 	/**
@@ -82,6 +97,11 @@ private:
      * Current node in the activity flow graph.
      */
 	curve::Discrete<std::shared_ptr<activity::Node>> node;
+
+	/**
+     * Scheduled events that are waited for to progress in the node graph.
+     */
+	std::vector<std::shared_ptr<openage::event::Event>> scheduled_events;
 };
 
 } // namespace component
