@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 """
 tests for the graphics renderer.
@@ -9,7 +9,7 @@ import argparse
 from libopenage.util.path cimport Path as Path_cpp
 from libopenage.pyinterface.pyobject cimport PyObj
 from cpython.ref cimport PyObject
-from libopenage.renderer.tests cimport renderer_demo as renderer_demo_c
+from libopenage.renderer.demo.tests cimport renderer_demo as renderer_demo_c
 
 def renderer_demo(list argv):
     """

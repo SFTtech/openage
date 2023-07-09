@@ -6,7 +6,7 @@
 
 namespace openage::gamestate {
 
-Terrain::Terrain(util::Path &texture_path) :
+Terrain::Terrain(const std::string &texture_path) :
 	size{0, 0},
 	height_map{},
 	texture_path{texture_path},

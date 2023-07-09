@@ -8,16 +8,23 @@
 #include "log/log.h"
 #include "renderer/opengl/context.h"
 #include "renderer/opengl/geometry.h"
+#include "renderer/opengl/lookup.h"
+#include "renderer/opengl/render_pass.h"
+#include "renderer/opengl/render_target.h"
 #include "renderer/opengl/shader_program.h"
 #include "renderer/opengl/texture.h"
+#include "renderer/opengl/uniform_buffer.h"
 #include "renderer/opengl/uniform_input.h"
+#include "renderer/opengl/window.h"
+#include "renderer/resources/buffer_info.h"
 
 
 namespace openage::renderer::opengl {
 
-GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx) :
+GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx,
+                       const util::Vector2s &viewport_size) :
 	gl_context{ctx},
-	display{std::make_shared<GlRenderTarget>()} {
+	display{std::make_shared<GlRenderTarget>(viewport_size[0], viewport_size[1])} {
 	log::log(MSG(info) << "Created OpenGL renderer");
 }
 
@@ -59,6 +66,39 @@ std::shared_ptr<RenderTarget> GlRenderer::get_display_target() {
 	return this->display;
 }
 
+std::shared_ptr<UniformBuffer> GlRenderer::add_uniform_buffer(resources::UniformBufferInfo const &info) {
+	auto inputs = info.get_inputs();
+	std::unordered_map<std::string, GlInBlockUniform> uniforms{};
+	size_t offset = 0;
+	for (auto const &input : inputs) {
+		auto type = GL_UBO_INPUT_TYPE.get(input.type);
+		uniforms.emplace(
+			std::make_pair(input.name,
+		                   GlInBlockUniform{type,
+		                                    offset,
+		                                    resources::UniformBufferInfo::get_size(input, info.get_layout()),
+		                                    resources::UniformBufferInfo::get_stride_size(input.type, info.get_layout()),
+		                                    input.count}));
+		offset += resources::UniformBufferInfo::get_size(input, info.get_layout());
+	}
+
+	return std::make_shared<GlUniformBuffer>(this->gl_context,
+	                                         info.get_size(),
+	                                         uniforms,
+	                                         this->gl_context->get_uniform_buffer_binding());
+}
+
+std::shared_ptr<UniformBuffer> GlRenderer::add_uniform_buffer(std::shared_ptr<ShaderProgram> const &prog,
+                                                              std::string const &block_name) {
+	auto gl_prog = std::dynamic_pointer_cast<GlShaderProgram>(prog);
+	auto block_def = gl_prog->get_uniform_block(block_name.c_str());
+
+	return std::make_shared<GlUniformBuffer>(this->gl_context,
+	                                         block_def.data_size,
+	                                         block_def.uniforms,
+	                                         this->gl_context->get_uniform_buffer_binding());
+}
+
 resources::Texture2dData GlRenderer::display_into_data() {
 	GLint params[4];
 	glGetIntegerv(GL_VIEWPORT, params);
@@ -75,6 +115,10 @@ resources::Texture2dData GlRenderer::display_into_data() {
 
 	resources::Texture2dData img(std::move(tex_info), std::move(data));
 	return img.flip_y();
+}
+
+void GlRenderer::resize_display_target(size_t width, size_t height) {
+	this->display->resize(width, height);
 }
 
 void GlRenderer::optimise(const std::shared_ptr<GlRenderPass> &pass) {
@@ -106,6 +150,9 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// TODO: Option for face culling
+	// glEnable(GL_CULL_FACE);
 
 	auto gl_pass = std::dynamic_pointer_cast<GlRenderPass>(pass);
 	GlRenderer::optimise(gl_pass);

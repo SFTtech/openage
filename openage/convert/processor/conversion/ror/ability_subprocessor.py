@@ -176,7 +176,7 @@ class RoRAbilitySubprocessor:
                     AoCAbilitySubprocessor.create_civ_animation(line,
                                                                 civ_group,
                                                                 civ_animation_id,
-                                                                ability_ref,
+                                                                f"{ability_ref}.Animated",
                                                                 obj_prefix,
                                                                 filename_prefix,
                                                                 obj_exists)

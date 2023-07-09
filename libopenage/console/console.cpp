@@ -2,8 +2,8 @@
 
 #include "console.h"
 
-#include "../engine.h"
 #include "../error/error.h"
+#include "../legacy_engine.h"
 #include "../log/log.h"
 #include "../util/strings.h"
 #include "../util/unicode.h"
@@ -65,7 +65,7 @@ void Console::register_to_engine() {
 	auto &action = this->engine->get_action_manager();
 	auto &global = this->engine->get_input_manager().get_global_context();
 
-	global.bind(action.get("TOGGLE_CONSOLE"), [this](const input::action_arg_t &) {
+	global.bind(action.get("TOGGLE_CONSOLE"), [this](const input::legacy::action_arg_t &) {
 		this->set_visible(!this->visible);
 	});
 
@@ -73,17 +73,17 @@ void Console::register_to_engine() {
 	// TODO: bind any needed input to InputContext
 
 	// toggle console will take highest priority
-	this->input_context.bind(action.get("TOGGLE_CONSOLE"), [this](const input::action_arg_t &) {
+	this->input_context.bind(action.get("TOGGLE_CONSOLE"), [this](const input::legacy::action_arg_t &) {
 		this->set_visible(false);
 	});
-	this->input_context.bind(input::event_class::UTF8, [this](const input::action_arg_t &arg) {
+	this->input_context.bind(input::legacy::event_class::UTF8, [this](const input::legacy::action_arg_t &arg) {
 		// a single char typed into the console
 		std::string utf8 = arg.e.as_utf8();
 		this->buf.write(utf8.c_str());
 		command += utf8;
 		return true;
 	});
-	this->input_context.bind(input::event_class::NONPRINT, [this](const input::action_arg_t &arg) {
+	this->input_context.bind(input::legacy::event_class::NONPRINT, [this](const input::legacy::action_arg_t &arg) {
 		switch (arg.e.as_char()) {
 		case 8: // remove a single UTF-8 character
 			if (this->command.size() > 0) {

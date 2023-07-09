@@ -1,0 +1,31 @@
+# The image file was adapted from the "German WW2 isometric pixel tanks" sprite pack,
+# Copyright 2020-2020 by jh2assets.
+#
+# It's licensed under the terms of the Creative Commons Attribution v4.0 International license.
+# (https://creativecommons.org/licenses/by/4.0/)
+#
+# The original version can be found at:
+# https://jimhatama.itch.io/german-ww2-pixel-tanks
+#
+# Modifications by us:
+#   - Merged sprites from the "german_panzer4" animation into one spritesheet
+#
+# Copyright 2023-2023 the openage authors.
+# openage texture definition file
+
+version 1
+
+imagefile "test_tank.png"
+
+size 153 178
+
+pxformat rgba8 cbits=False
+
+subtex 109 101 32 45 16 22
+subtex 81 55 68 44 34 22
+subtex 1 40 78 37 39 18
+subtex 82 1 70 52 35 26
+subtex 73 101 34 54 17 27
+subtex 1 79 70 51 35 25
+subtex 1 1 79 37 38 18
+subtex 1 132 68 45 34 22

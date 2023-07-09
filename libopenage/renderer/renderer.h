@@ -14,11 +14,13 @@ class Texture2dData;
 class Texture2dInfo;
 class ShaderSource;
 class MeshData;
+class UniformBufferInfo;
 } // namespace resources
 
 class ShaderProgram;
 class Geometry;
 class Texture2d;
+class UniformBuffer;
 class UniformInput;
 
 
@@ -146,6 +148,13 @@ public:
 	/// Returns the built-in display target that represents the window. Passes pointed at this target will have
 	/// their output visible on the screen.
 	virtual std::shared_ptr<RenderTarget> get_display_target() = 0;
+
+	/// Creates a new uniform buffer. Uniform buffers to set uniforms across shaders invocations.
+	virtual std::shared_ptr<UniformBuffer> add_uniform_buffer(resources::UniformBufferInfo const &) = 0;
+
+	/// Creates a new uniform buffer from a uniform block in a shader.
+	virtual std::shared_ptr<UniformBuffer> add_uniform_buffer(std::shared_ptr<ShaderProgram> const &,
+	                                                          std::string const &) = 0;
 
 	/// Stores the display framebuffer into a CPU-accessible data object. Essentially, this takes a screenshot.
 	virtual resources::Texture2dData display_into_data() = 0;

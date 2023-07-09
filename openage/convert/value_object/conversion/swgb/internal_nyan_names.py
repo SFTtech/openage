@@ -1,4 +1,4 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long
 
@@ -313,13 +313,13 @@ TECH_GROUP_LOOKUPS = {
 
     # Unit/Building upgrades
     113: ("HeavyDestroyerDroid", "heavy_destroyer_droid"),
-    222: ("ForceKnight", "force_knight"),
+    222: ("ForceKnightUpgrade", "force_knight_upgrade"),
     236: ("AdvancedMountedTrooper", "advanced_mounted_trooper"),
     241: ("HeavyMountedTrooper", "heavy_mounted_trooper"),
     246: ("HeavyAntiAirTrooper", "heavy_anti_air_trooper"),
     251: ("HeavyTrooper", "heavy_trooper"),
     256: ("RepeaterTrooper", "repeater_trooper"),
-    261: ("Trooper", "trooper"),
+    261: ("TrooperUpgrade", "trooper_upgrade"),
     301: ("HeavyStrikeMech", "heavy_strike_mech"),
     306: ("HeavyMechDestroyer", "heavy_mech_destroyer"),
     311: ("HeavyAssaultMech", "heavy_assault_mech"),
@@ -334,7 +334,7 @@ TECH_GROUP_LOOKUPS = {
     421: ("AdvancedCruiser", "advanced_cruiser"),
     426: ("HeavyDestroyer", "heavy_destroyer"),
     431: ("HeavyAntiAirDestroyer", "heavy_anti_air_destroyer"),
-    441: ("Frigate", "frigate"),
+    441: ("FrigateUpgrade", "frigate_upgrade"),
     447: ("AdvancedAntiAirTurret", "advanced_anti_air_turret"),
     472: ("DarkTrooperPhase2", "dark_trooper_phase2"),
     474: ("HeavyFambaaShieldGenerator", "heavy_fambaa_shield_generator"),

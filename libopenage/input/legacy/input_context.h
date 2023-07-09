@@ -11,7 +11,7 @@
 #include "input/legacy/event.h"
 
 namespace openage {
-namespace input {
+namespace input::legacy {
 
 class InputManager;
 
@@ -113,5 +113,5 @@ private:
 	std::unordered_map<event_class, action_check_t, event_class_hash> by_class;
 };
 
-} // namespace input
+} // namespace input::legacy
 } // namespace openage

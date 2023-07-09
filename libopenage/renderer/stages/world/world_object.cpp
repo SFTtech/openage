@@ -5,6 +5,7 @@
 #include <eigen3/Eigen/Dense>
 
 #include "renderer/camera/camera.h"
+#include "renderer/definitions.h"
 #include "renderer/resources/animation/angle_info.h"
 #include "renderer/resources/animation/animation_info.h"
 #include "renderer/resources/animation/frame_info.h"
@@ -15,6 +16,7 @@
 #include "renderer/stages/world/world_render_entity.h"
 #include "renderer/uniform_input.h"
 
+
 namespace openage::renderer::world {
 
 WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
@@ -24,117 +26,121 @@ WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager
 	asset_manager{asset_manager},
 	render_entity{nullptr},
 	ref_id{0},
-	position{0.0f, 0.0f, 0.0f},
-	texture{nullptr},
-	uniforms{nullptr} {
+	position{nullptr, 0, "", nullptr, SCENE_ORIGIN},
+	angle{nullptr, 0, "", nullptr, 0},
+	animation_info{nullptr, 0},
+	uniforms{nullptr},
+	last_update{0.0} {
 }
 
 void WorldObject::set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity) {
 	this->render_entity = entity;
-	this->update();
+	this->fetch_updates();
 }
 
 void WorldObject::set_camera(const std::shared_ptr<renderer::camera::Camera> &camera) {
 	this->camera = camera;
 }
 
-void WorldObject::update(const curve::time_t &time) {
-	if (this->render_entity->is_changed()) {
-		// Get ID
-		this->ref_id = this->render_entity->get_id();
-
-		// Get position
-		this->position = this->render_entity->get_position();
-
-		// TODO: New renderable is only required if the mesh is changed
-		this->require_renderable = true;
-
-		// Update textures
-		auto anim_info = this->asset_manager->request_animation(this->render_entity->get_texture_path());
-		auto tex_manager = this->asset_manager->get_texture_manager();
-		this->texture = tex_manager.request(anim_info->get_texture(0)->get_image_path().value());
-		// TODO: Support multiple textures per animation
-
-		this->changed = true;
-
-		// Indicate to the render entity that its updates have been processed.
-		this->render_entity->clear_changed_flag();
-
-		// Return to let the renderer create a new renderable
+void WorldObject::fetch_updates(const curve::time_t &time) {
+	if (not this->render_entity->is_changed()) {
+		// exit early because there is nothing to do
 		return;
 	}
+	// Get data from render entity
+	this->ref_id = this->render_entity->get_id();
+	this->position.sync(this->render_entity->get_position());
+	this->animation_info.sync(this->render_entity->get_animation_path(),
+	                          std::function<std::shared_ptr<renderer::resources::Animation2dInfo>(const std::string &)>(
+								  [&](const std::string &path) {
+									  if (path.empty()) {
+										  auto placeholder = this->asset_manager->get_placeholder_animation();
+										  if (placeholder) {
+											  return (*placeholder).second;
+										  }
+										  return std::shared_ptr<renderer::resources::Animation2dInfo>{nullptr};
+									  }
+									  return this->asset_manager->request_animation(path);
+								  }),
+	                          this->last_update);
+	this->angle.sync(this->render_entity->get_angle(), this->last_update);
 
-	// Update uniforms if no render entity changes are detected
-	this->update_uniforms(time);
+	// Set self to changed so that world renderer can update the renderable
+	this->changed = true;
+	this->render_entity->clear_changed_flag();
+	this->last_update = time;
 }
 
 void WorldObject::update_uniforms(const curve::time_t &time) {
-	if (this->uniforms != nullptr) [[likely]] {
-		/* Frame subtexture */
-		auto anim_info = this->asset_manager->request_animation(this->render_entity->get_texture_path());
-		auto layer = anim_info->get_layer(0); // TODO: Support multiple layers
-		auto angle = layer.get_angle(0); // TODO: Support multiple angles
-
-		// Current frame index considering current time
-		auto timing = layer.get_frame_timing();
-		size_t frame_idx = timing->get_mod(time, this->render_entity->get_update_time());
-
-		// Get index of texture and subtexture where the frame's pixels are located
-		auto frame_info = angle->get_frame(frame_idx);
-		auto tex_idx = frame_info->get_texture_idx();
-		auto subtex_idx = frame_info->get_subtexture_idx();
-
-		// Get the texture info
-		auto tex_info = anim_info->get_texture(tex_idx);
-
-		// Pass the new subtexture coordinates.
-		auto coords = tex_info->get_subtex_info(subtex_idx).get_tile_params();
-		this->uniforms->update("tile_params", coords);
-
-		/* Model matrix */
-		// TODO: Only update on resize
-		auto model = Eigen::Affine3f::Identity();
-
-		// scale and keep widthxheight ratio of texture
-		// when the viewport size changes
-		auto screen_size = this->camera->get_viewport_size();
-		auto tex_size = tex_info->get_subtex_info(subtex_idx).get_size();
-
-		// TODO: Use scale factor from texture
-		auto scale = 1.0f;
-		if (tex_size[0] > 100) {
-			scale = 0.15f;
-		}
-		model.prescale(Eigen::Vector3f{
-			scale * ((float)tex_size[0] / screen_size[0]),
-			scale * ((float)tex_size[1] / screen_size[1]),
-			1.0f});
-
-		// TODO: Use actual position from coordinate system
-		auto pos = this->position;
-		pos = pos + Eigen::Vector3f(-5.0f, -5.0f, 0.0f);
-		pos = pos * 0.1f;
-		model.pretranslate(pos);
-		auto model_m = model.matrix();
-
-		this->uniforms->update("model", model_m);
+	// TODO: Only update uniforms that changed since last update
+	if (this->uniforms == nullptr) [[unlikely]] {
+		return;
 	}
+
+	// Object world position
+	auto current_pos = this->position.get(time);
+	this->uniforms->update("obj_world_position", current_pos.to_world_space());
+
+	// Direction angle the object is facing towards currently
+	auto angle_degrees = this->angle.get(time).to_float();
+
+	// Frame subtexture
+	auto animation_info = this->animation_info.get(time);
+	auto &layer = animation_info->get_layer(0); // TODO: Support multiple layers
+	auto angle = layer.get_direction_angle(angle_degrees);
+
+	// Flip subtexture horizontally if angle is mirrored
+	if (angle->is_mirrored()) {
+		this->uniforms->update("flip_x", true);
+	}
+	else {
+		this->uniforms->update("flip_x", false);
+	}
+
+	// Current frame index considering current time
+	auto timing = layer.get_frame_timing();
+	size_t frame_idx = timing->get_mod(time, this->render_entity->get_update_time());
+
+	// Index of texture and subtexture where the frame's pixels are located
+	auto frame_info = angle->get_frame(frame_idx);
+	auto tex_idx = frame_info->get_texture_idx();
+	auto subtex_idx = frame_info->get_subtexture_idx();
+
+	auto tex_info = animation_info->get_texture(tex_idx);
+	auto tex_manager = this->asset_manager->get_texture_manager();
+	auto texture = tex_manager->request(tex_info->get_image_path().value());
+	this->uniforms->update("tex", texture);
+
+	// Subtexture coordinates.inside texture
+	auto coords = tex_info->get_subtex_info(subtex_idx).get_tile_params();
+	this->uniforms->update("tile_params", coords);
+
+	// scale and keep width x height ratio of texture
+	// when the viewport size changes
+	auto scale = animation_info->get_scalefactor() / this->camera->get_zoom();
+	auto screen_size = this->camera->get_viewport_size();
+	auto subtex_size = tex_info->get_subtex_info(subtex_idx).get_size();
+
+	// Scaling with viewport size and zoom
+	auto scale_vec = Eigen::Vector2f{
+		scale * (static_cast<float>(subtex_size[0]) / screen_size[0]),
+		scale * (static_cast<float>(subtex_size[1]) / screen_size[1])};
+	this->uniforms->update("scale", scale_vec);
+
+	// Move subtexture in scene so that its anchor point is at the object's position
+	auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
+	auto anchor_offset = Eigen::Vector2f{
+		scale * (static_cast<float>(anchor[0]) / screen_size[0]),
+		scale * (static_cast<float>(anchor[1]) / screen_size[1])};
+	this->uniforms->update("anchor_offset", anchor_offset);
 }
 
 uint32_t WorldObject::get_id() {
 	return this->ref_id;
 }
 
-const Eigen::Vector3f WorldObject::get_position() {
-	return this->position;
-}
-
 const renderer::resources::MeshData WorldObject::get_mesh() {
 	return resources::MeshData::make_quad();
-}
-
-const std::shared_ptr<renderer::Texture2d> &WorldObject::get_texture() {
-	return this->texture;
 }
 
 bool WorldObject::requires_renderable() {

@@ -57,11 +57,11 @@ presenter::LegacyDisplay *AssetManager::get_display() const {
 	return this->display;
 }
 
-void AssetManager::set_engine(engine::Engine *engine) {
+void AssetManager::set_engine(gamestate::GameSimulation *engine) {
 	this->engine = engine;
 }
 
-engine::Engine *AssetManager::get_engine() const {
+gamestate::GameSimulation *AssetManager::get_engine() const {
 	return this->engine;
 }
 

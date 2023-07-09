@@ -6,13 +6,14 @@
 
 #include <eigen3/Eigen/Dense>
 
+#include "coord/scene.h"
+#include "curve/continuous.h"
 #include "curve/curve.h"
+#include "curve/discrete.h"
+#include "curve/segmented.h"
 #include "renderer/resources/mesh_data.h"
-#include "util/vector.h"
 
 namespace openage::renderer {
-class Renderer;
-class Texture2d;
 class UniformInput;
 
 namespace camera {
@@ -21,7 +22,8 @@ class Camera;
 
 namespace resources {
 class AssetManager;
-}
+class Animation2dInfo;
+} // namespace resources
 
 namespace world {
 class WorldRenderEntity;
@@ -46,12 +48,11 @@ public:
 	void set_camera(const std::shared_ptr<renderer::camera::Camera> &camera);
 
 	/**
-     * Recalculate the vertex positions for this mesh with information
-     * from the currently set render entity.
-	 *
-	 * @param time Current simulation time.
+     * Fetch updates from the render entity.
+     *
+     * @param time Current simulation time.
      */
-	void update(const curve::time_t &time = 0.0);
+	void fetch_updates(const curve::time_t &time = 0.0);
 
 	/**
      * Update the uniforms of the renderable associated with this object.
@@ -68,25 +69,11 @@ public:
 	uint32_t get_id();
 
 	/**
-	 * Get the position of the object inside the scene.
-	 *
-	 * @return Position of the object.
-	 */
-	const Eigen::Vector3f get_position();
-
-	/**
      * Get the quad for creating the geometry.
      *
      * @return Mesh for creating a renderer geometry object.
      */
 	static const renderer::resources::MeshData get_mesh();
-
-	/**
-     * Get the texture that should be drawn onto the mesh.
-     *
-     * @return Texture object.
-     */
-	const std::shared_ptr<renderer::Texture2d> &get_texture();
 
 	/**
      * Check whether a new renderable needs to be created for this mesh.
@@ -161,17 +148,27 @@ private:
 	/**
 	 * Position of the object.
 	 */
-	Eigen::Vector3f position;
+	curve::Continuous<coord::scene3> position;
 
 	/**
-     * Texture used for the mesh.
+     * Angle of the object.
      */
-	std::shared_ptr<renderer::Texture2d> texture;
+	curve::Segmented<coord::phys_angle_t> angle;
+
+	/**
+     * Animation information for the renderables.
+     */
+	curve::Discrete<std::shared_ptr<renderer::resources::Animation2dInfo>> animation_info;
 
 	/**
      * Shader uniforms for the renderable in the terrain render pass.
      */
 	std::shared_ptr<renderer::UniformInput> uniforms;
+
+	/**
+	 * Time of the last update call.
+	 */
+	curve::time_t last_update;
 };
 } // namespace world
 } // namespace openage::renderer

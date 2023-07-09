@@ -28,6 +28,10 @@ def init_subparser(cli: ArgumentParser) -> None:
         "--gl-debug", action='store_true',
         help="throw exceptions directly from the OpenGL calls")
 
+    cli.add_argument(
+        "--modpacks", nargs="+", type=bytes,
+        help="list of modpacks to load")
+
 
 def main(args, error):
     """
@@ -87,6 +91,14 @@ def main(args, error):
         else:
             err("game asset conversion failed")
             return 1
+
+    # modpacks
+    if args.modpacks:
+        mods = []
+        for modpack in args.modpacks:
+            mods.append(modpack.encode("utf-8"))
+
+        args.modpacks = mods
 
     # start the game, continue in main_cpp.pyx!
     return run_game(args, root)

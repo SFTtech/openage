@@ -4,13 +4,14 @@
 
 #include <vector>
 
-#include "simple_object.h"
-#include "texture.h"
+#include "renderer/opengl/simple_object.h"
 
 
 namespace openage {
 namespace renderer {
 namespace opengl {
+
+class GlTexture2d;
 
 /// Represents an OpenGL Framebuffer Object.
 /// It is a collection of bitmap targets that can be drawn into

@@ -2,9 +2,15 @@
 
 #include "camera.h"
 
+#include <numbers>
+
+#include "renderer/renderer.h"
+#include "renderer/resources/buffer_info.h"
+
 namespace openage::renderer::camera {
 
-Camera::Camera(util::Vector2s viewport_size) :
+Camera::Camera(const std::shared_ptr<Renderer> &renderer,
+               util::Vector2s viewport_size) :
 	scene_pos{Eigen::Vector3f(0.0f, 10.0f, 0.0f)},
 	viewport_size{viewport_size},
 	zoom{1.0f},
@@ -15,9 +21,15 @@ Camera::Camera(util::Vector2s viewport_size) :
 	view{Eigen::Matrix4f::Identity()},
 	proj{Eigen::Matrix4f::Identity()} {
 	this->look_at_scene(Eigen::Vector3f(0.0f, 0.0f, 0.0f));
+
+	resources::UBOInput view_input{"view", resources::ubo_input_t::M4F32};
+	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
+	auto ubo_info = resources::UniformBufferInfo{resources::ubo_layout_t::STD140, {view_input, proj_input}};
+	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
 }
 
-Camera::Camera(util::Vector2s viewport_size,
+Camera::Camera(const std::shared_ptr<Renderer> &renderer,
+               util::Vector2s viewport_size,
                Eigen::Vector3f scene_pos,
                float zoom,
                float max_zoom_out,
@@ -29,8 +41,13 @@ Camera::Camera(util::Vector2s viewport_size,
 	default_zoom_ratio{default_zoom_ratio},
 	moved{true},
 	zoom_changed{true},
+	viewport_changed{true},
 	view{Eigen::Matrix4f::Identity()},
 	proj{Eigen::Matrix4f::Identity()} {
+	resources::UBOInput view_input{"view", resources::ubo_input_t::M4F32};
+	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
+	auto ubo_info = resources::UniformBufferInfo{resources::ubo_layout_t::STD140, {view_input, proj_input}};
+	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
 }
 
 void Camera::look_at_scene(Eigen::Vector3f scene_pos) {
@@ -54,27 +71,24 @@ void Camera::look_at_scene(Eigen::Vector3f scene_pos) {
 	// we can calculate the new camera position via the offset a
 	// using the angle and length of side b.
 	auto y_delta = this->scene_pos[1] - scene_pos[1]; // b (vertical distance)
-	auto xz_distance = y_delta * sqrt(3); // a (horizontal distance); a = b * (cos(30°) / sin(30°))
+	auto xz_distance = y_delta * std::numbers::sqrt3; // a (horizontal distance); a = b * (cos(30°) / sin(30°))
 
 	// get x and z offsets
-	// the camera is pointed diagonally to the positive x and z axis
+	// the camera is pointed diagonally to the negative x and z axis
 	// a is the length of the diagonal from camera.xz to scene_pos.xz
 	// so the x and z offest are sides of a square with the same diagonal
-	auto side_length = xz_distance / (sqrt(2));
+	auto side_length = xz_distance / std::numbers::sqrt2;
 	auto new_pos = Eigen::Vector3f(
-		scene_pos[0] - side_length,
+		scene_pos[0] + side_length,
 		this->scene_pos[1], // height unchanged
-		scene_pos[2] - side_length);
+		scene_pos[2] + side_length);
 
 	this->move_to(new_pos);
 }
 
-void Camera::look_at_coord(util::Vector3f coord_pos) {
+void Camera::look_at_coord(coord::scene3 coord_pos) {
 	// convert coord pos to scene pos
-	auto scene_pos = Eigen::Vector3f(
-		-coord_pos[1],
-		coord_pos[2],
-		coord_pos[0]);
+	auto scene_pos = coord_pos.to_world_space();
 	this->look_at_scene(scene_pos);
 }
 
@@ -113,6 +127,11 @@ void Camera::zoom_out(float zoom_delta) {
 
 void Camera::resize(size_t width, size_t height) {
 	this->viewport_size = util::Vector2s(width, height);
+	this->viewport_changed = true;
+}
+
+float Camera::get_zoom() const {
+	return this->zoom;
 }
 
 const Eigen::Matrix4f &Camera::get_view_matrix() {
@@ -123,7 +142,7 @@ const Eigen::Matrix4f &Camera::get_view_matrix() {
 	auto direction = cam_direction.normalized();
 
 	Eigen::Vector3f eye = this->scene_pos;
-	Eigen::Vector3f center = this->scene_pos - direction; // look in the direction of the camera
+	Eigen::Vector3f center = this->scene_pos + direction; // look in the direction of the camera
 	Eigen::Vector3f up = Eigen::Vector3f(0.0f, 1.0f, 0.0f);
 
 	Eigen::Vector3f f = center - eye;
@@ -159,13 +178,13 @@ const Eigen::Matrix4f &Camera::get_view_matrix() {
 }
 
 const Eigen::Matrix4f &Camera::get_projection_matrix() {
-	if (not this->zoom_changed) {
+	if (not(this->zoom_changed or this->viewport_changed)) {
 		return this->proj;
 	}
 
 	// get center of viewport as the focus point
-	float halfwidth = viewport_size[0] / 2;
-	float halfheight = viewport_size[1] / 2;
+	float halfwidth = this->viewport_size[0] / 2;
+	float halfheight = this->viewport_size[1] / 2;
 
 	// get zoom level
 	float real_zoom = 0.5f * this->default_zoom_ratio * this->zoom;
@@ -189,12 +208,49 @@ const Eigen::Matrix4f &Camera::get_projection_matrix() {
 	// Cache matrix for subsequent calls
 	this->proj = mat;
 	this->zoom_changed = false;
+	this->viewport_changed = false;
 
 	return this->proj;
 }
 
 const util::Vector2s &Camera::get_viewport_size() const {
 	return this->viewport_size;
+}
+
+Eigen::Vector3f Camera::get_input_pos(const coord::input &coord) const {
+	// calculate up (u) and right (s) vectors for camera
+	// these define the camera plane in 3D space that the input
+	// coord exists on
+	auto direction = cam_direction.normalized();
+	Eigen::Vector3f eye = this->scene_pos;
+	Eigen::Vector3f center = this->scene_pos + direction;
+	Eigen::Vector3f up = Eigen::Vector3f(0.0f, 1.0f, 0.0f);
+
+	Eigen::Vector3f f = center - eye;
+	f.normalize();
+	Eigen::Vector3f s = f.cross(up);
+	s.normalize();
+	Eigen::Vector3f u = s.cross(f);
+	u.normalize();
+
+	// offsets are adjusted by zoom
+	// this is the same calculation as for the projection matrix
+	float halfwidth = this->viewport_size[0] / 2;
+	float halfheight = this->viewport_size[1] / 2;
+	float real_zoom = 0.5f * this->default_zoom_ratio * this->zoom;
+
+	// calculate x and y offset on the camera plane relative to the camera position
+	float x = +(2.0f * coord.x / this->viewport_size[0] - 1) * (halfwidth * real_zoom);
+	float y = -(2.0f * coord.y / this->viewport_size[1] - 1) * (halfheight * real_zoom);
+
+	// calculate the absolutive position of the input coordinates on the camera plane
+	Eigen::Vector3f input_pos = this->scene_pos + s * x + u * y;
+
+	return input_pos;
+}
+
+const std::shared_ptr<renderer::UniformBuffer> &Camera::get_uniform_buffer() const {
+	return this->uniform_buffer;
 }
 
 } // namespace openage::renderer::camera

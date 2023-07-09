@@ -6,18 +6,13 @@
 #include <shared_mutex>
 #include <vector>
 
-#include "util/path.h"
+#include "coord/scene.h"
+#include "curve/discrete.h"
 #include "util/vector.h"
 
 namespace openage::renderer {
 
 namespace terrain {
-
-struct TerrainVertex {
-	float x;
-	float y;
-	float height;
-};
 
 class TerrainRenderEntity {
 public:
@@ -31,17 +26,19 @@ public:
 	 * @param size Size of the terrain in tiles (width x length)
 	 * @param height_map Height of terrain tiles.
 	 * @param terrain_path Path to the terrain definition.
+     * @param time Simulation time of the update.
      */
 	void update(util::Vector2s size,
 	            std::vector<float> height_map,
-	            const util::Path terrain_path);
+	            const std::string terrain_path,
+	            const curve::time_t time = 0.0);
 
 	/**
      * Get the vertices of the terrain.
      *
      * @return Vector of vertex coordinates.
      */
-	const std::vector<TerrainVertex> &get_vertices();
+	const std::vector<coord::scene3> &get_vertices();
 
 	/**
      * Get the texture mapping for the terrain.
@@ -50,7 +47,7 @@ public:
      *
      * @return Texture mapping of textures to vertex area.
      */
-	const util::Path &get_texture_path();
+	const curve::Discrete<std::string> &get_terrain_path();
 
 	/**
      * Get the number of vertices on each side of the terrain.
@@ -87,17 +84,14 @@ private:
 
 	/**
 	 * Terrain vertices (ingame coordinates).
-	 *
-	 * TODO: Use coordinate system.
 	 */
-	std::vector<TerrainVertex> vertices;
+	std::vector<coord::scene3> vertices;
 
 	/**
-	 * Terrain texture-
-	 *
-	 * TODO: Use texture mapping.
+	 * Path to the terrain definition file.
 	 */
-	util::Path terrain_path;
+	curve::Discrete<std::string> terrain_path;
+
 	// std::unordered_map<Texture2d, size_t> texture_map; // texture -> vertex indices
 
 	/**

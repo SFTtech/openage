@@ -31,7 +31,7 @@ public:
 	 * @param position Absolute position of the layer on the screen.
 	 * @param time_per_frame Time that each frame is displayed in seconds.
 	 * @param replay_delay Additional time (in seconds) to display the last frame in a loop.
-	 * @param angles Angle information.
+	 * @param angles Angle information. Angles should be ordered clockwise, starting with the front-facing angle.
 	 */
 	LayerInfo(std::vector<std::shared_ptr<AngleInfo>> &angles,
 	          const display_mode mode = display_mode::OFF,
@@ -84,6 +84,15 @@ public:
 	 * @return An angle information object.
 	 */
 	const std::shared_ptr<AngleInfo> &get_angle(size_t idx) const;
+
+	/**
+	 * Get the angle information of the angle matching the specified direction.
+	 *
+	 * @param direction Direction in degrees.
+	 *
+	 * @return An angle information object.
+	 */
+	const std::shared_ptr<AngleInfo> &get_direction_angle(float direction) const;
 
 	/**
 	 * Get the frame timing information of this layer.

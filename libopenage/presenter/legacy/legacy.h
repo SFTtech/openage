@@ -170,12 +170,12 @@ public:
 	/**
 	 * return this engine's action manager.
 	 */
-	input::ActionManager &get_action_manager();
+	input::legacy::ActionManager &get_action_manager();
 
 	/**
 	 * return this engine's keybind manager.
 	 */
-	input::InputManager &get_input_manager();
+	input::legacy::InputManager &get_input_manager();
 
 	/**
 	 * FPS and game version are drawn when this is true.
@@ -245,7 +245,7 @@ private:
 	/**
 	 * the engine's action manager.
 	 */
-	input::ActionManager action_manager;
+	input::legacy::ActionManager action_manager;
 
 	/**
 	 * the engine's audio manager.
@@ -255,7 +255,7 @@ private:
 	/**
 	 * the engine's keybind manager.
 	 */
-	input::InputManager input_manager;
+	input::legacy::InputManager input_manager;
 
 	/**
 	 * the engine's unit selection.

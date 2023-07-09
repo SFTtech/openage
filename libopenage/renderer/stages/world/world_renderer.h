@@ -139,6 +139,11 @@ private:
 	std::shared_ptr<renderer::Texture2d> output_texture;
 
 	/**
+	 * Depth texture.
+	 */
+	std::shared_ptr<renderer::Texture2d> depth_texture;
+
+	/**
 	 * ID texture.
 	 */
 	std::shared_ptr<renderer::Texture2d> id_texture;

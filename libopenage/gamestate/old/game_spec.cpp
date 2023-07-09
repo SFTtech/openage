@@ -6,7 +6,7 @@
 
 #include "../../audio/error.h"
 #include "../../audio/resource_def.h"
-#include "../../engine.h"
+#include "../../legacy_engine.h"
 #include "../../gamedata/blending_mode_dummy.h"
 #include "../../gamedata/string_resource_dummy.h"
 #include "../../gamedata/terrain_dummy.h"

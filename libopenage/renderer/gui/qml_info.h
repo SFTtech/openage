@@ -7,8 +7,8 @@
 
 namespace openage {
 
-namespace engine {
-class Engine;
+namespace gamestate {
+class GameSimulation;
 }
 
 namespace presenter {
@@ -20,13 +20,13 @@ namespace gui {
 
 class QMLInfo : public qtsdl::GuiSingletonItemsInfo {
 public:
-	QMLInfo(engine::Engine *engine, const util::Path &asset_dir);
+	QMLInfo(gamestate::GameSimulation *engine, const util::Path &asset_dir);
 
 	/**
 	 * The openage engine, so it can be "used" in QML as a "QML Singleton".
 	 * With this pointer, all of QML can find back to the engine.
 	 */
-	engine::Engine *engine;
+	gamestate::GameSimulation *engine;
 
 	/**
 	 * The openage display.

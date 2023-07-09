@@ -113,6 +113,32 @@ public:
 	 */
 	void set_current_program(const std::shared_ptr<GlShaderProgram> &prog);
 
+	/**
+     * Get a free uniform buffer binding point that is not bound to any buffer.
+     *
+     * The number of available binding points is limited by the OpenGL implementation.
+     * When the context is created, there are \p capabilities.max_uniform_buffer_bindings
+     * free binding points available.
+     *
+     * @return Binding point ID.
+     *
+     * @throw Error if no binding point is available.
+     */
+	size_t get_uniform_buffer_binding();
+
+	/**
+     * Free a buffer binding point, indicating that newly created buffers can use it.
+     *
+     * When calling this function, it must be ensured that the binding point is not
+     * assigned to any buffer or shader. Otherwise, reassigning the binding point
+     * can corrupt the uniform data.
+     *
+     * @param binding_point Binding point ID.
+     *
+     * @throw Error if the binding point is not valid.
+     */
+	void free_uniform_buffer_binding(size_t binding_point);
+
 private:
 	/**
 	 * Associated Qt window. Held here so the context remains active.
@@ -140,6 +166,11 @@ private:
 	 * The last-active shader program
 	 */
 	std::weak_ptr<GlShaderProgram> last_program;
+
+	/**
+     * Store the currently active binding points for uniform buffers.
+     */
+	std::vector<bool> uniform_buffer_bindings;
 };
 
 } // namespace openage::renderer::opengl

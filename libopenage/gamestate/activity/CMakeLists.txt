@@ -1,0 +1,12 @@
+add_sources(libopenage
+    activity.cpp
+    end_node.cpp
+    event_node.cpp
+    node.cpp
+    start_node.cpp
+    task_node.cpp
+    task_system_node.cpp
+    tests.cpp
+    types.cpp
+    xor_node.cpp
+)

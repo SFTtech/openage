@@ -6,16 +6,18 @@
 #include <cstdio>
 #include <unordered_set>
 
-#include "../../datastructure/constexpr_map.h"
-#include "../../error/error.h"
-#include "../../log/log.h"
-#include "../../util/opengl.h"
+#include "datastructure/constexpr_map.h"
+#include "error/error.h"
+#include "log/log.h"
+#include "util/opengl.h"
 
 #include "renderer/opengl/context.h"
 #include "renderer/opengl/geometry.h"
 #include "renderer/opengl/lookup.h"
 #include "renderer/opengl/shader.h"
 #include "renderer/opengl/texture.h"
+#include "renderer/opengl/uniform_buffer.h"
+#include "renderer/opengl/uniform_input.h"
 
 
 namespace openage::renderer::opengl {
@@ -159,12 +161,13 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 					size_t(count)}));
 		}
 
-		ENSURE(block_binding < caps.max_uniform_buffer_bindings,
-		       "Tried to create an OpenGL shader that uses more uniform blocks "
-		           << "than there are binding points (" << caps.max_uniform_buffer_bindings
-		           << " available).");
-
-		glUniformBlockBinding(handle, i_unif_block, block_binding);
+		// ENSURE(block_binding < caps.max_uniform_buffer_bindings,
+		//        "Tried to create an OpenGL shader that uses more uniform blocks "
+		//            << "than there are binding points (" << caps.max_uniform_buffer_bindings
+		//            << " available).");
+		//
+		// glUniformBlockBinding(handle, i_unif_block, block_binding);
+		// block_binding += 1;
 
 		this->uniform_blocks.insert(std::make_pair(
 			block_name,
@@ -173,8 +176,6 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 				size_t(data_size),
 				std::move(uniforms),
 				block_binding}));
-
-		block_binding += 1;
 	}
 
 	GLuint tex_unit = 0;
@@ -347,6 +348,9 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 			// TODO requires an extension
 			glUniform1d(loc, *reinterpret_cast<const double *>(ptr));
 			break;
+		case GL_BOOL:
+			glUniform1ui(loc, *reinterpret_cast<const bool *>(ptr));
+			break;
 		case GL_FLOAT_VEC2:
 			glUniform2fv(loc, 1, reinterpret_cast<const float *>(ptr));
 			break;
@@ -396,6 +400,10 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 	}
 }
 
+const GlUniformBlock &GlShaderProgram::get_uniform_block(const char *name) const {
+	return this->uniform_blocks.at(name);
+}
+
 std::map<size_t, resources::vertex_input_t> GlShaderProgram::vertex_attributes() const {
 	std::map<size_t, resources::vertex_input_t> attrib_map;
 
@@ -407,14 +415,26 @@ std::map<size_t, resources::vertex_input_t> GlShaderProgram::vertex_attributes()
 }
 
 std::shared_ptr<UniformInput> GlShaderProgram::new_unif_in() {
-	auto in = std::make_shared<GlUniformInput>(
-		this->shared_from_this());
+	auto in = std::make_shared<GlUniformInput>(this->shared_from_this());
 
 	return in;
 }
 
 bool GlShaderProgram::has_uniform(const char *name) {
 	return this->uniforms.count(name) == 1;
+}
+
+void GlShaderProgram::bind_uniform_buffer(const char *block_name, std::shared_ptr<UniformBuffer> const &buffer) {
+	ENSURE(this->uniform_blocks.count(block_name) == 1,
+	       "Tried to set binding point for uniform block " << block_name << " that does not exist in the shader program.");
+
+	auto gl_buffer = std::dynamic_pointer_cast<GlUniformBuffer>(buffer);
+	auto &block = this->uniform_blocks[block_name];
+
+	// TODO: Check if the uniform buffer matches the block definition
+
+	block.binding_point = gl_buffer->get_binding_point();
+	glUniformBlockBinding(*this->handle, block.index, block.binding_point);
 }
 
 void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const &in, const char *unif, void const *val, GLenum type) {
@@ -460,6 +480,10 @@ void GlShaderProgram::set_f32(std::shared_ptr<UniformInput> const &in, const cha
 void GlShaderProgram::set_f64(std::shared_ptr<UniformInput> const &in, const char *unif, double val) {
 	// TODO requires extension
 	this->set_unif(in, unif, &val, GL_DOUBLE);
+}
+
+void GlShaderProgram::set_bool(std::shared_ptr<UniformInput> const &in, const char *unif, bool val) {
+	this->set_unif(in, unif, &val, GL_BOOL);
 }
 
 void GlShaderProgram::set_v2f32(std::shared_ptr<UniformInput> const &in, const char *unif, Eigen::Vector2f const &val) {

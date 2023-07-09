@@ -9,14 +9,15 @@
 
 #include <eigen3/Eigen/Dense>
 
-#include "resources/mesh_data.h"
-#include "uniform_input.h"
+#include "renderer/resources/mesh_data.h"
+#include "renderer/uniform_input.h"
 
 
 namespace openage {
 namespace renderer {
 
 class Texture2d;
+class UniformBuffer;
 
 class ShaderProgram : public std::enable_shared_from_this<ShaderProgram> {
 	friend UniformInput;
@@ -32,6 +33,16 @@ public:
 	 * @return true if the shader program contains the uniform, false otherwise.
 	 */
 	virtual bool has_uniform(const char *unif) = 0;
+
+	/**
+     * Binds a uniform block in the shader program to the same binding point as
+     * the given uniform buffer.
+     *
+     * @param buffer Uniform buffer to bind.
+     * @param block_name Name of the uniform block in the shader program.
+     */
+	virtual void bind_uniform_buffer(const char *block_name,
+	                                 std::shared_ptr<UniformBuffer> const &) = 0;
 
 	/**
 	 * Creates a new uniform input (a binding of uniform names to values) for this shader
@@ -77,6 +88,7 @@ protected:
 	virtual void set_u32(std::shared_ptr<UniformInput> const &, const char *, uint32_t) = 0;
 	virtual void set_f32(std::shared_ptr<UniformInput> const &, const char *, float) = 0;
 	virtual void set_f64(std::shared_ptr<UniformInput> const &, const char *, double) = 0;
+	virtual void set_bool(std::shared_ptr<UniformInput> const &, const char *, bool) = 0;
 	virtual void set_v2f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector2f const &) = 0;
 	virtual void set_v3f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector3f const &) = 0;
 	virtual void set_v4f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector4f const &) = 0;

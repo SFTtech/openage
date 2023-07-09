@@ -24,7 +24,7 @@ version 2
 texture <texture_id> <filename>
 
 # the zoom level at which the animation is shown in full detail
-# e.g. scalefactor 2.0 -> full detail at 200% zoom
+# e.g. scalefactor 0.5 -> full detail at 200% zoom
 scalefactor <factor>
 
 # layer definitions
@@ -38,10 +38,7 @@ angle <degree> mirror-from=<existing_angle>
 
 # assign frames to their layers and angles.
 # angle is the direction in degrees, etc.
-# *pos, *size and *hotspot is within the source image.
-# all the hotspots of the frames will be drawn at the same pixel (requested by renderer)
-# so that the alignment/movement of the frames is done solely by hotspots.
-frame <frame_idx> <angle> <layer_id> <image_id> <xpos> <ypos> <xsize> <ysize> <xhotspot> <yhotspot>
+frame <frame_idx> <angle> <layer_id> <image_id> <subtex_id>
 ```
 
 
@@ -113,23 +110,23 @@ Parameter | Type  | Optional | Default value
 factor    | float | No       | -
 
 **factor**<br>
-Factor by which sprite images are scaled *down* at default zoom level.
+Factor by which sprite images are scaled at default zoom level.
 This allows for high resolution sprites to be displayed at an
-arbitrary scale. Zooming in counteracts the downscaling. Thus,
-this factor can be used for sprites that should retain high
-image quality with higher zoom levels.
+arbitrary scale. It can be used for sprites that should retain
+high image quality with higher zoom levels.
 
 
 #### Example
 
 ```
 # Assume the sprite image has a size of 100x100
-scalefactor 1.0  # No scaling, 100x100 at default zoom
-scalefactor 2.0  # 50x50 at default zoom; 100x100 at 2x zoom
-scalefactor 4.0  # 25x25 at default zoom; 100x100 at 4x zoom
+# Factors <1 result in downscaling
+scalefactor 1.0   # No scaling, 100x100 at default zoom
+scalefactor 0.5   # 50x50 at default zoom; 100x100 at 2x zoom
+scalefactor 0.25  # 25x25 at default zoom; 100x100 at 4x zoom
 
-# Factors <1 result in upscaling
-scalefactor 0.5  # 200x200 at default zoom; 100x100 at 2x zoom
+# Factors >1 result in upscaling
+scalefactor 2.0  # 200x200 at default zoom; 100x100 at 2x zoom
 ```
 
 ### `layer`
@@ -196,11 +193,15 @@ mirror_from | int   | Yes      | -
 Acts as the ID and center point for the angle. Has to be an integer between
 `0` and `359`.
 
+The angle with center point `degree = 0` is facing the camera, i.e. the game object
+direction should be *towards* the camera. Subsequent angles are ordered *clockwise*, e.g.
+`90` faces left from the camera's point of view, `180` faces up, and `270` faces right.
+
 Frames at an angle are drawn until the angle of the game world object is
 closer to another defined angle.  In other words, as long as the game world
 objects's angle is between
-`(degree - previous_angle_degree) / 2`
-and `(next_angle_degree - degree) / 2`.
+`previous_angle_degree + (degree - previous_angle_degree) / 2`
+and `degree + (next_angle_degree - degree) / 2`.
 
 ```
 angle 0

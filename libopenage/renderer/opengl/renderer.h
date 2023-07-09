@@ -4,20 +4,33 @@
 
 #include <memory>
 
-#include "../renderer.h"
-#include "render_pass.h"
-#include "render_target.h"
-#include "shader_program.h"
+#include "renderer/renderer.h"
+#include "util/vector.h"
 
 
 namespace openage {
 namespace renderer {
+class RenderPass;
+class ShaderProgram;
+
 namespace opengl {
+class GlContext;
+class GlRenderPass;
+class GlRenderTarget;
+class GlWindow;
 
 /// The OpenGL specialization of the rendering interface.
 class GlRenderer final : public Renderer {
 public:
-	GlRenderer(const std::shared_ptr<GlContext> &);
+	/**
+	 * Create a new OpenGL renderer.
+	 *
+	 * @param ctx OpenGL context of the current window.
+	 * @param viewport_size Size of the window viewport.
+	 * 						Must be adjusted by scale for highDPI displays.
+	 */
+	GlRenderer(const std::shared_ptr<GlContext> &ctx,
+	           const util::Vector2s &viewport_size);
 
 	std::shared_ptr<Texture2d> add_texture(resources::Texture2dData const &) override;
 	std::shared_ptr<Texture2d> add_texture(resources::Texture2dInfo const &) override;
@@ -33,7 +46,13 @@ public:
 
 	std::shared_ptr<RenderTarget> get_display_target() override;
 
+	std::shared_ptr<UniformBuffer> add_uniform_buffer(resources::UniformBufferInfo const &) override;
+	std::shared_ptr<UniformBuffer> add_uniform_buffer(std::shared_ptr<ShaderProgram> const &,
+	                                                  std::string const &) override;
+
 	resources::Texture2dData display_into_data() override;
+
+	void resize_display_target(size_t width, size_t height);
 
 	void check_error() override;
 

@@ -6,8 +6,11 @@ layout (location = 1) in vec2 uv;
 out vec2 tex_pos;
 
 uniform mat4 model;
-uniform mat4 view;
-uniform mat4 proj;
+
+layout (std140) uniform camera {
+    mat4 view;
+    mat4 proj;
+};
 
 void main() {
 	gl_Position = proj * view * model * vec4(position, 1.0);

@@ -12,8 +12,8 @@ QT_FORWARD_DECLARE_CLASS(QJSEngine)
 
 namespace openage {
 
-namespace engine {
-class Engine;
+namespace gamestate {
+class GameSimulation;
 }
 
 namespace renderer::gui {
@@ -23,13 +23,13 @@ class EngineLink;
 
 namespace qtsdl {
 template <>
-struct Wrap<openage::engine::Engine> {
+struct Wrap<openage::gamestate::GameSimulation> {
 	using Type = openage::renderer::gui::EngineLink;
 };
 
 template <>
 struct Unwrap<openage::renderer::gui::EngineLink> {
-	using Type = openage::engine::Engine;
+	using Type = openage::gamestate::GameSimulation;
 };
 
 } // namespace qtsdl
@@ -50,7 +50,7 @@ class EngineLink : public qtsdl::GuiSingletonItem {
 	                   NOTIFY global_binds_changed)
 
 public:
-	explicit EngineLink(QObject *parent, engine::Engine *engine);
+	explicit EngineLink(QObject *parent, gamestate::GameSimulation *engine);
 	virtual ~EngineLink();
 
 	static QObject *provider(QQmlEngine *, QJSEngine *);
@@ -71,7 +71,7 @@ private slots:
 	void on_global_binds_changed(const std::vector<std::string> &global_binds);
 
 private:
-	engine::Engine *core;
+	gamestate::GameSimulation *core;
 
 	QStringList global_binds;
 };

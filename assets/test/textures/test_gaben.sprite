@@ -5,7 +5,7 @@ version 2
 
 texture 0 "test_gaben.texture"
 
-scalefactor 1
+scalefactor 0.2
 
 layer 0 mode=once
 

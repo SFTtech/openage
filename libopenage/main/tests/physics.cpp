@@ -1,4 +1,4 @@
-// Copyright 2019-2019 the openage authors. See copying.md for legal info.
+// Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 #include "physics.h"
 
@@ -29,7 +29,7 @@ public:
 	}
 
 	// FIXME we REALLY need dependencies to objects i.e. Ball : public EventEntity()
-	void invoke(event::Loop &,
+	void invoke(event::EventLoop &,
 	            const std::shared_ptr<event::EventEntity> &target,
 	            const std::shared_ptr<event::State> &gstate,
 	            const curve::time_t &now,
@@ -117,7 +117,7 @@ public:
 		evnt->depend_on(state->area_size);
 	}
 
-	void invoke(event::Loop &mgr,
+	void invoke(event::EventLoop &mgr,
 	            const std::shared_ptr<event::EventEntity> &/*target*/,
 	            const std::shared_ptr<event::State> &gstate,
 	            const curve::time_t &now,
@@ -253,7 +253,7 @@ public:
 	void setup_event(const std::shared_ptr<event::Event> &/*target*/,
 	                 const std::shared_ptr<event::State> &/*state*/) override {}
 
-	void invoke(event::Loop &/*mgr*/,
+	void invoke(event::EventLoop &/*mgr*/,
 	            const std::shared_ptr<event::EventEntity> &/*target*/,
 	            const std::shared_ptr<event::State> &gstate,
 	            const curve::time_t &now,
@@ -337,12 +337,12 @@ public:
 
 
 void Physics::init(const std::shared_ptr<PongState> &state,
-                   const std::shared_ptr<event::Loop> &loop,
+                   const std::shared_ptr<event::EventLoop> &loop,
                    const curve::time_t &now) {
 
-	loop->add_event_class(std::make_shared<BallReflectPanel>());
-	loop->add_event_class(std::make_shared<BallReflectWall>());
-	loop->add_event_class(std::make_shared<ResetGame>());
+	loop->add_event_handler(std::make_shared<BallReflectPanel>());
+	loop->add_event_handler(std::make_shared<BallReflectWall>());
+	loop->add_event_handler(std::make_shared<ResetGame>());
 
 	loop->create_event("demo.ball.reflect_wall", state->ball->position, state, now);
 	loop->create_event("demo.ball.reflect_panel", state->ball->position, state, now);
@@ -353,7 +353,7 @@ void Physics::init(const std::shared_ptr<PongState> &state,
 
 
 void Physics::reset(const std::shared_ptr<event::State> &gstate,
-                    event::Loop &mgr,
+                    event::EventLoop &mgr,
                     const curve::time_t &now) {
 
 	auto state = std::dynamic_pointer_cast<PongState>(gstate);
@@ -364,7 +364,7 @@ void Physics::reset(const std::shared_ptr<event::State> &gstate,
 void Physics::process_input(const std::shared_ptr<PongState> &state,
                             const std::shared_ptr<PongPlayer> &player,
                             const std::vector<PongEvent> &events,
-                            const std::shared_ptr<event::Loop> &mgr,
+                            const std::shared_ptr<event::EventLoop> &mgr,
                             const curve::time_t &now) {
 
 	// seconds into the future

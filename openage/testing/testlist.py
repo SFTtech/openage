@@ -1,4 +1,4 @@
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 """ Lists of all possible tests; enter your tests here. """
 
@@ -95,7 +95,7 @@ def tests_cpp():
     yield "openage::util::tests::vector"
     yield "openage::util::tests::siphash"
     yield "openage::util::tests::array_conversion"
-    yield "openage::input::tests::parse_event_string", "keybinds parsing"
+    yield "openage::input::legacy::tests::parse_event_string", "keybinds parsing"
     yield "openage::curve::tests::container"
     yield "openage::curve::tests::curve_types"
     yield "openage::event::tests::eventtrigger"
@@ -112,6 +112,10 @@ def demos_cpp():
            "showcases console as an interactive terminal on your current tty")
     yield ("openage::error::demo",
            "showcases the openage exceptions, including backtraces")
+    yield ("openage::gamestate::tests::activity_demo",
+           "showcases the activity system in the gamestate")
+    yield ("openage::input::tests::action_demo",
+           "showcases the low-level input system")
     yield ("openage::log::tests::demo",
            "showcases the logging system")
     yield ("openage::pyinterface::tests::err_py_to_cpp_demo",

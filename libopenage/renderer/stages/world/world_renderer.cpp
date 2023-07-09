@@ -3,6 +3,7 @@
 #include "world_renderer.h"
 
 #include "event/clock.h"
+#include "renderer/camera/camera.h"
 #include "renderer/opengl/context.h"
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/shader_source.h"
@@ -31,7 +32,7 @@ WorldRenderer::WorldRenderer(const std::shared_ptr<Window> &window,
 	auto size = window->get_size();
 	this->initialize_render_pass(size[0], size[1], shaderdir);
 
-	window->add_resize_callback([this](size_t width, size_t height) {
+	window->add_resize_callback([this](size_t width, size_t height, double /*scale*/) {
 		this->resize(width, height);
 	});
 }
@@ -50,24 +51,22 @@ void WorldRenderer::add_render_entity(const std::shared_ptr<WorldRenderEntity> e
 }
 
 void WorldRenderer::update() {
+	std::unique_lock lock{this->mutex};
 	auto current_time = this->clock->get_real_time();
 	for (auto obj : this->render_objects) {
-		obj->update(current_time);
-
+		obj->fetch_updates(current_time);
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {
-				// TODO: Use zoom level from camera for view matrix
-				Eigen::Matrix4f view_m = Eigen::Matrix4f::Identity();
-				Eigen::Matrix4f proj_m = Eigen::Matrix4f::Identity();
+				Eigen::Matrix4f model_m = Eigen::Matrix4f::Identity();
 
-				// TODO: Update existing renderable instead of recreating it
+				// Set uniforms that don't change or are not changed often
 				auto transform_unifs = this->display_shader->new_uniform_input(
-					"view",
-					view_m,
-					"proj",
-					proj_m,
-					"tex",
-					obj->get_texture(),
+					"model",
+					model_m,
+					"flip_x",
+					false,
+					"flip_y",
+					false,
 					"u_id",
 					obj->get_id());
 
@@ -83,31 +82,32 @@ void WorldRenderer::update() {
 
 				// update remaining uniforms for the object
 				obj->set_uniforms(transform_unifs);
-				obj->update_uniforms(current_time);
 			}
 		}
+		obj->update_uniforms(current_time);
 	}
 }
 
 void WorldRenderer::resize(size_t width, size_t height) {
 	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
+	this->depth_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::depth24));
 	this->id_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::r32ui));
 
-	auto fbo = this->renderer->create_texture_target({this->output_texture, this->id_texture});
+	auto fbo = this->renderer->create_texture_target({this->output_texture, this->depth_texture, this->id_texture});
 	this->render_pass->set_target(fbo);
 }
 
 void WorldRenderer::initialize_render_pass(size_t width,
                                            size_t height,
                                            const util::Path &shaderdir) {
-	auto vert_shader_file = (shaderdir / "world.vert.glsl").open();
+	auto vert_shader_file = (shaderdir / "world2d.vert.glsl").open();
 	auto vert_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
 		vert_shader_file.read());
 	vert_shader_file.close();
 
-	auto frag_shader_file = (shaderdir / "world.frag.glsl").open();
+	auto frag_shader_file = (shaderdir / "world2d.frag.glsl").open();
 	auto frag_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
@@ -115,11 +115,13 @@ void WorldRenderer::initialize_render_pass(size_t width,
 	frag_shader_file.close();
 
 	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
+	this->depth_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::depth24));
 	this->id_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::r32ui));
 
 	this->display_shader = this->renderer->add_shader({vert_shader_src, frag_shader_src});
+	this->display_shader->bind_uniform_buffer("camera", this->camera->get_uniform_buffer());
 
-	auto fbo = this->renderer->create_texture_target({this->output_texture, this->id_texture});
+	auto fbo = this->renderer->create_texture_target({this->output_texture, this->depth_texture, this->id_texture});
 	this->render_pass = this->renderer->add_render_pass({}, fbo);
 }
 

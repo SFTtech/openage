@@ -2,11 +2,13 @@
 
 #pragma once
 
-#include <eigen3/Eigen/Dense>
 #include <memory>
 
+#include <eigen3/Eigen/Dense>
+
+#include "curve/discrete.h"
+
 namespace openage::renderer {
-class Renderer;
 
 namespace camera {
 class Camera;
@@ -43,8 +45,23 @@ public:
      */
 	void set_camera(const std::shared_ptr<renderer::camera::Camera> &camera);
 
-	void update();
+	/**
+     * Fetch updates from the render entity.
+     */
+	void fetch_updates();
 
+	/**
+     * Update the uniforms of the renderable associated with this object.
+     *
+     * @param time Current simulation time.
+     */
+	void update_uniforms(const curve::time_t &time = 0.0);
+
+	/**
+     * Get the meshes composing the terrain.
+     *
+     * @return Vector of terrain meshes.
+     */
 	const std::vector<std::shared_ptr<TerrainRenderMesh>> &get_meshes() const;
 
 private:
@@ -67,9 +84,7 @@ private:
 	std::shared_ptr<renderer::camera::Camera> camera;
 
 	/**
-	 * Texture manager for central accessing and loading textures.
-	 *
-     * TODO: Replace with asset manager
+	 * Asset manager for central accessing and loading textures.
      */
 	std::shared_ptr<renderer::resources::AssetManager> asset_manager;
 

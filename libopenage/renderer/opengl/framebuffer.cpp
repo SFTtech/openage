@@ -2,6 +2,8 @@
 
 #include "framebuffer.h"
 
+#include "renderer/opengl/texture.h"
+
 
 namespace openage::renderer::opengl {
 

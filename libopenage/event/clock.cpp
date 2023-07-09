@@ -2,6 +2,11 @@
 
 #include "clock.h"
 
+#include <thread>
+
+#include "log/log.h"
+
+
 namespace openage::event {
 
 Clock::Clock() :
@@ -25,7 +30,11 @@ void Clock::update_time() {
 
 		auto now = simclock_t::now();
 		auto passed = std::chrono::duration_cast<std::chrono::milliseconds>(now - this->last_check);
-		if (passed.count() > this->max_tick_time) {
+		if (passed.count() == 0) {
+			// prevent the clock from stalling the thread forever
+			std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		}
+		else if (passed.count() > this->max_tick_time) {
 			// if too much real time passes between two time updates, we only advance time by a small amount
 			// this prevents the simulation from getting out of control during unplanned stops,
 			// e.g. when debugging or if you close your laptop lid
@@ -65,6 +74,8 @@ void Clock::set_speed(speed_t speed) {
 
 	std::unique_lock lock{this->mutex};
 	this->speed = speed;
+
+	log::log(MSG(info) << "Clock speed set to " << this->speed);
 }
 
 void Clock::start() {
@@ -83,6 +94,10 @@ void Clock::stop() {
 
 	std::unique_lock lock{this->mutex};
 	this->state = ClockState::STOPPED;
+
+	log::log(MSG(info) << "Clock stopped at "
+	                   << this->sim_time << "ms (simulated) / "
+	                   << this->sim_real_time << "ms (real)");
 }
 
 void Clock::pause() {
@@ -92,6 +107,10 @@ void Clock::pause() {
 
 	std::unique_lock lock{this->mutex};
 	this->state = ClockState::PAUSED;
+
+	log::log(MSG(info) << "Clock paused at "
+	                   << this->sim_time << "ms (simulated) / "
+	                   << this->sim_real_time << "ms (real)");
 }
 
 void Clock::resume() {
@@ -101,6 +120,10 @@ void Clock::resume() {
 		this->last_check = simclock_t::now();
 		this->state = ClockState::RUNNING;
 	}
+
+	log::log(MSG(info) << "Clock resumed at "
+	                   << this->sim_time << "ms (simulated) / "
+	                   << this->sim_real_time << "ms (real)");
 }
 
 } // namespace openage::event

@@ -21,47 +21,31 @@ TerrainRenderModel::TerrainRenderModel(const std::shared_ptr<renderer::resources
 
 void TerrainRenderModel::set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity) {
 	this->render_entity = entity;
-	this->update();
+	this->fetch_updates();
 }
 
 void TerrainRenderModel::set_camera(const std::shared_ptr<renderer::camera::Camera> &camera) {
 	this->camera = camera;
 }
 
-void TerrainRenderModel::update() {
+void TerrainRenderModel::fetch_updates() {
 	// Check render entity for updates
-	if (this->render_entity->is_changed()) {
-		// TODO: Multiple meshes
-		auto new_mesh = this->create_mesh();
-		this->meshes.clear();
-		this->meshes.push_back(new_mesh);
-
-		// Indicate to the render entity that its updates have been processed.
-		this->render_entity->clear_changed_flag();
+	if (not this->render_entity->is_changed()) {
+		return;
 	}
+	// TODO: Change mesh instead of recreating it
+	// TODO: Multiple meshes
+	auto new_mesh = this->create_mesh();
+	this->meshes.clear();
+	this->meshes.push_back(new_mesh);
 
-	// update uniforms
-	for (auto mesh : this->meshes) {
-		auto unifs = mesh->get_uniforms();
-		if (unifs != nullptr) [[likely]] {
-			// camera changes
-			unifs->update(
-				"view",
-				this->camera->get_view_matrix(),
-				"proj",
-				this->camera->get_projection_matrix());
+	// Indicate to the render entity that its updates have been processed.
+	this->render_entity->clear_changed_flag();
+}
 
-			if (mesh->is_changed()) {
-				// mesh changes
-				unifs->update(
-					"model",
-					mesh->get_model_matrix(),
-					"tex",
-					mesh->get_texture());
-			}
-
-			// TODO: Animated terrain
-		}
+void TerrainRenderModel::update_uniforms(const curve::time_t &time) {
+	for (auto &mesh : this->meshes) {
+		mesh->update_uniforms(time);
 	}
 }
 
@@ -80,27 +64,31 @@ std::shared_ptr<TerrainRenderMesh> TerrainRenderModel::create_mesh() {
 	dst_verts.reserve(src_verts.size() * 5);
 	for (auto v : src_verts) {
 		// Transform to scene coords
-		dst_verts.push_back(-v.y);
-		dst_verts.push_back(v.height);
-		dst_verts.push_back(v.x);
+		auto v_vec = v.to_world_space();
+		dst_verts.push_back(v_vec[0]);
+		dst_verts.push_back(v_vec[1]);
+		dst_verts.push_back(v_vec[2]);
 		// TODO: Texture scaling
-		dst_verts.push_back(v.x / 10);
-		dst_verts.push_back(v.y / 10);
+		dst_verts.push_back((v.ne / 10).to_float());
+		dst_verts.push_back((v.se / 10).to_float());
 	}
 
 	// split the grid into triangles using an index array
 	std::vector<uint16_t> idxs;
 	idxs.reserve((size[0] - 1) * (size[1] - 1) * 6);
-	for (size_t i = 0; i < size[1] - 1; ++i) {
-		for (size_t j = 0; j < size[0] - 1; ++j) {
+	// iterate over all tiles in the grid by columns, i.e. starting
+	// from the left corner to the bottom corner if you imagine it from
+	// the camera's point of view
+	for (size_t i = 0; i < size[0] - 1; ++i) {
+		for (size_t j = 0; j < size[1] - 1; ++j) {
 			// since we are working on tiles, we split each tile into two triangles
 			// with counter-clockwise vertex order
-			idxs.push_back(i * size[0] + j); // bottom left
-			idxs.push_back(i * size[0] + j + 1); // bottom right
-			idxs.push_back(i * size[0] + j + size[1]); // top left
-			idxs.push_back(i * size[0] + j + 1); // bottom right
-			idxs.push_back(i * size[0] + j + size[1] + 1); // top right
-			idxs.push_back(i * size[0] + j + size[1]); // top left
+			idxs.push_back(j + i * size[1]); // bottom left
+			idxs.push_back(j + 1 + i * size[1]); // bottom right
+			idxs.push_back(j + size[1] + i * size[1]); // top left
+			idxs.push_back(j + 1 + i * size[1]); // bottom right
+			idxs.push_back(j + size[1] + 1 + i * size[1]); // top right
+			idxs.push_back(j + size[1] + i * size[1]); // top left
 		}
 	}
 
@@ -122,11 +110,13 @@ std::shared_ptr<TerrainRenderMesh> TerrainRenderModel::create_mesh() {
 
 	// Update textures
 	auto tex_manager = this->asset_manager->get_texture_manager();
-	auto terrain_info = this->asset_manager->request_terrain(this->render_entity->get_texture_path());
-	auto texture = tex_manager.request(terrain_info->get_texture(0)->get_image_path().value());
+
 	// TODO: Support multiple textures per terrain
 
-	auto terrain_mesh = std::make_shared<TerrainRenderMesh>(texture, std::move(meshdata));
+	auto terrain_mesh = std::make_shared<TerrainRenderMesh>(
+		this->asset_manager,
+		this->render_entity->get_terrain_path(),
+		std::move(meshdata));
 
 	return terrain_mesh;
 }

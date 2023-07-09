@@ -12,6 +12,7 @@ class RenderFactory;
 
 namespace gamestate {
 class GameEntity;
+class GameState;
 
 /**
  * Entity for managing "physical" things (units, buildings) inside
@@ -22,9 +23,9 @@ public:
 	/**
 	 * Create a new world.
 	 *
-	 * @param root_dir openage root directory.
+     * @param state State of the game.
 	 */
-	World(const util::Path &root_dir);
+	World(const std::shared_ptr<GameState> &state);
 	~World() = default;
 
 	/**
@@ -37,9 +38,9 @@ public:
 
 private:
 	/**
-	 * List of game entities inside the game world.
-	 */
-	std::vector<std::shared_ptr<GameEntity>> game_entities;
+     * State of the current game.
+     */
+	std::shared_ptr<GameState> state;
 
 	/**
 	 * Factory for creating connector objects to the renderer which make game entities displayable.

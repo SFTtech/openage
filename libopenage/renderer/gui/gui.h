@@ -1,4 +1,4 @@
-// Copyright 2015-2022 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,13 +7,15 @@
 #include <string>
 
 #include "gui/guisys/public/gui_event_queue.h"
-#include "gui/guisys/public/gui_input.h"
 #include "gui/integration/public/gui_game_spec_image_provider.h"
-#include "renderer/gui/guisys/public/gui_engine.h"
-#include "renderer/gui/guisys/public/gui_renderer.h"
 #include "renderer/gui/guisys/public/gui_subtree.h"
-#include "renderer/gui/integration/public/gui_application_with_logger.h"
-#include "renderer/shader_program.h"
+
+namespace qtgui {
+class GuiInput;
+class GuiRenderer;
+class GuiQmlEngine;
+class GuiApplication;
+} // namespace qtgui
 
 namespace openage {
 namespace util {
@@ -24,6 +26,8 @@ namespace renderer {
 class RenderPass;
 class Renderer;
 class Window;
+
+class UniformInput;
 
 namespace gui {
 
@@ -47,6 +51,13 @@ public:
 	virtual ~GUI() = default;
 
 	/**
+     * Get the input handler of the GUI.
+     *
+     * @return Input handler of the GUI.
+     */
+	std::shared_ptr<qtgui::GuiInput> get_input_handler() const;
+
+	/**
 	 * Get the render pass of the GUI.
 	 *
 	 * The render pass has the GUI texture filled by Qt assigned as
@@ -54,7 +65,7 @@ public:
 	 *
 	 * @return Render pass of the GUI.
 	 */
-	std::shared_ptr<renderer::RenderPass> get_render_pass();
+	std::shared_ptr<renderer::RenderPass> get_render_pass() const;
 
 	/**
 	 * Render the GUI texture.
@@ -103,6 +114,11 @@ private:
 	 * \p gui_texture.
 	 */
 	std::shared_ptr<qtgui::GuiRenderer> gui_renderer;
+
+	/**
+	 * Input handler for the GUI window
+	 */
+	std::shared_ptr<qtgui::GuiInput> gui_input;
 
 	/**
 	 * Qt QML Engine wrapper.

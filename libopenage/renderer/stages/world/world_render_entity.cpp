@@ -2,24 +2,50 @@
 
 #include "world_render_entity.h"
 
+#include "renderer/definitions.h"
+
 namespace openage::renderer::world {
 
 WorldRenderEntity::WorldRenderEntity() :
 	changed{false},
-	position{0.0f, 0.0f, 0.0f},
-	sprite_path{},
+	ref_id{0},
+	position{nullptr, 0, "", nullptr, SCENE_ORIGIN},
+	angle{nullptr, 0, "", nullptr, 0},
+	animation_path{nullptr, 0},
 	last_update{0.0} {
 }
 
 void WorldRenderEntity::update(const uint32_t ref_id,
-                               const util::Vector3f position,
-                               const util::Path sprite_path,
+                               const curve::Continuous<coord::phys3> &position,
+                               const curve::Segmented<coord::phys_angle_t> &angle,
+                               const std::string animation_path,
                                const curve::time_t time) {
 	std::unique_lock lock{this->mutex};
 
 	this->ref_id = ref_id;
-	this->position = Eigen::Vector3f{position[0], position[1], position[2]};
-	this->sprite_path = sprite_path;
+	std::function<coord::scene3(const coord::phys3 &)> to_scene3 = [](const coord::phys3 &pos) {
+		return pos.to_scene3();
+	};
+	this->position.sync(position,
+	                    std::function<coord::scene3(const coord::phys3 &)>([](const coord::phys3 &pos) {
+							return pos.to_scene3();
+						}),
+	                    this->last_update);
+	this->angle.sync(angle, this->last_update);
+	this->animation_path.set_last(time, animation_path);
+	this->changed = true;
+	this->last_update = time;
+}
+
+void WorldRenderEntity::update(const uint32_t ref_id,
+                               const coord::phys3 position,
+                               const std::string animation_path,
+                               const curve::time_t time) {
+	std::unique_lock lock{this->mutex};
+
+	this->ref_id = ref_id;
+	this->position.set_last(time, position.to_scene3());
+	this->animation_path.set_last(time, animation_path);
 	this->changed = true;
 	this->last_update = time;
 }
@@ -30,16 +56,22 @@ uint32_t WorldRenderEntity::get_id() {
 	return this->ref_id;
 }
 
-const Eigen::Vector3f WorldRenderEntity::get_position() {
+const curve::Continuous<coord::scene3> &WorldRenderEntity::get_position() {
 	std::shared_lock lock{this->mutex};
 
 	return this->position;
 }
 
-const util::Path &WorldRenderEntity::get_texture_path() {
+const curve::Segmented<coord::phys_angle_t> &WorldRenderEntity::get_angle() {
 	std::shared_lock lock{this->mutex};
 
-	return this->sprite_path;
+	return this->angle;
+}
+
+const curve::Discrete<std::string> &WorldRenderEntity::get_animation_path() {
+	std::shared_lock lock{this->mutex};
+
+	return this->animation_path;
 }
 
 curve::time_t WorldRenderEntity::get_update_time() {

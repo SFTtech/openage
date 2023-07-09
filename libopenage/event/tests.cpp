@@ -1,15 +1,15 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #include <cstring>
 #include <iostream>
-#include <utility>
 #include <sstream>
+#include <utility>
 
-#include "../testing/testing.h"
-#include "../log/log.h"
+#include "log/log.h"
+#include "testing/testing.h"
 
-#include "loop.h"
 #include "event.h"
+#include "event_loop.h"
 #include "evententity.h"
 #include "state.h"
 
@@ -21,9 +21,9 @@ class TestState : public State {
 public:
 	class TestObject : public EventEntity {
 		const int _id;
+
 	public:
-		TestObject(const std::shared_ptr<Loop> &loop, int id)
-			:
+		TestObject(const std::shared_ptr<EventLoop> &loop, int id) :
 			EventEntity(loop),
 			_id{id},
 			number(0) {}
@@ -50,18 +50,16 @@ public:
 		int number;
 	};
 
-	explicit TestState(const std::shared_ptr<Loop> &loop)
-		:
+	explicit TestState(const std::shared_ptr<EventLoop> &loop) :
 		State(loop),
-		objectA(std::make_shared<TestObject>(loop, 0)) ,
+		objectA(std::make_shared<TestObject>(loop, 0)),
 		objectB(std::make_shared<TestObject>(loop, 1)) {}
 
 	std::shared_ptr<TestObject> objectA;
 	std::shared_ptr<TestObject> objectB;
 
 	struct traceelement {
-		traceelement(std::string event, curve::time_t time)
-			:
+		traceelement(std::string event, curve::time_t time) :
 			time{std::move(time)},
 			name{std::move(event)} {}
 
@@ -82,18 +80,17 @@ public:
 
 class TestEventHandler : public EventHandler {
 	int idx;
+
 public:
-	TestEventHandler(const std::string &name, int idx)
-		:
+	TestEventHandler(const std::string &name, int idx) :
 		EventHandler(name, EventHandler::trigger_type::DEPENDENCY),
 		idx{idx} {}
 
 	void setup_event(const std::shared_ptr<Event> &event,
 	                 const std::shared_ptr<State> &gstate) override {
-
 		auto state = std::dynamic_pointer_cast<TestState>(gstate);
 
-		switch(this->idx) {
+		switch (this->idx) {
 		case 0:
 			// let the modification of objectA depend on objectB
 			event->depend_on(state->objectB);
@@ -105,12 +102,11 @@ public:
 		}
 	}
 
-	void invoke(Loop &/*loop*/,
+	void invoke(EventLoop & /*loop*/,
 	            const std::shared_ptr<EventEntity> &target,
 	            const std::shared_ptr<State> &gstate,
 	            const curve::time_t &time,
-	            const EventHandler::param_map &/*param*/) override {
-
+	            const EventHandler::param_map & /*param*/) override {
 		auto state = std::dynamic_pointer_cast<TestState>(gstate);
 
 		switch (this->idx) {
@@ -130,8 +126,8 @@ public:
 		}
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &/*target*/,
-	                                  const std::shared_ptr<State> &/*state*/,
+	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
+	                                  const std::shared_ptr<State> & /*state*/,
 	                                  const curve::time_t &at) override {
 		return at + curve::time_t::from_double(2);
 	}
@@ -140,23 +136,20 @@ public:
 
 class TestEventHandlerTwo : public EventHandler {
 public:
-	explicit TestEventHandlerTwo(const std::string &name)
-		:
+	explicit TestEventHandlerTwo(const std::string &name) :
 		EventHandler(name, EventHandler::trigger_type::DEPENDENCY) {}
 
 	void setup_event(const std::shared_ptr<Event> &target,
 	                 const std::shared_ptr<State> &gstate) override {
-
 		auto state = std::dynamic_pointer_cast<TestState>(gstate);
 		target->depend_on(state->objectA);
 	}
 
-	void invoke(Loop &/*loop*/,
+	void invoke(EventLoop & /*loop*/,
 	            const std::shared_ptr<EventEntity> &gtarget,
 	            const std::shared_ptr<State> &gstate,
 	            const curve::time_t &time,
-	            const EventHandler::param_map &/*param*/) override {
-
+	            const EventHandler::param_map & /*param*/) override {
 		auto state = std::dynamic_pointer_cast<TestState>(gstate);
 		auto target = std::dynamic_pointer_cast<TestState::TestObject>(gtarget);
 		state->objectB->set_number(target->number + 1, time);
@@ -165,8 +158,8 @@ public:
 		state->trace.emplace_back("B", time);
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &/*target*/,
-	                                  const std::shared_ptr<State> &/*state*/,
+	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
+	                                  const std::shared_ptr<State> & /*state*/,
 	                                  const curve::time_t &at) override {
 		// TODO recalculate a hit time
 		return at + curve::time_t::from_double(1);
@@ -176,13 +169,11 @@ public:
 
 class EventTypeTestClass : public EventHandler {
 public:
-	EventTypeTestClass(const std::string &name, EventHandler::trigger_type type)
-		:
+	EventTypeTestClass(const std::string &name, EventHandler::trigger_type type) :
 		EventHandler(name, type) {}
 
 	void setup_event(const std::shared_ptr<Event> &event,
 	                 const std::shared_ptr<State> &gstate) override {
-
 		log::log(DBG << "EventTypeTestClass-" << this->id() << " setting up new event");
 
 		// let all events depend on objectA
@@ -190,25 +181,24 @@ public:
 		event->depend_on(state->objectA);
 	}
 
-	void invoke(Loop &/*loop*/,
+	void invoke(EventLoop & /*loop*/,
 	            const std::shared_ptr<EventEntity> &target,
 	            const std::shared_ptr<State> &gstate,
 	            const curve::time_t &time,
-	            const EventHandler::param_map &/*param*/) override {
-
+	            const EventHandler::param_map & /*param*/) override {
 		auto state = std::dynamic_pointer_cast<TestState>(gstate);
 
 		auto t = std::dynamic_pointer_cast<TestState::TestObject>(target);
 		log::log(DBG << "EventTypeTestClass-" << this->id() << " got called on " << t->id()
-		         << " with number " << t->number << " at t=" << time);
+		             << " with number " << t->number << " at t=" << time);
 
 		state->trace.emplace_back(this->id(), time);
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &/*target*/,
-	                                  const std::shared_ptr<State> &/*state*/,
+	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
+	                                  const std::shared_ptr<State> & /*state*/,
 	                                  const curve::time_t &at) override {
-		switch(this->type) {
+		switch (this->type) {
 		case EventHandler::trigger_type::DEPENDENCY:
 			// Execute 1 after the change (usually it is neccessary to recalculate a collision
 			return at + curve::time_t::from_double(1);
@@ -226,7 +216,7 @@ public:
 			return at + curve::time_t::from_double(5);
 
 		case EventHandler::trigger_type::ONCE:
-			return 10;  // even if data changed it will happen at the given time!
+			return 10; // even if data changed it will happen at the given time!
 		}
 		return at;
 	}
@@ -241,10 +231,10 @@ void eventtrigger() {
 
 	{
 		// Test with one event handler
-		auto loop = std::make_shared<Loop>();
+		auto loop = std::make_shared<EventLoop>();
 
-		loop->add_event_class(std::make_shared<TestEventHandler>("test_on_A", 0));
-		loop->add_event_class(std::make_shared<TestEventHandler>("test_on_B", 1));
+		loop->add_event_handler(std::make_shared<TestEventHandler>("test_on_A", 0));
+		loop->add_event_handler(std::make_shared<TestEventHandler>("test_on_B", 1));
 
 		auto state = std::make_shared<TestState>(loop);
 		auto gstate = std::static_pointer_cast<State>(state);
@@ -273,20 +263,39 @@ void eventtrigger() {
 
 		curve::time_t last_time = 0;
 		for (const auto &e : state->trace) {
-
 			if (last_time > e.time) {
 				TESTFAILMSG("You broke the time continuum: one shall not execute randomly!");
 			}
 
 			last_time = e.time;
-			switch(i) {
-			case 0: TESTEQUALS(e.name, "B"); TESTEQUALS(e.time, 3); break;
-			case 1: TESTEQUALS(e.name, "A"); TESTEQUALS(e.time, 6); break;
-			case 2: TESTEQUALS(e.name, "B"); TESTEQUALS(e.time, 9); break;
-			case 3: TESTEQUALS(e.name, "A"); TESTEQUALS(e.time, 12); break;
-			case 4: TESTEQUALS(e.name, "B"); TESTEQUALS(e.time, 15); break;
-			case 5: TESTEQUALS(e.name, "A"); TESTEQUALS(e.time, 18); break;
-			default: TESTFAILMSG("Too many elements in stack trace"); break;
+			switch (i) {
+			case 0:
+				TESTEQUALS(e.name, "B");
+				TESTEQUALS(e.time, 3);
+				break;
+			case 1:
+				TESTEQUALS(e.name, "A");
+				TESTEQUALS(e.time, 6);
+				break;
+			case 2:
+				TESTEQUALS(e.name, "B");
+				TESTEQUALS(e.time, 9);
+				break;
+			case 3:
+				TESTEQUALS(e.name, "A");
+				TESTEQUALS(e.time, 12);
+				break;
+			case 4:
+				TESTEQUALS(e.name, "B");
+				TESTEQUALS(e.time, 15);
+				break;
+			case 5:
+				TESTEQUALS(e.name, "A");
+				TESTEQUALS(e.time, 18);
+				break;
+			default:
+				TESTFAILMSG("Too many elements in stack trace");
+				break;
 			}
 
 			i += 1;
@@ -300,10 +309,10 @@ void eventtrigger() {
 	log::log(DBG << "------------- [ Starting Test: Two Event Ping Pong ] ------------");
 	{
 		// Test with two event handleres to check interplay
-		auto loop = std::make_shared<Loop>();
+		auto loop = std::make_shared<EventLoop>();
 
-		loop->add_event_class(std::make_shared<TestEventHandler>("test_on_A", 0));
-		loop->add_event_class(std::make_shared<TestEventHandlerTwo>("test_on_B"));
+		loop->add_event_handler(std::make_shared<TestEventHandler>("test_on_A", 0));
+		loop->add_event_handler(std::make_shared<TestEventHandlerTwo>("test_on_B"));
 
 		auto state = std::make_shared<TestState>(loop);
 		auto gstate = std::static_pointer_cast<State>(state);
@@ -335,15 +344,38 @@ void eventtrigger() {
 			}
 
 			last_time = e.time;
-			switch(i) {
-			case 0: TESTEQUALS(e.name, "B"); TESTEQUALS(e.time, 3); break;
-			case 1: TESTEQUALS(e.name, "A"); TESTEQUALS(e.time, 6); break;
-			case 2: TESTEQUALS(e.name, "B"); TESTEQUALS(e.time, 8); break;
-			case 3: TESTEQUALS(e.name, "A"); TESTEQUALS(e.time, 11); break;
-			case 4: TESTEQUALS(e.name, "B"); TESTEQUALS(e.time, 13); break;
-			case 5: TESTEQUALS(e.name, "A"); TESTEQUALS(e.time, 16); break;
-			case 6: TESTEQUALS(e.name, "B"); TESTEQUALS(e.time, 18); break;
-			default: TESTFAILMSG("Too many elements in stack trace"); break;
+			switch (i) {
+			case 0:
+				TESTEQUALS(e.name, "B");
+				TESTEQUALS(e.time, 3);
+				break;
+			case 1:
+				TESTEQUALS(e.name, "A");
+				TESTEQUALS(e.time, 6);
+				break;
+			case 2:
+				TESTEQUALS(e.name, "B");
+				TESTEQUALS(e.time, 8);
+				break;
+			case 3:
+				TESTEQUALS(e.name, "A");
+				TESTEQUALS(e.time, 11);
+				break;
+			case 4:
+				TESTEQUALS(e.name, "B");
+				TESTEQUALS(e.time, 13);
+				break;
+			case 5:
+				TESTEQUALS(e.name, "A");
+				TESTEQUALS(e.time, 16);
+				break;
+			case 6:
+				TESTEQUALS(e.name, "B");
+				TESTEQUALS(e.time, 18);
+				break;
+			default:
+				TESTFAILMSG("Too many elements in stack trace");
+				break;
 			}
 
 			i += 1;
@@ -353,23 +385,23 @@ void eventtrigger() {
 	log::log(DBG << "------------- [ Starting Test: Complex Event Types ] ------------");
 	// Now set up a more complex test to test the different event types
 	{
-		auto loop = std::make_shared<Loop>();
+		auto loop = std::make_shared<EventLoop>();
 
-		loop->add_event_class(std::make_shared<EventTypeTestClass>(
-			                         "object_modify",
-			                         EventHandler::trigger_type::DEPENDENCY));
-		loop->add_event_class(std::make_shared<EventTypeTestClass>(
-			                         "object_modify_immediately",
-			                         EventHandler::trigger_type::DEPENDENCY_IMMEDIATELY));
-		loop->add_event_class(std::make_shared<EventTypeTestClass>(
-			                         "object_trigger",
-			                         EventHandler::trigger_type::TRIGGER));
-		loop->add_event_class(std::make_shared<EventTypeTestClass>(
-			                         "repeat_exec",
-			                         EventHandler::trigger_type::REPEAT));
-		loop->add_event_class(std::make_shared<EventTypeTestClass>(
-			                         "once",
-			                         EventHandler::trigger_type::ONCE));
+		loop->add_event_handler(std::make_shared<EventTypeTestClass>(
+			"object_modify",
+			EventHandler::trigger_type::DEPENDENCY));
+		loop->add_event_handler(std::make_shared<EventTypeTestClass>(
+			"object_modify_immediately",
+			EventHandler::trigger_type::DEPENDENCY_IMMEDIATELY));
+		loop->add_event_handler(std::make_shared<EventTypeTestClass>(
+			"object_trigger",
+			EventHandler::trigger_type::TRIGGER));
+		loop->add_event_handler(std::make_shared<EventTypeTestClass>(
+			"repeat_exec",
+			EventHandler::trigger_type::REPEAT));
+		loop->add_event_handler(std::make_shared<EventTypeTestClass>(
+			"once",
+			EventHandler::trigger_type::ONCE));
 
 		auto state = std::make_shared<TestState>(loop);
 		auto gstate = std::static_pointer_cast<State>(state);
@@ -435,7 +467,7 @@ void eventtrigger() {
 			TESTEQUALS(state->trace.size(), 1);
 			if (state->trace.front().name != "object_trigger")
 				TESTFAILMSG("Unexpected Event: " << state->trace.front().name
-				            << ", expected object_trigger");
+				                                 << ", expected object_trigger");
 
 			TESTEQUALS(state->trace.front().time, 1);
 			state->trace.clear();
@@ -498,19 +530,17 @@ void eventtrigger() {
 	{
 		class EventParameterMapTestClass : public EventHandler {
 		public:
-			EventParameterMapTestClass()
-				:
+			EventParameterMapTestClass() :
 				EventHandler("EventParameterMap", EventHandler::trigger_type::ONCE) {}
 
-			void setup_event(const std::shared_ptr<Event> &/*target*/,
-			                 const std::shared_ptr<State> &/*state*/) override {}
+			void setup_event(const std::shared_ptr<Event> & /*target*/,
+			                 const std::shared_ptr<State> & /*state*/) override {}
 
-			void invoke(Loop &/*loop*/,
-			            const std::shared_ptr<EventEntity> &/*target*/,
-			            const std::shared_ptr<State> &/*state*/,
-			            const curve::time_t &/*time*/,
+			void invoke(EventLoop & /*loop*/,
+			            const std::shared_ptr<EventEntity> & /*target*/,
+			            const std::shared_ptr<State> & /*state*/,
+			            const curve::time_t & /*time*/,
 			            const EventHandler::param_map &param) override {
-
 				log::log(DBG << "Testing unknown parameter");
 				TESTEQUALS(param.contains("tomato"), false);
 				TESTEQUALS(param.check_type<int>("tomato"), false);
@@ -527,8 +557,8 @@ void eventtrigger() {
 
 				log::log(DBG << "Testing char* parameter");
 				TESTEQUALS(param.contains("testString"), true);
-				TESTEQUALS(param.check_type<const char*>("testString"), true);
-				TESTEQUALS(strcmp(param.get<const char*>("testString"), "string"), 0);
+				TESTEQUALS(param.check_type<const char *>("testString"), true);
+				TESTEQUALS(strcmp(param.get<const char *>("testString"), "string"), 0);
 
 				log::log(DBG << "Testing std::string parameter");
 				TESTEQUALS(param.contains("testStdString"), true);
@@ -536,8 +566,8 @@ void eventtrigger() {
 				TESTEQUALS(param.get<std::string>("testStdString"), "stdstring");
 			}
 
-			curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &/*target*/,
-			                                  const std::shared_ptr<State> &/*state*/,
+			curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
+			                                  const std::shared_ptr<State> & /*state*/,
 			                                  const curve::time_t &at) override {
 				return at;
 			}
@@ -545,17 +575,12 @@ void eventtrigger() {
 
 		using namespace std::literals;
 
-		auto loop = std::make_shared<Loop>();
-		loop->add_event_class(std::make_shared<EventParameterMapTestClass>());
+		auto loop = std::make_shared<EventLoop>();
+		loop->add_event_handler(std::make_shared<EventParameterMapTestClass>());
 		auto state = std::make_shared<TestState>(loop);
 		auto gstate = std::dynamic_pointer_cast<State>(state);
 
-		loop->create_event("EventParameterMap", state->objectA, gstate, 1, {
-				{"testInt", 1},
-				{"testStdString", "stdstring"s},
-				{"testString", "string"}
-			}
-		);
+		loop->create_event("EventParameterMap", state->objectA, gstate, 1, {{"testInt", 1}, {"testStdString", "stdstring"s}, {"testString", "string"}});
 		loop->reach_time(10, gstate);
 	}
 }

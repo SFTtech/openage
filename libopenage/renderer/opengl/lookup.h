@@ -7,8 +7,9 @@
 
 #include <epoxy/gl.h>
 
-#include "../resources/mesh_data.h"
-#include "../resources/texture_info.h"
+#include "renderer/resources/buffer_info.h"
+#include "renderer/resources/mesh_data.h"
+#include "renderer/resources/texture_info.h"
 
 
 namespace openage {
@@ -151,6 +152,22 @@ static constexpr auto GL_INDEX_SIZE = datastructure::create_const_map<resources:
 	std::pair(resources::index_t::U8, 1),
 	std::pair(resources::index_t::U16, 2),
 	std::pair(resources::index_t::U32, 4));
+
+static constexpr auto GL_UBO_INPUT_TYPE = datastructure::create_const_map<resources::ubo_input_t, GLenum>(
+	std::pair(resources::ubo_input_t::F32, GL_FLOAT),
+	std::pair(resources::ubo_input_t::I32, GL_INT),
+	std::pair(resources::ubo_input_t::U32, GL_UNSIGNED_INT),
+	std::pair(resources::ubo_input_t::BOOL, GL_BOOL),
+	std::pair(resources::ubo_input_t::V2F32, GL_FLOAT_VEC2),
+	std::pair(resources::ubo_input_t::V3F32, GL_FLOAT_VEC3),
+	std::pair(resources::ubo_input_t::V4F32, GL_FLOAT_VEC4),
+	std::pair(resources::ubo_input_t::V2I32, GL_INT_VEC2),
+	std::pair(resources::ubo_input_t::V3I32, GL_INT_VEC3),
+	std::pair(resources::ubo_input_t::V4I32, GL_INT_VEC4),
+	std::pair(resources::ubo_input_t::V2U32, GL_UNSIGNED_INT_VEC2),
+	std::pair(resources::ubo_input_t::V3U32, GL_UNSIGNED_INT_VEC3),
+	std::pair(resources::ubo_input_t::V4U32, GL_UNSIGNED_INT_VEC4),
+	std::pair(resources::ubo_input_t::M4F32, GL_FLOAT_MAT4));
 
 } // namespace opengl
 } // namespace renderer

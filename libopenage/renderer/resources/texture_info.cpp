@@ -58,7 +58,7 @@ size_t Texture2dInfo::get_data_size() const {
 	return this->get_row_size() * this->h;
 }
 
-std::optional<util::Path> Texture2dInfo::get_image_path() const {
+const std::optional<util::Path> &Texture2dInfo::get_image_path() const {
 	return this->imagepath;
 }
 

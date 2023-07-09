@@ -2,9 +2,9 @@
 
 #include "game_control.h"
 
-#include "engine.h"
 #include "error/error.h"
 #include "gamestate/old/game_spec.h"
+#include "legacy_engine.h"
 #include "log/log.h"
 #include "renderer/color.h"
 #include "terrain/terrain_chunk.h"
@@ -67,13 +67,13 @@ ActionModeSignals::ActionModeSignals(ActionMode *action_mode) :
 void ActionModeSignals::on_action(const std::string &action_name) {
 	presenter::LegacyDisplay *display = this->action_mode->game_control->get_display();
 
-	const input::action_t &action = display->get_action_manager().get(action_name);
-	input::InputContext *top_ctxt = &display->get_input_manager().get_top_context();
+	const input::legacy::action_t &action = display->get_action_manager().get(action_name);
+	input::legacy::InputContext *top_ctxt = &display->get_input_manager().get_top_context();
 
 	if (top_ctxt == this->action_mode || top_ctxt == &this->action_mode->building_context || top_ctxt == &this->action_mode->build_menu_context || top_ctxt == &this->action_mode->build_menu_mil_context) {
 		// create an action that just relays the action.
-		input::action_arg_t action_arg{
-			input::Event{input::event_class::ANY, 0, input::modset_t{}},
+		input::legacy::action_arg_t action_arg{
+			input::legacy::Event{input::legacy::event_class::ANY, 0, input::legacy::modset_t{}},
 			coord::input{0, 0},
 			coord::input_delta{0, 0},
 			{action}};
@@ -107,7 +107,7 @@ void ActionMode::on_game_control_set() {
 	ENSURE(this->selection != nullptr, "selection must be fetched!");
 
 	this->bind(action.get("TRAIN_OBJECT"),
-	           [this](const input::action_arg_t &) {
+	           [this](const input::legacy::action_arg_t &) {
 				   // attempt to train editor selected object
 
 				   // randomly select between male and female villagers
@@ -120,44 +120,44 @@ void ActionMode::on_game_control_set() {
 			   });
 
 	this->bind(action.get("ENABLE_BUILDING_PLACEMENT"),
-	           [](const input::action_arg_t &) {
+	           [](const input::legacy::action_arg_t &) {
 				   // this->building_placement = true;
 			   });
 
 	this->bind(action.get("DISABLE_SET_ABILITY"),
-	           [this](const input::action_arg_t &) {
+	           [this](const input::legacy::action_arg_t &) {
 				   this->use_set_ability = false;
 			   });
 
 	this->bind(action.get("SET_ABILITY_MOVE"),
-	           [this](const input::action_arg_t &) {
+	           [this](const input::legacy::action_arg_t &) {
 				   this->use_set_ability = true;
 				   this->ability = ability_type::move;
 				   emit this->gui_signals.ability_changed(std::to_string(this->ability));
 			   });
 
 	this->bind(action.get("SET_ABILITY_GATHER"),
-	           [this](const input::action_arg_t &) {
+	           [this](const input::legacy::action_arg_t &) {
 				   this->use_set_ability = true;
 				   this->ability = ability_type::gather;
 				   emit this->gui_signals.ability_changed(std::to_string(this->ability));
 			   });
 
 	this->bind(action.get("SET_ABILITY_GARRISON"),
-	           [this](const input::action_arg_t &) {
+	           [this](const input::legacy::action_arg_t &) {
 				   this->use_set_ability = true;
 				   this->ability = ability_type::garrison;
 				   emit this->gui_signals.ability_changed(std::to_string(this->ability));
 			   });
 
-	this->bind(action.get("SET_ABILITY_REPAIR"), [this](const input::action_arg_t &) {
+	this->bind(action.get("SET_ABILITY_REPAIR"), [this](const input::legacy::action_arg_t &) {
 		this->use_set_ability = true;
 		this->ability = ability_type::repair;
 		emit this->gui_signals.ability_changed(std::to_string(this->ability));
 	});
 
 	this->bind(action.get("SPAWN_VILLAGER"),
-	           [this, display](const input::action_arg_t &) {
+	           [this, display](const input::legacy::action_arg_t &) {
 				   auto player = this->game_control->get_current_player();
 
 				   if (player->type_count() > 0) {
@@ -169,39 +169,39 @@ void ActionMode::on_game_control_set() {
 			   });
 
 	this->bind(action.get("KILL_UNIT"),
-	           [this](const input::action_arg_t &) {
+	           [this](const input::legacy::action_arg_t &) {
 				   this->selection->kill_unit(*this->game_control->get_current_player());
 			   });
 
 	this->bind(action.get("BUILD_MENU"),
-	           [this, input](const input::action_arg_t &) {
+	           [this, input](const input::legacy::action_arg_t &) {
 				   log::log(MSG(dbg) << "Opening build menu");
 				   input->push_context(&this->build_menu_context);
 				   this->announce_buttons_type();
 			   });
 
 	this->bind(action.get("BUILD_MENU_MIL"),
-	           [this, input](const input::action_arg_t &) {
+	           [this, input](const input::legacy::action_arg_t &) {
 				   log::log(MSG(dbg) << "Opening military build menu");
 				   input->push_context(&this->build_menu_mil_context);
 				   this->announce_buttons_type();
 			   });
 
 	this->build_menu_context.bind(action.get("CANCEL"),
-	                              [this, input](const input::action_arg_t &) {
+	                              [this, input](const input::legacy::action_arg_t &) {
 									  input->remove_context(&this->build_menu_context);
 									  this->announce_buttons_type();
 								  });
 
 	this->build_menu_mil_context.bind(action.get("CANCEL"),
-	                                  [this, input](const input::action_arg_t &) {
+	                                  [this, input](const input::legacy::action_arg_t &) {
 										  input->remove_context(&this->build_menu_mil_context);
 										  this->announce_buttons_type();
 									  });
 
 	// Villager build commands
-	auto bind_building_key = [this, input](input::action_t action, int building, input::InputContext *ctxt) {
-		ctxt->bind(action, [this, building, ctxt, input](const input::action_arg_t &) {
+	auto bind_building_key = [this, input](input::legacy::action_t action, int building, input::legacy::InputContext *ctxt) {
+		ctxt->bind(action, [this, building, ctxt, input](const input::legacy::action_arg_t &) {
 			auto player = this->game_control->get_current_player();
 			if (this->selection->contains_builders(*player)) {
 				auto player = this->game_control->get_current_player();
@@ -253,14 +253,14 @@ void ActionMode::on_game_control_set() {
 	bind_building_key(action.get("BUILDING_CSTL"), 82, &this->build_menu_mil_context); // Castle
 
 	this->building_context.bind(action.get("CANCEL"),
-	                            [this, input](const input::action_arg_t &) {
+	                            [this, input](const input::legacy::action_arg_t &) {
 									input->remove_context(&this->building_context);
 									this->announce_buttons_type();
 									this->type_focus = nullptr;
 								});
 
-	auto bind_build = [this, input, &coord](input::action_t action, const bool increase) {
-		this->building_context.bind(action, [this, increase, input, &coord](const input::action_arg_t &arg) {
+	auto bind_build = [this, input, &coord](input::legacy::action_t action, const bool increase) {
+		this->building_context.bind(action, [this, increase, input, &coord](const input::legacy::action_arg_t &arg) {
 			this->mousepos_phys3 = arg.mouse.to_phys3(coord, 0);
 			this->mousepos_tile = this->mousepos_phys3.to_tile();
 
@@ -277,8 +277,8 @@ void ActionMode::on_game_control_set() {
 	bind_build(action.get("BUILD"), false);
 	bind_build(action.get("KEEP_BUILDING"), true);
 
-	auto bind_select = [this, input, display](input::action_t action, const bool increase) {
-		this->bind(action, [this, increase, input, display](const input::action_arg_t &arg) {
+	auto bind_select = [this, input, display](input::legacy::action_t action, const bool increase) {
+		this->bind(action, [this, increase, input, display](const input::legacy::action_arg_t &arg) {
 			auto mousepos_camgame = arg.mouse.to_camgame(display->coord);
 			Terrain *terrain = display->get_game()->terrain.get();
 
@@ -298,7 +298,7 @@ void ActionMode::on_game_control_set() {
 	bind_select(action.get("SELECT"), false);
 	bind_select(action.get("INCREASE_SELECTION"), true);
 
-	this->bind(action.get("ORDER_SELECT"), [this, input, &coord](const input::action_arg_t &arg) {
+	this->bind(action.get("ORDER_SELECT"), [this, input, &coord](const input::legacy::action_arg_t &arg) {
 		if (this->type_focus) {
 			// right click can cancel building placement
 			this->type_focus = nullptr;
@@ -312,21 +312,21 @@ void ActionMode::on_game_control_set() {
 		this->use_set_ability = false;
 	});
 
-	this->bind(action.get("BEGIN_SELECTION"), [this](const input::action_arg_t &) {
+	this->bind(action.get("BEGIN_SELECTION"), [this](const input::legacy::action_arg_t &) {
 		this->selecting = true;
 	});
 
-	this->bind(action.get("END_SELECTION"), [this](const input::action_arg_t &) {
+	this->bind(action.get("END_SELECTION"), [this](const input::legacy::action_arg_t &) {
 		this->selecting = false;
 	});
 
-	this->bind(input::event_class::MOUSE, [this, &coord](const input::action_arg_t &arg) {
+	this->bind(input::legacy::event_class::MOUSE, [this, &coord](const input::legacy::action_arg_t &arg) {
 		auto mousepos_camgame = arg.mouse.to_camgame(coord);
 		this->mousepos_phys3 = mousepos_camgame.to_phys3(coord);
 		this->mousepos_tile = this->mousepos_phys3.to_tile();
 
 		// drag selection box
-		if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_MOTION, 0) && this->selecting && !this->type_focus) {
+		if (arg.e.cc == input::legacy::ClassCode(input::legacy::event_class::MOUSE_MOTION, 0) && this->selecting && !this->type_focus) {
 			this->selection->drag_update(mousepos_camgame);
 			this->announce_current_selection();
 			return true;
@@ -534,13 +534,13 @@ void EditorMode::on_game_control_set() {
 	auto &action = display->get_action_manager();
 
 	// bind required hotkeys
-	this->bind(action.get("ENABLE_BUILDING_PLACEMENT"), [this](const input::action_arg_t &) {
+	this->bind(action.get("ENABLE_BUILDING_PLACEMENT"), [this](const input::legacy::action_arg_t &) {
 		log::log(MSG(dbg) << "change category");
 		emit this->gui_signals.toggle();
 	});
 
-	this->bind(input::event_class::MOUSE, [this, display](const input::action_arg_t &arg) {
-		if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_BUTTON, 1) || display->get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 1)) {
+	this->bind(input::legacy::event_class::MOUSE, [this, display](const input::legacy::action_arg_t &arg) {
+		if (arg.e.cc == input::legacy::ClassCode(input::legacy::event_class::MOUSE_BUTTON, 1) || display->get_input_manager().is_down(input::legacy::event_class::MOUSE_BUTTON, 1)) {
 			if (this->paint_terrain) {
 				this->paint_terrain_at(arg.mouse.to_viewport(display->coord));
 			}
@@ -549,7 +549,7 @@ void EditorMode::on_game_control_set() {
 			}
 			return true;
 		}
-		else if (arg.e.cc == input::ClassCode(input::event_class::MOUSE_BUTTON, 3) || display->get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 3)) {
+		else if (arg.e.cc == input::legacy::ClassCode(input::legacy::event_class::MOUSE_BUTTON, 3) || display->get_input_manager().is_down(input::legacy::event_class::MOUSE_BUTTON, 3)) {
 			if (!this->paint_terrain) {
 				this->paint_entity_at(arg.mouse.to_viewport(display->coord), true);
 			}
@@ -722,13 +722,13 @@ void GameControl::set_engine(LegacyEngine *engine) {
 		auto &global_input_context = display->get_input_manager().get_global_context();
 
 		// advance the active mode
-		global_input_context.bind(action.get("TOGGLE_CONSTRUCT_MODE"), [this](const input::action_arg_t &) {
+		global_input_context.bind(action.get("TOGGLE_CONSTRUCT_MODE"), [this](const input::legacy::action_arg_t &) {
 			this->set_mode((this->active_mode_index + 1) % this->modes.size());
 		});
 
 		// Switching between players with the 1-8 keys
-		auto bind_player_switch = [this, &global_input_context](input::action_t action, size_t player_index) {
-			global_input_context.bind(action, [this, player_index](const input::action_arg_t &) {
+		auto bind_player_switch = [this, &global_input_context](input::legacy::action_t action, size_t player_index) {
+			global_input_context.bind(action, [this, player_index](const input::legacy::action_arg_t &) {
 				if (this->current_player != player_index)
 					if (auto game = this->display->get_game())
 						if (player_index < game->player_count()) {

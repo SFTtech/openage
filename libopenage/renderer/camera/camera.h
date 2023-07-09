@@ -4,19 +4,25 @@
 
 #include <eigen3/Eigen/Dense>
 
+#include "coord/pixel.h"
+#include "coord/scene.h"
 #include "util/vector.h"
 
-namespace openage::renderer::camera {
+namespace openage::renderer {
+class Renderer;
+class UniformBuffer;
+
+namespace camera {
 
 /**
  * Camera direction (= where it looks at).
  * Uses a dimetric perspective like in AoE with the (fixed) angles
  *    yaw   = -135 degrees
- *    pitch = 30 degrees
+ *    pitch = -30 degrees
  */
 static const Eigen::Vector3f cam_direction{
 	-1 * (sqrt(6) / 4),
-	0.5f,
+	-0.5f,
 	-1 * (sqrt(6) / 4),
 };
 
@@ -35,7 +41,8 @@ public:
      *
      * @param viewport_size Initial viewport size of the camera (width x height).
      */
-	Camera(util::Vector2s viewport_size);
+	Camera(const std::shared_ptr<Renderer> &renderer,
+	       util::Vector2s viewport_size);
 
 	/**
      * Create a new camera for the renderer.
@@ -46,7 +53,8 @@ public:
      * @param max_zoom_out Maximum zoom out level (defaults to 64.0f).
      * @param default_zoom_ratio Default zoom level calibration (defaults to 1.0f).
      */
-	Camera(util::Vector2s viewport_size,
+	Camera(const std::shared_ptr<Renderer> &renderer,
+	       util::Vector2s viewport_size,
 	       Eigen::Vector3f scene_pos,
 	       float zoom = 1.0f,
 	       float max_zoom_out = 64.0f,
@@ -67,7 +75,7 @@ public:
      *
      * @param scene_pos Position of the ingame coordinates that the camera should center on.
      */
-	void look_at_coord(util::Vector3f coord_pos);
+	void look_at_coord(coord::scene3 coord_pos);
 
 	/**
      * Move the camera position in the direction of a given vector.
@@ -127,6 +135,13 @@ public:
 	void resize(size_t width, size_t height);
 
 	/**
+      * Get the current zoom level of the camera.
+      *
+      * @return Zoom level.
+      */
+	float get_zoom() const;
+
+	/**
       * Get the view matrix for this camera.
       *
       * @return Camera view matrix.
@@ -147,6 +162,26 @@ public:
      */
 	const util::Vector2s &get_viewport_size() const;
 
+	/**
+     * Get the corresponding 3D position of a 2D input coordinate in the viewport.
+     * The position is on the plane created by the camera's orthographic projection.
+     *
+     * This may be used to get the 3D position of a mouse click and subsequent
+     * ray casting calculations.
+     *
+     * @param coord 2D input coordinate in the viewport.
+     *
+     * @return Position of the input in the 3D scene.
+     */
+	Eigen::Vector3f get_input_pos(const coord::input &coord) const;
+
+	/**
+     * Get the uniform buffer for this camera.
+     *
+     * @return Uniform buffer.
+     */
+	const std::shared_ptr<renderer::UniformBuffer> &get_uniform_buffer() const;
+
 private:
 	/**
      * Position in the 3D scene.
@@ -159,12 +194,12 @@ private:
 	util::Vector2s viewport_size;
 
 	/**
-      * Zoom level.
-      *
-      * 0.0f < z < 1.0f => zoom in
-      * z = 1.0f        => default view
-      * z > 1.0f        => zoom out
-      */
+     * Zoom level.
+     *
+     * 0.0f < z < 1.0f => zoom in
+     * z = 1.0f        => default view
+     * z > 1.0f        => zoom out
+     */
 	float zoom;
 
 	/**
@@ -195,32 +230,45 @@ private:
 	float default_zoom_ratio;
 
 	/**
-      * Flag set when the camera is moved.
-      *
-      * If true, the view matrix needs to be recalculated.
-      */
+     * Flag set when the camera is moved.
+     *
+     * If true, the view matrix needs to be recalculated.
+     */
 	bool moved;
 
 	/**
-      * Flag set when the camera zoom is changed.
-      *
-      * If true, the projection matrix needs to be recalculated.
-      */
+     * Flag set when the camera zoom is changed.
+     *
+     * If true, the projection matrix needs to be recalculated.
+     */
 	bool zoom_changed;
 
 	/**
-      * Current view matrix for the camera.
-      *
-      * Cached because it may be requested many times.
-      */
+     * Flag set when the camera viewport is resized.
+     *
+     * If true, the projection matrix needs to be recalculated.
+     */
+	bool viewport_changed;
+
+	/**
+     * Current view matrix for the camera.
+     *
+     * Cached because it may be requested many times.
+     */
 	Eigen::Matrix4f view;
 
 	/**
-      * Current projection matrix for the camera.
-      *
-      * Cached because it may be requested many times.
-      */
+     * Current projection matrix for the camera.
+     *
+     * Cached because it may be requested many times.
+     */
 	Eigen::Matrix4f proj;
+
+	/**
+     * Uniform buffer for the camera matrices.
+     */
+	std::shared_ptr<renderer::UniformBuffer> uniform_buffer;
 };
 
-} // namespace openage::renderer::camera
+} // namespace camera
+} // namespace openage::renderer

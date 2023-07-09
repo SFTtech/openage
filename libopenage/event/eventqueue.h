@@ -1,4 +1,4 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -13,7 +13,7 @@
 namespace openage::event {
 
 class Event;
-class Loop;
+class EventLoop;
 class EventEntity;
 
 /**

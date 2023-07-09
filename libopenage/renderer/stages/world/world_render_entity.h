@@ -5,9 +5,13 @@
 #include <eigen3/Eigen/Dense>
 #include <shared_mutex>
 
+#include "coord/phys.h"
+#include "coord/scene.h"
+#include "curve/continuous.h"
 #include "curve/curve.h"
+#include "curve/discrete.h"
+#include "curve/segmented.h"
 #include "util/path.h"
-#include "util/vector.h"
 
 namespace openage::renderer::world {
 
@@ -17,16 +21,33 @@ public:
 	~WorldRenderEntity() = default;
 
 	/**
-	 * Update the render entity with informatio from the gamestate.
+	 * Update the render entity with information from the gamestate.
 	 *
 	 * @param ref_id Game entity ID.
 	 * @param position Position of the game entity inside the game world.
-	 * @param sprite_path Path to the animation definition.
+     * @param angle Angle of the game entity inside the game world.
+	 * @param animation_path Path to the animation definition.
 	 * @param time Simulation time of the update.
 	 */
 	void update(const uint32_t ref_id,
-	            const util::Vector3f position,
-	            const util::Path sprite_path,
+	            const curve::Continuous<coord::phys3> &position,
+	            const curve::Segmented<coord::phys_angle_t> &angle,
+	            const std::string animation_path,
+	            const curve::time_t time = 0.0);
+
+	/**
+	 * Thus function is for DEBUGGING and should not be used.
+     *
+	 * Update the render entity with information from the gamestate.
+	 *
+	 * @param ref_id Game entity ID.
+	 * @param position Position of the game entity inside the game world.
+	 * @param animation_path Path to the animation definition.
+	 * @param time Simulation time of the update.
+	 */
+	void update(const uint32_t ref_id,
+	            const coord::phys3 position,
+	            const std::string animation_path,
 	            const curve::time_t time = 0.0);
 
 	/**
@@ -39,18 +60,23 @@ public:
 	/**
 	 * Get the position of the entity inside the game world.
 	 *
-	 * @return Position of the entity.
+	 * @return Position curve of the entity.
 	 */
-	const Eigen::Vector3f get_position();
+	const curve::Continuous<coord::scene3> &get_position();
 
 	/**
-     * Get the texture path.
+     * Get the angle of the entity inside the game world.
      *
-     * TODO: Return the animation.
-     *
-     * @return Path to the texture.
+     * @return Angle curve of the entity.
      */
-	const util::Path &get_texture_path();
+	const curve::Segmented<coord::phys_angle_t> &get_angle();
+
+	/**
+     * Get the animation definition path.
+     *
+     * @return Path to the animation definition file.
+     */
+	const curve::Discrete<std::string> &get_animation_path();
 
 	/**
 	 * Get the time of the last update.
@@ -88,15 +114,20 @@ private:
 	/**
 	 * Position inside the game world.
 	 */
-	Eigen::Vector3f position;
+	curve::Continuous<coord::scene3> position;
 
 	/**
-	 * Path to the texture.
+     * Angle of the entity inside the game world.
+     */
+	curve::Segmented<coord::phys_angle_t> angle;
+
+	/**
+	 * Path to the animation definition file.
 	 */
-	util::Path sprite_path;
+	curve::Discrete<std::string> animation_path;
 
 	/**
-	 * Time of the last texture update.
+	 * Time of the last update call.
 	 */
 	curve::time_t last_update;
 

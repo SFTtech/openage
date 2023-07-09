@@ -1,18 +1,18 @@
-// Copyright 2019-2019 the openage authors. See copying.md for legal info.
+// Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 #include "gamestate.h"
 
 #include <sstream>
 
 #include "gui.h"
-#include "../../log/log.h"
-#include "../../util/strings.h"
+#include "log/log.h"
+#include "util/strings.h"
 
 namespace openage::main::tests::pong {
 
 
 using namespace std::placeholders;
-PongPlayer::PongPlayer(const std::shared_ptr<event::Loop> &mgr, size_t id)
+PongPlayer::PongPlayer(const std::shared_ptr<event::EventLoop> &mgr, size_t id)
 	:
 	EventEntity{mgr},
 	speed(std::make_shared<curve::Discrete<float>>(
@@ -59,7 +59,7 @@ void PongPlayer::child_changes(const curve::time_t &time) {
 }
 
 
-PongBall::PongBall(const std::shared_ptr<event::Loop> &mgr, size_t id)
+PongBall::PongBall(const std::shared_ptr<event::EventLoop> &mgr, size_t id)
 	:
 	EventEntity{mgr},
 	speed(std::make_shared<curve::Discrete<util::Vector2d>>(
@@ -92,7 +92,7 @@ void PongBall::child_changes(const curve::time_t &time) {
 }
 
 
-PongState::PongState(const std::shared_ptr<event::Loop> &mgr,
+PongState::PongState(const std::shared_ptr<event::EventLoop> &mgr,
                      const std::shared_ptr<Gui> &gui,
                      const std::shared_ptr<nyan::View> &dbroot)
 	:

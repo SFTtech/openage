@@ -13,12 +13,16 @@ class GuiApplication;
 
 namespace openage {
 
-namespace engine {
-class Engine;
+namespace event {
+class TimeLoop;
 }
 
-namespace event {
-class Simulation;
+namespace gamestate {
+class GameSimulation;
+}
+
+namespace input {
+class InputManager;
 }
 
 namespace renderer {
@@ -30,7 +34,8 @@ class Window;
 
 namespace camera {
 class Camera;
-}
+class CameraManager;
+} // namespace camera
 
 namespace gui {
 class GUI;
@@ -66,12 +71,12 @@ public:
 	 * Create a new presenter.
 	 *
 	 * @param path Root directory path.
-	 * @param engine openage engine. Can be set later with \p set_engine()
-	 * @param simulation event simulation. Can be set later with \p set_simulation()
+	 * @param simulation Game simulation. Can be set later with \p set_engine()
+	 * @param time_loop Time loop which controls simulation time. Can be set later with \p set_time_loop()
 	 */
 	Presenter(const util::Path &path,
-	          const std::shared_ptr<engine::Engine> &engine = nullptr,
-	          const std::shared_ptr<event::Simulation> &simulation = nullptr);
+	          const std::shared_ptr<gamestate::GameSimulation> &simulation = nullptr,
+	          const std::shared_ptr<event::TimeLoop> &time_loop = nullptr);
 
 	~Presenter() = default;
 
@@ -81,18 +86,18 @@ public:
 	void run();
 
 	/**
-	 * Set the openage engine controlled by this presenter.
+	 * Set the game simulation controlled by this presenter.
 	 *
-	 * @param engine openage engine.
+	 * @param simulation Game simulation.
 	 */
-	void set_engine(const std::shared_ptr<engine::Engine> &engine);
+	void set_simulation(const std::shared_ptr<gamestate::GameSimulation> &simulation);
 
 	/**
-	 * Set the event simulation controlled by this presenter.
+	 * Set the time loop controlled by this presenter.
 	 *
-	 * @param simulation event simulation.
+	 * @param time_loop Time loop.
 	 */
-	void set_simulation(const std::shared_ptr<event::Simulation> &simulation);
+	void set_time_loop(const std::shared_ptr<event::TimeLoop> &time_loop);
 
 	/**
 	 * Initialize the Qt application managing the graphical views. Required
@@ -115,6 +120,11 @@ protected:
 	 * Initialize the GUI.
 	 */
 	void init_gui();
+
+	/**
+	 * Initialize the input management.
+	 */
+	void init_input();
 
 	/**
 	 * Initialize the final render pass that renders the results of all previous
@@ -159,6 +169,11 @@ protected:
 	std::shared_ptr<renderer::gui::GUI> gui;
 
 	/**
+	 * Camera manager for camera controls.
+	 */
+	std::shared_ptr<renderer::camera::CameraManager> camera_manager;
+
+	/**
 	 * Graphics output for the map background.
 	 */
 	std::shared_ptr<renderer::skybox::SkyboxRenderer> skybox_renderer;
@@ -189,14 +204,19 @@ protected:
 	std::vector<std::shared_ptr<renderer::RenderPass>> render_passes;
 
 	/**
-	 * Engine reference.
+	 * Game simulation.
 	 */
-	std::shared_ptr<engine::Engine> engine;
+	std::shared_ptr<gamestate::GameSimulation> simulation;
 
 	/**
-	 * Simulation reference.
+	 * Time loop.
 	 */
-	std::shared_ptr<event::Simulation> simulation;
+	std::shared_ptr<event::TimeLoop> time_loop;
+
+	/**
+	 * Input manager.
+	 */
+	std::shared_ptr<input::InputManager> input_manager;
 };
 
 } // namespace presenter

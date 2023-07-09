@@ -17,7 +17,7 @@
 #include "../../util/strings.h"
 #include "../../util/timer.h"
 #include "../../version.h"
-#include "engine.h"
+#include "legacy_engine.h"
 
 namespace openage::presenter {
 
@@ -163,20 +163,20 @@ LegacyDisplay::LegacyDisplay(const util::Path &path, LegacyEngine *engine) :
 	// initialize engine related global keybinds
 	auto &global_input_context = this->get_input_manager().get_global_context();
 
-	input::ActionManager &action = this->get_action_manager();
-	global_input_context.bind(action.get("STOP_GAME"), [engine](const input::action_arg_t &) {
+	input::legacy::ActionManager &action = this->get_action_manager();
+	global_input_context.bind(action.get("STOP_GAME"), [engine](const input::legacy::action_arg_t &) {
 		engine->stop();
 	});
-	global_input_context.bind(action.get("TOGGLE_HUD"), [this](const input::action_arg_t &) {
+	global_input_context.bind(action.get("TOGGLE_HUD"), [this](const input::legacy::action_arg_t &) {
 		this->drawing_huds.value = !this->drawing_huds.value;
 	});
-	global_input_context.bind(action.get("SCREENSHOT"), [this](const input::action_arg_t &) {
+	global_input_context.bind(action.get("SCREENSHOT"), [this](const input::legacy::action_arg_t &) {
 		this->get_screenshot_manager().save_screenshot(this->coord.viewport_size);
 	});
-	global_input_context.bind(action.get("TOGGLE_DEBUG_OVERLAY"), [this](const input::action_arg_t &) {
+	global_input_context.bind(action.get("TOGGLE_DEBUG_OVERLAY"), [this](const input::legacy::action_arg_t &) {
 		this->drawing_debug_overlay.value = !this->drawing_debug_overlay.value;
 	});
-	global_input_context.bind(action.get("TOGGLE_PROFILER"), [engine](const input::action_arg_t &) {
+	global_input_context.bind(action.get("TOGGLE_PROFILER"), [engine](const input::legacy::action_arg_t &) {
 		if (engine->external_profiler.currently_profiling) {
 			engine->external_profiler.stop();
 			engine->external_profiler.show_results();
@@ -185,8 +185,8 @@ LegacyDisplay::LegacyDisplay(const util::Path &path, LegacyEngine *engine) :
 			engine->external_profiler.start();
 		}
 	});
-	global_input_context.bind(input::event_class::MOUSE, [this](const input::action_arg_t &arg) {
-		if (arg.e.cc.has_class(input::event_class::MOUSE_MOTION) && this->get_input_manager().is_down(input::event_class::MOUSE_BUTTON, 2)) {
+	global_input_context.bind(input::legacy::event_class::MOUSE, [this](const input::legacy::action_arg_t &arg) {
+		if (arg.e.cc.has_class(input::legacy::event_class::MOUSE_MOTION) && this->get_input_manager().is_down(input::legacy::event_class::MOUSE_BUTTON, 2)) {
 			this->move_phys_camera(arg.motion.x, arg.motion.y);
 			return true;
 		}
@@ -537,12 +537,12 @@ ScreenshotManager &LegacyDisplay::get_screenshot_manager() {
 }
 
 
-input::ActionManager &LegacyDisplay::get_action_manager() {
+input::legacy::ActionManager &LegacyDisplay::get_action_manager() {
 	return this->action_manager;
 }
 
 
-input::InputManager &LegacyDisplay::get_input_manager() {
+input::legacy::InputManager &LegacyDisplay::get_input_manager() {
 	return this->input_manager;
 }
 

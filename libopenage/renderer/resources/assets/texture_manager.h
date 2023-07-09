@@ -3,6 +3,7 @@
 #pragma once
 
 #include <memory>
+#include <optional>
 #include <string>
 #include <unordered_map>
 
@@ -29,6 +30,13 @@ public:
      */
 	TextureManager(const std::shared_ptr<Renderer> &renderer);
 	~TextureManager() = default;
+
+	/**
+     * Prevent accidental copy or assignment because it would defeat the
+     * point of a persistent cache.
+     */
+	TextureManager(const TextureManager &) = delete;
+	TextureManager &operator=(const TextureManager &) = delete;
 
 	/**
      * Get the corresponding texture for the specified path.
@@ -67,6 +75,22 @@ public:
      */
 	void remove(const util::Path &path);
 
+	/**
+     * Set the placeholder texture.
+     *
+     * @param path Path to the texture resource.
+     */
+	void set_placeholder(const util::Path &path);
+
+	using placeholder_t = std::optional<std::pair<util::Path, std::shared_ptr<Texture2d>>>;
+
+	/**
+     * Get the placeholder texture.
+     *
+     * @return Placeholder texture. Can be \p nullptr.
+     */
+	const placeholder_t &get_placeholder() const;
+
 private:
 	/**
      * openage renderer.
@@ -79,6 +103,11 @@ private:
      * Cache of already created textures.
      */
 	texture_cache_t loaded;
+
+	/**
+     * Placeholder texture to use if a texture could not be loaded.
+     */
+	placeholder_t placeholder;
 };
 
 } // namespace resources

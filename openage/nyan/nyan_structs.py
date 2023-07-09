@@ -351,6 +351,7 @@ class NyanObject:
                         namespace=self.get_fqon()
                     )
                     output_str += f"{(indent_depth + 1) * INDENT}{member_str}\n"
+
             if not empty:
                 output_str += "\n"
 
@@ -386,7 +387,7 @@ class NyanObject:
                 )
                 output_str += f"{(indent_depth + 1) * INDENT}{nested_str}\n"
 
-            output_str += "\n"
+            output_str = output_str[:-1]
 
         # Empty objects need a 'pass' line
         if empty:
@@ -846,7 +847,7 @@ class NyanMemberType:
         # Composite types
         return (
             f"{self._member_type.value}("
-            f"{', '.join(elem_type.dump() for elem_type in self._element_types)})"
+            f"{', '.join(elem_type.dump(import_tree) for elem_type in self._element_types)})"
         )
 
     def __repr__(self):
@@ -864,7 +865,7 @@ class NyanMember:
         self,
         name: str,
         member_type: NyanMemberType,
-        value=None,
+        value = None,
         operator: MemberOperator = None,
         override_depth: int = 0
     ):
@@ -949,7 +950,7 @@ class NyanMember:
         """
         return self.value is not None
 
-    @staticmethod
+    @ staticmethod
     def is_inherited() -> bool:
         """
         Returns True if the member is inherited from another object.
@@ -988,7 +989,7 @@ class NyanMember:
         """
         Returns the nyan string representation of the member.
         """
-        output_str = f"{self.name} : {self._member_type.dump()}"
+        output_str = f"{self.name} : {self._member_type.dump(import_tree=import_tree)}"
 
         if self.is_initialized():
             value_str = self._get_value_str(
@@ -1181,7 +1182,7 @@ class NyanMember:
             output_str += "\n"
 
             # How much space is left per formatted line
-            space_left = MAX_LINE_WIDTH - len((indent_depth + 2) * INDENT)
+            space_left = MAX_LINE_WIDTH - len((indent_depth + 1) * INDENT)
 
             # Find the longest value's length
             longest_len = len(max(stored_values, key=len))
@@ -1190,7 +1191,7 @@ class NyanMember:
             values_per_line = space_left // longest_len
             values_per_line = max(values_per_line, 1)
 
-            output_str += (indent_depth + 2) * INDENT
+            output_str += (indent_depth + 1) * INDENT
 
             val_index = 0
             end_index = len(stored_values)
@@ -1202,13 +1203,13 @@ class NyanMember:
                     output_str += ",\n"
 
                     if val_index != end_index:
-                        output_str += ((indent_depth + 2) * INDENT)
+                        output_str += ((indent_depth + 1) * INDENT)
 
                 else:
                     output_str += ", "
 
             output_str = output_str[:-2] + "\n"
-            output_str += ((indent_depth + 1) * INDENT)
+            output_str += (indent_depth * INDENT)
 
         output_str = output_str + "}"
 

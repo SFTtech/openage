@@ -20,7 +20,7 @@ const std::shared_ptr<Texture2d> &TextureManager::request(const util::Path &path
 		auto tex_data = resources::Texture2dData(path);
 		this->loaded.insert({flat_path, this->renderer->add_texture(tex_data)});
 	}
-	return this->loaded[flat_path];
+	return this->loaded.at(flat_path);
 }
 
 void TextureManager::add(const util::Path &path) {
@@ -41,6 +41,15 @@ void TextureManager::add(const util::Path &path,
 void TextureManager::remove(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
 	this->loaded.erase(flat_path);
+}
+
+void TextureManager::set_placeholder(const util::Path &path) {
+	auto tex_data = resources::Texture2dData(path);
+	this->placeholder = std::make_pair(path, this->renderer->add_texture(tex_data));
+}
+
+const TextureManager::placeholder_t &TextureManager::get_placeholder() const {
+	return this->placeholder;
 }
 
 } // namespace openage::renderer::resources

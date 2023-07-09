@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,7 +11,7 @@
 
 #include <cstdint>
 
-#include "../util/fixed_point.h"
+#include "util/fixed_point.h"
 
 namespace openage {
 namespace coord {
@@ -25,6 +25,18 @@ struct phys2_delta;
 struct phys2;
 struct phys3_delta;
 struct phys3;
+
+using phys_angle_t = util::FixedPoint<int32_t, 16>;
+
+// forward declarations of scene.h types
+constexpr unsigned int scene_t_radix_pos = 16;
+
+using scene_t = util::FixedPoint<int64_t, scene_t_radix_pos>;
+
+struct scene2_delta;
+struct scene2;
+struct scene3_delta;
+struct scene3;
 
 // forward declarations of tile.h types
 using tile_t = int64_t;
@@ -65,4 +77,5 @@ struct term;
 // forward declaration of the coord manager
 class CoordManager;
 
-}} // openage::coord
+} // namespace coord
+} // namespace openage

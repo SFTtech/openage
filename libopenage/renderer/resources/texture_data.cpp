@@ -90,7 +90,7 @@ Texture2dData::Texture2dData(const util::Path &path) {
 	std::vector<Texture2dSubInfo> subtextures;
 	// we don't have a texture description file.
 	// use the whole image as one texture then.
-	Texture2dSubInfo s{0, 0, w, h, w / 2, h / 2, w, h};
+	Texture2dSubInfo s(0, 0, w, h, w / 2, h / 2, w, h);
 
 	subtextures.push_back(s);
 

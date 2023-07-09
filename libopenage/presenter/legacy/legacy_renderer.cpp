@@ -9,11 +9,11 @@
 #include <sys/types.h>
 
 #include "../../console/console.h"
-#include "../../engine.h"
 #include "../../gamedata/color_dummy.h"
 #include "../../gamestate/old/game_main.h"
 #include "../../gamestate/old/game_spec.h"
 #include "../../input/legacy/input_manager.h"
+#include "../../legacy_engine.h"
 #include "../../log/log.h"
 #include "../../renderer/text.h"
 #include "../../unit/action.h"
@@ -159,12 +159,12 @@ LegacyRenderer::LegacyRenderer(LegacyEngine *e, presenter::LegacyDisplay *d) :
 	// Renderer keybinds
 	// TODO: a renderer settings struct
 	// would allow these to be put somewhere better
-	input::ActionManager &action = this->display->get_action_manager();
+	input::legacy::ActionManager &action = this->display->get_action_manager();
 	auto &global_input_context = this->display->get_input_manager().get_global_context();
-	global_input_context.bind(action.get("TOGGLE_BLENDING"), [this](const input::action_arg_t &) {
+	global_input_context.bind(action.get("TOGGLE_BLENDING"), [this](const input::legacy::action_arg_t &) {
 		this->settings.terrain_blending.value = !this->settings.terrain_blending.value;
 	});
-	global_input_context.bind(action.get("TOGGLE_UNIT_DEBUG"), [this](const input::action_arg_t &) {
+	global_input_context.bind(action.get("TOGGLE_UNIT_DEBUG"), [this](const input::legacy::action_arg_t &) {
 		this->settings.draw_debug.value = !this->settings.draw_debug.value;
 
 		log::log(MSG(dbg) << "Toggle debug grid");

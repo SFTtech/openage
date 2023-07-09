@@ -4,14 +4,18 @@
 
 #include <optional>
 
-#include "../renderer.h"
-#include "framebuffer.h"
-#include "texture.h"
+#include "renderer/opengl/framebuffer.h"
+#include "renderer/renderer.h"
 
 
 namespace openage {
 namespace renderer {
+
+class Texture2d;
+
 namespace opengl {
+
+class GlTexture2d;
 
 /// The type of OpenGL render target
 enum class gl_render_target_t {
@@ -27,7 +31,7 @@ enum class gl_render_target_t {
 class GlRenderTarget final : public RenderTarget {
 public:
 	/// Construct a render target pointed at the default framebuffer - the window.
-	GlRenderTarget();
+	GlRenderTarget(size_t width, size_t height);
 
 	/// Construct a render target pointing at the given textures.
 	/// Texture are attached to points specific to their pixel format,
@@ -38,6 +42,9 @@ public:
 	// Get the targeted textures
 	std::vector<std::shared_ptr<Texture2d>> get_texture_targets() override;
 
+	// Resize the render target for scaling viewport correctly.
+	void resize(size_t width, size_t height);
+
 	/// Bind this render target to be drawn into.
 	void bind_write() const;
 
@@ -46,6 +53,9 @@ public:
 
 private:
 	gl_render_target_t type;
+
+	// Size of the window or the texture target
+	std::pair<size_t, size_t> size;
 
 	/// For textures target type, the framebuffer.
 	std::optional<GlFramebuffer> framebuffer;

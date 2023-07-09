@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-lines,too-many-statements
 """
@@ -35,7 +35,7 @@ def load_api() -> dict[str, NyanObject]:
     return api_objects
 
 
-def _create_objects(api_objects) -> None:
+def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     """
     Creates the API objects.
     """
@@ -2414,7 +2414,7 @@ def _create_objects(api_objects) -> None:
     return api_objects
 
 
-def _insert_members(api_objects) -> None:
+def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     """
     Creates members for API objects.
     """
@@ -3345,8 +3345,9 @@ def _insert_members(api_objects) -> None:
     member = NyanMember("base_price", N_FLOAT, None, None, 0)
     api_object.add_member(member)
     key_type = NyanMemberType(api_objects["engine.util.exchange_mode.ExchangeMode"])
+    abstract_key = NyanMemberType(MemberType.ABSTRACT, (key_type,))
     value_type = NyanMemberType(api_objects["engine.util.price_mode.PriceMode"])
-    elem_type = NyanMemberType(MemberType.DICT, (key_type, value_type))
+    elem_type = NyanMemberType(MemberType.DICT, (abstract_key, value_type))
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
     member = NyanMember("price_adjust", member_type, MemberSpecialValue.NYAN_NONE,
                         MemberOperator.ASSIGN, 0)

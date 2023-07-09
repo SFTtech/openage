@@ -37,30 +37,13 @@ GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 		throw Error{MSG(err) << "Failed to create Qt OpenGL context."};
 	}
 
-	glViewport(0, 0, width * this->window->devicePixelRatio(), height * this->window->devicePixelRatio());
-	this->add_resize_callback([this](size_t w, size_t h) {
-		// since qt respects Xft.dpi and others, the "window size" of w and h
-		// is actually w and h * devicepixelratio.
-		// so a window is "bigger" because we have highdpi scaling.
-		// opengl of course only has a raw real pixel buffer.
-		// now, we tell opengl to use the real window pixel size for its drawing.
-		// this took 3h to figure out...
-		double factor = this->window->devicePixelRatio();
-
-		// this up-scales all our drawing to the "bigger" highdpi window.
-		// TODO: we could render at native resolution, and then do "zoom" depending
-		//       on the pixel ratio.
-		//       if we want to do that, we need to apply this factor in
-		//       the QResizeEvent handler, which triggers this very callback.
-		//       so that all callbacks get the real pixel resolution,
-		//       and thus render with higher resolution.
-		glViewport(0, 0, w * factor, h * factor);
-	});
-
 	this->window->installEventFilter(this->event_handler.get());
 
 	this->window->setVisible(true);
 	log::log(MSG(info) << "Created Qt window with OpenGL context.");
+
+	// Scaling factor if highDPI
+	this->scale_dpr = this->window->devicePixelRatio();
 
 	GlContext::check_error();
 }
@@ -77,7 +60,7 @@ void GlWindow::set_size(size_t width, size_t height) {
 	}
 
 	for (auto &cb : this->on_resize) {
-		cb(width, height);
+		cb(width, height, this->scale_dpr);
 	}
 }
 
@@ -98,20 +81,24 @@ void GlWindow::update() {
 
 			this->size = {width, height};
 			for (auto &cb : this->on_resize) {
-				cb(width, height);
+				cb(width, height, this->scale_dpr);
 			}
 		} break;
 		case QEvent::Close: {
 			this->should_be_closed = true;
 		} break;
 
+		case QEvent::KeyPress:
 		case QEvent::KeyRelease: {
 			auto const ev = std::dynamic_pointer_cast<QKeyEvent>(event);
 			for (auto &cb : this->on_key) {
 				cb(*ev);
 			}
 		} break;
-		case QEvent::MouseButtonRelease: {
+		case QEvent::MouseButtonPress:
+		case QEvent::MouseButtonRelease:
+		case QEvent::MouseMove:
+		case QEvent::MouseButtonDblClick: {
 			auto const ev = std::dynamic_pointer_cast<QMouseEvent>(event);
 			for (auto &cb : this->on_mouse_button) {
 				cb(*ev);
@@ -133,7 +120,15 @@ void GlWindow::update() {
 
 
 std::shared_ptr<Renderer> GlWindow::make_renderer() {
-	return std::make_shared<GlRenderer>(this->get_context());
+	auto renderer = std::make_shared<GlRenderer>(this->get_context(),
+	                                             this->size * this->scale_dpr);
+
+	this->add_resize_callback([this, renderer](size_t w, size_t h, double scale) {
+		// this up-scales all the default framebuffer to the "bigger" highdpi window.
+		renderer->resize_display_target(w * scale, h * scale);
+	});
+
+	return renderer;
 }
 
 

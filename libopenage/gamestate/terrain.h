@@ -6,7 +6,6 @@
 #include <optional>
 #include <vector>
 
-#include "util/path.h"
 #include "util/vector.h"
 
 namespace openage {
@@ -21,7 +20,7 @@ namespace gamestate {
  */
 class Terrain {
 public:
-	Terrain(util::Path &texture_path);
+	Terrain(const std::string &texture_path);
 	~Terrain() = default;
 
 	/**
@@ -42,7 +41,7 @@ private:
 	// Heights of the terrain grid
 	std::vector<float> height_map;
 	// path to a texture
-	util::Path texture_path;
+	std::string texture_path;
 
 	// render entity for pushing updates to
 	std::shared_ptr<renderer::terrain::TerrainRenderEntity> render_entity;

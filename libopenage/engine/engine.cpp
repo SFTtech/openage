@@ -1,69 +1,79 @@
-// Copyright 2013-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
 #include "engine.h"
 
-#include "event/loop.h"
+#include "log/log.h"
 
-// TODO
-#include "gamestate/game.h"
+#include "cvar/cvar.h"
+#include "event/time_loop.h"
+#include "gamestate/simulation.h"
+#include "presenter/presenter.h"
 
-namespace openage {
-namespace engine {
+namespace openage::engine {
 
-Engine::Engine(enum mode mode,
+Engine::Engine(mode mode,
                const util::Path &root_dir,
-               const std::shared_ptr<cvar::CVarManager> &cvar_manager) :
-	running{false},
+               const std::vector<std::string> &mods) :
+	running{true},
 	run_mode{mode},
 	root_dir{root_dir},
-	cvar_manager{cvar_manager},
-	event_loop{std::make_shared<event::Loop>()},
-	game{std::make_shared<gamestate::Game>(root_dir)} {
-	log::log(MSG(info) << "Created engine");
-}
+	threads{} {
+	log::log(INFO
+	         << "launching engine with root directory"
+	         << root_dir);
 
+	// read and apply the configuration files
+	this->cvar_manager = std::make_shared<cvar::CVarManager>(this->root_dir["cfg"]);
+	cvar_manager->load_all();
 
-Engine::~Engine() {}
+	// time loop
+	this->time_loop = std::make_shared<event::TimeLoop>();
 
+	this->simulation = std::make_shared<gamestate::GameSimulation>(this->root_dir,
+	                                                               this->cvar_manager,
+	                                                               this->time_loop);
+	this->simulation->set_modpacks(mods);
 
-void Engine::run() {
-	this->start();
-	while (this->running) {
-		// TODO: Do something
+	if (this->run_mode == mode::FULL) {
+		this->presenter = std::make_shared<presenter::Presenter>(this->root_dir,
+		                                                         this->simulation,
+		                                                         this->time_loop);
 	}
-	log::log(MSG(info) << "engine loop exited");
+
+	this->threads.emplace_back([&]() {
+		this->time_loop->run();
+
+		this->time_loop.reset();
+	});
+	this->threads.emplace_back([&]() {
+		this->simulation->run();
+
+		this->simulation.reset();
+
+		if (this->run_mode != mode::FULL) {
+			this->running = false;
+		}
+	});
+
+	if (this->run_mode == mode::FULL) {
+		this->threads.emplace_back([&]() {
+			this->presenter->run();
+
+			// Make sure that the presenter gets destructed in the same thread
+			// otherwise OpenGL complains about missing contexts
+			this->presenter.reset();
+			this->running = false;
+		});
+	}
+
+	log::log(INFO << "Created " << this->threads.size() << " threads"
+	              << " (" << std::jthread::hardware_concurrency() << " available)");
 }
 
-
-void Engine::start() {
-	std::unique_lock lock{this->mutex};
-
-	this->running = true;
-
-	log::log(MSG(info) << "Engine started");
+void Engine::loop() {
+	while (this->running) {
+		// TODO
+	}
 }
 
-
-void Engine::stop() {
-	std::unique_lock lock{this->mutex};
-
-	this->running = false;
-
-	log::log(MSG(info) << "Engine stopped");
-}
-
-
-const util::Path &Engine::get_root_dir() {
-	return this->root_dir;
-}
-
-std::shared_ptr<cvar::CVarManager> Engine::get_cvar_manager() {
-	return this->cvar_manager;
-}
-
-void Engine::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
-	this->game->attach_renderer(render_factory);
-}
-
-} // namespace engine
-} // namespace openage
+} // namespace openage::engine

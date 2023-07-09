@@ -1,0 +1,32 @@
+// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+
+#include "live.h"
+
+#include "gamestate/component/types.h"
+
+
+namespace openage::gamestate::component {
+
+inline component_t Live::get_type() const {
+	return component_t::LIVE;
+}
+
+void Live::add_attribute(const curve::time_t &time,
+                         const nyan::fqon_t &attribute,
+                         std::shared_ptr<curve::Discrete<int64_t>> starting_values) {
+	this->attribute_values.insert(time, attribute, starting_values);
+}
+
+void Live::set_attribute(const curve::time_t &time,
+                         const nyan::fqon_t &attribute,
+                         int64_t value) {
+	auto attribute_value = this->attribute_values.at(time, attribute);
+
+	if (attribute_value) {
+		(**attribute_value)->set_last(time, value);
+	}
+	else {
+		// TODO: fail here
+	}
+}
+} // namespace openage::gamestate::component
