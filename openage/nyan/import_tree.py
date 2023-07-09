@@ -125,7 +125,7 @@ class Node:
         :type alias: str
         """
         if self.node_type is not NodeType.FILESYS:
-            raise Exception("Only nodes of type FILESYS can have aliases")
+            raise TypeError("Only nodes of type FILESYS can have aliases")
 
         self.alias = alias
 

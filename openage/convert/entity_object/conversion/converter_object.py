@@ -255,8 +255,8 @@ class ConverterObjectGroup:
             return self.raw_api_objects[obj_id]
 
         except KeyError as missing_raw_api_obj:
-            raise Exception(f"{repr(self)}: Could not find raw API object "
-                            f"with obj_id {obj_id}") from missing_raw_api_obj
+            raise KeyError(f"{repr(self)}: Could not find raw API object "
+                           f"with obj_id {obj_id}") from missing_raw_api_obj
 
     def get_raw_api_objects(self) -> dict[str, RawAPIObject]:
         """
