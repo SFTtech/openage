@@ -332,9 +332,10 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 	uint8_t const *data = unif_in->update_data.data();
 	for (auto const &pair : unif_in->update_offs) {
 		uint8_t const *ptr = data + pair.second;
-		auto loc = this->uniforms[pair.first].location;
+		const auto &unif = this->uniforms.at(pair.first);
+		auto loc = unif.location;
 
-		switch (this->uniforms[pair.first].type) {
+		switch (unif.type) {
 		case GL_INT:
 			glUniform1i(loc, *reinterpret_cast<const GLint *>(ptr));
 			break;
@@ -385,7 +386,7 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 			glUniformMatrix4fv(loc, 1, GLboolean(false), reinterpret_cast<const float *>(ptr));
 			break;
 		case GL_SAMPLER_2D: {
-			GLuint tex_unit = this->texunits_per_unifs[pair.first];
+			GLuint tex_unit = this->texunits_per_unifs.at(pair.first);
 			GLuint tex = *reinterpret_cast<const GLuint *>(ptr);
 			glActiveTexture(GL_TEXTURE0 + tex_unit);
 			glBindTexture(GL_TEXTURE_2D, tex);
@@ -440,19 +441,21 @@ void GlShaderProgram::bind_uniform_buffer(const char *block_name, std::shared_pt
 void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const &in, const char *unif, void const *val, GLenum type) {
 	auto unif_in = std::dynamic_pointer_cast<GlUniformInput>(in);
 
-	ENSURE(this->uniforms.count(unif) != 0,
+	auto uniform = this->uniforms.find(unif);
+	ENSURE(uniform != std::end(this->uniforms),
 	       "Tried to set uniform " << unif << " that does not exist in the shader program.");
 
-	auto const &unif_data = this->uniforms.at(unif);
+	auto const &unif_data = uniform->second;
 
 	ENSURE(type == unif_data.type,
 	       "Tried to set uniform " << unif << " to a value of the wrong type.");
 
 	size_t size = GL_SHADER_TYPE_SIZE.get(unif_data.type);
 
-	if (unif_in->update_offs.count(unif) == 1) {
+	auto update_off = unif_in->update_offs.find(unif);
+	if (update_off != std::end(unif_in->update_offs)) [[likely]] { // always used after the uniform value is written once
 		// already wrote to this uniform since last upload
-		size_t off = unif_in->update_offs[unif];
+		size_t off = update_off->second;
 		memcpy(unif_in->update_data.data() + off, val, size);
 	}
 	else {

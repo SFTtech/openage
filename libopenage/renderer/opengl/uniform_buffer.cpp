@@ -75,19 +75,21 @@ std::shared_ptr<UniformBufferInput> GlUniformBuffer::new_unif_in() {
 void GlUniformBuffer::set_unif(std::shared_ptr<UniformBufferInput> const &in, const char *unif, void const *val, GLenum type) {
 	auto unif_in = std::dynamic_pointer_cast<GlUniformBufferInput>(in);
 
-	ENSURE(this->uniforms.count(unif) != 0,
+	auto uniform = this->uniforms.find(unif);
+	ENSURE(uniform != std::end(this->uniforms),
 	       "Tried to set uniform " << unif << " that does not exist in the shader program.");
 
-	auto const &unif_data = this->uniforms.at(unif);
+	auto const &unif_data = uniform->second;
 
 	ENSURE(type == unif_data.type,
 	       "Tried to set uniform " << unif << " to a value of the wrong type.");
 
 	size_t size = GL_SHADER_TYPE_SIZE.get(unif_data.type);
 
-	if (unif_in->update_offs.count(unif) == 1) {
+	auto update_off = unif_in->update_offs.find(unif);
+	if (update_off != std::end(unif_in->update_offs)) [[likely]] { // always used after the uniform value is written once
 		// already wrote to this uniform since last upload
-		size_t off = unif_in->update_offs[unif];
+		size_t off = update_off->second;
 		memcpy(unif_in->update_data.data() + off, val, size);
 	}
 	else {
