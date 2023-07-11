@@ -95,7 +95,7 @@ void renderer_demo_3(const util::Path &path) {
 		renderer,
 		path["assets"]["shaders"]);
 	std::vector<std::shared_ptr<renderer::RenderTarget>> targets{};
-	for (auto pass : render_passes) {
+	for (auto &pass : render_passes) {
 		targets.push_back(pass->get_target());
 	}
 	screen_renderer->set_render_targets(targets);
@@ -210,7 +210,7 @@ void renderer_demo_3(const util::Path &path) {
 		world_renderer->update();
 
 		// Draw everything
-		for (auto pass : render_passes) {
+		for (auto &pass : render_passes) {
 			renderer->render(pass);
 		}
 

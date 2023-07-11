@@ -261,7 +261,7 @@ void Presenter::render() {
 	this->world_renderer->update();
 	this->gui->render();
 
-	for (auto pass : this->render_passes) {
+	for (auto &pass : this->render_passes) {
 		this->renderer->render(pass);
 	}
 }
