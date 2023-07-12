@@ -99,8 +99,20 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 	}
 
 	// Current frame index considering current time
-	auto &timing = layer.get_frame_timing();
-	size_t frame_idx = timing->get_frame(time, this->render_entity->get_update_time());
+	size_t frame_idx;
+	switch (layer.get_display_mode()) {
+	case renderer::resources::display_mode::ONCE:
+	case renderer::resources::display_mode::LOOP: {
+		// ONCE and LOOP are animated based on time
+		auto &timing = layer.get_frame_timing();
+		frame_idx = timing->get_frame(time, this->render_entity->get_update_time());
+	} break;
+	case renderer::resources::display_mode::OFF:
+	default:
+		// OFF only shows the first frame
+		frame_idx = 0;
+		break;
+	}
 
 	// Index of texture and subtexture where the frame's pixels are located
 	auto &frame_info = angle->get_frame(frame_idx);
