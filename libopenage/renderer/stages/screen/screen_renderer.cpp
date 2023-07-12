@@ -62,14 +62,14 @@ void ScreenRenderer::update_render_pass() {
 
 	std::vector<renderer::Renderable> output_layers{};
 	output_layers.reserve(this->render_targets.size());
-	for (auto target : this->render_targets) {
+	for (auto &target : this->render_targets) {
 		auto textures = target->get_texture_targets();
 		auto texture_unif = this->display_shader->create_empty_input();
 
 		// TODO: Dirty hack that only selects color textures
 		// use this->pass_outputs in the future to assign output
 		// textures we want to render
-		for (auto tex : textures) {
+		for (const auto &tex : textures) {
 			auto format = tex->get_info().get_format();
 			if (format == renderer::resources::pixel_format::rgba8) {
 				texture_unif->update("tex", tex);

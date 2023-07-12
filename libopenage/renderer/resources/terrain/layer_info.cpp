@@ -2,6 +2,9 @@
 
 #include "layer_info.h"
 
+#include "renderer/resources/frame_timing.h"
+
+
 namespace openage::renderer::resources {
 
 TerrainLayerInfo::TerrainLayerInfo(const std::vector<std::shared_ptr<TerrainFrameInfo>> &frames,
@@ -14,17 +17,17 @@ TerrainLayerInfo::TerrainLayerInfo(const std::vector<std::shared_ptr<TerrainFram
 	time_per_frame{time_per_frame},
 	replay_delay{replay_delay},
 	frames{frames},
-	frame_timing{std::make_shared<curve::DiscreteMod<size_t>>(nullptr, 0)} {
-	// create a curve for looking up which frames should
-	// be displayed at which time inside layer
+	frame_timing{nullptr} {
+	// set frame timings by calculating when they appear in the animation sequence
 	auto frame_count = this->frames.size();
 	curve::time_t t = 0;
+	std::vector<curve::time_t> frame_timing;
 	for (size_t i = 0; i < frame_count; ++i) {
-		frame_timing->set_insert(t, i);
+		frame_timing.push_back(t);
 		t += this->time_per_frame;
 	}
-	t = t - this->time_per_frame + this->replay_delay;
-	frame_timing->set_insert(t, 0);
+	auto total_time = (frame_count - 1) * this->time_per_frame + this->replay_delay;
+	this->frame_timing = std::make_shared<FrameTiming>(total_time, std::move(frame_timing));
 }
 
 terrain_display_mode TerrainLayerInfo::get_display_mode() const {
@@ -51,7 +54,7 @@ const std::shared_ptr<TerrainFrameInfo> &TerrainLayerInfo::get_frame(size_t idx)
 	return this->frames.at(idx);
 }
 
-const std::shared_ptr<curve::DiscreteMod<size_t>> &TerrainLayerInfo::get_frame_timing() const {
+const std::shared_ptr<FrameTiming> &TerrainLayerInfo::get_frame_timing() const {
 	return this->frame_timing;
 }
 

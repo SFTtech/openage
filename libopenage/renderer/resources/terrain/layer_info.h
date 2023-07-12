@@ -3,14 +3,15 @@
 #pragma once
 
 #include <cstddef>
+#include <memory>
 #include <vector>
 
-#include "curve/discrete_mod.h"
 
 namespace openage::renderer::resources {
 
 class BlendTableInfo;
 class TerrainFrameInfo;
+class FrameTiming;
 
 enum class terrain_display_mode {
 	OFF, // Only show first frame
@@ -89,7 +90,7 @@ public:
 	 *
 	 * @return Curve associating time with frame indices.
 	 */
-	const std::shared_ptr<curve::DiscreteMod<size_t>> &get_frame_timing() const;
+	const std::shared_ptr<FrameTiming> &get_frame_timing() const;
 
 
 private:
@@ -121,7 +122,7 @@ private:
 	/**
 	 * Frame timing in the animated sequence.
 	 */
-	std::shared_ptr<curve::DiscreteMod<size_t>> frame_timing;
+	std::shared_ptr<FrameTiming> frame_timing;
 };
 
 } // namespace openage::renderer::resources

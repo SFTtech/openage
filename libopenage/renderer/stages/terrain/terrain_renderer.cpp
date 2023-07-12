@@ -54,7 +54,7 @@ void TerrainRenderer::set_render_entity(const std::shared_ptr<TerrainRenderEntit
 void TerrainRenderer::update() {
 	this->model->fetch_updates();
 	auto current_time = this->clock->get_real_time();
-	for (auto mesh : this->model->get_meshes()) {
+	for (auto &mesh : this->model->get_meshes()) {
 		if (mesh->requires_renderable()) [[unlikely]] { /*probably doesn't happen that often?*/
 			// TODO: Update uniforms and geometry individually, depending on what changed
 			// TODO: Update existing renderable instead of recreating it

@@ -11,6 +11,7 @@
 #include "renderer/resources/animation/frame_info.h"
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/assets/texture_manager.h"
+#include "renderer/resources/frame_timing.h"
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/texture_data.h"
 #include "renderer/stages/world/world_render_entity.h"
@@ -87,7 +88,7 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 	// Frame subtexture
 	auto animation_info = this->animation_info.get(time);
 	auto &layer = animation_info->get_layer(0); // TODO: Support multiple layers
-	auto angle = layer.get_direction_angle(angle_degrees);
+	auto &angle = layer.get_direction_angle(angle_degrees);
 
 	// Flip subtexture horizontally if angle is mirrored
 	if (angle->is_mirrored()) {
@@ -98,17 +99,29 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 	}
 
 	// Current frame index considering current time
-	auto timing = layer.get_frame_timing();
-	size_t frame_idx = timing->get_mod(time, this->render_entity->get_update_time());
+	size_t frame_idx;
+	switch (layer.get_display_mode()) {
+	case renderer::resources::display_mode::ONCE:
+	case renderer::resources::display_mode::LOOP: {
+		// ONCE and LOOP are animated based on time
+		auto &timing = layer.get_frame_timing();
+		frame_idx = timing->get_frame(time, this->render_entity->get_update_time());
+	} break;
+	case renderer::resources::display_mode::OFF:
+	default:
+		// OFF only shows the first frame
+		frame_idx = 0;
+		break;
+	}
 
 	// Index of texture and subtexture where the frame's pixels are located
-	auto frame_info = angle->get_frame(frame_idx);
+	auto &frame_info = angle->get_frame(frame_idx);
 	auto tex_idx = frame_info->get_texture_idx();
 	auto subtex_idx = frame_info->get_subtexture_idx();
 
-	auto tex_info = animation_info->get_texture(tex_idx);
-	auto tex_manager = this->asset_manager->get_texture_manager();
-	auto texture = tex_manager->request(tex_info->get_image_path().value());
+	auto &tex_info = animation_info->get_texture(tex_idx);
+	auto &tex_manager = this->asset_manager->get_texture_manager();
+	auto &texture = tex_manager->request(tex_info->get_image_path().value());
 	this->uniforms->update("tex", texture);
 
 	// Subtexture coordinates.inside texture
