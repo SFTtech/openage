@@ -1,5 +1,6 @@
 add_sources(libopenage
     buffer_info.cpp
+    frame_timing.cpp
 	mesh_data.cpp
 	palette_info.cpp
 	shader_source.cpp

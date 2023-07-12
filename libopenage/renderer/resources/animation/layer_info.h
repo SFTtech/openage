@@ -3,13 +3,13 @@
 #pragma once
 
 #include <cstddef>
+#include <memory>
 #include <vector>
-
-#include "curve/discrete_mod.h"
 
 namespace openage::renderer::resources {
 
 class AngleInfo;
+class FrameTiming;
 
 enum class display_mode {
 	OFF, // Only show first frame
@@ -95,12 +95,11 @@ public:
 	const std::shared_ptr<AngleInfo> &get_direction_angle(float direction) const;
 
 	/**
-	 * Get the frame timing information of this layer.
-	 *
-	 * @return Curve associating time with frame indices.
-	 */
-	const std::shared_ptr<curve::DiscreteMod<size_t>> &get_frame_timing() const;
-
+     * Get the frame timing information of this layer.
+     *
+     * @return Frame timing information.
+     */
+	const std::shared_ptr<FrameTiming> &get_frame_timing() const;
 
 private:
 	/**
@@ -131,7 +130,7 @@ private:
 	/**
 	 * Frame timing in the animated sequence.
 	 */
-	std::shared_ptr<curve::DiscreteMod<size_t>> frame_timing;
+	std::shared_ptr<FrameTiming> frame_timing;
 };
 
 } // namespace openage::renderer::resources

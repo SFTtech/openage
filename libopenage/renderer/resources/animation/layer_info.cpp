@@ -5,6 +5,7 @@
 #include <algorithm>
 
 #include "renderer/resources/animation/angle_info.h"
+#include "renderer/resources/frame_timing.h"
 
 namespace openage::renderer::resources {
 
@@ -18,18 +19,18 @@ LayerInfo::LayerInfo(std::vector<std::shared_ptr<AngleInfo>> &angles,
 	time_per_frame{time_per_frame},
 	replay_delay{replay_delay},
 	angles{angles},
-	frame_timing{std::make_shared<curve::DiscreteMod<size_t>>(nullptr, 0)} {
+	frame_timing{nullptr} {
 	if (this->angles.size() > 0) {
-		// create a curve for looking up which frames should
-		// be displayed at which time inside layer
+		// set frame timings by calculating when they appear in the animation sequence
 		auto frame_count = this->angles[0]->get_frame_count();
 		curve::time_t t = 0;
+		std::vector<curve::time_t> keyframes;
 		for (size_t i = 0; i < frame_count; ++i) {
-			frame_timing->set_insert(t, i);
+			keyframes.push_back(t);
 			t += this->time_per_frame;
 		}
-		t = t - this->time_per_frame + this->replay_delay;
-		frame_timing->set_insert(t, 0);
+		auto total_time = (frame_count - 1) * this->time_per_frame + this->replay_delay;
+		this->frame_timing = std::make_shared<FrameTiming>(total_time, std::move(keyframes));
 	}
 }
 
@@ -87,7 +88,7 @@ const std::shared_ptr<AngleInfo> &LayerInfo::get_direction_angle(float direction
 	return this->get_angle(this->angles.size() - 1);
 }
 
-const std::shared_ptr<curve::DiscreteMod<size_t>> &LayerInfo::get_frame_timing() const {
+const std::shared_ptr<FrameTiming> &LayerInfo::get_frame_timing() const {
 	return this->frame_timing;
 }
 

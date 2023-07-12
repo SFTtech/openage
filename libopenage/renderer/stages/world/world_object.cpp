@@ -11,6 +11,7 @@
 #include "renderer/resources/animation/frame_info.h"
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/assets/texture_manager.h"
+#include "renderer/resources/frame_timing.h"
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/texture_data.h"
 #include "renderer/stages/world/world_render_entity.h"
@@ -99,7 +100,7 @@ void WorldObject::update_uniforms(const curve::time_t &time) {
 
 	// Current frame index considering current time
 	auto &timing = layer.get_frame_timing();
-	size_t frame_idx = timing->get_mod(time, this->render_entity->get_update_time());
+	size_t frame_idx = timing->get_frame(time, this->render_entity->get_update_time());
 
 	// Index of texture and subtexture where the frame's pixels are located
 	auto &frame_info = angle->get_frame(frame_idx);

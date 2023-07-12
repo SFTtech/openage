@@ -10,6 +10,7 @@
 #include "renderer/opengl/window.h"
 #include "renderer/resources/animation/angle_info.h"
 #include "renderer/resources/animation/frame_info.h"
+#include "renderer/resources/frame_timing.h"
 #include "renderer/resources/parser/parse_sprite.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_data.h"
@@ -239,11 +240,11 @@ void renderer_demo_4(const util::Path &path) {
 		size_t timed_frame_idx = 0;
 		if (real_time_animation) {
 			// use real time for animation speed
-			timed_frame_idx = timing->get_mod(clock.get_real_time(), 0);
+			timed_frame_idx = timing->get_frame(clock.get_real_time(), 0);
 		}
 		else {
 			// use simulation time for animation speed (which is potentially sped up/slowed down)
-			timed_frame_idx = timing->get_mod(clock.get_time(), 0);
+			timed_frame_idx = timing->get_frame(clock.get_time(), 0);
 		}
 
 		/* Update uniforms if new frame should be displayed */
