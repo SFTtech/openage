@@ -56,7 +56,7 @@ Dependency list:
     C     pygments
        S  pylint
     CR    qt6 >=6.2 (Core, Quick, QuickControls modules)
-    CR    tomlplusplus
+    CR    toml11
     CR  O vulkan
 
       A   An installed version of any of the following (wine is your friend).
