@@ -1,5 +1,6 @@
-# Procedure for Microsoft Windows users (Windows 10)
+# Procedure for Microsoft Windows users
 
+<!---
 __NOTE:__ We also have an installer for Win10 (x64), if you just want to play around with *openage* you can find it [here](https://github.com/SFTtech/openage/releases).
 
  Since Windows doesn't offer a native package manager, we use a mixture of manual and automated steps to get the dependencies for openage.
@@ -13,14 +14,16 @@ If you use any CI (like Travis-CI or Appveyor) you can make your life easier by 
 They will build you the latest version from our master branch and package them into an installer and a portable 7z-file.
 
 __NOTE:__ You need to manually make sure and doublecheck if the system you are building on has fulfilled all the [dependencies](/doc/building.md).
+-->
 
 ## Setting up the build environment
  You will need to download and install the following manually.
  Those who already have the latest stable versions of these programs can skip this:
- - [Visual Studio Buildtools](https://download.visualstudio.microsoft.com/download/pr/10413969-2070-40ea-a0ca-30f10ec01d1d/414d8e358a8c44dc56cdac752576b402/vs_buildtools.exe)
+ - [Visual Studio Buildtools](https://aka.ms/vs/17/release/vs_BuildTools.exe)
    - With the "Visual C++ Buildtools" workload.
 
-    _NOTE:_ If you are searching for an IDE for development you can get an overview [here](https://en.wikipedia.org/wiki/Comparison_of_integrated_development_environments#C/C++), we've also written some [instructions for developing with different IDEs](/doc/ide/README.md).
+    _NOTE:_ If you are searching for an IDE for development you can get an overview [here](https://en.wikipedia.org/wiki/Comparison_of_integrated_development_environments#C/C++).
+	We've also written some [instructions for developing with different IDEs](/doc/ide/README.md).
 
  - [Python 3](https://www.python.org/downloads/windows/)
    - With the "pip" option enabled. We use `pip` to install other dependencies.
@@ -48,9 +51,12 @@ _Note:_ Also ensure that `python` and `python3` both point to the correct and th
  If you want, you can still use [the prebuilt version](https://www.qt.io/download-open-source/) instead.
  If you do so, include `-DCMAKE_PREFIX_PATH=<QT6 directory>` in the cmake configure command.
 
- _Note:_ If you are planning to build the 64-bit version of openage, you are going to need 64-bit libraries. Add command line option `--triplet x64-windows` to the above command or add the environment variable `VCPKG_DEFAULT_TRIPLET=x64-windows` to build x64 libraries. [See here](https://github.com/Microsoft/vcpkg/issues/1254)
+ _Note:_ If you are planning to build the 64-bit version of openage, you are going to need 64-bit libraries.
+ Add command line option `--triplet x64-windows` to the above command or add the environment variable `VCPKG_DEFAULT_TRIPLET=x64-windows` to build x64 libraries. [See here](https://github.com/Microsoft/vcpkg/issues/1254)
 
+<!---
 __NOTE:__ You can also download the pre-built vcpkg dependencies (without Qt) [from this repository](https://github.com/simonsan/openage-win-dependencies/releases).
+-->
 
 ## Building openage
  Note that openage doesn't support completely out-of-source-tree builds yet.
@@ -65,7 +71,7 @@ Open a command prompt at `<openage directory>`:
      cmake -DCMAKE_TOOLCHAIN_FILE=<vcpkg directory>\scripts\buildsystems\vcpkg.cmake ..
      cmake --build . --config RelWithDebInfo -- /nologo /m /v:m
 
-_Note:_ If you want to build the x64 version, please add `-G "Visual Studio 15 2017 Win64"` (for VS2017) or `-G "Visual Studio 16 2019" -A x64` (for VS2019) to the first cmake command.
+_Note:_ If you want to build the x64 version, please add `-G "Visual Studio 17 2022" -A x64` (for VS2022) to the first cmake command.
 
 _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYAN=YES -DFLEX_EXECUTABLE=<path to win_flex.exe>` to the first cmake command.
 
