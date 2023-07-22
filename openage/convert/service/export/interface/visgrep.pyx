@@ -1,5 +1,4 @@
 # Copyright 2016-2023 the openage authors. See copying.md for legal info.
-# cython: legacy_implicit_noexcept=True
 
 # If you wanna boost speed even further:
 # cython: profile=False
