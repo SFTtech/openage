@@ -1,4 +1,5 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# cython: legacy_implicit_noexcept=True
 
 from libc.stdint cimport int64_t
 from libcpp cimport bool as cppbool

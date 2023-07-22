@@ -1,4 +1,5 @@
 # Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# cython: legacy_implicit_noexcept=True
 
 """
 Provides the raise_py_exception and describe_py_exception callbacks for
