@@ -361,7 +361,7 @@ cdef class SLPFrame:
 
     cdef vector[pixel] create_palette_color_row(self,
                                                 const uint8_t[::1] &data_raw,
-                                                Py_ssize_t rowid) except +:
+                                                Py_ssize_t rowid):
         """
         create palette indices (colors) for the given rowid.
         """
@@ -1134,7 +1134,7 @@ cdef class SLPFrame32:
 
     cdef vector[pixel32] create_palette_color_row(self,
                                                   const uint8_t[::1] &data_raw,
-                                                  Py_ssize_t rowid) except +:
+                                                  Py_ssize_t rowid):
         """
         create palette indices (colors) for the given rowid.
         """

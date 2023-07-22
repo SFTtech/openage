@@ -376,7 +376,7 @@ cdef class SMXLayer:
                                                                 Py_ssize_t rowid,
                                                                 int cmd_offset,
                                                                 int color_offset,
-                                                                int chunk_pos) except +:
+                                                                int chunk_pos):
         """
         Extract colors (pixels) for the given rowid.
 
