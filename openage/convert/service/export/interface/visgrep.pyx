@@ -1,4 +1,5 @@
-# Copyright 2016-2020 the openage authors. See copying.md for legal info.
+# Copyright 2016-2023 the openage authors. See copying.md for legal info.
+# cython: legacy_implicit_noexcept=True
 
 # If you wanna boost speed even further:
 # cython: profile=False
@@ -302,7 +303,8 @@ cdef visgrep_cli(geom_params, metric_params, img_params):
     """
 
     cdef image_t img, find
-    cdef vector[image_t] matches
+    # cdef vector[pixel_t[:, :, :]] matches
+    cdef list matches
 
     pt_match = FoundResult(0, Point(0, 0))
     results = []
