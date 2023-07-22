@@ -1,19 +1,19 @@
-# Copyright 2020-2020 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 
 from libc.stdio cimport FILE
 
 cdef extern from "png.h":
     const char PNG_LIBPNG_VER_STRING[]
-    const int PNG_COLOR_TYPE_RGBA = 6
-    const int PNG_INTERLACE_NONE = 0
-    const int PNG_COMPRESSION_TYPE_DEFAULT = 0
-    const int PNG_FILTER_TYPE_DEFAULT = 0
-    const int PNG_TRANSFORM_IDENTITY = 0
-    const int PNG_IMAGE_VERSION = 1
-    const char PNG_FORMAT_RGBA = 0x03
+    const int PNG_COLOR_TYPE_RGBA
+    const int PNG_INTERLACE_NONE
+    const int PNG_COMPRESSION_TYPE_DEFAULT
+    const int PNG_FILTER_TYPE_DEFAULT
+    const int PNG_TRANSFORM_IDENTITY
+    const int PNG_IMAGE_VERSION
+    const char PNG_FORMAT_RGBA
 
-    const unsigned int PNG_FILTER_NONE  = 0x08
-    const unsigned int PNG_ALL_FILTERS  = 0xF8
+    const unsigned int PNG_FILTER_NONE
+    const unsigned int PNG_ALL_FILTERS
 
     ctypedef unsigned char png_byte
     ctypedef const png_byte *png_const_bytep
