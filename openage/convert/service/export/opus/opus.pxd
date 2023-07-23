@@ -1,4 +1,4 @@
-# Copyright 2018-2020 the openage authors. See copying.md for legal info.
+# Copyright 2018-2023 the openage authors. See copying.md for legal info.
 
 cdef extern from "opus/opus.h":
     ctypedef struct OpusEncoder:
@@ -16,9 +16,9 @@ cdef extern from "opus/opus.h":
 
 cdef extern from "opus/opus_defines.h":
     # Errors
-    const int OPUS_OK = 0
-    const int OPUS_ALLOC_FAIL = -7
+    const int OPUS_OK
+    const int OPUS_ALLOC_FAIL
     # Application
-    const int OPUS_APPLICATION_AUDIO = 2049
+    const int OPUS_APPLICATION_AUDIO
     # Macros
     int OPUS_GET_LOOKAHEAD(opus_int32 *x)

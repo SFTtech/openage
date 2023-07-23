@@ -47,7 +47,7 @@ cdef extern from "traceback.h":
     void _PyTraceback_Add(const char *funcname, const char *filename, int lineno)
 
 
-cdef void PyTraceback_Add(const char *functionname, const char *filename, int lineno) with gil:
+cdef void PyTraceback_Add(const char *functionname, const char *filename, int lineno) noexcept with gil:
     """
     Add a new traceback stack frame.
     Redirects to Python's internal _PyTraceback_Add function.
@@ -71,7 +71,7 @@ class CPPException(Exception):
         self.typename = typename
 
 
-cdef void py_add_backtrace_frame_from_symbol(const backtrace_symbol *symbol) with gil:  # noexcept
+cdef void py_add_backtrace_frame_from_symbol(const backtrace_symbol *symbol) noexcept with gil:
     """
     For use as a callback with Error->backtrace->get_symbols(), from within
     raise_exception.
@@ -87,7 +87,7 @@ cdef Func1[void, const backtrace_symbol *] py_backtrace_adder
 py_backtrace_adder.bind_noexcept0(py_add_backtrace_frame_from_symbol)
 
 
-cdef void raise_cpp_error_common(Error *cpp_error_obj, object obj_to_raise):
+cdef void raise_cpp_error_common(Error *cpp_error_obj, object obj_to_raise) noexcept:
     """
     Common code that is used by both raise_cpp_error and raise_cpp_pyexception.
 
@@ -167,7 +167,7 @@ cdef void raise_cpp_pyexception(PyException *cpp_pyexception_obj) except * with 
     # No new data was added during its C++ life.
 
 
-cdef cppbool check_exception() with gil:
+cdef cppbool check_exception() noexcept with gil:
     # see the doc of the function pointer in exctranslate.h
     return (PyErr_Occurred() != NULL)
 

@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 from libc.stdint cimport int64_t
 from libcpp cimport bool as cppbool
@@ -57,11 +57,11 @@ import builtins
 import importlib
 
 
-cdef void xincref(PyObject *ptr) with gil:
+cdef void xincref(PyObject *ptr) noexcept with gil:
     Py_XINCREF(ptr)
 
 
-cdef void xdecref(PyObject *ptr) with gil:
+cdef void xdecref(PyObject *ptr) noexcept with gil:
     Py_XDECREF(ptr)
 
 

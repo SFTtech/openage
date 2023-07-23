@@ -330,7 +330,7 @@ cdef class SMPLayer:
 
     cdef vector[pixel] create_color_row(self,
                                         const uint8_t[::1] &data_raw,
-                                        Py_ssize_t rowid) except +:
+                                        Py_ssize_t rowid):
         """
         extract colors (pixels) for the given rowid.
         """

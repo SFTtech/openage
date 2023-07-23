@@ -11,10 +11,6 @@ from libopenage.pyinterface.pyobject cimport PyObj
 from libopenage.error.handlers cimport set_exit_ok
 
 
-cdef extern from "Python.h":
-    void PyEval_InitThreads()
-
-
 def run_game(args, root_path):
     """
     Launches the game after arguments were translated.
@@ -44,9 +40,6 @@ def run_game(args, root_path):
             args_cpp.mods = args.modpacks
         else:
             args_cpp.mods = vector[string]()
-
-        # create the gil, because now starts the multithread part!
-        PyEval_InitThreads()
 
         # run the game!
         with nogil:
