@@ -3,7 +3,7 @@
 #pragma once
 
 #include "gamestate.h"
-#include "../../curve/curve.h"
+#include "../../time/time.h"
 
 #include <vector>
 

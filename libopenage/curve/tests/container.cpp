@@ -1,11 +1,11 @@
 // Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
-#include "../../testing/testing.h"
-#include "../continuous.h"
-#include "../curve.h"
-#include "../discrete.h"
-#include "../map.h"
-#include "../queue.h"
+#include "curve/continuous.h"
+#include "curve/discrete.h"
+#include "curve/map.h"
+#include "curve/queue.h"
+#include "testing/testing.h"
+#include "time/time.h"
 
 #include <unordered_map>
 #include <unordered_set>

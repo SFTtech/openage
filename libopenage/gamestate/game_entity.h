@@ -6,7 +6,7 @@
 #include <unordered_map>
 
 #include "coord/phys.h"
-#include "curve/curve.h"
+#include "time/time.h"
 #include "gamestate/component/types.h"
 #include "gamestate/types.h"
 

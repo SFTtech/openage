@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "coord/phys.h"
-#include "curve/curve.h"
+#include "time/time.h"
 
 
 namespace openage::gamestate {

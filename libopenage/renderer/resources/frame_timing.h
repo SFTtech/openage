@@ -5,7 +5,7 @@
 #include <cstddef>
 #include <vector>
 
-#include "curve/curve.h"
+#include "time/time.h"
 
 
 namespace openage::renderer::resources {

@@ -4,8 +4,9 @@
 
 #include <mutex>
 
-#include "event/clock.h"
 #include "log/log.h"
+#include "time/clock.h"
+
 
 namespace openage::event {
 

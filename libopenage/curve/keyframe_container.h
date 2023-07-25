@@ -6,9 +6,9 @@
 #include <limits>
 #include <list>
 
-#include "curve/curve.h"
 #include "curve/keyframe.h"
 #include "error/error.h"
+#include "time/time.h"
 #include "util/compiler.h"
 
 namespace openage::curve {

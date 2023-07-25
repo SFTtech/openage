@@ -1,12 +1,12 @@
-// Copyright 2019-2019 the openage authors. See copying.md for legal info.
+// Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <type_traits>
 #include <sstream>
+#include <type_traits>
 
-#include "interpolated.h"
-#include "../log/log.h"
+#include "curve/interpolated.h"
+#include "log/log.h"
 
 namespace openage::curve {
 
@@ -24,7 +24,7 @@ namespace openage::curve {
  * The bound template type T has to implement `operator +(T)` and
  * `operator *(time_t)`.
  */
-template<typename T>
+template <typename T>
 class Segmented : public Interpolated<T> {
 public:
 	using Interpolated<T>::Interpolated;
@@ -90,4 +90,4 @@ std::string Segmented<T>::idstr() const {
 }
 
 
-} // openage::curve
+} // namespace openage::curve

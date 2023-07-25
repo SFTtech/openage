@@ -1,10 +1,10 @@
-// Copyright 2019-2019 the openage authors. See copying.md for legal info.
+// Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <limits>
 
-#include "curve.h"
+#include "time/time.h"
 
 namespace openage::curve {
 
@@ -37,4 +37,4 @@ public:
 	T value = T{};
 };
 
-} // openage::curve
+} // namespace openage::curve

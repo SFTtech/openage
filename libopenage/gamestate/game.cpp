@@ -6,9 +6,10 @@
 #include <nyan/file.h>
 
 #include "assets/mod_manager.h"
-#include "event/time_loop.h"
 #include "gamestate/game_state.h"
 #include "gamestate/universe.h"
+#include "time/time_loop.h"
+
 
 namespace openage::gamestate {
 

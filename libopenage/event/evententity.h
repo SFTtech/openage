@@ -6,7 +6,7 @@
 #include <list>
 #include <memory>
 
-#include "curve/curve.h"
+#include "time/time.h"
 
 namespace openage::event {
 

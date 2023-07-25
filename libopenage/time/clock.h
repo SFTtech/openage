@@ -5,7 +5,8 @@
 #include <chrono>
 #include <shared_mutex>
 
-#include "curve/curve.h"
+#include "time/time.h"
+
 
 namespace openage::event {
 

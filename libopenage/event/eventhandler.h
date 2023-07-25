@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "../curve/curve.h"
+#include "../time/time.h"
 
 
 #include <any>
@@ -75,19 +75,22 @@ public:
 		using map_t = std::unordered_map<std::string, std::any>;
 
 		param_map() {}
-		param_map(std::initializer_list<map_t::value_type> l) : map(l) {}
-		param_map(const map_t &map) : map{std::move(map)} {}
+		param_map(std::initializer_list<map_t::value_type> l) :
+			map(l) {}
+		param_map(const map_t &map) :
+			map{std::move(map)} {}
 
 		/**
 		 * Returns the value, if it exists and is the right type.
 		 * defaultval if not.
 		 */
-		template<typename T>
-		T get(const std::string &key, const T &defaultval=T()) const {
+		template <typename T>
+		T get(const std::string &key, const T &defaultval = T()) const {
 			auto it = this->map.find(key);
 			if (it != this->map.end() && this->check_type<T>(it)) {
 				return std::any_cast<T>(it->second);
-			} else {
+			}
+			else {
 				return defaultval;
 			}
 		}
@@ -102,7 +105,7 @@ public:
 		/**
 		 * Check if the type of a map entry is correct.
 		 */
-		template<typename Type>
+		template <typename Type>
 		bool check_type(const std::string &key) const {
 			auto it = map.find(key);
 			if (it != map.end()) {
@@ -112,7 +115,7 @@ public:
 		}
 
 	private:
-		template<typename T>
+		template <typename T>
 		bool check_type(const map_t::const_iterator &it) const {
 			return it->second.type() == typeid(T);
 		}
@@ -216,4 +219,4 @@ public:
 };
 
 
-} // openage::event
+} // namespace openage::event

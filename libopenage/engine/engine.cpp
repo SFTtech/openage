@@ -5,9 +5,10 @@
 #include "log/log.h"
 
 #include "cvar/cvar.h"
-#include "event/time_loop.h"
 #include "gamestate/simulation.h"
 #include "presenter/presenter.h"
+#include "time/time_loop.h"
+
 
 namespace openage::engine {
 

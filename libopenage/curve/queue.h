@@ -5,9 +5,9 @@
 #include <deque>
 #include <iostream>
 
-#include "curve/curve.h"
 #include "curve/queue_filter_iterator.h"
 #include "event/evententity.h"
+#include "time/time.h"
 
 
 namespace openage::curve {

@@ -7,7 +7,6 @@
 #include <string>
 #include <vector>
 
-#include "event/time_loop.h"
 #include "gamestate/simulation.h"
 #include "input/controller/camera/binding_context.h"
 #include "input/controller/camera/controller.h"
@@ -30,6 +29,7 @@
 #include "renderer/stages/terrain/terrain_renderer.h"
 #include "renderer/stages/world/world_renderer.h"
 #include "renderer/window.h"
+#include "time/time_loop.h"
 #include "util/path.h"
 
 namespace openage::presenter {

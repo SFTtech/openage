@@ -2,16 +2,15 @@
 
 #include "simulation.h"
 
-#include "event/clock.h"
-#include "event/event_loop.h"
-#include "event/time_loop.h"
-
 #include "assets/mod_manager.h"
+#include "event/event_loop.h"
 #include "gamestate/entity_factory.h"
 #include "gamestate/event/process_command.h"
 #include "gamestate/event/send_command.h"
 #include "gamestate/event/spawn_entity.h"
 #include "gamestate/event/wait.h"
+#include "time/clock.h"
+#include "time/time_loop.h"
 
 // TODO
 #include "gamestate/game.h"

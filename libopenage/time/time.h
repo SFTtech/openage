@@ -4,7 +4,7 @@
 
 #include <cstdint>
 
-#include "../util/fixed_point.h"
+#include "util/fixed_point.h"
 
 
 namespace openage::curve {
@@ -15,4 +15,4 @@ namespace openage::curve {
  */
 using time_t = util::FixedPoint<int64_t, 16>;
 
-} // openage::curve
+} // namespace openage::curve

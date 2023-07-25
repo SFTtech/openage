@@ -4,7 +4,7 @@
 
 #include <memory>
 
-#include "../curve/curve.h"
+#include "../time/time.h"
 #include "eventhandler.h"
 
 namespace openage::event {

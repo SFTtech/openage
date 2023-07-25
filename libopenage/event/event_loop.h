@@ -8,10 +8,10 @@
 #include <mutex>
 #include <unordered_map>
 
-#include "curve/curve.h"
 #include "event.h"
 #include "eventqueue.h"
 #include "log/log.h"
+#include "time/time.h"
 
 namespace openage::event {
 

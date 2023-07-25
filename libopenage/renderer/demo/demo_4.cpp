@@ -5,7 +5,6 @@
 #include <eigen3/Eigen/Dense>
 #include <QKeyEvent>
 
-#include "event/clock.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
 #include "renderer/resources/animation/angle_info.h"
@@ -15,6 +14,7 @@
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_data.h"
 #include "renderer/shader_program.h"
+#include "time/clock.h"
 
 namespace openage::renderer::tests {
 void renderer_demo_4(const util::Path &path) {

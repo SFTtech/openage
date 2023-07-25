@@ -5,6 +5,7 @@
 #include <memory>
 #include <shared_mutex>
 
+
 namespace openage {
 
 namespace event {

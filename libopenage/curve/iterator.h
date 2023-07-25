@@ -1,8 +1,8 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "curve.h"
+#include "time/time.h"
 
 namespace openage::curve {
 
@@ -11,7 +11,7 @@ namespace openage::curve {
  */
 template <typename val_t,
           typename container_t,
-          typename iterator_t=typename container_t::const_iterator>
+          typename iterator_t = typename container_t::const_iterator>
 class CurveIterator {
 public:
 	/**
@@ -28,8 +28,7 @@ public:
 	/**
 	 * The iterator needs a reference to the container
 	 */
-	explicit CurveIterator(const container_t *c)
-		:
+	explicit CurveIterator(const container_t *c) :
 		base{},
 		container{c},
 		from{-std::numeric_limits<time_t>::max()},
@@ -42,8 +41,7 @@ protected:
 	CurveIterator(const iterator_t &base,
 	              const container_t *container,
 	              const time_t &from,
-	              const time_t &to)
-		:
+	              const time_t &to) :
 		base{base},
 		container{container},
 		from{from},
@@ -51,21 +49,21 @@ protected:
 
 public:
 	/** Default copy c'tor */
-	CurveIterator (const CurveIterator &) = default;
+	CurveIterator(const CurveIterator &) = default;
 
 	virtual ~CurveIterator() = default;
 
 	/** Default assignment operator */
-	CurveIterator<val_t, container_t, iterator_t> &operator= (
+	CurveIterator<val_t, container_t, iterator_t> &operator=(
 		const CurveIterator<val_t, container_t, iterator_t> &) = default;
 
 	/** Dereference will call the virtual function */
-	virtual const val_t &operator *() const {
+	virtual const val_t &operator*() const {
 		return this->value();
 	}
 
 	/** Dereference will call the virutal function */
-	virtual const val_t *operator ->() const {
+	virtual const val_t *operator->() const {
 		return &this->value();
 	}
 
@@ -73,7 +71,7 @@ public:
 	 * For equalness only the base iterator will be testet - not the timespans
 	 * this is defined in.
 	 */
-	virtual bool operator ==(const CurveIterator<val_t, container_t> &rhs) const {
+	virtual bool operator==(const CurveIterator<val_t, container_t> &rhs) const {
 		return this->base == rhs.base;
 	}
 
@@ -81,17 +79,18 @@ public:
 	 * For unequalness only the base iterator will be testet - not the timespans
 	 * this is defined in.
 	 */
-	virtual bool operator !=(const CurveIterator<val_t, container_t> &rhs) const {
+	virtual bool operator!=(const CurveIterator<val_t, container_t> &rhs) const {
 		return this->base != rhs.base;
 	}
 
 	/**
 	 * Advance to the next valid element.
 	 */
-	virtual CurveIterator<val_t, container_t> &operator ++() {
+	virtual CurveIterator<val_t, container_t> &operator++() {
 		do {
 			++this->base;
-		} while (this->container->end().base != this->base and not this->valid());
+		}
+		while (this->container->end().base != this->base and not this->valid());
 
 		return *this;
 	}
@@ -132,4 +131,4 @@ protected:
 };
 
 
-} // openage::curve
+} // namespace openage::curve

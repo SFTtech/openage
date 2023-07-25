@@ -2,7 +2,6 @@
 
 #include "world_renderer.h"
 
-#include "event/clock.h"
 #include "renderer/camera/camera.h"
 #include "renderer/opengl/context.h"
 #include "renderer/resources/assets/asset_manager.h"
@@ -12,6 +11,8 @@
 #include "renderer/stages/world/world_object.h"
 #include "renderer/texture.h"
 #include "renderer/window.h"
+#include "time/clock.h"
+
 
 namespace openage::renderer::world {
 

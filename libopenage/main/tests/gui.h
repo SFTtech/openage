@@ -6,7 +6,7 @@
 #include <vector>
 #include <deque>
 
-#include "../../curve/curve.h"
+#include "../../time/time.h"
 #include "../../renderer/renderer.h"
 #include "../../renderer/opengl/window.h"
 

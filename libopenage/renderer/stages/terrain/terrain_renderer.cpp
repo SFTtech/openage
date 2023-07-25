@@ -2,8 +2,6 @@
 
 #include "terrain_renderer.h"
 
-
-#include "event/clock.h"
 #include "renderer/camera/camera.h"
 #include "renderer/opengl/context.h"
 #include "renderer/renderer.h"
@@ -13,6 +11,8 @@
 #include "renderer/stages/terrain/terrain_mesh.h"
 #include "renderer/stages/terrain/terrain_model.h"
 #include "renderer/window.h"
+#include "time/clock.h"
+
 
 namespace openage::renderer::terrain {
 

@@ -8,7 +8,7 @@
 #include "coord/phys.h"
 #include "coord/scene.h"
 #include "curve/continuous.h"
-#include "curve/curve.h"
+#include "time/time.h"
 #include "curve/discrete.h"
 #include "curve/segmented.h"
 #include "util/path.h"

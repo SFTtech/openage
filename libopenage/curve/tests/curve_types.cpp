@@ -1,6 +1,6 @@
 // Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
-#include "curve/curve.h"
+#include "time/time.h"
 #include "curve/continuous.h"
 #include "curve/discrete.h"
 #include "curve/discrete_mod.h"

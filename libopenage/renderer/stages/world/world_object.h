@@ -8,7 +8,7 @@
 
 #include "coord/scene.h"
 #include "curve/continuous.h"
-#include "curve/curve.h"
+#include "time/time.h"
 #include "curve/discrete.h"
 #include "curve/segmented.h"
 #include "renderer/resources/mesh_data.h"

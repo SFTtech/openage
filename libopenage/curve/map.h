@@ -1,13 +1,13 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "curve.h"
-#include "map_filter_iterator.h"
-
-#include <optional>
 #include <iostream>
+#include <optional>
 #include <unordered_map>
+
+#include "curve/map_filter_iterator.h"
+#include "time/time.h"
 
 
 namespace openage::curve {
@@ -20,8 +20,7 @@ template <typename key_t, typename val_t>
 class UnorderedMap {
 	/** Internal container to access all data and metadata */
 	struct map_element {
-		map_element (const val_t &v, const time_t &a, const time_t &d)
-			:
+		map_element(const val_t &v, const time_t &a, const time_t &d) :
 			value(v),
 			alive(a),
 			dead(d) {}
@@ -41,7 +40,7 @@ public:
 	using const_iterator = typename std::unordered_map<key_t, map_element>::const_iterator;
 
 	std::optional<MapFilterIterator<key_t, val_t, UnorderedMap>>
-	operator ()(const time_t&, const key_t &) const;
+	operator()(const time_t &, const key_t &) const;
 
 	std::optional<MapFilterIterator<key_t, val_t, UnorderedMap>>
 	at(const time_t &, const key_t &) const;
@@ -77,39 +76,36 @@ public:
 	 */
 	void dump() {
 		for (auto i : container) {
-			std::cout << "Element: " << i.second.value << std::endl;;
+			std::cout << "Element: " << i.second.value << std::endl;
 		}
 	}
 };
 
-template<typename key_t, typename val_t>
+template <typename key_t, typename val_t>
 std::optional<MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>>
 UnorderedMap<key_t, val_t>::operator()(const time_t &time,
                                        const key_t &key) const {
 	return this->at(time, key);
 }
 
-template<typename key_t, typename val_t>
+template <typename key_t, typename val_t>
 std::optional<MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>>
-UnorderedMap<key_t, val_t>::at(const time_t & time,
-                               const key_t & key) const {
+UnorderedMap<key_t, val_t>::at(const time_t &time,
+                               const key_t &key) const {
 	auto e = this->container.find(key);
-	if (e != this->container.end() and
-	    e->second.alive <= time and
-	    e->second.dead > time) {
-
+	if (e != this->container.end() and e->second.alive <= time and e->second.dead > time) {
 		return MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
 			e,
 			this,
 			time,
-			std::numeric_limits<time_t>::max()
-		);
-	} else {
+			std::numeric_limits<time_t>::max());
+	}
+	else {
 		return {};
 	}
 }
 
-template<typename key_t, typename val_t>
+template <typename key_t, typename val_t>
 MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
 UnorderedMap<key_t, val_t>::begin(const time_t &time) const {
 	return MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
@@ -119,7 +115,7 @@ UnorderedMap<key_t, val_t>::begin(const time_t &time) const {
 		std::numeric_limits<time_t>::max());
 }
 
-template<typename key_t, typename val_t>
+template <typename key_t, typename val_t>
 MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
 UnorderedMap<key_t, val_t>::end(const time_t &time) const {
 	return MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
@@ -129,7 +125,7 @@ UnorderedMap<key_t, val_t>::end(const time_t &time) const {
 		time);
 }
 
-template<typename key_t, typename val_t>
+template <typename key_t, typename val_t>
 MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
 UnorderedMap<key_t, val_t>::between(const time_t &from, const time_t &to) const {
 	auto it = MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
@@ -144,7 +140,7 @@ UnorderedMap<key_t, val_t>::between(const time_t &from, const time_t &to) const 
 	return it;
 }
 
-template<typename key_t, typename val_t>
+template <typename key_t, typename val_t>
 MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
 UnorderedMap<key_t, val_t>::insert(const time_t &alive,
                                    const key_t &key,
@@ -156,7 +152,7 @@ UnorderedMap<key_t, val_t>::insert(const time_t &alive,
 		value);
 }
 
-template<typename key_t, typename val_t>
+template <typename key_t, typename val_t>
 MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
 UnorderedMap<key_t, val_t>::insert(const time_t &alive,
                                    const time_t &dead,
@@ -171,7 +167,7 @@ UnorderedMap<key_t, val_t>::insert(const time_t &alive,
 		dead);
 }
 
-template<typename key_t, typename val_t>
+template <typename key_t, typename val_t>
 void UnorderedMap<key_t, val_t>::birth(const time_t &time,
                                        const key_t &key) {
 	auto it = this->container.find(key);
@@ -180,14 +176,13 @@ void UnorderedMap<key_t, val_t>::birth(const time_t &time,
 	}
 }
 
-template<typename key_t, typename val_t>
+template <typename key_t, typename val_t>
 void UnorderedMap<key_t, val_t>::birth(const time_t &time,
-                                       const MapFilterIterator<val_t, val_t,
-                                       UnorderedMap> &it) {
+                                       const MapFilterIterator<val_t, val_t, UnorderedMap> &it) {
 	it->second.alive = time;
 }
 
-template<typename key_t, typename val_t>
+template <typename key_t, typename val_t>
 void UnorderedMap<key_t, val_t>::kill(const time_t &time,
                                       const key_t &key) {
 	auto it = this->container.find(key);
@@ -196,15 +191,15 @@ void UnorderedMap<key_t, val_t>::kill(const time_t &time,
 	}
 }
 
-template<typename key_t, typename val_t>
+template <typename key_t, typename val_t>
 void UnorderedMap<key_t, val_t>::kill(const time_t &time,
                                       const MapFilterIterator<val_t, val_t, UnorderedMap> &it) {
 	it->second.dead = time;
 }
 
-template<typename key_t, typename val_t>
+template <typename key_t, typename val_t>
 void UnorderedMap<key_t, val_t>::clean(const time_t &) {
 	// TODO save everything to a file and be happy.
 }
 
-} // openage::curve
+} // namespace openage::curve

@@ -2,10 +2,8 @@
 
 #include "controller.h"
 
-#include "event/clock.h"
 #include "event/evententity.h"
 #include "event/state.h"
-#include "event/time_loop.h"
 #include "gamestate/component/internal/commands/types.h"
 #include "gamestate/event/send_command.h"
 #include "gamestate/event/spawn_entity.h"
@@ -13,6 +11,8 @@
 #include "gamestate/game_state.h"
 #include "gamestate/simulation.h"
 #include "input/controller/game/binding_context.h"
+#include "time/clock.h"
+#include "time/time_loop.h"
 
 #include "coord/phys.h"
 
