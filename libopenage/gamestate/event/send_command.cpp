@@ -35,7 +35,7 @@ void SendCommandHandler::setup_event(const std::shared_ptr<openage::event::Event
 void SendCommandHandler::invoke(openage::event::EventLoop & /* loop */,
                                 const std::shared_ptr<openage::event::EventEntity> & /* target */,
                                 const std::shared_ptr<openage::event::State> &state,
-                                const curve::time_t &time,
+                                const time::time_t &time,
                                 const param_map &params) {
 	auto gstate = std::dynamic_pointer_cast<openage::gamestate::GameState>(state);
 
@@ -64,9 +64,9 @@ void SendCommandHandler::invoke(openage::event::EventLoop & /* loop */,
 	}
 }
 
-curve::time_t SendCommandHandler::predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> & /* target */,
+time::time_t SendCommandHandler::predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> & /* target */,
                                                       const std::shared_ptr<openage::event::State> & /* state */,
-                                                      const curve::time_t &at) {
+                                                      const time::time_t &at) {
 	return at;
 }
 

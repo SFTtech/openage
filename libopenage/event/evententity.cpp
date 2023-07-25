@@ -14,7 +14,7 @@
 namespace openage::event {
 
 
-void EventEntity::changes(const curve::time_t &time) {
+void EventEntity::changes(const time::time_t &time) {
 	// This target has some change, so we have to notify all dependents
 	// that subscribed on this entity.
 
@@ -46,7 +46,7 @@ void EventEntity::changes(const curve::time_t &time) {
 			case EventHandler::trigger_type::ONCE:
 				// If the dependent is a ONCE-event
 				// forget the change if the once event has been notified already.
-				if (dependent->get_last_changed() > curve::time_t::min_value()) {
+				if (dependent->get_last_changed() > time::time_t::min_value()) {
 					it = this->dependents.erase(it);
 				}
 				else {
@@ -74,7 +74,7 @@ void EventEntity::changes(const curve::time_t &time) {
 }
 
 
-void EventEntity::trigger(const curve::time_t &last_valid_time) {
+void EventEntity::trigger(const time::time_t &last_valid_time) {
 	// notify all dependent events that are triggered `on_keyframe`
 	// that the this target changed.
 	// the only events that is "notified" by are TRIGGER.

@@ -85,7 +85,7 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 }
 
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
-                    const std::shared_ptr<event::TimeLoop> &time_loop,
+                    const std::shared_ptr<time::TimeLoop> &time_loop,
                     const std::shared_ptr<openage::gamestate::GameSimulation> &simulation,
                     const std::shared_ptr<renderer::camera::Camera> &camera) {
 	binding_func_t create_entity_event{[&](const event_arguments &args,

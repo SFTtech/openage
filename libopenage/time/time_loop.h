@@ -6,9 +6,7 @@
 #include <shared_mutex>
 
 
-namespace openage {
-
-namespace event {
+namespace openage::time {
 class Clock;
 
 /**
@@ -69,5 +67,4 @@ private:
 };
 
 
-} // namespace event
-} // namespace openage
+} // namespace openage::time

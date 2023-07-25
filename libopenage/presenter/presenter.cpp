@@ -36,7 +36,7 @@ namespace openage::presenter {
 
 Presenter::Presenter(const util::Path &root_dir,
                      const std::shared_ptr<gamestate::GameSimulation> &simulation,
-                     const std::shared_ptr<event::TimeLoop> &time_loop) :
+                     const std::shared_ptr<time::TimeLoop> &time_loop) :
 	root_dir{root_dir},
 	render_passes{},
 	simulation{simulation},
@@ -80,7 +80,7 @@ void Presenter::set_simulation(const std::shared_ptr<gamestate::GameSimulation> 
 	this->simulation->attach_renderer(render_factory);
 }
 
-void Presenter::set_time_loop(const std::shared_ptr<event::TimeLoop> &time_loop) {
+void Presenter::set_time_loop(const std::shared_ptr<time::TimeLoop> &time_loop) {
 	this->time_loop = time_loop;
 }
 

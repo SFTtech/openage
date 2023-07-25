@@ -160,7 +160,7 @@ public:
 	virtual void invoke(EventLoop &loop,
 	                    const std::shared_ptr<EventEntity> &target,
 	                    const std::shared_ptr<State> &state,
-	                    const curve::time_t &time,
+	                    const time::time_t &time,
 	                    const param_map &params) = 0;
 
 	/**
@@ -179,9 +179,9 @@ public:
 	 * then dependencies may not be resolved perfectly anymore
 	 * (if other events have already been calculated before that).
 	 */
-	virtual curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &target,
-	                                          const std::shared_ptr<State> &state,
-	                                          const curve::time_t &at) = 0;
+	virtual time::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &target,
+	                                         const std::shared_ptr<State> &state,
+	                                         const time::time_t &at) = 0;
 
 private:
 	/**

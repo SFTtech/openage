@@ -43,7 +43,7 @@ void TerrainRenderModel::fetch_updates() {
 	this->render_entity->clear_changed_flag();
 }
 
-void TerrainRenderModel::update_uniforms(const curve::time_t &time) {
+void TerrainRenderModel::update_uniforms(const time::time_t &time) {
 	for (auto &mesh : this->meshes) {
 		mesh->update_uniforms(time);
 	}

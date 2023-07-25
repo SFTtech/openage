@@ -28,7 +28,7 @@ Engine::Engine(mode mode,
 	cvar_manager->load_all();
 
 	// time loop
-	this->time_loop = std::make_shared<event::TimeLoop>();
+	this->time_loop = std::make_shared<time::TimeLoop>();
 
 	this->simulation = std::make_shared<gamestate::GameSimulation>(this->root_dir,
 	                                                               this->cvar_manager,

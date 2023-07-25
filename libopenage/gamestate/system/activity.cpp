@@ -21,7 +21,7 @@ namespace openage::gamestate::system {
 
 
 void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
-                       const curve::time_t &start_time,
+                       const time::time_t &start_time,
                        const std::shared_ptr<openage::event::EventLoop> &loop,
                        const std::shared_ptr<openage::gamestate::GameState> &state) {
 	auto activity_component = std::dynamic_pointer_cast<component::Activity>(
@@ -46,7 +46,7 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 		activity_component->cancel_events(start_time);
 	}
 
-	curve::time_t event_wait_time = 0;
+	time::time_t event_wait_time = 0;
 	auto stop = false;
 	while (not stop) {
 		switch (current_node->get_type()) {
@@ -100,8 +100,8 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 	activity_component->set_node(start_time, current_node);
 }
 
-const curve::time_t Activity::handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &entity,
-                                               const curve::time_t &start_time,
+const time::time_t Activity::handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &entity,
+                                               const time::time_t &start_time,
                                                system_id_t system_id) {
 	switch (system_id) {
 	case system_id_t::IDLE:
@@ -117,7 +117,7 @@ const curve::time_t Activity::handle_subsystem(const std::shared_ptr<gamestate::
 		throw Error{ERR << "Unhandled subsystem " << static_cast<int>(system_id)};
 	}
 
-	return curve::time_t::from_int(0);
+	return time::time_t::from_int(0);
 }
 
 

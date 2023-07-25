@@ -18,7 +18,7 @@ public:
 	                  const std::shared_ptr<GameEntity> &game_entity);
 	~GameEntityManager() = default;
 
-	void run_activity_system(const curve::time_t &time);
+	void run_activity_system(const time::time_t &time);
 
 	size_t id() const override;
 	std::string idstr() const override;

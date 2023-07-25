@@ -9,7 +9,7 @@ namespace openage::gamestate::component {
 
 Ownership::Ownership(const std::shared_ptr<openage::event::EventLoop> &loop,
                      const ownership_id_t owner_id,
-                     const curve::time_t &creation_time) :
+                     const time::time_t &creation_time) :
 	owner(loop, 0) {
 	this->owner.set_last(creation_time, owner_id);
 }
@@ -22,7 +22,7 @@ inline component_t Ownership::get_type() const {
 	return component_t::OWNERSHIP;
 }
 
-void Ownership::set_owner(const curve::time_t &time, const ownership_id_t owner_id) {
+void Ownership::set_owner(const time::time_t &time, const ownership_id_t owner_id) {
 	this->owner.set_last(time, owner_id);
 }
 

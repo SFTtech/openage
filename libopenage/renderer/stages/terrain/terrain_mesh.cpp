@@ -54,7 +54,7 @@ void TerrainRenderMesh::set_terrain_path(const curve::Discrete<std::string> &ter
 								}));
 }
 
-void TerrainRenderMesh::update_uniforms(const curve::time_t &time) {
+void TerrainRenderMesh::update_uniforms(const time::time_t &time) {
 	// TODO: Only update uniforms that changed since last update
 	if (this->uniforms == nullptr) [[unlikely]] {
 		return;

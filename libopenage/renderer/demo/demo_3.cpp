@@ -31,7 +31,7 @@ void renderer_demo_3(const util::Path &path) {
 
 	// Clock required by world renderer for timing animation frames
 	// (we never advance time in this demo though, so it has no significance)
-	auto clock = std::make_shared<event::Clock>();
+	auto clock = std::make_shared<time::Clock>();
 
 	// Camera
 	// our viewport into the game world

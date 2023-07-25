@@ -20,8 +20,8 @@ TerrainLayerInfo::TerrainLayerInfo(const std::vector<std::shared_ptr<TerrainFram
 	frame_timing{nullptr} {
 	// set frame timings by calculating when they appear in the animation sequence
 	auto frame_count = this->frames.size();
-	curve::time_t t = 0;
-	std::vector<curve::time_t> frame_timing;
+	time::time_t t = 0;
+	std::vector<time::time_t> frame_timing;
 	for (size_t i = 0; i < frame_count; ++i) {
 		frame_timing.push_back(t);
 		t += this->time_per_frame;

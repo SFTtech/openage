@@ -30,8 +30,8 @@ public:
 	 */
 	QueueFilterIterator(const const_iterator &base,
 	                    const container_t *base_container,
-	                    const time_t &from,
-	                    const time_t &to) :
+	                    const time::time_t &from,
+	                    const time::time_t &to) :
 		CurveIterator<val_t, container_t>(base, base_container, from, to) {}
 
 	virtual bool valid() const override {

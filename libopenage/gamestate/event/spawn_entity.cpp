@@ -68,7 +68,7 @@ void SpawnEntityHandler::setup_event(const std::shared_ptr<openage::event::Event
 void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
                                 const std::shared_ptr<openage::event::EventEntity> & /* target */,
                                 const std::shared_ptr<openage::event::State> &state,
-                                const curve::time_t &time,
+                                const time::time_t &time,
                                 const param_map &params) {
 	auto gstate = std::dynamic_pointer_cast<gamestate::GameState>(state);
 
@@ -134,9 +134,9 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 	gstate->add_game_entity(entity);
 }
 
-curve::time_t SpawnEntityHandler::predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> & /* target */,
+time::time_t SpawnEntityHandler::predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> & /* target */,
                                                       const std::shared_ptr<openage::event::State> & /* state */,
-                                                      const curve::time_t &at) {
+                                                      const time::time_t &at) {
 	return at;
 }
 

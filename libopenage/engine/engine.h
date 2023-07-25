@@ -29,10 +29,6 @@ namespace cvar {
 class CVarManager;
 } // namespace cvar
 
-namespace event {
-class TimeLoop;
-} // namespace event
-
 namespace gamestate {
 class GameSimulation;
 } // namespace gamestate
@@ -40,6 +36,10 @@ class GameSimulation;
 namespace presenter {
 class Presenter;
 } // namespace presenter
+
+namespace time {
+class TimeLoop;
+} // namespace time
 
 
 namespace engine {
@@ -109,7 +109,7 @@ private:
 	/**
      * Controls and update the clock for time-based measurements.
      */
-	std::shared_ptr<event::TimeLoop> time_loop;
+	std::shared_ptr<time::TimeLoop> time_loop;
 
 	/**
      * Gameplay simulation.

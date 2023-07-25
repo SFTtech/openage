@@ -11,13 +11,13 @@ inline component_t Live::get_type() const {
 	return component_t::LIVE;
 }
 
-void Live::add_attribute(const curve::time_t &time,
+void Live::add_attribute(const time::time_t &time,
                          const nyan::fqon_t &attribute,
                          std::shared_ptr<curve::Discrete<int64_t>> starting_values) {
 	this->attribute_values.insert(time, attribute, starting_values);
 }
 
-void Live::set_attribute(const curve::time_t &time,
+void Live::set_attribute(const time::time_t &time,
                          const nyan::fqon_t &attribute,
                          int64_t value) {
 	auto attribute_value = this->attribute_values.at(time, attribute);

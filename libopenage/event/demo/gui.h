@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -28,9 +28,9 @@ public:
 
 	const std::vector<PongEvent> &get_inputs(const std::shared_ptr<PongPlayer> &player);
 	void get_display_size(const std::shared_ptr<PongState> &state,
-	                      const curve::time_t &now);
+	                      const time::time_t &now);
 
-	void draw(const std::shared_ptr<PongState> &state, const curve::time_t &now);
+	void draw(const std::shared_ptr<PongState> &state, const time::time_t &now);
 	void draw_ball(util::Vector2d ball, const char *str);
 
 	void log(const std::string &msg);

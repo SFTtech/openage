@@ -63,7 +63,7 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 
 	condition_moveable->add_output(wait_for_command);
 	condition_moveable->add_output(end);
-	condition_moveable->set_condition_func([&](const curve::time_t & /* time */,
+	condition_moveable->set_condition_func([&](const time::time_t & /* time */,
 	                                           const std::shared_ptr<GameEntity> &entity) {
 		if (entity->has_component(component::component_t::MOVE)) {
 			return 3; // wait_for_command->get_id();
@@ -73,7 +73,7 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 	});
 
 	wait_for_command->add_output(move);
-	wait_for_command->set_primer_func([](const curve::time_t & /* time */,
+	wait_for_command->set_primer_func([](const time::time_t & /* time */,
 	                                     const std::shared_ptr<GameEntity> &entity,
 	                                     const std::shared_ptr<event::EventLoop> &loop,
 	                                     const std::shared_ptr<gamestate::GameState> &state) {
@@ -81,7 +81,7 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 		                             entity->get_manager(),
 		                             state,
 		                             // event is not executed until a command is available
-		                             std::numeric_limits<curve::time_t>::max());
+		                             std::numeric_limits<time::time_t>::max());
 		auto entity_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 			entity->get_component(component::component_t::COMMANDQUEUE));
 		auto &queue = const_cast<curve::Queue<std::shared_ptr<component::command::Command>> &>(entity_queue->get_queue());
@@ -89,7 +89,7 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 
 		return activity::event_store_t{ev};
 	});
-	wait_for_command->set_next_func([](const curve::time_t &time,
+	wait_for_command->set_next_func([](const time::time_t &time,
 	                                   const std::shared_ptr<GameEntity> &entity,
 	                                   const std::shared_ptr<event::EventLoop> &,
 	                                   const std::shared_ptr<gamestate::GameState> &) {
@@ -114,7 +114,7 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 	wait_for_move->add_output(idle);
 	wait_for_move->add_output(condition_command);
 	wait_for_move->add_output(end);
-	wait_for_move->set_primer_func([](const curve::time_t &time,
+	wait_for_move->set_primer_func([](const time::time_t &time,
 	                                  const std::shared_ptr<GameEntity> &entity,
 	                                  const std::shared_ptr<event::EventLoop> &loop,
 	                                  const std::shared_ptr<gamestate::GameState> &state) {
@@ -125,7 +125,7 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 
 		return activity::event_store_t{ev};
 	});
-	wait_for_move->set_next_func([&](const curve::time_t &,
+	wait_for_move->set_next_func([&](const time::time_t &,
 	                                 const std::shared_ptr<GameEntity> &,
 	                                 const std::shared_ptr<event::EventLoop> &,
 	                                 const std::shared_ptr<gamestate::GameState> &) {
@@ -206,7 +206,7 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 				auto attribute = setting_obj.get_object("AttributeSetting.attribute");
 				auto start_value = setting_obj.get_int("AttributeSetting.starting_value");
 
-				live->add_attribute(std::numeric_limits<curve::time_t>::min(),
+				live->add_attribute(std::numeric_limits<time::time_t>::min(),
 				                    attribute.get_name(),
 				                    std::make_shared<curve::Discrete<int64_t>>(loop,
 				                                                               0,

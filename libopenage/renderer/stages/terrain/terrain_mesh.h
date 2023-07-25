@@ -94,7 +94,7 @@ public:
      *
      * @param time Current simulation time.
      */
-	void update_uniforms(const curve::time_t &time = 0.0);
+	void update_uniforms(const time::time_t &time = 0.0);
 
 	/**
      * Check whether a new renderable needs to be created for this mesh.

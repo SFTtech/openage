@@ -1,4 +1,4 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #include "eventqueue.h"
 
@@ -17,7 +17,7 @@ namespace openage::event {
 std::shared_ptr<Event> EventQueue::create_event(const std::shared_ptr<EventEntity> &trgt,
                                                 const std::shared_ptr<EventHandler> &cls,
                                                 const std::shared_ptr<State> &state,
-                                                const curve::time_t &reference_time,
+                                                const time::time_t &reference_time,
                                                 const EventHandler::param_map &params) {
 
 	auto event = std::make_shared<Event>(trgt, cls, params);
@@ -31,7 +31,7 @@ std::shared_ptr<Event> EventQueue::create_event(const std::shared_ptr<EventEntit
 		event->set_time(event->get_eventhandler()
 		                     ->predict_invoke_time(trgt, state, reference_time));
 
-		if (event->get_time() == std::numeric_limits<curve::time_t>::min()) {
+		if (event->get_time() == std::numeric_limits<time::time_t>::min()) {
 			log::log(DBG << "Queue: ignoring insertion of event "
 			         << event->get_eventhandler()->id() <<
 			         " because no execution was scheduled.");
@@ -81,9 +81,9 @@ EventQueue::EventQueue()
 
 
 void EventQueue::add_change(const std::shared_ptr<Event> &event,
-                            const curve::time_t &changed_at) {
+                            const time::time_t &changed_at) {
 
-	const curve::time_t event_previous_changed = event->get_last_changed();
+	const time::time_t event_previous_changed = event->get_last_changed();
 
 	// Has the event already been fired in this round?
 	if (event_previous_changed < changed_at) {
@@ -161,7 +161,7 @@ const EventStore &EventQueue::get_event_queue() const {
 }
 
 
-std::shared_ptr<Event> EventQueue::take_event(const curve::time_t &max_time) {
+std::shared_ptr<Event> EventQueue::take_event(const time::time_t &max_time) {
 	if (this->event_queue.size() == 0) {
 		return nullptr;
 	}
@@ -198,7 +198,7 @@ void EventQueue::swap_changesets() {
 
 
 EventQueue::Change::Change(const std::shared_ptr<Event> &evnt,
-                           curve::time_t time)
+                           time::time_t time)
 	:
 	time{std::move(time)},
 	evnt{evnt},

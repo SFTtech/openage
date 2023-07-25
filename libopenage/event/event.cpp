@@ -35,7 +35,7 @@ void Event::depend_on(const std::shared_ptr<EventEntity> &dependency) {
 }
 
 
-void Event::cancel(const curve::time_t reference_time) {
+void Event::cancel(const time::time_t reference_time) {
 	log::log(DBG << "Canceling event from EventHandler "
 	             << this->get_eventhandler()->id()
 	             << " for time t=" << this->get_time());

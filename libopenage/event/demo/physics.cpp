@@ -46,7 +46,7 @@ public:
 	void invoke(EventLoop &,
 	            const std::shared_ptr<EventEntity> &target,
 	            const std::shared_ptr<State> &gstate,
-	            const curve::time_t &now,
+	            const time::time_t &now,
 	            const EventHandler::param_map &/*param*/) override {
 
 		auto positioncurve = std::dynamic_pointer_cast<curve::Continuous<util::Vector2d>>(target);
@@ -64,14 +64,14 @@ public:
 			return;
 		}
 
-		curve::time_t ty = 0;
+		time::time_t ty = 0;
 		if (speed[1] > 0) {
-			ty = curve::time_t::from_double(
+			ty = time::time_t::from_double(
 				(state->display_boundary[1] - pos[1]) / speed[1]
 			);
 		}
 		else if (speed[1] < 0) {
-			ty = curve::time_t::from_double(
+			ty = time::time_t::from_double(
 				pos[1] / -speed[1]
 			);
 		}
@@ -79,9 +79,9 @@ public:
 		state->ball->position->set_last(now + ty, pos + (speed * ty.to_double()));
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &target,
+	time::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &target,
 	                                  const std::shared_ptr<State> &gstate,
-	                                  const curve::time_t &now) override {
+	                                  const time::time_t &now) override {
 
 		auto positioncurve = std::dynamic_pointer_cast<curve::Continuous<util::Vector2d>>(target);
 		auto state = std::dynamic_pointer_cast<PongState>(gstate);
@@ -90,15 +90,15 @@ public:
 		auto pos = positioncurve->get(now);
 
 		if (speed[1] == 0) {
-			return std::numeric_limits<curve::time_t>::max();
+			return std::numeric_limits<time::time_t>::max();
 		}
 
-		curve::time_t ty = 0;
+		time::time_t ty = 0;
 		if (speed[1] > 0) {
-			ty = curve::time_t::from_double((state->display_boundary[1] - pos[1]) / speed[1]);
+			ty = time::time_t::from_double((state->display_boundary[1] - pos[1]) / speed[1]);
 		}
 		else if (speed[1] < 0) {
-			ty = curve::time_t::from_double(pos[1] / -speed[1]);
+			ty = time::time_t::from_double(pos[1] / -speed[1]);
 		}
 
 #if WITH_NCURSES
@@ -138,7 +138,7 @@ public:
 	void invoke(EventLoop &mgr,
 	            const std::shared_ptr<EventEntity> &/*target*/,
 	            const std::shared_ptr<State> &gstate,
-	            const curve::time_t &now,
+	            const time::time_t &now,
 	            const EventHandler::param_map &/*param*/) override {
 
 		auto state = std::dynamic_pointer_cast<PongState>(gstate);
@@ -193,12 +193,12 @@ public:
 			state->ball->position->set_last(now, pos);
 		}
 
-		curve::time_t ty = 0;
+		time::time_t ty = 0;
 		if (speed[0] > 0) {
-			ty = curve::time_t::from_double((state->display_boundary[0] - pos[0]) / speed[0]);
+			ty = time::time_t::from_double((state->display_boundary[0] - pos[0]) / speed[0]);
 		}
 		else if (speed[0] < 0) {
-			ty = curve::time_t::from_double(pos[0] / -speed[0]);
+			ty = time::time_t::from_double(pos[0] / -speed[0]);
 		}
 
 		auto hit_pos = pos + speed * ty.to_double();
@@ -212,9 +212,9 @@ public:
 		state->ball->position->set_last(now + ty, hit_pos);
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &target,
+	time::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &target,
 	                                  const std::shared_ptr<State> &gstate,
-	                                  const curve::time_t &now) override {
+	                                  const time::time_t &now) override {
 
 		auto positioncurve = std::dynamic_pointer_cast<curve::Continuous<util::Vector2d>>(target);
 		auto state = std::dynamic_pointer_cast<PongState>(gstate);
@@ -223,15 +223,15 @@ public:
 		auto pos = positioncurve->get(now);
 
 		if (speed[0] == 0)
-			return std::numeric_limits<curve::time_t>::max();
+			return std::numeric_limits<time::time_t>::max();
 
-		curve::time_t ty = 0;
+		time::time_t ty = 0;
 
 		if (speed[0] > 0) {
-			ty = curve::time_t::from_double((state->display_boundary[0] - pos[0]) / speed[0]);
+			ty = time::time_t::from_double((state->display_boundary[0] - pos[0]) / speed[0]);
 		}
 		else if (speed[0] < 0) {
-			ty = curve::time_t::from_double(pos[0] / -speed[0]);
+			ty = time::time_t::from_double(pos[0] / -speed[0]);
 		}
 
 #if WITH_NCURSES
@@ -275,7 +275,7 @@ public:
 	void invoke(EventLoop &/*mgr*/,
 	            const std::shared_ptr<EventEntity> &/*target*/,
 	            const std::shared_ptr<State> &gstate,
-	            const curve::time_t &now,
+	            const time::time_t &now,
 	            const EventHandler::param_map &/*param*/) override {
 
 		auto state = std::dynamic_pointer_cast<PongState>(gstate);
@@ -290,7 +290,7 @@ public:
 		}
 
 		// move ball to the center
-		state->ball->position->set_last(now - curve::time_t::from_double(0.1),
+		state->ball->position->set_last(now - time::time_t::from_double(0.1),
 		                                state->ball->position->get(now));
 		state->ball->position->set_last(now, state->display_boundary * 0.5);
 
@@ -328,32 +328,32 @@ public:
 		}
 #endif
 
-		curve::time_t ty = 0;
+		time::time_t ty = 0;
 
 		// calculate the wall-hit-times
 		if (init_speed[1] > 0) {
-			ty = curve::time_t::from_double((state->display_boundary[1] - pos[1]) / init_speed[1]);
+			ty = time::time_t::from_double((state->display_boundary[1] - pos[1]) / init_speed[1]);
 		}
 		else if (init_speed[1] < 0) {
-			ty = curve::time_t::from_double(pos[1] / -init_speed[1]);
+			ty = time::time_t::from_double(pos[1] / -init_speed[1]);
 		}
 		else {
 			// currently never happens, but this would be a non-vertically-moving ball
 			// fallback to calculating panel-hit-times
 			if (init_speed[0] > 0) {
-				ty = curve::time_t::from_double((state->display_boundary[0] - pos[0]) / init_speed[0]);
+				ty = time::time_t::from_double((state->display_boundary[0] - pos[0]) / init_speed[0]);
 			}
 			else {
-				ty = curve::time_t::from_double(pos[0] / -init_speed[0]);
+				ty = time::time_t::from_double(pos[0] / -init_speed[0]);
 			}
 		}
 
 		state->ball->position->set_last(now + ty, pos + init_speed * ty.to_double());
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &/*target*/,
+	time::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &/*target*/,
 	                                  const std::shared_ptr<State> &/*state*/,
-	                                  const curve::time_t &old_time) override {
+	                                  const time::time_t &old_time) override {
 		return old_time;
 	}
 };
@@ -361,7 +361,7 @@ public:
 
 void Physics::init(const std::shared_ptr<PongState> &gstate,
                    const std::shared_ptr<EventLoop> &loop,
-                   const curve::time_t &now) {
+                   const time::time_t &now) {
 
 	auto state = std::dynamic_pointer_cast<PongState>(gstate);
 
@@ -384,10 +384,10 @@ void Physics::process_input(const std::shared_ptr<PongState> &state,
                             const std::shared_ptr<PongPlayer> &player,
                             const std::vector<PongEvent> &events,
                             const std::shared_ptr<EventLoop> &mgr,
-                            const curve::time_t &now) {
+                            const time::time_t &now) {
 
 	// seconds into the future
-	constexpr static auto predicted_movement_time = curve::time_t::from_double(5.0);
+	constexpr static auto predicted_movement_time = time::time_t::from_double(5.0);
 
 	// lines per second
 	constexpr static double movement_speed = 8.0;
@@ -432,7 +432,7 @@ void Physics::process_input(const std::shared_ptr<PongState> &state,
 					break;
 				}
 
-				curve::time_t move_stop_guess = now + predicted_movement_time;
+				time::time_t move_stop_guess = now + predicted_movement_time;
 
 				// change the position by integrating the speed curve.
 				// TODO: add native integral to curves.
@@ -488,7 +488,7 @@ void Physics::process_input(const std::shared_ptr<PongState> &state,
 
 void Physics::reset(const std::shared_ptr<State> &gstate,
                     EventLoop &mgr,
-                    const curve::time_t &now) {
+                    const time::time_t &now) {
 
 	auto state = std::dynamic_pointer_cast<PongState>(gstate);
 	mgr.create_event("demo.reset", state->ball->position, state, now);

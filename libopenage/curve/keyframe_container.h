@@ -78,7 +78,7 @@ public:
 	 * Get the last element in the curve which is at or before the given time.
 	 * (i.e. elem->time <= time). Given a hint where to start the search.
 	 */
-	iterator last(const time_t &time,
+	iterator last(const time::time_t &time,
 	              const iterator &hint) const;
 
 	/**
@@ -89,7 +89,7 @@ public:
 	 * no chance for you to have a hint (or the container is known to be nearly
 	 * empty)
 	 */
-	iterator last(const time_t &time) const {
+	iterator last(const time::time_t &time) const {
 		return this->last(time, std::end(this->container));
 	}
 
@@ -97,14 +97,14 @@ public:
 	 * Get the last element in the curve which is before the given time.
 	 * (i.e. elem->time < time). Given a hint where to start the search.
 	 */
-	iterator last_before(const time_t &time,
+	iterator last_before(const time::time_t &time,
 	                     const iterator &hint) const;
 
 	/**
 	 * Get the last element with elem->time < time, without a hint where to start
 	 * searching.
 	 */
-	iterator last_before(const time_t &time) const {
+	iterator last_before(const time::time_t &time) const {
 		return this->last_before(time, std::end(this->container));
 	}
 
@@ -134,7 +134,7 @@ public:
 	 * discouraged, use it only, if your really do not have the possibility to
 	 * get a hint.
 	 */
-	iterator insert_before(const time_t &time, const T &value) {
+	iterator insert_before(const time::time_t &time, const T &value) {
 		return this->insert_before(keyframe_t(time, value), std::end(this->container));
 	}
 
@@ -143,7 +143,7 @@ public:
 	 * If there is a value with identical time, this will insert the new value
 	 * before the old one.
 	 */
-	iterator insert_before(const time_t &time, const T &value, const iterator &hint) {
+	iterator insert_before(const time::time_t &time, const T &value, const iterator &hint) {
 		return this->insert_before(keyframe_t(time, value), hint);
 	}
 
@@ -164,7 +164,7 @@ public:
 	 * from the end of the data. The use of this function is discouraged, use it
 	 * only, if your really do not have the possibility to get a hint.
 	 */
-	iterator insert_overwrite(const time_t &time, const T &value) {
+	iterator insert_overwrite(const time::time_t &time, const T &value) {
 		return this->insert_overwrite(keyframe_t(time, value),
 		                              std::end(this->container));
 	}
@@ -176,7 +176,7 @@ public:
 	 * Provide a insertion hint to abbreviate the search for the
 	 * insertion point.
 	 */
-	iterator insert_overwrite(const time_t &time,
+	iterator insert_overwrite(const time::time_t &time,
 	                          const T &value,
 	                          const iterator &hint,
 	                          bool overwrite_all = false) {
@@ -196,7 +196,7 @@ public:
 	 * time from the end of the data. The use of this function is discouraged,
 	 * use it only, if your really do not have the possibility to get a hint.
 	 */
-	iterator insert_after(const time_t &time, const T &value) {
+	iterator insert_after(const time::time_t &time, const T &value) {
 		return this->insert_after(keyframe_t(time, value),
 		                          std::end(this->container));
 	}
@@ -205,7 +205,7 @@ public:
 	 * Create and insert a new element, which is added after a previous element with
 	 * identical time. Provide a insertion hint to abbreviate the search for the insertion point.
 	 */
-	iterator insert_after(const time_t &time, const T &value, const iterator &hint) {
+	iterator insert_after(const time::time_t &time, const T &value, const iterator &hint) {
 		return this->insert_after(keyframe_t(time, value), hint);
 	}
 
@@ -225,7 +225,7 @@ public:
 	 * Variant without hint, starts the search at the end of the container.
 	 * Returns the iterator after the deleted elements.
 	 */
-	iterator erase(const time_t &time) {
+	iterator erase(const time::time_t &time) {
 		return this->erase(time, std::end(this->container));
 	}
 
@@ -238,7 +238,7 @@ public:
 	 * Or, if no elements with this time exist,
 	 * the iterator to the first element after the requested time is returned
 	 */
-	iterator erase(const time_t &time,
+	iterator erase(const time::time_t &time,
 	               const iterator &hint) {
 		return this->erase_group(time, this->last(time, hint));
 	}
@@ -280,7 +280,7 @@ public:
      *              the keyframes of \p other.
      */
 	iterator sync_after(const KeyframeContainer<T> &other,
-	                    const time_t &start = std::numeric_limits<time_t>::min());
+	                    const time::time_t &start = std::numeric_limits<time::time_t>::min());
 
 	/**
      * Copy keyframes from another container (with a different element type) to this container.
@@ -297,7 +297,7 @@ public:
 	template <typename O>
 	iterator sync_after(const KeyframeContainer<O> &other,
 	                    const std::function<T(const O &)> &converter,
-	                    const time_t &start = std::numeric_limits<time_t>::min());
+	                    const time::time_t &start = std::numeric_limits<time::time_t>::min());
 
 	/**
 	 * Debugging method to be used from gdb to understand bugs better.
@@ -313,7 +313,7 @@ private:
 	 * Erase elements with this time.
 	 * The iterator has to point to the last element of the same-time group.
 	 */
-	iterator erase_group(const time_t &time,
+	iterator erase_group(const time::time_t &time,
 	                     const iterator &last_elem);
 
 	/**
@@ -327,7 +327,7 @@ template <typename T>
 KeyframeContainer<T>::KeyframeContainer() {
 	// Create a default element at -Inf, that can always be dereferenced - so
 	// there will by definition never be a element that cannot be dereferenced
-	this->container.push_back(keyframe_t(std::numeric_limits<time_t>::min(), T()));
+	this->container.push_back(keyframe_t(std::numeric_limits<time::time_t>::min(), T()));
 }
 
 
@@ -335,7 +335,7 @@ template <typename T>
 KeyframeContainer<T>::KeyframeContainer(const T &defaultval) {
 	// Create a default element at -Inf, that can always be dereferenced - so
 	// there will by definition never be a element that cannot be dereferenced
-	this->container.push_back(keyframe_t(std::numeric_limits<time_t>::min(), defaultval));
+	this->container.push_back(keyframe_t(std::numeric_limits<time::time_t>::min(), defaultval));
 }
 
 
@@ -354,7 +354,7 @@ size_t KeyframeContainer<T>::size() const {
  * that determines the curve value for a searched time.
  */
 template <typename T>
-typename KeyframeContainer<T>::iterator KeyframeContainer<T>::last(const time_t &time,
+typename KeyframeContainer<T>::iterator KeyframeContainer<T>::last(const time::time_t &time,
                                                                    const iterator &hint) const {
 	iterator e = hint;
 	auto end = std::end(this->container);
@@ -388,7 +388,7 @@ typename KeyframeContainer<T>::iterator KeyframeContainer<T>::last(const time_t 
  * first element that matches the search time.
  */
 template <typename T>
-typename KeyframeContainer<T>::iterator KeyframeContainer<T>::last_before(const time_t &time,
+typename KeyframeContainer<T>::iterator KeyframeContainer<T>::last_before(const time::time_t &time,
                                                                           const iterator &hint) const {
 	iterator e = hint;
 	auto end = std::end(this->container);
@@ -512,7 +512,7 @@ KeyframeContainer<T>::erase(KeyframeContainer<T>::iterator e) {
 template <typename T>
 typename KeyframeContainer<T>::iterator
 KeyframeContainer<T>::sync_after(const KeyframeContainer<T> &other,
-                                 const time_t &start) {
+                                 const time::time_t &start) {
 	// Delete elements after start time
 	iterator at = this->last_before(start, this->end());
 	at = this->erase_after(at);
@@ -537,7 +537,7 @@ template <typename O>
 typename KeyframeContainer<T>::iterator
 KeyframeContainer<T>::sync_after(const KeyframeContainer<O> &other,
                                  const std::function<T(const O &)> &converter,
-                                 const time_t &start) {
+                                 const time::time_t &start) {
 	// Delete elements after start time
 	iterator at = this->last_before(start, this->end());
 	at = this->erase_after(at);
@@ -560,7 +560,7 @@ KeyframeContainer<T>::sync_after(const KeyframeContainer<O> &other,
 
 template <typename T>
 typename KeyframeContainer<T>::iterator
-KeyframeContainer<T>::erase_group(const time_t &time,
+KeyframeContainer<T>::erase_group(const time::time_t &time,
                                   const iterator &last_elem) {
 	iterator at = last_elem;
 

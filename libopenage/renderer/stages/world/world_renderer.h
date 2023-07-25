@@ -10,7 +10,7 @@
 
 namespace openage {
 
-namespace event {
+namespace time {
 class Clock;
 }
 
@@ -44,7 +44,7 @@ public:
 	              const std::shared_ptr<renderer::camera::Camera> &camera,
 	              const util::Path &shaderdir,
 	              const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
-	              const std::shared_ptr<event::Clock> clock);
+	              const std::shared_ptr<time::Clock> clock);
 	~WorldRenderer() = default;
 
 	/**
@@ -122,7 +122,7 @@ private:
 	/**
 	 * Simulation clock for timing animations.
 	 */
-	std::shared_ptr<event::Clock> clock;
+	std::shared_ptr<time::Clock> clock;
 
 	/**
      * Default geometry for every world object.

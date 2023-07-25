@@ -10,10 +10,10 @@ class GameEntity;
 
 namespace activity {
 
-using condition_func_t = std::function<node_id(const curve::time_t &,
+using condition_func_t = std::function<node_id(const time::time_t &,
                                                const std::shared_ptr<gamestate::GameEntity> &)>;
 
-static const condition_func_t no_condition = [](const curve::time_t &,
+static const condition_func_t no_condition = [](const time::time_t &,
                                                 const std::shared_ptr<gamestate::GameEntity> &) -> node_id {
 	throw Error{MSG(err) << "No condition function set."};
 };

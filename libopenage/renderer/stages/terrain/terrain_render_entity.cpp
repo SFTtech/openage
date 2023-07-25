@@ -18,7 +18,7 @@ TerrainRenderEntity::TerrainRenderEntity() :
 void TerrainRenderEntity::update(util::Vector2s size,
                                  std::vector<float> height_map,
                                  const std::string terrain_path,
-                                 const curve::time_t time) {
+                                 const time::time_t time) {
 	std::unique_lock lock{this->mutex};
 
 	// increase by 1 in every dimension because height_map

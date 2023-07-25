@@ -20,14 +20,14 @@ namespace openage::curve {
 template <class T>
 class Queue : public event::EventEntity {
 	struct queue_wrapper {
-		time_t _time;
+		time::time_t _time;
 		T value;
 
-		queue_wrapper(const time_t &time, const T &value) :
+		queue_wrapper(const time::time_t &time, const T &value) :
 			_time{time},
 			value{value} {}
 
-		time_t time() const {
+		time::time_t time() const {
 			return _time;
 		}
 	};
@@ -56,7 +56,7 @@ public:
 	 * @param time The time to get the element at.
 	 * @return Queue element.
 	 */
-	const T &front(const time_t &time) const;
+	const T &front(const time::time_t &time) const;
 
 	/**
 	 * Get the first element in the queue at the given time.
@@ -64,14 +64,14 @@ public:
 	 * @param time The time to get the element at.
 	 * @param value Queue element.
 	 */
-	const T &pop_front(const time_t &time);
+	const T &pop_front(const time::time_t &time);
 
 	/**
 	 * Check if the queue is empty at a given time.
 	 *
 	 * @return true if the queue is empty, false otherwise.
 	 */
-	bool empty(const time_t &time) const;
+	bool empty(const time::time_t &time) const;
 
 	// Modifying access
 
@@ -82,7 +82,7 @@ public:
 	 * @return Iterator to the first element.
 	 */
 	QueueFilterIterator<T, Queue<T>> begin(
-		const time_t &t = -std::numeric_limits<time_t>::max()) const;
+		const time::time_t &t = -std::numeric_limits<time::time_t>::max()) const;
 
 	/**
 	 * Get an iterator to the last element in the queue at the given time.
@@ -91,7 +91,7 @@ public:
 	 * @return Iterator to the last element.
 	 */
 	QueueFilterIterator<T, Queue<T>> end(
-		const time_t &t = std::numeric_limits<time_t>::max()) const;
+		const time::time_t &t = std::numeric_limits<time::time_t>::max()) const;
 
 	/**
 	 * Get an iterator to elements that are in the queue between two time frames.
@@ -101,8 +101,8 @@ public:
 	 * @return Iterator to the first element in the time frame.
 	 */
 	QueueFilterIterator<T, Queue<T>> between(
-		const time_t &begin = std::numeric_limits<time_t>::max(),
-		const time_t &end = std::numeric_limits<time_t>::max()) const;
+		const time::time_t &begin = std::numeric_limits<time::time_t>::max(),
+		const time::time_t &end = std::numeric_limits<time::time_t>::max()) const;
 
 	/**
 	 * Erase an element from the queue.
@@ -118,14 +118,14 @@ public:
 	 * @param e The element to insert.
 	 * @return Iterator to the inserted element.
 	 */
-	QueueFilterIterator<T, Queue<T>> insert(const time_t &, const T &e);
+	QueueFilterIterator<T, Queue<T>> insert(const time::time_t &, const T &e);
 
 	/**
 	 * Erase all elements that are at or after the given time.
 	 *
 	 * @param time The time to clear at.
 	 */
-	void clear(const time_t &);
+	void clear(const time::time_t &);
 
 	/**
 	 * Print the queue to stdout.
@@ -178,30 +178,30 @@ private:
 
 
 template <typename T>
-const T &Queue<T>::front(const time_t &t) const {
+const T &Queue<T>::front(const time::time_t &t) const {
 	return this->begin(t).value();
 }
 
 template <class T>
-bool Queue<T>::empty(const time_t &time) const {
+bool Queue<T>::empty(const time::time_t &time) const {
 	return this->last_front == this->begin(time).get_base();
 }
 
 template <class T>
-inline const T &Queue<T>::pop_front(const time_t &time) {
+inline const T &Queue<T>::pop_front(const time::time_t &time) {
 	this->last_front = this->begin(time).get_base();
 	return this->front(time);
 }
 
 template <typename T>
-QueueFilterIterator<T, Queue<T>> Queue<T>::begin(const time_t &t) const {
+QueueFilterIterator<T, Queue<T>> Queue<T>::begin(const time::time_t &t) const {
 	for (auto it = this->container.begin(); it != this->container.end(); ++it) {
 		if (it->time() >= t) {
 			return QueueFilterIterator<T, Queue<T>>(
 				it,
 				this,
 				t,
-				std::numeric_limits<time_t>::max());
+				std::numeric_limits<time::time_t>::max());
 		}
 	}
 
@@ -210,19 +210,19 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::begin(const time_t &t) const {
 
 
 template <typename T>
-QueueFilterIterator<T, Queue<T>> Queue<T>::end(const time_t &t) const {
+QueueFilterIterator<T, Queue<T>> Queue<T>::end(const time::time_t &t) const {
 	return QueueFilterIterator<T, Queue<T>>(
 		container.end(),
 		this,
 		t,
-		std::numeric_limits<time_t>::max());
+		std::numeric_limits<time::time_t>::max());
 }
 
 
 template <typename T>
 QueueFilterIterator<T, Queue<T>> Queue<T>::between(
-	const time_t &begin,
-	const time_t &end) const {
+	const time::time_t &begin,
+	const time::time_t &end) const {
 	auto it = QueueFilterIterator<T, Queue<T>>(
 		container.begin(),
 		this,
@@ -244,7 +244,7 @@ void Queue<T>::erase(const CurveIterator<T, Queue<T>> &it) {
 
 template <typename T>
 QueueFilterIterator<T, Queue<T>> Queue<T>::insert(
-	const time_t &time,
+	const time::time_t &time,
 	const T &e) {
 	const_iterator insertion_point = this->container.end();
 	for (auto it = this->container.begin(); it != this->container.end(); ++it) {
@@ -262,7 +262,7 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::insert(
 		insertion_point,
 		this,
 		time,
-		std::numeric_limits<time_t>::max());
+		std::numeric_limits<time::time_t>::max());
 
 	if (!ct.valid()) {
 		++ct;
@@ -275,7 +275,7 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::insert(
 
 
 template <typename T>
-void Queue<T>::clear(const time_t &time) {
+void Queue<T>::clear(const time::time_t &time) {
 	for (auto it = this->container.begin();
 	     it != this->container.end() and it->time() < time;
 	     it = this->container.erase(it)) {

@@ -16,8 +16,8 @@
 
 
 namespace openage::gamestate::system {
-const curve::time_t Move::move_command(const std::shared_ptr<gamestate::GameEntity> &entity,
-                                       const curve::time_t &start_time) {
+const time::time_t Move::move_command(const std::shared_ptr<gamestate::GameEntity> &entity,
+                                       const time::time_t &start_time) {
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
 	auto command = std::dynamic_pointer_cast<component::command::MoveCommand>(
@@ -25,19 +25,19 @@ const curve::time_t Move::move_command(const std::shared_ptr<gamestate::GameEnti
 
 	if (not command) [[unlikely]] {
 		log::log(MSG(warn) << "Command is not a move command.");
-		return curve::time_t::from_int(0);
+		return time::time_t::from_int(0);
 	}
 
 	return Move::move_default(entity, command->get_target(), start_time);
 }
 
 
-const curve::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
+const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
                                        const coord::phys3 &destination,
-                                       const curve::time_t &start_time) {
+                                       const time::time_t &start_time) {
 	if (not entity->has_component(component::component_t::MOVE)) [[unlikely]] {
 		log::log(WARN << "Entity " << entity->get_id() << " has no move component.");
-		return curve::time_t::from_int(0);
+		return time::time_t::from_int(0);
 	}
 
 	auto turn_component = std::dynamic_pointer_cast<component::Turn>(

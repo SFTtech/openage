@@ -31,8 +31,8 @@ public:
 	explicit CurveIterator(const container_t *c) :
 		base{},
 		container{c},
-		from{-std::numeric_limits<time_t>::max()},
-		to{+std::numeric_limits<time_t>::max()} {}
+		from{-std::numeric_limits<time::time_t>::max()},
+		to{+std::numeric_limits<time::time_t>::max()} {}
 
 protected:
 	/**
@@ -40,8 +40,8 @@ protected:
 	 */
 	CurveIterator(const iterator_t &base,
 	              const container_t *container,
-	              const time_t &from,
-	              const time_t &to) :
+	              const time::time_t &from,
+	              const time::time_t &to) :
 		base{base},
 		container{container},
 		from{from},
@@ -105,14 +105,14 @@ public:
 	/**
 	 * Access the lower end value of the defined time frame
 	 */
-	const time_t &get_from() const {
+	const time::time_t &get_from() const {
 		return from;
 	}
 
 	/**
 	 * Access the higher end value of the defined time frame
 	 */
-	const time_t &get_to() const {
+	const time::time_t &get_to() const {
 		return to;
 	}
 
@@ -124,10 +124,10 @@ protected:
 	const container_t *container;
 
 	/// The time, from where this iterator started to iterate.
-	time_t from;
+	time::time_t from;
 
 	/// The time, to where this iterator will iterate.
-	time_t to;
+	time::time_t to;
 };
 
 

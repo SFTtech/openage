@@ -30,12 +30,12 @@ public:
 	void invoke(openage::event::EventLoop &loop,
 	            const std::shared_ptr<openage::event::EventEntity> &target,
 	            const std::shared_ptr<openage::event::State> &state,
-	            const curve::time_t &time,
+	            const time::time_t &time,
 	            const param_map &params) override;
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> &target,
+	time::time_t predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> &target,
 	                                  const std::shared_ptr<openage::event::State> &state,
-	                                  const curve::time_t &at) override;
+	                                  const time::time_t &at) override;
 };
 } // namespace gamestate::event
 } // namespace openage

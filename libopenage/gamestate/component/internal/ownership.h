@@ -20,7 +20,7 @@ public:
 	 */
 	Ownership(const std::shared_ptr<openage::event::EventLoop> &loop,
 	          const ownership_id_t owner_id,
-	          const curve::time_t &creation_time);
+	          const time::time_t &creation_time);
 
 	/**
 	 * Creates an Ownership component.
@@ -37,7 +37,7 @@ public:
 	 * @param time Time at which the owner ID is set.
 	 * @param owner_id New owner ID.
 	 */
-	void set_owner(const curve::time_t &time, const ownership_id_t owner_id);
+	void set_owner(const time::time_t &time, const ownership_id_t owner_id);
 
 	/**
      * Get the owner IDs over time.

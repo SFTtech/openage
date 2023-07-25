@@ -151,7 +151,7 @@ void Gui::clear() {
 
 
 void Gui::get_display_size(const std::shared_ptr<PongState> &state,
-                           const curve::time_t & /*now*/) {
+                           const time::time_t & /*now*/) {
 	// record the screen dimensions in the game state
 
 	// TODO: make the display_boundary a curve as well.
@@ -160,7 +160,7 @@ void Gui::get_display_size(const std::shared_ptr<PongState> &state,
 }
 
 
-void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now) {
+void Gui::draw(const std::shared_ptr<PongState> &state, const time::time_t &now) {
 	attron(COLOR_PAIR(COLOR_DEBUG));
 
 	// print the score
@@ -182,7 +182,7 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 
 	// ball position predictions, 10s into the future
 	for (int i = 0; i < 10; i++) {
-		auto i_as_ctt = curve::time_t::from_int(i);
+		auto i_as_ctt = time::time_t::from_int(i);
 		mvprintw((5 + i), 1, "BALL in %03f: %f | %f; SPEED: %f | %f | PLpos: %f, PRpos: %f", i_as_ctt.to_double(), state->ball->position->get(now + i_as_ctt)[0], state->ball->position->get(now + i_as_ctt)[1], state->ball->speed->get(now + i_as_ctt)[0], state->ball->speed->get(now + i_as_ctt)[1], state->p1->position->get(now + i_as_ctt), state->p2->position->get(now + i_as_ctt));
 	}
 
@@ -215,7 +215,7 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 	// ball position prediction 10s into the future
 	attron(COLOR_PAIR(COLOR_1));
 	for (int i = 1; i < 100; ++i) {
-		auto i_as_ctt = curve::time_t::from_double(i / 10.0);
+		auto i_as_ctt = time::time_t::from_double(i / 10.0);
 		draw_ball(state->ball->position->get(now + i_as_ctt), "x");
 	}
 

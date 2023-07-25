@@ -9,7 +9,7 @@
 namespace openage::gamestate::component {
 Position::Position(const std::shared_ptr<openage::event::EventLoop> &loop,
                    const coord::phys3 &initial_pos,
-                   const curve::time_t &creation_time) :
+                   const time::time_t &creation_time) :
 	position(loop, 0, "", nullptr, WORLD_ORIGIN),
 	angle(loop, 0) {
 	this->position.set_insert(creation_time, initial_pos);
@@ -49,7 +49,7 @@ const curve::Continuous<coord::phys3> &Position::get_positions() const {
 	return this->position;
 }
 
-void Position::set_position(const curve::time_t &time, const coord::phys3 &pos) {
+void Position::set_position(const time::time_t &time, const coord::phys3 &pos) {
 	this->position.set_last(time, pos);
 }
 
@@ -57,7 +57,7 @@ const curve::Segmented<coord::phys_angle_t> &Position::get_angles() const {
 	return this->angle;
 }
 
-void Position::set_angle(const curve::time_t &time, const coord::phys_angle_t &angle) {
+void Position::set_angle(const time::time_t &time, const coord::phys_angle_t &angle) {
 	auto old_angle = this->angle.get(time);
 	this->angle.set_insert_jump(time, old_angle, angle);
 }

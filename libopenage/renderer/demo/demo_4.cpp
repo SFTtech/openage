@@ -24,7 +24,7 @@ void renderer_demo_4(const util::Path &path) {
 	auto renderer = window.make_renderer();
 
 	/* Clock for timed display */
-	auto clock = event::Clock();
+	auto clock = time::Clock();
 
 	/* Controls whether animations are use "real" time for frame timings (if true)
 	   or the actual simulation time (if false). When simulation time is used,
@@ -187,11 +187,11 @@ void renderer_demo_4(const util::Path &path) {
 
 			switch (key) {
 			case Qt::Key_Space: {
-				if (clock.get_state() == event::ClockState::RUNNING) {
+				if (clock.get_state() == time::ClockState::RUNNING) {
 					clock.pause();
 					log::log(INFO << "Stopped simulation at " << clock.get_time() << " (real = " << clock.get_real_time() << ")");
 				}
-				else if (clock.get_state() == event::ClockState::PAUSED) {
+				else if (clock.get_state() == time::ClockState::PAUSED) {
 					clock.resume();
 					log::log(INFO << "Resumed simulation at " << clock.get_time() << " (real = " << clock.get_real_time() << ")");
 				}

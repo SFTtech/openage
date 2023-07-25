@@ -1,6 +1,5 @@
 // Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
-#include "time/time.h"
 #include "curve/continuous.h"
 #include "curve/discrete.h"
 #include "curve/discrete_mod.h"
@@ -9,6 +8,7 @@
 #include "event/event_loop.h"
 #include "log/log.h"
 #include "testing/testing.h"
+#include "time/time.h"
 
 #include "util/compiler.h"
 
@@ -33,7 +33,7 @@ void curve_types() {
 		{
 			auto it = c.begin();
 			TESTEQUALS(it->value, 0);
-			TESTEQUALS(it->time, std::numeric_limits<curve::time_t>::min());
+			TESTEQUALS(it->time, std::numeric_limits<time::time_t>::min());
 			TESTEQUALS((++it)->time, 0);
 			TESTEQUALS(it->value, 0);
 			TESTEQUALS((++it)->time, 1);
@@ -136,7 +136,7 @@ void curve_types() {
 
 		{
 			auto it = c.begin();
-			TESTEQUALS(it->time, std::numeric_limits<time_t>::min());
+			TESTEQUALS(it->time, std::numeric_limits<time::time_t>::min());
 			TESTEQUALS(it->value, 0);
 
 			TESTEQUALS((++it)->time, 0);

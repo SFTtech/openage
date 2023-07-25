@@ -11,12 +11,12 @@
 
 namespace openage {
 
-namespace event {
-class TimeLoop;
-}
-
 namespace gamestate {
 class GameSimulation;
+}
+
+namespace time {
+class TimeLoop;
 }
 
 namespace input::game {
@@ -116,7 +116,7 @@ private:
  * @param camera Active game camera.
  */
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
-                    const std::shared_ptr<event::TimeLoop> &time_loop,
+                    const std::shared_ptr<time::TimeLoop> &time_loop,
                     const std::shared_ptr<openage::gamestate::GameSimulation> &simulation,
                     const std::shared_ptr<renderer::camera::Camera> &camera);
 

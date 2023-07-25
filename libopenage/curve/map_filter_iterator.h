@@ -31,8 +31,8 @@ public:
 	 */
 	MapFilterIterator(const iterator_t &base,
 	                  const container_t *container,
-	                  const time_t &from,
-	                  const time_t &to) :
+	                  const time::time_t &from,
+	                  const time::time_t &to) :
 		CurveIterator<val_t, container_t>(base, container, from, to) {}
 
 	MapFilterIterator(const MapFilterIterator &) = default;

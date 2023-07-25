@@ -25,8 +25,8 @@ public:
      *
      * @return Runtime of the change in simulation time.
      */
-	static const curve::time_t idle(const std::shared_ptr<gamestate::GameEntity> &entity,
-	                                const curve::time_t &start_time);
+	static const time::time_t idle(const std::shared_ptr<gamestate::GameEntity> &entity,
+	                                const time::time_t &start_time);
 };
 
 } // namespace system

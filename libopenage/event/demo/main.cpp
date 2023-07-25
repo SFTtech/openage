@@ -59,7 +59,7 @@ void curvepong(bool disable_gui, bool no_human) {
 
 	while (running) {
 		auto loop = std::make_shared<EventLoop>();
-		curve::time_t now = 1;
+		time::time_t now = 1;
 		Physics phys;
 
 		auto state = std::make_shared<PongState>(loop, enable_gui
@@ -163,7 +163,7 @@ void curvepong(bool disable_gui, bool no_human) {
 			// microseconds per frame
 			// 30fps = 1s/30 = 1000000us/30 per frame
 			constexpr static std::chrono::microseconds per_frame = 33333us;
-			constexpr static curve::time_t per_frame_s = std::chrono::duration_cast<dt_s_t>(per_frame).count();
+			constexpr static time::time_t per_frame_s = std::chrono::duration_cast<dt_s_t>(per_frame).count();
 
 			if (speed == timescale::NOSLEEP) {
 				// increase the simulation loop time a bit

@@ -20,14 +20,14 @@ template <typename key_t, typename val_t>
 class UnorderedMap {
 	/** Internal container to access all data and metadata */
 	struct map_element {
-		map_element(const val_t &v, const time_t &a, const time_t &d) :
+		map_element(const val_t &v, const time::time_t &a, const time::time_t &d) :
 			value(v),
 			alive(a),
 			dead(d) {}
 
 		val_t value;
-		time_t alive;
-		time_t dead;
+		time::time_t alive;
+		time::time_t dead;
 	};
 
 	/**
@@ -40,36 +40,36 @@ public:
 	using const_iterator = typename std::unordered_map<key_t, map_element>::const_iterator;
 
 	std::optional<MapFilterIterator<key_t, val_t, UnorderedMap>>
-	operator()(const time_t &, const key_t &) const;
+	operator()(const time::time_t &, const key_t &) const;
 
 	std::optional<MapFilterIterator<key_t, val_t, UnorderedMap>>
-	at(const time_t &, const key_t &) const;
+	at(const time::time_t &, const key_t &) const;
 
 	MapFilterIterator<key_t, val_t, UnorderedMap>
-	begin(const time_t &e = std::numeric_limits<time_t>::max()) const;
+	begin(const time::time_t &e = std::numeric_limits<time::time_t>::max()) const;
 
 	MapFilterIterator<key_t, val_t, UnorderedMap>
-	end(const time_t &e = std::numeric_limits<time_t>::max()) const;
+	end(const time::time_t &e = std::numeric_limits<time::time_t>::max()) const;
 
 	MapFilterIterator<key_t, val_t, UnorderedMap>
-	insert(const time_t &birth, const key_t &, const val_t &);
+	insert(const time::time_t &birth, const key_t &, const val_t &);
 
 	MapFilterIterator<key_t, val_t, UnorderedMap>
-	insert(const time_t &birth, const time_t &death, const key_t &key, const val_t &value);
+	insert(const time::time_t &birth, const time::time_t &death, const key_t &key, const val_t &value);
 
 	MapFilterIterator<key_t, val_t, UnorderedMap>
-	between(const time_t &start, const time_t &to) const;
+	between(const time::time_t &start, const time::time_t &to) const;
 
-	void birth(const time_t &, const key_t &);
-	void birth(const time_t &,
+	void birth(const time::time_t &, const key_t &);
+	void birth(const time::time_t &,
 	           const MapFilterIterator<val_t, val_t, UnorderedMap> &);
 
-	void kill(const time_t &, const key_t &);
-	void kill(const time_t &,
+	void kill(const time::time_t &, const key_t &);
+	void kill(const time::time_t &,
 	          const MapFilterIterator<val_t, val_t, UnorderedMap> &);
 
 	// remove all dead elements before that point in time
-	void clean(const time_t &);
+	void clean(const time::time_t &);
 
 	/**
 	 * gdb helper method.
@@ -83,14 +83,14 @@ public:
 
 template <typename key_t, typename val_t>
 std::optional<MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>>
-UnorderedMap<key_t, val_t>::operator()(const time_t &time,
+UnorderedMap<key_t, val_t>::operator()(const time::time_t &time,
                                        const key_t &key) const {
 	return this->at(time, key);
 }
 
 template <typename key_t, typename val_t>
 std::optional<MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>>
-UnorderedMap<key_t, val_t>::at(const time_t &time,
+UnorderedMap<key_t, val_t>::at(const time::time_t &time,
                                const key_t &key) const {
 	auto e = this->container.find(key);
 	if (e != this->container.end() and e->second.alive <= time and e->second.dead > time) {
@@ -98,7 +98,7 @@ UnorderedMap<key_t, val_t>::at(const time_t &time,
 			e,
 			this,
 			time,
-			std::numeric_limits<time_t>::max());
+			std::numeric_limits<time::time_t>::max());
 	}
 	else {
 		return {};
@@ -107,27 +107,27 @@ UnorderedMap<key_t, val_t>::at(const time_t &time,
 
 template <typename key_t, typename val_t>
 MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
-UnorderedMap<key_t, val_t>::begin(const time_t &time) const {
+UnorderedMap<key_t, val_t>::begin(const time::time_t &time) const {
 	return MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
 		this->container.begin(),
 		this,
 		time,
-		std::numeric_limits<time_t>::max());
+		std::numeric_limits<time::time_t>::max());
 }
 
 template <typename key_t, typename val_t>
 MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
-UnorderedMap<key_t, val_t>::end(const time_t &time) const {
+UnorderedMap<key_t, val_t>::end(const time::time_t &time) const {
 	return MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
 		this->container.end(),
 		this,
-		-std::numeric_limits<time_t>::max(),
+		-std::numeric_limits<time::time_t>::max(),
 		time);
 }
 
 template <typename key_t, typename val_t>
 MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
-UnorderedMap<key_t, val_t>::between(const time_t &from, const time_t &to) const {
+UnorderedMap<key_t, val_t>::between(const time::time_t &from, const time::time_t &to) const {
 	auto it = MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
 		this->container.begin(),
 		this,
@@ -142,20 +142,20 @@ UnorderedMap<key_t, val_t>::between(const time_t &from, const time_t &to) const 
 
 template <typename key_t, typename val_t>
 MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
-UnorderedMap<key_t, val_t>::insert(const time_t &alive,
+UnorderedMap<key_t, val_t>::insert(const time::time_t &alive,
                                    const key_t &key,
                                    const val_t &value) {
 	return this->insert(
 		alive,
-		std::numeric_limits<time_t>::max(),
+		std::numeric_limits<time::time_t>::max(),
 		key,
 		value);
 }
 
 template <typename key_t, typename val_t>
 MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>
-UnorderedMap<key_t, val_t>::insert(const time_t &alive,
-                                   const time_t &dead,
+UnorderedMap<key_t, val_t>::insert(const time::time_t &alive,
+                                   const time::time_t &dead,
                                    const key_t &key,
                                    const val_t &value) {
 	map_element e(value, alive, dead);
@@ -168,7 +168,7 @@ UnorderedMap<key_t, val_t>::insert(const time_t &alive,
 }
 
 template <typename key_t, typename val_t>
-void UnorderedMap<key_t, val_t>::birth(const time_t &time,
+void UnorderedMap<key_t, val_t>::birth(const time::time_t &time,
                                        const key_t &key) {
 	auto it = this->container.find(key);
 	if (it != this->container.end()) {
@@ -177,13 +177,13 @@ void UnorderedMap<key_t, val_t>::birth(const time_t &time,
 }
 
 template <typename key_t, typename val_t>
-void UnorderedMap<key_t, val_t>::birth(const time_t &time,
+void UnorderedMap<key_t, val_t>::birth(const time::time_t &time,
                                        const MapFilterIterator<val_t, val_t, UnorderedMap> &it) {
 	it->second.alive = time;
 }
 
 template <typename key_t, typename val_t>
-void UnorderedMap<key_t, val_t>::kill(const time_t &time,
+void UnorderedMap<key_t, val_t>::kill(const time::time_t &time,
                                       const key_t &key) {
 	auto it = this->container.find(key);
 	if (it != this->container.end()) {
@@ -192,13 +192,13 @@ void UnorderedMap<key_t, val_t>::kill(const time_t &time,
 }
 
 template <typename key_t, typename val_t>
-void UnorderedMap<key_t, val_t>::kill(const time_t &time,
+void UnorderedMap<key_t, val_t>::kill(const time::time_t &time,
                                       const MapFilterIterator<val_t, val_t, UnorderedMap> &it) {
 	it->second.dead = time;
 }
 
 template <typename key_t, typename val_t>
-void UnorderedMap<key_t, val_t>::clean(const time_t &) {
+void UnorderedMap<key_t, val_t>::clean(const time::time_t &) {
 	// TODO save everything to a file and be happy.
 }
 

@@ -95,7 +95,7 @@ public:
 	}
 
 private:
-	void child_changes(const curve::time_t &time) {
+	void child_changes(const time::time_t &time) {
 		this->changes(time);
 	}
 };
@@ -131,7 +131,7 @@ public:
 	}
 
 private:
-	void child_changes(const curve::time_t &time) {
+	void child_changes(const time::time_t &time) {
 		this->changes(time);
 	}
 	size_t _id;

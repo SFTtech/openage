@@ -13,10 +13,10 @@ class GameEntity;
 
 namespace activity {
 
-using task_func_t = std::function<void(const curve::time_t &,
+using task_func_t = std::function<void(const time::time_t &,
                                        const std::shared_ptr<gamestate::GameEntity> &)>;
 
-static const task_func_t no_task = [](const curve::time_t &,
+static const task_func_t no_task = [](const time::time_t &,
                                       const std::shared_ptr<gamestate::GameEntity> &) {
 	throw Error{ERR << "No task defined for this node."};
 };

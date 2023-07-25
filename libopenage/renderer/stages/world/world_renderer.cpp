@@ -21,7 +21,7 @@ WorldRenderer::WorldRenderer(const std::shared_ptr<Window> &window,
                              const std::shared_ptr<renderer::camera::Camera> &camera,
                              const util::Path &shaderdir,
                              const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
-                             const std::shared_ptr<event::Clock> clock) :
+                             const std::shared_ptr<time::Clock> clock) :
 	renderer{renderer},
 	camera{camera},
 	asset_manager{asset_manager},
