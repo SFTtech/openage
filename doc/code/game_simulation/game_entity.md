@@ -2,6 +2,19 @@
 
 ## Architecture
 
+![game entity UML]()
+
+- major components
+  - game entity class
+  - components
+  - systems
+  - manager
+
+- separation of concerns
+  - components = only data storage
+  - systems = only game logic
+  - manager/entity = handles to access data/initiate game logic
+
 ## Game Entity class
 
 - content

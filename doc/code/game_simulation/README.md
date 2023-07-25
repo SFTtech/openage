@@ -2,7 +2,8 @@
 
 - Components for simulating gameplay
 
-## Overview
+
+1. [Architecture](#architecture)
 
 
 

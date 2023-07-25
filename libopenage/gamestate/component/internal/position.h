@@ -78,7 +78,9 @@ private:
      * Angle the entity is facing over time.
      *
      * Represents degrees in the range [0, 360). At angle 0, the entity is facing
-     * towards the camera.
+     * towards the camera (direction vector {x, y} = {-1, 1}).
+     *
+     * Rotation is clockwise, so at 90 degrees the entity is facing left.
      */
 	curve::Segmented<coord::phys_angle_t> angle;
 };
