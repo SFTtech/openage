@@ -2,6 +2,10 @@
 
 #include "sound.h"
 
+#include <deque>
+
+#include <nyan/nyan.h>
+
 #include "gamestate/api/util.h"
 
 

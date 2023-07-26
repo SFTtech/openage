@@ -2,13 +2,21 @@
 
 #include "terrain_model.h"
 
-#include "renderer/camera/camera.h"
+#include <array>
+#include <cstdint>
+#include <cstring>
+#include <utility>
+
+#include <eigen3/Eigen/Dense>
+
+#include "coord/scene.h"
 #include "renderer/resources/assets/asset_manager.h"
-#include "renderer/resources/assets/texture_manager.h"
-#include "renderer/resources/terrain/terrain_info.h"
+#include "renderer/resources/mesh_data.h"
 #include "renderer/stages/terrain/terrain_mesh.h"
 #include "renderer/stages/terrain/terrain_render_entity.h"
-#include "renderer/uniform_input.h"
+#include "util/fixed_point.h"
+#include "util/vector.h"
+
 
 namespace openage::renderer::terrain {
 

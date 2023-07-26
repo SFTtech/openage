@@ -1,8 +1,12 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "backtrace.h"
+#include <functional>
+#include <vector>
+
+#include "error/backtrace.h"
+
 
 namespace openage {
 namespace error {
@@ -43,9 +47,10 @@ public:
 	std::vector<void *> stack_addrs;
 
 	// Looks up symbol names for the program counter values.
-	void get_symbols(std::function<void (const backtrace_symbol *)> cb, bool reversed) const override;
+	void get_symbols(std::function<void(const backtrace_symbol *)> cb, bool reversed) const override;
 
 	void trim_to_current_stack_frame() override;
 };
 
-}} // openage::error
+} // namespace error
+} // namespace openage

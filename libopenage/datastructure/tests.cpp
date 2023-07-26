@@ -1,14 +1,18 @@
-// Copyright 2014-2020 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #include "tests.h"
 
+#include <algorithm>
+#include <cxxabi.h>
+#include <memory>
+#include <mutex>
 #include <utility>
 
-#include "../testing/testing.h"
+#include "testing/testing.h"
 
-#include "constexpr_map.h"
-#include "pairing_heap.h"
-#include "concurrent_queue.h"
+#include "datastructure/concurrent_queue.h"
+#include "datastructure/constexpr_map.h"
+#include "datastructure/pairing_heap.h"
 
 
 namespace openage::datastructure::tests {
@@ -155,33 +159,41 @@ void constexpr_map() {
 	static_assert(create_const_map<int, int>(std::make_pair(0, 42)).size() == 1,
 	              "wrong size");
 	static_assert(create_const_map<int, int>(std::make_pair(0, 42),
-	                                         std::make_pair(13, 37)).size() == 2,
+	                                         std::make_pair(13, 37))
+	                      .size()
+	                  == 2,
 	              "wrong size");
 
 	static_assert(not create_const_map<int, int>().contains(9001),
 	              "empty map doesn't contain anything");
 	static_assert(create_const_map<int, int>(std::make_pair(42, 0),
-	                                         std::make_pair(13, 37)).contains(42),
+	                                         std::make_pair(13, 37))
+	                  .contains(42),
 	              "contained element missing");
 	static_assert(create_const_map<int, int>(std::make_pair(42, 0),
-	                                         std::make_pair(13, 37)).contains(13),
+	                                         std::make_pair(13, 37))
+	                  .contains(13),
 	              "contained element missing");
 	static_assert(not create_const_map<int, int>(std::make_pair(42, 0),
-	                                             std::make_pair(13, 37)).contains(9001),
+	                                             std::make_pair(13, 37))
+	                      .contains(9001),
 	              "uncontained element seems to be contained.");
 
 	static_assert(create_const_map<int, int>(std::make_pair(42, 9001),
-	                                         std::make_pair(13, 37)).get(42) == 9001,
+	                                         std::make_pair(13, 37))
+	                      .get(42)
+	                  == 9001,
 	              "fetched wrong value");
 	static_assert(create_const_map<int, int>(std::make_pair(42, 9001),
-	                                         std::make_pair(13, 37)).get(13) == 37,
+	                                         std::make_pair(13, 37))
+	                      .get(13)
+	                  == 37,
 	              "fetched wrong value");
 
-	constexpr ConstMap cmap {
+	constexpr ConstMap cmap{
 		std::pair(0, 0),
 		std::pair(13, 37),
-		std::pair(42, 9001)
-	};
+		std::pair(42, 9001)};
 
 	cmap.contains(0) or TESTFAIL;
 	not cmap.contains(18) or TESTFAIL;
@@ -194,7 +206,7 @@ void constexpr_map() {
 /**
  * A simple class that can be move-constructed but not copy-constructed
  */
-class MoveOnly{
+class MoveOnly {
 private:
 	int data;
 
@@ -205,9 +217,11 @@ private:
 	}
 
 public:
-	MoveOnly(int data): data(data) {}
+	MoveOnly(int data) :
+		data(data) {}
 	MoveOnly(const MoveOnly &) = delete;
-	MoveOnly(MoveOnly&& other): data(other.release()) {}
+	MoveOnly(MoveOnly &&other) :
+		data(other.release()) {}
 	~MoveOnly() {}
 
 	int get() const {
@@ -218,13 +232,16 @@ public:
 /**
  * A simple class that can be copy-constructed but not move-constructed
  */
-class CopyOnly{
+class CopyOnly {
 private:
 	int data;
+
 public:
-	CopyOnly(int data): data(data) {}
-	CopyOnly(const CopyOnly & other): data(other.get()) {}
-	CopyOnly(CopyOnly&&) = delete;
+	CopyOnly(int data) :
+		data(data) {}
+	CopyOnly(const CopyOnly &other) :
+		data(other.get()) {}
+	CopyOnly(CopyOnly &&) = delete;
 	~CopyOnly() {}
 
 	int get() const {
@@ -235,7 +252,7 @@ public:
 /**
  * A simple class that can be both copy-constructed and move-constructed
  */
-class CopyMove{
+class CopyMove {
 private:
 	int data;
 
@@ -254,16 +271,19 @@ private:
 	}
 
 public:
-	CopyMove(int data): data(data) {
+	CopyMove(int data) :
+		data(data) {
 		atomic_inc();
 	}
 
-	CopyMove(const CopyMove & other): data(other.get()) {
+	CopyMove(const CopyMove &other) :
+		data(other.get()) {
 		atomic_inc();
 	}
 
 	// Move constructor does not increase global counter
-	CopyMove(CopyMove&& other): data(other.release()) {}
+	CopyMove(CopyMove &&other) :
+		data(other.release()) {}
 
 	~CopyMove() {}
 
@@ -333,4 +353,4 @@ void concurrent_queue() {
 	concurrent_queue_copy_move_elements_compilation();
 }
 
-} // openage::datastructure::tests
+} // namespace openage::datastructure::tests

@@ -1,11 +1,6 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #include "eventhandler.h"
-
-#include "event.h"
-#include "evententity.h"
-
-#include "../log/log.h"
 
 namespace openage::event {
 
@@ -20,29 +15,24 @@ const std::string &EventHandler::id() {
 }
 
 
-DependencyEventHandler::DependencyEventHandler(const std::string &name)
-	:
+DependencyEventHandler::DependencyEventHandler(const std::string &name) :
 	EventHandler(name, EventHandler::trigger_type::DEPENDENCY) {}
 
 
-DependencyImmediatelyEventHandler::DependencyImmediatelyEventHandler(const std::string &name)
-	:
+DependencyImmediatelyEventHandler::DependencyImmediatelyEventHandler(const std::string &name) :
 	EventHandler(name, EventHandler::trigger_type::DEPENDENCY_IMMEDIATELY) {}
 
 
-TriggerEventHandler::TriggerEventHandler(const std::string &name)
-	:
+TriggerEventHandler::TriggerEventHandler(const std::string &name) :
 	EventHandler(name, EventHandler::trigger_type::TRIGGER) {}
 
 
-RepeatEventHandler::RepeatEventHandler(const std::string &name)
-	:
+RepeatEventHandler::RepeatEventHandler(const std::string &name) :
 	EventHandler(name, EventHandler::trigger_type::REPEAT) {}
 
 
-OnceEventHandler::OnceEventHandler(const std::string &name)
-	:
+OnceEventHandler::OnceEventHandler(const std::string &name) :
 	EventHandler(name, EventHandler::trigger_type::ONCE) {}
 
 
-} // openage::event
+} // namespace openage::event

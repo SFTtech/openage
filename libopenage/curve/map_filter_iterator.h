@@ -2,9 +2,6 @@
 
 #pragma once
 
-#include <iterator>
-#include <limits>
-
 #include "curve/iterator.h"
 #include "time/time.h"
 

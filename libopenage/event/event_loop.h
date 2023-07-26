@@ -2,16 +2,15 @@
 
 #pragma once
 
-#include <functional>
-#include <list>
 #include <memory>
 #include <mutex>
+#include <string>
 #include <unordered_map>
 
-#include "event.h"
-#include "eventqueue.h"
-#include "log/log.h"
+#include "event/eventhandler.h"
+#include "event/eventqueue.h"
 #include "time/time.h"
+
 
 namespace openage::event {
 

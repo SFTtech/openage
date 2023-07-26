@@ -2,7 +2,16 @@
 
 #pragma once
 
+#include <optional>
+#include <sstream>
+#include <string>
+#include <type_traits>
+#include <utility>
+
+#include "curve/base_curve.h"
 #include "curve/discrete.h"
+#include "time/time.h"
+#include "util/fixed_point.h"
 
 
 namespace openage::curve {

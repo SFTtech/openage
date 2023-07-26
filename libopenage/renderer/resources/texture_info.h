@@ -2,11 +2,12 @@
 
 #pragma once
 
+#include <cstddef>
 #include <cstdint>
 #include <optional>
+#include <tuple>
+#include <utility>
 #include <vector>
-
-#include <eigen3/Eigen/Dense>
 
 #include "datastructure/constexpr_map.h"
 #include "renderer/resources/texture_subinfo.h"

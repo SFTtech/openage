@@ -2,7 +2,8 @@
 
 #pragma once
 
-#include "util/path.h"
+#include <memory>
+
 
 namespace openage {
 
@@ -11,7 +12,6 @@ class RenderFactory;
 }
 
 namespace gamestate {
-class GameEntity;
 class GameState;
 
 /**

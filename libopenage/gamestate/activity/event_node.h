@@ -2,7 +2,16 @@
 
 #pragma once
 
+#include <functional>
+#include <memory>
+#include <vector>
+
+#include "error/error.h"
+#include "log/message.h"
+
 #include "gamestate/activity/node.h"
+#include "gamestate/activity/types.h"
+#include "time/time.h"
 
 
 namespace openage {

@@ -2,16 +2,20 @@
 
 #pragma once
 
-#include <eigen3/Eigen/Dense>
+#include <cstdint>
+#include <list>
 #include <shared_mutex>
+#include <string>
+
+#include <eigen3/Eigen/Dense>
 
 #include "coord/phys.h"
 #include "coord/scene.h"
 #include "curve/continuous.h"
-#include "time/time.h"
 #include "curve/discrete.h"
 #include "curve/segmented.h"
-#include "util/path.h"
+#include "time/time.h"
+
 
 namespace openage::renderer::world {
 

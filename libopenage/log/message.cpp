@@ -1,14 +1,19 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "message.h"
 
+#include <iomanip>
 #include <mutex>
+#include <ostream>
 #include <unordered_set>
+#include <utility>
 
-#include "../util/timing.h"
-#include "../util/compiler.h"
-#include "../util/thread_id.h"
-#include "../util/strings.h"
+#include "log/level.h"
+#include "util/enum.h"
+#include "util/stringformatter.h"
+#include "util/thread_id.h"
+#include "util/timing.h"
+
 
 namespace openage {
 namespace log {
@@ -35,20 +40,18 @@ void message::init_with_metadata_copy(const std::string &filename, const std::st
 MessageBuilder::MessageBuilder(const char *filename,
                                unsigned lineno,
                                const char *functionname,
-                               level lvl)
-	:
+                               level lvl) :
 	StringFormatter<MessageBuilder>{msg.text} {
+	this->msg.filename = filename;
+	this->msg.lineno = lineno;
+	this->msg.functionname = functionname;
+	this->msg.lvl = lvl;
 
-		this->msg.filename = filename;
-		this->msg.lineno = lineno;
-		this->msg.functionname = functionname;
-		this->msg.lvl = lvl;
-
-		this->msg.init();
-	}
+	this->msg.init();
+}
 
 
-std::ostream &operator <<(std::ostream &os, const message &msg) {
+std::ostream &operator<<(std::ostream &os, const message &msg) {
 	os << "\x1b[" << msg.lvl->colorcode << "m" << std::setw(4) << msg.lvl->name << "\x1b[m ";
 	os << msg.filename << ":" << msg.lineno << " ";
 	os << "(" << msg.functionname;
@@ -59,4 +62,5 @@ std::ostream &operator <<(std::ostream &os, const message &msg) {
 }
 
 
-}} // namespace openage::log
+} // namespace log
+} // namespace openage

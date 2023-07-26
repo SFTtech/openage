@@ -2,19 +2,26 @@
 
 #include "activity.h"
 
-#include "log/log.h"
+#include <functional>
+#include <string>
+#include <vector>
 
-#include "gamestate/activity/activity.h"
+#include "error/error.h"
+#include "log/message.h"
+
 #include "gamestate/activity/event_node.h"
+#include "gamestate/activity/node.h"
 #include "gamestate/activity/start_node.h"
 #include "gamestate/activity/task_node.h"
 #include "gamestate/activity/task_system_node.h"
+#include "gamestate/activity/types.h"
 #include "gamestate/activity/xor_node.h"
 #include "gamestate/component/internal/activity.h"
+#include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
-
 #include "gamestate/system/idle.h"
 #include "gamestate/system/move.h"
+#include "util/fixed_point.h"
 
 
 namespace openage::gamestate::system {
@@ -101,8 +108,8 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 }
 
 const time::time_t Activity::handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &entity,
-                                               const time::time_t &start_time,
-                                               system_id_t system_id) {
+                                              const time::time_t &start_time,
+                                              system_id_t system_id) {
 	switch (system_id) {
 	case system_id_t::IDLE:
 		return Idle::idle(entity, start_time);

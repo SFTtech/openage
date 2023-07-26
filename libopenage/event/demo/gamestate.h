@@ -2,20 +2,28 @@
 
 #pragma once
 
+#include <cstddef>
 #include <functional>
+#include <list>
+#include <memory>
 #include <sstream>
+#include <string>
 
 #include "config.h"
 #include "curve/continuous.h"
 #include "curve/discrete.h"
-#include "event/event_loop.h"
 #include "event/evententity.h"
 #include "event/state.h"
+#include "time/time.h"
+#include "util/fixed_point.h"
 #include "util/strings.h"
 #include "util/vector.h"
 
 
-namespace openage::event::demo {
+namespace openage::event {
+class EventLoop;
+
+namespace demo {
 
 #if WITH_NCURSES
 class Gui;
@@ -170,4 +178,5 @@ public:
 #endif
 };
 
-} // namespace openage::event::demo
+} // namespace demo
+} // namespace openage::event

@@ -2,17 +2,28 @@
 
 #include "parse_sprite.h"
 
+#include <algorithm>
 #include <functional>
+#include <string>
+#include <type_traits>
+#include <unordered_map>
+#include <utility>
+#include <vector>
 
 #include "error/error.h"
+#include "log/message.h"
+
 #include "renderer/resources/animation/angle_info.h"
 #include "renderer/resources/animation/frame_info.h"
 #include "renderer/resources/animation/layer_info.h"
 #include "renderer/resources/assets/cache.h"
 #include "renderer/resources/parser/common.h"
 #include "renderer/resources/parser/parse_texture.h"
-#include "renderer/texture.h"
+#include "renderer/resources/texture_info.h"
+#include "util/file.h"
+#include "util/path.h"
 #include "util/strings.h"
+
 
 namespace openage::renderer::resources::parser {
 

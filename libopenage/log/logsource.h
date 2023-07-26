@@ -1,6 +1,8 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
+
+#include <cstddef>
 
 // pxd: from libcpp.string cimport string
 #include <string>
@@ -8,10 +10,12 @@
 // pxd: from libopenage.log.message cimport message
 #include "message.h"
 
+#include "../util/compiler.h"
+
 
 namespace openage {
 namespace log {
-
+struct message;
 
 /**
  * Any class that wants to provide .log() shall inherit from this.
@@ -52,4 +56,5 @@ private:
 };
 
 
-}} // namespace openage::log
+} // namespace log
+} // namespace openage

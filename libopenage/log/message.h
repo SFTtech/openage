@@ -1,19 +1,24 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
+
+#include <cstddef>
+#include <iosfwd>
 
 // pxd: from libc.stdint cimport int64_t
 #include <cstdint>
 // pxd: from libcpp.string cimport string
 #include <string>
 
-#include "config.h"
+#include "../util/compiler.h"
 #include "../util/constexpr.h"
 #include "../util/stringformatter.h"
+#include "config.h"
 #include "logsink.h"
 
 // pxd: from libopenage.log.level cimport level
 #include "level.h"
+
 
 #if defined(__GNUC__)
 #define OPENAGE_FUNC_NAME __PRETTY_FUNCTION__
@@ -27,7 +32,9 @@ namespace openage {
 
 
 // forward-declaration for use in 'friend' declaration below.
-namespace error { class Error; }
+namespace error {
+class Error;
+}
 
 
 namespace log {
@@ -107,7 +114,7 @@ struct OAAPI message {
 /**
  * prints message to a stream (with color codes and everything!)
  */
-std::ostream &operator <<(std::ostream &os, const message &msg);
+std::ostream &operator<<(std::ostream &os, const message &msg);
 
 /**
  * Wrapper around a log message that allows appending to the message with operator <<.
@@ -125,8 +132,7 @@ public:
 	 * @param functionname       (fully qualified) function name (OPENAGE_FUNC_NAME).
 	 * @param lvl                loglevel of the message. Also required for exception messages.
 	 */
-	MessageBuilder(const char *filename, unsigned lineno, const char *functionname,
-	               level lvl=level::info);
+	MessageBuilder(const char *filename, unsigned lineno, const char *functionname, level lvl = level::info);
 
 	// auto-convert to message
 	inline operator const message &() const {
@@ -159,16 +165,16 @@ private:
 // for use with existing log::level objects
 #define MSG_LVLOBJ(LVLOBJ) \
 	::openage::log::MessageBuilder( \
-	::openage::util::constexpr_::strip_prefix( \
-		__FILE__, \
-		::openage::config::buildsystem_sourcefile_dir), \
-	__LINE__, \
-	OPENAGE_FUNC_NAME, \
-	LVLOBJ)
+		::openage::util::constexpr_::strip_prefix( \
+			__FILE__, \
+			::openage::config::buildsystem_sourcefile_dir), \
+		__LINE__, \
+		OPENAGE_FUNC_NAME, \
+		LVLOBJ)
 
 
 // for use with log::level literals (auto-prefixes full qualification)
-#define MSG(LVL) MSG_LVLOBJ(::openage::log::level:: LVL)
+#define MSG(LVL) MSG_LVLOBJ(::openage::log::level::LVL)
 
 
 // some convenience shorteners for MSG(...).
@@ -180,4 +186,5 @@ private:
 #define CRIT MSG(crit)
 
 
-}} // openage::log
+} // namespace log
+} // namespace openage

@@ -1,16 +1,22 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "stdout_logsink.h"
 
-#include <iostream>
 #include <iomanip>
+#include <iostream>
+#include <string>
 
 #ifdef _MSC_VER
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #endif
 
-#include "named_logsource.h"
+#include "log/level.h"
+#include "log/logsource.h"
+#include "log/message.h"
+#include "log/named_logsource.h"
+#include "util/enum.h"
+
 
 namespace openage::log {
 
@@ -36,7 +42,7 @@ void enable_ansi_color_codes() {
 }
 
 
-}
+} // namespace
 
 
 StdOutSink::StdOutSink() {
@@ -46,14 +52,19 @@ StdOutSink::StdOutSink() {
 
 void StdOutSink::output_log_message(const message &msg, LogSource *source) {
 	// print log level (width 4)
-	std::cout << "\x1b[" << msg.lvl->colorcode << "m" << std::setw(4) << msg.lvl->name << "\x1b[m" " ";
+	std::cout << "\x1b[" << msg.lvl->colorcode << "m" << std::setw(4) << msg.lvl->name << "\x1b[m"
+																						  " ";
 
 	if (msg.thread_id != 0) {
-		std::cout << "\x1b[32m" "[T" << msg.thread_id << "]\x1b[m ";
+		std::cout << "\x1b[32m"
+					 "[T"
+				  << msg.thread_id << "]\x1b[m ";
 	}
 
 	if (source != &general_source()) {
-		std::cout << "\x1b[36m" "[" << source->logsource_name() << "]\x1b[m ";
+		std::cout << "\x1b[36m"
+					 "["
+				  << source->logsource_name() << "]\x1b[m ";
 	}
 
 	std::cout << msg.text << std::endl;

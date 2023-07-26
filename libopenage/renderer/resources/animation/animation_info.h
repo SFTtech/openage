@@ -2,16 +2,16 @@
 
 #pragma once
 
+#include <cstddef>
+#include <memory>
 #include <vector>
 
 #include "renderer/resources/animation/layer_info.h"
-#include "renderer/resources/texture_info.h"
 
-namespace openage::renderer {
 
-class Texture2d;
-
-namespace resources {
+namespace openage::renderer::resources {
+class Texture2dInfo;
+class Texture2dSubInfo;
 
 /**
  * Contains information about a 2D animation. The animation data can be
@@ -96,5 +96,4 @@ private:
 	std::vector<LayerInfo> layers;
 };
 
-} // namespace resources
-} // namespace openage::renderer
+} // namespace openage::renderer::resources

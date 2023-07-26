@@ -1,15 +1,15 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #include <iostream>
-#include <iomanip>
+#include <string>
 #include <thread>
-#include <vector>
 
-#include "log.h"
-#include "logsource.h"
-#include "logsink.h"
+#include "log/logsink.h"
+#include "log/logsource.h"
+#include "log/message.h"
+#include "util/stringformatter.h"
+#include "util/strings.h"
 
-#include "../util/strings.h"
 
 namespace openage::log::tests {
 
@@ -24,9 +24,9 @@ public:
 
 class TestLogSink : public LogSink {
 public:
-	explicit TestLogSink(std::ostream &os)
-		:
+	explicit TestLogSink(std::ostream &os) :
 		os{os} {}
+
 private:
 	std::ostream &os;
 
@@ -62,4 +62,4 @@ void demo() {
 	t1.join();
 }
 
-} // openage::log::tests
+} // namespace openage::log::tests

@@ -1,10 +1,12 @@
-// Copyright 2015-2022 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "../../integration/private/gui_log.h"
 
 #include <QString>
 
 #include "log/log.h"
+#include "log/message.h"
+
 
 namespace openage::renderer::gui {
 
@@ -35,9 +37,8 @@ void gui_log(QtMsgType type, const QMessageLogContext &context, const QString &m
 	log::MessageBuilder builder{
 		context.file != nullptr ? context.file : "<unknown file>",
 		static_cast<unsigned>(context.line),
-	        context.function != nullptr ? context.function : "<unknown function>",
-	        msg_lvl
-	};
+		context.function != nullptr ? context.function : "<unknown function>",
+		msg_lvl};
 
 	// TODO: maybe it's not UTF-8
 	// TODO: Qt should become a LogSource

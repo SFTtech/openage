@@ -2,7 +2,17 @@
 
 #include "entity_factory.h"
 
-#include "event/state.h"
+#include <cstdint>
+#include <deque>
+#include <mutex>
+#include <string>
+#include <unordered_set>
+
+#include "error/error.h"
+
+#include "curve/discrete.h"
+#include "curve/queue.h"
+#include "event/event_loop.h"
 #include "gamestate/activity/activity.h"
 #include "gamestate/activity/end_node.h"
 #include "gamestate/activity/event_node.h"
@@ -17,10 +27,16 @@
 #include "gamestate/component/internal/command_queue.h"
 #include "gamestate/component/internal/ownership.h"
 #include "gamestate/component/internal/position.h"
+#include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
 #include "gamestate/manager.h"
+#include "gamestate/system/types.h"
+#include "log/message.h"
 #include "renderer/render_factory.h"
+#include "time/time.h"
+#include "util/fixed_point.h"
+
 
 namespace openage::gamestate {
 

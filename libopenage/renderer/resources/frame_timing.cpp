@@ -2,6 +2,14 @@
 
 #include "frame_timing.h"
 
+#include <algorithm>
+#include <compare>
+
+#include "error/error.h"
+#include "log/message.h"
+
+#include "util/fixed_point.h"
+
 
 namespace openage::renderer::resources {
 

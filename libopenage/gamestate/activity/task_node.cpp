@@ -2,6 +2,9 @@
 
 #include "task_node.h"
 
+#include <unordered_map>
+#include <utility>
+
 
 namespace openage::gamestate::activity {
 

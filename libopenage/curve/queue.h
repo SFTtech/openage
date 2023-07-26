@@ -2,15 +2,25 @@
 
 #pragma once
 
+#include <cstddef>
 #include <deque>
 #include <iostream>
+#include <memory>
+#include <string>
 
+#include "curve/iterator.h"
 #include "curve/queue_filter_iterator.h"
 #include "event/evententity.h"
 #include "time/time.h"
+#include "util/fixed_point.h"
 
 
-namespace openage::curve {
+namespace openage {
+namespace event {
+class EventLoop;
+}
+
+namespace curve {
 
 /**
  * A container that manages events on a timeline. Every event has exactly one
@@ -285,4 +295,5 @@ void Queue<T>::clear(const time::time_t &time) {
 }
 
 
-} // namespace openage::curve
+} // namespace curve
+} // namespace openage

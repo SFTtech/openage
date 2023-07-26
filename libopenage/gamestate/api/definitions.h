@@ -2,10 +2,14 @@
 
 #pragma once
 
+#include <memory>
+#include <utility>
+
 #include <nyan/nyan.h>
 
 #include "datastructure/constexpr_map.h"
 #include "gamestate/api/types.h"
+
 
 namespace openage::gamestate::api {
 

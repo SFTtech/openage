@@ -1,10 +1,10 @@
-// Copyright 2014-2020 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
+#include <cstddef>
 #include <functional>
-#include <stddef.h>
-#include <mutex>
+
 
 namespace openage::datastructure::tests {
 
@@ -14,11 +14,11 @@ namespace openage::datastructure::tests {
 struct heap_elem {
 	int data;
 
-	bool operator <(const heap_elem &other) const {
+	bool operator<(const heap_elem &other) const {
 		return this->data < other.data;
 	}
 
-	bool operator ==(const heap_elem &other) const {
+	bool operator==(const heap_elem &other) const {
 		return this->data == other.data;
 	}
 };
@@ -30,9 +30,9 @@ namespace std {
 /**
  * hash function for the simple heap_elem
  */
-template<>
+template <>
 struct hash<openage::datastructure::tests::heap_elem> {
-	size_t operator ()(const openage::datastructure::tests::heap_elem &elem) const {
+	size_t operator()(const openage::datastructure::tests::heap_elem &elem) const {
 		return elem.data;
 	}
 };

@@ -2,9 +2,10 @@
 
 #include "terrain_render_entity.h"
 
-#include "renderer/renderer.h"
-#include "renderer/resources/texture_data.h"
-#include "renderer/texture.h"
+#include <algorithm>
+#include <array>
+#include <mutex>
+
 
 namespace openage::renderer::terrain {
 

@@ -3,9 +3,13 @@
 #pragma once
 
 #include "renderer/resources/palette_info.h"
-#include "util/path.h"
 
-namespace openage::renderer::resources::parser {
+namespace openage {
+namespace util {
+class Path;
+}
+
+namespace renderer::resources::parser {
 
 /**
  * Parse an palette definition from a .opal format file.
@@ -16,4 +20,5 @@ namespace openage::renderer::resources::parser {
  */
 PaletteInfo parse_palette_file(const util::Path &file);
 
-} // namespace openage::renderer::resources::parser
+} // namespace renderer::resources::parser
+} // namespace openage

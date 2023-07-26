@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include <vector>
+
 #include <nyan/nyan.h>
 
 

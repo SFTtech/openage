@@ -2,16 +2,18 @@
 
 #pragma once
 
+#include <cstdint>
+#include <list>
 #include <memory>
-
-#include <eigen3/Eigen/Dense>
+#include <string>
 
 #include "coord/scene.h"
 #include "curve/continuous.h"
-#include "time/time.h"
 #include "curve/discrete.h"
 #include "curve/segmented.h"
 #include "renderer/resources/mesh_data.h"
+#include "time/time.h"
+
 
 namespace openage::renderer {
 class UniformInput;

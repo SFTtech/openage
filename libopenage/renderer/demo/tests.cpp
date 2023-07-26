@@ -3,12 +3,15 @@
 #include "tests.h"
 
 #include "log/log.h"
+#include "log/message.h"
+
 #include "renderer/demo/demo_0.h"
 #include "renderer/demo/demo_1.h"
 #include "renderer/demo/demo_2.h"
 #include "renderer/demo/demo_3.h"
 #include "renderer/demo/demo_4.h"
 #include "renderer/demo/demo_5.h"
+
 
 namespace openage::renderer::tests {
 

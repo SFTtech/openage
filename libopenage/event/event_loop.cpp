@@ -2,12 +2,21 @@
 
 #include "event_loop.h"
 
-#include "event.h"
-#include "evententity.h"
-#include "eventhandler.h"
-#include "eventqueue.h"
+#include <cstddef>
+#include <type_traits>
+#include <utility>
+#include <vector>
 
-#include "../log/log.h"
+#include "log/log.h"
+#include "log/message.h"
+
+#include "error/error.h"
+#include "event/event.h"
+#include "event/evententity.h"
+#include "event/eventhandler.h"
+#include "event/eventqueue.h"
+#include "event/eventstore.h"
+#include "util/fixed_point.h"
 
 
 namespace openage::event {
@@ -193,7 +202,7 @@ void EventLoop::update_changes(const std::shared_ptr<State> &state) {
 
 				if (entity) {
 					time::time_t new_time = evnt->get_eventhandler()
-					                             ->predict_invoke_time(entity, state, change.time);
+					                            ->predict_invoke_time(entity, state, change.time);
 
 					if (new_time != std::numeric_limits<time::time_t>::min()) {
 						log::log(DBG << "Loop: due to a change, rescheduling event of '"

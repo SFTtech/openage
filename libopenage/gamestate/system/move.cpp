@@ -2,22 +2,34 @@
 
 #include "move.h"
 
-#include "log/log.h"
+#include <compare>
+#include <vector>
 
+#include <nyan/nyan.h>
+
+#include "log/log.h"
+#include "log/message.h"
+
+#include "coord/phys.h"
+#include "curve/continuous.h"
+#include "curve/segmented.h"
 #include "gamestate/api/ability.h"
 #include "gamestate/api/animation.h"
 #include "gamestate/api/property.h"
+#include "gamestate/api/types.h"
 #include "gamestate/component/api/move.h"
 #include "gamestate/component/api/turn.h"
 #include "gamestate/component/internal/command_queue.h"
 #include "gamestate/component/internal/commands/move.h"
 #include "gamestate/component/internal/position.h"
+#include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
+#include "util/fixed_point.h"
 
 
 namespace openage::gamestate::system {
 const time::time_t Move::move_command(const std::shared_ptr<gamestate::GameEntity> &entity,
-                                       const time::time_t &start_time) {
+                                      const time::time_t &start_time) {
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
 	auto command = std::dynamic_pointer_cast<component::command::MoveCommand>(
@@ -33,8 +45,8 @@ const time::time_t Move::move_command(const std::shared_ptr<gamestate::GameEntit
 
 
 const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
-                                       const coord::phys3 &destination,
-                                       const time::time_t &start_time) {
+                                      const coord::phys3 &destination,
+                                      const time::time_t &start_time) {
 	if (not entity->has_component(component::component_t::MOVE)) [[unlikely]] {
 		log::log(WARN << "Entity " << entity->get_id() << " has no move component.");
 		return time::time_t::from_int(0);

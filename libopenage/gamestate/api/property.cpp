@@ -2,6 +2,13 @@
 
 #include "property.h"
 
+#include <deque>
+#include <memory>
+#include <string>
+#include <unordered_set>
+
+#include <nyan/nyan.h>
+
 
 namespace openage::gamestate::api {
 

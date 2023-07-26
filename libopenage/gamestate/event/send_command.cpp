@@ -2,13 +2,29 @@
 
 #include "send_command.h"
 
+#include <vector>
+
+#include "coord/phys.h"
 #include "gamestate/component/internal/command_queue.h"
 #include "gamestate/component/internal/commands/idle.h"
 #include "gamestate/component/internal/commands/move.h"
+#include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
+#include "gamestate/types.h"
 
-namespace openage::gamestate::event {
+
+namespace openage::gamestate {
+namespace component {
+class CommandQueue;
+
+namespace command {
+class IdleCommand;
+class MoveCommand;
+} // namespace command
+} // namespace component
+
+namespace event {
 
 Commander::Commander(const std::shared_ptr<openage::event::EventLoop> &loop) :
 	openage::event::EventEntity{loop} {
@@ -65,9 +81,10 @@ void SendCommandHandler::invoke(openage::event::EventLoop & /* loop */,
 }
 
 time::time_t SendCommandHandler::predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> & /* target */,
-                                                      const std::shared_ptr<openage::event::State> & /* state */,
-                                                      const time::time_t &at) {
+                                                     const std::shared_ptr<openage::event::State> & /* state */,
+                                                     const time::time_t &at) {
 	return at;
 }
 
-} // namespace openage::gamestate::event
+} // namespace event
+} // namespace openage::gamestate

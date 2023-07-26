@@ -3,10 +3,10 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 
-#include <eigen3/Eigen/Dense>
+#include "time/time.h"
 
-#include "curve/discrete.h"
 
 namespace openage::renderer {
 

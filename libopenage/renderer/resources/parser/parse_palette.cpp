@@ -2,11 +2,23 @@
 
 #include "parse_palette.h"
 
+#include <cstddef>
+#include <cstdint>
 #include <functional>
+#include <string>
+#include <type_traits>
+#include <unordered_map>
+#include <utility>
+#include <vector>
 
 #include "error/error.h"
+#include "log/message.h"
+
 #include "renderer/resources/parser/common.h"
+#include "util/file.h"
+#include "util/path.h"
 #include "util/strings.h"
+
 
 namespace openage::renderer::resources::parser {
 

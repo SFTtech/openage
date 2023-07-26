@@ -5,9 +5,11 @@
 #include <iostream>
 #include <optional>
 #include <unordered_map>
+#include <utility>
 
 #include "curve/map_filter_iterator.h"
 #include "time/time.h"
+#include "util/fixed_point.h"
 
 
 namespace openage::curve {

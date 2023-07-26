@@ -2,11 +2,16 @@
 
 #pragma once
 
+#include <cstdint>
+#include <memory>
+
 #include <nyan/nyan.h>
 
 #include "curve/map.h"
-#include "curve/segmented.h"
 #include "gamestate/component/api_component.h"
+#include "gamestate/component/types.h"
+#include "time/time.h"
+
 
 namespace openage::gamestate::component {
 class Live : public APIComponent {

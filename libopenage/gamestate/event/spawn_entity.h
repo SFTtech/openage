@@ -2,15 +2,20 @@
 
 #pragma once
 
+#include <cstddef>
+#include <memory>
+#include <string>
+
 #include "event/evententity.h"
 #include "event/eventhandler.h"
+#include "time/time.h"
+
 
 namespace openage {
 
 namespace event {
 class EventLoop;
 class Event;
-class EventEntity;
 class State;
 } // namespace event
 
@@ -82,8 +87,8 @@ public:
 	 * (if other events have already been calculated before that).
 	 */
 	time::time_t predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> &target,
-	                                  const std::shared_ptr<openage::event::State> &state,
-	                                  const time::time_t &at) override;
+	                                 const std::shared_ptr<openage::event::State> &state,
+	                                 const time::time_t &at) override;
 
 private:
 	/**

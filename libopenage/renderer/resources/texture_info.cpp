@@ -2,6 +2,11 @@
 
 #include "texture_info.h"
 
+#include <eigen3/Eigen/Dense>
+
+#include "error/error.h"
+#include "log/message.h"
+
 
 namespace openage::renderer::resources {
 

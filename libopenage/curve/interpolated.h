@@ -2,10 +2,10 @@
 
 #pragma once
 
-#include <type_traits>
+#include "curve/base_curve.h"
+#include "time/time.h"
+#include "util/fixed_point.h"
 
-#include "../log/log.h"
-#include "base_curve.h"
 
 namespace openage::curve {
 

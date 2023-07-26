@@ -2,9 +2,11 @@
 
 #pragma once
 
+#include <cstddef>
 #include <functional>
 #include <list>
 #include <memory>
+#include <string>
 
 #include "time/time.h"
 
@@ -12,7 +14,6 @@ namespace openage::event {
 
 class Event;
 class EventLoop;
-class EventHandler;
 
 /**
  * Every Object in the gameworld that wants to be targeted by events or as

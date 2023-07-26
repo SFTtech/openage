@@ -2,7 +2,16 @@
 
 #include "ability.h"
 
+#include <deque>
+#include <memory>
+#include <string>
+#include <unordered_map>
+
+#include <nyan/nyan.h>
+
+#include "datastructure/constexpr_map.h"
 #include "gamestate/api/definitions.h"
+
 
 namespace openage::gamestate::api {
 

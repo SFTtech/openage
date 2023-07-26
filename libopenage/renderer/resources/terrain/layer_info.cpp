@@ -2,7 +2,11 @@
 
 #include "layer_info.h"
 
+#include <algorithm>
+#include <utility>
+
 #include "renderer/resources/frame_timing.h"
+#include "time/time.h"
 
 
 namespace openage::renderer::resources {

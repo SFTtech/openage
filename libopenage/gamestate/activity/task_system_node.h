@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "gamestate/activity/node.h"
+#include "gamestate/activity/types.h"
 #include "gamestate/system/types.h"
 
 

@@ -1,17 +1,25 @@
 // Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
+#include <compare>
 #include <cstring>
 #include <iostream>
-#include <sstream>
+#include <list>
+#include <memory>
+#include <string>
+#include <string_view>
 #include <utility>
 
 #include "log/log.h"
+#include "log/message.h"
 #include "testing/testing.h"
 
-#include "event.h"
-#include "event_loop.h"
-#include "evententity.h"
-#include "state.h"
+#include "event/event.h"
+#include "event/event_loop.h"
+#include "event/evententity.h"
+#include "event/eventhandler.h"
+#include "event/state.h"
+#include "time/time.h"
+#include "util/fixed_point.h"
 
 
 namespace openage::event::tests {
@@ -127,8 +135,8 @@ public:
 	}
 
 	time::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
-	                                  const std::shared_ptr<State> & /*state*/,
-	                                  const time::time_t &at) override {
+	                                 const std::shared_ptr<State> & /*state*/,
+	                                 const time::time_t &at) override {
 		return at + time::time_t::from_double(2);
 	}
 };
@@ -159,8 +167,8 @@ public:
 	}
 
 	time::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
-	                                  const std::shared_ptr<State> & /*state*/,
-	                                  const time::time_t &at) override {
+	                                 const std::shared_ptr<State> & /*state*/,
+	                                 const time::time_t &at) override {
 		// TODO recalculate a hit time
 		return at + time::time_t::from_double(1);
 	}
@@ -196,8 +204,8 @@ public:
 	}
 
 	time::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
-	                                  const std::shared_ptr<State> & /*state*/,
-	                                  const time::time_t &at) override {
+	                                 const std::shared_ptr<State> & /*state*/,
+	                                 const time::time_t &at) override {
 		switch (this->type) {
 		case EventHandler::trigger_type::DEPENDENCY:
 			// Execute 1 after the change (usually it is neccessary to recalculate a collision
@@ -567,8 +575,8 @@ void eventtrigger() {
 			}
 
 			time::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
-			                                  const std::shared_ptr<State> & /*state*/,
-			                                  const time::time_t &at) override {
+			                                 const std::shared_ptr<State> & /*state*/,
+			                                 const time::time_t &at) override {
 				return at;
 			}
 		};

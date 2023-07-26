@@ -2,10 +2,17 @@
 
 #pragma once
 
-#include "renderer/resources/terrain/blendpattern_info.h"
-#include "util/path.h"
+#include <memory>
 
-namespace openage::renderer::resources {
+#include "renderer/resources/terrain/blendpattern_info.h"
+
+
+namespace openage {
+namespace util {
+class Path;
+}
+
+namespace renderer::resources {
 class AssetCache;
 
 namespace parser {
@@ -22,4 +29,5 @@ BlendPatternInfo parse_blendmask_file(const util::Path &file,
                                       const std::shared_ptr<AssetCache> &cache = nullptr);
 
 } // namespace parser
-} // namespace openage::renderer::resources
+} // namespace renderer::resources
+} // namespace openage

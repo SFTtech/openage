@@ -2,9 +2,14 @@
 
 #pragma once
 
+#include <memory>
+
 #include "curve/queue.h"
 #include "gamestate/component/internal/commands/base_command.h"
 #include "gamestate/component/internal_component.h"
+#include "gamestate/component/types.h"
+#include "time/time.h"
+
 
 namespace openage {
 

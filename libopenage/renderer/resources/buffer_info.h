@@ -2,10 +2,14 @@
 
 #pragma once
 
+#include <cstddef>
+#include <cstdint>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "datastructure/constexpr_map.h"
+
 
 namespace openage::renderer::resources {
 

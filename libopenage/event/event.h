@@ -2,14 +2,14 @@
 
 #pragma once
 
+#include <cstddef>
 #include <memory>
 
-#include "../time/time.h"
-#include "eventhandler.h"
+#include "event/eventhandler.h"
+#include "time/time.h"
+
 
 namespace openage::event {
-
-class EventQueue;
 class EventEntity;
 
 /**

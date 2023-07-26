@@ -2,26 +2,26 @@
 
 #pragma once
 
+#include <cstddef>
 #include <memory>
 #include <unordered_set>
 
-#include "eventhandler.h"
-#include "eventstore.h"
-#include "../time/time.h"
+#include "event/eventhandler.h"
+#include "event/eventstore.h"
+#include "time/time.h"
 
 
 namespace openage::event {
 
 class Event;
-class EventLoop;
 class EventEntity;
+class State;
 
 /**
  * The core event handler for execution and execution dependencies.
  */
 class EventQueue final {
 public:
-
 	class Change {
 	public:
 		Change(const std::shared_ptr<Event> &evnt,
@@ -33,15 +33,15 @@ public:
 
 		class Hasher {
 		public:
-			size_t operator ()(const Change& e) const {
+			size_t operator()(const Change &e) const {
 				return e.hash;
 			}
 		};
 
 		class Equal {
 		public:
-			size_t operator ()(const Change& left,
-			                   const Change& right) const;
+			size_t operator()(const Change &left,
+			                  const Change &right) const;
 		};
 	};
 
@@ -122,7 +122,6 @@ public:
 	void swap_changesets();
 
 private:
-
 	// Implement double buffering around changesets, that we do not run into deadlocks
 	// those point to the `changeset_A` and `changeset_B`.
 	change_set *changes;
@@ -154,4 +153,4 @@ private:
 	EventStore event_queue;
 };
 
-} // openage::event
+} // namespace openage::event

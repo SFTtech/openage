@@ -1,4 +1,4 @@
-// Copyright 2022-2022 the openage authors. See copying.md for legal info.
+// Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
 #include "window_event_handler.h"
 
@@ -10,7 +10,7 @@
 namespace openage::renderer {
 
 
-bool WindowEventHandler::eventFilter(QObject *obj, QEvent *event) {
+bool WindowEventHandler::eventFilter(QObject * /* obj */, QEvent *event) {
 	auto add_to_queue = [this, event]() {
 		this->event_queue.push_back(std::shared_ptr<QEvent>(event->clone()));
 	};

@@ -2,10 +2,12 @@
 
 #pragma once
 
+#include <cstddef>
 #include <memory>
+#include <string>
 #include <unordered_map>
+#include <vector>
 
-#include "time/time.h"
 #include "gamestate/activity/types.h"
 
 

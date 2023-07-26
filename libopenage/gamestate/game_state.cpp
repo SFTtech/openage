@@ -2,9 +2,13 @@
 
 #include "game_state.h"
 
-#include <nyan/database.h>
+#include <nyan/nyan.h>
+
+#include "error/error.h"
+#include "log/log.h"
 
 #include "gamestate/game_entity.h"
+
 
 namespace openage::gamestate {
 

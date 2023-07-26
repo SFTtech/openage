@@ -7,6 +7,9 @@
 
 #include "curve/discrete.h"
 #include "gamestate/component/internal_component.h"
+#include "gamestate/component/types.h"
+#include "time/time.h"
+
 
 namespace openage {
 

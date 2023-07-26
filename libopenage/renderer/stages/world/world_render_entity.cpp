@@ -2,7 +2,11 @@
 
 #include "world_render_entity.h"
 
+#include <functional>
+#include <mutex>
+
 #include "renderer/definitions.h"
+
 
 namespace openage::renderer::world {
 

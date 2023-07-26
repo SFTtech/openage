@@ -2,14 +2,30 @@
 
 #pragma once
 
+#include <cstddef>
+#include <functional>
+#include <iterator>
+#include <memory>
 #include <sstream>
+#include <string>
+#include <utility>
+
+#include "error/error.h"
+#include "log/log.h"
+#include "log/message.h"
 
 #include "curve/keyframe_container.h"
-#include "event/event_loop.h"
 #include "event/evententity.h"
+#include "time/time.h"
+#include "util/fixed_point.h"
 
 
-namespace openage::curve {
+namespace openage {
+namespace event {
+class EventLoop;
+}
+
+namespace curve {
 
 template <typename T>
 class BaseCurve : public event::EventEntity {
@@ -257,7 +273,7 @@ void BaseCurve<T>::check_integrity() const {
 	time::time_t last_time = std::numeric_limits<time::time_t>::min();
 	for (const auto &keyframe : this->container) {
 		if (keyframe.time < last_time) {
-			throw Error{ERR << "curve is broken after t=" << last_time << ": " << this->str()};
+			throw Error{MSG(err) << "curve is broken after t=" << last_time << ": " << this->str()};
 		}
 		last_time = keyframe.time;
 	}
@@ -298,4 +314,5 @@ void BaseCurve<T>::sync(const BaseCurve<O> &other,
 	this->changes(start);
 }
 
-} // namespace openage::curve
+} // namespace curve
+} // namespace openage

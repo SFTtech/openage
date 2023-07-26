@@ -2,15 +2,23 @@
 
 #pragma once
 
+#include <list>
 #include <memory>
 
 #include "coord/phys.h"
 #include "curve/continuous.h"
 #include "curve/segmented.h"
 #include "gamestate/component/internal_component.h"
-#include "util/fixed_point.h"
+#include "gamestate/component/types.h"
+#include "time/time.h"
 
-namespace openage::gamestate::component {
+
+namespace openage {
+namespace event {
+class EventLoop;
+}
+
+namespace gamestate::component {
 
 class Position : public InternalComponent {
 public:
@@ -85,4 +93,5 @@ private:
 	curve::Segmented<coord::phys_angle_t> angle;
 };
 
-} // namespace openage::gamestate::component
+} // namespace gamestate::component
+} // namespace openage

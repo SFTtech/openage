@@ -2,9 +2,13 @@
 
 #include "util.h"
 
-#include "error/error.h"
-
 #include <regex>
+#include <vector>
+
+#include <nyan/nyan.h>
+
+#include "error/error.h"
+#include "log/message.h"
 
 
 namespace openage::gamestate::api {

@@ -2,10 +2,10 @@
 
 #pragma once
 
+#include <cstddef>
 #include <cstdint>
 #include <map>
 #include <memory>
-#include <vector>
 
 #include <eigen3/Eigen/Dense>
 
@@ -15,7 +15,6 @@
 
 namespace openage {
 namespace renderer {
-
 class Texture2d;
 class UniformBuffer;
 

@@ -2,11 +2,18 @@
 
 #include "texture_data.h"
 
+#include <algorithm>
+#include <cstring>
+#include <optional>
+#include <string>
+
 #include <QImage>
 
-#include "../../error/error.h"
-#include "../../log/log.h"
-#include "../../util/csv.h"
+#include "error/error.h"
+#include "log/log.h"
+#include "renderer/resources/texture_info.h"
+#include "renderer/resources/texture_subinfo.h"
+#include "util/path.h"
 
 
 namespace openage::renderer::resources {

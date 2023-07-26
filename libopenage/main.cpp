@@ -2,10 +2,11 @@
 
 #include "main.h"
 
+#include <memory>
+
 #include "cvar/cvar.h"
 #include "engine/engine.h"
 #include "util/timer.h"
-
 
 namespace openage {
 

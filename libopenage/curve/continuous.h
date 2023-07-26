@@ -2,11 +2,12 @@
 
 #pragma once
 
-#include <type_traits>
 #include <sstream>
+#include <string>
 
-#include "interpolated.h"
-#include "../log/log.h"
+#include "curve/interpolated.h"
+#include "time/time.h"
+
 
 namespace openage::curve {
 
@@ -21,7 +22,7 @@ namespace openage::curve {
  * The bound template type T has to implement `operator+(T)` and
  * `operator*(time::time_t)`.
  */
-template<typename T>
+template <typename T>
 class Continuous : public Interpolated<T> {
 public:
 	using Interpolated<T>::Interpolated;
@@ -81,4 +82,4 @@ std::string Continuous<T>::idstr() const {
 }
 
 
-} // openage::curve
+} // namespace openage::curve

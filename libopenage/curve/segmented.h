@@ -3,10 +3,11 @@
 #pragma once
 
 #include <sstream>
-#include <type_traits>
+#include <string>
 
 #include "curve/interpolated.h"
-#include "log/log.h"
+#include "time/time.h"
+
 
 namespace openage::curve {
 

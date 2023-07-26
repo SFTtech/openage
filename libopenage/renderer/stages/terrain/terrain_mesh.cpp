@@ -2,9 +2,14 @@
 
 #include "terrain_mesh.h"
 
+#include <functional>
+#include <optional>
+#include <utility>
+
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/assets/texture_manager.h"
 #include "renderer/resources/terrain/terrain_info.h"
+#include "renderer/resources/texture_info.h"
 #include "renderer/uniform_input.h"
 
 

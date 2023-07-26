@@ -2,8 +2,6 @@
 
 #pragma once
 
-#include <vector>
-
 #include "renderer/resources/animation/animation_info.h"
 
 namespace openage::renderer {

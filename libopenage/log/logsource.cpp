@@ -1,18 +1,20 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "logsource.h"
 
-#include "../util/compiler.h"
+#include <cstddef>
+#include <string>
 
-#include "logsink.h"
-#include "stdout_logsink.h"
+#include "log/logsink.h"
+#include "log/stdout_logsink.h"
+#include "util/compiler.h"
+
 
 namespace openage {
 namespace log {
 
 
-LogSource::LogSource()
-	:
+LogSource::LogSource() :
 	logger_id{LogSource::get_unique_logger_id()} {}
 
 
@@ -33,4 +35,5 @@ size_t LogSource::get_unique_logger_id() {
 }
 
 
-}} // namespace openage::log
+} // namespace log
+} // namespace openage

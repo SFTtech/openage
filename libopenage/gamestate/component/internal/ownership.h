@@ -2,10 +2,21 @@
 
 #pragma once
 
+#include <cstdint>
+#include <memory>
+
 #include "curve/discrete.h"
 #include "gamestate/component/internal_component.h"
+#include "gamestate/component/types.h"
+#include "time/time.h"
 
-namespace openage::gamestate::component {
+
+namespace openage {
+namespace event {
+class EventLoop;
+}
+
+namespace gamestate::component {
 
 using ownership_id_t = uint64_t;
 
@@ -53,4 +64,5 @@ private:
 	curve::Discrete<ownership_id_t> owner;
 };
 
-} // namespace openage::gamestate::component
+} // namespace gamestate::component
+} // namespace openage

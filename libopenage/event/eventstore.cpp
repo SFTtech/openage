@@ -3,11 +3,12 @@
 #include "eventstore.h"
 
 #include <algorithm>
+#include <iterator>
+#include <utility>
 
-#include "event.h"
+#include "log/message.h"
 
-#include "../util/compiler.h"
-#include "../error/error.h"
+#include "error/error.h"
 
 
 namespace openage::event {
@@ -39,8 +40,8 @@ std::shared_ptr<Event> EventStore::pop() {
 		throw Error{ERR << "inconsistent: prev_heap=" << heap_s
 		                << " prev_map=" << evnt_s};
 	}
-		//ENSURE(this->heap.size() == this->events.size(),
-		//   "heap and event set are inconsistent 1");
+	//ENSURE(this->heap.size() == this->events.size(),
+	//   "heap and event set are inconsistent 1");
 
 	return event;
 }
@@ -107,18 +108,16 @@ std::vector<std::shared_ptr<Event>> EventStore::get_sorted_events() const {
 		std::back_inserter(ret),
 		[](const auto &elem) {
 			return elem.first;
-		}
-	);
+		});
 
 	std::sort(
 		std::begin(ret),
 		std::end(ret),
 		[](const auto &a, const auto &b) {
 			return *a < *b;
-		}
-	);
+		});
 
 	return ret;
 }
 
-} // openage::event
+} // namespace openage::event

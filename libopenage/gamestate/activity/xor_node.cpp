@@ -2,6 +2,8 @@
 
 #include "xor_node.h"
 
+#include <unordered_map>
+
 
 namespace openage::gamestate::activity {
 

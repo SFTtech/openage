@@ -5,6 +5,7 @@
 #include <QOpenGLDebugLogger>
 
 #include "log/log.h"
+#include "log/message.h"
 
 
 namespace openage::renderer::opengl {

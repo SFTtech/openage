@@ -7,11 +7,12 @@
 #include <SDL.h>
 
 #include "config.h"
-#include "../event.h"
-#include "aicontroller.h"
-#include "gamestate.h"
-#include "gui.h"
-#include "physics.h"
+#include "event/demo/aicontroller.h"
+#include "event/demo/gamestate.h"
+#include "event/demo/gui.h"
+#include "event/demo/physics.h"
+#include "event/event.h"
+#include "event/event_loop.h"
 
 #if WITH_NCURSES
 #ifdef __MINGW32__
@@ -40,7 +41,6 @@ enum class timescale {
 
 
 void curvepong(bool disable_gui, bool no_human) {
-
 	bool enable_gui = not disable_gui;
 	bool human_player = not no_human;
 
@@ -64,7 +64,8 @@ void curvepong(bool disable_gui, bool no_human) {
 
 		auto state = std::make_shared<PongState>(loop, enable_gui
 #if WITH_NCURSES
-		                                         , gui
+		                                         ,
+		                                         gui
 #endif
 		);
 		Physics::init(state, loop, now);
@@ -78,7 +79,7 @@ void curvepong(bool disable_gui, bool no_human) {
 #if WITH_NCURSES
 		if (state->enable_gui) {
 			gui->clear();
-			gui->get_display_size(state, now);  // update gui related parameters
+			gui->get_display_size(state, now); // update gui related parameters
 		}
 		else {
 #endif
@@ -95,9 +96,7 @@ void curvepong(bool disable_gui, bool no_human) {
 		std::vector<PongEvent> inputs;
 
 		// this is the game loop, running while both players live!
-		while (state->p1->lives->get(now) > 0 and
-		       state->p2->lives->get(now) > 0) {
-
+		while (state->p1->lives->get(now) > 0 and state->p2->lives->get(now) > 0) {
 			auto loop_start = Clock::now();
 
 #if WITH_NCURSES
@@ -111,19 +110,13 @@ void curvepong(bool disable_gui, bool no_human) {
 			// player 1 can be AI or human.
 
 			if (human_player) {
-				phys.process_input(state, state->p1,
-				                   inputs, loop, now);
+				phys.process_input(state, state->p1, inputs, loop, now);
 			}
 			else {
-
-				phys.process_input(state, state->p1,
-				                   get_ai_inputs(state->p1, state->ball, now),
-				                   loop, now);
+				phys.process_input(state, state->p1, get_ai_inputs(state->p1, state->ball, now), loop, now);
 			}
 
-			phys.process_input(state, state->p2,
-			                   get_ai_inputs(state->p2, state->ball, now),
-			                   loop, now);
+			phys.process_input(state, state->p2, get_ai_inputs(state->p2, state->ball, now), loop, now);
 
 			// paddle x positions
 			state->p1->paddle_x = 0;
@@ -137,12 +130,9 @@ void curvepong(bool disable_gui, bool no_human) {
 				gui->draw(state, now);
 
 				int pos = 1;
-				mvprintw(pos++, state->display_boundary[0]/2 + 10, "Enqueued events:");
+				mvprintw(pos++, state->display_boundary[0] / 2 + 10, "Enqueued events:");
 				for (const auto &e : loop->get_queue().get_event_queue().get_sorted_events()) {
-					mvprintw(pos++, state->display_boundary[0]/2 + 10,
-					         "%f: %s",
-					         e->get_time().to_double(),
-					         e->get_eventhandler()->id().c_str());
+					mvprintw(pos++, state->display_boundary[0] / 2 + 10, "%f: %s", e->get_time().to_double(), e->get_eventhandler()->id().c_str());
 				}
 
 				gui->update_screen();
@@ -205,4 +195,4 @@ void curvepong(bool disable_gui, bool no_human) {
 }
 
 
-} // openage::event::demo
+} // namespace openage::event::demo

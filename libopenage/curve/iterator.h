@@ -3,6 +3,8 @@
 #pragma once
 
 #include "time/time.h"
+#include "util/fixed_point.h"
+
 
 namespace openage::curve {
 

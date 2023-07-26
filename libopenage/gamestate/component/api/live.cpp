@@ -2,6 +2,11 @@
 
 #include "live.h"
 
+#include <optional>
+
+#include "curve/discrete.h"
+#include "curve/iterator.h"
+#include "curve/map_filter_iterator.h"
 #include "gamestate/component/types.h"
 
 

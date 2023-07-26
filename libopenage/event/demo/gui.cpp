@@ -6,7 +6,9 @@
 #if WITH_NCURSES
 
 #include <algorithm>
-#include <cstdio>
+#include <array>
+#include <cstdlib>
+#include <cstring>
 #ifdef __MINGW32__
 #include <ncurses/ncurses.h>
 #else
@@ -14,6 +16,10 @@
 #endif // __MINGW32__
 #include <vector>
 
+#include "curve/continuous.h"
+#include "curve/discrete.h"
+#include "event/demo/gamestate.h"
+#include "util/fixed_point.h"
 
 namespace openage::event::demo {
 

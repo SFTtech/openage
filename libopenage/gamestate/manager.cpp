@@ -3,9 +3,9 @@
 #include "manager.h"
 
 #include "log/log.h"
+#include "log/message.h"
 
 #include "gamestate/component/internal/command_queue.h"
-#include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
 #include "gamestate/system/activity.h"
 

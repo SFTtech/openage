@@ -2,12 +2,17 @@
 
 #pragma once
 
+#include <cstddef>
+#include <memory>
 #include <vector>
 
 #include "renderer/resources/terrain/layer_info.h"
-#include "renderer/resources/texture_info.h"
+
 
 namespace openage::renderer::resources {
+class BlendTableInfo;
+class Texture2dInfo;
+
 
 /**
  * Contains information about a 2D terrain texture.

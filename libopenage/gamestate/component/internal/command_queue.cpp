@@ -2,6 +2,8 @@
 
 #include "command_queue.h"
 
+#include <deque>
+
 #include "gamestate/component/types.h"
 
 

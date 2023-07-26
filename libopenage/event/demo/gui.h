@@ -2,21 +2,20 @@
 
 #pragma once
 
-
 #include "config.h"
 
 #if WITH_NCURSES
-#include <vector>
 #include <deque>
+#include <memory>
+#include <string>
+#include <vector>
 
-#include "gamestate.h"
+#include "event/demo/gamestate.h"
+#include "time/time.h"
+#include "util/vector.h"
 
 
 namespace openage::event::demo {
-
-class PongEvent;
-class PongState;
-class PongPlayer;
 
 
 class Gui {
@@ -40,6 +39,6 @@ private:
 	std::deque<std::string> log_msgs;
 };
 
-} // openage::event::demo
+} // namespace openage::event::demo
 
 #endif

@@ -2,7 +2,9 @@
 
 #include "activity.h"
 
+#include "event/event.h"
 #include "gamestate/activity/activity.h"
+#include "gamestate/component/internal/activity.h"
 
 
 namespace openage::gamestate::component {

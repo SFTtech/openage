@@ -2,13 +2,19 @@
 
 #include "event.h"
 
-#include <utility>
+#include <compare>
+#include <functional>
+#include <string>
 
-#include "evententity.h"
-#include "eventhandler.h"
+#include "log/log.h"
+#include "log/message.h"
 
-#include "../log/log.h"
-#include "../util/hash.h"
+#include "event/evententity.h"
+#include "event/eventhandler.h"
+#include "time/time.h"
+#include "util/fixed_point.h"
+#include "util/hash.h"
+
 
 namespace openage::event {
 

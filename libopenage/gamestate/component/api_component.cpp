@@ -2,11 +2,12 @@
 
 #include "api_component.h"
 
+
 namespace openage::gamestate::component {
 
 APIComponent::APIComponent(const std::shared_ptr<event::EventLoop> &loop,
                            nyan::Object &ability,
-                           const time_t &creation_time,
+                           const time::time_t &creation_time,
                            const bool enabled) :
 	ability{ability},
 	enabled(loop, 0) {

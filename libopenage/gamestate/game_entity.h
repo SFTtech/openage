@@ -3,12 +3,13 @@
 #pragma once
 
 #include <memory>
+#include <string>
 #include <unordered_map>
 
-#include "coord/phys.h"
-#include "time/time.h"
 #include "gamestate/component/types.h"
 #include "gamestate/types.h"
+#include "time/time.h"
+
 
 namespace openage {
 

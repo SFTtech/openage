@@ -2,6 +2,7 @@
 
 #include "controller.h"
 
+#include "event/event_loop.h"
 #include "event/evententity.h"
 #include "event/state.h"
 #include "gamestate/component/internal/commands/types.h"

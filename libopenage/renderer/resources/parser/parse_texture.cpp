@@ -2,10 +2,24 @@
 
 #include "parse_texture.h"
 
+#include <functional>
+#include <memory>
+#include <optional>
+#include <string>
+#include <type_traits>
+#include <unordered_map>
+#include <utility>
+#include <vector>
+
 #include "error/error.h"
-#include "renderer/renderer.h"
+#include "log/message.h"
+
 #include "renderer/resources/parser/common.h"
+#include "renderer/resources/texture_subinfo.h"
+#include "util/file.h"
+#include "util/path.h"
 #include "util/strings.h"
+
 
 namespace openage::renderer::resources::parser {
 

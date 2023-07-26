@@ -2,14 +2,15 @@
 
 #pragma once
 
+#include <cstddef>
+#include <functional>
 #include <iostream>
-#include <limits>
 #include <list>
 
 #include "curve/keyframe.h"
-#include "error/error.h"
 #include "time/time.h"
-#include "util/compiler.h"
+#include "util/fixed_point.h"
+
 
 namespace openage::curve {
 

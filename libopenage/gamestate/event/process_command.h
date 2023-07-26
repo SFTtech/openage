@@ -2,8 +2,11 @@
 
 #pragma once
 
-#include "event/evententity.h"
+#include <memory>
+
 #include "event/eventhandler.h"
+#include "time/time.h"
+
 
 namespace openage {
 
@@ -34,8 +37,8 @@ public:
 	            const param_map &params) override;
 
 	time::time_t predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> &target,
-	                                  const std::shared_ptr<openage::event::State> &state,
-	                                  const time::time_t &at) override;
+	                                 const std::shared_ptr<openage::event::State> &state,
+	                                 const time::time_t &at) override;
 };
 
 

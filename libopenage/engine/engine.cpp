@@ -3,6 +3,7 @@
 #include "engine.h"
 
 #include "log/log.h"
+#include "log/message.h"
 
 #include "cvar/cvar.h"
 #include "gamestate/simulation.h"

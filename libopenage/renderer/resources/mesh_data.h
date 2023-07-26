@@ -1,17 +1,18 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <vector>
-#include <unordered_map>
 #include <cstdint>
 #include <cstdlib>
 #include <optional>
-
-#include "../../util/path.h"
+#include <unordered_map>
+#include <vector>
 
 
 namespace openage {
+namespace util {
+class Path;
+}
 namespace renderer {
 namespace resources {
 
@@ -71,13 +72,13 @@ public:
 	/// map. The map entries must have the format (index_in_vector, index_in_shader) and will
 	/// overwrite the default mapping. If an entry for a given index in the vector is missing,
 	/// that attribute and its data will be skipped.
-	void add_shader_input_map(std::unordered_map<size_t, size_t>&&);
+	void add_shader_input_map(std::unordered_map<size_t, size_t> &&);
 
 	/// Returns the list of per-vertex inputs.
 	const std::vector<vertex_input_t> &get_inputs() const;
 
 	/// Returns the shader input map or an empty optional if it's not present.
-	std::optional<std::unordered_map<size_t, size_t>> const& get_shader_input_map() const;
+	std::optional<std::unordered_map<size_t, size_t>> const &get_shader_input_map() const;
 
 	/// Returns the layout of vertices in memory.
 	vertex_layout_t get_layout() const;
@@ -114,13 +115,13 @@ private:
 class MeshData {
 public:
 	/// Tries to load the mesh data from the specified file.
-	explicit MeshData(const util::Path&);
+	explicit MeshData(const util::Path &);
 
 	/// Initializes the mesh data to a custom unindexed vertex vector described by the given info.
-	MeshData(std::vector<uint8_t> &&verts, const VertexInputInfo&);
+	MeshData(std::vector<uint8_t> &&verts, const VertexInputInfo &);
 
 	/// Initializes the mesh data to a custom indexed vertex vector described by the given info.
-	MeshData(std::vector<uint8_t> &&verts, std::vector<uint8_t> &&ids, const VertexInputInfo&);
+	MeshData(std::vector<uint8_t> &&verts, std::vector<uint8_t> &&ids, const VertexInputInfo &);
 
 	/// Returns the raw vertex data.
 	std::vector<uint8_t> const &get_data() const;
@@ -136,13 +137,13 @@ public:
 	/// (0, 0) of this quad is at the quad center and it stretches from (-1, -1) to (1, 1)
 	/// and uv=(0, 0) at bottom left (-> (-1, -1)) and uv=(1, 1) top right (at (1, 1)).
 	/// When centered = false, the quad stretches from (0, 0) to (1, 1).
-	static MeshData make_quad(bool centered=true);
+	static MeshData make_quad(bool centered = true);
 
 	/// Initialize the mesh data with given sidelength. Optionally place (0, 0) bottom left.
-	static MeshData make_quad(float sidelength, bool centered=true);
+	static MeshData make_quad(float sidelength, bool centered = true);
 
 	/// Initialize the mesh data with given width and height. Optionally place (0, 0) bottom left.
-	static MeshData make_quad(float width, float height, bool centered=true);
+	static MeshData make_quad(float width, float height, bool centered = true);
 
 private:
 	/// The raw vertex data. The size is an integer multiple of the size of a single vertex.
@@ -159,4 +160,6 @@ private:
 	std::optional<VertexInputInfo> info;
 };
 
-}}}
+} // namespace resources
+} // namespace renderer
+} // namespace openage

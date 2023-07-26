@@ -5,9 +5,6 @@
 #include "curve/iterator.h"
 #include "time/time.h"
 
-#include <iterator>
-#include <limits>
-
 
 namespace openage::curve {
 

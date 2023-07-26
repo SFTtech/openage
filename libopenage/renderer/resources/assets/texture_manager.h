@@ -6,8 +6,10 @@
 #include <optional>
 #include <string>
 #include <unordered_map>
+#include <utility>
 
 #include "util/path.h"
+
 
 namespace openage::renderer {
 class Renderer;

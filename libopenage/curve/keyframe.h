@@ -2,9 +2,9 @@
 
 #pragma once
 
-#include <limits>
-
 #include "time/time.h"
+#include "util/fixed_point.h"
+
 
 namespace openage::curve {
 

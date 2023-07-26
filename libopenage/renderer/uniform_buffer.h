@@ -2,15 +2,17 @@
 
 #pragma once
 
+#include <cstdint>
 #include <memory>
 
 #include <eigen3/Eigen/Dense>
 
 #include "renderer/uniform_input.h"
 
-namespace openage::renderer {
 
+namespace openage::renderer {
 class Texture2d;
+class UniformBufferInput;
 
 class UniformBuffer : public std::enable_shared_from_this<UniformBuffer> {
 	friend UniformBufferInput;

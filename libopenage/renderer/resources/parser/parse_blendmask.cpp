@@ -2,15 +2,26 @@
 
 #include "parse_blendmask.h"
 
+#include <algorithm>
+#include <cstddef>
 #include <functional>
+#include <string>
+#include <type_traits>
+#include <unordered_map>
+#include <utility>
+#include <vector>
+
+#include "log/message.h"
 
 #include "error/error.h"
 #include "renderer/resources/assets/cache.h"
 #include "renderer/resources/parser/common.h"
 #include "renderer/resources/parser/parse_texture.h"
-#include "renderer/resources/texture_data.h"
-#include "renderer/texture.h"
+#include "renderer/resources/texture_info.h"
+#include "util/file.h"
+#include "util/path.h"
 #include "util/strings.h"
+
 
 namespace openage::renderer::resources::parser {
 

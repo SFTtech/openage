@@ -2,6 +2,13 @@
 
 #include "terrain_info.h"
 
+#include <cstddef>
+#include <memory>
+#include <vector>
+
+#include "renderer/resources/terrain/layer_info.h"
+
+
 namespace openage::renderer::resources {
 
 TerrainInfo::TerrainInfo(const float scalefactor,

@@ -1,16 +1,20 @@
 // Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
+#include <iterator>
+#include <list>
+#include <memory>
+#include <string>
+
 #include "curve/continuous.h"
 #include "curve/discrete.h"
 #include "curve/discrete_mod.h"
+#include "curve/keyframe.h"
 #include "curve/keyframe_container.h"
 #include "curve/segmented.h"
 #include "event/event_loop.h"
-#include "log/log.h"
 #include "testing/testing.h"
 #include "time/time.h"
-
-#include "util/compiler.h"
+#include "util/fixed_point.h"
 
 namespace openage::curve::tests {
 

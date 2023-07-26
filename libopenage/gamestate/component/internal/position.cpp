@@ -4,6 +4,7 @@
 
 #include "gamestate/component/types.h"
 #include "gamestate/definitions.h"
+#include "util/fixed_point.h"
 
 
 namespace openage::gamestate::component {

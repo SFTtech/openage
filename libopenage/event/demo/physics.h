@@ -2,17 +2,22 @@
 
 #pragma once
 
-#include "gamestate.h"
-#include "../../time/time.h"
-
+#include <memory>
 #include <vector>
+
+#include "time/time.h"
 
 
 namespace openage::event {
 
 class EventLoop;
+class State;
 
 namespace demo {
+
+class PongEvent;
+class PongPlayer;
+class PongState;
 
 class Physics {
 public:
@@ -31,4 +36,5 @@ public:
 	                  const time::time_t &);
 };
 
-}} // openage::event::demo
+} // namespace demo
+} // namespace openage::event

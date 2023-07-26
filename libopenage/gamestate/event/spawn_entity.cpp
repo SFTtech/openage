@@ -2,16 +2,24 @@
 
 #include "spawn_entity.h"
 
+#include <cstdint>
+#include <functional>
+#include <vector>
+
+#include <nyan/nyan.h>
+
 #include "coord/phys.h"
 #include "gamestate/component/internal/activity.h"
 #include "gamestate/component/internal/command_queue.h"
 #include "gamestate/component/internal/ownership.h"
 #include "gamestate/component/internal/position.h"
+#include "gamestate/component/types.h"
 #include "gamestate/definitions.h"
 #include "gamestate/entity_factory.h"
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
 #include "gamestate/manager.h"
+#include "gamestate/types.h"
 
 // TODO: Testing
 #include "assets/mod_manager.h"
@@ -135,8 +143,8 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 }
 
 time::time_t SpawnEntityHandler::predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> & /* target */,
-                                                      const std::shared_ptr<openage::event::State> & /* state */,
-                                                      const time::time_t &at) {
+                                                     const std::shared_ptr<openage::event::State> & /* state */,
+                                                     const time::time_t &at) {
 	return at;
 }
 

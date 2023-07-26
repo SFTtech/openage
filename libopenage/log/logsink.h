@@ -1,14 +1,16 @@
-// Copyright 2015-2020 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <list>
 #include <mutex>
 
-#include "level.h"
+#include "../util/compiler.h"
+#include "./level.h"
+
 
 namespace openage::log {
-
+struct message;
 
 /**
  * Abstract base for classes that - in one way or an other - print log messages.
@@ -51,9 +53,9 @@ class OAAPI LogSinkList {
 public:
 	static LogSinkList &instance();
 
-	LogSinkList(LogSinkList const&) = delete;
+	LogSinkList(LogSinkList const &) = delete;
 
-	void operator=(LogSinkList const&) = delete;
+	void operator=(LogSinkList const &) = delete;
 
 	void log(const message &msg, class LogSource *source) const;
 
@@ -68,7 +70,7 @@ public:
 private:
 	LogSinkList();
 
-	std::list<LogSink*> sinks;
+	std::list<LogSink *> sinks;
 
 	mutable std::mutex sinks_mutex;
 

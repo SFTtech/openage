@@ -2,9 +2,8 @@
 
 #include "world.h"
 
-#include "log/log.h"
-
-#include <nyan/nyan.h>
+#include <unordered_map>
+#include <utility>
 
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"

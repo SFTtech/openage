@@ -4,9 +4,12 @@
 
 #include <optional>
 #include <sstream>
+#include <string>
+#include <type_traits>
 #include <utility>
 
-#include "base_curve.h"
+#include "curve/base_curve.h"
+#include "time/time.h"
 
 
 namespace openage::curve {

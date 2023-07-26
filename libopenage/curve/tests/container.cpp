@@ -1,14 +1,21 @@
 // Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
-#include "curve/continuous.h"
-#include "curve/discrete.h"
-#include "curve/map.h"
-#include "curve/queue.h"
-#include "testing/testing.h"
-#include "time/time.h"
-
+#include <algorithm>
+#include <deque>
+#include <iostream>
+#include <memory>
+#include <optional>
+#include <type_traits>
 #include <unordered_map>
 #include <unordered_set>
+
+#include "curve/iterator.h"
+#include "curve/map.h"
+#include "curve/map_filter_iterator.h"
+#include "curve/queue.h"
+#include "curve/queue_filter_iterator.h"
+#include "event/event_loop.h"
+#include "testing/testing.h"
 
 
 namespace openage::curve::tests {

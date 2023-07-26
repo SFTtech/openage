@@ -4,11 +4,14 @@
 
 #include <memory>
 #include <shared_mutex>
+#include <string>
 #include <vector>
 
 #include "coord/scene.h"
 #include "curve/discrete.h"
+#include "time/time.h"
 #include "util/vector.h"
+
 
 namespace openage::renderer {
 

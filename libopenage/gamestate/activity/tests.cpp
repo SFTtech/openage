@@ -1,19 +1,28 @@
 // Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
-#include "log/log.h"
+#include <cstddef>
+#include <functional>
+#include <memory>
+#include <string>
 
-#include "event/event.h"
 #include "event/event_loop.h"
 #include "event/evententity.h"
 #include "event/eventhandler.h"
 #include "event/state.h"
 
+#include "error/error.h"
+#include "log/log.h"
+#include "log/message.h"
+
 #include "gamestate/activity/end_node.h"
 #include "gamestate/activity/event_node.h"
+#include "gamestate/activity/node.h"
 #include "gamestate/activity/start_node.h"
 #include "gamestate/activity/task_node.h"
 #include "gamestate/activity/types.h"
 #include "gamestate/activity/xor_node.h"
+#include "time/time.h"
+
 
 namespace openage::gamestate::tests {
 
@@ -90,8 +99,8 @@ public:
 	}
 
 	time::time_t predict_invoke_time(const std::shared_ptr<event::EventEntity> & /* target */,
-	                                  const std::shared_ptr<event::State> & /* state */,
-	                                  const time::time_t &at) override {
+	                                 const std::shared_ptr<event::State> & /* state */,
+	                                 const time::time_t &at) override {
 		return at;
 	}
 };

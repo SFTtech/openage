@@ -2,6 +2,12 @@
 
 #include "world_object.h"
 
+#include <array>
+#include <cstddef>
+#include <functional>
+#include <optional>
+#include <utility>
+
 #include <eigen3/Eigen/Dense>
 
 #include "renderer/camera/camera.h"
@@ -9,13 +15,17 @@
 #include "renderer/resources/animation/angle_info.h"
 #include "renderer/resources/animation/animation_info.h"
 #include "renderer/resources/animation/frame_info.h"
+#include "renderer/resources/animation/layer_info.h"
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/assets/texture_manager.h"
 #include "renderer/resources/frame_timing.h"
 #include "renderer/resources/mesh_data.h"
-#include "renderer/resources/texture_data.h"
+#include "renderer/resources/texture_info.h"
+#include "renderer/resources/texture_subinfo.h"
 #include "renderer/stages/world/world_render_entity.h"
 #include "renderer/uniform_input.h"
+#include "util/fixed_point.h"
+#include "util/vector.h"
 
 
 namespace openage::renderer::world {
