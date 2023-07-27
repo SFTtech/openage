@@ -8,6 +8,17 @@ must test with all supported version when you add a feature.
 
 ![workflow structogram](images/workflow.svg)
 
+1. [Game and Version detection](#game-and-version-detection)
+2. [Mounting](#mounting)
+3. [Reader](#reader)
+   1. [Game Data](#game-data)
+4. [Processor](#processor)
+   1. [Preprocessing](#preprocessing)
+   2. [Grouping/Linking](#groupinglinking)
+   3. [Mapping](#mapping)
+5. [Exporter](#exporter)
+
+
 ## Game and Version detection
 
 The conversion process starts with determining the game version. Users

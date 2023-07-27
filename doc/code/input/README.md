@@ -4,6 +4,17 @@ Input managment concerns the handling external input sources that are used to in
 The most common example for such input sources are probably **keyboard and mouse**, but other things like the **GUI**,
 **networking** and **scripting** also fall under this umbrella.
 
+1. [Motivation](#motivation)
+2. [Basic Architecture](#basic-architecture)
+3. [Window System](#window-system)
+   1. [Workflow](#workflow)
+   2. [Class Relationships](#class-relationships)
+   3. [Low-level Interface](#low-level-interface)
+   4. [High-Level Interface (Controller)](#high-level-interface-controller)
+4. [Scripting](#scripting)
+5. [Network](#network)
+6. [AI](#ai)
+
 
 ## Motivation
 
