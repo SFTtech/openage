@@ -283,7 +283,7 @@ template <typename T>
 void BaseCurve<T>::sync(const BaseCurve<T> &other,
                         const time::time_t &start) {
 	// Copy keyframes between containers for t >= start
-	this->last_element = this->container.sync_after(other.container, start);
+	this->last_element = this->container.sync(other.container, start);
 
 	// Check if this->get() returns the same value as other->get() for t = start
 	// If not, insert a new keyframe at start
@@ -302,7 +302,7 @@ void BaseCurve<T>::sync(const BaseCurve<O> &other,
                         const std::function<T(const O &)> &converter,
                         const time::time_t &start) {
 	// Copy keyframes between containers for t >= start
-	this->last_element = this->container.sync_after(other.get_container(), converter, start);
+	this->last_element = this->container.sync(other.get_container(), converter, start);
 
 	// Check if this->get() returns the same value as other->get() for t = start
 	// If not, insert a new keyframe at start

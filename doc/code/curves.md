@@ -131,10 +131,9 @@ for specific curve types.
 
 **Copy**
 
-| Method                 | Description                                                                               |
-| ---------------------- | ----------------------------------------------------------------------------------------- |
-| `sync(Curve, t)`       | copy keyframes from `Curve`, starting at time `t`; delete all keyframes after time `t`    |
-| `sync_after(Curve, t)` | copy keyframes from `Curve`, starting after time `t`; delete all keyframes after time `t` |
+| Method           | Description                                                                            |
+| ---------------- | -------------------------------------------------------------------------------------- |
+| `sync(Curve, t)` | copy keyframes from `Curve`, starting at time `t`; delete all keyframes after time `t` |
 
 
 #### Discrete

@@ -168,7 +168,7 @@ void curve_types() {
 		// TODO: test c.insert_overwrite and c.insert_after
 
 		KeyframeContainer<int> c2;
-		c2.sync_after(c, 1);
+		c2.sync(c, 1);
 		// now c2 should be [-inf: 0, 1: 15, 2: 20, 3: 25]
 		TESTEQUALS(c2.last(0)->value, 0);
 		TESTEQUALS(c2.last(1)->value, 15);

@@ -280,8 +280,8 @@ public:
      *              Using the default value replaces ALL keyframes of \p this with
      *              the keyframes of \p other.
      */
-	iterator sync_after(const KeyframeContainer<T> &other,
-	                    const time::time_t &start = std::numeric_limits<time::time_t>::min());
+	iterator sync(const KeyframeContainer<T> &other,
+	              const time::time_t &start = std::numeric_limits<time::time_t>::min());
 
 	/**
      * Copy keyframes from another container (with a different element type) to this container.
@@ -296,9 +296,9 @@ public:
      *              the keyframes of \p other.
      */
 	template <typename O>
-	iterator sync_after(const KeyframeContainer<O> &other,
-	                    const std::function<T(const O &)> &converter,
-	                    const time::time_t &start = std::numeric_limits<time::time_t>::min());
+	iterator sync(const KeyframeContainer<O> &other,
+	              const std::function<T(const O &)> &converter,
+	              const time::time_t &start = std::numeric_limits<time::time_t>::min());
 
 	/**
 	 * Debugging method to be used from gdb to understand bugs better.
@@ -512,8 +512,8 @@ KeyframeContainer<T>::erase(KeyframeContainer<T>::iterator e) {
 
 template <typename T>
 typename KeyframeContainer<T>::iterator
-KeyframeContainer<T>::sync_after(const KeyframeContainer<T> &other,
-                                 const time::time_t &start) {
+KeyframeContainer<T>::sync(const KeyframeContainer<T> &other,
+                           const time::time_t &start) {
 	// Delete elements after start time
 	iterator at = this->last_before(start, this->end());
 	at = this->erase_after(at);
@@ -536,9 +536,9 @@ KeyframeContainer<T>::sync_after(const KeyframeContainer<T> &other,
 template <typename T>
 template <typename O>
 typename KeyframeContainer<T>::iterator
-KeyframeContainer<T>::sync_after(const KeyframeContainer<O> &other,
-                                 const std::function<T(const O &)> &converter,
-                                 const time::time_t &start) {
+KeyframeContainer<T>::sync(const KeyframeContainer<O> &other,
+                           const std::function<T(const O &)> &converter,
+                           const time::time_t &start) {
 	// Delete elements after start time
 	iterator at = this->last_before(start, this->end());
 	at = this->erase_after(at);
