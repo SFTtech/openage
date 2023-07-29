@@ -1,148 +1,218 @@
 # Curves
 
-- data structure for keyframe-based simulation
-  - not just data but manages data over time
+*Curves* are data structures that manage changes to data over time. More precisely,
+they do not only store data but time-value pairs (keyframes) that allow the retrieval
+of a curve data value for any point in time.
 
+Curves are an integral part of openage's event-based game simulation.
 
 1. [Motivation](#motivation)
 2. [Architecture](#architecture)
 3. [Curve Types](#curve-types)
    1. [Primitive](#primitive)
-      1. [Discrete](#discrete)
-      2. [Continuous](#continuous)
-      3. [Segmented](#segmented)
+      1. [Common Operations](#common-operations)
+      2. [Discrete](#discrete)
+      3. [Continuous](#continuous)
+      4. [Segmented](#segmented)
    2. [Container](#container)
       1. [Queue](#queue)
       2. [Unordered Map](#unordered-map)
 
 
-
 ## Motivation
 
-- inspired by a similar implementation for Planetary Annihilation
-  - https://www.forrestthewoods.com/blog/tech_of_planetary_annihilation_chrono_cam/#.lmxbu3vld
-- problem: data is hard to keep consistent in sync (synchronous)
-  - over network
-  - across threads
-  - state should be the same for all components
-- solution: instead of only storing *current* data, store as keyframes with (data, time)
-  - storage becomes a function that tracks data values over time -> timeline
-  - data in between keyframes can be interpolated
-  - changing data can be asynchronous -> keyframes can be added for future
-  - reverting to previous simulation time becomes much easier
-- downsides:
-  - requires more storage
-  - interpolation is more costly than simple ticks
-  - can be more complex to integrate
-- however:
-  - RTS actions are often predictable and therefore doesn't require many keyframes
-  - data doesn't have to be accessed only when necessary
-  - may be easier to understand in implemention
+The openage curve structures are inspired by a [similar implementation](https://www.forrestthewoods.com/blog/tech_of_planetary_annihilation_chrono_cam/#.lmxbu3vld) from the game Planetary Annihilation.
+
+Curves intend to solve synchronicity problems in games. In traditional implementations
+like lockstep, data is changed incrementally in regular intervals (ticks). Keeping
+these changes and the overall gamestate consistent/in sync over network or across threads
+is very important, as one missing change can result in a desync of the entire simulation.
+Recovering from a desync can also be very hard.
+
+In comparison, simulation with curves allows both async operations and an easier recovery
+from desync states. Data is not changed incrementally but is instead calculated using
+*keyframe interpolation*. In other words, changes to data are treated as keyframes on
+a timeline with in-between values being interpolated from adjacent keyframes.
+
+![Curve keyframes example](ASDF)
+
+Additionally, curves cannot only access values for the current simulation time but also for
+any past or even future times. Keyframes can also be inserted for any point in time without
+directly invalidating the state, making curves more reliable in async scenarios (although
+resolving dependencies for keyframes in the past can still be challenging).
+
+The usage of curves has a few downsides though. They are less space efficient due to the
+keyframe storage, interpolation are more costly more costly than incremental changes, and
+their integration is more complex than the usage of simpler data structures. However, in
+situations where operations are predictable, long-lasting, and easy to calculate - which
+is the case for most RTS games - these downsides are usually outweight by the positives.
 
 ## Architecture
 
-- major components
-  - BaseCurve: primitive data
-    - Discrete
-    - Interpolated
-      - Continuous
-      - Segmented
-  - Queue and UnorderedMap: containers
-  - Keyframe: time-value pair
-  - KeyframeContainer: storage for curve keyframes
-  - curve::time_t: time type -> fixed point that represents simulation time in seconds
+![Curve classes hierarchy UML](ASDF)
 
-- which curves should be used for
-  - data that isn't modified or read
-  - data that must be tracked over time
-    - ALL game data in game entity components that is required for simulation
+openage provides several curve types with different interpolation behaviour that each have
+their specific use case. Primitive data types are covered by the `BaseCurve` interface
+and its derivates of which the `Discrete`, `Continuous`, and `Segmented` are the practically
+usable types. For containers, there are classes for `Queue` and `UnorderedMap` available.
+All curve types are templated, so that they can store any type of value (with some constraints).
+The usable types are explained in more detail in the [Curve Types](#curve-types) section.
 
-- what curves should not be used for
-  - data that is modified or read often
-  - data that doesn't have to be tracked over time
-    - e.g. temporary variables
-    - e.g. things that don't affect the simulation like visual settings
+Keyframes are implemented as time-value pairs by the `Keyframe` class. `KeyframeContainer`
+is used by all curves to manage their keyframe storage. It also provides functionality to
+efficiently access and insert keyframes as wel as sorting them by time. For the time
+type, the [simulation time type](/doc/code/time.md) from the `openage::time` namespace is
+used.
+
+It should be noted that curves are not useful in every situation as keyframe insertion,
+interpolation, and searching keyframes based on time create significant overhead. Curves
+should be used for variables or members where
+
+* data values must be tracked over time (e.g. HP of a game entity), or
+* data values are not modified/read very often (e.g. not every frame), or
+* data values are supposed to be sent over the network.
+
+This is usually the case for all game data in [game entity components](/doc/code/game_simulation/components.md)
+inside the game simulation.
+
+Curves should generally not be used for variables or members where
+
+* data values are not tracked over time (e.g. for temporary variables), or
+* data values are modified/read very often (e.g. in the rendering loop), or
+* data values don't affect the simulation state (e.g. visual settings).
+
 
 ## Curve Types
 
-- overview of built-in curve types
+This section provides an overview over the available curves types.
 
 ### Primitive
 
-- curves for storing the change for primitive/single values
-  - primitive C++ types, e.g. int/float/std::string
-  - objects
-  - shared ptr
+![Primitive curve types UML](ASDF)
 
-- default value is assigned for t = curve::time_t::min
-  - guarantees that there is always a value to access
-  - mirrors expected behaviour from declaring primitive values in C++
-  - for objects that don't have default constructor, the default must be assigned when initializing curve
+Primitive curves are intended for members with single value types. These include, for example,
+the primitive C++ types (e.g. `int`, `float`, `std::string`), simple structs and data classes,
+and shared pointers.
 
-- operations
-  - read
-    - get(t): Get the value at time t
-    - frame(t): Get the previous keyframe (time and value) before t
-    - next_frame(t): Get the next keyframe (time and value) after t
-  - modify
-    - set_insert(t, value): Insert a new keyframe value at t
-    - set_last(t, value): Insert a new keyframe value at t, delete all keyframes with after t
-    - set_replace(t, value): Insert a new keyframe value at t, remove all other keyframes with time t
-  - copy
-    - sync(Curve, t): copy keyframes from one curve to the other, starting at t
+On contruction of a primitive curve object, a keyframe with time `t = time::time_t::min_value()`
+and the default value of the value type is inserted. This is done to ensure that for any
+requested time `t`, there is always a valid value to be returned. This mirrors the expected
+behaviour from declaring primitive values in C++ where members may be auto-initialized without
+explicit assignment to a default value. The default value for curves can also be explicitely
+assigned in the constructor. For value types that don't have default values, a default value
+must always be passed in the constructor.
+
+`BaseCurve` objects can be targeted by or trigger events from the [event system](/doc/code/event_system.md).
+As a consequence, curves are not copy constructable as they require a unique ID for
+event management. However, it is possible to copy the keyframes of one curve to
+the other using the `sync(..)` method. `sync(..)` also works for curves with different
+values types if a converter function from one value type to the other is supplied.
+
+#### Common Operations
+
+All primitive curves support the following operations. They may work slightly different
+for specific curve types.
+
+**Read**
+
+| Method          | Description                                                 |
+| --------------- | ----------------------------------------------------------- |
+| `get(t)`        | Get (interpolated) value at time `t`                        |
+| `frame(t)`      | Get the previous keyframe (time and value) before or at `t` |
+| `next_frame(t)` | Get the next keyframe (time and value) after `t`            |
+
+**Modify**
+
+| Method                  | Description                                                                       |
+| ----------------------- | --------------------------------------------------------------------------------- |
+| `set_insert(t, value)`  | Insert a new keyframe value at time `t`                                           |
+| `set_last(t, value)`    | Insert a new keyframe value at time `t`; delete all keyframes after time `t`      |
+| `set_replace(t, value)` | Insert a new keyframe value at time `t`; remove all other keyframes with time `t` |
+
+**Copy**
+
+| Method                 | Description                                                                               |
+| ---------------------- | ----------------------------------------------------------------------------------------- |
+| `sync(Curve, t)`       | copy keyframes from `Curve`, starting at time `t`; delete all keyframes after time `t`    |
+| `sync_after(Curve, t)` | copy keyframes from `Curve`, starting after time `t`; delete all keyframes after time `t` |
+
 
 #### Discrete
 
-- value between two keyframes is constant
-  - returns value of previous keyframe
+![Discrete curve function example]()
 
-- used for values that dont change much
-  - e.g. current health
+Discrete curves implement **constant interpolation** between keyframes. This means
+that the value returned by `get(t)` is always equal to the value of the previous
+keyframe.
+
+Discrete curves should be used for values that only change at specific points in time,
+e.g. for the health of a game entity.
+
 
 #### Continuous
 
-- value between two keyframes is interpolated
-  - returns interpolated value from requested time between t1 and t2
-  - if t > last keyframe, then behave like discrete curve
-  - currently only supports linear interpolation
+![Continuous curve function example]()
 
-- used for values that change gradually
-  - e.g. entity position, current construction progress of building
+Continuous curves implement **linear interpolation** between keyframes. This means
+that the value returned by `get(t)` is calculated from the value difference
+between the keyframes before and after `t`. If there is no keyframe after `t`,
+the value of the previous keyframe is used (like on discrete curves).
+
+Value types on continuous curves need to implement methods for the `operator*(..)` and
+`operator-(..)` operations to support linear interpolation. In particular, `operator*(..)`
+must support multiplication with `time::time_t` and `operator-(..)` must support
+substraction for values of the same type.
+
+Continuous curves do not allow jumps between keyframe values (hence "continuous").
+Therefore, there cannot be two keyframes inserted for the same time `t`.
+
+Continuous curves should be used for values that change gradually over time,
+e.g. a game entity's position or the construction progress of a building.
+
 
 #### Segmented
 
-- value between two keyframes is interpolated
-  - behaves like continuous but allows "jumps" between intervals
-  - e.g. intervals are not connected like on continuous curve
-  - mix between continuous and discrete
+![Segmented curve function example]()
 
-- used for values that change gradually but are not on connected intervals
-  - e.g. angles (because the value jumps when rolling over from 0 to 360 degrees)
+Segmented curves implement **linear interpolation** between keyframes and additionally
+allow jumps between keyframe values. As with continuous curves, the value returned by `get(t)`
+is calculated from the value difference between the keyframes before and after `t`.
+
+Jumps are inserted using the special methods `set_insert_jump(..)` and `set_last_jump(..)`:
+
+| Method                               | Description                                                                       |
+| ------------------------------------ | --------------------------------------------------------------------------------- |
+| `set_insert_jump(t, value1, value2)` | Insert a two new keyframes at time `t`: `(t, value1)` and `(t, value2)`           |
+| `set_last_jump(t, value1, value2)`   | Insert a two new keyframes at time `t` like above; delete all keyframes after `t` |
+
+Segmented curves should be used for values that change gradually but are not on
+connected intervals. Typically, this are values that wrap around at some point,
+e.g. angles between 0 and 360 degrees.
+
 
 ### Container
 
-- curves for storing the changes for collections and containers
-  - queues
-  - maps
+Container curves are intended for storing changes to collections and containers.
+The currently supported containers are `Queue` and `UnorderedMap`.
 
-- most important distinction between normal containers and curve containers
-  - modify operations do not erase/overwrite previous elements
-  - elements are always valid at a specific time
-  - if element e is erased at t, requesting it at t1>=t will return nothing but requesting it at t2 smaller t will return e
+The most important distinction between regular C++ containers and curve containers
+is that curve containers keep track of when modifications happen and what changes
+to an element are made. Deleting elements also does not erase elements from memory.
+Instead, they are simply hidden for requests for time `t1` after the deletion time `t2` if
+`t1 > t2`.
+
 
 #### Queue
 
-- stores elements in insertion order and additionally insertion time
-  - front: for requested time t, return the element that was in front at t
-  - iterate: iterate over queue beginning at time t
-  - no empty check because elements are not deleted
-    - callee must remember the iterator to the last element it accessed!
+Queue curve containers store elements in first-in-first-out (FIFO) insertion order
+while additionally keeping track of element insertion time. Requests for the front element
+at time `t` will return the element that is in front of the queue at that time.
+The queue can also be iterated over for a specific time `t` which allows access to
+all elements that were in the queue at time `t`.
 
 #### Unordered Map
 
-- stores key-value pairs and remembers inserion time
-  - at: return the element for key k that was present at time t
-  - insert: add pair k, e at time t
-  - insert: add pair k, e at time t1 and erase at t2
-  - kill: erase element at time t
-  - iterate over elements between time t1 and t2
+Unordered map curve containers store key-value pairs while additionally keeping
+track of element insertion time. Requests for a key `k` at time `t` will return the value
+of `k` at that time. The unordered map can also be iterated over for a specific time `t` which
+allows access to all key-value pairs that were in the map at time `t`.
