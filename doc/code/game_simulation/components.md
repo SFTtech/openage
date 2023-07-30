@@ -3,49 +3,128 @@
 Overview of the built-in game entity components in the game simulation.
 
 1. [Internal](#internal)
+   1. [Activity](#activity)
+   2. [CommandQueue](#commandqueue)
+   3. [Owner](#owner)
+   4. [Position](#position)
 2. [API](#api)
+   1. [Idle](#idle)
+   2. [Live](#live)
+   3. [Move](#move)
+   4. [Turn](#turn)
 
 
 ## Internal
 
-- components used by every game entity
-- no corresponding nyan API object
+Internal components do not have a corresponding nyan API object and thus only
+store runtime data.
 
-- Activity
-  - reference to the top-level activity for the game entity
-  - current node in activity
-  - list of scheduled events the entity waits for to continue the control flow
-- CommandQueue
-  - stores commands from the input system for the game entity
-  - commands are basically signals from the input system to handle conditional branches in the activity control flow
-    - commands have type
-    - payload depends on type
-- Owner
-  - stores ID of player who owns the unit
-  - allow basic access control
-- Position
-  - 3D position of game entity in the world
-  - angle of game entity relative to camera, clockwise rotation
+### Activity
+
+![Activity Component UML](ASDF)
+
+The `Activity` component stores a reference to the top-level activity for the
+game entity. Essentially, this gives access to the entire activity node graph
+used by the entity.
+
+Additionally, the current activity state is stored on a discrete curve that
+contains the last visited node.
+
+`Activity` also stores the handles of events initiated by the activity system
+for advancing to the next node. Once the next node is visited, these events
+should be canceled via the `cancel_events(..)` method.
+
+
+### CommandQueue
+
+![CommandQueue Component UML](ASDF)
+
+The `CommandQueue` component stores commands for the game entity in a [queue curve container](/doc/code/curves.md#queue).
+
+Commands in the queue use `Command` class derivatives which specify a command type
+and payload for the command.
+
+
+### Owner
+
+![Owner Component UML](ASDF)
+
+The `Owner` component stores the ID of the player who owns the game entity.
+
+
+### Position
+
+![Position Component UML](ASDF)
+
+The `Position` component stores the location and direction of the game entity
+inside the game world.
+
+The 3D position of the game entity is stored on a continuous curve with value type
+`phys3`.
+
+Directions are stored as angles relative to the camera vector using clock-wise
+rotation. Here are some example values for reference to see how that works in
+practice:
+
+| Angle (degrees) | Direction             |
+| --------------- | --------------------- |
+| 0               | look towards camera   |
+| 90              | look left             |
+| 180             | look away from camera |
+| 270             | look right            |
+
+Angles are stored on a segmented curve.
 
 ## API
 
-- components which are assigned depending on whether the game entity defnition has a matching nyan API object (engine.ability.Ability)
+API components have a corresponding nyan API object of type `engine.ability.Ability` defined
+in the nyan API. This API object can be retrieved using the `get_ability(..)` method of the
+component.
 
-- Idle
-  - nyan API: engine.ability.type.Idle
-  - represents the ingame "idle" state of a unit, i.e. where it is not active
-  - only used to access animations, sounds from nyan db
-- Live
-  - nyan API: engine.ability.type.Live
-  - stores attributes of entity and their current values, e.g. health
-- Move
-  - nyan API: engine.ability.type.Move
-  - allows the entity to move
-  - required for issuing move commands
-  - stores nothing
-  - speed, animations, sounds from nyan db
-- Turn
-  - nyan API: engine.ability.type.Turn
-  - allows the entity to turn, i.e. change its angle
-  - stores nothing
-  - speed, animations, sounds from nyan db
+### Idle
+
+![Idle Component UML](ASDF)
+
+**nyan API object:** [`engine.ability.type.Idle`](/doc/nyan/api_reference/reference_ability.md#abilitytypeidle)
+
+The `Idle` component represents the ingame "idle" state of the game entity, i.e. when
+it is doing nothing.
+
+The component stores no runtime data.
+
+
+### Live
+
+![Live Component UML](ASDF)
+
+**nyan API object:** [`engine.ability.type.Live`](/doc/nyan/api_reference/reference_ability.md#abilitytypelive)
+
+The `Live` component represents the game entity's ability to have attributes (e.g. health).
+
+An attribute's maximum limit is stored in the nyan API object, while
+the game entity's current attribute values are stored in the component
+on a discrete curve.
+
+
+### Move
+
+![Move Component UML](ASDF)
+
+**nyan API object:** [`engine.ability.type.Move`](/doc/nyan/api_reference/reference_ability.md#abilitytypemove)
+
+The `Move` component represents the game entity's ability to move in the game world.
+This also allows moving the game entity with move commands.
+
+The component stores no runtime data.
+
+
+### Turn
+
+![Turn Component UML](ASDF)
+
+**nyan API object:** [`engine.ability.type.Turn`](/doc/nyan/api_reference/reference_ability.md#abilitytypeturn)
+
+The `Turn` component represents the game entity's ability to change directions in the game world.
+Turning is implicitely required for moving but it also works on its own.
+
+The component stores no runtime data.
