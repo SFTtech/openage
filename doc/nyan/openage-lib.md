@@ -1,9 +1,18 @@
-openage nyan library
-====================
+# openage nyan library
 
 The openage engine defines all kinds of `NyanObject`s so the nyan interpreter can verify data integrity. Together, the defined objects provide the API that can be used by the games running on the engine.
 
 This interface will be described here.
+
+1. [Design principles](#design-principles)
+2. [API objects](#api-objects)
+   1. [Entity](#entity)
+   2. [GameEntity](#gameentity)
+   3. [Ability](#ability)
+   4. [Modifier](#modifier)
+   5. [Effect](#effect)
+3. [C++ Interface](#c-interface)
+
 
 ## Design principles
 
@@ -80,3 +89,7 @@ By default, modifiers apply to the abilities of the game entity that stores them
 There are two major types of effects: Discrete and continuous. Discrete effects happen at a *specific point in time*, while continuous effects are applied *over time* at a per second rate. Any discrete effect can be combined with every other discrete effect. The same applies for continuous effects.
 
 For an effect to apply, the effector's `Effect` needs a corresponding `Resistance` object on the resistor's side. Otherwise the effect is not evaluated.
+
+## C++ Interface
+
+ASDF
