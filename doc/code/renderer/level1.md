@@ -4,19 +4,18 @@ Low-level renderer for communicating with the OpenGL and Vulkan APIs.
 
 ## Overview
 
-1. [Level 1 Renderer](#level-1-renderer)
-   1. [Overview](#overview)
-   2. [Architecture](#architecture)
-   3. [Basic  Usage](#basic--usage)
-      1. [Window/Renderer Creation](#windowrenderer-creation)
-      2. [Adding a Shader Program](#adding-a-shader-program)
-      3. [Creating a Renderable](#creating-a-renderable)
-      4. [Rendering and Displaying the Result](#rendering-and-displaying-the-result)
-   4. [Advanced Usage](#advanced-usage)
-      1. [Framebuffers / Multiple Render Passes](#framebuffers--multiple-render-passes)
-      2. [Complex Geometry](#complex-geometry)
-      3. [Uniform Buffers](#uniform-buffers)
-   5. [Thread-safety](#thread-safety)
+1. [Overview](#overview)
+2. [Architecture](#architecture)
+3. [Basic  Usage](#basic--usage)
+   1. [Window/Renderer Creation](#windowrenderer-creation)
+   2. [Adding a Shader Program](#adding-a-shader-program)
+   3. [Creating a Renderable](#creating-a-renderable)
+   4. [Rendering and Displaying the Result](#rendering-and-displaying-the-result)
+4. [Advanced Usage](#advanced-usage)
+   1. [Framebuffers / Multiple Render Passes](#framebuffers--multiple-render-passes)
+   2. [Complex Geometry](#complex-geometry)
+   3. [Uniform Buffers](#uniform-buffers)
+5. [Thread-safety](#thread-safety)
 
 
 ## Architecture
@@ -46,7 +45,8 @@ abstract interface of the renderer renderer to make them usable with graphics ha
 
 ## Basic  Usage
 
-- see demos in libopenage/renderer/demo
+Code examples can be found in the [renderer demos](/libopenage/renderer/demo/).
+See the [testing docs](/doc/code/testing.md#python-demos) on how to try them out.
 
 ### Window/Renderer Creation
 
