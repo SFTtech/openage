@@ -109,8 +109,8 @@ public:
 const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activity::Node> &current_node) {
 	auto current = current_node;
 
-	if (current->get_type() == activity::node_t::EVENT_GATEWAY) {
-		auto node = std::static_pointer_cast<activity::EventNode>(current);
+	if (current->get_type() == activity::node_t::XOR_EVENT_GATE) {
+		auto node = std::static_pointer_cast<activity::XorEventGate>(current);
 		auto event_next = node->get_next_func();
 		auto next_id = event_next(0, nullptr, nullptr, nullptr);
 		current = node->next(next_id);
@@ -129,21 +129,21 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 			// TODO
 			return current;
 		} break;
-		case activity::node_t::TASK: {
-			auto node = std::static_pointer_cast<activity::TaskNode>(current);
+		case activity::node_t::TASK_CUSTOM: {
+			auto node = std::static_pointer_cast<activity::TaskCustom>(current);
 			auto task = node->get_task_func();
 			task(0, nullptr);
 			auto next_id = node->get_next();
 			current = node->next(next_id);
 		} break;
-		case activity::node_t::XOR_GATEWAY: {
-			auto node = std::static_pointer_cast<activity::ConditionNode>(current);
+		case activity::node_t::XOR_GATE: {
+			auto node = std::static_pointer_cast<activity::XorGate>(current);
 			auto condition = node->get_condition_func();
 			auto next_id = condition(0, nullptr);
 			current = node->next(next_id);
 		} break;
-		case activity::node_t::EVENT_GATEWAY: {
-			auto node = std::static_pointer_cast<activity::EventNode>(current);
+		case activity::node_t::XOR_EVENT_GATE: {
+			auto node = std::static_pointer_cast<activity::XorEventGate>(current);
 			auto event_primer = node->get_primer_func();
 			event_primer(0, nullptr, nullptr, nullptr);
 
@@ -181,10 +181,10 @@ void activity_demo() {
 	// create the nodes in the graph
 	// connections are created further below
 	auto start = std::make_shared<activity::StartNode>(0);
-	auto task1 = std::make_shared<activity::TaskNode>(1);
-	auto xor_node = std::make_shared<activity::ConditionNode>(2);
-	auto event_node = std::make_shared<activity::EventNode>(3);
-	auto task2 = std::make_shared<activity::TaskNode>(4);
+	auto task1 = std::make_shared<activity::TaskCustom>(1);
+	auto xor_node = std::make_shared<activity::XorGate>(2);
+	auto event_node = std::make_shared<activity::XorEventGate>(3);
+	auto task2 = std::make_shared<activity::TaskCustom>(4);
 	auto end = std::make_shared<activity::EndNode>(5);
 
 	// create an activity manager that controls the flow

@@ -31,7 +31,7 @@ static const condition_func_t no_condition = [](const time::time_t &,
 /**
  * Chooses one of its output nodes based on a condition.
  */
-class ConditionNode : public Node {
+class XorGate : public Node {
 public:
 	/**
      * Creates a new condition node.
@@ -42,14 +42,14 @@ public:
      * @param condition_func Function that determines which output node is chosen (can be set later).
      *                       This must be a valid node ID of one of the output nodes.
      */
-	ConditionNode(node_id id,
-	              node_label label = "Condition",
-	              const std::vector<std::shared_ptr<Node>> &outputs = {},
-	              condition_func_t condition_func = no_condition);
-	virtual ~ConditionNode() = default;
+	XorGate(node_id id,
+	        node_label label = "ExclusiveGateway",
+	        const std::vector<std::shared_ptr<Node>> &outputs = {},
+	        condition_func_t condition_func = no_condition);
+	virtual ~XorGate() = default;
 
 	inline node_t get_type() const override {
-		return node_t::XOR_GATEWAY;
+		return node_t::XOR_GATE;
 	}
 
 	/**

@@ -80,10 +80,10 @@ static const event_next_func_t no_next = [](const time::time_t &,
 /**
  * Waits for an event to be executed before continuing the control flow.
  */
-class EventNode : public Node {
+class XorEventGate : public Node {
 public:
 	/**
-      * Create a new event node.
+      * Create a new exclusive event gateway.
       *
       * @param id Unique identifier for this node.
       * @param label Human-readable label (optional).
@@ -91,15 +91,15 @@ public:
       * @param primer_func Function to create and register the event.
       * @param next_func Function to decide which node to visit after the event is handled.
       */
-	EventNode(node_id id,
-	          node_label label = "Event",
-	          const std::vector<std::shared_ptr<Node>> &outputs = {},
-	          event_primer_func_t primer_func = no_event,
-	          event_next_func_t next_func = no_next);
-	virtual ~EventNode() = default;
+	XorEventGate(node_id id,
+	             node_label label = "Event",
+	             const std::vector<std::shared_ptr<Node>> &outputs = {},
+	             event_primer_func_t primer_func = no_event,
+	             event_next_func_t next_func = no_next);
+	virtual ~XorEventGate() = default;
 
 	inline node_t get_type() const override {
-		return node_t::EVENT_GATEWAY;
+		return node_t::XOR_EVENT_GATE;
 	}
 
 	/**

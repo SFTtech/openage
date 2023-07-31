@@ -65,11 +65,11 @@ namespace openage::gamestate {
 std::shared_ptr<activity::Activity> create_test_activity() {
 	auto start = std::make_shared<activity::StartNode>(0);
 	auto idle = std::make_shared<activity::TaskSystemNode>(1, "Idle");
-	auto condition_moveable = std::make_shared<activity::ConditionNode>(2);
-	auto wait_for_command = std::make_shared<activity::EventNode>(3);
-	auto condition_command = std::make_shared<activity::ConditionNode>(4);
+	auto condition_moveable = std::make_shared<activity::XorGate>(2);
+	auto wait_for_command = std::make_shared<activity::XorEventGate>(3);
+	auto condition_command = std::make_shared<activity::XorGate>(4);
 	auto move = std::make_shared<activity::TaskSystemNode>(5, "Move");
-	auto wait_for_move = std::make_shared<activity::EventNode>(6);
+	auto wait_for_move = std::make_shared<activity::XorEventGate>(6);
 	auto end = std::make_shared<activity::EndNode>(7);
 
 	start->add_output(idle);

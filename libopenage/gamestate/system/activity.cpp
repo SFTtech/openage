@@ -41,10 +41,10 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 	}
 
 	// TODO: this check should be moved to a more general pre-processing section
-	if (current_node->get_type() == activity::node_t::EVENT_GATEWAY) {
+	if (current_node->get_type() == activity::node_t::XOR_EVENT_GATE) {
 		// returning to a event gateway means that the event has been triggered
 		// move to the next node here
-		auto node = std::static_pointer_cast<activity::EventNode>(current_node);
+		auto node = std::static_pointer_cast<activity::XorEventGate>(current_node);
 		auto event_next = node->get_next_func();
 		auto next_id = event_next(start_time, entity, loop, state);
 		current_node = node->next(next_id);
@@ -66,8 +66,8 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 			// TODO: if activities are nested, advance to parent activity
 			stop = true;
 		} break;
-		case activity::node_t::TASK: {
-			auto node = std::static_pointer_cast<activity::TaskNode>(current_node);
+		case activity::node_t::TASK_CUSTOM: {
+			auto node = std::static_pointer_cast<activity::TaskCustom>(current_node);
 			auto task = node->get_task_func();
 			task(start_time, entity);
 			auto next_id = node->get_next();
@@ -80,14 +80,14 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 			auto next_id = node->get_next();
 			current_node = node->next(next_id);
 		} break;
-		case activity::node_t::XOR_GATEWAY: {
-			auto node = std::static_pointer_cast<activity::ConditionNode>(current_node);
+		case activity::node_t::XOR_GATE: {
+			auto node = std::static_pointer_cast<activity::XorGate>(current_node);
 			auto condition = node->get_condition_func();
 			auto next_id = condition(start_time, entity);
 			current_node = node->next(next_id);
 		} break;
-		case activity::node_t::EVENT_GATEWAY: {
-			auto node = std::static_pointer_cast<activity::EventNode>(current_node);
+		case activity::node_t::XOR_EVENT_GATE: {
+			auto node = std::static_pointer_cast<activity::XorEventGate>(current_node);
 			auto event_primer = node->get_primer_func();
 			auto evs = event_primer(start_time + event_wait_time, entity, loop, state);
 			for (auto &ev : evs) {

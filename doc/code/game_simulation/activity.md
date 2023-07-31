@@ -1,80 +1,58 @@
 # Activity Control Flow
 
-- Configurable control flow for game entities
-- using a node graph
+The *activity control flow* is openage's method to make complex game entity behaviour
+configurable.
 
 1. [Motivation](#motivation)
 2. [Architecture](#architecture)
 3. [Node Types](#node-types)
-4. [Activity](#activity)
 
 
 ## Motivation
 
-- Commands in RTS often result in multiple actions that have to be taken
-  - command does not translate to single atomic action
-  - action chains for most commands, e.g. attack command results in actions move + attack
+Unit behaviour in RTS games can get very complex. In many cases, units are not
+just controlled by commands but other automated mechanisms, e.g. attacking enemy
+units in the line of sight. Furthermore, commands do not always translate to a single
+well-defined action. For example, an attack command usually results in a move action
+and a subsequent attack action. Some commands may even execute different actions depending
+on context.
 
-- action chains can get complex
-  - branching paths depending on conditions
-  - waiting for events or triggers
-  - parallel actions
-  - canceling an action requires clean up
+All this means that we cannot view the control flow of a unit as a simple mapping of
+command to action as is done in other games. Instead, we have to treat unit behaviour
+as a complex chain of actions with branching paths, wait states for events, triggers
+and feedback loops. Unless we want every command to be a hardcoded action chain, managing
+this complexity is key to making unit behaviour configurable.
 
-- control flow of commands and actions should not be hardcoded!
 
 ## Architecture
 
-- control flow modeled as a directed node graph
-  - following along the paths in the graph tells the game entity what to do
-  - current node == current action
-  - paths == connections to the next action
-  - activity == (sub)graph with start and end node
-    - defines a scope or reusable
-![graph example]()
+Game entity control flows in openage are modelled as directed node graph, so-called *activities*.
+Nodes in the graph correspond to actions that execute for the game entity or conditional queries
+and event triggers that indicate which path to take next. By traversing the node graph along
+its paths, the game entities actions are determined. The currently visited node in the graph
+corresponds to the current action of a unit.
 
-- inpired by BPMN flow graph
-  - you don't need to know BPMN because we explain everything relevant in here
-  - but you can use BPMN draw tools to make graphs
+Activities are reusable, i.e. they are intended to be shared by many game entities Usually,
+all game entities of the same type should share the same behaviour, so they get assigned
+the same activity node graph.
+
+An activity can also be represented visually like this:
+
+![graph example](ASDF)
+
+The design is heavily inpired by the [BPMN](https://en.wikipedia.org/wiki/Business_Process_Model_and_Notation)
+representation. You don't need to know BPMN to understand the activity control flow because
+we explain everything important about the graphs in our documentation. However,
+you can use available [BPMN tools](https://bpmn.io/) to draw activity node graphs.
 
 ## Node Types
 
-- Start
-  - 0 inputs / 1 output
-  - no action
-  - signifies start of activity
-- End
-  - 1 input / 0 outputs
-  - no action
-  - signifies end of activity
-- Task System
-  - 1 input / 1 output
-  - references built-in system that should be executed when visiting
-  - signifies an action
-- Task
-  - 1 input / 1 output
-  - references a custom function that should be exectuted when visiting
-  - signifies an action
-  - for scripting or debugging
-- Exclusive Event Gateway
-  - 1 input / 1+ outputs
-  - register event callback(s) when visiting
-  - choose 1 output when event callback s triggered
-  - signifies a branch
-- Exclusive Gateway
-  - 1 input / 1+ outputs
-  - choose 1 output depending on condition function
-  - i comparison to event gateway, conditions are checked immediately
-  - signifies a branch
-- activity
-  - 1 input / 1 output
-  - start a subactivity
-  - signifies a nested action
 
-
-## Activity
-
-- encapsulates a node graph with start and end
-- defines a scope of interaction
-- allows reuse of common control flows
-  - e.g. movement
+| Type             | Symbol | Inputs | Outputs | Description               |
+| ---------------- | ------ | ------ | ------- | ------------------------- |
+| `START`          | [ASDF] | 0      | 1       | Start of activity         |
+| `END`            | [ASDF] | 1      | 0       | End of activity           |
+| `TASK_SYSTEM`    | [ASDF] | 1      | 1       | Run built-in system       |
+| `TASK_CUSTOM`    | [ASDF] | 1      | 1       | Run custom function       |
+| `XOR_EVENT_GATE` | [ASDF] | 1      | 1+      | Wait for event and branch |
+| `XOR_GATE`       | [ASDF] | 1      | 1+      | Branch on condition       |
