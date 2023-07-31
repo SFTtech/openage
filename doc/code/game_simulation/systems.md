@@ -7,30 +7,29 @@ Overview of the built-in systems in the game simulation.
 
 ## Move
 
-- handles movement actions for game entities
-- move_command
-  - move the entity using a move command
-  - uses movement parameters from command to call move_default
-- move default
-  - move the game entity to a new position
-  - requires Move and Turn components
-  - workflow
-    1. Turn
-       1. calculate new angle in move direction
-       2. calculate turn time from new angle and turn speed
-       3. add keyframe for new angle at t + turn time
-    2. Move
-       1. calculate move time from path distance and move speed
-       2. add keyframe for old position at t and for new position at t + turn time + move time
-    3. Update animations if animated
-  - returns duration of movement (t + turn time + move time)
+![Move systems class UML](ASDF)
+
+Handles movement actions for game entities.
+
+`move_default(..)` moves a game entity to the new position specified in the function
+call. This requires the game entity to have the `Move` and `Turn` components.
+Waypoints for the exact path are fetched from the pathfinder.
+For every straight path between waypoints, the game entity is turned first, then
+moved (same as in *Age of Empires*). If an animation is available for the `Move`
+component, this animation is forwarded as the game entity's active animation to the
+renderer. The function returns the cumulative time of all turn and movement actions
+initiated by this function.
+
+`move_command(..)` processes the payload from a move *command* to call `move_default(..)`
+with the payload parameters.
+
 
 ## Idle
 
-- handles idle action for game entities
-- since idle means doing nothing, this only updates animations and sounds
-- idle
-  - requires Idle component
-  - workflow
-    1. Update animations if animated
-  - returns duration of action (always 0)
+![Idle systems class UML](ASDF)
+
+Handles idle actions for game entities.
+
+`idle(..)` updates the animation of the game entity. This requires the game
+entity to have the `Idle` component. The function returns a time of 0 since
+no actionsconsuming simulation time are taken.
