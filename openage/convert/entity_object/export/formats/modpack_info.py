@@ -10,7 +10,7 @@ import toml
 from ..data_definition import DataDefinition
 
 
-FILE_VERSION = "1"
+FILE_VERSION = "2"
 
 
 class ModpackInfo(DataDefinition):
@@ -25,6 +25,7 @@ class ModpackInfo(DataDefinition):
         # Info
         self.packagename: str = None
         self.version: str = None
+        self.versionstr: str = None
         self.extra_info: dict[str, str] = {}
 
         # Assets
@@ -153,6 +154,7 @@ class ModpackInfo(DataDefinition):
         self,
         packagename: str,
         version: str,
+        versionstr: str = None,
         repo: str = None,
         alias: str = None,
         title: str = None,
@@ -166,8 +168,10 @@ class ModpackInfo(DataDefinition):
 
         :param packagename: Name of the modpack.
         :type packagename: str
-        :param version: Version number.
+        :param version: Internal version number. Must have semver format.
         :type version: str
+        :param versionstr: Human-readable version number.
+        :type versionstr: str
         :param repo: Name of the repo where the package is hosted.
         :type repo: str
         :param alias: Alias of the modpack.
@@ -185,6 +189,9 @@ class ModpackInfo(DataDefinition):
         """
         self.packagename = packagename
         self.version = version
+
+        if versionstr:
+            self.extra_info["versionstr"] = versionstr
 
         if repo:
             self.extra_info["repo"] = repo

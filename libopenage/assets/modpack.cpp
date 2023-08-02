@@ -33,6 +33,9 @@ ModpackInfo parse_modepack_def(const util::Path &info_file) {
 	}
 
 	// optionals
+	if (info.contains("versionstr")) {
+		def.versionstr = info.at("versionstr").as_string();
+	}
 	if (info.contains("repo")) {
 		def.repo = info.at("repo").as_string();
 	}

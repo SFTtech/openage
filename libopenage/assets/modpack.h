@@ -43,6 +43,7 @@ struct ModpackInfo {
 	// see /doc/media/openage/modpack_definition_file.md
 	std::string id;
 	std::string version;
+	std::string versionstr;
 	std::string repo;
 	std::string alias;
 	std::string title;
