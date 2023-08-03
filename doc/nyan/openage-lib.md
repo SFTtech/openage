@@ -92,4 +92,5 @@ For an effect to apply, the effector's `Effect` needs a corresponding `Resistanc
 
 ## C++ Interface
 
-ASDF
+openage provides a thin nyan API layer to make interacing with nyan more accessible. This layer is implemented in `libopenage/gamestate/api` and
+covers the most common use caes for retrieving objects and reading values. Using/extending the nyan API layer should be preferred when adding game logic that accesses nyan to the engine.
