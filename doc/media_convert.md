@@ -8,12 +8,9 @@ Currently we *support* conversion for these games:
 * **RoR**: Age of Empires 1 (1997) + Rise of Rome
 * **AoC**: Age of Empires 2 (1999) + The Conqueror's
 * **SWGB**: Star Wars: Galactic Battlegrounds + Clone Campaigns
-* **DE2**: Age of Empires 2: Definitve Edition
-
-The following versions are currently *unsupported*, but will be added later:
-
 * **HD**: Age of Empires 2 (2013) (formerly: Age of Empires 2: HD Edition)
 * **DE1**: Age of Empires 1: Definitive Edition
+* **DE2**: Age of Empires 2: Definitve Edition
 
 On Linux, you may have to use additional measures to download DE2 versions from Steam:
 
@@ -26,7 +23,7 @@ On Linux, you may have to use additional measures to download DE2 versions from 
 `./steamcmd.sh +@sSteamCmdForcePlatformType windows +login USERNAME +force_install_dir ASSET_DIR +app_update GAME_APP_ID validate +quit`
 
 The game version vs Game_ID table such as below:
- Age of Empires(2013): 221380
+ Age of Empires (2013): 221380
  Age of Empires: Definitive Edition: 1017900
  Age of Empires II (Rise of the Rajas): 488060
  Age of Empires II: Definitive Edition: 813780
