@@ -1,5 +1,7 @@
 # QtQuick-based Graphical User Interface
 
+**Important Notice**: This document is outdated and subject to change.
+
 ## Using Qt Creator Integrated Development Environment (IDE)
 
 See [Qt Creator IDE](/doc/ide/qt_creator.md).
@@ -30,7 +32,7 @@ Example:
 ## Exposing components to the GUI layer
 
 Components are adapted by writing QObject counterparts for them.
-Look for the examples in the `libopenage/gui` directory.
+Look for the examples in the `libopenage/renderer/gui` directory.
 
 There is a property-based approach and a model-based extension to it.
 
@@ -40,7 +42,7 @@ Let's suppose we have a class `ResourceAmount` in `libopenage/economy`, and we w
 
 In order to do that:
 
-1. A class `ResourceAmountLink` must be created in the `libopenage/gui`.
+1. A class `ResourceAmountLink` must be created in the `libopenage/renderer/gui`.
 It must derive from `GuiItemQObject` and `GuiItem<ResourceAmountLink>`.
 It must be registered in the QML type system using a usual Qt approach:
 ```cpp
@@ -85,7 +87,7 @@ this->setv("player_radius", 10);
 this->set_csv("player_names", std::vector<std::string>{"name1", "name2"});
 ```
 
-3. A class `GeneratorParametersLink` must be created in the `libopenage/gui`.
+3. A class `GeneratorParametersLink` must be created in the `libopenage/renderer/gui`.
 It must derive from `QObject` and `GuiItemListModel<GeneratorParametersLink>`.
 It must be registered in the QML type system using a usual Qt approach:
 ```cpp
@@ -166,11 +168,11 @@ void EditorModeLink::on_core_adopted() {
 
 ### Including headers
 
-The files that are outside of the `libopenage/gui/` are allowed to include only the headers from the `libopenage/gui/guisys/public` and `libopenage/gui/integration/public`.
+The files that are outside of the `libopenage/renderer/gui/` are allowed to include only the headers from the `libopenage/renderer/gui/guisys/public` and `libopenage/renderer/gui/integration/public`.
 
 ## Directory structure
 
-The subsystem resides in the `libopenage/gui`.
+The subsystem resides in the `libopenage/renderer/gui`.
 
 * random files in the directory - bindings for the game components
 * `guisys/` - non-openage-specific part
