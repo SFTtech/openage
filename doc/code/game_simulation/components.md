@@ -5,7 +5,7 @@ Overview of the built-in game entity components in the game simulation.
 1. [Internal](#internal)
    1. [Activity](#activity)
    2. [CommandQueue](#commandqueue)
-   3. [Owner](#owner)
+   3. [Ownership](#ownership)
    4. [Position](#position)
 2. [API](#api)
    1. [Idle](#idle)
@@ -21,7 +21,7 @@ store runtime data.
 
 ### Activity
 
-![Activity Component UML](ASDF)
+![Activity Component UML](images/component_activity_uml.svg)
 
 The `Activity` component stores a reference to the top-level activity for the
 game entity. Essentially, this gives access to the entire activity node graph
@@ -37,7 +37,7 @@ should be canceled via the `cancel_events(..)` method.
 
 ### CommandQueue
 
-![CommandQueue Component UML](ASDF)
+![CommandQueue Component UML](images/component_component_activity_uml.svg)
 
 The `CommandQueue` component stores commands for the game entity in a [queue curve container](/doc/code/curves.md#queue).
 
@@ -45,16 +45,16 @@ Commands in the queue use `Command` class derivatives which specify a command ty
 and payload for the command.
 
 
-### Owner
+### Ownership
 
-![Owner Component UML](ASDF)
+![Ownership Component UML](images/component_ownership_uml.svg)
 
-The `Owner` component stores the ID of the player who owns the game entity.
+The `Ownership` component stores the ID of the player who owns the game entity.
 
 
 ### Position
 
-![Position Component UML](ASDF)
+![Position Component UML](images/component_position_uml.svg)
 
 The `Position` component stores the location and direction of the game entity
 inside the game world.
@@ -83,7 +83,7 @@ component.
 
 ### Idle
 
-![Idle Component UML](ASDF)
+![Idle Component UML](images/component_idle_uml.svg)
 
 **nyan API object:** [`engine.ability.type.Idle`](/doc/nyan/api_reference/reference_ability.md#abilitytypeidle)
 
@@ -95,7 +95,7 @@ The component stores no runtime data.
 
 ### Live
 
-![Live Component UML](ASDF)
+![Live Component UML](images/component_live_uml.svg)
 
 **nyan API object:** [`engine.ability.type.Live`](/doc/nyan/api_reference/reference_ability.md#abilitytypelive)
 
@@ -108,7 +108,7 @@ on a discrete curve.
 
 ### Move
 
-![Move Component UML](ASDF)
+![Move Component UML](images/component_move_uml.svg)
 
 **nyan API object:** [`engine.ability.type.Move`](/doc/nyan/api_reference/reference_ability.md#abilitytypemove)
 
@@ -120,7 +120,7 @@ The component stores no runtime data.
 
 ### Turn
 
-![Turn Component UML](ASDF)
+![Turn Component UML](images/component_turn_uml.svg)
 
 **nyan API object:** [`engine.ability.type.Turn`](/doc/nyan/api_reference/reference_ability.md#abilitytypeturn)
 

@@ -12,7 +12,7 @@ manages the creation, scheduling, and execution of these events.
 
 ## Architecture
 
-![event system UML](ASDF)
+![event system UML](images/event_classes_uml.svg)
 
 The central component of the event system is the *event loop* (`EventLoop`). It is
 the main point of interaction between the game simulation logic and the event system.

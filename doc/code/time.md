@@ -9,7 +9,7 @@ To keep track of and synchronize time between different engine components, opena
 a low-level time control interface in the `openage::time` namespace. This system is very simple:
 Basically, it consists of a loop in a dedicated thread that constantly updates an internal clock.
 
-![time loop UML](ASDF)
+![time loop UML](images/time_classes_uml.svg)
 
 `TimeLoop` provides a basic interface to create an internal clock and run the update loop. Once
 initialized, the `Clock` instance can be accessed with the `get_clock()` method. For most calculations,

@@ -13,7 +13,7 @@ networking or scripting, are handled as separate subsystems.
 
 ## Architecture
 
-![Game simulation overview UML](ASDF)
+![Game simulation overview UML](images/simulation_uml.svg)
 
 The game simulation is instantiated from the main thread via a `GameSimulation` object.
 This object controls the game loop, the current game session, and other simulation
@@ -29,8 +29,6 @@ is used for every type of world object (e.g. units, buildings, trees, resources,
 
 
 ## Workflow
-
-![Game simulation loop](ASDF)
 
 To initiate a game, a `GameSimulation` object must be created. This is usually done by
 the `Engine` object in the main thread. On initialization, the game simulation automatically sets up

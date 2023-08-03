@@ -38,7 +38,7 @@ the same activity node graph.
 
 An activity can also be represented visually like this:
 
-![graph example](ASDF)
+![graph example](images/activity_graph.svg)
 
 The design is heavily inpired by the [BPMN](https://en.wikipedia.org/wiki/Business_Process_Model_and_Notation)
 representation. You don't need to know BPMN to understand the activity control flow because
@@ -48,11 +48,11 @@ you can use available [BPMN tools](https://bpmn.io/) to draw activity node graph
 ## Node Types
 
 
-| Type             | Symbol | Inputs | Outputs | Description               |
-| ---------------- | ------ | ------ | ------- | ------------------------- |
-| `START`          | [ASDF] | 0      | 1       | Start of activity         |
-| `END`            | [ASDF] | 1      | 0       | End of activity           |
-| `TASK_SYSTEM`    | [ASDF] | 1      | 1       | Run built-in system       |
-| `TASK_CUSTOM`    | [ASDF] | 1      | 1       | Run custom function       |
-| `XOR_EVENT_GATE` | [ASDF] | 1      | 1+      | Wait for event and branch |
-| `XOR_GATE`       | [ASDF] | 1      | 1+      | Branch on condition       |
+| Type             | Inputs | Outputs | Description               |
+| ---------------- | ------ | ------- | ------------------------- |
+| `START`          | 0      | 1       | Start of activity         |
+| `END`            | 1      | 0       | End of activity           |
+| `TASK_SYSTEM`    | 1      | 1       | Run built-in system       |
+| `TASK_CUSTOM`    | 1      | 1       | Run custom function       |
+| `XOR_EVENT_GATE` | 1      | 1+      | Wait for event and branch |
+| `XOR_GATE`       | 1      | 1+      | Branch on condition       |

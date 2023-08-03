@@ -49,7 +49,7 @@ is the case for most RTS games - these downsides are usually outweight by the po
 
 ## Architecture
 
-![Curve classes hierarchy UML](ASDF)
+![Curve classes hierarchy UML](images/curve_classes_uml.svg)
 
 openage provides several curve types with different interpolation behaviour that each have
 their specific use case. Primitive data types are covered by the `BaseCurve` interface
@@ -88,7 +88,7 @@ This section provides an overview over the available curves types.
 
 ### Primitive
 
-![Primitive curve types UML](ASDF)
+![Primitive curve types UML](images/primitive_curves_uml.svg)
 
 Primitive curves are intended for members with single value types. These include, for example,
 the primitive C++ types (e.g. `int`, `float`, `std::string`), simple structs and data classes,
@@ -138,7 +138,7 @@ for specific curve types.
 
 #### Discrete
 
-![Discrete curve function example]()
+![Discrete curve function example](ASDF)
 
 Discrete curves implement **constant interpolation** between keyframes. This means
 that the value returned by `get(t)` is always equal to the value of the previous
@@ -150,7 +150,7 @@ e.g. for the health of a game entity.
 
 #### Continuous
 
-![Continuous curve function example]()
+![Continuous curve function example](ASDF)
 
 Continuous curves implement **linear interpolation** between keyframes. This means
 that the value returned by `get(t)` is calculated from the value difference
@@ -171,7 +171,7 @@ e.g. a game entity's position or the construction progress of a building.
 
 #### Segmented
 
-![Segmented curve function example]()
+![Segmented curve function example](ASDF)
 
 Segmented curves implement **linear interpolation** between keyframes and additionally
 allow jumps between keyframe values. As with continuous curves, the value returned by `get(t)`

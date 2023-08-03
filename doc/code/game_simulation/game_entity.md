@@ -13,7 +13,7 @@ Game entities represent objects inside the game world.
 
 ## Architecture
 
-![Game entity UML](ASDF)
+![Game entity UML](images/game_entity_overview.svg)
 
 Game entity mechanics are structured using the concept of *separation of concerns*.
 This means that there is not one single `GameEntity` class that implements all data
@@ -34,7 +34,7 @@ because we can't think of anything better (and because we are too lazy to find b
 
 ## Game Entity class
 
-![Game entity class UML](ASDF)
+![Game entity class UML](images/game_entity_uml.svg)
 
 The `GameEntity` class primarily provides references to the game entity's unique ID, assigned
 components, and event handling manager. If the game entity is supposed to be animated,
@@ -52,7 +52,7 @@ of the specific entity can be accessed via the `GameEntity` object's `get_compon
 
 For a description of the available components, check the [component reference](/doc/code/game_simulation/components.md).
 
-![Component class UML](ASDF)
+![Component class UML](images/component_uml.svg)
 
 Components are data storage objects for a game entity that also perform the dual role
 of signifying what a game entity can do or is depending on their component type. Component
@@ -111,7 +111,7 @@ between systems may quickly become unmanageable.
 
 ### Activities
 
-![Activity Example](ASDF)
+![Activity Example](images/activity_graph.svg)
 
 *Activities* connect systems together in a node graph to describe the overall control flow
 for a game entity. In openage, activity node graphs are used to model the complex behaviour
@@ -132,7 +132,7 @@ It can happen automatically or be triggered by an event. In the latter case,
 the event is handled by the `GameEntityManager` which calls an activity *system*
 that processes the event to choose the next node.
 
-![Activity Workflow](ASDF)
+![Activity Workflow](images/activity_workflow.png)
 
 
 ### Manager

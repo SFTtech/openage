@@ -2,12 +2,24 @@
 
 Overview of the built-in systems in the game simulation.
 
-1. [Move](#move)
-2. [Idle](#idle)
+1. [Idle](#idle)
+2. [Move](#move)
+
+
+## Idle
+
+![Idle systems class UML](images/system_idle.svg)
+
+Handles idle actions for game entities.
+
+`idle(..)` updates the animation of the game entity. This requires the game
+entity to have the `Idle` component. The function returns a time of 0 since
+no actionsconsuming simulation time are taken.
+
 
 ## Move
 
-![Move systems class UML](ASDF)
+![Move systems class UML](images/system_move.svg)
 
 Handles movement actions for game entities.
 
@@ -22,14 +34,3 @@ initiated by this function.
 
 `move_command(..)` processes the payload from a move *command* to call `move_default(..)`
 with the payload parameters.
-
-
-## Idle
-
-![Idle systems class UML](ASDF)
-
-Handles idle actions for game entities.
-
-`idle(..)` updates the animation of the game entity. This requires the game
-entity to have the `Idle` component. The function returns a time of 0 since
-no actionsconsuming simulation time are taken.
