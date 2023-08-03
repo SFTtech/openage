@@ -46,7 +46,7 @@ Dependency list:
     C   O include-what-you-use
     CR    nyan  (https://github.com/SFTtech/nyan)
     CR  O ncurses
-    C     jinja2
+    C     mako
     CR    sdl2
     CR    sdl2_image
     CR    opusfile

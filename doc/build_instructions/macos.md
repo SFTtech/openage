@@ -10,7 +10,7 @@ brew tap homebrew/cask-fonts
 brew install font-dejavu
 brew install cmake python3 libepoxy freetype fontconfig harfbuzz sdl2 sdl2_image opus opusfile qt6 libogg libpng toml11 eigen
 brew install llvm
-pip3 install cython numpy jinja2 lz4 pillow pygments toml
+pip3 install cython numpy mako lz4 pillow pygments toml
 
 # optional, for documentation generation
 brew install doxygen
