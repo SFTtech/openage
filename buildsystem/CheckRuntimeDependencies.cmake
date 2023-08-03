@@ -5,7 +5,7 @@
 #
 # grep -RE '^ *(import |from [^.])' | cut -d: -f2- | \
 #     sed 's/^ *//g' | sort -u | grep -v openage
-set(REQUIRED_PYTHON_MODULES "PIL.Image" "PIL.ImageDraw" "numpy" "pygments" "jinja2" "toml" "lz4")
+set(REQUIRED_PYTHON_MODULES "PIL.Image" "PIL.ImageDraw" "numpy" "pygments" "mako.template" "toml" "lz4")
 
 # command-line tools
 # example: set(REQUIRED_UTILITIES "foobar")

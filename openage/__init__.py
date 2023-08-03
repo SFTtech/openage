@@ -38,7 +38,7 @@ else:
         f"Python        {config.PYTHONINTERPRETER}\n"
         f"Python C API  {config.PYTHONCAPI}\n"
         f"Cython        {config.CYTHONVERSION}\n"
-        f"Jinja2        {config.JINJAVERSION}\n"
+        f"Mako          {config.MAKOVERSION}\n"
         f"NumPy         {config.NUMPYVERSION}\n"
         f"Pillow        {config.PILVERSION}\n"
         f"Pygments      {config.PYGMENTSVERSION}\n"
