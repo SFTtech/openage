@@ -38,6 +38,7 @@ __NOTE:__ You need to manually make sure and doublecheck if the system you are b
  Open a command prompt at `<Python 3 installation directory>/Scripts`
 
     pip install cython numpy lz4 toml pillow pygments pyreadline3 mako
+
 _Note:_ Make sure the Python 3 instance you're installing these scripts for is the one you call `python` in CMD
 _Note:_ Also ensure that `python` and `python3` both point to the correct and the same version of Python 3
 
