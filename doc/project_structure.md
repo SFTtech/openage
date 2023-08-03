@@ -1,6 +1,4 @@
-Project Structure
-=================
-
+# Project Structure
 
 One of the biggest problems for newcomers who want to contribute code to free
 software projects is that they have no idea where to start.
@@ -8,6 +6,21 @@ software projects is that they have no idea where to start.
 Reading, understanding and finding the relevant code part is hard.
 
 This file explains the modular structure of the project.
+
+1. [Architecture](#architecture)
+2. [Languages](#languages)
+3. [Folders](#folders)
+   1. [assets/](#assets)
+   2. [buildsystem/](#buildsystem)
+   3. [cfg/](#cfg)
+   4. [dist/](#dist)
+   5. [doc/](#doc)
+   6. [etc/](#etc)
+   7. [legal/](#legal)
+   8. [libopenage/](#libopenage)
+   9. [openage/](#openage)
+   10. [packaging/](#packaging)
+
 
 
 ## Architecture
@@ -19,11 +32,11 @@ The [overall architecture](/doc/architecture.md) describes the conceptual overvi
 
 We use Python, Cython and C++.
 
-Extension     | Language  | Usage
---------------|-----------|---------
-`.py`         | Python    | Everything that does not crunch data
-`.pyx` `.pxd` | Cython    | Fast Python code, glue between C/C++ and Python
-`.h`   `.cpp` | C++       | Data crunching code: simulation, graphics, sound, ...
+| Extension     | Language | Usage                                                 |
+| ------------- | -------- | ----------------------------------------------------- |
+| `.py`         | Python   | Everything that does not crunch data                  |
+| `.pyx` `.pxd` | Cython   | Fast Python code, glue between C/C++ and Python       |
+| `.h`   `.cpp` | C++      | Data crunching code: simulation, graphics, sound, ... |
 
 
 ## Folders
@@ -37,8 +50,8 @@ of the project.
 
 Game assets required at run time are placed in here. This includes everything
 that is converted from the original assets (see [asset conversion](media_convert.md))
-and other input like shaders etc. The directory is installed to `/usr/share/openage/assets`
-or whatever the platform recommends.
+and other input like shaders etc. The directory is `assets` for local builds or
+installed to `/usr/share/openage/assets` or whatever the platform recommends.
 
 
 ### buildsystem/
@@ -67,6 +80,10 @@ In the `doc/` folder is conceptual documentation, ideas, algorithms, etc.
 The code itself is commented with `/** doxygen comments */`.
 
 See [doc/README.md](/doc/README.md) for documentation guidelines.
+
+### etc/
+
+Additional resources for development tools, e.g. pylint and valgrind configs.
 
 
 ### legal/
