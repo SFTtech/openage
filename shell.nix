@@ -14,7 +14,7 @@ pkgs.mkShell {
 
     pkgs.eigen
     pkgs.python39
-    pkgs.python39Packages.jinja2
+    pkgs.python39Packages.mako
     pkgs.python39Packages.pillow
     pkgs.python39Packages.numpy
     pkgs.python39Packages.lz4
