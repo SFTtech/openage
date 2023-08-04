@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>15</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>795</x>
+      <y>405</y>
+      <w>510</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>**Move**
+--
+move_default(GameEntity, phys3, time_t): time_t
+move_command(GameEntity, time_t): time_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>810</x>
+      <y>630</y>
+      <w>375</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>**Idle**
+--
+idle(GameEntity, time_t): time_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
