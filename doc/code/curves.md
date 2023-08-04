@@ -34,7 +34,7 @@ from desync states. Data is not changed incrementally but is instead calculated 
 *keyframe interpolation*. In other words, changes to data are treated as keyframes on
 a timeline with in-between values being interpolated from adjacent keyframes.
 
-![Curve keyframes example](ASDF)
+![Curve keyframes example](images/continuous_curve.png)
 
 Additionally, curves cannot only access values for the current simulation time but also for
 any past or even future times. Keyframes can also be inserted for any point in time without
@@ -138,7 +138,7 @@ for specific curve types.
 
 #### Discrete
 
-![Discrete curve function example](ASDF)
+![Discrete curve function example](images/discrete_curve.png)
 
 Discrete curves implement **constant interpolation** between keyframes. This means
 that the value returned by `get(t)` is always equal to the value of the previous
@@ -150,7 +150,7 @@ e.g. for the health of a game entity.
 
 #### Continuous
 
-![Continuous curve function example](ASDF)
+![Continuous curve function example](images/continuous_curve.png)
 
 Continuous curves implement **linear interpolation** between keyframes. This means
 that the value returned by `get(t)` is calculated from the value difference
@@ -171,7 +171,7 @@ e.g. a game entity's position or the construction progress of a building.
 
 #### Segmented
 
-![Segmented curve function example](ASDF)
+![Segmented curve function example](images/segmented_curve.png)
 
 Segmented curves implement **linear interpolation** between keyframes and additionally
 allow jumps between keyframe values. As with continuous curves, the value returned by `get(t)`
