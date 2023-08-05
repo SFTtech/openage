@@ -16,7 +16,7 @@ This interface will be described here.
 
 ## Design principles
 
-In addition to the [nyan design goals](https://github.com/SFTtech/nyan/blob/master/doc/nyan.md#design-goals), the openage mod API follows its own design principles. It is recommended to follow these principles when extending the API.
+In addition to the [nyan design goals](https://github.com/SFTtech/nyan/blob/master/doc/README.md#design-idea), the openage mod API follows its own design principles. It is recommended to follow these principles when extending the API.
 
 **Single API tree**
 

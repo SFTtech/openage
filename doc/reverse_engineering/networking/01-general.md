@@ -25,59 +25,59 @@ Sync packets can be further categorized into periodic (sent in regular intervals
 
 Packets are recognized by a one byte long "command byte" in the header. So far 12 different network commands have been identified.
 
-Command | Purpose
---------|--------------
-0x31    | Sync
-0x32    | Sync
-0x35    | Sync (Lobby)
-0x3e    | Player-issued
-0x41    | Sync
-0x43    | Chat Message
-0x44    | Sync
-0x4d    | Sync
-0x51    | De-Sync
-0x52    | Readying (Lobby)
-0x53    | Sync
-0x5a    | Lobby
+| Command | Purpose          |
+| ------- | ---------------- |
+| 0x31    | Sync             |
+| 0x32    | Sync             |
+| 0x35    | Sync (Lobby)     |
+| 0x3e    | Player-issued    |
+| 0x41    | Sync             |
+| 0x43    | Chat Message     |
+| 0x44    | Sync             |
+| 0x4d    | Sync             |
+| 0x51    | De-Sync          |
+| 0x52    | Readying (Lobby) |
+| 0x53    | Sync             |
+| 0x5a    | Lobby            |
 
 All packets with command `0x3e` have a second "command byte" after the header that represents the command a player has given ingame. To avoid confusion, we will call all player-issued commands "actions" and reserve the term "commands" for the actual network commands seen above. Furthermore, the identifier for a player's action will be called "action byte". 34 of these can be found in network packets.
 
-Action | Purpose
--------|------------
-0x00   | Primary Action (Attacking, Resource gathering, Boarding Transport Ship)
-0x01   | Stop
-0x02   | Primary Action (AI)
-0x03   | Move
-0x0a   | Move (AI)
-0x0b   | Resign
-0x10   | Set waypoint
-0x12   | Stance
-0x13   | Guard
-0x14   | Follow
-0x15   | Patrol
-0x17   | Formation
-0x1b   | Save & Exit
-0x1f   | Coordinated Move (AI)
-0x64   | Train unit (AI)
-0x65   | Research
-0x66   | Build
-0x67   | Diplomacy/Cheats/Change Speed
-0x69   | Build wall
-0x6a   | Delete
-0x6b   | Attack ground
-0x6c   | Tribute
-0x6e   | Repair
-0x6f   | Unboard/Ungarrison
-0x72   | Toggle gate
-0x73   | Flare
-0x75   | Garrison/Stop building unit
-0x77   | Train unit (Human)
-0x78   | Rally point
-0x7a   | Sell
-0x7b   | Buy
-0x7e   | Drop relic
-0x7f   | Toggle townbell
-0x80   | Back to work
+| Action | Purpose                                                                 |
+| ------ | ----------------------------------------------------------------------- |
+| 0x00   | Primary Action (Attacking, Resource gathering, Boarding Transport Ship) |
+| 0x01   | Stop                                                                    |
+| 0x02   | Primary Action (AI)                                                     |
+| 0x03   | Move                                                                    |
+| 0x0a   | Move (AI)                                                               |
+| 0x0b   | Resign                                                                  |
+| 0x10   | Set waypoint                                                            |
+| 0x12   | Stance                                                                  |
+| 0x13   | Guard                                                                   |
+| 0x14   | Follow                                                                  |
+| 0x15   | Patrol                                                                  |
+| 0x17   | Formation                                                               |
+| 0x1b   | Save & Exit                                                             |
+| 0x1f   | Coordinated Move (AI)                                                   |
+| 0x64   | Train unit (AI)                                                         |
+| 0x65   | Research                                                                |
+| 0x66   | Build                                                                   |
+| 0x67   | Diplomacy/Cheats/Change Speed                                           |
+| 0x69   | Build wall                                                              |
+| 0x6a   | Delete                                                                  |
+| 0x6b   | Attack ground                                                           |
+| 0x6c   | Tribute                                                                 |
+| 0x6e   | Repair                                                                  |
+| 0x6f   | Unboard/Ungarrison                                                      |
+| 0x72   | Toggle gate                                                             |
+| 0x73   | Flare                                                                   |
+| 0x75   | Garrison/Stop building unit                                             |
+| 0x77   | Train unit (Human)                                                      |
+| 0x78   | Rally point                                                             |
+| 0x7a   | Sell                                                                    |
+| 0x7b   | Buy                                                                     |
+| 0x7e   | Drop relic                                                              |
+| 0x7f   | Toggle townbell                                                         |
+| 0x80   | Back to work                                                            |
 
 When the game is recorded, the UDP data stream of a `0x3e` packet (without the header) is written straight into the .mgx files with few changes. Viewing the recording will therefore simulate the exact actions that were done by the players. For more information on this, check the **Further Reading** section below.
 
@@ -89,12 +89,12 @@ Values in the network protocol can have a length of one, two or four byte. Littl
 
 The data is described with few data types, which are shown in the table below.
 
-Length   | Data Types
----------|------------
-1 byte   | int8, (ASCII) char
-2 byte   | int16
-4 byte   | int32, float
-other    | (1-dimensional) array
+| Length | Data Types            |
+| ------ | --------------------- |
+| 1 byte | int8, (ASCII) char    |
+| 2 byte | int16                 |
+| 4 byte | int32, float          |
+| other  | (1-dimensional) array |
 
 Most of the fields present in the network protocol have a fixed length. The use cases for variable length fields are usually lists of `unit_id`s or waypoints and will be handled as arrays in this documentation.
 
@@ -113,10 +113,10 @@ In this document, we will assume that AoC uses a carthesian coordinate system wi
 To get a better understanding of the networking design and the underlying principles, it might be beneficial to read these sources.
 
 [1] Dave Pottering, *1500 Archers on a 28.8: Network Programming in Age of Empires and Beyond*, 2001
-https://www.gamasutra.com/view/feature/131503/1500_archers_on_a_288_network_.php?page=1
+https://www.gamedeveloper.com/programming/1500-archers-on-a-28-8-network-programming-in-age-of-empires-and-beyond
 
 [2] Matthew Pritchard, *How to Hurt the Hackers: The Scoop on Internet Cheating and How You Can Combat It*, 2000
-https://www.gamasutra.com/view/feature/3149/how_to_hurt_the_hackers_the_scoop_.php
+https://www.gamedeveloper.com/design/how-to-hurt-the-hackers-the-scoop-on-internet-cheating-and-how-you-can-combat-it
 
 [3] Stefan Kolb, *Age of Empires 2: The Conquerors — Savegame File Format Specification*,
 https://github.com/stefan-kolb/aoc-mgx-format

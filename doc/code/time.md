@@ -1,8 +1,8 @@
 # Simulation Time
 
 *Simulation time* is the driving force behind pretty much all internal routines of the engine.
-Its used to schedule and execute events in the [event system](/doc/code/event_system.md),
-managing data of game entities at runtime via [curves](/doc/code/curves.md), and time
+Its used to schedule and execute events in the [event system](event_system.md),
+managing data of game entities at runtime via [curves](curves.md), and time
 animations in the [renderer](/doc/code/renderer/level2.md).
 
 To keep track of and synchronize time between different engine components, openage implements

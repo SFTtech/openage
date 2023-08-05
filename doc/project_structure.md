@@ -25,7 +25,7 @@ This file explains the modular structure of the project.
 
 ## Architecture
 
-The [overall architecture](/doc/architecture.md) describes the conceptual overview.
+The [overall architecture](/doc/code/architecture.md) describes the conceptual overview.
 
 
 ## Languages

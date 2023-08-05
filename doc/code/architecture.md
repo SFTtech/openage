@@ -2,6 +2,13 @@
 
 openage is separated into many modules ("subsystems").
 
+1. [Overview](#overview)
+   1. [Components](#components)
+   2. [Utilities](#utilities)
+2. [Information flow](#information-flow)
+   1. [Current architecture](#current-architecture)
+   2. [Goal architecture](#goal-architecture)
+
 
 ## Overview
 
@@ -13,28 +20,29 @@ All of them need to be revisited to implement the goal architecture.
 
 * Audio system
 * Configuration system
-* [Coordinate system](code/coordinate-systems.md)
-* [Converter](code/converter/)
-* Input system
+* [Coordinate system](coordinate-systems.md)
+* [Converter](converter/)
+* [Input system](input/)
 * Networking
-* [Game rule database](nyan/)
-* [Pathfinding](code/pathfinding.md)
-* Rendering
-* Simulation
-* [User interface](code/gui.md)
+* [Game data database](/doc/nyan/)
+* [Rendering](renderer/)
+* [Simulation](game_simulation/)
+* [Time management](time.md)
+* [User interface](gui.md)
 
 
 ### Utilities
 
 * Datastructures
-* Error handling
+  * [Curves](curves.md)
+* [Error handling](exceptions.md)
 * Filesystem abstraction
 * Job dispatching
 * Live reloading
-* Logging system
-* Python interface
+* [Logging system](logger.md)
+* [Python interface](pyinterface.md)
 * Random number generator
-* Test and demo infrastructure
+* [Test and demo infrastructure](testing.md)
 
 
 ## Information flow

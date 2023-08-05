@@ -13,7 +13,7 @@ anything from minor enhancements to standalone games.
 
 Apart from game-related data, modpacks store configuration data for loading
 them into the engine. Most of this data is located in the
-**[modpack definition file](###modpack-definition-file)**. Modpacks can define
+**[modpack definition file](#modpack-definition-file)**. Modpacks can define
 their interaction with other modpacks by specifying **dependencies** and
 **conflicts**.
 

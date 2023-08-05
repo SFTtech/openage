@@ -41,4 +41,10 @@ The game will ask for your AoE II installation folder; examples include:
     ~/.steam/steam/SteamApps/common/Age2HD
     ~/Library/Application Support/Steam/steamapps/common/Age2HD
 
+Alternatively, if your game installation is not found, you can trigger the conversion manually:
+
+```
+python3 -m openage convert --force --source-dir /path/to/game/install
+```
+
 You will find the converted files in `assets/converted`.

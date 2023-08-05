@@ -32,7 +32,7 @@ civ bonuses and age upgrades.
 
 ## Technical specification
 
-[nyan specification](https://github.com/SFTtech/nyan/blob/master/doc/nyan.md)
+[nyan specification](https://github.com/SFTtech/nyan/blob/master/doc/README.md)
 
 
 ## openage specifics

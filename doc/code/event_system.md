@@ -21,7 +21,7 @@ configuration of the associated *[event handler](#event-handler-setup)* (`EventH
 Internally, the event is stored inside an *event queue* (`EventQueue`) instance
 sorts the events by invoke time.
 
-Events are executed by passing the current [simulation time](/doc/code/time.md) to the
+Events are executed by passing the current [simulation time](time.md) to the
 event loop's `reach_time(..)` method. This executes all events with invoke time
 
 ```
@@ -35,7 +35,7 @@ other events if there are dependencies between the events.
 
 Both the creation and execution of events require passing a `State` object that functions
 as a persistant global storage for values that are not linked to a specific event executions.
-In practice, `State` is primarily used to pass the state of the [game simulation](/doc/code/game_simulation/README.md)
+In practice, `State` is primarily used to pass the state of the [game simulation](/doc/code/game_simulation/)
 to the event system via an object of the derived `GameState` class. This object allows
 access to the indexing structures of the current game that can be used to retrieve
 the available game entities, for example.

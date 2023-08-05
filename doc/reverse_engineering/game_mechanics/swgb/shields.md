@@ -12,7 +12,7 @@ A shielded unit gradually fills a shield bar (originally yellow and placed
 under the health bar), that doubles its health points. Aditionally, shielded
 units have a yellow glow effect, and [the UI](user-interface.md#cap) lights the
 leftmost indicator in yellow when a shielded unit is selected, as visible
-[here]([https://www.youtube.com/watch?v=pwAtMv_eiM4&feature=youtu.be&t=1786]).
+[here](https://www.youtube.com/watch?v=pwAtMv_eiM4&t=1786).
 
 Shields are depleted first when taking hits, before the regular health bar.
 Regenerating shields do not affect the health bar.

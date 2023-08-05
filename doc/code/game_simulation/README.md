@@ -4,7 +4,7 @@
 used for gameplay.
 
 The subsystem only contains components that are strictly necessary to simulate a game. Everything else,
-e.g. the [input system](/doc/code/input/README.md), [rendering](/doc/code/renderer/README.md),
+e.g. the [input system](/doc/code/input/), [rendering](/doc/code/renderer/),
 networking or scripting, are handled as separate subsystems.
 
 1. [Architecture](#architecture)
@@ -24,7 +24,7 @@ gamestate via a `GameState` object which includes references to objects inside t
 (e.g. players or game entities). It also contains gameplay settings for the current session.
 
 "Physical" objects in the game world are represented by `Terrain` and `GameEntity`. `Terrain`
-is used to model the underlying map terrain, while [`GameEntity`](/doc/code/game_simulation/game_entity.md)
+is used to model the underlying map terrain, while [`GameEntity`](game_entity.md)
 is used for every type of world object (e.g. units, buildings, trees, resources, ambience).
 
 

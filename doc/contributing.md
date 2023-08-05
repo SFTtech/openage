@@ -28,7 +28,7 @@ What's the concept?
 
 We basically do whatever we think is good to do.
 
-The [openage architecture](/doc/architecture.md) is the foundation.
+The [openage architecture](/doc/code/architecture.md) is the foundation.
 For our development concept, see the [development guide](/doc/development.md).
 
 If you need some inspiration [what to work on, see above](#what-can-i-do).
@@ -81,15 +81,15 @@ For tiny stuff like typo fixes, just create your PR and be done with it.
   - You can always update to upstream state by [rebasing](#rebasing).
 - Discuss your ideas and your work:
   - On the [group chats](/README.md#contact)
-  - That way, "bad ideas" can be "resolved" beforehand and "better ideas" are found
+  - That way, "bad" ideas can be resolved beforehand and "better" ideas are found
 
 - "Release early and often!" also applies to pull requests!
-  - Once your branch has some visible work, create `[WIP]` pull request
+  - Once your branch has some visible work, create a draft/`[WIP]` pull request
   - Give the pull request a description of what you did or want to do, so we can discuss it
   - Make sure you are in the `copying.md` file
   - People will be able to look at your code and give feedback
   - You'll get free checks from the build bot
-- Once your work is done, remove the `[WIP]` so it can be merged
+- Once your work is done, mark it as ready for review/remove the `[WIP]` so it can be merged
 - Do the changes that are requested by the reviewers.
 - Aaaaaand you're done.
 

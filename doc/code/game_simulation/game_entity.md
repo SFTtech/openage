@@ -50,7 +50,7 @@ of the specific entity can be accessed via the `GameEntity` object's `get_compon
 
 ## Component Data Storage
 
-For a description of the available components, check the [component reference](/doc/code/game_simulation/components.md).
+For a description of the available components, check the [component reference](components.md).
 
 ![Component class UML](images/component_uml.svg)
 
@@ -88,7 +88,7 @@ make the game logic maintanable and extensible.
 
 ### System
 
-For a description of the available systems, check the [system reference](/doc/code/game_simulation/systems.md).
+For a description of the available systems, check the [system reference](systems.md).
 
 A *system* in openage is basically a function that operates on game entity
 components. They are explicitely separated from game entity and component objects
@@ -119,7 +119,7 @@ behaviour and action chains of RTS game entities, while also allowing the behavi
 be as configurable as possible. One could also think of activities as a behaviour graph
 where paths are taken based on the inputs a game entity receives. The architecture
 of the activity control flow is described in more detail in the
-[activity control flow documentation](/doc/code/game_simulation/activity.md).
+[activity control flow documentation](activity.md).
 
 A game entity's current activity state is stored in its `Activity` component. This component
 holds a reference to the activity node graph used by the entity as well as the
@@ -127,7 +127,7 @@ last visited node. This node describes which action/behavioural state the
 game entity currently is in.
 
 Advancement to the next node can be initiated in several ways, depending on the
-[node type](/doc/code/game_simulation/activity.md#node-types) of the current node.
+[node type](activity.md#node-types) of the current node.
 It can happen automatically or be triggered by an event. In the latter case,
 the event is handled by the `GameEntityManager` which calls an activity *system*
 that processes the event to choose the next node.

@@ -37,7 +37,7 @@ should be canceled via the `cancel_events(..)` method.
 
 ### CommandQueue
 
-![CommandQueue Component UML](images/component_component_activity_uml.svg)
+![CommandQueue Component UML](images/component_activity_uml.svg)
 
 The `CommandQueue` component stores commands for the game entity in a [queue curve container](/doc/code/curves.md#queue).
 
