@@ -51,32 +51,53 @@ All of them need to be revisited to implement the goal architecture.
 
 The current data flow of openage is just to display the raw simulation data.
 
+![Engine architecture workflow](images/engine_architecture.svg)
+
+The presenter, simulation, and time subsystems each run in a loop in their own threads.
+They are largely decoupled from each other and only communicate via defined interfaces.
+
+Communication between all subsystems forms a larger *main* loop that encompasses everything
+happening in an engine run. It's workflow is roughly like this:
+
 ```
-input -> simulation -> renderer -> output
+renderer (window system) -> input -> event system -> simulation -> renderer -> output
 ```
+
+openage does not have simulation steps or *ticks* since everything in the simulation is
+event-based and scheduled by time. Therefore, updates between threads should work
+asynchronously in general.
+
+Decoupling allows us to treat some subsystems as optional such as the renderer and input
+system (basically everything from the presenter).
 
 
 ### Goal architecture
 
+The goal architecture extends the current workflow by subsystems for networking and
+scripting:
+
+![Goal architecture workflow](images/engine_target_architecture.svg)
+
+Both of these are supposed to be decoupled and optional. The current architecture can be extended
+by adding the missing components in between.
+
+Networking forwards the relevant events and simulation parameters during multiplayer.
+We will have a single authoritative server that is also running the simulation asynchronously.
+Each client then receives the data visible for it.
+
+Scripting extends the event system with external sources targets for events. Most
+scripting should be integrated using event logic.
+
+The new workflow would then look something like this:
+
 ```
-0 input ->
-1 network ->
-2 simulation ->
-3 network ->
-4 prediction/interpolation ->
-5 renderer ->
-6 output
+                                          ---------> scripting
+                                          |             ^
+                                          |             |
+                                          v             v
+renderer (window system) -> input -> event system -> simulation -> renderer -> output
+                                          ^             ^
+                                          |             |
+                                          |             v
+                                          ---------> network
 ```
-
-For *singleplayer* we could bypass `1 network` and `3 network` by using direct function calls or talk to a local socket.
-For *multiplayer* this means that we will have a single authoritative server that is just running
-the simulation. Each client then receives the data visible for it.
-
-The current architecture can be extended by adding the missing components in
-between.
-
-The `prediction/interpolation` reuses the `simulation` code, but is
-non-authoritative: The data provided from `2` has higher priority.
-
-There exists a link of `0 input -> 4 prediction` so that input
-is immediately accounted in the prediction, thus displayed.
