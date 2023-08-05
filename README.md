@@ -106,15 +106,21 @@ If you need help, maybe our [troubleshooting guide](/doc/troubleshooting.md) hel
 Quickstart
 ----------
 
-* How do I get this to run on my box?
-    * See [doc/building.md](/doc/building.md).
+* **How do I get this to run on my box?**
+    1. [Fork](https://help.github.com/articles/fork-a-repo/) the repo.
+    1. Install dependencies. See [doc/building.md](/doc/building.md#dependency-installation) to get instructions for your favorite platform.
+    1. Build the project:
+   ```
+   ./configure --download-nyan
+   make
+   ```
 
-* I compiled everything. Now how do I run it?
+* **I compiled everything. Now how do I run it?**
     * Execute `./bin/run`.
     * [The convert script](/doc/media_convert.md) will transform original assets into openage formats, which are a lot saner and more moddable.
     * Use your brain and react to the things you'll see.
 
-* Waaaaaah! It
+* **Waaaaaah! It...**
     * segfaults
     * prints error messages I don't want to read
     * ate my dog
