@@ -1,4 +1,4 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 # ${AUTOGEN_WARNING}
 
@@ -12,7 +12,7 @@ Project configuration, written by the build system.
 import sys
 import importlib
 import cython
-import jinja2
+import mako
 import numpy
 import PIL
 import pygments
@@ -33,7 +33,7 @@ CICFGVERSION = "${CI_CFG_VERSION}"
 PYTHONINTERPRETER = sys.version
 PYTHONCAPI = sys.api_version
 CYTHONVERSION = cython.__version__
-JINJAVERSION = jinja2.__version__
+MAKOVERSION = mako.__version__
 NUMPYVERSION = numpy.__version__
 PILVERSION = PIL.__version__
 PYGMENTSVERSION = pygments.__version__

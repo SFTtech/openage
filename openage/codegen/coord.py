@@ -4,7 +4,7 @@
 Generates libopenage/coord/coord_{xy, xyz, ne_se, ne_se_up}.{h, cpp}
 """
 
-from jinja2 import Template
+from mako.template import Template
 
 
 def generate_coord_basetypes(projectdir):
@@ -23,12 +23,12 @@ def generate_coord_basetypes(projectdir):
     ]
 
     # this list maps template file name to output file name.
-    # the output filename is a jinja2 template itself.
+    # the output filename is a mako template itself.
     template_files_spec = [
         ("libopenage/coord/coord.h.template",
-         "libopenage/coord/coord_{{ ''.join(members) }}.gen.h"),
+         "libopenage/coord/coord_${''.join(members)}.gen.h"),
         ("libopenage/coord/coord.cpp.template",
-         "libopenage/coord/coord_{{ ''.join(members) }}.gen.cpp")
+         "libopenage/coord/coord_${''.join(members)}.gen.cpp")
     ]
 
     templates = []
@@ -56,9 +56,9 @@ def generate_coord_basetypes(projectdir):
         }
 
         for template, output_filename_template in templates:
-            output_filename = output_filename_template.render(template_dict)
+            output_filename = output_filename_template.render(**template_dict)
             with projectdir.joinpath(output_filename).open("w") as output_file:
-                output = template.render(template_dict)
+                output = template.render(**template_dict)
                 output_file.write(output)
                 if not output.endswith('\n'):
                     output_file.write('\n')
