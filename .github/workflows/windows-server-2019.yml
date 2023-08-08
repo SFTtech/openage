@@ -15,7 +15,7 @@ jobs:
         vswhere -latest
       shell: pwsh
     - name: Setup Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
         python-version: '3.9'
         architecture: 'x64'
@@ -78,7 +78,7 @@ jobs:
         python -m openage --add-dll-search-path $DLL_PATH --version
       shell: pwsh
     - name: Publish build artifacts
-      uses: actions/upload-artifact@v2.2.4
+      uses: actions/upload-artifact@v3
       if: ${{ always() }}
       with:
         name: build-files
@@ -86,7 +86,7 @@ jobs:
         if-no-files-found: error
         retention-days: 30
     - name: Publish packaged artifacts
-      uses: actions/upload-artifact@v2.2.4
+      uses: actions/upload-artifact@v3
       if: ${{ always() }}
       with:
         name: package-files
