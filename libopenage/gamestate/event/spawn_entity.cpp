@@ -33,6 +33,13 @@ static const std::vector<nyan::fqon_t> aoe1_test_entities = {
 	"aoe1_base.data.game_entity.generic.temple.temple.Temple",
 	"aoe1_base.data.game_entity.generic.academy.academy.Academy",
 };
+static const std::vector<nyan::fqon_t> de1_test_entities = {
+	"de1_base.data.game_entity.generic.chariot_archer.chariot_archer.ChariotArcher",
+	"de1_base.data.game_entity.generic.bowman.bowman.Bowman",
+	"de1_base.data.game_entity.generic.hoplite.hoplite.Hoplite",
+	"de1_base.data.game_entity.generic.temple.temple.Temple",
+	"de1_base.data.game_entity.generic.academy.academy.Academy",
+};
 static const std::vector<nyan::fqon_t> aoe2_test_entities = {
 	"aoe2_base.data.game_entity.generic.knight.knight.Knight",
 	"aoe2_base.data.game_entity.generic.monk.monk.Monk",
@@ -100,6 +107,11 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 				test_entities.insert(test_entities.end(),
 				                     aoe1_test_entities.begin(),
 				                     aoe1_test_entities.end());
+			}
+			else if (modpack_id == "de1_base") {
+				test_entities.insert(test_entities.end(),
+				                     de1_test_entities.begin(),
+				                     de1_test_entities.end());
 			}
 			else if (modpack_id == "aoe2_base") {
 				test_entities.insert(test_entities.end(),
