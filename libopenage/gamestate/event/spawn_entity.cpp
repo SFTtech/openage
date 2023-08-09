@@ -40,6 +40,13 @@ static const std::vector<nyan::fqon_t> aoe2_test_entities = {
 	"aoe2_base.data.game_entity.generic.castle.castle.Castle",
 	"aoe2_base.data.game_entity.generic.barracks.barracks.Barracks",
 };
+static const std::vector<nyan::fqon_t> hd_test_entities = {
+	"hd_base.data.game_entity.generic.knight.knight.Knight",
+	"hd_base.data.game_entity.generic.monk.monk.Monk",
+	"hd_base.data.game_entity.generic.archer.archer.Archer",
+	"hd_base.data.game_entity.generic.castle.castle.Castle",
+	"hd_base.data.game_entity.generic.barracks.barracks.Barracks",
+};
 static const std::vector<nyan::fqon_t> swgb_test_entities = {
 	"swgb_base.data.game_entity.generic.trooper.trooper.Trooper",
 	"swgb_base.data.game_entity.generic.force_knight.force_knight.ForceKnight",
@@ -98,6 +105,11 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 				test_entities.insert(test_entities.end(),
 				                     aoe2_test_entities.begin(),
 				                     aoe2_test_entities.end());
+			}
+			else if (modpack_id == "hd_base") {
+				test_entities.insert(test_entities.end(),
+				                     hd_test_entities.begin(),
+				                     hd_test_entities.end());
 			}
 			else if (modpack_id == "swgb_base") {
 				test_entities.insert(test_entities.end(),
