@@ -45,9 +45,9 @@ class HDMediaSubprocessor:
             graphic_targetdirs = sprite.resolve_graphics_location()
 
             metadata_filename = f"{sprite.get_filename()}.{'sprite'}"
-            metadata_export = SpriteMetadataExport(sprite.resolve_sprite_location(),
-                                                   metadata_filename)
-            full_data_set.metadata_exports.append(metadata_export)
+            sprite_meta_export = SpriteMetadataExport(sprite.resolve_sprite_location(),
+                                                      metadata_filename)
+            full_data_set.metadata_exports.append(sprite_meta_export)
 
             for graphic in ref_graphics:
                 graphic_id = graphic.get_id()
@@ -97,18 +97,19 @@ class HDMediaSubprocessor:
                 frame_count = graphic["frame_count"].value
                 angle_count = graphic["angle_count"].value
                 mirror_mode = graphic["mirroring_mode"].value
-                metadata_export.add_graphics_metadata(target_filename,
-                                                      texture_meta_filename,
-                                                      layer_mode,
-                                                      layer_pos,
-                                                      frame_rate,
-                                                      replay_delay,
-                                                      frame_count,
-                                                      angle_count,
-                                                      mirror_mode)
+                sprite_meta_export.add_graphics_metadata(target_filename,
+                                                         texture_meta_filename,
+                                                         layer_mode,
+                                                         layer_pos,
+                                                         frame_rate,
+                                                         replay_delay,
+                                                         frame_count,
+                                                         angle_count,
+                                                         mirror_mode)
 
                 # Notify metadata export about SLP metadata when the file is exported
-                export_request.add_observer(metadata_export)
+                export_request.add_observer(texture_meta_export)
+                export_request.add_observer(sprite_meta_export)
 
                 handled_graphic_ids.add(graphic_id)
 
