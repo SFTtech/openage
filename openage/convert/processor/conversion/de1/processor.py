@@ -14,11 +14,11 @@ from ....service.debug_info import debug_converter_objects, \
     debug_converter_object_groups
 from ....service.read.nyan_api_loader import load_api
 from ..aoc.processor import AoCProcessor
-from ..ror.modpack_subprocessor import RoRModpackSubprocessor
 from ..ror.nyan_subprocessor import RoRNyanSubprocessor
 from ..ror.pregen_subprocessor import RoRPregenSubprocessor
 from ..ror.processor import RoRProcessor
 from .media_subprocessor import DE1MediaSubprocessor
+from .modpack_subprocessor import DE1ModpackSubprocessor
 
 if typing.TYPE_CHECKING:
     from argparse import Namespace
@@ -170,7 +170,7 @@ class DE1Processor:
 
         DE1MediaSubprocessor.convert(full_data_set)
 
-        return RoRModpackSubprocessor.get_modpacks(full_data_set)
+        return DE1ModpackSubprocessor.get_modpacks(full_data_set)
 
     @staticmethod
     def extract_genie_graphics(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
