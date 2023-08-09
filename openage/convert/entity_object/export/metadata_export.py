@@ -73,6 +73,10 @@ class SpriteMetadataExport(MetadataExport):
         sprite_file = SpriteMetadata(self.targetdir, self.filename)
 
         tex_index = 0
+
+        # if len(self.graphics_metadata) == 0:
+        #     raise ValueError("No graphics metadata in sprite file.")
+
         for img_filename, metadata in self.graphics_metadata.items():
             tex_filename = metadata[0]
             sprite_file.add_texture(tex_index, tex_filename)

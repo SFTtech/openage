@@ -201,7 +201,7 @@ class DE1Processor:
             graphic_members = raw_graphic.value
 
             graphic = GenieGraphic(graphic_id, full_data_set, members=graphic_members)
-            if filename not in full_data_set.existing_graphics:
+            if filename.lower() not in full_data_set.existing_graphics:
                 graphic.exists = False
 
             full_data_set.genie_graphics.update({graphic.get_id(): graphic})

@@ -116,7 +116,7 @@ class DE1MediaSubprocessor:
                                                          angle_count,
                                                          mirror_mode)
 
-                # Notify metadata export about SMX metadata when the file is exported
+                # Notify metadata export about SLP metadata when the file is exported
                 export_request.add_observer(texture_meta_export)
                 export_request.add_observer(sprite_meta_export)
 
