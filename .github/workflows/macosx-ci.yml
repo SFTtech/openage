@@ -17,9 +17,9 @@ jobs:
         shell: cmake -P {0}
         run: |
           string(TIMESTAMP current_date "%Y-%m-%d-%H:%M:%S" UTC)
-          message("::set-output name=timestamp::${current_date}")
+          message("timestamp=${current_date}" >> $GITHUB_OUTPUT)
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: cache-deps
         with:
           path: |
@@ -29,7 +29,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-deps-
       - name: Cache ccache dir
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: cache-ccache
         with:
           path: ~/Library/Caches/ccache
@@ -59,7 +59,7 @@ jobs:
       - name: Install environment helpers with homebrew
         run: brew install ccache
       - name: Install dependencies with homebrew
-        run: brew install libepoxy freetype fontconfig harfbuzz sdl2 sdl2_image opus opusfile qt6 libogg libpng eigen
+        run: brew install libepoxy freetype fontconfig harfbuzz sdl2 sdl2_image opus opusfile qt6 libogg libpng toml11 eigen
       - name: Install nyan dependencies with homebrew
         run: brew install flex make
       - name: Install python3 packages

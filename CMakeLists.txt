@@ -39,7 +39,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Python and Cython requirements
 set(PYTHON_MIN_VERSION 3.9)
-set(CYTHON_MIN_VERSION 0.25)
+set(CYTHON_MIN_VERSION 0.29.31)
 
 # CMake policies
 foreach(pol

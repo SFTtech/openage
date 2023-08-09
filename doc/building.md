@@ -29,7 +29,7 @@ Dependency list:
 
     C     gcc >=10 or clang >=10
     CRA   python >=3.9
-    C     cython >=0.25
+    C     cython >=0.29.31
     C     cmake >=3.16
       A   numpy
       A   python imaging library (PIL) -> pillow
