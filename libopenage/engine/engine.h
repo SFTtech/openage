@@ -16,6 +16,10 @@ namespace std {
 class jthread : public thread {
 public:
 	using thread::thread; // needed constructors
+	jthread(const jthread &) = delete;
+	jthread &operator=(const jthread &) = delete;
+	jthread(jthread &&) = default;
+	jthread &operator=(jthread &&) = default;
 	~jthread() {
 		this->join();
 	}
