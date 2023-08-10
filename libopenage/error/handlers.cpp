@@ -12,13 +12,9 @@
 
 #include "handlers.h"
 
-#include <csignal>
-#include <cstdlib>
 #include <cstring>
 #include <exception>
-#include <functional>
 #include <iostream>
-#include <string>
 
 #ifdef _MSC_VER
 #include <io.h>
@@ -28,11 +24,10 @@
 
 #include "util/init.h"
 #include "util/language.h"
+#include "util/signal.h"
 
-#include "error/backtrace.h"
 #include "error/error.h"
 #include "error/stackanalyzer.h"
-#include "util/compiler.h"
 
 
 namespace openage {
