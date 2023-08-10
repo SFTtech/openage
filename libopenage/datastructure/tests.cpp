@@ -3,7 +3,6 @@
 #include "tests.h"
 
 #include <algorithm>
-#include <cxxabi.h>
 #include <memory>
 #include <mutex>
 #include <utility>
