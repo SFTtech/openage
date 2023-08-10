@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 """
 Contains structures and API-like objects for techs from AoC.
@@ -9,11 +9,11 @@ import typing
 from ..converter_object import ConverterObject, ConverterObjectGroup
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject,\
+    from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject, \
         GenieEffectBundle
     from openage.convert.entity_object.conversion.aoc.genie_object_container\
         import GenieObjectContainer
-    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup, \
         GenieBuildingLineGroup
     from openage.convert.value_object.read.value_members import ValueMember
 

@@ -11,7 +11,7 @@ import typing
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
 from ..service.debug_info import debug_gamedata_format
-from ..service.debug_info import debug_string_resources,\
+from ..service.debug_info import debug_string_resources, \
     debug_registered_graphics, debug_modpack
 from ..service.init.changelog import (ASSET_VERSION)
 from ..service.read.gamedata import get_gamespec

@@ -14,7 +14,7 @@ import typing
 
 from math import degrees
 
-from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, \
     GenieVillagerGroup, GenieUnitLineGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups

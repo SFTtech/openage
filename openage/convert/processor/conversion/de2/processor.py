@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-lines,too-many-branches,too-many-statements
 """
@@ -16,9 +16,9 @@ from .....log import info
 from .....util.ordered_set import OrderedSet
 from ....entity_object.conversion.aoc.genie_graphic import GenieGraphic
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, GenieUnitObject, GenieAmbientGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, GenieUnitObject, GenieAmbientGroup, \
     GenieVariantGroup
-from ....service.debug_info import debug_converter_objects,\
+from ....service.debug_info import debug_converter_objects, \
     debug_converter_object_groups
 from ....service.read.nyan_api_loader import load_api
 from ..aoc.pregen_processor import AoCPregenSubprocessor

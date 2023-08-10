@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 
 """
 Contains structures and API-like objects for techs from RoR.
@@ -8,7 +8,7 @@ Based on the classes from the AoC converter.
 from __future__ import annotations
 import typing
 
-from ..aoc.genie_tech import StatUpgrade, AgeUpgrade, UnitLineUpgrade,\
+from ..aoc.genie_tech import StatUpgrade, AgeUpgrade, UnitLineUpgrade, \
     BuildingLineUpgrade, UnitUnlock, BuildingUnlock
 
 if typing.TYPE_CHECKING:

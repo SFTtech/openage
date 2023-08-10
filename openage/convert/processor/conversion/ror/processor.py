@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-lines,too-many-branches,too-many-statements,too-many-locals
 """
@@ -12,16 +12,16 @@ from ....entity_object.conversion.aoc.genie_object_container import GenieObjectC
 from ....entity_object.conversion.aoc.genie_tech import InitiatedTech
 from ....entity_object.conversion.aoc.genie_unit import GenieUnitObject
 from ....entity_object.conversion.ror.genie_sound import RoRSound
-from ....entity_object.conversion.ror.genie_tech import RoRStatUpgrade,\
-    RoRBuildingLineUpgrade, RoRUnitLineUpgrade, RoRBuildingUnlock, RoRUnitUnlock,\
+from ....entity_object.conversion.ror.genie_tech import RoRStatUpgrade, \
+    RoRBuildingLineUpgrade, RoRUnitLineUpgrade, RoRBuildingUnlock, RoRUnitUnlock, \
     RoRAgeUpgrade
-from ....entity_object.conversion.ror.genie_unit import RoRUnitTaskGroup,\
-    RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup, RoRAmbientGroup,\
+from ....entity_object.conversion.ror.genie_unit import RoRUnitTaskGroup, \
+    RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup, RoRAmbientGroup, \
     RoRVariantGroup
-from ....service.debug_info import debug_converter_objects,\
+from ....service.debug_info import debug_converter_objects, \
     debug_converter_object_groups
 from ....service.read.nyan_api_loader import load_api
-from ....value_object.conversion.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
+from ....value_object.conversion.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS, \
     VARIANT_GROUP_LOOKUPS
 from ..aoc.processor import AoCProcessor
 from .media_subprocessor import RoRMediaSubprocessor

@@ -11,7 +11,7 @@ import typing
 
 
 from .....nyan.nyan_structs import MemberSpecialValue
-from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup, \
     GenieBuildingLineGroup, GenieUnitLineGroup
 from ....entity_object.conversion.combined_sound import CombinedSound
 from ....entity_object.conversion.converter_object import ConverterObjectGroup, RawAPIObject

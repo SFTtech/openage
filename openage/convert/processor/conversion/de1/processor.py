@@ -1,4 +1,4 @@
-# Copyright 2021-2022 the openage authors. See copying.md for legal info.
+# Copyright 2021-2023 the openage authors. See copying.md for legal info.
 
 """
 Convert data from DE1 to openage formats.
@@ -10,7 +10,7 @@ import typing
 from .....log import info
 from ....entity_object.conversion.aoc.genie_graphic import GenieGraphic
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-from ....service.debug_info import debug_converter_objects,\
+from ....service.debug_info import debug_converter_objects, \
     debug_converter_object_groups
 from ....service.read.nyan_api_loader import load_api
 from ..aoc.processor import AoCProcessor

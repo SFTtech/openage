@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 
 """
 Converter objects for SWGB. Reimplements the ConverterObjectGroup
@@ -7,7 +7,7 @@ instances from AoC.
 from __future__ import annotations
 import typing
 
-from ..aoc.genie_unit import GenieUnitLineGroup, GenieUnitTransformGroup,\
+from ..aoc.genie_unit import GenieUnitLineGroup, GenieUnitTransformGroup, \
     GenieMonkGroup, GenieStackBuildingGroup
 
 if typing.TYPE_CHECKING:

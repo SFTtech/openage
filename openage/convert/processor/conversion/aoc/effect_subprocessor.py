@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-statements,invalid-name
 #
@@ -12,7 +12,7 @@ abilities.
 from __future__ import annotations
 import typing
 
-from ....entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup, \
     GenieBuildingLineGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups

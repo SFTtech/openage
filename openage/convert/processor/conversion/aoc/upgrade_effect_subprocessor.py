@@ -18,7 +18,7 @@ from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
-from ....value_object.read.value_members import NoDiffMember,\
+from ....value_object.read.value_members import NoDiffMember, \
     LeftMissingMember, RightMissingMember
 
 if typing.TYPE_CHECKING:

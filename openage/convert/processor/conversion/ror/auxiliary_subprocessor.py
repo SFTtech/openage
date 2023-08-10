@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-locals,too-many-branches,too-many-statements
 # pylint: disable=too-few-public-methods
@@ -11,7 +11,7 @@ from __future__ import annotations
 import typing
 
 from .....nyan.nyan_structs import MemberSpecialValue
-from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup, \
     GenieBuildingLineGroup, GenieUnitLineGroup
 from ....entity_object.conversion.combined_sound import CombinedSound
 from ....entity_object.conversion.converter_object import RawAPIObject

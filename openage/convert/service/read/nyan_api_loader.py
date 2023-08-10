@@ -10,7 +10,7 @@ object creation.
 from __future__ import annotations
 
 from ....nyan.nyan_structs import NyanMemberType
-from ....nyan.nyan_structs import NyanObject, NyanMember, MemberType, MemberSpecialValue,\
+from ....nyan.nyan_structs import NyanObject, NyanMember, MemberType, MemberSpecialValue, \
     MemberOperator
 
 # Common primitive types

@@ -13,7 +13,7 @@ from __future__ import annotations
 import typing
 
 from .....nyan.nyan_structs import MemberSpecialValue
-from ....entity_object.conversion.converter_object import RawAPIObject,\
+from ....entity_object.conversion.converter_object import RawAPIObject, \
     ConverterObjectGroup
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
