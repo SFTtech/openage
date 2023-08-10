@@ -25,9 +25,9 @@ namespace camera {
  *    pitch = -30 degrees
  */
 static const Eigen::Vector3f cam_direction{
-	-1 * (sqrt(6) / 4),
+	-1 * (std::sqrt(6.f) / 4),
 	-0.5f,
-	-1 * (sqrt(6) / 4),
+	-1 * (std::sqrt(6.f) / 4),
 };
 
 /**
