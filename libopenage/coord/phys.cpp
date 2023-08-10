@@ -8,6 +8,7 @@
 #include "coord/tile.h"
 #include "terrain/terrain.h"
 #include "util/math.h"
+#include "util/math_constants.h"
 
 
 namespace openage::coord {
@@ -38,7 +39,7 @@ phys_angle_t phys2_delta::to_angle(const coord::phys2_delta &other) const {
 	auto det = other.ne.to_float() * this->se.to_float() - this->ne.to_float() * other.se.to_float();
 	auto dot = this->ne.to_float() * other.ne.to_float() + this->se.to_float() * other.se.to_float();
 
-	auto angle = std::atan2(det, dot) * 180 / std::numbers::pi;
+	auto angle = std::atan2(det, dot) * 180 / math::PI;
 	if (angle < 0) {
 		angle += 360;
 	}
@@ -99,7 +100,7 @@ phys_angle_t phys3_delta::to_angle(const coord::phys2_delta &other) const {
 	auto det = other.ne.to_float() * this->se.to_float() - this->ne.to_float() * other.se.to_float();
 	auto dot = this->ne.to_float() * other.ne.to_float() + this->se.to_float() * other.se.to_float();
 
-	auto angle = std::atan2(det, dot) * 180 / std::numbers::pi;
+	auto angle = std::atan2(det, dot) * 180 / math::PI;
 	if (angle < 0) {
 		angle += 360;
 	}
