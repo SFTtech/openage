@@ -3,7 +3,6 @@
 #pragma once
 
 #include <memory>
-#include <stop_token>
 #include <string>
 #include <thread>
 #include <vector>
@@ -23,6 +22,8 @@ public:
 };
 } // namespace std
 #endif
+#else
+#include <stop_token>
 #endif
 
 
