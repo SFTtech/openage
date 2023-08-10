@@ -2,13 +2,19 @@
 
 #pragma once
 
+#include "../util/compiler.h"
 // pxd: from libopenage.util.path cimport Path
-#include "../util/path.h"
 
 
-namespace openage::main::tests {
+namespace openage {
+namespace util {
+class Path;
+} // namespace util
+
+namespace main::tests {
 
 // pxd: void engine_demo(int demo_id, Path path) except +
 OAAPI void engine_demo(int demo_id, const util::Path &path);
 
-} // namespace openage::main::tests
+} // namespace main::tests
+} // namespace openage
