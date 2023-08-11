@@ -12,7 +12,7 @@ from __future__ import annotations
 import typing
 
 from .....nyan.nyan_structs import MemberOperator
-from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, \
     GenieUnitLineGroup
 from ....service.conversion import internal_name_lookups
 from ..aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor

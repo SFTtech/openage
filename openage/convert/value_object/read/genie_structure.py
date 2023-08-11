@@ -17,7 +17,7 @@ from .read_members import (IncludeMembers, ContinueReadMember,
                            MultisubtypeMember, GroupMember, SubdataMember,
                            ReadMember,
                            EnumLookupMember)
-from .value_members import ContainerMember, ArrayMember, IntMember, FloatMember,\
+from .value_members import ContainerMember, ArrayMember, IntMember, FloatMember, \
     StringMember, BooleanMember, IDMember, BitfieldMember, ValueMember
 from .value_members import StorageType
 

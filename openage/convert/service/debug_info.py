@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 """
@@ -9,13 +9,13 @@ from __future__ import annotations
 import typing
 
 
-from openage.convert.entity_object.conversion.aoc.genie_tech import AgeUpgrade,\
+from openage.convert.entity_object.conversion.aoc.genie_tech import AgeUpgrade, \
     UnitLineUpgrade, BuildingLineUpgrade, UnitUnlock, BuildingUnlock
-from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
-    GenieBuildingLineGroup, GenieStackBuildingGroup, GenieUnitTransformGroup,\
+from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup, \
+    GenieBuildingLineGroup, GenieStackBuildingGroup, GenieUnitTransformGroup, \
     GenieMonkGroup
 from openage.convert.entity_object.export.formats.media_cache import MediaCacheFile
-from openage.convert.service.conversion.internal_name_lookups import get_entity_lookups,\
+from openage.convert.service.conversion.internal_name_lookups import get_entity_lookups, \
     get_tech_lookups, get_civ_lookups, get_terrain_lookups
 from openage.convert.value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
 from openage.convert.value_object.read.read_members import IncludeMembers, MultisubtypeMember

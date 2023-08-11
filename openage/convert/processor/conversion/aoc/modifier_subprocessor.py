@@ -9,8 +9,8 @@ nyan subprocessor.
 from __future__ import annotations
 import typing
 
-from ....entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup,\
-    GenieBuildingLineGroup, GenieVillagerGroup, GenieAmbientGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup, \
+    GenieBuildingLineGroup, GenieVillagerGroup, GenieAmbientGroup, \
     GenieVariantGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups

@@ -12,35 +12,35 @@ import typing
 from .....log import info
 from ....entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup
 from ....entity_object.conversion.aoc.genie_civ import GenieCivilizationObject
-from ....entity_object.conversion.aoc.genie_connection import GenieAgeConnection,\
+from ....entity_object.conversion.aoc.genie_connection import GenieAgeConnection, \
     GenieBuildingConnection, GenieUnitConnection, GenieTechConnection
-from ....entity_object.conversion.aoc.genie_effect import GenieEffectObject,\
+from ....entity_object.conversion.aoc.genie_effect import GenieEffectObject, \
     GenieEffectBundle
 from ....entity_object.conversion.aoc.genie_graphic import GenieGraphic
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 from ....entity_object.conversion.aoc.genie_sound import GenieSound
-from ....entity_object.conversion.aoc.genie_tech import AgeUpgrade,\
+from ....entity_object.conversion.aoc.genie_tech import AgeUpgrade, \
     UnitUnlock, UnitLineUpgrade, CivBonus
 from ....entity_object.conversion.aoc.genie_tech import BuildingLineUpgrade
 from ....entity_object.conversion.aoc.genie_tech import GenieTechObject
-from ....entity_object.conversion.aoc.genie_tech import StatUpgrade, InitiatedTech,\
+from ....entity_object.conversion.aoc.genie_tech import StatUpgrade, InitiatedTech, \
     BuildingUnlock
 from ....entity_object.conversion.aoc.genie_terrain import GenieTerrainGroup
 from ....entity_object.conversion.aoc.genie_terrain import GenieTerrainObject
-from ....entity_object.conversion.aoc.genie_unit import GenieAmbientGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieAmbientGroup, \
     GenieGarrisonMode
-from ....entity_object.conversion.aoc.genie_unit import GenieStackBuildingGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieStackBuildingGroup, \
     GenieBuildingLineGroup
-from ....entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup, \
     GenieUnitTransformGroup, GenieMonkGroup
 from ....entity_object.conversion.aoc.genie_unit import GenieUnitObject
-from ....entity_object.conversion.aoc.genie_unit import GenieUnitTaskGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieUnitTaskGroup, \
     GenieVillagerGroup
 from ....entity_object.conversion.aoc.genie_unit import GenieVariantGroup
-from ....service.debug_info import debug_converter_objects,\
+from ....service.debug_info import debug_converter_objects, \
     debug_converter_object_groups
 from ....service.read.nyan_api_loader import load_api
-from ....value_object.conversion.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS,\
+from ....value_object.conversion.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS, \
     VARIANT_GROUP_LOOKUPS
 from .media_subprocessor import AoCMediaSubprocessor
 from .modpack_subprocessor import AoCModpackSubprocessor

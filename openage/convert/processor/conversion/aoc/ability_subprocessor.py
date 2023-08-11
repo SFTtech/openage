@@ -19,8 +19,8 @@ from math import degrees
 
 from .....nyan.nyan_structs import MemberSpecialValue, MemberOperator
 from .....util.ordered_set import OrderedSet
-from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup,\
-    GenieAmbientGroup, GenieGarrisonMode, GenieStackBuildingGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, \
+    GenieAmbientGroup, GenieGarrisonMode, GenieStackBuildingGroup, \
     GenieUnitLineGroup, GenieMonkGroup, GenieVillagerGroup
 from ....entity_object.conversion.combined_sound import CombinedSound
 from ....entity_object.conversion.combined_sprite import CombinedSprite

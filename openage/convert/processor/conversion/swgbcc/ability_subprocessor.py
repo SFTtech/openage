@@ -19,7 +19,7 @@ import typing
 
 from .....nyan.nyan_structs import MemberSpecialValue
 from .....util.ordered_set import OrderedSet
-from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup, \
     GenieStackBuildingGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups

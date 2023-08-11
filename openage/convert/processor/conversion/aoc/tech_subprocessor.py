@@ -14,9 +14,9 @@ import typing
 
 from openage.log import warn
 from .....nyan.nyan_structs import MemberOperator
-from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup,\
+from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup, \
     CivTeamBonus, CivBonus
-from ....entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup, \
     GenieBuildingLineGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups

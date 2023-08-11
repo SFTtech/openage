@@ -17,7 +17,7 @@ from math import degrees
 
 from .....nyan.nyan_structs import MemberOperator, MemberSpecialValue
 from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
-from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, \
     GenieVariantGroup, GenieUnitLineGroup
 from ....entity_object.conversion.combined_sound import CombinedSound
 from ....entity_object.conversion.combined_sprite import CombinedSprite
@@ -28,9 +28,9 @@ from ....value_object.read.value_members import NoDiffMember
 from .upgrade_effect_subprocessor import AoCUpgradeEffectSubprocessor
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObject,\
+    from openage.convert.entity_object.conversion.converter_object import ConverterObject, \
         ConverterObjectGroup
-    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup,\
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup, \
         GenieUnitObject
 
 

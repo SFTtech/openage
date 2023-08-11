@@ -21,7 +21,7 @@ from ....value_object.read.value_members import NoDiffMember
 from ..aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObject,\
+    from openage.convert.entity_object.conversion.converter_object import ConverterObject, \
         ConverterObjectGroup
     from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
 

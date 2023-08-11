@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-locals,too-many-statements,too-many-branches
 #
@@ -12,7 +12,7 @@ from __future__ import annotations
 import typing
 
 from ....entity_object.conversion.aoc.genie_tech import UnitLineUpgrade
-from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup, \
     GenieGarrisonMode, GenieMonkGroup, GenieStackBuildingGroup
 from ....entity_object.conversion.combined_terrain import CombinedTerrain
 from ....entity_object.conversion.converter_object import RawAPIObject
@@ -32,7 +32,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
     from openage.convert.entity_object.conversion.aoc.genie_terrain import GenieTerrainGroup
-    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup,\
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup, \
         GenieBuildingLineGroup
 
 

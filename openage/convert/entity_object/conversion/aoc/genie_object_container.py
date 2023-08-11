@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-instance-attributes,too-few-public-methods
 
@@ -17,21 +17,21 @@ if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.combined_sprite import CombinedSprite
     from openage.convert.entity_object.conversion.combined_terrain import CombinedTerrain
     from openage.convert.entity_object.conversion.stringresource import StringResource
-    from openage.convert.entity_object.conversion.aoc.genie_civ import GenieCivilizationObject,\
+    from openage.convert.entity_object.conversion.aoc.genie_civ import GenieCivilizationObject, \
         GenieCivilizationGroup
-    from openage.convert.entity_object.conversion.aoc.genie_connection import GenieAgeConnection,\
+    from openage.convert.entity_object.conversion.aoc.genie_connection import GenieAgeConnection, \
         GenieBuildingConnection, GenieTechConnection, GenieUnitConnection
     from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectBundle
     from openage.convert.entity_object.conversion.aoc.genie_graphic import GenieGraphic
     from openage.convert.entity_object.conversion.aoc.genie_sound import GenieSound
-    from openage.convert.entity_object.conversion.aoc.genie_tech import GenieTechObject,\
-        AgeUpgrade, BuildingLineUpgrade, BuildingUnlock, CivBonus, GenieTechEffectBundleGroup,\
+    from openage.convert.entity_object.conversion.aoc.genie_tech import GenieTechObject, \
+        AgeUpgrade, BuildingLineUpgrade, BuildingUnlock, CivBonus, GenieTechEffectBundleGroup, \
         InitiatedTech, StatUpgrade, UnitLineUpgrade, UnitUnlock
-    from openage.convert.entity_object.conversion.aoc.genie_terrain import GenieTerrainObject,\
+    from openage.convert.entity_object.conversion.aoc.genie_terrain import GenieTerrainObject, \
         GenieTerrainGroup
-    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitObject,\
-        GenieAmbientGroup, GenieBuildingLineGroup, GenieMonkGroup, GenieUnitLineGroup,\
-        GenieUnitTaskGroup, GenieUnitTransformGroup, GenieVariantGroup, GenieVillagerGroup,\
+    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitObject, \
+        GenieAmbientGroup, GenieBuildingLineGroup, GenieMonkGroup, GenieUnitLineGroup, \
+        GenieUnitTaskGroup, GenieUnitTransformGroup, GenieVariantGroup, GenieVillagerGroup, \
         GenieGameEntityGroup
     from openage.convert.entity_object.export.media_export_request import MediaExportRequest
     from openage.convert.entity_object.export.metadata_export import MetadataExport

@@ -14,20 +14,20 @@ import typing
 from openage.convert.entity_object.conversion.aoc.genie_tech import BuildingUnlock
 from .....log import info
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-from ....entity_object.conversion.aoc.genie_tech import BuildingLineUpgrade,\
+from ....entity_object.conversion.aoc.genie_tech import BuildingLineUpgrade, \
     AgeUpgrade, StatUpgrade, InitiatedTech, CivBonus
-from ....entity_object.conversion.aoc.genie_unit import GenieUnitTaskGroup,\
-    GenieVillagerGroup, GenieAmbientGroup, GenieVariantGroup,\
+from ....entity_object.conversion.aoc.genie_unit import GenieUnitTaskGroup, \
+    GenieVillagerGroup, GenieAmbientGroup, GenieVariantGroup, \
     GenieBuildingLineGroup, GenieGarrisonMode
-from ....entity_object.conversion.swgbcc.genie_tech import SWGBUnitUnlock,\
+from ....entity_object.conversion.swgbcc.genie_tech import SWGBUnitUnlock, \
     SWGBUnitLineUpgrade
-from ....entity_object.conversion.swgbcc.genie_unit import SWGBUnitTransformGroup,\
+from ....entity_object.conversion.swgbcc.genie_unit import SWGBUnitTransformGroup, \
     SWGBMonkGroup, SWGBUnitLineGroup, SWGBStackBuildingGroup
-from ....service.debug_info import debug_converter_objects,\
+from ....service.debug_info import debug_converter_objects, \
     debug_converter_object_groups
 from ....service.read.nyan_api_loader import load_api
-from ....value_object.conversion.swgb.internal_nyan_names import MONK_GROUP_ASSOCS,\
-    CIV_LINE_ASSOCS, AMBIENT_GROUP_LOOKUPS, VARIANT_GROUP_LOOKUPS,\
+from ....value_object.conversion.swgb.internal_nyan_names import MONK_GROUP_ASSOCS, \
+    CIV_LINE_ASSOCS, AMBIENT_GROUP_LOOKUPS, VARIANT_GROUP_LOOKUPS, \
     CIV_TECH_ASSOCS
 from ..aoc.media_subprocessor import AoCMediaSubprocessor
 from ..aoc.processor import AoCProcessor
