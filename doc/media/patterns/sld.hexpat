@@ -30,8 +30,8 @@ struct sld_header {
 struct sld_frame_header {
     u16 canvas_width;
     u16 canvas_height;
-    u16 canvas_hotspot_x;
-    u16 canvas_hotspot_y;
+    s16 canvas_hotspot_x;
+    s16 canvas_hotspot_y;
     u8  frame_type;
     u8  unknown5;
     u16 frame_index;

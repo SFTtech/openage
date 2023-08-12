@@ -146,8 +146,8 @@ cdef class SLD:
         # Dimensions of main layer (reused for dmg mask and playercolor)
         cdef unsigned short main_width
         cdef unsigned short main_height
-        cdef unsigned short main_hotspot_x
-        cdef unsigned short main_hotspot_y
+        cdef short main_hotspot_x
+        cdef short main_hotspot_y
 
         # Our position in the file bytes
         cdef unsigned int current_offset

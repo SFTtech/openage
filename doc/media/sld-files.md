@@ -6,17 +6,41 @@ Unlike the [SMX](smx-files.md) and [SLP](slp-files.md) formats, the SLD format d
 indexed palettes for pixel data. Instead, SLD image data utilizes lossy texture compression
 algorithms [DXT1](https://en.wikipedia.org/wiki/S3_Texture_Compression#DXT1) and [DXT4](https://en.wikipedia.org/wiki/S3_Texture_Compression#DXT1) (also known as BC1 and BC4, respectively).
 
-1. [SLD File Format](#sld-file-format)
-    1. [Header](#header)
-    1. [Frame Header](#sld-frame-header)
-    1. [Layers](#sld-layers)
-        1. [Main Graphics](#sld-main-graphics-layer)
-        1. [Shadow](#sld-shadow-graphics-layer)
-        1. [Damage Mask](#sld-damage-mask-layer)
-        1. [Playercolor Mask](#sld-playercolor-mask-layer)
-1. [Excursion: DXT1/BC1 Block Compression](#excursion-dxt1bc1-block-compression)
-1. [Excursion: DXT4/BC4 Block Compression](#excursion-dxt4bc4-block-compression)
-1. [Processing the Command Array (Example)](#processing-the-command-array-example)
+1. [SLD file format](#sld-file-format)
+   1. [Header](#header)
+   2. [SLD Frame](#sld-frame)
+      1. [SLD Frame Header](#sld-frame-header)
+   3. [SLD Layers](#sld-layers)
+      1. [Layer Content Length](#layer-content-length)
+      2. [SLD Main Graphics Layer](#sld-main-graphics-layer)
+         1. [Header](#header-1)
+         2. [Pixel Data](#pixel-data)
+            1. [Command Array](#command-array)
+            2. [Compressed Block Array](#compressed-block-array)
+      3. [SLD Shadow Graphics Layer](#sld-shadow-graphics-layer)
+         1. [Header](#header-2)
+         2. [Pixel Data](#pixel-data-1)
+            1. [Command Array](#command-array-1)
+            2. [Compressed Block Array](#compressed-block-array-1)
+      4. [SLD Damage Mask Layer](#sld-damage-mask-layer)
+         1. [Header](#header-3)
+         2. [Pixel Data](#pixel-data-2)
+            1. [Command Array](#command-array-2)
+            2. [Compressed Block Array](#compressed-block-array-2)
+      5. [SLD Playercolor Mask Layer](#sld-playercolor-mask-layer)
+         1. [Header](#header-4)
+         2. [Pixel Data](#pixel-data-3)
+            1. [Command Array](#command-array-3)
+            2. [Compressed Block Array](#compressed-block-array-3)
+2. [Excursion: DXT1/BC1 Block Compression](#excursion-dxt1bc1-block-compression)
+   1. [Building the Lookup Table](#building-the-lookup-table)
+   2. [Constructing the Pixel Block](#constructing-the-pixel-block)
+   3. [Example](#example)
+3. [Excursion: DXT4/BC4 Block Compression](#excursion-dxt4bc4-block-compression)
+   1. [Building the Lookup Table](#building-the-lookup-table-1)
+   2. [Constructing the Pixel Block](#constructing-the-pixel-block-1)
+   3. [Example](#example-1)
+4. [Processing the Command Array (Example)](#processing-the-command-array-example)
 
 In addition to the format description found here, we also
 provide a [pattern file](/doc/media/patterns/sld.hexpat) for the [imHex](https://imhex.werwolv.net/)
@@ -74,8 +98,8 @@ The frame header contains 7 values:
 | ------- | ------ | --------------- | ------------------------- |
 | 2 bytes | uint16 | Canvas Width    | 200, 0xC8                 |
 | 2 bytes | uint16 | Canvas Height   | 200, 0xC8                 |
-| 2 bytes | uint16 | Canvas Center X | 100, 0x64                 |
-| 2 bytes | uint16 | Canvas Center Y | 100, 0x64                 |
+| 2 bytes | int16  | Canvas Center X | 100, 0x64                 |
+| 2 bytes | int16  | Canvas Center Y | 100, 0x64                 |
 | 1 bytes | uint8  | Frame Type      | 7, 0b00000111 (bit field) |
 | 1 bytes | uint8  | Unkown          | 1, 0x01                   |
 | 2 bytes | uint16 | Frame index     | 5, 0x0005                 |
@@ -84,8 +108,8 @@ The frame header contains 7 values:
 struct sld_frame_header {
   uint16  canvas_width;
   uint16  canvas_height;
-  uint16  canvas_hotspot_x;
-  uint16  canvas_hotspot_y;
+  int16  canvas_hotspot_x;
+  int16  canvas_hotspot_y;
   uint8   frame_type;
   uint8   unknown1;
   uint16  frame_index;
