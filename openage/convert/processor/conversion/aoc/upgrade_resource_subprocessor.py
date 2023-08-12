@@ -1156,6 +1156,31 @@ class AoCUpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
+    def siege_conversion_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Any,
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for the siege conversion effect (ID: 29).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: Any
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO
+
+        return patches
+
+    @staticmethod
     def ship_conversion_upgrade(
         converter_group: ConverterObjectGroup,
         value: typing.Any,

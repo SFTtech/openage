@@ -63,6 +63,10 @@ class DE2TechSubprocessor:
         57: AoCUpgradeAttributeSubprocessor.kidnap_storage_upgrade,
 
         30: DE2UpgradeAttributeSubprocessor.herdable_capacity_upgrade,
+        59: DE2UpgradeAttributeSubprocessor.charge_attack_upgrade,
+        60: DE2UpgradeAttributeSubprocessor.charge_regen_upgrade,
+        61: DE2UpgradeAttributeSubprocessor.charge_event_upgrade,
+        62: DE2UpgradeAttributeSubprocessor.charge_type_upgrade,
         63: AoCUpgradeAttributeSubprocessor.ignore_armor_upgrade,
         100: AoCUpgradeAttributeSubprocessor.resource_cost_upgrade,
         101: AoCUpgradeAttributeSubprocessor.creation_time_upgrade,
@@ -75,6 +79,9 @@ class DE2TechSubprocessor:
         108: AoCUpgradeAttributeSubprocessor.garrison_heal_upgrade,
         109: DE2UpgradeAttributeSubprocessor.regeneration_rate_upgrade,
         110: DE2UpgradeAttributeSubprocessor.villager_pop_space_upgrade,
+        111: DE2UpgradeAttributeSubprocessor.min_convert_upgrade,
+        112: DE2UpgradeAttributeSubprocessor.max_convert_upgrade,
+        113: DE2UpgradeAttributeSubprocessor.convert_chance_upgrade,
     }
 
     upgrade_resource_funcs = {
@@ -85,6 +92,7 @@ class DE2TechSubprocessor:
         4: AoCUpgradeResourceSubprocessor.starting_population_space_upgrade,
         27: AoCUpgradeResourceSubprocessor.monk_conversion_upgrade,
         28: AoCUpgradeResourceSubprocessor.building_conversion_upgrade,
+        29: AoCUpgradeResourceSubprocessor.siege_conversion_upgrade,
         32: AoCUpgradeResourceSubprocessor.bonus_population_upgrade,
         35: AoCUpgradeResourceSubprocessor.faith_recharge_rate_upgrade,
         36: AoCUpgradeResourceSubprocessor.farm_food_upgrade,
@@ -144,6 +152,10 @@ class DE2TechSubprocessor:
         254: DE2UpgradeResourceSubprocessor.herdable_garrison_upgrade,
         262: DE2UpgradeResourceSubprocessor.bengali_conversion_resistance_upgrade,
         266: DE2UpgradeResourceSubprocessor.doi_paper_money_upgrade,
+        267: DE2UpgradeResourceSubprocessor.forager_wood_gather_upgrade,
+        268: DE2UpgradeResourceSubprocessor.resource_decay_upgrade,
+        269: DE2UpgradeResourceSubprocessor.tech_reward_upgrade,
+        274: DE2UpgradeResourceSubprocessor.chieftains_upgrade,
     }
 
     @classmethod

@@ -1914,6 +1914,9 @@ class AoCUpgradeAttributeSubprocessor:
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
             patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
 
+        else:
+            return []
+
         # Wrapper
         wrapper_name = f"Change{game_entity_name}MinRangeWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"

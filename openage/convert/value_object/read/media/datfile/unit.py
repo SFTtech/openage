@@ -821,6 +821,7 @@ class ProjectileUnit(ActionUnit):
             (SKIP, "attack_displayed", StorageType.INT_MEMBER, "int16_t"),
             (SKIP, "range_displayed", StorageType.FLOAT_MEMBER, "float"),
             (SKIP, "reload_time_displayed", StorageType.FLOAT_MEMBER, "float"),
+            (READ_GEN, "blast_damage", StorageType.FLOAT_MEMBER, "float"),
         ])
 
         return data_format
@@ -917,7 +918,7 @@ class LivingUnit(ProjectileUnit):
             data_format.extend([
                 (SKIP, "flank_attack_modifier", StorageType.FLOAT_MEMBER, "float"),
                 (READ_GEN, "creatable_type", StorageType.ID_MEMBER, EnumLookupMember(
-                    raw_type="int8_t",
+                    raw_type="uint8_t",
                     type_name="creatable_types",
                     lookup_dict=CREATABLE_TYPES
                 )),
@@ -939,6 +940,9 @@ class LivingUnit(ProjectileUnit):
                     (READ_GEN, "charge_regen_rate", StorageType.FLOAT_MEMBER, "float"),
                     (READ_GEN, "charge_cost", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "charge_type", StorageType.ID_MEMBER, "int16_t"),
+                    (READ_GEN, "min_convert_mod", StorageType.FLOAT_MEMBER, "float"),
+                    (READ_GEN, "max_convert_mod", StorageType.FLOAT_MEMBER, "float"),
+                    (READ_GEN, "convert_chance_mod", StorageType.FLOAT_MEMBER, "float"),
                 ])
 
             data_format.extend([

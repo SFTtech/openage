@@ -6968,6 +6968,12 @@ class AoCAbilitySubprocessor:
 
                 break
 
+        else:
+            garrisoned = line.garrison_entities[0]
+            storage_name = name_lookup_dict[garrisoned.get_id()][0]
+            storage_entity = garrisoned
+            garrisoned_forward_ref = ForwardRef(storage_entity, storage_name)
+
         ability_raw_api_object.add_raw_member("storage_element",
                                               garrisoned_forward_ref,
                                               "engine.ability.type.TransferStorage")
