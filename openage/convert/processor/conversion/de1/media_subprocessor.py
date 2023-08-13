@@ -114,7 +114,8 @@ class DE1MediaSubprocessor:
                                                          replay_delay,
                                                          frame_count,
                                                          angle_count,
-                                                         mirror_mode)
+                                                         mirror_mode=0,
+                                                         start_angle=270)
 
                 # Notify metadata export about SLP metadata when the file is exported
                 export_request.add_observer(texture_meta_export)
