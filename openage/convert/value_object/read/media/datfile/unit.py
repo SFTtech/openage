@@ -821,8 +821,10 @@ class ProjectileUnit(ActionUnit):
             (SKIP, "attack_displayed", StorageType.INT_MEMBER, "int16_t"),
             (SKIP, "range_displayed", StorageType.FLOAT_MEMBER, "float"),
             (SKIP, "reload_time_displayed", StorageType.FLOAT_MEMBER, "float"),
-            (READ_GEN, "blast_damage", StorageType.FLOAT_MEMBER, "float"),
         ])
+
+        if game_version.edition.game_id == "AOE2DE":
+            data_format.append((READ_GEN, "blast_damage", StorageType.FLOAT_MEMBER, "float"))
 
         return data_format
 
