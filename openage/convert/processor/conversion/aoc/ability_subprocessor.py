@@ -35,6 +35,8 @@ if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup
 
 
+FLOAT32_MAX = 3.4028234663852886e+38
+
 class AoCAbilitySubprocessor:
     """
     Creates raw API objects for abilities in AoC.
@@ -7046,7 +7048,9 @@ class AoCAbilitySubprocessor:
         # Ships/Trebuchets turn slower
         if turn_speed_unmodified > 0:
             turn_yaw = current_unit["max_yaw_per_sec_moving"].value
-            turn_speed = degrees(turn_yaw)
+
+            if not turn_yaw == FLOAT32_MAX:
+                turn_speed = degrees(turn_yaw)
 
         ability_raw_api_object.add_raw_member("turn_speed",
                                               turn_speed,
