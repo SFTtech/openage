@@ -239,7 +239,7 @@ cdef class BinaryTreePacker(Packer):
                               block.height + self.margin)
 
         if node != NULL:
-            res =  self.split_node(node,
+            node = self.split_node(node,
                                    block.width + self.margin,
                                    block.height + self.margin)
         else:
