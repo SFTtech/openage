@@ -105,7 +105,7 @@ class DE1MediaSubprocessor:
 
                 frame_count = graphic["frame_count"].value
                 angle_count = graphic["angle_count"].value
-                mirror_mode = graphic["mirroring_mode"].value
+                # mirror_mode = graphic["mirroring_mode"].value
                 sprite_meta_export.add_graphics_metadata(target_filename,
                                                          texture_meta_filename,
                                                          layer_mode,

@@ -37,6 +37,7 @@ if typing.TYPE_CHECKING:
 
 FLOAT32_MAX = 3.4028234663852886e+38
 
+
 class AoCAbilitySubprocessor:
     """
     Creates raw API objects for abilities in AoC.
