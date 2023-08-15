@@ -24,6 +24,8 @@ ScreenRenderer::ScreenRenderer(const std::shared_ptr<Window> & /* window */,
 	renderer::opengl::GlContext::check_error();
 
 	this->initialize_render_pass(shaderdir);
+
+	log::log(INFO << "Created render stage 'Screen'");
 }
 
 std::shared_ptr<renderer::RenderPass> ScreenRenderer::get_render_pass() {

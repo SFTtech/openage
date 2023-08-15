@@ -10,7 +10,7 @@ namespace openage::time {
 class Clock;
 
 /**
- * Manage and update internal time via a clock.
+ * Manages the passage of simulation time and real time.
  */
 class TimeLoop {
 public:

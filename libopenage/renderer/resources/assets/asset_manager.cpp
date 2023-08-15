@@ -30,6 +30,7 @@ AssetManager::AssetManager(const std::shared_ptr<Renderer> &renderer,
 	cache{std::make_shared<AssetCache>()},
 	texture_manager{std::make_shared<TextureManager>(renderer)},
 	asset_base_dir{asset_base_dir} {
+	log::log(INFO << "Created asset manager");
 }
 
 const std::shared_ptr<Animation2dInfo> &AssetManager::request_animation(const util::Path &path) {

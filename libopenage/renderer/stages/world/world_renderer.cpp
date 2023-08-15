@@ -36,6 +36,8 @@ WorldRenderer::WorldRenderer(const std::shared_ptr<Window> &window,
 	window->add_resize_callback([this](size_t width, size_t height, double /*scale*/) {
 		this->resize(width, height);
 	});
+
+	log::log(INFO << "Created render stage 'World'");
 }
 
 std::shared_ptr<renderer::RenderPass> WorldRenderer::get_render_pass() {

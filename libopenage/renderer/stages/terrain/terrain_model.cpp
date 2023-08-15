@@ -37,6 +37,11 @@ void TerrainRenderModel::set_camera(const std::shared_ptr<renderer::camera::Came
 }
 
 void TerrainRenderModel::fetch_updates() {
+	// TODO: Don't create model if render entity is not set
+	if (not this->render_entity) {
+		return;
+	}
+
 	// Check render entity for updates
 	if (not this->render_entity->is_changed()) {
 		return;
