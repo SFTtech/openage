@@ -1,12 +1,12 @@
 // Copyright 2018-2023 the openage authors. See copying.md for legal info.
 
+#include <chrono>
 #include <cstdlib>
 #include <epoxy/gl.h>
 #include <functional>
 #include <memory>
+#include <thread>
 #include <unordered_map>
-
-#include <SDL2/SDL.h>
 
 #include <nyan/nyan.h>
 
@@ -16,6 +16,7 @@
 #include "gui.h"
 #include "log/log.h"
 #include "physics.h"
+#include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "util/math_constants.h"
 #include "util/path.h"
 
@@ -35,6 +36,7 @@ enum class timescale {
 };
 
 void main(const util::Path &path) {
+	renderer::gui::GuiApplicationWithLogger gui_app{};
 	bool human_player = false;
 
 	timescale speed = timescale::REALTIME;
@@ -107,9 +109,10 @@ void main(const util::Path &path) {
 
 			auto loop_start = Clock::now();
 
+			gui_app.process_events();
+
 			// process the input for both players
 			// player 1 can be AI or human.
-
 			if (human_player) {
 				phys.process_input(state, state->p1, inputs, loop, now);
 			}
@@ -150,7 +153,7 @@ void main(const util::Path &path) {
 
 			if (speed == timescale::NOSLEEP) {
 				// increase the simulation loop time a bit
-				SDL_Delay(5);
+				std::this_thread::sleep_for(std::chrono::milliseconds(5));
 			}
 
 			dt_ms_t dt_us = Clock::now() - loop_start;
@@ -159,7 +162,7 @@ void main(const util::Path &path) {
 				dt_ms_t wait_time = per_frame - dt_us;
 
 				if (wait_time > dt_ms_t::zero()) {
-					SDL_Delay(wait_time.count());
+					std::this_thread::sleep_for(wait_time);
 				}
 			}
 

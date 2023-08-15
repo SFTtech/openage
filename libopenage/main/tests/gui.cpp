@@ -33,7 +33,7 @@ const std::vector<PongEvent> &Gui::get_inputs(const std::shared_ptr<PongPlayer> 
 	std::vector<int> inputs;
 
 	/*
-	for (all inputs from SDL) {
+	for (all inputs from window) {
 		add key to inputs vector;
 	}
 	*/
@@ -164,10 +164,6 @@ void main() {
 			this->p1paddle,
 			this->p2paddle},
 		this->renderer->get_display_target());
-
-	glDepthFunc(GL_LEQUAL);
-	glDepthRange(0.0, 1.0);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	this->window.add_resize_callback(
 		[=, this](size_t w, size_t h, double scale) {

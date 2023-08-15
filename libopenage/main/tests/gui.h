@@ -3,12 +3,12 @@
 #pragma once
 
 
-#include <vector>
 #include <deque>
+#include <vector>
 
-#include "../../time/time.h"
-#include "../../renderer/renderer.h"
-#include "../../renderer/opengl/window.h"
+#include "renderer/opengl/window.h"
+#include "renderer/renderer.h"
+#include "time/time.h"
 
 
 namespace openage::main::tests::pong {
@@ -30,7 +30,7 @@ public:
 
 	void log(const std::string &msg);
 
-	void add_resize_callback(const renderer::Window::resize_cb_t&);
+	void add_resize_callback(const renderer::Window::resize_cb_t &);
 	void clear_resize_callbacks();
 
 	void update();
@@ -55,4 +55,4 @@ private:
 	std::vector<renderer::Window::resize_cb_t> resize_callbacks;
 };
 
-} // openage::main::tests::pong
+} // namespace openage::main::tests::pong
