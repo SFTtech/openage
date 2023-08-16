@@ -8,6 +8,7 @@
 #include "curve/discrete.h"
 #include "gamestate/component/internal_component.h"
 #include "gamestate/component/types.h"
+#include "gamestate/types.h"
 #include "time/time.h"
 
 
@@ -17,8 +18,6 @@ class EventLoop;
 }
 
 namespace gamestate::component {
-
-using ownership_id_t = uint64_t;
 
 class Ownership : public InternalComponent {
 public:
@@ -30,7 +29,7 @@ public:
 	 * @param creation_time Ingame creation time of the component.
 	 */
 	Ownership(const std::shared_ptr<openage::event::EventLoop> &loop,
-	          const ownership_id_t owner_id,
+	          const player_id_t owner_id,
 	          const time::time_t &creation_time);
 
 	/**
@@ -48,20 +47,20 @@ public:
 	 * @param time Time at which the owner ID is set.
 	 * @param owner_id New owner ID.
 	 */
-	void set_owner(const time::time_t &time, const ownership_id_t owner_id);
+	void set_owner(const time::time_t &time, const player_id_t owner_id);
 
 	/**
      * Get the owner IDs over time.
      *
      * @return Owner ID curve.
      */
-	const curve::Discrete<ownership_id_t> &get_owners() const;
+	const curve::Discrete<player_id_t> &get_owners() const;
 
 private:
 	/**
      * Owner ID storage over time.
      */
-	curve::Discrete<ownership_id_t> owner;
+	curve::Discrete<player_id_t> owner;
 };
 
 } // namespace gamestate::component

@@ -101,7 +101,7 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
                                 const param_map &params) {
 	auto gstate = std::dynamic_pointer_cast<gamestate::GameState>(state);
 
-	auto nyan_db = gstate->get_nyan_db();
+	auto nyan_db = gstate->get_db_view();
 
 	auto game_entities = nyan_db->get_obj_children_all("engine.util.game_entity.GameEntity");
 
@@ -151,7 +151,8 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 	}
 
 	// Create entity
-	auto entity = this->factory->add_game_entity(this->loop, gstate, nyan_entity);
+	player_id_t owner_id = params.get("owner", 0);
+	auto entity = this->factory->add_game_entity(this->loop, gstate, owner_id, nyan_entity);
 
 	// Setup components
 	auto entity_pos = std::dynamic_pointer_cast<component::Position>(
@@ -163,7 +164,7 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 
 	auto entity_owner = std::dynamic_pointer_cast<component::Ownership>(
 		entity->get_component(component::component_t::OWNERSHIP));
-	entity_owner->set_owner(time, params.get("owner", 0));
+	entity_owner->set_owner(time, owner_id);
 
 	auto activity = std::dynamic_pointer_cast<component::Activity>(
 		entity->get_component(component::component_t::ACTIVITY));

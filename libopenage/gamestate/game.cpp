@@ -11,6 +11,7 @@
 
 #include "assets/mod_manager.h"
 #include "assets/modpack.h"
+#include "gamestate/entity_factory.h"
 #include "gamestate/game_state.h"
 #include "gamestate/universe.h"
 #include "util/path.h"
@@ -20,11 +21,18 @@
 namespace openage::gamestate {
 
 Game::Game(const std::shared_ptr<openage::event::EventLoop> &event_loop,
-           const std::shared_ptr<assets::ModManager> &mod_manager) :
+           const std::shared_ptr<assets::ModManager> &mod_manager,
+           const std::shared_ptr<EntityFactory> &entity_factory) :
 	db{nyan::Database::create()},
 	state{std::make_shared<GameState>(this->db, event_loop)},
 	universe{std::make_shared<Universe>(state)} {
 	this->load_data(mod_manager);
+
+	// TODO: Testing player creation
+	auto player1 = entity_factory->add_player(event_loop, state, "");
+	auto player2 = entity_factory->add_player(event_loop, state, "");
+	state->add_player(player1);
+	state->add_player(player2);
 
 	// TODO: This lets the spawner event check which modpacks are loaded,
 	//       so that it can decide which entities it can spawn.

@@ -29,6 +29,7 @@ class Path;
 
 namespace gamestate {
 class GameState;
+class EntityFactory;
 class Universe;
 
 /**
@@ -46,12 +47,13 @@ public:
 	/**
 	 * Create a new game.
 	 *
-	 * @param root_dir openage root directory.
      * @param event_loop Event simulation loop for the gamestate.
      * @param mod_manager Mod manager.
+	 * @param entity_factory Factory for creating entities. Used for creating the players.
 	 */
 	Game(const std::shared_ptr<openage::event::EventLoop> &event_loop,
-	     const std::shared_ptr<assets::ModManager> &mod_manager);
+	     const std::shared_ptr<assets::ModManager> &mod_manager,
+	     const std::shared_ptr<EntityFactory> &entity_factory);
 	~Game() = default;
 
 	/**

@@ -23,6 +23,7 @@ class RenderFactory;
 namespace gamestate {
 class GameEntity;
 class GameState;
+class Player;
 
 /**
  * Creates game entities that contain data of objects inside the game world.
@@ -43,13 +44,31 @@ public:
      *
 	 * @param loop Event loop for the gamestate.
 	 * @param state State of the game.
+	 * @param owner_id ID of the player owning the entity.
 	 * @param nyan_entity fqon of the GameEntity data in the nyan database.
 	 *
 	 * @return New game entity.
 	 */
 	std::shared_ptr<GameEntity> add_game_entity(const std::shared_ptr<openage::event::EventLoop> &loop,
 	                                            const std::shared_ptr<GameState> &state,
+	                                            player_id_t owner_id,
 	                                            const nyan::fqon_t &nyan_entity);
+
+	/**
+	 * Create a new player.
+	 *
+	 * This just creates the player. The caller is responsible for initializing
+	 * its components and placing it into the game.
+	 *
+	 * @param loop Event loop for the gamestate.
+	 * @param state State of the game.
+	 * @param player_setup fqon of the player setup in the nyan database.
+	 *
+	 * @return New player.
+	 */
+	std::shared_ptr<Player> add_player(const std::shared_ptr<openage::event::EventLoop> &loop,
+	                                   const std::shared_ptr<GameState> &state,
+	                                   const nyan::fqon_t &player_setup);
 
 	/**
 	 * Attach a renderer which enables graphical display options for all ingame entities.
@@ -64,12 +83,12 @@ private:
 	 * Initialize components of a game entity.
 	 *
 	 * @param loop Event loop for the gamestate.
-	 * @param state State of the game.
+	 * @param owner_db_view View of the nyan database of the player owning the entity.
 	 * @param entity Game entity.
 	 * @param nyan_entity fqon of the GameEntity data in the nyan database.
 	 */
 	void init_components(const std::shared_ptr<openage::event::EventLoop> &loop,
-	                     const std::shared_ptr<GameState> &state,
+	                     const std::shared_ptr<nyan::View> &owner_db_view,
 	                     const std::shared_ptr<GameEntity> &entity,
 	                     const nyan::fqon_t &nyan_entity);
 
@@ -78,12 +97,24 @@ private:
      *
      * @return Unique ID for a game entity.
      */
-	entity_id_t get_next_id();
+	entity_id_t get_next_entity_id();
+
+	/**
+	 * Get a unique ID for creating a player.
+	 *
+	 * @return Unique ID for a player.
+	 */
+	player_id_t get_next_player_id();
 
 	/**
      * ID of the next game entity to be created.
      */
-	entity_id_t next_id;
+	entity_id_t next_entity_id;
+
+	/**
+	 * ID of the next player to be created.
+	 */
+	player_id_t next_player_id;
 
 	/**
 	 * Factory for creating connector objects to the renderer which make game entities displayable.

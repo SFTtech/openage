@@ -31,6 +31,7 @@
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
 #include "gamestate/manager.h"
+#include "gamestate/player.h"
 #include "gamestate/system/types.h"
 #include "log/message.h"
 #include "renderer/render_factory.h"
@@ -152,23 +153,39 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 }
 
 EntityFactory::EntityFactory() :
-	next_id{0},
+	next_entity_id{0},
+	next_player_id{0},
 	render_factory{nullptr} {
 }
 
 std::shared_ptr<GameEntity> EntityFactory::add_game_entity(const std::shared_ptr<openage::event::EventLoop> &loop,
                                                            const std::shared_ptr<GameState> &state,
+                                                           player_id_t owner_id,
                                                            const nyan::fqon_t &nyan_entity) {
-	auto entity = std::make_shared<GameEntity>(this->get_next_id());
+	auto entity = std::make_shared<GameEntity>(this->get_next_entity_id());
 	entity->set_manager(std::make_shared<GameEntityManager>(loop, state, entity));
 
-	init_components(loop, state, entity, nyan_entity);
+	// use the owner's data to initialize the entity
+	// this ensures that only the owner's tech upgrades apply
+	auto db_view = state->get_player(owner_id)->get_db_view();
+	init_components(loop, db_view, entity, nyan_entity);
 
 	if (this->render_factory) {
 		entity->set_render_entity(this->render_factory->add_world_render_entity());
 	}
 
 	return entity;
+}
+
+std::shared_ptr<Player> EntityFactory::add_player(const std::shared_ptr<openage::event::EventLoop> & /* loop */,
+                                                  const std::shared_ptr<GameState> &state,
+                                                  const nyan::fqon_t & /* player_setup */) {
+	auto player = std::make_shared<Player>(this->get_next_player_id(),
+	                                       state->get_db_view()->new_child());
+
+	// TODO: Components (for resources, diplomacy, etc.)
+
+	return player;
 }
 
 void EntityFactory::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
@@ -178,7 +195,7 @@ void EntityFactory::attach_renderer(const std::shared_ptr<renderer::RenderFactor
 }
 
 void EntityFactory::init_components(const std::shared_ptr<openage::event::EventLoop> &loop,
-                                    const std::shared_ptr<GameState> &state,
+                                    const std::shared_ptr<nyan::View> &owner_db_view,
                                     const std::shared_ptr<GameEntity> &entity,
                                     const nyan::fqon_t &nyan_entity) {
 	auto position = std::make_shared<component::Position>(loop);
@@ -190,13 +207,12 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 	auto command_queue = std::make_shared<component::CommandQueue>(loop);
 	entity->add_component(command_queue);
 
-	auto db_view = state->get_nyan_db();
-	auto nyan_obj = db_view->get_object(nyan_entity);
+	auto nyan_obj = owner_db_view->get_object(nyan_entity);
 	nyan::set_t abilities = nyan_obj.get_set("GameEntity.abilities");
 
 	for (const auto &ability_val : abilities) {
 		auto ability_fqon = std::dynamic_pointer_cast<nyan::ObjectValue>(ability_val.get_ptr())->get_name();
-		auto ability_obj = db_view->get_object(ability_fqon);
+		auto ability_obj = owner_db_view->get_object(ability_fqon);
 
 		auto ability_parent = ability_obj.get_parents()[0];
 		if (ability_parent == "engine.ability.type.Move") {
@@ -218,7 +234,7 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 			auto attr_settings = ability_obj.get_set("Live.attributes");
 			for (auto &setting : attr_settings) {
 				auto setting_obj_val = std::dynamic_pointer_cast<nyan::ObjectValue>(setting.get_ptr());
-				auto setting_obj = db_view->get_object(setting_obj_val->get_name());
+				auto setting_obj = owner_db_view->get_object(setting_obj_val->get_name());
 				auto attribute = setting_obj.get_object("AttributeSetting.attribute");
 				auto start_value = setting_obj.get_int("AttributeSetting.starting_value");
 
@@ -238,9 +254,16 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 	entity->add_component(activity);
 }
 
-entity_id_t EntityFactory::get_next_id() {
-	auto new_id = this->next_id;
-	this->next_id++;
+entity_id_t EntityFactory::get_next_entity_id() {
+	auto new_id = this->next_entity_id;
+	this->next_entity_id++;
+
+	return new_id;
+}
+
+player_id_t EntityFactory::get_next_player_id() {
+	auto new_id = this->next_player_id;
+	this->next_player_id++;
 
 	return new_id;
 }
