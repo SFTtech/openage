@@ -35,17 +35,21 @@ std::vector<PongEvent> get_ai_inputs(const std::shared_ptr<PongPlayer> &player,
 
 		if (speed[0] == 0) {
 			tx_hit = std::numeric_limits<time::time_t>::max();
-		} else if (speed[0] > 0) {
+		}
+		else if (speed[0] > 0) {
 			tx_hit = time::time_t::from_double((area_width - ball_pos[0]) / speed[0]);
-		} else if (speed[0] < 0) {
+		}
+		else if (speed[0] < 0) {
 			tx_hit = time::time_t::from_double(ball_pos[0] / -speed[0]);
 		}
 
 		if (speed[1] == 0) {
 			ty_hit = std::numeric_limits<time::time_t>::max();
-		} else if (speed[1] > 0) {
+		}
+		else if (speed[1] > 0) {
 			ty_hit = time::time_t::from_double((area_height - ball_pos[1]) / speed[1]);
-		} else if (speed[1] < 0) {
+		}
+		else if (speed[1] < 0) {
 			ty_hit = time::time_t::from_double(ball_pos[1] / -speed[1]);
 		}
 
@@ -90,4 +94,4 @@ std::vector<PongEvent> get_ai_inputs(const std::shared_ptr<PongPlayer> &player,
 	return ret;
 }
 
-} // openage::main::tests::pong
+} // namespace openage::main::tests::pong

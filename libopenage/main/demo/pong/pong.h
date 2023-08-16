@@ -3,7 +3,7 @@
 #pragma once
 
 
-#include "../../util/path.h"
+#include "util/path.h"
 
 
 namespace openage::main::tests::pong {
@@ -12,7 +12,7 @@ namespace openage::main::tests::pong {
 /**
  * Run pong, the non-terminal variant.
  */
-void main(const util::Path& path);
+void main(const util::Path &path);
 
 
-} // openage::main::tests::pong
+} // namespace openage::main::tests::pong

@@ -10,12 +10,12 @@
 
 #include <nyan/nyan.h>
 
-#include "aicontroller.h"
 #include "error/error.h"
 #include "event/event_loop.h"
-#include "gui.h"
 #include "log/log.h"
-#include "physics.h"
+#include "main/demo/pong/aicontroller.h"
+#include "main/demo/pong/gui.h"
+#include "main/demo/pong/physics.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "util/math_constants.h"
 #include "util/path.h"

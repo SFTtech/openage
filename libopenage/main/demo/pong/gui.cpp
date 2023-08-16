@@ -6,7 +6,7 @@
 #include <eigen3/Eigen/Dense>
 #include <vector>
 
-#include "gamestate.h"
+#include "main/demo/pong/gamestate.h"
 #include "log/log.h"
 #include "renderer/geometry.h"
 #include "renderer/opengl/context.h"

@@ -4,7 +4,7 @@
 
 #include <sstream>
 
-#include "gui.h"
+#include "main/demo/pong/gui.h"
 #include "log/log.h"
 #include "util/strings.h"
 

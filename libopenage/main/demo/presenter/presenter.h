@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "../../util/path.h"
+#include "util/path.h"
 
 
 namespace openage::main::tests::presenter {
