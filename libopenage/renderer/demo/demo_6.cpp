@@ -20,8 +20,7 @@
 #include "renderer/stages/world/world_renderer.h"
 #include "renderer/uniform_buffer.h"
 #include "time/clock.h"
-
-#include "renderer/texture.h"
+#include "util/fps.h"
 
 
 namespace openage::renderer::tests {
@@ -171,25 +170,30 @@ void renderer_demo_6(const util::Path &path) {
 		render_entities.push_back(entity);
 	};
 
+	// Stop after 500 entities
+	size_t entity_limit = 500;
+
 	clock->start();
+
+	util::FrameCounter timer;
+
 	add_world_entity(coord::phys3(0.0f, 3.0f, 0.0f), clock->get_time());
 
 	time::time_t last_frame = clock->get_real_time();
 	time::time_t next_entity = clock->get_real_time() + 0.1;
-	while (not window->should_close()) {
+	while (render_entities.size() <= entity_limit) {
+		// Print FPS
+		timer.frame();
+		std::cout
+			<< "\rEntities: " << render_entities.size()
+			<< " -- "
+			<< "FPS: " << timer.fps << std::flush;
+
 		qtapp->process_events();
 
 		// Advance time
 		clock->update_time();
-
-		// Print FPS
 		auto current_time = clock->get_real_time();
-		time::time_t frame_time = current_time - last_frame;
-		last_frame = current_time;
-		std::cout << "\rFPS: " << 1.0f / frame_time.to_float() << "s"
-				  << " -- "
-				  << "Entities: " << render_entities.size() << std::flush;
-
 		if (current_time > next_entity) {
 			add_world_entity(coord::phys3(0.0f, 3.0f, 0.0f), clock->get_time());
 			next_entity = current_time + 0.1;
@@ -209,6 +213,10 @@ void renderer_demo_6(const util::Path &path) {
 		// Display final output on screen
 		window->update();
 	}
+
+	clock->stop();
+	log::log(MSG(info) << "Stopped after rendering " << render_entities.size() << " entities");
+
 	window->close();
 }
 
