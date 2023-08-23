@@ -64,8 +64,8 @@ renderer (window system) -> input -> event system -> simulation -> renderer -> o
 ```
 
 openage does not have simulation steps or *ticks* since everything in the simulation is
-event-based and scheduled by time. Therefore, updates between threads should work
-asynchronously in general.
+event-based and scheduled by time. Therefore, updates between threads should generally work
+asynchronously.
 
 Decoupling allows us to treat some subsystems as optional such as the renderer and input
 system (basically everything from the presenter).

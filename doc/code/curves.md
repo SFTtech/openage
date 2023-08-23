@@ -45,7 +45,7 @@ The usage of curves has a few downsides though. They are less space efficient du
 keyframe storage, interpolation are more costly more costly than incremental changes, and
 their integration is more complex than the usage of simpler data structures. However, in
 situations where operations are predictable, long-lasting, and easy to calculate - which
-is the case for most RTS games - these downsides are usually outweight by the positives.
+is the case for most RTS games - the positives may outweigh the downsides.
 
 ## Architecture
 
@@ -95,12 +95,12 @@ the primitive C++ types (e.g. `int`, `float`, `std::string`), simple structs and
 and shared pointers.
 
 On contruction of a primitive curve object, a keyframe with time `t = time::time_t::min_value()`
-and the default value of the value type is inserted. This is done to ensure that for any
+and the value's type is instanciated with its default constructor. This is done to ensure that for any
 requested time `t`, there is always a valid value to be returned. This mirrors the expected
 behaviour from declaring primitive values in C++ where members may be auto-initialized without
 explicit assignment to a default value. The default value for curves can also be explicitely
-assigned in the constructor. For value types that don't have default values, a default value
-must always be passed in the constructor.
+assigned in the constructor. Types that don't have a default constructor require that a
+default value is passed to the curve constructor.
 
 `BaseCurve` objects can be targeted by or trigger events from the [event system](/doc/code/event_system.md).
 As a consequence, curves are not copy constructable as they require a unique ID for
@@ -115,6 +115,8 @@ for specific curve types.
 
 **Read**
 
+Read operations retrieve values for a specific point in time.
+
 | Method          | Description                                                 |
 | --------------- | ----------------------------------------------------------- |
 | `get(t)`        | Get (interpolated) value at time `t`                        |
@@ -122,6 +124,8 @@ for specific curve types.
 | `next_frame(t)` | Get the next keyframe (time and value) after `t`            |
 
 **Modify**
+
+Modify operations insert values for a specific point in time.
 
 | Method                  | Description                                                                       |
 | ----------------------- | --------------------------------------------------------------------------------- |
@@ -131,9 +135,11 @@ for specific curve types.
 
 **Copy**
 
-| Method           | Description                                                                            |
-| ---------------- | -------------------------------------------------------------------------------------- |
-| `sync(Curve, t)` | copy keyframes from `Curve`, starting at time `t`; delete all keyframes after time `t` |
+Copy operations transfer keyframes from one curve to another.
+
+| Method           | Description                                                                                      |
+| ---------------- | ------------------------------------------------------------------------------------------------ |
+| `sync(Curve, t)` | Replace all keyframes from self after time `t` with keyframes from source `Curve` after time `t` |
 
 
 #### Discrete
