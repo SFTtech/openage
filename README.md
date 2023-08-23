@@ -15,29 +15,39 @@ Contact
 -------
 | Contact          | Where?                                                                                             |
 | ---------------- | -------------------------------------------------------------------------------------------------- |
-| Issue Tracker    | [GitHub SFTtech/openage](https://github.com/SFTtech/openage/issues)                                |
-| Development Blog | [blog.openage.dev](https://blog.openage.dev)                                                       |
+| Issue Tracker    | [GitHub SFTtech/openage]                                                                           |
+| Development Blog | [blog.openage.dev]                                                                                 |
 | Subreddit        | [![reddit](/assets/doc/reddit.svg) /r/openage](https://www.reddit.com/r/openage/)                  |
-| Discussions      | [GitHub Discussions](https://github.com/SFTtech/openage/discussions)                               |
+| Discussions      | [GitHub Discussions]                                                                               |
 | Matrix Chat      | [![matrix](/assets/doc/matrix.svg) `#sfttech:matrix.org`](https://matrix.to/#/#sfttech:matrix.org) |
 | Money Sink       | [![money sink](/assets/doc/liberapay.svg)](https://liberapay.com/SFTtech)                          |
 
+[GitHub SFTtech/openage]: https://github.com/SFTtech/openage/issues
+[blog.openage.dev]: https://blog.openage.dev
+[GitHub Discussions]: https://github.com/SFTtech/openage/discussions
 
 Technical foundation
 --------------------
 
-| Technology                                  | Component                                                     |
-| ------------------------------------------- | ------------------------------------------------------------- |
-| **C++20**                                   | Engine core                                                   |
-| **Python3**                                 | Scripting, media conversion, in-game console, code generation |
-| **Cython**                                  | Python/C++ Glue code                                          |
-| **Qt6**                                     | Graphical user interface                                      |
-| **CMake**                                   | Build system                                                  |
-| **OpenGL**                                  | Rendering, shaders                                            |
-| **Opus**                                    | Audio codec                                                   |
-| [**nyan**](https://github.com/SFTtech/nyan) | Content Configuration and Modding                             |
-| **Humans**                                  | Mixing together all of the above                              |
+| Technology   | Component                                                     |
+| ------------ | ------------------------------------------------------------- |
+| **C++20**    | Engine core                                                   |
+| **Python3**  | Scripting, media conversion, in-game console, code generation |
+| [**Cython**] | Python/C++ Glue code                                          |
+| [**Qt6**]    | Graphical user interface                                      |
+| [**CMake**]  | Build system                                                  |
+| [**OpenGL**] | Rendering, shaders                                            |
+| [**Opus**]   | Audio codec                                                   |
+| [**nyan**]   | Content Configuration and Modding                             |
+| [**Humans**] | Mixing together all of the above                              |
 
+[**Cython**]: https://cython.org/
+[**Qt6**]: https://contribute.qt-project.org/
+[**CMake**]: https://cmake.org/
+[**OpenGL**]: https://www.opengl.org/
+[**Opus**]: https://opus-codec.org/
+[**nyan**]: https://github.com/SFTtech/nyan
+[**Humans**]: https://www.youtube.com/watch?v=fQGbXmkSArs&t=20s
 
 Goals
 -----
@@ -77,11 +87,13 @@ If you're interested, we wrote detailed explanations on our blog: [Part 1](https
 
 |  Operating System   |                                                                                                       Build status                                                                                                        |
 | :-----------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|     Debian Sid      |                                                                               [Todo: Kevin #11](https://github.com/SFTtech/kevin/issues/11)                                                                               |
+|     Debian Sid      |                                                                                                     [Todo: Kevin #11]                                                                                                     |
 |  Ubuntu 22.04 LTS   |           [![Ubuntu 22.04 build status](https://github.com/SFTTech/openage/actions/workflows/ubuntu-22.04.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/ubuntu-22.04.yml)            |
 |        macOS        |                              [![macOS build status](https://github.com/SFTtech/openage/workflows/macOS-CI/badge.svg)](https://github.com/SFTtech/openage/actions?query=workflow%3AmacOS-CI)                               |
 | Windows Server 2019 | [![Windows Server 2019 build status](https://github.com/SFTtech/openage/actions/workflows/windows-server-2019.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/windows-server-2019.yml) |
 | Windows Server 2022 | [![Windows Server 2022 build status](https://github.com/SFTtech/openage/actions/workflows/windows-server-2022.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/windows-server-2022.yml) |
+
+[Todo: Kevin #11]: https://github.com/SFTtech/kevin/issues/11
 
 
 Installation Packages
@@ -107,9 +119,9 @@ Quickstart
 ----------
 
 * **How do I get this to run on my box?**
-    1. [Fork](https://help.github.com/articles/fork-a-repo/) the repo.
-    1. Install dependencies. See [doc/building.md](/doc/building.md#dependency-installation) to get instructions for your favorite platform.
-    1. Build the project:
+    1. [Clone](https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository) the repo.
+    2. Install dependencies. See [doc/building.md](/doc/building.md#dependency-installation) to get instructions for your favorite platform.
+    3. Build the project:
    ```
    ./configure --download-nyan
    make
