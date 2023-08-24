@@ -15,7 +15,8 @@ namespace openage::engine {
 
 Engine::Engine(mode mode,
                const util::Path &root_dir,
-               const std::vector<std::string> &mods) :
+               const std::vector<std::string> &mods,
+               bool debug_graphics) :
 	running{true},
 	run_mode{mode},
 	root_dir{root_dir},
@@ -59,7 +60,7 @@ Engine::Engine(mode mode,
 
 	if (this->run_mode == mode::FULL) {
 		this->threads.emplace_back([&]() {
-			this->presenter->run();
+			this->presenter->run(debug_graphics);
 
 			// Make sure that the presenter gets destructed in the same thread
 			// otherwise OpenGL complains about missing contexts

@@ -45,15 +45,13 @@ public:
 	 * be handed to our own Window class.
 	 *
 	 * @param window Window for the context. The context is made current to this window.
-	*/
-	explicit GlContext(const std::shared_ptr<QWindow> &window);
+	 * @param debug If true, enable OpenGL debug logging.
+	 */
+	explicit GlContext(const std::shared_ptr<QWindow> &window,
+	                   bool debug = false);
 	~GlContext() = default;
 
-	/**
-	 * Copy this context.
-	 *
-	 * It doesn't make sense to have more than one instance of the same context.
-	 */
+	// It doesn't make sense to have more than one instance of the same context.
 	GlContext(const GlContext &) = delete;
 	GlContext &operator=(const GlContext &) = delete;
 

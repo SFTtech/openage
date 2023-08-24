@@ -21,8 +21,18 @@ class GlContext;
 
 class GlWindow final : public Window {
 public:
-	/// Create a shiny window with the given title.
-	GlWindow(const std::string &title, size_t width, size_t height);
+	/**
+	 * Create a shiny window with the given title.
+	 *
+	 * @param title The window title.
+	 * @param width Width (in pixels).
+	 * @param height Height (in pixels).
+	 * @param debug If true, enable OpenGL debug logging.
+	 */
+	GlWindow(const std::string &title,
+	         size_t width,
+	         size_t height,
+	         bool debug = false);
 	~GlWindow();
 
 	void set_size(size_t width, size_t height) override;

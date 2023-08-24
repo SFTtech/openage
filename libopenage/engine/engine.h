@@ -71,10 +71,12 @@ public:
      * @param mode The run mode to use.
      * @param root_dir openage root directory.
      * @param mods The mods to load.
+	 * @param debug_graphics If true, enable OpenGL debug logging.
 	 */
 	Engine(mode mode,
 	       const util::Path &root_dir,
-	       const std::vector<std::string> &mods);
+	       const std::vector<std::string> &mods,
+	       bool debug_graphics = false);
 
 	// engine should not be copied or moved
 	Engine(const Engine &) = delete;

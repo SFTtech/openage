@@ -82,9 +82,10 @@ static gl_context_capabilities find_capabilities() {
 	return caps;
 }
 
-GlContext::GlContext(const std::shared_ptr<QWindow> &window) :
+GlContext::GlContext(const std::shared_ptr<QWindow> &window,
+                     bool debug) :
 	window{window},
-	log_handler{std::make_shared<GlDebugLogHandler>()} {
+	log_handler{} {
 	this->capabilities = find_capabilities();
 	auto const &capabilities = this->capabilities;
 
@@ -107,6 +108,10 @@ GlContext::GlContext(const std::shared_ptr<QWindow> &window) :
 	this->window->setFormat(format);
 	this->window->create();
 
+	if (debug) {
+		this->log_handler = std::make_shared<GlDebugLogHandler>();
+	}
+
 	this->gl_context = std::make_shared<QOpenGLContext>();
 	this->gl_context->setFormat(this->window->requestedFormat());
 	this->gl_context->create();
@@ -116,13 +121,15 @@ GlContext::GlContext(const std::shared_ptr<QWindow> &window) :
 
 	this->gl_context->makeCurrent(window.get());
 
-	// Log handler requires a current context, so we start it after associating
-	// it with the window.
-	this->log_handler->start();
+	if (debug) {
+		// Log handler requires a current context, so we start it after associating
+		// it with the window.
+		this->log_handler->start();
+	}
 
 	// We still have to verify that our version of libepoxy supports this version of OpenGL.
 	int epoxy_glv = capabilities.major_version * 10 + capabilities.minor_version;
-	if (!epoxy_is_desktop_gl() || epoxy_gl_version() < epoxy_glv) {
+	if (not epoxy_is_desktop_gl() or epoxy_gl_version() < epoxy_glv) {
 		throw Error(MSG(err) << "The used version of libepoxy does not support OpenGL version "
 		                     << capabilities.major_version << "." << capabilities.minor_version);
 	}

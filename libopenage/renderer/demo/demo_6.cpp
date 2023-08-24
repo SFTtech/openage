@@ -28,7 +28,7 @@ namespace openage::renderer::tests {
 void renderer_demo_6(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
-	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", 1024, 768);
+	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", 1024, 768, true);
 	auto renderer = window->make_renderer();
 
 	// Clock required by world renderer for timing animation frames
@@ -178,8 +178,6 @@ void renderer_demo_6(const util::Path &path) {
 	util::FrameCounter timer;
 
 	add_world_entity(coord::phys3(0.0f, 3.0f, 0.0f), clock->get_time());
-
-	time::time_t last_frame = clock->get_real_time();
 	time::time_t next_entity = clock->get_real_time() + 0.1;
 	while (render_entities.size() <= entity_limit) {
 		// Print FPS

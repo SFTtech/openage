@@ -23,12 +23,6 @@ def run_game(args, root_path):
         args_cpp.root_path = Path_cpp(PyObj(<PyObject*>root_path.fsobj),
                                     root_path.parts)
 
-        # frame limiting
-        if args.fps is not None:
-            args_cpp.fps_limit = args.fps
-        else:
-            args_cpp.fps_limit = 0
-
         # opengl debugging
         args_cpp.gl_debug = args.gl_debug
 

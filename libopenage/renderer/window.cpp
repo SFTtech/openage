@@ -12,11 +12,12 @@ namespace openage::renderer {
 
 std::shared_ptr<Window> Window::create(const std::string &title,
                                        size_t width,
-                                       size_t height) {
+                                       size_t height,
+                                       bool debug) {
 	// currently we only have a functional GL window
 	// TODO: support other renderer windows
 	//       and add some selection mechanism.
-	return std::make_shared<opengl::GlWindow>(title, width, height);
+	return std::make_shared<opengl::GlWindow>(title, width, height, debug);
 }
 
 
