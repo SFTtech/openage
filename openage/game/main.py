@@ -8,7 +8,8 @@ Holds the game entry point for openage.
 from __future__ import annotations
 import typing
 
-
+from ..convert.tool.api_export import export_api
+from ..convert.service.init.api_export_required import api_export_required
 from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
 from ..log import err, info
 
@@ -68,6 +69,13 @@ def main(args, error):
     # mount the config folder at "cfg/"
     root["cfg"].mount(get_config_path(args.cfg_dir))
     args.cfg_dir = root["cfg"]
+
+    # ensure that the openage API is present
+    if api_export_required(root["assets"]):
+        # export to assets folder
+        converted_path = root["assets"] / "converted"
+        converted_path.mkdirs()
+        export_api(converted_path)
 
     # ensure that the assets have been converted
     if wanna_convert() or conversion_required(root["assets"], args):
