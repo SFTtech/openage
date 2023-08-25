@@ -7,7 +7,7 @@ name = "Age of Empires 2: The Conqueror's"
 game_edition_id = "AOC"
 subfolder = "aoc"
 support = "yes"
-targetmod = [ "aoe2-base", "aoe2-base-graphics" ]
+targetmod = [ "aoe2_base", "aoe2_base_graphics" ]
 expansions = [ ]
 
   [AOC.mediapaths]
@@ -19,6 +19,25 @@ expansions = [ ]
   sounds = [ "data/sounds.drs", "data/sounds_x1.drs" ]
   interface = [ "data/interfac.drs" ]
   terrain = [ "data/terrain.drs" ]
+  blend = [ "data/blendomatic.dat" ]
+
+[AOCDEMO]
+name = "Age of Empires 2: The Conqueror's Trial Version"
+game_edition_id = "AOCDEMO"
+subfolder = "aoc_demo"
+support = "yes"
+targetmod = [ "trial_base", "trial_graphics" ]
+expansions = [ ]
+
+  [AOCDEMO.mediapaths]
+  datfile = [ "data/empires2_x1.dat" ]
+  gamedata = [ "data/gamedata_x1.drs" ]
+  graphics = [ "data/graphics.drs" ]
+  language = [ "language.dll", "language_x1.dll" ]
+  palettes = [ "data/interfac.drs" ]
+  sounds = [ "data/sounds_x1.drs" ]
+  interface = [ "data/interfac.drs" ]
+  terrain = [ "data/Terrain.drs" ]
   blend = [ "data/blendomatic.dat" ]
 
 [AOK]
@@ -43,7 +62,7 @@ name = "Age of Empires 1: Definitive Edition (Steam)"
 game_edition_id = "AOE1DE"
 subfolder = "de1"
 support = "yes"
-targetmod = [ "aoe1-base", "aoe1-base-graphics" ]
+targetmod = [ "de1_base", "de1_base_graphics" ]
 expansions = [ ]
 
   [AOE1DE.mediapaths]
@@ -75,7 +94,7 @@ name = "Age of Empires 1: Rise of Rome"
 game_edition_id = "ROR"
 subfolder = "ror"
 support = "yes"
-targetmod = [ "aoe1-base", "aoe1-base-graphics" ]
+targetmod = [ "aoe1_base", "aoe1_base_graphics" ]
 expansions = [ ]
 
   [ROR.mediapaths]
@@ -93,7 +112,7 @@ name = "Age of Empires 2: HD Edition"
 game_edition_id = "HDEDITION"
 subfolder = "hd"
 support = "yes"
-targetmod = [ "aoe2-base", "aoe2-base-graphics" ]
+targetmod = [ "hd_base", "hd_base_graphics" ]
 expansions = [ ]
 
   [HDEDITION.mediapaths]
@@ -123,7 +142,7 @@ name = "Age of Empires 2: Definitive Edition"
 game_edition_id = "AOE2DE"
 subfolder = "de2"
 support = "yes"
-targetmod = [ "aoe2-base", "aoe2-base-graphics" ]
+targetmod = [ "de2_base", "de2_base_graphics" ]
 expansions = [ ]
 
   [AOE2DE.mediapaths]
@@ -158,7 +177,7 @@ name = "Star Wars: Galactic Battlegrounds"
 game_edition_id = "SWGB"
 subfolder = "swgb"
 support = "yes"
-targetmod = [ "swgb-base", "swgb-base-graphics" ]
+targetmod = [ "swgb_base", "swgb_base_graphics" ]
 expansions = [ "SWGB_CC" ]
 
   [SWGB.mediapaths]

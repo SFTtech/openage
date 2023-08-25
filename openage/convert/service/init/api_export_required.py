@@ -4,7 +4,6 @@
 Test whether the openage nyan API modpack is present.
 """
 from __future__ import annotations
-from tkinter import CURRENT
 import typing
 
 import toml
@@ -47,16 +46,13 @@ def api_export_required(asset_dir: Directory) -> bool:
     except FileNotFoundError:
         info("openage nyan API modpack not found")
         dbg("could not find modpack.toml")
-        return True
 
     except TypeError:
         info("openage nyan API modpack not found")
         dbg("could not parse modpack.toml; content is not a string")
-        return True
 
     except toml.TomlDecodeError:
         info("openage nyan API modpack not found")
         dbg("could not parse modpack.toml; content is not TOML or malformed")
-        return True
 
     return True

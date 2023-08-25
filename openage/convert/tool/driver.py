@@ -1,4 +1,6 @@
 # Copyright 2015-2023 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-return-statements
 
 """
 Receives cleaned-up srcdir and targetdir objects from .main, and drives the
@@ -53,6 +55,8 @@ def convert_metadata(args: Namespace) -> typing.Generator[str, None, None]:
         info("converting metadata")
         # data_formatter = DataFormatter()
 
+    args.converter = get_converter(args.game_version)
+
     # required for player palette and color lookup during SLP conversion.
     yield "palette"
     palettes = get_palettes(args.srcdir, args.game_version)
@@ -66,8 +70,6 @@ def convert_metadata(args: Namespace) -> typing.Generator[str, None, None]:
     gamedata_path = args.targetdir.joinpath('gamedata')
     if gamedata_path.exists():
         gamedata_path.removerecursive()
-
-    args.converter = get_converter(args.game_version)
 
     # Read .dat
     yield "empires.dat"
@@ -138,6 +140,13 @@ def get_converter(game_version: GameVersion):
     if game_edition.game_id == "AOC":
         from ..processor.conversion.aoc.processor import AoCProcessor
         return AoCProcessor
+
+    if game_edition.game_id == "AOCDEMO":
+        # treat the demo as AoC during conversion
+        # TODO: maybe introduce a config parameter for this purpose?
+        game_edition.game_id = "AOC"
+        from ..processor.conversion.aoc_demo.processor import DemoProcessor
+        return DemoProcessor
 
     if game_edition.game_id == "HDEDITION":
         from ..processor.conversion.hd.processor import HDProcessor
