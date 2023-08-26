@@ -198,11 +198,11 @@ expansions      = []
   terrain = ["resources/_common/terrain/textures/"]
 
   [HDEDITION.installpaths]
-  linux = ["~/.steam/steam/steamapps/common/AoE2HD"]
-  macos = ["~/.steam/steam/steamapps/common/AoE2HD"]
+  linux = ["~/.steam/steam/steamapps/common/Age2HD"]
+  macos = ["~/.steam/steam/steamapps/common/Age2HD"]
   windows = [
-    "C:/Program Files/Steam/steamapps/common/AoE2HD",
-    "C:/Program Files (x86)/Steam/steamapps/common/AoE2HD",
+    "C:/Program Files/Steam/steamapps/common/Age2HD",
+    "C:/Program Files (x86)/Steam/steamapps/common/Age2HD",
   ]
 
 

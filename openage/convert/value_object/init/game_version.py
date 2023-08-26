@@ -32,7 +32,7 @@ class GameBase:
     def __init__(
         self,
         game_id: str,
-        support: bool,
+        support: Support,
         game_version_info: list[tuple[list[str], dict[str, str]]],
         media_paths: list[tuple[str, list[str]]],
         modpacks: list[str],
@@ -119,7 +119,7 @@ class GameExpansion(GameBase):
         self,
         name: str,
         game_id: str,
-        support: bool,
+        support: Support,
         game_version_info: list[tuple[list[str], dict[str, str]]],
         media_paths: list[tuple[str, list[str]]],
         modpacks: list[str],
@@ -160,9 +160,10 @@ class GameEdition(GameBase):
         self,
         name: str,
         game_id: str,
-        support: bool,
+        support: Support,
         game_version_info: list[tuple[list[str], dict[str, str]]],
         media_paths: list[tuple[str, list[str]]],
+        install_paths: dict[str, list[str]],
         modpacks: list[str],
         expansions: list[str],
         **flags
@@ -184,6 +185,7 @@ class GameEdition(GameBase):
             **flags
         )
 
+        self.install_paths = install_paths
         self.edition_name = name
         self.expansions = tuple(expansions)
 

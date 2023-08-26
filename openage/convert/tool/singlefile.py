@@ -18,10 +18,10 @@ from ..value_object.read.media.colortable import ColorTable
 from ..value_object.read.media.drs import DRS
 
 AOC_GAME_VERSION = GameVersion(
-    edition=GameEdition("Dummy AOC", "AOC", "YES", [], [], [], [])
+    edition=GameEdition("Dummy AOC", "AOC", "YES", [], [], {}, [], [])
 )
 SWGB_GAME_VERSION = GameVersion(
-    edition=GameEdition("Dummy SWGB", "SWGB", "YES", [], [], [], [])
+    edition=GameEdition("Dummy SWGB", "SWGB", "YES", [], [], {}, [], [])
 )
 
 

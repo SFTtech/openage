@@ -1,19 +1,32 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-branches
 
 """
 Acquire the sourcedir for the game that is supposed to be converted.
 """
+from __future__ import annotations
+import platform
+import typing
+
 from configparser import ConfigParser
 import os
 from pathlib import Path
 import subprocess
 import sys
-from tempfile import NamedTemporaryFile
 from typing import AnyStr, Generator
+
+import shutil
+import tempfile
+from urllib.request import urlopen
 
 from ....log import warn, info, dbg
 from ....util.files import which
 from ....util.fslike.directory import CaseIgnoringDirectory
+
+if typing.TYPE_CHECKING:
+    from openage.convert.value_object.init.game_version import GameEdition
+
 
 STANDARD_PATH_IN_32BIT_WINEPREFIX =\
     "drive_c/Program Files/Microsoft Games/Age of Empires II/"
@@ -25,6 +38,8 @@ REGISTRY_KEY = \
     "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Microsoft Games\\"
 REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
 REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
+
+TRIAL_URL = 'https://archive.org/download/AgeOfEmpiresIiTheConquerorsDemo/Age2XTrial.exe'
 
 
 def expand_relative_path(path: str) -> AnyStr:
@@ -40,6 +55,24 @@ def wanna_convert() -> bool:
     answer = None
     while answer is None:
         print("  Do you want to convert assets? [Y/n]")
+
+        user_selection = input("> ")
+        if user_selection.lower() in {"yes", "y", ""}:
+            answer = True
+
+        elif user_selection.lower() in {"no", "n"}:
+            answer = False
+
+    return answer
+
+
+def wanna_download_trial() -> bool:
+    """
+    Ask the user if the AoC trial should be downloaded.
+    """
+    answer = None
+    while answer is None:
+        print("  Do you want to download the AoC trial version? [Y/n]")
 
         user_selection = input("> ")
         if user_selection.lower() in {"yes", "y", ""}:
@@ -150,52 +183,92 @@ def query_source_dir(proposals: set[str]) -> AnyStr:
     return sourcedir
 
 
-def acquire_conversion_source_dir(prev_source_dir_path: str = None) -> Path:
+def acquire_conversion_source_dir(
+    avail_game_eds: list[GameEdition],
+    prev_srcdir_paths: set[str] = None
+) -> Path:
     """
     Acquires source dir for the asset conversion.
 
     Returns a file system-like object that holds all the required files.
     """
+    try:
+        # TODO: use some sort of GUI for this (GTK, QtQuick, zenity?)
+        #       probably best if directly integrated into the main GUI.
+        proposals = set()
 
-    if 'AGE2DIR' in os.environ:
-        sourcedir = os.environ['AGE2DIR']
-        print("found environment variable 'AGE2DIR'")
+        # previously used source dirs
+        if prev_srcdir_paths:
+            for prev_srcdir_path in prev_srcdir_paths:
+                if Path(prev_srcdir_path).is_dir():
+                    proposals.add(prev_srcdir_path)
 
-    else:
-        try:
-            # TODO: use some sort of GUI for this (GTK, QtQuick, zenity?)
-            #       probably best if directly integrated into the main GUI.
+        # commonly used install dirs
+        current_platform = platform.system()
+        for game_edition in avail_game_eds:
+            install_paths = game_edition.install_paths
+            candidates = []
+            if current_platform == 'Linux' and 'linux' in install_paths:
+                candidates = install_paths["linux"]
 
-            proposals = set()
+            elif current_platform == 'Darwin' and 'macos' in install_paths:
+                candidates = install_paths["macos"]
 
-            if prev_source_dir_path and Path(prev_source_dir_path).is_dir():
-                prev_source_dir = CaseIgnoringDirectory(
-                    prev_source_dir_path).root
-                proposals.add(
-                    prev_source_dir.resolve_native_path().decode('utf-8', errors='replace')
-                )
+            elif current_platform == 'Windows' and 'windows' in install_paths:
+                candidates = install_paths["windows"]
 
-            call_wine = wanna_use_wine()
+            else:
+                continue
 
-            if call_wine:
-                set_custom_wineprefix()
+            for candidate in candidates:
+                if Path(expand_relative_path(candidate)).is_dir():
+                    proposals.add(candidate)
 
-            for proposal in source_dir_proposals(call_wine):
-                if Path(expand_relative_path(proposal)).is_dir():
-                    proposals.add(proposal)
+        # TODO: Reimplement wine support
 
+        use_trial = False
+        # TODO: Ask if trial should be downloaded
+        # if len(proposals) == 0:
+        #     print("\nopenage requires a local game installation for conversion")
+        #     print("but no local installation could be found automatically.")
+        #     use_trial = wanna_download_trial()
+
+        if use_trial:
+            sourcedir = download_trial()
+
+        else:
             sourcedir = query_source_dir(proposals)
 
-        except KeyboardInterrupt:
-            print("\nInterrupted, aborting")
-            sys.exit(0)
-        except EOFError:
-            print("\nEOF, aborting")
-            sys.exit(0)
+    except KeyboardInterrupt:
+        print("\nInterrupted, aborting")
+        sys.exit(0)
+    except EOFError:
+        print("\nEOF, aborting")
+        sys.exit(0)
 
     print(f"converting from '{sourcedir}'")
 
     return CaseIgnoringDirectory(sourcedir).root
+
+
+def download_trial() -> AnyStr:
+    """
+    Download and extract the AoC trial version.
+
+    Does not work yet. TODO: Find an exe unpack solution that works on all platforms
+    """
+    print(f"Downloading AoC trial version from {TRIAL_URL}")
+    with urlopen(TRIAL_URL) as response:
+        with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
+            shutil.copyfileobj(response, tmp_file)
+
+    # pylint: disable=consider-using-with
+    sourcedir = tempfile.TemporaryDirectory()
+    print(f"Extracting game files to {sourcedir.name}...")
+    # with zipfile.ZipFile(tmp_file.name, 'r') as zip_ref:
+    #     zip_ref.extractall(sourcedir.name)
+
+    return sourcedir.name
 
 
 def wine_to_real_path(path: str) -> str:
@@ -210,7 +283,7 @@ def unescape_winereg(value: str):
     return value.strip('"').replace(r'\\\\', '\\')
 
 
-def source_dir_proposals(call_wine: bool) -> Generator[str, None, None]:
+def wine_srcdir_proposals() -> Generator[str, None, None]:
     """Yield a list of directory names where an installation might be found"""
     if "WINEPREFIX" in os.environ:
         yield "$WINEPREFIX/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
@@ -219,16 +292,11 @@ def source_dir_proposals(call_wine: bool) -> Generator[str, None, None]:
     yield "~/.wine/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_WINEPREFIX_STEAM
-    yield "~/.steam/steam/steamapps/common/Age2HD"
-
-    if not call_wine:
-        # user wants wine not to be called
-        return
 
     try:
         info("using the wine registry to query an installation location...")
         # get wine registry key of the age installation
-        with NamedTemporaryFile(mode='rb') as reg_file:
+        with tempfile.NamedTemporaryFile(mode='rb') as reg_file:
             if not subprocess.call(('wine', 'regedit', '/E', reg_file.name,
                                     REGISTRY_KEY)):
 

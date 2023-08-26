@@ -11,7 +11,7 @@ import typing
 from ..convert.tool.api_export import export_api
 from ..convert.service.init.api_export_required import api_export_required
 from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
-from ..log import err, info
+from ..log import info
 
 if typing.TYPE_CHECKING:
     from argparse import ArgumentParser
@@ -79,27 +79,7 @@ def main(args, error):
 
     # ensure that the assets have been converted
     if wanna_convert() or conversion_required(root["assets"]):
-        # try to get previously used source dir
-        asset_location_path = root["cfg"] / "asset_location"
-        try:
-            with asset_location_path.open("r") as file_obj:
-                prev_source_dir_path = file_obj.read().strip()
-        except FileNotFoundError:
-            prev_source_dir_path = None
-
-        used_asset_path = convert_assets(
-            root["assets"],
-            args,
-            prev_source_dir_path=prev_source_dir_path
-        )
-
-        if used_asset_path:
-            # Remember the asset location
-            with asset_location_path.open("wb") as file_obj:
-                file_obj.write(used_asset_path)
-        else:
-            err("game asset conversion failed")
-            return 1
+        convert_assets(root["assets"], args)
 
     # modpacks
     if args.modpacks:

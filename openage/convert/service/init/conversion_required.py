@@ -8,7 +8,7 @@ import typing
 
 from ....log import info
 
-from openage.convert.service.init.modpack_search import enumerate_modpacks
+from .modpack_search import enumerate_modpacks
 
 if typing.TYPE_CHECKING:
     from openage.util.fslike.directory import Directory
