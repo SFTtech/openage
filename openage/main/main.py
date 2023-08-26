@@ -75,7 +75,7 @@ def main(args, error):
         export_api(converted_path)
 
     # ensure that the assets have been converted
-    if conversion_required(root["assets"], args):
+    if conversion_required(root["assets"]):
         # try to get previously used source dir
         asset_location_path = root["cfg"] / "asset_location"
         try:
@@ -83,8 +83,12 @@ def main(args, error):
                 prev_source_dir_path = file_obj.read().strip()
         except FileNotFoundError:
             prev_source_dir_path = None
-        used_asset_path = convert_assets(root["assets"], args,
-                                         prev_source_dir_path=prev_source_dir_path)
+
+        used_asset_path = convert_assets(
+            root["assets"],
+            args,
+            prev_source_dir_path=prev_source_dir_path)
+
         if used_asset_path:
             # Remember the asset location
             with asset_location_path.open("wb") as file_obj:

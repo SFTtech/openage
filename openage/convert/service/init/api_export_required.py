@@ -10,6 +10,8 @@ import toml
 
 from ....log import info, dbg
 
+from .modpack_search import get_modpack_info
+
 if typing.TYPE_CHECKING:
     from openage.util.fslike.directory import Directory
 
@@ -25,15 +27,9 @@ def api_export_required(asset_dir: Directory) -> bool:
     """
     modpack_dir = asset_dir / "converted" / "engine"
 
-    if not modpack_dir.exists():
-        info("openage nyan API modpack not found")
-        return True
-
-    dbg("Checking version of openage nyan API modpack")
     try:
-        modpack_def = modpack_dir / "modpack.toml"
-        with modpack_def.open() as fileobj:
-            version: str = toml.loads(fileobj.read()).pop("info").pop("version")
+        modpack_info = get_modpack_info(modpack_dir)
+        version = modpack_info["info"]["version"]
 
         if version != CURRENT_API_VERSION:
             info("openage nyan API modpack is outdated")
@@ -43,16 +39,7 @@ def api_export_required(asset_dir: Directory) -> bool:
         info("openage nyan API modpack is up to date")
         return False
 
-    except FileNotFoundError:
+    except (FileNotFoundError, TypeError, toml.TomlDecodeError):
         info("openage nyan API modpack not found")
-        dbg("could not find modpack.toml")
-
-    except TypeError:
-        info("openage nyan API modpack not found")
-        dbg("could not parse modpack.toml; content is not a string")
-
-    except toml.TomlDecodeError:
-        info("openage nyan API modpack not found")
-        dbg("could not parse modpack.toml; content is not TOML or malformed")
 
     return True
