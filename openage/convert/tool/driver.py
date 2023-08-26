@@ -27,17 +27,12 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
 
 
-def convert(args: Namespace) -> typing.Generator[str, None, None]:
+def convert(args: Namespace) -> None:
     """
     args must hold srcdir and targetdir (FS-like objects),
     plus any additional configuration options.
-
-    Yields progress information in the form of:
-        strings (filenames) that indicate the currently-converted object
-        ints that predict the amount of objects remaining
     """
-    # data conversion
-    yield from convert_metadata(args)
+    convert_metadata(args)
     # with args.targetdir[GAMESPEC_VERSION_FILENAME].open('w') as fil:
     #     fil.write(EmpiresDat.get_hash(args.game_version))
 
@@ -47,7 +42,7 @@ def convert(args: Namespace) -> typing.Generator[str, None, None]:
     info(f"asset conversion complete; asset version: {ASSET_VERSION}", )
 
 
-def convert_metadata(args: Namespace) -> typing.Generator[str, None, None]:
+def convert_metadata(args: Namespace) -> None:
     """
     Converts the metadata part.
     """
@@ -58,7 +53,6 @@ def convert_metadata(args: Namespace) -> typing.Generator[str, None, None]:
     args.converter = get_converter(args.game_version)
 
     # required for player palette and color lookup during SLP conversion.
-    yield "palette"
     palettes = get_palettes(args.srcdir, args.game_version)
 
     # store for use by convert_media
@@ -72,7 +66,6 @@ def convert_metadata(args: Namespace) -> typing.Generator[str, None, None]:
         gamedata_path.removerecursive()
 
     # Read .dat
-    yield "empires.dat"
     debug_gamedata_format(args.debugdir, args.debug_info, args.game_version)
     gamespec = get_gamespec(args.srcdir, args.game_version, not args.flag("no_pickle_cache"))
 
@@ -101,15 +94,15 @@ def convert_metadata(args: Namespace) -> typing.Generator[str, None, None]:
         ModpackExporter.export(modpack, args)
         debug_modpack(args.debugdir, args.debug_info, modpack)
 
-    yield "player color palette"
+    # TODO: player palettes
     # player_palette = PlayerColorTable(palette)
     # data_formatter.add_data(player_palette.dump("player_palette"))
 
-    yield "terminal color palette"
+    # TODO: terminal color files
     # termcolortable = ColorTable(URXVTCOLS)
     # data_formatter.add_data(termcolortable.dump("termcolors"))
 
-    yield "game specification files"
+    # TODO: gamespec files
     # data_formatter.export(args.targetdir, ("csv",))
 
     if args.flag('gen_extra_files'):

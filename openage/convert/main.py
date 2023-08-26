@@ -9,11 +9,9 @@ from __future__ import annotations
 from datetime import datetime
 import typing
 
-from ..log import info
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
-from ..util.strings import format_progress
 from .service.debug_info import debug_cli_args, debug_game_version, debug_mounts
 from .service.init.conversion_required import conversion_required
 from .service.init.mount_asset_dirs import mount_asset_dirs
@@ -114,23 +112,8 @@ def convert_assets(
     # import here so codegen.py doesn't depend on it.
     from .tool.driver import convert
 
-    converted_count = 0
-    total_count = None
-    for current_item in convert(args):
-        if isinstance(current_item, int):
-            # convert is informing us about the estimated number of remaining
-            # items.
-            total_count = current_item + converted_count
-            continue
-
-        # TODO a GUI would be nice here.
-
-        if total_count is None:
-            info("[%s] %s", converted_count, current_item)
-        else:
-            info("[%s] %s", format_progress(converted_count, total_count), current_item)
-
-        converted_count += 1
+    # Run the conversion process
+    convert(args)
 
     # clean args
     del args.srcdir
