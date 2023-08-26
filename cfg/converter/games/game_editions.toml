@@ -1,192 +1,287 @@
 # game edition config file for openage
 
-file_version = "1.0"
+file_version = "1.1"
 
 [AOC]
-name = "Age of Empires 2: The Conqueror's"
+name            = "Age of Empires 2: The Conqueror's"
 game_edition_id = "AOC"
-subfolder = "aoc"
-support = "yes"
-targetmod = [ "aoe2_base", "aoe2_base_graphics" ]
-expansions = [ ]
+subfolder       = "aoc"
+support         = "yes"
+targetmod       = ["aoe2_base", "aoe2_base_graphics"]
+expansions      = []
 
   [AOC.mediapaths]
-  datfile = [ "data/empires2_x1_p1.dat" ]
-  gamedata = [ "data/gamedata_x1_p1.drs" ]
-  graphics = [ "data/graphics.drs" ]
-  language = [ "language.dll", "language_x1.dll", "language_x1_p1.dll" ]
-  palettes = [ "data/interfac.drs" ]
-  sounds = [ "data/sounds.drs", "data/sounds_x1.drs" ]
-  interface = [ "data/interfac.drs" ]
-  terrain = [ "data/terrain.drs" ]
-  blend = [ "data/blendomatic.dat" ]
+  datfile   = ["data/empires2_x1_p1.dat"]
+  gamedata  = ["data/gamedata_x1_p1.drs"]
+  graphics  = ["data/graphics.drs"]
+  language  = ["language.dll", "language_x1.dll", "language_x1_p1.dll"]
+  palettes  = ["data/interfac.drs"]
+  sounds    = ["data/sounds.drs", "data/sounds_x1.drs"]
+  interface = ["data/interfac.drs"]
+  terrain   = ["data/terrain.drs"]
+  blend     = ["data/blendomatic.dat"]
+
+  [AOC.installpaths]
+  linux = [
+    "~/.wine/drive_c/Program Files/Microsoft Games/Age of Empires II",
+    "~/.wine/drive_c/Program Files (x86)/Microsoft Games/Age of Empires II",
+    # Lutris
+    "~/Games/age-of-empires-ii-the-conquerors",
+  ]
+  macos = [
+    "~/.wine/drive_c/Program Files/Microsoft Games/Age of Empires II",
+    "~/.wine/drive_c/Program Files (x86)/Microsoft Games/Age of Empires II",
+  ]
+  windows = [
+    "C:/Program Files/Microsoft Games/Age of Empires II",
+    "C:/Program Files (x86)/Microsoft Games/Age of Empires II",
+  ]
+
 
 [AOCDEMO]
-name = "Age of Empires 2: The Conqueror's Trial Version"
+name            = "Age of Empires 2: The Conqueror's Trial Version"
 game_edition_id = "AOCDEMO"
-subfolder = "aoc_demo"
-support = "yes"
-targetmod = [ "trial_base", "trial_graphics" ]
-expansions = [ ]
+subfolder       = "aoc_demo"
+support         = "yes"
+targetmod       = ["trial_base", "trial_graphics"]
+expansions      = []
 
   [AOCDEMO.mediapaths]
-  datfile = [ "data/empires2_x1.dat" ]
-  gamedata = [ "data/gamedata_x1.drs" ]
-  graphics = [ "data/graphics.drs" ]
-  language = [ "language.dll", "language_x1.dll" ]
-  palettes = [ "data/interfac.drs" ]
-  sounds = [ "data/sounds_x1.drs" ]
-  interface = [ "data/interfac.drs" ]
-  terrain = [ "data/Terrain.drs" ]
-  blend = [ "data/blendomatic.dat" ]
+  datfile   = ["data/empires2_x1.dat"]
+  gamedata  = ["data/gamedata_x1.drs"]
+  graphics  = ["data/graphics.drs"]
+  language  = ["language.dll", "language_x1.dll"]
+  palettes  = ["data/interfac.drs"]
+  sounds    = ["data/sounds_x1.drs"]
+  interface = ["data/interfac.drs"]
+  terrain   = ["data/Terrain.drs"]
+  blend     = ["data/blendomatic.dat"]
 
 [AOK]
-name = "Age of Empires 2: Age of Kings"
+name            = "Age of Empires 2: Age of Kings"
 game_edition_id = "AOK"
-subfolder = "aok"
-support = "nope"
-targetmod = [ ]
-expansions = [ ]
+subfolder       = "aok"
+support         = "nope"
+targetmod       = []
+expansions      = []
 
   [AOK.mediapaths]
-  datfile = [ "data/empires2.dat" ]
-  gamedata = [ "data/gamedata.drs" ]
-  graphics = [ "data/graphics.drs" ]
-  palettes = [ "data/interfac.drs" ]
-  sounds = [ "data/sounds.drs" ]
-  interface = [ "data/interfac.drs" ]
-  terrain = [ "data/terrain.drs" ]
+  datfile   = ["data/empires2.dat"]
+  gamedata  = ["data/gamedata.drs"]
+  graphics  = ["data/graphics.drs"]
+  palettes  = ["data/interfac.drs"]
+  sounds    = ["data/sounds.drs"]
+  interface = ["data/interfac.drs"]
+  terrain   = ["data/terrain.drs"]
+
+  [AOK.installpaths]
+  linux = [
+    "~/.wine/drive_c/Program Files/Microsoft Games/Age of Empires II",
+    "~/.wine/drive_c/Program Files (x86)/Microsoft Games/Age of Empires II",
+    # Lutris
+    "~/Games/age-of-empires-ii-the-conquerors",
+  ]
+  macos = [
+    "~/.wine/drive_c/Program Files/Microsoft Games/Age of Empires II",
+    "~/.wine/drive_c/Program Files (x86)/Microsoft Games/Age of Empires II",
+  ]
+  windows = [
+    "C:/Program Files/Microsoft Games/Age of Empires II",
+    "C:/Program Files (x86)/Microsoft Games/Age of Empires II",
+  ]
+
 
 [AOE1DE]
-name = "Age of Empires 1: Definitive Edition (Steam)"
+name            = "Age of Empires 1: Definitive Edition (Steam)"
 game_edition_id = "AOE1DE"
-subfolder = "de1"
-support = "yes"
-targetmod = [ "de1_base", "de1_base_graphics" ]
-expansions = [ ]
+subfolder       = "de1"
+support         = "yes"
+targetmod       = ["de1_base", "de1_base_graphics"]
+expansions      = []
 
   [AOE1DE.mediapaths]
-  datfile = [ "Data/empires.dat" ]
-  graphics = [ "Assets/SLP/" ]
-  palettes = [ "Assets/Palettes/" ]
-  sounds = [ "Assets/Sounds/" ]
-  interface = [ "Data/DRS/interfac.drs", "Data/DRS/interfac_x1.drs" ]
+  datfile = ["Data/empires.dat"]
+  graphics = ["Assets/SLP/"]
+  palettes = ["Assets/Palettes/"]
+  sounds = ["Assets/Sounds/"]
+  interface = ["Data/DRS/interfac.drs", "Data/DRS/interfac_x1.drs"]
   language = [
-  "Data/Localization/br/strings.txt",
-  "Data/Localization/de/strings.txt",
-  "Data/Localization/en/strings.txt",
-  "Data/Localization/es/strings.txt",
-  "Data/Localization/fr/strings.txt",
-  "Data/Localization/hi/strings.txt",
-  "Data/Localization/it/strings.txt",
-  "Data/Localization/jp/strings.txt",
-  "Data/Localization/ko/strings.txt",
-  "Data/Localization/mx/strings.txt",
-  "Data/Localization/ru/strings.txt",
-  "Data/Localization/vi/strings.txt",
-  "Data/Localization/zhs/strings.txt",
-  "Data/Localization/zht/strings.txt"
+    "Data/Localization/br/strings.txt",
+    "Data/Localization/de/strings.txt",
+    "Data/Localization/en/strings.txt",
+    "Data/Localization/es/strings.txt",
+    "Data/Localization/fr/strings.txt",
+    "Data/Localization/hi/strings.txt",
+    "Data/Localization/it/strings.txt",
+    "Data/Localization/jp/strings.txt",
+    "Data/Localization/ko/strings.txt",
+    "Data/Localization/mx/strings.txt",
+    "Data/Localization/ru/strings.txt",
+    "Data/Localization/vi/strings.txt",
+    "Data/Localization/zhs/strings.txt",
+    "Data/Localization/zht/strings.txt",
   ]
-  terrain = [ "Assets/SLP/" ]
+  terrain = ["Assets/SLP/"]
+
+  [AOE1DE.installpaths]
+  linux = ["~/.steam/steam/steamapps/common/AoEDE"]
+  macos = ["~/.steam/steam/steamapps/common/AoEDE"]
+  windows = [
+    "C:/Program Files/Steam/steamapps/common/AoEDE",
+    "C:/Program Files (x86)/Steam/steamapps/common/AoEDE",
+  ]
+
 
 [ROR]
-name = "Age of Empires 1: Rise of Rome"
+name            = "Age of Empires 1: Rise of Rome"
 game_edition_id = "ROR"
-subfolder = "ror"
-support = "yes"
-targetmod = [ "aoe1_base", "aoe1_base_graphics" ]
-expansions = [ ]
+subfolder       = "ror"
+support         = "yes"
+targetmod       = ["aoe1_base", "aoe1_base_graphics"]
+expansions      = []
 
   [ROR.mediapaths]
-  datfile = [ "data2/empires.dat" ]
-  graphics = [ "data/graphics.drs", "data2/graphics.drs" ]
-  palettes = [ "data/Interfac.drs", "data2/Interfac.drs" ]
-  sounds = [ "data/sounds.drs", "data2/sounds.drs" ]
-  interface = [ "data/Interfac.drs", "data2/Interfac.drs" ]
-  language = [ "language.dll", "languagex.dll" ]
-  terrain = [ "data/Terrain.drs" ]
-  border = [ "data/Border.drs" ]
+  datfile   = ["data2/empires.dat"]
+  graphics  = ["data/graphics.drs", "data2/graphics.drs"]
+  palettes  = ["data/Interfac.drs", "data2/Interfac.drs"]
+  sounds    = ["data/sounds.drs", "data2/sounds.drs"]
+  interface = ["data/Interfac.drs", "data2/Interfac.drs"]
+  language  = ["language.dll", "languagex.dll"]
+  terrain   = ["data/Terrain.drs"]
+  border    = ["data/Border.drs"]
+
+  [ROR.installpaths]
+  linux = [
+    "~/.wine/drive_c/Program Files/Microsoft Games/Age of Empires",
+    "~/.wine/drive_c/Program Files (x86)/Microsoft Games/Age of Empires",
+    # Lutris
+    "~/Games/age-of-empires",
+  ]
+  macos = [
+    "~/.wine/drive_c/Program Files/Microsoft Games/Age of Empires",
+    "~/.wine/drive_c/Program Files (x86)/Microsoft Games/Age of Empires",
+  ]
+  windows = [
+    "C:/Program Files/Microsoft Games/Age of Empires",
+    "C:/Program Files (x86)/Microsoft Games/Age of Empires",
+  ]
+
 
 [HDEDITION]
-name = "Age of Empires 2: HD Edition"
+name            = "Age of Empires 2: HD Edition"
 game_edition_id = "HDEDITION"
-subfolder = "hd"
-support = "yes"
-targetmod = [ "hd_base", "hd_base_graphics" ]
-expansions = [ ]
+subfolder       = "hd"
+support         = "yes"
+targetmod       = ["hd_base", "hd_base_graphics"]
+expansions      = []
 
   [HDEDITION.mediapaths]
-  datfile = [ "resources/_common/dat/empires2_x1_p1.dat" ]
-  gamedata = [ "resources/_common/drs/gamedata_x1/" ]
-  graphics = [ "resources/_common/drs/graphics/" ]
-  palettes = [ "resources/_common/drs/interface/" ]
-  sounds = [ "resources/_common/drs/sounds/" ]
-  interface = [ "resources/_common/drs/interface/" ]
+  datfile = ["resources/_common/dat/empires2_x1_p1.dat"]
+  gamedata = ["resources/_common/drs/gamedata_x1/"]
+  graphics = ["resources/_common/drs/graphics/"]
+  palettes = ["resources/_common/drs/interface/"]
+  sounds = ["resources/_common/drs/sounds/"]
+  interface = ["resources/_common/drs/interface/"]
   language = [
-  "resources/br/strings/key-value/key-value-strings-utf8.txt",
-  "resources/de/strings/key-value/key-value-strings-utf8.txt",
-  "resources/en/strings/key-value/key-value-strings-utf8.txt",
-  "resources/es/strings/key-value/key-value-strings-utf8.txt",
-  "resources/fr/strings/key-value/key-value-strings-utf8.txt",
-  "resources/it/strings/key-value/key-value-strings-utf8.txt",
-  "resources/jp/strings/key-value/key-value-strings-utf8.txt",
-  "resources/ko/strings/key-value/key-value-strings-utf8.txt",
-  "resources/nl/strings/key-value/key-value-strings-utf8.txt",
-  "resources/ru/strings/key-value/key-value-strings-utf8.txt",
-  "resources/zh/strings/key-value/key-value-strings-utf8.txt"
+    "resources/br/strings/key-value/key-value-strings-utf8.txt",
+    "resources/de/strings/key-value/key-value-strings-utf8.txt",
+    "resources/en/strings/key-value/key-value-strings-utf8.txt",
+    "resources/es/strings/key-value/key-value-strings-utf8.txt",
+    "resources/fr/strings/key-value/key-value-strings-utf8.txt",
+    "resources/it/strings/key-value/key-value-strings-utf8.txt",
+    "resources/jp/strings/key-value/key-value-strings-utf8.txt",
+    "resources/ko/strings/key-value/key-value-strings-utf8.txt",
+    "resources/nl/strings/key-value/key-value-strings-utf8.txt",
+    "resources/ru/strings/key-value/key-value-strings-utf8.txt",
+    "resources/zh/strings/key-value/key-value-strings-utf8.txt",
   ]
-  terrain = [ "resources/_common/terrain/textures/" ]
+  terrain = ["resources/_common/terrain/textures/"]
+
+  [HDEDITION.installpaths]
+  linux = ["~/.steam/steam/steamapps/common/AoE2HD"]
+  macos = ["~/.steam/steam/steamapps/common/AoE2HD"]
+  windows = [
+    "C:/Program Files/Steam/steamapps/common/AoE2HD",
+    "C:/Program Files (x86)/Steam/steamapps/common/AoE2HD",
+  ]
+
 
 [AOE2DE]
-name = "Age of Empires 2: Definitive Edition"
+name            = "Age of Empires 2: Definitive Edition"
 game_edition_id = "AOE2DE"
-subfolder = "de2"
-support = "yes"
-targetmod = [ "de2_base", "de2_base_graphics" ]
-expansions = [ ]
+subfolder       = "de2"
+support         = "yes"
+targetmod       = ["de2_base", "de2_base_graphics"]
+expansions      = []
 
   [AOE2DE.mediapaths]
-  datfile = [ "resources/_common/dat/empires2_x2_p1.dat" ]
-  gamedata = [ "resources/_common/drs/gamedata_x2/" ]
-  graphics = [ "resources/_common/drs/graphics/" ]
+  datfile = ["resources/_common/dat/empires2_x2_p1.dat"]
+  gamedata = ["resources/_common/drs/gamedata_x2/"]
+  graphics = ["resources/_common/drs/graphics/"]
   language = [
-  "resources/br/strings/key-value/key-value-strings-utf8.txt",
-  "resources/de/strings/key-value/key-value-strings-utf8.txt",
-  "resources/en/strings/key-value/key-value-strings-utf8.txt",
-  "resources/es/strings/key-value/key-value-strings-utf8.txt",
-  "resources/fr/strings/key-value/key-value-strings-utf8.txt",
-  "resources/hi/strings/key-value/key-value-strings-utf8.txt",
-  "resources/it/strings/key-value/key-value-strings-utf8.txt",
-  "resources/jp/strings/key-value/key-value-strings-utf8.txt",
-  "resources/ko/strings/key-value/key-value-strings-utf8.txt",
-  "resources/ms/strings/key-value/key-value-strings-utf8.txt",
-  "resources/mx/strings/key-value/key-value-strings-utf8.txt",
-  "resources/ru/strings/key-value/key-value-strings-utf8.txt",
-  "resources/tr/strings/key-value/key-value-strings-utf8.txt",
-  "resources/tw/strings/key-value/key-value-strings-utf8.txt",
-  "resources/vi/strings/key-value/key-value-strings-utf8.txt",
-  "resources/zh/strings/key-value/key-value-strings-utf8.txt"
+    "resources/br/strings/key-value/key-value-strings-utf8.txt",
+    "resources/de/strings/key-value/key-value-strings-utf8.txt",
+    "resources/en/strings/key-value/key-value-strings-utf8.txt",
+    "resources/es/strings/key-value/key-value-strings-utf8.txt",
+    "resources/fr/strings/key-value/key-value-strings-utf8.txt",
+    "resources/hi/strings/key-value/key-value-strings-utf8.txt",
+    "resources/it/strings/key-value/key-value-strings-utf8.txt",
+    "resources/jp/strings/key-value/key-value-strings-utf8.txt",
+    "resources/ko/strings/key-value/key-value-strings-utf8.txt",
+    "resources/ms/strings/key-value/key-value-strings-utf8.txt",
+    "resources/mx/strings/key-value/key-value-strings-utf8.txt",
+    "resources/ru/strings/key-value/key-value-strings-utf8.txt",
+    "resources/tr/strings/key-value/key-value-strings-utf8.txt",
+    "resources/tw/strings/key-value/key-value-strings-utf8.txt",
+    "resources/vi/strings/key-value/key-value-strings-utf8.txt",
+    "resources/zh/strings/key-value/key-value-strings-utf8.txt",
   ]
-  palettes = [ "resources/_common/palettes/" ]
-  sounds = [ "wwise/" ]
-  interface = [ "resources/_common/drs/interface/" ]
-  terrain = [ "resources/_common/terrain/textures/" ]
+  palettes = ["resources/_common/palettes/"]
+  sounds = ["wwise/"]
+  interface = ["resources/_common/drs/interface/"]
+  terrain = ["resources/_common/terrain/textures/"]
+
+  [AOE2DE.installpaths]
+  linux = ["~/.steam/steam/steamapps/common/AoE2DE"]
+  macos = ["~/.steam/steam/steamapps/common/AoE2DE"]
+  windows = [
+    "C:/Program Files/Steam/steamapps/common/AoE2DE",
+    "C:/Program Files (x86)/Steam/steamapps/common/AoE2DE",
+  ]
+
 
 [SWGB]
-name = "Star Wars: Galactic Battlegrounds"
+name            = "Star Wars: Galactic Battlegrounds"
 game_edition_id = "SWGB"
-subfolder = "swgb"
-support = "yes"
-targetmod = [ "swgb_base", "swgb_base_graphics" ]
-expansions = [ "SWGB_CC" ]
+subfolder       = "swgb"
+support         = "yes"
+targetmod       = ["swgb_base", "swgb_base_graphics"]
+expansions      = ["SWGB_CC"]
 
   [SWGB.mediapaths]
-  datfile = [ "Game/Data/GENIE.DAT" ]
-  gamedata = [ "Game/Data/GAMEDATA.DRS" ]
-  graphics = [ "Game/Data/GRAPHICS.DRS" ]
-  language = [ "Game/language.dll" ]
-  palettes = [ "Game/Data/INTERFAC.DRS" ]
-  sounds = [ "Game/Data/SOUNDS.DRS" ]
-  interface = [ "Game/Data/INTERFAC.DRS" ]
-  terrain = [ "Game/Data/TERRAIN.DRS" ]
-  blend = [ "Game/Data/blendomatic.dat" ]
+  datfile   = ["Game/Data/GENIE.DAT"]
+  gamedata  = ["Game/Data/GAMEDATA.DRS"]
+  graphics  = ["Game/Data/GRAPHICS.DRS"]
+  language  = ["Game/language.dll"]
+  palettes  = ["Game/Data/INTERFAC.DRS"]
+  sounds    = ["Game/Data/SOUNDS.DRS"]
+  interface = ["Game/Data/INTERFAC.DRS"]
+  terrain   = ["Game/Data/TERRAIN.DRS"]
+  blend     = ["Game/Data/blendomatic.dat"]
+
+  [SWGB.installpaths]
+  linux = [
+    "~/.wine/drive_c/GOG Games/Star Wars - Galactic Battlegrounds",
+    "~/.steam/steam/steamapps/common/STAR WARS - Galactic Battlegrounds Saga",
+    # Lutris
+    "~/Games/gog/star-wars-galactic-battlegrounds-saga",
+  ]
+  macos = [
+    "~/.wine/drive_c/GOG Games/Star Wars - Galactic Battlegrounds",
+    "~/.steam/steam/steamapps/common/STAR WARS - Galactic Battlegrounds Saga",
+  ]
+  windows = [
+    "C:/GOG Games/Star Wars - Galactic Battlegrounds",
+    "C:/Program Files (x86)/Steam/steamapps/common/STAR WARS - Galactic Battlegrounds Saga",
+    "C:/Program Files/Steam/steamapps/common/STAR WARS - Galactic Battlegrounds Saga",
+  ]
