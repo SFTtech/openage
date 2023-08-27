@@ -46,7 +46,7 @@ Presenter::Presenter(const util::Path &root_dir,
 void Presenter::run(bool debug_graphics) {
 	log::log(INFO << "Presenter: Launching subsystems...");
 
-	this->init_graphics();
+	this->init_graphics(debug_graphics);
 
 	this->init_input();
 
