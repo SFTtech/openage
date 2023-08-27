@@ -64,7 +64,9 @@ public:
      */
 	const GlUniformBlock &get_uniform_block(const char *block_name) const;
 
-	bool has_uniform(const char *) override;
+	uniform_id_t get_uniform_id(const char *name) override;
+
+	bool has_uniform(const char *name) override;
 
 	/**
      * Binds a uniform block in the shader program to the same binding point as
@@ -100,9 +102,12 @@ protected:
 private:
 	void set_unif(std::shared_ptr<UniformInput> const &, const char *, void const *, GLenum);
 
-	/// Maps uniform names to their descriptions. Contains only
+	/// Maps uniform IDs to their descriptions. Contains only
 	/// uniforms in the default block, i.e. not within named blocks.
-	std::unordered_map<std::string, GlUniform> uniforms;
+	std::unordered_map<uniform_id_t, GlUniform> uniforms;
+
+	/// Maps uniform names to their ID.
+	std::unordered_map<std::string, uniform_id_t> uniforms_by_name;
 
 	/// Maps uniform block names to their descriptions.
 	std::unordered_map<std::string, GlUniformBlock> uniform_blocks;
@@ -111,7 +116,8 @@ private:
 	std::unordered_map<std::string, GlVertexAttrib> attribs;
 
 	/// Maps sampler uniform names to their assigned texture units.
-	std::unordered_map<std::string, GLuint> texunits_per_unifs;
+	std::unordered_map<uniform_id_t, GLuint> texunits_per_unifs;
+
 	/// Maps texture units to the texture handles that are currently bound to them.
 	std::unordered_map<GLuint, GLuint> textures_per_texunits;
 

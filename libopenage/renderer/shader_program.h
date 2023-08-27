@@ -18,6 +18,8 @@ namespace renderer {
 class Texture2d;
 class UniformBuffer;
 
+using uniform_id_t = uint32_t;
+
 class ShaderProgram : public std::enable_shared_from_this<ShaderProgram> {
 	friend UniformInput;
 
@@ -25,13 +27,22 @@ public:
 	virtual ~ShaderProgram() = default;
 
 	/**
+	 * Get the ID of a uniform variable in the shader program.
+	 *
+	 * @param unif Name of the uniform.
+	 *
+	 * @return ID of the uniform in the shader.
+	 */
+	virtual uniform_id_t get_uniform_id(const char *name) = 0;
+
+	/**
 	 * Check whether the shader program contains a uniform variable with the given ID.
 	 *
-	 * @param unif ID of the uniform.
+	 * @param unif Name of the uniform.
 	 *
 	 * @return true if the shader program contains the uniform, false otherwise.
 	 */
-	virtual bool has_uniform(const char *unif) = 0;
+	virtual bool has_uniform(const char *name) = 0;
 
 	/**
      * Binds a uniform block in the shader program to the same binding point as

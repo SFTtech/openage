@@ -11,7 +11,6 @@
 
 namespace openage {
 namespace renderer {
-
 class ShaderProgram;
 class UniformBuffer;
 
@@ -30,11 +29,11 @@ public:
      * We store uniform updates lazily. They are only actually uploaded to GPU
 	 * when a draw call is made.
      *
-     * \p update_offs maps the uniform names to where their
+     * \p update_offs maps the uniform IDs to where their
 	 * value is in \p update_data in terms of a byte-wise offset. This is only a partial
 	 * valuation, so not all uniforms have to be present here.
      */
-	std::unordered_map<std::string, size_t> update_offs;
+	std::unordered_map<uint32_t, size_t> update_offs;
 
 	/**
      * Buffer containing untyped uniform update data.

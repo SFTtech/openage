@@ -12,6 +12,9 @@ namespace openage::renderer::opengl {
  * Represents a uniform in the default (shader) block, i.e. not within a named block.
  */
 struct GlUniform {
+	/**
+	 * Data type of the uniform for setting with glUniform.
+	 */
 	GLenum type;
 
 	/**
