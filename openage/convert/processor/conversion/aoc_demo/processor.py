@@ -1,4 +1,6 @@
 # Copyright 2023-2023 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-few-public-methods
 
 """
 Convert data from the AoC Demo to openage formats.
@@ -47,6 +49,7 @@ class DemoProcessor:
         :returns: A list of modpacks.
         :rtype: list
         """
+        # pylint: disable=protected-access
 
         info("Starting conversion...")
 
