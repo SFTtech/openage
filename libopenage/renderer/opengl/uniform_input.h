@@ -5,8 +5,9 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../renderer.h"
-#include "../uniform_input.h"
+#include "renderer/renderer.h"
+#include "renderer/types.h"
+#include "renderer/uniform_input.h"
 
 
 namespace openage {
@@ -33,7 +34,7 @@ public:
 	 * value is in \p update_data in terms of a byte-wise offset. This is only a partial
 	 * valuation, so not all uniforms have to be present here.
      */
-	std::unordered_map<uint32_t, size_t> update_offs;
+	std::unordered_map<uniform_id_t, size_t> update_offs;
 
 	/**
      * Buffer containing untyped uniform update data.

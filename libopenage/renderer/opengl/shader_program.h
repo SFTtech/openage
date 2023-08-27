@@ -99,8 +99,26 @@ protected:
 	void set_m4f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Matrix4f const &) override;
 	void set_tex(std::shared_ptr<UniformInput> const &, const char *, std::shared_ptr<Texture2d> const &) override;
 
+	void set_i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, int32_t) override;
+	void set_u32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, uint32_t) override;
+	void set_f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, float) override;
+	void set_f64(std::shared_ptr<UniformInput> const &, const uniform_id_t &, double) override;
+	void set_bool(std::shared_ptr<UniformInput> const &, const uniform_id_t &, bool) override;
+	void set_v2f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector2f const &) override;
+	void set_v3f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector3f const &) override;
+	void set_v4f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector4f const &) override;
+	void set_v2i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector2i const &) override;
+	void set_v3i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector3i const &) override;
+	void set_v4i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector4i const &) override;
+	void set_v2ui32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector2<uint32_t> const &) override;
+	void set_v3ui32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector3<uint32_t> const &) override;
+	void set_v4ui32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector4<uint32_t> const &) override;
+	void set_m4f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Matrix4f const &) override;
+	void set_tex(std::shared_ptr<UniformInput> const &, const uniform_id_t &, std::shared_ptr<Texture2d> const &) override;
+
 private:
 	void set_unif(std::shared_ptr<UniformInput> const &, const char *, void const *, GLenum);
+	void set_unif(std::shared_ptr<UniformInput> const &, const uniform_id_t &, void const *, GLenum);
 
 	/// Uniforms in the shader program. Contains only
 	/// uniforms in the default block, i.e. not within named blocks.

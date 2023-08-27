@@ -9,6 +9,7 @@ add_sources(libopenage
 	text.cpp
 	texture.cpp
 	texture_array.cpp
+	types.cpp
     uniform_buffer.cpp
 	uniform_input.cpp
 	util.cpp

@@ -450,7 +450,10 @@ void GlShaderProgram::bind_uniform_buffer(const char *block_name, std::shared_pt
 	glUniformBlockBinding(*this->handle, block.index, block.binding_point);
 }
 
-void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const &in, const char *unif, void const *val, GLenum type) {
+void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const &in,
+                               const char *unif,
+                               void const *val,
+                               GLenum type) {
 	auto unif_in = std::dynamic_pointer_cast<GlUniformInput>(in);
 
 	auto uniform_id = this->uniforms_by_name.find(unif);
@@ -477,6 +480,37 @@ void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const &in, const ch
 		unif_in->update_data.resize(prev_size + size);
 		memcpy(unif_in->update_data.data() + prev_size, val, size);
 		unif_in->update_offs.emplace(uniform_id->second, prev_size);
+	}
+}
+
+void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const &in,
+                               const uniform_id_t &unif_id,
+                               void const *val,
+                               GLenum type) {
+	auto unif_in = std::dynamic_pointer_cast<GlUniformInput>(in);
+
+	ENSURE(unif_id < this->uniforms.size(),
+	       "Tried to set uniform '" << unif_id << "' that does not exist in the shader program.");
+
+	auto const &unif_info = this->uniforms.at(unif_id);
+	ENSURE(type == unif_info.type,
+	       "Tried to set uniform '" << unif_id << "' to a value of the wrong type.");
+
+	size_t size = GL_SHADER_TYPE_SIZE.get(unif_info.type);
+
+	auto update_off = unif_in->update_offs.find(unif_id);
+	if (update_off != std::end(unif_in->update_offs)) [[likely]] { // always used after the uniform value is written once
+		// already wrote to this uniform since last upload
+		size_t off = update_off->second;
+		memcpy(unif_in->update_data.data() + off, val, size);
+	}
+	else {
+		// first time writing to this uniform since last upload, so
+		// extend the buffer before storing the uniform value
+		size_t prev_size = unif_in->update_data.size();
+		unif_in->update_data.resize(prev_size + size);
+		memcpy(unif_in->update_data.data() + prev_size, val, size);
+		unif_in->update_offs.emplace(unif_id, prev_size);
 	}
 }
 
@@ -545,6 +579,73 @@ void GlShaderProgram::set_tex(std::shared_ptr<UniformInput> const &in, const cha
 	auto tex = std::dynamic_pointer_cast<GlTexture2d>(val);
 	GLuint handle = tex->get_handle();
 	this->set_unif(in, unif, &handle, GL_SAMPLER_2D);
+}
+
+void GlShaderProgram::set_i32(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, int32_t val) {
+	this->set_unif(in, id, &val, GL_INT);
+}
+
+void GlShaderProgram::set_u32(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, uint32_t val) {
+	this->set_unif(in, id, &val, GL_UNSIGNED_INT);
+}
+
+void GlShaderProgram::set_f32(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, float val) {
+	this->set_unif(in, id, &val, GL_FLOAT);
+}
+
+void GlShaderProgram::set_f64(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, double val) {
+	// TODO requires extension
+	this->set_unif(in, id, &val, GL_DOUBLE);
+}
+
+void GlShaderProgram::set_bool(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, bool val) {
+	this->set_unif(in, id, &val, GL_BOOL);
+}
+
+void GlShaderProgram::set_v2f32(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, Eigen::Vector2f const &val) {
+	this->set_unif(in, id, &val, GL_FLOAT_VEC2);
+}
+
+void GlShaderProgram::set_v3f32(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, Eigen::Vector3f const &val) {
+	this->set_unif(in, id, &val, GL_FLOAT_VEC3);
+}
+
+void GlShaderProgram::set_v4f32(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, Eigen::Vector4f const &val) {
+	this->set_unif(in, id, &val, GL_FLOAT_VEC4);
+}
+
+void GlShaderProgram::set_v2i32(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, Eigen::Vector2i const &val) {
+	this->set_unif(in, id, &val, GL_INT_VEC2);
+}
+
+void GlShaderProgram::set_v3i32(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, Eigen::Vector3i const &val) {
+	this->set_unif(in, id, &val, GL_INT_VEC3);
+}
+
+void GlShaderProgram::set_v4i32(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, Eigen::Vector4i const &val) {
+	this->set_unif(in, id, &val, GL_INT_VEC4);
+}
+
+void GlShaderProgram::set_v2ui32(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, Eigen::Vector2<uint32_t> const &val) {
+	this->set_unif(in, id, &val, GL_UNSIGNED_INT_VEC2);
+}
+
+void GlShaderProgram::set_v3ui32(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, Eigen::Vector3<uint32_t> const &val) {
+	this->set_unif(in, id, &val, GL_UNSIGNED_INT_VEC3);
+}
+
+void GlShaderProgram::set_v4ui32(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, Eigen::Vector4<uint32_t> const &val) {
+	this->set_unif(in, id, &val, GL_UNSIGNED_INT_VEC4);
+}
+
+void GlShaderProgram::set_m4f32(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, Eigen::Matrix4f const &val) {
+	this->set_unif(in, id, val.data(), GL_FLOAT_MAT4);
+}
+
+void GlShaderProgram::set_tex(std::shared_ptr<UniformInput> const &in, const uniform_id_t &id, std::shared_ptr<Texture2d> const &val) {
+	auto tex = std::dynamic_pointer_cast<GlTexture2d>(val);
+	GLuint handle = tex->get_handle();
+	this->set_unif(in, id, &handle, GL_SAMPLER_2D);
 }
 
 } // namespace openage::renderer::opengl
