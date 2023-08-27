@@ -181,6 +181,9 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 	GLuint tex_unit = 0;
 
 	// Extract information about uniforms in the default block.
+
+	// the uniform ID is the index in the uniforms vector
+	uniform_id_t unif_id = 0;
 	for (GLuint i_unif = 0; i_unif < unif_count; ++i_unif) {
 		if (in_block_unifs.count(i_unif) == 1) {
 			// Skip uniforms within named blocks.
@@ -200,25 +203,24 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 
 		GLuint loc = glGetUniformLocation(handle, name.data());
 
-		this->uniforms.insert(std::make_pair(
-			i_unif,
-			GlUniform{
-				type,
-				loc}));
+		this->uniforms.emplace_back(type, loc);
 
 		this->uniforms_by_name.insert(std::make_pair(
 			name.data(),
-			i_unif));
+			unif_id));
 
 		if (type == GL_SAMPLER_2D) {
 			ENSURE(tex_unit < caps.max_texture_slots,
 			       "Tried to create an OpenGL shader that uses more texture sampler uniforms "
 			           << "than there are texture unit slots (" << caps.max_texture_slots << " available).");
 
-			this->texunits_per_unifs.insert(std::make_pair(i_unif, tex_unit));
+			this->texunits_per_unifs.insert(std::make_pair(unif_id, tex_unit));
 
 			tex_unit += 1;
 		}
+
+		// Increment uniform ID
+		unif_id += 1;
 	}
 
 	// Extract vertex attribute descriptions.
@@ -261,9 +263,11 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 
 	if (!this->uniforms.empty()) {
 		log::log(MSG(dbg) << "Uniforms: ");
-		for (auto const &pair : this->uniforms) {
-			log::log(MSG(dbg) << "(" << pair.second.location << ") " << pair.first << ": "
-			                  << GLSL_TYPE_NAME.get(pair.second.type));
+		for (const auto &pair : this->uniforms_by_name) {
+			const auto &unif_info = this->uniforms[pair.second];
+			log::log(MSG(dbg) << "(" << unif_info.location << ") "
+			                  << pair.first << ": "
+			                  << GLSL_TYPE_NAME.get(unif_info.type));
 		}
 	}
 

@@ -102,11 +102,11 @@ protected:
 private:
 	void set_unif(std::shared_ptr<UniformInput> const &, const char *, void const *, GLenum);
 
-	/// Maps uniform IDs to their descriptions. Contains only
+	/// Uniforms in the shader program. Contains only
 	/// uniforms in the default block, i.e. not within named blocks.
-	std::unordered_map<uniform_id_t, GlUniform> uniforms;
+	std::vector<GlUniform> uniforms;
 
-	/// Maps uniform names to their ID.
+	/// Maps uniform names to their ID (the index in the uniform vector).
 	std::unordered_map<std::string, uniform_id_t> uniforms_by_name;
 
 	/// Maps uniform block names to their descriptions.
