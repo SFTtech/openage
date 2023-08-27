@@ -18,6 +18,7 @@
 #include "renderer/opengl/texture.h"
 #include "renderer/opengl/uniform_buffer.h"
 #include "renderer/opengl/uniform_input.h"
+#include "renderer/opengl/util.h"
 
 
 namespace openage::renderer::opengl {
@@ -156,7 +157,7 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 				GlInBlockUniform{
 					type,
 					size_t(offset),
-					size_t(count) * GL_SHADER_TYPE_SIZE.get(type),
+					size_t(count) * GL_UNIFORM_TYPE_SIZE.get(type),
 					size_t(stride),
 					size_t(count)}));
 		}
@@ -465,7 +466,7 @@ void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const &in,
 	ENSURE(type == unif_info.type,
 	       "Tried to set uniform '" << unif << "' to a value of the wrong type.");
 
-	size_t size = GL_SHADER_TYPE_SIZE.get(unif_info.type);
+	size_t size = get_uniform_type_size(type);
 
 	auto update_off = unif_in->update_offs.find(uniform_id->second);
 	if (update_off != std::end(unif_in->update_offs)) [[likely]] { // always used after the uniform value is written once
@@ -496,7 +497,7 @@ void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const &in,
 	ENSURE(type == unif_info.type,
 	       "Tried to set uniform '" << unif_id << "' to a value of the wrong type.");
 
-	size_t size = GL_SHADER_TYPE_SIZE.get(unif_info.type);
+	size_t size = get_uniform_type_size(type);
 
 	auto update_off = unif_in->update_offs.find(unif_id);
 	if (update_off != std::end(unif_in->update_offs)) [[likely]] { // always used after the uniform value is written once

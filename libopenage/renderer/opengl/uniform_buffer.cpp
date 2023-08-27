@@ -7,6 +7,8 @@
 #include "renderer/opengl/lookup.h"
 #include "renderer/opengl/texture.h"
 #include "renderer/opengl/uniform_input.h"
+#include "renderer/opengl/util.h"
+
 
 namespace openage::renderer::opengl {
 
@@ -84,7 +86,7 @@ void GlUniformBuffer::set_unif(std::shared_ptr<UniformBufferInput> const &in, co
 	ENSURE(type == unif_data.type,
 	       "Tried to set uniform " << unif << " to a value of the wrong type.");
 
-	size_t size = GL_SHADER_TYPE_SIZE.get(unif_data.type);
+	size_t size = get_uniform_type_size(type);
 
 	auto update_off = unif_in->update_offs.find(unif);
 	if (update_off != std::end(unif_in->update_offs)) [[likely]] { // always used after the uniform value is written once

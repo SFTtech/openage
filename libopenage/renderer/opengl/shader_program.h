@@ -117,7 +117,29 @@ protected:
 	void set_tex(std::shared_ptr<UniformInput> const &, const uniform_id_t &, std::shared_ptr<Texture2d> const &) override;
 
 private:
+	/**
+	 * Set the uniform value via uniform name from a uniform input.
+	 *
+	 * This method should only be used for debugging and not for performance-critical code.
+	 * String lookups are much slower than using the uniform ID.
+	 * If performance is important, use the alternative \p set_unif(..) implementation
+	 * that works on IDs instead.
+	 *
+	 * @param unif_in Uniform input.
+	 * @param name Name of the uniform.
+	 * @param value Value to set.
+	 * @param type Type of the value.
+	 */
 	void set_unif(std::shared_ptr<UniformInput> const &, const char *, void const *, GLenum);
+
+	/**
+	 * Set the uniform value via uniform ID from a uniform input.
+	 *
+	 * @param unif_in Uniform input.
+	 * @param id ID of the uniform.
+	 * @param value Value to set.
+	 * @param type Type of the value.
+	 */
 	void set_unif(std::shared_ptr<UniformInput> const &, const uniform_id_t &, void const *, GLenum);
 
 	/// Uniforms in the shader program. Contains only
