@@ -343,6 +343,13 @@ const Path::parts_t &Path::get_parts() const {
 	return this->parts;
 }
 
+size_t Path::get_hash() const {
+	if (not this->hash.has_value()) {
+		this->hash = std::hash<std::string>{}(this->get_native_path());
+	}
+	return this->hash.value();
+}
+
 
 std::ostream &operator<<(std::ostream &stream, const Path &path) {
 	if (path.fsobj == nullptr) {

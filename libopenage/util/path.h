@@ -12,6 +12,8 @@
 // pxd: from libcpp.vector cimport vector
 #include <vector>
 
+#include <optional>
+
 // pxd: from libopenage.pyinterface.pyobject cimport PyObj
 #include "../pyinterface/pyobject.h"
 #include "file.h"
@@ -19,8 +21,7 @@
 
 // pxd: from libopenage.util.fslike.fslike cimport FSLike
 
-namespace openage {
-namespace util {
+namespace openage::util {
 
 namespace fslike {
 class FSLike;
@@ -45,7 +46,6 @@ class FSLike;
  */
 class OAAPI Path {
 public:
-
 	/**
 	 * Storage type for a part of a path access.
 	 * Basically this is the name of a file or directory.
@@ -72,18 +72,17 @@ public:
 	 * You will probably never call that manually.
 	 */
 	Path(const py::Obj &fslike,
-	     const parts_t &parts={});
+	     const parts_t &parts = {});
 
 	/**
 	 * Construct a path from a fslike pointer.
 	 */
 	Path(std::shared_ptr<fslike::FSLike> fslike,
-	     const parts_t &parts={});
+	     const parts_t &parts = {});
 
 	virtual ~Path() = default;
 
 public:
-
 	bool exists() const;
 	bool is_file() const;
 	bool is_dir() const;
@@ -91,7 +90,7 @@ public:
 	std::vector<part_t> list();
 	std::vector<Path> iterdir();
 	bool mkdirs();
-	File open(const std::string &mode="r") const;
+	File open(const std::string &mode = "r") const;
 	File open_r() const;
 	File open_w() const;
 	File open_rw() const;
@@ -106,7 +105,7 @@ public:
 	 *
 	 * This basically is the same as resolve_*().get_native_path().
 	 */
-	std::string resolve_native_path(const std::string &mode="r") const;
+	std::string resolve_native_path(const std::string &mode = "r") const;
 
 	std::string resolve_native_path_r() const;
 	std::string resolve_native_path_w() const;
@@ -135,18 +134,23 @@ public:
 
 	Path joinpath(const parts_t &subpaths) const;
 	Path joinpath(const part_t &subpath) const;
-	Path operator [](const parts_t &subpaths) const;
-	Path operator [](const part_t &subpath) const;
-	Path operator /(const part_t &subpath) const;
+	Path operator[](const parts_t &subpaths) const;
+	Path operator[](const part_t &subpath) const;
+	Path operator/(const part_t &subpath) const;
 
 	Path with_name(const part_t &name) const;
 	Path with_suffix(const part_t &suffix) const;
 
-	bool operator ==(const Path &other) const;
-	bool operator !=(const Path &other) const;
+	bool operator==(const Path &other) const;
+	bool operator!=(const Path &other) const;
 
 	fslike::FSLike *get_fsobj() const;
 	const parts_t &get_parts() const;
+
+	// compute hash from the resolved native path
+	// the hash value is cashed after first access to avoid
+	// further Python calls
+	size_t get_hash() const;
 
 private:
 	/**
@@ -161,13 +165,18 @@ private:
 	 */
 	std::string get_native_path() const;
 
+	// TODO: Find a better method that works without Python access
+	// Cached hash value based on resolved native path
+	// computed lazily on first access to avoid expensive
+	// Python calls
+	mutable std::optional<size_t> hash;
 
 protected:
 	std::shared_ptr<fslike::FSLike> fsobj;
 
 	parts_t parts;
 
-	friend std::ostream &operator <<(std::ostream &stream, const Path &path);
+	friend std::ostream &operator<<(std::ostream &stream, const Path &path);
 };
 
 
@@ -184,4 +193,15 @@ std::string filename(const std::string &fullpath);
 std::string dirname(const std::string &fullpath);
 
 
-}} // openage::util
+} // namespace openage::util
+
+namespace std {
+
+template <>
+struct hash<openage::util::Path> {
+	size_t operator()(const openage::util::Path &path) const {
+		return path.get_hash();
+	}
+};
+
+} // namespace std
