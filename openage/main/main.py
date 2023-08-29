@@ -62,21 +62,22 @@ def main(args, error):
     root = Union().root
 
     # mount the assets folder union at "assets/"
-    root["assets"].mount(get_asset_path(args.asset_dir))
+    asset_path = get_asset_path(args.asset_dir)
+    root["assets"].mount(asset_path)
 
     # mount the config folder at "cfg/"
     root["cfg"].mount(get_config_path(args.cfg_dir))
 
     # ensure that the openage API is present
-    if api_export_required(root["assets"]):
+    if api_export_required(asset_path):
         # export to assets folder
-        converted_path = root["assets"] / "converted"
+        converted_path = asset_path / "converted"
         converted_path.mkdirs()
         export_api(converted_path)
 
     # ensure that the assets have been converted
-    if conversion_required(root["assets"]):
-        convert_assets(root["assets"], args)
+    if conversion_required(asset_path):
+        convert_assets(asset_path, args)
 
     # pass modpacks to engine
     if args.modpacks:

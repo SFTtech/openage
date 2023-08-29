@@ -230,11 +230,11 @@ class CABFile(FileCollection):
     descriptions. Most CAB file issues should cause the constructor to fail.
     """
 
-    def __init__(self, cab: FileLikeObject):
+    def __init__(self, cab: FileLikeObject, offset: int = 0):
         super().__init__()
 
         # read header
-        cab.seek(0)
+        cab.seek(offset)
         header = CFHeader.read(cab)
 
         # verify magic number
@@ -264,12 +264,12 @@ class CABFile(FileCollection):
         dbg(header)
         self.header = header
 
-        self.folders = tuple(self.read_folder_headers(cab))
+        self.folders = tuple(self.read_folder_headers(cab, offset))
 
         # {filename: fileobj}, {subdirname: subdir}
         self.rootdir = OrderedDict(), OrderedDict()
 
-        for fileobj in self.read_file_headers(cab):
+        for fileobj in self.read_file_headers(cab, offset):
             if self.is_file(fileobj.path) or self.is_dir(fileobj.path):
                 raise ValueError(
                     "CABFile has multiple entries with the same path: " +
@@ -293,7 +293,11 @@ class CABFile(FileCollection):
     def __repr__(self):
         return "CABFile"
 
-    def read_folder_headers(self, cab: FileLikeObject) -> Generator[CFFolder, None, None]:
+    def read_folder_headers(
+        self,
+        cab: FileLikeObject,
+        offset: int
+    ) -> Generator[CFFolder, None, None]:
         """
         Called during the constructor run.
 
@@ -314,7 +318,7 @@ class CABFile(FileCollection):
             # create compressed data stream
             compressed_data_stream = CABFolderStream(
                 cab,
-                folder.coffCabStart,
+                folder.coffCabStart + offset,
                 folder.cCFData,
                 self.header.reserved_data.cbCFData)
 
@@ -351,15 +355,15 @@ class CABFile(FileCollection):
             dbg(folder)
             yield folder
 
-    def read_file_headers(self, cab: FileLikeObject) -> Generator[CFFile, None, None]:
+    def read_file_headers(self, cab: FileLikeObject, offset: int) -> Generator[CFFile, None, None]:
         """
         Called during the constructor run.
 
         Reads the headers for all files and yields CFFile objects.
         """
         # seek to the correct position
-        if cab.tell() != self.header.coffFiles:
-            cab.seek(self.header.coffFiles)
+        if cab.tell() != self.header.coffFiles + offset:
+            cab.seek(self.header.coffFiles + offset)
             dbg("cabfile has nonstandard format: seek to header.coffFiles was required")
 
         for _ in range(self.header.cFiles):

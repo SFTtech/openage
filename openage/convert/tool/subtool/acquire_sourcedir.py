@@ -22,7 +22,7 @@ from urllib.request import urlopen
 
 from ....log import warn, info, dbg
 from ....util.files import which
-from ....util.fslike.directory import CaseIgnoringDirectory
+from ....util.fslike.directory import CaseIgnoringDirectory, Directory
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameEdition
@@ -227,11 +227,10 @@ def acquire_conversion_source_dir(
         # TODO: Reimplement wine support
 
         use_trial = False
-        # TODO: Ask if trial should be downloaded
-        # if len(proposals) == 0:
-        #     print("\nopenage requires a local game installation for conversion")
-        #     print("but no local installation could be found automatically.")
-        #     use_trial = wanna_download_trial()
+        if len(proposals) == 0:
+            print("\nopenage requires a local game installation for conversion")
+            print("but no local installation could be found automatically.")
+            use_trial = wanna_download_trial()
 
         if use_trial:
             sourcedir = download_trial()
@@ -258,17 +257,42 @@ def download_trial() -> AnyStr:
     Does not work yet. TODO: Find an exe unpack solution that works on all platforms
     """
     print(f"Downloading AoC trial version from {TRIAL_URL}")
+    # pylint: disable=consider-using-with
+    tempdir = tempfile.mkdtemp()
     with urlopen(TRIAL_URL) as response:
         with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
             shutil.copyfileobj(response, tmp_file)
 
-    # pylint: disable=consider-using-with
-    sourcedir = tempfile.TemporaryDirectory()
-    print(f"Extracting game files to {sourcedir.name}...")
-    # with zipfile.ZipFile(tmp_file.name, 'r') as zip_ref:
-    #     zip_ref.extractall(sourcedir.name)
+            from ....cabextract.cab import CABFile
 
-    return sourcedir.name
+            cab = CABFile(tmp_file, 0x65678)
+
+            sourcedir = Directory(tempdir).root
+            print(f"Extracting game files to {sourcedir}...")
+            dirs = [cab.root]
+
+            # Loop over all files in the CAB archive and extract them
+            # to the tempdir
+            while len(dirs) > 0:
+                cur_src_dir = dirs[0]
+                cur_tgt_dir = sourcedir
+
+                for part in cur_src_dir.parts:
+                    cur_tgt_dir = cur_tgt_dir[part]
+                cur_tgt_dir.mkdirs()
+
+                dirs.remove(cur_src_dir)
+
+                for path in cur_src_dir.iterdir():
+                    if path.is_dir():
+                        dirs.append(path)
+
+                    if path.is_file():
+                        with cur_tgt_dir[path.name].open("wb") as target_file:
+                            with path.open("rb") as source_file:
+                                target_file.write(source_file.read())
+
+    return tempdir
 
 
 def wine_to_real_path(path: str) -> str:
