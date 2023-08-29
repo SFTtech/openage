@@ -3,7 +3,6 @@
 #include "demo_6.h"
 
 #include <eigen3/Eigen/Dense>
-#include <QKeyEvent>
 
 #include "renderer/camera/camera.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
@@ -183,9 +182,9 @@ void renderer_demo_6(const util::Path &path) {
 		// Print FPS
 		timer.frame();
 		std::cout
-			<< "\rEntities: " << render_entities.size()
+			<< "Entities: " << render_entities.size()
 			<< " -- "
-			<< "FPS: " << timer.fps << std::flush;
+			<< "FPS: " << timer.fps << "\r" << std::flush;
 
 		qtapp->process_events();
 

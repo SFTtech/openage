@@ -99,7 +99,7 @@ private:
      */
 	std::shared_ptr<Renderer> renderer;
 
-	using texture_cache_t = std::unordered_map<std::string, std::shared_ptr<Texture2d>>;
+	using texture_cache_t = std::unordered_map<util::Path, std::shared_ptr<Texture2d>>;
 
 	/**
      * Cache of already created textures.
