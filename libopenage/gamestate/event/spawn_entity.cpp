@@ -68,6 +68,14 @@ static const std::vector<nyan::fqon_t> swgb_test_entities = {
 	"swgb_base.data.game_entity.generic.command_center.command_center.CommandCenter",
 	"swgb_base.data.game_entity.generic.heavy_weapons_factory.heavy_weapons_factory.HeavyWeaponsFactory",
 };
+static const std::vector<nyan::fqon_t> trial_test_entities = {
+	"trial_base.data.game_entity.generic.eagle_warrior.eagle_warrior.EagleWarrior",
+	"trial_base.data.game_entity.generic.jaguar_warrior.jaguar_warrior.JaguarWarrior",
+	"trial_base.data.game_entity.generic.plumed_archer.plumed_archer.PlumedArcher",
+	"trial_base.data.game_entity.generic.jungle_tree.jungle_tree.JungleTree",
+	"trial_base.data.game_entity.generic.barracks.barracks.Barracks",
+};
+
 
 Spawner::Spawner(const std::shared_ptr<openage::event::EventLoop> &loop) :
 	EventEntity(loop) {
@@ -140,7 +148,16 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 				                     swgb_test_entities.begin(),
 				                     swgb_test_entities.end());
 			}
+			else if (modpack_id == "trial_base") {
+				test_entities.insert(test_entities.end(),
+				                     trial_test_entities.begin(),
+				                     trial_test_entities.end());
+			}
 		}
+	}
+	if (test_entities.empty()) {
+		// Do nothing because we don't have anything to spawn
+		return;
 	}
 
 	static uint8_t index = 0;
