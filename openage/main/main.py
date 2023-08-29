@@ -8,6 +8,7 @@ import typing
 
 from ..convert.service.init.api_export_required import api_export_required
 from ..convert.tool.api_export import export_api
+from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
 from ..log import info
 
 if typing.TYPE_CHECKING:
@@ -67,6 +68,7 @@ def main(args, error):
 
     # mount the config folder at "cfg/"
     root["cfg"].mount(get_config_path(args.cfg_dir))
+    args.cfg_dir = root["cfg"]
 
     # ensure that the openage API is present
     if api_export_required(asset_path):
@@ -76,7 +78,7 @@ def main(args, error):
         export_api(converted_path)
 
     # ensure that the assets have been converted
-    if conversion_required(asset_path):
+    if wanna_convert() or conversion_required(asset_path):
         convert_assets(asset_path, args)
 
     # pass modpacks to engine
@@ -90,7 +92,7 @@ def main(args, error):
     else:
         from ..convert.service.init.modpack_search import enumerate_modpacks, query_modpack
         avail_modpacks = enumerate_modpacks(asset_path / "converted")
-        args.modpacks = [query_modpack(avail_modpacks)]
+        args.modpacks = [query_modpack(avail_modpacks).encode("utf-8")]
 
     # start the game, continue in main_cpp.pyx!
     return run_game(args, root)

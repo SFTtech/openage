@@ -79,7 +79,7 @@ def main(args, error):
         export_api(converted_path)
 
     # ensure that the assets have been converted
-    if wanna_convert() or conversion_required(asset_path):
+    if conversion_required(asset_path):
         convert_assets(asset_path, args)
 
     # modpacks
