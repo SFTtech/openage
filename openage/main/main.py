@@ -87,5 +87,10 @@ def main(args, error):
 
         args.modpacks = mods
 
+    else:
+        from ..convert.service.init.modpack_search import enumerate_modpacks, query_modpack
+        avail_modpacks = enumerate_modpacks(asset_path / "converted")
+        args.modpacks = [query_modpack(avail_modpacks)]
+
     # start the game, continue in main_cpp.pyx!
     return run_game(args, root)

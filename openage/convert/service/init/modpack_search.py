@@ -79,3 +79,24 @@ def get_modpack_info(modpack_dir: Directory) -> dict[str, typing.Any]:
         dbg("Cannot parse modpack definition file %s; content is not TOML or malformed",
             modpack_def)
         raise err
+
+
+def query_modpack(proposals: set[str]) -> str:
+    """
+    Query interactively for a modpack from a selection of proposals.
+    """
+    print("\nPlease select a modpack before starting.")
+    print("Insert the index of one of the proposals (Default = 0):")
+
+    proposals = sorted(proposals)
+    for index, proposal in enumerate(proposals):
+        print(f"({index}) {proposal}")
+
+    user_selection = input("> ")
+    if user_selection.isdecimal() and int(user_selection) < len(proposals):
+        selection = proposals[int(user_selection)]
+
+    else:
+        selection = proposals[0]
+
+    return selection
