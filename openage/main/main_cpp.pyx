@@ -1,7 +1,6 @@
 # Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 from cpython.ref cimport PyObject
-from libcpp.memory cimport make_unique
 from libcpp.string cimport string
 from libcpp.vector cimport vector
 

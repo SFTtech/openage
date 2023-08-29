@@ -1,6 +1,8 @@
 # Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 from cpython.ref cimport PyObject
+from libcpp.string cimport string
+from libcpp.vector cimport vector
 
 from libopenage.main cimport main_arguments, run_game as run_game_cpp
 from libopenage.util.path cimport Path as Path_cpp
@@ -28,6 +30,12 @@ def run_game(args, root_path):
 
         # headless mode
         args_cpp.headless = args.headless
+
+        # mods
+        if args.modpacks is not None:
+            args_cpp.mods = args.modpacks
+        else:
+            args_cpp.mods = vector[string]()
 
         # run the game!
         with nogil:

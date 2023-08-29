@@ -30,7 +30,7 @@ def init_subparser(cli: ArgumentParser) -> None:
         help="run without displaying graphics")
 
     cli.add_argument(
-        "--modpacks", nargs="+", type=bytes, required=True,
+        "--modpacks", nargs="+", required=True,
         help="list of modpacks to load")
 
 
@@ -83,12 +83,11 @@ def main(args, error):
         convert_assets(asset_path, args)
 
     # modpacks
-    if args.modpacks:
-        mods = []
-        for modpack in args.modpacks:
-            mods.append(modpack.encode("utf-8"))
+    mods = []
+    for modpack in args.modpacks:
+        mods.append(modpack.encode("utf-8"))
 
-        args.modpacks = mods
+    args.modpacks = mods
 
     # start the game, continue in main_cpp.pyx!
     return run_game(args, root)
