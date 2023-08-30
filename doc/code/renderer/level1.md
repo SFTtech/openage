@@ -12,9 +12,10 @@ Low-level renderer for communicating with the OpenGL and Vulkan APIs.
    3. [Creating a Renderable](#creating-a-renderable)
    4. [Rendering and Displaying the Result](#rendering-and-displaying-the-result)
 4. [Advanced Usage](#advanced-usage)
-   1. [Framebuffers / Multiple Render Passes](#framebuffers--multiple-render-passes)
-   2. [Complex Geometry](#complex-geometry)
-   3. [Uniform Buffers](#uniform-buffers)
+   1. [Addressing Uniforms via numeric IDs](#addressing-uniforms-via-numeric-ids)
+   2. [Framebuffers / Multiple Render Passes](#framebuffers--multiple-render-passes)
+   3. [Complex Geometry](#complex-geometry)
+   4. [Uniform Buffers](#uniform-buffers)
 5. [Thread-safety](#thread-safety)
 
 
@@ -142,10 +143,14 @@ std::shared_ptr<UniformInput> input = shader_prog->new_uniform_input(
 );
 ```
 
-Input values are passed to the method in pairs consisting of the uniform variable
-name (as a string) and the input value. The definition order doesn't matter and the
-method doesn't differentiate between different shader stages, so uniform inputs
-for vertex and fragment shaders can be freely mixed.
+Note that the definition order doesn't matter and the method doesn't differentiate
+between different shader stages, so uniform inputs for vertex and fragment shaders
+can be freely mixed.
+
+Input values are passed to the method in pairs consisting of the uniform ID and the
+input value. Uniform IDs can either be the uniform name from the shader source (as
+shown above) or a numeric ID that is determined at load time by the shader program.
+Numeric ID usage is explained in [this section](#addressing-uniforms-via-numeric-ids).
 
 Uniform input values are automatically converted to the correct types expected by the uniform
 definition, e.g. a `uint8_t` for a uniform with type `uint` will be transformed to the
@@ -208,6 +213,31 @@ window->update();
 ## Advanced Usage
 
 These are some of the more advanced features of the renderer.
+
+### Addressing Uniforms via numeric IDs
+
+Numeric uniform IDs are unique identifiers for a uniform in a shader program. They are
+assigned at load time and can be used to address uniforms instead of their string names.
+The type used for numeric IDs is `renderer::uniform_id_t`. The numeric ID of a uniform
+can be fetched from the shader program using the uniform name by calling the
+`renderer::ShaderProgram::get_uniform_id(..)` method.
+
+```c++
+uniform_id_t color_id = shader_prog->get_uniform_id("color");
+uniform_id_t time_id = shader_prog->get_uniform_id("time");
+uniform_id_t num_id = shader_prog->get_uniform_id("num");
+std::shared_ptr<UniformInput> input = shader_prog->new_uniform_input(
+  color_id, Eigen::Vector3f{ 0.0f, 1.0f, 0.0f },
+  time_id, 0.0f,
+  num_id, 1337
+);
+```
+
+Setting uniform values via numeric IDs can be much faster than using strings as
+string lookups are avoided. This is especially useful for uniforms which are updated
+very frequently, e.g. every frame. However, this requires that the IDs are fetched
+at runtime and have to be stored somewhere.
+
 
 ### Framebuffers / Multiple Render Passes
 
