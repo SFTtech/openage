@@ -12,6 +12,6 @@ namespace openage::renderer::tests {
  *
  * @param path Path to the openage asset directory.
  */
-void renderer_demo_6(const util::Path &path);
+void renderer_stresstest_0(const util::Path &path);
 
 } // namespace openage::renderer::tests

@@ -51,7 +51,9 @@ def demos_py():
     yield ("openage.event.demo.curvepong",
            "play pong on steroids through future prediction")
     yield ("openage.renderer.tests.renderer_demo",
-           "showcases the new renderer")
+           "showcases the renderer")
+    yield ("openage.renderer.tests.renderer_stresstest",
+           "stresstests for the renderer")
     yield ("openage.main.tests.engine_demo",
            "showcases the engine features")
 

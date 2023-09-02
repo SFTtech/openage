@@ -1,6 +1,6 @@
 // Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
-#include "demo_6.h"
+#include "stresstest_0.h"
 
 #include <eigen3/Eigen/Dense>
 
@@ -24,7 +24,7 @@
 
 namespace openage::renderer::tests {
 
-void renderer_demo_6(const util::Path &path) {
+void renderer_stresstest_0(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
 	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", 1024, 768, true);
