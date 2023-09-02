@@ -6,9 +6,6 @@ Main engine entry point for openage.
 from __future__ import annotations
 import typing
 
-from ..convert.service.init.api_export_required import api_export_required
-from ..convert.tool.api_export import export_api
-from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
 from ..log import info
 
 if typing.TYPE_CHECKING:
@@ -46,6 +43,9 @@ def main(args, error):
     from .. import config
     from ..assets import get_asset_path
     from ..convert.main import conversion_required, convert_assets
+    from ..convert.service.init.api_export_required import api_export_required
+    from ..convert.tool.api_export import export_api
+    from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
     from ..cppinterface.setup import setup as cpp_interface_setup
     from ..cvar.location import get_config_path
     from ..util.fslike.union import Union
