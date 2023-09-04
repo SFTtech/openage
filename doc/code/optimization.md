@@ -20,13 +20,19 @@ they should consider these simple rules:
 
 ## Checking Performance
 
-Performance bottlenecks are best identified with a *profiler* of your choice. For Python,
-the built-in modules [cProfile](https://docs.python.org/3/library/profile.html) (speed)
-and [tracemalloc](https://docs.python.org/3/library/tracemalloc.html) (memory) are recommended.
+Performance bottlenecks are best identified with a *profiler* of your choice.
+
+For **Python**, the built-in modules [cProfile](https://docs.python.org/3/library/profile.html)
+(speed) and [tracemalloc](https://docs.python.org/3/library/tracemalloc.html) (memory) are recommended.
 openage also provides convenience functions for them in its `openage.util.profiler` module.
-For C++, [valgrind](https://valgrind.org/info/tools.html) with `callgrind` (speed) and
-`memcheck` (memory) can be used. Any other profiler will also do the trick as long as
-you know how to use it (e.g. `perf`, `VTune`, `uProf`, etc.).
+
+For **C++**, [valgrind](https://valgrind.org/info/tools.html) with `callgrind` (speed) and
+`memcheck` (memory) can be used. If you use valgrind, you should supply it the suppression
+file in our repo: [`etc/valgrind-python.supp`](/etc/valgrind-python.supp). This lets
+valgrind handle the Python parts of the engine a bit better.
+
+Any other profiler will also do the trick as long as you know how to use it (e.g. `perf`,
+`VTune`, `uProf`, etc.).
 
 Profiling a full engine run can be very resource intensive to profile. Therefore, it
 can be beneficial to profile engine [demos](/doc/code/testing.md#demos) for a specific
