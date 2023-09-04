@@ -26,7 +26,7 @@ and [tracemalloc](https://docs.python.org/3/library/tracemalloc.html) (memory) a
 openage also provides convenience functions for them in its `openage.util.profiler` module.
 For C++, [valgrind](https://valgrind.org/info/tools.html) with `callgrind` (speed) and
 `memcheck` (memory) can be used. Any other profiler will also do the trick as long as
-you know how to use it.
+you know how to use it (e.g. `perf`, `VTune`, `uProf`, etc.).
 
 Profiling a full engine run can be very resource intensive to profile. Therefore, it
 can be beneficial to profile engine [demos](/doc/code/testing.md#demos) for a specific
