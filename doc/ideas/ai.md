@@ -14,6 +14,7 @@ This file shall provide information about the AI interface design.
  * The C++ engine triggers python AI functions when desired events occur
  * The AI then can trigger actions on the controllable units
  * Periodically (1 Hz?), the AI gets ticked to allow event independent decisions
+ * Get the AI its own dedicated thread
 
 
 ### Event types
@@ -56,12 +57,12 @@ struct game_info {
 ```cpp
 class Game {
 	Player[] allies();      // all the ally players that have not left or been defeated.
-	bool     canBuildHere(Unit builder, TilePosition position, UnitType type);
-	bool     canMake(Unit builder, UnitType type);
-	bool     canResearch(Unit unit, TechType type);
-	bool     canUpgrade(Unit unit, UpgradeType type);
+	bool     can_build_at(Unit builder, TilePosition position, UnitType type);
+	bool     can_create(Unit builder, UnitType type);
+	bool     can_research(Unit unit, TechType type);
+	bool     can_upgrade(Unit unit, UpgradeType type);
 	Player[] enemies();     // all the enemy players that have not left or been defeated.
-	Unit[]   getAllUnits(); // returns all the visible units.
+	Unit[]   get_all_units(); // returns all the visible units.
 
 	// many more examples at: http://bwmirror.jurenka.sk/javadoc/bwapi/Game.html
 }
@@ -69,11 +70,11 @@ class Game {
 
 ```cpp
 class Player {
-	string getName();   // returns the name of the player.
-	Race   getRace();   // returns the race of the player.
-	Unit[] getUnits();  // returns the set of units the player own.
-	bool   hasResearched(TechType tech);
-	int    getWood()    // Returns the amount of wood the player owns.
+	string  get_name();   // returns the name of the player.
+	Faction get_faction();   // returns the faction of the player.
+	Unit[]  get_units();  // returns the set of units the player own.
+	bool    has_researched(TechType tech);
+	int     get_resource()    // Returns the amount of resources the player owns.
 	// many more...
 }
 ```
