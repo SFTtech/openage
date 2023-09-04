@@ -25,6 +25,8 @@ public:
 	}
 };
 } // namespace std
+#else
+#error "jthread is supported now, remove custom definition"
 #endif
 #else
 #include <stop_token>
