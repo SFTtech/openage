@@ -74,7 +74,7 @@ When calling `create_event(..)` on the event loop, an `Event` instance is return
 allows access to the configuration parameters of the event. Event instances store
 references to:
 
-* **Event target**: Entity targeted by the event. Implemented as a weak reference to let the target expire.
+* **Event target**: Entity targeted by the event, i.e. the event entity that the event effects should be applied on. Implemented as a weak reference to let the target expire.
 * **Event handler**: Event handler object used for rescheduling and executing the event.
 * **Invoke time**: Determines when the event is executed.
 * **Time of last change**: Time of the last change to invocation time. Used for rescheduling the event.
@@ -102,7 +102,7 @@ in a rescheduling of the event in the next iteration of the event loop.
 
 ## Canceling Events
 
-Events are automatically canceled if their target has expired, i.e. it has been deleted
+Events are automatically canceled if their targeted event entity has expired, i.e. it has been deleted
 from memory. To accomplish this target references are implemented using `std::weak_ptr`
 which are checked for expiration before event execution.
 
