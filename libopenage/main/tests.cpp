@@ -1,5 +1,7 @@
 // Copyright 2018-2023 the openage authors. See copying.md for legal info.
 
+#include "tests.h"
+
 #include "demo/interactive/interactive.h"
 #include "demo/pong/pong.h"
 #include "demo/presenter/presenter.h"
