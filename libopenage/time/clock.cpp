@@ -7,7 +7,7 @@
 #include "log/log.h"
 
 
-namespace openage::event {
+namespace openage::time {
 
 Clock::Clock() :
 	state{ClockState::INIT},
@@ -50,14 +50,14 @@ void Clock::update_time() {
 	}
 }
 
-curve::time_t Clock::get_time() {
+time::time_t Clock::get_time() {
 	std::shared_lock lock{this->mutex};
 
 	// convert time unit from milliseconds to seconds
 	return this->sim_time / 1000;
 }
 
-curve::time_t Clock::get_real_time() {
+time::time_t Clock::get_real_time() {
 	std::shared_lock lock{this->mutex};
 
 	// convert time unit from milliseconds to seconds
@@ -126,4 +126,4 @@ void Clock::resume() {
 	                   << this->sim_real_time << "ms (real)");
 }
 
-} // namespace openage::event
+} // namespace openage::time

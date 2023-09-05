@@ -2,10 +2,21 @@
 
 #pragma once
 
+#include <cstdint>
+#include <memory>
+
 #include "curve/discrete.h"
 #include "gamestate/component/internal_component.h"
+#include "gamestate/component/types.h"
+#include "time/time.h"
 
-namespace openage::gamestate::component {
+
+namespace openage {
+namespace event {
+class EventLoop;
+}
+
+namespace gamestate::component {
 
 using ownership_id_t = uint64_t;
 
@@ -20,7 +31,7 @@ public:
 	 */
 	Ownership(const std::shared_ptr<openage::event::EventLoop> &loop,
 	          const ownership_id_t owner_id,
-	          const curve::time_t &creation_time);
+	          const time::time_t &creation_time);
 
 	/**
 	 * Creates an Ownership component.
@@ -37,7 +48,7 @@ public:
 	 * @param time Time at which the owner ID is set.
 	 * @param owner_id New owner ID.
 	 */
-	void set_owner(const curve::time_t &time, const ownership_id_t owner_id);
+	void set_owner(const time::time_t &time, const ownership_id_t owner_id);
 
 	/**
      * Get the owner IDs over time.
@@ -53,4 +64,5 @@ private:
 	curve::Discrete<ownership_id_t> owner;
 };
 
-} // namespace openage::gamestate::component
+} // namespace gamestate::component
+} // namespace openage

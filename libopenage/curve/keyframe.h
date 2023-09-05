@@ -1,10 +1,10 @@
-// Copyright 2019-2019 the openage authors. See copying.md for legal info.
+// Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <limits>
+#include "time/time.h"
+#include "util/fixed_point.h"
 
-#include "curve.h"
 
 namespace openage::curve {
 
@@ -23,18 +23,18 @@ public:
 	/**
 	 * New, default-constructed element at the given time
 	 */
-	Keyframe(const time_t &time) :
+	Keyframe(const time::time_t &time) :
 		time{time} {}
 
 	/**
 	 * New element fron time and value
 	 */
-	Keyframe(const time_t &time, const T &value) :
+	Keyframe(const time::time_t &time, const T &value) :
 		time{time},
 		value{value} {}
 
-	const time_t time = std::numeric_limits<time_t>::min();
+	const time::time_t time = std::numeric_limits<time::time_t>::min();
 	T value = T{};
 };
 
-} // openage::curve
+} // namespace openage::curve

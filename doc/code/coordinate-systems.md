@@ -205,7 +205,7 @@ viewport --> normalized device space (Eigen::Vector2f)
 
 The translations make use of current coordinate state (e.g. scroll position,
 stored in `CoordManager`) and additional infos to solve
-degrees of freedom (see [below](#Parameters)).
+degrees of freedom (see [below](#parameters)).
 
 
 * `input` -> `viewport`: just flip the y axis

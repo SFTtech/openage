@@ -4,10 +4,8 @@
 
 #include <memory>
 
-#include <eigen3/Eigen/Dense>
 
 namespace openage::renderer {
-class Renderer;
 class UniformBufferInput;
 
 namespace camera {

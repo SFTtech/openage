@@ -2,10 +2,12 @@
 
 #pragma once
 
+#include <memory>
 #include <unordered_map>
 
 #include "event/state.h"
 #include "gamestate/types.h"
+
 
 namespace nyan {
 class Database;
@@ -16,6 +18,10 @@ namespace openage {
 
 namespace assets {
 class ModManager;
+}
+
+namespace event {
+class EventLoop;
 }
 
 namespace gamestate {

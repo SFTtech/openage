@@ -1,12 +1,14 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "stackanalyzer.h"
 
-#include "config.h"
-#include "../log/log.h"
-#include "../util/compiler.h"
-#include "../util/init.h"
+#include <cstdint>
+#include <string>
 
+#include "config.h"
+#include "log/log.h"
+#include "util/compiler.h"
+#include "util/init.h"
 
 
 namespace openage::error {
@@ -23,8 +25,7 @@ constexpr uint64_t skip_entry_frames = 1;
  */
 constexpr uint64_t base_skip_frames = 1;
 
-} // openage::error
-
+} // namespace openage::error
 
 
 #if WITH_BACKTRACE
@@ -57,10 +58,10 @@ struct backtrace_state *bt_state;
 
 util::OnInit init_backtrace_state([]() {
 	bt_state = backtrace_create_state(
-		nullptr,                    // auto-determine filename
-		1,                          // threaded
+		nullptr, // auto-determine filename
+		1, // threaded
 		backtrace_error_callback,
-		nullptr                     // passed to the callback
+		nullptr // passed to the callback
 	);
 
 	// There's no documentaton on how to free the state.
@@ -82,7 +83,6 @@ void backtrace_syminfo_callback(
 	const char *symname,
 	uintptr_t /*unused symval*/,
 	uintptr_t /*unused symsize*/) {
-
 	// in this fallback case, we can't get filename or line info, but at least we
 	// can get and demangle the symbol name... hopefully.
 
@@ -92,8 +92,7 @@ void backtrace_syminfo_callback(
 		"",
 		0,
 		(symname == nullptr) ? "" : util::demangle(symname),
-		reinterpret_cast<void *>(pc)
-	});
+		reinterpret_cast<void *>(pc)});
 }
 
 
@@ -109,15 +108,14 @@ int backtrace_pcinfo_callback(void *data, uintptr_t pc, const char *filename, in
 			"",
 			0,
 			util::symbol_name(reinterpret_cast<void *>(pc), false, true),
-			reinterpret_cast<void *>(pc)
-		});
-	} else {
+			reinterpret_cast<void *>(pc)});
+	}
+	else {
 		symbol_vector->emplace_back(backtrace_symbol{
 			(filename == nullptr) ? "" : filename,
 			static_cast<unsigned int>(lineno),
 			util::demangle(function),
-			reinterpret_cast<void *>(pc)
-		});
+			reinterpret_cast<void *>(pc)});
 	}
 
 	return 0;
@@ -135,9 +133,9 @@ void backtrace_pcinfo_error_callback(void *data, const char *msg, int errorno) {
 			info_cb_data->pc,
 			backtrace_syminfo_callback,
 			backtrace_error_callback,
-			info_cb_data
-		);
-	} else {
+			info_cb_data);
+	}
+	else {
 		// invoke the general error callback, which prints the message.
 		backtrace_error_callback(nullptr, msg, errorno);
 	}
@@ -149,15 +147,14 @@ void backtrace_pcinfo_error_callback(void *data, const char *msg, int errorno) {
 void StackAnalyzer::analyze() {
 	backtrace_simple(
 		bt_state,
-		base_skip_frames,   // skip some frames at "most recent call"
+		base_skip_frames, // skip some frames at "most recent call"
 		backtrace_simple_callback,
 		backtrace_error_callback,
-		reinterpret_cast<void *>(this)
-	);
+		reinterpret_cast<void *>(this));
 }
 
 
-void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> cb, bool reversed) const {
+void StackAnalyzer::get_symbols(std::function<void(const backtrace_symbol *)> cb, bool reversed) const {
 	info_cb_data_t info_cb_data;
 
 	for (void *pc : this->stack_addrs) {
@@ -171,8 +168,7 @@ void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> c
 			info_cb_data.pc,
 			backtrace_pcinfo_callback,
 			backtrace_pcinfo_error_callback,
-			reinterpret_cast<void *>(&info_cb_data)
-		);
+			reinterpret_cast<void *>(&info_cb_data));
 	}
 
 	if (reversed) {
@@ -180,14 +176,16 @@ void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> c
 		for (size_t idx = info_cb_data.symbols.size(); idx-- > 0;) {
 			cb(&info_cb_data.symbols[idx]);
 		}
-	} else {
+	}
+	else {
 		for (backtrace_symbol &symbol : info_cb_data.symbols) {
 			cb(&symbol);
 		}
 	}
 }
 
-}} // openage::error
+} // namespace error
+} // namespace openage
 
 #else // WITHOUT_BACKTRACE
 
@@ -207,7 +205,8 @@ void StackAnalyzer::analyze() {
 	this->stack_addrs = std::move(buffer);
 }
 
-}} // openage::error
+} // namespace error
+} // namespace openage
 
 #else // not _MSC_VER
 
@@ -255,14 +254,14 @@ void StackAnalyzer::analyze() {
 	}
 }
 
-} // openage::error
+} // namespace openage::error
 
 #endif // for _MSC_VER or GNU execinfo
 
 namespace openage::error {
 
 
-void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> cb,
+void StackAnalyzer::get_symbols(std::function<void(const backtrace_symbol *)> cb,
                                 bool reversed) const {
 	backtrace_symbol symbol;
 	symbol.filename = "";
@@ -290,7 +289,7 @@ void StackAnalyzer::get_symbols(std::function<void (const backtrace_symbol *)> c
 }
 
 
-} // openage::error
+} // namespace openage::error
 
 #endif // WITHOUT_BACKTRACE
 
@@ -313,4 +312,4 @@ void StackAnalyzer::trim_to_current_stack_frame() {
 }
 
 
-} // openage::error
+} // namespace openage::error

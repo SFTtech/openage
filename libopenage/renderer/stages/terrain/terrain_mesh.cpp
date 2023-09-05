@@ -2,9 +2,14 @@
 
 #include "terrain_mesh.h"
 
+#include <functional>
+#include <optional>
+#include <utility>
+
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/assets/texture_manager.h"
 #include "renderer/resources/terrain/terrain_info.h"
+#include "renderer/resources/texture_info.h"
 #include "renderer/uniform_input.h"
 
 
@@ -54,7 +59,7 @@ void TerrainRenderMesh::set_terrain_path(const curve::Discrete<std::string> &ter
 								}));
 }
 
-void TerrainRenderMesh::update_uniforms(const curve::time_t &time) {
+void TerrainRenderMesh::update_uniforms(const time::time_t &time) {
 	// TODO: Only update uniforms that changed since last update
 	if (this->uniforms == nullptr) [[unlikely]] {
 		return;

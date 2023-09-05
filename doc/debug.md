@@ -1,6 +1,9 @@
 # How to debug openage?
-## Qt Creator IDE
-See [qt_creator.md](/doc/ide/qt_creator.md)
+
+## Your favorite IDE
+
+Check the docs in [the `/doc/ide` subfolder](/doc/ide/).
+
 ## GDB
 GDB can be used to debug C++ code in a terminal.
 

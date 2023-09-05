@@ -2,10 +2,12 @@
 
 #include "xor_node.h"
 
+#include <unordered_map>
+
 
 namespace openage::gamestate::activity {
 
-ConditionNode::ConditionNode(node_id id,
+XorGate::XorGate(node_id id,
                              node_label label,
                              const std::vector<std::shared_ptr<Node>> &outputs,
                              condition_func_t condition_func) :
@@ -13,15 +15,15 @@ ConditionNode::ConditionNode(node_id id,
 	condition_func{condition_func} {
 }
 
-void ConditionNode::add_output(const std::shared_ptr<Node> &output) {
+void XorGate::add_output(const std::shared_ptr<Node> &output) {
 	this->outputs.emplace(output->get_id(), output);
 }
 
-void ConditionNode::set_condition_func(condition_func_t condition_func) {
+void XorGate::set_condition_func(condition_func_t condition_func) {
 	this->condition_func = condition_func;
 }
 
-condition_func_t ConditionNode::get_condition_func() const {
+condition_func_t XorGate::get_condition_func() const {
 	return this->condition_func;
 }
 

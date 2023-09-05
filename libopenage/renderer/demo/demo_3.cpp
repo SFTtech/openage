@@ -5,7 +5,6 @@
 #include <eigen3/Eigen/Dense>
 #include <QKeyEvent>
 
-#include "event/clock.h"
 #include "renderer/camera/camera.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
@@ -20,6 +19,7 @@
 #include "renderer/stages/world/world_render_entity.h"
 #include "renderer/stages/world/world_renderer.h"
 #include "renderer/uniform_buffer.h"
+#include "time/clock.h"
 
 namespace openage::renderer::tests {
 
@@ -31,7 +31,7 @@ void renderer_demo_3(const util::Path &path) {
 
 	// Clock required by world renderer for timing animation frames
 	// (we never advance time in this demo though, so it has no significance)
-	auto clock = std::make_shared<event::Clock>();
+	auto clock = std::make_shared<time::Clock>();
 
 	// Camera
 	// our viewport into the game world

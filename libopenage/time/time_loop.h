@@ -5,13 +5,12 @@
 #include <memory>
 #include <shared_mutex>
 
-namespace openage {
 
-namespace event {
+namespace openage::time {
 class Clock;
 
 /**
- * Manage event loop and clock.
+ * Manage and update internal time via a clock.
  */
 class TimeLoop {
 public:
@@ -68,5 +67,4 @@ private:
 };
 
 
-} // namespace event
-} // namespace openage
+} // namespace openage::time

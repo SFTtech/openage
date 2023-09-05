@@ -2,8 +2,6 @@
 
 #include "terrain_renderer.h"
 
-
-#include "event/clock.h"
 #include "renderer/camera/camera.h"
 #include "renderer/opengl/context.h"
 #include "renderer/renderer.h"
@@ -13,6 +11,8 @@
 #include "renderer/stages/terrain/terrain_mesh.h"
 #include "renderer/stages/terrain/terrain_model.h"
 #include "renderer/window.h"
+#include "time/clock.h"
+
 
 namespace openage::renderer::terrain {
 
@@ -21,7 +21,7 @@ TerrainRenderer::TerrainRenderer(const std::shared_ptr<Window> &window,
                                  const std::shared_ptr<renderer::camera::Camera> &camera,
                                  const util::Path &shaderdir,
                                  const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
-                                 const std::shared_ptr<event::Clock> &clock) :
+                                 const std::shared_ptr<time::Clock> &clock) :
 	renderer{renderer},
 	camera{camera},
 	render_entity{nullptr},

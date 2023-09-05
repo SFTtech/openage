@@ -6,7 +6,7 @@
 #include <vector>
 #include <deque>
 
-#include "../../curve/curve.h"
+#include "../../time/time.h"
 #include "../../renderer/renderer.h"
 #include "../../renderer/opengl/window.h"
 
@@ -24,7 +24,7 @@ public:
 
 	const std::vector<PongEvent> &get_inputs(const std::shared_ptr<PongPlayer> &player);
 
-	void draw(const std::shared_ptr<PongState> &state, const curve::time_t &now);
+	void draw(const std::shared_ptr<PongState> &state, const time::time_t &now);
 
 	const util::Vector2s &get_window_size() const;
 

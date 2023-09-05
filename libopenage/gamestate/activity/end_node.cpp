@@ -2,6 +2,9 @@
 
 #include "end_node.h"
 
+#include "error/error.h"
+#include "log/message.h"
+
 
 namespace openage::gamestate::activity {
 

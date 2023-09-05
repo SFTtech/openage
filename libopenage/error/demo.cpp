@@ -1,15 +1,14 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
-#include <vector>
-#include <string>
+#include <memory>
+#include <ostream>
 
-#include "../log/log.h"
-#include "backtrace.h"
-#include "error.h"
+#include "error/error.h"
+#include "log/log.h"
+#include "log/message.h"
 
 
-namespace openage {
-namespace error {
+namespace openage::error {
 
 
 // anonymous namespace to prevent linkage for exception demo helper functions.
@@ -25,7 +24,8 @@ void bar(int i) {
 	if (i % 5 == 3) {
 		try {
 			foo();
-		} catch (...) {
+		}
+		catch (...) {
 			// Note: pokemon exception handling is generally discouraged.
 			// This serves as a demo how the Error constructor nevertheless
 			// manages to correctly capture the cause exception.
@@ -33,7 +33,8 @@ void bar(int i) {
 
 			throw Error(MSG(crit).fmt("exception in foo. i=%d", i));
 		}
-	} else {
+	}
+	else {
 		bar(i + 1);
 	}
 }
@@ -45,17 +46,17 @@ void bar(int i) {
 void demo() {
 	try {
 		bar(0);
-	} catch (Error &exc) {
+	}
+	catch (Error &exc) {
 		if (exc.backtrace) {
 			exc.trim_backtrace();
 		}
 
-		log::log(MSG(info) <<
-			"exception_demo: captured the following exception:" << std::endl <<
-			exc << std::endl <<
-			"exception_demo: end of exception");
+		log::log(MSG(info) << "exception_demo: captured the following exception:" << std::endl
+		                   << exc << std::endl
+		                   << "exception_demo: end of exception");
 	}
 }
 
 
-}} // openage::error
+} // namespace openage::error

@@ -7,8 +7,8 @@
 
 #include <nyan/nyan.h>
 
-#include "coord/phys.h"
 #include "gamestate/types.h"
+
 
 namespace openage {
 
@@ -69,9 +69,9 @@ private:
 	 * @param nyan_entity fqon of the GameEntity data in the nyan database.
 	 */
 	void init_components(const std::shared_ptr<openage::event::EventLoop> &loop,
-	                           const std::shared_ptr<GameState> &state,
-	                           const std::shared_ptr<GameEntity> &entity,
-	                           const nyan::fqon_t &nyan_entity);
+	                     const std::shared_ptr<GameState> &state,
+	                     const std::shared_ptr<GameEntity> &entity,
+	                     const nyan::fqon_t &nyan_entity);
 
 	/**
      * Get a unique ID for creating a game entity.

@@ -1,18 +1,19 @@
-// Copyright 2015-2020 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "file_logsink.h"
 
-#include <iostream>
 #include <iomanip>
+#include <string>
 
-#include "message.h"
-#include "logsource.h"
+#include "log/level.h"
+#include "log/logsource.h"
+#include "log/message.h"
+#include "util/enum.h"
 
 namespace openage::log {
 
 
-FileSink::FileSink(const char *filename, bool append)
-	:
+FileSink::FileSink(const char *filename, bool append) :
 	outfile{filename, std::ios_base::out | (append ? std::ios_base::app : std::ios_base::trunc)} {}
 
 

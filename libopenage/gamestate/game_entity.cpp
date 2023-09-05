@@ -56,7 +56,7 @@ bool GameEntity::has_component(component::component_t type) {
 	return this->components.contains(type);
 }
 
-void GameEntity::render_update(const curve::time_t &time,
+void GameEntity::render_update(const time::time_t &time,
                                const std::string &animation_path) {
 	if (this->render_entity != nullptr) {
 		const auto &pos = dynamic_pointer_cast<component::Position>(

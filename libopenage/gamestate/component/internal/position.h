@@ -2,15 +2,23 @@
 
 #pragma once
 
+#include <list>
 #include <memory>
 
 #include "coord/phys.h"
 #include "curve/continuous.h"
 #include "curve/segmented.h"
 #include "gamestate/component/internal_component.h"
-#include "util/fixed_point.h"
+#include "gamestate/component/types.h"
+#include "time/time.h"
 
-namespace openage::gamestate::component {
+
+namespace openage {
+namespace event {
+class EventLoop;
+}
+
+namespace gamestate::component {
 
 class Position : public InternalComponent {
 public:
@@ -23,7 +31,7 @@ public:
      */
 	Position(const std::shared_ptr<openage::event::EventLoop> &loop,
 	         const coord::phys3 &initial_pos,
-	         const curve::time_t &creation_time);
+	         const time::time_t &creation_time);
 
 	/**
      * Create a Position component.
@@ -49,7 +57,7 @@ public:
      * @param time Time at which the position is set.
      * @param pos New position.
      */
-	void set_position(const curve::time_t &time, const coord::phys3 &pos);
+	void set_position(const time::time_t &time, const coord::phys3 &pos);
 
 	/**
      * Get the directions in degrees over time.
@@ -66,7 +74,7 @@ public:
      * @param time Time at which the angle is set.
      * @param angle New angle.
      */
-	void set_angle(const curve::time_t &time, const coord::phys_angle_t &angle);
+	void set_angle(const time::time_t &time, const coord::phys_angle_t &angle);
 
 private:
 	/**
@@ -78,9 +86,12 @@ private:
      * Angle the entity is facing over time.
      *
      * Represents degrees in the range [0, 360). At angle 0, the entity is facing
-     * towards the camera.
+     * towards the camera (direction vector {x, y} = {-1, 1}).
+     *
+     * Rotation is clockwise, so at 90 degrees the entity is facing left.
      */
 	curve::Segmented<coord::phys_angle_t> angle;
 };
 
-} // namespace openage::gamestate::component
+} // namespace gamestate::component
+} // namespace openage

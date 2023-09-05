@@ -2,6 +2,9 @@
 
 #include "common.h"
 
+#include <memory>
+
+
 namespace openage::renderer::resources::parser {
 
 size_t parse_version(const std::vector<std::string> &args) {

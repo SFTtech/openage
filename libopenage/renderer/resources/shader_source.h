@@ -1,13 +1,14 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <string>
 
-#include "../../util/path.h"
-
 
 namespace openage {
+namespace util {
+class Path;
+}
 namespace renderer {
 namespace resources {
 
@@ -37,7 +38,7 @@ public:
 
 	/// Returns a view of the shader source code. This might be text
 	/// or binary data.
-	std::string const& get_source() const;
+	std::string const &get_source() const;
 
 	/// Returns the language of this shader source.
 	shader_lang_t get_lang() const;
@@ -56,4 +57,6 @@ private:
 	std::string code;
 };
 
-}}} // openage::renderer::resources
+} // namespace resources
+} // namespace renderer
+} // namespace openage

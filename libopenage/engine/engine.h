@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include <memory>
+#include <string>
 #include <thread>
 #include <vector>
 
@@ -14,12 +16,20 @@ namespace std {
 class jthread : public thread {
 public:
 	using thread::thread; // needed constructors
+	jthread(const jthread &) = delete;
+	jthread &operator=(const jthread &) = delete;
+	jthread(jthread &&) = default;
+	jthread &operator=(jthread &&) = default;
 	~jthread() {
 		this->join();
 	}
 };
 } // namespace std
+#else
+#error "jthread is supported now, remove custom definition"
 #endif
+#else
+#include <stop_token>
 #endif
 
 
@@ -29,10 +39,6 @@ namespace cvar {
 class CVarManager;
 } // namespace cvar
 
-namespace event {
-class TimeLoop;
-} // namespace event
-
 namespace gamestate {
 class GameSimulation;
 } // namespace gamestate
@@ -40,6 +46,10 @@ class GameSimulation;
 namespace presenter {
 class Presenter;
 } // namespace presenter
+
+namespace time {
+class TimeLoop;
+} // namespace time
 
 
 namespace engine {
@@ -109,7 +119,7 @@ private:
 	/**
      * Controls and update the clock for time-based measurements.
      */
-	std::shared_ptr<event::TimeLoop> time_loop;
+	std::shared_ptr<time::TimeLoop> time_loop;
 
 	/**
      * Gameplay simulation.

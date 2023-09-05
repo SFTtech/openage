@@ -1,4 +1,4 @@
-// Copyright 2019-2019 the openage authors. See copying.md for legal info.
+// Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
 #include "aicontroller.h"
 
@@ -9,7 +9,7 @@ namespace openage::main::tests::pong {
 std::vector<PongEvent> get_ai_inputs(const std::shared_ptr<PongPlayer> &player,
                                      const std::shared_ptr<PongBall> &ball,
                                      const std::shared_ptr<curve::Discrete<util::Vector2s>> &area_size_curve,
-                                     const curve::time_t &now,
+                                     const time::time_t &now,
                                      bool right_player) {
 	std::vector<PongEvent> ret;
 
@@ -22,7 +22,7 @@ std::vector<PongEvent> get_ai_inputs(const std::shared_ptr<PongPlayer> &player,
 	double area_width = area_size[0];
 	double area_height = area_size[1];
 
-	curve::time_t hit_time;
+	time::time_t hit_time;
 	util::Vector2d hit_pos;
 
 	// calculate ball trajectory
@@ -31,22 +31,22 @@ std::vector<PongEvent> get_ai_inputs(const std::shared_ptr<PongPlayer> &player,
 	// move panel to predicted hit position of panel wall
 
 	while (true) {
-		curve::time_t ty_hit = 0, tx_hit = 0;
+		time::time_t ty_hit = 0, tx_hit = 0;
 
 		if (speed[0] == 0) {
-			tx_hit = std::numeric_limits<curve::time_t>::max();
+			tx_hit = std::numeric_limits<time::time_t>::max();
 		} else if (speed[0] > 0) {
-			tx_hit = curve::time_t::from_double((area_width - ball_pos[0]) / speed[0]);
+			tx_hit = time::time_t::from_double((area_width - ball_pos[0]) / speed[0]);
 		} else if (speed[0] < 0) {
-			tx_hit = curve::time_t::from_double(ball_pos[0] / -speed[0]);
+			tx_hit = time::time_t::from_double(ball_pos[0] / -speed[0]);
 		}
 
 		if (speed[1] == 0) {
-			ty_hit = std::numeric_limits<curve::time_t>::max();
+			ty_hit = std::numeric_limits<time::time_t>::max();
 		} else if (speed[1] > 0) {
-			ty_hit = curve::time_t::from_double((area_height - ball_pos[1]) / speed[1]);
+			ty_hit = time::time_t::from_double((area_height - ball_pos[1]) / speed[1]);
 		} else if (speed[1] < 0) {
-			ty_hit = curve::time_t::from_double(ball_pos[1] / -speed[1]);
+			ty_hit = time::time_t::from_double(ball_pos[1] / -speed[1]);
 		}
 
 		// actual hit has lowest time:

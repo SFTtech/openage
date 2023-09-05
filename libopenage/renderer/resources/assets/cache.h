@@ -6,11 +6,12 @@
 #include <string>
 #include <unordered_map>
 
-#include "util/path.h"
 
-namespace openage::renderer {
-
-namespace resources {
+namespace openage {
+namespace util {
+class Path;
+}
+namespace renderer::resources {
 class Animation2dInfo;
 class BlendPatternInfo;
 class BlendTableInfo;
@@ -128,5 +129,5 @@ private:
 	texture_cache_t loaded_textures;
 };
 
-} // namespace resources
-} // namespace openage::renderer
+} // namespace renderer::resources
+} // namespace openage

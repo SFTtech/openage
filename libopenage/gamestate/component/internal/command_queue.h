@@ -2,9 +2,14 @@
 
 #pragma once
 
+#include <memory>
+
 #include "curve/queue.h"
 #include "gamestate/component/internal/commands/base_command.h"
 #include "gamestate/component/internal_component.h"
+#include "gamestate/component/types.h"
+#include "time/time.h"
+
 
 namespace openage {
 
@@ -31,7 +36,7 @@ public:
 	 * @param time Time at which the command is added.
 	 * @param command New command.
 	 */
-	void add_command(const curve::time_t &time,
+	void add_command(const time::time_t &time,
 	                 const std::shared_ptr<command::Command> &command);
 
 	/**
@@ -48,7 +53,7 @@ public:
 	 *
 	 * @return Command in the front of the queue or nullptr if the queue is empty.
 	 */
-	std::shared_ptr<command::Command> pop_command(const curve::time_t &time);
+	std::shared_ptr<command::Command> pop_command(const time::time_t &time);
 
 private:
 	/**

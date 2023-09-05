@@ -4,12 +4,17 @@
 
 #include "../../util/compiler.h"
 // pxd: from libopenage.util.path cimport Path
-#include "../../util/path.h"
 
 
-namespace openage::renderer::tests {
+namespace openage {
+namespace util {
+class Path;
+} // namespace util
+
+namespace renderer::tests {
 
 // pxd: void renderer_demo(int demo_id, Path path) except +
 OAAPI void renderer_demo(int demo_id, const util::Path &path);
 
-} // namespace openage::renderer::tests
+} // namespace renderer::tests
+} // namespace openage

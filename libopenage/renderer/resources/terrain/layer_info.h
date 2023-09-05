@@ -8,8 +8,6 @@
 
 
 namespace openage::renderer::resources {
-
-class BlendTableInfo;
 class TerrainFrameInfo;
 class FrameTiming;
 

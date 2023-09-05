@@ -7,7 +7,7 @@
 
 namespace openage::gamestate::component {
 
-inline component_t Move::get_type() const {
+component_t Move::get_type() const {
 	return component_t::MOVE;
 }
 

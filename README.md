@@ -1,10 +1,10 @@
 [![openage](/assets/logo/banner.svg)](http://openage.dev)
 =========================================================
 
-**openage**: a volunteer project to create a free engine clone of the *Genie Engine* used by *Age of Empires*, *Age of Empires II (HD)* and *Star Wars: Galactic Battlegrounds*, comparable to projects like [OpenMW](https://openmw.org/), [OpenRA](http://openra.net/),  [OpenSAGE](https://github.com/OpenSAGE/OpenSAGE/), [OpenTTD](https://openttd.org/) and [OpenRCT2](https://openrct2.org/). At the moment we focus our efforts on the integration of *Age of Empires II*, while being primarily aimed at POSIX platforms such as **GNU/Linux**.
+**openage**: a volunteer project to create a free engine clone of the *Genie Engine* used by *Age of Empires*, *Age of Empires II (HD)* and *Star Wars: Galactic Battlegrounds*, comparable to projects like [OpenMW](https://openmw.org/), [OpenRA](http://openra.net/),  [OpenSAGE](https://github.com/OpenSAGE/OpenSAGE/), [OpenTTD](https://openttd.org/) and [OpenRCT2](https://openrct2.org/).
 
 openage uses the original game assets (such as sounds and graphics), but (for obvious reasons) doesn't ship them.
-To play, you require *an original AoE II: TC, [AoE II: HD](http://store.steampowered.com/app/221380/)* or [AoE II: DE](https://store.steampowered.com/app/813780) installation (via [Wine](https://www.winehq.org/) or [Steam-Linux](doc/media_convert.md)).
+To play, you require *[any of the original games (AoE1, AoE2)](/doc/media_convert.md)* or their *Definitive Edition* releases.
 
 [![github stars](https://img.shields.io/github/stars/SFTtech/openage.svg)](https://github.com/SFTtech/openage/stargazers)
 [![#sfttech on matrix.org](/assets/doc/matrixroom.svg)](https://matrix.to/#/#sfttech:matrix.org)
@@ -13,32 +13,41 @@ To play, you require *an original AoE II: TC, [AoE II: HD](http://store.steampow
 
 Contact
 -------
-Contact          | Where?
------------------|-------
-Issue Tracker    | [GitHub SFTtech/openage](https://github.com/SFTtech/openage/issues)
-Development Blog | [blog.openage.dev](https://blog.openage.dev)
-Subreddit        | [![reddit](/assets/doc/reddit.svg) /r/openage](https://www.reddit.com/r/openage/)
-Discussions      | [GitHub Discussions](https://github.com/SFTtech/openage/discussions)
-Matrix Chat      | [![matrix](/assets/doc/matrix.svg) `#sfttech:matrix.org`](https://matrix.to/#/#sfttech:matrix.org)
-Money Sink       | [![money sink](/assets/doc/liberapay.svg)](https://liberapay.com/SFTtech)
+| Contact          | Where?                                                                                             |
+| ---------------- | -------------------------------------------------------------------------------------------------- |
+| Issue Tracker    | [GitHub SFTtech/openage]                                                                           |
+| Development Blog | [blog.openage.dev]                                                                                 |
+| Subreddit        | [![reddit](/assets/doc/reddit.svg) /r/openage](https://www.reddit.com/r/openage/)                  |
+| Discussions      | [GitHub Discussions]                                                                               |
+| Matrix Chat      | [![matrix](/assets/doc/matrix.svg) `#sfttech:matrix.org`](https://matrix.to/#/#sfttech:matrix.org) |
+| Money Sink       | [![money sink](/assets/doc/liberapay.svg)](https://liberapay.com/SFTtech)                          |
 
+[GitHub SFTtech/openage]: https://github.com/SFTtech/openage/issues
+[blog.openage.dev]: https://blog.openage.dev
+[GitHub Discussions]: https://github.com/SFTtech/openage/discussions
 
 Technical foundation
 --------------------
 
-Technology     | Component
----------------|----------
-**C++20**      | Engine core
-**Python3**    | Scripting, media conversion, in-game console, code generation
-**Qt6**        | Graphical user interface
-**Cython**     | Python/C++ Glue code
-**CMake**      | Build system
-**OpenGL3.3**  | Rendering, shaders
-**SDL2**       | Cross-platform Audio/Input/Window handling
-**Opus**       | Audio codec
-[**nyan**](https://github.com/SFTtech/nyan) | Content Configuration and Modding
-**Humans**     | Mixing together all of the above
+| Technology   | Component                                                     |
+| ------------ | ------------------------------------------------------------- |
+| **C++20**    | Engine core                                                   |
+| **Python3**  | Scripting, media conversion, in-game console, code generation |
+| [**Cython**] | Python/C++ Glue code                                          |
+| [**Qt6**]    | Graphical user interface                                      |
+| [**CMake**]  | Build system                                                  |
+| [**OpenGL**] | Rendering, shaders                                            |
+| [**Opus**]   | Audio codec                                                   |
+| [**nyan**]   | Content Configuration and Modding                             |
+| [**Humans**] | Mixing together all of the above                              |
 
+[**Cython**]: https://cython.org/
+[**Qt6**]: https://contribute.qt-project.org/
+[**CMake**]: https://cmake.org/
+[**OpenGL**]: https://www.opengl.org/
+[**Opus**]: https://opus-codec.org/
+[**nyan**]: https://github.com/SFTtech/nyan
+[**Humans**]: https://www.youtube.com/watch?v=fQGbXmkSArs&t=20s
 
 Goals
 -----
@@ -72,26 +81,19 @@ Current State of the Project
 We're implementing the internal game simulation (how units even do anything) with simplicity and extensibility in mind, so we had to get rid of the temporary (but kind of working) previous version.
 With these changes we can (finally) actually make use of our converted asset packs and our nyan API!
 We're working day and night to make gameplay return\*.
-If you're interested, we wrote detailed explanations on our blog: [Part 1](https://blog.openage.dev/new-gamestate-2020.html), [Part 2](https://blog.openage.dev/engine-core-modules.html).
+If you're interested, we wrote detailed explanations on our blog: [Part 1](https://blog.openage.dev/new-gamestate-2020.html), [Part 2](https://blog.openage.dev/engine-core-modules.html), [Monthly Devlog](https://blog.openage.dev/tag/news.html).
 
 *\* may not actually be every day and night*
 
-Operating System    | Build status
-:------------------:|:--------------:
-Debian Sid          | [Todo: Kevin #11](https://github.com/SFTtech/kevin/issues/11)
-Ubuntu 22.04 LTS    | [![Ubuntu 22.04 build status](https://github.com/SFTTech/openage/actions/workflows/ubuntu-22.04.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/ubuntu-22.04.yml)
-macOS               | [![macOS build status](https://github.com/SFTtech/openage/workflows/macOS-CI/badge.svg)](https://github.com/SFTtech/openage/actions?query=workflow%3AmacOS-CI)
-Windows Server 2019 | [![Windows Server 2019 build status](https://github.com/SFTtech/openage/actions/workflows/windows-server-2019.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/windows-server-2019.yml)
-Windows Server 2022 | [![Windows Server 2022 build status](https://github.com/SFTtech/openage/actions/workflows/windows-server-2022.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/windows-server-2022.yml)
+|  Operating System   |                                                                                                       Build status                                                                                                        |
+| :-----------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|     Debian Sid      |                                                                                                     [Todo: Kevin #11]                                                                                                     |
+|  Ubuntu 22.04 LTS   |           [![Ubuntu 22.04 build status](https://github.com/SFTTech/openage/actions/workflows/ubuntu-22.04.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/ubuntu-22.04.yml)            |
+|        macOS        |                              [![macOS build status](https://github.com/SFTtech/openage/workflows/macOS-CI/badge.svg)](https://github.com/SFTtech/openage/actions?query=workflow%3AmacOS-CI)                               |
+| Windows Server 2019 | [![Windows Server 2019 build status](https://github.com/SFTtech/openage/actions/workflows/windows-server-2019.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/windows-server-2019.yml) |
+| Windows Server 2022 | [![Windows Server 2022 build status](https://github.com/SFTtech/openage/actions/workflows/windows-server-2022.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/windows-server-2022.yml) |
 
-* Which **platforms** are supported?
-    * Linux (primary), Windows & macOS (at least we try :)
-
-* What **features** are currently implemented?
-    * See [status page](https://github.com/SFTtech/openage/projects).
-
-* What's the **plan**?
-    * See [doc/milestones.md](/doc/milestones.md). We also have [lists of crazy xor good ideas](/doc/ideas) and a [technical overview for requested features](/doc/ideas/fr_technical_overview.md).
+[Todo: Kevin #11]: https://github.com/SFTtech/kevin/issues/11
 
 
 Installation Packages
@@ -116,15 +118,21 @@ If you need help, maybe our [troubleshooting guide](/doc/troubleshooting.md) hel
 Quickstart
 ----------
 
-* How do I get this to run on my box?
-    * See [doc/building.md](/doc/building.md).
+* **How do I get this to run on my box?**
+    1. [Clone](https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository) the repo.
+    2. Install dependencies. See [doc/building.md](/doc/building.md#dependency-installation) to get instructions for your favorite platform.
+    3. Build the project:
+   ```
+   ./configure --download-nyan
+   make
+   ```
 
-* I compiled everything. Now how do I run it?
+* **I compiled everything. Now how do I run it?**
     * Execute `./bin/run`.
     * [The convert script](/doc/media_convert.md) will transform original assets into openage formats, which are a lot saner and more moddable.
     * Use your brain and react to the things you'll see.
 
-* Waaaaaah! It
+* **Waaaaaah! It...**
     * segfaults
     * prints error messages I don't want to read
     * ate my dog
@@ -141,26 +149,14 @@ or the [bug tracker](https://github.com/SFTtech/openage/issues).
 Contributing
 ============
 
-You might ask yourself now "Yeah, this sounds cool and all, but how do *I* participate
+You might ask yourself now "Sounds cool, but how do I participate
 and ~~get famous~~ contribute useful features?".
 
 Fortunately for you, there is a lot to do and we are very grateful for help.
 
 ## Where do I start?
 
-* The engine has several [core parts](https://github.com/SFTtech/openage/projects) that need help.
-  You can look at the project related issues and find something for you, for example:
-    * **Asset Converter:** Converts whatever proprietary format used by a Age of Empires 2 into
-    open formats. Written mostly in Python 3. There are a lot of TODOs and beginner issues available
-    right now, so it's a good place to get your feet wet.
-    * **Game simulation:** Also known as the gameplay implementation. Written in C++, using the
-    Entity-Component-System paradigm in addition to an event-driven simulation.
-    * **Documentation:** We not only document code, but also anything technical about the Genie engine
-    and its games. If you like documenting [file formats](/doc/media)
-    or thoroughly investigating [game mechanics](/doc/reverse_engineering),
-    then this might be the right place to start.
-* **Check the issues** [labelled with good first issues](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22). These are tasks that you can start right away
-  and don't require much previous knowledge.
+* **Check the issues** [labelled with `good first issue`](https://github.com/SFTtech/openage/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22). These are tasks that you can start right away and don't require much previous knowledge.
 * **Ask us** in the [chat](https://matrix.to/#/#sfttech:matrix.org). Someone there could need
   help with something.
 * You can also **take the initiative** and fix a bug you found, create an issue for discussion or

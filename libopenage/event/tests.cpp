@@ -1,17 +1,25 @@
 // Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
+#include <compare>
 #include <cstring>
 #include <iostream>
-#include <sstream>
+#include <list>
+#include <memory>
+#include <string>
+#include <string_view>
 #include <utility>
 
 #include "log/log.h"
+#include "log/message.h"
 #include "testing/testing.h"
 
-#include "event.h"
-#include "event_loop.h"
-#include "evententity.h"
-#include "state.h"
+#include "event/event.h"
+#include "event/event_loop.h"
+#include "event/evententity.h"
+#include "event/eventhandler.h"
+#include "event/state.h"
+#include "time/time.h"
+#include "util/fixed_point.h"
 
 
 namespace openage::event::tests {
@@ -28,9 +36,9 @@ public:
 			_id{id},
 			number(0) {}
 
-		void set_number(int number, const curve::time_t &time) {
+		void set_number(int number, const time::time_t &time) {
 			this->number = number;
-			this->changes(time + curve::time_t::from_double(1));
+			this->changes(time + time::time_t::from_double(1));
 		}
 
 		[[nodiscard]] size_t id() const override {
@@ -43,7 +51,7 @@ public:
 			return ss.str();
 		}
 
-		void test_trigger(const curve::time_t &time) {
+		void test_trigger(const time::time_t &time) {
 			this->trigger(time);
 		}
 
@@ -59,11 +67,11 @@ public:
 	std::shared_ptr<TestObject> objectB;
 
 	struct traceelement {
-		traceelement(std::string event, curve::time_t time) :
+		traceelement(std::string event, time::time_t time) :
 			time{std::move(time)},
 			name{std::move(event)} {}
 
-		curve::time_t time;
+		time::time_t time;
 		std::string name;
 	};
 
@@ -105,7 +113,7 @@ public:
 	void invoke(EventLoop & /*loop*/,
 	            const std::shared_ptr<EventEntity> &target,
 	            const std::shared_ptr<State> &gstate,
-	            const curve::time_t &time,
+	            const time::time_t &time,
 	            const EventHandler::param_map & /*param*/) override {
 		auto state = std::dynamic_pointer_cast<TestState>(gstate);
 
@@ -126,10 +134,10 @@ public:
 		}
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
-	                                  const std::shared_ptr<State> & /*state*/,
-	                                  const curve::time_t &at) override {
-		return at + curve::time_t::from_double(2);
+	time::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
+	                                 const std::shared_ptr<State> & /*state*/,
+	                                 const time::time_t &at) override {
+		return at + time::time_t::from_double(2);
 	}
 };
 
@@ -148,7 +156,7 @@ public:
 	void invoke(EventLoop & /*loop*/,
 	            const std::shared_ptr<EventEntity> &gtarget,
 	            const std::shared_ptr<State> &gstate,
-	            const curve::time_t &time,
+	            const time::time_t &time,
 	            const EventHandler::param_map & /*param*/) override {
 		auto state = std::dynamic_pointer_cast<TestState>(gstate);
 		auto target = std::dynamic_pointer_cast<TestState::TestObject>(gtarget);
@@ -158,11 +166,11 @@ public:
 		state->trace.emplace_back("B", time);
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
-	                                  const std::shared_ptr<State> & /*state*/,
-	                                  const curve::time_t &at) override {
+	time::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
+	                                 const std::shared_ptr<State> & /*state*/,
+	                                 const time::time_t &at) override {
 		// TODO recalculate a hit time
-		return at + curve::time_t::from_double(1);
+		return at + time::time_t::from_double(1);
 	}
 };
 
@@ -184,7 +192,7 @@ public:
 	void invoke(EventLoop & /*loop*/,
 	            const std::shared_ptr<EventEntity> &target,
 	            const std::shared_ptr<State> &gstate,
-	            const curve::time_t &time,
+	            const time::time_t &time,
 	            const EventHandler::param_map & /*param*/) override {
 		auto state = std::dynamic_pointer_cast<TestState>(gstate);
 
@@ -195,13 +203,13 @@ public:
 		state->trace.emplace_back(this->id(), time);
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
-	                                  const std::shared_ptr<State> & /*state*/,
-	                                  const curve::time_t &at) override {
+	time::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
+	                                 const std::shared_ptr<State> & /*state*/,
+	                                 const time::time_t &at) override {
 		switch (this->type) {
 		case EventHandler::trigger_type::DEPENDENCY:
 			// Execute 1 after the change (usually it is neccessary to recalculate a collision
-			return at + curve::time_t::from_double(1);
+			return at + time::time_t::from_double(1);
 
 		case EventHandler::trigger_type::DEPENDENCY_IMMEDIATELY:
 			TESTFAILMSG("DEPENDENCY_IMMEDIATELY does not recalculate time!");
@@ -213,7 +221,7 @@ public:
 
 		case EventHandler::trigger_type::REPEAT:
 			// This will force the execution every 5ms
-			return at + curve::time_t::from_double(5);
+			return at + time::time_t::from_double(5);
 
 		case EventHandler::trigger_type::ONCE:
 			return 10; // even if data changed it will happen at the given time!
@@ -261,7 +269,7 @@ void eventtrigger() {
 
 		int i = 0;
 
-		curve::time_t last_time = 0;
+		time::time_t last_time = 0;
 		for (const auto &e : state->trace) {
 			if (last_time > e.time) {
 				TESTFAILMSG("You broke the time continuum: one shall not execute randomly!");
@@ -336,7 +344,7 @@ void eventtrigger() {
 		}
 
 		int i = 0;
-		curve::time_t last_time = 0;
+		time::time_t last_time = 0;
 
 		for (const auto &e : state->trace) {
 			if (last_time > e.time) {
@@ -539,7 +547,7 @@ void eventtrigger() {
 			void invoke(EventLoop & /*loop*/,
 			            const std::shared_ptr<EventEntity> & /*target*/,
 			            const std::shared_ptr<State> & /*state*/,
-			            const curve::time_t & /*time*/,
+			            const time::time_t & /*time*/,
 			            const EventHandler::param_map &param) override {
 				log::log(DBG << "Testing unknown parameter");
 				TESTEQUALS(param.contains("tomato"), false);
@@ -566,9 +574,9 @@ void eventtrigger() {
 				TESTEQUALS(param.get<std::string>("testStdString"), "stdstring");
 			}
 
-			curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
-			                                  const std::shared_ptr<State> & /*state*/,
-			                                  const curve::time_t &at) override {
+			time::time_t predict_invoke_time(const std::shared_ptr<EventEntity> & /*target*/,
+			                                 const std::shared_ptr<State> & /*state*/,
+			                                 const time::time_t &at) override {
 				return at;
 			}
 		};

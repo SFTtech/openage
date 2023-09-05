@@ -188,7 +188,7 @@ void main() {
 }
 
 
-void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now) {
+void Gui::draw(const std::shared_ptr<PongState> &state, const time::time_t &now) {
 	constexpr float ball_size = 50.0f;
 	constexpr float paddle_width = 20.0f;
 

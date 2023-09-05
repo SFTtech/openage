@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include <exception>
+
 // pxd: from libcpp cimport bool
 #include <iostream>
 #include <memory>
@@ -18,13 +20,15 @@ namespace openage {
 namespace error {
 // forward-declaration to avoid the header include.
 class Backtrace;
-}}
+} // namespace error
+} // namespace openage
 
 namespace openage {
 namespace pyinterface {
 // forward-declaration for use in the 'friend' declaration below.
 class PyException;
-}}
+} // namespace pyinterface
+} // namespace openage
 
 
 namespace openage {
@@ -63,7 +67,7 @@ public:
 	 *     If true, a pointer to the causing exception is
 	 *     collected and stored (default true).
 	 */
-	Error(const log::message &msg, bool generate_backtrace=true, bool store_cause=true);
+	Error(const log::message &msg, bool generate_backtrace = true, bool store_cause = true);
 
 
 	/**
@@ -142,17 +146,21 @@ private:
 };
 
 
-std::ostream &operator <<(std::ostream &os, const Error &e);
+std::ostream &operator<<(std::ostream &os, const Error &e);
 
 
-[[deprecated("add message to the ENSURE before pushing, please")]]
-inline std::string no_ensuring_message()
-{
+[[deprecated("add message to the ENSURE before pushing, please")]] inline std::string no_ensuring_message() {
 	return std::string{};
 }
 
 // ENSURE(condition, errormessage << variable << etcetc)
-#define ENSURE(...) do { if (not OPENAGE_ENS_FIRST(__VA_ARGS__)) [[unlikely]] { throw ::openage::error::Error(MSG(err) OPENAGE_ENS_REST(__VA_ARGS__)); } } while (0)
+#define ENSURE(...) \
+	do { \
+		if (not OPENAGE_ENS_FIRST(__VA_ARGS__)) [[unlikely]] { \
+			throw ::openage::error::Error(MSG(err) OPENAGE_ENS_REST(__VA_ARGS__)); \
+		} \
+	} \
+	while (0)
 
 /*
  *  expands to the first argument
@@ -160,7 +168,7 @@ inline std::string no_ensuring_message()
  * https://stackoverflow.com/a/9338429
  */
 #define OPENAGE_PP_GLUE(macro, args) macro args
-#define OPENAGE_ENS_FIRST(...) OPENAGE_PP_GLUE(OPENAGE_ENS_FIRST_HELPER,(__VA_ARGS__, throwaway))
+#define OPENAGE_ENS_FIRST(...) OPENAGE_PP_GLUE(OPENAGE_ENS_FIRST_HELPER, (__VA_ARGS__, throwaway))
 #define OPENAGE_ENS_FIRST_HELPER(first, ...) (first)
 
 /*
@@ -181,8 +189,8 @@ inline std::string no_ensuring_message()
 #define OPENAGE_ENS_NUM_IMPL(args) OPENAGE_ENS_SELECT_2ND args
 #define OPENAGE_ENS_SELECT_2ND(a1, a2, a3, ...) a3
 
-} // error
+} // namespace error
 
 using error::Error;
 
-} // openage::error
+} // namespace openage

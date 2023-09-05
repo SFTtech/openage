@@ -2,13 +2,20 @@
 
 #include "game.h"
 
-#include <nyan/database.h>
-#include <nyan/file.h>
+#include <vector>
+
+#include <nyan/nyan.h>
+
+#include "log/log.h"
+#include "log/message.h"
 
 #include "assets/mod_manager.h"
-#include "event/time_loop.h"
+#include "assets/modpack.h"
 #include "gamestate/game_state.h"
 #include "gamestate/universe.h"
+#include "util/path.h"
+#include "util/strings.h"
+
 
 namespace openage::gamestate {
 

@@ -4,9 +4,12 @@
 
 #include <optional>
 #include <sstream>
+#include <string>
+#include <type_traits>
 #include <utility>
 
-#include "base_curve.h"
+#include "curve/base_curve.h"
+#include "time/time.h"
 
 
 namespace openage::curve {
@@ -29,7 +32,7 @@ public:
 	 * Does not interpolate anything,
 	 * just returns gives the raw value of the last keyframe with time <= t.
 	 */
-	T get(const time_t &t) const override;
+	T get(const time::time_t &t) const override;
 
 	/**
 	 * Get a human readable id string.
@@ -39,17 +42,17 @@ public:
 	/**
 	 * Return the last time and keyframe with time <= t.
 	 */
-	std::pair<time_t, T> get_time(const time_t &t) const;
+	std::pair<time::time_t, T> get_time(const time::time_t &t) const;
 
 	/**
 	 * Return, if existing, the time and value of keyframe with time < t
 	 */
-	std::optional<std::pair<time_t, T>> get_previous(const time_t &t) const;
+	std::optional<std::pair<time::time_t, T>> get_previous(const time::time_t &t) const;
 };
 
 
 template <typename T>
-T Discrete<T>::get(const time_t &time) const {
+T Discrete<T>::get(const time::time_t &time) const {
 	auto e = this->container.last(time, this->last_element);
 	this->last_element = e; // TODO if Caching?
 	return e->value;
@@ -72,7 +75,7 @@ std::string Discrete<T>::idstr() const {
 
 
 template <typename T>
-std::pair<time_t, T> Discrete<T>::get_time(const time_t &time) const {
+std::pair<time::time_t, T> Discrete<T>::get_time(const time::time_t &time) const {
 	auto e = this->container.last(time, this->last_element);
 	this->last_element = e;
 	return std::make_pair(e->time, e->value);
@@ -80,7 +83,7 @@ std::pair<time_t, T> Discrete<T>::get_time(const time_t &time) const {
 
 
 template <typename T>
-std::optional<std::pair<time_t, T>> Discrete<T>::get_previous(const time_t &time) const {
+std::optional<std::pair<time::time_t, T>> Discrete<T>::get_previous(const time::time_t &time) const {
 	auto e = this->container.last(time, this->last_element);
 	this->last_element = e;
 

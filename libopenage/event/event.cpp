@@ -2,13 +2,19 @@
 
 #include "event.h"
 
-#include <utility>
+#include <compare>
+#include <functional>
+#include <string>
 
-#include "evententity.h"
-#include "eventhandler.h"
+#include "log/log.h"
+#include "log/message.h"
 
-#include "../log/log.h"
-#include "../util/hash.h"
+#include "event/evententity.h"
+#include "event/eventhandler.h"
+#include "time/time.h"
+#include "util/fixed_point.h"
+#include "util/hash.h"
+
 
 namespace openage::event {
 
@@ -35,7 +41,7 @@ void Event::depend_on(const std::shared_ptr<EventEntity> &dependency) {
 }
 
 
-void Event::cancel(const curve::time_t reference_time) {
+void Event::cancel(const time::time_t reference_time) {
 	log::log(DBG << "Canceling event from EventHandler "
 	             << this->get_eventhandler()->id()
 	             << " for time t=" << this->get_time());

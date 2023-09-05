@@ -1,12 +1,10 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "curve.h"
-#include "iterator.h"
+#include "curve/iterator.h"
+#include "time/time.h"
 
-#include <iterator>
-#include <limits>
 
 namespace openage::curve {
 
@@ -30,9 +28,8 @@ public:
 	 */
 	MapFilterIterator(const iterator_t &base,
 	                  const container_t *container,
-	                  const time_t &from,
-	                  const time_t &to)
-		:
+	                  const time::time_t &from,
+	                  const time::time_t &to) :
 		CurveIterator<val_t, container_t>(base, container, from, to) {}
 
 	MapFilterIterator(const MapFilterIterator &) = default;
@@ -58,7 +55,6 @@ public:
 	const key_t &key() const {
 		return this->get_base()->first;
 	}
-
 };
 
-} // openage::curve
+} // namespace openage::curve

@@ -2,14 +2,17 @@
 
 #pragma once
 
+#include <cstddef>
+
 #include "renderer/resources/texture_info.h"
-#include "util/path.h"
 
-namespace openage::renderer {
-class Renderer;
-class Texture2d;
 
-namespace resources::parser {
+namespace openage {
+namespace util {
+class Path;
+}
+
+namespace renderer::resources::parser {
 
 /**
  * Containers for the raw data.
@@ -44,5 +47,5 @@ struct SubtextureData {
  */
 Texture2dInfo parse_texture_file(const util::Path &file);
 
-} // namespace resources::parser
-} // namespace openage::renderer
+} // namespace renderer::resources::parser
+} // namespace openage

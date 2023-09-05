@@ -15,9 +15,9 @@ Tests run without user interaction to check for errors automatically.
 All tests are run automatically by [Kevin](https://github.com/SFTtech/kevin/) for pullrequests.
 
 
-You can invoke them with `./run test -a` or `make test`
+You can invoke them with `bin/run test -a` or `make test`
 
-Have a look at `./run test --help` for further options.
+Have a look at `bin/run test --help` for further options.
 
 
 You are encouraged to write tests for all your contributions, as well as other components that currently lack testing.
@@ -35,7 +35,7 @@ They usually produce lots of output on stdout or may even be interactive. Python
 
 All tests must be registered in `openage/testing/testlist.py` (else the game won't know about them).
 
-Also see `./run test --help`.
+Also see `bin/run test --help`.
 
 ## Adding new tests
 
@@ -135,7 +135,7 @@ C++ demos don't support `argv`; if you want that, make it a Python demo in a `.p
 
 Similar to Python tests, but have one argument, `argv`. Pass arguments in the invocation:
 
-    ./run test -d prime_demo 100
+    bin/run test -d prime_demo 100
 
 Example demo:
 

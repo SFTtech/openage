@@ -2,6 +2,14 @@
 
 This document describes the code architecture of the openage converter module.
 
+1. [Design Principles](#design-principles)
+   1. [Value Object](#value-object)
+   2. [Entity Object](#entity-object)
+   3. [Service](#service)
+   4. [Processor](#processor)
+   5. [Tool](#tool)
+
+
 ## Design Principles
 
 Our converter uses hierarchical multi-layered object-oriented code principles similar to those found in

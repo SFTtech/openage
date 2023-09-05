@@ -18,12 +18,15 @@ class CVarManager;
 
 namespace event {
 class EventLoop;
-class TimeLoop;
 } // namespace event
 
 namespace renderer {
 class RenderFactory;
 }
+
+namespace time {
+class TimeLoop;
+} // namespace time
 
 namespace gamestate {
 class EntityFactory;
@@ -50,7 +53,7 @@ public:
 	 */
 	GameSimulation(const util::Path &root_dir,
 	               const std::shared_ptr<cvar::CVarManager> &cvar_manager,
-	               const std::shared_ptr<openage::event::TimeLoop> time_loop);
+	               const std::shared_ptr<openage::time::TimeLoop> time_loop);
 
 	// game simulation should not be copied or moved
 	GameSimulation(const GameSimulation &copy) = delete;
@@ -163,7 +166,7 @@ private:
 	/**
 	 * Time loop for getting the current simulation time and changing speed.
 	 */
-	std::shared_ptr<openage::event::TimeLoop> time_loop;
+	std::shared_ptr<openage::time::TimeLoop> time_loop;
 
 	/**
      * Event loop for processing events in the game.

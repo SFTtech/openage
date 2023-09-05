@@ -2,10 +2,12 @@
 
 #pragma once
 
+#include <cstddef>
 #include <memory>
+#include <string>
 #include <unordered_map>
+#include <vector>
 
-#include "curve/curve.h"
 #include "gamestate/activity/types.h"
 
 

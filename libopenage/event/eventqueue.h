@@ -2,46 +2,46 @@
 
 #pragma once
 
+#include <cstddef>
 #include <memory>
 #include <unordered_set>
 
-#include "eventhandler.h"
-#include "eventstore.h"
-#include "../curve/curve.h"
+#include "event/eventhandler.h"
+#include "event/eventstore.h"
+#include "time/time.h"
 
 
 namespace openage::event {
 
 class Event;
-class EventLoop;
 class EventEntity;
+class State;
 
 /**
  * The core event handler for execution and execution dependencies.
  */
 class EventQueue final {
 public:
-
 	class Change {
 	public:
 		Change(const std::shared_ptr<Event> &evnt,
-		       curve::time_t time);
+		       time::time_t time);
 
-		curve::time_t time;
+		time::time_t time;
 		std::weak_ptr<Event> evnt;
 		const size_t hash;
 
 		class Hasher {
 		public:
-			size_t operator ()(const Change& e) const {
+			size_t operator()(const Change &e) const {
 				return e.hash;
 			}
 		};
 
 		class Equal {
 		public:
-			size_t operator ()(const Change& left,
-			                   const Change& right) const;
+			size_t operator()(const Change &left,
+			                  const Change &right) const;
 		};
 	};
 
@@ -67,7 +67,7 @@ public:
 	std::shared_ptr<Event> create_event(const std::shared_ptr<EventEntity> &evententity,
 	                                    const std::shared_ptr<EventHandler> &eventhandler,
 	                                    const std::shared_ptr<State> &state,
-	                                    const curve::time_t &reference_time,
+	                                    const time::time_t &reference_time,
 	                                    const EventHandler::param_map &params);
 
 	/**
@@ -93,7 +93,7 @@ public:
 	 * An event target has changed, and the event shall be retriggered
 	 */
 	void add_change(const std::shared_ptr<Event> &event,
-	                const curve::time_t &changed_at);
+	                const time::time_t &changed_at);
 
 	/**
 	 * Get an accessor to the running queue for state output purpose.
@@ -103,7 +103,7 @@ public:
 	/**
 	 * Obtain the next event from the `event_queue` that happens before `<= max_time`.
 	 */
-	std::shared_ptr<Event> take_event(const curve::time_t &max_time);
+	std::shared_ptr<Event> take_event(const time::time_t &max_time);
 
 	/**
 	 * Get the change_set to process changes.
@@ -122,7 +122,6 @@ public:
 	void swap_changesets();
 
 private:
-
 	// Implement double buffering around changesets, that we do not run into deadlocks
 	// those point to the `changeset_A` and `changeset_B`.
 	change_set *changes;
@@ -154,4 +153,4 @@ private:
 	EventStore event_queue;
 };
 
-} // openage::event
+} // namespace openage::event

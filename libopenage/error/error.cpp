@@ -2,11 +2,12 @@
 
 #include "error.h"
 
+#include <exception>
 #include <utility>
 
-#include "../util/compiler.h"
+#include "util/compiler.h"
 
-#include "stackanalyzer.h"
+#include "error/stackanalyzer.h"
 
 namespace openage::error {
 
@@ -18,11 +19,9 @@ void Error::debug_break_on_create(bool state) {
 	enable_break_on_create = state;
 }
 
-Error::Error(const log::message &msg, bool generate_backtrace, bool store_cause)
-	:
+Error::Error(const log::message &msg, bool generate_backtrace, bool store_cause) :
 	std::runtime_error{runtime_error_message},
 	msg(msg) {
-
 	if (enable_break_on_create) [[unlikely]] {
 		BREAKPOINT;
 	}
@@ -49,10 +48,12 @@ void Error::store_cause() {
 
 	try {
 		throw;
-	} catch (Error &cause) {
+	}
+	catch (Error &cause) {
 		cause.trim_backtrace();
 		this->cause = std::current_exception();
-	} catch (...) {
+	}
+	catch (...) {
 		this->cause = std::current_exception();
 	}
 }
@@ -65,8 +66,7 @@ void Error::trim_backtrace() {
 }
 
 
-Error::Error()
-	:
+Error::Error() :
 	std::runtime_error{runtime_error_message} {}
 
 
@@ -87,28 +87,34 @@ void Error::rethrow_cause() const {
 }
 
 
-std::ostream &operator <<(std::ostream &os, const Error &e) {
+std::ostream &operator<<(std::ostream &os, const Error &e) {
 	// output the exception cause
 	bool had_a_cause = true;
 	try {
 		e.rethrow_cause();
 		had_a_cause = false;
-	} catch (Error &cause) {
+	}
+	catch (Error &cause) {
 		os << cause << std::endl;
-	} catch (std::exception &cause) {
+	}
+	catch (std::exception &cause) {
 		os << util::typestring(cause) << ": " << cause.what() << std::endl;
-	} catch (...) {
+	}
+	catch (...) {
 		os << "unknown non std::exception cause!" << std::endl;
 	}
 
 	if (had_a_cause) {
-		os << std::endl << "The above exception was the direct cause of the following exception:" << std::endl << std::endl;
+		os << std::endl
+		   << "The above exception was the direct cause of the following exception:" << std::endl
+		   << std::endl;
 	}
 
 	// output the exception backtrace
 	if (e.backtrace) {
 		os << *e.backtrace;
-	} else {
+	}
+	else {
 		os << "origin:" << std::endl;
 	}
 
@@ -117,7 +123,8 @@ std::ostream &operator <<(std::ostream &os, const Error &e) {
 		e.msg.filename,
 		e.msg.lineno,
 		e.msg.functionname,
-		nullptr} << std::endl;
+		nullptr}
+	   << std::endl;
 
 	os << e.type_name();
 
@@ -129,4 +136,4 @@ std::ostream &operator <<(std::ostream &os, const Error &e) {
 }
 
 
-} // openage::error
+} // namespace openage::error

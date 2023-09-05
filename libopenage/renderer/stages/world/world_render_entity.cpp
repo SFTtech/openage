@@ -2,7 +2,11 @@
 
 #include "world_render_entity.h"
 
+#include <functional>
+#include <mutex>
+
 #include "renderer/definitions.h"
+
 
 namespace openage::renderer::world {
 
@@ -19,7 +23,7 @@ void WorldRenderEntity::update(const uint32_t ref_id,
                                const curve::Continuous<coord::phys3> &position,
                                const curve::Segmented<coord::phys_angle_t> &angle,
                                const std::string animation_path,
-                               const curve::time_t time) {
+                               const time::time_t time) {
 	std::unique_lock lock{this->mutex};
 
 	this->ref_id = ref_id;
@@ -40,7 +44,7 @@ void WorldRenderEntity::update(const uint32_t ref_id,
 void WorldRenderEntity::update(const uint32_t ref_id,
                                const coord::phys3 position,
                                const std::string animation_path,
-                               const curve::time_t time) {
+                               const time::time_t time) {
 	std::unique_lock lock{this->mutex};
 
 	this->ref_id = ref_id;
@@ -74,7 +78,7 @@ const curve::Discrete<std::string> &WorldRenderEntity::get_animation_path() {
 	return this->animation_path;
 }
 
-curve::time_t WorldRenderEntity::get_update_time() {
+time::time_t WorldRenderEntity::get_update_time() {
 	std::shared_lock lock{this->mutex};
 
 	return this->last_update;

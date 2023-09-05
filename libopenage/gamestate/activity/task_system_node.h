@@ -5,19 +5,20 @@
 #include <memory>
 
 #include "gamestate/activity/node.h"
+#include "gamestate/activity/types.h"
 #include "gamestate/system/types.h"
 
 
 namespace openage::gamestate::activity {
 
 /**
- * Similar to the tas node, but runs a built-in system function
+ * Similar to the custom task node, but runs a built-in system function
  * when visited.
  */
 class TaskSystemNode : public Node {
 public:
 	/**
-	 * Create a new task system node.
+	 * Create a new custom task system node.
 	 *
 	 * @param id Unique identifier for this node.
 	 * @param label Human-readable label (optional).

@@ -1,19 +1,28 @@
 // Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
-#include "log/log.h"
+#include <cstddef>
+#include <functional>
+#include <memory>
+#include <string>
 
-#include "event/event.h"
 #include "event/event_loop.h"
 #include "event/evententity.h"
 #include "event/eventhandler.h"
 #include "event/state.h"
 
+#include "error/error.h"
+#include "log/log.h"
+#include "log/message.h"
+
 #include "gamestate/activity/end_node.h"
 #include "gamestate/activity/event_node.h"
+#include "gamestate/activity/node.h"
 #include "gamestate/activity/start_node.h"
 #include "gamestate/activity/task_node.h"
 #include "gamestate/activity/types.h"
 #include "gamestate/activity/xor_node.h"
+#include "time/time.h"
+
 
 namespace openage::gamestate::tests {
 
@@ -83,15 +92,15 @@ public:
 	void invoke(event::EventLoop & /* loop */,
 	            const std::shared_ptr<event::EventEntity> &target,
 	            const std::shared_ptr<event::State> & /* state */,
-	            const curve::time_t & /* time */,
+	            const time::time_t & /* time */,
 	            const param_map & /* params */) override {
 		auto mgr_target = std::dynamic_pointer_cast<TestActivityManager>(target);
 		mgr_target->run();
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<event::EventEntity> & /* target */,
-	                                  const std::shared_ptr<event::State> & /* state */,
-	                                  const curve::time_t &at) override {
+	time::time_t predict_invoke_time(const std::shared_ptr<event::EventEntity> & /* target */,
+	                                 const std::shared_ptr<event::State> & /* state */,
+	                                 const time::time_t &at) override {
 		return at;
 	}
 };
@@ -100,8 +109,8 @@ public:
 const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activity::Node> &current_node) {
 	auto current = current_node;
 
-	if (current->get_type() == activity::node_t::EVENT_GATEWAY) {
-		auto node = std::static_pointer_cast<activity::EventNode>(current);
+	if (current->get_type() == activity::node_t::XOR_EVENT_GATE) {
+		auto node = std::static_pointer_cast<activity::XorEventGate>(current);
 		auto event_next = node->get_next_func();
 		auto next_id = event_next(0, nullptr, nullptr, nullptr);
 		current = node->next(next_id);
@@ -120,21 +129,21 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 			// TODO
 			return current;
 		} break;
-		case activity::node_t::TASK: {
-			auto node = std::static_pointer_cast<activity::TaskNode>(current);
+		case activity::node_t::TASK_CUSTOM: {
+			auto node = std::static_pointer_cast<activity::TaskCustom>(current);
 			auto task = node->get_task_func();
 			task(0, nullptr);
 			auto next_id = node->get_next();
 			current = node->next(next_id);
 		} break;
-		case activity::node_t::XOR_GATEWAY: {
-			auto node = std::static_pointer_cast<activity::ConditionNode>(current);
+		case activity::node_t::XOR_GATE: {
+			auto node = std::static_pointer_cast<activity::XorGate>(current);
 			auto condition = node->get_condition_func();
 			auto next_id = condition(0, nullptr);
 			current = node->next(next_id);
 		} break;
-		case activity::node_t::EVENT_GATEWAY: {
-			auto node = std::static_pointer_cast<activity::EventNode>(current);
+		case activity::node_t::XOR_EVENT_GATE: {
+			auto node = std::static_pointer_cast<activity::XorEventGate>(current);
 			auto event_primer = node->get_primer_func();
 			event_primer(0, nullptr, nullptr, nullptr);
 
@@ -172,10 +181,10 @@ void activity_demo() {
 	// create the nodes in the graph
 	// connections are created further below
 	auto start = std::make_shared<activity::StartNode>(0);
-	auto task1 = std::make_shared<activity::TaskNode>(1);
-	auto xor_node = std::make_shared<activity::ConditionNode>(2);
-	auto event_node = std::make_shared<activity::EventNode>(3);
-	auto task2 = std::make_shared<activity::TaskNode>(4);
+	auto task1 = std::make_shared<activity::TaskCustom>(1);
+	auto xor_node = std::make_shared<activity::XorGate>(2);
+	auto event_node = std::make_shared<activity::XorEventGate>(3);
+	auto task2 = std::make_shared<activity::TaskCustom>(4);
 	auto end = std::make_shared<activity::EndNode>(5);
 
 	// create an activity manager that controls the flow
@@ -188,7 +197,7 @@ void activity_demo() {
 
 	// task 1
 	task1->add_output(xor_node);
-	task1->set_task_func([](const curve::time_t & /* time */,
+	task1->set_task_func([](const time::time_t & /* time */,
 	                        const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
 		log::log(INFO << "Running task 1");
 	});
@@ -197,7 +206,7 @@ void activity_demo() {
 	size_t counter = 0;
 	xor_node->add_output(task1);
 	xor_node->add_output(event_node);
-	xor_node->set_condition_func([&](const curve::time_t & /* time */,
+	xor_node->set_condition_func([&](const time::time_t & /* time */,
 	                                 const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
 		log::log(INFO << "Checking condition (counter < 4): counter=" << counter);
 		if (counter < 4) {
@@ -214,7 +223,7 @@ void activity_demo() {
 
 	// event node
 	event_node->add_output(task2);
-	event_node->set_primer_func([&](const curve::time_t & /* time */,
+	event_node->set_primer_func([&](const time::time_t & /* time */,
 	                                const std::shared_ptr<gamestate::GameEntity> & /* entity */,
 	                                const std::shared_ptr<event::EventLoop> & /* loop */,
 	                                const std::shared_ptr<gamestate::GameState> & /* state */) {
@@ -225,7 +234,7 @@ void activity_demo() {
 		                             0);
 		return activity::event_store_t{ev};
 	});
-	event_node->set_next_func([&task2](const curve::time_t & /* time */,
+	event_node->set_next_func([&task2](const time::time_t & /* time */,
 	                                   const std::shared_ptr<gamestate::GameEntity> & /* entity */,
 	                                   const std::shared_ptr<event::EventLoop> & /* loop */,
 	                                   const std::shared_ptr<gamestate::GameState> & /* state */) {
@@ -235,7 +244,7 @@ void activity_demo() {
 
 	// task 2
 	task2->add_output(end);
-	task2->set_task_func([](const curve::time_t & /* time */,
+	task2->set_task_func([](const time::time_t & /* time */,
 	                        const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
 		log::log(INFO << "Running task 2");
 	});

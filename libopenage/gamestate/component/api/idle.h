@@ -3,6 +3,7 @@
 #pragma once
 
 #include "gamestate/component/api_component.h"
+#include "gamestate/component/types.h"
 
 namespace openage::gamestate::component {
 

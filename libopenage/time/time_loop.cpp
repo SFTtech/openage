@@ -4,10 +4,11 @@
 
 #include <mutex>
 
-#include "event/clock.h"
 #include "log/log.h"
+#include "time/clock.h"
 
-namespace openage::event {
+
+namespace openage::time {
 
 TimeLoop::TimeLoop() :
 	running{false},
@@ -51,4 +52,4 @@ const std::shared_ptr<Clock> TimeLoop::get_clock() {
 	return this->clock;
 }
 
-} // namespace openage::event
+} // namespace openage::time

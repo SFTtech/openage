@@ -2,12 +2,20 @@
 
 #pragma once
 
+#include <cstddef>
 #include <memory>
+#include <string>
 
 #include "event/evententity.h"
+#include "time/time.h"
 
 
-namespace openage::gamestate {
+namespace openage {
+namespace event {
+class EventLoop;
+} // namespace event
+
+namespace gamestate {
 class GameState;
 class GameEntity;
 
@@ -18,7 +26,7 @@ public:
 	                  const std::shared_ptr<GameEntity> &game_entity);
 	~GameEntityManager() = default;
 
-	void run_activity_system(const curve::time_t &time);
+	void run_activity_system(const time::time_t &time);
 
 	size_t id() const override;
 	std::string idstr() const override;
@@ -31,4 +39,5 @@ private:
 	std::shared_ptr<GameEntity> game_entity;
 };
 
-} // namespace openage::gamestate
+} // namespace gamestate
+} // namespace openage

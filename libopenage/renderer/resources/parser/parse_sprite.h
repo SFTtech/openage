@@ -2,10 +2,19 @@
 
 #pragma once
 
-#include "renderer/animation.h"
-#include "util/path.h"
+#include <cstddef>
+#include <memory>
 
-namespace openage::renderer::resources {
+#include "renderer/resources/animation/animation_info.h"
+#include "renderer/resources/animation/layer_info.h"
+
+
+namespace openage {
+namespace util {
+class Path;
+}
+
+namespace renderer::resources {
 class AssetCache;
 
 namespace parser {
@@ -47,5 +56,6 @@ struct FrameData {
 Animation2dInfo parse_sprite_file(const util::Path &file,
                                   const std::shared_ptr<AssetCache> &cache = nullptr);
 
-} // namespace resources::parser
-} // namespace openage::renderer
+} // namespace parser
+} // namespace renderer::resources
+} // namespace openage

@@ -2,12 +2,21 @@
 
 #pragma once
 
+#include <cstddef>
+#include <memory>
 #include <optional>
+#include <string>
 
+#include "renderer/resources/terrain/layer_info.h"
 #include "renderer/resources/terrain/terrain_info.h"
-#include "util/path.h"
 
-namespace openage::renderer::resources {
+
+namespace openage {
+namespace util {
+class Path;
+}
+
+namespace renderer::resources {
 class AssetCache;
 
 namespace parser {
@@ -51,4 +60,5 @@ TerrainInfo parse_terrain_file(const util::Path &file,
                                const std::shared_ptr<AssetCache> &cache = nullptr);
 
 } // namespace parser
-} // namespace openage::renderer::resources
+} // namespace renderer::resources
+} // namespace openage

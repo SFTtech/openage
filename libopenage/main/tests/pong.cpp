@@ -62,7 +62,7 @@ void main(const util::Path &path) {
 		log::log(INFO << "initializing new pong game...");
 
 		auto loop = std::make_shared<event::EventLoop>();
-		curve::time_t now = 0;
+		time::time_t now = 0;
 		Physics phys;
 
 		// the window size is fetched in here already,
@@ -146,7 +146,7 @@ void main(const util::Path &path) {
 			// microseconds per frame
 			// 30fps = 1s/30 = 1000000us/30 per frame
 			constexpr static std::chrono::microseconds per_frame = 33333us;
-			constexpr static curve::time_t per_frame_s = std::chrono::duration_cast<dt_s_t>(per_frame).count();
+			constexpr static time::time_t per_frame_s = std::chrono::duration_cast<dt_s_t>(per_frame).count();
 
 			if (speed == timescale::NOSLEEP) {
 				// increase the simulation loop time a bit

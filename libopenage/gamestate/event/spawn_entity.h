@@ -2,15 +2,20 @@
 
 #pragma once
 
+#include <cstddef>
+#include <memory>
+#include <string>
+
 #include "event/evententity.h"
 #include "event/eventhandler.h"
+#include "time/time.h"
+
 
 namespace openage {
 
 namespace event {
 class EventLoop;
 class Event;
-class EventEntity;
 class State;
 } // namespace event
 
@@ -62,7 +67,7 @@ public:
 	void invoke(openage::event::EventLoop &loop,
 	            const std::shared_ptr<openage::event::EventEntity> &target,
 	            const std::shared_ptr<openage::event::State> &state,
-	            const curve::time_t &time,
+	            const time::time_t &time,
 	            const param_map &params) override;
 
 	/**
@@ -81,9 +86,9 @@ public:
 	 * then dependencies may not be resolved perfectly anymore
 	 * (if other events have already been calculated before that).
 	 */
-	curve::time_t predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> &target,
-	                                  const std::shared_ptr<openage::event::State> &state,
-	                                  const curve::time_t &at) override;
+	time::time_t predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> &target,
+	                                 const std::shared_ptr<openage::event::State> &state,
+	                                 const time::time_t &at) override;
 
 private:
 	/**

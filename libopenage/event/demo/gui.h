@@ -1,22 +1,21 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
-
 
 #include "config.h"
 
 #if WITH_NCURSES
-#include <vector>
 #include <deque>
+#include <memory>
+#include <string>
+#include <vector>
 
-#include "gamestate.h"
+#include "event/demo/gamestate.h"
+#include "time/time.h"
+#include "util/vector.h"
 
 
 namespace openage::event::demo {
-
-class PongEvent;
-class PongState;
-class PongPlayer;
 
 
 class Gui {
@@ -28,9 +27,9 @@ public:
 
 	const std::vector<PongEvent> &get_inputs(const std::shared_ptr<PongPlayer> &player);
 	void get_display_size(const std::shared_ptr<PongState> &state,
-	                      const curve::time_t &now);
+	                      const time::time_t &now);
 
-	void draw(const std::shared_ptr<PongState> &state, const curve::time_t &now);
+	void draw(const std::shared_ptr<PongState> &state, const time::time_t &now);
 	void draw_ball(util::Vector2d ball, const char *str);
 
 	void log(const std::string &msg);
@@ -40,6 +39,6 @@ private:
 	std::deque<std::string> log_msgs;
 };
 
-} // openage::event::demo
+} // namespace openage::event::demo
 
 #endif

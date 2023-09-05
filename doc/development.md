@@ -4,12 +4,11 @@ About development
 Dev team
 --------
 
-There is a "core dev team" (*mic_e*, *JJ*, *zuntrax*, but there's more)
-who work on the project in their free time,
+There is a "core dev team" who work on the project in their free time,
 but since we all have other life-originating interrupts and fluctuating motivation,
 our activity will alternate equally over time (just take a look at the commit statistics).
 We "core devs" have known each other personally for a long time;
-thus, communication happens mostly over private channels (XMPP, Mumble, maybe even real life).
+thus, communication happens mostly over private channels (Matrix chats, Mumble, maybe even real life).
 
 
 Development workflow
@@ -20,7 +19,7 @@ or an issue on the [issue tracker](https://github.com/sfttech/openage/issues).
 
 The pull requests are then open for review by everybody.
 If the pull request author thinks that their goals aren't met yet,
-it is tagged with `[WIP] $title`.
+they create it as a draft or tag it with `[WIP] $title`.
 The author removes it once the goals are met.
 
 In the big picture, we're working on completing those WIP pull requests,
@@ -32,7 +31,7 @@ just convenient to implement, or needed right now.
 We're releasing early and often: whenever we add/improve a feature or
 fix a bug and the code still compiles, we push the code to the github master.
 Once significant changes have accumulated,
-we tag that commit with a new minor version.
+we tag that commit with a new version.
 
 We don't have dedicated "subsystem maintainers" yet.
 You can track down the person who did things with `git log` or `git blame`.

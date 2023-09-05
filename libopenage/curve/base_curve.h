@@ -2,14 +2,30 @@
 
 #pragma once
 
+#include <cstddef>
+#include <functional>
+#include <iterator>
+#include <memory>
 #include <sstream>
+#include <string>
+#include <utility>
+
+#include "error/error.h"
+#include "log/log.h"
+#include "log/message.h"
 
 #include "curve/keyframe_container.h"
-#include "event/event_loop.h"
 #include "event/evententity.h"
+#include "time/time.h"
+#include "util/fixed_point.h"
 
 
-namespace openage::curve {
+namespace openage {
+namespace event {
+class EventLoop;
+}
+
+namespace curve {
 
 template <typename T>
 class BaseCurve : public event::EventEntity {
@@ -35,9 +51,9 @@ public:
 
 	BaseCurve(BaseCurve &&) = default;
 
-	virtual T get(const time_t &t) const = 0;
+	virtual T get(const time::time_t &t) const = 0;
 
-	virtual T operator()(const time_t &now) {
+	virtual T operator()(const time::time_t &now) {
 		return get(now);
 	}
 
@@ -46,14 +62,14 @@ public:
 	 *
 	 * @return Keyframe time and value.
 	 */
-	virtual std::pair<time_t, const T> frame(const time_t &time) const;
+	virtual std::pair<time::time_t, const T> frame(const time::time_t &time) const;
 
 	/**
 	 * Get the closest keyframe with t > \p time.
 	 *
 	 * @return Keyframe time and value.
 	 */
-	virtual std::pair<time_t, const T> next_frame(const time_t &time) const;
+	virtual std::pair<time::time_t, const T> next_frame(const time::time_t &time) const;
 
 	/**
 	 * Insert/overwrite given value at given time and erase all elements
@@ -61,26 +77,26 @@ public:
 	 * If multiple elements exist at the given time,
 	 * overwrite the last one.
 	 */
-	virtual void set_last(const time_t &at, const T &value);
+	virtual void set_last(const time::time_t &at, const T &value);
 
 	/**
 	 * Insert a value at the given time.
 	 * If there already is a value at this time,
 	 * the value is inserted directly after the existing one.
 	 */
-	virtual void set_insert(const time_t &at, const T &value);
+	virtual void set_insert(const time::time_t &at, const T &value);
 
 	/**
 	 * Insert a value at the given time.
 	 * If there already is a value at this time,
 	 * the given value will replace the first value with the same time.
 	 */
-	virtual void set_replace(const time_t &at, const T &value);
+	virtual void set_replace(const time::time_t &at, const T &value);
 
 	/**
 	 * Remove all values that have the given time.
 	 */
-	virtual void erase(const time_t &at);
+	virtual void erase(const time::time_t &at);
 
 	/**
 	 * Integrity check, for debugging/testing reasons only.
@@ -99,7 +115,7 @@ public:
      *              the keyframes of \p other.
      */
 	void sync(const BaseCurve<T> &other,
-	          const time_t &start = std::numeric_limits<time_t>::min());
+	          const time::time_t &start = std::numeric_limits<time::time_t>::min());
 
 	/**
      * Copy keyframes from another curve (with a different element type) to this curve.
@@ -118,7 +134,7 @@ public:
 	template <typename O>
 	void sync(const BaseCurve<O> &other,
 	          const std::function<T(const O &)> &converter,
-	          const time_t &start = std::numeric_limits<time_t>::min());
+	          const time::time_t &start = std::numeric_limits<time::time_t>::min());
 
 	/**
      * Get the identifier of this curve.
@@ -184,7 +200,7 @@ protected:
 
 
 template <typename T>
-void BaseCurve<T>::set_last(const time_t &at, const T &value) {
+void BaseCurve<T>::set_last(const time::time_t &at, const T &value) {
 	auto hint = this->container.last(at, this->last_element);
 
 	// erase max one same-time value
@@ -202,7 +218,7 @@ void BaseCurve<T>::set_last(const time_t &at, const T &value) {
 
 
 template <typename T>
-void BaseCurve<T>::set_insert(const time_t &at, const T &value) {
+void BaseCurve<T>::set_insert(const time::time_t &at, const T &value) {
 	auto hint = this->container.insert_after(at, value, this->last_element);
 	// check if this is now the final keyframe
 	if (hint->time > this->last_element->time) {
@@ -213,28 +229,28 @@ void BaseCurve<T>::set_insert(const time_t &at, const T &value) {
 
 
 template <typename T>
-void BaseCurve<T>::set_replace(const time_t &at, const T &value) {
+void BaseCurve<T>::set_replace(const time::time_t &at, const T &value) {
 	this->container.insert_overwrite(at, value, this->last_element);
 	this->changes(at);
 }
 
 
 template <typename T>
-void BaseCurve<T>::erase(const time_t &at) {
+void BaseCurve<T>::erase(const time::time_t &at) {
 	this->last_element = this->container.erase(at, this->last_element);
 	this->changes(at);
 }
 
 
 template <typename T>
-std::pair<time_t, const T> BaseCurve<T>::frame(const time_t &time) const {
+std::pair<time::time_t, const T> BaseCurve<T>::frame(const time::time_t &time) const {
 	auto e = this->container.last(time, this->container.end());
 	return std::make_pair(e->time, e->value);
 }
 
 
 template <typename T>
-std::pair<time_t, const T> BaseCurve<T>::next_frame(const time_t &time) const {
+std::pair<time::time_t, const T> BaseCurve<T>::next_frame(const time::time_t &time) const {
 	auto e = this->container.last(time, this->container.end());
 	e++;
 	return std::make_pair(e->time, e->value);
@@ -254,10 +270,10 @@ std::string BaseCurve<T>::str() const {
 
 template <typename T>
 void BaseCurve<T>::check_integrity() const {
-	time_t last_time = std::numeric_limits<time_t>::min();
+	time::time_t last_time = std::numeric_limits<time::time_t>::min();
 	for (const auto &keyframe : this->container) {
 		if (keyframe.time < last_time) {
-			throw Error{ERR << "curve is broken after t=" << last_time << ": " << this->str()};
+			throw Error{MSG(err) << "curve is broken after t=" << last_time << ": " << this->str()};
 		}
 		last_time = keyframe.time;
 	}
@@ -265,9 +281,9 @@ void BaseCurve<T>::check_integrity() const {
 
 template <typename T>
 void BaseCurve<T>::sync(const BaseCurve<T> &other,
-                        const time_t &start) {
+                        const time::time_t &start) {
 	// Copy keyframes between containers for t >= start
-	this->last_element = this->container.sync_after(other.container, start);
+	this->last_element = this->container.sync(other.container, start);
 
 	// Check if this->get() returns the same value as other->get() for t = start
 	// If not, insert a new keyframe at start
@@ -284,9 +300,9 @@ template <typename T>
 template <typename O>
 void BaseCurve<T>::sync(const BaseCurve<O> &other,
                         const std::function<T(const O &)> &converter,
-                        const time_t &start) {
+                        const time::time_t &start) {
 	// Copy keyframes between containers for t >= start
-	this->last_element = this->container.sync_after(other.get_container(), converter, start);
+	this->last_element = this->container.sync(other.get_container(), converter, start);
 
 	// Check if this->get() returns the same value as other->get() for t = start
 	// If not, insert a new keyframe at start
@@ -298,4 +314,5 @@ void BaseCurve<T>::sync(const BaseCurve<O> &other,
 	this->changes(start);
 }
 
-} // namespace openage::curve
+} // namespace curve
+} // namespace openage

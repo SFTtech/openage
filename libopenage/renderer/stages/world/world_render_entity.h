@@ -2,16 +2,20 @@
 
 #pragma once
 
-#include <eigen3/Eigen/Dense>
+#include <cstdint>
+#include <list>
 #include <shared_mutex>
+#include <string>
+
+#include <eigen3/Eigen/Dense>
 
 #include "coord/phys.h"
 #include "coord/scene.h"
 #include "curve/continuous.h"
-#include "curve/curve.h"
 #include "curve/discrete.h"
 #include "curve/segmented.h"
-#include "util/path.h"
+#include "time/time.h"
+
 
 namespace openage::renderer::world {
 
@@ -33,7 +37,7 @@ public:
 	            const curve::Continuous<coord::phys3> &position,
 	            const curve::Segmented<coord::phys_angle_t> &angle,
 	            const std::string animation_path,
-	            const curve::time_t time = 0.0);
+	            const time::time_t time = 0.0);
 
 	/**
 	 * Thus function is for DEBUGGING and should not be used.
@@ -48,7 +52,7 @@ public:
 	void update(const uint32_t ref_id,
 	            const coord::phys3 position,
 	            const std::string animation_path,
-	            const curve::time_t time = 0.0);
+	            const time::time_t time = 0.0);
 
 	/**
 	 * Get the ID of the corresponding game entity.
@@ -83,7 +87,7 @@ public:
 	 *
 	 * @return Time of last update.
 	 */
-	curve::time_t get_update_time();
+	time::time_t get_update_time();
 
 	/**
 	 * Check whether the render entity has received new updates from the
@@ -129,7 +133,7 @@ private:
 	/**
 	 * Time of the last update call.
 	 */
-	curve::time_t last_update;
+	time::time_t last_update;
 
 	/**
 	 * Mutex for protecting threaded access.

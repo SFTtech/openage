@@ -2,10 +2,14 @@
 
 #pragma once
 
+#include <memory>
+
 #include <nyan/nyan.h>
 
 #include "curve/discrete.h"
 #include "gamestate/component/base_component.h"
+#include "time/time.h"
+
 
 namespace openage {
 
@@ -31,7 +35,7 @@ public:
 	 */
 	APIComponent(const std::shared_ptr<openage::event::EventLoop> &loop,
 	             nyan::Object &ability,
-	             const time_t &creation_time,
+	             const time::time_t &creation_time,
 	             bool enabled = true);
 
 	/**

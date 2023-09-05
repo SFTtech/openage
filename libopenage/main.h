@@ -12,6 +12,9 @@
 // pxd: from libopenage.util.path cimport Path
 #include "util/path.h"
 
+#include <vector>
+
+#include "util/compiler.h"
 
 namespace openage {
 

@@ -2,10 +2,18 @@
 
 #pragma once
 
-#include "renderer/resources/terrain/blendtable_info.h"
-#include "util/path.h"
+#include <cstddef>
+#include <memory>
+#include <string>
 
-namespace openage::renderer::resources {
+#include "renderer/resources/terrain/blendtable_info.h"
+
+namespace openage {
+namespace util {
+class Path;
+}
+
+namespace renderer::resources {
 class AssetCache;
 
 namespace parser {
@@ -32,4 +40,5 @@ BlendTableInfo parse_blendtable_file(const util::Path &file,
                                      const std::shared_ptr<AssetCache> &cache = nullptr);
 
 } // namespace parser
-} // namespace openage::renderer::resources
+} // namespace renderer::resources
+} // namespace openage

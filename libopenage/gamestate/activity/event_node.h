@@ -2,7 +2,16 @@
 
 #pragma once
 
+#include <functional>
+#include <memory>
+#include <vector>
+
+#include "error/error.h"
+#include "log/message.h"
+
 #include "gamestate/activity/node.h"
+#include "gamestate/activity/types.h"
+#include "time/time.h"
 
 
 namespace openage {
@@ -30,7 +39,7 @@ using event_store_t = std::vector<std::shared_ptr<openage::event::Event>>;
  *
  * @return List of events registered on the event loop.
  */
-using event_primer_func_t = std::function<event_store_t(const curve::time_t &,
+using event_primer_func_t = std::function<event_store_t(const time::time_t &,
                                                         const std::shared_ptr<gamestate::GameEntity> &,
                                                         const std::shared_ptr<event::EventLoop> &,
                                                         const std::shared_ptr<gamestate::GameState> &)>;
@@ -45,13 +54,13 @@ using event_primer_func_t = std::function<event_store_t(const curve::time_t &,
  *
  * @return ID of the next node to visit.
  */
-using event_next_func_t = std::function<node_id(const curve::time_t &,
+using event_next_func_t = std::function<node_id(const time::time_t &,
                                                 const std::shared_ptr<gamestate::GameEntity> &,
                                                 const std::shared_ptr<event::EventLoop> &,
                                                 const std::shared_ptr<gamestate::GameState> &)>;
 
 
-static const event_primer_func_t no_event = [](const curve::time_t &,
+static const event_primer_func_t no_event = [](const time::time_t &,
                                                const std::shared_ptr<gamestate::GameEntity> &,
                                                const std::shared_ptr<event::EventLoop> &,
                                                const std::shared_ptr<gamestate::GameState> &) {
@@ -59,7 +68,7 @@ static const event_primer_func_t no_event = [](const curve::time_t &,
 	return event_store_t{};
 };
 
-static const event_next_func_t no_next = [](const curve::time_t &,
+static const event_next_func_t no_next = [](const time::time_t &,
                                             const std::shared_ptr<gamestate::GameEntity> &,
                                             const std::shared_ptr<event::EventLoop> &,
                                             const std::shared_ptr<gamestate::GameState> &) {
@@ -71,10 +80,10 @@ static const event_next_func_t no_next = [](const curve::time_t &,
 /**
  * Waits for an event to be executed before continuing the control flow.
  */
-class EventNode : public Node {
+class XorEventGate : public Node {
 public:
 	/**
-      * Create a new event node.
+      * Create a new exclusive event gateway.
       *
       * @param id Unique identifier for this node.
       * @param label Human-readable label (optional).
@@ -82,15 +91,15 @@ public:
       * @param primer_func Function to create and register the event.
       * @param next_func Function to decide which node to visit after the event is handled.
       */
-	EventNode(node_id id,
-	          node_label label = "Event",
-	          const std::vector<std::shared_ptr<Node>> &outputs = {},
-	          event_primer_func_t primer_func = no_event,
-	          event_next_func_t next_func = no_next);
-	virtual ~EventNode() = default;
+	XorEventGate(node_id id,
+	             node_label label = "Event",
+	             const std::vector<std::shared_ptr<Node>> &outputs = {},
+	             event_primer_func_t primer_func = no_event,
+	             event_next_func_t next_func = no_next);
+	virtual ~XorEventGate() = default;
 
 	inline node_t get_type() const override {
-		return node_t::EVENT_GATEWAY;
+		return node_t::XOR_EVENT_GATE;
 	}
 
 	/**

@@ -1,17 +1,18 @@
-// Copyright 2018-2018 the openage authors. See copying.md for legal info.
+// Copyright 2018-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "../datastructure/pairing_heap.h"
-#include "../util/misc.h"
-
+#include <cstddef>
 #include <memory>
 #include <unordered_map>
+#include <vector>
+
+#include "datastructure/pairing_heap.h"
+#include "event/event.h"
+#include "util/misc.h"
 
 
 namespace openage::event {
-
-class Event;
 
 /**
  * Sorted storage for events.
@@ -19,7 +20,6 @@ class Event;
  */
 class EventStore {
 public:
-
 	// TODO: don't store a double-sharedpointer.
 	//       instead, use the event-sharedpointer directly.
 	using heap_t = datastructure::PairingHeap<std::shared_ptr<Event>,
@@ -48,4 +48,4 @@ public:
 };
 
 
-} // openage::event
+} // namespace openage::event

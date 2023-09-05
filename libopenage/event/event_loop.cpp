@@ -2,12 +2,21 @@
 
 #include "event_loop.h"
 
-#include "event.h"
-#include "evententity.h"
-#include "eventhandler.h"
-#include "eventqueue.h"
+#include <cstddef>
+#include <type_traits>
+#include <utility>
+#include <vector>
 
-#include "../log/log.h"
+#include "log/log.h"
+#include "log/message.h"
+
+#include "error/error.h"
+#include "event/event.h"
+#include "event/evententity.h"
+#include "event/eventhandler.h"
+#include "event/eventqueue.h"
+#include "event/eventstore.h"
+#include "util/fixed_point.h"
 
 
 namespace openage::event {
@@ -23,7 +32,7 @@ void EventLoop::add_event_handler(const std::shared_ptr<EventHandler> eventhandl
 std::shared_ptr<Event> EventLoop::create_event(const std::string name,
                                                const std::shared_ptr<EventEntity> target,
                                                const std::shared_ptr<State> state,
-                                               const curve::time_t reference_time,
+                                               const time::time_t reference_time,
                                                const EventHandler::param_map params) {
 	std::unique_lock lock{this->mutex};
 
@@ -40,7 +49,7 @@ std::shared_ptr<Event> EventLoop::create_event(const std::string name,
 std::shared_ptr<Event> EventLoop::create_event(const std::shared_ptr<EventHandler> eventhandler,
                                                const std::shared_ptr<EventEntity> target,
                                                const std::shared_ptr<State> state,
-                                               const curve::time_t reference_time,
+                                               const time::time_t reference_time,
                                                const EventHandler::param_map params) {
 	std::unique_lock lock{this->mutex};
 
@@ -59,7 +68,7 @@ std::shared_ptr<Event> EventLoop::create_event(const std::shared_ptr<EventHandle
 }
 
 
-void EventLoop::reach_time(const curve::time_t &time_until,
+void EventLoop::reach_time(const time::time_t &time_until,
                            const std::shared_ptr<State> &state) {
 	std::unique_lock lock{this->mutex};
 
@@ -98,7 +107,7 @@ void EventLoop::reach_time(const curve::time_t &time_until,
 }
 
 
-int EventLoop::execute_events(const curve::time_t &time_until,
+int EventLoop::execute_events(const time::time_t &time_until,
                               const std::shared_ptr<State> &state) {
 	log::log(SPAM << "Loop: Pending events in the queue (# = "
 	              << this->queue.get_event_queue().size() << "):");
@@ -139,10 +148,10 @@ int EventLoop::execute_events(const curve::time_t &time_until,
 
 			// if the event is REPEAT, readd the event.
 			if (event->get_eventhandler()->type == EventHandler::trigger_type::REPEAT) {
-				curve::time_t new_time = event->get_eventhandler()->predict_invoke_time(
+				time::time_t new_time = event->get_eventhandler()->predict_invoke_time(
 					target, state, event->get_time());
 
-				if (new_time != std::numeric_limits<curve::time_t>::min()) {
+				if (new_time != std::numeric_limits<time::time_t>::min()) {
 					event->set_time(new_time);
 
 					log::log(DBG << "Loop: repeating event \"" << event->get_eventhandler()->id()
@@ -166,7 +175,7 @@ int EventLoop::execute_events(const curve::time_t &time_until,
 
 
 void EventLoop::create_change(const std::shared_ptr<Event> evnt,
-                              const curve::time_t changes_at) {
+                              const time::time_t changes_at) {
 	std::unique_lock lock{this->mutex};
 
 	this->queue.add_change(evnt, changes_at);
@@ -192,10 +201,10 @@ void EventLoop::update_changes(const std::shared_ptr<State> &state) {
 				auto entity = evnt->get_entity().lock();
 
 				if (entity) {
-					curve::time_t new_time = evnt->get_eventhandler()
-					                             ->predict_invoke_time(entity, state, change.time);
+					time::time_t new_time = evnt->get_eventhandler()
+					                            ->predict_invoke_time(entity, state, change.time);
 
-					if (new_time != std::numeric_limits<curve::time_t>::min()) {
+					if (new_time != std::numeric_limits<time::time_t>::min()) {
 						log::log(DBG << "Loop: due to a change, rescheduling event of '"
 						             << evnt->get_eventhandler()->id()
 						             << "' on entity '" << entity->idstr()

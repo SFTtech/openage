@@ -5,8 +5,6 @@
 #include <memory>
 
 namespace openage::renderer {
-class Renderer;
-
 namespace terrain {
 class TerrainRenderer;
 class TerrainRenderEntity;

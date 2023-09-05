@@ -1,12 +1,13 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <type_traits>
 #include <sstream>
+#include <string>
 
-#include "interpolated.h"
-#include "../log/log.h"
+#include "curve/interpolated.h"
+#include "time/time.h"
+
 
 namespace openage::curve {
 
@@ -19,9 +20,9 @@ namespace openage::curve {
  * interpolation.
  *
  * The bound template type T has to implement `operator+(T)` and
- * `operator*(time_t)`.
+ * `operator*(time::time_t)`.
  */
-template<typename T>
+template <typename T>
 class Continuous : public Interpolated<T> {
 public:
 	using Interpolated<T>::Interpolated;
@@ -32,10 +33,10 @@ public:
 	 * If multiple elements exist at the given time,
 	 * overwrite all of them.
 	 */
-	void set_last(const time_t &t, const T &value) override;
+	void set_last(const time::time_t &t, const T &value) override;
 
 	/** This just calls set_replace in order to guarantee the continuity. */
-	void set_insert(const time_t &t, const T &value) override;
+	void set_insert(const time::time_t &t, const T &value) override;
 
 	/** human readable identifier */
 	std::string idstr() const override;
@@ -43,7 +44,7 @@ public:
 
 
 template <typename T>
-void Continuous<T>::set_last(const time_t &at, const T &value) {
+void Continuous<T>::set_last(const time::time_t &at, const T &value) {
 	auto hint = this->container.last(at, this->last_element);
 
 	// erase all same-time entries
@@ -61,7 +62,7 @@ void Continuous<T>::set_last(const time_t &at, const T &value) {
 
 
 template <typename T>
-void Continuous<T>::set_insert(const time_t &t, const T &value) {
+void Continuous<T>::set_insert(const time::time_t &t, const T &value) {
 	this->set_replace(t, value);
 }
 
@@ -81,4 +82,4 @@ std::string Continuous<T>::idstr() const {
 }
 
 
-} // openage::curve
+} // namespace openage::curve

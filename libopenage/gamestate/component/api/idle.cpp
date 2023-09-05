@@ -6,7 +6,7 @@
 
 namespace openage::gamestate::component {
 
-inline component_t Idle::get_type() const {
+component_t Idle::get_type() const {
 	return component_t::IDLE;
 }
 

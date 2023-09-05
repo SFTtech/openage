@@ -1,25 +1,24 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "shader_source.h"
 
-#include "../../util/file.h"
+#include <utility>
+
+#include "util/file.h"
+#include "util/path.h"
 
 
 namespace openage {
 namespace renderer {
 namespace resources {
 
-ShaderSource::ShaderSource(shader_lang_t lang, shader_stage_t stage, std::string &&code)
-	: lang(lang)
-	, stage(stage)
-	, code(std::move(code)) {}
+ShaderSource::ShaderSource(shader_lang_t lang, shader_stage_t stage, std::string &&code) :
+	lang(lang), stage(stage), code(std::move(code)) {}
 
-ShaderSource::ShaderSource(shader_lang_t lang, shader_stage_t stage, const util::Path& path)
-	: lang(lang)
-	, stage(stage)
-	, code(path.open().read()) {}
+ShaderSource::ShaderSource(shader_lang_t lang, shader_stage_t stage, const util::Path &path) :
+	lang(lang), stage(stage), code(path.open().read()) {}
 
-std::string const& ShaderSource::get_source() const {
+std::string const &ShaderSource::get_source() const {
 	return this->code;
 }
 
@@ -31,4 +30,6 @@ shader_stage_t ShaderSource::get_stage() const {
 	return this->stage;
 }
 
-}}} // openage::renderer::resources
+} // namespace resources
+} // namespace renderer
+} // namespace openage

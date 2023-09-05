@@ -3,12 +3,13 @@
 #pragma once
 
 #include <memory>
+#include <string>
 #include <unordered_map>
 
-#include "coord/phys.h"
-#include "curve/curve.h"
 #include "gamestate/component/types.h"
 #include "gamestate/types.h"
+#include "time/time.h"
+
 
 namespace openage {
 
@@ -104,7 +105,7 @@ public:
      * @param time Simulation time of the update.
      * @param animation_path Animation path used at \p time.
      */
-	void render_update(const curve::time_t &time,
+	void render_update(const time::time_t &time,
 	                   const std::string &animation_path);
 
 protected:

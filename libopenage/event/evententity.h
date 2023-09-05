@@ -2,17 +2,18 @@
 
 #pragma once
 
+#include <cstddef>
 #include <functional>
 #include <list>
 #include <memory>
+#include <string>
 
-#include "curve/curve.h"
+#include "time/time.h"
 
 namespace openage::event {
 
 class Event;
 class EventLoop;
-class EventHandler;
 
 /**
  * Every Object in the gameworld that wants to be targeted by events or as
@@ -26,7 +27,7 @@ public:
 	/** Give a human-readable identifier for this target */
 	virtual std::string idstr() const = 0;
 
-	using single_change_notifier = std::function<void(const curve::time_t &)>;
+	using single_change_notifier = std::function<void(const time::time_t &)>;
 
 protected:
 	/**
@@ -60,12 +61,12 @@ protected:
 	 * Call this whenever some data in the target changes.
 	 * This triggers the reevaluation of dependent events.
 	 */
-	void changes(const curve::time_t &change_time);
+	void changes(const time::time_t &change_time);
 
 	/**
 	 * Call this when depending TriggerEventHandleres should be invoked.
 	 */
-	void trigger(const curve::time_t &invoke_time);
+	void trigger(const time::time_t &invoke_time);
 
 private:
 	/** Event loop this target is registered to */

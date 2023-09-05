@@ -2,15 +2,22 @@
 
 #pragma once
 
+#include <cstddef>
 #include <cstdint>
-#include <string>
+#include <utility>
 #include <vector>
 
-#include "../../util/path.h"
+#include "error/error.h"
+#include "log/message.h"
+
 #include "texture_info.h"
 
 
-namespace openage::renderer::resources {
+namespace openage {
+namespace util {
+class Path;
+}
+namespace renderer::resources {
 
 /// Stores 2D texture data in a CPU-accessible byte buffer. Provides methods for loading from
 /// and storing onto disk, as well as sending to and receiving from graphics hardware.
@@ -70,4 +77,5 @@ private:
 	std::vector<uint8_t> data;
 };
 
-} // namespace openage::renderer::resources
+} // namespace renderer::resources
+} // namespace openage

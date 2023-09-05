@@ -2,7 +2,16 @@
 
 #pragma once
 
+#include <optional>
+#include <sstream>
+#include <string>
+#include <type_traits>
+#include <utility>
+
+#include "curve/base_curve.h"
 #include "curve/discrete.h"
+#include "time/time.h"
+#include "util/fixed_point.h"
 
 
 namespace openage::curve {
@@ -30,9 +39,9 @@ public:
 
 	// Override insertion/erasure to get interval time
 
-	void set_last(const time_t &at, const T &value) override;
-	void set_insert(const time_t &at, const T &value) override;
-	void erase(const time_t &at) override;
+	void set_last(const time::time_t &at, const T &value) override;
+	void set_insert(const time::time_t &at, const T &value) override;
+	void erase(const time::time_t &at) override;
 
 	/**
 	 * Get a human readable id string.
@@ -42,35 +51,35 @@ public:
 	/**
 	 * Get the raw value of the last keyframe with time <= (t - start) % interval_length.
 	 */
-	T get_mod(const time_t &t, const time_t &start) const;
+	T get_mod(const time::time_t &t, const time::time_t &start) const;
 
 	/**
 	 * Get the last time and keyframe with time <= (t - start) % interval_length.
 	 */
-	std::pair<time_t, T> get_time_mod(const time_t &t, const time_t &start) const;
+	std::pair<time::time_t, T> get_time_mod(const time::time_t &t, const time::time_t &start) const;
 
 	/**
 	 * Get, if existing, the time and value of keyframe with time < (t - start) % interval_length.
 	 */
-	std::optional<std::pair<time_t, T>> get_previous_mod(const time_t &t, const time_t &start) const;
+	std::optional<std::pair<time::time_t, T>> get_previous_mod(const time::time_t &t, const time::time_t &start) const;
 
 private:
 	/**
      * Length of the time interval of this curve (time between first and last keyframe).
      */
-	time_t time_length;
+	time::time_t time_length;
 };
 
 
 template <typename T>
-void DiscreteMod<T>::set_last(const time_t &at, const T &value) {
+void DiscreteMod<T>::set_last(const time::time_t &at, const T &value) {
 	BaseCurve<T>::set_last(at, value);
 	this->time_length = at;
 }
 
 
 template <typename T>
-void DiscreteMod<T>::set_insert(const time_t &at, const T &value) {
+void DiscreteMod<T>::set_insert(const time::time_t &at, const T &value) {
 	BaseCurve<T>::set_insert(at, value);
 
 	if (this->time_length < at) {
@@ -80,7 +89,7 @@ void DiscreteMod<T>::set_insert(const time_t &at, const T &value) {
 
 
 template <typename T>
-void DiscreteMod<T>::erase(const time_t &at) {
+void DiscreteMod<T>::erase(const time::time_t &at) {
 	BaseCurve<T>::erase(at);
 
 	if (this->time_length == at) {
@@ -105,40 +114,40 @@ std::string DiscreteMod<T>::idstr() const {
 
 
 template <typename T>
-T DiscreteMod<T>::get_mod(const time_t &time, const time_t &start) const {
-	time_t offset = time - start;
+T DiscreteMod<T>::get_mod(const time::time_t &time, const time::time_t &start) const {
+	time::time_t offset = time - start;
 	if (this->time_length == 0) {
 		// modulo would fail here so return early
 		return Discrete<T>::get(0);
 	}
 
-	time_t mod = offset % this->time_length;
+	time::time_t mod = offset % this->time_length;
 	return Discrete<T>::get(mod);
 }
 
 
 template <typename T>
-std::pair<time_t, T> DiscreteMod<T>::get_time_mod(const time_t &time, const time_t &start) const {
-	time_t offset = time - start;
+std::pair<time::time_t, T> DiscreteMod<T>::get_time_mod(const time::time_t &time, const time::time_t &start) const {
+	time::time_t offset = time - start;
 	if (this->time_length == 0) {
 		// modulo would fail here so return early
 		return Discrete<T>::get_time(0);
 	}
 
-	time_t mod = offset % this->time_length;
+	time::time_t mod = offset % this->time_length;
 	return Discrete<T>::get_time(mod);
 }
 
 
 template <typename T>
-std::optional<std::pair<time_t, T>> DiscreteMod<T>::get_previous_mod(const time_t &time, const time_t &start) const {
-	time_t offset = time - start;
+std::optional<std::pair<time::time_t, T>> DiscreteMod<T>::get_previous_mod(const time::time_t &time, const time::time_t &start) const {
+	time::time_t offset = time - start;
 	if (this->time_length == 0) {
 		// modulo would fail here so return early
 		return Discrete<T>::get_previous(0);
 	}
 
-	time_t mod = offset % this->time_length;
+	time::time_t mod = offset % this->time_length;
 	return Discrete<T>::get_previous(mod);
 }
 

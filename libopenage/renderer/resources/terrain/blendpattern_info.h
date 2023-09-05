@@ -3,12 +3,14 @@
 #pragma once
 
 #include <cstddef>
+#include <memory>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
-#include "renderer/resources/texture_info.h"
 
 namespace openage::renderer::resources {
+class Texture2dInfo;
 
 struct blending_mask {
 	char directions;

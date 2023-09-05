@@ -2,9 +2,12 @@
 
 #pragma once
 
+#include <cstddef>
+#include <cstdint>
 #include <vector>
 
 #include <eigen3/Eigen/Dense>
+
 
 namespace openage::renderer::resources {
 

@@ -5,8 +5,11 @@
 #include <memory>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
+#include "error/error.h"
 #include "log/log.h"
+#include "log/message.h"
 
 #include "assets/modpack.h"
 #include "util/path.h"

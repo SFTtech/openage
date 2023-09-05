@@ -4,7 +4,7 @@
 
 #include <memory>
 
-#include "curve/curve.h"
+#include "time/time.h"
 #include "gamestate/system/types.h"
 
 
@@ -29,7 +29,7 @@ public:
      * @param start_time Start time of change.
      */
 	static void advance(const std::shared_ptr<gamestate::GameEntity> &entity,
-	                    const curve::time_t &start_time,
+	                    const time::time_t &start_time,
 	                    const std::shared_ptr<openage::event::EventLoop> &loop,
 	                    const std::shared_ptr<openage::gamestate::GameState> &state);
 
@@ -43,8 +43,8 @@ private:
 	 *
      * @return Runtime of the change in simulation time.
 	 */
-	static const curve::time_t handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &entity,
-	                                            const curve::time_t &start_time,
+	static const time::time_t handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &entity,
+	                                            const time::time_t &start_time,
 	                                            system_id_t system_id);
 };
 

@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,6 +7,8 @@
 
 // pxd: from libopenage.log.logsource cimport LogSource
 #include "logsource.h"
+
+#include "../util/compiler.h"
 
 
 namespace openage {
@@ -37,4 +39,5 @@ private:
 NamedLogSource &general_source();
 
 
-}} // namespace openage::log
+} // namespace log
+} // namespace openage

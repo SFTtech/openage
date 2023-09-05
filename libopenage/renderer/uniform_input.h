@@ -1,17 +1,18 @@
 // Copyright 2019-2023 the openage authors. See copying.md for legal info.
 
-
 #pragma once
 
+#include <cstdint>
 #include <memory>
 
 #include <eigen3/Eigen/Dense>
 
-#include "../error/error.h"
+#include "error/error.h"
+#include "log/message.h"
+#include "util/compiler.h"
 
 
 namespace openage::renderer {
-
 class ShaderProgram;
 class Texture2d;
 class UniformBuffer;

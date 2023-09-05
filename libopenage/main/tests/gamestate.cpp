@@ -54,7 +54,7 @@ std::string PongPlayer::idstr() const {
 }
 
 
-void PongPlayer::child_changes(const curve::time_t &time) {
+void PongPlayer::child_changes(const time::time_t &time) {
 	this->changes(time);
 }
 
@@ -87,7 +87,7 @@ std::string PongBall::idstr() const {
 }
 
 
-void PongBall::child_changes(const curve::time_t &time) {
+void PongBall::child_changes(const time::time_t &time) {
 	this->changes(time);
 }
 

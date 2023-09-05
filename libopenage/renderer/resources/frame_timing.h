@@ -5,7 +5,7 @@
 #include <cstddef>
 #include <vector>
 
-#include "curve/curve.h"
+#include "time/time.h"
 
 
 namespace openage::renderer::resources {
@@ -17,7 +17,7 @@ namespace openage::renderer::resources {
  */
 class FrameTiming {
 public:
-	using keyframe_t = curve::time_t;
+	using keyframe_t = time::time_t;
 
 	/**
      * Create a new frame timing sequence.
@@ -25,7 +25,7 @@ public:
      * @param total_length Total length of the sequence (in seconds).
      * @param keyframes Time of each frame (in seconds). Expected to be sorted.
      */
-	FrameTiming(const curve::time_t &total_length,
+	FrameTiming(const time::time_t &total_length,
 	            const std::vector<keyframe_t> &&keyframes);
 
 	~FrameTiming() = default;
@@ -35,7 +35,7 @@ public:
      *
      * @param total_length Total length of the sequence (in seconds).
      */
-	void set_total_length(const curve::time_t &total_length);
+	void set_total_length(const time::time_t &total_length);
 
 	/**
      * Insert a new keyframe into the sequence.
@@ -46,7 +46,7 @@ public:
      *
      * @param time Time of the new keyframe (in seconds).
      */
-	void insert(const curve::time_t &time);
+	void insert(const time::time_t &time);
 
 	/**
      * Get the index of the frame in the sequence that should be displayed at the
@@ -55,7 +55,7 @@ public:
      * @param time Time in the sequence (in seconds).
      * @return Frame index in the sequence.
      */
-	size_t get_frame(const curve::time_t &time) const;
+	size_t get_frame(const time::time_t &time) const;
 
 	/**
      * Get the index of the frame in the sequence that should be displayed at a specified
@@ -71,7 +71,7 @@ public:
      * @param start Start time of the sequence (in seconds).
      * @return Frame index in the sequence.
      */
-	size_t get_frame(const curve::time_t &current, const curve::time_t &start) const;
+	size_t get_frame(const time::time_t &current, const time::time_t &start) const;
 
 	/**
      * Get the number of frames in the sequence.
@@ -90,7 +90,7 @@ private:
      * @param time Time in the sequence (in seconds).
      * @return Frame index in the sequence.
      */
-	size_t search_frame(const curve::time_t &time) const;
+	size_t search_frame(const time::time_t &time) const;
 
 	/**
      * Time of each frame in the sequence relative to the sequence start (in seconds).
@@ -100,7 +100,7 @@ private:
 	/**
      * Total length of the sequence (in seconds).
      */
-	curve::time_t total_length;
+	time::time_t total_length;
 };
 
 } // namespace openage::renderer::resources

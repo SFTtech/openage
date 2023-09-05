@@ -5,7 +5,12 @@
 #include <functional>
 #include <memory>
 
+#include "error/error.h"
+#include "log/message.h"
+
 #include "gamestate/activity/node.h"
+#include "gamestate/activity/types.h"
+#include "time/time.h"
 
 
 namespace openage::gamestate {
@@ -13,10 +18,10 @@ class GameEntity;
 
 namespace activity {
 
-using task_func_t = std::function<void(const curve::time_t &,
+using task_func_t = std::function<void(const time::time_t &,
                                        const std::shared_ptr<gamestate::GameEntity> &)>;
 
-static const task_func_t no_task = [](const curve::time_t &,
+static const task_func_t no_task = [](const time::time_t &,
                                       const std::shared_ptr<gamestate::GameEntity> &) {
 	throw Error{ERR << "No task defined for this node."};
 };
@@ -24,7 +29,7 @@ static const task_func_t no_task = [](const curve::time_t &,
 /**
  * Executes a function when visited.
  */
-class TaskNode : public Node {
+class TaskCustom : public Node {
 public:
 	/**
      * Create a new task node.
@@ -34,14 +39,14 @@ public:
      * @param task_func Action to perform when visiting this node (can be set later).
      * @param output Next node to visit (optional).
      */
-	TaskNode(node_id id,
-	         node_label label = "Task",
-	         const std::shared_ptr<Node> &output = nullptr,
-	         task_func_t task_func = no_task);
-	virtual ~TaskNode() = default;
+	TaskCustom(node_id id,
+	           node_label label = "TaskCustom",
+	           const std::shared_ptr<Node> &output = nullptr,
+	           task_func_t task_func = no_task);
+	virtual ~TaskCustom() = default;
 
 	inline node_t get_type() const override {
-		return node_t::TASK;
+		return node_t::TASK_CUSTOM;
 	}
 
 	/**

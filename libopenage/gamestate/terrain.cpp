@@ -2,6 +2,10 @@
 
 #include "terrain.h"
 
+#include <algorithm>
+#include <array>
+#include <cstddef>
+
 #include "renderer/stages/terrain/terrain_render_entity.h"
 
 namespace openage::gamestate {

@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "gamestate/activity/node.h"
+#include "gamestate/activity/types.h"
 
 
 namespace openage::gamestate::activity {

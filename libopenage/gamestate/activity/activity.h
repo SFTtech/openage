@@ -2,12 +2,13 @@
 
 #pragma once
 
+#include <cstddef>
 #include <memory>
-
-#include "gamestate/activity/node.h"
+#include <string>
 
 
 namespace openage::gamestate::activity {
+class Node;
 
 using activity_id = size_t;
 using activity_label = std::string;

@@ -18,15 +18,15 @@ void ProcessCommandHandler::setup_event(const std::shared_ptr<openage::event::Ev
 void ProcessCommandHandler::invoke(openage::event::EventLoop & /* loop */,
                                    const std::shared_ptr<openage::event::EventEntity> &target,
                                    const std::shared_ptr<openage::event::State> & /* state */,
-                                   const curve::time_t &time,
+                                   const time::time_t &time,
                                    const param_map & /* params */) {
 	auto mgr = std::dynamic_pointer_cast<openage::gamestate::GameEntityManager>(target);
 	mgr->run_activity_system(time);
 }
 
-curve::time_t ProcessCommandHandler::predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> & /* target */,
+time::time_t ProcessCommandHandler::predict_invoke_time(const std::shared_ptr<openage::event::EventEntity> & /* target */,
                                                          const std::shared_ptr<openage::event::State> & /* state */,
-                                                         const curve::time_t &at) {
+                                                         const time::time_t &at) {
 	return at;
 }
 

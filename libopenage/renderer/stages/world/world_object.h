@@ -2,16 +2,18 @@
 
 #pragma once
 
+#include <cstdint>
+#include <list>
 #include <memory>
-
-#include <eigen3/Eigen/Dense>
+#include <string>
 
 #include "coord/scene.h"
 #include "curve/continuous.h"
-#include "curve/curve.h"
 #include "curve/discrete.h"
 #include "curve/segmented.h"
 #include "renderer/resources/mesh_data.h"
+#include "time/time.h"
+
 
 namespace openage::renderer {
 class UniformInput;
@@ -52,14 +54,14 @@ public:
      *
      * @param time Current simulation time.
      */
-	void fetch_updates(const curve::time_t &time = 0.0);
+	void fetch_updates(const time::time_t &time = 0.0);
 
 	/**
      * Update the uniforms of the renderable associated with this object.
      *
      * @param time Current simulation time.
      */
-	void update_uniforms(const curve::time_t &time = 0.0);
+	void update_uniforms(const time::time_t &time = 0.0);
 
 	/**
 	 * Get the ID of the corresponding game entity.
@@ -168,7 +170,7 @@ private:
 	/**
 	 * Time of the last update call.
 	 */
-	curve::time_t last_update;
+	time::time_t last_update;
 };
 } // namespace world
 } // namespace openage::renderer

@@ -2,7 +2,10 @@
 
 #include "animation.h"
 
+#include <deque>
+
 #include "gamestate/api/util.h"
+
 
 namespace openage::gamestate::api {
 

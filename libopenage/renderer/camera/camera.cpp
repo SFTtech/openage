@@ -2,10 +2,16 @@
 
 #include "camera.h"
 
+#include <array>
 #include <numbers>
+#include <string>
+#include <utility>
 
+#include "coord/pixel.h"
+#include "coord/scene.h"
 #include "renderer/renderer.h"
 #include "renderer/resources/buffer_info.h"
+
 
 namespace openage::renderer::camera {
 

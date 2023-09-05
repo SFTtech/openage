@@ -2,10 +2,9 @@
 
 #include "controller.h"
 
-#include "event/clock.h"
+#include "event/event_loop.h"
 #include "event/evententity.h"
 #include "event/state.h"
-#include "event/time_loop.h"
 #include "gamestate/component/internal/commands/types.h"
 #include "gamestate/event/send_command.h"
 #include "gamestate/event/spawn_entity.h"
@@ -13,6 +12,8 @@
 #include "gamestate/game_state.h"
 #include "gamestate/simulation.h"
 #include "input/controller/game/binding_context.h"
+#include "time/clock.h"
+#include "time/time_loop.h"
 
 #include "coord/phys.h"
 
@@ -85,7 +86,7 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 }
 
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
-                    const std::shared_ptr<event::TimeLoop> &time_loop,
+                    const std::shared_ptr<time::TimeLoop> &time_loop,
                     const std::shared_ptr<openage::gamestate::GameSimulation> &simulation,
                     const std::shared_ptr<renderer::camera::Camera> &camera) {
 	binding_func_t create_entity_event{[&](const event_arguments &args,

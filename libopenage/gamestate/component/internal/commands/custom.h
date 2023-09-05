@@ -5,6 +5,7 @@
 #include <string>
 
 #include "gamestate/component/internal/commands/base_command.h"
+#include "gamestate/component/internal/commands/types.h"
 
 
 namespace openage::gamestate::component::command {

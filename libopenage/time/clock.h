@@ -5,9 +5,10 @@
 #include <chrono>
 #include <shared_mutex>
 
-#include "curve/curve.h"
+#include "time/time.h"
 
-namespace openage::event {
+
+namespace openage::time {
 
 using simclock_t = std::chrono::steady_clock;
 using timepoint_t = std::chrono::time_point<simclock_t>;
@@ -54,7 +55,7 @@ public:
 	 *
 	 * @return Time passed (in seconds).
 	 */
-	curve::time_t get_time();
+	time::time_t get_time();
 
 	/**
 	 * Get the current simulation time without speed adjustments.
@@ -64,7 +65,7 @@ public:
 	 *
 	 * @return Time passed (in seconds).
 	 */
-	curve::time_t get_real_time();
+	time::time_t get_real_time();
 
 	/**
      * Get the current speed of the clock.
@@ -135,13 +136,13 @@ private:
 	/**
      * Stores how much time has passed inside the simulation (in milliseconds).
      */
-	curve::time_t sim_time;
+	time::time_t sim_time;
 
 	/**
      * Stores how much time has passed inside the simulation (in milliseconds)
 	 * _without_ speed adjustments (i.e. it acts as if speed = 1.0).
      */
-	curve::time_t sim_real_time;
+	time::time_t sim_real_time;
 
 	/**
 	 * Mutex for protecting threaded access.
@@ -149,4 +150,4 @@ private:
 	std::shared_mutex mutex;
 };
 
-} // namespace openage::event
+} // namespace openage::time

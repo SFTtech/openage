@@ -2,47 +2,44 @@
 
 #include "cache.h"
 
-#include "renderer/resources/animation/animation_info.h"
-#include "renderer/resources/palette_info.h"
-#include "renderer/resources/terrain/blendpattern_info.h"
-#include "renderer/resources/terrain/blendtable_info.h"
-#include "renderer/resources/terrain/terrain_info.h"
+#include "util/path.h"
+
 
 namespace openage::renderer::resources {
 
 const std::shared_ptr<Animation2dInfo> &AssetCache::get_animation(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
-	return this->loaded_animations[flat_path];
+	return this->loaded_animations.at(flat_path);
 }
 
 
 const std::shared_ptr<BlendPatternInfo> &AssetCache::get_blpattern(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
-	return this->loaded_blpatterns[flat_path];
+	return this->loaded_blpatterns.at(flat_path);
 }
 
 
 const std::shared_ptr<BlendTableInfo> &AssetCache::get_bltable(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
-	return this->loaded_bltables[flat_path];
+	return this->loaded_bltables.at(flat_path);
 }
 
 
 const std::shared_ptr<PaletteInfo> &AssetCache::get_palette(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
-	return this->loaded_palettes[flat_path];
+	return this->loaded_palettes.at(flat_path);
 }
 
 
 const std::shared_ptr<TerrainInfo> &AssetCache::get_terrain(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
-	return this->loaded_terrains[flat_path];
+	return this->loaded_terrains.at(flat_path);
 }
 
 
 const std::shared_ptr<Texture2dInfo> &AssetCache::get_texture(const util::Path &path) {
 	auto flat_path = path.resolve_native_path();
-	return this->loaded_textures[flat_path];
+	return this->loaded_textures.at(flat_path);
 }
 
 

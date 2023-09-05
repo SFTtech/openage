@@ -3,18 +3,16 @@
 #pragma once
 
 #include <memory>
-#include <optional>
-#include <vector>
+#include <string>
 
 #include <eigen3/Eigen/Dense>
 
 #include "curve/discrete.h"
 #include "renderer/resources/mesh_data.h"
+#include "time/time.h"
+
 
 namespace openage::renderer {
-class Geometry;
-class Renderer;
-class Texture2d;
 class UniformInput;
 
 namespace resources {
@@ -23,7 +21,6 @@ class TerrainInfo;
 } // namespace resources
 
 namespace terrain {
-class TerrainRenderEntity;
 
 /**
  * Drawable chunk of terrain with a single texture.
@@ -94,7 +91,7 @@ public:
      *
      * @param time Current simulation time.
      */
-	void update_uniforms(const curve::time_t &time = 0.0);
+	void update_uniforms(const time::time_t &time = 0.0);
 
 	/**
      * Check whether a new renderable needs to be created for this mesh.

@@ -2,11 +2,16 @@
 
 #pragma once
 
+#include <cstdint>
+#include <memory>
+
 #include <nyan/nyan.h>
 
 #include "curve/map.h"
-#include "curve/segmented.h"
 #include "gamestate/component/api_component.h"
+#include "gamestate/component/types.h"
+#include "time/time.h"
+
 
 namespace openage::gamestate::component {
 class Live : public APIComponent {
@@ -22,7 +27,7 @@ public:
      * @param attribute Attribute identifier (fqon of the nyan object).
      * @param starting_values Attribute values at the time of addition.
      */
-	void add_attribute(const curve::time_t &time,
+	void add_attribute(const time::time_t &time,
 	                   const nyan::fqon_t &attribute,
 	                   std::shared_ptr<curve::Discrete<int64_t>> starting_values);
 
@@ -33,7 +38,7 @@ public:
      * @param attribute Attribute identifier (fqon of the nyan object).
      * @param value New attribute value.
      */
-	void set_attribute(const curve::time_t &time,
+	void set_attribute(const time::time_t &time,
 	                   const nyan::fqon_t &attribute,
 	                   int64_t value);
 

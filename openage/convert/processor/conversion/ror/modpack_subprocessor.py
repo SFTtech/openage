@@ -41,7 +41,7 @@ class RoRModpackSubprocessor:
 
         mod_def = modpack.get_info()
 
-        mod_def.set_info("aoe1_base", "1.0a", repo="openage")
+        mod_def.set_info("aoe1_base", "0.5", versionstr="1.0a", repo="openage")
 
         mod_def.add_include("data/**")
 

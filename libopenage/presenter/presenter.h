@@ -13,16 +13,16 @@ class GuiApplication;
 
 namespace openage {
 
-namespace event {
-class TimeLoop;
-}
-
 namespace gamestate {
 class GameSimulation;
 }
 
 namespace input {
 class InputManager;
+}
+
+namespace time {
+class TimeLoop;
 }
 
 namespace renderer {
@@ -76,7 +76,7 @@ public:
 	 */
 	Presenter(const util::Path &path,
 	          const std::shared_ptr<gamestate::GameSimulation> &simulation = nullptr,
-	          const std::shared_ptr<event::TimeLoop> &time_loop = nullptr);
+	          const std::shared_ptr<time::TimeLoop> &time_loop = nullptr);
 
 	~Presenter() = default;
 
@@ -97,7 +97,7 @@ public:
 	 *
 	 * @param time_loop Time loop.
 	 */
-	void set_time_loop(const std::shared_ptr<event::TimeLoop> &time_loop);
+	void set_time_loop(const std::shared_ptr<time::TimeLoop> &time_loop);
 
 	/**
 	 * Initialize the Qt application managing the graphical views. Required
@@ -211,7 +211,7 @@ protected:
 	/**
 	 * Time loop.
 	 */
-	std::shared_ptr<event::TimeLoop> time_loop;
+	std::shared_ptr<time::TimeLoop> time_loop;
 
 	/**
 	 * Input manager.

@@ -3,14 +3,23 @@
 #include "parse_blendtable.h"
 
 #include <functional>
+#include <type_traits>
+#include <unordered_map>
+#include <utility>
+#include <vector>
 
 #include "error/error.h"
+#include "log/message.h"
+
 #include "renderer/resources/assets/cache.h"
 #include "renderer/resources/parser/common.h"
 #include "renderer/resources/parser/parse_blendmask.h"
 #include "renderer/resources/terrain/blendpattern_info.h"
 #include "renderer/resources/terrain/blendtable_info.h"
+#include "util/file.h"
+#include "util/path.h"
 #include "util/strings.h"
+
 
 namespace openage::renderer::resources::parser {
 

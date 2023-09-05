@@ -1,12 +1,9 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "curve.h"
-#include "iterator.h"
-
-#include <iterator>
-#include <limits>
+#include "curve/iterator.h"
+#include "time/time.h"
 
 
 namespace openage::curve {
@@ -19,8 +16,8 @@ namespace openage::curve {
  * It depends on val_t as its value type, container_t is the container
  * to operate on and the function valid_f, that checks if an element is alive.
  */
-template<typename val_t,
-         typename container_t>
+template <typename val_t,
+          typename container_t>
 class QueueFilterIterator : public CurveIterator<val_t, container_t, typename container_t::const_iterator> {
 public:
 	using const_iterator = typename container_t::const_iterator;
@@ -30,15 +27,13 @@ public:
 	 */
 	QueueFilterIterator(const const_iterator &base,
 	                    const container_t *base_container,
-	                    const time_t &from,
-	                    const time_t &to)
-		:
+	                    const time::time_t &from,
+	                    const time::time_t &to) :
 		CurveIterator<val_t, container_t>(base, base_container, from, to) {}
 
 	virtual bool valid() const override {
 		if (this->container->end().get_base() != this->get_base()) {
-			return (this->get_base()->time() >= this->from and
-			        this->get_base()->time() < this->to);
+			return (this->get_base()->time() >= this->from and this->get_base()->time() < this->to);
 		}
 		return false;
 	}
@@ -49,4 +44,4 @@ public:
 	}
 };
 
-} // openage::curve
+} // namespace openage::curve

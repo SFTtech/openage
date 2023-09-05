@@ -57,7 +57,7 @@ public:
 	size_t _id;
 
 private:
-	void child_changes(const curve::time_t &time);
+	void child_changes(const time::time_t &time);
 };
 
 
@@ -72,7 +72,7 @@ public:
 	std::shared_ptr<curve::Segmented<util::Vector2d>> position;
 
 private:
-	void child_changes(const curve::time_t &time);
+	void child_changes(const time::time_t &time);
 	size_t _id;
 };
 

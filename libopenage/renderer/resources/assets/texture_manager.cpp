@@ -3,8 +3,8 @@
 #include "texture_manager.h"
 
 #include "renderer/renderer.h"
-#include "renderer/resources/parser/parse_texture.h"
 #include "renderer/resources/texture_data.h"
+
 
 namespace openage::renderer::resources {
 

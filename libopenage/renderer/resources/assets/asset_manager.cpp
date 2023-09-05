@@ -2,9 +2,10 @@
 
 #include "asset_manager.h"
 
+#include "error/error.h"
 #include "log/log.h"
+#include "log/message.h"
 
-#include "renderer/renderer.h"
 #include "renderer/resources/animation/animation_info.h"
 #include "renderer/resources/assets/cache.h"
 #include "renderer/resources/assets/texture_manager.h"
@@ -18,8 +19,8 @@
 #include "renderer/resources/terrain/blendpattern_info.h"
 #include "renderer/resources/terrain/blendtable_info.h"
 #include "renderer/resources/terrain/terrain_info.h"
-#include "renderer/resources/texture_data.h"
 #include "renderer/resources/texture_info.h"
+
 
 namespace openage::renderer::resources {
 

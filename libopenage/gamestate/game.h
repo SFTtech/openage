@@ -3,8 +3,7 @@
 #pragma once
 
 #include <memory>
-
-#include "util/path.h"
+#include <string>
 
 namespace nyan {
 class Database;
@@ -22,6 +21,10 @@ class EventLoop;
 
 namespace renderer {
 class RenderFactory;
+}
+
+namespace util {
+class Path;
 }
 
 namespace gamestate {

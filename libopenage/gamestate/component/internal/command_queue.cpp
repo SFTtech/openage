@@ -2,6 +2,8 @@
 
 #include "command_queue.h"
 
+#include <deque>
+
 #include "gamestate/component/types.h"
 
 
@@ -15,7 +17,7 @@ inline component_t CommandQueue::get_type() const {
 	return component_t::COMMANDQUEUE;
 }
 
-void CommandQueue::add_command(const curve::time_t &time,
+void CommandQueue::add_command(const time::time_t &time,
                                const std::shared_ptr<command::Command> &command) {
 	this->command_queue.insert(time, command);
 }
@@ -24,7 +26,7 @@ const curve::Queue<std::shared_ptr<command::Command>> &CommandQueue::get_queue()
 	return this->command_queue;
 }
 
-std::shared_ptr<command::Command> CommandQueue::pop_command(const curve::time_t &time) {
+std::shared_ptr<command::Command> CommandQueue::pop_command(const time::time_t &time) {
 	return this->command_queue.pop_front(time);
 }
 

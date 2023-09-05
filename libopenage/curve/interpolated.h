@@ -2,10 +2,10 @@
 
 #pragma once
 
-#include <type_traits>
+#include "curve/base_curve.h"
+#include "time/time.h"
+#include "util/fixed_point.h"
 
-#include "../log/log.h"
-#include "base_curve.h"
 
 namespace openage::curve {
 
@@ -15,7 +15,7 @@ namespace openage::curve {
  * Extends the value container to support interpolation between values.
  *
  * The bound template type T has to implement `operator +(T)` and
- * `operator *(time_t)`.
+ * `operator *(time::time_t)`.
  */
 template <typename T>
 class Interpolated : public BaseCurve<T> {
@@ -34,19 +34,19 @@ public:
 	 * val([a:x, b:y], t) = x + (y - x)/(b - a) * (t - a)
 	 */
 
-	T get(const time_t &) const override;
+	T get(const time::time_t &) const override;
 };
 
 
 template <typename T>
-T Interpolated<T>::get(const time_t &time) const {
+T Interpolated<T>::get(const time::time_t &time) const {
 	const auto &e = this->container.last(time, this->last_element);
 	this->last_element = e;
 
 	auto nxt = e;
 	++nxt;
 
-	time_t interval = 0;
+	time::time_t interval = 0;
 
 	auto offset = time - e->time;
 

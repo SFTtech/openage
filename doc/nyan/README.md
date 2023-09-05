@@ -1,13 +1,11 @@
-nyan
-====
+# nyan
 
 nyan - yet another notation
 
 https://github.com/SFTtech/nyan
 
 
-Idea
-----
+## Idea
 
 nyan is the data storage format for openage.
 
@@ -32,18 +30,23 @@ it can actually store unit upgrades, unit abilities, research,
 civ bonuses and age upgrades.
 
 
-Technical specification
------------------------
+## Technical specification
 
-[nyan specification](https://github.com/SFTtech/nyan/blob/master/doc/nyan.md)
+[nyan specification](https://github.com/SFTtech/nyan/blob/master/doc/README.md)
 
 
-openage specifics
------------------
+## openage specifics
 
 nyan is a general purpose data language,
 the following describes the openage specific usage of it.
 
 * [data conversion](conversion.md)
 * [openage engine nyan interface](openage-lib.md)
-* [examples](examples.md)
+
+## Examples
+
+For the beginning, you can look at these resources to find examples of the nyan notation:
+
+* [nyan docs](https://github.com/SFTtech/nyan/blob/master/doc/nyan.md)
+* converted game assets from [our converter](/doc/convert/)
+* [openage modding guide for nyan](https://github.com/SFTtech/openage-modding/tree/master/tutorials/nyan)

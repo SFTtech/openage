@@ -3,10 +3,10 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 
-#include <eigen3/Eigen/Dense>
+#include "time/time.h"
 
-#include "curve/discrete.h"
 
 namespace openage::renderer {
 
@@ -55,7 +55,7 @@ public:
      *
      * @param time Current simulation time.
      */
-	void update_uniforms(const curve::time_t &time = 0.0);
+	void update_uniforms(const time::time_t &time = 0.0);
 
 	/**
      * Get the meshes composing the terrain.

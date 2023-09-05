@@ -1,10 +1,10 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "log.h"
 
-#include "message.h"
-#include "named_logsource.h"
-#include "stdout_logsink.h"
+#include "log/named_logsource.h"
+#include "log/stdout_logsink.h"
+
 
 namespace openage {
 namespace log {
@@ -20,4 +20,5 @@ void set_level(level lvl) {
 }
 
 
-}} // namespace openage::log
+} // namespace log
+} // namespace openage

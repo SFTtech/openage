@@ -1,16 +1,20 @@
 // Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
-#include "curve/curve.h"
+#include <iterator>
+#include <list>
+#include <memory>
+#include <string>
+
 #include "curve/continuous.h"
 #include "curve/discrete.h"
 #include "curve/discrete_mod.h"
+#include "curve/keyframe.h"
 #include "curve/keyframe_container.h"
 #include "curve/segmented.h"
 #include "event/event_loop.h"
-#include "log/log.h"
 #include "testing/testing.h"
-
-#include "util/compiler.h"
+#include "time/time.h"
+#include "util/fixed_point.h"
 
 namespace openage::curve::tests {
 
@@ -33,7 +37,7 @@ void curve_types() {
 		{
 			auto it = c.begin();
 			TESTEQUALS(it->value, 0);
-			TESTEQUALS(it->time, std::numeric_limits<curve::time_t>::min());
+			TESTEQUALS(it->time, std::numeric_limits<time::time_t>::min());
 			TESTEQUALS((++it)->time, 0);
 			TESTEQUALS(it->value, 0);
 			TESTEQUALS((++it)->time, 1);
@@ -136,7 +140,7 @@ void curve_types() {
 
 		{
 			auto it = c.begin();
-			TESTEQUALS(it->time, std::numeric_limits<time_t>::min());
+			TESTEQUALS(it->time, std::numeric_limits<time::time_t>::min());
 			TESTEQUALS(it->value, 0);
 
 			TESTEQUALS((++it)->time, 0);
@@ -164,7 +168,7 @@ void curve_types() {
 		// TODO: test c.insert_overwrite and c.insert_after
 
 		KeyframeContainer<int> c2;
-		c2.sync_after(c, 1);
+		c2.sync(c, 1);
 		// now c2 should be [-inf: 0, 1: 15, 2: 20, 3: 25]
 		TESTEQUALS(c2.last(0)->value, 0);
 		TESTEQUALS(c2.last(1)->value, 15);

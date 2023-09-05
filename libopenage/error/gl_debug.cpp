@@ -1,16 +1,17 @@
-// Copyright 2016-2017 the openage authors. See copying.md for legal info.
+// Copyright 2016-2023 the openage authors. See copying.md for legal info.
 
 #include "gl_debug.h"
 
 #include <epoxy/gl.h>
 
-#include "error.h"
+#include "log/message.h"
 
-namespace openage {
-namespace error {
+#include "error/error.h"
+
+namespace openage::error {
 
 namespace {
-void APIENTRY callback(GLenum source, GLenum, GLuint, GLenum, GLsizei, const GLchar *message, const void*) {
+void APIENTRY callback(GLenum source, GLenum, GLuint, GLenum, GLsizei, const GLchar *message, const void *) {
 	const char *source_name;
 
 	switch (source) {
@@ -40,7 +41,7 @@ void APIENTRY callback(GLenum source, GLenum, GLuint, GLenum, GLsizei, const GLc
 	throw Error(MSG(err) << "OpenGL error from " << source_name << ": '" << message << "'.");
 }
 
-}
+} // namespace
 
 SDL_GLContext create_debug_context(SDL_Window *window) {
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
@@ -52,7 +53,7 @@ SDL_GLContext create_debug_context(SDL_Window *window) {
 		glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
 
 		if (!(flags & GL_CONTEXT_FLAG_DEBUG_BIT))
-			throw Error(MSG(err)<< "Failed creating a debug OpenGL context.");
+			throw Error(MSG(err) << "Failed creating a debug OpenGL context.");
 
 		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_FALSE);
 
@@ -66,4 +67,4 @@ SDL_GLContext create_debug_context(SDL_Window *window) {
 	return ctx;
 }
 
-}} // openage::error
+} // namespace openage::error

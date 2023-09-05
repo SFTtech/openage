@@ -2,16 +2,15 @@
 
 #pragma once
 
-#include <functional>
-#include <list>
 #include <memory>
 #include <mutex>
+#include <string>
 #include <unordered_map>
 
-#include "curve/curve.h"
-#include "event.h"
-#include "eventqueue.h"
-#include "log/log.h"
+#include "event/eventhandler.h"
+#include "event/eventqueue.h"
+#include "time/time.h"
+
 
 namespace openage::event {
 
@@ -63,7 +62,7 @@ public:
 	std::shared_ptr<Event> create_event(const std::string eventhandler,
 	                                    const std::shared_ptr<EventEntity> target,
 	                                    const std::shared_ptr<State> state,
-	                                    const curve::time_t reference_time,
+	                                    const time::time_t reference_time,
 	                                    const EventHandler::param_map params = EventHandler::param_map({}));
 
 	/**
@@ -85,7 +84,7 @@ public:
 	std::shared_ptr<Event> create_event(const std::shared_ptr<EventHandler> eventhandler,
 	                                    const std::shared_ptr<EventEntity> target,
 	                                    const std::shared_ptr<State> state,
-	                                    const curve::time_t reference_time,
+	                                    const time::time_t reference_time,
 	                                    const EventHandler::param_map params = EventHandler::param_map({}));
 
 	/**
@@ -94,7 +93,7 @@ public:
      * @param time_until Maximum time until which events are executed.
      * @param state Global state.
 	 */
-	void reach_time(const curve::time_t &time_until,
+	void reach_time(const time::time_t &time_until,
 	                const std::shared_ptr<State> &state);
 
 	/**
@@ -110,7 +109,7 @@ public:
      * @param changes_at Time at which the event should be reevaluated.
 	 */
 	void create_change(const std::shared_ptr<Event> event,
-	                   const curve::time_t changes_at);
+	                   const time::time_t changes_at);
 
 	/**
      * Get the event queue.
@@ -130,7 +129,7 @@ private:
      *
 	 * @returns number of events processed
 	 */
-	int execute_events(const curve::time_t &time_until,
+	int execute_events(const time::time_t &time_until,
 	                   const std::shared_ptr<State> &state);
 
 	/**

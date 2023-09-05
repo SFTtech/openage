@@ -7,6 +7,9 @@
 
 #include "curve/discrete.h"
 #include "gamestate/component/internal_component.h"
+#include "gamestate/component/types.h"
+#include "time/time.h"
+
 
 namespace openage {
 
@@ -50,7 +53,7 @@ public:
      * @param time Time at which the node is requested.
      * @return Current node in the flow graph.
      */
-	const std::shared_ptr<activity::Node> get_node(const curve::time_t &time) const;
+	const std::shared_ptr<activity::Node> get_node(const time::time_t &time) const;
 
 	/**
      * Sets the current node in the activity flow graph at a given time.
@@ -58,7 +61,7 @@ public:
      * @param time Time at which the node is set.
      * @param node Current node in the flow graph.
      */
-	void set_node(const curve::time_t &time,
+	void set_node(const time::time_t &time,
 	              const std::shared_ptr<activity::Node> &node);
 
 	/**
@@ -66,7 +69,7 @@ public:
      *
      * @param time Time at which the node is set.
      */
-	void init(const curve::time_t &time);
+	void init(const time::time_t &time);
 
 	/**
      * Add a scheduled event that is waited for to progress in the node graph.
@@ -80,7 +83,7 @@ public:
      *
      * @param time Time at which the events are cancelled.
      */
-	void cancel_events(const curve::time_t &time);
+	void cancel_events(const time::time_t &time);
 
 private:
 	/**

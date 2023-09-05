@@ -4,11 +4,14 @@
 
 #include <memory>
 #include <shared_mutex>
+#include <string>
 #include <vector>
 
 #include "coord/scene.h"
 #include "curve/discrete.h"
+#include "time/time.h"
 #include "util/vector.h"
+
 
 namespace openage::renderer {
 
@@ -31,7 +34,7 @@ public:
 	void update(util::Vector2s size,
 	            std::vector<float> height_map,
 	            const std::string terrain_path,
-	            const curve::time_t time = 0.0);
+	            const time::time_t time = 0.0);
 
 	/**
      * Get the vertices of the terrain.
