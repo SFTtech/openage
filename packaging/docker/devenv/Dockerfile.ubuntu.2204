@@ -14,7 +14,7 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     libeigen3-dev \
     libepoxy-dev \
     libfontconfig1-dev \
-    libfreetype6-dev \
+    libfreetype-dev \
     libharfbuzz-dev \
     libogg-dev \
     libopus-dev \
