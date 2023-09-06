@@ -17,6 +17,7 @@ add_sources(libopenage
 add_subdirectory(activity/)
 add_subdirectory(api/)
 add_subdirectory(component/)
+add_subdirectory(demo/)
 add_subdirectory(event/)
 add_subdirectory(system/)
 
