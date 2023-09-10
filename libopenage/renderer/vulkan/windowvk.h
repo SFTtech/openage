@@ -18,7 +18,7 @@ namespace openage {
 namespace renderer {
 namespace vulkan {
 
-struct vlk_capabilities {
+struct vlk_spec {
 	/// Names of available layers.
 	std::set<std::string> layers;
 	/// Names of available extensions.
@@ -37,7 +37,7 @@ public:
 	VkSurfaceKHR get_surface() const;
 
 private:
-	vlk_capabilities capabilities;
+	vlk_spec capabilities;
 
 	VkInstance instance;
 	VkSurfaceKHR surface;

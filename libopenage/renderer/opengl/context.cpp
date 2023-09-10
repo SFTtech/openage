@@ -21,7 +21,7 @@ namespace openage::renderer::opengl {
 static constexpr std::array<std::pair<int, int>, 1> gl_versions = {{{3, 3}}}; // for now we don't need any higher versions
 
 /// Finds out the supported graphics functions and OpenGL version of the device.
-static gl_context_capabilities find_capabilities() {
+gl_context_spec GlContext::find_spec() {
 	QSurfaceFormat test_format{};
 	test_format.setProfile(QSurfaceFormat::OpenGLContextProfile::CoreProfile);
 	test_format.setSwapBehavior(QSurfaceFormat::SwapBehavior::DoubleBuffer);
@@ -60,7 +60,7 @@ static gl_context_capabilities find_capabilities() {
 
 	test_context.makeCurrent(&test_surface);
 
-	gl_context_capabilities caps{};
+	gl_context_spec caps{};
 
 	// Texture parameters
 	GLint temp;
@@ -86,27 +86,10 @@ GlContext::GlContext(const std::shared_ptr<QWindow> &window,
                      bool debug) :
 	window{window},
 	log_handler{} {
-	this->capabilities = find_capabilities();
-	auto const &capabilities = this->capabilities;
+	this->specs = find_spec();
+	auto const &specs = this->specs;
 
-	this->uniform_buffer_bindings = std::vector<bool>(capabilities.max_uniform_buffer_bindings);
-
-	QSurfaceFormat format{};
-	format.setProfile(QSurfaceFormat::OpenGLContextProfile::CoreProfile);
-	format.setSwapBehavior(QSurfaceFormat::SwapBehavior::DoubleBuffer);
-	format.setMajorVersion(capabilities.major_version);
-	format.setMinorVersion(capabilities.minor_version);
-
-	format.setAlphaBufferSize(8);
-	format.setDepthBufferSize(24);
-	format.setStencilBufferSize(8);
-
-	// TODO: Make debug context optional
-	format.setOption(QSurfaceFormat::DebugContext);
-
-	// TODO: Set format as default for all windows with QSurface::setDefaultFormat()
-	this->window->setFormat(format);
-	this->window->create();
+	this->uniform_buffer_bindings = std::vector<bool>(specs.max_uniform_buffer_bindings);
 
 	if (debug) {
 		this->log_handler = std::make_shared<GlDebugLogHandler>();
@@ -128,40 +111,40 @@ GlContext::GlContext(const std::shared_ptr<QWindow> &window,
 	}
 
 	// We still have to verify that our version of libepoxy supports this version of OpenGL.
-	int epoxy_glv = capabilities.major_version * 10 + capabilities.minor_version;
+	int epoxy_glv = specs.major_version * 10 + specs.minor_version;
 	if (not epoxy_is_desktop_gl() or epoxy_gl_version() < epoxy_glv) {
 		throw Error(MSG(err) << "The used version of libepoxy does not support OpenGL version "
-		                     << capabilities.major_version << "." << capabilities.minor_version);
+		                     << specs.major_version << "." << specs.minor_version);
 	}
 
-	log::log(MSG(info) << "Created OpenGL context version " << capabilities.major_version << "." << capabilities.minor_version);
+	log::log(MSG(info) << "Created OpenGL context version " << specs.major_version << "." << specs.minor_version);
 
 	// To quote the standard doc: 'The value gives a rough estimate of the
 	// largest texture that the GL can handle'
 	// -> wat?  anyways, we need at least 1024x1024.
 	log::log(MSG(dbg) << "Maximum supported texture size: "
-	                  << capabilities.max_texture_size);
-	if (capabilities.max_texture_size < 1024) {
+	                  << specs.max_texture_size);
+	if (specs.max_texture_size < 1024) {
 		throw Error(MSG(err) << "Maximum supported texture size is too small: "
-		                     << capabilities.max_texture_size);
+		                     << specs.max_texture_size);
 	}
 
 	log::log(MSG(dbg) << "Maximum supported texture units: "
-	                  << capabilities.max_texture_slots);
-	if (capabilities.max_texture_slots < 2) {
+	                  << specs.max_texture_slots);
+	if (specs.max_texture_slots < 2) {
 		throw Error(MSG(err) << "Your GPU doesn't have enough texture units: "
-		                     << capabilities.max_texture_slots);
+		                     << specs.max_texture_slots);
 	}
 }
 
 GlContext::GlContext(GlContext &&other) :
-	gl_context(other.gl_context), capabilities(other.capabilities) {
+	gl_context(other.gl_context), specs(other.specs) {
 	other.gl_context = nullptr;
 }
 
 GlContext &GlContext::operator=(GlContext &&other) {
 	this->gl_context = other.gl_context;
-	this->capabilities = other.capabilities;
+	this->specs = other.specs;
 	other.gl_context = nullptr;
 
 	return *this;
@@ -171,8 +154,8 @@ std::shared_ptr<QOpenGLContext> GlContext::get_raw_context() const {
 	return this->gl_context;
 }
 
-gl_context_capabilities GlContext::get_capabilities() const {
-	return this->capabilities;
+gl_context_spec GlContext::get_specs() const {
+	return this->specs;
 }
 
 void GlContext::check_error() {
@@ -246,7 +229,7 @@ void GlContext::set_current_program(const std::shared_ptr<GlShaderProgram> &prog
 }
 
 size_t GlContext::get_uniform_buffer_binding() {
-	for (size_t i = 1; i < this->capabilities.max_uniform_buffer_bindings; ++i) {
+	for (size_t i = 1; i < this->specs.max_uniform_buffer_bindings; ++i) {
 		if (not this->uniform_buffer_bindings[i]) {
 			this->uniform_buffer_bindings[i] = true;
 			return i;
@@ -258,7 +241,7 @@ size_t GlContext::get_uniform_buffer_binding() {
 }
 
 void GlContext::free_uniform_buffer_binding(size_t binding_point) {
-	if (binding_point >= this->capabilities.max_uniform_buffer_bindings) [[unlikely]] {
+	if (binding_point >= this->specs.max_uniform_buffer_bindings) [[unlikely]] {
 		throw Error(MSG(err) << "Cannot free invalid uniform buffer binding point: " << binding_point);
 	}
 	this->uniform_buffer_bindings[binding_point] = false;

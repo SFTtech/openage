@@ -66,7 +66,7 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 	GlSimpleObject(context,
                    [](GLuint handle) { glDeleteProgram(handle); }),
 	validated(false) {
-	const gl_context_capabilities &caps = context->get_capabilities();
+	const gl_context_spec &caps = context->get_specs();
 
 	GLuint handle = glCreateProgram();
 	this->handle = handle;

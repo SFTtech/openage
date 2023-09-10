@@ -1,4 +1,4 @@
-// Copyright 2017-2022 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #include "windowvk.h"
 
@@ -35,15 +35,15 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL vlk_debug_cb(
 #endif
 
 /// Queries the Vulkan implementation for available extensions and layers.
-static vlk_capabilities find_capabilities() {
-	vlk_capabilities caps;
+static vlk_spec find_spec() {
+	vlk_spec specs;
 
 	// Find which layers are available.
 	auto layers = vk_do_ritual(vkEnumerateInstanceLayerProperties);
 
 	log::log(MSG(dbg) << "Available Vulkan layers:");
 	for (auto const &lr : layers) {
-		caps.layers.insert(lr.layerName);
+		specs.layers.insert(lr.layerName);
 		log::log(MSG(dbg) << "\t" << lr.layerName);
 	}
 
@@ -56,7 +56,7 @@ static vlk_capabilities find_capabilities() {
 	auto props = vk_do_ritual(vkEnumerateInstanceExtensionProperties, nullptr);
 
 	for (auto const &p : props) {
-		caps.extensions.emplace(p.extensionName);
+		specs.extensions.emplace(p.extensionName);
 	}
 
 	// Then retrieve extensions from layers.
@@ -64,20 +64,20 @@ static vlk_capabilities find_capabilities() {
 		auto lr_props = vk_do_ritual(vkEnumerateInstanceExtensionProperties, lr.layerName);
 
 		for (auto const &p : lr_props) {
-			caps.extensions.emplace(p.extensionName);
+			specs.extensions.emplace(p.extensionName);
 		}
 	}
 
 	log::log(MSG(dbg) << "Available Vulkan extensions:");
-	for (const auto &ext : caps.extensions) {
+	for (const auto &ext : specs.extensions) {
 		log::log(MSG(dbg) << "\t" << ext);
 	}
 
-	return caps;
+	return specs;
 }
 
 VlkWindow::VlkWindow(const char *title, size_t width, size_t height) :
-	Window(width, height), capabilities(find_capabilities()) {
+	Window(width, height), capabilities(find_spec()) {
 	std::vector<const char *> extension_names;
 
 #ifndef NDEBUG
