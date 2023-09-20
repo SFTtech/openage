@@ -121,9 +121,6 @@ Make sure you have all the dependencies installed.
 - Make sure you have everything from the [dependency list](#dependencies)
 - Select the compiler and mode: see `./configure --help`
   - Linux etc: `./configure`
-    - On Debian you might get an error saying that it couldn't find SDL2 library. This happens because the CMAKE prefix and SDL2 path are not set correctly.
-      The solution is to append at the end of the `./configure` command the cmake variables for both the prefix and SDL2 path, like so:
-      - `./configure <your configure opts> -- -DCMAKE_PREFIX_PATH=/usr -DSDL2_DIR=/usr/include/SDL2` (you can use `find` to look for the correct paths)
   - macOS:  `./configure --compiler=clang`
     - hassle-free building on macOS (if above is not working)
       - get the latest llvm build from: `https://github.com/llvm/llvm-project/releases/latest`

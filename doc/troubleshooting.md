@@ -36,3 +36,8 @@ include the necessary CMake files defining the target. There is an indepth discu
 [here](https://discourse.libsdl.org/t/how-is-sdl2-supposed-to-be-used-with-cmake/31275/16).
 As a solution, you should update your SDL packages to SDL >=2.0.12 or **compile the latest SDL2 and SDL2-image from
 source**. The latest version includes the necessary CMake files to expose the `SDL2::SDL2` target.
+
+## Building on Debian 12
+On Debian you might get an error saying that it couldn't find SDL2 library. This happens because the CMAKE prefix and SDL2 path are not set correctly.
+The solution is to append at the end of the `./configure` command the cmake variables for both the prefix and SDL2 path, like so:
+`./configure <your configure opts> -- -DCMAKE_PREFIX_PATH=/usr -DSDL2_DIR=/usr/include/SDL2` (you can use `find` to look for the correct paths)
