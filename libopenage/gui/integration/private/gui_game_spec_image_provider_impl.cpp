@@ -1,4 +1,4 @@
-// Copyright 2015-2021 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "gui_game_spec_image_provider_impl.h"
 
@@ -11,18 +11,16 @@
 #include "../../../gamestate/old/game_spec.h"
 #include "../../guisys/private/gui_event_queue_impl.h"
 
-#include "gui_texture_factory.h"
 #include "gui_filled_texture_handles.h"
+#include "gui_texture_factory.h"
 
 namespace openage::gui {
 
-GuiGameSpecImageProviderImpl::GuiGameSpecImageProviderImpl(qtsdl::GuiEventQueue *render_updater)
-	:
+GuiGameSpecImageProviderImpl::GuiGameSpecImageProviderImpl(qtsdl::GuiEventQueue *render_updater) :
 	GuiImageProviderImpl{},
 	invalidated{},
 	filled_handles{std::make_shared<GuiFilledTextureHandles>()},
 	ended{} {
-
 	QThread *render_thread = qtsdl::GuiEventQueueImpl::impl(render_updater)->get_thread();
 	this->render_thread_callback.moveToThread(render_thread);
 	QObject::connect(&this->render_thread_callback, &qtsdl::GuiCallback::process_blocking, &this->render_thread_callback, &qtsdl::GuiCallback::process, render_thread != QThread::currentThread() ? Qt::BlockingQueuedConnection : Qt::DirectConnection);
@@ -30,7 +28,7 @@ GuiGameSpecImageProviderImpl::GuiGameSpecImageProviderImpl(qtsdl::GuiEventQueue 
 
 GuiGameSpecImageProviderImpl::~GuiGameSpecImageProviderImpl() = default;
 
-void GuiGameSpecImageProviderImpl::on_game_spec_loaded(const std::shared_ptr<GameSpec>& loaded_game_spec) {
+void GuiGameSpecImageProviderImpl::on_game_spec_loaded(const std::shared_ptr<GameSpec> &loaded_game_spec) {
 	ENSURE(loaded_game_spec, "spec hasn't been checked or was invalidated");
 
 	std::unique_lock<std::mutex> lck{this->loaded_game_spec_mutex};
@@ -44,7 +42,7 @@ void GuiGameSpecImageProviderImpl::on_game_spec_loaded(const std::shared_ptr<Gam
 	}
 }
 
-void GuiGameSpecImageProviderImpl::migrate_to_new_game_spec(const std::shared_ptr<GameSpec>& loaded_game_spec) {
+void GuiGameSpecImageProviderImpl::migrate_to_new_game_spec(const std::shared_ptr<GameSpec> &loaded_game_spec) {
 	ENSURE(loaded_game_spec, "spec hasn't been checked or was invalidated");
 
 	if (this->loaded_game_spec) {
@@ -57,7 +55,8 @@ void GuiGameSpecImageProviderImpl::migrate_to_new_game_spec(const std::shared_pt
 			using namespace std::placeholders;
 			this->filled_handles->refresh_all_handles_with_texture(std::bind(&GuiGameSpecImageProviderImpl::overwrite_texture_handle, this, _1, _2, _3));
 		});
-	} else {
+	}
+	else {
 		this->loaded_game_spec = loaded_game_spec;
 	}
 }
@@ -71,12 +70,6 @@ void GuiGameSpecImageProviderImpl::on_game_spec_invalidated() {
 	std::unique_lock<std::mutex> lck{this->loaded_game_spec_mutex};
 
 	if (this->loaded_game_spec) {
-		const TextureHandle missing_texture = get_missing_texture();
-
-		emit this->render_thread_callback.process_blocking([this, &missing_texture] {
-			this->filled_handles->fill_all_handles_with_texture(missing_texture);
-		});
-
 		invalidated = true;
 	}
 }
@@ -86,19 +79,16 @@ GuiFilledTextureHandleUser GuiGameSpecImageProviderImpl::fill_texture_handle(con
 	return GuiFilledTextureHandleUser(this->filled_handles, id, requested_size, filled_handle);
 }
 
-TextureHandle GuiGameSpecImageProviderImpl::get_missing_texture() {
-	return TextureHandle{this->loaded_game_spec->get_texture("missing.png", false), -1};
-}
-
-QQuickTextureFactory* GuiGameSpecImageProviderImpl::requestTexture(const QString &id, QSize *size, const QSize &requestedSize) {
+QQuickTextureFactory *GuiGameSpecImageProviderImpl::requestTexture(const QString &id, QSize *size, const QSize &requestedSize) {
 	std::unique_lock<std::mutex> lck{this->loaded_game_spec_mutex};
 
-	this->loaded_game_spec_cond.wait(lck, [this] {return this->ended || this->loaded_game_spec;});
+	this->loaded_game_spec_cond.wait(lck, [this] { return this->ended || this->loaded_game_spec; });
 
 	if (this->ended) {
 		qWarning("ImageProvider was stopped during the load, so it'll appear like the requestTexture() isn't implemented.");
 		return this->GuiImageProviderImpl::requestTexture(id, size, requestedSize);
-	} else {
+	}
+	else {
 		auto tex_factory = new GuiTextureFactory{this, id, requestedSize};
 		*size = tex_factory->textureSize();
 		return tex_factory;

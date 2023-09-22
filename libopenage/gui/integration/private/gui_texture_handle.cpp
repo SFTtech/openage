@@ -1,28 +1,25 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "gui_texture_handle.h"
 
 #include <numeric>
 
-#include "../../../texture.h"
 
 namespace openage {
 namespace gui {
 
-SizedTextureHandle::SizedTextureHandle()
-	:
-	TextureHandle{nullptr, 0},
+SizedTextureHandle::SizedTextureHandle() :
+	TextureHandle{0},
 	size{} {
 }
 
-SizedTextureHandle::SizedTextureHandle(const TextureHandle &handle, const QSize &size)
-	:
+SizedTextureHandle::SizedTextureHandle(const TextureHandle &handle, const QSize &size) :
 	TextureHandle(handle),
 	size{size} {
 }
 
 bool isAtlasTexture(const TextureHandle &texture_handle) {
-	return texture_handle.subid >= 0 && texture_handle.texture->get_subtexture_count() > 1;
+	return texture_handle.subid >= 0;
 }
 
 QSize textureSize(const SizedTextureHandle &texture_handle) {
@@ -30,14 +27,7 @@ QSize textureSize(const SizedTextureHandle &texture_handle) {
 }
 
 QSize native_size(const TextureHandle &texture_handle) {
-	auto tex = texture_handle.texture;
-
-	if (isAtlasTexture(texture_handle)) {
-		auto sub = tex->get_subtexture(texture_handle.subid);
-		return QSize(sub->w, sub->h);
-	} else {
-		return QSize(tex->w, tex->h);
-	}
+	return QSize(0, 0);
 }
 
 QSize aspect_fit_size(const TextureHandle &texture_handle, const QSize &requested_size) {
@@ -48,9 +38,11 @@ QSize aspect_fit_size(const TextureHandle &texture_handle, const QSize &requeste
 
 		// If requested_size.isEmpty() then the caller don't care how big one or two dimensions can grow.
 		return size.scaled(bounding_size, requested_size.isEmpty() && (requested_size.width() > size.width() || requested_size.height() > size.height()) ? Qt::KeepAspectRatioByExpanding : Qt::KeepAspectRatio);
-	} else {
+	}
+	else {
 		return size;
 	}
 }
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

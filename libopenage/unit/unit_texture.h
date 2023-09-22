@@ -1,4 +1,4 @@
-// Copyright 2015-2021 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -23,7 +23,7 @@ class Sound;
  *
  * This type can also deal with playing position based game sounds.
  */
-class UnitTexture {
+class [[deprecated]] UnitTexture {
 public:
 	/**
 	 * Delta option specifies whether the delta graphics are included.
@@ -31,29 +31,29 @@ public:
 	 * Note that the game data contains loops in delta links
 	 * which mean recursive loading should be avoided
 	 */
-	UnitTexture(GameSpec &spec, uint16_t graphic_id, bool delta=true);
-	UnitTexture(GameSpec &spec, const gamedata::graphic *graphic, bool delta=true);
+	UnitTexture(GameSpec &spec, uint16_t graphic_id, bool delta = true);
+	UnitTexture(GameSpec &spec, const gamedata::graphic *graphic, bool delta = true);
 
 	/**
 	 * const attributes of the graphic
 	 */
-	const int16_t      id;
-	const int16_t      sound_id;
+	const int16_t id;
+	const int16_t sound_id;
 	const unsigned int frame_count;
 	const unsigned int angle_count;
-	const int16_t      mirroring_mode;
-	const float        frame_rate;
+	const int16_t mirroring_mode;
+	const float frame_rate;
 
 	/**
 	 * draw object with vertical orientation (arrows)
 	 * adding an addtion degree of orientation
 	 */
-	const bool         use_up_angles;
+	const bool use_up_angles;
 
 	/**
 	 * use delta information
 	 */
-	const bool         use_deltas;
+	const bool use_deltas;
 
 	/**
 	 * invalid unit textures will cause errors if drawn
@@ -68,7 +68,7 @@ public:
 	/**
 	 * a sample drawing for hud
 	 */
-	void sample(const coord::CoordManager &coord, const coord::camhud &draw_pos, unsigned color=1) const;
+	void sample(const coord::CoordManager &coord, const coord::camhud &draw_pos, unsigned color = 1) const;
 
 	/**
 	 * draw object with no direction
@@ -87,11 +87,6 @@ public:
 
 private:
 	/**
-	 * use a regular texture for drawing
-	 */
-	const Texture *texture;
-
-	/**
 	 * the above frame count covers the entire graphic (with deltas)
 	 * the actual number in the base texture may be different
 	 */
@@ -109,11 +104,6 @@ private:
 
 	// delta graphics
 	std::vector<std::pair<std::unique_ptr<UnitTexture>, coord::camgame_delta>> deltas;
-
-	/**
-	 * find which subtexture should be used for drawing this texture
-	 */
-	unsigned int subtexture(const Texture *t, unsigned int angle, unsigned int frame) const;
 };
 
 /**
@@ -125,6 +115,6 @@ private:
  * @param first_angle offset added to angle, modulo number of angles
  * @return image set index
  */
-unsigned int dir_group(coord::phys3_delta dir, unsigned int angles=8);
+unsigned int dir_group(coord::phys3_delta dir, unsigned int angles = 8);
 
 } // namespace openage

@@ -82,31 +82,6 @@ index_t GameSpec::get_slp_graphic(index_t slp) {
 	return this->slp_to_graphic[slp];
 }
 
-Texture *GameSpec::get_texture(index_t graphic_id) const {
-	if (graphic_id <= 0 || this->graphics.count(graphic_id) == 0) {
-		log::log(MSG(dbg) << "  -> ignoring graphics_id: " << graphic_id);
-		return nullptr;
-	}
-
-	auto g = this->graphics.at(graphic_id);
-	int slp_id = g->slp_id;
-	if (slp_id <= 0) {
-		log::log(MSG(dbg) << "  -> ignoring negative slp_id: " << slp_id);
-		return nullptr;
-	}
-
-	log::log(MSG(dbg) << "   slp id/name: " << slp_id << " " << g->name);
-	std::string tex_fname = util::sformat("converted/graphics/%d.slp.png", slp_id);
-
-	return this->get_texture(tex_fname, true);
-}
-
-Texture *GameSpec::get_texture(const std::string &file_name, bool use_metafile) const {
-	// return nullptr if the texture wasn't found (3rd param)
-	// return this->assetmanager->get_texture(file_name, use_metafile, true);
-	return nullptr;
-}
-
 std::shared_ptr<UnitTexture> GameSpec::get_unit_texture(index_t unit_id) const {
 	if (this->unit_textures.count(unit_id) == 0) {
 		if (unit_id > 0) {

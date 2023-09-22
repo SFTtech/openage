@@ -1,4 +1,4 @@
-// Copyright 2014-2021 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -19,7 +19,6 @@ class GameMain;
 class GameSpec;
 class Terrain;
 class TerrainObject;
-class Texture;
 class Sound;
 
 class UnitAbility;
@@ -32,7 +31,7 @@ std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &rest
 /**
  * base game data unit type
  */
-class ObjectProducer: public UnitType {
+class ObjectProducer : public UnitType {
 public:
 	ObjectProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_object *ud);
 	virtual ~ObjectProducer();
@@ -57,7 +56,6 @@ protected:
 	 */
 	const Sound *on_create;
 	const Sound *on_destroy;
-	std::shared_ptr<Texture> terrain_outline;
 	std::shared_ptr<UnitTexture> default_tex;
 	int dead_unit_id;
 };
@@ -65,7 +63,7 @@ protected:
 /**
  * movable unit types
  */
-class MovableProducer: public ObjectProducer {
+class MovableProducer : public ObjectProducer {
 public:
 	MovableProducer(const Player &owner, const GameSpec &spec, const gamedata::projectile_unit *);
 	virtual ~MovableProducer();
@@ -80,7 +78,6 @@ protected:
 	const Sound *on_move;
 	const Sound *on_attack;
 	int projectile;
-
 };
 
 /**
@@ -88,7 +85,7 @@ protected:
  * Stores graphics and attributes for a single unit type
  * in aoe living units are derived from objects
  */
-class LivingProducer: public MovableProducer {
+class LivingProducer : public MovableProducer {
 public:
 	LivingProducer(const Player &owner, const GameSpec &spec, const gamedata::living_unit *);
 	virtual ~LivingProducer();
@@ -105,7 +102,7 @@ private:
  * Will be replaced with nyan system in future
  * in aoe buildings are derived from living units
  */
-class BuildingProducer: public UnitType {
+class BuildingProducer : public UnitType {
 public:
 	BuildingProducer(const Player &owner,
 	                 const GameSpec &spec,
@@ -126,7 +123,6 @@ private:
 	 */
 	const Sound *on_create;
 	const Sound *on_destroy;
-	std::shared_ptr<Texture> terrain_outline;
 	std::shared_ptr<UnitTexture> texture;
 	std::shared_ptr<UnitTexture> destroyed;
 	int projectile;
@@ -146,7 +142,7 @@ private:
  * creates projectiles
  * todo use MovableProducer as base class
  */
-class ProjectileProducer: public UnitType {
+class ProjectileProducer : public UnitType {
 public:
 	ProjectileProducer(const Player &owner, const GameSpec &spec, const gamedata::missile_unit *);
 	virtual ~ProjectileProducer();
@@ -159,7 +155,6 @@ public:
 
 private:
 	const gamedata::missile_unit unit_data;
-	std::shared_ptr<Texture> terrain_outline;
 	std::shared_ptr<UnitTexture> tex;
 	std::shared_ptr<UnitTexture> sh; // shadow texture
 	std::shared_ptr<UnitTexture> destroyed;

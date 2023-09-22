@@ -13,7 +13,6 @@
 #include "../coord/phys.h"
 #include "../coord/pixel.h"
 #include "../coord/tile.h"
-#include "../texture.h"
 #include "../util/misc.h"
 
 namespace openage {
@@ -120,11 +119,9 @@ struct tile_data {
 	terrain_t terrain_id;
 	coord::tile pos{0, 0};
 	int subtexture_id;
-	Texture *tex;
 	int priority;
 	int mask_id;
 	int blend_mode;
-	Texture *mask_tex;
 	tile_state state;
 };
 
@@ -154,9 +151,6 @@ struct terrain_render_data {
 struct terrain_meta {
 	size_t terrain_id_count;
 	size_t blendmode_count;
-
-	std::vector<Texture *> textures;
-	std::vector<Texture *> blending_masks;
 
 	std::unique_ptr<int[]> terrain_id_priority_map;
 	std::unique_ptr<int[]> terrain_id_blendmode_map;
@@ -306,16 +300,6 @@ public:
 	 * return the blending mode/blendomatic mask set for a given terrain id.
 	 */
 	int blendmode(terrain_t terrain_id);
-
-	/**
-	 * get the terrain texture for a given terrain id.
-	 */
-	Texture *texture(terrain_t terrain_id);
-
-	/**
-	 * get the blendomatic mask with the given mask id.
-	 */
-	Texture *blending_mask(ssize_t mask_id);
 
 	/**
 	 * return the blending mode id for two given neighbor ids.

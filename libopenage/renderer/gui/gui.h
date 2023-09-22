@@ -7,7 +7,6 @@
 #include <string>
 
 #include "gui/guisys/public/gui_event_queue.h"
-#include "gui/integration/public/gui_game_spec_image_provider.h"
 #include "renderer/gui/guisys/public/gui_subtree.h"
 
 namespace qtgui {
@@ -129,8 +128,6 @@ private:
 	 * Manages Qt QML components and items.
 	 */
 	qtgui::GuiSubtree subtree;
-
-	// openage::gui::GuiGameSpecImageProvider image_provider_by_filename;
 
 	/**
 	 * Reference to the openage renderer.

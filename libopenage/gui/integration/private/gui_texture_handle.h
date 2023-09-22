@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,13 +6,10 @@
 
 namespace openage {
 
-class Texture;
-
 namespace gui {
 
 class TextureHandle {
 public:
-	openage::Texture *texture;
 	int subid;
 };
 
@@ -36,4 +33,5 @@ QSize native_size(const TextureHandle &texture_handle);
  */
 QSize aspect_fit_size(const TextureHandle &texture_handle, const QSize &requested_size);
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

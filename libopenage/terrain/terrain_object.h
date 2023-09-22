@@ -124,11 +124,6 @@ public:
 	std::function<void(const LegacyEngine &e)> draw;
 
 	/**
-	 * draws outline of this terrain space in current position
-	 */
-	void draw_outline(const coord::CoordManager &coord) const;
-
-	/**
 	 * changes the placement state of this object keeping the existing
 	 * position. this is useful for upgrading a floating building to a placed state
 	 */
@@ -255,11 +250,6 @@ protected:
 	std::vector<std::unique_ptr<TerrainObject>> children;
 
 	/**
-	 * texture for drawing outline
-	 */
-	std::shared_ptr<Texture> outline_texture;
-
-	/**
 	 * placement function which does not check passibility
 	 * used only when passibilty is already checked
 	 * otherwise the place function should be used
@@ -309,8 +299,6 @@ public:
 
 private:
 	SquareObject(Unit &u, coord::tile_delta foundation_size);
-	SquareObject(Unit &u, coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex);
-
 
 	friend class TerrainObject;
 	friend class Unit;
@@ -342,7 +330,6 @@ public:
 
 private:
 	RadialObject(Unit &u, float rad);
-	RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex);
 
 	friend class TerrainObject;
 	friend class Unit;

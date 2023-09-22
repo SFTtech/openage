@@ -185,16 +185,6 @@ int Terrain::blendmode(terrain_t terrain_id) {
 	return this->meta->terrain_id_blendmode_map[terrain_id];
 }
 
-Texture *Terrain::texture(terrain_t terrain_id) {
-	this->validate_terrain(terrain_id);
-	return this->meta->textures[terrain_id];
-}
-
-Texture *Terrain::blending_mask(ssize_t mask_id) {
-	this->validate_mask(mask_id);
-	return this->meta->blending_masks[mask_id];
-}
-
 unsigned Terrain::get_subtexture_id(const coord::tile &pos, unsigned atlas_size) {
 	unsigned result = 0;
 
@@ -367,17 +357,11 @@ struct tile_draw_data Terrain::create_tile_advice(coord::tile position, bool ble
 
 	this->validate_terrain(base_tile_data.terrain_id);
 
-	Texture *tex = this->texture(base_tile_data.terrain_id);
-
 	base_tile_data.state = tile_state::existing;
 	base_tile_data.pos = position;
 	base_tile_data.priority = this->priority(base_tile_data.terrain_id);
-	base_tile_data.tex = tex;
-	base_tile_data.subtexture_id = this->get_subtexture_id(
-		position,
-		std::sqrt(tex->get_subtexture_count()));
+	base_tile_data.subtexture_id = 0;
 	base_tile_data.blend_mode = -1;
-	base_tile_data.mask_tex = nullptr;
 	base_tile_data.mask_id = -1;
 
 	tile.data[tile.count] = base_tile_data;
@@ -635,11 +619,7 @@ void Terrain::calculate_masks(coord::tile position,
 			overlay->mask_id = adjacent_mask_id;
 			overlay->blend_mode = blend_mode;
 			overlay->terrain_id = neighbor_terrain_id;
-			overlay->tex = this->texture(neighbor_terrain_id);
-			overlay->subtexture_id = this->get_subtexture_id(
-				position,
-				std::sqrt(overlay->tex->get_subtexture_count()));
-			overlay->mask_tex = this->blending_mask(blend_mode);
+			overlay->subtexture_id = 0;
 			overlay->state = tile_state::existing;
 
 			tile_data->count += 1;
@@ -666,11 +646,7 @@ void Terrain::calculate_masks(coord::tile position,
 					overlay->mask_id = diag_mask_id_map[l];
 					overlay->blend_mode = blend_mode;
 					overlay->terrain_id = neighbor_terrain_id;
-					overlay->tex = this->texture(neighbor_terrain_id);
-					overlay->subtexture_id = this->get_subtexture_id(
-						position,
-						std::sqrt(overlay->tex->get_subtexture_count()));
-					overlay->mask_tex = this->blending_mask(blend_mode);
+					overlay->subtexture_id = 0;
 					overlay->state = tile_state::existing;
 
 					tile_data->count += 1;

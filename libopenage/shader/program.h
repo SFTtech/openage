@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,7 +9,7 @@ namespace shader {
 
 class Shader;
 
-class Program {
+class [[deprecated]] Program {
 public:
 	GLuint id;
 	GLint pos_id, mvpm_id;
@@ -43,4 +43,5 @@ private:
 };
 
 
-}} // openage::shader
+} // namespace shader
+} // namespace openage

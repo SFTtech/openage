@@ -91,16 +91,6 @@ public:
 	index_t get_slp_graphic(index_t slp);
 
 	/**
-	 * lookup using a texture id, this specifically avoids returning the missing placeholder texture
-	 */
-	Texture *get_texture(index_t graphic_id) const;
-
-	/**
-	 * lookup using a texture file name
-	 */
-	Texture *get_texture(const std::string &file_name, bool use_metafile = true) const;
-
-	/**
 	 * get unit texture by graphic id -- this is an directional texture
 	 * which also includes graphic deltas
 	 */

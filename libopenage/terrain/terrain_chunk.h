@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,7 +7,6 @@
 
 #include "../coord/pixel.h"
 #include "../coord/tile.h"
-#include "../texture.h"
 #include "../util/file.h"
 
 namespace openage {

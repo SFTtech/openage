@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,9 +9,9 @@
 namespace openage {
 namespace shader {
 
-const char *type_to_string(GLenum type);
+[[deprecated]] const char *type_to_string(GLenum type);
 
-class Shader {
+class [[deprecated]] Shader {
 public:
 	Shader(GLenum type, std::initializer_list<const char *> sources);
 	~Shader();
@@ -20,4 +20,5 @@ public:
 	GLenum type;
 };
 
-}} // openage::shader
+} // namespace shader
+} // namespace openage

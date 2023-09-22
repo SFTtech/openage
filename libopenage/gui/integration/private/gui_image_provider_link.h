@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -22,13 +22,13 @@ class GameSpecLink;
 class GuiImageProviderLink : public QObject {
 	Q_OBJECT
 
-	Q_PROPERTY(openage::gui::GameSpecLink* gameSpec READ get_game_spec WRITE set_game_spec)
+	Q_PROPERTY(openage::gui::GameSpecLink *gameSpec READ get_game_spec WRITE set_game_spec)
 
 public:
 	explicit GuiImageProviderLink(QObject *parent, GuiGameSpecImageProviderImpl &image_provider);
 	virtual ~GuiImageProviderLink();
 
-	GameSpecLink* get_game_spec() const;
+	GameSpecLink *get_game_spec() const;
 
 	/**
 	 * Sets the game spec to load textures from.
@@ -38,10 +38,7 @@ public:
 	 */
 	void set_game_spec(GameSpecLink *game_spec);
 
-	static QObject* provider(QQmlEngine*, const char *id);
-	static QObject* provider_by_filename(QQmlEngine*, QJSEngine*);
-	static QObject* provider_by_graphic_id(QQmlEngine*, QJSEngine*);
-	static QObject* provider_by_terrain_id(QQmlEngine*, QJSEngine*);
+	static QObject *provider(QQmlEngine *, const char *id);
 
 private slots:
 	/**
@@ -57,4 +54,5 @@ private:
 	QPointer<GameSpecLink> game_spec;
 };
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

@@ -2,12 +2,11 @@
 
 #include <initializer_list>
 
-#include "../legacy_engine.h"
 #include "../gamedata/unit_dummy.h"
+#include "../legacy_engine.h"
 #include "../log/log.h"
 #include "../terrain/terrain.h"
 #include "../terrain/terrain_object.h"
-#include "../terrain/terrain_outline.h"
 #include "../util/strings.h"
 #include "ability.h"
 #include "action.h"
@@ -83,7 +82,6 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	UnitType(owner),
 	dataspec(spec),
 	unit_data(*ud),
-	terrain_outline{nullptr},
 	default_tex{spec.get_unit_texture(ud->idle_graphic0)},
 	dead_unit_id{ud->dead_unit_id} {
 	// copy the class type
@@ -113,14 +111,6 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 		static_cast<int>(this->unit_data.radius_x * 2),
 		static_cast<int>(this->unit_data.radius_y * 2),
 	};
-
-	// shape of the outline
-	if (this->unit_data.obstruction_class > 1) {
-		this->terrain_outline = radial_outline(this->unit_data.radius_x);
-	}
-	else {
-		this->terrain_outline = square_outline(this->foundation_size);
-	}
 
 	// graphic set
 	auto standing = spec.get_unit_texture(this->unit_data.idle_graphic0);
@@ -277,14 +267,6 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 }
 
 TerrainObject *ObjectProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
-	// create new object with correct base shape
-	if (this->unit_data.obstruction_class > 1) {
-		u->make_location<RadialObject>(this->unit_data.radius_x, this->terrain_outline);
-	}
-	else {
-		u->make_location<SquareObject>(this->foundation_size, this->terrain_outline);
-	}
-
 	// find set of allowed terrains
 	std::unordered_set<terrain_t> terrains = allowed_terrains(this->unit_data.terrain_restriction);
 
@@ -532,8 +514,6 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 		this->graphics[graphic_type::dying] = dying_tex;
 	}
 
-	this->terrain_outline = square_outline(this->foundation_size);
-
 	// TODO get cost, temp fixed cost of 100 wood
 	this->cost.set(cost_type::constant, create_resource_cost(game_resource::wood, 100));
 }
@@ -646,9 +626,6 @@ std::vector<game_resource> BuildingProducer::get_accepted_resources() {
 }
 
 TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
-	// buildings have a square base
-	u->make_location<SquareObject>(this->foundation_size, this->terrain_outline);
-
 	/*
 	 * decide what terrain is passable using this lambda
 	 * currently unit avoids water and tiles with another unit
@@ -762,9 +739,6 @@ ProjectileProducer::ProjectileProducer(const Player &owner, const GameSpec &spec
 	if (destroyed) {
 		this->graphics[graphic_type::dying] = destroyed;
 	}
-
-	// outline
-	terrain_outline = radial_outline(pd->radius_y);
 }
 
 ProjectileProducer::~ProjectileProducer() = default;
@@ -803,11 +777,6 @@ void ProjectileProducer::initialise(Unit *unit, Player &player) {
 }
 
 TerrainObject *ProjectileProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
-	/*
-	 * radial base shape without collision checking
-	 */
-	u->make_location<RadialObject>(this->unit_data.radius_y, this->terrain_outline);
-
 	TerrainObject *obj_ptr = u->location.get();
 	std::weak_ptr<Terrain> terrain_ptr = terrain;
 	u->location->passable = [obj_ptr, u, terrain_ptr](const coord::phys3 &pos) -> bool {

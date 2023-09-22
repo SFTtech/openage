@@ -1,4 +1,4 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -10,9 +10,8 @@
 #include "../coord/phys.h"
 #include "../coord/tile.h"
 #include "../datastructure/pairing_heap.h"
-#include "../util/misc.h"
 #include "../util/hash.h"
-
+#include "../util/misc.h"
 
 
 namespace openage {
@@ -48,7 +47,7 @@ using nodemap_t = std::unordered_map<coord::phys3, node_pt>;
  * Calls operator < on Node.
  */
 struct compare_node_cost {
-	bool operator ()(const node_pt &lhs, const node_pt &rhs) const;
+	bool operator()(const node_pt &lhs, const node_pt &rhs) const;
 };
 
 /**
@@ -59,31 +58,30 @@ using heap_t = datastructure::PairingHeap<node_pt, compare_node_cost>;
 /**
  * Size of phys-coord grid for path nodes.
  */
-constexpr coord::phys_t path_grid_size{1.f/8};
+constexpr coord::phys_t path_grid_size{1.f / 8};
 
 /**
  * Phys3 delta coordinates to select for path neighbors.
  */
 constexpr coord::phys3_delta const neigh_phys[] = {
-	{path_grid_size *  1, path_grid_size * -1, 0},
-	{path_grid_size *  1, path_grid_size *  0, 0},
-	{path_grid_size *  1, path_grid_size *  1, 0},
-	{path_grid_size *  0, path_grid_size *  1, 0},
-	{path_grid_size * -1, path_grid_size *  1, 0},
-	{path_grid_size * -1, path_grid_size *  0, 0},
+	{path_grid_size * 1, path_grid_size * -1, 0},
+	{path_grid_size * 1, path_grid_size * 0, 0},
+	{path_grid_size * 1, path_grid_size * 1, 0},
+	{path_grid_size * 0, path_grid_size * 1, 0},
+	{path_grid_size * -1, path_grid_size * 1, 0},
+	{path_grid_size * -1, path_grid_size * 0, 0},
 	{path_grid_size * -1, path_grid_size * -1, 0},
-	{path_grid_size *  0, path_grid_size * -1, 0}
-};
+	{path_grid_size * 0, path_grid_size * -1, 0}};
 
 /**
  *
  */
-bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::phys3 &)>passable, float samples=5.0f);
+bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::phys3 &)> passable, float samples = 5.0f);
 
 /**
  * One navigation waypoint in a path.
  */
-class Node: public std::enable_shared_from_this<Node> {
+class Node : public std::enable_shared_from_this<Node> {
 public:
 	Node(const coord::phys3 &pos, node_pt prev);
 	Node(const coord::phys3 &pos, node_pt prev, cost_t past, cost_t heuristic);
@@ -91,13 +89,13 @@ public:
 	/**
 	 * Orders nodes according to their future cost value.
 	 */
-	bool operator <(const Node &other) const;
+	bool operator<(const Node &other) const;
 
 	/**
 	 * Compare the node to another one.
 	 * They are the same if their position is.
 	 */
-	bool operator ==(const Node &other) const;
+	bool operator==(const Node &other) const;
 
 	/**
 	 * Calculates the actual movement cose to another node.
@@ -112,7 +110,7 @@ public:
 	/**
 	 * Get all neighbors of this graph node.
 	 */
-	std::vector<node_pt> get_neighbors(const nodemap_t &, float scale=1.0f);
+	std::vector<node_pt> get_neighbors(const nodemap_t &, float scale = 1.0f);
 
 	/**
 	 * The tile position this node is associated to.
@@ -184,8 +182,6 @@ public:
 	Path() = default;
 	Path(const std::vector<Node> &nodes);
 
-	void draw_path(const coord::CoordManager &mgr);
-
 	/**
 	 * These are the waypoints to navigate in order.
 	 * Includes the start and end node.
@@ -203,9 +199,9 @@ namespace std {
  * Hash function for path nodes.
  * Just uses their position.
  */
-template<>
+template <>
 struct hash<openage::path::Node &> {
-	size_t operator ()(const openage::path::Node &x) const {
+	size_t operator()(const openage::path::Node &x) const {
 		openage::coord::phys3 node_pos = x.position;
 		size_t hash = openage::util::type_hash<openage::path::Node>();
 		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(node_pos.ne));

@@ -10,12 +10,10 @@
 #include "../coord/tile.h"
 #include "../error/error.h"
 #include "../legacy_engine.h"
-#include "../texture.h"
 #include "../unit/unit.h"
 
 #include "terrain.h"
 #include "terrain_chunk.h"
-#include "terrain_outline.h"
 
 namespace openage {
 
@@ -57,10 +55,6 @@ bool TerrainObject::check_collisions() const {
 		return false;
 	}
 	return this->state == object_state::placed;
-}
-
-void TerrainObject::draw_outline(const coord::CoordManager &coord) const {
-	this->outline_texture->draw(coord, this->pos.draw);
 }
 
 bool TerrainObject::place(object_state init_state) {
@@ -279,13 +273,8 @@ void TerrainObject::place_unchecked(const std::shared_ptr<Terrain> &t, coord::ph
 }
 
 SquareObject::SquareObject(Unit &u, coord::tile_delta foundation_size) :
-	SquareObject(u, foundation_size, square_outline(foundation_size)) {
-}
-
-SquareObject::SquareObject(Unit &u, coord::tile_delta foundation_size, std::shared_ptr<Texture> out_tex) :
 	TerrainObject(u),
 	size(foundation_size) {
-	this->outline_texture = out_tex;
 }
 
 SquareObject::~SquareObject() = default;
@@ -369,13 +358,8 @@ coord::phys_t SquareObject::min_axis() const {
 }
 
 RadialObject::RadialObject(Unit &u, float rad) :
-	RadialObject(u, rad, radial_outline(rad)) {
-}
-
-RadialObject::RadialObject(Unit &u, float rad, std::shared_ptr<Texture> out_tex) :
 	TerrainObject(u),
 	phys_radius(rad) {
-	this->outline_texture = out_tex;
 }
 
 RadialObject::~RadialObject() = default;

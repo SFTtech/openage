@@ -23,20 +23,9 @@ GUI::GUI(SDL_Window *window,
 	render_updater{},
 	renderer{window},
 	game_logic_updater{},
-	image_provider_by_filename{
-		&render_updater,
-		GuiGameSpecImageProvider::Type::ByFilename},
-	image_provider_by_graphic_id{
-		&render_updater,
-		GuiGameSpecImageProvider::Type::ByGraphicId},
-	image_provider_by_terrain_id{
-		&render_updater,
-		GuiGameSpecImageProvider::Type::ByTerrainId},
 	engine{
 		&renderer,
-		{&image_provider_by_filename,
-         &image_provider_by_graphic_id,
-         &image_provider_by_terrain_id},
+		{},
 		info},
 	subtree{
 		&renderer,

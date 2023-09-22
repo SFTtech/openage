@@ -327,7 +327,6 @@ add_sources(libopenage
 	main.cpp
 	options.cpp
 	screenshot.cpp
-	texture.cpp
 	${CMAKE_CURRENT_BINARY_DIR}/config.cpp
 	${CMAKE_CURRENT_BINARY_DIR}/version.cpp
 	${CODEGEN_SCU_FILE}

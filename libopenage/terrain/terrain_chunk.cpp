@@ -10,7 +10,6 @@
 #include "../error/error.h"
 #include "../legacy_engine.h"
 #include "../log/log.h"
-#include "../texture.h"
 #include "../util/misc.h"
 
 #include "terrain.h"

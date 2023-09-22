@@ -12,7 +12,6 @@
 #include "guisys/public/gui_renderer.h"
 #include "guisys/public/gui_subtree.h"
 #include "integration/public/gui_application_with_logger.h"
-#include "integration/public/gui_game_spec_image_provider.h"
 
 
 namespace qtsdl {
@@ -58,9 +57,6 @@ private:
 	qtsdl::GuiEventQueue render_updater;
 	qtsdl::GuiRenderer renderer;
 	qtsdl::GuiEventQueue game_logic_updater;
-	GuiGameSpecImageProvider image_provider_by_filename;
-	GuiGameSpecImageProvider image_provider_by_graphic_id;
-	GuiGameSpecImageProvider image_provider_by_terrain_id;
 	qtsdl::GuiEngine engine;
 	qtsdl::GuiSubtree subtree;
 	qtsdl::GuiInput input;

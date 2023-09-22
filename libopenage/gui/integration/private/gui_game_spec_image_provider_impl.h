@@ -1,17 +1,17 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
+#include <condition_variable>
 #include <memory>
 #include <mutex>
-#include <vector>
 #include <tuple>
-#include <condition_variable>
+#include <vector>
 
-#include "../../guisys/private/gui_image_provider_impl.h"
 #include "../../guisys/private/gui_callback.h"
-#include "gui_texture_handle.h"
+#include "../../guisys/private/gui_image_provider_impl.h"
 #include "gui_filled_texture_handles.h"
+#include "gui_texture_handle.h"
 
 namespace qtsdl {
 
@@ -44,7 +44,7 @@ public:
 	 *
 	 * @param loaded_game_spec new source (can't be null)
 	 */
-	void on_game_spec_loaded(const std::shared_ptr<GameSpec>& loaded_game_spec);
+	void on_game_spec_loaded(const std::shared_ptr<GameSpec> &loaded_game_spec);
 
 	/**
 	 * Set to every sprite the 'missing texture' from current spec.
@@ -64,8 +64,6 @@ public:
 	GuiFilledTextureHandleUser fill_texture_handle(const QString &id, const QSize &requested_size, SizedTextureHandle *filled_handle);
 
 protected:
-	TextureHandle get_missing_texture();
-
 	std::shared_ptr<GameSpec> loaded_game_spec;
 
 	/**
@@ -75,13 +73,13 @@ protected:
 
 private:
 	virtual TextureHandle get_texture_handle(const QString &id) = 0;
-	virtual QQuickTextureFactory* requestTexture(const QString &id, QSize *size, const QSize &requestedSize) override;
+	virtual QQuickTextureFactory *requestTexture(const QString &id, QSize *size, const QSize &requestedSize) override;
 	virtual void give_up() override;
 
 	/**
 	 * Change the already produced texture handles to use new source.
 	 */
-	void migrate_to_new_game_spec(const std::shared_ptr<GameSpec>& loaded_game_spec);
+	void migrate_to_new_game_spec(const std::shared_ptr<GameSpec> &loaded_game_spec);
 
 	void overwrite_texture_handle(const QString &id, const QSize &requested_size, SizedTextureHandle *filled_handle);
 
@@ -100,4 +98,5 @@ private:
 	qtsdl::GuiCallback render_thread_callback;
 };
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

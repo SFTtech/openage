@@ -4,7 +4,6 @@
 
 #include <QTransform>
 
-#include "../../../texture.h"
 #include "gui_make_standalone_subtexture.h"
 #include "gui_texture.h"
 
@@ -68,32 +67,6 @@ GLuint create_compatible_texture(GLuint texture_id, GLsizei w, GLsizei h) {
 
 QSGTexture *GuiTexture::removedFromAtlas(QRhiResourceUpdateBatch *resourceUpdates /* = nullptr */) const {
 	if (this->isAtlasTexture()) {
-		if (!this->standalone) {
-			auto tex = this->texture_handle.texture;
-			auto sub = tex->get_subtexture(this->texture_handle.subid);
-
-			GLuint sub_texture_id = create_compatible_texture(tex->get_texture_id(), sub->w, sub->h);
-
-			std::array<GLuint, 2> fbo;
-			glGenFramebuffers(fbo.size(), &fbo.front());
-
-			glBindFramebuffer(GL_READ_FRAMEBUFFER, fbo[0]);
-			glFramebufferTexture2D(GL_READ_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->textureId(), 0);
-			glReadBuffer(GL_COLOR_ATTACHMENT0);
-
-			glBindFramebuffer(GL_DRAW_FRAMEBUFFER, fbo[1]);
-			glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, sub_texture_id, 0);
-			glDrawBuffer(GL_COLOR_ATTACHMENT0);
-
-			glBlitFramebuffer(sub->x, sub->y, sub->x + sub->w, sub->y + sub->h, 0, 0, sub->w, sub->h, GL_COLOR_BUFFER_BIT, GL_NEAREST);
-
-			glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-			glDeleteFramebuffers(fbo.size(), &fbo.front());
-
-			this->standalone = make_standalone_subtexture(sub_texture_id, QSize(sub->w, sub->h));
-		}
-
 		return this->standalone.get();
 	}
 
@@ -101,18 +74,11 @@ QSGTexture *GuiTexture::removedFromAtlas(QRhiResourceUpdateBatch *resourceUpdate
 }
 
 QRectF GuiTexture::normalizedTextureSubRect() const {
-	if (this->isAtlasTexture()) {
-		auto tex = this->texture_handle.texture;
-		auto sub = tex->get_subtexture(this->texture_handle.subid);
-		return QTransform::fromScale(tex->w, tex->h).inverted().mapRect(QRectF(sub->x, sub->y, sub->w, sub->h));
-	}
-	else {
-		return QSGTexture::normalizedTextureSubRect();
-	}
+	return QSGTexture::normalizedTextureSubRect();
 }
 
 int GuiTexture::textureId() const {
-	return this->texture_handle.texture->get_texture_id();
+	return 0;
 }
 
 QSize GuiTexture::textureSize() const {
