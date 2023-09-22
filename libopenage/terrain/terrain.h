@@ -13,9 +13,9 @@
 #include "../coord/phys.h"
 #include "../coord/pixel.h"
 #include "../coord/tile.h"
+#include "../presenter/legacy/legacy.h"
 #include "../texture.h"
 #include "../util/misc.h"
-#include "assets/legacy_assetmanager.h"
 
 namespace openage {
 

@@ -1,5 +1,4 @@
 add_sources(libopenage
-	assetmanager_link.cpp
 	actions_list_model.cpp
 	category_contents_list_model.cpp
 	engine_info.cpp

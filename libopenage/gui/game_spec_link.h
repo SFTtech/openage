@@ -17,7 +17,6 @@ class GameSpec;
 
 namespace gui {
 
-class AssetManagerLink;
 class GameSpecLink;
 
 } // namespace gui
@@ -48,7 +47,6 @@ class GameSpecLink : public qtsdl::GuiItemQObject
 	Q_ENUMS(State)
 	Q_PROPERTY(State state READ get_state NOTIFY state_changed)
 	Q_PROPERTY(bool active READ get_active WRITE set_active)
-	Q_PROPERTY(openage::gui::AssetManagerLink *assetManager READ get_asset_manager WRITE set_asset_manager)
 	Q_PROPERTY(int terrainIdCount READ get_terrain_id_count NOTIFY terrain_id_count_changed)
 
 public:
@@ -65,9 +63,6 @@ public:
 
 	bool get_active() const;
 	void set_active(bool active);
-
-	AssetManagerLink *get_asset_manager() const;
-	void set_asset_manager(AssetManagerLink *asset_manager);
 
 	int get_terrain_id_count() const;
 
@@ -100,7 +95,6 @@ private:
 
 	State state;
 	bool active;
-	AssetManagerLink *asset_manager;
 	int terrain_id_count;
 
 	std::shared_ptr<GameSpec> loaded_game_spec;

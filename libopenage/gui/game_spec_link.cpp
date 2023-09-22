@@ -4,23 +4,19 @@
 
 #include <QtQml>
 
-#include "assetmanager_link.h"
-
 namespace openage::gui {
 
 namespace {
 const int registration = qmlRegisterType<GameSpecLink>("yay.sfttech.openage", 1, 0, "GameSpec");
 const int registration_of_ptr = qRegisterMetaType<std::shared_ptr<GameSpec>>("shared_ptr");
-}
+} // namespace
 
-GameSpecLink::GameSpecLink(QObject *parent)
-	:
+GameSpecLink::GameSpecLink(QObject *parent) :
 	GuiItemQObject{parent},
 	QQmlParserStatus{},
 	GuiItem{this},
 	state{},
 	active{},
-	asset_manager{},
 	terrain_id_count{} {
 	Q_UNUSED(registration);
 	Q_UNUSED(registration_of_ptr);
@@ -42,7 +38,7 @@ void GameSpecLink::componentComplete() {
 }
 
 void GameSpecLink::on_load_job_finished() {
-	static auto f = [] (GameSpecHandle *_this) {
+	static auto f = [](GameSpecHandle *_this) {
 		_this->announce_spec();
 	};
 	this->i(f);
@@ -69,7 +65,7 @@ GameSpecLink::State GameSpecLink::get_state() const {
 }
 
 void GameSpecLink::invalidate() {
-	static auto f = [] (GameSpecHandle *_this) {
+	static auto f = [](GameSpecHandle *_this) {
 		_this->invalidate();
 	};
 	this->i(f);
@@ -82,23 +78,12 @@ bool GameSpecLink::get_active() const {
 }
 
 void GameSpecLink::set_active(bool active) {
-	static auto f = [] (GameSpecHandle *_this, bool active) {
+	static auto f = [](GameSpecHandle *_this, bool active) {
 		_this->set_active(active);
 	};
 	this->s(f, this->active, active);
 
 	this->set_state(this->active && this->state == State::Null ? State::Loading : this->state);
-}
-
-AssetManagerLink* GameSpecLink::get_asset_manager() const {
-	return this->asset_manager;
-}
-
-void GameSpecLink::set_asset_manager(AssetManagerLink *asset_manager) {
-	static auto f = [] (GameSpecHandle *_this, LegacyAssetManager *asset_manager) {
-		_this->set_asset_manager(asset_manager);
-	};
-	this->s(f, this->asset_manager, asset_manager);
 }
 
 int GameSpecLink::get_terrain_id_count() const {

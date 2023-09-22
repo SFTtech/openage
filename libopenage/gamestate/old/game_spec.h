@@ -10,8 +10,8 @@
 #include "terrain/terrain.h"
 #include "types.h"
 
-#include <QObject>
 #include <memory>
+#include <QObject>
 #include <unordered_map>
 
 
@@ -65,7 +65,7 @@ public:
  */
 class GameSpec {
 public:
-	GameSpec(LegacyAssetManager *am);
+	GameSpec();
 	virtual ~GameSpec();
 
 	/**
@@ -133,12 +133,6 @@ public:
 	 */
 	void create_unit_types(unit_meta_list &objects, int civ_id) const;
 
-	/**
-	 * Return the asset manager used for loading resources
-	 * of this game specification.
-	 */
-	LegacyAssetManager *get_asset_manager() const;
-
 private:
 	/**
 	 * check graphic id is valid
@@ -180,11 +174,6 @@ private:
 	 * Invoked when the gamedata has been loaded.
 	 */
 	void on_gamedata_loaded(const gamedata::empiresdat &gamedata);
-
-	/**
-	 * Asset management entity that is responsible for textures, sounds, etc.
-	 */
-	LegacyAssetManager *assetmanager;
 
 	/**
 	 * The full original gamedata tree.
@@ -254,11 +243,6 @@ public:
 	void set_active(bool active);
 
 	/**
-	 * invoked from qml when the asset_manager member is set.
-	 */
-	void set_asset_manager(LegacyAssetManager *asset_manager);
-
-	/**
 	 * Return if the specification was fully loaded.
 	 */
 	bool is_ready() const;
@@ -304,8 +288,6 @@ private:
 	 * enables the loading of the game specification.
 	 */
 	bool active;
-
-	LegacyAssetManager *asset_manager;
 
 public:
 	std::shared_ptr<GameSpecSignals> gui_signals;
