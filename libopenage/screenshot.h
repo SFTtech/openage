@@ -2,9 +2,9 @@
 
 #pragma once
 
-#include <string>
 #include <ctime>
 #include <memory>
+#include <string>
 
 #include "coord/pixel.h"
 
@@ -19,12 +19,12 @@ class JobManager;
  *
  * TODO: move into renderer!
  */
-class ScreenshotManager {
+class [[deprecated]] ScreenshotManager {
 public:
 	/**
 	 * Initializes the screenshot manager with the given job manager.
 	 */
-	ScreenshotManager(job::JobManager* job_mgr);
+	ScreenshotManager(job::JobManager *job_mgr);
 
 	~ScreenshotManager();
 
@@ -39,7 +39,6 @@ public:
 	coord::viewport_delta window_size;
 
 private:
-
 	/** to be called to get the next screenshot filename into the array */
 	std::string gen_next_filename();
 
@@ -53,4 +52,4 @@ private:
 	job::JobManager *job_manager;
 };
 
-} // openage
+} // namespace openage

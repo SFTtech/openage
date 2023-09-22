@@ -24,7 +24,7 @@ namespace openage::presenter {
  * Container class for all available assets.
  * Responsible for loading, providing and updating requested files.
  */
-class AssetManager final {
+class [[deprecated]] AssetManager final {
 public:
 	AssetManager();
 	AssetManager(const util::Path &asset_dir);

@@ -24,7 +24,7 @@ class Texture;
  * Container class for all available assets.
  * Responsible for loading, providing and updating requested files.
  */
-class LegacyAssetManager final {
+class [[deprecated]] LegacyAssetManager final {
 public:
 	explicit LegacyAssetManager(qtsdl::GuiItemLink *gui_link);
 

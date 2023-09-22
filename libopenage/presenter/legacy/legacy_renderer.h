@@ -25,7 +25,7 @@ class GameMain;
  *
  * TODO include fog drawing etc
  */
-class RenderOptions : public options::OptionNode {
+class [[deprecated]] RenderOptions : public options::OptionNode {
 public:
 	RenderOptions();
 

@@ -49,7 +49,7 @@ namespace presenter {
 /**
  * Temporary container class for the legacy renderer implementation.
  */
-class LegacyDisplay final : public ResizeHandler
+class [[deprecated]] LegacyDisplay final : public ResizeHandler
 	, public options::OptionNode {
 public:
 	LegacyDisplay(const util::Path &path, LegacyEngine *engine);

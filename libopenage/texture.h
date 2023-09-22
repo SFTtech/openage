@@ -1,14 +1,14 @@
-// Copyright 2013-2021 the openage authors. See copying.md for legal info.
+// Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <epoxy/gl.h>
-#include <vector>
 #include <memory>
+#include <vector>
 
-#include "gamedata/texture_dummy.h"
 #include "coord/pixel.h"
 #include "coord/tile.h"
+#include "gamedata/texture_dummy.h"
 #include "shader/program.h"
 #include "shader/shader.h"
 #include "util/path.h"
@@ -43,12 +43,12 @@ extern GLint base_texture, mask_texture, base_coord, mask_coord, show_mask;
 
 // bitmasks for shader modes
 constexpr int PLAYERCOLORED = 1 << 0;
-constexpr int ALPHAMASKED   = 1 << 1;
+constexpr int ALPHAMASKED = 1 << 1;
 
 /**
  * enables transfer of data to opengl
  */
-struct gl_texture_buffer {
+struct [[deprecated]] gl_texture_buffer {
 	GLuint id, vertbuf;
 
 	// this requires loading on the main thread
@@ -67,8 +67,10 @@ struct gl_texture_buffer {
  *
  * The class supports subtextures, so that one big texture can contain
  * several small images. These are the ones actually to be rendered.
+ *
+ * TODO: Deprecated, replaced by new renderer
  */
-class Texture {
+class [[deprecated]] Texture {
 public:
 	int w;
 	int h;
@@ -83,23 +85,23 @@ public:
 	 * Create a texture from a existing image file.
 	 * For supported image file types, see the SDL_Image initialization in the engine.
 	 */
-	Texture(const util::Path &filename, bool use_metafile=false);
+	Texture(const util::Path &filename, bool use_metafile = false);
 	~Texture();
 
 	/**
 	 * Draws the texture at hud coordinates.
 	 */
-	void draw(const coord::CoordManager &mgr, coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const;
+	void draw(const coord::CoordManager &mgr, coord::camhud pos, unsigned int mode = 0, bool mirrored = false, int subid = 0, unsigned player = 0) const;
 
 	/**
 	 * Draws the texture at game coordinates.
 	 */
-	void draw(const coord::CoordManager &mgr, coord::camgame pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const;
+	void draw(const coord::CoordManager &mgr, coord::camgame pos, unsigned int mode = 0, bool mirrored = false, int subid = 0, unsigned player = 0) const;
 
 	/**
 	 * Draws the texture at phys coordinates.
 	 */
-	void draw(const coord::CoordManager &mgr, coord::phys3 pos, unsigned int mode=0,  bool mirrored=false, int subid=0, unsigned player=0) const;
+	void draw(const coord::CoordManager &mgr, coord::phys3 pos, unsigned int mode = 0, bool mirrored = false, int subid = 0, unsigned player = 0) const;
 
 	/**
 	 * Draws the texture at tile coordinates.
@@ -181,7 +183,6 @@ private:
 	void load_in_glthread() const;
 	GLuint make_gl_texture(int iformat, int oformat, int w, int h, void *) const;
 	void unload();
-
 };
 
 } // namespace openage

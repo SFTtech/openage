@@ -14,7 +14,7 @@ class LegacyEngine;
 /**
  * superclass for all possible drawing operations in the game.
  */
-class DrawHandler {
+class [[deprecated]] DrawHandler {
 public:
 	virtual ~DrawHandler() = default;
 
@@ -27,7 +27,7 @@ public:
 /**
  * superclass for all possible drawing operations in the game.
  */
-class HudHandler {
+class [[deprecated]] HudHandler {
 public:
 	virtual ~HudHandler() = default;
 
@@ -40,7 +40,7 @@ public:
 /**
  * superclass for all calculations being done on engine tick.
  */
-class TickHandler {
+class [[deprecated]] TickHandler {
 public:
 	virtual ~TickHandler() = default;
 
@@ -53,7 +53,7 @@ public:
 /**
  * superclass for handling any input event.
  */
-class InputHandler {
+class [[deprecated]] InputHandler {
 public:
 	virtual ~InputHandler() = default;
 
@@ -66,7 +66,7 @@ public:
 /**
  * superclass for handling a window resize event.
  */
-class ResizeHandler {
+class [[deprecated]] ResizeHandler {
 public:
 	virtual ~ResizeHandler() = default;
 

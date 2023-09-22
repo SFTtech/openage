@@ -32,7 +32,7 @@ class GameControl;
 /**
  * Signals for a gui mode.
  */
-class OutputModeSignals : public QObject {
+class [[deprecated]] OutputModeSignals : public QObject {
 	Q_OBJECT
 
 public:
@@ -55,7 +55,7 @@ signals:
  * A target for input handling and gui rendering.
  * This allows to switch to different display UIs.
  */
-class OutputMode : public input::legacy::InputContext {
+class [[deprecated]] OutputMode : public input::legacy::InputContext {
 public:
 	explicit OutputMode(qtsdl::GuiItemLink *gui_link);
 	virtual ~OutputMode();
@@ -117,7 +117,7 @@ public:
  * This is mainly the game editor.
  * Shows menus to choose units to build.
  */
-class CreateMode : public OutputMode {
+class [[deprecated]] CreateMode : public OutputMode {
 public:
 	CreateMode(qtsdl::GuiItemLink *gui_link);
 
@@ -165,7 +165,7 @@ private:
  * Used to control units, issue commands, basically this is where you
  * sink your time in when playing.
  */
-class ActionMode : public OutputMode {
+class [[deprecated]] ActionMode : public OutputMode {
 public:
 	ActionMode(qtsdl::GuiItemLink *gui_link);
 
@@ -279,7 +279,7 @@ private:
 /**
  * UI mode to provide an interface for map editing.
  */
-class EditorMode : public OutputMode {
+class [[deprecated]] EditorMode : public OutputMode {
 public:
 	explicit EditorMode(qtsdl::GuiItemLink *gui_link);
 
@@ -354,7 +354,7 @@ private:
  *
  * hud rendering and input handling is redirected to the active mode
  */
-class GameControl : public openage::HudHandler {
+class [[deprecated]] GameControl : public openage::HudHandler {
 public:
 	explicit GameControl(qtsdl::GuiItemLink *gui_link);
 
