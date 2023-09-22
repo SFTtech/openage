@@ -14,8 +14,6 @@
 namespace openage {
 namespace gui {
 
-class EditorModeLink;
-
 /**
  * Adaptor for the contents of a category of the Civilisation.
  */
@@ -23,7 +21,6 @@ class CategoryContentsListModel : public QAbstractListModel {
 	Q_OBJECT
 
 	Q_PROPERTY(QString name READ get_name WRITE set_name)
-	Q_PROPERTY(openage::gui::EditorModeLink *editorMode READ get_editor_mode WRITE set_editor_mode)
 
 public:
 	CategoryContentsListModel(QObject *parent = nullptr);
@@ -31,9 +28,6 @@ public:
 
 	QString get_name() const;
 	void set_name(const QString &name);
-
-	EditorModeLink *get_editor_mode() const;
-	void set_editor_mode(EditorModeLink *editor_mode);
 
 private slots:
 	void on_category_content_changed(const std::string &category_name, std::vector<std::tuple<index_t, uint16_t>> type_and_texture);
@@ -47,7 +41,6 @@ private:
 	std::vector<std::tuple<index_t, uint16_t>> type_and_texture;
 
 	QString name;
-	EditorModeLink *editor_mode;
 };
 
 } // namespace gui

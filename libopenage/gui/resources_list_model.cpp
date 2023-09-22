@@ -9,9 +9,6 @@
 
 #include "../error/error.h"
 
-#include "../presenter/legacy/game_control.h"
-#include "game_control_link.h"
-
 namespace openage::gui {
 
 namespace {
@@ -23,30 +20,11 @@ const auto resource_type_count = static_cast<std::underlying_type<game_resource>
 
 ResourcesListModel::ResourcesListModel(QObject *parent) :
 	QAbstractListModel(parent),
-	amounts(resource_type_count),
-	action_mode() {
+	amounts(resource_type_count) {
 	Q_UNUSED(registration);
 }
 
 ResourcesListModel::~ResourcesListModel() = default;
-
-ActionModeLink *ResourcesListModel::get_action_mode() const {
-	return this->action_mode;
-}
-
-void ResourcesListModel::set_action_mode(ActionModeLink *action_mode) {
-	if (this->action_mode != action_mode) {
-		if (this->action_mode) {
-			QObject::disconnect(&unwrap(this->action_mode)->gui_signals, &ActionModeSignals::resource_changed, this, &ResourcesListModel::on_resource_changed);
-		}
-
-		this->action_mode = action_mode;
-
-		if (this->action_mode) {
-			QObject::connect(&unwrap(this->action_mode)->gui_signals, &ActionModeSignals::resource_changed, this, &ResourcesListModel::on_resource_changed);
-		}
-	}
-}
 
 void ResourcesListModel::on_resource_changed(game_resource resource, int amount) {
 	int i = static_cast<int>(resource);

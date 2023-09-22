@@ -1,10 +1,8 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "category_contents_list_model.h"
 
 #include <QtQml>
-
-#include "game_control_link.h"
 
 namespace openage {
 namespace gui {
@@ -13,10 +11,8 @@ namespace {
 const int registration = qmlRegisterType<CategoryContentsListModel>("yay.sfttech.openage", 1, 0, "Category");
 }
 
-CategoryContentsListModel::CategoryContentsListModel(QObject *parent)
-	:
-	QAbstractListModel{parent},
-	editor_mode{} {
+CategoryContentsListModel::CategoryContentsListModel(QObject *parent) :
+	QAbstractListModel{parent} {
 	Q_UNUSED(registration);
 }
 
@@ -34,28 +30,6 @@ void CategoryContentsListModel::set_name(const QString &name) {
 	}
 }
 
-EditorModeLink* CategoryContentsListModel::get_editor_mode() const {
-	return this->editor_mode;
-}
-
-void CategoryContentsListModel::set_editor_mode(EditorModeLink *editor_mode) {
-	if (this->editor_mode != editor_mode) {
-		if (this->editor_mode) {
-			QObject::disconnect(this->editor_mode, &EditorModeLink::categories_content_changed, this, &CategoryContentsListModel::on_categories_content_changed);
-			QObject::disconnect(this->editor_mode, &EditorModeLink::category_content_changed, this, &CategoryContentsListModel::on_category_content_changed);
-		}
-
-		this->editor_mode = editor_mode;
-
-		if (this->editor_mode) {
-			QObject::connect(this->editor_mode, &EditorModeLink::categories_content_changed, this, &CategoryContentsListModel::on_categories_content_changed);
-			QObject::connect(this->editor_mode, &EditorModeLink::category_content_changed, this, &CategoryContentsListModel::on_category_content_changed);
-		}
-
-		this->on_categories_content_changed();
-	}
-}
-
 void CategoryContentsListModel::on_category_content_changed(const std::string &category_name, std::vector<std::tuple<index_t, uint16_t>> type_and_texture) {
 	if (this->name == QString::fromStdString(category_name)) {
 		this->beginResetModel();
@@ -65,8 +39,6 @@ void CategoryContentsListModel::on_category_content_changed(const std::string &c
 }
 
 void CategoryContentsListModel::on_categories_content_changed() {
-	if (this->editor_mode)
-		this->editor_mode->announce_category_content(this->name.toStdString());
 }
 
 QHash<int, QByteArray> CategoryContentsListModel::roleNames() const {
@@ -75,7 +47,7 @@ QHash<int, QByteArray> CategoryContentsListModel::roleNames() const {
 	return names;
 }
 
-int CategoryContentsListModel::rowCount(const QModelIndex&) const {
+int CategoryContentsListModel::rowCount(const QModelIndex &) const {
 	return this->type_and_texture.size();
 }
 
@@ -94,4 +66,5 @@ QVariant CategoryContentsListModel::data(const QModelIndex &index, int role) con
 	return QVariant{};
 }
 
-}} // namespace openage::gui
+} // namespace gui
+} // namespace openage

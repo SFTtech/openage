@@ -3,7 +3,6 @@ add_sources(libopenage
 	category_contents_list_model.cpp
 	engine_info.cpp
 	engine_link.cpp
-	game_control_link.cpp
 	game_creator.cpp
 	game_main_link.cpp
 	game_saver.cpp
