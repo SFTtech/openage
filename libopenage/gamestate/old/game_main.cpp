@@ -81,7 +81,7 @@ void GameMainHandle::set_engine(LegacyEngine *engine) {
 void GameMainHandle::clear() {
 	if (this->engine) {
 		this->game = nullptr;
-		this->display->end_game();
+		// this->display->end_game();
 		announce_running();
 	}
 }
@@ -94,7 +94,7 @@ void GameMainHandle::set_game(std::unique_ptr<GameMain> &&game) {
 		this->game = game.get();
 
 		// then pass on the game to the engine
-		this->display->start_game(std::move(game));
+		// this->display->start_game(std::move(game));
 
 		announce_running();
 	}

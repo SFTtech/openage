@@ -9,7 +9,6 @@
 #include "../gamedata/color_dummy.h"
 #include "../handlers.h"
 #include "../input/legacy/input_manager.h"
-#include "../presenter/legacy/legacy.h"
 #include "../renderer/font/font.h"
 #include "../util/color.h"
 #include "buf.h"
@@ -28,7 +27,7 @@ class Console : InputHandler
 	, HudHandler
 	, ResizeHandler {
 public:
-	Console(presenter::LegacyDisplay *renderer);
+	Console(/* presenter::LegacyDisplay *display */);
 	~Console();
 
 	/**
@@ -60,7 +59,8 @@ public:
 	bool on_resize(coord::viewport_delta new_size) override;
 
 protected:
-	presenter::LegacyDisplay *engine;
+	// TODO: Replace with new renderer
+	// presenter::LegacyDisplay *display;
 
 public:
 	coord::camhud bottomleft;

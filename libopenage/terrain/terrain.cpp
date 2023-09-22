@@ -271,55 +271,6 @@ bool Terrain::check_tile_position(const coord::tile & /*pos*/) {
 	}
 }
 
-void Terrain::draw(presenter::LegacyDisplay *display, RenderOptions *settings) {
-	// TODO: move this draw invokation to a render manager.
-	//       it can reorder the draw instructions and minimize texture switching.
-
-	// query the window coordinates from the display first
-	coord::viewport wbl = coord::viewport{0, 0};
-	coord::viewport wbr = coord::viewport{display->coord.viewport_size.x, 0};
-	coord::viewport wtl = coord::viewport{0, display->coord.viewport_size.y};
-	coord::viewport wtr = coord::viewport{display->coord.viewport_size.x, display->coord.viewport_size.y};
-
-	// top left, bottom right tile coordinates
-	// that are currently visible in the window
-	// then convert them to tile coordinates.
-	coord::tile tl = wtl.to_tile(display->coord);
-	coord::tile tr = wtr.to_tile(display->coord);
-	coord::tile bl = wbl.to_tile(display->coord);
-	coord::tile br = wbr.to_tile(display->coord);
-
-	// main terrain calculation call: get the `terrain_render_data`
-	auto draw_data = this->create_draw_advice(tl, tr, br, bl, true);
-
-	// TODO: the following loop is totally inefficient and shit.
-	//       it reloads the drawing texture to the gpu FOR EACH TILE!
-	//       nevertheless, currently it works.
-
-	// draw the terrain ground
-	for (auto &tile : draw_data.tiles) {
-		// iterate over all layers to be drawn
-		for (int i = 0; i < tile.count; i++) {
-			struct tile_data *layer = &tile.data[i];
-
-			// position, where the tile is drawn
-			coord::tile tile_pos = layer->pos;
-
-			int mask_id = layer->mask_id;
-			Texture *texture = layer->tex;
-			int subtexture_id = layer->subtexture_id;
-			Texture *mask_texture = layer->mask_tex;
-
-			texture->draw(display->coord, *this, tile_pos, ALPHAMASKED, subtexture_id, mask_texture, mask_id);
-		}
-	}
-
-	// TODO: drawing buildings can't be the job of the terrain..
-	// draw the buildings
-	for (auto &object : draw_data.objects) {
-		// object->draw(*display);
-	}
-}
 
 struct terrain_render_data Terrain::create_draw_advice(const coord::tile &ab,
                                                        const coord::tile &cd,

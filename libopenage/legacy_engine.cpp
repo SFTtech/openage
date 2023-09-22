@@ -13,7 +13,6 @@
 #include "config.h"
 #include "error/error.h"
 #include "log/log.h"
-#include "presenter/legacy/legacy.h"
 #include "version.h"
 #include "versions/compiletime.h"
 
@@ -30,11 +29,6 @@ LegacyEngine::LegacyEngine(enum mode mode,
 	cvar_manager{cvar_manager},
 	profiler{this},
 	gui_link{} {
-	if (mode == mode::LEGACY) {
-		this->old_display = std::make_unique<presenter::LegacyDisplay>(root_dir, this);
-		return;
-	}
-
 	// TODO: implement FULL and HEADLESS mode :)
 }
 
@@ -46,10 +40,6 @@ void LegacyEngine::run() {
 	try {
 		this->job_manager.start();
 		this->running = true;
-
-		if (this->run_mode == mode::LEGACY) {
-			this->old_display->loop();
-		}
 
 		this->running = false;
 	}

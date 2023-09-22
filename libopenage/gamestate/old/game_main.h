@@ -2,14 +2,13 @@
 
 #pragma once
 
-#include <SDL2/SDL.h>
 #include <memory>
+#include <SDL2/SDL.h>
 #include <vector>
 
 #include <QObject>
 
 #include "../../options.h"
-#include "../../presenter/legacy/legacy.h"
 #include "../../terrain/terrain.h"
 #include "../../unit/unit_container.h"
 #include "../../util/timing.h"
@@ -169,11 +168,6 @@ private:
 	 * The engine the main game handle is attached to.
 	 */
 	LegacyEngine *engine;
-
-	/**
-	 * The engine the main game handle is attached to.
-	 */
-	presenter::LegacyDisplay *display;
 
 public:
 	GameMainSignals gui_signals;

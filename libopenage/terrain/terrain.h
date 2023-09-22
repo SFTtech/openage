@@ -13,7 +13,6 @@
 #include "../coord/phys.h"
 #include "../coord/pixel.h"
 #include "../coord/tile.h"
-#include "../presenter/legacy/legacy.h"
 #include "../texture.h"
 #include "../util/misc.h"
 
@@ -322,12 +321,6 @@ public:
 	 * return the blending mode id for two given neighbor ids.
 	 */
 	int get_blending_mode(terrain_t base_id, terrain_t neighbor_id);
-
-	/**
-	 * draw the currently visible terrain area on screen.
-	 * @param display: the display where the terrain should be drawn to.
-	 */
-	void draw(presenter::LegacyDisplay *display, RenderOptions *settings);
 
 	/**
 	 * create the drawing instruction data.

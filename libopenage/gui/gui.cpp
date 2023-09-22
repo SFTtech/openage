@@ -45,9 +45,9 @@ GUI::GUI(SDL_Window *window,
 		source,
 		rootdir},
 	input{&renderer, &game_logic_updater} {
-	info->display->register_resize_action(this);
-	info->display->register_input_action(this);
-	info->display->register_drawhud_action(this);
+	// info->display->register_resize_action(this);
+	// info->display->register_input_action(this);
+	// info->display->register_drawhud_action(this);
 
 	util::Path shader_dir = info->asset_dir / "shaders";
 

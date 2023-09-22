@@ -37,11 +37,6 @@ namespace gui {
 class GuiItemLink;
 } // namespace gui
 
-namespace presenter {
-class LegacyDisplay;
-} // namespace presenter
-
-
 /**
  * Qt signals for the engine.
  */
@@ -200,12 +195,6 @@ private:
 	 * Logsink to store messages to the filesystem.
 	 */
 	std::unique_ptr<log::FileSink> logsink_file;
-
-	/**
-	 * old, deprecated, and initial implementation of the renderer and game simulation.
-	 * TODO: remove
-	 */
-	std::unique_ptr<presenter::LegacyDisplay> old_display;
 
 public:
 	/**
