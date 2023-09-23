@@ -10,7 +10,6 @@
 #include "../util/timing.h"
 #include <epoxy/gl.h>
 
-#include "../renderer/text.h"
 #include "buf.h"
 #include "console.h"
 

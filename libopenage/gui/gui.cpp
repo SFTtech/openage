@@ -1,9 +1,5 @@
 // Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
-// include first to make opengl and libepoxy happy.
-#include "../shader/program.h"
-#include "../shader/shader.h"
-
 #include "gui.h"
 
 #include "../legacy_engine.h"
@@ -37,55 +33,9 @@ GUI::GUI(SDL_Window *window,
 	// info->display->register_resize_action(this);
 	// info->display->register_input_action(this);
 	// info->display->register_drawhud_action(this);
-
-	util::Path shader_dir = info->asset_dir / "shaders";
-
-	const char *shader_header_code = "#version 120\n";
-
-	auto text_vert_file = (shader_dir / "identity.vert.glsl").open();
-	std::string texture_vert_code = text_vert_file.read();
-	auto plaintexture_vert = std::make_unique<shader::Shader>(
-		GL_VERTEX_SHADER,
-		std::initializer_list<const char *>{shader_header_code, texture_vert_code.c_str()});
-	text_vert_file.close();
-
-	auto text_frag_file = (shader_dir / "maptexture.frag.glsl").open();
-	std::string texture_frag_code = text_frag_file.read();
-	auto plaintexture_frag = std::make_unique<shader::Shader>(
-		GL_FRAGMENT_SHADER,
-		std::initializer_list<const char *>{shader_header_code, texture_frag_code.c_str()});
-	text_vert_file.close();
-
-	this->textured_screen_quad_shader = std::make_unique<shader::Program>(
-		plaintexture_vert.get(),
-		plaintexture_frag.get());
-
-	this->textured_screen_quad_shader->link();
-	this->tex_loc = this->textured_screen_quad_shader->get_uniform_id("texture");
-	this->textured_screen_quad_shader->use();
-	glUniform1i(this->tex_loc, 0);
-	this->textured_screen_quad_shader->stopusing();
-
-	const float screen_quad[] = {
-		-1.f,
-		-1.f,
-		1.f,
-		-1.f,
-		1.f,
-		1.f,
-		-1.f,
-		1.f,
-	};
-
-	glGenBuffers(1, &this->screen_quad_vbo);
-
-	glBindBuffer(GL_ARRAY_BUFFER, this->screen_quad_vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(screen_quad), screen_quad, GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 GUI::~GUI() {
-	glDeleteBuffers(1, &this->screen_quad_vbo);
 }
 
 void GUI::process_events() {

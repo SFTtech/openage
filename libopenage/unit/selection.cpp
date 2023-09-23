@@ -8,7 +8,6 @@
 #include "../coord/tile.h"
 #include "../legacy_engine.h"
 #include "../log/log.h"
-#include "../renderer/text.h"
 #include "../terrain/terrain.h"
 #include "action.h"
 #include "command.h"

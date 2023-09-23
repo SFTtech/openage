@@ -6,7 +6,6 @@ add_sources(libopenage
 	render_factory.cpp
 	renderer.cpp
 	shader_program.cpp
-	text.cpp
 	texture.cpp
 	texture_array.cpp
 	types.cpp

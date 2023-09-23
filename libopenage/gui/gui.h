@@ -18,10 +18,6 @@ class GuiSingletonItemsInfo;
 } // namespace qtsdl
 
 namespace openage {
-namespace shader {
-class Program;
-} // namespace shader
-
 namespace gui {
 
 class EngineQMLInfo;
@@ -47,9 +43,6 @@ private:
 	// virtual bool on_input(SDL_Event *event) override;
 	// virtual bool on_drawhud() override;
 
-	GLint tex_loc;
-	GLuint screen_quad_vbo;
-
 	GuiApplicationWithLogger application;
 	qtsdl::GuiEventQueue render_updater;
 	qtsdl::GuiRenderer renderer;
@@ -57,11 +50,6 @@ private:
 	qtsdl::GuiEngine engine;
 	qtsdl::GuiSubtree subtree;
 	qtsdl::GuiInput input;
-
-	// needs to be deallocated before the GuiRenderer
-	// it accesses opengl api functions which require a
-	// current context:
-	std::unique_ptr<shader::Program> textured_screen_quad_shader;
 };
 
 } // namespace gui
