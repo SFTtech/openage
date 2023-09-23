@@ -14,9 +14,6 @@ class Terrain;
 
 namespace coord {
 
-class CoordManager;
-
-
 /*
  * Gameworld tile-related coordinate systems.
  * See doc/code/coordinate-systems.md for more information.
@@ -41,12 +38,6 @@ struct tile : CoordNeSeAbsolute<tile_t, tile, tile_delta> {
 	phys3 to_phys3(tile_t up = 0) const;
 	chunk to_chunk() const;
 	tile_delta get_pos_on_chunk() const;
-
-	// TODO: Remove
-	[[deprecated]] tile3 to_tile3(const Terrain &terrain, tile_t altitude = 0) const;
-	[[deprecated]] phys3 to_phys3(const Terrain &terrain, tile_t altitude = 0) const;
-	[[deprecated]] camgame to_camgame(const CoordManager &mgr, const Terrain &terrain, tile_t altitude = 0) const;
-	[[deprecated]] viewport to_viewport(const CoordManager &mgr, const Terrain &terrain, tile_t altitude = 0) const;
 };
 
 struct tile3_delta : CoordNeSeUpRelative<tile_t, tile3, tile3_delta> {

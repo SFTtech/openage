@@ -106,7 +106,7 @@ void Console::register_to_engine() {
 	// this->input_context.utf8_mode = true;
 }
 
-void Console::set_visible(bool make_visible) {
+void Console::set_visible(bool /* make_visible */) {
 	// TODO: Use new renderer
 
 	// if (make_visible) {

@@ -3,7 +3,6 @@
 #include "tile.h"
 
 #include "../terrain/terrain.h"
-#include "coordmanager.h"
 
 namespace openage::coord {
 
@@ -34,34 +33,6 @@ tile_delta tile::get_pos_on_chunk() const {
 	return tile_delta{
 		util::mod(this->ne, tiles_per_chunk),
 		util::mod(this->se, tiles_per_chunk)};
-}
-
-
-[[deprecated]] tile3 tile::to_tile3(const Terrain & /*terrain*/, tile_t altitude) const {
-	// TODO: once terrain elevations have been implemented,
-	//       query the terrain elevation at {ne, se}.
-	tile_t elevation = 0;
-
-	return tile3{this->ne, this->se, elevation + altitude};
-}
-
-
-[[deprecated]] phys3 tile::to_phys3(const Terrain &terrain, tile_t altitude) const {
-	return this->to_tile3(terrain, altitude).to_phys3();
-}
-
-
-[[deprecated]] camgame tile::to_camgame(const CoordManager &mgr,
-                                        const Terrain &terrain,
-                                        tile_t altitude) const {
-	return this->to_phys3(terrain, altitude).to_camgame(mgr);
-}
-
-
-[[deprecated]] viewport tile::to_viewport(const CoordManager &mgr,
-                                          const Terrain &terrain,
-                                          tile_t altitude) const {
-	return this->to_camgame(mgr, terrain, altitude).to_viewport(mgr);
 }
 
 

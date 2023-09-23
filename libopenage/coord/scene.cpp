@@ -4,7 +4,6 @@
 
 #include <numbers>
 
-#include "coord/coordmanager.h"
 #include "coord/pixel.h"
 #include "coord/tile.h"
 #include "util/math.h"
@@ -108,7 +107,7 @@ Eigen::Vector3f scene3_delta::to_world_space() const {
 }
 
 float scene3_delta::to_angle(const coord::scene2_delta &other) const {
-	return this->to_scene2().to_angle();
+	return this->to_scene2().to_angle(other);
 }
 
 scene2 scene3::to_scene2() const {

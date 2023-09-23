@@ -74,8 +74,5 @@ using term_t = int;
 struct term_delta;
 struct term;
 
-// forward declaration of the coord manager
-class CoordManager;
-
 } // namespace coord
 } // namespace openage

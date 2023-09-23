@@ -16,10 +16,6 @@
 
 namespace openage {
 
-namespace coord {
-class CoordManager;
-}
-
 namespace path {
 
 class Node;
