@@ -13,8 +13,6 @@
 
 namespace openage {
 
-class LegacyEngine;
-
 /**
  * In-game console subsystem. Featuring a full terminal emulator.
  *

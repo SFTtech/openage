@@ -9,7 +9,6 @@
 #include "../coord/pixel.h"
 #include "../coord/tile.h"
 #include "../error/error.h"
-#include "../legacy_engine.h"
 #include "../unit/unit.h"
 
 #include "terrain.h"
@@ -20,7 +19,6 @@ namespace openage {
 TerrainObject::TerrainObject(Unit &u) :
 	unit(u),
 	passable{[](const coord::phys3 &) -> bool { return true; }},
-	draw{[](const LegacyEngine & /*e*/) {}},
 	state{object_state::removed},
 	occupied_chunk_count{0},
 	parent{nullptr} {

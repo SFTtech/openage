@@ -17,8 +17,6 @@
 
 namespace openage {
 
-class LegacyEngine;
-
 namespace job {
 class JobManager;
 }

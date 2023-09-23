@@ -6,7 +6,6 @@
 #include <cmath>
 
 #include "../coord/tile.h"
-#include "../legacy_engine.h"
 #include "../log/log.h"
 #include "../terrain/terrain.h"
 #include "action.h"
@@ -17,10 +16,9 @@
 
 namespace openage {
 
-UnitSelection::UnitSelection(LegacyEngine *engine) :
+UnitSelection::UnitSelection() :
 	selection_type{selection_type_t::nothing},
-	drag_active{false},
-	engine{engine} {
+	drag_active{false} {
 }
 
 // bool UnitSelection::on_drawhud() {

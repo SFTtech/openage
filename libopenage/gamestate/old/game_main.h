@@ -18,7 +18,6 @@
 
 namespace openage {
 
-class LegacyEngine;
 class Generator;
 class Terrain;
 
@@ -130,8 +129,6 @@ class GameMainHandle {
 public:
 	explicit GameMainHandle(qtsdl::GuiItemLink *gui_link);
 
-	void set_engine(LegacyEngine *engine);
-
 	/**
 	 * End the game and delete the game handle.
 	 */
@@ -163,11 +160,6 @@ private:
 	 * just remembered here to access it quickly.
 	 */
 	GameMain *game;
-
-	/**
-	 * The engine the main game handle is attached to.
-	 */
-	LegacyEngine *engine;
 
 public:
 	GameMainSignals gui_signals;

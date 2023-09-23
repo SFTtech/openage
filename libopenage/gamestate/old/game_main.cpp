@@ -2,7 +2,6 @@
 
 #include "game_main.h"
 
-#include "../../legacy_engine.h"
 #include "../../log/log.h"
 #include "../../terrain/terrain.h"
 #include "../../unit/unit_type.h"
@@ -69,35 +68,7 @@ Civilisation *GameMain::add_civ(int civ_id) {
 
 GameMainHandle::GameMainHandle(qtsdl::GuiItemLink *gui_link) :
 	game{},
-	engine{},
 	gui_link{gui_link} {
-}
-
-void GameMainHandle::set_engine(LegacyEngine *engine) {
-	ENSURE(!this->engine || this->engine == engine, "relinking GameMain to another engine is not supported and not caught properly");
-	this->engine = engine;
-}
-
-void GameMainHandle::clear() {
-	if (this->engine) {
-		this->game = nullptr;
-		// this->display->end_game();
-		announce_running();
-	}
-}
-
-void GameMainHandle::set_game(std::unique_ptr<GameMain> &&game) {
-	if (this->engine) {
-		ENSURE(game, "linking game to engine problem");
-
-		// remember the pointer
-		this->game = game.get();
-
-		// then pass on the game to the engine
-		// this->display->start_game(std::move(game));
-
-		announce_running();
-	}
 }
 
 GameMain *GameMainHandle::get_game() const {

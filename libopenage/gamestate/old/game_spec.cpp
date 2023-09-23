@@ -9,7 +9,6 @@
 #include "../../gamedata/blending_mode_dummy.h"
 #include "../../gamedata/string_resource_dummy.h"
 #include "../../gamedata/terrain_dummy.h"
-#include "../../legacy_engine.h"
 #include "../../log/log.h"
 #include "../../rng/global_rng.h"
 #include "../../unit/producer.h"

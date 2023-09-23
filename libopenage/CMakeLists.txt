@@ -322,7 +322,6 @@ get_codegen_scu_file()
 # are specified above the source file list.
 
 add_sources(libopenage
-	legacy_engine.cpp
 	main.cpp
 	options.cpp
 	${CMAKE_CURRENT_BINARY_DIR}/config.cpp
@@ -331,7 +330,6 @@ add_sources(libopenage
 )
 
 pxdgen(
-	legacy_engine.h
 	main.h
 )
 

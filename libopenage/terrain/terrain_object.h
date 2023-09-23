@@ -10,7 +10,6 @@
 
 namespace openage {
 
-class LegacyEngine;
 class Terrain;
 class TerrainChunk;
 class Texture;
@@ -117,11 +116,6 @@ public:
 	 * this function should be true if given a valid position for the object
 	 */
 	std::function<bool(const coord::phys3 &)> passable;
-
-	/**
-	 * specifies content to be drawn
-	 */
-	std::function<void(const LegacyEngine &e)> draw;
 
 	/**
 	 * changes the placement state of this object keeping the existing

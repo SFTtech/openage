@@ -1,15 +1,11 @@
 add_sources(libopenage
 	actions_list_model.cpp
 	category_contents_list_model.cpp
-	engine_info.cpp
-	engine_link.cpp
 	game_creator.cpp
-	game_main_link.cpp
 	game_saver.cpp
 	game_spec_link.cpp
 	generator_link.cpp
 	gui.cpp
-	main_args_link.cpp
 	registrations.cpp
 	resources_list_model.cpp
 )

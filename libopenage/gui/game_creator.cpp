@@ -1,4 +1,4 @@
-// Copyright 2015-2021 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include "game_creator.h"
 
@@ -8,7 +8,6 @@
 #include "../gamestate/old/game_spec.h"
 #include "../gamestate/old/generator.h"
 
-#include "game_main_link.h"
 #include "game_spec_link.h"
 #include "generator_link.h"
 
@@ -18,11 +17,8 @@ namespace {
 const int registration = qmlRegisterType<GameCreator>("yay.sfttech.openage", 1, 0, "GameCreator");
 }
 
-GameCreator::GameCreator(QObject *parent)
-	:
+GameCreator::GameCreator(QObject *parent) :
 	QObject{parent},
-	game{},
-	game_spec{},
 	generator_parameters{} {
 	Q_UNUSED(registration);
 }
@@ -34,11 +30,10 @@ QString GameCreator::get_error_string() const {
 }
 
 void GameCreator::activate() {
-	static auto f = [] (GameMainHandle *game,
-	                    GameSpecHandle *game_spec,
-	                    Generator *generator,
-	                    std::shared_ptr<GameCreatorSignals> callback) {
-
+	static auto f = [](GameMainHandle *game,
+	                   GameSpecHandle *game_spec,
+	                   Generator *generator,
+	                   std::shared_ptr<GameCreatorSignals> callback) {
 		QString error_msg;
 
 		if (game->is_game_running()) {
@@ -60,27 +55,6 @@ void GameCreator::activate() {
 
 		emit callback->error_message(error_msg);
 	};
-
-	if (this->game && this->game_spec && this->generator_parameters) {
-		std::shared_ptr<GameCreatorSignals> callback = std::make_shared<GameCreatorSignals>();
-
-		QObject::connect(callback.get(), &GameCreatorSignals::error_message, this, &GameCreator::on_processed);
-
-		this->game->i(f, this->game_spec, this->generator_parameters, callback);
-	} else {
-		this->on_processed([this] {
-			if (!this->game)
-				return "provide 'game' before loading";
-			if (!this->game_spec)
-				return "provide 'gameSpec' before loading";
-			if (!this->generator_parameters)
-				return "provide 'generatorParameters' before loading";
-			else
-				ENSURE(false, "unhandled case for refusal to create a game");
-
-			return "unknown error";
-		}());
-	}
 }
 
 void GameCreator::clearErrors() {
@@ -93,4 +67,4 @@ void GameCreator::on_processed(const QString &error_string) {
 	emit this->error_string_changed();
 }
 
-}  // namespace openage::gui
+} // namespace openage::gui

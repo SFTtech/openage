@@ -9,8 +9,6 @@
 #include "unit_container.h"
 
 namespace openage {
-
-class LegacyEngine;
 class Terrain;
 
 std::vector<coord::tile> tiles_in_range(coord::camgame p1, coord::camgame p2, const coord::CoordManager &coord);
@@ -36,7 +34,7 @@ enum class selection_type_t {
  */
 class UnitSelection {
 public:
-	UnitSelection(LegacyEngine *engine);
+	UnitSelection(/* LegacyEngine *engine */);
 
 	// bool on_drawhud() override;
 	void drag_begin(coord::camgame pos);
@@ -111,7 +109,7 @@ private:
 	/**
 	 * Engine where this selection is attached to.
 	 */
-	LegacyEngine *engine;
+	// LegacyEngine *engine;
 };
 
 } // namespace openage

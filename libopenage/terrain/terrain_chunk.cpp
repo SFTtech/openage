@@ -8,7 +8,6 @@
 #include "../coord/pixel.h"
 #include "../coord/tile.h"
 #include "../error/error.h"
-#include "../legacy_engine.h"
 #include "../log/log.h"
 #include "../util/misc.h"
 

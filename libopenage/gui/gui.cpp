@@ -2,9 +2,7 @@
 
 #include "gui.h"
 
-#include "../legacy_engine.h"
 #include "../util/path.h"
-#include "engine_info.h"
 
 
 namespace openage {
@@ -19,10 +17,7 @@ GUI::GUI(SDL_Window *window,
 	render_updater{},
 	renderer{window},
 	game_logic_updater{},
-	engine{
-		&renderer,
-		{},
-		info},
+	engine{&renderer},
 	subtree{
 		&renderer,
 		&game_logic_updater,

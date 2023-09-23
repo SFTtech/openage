@@ -17,7 +17,6 @@
 
 namespace openage {
 
-class LegacyEngine;
 class RenderOptions;
 class TerrainChunk;
 class TerrainObject;

@@ -4,7 +4,6 @@
 #include <cmath>
 #include <limits>
 
-#include "../legacy_engine.h"
 #include "../terrain/terrain.h"
 
 #include "ability.h"

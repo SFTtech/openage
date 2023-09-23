@@ -146,8 +146,6 @@ public:
 	 */
 	virtual std::string name() const = 0;
 
-	void draw_debug(const LegacyEngine &engine);
-
 	/**
 	 * common functions for actions
 	 */
@@ -195,11 +193,6 @@ protected:
 	graphic_type graphic;
 	float frame;
 	float frame_rate;
-
-	/**
-	 * additional drawing for debug purposes
-	 */
-	std::function<void(const LegacyEngine &)> debug_draw_action;
 };
 
 /**

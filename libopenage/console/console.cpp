@@ -3,7 +3,6 @@
 #include "console.h"
 
 #include "../error/error.h"
-#include "../legacy_engine.h"
 #include "../log/log.h"
 #include "../util/strings.h"
 #include "../util/unicode.h"

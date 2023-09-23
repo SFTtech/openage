@@ -5,8 +5,6 @@
 
 namespace openage {
 
-class LegacyEngine;
-
 namespace util {
 class FD;
 } // namespace util

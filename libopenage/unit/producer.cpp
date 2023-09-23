@@ -3,7 +3,6 @@
 #include <initializer_list>
 
 #include "../gamedata/unit_dummy.h"
-#include "../legacy_engine.h"
 #include "../log/log.h"
 #include "../terrain/terrain.h"
 #include "../terrain/terrain_object.h"

@@ -3,7 +3,6 @@
 #include "resource.h"
 
 #include "../error/error.h"
-#include "../legacy_engine.h"
 
 #include "dynamic_resource.h"
 #include "in_memory_resource.h"
@@ -30,7 +29,6 @@ int Resource::get_id() const {
 
 std::shared_ptr<Resource> Resource::create_resource(AudioManager *manager,
                                                     const resource_def &def) {
-
 	if (not def.location.is_file()) [[unlikely]] {
 		throw Error{ERR << "sound file does not exist: " << def.location};
 	}

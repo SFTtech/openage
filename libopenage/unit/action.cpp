@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <cmath>
 
-#include "../legacy_engine.h"
 #include "../pathfinding/a_star.h"
 #include "../pathfinding/heuristics.h"
 #include "../terrain/terrain.h"
@@ -98,13 +97,6 @@ graphic_type UnitAction::type() const {
 
 float UnitAction::current_frame() const {
 	return this->frame;
-}
-
-void UnitAction::draw_debug(const LegacyEngine &engine) {
-	// draw debug content if available
-	if (show_debug && this->debug_draw_action) {
-		this->debug_draw_action(engine);
-	}
 }
 
 void UnitAction::face_towards(const coord::phys3 pos) {
