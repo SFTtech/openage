@@ -6,7 +6,8 @@
 #include <memory>
 #include <string>
 
-#include "coord/pixel.h"
+#include "util/path.h"
+
 
 namespace openage {
 
@@ -15,43 +16,64 @@ class JobManager;
 }
 
 namespace renderer::screen {
+class ScreenRenderer;
 
 /**
  * Takes screenshots, duh.
- *
- * TODO: move into renderer!
  */
-class [[deprecated]] ScreenshotManager {
+class ScreenshotManager {
 public:
 	/**
-	 * Initializes the screenshot manager with the given job manager.
+	 * Create a new screenshot manager.
+	 *
+	 * @param renderer Screen render stage to take the screenshot from.
+	 * @param outdir Directory where the screenshots are saved.
+	 * @param job_mgr Job manager to use for writing the screenshot to disk.
 	 */
-	ScreenshotManager(job::JobManager *job_mgr);
+	ScreenshotManager(std::shared_ptr<ScreenRenderer> &renderer,
+	                  util::Path &outdir,
+	                  std::shared_ptr<job::JobManager> &job_mgr);
 
-	~ScreenshotManager();
+	~ScreenshotManager() = default;
 
-	/** To be called to save a screenshot. */
-	void save_screenshot(coord::viewport_delta size);
-
-	/** To be called by the job manager. Returns true on success, false otherwise. */
-	bool encode_png(std::shared_ptr<uint8_t> pxdata,
-	                coord::viewport_delta size);
-
-	/** size of the game window, in coord_sdl */
-	coord::viewport_delta window_size;
+	/**
+	 * Generate and save a screenshot of the last frame.
+	 */
+	void save_screenshot();
 
 private:
-	/** to be called to get the next screenshot filename into the array */
+	/**
+	 * Generates a filename for the screenshot.
+	 *
+	 * @return Filename for the screenshot.
+	 */
 	std::string gen_next_filename();
 
-	/** contains the number to be in the next screenshot filename */
+	/**
+	 * Directory where the screenshots are saved.
+	 */
+	util::Path outdir;
+
+	/**
+	 * Counter for the screenshot filename. Used if multiple screenshots
+	 * are taken in the same second.
+	 */
 	unsigned count;
 
-	/** contains the last time when a screenshot was taken */
+	/**
+	 * Last time when a screenshot was taken.
+	 */
 	std::time_t last_time;
 
-	/** the job manager this screenshot manager uses */
-	job::JobManager *job_manager;
+	/**
+	 * Screen render stage to take the screenshot from.
+	 */
+	std::shared_ptr<ScreenRenderer> renderer;
+
+	/**
+	 * Job manager to use for writing the screenshot to disk.
+	 */
+	std::shared_ptr<job::JobManager> job_manager;
 };
 
 } // namespace renderer::screen
