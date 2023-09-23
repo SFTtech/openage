@@ -325,7 +325,6 @@ add_sources(libopenage
 	legacy_engine.cpp
 	main.cpp
 	options.cpp
-	screenshot.cpp
 	${CMAKE_CURRENT_BINARY_DIR}/config.cpp
 	${CMAKE_CURRENT_BINARY_DIR}/version.cpp
 	${CODEGEN_SCU_FILE}

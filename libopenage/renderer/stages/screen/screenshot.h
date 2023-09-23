@@ -14,6 +14,8 @@ namespace job {
 class JobManager;
 }
 
+namespace renderer::screen {
+
 /**
  * Takes screenshots, duh.
  *
@@ -52,4 +54,5 @@ private:
 	job::JobManager *job_manager;
 };
 
+} // namespace renderer::screen
 } // namespace openage

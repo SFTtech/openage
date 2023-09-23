@@ -16,11 +16,10 @@
 #include "log/log.h"
 #include "util/strings.h"
 
-namespace openage {
+namespace openage::renderer::screen {
 
 
-ScreenshotManager::ScreenshotManager(job::JobManager *job_mgr)
-	:
+ScreenshotManager::ScreenshotManager(job::JobManager *job_mgr) :
 	count{0},
 	job_manager{job_mgr} {
 }
@@ -30,12 +29,12 @@ ScreenshotManager::~ScreenshotManager() {}
 
 
 std::string ScreenshotManager::gen_next_filename() {
-
 	std::time_t t = std::time(NULL);
 
 	if (t == this->last_time) {
 		this->count++;
-	} else {
+	}
+	else {
 		this->count = 0;
 		this->last_time = t;
 	}
@@ -50,12 +49,12 @@ std::string ScreenshotManager::gen_next_filename() {
 
 void ScreenshotManager::save_screenshot(coord::viewport_delta size) {
 	coord::pixel_t width = size.x,
-	               height = size.y;
+				   height = size.y;
 
-	std::shared_ptr<uint8_t> pxdata(new uint8_t[4*width*height], std::default_delete<uint8_t[]>());
+	std::shared_ptr<uint8_t> pxdata(new uint8_t[4 * width * height], std::default_delete<uint8_t[]>());
 	glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, pxdata.get());
 
-	auto encode_function = [this, pxdata, size] () {
+	auto encode_function = [this, pxdata, size]() {
 		return this->encode_png(pxdata, size);
 	};
 	this->job_manager->enqueue<bool>(encode_function);
@@ -66,24 +65,25 @@ bool ScreenshotManager::encode_png(std::shared_ptr<uint8_t> pxdata,
                                    coord::viewport_delta size) {
 	std::FILE *fout = NULL;
 	coord::pixel_t width = size.x,
-	               height = size.y;
-	auto warn_fn = [] (png_structp /*png_ptr*/, png_const_charp message) {
+				   height = size.y;
+	auto warn_fn = [](png_structp /*png_ptr*/, png_const_charp message) {
 		log::log(MSG(err) << "Creating screenshot failed: libpng error: " << message);
 	};
-	auto err_fn = [] (png_structp png_ptr, png_const_charp message) {
+	auto err_fn = [](png_structp png_ptr, png_const_charp message) {
 		log::log(MSG(err) << "Creating screenshot failed: libpng error: " << message);
 		longjmp(png_jmpbuf(png_ptr), 1);
 	};
 
 	png_structp png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING,
-	                                              (png_voidp) NULL,
-	                                              err_fn, warn_fn);
+	                                              (png_voidp)NULL,
+	                                              err_fn,
+	                                              warn_fn);
 	if (!png_ptr)
 		return false;
 
 	png_infop info_ptr = png_create_info_struct(png_ptr);
 	if (!info_ptr) {
-		png_destroy_write_struct(&png_ptr, (png_infopp) NULL);
+		png_destroy_write_struct(&png_ptr, (png_infopp)NULL);
 		return false;
 	}
 
@@ -97,16 +97,14 @@ bool ScreenshotManager::encode_png(std::shared_ptr<uint8_t> pxdata,
 	fout = std::fopen(filename.c_str(), "wb");
 	if (fout == NULL) {
 		png_destroy_write_struct(&png_ptr, &info_ptr);
-		log::log(MSG(err) << "Could not open '"<< filename << "': "
-		         << std::string(strerror(errno)));
+		log::log(MSG(err) << "Could not open '" << filename << "': "
+		                  << std::string(strerror(errno)));
 		return false;
 	}
 
 	png_init_io(png_ptr, fout);
 
-	png_set_IHDR(png_ptr, info_ptr, width, height, 8, PNG_COLOR_TYPE_RGB,
-	             PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT,
-	             PNG_FILTER_TYPE_DEFAULT);
+	png_set_IHDR(png_ptr, info_ptr, width, height, 8, PNG_COLOR_TYPE_RGB, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
 
 	// Put image row pointer into info_ptr so that we can use the high-level
 	// write interface.
@@ -129,4 +127,4 @@ bool ScreenshotManager::encode_png(std::shared_ptr<uint8_t> pxdata,
 	return true;
 }
 
-} // openage
+} // namespace openage::renderer::screen
