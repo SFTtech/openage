@@ -82,16 +82,6 @@ index_t GameSpec::get_slp_graphic(index_t slp) {
 	return this->slp_to_graphic[slp];
 }
 
-std::shared_ptr<UnitTexture> GameSpec::get_unit_texture(index_t unit_id) const {
-	if (this->unit_textures.count(unit_id) == 0) {
-		if (unit_id > 0) {
-			log::log(MSG(dbg) << "  -> ignoring unit_id: " << unit_id);
-		}
-		return nullptr;
-	}
-	return this->unit_textures.at(unit_id);
-}
-
 const Sound *GameSpec::get_sound(index_t sound_id) const {
 	if (this->available_sounds.count(sound_id) == 0) {
 		if (sound_id > 0) {

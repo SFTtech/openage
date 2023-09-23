@@ -125,24 +125,6 @@ public:
 	bool update(time_nsec_t lastframe_duration);
 
 	/**
-	 * draws this action by taking the graphic type of the top action
-	 * the graphic is found from the current graphic set
-	 *
-	 * this function should be used for most draw purposes
-	 */
-	void draw(const LegacyEngine &engine);
-
-	/**
-	 * an generalized draw function which is useful for drawing annexes
-	 */
-	void draw(TerrainObject *loc, const graphic_set &graphics, const LegacyEngine &engine);
-
-	/**
-	 * draws with a specific graphic and frame
-	 */
-	void draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, unsigned int frame, const LegacyEngine &engine);
-
-	/**
 	 * adds an available ability to this unit
 	 * this turns targeted objects into actions which are pushed
 	 * onto the stack, eg. targeting a relic may push a collect relic action

@@ -1,4 +1,4 @@
-// Copyright 2014-2021 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,7 +16,6 @@ class Command;
 class Sound;
 class Unit;
 class UnitAction;
-class UnitTexture;
 class UnitType;
 
 /**
@@ -54,14 +53,14 @@ const ability_set ability_all = ability_set().set();
 /**
  * the order abilities should be used when available
  */
-static std::vector<ability_type> ability_priority {
-	ability_type::gather,	// targeting
+static std::vector<ability_type> ability_priority{
+	ability_type::gather, // targeting
 	ability_type::convert,
 	ability_type::repair,
 	ability_type::heal,
 	ability_type::attack,
 	ability_type::build,
-	ability_type::move,	// positional
+	ability_type::move, // positional
 	ability_type::patrol,
 	ability_type::garrison,
 	ability_type::ungarrison, // inside buildings
@@ -94,7 +93,7 @@ public:
 	/**
 	 * applies command to a given unit
 	 */
-	virtual void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) = 0;
+	virtual void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) = 0;
 
 	/**
 	 * some common functions
@@ -111,15 +110,14 @@ public:
 	 * using a brace enclosed list
 	 */
 	static ability_set set_from_list(const std::vector<ability_type> &items);
-
 };
 
 /**
  * initiates a move action when given a valid target
  */
-class MoveAbility: public UnitAbility {
+class MoveAbility : public UnitAbility {
 public:
-	MoveAbility(const Sound *s=nullptr);
+	MoveAbility(const Sound *s = nullptr);
 
 	ability_type type() override {
 		return ability_type::move;
@@ -127,7 +125,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) override;
 
 private:
 	const Sound *sound;
@@ -136,7 +134,7 @@ private:
 /**
  * sets the gather point on buildings
  */
-class SetPointAbility: public UnitAbility {
+class SetPointAbility : public UnitAbility {
 public:
 	SetPointAbility();
 
@@ -146,16 +144,16 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) override;
 };
 
 
 /**
  * ability to garrision inside a building
  */
-class GarrisonAbility: public UnitAbility {
+class GarrisonAbility : public UnitAbility {
 public:
-	GarrisonAbility(const Sound *s=nullptr);
+	GarrisonAbility(const Sound *s = nullptr);
 
 	ability_type type() override {
 		return ability_type::garrison;
@@ -163,7 +161,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) override;
 
 private:
 	const Sound *sound;
@@ -172,9 +170,9 @@ private:
 /**
  * ability to ungarrision a building
  */
-class UngarrisonAbility: public UnitAbility {
+class UngarrisonAbility : public UnitAbility {
 public:
-	UngarrisonAbility(const Sound *s=nullptr);
+	UngarrisonAbility(const Sound *s = nullptr);
 
 	ability_type type() override {
 		return ability_type::ungarrison;
@@ -182,7 +180,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) override;
 
 private:
 	const Sound *sound;
@@ -191,9 +189,9 @@ private:
 /**
  * buildings train new objects
  */
-class TrainAbility: public UnitAbility {
+class TrainAbility : public UnitAbility {
 public:
-	TrainAbility(const Sound *s=nullptr);
+	TrainAbility(const Sound *s = nullptr);
 
 	ability_type type() override {
 		return ability_type::train;
@@ -201,7 +199,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) override;
 
 private:
 	const Sound *sound;
@@ -210,9 +208,9 @@ private:
 /**
  * initiates a research
  */
-class ResearchAbility: public UnitAbility {
+class ResearchAbility : public UnitAbility {
 public:
-	ResearchAbility(const Sound *s=nullptr);
+	ResearchAbility(const Sound *s = nullptr);
 
 	ability_type type() override {
 		return ability_type::research;
@@ -220,7 +218,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) override;
 
 private:
 	const Sound *sound;
@@ -229,9 +227,9 @@ private:
 /**
  * villagers build new buildings
  */
-class BuildAbility: public UnitAbility {
+class BuildAbility : public UnitAbility {
 public:
-	BuildAbility(const Sound *s=nullptr);
+	BuildAbility(const Sound *s = nullptr);
 
 	ability_type type() override {
 		return ability_type::build;
@@ -239,7 +237,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) override;
 
 private:
 	const Sound *sound;
@@ -248,9 +246,9 @@ private:
 /**
  * initiates an gather resource action when given a valid target
  */
-class GatherAbility: public UnitAbility {
+class GatherAbility : public UnitAbility {
 public:
-	GatherAbility(const Sound *s=nullptr);
+	GatherAbility(const Sound *s = nullptr);
 
 	ability_type type() override {
 		return ability_type::gather;
@@ -258,7 +256,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) override;
 
 private:
 	const Sound *sound;
@@ -267,9 +265,9 @@ private:
 /**
  * initiates an attack action when given a valid target
  */
-class AttackAbility: public UnitAbility {
+class AttackAbility : public UnitAbility {
 public:
-	AttackAbility(const Sound *s=nullptr);
+	AttackAbility(const Sound *s = nullptr);
 
 	ability_type type() override {
 		return ability_type::attack;
@@ -277,7 +275,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) override;
 
 private:
 	const Sound *sound;
@@ -286,9 +284,9 @@ private:
 /**
  * initiates a repair action when given a valid target
  */
-class RepairAbility: public UnitAbility {
+class RepairAbility : public UnitAbility {
 public:
-	RepairAbility(const Sound *s=nullptr);
+	RepairAbility(const Sound *s = nullptr);
 
 	ability_type type() override {
 		return ability_type::repair;
@@ -296,7 +294,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) override;
 
 private:
 	const Sound *sound;
@@ -305,9 +303,9 @@ private:
 /**
  * initiates a heal action when given a valid target
  */
-class HealAbility: public UnitAbility {
+class HealAbility : public UnitAbility {
 public:
-	HealAbility(const Sound *s=nullptr);
+	HealAbility(const Sound *s = nullptr);
 
 	ability_type type() override {
 		return ability_type::heal;
@@ -315,7 +313,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) override;
 
 private:
 	const Sound *sound;
@@ -325,9 +323,9 @@ private:
  * initiates a patrol action when given a valid target
  * TODO implement
  */
-class PatrolAbility: public UnitAbility {
+class PatrolAbility : public UnitAbility {
 public:
-	PatrolAbility(const Sound *s=nullptr);
+	PatrolAbility(const Sound *s = nullptr);
 
 	ability_type type() override {
 		return ability_type::patrol;
@@ -335,7 +333,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) override;
 
 private:
 	const Sound *sound;
@@ -344,9 +342,9 @@ private:
 /**
  * initiates a convert action when given a valid target
  */
-class ConvertAbility: public UnitAbility {
+class ConvertAbility : public UnitAbility {
 public:
-	ConvertAbility(const Sound *s=nullptr);
+	ConvertAbility(const Sound *s = nullptr);
 
 	ability_type type() override {
 		return ability_type::convert;
@@ -354,7 +352,7 @@ public:
 
 	bool can_invoke(Unit &to_modify, const Command &cmd) override;
 
-	void invoke(Unit &to_modify, const Command &cmd, bool play_sound=false) override;
+	void invoke(Unit &to_modify, const Command &cmd, bool play_sound = false) override;
 
 private:
 	const Sound *sound;
@@ -369,7 +367,7 @@ std::string to_string(const openage::ability_type &at);
 /**
  * hasher for ability type enum
  */
-template<>
+template <>
 struct hash<openage::ability_type> {
 	typedef underlying_type<openage::ability_type>::type underlying_type;
 

@@ -14,19 +14,6 @@ class LegacyEngine;
 /**
  * superclass for all possible drawing operations in the game.
  */
-class [[deprecated]] DrawHandler {
-public:
-	virtual ~DrawHandler() = default;
-
-	/**
-	 * execute the drawing action.
-	 */
-	virtual bool on_draw() = 0;
-};
-
-/**
- * superclass for all possible drawing operations in the game.
- */
 class [[deprecated]] HudHandler {
 public:
 	virtual ~HudHandler() = default;

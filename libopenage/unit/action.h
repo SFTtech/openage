@@ -146,15 +146,6 @@ public:
 	 */
 	virtual std::string name() const = 0;
 
-	/**
-	 * determines which graphic should be used for drawing this unit
-	 * finds the default graphic using the units type, used by most actions
-	 *
-	 * this virtual function is overriden for special cases such as
-	 * villager task graphics
-	 */
-	virtual const graphic_set &current_graphics() const;
-
 	void draw_debug(const LegacyEngine &engine);
 
 	/**

@@ -12,7 +12,6 @@
 #include "action.h"
 #include "producer.h"
 #include "unit.h"
-#include "unit_texture.h"
 
 /** @file
  * Many values in this file are hardcoded, due to limited understanding of how the original
@@ -82,7 +81,6 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	UnitType(owner),
 	dataspec(spec),
 	unit_data(*ud),
-	default_tex{spec.get_unit_texture(ud->idle_graphic0)},
 	dead_unit_id{ud->dead_unit_id} {
 	// copy the class type
 	this->unit_class = this->unit_data.unit_class;
@@ -111,54 +109,6 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 		static_cast<int>(this->unit_data.radius_x * 2),
 		static_cast<int>(this->unit_data.radius_y * 2),
 	};
-
-	// graphic set
-	auto standing = spec.get_unit_texture(this->unit_data.idle_graphic0);
-	if (!standing) {
-		// indicates problems with data converion
-		throw Error(MSG(err) << "Unit id " << this->unit_data.id0
-		                     << " has invalid graphic data, try reconverting the data");
-	}
-	this->graphics[graphic_type::standing] = standing;
-	auto dying_tex = spec.get_unit_texture(this->unit_data.dying_graphic);
-	if (dying_tex) {
-		this->graphics[graphic_type::dying] = dying_tex;
-	}
-
-	// default extra graphics
-	this->graphics[graphic_type::attack] = this->graphics[graphic_type::standing];
-	this->graphics[graphic_type::work] = this->graphics[graphic_type::standing];
-
-	// pull extra graphics from unit commands
-	auto cmds = spec.get_command_data(this->unit_data.id0);
-	for (auto cmd : cmds) {
-		// same attack / work graphic
-		if (cmd->work_sprite_id == -1 && cmd->proceed_sprite_id > 0) {
-			auto task = spec.get_unit_texture(cmd->proceed_sprite_id);
-			if (task) {
-				this->graphics[graphic_type::work] = task;
-				this->graphics[graphic_type::attack] = task;
-			}
-		}
-
-		// separate work and attack graphics
-		if (cmd->work_sprite_id > 0 && cmd->proceed_sprite_id > 0) {
-			auto attack = spec.get_unit_texture(cmd->proceed_sprite_id);
-			auto work = spec.get_unit_texture(cmd->work_sprite_id);
-			if (attack) {
-				this->graphics[graphic_type::attack] = attack;
-			}
-			if (work) {
-				this->graphics[graphic_type::work] = work;
-			}
-		}
-
-		// villager carrying resources graphics
-		if (cmd->carry_sprite_id > 0) {
-			auto carry = spec.get_unit_texture(cmd->carry_sprite_id);
-			this->graphics[graphic_type::carrying] = carry;
-		}
-	}
 
 	// TODO get cost, temp fixed cost of 50 food
 	this->cost.set(cost_type::constant, create_resource_cost(game_resource::food, 50));
@@ -238,24 +188,6 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 		unit->push_action(std::make_unique<DecayAction>(unit), true);
 	}
 	else {
-		// if destruction graphic is available
-		if (this->dead_unit_id) {
-			unit->push_action(
-				std::make_unique<DeadAction>(
-					unit,
-					[this, unit, &player]() {
-						// modify unit to have  dead type
-						UnitType *t = player.get_type(this->dead_unit_id);
-						if (t) {
-							t->initialise(unit, player);
-						}
-					}),
-				true);
-		}
-		else if (this->graphics.count(graphic_type::dying) > 0) {
-			unit->push_action(std::make_unique<DeadAction>(unit), true);
-		}
-
 		// the default action
 		unit->push_action(std::make_unique<IdleAction>(unit), true);
 	}
@@ -329,26 +261,6 @@ MovableProducer::MovableProducer(const Player &owner, const GameSpec &spec, cons
 	on_move{spec.get_sound(this->unit_data.command_sound_id)},
 	on_attack{spec.get_sound(this->unit_data.command_sound_id)},
 	projectile{this->unit_data.attack_projectile_primary_unit_id} {
-	// extra graphics if available
-	// villagers have invalid attack and walk graphics
-	// it seems these come from the command data instead
-	auto walk = spec.get_unit_texture(this->unit_data.move_graphics);
-	if (!walk) {
-		// use standing instead
-		walk = this->graphics[graphic_type::standing];
-	}
-	this->graphics[graphic_type::walking] = walk;
-
-	// reuse as carry graphic if not already set
-	if (this->graphics.count(graphic_type::carrying) == 0) {
-		this->graphics[graphic_type::carrying] = walk;
-	}
-
-	auto attack = spec.get_unit_texture(this->unit_data.attack_sprite_id);
-	if (attack && attack->is_valid()) {
-		this->graphics[graphic_type::attack] = attack;
-	}
-
 	// extra abilities
 	this->type_abilities.emplace_back(std::make_shared<MoveAbility>(this->on_move));
 	this->type_abilities.emplace_back(std::make_shared<AttackAbility>(this->on_attack));
@@ -474,8 +386,6 @@ TerrainObject *LivingProducer::place(Unit *unit, std::shared_ptr<Terrain> terrai
 BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, const gamedata::building_unit *ud) :
 	UnitType(owner),
 	unit_data{*ud},
-	texture{spec.get_unit_texture(ud->idle_graphic0)},
-	destroyed{spec.get_unit_texture(ud->dying_graphic)},
 	projectile{this->unit_data.attack_projectile_primary_unit_id},
 	foundation_terrain{ud->foundation_terrain_id},
 	enable_collisions{this->unit_data.id0 != 109} { // 109 = town center
@@ -504,15 +414,6 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 		static_cast<int>(this->unit_data.radius_x * 2),
 		static_cast<int>(this->unit_data.radius_y * 2),
 	};
-
-	// graphic set
-	this->graphics[graphic_type::construct] = spec.get_unit_texture(ud->construction_graphic_id);
-	this->graphics[graphic_type::standing] = spec.get_unit_texture(ud->idle_graphic0);
-	this->graphics[graphic_type::attack] = spec.get_unit_texture(ud->idle_graphic0);
-	auto dying_tex = spec.get_unit_texture(ud->dying_graphic);
-	if (dying_tex) {
-		this->graphics[graphic_type::dying] = dying_tex;
-	}
 
 	// TODO get cost, temp fixed cost of 100 wood
 	this->cost.set(cost_type::constant, create_resource_cost(game_resource::wood, 100));
@@ -569,9 +470,6 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	if (this->id() == 109 || this->id() == 276) { // Town center, Wonder
 		this->have_limit = 2; // TODO change to 1, 2 is for testing
 	}
-
-	bool has_destruct_graphic = this->destroyed != nullptr;
-	unit->push_action(std::make_unique<FoundationAction>(unit, has_destruct_graphic), true);
 
 	UnitType *proj_type = this->owner.get_type(this->projectile);
 	if (this->unit_data.attack_projectile_primary_unit_id > 0 && proj_type) {
@@ -708,37 +606,14 @@ TerrainObject *BuildingProducer::make_annex(Unit &u, std::shared_ptr<Terrain> t,
 	object_state state = c ? object_state::placed : object_state::placed_no_collision;
 	annex_loc->place(t, start_tile, state);
 
-	// create special drawing functions for annexes,
-	annex_loc->draw = [annex_loc, annex_type, &u, c](const LegacyEngine &e) {
-		// hack which draws the outline in the right order
-		// removable once rendering system is improved
-		if (c && u.selected) {
-			// annex_loc->get_parent()->draw_outline(e.coord);
-		}
-
-		// only draw if building is completed
-		if (u.has_attribute(attr_type::building) && u.get_attribute<attr_type::building>().completed >= 1.0f) {
-			u.draw(annex_loc, annex_type->graphics, e);
-		}
-	};
 	return annex_loc;
 }
 
 ProjectileProducer::ProjectileProducer(const Player &owner, const GameSpec &spec, const gamedata::missile_unit *pd) :
 	UnitType(owner),
-	unit_data{*pd},
-	tex{spec.get_unit_texture(this->unit_data.idle_graphic0)},
-	sh{spec.get_unit_texture(3379)}, // 3379 = general arrow shadow
-	destroyed{spec.get_unit_texture(this->unit_data.dying_graphic)} {
+	unit_data{*pd} {
 	// copy the class type
 	this->unit_class = this->unit_data.unit_class;
-
-	// graphic set
-	this->graphics[graphic_type::standing] = this->tex;
-	this->graphics[graphic_type::shadow] = this->sh;
-	if (destroyed) {
-		this->graphics[graphic_type::dying] = destroyed;
-	}
 }
 
 ProjectileProducer::~ProjectileProducer() = default;
@@ -769,11 +644,6 @@ void ProjectileProducer::initialise(Unit *unit, Player &player) {
 	unit->add_attribute(std::make_shared<Attribute<attr_type::speed>>(sp));
 	unit->add_attribute(std::make_shared<Attribute<attr_type::projectile>>(this->unit_data.projectile_arc));
 	unit->add_attribute(std::make_shared<Attribute<attr_type::direction>>(coord::phys3_delta{1, 0, 0}));
-
-	// if destruction graphic is available
-	if (this->destroyed) {
-		unit->push_action(std::make_unique<DeadAction>(unit), true);
-	}
 }
 
 TerrainObject *ProjectileProducer::place(Unit *u, std::shared_ptr<Terrain> terrain, coord::phys3 init_pos) const {
@@ -814,10 +684,6 @@ TerrainObject *ProjectileProducer::place(Unit *u, std::shared_ptr<Terrain> terra
 			}
 		}
 		return true;
-	};
-
-	u->location->draw = [u](const LegacyEngine &e) {
-		u->draw(e);
 	};
 
 	// try to place the obj, it knows best whether it will fit.

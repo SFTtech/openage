@@ -9,6 +9,5 @@ add_sources(libopenage
 	selection.cpp
 	unit.cpp
 	unit_container.cpp
-	unit_texture.cpp
 	unit_type.cpp
 )

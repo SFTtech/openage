@@ -12,7 +12,6 @@
 #include "command.h"
 #include "producer.h"
 #include "research.h"
-#include "unit_texture.h"
 
 namespace openage {
 
@@ -91,26 +90,6 @@ UnitAction::UnitAction(Unit *u, graphic_type initial_gt) :
 	graphic{initial_gt},
 	frame{.0f},
 	frame_rate{.0f} {
-	auto &g_set = this->current_graphics();
-	if (g_set.count(initial_gt) > 0) {
-		auto utex = g_set.at(initial_gt);
-		if (utex) {
-			this->frame_rate = utex->frame_rate;
-		}
-		else {
-			this->entity->log(MSG(dbg) << "Broken graphic (null)");
-		}
-	}
-	else {
-		this->entity->log(MSG(dbg) << "Broken graphic (not available)");
-	}
-
-	if (this->frame_rate == 0) {
-		// a random starting point for static graphics
-		// this creates variations in trees / houses etc
-		// this value is also deterministic to match across clients
-		this->frame = (u->id * u->id * 19249) & 0xff;
-	}
 }
 
 graphic_type UnitAction::type() const {
@@ -119,11 +98,6 @@ graphic_type UnitAction::type() const {
 
 float UnitAction::current_frame() const {
 	return this->frame;
-}
-
-const graphic_set &UnitAction::current_graphics() const {
-	// return the default graphic
-	return this->entity->unit_type->graphics;
 }
 
 void UnitAction::draw_debug(const LegacyEngine &engine) {
@@ -326,10 +300,6 @@ void TargetAction::set_target(UnitReference new_target) {
 DecayAction::DecayAction(Unit *e) :
 	UnitAction(e, graphic_type::standing),
 	end_frame{.0f} {
-	auto &g_set = this->current_graphics();
-	if (g_set.count(this->graphic) > 0) {
-		this->end_frame = g_set.at(this->graphic)->frame_count - 1;
-	}
 }
 
 void DecayAction::update(unsigned int time) {
@@ -346,10 +316,6 @@ DeadAction::DeadAction(Unit *e, std::function<void()> on_complete) :
 	UnitAction(e, graphic_type::dying),
 	end_frame{.0f},
 	on_complete_func{on_complete} {
-	auto &g_set = this->current_graphics();
-	if (g_set.count(graphic) > 0) {
-		this->end_frame = g_set.at(graphic)->frame_count - 1;
-	}
 }
 
 void DeadAction::update(unsigned int time) {
@@ -1127,9 +1093,6 @@ void AttackAction::update_in_range(unsigned int time, Unit *target_ptr) {
 	if (this->timer.update(time)) {
 		this->attack(*target_ptr);
 	}
-
-	// inc frame
-	this->frame += time * this->current_graphics().at(graphic)->frame_count * 1.0f / this->timer.get_interval();
 }
 
 bool AttackAction::completed_in_range(Unit *target_ptr) const {
@@ -1183,9 +1146,6 @@ void HealAction::update_in_range(unsigned int time, Unit *target_ptr) {
 	if (this->timer.update(time)) {
 		this->heal(*target_ptr);
 	}
-
-	// inc frame
-	this->frame += time * this->current_graphics().at(graphic)->frame_count * 1.0f / this->timer.get_interval();
 }
 
 bool HealAction::completed_in_range(Unit *target_ptr) const {

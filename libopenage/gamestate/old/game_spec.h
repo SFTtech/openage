@@ -5,7 +5,6 @@
 #include "../../gamedata/gamedata_dummy.h"
 #include "../../gamedata/graphic_dummy.h"
 #include "../../job/job.h"
-#include "../../unit/unit_texture.h"
 #include "../../util/csv.h"
 #include "terrain/terrain.h"
 #include "types.h"
@@ -89,12 +88,6 @@ public:
 	 * reverse lookup of slp
 	 */
 	index_t get_slp_graphic(index_t slp);
-
-	/**
-	 * get unit texture by graphic id -- this is an directional texture
-	 * which also includes graphic deltas
-	 */
-	std::shared_ptr<UnitTexture> get_unit_texture(index_t graphic_id) const;
 
 	/**
 	 * get sound by sound id
@@ -189,11 +182,6 @@ private:
 	 * commands available for each unit id
 	 */
 	std::unordered_map<index_t, std::vector<const gamedata::unit_command *>> commands;
-
-	/**
-	 * graphic ids -> unit texture for that id
-	 */
-	std::unordered_map<index_t, std::shared_ptr<UnitTexture>> unit_textures;
 
 	/**
 	 * sound ids mapped to playable sounds for all available sounds.

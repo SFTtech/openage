@@ -1,10 +1,10 @@
-// Copyright 2015-2021 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
+#include "unit.h"
 #include "../gamestate/old/player.h"
 #include "../terrain/terrain_object.h"
 #include "../util/math_constants.h"
 #include "action.h"
-#include "unit.h"
 #include "unit_container.h"
 #include "unit_type.h"
 
@@ -12,8 +12,7 @@
 
 namespace openage {
 
-UnitTypeMeta::UnitTypeMeta(std::string name, int id, init_func f)
-	:
+UnitTypeMeta::UnitTypeMeta(std::string name, int id, init_func f) :
 	init{f},
 	type_name{std::move(name)},
 	type_id{id} {
@@ -27,8 +26,7 @@ int UnitTypeMeta::id() const {
 	return this->type_id;
 }
 
-UnitType::UnitType(const Player &owner)
-	:
+UnitType::UnitType(const Player &owner) :
 	owner{owner},
 	have_limit{math::INT_INF},
 	had_limit{math::INT_INF} {
@@ -54,10 +52,6 @@ bool UnitType::operator!=(const UnitType &other) const {
 	return !(*this == other);
 }
 
-UnitTexture *UnitType::default_texture() {
-	return this->graphics[graphic_type::standing].get();
-}
-
 TerrainObject *UnitType::place_beside(Unit *u, TerrainObject const *other) const {
 	if (!u || !other) {
 		return nullptr;
@@ -65,7 +59,7 @@ TerrainObject *UnitType::place_beside(Unit *u, TerrainObject const *other) const
 
 	// find the range of possible tiles
 	tile_range outline{other->pos.start - coord::tile_delta{1, 1},
-	                   other->pos.end   + coord::tile_delta{1, 1},
+	                   other->pos.end + coord::tile_delta{1, 1},
 	                   other->pos.draw};
 
 	// find a free position adjacent to the object
@@ -97,8 +91,7 @@ UnitType *UnitType::parent_type() const {
 	return this->owner.get_type(this->parent_id());
 }
 
-NyanType::NyanType(const Player &owner)
-	:
+NyanType::NyanType(const Player &owner) :
 	UnitType(owner) {
 	// TODO: the type should be given attributes and abilities
 }

@@ -12,7 +12,7 @@
 #include "command.h"
 #include "producer.h"
 #include "unit.h"
-#include "unit_texture.h"
+
 
 namespace openage {
 
@@ -146,71 +146,6 @@ void Unit::apply_cmd(std::shared_ptr<UnitAbility> ability, const Command &cmd) {
 	}
 	if (ability->can_invoke(*this, cmd)) {
 		ability->invoke(*this, cmd, is_direct);
-	}
-}
-
-
-void Unit::draw(const LegacyEngine &engine) {
-	// the top action decides the graphic type and action
-	this->draw(this->location.get(), this->top()->current_graphics(), engine);
-}
-
-
-void Unit::draw(TerrainObject *loc, const graphic_set &grpc, const LegacyEngine &engine) {
-	ENSURE(loc != nullptr, "there should always be a location for a placed unit");
-
-	auto top_action = this->top();
-	auto draw_graphic = top_action->type();
-	if (grpc.count(draw_graphic) == 0) {
-		this->log(MSG(warn) << "Graphic not available");
-		return;
-	}
-
-	// the texture to draw with
-	auto draw_texture = grpc.at(draw_graphic);
-	if (!draw_texture) {
-		this->log(MSG(warn) << "Graphic null");
-		return;
-	}
-
-	// frame specified by the current action
-	auto draw_frame = top_action->current_frame();
-	this->draw(loc->pos.draw, draw_texture, draw_frame, engine);
-
-	// draw a shadow if the graphic is available
-	if (grpc.count(graphic_type::shadow) > 0) {
-		auto draw_shadow = grpc.at(graphic_type::shadow);
-		if (draw_shadow) {
-			// position without height component
-			// TODO: terrain elevation
-			coord::phys3 shadow_pos = loc->pos.draw;
-			shadow_pos.up = 0;
-			this->draw(shadow_pos, draw_shadow, draw_frame, engine);
-		}
-	}
-
-	// draw debug details
-	top_action->draw_debug(engine);
-}
-
-
-void Unit::draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, unsigned int frame, const LegacyEngine &engine) {
-	// players color if available
-	unsigned color = 0;
-	if (this->has_attribute(attr_type::owner)) {
-		auto &own_attr = this->get_attribute<attr_type::owner>();
-		color = own_attr.player.color;
-	}
-
-	// check if object has a direction
-	if (this->has_attribute(attr_type::direction)) {
-		// directional textures
-		auto &d_attr = this->get_attribute<attr_type::direction>();
-		coord::phys3_delta draw_dir = d_attr.unit_dir;
-		// graphic->draw(engine.coord, draw_pos.to_camgame(engine.coord), draw_dir, frame, color);
-	}
-	else {
-		// graphic->draw(engine.coord, draw_pos.to_camgame(engine.coord), frame, color);
 	}
 }
 

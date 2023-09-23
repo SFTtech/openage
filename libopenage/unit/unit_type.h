@@ -1,4 +1,4 @@
-// Copyright 2015-2021 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -19,7 +19,6 @@ class TerrainObject;
 class Unit;
 class UnitAbility;
 class UnitContainer;
-class UnitTexture;
 
 
 /**
@@ -43,7 +42,6 @@ public:
 private:
 	const std::string type_name;
 	const int type_id;
-
 };
 
 /**
@@ -113,11 +111,6 @@ public:
 	bool operator!=(const UnitType &other) const;
 
 	/**
-	 * Get a default texture for HUD drawing
-	 */
-	UnitTexture *default_texture();
-
-	/**
 	 * similar to place but places adjacent to an existing object
 	 */
 	TerrainObject *place_beside(Unit *, TerrainObject const *) const;
@@ -176,11 +169,6 @@ public:
 	int had_limit;
 
 	/**
-	 * The set of graphics used for this type
-	 */
-	graphic_set graphics;
-
-	/**
 	 * The index of the icon representing this unit
 	 */
 	int icon;
@@ -199,7 +187,7 @@ public:
 /**
  * An example of how nyan can work with the type system
  */
-class NyanType: public UnitType {
+class NyanType : public UnitType {
 public:
 	/**
 	 * TODO: give the parsed nyan attributes
@@ -213,7 +201,6 @@ public:
 	std::string name() const override;
 	void initialise(Unit *, Player &) override;
 	TerrainObject *place(Unit *, std::shared_ptr<Terrain>, coord::phys3) const override;
-
 };
 
 } // namespace openage

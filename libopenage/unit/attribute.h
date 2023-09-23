@@ -1,4 +1,4 @@
-// Copyright 2014-2021 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -45,13 +45,6 @@ enum class graphic_type {
 	heal,
 	work
 };
-
-class UnitTexture;
-
-/**
- * Collection of graphics attached to each unit.
- */
-using graphic_set = std::map<graphic_type, std::shared_ptr<UnitTexture>>;
 
 /**
  * List of unit's attribute types.

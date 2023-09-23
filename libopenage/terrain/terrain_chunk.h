@@ -70,13 +70,6 @@ public:
 	chunk_neighbors neighbors;
 
 	/**
-	 * draws the terrain chunk on screen.
-	 *
-	 * @param chunk_pos the chunk position where it will be drawn
-	 */
-	void draw(coord::chunk chunk_pos);
-
-	/**
 	 * get tile data by absolute coordinates.
 	 */
 	TileContent *get_data(coord::tile abspos);

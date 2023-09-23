@@ -23,7 +23,6 @@ class Sound;
 
 class UnitAbility;
 class UnitAction;
-class UnitTexture;
 
 
 std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &restriction);
@@ -56,7 +55,6 @@ protected:
 	 */
 	const Sound *on_create;
 	const Sound *on_destroy;
-	std::shared_ptr<UnitTexture> default_tex;
 	int dead_unit_id;
 };
 
@@ -73,8 +71,6 @@ public:
 
 protected:
 	const gamedata::projectile_unit unit_data;
-	UnitTexture *moving;
-	UnitTexture *attacking;
 	const Sound *on_move;
 	const Sound *on_attack;
 	int projectile;
@@ -123,8 +119,6 @@ private:
 	 */
 	const Sound *on_create;
 	const Sound *on_destroy;
-	std::shared_ptr<UnitTexture> texture;
-	std::shared_ptr<UnitTexture> destroyed;
 	int projectile;
 	int foundation_terrain;
 	std::vector<game_resource> get_accepted_resources();
@@ -155,9 +149,6 @@ public:
 
 private:
 	const gamedata::missile_unit unit_data;
-	std::shared_ptr<UnitTexture> tex;
-	std::shared_ptr<UnitTexture> sh; // shadow texture
-	std::shared_ptr<UnitTexture> destroyed;
 };
 
 } // namespace openage
