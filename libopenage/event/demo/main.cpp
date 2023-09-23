@@ -4,7 +4,7 @@
 
 #include <chrono>
 #include <ratio>
-#include <SDL.h>
+#include <thread>
 
 #include "config.h"
 #include "event/demo/aicontroller.h"
@@ -13,6 +13,7 @@
 #include "event/demo/physics.h"
 #include "event/event.h"
 #include "event/event_loop.h"
+#include "renderer/gui/integration/public/gui_application_with_logger.h"
 
 #if WITH_NCURSES
 #ifdef __MINGW32__
@@ -41,6 +42,7 @@ enum class timescale {
 
 
 void curvepong(bool disable_gui, bool no_human) {
+	renderer::gui::GuiApplicationWithLogger gui_app{};
 	bool enable_gui = not disable_gui;
 	bool human_player = not no_human;
 
@@ -98,6 +100,8 @@ void curvepong(bool disable_gui, bool no_human) {
 		// this is the game loop, running while both players live!
 		while (state->p1->lives->get(now) > 0 and state->p2->lives->get(now) > 0) {
 			auto loop_start = Clock::now();
+
+			gui_app.process_events();
 
 #if WITH_NCURSES
 			if (enable_gui) {
@@ -157,7 +161,7 @@ void curvepong(bool disable_gui, bool no_human) {
 
 			if (speed == timescale::NOSLEEP) {
 				// increase the simulation loop time a bit
-				SDL_Delay(5);
+				std::this_thread::sleep_for(std::chrono::milliseconds(5));
 			}
 
 			dt_ms_t dt_us = Clock::now() - loop_start;
@@ -166,7 +170,7 @@ void curvepong(bool disable_gui, bool no_human) {
 				dt_ms_t wait_time = per_frame - dt_us;
 
 				if (wait_time > dt_ms_t::zero()) {
-					SDL_Delay(wait_time.count());
+					std::this_thread::sleep_for(wait_time);
 				}
 			}
 
