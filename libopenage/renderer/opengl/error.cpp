@@ -1,20 +1,18 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
-#include "opengl.h"
+#include "error.h"
 
 #include <epoxy/gl.h>
 
-#include "../error/error.h"
+#include "error/error.h"
 
-namespace openage {
-namespace util {
+namespace openage::renderer::opengl {
 
 void gl_check_error() {
 	int glerrorstate = 0;
 
 	glerrorstate = glGetError();
 	if (glerrorstate != GL_NO_ERROR) {
-
 		const char *errormsg;
 
 		//generate error message
@@ -63,11 +61,11 @@ void gl_check_error() {
 			// unknown error state
 			errormsg = "unknown error";
 		}
-		throw Error(MSG(err) <<
-			"OpenGL error state after running draw method: " << glerrorstate << "\n"
-			"\t" << errormsg << "\n"
-			<< "Run the game with --gl-debug to get more information: './run game --gl-debug'.");
+		throw Error(MSG(err) << "OpenGL error state after running draw method: " << glerrorstate << "\n"
+		                                                                                            "\t"
+		                     << errormsg << "\n"
+		                     << "Run the game with --gl-debug to get more information: './run game --gl-debug'.");
 	}
 }
 
-}} // openage::util
+} // namespace openage::renderer::opengl

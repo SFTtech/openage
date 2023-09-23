@@ -20,7 +20,6 @@ add_sources(libopenage
 	matrix_test.cpp
 	misc.cpp
 	misc_test.cpp
-	opengl.cpp
 	os.cpp
 	path.cpp
 	profiler.cpp
