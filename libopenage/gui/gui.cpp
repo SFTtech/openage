@@ -93,14 +93,14 @@ void GUI::process_events() {
 	this->application.processEvents();
 }
 
-bool GUI::on_resize(coord::viewport_delta new_size) {
-	this->renderer.resize(new_size.x, new_size.y);
-	return true;
-}
+// bool GUI::on_resize(coord::viewport_delta new_size) {
+// 	this->renderer.resize(new_size.x, new_size.y);
+// 	return true;
+// }
 
-bool GUI::on_input(SDL_Event *event) {
-	return not this->input.process(event);
-}
+// bool GUI::on_input(SDL_Event *event) {
+// 	return not this->input.process(event);
+// }
 
 namespace {
 /**
@@ -138,43 +138,43 @@ private:
 
 } // namespace
 
-bool GUI::on_drawhud() {
-	this->render_updater.process_callbacks();
+// bool GUI::on_drawhud() {
+// 	this->render_updater.process_callbacks();
 
-	BlendPreserver preserve_blend;
+// 	BlendPreserver preserve_blend;
 
-	auto tex = this->renderer.render();
+// 	auto tex = this->renderer.render();
 
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+// 	glEnable(GL_BLEND);
+// 	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-	this->textured_screen_quad_shader->use();
+// 	this->textured_screen_quad_shader->use();
 
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, tex);
+// 	glActiveTexture(GL_TEXTURE0);
+// 	glBindTexture(GL_TEXTURE_2D, tex);
 
-	glEnableVertexAttribArray(this->textured_screen_quad_shader->pos_id);
+// 	glEnableVertexAttribArray(this->textured_screen_quad_shader->pos_id);
 
-	glBindBuffer(GL_ARRAY_BUFFER, this->screen_quad_vbo);
-	glVertexAttribPointer(
-		this->textured_screen_quad_shader->pos_id,
-		2,
-		GL_FLOAT,
-		GL_FALSE,
-		2 * sizeof(float),
-		0);
+// 	glBindBuffer(GL_ARRAY_BUFFER, this->screen_quad_vbo);
+// 	glVertexAttribPointer(
+// 		this->textured_screen_quad_shader->pos_id,
+// 		2,
+// 		GL_FLOAT,
+// 		GL_FALSE,
+// 		2 * sizeof(float),
+// 		0);
 
-	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+// 	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 
-	glDisableVertexAttribArray(this->textured_screen_quad_shader->pos_id);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+// 	glDisableVertexAttribArray(this->textured_screen_quad_shader->pos_id);
+// 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-	glBindTexture(GL_TEXTURE_2D, 0);
+// 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	this->textured_screen_quad_shader->stopusing();
+// 	this->textured_screen_quad_shader->stopusing();
 
-	return true;
-}
+// 	return true;
+// }
 
 } // namespace gui
 } // namespace openage

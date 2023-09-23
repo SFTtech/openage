@@ -7,7 +7,6 @@
 
 #include "../coord/pixel.h"
 #include "../gamedata/color_dummy.h"
-#include "../handlers.h"
 #include "../input/legacy/input_manager.h"
 #include "../renderer/font/font.h"
 #include "../util/color.h"
@@ -22,10 +21,7 @@ class LegacyEngine;
  */
 namespace console {
 
-class Console : InputHandler
-	, TickHandler
-	, HudHandler
-	, ResizeHandler {
+class Console {
 public:
 	Console(/* presenter::LegacyDisplay *display */);
 	~Console();
@@ -53,10 +49,10 @@ public:
 	 */
 	void interpret(const std::string &command);
 
-	bool on_drawhud() override;
-	bool on_tick() override;
-	bool on_input(SDL_Event *event) override;
-	bool on_resize(coord::viewport_delta new_size) override;
+	// bool on_drawhud() override;
+	// bool on_tick() override;
+	// bool on_input(SDL_Event *event) override;
+	// bool on_resize(coord::viewport_delta new_size) override;
 
 protected:
 	// TODO: Replace with new renderer

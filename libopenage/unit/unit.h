@@ -9,7 +9,6 @@
 #include <vector>
 
 #include "../coord/phys.h"
-#include "../handlers.h"
 #include "../log/logsource.h"
 #include "../terrain/terrain_object.h"
 #include "../util/timing.h"

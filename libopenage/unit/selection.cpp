@@ -24,61 +24,61 @@ UnitSelection::UnitSelection(LegacyEngine *engine) :
 	engine{engine} {
 }
 
-bool UnitSelection::on_drawhud() {
-	// // the drag selection box
-	// if (drag_active) {
-	// 	coord::viewport s = this->start.to_viewport(this->engine->coord);
-	// 	coord::viewport e = this->end.to_viewport(this->engine->coord);
-	// 	glLineWidth(1);
-	// 	glColor3f(1.0, 1.0, 1.0);
-	// 	glBegin(GL_LINE_LOOP); {
-	// 		glVertex3f(s.x, s.y, 0);
-	// 		glVertex3f(e.x, s.y, 0);
-	// 		glVertex3f(e.x, e.y, 0);
-	// 		glVertex3f(s.x, e.y, 0);
-	// 	}
-	// 	glEnd();
-	// }
-	//
-	// // draw hp bars for each selected unit
-	// glLineWidth(3);
-	// for (auto u : this->units) {
-	// 	if (u.second.is_valid()) {
-	// 		Unit *unit_ptr = u.second.get();
-	// 		if (unit_ptr->location &&
-	// 		    unit_ptr->has_attribute(attr_type::hitpoints) &&
-	// 		    unit_ptr->has_attribute(attr_type::damaged)) {
-	//
-	// 			auto &hp = unit_ptr->get_attribute<attr_type::hitpoints>();
-	// 			auto &dm = unit_ptr->get_attribute<attr_type::damaged>();
-	// 			float percent = static_cast<float>(dm.hp) / static_cast<float>(hp.hp);
-	// 			int mid = percent * 28.0f - 14.0f;
-	//
-	// 			coord::phys3 &pos_phys3 = unit_ptr->location->pos.draw;
-	// 			auto pos = pos_phys3.to_viewport(this->engine->coord);
-	// 			// green part
-	// 			glColor3f(0.0, 1.0, 0.0);
-	// 			glBegin(GL_LINES); {
-	// 				glVertex3f(pos.x - 14, pos.y + 60, 0);
-	// 				glVertex3f(pos.x + mid, pos.y + 60, 0);
-	// 			}
-	// 			glEnd();
-	//
-	// 			// red part
-	// 			glColor3f(1.0, 0.0, 0.0);
-	// 			glBegin(GL_LINES); {
-	// 				glVertex3f(pos.x + mid, pos.y + 60, 0);
-	// 				glVertex3f(pos.x + 14, pos.y + 60, 0);
-	// 			}
-	// 			glEnd();
-	// 		}
-	// 	}
-	// }
-	// glColor3f(1.0, 1.0, 1.0); // reset
+// bool UnitSelection::on_drawhud() {
+// // the drag selection box
+// if (drag_active) {
+// 	coord::viewport s = this->start.to_viewport(this->engine->coord);
+// 	coord::viewport e = this->end.to_viewport(this->engine->coord);
+// 	glLineWidth(1);
+// 	glColor3f(1.0, 1.0, 1.0);
+// 	glBegin(GL_LINE_LOOP); {
+// 		glVertex3f(s.x, s.y, 0);
+// 		glVertex3f(e.x, s.y, 0);
+// 		glVertex3f(e.x, e.y, 0);
+// 		glVertex3f(s.x, e.y, 0);
+// 	}
+// 	glEnd();
+// }
+//
+// // draw hp bars for each selected unit
+// glLineWidth(3);
+// for (auto u : this->units) {
+// 	if (u.second.is_valid()) {
+// 		Unit *unit_ptr = u.second.get();
+// 		if (unit_ptr->location &&
+// 		    unit_ptr->has_attribute(attr_type::hitpoints) &&
+// 		    unit_ptr->has_attribute(attr_type::damaged)) {
+//
+// 			auto &hp = unit_ptr->get_attribute<attr_type::hitpoints>();
+// 			auto &dm = unit_ptr->get_attribute<attr_type::damaged>();
+// 			float percent = static_cast<float>(dm.hp) / static_cast<float>(hp.hp);
+// 			int mid = percent * 28.0f - 14.0f;
+//
+// 			coord::phys3 &pos_phys3 = unit_ptr->location->pos.draw;
+// 			auto pos = pos_phys3.to_viewport(this->engine->coord);
+// 			// green part
+// 			glColor3f(0.0, 1.0, 0.0);
+// 			glBegin(GL_LINES); {
+// 				glVertex3f(pos.x - 14, pos.y + 60, 0);
+// 				glVertex3f(pos.x + mid, pos.y + 60, 0);
+// 			}
+// 			glEnd();
+//
+// 			// red part
+// 			glColor3f(1.0, 0.0, 0.0);
+// 			glBegin(GL_LINES); {
+// 				glVertex3f(pos.x + mid, pos.y + 60, 0);
+// 				glVertex3f(pos.x + 14, pos.y + 60, 0);
+// 			}
+// 			glEnd();
+// 		}
+// 	}
+// }
+// glColor3f(1.0, 1.0, 1.0); // reset
 
-	// ui graphics 3404 and 3405
-	return true;
-}
+// ui graphics 3404 and 3405
+// 	return true;
+// }
 
 void UnitSelection::drag_begin(coord::camgame pos) {
 	this->start = pos;

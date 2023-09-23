@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,7 +7,6 @@
 #include <vector>
 
 #include "../coord/tile.h"
-#include "../handlers.h"
 #include "../util/timing.h"
 
 
@@ -45,7 +44,6 @@ struct reference_data {
  */
 class UnitReference {
 public:
-
 	/**
 	 * create an invalid reference
 	 */
@@ -60,7 +58,6 @@ public:
 	Unit *get() const;
 
 private:
-
 	/**
 	 * The default copy constructor and assignment
 	 * will just copy the shared pointer

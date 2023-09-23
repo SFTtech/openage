@@ -5,7 +5,6 @@
 #include <memory>
 #include <string>
 
-#include "../handlers.h"
 #include "guisys/public/gui_engine.h"
 #include "guisys/public/gui_event_queue.h"
 #include "guisys/public/gui_input.h"
@@ -33,9 +32,7 @@ class EngineQMLInfo;
  *
  * Legacy variant for the "old" renderer.
  */
-class GUI : public InputHandler
-	, public ResizeHandler
-	, public HudHandler {
+class GUI {
 public:
 	explicit GUI(SDL_Window *window,
 	             const std::string &source,
@@ -46,9 +43,9 @@ public:
 	void process_events();
 
 private:
-	virtual bool on_resize(coord::viewport_delta new_size) override;
-	virtual bool on_input(SDL_Event *event) override;
-	virtual bool on_drawhud() override;
+	// virtual bool on_resize(coord::viewport_delta new_size) override;
+	// virtual bool on_input(SDL_Event *event) override;
+	// virtual bool on_drawhud() override;
 
 	GLint tex_loc;
 	GLuint screen_quad_vbo;

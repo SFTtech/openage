@@ -161,54 +161,54 @@ void Console::interpret(const std::string &command) {
 	}
 }
 
-bool Console::on_tick() {
-	if (!this->visible) {
-		return true;
-	}
+// bool Console::on_tick() {
+// 	if (!this->visible) {
+// 		return true;
+// 	}
 
-	// TODO: handle stuff such as cursor blinking,
-	// repeating held-down keys
-	return true;
-}
+// 	// TODO: handle stuff such as cursor blinking,
+// 	// repeating held-down keys
+// 	return true;
+// }
 
-bool Console::on_drawhud() {
-	if (!this->visible) {
-		return true;
-	}
+// bool Console::on_drawhud() {
+// 	if (!this->visible) {
+// 		return true;
+// 	}
 
-	// TODO: Use new renderer
+// 	// TODO: Use new renderer
 
-	// draw::to_opengl(this->display, this);
+// 	// draw::to_opengl(this->display, this);
 
-	return true;
-}
+// 	return true;
+// }
 
-bool Console::on_input(SDL_Event *e) {
-	// only handle inputs if the console is visible
-	if (!this->visible) {
-		return true;
-	}
+// bool Console::on_input(SDL_Event *e) {
+// 	// only handle inputs if the console is visible
+// 	if (!this->visible) {
+// 		return true;
+// 	}
 
-	switch (e->type) {
-	case SDL_KEYDOWN:
-		//TODO handle key inputs
+// 	switch (e->type) {
+// 	case SDL_KEYDOWN:
+// 		//TODO handle key inputs
 
-		//do not allow anyone else to handle this input
-		return false;
-	}
+// 		//do not allow anyone else to handle this input
+// 		return false;
+// 	}
 
-	return true;
-}
+// 	return true;
+// }
 
-bool Console::on_resize(coord::viewport_delta new_size) {
-	coord::pixel_t w = this->buf.get_dims().x * this->charsize.x;
-	coord::pixel_t h = this->buf.get_dims().y * this->charsize.y;
+// bool Console::on_resize(coord::viewport_delta new_size) {
+// 	coord::pixel_t w = this->buf.get_dims().x * this->charsize.x;
+// 	coord::pixel_t h = this->buf.get_dims().y * this->charsize.y;
 
-	this->bottomleft = {(new_size.x - w) / 2, (new_size.y - h) / 2};
-	this->topright = {this->bottomleft.x + w, this->bottomleft.y - h};
+// 	this->bottomleft = {(new_size.x - w) / 2, (new_size.y - h) / 2};
+// 	this->topright = {this->bottomleft.x + w, this->bottomleft.y - h};
 
-	return true;
-}
+// 	return true;
+// }
 
 } // namespace console
 } // namespace openage

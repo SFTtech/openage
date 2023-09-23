@@ -8,7 +8,6 @@
 #include <SDL2/SDL.h>
 #include <string>
 
-#include "handlers.h"
 #include "input/legacy/action.h"
 #include "input/legacy/event.h"
 #include "input/legacy/input_context.h"
@@ -39,7 +38,7 @@ using binding_map_t = std::unordered_map<action_t, Event>;
  *     bool set_bind(char* bind_char, string action) except +
  *     string get_bind(string action) except +
  */
-class InputManager : public InputHandler {
+class InputManager {
 public:
 	/**
 	 * Screen edges used for edge scrolling.
@@ -182,7 +181,7 @@ public:
 	/**
 	 * When a SDL event happens, this is called.
 	 */
-	bool on_input(SDL_Event *e) override;
+	// bool on_input(SDL_Event *e) override;
 
 	/**
 	 * Return a string representation of active key bindings

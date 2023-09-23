@@ -322,7 +322,6 @@ get_codegen_scu_file()
 # are specified above the source file list.
 
 add_sources(libopenage
-	handlers.cpp
 	legacy_engine.cpp
 	main.cpp
 	options.cpp

@@ -305,70 +305,70 @@ modset_t InputManager::get_mod() const {
 }
 
 
-bool InputManager::on_input(SDL_Event *e) {
-	// top level input handler
-	switch (e->type) {
-	case SDL_KEYUP: {
-		SDL_Keycode code = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
-		Event ev = sdl_key(code, SDL_GetModState());
-		this->set_state(ev, false);
-		break;
-	} // case SDL_KEYUP
+// bool InputManager::on_input(SDL_Event *e) {
+// 	// top level input handler
+// 	switch (e->type) {
+// 	case SDL_KEYUP: {
+// 		SDL_Keycode code = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
+// 		Event ev = sdl_key(code, SDL_GetModState());
+// 		this->set_state(ev, false);
+// 		break;
+// 	} // case SDL_KEYUP
 
-	case SDL_KEYDOWN: {
-		SDL_Keycode code = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
-		this->set_state(sdl_key(code, SDL_GetModState()), true);
-		break;
-	} // case SDL_KEYDOWN
+// 	case SDL_KEYDOWN: {
+// 		SDL_Keycode code = reinterpret_cast<SDL_KeyboardEvent *>(e)->keysym.sym;
+// 		this->set_state(sdl_key(code, SDL_GetModState()), true);
+// 		break;
+// 	} // case SDL_KEYDOWN
 
-	case SDL_TEXTINPUT: {
-		this->trigger(utf8(e->text.text));
-		break;
-	} // case SDL_TEXTINPUT
+// 	case SDL_TEXTINPUT: {
+// 		this->trigger(utf8(e->text.text));
+// 		break;
+// 	} // case SDL_TEXTINPUT
 
-	case SDL_MOUSEBUTTONUP: {
-		this->set_relative(false);
-		this->trigger(sdl_mouse_up_down(e->button.button, true, SDL_GetModState()));
-		Event ev = sdl_mouse(e->button.button, SDL_GetModState());
-		this->set_state(ev, false);
-		break;
-	} // case SDL_MOUSEBUTTONUP
+// 	case SDL_MOUSEBUTTONUP: {
+// 		this->set_relative(false);
+// 		this->trigger(sdl_mouse_up_down(e->button.button, true, SDL_GetModState()));
+// 		Event ev = sdl_mouse(e->button.button, SDL_GetModState());
+// 		this->set_state(ev, false);
+// 		break;
+// 	} // case SDL_MOUSEBUTTONUP
 
-	case SDL_MOUSEBUTTONDOWN: {
-		// TODO: set which buttons
-		if (e->button.button == 2) {
-			this->set_relative(true);
-		}
-		this->trigger(sdl_mouse_up_down(e->button.button, false, SDL_GetModState()));
-		Event ev = sdl_mouse(e->button.button, SDL_GetModState());
-		this->set_state(ev, true);
-		break;
-	} // case SDL_MOUSEBUTTONDOWN
+// 	case SDL_MOUSEBUTTONDOWN: {
+// 		// TODO: set which buttons
+// 		if (e->button.button == 2) {
+// 			this->set_relative(true);
+// 		}
+// 		this->trigger(sdl_mouse_up_down(e->button.button, false, SDL_GetModState()));
+// 		Event ev = sdl_mouse(e->button.button, SDL_GetModState());
+// 		this->set_state(ev, true);
+// 		break;
+// 	} // case SDL_MOUSEBUTTONDOWN
 
-	case SDL_MOUSEMOTION: {
-		if (this->relative_mode) {
-			this->set_motion(e->motion.xrel, e->motion.yrel);
-		}
-		else {
-			this->set_mouse(e->button.x, e->button.y);
-		}
+// 	case SDL_MOUSEMOTION: {
+// 		if (this->relative_mode) {
+// 			this->set_motion(e->motion.xrel, e->motion.yrel);
+// 		}
+// 		else {
+// 			this->set_mouse(e->button.x, e->button.y);
+// 		}
 
-		// must occur after setting mouse position
-		Event ev(event_class::MOUSE_MOTION, 0, this->get_mod());
-		this->trigger(ev);
-		break;
-	} // case SDL_MOUSEMOTION
+// 		// must occur after setting mouse position
+// 		Event ev(event_class::MOUSE_MOTION, 0, this->get_mod());
+// 		this->trigger(ev);
+// 		break;
+// 	} // case SDL_MOUSEMOTION
 
-	case SDL_MOUSEWHEEL: {
-		Event ev = sdl_wheel(e->wheel.y, SDL_GetModState());
-		this->trigger(ev);
-		break;
-	} // case SDL_MOUSEWHEEL
+// 	case SDL_MOUSEWHEEL: {
+// 		Event ev = sdl_wheel(e->wheel.y, SDL_GetModState());
+// 		this->trigger(ev);
+// 		break;
+// 	} // case SDL_MOUSEWHEEL
 
-	} // switch (e->type)
+// 	} // switch (e->type)
 
-	return true;
-}
+// 	return true;
+// }
 
 
 std::vector<std::string> InputManager::active_binds(const std::unordered_map<action_t, action_func_t> &ctx_actions) const {

@@ -5,7 +5,6 @@
 #include <vector>
 
 #include "../coord/pixel.h"
-#include "../handlers.h"
 #include "ability.h"
 #include "unit_container.h"
 
@@ -35,11 +34,11 @@ enum class selection_type_t {
 /**
  * a user interface component allowing control of a selected group
  */
-class UnitSelection : public HudHandler {
+class UnitSelection {
 public:
 	UnitSelection(LegacyEngine *engine);
 
-	bool on_drawhud() override;
+	// bool on_drawhud() override;
 	void drag_begin(coord::camgame pos);
 	void drag_update(coord::camgame pos);
 	void drag_release(const Player &player, Terrain *terrain, bool append = false);
