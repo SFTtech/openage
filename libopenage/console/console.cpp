@@ -44,15 +44,15 @@ Console::Console(/* presenter::LegacyDisplay *display */) :
 
 Console::~Console() {}
 
-void Console::load_colors(std::vector<gamedata::palette_color> &colortable) {
-	for (auto &c : colortable) {
-		this->termcolors.emplace_back(c);
-	}
+// void Console::load_colors(std::vector<gamedata::palette_color> &colortable) {
+// 	for (auto &c : colortable) {
+// 		this->termcolors.emplace_back(c);
+// 	}
 
-	if (termcolors.size() != 256) {
-		throw Error(MSG(err) << "Exactly 256 terminal colors are required.");
-	}
-}
+// 	if (termcolors.size() != 256) {
+// 		throw Error(MSG(err) << "Exactly 256 terminal colors are required.");
+// 	}
+// }
 
 void Console::register_to_engine() {
 	// TODO: Use new renderer

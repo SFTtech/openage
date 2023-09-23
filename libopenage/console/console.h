@@ -6,7 +6,6 @@
 #include <vector>
 
 #include "../coord/pixel.h"
-#include "../gamedata/color_dummy.h"
 #include "../renderer/font/font.h"
 #include "../util/color.h"
 #include "buf.h"
@@ -28,7 +27,7 @@ public:
 	/**
 	 * load the consoles color table
 	 */
-	void load_colors(std::vector<gamedata::palette_color> &colortable);
+	// void load_colors(std::vector<gamedata::palette_color> &colortable);
 
 	/**
 	 * register this console to the renderer.
