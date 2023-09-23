@@ -7,5 +7,4 @@ add_sources(libopenage
     text_to_event.cpp
 )
 
-add_subdirectory("legacy")
 add_subdirectory("controller")

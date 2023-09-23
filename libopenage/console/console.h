@@ -7,7 +7,6 @@
 
 #include "../coord/pixel.h"
 #include "../gamedata/color_dummy.h"
-#include "../input/legacy/input_manager.h"
 #include "../renderer/font/font.h"
 #include "../util/color.h"
 #include "buf.h"
@@ -18,6 +17,8 @@ class LegacyEngine;
 
 /**
  * In-game console subsystem. Featuring a full terminal emulator.
+ *
+ * TODO: Adapt to new engine subsystems.
  */
 namespace console {
 
@@ -70,7 +71,7 @@ public:
 	Buf buf;
 	renderer::Font font;
 
-	input::legacy::InputContext input_context;
+	// input::legacy::InputContext input_context;
 
 	// the command state
 	std::string command;

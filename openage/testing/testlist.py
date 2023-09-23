@@ -99,7 +99,6 @@ def tests_cpp():
     yield "openage::util::tests::vector"
     yield "openage::util::tests::siphash"
     yield "openage::util::tests::array_conversion"
-    yield "openage::input::legacy::tests::parse_event_string", "keybinds parsing"
     yield "openage::curve::tests::container"
     yield "openage::curve::tests::curve_types"
     yield "openage::event::tests::eventtrigger"
