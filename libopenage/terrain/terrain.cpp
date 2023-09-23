@@ -16,7 +16,6 @@
 #include "../util/strings.h"
 
 #include "terrain_chunk.h"
-#include "terrain_object.h"
 
 namespace openage {
 
@@ -137,23 +136,6 @@ TileContent *Terrain::get_data(const coord::tile &position) {
 	else {
 		return c->get_data(position.get_pos_on_chunk());
 	}
-}
-
-TerrainObject *Terrain::obj_at_point(const coord::phys3 &point) {
-	coord::tile t = point.to_tile();
-	TileContent *tc = this->get_data(t);
-	if (!tc) {
-		return nullptr;
-	}
-
-	// prioritise selecting the smallest object
-	TerrainObject *smallest = nullptr;
-	for (auto obj_ptr : tc->obj) {
-		if (obj_ptr->contains(point) && (!smallest || obj_ptr->min_axis() < smallest->min_axis())) {
-			smallest = obj_ptr;
-		}
-	}
-	return smallest;
 }
 
 bool Terrain::validate_terrain(terrain_t terrain_id) {
@@ -301,7 +283,7 @@ struct terrain_render_data Terrain::create_draw_advice(const coord::tile &ab,
 
 	// ordered set of objects on the terrain (buildings.)
 	// it's ordered by the visibility layers.
-	auto objects = &data.objects;
+	// auto objects = &data.objects;
 
 	coord::tile gb = {gh.ne, ab.se};
 	coord::tile cf = {cd.ne, ef.se};
@@ -321,9 +303,9 @@ struct terrain_render_data Terrain::create_draw_advice(const coord::tile &ab,
 			// TODO: make the terrain independent of objects standing on it.
 			TileContent *tile_content = this->get_data(tilepos);
 			if (tile_content != nullptr) {
-				for (auto obj_item : tile_content->obj) {
-					objects->insert(obj_item);
-				}
+				// for (auto obj_item : tile_content->obj) {
+				// 	objects->insert(obj_item);
+				// }
 			}
 		}
 	}

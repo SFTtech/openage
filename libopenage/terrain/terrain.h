@@ -19,7 +19,6 @@ namespace openage {
 
 class RenderOptions;
 class TerrainChunk;
-class TerrainObject;
 
 /**
  * type that for terrain ids.
@@ -53,7 +52,6 @@ public:
 	TileContent();
 	~TileContent();
 	terrain_t terrain_id;
-	std::vector<TerrainObject *> obj;
 };
 
 
@@ -140,7 +138,6 @@ struct tile_draw_data {
  */
 struct terrain_render_data {
 	std::vector<struct tile_draw_data> tiles;
-	std::set<TerrainObject *, util::less<TerrainObject *>> objects;
 };
 
 /**
@@ -228,11 +225,6 @@ public:
 	 * the only reason the chunks exist, is because of this data.
 	 */
 	TileContent *get_data(const coord::tile &position);
-
-	/**
-	 * an object which contains the given point, null otherwise
-	 */
-	TerrainObject *obj_at_point(const coord::phys3 &point);
 
 	/**
 	 * get the neighbor chunks of a given chunk.

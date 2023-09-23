@@ -14,7 +14,6 @@ namespace openage {
 class Terrain;
 class TerrainChunk;
 class TileContent;
-class TerrainObject;
 
 
 /**

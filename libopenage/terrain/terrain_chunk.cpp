@@ -12,7 +12,6 @@
 #include "../util/misc.h"
 
 #include "terrain.h"
-#include "terrain_object.h"
 
 namespace openage {
 

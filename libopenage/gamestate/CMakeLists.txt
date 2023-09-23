@@ -20,6 +20,3 @@ add_subdirectory(component/)
 add_subdirectory(demo/)
 add_subdirectory(event/)
 add_subdirectory(system/)
-
-# TODO: remove once migration is done.
-add_subdirectory(old/)
