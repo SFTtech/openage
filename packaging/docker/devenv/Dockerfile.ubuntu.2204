@@ -20,8 +20,6 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     libopus-dev \
     libopusfile-dev \
     libpng-dev \
-    libsdl2-dev \
-    libsdl2-image-dev \
     libtoml11-dev \
     make \
     ninja-build \

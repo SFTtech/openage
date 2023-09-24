@@ -2,14 +2,12 @@
 
 #pragma once
 
-#include <stdexcept>
-#include <memory>
 #include <functional>
+#include <memory>
+#include <stdexcept>
 
-#include <QOpenGLContext>
 #include <QOffscreenSurface>
-
-struct SDL_Window;
+#include <QOpenGLContext>
 
 QT_FORWARD_DECLARE_CLASS(QOpenGLDebugLogger)
 
@@ -31,7 +29,7 @@ public:
 	/**
 	 * @return context that can be used by Qt
 	 */
-	QOpenGLContext* get_ctx();
+	QOpenGLContext *get_ctx();
 
 	/**
 	 * Function that must be called before rendering the GUI.
@@ -52,7 +50,7 @@ protected:
  */
 class GuiUniqueRenderingContext : public CtxExtractionMode {
 public:
-	explicit GuiUniqueRenderingContext(SDL_Window *window);
+	explicit GuiUniqueRenderingContext(/* SDL_Window *window */);
 
 	virtual void pre_render() override;
 	virtual void post_render() override;
@@ -63,7 +61,7 @@ public:
  */
 class GuiSeparateRenderingContext : public CtxExtractionMode {
 public:
-	explicit GuiSeparateRenderingContext(SDL_Window *window);
+	explicit GuiSeparateRenderingContext(/* SDL_Window *window */);
 	virtual ~GuiSeparateRenderingContext();
 
 	virtual void pre_render() override;

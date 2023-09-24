@@ -14,8 +14,6 @@
 #include <OpenGL/gl.h>
 #endif
 
-struct SDL_Window;
-
 namespace qtsdl {
 
 class GuiRendererImpl;
@@ -26,7 +24,7 @@ class GuiRendererImpl;
 class GuiRenderer {
 public:
 	// TODO: allow FBO variant
-	explicit GuiRenderer(SDL_Window *window);
+	explicit GuiRenderer(/* SDL_Window *window */);
 	~GuiRenderer();
 
 	GLuint render();

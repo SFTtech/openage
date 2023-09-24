@@ -6,8 +6,6 @@
 
 #include <QtGlobal>
 
-struct SDL_Window;
-
 QT_FORWARD_DECLARE_CLASS(QOpenGLContext)
 
 namespace qtsdl {
@@ -22,10 +20,10 @@ class GuiRenderingCtxActivator;
  */
 class GuiRenderingSetupRoutines {
 public:
-	explicit GuiRenderingSetupRoutines(SDL_Window *window);
+	explicit GuiRenderingSetupRoutines(/* SDL_Window *window */);
 	~GuiRenderingSetupRoutines();
 
-	QOpenGLContext* get_ctx();
+	QOpenGLContext *get_ctx();
 
 private:
 	friend class GuiRenderingCtxActivator;
@@ -44,12 +42,12 @@ public:
 	explicit GuiRenderingCtxActivator(GuiRenderingSetupRoutines &rendering_setup_routines);
 	~GuiRenderingCtxActivator();
 
-	GuiRenderingCtxActivator(GuiRenderingCtxActivator&& o);
-	GuiRenderingCtxActivator& operator=(GuiRenderingCtxActivator&& o);
+	GuiRenderingCtxActivator(GuiRenderingCtxActivator &&o);
+	GuiRenderingCtxActivator &operator=(GuiRenderingCtxActivator &&o);
 
 private:
-	GuiRenderingCtxActivator(const GuiRenderingCtxActivator&) = delete;
-	GuiRenderingCtxActivator& operator=(const GuiRenderingCtxActivator&) = delete;
+	GuiRenderingCtxActivator(const GuiRenderingCtxActivator &) = delete;
+	GuiRenderingCtxActivator &operator=(const GuiRenderingCtxActivator &) = delete;
 
 	GuiRenderingSetupRoutines *rendering_setup_routines;
 };

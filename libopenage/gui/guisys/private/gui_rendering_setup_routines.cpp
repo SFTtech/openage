@@ -10,16 +10,17 @@
 
 namespace qtsdl {
 
-GuiRenderingSetupRoutines::GuiRenderingSetupRoutines(SDL_Window *window) {
+GuiRenderingSetupRoutines::GuiRenderingSetupRoutines(/* SDL_Window *window */) {
 	try {
-		this->ctx_extraction_mode = std::make_unique<GuiUniqueRenderingContext>(window);
-	} catch (const CtxExtractionException&) {
-
+		this->ctx_extraction_mode = std::make_unique<GuiUniqueRenderingContext>(/* window */);
+	}
+	catch (const CtxExtractionException &) {
 		qInfo() << "Falling back to separate render context for GUI";
 
 		try {
-			this->ctx_extraction_mode = std::make_unique<GuiSeparateRenderingContext>(window);
-		} catch (const CtxExtractionException&) {
+			this->ctx_extraction_mode = std::make_unique<GuiSeparateRenderingContext>(/* window */);
+		}
+		catch (const CtxExtractionException &) {
 			assert(false && "setting up context for GUI failed");
 		}
 	}
@@ -27,7 +28,7 @@ GuiRenderingSetupRoutines::GuiRenderingSetupRoutines(SDL_Window *window) {
 
 GuiRenderingSetupRoutines::~GuiRenderingSetupRoutines() = default;
 
-QOpenGLContext* GuiRenderingSetupRoutines::get_ctx() {
+QOpenGLContext *GuiRenderingSetupRoutines::get_ctx() {
 	return this->ctx_extraction_mode->get_ctx();
 }
 
@@ -39,10 +40,8 @@ void GuiRenderingSetupRoutines::post_render() {
 	this->ctx_extraction_mode->post_render();
 }
 
-GuiRenderingCtxActivator::GuiRenderingCtxActivator(GuiRenderingSetupRoutines &rendering_setup_routines)
-	:
+GuiRenderingCtxActivator::GuiRenderingCtxActivator(GuiRenderingSetupRoutines &rendering_setup_routines) :
 	rendering_setup_routines{&rendering_setup_routines} {
-
 	this->rendering_setup_routines->pre_render();
 }
 
@@ -51,14 +50,12 @@ GuiRenderingCtxActivator::~GuiRenderingCtxActivator() {
 		this->rendering_setup_routines->post_render();
 }
 
-GuiRenderingCtxActivator::GuiRenderingCtxActivator(GuiRenderingCtxActivator&& o)
-	:
+GuiRenderingCtxActivator::GuiRenderingCtxActivator(GuiRenderingCtxActivator &&o) :
 	rendering_setup_routines{o.rendering_setup_routines} {
-
 	o.rendering_setup_routines = nullptr;
 }
 
-GuiRenderingCtxActivator& GuiRenderingCtxActivator::operator=(GuiRenderingCtxActivator&& o) {
+GuiRenderingCtxActivator &GuiRenderingCtxActivator::operator=(GuiRenderingCtxActivator &&o) {
 	this->rendering_setup_routines = o.rendering_setup_routines;
 	o.rendering_setup_routines = nullptr;
 	return *this;

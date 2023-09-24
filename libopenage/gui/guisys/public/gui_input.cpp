@@ -6,15 +6,14 @@
 
 namespace qtsdl {
 
-GuiInput:: GuiInput(GuiRenderer *renderer, GuiEventQueue *game_logic_updater)
-	:
+GuiInput::GuiInput(GuiRenderer *renderer, GuiEventQueue *game_logic_updater) :
 	impl{std::make_unique<GuiInputImpl>(renderer, game_logic_updater)} {
 }
 
 GuiInput::~GuiInput() = default;
 
-bool GuiInput::process(SDL_Event *event) {
-	return this->impl->process(event);
+bool GuiInput::process(/* SDL_Event *event */) {
+	return this->impl->process(/* event */);
 }
 
 } // namespace qtsdl

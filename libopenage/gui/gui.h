@@ -30,7 +30,7 @@ class EngineQMLInfo;
  */
 class GUI {
 public:
-	explicit GUI(SDL_Window *window,
+	explicit GUI(/* SDL_Window *window, */
 	             const std::string &source,
 	             const std::string &rootdir,
 	             EngineQMLInfo *info = nullptr);

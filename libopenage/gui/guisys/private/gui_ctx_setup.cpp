@@ -19,7 +19,7 @@ QOpenGLContext *CtxExtractionMode::get_ctx() {
 	return &this->ctx;
 }
 
-GuiUniqueRenderingContext::GuiUniqueRenderingContext(SDL_Window *window) :
+GuiUniqueRenderingContext::GuiUniqueRenderingContext(/* SDL_Window *window */) :
 	CtxExtractionMode{} {
 	QVariant handle;
 	WId id;
@@ -50,7 +50,7 @@ void GuiUniqueRenderingContext::pre_render() {
 void GuiUniqueRenderingContext::post_render() {
 }
 
-GuiSeparateRenderingContext::GuiSeparateRenderingContext(SDL_Window *window) :
+GuiSeparateRenderingContext::GuiSeparateRenderingContext(/* SDL_Window *window */) :
 	CtxExtractionMode{} {
 	QVariant handle;
 

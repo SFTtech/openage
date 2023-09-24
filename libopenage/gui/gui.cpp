@@ -9,13 +9,13 @@ namespace openage {
 namespace gui {
 
 
-GUI::GUI(SDL_Window *window,
+GUI::GUI(/* SDL_Window *window, */
          const std::string &source,
          const std::string &rootdir,
          EngineQMLInfo *info) :
 	application{},
 	render_updater{},
-	renderer{window},
+	renderer{/* window */},
 	game_logic_updater{},
 	engine{&renderer},
 	subtree{

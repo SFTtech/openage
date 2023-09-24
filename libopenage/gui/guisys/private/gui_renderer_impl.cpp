@@ -74,9 +74,9 @@ void EventHandlingQuickWindow::on_resized(const QSize &size) {
 	this->resize(size);
 }
 
-GuiRendererImpl::GuiRendererImpl(SDL_Window *window) :
+GuiRendererImpl::GuiRendererImpl(/* SDL_Window *window */) :
 	QObject{},
-	gui_rendering_setup_routines{window},
+	gui_rendering_setup_routines{/* window */},
 	need_fbo_resize{true},
 	need_sync{},
 	need_render{},

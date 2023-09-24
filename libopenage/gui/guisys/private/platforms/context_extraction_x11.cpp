@@ -6,7 +6,7 @@
 
 // #include <QtPlatformHeaders/QGLXNativeContext>
 #include <GL/glx.h>
-#include <SDL2/SDL_syswm.h>
+// #include <SDL2/SDL_syswm.h>
 
 // DO NOT INCLUDE ANYTHING HERE, X11 HEADERS BREAK STUFF
 

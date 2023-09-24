@@ -31,8 +31,8 @@ public:
 
 	/// Create a texture from info.
 	///
-	/// Uses SDL Image internally. For supported image file types,
-	/// see the SDL_Image initialization in the engine.
+	/// Uses QImage internally. For supported image file types,
+	/// see the QImage initialization in the engine.
 	Texture2dData(Texture2dInfo const &info);
 
 	/// Construct by moving the information and raw texture data from somewhere else.

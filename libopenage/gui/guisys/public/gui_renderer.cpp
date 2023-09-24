@@ -8,9 +8,8 @@
 
 namespace qtsdl {
 
-GuiRenderer::GuiRenderer(SDL_Window *window)
-	:
-	impl{std::make_unique<GuiRendererImpl>(window)} {
+GuiRenderer::GuiRenderer(/* SDL_Window *window */) :
+	impl{std::make_unique<GuiRendererImpl>(/* window */)} {
 }
 
 GuiRenderer::~GuiRenderer() = default;

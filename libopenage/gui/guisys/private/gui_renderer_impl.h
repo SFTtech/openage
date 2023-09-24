@@ -25,8 +25,6 @@
 
 #include "gui_rendering_setup_routines.h"
 
-struct SDL_Window;
-
 QT_FORWARD_DECLARE_CLASS(QOpenGLFramebufferObject)
 
 namespace qtsdl {
@@ -56,7 +54,7 @@ class GuiRendererImpl : public QObject {
 	Q_OBJECT
 
 public:
-	explicit GuiRendererImpl(SDL_Window *window);
+	explicit GuiRendererImpl(/* SDL_Window *window */);
 	~GuiRendererImpl();
 
 	static GuiRendererImpl *impl(GuiRenderer *renderer);

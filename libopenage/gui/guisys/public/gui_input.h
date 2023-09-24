@@ -4,8 +4,6 @@
 
 #include <memory>
 
-#include <SDL2/SDL_events.h>
-
 namespace qtsdl {
 
 class GuiRenderer;
@@ -23,7 +21,7 @@ public:
 	/**
 	 * Returns true if the event was accepted.
 	 */
-	bool process(SDL_Event *event);
+	bool process(/* SDL_Event *event */);
 
 private:
 	friend class GuiInputImpl;
