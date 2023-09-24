@@ -65,8 +65,8 @@ set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 find_package(Threads REQUIRED)
 
 set(QT_VERSION_REQ "6.2")
-find_package(Qt6Core ${QT_VERSION_REQ} REQUIRED)
-find_package(Qt6Quick ${QT_VERSION_REQ} REQUIRED)
+find_package(Qt6 ${QT_VERSION_REQ} REQUIRED COMPONENTS Core Quick Multimedia)
+# find_package(Qt6Multimedia ${QT_VERSION_REQ} REQUIRED)
 
 if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)
@@ -300,6 +300,7 @@ target_link_libraries(libopenage
 		${EXECINFO_LIB}
 		Qt6::Core
 		Qt6::Quick
+		Qt6::Multimedia
 )
 
 ##################################################

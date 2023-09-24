@@ -45,7 +45,7 @@ _Note:_ Also ensure that `python` and `python3` both point to the correct and th
 ### vcpkg packages
  Set up [vcpkg](https://github.com/Microsoft/vcpkg#quick-start). Open a command prompt at `<vcpkg directory>`
 
-    vcpkg install dirent eigen3 fontconfig freetype harfbuzz libepoxy libogg libpng opus opusfile qtbase qtdeclarative sdl2 sdl2-image toml11
+    vcpkg install dirent eigen3 fontconfig freetype harfbuzz libepoxy libogg libpng opus opusfile qtbase qtdeclarative qtmultimedia sdl2 sdl2-image toml11
 
  _Note:_ The `qt6` port in vcpkg has been split into multiple packages, build times are acceptable now.
  If you want, you can still use [the prebuilt version](https://www.qt.io/download-open-source/) instead.

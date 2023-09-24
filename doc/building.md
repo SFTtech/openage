@@ -56,7 +56,7 @@ Dependency list:
        S  pycodestyle
     C     pygments
        S  pylint
-    CR    qt6 >=6.2 (Core, Quick, QuickControls modules)
+    CR    qt6 >=6.2 (Core, Quick, QuickControls, Multimedia modules)
     CR    toml11
     CR  O vulkan
 
