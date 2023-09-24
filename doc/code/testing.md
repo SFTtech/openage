@@ -15,9 +15,9 @@ Tests run without user interaction to check for errors automatically.
 All tests are run automatically by [Kevin](https://github.com/SFTtech/kevin/) for pullrequests.
 
 
-You can invoke them with `bin/run test -a` or `make test`
+You can invoke them with `bin/openage test -a` or `make test`
 
-Have a look at `bin/run test --help` for further options.
+Have a look at `bin/openage test --help` for further options.
 
 
 You are encouraged to write tests for all your contributions, as well as other components that currently lack testing.
@@ -33,9 +33,9 @@ In addition to testing, openage supports _demos_:
 As opposed to tests, demos are run manually and individually by the user.
 They usually produce lots of output on stdout or may even be interactive. Python demos even accept an `argv` parameter.
 
-All tests must be registered in `openage/testing/testlist.py` (else the game won't know about them).
+All tests must be registered in `engine/testing/testlist.py` (else the game won't know about them).
 
-Also see `bin/run test --help`.
+Also see `bin/openage test --help`.
 
 ## Adding new tests
 
@@ -45,7 +45,7 @@ C++ tests are simple `void()` functions somewhere in the `openage` namespace.
 
 They shall return on success, and raise `openage::testing::TestError` on failure.
 
-They shall not be declared in a header file; instead, add them to `openage/testing/testlist.py`.
+They shall not be declared in a header file; instead, add them to `engine/testing/testlist.py`.
 
 The header `libopenage/testing/testing.h` provides `TestError` and some convenience macros:
 
@@ -77,7 +77,7 @@ Python tests are simple argument-less functions somewhere in the `openage` packa
 
 They shall return `None` on success, and raise `openage.testing.testing.TestError` on failure.
 
-Add their names to `openage/testing/testlist.py`.
+Add their names to `engine/testing/testlist.py`.
 
 The module `openage.testing.testing` provides `TestError` and some convenience functions:
 
@@ -85,7 +85,7 @@ The module `openage.testing.testing` provides `TestError` and some convenience f
     checks whether expr == expected, and raises `TestError` if not.
  - `assert_raises(expected_exception_type)`
     a context guard that verifies that the named exception occurs inside;
-    consult the example in `openage/testing/testing.py`.
+    consult the example in `engine/testing/testing.py`.
 
 You may define tests in `.pyx` files.
 
@@ -107,7 +107,7 @@ def test_prime():
 
 They defined in function and module docstrings, are extremely lightweight and also serve as documentation.
 
-Simply add the name of a Python module to `openage/testing/testlist.py`, and all doctests in that module will run.
+Simply add the name of a Python module to `engine/testing/testlist.py`, and all doctests in that module will run.
 
 Example doctest for a function:
 
@@ -126,7 +126,7 @@ def is_prime(p):
 
 ### C++ demos
 
-Technically, those are very much like `C++` tests. In fact, the only difference to tests is the section in `openage/testing/testlist.py` where they are declared.
+Technically, those are very much like `C++` tests. In fact, the only difference to tests is the section in `engine/testing/testlist.py` where they are declared.
 
 C++ demos don't support `argv`; if you want that, make it a Python demo in a `.pyx` file and do the argparsing in Python; the Python demo function can then easily call any C++ function using the Python interface.
 
@@ -135,7 +135,7 @@ C++ demos don't support `argv`; if you want that, make it a Python demo in a `.p
 
 Similar to Python tests, but have one argument, `argv`. Pass arguments in the invocation:
 
-    bin/run test -d prime_demo 100
+    bin/openage test -d prime_demo 100
 
 Example demo:
 

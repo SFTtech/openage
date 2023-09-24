@@ -6,4 +6,4 @@ by parsing the original data.
 
 ## Gamedata conversion
 
-`openage/convert/value_object/read/media/datfile/` specifies the format of the `.dat` from various games.
+`engine/convert/value_object/read/media/datfile/` specifies the format of the `.dat` from various games.

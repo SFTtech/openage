@@ -162,7 +162,7 @@ pxdgen(example.h)
 
 The function is now available from Cython. To make it available for pure-python modules, write a wrapper:
 
-`openage/foo.pyx`
+`engine/foo.pyx`
 
 ``` cython
 from libopenage.foo cimport foo as c_foo
@@ -172,10 +172,10 @@ def foo(int arg0, str arg1):
         return c_foo(arg0, arg1)
 ```
 
-`openage/bar.py`
+`engine/bar.py`
 
 ``` python
-from openage.foo import foo
+from engine.foo import foo
 
 print(foo(10, "test"))
 ```
@@ -278,7 +278,7 @@ it allows *binding arguments* and makes sure that the pointer is properly initia
 
 We will call this pure-Python function from C++:
 
-`openage/bar.py`
+`engine/bar.py`
 
 ``` python
 def bar(arg0, arg1):
@@ -314,7 +314,7 @@ extern OAAPI PyIfFunc<float, int, std::string> bar;
 Wrap the python function in a `cdef` function, and define a method `setup()`,
 which binds the `cdef` function to the PyIfFunc object.
 
-`openage/foo.pyx`
+`engine/foo.pyx`
 
 ``` cython
 from libopenage.foo cimport bar as c_bar
@@ -333,13 +333,13 @@ arguments are bound (this is needed because Cython currently doesn't support var
 
 Add a call to `openage.foo.setup()` to `openage.cppinterface.setup.setup`.
 
-`openage/pyinterface/setup.pyx`
+`engine/pyinterface/setup.pyx`
 
 ``` python
 def setup():
     # (...)
 
-    from openage.foo import setup
+    from engine.foo import setup
     setup()
 
     # (...)
@@ -363,11 +363,11 @@ Real-life examples
 ------------------
 
 * For code that wraps a C++ class for Python, see:
-  * `openage/cabextract/lzxd.pyx`
+  * `engine/cabextract/lzxd.pyx`
   * `libopenage/util/lzxd.h`
 * For code that wraps a Python class for C++, see:
   * `libopenage/util/fslike/path.h`
-  * `openage/util/fslike/cpp.pyx`
+  * `engine/util/fslike/cpp.pyx`
 * Search for `.pyx` files in the repo
 
 

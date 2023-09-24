@@ -218,7 +218,7 @@ endif()
 # documentation generation
 
 # create documentation
-doxygen_configure(libopenage/ openage/ doc/ README.md)
+doxygen_configure(libopenage/ engine/ doc/ README.md)
 
 
 ##################################################
@@ -251,10 +251,10 @@ target_compile_options(pyext_libopenage INTERFACE
 target_link_libraries(pyext_libopenage INTERFACE libopenage)
 set(PYEXT_LINK_LIBRARY pyext_libopenage)
 
-configure_file(run.py.in run.py)
-add_cython_modules(EMBED NOINSTALL ${CMAKE_CURRENT_BINARY_DIR}/run.py)
-add_py_modules(BININSTALL ${CMAKE_CURRENT_BINARY_DIR}/run.py AS openage)
-add_subdirectory(openage/)
+configure_file(openage.py.in openage.py)
+add_cython_modules(EMBED NOINSTALL ${CMAKE_CURRENT_BINARY_DIR}/openage.py)
+add_py_modules(BININSTALL ${CMAKE_CURRENT_BINARY_DIR}/openage.py AS openage)
+add_subdirectory(engine/)
 
 python_finalize()
 

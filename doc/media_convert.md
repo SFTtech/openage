@@ -31,8 +31,8 @@ The game version vs Game_ID table such as below:
 
 ## Conversion
 
-The original AoC game asset formats are, lets say, "special", so they need to be converted in order to be usable from openage.
-That conversion is performed by the `openage.convert` python module when the game is run for the first time.
+The original AoC game asset formats are, lets say, "special", so they need to be converted in order to be usable from engine.
+That conversion is performed by the `engine.convert` python module when the game is run for the first time.
 
 The game will ask for your AoE II installation folder; examples include:
 

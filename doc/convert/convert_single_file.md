@@ -40,7 +40,7 @@ Standalone WAVs (Age of Empires 2: HD Edition):
 python3 -m openage convert-file ~/games/aoe2/resources/123.wav /tmp/rofl.opus
 ```
 
-Have a look at `openage/convert/singlefile.py`, this is also a simple API demo
+Have a look at `engine/convert/singlefile.py`, this is also a simple API demo
 for how to interact with the aoe files.
 
 

@@ -25,9 +25,9 @@ Go to **Projects** -> **openage** -> **Build & Run** -> **Build** -> **Build Ste
 ## Run & Debug
 
 1. To set the correct executable, first go to **Projects** -> **openage** -> **Build & Run** -> **Run** page.
-1. In the **Run configuration** combo-box select **Custom Executable** and set **Executable** to `<path-to-openage-src>/run`.
+1. In the **Run configuration** combo-box select **Custom Executable** and set **Executable** to `<path-to-openage-src>/openage`.
 1. Set **Working directory** to `<path-to-openage-src>`.
 
 `<path-to-openage-src>` is the directory where the sources of the openage are (the directory of the root `CMakeLists.txt` file).
 
-The `<path-to-openage-src>/run` binary has no executable bit set when first built, set it manually with `chmod`.
+The `<path-to-openage-src>/openage` binary has no executable bit set when first built, set it manually with `chmod`.

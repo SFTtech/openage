@@ -40,7 +40,7 @@ make -j$(sysctl -n hw.ncpu)
 
 
 ## Running
-`make run` or `./bin/run` launches the game. Try `./bin/run --help`!
+`make openage` or `./bin/openage` launches the game. Try `./bin/openage --help`!
 
 
 ## To create the documentation

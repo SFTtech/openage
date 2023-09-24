@@ -253,8 +253,8 @@ configure_file(version.h.in version.h)
 configure_file(version.cpp.in version.cpp)
 
 configure_file(
-	"${CMAKE_SOURCE_DIR}/openage/config.py.in"
-	"${CMAKE_BINARY_DIR}/openage/config.py"
+	"${CMAKE_SOURCE_DIR}/engine/config.py.in"
+	"${CMAKE_BINARY_DIR}/engine/config.py"
 )
 
 ##################################################

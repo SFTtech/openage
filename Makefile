@@ -22,14 +22,14 @@ install: $(BUILDDIR)
 
 .PHONY: run
 run: build
-	cd $(BUILDDIR) && ./run game
+	cd $(BUILDDIR) && ./openage game
 
 .PHONY: test
 test: tests checkfast
 
 .PHONY: tests
 tests: build
-	cd $(BUILDDIR) && ./run test -a
+	cd $(BUILDDIR) && ./openage test -a
 
 .PHONY: build
 build: $(BUILDDIR)
@@ -109,7 +109,7 @@ cleanbuilddirs: cleaninsourcebuild
 	@echo cleaning build directories
 	rm -rf .bin
 	@echo cleaning cmake-time generated code
-	rm -f Doxyfile py/openage/config.py libopenage/config.h libopenage/config.cpp
+	rm -f Doxyfile py/engine/config.py libopenage/config.h libopenage/config.cpp
 
 .PHONY: mrproper
 mrproper: cleanbuilddirs

@@ -6,7 +6,7 @@
 # in the configure phase.
 # -> in the configure phase, run cmake again to download the project.
 #
-# this is the file used to tell the nested cmake run what to do.
+# this is the file used to tell the nested cmake openage what to do.
 
 cmake_minimum_required(VERSION 3.6)
 

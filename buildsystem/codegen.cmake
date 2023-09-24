@@ -49,7 +49,7 @@ function(codegen_run)
 		COMMAND "${CMAKE_COMMAND}" -E touch "${CODEGEN_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 		DEPENDS ${CODEGEN_DEPENDS}
-		COMMENT "openage.codegen: generating c++ code"
+		COMMENT "engine.codegen: generating c++ code"
 	)
 
 	add_custom_target(codegen

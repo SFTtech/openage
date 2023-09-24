@@ -41,7 +41,7 @@ if(CPACK_GENERATOR MATCHES "NSIS")
     set(CPACK_NSIS_PACKAGE_NAME "${CPACK_PACKAGE_NAME} v${CPACK_PACKAGE_VERSION}")
     set(CPACK_NSIS_DISPLAY_NAME "${CPACK_PACKAGE_NAME} v${CPACK_PACKAGE_VERSION}")
     set(CPACK_NSIS_URL_INFO_ABOUT "https://github.com/SFTtech/openage")
-    set(CPACK_NSIS_HELP_LINK "https://github.com/SFTtech/openage/blob/master/doc/troubleshooting.md")
+    set(CPACK_NSIS_HELP_LINK "https://github.com/SFTtech/engine/blob/master/doc/troubleshooting.md")
 
     # TODO: create welcome page
     #set(CPACK_RESOURCE_FILE_WELCOME "")

@@ -11,7 +11,7 @@
  * properly initialized.
  *
  * A "Python interface component" is a global object that is supposed to
- * be initialized externally by openage.cppinterface.setup.setup().
+ * be initialized externally by engine.cppinterface.setup.setup().
  * Examples include PyIfFunc and PyIfObjRef objects.
  */
 

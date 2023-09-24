@@ -289,7 +289,7 @@ std::ostream &operator <<(std::ostream &os, const PyObjectRef &ref);
 
 
 // now follow the various Python callbacks that implement all of the above,
-// and need to be installed by openage.cppinterface.pyobject.setup().
+// and need to be installed by engine.cppinterface.pyobject.setup().
 
 // for use by the reference-counting constructors
 

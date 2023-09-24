@@ -90,7 +90,7 @@ OAAPI void init_exc_message(log::message *msg, const std::string &filename, unsi
  *  - immediate back-conversion of raised Python CPPException objects
  *
  * Thus, we instead offer this setter function, to be called during
- * openage.cppinterface.exctranslate.setup().
+ * engine.cppinterface.exctranslate.setup().
  *
  * @param raise_cpp_error:
  *

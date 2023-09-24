@@ -7,7 +7,7 @@
 #
 #  Here's an example of running valgrind:
 #
-#	cd openage/bin/
+#	cd engine/bin/
 #	PYTHONMALLOC=malloc valgrind --tool=memcheck --suppressions=../etc/valgrind-python.supp \
 #		python3 -m openage test -a
 #

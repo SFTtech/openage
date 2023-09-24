@@ -66,7 +66,7 @@ void gl_check_error() {
 		throw Error(MSG(err) <<
 			"OpenGL error state after running draw method: " << glerrorstate << "\n"
 			"\t" << errormsg << "\n"
-			<< "Run the game with --gl-debug to get more information: './run game --gl-debug'.");
+			<< "Run the game with --gl-debug to get more information: './openage game --gl-debug'.");
 	}
 }
 

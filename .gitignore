@@ -35,9 +35,9 @@ __pycache__
 /.cache
 
 # root dir run script
-/run
-/run.cpp
-/run.html
+/openage
+/openage.cpp
+/openage.html
 
 # CMake in-source builds
 /DartConfiguration.tcl

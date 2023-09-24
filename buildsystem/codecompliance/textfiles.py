@@ -31,7 +31,7 @@ def find_issues(dirnames, exts):
             # TODO all this for now, until someone fixes the codegen.
             continue
 
-        if filename.startswith('openage/') and filename.endswith('.cpp'):
+        if filename.startswith('engine/') and filename.endswith('.cpp'):
             # allow issues for Cython-generated files.
             continue
 

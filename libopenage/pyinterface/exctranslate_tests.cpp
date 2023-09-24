@@ -53,7 +53,7 @@ void err_py_to_cpp() {
 		} catch (PyException &exc) {
 			// this is what we expected.
 			// now let's see whether the object contains the expected data.
-			if (exc.type_name() != "openage.cppinterface.exctranslate_tests.Bar") {
+			if (exc.type_name() != "engine.cppinterface.exctranslate_tests.Bar") {
 				return "unexpected exc typename: " + exc.type_name();
 			}
 
@@ -67,7 +67,7 @@ void err_py_to_cpp() {
 				return "exc had no cause";
 
 			} catch (PyException &cause) {
-				if (cause.type_name() != "openage.testing.testing.TestError") {
+				if (cause.type_name() != "engine.testing.testing.TestError") {
 					return "unexpected cause typename: " + cause.type_name();
 				}
 

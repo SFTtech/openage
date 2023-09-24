@@ -231,11 +231,11 @@ def find_all_issues(args, check_files=None):
 
     if args.pystyle:
         from .pystyle import find_issues
-        yield from find_issues(check_files, ('openage', 'buildsystem'))
+        yield from find_issues(check_files, ('engine', 'buildsystem'))
 
     if args.cython:
         from buildsystem.codecompliance.cython import find_issues
-        yield from find_issues(check_files, ('openage',))
+        yield from find_issues(check_files, ('engine',))
 
     if args.cppstyle:
         from .cppstyle import find_issues
@@ -243,12 +243,12 @@ def find_all_issues(args, check_files=None):
 
     if args.pylint:
         from .pylint import find_issues
-        yield from find_issues(check_files, ('openage', 'buildsystem'))
+        yield from find_issues(check_files, ('engine', 'buildsystem'))
 
     if args.textfiles:
         from .textfiles import find_issues
         yield from find_issues(
-            ('openage', 'libopenage', 'buildsystem', 'doc', 'legal'),
+            ('engine', 'libopenage', 'buildsystem', 'doc', 'legal'),
             ('.pxd', '.pyx', '.pxi', '.py',
              '.h', '.cpp', '.template',
              '', '.txt', '.md', '.conf',
@@ -257,12 +257,12 @@ def find_all_issues(args, check_files=None):
     if args.legal:
         from .legal import find_issues
         yield from find_issues(check_files,
-                               ('openage', 'buildsystem', 'libopenage'),
+                               ('engine', 'buildsystem', 'libopenage'),
                                args.test_git_change_years)
 
     if args.filemodes:
         from .modes import find_issues
-        yield from find_issues(check_files, ('openage', 'buildsystem',
+        yield from find_issues(check_files, ('engine', 'buildsystem',
                                              'libopenage'))
 
 

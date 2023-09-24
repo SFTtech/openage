@@ -128,7 +128,7 @@ Quickstart
    ```
 
 * **I compiled everything. Now how do I run it?**
-    * Execute `./bin/run`.
+    * Execute `./bin/openage`.
     * [The convert script](/doc/media_convert.md) will transform original assets into openage formats, which are a lot saner and more moddable.
     * Use your brain and react to the things you'll see.
 
@@ -139,7 +139,7 @@ Quickstart
 
 All of those are features, not bugs.
 
-To turn them off, use `./bin/run --dont-segfault --no-errors --dont-eat-dog`.
+To turn them off, use `./bin/openage --dont-segfault --no-errors --dont-eat-dog`.
 
 
 If this still does not help, try our [troubleshooting guide](/doc/troubleshooting.md), the [contact section](#contact)

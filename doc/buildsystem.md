@@ -20,7 +20,7 @@ Components
 The buildsystem is pretty sophisticated because *openage* consists of C++
 code, generated C++ code, generated Cython code and Python code. All C++
 parts are packed in `libopenage`, the Python stuff is in the `openage`
-python package. We generate code with the `openage.codegen` Python
+python package. We generate code with the `engine.codegen` Python
 package.
 
 
@@ -29,8 +29,8 @@ Procedure
 
 Steps in building openage:
 
- - generate `openage/config.py` and `libopenage/config.{h, cpp}` from their `*.in` template files, which contain install prefix and version info
- - run `openage.codegen` (Python module) to generate C++ source files (recipe: `codegen`)
+ - generate `engine/config.py` and `libopenage/config.{h, cpp}` from their `*.in` template files, which contain install prefix and version info
+ - run `engine.codegen` (Python module) to generate C++ source files (recipe: `codegen`)
  - generate `.pxd` Cython extension declaration files from annotated `.h` files (recipe: `pxdgen`)
  - build and link `libopenage.so` (recipe: `openage`)
  - build Cython extension modules (generate cpp files and compile them, via `buildsystem.cythonize`) (recipe: `cython`); those link against libopenage.
@@ -116,7 +116,7 @@ codegen
 
 Provides the function `codegen_run`, which
 
- - at cmake-time, runs the openage.codegen python module to obtain a list of sources it will generate
+ - at cmake-time, runs the engine.codegen python module to obtain a list of sources it will generate
  - at build time, actually generates the sources and writes them to the source directory where necessary
 
 It sets the variable `CODEGEN_TARGET_TUS`, containing a list of created `cpp` files. That variable is designed to be used in a call to `add_sources(openage GENERATED ${CODEGEN_TARGET_TUS})`.

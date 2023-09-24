@@ -130,7 +130,7 @@ Make sure you have all the dependencies installed.
       - configure: `CC=/path/to/downloaded-llvm/bin/clang CXX=/path/to/downloaded-llvm/bin/clang++ LD=/path/to/downloaded-llvm/bin/ld64.lld ./configure --download-nyan`
       - a small build hint for later: use your freaking cores with the -j option later `make -j$(sysctl -n hw.ncpu)`
 - `make` generates and builds everything
-- `make run` or `bin/run` launches the game. Try `bin/run --help`!
+- `make openage` or `bin/openage` launches the game. Try `bin/openage --help`!
 - `make test` runs the built-in tests.
 
 

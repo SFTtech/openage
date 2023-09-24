@@ -18,7 +18,7 @@ This file explains the modular structure of the project.
    6. [etc/](#etc)
    7. [legal/](#legal)
    8. [libopenage/](#libopenage)
-   9. [openage/](#openage)
+   9. [engine/](#openage)
    10. [packaging/](#packaging)
 
 
@@ -99,7 +99,7 @@ All engine components, data structures and C++ tests are located in this
 folder, each subsystem resides in its own subfolder.
 
 
-### openage/
+### engine/
 
 Contains the Python3 auxiliary components of openage.
 Python3 is used for non-data-crunching tasks, like converting original assets,
