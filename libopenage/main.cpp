@@ -25,8 +25,12 @@ int run_game(const main_arguments &args) {
 	auto cvar_manager = std::make_shared<cvar::CVarManager>(args.root_path["cfg"]);
 	cvar_manager->load_all();
 
-	// TODO: select run_mode by launch argument
+	// set engine run_mode
 	openage::engine::Engine::mode run_mode = openage::engine::Engine::mode::FULL;
+	if (args.headless) {
+		run_mode = openage::engine::Engine::mode::HEADLESS;
+	}
+
 	openage::engine::Engine engine{run_mode, args.root_path, args.mods};
 
 	engine.loop();
