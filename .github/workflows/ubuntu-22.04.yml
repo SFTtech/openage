@@ -32,7 +32,7 @@ jobs:
       run: mkdir -p /tmp/image
       shell: bash
     - name: Download devenv image
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: devenv-image-compressed.tar.gz
         path: '/tmp/image'
