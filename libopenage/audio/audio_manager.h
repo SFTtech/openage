@@ -7,13 +7,16 @@
 #include <unordered_map>
 #include <vector>
 
-#include <SDL2/SDL.h>
+#include <QObject>
 
 #include "category.h"
 #include "hash_functions.h"
 #include "resource_def.h"
 #include "sound.h"
 
+Q_FORWARD_DECLARE_OBJC_CLASS(QAudioDevice);
+Q_FORWARD_DECLARE_OBJC_CLASS(QAudioFormat);
+Q_FORWARD_DECLARE_OBJC_CLASS(QAudioSink);
 
 namespace openage {
 
@@ -26,6 +29,8 @@ namespace audio {
 
 /**
  * This class provides audio functionality for openage.
+ *
+ * TODO: Finish porting to Qt.
  */
 class AudioManager {
 public:
@@ -33,7 +38,7 @@ public:
 	 * Initializes the audio manager with the given device name.
 	 * If the name is empty, the default device is used.
 	 */
-	AudioManager(job::JobManager *job_manager,
+	AudioManager(const std::shared_ptr<job::JobManager> &job_manager,
 	             const std::string &device_name = "");
 
 	~AudioManager();
@@ -66,18 +71,28 @@ public:
 	/**
 	 * Returns the currently used audio output format.
 	 */
-	SDL_AudioSpec get_device_spec() const;
+	const std::shared_ptr<QAudioFormat> &get_device_spec() const;
 
 	/**
 	 * Return the game engine the audio manager is attached to.
 	 */
-	job::JobManager *get_job_manager() const;
+	const std::shared_ptr<job::JobManager> &get_job_manager() const;
 
 	/**
 	 * If this audio manager is available.
 	 * It's not available if
 	 */
 	bool is_available() const;
+
+	/**
+	 * Returns a vector of all available device names.
+	 */
+	static std::vector<std::string> get_devices();
+
+	/**
+	 * Returns the default device name.
+	 */
+	static std::string get_default_device();
 
 private:
 	void add_sound(const std::shared_ptr<SoundImpl> &sound);
@@ -96,7 +111,7 @@ private:
 	/**
 	 * The job manager used in this audio manager for job queuing.
 	 */
-	job::JobManager *job_manager;
+	std::shared_ptr<job::JobManager> job_manager;
 
 	/**
 	 * the used audio device's name
@@ -106,12 +121,17 @@ private:
 	/**
 	 * the audio output format
 	 */
-	SDL_AudioSpec device_spec;
+	std::shared_ptr<QAudioFormat> device_format;
 
 	/**
 	 * the used audio device's id
 	 */
-	SDL_AudioDeviceID device_id;
+	std::shared_ptr<QAudioDevice> device;
+
+	/**
+	 * the audio sink
+	 */
+	std::shared_ptr<QAudioSink> audio_sink;
 
 	/**
 	 * Buffer used for mixing audio to one stream.
@@ -121,23 +141,6 @@ private:
 	std::unordered_map<std::tuple<category_t, int>, std::shared_ptr<Resource>> resources;
 
 	std::unordered_map<category_t, std::vector<std::shared_ptr<SoundImpl>>> playing_sounds;
-
-	// static functions
-public:
-	/**
-	 * Returns a vector of all available device names.
-	 */
-	static std::vector<std::string> get_devices();
-
-	/**
-	 * Returns a vector of all available driver names.
-	 */
-	static std::vector<std::string> get_drivers();
-
-	/**
-	 * Returns the name of the currently used driver.
-	 */
-	static std::string get_current_driver();
 };
 
 } // namespace audio
