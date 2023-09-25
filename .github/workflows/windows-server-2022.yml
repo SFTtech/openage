@@ -24,7 +24,7 @@ jobs:
         mkdir download
         cd download
         $zipfile = "openage-dep-x64-windows.zip"
-        Invoke-WebRequest https://github.com/SFTtech/openage-dependencies/releases/download/v0.5.0/openage-dep-x64-windows.zip -OutFile $zipfile
+        Invoke-WebRequest https://github.com/SFTtech/openage-dependencies/releases/download/v0.5.1/openage-dep-x64-windows.zip -OutFile $zipfile
         Expand-Archive -Path $zipfile -DestinationPath . -Force
         Remove-Item $zipfile
         (Get-ChildItem . -Recurse -File).FullName
