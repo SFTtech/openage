@@ -27,12 +27,14 @@ namespace openage {
  *     Path root_path
  *     int32_t fps_limit
  *     bool gl_debug
+ *     bool headless
  *     vector[string] mods
  */
 struct main_arguments {
 	util::Path root_path;
 	int32_t fps_limit;
 	bool gl_debug;
+	bool headless;
 	std::vector<std::string> mods;
 };
 

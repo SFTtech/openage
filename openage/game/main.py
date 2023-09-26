@@ -29,6 +29,10 @@ def init_subparser(cli: ArgumentParser) -> None:
         help="throw exceptions directly from the OpenGL calls")
 
     cli.add_argument(
+        "--headless", action='store_true',
+        help="run without displaying graphics")
+
+    cli.add_argument(
         "--modpacks", nargs="+", type=bytes,
         help="list of modpacks to load")
 

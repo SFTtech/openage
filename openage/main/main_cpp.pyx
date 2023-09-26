@@ -35,6 +35,9 @@ def run_game(args, root_path):
         # opengl debugging
         args_cpp.gl_debug = args.gl_debug
 
+        # headless mode
+        args_cpp.headless = args.headless
+
         # mods
         if args.modpacks is not None:
             args_cpp.mods = args.modpacks

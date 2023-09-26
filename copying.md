@@ -146,6 +146,7 @@ _the openage authors_ are:
 | Derek Frogget               | FoggyLight                  | fro22003 à byui dawt edu                          |
 | Martin                      | Starman                     | mstarman à seznam dawt cz                         |
 | Zoltán Ács                  | zoli111                     | acszoltan111 à gmail dawt com                     |
+| Trevor Slocum               | tslocum                     | trevor à rocket9labs dawt com                     |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

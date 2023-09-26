@@ -32,6 +32,9 @@ def run_game(args, root_path):
         # opengl debugging
         args_cpp.gl_debug = args.gl_debug
 
+        # headless mode
+        args_cpp.headless = args.headless
+
         # run the game!
         with nogil:
             result = run_game_cpp(args_cpp)
