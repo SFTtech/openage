@@ -144,6 +144,7 @@ bool GuiInputImpl::process(/* SDL_Event *e */) {
 	// default:
 	// 	return false;
 	// }
+	return false;
 }
 
 bool GuiInputImpl::relay_input_event(QEvent *ev, bool only_if_grabbed) {
