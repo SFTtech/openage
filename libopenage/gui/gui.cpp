@@ -47,41 +47,41 @@ void GUI::process_events() {
 // 	return not this->input.process(event);
 // }
 
-namespace {
-/**
- * Restores blending function.
- */
-class BlendPreserver {
-public:
-	BlendPreserver() :
-		was_on{},
-		src{},
-		dst{} {
-		glGetBooleanv(GL_BLEND, &this->was_on);
+// namespace {
+// /**
+//  * Restores blending function.
+//  */
+// class BlendPreserver {
+// public:
+// 	BlendPreserver() :
+// 		was_on{},
+// 		src{},
+// 		dst{} {
+// 		glGetBooleanv(GL_BLEND, &this->was_on);
 
-		if (this->was_on != GL_FALSE) {
-			glGetIntegerv(GL_BLEND_SRC_ALPHA, &this->src);
-			glGetIntegerv(GL_BLEND_DST_ALPHA, &this->dst);
-		}
-	}
+// 		if (this->was_on != GL_FALSE) {
+// 			glGetIntegerv(GL_BLEND_SRC_ALPHA, &this->src);
+// 			glGetIntegerv(GL_BLEND_DST_ALPHA, &this->dst);
+// 		}
+// 	}
 
-	~BlendPreserver() {
-		if (this->was_on != GL_FALSE) {
-			glEnable(GL_BLEND);
-			glBlendFunc(this->src, this->dst);
-		}
-		else {
-			glDisable(GL_BLEND);
-		}
-	}
+// 	~BlendPreserver() {
+// 		if (this->was_on != GL_FALSE) {
+// 			glEnable(GL_BLEND);
+// 			glBlendFunc(this->src, this->dst);
+// 		}
+// 		else {
+// 			glDisable(GL_BLEND);
+// 		}
+// 	}
 
-private:
-	GLboolean was_on;
-	GLint src;
-	GLint dst;
-};
+// private:
+// 	GLboolean was_on;
+// 	GLint src;
+// 	GLint dst;
+// };
 
-} // namespace
+// } // namespace
 
 // bool GUI::on_drawhud() {
 // 	this->render_updater.process_callbacks();
