@@ -1,7 +1,6 @@
 # Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 from cpython.ref cimport PyObject
-from libcpp.memory cimport make_unique
 from libcpp.string cimport string
 from libcpp.vector cimport vector
 
@@ -25,12 +24,6 @@ def run_game(args, root_path):
         # root_path is a util.fslike.Path object from python
         args_cpp.root_path = Path_cpp(PyObj(<PyObject*>root_path.fsobj),
                                     root_path.parts)
-
-        # frame limiting
-        if args.fps is not None:
-            args_cpp.fps_limit = args.fps
-        else:
-            args_cpp.fps_limit = 0
 
         # opengl debugging
         args_cpp.gl_debug = args.gl_debug

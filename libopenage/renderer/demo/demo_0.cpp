@@ -13,7 +13,7 @@ namespace openage::renderer::tests {
 void renderer_demo_0(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
-	opengl::GlWindow window("openage renderer test", 800, 600);
+	opengl::GlWindow window("openage renderer test", 800, 600, true);
 	auto renderer = window.make_renderer();
 
 	auto shaderdir = path / "assets" / "test" / "shaders";

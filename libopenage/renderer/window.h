@@ -28,11 +28,14 @@ public:
 	 * @param title Window title shown in the Desktop Environment.
 	 * @param width Width in pixels.
 	 * @param height Height in pixels.
+	 * @param debug If true, enable OpenGL debug logging.
+	 *
 	 * @return The created Window instance.
 	 */
 	static std::shared_ptr<Window> create(const std::string &title,
 	                                      size_t width,
-	                                      size_t height);
+	                                      size_t height,
+	                                      bool debug = false);
 
 	virtual ~Window() = default;
 

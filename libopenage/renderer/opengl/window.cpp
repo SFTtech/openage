@@ -17,7 +17,10 @@
 
 namespace openage::renderer::opengl {
 
-GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
+GlWindow::GlWindow(const std::string &title,
+                   size_t width,
+                   size_t height,
+                   bool debug) :
 	Window{width, height} {
 	if (QGuiApplication::instance() == nullptr) {
 		// Qt windows need to attach to a QtGuiApplication
@@ -32,7 +35,27 @@ GlWindow::GlWindow(const std::string &title, size_t width, size_t height) :
 
 	this->window->setSurfaceType(QSurface::OpenGLSurface);
 
-	this->context = std::make_shared<GlContext>(this->window);
+	auto gl_specs = GlContext::find_spec();
+	QSurfaceFormat format{};
+	format.setProfile(QSurfaceFormat::OpenGLContextProfile::CoreProfile);
+	format.setSwapBehavior(QSurfaceFormat::SwapBehavior::DoubleBuffer);
+
+	format.setMajorVersion(gl_specs.major_version);
+	format.setMinorVersion(gl_specs.minor_version);
+
+	format.setAlphaBufferSize(8);
+	format.setDepthBufferSize(24);
+	format.setStencilBufferSize(8);
+
+	if (debug) {
+		format.setOption(QSurfaceFormat::DebugContext);
+	}
+
+	// TODO: Set format as default for all windows with QSurface::setDefaultFormat()
+	this->window->setFormat(format);
+	this->window->create();
+
+	this->context = std::make_shared<GlContext>(this->window, debug);
 	if (not this->context->get_raw_context()->isValid()) {
 		throw Error{MSG(err) << "Failed to create Qt OpenGL context."};
 	}

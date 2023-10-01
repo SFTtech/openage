@@ -9,11 +9,9 @@ from __future__ import annotations
 from datetime import datetime
 import typing
 
-from ..log import info, err
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
-from ..util.strings import format_progress
 from .service.debug_info import debug_cli_args, debug_game_version, debug_mounts
 from .service.init.conversion_required import conversion_required
 from .service.init.mount_asset_dirs import mount_asset_dirs
@@ -25,14 +23,14 @@ from .tool.subtool.version_select import get_game_version
 if typing.TYPE_CHECKING:
     from argparse import ArgumentParser, Namespace
     from openage.util.fslike.directory import Directory
+    from openage.util.fslike.path import Path
 
 
 def convert_assets(
     assets: Directory,
     args: Namespace,
-    srcdir: Directory = None,
-    prev_source_dir_path: str = None
-) -> str:
+    srcdir: Directory = None
+) -> None:
     """
     Perform asset conversion.
 
@@ -47,10 +45,6 @@ def convert_assets(
     This method prepares srcdir and targetdir to allow a pleasant, unified
     conversion experience, then passes them to .driver.convert().
     """
-    # acquire conversion source directory
-    if srcdir is None:
-        srcdir = acquire_conversion_source_dir(prev_source_dir_path)
-
     converted_path = assets / "converted"
     converted_path.mkdirs()
     targetdir = DirectoryCreator(converted_path).root
@@ -78,6 +72,14 @@ def convert_assets(
     # Initialize game versions data
     auxiliary_files_dir = args.cfg_dir / "converter" / "games"
     args.avail_game_eds, args.avail_game_exps = create_version_objects(auxiliary_files_dir)
+
+    # try to get previously used source dir
+    asset_locations_path = assets / "converted" / "asset_locations.cache"
+    prev_srcdirs = get_prev_srcdir_paths(asset_locations_path)
+
+    # acquire conversion source directory
+    if srcdir is None:
+        srcdir = acquire_conversion_source_dir(args.avail_game_eds, prev_srcdirs)
 
     # Acquire game version info
     args.game_version = get_game_version(srcdir, args.avail_game_eds, args.avail_game_exps)
@@ -110,29 +112,45 @@ def convert_assets(
     # import here so codegen.py doesn't depend on it.
     from .tool.driver import convert
 
-    converted_count = 0
-    total_count = None
-    for current_item in convert(args):
-        if isinstance(current_item, int):
-            # convert is informing us about the estimated number of remaining
-            # items.
-            total_count = current_item + converted_count
-            continue
-
-        # TODO a GUI would be nice here.
-
-        if total_count is None:
-            info("[%s] %s", converted_count, current_item)
-        else:
-            info("[%s] %s", format_progress(converted_count, total_count), current_item)
-
-        converted_count += 1
+    # Run the conversion process
+    convert(args)
 
     # clean args
     del args.srcdir
     del args.targetdir
 
-    return data_dir.resolve_native_path()
+    # Remember the asset location if it is not already in the cache
+    if prev_srcdirs is None:
+        asset_locations_path.touch()
+        prev_srcdirs = set()
+
+    used_asset_path = data_dir.resolve_native_path().decode('utf-8')
+    if used_asset_path not in prev_srcdirs:
+        with asset_locations_path.open("a") as file_obj:
+            if len(prev_srcdirs) > 0:
+                file_obj.write("\n")
+
+            file_obj.write(used_asset_path)
+
+
+def get_prev_srcdir_paths(asset_location_path: Path) -> set[str] | None:
+    """
+    Get previously used source directories from a cache file.
+
+    :param asset_location_path: Path to the cache file.
+    :type asset_location_path: Path
+    :return: Previously used source directories.
+    :rtype: set[str] | None
+    """
+    prev_source_dirs: set[str] = set()
+    try:
+        with asset_location_path.open("r") as file_obj:
+            prev_source_dirs.update(file_obj.read().split("\n"))
+
+    except FileNotFoundError:
+        prev_source_dirs = None
+
+    return prev_source_dirs
 
 
 def init_subparser(cli: ArgumentParser):
@@ -241,10 +259,8 @@ def main(args, error):
     from ..assets import get_asset_path
     outdir = get_asset_path(args.output_dir)
 
-    if args.force or wanna_convert() or conversion_required(outdir, args):
-        if not convert_assets(outdir, args, srcdir):
-            err("game asset conversion failed")
-            return 1
+    if args.force or wanna_convert() or conversion_required(outdir):
+        convert_assets(outdir, args, srcdir)
 
     else:
         print("assets are up to date; no conversion is required.")

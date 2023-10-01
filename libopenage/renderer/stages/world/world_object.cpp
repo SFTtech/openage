@@ -90,7 +90,7 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 
 	// Object world position
 	auto current_pos = this->position.get(time);
-	this->uniforms->update("obj_world_position", current_pos.to_world_space());
+	this->uniforms->update(this->obj_world_position, current_pos.to_world_space());
 
 	// Direction angle the object is facing towards currently
 	auto angle_degrees = this->angle.get(time).to_float();
@@ -102,10 +102,10 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 
 	// Flip subtexture horizontally if angle is mirrored
 	if (angle->is_mirrored()) {
-		this->uniforms->update("flip_x", true);
+		this->uniforms->update(this->flip_x, true);
 	}
 	else {
-		this->uniforms->update("flip_x", false);
+		this->uniforms->update(this->flip_x, false);
 	}
 
 	// Current frame index considering current time
@@ -132,11 +132,11 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 	auto &tex_info = animation_info->get_texture(tex_idx);
 	auto &tex_manager = this->asset_manager->get_texture_manager();
 	auto &texture = tex_manager->request(tex_info->get_image_path().value());
-	this->uniforms->update("tex", texture);
+	this->uniforms->update(this->tex, texture);
 
 	// Subtexture coordinates.inside texture
 	auto coords = tex_info->get_subtex_info(subtex_idx).get_tile_params();
-	this->uniforms->update("tile_params", coords);
+	this->uniforms->update(this->tile_params, coords);
 
 	// scale and keep width x height ratio of texture
 	// when the viewport size changes
@@ -148,14 +148,14 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 	auto scale_vec = Eigen::Vector2f{
 		scale * (static_cast<float>(subtex_size[0]) / screen_size[0]),
 		scale * (static_cast<float>(subtex_size[1]) / screen_size[1])};
-	this->uniforms->update("scale", scale_vec);
+	this->uniforms->update(this->scale, scale_vec);
 
 	// Move subtexture in scene so that its anchor point is at the object's position
 	auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
 	auto anchor_offset = Eigen::Vector2f{
 		scale * (static_cast<float>(anchor[0]) / screen_size[0]),
 		scale * (static_cast<float>(anchor[1]) / screen_size[1])};
-	this->uniforms->update("anchor_offset", anchor_offset);
+	this->uniforms->update(this->anchor_offset, anchor_offset);
 }
 
 uint32_t WorldObject::get_id() {

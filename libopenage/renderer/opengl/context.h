@@ -17,7 +17,7 @@ class GlShaderProgram;
 /**
  * Stores information about context capabilities and limitations.
 */
-struct gl_context_capabilities {
+struct gl_context_spec {
 	/// The maximum number of vertex attributes in a shader.
 	size_t max_vertex_attributes;
 	/// The amount of texture units (GL_TEXTUREi) available.
@@ -40,20 +40,14 @@ public:
 	/**
 	 * Create a GL context for the given Qt window.
 	 *
-	 * TODO: Currently, this also sets up the Qt window with QWindow::create() because
-	 * the constructur also creates the context format. Ideally, QWindow creation should
-	 * be handed to our own Window class.
-	 *
 	 * @param window Window for the context. The context is made current to this window.
-	*/
-	explicit GlContext(const std::shared_ptr<QWindow> &window);
+	 * @param debug If true, enable OpenGL debug logging.
+	 */
+	explicit GlContext(const std::shared_ptr<QWindow> &window,
+	                   bool debug = false);
 	~GlContext() = default;
 
-	/**
-	 * Copy this context.
-	 *
-	 * It doesn't make sense to have more than one instance of the same context.
-	 */
+	// It doesn't make sense to have more than one instance of the same context.
 	GlContext(const GlContext &) = delete;
 	GlContext &operator=(const GlContext &) = delete;
 
@@ -75,12 +69,15 @@ public:
 	/**
 	 * Get the capabilities of this context.
 	 */
-	gl_context_capabilities get_capabilities() const;
+	gl_context_spec get_specs() const;
 
 	/**
 	 * Activate or deactivate VSync for this context.
 	 *
-	 * @param on Pass \p true to activate VSync, \p false to deactivate.
+	 * TODO: This currently does not work at runtime. vsync must be set before
+	 * the QApplication is created.
+	 *
+	 * @param on \p true to activate VSync, \p false to deactivate.
 	 */
 	void set_vsync(bool on);
 
@@ -139,6 +136,11 @@ public:
      */
 	void free_uniform_buffer_binding(size_t binding_point);
 
+	/**
+	 * Find out the supported graphics functions and OpenGL version of the device.
+	 */
+	static gl_context_spec find_spec();
+
 private:
 	/**
 	 * Associated Qt window. Held here so the context remains active.
@@ -160,7 +162,7 @@ private:
 	/**
 	 * Context capabilities, i.e. available OpenGL features and version.
 	 */
-	gl_context_capabilities capabilities{};
+	gl_context_spec specs{};
 
 	/**
 	 * The last-active shader program

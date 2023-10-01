@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "gamestate.h"
+#include "main/demo/pong/gamestate.h"
 
 
 namespace openage::main::tests::pong {

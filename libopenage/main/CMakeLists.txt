@@ -1,5 +1,3 @@
-add_subdirectory("tests")
-
 add_sources(libopenage
 	tests.cpp
 )
@@ -7,3 +5,5 @@ add_sources(libopenage
 pxdgen(
 	tests.h
 )
+
+add_subdirectory("demo")

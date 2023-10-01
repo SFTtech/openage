@@ -11,6 +11,7 @@ import typing
 from ....log import warn, info
 from ...service.init.version_detect import iterate_game_versions
 from ...value_object.init.game_version import Support
+from ...value_object.init.game_version import GameVersion
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameEdition, \

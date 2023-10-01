@@ -3,6 +3,5 @@ add_sources(libopenage
 	gamestate.cpp
 	gui.cpp
 	physics.cpp
-	presenter.cpp
 	pong.cpp
 )

@@ -68,10 +68,10 @@ cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) exc
 
     else:
         if packer_type == PackerType.ROW:
-            packer = BestPacker([RowPacker(margin=MARGIN, aspect_ratio=1)])
+            packer = BestPacker([RowPacker(margin=MARGIN)])
 
         elif packer_type == PackerType.COLUMN:
-            packer = BestPacker([ColumnPacker(margin=MARGIN, aspect_ratio=1)])
+            packer = BestPacker([ColumnPacker(margin=MARGIN)])
 
         elif packer_type == PackerType.BINPACK:
             packer = BestPacker([BinaryTreePacker(margin=MARGIN, aspect_ratio=1)])

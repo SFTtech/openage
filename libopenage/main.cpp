@@ -16,7 +16,7 @@ namespace openage {
  * This is the main entry point to the C++ part.
  */
 int run_game(const main_arguments &args) {
-	// TODO: store args.fps_limit and args.gl_debug as default in the cvar system.
+	// TODO: store args.gl_debug as default in the cvar system.
 
 	util::Timer timer;
 	timer.start();
@@ -31,7 +31,7 @@ int run_game(const main_arguments &args) {
 		run_mode = openage::engine::Engine::mode::HEADLESS;
 	}
 
-	openage::engine::Engine engine{run_mode, args.root_path, args.mods};
+	openage::engine::Engine engine{run_mode, args.root_path, args.mods, args.gl_debug};
 
 	engine.loop();
 

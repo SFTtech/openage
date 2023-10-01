@@ -185,8 +185,11 @@ class SLP:
             if frame_info.properties & 0x07 == 0x07:
                 self.main_frames.append(SLPFrame32(frame_info, data))
 
-            elif self.version in (b'3.0\x00', b'4.0X', b'4.1X'):
+            elif self.version in (b'3.0\x00', b'4.0X'):
                 self.main_frames.append(SLPMainFrameDE(frame_info, data))
+
+            elif self.version in (b'4.1X',):
+                self.main_frames.append(SLPMainFrameDE41(frame_info, data))
 
             else:
                 self.main_frames.append(SLPMainFrameAoC(frame_info, data))
@@ -272,13 +275,14 @@ class FrameInfo:
                 " version")
 
     def __repr__(self):
-        ret = (
-            "        % 9d|" % self.qdl_table_offset,
-            "% 13d|" % self.outline_table_offset,
-            "% 7d) | " % self.palette_offset,
+        ret = ( "%s\n" % self.repr_header(),
+            "             "
+            "(% #9x|" % self.qdl_table_offset,
+            "% #13x|" % self.outline_table_offset,
+            "% #7x) | " % self.palette_offset,
             "% 10d | " % self.properties,
             "% 5d x% 7d | " % self.size,
-            "% 4d /% 5d" % self.hotspot,
+            "% 4d /% 5d | " % self.hotspot,
             "% 4s" % self.version.decode('ascii'),
         )
         return "".join(ret)
@@ -913,6 +917,239 @@ cdef class SLPMainFrameDE(SLPFrame):
 
         # end of row reached, return the created pixel array.
         return
+
+
+cdef class SLPMainFrameDE41(SLPFrame):
+    """
+    SLPFrame for the main graphics sprite since SLP version 4.1.
+    These have additional decay data inside the color pixels.
+    """
+
+    def __init__(self, frame_info, data):
+        super().__init__(frame_info, data)
+
+    @cython.boundscheck(False)
+    cdef void process_drawing_cmds(self,
+                                   const uint8_t[::1] &data_raw,
+                                   vector[pixel] &row_data,
+                                   Py_ssize_t rowid,
+                                   Py_ssize_t first_cmd_offset,
+                                   size_t expected_size):
+        """
+        create palette indices (colors) for the drawing commands
+        found for this row in the SLP frame.
+        """
+        # position in the data blob, we start at the first command of this row
+        cdef Py_ssize_t dpos = first_cmd_offset
+
+        # is the end of the current row reached?
+        cdef bool eor = False
+
+        cdef uint8_t cmd
+        cdef uint8_t color
+        cdef uint8_t nextbyte
+        cdef uint8_t lower_nibble
+        cdef uint8_t higher_nibble
+        cdef uint8_t lowest_crumb
+        cdef cmd_pack cpack
+        cdef int pixel_count
+
+        # work through commands till end of row.
+        while not eor:
+            if row_data.size() > expected_size:
+                raise Exception(
+                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d}, "
+                    f"but we have {row_data.size():d} already!"
+                )
+
+            # fetch drawing instruction
+            cmd = data_raw[dpos]
+
+            lower_nibble = 0x0f & cmd
+            higher_nibble = 0xf0 & cmd
+            lowest_crumb = 0b00000011 & cmd
+
+            # opcode: cmd, rowid: rowid
+
+            if lower_nibble == 0x0F:
+                # eol (end of line) command, this row is finished now.
+                eor = True
+                continue
+
+            elif lowest_crumb == 0b00000000:
+                # color_list command
+                # draw the following bytes as palette colors
+
+                pixel_count = cmd >> 2
+                for _ in range(pixel_count):
+                    dpos += 2
+                    color = data_raw[dpos]
+
+                    row_data.push_back(pixel(color_standard, color))
+
+            elif lowest_crumb == 0b00000001:
+                # skip command
+                # draw 'count' transparent pixels
+                # count = cmd >> 2; if count == 0: count = nextbyte
+
+                cpack = cmd_or_next(data_raw, cmd, 2, dpos)
+                dpos = cpack.dpos
+                for _ in range(cpack.count):
+                    row_data.push_back(pixel(color_transparent, 0))
+
+            elif lower_nibble == 0x02:
+                # big_color_list command
+                # draw (higher_nibble << 4 + nextbyte) following palette colors
+
+                dpos += 1
+                nextbyte = data_raw[dpos]
+                pixel_count = (higher_nibble << 4) + nextbyte
+
+                for _ in range(pixel_count):
+                    dpos += 2
+                    color = data_raw[dpos]
+
+                    row_data.push_back(pixel(color_standard, color))
+
+            elif lower_nibble == 0x03:
+                # big_skip command
+                # draw (higher_nibble << 4 + nextbyte)
+                # transparent pixels
+
+                dpos += 1
+                nextbyte = data_raw[dpos]
+                pixel_count = (higher_nibble << 4) + nextbyte
+
+                for _ in range(pixel_count):
+                    row_data.push_back(pixel(color_transparent, 0))
+
+            elif lower_nibble == 0x06:
+                # player_color_list command
+                # we have to draw the player color for cmd>>4 times,
+                # or if that is 0, as often as the next byte says.
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
+                dpos = cpack.dpos
+                for _ in range(cpack.count):
+                    dpos += 2
+                    color = data_raw[dpos]
+
+                    # version 3.0 uses extra palettes for player colors
+                    row_data.push_back(pixel(color_player_v4, color))
+
+            elif lower_nibble == 0x07:
+                # fill command
+                # draw 'count' pixels with color of next byte
+
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
+                dpos = cpack.dpos
+
+                dpos += 1
+                color = data_raw[dpos]
+
+                for _ in range(cpack.count):
+                    row_data.push_back(pixel(color_standard, color))
+
+            elif lower_nibble == 0x0A:
+                # fill player color command
+                # draw the player color for 'count' times
+
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
+                dpos = cpack.dpos
+
+                dpos += 1
+                color = data_raw[dpos]
+
+                for _ in range(cpack.count):
+                    # since version 3.0 uses extra palettes for player colors
+                    row_data.push_back(pixel(color_player_v4, color))
+
+            elif lower_nibble == 0x0B:
+                # shadow command
+                # draw a transparent shadow pixel for 'count' times
+
+                cpack = cmd_or_next(data_raw, cmd, 4, dpos)
+                dpos = cpack.dpos
+
+                for _ in range(cpack.count):
+                    row_data.push_back(pixel(color_shadow, 0))
+
+            elif lower_nibble == 0x0E:
+                # "extended" commands. higher nibble specifies the instruction.
+
+                if higher_nibble == 0x00:
+                    # render hint xflip command
+                    # render hint: only draw the following command,
+                    # if this sprite is not flipped left to right
+                    spam("render hint: xfliptest")
+
+                elif higher_nibble == 0x10:
+                    # render h notxflip command
+                    # render hint: only draw the following command,
+                    # if this sprite IS flipped left to right.
+                    spam("render hint: !xfliptest")
+
+                elif higher_nibble == 0x20:
+                    # table use normal command
+                    # set the transform color table to normal,
+                    # for the standard drawing commands
+                    spam("image wants normal color table now")
+
+                elif higher_nibble == 0x30:
+                    # table use alternat command
+                    # set the transform color table to alternate,
+                    # this affects all following standard commands
+                    spam("image wants alternate color table now")
+
+                elif higher_nibble == 0x40:
+                    # outline_1 command
+                    # the next pixel shall be drawn as special color 1,
+                    # if it is obstructed later in rendering
+                    row_data.push_back(pixel(color_special_1, 0))
+
+                elif higher_nibble == 0x60:
+                    # outline_2 command
+                    # same as above, but special color 2
+                    row_data.push_back(pixel(color_special_2, 0))
+
+                elif higher_nibble == 0x50:
+                    # outline_span_1 command
+                    # same as above, but span special color 1 nextbyte times.
+
+                    dpos += 1
+                    pixel_count = data_raw[dpos]
+
+                    for _ in range(pixel_count):
+                        row_data.push_back(pixel(color_special_1, 0))
+
+                elif higher_nibble == 0x70:
+                    # outline_span_2 command
+                    # same as above, using special color 2
+
+                    dpos += 1
+                    pixel_count = data_raw[dpos]
+
+                    for _ in range(pixel_count):
+                        row_data.push_back(pixel(color_special_2, 0))
+
+                elif higher_nibble == 0x80:
+                    # dither command
+                    raise NotImplementedError("dither not implemented")
+
+                elif higher_nibble in (0x90, 0xA0):
+                    # 0x90: premultiplied alpha
+                    # 0xA0: original alpha
+                    raise NotImplementedError("extended alpha not implemented")
+
+            else:
+                raise Exception(
+                    f"unknown slp drawing command: " +
+                    f"{cmd:#x} in row {rowid:d}")
+
+            dpos += 1
+
+        # end of row reached, return the created pixel array.
+        return
+
 
 cdef class SLPShadowFrame(SLPFrame):
     """

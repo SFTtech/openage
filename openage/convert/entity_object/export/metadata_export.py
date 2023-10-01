@@ -56,15 +56,18 @@ class SpriteMetadataExport(MetadataExport):
         replay_delay: float,
         frame_count: int,
         angle_count: int,
-        mirror_mode: int
+        mirror_mode: int,
+        start_angle: int = 0,
     ):
         """
         Add metadata from the GenieGraphic object.
 
         :param tex_filename: Filename of the .texture file.
+        :param start_angle: Angle used for the first frame in the .texture file.
         """
         self.graphics_metadata[img_filename] = (tex_filename, layer_mode, layer_pos, frame_rate,
-                                                replay_delay, frame_count, angle_count, mirror_mode)
+                                                replay_delay, frame_count, angle_count, mirror_mode,
+                                                start_angle)
 
     def dump(self) -> str:
         """
@@ -73,18 +76,29 @@ class SpriteMetadataExport(MetadataExport):
         sprite_file = SpriteMetadata(self.targetdir, self.filename)
 
         tex_index = 0
+
+        # if len(self.graphics_metadata) == 0:
+        #     raise ValueError("No graphics metadata in sprite file.")
+
         for img_filename, metadata in self.graphics_metadata.items():
             tex_filename = metadata[0]
             sprite_file.add_texture(tex_index, tex_filename)
             sprite_file.add_layer(tex_index, *metadata[1:5])
 
-            degree = 0
             frame_count = metadata[5]
             angle_count = metadata[6]
             mirror_mode = metadata[7]
+            start_angle = metadata[8]
 
             if angle_count == 0:
                 angle_count = 1
+
+            degree = 0
+            if start_angle and angle_count > 1:
+                # set the angle of the first frame in the sprite list
+                # in openage, angles are defined clockwise, with 0 being the
+                # front-facing angle (i.e. the unit sprite faces the camera)
+                degree = start_angle % 360
 
             degree_step = 360 / angle_count
             for angle_index in range(angle_count):
@@ -92,7 +106,7 @@ class SpriteMetadataExport(MetadataExport):
                 if mirror_mode:
                     if degree > 180:
                         mirrored_angle = (angle_index - angle_count) * (-1)
-                        mirror_from = int(mirrored_angle * degree_step)
+                        mirror_from = (start_angle + int(mirrored_angle * degree_step)) % 360
 
                 sprite_file.add_angle(int(degree), mirror_from)
 
@@ -111,7 +125,7 @@ class SpriteMetadataExport(MetadataExport):
                             subtex_index
                         )
 
-                degree += degree_step
+                degree = (degree + degree_step) % 360
 
             tex_index += 1
 

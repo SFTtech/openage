@@ -1,4 +1,4 @@
-# Copyright 2021-2022 the openage authors. See copying.md for legal info.
+# Copyright 2021-2023 the openage authors. See copying.md for legal info.
 
 """
 Lookup dicts for the EnumLookupMember instances.
@@ -318,6 +318,8 @@ EFFECT_APPLY_TYPE = {
     14: "TEAM_ATTRIBUTE_RELSET",
     15: "TEAM_ATTRIBUTE_MUL",
     16: "TEAM_RESOURCE_MUL",
+    17: "TEAM_SPAWN_UNIT",
+    18: "TEAM_RESEARCH_TIME_MODIFY",
 
     # same as 0-6 but applied to enemies
     20: "ENEMY_ATTRIBUTE_ABSSET",
@@ -429,6 +431,8 @@ COMMAND_ABILITY = {
     149: "SHEAR",
     150: "REGENERATION",
     151: "FEITORIA",
+    154: "LOOT",         # Chieftains tech; looting on killing villagers, monks, trade carts
+    155: "BOOST_MOVE_AND_ATTACK",
     768: "UNKNOWN_768",
     1024: "UNKNOWN_1024",
 }
@@ -493,12 +497,14 @@ ARMOR_CLASS = {
     29: "EAGLE_WARRIOR",
     30: "HD_CAMEL",
     31: "DE2_UNKOWN_31",
-    32: "DE2_UNKOWN_32",
+    32: "DE2_CONDOTTIERO",
     33: "DE2_UNKOWN_33",
-    34: "DE2_UNKOWN_34",
-    35: "DE2_UNKOWN_35",
-    36: "DE2_UNKOWN_36",
-    37: "DE2_UNKOWN_36",
+    34: "DE2_FISHING_SHIP",
+    35: "DE2_MAMELUKE",
+    36: "DE2_HERO",
+    37: "DE2_SIEGE_BALLISTA",
+    38: "DE2_SKIRMISHER",
+    39: "DE2_CAMEL_RIDER",
 }
 
 UNIT_CLASSES = {
@@ -723,11 +729,12 @@ BLAST_OFFENSE_TYPES = {
     18: "UNKNOWN_18",
     34: "UNKNOWN_34",
     66: "UNKNOWN_66",
-    138: "PIERCE",      # attack units behind target (Ghulam)
+    130: "DE2_PIERCE",  # attack units behind target (Ghulam); used since Return of Rome
+    138: "DE2_PIERCE",  # attack units behind target (Ghulam); unused since Return of Rome
 }
 
 CREATABLE_TYPES = {
-    0: "NONHUMAN",  # building, animal, ship
+    0: "NONHUMAN",  # animal, ship
     1: "VILLAGER",  # villager, king
     2: "MELEE",     # soldier, siege, predator, trader
     3: "MOUNTED",   # camel rider
@@ -735,6 +742,7 @@ CREATABLE_TYPES = {
     5: "RANGED_PROJECTILE",  # archer
     6: "RANGED_MAGIC",       # monk
     21: "TRANSPORT_SHIP",
+    255: "OTHER",    # building, relic
 }
 
 GARRISON_TYPES = {

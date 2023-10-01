@@ -8,6 +8,7 @@
 #include "log/log.h"
 
 #include "gamestate/game_entity.h"
+#include "gamestate/player.h"
 
 
 namespace openage::gamestate {
@@ -18,7 +19,7 @@ GameState::GameState(const std::shared_ptr<nyan::Database> &db,
 	db_view{db->new_view()} {
 }
 
-const std::shared_ptr<nyan::View> &GameState::get_nyan_db() {
+const std::shared_ptr<nyan::View> &GameState::get_db_view() {
 	return this->db_view;
 }
 
@@ -27,6 +28,13 @@ void GameState::add_game_entity(const std::shared_ptr<GameEntity> &entity) {
 		throw Error(MSG(err) << "Game entity with ID " << entity->get_id() << " already exists");
 	}
 	this->game_entities[entity->get_id()] = entity;
+}
+
+void GameState::add_player(const std::shared_ptr<Player> &player) {
+	if (this->players.contains(player->get_id())) [[unlikely]] {
+		throw Error(MSG(err) << "Player with ID " << player->get_id() << " already exists");
+	}
+	this->players[player->get_id()] = player;
 }
 
 const std::shared_ptr<GameEntity> &GameState::get_game_entity(entity_id_t id) const {
@@ -38,6 +46,13 @@ const std::shared_ptr<GameEntity> &GameState::get_game_entity(entity_id_t id) co
 
 const std::unordered_map<entity_id_t, std::shared_ptr<GameEntity>> &GameState::get_game_entities() const {
 	return this->game_entities;
+}
+
+const std::shared_ptr<Player> &GameState::get_player(player_id_t id) const {
+	if (!this->players.contains(id)) [[unlikely]] {
+		throw Error(MSG(err) << "Player with ID " << id << " does not exist");
+	}
+	return this->players.at(id);
 }
 
 const std::shared_ptr<assets::ModManager> &GameState::get_mod_manager() const {

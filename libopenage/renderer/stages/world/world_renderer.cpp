@@ -32,10 +32,13 @@ WorldRenderer::WorldRenderer(const std::shared_ptr<Window> &window,
 
 	auto size = window->get_size();
 	this->initialize_render_pass(size[0], size[1], shaderdir);
+	this->init_uniform_ids();
 
 	window->add_resize_callback([this](size_t width, size_t height, double /*scale*/) {
 		this->resize(width, height);
 	});
+
+	log::log(INFO << "Created render stage 'World'");
 }
 
 std::shared_ptr<renderer::RenderPass> WorldRenderer::get_render_pass() {
@@ -124,6 +127,16 @@ void WorldRenderer::initialize_render_pass(size_t width,
 
 	auto fbo = this->renderer->create_texture_target({this->output_texture, this->depth_texture, this->id_texture});
 	this->render_pass = this->renderer->add_render_pass({}, fbo);
+}
+
+void WorldRenderer::init_uniform_ids() {
+	WorldObject::obj_world_position = this->display_shader->get_uniform_id("obj_world_position");
+	WorldObject::flip_x = this->display_shader->get_uniform_id("flip_x");
+	WorldObject::flip_y = this->display_shader->get_uniform_id("flip_y");
+	WorldObject::tex = this->display_shader->get_uniform_id("tex");
+	WorldObject::tile_params = this->display_shader->get_uniform_id("tile_params");
+	WorldObject::scale = this->display_shader->get_uniform_id("scale");
+	WorldObject::anchor_offset = this->display_shader->get_uniform_id("anchor_offset");
 }
 
 } // namespace openage::renderer::world

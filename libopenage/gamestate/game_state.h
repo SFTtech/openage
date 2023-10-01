@@ -26,6 +26,7 @@ class EventLoop;
 
 namespace gamestate {
 class GameEntity;
+class Player;
 
 /**
  * State of the game.
@@ -45,11 +46,13 @@ public:
 	                   const std::shared_ptr<openage::event::EventLoop> &event_loop);
 
 	/**
-      * Get the nyan database view of this state.
-      *
-      * @return nyan database view.
-      */
-	const std::shared_ptr<nyan::View> &get_nyan_db();
+     * Get the nyan database view for the whole game.
+     *
+     * Players have individual views for their own data.
+     *
+     * @return nyan database view.
+     */
+	const std::shared_ptr<nyan::View> &get_db_view();
 
 	/**
      * Add a new game entity to the index.
@@ -59,9 +62,17 @@ public:
 	void add_game_entity(const std::shared_ptr<GameEntity> &entity);
 
 	/**
+     * Add a new player to the index.
+     *
+     * @param player New player.
+     */
+	void add_player(const std::shared_ptr<Player> &player);
+
+	/**
      * Get a game entity by its ID.
      *
      * @param id ID of the game entity.
+	 *
      * @return Game entity with the given ID.
      */
 	const std::shared_ptr<GameEntity> &get_game_entity(entity_id_t id) const;
@@ -74,8 +85,17 @@ public:
 	const std::unordered_map<entity_id_t, std::shared_ptr<GameEntity>> &get_game_entities() const;
 
 	/**
-      * TODO: Only for testing.
-      */
+	 * Get a player by its ID.
+	 *
+	 * @param id ID of the player.
+	 *
+	 * @return Player with the given ID.
+	 */
+	const std::shared_ptr<Player> &get_player(player_id_t id) const;
+
+	/**
+     * TODO: Only for testing.
+     */
 	const std::shared_ptr<assets::ModManager> &get_mod_manager() const;
 	void set_mod_manager(const std::shared_ptr<assets::ModManager> &mod_manager);
 
@@ -89,6 +109,11 @@ private:
      * Map of all game entities in the current game by their ID.
      */
 	std::unordered_map<entity_id_t, std::shared_ptr<GameEntity>> game_entities;
+
+	/**
+     * Map of all players in the current game by their ID.
+     */
+	std::unordered_map<player_id_t, std::shared_ptr<Player>> players;
 
 	/**
      * TODO: Only for testing

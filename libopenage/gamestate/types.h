@@ -11,4 +11,9 @@ namespace openage::gamestate {
  */
 using entity_id_t = uint64_t;
 
+/**
+ * Player IDs.
+ */
+using player_id_t = uint64_t;
+
 } // namespace openage::gamestate

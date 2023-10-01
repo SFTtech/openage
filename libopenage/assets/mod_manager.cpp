@@ -28,7 +28,7 @@ void ModManager::activate_modpacks(const std::vector<std::string> &load_order) {
 	for (const auto &modpack_id : load_order) {
 		auto &modpack = this->available.at(modpack_id);
 		this->active.emplace(modpack_id, std::make_shared<Modpack>(modpack));
-		log::log(MSG(info) << "Loaded modpack: " << modpack_id);
+		log::log(MSG(info) << "Activated modpack: " << modpack_id);
 	}
 }
 

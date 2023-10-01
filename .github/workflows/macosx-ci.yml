@@ -55,7 +55,7 @@ jobs:
       - name: Brew install DeJaVu fonts
         run: brew tap homebrew/cask-fonts && brew install font-dejavu
       - name: Remove python's 2to3 link so that 'brew link' does not fail
-        run: rm '/usr/local/bin/2to3'
+        run: rm '/usr/local/bin/2to3' && rm '/usr/local/bin/2to3-3.11'
       - name: Install environment helpers with homebrew
         run: brew install ccache
       - name: Install dependencies with homebrew

@@ -97,7 +97,7 @@ class DE2MediaSubprocessor:
 
                 frame_count = graphic["frame_count"].value
                 angle_count = graphic["angle_count"].value
-                mirror_mode = graphic["mirroring_mode"].value
+                # mirror_mode = graphic["mirroring_mode"].value
                 sprite_meta_export.add_graphics_metadata(target_filename,
                                                          texture_meta_filename,
                                                          layer_mode,
@@ -106,7 +106,8 @@ class DE2MediaSubprocessor:
                                                          replay_delay,
                                                          frame_count,
                                                          angle_count,
-                                                         mirror_mode)
+                                                         mirror_mode=0,
+                                                         start_angle=270)
 
                 # Notify metadata export about SMX metadata when the file is exported
                 export_request.add_observer(texture_meta_export)

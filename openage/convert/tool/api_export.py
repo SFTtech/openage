@@ -11,7 +11,7 @@ from openage.convert.processor.export.generate_manifest_hashes import generate_h
 from openage.convert.service.read.nyan_api_loader import load_api
 from openage.nyan.import_tree import ImportTree
 from openage.util.fslike.directory import Directory
-from openage.util.fslike.union import Union
+from openage.util.fslike.union import Union, UnionPath
 from openage.util.fslike.wrapper import (DirectoryCreator,
                                          Synchronizer as AccessSynchronizer)
 
@@ -32,13 +32,24 @@ def main(args, error):
     """
     del error  # unused
 
+    path = Union().root
+    path.mount(Directory(args.dir))
+
+    export_api(path)
+
+
+def export_api(exportdir: UnionPath) -> None:
+    """
+    Export the nyan API of the engine to the target directory.
+
+    :param exportdir: The target directory for the modpack folder.
+    :type exportdir: Directory
+    """
     modpack = create_modpack()
 
     info("Dumping info file...")
 
-    path = Union().root
-    path.mount(Directory(args.dir).root)
-    targetdir = DirectoryCreator(path).root
+    targetdir = DirectoryCreator(exportdir).root
     outdir = AccessSynchronizer(targetdir).root / "engine"
 
     # Modpack info file
@@ -57,6 +68,9 @@ def main(args, error):
 def create_modpack() -> Modpack:
     """
     Create the nyan API as a modpack.
+
+    :return: The modpack containing the nyan API.
+    :rtype: Modpack
     """
     modpack = Modpack("engine")
 
@@ -74,6 +88,9 @@ def create_modpack() -> Modpack:
 def create_nyan_files(modpack: Modpack) -> None:
     """
     Create the nyan files from the API objects.
+
+    :param modpack: The modpack to add the nyan files to.
+    :type modpack: Modpack
     """
     api_objects = load_api()
     created_nyan_files: dict[str, NyanFile] = {}
@@ -108,5 +125,8 @@ def create_nyan_files(modpack: Modpack) -> None:
 def set_static_aliases(import_tree: ImportTree) -> None:
     """
     Create the import tree for the nyan files.
+
+    :param import_tree: The import tree to add the aliases to.
+    :type import_tree: ImportTree
     """
     import_tree.add_alias(("engine", "root"), "root")

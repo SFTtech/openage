@@ -1,4 +1,6 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+#
+# pylint: disable=too-many-branches
 
 """
 Module for reading palette files.
@@ -79,5 +81,9 @@ def get_palettes(
                 palette = ColorTable(palette_file.open("rb").read())
 
                 palettes[palette_id] = palette
+
+    else:
+        raise RuntimeError("no valid palette converter found for game edition"
+                           f"{game_edition.edition_name}")
 
     return palettes

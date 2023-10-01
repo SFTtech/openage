@@ -37,6 +37,8 @@ TerrainRenderer::TerrainRenderer(const std::shared_ptr<Window> &window,
 	});
 
 	this->model->set_camera(this->camera);
+
+	log::log(INFO << "Created render stage 'Terrain'");
 }
 
 std::shared_ptr<renderer::RenderPass> TerrainRenderer::get_render_pass() {

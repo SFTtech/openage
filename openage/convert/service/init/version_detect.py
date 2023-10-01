@@ -192,6 +192,11 @@ def create_game_obj(
         game_mediapaths.append(
             (media_type, game_info['mediapaths'][media_type]))
 
+    # add install dirs for the game
+    game_installpaths = {}
+    if 'installpaths' in game_info:
+        game_installpaths = game_info['installpaths']
+
     # add version hashes from the auxiliary file specific for the game
     game_hash_path = aux_path["version_hashes.toml"]
     with game_hash_path.open() as game_hash_toml:
@@ -229,4 +234,5 @@ def create_game_obj(
                              game_mediapaths, modpacks, **flags)
 
     return GameEdition(game_name, game_id, support, game_version_info,
-                       game_mediapaths, modpacks, expansions, **flags)
+                       game_mediapaths, game_installpaths, modpacks,
+                       expansions, **flags)

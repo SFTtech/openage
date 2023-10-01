@@ -12,6 +12,7 @@
 #include "curve/discrete.h"
 #include "curve/segmented.h"
 #include "renderer/resources/mesh_data.h"
+#include "renderer/types.h"
 #include "time/time.h"
 
 
@@ -113,6 +114,17 @@ public:
      * @param uniforms Uniform inputs of this object's renderable.
      */
 	void set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms);
+
+	/**
+	 * Shader uniform IDs for setting uniform values.
+	 */
+	inline static uniform_id_t obj_world_position;
+	inline static uniform_id_t flip_x;
+	inline static uniform_id_t flip_y;
+	inline static uniform_id_t tex;
+	inline static uniform_id_t tile_params;
+	inline static uniform_id_t scale;
+	inline static uniform_id_t anchor_offset;
 
 private:
 	/**

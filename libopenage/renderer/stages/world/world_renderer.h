@@ -89,6 +89,8 @@ private:
 	                            size_t height,
 	                            const util::Path &shaderdir);
 
+	void init_uniform_ids();
+
 	/**
 	 * Reference to the openage renderer.
 	 */

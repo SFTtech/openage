@@ -32,6 +32,11 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
 	auto ubo_info = resources::UniformBufferInfo{resources::ubo_layout_t::STD140, {view_input, proj_input}};
 	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
+
+	log::log(INFO << "Created new camera at position "
+	              << "(" << this->scene_pos[0]
+	              << ", " << this->scene_pos[1]
+	              << ", " << this->scene_pos[2] << ")");
 }
 
 Camera::Camera(const std::shared_ptr<Renderer> &renderer,
@@ -54,6 +59,11 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
 	auto ubo_info = resources::UniformBufferInfo{resources::ubo_layout_t::STD140, {view_input, proj_input}};
 	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
+
+	log::log(INFO << "Created new camera at position "
+	              << "(" << this->scene_pos[0]
+	              << ", " << this->scene_pos[1]
+	              << ", " << this->scene_pos[2] << ")");
 }
 
 void Camera::look_at_scene(Eigen::Vector3f scene_pos) {

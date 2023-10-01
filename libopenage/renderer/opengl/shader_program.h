@@ -64,7 +64,9 @@ public:
      */
 	const GlUniformBlock &get_uniform_block(const char *block_name) const;
 
-	bool has_uniform(const char *) override;
+	uniform_id_t get_uniform_id(const char *name) override;
+
+	bool has_uniform(const char *name) override;
 
 	/**
      * Binds a uniform block in the shader program to the same binding point as
@@ -97,12 +99,55 @@ protected:
 	void set_m4f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Matrix4f const &) override;
 	void set_tex(std::shared_ptr<UniformInput> const &, const char *, std::shared_ptr<Texture2d> const &) override;
 
+	void set_i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, int32_t) override;
+	void set_u32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, uint32_t) override;
+	void set_f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, float) override;
+	void set_f64(std::shared_ptr<UniformInput> const &, const uniform_id_t &, double) override;
+	void set_bool(std::shared_ptr<UniformInput> const &, const uniform_id_t &, bool) override;
+	void set_v2f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector2f const &) override;
+	void set_v3f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector3f const &) override;
+	void set_v4f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector4f const &) override;
+	void set_v2i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector2i const &) override;
+	void set_v3i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector3i const &) override;
+	void set_v4i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector4i const &) override;
+	void set_v2ui32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector2<uint32_t> const &) override;
+	void set_v3ui32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector3<uint32_t> const &) override;
+	void set_v4ui32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector4<uint32_t> const &) override;
+	void set_m4f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Matrix4f const &) override;
+	void set_tex(std::shared_ptr<UniformInput> const &, const uniform_id_t &, std::shared_ptr<Texture2d> const &) override;
+
 private:
+	/**
+	 * Set the uniform value via uniform name from a uniform input.
+	 *
+	 * This method should only be used for debugging and not for performance-critical code.
+	 * String lookups are much slower than using the uniform ID.
+	 * If performance is important, use the alternative \p set_unif(..) implementation
+	 * that works on IDs instead.
+	 *
+	 * @param unif_in Uniform input.
+	 * @param name Name of the uniform.
+	 * @param value Value to set.
+	 * @param type Type of the value.
+	 */
 	void set_unif(std::shared_ptr<UniformInput> const &, const char *, void const *, GLenum);
 
-	/// Maps uniform names to their descriptions. Contains only
+	/**
+	 * Set the uniform value via uniform ID from a uniform input.
+	 *
+	 * @param unif_in Uniform input.
+	 * @param id ID of the uniform.
+	 * @param value Value to set.
+	 * @param type Type of the value.
+	 */
+	void set_unif(std::shared_ptr<UniformInput> const &, const uniform_id_t &, void const *, GLenum);
+
+	/// Uniforms in the shader program. Contains only
 	/// uniforms in the default block, i.e. not within named blocks.
-	std::unordered_map<std::string, GlUniform> uniforms;
+	std::vector<GlUniform> uniforms;
+
+	/// Maps uniform names to their ID (the index in the uniform vector).
+	std::unordered_map<std::string, uniform_id_t> uniforms_by_name;
 
 	/// Maps uniform block names to their descriptions.
 	std::unordered_map<std::string, GlUniformBlock> uniform_blocks;
@@ -111,7 +156,8 @@ private:
 	std::unordered_map<std::string, GlVertexAttrib> attribs;
 
 	/// Maps sampler uniform names to their assigned texture units.
-	std::unordered_map<std::string, GLuint> texunits_per_unifs;
+	std::unordered_map<uniform_id_t, GLuint> texunits_per_unifs;
+
 	/// Maps texture units to the texture handles that are currently bound to them.
 	std::unordered_map<GLuint, GLuint> textures_per_texunits;
 

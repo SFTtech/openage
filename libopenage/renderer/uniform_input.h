@@ -9,6 +9,7 @@
 
 #include "error/error.h"
 #include "log/message.h"
+#include "renderer/types.h"
 #include "util/compiler.h"
 
 
@@ -85,6 +86,24 @@ public:
 	void update(const char *unif, std::shared_ptr<Texture2d> &val) override;
 	void update(const char *unif, Eigen::Matrix4f const &val) override;
 
+	void update(const uniform_id_t &id, int32_t val);
+	void update(const uniform_id_t &id, uint32_t val);
+	void update(const uniform_id_t &id, float val);
+	void update(const uniform_id_t &id, double val);
+	void update(const uniform_id_t &id, bool val);
+	void update(const uniform_id_t &id, Eigen::Vector2f const &val);
+	void update(const uniform_id_t &id, Eigen::Vector3f const &val);
+	void update(const uniform_id_t &id, Eigen::Vector4f const &val);
+	void update(const uniform_id_t &id, Eigen::Vector2i const &val);
+	void update(const uniform_id_t &id, Eigen::Vector3i const &val);
+	void update(const uniform_id_t &id, Eigen::Vector4i const &val);
+	void update(const uniform_id_t &id, Eigen::Vector2<uint32_t> const &val);
+	void update(const uniform_id_t &id, Eigen::Vector3<uint32_t> const &val);
+	void update(const uniform_id_t &id, Eigen::Vector4<uint32_t> const &val);
+	void update(const uniform_id_t &id, std::shared_ptr<Texture2d> const &val);
+	void update(const uniform_id_t &id, std::shared_ptr<Texture2d> &val);
+	void update(const uniform_id_t &id, Eigen::Matrix4f const &val);
+
 	/**
 	 * Catch-all template in order to handle unsupported types and avoid infinite recursion.
 	 *
@@ -98,6 +117,18 @@ public:
 	}
 
 	/**
+	 * Catch-all template in order to handle unsupported types and avoid infinite recursion.
+	 *
+	 * @param unif ID of the uniform.
+	 */
+	template <typename T>
+	void update(const uniform_id_t &id, T) {
+		// TODO: maybe craft an static_assert that contains the `unif` content
+		throw Error(MSG(err) << "Tried to set uniform with ID " << id
+		                     << " using unsupported type '" << util::typestring<T>() << "'");
+	}
+
+	/**
 	 * Updates the given uniform input with new uniform values similarly to new_uniform_input.
 	 * For example, update_uniform_input(in, "awesome", true) will set the "awesome" uniform
 	 * in addition to whatever values were in the uniform input before.
@@ -107,6 +138,19 @@ public:
 	template <typename T, typename... Ts>
 	void update(const char *unif, T val, Ts... vals) {
 		this->update(unif, val);
+		this->update(vals...);
+	}
+
+	/**
+	 * Updates the given uniform input with new uniform values similarly to new_uniform_input.
+	 * For example, update_uniform_input(in, "awesome", true) will set the "awesome" uniform
+	 * in addition to whatever values were in the uniform input before.
+	 *
+	 * @param unif ID of the uniform.
+	 */
+	template <typename T, typename... Ts>
+	void update(const uniform_id_t &id, T val, Ts... vals) {
+		this->update(id, val);
 		this->update(vals...);
 	}
 

@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long
 
@@ -12,14 +12,14 @@ figure out the names for a nyan object.
 # contains only new units of DE2
 UNIT_LINE_LOOKUPS = {
     705: ("Cow", "cow"),
-    1225: ("Konnik", "konnik"),                 # Castle unit
+    1225: ("KonnikCastle", "konnik"),                 # Castle unit
     1228: ("Keshik", "keshik"),
     1231: ("Kipchak", "kipchak"),
     1234: ("Leitis", "leitis"),
     1239: ("Ibex", "ibex"),
     1243: ("Goose", "goose"),
     1245: ("Pig", "pig"),
-    1254: ("Konnik", "konnik"),                 # Krepost unit
+    1254: ("KonnikKrepost", "konnik"),                 # Krepost unit
     1258: ("Ram", "ram"),                       # replacement for ID 35?
     1263: ("FlamingCamel", "flaming_camel"),
 
@@ -46,6 +46,20 @@ UNIT_LINE_LOOKUPS = {
     1751: ("ShrivamshaRider", "shrivamsha_rider"),
     1755: ("CamelScout", "camel_scout"),        # technically in line with Camel rider
     1759: ("RRatha", "rratha"),                 # Ranged Rhata
+
+    # ROR
+    1790: ("Centurion", "centurion"),
+    1795: ("Dromon", "dromon"),
+
+    # TODO: These are upgrades
+    1737: ("EliteUrumiSwordsman", "elite_urumi_swordsman"),
+    1743: ("EliteChakramThrower", "elite_chakram_thrower"),
+    1746: ("SiegeElephant", "siege_elephant"),
+    1749: ("EliteGhumlam", "elite_ghumlam"),
+    1753: ("EliteShrivamshaRider", "elite_shrivamsha_rider"),
+    1761: ("EliteRRatha", "elite_rratha"),
+    1792: ("EliteCenturion", "elite_centurion"),
+    1793: ("Legionary", "legionary"),
 }
 
 # key: head unit id; value: (nyan object name, filename prefix)
@@ -124,6 +138,12 @@ TECH_GROUP_LOOKUPS = {
     838: ("SiegeElephant", "siege_elephant"),
     840: ("EliteGhulam", "elite_ghulam"),
     843: ("EliteSHrivamshaRider", "elite_shrivamsha_rider"),
+
+    # ROR
+    882: ("EliteCenturion", "elite_centurion"),
+    883: ("Ballistas", "ballistas"),
+    884: ("Comitatensis", "comitatensis"),
+    885: ("Legionary", "legionary"),
 }
 
 # key: civ index; value: (nyan object name, filename prefix)
@@ -147,6 +167,9 @@ CIV_GROUP_LOOKUPS = {
     40: ("Dravidians", "dravidians"),
     41: ("Bengalis", "bengalis"),
     42: ("Gurjaras", "gurjaras"),
+
+    # ROR
+    43: ("Romans", "romans"),
 }
 
 # key: civ index; value: (civ ids, nyan object name, filename prefix)
@@ -154,6 +177,7 @@ CIV_GROUP_LOOKUPS = {
 GRAPHICS_SET_LOOKUPS = {
     0: ((0, 1, 2, 13, 14, 36), "WesternEuropean", "western_european"),
     4: ((7, 37), "Byzantine", "byzantine"),
+    6: ((19, 24, 43), "Mediterranean", "mediterranean"),
     7: ((20, 40, 41, 42), "Indian", "indian"),
     8: ((22, 23, 32, 35, 38, 39), "EasternEuropean", "eastern_european"),
     11: ((33, 34), "CentralAsian", "central_asian"),
@@ -176,6 +200,11 @@ TERRAIN_TYPE_LOOKUPS = {
 ARMOR_CLASS_LOOKUPS = {
     0: "Wonder",
     31: "AntiLetis",
+    32: "DE2Condottiero",
+    34: "DE2FishingShip",
+    35: "DE2Mameluke",
     36: "DE2Hero",
-    37: "HussiteWagon",
+    37: "SiegeBallista",
+    38: "DE2Skirmisher",
+    39: "DE2CamelRider",
 }

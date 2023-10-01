@@ -5,6 +5,7 @@ add_sources(libopenage
     demo_3.cpp
     demo_4.cpp
     demo_5.cpp
+    stresstest_0.cpp
 	tests.cpp
     util.cpp
 )

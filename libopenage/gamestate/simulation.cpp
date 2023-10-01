@@ -54,7 +54,9 @@ void GameSimulation::start() {
 
 	this->init_event_handlers();
 
-	this->game = std::make_shared<gamestate::Game>(event_loop, this->mod_manager);
+	this->game = std::make_shared<gamestate::Game>(event_loop,
+	                                               this->mod_manager,
+	                                               this->entity_factory);
 
 	this->running = true;
 

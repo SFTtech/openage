@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 
 """
 Module for registering media files.
@@ -13,12 +13,12 @@ if typing.TYPE_CHECKING:
     from argparse import Namespace
 
 
-def get_existing_graphics(args: Namespace) -> list[str]:
+def get_existing_graphics(args: Namespace) -> set[str]:
     """
     List the graphics files that exist in the graphics file paths.
     """
-    filenames = []
+    filenames = set()
     for filepath in args.srcdir[MediaType.GRAPHICS.value].iterdir():
-        filenames.append(filepath.stem)
+        filenames.add(filepath.stem)
 
     return filenames

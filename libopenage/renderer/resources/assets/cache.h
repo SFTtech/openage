@@ -6,12 +6,10 @@
 #include <string>
 #include <unordered_map>
 
+#include "util/path.h"
 
-namespace openage {
-namespace util {
-class Path;
-}
-namespace renderer::resources {
+
+namespace openage::renderer::resources {
 class Animation2dInfo;
 class BlendPatternInfo;
 class BlendTableInfo;
@@ -91,12 +89,12 @@ public:
 	bool check_texture_cache(const util::Path &path);
 
 private:
-	using anim_cache_t = std::unordered_map<std::string, std::shared_ptr<Animation2dInfo>>;
-	using blpattern_cache_t = std::unordered_map<std::string, std::shared_ptr<BlendPatternInfo>>;
-	using bltable_cache_t = std::unordered_map<std::string, std::shared_ptr<BlendTableInfo>>;
-	using palette_cache_t = std::unordered_map<std::string, std::shared_ptr<PaletteInfo>>;
-	using terrain_cache_t = std::unordered_map<std::string, std::shared_ptr<TerrainInfo>>;
-	using texture_cache_t = std::unordered_map<std::string, std::shared_ptr<Texture2dInfo>>;
+	using anim_cache_t = std::unordered_map<util::Path, std::shared_ptr<Animation2dInfo>>;
+	using blpattern_cache_t = std::unordered_map<util::Path, std::shared_ptr<BlendPatternInfo>>;
+	using bltable_cache_t = std::unordered_map<util::Path, std::shared_ptr<BlendTableInfo>>;
+	using palette_cache_t = std::unordered_map<util::Path, std::shared_ptr<PaletteInfo>>;
+	using terrain_cache_t = std::unordered_map<util::Path, std::shared_ptr<TerrainInfo>>;
+	using texture_cache_t = std::unordered_map<util::Path, std::shared_ptr<Texture2dInfo>>;
 
 	/**
      * Cache of already loaded animations.
@@ -129,5 +127,4 @@ private:
 	texture_cache_t loaded_textures;
 };
 
-} // namespace renderer::resources
-} // namespace openage
+} // namespace openage::renderer::resources

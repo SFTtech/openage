@@ -43,10 +43,10 @@ Presenter::Presenter(const util::Path &root_dir,
 	time_loop{time_loop} {}
 
 
-void Presenter::run() {
-	log::log(INFO << "presenter launching...");
+void Presenter::run(bool debug_graphics) {
+	log::log(INFO << "Presenter: Launching subsystems...");
 
-	this->init_graphics();
+	this->init_graphics(debug_graphics);
 
 	this->init_input();
 
@@ -60,7 +60,8 @@ void Presenter::run() {
 
 		this->window->update();
 	}
-	log::log(MSG(info) << "Draw loop exited");
+
+	log::log(MSG(info) << "Presenter: Draw loop exited");
 
 	if (this->simulation) {
 		this->simulation->stop();
@@ -88,12 +89,19 @@ std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {
 	return std::make_shared<renderer::gui::GuiApplicationWithLogger>();
 }
 
-void Presenter::init_graphics() {
-	log::log(INFO << "initializing graphics...");
+void Presenter::init_graphics(bool debug) {
+	log::log(INFO << "Presenter: Initializing graphics subsystems...");
 
 	this->gui_app = this->init_window_system();
-	this->window = renderer::Window::create("openage presenter test", 1024, 768);
+	this->window = renderer::Window::create("openage presenter test", 1024, 768, debug);
 	this->renderer = this->window->make_renderer();
+
+	// Asset mangement
+	this->asset_manager = std::make_shared<renderer::resources::AssetManager>(
+		this->renderer,
+		this->root_dir / "assets" / "converted");
+	auto missing_tex = this->root_dir / "assets" / "test" / "textures" / "test_missing.sprite";
+	this->asset_manager->set_placeholder_animation(missing_tex);
 
 	// Camera
 	this->camera = std::make_shared<renderer::camera::Camera>(this->renderer,
@@ -103,13 +111,6 @@ void Presenter::init_graphics() {
 	});
 
 	this->camera_manager = std::make_shared<renderer::camera::CameraManager>(this->camera);
-
-	// Asset mangement
-	this->asset_manager = std::make_shared<renderer::resources::AssetManager>(
-		this->renderer,
-		this->root_dir / "assets" / "converted");
-	auto missing_tex = this->root_dir / "assets" / "test" / "textures" / "test_missing.sprite";
-	this->asset_manager->set_placeholder_animation(missing_tex);
 
 	// Skybox
 	this->skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
@@ -147,9 +148,13 @@ void Presenter::init_graphics() {
 		                                                                this->world_renderer);
 		this->simulation->attach_renderer(render_factory);
 	}
+
+	log::log(INFO << "Presenter: Graphics subsystems initialized");
 }
 
 void Presenter::init_gui() {
+	log::log(INFO << "Presenter: Initializing GUI with Qt backend");
+
 	//// -- gui initialization
 	// TODO: Do not use test GUI
 	util::Path qml_root = this->root_dir / "assets" / "test" / "qml";
@@ -185,7 +190,7 @@ void Presenter::init_gui() {
 }
 
 void Presenter::init_input() {
-	log::log(INFO << "initializing inputs...");
+	log::log(INFO << "Presenter: Initializing input subsystem...");
 
 	this->input_manager = std::make_shared<input::InputManager>();
 
@@ -205,6 +210,8 @@ void Presenter::init_input() {
 
 	// setup simulation controls
 	if (this->simulation) {
+		log::log(INFO << "Loading game simulation controls");
+
 		// TODO: Remove hardcoding
 		auto engine_controller = std::make_shared<input::game::Controller>(
 			std::unordered_set<size_t>{0, 1, 2, 3}, 0);
@@ -216,17 +223,21 @@ void Presenter::init_input() {
 
 	// attach GUI if it's initialized
 	if (this->gui) {
+		log::log(INFO << "Loading GUI controls");
 		this->input_manager->set_gui(this->gui->get_input_handler());
 	}
 
 	// setup camera controls
 	if (this->camera) {
+		log::log(INFO << "Loading camera controls");
 		auto camera_controller = std::make_shared<input::camera::Controller>();
 		auto camera_context = std::make_shared<input::camera::BindingContext>();
 		input::camera::setup_defaults(camera_context, this->camera, this->camera_manager);
 		this->input_manager->set_camera_controller(camera_controller);
 		input_ctx->set_camera_bindings(camera_context);
 	}
+
+	log::log(INFO << "Presenter: Input subsystem initialized");
 }
 
 void Presenter::init_final_render_pass() {

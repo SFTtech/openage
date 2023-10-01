@@ -2,8 +2,8 @@
 
 #pragma once
 
-#include "gamestate.h"
-#include "../../time/time.h"
+#include "main/demo/pong/gamestate.h"
+#include "time/time.h"
 
 #include <vector>
 
@@ -12,7 +12,7 @@ namespace openage::event {
 
 class EventLoop;
 
-} // openage::event
+} // namespace openage::event
 
 namespace openage::main::tests::pong {
 
@@ -33,4 +33,4 @@ public:
 	                  const time::time_t &);
 };
 
-} // openage::main::tests::pong
+} // namespace openage::main::tests::pong

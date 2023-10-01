@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
 #
@@ -1913,6 +1913,9 @@ class AoCUpgradeAttributeSubprocessor:
             patch_target_ref = f"{game_entity_name}.Convert"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
             patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
+
+        else:
+            return []
 
         # Wrapper
         wrapper_name = f"Change{game_entity_name}MinRangeWrapper"

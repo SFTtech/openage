@@ -1,3 +1,5 @@
+!version 1
+
 PongGame():
     ball : Ball
     player1 : Player
