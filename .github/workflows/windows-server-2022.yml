@@ -6,7 +6,7 @@ jobs:
   build-x64:
     runs-on: windows-2022
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         submodules: recursive
         path: source
