@@ -10,7 +10,7 @@ from libopenage.pyinterface.pyobject cimport PyObj
 from libopenage.error.handlers cimport set_exit_ok
 
 
-def run_game(args, root_path):
+def run_game(args, root_path,window_args):
     """
     Launches the game after arguments were translated.
     """
@@ -36,7 +36,15 @@ def run_game(args, root_path):
             args_cpp.mods = args.modpacks
         else:
             args_cpp.mods = vector[string]()
+        
+        if window_args['fullscreen']:
+            window_config.render_mode = RenderMode.FULLSCREEN
+        elif window_args['borderless']:
+            window_config.render_mode = RenderMode.BORDERLESS
+        else:
+            window_config.render_mode = RenderMode.WINDOWED
 
+        args_cpp.window_config = window_config
         # run the game!
         with nogil:
             result = run_game_cpp(args_cpp)

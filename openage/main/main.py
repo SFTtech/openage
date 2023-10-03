@@ -27,6 +27,30 @@ def init_subparser(cli: ArgumentParser):
     cli.add_argument(
         "--modpacks", nargs="+",
         help="list of modpacks to load")
+    
+    cli.add_argument(
+        "--window-width", type=int, default=800,
+        help="Window width")
+
+    cli.add_argument(
+        "--window-height", type=int, default=600,
+        help="Window height")
+
+    cli.add_argument(
+        "--vsync", action='store_true',
+        help="Enable V-Sync")
+
+    cli.add_argument(
+        "--fullscreen", action='store_true',
+        help="Run in fullscreen mode")
+
+    cli.add_argument(
+        "--borderless", action='store_true',
+        help="Run in borderless mode")
+
+    cli.add_argument(
+        "--windowed", action='store_true',
+        help="Run in windowed mode")
 
 
 def main(args, error):
@@ -93,6 +117,13 @@ def main(args, error):
         from ..convert.service.init.modpack_search import enumerate_modpacks, query_modpack
         avail_modpacks = enumerate_modpacks(asset_path / "converted")
         args.modpacks = [query_modpack(avail_modpacks).encode("utf-8")]
-
+    window_args = {
+        "width": args.window_width,
+        "height": args.window_height,
+        "vsync": args.vsync,
+        "fullscreen": args.fullscreen,
+        "borderless": args.borderless,
+        "windowed": args.windowed
+    }
     # start the game, continue in main_cpp.pyx!
-    return run_game(args, root)
+    return run_game(args, root, window_args)
