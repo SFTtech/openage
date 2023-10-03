@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "util/compiler.h"
+#include "renderer/enums.h"
 
 namespace openage {
 
@@ -32,6 +33,10 @@ struct main_arguments {
 	bool gl_debug;
 	bool headless;
 	std::vector<std::string> mods;
+        int window_width;
+    	int window_height;
+    	bool vsync;
+    	renderer::RenderMode render_mod
 };
 
 
