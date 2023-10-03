@@ -34,18 +34,18 @@ int run_game(const main_arguments &args) {
 		run_mode = openage::engine::Engine::mode::HEADLESS;
 	}
 	renderer::WindowConfig window_config;
-    window_config.width = args.window_config.width;
-    window_config.height = args.window_config.height;
-    window_config.vsync = args.window_config.vsync;
-
-    // Determine the render mode based on the window-related arguments
-    if (args.window_config.render_mode == renderer::RenderMode::FULLSCREEN) {
-        window_config.render_mode = renderer::RenderMode::FULLSCREEN;
-    } else if (args.window_config.render_mode == renderer::RenderMode::BORDERLESS) {
-        window_config.render_mode = renderer::RenderMode::BORDERLESS;
-    } else {
-        window_config.render_mode = renderer::RenderMode::WINDOWED;
-    }
+        window_config.width = args.window_config.width;
+	window_config.height = args.window_config.height;
+	window_config.vsync = args.window_config.vsync;
+	
+	// Determine the render mode based on the window-related arguments
+	if (args.window_config.render_mode == renderer::RenderMode::FULLSCREEN) {
+	        window_config.render_mode = renderer::RenderMode::FULLSCREEN;
+	} else if (args.window_config.render_mode == renderer::RenderMode::BORDERLESS) {
+	        window_config.render_mode = renderer::RenderMode::BORDERLESS;
+	} else {
+	        window_config.render_mode = renderer::RenderMode::WINDOWED;
+	}
 
 	openage::engine::Engine engine{run_mode, args.root_path, args.mods, args.gl_debug, window_config};
 
