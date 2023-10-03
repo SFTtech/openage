@@ -204,7 +204,7 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 
 		GLuint loc = glGetUniformLocation(handle, name.data());
 
-		this->uniforms.emplace_back(type, loc);
+		this->uniforms.push_back({type, loc});
 
 		this->uniforms_by_name.insert(std::make_pair(
 			name.data(),
