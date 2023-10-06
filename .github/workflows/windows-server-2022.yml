@@ -6,7 +6,7 @@ jobs:
   build-x64:
     runs-on: windows-2022
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         submodules: recursive
         path: source
@@ -15,7 +15,7 @@ jobs:
         vswhere -latest
       shell: pwsh
     - name: Setup Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: '3.9'
         architecture: 'x64'

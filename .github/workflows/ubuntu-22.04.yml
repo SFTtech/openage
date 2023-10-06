@@ -6,7 +6,7 @@ jobs:
   build-devenv:
     runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Build the Docker image
       run: sudo DOCKER_BUILDKIT=1 docker build ./packaging/docker/devenv --file ./packaging/docker/devenv/Dockerfile.ubuntu.2204 --tag openage-devenv:latest
       shell: bash
@@ -16,7 +16,7 @@ jobs:
         sudo docker save openage-devenv:latest | gzip > /tmp/staging/devenv.tar.gz
       shell: bash
     - name: Publish the Docker image
-      uses: actions/upload-artifact@v2.2.4
+      uses: actions/upload-artifact@v3
       with:
         name: devenv-image-compressed.tar.gz
         path: '/tmp/staging/devenv.tar.gz'
@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-22.04
     needs: build-devenv
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Create tmp path
       run: mkdir -p /tmp/image
       shell: bash
@@ -47,7 +47,7 @@ jobs:
         mkdir -p /tmp/openage
         tar -czvf /tmp/openage/openage-build.tar.gz ./build
     - name: Publish build artifacts
-      uses: actions/upload-artifact@v2.2.4
+      uses: actions/upload-artifact@v3
       with:
         name: openage-build.tar.gz
         path: '/tmp/openage/openage-build.tar.gz'
