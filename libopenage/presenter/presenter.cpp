@@ -158,16 +158,19 @@ void Presenter::init_gui() {
 	//// -- gui initialization
 	// TODO: Do not use test GUI
 	util::Path qml_root = this->root_dir / "assets" / "test" / "qml";
+	log::log(INFO << "Presenter: Setting QML root to " << qml_root.resolve_native_path());
 	if (not qml_root.is_dir()) {
 		throw Error{ERR << "could not find qml root folder " << qml_root};
 	}
 
 	util::Path qml_assets = this->root_dir / "assets";
+	log::log(INFO << "Presenter: Setting QML asset path to " << qml_assets.resolve_native_path());
 	if (not qml_assets.is_dir()) {
 		throw Error{ERR << "could not find asset root folder " << qml_assets};
 	}
 
 	util::Path qml_root_file = qml_root / "main.qml";
+	log::log(INFO << "Presenter: Setting QML root file to " << qml_root_file.resolve_native_path());
 	if (not qml_root_file.is_file()) {
 		throw Error{ERR << "could not find main.qml file " << qml_root_file};
 	}
