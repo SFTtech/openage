@@ -11,10 +11,10 @@ from ....log import info
 from .modpack_search import enumerate_modpacks
 
 if typing.TYPE_CHECKING:
-    from openage.util.fslike.directory import Directory
+    from openage.util.fslike.union import UnionPath
 
 
-def conversion_required(asset_dir: Directory) -> bool:
+def conversion_required(asset_dir: UnionPath) -> bool:
     """
     Check if an asset conversion is required to run the game.
 
@@ -24,7 +24,7 @@ def conversion_required(asset_dir: Directory) -> bool:
         - the converted assets are outdated
 
     :param asset_dir: The asset directory to check.
-    :type asset_dir: Directory
+    :type asset_dir: UnionPath
     :return: True if an asset conversion is required, else False.
     """
     try:

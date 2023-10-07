@@ -23,11 +23,12 @@ from .tool.subtool.version_select import get_game_version
 if typing.TYPE_CHECKING:
     from argparse import ArgumentParser, Namespace
     from openage.util.fslike.directory import Directory
+    from openage.util.fslike.union import UnionPath
     from openage.util.fslike.path import Path
 
 
 def convert_assets(
-    assets: Directory,
+    assets: UnionPath,
     args: Namespace,
     srcdir: Directory = None
 ) -> None:
