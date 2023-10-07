@@ -1,0 +1,4 @@
+install(DIRECTORY "."
+	DESTINATION "${ASSET_DIR}/test/nyan"
+	FILES_MATCHING PATTERN "*.nyan"
+)
