@@ -11,15 +11,15 @@ import toml
 from ....log import info, dbg
 
 if typing.TYPE_CHECKING:
-    from openage.util.fslike.directory import Directory
+    from openage.util.fslike.union import UnionPath
 
 
-def enumerate_modpacks(modpacks_dir: Directory) -> set[str]:
+def enumerate_modpacks(modpacks_dir: UnionPath) -> set[str]:
     """
     Enumerate openage modpacks in a directory.
 
     :param asset_dir: The asset directory to search in.
-    :type asset_dir: Directory
+    :type asset_dir: UnionPath
     :returns: A list of modpack names that were found.
     :rtype: set[str]
     """
@@ -42,12 +42,12 @@ def enumerate_modpacks(modpacks_dir: Directory) -> set[str]:
     return modpacks
 
 
-def get_modpack_info(modpack_dir: Directory) -> dict[str, typing.Any]:
+def get_modpack_info(modpack_dir: UnionPath) -> dict[str, typing.Any]:
     """
     Get information about an openage modpack from its definition file.
 
     :param modpack_dir: Modpack root directory.
-    :type modpack_dir: Directory
+    :type modpack_dir: UnionPath
     :returns: Modpack information.
     :rtype: dict[str, typing.Any]
 
@@ -56,7 +56,7 @@ def get_modpack_info(modpack_dir: Directory) -> dict[str, typing.Any]:
     :raises toml.TomlDecodeError: If the modpack definition file is malformed.
     """
     if not modpack_dir.exists():
-        info("Modpack directory %s not found", modpack_dir.root.name)
+        info("Modpack directory %s not found", modpack_dir.name)
         raise FileNotFoundError("Modpack directory not found")
 
     modpack_def = modpack_dir / "modpack.toml"
@@ -68,7 +68,7 @@ def get_modpack_info(modpack_dir: Directory) -> dict[str, typing.Any]:
         return content
 
     except FileNotFoundError as err:
-        dbg("Modpack definition file not found; ncould not find %s", modpack_def)
+        dbg("Modpack definition file not found; could not find %s", modpack_def)
         raise err
 
     except TypeError as err:
