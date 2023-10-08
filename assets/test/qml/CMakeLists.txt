@@ -1,0 +1,4 @@
+install(DIRECTORY "."
+	DESTINATION "${ASSET_DIR}/test/qml"
+	FILES_MATCHING PATTERN "*.qml"
+)
