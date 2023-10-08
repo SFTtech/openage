@@ -9,6 +9,8 @@ from __future__ import annotations
 from datetime import datetime
 import typing
 
+from ..log import info, warn
+
 from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
@@ -38,9 +40,6 @@ def convert_assets(
 
     assets must be a filesystem-like object pointing at the game's asset dir.
     srcdir must be None, or point at some source directory.
-
-    If gen_extra_files is True, some more files, mostly for debugging purposes,
-    are created.
 
     This method prepares srcdir and targetdir to allow a pleasant, unified
     conversion experience, then passes them to .driver.convert().
@@ -126,11 +125,17 @@ def convert_assets(
 
     used_asset_path = data_dir.resolve_native_path().decode('utf-8')
     if used_asset_path not in prev_srcdirs:
-        with asset_locations_path.open("a") as file_obj:
-            if len(prev_srcdirs) > 0:
-                file_obj.write("\n")
+        try:
+            with asset_locations_path.open("a") as file_obj:
+                if len(prev_srcdirs) > 0:
+                    file_obj.write("\n")
 
-            file_obj.write(used_asset_path)
+                file_obj.write(used_asset_path)
+
+        except IOError:
+            # cache file cannot be accessed, skip writing
+            warn(f"Cannot access asset location cache file {asset_locations_path}")
+            info("Skipped saving asset location")
 
 
 def get_prev_srcdir_paths(asset_location_path: Path) -> set[str] | None:
