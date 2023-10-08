@@ -157,6 +157,19 @@ void Presenter::init_gui() {
 
 	//// -- gui initialization
 	// TODO: Do not use test GUI
+	log::log(INFO << "Assets path: " << this->root_dir["assets"].resolve_native_path());
+	for (auto &entry : this->root_dir["assets"]["test"].iterdir()) {
+		log::log(INFO << "Assets entry: " << entry.resolve_native_path());
+	}
+	log::log(INFO << "Test path: " << this->root_dir["assets"]["test"].resolve_native_path());
+	for (auto &entry : this->root_dir["assets"]["test"].iterdir()) {
+		log::log(INFO << "Test entry: " << entry.resolve_native_path());
+	}
+	log::log(INFO << "QML path: " << this->root_dir["assets"]["test"]["qml"].resolve_native_path());
+	for (auto &entry : this->root_dir["assets"]["test"]["qml"].iterdir()) {
+		log::log(INFO << "QML entry: " << entry.resolve_native_path());
+	}
+
 	util::Path qml_root = this->root_dir / "assets" / "test" / "qml";
 	log::log(INFO << "Presenter: Setting QML root to " << qml_root.resolve_native_path());
 	if (not qml_root.is_dir()) {
