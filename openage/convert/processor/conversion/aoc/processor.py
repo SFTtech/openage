@@ -663,7 +663,7 @@ class AoCProcessor:
 
                 upgrade_effects = effect_bundle.get_effects(effect_type=3)
 
-                if len(upgrade_effects) < 0:
+                if len(upgrade_effects) == 0:
                     continue
 
                 # Search upgrade effects for the line_id

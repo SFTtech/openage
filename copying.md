@@ -147,6 +147,7 @@ _the openage authors_ are:
 | Martin                      | Starman                     | mstarman à seznam dawt cz                         |
 | Zoltán Ács                  | zoli111                     | acszoltan111 à gmail dawt com                     |
 | Trevor Slocum               | tslocum                     | trevor à rocket9labs dawt com                     |
+| Munawar Hafiz               | munahaf                     | munawar dawt hafiz à gmail dawt com               |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
