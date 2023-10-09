@@ -63,8 +63,12 @@ public:
 		static_assert(sizeof...(args) == N * M, "not all values supplied");
 
 		std::array<float, N * M> temp{{static_cast<T>(args)...}};
-		for (size_t i = 0; i < N * M; i++) {
-			(*this)[i / (N * M)][i % (N * M)] = temp[i];
+		size_t index = 0;
+		for (size_t row = 0; row < M; row++) {
+			for (size_t col = 0; col < N; col++) {
+				(*this)[row][col] = temp[index];
+				index += 1;
+			}
 		}
 	}
 
