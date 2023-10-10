@@ -33,7 +33,7 @@ def main(args, error):
     del error  # unused
 
     path = Union().root
-    path.mount(Directory(args.dir))
+    path.mount(Directory(args.dir).root)
 
     export_api(path)
 
