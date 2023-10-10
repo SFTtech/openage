@@ -60,20 +60,26 @@ void Game::load_data(const std::shared_ptr<assets::ModManager> &mod_manager) {
 		for (const auto &include : includes) {
 			// handle wildcards
 			auto parts = util::split(include, '/');
+			log::log(INFO << "parts: " << parts.size());
 			auto last_part = parts.back();
+			log::log(INFO << "last_part: " << last_part);
 			bool recursive = false;
 			auto search = include;
+			log::log(INFO << "search before: " << search);
 			if (last_part == "**") {
 				recursive = true;
+				log::log(INFO << "B0 parts size: " << parts.size());
 				if (parts.size() == 1) {
 					// include = "**"
 					// start in root directory
 					search = "";
+					log::log(INFO << "B1 search: " << search);
 				}
 				else {
 					// include = "path/to/somewhere/**"
 					// remove the wildcard '**' and the slash '/'
 					search = include.substr(0, include.size() - 3);
+					log::log(INFO << "B2 search: " << search);
 				}
 			}
 
