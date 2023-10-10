@@ -12,7 +12,7 @@ endif()
 if(IS_DIRECTORY "${CMAKE_SOURCE_DIR}/.git")
 	message(STATUS "Set PROJECT_VERSION from git.")
 	execute_process(
-		COMMAND git describe
+		COMMAND git describe --tags
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 		RESULT_VARIABLE _RES
 		OUTPUT_VARIABLE PROJECT_VERSION
@@ -30,8 +30,8 @@ set(PROJECT_VERSION_FILE "${CMAKE_SOURCE_DIR}/openage_version")
 if(EXISTS ${PROJECT_VERSION_FILE})
 	file(STRINGS ${PROJECT_VERSION_FILE} FILE_DESCRIBE_VERSION)
 
-	STRING(REGEX REPLACE "v([0-9]+\\.[0-9]+\\.[0-9]+)"
-			"\\1" PROJECT_VERSION "${FILE_DESCRIBE_VERSION}")
+	STRING(REGEX REPLACE "([0-9]+\\.[0-9]+\\.[0-9]+)"
+		   "\\1" PROJECT_VERSION "${FILE_DESCRIBE_VERSION}")
 endif()
 
 # Still could not detect the version. Don't worry, raise a warning (shout a curse word?) and move on.
