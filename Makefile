@@ -22,7 +22,7 @@ install: $(BUILDDIR)
 
 .PHONY: run
 run: build
-	cd $(BUILDDIR) && ./run game
+	cd $(BUILDDIR) && ./run main
 
 .PHONY: test
 test: tests checkfast
