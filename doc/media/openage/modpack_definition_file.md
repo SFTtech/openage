@@ -31,19 +31,22 @@ The following parameters have to be specified.
 
 `[info]` contains general information about the modpack.
 
-| Parameter          | Data Type     | Optional | Description                                                              |
-| ------------------ | ------------- | -------- | ------------------------------------------------------------------------ |
-| `packagename`      | String        | No       | Name of the modpack.                                                     |
-| `version`          | String        | No       | Internal version number. Must have [semver](https://semver.org/) format. |
-| `versionstr`       | String        | Yes      | Human-readable version string.                                           |
-| `repo`             | String        | Yes      | Name of the repo where the package is hosted.                            |
-| `alias`            | String        | Yes      | Alias of the modpack. Aliases can be used for replacing other modpacks.  |
-| `title`            | String        | Yes      | Title used in UI.                                                        |
-| `description`      | String        | Yes      | Path to a file with a short description (max 500 chars).                 |
-| `long_description` | String        | Yes      | Path to a file with a detailed description.                              |
-| `url`              | String        | Yes      | Link to the modpack's website.                                           |
-| `license`          | Array[String] | Yes      | License(s) of the modpack.                                               |
+| Parameter          | Data Type     | Optional | Description                                                             |
+| ------------------ | ------------- | -------- | ----------------------------------------------------------------------- |
+| `packagename`      | String        | No       | Name of the modpack.                                                    |
+| `version`\*        | String        | No       | The modpack's internal version number. Must use [semver] format.        |
+| `versionstr`\*     | String        | Yes      | Human-readable version string.                                          |
+| `repo`             | String        | Yes      | Name of the repo where the package is hosted.                           |
+| `alias`            | String        | Yes      | Alias of the modpack. Aliases can be used for replacing other modpacks. |
+| `title`            | String        | Yes      | Title used in UI.                                                       |
+| `description`      | String        | Yes      | Path to a file with a short description (max 500 chars).                |
+| `long_description` | String        | Yes      | Path to a file with a detailed description.                             |
+| `url`              | String        | Yes      | Link to the modpack's website.                                          |
+| `license`          | Array[String] | Yes      | License(s) of the modpack.                                              |
 
+[semver]: https://semver.org/
+
+\* `version` is used by the engine to determine the most recent version of a modpack. Therefore, it should be bumped when something in the modpack changes (e.g. whenever a new version gets published). `versionstr` is what is displayed to the user and can contain any string, so it can be used to represent any sensible version format.
 
 ## [assets] Section
 
