@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,7 +16,7 @@ namespace openage::util {
  * Matrix class with arithmetic. M rows, N columns.
  * T = underlying single value type (float, double, ...)
  */
-template<size_t M, size_t N, typename T>
+template <size_t M, size_t N, typename T>
 class Matrix : public std::array<std::array<T, N>, M> {
 public:
 	static_assert(M > 0 and N > 0, "0-dimensional matrix not allowed");
@@ -47,8 +47,8 @@ public:
 	/**
 	 * Constructor from Vector
 	 */
-	template <bool cond=is_column_vector,
-	          typename=typename std::enable_if<cond>::type>
+	template <bool cond = is_column_vector,
+	          typename = typename std::enable_if<cond>::type>
 	Matrix(const Vector<M, T> &vec) {
 		for (size_t i = 0; i < M; i++) {
 			(*this)[i][0] = vec[i];
@@ -58,21 +58,25 @@ public:
 	/**
 	 * Constructor with N*M values
 	 */
-	template <typename ... Ts>
-	Matrix(Ts ... args) {
-		static_assert(sizeof...(args) == N*M, "not all values supplied");
+	template <typename... Ts>
+	Matrix(Ts... args) {
+		static_assert(sizeof...(args) == N * M, "not all values supplied");
 
-		std::array<float, N*M> temp{{static_cast<T>(args)...}};
-		for (size_t i = 0; i < N*M; i++) {
-			(*this)[i / (N*M)][i % (N*M)] = temp[i];
+		std::array<float, N * M> temp{{static_cast<T>(args)...}};
+		size_t index = 0;
+		for (size_t row = 0; row < M; row++) {
+			for (size_t col = 0; col < N; col++) {
+				(*this)[row][col] = temp[index];
+				index += 1;
+			}
 		}
 	}
 
 	/**
 	 * Constructs the identity matrix for the current size.
 	 */
-	template <bool cond=is_square,
-	          typename=typename std::enable_if<cond>::type>
+	template <bool cond = is_square,
+	          typename = typename std::enable_if<cond>::type>
 	static this_type identity() {
 		this_type res;
 
@@ -86,7 +90,7 @@ public:
 	/**
 	 * Test if both matrices contain the same values within epsilon.
 	 */
-	bool equals(const this_type &other, float eps=default_eps) const {
+	bool equals(const this_type &other, float eps = default_eps) const {
 		for (size_t i = 0; i < N; i++) {
 			for (size_t j = 0; j < M; j++) {
 				if (std::abs((*this)[i][j] - other[i][j]) >= eps) {
@@ -101,7 +105,7 @@ public:
 	 * Matrix multiplication
 	 */
 	template <size_t P>
-	Matrix<M, P, T> operator *(const Matrix<N, P, T> &other) const {
+	Matrix<M, P, T> operator*(const Matrix<N, P, T> &other) const {
 		Matrix<M, P, T> res;
 		for (size_t i = 0; i < M; i++) {
 			for (size_t j = 0; j < P; j++) {
@@ -117,14 +121,14 @@ public:
 	/**
 	 * Matrix-Vector multiplication
 	 */
-	Matrix <M, 1, T> operator *(const Vector<M, T> &vec) const {
+	Matrix<M, 1, T> operator*(const Vector<M, T> &vec) const {
 		return (*this) * static_cast<Matrix<M, 1, T>>(vec);
 	}
 
 	/**
 	 * Matrix addition
 	 */
-	this_type operator +(const this_type &other) const {
+	this_type operator+(const this_type &other) const {
 		this_type res;
 		for (size_t i = 0; i < M; i++) {
 			for (size_t j = 0; j < N; j++) {
@@ -137,7 +141,7 @@ public:
 	/**
 	 * Matrix subtraction
 	 */
-	this_type operator -(const this_type &other) const {
+	this_type operator-(const this_type &other) const {
 		this_type res;
 		for (size_t i = 0; i < M; i++) {
 			for (size_t j = 0; j < N; j++) {
@@ -150,7 +154,7 @@ public:
 	/**
 	 * Scalar multiplication with assignment
 	 */
-	void operator *=(T other) {
+	void operator*=(T other) {
 		for (size_t i = 0; i < M; i++) {
 			for (size_t j = 0; j < N; j++) {
 				(*this)[i][j] *= other;
@@ -161,7 +165,7 @@ public:
 	/**
 	 * Scalar multiplication
 	 */
-	this_type operator *(T other) const {
+	this_type operator*(T other) const {
 		this_type res(*this);
 		res *= other;
 		return res;
@@ -170,7 +174,7 @@ public:
 	/**
 	 * Scalar division with assignment
 	 */
-	void operator /=(T other) {
+	void operator/=(T other) {
 		for (size_t i = 0; i < M; i++) {
 			for (size_t j = 0; j < N; j++) {
 				(*this)[i][j] /= other;
@@ -181,7 +185,7 @@ public:
 	/**
 	 * Scalar division
 	 */
-	this_type operator /(T other) const {
+	this_type operator/(T other) const {
 		this_type res(*this);
 		res /= other;
 		return res;
@@ -191,7 +195,7 @@ public:
 	 * Transposition
 	 */
 	Matrix<N, M, T> transpose() const {
-		Matrix <N, M, T> res;
+		Matrix<N, M, T> res;
 		for (size_t i = 0; i < M; i++) {
 			for (size_t j = 0; j < N; j++) {
 				res[j][i] = (*this)[i][j];
@@ -203,8 +207,8 @@ public:
 	/**
 	 * Conversion to Vector
 	 */
-	template<bool cond=is_column_vector,
-	         typename=typename std::enable_if<cond>::type>
+	template <bool cond = is_column_vector,
+	          typename = typename std::enable_if<cond>::type>
 	Vector<M, T> to_vector() const {
 		Vector<M, T> res{};
 		for (size_t i = 0; i < M; i++) {
@@ -216,8 +220,8 @@ public:
 	/**
 	 * Matrix trace: the sum of all diagonal entries
 	 */
-	template<bool cond=is_square,
-	         typename=typename std::enable_if<cond>::type>
+	template <bool cond = is_square,
+	          typename = typename std::enable_if<cond>::type>
 	T trace() const {
 		T res = 0;
 
@@ -231,22 +235,23 @@ public:
 	/**
 	 * Print to output stream using '<<'
 	 */
-	friend std::ostream &operator <<(std::ostream &o,
-	                                 const this_type &mat) {
+	friend std::ostream &operator<<(std::ostream &o,
+	                                const this_type &mat) {
 		o << "(";
-		for (size_t j = 0; j < M-1; j++) {
+		for (size_t j = 0; j < M - 1; j++) {
 			o << "(";
-			for (size_t i = 0; i < N-1; i++) {
+			for (size_t i = 0; i < N - 1; i++) {
 				o << mat[j][i] << ",\t";
 			}
-			o << mat[j][N-1] << ")";
-			o << "," << std::endl << " ";
+			o << mat[j][N - 1] << ")";
+			o << "," << std::endl
+			  << " ";
 		}
 		o << "(";
-		for (size_t i = 0; i < N-1; i++) {
-			o << mat[M-1][i] << ",\t";
+		for (size_t i = 0; i < N - 1; i++) {
+			o << mat[M - 1][i] << ",\t";
 		}
-		o << mat[M-1][N-1] << "))";
+		o << mat[M - 1][N - 1] << "))";
 		return o;
 	}
 };
@@ -254,8 +259,8 @@ public:
 /**
  * Scalar multiplication with swapped arguments
  */
-template<size_t M, size_t N, typename T>
-Matrix<M, N, T> operator *(T a, const Matrix<M, N, T> &mat) {
+template <size_t M, size_t N, typename T>
+Matrix<M, N, T> operator*(T a, const Matrix<M, N, T> &mat) {
 	return mat * a;
 }
 
@@ -264,24 +269,24 @@ Matrix<M, N, T> operator *(T a, const Matrix<M, N, T> &mat) {
  * because otherwise the above float-multiplication function might not match to
  * the template deduction.
  */
-template<size_t M, size_t N, typename T>
-Matrix<M, N, T> operator *(int64_t a, const Matrix<M, N, T> &mat) {
+template <size_t M, size_t N, typename T>
+Matrix<M, N, T> operator*(int64_t a, const Matrix<M, N, T> &mat) {
 	return mat * a;
 }
 
-template<typename T=float>
+template <typename T = float>
 using Matrix2t = Matrix<2, 2, T>;
 
-template<typename T=float>
+template <typename T = float>
 using Matrix3t = Matrix<3, 3, T>;
 
-template<typename T=float>
+template <typename T = float>
 using Matrix4t = Matrix<4, 4, T>;
 
-template<size_t M, size_t N>
+template <size_t M, size_t N>
 using Matrixf = Matrix<M, N, float>;
 
-template<size_t M, size_t N>
+template <size_t M, size_t N>
 using Matrixd = Matrix<M, N, double>;
 
 using Matrix2f = Matrix<2, 2, float>;
@@ -292,4 +297,4 @@ using Matrix2d = Matrix<2, 2, double>;
 using Matrix3d = Matrix<3, 3, double>;
 using Matrix4d = Matrix<4, 4, double>;
 
-} // openage::util
+} // namespace openage::util
