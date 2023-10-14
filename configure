@@ -113,6 +113,10 @@ def build_type(args):
         ret = 'Debug'
     elif mode == 'release':
         ret = 'Release'
+    elif mode == 'relwithdebinfo':
+        ret = 'RelWithDebInfo'
+    elif mode == 'minsizerel':
+        ret = 'MinSizeRel'
 
     return {
         "build_type": ret
@@ -355,7 +359,7 @@ def parse_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     cli.add_argument("--mode", "-m",
-                     choices=["debug", "release"],
+                     choices=["debug", "release", "relwithdebinfo", "minsizerel"],
                      default=getenv("BUILDMODE", default="debug"),
                      help="controls cmake build mode")
     cli.add_argument("--optimize", "-O",
