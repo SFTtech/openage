@@ -76,6 +76,7 @@ Engine::Engine(mode mode,
 void Engine::loop() {
 	while (this->running) {
 		// TODO
+		log::log(MSG(MIN) << "Prevent the loop from being optimized out by compiler");
 	}
 }
 
