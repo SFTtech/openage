@@ -32,32 +32,28 @@ Engine::Engine(mode mode,
 	// time loop
 	this->time_loop = std::make_shared<time::TimeLoop>();
 
+	// game simulation
+	// this is run in the main thread
 	this->simulation = std::make_shared<gamestate::GameSimulation>(this->root_dir,
 	                                                               this->cvar_manager,
 	                                                               this->time_loop);
 	this->simulation->set_modpacks(mods);
 
+	// presenter (optional)
 	if (this->run_mode == mode::FULL) {
 		this->presenter = std::make_shared<presenter::Presenter>(this->root_dir,
 		                                                         this->simulation,
 		                                                         this->time_loop);
 	}
 
+	// spawn thread to run time loop
 	this->threads.emplace_back([&]() {
 		this->time_loop->run();
 
 		this->time_loop.reset();
 	});
-	this->threads.emplace_back([&]() {
-		this->simulation->run();
 
-		this->simulation.reset();
-
-		if (this->run_mode != mode::FULL) {
-			this->running = false;
-		}
-	});
-
+	// if presenter is used, run it in a separate thread
 	if (this->run_mode == mode::FULL) {
 		this->threads.emplace_back([&]() {
 			this->presenter->run(debug_graphics);
@@ -69,14 +65,18 @@ Engine::Engine(mode mode,
 		});
 	}
 
-	log::log(INFO << "Created " << this->threads.size() << " threads"
-	              << " (" << std::jthread::hardware_concurrency() << " available)");
+	log::log(INFO << "Using " << this->threads.size() + 1 << " threads "
+	              << "(" << std::jthread::hardware_concurrency() << " available)");
 }
 
 void Engine::loop() {
-	while (this->running) {
-		// TODO
-		log::log(MSG(MIN) << "Prevent the loop from being optimized out by compiler");
+	// Run the main game simulation loop:
+	this->simulation->run();
+
+	// After stopping, clean up the simulation
+	this->simulation.reset();
+	if (this->run_mode != mode::FULL) {
+		this->running = false;
 	}
 }
 
