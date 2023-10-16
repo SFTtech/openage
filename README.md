@@ -47,7 +47,7 @@ Technical foundation
 [**OpenGL**]: https://www.opengl.org/
 [**Opus**]: https://opus-codec.org/
 [**nyan**]: https://github.com/SFTtech/nyan
-[**Humans**]: https://www.youtube.com/watch?v=fQGbXmkSArs&t=20s
+[**Humans**]: https://www.youtube.com/watch?v=fQGbXmkSArs&t=18s
 
 Goals
 -----
