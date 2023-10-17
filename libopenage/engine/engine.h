@@ -21,7 +21,9 @@ public:
 	jthread(jthread &&) = default;
 	jthread &operator=(jthread &&) = default;
 	~jthread() {
-		this->join();
+		if (this->joinable()) {
+			this->join();
+		}
 	}
 };
 } // namespace std
