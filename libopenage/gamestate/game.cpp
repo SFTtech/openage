@@ -67,11 +67,12 @@ void Game::load_data(const std::shared_ptr<assets::ModManager> &mod_manager) {
 				recursive = true;
 				if (parts.size() == 1) {
 					// include = "**"
-					search = include.substr(0, include.size() - 2);
+					// start in root directory
+					search = "";
 				}
 				else {
 					// include = "path/to/somewhere/**"
-					// remove the slash '/' too
+					// remove the wildcard '**' and the slash '/'
 					search = include.substr(0, include.size() - 3);
 				}
 			}
