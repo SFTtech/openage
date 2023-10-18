@@ -12,7 +12,7 @@ endif()
 if(IS_DIRECTORY "${CMAKE_SOURCE_DIR}/.git")
 	message(STATUS "Set PROJECT_VERSION from git.")
 	execute_process(
-		COMMAND git describe --tags
+		COMMAND git describe --tags --long
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 		RESULT_VARIABLE _RES
 		OUTPUT_VARIABLE PROJECT_VERSION
