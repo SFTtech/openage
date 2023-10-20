@@ -66,7 +66,7 @@ content can be accessed in the same way as "loose" files from the source folder.
 
 After all relevant source folders are mounted, the converter will begin the main
 conversion process by reading the available data. Every source file format has
-its own reader that is adpated to the constraints and features of the format.
+its own reader that is adapted to the constraints and features of the format.
 However, reading always follows this general workflow:
 
 * **Registration**: Enumerates all files with the requested format.
@@ -100,7 +100,7 @@ attribute values (e.g. `"attack"`).
 For example, a `uint32_t` value could be used for a normal integer value or define
 an ID to a graphics/sound resource. Every unique value type is associated with
 a Python object type used for storing the attribute.
-* **Output mode**: Dtetermines whether the attribute is part of the reader output
+* **Output mode**: Determines whether the attribute is part of the reader output
 or can be skipped (e.g. `SKIP`).
 
 The Reader parses attributes one by one and stores them in a `ValueMember` subclass
@@ -162,7 +162,7 @@ In general, it involves these 3 steps:
 
 1. Check if a concept group has a certain property
 2. If true, create and assign nyan API objects associated with that property
-3. Map values from concept group data to the objects' member values
+3. Map values from concept group data to the objects member values
 
 This is repeated for every property and for every concept group. Most values
 can be mapped 1-to-1, although some require additional property checks.
@@ -173,7 +173,7 @@ that contains the ID and the desired target filename. In the Export stage, the
 source filename for the given ID is then resolved and the file is parsed, converted
 and saved at the target location.
 
-At the end of the mappping stage, the resulting nyan objects are put into nyan files
+At the end of the mapping stage, the resulting nyan objects are put into nyan files
 and -- together will the media export requests -- are organized into modpacks which
 are passed to the exporter.
 
