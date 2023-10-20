@@ -1,4 +1,4 @@
-// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+// Copyright 2016-2023 the openage authors. See copying.md for legal info.
 
 #include "fixed_point.h"
 
@@ -58,6 +58,7 @@ void fixed_point() {
 	TESTEQUALS_FLOAT((e * 10).to_double(), 108.3 * 10, 1e-7);
 	TESTEQUALS_FLOAT((e / 10).to_double(), 108.3 / 10, 1e-7);
 	TESTEQUALS_FLOAT(std::sqrt(e), sqrt(108.3), 1e-7);
+	TESTEQUALS_FLOAT(std::atan2(e, f), atan2(108.3, -12.4), 1e-7);
 	TESTEQUALS_FLOAT(std::abs(-e).to_double(), 108.3, 1e-7);
 	TESTEQUALS_FLOAT(std::hypot(e, f), hypot(108.3, -12.4), 1e-7);
 	TESTEQUALS_FLOAT(std::min(e, f), -12.4, 1e-7);

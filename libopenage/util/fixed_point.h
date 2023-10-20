@@ -370,6 +370,10 @@ public:
 	constexpr double sqrt() {
 		return std::sqrt(this->to_double());
 	}
+
+	constexpr double atan2(const FixedPoint &n) {
+		return std::atan2(this->to_double(), n.to_double());
+	}
 };
 
 
@@ -479,6 +483,11 @@ namespace std {
 template <typename I, unsigned F>
 constexpr double sqrt(openage::util::FixedPoint<I, F> n) {
 	return n.sqrt();
+}
+
+template <typename I, unsigned F>
+constexpr double atan2(openage::util::FixedPoint<I, F> x, openage::util::FixedPoint<I, F> y) {
+	return x.atan2(y);
 }
 
 template <typename I, unsigned F>
