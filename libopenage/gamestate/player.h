@@ -29,10 +29,10 @@ public:
 
 	// players can't be copied to prevent duplicate IDs
 	Player(const Player &) = delete;
-	Player(Player &&) = default;
+	Player(Player &&) = delete;
 
 	Player &operator=(const Player &) = delete;
-	Player &operator=(Player &&) = default;
+	Player &operator=(Player &&) = delete;
 
 	~Player() = default;
 

@@ -1,12 +1,14 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "../../error/error.h"
-#include "../../log/log.h"
+#include "error/error.h"
+#include "log/log.h"
 
-#include "../resources/shader_source.h"
-#include "../shader_program.h"
+#include <vulkan/vulkan.h>
+
+#include "renderer/resources/shader_source.h"
+#include "renderer/shader_program.h"
 
 
 namespace openage {
@@ -15,12 +17,18 @@ namespace vulkan {
 
 static VkShaderStageFlagBits vk_shader_stage(resources::shader_stage_t stage) {
 	switch (stage) {
-	case resources::shader_stage_t::vertex: return VK_SHADER_STAGE_VERTEX_BIT;
-	case resources::shader_stage_t::geometry: return VK_SHADER_STAGE_GEOMETRY_BIT;
-	case resources::shader_stage_t::tesselation_control: return VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT;
-	case resources::shader_stage_t::tesselation_evaluation: return VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT;
-	case resources::shader_stage_t::fragment: return VK_SHADER_STAGE_FRAGMENT_BIT;
-	default: throw Error(MSG(err) << "Unknown shader stage.");
+	case resources::shader_stage_t::vertex:
+		return VK_SHADER_STAGE_VERTEX_BIT;
+	case resources::shader_stage_t::geometry:
+		return VK_SHADER_STAGE_GEOMETRY_BIT;
+	case resources::shader_stage_t::tesselation_control:
+		return VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT;
+	case resources::shader_stage_t::tesselation_evaluation:
+		return VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT;
+	case resources::shader_stage_t::fragment:
+		return VK_SHADER_STAGE_FRAGMENT_BIT;
+	default:
+		throw Error(MSG(err) << "Unknown shader stage.");
 	}
 }
 
@@ -29,11 +37,11 @@ public:
 	std::vector<VkShaderModule> modules;
 	std::vector<VkPipelineShaderStageCreateInfo> pipeline_stage_infos;
 
-	explicit VlkShaderProgram(VkDevice dev, std::vector<resources::ShaderSource> const& srcs) {
+	explicit VlkShaderProgram(VkDevice dev, std::vector<resources::ShaderSource> const &srcs) {
 		// TODO reflect with spirv-cross
 		// TODO if glsl, compile to spirv with libshaderc
 
-		for (auto const& src : srcs) {
+		for (auto const &src : srcs) {
 			if (src.get_lang() != resources::shader_lang_t::spirv) {
 				throw Error(MSG(err) << "Unsupported shader language in Vulkan shader.");
 			}
@@ -41,7 +49,7 @@ public:
 			VkShaderModuleCreateInfo cr_shdr = {};
 			cr_shdr.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
 			cr_shdr.codeSize = src.get_source().size();
-			cr_shdr.pCode = reinterpret_cast<uint32_t const*>(src.get_source().data());
+			cr_shdr.pCode = reinterpret_cast<uint32_t const *>(src.get_source().data());
 
 			VkShaderModule mod;
 			VK_CALL_CHECKED(vkCreateShaderModule, dev, &cr_shdr, nullptr, &mod);
@@ -61,4 +69,6 @@ public:
 	}
 };
 
-}}} // openage::renderer::vulkan
+} // namespace vulkan
+} // namespace renderer
+} // namespace openage
