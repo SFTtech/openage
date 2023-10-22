@@ -15,7 +15,7 @@ ModpackInfo parse_modepack_def(const util::Path &info_file) {
 	const auto modpack_def = toml::parse(info_file.resolve_native_path());
 
 	// info table
-	const toml::table &info = toml::find<toml::table>(modpack_def, "info");
+	const toml::table info = toml::find<toml::table>(modpack_def, "info");
 	if (info.contains("name")) {
 		def.id = info.at("name").as_string();
 	}
@@ -63,7 +63,7 @@ ModpackInfo parse_modepack_def(const util::Path &info_file) {
 	}
 
 	// assets table
-	const toml::table &assets = toml::find<toml::table>(modpack_def, "assets");
+	const toml::table assets = toml::find<toml::table>(modpack_def, "assets");
 	std::vector<std::string> includes{};
 	for (const auto &include : assets.at("include").as_array()) {
 		includes.push_back(include.as_string());
@@ -81,7 +81,7 @@ ModpackInfo parse_modepack_def(const util::Path &info_file) {
 
 	// dependency table
 	if (modpack_def.contains("dependency")) {
-		const toml::table &dependency = toml::find<toml::table>(modpack_def, "dependency");
+		const toml::table dependency = toml::find<toml::table>(modpack_def, "dependency");
 		std::vector<std::string> deps{};
 
 		if (not dependency.contains("modpacks")) {
@@ -97,7 +97,7 @@ ModpackInfo parse_modepack_def(const util::Path &info_file) {
 
 	// conflicts table
 	if (modpack_def.contains("conflict")) {
-		const toml::table &conflict = toml::find<toml::table>(modpack_def, "conflict");
+		const toml::table conflict = toml::find<toml::table>(modpack_def, "conflict");
 		std::vector<std::string> conflicts{};
 
 		if (not conflict.contains("modpacks")) {
@@ -113,7 +113,7 @@ ModpackInfo parse_modepack_def(const util::Path &info_file) {
 
 	// authors table
 	if (modpack_def.contains("authors")) {
-		const toml::table &authors = toml::find<toml::table>(modpack_def, "authors");
+		const toml::table authors = toml::find<toml::table>(modpack_def, "authors");
 		std::vector<AuthorInfo> author_infos{};
 		for (const auto &author : authors) {
 			AuthorInfo author_info{};
@@ -143,7 +143,7 @@ ModpackInfo parse_modepack_def(const util::Path &info_file) {
 				author_info.roles = roles;
 			}
 			if (author.second.contains("contact")) {
-				const toml::table &contact = toml::find<toml::table>(author.second, "contact");
+				const toml::table contact = toml::find<toml::table>(author.second, "contact");
 				std::unordered_map<std::string, std::string> contacts{};
 				for (const auto &contact_info : contact) {
 					contacts[contact_info.first] = contact_info.second.as_string();
@@ -158,7 +158,7 @@ ModpackInfo parse_modepack_def(const util::Path &info_file) {
 
 	// authorgroups table
 	if (modpack_def.contains("authorgroups")) {
-		const toml::table &authorgroups = toml::find<toml::table>(modpack_def, "authorgroups");
+		const toml::table authorgroups = toml::find<toml::table>(modpack_def, "authorgroups");
 		std::vector<AuthorGroupInfo> author_group_infos{};
 		for (const auto &authorgroup : authorgroups) {
 			AuthorGroupInfo author_group_info{};
