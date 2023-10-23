@@ -14,7 +14,7 @@ Line of sight depends on the selected difficulty of the game.
     Hard      12 tiles
     Hardest   12 tiles
 
-As soon as a unit moves into the LOS of a wolf, he will chase and attack the unit. However some unit types are ignored, including:
+As soon as a unit moves into the LOS of a wolf, they will chase and attack the unit. However some unit types are ignored, including:
 
 * King
 * Trade Cart

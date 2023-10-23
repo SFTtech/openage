@@ -8,7 +8,7 @@ This documents shows the methods of selecting and deselecting units.
 
 The player doesn't have to click directly on the sprite of a unit because there is a tolerance factor involved. The tolerance factor is roughly `1 unit width` horizontally and `1 unit height` vertically measured from the center of the unit. This means that clicking in the general area of a unit will be accepted as a valid selection most of the time.
 
-If two units' areas of tolerance overlap, the unit that is in the front seems to be preferred, but clicking directly on the sprite of one of the player's own units will select the unit that is pointed at. When the area of tolerance overlaps with an enemy (or ally) unit, the unit of the player will always be preferred, even if he clicks directly on the sprite of the enemy unit.
+If two units' areas of tolerance overlap, the unit that is in the front seems to be preferred, but clicking directly on the sprite of one of the player's own units will select the unit that is pointed at. When the area of tolerance overlaps with an enemy (or ally) unit, the unit of the player will always be preferred, even if they click directly on the sprite of the enemy unit.
 
 Relics and animals also have an area of tolerance regarding selection, while resource spots like trees, bushes, gold/stone mines as well as buildings don't.
 
@@ -25,7 +25,7 @@ All of these have a specific purpose and will now be explained further.
 
 ### Selection Box
 
-The selection box is the easiest way to select multiple units of any type in AoE2. When the player draws the box around the units he wants to select, the units inside the box will be added to the selection queue, **going from the top to the bottom of the box** until the limit of 40 units is reached.
+The selection box is the easiest way to select multiple units of any type in AoE2. When the player draws the box around the units they want to select, the units inside the box will be added to the selection queue, **going from the top to the bottom of the box** until the limit of 40 units is reached.
 
 The tolerance factor is also used here, which can result in units which are slightly outside of the selection box to be selected.
 

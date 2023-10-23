@@ -123,7 +123,7 @@ The same rules apply, if more than two unit types are used. We will now have a l
 ..............
 ```
 
-Which unit type is sorted into the line first depends on the order in which the player selected the unit types (or how they are ordered inside the selection queue). In the first example of this section, the player selected the archers first and added the skirmishers to his selection. The second and above example would be the result of selecting longbowman first, archers second, skirmishers third and throwing axeman last.
+Which unit type is sorted into the line first depends on the order in which the player selected the unit types (or how they are ordered inside the selection queue). In the first example of this section, the player selected the archers first and added the skirmishers to their selection. The second and above example would be the result of selecting longbowman first, archers second, skirmishers third and throwing axeman last.
 
 #### Distance Between Units
 

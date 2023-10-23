@@ -20,7 +20,7 @@ end
 ## Description
 
 *:network_source_id*<br/>
-The *:network_id* of the person who sent the packet. A *:network_id* is different for every game, but is not generated randomly for all players. When joining the lobby, every player gets assigned `last_network_id - 2` as his own *:network_id* where *last_network_id* is the ID of the person who joined before him.
+The *:network_id* of the person who sent the packet. A *:network_id* is different for every game, but is not generated randomly for all players. When joining the lobby, every player gets assigned `last_network_id - 2` as their own *:network_id* where *last_network_id* is the ID of the person who joined before them.
 
 *:network_dest_id*<br/>
 The *:network_id* of the person who should receive the packet. Is only used for sync packets and remains unused for most commands.

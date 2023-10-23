@@ -144,7 +144,7 @@ A mode similar to *Trouble in Terrorist Town* and *Secret Hitler*. The game star
 
 ### Pure Battle Mode
 
-No buildings, just units. The game generates a map and players can choose a starting position. Then they have a few minutes and a set amount of resources to select an army composition and some techs. After the first phase is over they place their units on the battlefield and have to use what they assembled to destroy their opponent. Utilizing height advantages, microing and tactical positioning contrast the strategic decisions of creating the army. The player who destroys his opponent, inflicts the most resource damage to others or holds strategic positions wins the battle.
+No buildings, just units. The game generates a map and players can choose a starting position. Then they have a few minutes and a set amount of resources to select an army composition and some techs. After the first phase is over they place their units on the battlefield and have to use what they assembled to destroy their opponent. Utilizing height advantages, microing and tactical positioning contrast the strategic decisions of creating the army. The player who destroys their opponent, inflicts the most resource damage to others or holds strategic positions wins the battle.
 
 ### Micro-nerd Mode (or Mod)
 
@@ -373,7 +373,7 @@ Relics & Kings
    - e.g. they can have attack bonuses for special units or economic/military bonuses
    - special abilities for every relic could either be generated when the map is generated or when the relic is discovered based on the actual needs of the player
    - so the later you go out to get the relic the more it could get useful for you, because it could be better shaped on your personal military/economy but the risk is higher, that another player was going out before you
-   - if a player scouts the relic first and the ability gets generated in this moment, it will be for the player who scouted it first, so he knows, that this relic could help their own economy/military alot so the player will try to fight about this relic against the enemy heavily -> new gameplay aspect
+   - if a player scouts the relic first and the ability gets generated in this moment, it will be for the player who scouted it first, so they know, that this relic could help their own economy/military a lot so the player will try to fight about this relic against the enemy heavily -> new gameplay aspect
 
   - Relics could have ranged attributes
     - idea of the devs of AoE II

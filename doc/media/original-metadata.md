@@ -2,7 +2,7 @@ Original Metadata
 =================
 
 All data relevant for the game (e.g. how much costs building the castle?
-What cultures exist? Can my priest overclock his "Wololo?")
+What cultures exist? Can my priest overclock their "Wololo?")
 are stored in a binary format in the file `empires2_x1_p1.dat`.
 
 The format is described in the [huge struct definition](/openage/convert/value_object/read/media/datfile/empiresdat.py).

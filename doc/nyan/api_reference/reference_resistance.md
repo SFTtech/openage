@@ -317,7 +317,7 @@ Resistance to the `MakeHarvestable` effect.
 Resource spot that should be made harvestable. Effects of type `effect.discrete.make_harvestable.type.MakeHarvestable` are matched to this resistance if they store the same `ResourceSpot` object in their `resource_spot` member. Additionally, the target needs to have a `Harvestable` ability that contains the resource spot.
 
 **resist_condition**
-Condition which must he fulfilled to make the resource spot harvestable.
+Condition which they must fulfill to make the resource spot harvestable.
 
 ## resistance.discrete.send_to_container.type.SendToContainer
 

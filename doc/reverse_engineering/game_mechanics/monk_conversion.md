@@ -32,5 +32,5 @@ Units inside a building are not converted and will ungarrison. The same is true 
 [Source](https://www.youtube.com/watch?v=_gjpDWfzaM0)
 
 * If a converted unit is "replaced" by the game, e.g. a villager changing to a farmer, the stats are not frozen anymore.
-* Converted siege units are only frozen in tech level until the new owner researches a technology that changes the units stats, e.g. chemistry. As soon as the research finishes, the units are replaced with ones that are on the same tech level as the player. Weirdly enough, Onagers are replaced if the player researches Heavy Scorpions but not if he researches Siege/Capped Rams.
+* Converted siege units are only frozen in tech level until the new owner researches a technology that changes the units stats, e.g. chemistry. As soon as the research finishes, the units are replaced with ones that are on the same tech level as the player. Weirdly enough, Onagers are replaced if the player researches Heavy Scorpions but not if they research Siege/Capped Rams.
 * The flaming projectile caused by chemistry research is tied to the tech level of the owner but the +1 damage is kept, if the unit is converted.
