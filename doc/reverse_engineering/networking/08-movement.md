@@ -74,7 +74,7 @@ end
 Always has the value `0x03`.
 
 *:player_id*<br/>
-The ID of the player who moves his units (`0x01` - `0x08`).
+The ID of the player who moves their units (`0x01` - `0x08`).
 
 *:zero*<br/>
 The two bytes following the *:player_id* are unused.

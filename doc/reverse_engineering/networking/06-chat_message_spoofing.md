@@ -23,7 +23,7 @@ To construct a message the following parameters are needed:
 * Player number of the spoofed sender
 * Player number of the receiver(s)
 
-An attacker that is in game with other players will have no problems getting to know the player numbers. As the game is constantly synced, he can easily get the value for *:communication_turn*.
+An attacker that is in game with other players will have no problems getting to know the player numbers. As the game is constantly synced, they can easily get the value for *:communication_turn*.
 
 Deriving the valid Sender ID of the receiving player is more difficult and depends on the attacker's ability to capture network traffic. The easiest way to discover all Player IDs is by capturing a few packets of normal gameplay beforehand. The IDs of Players 1-8 have a fixed byte position in the data stream.
 
