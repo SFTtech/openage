@@ -8,13 +8,14 @@ actual conversion process.
 """
 from __future__ import annotations
 import typing
+import timeit
 
 
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
 from ..service.debug_info import debug_gamedata_format
 from ..service.debug_info import debug_string_resources, \
-    debug_registered_graphics, debug_modpack
+    debug_registered_graphics, debug_modpack, debug_execution_time
 from ..service.init.changelog import (ASSET_VERSION)
 from ..service.read.gamedata import get_gamespec
 from ..service.read.palette import get_palettes
@@ -64,7 +65,7 @@ def convert_metadata(args: Namespace) -> None:
     gamedata_path = args.targetdir.joinpath('gamedata')
     if gamedata_path.exists():
         gamedata_path.removerecursive()
-
+    read_start = timeit.default_timer()
     # Read .dat
     debug_gamedata_format(args.debugdir, args.debug_info, args.game_version)
     gamespec = get_gamespec(args.srcdir, args.game_version, not args.flag("no_pickle_cache"))
@@ -84,15 +85,30 @@ def convert_metadata(args: Namespace) -> None:
     existing_graphics = get_existing_graphics(args)
     debug_registered_graphics(args.debugdir, args.debug_info, existing_graphics)
 
+    read_end = timeit.default_timer()
+
+    conversion_start = timeit.default_timer()
     # Convert
     modpacks = args.converter.convert(gamespec,
                                       args,
                                       string_resources,
                                       existing_graphics)
 
+    conversion_end = timeit.default_timer()
+
+    export_start = timeit.default_timer()
     for modpack in modpacks:
         ModpackExporter.export(modpack, args)
         debug_modpack(args.debugdir, args.debug_info, modpack)
+
+    export_end = timeit.default_timer()
+
+    stages_time = {
+        "read": read_end - read_start,
+        "convert": conversion_end - conversion_start,
+        "export": export_end - export_start,
+    }
+    debug_execution_time(args.debugdir, args.debug_info, stages_time)
 
     # TODO: player palettes
     # player_palette = PlayerColorTable(palette)
