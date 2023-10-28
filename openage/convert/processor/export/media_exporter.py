@@ -462,6 +462,10 @@ class MediaExporter:
             from ...value_object.read.media.smx import SMX
             image = SMX(media_file.read())
 
+        elif source_file.suffix.lower() == ".sld":
+            from ...value_object.read.media.sld import SLD
+            image = SLD(media_file.read())
+
         from .texture_merge import merge_frames
         texture = Texture(image, palettes)
         merge_frames(texture)
