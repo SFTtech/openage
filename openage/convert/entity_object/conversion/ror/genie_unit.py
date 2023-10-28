@@ -50,7 +50,7 @@ class RoRUnitLineGroup(GenieUnitLineGroup):
 
     def is_garrison(self, civ_id: int = -1) -> bool:
         """
-        Only transport shis can garrison in RoR.
+        Only transport ships can garrison in RoR.
 
         :returns: True if the unit has the unload command (ID: 12).
         """
@@ -229,7 +229,7 @@ class RoRUnitTaskGroup(GenieUnitTaskGroup):
 
     def is_garrison(self, civ_id: int = -1) -> bool:
         """
-        Only transport shis can garrison in RoR.
+        Only transport ships can garrison in RoR.
 
         :returns: True if the unit has the unload command (ID: 12).
         """
