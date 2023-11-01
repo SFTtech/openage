@@ -80,6 +80,8 @@ class MediaExporter:
                 info("-- Exporting graphics files...")
 
             elif media_type is MediaType.SOUNDS:
+                kwargs["loglevel"] = args.debug_info
+                kwargs["debugdir"] = args.debugdir
                 export_func = MediaExporter._export_sound
                 info("-- Exporting sound files...")
 
@@ -225,6 +227,10 @@ class MediaExporter:
             from ...value_object.read.media.sld import SLD
             image = SLD(media_file.read())
 
+        else:
+            raise SyntaxError(f"Source file {source_file.name} has an unrecognized extension: "
+                              f"{source_file.suffix.lower()}")
+
         packer_cache = None
         compr_cache = None
         if cache_info:
@@ -284,6 +290,7 @@ class MediaExporter:
         export_request: MediaExportRequest,
         sourcedir: Path,
         exportdir: Path,
+        **kwargs
     ) -> None:
         """
         Convert and export a sound file.
@@ -308,6 +315,7 @@ class MediaExporter:
 
         else:
             # TODO: Filter files that do not exist out sooner
+            debug_info.debug_not_found_sounds(kwargs["debugdir"], kwargs["loglevel"], source_file)
             return
 
         from ...service.export.opus.opusenc import encode
@@ -461,6 +469,14 @@ class MediaExporter:
         elif source_file.suffix.lower() == ".smx":
             from ...value_object.read.media.smx import SMX
             image = SMX(media_file.read())
+
+        elif source_file.suffix.lower() == ".sld":
+            from ...value_object.read.media.sld import SLD
+            image = SLD(media_file.read())
+
+        else:
+            raise SyntaxError(f"Source file {source_file.name} has an unrecognized extension: "
+                              f"{source_file.suffix.lower()}")
 
         from .texture_merge import merge_frames
         texture = Texture(image, palettes)

@@ -677,3 +677,47 @@ def debug_media_cache(
 
     with logfile.open("w") as log:
         log.write(logtext)
+
+
+def debug_execution_time(debugdir: Directory, loglevel: int, stages_time: dict[str, float]) -> None:
+    """
+    Create debug output for execution time for each stage
+
+    :param debugdir: Output directory for the debug info.
+    :type debugdir: Directory
+    :param loglevel: Determines how detailed the output is.
+    :type loglevel: int
+    :param stages_time: Dict with execution time for each stage.
+    :type stages_time: dict
+    """
+    if loglevel < 1:
+        return
+
+    logfile = debugdir["execution_time"]
+    logtext = "".join(f"{k}: {v}\n" for k, v in stages_time.items())
+
+    with logfile.open("w") as log:
+        log.write(logtext)
+
+
+def debug_not_found_sounds(debugdir: Directory, loglevel: int, sound: Path) -> None:
+    """
+    Create debug output for sounds not found
+
+    :param debugdir: Output directory for the debug info.
+    :type debugdir: Directory
+    :param loglevel: Determines how detailed the output is.
+    :type loglevel: int
+    :param sound: Sound object with path and name values.
+    :type sound: Path
+    """
+    if loglevel < 6:
+        return
+
+    logfile = debugdir.joinpath("export/not_found_sounds")[sound.stem]
+
+    path = [part.decode() for part in sound.parts]
+    logtext = f"name: {sound.name}\npath: {'/'.join(path)}"
+
+    with logfile.open("w") as log:
+        log.write(logtext)
