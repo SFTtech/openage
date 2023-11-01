@@ -366,16 +366,3 @@ class Path:
         path.is_temp = True
 
         return path
-
-    def __del__(self):
-        """
-        Destructor used for temp files and directories.
-        """
-        if self.is_temp:
-            # Cleanup temp file
-            if self.exists():
-                if self.is_file():
-                    self.unlink()
-
-                elif self.is_dir():
-                    self.removerecursive()
