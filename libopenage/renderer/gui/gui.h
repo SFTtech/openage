@@ -6,7 +6,6 @@
 #include <memory>
 #include <string>
 
-#include "gui/guisys/public/gui_event_queue.h"
 #include "renderer/gui/guisys/public/gui_subtree.h"
 
 namespace qtgui {
@@ -29,8 +28,6 @@ class Window;
 class UniformInput;
 
 namespace gui {
-
-class QMLInfo;
 
 /**
  * Interface (= HUD) of the game.
@@ -98,15 +95,6 @@ private:
 	 * Reference to the Qt GUI application singleton.
 	 */
 	std::shared_ptr<qtgui::GuiApplication> application;
-
-	/**
-	 * TODO
-	 */
-	qtsdl::GuiEventQueue render_updater;
-	/**
-	 * TODO
-	 */
-	qtsdl::GuiEventQueue game_logic_updater;
 
 	/**
 	 * Qt-based renderer for the GUI texture. Draws into

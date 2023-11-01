@@ -2,17 +2,17 @@
 
 #include "window.h"
 
-#include "error/error.h"
-#include "gui/guisys/public/gui_application.h"
-#include "log/log.h"
-#include "renderer/opengl/context.h"
-#include "renderer/opengl/renderer.h"
-#include "renderer/window_event_handler.h"
-
 #include <QGuiApplication>
 #include <QOpenGLContext>
 #include <QQuickWindow>
 #include <QString>
+
+#include "error/error.h"
+#include "log/log.h"
+
+#include "renderer/opengl/context.h"
+#include "renderer/opengl/renderer.h"
+#include "renderer/window_event_handler.h"
 
 
 namespace openage::renderer::opengl {

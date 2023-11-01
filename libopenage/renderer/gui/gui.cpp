@@ -6,7 +6,6 @@
 #include "renderer/gui/guisys/public/gui_input.h"
 #include "renderer/gui/guisys/public/gui_renderer.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
-#include "renderer/gui/qml_info.h"
 #include "renderer/opengl/context.h"
 #include "renderer/renderer.h"
 #include "renderer/resources/shader_source.h"
@@ -24,8 +23,6 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
          const util::Path &assetdir,
          const std::shared_ptr<Renderer> &renderer) :
 	application{app},
-	render_updater{},
-	game_logic_updater{},
 	gui_renderer{std::make_shared<qtgui::GuiRenderer>(window)},
 	gui_input{std::make_shared<qtgui::GuiInput>(gui_renderer)},
 	engine{std::make_shared<qtgui::GuiQmlEngine>(gui_renderer)},

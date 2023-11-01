@@ -4,10 +4,11 @@
 
 #include <cassert>
 
+#include <QOpenGLContext>
 #include <QOpenGLDebugLogger>
 #include <QOpenGLFramebufferObject>
+#include <QWindow>
 
-#include "gui/guisys/private/platforms/context_extraction.h"
 #include "renderer/gui/guisys/private/opengl_debug_logger.h"
 #include "renderer/opengl/context.h"
 #include "renderer/opengl/window.h"

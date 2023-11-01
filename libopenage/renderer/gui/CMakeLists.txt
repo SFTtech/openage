@@ -1,7 +1,5 @@
 add_sources(libopenage
-	engine_link.cpp
 	gui.cpp
-	qml_info.cpp
 )
 
 add_subdirectory("guisys")

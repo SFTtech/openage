@@ -1,4 +1,13 @@
+list(APPEND QT_SDL_SOURCES
+	${CMAKE_CURRENT_SOURCE_DIR}/link/gui_item.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/link/gui_list_model.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/link/gui_property_map_impl.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/link/gui_singleton_item.cpp
+)
+
 list(APPEND QTGUI_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/private/livereload/deferred_initial_constant_property_values.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/private/livereload/gui_live_reloader.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/livereload/recursive_directory_watcher_worker.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/private/livereload/recursive_directory_watcher.cpp
 )
