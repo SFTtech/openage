@@ -4,9 +4,12 @@
 Provides Path, which is analogous to pathlib.Path,
 and the type of FSLikeObject.root.
 """
+from typing import NoReturn
 
 from io import UnsupportedOperation, TextIOWrapper
-from typing import NoReturn
+import os
+import pathlib
+import tempfile
 
 
 class Path:
@@ -32,7 +35,7 @@ class Path:
     # lower.
     # pylint: disable=too-many-public-methods
 
-    def __init__(self, fsobj, parts=None):
+    def __init__(self, fsobj, parts: str | bytes | bytearray | list | tuple = None):
         if isinstance(parts, str):
             parts = parts.encode()
 
@@ -62,6 +65,9 @@ class Path:
                 result.append(part)
 
         self.fsobj = fsobj
+
+        # Set to True by create_temp_file or create_temp_dir
+        self.is_temp: bool = False
 
         # use tuple instead of list to prevent accidential modification
         self.parts = tuple(result)
@@ -330,3 +336,33 @@ class Path:
         # pylint: disable=no-self-use,unused-argument
         # TODO: https://github.com/PyCQA/pylint/issues/2329
         raise PermissionError("Do not call mount on Path instances!")
+
+    @staticmethod
+    def get_temp_file():
+        """
+        Creates a temporary file.
+        """
+        temp_fd, temp_file = tempfile.mkstemp()
+
+        # Close the file descriptor to release resources
+        os.close(temp_fd)
+
+        # Wrap the temporary file path in a Path object and return it
+        path = Path(pathlib.Path(temp_file))
+        path.is_temp = True
+
+        return path
+
+    @staticmethod
+    def get_temp_dir():
+        """
+        Creates a temporary directory.
+        """
+        # Create a temporary directory using tempfile.mkdtemp
+        temp_dir = tempfile.mkdtemp()
+
+        # Wrap the temporary directory path in a Path object and return it
+        path = Path(pathlib.Path(temp_dir))
+        path.is_temp = True
+
+        return path
