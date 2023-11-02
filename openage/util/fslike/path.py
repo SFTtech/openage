@@ -149,6 +149,10 @@ class Path:
         """ open with mode='wb' """
         return self.fsobj.open_w(self.parts)
 
+    def open_a(self):
+        """ open with mode='ab' """
+        return self.fsobj.open_a(self.parts)
+
     def _get_native_path(self):
         """
         return the native path (usable by your kernel) of this path,

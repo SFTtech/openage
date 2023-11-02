@@ -116,6 +116,14 @@ class Union(FSLikeObject):
         raise UnsupportedOperation(
             "not writable: " + b'/'.join(parts).decode(errors='replace'))
 
+    def open_a(self, parts):
+        for path in self.candidate_paths(parts):
+            if path.writable():
+                return path.open_a()
+
+        raise UnsupportedOperation(
+            "not appendable: " + b'/'.join(parts).decode(errors='replace'))
+
     def resolve_r(self, parts):
         for path in self.candidate_paths(parts):
             if path.is_file() or path.is_dir():
