@@ -29,10 +29,11 @@ gl_context_spec GlContext::find_spec() {
 
 	for (size_t i_ver = 0; i_ver < gl_versions.size(); ++i_ver) {
 		QOpenGLContext test_context{};
-		auto tf = test_format;
+
 		test_format.setMajorVersion(gl_versions[i_ver].first);
 		test_format.setMinorVersion(gl_versions[i_ver].second);
 
+		test_context.setFormat(test_format);
 		test_context.create();
 
 		if (!test_context.isValid()) {
@@ -49,6 +50,7 @@ gl_context_spec GlContext::find_spec() {
 	}
 
 	QOpenGLContext test_context{};
+	test_context.setFormat(test_format);
 	test_context.create();
 	if (!test_context.isValid()) {
 		throw Error(MSG(err) << "Failed to create OpenGL context which previously succeeded. This should not happen!");
