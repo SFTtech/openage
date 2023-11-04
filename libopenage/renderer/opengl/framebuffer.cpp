@@ -2,17 +2,25 @@
 
 #include "framebuffer.h"
 
+#include "renderer/opengl/context.h"
 #include "renderer/opengl/texture.h"
 
 
 namespace openage::renderer::opengl {
+
+GlFramebuffer::GlFramebuffer(const std::shared_ptr<GlContext> &context) :
+	GlSimpleObject(context,
+                   [](GLuint /*handle*/) {}),
+	type{gl_framebuffer_t::display} {
+}
 
 // TODO the validity of this object is contingent
 // on its texture existing. use shared_ptr?
 GlFramebuffer::GlFramebuffer(const std::shared_ptr<GlContext> &context,
                              std::vector<std::shared_ptr<GlTexture2d>> const &textures) :
 	GlSimpleObject(context,
-                   [](GLuint handle) { glDeleteFramebuffers(1, &handle); }) {
+                   [](GLuint handle) { glDeleteFramebuffers(1, &handle); }),
+	type{gl_framebuffer_t::textures} {
 	GLuint handle;
 	glGenFramebuffers(1, &handle);
 	this->handle = handle;
@@ -20,6 +28,10 @@ GlFramebuffer::GlFramebuffer(const std::shared_ptr<GlContext> &context,
 	glBindFramebuffer(GL_FRAMEBUFFER, handle);
 
 	std::vector<GLenum> drawBuffers;
+
+	if (textures.empty()) {
+		throw Error{ERR << "At least 1 texture must be assigned to texture framebuffer."};
+	}
 
 	size_t colorTextureCount = 0;
 	for (auto const &texture : textures) {
@@ -41,12 +53,26 @@ GlFramebuffer::GlFramebuffer(const std::shared_ptr<GlContext> &context,
 	}
 }
 
+gl_framebuffer_t GlFramebuffer::get_type() const {
+	return this->type;
+}
+
 void GlFramebuffer::bind_read() const {
-	glBindFramebuffer(GL_READ_FRAMEBUFFER, *this->handle);
+	if (this->type == gl_framebuffer_t::textures) {
+		glBindFramebuffer(GL_READ_FRAMEBUFFER, *this->handle);
+	}
+	else {
+		glBindFramebuffer(GL_READ_FRAMEBUFFER, this->context->get_default_framebuffer_id());
+	}
 }
 
 void GlFramebuffer::bind_write() const {
-	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, *this->handle);
+	if (this->type == gl_framebuffer_t::textures) {
+		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, *this->handle);
+	}
+	else {
+		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->context->get_default_framebuffer_id());
+	}
 }
 
 } // namespace openage::renderer::opengl
