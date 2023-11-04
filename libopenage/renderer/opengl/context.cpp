@@ -156,6 +156,10 @@ std::shared_ptr<QOpenGLContext> GlContext::get_raw_context() const {
 	return this->gl_context;
 }
 
+GLuint GlContext::get_default_framebuffer_id() {
+	return this->gl_context->defaultFramebufferObject();
+}
+
 gl_context_spec GlContext::get_specs() const {
 	return this->specs;
 }

@@ -24,7 +24,9 @@ namespace openage::renderer::opengl {
 GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx,
                        const util::Vector2s &viewport_size) :
 	gl_context{ctx},
-	display{std::make_shared<GlRenderTarget>(viewport_size[0], viewport_size[1])} {
+	display{std::make_shared<GlRenderTarget>(ctx,
+                                             viewport_size[0],
+                                             viewport_size[1])} {
 	// global GL alpha blending settings
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 

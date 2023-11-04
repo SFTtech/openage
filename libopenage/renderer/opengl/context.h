@@ -67,6 +67,17 @@ public:
 	std::shared_ptr<QOpenGLContext> get_raw_context() const;
 
 	/**
+     * Get the ID of the default framebuffer used for displaying to
+     * the window.
+     *
+     * This value may change on every frame, so it should be called every
+     * time the default framebuffer is bound.
+     *
+     * @return ID of the default (display) framebuffer.
+     */
+	unsigned int get_default_framebuffer_id();
+
+	/**
 	 * Get the capabilities of this context.
 	 */
 	gl_context_spec get_specs() const;
