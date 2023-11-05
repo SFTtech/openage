@@ -14,6 +14,7 @@ class TerrainRenderEntity;
 }
 
 namespace gamestate {
+class TerrainChunk;
 
 /**
  * Entity for managing the map terrain of a game.
@@ -30,19 +31,32 @@ public:
 	 */
 	void set_render_entity(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &entity);
 
+	const std::vector<std::shared_ptr<TerrainChunk>> &get_chunks() const;
+
+	// TODO: This should be an event
+	void generate();
+
 private:
 	// test connection to renderer
-	void push_to_render();
+	void render_update();
 
-	// size of the map
-	// origin is the left corner
-	// x = top left edge; y = top right edge
+	/**
+     *  Total size of the map
+	 * origin is the left corner
+	 * x = top left edge; y = top right edge
+     */
 	util::Vector2s size;
+
+	/**
+     * Subdivision of the main terrain entity.
+     */
+	std::vector<std::shared_ptr<TerrainChunk>> chunks;
+
+	// ASDF: Move these members into terrain chunk
 	// Heights of the terrain grid
 	std::vector<float> height_map;
 	// path to a texture
 	std::string texture_path;
-
 	// render entity for pushing updates to
 	std::shared_ptr<renderer::terrain::TerrainRenderEntity> render_entity;
 };

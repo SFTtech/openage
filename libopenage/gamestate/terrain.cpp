@@ -6,6 +6,7 @@
 #include <array>
 #include <cstddef>
 
+#include "gamestate/terrain_chunk.h"
 #include "renderer/stages/terrain/terrain_render_entity.h"
 
 namespace openage::gamestate {
@@ -25,7 +26,7 @@ Terrain::Terrain(const std::string &texture_path) :
 	}
 }
 
-void Terrain::push_to_render() {
+void Terrain::render_update() {
 	if (this->render_entity != nullptr) {
 		this->render_entity->update(this->size,
 		                            this->height_map,
@@ -36,7 +37,19 @@ void Terrain::push_to_render() {
 void Terrain::set_render_entity(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &entity) {
 	this->render_entity = entity;
 
-	this->push_to_render();
+	this->render_update();
+}
+
+const std::vector<std::shared_ptr<TerrainChunk>> &Terrain::get_chunks() const {
+	return this->chunks;
+}
+
+void Terrain::generate() {
+	auto chunk = std::make_shared<TerrainChunk>(util::Vector2s{10, 10}, util::Vector2s{0, 0});
+	chunk->set_render_entity(this->render_entity);
+	chunk->render_update(time::time_t::zero(), this->texture_path);
+
+	this->chunks.push_back(chunk);
 }
 
 } // namespace openage::gamestate

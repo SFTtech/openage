@@ -20,10 +20,6 @@ namespace terrain {
 class TerrainRenderMesh;
 class TerrainRenderEntity;
 
-const size_t MAX_CHUNK_WIDTH = 16;
-const size_t MAX_CHUNK_HEIGHT = 16;
-
-
 class TerrainChunk {
 public:
 	/**
