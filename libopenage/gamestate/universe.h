@@ -18,6 +18,8 @@ class World;
 /**
  * Entity for managing the "physical" game world entities (units, buildings, etc.) as well as
  * conceptual entities (players, resources, ...).
+ *
+ * TODO: Remove Universe and other subclasses.
  */
 class Universe {
 public:

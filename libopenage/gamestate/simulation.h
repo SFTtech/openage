@@ -31,6 +31,7 @@ class TimeLoop;
 namespace gamestate {
 class EntityFactory;
 class Game;
+class TerrainFactory;
 
 namespace event {
 class Commander;
@@ -177,6 +178,11 @@ private:
      * Factory for creating game entities.
      */
 	std::shared_ptr<gamestate::EntityFactory> entity_factory;
+
+	/**
+     * Factory for creating terrain.
+     */
+	std::shared_ptr<gamestate::TerrainFactory> terrain_factory;
 
 	/**
      * Mod manager.

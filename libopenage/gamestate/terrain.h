@@ -9,9 +9,9 @@
 #include "util/vector.h"
 
 namespace openage {
-namespace renderer::terrain {
-class TerrainRenderEntity;
-}
+namespace renderer {
+class RenderFactory;
+} // namespace renderer
 
 namespace gamestate {
 class TerrainChunk;
@@ -21,27 +21,42 @@ class TerrainChunk;
  */
 class Terrain {
 public:
-	Terrain(const std::string &texture_path);
+	/**
+     * Create a new terrain.
+     */
+	Terrain();
 	~Terrain() = default;
 
 	/**
-	 * Set the current render entity of the terrain.
-	 *
-	 * @param entity New render entity.
-	 */
-	void set_render_entity(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &entity);
-
-	const std::vector<std::shared_ptr<TerrainChunk>> &get_chunks() const;
-
-	// TODO: This should be an event
-	void generate();
-
-private:
-	// test connection to renderer
-	void render_update();
+     * Add a chunk to the terrain.
+     *
+     * @param chunk New chunk.
+     */
+	void add_chunk(const std::shared_ptr<TerrainChunk> chunk);
 
 	/**
-     *  Total size of the map
+     * Get the chunks of the terrain.
+     *
+     * @return Terrain chunks.
+     */
+	const std::vector<std::shared_ptr<TerrainChunk>> &get_chunks() const;
+
+	/**
+	 * Attach a renderer which enables graphical display.
+     *
+     * TODO: We currently have to do attach this here too in addition to the terrain
+     *       factory because the renderer gets attached AFTER the terrain is
+     *       already created. In the future, the game should wait for the renderer
+     *       before creating the terrain.
+	 *
+	 * @param render_factory Factory for creating connector objects for gamestate->renderer
+	 *                       communication.
+	 */
+	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
+
+private:
+	/**
+     * Total size of the map
 	 * origin is the left corner
 	 * x = top left edge; y = top right edge
      */
@@ -51,14 +66,6 @@ private:
      * Subdivision of the main terrain entity.
      */
 	std::vector<std::shared_ptr<TerrainChunk>> chunks;
-
-	// ASDF: Move these members into terrain chunk
-	// Heights of the terrain grid
-	std::vector<float> height_map;
-	// path to a texture
-	std::string texture_path;
-	// render entity for pushing updates to
-	std::shared_ptr<renderer::terrain::TerrainRenderEntity> render_entity;
 };
 
 } // namespace gamestate

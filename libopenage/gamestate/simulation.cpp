@@ -9,6 +9,7 @@
 #include "gamestate/event/send_command.h"
 #include "gamestate/event/spawn_entity.h"
 #include "gamestate/event/wait.h"
+#include "gamestate/terrain_factory.h"
 #include "time/clock.h"
 #include "time/time_loop.h"
 
@@ -27,6 +28,7 @@ GameSimulation::GameSimulation(const util::Path &root_dir,
 	time_loop{time_loop},
 	event_loop{std::make_shared<openage::event::EventLoop>()},
 	entity_factory{std::make_shared<gamestate::EntityFactory>()},
+	terrain_factory{std::make_shared<gamestate::TerrainFactory>()},
 	mod_manager{std::make_shared<assets::ModManager>(this->root_dir / "assets" / "converted")},
 	spawner{std::make_shared<gamestate::event::Spawner>(this->event_loop)},
 	commander{std::make_shared<gamestate::event::Commander>(this->event_loop)} {
@@ -54,9 +56,11 @@ void GameSimulation::start() {
 
 	this->init_event_handlers();
 
+	// TODO: wait for presenter to initialize before starting?
 	this->game = std::make_shared<gamestate::Game>(event_loop,
 	                                               this->mod_manager,
-	                                               this->entity_factory);
+	                                               this->entity_factory,
+	                                               this->terrain_factory);
 
 	this->running = true;
 
@@ -114,6 +118,7 @@ void GameSimulation::attach_renderer(const std::shared_ptr<renderer::RenderFacto
 
 	this->game->attach_renderer(render_factory);
 	this->entity_factory->attach_renderer(render_factory);
+	this->terrain_factory->attach_renderer(render_factory);
 }
 
 void GameSimulation::set_modpacks(const std::vector<std::string> &modpacks) {

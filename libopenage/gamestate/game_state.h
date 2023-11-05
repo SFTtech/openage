@@ -27,6 +27,7 @@ class EventLoop;
 namespace gamestate {
 class GameEntity;
 class Player;
+class Terrain;
 
 /**
  * State of the game.
@@ -59,14 +60,21 @@ public:
      *
      * @param entity New game entity.
      */
-	void add_game_entity(const std::shared_ptr<GameEntity> &entity);
+	void add_game_entity(const std::shared_ptr<GameEntity> entity);
 
 	/**
      * Add a new player to the index.
      *
      * @param player New player.
      */
-	void add_player(const std::shared_ptr<Player> &player);
+	void add_player(const std::shared_ptr<Player> player);
+
+	/**
+     * Set the terrain of the current game.
+     *
+     * @param terrain Terrain object.
+     */
+	void set_terrain(const std::shared_ptr<Terrain> terrain);
 
 	/**
      * Get a game entity by its ID.
@@ -94,6 +102,13 @@ public:
 	const std::shared_ptr<Player> &get_player(player_id_t id) const;
 
 	/**
+     * Get the terrain of the current game.
+     *
+     * @return Terrain object.
+     */
+	const std::shared_ptr<Terrain> &get_terrain() const;
+
+	/**
      * TODO: Only for testing.
      */
 	const std::shared_ptr<assets::ModManager> &get_mod_manager() const;
@@ -114,6 +129,11 @@ private:
      * Map of all players in the current game by their ID.
      */
 	std::unordered_map<player_id_t, std::shared_ptr<Player>> players;
+
+	/**
+     * Terrain of the current game.
+     */
+	std::shared_ptr<Terrain> terrain;
 
 	/**
      * TODO: Only for testing

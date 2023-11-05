@@ -103,7 +103,7 @@ public:
      * Update the render entity.
      *
      * @param time Simulation time of the update.
-     * @param animation_path Animation path used at \p time.
+     * @param animation_path Path to the animation definition used at \p time.
      */
 	void render_update(const time::time_t &time,
 	                   const std::string &animation_path);
