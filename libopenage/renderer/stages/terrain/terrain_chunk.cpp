@@ -34,6 +34,7 @@ void TerrainChunk::fetch_updates(const time::time_t &time) {
 	// TODO: Change mesh instead of recreating it
 	// TODO: Multiple meshes
 	auto new_mesh = this->create_mesh();
+	new_mesh->create_model_matrix(this->offset);
 	this->meshes.clear();
 	this->meshes.push_back(new_mesh);
 
@@ -109,7 +110,7 @@ std::shared_ptr<TerrainRenderMesh> TerrainChunk::create_mesh() {
 	// Update textures
 	auto tex_manager = this->asset_manager->get_texture_manager();
 
-	// TODO: Support multiple textures per terrain
+	// TODO: Support multiple textures per chunk
 
 	auto terrain_mesh = std::make_shared<TerrainRenderMesh>(
 		this->asset_manager,
@@ -117,6 +118,14 @@ std::shared_ptr<TerrainRenderMesh> TerrainChunk::create_mesh() {
 		std::move(meshdata));
 
 	return terrain_mesh;
+}
+
+util::Vector2s &TerrainChunk::get_size() {
+	return this->size;
+}
+
+util::Vector2s &TerrainChunk::get_offset() {
+	return this->offset;
 }
 
 } // namespace openage::renderer::terrain

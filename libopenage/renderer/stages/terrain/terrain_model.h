@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "time/time.h"
+#include "util/vector.h"
 
 
 namespace openage::renderer {
@@ -33,11 +34,15 @@ public:
 	~TerrainRenderModel() = default;
 
 	/**
-     * Set the terrain render entity for vertex updates of this mesh.
+     * Add a new chunk to the terrain model.
      *
-     * @param entity New terrain render entity.
+     * @param entity Render entity of the chunk.
+     * @param chunk_size Size of the chunk in tiles.
+     * @param chunk_offset Offset of the chunk from origin in tiles.
      */
-	void set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity);
+	void add_chunk(const std::shared_ptr<TerrainRenderEntity> &entity,
+	               const util::Vector2s chunk_size,
+	               const util::Vector2s chunk_offset);
 
 	/**
      * Set the current camera of the scene.

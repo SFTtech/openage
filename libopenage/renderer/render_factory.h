@@ -4,6 +4,9 @@
 
 #include <memory>
 
+#include "util/vector.h"
+
+
 namespace openage::renderer {
 namespace terrain {
 class TerrainRenderer;
@@ -35,9 +38,16 @@ public:
 	/**
      * Create a new terrain render entity and register it at the terrain renderer.
      *
+     * Render entities for terrain are associated with chunks, so a new render entity
+     * will result in the creation of a new chunk in the renderer.
+     *
+     * Size/offset of the chunk in the game simulation should match size/offset
+     * in the renderer.
+     *
      * @return Render entity for pushing terrain updates.
      */
-	std::shared_ptr<terrain::TerrainRenderEntity> add_terrain_render_entity();
+	std::shared_ptr<terrain::TerrainRenderEntity> add_terrain_render_entity(const util::Vector2s chunk_size,
+	                                                                        const util::Vector2s chunk_offset);
 
 	/**
      * Create a new world render entity and register it at the world renderer.

@@ -37,4 +37,12 @@ void TerrainChunk::render_update(const time::time_t &time,
 	}
 }
 
+const util::Vector2s &TerrainChunk::get_size() const {
+	return this->size;
+}
+
+const util::Vector2s &TerrainChunk::get_offset() const {
+	return this->offset;
+}
+
 } // namespace openage::gamestate

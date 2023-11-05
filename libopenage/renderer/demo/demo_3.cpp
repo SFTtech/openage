@@ -113,9 +113,6 @@ void renderer_demo_3(const util::Path &path) {
 	// Create some entities to populate the scene
 	auto render_factory = std::make_shared<RenderFactory>(terrain_renderer, world_renderer);
 
-	// Terrain
-	auto terrain0 = render_factory->add_terrain_render_entity();
-
 	// Fill a 10x10 terrain grid with height values
 	auto terrain_size = util::Vector2s{10, 10};
 	std::vector<float> height_map{};
@@ -123,6 +120,10 @@ void renderer_demo_3(const util::Path &path) {
 	for (size_t i = 0; i < terrain_size[0] * terrain_size[1]; ++i) {
 		height_map.push_back(0.0f);
 	}
+
+	// Create entity for terrain rendering
+	auto terrain0 = render_factory->add_terrain_render_entity(terrain_size,
+	                                                          util::Vector2s{0, 0});
 
 	// Create "test bumps" in the terrain to check if rendering works
 	height_map[11] = 1.0f;

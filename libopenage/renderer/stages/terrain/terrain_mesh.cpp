@@ -70,7 +70,7 @@ void TerrainRenderMesh::update_uniforms(const time::time_t &time) {
 	}
 
 	// local space -> world space
-	this->uniforms->update("model", this->get_model_matrix());
+	this->uniforms->update("model", this->model_matrix);
 
 	auto tex_info = this->terrain_info.get(time)->get_texture(0);
 	auto tex_manager = this->asset_manager->get_texture_manager();
@@ -97,10 +97,11 @@ const std::shared_ptr<renderer::UniformInput> &TerrainRenderMesh::get_uniforms()
 	return this->uniforms;
 }
 
-Eigen::Matrix4f TerrainRenderMesh::get_model_matrix() {
+void TerrainRenderMesh::create_model_matrix(util::Vector2s &offset) {
 	// TODO: Needs input from engine
-	auto transform = Eigen::Affine3f::Identity();
-	return transform.matrix();
+	auto model = Eigen::Affine3f::Identity();
+	model.translate(Eigen::Vector3f{offset[0], offset[1], 0.0f});
+	this->model_matrix = model.matrix();
 }
 
 bool TerrainRenderMesh::is_changed() {

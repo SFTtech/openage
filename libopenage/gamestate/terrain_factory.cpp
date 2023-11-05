@@ -25,7 +25,7 @@ std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const util::Vector2s siz
 	auto chunk = std::make_shared<TerrainChunk>(size, offset);
 
 	if (this->render_factory) {
-		auto render_entity = this->render_factory->add_terrain_render_entity();
+		auto render_entity = this->render_factory->add_terrain_render_entity(size, offset);
 		chunk->set_render_entity(render_entity);
 
 		chunk->render_update(time::time_t::zero(),

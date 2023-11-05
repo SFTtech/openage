@@ -37,6 +37,8 @@ public:
      * Set the terrain render entity for vertex updates of this mesh.
      *
      * @param entity New terrain render entity.
+     * @param size Size of the chunk in tiles.
+     * @param offset Offset of the chunk from origin in tiles.
      */
 	void set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity);
 
@@ -60,6 +62,20 @@ public:
      * @return Vector of terrain meshes.
      */
 	const std::vector<std::shared_ptr<TerrainRenderMesh>> &get_meshes() const;
+
+	/**
+     * Get the size of the chunk in tiles.
+     *
+     * @return Size of the chunk (in tiles).
+     */
+	util::Vector2s &get_size();
+
+	/**
+     * Get the offset of the chunk from origin in tiles.
+     *
+     * @return Offset of the chunk (in tiles).
+     */
+	util::Vector2s &get_offset();
 
 private:
 	/**

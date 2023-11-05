@@ -6,6 +6,8 @@
 #include <shared_mutex>
 
 #include "util/path.h"
+#include "util/vector.h"
+
 
 namespace openage {
 
@@ -54,11 +56,15 @@ public:
 	std::shared_ptr<renderer::RenderPass> get_render_pass();
 
 	/**
-	 * Set the current render entity of the terrain renderer.
+	 * Add a new render entity to the terrain renderer.
+     *
+     * This creates a new terrain chunk and add it to the model.
 	 *
 	 * @param render_entity New render entity.
 	 */
-	void set_render_entity(const std::shared_ptr<TerrainRenderEntity> entity);
+	void add_render_entity(const std::shared_ptr<TerrainRenderEntity> entity,
+	                       const util::Vector2s chunk_size,
+	                       const util::Vector2s chunk_offset);
 
 	/**
 	 * Update the terrain mesh and texture information.

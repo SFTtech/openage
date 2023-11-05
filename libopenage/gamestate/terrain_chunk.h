@@ -40,6 +40,20 @@ public:
 	void render_update(const time::time_t &time,
 	                   const std::string &terrain_path);
 
+	/**
+     * Get the size of this terrain chunk.
+     *
+     * @return Size of the terrain chunk (in tiles).
+     */
+	const util::Vector2s &get_size() const;
+
+	/**
+     * Get the offset of this terrain chunk to the terrain origin.
+     *
+     * @return Offset of the terrain chunk (in tiles).
+     */
+	const util::Vector2s &get_offset() const;
+
 private:
 	/**
      * Size of the terrain chunk.
