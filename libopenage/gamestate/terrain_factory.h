@@ -46,7 +46,8 @@ public:
      *
      * @return New terrain chunk.
      */
-	std::shared_ptr<TerrainChunk> add_chunk(const util::Vector2s size,
+	std::shared_ptr<TerrainChunk> add_chunk(const std::shared_ptr<GameState> &gstate,
+	                                        const util::Vector2s size,
 	                                        const coord::tile_delta offset);
 
 	// TODO: Add tiles
