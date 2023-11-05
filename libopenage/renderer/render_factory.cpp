@@ -2,6 +2,7 @@
 
 #include "render_factory.h"
 
+#include "coord/phys.h"
 #include "renderer/stages/terrain/terrain_render_entity.h"
 #include "renderer/stages/terrain/terrain_renderer.h"
 #include "renderer/stages/world/world_render_entity.h"
@@ -15,9 +16,9 @@ RenderFactory::RenderFactory(const std::shared_ptr<terrain::TerrainRenderer> ter
 }
 
 std::shared_ptr<terrain::TerrainRenderEntity> RenderFactory::add_terrain_render_entity(const util::Vector2s chunk_size,
-                                                                                       const util::Vector2s chunk_offset) {
+                                                                                       const coord::tile_delta chunk_offset) {
 	auto entity = std::make_shared<terrain::TerrainRenderEntity>();
-	this->terrain_renderer->add_render_entity(entity, chunk_size, chunk_offset);
+	this->terrain_renderer->add_render_entity(entity, chunk_size, chunk_offset.to_phys2().to_scene2());
 
 	return entity;
 }

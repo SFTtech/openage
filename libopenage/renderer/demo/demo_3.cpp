@@ -5,6 +5,7 @@
 #include <eigen3/Eigen/Dense>
 #include <QKeyEvent>
 
+#include "coord/tile.h"
 #include "renderer/camera/camera.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
@@ -20,6 +21,7 @@
 #include "renderer/stages/world/world_renderer.h"
 #include "renderer/uniform_buffer.h"
 #include "time/clock.h"
+
 
 namespace openage::renderer::tests {
 
@@ -123,7 +125,7 @@ void renderer_demo_3(const util::Path &path) {
 
 	// Create entity for terrain rendering
 	auto terrain0 = render_factory->add_terrain_render_entity(terrain_size,
-	                                                          util::Vector2s{0, 0});
+	                                                          coord::tile_delta{0, 0});
 
 	// Create "test bumps" in the terrain to check if rendering works
 	height_map[11] = 1.0f;

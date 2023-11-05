@@ -49,4 +49,12 @@ phys3 tile3::to_phys3() const {
 }
 
 
+phys2_delta tile_delta::to_phys2() const {
+	return phys2_delta(this->ne, this->se);
+}
+
+phys3_delta tile_delta::to_phys3(tile_t up) const {
+	return phys3_delta(this->ne, this->se, up);
+}
+
 } // namespace openage::coord

@@ -4,6 +4,7 @@
 
 #include <memory>
 
+#include "coord/tile.h"
 #include "util/vector.h"
 
 
@@ -47,7 +48,7 @@ public:
      * @return Render entity for pushing terrain updates.
      */
 	std::shared_ptr<terrain::TerrainRenderEntity> add_terrain_render_entity(const util::Vector2s chunk_size,
-	                                                                        const util::Vector2s chunk_offset);
+	                                                                        const coord::tile_delta chunk_offset);
 
 	/**
      * Create a new world render entity and register it at the world renderer.

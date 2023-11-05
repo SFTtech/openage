@@ -6,7 +6,7 @@
 namespace openage::gamestate {
 
 TerrainChunk::TerrainChunk(const util::Vector2s size,
-                           const util::Vector2s offset) :
+                           const coord::tile_delta offset) :
 	size{size},
 	offset{offset},
 	height_map{} {
@@ -41,7 +41,7 @@ const util::Vector2s &TerrainChunk::get_size() const {
 	return this->size;
 }
 
-const util::Vector2s &TerrainChunk::get_offset() const {
+const coord::tile_delta &TerrainChunk::get_offset() const {
 	return this->offset;
 }
 

@@ -28,7 +28,7 @@ TerrainRenderModel::TerrainRenderModel(const std::shared_ptr<renderer::resources
 
 void TerrainRenderModel::add_chunk(const std::shared_ptr<TerrainRenderEntity> &entity,
                                    const util::Vector2s size,
-                                   const util::Vector2s offset) {
+                                   const coord::scene2_delta offset) {
 	auto chunk = std::make_shared<TerrainChunk>(this->asset_manager, size, offset);
 	chunk->set_render_entity(entity);
 	chunk->fetch_updates();

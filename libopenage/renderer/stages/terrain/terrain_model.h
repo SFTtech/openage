@@ -5,6 +5,7 @@
 #include <memory>
 #include <vector>
 
+#include "coord/scene.h"
 #include "time/time.h"
 #include "util/vector.h"
 
@@ -42,7 +43,7 @@ public:
      */
 	void add_chunk(const std::shared_ptr<TerrainRenderEntity> &entity,
 	               const util::Vector2s chunk_size,
-	               const util::Vector2s chunk_offset);
+	               const coord::scene2_delta chunk_offset);
 
 	/**
      * Set the current camera of the scene.

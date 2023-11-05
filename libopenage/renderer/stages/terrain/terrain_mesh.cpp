@@ -97,10 +97,10 @@ const std::shared_ptr<renderer::UniformInput> &TerrainRenderMesh::get_uniforms()
 	return this->uniforms;
 }
 
-void TerrainRenderMesh::create_model_matrix(util::Vector2s &offset) {
+void TerrainRenderMesh::create_model_matrix(const coord::scene2_delta &offset) {
 	// TODO: Needs input from engine
 	auto model = Eigen::Affine3f::Identity();
-	model.translate(Eigen::Vector3f{offset[0], offset[1], 0.0f});
+	model.translate(Eigen::Vector3f{offset.ne.to_float(), offset.se.to_float(), 0.0f});
 	this->model_matrix = model.matrix();
 }
 

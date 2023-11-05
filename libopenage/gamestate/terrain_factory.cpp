@@ -21,7 +21,7 @@ std::shared_ptr<Terrain> TerrainFactory::add_terrain() {
 }
 
 std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const util::Vector2s size,
-                                                        const util::Vector2s offset) {
+                                                        const coord::tile_delta offset) {
 	auto chunk = std::make_shared<TerrainChunk>(size, offset);
 
 	if (this->render_factory) {

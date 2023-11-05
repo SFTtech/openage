@@ -19,6 +19,7 @@
 #include "util/path.h"
 #include "util/strings.h"
 
+#include "coord/tile.h"
 
 namespace openage::gamestate {
 
@@ -128,8 +129,8 @@ void Game::load_path(const util::Path &base_dir,
 void Game::generate_terrain(const std::shared_ptr<TerrainFactory> &terrain_factory) {
 	auto terrain = terrain_factory->add_terrain();
 
-	auto chunk0 = terrain_factory->add_chunk(util::Vector2s{10, 10}, util::Vector2s{0, 0});
-	auto chunk1 = terrain_factory->add_chunk(util::Vector2s{10, 10}, util::Vector2s{10, 0});
+	auto chunk0 = terrain_factory->add_chunk(util::Vector2s{10, 10}, coord::tile_delta{0, 0});
+	auto chunk1 = terrain_factory->add_chunk(util::Vector2s{10, 10}, coord::tile_delta{10, 0});
 	terrain->add_chunk(chunk0);
 	terrain->add_chunk(chunk1);
 

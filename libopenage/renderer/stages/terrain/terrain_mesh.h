@@ -7,6 +7,7 @@
 
 #include <eigen3/Eigen/Dense>
 
+#include "coord/scene.h"
 #include "curve/discrete.h"
 #include "renderer/resources/mesh_data.h"
 #include "time/time.h"
@@ -115,7 +116,7 @@ public:
      *
      * @param offset Offset of the terrain mesh to the scene origin.
 	 */
-	void create_model_matrix(util::Vector2s &offset);
+	void create_model_matrix(const coord::scene2_delta &offset);
 
 	/**
 	 * Check whether the mesh or texture were changed.

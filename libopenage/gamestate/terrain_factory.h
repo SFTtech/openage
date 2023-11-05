@@ -5,6 +5,7 @@
 #include <memory>
 #include <shared_mutex>
 
+#include "coord/tile.h"
 #include "util/vector.h"
 
 
@@ -46,7 +47,7 @@ public:
      * @return New terrain chunk.
      */
 	std::shared_ptr<TerrainChunk> add_chunk(const util::Vector2s size,
-	                                        const util::Vector2s offset);
+	                                        const coord::tile_delta offset);
 
 	// TODO: Add tiles
 	// std::shared_ptr<TerrainTile> add_tile(const std::shared_ptr<openage::event::EventLoop> &loop,

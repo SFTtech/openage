@@ -4,6 +4,7 @@
 
 #include <eigen3/Eigen/Dense>
 
+#include "coord/tile.h"
 #include "renderer/camera/camera.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
@@ -126,7 +127,7 @@ void renderer_stresstest_0(const util::Path &path) {
 
 	// Create entity for terrain rendering
 	auto terrain0 = render_factory->add_terrain_render_entity(terrain_size,
-	                                                          util::Vector2s{0, 0});
+	                                                          coord::tile_delta{0, 0});
 
 	// send the terrain data to the terrain renderer
 	terrain0->update(terrain_size,

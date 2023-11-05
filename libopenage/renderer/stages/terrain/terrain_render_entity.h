@@ -81,7 +81,7 @@ private:
 	bool changed;
 
 	/**
-     * Terrain dimensions (width x height).
+     * Chunk dimensions (width x height).
      */
 	util::Vector2s size;
 

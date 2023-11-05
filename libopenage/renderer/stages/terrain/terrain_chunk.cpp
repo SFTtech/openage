@@ -12,7 +12,7 @@ namespace openage::renderer::terrain {
 
 TerrainChunk::TerrainChunk(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
                            const util::Vector2s size,
-                           const util::Vector2s offset) :
+                           const coord::scene2_delta offset) :
 	size{size},
 	offset{offset},
 	asset_manager{asset_manager} {}
@@ -124,7 +124,7 @@ util::Vector2s &TerrainChunk::get_size() {
 	return this->size;
 }
 
-util::Vector2s &TerrainChunk::get_offset() {
+coord::scene2_delta &TerrainChunk::get_offset() {
 	return this->offset;
 }
 

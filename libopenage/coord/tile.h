@@ -22,6 +22,9 @@ namespace coord {
 
 struct tile_delta : CoordNeSeRelative<tile_t, tile, tile_delta> {
 	using CoordNeSeRelative<tile_t, tile, tile_delta>::CoordNeSeRelative;
+
+	phys2_delta to_phys2() const;
+	phys3_delta to_phys3(tile_t up = 0) const;
 };
 
 struct tile : CoordNeSeAbsolute<tile_t, tile, tile_delta> {
@@ -48,6 +51,7 @@ struct tile3_delta : CoordNeSeUpRelative<tile_t, tile3, tile3_delta> {
 	constexpr tile_delta to_tile() const {
 		return tile_delta{this->ne, this->se};
 	}
+	phys3_delta to_phys3() const;
 };
 
 struct tile3 : CoordNeSeUpAbsolute<tile_t, tile3, tile3_delta> {

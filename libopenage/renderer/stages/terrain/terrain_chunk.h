@@ -6,6 +6,7 @@
 #include <memory>
 #include <vector>
 
+#include "coord/scene.h"
 #include "time/time.h"
 #include "util/vector.h"
 
@@ -29,7 +30,7 @@ public:
      */
 	TerrainChunk(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
 	             const util::Vector2s size,
-	             const util::Vector2s offset);
+	             const coord::scene2_delta offset);
 
 	~TerrainChunk() = default;
 
@@ -75,7 +76,7 @@ public:
      *
      * @return Offset of the chunk (in tiles).
      */
-	util::Vector2s &get_offset();
+	coord::scene2_delta &get_offset();
 
 private:
 	/**
@@ -93,7 +94,7 @@ private:
 	/**
      * Offset of the chunk from origin in tiles (x, y).
      */
-	util::Vector2s offset;
+	coord::scene2_delta offset;
 
 	/**
 	 * Meshes composing the terrain. Each mesh represents a drawable vertex surface

@@ -4,6 +4,7 @@
 
 #include <vector>
 
+#include "coord/tile.h"
 #include "renderer/stages/terrain/terrain_render_entity.h"
 #include "time/time.h"
 #include "util/vector.h"
@@ -21,7 +22,7 @@ const size_t MAX_CHUNK_HEIGHT = 16;
 class TerrainChunk {
 public:
 	TerrainChunk(const util::Vector2s size,
-	             const util::Vector2s offset);
+	             const coord::tile_delta offset);
 	~TerrainChunk() = default;
 
 	/**
@@ -52,7 +53,7 @@ public:
      *
      * @return Offset of the terrain chunk (in tiles).
      */
-	const util::Vector2s &get_offset() const;
+	const coord::tile_delta &get_offset() const;
 
 private:
 	/**
@@ -65,7 +66,7 @@ private:
 	/**
      * Offset of the terrain chunk to the origin.
      */
-	util::Vector2s offset;
+	coord::tile_delta offset;
 
 	/**
      * Height map of the terrain chunk.
