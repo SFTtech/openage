@@ -5,7 +5,7 @@
 #include <QDynamicPropertyChangeEvent>
 #include <QVariant>
 
-#include "renderer/gui/guisys/link/qtsdl_checked_static_cast.h"
+#include "renderer/gui/guisys/link/qtgui_checked_static_cast.h"
 
 
 namespace qtgui {

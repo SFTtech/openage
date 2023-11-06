@@ -15,14 +15,14 @@
 #include <QRegularExpression>
 
 #include "renderer/gui/guisys/link/gui_item_link.h"
-#include "renderer/gui/guisys/link/qtsdl_checked_static_cast.h"
+#include "renderer/gui/guisys/link/qtgui_checked_static_cast.h"
 #include "renderer/gui/guisys/private/livereload/deferred_initial_constant_property_values.h"
 
 
 namespace qtgui {
 
 /**
- * Cleans a text from unneeded content like "qtsdl".
+ * Cleans a text from unneeded content like "qtgui".
  */
 QString name_tidier(const char *name);
 

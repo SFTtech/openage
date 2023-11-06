@@ -40,4 +40,4 @@ gl_debug_parameters get_current_opengl_debug_parameters(QOpenGLContext &current_
  */
 void apply_opengl_debug_parameters(gl_debug_parameters params, QOpenGLContext &current_dest_context);
 
-} // namespace qtsdl
+} // namespace qtgui

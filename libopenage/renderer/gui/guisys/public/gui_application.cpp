@@ -8,13 +8,11 @@
 
 namespace qtgui {
 
-GuiApplication::GuiApplication()
-	:
+GuiApplication::GuiApplication() :
 	application{GuiApplicationImpl::get()} {
 }
 
-GuiApplication::GuiApplication(std::shared_ptr<GuiApplicationImpl> application)
-	:
+GuiApplication::GuiApplication(std::shared_ptr<GuiApplicationImpl> application) :
 	application{application} {
 }
 
@@ -24,4 +22,4 @@ void GuiApplication::process_events() {
 	this->application->processEvents();
 }
 
-} // namespace qtsdl
+} // namespace qtgui

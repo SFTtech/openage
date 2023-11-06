@@ -51,7 +51,7 @@ qmlRegisterType<ResourceAmountLink>("yay.sfttech.openage", 1, 0, "ResourceAmount
 
 2. Specializations `struct Wrap<ResourceAmount>` and `struct Unwrap<ResourceAmountLink>` must be defined:
 ```cpp
-namespace qtsdl {
+namespace qtgui {
 template<>
 struct Wrap<ResourceAmount> {
 	using Type = ResourceAmountLink;
@@ -61,13 +61,13 @@ template<>
 struct Unwrap<ResourceAmountLink> {
 	using Type = ResourceAmount;
 };
-} // namespace qtsdl
+} // namespace qtgui
 ```
 
 3. Also ResourceAmount needs a public member to be added:
 ```cpp
 public:
-	qtsdl::GuiItemLink *gui_link
+	qtgui::GuiItemLink *gui_link
 ```
 
 4. Declare and implement needed properties and signals in the `ResourceAmountLink` using Qt property syntax.
@@ -78,7 +78,7 @@ There is a class `GeneratorParameters` in `libopenage/` directory.
 It has a big list of parameters of different types like `generation_seed`, `player_radius`, `player_names`, etc.
 So, we're not going to write a Qt property for each one:
 
-1. `GeneratorParameters` must derive from the `qtsdl::GuiPropertyMap`.
+1. `GeneratorParameters` must derive from the `qtgui::GuiPropertyMap`.
 
 2. `GeneratorParameters` should set its initial values like so:
 ```cpp
@@ -96,7 +96,7 @@ qmlRegisterType<GeneratorParametersLink>("yay.sfttech.openage", 1, 0, "Generator
 
 4. Specializations `struct Wrap<GeneratorParameters>` and `struct Unwrap<GeneratorParametersLink>` must be defined:
 ```cpp
-namespace qtsdl {
+namespace qtgui {
 template<>
 struct Wrap<GeneratorParameters> {
 	using Type = GeneratorParametersLink;
@@ -106,7 +106,7 @@ template<>
 struct Unwrap<GeneratorParametersLink> {
 	using Type = GeneratorParameters;
 };
-} // namespace qtsdl
+} // namespace qtgui
 ```
 
 That results into a `ListModel`-like QML type with `display` and `edit` roles.
