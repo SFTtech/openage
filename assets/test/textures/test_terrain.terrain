@@ -5,7 +5,7 @@ version 2
 
 texture 0 "test_terrain.texture"
 
-scalefactor 1
+scalefactor 1.0
 
 layer 0
 
