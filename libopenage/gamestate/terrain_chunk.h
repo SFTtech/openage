@@ -55,6 +55,16 @@ public:
      */
 	const coord::tile_delta &get_offset() const;
 
+	// TODO: Remove test texture references
+
+	// Set the terrain path of this terrain chunk.
+	// TODO: Remove later
+	void set_terrain_path(const std::string &terrain_path);
+
+	// Send the current texture to the renderer.
+	// TODO: Replace later with render_update(time, terrain_path)
+	void render_update(const time::time_t &time);
+
 private:
 	/**
      * Size of the terrain chunk.
@@ -77,6 +87,9 @@ private:
 	 * Render entity for pushing updates to the renderer. Can be \p nullptr.
 	 */
 	std::shared_ptr<renderer::terrain::TerrainRenderEntity> render_entity;
+
+	// TODO: Remove test texture references
+	std::string terrain_path;
 };
 
 } // namespace openage::gamestate

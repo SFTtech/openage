@@ -45,4 +45,17 @@ const coord::tile_delta &TerrainChunk::get_offset() const {
 	return this->offset;
 }
 
+void TerrainChunk::set_terrain_path(const std::string &terrain_path) {
+	this->terrain_path = terrain_path;
+}
+
+void TerrainChunk::render_update(const time::time_t &time) {
+	if (this->render_entity != nullptr) {
+		this->render_entity->update(this->size,
+		                            this->height_map,
+		                            this->terrain_path,
+		                            time);
+	}
+}
+
 } // namespace openage::gamestate

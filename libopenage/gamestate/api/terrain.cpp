@@ -4,6 +4,8 @@
 
 #include <memory>
 
+#include "gamestate/api/util.h"
+
 
 namespace openage::gamestate::api {
 
@@ -14,9 +16,9 @@ bool APITerrain::is_terrain(const nyan::Object &obj) {
 
 const std::string APITerrain::get_terrain_path(const nyan::Object &terrain) {
 	nyan::Object terrain_texture_obj = terrain.get_object("Terrain.terrain_graphic");
-	std::string sprite_path = terrain_texture_obj.get_text("TerrainTexture.sprite");
+	std::string terrain_path = terrain_texture_obj.get_file("Terrain.sprite");
 
-	return sprite_path;
+	return resolve_file_path(terrain, terrain_path);
 }
 
 } // namespace openage::gamestate::api

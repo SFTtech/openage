@@ -32,8 +32,7 @@ void Terrain::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &re
 		                                                               chunk->get_offset());
 		chunk->set_render_entity(render_entity);
 
-		chunk->render_update(time::time_t::zero(),
-		                     "../test/textures/test_terrain.terrain");
+		chunk->render_update(time::time_t::zero());
 	}
 }
 

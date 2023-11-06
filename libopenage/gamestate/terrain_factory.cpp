@@ -22,20 +22,20 @@ namespace openage::gamestate {
 static const std::vector<nyan::fqon_t> aoe1_test_terrain = {};
 static const std::vector<nyan::fqon_t> de1_test_terrain = {};
 static const std::vector<nyan::fqon_t> aoe2_test_terrain = {
-	"aoe2_base.data.terrain.foundation.Foundation",
-	"aoe2_base.data.terrain.grass.Grass",
-	"aoe2_base.data.terrain.dirt.Dirt",
+	"aoe2_base.data.terrain.foundation.foundation.Foundation",
+	"aoe2_base.data.terrain.grass.grass.Grass",
+	"aoe2_base.data.terrain.dirt.dirt.Dirt",
 };
 static const std::vector<nyan::fqon_t> de2_test_terrain = {};
 static const std::vector<nyan::fqon_t> hd_test_terrain = {
-	"hd_base.data.terrain.foundation.Foundation",
-	"hd_base.data.terrain.grass.Grass",
-	"hd_base.data.terrain.dirt.Dirt",
+	"hd_base.data.terrain.foundation.foundation.Foundation",
+	"hd_base.data.terrain.grass.grass.Grass",
+	"hd_base.data.terrain.dirt.dirt.Dirt",
 };
 static const std::vector<nyan::fqon_t> swgb_test_terrain = {
-	"swgb_base.data.terrain.desert0.Desert0",
-	"swgb_base.data.terrain.grass2.Grass2",
-	"swgb_base.data.terrain.foundation.Foundation",
+	"swgb_base.data.terrain.desert0.desert0.Desert0",
+	"swgb_base.data.terrain.grass2.grass2.Grass2",
+	"swgb_base.data.terrain.foundation.foundation.Foundation",
 };
 static const std::vector<nyan::fqon_t> trial_test_terrain = {};
 
@@ -96,32 +96,34 @@ std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const std::shared_ptr<Ga
                                                         const coord::tile_delta offset) {
 	auto chunk = std::make_shared<TerrainChunk>(size, offset);
 
+	// TODO: Remove test texture references
+	std::string test_texture_path = "../test/textures/test_terrain.terrain";
+
 	if (this->render_factory) {
 		auto render_entity = this->render_factory->add_terrain_render_entity(size, offset);
 		chunk->set_render_entity(render_entity);
 
-		std::string test_texture_path = "../test/textures/test_terrain.terrain";
-
-		// TODO: Remove test texture references
-		static size_t test_terrain_index = 0;
-		if (test_terrains.empty()) {
-			build_test_terrains(gstate);
-
-			// use one of the modpack terrain textures
-			if (not test_terrains.empty()) {
-				if (test_terrain_index >= test_terrains.size()) {
-					test_terrain_index = 0;
-				}
-				auto terrain_obj = gstate->get_db_view()->get_object(test_terrains[test_terrain_index]);
-				test_texture_path = api::APITerrain::get_terrain_path(terrain_obj);
-
-				test_terrain_index += 1;
-			}
-		}
-
 		chunk->render_update(time::time_t::zero(),
 		                     test_texture_path);
 	}
+
+	// TODO: Remove test texture references
+	if (test_terrains.empty()) {
+		build_test_terrains(gstate);
+	}
+	static size_t test_terrain_index = 0;
+	if (not test_terrains.empty()) {
+		// use one of the modpack terrain textures
+		if (test_terrain_index >= test_terrains.size()) {
+			test_terrain_index = 0;
+		}
+		auto terrain_obj = gstate->get_db_view()->get_object(test_terrains[test_terrain_index]);
+		test_texture_path = api::APITerrain::get_terrain_path(terrain_obj);
+
+		test_terrain_index += 1;
+	}
+
+	chunk->set_terrain_path(test_texture_path);
 
 	return chunk;
 }
