@@ -11,10 +11,12 @@ import typing
 from ....util.observer import Observer
 from .formats.sprite_metadata import SpriteMetadata
 from .formats.texture_metadata import TextureMetadata
+from .formats.terrain_metadata import TerrainMetadata
 
 if typing.TYPE_CHECKING:
     from openage.util.observer import Observable
-    from openage.convert.entity_object.export.formats.sprite_metadata import LayerMode
+    from openage.convert.entity_object.export.formats.sprite_metadata import LayerMode as SpriteLayerMode
+    from openage.convert.entity_object.export.formats.terrain_metadata import LayerMode as TerrainLayerMode
 
 
 class MetadataExport(Observer):
@@ -50,7 +52,7 @@ class SpriteMetadataExport(MetadataExport):
         self,
         img_filename: str,
         tex_filename: str,
-        layer_mode: LayerMode,
+        layer_mode: SpriteLayerMode,
         layer_pos: int,
         frame_rate: float,
         replay_delay: float,
@@ -62,12 +64,28 @@ class SpriteMetadataExport(MetadataExport):
         """
         Add metadata from the GenieGraphic object.
 
+        :param img_filename: Filename of the exported PNG file.
         :param tex_filename: Filename of the .texture file.
+        :param layer_mode: Animation mode (off, once, loop).
+        :param layer_pos: Layer position.
+        :param frame_rate: Time spent on each frame.
+        :param replay_delay: Time delay before replaying the animation.
+        :param frame_count: Number of frames per angle in the animation.
+        :param angle_count: Number of angles in the animation.
+        :param mirror_mode: Mirroring mode (0, 1). If 1, angles above 180 degrees are mirrored.
         :param start_angle: Angle used for the first frame in the .texture file.
         """
-        self.graphics_metadata[img_filename] = (tex_filename, layer_mode, layer_pos, frame_rate,
-                                                replay_delay, frame_count, angle_count, mirror_mode,
-                                                start_angle)
+        self.graphics_metadata[img_filename] = (
+            tex_filename,
+            layer_mode,
+            layer_pos,
+            frame_rate,
+            replay_delay,
+            frame_count,
+            angle_count,
+            mirror_mode,
+            start_angle
+        )
 
     def dump(self) -> str:
         """
@@ -191,3 +209,72 @@ class TextureMetadataExport(MetadataExport):
             texture_metadata = message[self.imagefile]
             self.size = texture_metadata["size"]
             self.subtex_metadata = texture_metadata["subtex_metadata"]
+
+
+class TerrainMetadataExport(MetadataExport):
+    """
+    Export requests for texture definition files.
+    """
+
+    def __init__(self, targetdir, target_filename):
+        super().__init__(targetdir, target_filename)
+
+        self.graphics_metadata: dict[int, tuple] = {}
+        self.subtex_count: dict[str, int] = {}
+
+    def add_graphics_metadata(
+        self,
+        img_filename: str,
+        tex_filename: str,
+        layer_mode: TerrainLayerMode,
+        layer_pos: int,
+        frame_rate: float,
+        replay_delay: float,
+        frame_count: int,
+    ):
+        """
+        Add metadata from the GenieGraphic object.
+
+        :param img_filename: Filename of the exported PNG file.
+        :param tex_filename: Filename of the .texture file.
+        :param layer_mode: Animation mode (off, loop).
+        :param layer_pos: Layer position.
+        :param frame_rate: Time spent on each frame.
+        :param replay_delay: Time delay before replaying the animation.
+        :param frame_count: Number of frames in the animation.
+        """
+        self.graphics_metadata[img_filename] = (
+            tex_filename,
+            layer_mode,
+            layer_pos,
+            frame_rate,
+            replay_delay,
+            frame_count
+        )
+
+    def dump(self) -> str:
+        """
+        Creates a human-readable string that can be written to a file.
+        """
+        terrain_file = TerrainMetadata(self.targetdir, self.filename)
+
+        tex_index = 0
+        for _, metadata in self.graphics_metadata.items():
+            tex_filename = metadata[0]
+            terrain_file.add_texture(tex_index, tex_filename)
+            terrain_file.add_layer(tex_index, *metadata[1:5])
+
+            frame_count = metadata[5]
+
+            for frame_idx in range(frame_count):
+                subtex_index = frame_idx
+                terrain_file.add_frame(
+                    frame_idx,
+                    tex_index,
+                    tex_index,
+                    subtex_index
+                )
+
+            tex_index += 1
+
+        return terrain_file.dump()

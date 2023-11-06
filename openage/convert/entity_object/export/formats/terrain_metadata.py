@@ -158,7 +158,9 @@ class TerrainMetadata(DataDefinition):
         output_str += "\n"
 
         # blendtable reference
-        output_str += f"blendtable {self.blendtable['table_id']} {self.blendtable['filename']}\n\n"
+        if self.blendtable:
+            output_str += (f"blendtable {self.blendtable['table_id']} "
+                           "{self.blendtable['filename']}\n\n")
 
         # scale factor
         output_str += f"scalefactor {self.scalefactor}\n\n"
@@ -185,7 +187,16 @@ class TerrainMetadata(DataDefinition):
 
         # frame definitions
         for frame in self.frames:
-            output_str += f'frame {" ".join(str(param) for param in frame.values())}\n'
+            frame_attributes = list(frame.values())
+            output_str += f'frame {" ".join(str(param) for param in frame_attributes[:4])}'
+
+            if frame["priority"]:
+                output_str += f" priority={frame['priority']}"
+
+            if frame["blend_mode"]:
+                output_str += f" blend_mode={frame['blend_mode']}"
+
+            output_str += "\n"
 
         return output_str
 

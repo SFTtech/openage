@@ -9,9 +9,12 @@ requests. Subroutine of the main HD processor.
 from __future__ import annotations
 import typing
 
-from ....entity_object.export.formats.sprite_metadata import LayerMode
+from ....entity_object.export.formats.sprite_metadata import LayerMode as SpriteLayerMode
+from ....entity_object.export.formats.terrain_metadata import LayerMode as TerrainLayerMode
 from ....entity_object.export.media_export_request import MediaExportRequest
-from ....entity_object.export.metadata_export import SpriteMetadataExport, TextureMetadataExport
+from ....entity_object.export.metadata_export import SpriteMetadataExport
+from ....entity_object.export.metadata_export import TextureMetadataExport
+from ....entity_object.export.metadata_export import TerrainMetadataExport
 from ....value_object.read.media_types import MediaType
 
 if typing.TYPE_CHECKING:
@@ -77,13 +80,13 @@ class HDMediaSubprocessor:
                 # Add metadata from graphics to animation metadata
                 sequence_type = graphic["sequence_type"].value
                 if sequence_type == 0x00:
-                    layer_mode = LayerMode.OFF
+                    layer_mode = SpriteLayerMode.OFF
 
                 elif sequence_type & 0x08:
-                    layer_mode = LayerMode.ONCE
+                    layer_mode = SpriteLayerMode.ONCE
 
                 else:
-                    layer_mode = LayerMode.LOOP
+                    layer_mode = SpriteLayerMode.LOOP
 
                 layer_pos = graphic["layer"].value
                 frame_rate = round(graphic["frame_rate"].value, ndigits=6)
@@ -127,6 +130,44 @@ class HDMediaSubprocessor:
                                                 source_filename,
                                                 target_filename)
             full_data_set.graphics_exports.update({slp_id: export_request})
+
+            texture_meta_filename = f"{texture.get_filename()}.texture"
+            texture_meta_export = TextureMetadataExport(targetdir,
+                                                        texture_meta_filename)
+            full_data_set.metadata_exports.append(texture_meta_export)
+
+            # Add texture image filename to texture metadata
+            texture_meta_export.add_imagefile(target_filename)
+            texture_meta_export.update(
+                None,
+                {
+                    f"{target_filename}": {
+                        "size": (512, 512),
+                        "subtex_metadata": [
+                            {
+                                "x":  0,
+                                "y":  0,
+                                "w":  512,
+                                "h":  512,
+                                "cx": 0,
+                                "cy": 0,
+                            }
+                        ]
+                    }}
+            )
+
+            terrain_meta_filename = f"{texture.get_filename()}.terrain"
+            terrain_meta_export = TerrainMetadataExport(targetdir,
+                                                        terrain_meta_filename)
+            full_data_set.metadata_exports.append(terrain_meta_export)
+
+            terrain_meta_export.add_graphics_metadata(target_filename,
+                                                      texture_meta_filename,
+                                                      TerrainLayerMode.OFF,
+                                                      0,
+                                                      0.0,
+                                                      0.0,
+                                                      1)
 
     @staticmethod
     def create_sound_requests(full_data_set: GenieObjectContainer) -> None:
