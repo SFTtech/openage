@@ -60,7 +60,8 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 
 	// TODO: check if action is allowed
 	auto bind = ctx->lookup(ev_args.e);
-	auto game_event = bind.transform(ev_args, *this);
+	auto controller = this->shared_from_this();
+	auto game_event = bind.transform(ev_args, controller);
 
 	switch (bind.action_type) {
 	case forward_action_t::SEND:
@@ -90,15 +91,14 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<openage::gamestate::GameSimulation> &simulation,
                     const std::shared_ptr<renderer::camera::Camera> &camera) {
 	binding_func_t create_entity_event{[&](const event_arguments &args,
-	                                       const Controller &controller) {
+	                                       const std::shared_ptr<Controller> controller) {
 		auto mouse_pos = args.mouse.to_phys3(camera);
 		event::EventHandler::param_map::map_t params{
 			{"position", mouse_pos},
-			{"owner", controller.get_controlled()},
+			{"owner", controller->get_controlled()},
 			// TODO: Remove
-			{"select_cb", std::function<void(gamestate::entity_id_t id)>{[&controller](gamestate::entity_id_t id) {
-				 auto &mut_controller = const_cast<Controller &>(controller);
-				 mut_controller.set_selected({id});
+			{"select_cb", std::function<void(gamestate::entity_id_t id)>{[controller](gamestate::entity_id_t id) {
+				 controller->set_selected({id});
 			 }}},
 		};
 
@@ -117,12 +117,12 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 	ctx->bind(ev_mouse_lmb, create_entity_action);
 
 	binding_func_t move_entity{[&](const event_arguments &args,
-	                               const Controller &controller) {
+	                               const std::shared_ptr<Controller> controller) {
 		auto mouse_pos = args.mouse.to_phys3(camera);
 		event::EventHandler::param_map::map_t params{
 			{"type", gamestate::component::command::command_t::MOVE},
 			{"target", mouse_pos},
-			{"entity_ids", controller.get_selected()},
+			{"entity_ids", controller->get_selected()},
 		};
 
 		auto event = simulation->get_event_loop()->create_event(

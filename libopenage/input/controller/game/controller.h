@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <memory>
 #include <mutex>
 #include <unordered_set>
 
@@ -32,7 +33,7 @@ class BindingContext;
  *
  * TODO: Connection to engine
  */
-class Controller {
+class Controller : public std::enable_shared_from_this<Controller> {
 public:
 	Controller(const std::unordered_set<size_t> &controlled_factions,
 	           size_t active_faction_id);
