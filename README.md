@@ -128,7 +128,7 @@ Quickstart
    ```
 
 * **I compiled everything. Now how do I run it?**
-    * Execute `./bin/run`.
+    * Execute `cd bin && ./run main`.
     * [The convert script](/doc/media_convert.md) will transform original assets into openage formats, which are a lot saner and more moddable.
     * Use your brain and react to the things you'll see.
 
