@@ -135,8 +135,16 @@ void Game::generate_terrain(const std::shared_ptr<TerrainFactory> &terrain_facto
 	auto chunk1 = terrain_factory->add_chunk(this->state,
 	                                         util::Vector2s{10, 10},
 	                                         coord::tile_delta{10, 0});
+	auto chunk2 = terrain_factory->add_chunk(this->state,
+	                                         util::Vector2s{10, 10},
+	                                         coord::tile_delta{0, 10});
+	auto chunk3 = terrain_factory->add_chunk(this->state,
+	                                         util::Vector2s{10, 10},
+	                                         coord::tile_delta{10, 10});
 	terrain->add_chunk(chunk0);
 	terrain->add_chunk(chunk1);
+	terrain->add_chunk(chunk2);
+	terrain->add_chunk(chunk3);
 
 	this->state->set_terrain(terrain);
 }
