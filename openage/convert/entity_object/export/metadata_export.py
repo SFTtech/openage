@@ -15,8 +15,10 @@ from .formats.terrain_metadata import TerrainMetadata
 
 if typing.TYPE_CHECKING:
     from openage.util.observer import Observable
-    from openage.convert.entity_object.export.formats.sprite_metadata import LayerMode as SpriteLayerMode
-    from openage.convert.entity_object.export.formats.terrain_metadata import LayerMode as TerrainLayerMode
+    from openage.convert.entity_object.export.formats.sprite_metadata import LayerMode\
+        as SpriteLayerMode
+    from openage.convert.entity_object.export.formats.terrain_metadata import LayerMode\
+        as TerrainLayerMode
 
 
 class MetadataExport(Observer):

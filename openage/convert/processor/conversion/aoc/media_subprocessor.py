@@ -1,6 +1,6 @@
 # Copyright 2019-2023 the openage authors. See copying.md for legal info.
 #
-# pylint: disable=too-many-locals,too-few-public-methods
+# pylint: disable=too-many-locals,too-few-public-methods,too-many-statements
 """
 Convert media information to metadata definitions and export
 requests. Subroutine of the main AoC processor.
