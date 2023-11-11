@@ -25,7 +25,7 @@ QSize textureSize(const SizedTextureHandle &texture_handle) {
 	return texture_handle.size;
 }
 
-QSize native_size(const TextureHandle &texture_handle) {
+QSize native_size(const TextureHandle & /* texture_handle */) {
 	return QSize(0, 0);
 }
 

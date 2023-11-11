@@ -146,7 +146,7 @@ std::shared_ptr<Renderer> GlWindow::make_renderer() {
 	auto renderer = std::make_shared<GlRenderer>(this->get_context(),
 	                                             this->size * this->scale_dpr);
 
-	this->add_resize_callback([this, renderer](size_t w, size_t h, double scale) {
+	this->add_resize_callback([renderer](size_t w, size_t h, double scale) {
 		// this up-scales all the default framebuffer to the "bigger" highdpi window.
 		renderer->resize_display_target(w * scale, h * scale);
 	});

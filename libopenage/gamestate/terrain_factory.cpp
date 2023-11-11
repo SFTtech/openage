@@ -9,6 +9,7 @@
 #include "gamestate/api/terrain.h"
 #include "gamestate/terrain.h"
 #include "gamestate/terrain_chunk.h"
+#include "gamestate/terrain_tile.h"
 #include "renderer/render_factory.h"
 #include "renderer/stages/terrain/terrain_render_entity.h"
 #include "time/time.h"
@@ -121,7 +122,7 @@ std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const std::shared_ptr<Ga
 	std::vector<TerrainTile> tiles{};
 	tiles.reserve(size[0] * size[1]);
 	for (size_t i = 0; i < size[0] * size[1]; ++i) {
-		tiles.emplace_back(terrain_obj, test_texture_path, 0.0f);
+		tiles.push_back({terrain_obj, test_texture_path, terrain_elevation_t::zero()});
 	}
 
 	auto chunk = std::make_shared<TerrainChunk>(size, offset, std::move(tiles));

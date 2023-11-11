@@ -96,7 +96,7 @@ void Game::load_path(const util::Path &base_dir,
 	auto base_path = base_dir.resolve_native_path();
 	auto search_path = base_dir / mod_dir / search;
 
-	auto fileload_func = [&base_path, &mod_dir](const std::string &filename) {
+	auto fileload_func = [&base_path](const std::string &filename) {
 		// nyan wants a string filepath, so we have to construct it from the
 		// path and subpath parameters
 		log::log(INFO << "Loading .nyan file: " << filename);
