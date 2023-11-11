@@ -16,7 +16,6 @@
 
 #include "../datastructure/pairing_heap.h"
 #include "../log/log.h"
-#include "../terrain/terrain.h"
 #include "../util/strings.h"
 #include "heuristics.h"
 #include "path.h"

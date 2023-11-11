@@ -5,7 +5,6 @@
 #include "coord/pixel.h"
 #include "coord/scene.h"
 #include "coord/tile.h"
-#include "terrain/terrain.h"
 #include "util/math.h"
 #include "util/math_constants.h"
 

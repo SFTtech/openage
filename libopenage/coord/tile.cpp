@@ -2,7 +2,9 @@
 
 #include "tile.h"
 
-#include "../terrain/terrain.h"
+#include "chunk.h"
+#include "phys.h"
+
 
 namespace openage::coord {
 

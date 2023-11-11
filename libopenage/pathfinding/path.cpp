@@ -2,7 +2,6 @@
 
 #include <cmath>
 
-#include "../terrain/terrain.h"
 #include "path.h"
 
 namespace openage::path {
