@@ -9,6 +9,7 @@ add_sources(libopenage
     simulation.cpp
 	terrain_chunk.cpp
     terrain_factory.cpp
+    terrain_tile.cpp
 	terrain.cpp
     types.cpp
 	world.cpp
