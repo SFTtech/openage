@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "coord/tile.h"
+#include "gamestate/terrain_tile.h"
 #include "renderer/stages/terrain/terrain_render_entity.h"
 #include "time/time.h"
 #include "util/vector.h"
@@ -22,7 +23,8 @@ const size_t MAX_CHUNK_HEIGHT = 16;
 class TerrainChunk {
 public:
 	TerrainChunk(const util::Vector2s size,
-	             const coord::tile_delta offset);
+	             const coord::tile_delta offset,
+	             const std::vector<TerrainTile> &&tiles);
 	~TerrainChunk() = default;
 
 	/**
@@ -81,7 +83,7 @@ private:
 	/**
      * Height map of the terrain chunk.
      */
-	std::vector<float> height_map;
+	std::vector<TerrainTile> tiles;
 
 	/**
 	 * Render entity for pushing updates to the renderer. Can be \p nullptr.

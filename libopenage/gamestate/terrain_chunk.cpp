@@ -6,20 +6,15 @@
 namespace openage::gamestate {
 
 TerrainChunk::TerrainChunk(const util::Vector2s size,
-                           const coord::tile_delta offset) :
+                           const coord::tile_delta offset,
+                           const std::vector<TerrainTile> &&tiles) :
 	size{size},
 	offset{offset},
-	height_map{} {
+	tiles{tiles} {
 	if (this->size[0] > MAX_CHUNK_WIDTH || this->size[1] > MAX_CHUNK_HEIGHT) {
 		throw Error(MSG(err) << "Terrain chunk size exceeds maximum size: "
 		                     << this->size[0] << "x" << this->size[1] << " > "
 		                     << MAX_CHUNK_WIDTH << "x" << MAX_CHUNK_HEIGHT);
-	}
-
-	// fill the terrain grid with height values
-	this->height_map.reserve(this->size[0] * this->size[1]);
-	for (size_t i = 0; i < this->size[0] * this->size[1]; ++i) {
-		this->height_map.push_back(0.0f);
 	}
 }
 
@@ -30,9 +25,15 @@ void TerrainChunk::set_render_entity(const std::shared_ptr<renderer::terrain::Te
 void TerrainChunk::render_update(const time::time_t &time,
                                  const std::string &terrain_path) {
 	if (this->render_entity != nullptr) {
+		// TODO: Update individual tiles instead of the whole chunk
+		std::vector<std::pair<terrain_elevation_t, std::string>> tiles;
+		tiles.reserve(this->tiles.size());
+		for (const auto &tile : this->tiles) {
+			tiles.emplace_back(tile.elevation, terrain_path);
+		}
+
 		this->render_entity->update(this->size,
-		                            this->height_map,
-		                            terrain_path,
+		                            tiles,
 		                            time);
 	}
 }
@@ -51,9 +52,15 @@ void TerrainChunk::set_terrain_path(const std::string &terrain_path) {
 
 void TerrainChunk::render_update(const time::time_t &time) {
 	if (this->render_entity != nullptr) {
+		// TODO: Update individual tiles instead of the whole chunk
+		std::vector<std::pair<terrain_elevation_t, std::string>> tiles;
+		tiles.reserve(this->tiles.size());
+		for (const auto &tile : this->tiles) {
+			tiles.emplace_back(tile.elevation, terrain_path);
+		}
+
 		this->render_entity->update(this->size,
-		                            this->height_map,
-		                            this->terrain_path,
+		                            tiles,
 		                            time);
 	}
 }

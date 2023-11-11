@@ -94,10 +94,37 @@ void build_test_terrains(const std::shared_ptr<GameState> &gstate) {
 std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const std::shared_ptr<GameState> &gstate,
                                                         const util::Vector2s size,
                                                         const coord::tile_delta offset) {
-	auto chunk = std::make_shared<TerrainChunk>(size, offset);
-
 	// TODO: Remove test texture references
 	std::string test_texture_path = "../test/textures/test_terrain.terrain";
+
+	// TODO: Remove test texture references
+	// ==========
+	std::optional<nyan::Object> terrain_obj;
+	if (test_terrains.empty()) {
+		build_test_terrains(gstate);
+	}
+
+	static size_t test_terrain_index = 0;
+	if (not test_terrains.empty()) {
+		// use one of the modpack terrain textures
+		if (test_terrain_index >= test_terrains.size()) {
+			test_terrain_index = 0;
+		}
+		terrain_obj = gstate->get_db_view()->get_object(test_terrains[test_terrain_index]);
+		test_texture_path = api::APITerrain::get_terrain_path(terrain_obj.value());
+
+		test_terrain_index += 1;
+	}
+	// ==========
+
+	// fill the chunk with tiles
+	std::vector<TerrainTile> tiles{};
+	tiles.reserve(size[0] * size[1]);
+	for (size_t i = 0; i < size[0] * size[1]; ++i) {
+		tiles.emplace_back(terrain_obj, test_texture_path, 0.0f);
+	}
+
+	auto chunk = std::make_shared<TerrainChunk>(size, offset, std::move(tiles));
 
 	if (this->render_factory) {
 		auto render_entity = this->render_factory->add_terrain_render_entity(size, offset);
@@ -105,22 +132,6 @@ std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const std::shared_ptr<Ga
 
 		chunk->render_update(time::time_t::zero(),
 		                     test_texture_path);
-	}
-
-	// TODO: Remove test texture references
-	if (test_terrains.empty()) {
-		build_test_terrains(gstate);
-	}
-	static size_t test_terrain_index = 0;
-	if (not test_terrains.empty()) {
-		// use one of the modpack terrain textures
-		if (test_terrain_index >= test_terrains.size()) {
-			test_terrain_index = 0;
-		}
-		auto terrain_obj = gstate->get_db_view()->get_object(test_terrains[test_terrain_index]);
-		test_texture_path = api::APITerrain::get_terrain_path(terrain_obj);
-
-		test_terrain_index += 1;
 	}
 
 	chunk->set_terrain_path(test_texture_path);

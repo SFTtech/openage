@@ -119,10 +119,10 @@ void renderer_stresstest_0(const util::Path &path) {
 
 	// Fill a 10x10 terrain grid with height values
 	auto terrain_size = util::Vector2s{10, 10};
-	std::vector<float> height_map{};
-	height_map.reserve(terrain_size[0] * terrain_size[1]);
+	std::vector<std::pair<terrain::TerrainRenderEntity::terrain_elevation_t, std::string>> tiles{};
+	tiles.reserve(terrain_size[0] * terrain_size[1]);
 	for (size_t i = 0; i < terrain_size[0] * terrain_size[1]; ++i) {
-		height_map.push_back(0.0f);
+		tiles.emplace_back(0.0f, "./textures/test_terrain.terrain");
 	}
 
 	// Create entity for terrain rendering
@@ -130,9 +130,7 @@ void renderer_stresstest_0(const util::Path &path) {
 	                                                          coord::tile_delta{0, 0});
 
 	// send the terrain data to the terrain renderer
-	terrain0->update(terrain_size,
-	                 height_map,
-	                 "./textures/test_terrain.terrain");
+	terrain0->update(terrain_size, tiles);
 
 	// World entities
 	std::vector<std::shared_ptr<renderer::world::WorldRenderEntity>> render_entities{};

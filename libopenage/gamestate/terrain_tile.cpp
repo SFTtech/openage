@@ -4,4 +4,7 @@
 
 
 namespace openage::gamestate {
-}
+
+// This file is intentionally empty.
+
+} // namespace openage::gamestate

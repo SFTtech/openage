@@ -8,32 +8,49 @@
 #include <vector>
 
 #include "coord/scene.h"
+#include "coord/tile.h"
 #include "curve/discrete.h"
 #include "time/time.h"
 #include "util/vector.h"
 
 
-namespace openage::renderer {
+namespace openage::renderer::terrain {
 
-namespace terrain {
 
 class TerrainRenderEntity {
 public:
 	TerrainRenderEntity();
 	~TerrainRenderEntity() = default;
 
+	using terrain_elevation_t = util::FixedPoint<uint64_t, 16>;
+	using tiles_t = std::vector<std::pair<terrain_elevation_t, std::string>>;
+
 	/**
-     * Update the render entity with information from the
+     * Update a single tile of the displayed terrain (chunk) with information from the
      * gamestate.
 	 *
 	 * @param size Size of the terrain in tiles (width x length)
-	 * @param height_map Height of terrain tiles.
+	 * @param pos Position of the tile in the chunk.
+	 * @param elevation Height of terrain tile.
 	 * @param terrain_path Path to the terrain definition.
      * @param time Simulation time of the update.
      */
-	void update(util::Vector2s size,
-	            std::vector<float> height_map,
-	            const std::string terrain_path,
+	void update_tile(const util::Vector2s size,
+	                 const coord::tile &pos,
+	                 const terrain_elevation_t elevation,
+	                 const std::string terrain_path,
+	                 const time::time_t time = 0.0);
+
+	/**
+     * Update the full grid of the displayed terrain (chunk) with information from the
+     * gamestate.
+	 *
+	 * @param size Size of the terrain in tiles (width x length)
+	 * @param tiles Animation data for each tile (elevation, terrain path).
+     * @param time Simulation time of the update.
+     */
+	void update(const util::Vector2s size,
+	            const tiles_t tiles,
 	            const time::time_t time = 0.0);
 
 	/**
@@ -102,5 +119,4 @@ private:
 	 */
 	std::shared_mutex mutex;
 };
-} // namespace terrain
-} // namespace openage::renderer
+} // namespace openage::renderer::terrain

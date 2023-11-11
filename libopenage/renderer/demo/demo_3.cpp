@@ -117,10 +117,10 @@ void renderer_demo_3(const util::Path &path) {
 
 	// Fill a 10x10 terrain grid with height values
 	auto terrain_size = util::Vector2s{10, 10};
-	std::vector<float> height_map{};
-	height_map.reserve(terrain_size[0] * terrain_size[1]);
+	std::vector<std::pair<terrain::TerrainRenderEntity::terrain_elevation_t, std::string>> tiles{};
+	tiles.reserve(terrain_size[0] * terrain_size[1]);
 	for (size_t i = 0; i < terrain_size[0] * terrain_size[1]; ++i) {
-		height_map.push_back(0.0f);
+		tiles.emplace_back(0.0f, "./textures/test_terrain.terrain");
 	}
 
 	// Create entity for terrain rendering
@@ -128,25 +128,23 @@ void renderer_demo_3(const util::Path &path) {
 	                                                          coord::tile_delta{0, 0});
 
 	// Create "test bumps" in the terrain to check if rendering works
-	height_map[11] = 1.0f;
-	height_map[23] = 2.3f;
-	height_map[42] = 4.2f;
-	height_map[69] = 6.9f; // nice
+	tiles[11].first = 1.0f;
+	tiles[23].first = 2.3f;
+	tiles[42].first = 4.2f;
+	tiles[69].first = 6.9f; // nice
 
 	// A hill
-	height_map[55] = 3.0f; // center
-	height_map[45] = 2.0f; // bottom left slope
-	height_map[35] = 1.0f;
-	height_map[56] = 1.0f; // bottom right slope (little steeper)
-	height_map[65] = 2.0f; // top right slope
-	height_map[75] = 1.0f;
-	height_map[54] = 2.0f; // top left slope
-	height_map[53] = 1.0f;
+	tiles[55].first = 3.0f; // center
+	tiles[45].first = 2.0f; // bottom left slope
+	tiles[35].first = 1.0f;
+	tiles[56].first = 1.0f; // bottom right slope (little steeper)
+	tiles[65].first = 2.0f; // top right slope
+	tiles[75].first = 1.0f;
+	tiles[54].first = 2.0f; // top left slope
+	tiles[53].first = 1.0f;
 
 	// send the terrain data to the terrain renderer
-	terrain0->update(terrain_size,
-	                 height_map,
-	                 "./textures/test_terrain.terrain");
+	terrain0->update(terrain_size, tiles);
 
 	// World entities
 	auto world0 = render_factory->add_world_render_entity();

@@ -3,6 +3,7 @@
 #pragma once
 
 #include <cstddef>
+#include <optional>
 
 #include <nyan/nyan.h>
 
@@ -19,8 +20,17 @@ using terrain_elevation_t = util::FixedPoint<uint64_t, 16>;
 struct TerrainTile {
 	/**
      * Terrain definition used by this tile.
+     *
+     * TODO: Make this non-optional once all modpacks support terrain graphics.
      */
-	nyan::Object terrain;
+	std::optional<nyan::Object> terrain;
+
+	/**
+     * Path to the terrain asset used by this tile.
+     *
+     * TODO: Remove this and fetch the asset path from the terrain definition.
+     */
+	std::string terrain_asset_path;
 
 	/**
      * Height of this tile on the terrain.
