@@ -40,9 +40,14 @@ void main() {
     // this is the position where we want to draw the subtex in 2D
 	vec4 obj_clip_pos = proj * view * model * vec4(obj_world_position, 1.0);
 
+    // if the subtex is flipped, we also need to flip the anchor offset
+    // essentially, we invert the coordinates for the flipped axis
+    float anchor_x = float(flip_x) * -1.0 * anchor_offset.x + float(!flip_x) * anchor_offset.x;
+    float anchor_y = float(flip_y) * -1.0 * anchor_offset.y + float(!flip_y) * anchor_offset.y;
+
     // offset the clip position by the offset of the subtex anchor
-    // this basically aligns the object position and the subtex anchor
-    obj_clip_pos += vec4(anchor_offset.xy, 0.0, 0.0);
+    // imagine this as pinning the subtex to the object position at the subtex anchor point
+    obj_clip_pos += vec4(anchor_x, anchor_y, 0.0, 0.0);
 
     // create a move matrix for positioning the vertices
     // uses the scale and the transformed object position in clip space
@@ -51,9 +56,15 @@ void main() {
                      0.0, 0.0, 1.0, 0.0,
                      obj_clip_pos.x, obj_clip_pos.y, obj_clip_pos.z, 1.0);
 
-    // finally calculate the vertex position
+    // calculate the final vertex position
     gl_Position = move * vec4(v_position, 0.0, 1.0);
+
+    // if the subtex is flipped, we also need to flip the uv tex coordinates
+    // essentially, we invert the coordinates for the flipped axis
+
+    // !flip_x is default because OpenGL uses bottom-left as its origin
     float uv_x = float(!flip_x) * uv.x + float(flip_x) * (1.0 - uv.x);
     float uv_y = float(flip_y) * uv.y + float(!flip_y) * (1.0 - uv.y);
+
     vert_uv = vec2(uv_x, uv_y);
 }
