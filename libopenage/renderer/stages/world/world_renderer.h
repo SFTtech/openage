@@ -89,6 +89,13 @@ private:
 	                            size_t height,
 	                            const util::Path &shaderdir);
 
+	/**
+	 * Fetch the uniform IDs for the uniforms of the world shader from OpenGL
+	 * and assign them to the WorldObject class.
+	 *
+	 * This method must be called after the shader program has been created but
+	 * before any uniforms are set.
+	 */
 	void init_uniform_ids();
 
 	/**

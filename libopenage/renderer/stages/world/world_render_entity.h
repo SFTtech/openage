@@ -40,7 +40,7 @@ public:
 	            const time::time_t time = 0.0);
 
 	/**
-	 * Thus function is for DEBUGGING and should not be used.
+	 * This function is for DEBUGGING and should not be used.
      *
 	 * Update the render entity with information from the gamestate.
 	 *
