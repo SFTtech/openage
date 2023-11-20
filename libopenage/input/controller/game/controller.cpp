@@ -112,7 +112,11 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 	}};
 
 	binding_action create_entity_action{forward_action_t::SEND, create_entity_event};
-	Event ev_mouse_lmb{event_class::MOUSE_BUTTON, Qt::MouseButton::LeftButton, Qt::NoModifier, QEvent::MouseButtonRelease};
+	Event ev_mouse_lmb{
+		event_class::MOUSE_BUTTON,
+		Qt::MouseButton::LeftButton,
+		Qt::KeyboardModifier::ControlModifier,
+		QEvent::MouseButtonRelease};
 
 	ctx->bind(ev_mouse_lmb, create_entity_action);
 
@@ -135,7 +139,11 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 	}};
 
 	binding_action move_entity_action{forward_action_t::SEND, move_entity};
-	Event ev_mouse_rmb{event_class::MOUSE_BUTTON, Qt::MouseButton::RightButton, Qt::NoModifier, QEvent::MouseButtonRelease};
+	Event ev_mouse_rmb{
+		event_class::MOUSE_BUTTON,
+		Qt::MouseButton::RightButton,
+		Qt::KeyboardModifier::NoModifier,
+		QEvent::MouseButtonRelease};
 
 	ctx->bind(ev_mouse_rmb, move_entity_action);
 }
