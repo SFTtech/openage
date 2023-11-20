@@ -2,6 +2,8 @@
 
 #include "controller.h"
 
+#include "log/log.h"
+
 #include "event/event_loop.h"
 #include "event/evententity.h"
 #include "event/state.h"
@@ -48,6 +50,8 @@ const std::vector<gamestate::entity_id_t> &Controller::get_selected() const {
 void Controller::set_selected(std::vector<gamestate::entity_id_t> ids) {
 	std::unique_lock lock{this->mutex};
 
+	log::log(DBG << "Selected " << ids.size() << " entities");
+
 	this->selected = ids;
 }
 
@@ -86,6 +90,24 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 	return true;
 }
 
+void Controller::set_drag_select_start(const coord::input &start) {
+	std::unique_lock lock{this->mutex};
+
+	log::log(DBG << "Drag select start at " << start);
+
+	this->drag_select_start = start;
+}
+
+void Controller::drag_select(const coord::input &end) {
+	std::unique_lock lock{this->mutex};
+
+	log::log(DBG << "Drag select end at " << end);
+
+	// TODO
+
+	this->drag_select_start = std::nullopt;
+}
+
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<time::TimeLoop> &time_loop,
                     const std::shared_ptr<openage::gamestate::GameSimulation> &simulation,
@@ -112,13 +134,13 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 	}};
 
 	binding_action create_entity_action{forward_action_t::SEND, create_entity_event};
-	Event ev_mouse_lmb{
+	Event ev_mouse_lmb_ctrl{
 		event_class::MOUSE_BUTTON,
 		Qt::MouseButton::LeftButton,
 		Qt::KeyboardModifier::ControlModifier,
 		QEvent::MouseButtonRelease};
 
-	ctx->bind(ev_mouse_lmb, create_entity_action);
+	ctx->bind(ev_mouse_lmb_ctrl, create_entity_action);
 
 	binding_func_t move_entity{[&](const event_arguments &args,
 	                               const std::shared_ptr<Controller> controller) {
@@ -146,6 +168,36 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 		QEvent::MouseButtonRelease};
 
 	ctx->bind(ev_mouse_rmb, move_entity_action);
+
+	binding_func_t init_drag_selection{[&](const event_arguments &args,
+	                                       const std::shared_ptr<Controller> controller) {
+		controller->set_drag_select_start(args.mouse);
+		return nullptr;
+	}};
+
+	binding_action init_drag_selection_action{forward_action_t::CLEAR, init_drag_selection};
+	Event ev_mouse_lmb_press{
+		event_class::MOUSE_BUTTON,
+		Qt::MouseButton::LeftButton,
+		Qt::KeyboardModifier::NoModifier,
+		QEvent::MouseButtonPress};
+
+	ctx->bind(ev_mouse_lmb_press, init_drag_selection_action);
+
+	binding_func_t drag_selection{[&](const event_arguments &args,
+	                                  const std::shared_ptr<Controller> controller) {
+		controller->drag_select(args.mouse);
+		return nullptr;
+	}};
+
+	binding_action drag_selection_action{forward_action_t::CLEAR, drag_selection};
+	Event ev_mouse_lmb_release{
+		event_class::MOUSE_BUTTON,
+		Qt::MouseButton::LeftButton,
+		Qt::KeyboardModifier::NoModifier,
+		QEvent::MouseButtonRelease};
+
+	ctx->bind(ev_mouse_lmb_release, drag_selection_action);
 }
 
 

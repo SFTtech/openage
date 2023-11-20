@@ -4,8 +4,10 @@
 
 #include <memory>
 #include <mutex>
+#include <optional>
 #include <unordered_set>
 
+#include "coord/pixel.h"
 #include "curve/discrete.h"
 #include "gamestate/types.h"
 #include "input/event.h"
@@ -78,6 +80,18 @@ public:
 	 */
 	bool process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx);
 
+	/**
+	 * Set the start position of a drag selection.
+	 */
+	void set_drag_select_start(const coord::input &start);
+
+	/**
+	 * Process a drag selection.
+	 *
+	 * @param end End position of the drag selection.
+	 */
+	void drag_select(const coord::input &end);
+
 private:
 	/**
 	 * Factions controllable by this controller.
@@ -98,6 +112,13 @@ private:
 	 * Queue for gamestate events generated from inputs.
 	 */
 	std::vector<std::shared_ptr<event::Event>> outqueue;
+
+	/**
+	 * Start position of a drag selection.
+	 *
+	 * TODO: Move this into an input event.
+	 */
+	std::optional<coord::input> drag_select_start;
 
 	/**
 	 * Mutex for threaded access.
