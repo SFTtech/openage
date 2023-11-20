@@ -6,6 +6,7 @@
 
 #include "input/event.h"
 
+
 namespace openage {
 
 namespace renderer::camera {
@@ -27,12 +28,13 @@ public:
 	~Controller() = default;
 
 	/**
-     * Process an input event from the input manager.
-     *
-     * @param ev Input event and arguments.
-     *
-     * @return true if the event is accepted, else false.
-     */
+	 * Process an input event from the input manager.
+	 *
+	 * @param ev Input event and arguments.
+	 * @param ctx Binding context that maps input events to camera actions.
+	 *
+	 * @return true if the event is accepted, else false.
+	 */
 	bool process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx);
 };
 
