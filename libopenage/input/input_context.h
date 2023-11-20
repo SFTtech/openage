@@ -47,7 +47,7 @@ public:
      *
      * @param bindings Binding context for gamestate events.
      */
-	void set_engine_bindings(const std::shared_ptr<game::BindingContext> &bindings);
+	void set_game_bindings(const std::shared_ptr<game::BindingContext> &bindings);
 
 	/**
      * Set the associated context for binding input events to camera actions.
@@ -61,7 +61,7 @@ public:
      *
      * @return Binding context of the input context.
      */
-	const std::shared_ptr<game::BindingContext> &get_engine_bindings();
+	const std::shared_ptr<game::BindingContext> &get_game_bindings();
 
 	/**
      * Get the associated context for binding input events to camera actions.
@@ -138,9 +138,9 @@ private:
 	std::unordered_map<event_class, input_action, event_class_hash> by_class;
 
 	/**
-     * Additional context for engine events.
+     * Additional context for game simulation events.
      */
-	std::shared_ptr<game::BindingContext> engine_bindings;
+	std::shared_ptr<game::BindingContext> game_bindings;
 
 	/**
      * Additional context for camera actions.

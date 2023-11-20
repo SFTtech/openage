@@ -4,4 +4,4 @@
 
 namespace openage::input::game {
 
-} // namespace openage::input::engine
+} // namespace openage::input::game

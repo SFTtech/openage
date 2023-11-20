@@ -69,4 +69,4 @@ private:
 	std::unordered_map<event_class, binding_action, event_class_hash> by_class;
 };
 
-} // namespace openage::input::engine
+} // namespace openage::input::game

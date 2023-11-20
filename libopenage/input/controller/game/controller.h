@@ -108,7 +108,8 @@ private:
 /**
  * Setup default controller action bindings:
  *
- * - Mouse click: Create game entity.
+ * - CTRL + Left Mouse click: Create game entity.
+ * - Right Mouse click: Move game entity.
  *
  * @param ctx Binding context the actions are added to.
  * @param time_loop Time loop for getting simulation time.

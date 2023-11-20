@@ -15,16 +15,16 @@ const std::string &InputContext::get_id() {
 	return this->id;
 }
 
-void InputContext::set_engine_bindings(const std::shared_ptr<game::BindingContext> &bindings) {
-	this->engine_bindings = bindings;
+void InputContext::set_game_bindings(const std::shared_ptr<game::BindingContext> &bindings) {
+	this->game_bindings = bindings;
 }
 
 void InputContext::set_camera_bindings(const std::shared_ptr<camera::BindingContext> &bindings) {
 	this->camera_bindings = bindings;
 }
 
-const std::shared_ptr<game::BindingContext> &InputContext::get_engine_bindings() {
-	return this->engine_bindings;
+const std::shared_ptr<game::BindingContext> &InputContext::get_game_bindings() {
+	return this->game_bindings;
 }
 
 const std::shared_ptr<camera::BindingContext> &InputContext::get_camera_bindings() {

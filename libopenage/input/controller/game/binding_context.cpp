@@ -36,4 +36,4 @@ const binding_action &BindingContext::lookup(const Event &ev) const {
 	throw Error{MSG(err) << "Event is not bound in binding_action context."};
 }
 
-} // namespace openage::input::engine
+} // namespace openage::input::game

@@ -53,11 +53,11 @@ public:
 	void set_camera_controller(const std::shared_ptr<camera::Controller> &controller);
 
 	/**
-     * Set the controller for the engine.
+     * Set the controller for the game simulation.
      *
-     * @param controller Engine controller.
+     * @param controller Game controller.
      */
-	void set_engine_controller(const std::shared_ptr<game::Controller> &controller);
+	void set_game_controller(const std::shared_ptr<game::Controller> &controller);
 
 	/**
 	 * returns the global keybind context.
@@ -170,9 +170,9 @@ private:
 	std::unordered_map<std::string, std::shared_ptr<InputContext>> available_contexts;
 
 	/**
-     * Interface to the engine.
+     * Interface to the game simulation.
      */
-	std::shared_ptr<game::Controller> engine_controller;
+	std::shared_ptr<game::Controller> game_controller;
 
 	/**
      * Interface to the camera.

@@ -215,12 +215,12 @@ void Presenter::init_input() {
 		log::log(INFO << "Loading game simulation controls");
 
 		// TODO: Remove hardcoding
-		auto engine_controller = std::make_shared<input::game::Controller>(
+		auto game_controller = std::make_shared<input::game::Controller>(
 			std::unordered_set<size_t>{0, 1, 2, 3}, 0);
 		auto engine_context = std::make_shared<input::game::BindingContext>();
 		input::game::setup_defaults(engine_context, this->time_loop, this->simulation, this->camera);
-		this->input_manager->set_engine_controller(engine_controller);
-		input_ctx->set_engine_bindings(engine_context);
+		this->input_manager->set_game_controller(game_controller);
+		input_ctx->set_game_bindings(engine_context);
 	}
 
 	// attach GUI if it's initialized
