@@ -269,6 +269,7 @@ void Presenter::init_final_render_pass() {
 }
 
 void Presenter::render() {
+	// TODO: Pass current time to update() instead of fetching it in renderer
 	this->camera_manager->update();
 	this->terrain_renderer->update();
 	this->world_renderer->update();
