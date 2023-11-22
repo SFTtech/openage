@@ -68,7 +68,7 @@ public:
 	 *
 	 * @param ids Selected entities.
 	 */
-	void set_selected(std::vector<gamestate::entity_id_t> ids);
+	void set_selected(const std::vector<gamestate::entity_id_t> ids);
 
 	/**
 	 * Process an input event from the input manager.
@@ -82,15 +82,17 @@ public:
 
 	/**
 	 * Set the start position of a drag selection.
+	 *
+	 * @param start Start position of the drag selection.
 	 */
-	void set_drag_select_start(const coord::input &start);
+	void set_drag_select_start(const std::optional<coord::input> &start);
 
 	/**
-	 * Process a drag selection.
+	 * Get the start position of a drag selection.
 	 *
-	 * @param end End position of the drag selection.
+	 * @return Start position of the drag selection.
 	 */
-	void drag_select(const coord::input &end);
+	const coord::input get_drag_select_start() const;
 
 private:
 	/**

@@ -47,7 +47,7 @@ const std::vector<gamestate::entity_id_t> &Controller::get_selected() const {
 	return this->selected;
 }
 
-void Controller::set_selected(std::vector<gamestate::entity_id_t> ids) {
+void Controller::set_selected(const std::vector<gamestate::entity_id_t> ids) {
 	std::unique_lock lock{this->mutex};
 
 	log::log(DBG << "Selected " << ids.size() << " entities");
@@ -90,22 +90,27 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 	return true;
 }
 
-void Controller::set_drag_select_start(const coord::input &start) {
+void Controller::set_drag_select_start(const std::optional<coord::input> &start) {
 	std::unique_lock lock{this->mutex};
 
-	log::log(DBG << "Drag select start at " << start);
+	if (start.has_value()) {
+		log::log(DBG << "Drag select start at " << start.value());
+	}
+	else {
+		log::log(DBG << "Drag select start cleared");
+	}
 
 	this->drag_select_start = start;
 }
 
-void Controller::drag_select(const coord::input &end) {
+const coord::input Controller::get_drag_select_start() const {
 	std::unique_lock lock{this->mutex};
 
-	log::log(DBG << "Drag select end at " << end);
+	if (not this->drag_select_start.has_value()) {
+		throw Error{ERR << "Drag select start not set."};
+	}
 
-	// TODO
-
-	this->drag_select_start = std::nullopt;
+	return this->drag_select_start.value();
 }
 
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
@@ -119,9 +124,12 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 			{"position", mouse_pos},
 			{"owner", controller->get_controlled()},
 			// TODO: Remove
-			{"select_cb", std::function<void(gamestate::entity_id_t id)>{[controller](gamestate::entity_id_t id) {
-				 controller->set_selected({id});
-			 }}},
+			{"select_cb",
+		     std::function<void(const std::vector<gamestate::entity_id_t> ids)>{
+				 [controller](
+					 const std::vector<gamestate::entity_id_t> ids) {
+					 controller->set_selected(ids);
+				 }}},
 		};
 
 		auto event = simulation->get_event_loop()->create_event(
@@ -186,8 +194,32 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 
 	binding_func_t drag_selection{[&](const event_arguments &args,
 	                                  const std::shared_ptr<Controller> controller) {
-		controller->drag_select(args.mouse);
-		return nullptr;
+		event::EventHandler::param_map::map_t params{
+			{"controlled", controller->get_controlled()},
+			{"drag_start", controller->get_drag_select_start().to_phys3(camera)},
+			{"drag_end", args.mouse.to_phys3(camera)},
+			{"drag_corner0", coord::input{args.mouse.x, controller->get_drag_select_start().y}.to_phys3(camera)},
+			{"drag_corner1", coord::input{controller->get_drag_select_start().x, args.mouse.y}.to_phys3(camera)},
+			// TODO: Remove
+			{"select_cb",
+		     std::function<void(const std::vector<gamestate::entity_id_t> ids)>{
+				 [controller](
+					 const std::vector<gamestate::entity_id_t> ids) {
+					 controller->set_selected(ids);
+				 }}},
+		};
+
+		auto event = simulation->get_event_loop()->create_event(
+			"game.drag_select",
+			simulation->get_commander(),
+			simulation->get_game()->get_state(),
+			time_loop->get_clock()->get_time(),
+			params);
+
+		// Reset drag selection start
+		controller->set_drag_select_start(std::nullopt);
+
+		return event;
 	}};
 
 	binding_action drag_selection_action{forward_action_t::CLEAR, drag_selection};
