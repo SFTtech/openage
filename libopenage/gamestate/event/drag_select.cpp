@@ -53,6 +53,13 @@ void DragSelectHandler::invoke(openage::event::EventLoop & /* loop */,
 
 	std::vector<entity_id_t> selected;
 	for (auto &entity : gstate->get_game_entities()) {
+		if (not entity.second->has_component(component::component_t::SELECTABLE)) {
+			// skip entities that are not selectable
+			continue;
+		}
+
+		// Check if the entity is owned by the controlled player
+		// TODO: Check this using Selectable diplomatic property
 		auto owner = std::dynamic_pointer_cast<component::Ownership>(
 			entity.second->get_component(component::component_t::OWNERSHIP));
 		if (owner->get_owners().get(time) != controlled_id) {

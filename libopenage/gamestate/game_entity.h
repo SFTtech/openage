@@ -134,6 +134,8 @@ private:
 
 	/**
      * Data components.
+     *
+     * TODO: Multiple components of the same type.
      */
 	std::unordered_map<component::component_t, std::shared_ptr<component::Component>> components;
 
