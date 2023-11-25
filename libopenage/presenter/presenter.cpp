@@ -23,6 +23,7 @@
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/stages/camera/manager.h"
+#include "renderer/stages/hud/hud_renderer.h"
 #include "renderer/stages/screen/screen_renderer.h"
 #include "renderer/stages/skybox/skybox_renderer.h"
 #include "renderer/stages/terrain/terrain_renderer.h"
@@ -75,8 +76,7 @@ void Presenter::run(bool debug_graphics) {
 
 void Presenter::set_simulation(const std::shared_ptr<gamestate::GameSimulation> &simulation) {
 	this->simulation = simulation;
-	auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
-	                                                                this->world_renderer);
+	auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer, this->world_renderer);
 	this->simulation->attach_renderer(render_factory);
 }
 
@@ -103,8 +103,7 @@ void Presenter::init_graphics(bool debug) {
 	this->asset_manager->set_placeholder_animation(missing_tex);
 
 	// Camera
-	this->camera = std::make_shared<renderer::camera::Camera>(this->renderer,
-	                                                          this->window->get_size());
+	this->camera = std::make_shared<renderer::camera::Camera>(this->renderer, this->window->get_size());
 	this->window->add_resize_callback([this](size_t w, size_t h, double /*scale*/) {
 		this->camera->resize(w, h);
 	});
@@ -139,12 +138,21 @@ void Presenter::init_graphics(bool debug) {
 		this->time_loop->get_clock());
 	this->render_passes.push_back(this->world_renderer->get_render_pass());
 
+	// HUD
+	this->hud_renderer = std::make_shared<renderer::hud::HudRenderer>(
+		this->window,
+		this->renderer,
+		this->camera,
+		this->root_dir["assets"]["shaders"],
+		this->asset_manager,
+		this->time_loop->get_clock());
+	this->render_passes.push_back(this->hud_renderer->get_render_pass());
+
 	this->init_gui();
 	this->init_final_render_pass();
 
 	if (this->simulation) {
-		auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
-		                                                                this->world_renderer);
+		auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer, this->world_renderer);
 		this->simulation->attach_renderer(render_factory);
 	}
 
@@ -273,6 +281,7 @@ void Presenter::render() {
 	this->camera_manager->update();
 	this->terrain_renderer->update();
 	this->world_renderer->update();
+	this->hud_renderer->update();
 	this->gui->render();
 
 	for (auto &pass : this->render_passes) {

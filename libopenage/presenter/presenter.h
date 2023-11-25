@@ -41,6 +41,10 @@ namespace gui {
 class GUI;
 }
 
+namespace hud {
+class HudRenderer;
+}
+
 namespace screen {
 class ScreenRenderer;
 }
@@ -189,6 +193,11 @@ protected:
 	 * Graphics output for units/buildings.
 	 */
 	std::shared_ptr<renderer::world::WorldRenderer> world_renderer;
+
+	/**
+     * Graphics output for the HUD.
+     */
+	std::shared_ptr<renderer::hud::HudRenderer> hud_renderer;
 
 	/**
 	 * Final graphics output to the window screen.
