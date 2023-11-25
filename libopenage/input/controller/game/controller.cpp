@@ -125,13 +125,6 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 		event::EventHandler::param_map::map_t params{
 			{"position", mouse_pos},
 			{"owner", controller->get_controlled()},
-			// TODO: Remove
-			{"select_cb",
-		     std::function<void(const std::vector<gamestate::entity_id_t> ids)>{
-				 [controller](
-					 const std::vector<gamestate::entity_id_t> ids) {
-					 controller->set_selected(ids);
-				 }}},
 		};
 
 		auto event = simulation->get_event_loop()->create_event(
@@ -203,7 +196,6 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 				{"drag_start", controller->get_drag_select_start().to_viewport(camera).to_ndc_space(camera)},
 				{"drag_end", args.mouse.to_viewport(camera).to_ndc_space(camera)},
 				{"camera_matrix", cam_matrix},
-				// TODO: Remove
 				{"select_cb",
 		         std::function<void(const std::vector<gamestate::entity_id_t> ids)>{
 					 [controller](

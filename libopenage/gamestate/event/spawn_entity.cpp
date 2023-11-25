@@ -196,13 +196,6 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 	activity->init(time);
 	entity->get_manager()->run_activity_system(time);
 
-	// TODO: Select the unit when it's created
-	// very dumb but it gets the job done
-	auto select_cb = params.get("select_cb",
-	                            std::function<void(const std::vector<entity_id_t> ids)>{
-									[](const std::vector<entity_id_t> /* ids */) {}});
-	select_cb({entity->get_id()});
-
 	gstate->add_game_entity(entity);
 }
 
