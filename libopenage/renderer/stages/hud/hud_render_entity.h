@@ -3,24 +3,34 @@
 #pragma once
 
 #include <cstdint>
-#include <list>
 #include <shared_mutex>
 #include <string>
 
+#include "coord/pixel.h"
+#include "curve/continuous.h"
 #include "time/time.h"
 
 
 namespace openage::renderer::hud {
 
-class HudRenderEntity {
+class HudDragRenderEntity {
 public:
-	HudRenderEntity();
-	~HudRenderEntity() = default;
+	/**
+     * Create a new render entity for drag selection in the HUD.
+     *
+     * @param drag_start Position of the start corner.
+     */
+	HudDragRenderEntity(const coord::input drag_start);
+	~HudDragRenderEntity() = default;
 
 	/**
-	 * TODO: Update the render entity with information from the gamestate.
+	 * Update the render entity with information from the gamestate.
+     *
+     * @param drag_pos Position of the dragged corner.
+     * @param time Current simulation time.
 	 */
-	void update(const time::time_t time = 0.0);
+	void update(const coord::input drag_pos,
+	            const time::time_t time = 0.0);
 
 	/**
 	 * Get the time of the last update.
@@ -28,6 +38,20 @@ public:
 	 * @return Time of last update.
 	 */
 	time::time_t get_update_time();
+
+	/**
+     * Get the position of the dragged corner.
+     *
+     * @return Coordinates of the dragged corner.
+     */
+	const curve::Continuous<coord::input> &get_drag_pos();
+
+	/**
+     * Get the position of the start corner.
+     *
+     * @return Coordinates of the start corner.
+     */
+	const coord::input &get_drag_start();
 
 	/**
 	 * Check whether the render entity has received new updates from the
@@ -54,6 +78,16 @@ private:
 	 * Time of the last update call.
 	 */
 	time::time_t last_update;
+
+	/**
+     * Position of the dragged corner.
+     */
+	curve::Continuous<coord::input> drag_pos;
+
+	/**
+     * Position of the start corner.
+     */
+	coord::input drag_start;
 
 	/**
 	 * Mutex for protecting threaded access.

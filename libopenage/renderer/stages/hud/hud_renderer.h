@@ -30,8 +30,8 @@ class AssetManager;
 }
 
 namespace hud {
-class HudObject;
-class HudRenderEntity;
+class HudDragObject;
+class HudDragRenderEntity;
 
 /**
  * Renderer for the "Heads-Up Display" (HUD).
@@ -55,11 +55,18 @@ public:
 	std::shared_ptr<renderer::RenderPass> get_render_pass();
 
 	/**
-	 * Add a new render entity of the HUD renderer.
+	 * Add a new render entity for drag selection.
 	 *
 	 * @param render_entity New render entity.
 	 */
-	void add_render_entity(const std::shared_ptr<HudRenderEntity> entity);
+	void add_drag_entity(const std::shared_ptr<HudDragRenderEntity> entity);
+
+	/**
+     * Remove the render object for drag selection.
+     *
+     * @param render_entity Render entity to remove.
+     */
+	void remove_drag_entity();
 
 	/**
 	 * Update the render entities and render positions.
@@ -110,14 +117,14 @@ private:
 	std::shared_ptr<renderer::RenderPass> render_pass;
 
 	/**
-	 * Render entities requested by the game simulation or input system.
+	 * Render object for the drag select rectangle.
 	 */
-	std::vector<std::shared_ptr<HudObject>> render_objects;
+	std::shared_ptr<HudDragObject> drag_object;
 
 	/**
-	 * Shader for rendering the HUD objects.
+	 * Shader for rendering the drag select rectangle.
 	 */
-	std::shared_ptr<renderer::ShaderProgram> display_shader;
+	std::shared_ptr<renderer::ShaderProgram> drag_select_shader;
 
 	/**
 	 * Simulation clock for timing animations.

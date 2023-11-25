@@ -25,7 +25,7 @@ HudRenderer::HudRenderer(const std::shared_ptr<Window> &window,
 	renderer{renderer},
 	camera{camera},
 	asset_manager{asset_manager},
-	render_objects{},
+	drag_object{nullptr},
 	clock{clock} {
 	renderer::opengl::GlContext::check_error();
 
@@ -43,20 +43,49 @@ std::shared_ptr<renderer::RenderPass> HudRenderer::get_render_pass() {
 	return this->render_pass;
 }
 
-void HudRenderer::add_render_entity(const std::shared_ptr<HudRenderEntity> entity) {
+void HudRenderer::add_drag_entity(const std::shared_ptr<HudDragRenderEntity> entity) {
 	std::unique_lock lock{this->mutex};
 
-	auto hud_object = std::make_shared<HudObject>(this->asset_manager);
+	auto hud_object = std::make_shared<HudDragObject>(this->asset_manager);
 	hud_object->set_render_entity(entity);
 	hud_object->set_camera(this->camera);
-	this->render_objects.push_back(hud_object);
+	this->drag_object = hud_object;
+}
+
+void HudRenderer::remove_drag_entity() {
+	std::unique_lock lock{this->mutex};
+
+	this->drag_object = nullptr;
+	this->render_pass->clear_renderables();
 }
 
 void HudRenderer::update() {
 	std::unique_lock lock{this->mutex};
 	auto current_time = this->clock->get_real_time();
-	for (auto &obj : this->render_objects) {
-		// TODO
+
+	if (this->drag_object) {
+		this->drag_object->fetch_updates(current_time);
+		if (this->drag_object->requires_renderable()) {
+			auto geometry = this->renderer->add_bufferless_quad();
+			auto transform_unifs = this->drag_select_shader->new_uniform_input(
+				"in_col",
+				Eigen::Vector4f{1.0f, 1.0f, 1.0f, 0.2f});
+
+			Renderable display_obj{
+				transform_unifs,
+				geometry,
+				true,
+				true,
+			};
+
+			this->render_pass->add_renderables(display_obj);
+			this->drag_object->clear_requires_renderable();
+
+			this->drag_object->set_uniforms(transform_unifs);
+			this->drag_object->set_geometry(geometry);
+		}
+		this->drag_object->update_uniforms(current_time);
+		this->drag_object->update_geometry(current_time);
 	}
 }
 
@@ -71,26 +100,26 @@ void HudRenderer::resize(size_t width, size_t height) {
 void HudRenderer::initialize_render_pass(size_t width,
                                          size_t height,
                                          const util::Path &shaderdir) {
-	// ASDF: add vertex shader
-	auto vert_shader_file = (shaderdir / "world2d.vert.glsl").open();
+	// Drag select shader
+	auto vert_shader_file = (shaderdir / "hud_drag_select.vert.glsl").open();
 	auto vert_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
 		vert_shader_file.read());
 	vert_shader_file.close();
 
-	// ASDF: add fragment shader
-	auto frag_shader_file = (shaderdir / "world2d.frag.glsl").open();
+	auto frag_shader_file = (shaderdir / "hud_drag_select.frag.glsl").open();
 	auto frag_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
 		frag_shader_file.read());
 	frag_shader_file.close();
 
+	this->drag_select_shader = this->renderer->add_shader({vert_shader_src, frag_shader_src});
+
+	// Texture targets
 	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
 	this->depth_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::depth24));
-
-	this->display_shader = this->renderer->add_shader({vert_shader_src, frag_shader_src});
 
 	auto fbo = this->renderer->create_texture_target({this->output_texture, this->depth_texture});
 	this->render_pass = this->renderer->add_render_pass({}, fbo);

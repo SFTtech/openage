@@ -7,10 +7,13 @@
 #include <memory>
 #include <string>
 
+#include "coord/pixel.h"
+#include "curve/continuous.h"
 #include "time/time.h"
 
 
 namespace openage::renderer {
+class Geometry;
 class UniformInput;
 
 namespace camera {
@@ -23,19 +26,19 @@ class Animation2dInfo;
 } // namespace resources
 
 namespace hud {
-class HudRenderEntity;
+class HudDragRenderEntity;
 
-class HudObject {
+class HudDragObject {
 public:
-	HudObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
-	~HudObject() = default;
+	HudDragObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
+	~HudDragObject() = default;
 
 	/**
      * Set the world render entity.
      *
      * @param entity New world render entity.
      */
-	void set_render_entity(const std::shared_ptr<HudRenderEntity> &entity);
+	void set_render_entity(const std::shared_ptr<HudDragRenderEntity> &entity);
 
 	/**
      * Set the current camera of the scene.
@@ -57,6 +60,13 @@ public:
      * @param time Current simulation time.
      */
 	void update_uniforms(const time::time_t &time = 0.0);
+
+	/**
+     * Update the geometry of the renderable associated with this object.
+     *
+     * @param time Current simulation time.
+     */
+	void update_geometry(const time::time_t &time = 0.0);
 
 	/**
      * Check whether a new renderable needs to be created for this mesh.
@@ -95,6 +105,15 @@ public:
      */
 	void set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms);
 
+	/**
+     * Set the geometry of the renderable associated with this object.
+     *
+     * The geometry is updated when calling \p update().
+     *
+     * @param geometry Geometry of this object's renderable.
+     */
+	void set_geometry(const std::shared_ptr<renderer::Geometry> &geometry);
+
 private:
 	/**
      * Stores whether a new renderable for this object needs to be created
@@ -120,12 +139,27 @@ private:
 	/**
 	 * Source for positional and texture data.
 	 */
-	std::shared_ptr<HudRenderEntity> render_entity;
+	std::shared_ptr<HudDragRenderEntity> render_entity;
 
 	/**
-     * Shader uniforms for the renderable in the terrain render pass.
+     * Position of the dragged corner.
+     */
+	curve::Continuous<coord::input> drag_pos;
+
+	/**
+     * Position of the start corner.
+     */
+	coord::input drag_start;
+
+	/**
+     * Shader uniforms for the renderable in the HUD render pass.
      */
 	std::shared_ptr<renderer::UniformInput> uniforms;
+
+	/**
+     * Geometry of the renderable in the HUD render pass.
+     */
+	std::shared_ptr<renderer::Geometry> geometry;
 
 	/**
 	 * Time of the last update call.
