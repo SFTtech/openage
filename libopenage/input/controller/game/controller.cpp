@@ -92,16 +92,10 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 	return true;
 }
 
-void Controller::set_drag_select_start(const std::optional<coord::input> &start) {
+void Controller::set_drag_select_start(const coord::input &start) {
 	std::unique_lock lock{this->mutex};
 
-	if (start.has_value()) {
-		log::log(DBG << "Drag select start at " << start.value());
-	}
-	else {
-		log::log(DBG << "Drag select start cleared");
-	}
-
+	log::log(DBG << "Drag select start at " << start);
 	this->drag_select_start = start;
 }
 
@@ -113,6 +107,13 @@ const coord::input Controller::get_drag_select_start() const {
 	}
 
 	return this->drag_select_start.value();
+}
+
+void Controller::reset_drag_select() {
+	std::unique_lock lock{this->mutex};
+
+	log::log(DBG << "Drag select start reset");
+	this->drag_select_start = std::nullopt;
 }
 
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
@@ -212,7 +213,7 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 				params);
 
 			// Reset drag selection start
-			controller->set_drag_select_start(std::nullopt);
+			controller->reset_drag_select();
 
 			return event;
 		}};

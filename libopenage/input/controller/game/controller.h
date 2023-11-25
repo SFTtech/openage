@@ -85,7 +85,7 @@ public:
 	 *
 	 * @param start Start position of the drag selection.
 	 */
-	void set_drag_select_start(const std::optional<coord::input> &start);
+	void set_drag_select_start(const coord::input &start);
 
 	/**
 	 * Get the start position of a drag selection.
@@ -93,6 +93,11 @@ public:
 	 * @return Start position of the drag selection.
 	 */
 	const coord::input get_drag_select_start() const;
+
+	/**
+	 * Reset the drag select start position.
+	 */
+	void reset_drag_select();
 
 private:
 	/**
