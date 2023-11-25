@@ -19,6 +19,7 @@ enum class component_t {
 	IDLE,
 	TURN,
 	MOVE,
+	SELECTABLE,
 	LIVE
 };
 
