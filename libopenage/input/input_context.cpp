@@ -32,18 +32,28 @@ const std::shared_ptr<camera::BindingContext> &InputContext::get_camera_bindings
 }
 
 void InputContext::bind(const Event &ev, const input_action act) {
-	this->by_event.emplace(std::make_pair(ev, act));
+	std::vector<input_action> actions{act};
+	this->by_event.emplace(std::make_pair(ev, actions));
 }
 
 void InputContext::bind(const event_class &cl, const input_action act) {
-	this->by_class.emplace(std::make_pair(cl, act));
+	std::vector<input_action> actions{act};
+	this->by_class.emplace(std::make_pair(cl, actions));
+}
+
+void InputContext::bind(const Event &ev, const std::vector<input_action> &&acts) {
+	this->by_event.emplace(std::make_pair(ev, acts));
+}
+
+void InputContext::bind(const event_class &cl, const std::vector<input_action> &&acts) {
+	this->by_class.emplace(std::make_pair(cl, acts));
 }
 
 bool InputContext::is_bound(const Event &ev) const {
 	return this->by_event.contains(ev) || this->by_class.contains(ev.cc.cl);
 }
 
-const input_action &InputContext::lookup(const Event &ev) const {
+const std::vector<input_action> &InputContext::lookup(const Event &ev) const {
 	auto event_lookup = this->by_event.find(ev);
 	if (event_lookup != std::end(this->by_event)) {
 		return (*event_lookup).second;

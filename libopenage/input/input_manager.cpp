@@ -127,18 +127,20 @@ bool InputManager::process(const QEvent &ev) {
 	// Check context list on top of the stack (most recent bound first)
 	for (auto const &ctx : this->active_contexts) {
 		if (ctx->is_bound(input_ev)) {
-			this->process_action(input_ev,
-			                     ctx->lookup(input_ev),
-			                     ctx);
+			auto &actions = ctx->lookup(input_ev);
+			for (auto const &action : actions) {
+				this->process_action(input_ev, action, ctx);
+			}
 			return true;
 		}
 	}
 
 	// If no local keybinds were bound, check the global keybinds
 	if (this->global_context->is_bound(input_ev)) {
-		this->process_action(input_ev,
-		                     this->global_context->lookup(input_ev),
-		                     this->global_context);
+		auto &actions = this->global_context->lookup(input_ev);
+		for (auto const &action : actions) {
+			this->process_action(input_ev, action, this->global_context);
+		}
 		return true;
 	}
 

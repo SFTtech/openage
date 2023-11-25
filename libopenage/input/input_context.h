@@ -3,6 +3,7 @@
 #pragma once
 
 #include <unordered_map>
+#include <vector>
 
 #include "input/action.h"
 #include "input/event.h"
@@ -71,24 +72,44 @@ public:
 	const std::shared_ptr<camera::BindingContext> &get_camera_bindings();
 
 	/**
-	 * Bind a specific key combination to an action.
+	 * Bind a specific key combination to a single action.
 	 *
 	 * This is the first matching priority.
      *
      * @param ev Input event triggering the action.
-     * @param act Function executing the action.
+     * @param act Action executed by the event.
 	 */
 	void bind(const Event &ev, const input_action act);
 
 	/**
-	 * Bind an event class to an action.
+	 * Bind an event class to a single action.
 	 *
 	 * This is the second matching priority.
      *
      * @param ev Input event triggering the action.
-     * @param act Function executing the action.
+     * @param act Action executed by the event.
 	 */
 	void bind(const event_class &cl, const input_action act);
+
+	/**
+	 * Bind a specific key combination to a list of actions.
+	 *
+	 * This is the first matching priority.
+     *
+     * @param ev Input event triggering the action.
+     * @param act Actions executed by the event.
+	 */
+	void bind(const Event &ev, const std::vector<input_action> &&acts);
+
+	/**
+	 * Bind an event class to a list of actions.
+	 *
+	 * This is the second matching priority.
+     *
+     * @param ev Input event triggering the action.
+     * @param act Actions executed by the event.
+	 */
+	void bind(const event_class &cl, const std::vector<input_action> &&acts);
 
 	/**
      * Check whether a specific key event is bound in this context.
@@ -104,7 +125,7 @@ public:
      *
      * @param ev Input event triggering the action.
      */
-	const input_action &lookup(const Event &ev) const;
+	const std::vector<input_action> &lookup(const Event &ev) const;
 
 	/**
 	 * Get all event->action bindings in this context.
@@ -130,12 +151,12 @@ private:
 	/**
 	 * Maps specific input events to actions.
 	 */
-	std::unordered_map<Event, input_action, event_hash> by_event;
+	std::unordered_map<Event, std::vector<input_action>, event_hash> by_event;
 
 	/**
 	 * Maps event classes to actions.
 	 */
-	std::unordered_map<event_class, input_action, event_class_hash> by_class;
+	std::unordered_map<event_class, std::vector<input_action>, event_class_hash> by_class;
 
 	/**
      * Additional context for game simulation events.
