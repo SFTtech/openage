@@ -9,9 +9,11 @@
 #include "input/event.h"
 
 namespace openage::input::hud {
+class Controller;
 
 using binding_flags_t = std::unordered_map<std::string, std::string>;
-using binding_func_t = std::function<void(const event_arguments &e)>;
+using binding_func_t = std::function<void(const event_arguments &e,
+                                          const std::shared_ptr<Controller>)>;
 
 
 /**
