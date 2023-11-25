@@ -2,7 +2,11 @@
 
 #include "drag_select.h"
 
+#include <eigen3/Eigen/Dense>
+
 #include "coord/phys.h"
+#include "coord/pixel.h"
+#include "coord/scene.h"
 #include "curve/discrete.h"
 #include "gamestate/component/internal/ownership.h"
 #include "gamestate/component/internal/position.h"
@@ -30,45 +34,25 @@ void DragSelectHandler::invoke(openage::event::EventLoop & /* loop */,
 
 	size_t controlled_id = params.get("controlled", 0);
 
-	// Start and end of the drag select rectangle
-	coord::phys3 start = params.get("drag_start", coord::phys3{0, 0, 0});
-	coord::phys3 end = params.get("drag_end", coord::phys3{0, 0, 0});
-	coord::phys3 corner0 = params.get("drag_corner0", coord::phys3{0, 0, 0});
-	coord::phys3 corner1 = params.get("drag_corner1", coord::phys3{0, 0, 0});
+	Eigen::Matrix4f id_matrix = Eigen::Matrix4f::Identity();
+	Eigen::Matrix4f cam_matrix = params.get("camera_matrix", id_matrix);
+	Eigen::Vector2f drag_start = params.get("drag_start", Eigen::Vector2f{0, 0});
+	Eigen::Vector2f drag_end = params.get("drag_end", Eigen::Vector2f{0, 0});
 
-	// Check which coordinate is the top left and which is the bottom right
-	coord::phys3 top_left = coord::phys3{0, 0, 0};
-	coord::phys3 bottom_right = coord::phys3{0, 0, 0};
-	if (start.se < end.se) {
-		top_left = start;
-		bottom_right = end;
-	}
-	else {
-		top_left = end;
-		bottom_right = start;
-	}
+	// Boundaries of the rectangle
+	float top = std::max(drag_start.y(), drag_end.y());
+	float bottom = std::min(drag_start.y(), drag_end.y());
+	float left = std::min(drag_start.x(), drag_end.x());
+	float right = std::max(drag_start.x(), drag_end.x());
 
-	// Get the other two corners of the rectangle
-	coord::phys3 top_right = coord::phys3{0, 0, 0};
-	coord::phys3 bottom_left = coord::phys3{0, 0, 0};
-	if (corner0.ne < corner1.ne) {
-		top_right = corner1;
-		bottom_left = corner0;
-	}
-	else {
-		top_right = corner0;
-		bottom_left = corner1;
-	}
+	log::log(DBG << "Drag select rectangle (NDC):");
+	log::log(DBG << "\tTop: " << top);
+	log::log(DBG << "\tBottom: " << bottom);
+	log::log(DBG << "\tLeft: " << left);
+	log::log(DBG << "\tRight: " << right);
 
-	log::log(DBG << "Drag select rectangle:");
-	log::log(DBG << "\tTop left: " << top_left);
-	log::log(DBG << "\tTop right: " << top_right);
-	log::log(DBG << "\tBottom left: " << bottom_left);
-	log::log(DBG << "\tBottom right: " << bottom_right);
-
-	// Check which entities are in the rectangle
 	std::vector<entity_id_t> selected;
-	for (auto entity : gstate->get_game_entities()) {
+	for (auto &entity : gstate->get_game_entities()) {
 		auto owner = std::dynamic_pointer_cast<component::Ownership>(
 			entity.second->get_component(component::component_t::OWNERSHIP));
 		if (owner->get_owners().get(time) != controlled_id) {
@@ -76,14 +60,18 @@ void DragSelectHandler::invoke(openage::event::EventLoop & /* loop */,
 			continue;
 		}
 
+		// Get the position of the entity in the viewport
 		auto pos = std::dynamic_pointer_cast<component::Position>(
 			entity.second->get_component(component::component_t::POSITION));
 		auto current_pos = pos->get_positions().get(time);
-		if (current_pos.ne <= top_right.ne
-		    and current_pos.ne >= bottom_left.ne
-		    and current_pos.se <= bottom_right.se
-		    and current_pos.se >= top_left.se) {
-			// check if the entity is in the rectangle
+		auto world_pos = current_pos.to_scene3().to_world_space();
+		Eigen::Vector4f clip_pos = cam_matrix * Eigen::Vector4f{world_pos.x(), world_pos.y(), world_pos.z(), 1};
+
+		// Check if the entity is in the rectangle
+		if (clip_pos.x() > left
+		    and clip_pos.x() < right
+		    and clip_pos.y() > bottom
+		    and clip_pos.y() < top) {
 			selected.push_back(entity.first);
 		}
 	}

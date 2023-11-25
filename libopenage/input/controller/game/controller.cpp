@@ -18,6 +18,8 @@
 #include "time/time_loop.h"
 
 #include "coord/phys.h"
+#include "renderer/camera/camera.h"
+
 
 namespace openage::input::game {
 
@@ -192,35 +194,36 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 
 	ctx->bind(ev_mouse_lmb_press, init_drag_selection_action);
 
-	binding_func_t drag_selection{[&](const event_arguments &args,
-	                                  const std::shared_ptr<Controller> controller) {
-		event::EventHandler::param_map::map_t params{
-			{"controlled", controller->get_controlled()},
-			{"drag_start", controller->get_drag_select_start().to_phys3(camera)},
-			{"drag_end", args.mouse.to_phys3(camera)},
-			{"drag_corner0", coord::input{args.mouse.x, controller->get_drag_select_start().y}.to_phys3(camera)},
-			{"drag_corner1", coord::input{controller->get_drag_select_start().x, args.mouse.y}.to_phys3(camera)},
-			// TODO: Remove
-			{"select_cb",
-		     std::function<void(const std::vector<gamestate::entity_id_t> ids)>{
-				 [controller](
-					 const std::vector<gamestate::entity_id_t> ids) {
-					 controller->set_selected(ids);
-				 }}},
-		};
+	binding_func_t drag_selection{
+		[&](const event_arguments &args,
+	        const std::shared_ptr<Controller> controller) {
+			Eigen::Matrix4f cam_matrix = camera->get_projection_matrix() * camera->get_view_matrix();
+			event::EventHandler::param_map::map_t params{
+				{"controlled", controller->get_controlled()},
+				{"drag_start", controller->get_drag_select_start().to_viewport(camera).to_ndc_space(camera)},
+				{"drag_end", args.mouse.to_viewport(camera).to_ndc_space(camera)},
+				{"camera_matrix", cam_matrix},
+				// TODO: Remove
+				{"select_cb",
+		         std::function<void(const std::vector<gamestate::entity_id_t> ids)>{
+					 [controller](
+						 const std::vector<gamestate::entity_id_t> ids) {
+						 controller->set_selected(ids);
+					 }}},
+			};
 
-		auto event = simulation->get_event_loop()->create_event(
-			"game.drag_select",
-			simulation->get_commander(),
-			simulation->get_game()->get_state(),
-			time_loop->get_clock()->get_time(),
-			params);
+			auto event = simulation->get_event_loop()->create_event(
+				"game.drag_select",
+				simulation->get_commander(),
+				simulation->get_game()->get_state(),
+				time_loop->get_clock()->get_time(),
+				params);
 
-		// Reset drag selection start
-		controller->set_drag_select_start(std::nullopt);
+			// Reset drag selection start
+			controller->set_drag_select_start(std::nullopt);
 
-		return event;
-	}};
+			return event;
+		}};
 
 	binding_action drag_selection_action{forward_action_t::CLEAR, drag_selection};
 	Event ev_mouse_lmb_release{
