@@ -26,6 +26,7 @@
 #include "gamestate/component/api/idle.h"
 #include "gamestate/component/api/live.h"
 #include "gamestate/component/api/move.h"
+#include "gamestate/component/api/selectable.h"
 #include "gamestate/component/api/turn.h"
 #include "gamestate/component/internal/activity.h"
 #include "gamestate/component/internal/command_queue.h"
@@ -202,6 +203,10 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 		}
 		else if (ability_parent == "engine.ability.type.Activity") {
 			activity_ability = ability_obj;
+		}
+		else if (ability_parent == "engine.ability.type.Selectable") {
+			auto selectable = std::make_shared<component::Selectable>(loop, ability_obj);
+			entity->add_component(selectable);
 		}
 	}
 
