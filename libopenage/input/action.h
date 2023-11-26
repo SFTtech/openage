@@ -25,6 +25,7 @@ enum class input_action_t {
 	REMOVE_CONTEXT,
 	GAME,
 	CAMERA,
+	HUD,
 	GUI,
 	CUSTOM,
 };

@@ -26,6 +26,10 @@ namespace game {
 class Controller;
 } // namespace game
 
+namespace hud {
+class Controller;
+} // namespace hud
+
 class InputContext;
 
 /**
@@ -58,6 +62,13 @@ public:
      * @param controller Game controller.
      */
 	void set_game_controller(const std::shared_ptr<game::Controller> &controller);
+
+	/**
+     * Set the controller for the HUD.
+     *
+     * @param controller HUD controller.
+     */
+	void set_hud_controller(const std::shared_ptr<hud::Controller> controller);
 
 	/**
 	 * returns the global keybind context.
@@ -178,6 +189,11 @@ private:
      * Interface to the camera.
      */
 	std::shared_ptr<camera::Controller> camera_controller;
+
+	/**
+     * Interface to the HUD.
+     */
+	std::shared_ptr<hud::Controller> hud_controller;
 
 	/**
      * Interface to the GUI.

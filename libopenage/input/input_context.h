@@ -18,6 +18,10 @@ namespace game {
 class BindingContext;
 }
 
+namespace hud {
+class BindingContext;
+}
+
 /**
  * An input context contains all keybindings and actions
  * active in e.g. the HUD only.
@@ -58,6 +62,13 @@ public:
 	void set_camera_bindings(const std::shared_ptr<camera::BindingContext> &bindings);
 
 	/**
+     * Set the associated context for binding input events to HUD actions.
+     *
+     * @param bindings Binding context for HUD actions.
+     */
+	void set_hud_bindings(const std::shared_ptr<hud::BindingContext> &bindings);
+
+	/**
      * Get the associated context for binding input events to game events.
      *
      * @return Binding context of the input context.
@@ -70,6 +81,13 @@ public:
      * @return Binding context of the input context.
      */
 	const std::shared_ptr<camera::BindingContext> &get_camera_bindings();
+
+	/**
+     * Get the associated context for binding input events to HUD actions.
+     *
+     * @return Binding context of the input context.
+     */
+	const std::shared_ptr<hud::BindingContext> &get_hud_bindings();
 
 	/**
 	 * Bind a specific key combination to a single action.
@@ -167,6 +185,11 @@ private:
      * Additional context for camera actions.
      */
 	std::shared_ptr<camera::BindingContext> camera_bindings;
+
+	/**
+     * Additional context for HUD actions.
+     */
+	std::shared_ptr<hud::BindingContext> hud_bindings;
 };
 
 } // namespace openage::input

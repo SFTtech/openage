@@ -4,6 +4,7 @@
 
 #include "input/controller/camera/controller.h"
 #include "input/controller/game/controller.h"
+#include "input/controller/hud/controller.h"
 #include "input/event.h"
 #include "input/input_context.h"
 #include "renderer/gui/guisys/public/gui_input.h"
@@ -16,6 +17,7 @@ InputManager::InputManager() :
 	available_contexts{},
 	game_controller{nullptr},
 	camera_controller{nullptr},
+	hud_controller{nullptr},
 	gui_input{nullptr} {
 }
 
@@ -29,6 +31,10 @@ void InputManager::set_camera_controller(const std::shared_ptr<camera::Controlle
 
 void InputManager::set_game_controller(const std::shared_ptr<game::Controller> &controller) {
 	this->game_controller = controller;
+}
+
+void InputManager::set_hud_controller(const std::shared_ptr<hud::Controller> controller) {
+	this->hud_controller = controller;
 }
 
 const std::shared_ptr<InputContext> &InputManager::get_global_context() {
@@ -183,6 +189,10 @@ void InputManager::process_action(const input::Event &ev,
 			this->camera_controller->process(args, ctx->get_camera_bindings());
 			break;
 
+		case input_action_t::HUD:
+			this->hud_controller->process(args, ctx->get_hud_bindings());
+			break;
+
 		case input_action_t::GUI:
 			this->gui_input->process(args.e.get_event());
 			break;
@@ -198,6 +208,9 @@ void InputManager::process_action(const input::Event &ev,
 
 
 void setup_defaults(const std::shared_ptr<InputContext> &ctx) {
+	// hud
+	input_action hud_action{input_action_t::HUD};
+
 	// camera
 	input_action camera_action{input_action_t::CAMERA};
 
@@ -214,7 +227,7 @@ void setup_defaults(const std::shared_ptr<InputContext> &ctx) {
 	ctx->bind(ev_down, camera_action);
 	ctx->bind(ev_wheel_up, camera_action);
 	ctx->bind(ev_wheel_down, camera_action);
-	ctx->bind(event_class::MOUSE_MOVE, camera_action);
+	ctx->bind(event_class::MOUSE_MOVE, {/* camera_action, ASDF */ hud_action});
 
 	// game
 	input_action game_action{input_action_t::GAME};
@@ -222,11 +235,11 @@ void setup_defaults(const std::shared_ptr<InputContext> &ctx) {
 	Event ev_mouse_lmb{event_class::MOUSE_BUTTON, Qt::LeftButton, Qt::NoModifier, QEvent::MouseButtonRelease};
 	Event ev_mouse_rmb{event_class::MOUSE_BUTTON, Qt::RightButton, Qt::NoModifier, QEvent::MouseButtonRelease};
 
-	ctx->bind(ev_mouse_lmb, game_action);
-	ctx->bind(ev_mouse_rmb, game_action);
+	ctx->bind(ev_mouse_lmb, {game_action, hud_action});
+	ctx->bind(ev_mouse_rmb, {game_action, hud_action});
 
 	// also forward all other mouse button events
-	ctx->bind(event_class::MOUSE_BUTTON, game_action);
+	ctx->bind(event_class::MOUSE_BUTTON, {game_action, hud_action});
 }
 
 

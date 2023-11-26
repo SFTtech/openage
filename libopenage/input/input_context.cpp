@@ -23,12 +23,20 @@ void InputContext::set_camera_bindings(const std::shared_ptr<camera::BindingCont
 	this->camera_bindings = bindings;
 }
 
+void InputContext::set_hud_bindings(const std::shared_ptr<hud::BindingContext> &bindings) {
+	this->hud_bindings = bindings;
+}
+
 const std::shared_ptr<game::BindingContext> &InputContext::get_game_bindings() {
 	return this->game_bindings;
 }
 
 const std::shared_ptr<camera::BindingContext> &InputContext::get_camera_bindings() {
 	return this->camera_bindings;
+}
+
+const std::shared_ptr<hud::BindingContext> &InputContext::get_hud_bindings() {
+	return this->hud_bindings;
 }
 
 void InputContext::bind(const Event &ev, const input_action act) {

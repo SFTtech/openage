@@ -55,7 +55,9 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 
 	binding_func_t drag_selection_move{[&](const event_arguments &args,
 	                                       const std::shared_ptr<Controller> controller) {
-		controller->get_drag_entity()->update(args.mouse);
+		if (controller->get_drag_entity()) {
+			controller->get_drag_entity()->update(args.mouse);
+		}
 	}};
 
 	binding_action drag_selection_move_action{drag_selection_move};

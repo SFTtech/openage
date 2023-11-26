@@ -12,6 +12,8 @@
 #include "input/controller/camera/controller.h"
 #include "input/controller/game/binding_context.h"
 #include "input/controller/game/controller.h"
+#include "input/controller/hud/binding_context.h"
+#include "input/controller/hud/controller.h"
 #include "input/input_context.h"
 #include "input/input_manager.h"
 #include "log/log.h"
@@ -245,6 +247,16 @@ void Presenter::init_input() {
 		input::camera::setup_defaults(camera_context, this->camera, this->camera_manager);
 		this->input_manager->set_camera_controller(camera_controller);
 		input_ctx->set_camera_bindings(camera_context);
+	}
+
+	// setup HUD controls
+	if (this->hud_renderer) {
+		log::log(INFO << "Loading HUD controls");
+		auto hud_controller = std::make_shared<input::hud::Controller>();
+		auto hud_context = std::make_shared<input::hud::BindingContext>();
+		input::hud::setup_defaults(hud_context, this->hud_renderer);
+		this->input_manager->set_hud_controller(hud_controller);
+		input_ctx->set_hud_bindings(hud_context);
 	}
 
 	log::log(INFO << "Presenter: Input subsystem initialized");
