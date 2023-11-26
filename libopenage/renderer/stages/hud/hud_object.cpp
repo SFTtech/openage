@@ -38,7 +38,7 @@ void HudDragObject::fetch_updates(const time::time_t &time) {
 
 	// Get data from render entity
 	this->drag_start = this->render_entity->get_drag_start();
-	this->drag_pos.sync(this->render_entity->get_drag_pos(), this->last_update);
+	this->drag_pos.sync(this->render_entity->get_drag_pos() /* , this->last_update */);
 
 	// Set self to changed so that world renderer can update the renderable
 	this->changed = true;
@@ -69,18 +69,23 @@ void HudDragObject::update_geometry(const time::time_t &time) {
 	float left = std::min(drag_start_ndc.x(), drag_pos_ndc.x());
 	float right = std::max(drag_start_ndc.x(), drag_pos_ndc.x());
 
+	log::log(SPAM << "top: " << top
+	              << ", bottom: " << bottom
+	              << ", left: " << left
+	              << ", right: " << right);
+
 	std::array<float, 16> quad_vertices{
-		top, left, 0.0f, 1.0f, // top left corner
-		bottom,
+		left, top, 0.0f, 1.0f, // top left corner
 		left,
+		bottom,
 		0.0f,
 		0.0f, // bottom left corner
-		top,
 		right,
+		top,
 		1.0f,
 		1.0f, // top right corner
-		bottom,
 		right,
+		bottom,
 		1.0f,
 		0.0f // bottom right corner
 	};
