@@ -1,6 +1,6 @@
 // Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
-#include "screen_renderer.h"
+#include "render_stage.h"
 
 #include "renderer/opengl/context.h"
 #include "renderer/renderer.h"

@@ -1,6 +1,6 @@
 // Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
-#include "terrain_renderer.h"
+#include "render_stage.h"
 
 #include "renderer/camera/camera.h"
 #include "renderer/opengl/context.h"
@@ -8,9 +8,9 @@
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/shader_program.h"
-#include "renderer/stages/terrain/terrain_chunk.h"
-#include "renderer/stages/terrain/terrain_mesh.h"
-#include "renderer/stages/terrain/terrain_model.h"
+#include "renderer/stages/terrain/chunk.h"
+#include "renderer/stages/terrain/mesh.h"
+#include "renderer/stages/terrain/model.h"
 #include "renderer/window.h"
 #include "time/clock.h"
 
@@ -18,11 +18,11 @@
 namespace openage::renderer::terrain {
 
 TerrainRenderStage::TerrainRenderStage(const std::shared_ptr<Window> &window,
-                                 const std::shared_ptr<renderer::Renderer> &renderer,
-                                 const std::shared_ptr<renderer::camera::Camera> &camera,
-                                 const util::Path &shaderdir,
-                                 const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
-                                 const std::shared_ptr<time::Clock> &clock) :
+                                       const std::shared_ptr<renderer::Renderer> &renderer,
+                                       const std::shared_ptr<renderer::camera::Camera> &camera,
+                                       const util::Path &shaderdir,
+                                       const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+                                       const std::shared_ptr<time::Clock> &clock) :
 	renderer{renderer},
 	camera{camera},
 	render_entity{nullptr},
@@ -47,8 +47,8 @@ std::shared_ptr<renderer::RenderPass> TerrainRenderStage::get_render_pass() {
 }
 
 void TerrainRenderStage::add_render_entity(const std::shared_ptr<TerrainRenderEntity> entity,
-                                        const util::Vector2s chunk_size,
-                                        const coord::scene2_delta chunk_offset) {
+                                           const util::Vector2s chunk_size,
+                                           const coord::scene2_delta chunk_offset) {
 	std::unique_lock lock{this->mutex};
 
 	this->render_entity = entity;
@@ -94,8 +94,8 @@ void TerrainRenderStage::resize(size_t width, size_t height) {
 }
 
 void TerrainRenderStage::initialize_render_pass(size_t width,
-                                             size_t height,
-                                             const util::Path &shaderdir) {
+                                                size_t height,
+                                                const util::Path &shaderdir) {
 	auto vert_shader_file = (shaderdir / "terrain.vert.glsl").open();
 	auto vert_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,

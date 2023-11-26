@@ -3,10 +3,10 @@
 #include "render_factory.h"
 
 #include "coord/phys.h"
-#include "renderer/stages/terrain/terrain_render_entity.h"
-#include "renderer/stages/terrain/terrain_renderer.h"
-#include "renderer/stages/world/world_render_entity.h"
-#include "renderer/stages/world/world_renderer.h"
+#include "renderer/stages/terrain/render_entity.h"
+#include "renderer/stages/terrain/render_stage.h"
+#include "renderer/stages/world/render_entity.h"
+#include "renderer/stages/world/render_stage.h"
 
 namespace openage::renderer {
 RenderFactory::RenderFactory(const std::shared_ptr<terrain::TerrainRenderStage> terrain_renderer,

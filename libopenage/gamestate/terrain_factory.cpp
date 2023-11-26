@@ -11,7 +11,7 @@
 #include "gamestate/terrain_chunk.h"
 #include "gamestate/terrain_tile.h"
 #include "renderer/render_factory.h"
-#include "renderer/stages/terrain/terrain_render_entity.h"
+#include "renderer/stages/terrain/render_entity.h"
 #include "time/time.h"
 
 #include "assets/mod_manager.h"

@@ -15,7 +15,7 @@
 #include "log/log.h"
 #include "renderer/renderer.h"
 #include "renderer/resources/texture_data.h"
-#include "renderer/stages/screen/screen_renderer.h"
+#include "renderer/stages/screen/render_stage.h"
 #include "util/strings.h"
 
 

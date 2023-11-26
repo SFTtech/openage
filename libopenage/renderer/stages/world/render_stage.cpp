@@ -1,6 +1,6 @@
 // Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
-#include "world_renderer.h"
+#include "render_stage.h"
 
 #include "renderer/camera/camera.h"
 #include "renderer/opengl/context.h"
@@ -8,7 +8,7 @@
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/shader_program.h"
-#include "renderer/stages/world/world_object.h"
+#include "renderer/stages/world/object.h"
 #include "renderer/texture.h"
 #include "renderer/window.h"
 #include "time/clock.h"
@@ -17,11 +17,11 @@
 namespace openage::renderer::world {
 
 WorldRenderStage::WorldRenderStage(const std::shared_ptr<Window> &window,
-                             const std::shared_ptr<renderer::Renderer> &renderer,
-                             const std::shared_ptr<renderer::camera::Camera> &camera,
-                             const util::Path &shaderdir,
-                             const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
-                             const std::shared_ptr<time::Clock> clock) :
+                                   const std::shared_ptr<renderer::Renderer> &renderer,
+                                   const std::shared_ptr<renderer::camera::Camera> &camera,
+                                   const util::Path &shaderdir,
+                                   const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+                                   const std::shared_ptr<time::Clock> clock) :
 	renderer{renderer},
 	camera{camera},
 	asset_manager{asset_manager},
@@ -102,8 +102,8 @@ void WorldRenderStage::resize(size_t width, size_t height) {
 }
 
 void WorldRenderStage::initialize_render_pass(size_t width,
-                                           size_t height,
-                                           const util::Path &shaderdir) {
+                                              size_t height,
+                                              const util::Path &shaderdir) {
 	auto vert_shader_file = (shaderdir / "world2d.vert.glsl").open();
 	auto vert_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,

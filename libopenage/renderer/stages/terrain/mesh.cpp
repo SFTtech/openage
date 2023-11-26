@@ -1,6 +1,6 @@
 // Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
-#include "terrain_mesh.h"
+#include "mesh.h"
 
 #include <functional>
 #include <optional>

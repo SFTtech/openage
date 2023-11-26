@@ -1,9 +1,9 @@
 // Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
-#include "hud_object.h"
+#include "object.h"
 
 #include "renderer/geometry.h"
-#include "renderer/stages/hud/hud_render_entity.h"
+#include "renderer/stages/hud/render_entity.h"
 
 
 namespace openage::renderer::hud {

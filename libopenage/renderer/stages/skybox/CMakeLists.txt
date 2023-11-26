@@ -1,3 +1,3 @@
 add_sources(libopenage
-	skybox_renderer.cpp
+	render_stage.cpp
 )

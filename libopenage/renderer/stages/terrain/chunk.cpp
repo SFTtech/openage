@@ -1,11 +1,11 @@
 // Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
-#include "terrain_chunk.h"
+#include "chunk.h"
 
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/mesh_data.h"
-#include "renderer/stages/terrain/terrain_mesh.h"
-#include "renderer/stages/terrain/terrain_render_entity.h"
+#include "renderer/stages/terrain/mesh.h"
+#include "renderer/stages/terrain/render_entity.h"
 
 
 namespace openage::renderer::terrain {

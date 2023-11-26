@@ -1,6 +1,6 @@
 // Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
-#include "terrain_model.h"
+#include "model.h"
 
 #include <array>
 #include <cstdint>
@@ -12,8 +12,8 @@
 #include "coord/scene.h"
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/mesh_data.h"
-#include "renderer/stages/terrain/terrain_chunk.h"
-#include "renderer/stages/terrain/terrain_render_entity.h"
+#include "renderer/stages/terrain/chunk.h"
+#include "renderer/stages/terrain/render_entity.h"
 #include "util/fixed_point.h"
 #include "util/vector.h"
 

@@ -6,8 +6,8 @@
 
 #include "input/controller/hud/binding_context.h"
 
-#include "renderer/stages/hud/hud_render_entity.h"
-#include "renderer/stages/hud/hud_renderer.h"
+#include "renderer/stages/hud/render_entity.h"
+#include "renderer/stages/hud/render_stage.h"
 
 
 namespace openage::input::hud {

@@ -1,6 +1,6 @@
 // Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
-#include "hud_render_entity.h"
+#include "render_entity.h"
 
 #include <mutex>
 

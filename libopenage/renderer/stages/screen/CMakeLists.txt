@@ -1,4 +1,4 @@
 add_sources(libopenage
-	screen_renderer.cpp
+	render_stage.cpp
 	screenshot.cpp
 )

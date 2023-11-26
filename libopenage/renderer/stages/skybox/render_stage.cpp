@@ -1,6 +1,6 @@
 // Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
-#include "skybox_renderer.h"
+#include "render_stage.h"
 
 #include "renderer/opengl/context.h"
 #include "renderer/renderer.h"
@@ -15,8 +15,8 @@
 namespace openage::renderer::skybox {
 
 SkyboxRenderStage::SkyboxRenderStage(const std::shared_ptr<Window> &window,
-                               const std::shared_ptr<renderer::Renderer> &renderer,
-                               const util::Path &shaderdir) :
+                                     const std::shared_ptr<renderer::Renderer> &renderer,
+                                     const util::Path &shaderdir) :
 	renderer{renderer},
 	bg_color{0.0, 0.0, 0.0, 1.0} // black
 {
@@ -72,8 +72,8 @@ void SkyboxRenderStage::resize(size_t width, size_t height) {
 }
 
 void SkyboxRenderStage::initialize_render_pass(size_t width,
-                                            size_t height,
-                                            const util::Path &shaderdir) {
+                                               size_t height,
+                                               const util::Path &shaderdir) {
 	auto vert_shader_file = (shaderdir / "skybox.vert.glsl").open();
 	auto vert_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,

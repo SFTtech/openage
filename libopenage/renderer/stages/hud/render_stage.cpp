@@ -1,6 +1,6 @@
 // Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
-#include "hud_renderer.h"
+#include "render_stage.h"
 
 #include "renderer/camera/camera.h"
 #include "renderer/opengl/context.h"
@@ -8,7 +8,7 @@
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/shader_program.h"
-#include "renderer/stages/hud/hud_object.h"
+#include "renderer/stages/hud/object.h"
 #include "renderer/texture.h"
 #include "renderer/window.h"
 #include "time/clock.h"
