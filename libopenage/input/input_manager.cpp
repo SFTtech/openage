@@ -227,7 +227,7 @@ void setup_defaults(const std::shared_ptr<InputContext> &ctx) {
 	ctx->bind(ev_down, camera_action);
 	ctx->bind(ev_wheel_up, camera_action);
 	ctx->bind(ev_wheel_down, camera_action);
-	ctx->bind(event_class::MOUSE_MOVE, {/* camera_action, ASDF */ hud_action});
+	ctx->bind(event_class::MOUSE_MOVE, {camera_action, hud_action});
 
 	// game
 	input_action game_action{input_action_t::GAME};
