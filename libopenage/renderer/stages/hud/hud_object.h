@@ -28,8 +28,16 @@ class Animation2dInfo;
 namespace hud {
 class HudDragRenderEntity;
 
+/**
+ * Stores the state of a renderable object in the HUD render stage.
+ */
 class HudDragObject {
 public:
+	/**
+     * Create a new object for the HUD render stage.
+     *
+     * @param asset_manager Asset manager for loading resources.
+     */
 	HudDragObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
 	~HudDragObject() = default;
 

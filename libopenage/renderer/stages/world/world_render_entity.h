@@ -19,6 +19,9 @@
 
 namespace openage::renderer::world {
 
+/**
+ * Render entity for pushing updates to the World renderer.
+ */
 class WorldRenderEntity {
 public:
 	WorldRenderEntity();

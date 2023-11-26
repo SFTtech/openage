@@ -31,6 +31,11 @@ class TerrainChunk;
  */
 class TerrainRenderModel {
 public:
+	/**
+     * Create a new model for the terrain.
+     *
+     * @param asset_manager Asset manager for loading resources.
+     */
 	TerrainRenderModel(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
 	~TerrainRenderModel() = default;
 

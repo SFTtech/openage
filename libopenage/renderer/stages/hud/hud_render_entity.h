@@ -13,6 +13,9 @@
 
 namespace openage::renderer::hud {
 
+/**
+ * Render entity for pushing drag selection updates to the HUD renderer.
+ */
 class HudDragRenderEntity {
 public:
 	/**

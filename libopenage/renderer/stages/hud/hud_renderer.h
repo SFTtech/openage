@@ -36,9 +36,21 @@ class HudDragRenderEntity;
 /**
  * Renderer for the "Heads-Up Display" (HUD).
  * Draws UI elements that are not part of the GUI, e.g. health bars, selection boxes, minimap, etc.
+ *
+ * TODO: Currently only supports drag selection.
  */
 class HudRenderer {
 public:
+	/**
+     * Create a new render stage for the HUD.
+     *
+     * @param window openage window targeted for rendering.
+     * @param renderer openage low-level renderer.
+     * @param camera Camera used for the rendered scene.
+     * @param shaderdir Directory containing the shader source files.
+     * @param asset_manager Asset manager for loading resources.
+     * @param clock Simulation clock for timing animations.
+     */
 	HudRenderer(const std::shared_ptr<Window> &window,
 	            const std::shared_ptr<renderer::Renderer> &renderer,
 	            const std::shared_ptr<renderer::camera::Camera> &camera,

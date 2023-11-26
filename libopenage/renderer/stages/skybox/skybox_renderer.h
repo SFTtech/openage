@@ -26,6 +26,13 @@ namespace skybox {
  */
 class SkyboxRenderer {
 public:
+	/**
+     * Create a new render stage for the skybox.
+     *
+     * @param window openage window targeted for rendering.
+     * @param renderer openage low-level renderer.
+     * @param shaderdir Directory containing the shader source files.
+     */
 	SkyboxRenderer(const std::shared_ptr<Window> &window,
 	               const std::shared_ptr<renderer::Renderer> &renderer,
 	               const util::Path &shaderdir);

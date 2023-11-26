@@ -31,8 +31,16 @@ class Animation2dInfo;
 namespace world {
 class WorldRenderEntity;
 
+/**
+ * Stores the state of a renderable object in the World render stage.
+ */
 class WorldObject {
 public:
+	/**
+     * Create a new object for the World render stage.
+     *
+     * @param asset_manager Asset manager for loading resources.
+     */
 	WorldObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
 	~WorldObject() = default;
 
