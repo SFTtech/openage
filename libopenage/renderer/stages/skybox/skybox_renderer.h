@@ -24,7 +24,7 @@ namespace skybox {
  * a black devilish void of nothingness. Maybe "hellbox" is more
  * appropriate.)
  */
-class SkyboxRenderer {
+class SkyboxRenderStage {
 public:
 	/**
      * Create a new render stage for the skybox.
@@ -33,10 +33,10 @@ public:
      * @param renderer openage low-level renderer.
      * @param shaderdir Directory containing the shader source files.
      */
-	SkyboxRenderer(const std::shared_ptr<Window> &window,
-	               const std::shared_ptr<renderer::Renderer> &renderer,
-	               const util::Path &shaderdir);
-	~SkyboxRenderer() = default;
+	SkyboxRenderStage(const std::shared_ptr<Window> &window,
+	                  const std::shared_ptr<renderer::Renderer> &renderer,
+	                  const util::Path &shaderdir);
+	~SkyboxRenderStage() = default;
 
 	/**
 	 * Get the render pass of the skybox renderer.

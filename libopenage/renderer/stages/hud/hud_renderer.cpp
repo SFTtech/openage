@@ -16,12 +16,12 @@
 
 namespace openage::renderer::hud {
 
-HudRenderer::HudRenderer(const std::shared_ptr<Window> &window,
-                         const std::shared_ptr<renderer::Renderer> &renderer,
-                         const std::shared_ptr<renderer::camera::Camera> &camera,
-                         const util::Path &shaderdir,
-                         const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
-                         const std::shared_ptr<time::Clock> clock) :
+HudRenderStage::HudRenderStage(const std::shared_ptr<Window> &window,
+                               const std::shared_ptr<renderer::Renderer> &renderer,
+                               const std::shared_ptr<renderer::camera::Camera> &camera,
+                               const util::Path &shaderdir,
+                               const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+                               const std::shared_ptr<time::Clock> clock) :
 	renderer{renderer},
 	camera{camera},
 	asset_manager{asset_manager},
@@ -39,11 +39,11 @@ HudRenderer::HudRenderer(const std::shared_ptr<Window> &window,
 	log::log(INFO << "Created render stage 'HUD'");
 }
 
-std::shared_ptr<renderer::RenderPass> HudRenderer::get_render_pass() {
+std::shared_ptr<renderer::RenderPass> HudRenderStage::get_render_pass() {
 	return this->render_pass;
 }
 
-void HudRenderer::add_drag_entity(const std::shared_ptr<HudDragRenderEntity> entity) {
+void HudRenderStage::add_drag_entity(const std::shared_ptr<HudDragRenderEntity> entity) {
 	std::unique_lock lock{this->mutex};
 
 	auto hud_object = std::make_shared<HudDragObject>(this->asset_manager);
@@ -52,14 +52,14 @@ void HudRenderer::add_drag_entity(const std::shared_ptr<HudDragRenderEntity> ent
 	this->drag_object = hud_object;
 }
 
-void HudRenderer::remove_drag_entity() {
+void HudRenderStage::remove_drag_entity() {
 	std::unique_lock lock{this->mutex};
 
 	this->drag_object = nullptr;
 	this->render_pass->clear_renderables();
 }
 
-void HudRenderer::update() {
+void HudRenderStage::update() {
 	std::unique_lock lock{this->mutex};
 	auto current_time = this->clock->get_real_time();
 
@@ -89,7 +89,7 @@ void HudRenderer::update() {
 	}
 }
 
-void HudRenderer::resize(size_t width, size_t height) {
+void HudRenderStage::resize(size_t width, size_t height) {
 	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
 	this->depth_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::depth24));
 
@@ -97,9 +97,9 @@ void HudRenderer::resize(size_t width, size_t height) {
 	this->render_pass->set_target(fbo);
 }
 
-void HudRenderer::initialize_render_pass(size_t width,
-                                         size_t height,
-                                         const util::Path &shaderdir) {
+void HudRenderStage::initialize_render_pass(size_t width,
+                                            size_t height,
+                                            const util::Path &shaderdir) {
 	// Drag select shader
 	auto vert_shader_file = (shaderdir / "hud_drag_select.vert.glsl").open();
 	auto vert_shader_src = renderer::resources::ShaderSource(

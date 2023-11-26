@@ -11,7 +11,7 @@ namespace openage {
 
 namespace renderer::hud {
 class HudDragRenderEntity;
-class HudRenderer;
+class HudRenderStage;
 } // namespace renderer::hud
 
 namespace input::hud {
@@ -69,7 +69,7 @@ private:
  * @param hud_renderer HUD render stage that is used to render the selection box.
  */
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
-                    const std::shared_ptr<renderer::hud::HudRenderer> &hud_renderer);
+                    const std::shared_ptr<renderer::hud::HudRenderStage> &hud_renderer);
 
 } // namespace input::hud
 } // namespace openage

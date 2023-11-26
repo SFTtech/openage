@@ -17,7 +17,7 @@
 
 namespace openage::renderer::terrain {
 
-TerrainRenderer::TerrainRenderer(const std::shared_ptr<Window> &window,
+TerrainRenderStage::TerrainRenderStage(const std::shared_ptr<Window> &window,
                                  const std::shared_ptr<renderer::Renderer> &renderer,
                                  const std::shared_ptr<renderer::camera::Camera> &camera,
                                  const util::Path &shaderdir,
@@ -42,11 +42,11 @@ TerrainRenderer::TerrainRenderer(const std::shared_ptr<Window> &window,
 	log::log(INFO << "Created render stage 'Terrain'");
 }
 
-std::shared_ptr<renderer::RenderPass> TerrainRenderer::get_render_pass() {
+std::shared_ptr<renderer::RenderPass> TerrainRenderStage::get_render_pass() {
 	return this->render_pass;
 }
 
-void TerrainRenderer::add_render_entity(const std::shared_ptr<TerrainRenderEntity> entity,
+void TerrainRenderStage::add_render_entity(const std::shared_ptr<TerrainRenderEntity> entity,
                                         const util::Vector2s chunk_size,
                                         const coord::scene2_delta chunk_offset) {
 	std::unique_lock lock{this->mutex};
@@ -56,7 +56,7 @@ void TerrainRenderer::add_render_entity(const std::shared_ptr<TerrainRenderEntit
 	this->update();
 }
 
-void TerrainRenderer::update() {
+void TerrainRenderStage::update() {
 	this->model->fetch_updates();
 	auto current_time = this->clock->get_real_time();
 	for (auto &chunk : this->model->get_chunks()) {
@@ -85,7 +85,7 @@ void TerrainRenderer::update() {
 	this->model->update_uniforms(current_time);
 }
 
-void TerrainRenderer::resize(size_t width, size_t height) {
+void TerrainRenderStage::resize(size_t width, size_t height) {
 	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
 	this->depth_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::depth24));
 
@@ -93,7 +93,7 @@ void TerrainRenderer::resize(size_t width, size_t height) {
 	this->render_pass->set_target(fbo);
 }
 
-void TerrainRenderer::initialize_render_pass(size_t width,
+void TerrainRenderStage::initialize_render_pass(size_t width,
                                              size_t height,
                                              const util::Path &shaderdir) {
 	auto vert_shader_file = (shaderdir / "terrain.vert.glsl").open();

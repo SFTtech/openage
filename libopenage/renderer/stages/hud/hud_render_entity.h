@@ -27,7 +27,8 @@ public:
 	~HudDragRenderEntity() = default;
 
 	/**
-	 * Update the render entity with information from the gamestate.
+	 * Update the render entity with information from the gamestate
+     * or input system.
      *
      * @param drag_pos Position of the dragged corner.
      * @param time Current simulation time.
@@ -57,8 +58,7 @@ public:
 	const coord::input &get_drag_start();
 
 	/**
-	 * Check whether the render entity has received new updates from the
-	 * gamestate.
+	 * Check whether the render entity has received new updates.
 	 *
 	 * @return true if updates have been received, else false.
 	 */

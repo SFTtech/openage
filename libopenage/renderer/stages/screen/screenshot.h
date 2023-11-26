@@ -16,7 +16,7 @@ class JobManager;
 }
 
 namespace renderer::screen {
-class ScreenRenderer;
+class ScreenRenderStage;
 
 /**
  * Takes screenshots, duh.
@@ -30,7 +30,7 @@ public:
 	 * @param outdir Directory where the screenshots are saved.
 	 * @param job_mgr Job manager to use for writing the screenshot to disk.
 	 */
-	ScreenshotManager(std::shared_ptr<ScreenRenderer> &renderer,
+	ScreenshotManager(std::shared_ptr<ScreenRenderStage> &renderer,
 	                  util::Path &outdir,
 	                  std::shared_ptr<job::JobManager> &job_mgr);
 
@@ -68,7 +68,7 @@ private:
 	/**
 	 * Screen render stage to take the screenshot from.
 	 */
-	std::shared_ptr<ScreenRenderer> renderer;
+	std::shared_ptr<ScreenRenderStage> renderer;
 
 	/**
 	 * Job manager to use for writing the screenshot to disk.

@@ -113,7 +113,7 @@ void Presenter::init_graphics(bool debug) {
 	this->camera_manager = std::make_shared<renderer::camera::CameraManager>(this->camera);
 
 	// Skybox
-	this->skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
+	this->skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderStage>(
 		this->window,
 		this->renderer,
 		this->root_dir["assets"]["shaders"]);
@@ -121,7 +121,7 @@ void Presenter::init_graphics(bool debug) {
 	this->render_passes.push_back(this->skybox_renderer->get_render_pass());
 
 	// Terrain
-	this->terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderer>(
+	this->terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderStage>(
 		this->window,
 		this->renderer,
 		this->camera,
@@ -131,7 +131,7 @@ void Presenter::init_graphics(bool debug) {
 	this->render_passes.push_back(this->terrain_renderer->get_render_pass());
 
 	// Units/buildings
-	this->world_renderer = std::make_shared<renderer::world::WorldRenderer>(
+	this->world_renderer = std::make_shared<renderer::world::WorldRenderStage>(
 		this->window,
 		this->renderer,
 		this->camera,
@@ -141,7 +141,7 @@ void Presenter::init_graphics(bool debug) {
 	this->render_passes.push_back(this->world_renderer->get_render_pass());
 
 	// HUD
-	this->hud_renderer = std::make_shared<renderer::hud::HudRenderer>(
+	this->hud_renderer = std::make_shared<renderer::hud::HudRenderStage>(
 		this->window,
 		this->renderer,
 		this->camera,
@@ -264,7 +264,7 @@ void Presenter::init_input() {
 
 void Presenter::init_final_render_pass() {
 	// Final output to window
-	this->screen_renderer = std::make_shared<renderer::screen::ScreenRenderer>(
+	this->screen_renderer = std::make_shared<renderer::screen::ScreenRenderStage>(
 		this->window,
 		this->renderer,
 		this->root_dir["assets"]["shaders"]);

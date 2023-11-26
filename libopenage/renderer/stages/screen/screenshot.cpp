@@ -22,7 +22,7 @@
 namespace openage::renderer::screen {
 
 
-ScreenshotManager::ScreenshotManager(std::shared_ptr<ScreenRenderer> &renderer,
+ScreenshotManager::ScreenshotManager(std::shared_ptr<ScreenRenderStage> &renderer,
                                      util::Path &outdir,
                                      std::shared_ptr<job::JobManager> &job_mgr) :
 	outdir{outdir},

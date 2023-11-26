@@ -39,7 +39,7 @@ class TerrainRenderModel;
 /**
  * Manage and render terrain geometry and graphics.
  */
-class TerrainRenderer {
+class TerrainRenderStage {
 public:
 	/**
      * Create a new render stage for the terrain.
@@ -51,13 +51,13 @@ public:
      * @param asset_manager Asset manager for loading resources.
      * @param clock Simulation clock for timing animations.
      */
-	TerrainRenderer(const std::shared_ptr<Window> &window,
-	                const std::shared_ptr<renderer::Renderer> &renderer,
-	                const std::shared_ptr<renderer::camera::Camera> &camera,
-	                const util::Path &shaderdir,
-	                const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
-	                const std::shared_ptr<time::Clock> &clock);
-	~TerrainRenderer() = default;
+	TerrainRenderStage(const std::shared_ptr<Window> &window,
+	                   const std::shared_ptr<renderer::Renderer> &renderer,
+	                   const std::shared_ptr<renderer::camera::Camera> &camera,
+	                   const util::Path &shaderdir,
+	                   const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+	                   const std::shared_ptr<time::Clock> &clock);
+	~TerrainRenderStage() = default;
 
 	/**
 	 * Get the render pass of the terrain renderer.

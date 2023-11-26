@@ -36,7 +36,7 @@ const std::shared_ptr<renderer::hud::HudDragRenderEntity> &Controller::get_drag_
 }
 
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
-                    const std::shared_ptr<renderer::hud::HudRenderer> &hud_renderer) {
+                    const std::shared_ptr<renderer::hud::HudRenderStage> &hud_renderer) {
 	binding_func_t drag_selection_init{[&](const event_arguments &args,
 	                                       const std::shared_ptr<Controller> controller) {
 		auto render_entity = std::make_shared<renderer::hud::HudDragRenderEntity>(args.mouse);

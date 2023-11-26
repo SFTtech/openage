@@ -10,12 +10,12 @@
 
 namespace openage::renderer {
 namespace terrain {
-class TerrainRenderer;
+class TerrainRenderStage;
 class TerrainRenderEntity;
 } // namespace terrain
 
 namespace world {
-class WorldRenderer;
+class WorldRenderStage;
 class WorldRenderEntity;
 } // namespace world
 
@@ -32,8 +32,8 @@ public:
      * @param terrain_renderer Terrain renderer.
      * @param world_renderer World renderer.
      */
-	RenderFactory(const std::shared_ptr<terrain::TerrainRenderer> terrain_renderer,
-	              const std::shared_ptr<world::WorldRenderer> world_renderer);
+	RenderFactory(const std::shared_ptr<terrain::TerrainRenderStage> terrain_renderer,
+	              const std::shared_ptr<world::WorldRenderStage> world_renderer);
 	~RenderFactory() = default;
 
 	/**
@@ -61,12 +61,12 @@ private:
 	/**
      * Render stage for terrain drawing.
      */
-	std::shared_ptr<terrain::TerrainRenderer> terrain_renderer;
+	std::shared_ptr<terrain::TerrainRenderStage> terrain_renderer;
 
 	/**
      * Render stage for game entity drawing.
      */
-	std::shared_ptr<world::WorldRenderer> world_renderer;
+	std::shared_ptr<world::WorldRenderStage> world_renderer;
 };
 
 } // namespace openage::renderer

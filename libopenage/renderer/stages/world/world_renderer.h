@@ -37,7 +37,7 @@ class WorldObject;
 /**
  * Renderer for drawing and displaying entities in the game world (units, buildings, etc.)
  */
-class WorldRenderer {
+class WorldRenderStage {
 public:
 	/**
      * Create a new render stage for the game world.
@@ -49,13 +49,13 @@ public:
      * @param asset_manager Asset manager for loading resources.
      * @param clock Simulation clock for timing animations.
      */
-	WorldRenderer(const std::shared_ptr<Window> &window,
-	              const std::shared_ptr<renderer::Renderer> &renderer,
-	              const std::shared_ptr<renderer::camera::Camera> &camera,
-	              const util::Path &shaderdir,
-	              const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
-	              const std::shared_ptr<time::Clock> clock);
-	~WorldRenderer() = default;
+	WorldRenderStage(const std::shared_ptr<Window> &window,
+	                 const std::shared_ptr<renderer::Renderer> &renderer,
+	                 const std::shared_ptr<renderer::camera::Camera> &camera,
+	                 const util::Path &shaderdir,
+	                 const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+	                 const std::shared_ptr<time::Clock> clock);
+	~WorldRenderStage() = default;
 
 	/**
 	 * Get the render pass of the world renderer.

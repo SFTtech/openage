@@ -59,14 +59,14 @@ void renderer_stresstest_0(const util::Path &path) {
 		path["assets"]["test"]);
 
 	// Renders the background
-	auto skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
+	auto skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderStage>(
 		window,
 		renderer,
 		path["assets"]["shaders"]);
 	skybox_renderer->set_color(1.0f, 0.5f, 0.0f, 1.0f); // orange color
 
 	// Renders the terrain in 3D
-	auto terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderer>(
+	auto terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderStage>(
 		window,
 		renderer,
 		camera,
@@ -75,7 +75,7 @@ void renderer_stresstest_0(const util::Path &path) {
 		clock);
 
 	// Renders units/buildings/other objects
-	auto world_renderer = std::make_shared<renderer::world::WorldRenderer>(
+	auto world_renderer = std::make_shared<renderer::world::WorldRenderStage>(
 		window,
 		renderer,
 		camera,
@@ -93,7 +93,7 @@ void renderer_stresstest_0(const util::Path &path) {
 	// Final output on screen has its own subrenderer
 	// It takes the outputs of all previous render passes
 	// and blends them together
-	auto screen_renderer = std::make_shared<renderer::screen::ScreenRenderer>(
+	auto screen_renderer = std::make_shared<renderer::screen::ScreenRenderStage>(
 		window,
 		renderer,
 		path["assets"]["shaders"]);
