@@ -69,7 +69,7 @@ void HudRenderStage::update() {
 			auto geometry = this->renderer->add_mesh_geometry(resources::MeshData::make_quad());
 			auto transform_unifs = this->drag_select_shader->new_uniform_input(
 				"in_col",
-				Eigen::Vector4f{0.0f, 0.0f, 0.0f, 0.5f});
+				Eigen::Vector4f{0.0f, 0.0f, 0.0f, 0.2f});
 
 			Renderable display_obj{
 				transform_unifs,
