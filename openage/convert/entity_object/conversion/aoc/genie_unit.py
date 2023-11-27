@@ -479,6 +479,8 @@ class GenieGameEntityGroup(ConverterObjectGroup):
             else:
                 # AoE1
                 return False
+        else:
+            raise ValueError(f"Unknown group type for {repr(self)}")
 
         enabling_research_id = head_unit_connection["enabling_research"].value
 

@@ -151,6 +151,7 @@ _the openage authors_ are:
 | Md Ashhar                   | ashhar                      | mdashhar01 à gmail dawt com                       |
 | Fábio Barkoski              | fabiobarkoski               | fabiobarkoskii à gmail dawt com                   |
 | Astitva Kamble              | askastitva                  | astitvakamble5 à gmail dawt com                   |
+| Haoyang Bi                  | AyiStar                     | ayistar à outlook dawt com                        |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
