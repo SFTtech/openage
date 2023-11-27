@@ -4,7 +4,7 @@
 # see documentation in doc/code_style/ for details and explainations.
 Language:        Cpp
 AccessModifierOffset: -4
-AlignAfterOpenBracket: BlockIndent
+AlignAfterOpenBracket: Align
 AlignArrayOfStructures: None
 AlignConsecutiveAssignments: false
 AlignConsecutiveBitFields: false
