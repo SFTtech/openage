@@ -99,15 +99,15 @@ def main(argv=None):
     # pylint: disable=reimported
 
     from .main.main import init_subparser
-    init_subparser(subparsers.add_parser(
+    main_cli = subparsers.add_parser(
         "main",
-        parents=[global_cli, cfg_cli]))
+        parents=[global_cli, cfg_cli])
+    init_subparser(main_cli)
 
     from .game.main import init_subparser
-    game_cli = subparsers.add_parser(
+    init_subparser(subparsers.add_parser(
         "game",
-        parents=[global_cli, cfg_cli])
-    init_subparser(game_cli)
+        parents=[global_cli, cfg_cli]))
 
     from .testing.main import init_subparser
     init_subparser(subparsers.add_parser(
@@ -143,8 +143,8 @@ def main(argv=None):
         print_version()
 
     if not args.subcommand:
-        # the user didn't specify a subcommand. default to 'game'.
-        args = game_cli.parse_args(argv)
+        # the user didn't specify a subcommand. default to 'main'.
+        args = main_cli.parse_args(argv)
 
     # process the shared args
     set_loglevel(verbosity_to_level(args.verbose - args.quiet))
