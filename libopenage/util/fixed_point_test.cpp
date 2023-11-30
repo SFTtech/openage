@@ -6,6 +6,7 @@
 
 #include "../testing/testing.h"
 #include "stringformatter.h"
+#include "math_constants.h"
 
 namespace openage {
 namespace util {
@@ -98,6 +99,14 @@ void fixed_point() {
 	std::stringstream sstr("1234.5678");
 	sstr >> e;
 	TESTEQUALS_FLOAT(e.to_double(), 1234.5678, 1e-7);
+
+	TESTEQUALS_FLOAT(TestType::e().to_double(), math::E, 1e-7);
+	TESTEQUALS_FLOAT(TestType::pi().to_double(), math::PI, 1e-7);
+
+	using TestTypeShort = FixedPoint<int32_t, 16>;
+	TESTEQUALS_FLOAT(TestTypeShort::e().to_double(), math::E, 1e-3);
+	TESTEQUALS_FLOAT(TestTypeShort::pi().to_double(), math::PI, 1e-3);
+
 }
 
 }}} // openage::util::tests

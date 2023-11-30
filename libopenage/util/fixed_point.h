@@ -53,8 +53,8 @@ constexpr static
 
 
 /**
- * Helper function that performs either a safe shift-right (amount > 0),
- * or a safe shift-left (amount < 0).
+ * Helper function that performs either a safe shift-right (amount < 0),
+ * or a safe shift-left (amount >= 0).
  */
 template <int amount, typename T>
 constexpr static
@@ -170,6 +170,17 @@ public:
 	}
 
 	/**
+	 * Constants
+	 */
+	static constexpr FixedPoint e() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(6267931151224907085ll));
+	}
+
+	static constexpr FixedPoint pi() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(7244019458077122842ll));
+	}
+
+	/**
 	 * Factory function to get a fixed-point number from an integer.
 	 */
 	static constexpr FixedPoint from_int(int_type n) {
@@ -193,10 +204,16 @@ public:
 	/**
 	 * Factory function to get a fixed-point number from a fixed-point number of different type.
 	 */
-	template <typename other_int_type, unsigned int other_fractional_bits>
+	template <typename other_int_type, unsigned int other_fractional_bits, typename std::enable_if<(fractional_bits > other_fractional_bits)>::type* = nullptr>
 	static constexpr FixedPoint from_fixedpoint(const FixedPoint<other_int_type, other_fractional_bits> &other) {
 		return FixedPoint::from_raw_value(
-			safe_shift<fractional_bits - other_fractional_bits, int_type>(other.get_raw_value()));
+			safe_shift<fractional_bits - other_fractional_bits, int_type>(static_cast<int_type>(other.get_raw_value())));
+	}
+
+	template <typename other_int_type, unsigned int other_fractional_bits, typename std::enable_if<(fractional_bits <= other_fractional_bits)>::type* = nullptr>
+	static constexpr FixedPoint from_fixedpoint(const FixedPoint<other_int_type, other_fractional_bits> &other) {
+		return FixedPoint::from_raw_value(
+			static_cast<int_type>(other.get_raw_value() / safe_shiftleft<other_fractional_bits - fractional_bits, other_int_type>(1)));
 	}
 
 	/**
