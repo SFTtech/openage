@@ -6,6 +6,7 @@
 
 #include "../testing/testing.h"
 #include "stringformatter.h"
+#include "math_constants.h"
 
 namespace openage {
 namespace util {
@@ -98,6 +99,29 @@ void fixed_point() {
 	std::stringstream sstr("1234.5678");
 	sstr >> e;
 	TESTEQUALS_FLOAT(e.to_double(), 1234.5678, 1e-7);
+
+	TESTEQUALS_FLOAT(TestType::e().to_double(), math::E, 1e-7);
+	TESTEQUALS_FLOAT(TestType::log2e().to_double(), math::LOG2E, 1e-7);
+	TESTEQUALS_FLOAT(TestType::log10e().to_double(), math::LOG10E, 1e-7);
+	TESTEQUALS_FLOAT(TestType::ln2().to_double(), math::LN2, 1e-7);
+	TESTEQUALS_FLOAT(TestType::ln10().to_double(), math::LN10, 1e-7);
+	TESTEQUALS_FLOAT(TestType::pi().to_double(), math::PI, 1e-7);
+	TESTEQUALS_FLOAT(TestType::pi_2().to_double(), math::PI_2, 1e-7);
+	TESTEQUALS_FLOAT(TestType::pi_4().to_double(), math::PI_4, 1e-7);
+	TESTEQUALS_FLOAT(TestType::inv_pi().to_double(), math::INV_PI, 1e-7);
+	TESTEQUALS_FLOAT(TestType::inv2_pi().to_double(), math::INV2_PI, 1e-7);
+	TESTEQUALS_FLOAT(TestType::inv2_sqrt_pi().to_double(), math::INV2_SQRT_PI, 1e-7);
+	TESTEQUALS_FLOAT(TestType::tau().to_double(), math::TAU, 1e-7);
+	TESTEQUALS_FLOAT(TestType::degs_per_rad().to_double(), math::DEGSPERRAD, 1e-7);
+	TESTEQUALS_FLOAT(TestType::rads_per_deg().to_double(), math::RADSPERDEG, 1e-7);
+	TESTEQUALS_FLOAT(TestType::sqrt_2().to_double(), math::SQRT_2, 1e-7);
+	TESTEQUALS_FLOAT(TestType::inv_sqrt_2().to_double(), math::INV_SQRT_2, 1e-7);
+
+
+	using TestTypeShort = FixedPoint<int32_t, 16>;
+	TESTEQUALS_FLOAT(TestTypeShort::e().to_double(), math::E, 1e-3);
+	TESTEQUALS_FLOAT(TestTypeShort::pi().to_double(), math::PI, 1e-3);
+
 }
 
 }}} // openage::util::tests

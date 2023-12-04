@@ -53,8 +53,8 @@ constexpr static
 
 
 /**
- * Helper function that performs either a safe shift-right (amount > 0),
- * or a safe shift-left (amount < 0).
+ * Helper function that performs either a safe shift-right (amount < 0),
+ * or a safe shift-left (amount >= 0).
  */
 template <int amount, typename T>
 constexpr static
@@ -170,6 +170,74 @@ public:
 	}
 
 	/**
+	 * Math constants represented in FixedPoint
+	 */
+	// naming, definition and value are kept compatible with `math_constants.h`
+	static constexpr FixedPoint e() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(6267931151224907085ll));
+	}
+
+	static constexpr FixedPoint log2e() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(3326628274461080622ll));
+	}
+
+	static constexpr FixedPoint log10e() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(1001414895036696345ll));
+	}
+
+	static constexpr FixedPoint ln2() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(1598288580650331957ll));
+	}
+
+	static constexpr FixedPoint ln10() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(5309399739799983627ll));
+	}
+
+	static constexpr FixedPoint pi() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(7244019458077122842ll));
+	}
+
+	static constexpr FixedPoint pi_2() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(3622009729038561421ll));
+	}
+
+	static constexpr FixedPoint pi_4() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(1811004864519280710ll));
+	}
+
+	static constexpr FixedPoint inv_pi() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(733972625820500306ll));
+	}
+
+	static constexpr FixedPoint inv2_pi() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(1467945251641000613ll));
+	}
+
+	static constexpr FixedPoint inv2_sqrt_pi() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(2601865214189558307ll));
+	}
+
+	static constexpr FixedPoint tau() {
+		return from_fixedpoint(FixedPoint<int64_t, 60>::from_raw_value(7244019458077122842ll));
+	}
+
+	static constexpr FixedPoint degs_per_rad() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(40244552544872904ll));
+	}
+
+	static constexpr FixedPoint rads_per_deg() {
+		return from_fixedpoint(FixedPoint<int64_t, 57>::from_raw_value(8257192040480628449ll));
+	}
+
+	static constexpr FixedPoint sqrt_2() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(3260954456333195553ll));
+	}
+
+	static constexpr FixedPoint inv_sqrt_2() {
+		return from_fixedpoint(FixedPoint<int64_t, 61>::from_raw_value(1630477228166597776ll));
+	}
+
+	/**
 	 * Factory function to get a fixed-point number from an integer.
 	 */
 	static constexpr FixedPoint from_int(int_type n) {
@@ -193,10 +261,16 @@ public:
 	/**
 	 * Factory function to get a fixed-point number from a fixed-point number of different type.
 	 */
-	template <typename other_int_type, unsigned int other_fractional_bits>
+	template <typename other_int_type, unsigned int other_fractional_bits, typename std::enable_if<(fractional_bits > other_fractional_bits)>::type* = nullptr>
 	static constexpr FixedPoint from_fixedpoint(const FixedPoint<other_int_type, other_fractional_bits> &other) {
 		return FixedPoint::from_raw_value(
-			safe_shift<fractional_bits - other_fractional_bits, int_type>(other.get_raw_value()));
+			safe_shift<fractional_bits - other_fractional_bits, int_type>(static_cast<int_type>(other.get_raw_value())));
+	}
+
+	template <typename other_int_type, unsigned int other_fractional_bits, typename std::enable_if<(fractional_bits <= other_fractional_bits)>::type* = nullptr>
+	static constexpr FixedPoint from_fixedpoint(const FixedPoint<other_int_type, other_fractional_bits> &other) {
+		return FixedPoint::from_raw_value(
+			static_cast<int_type>(other.get_raw_value() / safe_shiftleft<other_fractional_bits - fractional_bits, other_int_type>(1)));
 	}
 
 	/**
