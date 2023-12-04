@@ -111,6 +111,13 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.ability.type.Activity
+    parents = [api_objects["engine.ability.Ability"]]
+    nyan_object = NyanObject("Activity", parents)
+    fqon = "engine.ability.type.Activity"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.ability.type.ApplyContinuousEffect
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("ApplyContinuousEffect", parents)
@@ -515,6 +522,111 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     parents = [api_objects["engine.root.Object"]]
     nyan_object = NyanObject("Accuracy", parents)
     fqon = "engine.util.accuracy.Accuracy"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.Activity
+    parents = [api_objects["engine.root.Object"]]
+    nyan_object = NyanObject("Activity", parents)
+    fqon = "engine.util.activity.Activity"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.condition.Condition
+    parents = [api_objects["engine.root.Object"]]
+    nyan_object = NyanObject("Condition", parents)
+    fqon = "engine.util.activity.condition.Condition"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.condition.type.CommandInQueue
+    parents = [api_objects["engine.util.activity.condition.Condition"]]
+    nyan_object = NyanObject("CommandInQueue", parents)
+    fqon = "engine.util.activity.condition.type.CommandInQueue"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.condition.type.NextCommandIdle
+    parents = [api_objects["engine.util.activity.condition.Condition"]]
+    nyan_object = NyanObject("NextCommandIdle", parents)
+    fqon = "engine.util.activity.condition.type.NextCommandIdle"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.condition.type.NextCommandMove
+    parents = [api_objects["engine.util.activity.condition.Condition"]]
+    nyan_object = NyanObject("NextCommandMove", parents)
+    fqon = "engine.util.activity.condition.type.NextCommandMove"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.event.Event
+    parents = [api_objects["engine.root.Object"]]
+    nyan_object = NyanObject("Event", parents)
+    fqon = "engine.util.activity.event.Event"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.event.type.CommandInQueue
+    parents = [api_objects["engine.util.activity.event.Event"]]
+    nyan_object = NyanObject("CommandInQueue", parents)
+    fqon = "engine.util.activity.event.type.CommandInQueue"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.event.type.Wait
+    parents = [api_objects["engine.util.activity.event.Event"]]
+    nyan_object = NyanObject("Wait", parents)
+    fqon = "engine.util.activity.event.type.Wait"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.event.type.WaitAbility
+    parents = [api_objects["engine.util.activity.event.Event"]]
+    nyan_object = NyanObject("WaitAbility", parents)
+    fqon = "engine.util.activity.event.type.WaitAbility"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.node.Node
+    parents = [api_objects["engine.root.Object"]]
+    nyan_object = NyanObject("Node", parents)
+    fqon = "engine.util.activity.node.Node"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.node.type.Ability
+    parents = [api_objects["engine.util.activity.node.Node"]]
+    nyan_object = NyanObject("Ability", parents)
+    fqon = "engine.util.activity.node.type.Ability"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.node.type.End
+    parents = [api_objects["engine.util.activity.node.Node"]]
+    nyan_object = NyanObject("End", parents)
+    fqon = "engine.util.activity.node.type.End"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.node.type.Start
+    parents = [api_objects["engine.util.activity.node.Node"]]
+    nyan_object = NyanObject("Start", parents)
+    fqon = "engine.util.activity.node.type.Start"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.node.type.XOREventGate
+    parents = [api_objects["engine.util.activity.node.Node"]]
+    nyan_object = NyanObject("XOREventGate", parents)
+    fqon = "engine.util.activity.node.type.XOREventGate"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.node.type.XORGate
+    parents = [api_objects["engine.util.activity.node.Node"]]
+    nyan_object = NyanObject("XORGate", parents)
+    fqon = "engine.util.activity.node.type.XORGate"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -2489,6 +2601,13 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member = NyanMember("transform_progress", member_type, None, None, 0)
     api_object.add_member(member)
 
+    # engine.ability.type.Activity
+    api_object = api_objects["engine.ability.type.Activity"]
+
+    member_type = NyanMemberType(api_objects["engine.util.activity.Activity"])
+    member = NyanMember("graph", member_type, None, None, 0)
+    api_object.add_member(member)
+
     # engine.ability.type.ApplyContinuousEffect
     api_object = api_objects["engine.ability.type.ApplyContinuousEffect"]
 
@@ -3152,6 +3271,64 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     elem_type = NyanMemberType(api_objects["engine.util.game_entity.GameEntity"])
     member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("blacklisted_entities", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.util.activity.Activity
+    api_object = api_objects["engine.util.activity.Activity"]
+
+    member_type = NyanMemberType(api_objects["engine.util.activity.node.type.Start"])
+    member = NyanMember("start", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.util.activity.condition.Condition
+    api_object = api_objects["engine.util.activity.condition.Condition"]
+
+    member_type = NyanMemberType(api_objects["engine.util.activity.node.Node"])
+    member = NyanMember("next", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.util.activity.event.type.Wait
+    api_object = api_objects["engine.util.activity.event.type.Wait"]
+
+    member = NyanMember("time", N_FLOAT, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.util.activity.node.type.Ability
+    api_object = api_objects["engine.util.activity.node.type.Ability"]
+
+    member_type = NyanMemberType(api_objects["engine.util.activity.node.Node"])
+    member = NyanMember("next", member_type, None, None, 0)
+    api_object.add_member(member)
+    subtype = NyanMemberType(api_objects["engine.ability.Ability"])
+    member_type = NyanMemberType(MemberType.ABSTRACT, (subtype,))
+    member = NyanMember("ability", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.util.activity.node.type.Start
+    api_object = api_objects["engine.util.activity.node.type.Start"]
+
+    member_type = NyanMemberType(api_objects["engine.util.activity.node.Node"])
+    member = NyanMember("next", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.util.activity.node.type.XOREventGate
+    api_object = api_objects["engine.util.activity.node.type.XOREventGate"]
+
+    key_type = NyanMemberType(api_objects["engine.util.activity.event.Event"])
+    value_type = NyanMemberType(api_objects["engine.util.activity.node.Node"])
+    member_type = NyanMemberType(MemberType.DICT, (key_type, value_type))
+    member = NyanMember("next", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.util.activity.node.type.XORGate
+    api_object = api_objects["engine.util.activity.node.type.XORGate"]
+
+    elem_type = NyanMemberType(api_objects["engine.util.activity.condition.Condition"])
+    member_type = NyanMemberType(MemberType.ORDEREDSET, (elem_type,))
+    member = NyanMember("next", member_type, None, None, 0)
+    api_object.add_member(member)
+    member_type = NyanMemberType(api_objects["engine.util.activity.node.Node"])
+    member = NyanMember("default", member_type, None, None, 0)
     api_object.add_member(member)
 
     # engine.util.animation_override.AnimationOverride
