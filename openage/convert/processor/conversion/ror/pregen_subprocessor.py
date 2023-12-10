@@ -32,6 +32,7 @@ class RoRPregenSubprocessor:
         # Stores pregenerated raw API objects as a container
         pregen_converter_group = ConverterObjectGroup("pregen")
 
+        AoCPregenSubprocessor.generate_activities(full_data_set, pregen_converter_group)
         AoCPregenSubprocessor.generate_attributes(full_data_set, pregen_converter_group)
         AoCPregenSubprocessor.generate_diplomatic_stances(full_data_set, pregen_converter_group)
         AoCPregenSubprocessor.generate_entity_types(full_data_set, pregen_converter_group)

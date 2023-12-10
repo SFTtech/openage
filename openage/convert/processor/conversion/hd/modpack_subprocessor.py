@@ -40,7 +40,7 @@ class HDModpackSubprocessor:
 
         mod_def = modpack.get_info()
 
-        mod_def.set_info("hd_base", "0.5", versionstr="5.8", repo="openage")
+        mod_def.set_info("hd_base", "0.5.1", versionstr="5.8", repo="openage")
 
         mod_def.add_include("data/**")
 

@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2023 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-locals,too-many-statements,too-many-branches
 #
@@ -209,6 +209,7 @@ class RoRNyanSubprocessor:
         # =======================================================================
         abilities_set = []
 
+        abilities_set.append(AoCAbilitySubprocessor.activity_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.death_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.delete_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.despawn_ability(unit_line))
