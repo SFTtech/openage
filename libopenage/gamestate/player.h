@@ -27,14 +27,19 @@ public:
 	Player(player_id_t id,
 	       const std::shared_ptr<nyan::View> &db_view);
 
-	// players can't be copied to prevent duplicate IDs
-	Player(const Player &) = delete;
-	Player(Player &&) = delete;
-
-	Player &operator=(const Player &) = delete;
-	Player &operator=(Player &&) = delete;
+	Player(Player &&) = default;
+	Player &operator=(Player &&) = default;
 
 	~Player() = default;
+
+	/**
+	 * Copy this player.
+	 *
+	 * @param id Unique identifier.
+	 *
+	 * @return Copy of this player.
+	 */
+	std::shared_ptr<Player> copy(entity_id_t id);
 
 	/**
 	 * Get the unique ID of the player.
@@ -50,11 +55,29 @@ public:
 	 */
 	const std::shared_ptr<nyan::View> &get_db_view() const;
 
+protected:
+	/**
+	 * A player cannot be default copied because of their unique ID.
+	 *
+	 * \p copy() must be used instead.
+	 */
+	Player(const Player &) = default;
+	Player &operator=(const Player &) = default;
+
 private:
+	/**
+	 * Set the unique identifier of this player.
+	 *
+	 * Only called by \p copy().
+	 *
+	 * @param id New ID.
+	 */
+	void set_id(entity_id_t id);
+
 	/**
 	 * Player ID. Must be unique.
 	 */
-	const player_id_t id;
+	player_id_t id;
 
 	/**
      * Player view of the nyan game data database.
