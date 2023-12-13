@@ -17,73 +17,75 @@ namespace openage {
 namespace console {
 namespace draw {
 
-// void to_opengl(presenter::LegacyDisplay *engine, Console *console) {
-// 	coord::camhud topleft{
-// 		console->bottomleft.x,
-// 		// TODO This should probably just be console->topright.y
-// 		console->bottomleft.y + console->charsize.y * console->buf.dims.y};
-// 	coord::pixel_t ascender = static_cast<coord::pixel_t>(console->font.get_ascender());
+/*
+void to_opengl(presenter::LegacyDisplay *engine, Console *console) {
+	coord::camhud topleft{
+		console->bottomleft.x,
+		// TODO This should probably just be console->topright.y
+		console->bottomleft.y + console->charsize.y * console->buf.dims.y};
+	coord::pixel_t ascender = static_cast<coord::pixel_t>(console->font.get_ascender());
 
-// 	renderer::TextRenderer *text_renderer = engine->get_text_renderer();
-// 	text_renderer->set_font(&console->font);
+	renderer::TextRenderer *text_renderer = engine->get_text_renderer();
+	text_renderer->set_font(&console->font);
 
-// 	int64_t monotime = timing::get_monotonic_time();
+	int64_t monotime = timing::get_monotonic_time();
 
-// 	bool fastblinking_visible = (monotime % 600000000 < 300000000);
-// 	bool slowblinking_visible = (monotime % 300000000 < 150000000);
+	bool fastblinking_visible = (monotime % 600000000 < 300000000);
+	bool slowblinking_visible = (monotime % 300000000 < 150000000);
 
-// 	for (coord::term_t x = 0; x < console->buf.dims.x; x++) {
-// 		coord::camhud chartopleft{topleft.x + console->charsize.x * x, 0};
+	for (coord::term_t x = 0; x < console->buf.dims.x; x++) {
+		coord::camhud chartopleft{topleft.x + console->charsize.x * x, 0};
 
-// 		for (coord::term_t y = 0; y < console->buf.dims.y; y++) {
-// 			chartopleft.y = topleft.y - console->charsize.y * y;
-// 			buf_char p = *(console->buf.chrdataptr({x, y - console->buf.scrollback_pos}));
+		for (coord::term_t y = 0; y < console->buf.dims.y; y++) {
+			chartopleft.y = topleft.y - console->charsize.y * y;
+			buf_char p = *(console->buf.chrdataptr({x, y - console->buf.scrollback_pos}));
 
-// 			int fgcolid, bgcolid;
+			int fgcolid, bgcolid;
 
-// 			bool cursor_visible_at_current_pos = (console->buf.cursorpos == coord::term{x, y - console->buf.scrollback_pos});
+			bool cursor_visible_at_current_pos = (console->buf.cursorpos == coord::term{x, y - console->buf.scrollback_pos});
 
-// 			cursor_visible_at_current_pos &= console->buf.cursor_visible;
+			cursor_visible_at_current_pos &= console->buf.cursor_visible;
 
-// 			if (((p.flags & CHR_NEGATIVE) != 0) xor cursor_visible_at_current_pos) {
-// 				bgcolid = p.fgcol;
-// 				fgcolid = p.bgcol;
-// 			}
-// 			else {
-// 				bgcolid = p.bgcol;
-// 				fgcolid = p.fgcol;
-// 			}
+			if (((p.flags & CHR_NEGATIVE) != 0) xor cursor_visible_at_current_pos) {
+				bgcolid = p.fgcol;
+				fgcolid = p.bgcol;
+			}
+			else {
+				bgcolid = p.bgcol;
+				fgcolid = p.fgcol;
+			}
 
-// 			if ((p.flags & CHR_INVISIBLE)
-// 			    or (p.flags & CHR_BLINKING and not slowblinking_visible)
-// 			    or (p.flags & CHR_BLINKINGFAST and not fastblinking_visible)) {
-// 				fgcolid = bgcolid;
-// 			}
+			if ((p.flags & CHR_INVISIBLE)
+			    or (p.flags & CHR_BLINKING and not slowblinking_visible)
+			    or (p.flags & CHR_BLINKINGFAST and not fastblinking_visible)) {
+				fgcolid = bgcolid;
+			}
 
-// 			console->termcolors[bgcolid].use(0.8);
+			console->termcolors[bgcolid].use(0.8);
 
-// 			glBegin(GL_QUADS);
-// 			{
-// 				glVertex3f(chartopleft.x, chartopleft.y, 0);
-// 				glVertex3f(chartopleft.x, chartopleft.y - console->charsize.y, 0);
-// 				glVertex3f(chartopleft.x + console->charsize.x, chartopleft.y - console->charsize.y, 0);
-// 				glVertex3f(chartopleft.x + console->charsize.x, chartopleft.y, 0);
-// 			}
-// 			glEnd();
+			glBegin(GL_QUADS);
+			{
+				glVertex3f(chartopleft.x, chartopleft.y, 0);
+				glVertex3f(chartopleft.x, chartopleft.y - console->charsize.y, 0);
+				glVertex3f(chartopleft.x + console->charsize.x, chartopleft.y - console->charsize.y, 0);
+				glVertex3f(chartopleft.x + console->charsize.x, chartopleft.y, 0);
+			}
+			glEnd();
 
-// 			console->termcolors[fgcolid].use(1);
+			console->termcolors[fgcolid].use(1);
 
-// 			char utf8buf[5];
-// 			if (util::utf8_encode(p.cp, utf8buf) == 0) {
-// 				//unrepresentable character (question mark in black rhombus)
-// 				text_renderer->draw(chartopleft.x, chartopleft.y - ascender, "\uFFFD");
-// 			}
-// 			else {
-// 				text_renderer->draw(chartopleft.x, chartopleft.y - ascender, utf8buf);
-// 			}
-// 		}
-// 	}
-// }
+			char utf8buf[5];
+			if (util::utf8_encode(p.cp, utf8buf) == 0) {
+				//unrepresentable character (question mark in black rhombus)
+				text_renderer->draw(chartopleft.x, chartopleft.y - ascender, "\uFFFD");
+			}
+			else {
+				text_renderer->draw(chartopleft.x, chartopleft.y - ascender, utf8buf);
+			}
+		}
+	}
+}
+*/
 
 void to_terminal(Buf *buf, util::FD *fd, bool clear) {
 	//move cursor, draw top left corner
