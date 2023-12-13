@@ -61,10 +61,11 @@ void gl_check_error() {
 			// unknown error state
 			errormsg = "unknown error";
 		}
-		throw Error(MSG(err) << "OpenGL error state after running draw method: " << glerrorstate << "\n"
-		                                                                                            "\t"
+		throw Error(MSG(err) << "OpenGL error state after running draw method: "
+		                     << glerrorstate << "\n"
+		                                        "\t"
 		                     << errormsg << "\n"
-		                     << "Run the game with --gl-debug to get more information: './run game --gl-debug'.");
+		                     << "Run the engine with --gl-debug to get more information.");
 	}
 }
 
