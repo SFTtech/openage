@@ -37,21 +37,6 @@ Path to_point(coord::phys3 start,
 	return a_star(start, valid_end, heuristic, passable);
 }
 
-
-// Path to_object(openage::TerrainObject *to_move,
-//                openage::TerrainObject *end,
-//                coord::phys_t rad) {
-// 	coord::phys3 start = to_move->pos.draw;
-// 	auto valid_end = [&](const coord::phys3 &pos) -> bool {
-// 		return end->from_edge(pos) < rad;
-// 	};
-// 	auto heuristic = [&](const coord::phys3 &pos) -> cost_t {
-// 		return (end->from_edge(pos) - to_move->min_axis() / 2L).to_float();
-// 	};
-// 	return a_star(start, valid_end, heuristic, to_move->passable);
-// }
-
-
 Path find_nearest(coord::phys3 start,
                   std::function<bool(const coord::phys3 &)> valid_end,
                   std::function<bool(const coord::phys3 &)> passable) {
