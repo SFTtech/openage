@@ -78,7 +78,7 @@ void renderer_demo_5(const util::Path &path) {
 
 	auto const vert_data_size = verts.size() * sizeof(float);
 	std::vector<uint8_t> vert_data(vert_data_size);
-	std::memcpy(vert_data.data(), reinterpret_cast<const uint8_t *>(verts.data()), vert_data_size);
+	std::memcpy(vert_data.data(), verts.data(), vert_data_size);
 
 	resources::MeshData meshdata{std::move(vert_data), info};
 

@@ -99,11 +99,11 @@ std::shared_ptr<TerrainRenderMesh> TerrainChunk::create_mesh() {
 
 	auto const vert_data_size = dst_verts.size() * sizeof(float);
 	std::vector<uint8_t> vert_data(vert_data_size);
-	std::memcpy(vert_data.data(), reinterpret_cast<const uint8_t *>(dst_verts.data()), vert_data_size);
+	std::memcpy(vert_data.data(), dst_verts.data(), vert_data_size);
 
 	auto const idx_data_size = idxs.size() * sizeof(uint16_t);
 	std::vector<uint8_t> idx_data(idx_data_size);
-	std::memcpy(idx_data.data(), reinterpret_cast<const uint8_t *>(idxs.data()), idx_data_size);
+	std::memcpy(idx_data.data(), idxs.data(), idx_data_size);
 
 	resources::MeshData meshdata{std::move(vert_data), std::move(idx_data), info};
 
