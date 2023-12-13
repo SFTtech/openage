@@ -60,21 +60,21 @@ public:
      *
      * @param entity New game entity.
      */
-	void add_game_entity(const std::shared_ptr<GameEntity> entity);
+	void add_game_entity(const std::shared_ptr<GameEntity> &entity);
 
 	/**
      * Add a new player to the index.
      *
      * @param player New player.
      */
-	void add_player(const std::shared_ptr<Player> player);
+	void add_player(const std::shared_ptr<Player> &player);
 
 	/**
      * Set the terrain of the current game.
      *
      * @param terrain Terrain object.
      */
-	void set_terrain(const std::shared_ptr<Terrain> terrain);
+	void set_terrain(const std::shared_ptr<Terrain> &terrain);
 
 	/**
      * Get a game entity by its ID.
