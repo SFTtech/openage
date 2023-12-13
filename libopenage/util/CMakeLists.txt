@@ -21,7 +21,6 @@ add_sources(libopenage
 	misc_test.cpp
 	os.cpp
 	path.cpp
-	profiler.cpp
 	quaternion.cpp
 	quaternion_test.cpp
 	repr.cpp
