@@ -10,7 +10,7 @@ TerrainChunk::TerrainChunk(const util::Vector2s size,
                            const std::vector<TerrainTile> &&tiles) :
 	size{size},
 	offset{offset},
-	tiles{tiles} {
+	tiles{std::move(tiles)} {
 	if (this->size[0] > MAX_CHUNK_WIDTH || this->size[1] > MAX_CHUNK_HEIGHT) {
 		throw Error(MSG(err) << "Terrain chunk size exceeds maximum size: "
 		                     << this->size[0] << "x" << this->size[1] << " > "
