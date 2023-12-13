@@ -19,15 +19,15 @@ InputManager::InputManager() :
 	gui_input{nullptr} {
 }
 
-void InputManager::set_gui(const std::shared_ptr<qtgui::GuiInput> gui_input) {
+void InputManager::set_gui(const std::shared_ptr<qtgui::GuiInput> &gui_input) {
 	this->gui_input = gui_input;
 }
 
-void InputManager::set_camera_controller(const std::shared_ptr<camera::Controller> controller) {
+void InputManager::set_camera_controller(const std::shared_ptr<camera::Controller> &controller) {
 	this->camera_controller = controller;
 }
 
-void InputManager::set_engine_controller(const std::shared_ptr<game::Controller> controller) {
+void InputManager::set_engine_controller(const std::shared_ptr<game::Controller> &controller) {
 	this->engine_controller = controller;
 }
 
