@@ -18,7 +18,7 @@ Terrain::Terrain() :
 	// TODO: Get actual size of terrain.
 }
 
-void Terrain::add_chunk(const std::shared_ptr<TerrainChunk> chunk) {
+void Terrain::add_chunk(const std::shared_ptr<TerrainChunk> &chunk) {
 	this->chunks.push_back(chunk);
 }
 

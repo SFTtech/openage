@@ -32,7 +32,7 @@ public:
      *
      * @param chunk New chunk.
      */
-	void add_chunk(const std::shared_ptr<TerrainChunk> chunk);
+	void add_chunk(const std::shared_ptr<TerrainChunk> &chunk);
 
 	/**
      * Get the chunks of the terrain.
