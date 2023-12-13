@@ -21,7 +21,7 @@ void TerrainChunk::set_render_entity(const std::shared_ptr<TerrainRenderEntity> 
 	this->render_entity = entity;
 }
 
-void TerrainChunk::fetch_updates(const time::time_t &time) {
+void TerrainChunk::fetch_updates(const time::time_t & /* time */) {
 	// TODO: Don't create model if render entity is not set
 	if (not this->render_entity) {
 		return;
