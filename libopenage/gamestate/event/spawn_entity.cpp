@@ -77,7 +77,8 @@ static const std::vector<nyan::fqon_t> trial_test_entities = {
 };
 
 // TODO: Remove hardcoded test entity references
-static std::vector<nyan::fqon_t> test_entities; // declared static so we only have to do this once
+// declared static so we only have to init the vector once
+static std::vector<nyan::fqon_t> test_entities;
 
 
 void build_test_entities(const std::shared_ptr<GameState> &gstate) {
