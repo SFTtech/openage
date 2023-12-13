@@ -63,7 +63,6 @@ find_package(Threads REQUIRED)
 
 set(QT_VERSION_REQ "6.2")
 find_package(Qt6 ${QT_VERSION_REQ} REQUIRED COMPONENTS Core Quick Multimedia)
-# find_package(Qt6Multimedia ${QT_VERSION_REQ} REQUIRED)
 
 if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)
