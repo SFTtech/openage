@@ -43,11 +43,11 @@ public:
 
 	/**
 	 * Attach a renderer which enables graphical display.
-     *
-     * TODO: We currently have to do attach this here too in addition to the terrain
-     *       factory because the renderer gets attached AFTER the terrain is
-     *       already created. In the future, the game should wait for the renderer
-     *       before creating the terrain.
+	 *
+	 * TODO: We currently have to do attach this here too in addition to the terrain
+	 *       factory because the renderer gets attached AFTER the terrain is
+	 *       already created. In the future, the game should wait for the renderer
+	 *       before creating the terrain.
 	 *
 	 * @param render_factory Factory for creating connector objects for gamestate->renderer
 	 *                       communication.
