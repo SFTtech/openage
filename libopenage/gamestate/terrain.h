@@ -9,42 +9,63 @@
 #include "util/vector.h"
 
 namespace openage {
-namespace renderer::terrain {
-class TerrainRenderEntity;
-}
+namespace renderer {
+class RenderFactory;
+} // namespace renderer
 
 namespace gamestate {
+class TerrainChunk;
 
 /**
  * Entity for managing the map terrain of a game.
  */
 class Terrain {
 public:
-	Terrain(const std::string &texture_path);
+	/**
+     * Create a new terrain.
+     */
+	Terrain();
 	~Terrain() = default;
 
 	/**
-	 * Set the current render entity of the terrain.
+     * Add a chunk to the terrain.
+     *
+     * @param chunk New chunk.
+     */
+	void add_chunk(const std::shared_ptr<TerrainChunk> &chunk);
+
+	/**
+     * Get the chunks of the terrain.
+     *
+     * @return Terrain chunks.
+     */
+	const std::vector<std::shared_ptr<TerrainChunk>> &get_chunks() const;
+
+	/**
+	 * Attach a renderer which enables graphical display.
 	 *
-	 * @param entity New render entity.
+	 * TODO: We currently have to do attach this here too in addition to the terrain
+	 *       factory because the renderer gets attached AFTER the terrain is
+	 *       already created. In the future, the game should wait for the renderer
+	 *       before creating the terrain.
+	 *
+	 * @param render_factory Factory for creating connector objects for gamestate->renderer
+	 *                       communication.
 	 */
-	void set_render_entity(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &entity);
+	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
 
 private:
-	// test connection to renderer
-	void push_to_render();
-
-	// size of the map
-	// origin is the left corner
-	// x = top left edge; y = top right edge
+	/**
+     * Total size of the map
+	 * origin is the left corner
+	 * x = top left edge; y = top right edge
+     */
 	util::Vector2s size;
-	// Heights of the terrain grid
-	std::vector<float> height_map;
-	// path to a texture
-	std::string texture_path;
 
-	// render entity for pushing updates to
-	std::shared_ptr<renderer::terrain::TerrainRenderEntity> render_entity;
+	/**
+     * Subdivision of the main terrain entity.
+     */
+	std::vector<std::shared_ptr<TerrainChunk>> chunks;
 };
 
 } // namespace gamestate

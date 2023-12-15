@@ -9,9 +9,9 @@
 #include "datastructure/constexpr_map.h"
 #include "error/error.h"
 #include "log/log.h"
-#include "util/opengl.h"
 
 #include "renderer/opengl/context.h"
+#include "renderer/opengl/error.h"
 #include "renderer/opengl/geometry.h"
 #include "renderer/opengl/lookup.h"
 #include "renderer/opengl/shader.h"

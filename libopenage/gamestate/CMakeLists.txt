@@ -8,6 +8,8 @@ add_sources(libopenage
 	player.cpp
     simulation.cpp
 	terrain_chunk.cpp
+    terrain_factory.cpp
+    terrain_tile.cpp
 	terrain.cpp
     types.cpp
 	world.cpp
@@ -20,6 +22,3 @@ add_subdirectory(component/)
 add_subdirectory(demo/)
 add_subdirectory(event/)
 add_subdirectory(system/)
-
-# TODO: remove once migration is done.
-add_subdirectory(old/)

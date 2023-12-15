@@ -22,6 +22,19 @@ GlRenderTarget::GlRenderTarget(const std::shared_ptr<GlContext> &context,
 	this->size = this->textures.value().at(0)->get_info().get_size();
 }
 
+resources::Texture2dData GlRenderTarget::into_data() {
+	// make sure the framebuffer is bound
+	this->bind_read();
+
+	std::vector<uint8_t> pxdata(this->size.first * this->size.second * 4);
+	glReadPixels(0, 0, this->size.first, this->size.second, GL_RGBA, GL_UNSIGNED_BYTE, pxdata.data());
+
+	resources::Texture2dInfo info{this->size.first,
+	                              this->size.second,
+	                              resources::pixel_format::rgba8};
+	return resources::Texture2dData{info, std::move(pxdata)};
+}
+
 std::vector<std::shared_ptr<Texture2d>> GlRenderTarget::get_texture_targets() {
 	std::vector<std::shared_ptr<Texture2d>> textures{};
 	if (this->framebuffer->get_type() == gl_framebuffer_t::display) {

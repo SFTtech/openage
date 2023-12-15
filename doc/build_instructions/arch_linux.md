@@ -4,7 +4,7 @@
 
 This command should provide required packages from the Arch Linux repositories:
 
-`sudo pacman -S --needed eigen python python-mako python-pillow python-numpy python-lz4 python-pygments cython libepoxy libogg libpng ttf-dejavu freetype2 fontconfig harfbuzz cmake sdl2 sdl2_image opusfile opus python-pylint python-toml qt6-declarative`
+`sudo pacman -S --needed eigen python python-mako python-pillow python-numpy python-lz4 python-pygments cython libepoxy libogg libpng ttf-dejavu freetype2 fontconfig harfbuzz cmake opusfile opus python-pylint python-toml qt6-declarative qt6-multimedia`
 
 Additionally, you have to install [`toml11`](https://aur.archlinux.org/packages/toml11) from the AUR.
 If you have `yay`, you can run this command:

@@ -10,9 +10,6 @@ namespace openage::gamestate {
 
 Universe::Universe(const std::shared_ptr<GameState> &state) :
 	world{std::make_shared<World>(state)} {
-	// TODO
-	auto texpath = "../test/textures/test_terrain.terrain";
-	this->terrain = std::make_shared<Terrain>(texpath);
 }
 
 std::shared_ptr<World> Universe::get_world() {
@@ -25,10 +22,6 @@ std::shared_ptr<Terrain> Universe::get_terrain() {
 
 void Universe::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
 	this->render_factory = render_factory;
-
-	// TODO: Notify entities somwhere else?
-	auto terrain_render_entity = this->render_factory->add_terrain_render_entity();
-	this->terrain->set_render_entity(terrain_render_entity);
 
 	this->world->attach_renderer(render_factory);
 }

@@ -57,6 +57,13 @@ public:
 	               std::vector<std::shared_ptr<GlTexture2d>> const &textures);
 
 	/**
+	 * Get the pixels stored in the render target's buffer.
+	 *
+	 * @return Texture data with the image contents of the buffer.
+	 */
+	resources::Texture2dData into_data() override;
+
+	/**
      * Get the targeted textures.
      *
      * @return Textures drawn into by the render target.

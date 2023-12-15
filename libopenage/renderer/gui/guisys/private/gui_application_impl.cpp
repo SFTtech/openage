@@ -2,12 +2,12 @@
 
 #include "gui_application_impl.h"
 
-#include <locale>
 #include <cassert>
+#include <locale>
 
 #include <QSurfaceFormat>
-#include <QtGlobal>
 #include <QtDebug>
+#include <QtGlobal>
 
 namespace qtgui {
 
@@ -41,22 +41,20 @@ void GuiApplicationImpl::processEvents() {
 }
 
 namespace {
-	int argc = 1;
-	char arg[] = "qtsdl";
-	char *argv = &arg[0];
-}
+int argc = 1;
+char arg[] = "qtgui";
+char *argv = &arg[0];
+} // namespace
 
-GuiApplicationImpl::GuiApplicationImpl()
-	:
+GuiApplicationImpl::GuiApplicationImpl() :
 #ifndef NDEBUG
 	owner{std::this_thread::get_id()},
 #endif
-	app{argc, &argv}
-{
+	app{argc, &argv} {
 	// Set locale back to POSIX for the decimal point parsing (see qcoreapplication.html#locale-settings).
 	std::locale::global(std::locale().combine<std::numpunct<char>>(std::locale::classic()));
 
 	qInfo() << "Compiled with Qt" << QT_VERSION_STR << "and run with Qt" << qVersion();
 }
 
-} // namespace qtsdl
+} // namespace qtgui

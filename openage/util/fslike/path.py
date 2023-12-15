@@ -4,7 +4,7 @@
 Provides Path, which is analogous to pathlib.Path,
 and the type of FSLikeObject.root.
 """
-from typing import NoReturn
+from typing import NoReturn, Union
 
 from io import UnsupportedOperation, TextIOWrapper
 import os
@@ -35,7 +35,7 @@ class Path:
     # lower.
     # pylint: disable=too-many-public-methods
 
-    def __init__(self, fsobj, parts: str | bytes | bytearray | list | tuple = None):
+    def __init__(self, fsobj, parts: Union[str, bytes, bytearray, list, tuple] = None):
         if isinstance(parts, str):
             parts = parts.encode()
 

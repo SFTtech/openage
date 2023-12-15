@@ -177,7 +177,7 @@ void Texture2dData::store(const util::Path &file) const {
 
 	QImage image{this->data.data(), size.first, size.second, pix_fmt};
 
-	// Call sdl_image for saving the screenshot to PNG
+	// Call QImage for saving the screenshot to PNG
 	std::string path = file.resolve_native_path_w();
 	image.save(path.c_str());
 }

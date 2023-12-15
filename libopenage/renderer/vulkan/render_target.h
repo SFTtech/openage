@@ -3,10 +3,14 @@
 #pragma once
 
 #include <algorithm>
+#include <limits>
 
-#include "../renderer.h"
+#include <vulkan/vulkan.h>
 
-#include "graphics_device.h"
+#include "log/log.h"
+
+#include "renderer/renderer.h"
+#include "renderer/vulkan/graphics_device.h"
 
 
 namespace openage {

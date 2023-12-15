@@ -13,16 +13,20 @@
 #include "assets/modpack.h"
 #include "gamestate/entity_factory.h"
 #include "gamestate/game_state.h"
+#include "gamestate/terrain.h"
+#include "gamestate/terrain_factory.h"
 #include "gamestate/universe.h"
 #include "util/path.h"
 #include "util/strings.h"
 
+#include "coord/tile.h"
 
 namespace openage::gamestate {
 
 Game::Game(const std::shared_ptr<openage::event::EventLoop> &event_loop,
            const std::shared_ptr<assets::ModManager> &mod_manager,
-           const std::shared_ptr<EntityFactory> &entity_factory) :
+           const std::shared_ptr<EntityFactory> &entity_factory,
+           const std::shared_ptr<TerrainFactory> &terrain_factory) :
 	db{nyan::Database::create()},
 	state{std::make_shared<GameState>(this->db, event_loop)},
 	universe{std::make_shared<Universe>(state)} {
@@ -39,6 +43,8 @@ Game::Game(const std::shared_ptr<openage::event::EventLoop> &event_loop,
 	//       This can be removed when we spawn based on game logic rather than
 	//       hardcoded entity types.
 	this->state->set_mod_manager(mod_manager);
+
+	this->generate_terrain(terrain_factory);
 }
 
 const std::shared_ptr<GameState> &Game::get_state() const {
@@ -47,6 +53,7 @@ const std::shared_ptr<GameState> &Game::get_state() const {
 
 void Game::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
 	this->universe->attach_renderer(render_factory);
+	this->state->get_terrain()->attach_renderer(render_factory);
 }
 
 void Game::load_data(const std::shared_ptr<assets::ModManager> &mod_manager) {
@@ -89,7 +96,7 @@ void Game::load_path(const util::Path &base_dir,
 	auto base_path = base_dir.resolve_native_path();
 	auto search_path = base_dir / mod_dir / search;
 
-	auto fileload_func = [&base_path, &mod_dir](const std::string &filename) {
+	auto fileload_func = [&base_path](const std::string &filename) {
 		// nyan wants a string filepath, so we have to construct it from the
 		// path and subpath parameters
 		log::log(INFO << "Loading .nyan file: " << filename);
@@ -98,7 +105,7 @@ void Game::load_path(const util::Path &base_dir,
 	};
 
 	// file loading
-	if (search_path.is_file() && search_path.get_suffix() == ".nyan") {
+	if (search_path.is_file() and search_path.get_suffix() == ".nyan") {
 		auto loc = mod_dir + "/" + search;
 		this->db->load(loc, fileload_func);
 		return;
@@ -117,6 +124,29 @@ void Game::load_path(const util::Path &base_dir,
 			this->load_path(base_dir, mod_dir, new_search, recursive);
 		}
 	}
+}
+
+void Game::generate_terrain(const std::shared_ptr<TerrainFactory> &terrain_factory) {
+	auto terrain = terrain_factory->add_terrain();
+
+	auto chunk0 = terrain_factory->add_chunk(this->state,
+	                                         util::Vector2s{10, 10},
+	                                         coord::tile_delta{0, 0});
+	auto chunk1 = terrain_factory->add_chunk(this->state,
+	                                         util::Vector2s{10, 10},
+	                                         coord::tile_delta{10, 0});
+	auto chunk2 = terrain_factory->add_chunk(this->state,
+	                                         util::Vector2s{10, 10},
+	                                         coord::tile_delta{0, 10});
+	auto chunk3 = terrain_factory->add_chunk(this->state,
+	                                         util::Vector2s{10, 10},
+	                                         coord::tile_delta{10, 10});
+	terrain->add_chunk(chunk0);
+	terrain->add_chunk(chunk1);
+	terrain->add_chunk(chunk2);
+	terrain->add_chunk(chunk3);
+
+	this->state->set_terrain(terrain);
 }
 
 } // namespace openage::gamestate

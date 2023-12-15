@@ -4,6 +4,7 @@
 
 #include <eigen3/Eigen/Dense>
 
+#include "coord/tile.h"
 #include "renderer/camera/camera.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
@@ -116,21 +117,20 @@ void renderer_stresstest_0(const util::Path &path) {
 	// Create some entities to populate the scene
 	auto render_factory = std::make_shared<RenderFactory>(terrain_renderer, world_renderer);
 
-	// Terrain
-	auto terrain0 = render_factory->add_terrain_render_entity();
-
 	// Fill a 10x10 terrain grid with height values
 	auto terrain_size = util::Vector2s{10, 10};
-	std::vector<float> height_map{};
-	height_map.reserve(terrain_size[0] * terrain_size[1]);
+	std::vector<std::pair<terrain::TerrainRenderEntity::terrain_elevation_t, std::string>> tiles{};
+	tiles.reserve(terrain_size[0] * terrain_size[1]);
 	for (size_t i = 0; i < terrain_size[0] * terrain_size[1]; ++i) {
-		height_map.push_back(0.0f);
+		tiles.emplace_back(0.0f, "./textures/test_terrain.terrain");
 	}
 
+	// Create entity for terrain rendering
+	auto terrain0 = render_factory->add_terrain_render_entity(terrain_size,
+	                                                          coord::tile_delta{0, 0});
+
 	// send the terrain data to the terrain renderer
-	terrain0->update(terrain_size,
-	                 height_map,
-	                 "./textures/test_terrain.terrain");
+	terrain0->update(terrain_size, tiles);
 
 	// World entities
 	std::vector<std::shared_ptr<renderer::world::WorldRenderEntity>> render_entities{};

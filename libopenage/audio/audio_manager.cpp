@@ -1,95 +1,60 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #include "audio_manager.h"
 
 #include <cstring>
-#include <SDL2/SDL.h>
 #include <sstream>
 
+#include <QAudioDevice>
+#include <QAudioFormat>
+#include <QAudioSink>
+#include <QMediaDevices>
+
+#include "../log/log.h"
+#include "../util/misc.h"
 #include "error.h"
 #include "hash_functions.h"
 #include "resource.h"
-#include "../log/log.h"
-#include "../util/misc.h"
 
 
 namespace openage {
 namespace audio {
 
-
-
-
-/**
- * Wrapper class for the sdl audio device locking so
- * the device doesn't deadlock because of funny exceptions.
- */
-class SDLDeviceLock {
-public:
-	explicit SDLDeviceLock(const SDL_AudioDeviceID &id)
-		:
-		dev_id{id} {
-		SDL_LockAudioDevice(this->dev_id);
-	}
-
-	~SDLDeviceLock() {
-		SDL_UnlockAudioDevice(this->dev_id);
-	}
-
-	SDLDeviceLock(SDLDeviceLock &&) = delete;
-	SDLDeviceLock(const SDLDeviceLock &) = delete;
-	SDLDeviceLock& operator =(SDLDeviceLock &&) = delete;
-	SDLDeviceLock& operator =(const SDLDeviceLock &) = delete;
-
-private:
-	SDL_AudioDeviceID dev_id;
-};
-
-
-AudioManager::AudioManager(job::JobManager *job_manager,
-                           const std::string &device_name)
-	:
+AudioManager::AudioManager(const std::shared_ptr<job::JobManager> &job_manager,
+                           const std::string &device_name) :
 	available{false},
 	job_manager{job_manager},
-	device_name{device_name} {
-
-	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
-		log::log(MSG(err)
-		         << "SDL audio initialization failed: "
-		         << SDL_GetError());
-		return;
-	} else {
-		log::log(MSG(info) << "SDL audio subsystems initialized");
-	}
-
+	device_name{device_name},
+	device_format{std::make_shared<QAudioFormat>()},
+	device{nullptr},
+	audio_sink{nullptr} {
 	// set desired audio output format
-	SDL_AudioSpec desired_spec;
-	SDL_zero(desired_spec);
-	desired_spec.freq = 48000;
-	desired_spec.format = AUDIO_S16LSB;
-	desired_spec.channels = 2;
-	desired_spec.samples = 4096;
-	desired_spec.userdata = this;
+	this->device_format->setSampleRate(48000);
+	this->device_format->setSampleFormat(QAudioFormat::SampleFormat::Int16);
+	this->device_format->setChannelCount(2);
 
-	// call back that is invoked once SDL needs the next chunk of data
-	desired_spec.callback = [] (void *userdata, uint8_t *stream, int len) {
-		auto *audio_manager = static_cast<AudioManager*>(userdata);
-		audio_manager->audio_callback(reinterpret_cast<int16_t*>(stream), len / 2);
-	};
+	// find the device with the given name
+	for (auto &device : QMediaDevices::audioOutputs()) {
+		if (device.description().toStdString() == device_name) {
+			this->device = std::make_shared<QAudioDevice>(device);
+			break;
+		}
+	}
 
-	// convert device name to valid parameter for sdl call
-	// if the device name is empty, use a nullptr in order to indicate that the
-	// default device should be used
-	const char *c_device_name = device_name.empty() ?
-	                            nullptr : device_name.c_str();
-	// open audio playback device
-	device_id = SDL_OpenAudioDevice(c_device_name, 0, &desired_spec,
-	                                &device_spec, 0);
-
-	// no device could be opened
-	if (device_id == 0) {
-		log::log(MSG(err) << "Error opening audio device: " << SDL_GetError());
+	// select the default device if the name was not found
+	if (not this->device) {
+		this->device = std::make_shared<QAudioDevice>(QMediaDevices::defaultAudioOutput());
 		return;
 	}
+
+	if (not this->device->isFormatSupported(*this->device_format)) {
+		log::log(MSG(err) << "Audio device does not support the desired format!");
+		return;
+	}
+
+	// create audio sink
+	this->audio_sink = std::make_unique<QAudioSink>(*this->device.get(), *this->device_format.get());
+	// TODO: connect callback to get audio data to device
 
 	// initialize playing sounds vectors
 	using sound_vector = std::vector<std::shared_ptr<SoundImpl>>;
@@ -100,25 +65,23 @@ AudioManager::AudioManager(job::JobManager *job_manager,
 
 	// create buffer for mixing
 	this->mix_buffer = std::make_unique<int32_t[]>(
-		4 * device_spec.samples * device_spec.channels
-	);
+		4 * device_format->bytesPerSample() * device_format->channelCount());
 
-	log::log(MSG(info) <<
-	         "Using audio device: "
-	         << (device_name.empty() ? "default" : device_name)
-	         << " [freq=" << device_spec.freq
-	         << ", format=" << device_spec.format
-	         << ", channels=" << static_cast<uint16_t>(device_spec.channels)
-	         << ", samples=" << device_spec.samples
-	         << "]");
+	log::log(MSG(info) << "Using audio device: "
+	                   << (device_name.empty() ? "default" : device_name)
+	                   << " [sample rate=" << device_format->sampleRate()
+	                   << ", format=" << device_format->sampleFormat()
+	                   << ", channels=" << device_format->channelCount()
+	                   << ", samples=" << device_format->bytesPerSample()
+	                   << "]");
 
-	SDL_PauseAudioDevice(device_id, 0);
+	this->audio_sink->stop();
 
 	this->available = true;
 }
 
 AudioManager::~AudioManager() {
-	SDL_CloseAudioDevice(device_id);
+	this->audio_sink->stop();
 }
 
 void AudioManager::load_resources(const std::vector<resource_def> &sound_files) {
@@ -148,11 +111,10 @@ Sound AudioManager::get_sound(category_t category, int id) {
 	auto resource = resources.find(std::make_tuple(category, id));
 	if (resource == std::end(resources)) {
 		throw audio::Error{
-			MSG(err) <<
-			"Sound resource does not exist: "
-			"category=" << category << ", " <<
-			"id=" << id
-		};
+			MSG(err) << "Sound resource does not exist: "
+						"category="
+					 << category << ", "
+					 << "id=" << id};
 	}
 
 	auto sound_impl = std::make_shared<SoundImpl>(resource->second);
@@ -161,7 +123,7 @@ Sound AudioManager::get_sound(category_t category, int id) {
 
 
 void AudioManager::audio_callback(int16_t *stream, int length) {
-	std::memset(mix_buffer.get(), 0, length*4);
+	std::memset(mix_buffer.get(), 0, length * 4);
 
 	// iterate over all categories
 	for (auto &entry : this->playing_sounds) {
@@ -181,28 +143,25 @@ void AudioManager::audio_callback(int16_t *stream, int length) {
 
 	// write the mix buffer to the output stream and adjust volume
 	for (int i = 0; i < length; i++) {
-		auto value = mix_buffer[i]/256;
+		auto value = mix_buffer[i] / 256;
 		if (value > 32767) {
 			value = 32767;
-		} else if (value < -32768) {
+		}
+		else if (value < -32768) {
 			value = -32768;
 		}
 		stream[i] = static_cast<int16_t>(value);
 	}
 }
 
-void AudioManager::add_sound(const std::shared_ptr<SoundImpl>& sound) {
-	SDLDeviceLock lock{this->device_id};
-
+void AudioManager::add_sound(const std::shared_ptr<SoundImpl> &sound) {
 	auto category = sound->get_category();
 	auto &playing_list = this->playing_sounds.find(category)->second;
 	// TODO probably check if sound already exists in playing list
 	playing_list.push_back(sound);
 }
 
-void AudioManager::remove_sound(const std::shared_ptr<SoundImpl>& sound) {
-	SDLDeviceLock lock{this->device_id};
-
+void AudioManager::remove_sound(const std::shared_ptr<SoundImpl> &sound) {
 	auto category = sound->get_category();
 	auto &playing_list = this->playing_sounds.find(category)->second;
 
@@ -214,11 +173,11 @@ void AudioManager::remove_sound(const std::shared_ptr<SoundImpl>& sound) {
 	}
 }
 
-SDL_AudioSpec AudioManager::get_device_spec() const {
-	return this->device_spec;
+const std::shared_ptr<QAudioFormat> &AudioManager::get_device_spec() const {
+	return this->device_format;
 }
 
-job::JobManager *AudioManager::get_job_manager() const {
+const std::shared_ptr<job::JobManager> &AudioManager::get_job_manager() const {
 	return this->job_manager;
 }
 
@@ -228,32 +187,21 @@ bool AudioManager::is_available() const {
 
 
 std::vector<std::string> AudioManager::get_devices() {
+	auto devices = QMediaDevices::audioOutputs();
+
 	std::vector<std::string> device_list;
-	auto num_devices = SDL_GetNumAudioDevices(0);
-	device_list.reserve(num_devices);
-	for (int i = 0; i < num_devices; i++) {
-		device_list.emplace_back(SDL_GetAudioDeviceName(i, 0));
+	device_list.reserve(devices.size());
+
+	for (auto &device : devices) {
+		device_list.emplace_back(device.description().toStdString());
 	}
+
 	return device_list;
 }
 
-std::vector<std::string> AudioManager::get_drivers() {
-	std::vector<std::string> driver_list;
-	auto num_drivers = SDL_GetNumAudioDrivers();
-	driver_list.reserve(num_drivers);
-	for (int i = 0; i < num_drivers; i++) {
-		driver_list.emplace_back(SDL_GetAudioDriver(i));
-	}
-	return driver_list;
+std::string AudioManager::get_default_device() {
+	return QMediaDevices::defaultAudioOutput().description().toStdString();
 }
 
-std::string AudioManager::get_current_driver() {
-	const char *c_driver = SDL_GetCurrentAudioDriver();
-	if (c_driver == nullptr) {
-		return "";
-	} else {
-		return c_driver;
-	}
-}
-
-}} // openage::audio
+} // namespace audio
+} // namespace openage

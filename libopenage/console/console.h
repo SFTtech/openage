@@ -2,39 +2,31 @@
 
 #pragma once
 
-#include <SDL2/SDL.h>
 #include <vector>
 
 #include "../coord/pixel.h"
-#include "../gamedata/color_dummy.h"
-#include "../handlers.h"
-#include "../input/legacy/input_manager.h"
-#include "../presenter/legacy/legacy.h"
 #include "../renderer/font/font.h"
 #include "../util/color.h"
 #include "buf.h"
 
 namespace openage {
 
-class LegacyEngine;
-
 /**
  * In-game console subsystem. Featuring a full terminal emulator.
+ *
+ * TODO: Adapt to new engine subsystems.
  */
 namespace console {
 
-class Console : InputHandler
-	, TickHandler
-	, HudHandler
-	, ResizeHandler {
+class Console {
 public:
-	Console(presenter::LegacyDisplay *renderer);
+	Console(/* presenter::LegacyDisplay *display */);
 	~Console();
 
 	/**
 	 * load the consoles color table
 	 */
-	void load_colors(std::vector<gamedata::palette_color> &colortable);
+	// void load_colors(std::vector<gamedata::palette_color> &colortable);
 
 	/**
 	 * register this console to the renderer.
@@ -54,13 +46,14 @@ public:
 	 */
 	void interpret(const std::string &command);
 
-	bool on_drawhud() override;
-	bool on_tick() override;
-	bool on_input(SDL_Event *event) override;
-	bool on_resize(coord::viewport_delta new_size) override;
+	// bool on_drawhud() override;
+	// bool on_tick() override;
+	// bool on_input(SDL_Event *event) override;
+	// bool on_resize(coord::viewport_delta new_size) override;
 
 protected:
-	presenter::LegacyDisplay *engine;
+	// TODO: Replace with new renderer
+	// presenter::LegacyDisplay *display;
 
 public:
 	coord::camhud bottomleft;
@@ -74,7 +67,7 @@ public:
 	Buf buf;
 	renderer::Font font;
 
-	input::legacy::InputContext input_context;
+	// input::legacy::InputContext input_context;
 
 	// the command state
 	std::string command;

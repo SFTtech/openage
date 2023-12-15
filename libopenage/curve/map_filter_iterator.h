@@ -32,8 +32,6 @@ public:
 	                  const time::time_t &to) :
 		CurveIterator<val_t, container_t>(base, container, from, to) {}
 
-	MapFilterIterator(const MapFilterIterator &) = default;
-
 	using CurveIterator<val_t, container_t>::operator=;
 
 	virtual bool valid() const override {

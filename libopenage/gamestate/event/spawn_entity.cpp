@@ -76,6 +76,52 @@ static const std::vector<nyan::fqon_t> trial_test_entities = {
 	"trial_base.data.game_entity.generic.barracks.barracks.Barracks",
 };
 
+// TODO: Remove hardcoded test entity references
+// declared static so we only have to build the vector once
+static std::vector<nyan::fqon_t> test_entities;
+
+
+void build_test_entities(const std::shared_ptr<GameState> &gstate) {
+	auto modpack_ids = gstate->get_mod_manager()->get_load_order();
+	for (auto &modpack_id : modpack_ids) {
+		if (modpack_id == "aoe1_base") {
+			test_entities.insert(test_entities.end(),
+			                     aoe1_test_entities.begin(),
+			                     aoe1_test_entities.end());
+		}
+		else if (modpack_id == "de1_base") {
+			test_entities.insert(test_entities.end(),
+			                     de1_test_entities.begin(),
+			                     de1_test_entities.end());
+		}
+		else if (modpack_id == "aoe2_base") {
+			test_entities.insert(test_entities.end(),
+			                     aoe2_test_entities.begin(),
+			                     aoe2_test_entities.end());
+		}
+		else if (modpack_id == "de2_base") {
+			test_entities.insert(test_entities.end(),
+			                     de2_test_entities.begin(),
+			                     de2_test_entities.end());
+		}
+		else if (modpack_id == "hd_base") {
+			test_entities.insert(test_entities.end(),
+			                     hd_test_entities.begin(),
+			                     hd_test_entities.end());
+		}
+		else if (modpack_id == "swgb_base") {
+			test_entities.insert(test_entities.end(),
+			                     swgb_test_entities.begin(),
+			                     swgb_test_entities.end());
+		}
+		else if (modpack_id == "trial_base") {
+			test_entities.insert(test_entities.end(),
+			                     trial_test_entities.begin(),
+			                     trial_test_entities.end());
+		}
+	}
+}
+
 
 Spawner::Spawner(const std::shared_ptr<openage::event::EventLoop> &loop) :
 	EventEntity(loop) {
@@ -113,51 +159,13 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 
 	auto game_entities = nyan_db->get_obj_children_all("engine.util.game_entity.GameEntity");
 
-	// TODO: Remove hardcoded test entity references
-	static std::vector<nyan::fqon_t> test_entities; // declared static so we only have to do this once
 	if (test_entities.empty()) {
-		auto modpack_ids = gstate->get_mod_manager()->get_load_order();
-		for (auto &modpack_id : modpack_ids) {
-			if (modpack_id == "aoe1_base") {
-				test_entities.insert(test_entities.end(),
-				                     aoe1_test_entities.begin(),
-				                     aoe1_test_entities.end());
-			}
-			else if (modpack_id == "de1_base") {
-				test_entities.insert(test_entities.end(),
-				                     de1_test_entities.begin(),
-				                     de1_test_entities.end());
-			}
-			else if (modpack_id == "aoe2_base") {
-				test_entities.insert(test_entities.end(),
-				                     aoe2_test_entities.begin(),
-				                     aoe2_test_entities.end());
-			}
-			else if (modpack_id == "de2_base") {
-				test_entities.insert(test_entities.end(),
-				                     de2_test_entities.begin(),
-				                     de2_test_entities.end());
-			}
-			else if (modpack_id == "hd_base") {
-				test_entities.insert(test_entities.end(),
-				                     hd_test_entities.begin(),
-				                     hd_test_entities.end());
-			}
-			else if (modpack_id == "swgb_base") {
-				test_entities.insert(test_entities.end(),
-				                     swgb_test_entities.begin(),
-				                     swgb_test_entities.end());
-			}
-			else if (modpack_id == "trial_base") {
-				test_entities.insert(test_entities.end(),
-				                     trial_test_entities.begin(),
-				                     trial_test_entities.end());
-			}
+		build_test_entities(gstate);
+
+		// Do nothing if there are no test entities
+		if (test_entities.empty()) {
+			return;
 		}
-	}
-	if (test_entities.empty()) {
-		// Do nothing because we don't have anything to spawn
-		return;
 	}
 
 	static uint8_t index = 0;
@@ -190,7 +198,7 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 
 	// TODO: Select the unit when it's created
 	// very dumb but it gets the job done
-	auto select_cb = params.get("select_cb", std::function<void(entity_id_t id)>{});
+	auto select_cb = params.get("select_cb", std::function<void(entity_id_t id)>{[](entity_id_t /* id */) {}});
 	select_cb(entity->get_id());
 
 	gstate->add_game_entity(entity);

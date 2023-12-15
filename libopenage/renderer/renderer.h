@@ -34,6 +34,15 @@ protected:
 public:
 	virtual ~RenderTarget() = default;
 
+	/**
+	 * Get an image from the pixels in the render target's framebuffer.
+	 *
+	 * This should only be called _after_ rendering to the framebuffer has finished.
+	 *
+	 * @return RGBA texture data.
+	 */
+	virtual resources::Texture2dData into_data() = 0;
+
 	virtual std::vector<std::shared_ptr<Texture2d>> get_texture_targets() = 0;
 };
 

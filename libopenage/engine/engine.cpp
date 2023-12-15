@@ -55,7 +55,7 @@ Engine::Engine(mode mode,
 
 	// if presenter is used, run it in a separate thread
 	if (this->run_mode == mode::FULL) {
-		this->threads.emplace_back([&]() {
+		this->threads.emplace_back([&, debug_graphics]() {
 			this->presenter->run(debug_graphics);
 
 			// Make sure that the presenter gets destructed in the same thread

@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,8 +9,6 @@
 
 namespace openage {
 
-class TerrainObject;
-
 namespace path {
 
 /**
@@ -19,13 +17,6 @@ namespace path {
 Path to_point(coord::phys3 start,
               coord::phys3 end,
               std::function<bool(const coord::phys3 &)> passable);
-
-/**
- * path between 2 objects, with how close to come to end point
- */
-Path to_object(TerrainObject *to_move,
-               TerrainObject *end,
-               coord::phys_t rad);
 
 /**
  * path to nearest object with lambda

@@ -123,7 +123,7 @@ MeshData create_float_mesh(const std::array<float, size> &src) {
 	auto const data_size = size * sizeof(float);
 
 	std::vector<uint8_t> verts(data_size);
-	std::memcpy(verts.data(), reinterpret_cast<const uint8_t *>(src.data()), data_size);
+	std::memcpy(verts.data(), src.data(), data_size);
 
 	VertexInputInfo info{
 		{vertex_input_t::V2F32, vertex_input_t::V2F32},

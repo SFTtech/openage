@@ -8,6 +8,7 @@
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/shader_program.h"
+#include "renderer/stages/terrain/terrain_chunk.h"
 #include "renderer/stages/terrain/terrain_mesh.h"
 #include "renderer/stages/terrain/terrain_model.h"
 #include "renderer/window.h"
@@ -45,37 +46,40 @@ std::shared_ptr<renderer::RenderPass> TerrainRenderer::get_render_pass() {
 	return this->render_pass;
 }
 
-void TerrainRenderer::set_render_entity(const std::shared_ptr<TerrainRenderEntity> entity) {
+void TerrainRenderer::add_render_entity(const std::shared_ptr<TerrainRenderEntity> entity,
+                                        const util::Vector2s chunk_size,
+                                        const coord::scene2_delta chunk_offset) {
 	std::unique_lock lock{this->mutex};
 
 	this->render_entity = entity;
-	this->model->set_render_entity(this->render_entity);
+	this->model->add_chunk(this->render_entity, chunk_size, chunk_offset);
 	this->update();
 }
 
 void TerrainRenderer::update() {
 	this->model->fetch_updates();
 	auto current_time = this->clock->get_real_time();
-	for (auto &mesh : this->model->get_meshes()) {
-		if (mesh->requires_renderable()) [[unlikely]] { /*probably doesn't happen that often?*/
-			// TODO: Update uniforms and geometry individually, depending on what changed
-			// TODO: Update existing renderable instead of recreating it
-			auto geometry = this->renderer->add_mesh_geometry(mesh->get_mesh());
-			auto transform_unifs = this->display_shader->create_empty_input();
+	for (auto &chunk : this->model->get_chunks()) {
+		for (auto &mesh : chunk->get_meshes()) {
+			if (mesh->requires_renderable()) [[unlikely]] { /*probably doesn't happen that often?*/
+				// TODO: Update uniforms and geometry individually, depending on what changed
+				// TODO: Update existing renderable instead of recreating it
+				auto geometry = this->renderer->add_mesh_geometry(mesh->get_mesh());
+				auto transform_unifs = this->display_shader->create_empty_input();
 
-			Renderable display_obj{
-				transform_unifs,
-				geometry,
-				true,
-				true, // it's a 3D object, so we need depth testing
-			};
+				Renderable display_obj{
+					transform_unifs,
+					geometry,
+					true,
+					true, // it's a 3D object, so we need depth testing
+				};
 
-			// TODO: Remove old renderable instead of clearing everything
-			this->render_pass->clear_renderables();
-			this->render_pass->add_renderables(display_obj);
-			mesh->clear_requires_renderable();
+				// TODO: Remove old renderable instead of clearing everything
+				this->render_pass->add_renderables(display_obj);
+				mesh->clear_requires_renderable();
 
-			mesh->set_uniforms(transform_unifs);
+				mesh->set_uniforms(transform_unifs);
+			}
 		}
 	}
 	this->model->update_uniforms(current_time);

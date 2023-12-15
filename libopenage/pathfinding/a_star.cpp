@@ -1,4 +1,4 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 /** @file
  *
@@ -16,11 +16,9 @@
 
 #include "../datastructure/pairing_heap.h"
 #include "../log/log.h"
-#include "../terrain/terrain.h"
-#include "../terrain/terrain_object.h"
 #include "../util/strings.h"
-#include "path.h"
 #include "heuristics.h"
+#include "path.h"
 
 
 namespace openage {
@@ -30,7 +28,6 @@ namespace path {
 Path to_point(coord::phys3 start,
               coord::phys3 end,
               std::function<bool(const coord::phys3 &)> passable) {
-
 	auto valid_end = [&](const coord::phys3 &point) -> bool {
 		return euclidean_squared_cost(point, end) < path_grid_size.to_float();
 	};
@@ -39,21 +36,6 @@ Path to_point(coord::phys3 start,
 	};
 	return a_star(start, valid_end, heuristic, passable);
 }
-
-
-Path to_object(openage::TerrainObject *to_move,
-               openage::TerrainObject *end,
-               coord::phys_t rad) {
-	coord::phys3 start = to_move->pos.draw;
-	auto valid_end = [&](const coord::phys3 &pos) -> bool {
-		return end->from_edge(pos) < rad;
-	};
-	auto heuristic = [&](const coord::phys3 &pos) -> cost_t {
-		return (end->from_edge(pos) - to_move->min_axis() / 2L).to_float();
-	};
-	return a_star(start, valid_end, heuristic, to_move->passable);
-}
-
 
 Path find_nearest(coord::phys3 start,
                   std::function<bool(const coord::phys3 &)> valid_end,
@@ -67,7 +49,6 @@ Path a_star(coord::phys3 start,
             std::function<bool(const coord::phys3 &)> valid_end,
             std::function<cost_t(const coord::phys3 &)> heuristic,
             std::function<bool(const coord::phys3 &)> passable) {
-
 	// path node storage, always provides cheapest next node.
 	heap_t node_candidates;
 
@@ -93,9 +74,7 @@ Path a_star(coord::phys3 start,
 
 		// node to terminate the search was found
 		if (valid_end(best_candidate->position)) {
-			log::log(MSG(dbg) <<
-				"path cost is " <<
-				util::FloatFixed<3, 8>{closest_node->future_cost});
+			log::log(MSG(dbg) << "path cost is " << util::FloatFixed<3, 8>{closest_node->future_cost});
 
 			return best_candidate->generate_backtrace();
 		}
@@ -128,26 +107,26 @@ Path a_star(coord::phys3 start,
 				}
 
 				// update new cost knowledge
-				neighbor->past_cost        = new_past_cost;
-				neighbor->future_cost      = neighbor->past_cost + neighbor->heuristic_cost;
+				neighbor->past_cost = new_past_cost;
+				neighbor->future_cost = neighbor->past_cost + neighbor->heuristic_cost;
 				neighbor->path_predecessor = best_candidate;
 
 				if (not_visited) {
 					neighbor->heap_node = node_candidates.push(neighbor);
 					visited_tiles[neighbor->position] = neighbor;
-				} else {
+				}
+				else {
 					node_candidates.decrease(neighbor->heap_node);
 				}
 			}
 		}
 	}
 
-	log::log(MSG(dbg) <<
-		"incomplete path cost is " <<
-		util::FloatFixed<3, 8>{closest_node->future_cost});
+	log::log(MSG(dbg) << "incomplete path cost is " << util::FloatFixed<3, 8>{closest_node->future_cost});
 
 	return closest_node->generate_backtrace();
 }
 
 
-}} // namespace openage::path
+} // namespace path
+} // namespace openage

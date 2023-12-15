@@ -48,15 +48,13 @@ Dependency list:
     CR    nyan  (https://github.com/SFTtech/nyan)
     CR  O ncurses
     C     mako
-    CR    sdl2
-    CR    sdl2_image
     CR    opusfile
     CRA   opus
     CRA   ogg
        S  pycodestyle
     C     pygments
        S  pylint
-    CR    qt6 >=6.2 (Core, Quick, QuickControls modules)
+    CR    qt6 >=6.2 (Core, Quick, QuickControls, Multimedia modules)
     CR    toml11
     CR  O vulkan
 
@@ -167,10 +165,10 @@ The reference package is [created for Gentoo](https://github.com/SFTtech/gentoo-
 
 - I wanna see compiler invocations
   - `make VERBOSE=1`
-- My `SDL2_Image`/`Python`/whatever is installed somewhere, but `cmake` can't find it!
+- My `Qt`/`Python`/whatever is installed somewhere, but `cmake` can't find it!
   - Run `ccmake` or `cmake-gui` in the build directory to see and change config variables.
   - You can manually tell `cmake` where to look. Try something along the lines of
-    - `./configure -- -DSDL2IMAGE_INCLUDE_DIRS=/whereever/sdl2_image/include/`
+    - `./configure -- -DPYTHON_INCLUDE_DIRS=/whereever/python/include/`
     - `-DPython3_EXECUTABLE=/your/py3/directory/`
 
 - I get compiler errors about missing header files

@@ -2,11 +2,8 @@
 
 #pragma once
 
-#include "../presenter/legacy/legacy.h"
 
 namespace openage {
-
-class LegacyEngine;
 
 namespace util {
 class FD;
@@ -22,7 +19,7 @@ namespace draw {
 /**
  * experimental and totally inefficient opengl draw of a terminal buffer.
  */
-void to_opengl(presenter::LegacyDisplay *engine, Console *console);
+// void to_opengl(presenter::LegacyDisplay *engine, Console *console);
 
 /**
  * very early and inefficient printing of the console to a pty.

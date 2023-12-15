@@ -7,9 +7,11 @@
 
 #include <eigen3/Eigen/Dense>
 
+#include "coord/scene.h"
 #include "curve/discrete.h"
 #include "renderer/resources/mesh_data.h"
 #include "time/time.h"
+#include "util/vector.h"
 
 
 namespace openage::renderer {
@@ -110,11 +112,11 @@ public:
 	void clear_requires_renderable();
 
 	/**
-	 * Get the model transformation matrix for rendering.
-	 *
-	 * @return Model matrix.
+	 * Create the model transformation matrix for rendering.
+     *
+     * @param offset Offset of the terrain mesh to the scene origin.
 	 */
-	Eigen::Matrix4f get_model_matrix();
+	void create_model_matrix(const coord::scene2_delta &offset);
 
 	/**
 	 * Check whether the mesh or texture were changed.
@@ -159,6 +161,11 @@ private:
      * Pre-transformation vertices for the terrain model.
      */
 	renderer::resources::MeshData mesh;
+
+	/**
+     * Transformation matrix for the terrain model.
+     */
+	Eigen::Matrix4f model_matrix;
 };
 } // namespace terrain
 } // namespace openage::renderer

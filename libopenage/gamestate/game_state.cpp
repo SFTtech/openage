@@ -37,6 +37,10 @@ void GameState::add_player(const std::shared_ptr<Player> &player) {
 	this->players[player->get_id()] = player;
 }
 
+void GameState::set_terrain(const std::shared_ptr<Terrain> &terrain) {
+	this->terrain = terrain;
+}
+
 const std::shared_ptr<GameEntity> &GameState::get_game_entity(entity_id_t id) const {
 	if (!this->game_entities.contains(id)) [[unlikely]] {
 		throw Error(MSG(err) << "Game entity with ID " << id << " does not exist");
@@ -53,6 +57,10 @@ const std::shared_ptr<Player> &GameState::get_player(player_id_t id) const {
 		throw Error(MSG(err) << "Player with ID " << id << " does not exist");
 	}
 	return this->players.at(id);
+}
+
+const std::shared_ptr<Terrain> &GameState::get_terrain() const {
+	return this->terrain;
 }
 
 const std::shared_ptr<assets::ModManager> &GameState::get_mod_manager() const {

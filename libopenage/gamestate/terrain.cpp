@@ -6,37 +6,34 @@
 #include <array>
 #include <cstddef>
 
-#include "renderer/stages/terrain/terrain_render_entity.h"
+#include "gamestate/terrain_chunk.h"
+#include "renderer/render_factory.h"
+
 
 namespace openage::gamestate {
 
-Terrain::Terrain(const std::string &texture_path) :
+Terrain::Terrain() :
 	size{0, 0},
-	height_map{},
-	texture_path{texture_path},
-	render_entity{nullptr} {
-	// TODO: Actual terrain generation code
-	this->size = util::Vector2s{10, 10};
-
-	// fill the terrain grid with height values
-	this->height_map.reserve(this->size[0] * this->size[1]);
-	for (size_t i = 0; i < this->size[0] * this->size[1]; ++i) {
-		this->height_map.push_back(0.0f);
-	}
+	chunks{} {
+	// TODO: Get actual size of terrain.
 }
 
-void Terrain::push_to_render() {
-	if (this->render_entity != nullptr) {
-		this->render_entity->update(this->size,
-		                            this->height_map,
-		                            this->texture_path);
-	}
+void Terrain::add_chunk(const std::shared_ptr<TerrainChunk> &chunk) {
+	this->chunks.push_back(chunk);
 }
 
-void Terrain::set_render_entity(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &entity) {
-	this->render_entity = entity;
+const std::vector<std::shared_ptr<TerrainChunk>> &Terrain::get_chunks() const {
+	return this->chunks;
+}
 
-	this->push_to_render();
+void Terrain::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
+	for (auto &chunk : this->get_chunks()) {
+		auto render_entity = render_factory->add_terrain_render_entity(chunk->get_size(),
+		                                                               chunk->get_offset());
+		chunk->set_render_entity(render_entity);
+
+		chunk->render_update(time::time_t::zero());
+	}
 }
 
 } // namespace openage::gamestate

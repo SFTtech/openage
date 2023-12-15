@@ -2,7 +2,6 @@ add_sources(libopenage
 	color.cpp
 	compiler.cpp
 	constinit_vector.cpp
-	csv.cpp
 	enum.cpp
 	enum_test.cpp
 	externalprofiler.cpp
@@ -20,10 +19,8 @@ add_sources(libopenage
 	matrix_test.cpp
 	misc.cpp
 	misc_test.cpp
-	opengl.cpp
 	os.cpp
 	path.cpp
-	profiler.cpp
 	quaternion.cpp
 	quaternion_test.cpp
 	repr.cpp

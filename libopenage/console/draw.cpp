@@ -10,7 +10,6 @@
 #include "../util/timing.h"
 #include <epoxy/gl.h>
 
-#include "../renderer/text.h"
 #include "buf.h"
 #include "console.h"
 
@@ -18,6 +17,7 @@ namespace openage {
 namespace console {
 namespace draw {
 
+/*
 void to_opengl(presenter::LegacyDisplay *engine, Console *console) {
 	coord::camhud topleft{
 		console->bottomleft.x,
@@ -85,6 +85,7 @@ void to_opengl(presenter::LegacyDisplay *engine, Console *console) {
 		}
 	}
 }
+*/
 
 void to_terminal(Buf *buf, util::FD *fd, bool clear) {
 	//move cursor, draw top left corner

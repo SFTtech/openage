@@ -24,7 +24,7 @@ class Controller;
 
 namespace game {
 class Controller;
-} // namespace engine
+} // namespace game
 
 class InputContext;
 

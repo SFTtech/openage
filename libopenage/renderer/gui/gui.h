@@ -6,8 +6,6 @@
 #include <memory>
 #include <string>
 
-#include "gui/guisys/public/gui_event_queue.h"
-#include "gui/integration/public/gui_game_spec_image_provider.h"
 #include "renderer/gui/guisys/public/gui_subtree.h"
 
 namespace qtgui {
@@ -30,8 +28,6 @@ class Window;
 class UniformInput;
 
 namespace gui {
-
-class QMLInfo;
 
 /**
  * Interface (= HUD) of the game.
@@ -101,15 +97,6 @@ private:
 	std::shared_ptr<qtgui::GuiApplication> application;
 
 	/**
-	 * TODO
-	 */
-	qtsdl::GuiEventQueue render_updater;
-	/**
-	 * TODO
-	 */
-	qtsdl::GuiEventQueue game_logic_updater;
-
-	/**
 	 * Qt-based renderer for the GUI texture. Draws into
 	 * \p gui_texture.
 	 */
@@ -129,8 +116,6 @@ private:
 	 * Manages Qt QML components and items.
 	 */
 	qtgui::GuiSubtree subtree;
-
-	// openage::gui::GuiGameSpecImageProvider image_provider_by_filename;
 
 	/**
 	 * Reference to the openage renderer.

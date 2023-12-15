@@ -2,8 +2,9 @@
 
 #include "tile.h"
 
-#include "../terrain/terrain.h"
-#include "coordmanager.h"
+#include "chunk.h"
+#include "phys.h"
+
 
 namespace openage::coord {
 
@@ -37,34 +38,6 @@ tile_delta tile::get_pos_on_chunk() const {
 }
 
 
-[[deprecated]] tile3 tile::to_tile3(const Terrain & /*terrain*/, tile_t altitude) const {
-	// TODO: once terrain elevations have been implemented,
-	//       query the terrain elevation at {ne, se}.
-	tile_t elevation = 0;
-
-	return tile3{this->ne, this->se, elevation + altitude};
-}
-
-
-[[deprecated]] phys3 tile::to_phys3(const Terrain &terrain, tile_t altitude) const {
-	return this->to_tile3(terrain, altitude).to_phys3();
-}
-
-
-[[deprecated]] camgame tile::to_camgame(const CoordManager &mgr,
-                                        const Terrain &terrain,
-                                        tile_t altitude) const {
-	return this->to_phys3(terrain, altitude).to_camgame(mgr);
-}
-
-
-[[deprecated]] viewport tile::to_viewport(const CoordManager &mgr,
-                                          const Terrain &terrain,
-                                          tile_t altitude) const {
-	return this->to_camgame(mgr, terrain, altitude).to_viewport(mgr);
-}
-
-
 phys2 tile3::to_phys2() const {
 	return this->to_tile().to_phys2();
 }
@@ -77,5 +50,13 @@ phys3 tile3::to_phys3() const {
 		phys3::elem_t::from_int(this->up)};
 }
 
+
+phys2_delta tile_delta::to_phys2() const {
+	return phys2_delta(this->ne, this->se);
+}
+
+phys3_delta tile_delta::to_phys3(tile_t up) const {
+	return phys3_delta(this->ne, this->se, up);
+}
 
 } // namespace openage::coord

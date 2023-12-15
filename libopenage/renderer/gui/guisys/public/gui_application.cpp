@@ -1,4 +1,4 @@
-// Copyright 2015-2022 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #include <utility>
 
@@ -8,13 +8,11 @@
 
 namespace qtgui {
 
-GuiApplication::GuiApplication()
-	:
+GuiApplication::GuiApplication() :
 	application{GuiApplicationImpl::get()} {
 }
 
-GuiApplication::GuiApplication(std::shared_ptr<GuiApplicationImpl> application)
-	:
+GuiApplication::GuiApplication(std::shared_ptr<GuiApplicationImpl> application) :
 	application{application} {
 }
 
@@ -24,4 +22,4 @@ void GuiApplication::process_events() {
 	this->application->processEvents();
 }
 
-} // namespace qtsdl
+} // namespace qtgui

@@ -3,7 +3,6 @@
 #include "console.h"
 
 #include "../error/error.h"
-#include "../legacy_engine.h"
 #include "../log/log.h"
 #include "../util/strings.h"
 #include "../util/unicode.h"
@@ -22,8 +21,8 @@ namespace console {
  * log console, command console
  */
 
-Console::Console(presenter::LegacyDisplay *engine) :
-	engine{engine},
+Console::Console(/* presenter::LegacyDisplay *display */) :
+	// display{display},
 	bottomleft{0, 0},
 	topright{1, 1},
 	charsize{1, 1},
@@ -45,6 +44,7 @@ Console::Console(presenter::LegacyDisplay *engine) :
 
 Console::~Console() {}
 
+/*
 void Console::load_colors(std::vector<gamedata::palette_color> &colortable) {
 	for (auto &c : colortable) {
 		this->termcolors.emplace_back(c);
@@ -54,25 +54,28 @@ void Console::load_colors(std::vector<gamedata::palette_color> &colortable) {
 		throw Error(MSG(err) << "Exactly 256 terminal colors are required.");
 	}
 }
+*/
 
 void Console::register_to_engine() {
-	this->engine->register_input_action(this);
-	this->engine->register_tick_action(this);
-	this->engine->register_drawhud_action(this);
-	this->engine->register_resize_action(this);
+	// TODO: Use new renderer
+	/*
+	this->display->register_input_action(this);
+	this->display->register_tick_action(this);
+	this->display->register_drawhud_action(this);
+	this->display->register_resize_action(this);
 
-	// Bind the console toggle key globally
-	auto &action = this->engine->get_action_manager();
-	auto &global = this->engine->get_input_manager().get_global_context();
+	Bind the console toggle key globally
+	auto &action = this->display->get_action_manager();
+	auto &global = this->display->get_input_manager().get_global_context();
 
 	global.bind(action.get("TOGGLE_CONSOLE"), [this](const input::legacy::action_arg_t &) {
 		this->set_visible(!this->visible);
 	});
 
 
-	// TODO: bind any needed input to InputContext
+	TODO: bind any needed input to InputContext
 
-	// toggle console will take highest priority
+	toggle console will take highest priority
 	this->input_context.bind(action.get("TOGGLE_CONSOLE"), [this](const input::legacy::action_arg_t &) {
 		this->set_visible(false);
 	});
@@ -103,17 +106,21 @@ void Console::register_to_engine() {
 		}
 	});
 	this->input_context.utf8_mode = true;
+    */
 }
 
-void Console::set_visible(bool make_visible) {
+void Console::set_visible(bool /* make_visible */) {
+	// TODO: Use new renderer
+	/*
 	if (make_visible) {
-		this->engine->get_input_manager().push_context(&this->input_context);
+		this->display->get_input_manager().push_context(&this->input_context);
 		this->visible = true;
 	}
 	else {
-		this->engine->get_input_manager().remove_context(&this->input_context);
+		this->display->get_input_manager().remove_context(&this->input_context);
 		this->visible = false;
 	}
+    */
 }
 
 void Console::write(const char *text) {
@@ -126,9 +133,11 @@ void Console::interpret(const std::string &command) {
 		this->set_visible(false);
 	}
 	else if (command == "list") {
-		for (auto &line : this->engine->list_options()) {
-			this->write(line.c_str());
-		}
+		// TODO: Use new renderer
+
+		// for (auto &line : this->display->list_options()) {
+		// 	this->write(line.c_str());
+		// }
 	}
 	else if (command.substr(0, 3) == "set") {
 		std::size_t first_space = command.find(" ");
@@ -154,7 +163,7 @@ void Console::interpret(const std::string &command) {
 		}
 	}
 }
-
+/*
 bool Console::on_tick() {
 	if (!this->visible) {
 		return true;
@@ -170,7 +179,9 @@ bool Console::on_drawhud() {
 		return true;
 	}
 
-	draw::to_opengl(this->engine, this);
+	// TODO: Use new renderer
+
+	// draw::to_opengl(this->display, this);
 
 	return true;
 }
@@ -201,6 +212,6 @@ bool Console::on_resize(coord::viewport_delta new_size) {
 
 	return true;
 }
-
+*/
 } // namespace console
 } // namespace openage

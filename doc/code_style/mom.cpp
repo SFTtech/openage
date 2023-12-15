@@ -17,13 +17,16 @@
 // The associated header file comes first!
 #include "mom.h"
 
-// System includes follow, sorted alphabetically
+// C++ std library includes follow, sorted alphabetically
 #include <cmath>
 #include <cstdio>
 #include <iostream>
-#include <SDL/SDL.h>
 
-// Local includes next, sorted alphabetically
+// External libraries are next, sorted alphabetically
+#include <eigen3/Eigen/Dense>
+#include <epoxy/gl.h>
+
+// Local includes come last, sorted alphabetically
 #include "../valve.h"
 #include "half_life.h"
 #include "log/log.h"

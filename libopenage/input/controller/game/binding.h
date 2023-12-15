@@ -3,6 +3,7 @@
 #pragma once
 
 #include <functional>
+#include <memory>
 #include <unordered_map>
 
 #include "event/event.h"
@@ -14,7 +15,7 @@ class Controller;
 
 using binding_flags_t = std::unordered_map<std::string, std::string>;
 using binding_func_t = std::function<const std::shared_ptr<event::Event>(const event_arguments &,
-                                                                         const Controller &)>;
+                                                                         const std::shared_ptr<Controller>)>;
 
 
 /**

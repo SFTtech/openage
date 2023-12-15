@@ -30,6 +30,7 @@ class Path;
 namespace gamestate {
 class GameState;
 class EntityFactory;
+class TerrainFactory;
 class Universe;
 
 /**
@@ -53,7 +54,8 @@ public:
 	 */
 	Game(const std::shared_ptr<openage::event::EventLoop> &event_loop,
 	     const std::shared_ptr<assets::ModManager> &mod_manager,
-	     const std::shared_ptr<EntityFactory> &entity_factory);
+	     const std::shared_ptr<EntityFactory> &entity_factory,
+	     const std::shared_ptr<TerrainFactory> &terrain_factory);
 	~Game() = default;
 
 	/**
@@ -92,6 +94,15 @@ private:
 	               const std::string &mod_dir,
 	               const std::string &search,
 	               bool recursive = false);
+
+	/**
+     * Generate the terrain for the current game.
+     *
+     * TODO: Use a real map generator.
+     *
+     * @param terrain_factory Factory for creating terrain objects.
+     */
+	void generate_terrain(const std::shared_ptr<TerrainFactory> &terrain_factory);
 
 	/**
      * Nyan game data database.

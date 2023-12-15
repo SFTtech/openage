@@ -1,21 +1,19 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2023 the openage authors. See copying.md for legal info.
 
 #include <cmath>
 
 #include "path.h"
-#include "../terrain/terrain.h"
 
 namespace openage::path {
 
 
-bool compare_node_cost::operator ()(const node_pt &lhs, const node_pt &rhs) const {
+bool compare_node_cost::operator()(const node_pt &lhs, const node_pt &rhs) const {
 	// TODO: use node operator <
 	return lhs->future_cost < rhs->future_cost;
 }
 
 
-Node::Node(const coord::phys3 &pos, node_pt prev)
-	:
+Node::Node(const coord::phys3 &pos, node_pt prev) :
 	position(pos),
 	tile_position(pos.to_tile3().to_tile()),
 	direction{},
@@ -24,22 +22,17 @@ Node::Node(const coord::phys3 &pos, node_pt prev)
 	factor{1.0f},
 	path_predecessor{prev},
 	heap_node(nullptr) {
-
 	if (prev) {
 		this->direction = (this->position - prev->position).normalize();
 
 		// TODO: add dot product to coord
-		cost_t similarity = ((this->direction.ne.to_float() *
-		                      prev->direction.ne.to_float()) +
-		                     (this->direction.se.to_float() *
-		                      prev->direction.se.to_float()));
+		cost_t similarity = ((this->direction.ne.to_float() * prev->direction.ne.to_float()) + (this->direction.se.to_float() * prev->direction.se.to_float()));
 		this->factor += (1 - similarity);
 	}
 }
 
 
-Node::Node(const coord::phys3 &pos, node_pt prev, cost_t past, cost_t heuristic)
-	:
+Node::Node(const coord::phys3 &pos, node_pt prev, cost_t past, cost_t heuristic) :
 	Node{pos, prev} {
 	this->past_cost = past;
 	this->heuristic_cost = heuristic;
@@ -47,12 +40,12 @@ Node::Node(const coord::phys3 &pos, node_pt prev, cost_t past, cost_t heuristic)
 }
 
 
-bool Node::operator <(const Node &other) const {
+bool Node::operator<(const Node &other) const {
 	return this->future_cost < other.future_cost;
 }
 
 
-bool Node::operator ==(const Node &other) const {
+bool Node::operator==(const Node &other) const {
 	return this->position == other.position;
 }
 
@@ -72,7 +65,8 @@ Path Node::generate_backtrace() {
 		Node other = *current;
 		waypoints.push_back(*current);
 		current = current->path_predecessor;
-	} while (current != nullptr);
+	}
+	while (current != nullptr);
 	waypoints.pop_back(); // remove start
 
 	return {waypoints};
@@ -86,10 +80,10 @@ std::vector<node_pt> Node::get_neighbors(const nodemap_t &nodes, float scale) {
 		coord::phys3 n_pos = this->position + (neigh_phys[n] * scale);
 
 		if (nodes.count(n_pos) > 0) {
-			neighbors.push_back( nodes.at(n_pos) );
+			neighbors.push_back(nodes.at(n_pos));
 		}
 		else {
-			neighbors.push_back( std::make_shared<Node>(n_pos, this->shared_from_this()) );
+			neighbors.push_back(std::make_shared<Node>(n_pos, this->shared_from_this()));
 		}
 	}
 	return neighbors;
@@ -114,22 +108,8 @@ bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::p
 }
 
 
-Path::Path(const std::vector<Node> &nodes)
-	:
+Path::Path(const std::vector<Node> &nodes) :
 	waypoints{nodes} {}
 
 
-void Path::draw_path(const coord::CoordManager &mgr) {
-	glLineWidth(1);
-	glColor3f(0.3, 1.0, 0.3);
-	glBegin(GL_LINES); {
-		for (Node &n : waypoints) {
-			coord::viewport draw_pos = n.position.to_viewport(mgr);
-			glVertex3f(draw_pos.x, draw_pos.y, 0);
-		}
-	}
-	glEnd();
-}
-
-
-} // openage::path
+} // namespace openage::path

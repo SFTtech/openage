@@ -1,9 +1,9 @@
-// Copyright 2015-2022 the openage authors. See copying.md for legal info.
+// Copyright 2015-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <thread>
 #include <memory>
+#include <thread>
 
 #include <QGuiApplication>
 
@@ -12,7 +12,7 @@ namespace qtgui {
 /**
  * Houses gui logic event queue.
  *
- * To launch it in a dedicated thread, use qtsdl::GuiDedicatedThread instead.
+ * To launch it in a dedicated thread, use qtgui::GuiDedicatedThread instead.
  */
 class GuiApplicationImpl {
 public:
@@ -25,8 +25,8 @@ public:
 private:
 	GuiApplicationImpl();
 
-	GuiApplicationImpl(const GuiApplicationImpl&) = delete;
-	GuiApplicationImpl& operator=(const GuiApplicationImpl&) = delete;
+	GuiApplicationImpl(const GuiApplicationImpl &) = delete;
+	GuiApplicationImpl &operator=(const GuiApplicationImpl &) = delete;
 
 #ifndef NDEBUG
 	const std::thread::id owner;
