@@ -32,9 +32,10 @@ Dependency list:
     C     cython >=0.29.31
     C     cmake >=3.16
       A   numpy
+      A   lz4
       A   python imaging library (PIL) -> pillow
-     RA   toml
-     RA   lz4
+     RA   setuptools (for python>=3.12 and cython<3.1)
+      A   toml
     CR    opengl >=3.3
     CR    libepoxy
     CR    libpng
