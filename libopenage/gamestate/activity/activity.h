@@ -22,12 +22,12 @@ public:
      * Create a new activity.
      *
      * @param id Unique ID.
-     * @param label Human-readable label (optional).
      * @param start Start node in the graph.
+     * @param label Human-readable label (optional).
      */
 	Activity(activity_id id,
-	         activity_label label = "",
-	         const std::shared_ptr<Node> &start = nullptr);
+	         const std::shared_ptr<Node> &start,
+	         activity_label label = "");
 
 	/**
      * Get the unique ID of this activity.

@@ -19,6 +19,7 @@
 #include "gamestate/activity/start_node.h"
 #include "gamestate/activity/task_system_node.h"
 #include "gamestate/activity/xor_node.h"
+#include "gamestate/api/activity.h"
 #include "gamestate/component/api/idle.h"
 #include "gamestate/component/api/live.h"
 #include "gamestate/component/api/move.h"
@@ -149,7 +150,7 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 		return 1; // idle->get_id();
 	});
 
-	return std::make_shared<activity::Activity>(0, "test", start);
+	return std::make_shared<activity::Activity>(0, start, "test");
 }
 
 EntityFactory::EntityFactory() :
@@ -210,6 +211,7 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 	auto nyan_obj = owner_db_view->get_object(nyan_entity);
 	nyan::set_t abilities = nyan_obj.get_set("GameEntity.abilities");
 
+	std::optional<nyan::Object> activity_ability;
 	for (const auto &ability_val : abilities) {
 		auto ability_fqon = std::dynamic_pointer_cast<nyan::ObjectValue>(ability_val.get_ptr())->get_name();
 		auto ability_obj = owner_db_view->get_object(ability_fqon);
@@ -247,11 +249,91 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 				                                                               start_value));
 			}
 		}
+		else if (ability_parent == "engine.ability.type.Activity") {
+			activity_ability = ability_obj;
+		}
 	}
 
-	// must be initialized after all other components
-	auto activity = std::make_shared<component::Activity>(loop, create_test_activity());
-	entity->add_component(activity);
+	if (activity_ability) {
+		init_activity(loop, owner_db_view, entity, activity_ability.value());
+	}
+	else {
+		auto activity = std::make_shared<component::Activity>(loop, create_test_activity());
+		entity->add_component(activity);
+	}
+}
+
+void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoop> &loop,
+                                  const std::shared_ptr<nyan::View> &owner_db_view,
+                                  const std::shared_ptr<GameEntity> &entity,
+                                  const nyan::Object &ability) {
+	nyan::Object graph = ability.get_object("Activity.graph");
+	auto start_obj = api::APIActivity::get_start(graph);
+
+	size_t node_id = 0;
+
+	std::deque<nyan::Object> nyan_nodes;
+	std::unordered_map<size_t, std::shared_ptr<activity::Node>> node_id_map{};
+	std::unordered_map<nyan::fqon_t, size_t> visited{};
+	std::shared_ptr<activity::Node> start_node;
+
+	// First pass: create all nodes using breadth-first search
+	nyan_nodes.push_back(start_obj);
+	while (!nyan_nodes.empty()) {
+		auto node = nyan_nodes.front();
+		nyan_nodes.pop_front();
+
+		if (visited.contains(node.get_name())) {
+			continue;
+		}
+
+		// Create the node
+		switch (api::APIActivityNode::get_type(node)) {
+		case activity::node_t::END:
+			break;
+		case activity::node_t::START:
+			start_node = std::make_shared<activity::StartNode>(node_id);
+			node_id_map[node_id] = start_node;
+			break;
+		case activity::node_t::TASK_SYSTEM:
+			node_id_map[node_id] = std::make_shared<activity::TaskSystemNode>(node_id);
+			break;
+		case activity::node_t::XOR_GATE:
+			node_id_map[node_id] = std::make_shared<activity::XorGate>(node_id);
+			break;
+		case activity::node_t::XOR_EVENT_GATE:
+			node_id_map[node_id] = std::make_shared<activity::XorEventGate>(node_id);
+			break;
+		default:
+			throw Error{ERR << "Unknown activity node type"};
+		}
+
+		// Get the node's outputs
+		auto next_nodes = api::APIActivityNode::get_next(node);
+		nyan_nodes.insert(nyan_nodes.end(), next_nodes.begin(), next_nodes.end());
+
+		visited.insert({node.get_name(), node_id});
+		node_id++;
+	}
+
+	// Second pass: connect the nodes
+	for (const auto &node : visited) {
+		auto nyan_node = owner_db_view->get_object(node.first);
+		auto activity_node = node_id_map[node.second];
+
+		auto next_nodes = api::APIActivityNode::get_next(nyan_node);
+		for (const auto &next_node : next_nodes) {
+			auto next_node_id = visited[next_node.get_name()];
+			auto next_engine_node = node_id_map[next_node_id];
+
+			activity_node->add_output(next_engine_node);
+		}
+	}
+
+	auto activity = std::make_shared<activity::Activity>(0, start_node, graph.get_name());
+
+	auto component = std::make_shared<component::Activity>(loop, activity);
+	entity->add_component(component);
 }
 
 entity_id_t EntityFactory::get_next_entity_id() {

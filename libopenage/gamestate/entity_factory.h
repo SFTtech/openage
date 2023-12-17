@@ -92,6 +92,11 @@ private:
 	                     const std::shared_ptr<GameEntity> &entity,
 	                     const nyan::fqon_t &nyan_entity);
 
+	void init_activity(const std::shared_ptr<openage::event::EventLoop> &loop,
+	                   const std::shared_ptr<nyan::View> &owner_db_view,
+	                   const std::shared_ptr<GameEntity> &entity,
+	                   const nyan::Object &ability);
+
 	/**
      * Get a unique ID for creating a game entity.
      *
