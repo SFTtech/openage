@@ -8,8 +8,8 @@
 
 namespace openage::gamestate::activity {
 
-TaskCustom::TaskCustom(node_id id,
-                   node_label label,
+TaskCustom::TaskCustom(node_id_t id,
+                   node_label_t label,
                    const std::shared_ptr<Node> &output,
                    task_func_t task_func) :
 	Node{id, label},
@@ -32,7 +32,7 @@ task_func_t TaskCustom::get_task_func() const {
 	return this->task_func;
 }
 
-node_id TaskCustom::get_next() const {
+node_id_t TaskCustom::get_next() const {
 	return (*this->outputs.begin()).first;
 }
 

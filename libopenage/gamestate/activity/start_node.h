@@ -25,8 +25,8 @@ public:
 	 * @param label Human-readable label (optional).
 	 * @param output Next node to visit (can be set later).
 	 */
-	StartNode(node_id id,
-	          node_label label = "Start",
+	StartNode(node_id_t id,
+	          node_label_t label = "Start",
 	          const std::shared_ptr<Node> &output = nullptr);
 	virtual ~StartNode() = default;
 
@@ -49,7 +49,7 @@ public:
 	 * @param time Current time.
 	 * @return Next node to visit.
 	 */
-	node_id get_next() const;
+	node_id_t get_next() const;
 };
 
 } // namespace openage::gamestate::activity

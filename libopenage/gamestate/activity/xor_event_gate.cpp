@@ -7,8 +7,8 @@
 
 namespace openage::gamestate::activity {
 
-XorEventGate::XorEventGate(node_id id,
-                           node_label label,
+XorEventGate::XorEventGate(node_id_t id,
+                           node_label_t label,
                            const std::vector<std::shared_ptr<Node>> &outputs,
                            event_primer_func_t primer_func,
                            event_next_func_t next_func) :

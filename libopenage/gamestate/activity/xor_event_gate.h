@@ -54,12 +54,15 @@ using event_primer_func_t = std::function<event_store_t(const time::time_t &,
  *
  * @return ID of the next node to visit.
  */
-using event_next_func_t = std::function<node_id(const time::time_t &,
-                                                const std::shared_ptr<gamestate::GameEntity> &,
-                                                const std::shared_ptr<event::EventLoop> &,
-                                                const std::shared_ptr<gamestate::GameState> &)>;
+using event_next_func_t = std::function<node_id_t(const time::time_t &,
+                                                  const std::shared_ptr<gamestate::GameEntity> &,
+                                                  const std::shared_ptr<event::EventLoop> &,
+                                                  const std::shared_ptr<gamestate::GameState> &)>;
 
 
+/**
+ * Default primer function that throws an error.
+ */
 static const event_primer_func_t no_event = [](const time::time_t &,
                                                const std::shared_ptr<gamestate::GameEntity> &,
                                                const std::shared_ptr<event::EventLoop> &,
@@ -68,6 +71,9 @@ static const event_primer_func_t no_event = [](const time::time_t &,
 	return event_store_t{};
 };
 
+/**
+ * Default next function that throws an error.
+ */
 static const event_next_func_t no_next = [](const time::time_t &,
                                             const std::shared_ptr<gamestate::GameEntity> &,
                                             const std::shared_ptr<event::EventLoop> &,
@@ -91,8 +97,8 @@ public:
       * @param primer_func Function to create and register the event.
       * @param next_func Function to decide which node to visit after the event is handled.
       */
-	XorEventGate(node_id id,
-	             node_label label = "Event",
+	XorEventGate(node_id_t id,
+	             node_label_t label = "Event",
 	             const std::vector<std::shared_ptr<Node>> &outputs = {},
 	             event_primer_func_t primer_func = no_event,
 	             event_next_func_t next_func = no_next);

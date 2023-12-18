@@ -8,8 +8,8 @@
 
 namespace openage::gamestate::activity {
 
-EndNode::EndNode(node_id id,
-                 node_label label) :
+EndNode::EndNode(node_id_t id,
+                 node_label_t label) :
 	Node{id, label, {}} {
 }
 

@@ -16,7 +16,7 @@ namespace openage::gamestate::api {
 
 /**
  * Maps internal ability types to nyan API values.
- **/
+ */
 static const auto ABILITY_DEFS = datastructure::create_const_map<ability_t, nyan::ValueHolder>(
 	std::pair(ability_t::IDLE,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Idle"))),
@@ -29,7 +29,7 @@ static const auto ABILITY_DEFS = datastructure::create_const_map<ability_t, nyan
 
 /**
  * Maps internal property types to nyan API values.
- **/
+ */
 static const auto ABILITY_PROPERTY_DEFS = datastructure::create_const_map<ability_property_t, nyan::ValueHolder>(
 	std::pair(ability_property_t::ANIMATED,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.Animated"))),
@@ -61,7 +61,7 @@ static const auto ACTIVITY_NODE_DEFS = datastructure::create_const_map<std::stri
 
 /**
  * Maps internal patch property types to nyan API values.
- **/
+ */
 static const auto PATCH_PROPERTY_DEFS = datastructure::create_const_map<patch_property_t, nyan::ValueHolder>(
 	std::pair(patch_property_t::DIPLOMATIC,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.patch.property.type.Diplomatic"))));

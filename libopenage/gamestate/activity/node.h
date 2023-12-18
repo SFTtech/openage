@@ -13,8 +13,8 @@
 
 namespace openage::gamestate::activity {
 
-using node_id = size_t;
-using node_label = std::string;
+using node_id_t = size_t;
+using node_label_t = std::string;
 
 /**
  * Node in the flow graph describing the activity.
@@ -28,8 +28,8 @@ public:
 	 * @param label Human-readable label (optional).
 	 * @param outputs Output nodes.
 	 */
-	Node(node_id id,
-	     node_label label = "",
+	Node(node_id_t id,
+	     node_label_t label = "",
 	     const std::vector<std::shared_ptr<Node>> &outputs = {});
 	virtual ~Node() = default;
 
@@ -45,14 +45,14 @@ public:
 	 *
 	 * @return The unique identifier.
 	 */
-	node_id get_id() const;
+	node_id_t get_id() const;
 
 	/**
 	 * Get the human-readable label for this node.
 	 *
 	 * @return Human-readable label.
 	 */
-	const node_label get_label() const;
+	const node_label_t get_label() const;
 
 	/**
 	 * Get a human-readable string representation of this node.
@@ -67,7 +67,7 @@ public:
 	 * @param id Unique identifier of the output node.
 	 * @return Output node.
 	 */
-	const std::shared_ptr<Node> &next(node_id id) const;
+	const std::shared_ptr<Node> &next(node_id_t id) const;
 
 	/**
 	 * Add an output node.
@@ -80,18 +80,18 @@ protected:
 	/**
 	 * Output nodes.
 	 */
-	std::unordered_map<node_id, std::shared_ptr<Node>> outputs;
+	std::unordered_map<node_id_t, std::shared_ptr<Node>> outputs;
 
 private:
 	/**
 	 * Unique identifier for this node.
 	 */
-	const node_id id;
+	const node_id_t id;
 
 	/**
 	 * Human-readable label.
 	 */
-	const node_label label;
+	const node_label_t label;
 };
 
 } // namespace openage::gamestate::activity

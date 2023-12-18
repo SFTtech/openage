@@ -39,8 +39,8 @@ public:
      * @param task_func Action to perform when visiting this node (can be set later).
      * @param output Next node to visit (optional).
      */
-	TaskCustom(node_id id,
-	           node_label label = "TaskCustom",
+	TaskCustom(node_id_t id,
+	           node_label_t label = "TaskCustom",
 	           const std::shared_ptr<Node> &output = nullptr,
 	           task_func_t task_func = no_task);
 	virtual ~TaskCustom() = default;
@@ -76,7 +76,7 @@ public:
 	 * @param time Current time.
 	 * @return Next node to visit.
 	 */
-	node_id get_next() const;
+	node_id_t get_next() const;
 
 private:
 	/**

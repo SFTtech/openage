@@ -26,8 +26,8 @@ public:
      * @param id Unique identifier for this node.
      * @param label Human-readable label (optional).
      */
-	EndNode(node_id id,
-	        node_label label = "End");
+	EndNode(node_id_t id,
+	        node_label_t label = "End");
 	virtual ~EndNode() = default;
 
 	inline node_t get_type() const override {
