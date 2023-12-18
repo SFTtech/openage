@@ -138,8 +138,14 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 		} break;
 		case activity::node_t::XOR_GATE: {
 			auto node = std::static_pointer_cast<activity::XorGate>(current);
-			auto condition = node->get_condition_func();
-			auto next_id = condition(0, nullptr);
+			auto next_id = node->get_default_id();
+			for (auto &condition : node->get_conditions()) {
+				auto condition_func = condition.second;
+				if (condition_func(0, nullptr)) {
+					next_id = condition.first;
+					break;
+				}
+			}
 			current = node->next(next_id);
 		} break;
 		case activity::node_t::XOR_EVENT_GATE: {
@@ -203,23 +209,27 @@ void activity_demo() {
 	});
 
 	// Conditional branch
-	size_t counter = 0;
-	xor_node->add_output(task1);
-	xor_node->add_output(event_node);
-	xor_node->set_condition_func([&](const time::time_t & /* time */,
-	                                 const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
+	static size_t counter = 0;
+	activity::condition_t branch_task1 = [&](const time::time_t & /* time */,
+	                                         const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
 		log::log(INFO << "Checking condition (counter < 4): counter=" << counter);
 		if (counter < 4) {
 			log::log(INFO << "Selecting path 1 (back to task node " << task1->get_id() << ")");
 
 			counter++;
-			return task1->get_id();
+			return true;
 		}
-
+		return false;
+	};
+	xor_node->add_output(task1, branch_task1);
+	activity::condition_t branch_event = [&](const time::time_t & /* time */,
+	                                         const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
+		// No check needed here, the event node is always selected
 		log::log(INFO << "Selecting path 2 (to event node " << event_node->get_id() << ")");
-
-		return event_node->get_id();
-	});
+		return true;
+	};
+	xor_node->add_output(event_node, branch_event);
+	xor_node->set_default_id(event_node->get_id());
 
 	// event node
 	event_node->add_output(task2);
