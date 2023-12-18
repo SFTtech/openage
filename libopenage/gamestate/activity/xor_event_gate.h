@@ -113,7 +113,7 @@ public:
       *
       * @param output Output node.
       */
-	void add_output(const std::shared_ptr<Node> &output) override;
+	void add_output(const std::shared_ptr<Node> &output);
 
 	/**
       * Set the function to create the event.

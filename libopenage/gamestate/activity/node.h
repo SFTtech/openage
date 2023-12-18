@@ -69,13 +69,6 @@ public:
 	 */
 	const std::shared_ptr<Node> &next(node_id_t id) const;
 
-	/**
-	 * Add an output node.
-	 *
-	 * @param output Output node.
-	 */
-	virtual void add_output(const std::shared_ptr<Node> &output) = 0;
-
 protected:
 	/**
 	 * Output nodes.

@@ -33,15 +33,6 @@ public:
 	inline node_t get_type() const override {
 		return node_t::END;
 	}
-
-	/**
-      * Throws an error since end nodes are not supposed to have outputs
-      *
-      * @param output Output node.
-      *
-      * @throws openage::Error
-      */
-	[[noreturn]] void add_output(const std::shared_ptr<Node> &output) override;
 };
 
 } // namespace openage::gamestate::activity

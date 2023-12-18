@@ -40,7 +40,7 @@ public:
 	  *
 	  * @param output Output node.
 	  */
-	void add_output(const std::shared_ptr<Node> &output) override;
+	void add_output(const std::shared_ptr<Node> &output);
 
 	/**
 	  * Set the system id.

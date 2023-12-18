@@ -13,8 +13,4 @@ EndNode::EndNode(node_id_t id,
 	Node{id, label, {}} {
 }
 
-void EndNode::add_output(const std::shared_ptr<Node> & /* output */) {
-	throw Error{ERR << "End node cannot have outputs"};
-}
-
 } // namespace openage::gamestate::activity

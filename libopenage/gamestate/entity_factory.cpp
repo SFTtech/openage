@@ -79,16 +79,21 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 	idle->add_output(condition_moveable);
 	idle->set_system_id(system::system_id_t::IDLE);
 
-	condition_moveable->add_output(wait_for_command);
-	condition_moveable->add_output(end);
-	condition_moveable->set_condition_func([&](const time::time_t & /* time */,
-	                                           const std::shared_ptr<GameEntity> &entity) {
-		if (entity->has_component(component::component_t::MOVE)) {
-			return 3; // wait_for_command->get_id();
-		}
+	// wait_for_command branch
+	activity::condition_t wait_branch = [&](const time::time_t & /* time */,
+	                                        const std::shared_ptr<gamestate::GameEntity> &entity) {
+		return entity->has_component(component::component_t::MOVE);
+	};
+	condition_moveable->add_output(wait_for_command, wait_branch);
 
-		return 7; // end->get_id();
-	});
+	// end branch
+	activity::condition_t end_branch = [&](const time::time_t & /* time */,
+	                                       const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
+		// no checks, this is the default branch
+		return true;
+	};
+	condition_moveable->add_output(end, end_branch);
+	condition_moveable->set_default_id(end->get_id());
 
 	wait_for_command->add_output(move);
 	wait_for_command->set_primer_func([](const time::time_t & /* time */,
@@ -254,13 +259,13 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 		}
 	}
 
-	if (activity_ability) {
-		init_activity(loop, owner_db_view, entity, activity_ability.value());
-	}
-	else {
-		auto activity = std::make_shared<component::Activity>(loop, create_test_activity());
-		entity->add_component(activity);
-	}
+	// if (activity_ability) {
+	// 	init_activity(loop, owner_db_view, entity, activity_ability.value());
+	// }
+	// else {
+	auto activity = std::make_shared<component::Activity>(loop, create_test_activity());
+	entity->add_component(activity);
+	// }
 }
 
 void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoop> &loop,
@@ -326,7 +331,7 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 			auto next_node_id = visited[next_node.get_name()];
 			auto next_engine_node = node_id_map[next_node_id];
 
-			activity_node->add_output(next_engine_node);
+			// activity_node->add_output(next_engine_node);
 		}
 	}
 

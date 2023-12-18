@@ -8,11 +8,8 @@
 namespace openage::gamestate::activity {
 
 XorGate::XorGate(node_id_t id,
-                 node_label_t label,
-                 const std::vector<std::shared_ptr<Node>> &outputs,
-                 condition_func_t condition_func) :
-	Node{id, label, outputs},
-	condition_func{condition_func},
+                 node_label_t label) :
+	Node{id, label, {}},
 	conditions{},
 	default_id{std::nullopt} {
 }
@@ -23,7 +20,6 @@ XorGate::XorGate(node_id_t id,
                  const std::vector<condition_t> &conditions,
                  const node_id_t default_id) :
 	Node{id, label, outputs},
-	condition_func{no_condition},
 	conditions{},
 	default_id{std::nullopt} {
 	if (conditions.size() != outputs.size()) [[unlikely]] {
@@ -38,10 +34,6 @@ XorGate::XorGate(node_id_t id,
 	this->set_default_id(default_id);
 }
 
-void XorGate::add_output(const std::shared_ptr<Node> &output) {
-	this->outputs.emplace(output->get_id(), output);
-}
-
 void XorGate::add_output(const std::shared_ptr<Node> &output,
                          const condition_t condition_func) {
 	this->outputs.emplace(output->get_id(), output);
@@ -51,14 +43,6 @@ void XorGate::add_output(const std::shared_ptr<Node> &output,
 	if (not this->default_id) [[unlikely]] {
 		this->default_id = output->get_id();
 	}
-}
-
-void XorGate::set_condition_func(condition_func_t condition_func) {
-	this->condition_func = condition_func;
-}
-
-condition_func_t XorGate::get_condition_func() const {
-	return this->condition_func;
 }
 
 const std::map<node_id_t, condition_t> &XorGate::get_conditions() const {

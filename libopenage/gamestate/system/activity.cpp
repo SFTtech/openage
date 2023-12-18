@@ -82,8 +82,14 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 		} break;
 		case activity::node_t::XOR_GATE: {
 			auto node = std::static_pointer_cast<activity::XorGate>(current_node);
-			auto condition = node->get_condition_func();
-			auto next_id = condition(start_time, entity);
+			auto next_id = node->get_default_id();
+			for (auto &condition : node->get_conditions()) {
+				auto condition_func = condition.second;
+				if (condition_func(start_time, entity)) {
+					next_id = condition.first;
+					break;
+				}
+			}
 			current_node = node->next(next_id);
 		} break;
 		case activity::node_t::XOR_EVENT_GATE: {

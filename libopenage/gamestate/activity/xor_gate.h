@@ -32,24 +32,6 @@ namespace activity {
 using condition_t = std::function<bool(const time::time_t &,
                                        const std::shared_ptr<gamestate::GameEntity> &)>;
 
-/**
- * Function that determines which output node is chosen.
- *
- * @param time Current game time.
- * @param entity Entity that is executing the activity.
- * @return ID of the output node that is chosen.
- */
-using condition_func_t = std::function<node_id_t(const time::time_t &,
-                                                 const std::shared_ptr<gamestate::GameEntity> &)>;
-
-/**
- * Default condition function that throws an error.
- */
-static const condition_func_t no_condition = [](const time::time_t &,
-                                                const std::shared_ptr<gamestate::GameEntity> &) -> node_id_t {
-	throw Error{MSG(err) << "No condition function set."};
-};
-
 
 /**
  * Chooses one of its output nodes based on conditions.
@@ -61,14 +43,9 @@ public:
      *
      * @param id Unique identifier of the node.
      * @param label Label of the node (optional).
-     * @param outputs Output nodes (can be set later).
-     * @param condition_func Function that determines which output node is chosen (can be set later).
-     *                       This must be a valid node ID of one of the output nodes.
      */
 	XorGate(node_id_t id,
-	        node_label_t label = "ExclusiveGateway",
-	        const std::vector<std::shared_ptr<Node>> &outputs = {},
-	        condition_func_t condition_func = no_condition);
+	        node_label_t label = "ExclusiveGateway");
 
 	/**
      * Creates a new condition node.
@@ -95,33 +72,11 @@ public:
      * Add an output node.
      *
      * @param output Output node.
-     */
-	void add_output(const std::shared_ptr<Node> &output) override;
-
-	/**
-     * Add an output node.
-     *
-     * @param output Output node.
      * @param condition_func Function that determines whether this output node is chosen.
      *                       This must be a valid node ID of one of the output nodes.
      */
 	void add_output(const std::shared_ptr<Node> &output,
 	                const condition_t condition_func);
-
-	/**
-     * Set the function that determines which output node is chosen.
-     *
-     * @param condition_func Function that determines which output node is chosen.
-     *                       This must be a valid node ID of one of the output nodes.
-     */
-	void set_condition_func(condition_func_t condition_func);
-
-	/**
-     * Get the function that determines which output node is chosen.
-     *
-     * @return Function that determines which output node is chosen.
-     */
-	condition_func_t get_condition_func() const;
 
 	/**
      * Get the output->condition mappings.
@@ -147,11 +102,6 @@ public:
 	void set_default_id(node_id_t id);
 
 private:
-	/**
-     * Determines which output node is chosen.
-     */
-	condition_func_t condition_func;
-
 	/**
      * Maps output node IDs to condition functions.
      *
