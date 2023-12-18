@@ -1,6 +1,6 @@
 // Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
-#include "event_node.h"
+#include "xor_event_gate.h"
 
 #include <unordered_map>
 
@@ -8,10 +8,10 @@
 namespace openage::gamestate::activity {
 
 XorEventGate::XorEventGate(node_id id,
-                     node_label label,
-                     const std::vector<std::shared_ptr<Node>> &outputs,
-                     event_primer_func_t primer_func,
-                     event_next_func_t next_func) :
+                           node_label label,
+                           const std::vector<std::shared_ptr<Node>> &outputs,
+                           event_primer_func_t primer_func,
+                           event_next_func_t next_func) :
 	Node{id, label, outputs},
 	primer_func{primer_func},
 	next_func{next_func} {

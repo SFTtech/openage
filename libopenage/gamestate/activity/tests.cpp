@@ -15,12 +15,12 @@
 #include "log/message.h"
 
 #include "gamestate/activity/end_node.h"
-#include "gamestate/activity/event_node.h"
 #include "gamestate/activity/node.h"
 #include "gamestate/activity/start_node.h"
 #include "gamestate/activity/task_node.h"
 #include "gamestate/activity/types.h"
-#include "gamestate/activity/xor_node.h"
+#include "gamestate/activity/xor_event_gate.h"
+#include "gamestate/activity/xor_gate.h"
 #include "time/time.h"
 
 

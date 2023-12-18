@@ -1,6 +1,6 @@
 // Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
-#include "xor_node.h"
+#include "xor_gate.h"
 
 #include <unordered_map>
 
@@ -8,9 +8,9 @@
 namespace openage::gamestate::activity {
 
 XorGate::XorGate(node_id id,
-                             node_label label,
-                             const std::vector<std::shared_ptr<Node>> &outputs,
-                             condition_func_t condition_func) :
+                 node_label label,
+                 const std::vector<std::shared_ptr<Node>> &outputs,
+                 condition_func_t condition_func) :
 	Node{id, label, outputs},
 	condition_func{condition_func} {
 }
