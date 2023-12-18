@@ -106,7 +106,7 @@ We strongly recommend to build the program from source to get the latest, greate
 
 
 * For **Linux** check at [repology](https://repology.org/project/openage/versions) if your distribution has any packages available. Otherwise you need to build from source.
-  We don't release `*.deb`, `*.rpm`, flatpack, snap or AppImage packages yet.
+  We don't release `*.deb`, `*.rpm`, flatpak, snap or AppImage packages yet.
 * For **Windows** check our [release page](https://github.com/SFTtech/openage/releases) for the latest installer.
   Otherwise, you need to build from source.
 
