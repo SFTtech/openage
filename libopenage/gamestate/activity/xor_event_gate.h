@@ -3,6 +3,7 @@
 #pragma once
 
 #include <functional>
+#include <map>
 #include <memory>
 #include <vector>
 
@@ -28,9 +29,27 @@ namespace activity {
 
 using event_store_t = std::vector<std::shared_ptr<openage::event::Event>>;
 
-/*  */
+
 /**
- * Create and register an event on the event loop
+ * Create and register an event on the event loop.
+ *
+ * When the event is executed, the control flow continues on the branch
+ * associated with the event.
+ *
+ * @param time Time at which the primer function is executed.
+ * @param entity Game entity that the activity is assigned to.
+ * @param loop Event loop that events are registered on.
+ * @param state Game state.
+ *
+ * @return Event registered on the event loop.
+ */
+using event_primer_t = std::function<std::shared_ptr<openage::event::Event>(const time::time_t &,
+                                                                            const std::shared_ptr<gamestate::GameEntity> &,
+                                                                            const std::shared_ptr<event::EventLoop> &,
+                                                                            const std::shared_ptr<gamestate::GameState> &)>;
+
+/**
+ * Create and register events on the event loop
  *
  * @param time Time at which the primer function is executed.
  * @param entity Game entity that the node is associated with.
@@ -97,11 +116,34 @@ public:
       * @param primer_func Function to create and register the event.
       * @param next_func Function to decide which node to visit after the event is handled.
       */
+	[[deprecated]] XorEventGate(node_id_t id,
+	                            node_label_t label = "Event",
+	                            const std::vector<std::shared_ptr<Node>> &outputs = {},
+	                            event_primer_func_t primer_func = no_event,
+	                            event_next_func_t next_func = no_next);
+
+	/**
+      * Create a new exclusive event gateway.
+      *
+      * @param id Unique identifier for this node.
+      * @param label Human-readable label (optional).
+      */
 	XorEventGate(node_id_t id,
-	             node_label_t label = "Event",
-	             const std::vector<std::shared_ptr<Node>> &outputs = {},
-	             event_primer_func_t primer_func = no_event,
-	             event_next_func_t next_func = no_next);
+	             node_label_t label /* = "EventGateWay" */);
+
+	/**
+     * Create a new exclusive event gateway.
+     *
+     * @param id Unique identifier for this node.
+     * @param label Human-readable label.
+     * @param outputs Output nodes.
+     * @param primers Event primers for each output node.
+     */
+	XorEventGate(node_id_t id,
+	             node_label_t label,
+	             const std::vector<std::shared_ptr<Node>> &outputs,
+	             const std::map<node_id_t, event_primer_t> &primers);
+
 	virtual ~XorEventGate() = default;
 
 	inline node_t get_type() const override {
@@ -113,46 +155,69 @@ public:
       *
       * @param output Output node.
       */
-	void add_output(const std::shared_ptr<Node> &output);
+	[[deprecated]] void add_output(const std::shared_ptr<Node> &output);
+
+	/**
+      * Add an output node.
+      *
+      * @param output Output node.
+      * @param primer Creation function for the event associated with the output node.
+      */
+	void add_output(const std::shared_ptr<Node> &output,
+	                const event_primer_t &primer);
 
 	/**
       * Set the function to create the event.
       *
       * @param primer_func Event creation function.
       */
-	void set_primer_func(event_primer_func_t primer_func);
+	[[deprecated]] void set_primer_func(event_primer_func_t primer_func);
 
 	/**
      * Set the function to decide which node to visit after the event is handled.
      *
      * @param next_func Next node function.
      */
-	void set_next_func(event_next_func_t next_func);
+	[[deprecated]] void set_next_func(event_next_func_t next_func);
 
 	/**
      * Get the function to create the event.
      *
      * @return Event creation function.
      */
-	event_primer_func_t get_primer_func() const;
+	[[deprecated]] event_primer_func_t get_primer_func() const;
 
 	/**
       * Get the function to decide which node to visit after the event is handled.
       *
       * @return Next node function.
       */
-	event_next_func_t get_next_func() const;
+	[[deprecated]] event_next_func_t get_next_func() const;
+
+	/**
+     * Get the output->event primer mappings.
+     *
+     * @return Event primer functions for each output node.
+     */
+	const std::map<node_id_t, event_primer_t> &get_primers() const;
 
 private:
 	/**
      * Creates the event when the node is visited.
      */
-	event_primer_func_t primer_func;
+	[[deprecated]] event_primer_func_t primer_func;
 
 	/**
      * Decide which node to visit after the event is handled.
      */
-	event_next_func_t next_func;
+	[[deprecated]] event_next_func_t next_func;
+
+	/**
+     * Maps output node IDs to event primer functions.
+     *
+     * Events are created and registered on the event loop when the node is visited.
+     */
+	std::map<node_id_t, event_primer_t> primers;
 };
 
 } // namespace activity
