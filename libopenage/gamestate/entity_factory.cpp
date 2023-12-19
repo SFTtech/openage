@@ -119,11 +119,11 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 	move->add_output(wait_for_move);
 	move->set_system_id(system::system_id_t::MOVE_COMMAND);
 
-	activity::event_primer_t primer = [](const time::time_t &time,
-	                                     const std::shared_ptr<GameEntity> &entity,
-	                                     const std::shared_ptr<event::EventLoop> &loop,
-	                                     const std::shared_ptr<gamestate::GameState> &state,
-	                                     size_t next_id) {
+	activity::event_primer_t wait_primer = [](const time::time_t &time,
+	                                          const std::shared_ptr<GameEntity> &entity,
+	                                          const std::shared_ptr<event::EventLoop> &loop,
+	                                          const std::shared_ptr<gamestate::GameState> &state,
+	                                          size_t next_id) {
 		event::EventHandler::param_map::map_t params{{"next", next_id}}; // idle->get_id();
 		auto ev = loop->create_event("game.wait",
 		                             entity->get_manager(),
@@ -133,9 +133,8 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 
 		return ev;
 	};
-	wait_for_move->add_output(idle, primer);
-	// wait_for_move->add_output(condition_command, primer);
-	// wait_for_move->add_output(end, primer);
+	wait_for_move->add_output(idle, wait_primer);
+	wait_for_move->add_output(move, process_primer);
 
 	return std::make_shared<activity::Activity>(0, start, "test");
 }
