@@ -95,65 +95,47 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 	condition_moveable->add_output(end, end_branch);
 	condition_moveable->set_default_id(end->get_id());
 
-	wait_for_command->add_output(move);
-	wait_for_command->set_primer_func([](const time::time_t & /* time */,
-	                                     const std::shared_ptr<GameEntity> &entity,
-	                                     const std::shared_ptr<event::EventLoop> &loop,
-	                                     const std::shared_ptr<gamestate::GameState> &state) {
+	activity::event_primer_t process_primer = [](const time::time_t &,
+	                                             const std::shared_ptr<gamestate::GameEntity> &entity,
+	                                             const std::shared_ptr<event::EventLoop> &loop,
+	                                             const std::shared_ptr<gamestate::GameState> &state,
+	                                             size_t next_id) {
+		event::EventHandler::param_map::map_t params{{"next", next_id}}; // move->get_id();
 		auto ev = loop->create_event("game.process_command",
 		                             entity->get_manager(),
 		                             state,
 		                             // event is not executed until a command is available
-		                             std::numeric_limits<time::time_t>::max());
+		                             std::numeric_limits<time::time_t>::max(),
+		                             params);
 		auto entity_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 			entity->get_component(component::component_t::COMMANDQUEUE));
 		auto &queue = const_cast<curve::Queue<std::shared_ptr<component::command::Command>> &>(entity_queue->get_queue());
 		queue.add_dependent(ev);
 
-		return activity::event_store_t{ev};
-	});
-	wait_for_command->set_next_func([](const time::time_t &time,
-	                                   const std::shared_ptr<GameEntity> &entity,
-	                                   const std::shared_ptr<event::EventLoop> &,
-	                                   const std::shared_ptr<gamestate::GameState> &) {
-		auto entity_queue = std::dynamic_pointer_cast<component::CommandQueue>(
-			entity->get_component(component::component_t::COMMANDQUEUE));
-		auto &queue = entity_queue->get_queue();
-
-		if (queue.empty(time)) {
-			throw Error{ERR << "Command queue is empty"};
-		}
-		auto &com = queue.front(time);
-		if (com->get_type() == component::command::command_t::MOVE) {
-			return 5; // move->get_id();
-		}
-
-		throw Error{ERR << "Unknown command type"};
-	});
+		return ev;
+	};
+	wait_for_command->add_output(move, process_primer);
 
 	move->add_output(wait_for_move);
 	move->set_system_id(system::system_id_t::MOVE_COMMAND);
 
-	wait_for_move->add_output(idle);
-	wait_for_move->add_output(condition_command);
-	wait_for_move->add_output(end);
-	wait_for_move->set_primer_func([](const time::time_t &time,
-	                                  const std::shared_ptr<GameEntity> &entity,
-	                                  const std::shared_ptr<event::EventLoop> &loop,
-	                                  const std::shared_ptr<gamestate::GameState> &state) {
+	activity::event_primer_t primer = [](const time::time_t &time,
+	                                     const std::shared_ptr<GameEntity> &entity,
+	                                     const std::shared_ptr<event::EventLoop> &loop,
+	                                     const std::shared_ptr<gamestate::GameState> &state,
+	                                     size_t next_id) {
+		event::EventHandler::param_map::map_t params{{"next", next_id}}; // idle->get_id();
 		auto ev = loop->create_event("game.wait",
 		                             entity->get_manager(),
 		                             state,
-		                             time);
+		                             time,
+		                             params);
 
-		return activity::event_store_t{ev};
-	});
-	wait_for_move->set_next_func([&](const time::time_t &,
-	                                 const std::shared_ptr<GameEntity> &,
-	                                 const std::shared_ptr<event::EventLoop> &,
-	                                 const std::shared_ptr<gamestate::GameState> &) {
-		return 1; // idle->get_id();
-	});
+		return ev;
+	};
+	wait_for_move->add_output(idle, primer);
+	// wait_for_move->add_output(condition_command, primer);
+	// wait_for_move->add_output(end, primer);
 
 	return std::make_shared<activity::Activity>(0, start, "test");
 }

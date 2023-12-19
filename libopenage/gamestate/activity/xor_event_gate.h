@@ -40,13 +40,15 @@ using event_store_t = std::vector<std::shared_ptr<openage::event::Event>>;
  * @param entity Game entity that the activity is assigned to.
  * @param loop Event loop that events are registered on.
  * @param state Game state.
+ * @param next_id ID of the next node to visit. This is passed as an event parameter.
  *
  * @return Event registered on the event loop.
  */
 using event_primer_t = std::function<std::shared_ptr<openage::event::Event>(const time::time_t &,
                                                                             const std::shared_ptr<gamestate::GameEntity> &,
                                                                             const std::shared_ptr<event::EventLoop> &,
-                                                                            const std::shared_ptr<gamestate::GameState> &)>;
+                                                                            const std::shared_ptr<gamestate::GameState> &,
+                                                                            size_t next_id)>;
 
 /**
  * Create and register events on the event loop
@@ -112,24 +114,9 @@ public:
       *
       * @param id Unique identifier for this node.
       * @param label Human-readable label (optional).
-      * @param outputs Output nodes (can be set later).
-      * @param primer_func Function to create and register the event.
-      * @param next_func Function to decide which node to visit after the event is handled.
-      */
-	[[deprecated]] XorEventGate(node_id_t id,
-	                            node_label_t label = "Event",
-	                            const std::vector<std::shared_ptr<Node>> &outputs = {},
-	                            event_primer_func_t primer_func = no_event,
-	                            event_next_func_t next_func = no_next);
-
-	/**
-      * Create a new exclusive event gateway.
-      *
-      * @param id Unique identifier for this node.
-      * @param label Human-readable label (optional).
       */
 	XorEventGate(node_id_t id,
-	             node_label_t label /* = "EventGateWay" */);
+	             node_label_t label = "EventGateWay");
 
 	/**
      * Create a new exclusive event gateway.
@@ -154,45 +141,10 @@ public:
       * Add an output node.
       *
       * @param output Output node.
-      */
-	[[deprecated]] void add_output(const std::shared_ptr<Node> &output);
-
-	/**
-      * Add an output node.
-      *
-      * @param output Output node.
       * @param primer Creation function for the event associated with the output node.
       */
 	void add_output(const std::shared_ptr<Node> &output,
 	                const event_primer_t &primer);
-
-	/**
-      * Set the function to create the event.
-      *
-      * @param primer_func Event creation function.
-      */
-	[[deprecated]] void set_primer_func(event_primer_func_t primer_func);
-
-	/**
-     * Set the function to decide which node to visit after the event is handled.
-     *
-     * @param next_func Next node function.
-     */
-	[[deprecated]] void set_next_func(event_next_func_t next_func);
-
-	/**
-     * Get the function to create the event.
-     *
-     * @return Event creation function.
-     */
-	[[deprecated]] event_primer_func_t get_primer_func() const;
-
-	/**
-      * Get the function to decide which node to visit after the event is handled.
-      *
-      * @return Next node function.
-      */
-	[[deprecated]] event_next_func_t get_next_func() const;
 
 	/**
      * Get the output->event primer mappings.
@@ -202,16 +154,6 @@ public:
 	const std::map<node_id_t, event_primer_t> &get_primers() const;
 
 private:
-	/**
-     * Creates the event when the node is visited.
-     */
-	[[deprecated]] event_primer_func_t primer_func;
-
-	/**
-     * Decide which node to visit after the event is handled.
-     */
-	[[deprecated]] event_next_func_t next_func;
-
 	/**
      * Maps output node IDs to event primer functions.
      *

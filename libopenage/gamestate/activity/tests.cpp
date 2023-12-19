@@ -166,7 +166,11 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 			auto node = std::static_pointer_cast<activity::XorEventGate>(current);
 			auto event_primers = node->get_primers();
 			for (auto &primer : event_primers) {
-				auto ev = primer.second(0, nullptr, nullptr, nullptr);
+				auto ev = primer.second(0,
+				                        nullptr,
+				                        nullptr,
+				                        nullptr,
+				                        primer.first);
 				events.push_back(ev);
 			}
 
@@ -253,9 +257,10 @@ void activity_demo() {
 	activity::event_primer_t primer = [&](const time::time_t & /* time */,
 	                                      const std::shared_ptr<gamestate::GameEntity> & /* entity */,
 	                                      const std::shared_ptr<event::EventLoop> & /* loop */,
-	                                      const std::shared_ptr<gamestate::GameState> & /* state */) {
+	                                      const std::shared_ptr<gamestate::GameState> & /* state */,
+	                                      size_t next_id) {
 		log::log(INFO << "Setting up event");
-		event::EventHandler::param_map::map_t params{{"next", task2->get_id()}};
+		event::EventHandler::param_map::map_t params{{"next", next_id}};
 		auto ev = loop->create_event("test.activity",
 		                             mgr,
 		                             state,

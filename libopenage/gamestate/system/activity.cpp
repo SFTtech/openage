@@ -27,10 +27,11 @@
 namespace openage::gamestate::system {
 
 
-void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
-                       const time::time_t &start_time,
+void Activity::advance(const time::time_t &start_time,
+                       const std::shared_ptr<gamestate::GameEntity> &entity,
                        const std::shared_ptr<openage::event::EventLoop> &loop,
-                       const std::shared_ptr<openage::gamestate::GameState> &state) {
+                       const std::shared_ptr<openage::gamestate::GameState> &state,
+                       const std::optional<openage::event::EventHandler::param_map> &ev_params) {
 	auto activity_component = std::dynamic_pointer_cast<component::Activity>(
 		entity->get_component(component::component_t::ACTIVITY));
 	auto current_node = activity_component->get_node(start_time);
@@ -44,10 +45,12 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 	if (current_node->get_type() == activity::node_t::XOR_EVENT_GATE) {
 		// returning to a event gateway means that the event has been triggered
 		// move to the next node here
-		auto node = std::static_pointer_cast<activity::XorEventGate>(current_node);
-		auto event_next = node->get_next_func();
-		auto next_id = event_next(start_time, entity, loop, state);
-		current_node = node->next(next_id);
+		if (not ev_params.has_value()) {
+			throw Error{ERR << "XorEventGate: No event parameters given on continue"};
+		}
+
+		auto next_id = ev_params.value().get<size_t>("next");
+		current_node = current_node->next(next_id);
 
 		// cancel all other events that the manager may have been waiting for
 		activity_component->cancel_events(start_time);
@@ -94,9 +97,13 @@ void Activity::advance(const std::shared_ptr<gamestate::GameEntity> &entity,
 		} break;
 		case activity::node_t::XOR_EVENT_GATE: {
 			auto node = std::static_pointer_cast<activity::XorEventGate>(current_node);
-			auto event_primer = node->get_primer_func();
-			auto evs = event_primer(start_time + event_wait_time, entity, loop, state);
-			for (auto &ev : evs) {
+			auto event_primers = node->get_primers();
+			for (auto &primer : event_primers) {
+				auto ev = primer.second(start_time + event_wait_time,
+				                        entity,
+				                        loop,
+				                        state,
+				                        primer.first);
 				activity_component->add_event(ev);
 			}
 
