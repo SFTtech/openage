@@ -33,7 +33,8 @@ namespace openage::gamestate::tests {
  * @param current_node Node where the control flow starts from.
  * @return Node where the control flow should continue.
  */
-const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activity::Node> &current_node);
+const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activity::Node> &current_node,
+                                                    const std::optional<event::EventHandler::param_map> ev_params = std::nullopt);
 
 
 /**
@@ -57,11 +58,11 @@ public:
 		return "TestActivityManager";
 	}
 
-	void run() {
+	void run(const std::optional<event::EventHandler::param_map> ev_params = std::nullopt) {
 		if (not current_node) {
 			throw Error{ERR << "No current node given"};
 		}
-		this->current_node = activity_flow(this->current_node);
+		this->current_node = activity_flow(this->current_node, ev_params);
 	}
 
 	std::shared_ptr<activity::Node> current_node;
@@ -93,9 +94,9 @@ public:
 	            const std::shared_ptr<event::EventEntity> &target,
 	            const std::shared_ptr<event::State> & /* state */,
 	            const time::time_t & /* time */,
-	            const param_map & /* params */) override {
+	            const param_map &params) override {
 		auto mgr_target = std::dynamic_pointer_cast<TestActivityManager>(target);
-		mgr_target->run();
+		mgr_target->run(params);
 	}
 
 	time::time_t predict_invoke_time(const std::shared_ptr<event::EventEntity> & /* target */,
@@ -106,14 +107,27 @@ public:
 };
 
 
-const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activity::Node> &current_node) {
+const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activity::Node> &current_node,
+                                                    const std::optional<event::EventHandler::param_map> ev_params) {
+	// events that are currently being listened for
+	// in the gamestate these are stored in the activity component
+	static std::vector<std::shared_ptr<event::Event>> events;
+
 	auto current = current_node;
 
 	if (current->get_type() == activity::node_t::XOR_EVENT_GATE) {
-		auto node = std::static_pointer_cast<activity::XorEventGate>(current);
-		auto event_next = node->get_next_func();
-		auto next_id = event_next(0, nullptr, nullptr, nullptr);
-		current = node->next(next_id);
+		log::log(INFO << "Continuing from event node");
+		if (not ev_params.has_value()) {
+			throw Error{ERR << "XorEventGate: No event parameters given on continue"};
+		}
+
+		auto next_id = ev_params.value().get<size_t>("next");
+		current = current->next(next_id);
+
+		// cancel all other events that the manager may have been waiting for
+		for (auto &event : events) {
+			event->cancel(0);
+		}
 	}
 
 	while (current->get_type() != activity::node_t::END) {
@@ -150,10 +164,14 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 		} break;
 		case activity::node_t::XOR_EVENT_GATE: {
 			auto node = std::static_pointer_cast<activity::XorEventGate>(current);
-			auto event_primer = node->get_primer_func();
-			event_primer(0, nullptr, nullptr, nullptr);
+			auto event_primers = node->get_primers();
+			for (auto &primer : event_primers) {
+				auto ev = primer.second(0, nullptr, nullptr, nullptr);
+				events.push_back(ev);
+			}
 
 			// wait for event
+			log::log(INFO << "Waiting for event");
 			return current;
 		} break;
 		default:
@@ -163,7 +181,7 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 		log::log(INFO << "Next node: " << current->str());
 	}
 
-	log::log(INFO << "Reached end note: " << current->str());
+	log::log(INFO << "Reached end node: " << current->str());
 
 	return current;
 }
@@ -232,25 +250,20 @@ void activity_demo() {
 	xor_node->set_default_id(event_node->get_id());
 
 	// event node
-	event_node->add_output(task2);
-	event_node->set_primer_func([&](const time::time_t & /* time */,
-	                                const std::shared_ptr<gamestate::GameEntity> & /* entity */,
-	                                const std::shared_ptr<event::EventLoop> & /* loop */,
-	                                const std::shared_ptr<gamestate::GameState> & /* state */) {
+	activity::event_primer_t primer = [&](const time::time_t & /* time */,
+	                                      const std::shared_ptr<gamestate::GameEntity> & /* entity */,
+	                                      const std::shared_ptr<event::EventLoop> & /* loop */,
+	                                      const std::shared_ptr<gamestate::GameState> & /* state */) {
 		log::log(INFO << "Setting up event");
+		event::EventHandler::param_map::map_t params{{"next", task2->get_id()}};
 		auto ev = loop->create_event("test.activity",
 		                             mgr,
 		                             state,
-		                             0);
-		return activity::event_store_t{ev};
-	});
-	event_node->set_next_func([&task2](const time::time_t & /* time */,
-	                                   const std::shared_ptr<gamestate::GameEntity> & /* entity */,
-	                                   const std::shared_ptr<event::EventLoop> & /* loop */,
-	                                   const std::shared_ptr<gamestate::GameState> & /* state */) {
-		log::log(INFO << "Selecting next node (task node " << task2->get_id() << ")");
-		return task2->get_id();
-	});
+		                             0,
+		                             params);
+		return ev;
+	};
+	event_node->add_output(task2, primer);
 
 	// task 2
 	task2->add_output(end);
