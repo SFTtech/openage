@@ -27,8 +27,6 @@ class GameState;
 
 namespace activity {
 
-using event_store_t = std::vector<std::shared_ptr<openage::event::Event>>;
-
 
 /**
  * Create and register an event on the event loop.
@@ -49,59 +47,6 @@ using event_primer_t = std::function<std::shared_ptr<openage::event::Event>(cons
                                                                             const std::shared_ptr<event::EventLoop> &,
                                                                             const std::shared_ptr<gamestate::GameState> &,
                                                                             size_t next_id)>;
-
-/**
- * Create and register events on the event loop
- *
- * @param time Time at which the primer function is executed.
- * @param entity Game entity that the node is associated with.
- * @param loop Event loop that events are registered on.
- * @param state Game state.
- *
- * @return List of events registered on the event loop.
- */
-using event_primer_func_t = std::function<event_store_t(const time::time_t &,
-                                                        const std::shared_ptr<gamestate::GameEntity> &,
-                                                        const std::shared_ptr<event::EventLoop> &,
-                                                        const std::shared_ptr<gamestate::GameState> &)>;
-
-/**
- * Decide which node to visit after the event is handled.
- *
- * @param time Time at which the next function is executed.
- * @param entity Game entity that the node is associated with.
- * @param loop Event loop that events are registered on.
- * @param state Game state.
- *
- * @return ID of the next node to visit.
- */
-using event_next_func_t = std::function<node_id_t(const time::time_t &,
-                                                  const std::shared_ptr<gamestate::GameEntity> &,
-                                                  const std::shared_ptr<event::EventLoop> &,
-                                                  const std::shared_ptr<gamestate::GameState> &)>;
-
-
-/**
- * Default primer function that throws an error.
- */
-static const event_primer_func_t no_event = [](const time::time_t &,
-                                               const std::shared_ptr<gamestate::GameEntity> &,
-                                               const std::shared_ptr<event::EventLoop> &,
-                                               const std::shared_ptr<gamestate::GameState> &) {
-	throw Error{ERR << "No event primer function registered."};
-	return event_store_t{};
-};
-
-/**
- * Default next function that throws an error.
- */
-static const event_next_func_t no_next = [](const time::time_t &,
-                                            const std::shared_ptr<gamestate::GameEntity> &,
-                                            const std::shared_ptr<event::EventLoop> &,
-                                            const std::shared_ptr<gamestate::GameState> &) {
-	throw Error{ERR << "No event next function registered."};
-	return 0;
-};
 
 
 /**
