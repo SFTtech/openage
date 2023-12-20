@@ -62,4 +62,14 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 	}
 }
 
+bool APIActivityEvent::is_event(const nyan::Object &obj) {
+	nyan::fqon_t immediate_parent = obj.get_parents()[0];
+	return immediate_parent == "engine.util.activity.event.Event";
+}
+
+activity::event_primer_t APIActivityEvent::get_primer(const nyan::Object &event) {
+	nyan::fqon_t immediate_parent = event.get_parents()[0];
+	return ACTIVITY_EVENT_PRIMERS.get(immediate_parent);
+}
+
 } // namespace openage::gamestate::api

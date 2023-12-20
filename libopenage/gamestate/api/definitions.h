@@ -11,6 +11,10 @@
 #include "gamestate/activity/types.h"
 #include "gamestate/api/types.h"
 
+#include "gamestate/activity/xor_event_gate.h"
+#include "gamestate/event/process_command.h"
+#include "gamestate/event/wait.h"
+
 
 namespace openage::gamestate::api {
 
@@ -58,6 +62,14 @@ static const auto ACTIVITY_NODE_DEFS = datastructure::create_const_map<std::stri
               activity::node_t::XOR_GATE),
 	std::pair("engine.util.activity.node.type.XOREventGate",
               activity::node_t::XOR_EVENT_GATE));
+
+static const auto ACTIVITY_EVENT_PRIMERS = datastructure::create_const_map<std::string, activity::event_primer_t>(
+	std::pair("engine.util.activity.event.type.Command",
+              std::function(gamestate::event::primer_process_command)),
+	std::pair("engine.util.activity.event.type.Wait",
+              std::function(gamestate::event::primer_wait)),
+	std::pair("engine.util.activity.event.type.WaitAbility",
+              std::function(gamestate::event::primer_wait)));
 
 /**
  * Maps internal patch property types to nyan API values.

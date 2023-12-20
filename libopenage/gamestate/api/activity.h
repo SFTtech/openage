@@ -7,6 +7,7 @@
 #include <nyan/nyan.h>
 
 #include "gamestate/activity/types.h"
+#include "gamestate/activity/xor_event_gate.h"
 
 
 namespace openage::gamestate {
@@ -37,7 +38,9 @@ public:
 	static nyan::Object get_start(const nyan::Object &activity);
 };
 
-
+/**
+ * Helper class for creating Activity node objects from the nyan API.
+ */
 class APIActivityNode {
 public:
 	/**
@@ -69,6 +72,30 @@ public:
      * @return nyan object handles of the next nodes.
      */
 	static std::vector<nyan::Object> get_next(const nyan::Object &node);
+};
+
+/**
+ * Helper class for creating Activity event objects from the nyan API.
+ */
+class APIActivityEvent {
+public:
+	/**
+     * Check if a nyan object is an event (type == \p engine.util.activity.event.Event).
+     *
+     * @param obj nyan object.
+     *
+     * @return true if the object is an event, else false.
+     */
+	static bool is_event(const nyan::Object &obj);
+
+	/**
+     * Get the primer function for an event type.
+     *
+     * @param event nyan object.
+     *
+     * @return Event primer function.
+     */
+	static activity::event_primer_t get_primer(const nyan::Object &event);
 };
 
 
