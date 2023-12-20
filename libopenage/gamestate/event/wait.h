@@ -17,7 +17,11 @@ class EventEntity;
 class State;
 } // namespace event
 
-namespace gamestate::event {
+namespace gamestate {
+class GameEntity;
+class GameState;
+
+namespace event {
 
 /**
  * Waits until the event is handled and calls back the entity manager.
@@ -40,5 +44,24 @@ public:
 	                                 const std::shared_ptr<openage::event::State> &state,
 	                                 const time::time_t &at) override;
 };
-} // namespace gamestate::event
+
+/**
+ * Primer for wait events in the activity system.
+ *
+ * @param time Wait until this time. If the time is in the past, the event is executed immediately.
+ * @param entity Game entity.
+ * @param loop Event loop that the event is registered on.
+ * @param state Game state.
+ * @param next_id ID of the next node in the activity graph.
+ *
+ * @return Scheduled event.
+ */
+std::shared_ptr<openage::event::Event> primer_wait(const time::time_t &time,
+                                                   const std::shared_ptr<GameEntity> &entity,
+                                                   const std::shared_ptr<openage::event::EventLoop> &loop,
+                                                   const std::shared_ptr<gamestate::GameState> &state,
+                                                   size_t next_id);
+
+} // namespace event
+} // namespace gamestate
 } // namespace openage

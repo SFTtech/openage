@@ -39,6 +39,8 @@
 #include "time/time.h"
 #include "util/fixed_point.h"
 
+#include "gamestate/event/process_command.h"
+#include "gamestate/event/wait.h"
 
 namespace openage::gamestate {
 
@@ -95,46 +97,13 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 	condition_moveable->add_output(end, end_branch);
 	condition_moveable->set_default_id(end->get_id());
 
-	activity::event_primer_t process_primer = [](const time::time_t &,
-	                                             const std::shared_ptr<gamestate::GameEntity> &entity,
-	                                             const std::shared_ptr<event::EventLoop> &loop,
-	                                             const std::shared_ptr<gamestate::GameState> &state,
-	                                             size_t next_id) {
-		event::EventHandler::param_map::map_t params{{"next", next_id}}; // move->get_id();
-		auto ev = loop->create_event("game.process_command",
-		                             entity->get_manager(),
-		                             state,
-		                             // event is not executed until a command is available
-		                             std::numeric_limits<time::time_t>::max(),
-		                             params);
-		auto entity_queue = std::dynamic_pointer_cast<component::CommandQueue>(
-			entity->get_component(component::component_t::COMMANDQUEUE));
-		auto &queue = const_cast<curve::Queue<std::shared_ptr<component::command::Command>> &>(entity_queue->get_queue());
-		queue.add_dependent(ev);
-
-		return ev;
-	};
-	wait_for_command->add_output(move, process_primer);
+	wait_for_command->add_output(move, gamestate::event::primer_process_command);
 
 	move->add_output(wait_for_move);
 	move->set_system_id(system::system_id_t::MOVE_COMMAND);
 
-	activity::event_primer_t wait_primer = [](const time::time_t &time,
-	                                          const std::shared_ptr<GameEntity> &entity,
-	                                          const std::shared_ptr<event::EventLoop> &loop,
-	                                          const std::shared_ptr<gamestate::GameState> &state,
-	                                          size_t next_id) {
-		event::EventHandler::param_map::map_t params{{"next", next_id}}; // idle->get_id();
-		auto ev = loop->create_event("game.wait",
-		                             entity->get_manager(),
-		                             state,
-		                             time,
-		                             params);
-
-		return ev;
-	};
-	wait_for_move->add_output(idle, wait_primer);
-	wait_for_move->add_output(move, process_primer);
+	wait_for_move->add_output(idle, gamestate::event::primer_wait);
+	wait_for_move->add_output(move, gamestate::event::primer_process_command);
 
 	return std::make_shared<activity::Activity>(0, start, "test");
 }
