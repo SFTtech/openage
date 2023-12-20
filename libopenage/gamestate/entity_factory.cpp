@@ -252,6 +252,7 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 			break;
 		case activity::node_t::TASK_SYSTEM:
 			node_id_map[node_id] = std::make_shared<activity::TaskSystemNode>(node_id);
+			// TODO: Set system ID
 			break;
 		case activity::node_t::XOR_GATE:
 			node_id_map[node_id] = std::make_shared<activity::XorGate>(node_id);
@@ -272,16 +273,41 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 	}
 
 	// Second pass: connect the nodes
-	for (const auto &node : visited) {
-		auto nyan_node = owner_db_view->get_object(node.first);
-		auto activity_node = node_id_map[node.second];
+	for (const auto &current_node : visited) {
+		auto nyan_node = owner_db_view->get_object(current_node.first);
+		auto activity_node = node_id_map[current_node.second];
 
 		auto next_nodes = api::APIActivityNode::get_next(nyan_node);
 		for (const auto &next_node : next_nodes) {
 			auto next_node_id = visited[next_node.get_name()];
 			auto next_engine_node = node_id_map[next_node_id];
 
-			// activity_node->add_output(next_engine_node);
+			switch (activity_node->get_type()) {
+			case activity::node_t::END:
+				break;
+			case activity::node_t::START: {
+				auto start = std::static_pointer_cast<activity::StartNode>(activity_node);
+				start->add_output(next_engine_node);
+				break;
+			}
+			case activity::node_t::TASK_SYSTEM: {
+				auto task_system = std::static_pointer_cast<activity::TaskSystemNode>(activity_node);
+				task_system->add_output(next_engine_node);
+				break;
+			}
+			case activity::node_t::XOR_GATE: {
+				auto xor_gate = std::static_pointer_cast<activity::XorGate>(activity_node);
+				// TODO: Add conditions
+				break;
+			}
+			case activity::node_t::XOR_EVENT_GATE: {
+				auto xor_event_gate = std::static_pointer_cast<activity::XorEventGate>(activity_node);
+				xor_event_gate->add_output(next_engine_node, api::APIActivityEvent::get_primer(next_node));
+				break;
+			}
+			default:
+				throw Error{ERR << "Unknown activity node type"};
+			}
 		}
 	}
 
