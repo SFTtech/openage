@@ -14,6 +14,7 @@
 #include "curve/queue.h"
 #include "event/event_loop.h"
 #include "gamestate/activity/activity.h"
+#include "gamestate/activity/condition/command_in_queue.h"
 #include "gamestate/activity/end_node.h"
 #include "gamestate/activity/event/command_in_queue.h"
 #include "gamestate/activity/event/wait.h"
@@ -49,19 +50,9 @@ namespace openage::gamestate {
  * The activity is as follows:
  *                      |------------------------------------------------------|
  *                      |                                                      v
- * Start -> Idle -> Condition -> Wait for command -> Move -> Wait for move -> End
- *            ^                                                      |
- *            |------------------------------------------------------|
- *
- * TODO: Should be:
- * 			               |----------------------------------------------------------------------|
- * 			    	       |                                                                      v
- * Start -> Idle -> -> Condition -> Wait for command <-> Condition -> Move -> Wait or command -> End
- * 		      ^                                             |^                     |
- * 		      |---------------------------------------------||---------------------|
- * (new condition in the middle: check if there is a command, if not go back to wait for command)
- * (new node: go back to node 1 if there is no command)
- * (node 5: wait for a command OR for a the wait time)
+ * Start -> Idle -> Condition -> Condition -> Wait for command -> Move -> Wait for move -> End
+ *            ^                                                                |
+ *            |----------------------------------------------------------------|
  *
  * TODO: Replace with config
  */
@@ -69,33 +60,45 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 	auto start = std::make_shared<activity::StartNode>(0);
 	auto idle = std::make_shared<activity::TaskSystemNode>(1, "Idle");
 	auto condition_moveable = std::make_shared<activity::XorGate>(2);
-	auto wait_for_command = std::make_shared<activity::XorEventGate>(3);
-	auto condition_command = std::make_shared<activity::XorGate>(4);
+	auto condition_command = std::make_shared<activity::XorGate>(3);
+	auto wait_for_command = std::make_shared<activity::XorEventGate>(4);
 	auto move = std::make_shared<activity::TaskSystemNode>(5, "Move");
 	auto wait_for_move = std::make_shared<activity::XorEventGate>(6);
 	auto end = std::make_shared<activity::EndNode>(7);
 
 	start->add_output(idle);
 
+	// idle after start
 	idle->add_output(condition_moveable);
 	idle->set_system_id(system::system_id_t::IDLE);
 
-	// wait_for_command branch
-	activity::condition_t wait_branch = [&](const time::time_t & /* time */,
-	                                        const std::shared_ptr<gamestate::GameEntity> &entity) {
+	// branch 1: check if the entity is moveable
+	activity::condition_t command_branch = [&](const time::time_t & /* time */,
+	                                           const std::shared_ptr<gamestate::GameEntity> &entity) {
 		return entity->has_component(component::component_t::MOVE);
 	};
-	condition_moveable->add_output(wait_for_command, wait_branch);
+	condition_moveable->add_output(condition_command, command_branch);
 
-	// end branch
+	// default: if it's not moveable, go straight to the end
 	condition_moveable->set_default(end);
 
+	// branch 1: check if there is already a command in the queue
+	condition_command->add_output(move, gamestate::activity::command_in_queue);
+
+	// default: if there is no command, wait for a command
+	condition_command->set_default(wait_for_command);
+
+	// wait for a command event
 	wait_for_command->add_output(move, gamestate::activity::primer_command_in_queue);
 
+	// move
 	move->add_output(wait_for_move);
 	move->set_system_id(system::system_id_t::MOVE_COMMAND);
 
+	// branch 1: wait for move event to finish
 	wait_for_move->add_output(idle, gamestate::activity::primer_wait);
+
+	// branch 2: wait for a new command event
 	wait_for_move->add_output(move, gamestate::activity::primer_command_in_queue);
 
 	return std::make_shared<activity::Activity>(0, start, "test");
