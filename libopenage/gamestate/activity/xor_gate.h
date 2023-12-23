@@ -54,13 +54,13 @@ public:
      * @param label Label of the node.
      * @param outputs Output nodes.
      * @param conditions Conditions for each output node.
-     * @param default_id Default output node ID.
+     * @param default_node Default output node. Chosen if no condition is true.
      */
 	XorGate(node_id_t id,
 	        node_label_t label,
 	        const std::vector<std::shared_ptr<Node>> &outputs,
 	        const std::vector<condition_t> &conditions,
-	        const node_id_t default_id);
+	        const std::shared_ptr<Node> &default_node);
 
 	virtual ~XorGate() = default;
 
@@ -86,20 +86,20 @@ public:
 	const std::map<node_id_t, condition_t> &get_conditions() const;
 
 	/**
-     * Get the ID of the default output node.
+     * Get the default output node.
      *
-     * @return Default output node ID.
+     * @return Default output node.
      */
-	node_id_t get_default_id() const;
+	const std::shared_ptr<Node> &get_default() const;
 
 	/**
-     * Set the ID of the default output node.
+     * Set the the default output node.
      *
-     * The ID must be a valid node ID of one of the output nodes.
+     * This node is chosen if no condition is true.
      *
-     * @param id Default output node ID.
+     * @param node Default output node.
      */
-	void set_default_id(node_id_t id);
+	void set_default(const std::shared_ptr<Node> &node);
 
 private:
 	/**
@@ -110,9 +110,9 @@ private:
 	std::map<node_id_t, condition_t> conditions;
 
 	/**
-     * Default output node ID. Chosen if no condition is true.
+     * Default output node. Chosen if no condition is true.
      */
-	std::optional<node_id_t> default_id;
+	std::shared_ptr<Node> default_node;
 };
 
 } // namespace activity

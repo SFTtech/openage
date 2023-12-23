@@ -152,7 +152,7 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 		} break;
 		case activity::node_t::XOR_GATE: {
 			auto node = std::static_pointer_cast<activity::XorGate>(current);
-			auto next_id = node->get_default_id();
+			auto next_id = node->get_default()->get_id();
 			for (auto &condition : node->get_conditions()) {
 				auto condition_func = condition.second;
 				if (condition_func(0, nullptr)) {
@@ -251,7 +251,7 @@ void activity_demo() {
 		return true;
 	};
 	xor_node->add_output(event_node, branch_event);
-	xor_node->set_default_id(event_node->get_id());
+	xor_node->set_default(event_node);
 
 	// event node
 	activity::event_primer_t primer = [&](const time::time_t & /* time */,

@@ -89,13 +89,7 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 	condition_moveable->add_output(wait_for_command, wait_branch);
 
 	// end branch
-	activity::condition_t end_branch = [&](const time::time_t & /* time */,
-	                                       const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
-		// no checks, this is the default branch
-		return true;
-	};
-	condition_moveable->add_output(end, end_branch);
-	condition_moveable->set_default_id(end->get_id());
+	condition_moveable->set_default(end);
 
 	wait_for_command->add_output(move, gamestate::event::primer_process_command);
 
