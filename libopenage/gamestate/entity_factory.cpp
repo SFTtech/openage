@@ -15,6 +15,8 @@
 #include "event/event_loop.h"
 #include "gamestate/activity/activity.h"
 #include "gamestate/activity/end_node.h"
+#include "gamestate/activity/event/command_in_queue.h"
+#include "gamestate/activity/event/wait.h"
 #include "gamestate/activity/start_node.h"
 #include "gamestate/activity/task_system_node.h"
 #include "gamestate/activity/xor_event_gate.h"
@@ -38,9 +40,6 @@
 #include "renderer/render_factory.h"
 #include "time/time.h"
 #include "util/fixed_point.h"
-
-#include "gamestate/event/process_command.h"
-#include "gamestate/event/wait.h"
 
 namespace openage::gamestate {
 
@@ -91,13 +90,13 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 	// end branch
 	condition_moveable->set_default(end);
 
-	wait_for_command->add_output(move, gamestate::event::primer_process_command);
+	wait_for_command->add_output(move, gamestate::activity::primer_command_in_queue);
 
 	move->add_output(wait_for_move);
 	move->set_system_id(system::system_id_t::MOVE_COMMAND);
 
-	wait_for_move->add_output(idle, gamestate::event::primer_wait);
-	wait_for_move->add_output(move, gamestate::event::primer_process_command);
+	wait_for_move->add_output(idle, gamestate::activity::primer_wait);
+	wait_for_move->add_output(move, gamestate::activity::primer_command_in_queue);
 
 	return std::make_shared<activity::Activity>(0, start, "test");
 }

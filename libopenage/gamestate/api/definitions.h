@@ -8,12 +8,11 @@
 #include <nyan/nyan.h>
 
 #include "datastructure/constexpr_map.h"
+#include "gamestate/activity/event/command_in_queue.h"
+#include "gamestate/activity/event/wait.h"
 #include "gamestate/activity/types.h"
-#include "gamestate/api/types.h"
-
 #include "gamestate/activity/xor_event_gate.h"
-#include "gamestate/event/process_command.h"
-#include "gamestate/event/wait.h"
+#include "gamestate/api/types.h"
 
 
 namespace openage::gamestate::api {
@@ -65,11 +64,11 @@ static const auto ACTIVITY_NODE_DEFS = datastructure::create_const_map<std::stri
 
 static const auto ACTIVITY_EVENT_PRIMERS = datastructure::create_const_map<std::string, activity::event_primer_t>(
 	std::pair("engine.util.activity.event.type.Command",
-              std::function(gamestate::event::primer_process_command)),
+              std::function(gamestate::activity::primer_command_in_queue)),
 	std::pair("engine.util.activity.event.type.Wait",
-              std::function(gamestate::event::primer_wait)),
+              std::function(gamestate::activity::primer_wait)),
 	std::pair("engine.util.activity.event.type.WaitAbility",
-              std::function(gamestate::event::primer_wait)));
+              std::function(gamestate::activity::primer_wait)));
 
 /**
  * Maps internal patch property types to nyan API values.

@@ -10,3 +10,5 @@ add_sources(libopenage
     xor_event_gate.cpp
     xor_gate.cpp
 )
+
+add_subdirectory("event")

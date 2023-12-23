@@ -46,23 +46,6 @@ public:
 };
 
 
-/**
- * Primer for process command events in the activity system.
- *
- * @param time Current simulation time.
- * @param entity Game entity.
- * @param loop Event loop that the event is registered on.
- * @param state Game state.
- * @param next_id ID of the next node in the activity graph.
- *
- * @return Scheduled event.
- */
-std::shared_ptr<openage::event::Event> primer_process_command(const time::time_t &,
-                                                              const std::shared_ptr<gamestate::GameEntity> &entity,
-                                                              const std::shared_ptr<openage::event::EventLoop> &loop,
-                                                              const std::shared_ptr<gamestate::GameState> &state,
-                                                              size_t next_id);
-
 } // namespace event
 } // namespace gamestate
 } // namespace openage
