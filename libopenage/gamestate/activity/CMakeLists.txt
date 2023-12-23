@@ -12,3 +12,4 @@ add_sources(libopenage
 )
 
 add_subdirectory("event")
+add_subdirectory("condition")

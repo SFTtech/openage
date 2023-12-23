@@ -8,10 +8,13 @@
 #include <nyan/nyan.h>
 
 #include "datastructure/constexpr_map.h"
+#include "gamestate/activity/condition/command_in_queue.h"
+#include "gamestate/activity/condition/next_command.h"
 #include "gamestate/activity/event/command_in_queue.h"
 #include "gamestate/activity/event/wait.h"
 #include "gamestate/activity/types.h"
 #include "gamestate/activity/xor_event_gate.h"
+#include "gamestate/activity/xor_gate.h"
 #include "gamestate/api/types.h"
 
 
@@ -61,6 +64,16 @@ static const auto ACTIVITY_NODE_DEFS = datastructure::create_const_map<std::stri
               activity::node_t::XOR_GATE),
 	std::pair("engine.util.activity.node.type.XOREventGate",
               activity::node_t::XOR_EVENT_GATE));
+
+static const auto ACTIVITY_CONDITIONS = datastructure::create_const_map<std::string, activity::condition_t>(
+	std::pair("engine.util.activity.condition.type.CommandInQueue",
+              std::function(gamestate::activity::command_in_queue)),
+	// TODO: API object assignment is inconsistent here
+	//       Ideally all conditions should be an activity condition type
+	std::pair("engine.util.command.type.Idle",
+              std::function(gamestate::activity::next_command_idle)),
+	std::pair("engine.util.command.type.Move",
+              std::function(gamestate::activity::next_command_move)));
 
 static const auto ACTIVITY_EVENT_PRIMERS = datastructure::create_const_map<std::string, activity::event_primer_t>(
 	std::pair("engine.util.activity.event.type.Command",
