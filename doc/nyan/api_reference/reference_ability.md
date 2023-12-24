@@ -130,7 +130,7 @@ the ability with this property cannot become active.
 ## ability.type.ActiveTransformTo
 
 ```python
-TransformTo(Ability):
+ActiveTransformTo(Ability):
     target_state       : StateChanger
     transform_time     : float
     transform_progress : set(Progress)
@@ -146,6 +146,18 @@ The time for the transformation to complete.
 
 **transform_progress**
 A set of `Progress` objects that can activate state changes and animation overrides while the transformation progresses. The objects in the set must have progress type `Restock`.
+
+## ability.type.Activity
+
+```python
+Activity(Ability):
+    graph: Activity
+```
+
+Defines the behaviour of a game entity. The behaviour is modelled as a directed node graph. Nodes in the graph correspond to actions that execute for the game entity or conditional queries and event triggers that indicate which path to take next. By traversing the node graph along its paths, the game entities actions are determined. See the [activity control flow](/doc/code/game_simulation/activity.md) documentation for more information.
+
+**graph**
+Node graph that defines the behaviour of the game entity.
 
 ## ability.type.ApplyContinuousEffect
 
