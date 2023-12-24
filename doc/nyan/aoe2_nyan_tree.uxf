@@ -1453,7 +1453,7 @@ min_elevation_difference : optional(float) = None</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>0</x>
-      <y>110</y>
+      <y>100</y>
       <w>190</w>
       <h>70</h>
     </coordinates>
@@ -1468,13 +1468,14 @@ bg=pink</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>0</x>
-      <y>190</y>
+      <y>180</y>
       <w>190</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>Green elements:
 
-Abilities (handled by engine implementation)
+Abilities (handled by engine
+implementation)
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
@@ -1482,13 +1483,14 @@ bg=green</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>0</x>
-      <y>270</y>
+      <y>260</y>
       <w>190</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>Yellow elements:
 
-Modifiers (handled by engine implementation)
+Modifiers (handled by engine
+implementation)
 bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
@@ -1496,7 +1498,7 @@ bg=yellow</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>0</x>
-      <y>450</y>
+      <y>440</y>
       <w>190</w>
       <h>70</h>
     </coordinates>
@@ -5378,13 +5380,15 @@ blacklisted_entities : set(GameEntity)</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>0</x>
-      <y>350</y>
+      <y>340</y>
       <w>190</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>Orange elements:
 
-Effects/Resistances that can be applied on other game entities
+Effects/Resistances that can
+be applied on other game
+entities
 bg=orange</panel_attributes>
     <additional_attributes/>
   </element>
@@ -5494,11 +5498,11 @@ blacklisted_entities : set(GameEntity)</panel_attributes>
     <id>Text</id>
     <coordinates>
       <x>0</x>
-      <y>10</y>
+      <y>0</y>
       <w>230</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>openage nyan data API v0.4.0</panel_attributes>
+    <panel_attributes>openage nyan data API v0.4.1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -6775,7 +6779,7 @@ bg=pink</panel_attributes>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -10181,5 +10185,452 @@ construction_progress : set(Progress)</panel_attributes>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2200</x>
+      <y>2230</y>
+      <w>110</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*Node*
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2250</x>
+      <y>2280</y>
+      <w>30</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;260.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2070</x>
+      <y>2320</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*Start*
+bg=pink
+
+--
+next : Node</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2220</x>
+      <y>2350</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1850</x>
+      <y>2320</y>
+      <w>150</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*Activity*
+bg=pink
+
+--
+start : Start</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1990</x>
+      <y>2350</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2120</x>
+      <y>2420</y>
+      <w>110</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*End*
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2220</x>
+      <y>2440</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2290</x>
+      <y>2320</y>
+      <w>220</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*XORGate*
+bg=pink
+
+--
+next : orderedset(Condition)
+default : Node</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2290</x>
+      <y>2410</y>
+      <w>220</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*XOREventGate*
+bg=pink
+
+--
+next : dict(Event, Node)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2060</x>
+      <y>2500</y>
+      <w>170</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>*Ability*
+bg=pink
+
+--
+next : Node
+ability : abstract(Ability)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2250</x>
+      <y>2350</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2250</x>
+      <y>2440</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2220</x>
+      <y>2530</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3710</x>
+      <y>3360</y>
+      <w>180</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>*Activity*
+bg=green
+
+--
+graph : Activity</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3880</x>
+      <y>3390</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1790</x>
+      <y>2270</y>
+      <w>160</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Unit behaviour graph
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2560</x>
+      <y>2420</y>
+      <w>110</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*Event*
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2500</x>
+      <y>2440</y>
+      <w>80</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2580</x>
+      <y>2470</y>
+      <w>30</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2610</x>
+      <y>2500</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*Wait*
+bg=pink
+
+--
+time : float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2610</x>
+      <y>2590</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*WaitAbility*
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2580</x>
+      <y>2530</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2580</x>
+      <y>2610</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2610</x>
+      <y>2660</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*CommandInQueue*
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2580</x>
+      <y>2680</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2520</x>
+      <y>2070</y>
+      <w>140</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*Condition*
+bg=pink
+
+--
+next : Node</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2450</x>
+      <y>2100</y>
+      <w>90</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2610</x>
+      <y>2170</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*CommandInQueue*
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2580</x>
+      <y>2140</y>
+      <w>30</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2580</x>
+      <y>2190</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2610</x>
+      <y>2240</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*NextCommandIdle*
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2580</x>
+      <y>2260</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1770</x>
+      <y>2350</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2610</x>
+      <y>2310</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*NextCommandMove*
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2580</x>
+      <y>2330</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
   </element>
 </diagram>
