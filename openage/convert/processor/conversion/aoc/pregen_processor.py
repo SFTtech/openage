@@ -334,7 +334,7 @@ class AoCPregenSubprocessor:
         wait_command = api_objects["engine.util.activity.event.type.CommandInQueue"]
         wait_raw_api_object.add_raw_member("next",
                                            {
-                                               wait_finish: queue_forward_ref,
+                                               wait_finish: idle_forward_ref,
                                                # TODO: don't go back to move, go to xor gate that
                                                # branches depending on command
                                                wait_command: branch_forward_ref
