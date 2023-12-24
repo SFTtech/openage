@@ -9,6 +9,7 @@
 #include "gamestate/activity/types.h"
 #include "gamestate/activity/xor_event_gate.h"
 #include "gamestate/activity/xor_gate.h"
+#include "gamestate/system/types.h"
 
 
 namespace openage::gamestate {
@@ -73,6 +74,15 @@ public:
      * @return nyan object handles of the next nodes.
      */
 	static std::vector<nyan::Object> get_next(const nyan::Object &node);
+
+	/**
+     * Get the system id of an Ability node.
+     *
+     * @param node nyan object.
+     *
+     * @return System ID of the node.
+     */
+	static system::system_id_t get_system_id(const nyan::Object &ability_node);
 };
 
 /**

@@ -246,10 +246,12 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 			start_node = std::make_shared<activity::StartNode>(node_id);
 			node_id_map[node_id] = start_node;
 			break;
-		case activity::node_t::TASK_SYSTEM:
-			node_id_map[node_id] = std::make_shared<activity::TaskSystemNode>(node_id);
-			// TODO: Set system ID
+		case activity::node_t::TASK_SYSTEM: {
+			auto task_node = std::make_shared<activity::TaskSystemNode>(node_id);
+			task_node->set_system_id(api::APIActivityNode::get_system_id(node));
+			node_id_map[node_id] = task_node;
 			break;
+		}
 		case activity::node_t::XOR_GATE:
 			node_id_map[node_id] = std::make_shared<activity::XorGate>(node_id);
 			break;
@@ -257,7 +259,7 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 			node_id_map[node_id] = std::make_shared<activity::XorEventGate>(node_id);
 			break;
 		default:
-			throw Error{ERR << "Unknown activity node type"};
+			throw Error{ERR << "Unknown activity node type of node: " << node.get_name()};
 		}
 
 		// Get the node's outputs
@@ -302,7 +304,7 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 				break;
 			}
 			default:
-				throw Error{ERR << "Unknown activity node type"};
+				throw Error{ERR << "Unknown activity node type of node: " << current_node.first};
 			}
 		}
 	}

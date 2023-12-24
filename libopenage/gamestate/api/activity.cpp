@@ -73,6 +73,17 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 	}
 }
 
+system::system_id_t APIActivityNode::get_system_id(const nyan::Object &ability_node) {
+	auto ability = ability_node.get<nyan::ObjectValue>("Ability.ability");
+	std::shared_ptr<nyan::View> db_view = ability_node.get_view();
+
+	if (not ACTIVITY_TASK_SYSTEM_DEFS.contains(ability->get_name())) [[unlikely]] {
+		throw Error(MSG(err) << "Ability '" << ability->get_name() << "' has no associated system defined.");
+	}
+
+	return ACTIVITY_TASK_SYSTEM_DEFS.get(ability->get_name());
+}
+
 bool APIActivityCondition::is_condition(const nyan::Object &obj) {
 	nyan::fqon_t immediate_parent = obj.get_parents()[0];
 	return immediate_parent == "engine.util.activity.condition.Condition";

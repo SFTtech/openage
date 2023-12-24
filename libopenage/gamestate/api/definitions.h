@@ -16,6 +16,7 @@
 #include "gamestate/activity/xor_event_gate.h"
 #include "gamestate/activity/xor_gate.h"
 #include "gamestate/api/types.h"
+#include "gamestate/system/types.h"
 
 
 namespace openage::gamestate::api {
@@ -65,6 +66,20 @@ static const auto ACTIVITY_NODE_DEFS = datastructure::create_const_map<std::stri
 	std::pair("engine.util.activity.node.type.XOREventGate",
               activity::node_t::XOR_EVENT_GATE));
 
+/**
+ * Maps API activity task system types to engine system types.
+ *
+ * TODO: Expand this to include all systems.
+ */
+static const auto ACTIVITY_TASK_SYSTEM_DEFS = datastructure::create_const_map<std::string, system::system_id_t>(
+	std::pair("engine.ability.type.Idle",
+              system::system_id_t::IDLE),
+	std::pair("engine.ability.type.Move",
+              system::system_id_t::MOVE_COMMAND));
+
+/**
+ * Maps API activity condition types to engine condition types.
+ */
 static const auto ACTIVITY_CONDITIONS = datastructure::create_const_map<std::string, activity::condition_t>(
 	std::pair("engine.util.activity.condition.type.CommandInQueue",
               std::function(gamestate::activity::command_in_queue)),
