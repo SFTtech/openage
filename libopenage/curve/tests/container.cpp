@@ -149,11 +149,25 @@ void test_queue() {
 	auto loop = std::make_shared<event::EventLoop>();
 
 	Queue<int> q{loop, 0};
-	q.insert(0, 1);
+
+	TESTEQUALS(q.empty(0), true);
+	TESTEQUALS(q.empty(1), true);
+	TESTEQUALS(q.empty(100001), true);
+
 	q.insert(2, 2);
 	q.insert(4, 3);
 	q.insert(10, 4);
 	q.insert(100001, 5);
+	q.insert(100001, 6);
+
+	TESTEQUALS(q.empty(0), true);
+	TESTEQUALS(q.empty(1), true);
+	TESTEQUALS(q.empty(2), false);
+	TESTEQUALS(q.empty(100001), false);
+	TESTEQUALS(q.empty(100002), false);
+
+	q.insert(0, 1);
+
 	TESTEQUALS(*q.begin(0), 1);
 	TESTEQUALS(*q.begin(1), 2);
 	TESTEQUALS(*q.begin(2), 2);
@@ -163,6 +177,17 @@ void test_queue() {
 	TESTEQUALS(*q.begin(10), 4);
 	TESTEQUALS(*q.begin(12), 5);
 	TESTEQUALS(*q.begin(100000), 5);
+
+	TESTEQUALS(q.front(0), 1);
+	TESTEQUALS(q.front(1), 1);
+	TESTEQUALS(q.front(2), 2);
+	TESTEQUALS(q.front(3), 2);
+	TESTEQUALS(q.front(4), 3);
+	TESTEQUALS(q.front(5), 3);
+	TESTEQUALS(q.front(10), 4);
+	TESTEQUALS(q.front(12), 4);
+	TESTEQUALS(q.front(100000), 4);
+	TESTEQUALS(q.front(100001), 6);
 
 	{
 		std::unordered_set<int> reference = {1, 2, 3};
@@ -204,6 +229,19 @@ void test_queue() {
 		}
 		TESTEQUALS(reference.empty(), true);
 	}
+
+
+	TESTEQUALS(q.pop_front(0), 1);
+	TESTEQUALS(q.empty(0), true);
+
+	TESTEQUALS(q.pop_front(12), 4);
+	TESTEQUALS(q.empty(12), false);
+
+	TESTEQUALS(q.pop_front(12), 3);
+	TESTEQUALS(q.empty(12), false);
+
+	TESTEQUALS(q.pop_front(12), 2);
+	TESTEQUALS(q.empty(12), true);
 }
 
 

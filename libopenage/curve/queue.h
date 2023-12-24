@@ -53,7 +53,7 @@ public:
 		EventEntity{loop},
 		_id{id},
 		_idstr{idstr},
-		last_front{this->container.begin()} {}
+		last_pop{time::time_t::zero()} {}
 
 	// prevent accidental copy of queue
 	Queue(const Queue &) = delete;
@@ -69,12 +69,13 @@ public:
 	const T &front(const time::time_t &time) const;
 
 	/**
-	 * Get the first element in the queue at the given time.
+	 * Get the first element in the queue at the given time and remove it from
+     * the queue.
 	 *
 	 * @param time The time to get the element at.
 	 * @param value Queue element.
 	 */
-	const T &pop_front(const time::time_t &time);
+	const T pop_front(const time::time_t &time);
 
 	/**
 	 * Check if the queue is empty at a given time.
@@ -183,24 +184,74 @@ private:
 	 */
 	container_t container;
 
-	iterator last_front;
+	/**
+     * The time of the last access to the queue.
+     */
+	time::time_t last_pop;
 };
 
 
 template <typename T>
-const T &Queue<T>::front(const time::time_t &t) const {
-	return this->begin(t).value();
+const T &Queue<T>::front(const time::time_t &time) const {
+	if (this->empty(time)) [[unlikely]] {
+		throw Error{MSG(err) << "Tried accessing front at "
+		                     << time << " but queue is empty."};
+	}
+
+	// search for the first element that is after the given time
+	auto it = this->container.begin();
+	++it;
+	while (it != this->container.end() and it->time() <= time) {
+		++it;
+	}
+
+	// get the last element before the given time
+	--it;
+
+	return it->value;
+}
+
+template <class T>
+const T Queue<T>::pop_front(const time::time_t &time) {
+	if (this->empty(time)) [[unlikely]] {
+		throw Error{MSG(err) << "Tried accessing front at "
+		                     << time << " but queue is empty."};
+	}
+
+	// search for the first element that is after the given time
+	auto it = this->container.begin();
+	++it;
+	while (it->time() <= time and it != this->container.end()) {
+		++it;
+	}
+
+	auto to = it->time();
+	auto from = time;
+
+	// get the last element inserted before the given time
+	--it;
+	auto val = it->value;
+
+	// erase the element
+	// TODO: We should be able to reinsert elements
+	auto filter_iterator = QueueFilterIterator<T, Queue<T>>(it, this, to, from);
+	this->erase(filter_iterator);
+
+	this->last_pop = time;
+
+	return val;
 }
 
 template <class T>
 bool Queue<T>::empty(const time::time_t &time) const {
-	return this->last_front == this->begin(time).get_base();
-}
+	if (this->container.empty()) {
+		return true;
+	}
 
-template <class T>
-inline const T &Queue<T>::pop_front(const time::time_t &time) {
-	this->last_front = this->begin(time).get_base();
-	return this->front(time);
+	// search for the first element that is after the given time
+	auto begin = this->begin(time).get_base();
+
+	return begin == this->container.begin() and begin->time() > time;
 }
 
 template <typename T>
@@ -230,15 +281,14 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::end(const time::time_t &t) const {
 
 
 template <typename T>
-QueueFilterIterator<T, Queue<T>> Queue<T>::between(
-	const time::time_t &begin,
-	const time::time_t &end) const {
+QueueFilterIterator<T, Queue<T>> Queue<T>::between(const time::time_t &begin,
+                                                   const time::time_t &end) const {
 	auto it = QueueFilterIterator<T, Queue<T>>(
 		container.begin(),
 		this,
 		begin,
 		end);
-	if (!container.empty() && !it.valid()) {
+	if (not it.valid()) {
 		++it;
 	}
 	return it;
@@ -253,9 +303,8 @@ void Queue<T>::erase(const CurveIterator<T, Queue<T>> &it) {
 
 
 template <typename T>
-QueueFilterIterator<T, Queue<T>> Queue<T>::insert(
-	const time::time_t &time,
-	const T &e) {
+QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
+                                                  const T &e) {
 	const_iterator insertion_point = this->container.end();
 	for (auto it = this->container.begin(); it != this->container.end(); ++it) {
 		if (time < it->time()) {

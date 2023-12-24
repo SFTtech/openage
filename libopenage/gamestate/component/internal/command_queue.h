@@ -53,7 +53,7 @@ public:
 	 *
 	 * @return Command in the front of the queue or nullptr if the queue is empty.
 	 */
-	const std::shared_ptr<command::Command> &pop_command(const time::time_t &time);
+	const std::shared_ptr<command::Command> pop_command(const time::time_t &time);
 
 private:
 	/**
