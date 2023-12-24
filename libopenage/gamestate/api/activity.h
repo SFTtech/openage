@@ -8,6 +8,7 @@
 
 #include "gamestate/activity/types.h"
 #include "gamestate/activity/xor_event_gate.h"
+#include "gamestate/activity/xor_gate.h"
 
 
 namespace openage::gamestate {
@@ -72,6 +73,30 @@ public:
      * @return nyan object handles of the next nodes.
      */
 	static std::vector<nyan::Object> get_next(const nyan::Object &node);
+};
+
+/**
+ * Helper class for creating Activity condition objects from the nyan API.
+ */
+class APIActivityCondition {
+public:
+	/**
+     * Check if a nyan object is a condition (type == \p engine.util.activity.condition.Condition).
+     *
+     * @param obj nyan object.
+     *
+     * @return true if the object is a condition, else false.
+     */
+	static bool is_condition(const nyan::Object &obj);
+
+	/**
+     * Get the condition function for a condition.
+     *
+     * @param condition nyan object.
+     *
+     * @return Condition function.
+     */
+	static activity::condition_t get_condition(const nyan::Object &condition);
 };
 
 /**

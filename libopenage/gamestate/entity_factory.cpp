@@ -293,7 +293,7 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 			}
 			case activity::node_t::XOR_GATE: {
 				auto xor_gate = std::static_pointer_cast<activity::XorGate>(activity_node);
-				// TODO: Add conditions
+				xor_gate->add_output(next_engine_node, api::APIActivityCondition::get_condition(nyan_node));
 				break;
 			}
 			case activity::node_t::XOR_EVENT_GATE: {

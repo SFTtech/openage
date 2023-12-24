@@ -44,7 +44,18 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 		return {db_view->get_object(next->get_name())};
 	}
 	// 1+ next nodes
-	case activity::node_t::XOR_GATE:
+	case activity::node_t::XOR_GATE: {
+		auto next = node.get<nyan::OrderedSet>("Node.next");
+		std::shared_ptr<nyan::View> db_view = node.get_view();
+
+		std::vector<nyan::Object> next_nodes;
+		for (auto &next_node : next->get()) {
+			auto next_node_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.get_ptr());
+			next_nodes.push_back(db_view->get_object(next_node_value->get_name()));
+		}
+
+		return next_nodes;
+	}
 	case activity::node_t::XOR_EVENT_GATE: {
 		auto next = node.get<nyan::Dict>("Node.next");
 		std::shared_ptr<nyan::View> db_view = node.get_view();
@@ -60,6 +71,16 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 	default:
 		throw Error(MSG(err) << "Unknown activity node type.");
 	}
+}
+
+bool APIActivityCondition::is_condition(const nyan::Object &obj) {
+	nyan::fqon_t immediate_parent = obj.get_parents()[0];
+	return immediate_parent == "engine.util.activity.condition.Condition";
+}
+
+activity::condition_t APIActivityCondition::get_condition(const nyan::Object &condition) {
+	nyan::fqon_t immediate_parent = condition.get_parents()[0];
+	return ACTIVITY_CONDITIONS.get(immediate_parent);
 }
 
 bool APIActivityEvent::is_event(const nyan::Object &obj) {

@@ -68,11 +68,9 @@ static const auto ACTIVITY_NODE_DEFS = datastructure::create_const_map<std::stri
 static const auto ACTIVITY_CONDITIONS = datastructure::create_const_map<std::string, activity::condition_t>(
 	std::pair("engine.util.activity.condition.type.CommandInQueue",
               std::function(gamestate::activity::command_in_queue)),
-	// TODO: API object assignment is inconsistent here
-	//       Ideally all conditions should be an activity condition type
-	std::pair("engine.util.command.type.Idle",
+	std::pair("engine.util.activity.condition.type.NextCommandIdle",
               std::function(gamestate::activity::next_command_idle)),
-	std::pair("engine.util.command.type.Move",
+	std::pair("engine.util.activity.condition.type.NextCommandMove",
               std::function(gamestate::activity::next_command_move)));
 
 static const auto ACTIVITY_EVENT_PRIMERS = datastructure::create_const_map<std::string, activity::event_primer_t>(
