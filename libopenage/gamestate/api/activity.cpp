@@ -45,12 +45,15 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 	}
 	// 1+ next nodes
 	case activity::node_t::XOR_GATE: {
-		auto next = node.get<nyan::OrderedSet>("Node.next");
+		auto conditions = node.get<nyan::OrderedSet>("Node.next");
 		std::shared_ptr<nyan::View> db_view = node.get_view();
 
 		std::vector<nyan::Object> next_nodes;
-		for (auto &next_node : next->get()) {
-			auto next_node_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.get_ptr());
+		for (auto &condition : conditions->get()) {
+			auto condition_fqon = std::dynamic_pointer_cast<nyan::ObjectValue>(condition.get_ptr());
+			auto condition_obj = db_view->get_object(condition_fqon->get_name());
+
+			auto next_node_value = condition_obj.get<nyan::ObjectValue>("Condition.next");
 			next_nodes.push_back(db_view->get_object(next_node_value->get_name()));
 		}
 
