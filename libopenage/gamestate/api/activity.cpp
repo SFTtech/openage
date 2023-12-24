@@ -37,15 +37,19 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 		return {};
 	}
 	// 1 next node
-	case activity::node_t::TASK_SYSTEM:
+	case activity::node_t::TASK_SYSTEM: {
+		auto next = node.get<nyan::ObjectValue>("Ability.next");
+		std::shared_ptr<nyan::View> db_view = node.get_view();
+		return {db_view->get_object(next->get_name())};
+	}
 	case activity::node_t::START: {
-		auto next = node.get<nyan::ObjectValue>("Node.next");
+		auto next = node.get<nyan::ObjectValue>("Start.next");
 		std::shared_ptr<nyan::View> db_view = node.get_view();
 		return {db_view->get_object(next->get_name())};
 	}
 	// 1+ next nodes
 	case activity::node_t::XOR_GATE: {
-		auto conditions = node.get<nyan::OrderedSet>("Node.next");
+		auto conditions = node.get<nyan::OrderedSet>("XORGate.next");
 		std::shared_ptr<nyan::View> db_view = node.get_view();
 
 		std::vector<nyan::Object> next_nodes;
@@ -60,7 +64,7 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 		return next_nodes;
 	}
 	case activity::node_t::XOR_EVENT_GATE: {
-		auto next = node.get<nyan::Dict>("Node.next");
+		auto next = node.get<nyan::Dict>("XOREventGate.next");
 		std::shared_ptr<nyan::View> db_view = node.get_view();
 
 		std::vector<nyan::Object> next_nodes;
