@@ -219,6 +219,16 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
                                   const std::shared_ptr<GameEntity> &entity,
                                   const nyan::Object &ability) {
 	nyan::Object graph = ability.get_object("Activity.graph");
+
+	// Check if the activity is already exists in the cache
+	if (this->activity_cache.contains(graph.get_name())) {
+		auto activity = this->activity_cache.at(graph.get_name());
+		auto component = std::make_shared<component::Activity>(loop, activity);
+		entity->add_component(component);
+
+		return;
+	}
+
 	auto start_obj = api::APIActivity::get_start(graph);
 
 	size_t node_id = 0;
@@ -337,6 +347,7 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 	}
 
 	auto activity = std::make_shared<activity::Activity>(0, start_node, graph.get_name());
+	this->activity_cache.insert({graph.get_name(), activity});
 
 	auto component = std::make_shared<component::Activity>(loop, activity);
 	entity->add_component(component);

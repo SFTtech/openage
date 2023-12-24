@@ -21,6 +21,11 @@ class RenderFactory;
 }
 
 namespace gamestate {
+
+namespace activity {
+class Activity;
+} // namespace activity
+
 class GameEntity;
 class GameState;
 class Player;
@@ -127,6 +132,11 @@ private:
 	std::shared_ptr<renderer::RenderFactory> render_factory;
 
 	// TODO: Cache created game entities.
+
+	/**
+     * Cache for activities.
+     */
+	std::unordered_map<nyan::fqon_t, std::shared_ptr<activity::Activity>> activity_cache;
 
 	/**
      * Mutex for thread safety.
