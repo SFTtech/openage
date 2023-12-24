@@ -54,12 +54,15 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 
 		std::vector<nyan::Object> next_nodes;
 		for (auto &condition : conditions->get()) {
-			auto condition_fqon = std::dynamic_pointer_cast<nyan::ObjectValue>(condition.get_ptr());
-			auto condition_obj = db_view->get_object(condition_fqon->get_name());
+			auto condition_value = std::dynamic_pointer_cast<nyan::ObjectValue>(condition.get_ptr());
+			auto condition_obj = db_view->get_object(condition_value->get_name());
 
 			auto next_node_value = condition_obj.get<nyan::ObjectValue>("Condition.next");
 			next_nodes.push_back(db_view->get_object(next_node_value->get_name()));
 		}
+
+		auto default_next = node.get<nyan::ObjectValue>("XORGate.default");
+		next_nodes.push_back(db_view->get_object(default_next->get_name()));
 
 		return next_nodes;
 	}
@@ -107,8 +110,7 @@ bool APIActivityEvent::is_event(const nyan::Object &obj) {
 }
 
 activity::event_primer_t APIActivityEvent::get_primer(const nyan::Object &event) {
-	nyan::fqon_t immediate_parent = event.get_parents()[0];
-	return ACTIVITY_EVENT_PRIMERS.get(immediate_parent);
+	return ACTIVITY_EVENT_PRIMERS.get(event.get_name());
 }
 
 } // namespace openage::gamestate::api

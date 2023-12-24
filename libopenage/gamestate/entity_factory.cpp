@@ -205,13 +205,13 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 		}
 	}
 
-	// if (activity_ability) {
-	// 	init_activity(loop, owner_db_view, entity, activity_ability.value());
-	// }
-	// else {
-	auto activity = std::make_shared<component::Activity>(loop, create_test_activity());
-	entity->add_component(activity);
-	// }
+	if (activity_ability) {
+		init_activity(loop, owner_db_view, entity, activity_ability.value());
+	}
+	else {
+		auto activity = std::make_shared<component::Activity>(loop, create_test_activity());
+		entity->add_component(activity);
+	}
 }
 
 void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoop> &loop,
@@ -275,37 +275,64 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 		auto nyan_node = owner_db_view->get_object(current_node.first);
 		auto activity_node = node_id_map[current_node.second];
 
-		auto next_nodes = api::APIActivityNode::get_next(nyan_node);
-		for (const auto &next_node : next_nodes) {
-			auto next_node_id = visited[next_node.get_name()];
-			auto next_engine_node = node_id_map[next_node_id];
+		switch (activity_node->get_type()) {
+		case activity::node_t::END:
+			break;
+		case activity::node_t::START: {
+			auto start = std::static_pointer_cast<activity::StartNode>(activity_node);
+			auto output_fqon = nyan_node.get<nyan::ObjectValue>("Start.next")->get_name();
+			auto output_id = visited[output_fqon];
+			auto output_node = node_id_map[output_id];
+			start->add_output(output_node);
+			break;
+		}
+		case activity::node_t::TASK_SYSTEM: {
+			auto task_system = std::static_pointer_cast<activity::TaskSystemNode>(activity_node);
+			auto output_fqon = nyan_node.get<nyan::ObjectValue>("Ability.next")->get_name();
+			auto output_id = visited[output_fqon];
+			auto output_node = node_id_map[output_id];
+			task_system->add_output(output_node);
+			break;
+		}
+		case activity::node_t::XOR_GATE: {
+			auto xor_gate = std::static_pointer_cast<activity::XorGate>(activity_node);
+			auto conditions = nyan_node.get<nyan::OrderedSet>("XORGate.next");
+			for (auto &condition : conditions->get()) {
+				auto condition_value = std::dynamic_pointer_cast<nyan::ObjectValue>(condition.get_ptr());
+				auto condition_obj = owner_db_view->get_object(condition_value->get_name());
 
-			switch (activity_node->get_type()) {
-			case activity::node_t::END:
-				break;
-			case activity::node_t::START: {
-				auto start = std::static_pointer_cast<activity::StartNode>(activity_node);
-				start->add_output(next_engine_node);
-				break;
+				auto output_value = condition_obj.get<nyan::ObjectValue>("Condition.next")->get_name();
+				auto output_id = visited[output_value];
+				auto output_node = node_id_map[output_id];
+
+				xor_gate->add_output(output_node, api::APIActivityCondition::get_condition(condition_obj));
 			}
-			case activity::node_t::TASK_SYSTEM: {
-				auto task_system = std::static_pointer_cast<activity::TaskSystemNode>(activity_node);
-				task_system->add_output(next_engine_node);
-				break;
+
+			auto default_fqon = nyan_node.get<nyan::ObjectValue>("XORGate.default")->get_name();
+			auto default_id = visited[default_fqon];
+			auto default_node = node_id_map[default_id];
+			xor_gate->set_default(default_node);
+			break;
+		}
+		case activity::node_t::XOR_EVENT_GATE: {
+			auto xor_event_gate = std::static_pointer_cast<activity::XorEventGate>(activity_node);
+			auto next = nyan_node.get<nyan::Dict>("XOREventGate.next");
+			for (auto &next_node : next->get()) {
+				auto event_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.first.get_ptr());
+				auto event_obj = owner_db_view->get_object(event_value->get_name());
+
+				auto next_node_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.second.get_ptr());
+				auto next_node_obj = owner_db_view->get_object(next_node_value->get_name());
+
+				auto output_id = visited[next_node_obj.get_name()];
+				auto output_node = node_id_map[output_id];
+
+				xor_event_gate->add_output(output_node, api::APIActivityEvent::get_primer(event_obj));
 			}
-			case activity::node_t::XOR_GATE: {
-				auto xor_gate = std::static_pointer_cast<activity::XorGate>(activity_node);
-				xor_gate->add_output(next_engine_node, api::APIActivityCondition::get_condition(nyan_node));
-				break;
-			}
-			case activity::node_t::XOR_EVENT_GATE: {
-				auto xor_event_gate = std::static_pointer_cast<activity::XorEventGate>(activity_node);
-				xor_event_gate->add_output(next_engine_node, api::APIActivityEvent::get_primer(next_node));
-				break;
-			}
-			default:
-				throw Error{ERR << "Unknown activity node type of node: " << current_node.first};
-			}
+			break;
+		}
+		default:
+			throw Error{ERR << "Unknown activity node type of node: " << current_node.first};
 		}
 	}
 
