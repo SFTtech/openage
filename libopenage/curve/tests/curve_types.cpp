@@ -37,7 +37,7 @@ void curve_types() {
 		{
 			auto it = c.begin();
 			TESTEQUALS(it->value, 0);
-			TESTEQUALS(it->time, std::numeric_limits<time::time_t>::min());
+			TESTEQUALS(it->time, time::TIME_MIN);
 			TESTEQUALS((++it)->time, 0);
 			TESTEQUALS(it->value, 0);
 			TESTEQUALS((++it)->time, 1);
@@ -140,7 +140,7 @@ void curve_types() {
 
 		{
 			auto it = c.begin();
-			TESTEQUALS(it->time, std::numeric_limits<time::time_t>::min());
+			TESTEQUALS(it->time, time::TIME_MIN);
 			TESTEQUALS(it->value, 0);
 
 			TESTEQUALS((++it)->time, 0);

@@ -115,7 +115,7 @@ public:
      *              the keyframes of \p other.
      */
 	void sync(const BaseCurve<T> &other,
-	          const time::time_t &start = std::numeric_limits<time::time_t>::min());
+	          const time::time_t &start = time::TIME_MIN);
 
 	/**
      * Copy keyframes from another curve (with a different element type) to this curve.
@@ -134,7 +134,7 @@ public:
 	template <typename O>
 	void sync(const BaseCurve<O> &other,
 	          const std::function<T(const O &)> &converter,
-	          const time::time_t &start = std::numeric_limits<time::time_t>::min());
+	          const time::time_t &start = time::TIME_MIN);
 
 	/**
      * Get the identifier of this curve.
@@ -270,7 +270,7 @@ std::string BaseCurve<T>::str() const {
 
 template <typename T>
 void BaseCurve<T>::check_integrity() const {
-	time::time_t last_time = std::numeric_limits<time::time_t>::min();
+	time::time_t last_time = time::TIME_MIN;
 	for (const auto &keyframe : this->container) {
 		if (keyframe.time < last_time) {
 			throw Error{MSG(err) << "curve is broken after t=" << last_time << ": " << this->str()};

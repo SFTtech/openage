@@ -281,7 +281,7 @@ public:
      *              the keyframes of \p other.
      */
 	iterator sync(const KeyframeContainer<T> &other,
-	              const time::time_t &start = std::numeric_limits<time::time_t>::min());
+	              const time::time_t &start = time::TIME_MIN);
 
 	/**
      * Copy keyframes from another container (with a different element type) to this container.
@@ -298,7 +298,7 @@ public:
 	template <typename O>
 	iterator sync(const KeyframeContainer<O> &other,
 	              const std::function<T(const O &)> &converter,
-	              const time::time_t &start = std::numeric_limits<time::time_t>::min());
+	              const time::time_t &start = time::TIME_MIN);
 
 	/**
 	 * Debugging method to be used from gdb to understand bugs better.
@@ -328,7 +328,7 @@ template <typename T>
 KeyframeContainer<T>::KeyframeContainer() {
 	// Create a default element at -Inf, that can always be dereferenced - so
 	// there will by definition never be a element that cannot be dereferenced
-	this->container.push_back(keyframe_t(std::numeric_limits<time::time_t>::min(), T()));
+	this->container.push_back(keyframe_t(time::TIME_MIN, T()));
 }
 
 
@@ -336,7 +336,7 @@ template <typename T>
 KeyframeContainer<T>::KeyframeContainer(const T &defaultval) {
 	// Create a default element at -Inf, that can always be dereferenced - so
 	// there will by definition never be a element that cannot be dereferenced
-	this->container.push_back(keyframe_t(std::numeric_limits<time::time_t>::min(), defaultval));
+	this->container.push_back(keyframe_t(time::TIME_MIN, defaultval));
 }
 
 

@@ -53,7 +53,7 @@ public:
 		EventEntity{loop},
 		_id{id},
 		_idstr{idstr},
-		last_pop{time::time_t::zero()} {}
+		last_pop{time::TIME_ZERO} {}
 
 	// prevent accidental copy of queue
 	Queue(const Queue &) = delete;
@@ -93,7 +93,7 @@ public:
 	 * @return Iterator to the first element.
 	 */
 	QueueFilterIterator<T, Queue<T>> begin(
-		const time::time_t &t = -std::numeric_limits<time::time_t>::max()) const;
+		const time::time_t &t = -time::TIME_MAX) const;
 
 	/**
 	 * Get an iterator to the last element in the queue at the given time.
@@ -102,7 +102,7 @@ public:
 	 * @return Iterator to the last element.
 	 */
 	QueueFilterIterator<T, Queue<T>> end(
-		const time::time_t &t = std::numeric_limits<time::time_t>::max()) const;
+		const time::time_t &t = time::TIME_MAX) const;
 
 	/**
 	 * Get an iterator to elements that are in the queue between two time frames.
@@ -112,8 +112,8 @@ public:
 	 * @return Iterator to the first element in the time frame.
 	 */
 	QueueFilterIterator<T, Queue<T>> between(
-		const time::time_t &begin = std::numeric_limits<time::time_t>::max(),
-		const time::time_t &end = std::numeric_limits<time::time_t>::max()) const;
+		const time::time_t &begin = time::TIME_MAX,
+		const time::time_t &end = time::TIME_MAX) const;
 
 	/**
 	 * Erase an element from the queue.
@@ -262,7 +262,7 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::begin(const time::time_t &t) const {
 				it,
 				this,
 				t,
-				std::numeric_limits<time::time_t>::max());
+				time::TIME_MAX);
 		}
 	}
 
@@ -276,7 +276,7 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::end(const time::time_t &t) const {
 		container.end(),
 		this,
 		t,
-		std::numeric_limits<time::time_t>::max());
+		time::TIME_MAX);
 }
 
 
@@ -321,7 +321,7 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
 		insertion_point,
 		this,
 		time,
-		std::numeric_limits<time::time_t>::max());
+		time::TIME_MAX);
 
 	if (!ct.valid()) {
 		++ct;
