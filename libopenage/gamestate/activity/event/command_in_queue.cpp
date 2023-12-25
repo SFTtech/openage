@@ -22,7 +22,7 @@ std::shared_ptr<openage::event::Event> primer_command_in_queue(const time::time_
 	                             entity->get_manager(),
 	                             state,
 	                             // event is not executed until a command is available
-	                             std::numeric_limits<time::time_t>::max(),
+	                             time::TIME_MAX,
 	                             params);
 	auto entity_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));

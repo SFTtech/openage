@@ -191,7 +191,7 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 				auto attribute = setting_obj.get_object("AttributeSetting.attribute");
 				auto start_value = setting_obj.get_int("AttributeSetting.starting_value");
 
-				live->add_attribute(std::numeric_limits<time::time_t>::min(),
+				live->add_attribute(time::TIME_MIN,
 				                    attribute.get_name(),
 				                    std::make_shared<curve::Discrete<int64_t>>(loop,
 				                                                               0,
