@@ -30,6 +30,176 @@ Game entities types for which the accuracy value can be used.
 **blacklisted_entities**
 Blacklists game entities that have one of the types listed in `target_types`, but should not be covered by this `Accuracy` object.
 
+## util.activity.Activity
+
+```python
+Activity(Object):
+    start : Start
+```
+
+Stores a node graph for the behaviour of a game entity. Activities are assigned to game entities with the `Activity` ability.
+
+**start**
+Starting node of the activity.
+
+## util.activity.condition.Condition
+
+```python
+Condition(Object):
+    node : Node
+```
+
+Generalization object for conditions that can be used in `XORGate` nodes.
+
+**node**
+Node that is visited when the condition is true.
+
+## util.activity.condition.type.CommandInQueue
+
+```python
+CommandInQueue(Condition):
+    pass
+```
+
+Is true when the command queue is not empty when the node is visited.
+
+## util.activity.condition.type.NextCommandIdle
+
+```python
+NextCommandIdle(Condition):
+    pass
+```
+
+Is true when the next command in the queue is of type `Idle`.
+
+## util.activity.condition.type.NextCommandMove
+
+```python
+NextCommandMove(Condition):
+    pass
+```
+
+Is true when the next command in the queue is of type `Move`.
+
+## util.activity.event.Event
+
+```python
+Event(Object):
+    pass
+```
+
+Generalization object for events that can be used in `XOREventGate` nodes.
+
+## util.activity.event.type.CommandInQueue
+
+```python
+CommandInQueue(Event):
+    pass
+```
+
+Fires after a new command has been added to the game entity's command queue.
+
+## util.activity.event.type.Wait
+
+```python
+Wait(Event):
+    time : float
+```
+
+Fires after a certain amount of time has passed.
+
+**time**
+Time in seconds to wait.
+
+If the value is zero or negative, the event fires immediately.
+
+## util.activity.event.type.WaitAbility
+
+```python
+WaitAbility(Event):
+    pass
+```
+
+Fires at the exact time when a previously visited ability node has finished executing.
+
+In other words, the event fires when the ability is done with the associated task. For example, in case of the `Move` ability, the event fires when the game entity has reached its destination.
+
+## util.activity.node.Node
+
+```python
+Node(Object):
+    pass
+```
+
+Generalization object for nodes in an activity graph.
+
+## util.activity.node.type.Ability
+
+```python
+Ability(Node):
+    next    : Node
+    ability : abstract(Ability)
+```
+
+Executes an ability of the game entity when the node is visited.
+
+**next**
+Next node in the activity graph.
+
+**ability**
+Ability that is executed.
+
+This can reference a specific ability of the game entity or an abstract API object from the `engine.ability.type` namespace. If a specific ability is referenced, the ability must be assigned to the game entity and must not be disabled. Otherwise, the ability is not executed. If an API object is referenced, the first active ability with the same type as the API object is executed.
+
+## util.activity.node.type.End
+
+```python
+End(Node):
+    pass
+```
+
+End of an activity. Does nothing.
+
+## util.activity.node.type.Start
+
+```python
+Start(Node):
+    next : Node
+```
+
+Start of an activity. Does nothing but pointing to the next node.
+
+**next**
+Next node in the activity graph.
+
+## util.activity.node.type.XOREventGate
+
+```python
+XOREventGate(Node):
+    next : dict(Event, Node)
+```
+
+Gateway that branches the activity graph when a certain event occurs. Events are registered immediately when the node is visited and cancelled when the node is left.
+
+**next**
+Mapping of events to the next node in the activity graph. The first event that occurs is used to determine the next node.
+
+## util.activity.node.type.XORGate
+
+```python
+XORGate(Node):
+    next    : orderedset(Condition)
+    default : Node
+```
+
+Gateway that branches the activity graph depending on the result of conditional queries. Queries are executed immediately when the node is visited.
+
+**next**
+Mapping of conditional queries to the next node in the activity graph. The first query that evaluates to true is used to determine the next node. If no query evaluates to true, the `default` node is used.
+
+**default**
+Default node that is used if no query evaluates to true.
+
 ## util.animation_override.AnimationOverride
 
 ```python
