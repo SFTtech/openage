@@ -45,11 +45,11 @@ void DragSelectHandler::invoke(openage::event::EventLoop & /* loop */,
 	float left = std::min(drag_start.x(), drag_end.x());
 	float right = std::max(drag_start.x(), drag_end.x());
 
-	log::log(DBG << "Drag select rectangle (NDC):");
-	log::log(DBG << "\tTop: " << top);
-	log::log(DBG << "\tBottom: " << bottom);
-	log::log(DBG << "\tLeft: " << left);
-	log::log(DBG << "\tRight: " << right);
+	log::log(SPAM << "Drag select rectangle (NDC):");
+	log::log(SPAM << "\tTop: " << top);
+	log::log(SPAM << "\tBottom: " << bottom);
+	log::log(SPAM << "\tLeft: " << left);
+	log::log(SPAM << "\tRight: " << right);
 
 	std::vector<entity_id_t> selected;
 	for (auto &entity : gstate->get_game_entities()) {
