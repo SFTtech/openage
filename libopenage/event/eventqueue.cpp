@@ -35,7 +35,7 @@ std::shared_ptr<Event> EventQueue::create_event(const std::shared_ptr<EventEntit
 		event->set_time(event->get_eventhandler()
 		                    ->predict_invoke_time(trgt, state, reference_time));
 
-		if (event->get_time() == std::numeric_limits<time::time_t>::min()) {
+		if (event->get_time() == time::TIME_MIN) {
 			log::log(DBG << "Queue: ignoring insertion of event "
 			             << event->get_eventhandler()->id() << " because no execution was scheduled.");
 

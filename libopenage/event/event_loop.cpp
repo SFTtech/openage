@@ -151,7 +151,7 @@ int EventLoop::execute_events(const time::time_t &time_until,
 				time::time_t new_time = event->get_eventhandler()->predict_invoke_time(
 					target, state, event->get_time());
 
-				if (new_time != std::numeric_limits<time::time_t>::min()) {
+				if (new_time != time::TIME_MIN) {
 					event->set_time(new_time);
 
 					log::log(DBG << "Loop: repeating event \"" << event->get_eventhandler()->id()
@@ -204,7 +204,7 @@ void EventLoop::update_changes(const std::shared_ptr<State> &state) {
 					time::time_t new_time = evnt->get_eventhandler()
 					                            ->predict_invoke_time(entity, state, change.time);
 
-					if (new_time != std::numeric_limits<time::time_t>::min()) {
+					if (new_time != time::TIME_MIN) {
 						log::log(DBG << "Loop: due to a change, rescheduling event of '"
 						             << evnt->get_eventhandler()->id()
 						             << "' on entity '" << entity->idstr()
