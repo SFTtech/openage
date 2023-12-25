@@ -26,7 +26,7 @@ std::shared_ptr<openage::event::Event> primer_command_in_queue(const time::time_
 	                             params);
 	auto entity_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
-	auto &queue = const_cast<curve::Queue<std::shared_ptr<component::command::Command>> &>(entity_queue->get_queue());
+	auto &queue = entity_queue->get_queue();
 	queue.add_dependent(ev);
 
 	return ev;

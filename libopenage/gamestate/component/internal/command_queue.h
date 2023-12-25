@@ -44,7 +44,7 @@ public:
 	 *
 	 * @return Command queue.
 	 */
-	const curve::Queue<std::shared_ptr<command::Command>> &get_queue() const;
+	curve::Queue<std::shared_ptr<command::Command>> &get_queue();
 
 	/**
 	 * Get the command in the front of the queue.
