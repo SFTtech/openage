@@ -50,11 +50,11 @@ void InputContext::bind(const event_class &cl, const input_action act) {
 }
 
 void InputContext::bind(const Event &ev, const std::vector<input_action> &&acts) {
-	this->by_event.emplace(std::make_pair(ev, acts));
+	this->by_event.emplace(std::make_pair(ev, std::move(acts)));
 }
 
 void InputContext::bind(const event_class &cl, const std::vector<input_action> &&acts) {
-	this->by_class.emplace(std::make_pair(cl, acts));
+	this->by_class.emplace(std::make_pair(cl, std::move(acts)));
 }
 
 bool InputContext::is_bound(const Event &ev) const {
