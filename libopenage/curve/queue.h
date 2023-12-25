@@ -198,15 +198,12 @@ const T &Queue<T>::front(const time::time_t &time) const {
 		                     << time << " but queue is empty."};
 	}
 
-	// search for the first element that is after the given time
-	auto it = this->container.begin();
-	++it;
-	while (it != this->container.end() and it->time() <= time) {
-		++it;
-	}
-
-	// get the last element before the given time
+	// search for the last element before the given time
+	auto it = this->container.end();
 	--it;
+	while (it->time() > time and it != this->container.begin()) {
+		--it;
+	}
 
 	return it->value;
 }
@@ -218,19 +215,20 @@ const T Queue<T>::pop_front(const time::time_t &time) {
 		                     << time << " but queue is empty."};
 	}
 
-	// search for the first element that is after the given time
-	auto it = this->container.begin();
-	++it;
-	while (it->time() <= time and it != this->container.end()) {
-		++it;
+	// search for the last element before the given time
+	auto it = this->container.end();
+	--it;
+	while (it->time() > time and it != this->container.begin()) {
+		--it;
 	}
 
-	auto to = it->time();
-	auto from = time;
-
 	// get the last element inserted before the given time
+	auto val = std::move(it->value);
+
+	// get the time span between current time and the next element
+	auto to = (++it)->time();
 	--it;
-	auto val = it->value;
+	auto from = time;
 
 	// erase the element
 	// TODO: We should be able to reinsert elements
