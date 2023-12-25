@@ -34,7 +34,7 @@ std::vector<PongEvent> get_ai_inputs(const std::shared_ptr<PongPlayer> &player,
 		time::time_t ty_hit = 0, tx_hit = 0;
 
 		if (speed[0] == 0) {
-			tx_hit = std::numeric_limits<time::time_t>::max();
+			tx_hit = time::TIME_MAX;
 		}
 		else if (speed[0] > 0) {
 			tx_hit = time::time_t::from_double((area_width - ball_pos[0]) / speed[0]);
@@ -44,7 +44,7 @@ std::vector<PongEvent> get_ai_inputs(const std::shared_ptr<PongPlayer> &player,
 		}
 
 		if (speed[1] == 0) {
-			ty_hit = std::numeric_limits<time::time_t>::max();
+			ty_hit = time::TIME_MAX;
 		}
 		else if (speed[1] > 0) {
 			ty_hit = time::time_t::from_double((area_height - ball_pos[1]) / speed[1]);
