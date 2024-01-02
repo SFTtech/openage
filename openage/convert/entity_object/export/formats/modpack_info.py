@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-instance-attributes,too-many-arguments
 
@@ -153,7 +153,7 @@ class ModpackInfo(DataDefinition):
     def set_info(
         self,
         packagename: str,
-        version: str,
+        modpack_version: str,
         versionstr: str = None,
         repo: str = None,
         alias: str = None,
@@ -168,9 +168,9 @@ class ModpackInfo(DataDefinition):
 
         :param packagename: Name of the modpack.
         :type packagename: str
-        :param version: Internal version number. Must have semver format.
-        :type version: str
-        :param versionstr: Human-readable version number.
+        :param modpack_version: Internal version number. Must have semver format.
+        :type modpack_version: str
+        :param versionstr: Human-readable version number. Can be anything.
         :type versionstr: str
         :param repo: Name of the repo where the package is hosted.
         :type repo: str
@@ -188,7 +188,7 @@ class ModpackInfo(DataDefinition):
         :type licenses: list
         """
         self.packagename = packagename
-        self.version = version
+        self.version = modpack_version
 
         if versionstr:
             self.extra_info["versionstr"] = versionstr

@@ -1,4 +1,4 @@
-# Copyright 2023-2023 the openage authors. See copying.md for legal info.
+# Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 """
 Export tool for dumping the nyan API of the engine from the converter.
@@ -76,7 +76,7 @@ def create_modpack() -> Modpack:
 
     mod_def = modpack.get_info()
 
-    mod_def.set_info("engine", "0.4.1", "0.4.1", repo="openage")
+    mod_def.set_info("engine", modpack_version="0.4.1", versionstr="0.4.1", repo="openage")
 
     mod_def.add_include("**")
 
