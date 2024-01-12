@@ -22,11 +22,11 @@ void CommandQueue::add_command(const time::time_t &time,
 	this->command_queue.insert(time, command);
 }
 
-const curve::Queue<std::shared_ptr<command::Command>> &CommandQueue::get_queue() const {
+curve::Queue<std::shared_ptr<command::Command>> &CommandQueue::get_queue() {
 	return this->command_queue;
 }
 
-std::shared_ptr<command::Command> CommandQueue::pop_command(const time::time_t &time) {
+const std::shared_ptr<command::Command> CommandQueue::pop_command(const time::time_t &time) {
 	return this->command_queue.pop_front(time);
 }
 

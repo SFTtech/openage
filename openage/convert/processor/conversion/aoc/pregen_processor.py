@@ -35,6 +35,7 @@ class AoCPregenSubprocessor:
         # Stores pregenerated raw API objects as a container
         pregen_converter_group = ConverterObjectGroup("pregen")
 
+        cls.generate_activities(full_data_set, pregen_converter_group)
         cls.generate_attributes(full_data_set, pregen_converter_group)
         cls.generate_diplomatic_stances(full_data_set, pregen_converter_group)
         cls.generate_team_property(full_data_set, pregen_converter_group)
@@ -61,6 +62,297 @@ class AoCPregenSubprocessor:
             if not pregen_object.is_ready():
                 raise RuntimeError(f"{repr(pregen_object)}: Pregenerated object is not ready "
                                    "for export. Member or object not initialized.")
+
+    @staticmethod
+    def generate_activities(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
+        """
+        Generate the activities for game entity behaviour.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        :param pregen_converter_group: GenieObjectGroup instance that stores
+                                       pregenerated API objects for referencing with
+                                       ForwardRef
+        :type pregen_converter_group: ...dataformat.aoc.genie_object_container.GenieObjectGroup
+        """
+        pregen_nyan_objects = full_data_set.pregen_nyan_objects
+        api_objects = full_data_set.nyan_api_objects
+
+        activity_parent = "engine.util.activity.Activity"
+        activity_location = "data/util/activity/"
+
+        # Node types
+        start_parent = "engine.util.activity.node.type.Start"
+        end_parent = "engine.util.activity.node.type.End"
+        ability_parent = "engine.util.activity.node.type.Ability"
+        xor_parent = "engine.util.activity.node.type.XORGate"
+        xor_event_parent = "engine.util.activity.node.type.XOREventGate"
+
+        # Condition types
+        condition_parent = "engine.util.activity.condition.Condition"
+        condition_queue_parent = "engine.util.activity.condition.type.CommandInQueue"
+        condition_next_move_parent = "engine.util.activity.condition.type.NextCommandMove"
+
+        # =======================================================================
+        # Default (Start -> Ability(Idle) -> End)
+        # =======================================================================
+        default_ref_in_modpack = "util.activity.types.Default"
+        default_raw_api_object = RawAPIObject(default_ref_in_modpack,
+                                              "Default", api_objects,
+                                              activity_location)
+        default_raw_api_object.set_filename("types")
+        default_raw_api_object.add_raw_parent(activity_parent)
+
+        start_forward_ref = ForwardRef(pregen_converter_group,
+                                       "util.activity.types.Default.Start")
+        default_raw_api_object.add_raw_member("start", start_forward_ref,
+                                              activity_parent)
+
+        pregen_converter_group.add_raw_api_object(default_raw_api_object)
+        pregen_nyan_objects.update({default_ref_in_modpack: default_raw_api_object})
+
+        unit_forward_ref = ForwardRef(pregen_converter_group, default_ref_in_modpack)
+
+        # Start
+        start_ref_in_modpack = "util.activity.types.Default.Start"
+        start_raw_api_object = RawAPIObject(start_ref_in_modpack,
+                                            "Start", api_objects)
+        start_raw_api_object.set_location(unit_forward_ref)
+        start_raw_api_object.add_raw_parent(start_parent)
+
+        idle_forward_ref = ForwardRef(pregen_converter_group,
+                                      "util.activity.types.Default.Idle")
+        start_raw_api_object.add_raw_member("next", idle_forward_ref,
+                                            start_parent)
+
+        pregen_converter_group.add_raw_api_object(start_raw_api_object)
+        pregen_nyan_objects.update({start_ref_in_modpack: start_raw_api_object})
+
+        # Idle
+        idle_ref_in_modpack = "util.activity.types.Default.Idle"
+        idle_raw_api_object = RawAPIObject(idle_ref_in_modpack,
+                                           "Idle", api_objects)
+        idle_raw_api_object.set_location(unit_forward_ref)
+        idle_raw_api_object.add_raw_parent(ability_parent)
+
+        end_forward_ref = ForwardRef(pregen_converter_group,
+                                     "util.activity.types.Default.End")
+        idle_raw_api_object.add_raw_member("next", end_forward_ref,
+                                           ability_parent)
+        idle_raw_api_object.add_raw_member("ability",
+                                           api_objects["engine.ability.type.Idle"],
+                                           ability_parent)
+
+        pregen_converter_group.add_raw_api_object(idle_raw_api_object)
+        pregen_nyan_objects.update({idle_ref_in_modpack: idle_raw_api_object})
+
+        # End
+        end_ref_in_modpack = "util.activity.types.Default.End"
+        end_raw_api_object = RawAPIObject(end_ref_in_modpack,
+                                          "End", api_objects)
+        end_raw_api_object.set_location(unit_forward_ref)
+        end_raw_api_object.add_raw_parent(end_parent)
+
+        pregen_converter_group.add_raw_api_object(end_raw_api_object)
+        pregen_nyan_objects.update({end_ref_in_modpack: end_raw_api_object})
+
+        # =======================================================================
+        # Units
+        # =======================================================================
+        unit_ref_in_modpack = "util.activity.types.Unit"
+        unit_raw_api_object = RawAPIObject(unit_ref_in_modpack,
+                                           "Unit", api_objects,
+                                           activity_location)
+        unit_raw_api_object.set_filename("types")
+        unit_raw_api_object.add_raw_parent(activity_parent)
+
+        start_forward_ref = ForwardRef(pregen_converter_group,
+                                       "util.activity.types.Unit.Start")
+        unit_raw_api_object.add_raw_member("start", start_forward_ref,
+                                           activity_parent)
+
+        pregen_converter_group.add_raw_api_object(unit_raw_api_object)
+        pregen_nyan_objects.update({unit_ref_in_modpack: unit_raw_api_object})
+
+        unit_forward_ref = ForwardRef(pregen_converter_group, unit_ref_in_modpack)
+
+        # Start
+        start_ref_in_modpack = "util.activity.types.Unit.Start"
+        start_raw_api_object = RawAPIObject(start_ref_in_modpack,
+                                            "Start", api_objects)
+        start_raw_api_object.set_location(unit_forward_ref)
+        start_raw_api_object.add_raw_parent(start_parent)
+
+        idle_forward_ref = ForwardRef(pregen_converter_group,
+                                      "util.activity.types.Unit.Idle")
+        start_raw_api_object.add_raw_member("next", idle_forward_ref,
+                                            start_parent)
+
+        pregen_converter_group.add_raw_api_object(start_raw_api_object)
+        pregen_nyan_objects.update({start_ref_in_modpack: start_raw_api_object})
+
+        # Idle
+        idle_ref_in_modpack = "util.activity.types.Unit.Idle"
+        idle_raw_api_object = RawAPIObject(idle_ref_in_modpack,
+                                           "Idle", api_objects)
+        idle_raw_api_object.set_location(unit_forward_ref)
+        idle_raw_api_object.add_raw_parent(ability_parent)
+
+        queue_forward_ref = ForwardRef(pregen_converter_group,
+                                       "util.activity.types.Unit.CheckQueue")
+        idle_raw_api_object.add_raw_member("next", queue_forward_ref,
+                                           ability_parent)
+        idle_raw_api_object.add_raw_member("ability",
+                                           api_objects["engine.ability.type.Idle"],
+                                           ability_parent)
+
+        pregen_converter_group.add_raw_api_object(idle_raw_api_object)
+        pregen_nyan_objects.update({idle_ref_in_modpack: idle_raw_api_object})
+
+        # Check if command is in queue
+        queue_ref_in_modpack = "util.activity.types.Unit.CheckQueue"
+        queue_raw_api_object = RawAPIObject(queue_ref_in_modpack,
+                                            "CheckQueue", api_objects)
+        queue_raw_api_object.set_location(unit_forward_ref)
+        queue_raw_api_object.add_raw_parent(xor_parent)
+
+        condition_forward_ref = ForwardRef(pregen_converter_group,
+                                           "util.activity.types.Unit.CommandInQueue")
+        queue_raw_api_object.add_raw_member("next",
+                                            [condition_forward_ref],
+                                            xor_parent)
+        command_forward_ref = ForwardRef(pregen_converter_group,
+                                         "util.activity.types.Unit.WaitForCommand")
+        queue_raw_api_object.add_raw_member("default",
+                                            command_forward_ref,
+                                            xor_parent)
+
+        pregen_converter_group.add_raw_api_object(queue_raw_api_object)
+        pregen_nyan_objects.update({queue_ref_in_modpack: queue_raw_api_object})
+
+        # condition for command in queue
+        condition_ref_in_modpack = "util.activity.types.Unit.CommandInQueue"
+        condition_raw_api_object = RawAPIObject(condition_ref_in_modpack,
+                                                "CommandInQueue", api_objects)
+        condition_raw_api_object.set_location(queue_forward_ref)
+        condition_raw_api_object.add_raw_parent(condition_queue_parent)
+
+        branch_forward_ref = ForwardRef(pregen_converter_group,
+                                        "util.activity.types.Unit.BranchCommand")
+        condition_raw_api_object.add_raw_member("next",
+                                                branch_forward_ref,
+                                                condition_parent)
+
+        pregen_converter_group.add_raw_api_object(condition_raw_api_object)
+        pregen_nyan_objects.update({condition_ref_in_modpack: condition_raw_api_object})
+
+        # Wait for Command
+        command_ref_in_modpack = "util.activity.types.Unit.WaitForCommand"
+        command_raw_api_object = RawAPIObject(command_ref_in_modpack,
+                                              "WaitForCommand", api_objects)
+        command_raw_api_object.set_location(unit_forward_ref)
+        command_raw_api_object.add_raw_parent(xor_event_parent)
+
+        event_api_object = api_objects["engine.util.activity.event.type.CommandInQueue"]
+        branch_forward_ref = ForwardRef(pregen_converter_group,
+                                        "util.activity.types.Unit.BranchCommand")
+        command_raw_api_object.add_raw_member("next",
+                                              {event_api_object: branch_forward_ref},
+                                              xor_event_parent)
+
+        pregen_converter_group.add_raw_api_object(command_raw_api_object)
+        pregen_nyan_objects.update({command_ref_in_modpack: command_raw_api_object})
+
+        # Branch on command type
+        branch_ref_in_modpack = "util.activity.types.Unit.BranchCommand"
+        branch_raw_api_object = RawAPIObject(branch_ref_in_modpack,
+                                             "BranchCommand", api_objects)
+        branch_raw_api_object.set_location(unit_forward_ref)
+        branch_raw_api_object.add_raw_parent(xor_parent)
+
+        condition_forward_ref = ForwardRef(pregen_converter_group,
+                                           "util.activity.types.Unit.NextCommandMove")
+        branch_raw_api_object.add_raw_member("next",
+                                             [condition_forward_ref],
+                                             xor_parent)
+        idle_forward_ref = ForwardRef(pregen_converter_group,
+                                      "util.activity.types.Unit.Idle")
+        branch_raw_api_object.add_raw_member("default",
+                                             idle_forward_ref,
+                                             xor_parent)
+
+        pregen_converter_group.add_raw_api_object(branch_raw_api_object)
+        pregen_nyan_objects.update({branch_ref_in_modpack: branch_raw_api_object})
+
+        # condition for branching to move
+        condition_ref_in_modpack = "util.activity.types.Unit.NextCommandMove"
+        condition_raw_api_object = RawAPIObject(condition_ref_in_modpack,
+                                                "NextCommandMove", api_objects)
+        condition_raw_api_object.set_location(branch_forward_ref)
+        condition_raw_api_object.add_raw_parent(condition_next_move_parent)
+
+        move_forward_ref = ForwardRef(pregen_converter_group,
+                                      "util.activity.types.Unit.Move")
+        condition_raw_api_object.add_raw_member("next",
+                                                move_forward_ref,
+                                                condition_parent)
+
+        pregen_converter_group.add_raw_api_object(condition_raw_api_object)
+        pregen_nyan_objects.update({condition_ref_in_modpack: condition_raw_api_object})
+
+        # Move
+        move_ref_in_modpack = "util.activity.types.Unit.Move"
+        move_raw_api_object = RawAPIObject(move_ref_in_modpack,
+                                           "Move", api_objects)
+        move_raw_api_object.set_location(unit_forward_ref)
+        move_raw_api_object.add_raw_parent(ability_parent)
+
+        wait_forward_ref = ForwardRef(pregen_converter_group,
+                                      "util.activity.types.Unit.Wait")
+        move_raw_api_object.add_raw_member("next", wait_forward_ref,
+                                           ability_parent)
+        move_raw_api_object.add_raw_member("ability",
+                                           api_objects["engine.ability.type.Move"],
+                                           ability_parent)
+
+        pregen_converter_group.add_raw_api_object(move_raw_api_object)
+        pregen_nyan_objects.update({move_ref_in_modpack: move_raw_api_object})
+
+        # Wait (for Move or Command)
+        wait_ref_in_modpack = "util.activity.types.Unit.Wait"
+        wait_raw_api_object = RawAPIObject(wait_ref_in_modpack,
+                                           "Wait", api_objects)
+        wait_raw_api_object.set_location(unit_forward_ref)
+        wait_raw_api_object.add_raw_parent(xor_event_parent)
+
+        wait_finish = api_objects["engine.util.activity.event.type.WaitAbility"]
+        wait_command = api_objects["engine.util.activity.event.type.CommandInQueue"]
+        wait_raw_api_object.add_raw_member("next",
+                                           {
+                                               wait_finish: idle_forward_ref,
+                                               # TODO: don't go back to move, go to xor gate that
+                                               # branches depending on command
+                                               wait_command: branch_forward_ref
+                                           },
+                                           xor_event_parent)
+
+        pregen_converter_group.add_raw_api_object(wait_raw_api_object)
+        pregen_nyan_objects.update({wait_ref_in_modpack: wait_raw_api_object})
+
+        # End
+        end_ref_in_modpack = "util.activity.types.Unit.End"
+        end_raw_api_object = RawAPIObject(end_ref_in_modpack,
+                                          "End", api_objects)
+        end_raw_api_object.set_location(unit_forward_ref)
+        end_raw_api_object.add_raw_parent(end_parent)
+
+        pregen_converter_group.add_raw_api_object(end_raw_api_object)
+        pregen_nyan_objects.update({end_ref_in_modpack: end_raw_api_object})
 
     @staticmethod
     def generate_attributes(

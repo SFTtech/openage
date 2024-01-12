@@ -17,7 +17,11 @@ class EventEntity;
 class State;
 } // namespace event
 
-namespace gamestate::event {
+namespace gamestate {
+class GameEntity;
+class GameState;
+
+namespace event {
 
 /**
  * Waits until the event is handled and calls back the entity manager.
@@ -40,5 +44,7 @@ public:
 	                                 const std::shared_ptr<openage::event::State> &state,
 	                                 const time::time_t &at) override;
 };
-} // namespace gamestate::event
+
+} // namespace event
+} // namespace gamestate
 } // namespace openage

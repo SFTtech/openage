@@ -75,7 +75,7 @@ public:
 		auto screen_size = state->area_size->get(now);
 
 		if (speed[1] == 0) {
-			return std::numeric_limits<time::time_t>::max();
+			return time::TIME_MAX;
 		}
 
 		time::time_t ty = 0;
@@ -199,7 +199,7 @@ public:
 		auto screen_size = state->area_size->get(now);
 
 		if (speed[0] == 0)
-			return std::numeric_limits<time::time_t>::max();
+			return time::TIME_MAX;
 
 		time::time_t ty = 0;
 

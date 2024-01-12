@@ -33,8 +33,8 @@ public:
 	explicit CurveIterator(const container_t *c) :
 		base{},
 		container{c},
-		from{-std::numeric_limits<time::time_t>::max()},
-		to{+std::numeric_limits<time::time_t>::max()} {}
+		from{-time::TIME_MAX},
+		to{+time::TIME_MAX} {}
 
 protected:
 	/**

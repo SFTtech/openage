@@ -3,9 +3,11 @@
 #pragma once
 
 #include <memory>
+#include <optional>
 
-#include "time/time.h"
+#include "event/eventhandler.h"
 #include "gamestate/system/types.h"
+#include "time/time.h"
 
 
 namespace openage {
@@ -25,13 +27,14 @@ public:
 	/**
      * Advance in the activity flow graph of the game entity.
      *
-     * @param entity Game entity.
      * @param start_time Start time of change.
+     * @param entity Game entity.
      */
-	static void advance(const std::shared_ptr<gamestate::GameEntity> &entity,
-	                    const time::time_t &start_time,
+	static void advance(const time::time_t &start_time,
+	                    const std::shared_ptr<gamestate::GameEntity> &entity,
 	                    const std::shared_ptr<openage::event::EventLoop> &loop,
-	                    const std::shared_ptr<openage::gamestate::GameState> &state);
+	                    const std::shared_ptr<openage::gamestate::GameState> &state,
+	                    const std::optional<openage::event::EventHandler::param_map> &ev_params = std::nullopt);
 
 private:
 	/**
@@ -44,8 +47,8 @@ private:
      * @return Runtime of the change in simulation time.
 	 */
 	static const time::time_t handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &entity,
-	                                            const time::time_t &start_time,
-	                                            system_id_t system_id);
+	                                           const time::time_t &start_time,
+	                                           system_id_t system_id);
 };
 
 } // namespace system

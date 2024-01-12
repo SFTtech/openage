@@ -40,7 +40,7 @@ class DemoModpackSubprocessor:
 
         mod_def = modpack.get_info()
 
-        mod_def.set_info("trial_base", "0.5", versionstr="Trial", repo="openage")
+        mod_def.set_info("trial_base", "0.5.1", versionstr="Trial", repo="openage")
 
         mod_def.add_include("data/**")
 

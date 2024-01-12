@@ -219,6 +219,7 @@ class AoCNyanSubprocessor:
         # =======================================================================
         abilities_set = []
 
+        abilities_set.append(AoCAbilitySubprocessor.activity_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.death_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.delete_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.despawn_ability(unit_line))

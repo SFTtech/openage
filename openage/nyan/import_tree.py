@@ -7,6 +7,8 @@ from __future__ import annotations
 from enum import Enum
 import typing
 
+from openage.log import warn
+
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.export.formats.nyan_file import NyanFile
     from openage.nyan.nyan_structs import NyanObject
@@ -161,7 +163,9 @@ class ImportTree:
                 current_node = current_node.get_child(node_str)
 
             except KeyError:  # as err:
-                # TODO: Do not silently fail
+                # TODO: Fail when the fqon is not found in the tree
+                warn(f"fqon '{'.'.join(fqon)}' "
+                     "could not be found in import tree")
                 return
                 # raise KeyError(f"fqon '{'.'.join(fqon)}' "
                 #               "could not be found in import tree") from err

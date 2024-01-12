@@ -17,8 +17,12 @@ class EventEntity;
 class State;
 } // namespace event
 
-namespace gamestate::event {
 
+namespace gamestate {
+class GameEntity;
+class GameState;
+
+namespace event {
 /**
  * Process a command from a game entity command queue.
  */
@@ -42,5 +46,6 @@ public:
 };
 
 
-} // namespace gamestate::event
+} // namespace event
+} // namespace gamestate
 } // namespace openage

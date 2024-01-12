@@ -40,7 +40,7 @@ class DE2ModpackSubprocessor:
 
         mod_def = modpack.get_info()
 
-        mod_def.set_info("de2_base", "0.5", versionstr="1.0c", repo="openage")
+        mod_def.set_info("de2_base", "0.5.1", versionstr="1.0c", repo="openage")
 
         mod_def.add_include("data/**")
 

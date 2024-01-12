@@ -8,13 +8,9 @@
 
 namespace openage::gamestate::activity {
 
-EndNode::EndNode(node_id id,
-                 node_label label) :
+EndNode::EndNode(node_id_t id,
+                 node_label_t label) :
 	Node{id, label, {}} {
-}
-
-void EndNode::add_output(const std::shared_ptr<Node> & /* output */) {
-	throw Error{ERR << "End node cannot have outputs"};
 }
 
 } // namespace openage::gamestate::activity

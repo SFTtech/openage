@@ -33,7 +33,7 @@ public:
 		time{time},
 		value{value} {}
 
-	const time::time_t time = std::numeric_limits<time::time_t>::min();
+	const time::time_t time = time::TIME_MIN;
 	T value = T{};
 };
 

@@ -8,8 +8,8 @@
 
 namespace openage::gamestate::activity {
 
-StartNode::StartNode(node_id id,
-                     node_label label,
+StartNode::StartNode(node_id_t id,
+                     node_label_t label,
                      const std::shared_ptr<Node> &output) :
 	Node{id, label} {
 	if (output) {
@@ -22,7 +22,7 @@ void StartNode::add_output(const std::shared_ptr<Node> &output) {
 	this->outputs.emplace(output->get_id(), output);
 }
 
-node_id StartNode::get_next() const {
+node_id_t StartNode::get_next() const {
 	return (*this->outputs.begin()).first;
 }
 

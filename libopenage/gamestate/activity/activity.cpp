@@ -6,8 +6,8 @@
 namespace openage::gamestate::activity {
 
 Activity::Activity(activity_id id,
-                   activity_label label,
-                   const std::shared_ptr<Node> &start) :
+                   const std::shared_ptr<Node> &start,
+                   activity_label label) :
 	id{id},
 	label{label},
 	start{start} {

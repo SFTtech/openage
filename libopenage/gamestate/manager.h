@@ -4,9 +4,11 @@
 
 #include <cstddef>
 #include <memory>
+#include <optional>
 #include <string>
 
 #include "event/evententity.h"
+#include "event/eventhandler.h"
 #include "time/time.h"
 
 
@@ -26,7 +28,8 @@ public:
 	                  const std::shared_ptr<GameEntity> &game_entity);
 	~GameEntityManager() = default;
 
-	void run_activity_system(const time::time_t &time);
+	void run_activity_system(const time::time_t &time,
+	                         const std::optional<openage::event::EventHandler::param_map> &ev_params = std::nullopt);
 
 	size_t id() const override;
 	std::string idstr() const override;

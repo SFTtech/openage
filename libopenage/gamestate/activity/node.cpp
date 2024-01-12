@@ -10,8 +10,8 @@
 
 namespace openage::gamestate::activity {
 
-Node::Node(node_id id,
-           node_label label,
+Node::Node(node_id_t id,
+           node_label_t label,
            const std::vector<std::shared_ptr<Node>> &outputs) :
 	outputs{},
 	id{id},
@@ -22,11 +22,11 @@ Node::Node(node_id id,
 	}
 }
 
-node_id Node::get_id() const {
+node_id_t Node::get_id() const {
 	return this->id;
 }
 
-const node_label Node::get_label() const {
+const node_label_t Node::get_label() const {
 	return this->label;
 }
 
@@ -42,7 +42,7 @@ std::string Node::str() const {
 	return ret.str();
 }
 
-const std::shared_ptr<Node> &Node::next(node_id id) const {
+const std::shared_ptr<Node> &Node::next(node_id_t id) const {
 	if (not this->outputs.contains(id)) [[unlikely]] {
 		throw Error{MSG(err) << "Node " << this->str() << " has no output with id " << id};
 	}

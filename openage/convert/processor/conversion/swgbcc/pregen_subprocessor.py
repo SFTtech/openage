@@ -37,6 +37,7 @@ class SWGBCCPregenSubprocessor:
         # Stores pregenerated raw API objects as a container
         pregen_converter_group = ConverterObjectGroup("pregen")
 
+        AoCPregenSubprocessor.generate_activities(full_data_set, pregen_converter_group)
         AoCPregenSubprocessor.generate_attributes(full_data_set, pregen_converter_group)
         AoCPregenSubprocessor.generate_diplomatic_stances(full_data_set, pregen_converter_group)
         AoCPregenSubprocessor.generate_team_property(full_data_set, pregen_converter_group)

@@ -8,8 +8,8 @@
 
 namespace openage::gamestate::activity {
 
-TaskSystemNode::TaskSystemNode(node_id id,
-                               node_label label,
+TaskSystemNode::TaskSystemNode(node_id_t id,
+                               node_label_t label,
                                const std::shared_ptr<Node> &output,
                                system::system_id_t system_id) :
 	Node{id, label},
@@ -32,7 +32,7 @@ system::system_id_t TaskSystemNode::get_system_id() const {
 	return this->system_id;
 }
 
-node_id TaskSystemNode::get_next() const {
+node_id_t TaskSystemNode::get_next() const {
 	return (*this->outputs.begin()).first;
 }
 

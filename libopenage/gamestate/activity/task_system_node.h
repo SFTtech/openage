@@ -25,8 +25,8 @@ public:
 	 * @param output Next node to visit (optional).
      * @param system_id System to run when visiting this node (can be set later).
 	 */
-	TaskSystemNode(node_id id,
-	               node_label label = "TaskSystem",
+	TaskSystemNode(node_id_t id,
+	               node_label_t label = "TaskSystem",
 	               const std::shared_ptr<Node> &output = nullptr,
 	               system::system_id_t system_id = system::system_id_t::NONE);
 	virtual ~TaskSystemNode() = default;
@@ -40,7 +40,7 @@ public:
 	  *
 	  * @param output Output node.
 	  */
-	void add_output(const std::shared_ptr<Node> &output) override;
+	void add_output(const std::shared_ptr<Node> &output);
 
 	/**
 	  * Set the system id.
@@ -62,7 +62,7 @@ public:
 	 * @param time Current time.
 	 * @return Next node to visit.
 	 */
-	node_id get_next() const;
+	node_id_t get_next() const;
 
 private:
 	/**

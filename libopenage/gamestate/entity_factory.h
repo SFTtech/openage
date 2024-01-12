@@ -21,6 +21,11 @@ class RenderFactory;
 }
 
 namespace gamestate {
+
+namespace activity {
+class Activity;
+} // namespace activity
+
 class GameEntity;
 class GameState;
 class Player;
@@ -92,6 +97,11 @@ private:
 	                     const std::shared_ptr<GameEntity> &entity,
 	                     const nyan::fqon_t &nyan_entity);
 
+	void init_activity(const std::shared_ptr<openage::event::EventLoop> &loop,
+	                   const std::shared_ptr<nyan::View> &owner_db_view,
+	                   const std::shared_ptr<GameEntity> &entity,
+	                   const nyan::Object &ability);
+
 	/**
      * Get a unique ID for creating a game entity.
      *
@@ -122,6 +132,11 @@ private:
 	std::shared_ptr<renderer::RenderFactory> render_factory;
 
 	// TODO: Cache created game entities.
+
+	/**
+     * Cache for activities.
+     */
+	std::unordered_map<nyan::fqon_t, std::shared_ptr<activity::Activity>> activity_cache;
 
 	/**
      * Mutex for thread safety.

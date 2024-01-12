@@ -14,11 +14,15 @@
 #include "curve/queue.h"
 #include "event/event_loop.h"
 #include "gamestate/activity/activity.h"
+#include "gamestate/activity/condition/command_in_queue.h"
 #include "gamestate/activity/end_node.h"
-#include "gamestate/activity/event_node.h"
+#include "gamestate/activity/event/command_in_queue.h"
+#include "gamestate/activity/event/wait.h"
 #include "gamestate/activity/start_node.h"
 #include "gamestate/activity/task_system_node.h"
-#include "gamestate/activity/xor_node.h"
+#include "gamestate/activity/xor_event_gate.h"
+#include "gamestate/activity/xor_gate.h"
+#include "gamestate/api/activity.h"
 #include "gamestate/component/api/idle.h"
 #include "gamestate/component/api/live.h"
 #include "gamestate/component/api/move.h"
@@ -38,7 +42,6 @@
 #include "time/time.h"
 #include "util/fixed_point.h"
 
-
 namespace openage::gamestate {
 
 /**
@@ -47,19 +50,9 @@ namespace openage::gamestate {
  * The activity is as follows:
  *                      |------------------------------------------------------|
  *                      |                                                      v
- * Start -> Idle -> Condition -> Wait for command -> Move -> Wait for move -> End
- *            ^                                                      |
- *            |------------------------------------------------------|
- *
- * TODO: Should be:
- * 			               |----------------------------------------------------------------------|
- * 			    	       |                                                                      v
- * Start -> Idle -> -> Condition -> Wait for command <-> Condition -> Move -> Wait or command -> End
- * 		      ^                                             |^                     |
- * 		      |---------------------------------------------||---------------------|
- * (new condition in the middle: check if there is a command, if not go back to wait for command)
- * (new node: go back to node 1 if there is no command)
- * (node 5: wait for a command OR for a the wait time)
+ * Start -> Idle -> Condition -> Condition -> Wait for command -> Move -> Wait for move -> End
+ *            ^                                                                |
+ *            |----------------------------------------------------------------|
  *
  * TODO: Replace with config
  */
@@ -67,89 +60,48 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 	auto start = std::make_shared<activity::StartNode>(0);
 	auto idle = std::make_shared<activity::TaskSystemNode>(1, "Idle");
 	auto condition_moveable = std::make_shared<activity::XorGate>(2);
-	auto wait_for_command = std::make_shared<activity::XorEventGate>(3);
-	auto condition_command = std::make_shared<activity::XorGate>(4);
+	auto condition_command = std::make_shared<activity::XorGate>(3);
+	auto wait_for_command = std::make_shared<activity::XorEventGate>(4);
 	auto move = std::make_shared<activity::TaskSystemNode>(5, "Move");
 	auto wait_for_move = std::make_shared<activity::XorEventGate>(6);
 	auto end = std::make_shared<activity::EndNode>(7);
 
 	start->add_output(idle);
 
+	// idle after start
 	idle->add_output(condition_moveable);
 	idle->set_system_id(system::system_id_t::IDLE);
 
-	condition_moveable->add_output(wait_for_command);
-	condition_moveable->add_output(end);
-	condition_moveable->set_condition_func([&](const time::time_t & /* time */,
-	                                           const std::shared_ptr<GameEntity> &entity) {
-		if (entity->has_component(component::component_t::MOVE)) {
-			return 3; // wait_for_command->get_id();
-		}
+	// branch 1: check if the entity is moveable
+	activity::condition_t command_branch = [&](const time::time_t & /* time */,
+	                                           const std::shared_ptr<gamestate::GameEntity> &entity) {
+		return entity->has_component(component::component_t::MOVE);
+	};
+	condition_moveable->add_output(condition_command, command_branch);
 
-		return 7; // end->get_id();
-	});
+	// default: if it's not moveable, go straight to the end
+	condition_moveable->set_default(end);
 
-	wait_for_command->add_output(move);
-	wait_for_command->set_primer_func([](const time::time_t & /* time */,
-	                                     const std::shared_ptr<GameEntity> &entity,
-	                                     const std::shared_ptr<event::EventLoop> &loop,
-	                                     const std::shared_ptr<gamestate::GameState> &state) {
-		auto ev = loop->create_event("game.process_command",
-		                             entity->get_manager(),
-		                             state,
-		                             // event is not executed until a command is available
-		                             std::numeric_limits<time::time_t>::max());
-		auto entity_queue = std::dynamic_pointer_cast<component::CommandQueue>(
-			entity->get_component(component::component_t::COMMANDQUEUE));
-		auto &queue = const_cast<curve::Queue<std::shared_ptr<component::command::Command>> &>(entity_queue->get_queue());
-		queue.add_dependent(ev);
+	// branch 1: check if there is already a command in the queue
+	condition_command->add_output(move, gamestate::activity::command_in_queue);
 
-		return activity::event_store_t{ev};
-	});
-	wait_for_command->set_next_func([](const time::time_t &time,
-	                                   const std::shared_ptr<GameEntity> &entity,
-	                                   const std::shared_ptr<event::EventLoop> &,
-	                                   const std::shared_ptr<gamestate::GameState> &) {
-		auto entity_queue = std::dynamic_pointer_cast<component::CommandQueue>(
-			entity->get_component(component::component_t::COMMANDQUEUE));
-		auto &queue = entity_queue->get_queue();
+	// default: if there is no command, wait for a command
+	condition_command->set_default(wait_for_command);
 
-		if (queue.empty(time)) {
-			throw Error{ERR << "Command queue is empty"};
-		}
-		auto &com = queue.front(time);
-		if (com->get_type() == component::command::command_t::MOVE) {
-			return 5; // move->get_id();
-		}
+	// wait for a command event
+	wait_for_command->add_output(move, gamestate::activity::primer_command_in_queue);
 
-		throw Error{ERR << "Unknown command type"};
-	});
-
+	// move
 	move->add_output(wait_for_move);
 	move->set_system_id(system::system_id_t::MOVE_COMMAND);
 
-	wait_for_move->add_output(idle);
-	wait_for_move->add_output(condition_command);
-	wait_for_move->add_output(end);
-	wait_for_move->set_primer_func([](const time::time_t &time,
-	                                  const std::shared_ptr<GameEntity> &entity,
-	                                  const std::shared_ptr<event::EventLoop> &loop,
-	                                  const std::shared_ptr<gamestate::GameState> &state) {
-		auto ev = loop->create_event("game.wait",
-		                             entity->get_manager(),
-		                             state,
-		                             time);
+	// branch 1: wait for move event to finish
+	wait_for_move->add_output(idle, gamestate::activity::primer_wait);
 
-		return activity::event_store_t{ev};
-	});
-	wait_for_move->set_next_func([&](const time::time_t &,
-	                                 const std::shared_ptr<GameEntity> &,
-	                                 const std::shared_ptr<event::EventLoop> &,
-	                                 const std::shared_ptr<gamestate::GameState> &) {
-		return 1; // idle->get_id();
-	});
+	// branch 2: wait for a new command event
+	wait_for_move->add_output(move, gamestate::activity::primer_command_in_queue);
 
-	return std::make_shared<activity::Activity>(0, "test", start);
+	return std::make_shared<activity::Activity>(0, start, "test");
 }
 
 EntityFactory::EntityFactory() :
@@ -210,6 +162,7 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 	auto nyan_obj = owner_db_view->get_object(nyan_entity);
 	nyan::set_t abilities = nyan_obj.get_set("GameEntity.abilities");
 
+	std::optional<nyan::Object> activity_ability;
 	for (const auto &ability_val : abilities) {
 		auto ability_fqon = std::dynamic_pointer_cast<nyan::ObjectValue>(ability_val.get_ptr())->get_name();
 		auto ability_obj = owner_db_view->get_object(ability_fqon);
@@ -238,7 +191,7 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 				auto attribute = setting_obj.get_object("AttributeSetting.attribute");
 				auto start_value = setting_obj.get_int("AttributeSetting.starting_value");
 
-				live->add_attribute(std::numeric_limits<time::time_t>::min(),
+				live->add_attribute(time::TIME_MIN,
 				                    attribute.get_name(),
 				                    std::make_shared<curve::Discrete<int64_t>>(loop,
 				                                                               0,
@@ -247,11 +200,157 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 				                                                               start_value));
 			}
 		}
+		else if (ability_parent == "engine.ability.type.Activity") {
+			activity_ability = ability_obj;
+		}
 	}
 
-	// must be initialized after all other components
-	auto activity = std::make_shared<component::Activity>(loop, create_test_activity());
-	entity->add_component(activity);
+	if (activity_ability) {
+		init_activity(loop, owner_db_view, entity, activity_ability.value());
+	}
+	else {
+		auto activity = std::make_shared<component::Activity>(loop, create_test_activity());
+		entity->add_component(activity);
+	}
+}
+
+void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoop> &loop,
+                                  const std::shared_ptr<nyan::View> &owner_db_view,
+                                  const std::shared_ptr<GameEntity> &entity,
+                                  const nyan::Object &ability) {
+	nyan::Object graph = ability.get_object("Activity.graph");
+
+	// Check if the activity is already exists in the cache
+	if (this->activity_cache.contains(graph.get_name())) {
+		auto activity = this->activity_cache.at(graph.get_name());
+		auto component = std::make_shared<component::Activity>(loop, activity);
+		entity->add_component(component);
+
+		return;
+	}
+
+	auto start_obj = api::APIActivity::get_start(graph);
+
+	size_t node_id = 0;
+
+	std::deque<nyan::Object> nyan_nodes;
+	std::unordered_map<size_t, std::shared_ptr<activity::Node>> node_id_map{};
+	std::unordered_map<nyan::fqon_t, size_t> visited{};
+	std::shared_ptr<activity::Node> start_node;
+
+	// First pass: create all nodes using breadth-first search
+	nyan_nodes.push_back(start_obj);
+	while (!nyan_nodes.empty()) {
+		auto node = nyan_nodes.front();
+		nyan_nodes.pop_front();
+
+		if (visited.contains(node.get_name())) {
+			continue;
+		}
+
+		// Create the node
+		switch (api::APIActivityNode::get_type(node)) {
+		case activity::node_t::END:
+			break;
+		case activity::node_t::START:
+			start_node = std::make_shared<activity::StartNode>(node_id);
+			node_id_map[node_id] = start_node;
+			break;
+		case activity::node_t::TASK_SYSTEM: {
+			auto task_node = std::make_shared<activity::TaskSystemNode>(node_id);
+			task_node->set_system_id(api::APIActivityNode::get_system_id(node));
+			node_id_map[node_id] = task_node;
+			break;
+		}
+		case activity::node_t::XOR_GATE:
+			node_id_map[node_id] = std::make_shared<activity::XorGate>(node_id);
+			break;
+		case activity::node_t::XOR_EVENT_GATE:
+			node_id_map[node_id] = std::make_shared<activity::XorEventGate>(node_id);
+			break;
+		default:
+			throw Error{ERR << "Unknown activity node type of node: " << node.get_name()};
+		}
+
+		// Get the node's outputs
+		auto next_nodes = api::APIActivityNode::get_next(node);
+		nyan_nodes.insert(nyan_nodes.end(), next_nodes.begin(), next_nodes.end());
+
+		visited.insert({node.get_name(), node_id});
+		node_id++;
+	}
+
+	// Second pass: connect the nodes
+	for (const auto &current_node : visited) {
+		auto nyan_node = owner_db_view->get_object(current_node.first);
+		auto activity_node = node_id_map[current_node.second];
+
+		switch (activity_node->get_type()) {
+		case activity::node_t::END:
+			break;
+		case activity::node_t::START: {
+			auto start = std::static_pointer_cast<activity::StartNode>(activity_node);
+			auto output_fqon = nyan_node.get<nyan::ObjectValue>("Start.next")->get_name();
+			auto output_id = visited[output_fqon];
+			auto output_node = node_id_map[output_id];
+			start->add_output(output_node);
+			break;
+		}
+		case activity::node_t::TASK_SYSTEM: {
+			auto task_system = std::static_pointer_cast<activity::TaskSystemNode>(activity_node);
+			auto output_fqon = nyan_node.get<nyan::ObjectValue>("Ability.next")->get_name();
+			auto output_id = visited[output_fqon];
+			auto output_node = node_id_map[output_id];
+			task_system->add_output(output_node);
+			break;
+		}
+		case activity::node_t::XOR_GATE: {
+			auto xor_gate = std::static_pointer_cast<activity::XorGate>(activity_node);
+			auto conditions = nyan_node.get<nyan::OrderedSet>("XORGate.next");
+			for (auto &condition : conditions->get()) {
+				auto condition_value = std::dynamic_pointer_cast<nyan::ObjectValue>(condition.get_ptr());
+				auto condition_obj = owner_db_view->get_object(condition_value->get_name());
+
+				auto output_value = condition_obj.get<nyan::ObjectValue>("Condition.next")->get_name();
+				auto output_id = visited[output_value];
+				auto output_node = node_id_map[output_id];
+
+				xor_gate->add_output(output_node, api::APIActivityCondition::get_condition(condition_obj));
+			}
+
+			auto default_fqon = nyan_node.get<nyan::ObjectValue>("XORGate.default")->get_name();
+			auto default_id = visited[default_fqon];
+			auto default_node = node_id_map[default_id];
+			xor_gate->set_default(default_node);
+			break;
+		}
+		case activity::node_t::XOR_EVENT_GATE: {
+			auto xor_event_gate = std::static_pointer_cast<activity::XorEventGate>(activity_node);
+			auto next = nyan_node.get<nyan::Dict>("XOREventGate.next");
+			for (auto &next_node : next->get()) {
+				auto event_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.first.get_ptr());
+				auto event_obj = owner_db_view->get_object(event_value->get_name());
+
+				auto next_node_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.second.get_ptr());
+				auto next_node_obj = owner_db_view->get_object(next_node_value->get_name());
+
+				auto output_id = visited[next_node_obj.get_name()];
+				auto output_node = node_id_map[output_id];
+
+				xor_event_gate->add_output(output_node, api::APIActivityEvent::get_primer(event_obj));
+			}
+			break;
+		}
+		default:
+			throw Error{ERR << "Unknown activity node type of node: " << current_node.first};
+		}
+	}
+
+	auto activity = std::make_shared<activity::Activity>(0, start_node, graph.get_name());
+	this->activity_cache.insert({graph.get_name(), activity});
+
+	auto component = std::make_shared<component::Activity>(loop, activity);
+	entity->add_component(component);
 }
 
 entity_id_t EntityFactory::get_next_entity_id() {

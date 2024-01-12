@@ -44,7 +44,7 @@ class AoCModpackSubprocessor:
 
         mod_def = modpack.get_info()
 
-        mod_def.set_info("aoe2_base", "0.5", versionstr="1.0c", repo="openage")
+        mod_def.set_info("aoe2_base", "0.5.1", versionstr="1.0c", repo="openage")
 
         mod_def.add_include("data/**")
 
@@ -151,6 +151,11 @@ class AoCModpackSubprocessor:
         import_tree.add_alias(("engine", "ability", "property", "type"), "ability_prop")
 
         # Auxiliary objects
+        import_tree.add_alias(
+            ("engine", "util", "activity", "condition", "type"), "activity_condition"
+        )
+        import_tree.add_alias(("engine", "util", "activity", "event", "type"), "activity_event")
+        import_tree.add_alias(("engine", "util", "activity", "node", "type"), "activity_node")
         import_tree.add_alias(("engine", "util", "accuracy"), "accuracy")
         import_tree.add_alias(
             ("engine", "util", "animation_override"), "animation_override"

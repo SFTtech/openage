@@ -20,9 +20,10 @@ GameEntityManager::GameEntityManager(const std::shared_ptr<openage::event::Event
 	state{state},
 	game_entity{game_entity} {}
 
-void GameEntityManager::run_activity_system(const time::time_t &time) {
+void GameEntityManager::run_activity_system(const time::time_t &time,
+                                            const std::optional<openage::event::EventHandler::param_map> &ev_params) {
 	log::log(DBG << "Running activity system for entity " << this->game_entity->get_id());
-	system::Activity::advance(this->game_entity, time, this->loop, this->state);
+	system::Activity::advance(time, this->game_entity, this->loop, this->state, ev_params);
 }
 
 size_t GameEntityManager::id() const {

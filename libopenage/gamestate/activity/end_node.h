@@ -26,22 +26,13 @@ public:
      * @param id Unique identifier for this node.
      * @param label Human-readable label (optional).
      */
-	EndNode(node_id id,
-	        node_label label = "End");
+	EndNode(node_id_t id,
+	        node_label_t label = "End");
 	virtual ~EndNode() = default;
 
 	inline node_t get_type() const override {
 		return node_t::END;
 	}
-
-	/**
-      * Throws an error since end nodes are not supposed to have outputs
-      *
-      * @param output Output node.
-      *
-      * @throws openage::Error
-      */
-	[[noreturn]] void add_output(const std::shared_ptr<Node> &output) override;
 };
 
 } // namespace openage::gamestate::activity

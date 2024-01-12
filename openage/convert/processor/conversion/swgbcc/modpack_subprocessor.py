@@ -40,7 +40,7 @@ class SWGBCCModpackSubprocessor:
 
         mod_def = modpack.get_info()
 
-        mod_def.set_info("swgb_base", "0.5", versionstr="1.1-gog4", repo="openage")
+        mod_def.set_info("swgb_base", "0.5.1", versionstr="1.1-gog4", repo="openage")
 
         mod_def.add_include("data/**")
 

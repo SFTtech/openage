@@ -12,6 +12,8 @@
 namespace openage::event {
 class EventEntity;
 
+using event_hash_t = size_t;
+
 /**
  * The actual one event that may be called - it is used to manage the event itself.
  * It does not need to be stored.
@@ -36,7 +38,7 @@ public:
 	 */
 	void reschedule(const time::time_t reference_time);
 
-	size_t hash() const {
+	event_hash_t hash() const {
 		return this->myhash;
 	}
 
@@ -111,7 +113,7 @@ private:
 	time::time_t last_change_time = time::time_t::min_value();
 
 	/** Precalculated std::hash for the event */
-	size_t myhash;
+	event_hash_t myhash;
 };
 
 
