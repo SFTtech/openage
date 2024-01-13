@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -98,7 +98,7 @@ public:
 	}
 
 	/**
-	 * Access the underlying
+	 * Access the underlying iterator.
 	 */
 	const iterator_t &get_base() const {
 		return base;

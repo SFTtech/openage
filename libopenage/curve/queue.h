@@ -42,11 +42,11 @@ class Queue : public event::EventEntity {
 			_dead{time::TIME_MAX},
 			value{value} {}
 
-		time::time_t alive() const {
+		const time::time_t &alive() const {
 			return _alive;
 		}
 
-		time::time_t dead() const {
+		const time::time_t &dead() const {
 			return _dead;
 		}
 
@@ -58,7 +58,7 @@ class Queue : public event::EventEntity {
 public:
 	using container_t = typename std::deque<queue_wrapper>;
 	using const_iterator = typename container_t::const_iterator;
-	using iterator = typename container_t::const_iterator;
+	using iterator = typename container_t::iterator;
 
 	Queue(const std::shared_ptr<event::EventLoop> &loop,
 	      size_t id,
@@ -74,24 +74,23 @@ public:
 	// Reading Access
 
 	/**
-	 * Get the first element in the queue at the given time.
+	 * Get the first element inserted at t <= time.
+     *
+     * Ignores dead elements.
 	 *
 	 * @param time The time to get the element at.
+     *
 	 * @return Queue element.
 	 */
 	const T &front(const time::time_t &time) const;
 
 	/**
-	 * Get the first element in the queue at the given time and remove it from
-	 * the queue.
-	 *
-	 * @param time The time to get the element at.
-	 * @param value Queue element.
-	 */
-	const T pop_front(const time::time_t &time);
-
-	/**
-	 * Check if the queue is empty at a given time.
+	 * Check if the queue is empty at the given time (no elements alive
+     * before t <= time).
+     *
+     * Ignores dead elements.
+     *
+     * @param time The time to check at.
 	 *
 	 * @return true if the queue is empty, false otherwise.
 	 */
@@ -100,22 +99,36 @@ public:
 	// Modifying access
 
 	/**
-	 * Get an iterator to the first/front element in the queue at the given time.
+	 * Get the first element inserted at t <= time and erase it from the
+     * queue.
+     *
+     * Ignores dead elements.
 	 *
-	 * @param t The time to get the element at.
+	 * @param time The time to get the element at.
+	 * @param value Queue element.
+	 */
+	const T &pop_front(const time::time_t &time);
+
+	/**
+	 * Get an iterator to the first element inserted at t >= time.
+     *
+     * Does not ignore dead elements.
+	 *
+	 * @param time The time to get the element at (default: \p time::TIME_MIN ).
+     *
 	 * @return Iterator to the first element.
 	 */
-	QueueFilterIterator<T, Queue<T>> begin(
-		const time::time_t &t = -time::TIME_MAX) const;
+	QueueFilterIterator<T, Queue<T>> begin(const time::time_t &time = time::TIME_MIN) const;
 
 	/**
 	 * Get an iterator to the last element in the queue at the given time.
+     *
+     * Does not ignore dead elements.
 	 *
 	 * @param t The time to get the element at.
 	 * @return Iterator to the last element.
 	 */
-	QueueFilterIterator<T, Queue<T>> end(
-		const time::time_t &t = time::TIME_MAX) const;
+	QueueFilterIterator<T, Queue<T>> end(const time::time_t &time = time::TIME_MAX) const;
 
 	/**
 	 * Get an iterator to elements that are in the queue between two time frames.
@@ -136,28 +149,21 @@ public:
 	void erase(const CurveIterator<T, Queue<T>> &it);
 
 	/**
-	 * Erase an element from the queue at a specific time.
-	 *
-     * @param time The time to erase at.
-	 * @param it The iterator to the element to erase.
-	 */
-	void erase(const time::time_t &time, const CurveIterator<T, Queue<T>> &it);
-
-	/**
 	 * Insert a new element into the queue.
 	 *
 	 * @param time The time to insert at.
 	 * @param e The element to insert.
+     *
 	 * @return Iterator to the inserted element.
 	 */
 	QueueFilterIterator<T, Queue<T>> insert(const time::time_t &time, const T &e);
 
 	/**
-	 * Erase all elements that are at or after the given time.
+	 * Erase all elements at t <= time.
 	 *
 	 * @param time The time to clear at.
 	 */
-	void clear(const time::time_t &);
+	void clear(const time::time_t &time);
 
 	/**
 	 * Print the queue to stdout.
@@ -191,6 +197,14 @@ public:
 
 private:
 	/**
+	 * Erase an element from the queue at the given time.
+	 *
+     * @param time The time to erase at.
+	 * @param it The iterator to the element to erase.
+	 */
+	void erase(const time::time_t &time, iterator &it);
+
+	/**
 	 * Identifier for the container
 	 */
 	const size_t _id;
@@ -220,31 +234,33 @@ const T &Queue<T>::front(const time::time_t &time) const {
 	}
 
 	// search for the last element before the given time
-	auto it = this->container.end();
-	--it;
-	while (it->alive() > time and it != this->container.begin()) {
-		--it;
+	auto it = this->container.begin();
+	while (it->alive() <= time and it != this->container.end()) {
+		if (it->dead() > time) {
+			break;
+		}
+		++it;
 	}
 
 	return it->value;
 }
 
+
 template <class T>
-const T Queue<T>::pop_front(const time::time_t &time) {
+const T &Queue<T>::pop_front(const time::time_t &time) {
 	if (this->empty(time)) [[unlikely]] {
 		throw Error{MSG(err) << "Tried accessing front at "
 		                     << time << " but queue is empty."};
 	}
 
 	// search for the last element before the given time
-	auto it = this->container.end();
-	--it;
-	while (it->alive() > time and it != this->container.begin()) {
-		--it;
+	auto it = this->container.begin();
+	while (it->alive() <= time and it != this->container.end()) {
+		if (it->dead() > time) {
+			break;
+		}
+		++it;
 	}
-
-	// get the last element inserted before the given time
-	auto val = std::move(it->value);
 
 	// get the time span between current time and the next element
 	auto to = (++it)->alive();
@@ -252,14 +268,15 @@ const T Queue<T>::pop_front(const time::time_t &time) {
 	auto from = time;
 
 	// erase the element
-	// TODO: We should be able to reinsert elements
-	auto filter_iterator = QueueFilterIterator<T, Queue<T>>(it, this, to, from);
-	this->erase(filter_iterator);
+	this->erase(time, it);
 
 	this->last_pop = time;
 
-	return val;
+	this->changes(time);
+
+	return it->value;
 }
+
 
 template <class T>
 bool Queue<T>::empty(const time::time_t &time) const {
@@ -267,11 +284,17 @@ bool Queue<T>::empty(const time::time_t &time) const {
 		return true;
 	}
 
-	// search for the first element that is after the given time
-	auto begin = this->begin(time).get_base();
+	auto it = this->container.begin();
+	while (it->alive() <= time and it != this->container.end()) {
+		if (it->dead() > time) {
+			return false;
+		}
+		++it;
+	}
 
-	return begin == this->container.begin() and begin->alive() > time;
+	return true;
 }
+
 
 template <typename T>
 QueueFilterIterator<T, Queue<T>> Queue<T>::begin(const time::time_t &t) const {
@@ -321,9 +344,9 @@ void Queue<T>::erase(const CurveIterator<T, Queue<T>> &it) {
 
 
 template <class T>
-inline void Queue<T>::erase(const time::time_t &time,
-                            const CurveIterator<T, Queue<T>> &it) {
-	it.get_base()->set_dead(time);
+void Queue<T>::erase(const time::time_t &time,
+                     iterator &it) {
+	it->set_dead(time);
 }
 
 
@@ -360,9 +383,12 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
 
 template <typename T>
 void Queue<T>::clear(const time::time_t &time) {
-	for (auto it = this->container.begin();
-	     it != this->container.end() and it->alive() < time;
-	     it = this->container.erase(it)) {
+	auto it = this->container.begin();
+	while (it->alive() <= time and it != this->container.end()) {
+		if (it->dead() > time) {
+			it->set_dead(time);
+		}
+		++it;
 	}
 
 	this->changes(time);
