@@ -30,15 +30,28 @@ namespace curve {
 template <class T>
 class Queue : public event::EventEntity {
 	struct queue_wrapper {
-		time::time_t _time;
+		// Insertion time of the element
+		time::time_t _alive;
+		// Erase time of the element
+		time::time_t _dead;
+		// Element value
 		T value;
 
 		queue_wrapper(const time::time_t &time, const T &value) :
-			_time{time},
+			_alive{time},
+			_dead{time::TIME_MAX},
 			value{value} {}
 
-		time::time_t time() const {
-			return _time;
+		time::time_t alive() const {
+			return _alive;
+		}
+
+		time::time_t dead() const {
+			return _dead;
+		}
+
+		void set_dead(const time::time_t &time) {
+			_dead = time;
 		}
 	};
 
@@ -123,13 +136,21 @@ public:
 	void erase(const CurveIterator<T, Queue<T>> &it);
 
 	/**
+	 * Erase an element from the queue at a specific time.
+	 *
+     * @param time The time to erase at.
+	 * @param it The iterator to the element to erase.
+	 */
+	void erase(const time::time_t &time, const CurveIterator<T, Queue<T>> &it);
+
+	/**
 	 * Insert a new element into the queue.
 	 *
 	 * @param time The time to insert at.
 	 * @param e The element to insert.
 	 * @return Iterator to the inserted element.
 	 */
-	QueueFilterIterator<T, Queue<T>> insert(const time::time_t &, const T &e);
+	QueueFilterIterator<T, Queue<T>> insert(const time::time_t &time, const T &e);
 
 	/**
 	 * Erase all elements that are at or after the given time.
@@ -143,7 +164,7 @@ public:
 	 */
 	void dump() {
 		for (auto i : container) {
-			std::cout << i.value << " at " << i.time() << std::endl;
+			std::cout << i.value << " at " << i.alive() << std::endl;
 		}
 	}
 
@@ -201,7 +222,7 @@ const T &Queue<T>::front(const time::time_t &time) const {
 	// search for the last element before the given time
 	auto it = this->container.end();
 	--it;
-	while (it->time() > time and it != this->container.begin()) {
+	while (it->alive() > time and it != this->container.begin()) {
 		--it;
 	}
 
@@ -218,7 +239,7 @@ const T Queue<T>::pop_front(const time::time_t &time) {
 	// search for the last element before the given time
 	auto it = this->container.end();
 	--it;
-	while (it->time() > time and it != this->container.begin()) {
+	while (it->alive() > time and it != this->container.begin()) {
 		--it;
 	}
 
@@ -226,7 +247,7 @@ const T Queue<T>::pop_front(const time::time_t &time) {
 	auto val = std::move(it->value);
 
 	// get the time span between current time and the next element
-	auto to = (++it)->time();
+	auto to = (++it)->alive();
 	--it;
 	auto from = time;
 
@@ -249,13 +270,13 @@ bool Queue<T>::empty(const time::time_t &time) const {
 	// search for the first element that is after the given time
 	auto begin = this->begin(time).get_base();
 
-	return begin == this->container.begin() and begin->time() > time;
+	return begin == this->container.begin() and begin->alive() > time;
 }
 
 template <typename T>
 QueueFilterIterator<T, Queue<T>> Queue<T>::begin(const time::time_t &t) const {
 	for (auto it = this->container.begin(); it != this->container.end(); ++it) {
-		if (it->time() >= t) {
+		if (it->alive() >= t) {
 			return QueueFilterIterator<T, Queue<T>>(
 				it,
 				this,
@@ -296,7 +317,13 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::between(const time::time_t &begin,
 template <typename T>
 void Queue<T>::erase(const CurveIterator<T, Queue<T>> &it) {
 	container.erase(it.get_base());
-	return;
+}
+
+
+template <class T>
+inline void Queue<T>::erase(const time::time_t &time,
+                            const CurveIterator<T, Queue<T>> &it) {
+	it.get_base()->set_dead(time);
 }
 
 
@@ -305,7 +332,7 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
                                                   const T &e) {
 	const_iterator insertion_point = this->container.end();
 	for (auto it = this->container.begin(); it != this->container.end(); ++it) {
-		if (time < it->time()) {
+		if (time < it->alive()) {
 			insertion_point = this->container.insert(it, queue_wrapper(time, e));
 			break;
 		}
@@ -334,7 +361,7 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
 template <typename T>
 void Queue<T>::clear(const time::time_t &time) {
 	for (auto it = this->container.begin();
-	     it != this->container.end() and it->time() < time;
+	     it != this->container.end() and it->alive() < time;
 	     it = this->container.erase(it)) {
 	}
 
