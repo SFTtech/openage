@@ -33,7 +33,8 @@ class Queue : public event::EventEntity {
 		// Insertion time of the element
 		time::time_t _alive;
 		// Erase time of the element
-		time::time_t _dead;
+		// TODO: this has to be mutable because erase() will complain otherwise
+		mutable time::time_t _dead;
 		// Element value
 		T value;
 
@@ -50,7 +51,8 @@ class Queue : public event::EventEntity {
 			return _dead;
 		}
 
-		void set_dead(const time::time_t &time) {
+		// TODO: this has to be const because erase() will complain otherwise
+		void set_dead(const time::time_t &time) const {
 			_dead = time;
 		}
 	};
@@ -66,7 +68,8 @@ public:
 		EventEntity{loop},
 		_id{id},
 		_idstr{idstr},
-		last_pop{time::TIME_ZERO} {}
+		last_change{time::TIME_ZERO},
+		front_start{this->container.begin()} {}
 
 	// prevent accidental copy of queue
 	Queue(const Queue &) = delete;
@@ -202,7 +205,16 @@ private:
      * @param time The time to erase at.
 	 * @param it The iterator to the element to erase.
 	 */
-	void erase(const time::time_t &time, iterator &it);
+	void erase(const time::time_t &time, const_iterator &it);
+
+	/**
+     * Get the first alive element inserted at t <= time.
+     *
+     * @param time The time to get the element at.
+     *
+     * @return Iterator to the first alive element or end() if no such element exists.
+     */
+	const_iterator first_alive(const time::time_t &time) const;
 
 	/**
 	 * Identifier for the container
@@ -220,10 +232,42 @@ private:
 	container_t container;
 
 	/**
-	 * The time of the last access to the queue.
-	 */
-	time::time_t last_pop;
+     * Simulation time of the last modifying change to the queue.
+     */
+	time::time_t last_change;
+
+	/**
+     * Caches the search start position for the next front() call.
+     *
+     * All iterators before are guaranteed to be dead at t >= last_change.
+     */
+	mutable typename Queue<T>::const_iterator front_start;
 };
+
+
+template <class T>
+Queue<T>::const_iterator Queue<T>::first_alive(const time::time_t &time) const {
+	auto hint = this->container.begin();
+
+	// check if the access is later than the last change
+	if (this->last_change <= time) [[likely]] {
+		// start searching from the last front position
+		hint = this->front_start;
+	}
+
+	// Iterate until we find an alive element
+	bool al = hint->alive() <= time;
+	bool en = hint != this->container.end();
+	while (hint->alive() <= time
+	       and hint != this->container.end()) {
+		if (hint->dead() > time) {
+			return hint;
+		}
+		++hint;
+	}
+
+	return this->container.end();
+}
 
 
 template <typename T>
@@ -233,14 +277,7 @@ const T &Queue<T>::front(const time::time_t &time) const {
 		                     << time << " but queue is empty."};
 	}
 
-	// search for the last element before the given time
-	auto it = this->container.begin();
-	while (it->alive() <= time and it != this->container.end()) {
-		if (it->dead() > time) {
-			break;
-		}
-		++it;
-	}
+	auto it = this->first_alive(time);
 
 	return it->value;
 }
@@ -253,24 +290,14 @@ const T &Queue<T>::pop_front(const time::time_t &time) {
 		                     << time << " but queue is empty."};
 	}
 
-	// search for the last element before the given time
-	auto it = this->container.begin();
-	while (it->alive() <= time and it != this->container.end()) {
-		if (it->dead() > time) {
-			break;
-		}
-		++it;
-	}
+	Queue<T>::const_iterator it = this->first_alive(time);
 
-	// get the time span between current time and the next element
-	auto to = (++it)->alive();
-	--it;
-	auto from = time;
+	// cache the search start position for the next front() call
+	this->front_start = it;
+	this->last_change = time;
 
 	// erase the element
 	this->erase(time, it);
-
-	this->last_pop = time;
 
 	this->changes(time);
 
@@ -284,15 +311,7 @@ bool Queue<T>::empty(const time::time_t &time) const {
 		return true;
 	}
 
-	auto it = this->container.begin();
-	while (it->alive() <= time and it != this->container.end()) {
-		if (it->dead() > time) {
-			return false;
-		}
-		++it;
-	}
-
-	return true;
+	return this->first_alive(time) == this->container.end();
 }
 
 
@@ -345,7 +364,7 @@ void Queue<T>::erase(const CurveIterator<T, Queue<T>> &it) {
 
 template <class T>
 void Queue<T>::erase(const time::time_t &time,
-                     iterator &it) {
+                     const_iterator &it) {
 	it->set_dead(time);
 }
 
@@ -360,9 +379,17 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
 			break;
 		}
 	}
+
 	if (insertion_point == this->container.end()) {
 		insertion_point = this->container.insert(this->container.end(),
 		                                         queue_wrapper(time, e));
+	}
+
+	// cache the insertion time
+	this->last_change = time;
+	if (time < this->front_start->alive()) {
+		// cache the search start position for the next front() call
+		this->front_start = insertion_point;
 	}
 
 	auto ct = QueueFilterIterator<T, Queue<T>>(
@@ -383,13 +410,25 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
 
 template <typename T>
 void Queue<T>::clear(const time::time_t &time) {
-	auto it = this->container.begin();
+	Queue<T>::const_iterator it = this->first_alive(time);
+
+	// no elements alive at t <= time
+	// so we don't have any changes
+	if (it == this->container.end()) {
+		return;
+	}
+
+	// erase all elements alive at t <= time
 	while (it->alive() <= time and it != this->container.end()) {
 		if (it->dead() > time) {
 			it->set_dead(time);
 		}
 		++it;
 	}
+
+	// cache the search start position for the next front() call
+	this->last_change = time;
+	this->front_start = it;
 
 	this->changes(time);
 }
