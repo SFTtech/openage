@@ -8,6 +8,8 @@
 #include <memory>
 #include <string>
 
+#include "error/error.h"
+
 #include "curve/iterator.h"
 #include "curve/queue_filter_iterator.h"
 #include "event/evententity.h"
@@ -276,12 +278,8 @@ typename Queue<T>::const_iterator Queue<T>::first_alive(const time::time_t &time
 
 template <typename T>
 const T &Queue<T>::front(const time::time_t &time) const {
-	if (this->empty(time)) [[unlikely]] {
-		throw Error{MSG(err) << "Tried accessing front at "
-		                     << time << " but queue is empty."};
-	}
-
 	auto it = this->first_alive(time);
+	ENSURE(it != this->container.end(), "Tried accessing front at " << time << " but queue is empty.");
 
 	return it->value;
 }
@@ -289,12 +287,8 @@ const T &Queue<T>::front(const time::time_t &time) const {
 
 template <class T>
 const T &Queue<T>::pop_front(const time::time_t &time) {
-	if (this->empty(time)) [[unlikely]] {
-		throw Error{MSG(err) << "Tried accessing front at "
-		                     << time << " but queue is empty."};
-	}
-
 	Queue<T>::const_iterator it = this->first_alive(time);
+	ENSURE(it != this->container.end(), "Tried accessing front at " << time << " but queue is empty.");
 
 	// cache the search start position for the next front() call
 	this->front_start = it;
