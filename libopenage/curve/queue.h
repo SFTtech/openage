@@ -252,7 +252,7 @@ private:
 
 
 template <class T>
-Queue<T>::const_iterator Queue<T>::first_alive(const time::time_t &time) const {
+typename Queue<T>::const_iterator Queue<T>::first_alive(const time::time_t &time) const {
 	auto hint = this->container.begin();
 
 	// check if the access is later than the last change
@@ -377,17 +377,17 @@ template <typename T>
 QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
                                                   const T &e) {
 	const_iterator insertion_point = this->container.end();
-	for (auto it = this->container.begin(); it != this->container.end(); ++it) {
-		if (time < it->alive()) {
-			insertion_point = this->container.insert(it, queue_wrapper(time, e));
+	while (insertion_point != this->container.begin()) {
+		--insertion_point;
+		if (insertion_point->alive() <= time) {
+			++insertion_point;
 			break;
 		}
 	}
+	insertion_point = this->container.insert(insertion_point, queue_wrapper{time, e});
 
-	if (insertion_point == this->container.end()) {
-		insertion_point = this->container.insert(this->container.end(),
-		                                         queue_wrapper(time, e));
-	}
+	// TODO: Inserting before any dead elements shoud reset their death time
+	//       since by definition, they cannot be popped before the new element
 
 	// cache the insertion time
 	this->last_change = time;
