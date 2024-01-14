@@ -128,24 +128,30 @@ public:
      *
      * Does not ignore dead elements.
 	 *
-	 * @param t The time to get the element at.
+	 * @param t The time to get the element at (default: \p time::TIME_MAX ).
+     *
 	 * @return Iterator to the last element.
 	 */
 	QueueFilterIterator<T, Queue<T>> end(const time::time_t &time = time::TIME_MAX) const;
 
 	/**
 	 * Get an iterator to elements that are in the queue between two time frames.
+     *
+     * Does not ignore dead elements.
 	 *
-	 * @param begin Start time.
-	 * @param end End time.
+	 * @param begin Start time (default: \p time::TIME_MIN ).
+	 * @param end End time (default: \p time::TIME_MAX ).
+     *
 	 * @return Iterator to the first element in the time frame.
 	 */
 	QueueFilterIterator<T, Queue<T>> between(
-		const time::time_t &begin = time::TIME_MAX,
+		const time::time_t &begin = time::TIME_MIN,
 		const time::time_t &end = time::TIME_MAX) const;
 
 	/**
 	 * Erase an element from the queue.
+     *
+     * Does not ignore dead elements.
 	 *
 	 * @param it The iterator to the element to erase.
 	 */
@@ -256,8 +262,6 @@ Queue<T>::const_iterator Queue<T>::first_alive(const time::time_t &time) const {
 	}
 
 	// Iterate until we find an alive element
-	bool al = hint->alive() <= time;
-	bool en = hint != this->container.end();
 	while (hint->alive() <= time
 	       and hint != this->container.end()) {
 		if (hint->dead() > time) {

@@ -201,19 +201,51 @@ Container curves are intended for storing changes to collections and containers.
 The currently supported containers are `Queue` and `UnorderedMap`.
 
 The most important distinction between regular C++ containers and curve containers
-is that curve containers keep track of when modifications happen and what changes
-to an element are made. Deleting elements also does not erase elements from memory.
-Instead, they are simply hidden for requests for time `t1` after the deletion time `t2` if
-`t1 > t2`.
+is that curve containers track the *lifespan* of each element, i.e. their insertion time,
+modification time, and erasure time. Erasing elements also does not delete them from memory
+and instead hides them for requests made after the erasure time.
 
 
 #### Queue
 
-Queue curve containers store elements in first-in-first-out (FIFO) insertion order
-while additionally keeping track of element insertion time. Requests for the front element
-at time `t` will return the element that is in front of the queue at that time.
-The queue can also be iterated over for a specific time `t` which allows access to
-all elements that were in the queue at time `t`.
+Queue curve containers are the equivalent to the `std::queue` C++ containers. As such, they
+should be used in situations where first-in-first-out (FIFO) access patterns are desired.
+
+Elements in the queue are sorted by insertion time. The element with the earliest insertion time
+is the *front* element of the queue.
+
+The front element at time `t` can be read via the `front(t)` method, which retrieves the first,
+non-erased element with insertion time before or at `t`. In comparison, `pop_front(t)` returns
+the same value as `front(t)` and additionally erases the element from the queue at time `t`.
+
+It should be stressed again that erasing an element does not delete it from memory but
+simply ends its lifespan inside the curve container. `front(t)` and `pop_front(t)` always
+consider elements with an active lifespan (i.e. elements that are not erased at time `t`).
+As a side effect, `pop_front(t1)` and `front(t2)`/`pop_front(t2)` may return the same element
+when `t2 < t1` because the element has not ended its lifespan at time `t2` yet. It is in
+the responsibility of the caller to ensure that this behaviour does not cause any
+side effects.
+
+
+**Read**
+
+Read operations retrieve values for a specific point in time.
+
+| Method     | Description                             |
+| ---------- | --------------------------------------- |
+| `front(t)` | Get front element at time `t`           |
+| `empty(t)` | Check if the queue is empty at time `t` |
+
+**Modify**
+
+Modify operations insert values for a specific point in time.
+
+| Method             | Description                                            |
+| ------------------ | ------------------------------------------------------ |
+| `insert(t, value)` | Insert a new element at time `t`                       |
+| `pop_front(t)`     | Get front element at time `t` and erase it at time `t` |
+| `clear(t)`         | Erase all elements inserted before time `t`            |
+
 
 #### Unordered Map
 
