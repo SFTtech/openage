@@ -3,8 +3,8 @@
 #pragma once
 
 #include <cstddef>
-#include <deque>
 #include <iostream>
+#include <list>
 #include <memory>
 #include <string>
 
@@ -60,7 +60,7 @@ class Queue : public event::EventEntity {
 	};
 
 public:
-	using container_t = typename std::deque<queue_wrapper>;
+	using container_t = typename std::list<queue_wrapper>;
 	using const_iterator = typename container_t::const_iterator;
 	using iterator = typename container_t::iterator;
 
@@ -71,7 +71,7 @@ public:
 		_id{id},
 		_idstr{idstr},
 		last_change{time::TIME_ZERO},
-		front_start{this->container.begin()} {}
+		front_start{this->container.end()} {}
 
 	// prevent accidental copy of queue
 	Queue(const Queue &) = delete;
@@ -258,7 +258,7 @@ typename Queue<T>::const_iterator Queue<T>::first_alive(const time::time_t &time
 	auto hint = this->container.begin();
 
 	// check if the access is later than the last change
-	if (this->last_change <= time) [[likely]] {
+	if (this->last_change <= time) {
 		// start searching from the last front position
 		hint = this->front_start;
 	}
@@ -385,9 +385,18 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
 
 	// cache the insertion time
 	this->last_change = time;
-	if (time < this->front_start->alive()) {
-		// cache the search start position for the next front() call
+	if (this->front_start == this->container.end()) [[unlikely]] {
+		// only true if the container is empty
+		// or all elements are dead
 		this->front_start = insertion_point;
+	}
+	else {
+		// if there are more alive elements, only cache if the
+		// insertion time is before the current front
+		if (time < this->front_start->alive()) {
+			// cache the search start position for the next front() call
+			this->front_start = insertion_point;
+		}
 	}
 
 	auto ct = QueueFilterIterator<T, Queue<T>>(
