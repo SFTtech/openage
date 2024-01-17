@@ -1,4 +1,4 @@
-# Copyright 2014-2023 the openage authors. See copying.md for legal info.
+# Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 """ Routines for texture generation etc """
 
@@ -14,7 +14,6 @@ import numpy
 from ....log import spam
 from ...value_object.read.media.blendomatic import BlendingMode
 from ...value_object.read.media.hardcoded.terrain_tile_size import TILE_HALFSIZE
-from ...value_object.read.genie_structure import GenieStructure
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.media.colortable import ColorTable
@@ -65,17 +64,13 @@ class TextureImage:
         return self.data
 
 
-class Texture(GenieStructure):
-    image_format = "png"
+class Texture:
+    """
+    one sprite, as part of a texture atlas.
 
-    name_struct = "subtexture"
-    name_struct_file = "texture"
-    struct_description = (
-        "one sprite, as part of a texture atlas.\n"
-        "\n"
-        "this struct stores information about positions and sizes\n"
-        "of sprites included in the 'big texture'."
-    )
+    stores information about positions and sizes
+    of sprites included in the 'big texture'.
+    """
 
     def __init__(
         self,
@@ -180,18 +175,3 @@ class Texture(GenieStructure):
             - PNG compression parameters (compression level + deflate params)
         """
         return self.best_packer_hints, self.best_compr
-
-    @classmethod
-    def get_data_format_members(cls, game_version) -> tuple:
-        """
-        Return the members in this struct.
-        """
-        data_format = (
-            (True, "x", None, "int32_t"),
-            (True, "y", None, "int32_t"),
-            (True, "w", None, "int32_t"),
-            (True, "h", None, "int32_t"),
-            (True, "cx", None, "int32_t"),
-            (True, "cy", None, "int32_t"),
-        )
-        return data_format
