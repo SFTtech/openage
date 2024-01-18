@@ -1,4 +1,4 @@
-# Copyright 2021-2023 the openage authors. See copying.md for legal info.
+# Copyright 2021-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments,too-many-locals
 """
@@ -9,7 +9,7 @@ import typing
 
 import logging
 import os
-
+from multiprocessing import Pool
 
 from openage.convert.entity_object.export.texture import Texture
 from openage.convert.service import debug_info
@@ -59,6 +59,8 @@ class MediaExporter:
         if args.game_version.edition.media_cache:
             cache_info = load_media_cache(args.game_version.edition.media_cache)
 
+        textures = []
+
         for media_type in export_requests.keys():
             cur_export_requests = export_requests[media_type]
 
@@ -78,6 +80,28 @@ class MediaExporter:
                 kwargs["cache_info"] = cache_info
                 export_func = MediaExporter._export_graphics
                 info("-- Exporting graphics files...")
+
+                for count, request in enumerate(cur_export_requests, start = 1):
+                    texture = MediaExporter._export_graphics(
+                        request,
+                        sourcedir,
+                        exportdir,
+                        args.palettes,
+                        args.compression_level,
+                        cache_info
+                    )
+                    textures.append((
+                        texture,
+                        # exportdir[request.targetdir],
+                        exportdir[request.targetdir][request.target_filename].resolve_native_path(),
+                        args.compression_level,
+                        cache_info
+                    ))
+
+                with Pool() as pool:
+                    pool.starmap(save_png, textures)
+
+                continue
 
             elif media_type is MediaType.SOUNDS:
                 kwargs["loglevel"] = args.debug_info
@@ -172,7 +196,7 @@ class MediaExporter:
         palettes: dict[int, ColorTable],
         compression_level: int,
         cache_info: dict = None
-    ) -> None:
+    ) -> Texture:
         """
         Convert and export a graphics file.
 
@@ -245,13 +269,13 @@ class MediaExporter:
 
         texture = Texture(image, palettes)
         merge_frames(texture, cache=packer_cache)
-        MediaExporter.save_png(
-            texture,
-            exportdir[export_request.targetdir],
-            export_request.target_filename,
-            compression_level=compression_level,
-            cache=compr_cache
-        )
+        # MediaExporter.save_png(
+        #     texture,
+        #     exportdir[export_request.targetdir],
+        #     export_request.target_filename,
+        #     compression_level=compression_level,
+        #     cache=compr_cache
+        # )
         metadata = {export_request.target_filename: texture.get_metadata()}
         export_request.set_changed()
         export_request.notify_observers(metadata)
@@ -262,6 +286,8 @@ class MediaExporter:
                 source_file,
                 exportdir[export_request.targetdir, export_request.target_filename]
             )
+
+        return texture
 
     @staticmethod
     def _export_interface(
@@ -582,3 +608,66 @@ class MediaExporter:
                f"{(target_size / source_size * 100) - 100:+.1f}%)")
 
         dbg(log)
+
+
+def save_png(
+    texture: Texture,
+    # targetdir: Path,
+    filename: str,
+    compression_level: int = 1,
+    cache: dict = None,
+    dry_run: bool = False
+) -> None:
+    """
+    Store the image data into the target directory path,
+    with given filename="dir/out.png".
+
+    :param texture: Texture with an image atlas.
+    :param targetdir: Directory where the image file is created.
+    :param filename: Name of the resulting image file.
+    :param compression_level: PNG compression level used for the resulting image file.
+    :param dry_run: If True, create the PNG but don't save it as a file.
+    :type texture: Texture
+    :type targetdir: Directory
+    :type filename: str
+    :type compression_level: int
+    :type dry_run: bool
+    """
+    from ...service.export.png import png_create
+
+    compression_levels = {
+        0: png_create.CompressionMethod.COMPR_NONE,
+        1: png_create.CompressionMethod.COMPR_DEFAULT,
+        2: png_create.CompressionMethod.COMPR_OPTI,
+        3: png_create.CompressionMethod.COMPR_GREEDY,
+        4: png_create.CompressionMethod.COMPR_AGGRESSIVE,
+    }
+
+    if not dry_run:
+        _, ext = os.path.splitext(filename)
+
+        # only allow png
+        if ext != b".png":
+            raise ValueError("Filename invalid, a texture must be saved"
+                             f" as '*.png', not '*.{ext}'")
+
+    compression_method = compression_levels.get(
+        compression_level,
+        png_create.CompressionMethod.COMPR_DEFAULT
+    )
+    png_data, compr_params = png_create.save(
+        texture.image_data.data,
+        compression_method,
+        cache
+    )
+
+    if not dry_run:
+        with open(filename, "wb") as imagefile:
+            imagefile.write(png_data)
+
+    # if not dry_run:
+    #     with targetdir[filename].open("wb") as imagefile:
+    #         imagefile.write(png_data)
+
+    if compr_params:
+        texture.best_compr = (compression_level, *compr_params)
