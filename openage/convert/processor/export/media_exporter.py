@@ -62,7 +62,6 @@ class MediaExporter:
         for media_type in export_requests.keys():
             cur_export_requests = export_requests[media_type]
 
-            export_func = None
             kwargs = {}
             if media_type is MediaType.TERRAIN:
                 info("-- Exporting terrain files...")
@@ -74,7 +73,6 @@ class MediaExporter:
                     args.game_version,
                     args.compression_level
                 )
-                continue
 
             elif media_type is MediaType.GRAPHICS:
                 info("-- Exporting graphics files...")
@@ -86,7 +84,6 @@ class MediaExporter:
                     args.compression_level,
                     cache_info
                 )
-                continue
 
             elif media_type is MediaType.SOUNDS:
                 kwargs["debugdir"] = args.debugdir
@@ -98,18 +95,15 @@ class MediaExporter:
                     exportdir,
                     **kwargs
                 )
-                continue
 
             elif media_type is MediaType.BLEND:
-                kwargs["blend_mode_count"] = args.blend_mode_count
-                export_func = MediaExporter._export_blend
                 info("-- Exporting blend files...")
-
-            total_count = len(cur_export_requests)
-            for count, request in enumerate(cur_export_requests, start = 1):
-                export_func(request, sourcedir, exportdir, **kwargs)
-                print(f"-- Files done: {format_progress(count, total_count)}",
-                      end = "\r", flush = True)
+                MediaExporter._export_blend(
+                    cur_export_requests,
+                    sourcedir,
+                    exportdir,
+                    args.blend_mode_count
+                )
 
         if args.debug_info > 5:
             cachedata = {}
@@ -137,7 +131,7 @@ class MediaExporter:
 
     @staticmethod
     def _export_blend(
-        export_request: MediaExportRequest,
+        requests: list[MediaExportRequest],
         sourcedir: Path,
         exportdir: Path,
         blend_mode_count: int = None
@@ -145,39 +139,73 @@ class MediaExporter:
         """
         Convert and export a blending mode.
 
-        :param export_request: Export request for a blending mask.
+        :param requests: Export requests for blending masks.
         :param sourcedir: Directory where all media assets are mounted. Source subfolder and
                           source filename should be stored in the export request.
         :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
                           and target filename should be stored in the export request.
         :param blend_mode_count: Number of blending modes extracted from the source file.
-        :type export_request: MediaExportRequest
+        :type requests: list[MediaExportRequest]
         :type sourcedir: Path
         :type exportdir: Path
         :type blend_mode_count: int
         """
-        source_file = sourcedir.joinpath(export_request.source_filename)
+        # Create a manager for sharing data between the workers and main process
+        with multiprocessing.Manager() as manager:
+            # Create a queue for data sharing
+            # it's not actually used for passing data, only for counting
+            # finished tasks
+            outqueue = manager.Queue()
 
-        media_file = source_file.open("rb")
-        blend_data = Blendomatic(media_file, blend_mode_count)
+            # Create a pool of workers
+            with multiprocessing.Pool() as pool:
+                for request in requests:
+                    # Feed the worker with the source file data (bytes) from the
+                    # main process
+                    #
+                    # This is necessary because some image files are inside an
+                    # archive and cannot be accessed asynchronously
+                    source_file = sourcedir[request.get_type().value,
+                                            request.source_filename]
 
-        from .texture_merge import merge_frames
+                    # The target path must be native
+                    target_path = exportdir[request.targetdir,
+                                            request.target_filename].resolve_native_path()
 
-        textures = blend_data.get_textures()
-        for idx, texture in enumerate(textures):
-            merge_frames(texture)
-            MediaExporter.save_png(
-                texture,
-                exportdir[export_request.targetdir],
-                f"{export_request.target_filename}{idx}.png"
-            )
+                    # Start an export call in a worker process
+                    # The call is asynchronous, so the next worker can be
+                    # started immediately
+                    pool.apply_async(
+                        _export_blend,
+                        args=(
+                            source_file.open("rb").read(),
+                            outqueue,
+                            target_path,
+                            blend_mode_count
+                        )
+                    )
 
-            if get_loglevel() <= logging.DEBUG:
-                MediaExporter.log_fileinfo(
-                    source_file,
-                    exportdir[export_request.targetdir,
-                              f"{export_request.target_filename}{idx}.png"]
-                )
+                    # Log file information
+                    if get_loglevel() <= logging.DEBUG:
+                        MediaExporter.log_fileinfo(
+                            source_file,
+                            exportdir[request.targetdir, request.target_filename]
+                        )
+
+                    # Show progress
+                    print(f"-- Files done: {format_progress(outqueue.qsize(), len(requests))}",
+                          end = "\r", flush = True)
+
+                # Close the pool since all workers have been started
+                pool.close()
+
+                # Show progress for remaining workers
+                while outqueue.qsize() < len(requests):
+                    print(f"-- Files done: {format_progress(outqueue.qsize(), len(requests))}",
+                          end = "\r", flush = True)
+
+                # Wait for all workers to finish
+                pool.join()
 
     @staticmethod
     def _export_graphics(
@@ -662,6 +690,39 @@ class MediaExporter:
                f"{(target_size / source_size * 100) - 100:+.1f}%)")
 
         dbg(log)
+
+
+def _export_blend(
+    blendfile_data: bytes,
+    outqueue: multiprocessing.Queue,
+    target_path: str,
+    blend_mode_count: int = None
+) -> None:
+    """
+    Convert and export a blending mode.
+
+    :param blendfile_data: Raw file data of the blending mask.
+    :param outqueue: Queue for passing metadata to the main process.
+    :param target_path: Path to the resulting image file.
+    :param blend_mode_count: Number of blending modes extracted from the source file.
+    :type blendfile_data: bytes
+    :type outqueue: multiprocessing.Queue
+    :type target_path: str
+    :type blend_mode_count: int
+    """
+    blend_data = Blendomatic(blendfile_data, blend_mode_count)
+
+    from .texture_merge import merge_frames
+
+    textures = blend_data.get_textures()
+    for idx, texture in enumerate(textures):
+        merge_frames(texture)
+        _save_png(
+            texture,
+            f"{target_path}{idx}.png"
+        )
+
+    outqueue.put(0)
 
 
 def _export_sound(
