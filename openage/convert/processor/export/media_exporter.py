@@ -73,53 +73,15 @@ class MediaExporter:
                 info("-- Exporting terrain files...")
 
             elif media_type is MediaType.GRAPHICS:
-                kwargs["palettes"] = args.palettes
-                kwargs["compression_level"] = args.compression_level
-                kwargs["cache_info"] = cache_info
-                export_func = MediaExporter._export_graphics
                 info("-- Exporting graphics files...")
-
-                with multiprocessing.Manager() as manager:
-                    outqueue = manager.Queue()
-                    with multiprocessing.Pool() as pool:
-                        for idx, request in enumerate(cur_export_requests):
-                            source_file = sourcedir[request.get_type().value][request.source_filename]
-                            if not source_file.exists():
-                                if source_file.suffix.lower() in (".smx", ".sld"):
-                                    # Rename extension to SMP and try again
-                                    other_filename = request.source_filename[:-3] + "smp"
-                                    source_file = sourcedir[
-                                        request.get_type().value,
-                                        other_filename
-                                    ]
-                                    request.set_source_filename(other_filename)
-
-                            target_path = exportdir[request.targetdir][request.target_filename].resolve_native_path()
-                            func_args = (
-                                idx,
-                                source_file.open("rb").read(),
-                                outqueue,
-                                request.source_filename,
-                                target_path,
-                                kwargs["palettes"],
-                                kwargs["compression_level"],
-                                cache_info
-                            )
-                            pool.apply_async(
-                                _export_texture,
-                                func_args
-                            )
-
-                        pool.close()
-                        pool.join()
-
-                    while not outqueue.empty():
-                        idx, metadata = outqueue.get()
-                        update_data = {cur_export_requests[idx].target_filename: metadata}
-                        cur_export_requests[idx].set_changed()
-                        cur_export_requests[idx].notify_observers(update_data)
-                        cur_export_requests[idx].clear_changed()
-
+                MediaExporter._export_graphics(
+                    cur_export_requests,
+                    sourcedir,
+                    exportdir,
+                    args.palettes,
+                    args.compression_level,
+                    cache_info
+                )
                 continue
 
             elif media_type is MediaType.SOUNDS:
@@ -209,17 +171,17 @@ class MediaExporter:
 
     @staticmethod
     def _export_graphics(
-        export_request: MediaExportRequest,
+        requests: list[MediaExportRequest],
         sourcedir: Path,
         exportdir: Path,
         palettes: dict[int, ColorTable],
         compression_level: int,
         cache_info: dict = None
-    ) -> Texture:
+    ) -> None:
         """
-        Convert and export a graphics file.
+        Convert and export graphics file requests (multi-threaded).
 
-        :param export_request: Export request for a graphics file.
+        :param requests: Export requests for graphics files.
         :param sourcedir: Directory where all media assets are mounted. Source subfolder and
                           source filename should be stored in the export request.
         :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
@@ -227,84 +189,94 @@ class MediaExporter:
         :param palettes: Palettes used by the game.
         :param compression_level: PNG compression level for the resulting image file.
         :param cache_info: Media cache information with compression parameters from a previous run.
-        :type export_request: MediaExportRequest
+        :type requests: list[MediaExportRequest]
         :type sourcedir: Path
         :type exportdir: Path
         :type palettes: dict
         :type compression_level: int
         :type cache_info: tuple
         """
-        source_file = sourcedir[
-            export_request.get_type().value,
-            export_request.source_filename
-        ]
+        # Create a manager for sharing data between the workers and main process
+        with multiprocessing.Manager() as manager:
+            # Workers write the image metadata to this queue
+            # so that it can be forwarded to the export requests
+            #
+            # we cannot do this in a worker process directly
+            # because the export requests cannot be pickled
+            outqueue = manager.Queue()
 
-        try:
-            media_file = source_file.open("rb")
+            # Create a pool of workers
+            with multiprocessing.Pool() as pool:
+                for idx, request in enumerate(requests):
+                    # Feed the worker with the source file data (bytes) from the
+                    # main process
+                    #
+                    # This is necessary because some image files are inside an
+                    # archive and cannot be accessed asynchronously
+                    source_file = sourcedir[request.get_type().value,
+                                            request.source_filename]
+                    if not source_file.exists():
+                        if source_file.suffix.lower() in (".smx", ".sld"):
+                            # Some DE2 graphics files have the wrong extension
+                            # Fall back to the SMP (beta) extension
+                            other_filename = request.source_filename[:-3] + "smp"
+                            source_file = sourcedir[
+                                request.get_type().value,
+                                other_filename
+                            ]
+                            request.set_source_filename(other_filename)
 
-        except FileNotFoundError:
-            if source_file.suffix.lower() in (".smx", ".sld"):
-                # Rename extension to SMP and try again
-                other_filename = export_request.source_filename[:-3] + "smp"
-                source_file = sourcedir[
-                    export_request.get_type().value,
-                    other_filename
-                ]
-                export_request.set_source_filename(other_filename)
+                    # The target path must be native
+                    target_path = exportdir[request.targetdir,
+                                            request.target_filename].resolve_native_path()
 
-            media_file = source_file.open("rb")
+                    # Start an export call in a worker process
+                    # The call is asynchronous, so the next worker can be
+                    # started immediately
+                    pool.apply_async(
+                        _export_texture,
+                        args=(
+                            idx,
+                            source_file.open("rb").read(),
+                            outqueue,
+                            request.source_filename,
+                            target_path,
+                            palettes,
+                            compression_level,
+                            cache_info
+                        )
+                    )
 
-        if source_file.suffix.lower() == ".slp":
-            from ...value_object.read.media.slp import SLP
-            image = SLP(media_file.read())
+                    # Log file information
+                    if get_loglevel() <= logging.DEBUG:
+                        MediaExporter.log_fileinfo(
+                            source_file,
+                            exportdir[request.targetdir, request.target_filename]
+                        )
 
-        elif source_file.suffix.lower() == ".smp":
-            from ...value_object.read.media.smp import SMP
-            image = SMP(media_file.read())
+                    # Show progress
+                    print(f"-- Files done: {format_progress(outqueue.qsize(), len(requests))}",
+                          end = "\r", flush = True)
 
-        elif source_file.suffix.lower() == ".smx":
-            from ...value_object.read.media.smx import SMX
-            image = SMX(media_file.read())
+                # Close the pool since all workers have been started
+                pool.close()
 
-        elif source_file.suffix.lower() == ".sld":
-            from ...value_object.read.media.sld import SLD
-            image = SLD(media_file.read())
+                # Show progress for remaining workers
+                while outqueue.qsize() < len(requests):
+                    print(f"-- Files done: {format_progress(outqueue.qsize(), len(requests))}",
+                          end = "\r", flush = True)
 
-        else:
-            raise SyntaxError(f"Source file {source_file.name} has an unrecognized extension: "
-                              f"{source_file.suffix.lower()}")
+                # Wait for all workers to finish
+                pool.join()
 
-        packer_cache = None
-        compr_cache = None
-        if cache_info:
-            cache_params = cache_info.get(export_request.source_filename, None)
-
-            if cache_params:
-                packer_cache = cache_params["packer_settings"]
-                compression_level = cache_params["compr_settings"][0]
-                compr_cache = cache_params["compr_settings"][1:]
-
-        from .texture_merge import merge_frames
-
-        texture = Texture(image, palettes)
-        merge_frames(texture, cache=packer_cache)
-        MediaExporter.save_png(
-            texture,
-            exportdir[export_request.targetdir],
-            export_request.target_filename,
-            compression_level=compression_level,
-            cache=compr_cache
-        )
-        metadata = {export_request.target_filename: texture.get_metadata()}
-        export_request.set_changed()
-        export_request.notify_observers(metadata)
-        export_request.clear_changed()
-
-        if get_loglevel() <= logging.DEBUG:
-            MediaExporter.log_fileinfo(
-                source_file,
-                exportdir[export_request.targetdir, export_request.target_filename]
-            )
+            # Collect the metadata from the workers and forward it to the
+            # export requests
+            while not outqueue.empty():
+                idx, metadata = outqueue.get()
+                update_data = {requests[idx].target_filename: metadata}
+                requests[idx].set_changed()
+                requests[idx].notify_observers(update_data)
+                requests[idx].clear_changed()
 
     @staticmethod
     def _export_interface(
