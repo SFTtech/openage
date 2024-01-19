@@ -9,7 +9,7 @@ import typing
 
 import logging
 import os
-from multiprocessing import Pool
+import multiprocessing
 
 from openage.convert.entity_object.export.texture import Texture
 from openage.convert.service import debug_info
@@ -59,8 +59,6 @@ class MediaExporter:
         if args.game_version.edition.media_cache:
             cache_info = load_media_cache(args.game_version.edition.media_cache)
 
-        textures = []
-
         for media_type in export_requests.keys():
             cur_export_requests = export_requests[media_type]
 
@@ -81,25 +79,46 @@ class MediaExporter:
                 export_func = MediaExporter._export_graphics
                 info("-- Exporting graphics files...")
 
-                for count, request in enumerate(cur_export_requests, start = 1):
-                    texture = MediaExporter._export_graphics(
-                        request,
-                        sourcedir,
-                        exportdir,
-                        args.palettes,
-                        args.compression_level,
-                        cache_info
-                    )
-                    textures.append((
-                        texture,
-                        # exportdir[request.targetdir],
-                        exportdir[request.targetdir][request.target_filename].resolve_native_path(),
-                        args.compression_level,
-                        cache_info
-                    ))
+                with multiprocessing.Manager() as manager:
+                    outqueue = manager.Queue()
+                    with multiprocessing.Pool() as pool:
+                        for idx, request in enumerate(cur_export_requests):
+                            source_file = sourcedir[request.get_type().value][request.source_filename]
+                            if not source_file.exists():
+                                if source_file.suffix.lower() in (".smx", ".sld"):
+                                    # Rename extension to SMP and try again
+                                    other_filename = request.source_filename[:-3] + "smp"
+                                    source_file = sourcedir[
+                                        request.get_type().value,
+                                        other_filename
+                                    ]
+                                    request.set_source_filename(other_filename)
 
-                with Pool() as pool:
-                    pool.starmap(save_png, textures)
+                            target_path = exportdir[request.targetdir][request.target_filename].resolve_native_path()
+                            func_args = (
+                                idx,
+                                source_file.open("rb").read(),
+                                outqueue,
+                                request.source_filename,
+                                target_path,
+                                kwargs["palettes"],
+                                kwargs["compression_level"],
+                                cache_info
+                            )
+                            pool.apply_async(
+                                _export_texture,
+                                func_args
+                            )
+
+                        pool.close()
+                        pool.join()
+
+                    while not outqueue.empty():
+                        idx, metadata = outqueue.get()
+                        update_data = {cur_export_requests[idx].target_filename: metadata}
+                        cur_export_requests[idx].set_changed()
+                        cur_export_requests[idx].notify_observers(update_data)
+                        cur_export_requests[idx].clear_changed()
 
                 continue
 
@@ -269,13 +288,13 @@ class MediaExporter:
 
         texture = Texture(image, palettes)
         merge_frames(texture, cache=packer_cache)
-        # MediaExporter.save_png(
-        #     texture,
-        #     exportdir[export_request.targetdir],
-        #     export_request.target_filename,
-        #     compression_level=compression_level,
-        #     cache=compr_cache
-        # )
+        MediaExporter.save_png(
+            texture,
+            exportdir[export_request.targetdir],
+            export_request.target_filename,
+            compression_level=compression_level,
+            cache=compr_cache
+        )
         metadata = {export_request.target_filename: texture.get_metadata()}
         export_request.set_changed()
         export_request.notify_observers(metadata)
@@ -286,8 +305,6 @@ class MediaExporter:
                 source_file,
                 exportdir[export_request.targetdir, export_request.target_filename]
             )
-
-        return texture
 
     @staticmethod
     def _export_interface(
@@ -610,26 +627,102 @@ class MediaExporter:
         dbg(log)
 
 
-def save_png(
+def _export_texture(
+    export_request_idx: int,
+    graphics_data: bytes,
+    outqueue: multiprocessing.Queue,
+    source_filename: str,
+    target_path: str,
+    palettes: dict[int, ColorTable],
+    compression_level: int,
+    cache_info: dict = None
+) -> None:
+    """
+    Convert and export a graphics file to a PNG texture.
+
+    :param export_request: Export request for a graphics file.
+    :param sourcedir: Directory where all media assets are mounted. Source subfolder and
+                        source filename should be stored in the export request.
+    :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
+                        and target filename should be stored in the export request.
+    :param palettes: Palettes used by the game.
+    :param compression_level: PNG compression level for the resulting image file.
+    :param cache_info: Media cache information with compression parameters from a previous run.
+    :type export_request: MediaExportRequest
+    :type sourcedir: Path
+    :type exportdir: Path
+    :type palettes: dict
+    :type compression_level: int
+    :type cache_info: tuple
+    """
+    file_ext = source_filename.split('.')[-1].lower()
+    if file_ext == "slp":
+        from ...value_object.read.media.slp import SLP
+        image = SLP(graphics_data)
+
+    elif file_ext == "smp":
+        from ...value_object.read.media.smp import SMP
+        image = SMP(graphics_data)
+
+    elif file_ext == "smx":
+        from ...value_object.read.media.smx import SMX
+        image = SMX(graphics_data)
+
+    elif file_ext == "sld":
+        from ...value_object.read.media.sld import SLD
+        image = SLD(graphics_data)
+
+    else:
+        raise SyntaxError(f"Source file {source_filename} has an unrecognized extension: "
+                          f"{file_ext}")
+
+    packer_cache = None
+    compr_cache = None
+    if cache_info:
+        cache_params = cache_info.get(source_filename, None)
+
+        if cache_params:
+            packer_cache = cache_params["packer_settings"]
+            compression_level = cache_params["compr_settings"][0]
+            compr_cache = cache_params["compr_settings"][1:]
+
+    from .texture_merge import merge_frames
+
+    texture = Texture(image, palettes)
+    merge_frames(texture, cache=packer_cache)
+    _save_png(
+        texture,
+        target_path,
+        compression_level=compression_level,
+        cache=compr_cache
+    )
+    metadata = (export_request_idx, texture.get_metadata().copy())
+    outqueue.put(metadata)
+
+    # if get_loglevel() <= logging.DEBUG:
+    #     MediaExporter.log_fileinfo(
+    #         source_file,
+    #         exportdir[export_request.targetdir, export_request.target_filename]
+    #     )
+
+
+def _save_png(
     texture: Texture,
-    # targetdir: Path,
-    filename: str,
+    target_path: str,
     compression_level: int = 1,
     cache: dict = None,
     dry_run: bool = False
 ) -> None:
     """
     Store the image data into the target directory path,
-    with given filename="dir/out.png".
+    with given target_path="dir/out.png".
 
     :param texture: Texture with an image atlas.
-    :param targetdir: Directory where the image file is created.
-    :param filename: Name of the resulting image file.
+    :param target_path: Path to the resulting image file.
     :param compression_level: PNG compression level used for the resulting image file.
     :param dry_run: If True, create the PNG but don't save it as a file.
     :type texture: Texture
-    :type targetdir: Directory
-    :type filename: str
+    :type target_path: str
     :type compression_level: int
     :type dry_run: bool
     """
@@ -644,7 +737,7 @@ def save_png(
     }
 
     if not dry_run:
-        _, ext = os.path.splitext(filename)
+        _, ext = os.path.splitext(target_path)
 
         # only allow png
         if ext != b".png":
@@ -662,12 +755,8 @@ def save_png(
     )
 
     if not dry_run:
-        with open(filename, "wb") as imagefile:
+        with open(target_path, "wb") as imagefile:
             imagefile.write(png_data)
-
-    # if not dry_run:
-    #     with targetdir[filename].open("wb") as imagefile:
-    #         imagefile.write(png_data)
 
     if compr_params:
         texture.best_compr = (compression_level, *compr_params)
