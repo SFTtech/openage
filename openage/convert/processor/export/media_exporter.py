@@ -63,15 +63,14 @@ class MediaExporter:
             cur_export_requests = export_requests[media_type]
 
             kwargs = {}
-            if media_type is MediaType.TERRAIN:
-                info("-- Exporting terrain files...")
-                MediaExporter._export_terrains(
+
+            if media_type is MediaType.BLEND:
+                info("-- Exporting blend files...")
+                MediaExporter._export_blend(
                     cur_export_requests,
                     sourcedir,
                     exportdir,
-                    args.palettes,
-                    args.game_version,
-                    args.compression_level
+                    args.blend_mode_count
                 )
 
             elif media_type is MediaType.GRAPHICS:
@@ -96,13 +95,15 @@ class MediaExporter:
                     **kwargs
                 )
 
-            elif media_type is MediaType.BLEND:
-                info("-- Exporting blend files...")
-                MediaExporter._export_blend(
+            elif media_type is MediaType.TERRAIN:
+                info("-- Exporting terrain files...")
+                MediaExporter._export_terrains(
                     cur_export_requests,
                     sourcedir,
                     exportdir,
-                    args.blend_mode_count
+                    args.palettes,
+                    args.game_version,
+                    args.compression_level
                 )
 
         if args.debug_info > 5:
