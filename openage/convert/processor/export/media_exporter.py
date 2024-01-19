@@ -89,10 +89,16 @@ class MediaExporter:
                 continue
 
             elif media_type is MediaType.SOUNDS:
-                kwargs["loglevel"] = args.debug_info
                 kwargs["debugdir"] = args.debugdir
-                export_func = MediaExporter._export_sound
+                kwargs["loglevel"] = args.debug_info
                 info("-- Exporting sound files...")
+                MediaExporter._export_sound(
+                    cur_export_requests,
+                    sourcedir,
+                    exportdir,
+                    **kwargs
+                )
+                continue
 
             elif media_type is MediaType.BLEND:
                 kwargs["blend_mode_count"] = args.blend_mode_count
@@ -306,57 +312,91 @@ class MediaExporter:
 
     @staticmethod
     def _export_sound(
-        export_request: MediaExportRequest,
+        requests: list[MediaExportRequest],
         sourcedir: Path,
         exportdir: Path,
         **kwargs
     ) -> None:
         """
-        Convert and export a sound file.
+        Convert and export sound files (multi-threaded).
 
-        :param export_request: Export request for a sound file.
+        :param requests: Export requests for sound files.
         :param sourcedir: Directory where all media assets are mounted. Source subfolder and
                           source filename should be stored in the export request.
         :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
                           and target filename should be stored in the export request.
-        :type export_request: MediaExportRequest
+        :type requests: list[MediaExportRequest]
         :type sourcedir: Path
         :type exportdir: Path
         """
-        source_file = sourcedir[
-            export_request.get_type().value,
-            export_request.source_filename
-        ]
+        # Create a manager for sharing data between the workers and main process
+        with multiprocessing.Manager() as manager:
+            # Create a queue for data sharing
+            # it's not actually used for passing data, only for counting
+            # finished tasks
+            outqueue = manager.Queue()
 
-        if source_file.is_file():
-            with source_file.open_r() as infile:
-                media_file = infile.read()
+            # Create a pool of workers
+            with multiprocessing.Pool() as pool:
+                sound_count = len(requests)
+                for request in requests:
+                    # Feed the worker with the source file data (bytes) from the
+                    # main process
+                    #
+                    # This is necessary because some image files are inside an
+                    # archive and cannot be accessed asynchronously
+                    source_file = sourcedir[request.get_type().value,
+                                            request.source_filename]
 
-        else:
-            # TODO: Filter files that do not exist out sooner
-            debug_info.debug_not_found_sounds(kwargs["debugdir"], kwargs["loglevel"], source_file)
-            return
+                    if source_file.is_file():
+                        with source_file.open_r() as infile:
+                            media_file = infile.read()
 
-        from ...service.export.opus.opusenc import encode
+                    else:
+                        # TODO: Filter files that do not exist out sooner
+                        debug_info.debug_not_found_sounds(kwargs["debugdir"],
+                                                          kwargs["loglevel"],
+                                                          source_file)
+                        sound_count -= 1
+                        continue
 
-        soundata = encode(media_file)
+                    # The target path must be native
+                    target_path = exportdir[request.targetdir,
+                                            request.target_filename].resolve_native_path()
 
-        if isinstance(soundata, (str, int)):
-            raise RuntimeError(f"opusenc failed: {soundata}")
+                    # Start an export call in a worker process
+                    # The call is asynchronous, so the next worker can be
+                    # started immediately
+                    pool.apply_async(
+                        _export_sound,
+                        args=(
+                            media_file,
+                            outqueue,
+                            target_path
+                        )
+                    )
 
-        export_file = exportdir[
-            export_request.targetdir,
-            export_request.target_filename
-        ]
+                    # Log file information
+                    if get_loglevel() <= logging.DEBUG:
+                        MediaExporter.log_fileinfo(
+                            source_file,
+                            exportdir[request.targetdir, request.target_filename]
+                        )
 
-        with export_file.open_w() as outfile:
-            outfile.write(soundata)
+                    # Show progress
+                    print(f"-- Files done: {format_progress(outqueue.qsize(), sound_count)}",
+                          end = "\r", flush = True)
 
-        if get_loglevel() <= logging.DEBUG:
-            MediaExporter.log_fileinfo(
-                source_file,
-                exportdir[export_request.targetdir, export_request.target_filename]
-            )
+                # Close the pool since all workers have been started
+                pool.close()
+
+                # Show progress for remaining workers
+                while outqueue.qsize() < sound_count:
+                    print(f"-- Files done: {format_progress(outqueue.qsize(), sound_count)}",
+                          end = "\r", flush = True)
+
+                # Wait for all workers to finish
+                pool.join()
 
     @staticmethod
     def _export_terrains(
@@ -622,6 +662,33 @@ class MediaExporter:
                f"{(target_size / source_size * 100) - 100:+.1f}%)")
 
         dbg(log)
+
+
+def _export_sound(
+    sound_data: bytes,
+    outqueue: multiprocessing.Queue,
+    target_path: str
+) -> None:
+    """
+    Convert and export a sound file.
+
+    :param sound_data: Raw file data of the sound file.
+    :param outqueue: Queue for passing metadata to the main process.
+    :param target_path: Path to the resulting sound file.
+    :type sound_data: bytes
+    :type outqueue: multiprocessing.Queue
+    :type target_path: str
+    """
+    from ...service.export.opus.opusenc import encode
+    encoded = encode(sound_data)
+
+    if isinstance(encoded, (str, int)):
+        raise RuntimeError(f"opusenc failed: {encoded}")
+
+    with open(target_path, "wb") as outfile:
+        outfile.write(encoded)
+
+    outqueue.put(0)
 
 
 def _export_terrain(
