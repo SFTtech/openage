@@ -471,16 +471,6 @@ class MediaExporter:
                     # archive and cannot be accessed asynchronously
                     source_file = sourcedir[request.get_type().value,
                                             request.source_filename]
-                    if not source_file.exists():
-                        if source_file.suffix.lower() in (".smx", ".sld"):
-                            # Some DE2 graphics files have the wrong extension
-                            # Fall back to the SMP (beta) extension
-                            other_filename = request.source_filename[:-3] + "smp"
-                            source_file = sourcedir[
-                                request.get_type().value,
-                                other_filename
-                            ]
-                            request.set_source_filename(other_filename)
 
                     # The target path must be native
                     target_path = exportdir[request.targetdir,
@@ -793,6 +783,7 @@ def _export_terrain(
         with open(target_path, "wb") as imagefile:
             imagefile.write(graphics_data)
 
+        outqueue.put(0)
         return
 
     else:
