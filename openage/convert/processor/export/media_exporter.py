@@ -64,9 +64,15 @@ class MediaExporter:
         for media_type in export_requests.keys():
             cur_export_requests = export_requests[media_type]
 
+            # Function for reading the source file data
             read_data_func = None
+
+            # Multi-threaded function for exporting the source file data
             export_func = None
+
+            # Optional function for handling data in the outqueue
             handle_outqueue_func = None
+
             kwargs = {}
             if media_type is MediaType.BLEND:
                 read_data_func = MediaExporter._get_blend_data

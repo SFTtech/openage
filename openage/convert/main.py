@@ -53,6 +53,10 @@ def convert_assets(
     if "compression_level" not in vars(args):
         args.compression_level = 1
 
+    # Set worker count for multi-threading if it was not set
+    if "jobs" not in vars(args):
+        args.jobs = None
+
     # Set verbosity for debug output
     if "debug_info" not in vars(args) or not args.debug_info:
         if args.devmode:
