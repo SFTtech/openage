@@ -266,24 +266,33 @@ class MediaExporter:
                             request.set_source_filename(other_filename)
 
                     # The target path must be native
-                    target_path = exportdir[request.targetdir,
-                                            request.target_filename].resolve_native_path()
+                    target_path = exportdir[request.targetdir, request.target_filename]
 
                     # Start an export call in a worker process
                     # The call is asynchronous, so the next worker can be
                     # started immediately
-                    pool.apply_async(
-                        _export_texture,
-                        args=(
-                            idx,
-                            source_file.open("rb").read(),
-                            outqueue,
-                            request.source_filename,
-                            target_path,
-                            palettes,
-                            compression_level,
-                            cache_info
-                        )
+                    # pool.apply_async(
+                    #     _export_texture,
+                    #     args=(
+                    #         idx,
+                    #         source_file.open("rb").read(),
+                    #         outqueue,
+                    #         request.source_filename,
+                    #         target_path,
+                    #         palettes,
+                    #         compression_level,
+                    #         cache_info
+                    #     )
+                    # )
+                    _export_texture(
+                        idx,
+                        source_file.open("rb").read(),
+                        outqueue,
+                        request.source_filename,
+                        target_path,
+                        palettes,
+                        compression_level,
+                        cache_info
                     )
 
                     # Log file information
@@ -915,12 +924,12 @@ def _save_png(
     }
 
     if not dry_run:
-        _, ext = os.path.splitext(target_path)
+        ext = target_path.suffix.lower()
 
         # only allow png
-        if ext != b".png":
+        if ext != ".png":
             raise ValueError("Filename invalid, a texture must be saved"
-                             f" as '*.png', not '*.{ext}'")
+                             f" as '*.png', not '*{ext}'")
 
     compression_method = compression_levels.get(
         compression_level,
@@ -933,7 +942,7 @@ def _save_png(
     )
 
     if not dry_run:
-        with open(target_path, "wb") as imagefile:
+        with target_path.open("wb") as imagefile:
             imagefile.write(png_data)
 
     if compr_params:
