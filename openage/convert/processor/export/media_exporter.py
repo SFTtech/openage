@@ -170,8 +170,8 @@ class MediaExporter:
                                             request.source_filename]
 
                     # The target path must be native
-                    target_path = exportdir[request.targetdir,
-                                            request.target_filename].resolve_native_path()
+                    targetdir = exportdir[request.targetdir]
+                    target_filename = request.target_filename
 
                     # Start an export call in a worker process
                     # The call is asynchronous, so the next worker can be
@@ -181,7 +181,8 @@ class MediaExporter:
                         args=(
                             source_file.open("rb").read(),
                             outqueue,
-                            target_path,
+                            targetdir,
+                            target_filename,
                             blend_mode_count
                         )
                     )
@@ -271,28 +272,18 @@ class MediaExporter:
                     # Start an export call in a worker process
                     # The call is asynchronous, so the next worker can be
                     # started immediately
-                    # pool.apply_async(
-                    #     _export_texture,
-                    #     args=(
-                    #         idx,
-                    #         source_file.open("rb").read(),
-                    #         outqueue,
-                    #         request.source_filename,
-                    #         target_path,
-                    #         palettes,
-                    #         compression_level,
-                    #         cache_info
-                    #     )
-                    # )
-                    _export_texture(
-                        idx,
-                        source_file.open("rb").read(),
-                        outqueue,
-                        request.source_filename,
-                        target_path,
-                        palettes,
-                        compression_level,
-                        cache_info
+                    pool.apply_async(
+                        _export_texture,
+                        args=(
+                            idx,
+                            source_file.open("rb").read(),
+                            outqueue,
+                            request.source_filename,
+                            target_path,
+                            palettes,
+                            compression_level,
+                            cache_info
+                        )
                     )
 
                     # Log file information
@@ -399,8 +390,7 @@ class MediaExporter:
                         continue
 
                     # The target path must be native
-                    target_path = exportdir[request.targetdir,
-                                            request.target_filename].resolve_native_path()
+                    target_path = exportdir[request.targetdir, request.target_filename]
 
                     # Start an export call in a worker process
                     # The call is asynchronous, so the next worker can be
@@ -482,8 +472,7 @@ class MediaExporter:
                                             request.source_filename]
 
                     # The target path must be native
-                    target_path = exportdir[request.targetdir,
-                                            request.target_filename].resolve_native_path()
+                    target_path = exportdir[request.targetdir, request.target_filename]
 
                     # Start an export call in a worker process
                     # The call is asynchronous, so the next worker can be
@@ -695,7 +684,8 @@ class MediaExporter:
 def _export_blend(
     blendfile_data: bytes,
     outqueue: multiprocessing.Queue,
-    target_path: str,
+    targetdir: Path,
+    target_filename: str,
     blend_mode_count: int = None
 ) -> None:
     """
@@ -707,7 +697,7 @@ def _export_blend(
     :param blend_mode_count: Number of blending modes extracted from the source file.
     :type blendfile_data: bytes
     :type outqueue: multiprocessing.Queue
-    :type target_path: str
+    :type target_path: openage.util.fslike.path.Path
     :type blend_mode_count: int
     """
     blend_data = Blendomatic(blendfile_data, blend_mode_count)
@@ -719,7 +709,7 @@ def _export_blend(
         merge_frames(texture)
         _save_png(
             texture,
-            f"{target_path}{idx}.png"
+            targetdir.joinpath(f"{target_filename}_{idx}.png")
         )
 
     outqueue.put(0)
@@ -728,7 +718,7 @@ def _export_blend(
 def _export_sound(
     sound_data: bytes,
     outqueue: multiprocessing.Queue,
-    target_path: str
+    target_path: Path
 ) -> None:
     """
     Convert and export a sound file.
@@ -738,7 +728,7 @@ def _export_sound(
     :param target_path: Path to the resulting sound file.
     :type sound_data: bytes
     :type outqueue: multiprocessing.Queue
-    :type target_path: str
+    :type target_path: openage.util.fslike.path.Path
     """
     from ...service.export.opus.opusenc import encode
     encoded = encode(sound_data)
@@ -746,7 +736,7 @@ def _export_sound(
     if isinstance(encoded, (str, int)):
         raise RuntimeError(f"opusenc failed: {encoded}")
 
-    with open(target_path, "wb") as outfile:
+    with target_path.open("wb") as outfile:
         outfile.write(encoded)
 
     outqueue.put(0)
@@ -756,7 +746,7 @@ def _export_terrain(
     graphics_data: bytes,
     outqueue: multiprocessing.Queue,
     source_filename: str,
-    target_path: str,
+    target_path: Path,
     palettes: dict[int, ColorTable],
     compression_level: int,
     game_version: GameVersion
@@ -774,7 +764,7 @@ def _export_terrain(
     :type graphics_data: bytes
     :type outqueue: multiprocessing.Queue
     :type source_filename: str
-    :type target_path: str
+    :type target_path: openage.util.fslike.path.Path
     :type palettes: dict
     :type compression_level: int
     :type game_version: GameVersion
@@ -789,7 +779,7 @@ def _export_terrain(
         pass
 
     elif file_ext == "png":
-        with open(target_path, "wb") as imagefile:
+        with target_path.open("wb") as imagefile:
             imagefile.write(graphics_data)
 
         outqueue.put(0)
@@ -823,7 +813,7 @@ def _export_texture(
     graphics_data: bytes,
     outqueue: multiprocessing.Queue,
     source_filename: str,
-    target_path: str,
+    target_path: Path,
     palettes: dict[int, ColorTable],
     compression_level: int,
     cache_info: dict = None
@@ -843,7 +833,7 @@ def _export_texture(
     :type graphics_data: bytes
     :type outqueue: multiprocessing.Queue
     :type source_filename: str
-    :type target_path: str
+    :type target_path: openage.util.fslike.path.Path
     :type palettes: dict
     :type compression_level: int
     :type cache_info: tuple
@@ -895,7 +885,7 @@ def _export_texture(
 
 def _save_png(
     texture: Texture,
-    target_path: str,
+    target_path: Path,
     compression_level: int = 1,
     cache: dict = None,
     dry_run: bool = False
@@ -909,7 +899,7 @@ def _save_png(
     :param compression_level: PNG compression level used for the resulting image file.
     :param dry_run: If True, create the PNG but don't save it as a file.
     :type texture: Texture
-    :type target_path: str
+    :type target_path: openage.util.fslike.path.Path
     :type compression_level: int
     :type dry_run: bool
     """
