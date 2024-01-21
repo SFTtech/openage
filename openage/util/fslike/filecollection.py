@@ -1,9 +1,11 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 """
 Provides Filecollection, a utility class for combining multiple file-like
 objects to a FSLikeObject.
 """
+from __future__ import annotations
+import typing
 
 from collections import OrderedDict
 from io import UnsupportedOperation
@@ -11,6 +13,9 @@ from typing import NoReturn
 
 from .abstract import FSLikeObject
 from .path import Path
+
+if typing.TYPE_CHECKING:
+    from openage.util.filelike.stream import StreamFragment
 
 
 class FileCollection(FSLikeObject):
@@ -59,14 +64,12 @@ class FileCollection(FSLikeObject):
 
         return entries
 
-    def add_fileentry(self, parts, fileentry):
+    def add_fileentry(self, parts, fileentry: FileEntry):
         """
         Adds a file entry (and parent directory entries, if needed).
 
         This method should not be called directly; instead, use the
         add_file method of Path objects that were obtained from this.
-
-        fileentry must be open_r, open_w, size, mtime.
         """
         if not parts:
             raise IsADirectoryError("FileCollection.root is a directory")
@@ -79,11 +82,9 @@ class FileCollection(FSLikeObject):
 
         entries[0][name] = fileentry
 
-    def get_fileentry(self, parts):
+    def get_fileentry(self, parts) -> FileEntry:
         """
         Gets a file entry. Helper method for internal use.
-
-        Returns open_r, open_w, size, mtime
         """
         if not parts:
             raise IsADirectoryError(
@@ -101,23 +102,29 @@ class FileCollection(FSLikeObject):
 
         return entries[0][name]
 
-    def open_r(self, parts) -> None:
-        open_r, _, _, _ = self.get_fileentry(parts)
+    def open_r(self, parts: list[bytes]) -> StreamFragment:
+        entry = self.get_fileentry(parts)
+
+        open_r = entry.open_r()
 
         if open_r is None:
             raise UnsupportedOperation(
                 "not readable: " +
                 b"/".join(parts).decode(errors='replace'))
 
-        return open_r()
+        return open_r
 
-    def open_w(self, parts) -> None:
-        _, open_w, _, _ = self.get_fileentry(parts)
+    def open_w(self, parts: list[bytes]):
+        entry = self.get_fileentry(parts)
+
+        open_w = entry.open_w()
 
         if open_w is None:
             raise UnsupportedOperation(
                 "not writable: " +
                 b"/".join(parts).decode(errors='replace'))
+
+        return open_w
 
     def list(self, parts):
         fileentries, subdirs = self.get_direntries(parts)
@@ -126,20 +133,14 @@ class FileCollection(FSLikeObject):
         yield from fileentries
 
     def filesize(self, parts) -> int:
-        _, _, filesize, _ = self.get_fileentry(parts)
+        entry = self.get_fileentry(parts)
 
-        if filesize is None:
-            return None
-
-        return filesize()
+        return entry.size()
 
     def mtime(self, parts) -> float:
-        _, _, _, mtime = self.get_fileentry(parts)
+        entry = self.get_fileentry(parts)
 
-        if mtime is None:
-            return None
-
-        return mtime()
+        return entry.mtime()
 
     def mkdirs(self, parts) -> None:
         self.get_direntries(parts, create=True)
@@ -248,3 +249,34 @@ class FileCollectionPath(Path):
             open_w = None
 
         self.add_file(path.open_r, open_w, path.filesize, path.mtime)
+
+
+class FileEntry:
+    """
+    Entry in a file collection archive.
+    """
+    # pylint: disable=no-self-use
+
+    def open_r(self) -> StreamFragment:
+        """
+        Returns a file-like object for reading.
+        """
+        raise UnsupportedOperation("FileEntry.open_r")
+
+    def open_w(self):
+        """
+        Returns a file-like object for writing.
+        """
+        raise UnsupportedOperation("FileEntry.open_w")
+
+    def size(self) -> int:
+        """
+        Returns the size of the entr<.
+        """
+        raise UnsupportedOperation("FileEntry.size")
+
+    def mtime(self) -> float:
+        """
+        Returns the modification time of the entry.
+        """
+        raise UnsupportedOperation("FileEntry.mtime")

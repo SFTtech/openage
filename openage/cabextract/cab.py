@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 """
 Provides CABFile, an extractor for the MSCAB format.
@@ -18,7 +18,7 @@ from ..log import dbg
 from ..util.filelike.readonly import PosSavingReadOnlyFileLikeObject
 from ..util.filelike.stream import StreamFragment
 from ..util.files import read_guaranteed, read_nullterminated_string
-from ..util.fslike.filecollection import FileCollection
+from ..util.fslike.filecollection import FileCollection, FileEntry
 from ..util.math import INF
 from ..util.strings import try_decode
 from ..util.struct import NamedStruct, Flags
@@ -216,6 +216,28 @@ class CFData(NamedStruct):
             raise ValueError("checksum error in MSCAB data block")
 
 
+class CABEntry(FileEntry):
+    """
+    Entry in a CAB file.
+    """
+
+    def __init__(self, fileobj: CFFile):
+        self.fileobj = fileobj
+
+    def open_r(self):
+        return StreamFragment(
+            self.fileobj.folder.plain_stream,
+            self.fileobj.pos,
+            self.fileobj.size
+        )
+
+    def size(self) -> int:
+        return self.fileobj.size
+
+    def mtime(self) -> float:
+        return self.fileobj.timestamp
+
+
 class CABFile(FileCollection):
     """
     The actual file system-like CAB object.
@@ -275,20 +297,9 @@ class CABFile(FileCollection):
                     "CABFile has multiple entries with the same path: " +
                     b'/'.join(fileobj.path).decode())
 
-            def open_r(fileobj=fileobj):
-                """ Returns a opened ('rb') file-like object for fileobj. """
-                return StreamFragment(
-                    fileobj.folder.plain_stream,
-                    fileobj.pos,
-                    fileobj.size
-                )
+            file_entry = CABEntry(fileobj)
 
-            self.add_fileentry(fileobj.path, (
-                open_r,
-                None,
-                lambda fileobj=fileobj: fileobj.size,
-                lambda fileobj=fileobj: fileobj.timestamp
-            ))
+            self.add_fileentry(fileobj.path, file_entry)
 
     def __repr__(self):
         return "CABFile"
