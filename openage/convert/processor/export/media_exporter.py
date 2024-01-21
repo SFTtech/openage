@@ -31,6 +31,8 @@ if typing.TYPE_CHECKING:
 class MediaExporter:
     """
     Provides functions for converting media files and writing them to a targetdir.
+
+    TODO: Avoid code duplication in the export functions.
     """
 
     @staticmethod
@@ -62,49 +64,108 @@ class MediaExporter:
         for media_type in export_requests.keys():
             cur_export_requests = export_requests[media_type]
 
+            read_data_func = None
+            export_func = None
+            handle_outqueue_func = None
             kwargs = {}
-
             if media_type is MediaType.BLEND:
+                read_data_func = MediaExporter._get_blend_data
+                export_func = _export_blend
+                itargs = (sourcedir, exportdir)
+                kwargs["blend_mode_count"] = args.blend_mode_count
                 info("-- Exporting blend files...")
-                MediaExporter._export_blend(
-                    cur_export_requests,
-                    sourcedir,
-                    exportdir,
-                    args.blend_mode_count
-                )
 
             elif media_type is MediaType.GRAPHICS:
+                read_data_func = MediaExporter._get_graphics_data
+                export_func = _export_texture
+                handle_outqueue_func = MediaExporter._handle_graphics_outqueue
+                itargs = (args.palettes, args.compression_level)
+                kwargs["cache_info"] = cache_info
                 info("-- Exporting graphics files...")
-                MediaExporter._export_graphics(
-                    cur_export_requests,
-                    sourcedir,
-                    exportdir,
-                    args.palettes,
-                    args.compression_level,
-                    cache_info
-                )
 
             elif media_type is MediaType.SOUNDS:
+                read_data_func = MediaExporter._get_sound_data
+                export_func = _export_sound
+                itargs = tuple()
                 kwargs["debugdir"] = args.debugdir
                 kwargs["loglevel"] = args.debug_info
                 info("-- Exporting sound files...")
-                MediaExporter._export_sound(
-                    cur_export_requests,
-                    sourcedir,
-                    exportdir,
-                    **kwargs
-                )
 
             elif media_type is MediaType.TERRAIN:
+                read_data_func = MediaExporter._get_terrain_data
+                export_func = _export_terrain
+                itargs = (args.palettes, args.compression_level, args.game_version)
                 info("-- Exporting terrain files...")
-                MediaExporter._export_terrains(
-                    cur_export_requests,
-                    sourcedir,
-                    exportdir,
-                    args.palettes,
-                    args.game_version,
-                    args.compression_level
-                )
+
+            # Create a manager for sharing data between the workers and main process
+            with multiprocessing.Manager() as manager:
+                # Workers write the image metadata to this queue
+                # so that it can be forwarded to the export requests
+                #
+                # we cannot do this in a worker process directly
+                # because the export requests cannot be pickled
+                outqueue = manager.Queue()
+
+                expected_size = len(cur_export_requests)
+
+                worker_count = args.jobs
+                if worker_count is None:
+                    worker_count = min(multiprocessing.cpu_count(), expected_size)
+
+                # Create a pool of workers
+                with multiprocessing.Pool(worker_count) as pool:
+                    for idx, request in enumerate(cur_export_requests):
+                        # Feed the worker with the source file data (bytes) from the
+                        # main process
+                        #
+                        # This is necessary because some image files are inside an
+                        # archive and cannot be accessed asynchronously
+                        source_data = read_data_func(request, sourcedir, **kwargs)
+                        if source_data is None:
+                            expected_size -= 1
+                            continue
+
+                        # The target path must be native
+                        target_path = exportdir[request.targetdir, request.target_filename]
+
+                        # Start an export call in a worker process
+                        # The call is asynchronous, so the next worker can be
+                        # started immediately
+                        pool.apply_async(
+                            export_func,
+                            args=(
+                                idx,
+                                source_data,
+                                outqueue,
+                                request.source_filename,
+                                target_path,
+                                *itargs
+                            ),
+                            kwds=kwargs
+                        )
+
+                        # Log file information
+                        if get_loglevel() <= logging.DEBUG:
+                            MediaExporter.log_fileinfo(
+                                sourcedir[request.get_type().value, request.source_filename],
+                                exportdir[request.targetdir, request.target_filename]
+                            )
+
+                        # Show progress
+                        MediaExporter._show_progress(outqueue.qsize(), expected_size)
+
+                    # Close the pool since all workers have been started
+                    pool.close()
+
+                    # Show progress for remaining workers
+                    while outqueue.qsize() < expected_size:
+                        MediaExporter._show_progress(outqueue.qsize(), expected_size)
+
+                    # Wait for all workers to finish
+                    pool.join()
+
+                if handle_outqueue_func:
+                    handle_outqueue_func(outqueue, cur_export_requests)
 
         if args.debug_info > 5:
             cachedata = {}
@@ -129,6 +190,138 @@ class MediaExporter:
                 cachedata,
                 args.game_version
             )
+
+    @staticmethod
+    def _get_blend_data(
+        request: MediaExportRequest,
+        sourcedir: Path,
+        **kwargs  # pylint: disable=unused-argument
+    ) -> bytes:
+        """
+        Get the raw file data of a blending mask.
+
+        :param request: Export request for a blending mask.
+        :param sourcedir: Directory where all media assets are mounted.
+        :type request: MediaExportRequest
+        :type sourcedir: Path
+        """
+        source_file = sourcedir[request.get_type().value,
+                                request.source_filename]
+
+        return source_file.open("rb").read()
+
+    @staticmethod
+    def _get_graphics_data(
+        request: MediaExportRequest,
+        sourcedir: Path,
+        **kwargs  # pylint: disable=unused-argument
+    ) -> bytes:
+        """
+        Get the raw file data of a graphics file.
+
+        :param request: Export request for a graphics file.
+        :param sourcedir: Directory where all media assets are mounted.
+        :type request: MediaExportRequest
+        :type sourcedir: Path
+        """
+        source_file = sourcedir[request.get_type().value,
+                                request.source_filename]
+        if not source_file.exists():
+            if source_file.suffix.lower() in (".smx", ".sld"):
+                # Some DE2 graphics files have the wrong extension
+                # Fall back to the SMP (beta) extension
+                other_filename = request.source_filename[:-3] + "smp"
+                source_file = sourcedir[
+                    request.get_type().value,
+                    other_filename
+                ]
+                request.set_source_filename(other_filename)
+
+        return source_file.open("rb").read()
+
+    @staticmethod
+    def _get_sound_data(
+        request: MediaExportRequest,
+        sourcedir: Path,
+        **kwargs
+    ) -> bytes | None:
+        """
+        Get the raw file data of a sound file.
+
+        :param request: Export request for a sound file.
+        :param sourcedir: Directory where all media assets are mounted.
+        :type request: MediaExportRequest
+        :type sourcedir: Path
+        """
+        source_file = sourcedir[request.get_type().value,
+                                request.source_filename]
+
+        if not source_file.is_file():
+            # TODO: Filter files that do not exist out sooner
+            debug_info.debug_not_found_sounds(kwargs["debugdir"],
+                                              kwargs["loglevel"],
+                                              source_file)
+            return None
+
+        return source_file.open("rb").read()
+
+    @staticmethod
+    def _get_terrain_data(
+        request: MediaExportRequest,
+        sourcedir: Path,
+        **kwargs  # pylint: disable=unused-argument
+    ) -> bytes:
+        """
+        Get the raw file data of a terrain graphics file.
+
+        :param request: Export request for a terrain graphics file.
+        :param sourcedir: Directory where all media assets are mounted.
+        :type request: MediaExportRequest
+        :type sourcedir: Path
+        """
+        source_file = sourcedir[request.get_type().value,
+                                request.source_filename]
+
+        return source_file.open("rb").read()
+
+    @staticmethod
+    def _handle_graphics_outqueue(
+        outqueue: multiprocessing.Queue,
+        requests: list[MediaExportRequest]
+    ):
+        """
+        Collect the metadata from the workers and forward it to the
+        export requests.
+
+        This must be called before the manager of the queue is shutdown!
+
+        :param outqueue: Queue for passing metadata to the main process.
+        :param requests: Export requests for graphics files.
+        :type outqueue: multiprocessing.Queue
+        :type requests: list[MediaExportRequest]
+        """
+        while not outqueue.empty():
+            idx, metadata = outqueue.get()
+            update_data = {requests[idx].target_filename: metadata}
+            requests[idx].set_changed()
+            requests[idx].notify_observers(update_data)
+            requests[idx].clear_changed()
+
+    @staticmethod
+    def _show_progress(
+        current_size: int,
+        total_size: int,
+    ):
+        """
+        Show the progress of the export process.
+
+        :param current_size: Number of files that have been exported.
+        :param total_size: Total number of files to export.
+        :type current_size: int
+        :type total_size: int
+        """
+        print(f"-- Files done: {format_progress(current_size, total_size)}",
+              end = "\r", flush = True)
 
     @staticmethod
     def _export_blend(
@@ -694,8 +887,10 @@ class MediaExporter:
 
 
 def _export_blend(
+    request_id: int,
     blendfile_data: bytes,
     outqueue: multiprocessing.Queue,
+    source_filename: str,  # pylint: disable=unused-argument
     targetdir: Path,
     target_filename: str,
     blend_mode_count: int = None
@@ -724,13 +919,16 @@ def _export_blend(
             targetdir.joinpath(f"{target_filename}_{idx}.png")
         )
 
-    outqueue.put(0)
+    outqueue.put(request_id)
 
 
 def _export_sound(
+    request_id: int,
     sound_data: bytes,
     outqueue: multiprocessing.Queue,
-    target_path: Path
+    source_filename: str,  # pylint: disable=unused-argument
+    target_path: Path,
+    **kwargs  # pylint: disable=unused-argument
 ) -> None:
     """
     Convert and export a sound file.
@@ -751,10 +949,11 @@ def _export_sound(
     with target_path.open("wb") as outfile:
         outfile.write(encoded)
 
-    outqueue.put(0)
+    outqueue.put(request_id)
 
 
 def _export_terrain(
+    request_id: int,
     graphics_data: bytes,
     outqueue: multiprocessing.Queue,
     source_filename: str,
@@ -794,7 +993,7 @@ def _export_terrain(
         with target_path.open("wb") as imagefile:
             imagefile.write(graphics_data)
 
-        outqueue.put(0)
+        outqueue.put(request_id)
         return
 
     else:
@@ -817,11 +1016,11 @@ def _export_terrain(
         compression_level=compression_level
     )
 
-    outqueue.put(0)
+    outqueue.put(request_id)
 
 
 def _export_texture(
-    export_request_id: int,
+    request_id: int,
     graphics_data: bytes,
     outqueue: multiprocessing.Queue,
     source_filename: str,
@@ -833,7 +1032,7 @@ def _export_texture(
     """
     Convert and export a graphics file to a PNG texture.
 
-    :param export_request_id: ID of the export request.
+    :param request_id: ID of the export request.
     :param graphics_data: Raw file data of the graphics file.
     :param outqueue: Queue for passing the image metadata to the main process.
     :param source_filename: Filename of the source file.
@@ -841,7 +1040,7 @@ def _export_texture(
     :param palettes: Palettes used by the game.
     :param compression_level: PNG compression level for the resulting image file.
     :param cache_info: Media cache information with compression parameters from a previous run.
-    :type export_request_id: int
+    :type request_id: int
     :type graphics_data: bytes
     :type outqueue: multiprocessing.Queue
     :type source_filename: str
@@ -891,7 +1090,7 @@ def _export_texture(
         compression_level=compression_level,
         cache=compr_cache
     )
-    metadata = (export_request_id, texture.get_metadata().copy())
+    metadata = (request_id, texture.get_metadata().copy())
     outqueue.put(metadata)
 
 
