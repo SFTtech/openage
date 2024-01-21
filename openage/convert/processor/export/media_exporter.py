@@ -135,7 +135,8 @@ class MediaExporter:
         requests: list[MediaExportRequest],
         sourcedir: Path,
         exportdir: Path,
-        blend_mode_count: int = None
+        blend_mode_count: int = None,
+        jobs: int = None
     ) -> None:
         """
         Convert and export a blending mode.
@@ -146,10 +147,12 @@ class MediaExporter:
         :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
                           and target filename should be stored in the export request.
         :param blend_mode_count: Number of blending modes extracted from the source file.
+        :param jobs: Number of worker processes to use (default: number of CPU cores).
         :type requests: list[MediaExportRequest]
         :type sourcedir: Path
         :type exportdir: Path
         :type blend_mode_count: int
+        :type jobs: int
         """
         # Create a manager for sharing data between the workers and main process
         with multiprocessing.Manager() as manager:
@@ -159,7 +162,7 @@ class MediaExporter:
             outqueue = manager.Queue()
 
             # Create a pool of workers
-            with multiprocessing.Pool() as pool:
+            with multiprocessing.Pool(jobs) as pool:
                 for request in requests:
                     # Feed the worker with the source file data (bytes) from the
                     # main process
@@ -216,7 +219,8 @@ class MediaExporter:
         exportdir: Path,
         palettes: dict[int, ColorTable],
         compression_level: int,
-        cache_info: dict = None
+        cache_info: dict = None,
+        jobs: int = None
     ) -> None:
         """
         Convert and export graphics file requests (multi-threaded).
@@ -229,12 +233,14 @@ class MediaExporter:
         :param palettes: Palettes used by the game.
         :param compression_level: PNG compression level for the resulting image file.
         :param cache_info: Media cache information with compression parameters from a previous run.
+        :param jobs: Number of worker processes to use (default: number of CPU cores).
         :type requests: list[MediaExportRequest]
         :type sourcedir: Path
         :type exportdir: Path
         :type palettes: dict
         :type compression_level: int
         :type cache_info: tuple
+        :type jobs: int
         """
         # Create a manager for sharing data between the workers and main process
         with multiprocessing.Manager() as manager:
@@ -246,7 +252,7 @@ class MediaExporter:
             outqueue = manager.Queue()
 
             # Create a pool of workers
-            with multiprocessing.Pool() as pool:
+            with multiprocessing.Pool(jobs) as pool:
                 for idx, request in enumerate(requests):
                     # Feed the worker with the source file data (bytes) from the
                     # main process
@@ -344,6 +350,7 @@ class MediaExporter:
         requests: list[MediaExportRequest],
         sourcedir: Path,
         exportdir: Path,
+        jobs: int = None,
         **kwargs
     ) -> None:
         """
@@ -354,9 +361,11 @@ class MediaExporter:
                           source filename should be stored in the export request.
         :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
                           and target filename should be stored in the export request.
+        :param jobs: Number of worker processes to use (default: number of CPU cores).
         :type requests: list[MediaExportRequest]
         :type sourcedir: Path
         :type exportdir: Path
+        :type jobs: int
         """
         # Create a manager for sharing data between the workers and main process
         with multiprocessing.Manager() as manager:
@@ -366,7 +375,7 @@ class MediaExporter:
             outqueue = manager.Queue()
 
             # Create a pool of workers
-            with multiprocessing.Pool() as pool:
+            with multiprocessing.Pool(jobs) as pool:
                 sound_count = len(requests)
                 for request in requests:
                     # Feed the worker with the source file data (bytes) from the
@@ -433,7 +442,8 @@ class MediaExporter:
         exportdir: Path,
         palettes: dict[int, ColorTable],
         game_version: GameVersion,
-        compression_level: int
+        compression_level: int,
+        jobs: int = None
     ) -> None:
         """
         Convert and export terrain graphics files (multi-threaded).
@@ -446,12 +456,14 @@ class MediaExporter:
         :param game_version: Game edition and expansion info.
         :param palettes: Palettes used by the game.
         :param compression_level: PNG compression level for the resulting image file.
+        :param jobs: Number of worker processes to use (default: number of CPU cores).
         :type requests: list[MediaExportRequest]
         :type sourcedir: Directory
         :type exportdir: Directory
         :type palettes: dict
         :type game_version: GameVersion
         :type compression_level: int
+        :type jobs: int
         """
         # Create a manager for sharing data between the workers and main process
         with multiprocessing.Manager() as manager:
@@ -461,7 +473,7 @@ class MediaExporter:
             outqueue = manager.Queue()
 
             # Create a pool of workers
-            with multiprocessing.Pool() as pool:
+            with multiprocessing.Pool(jobs) as pool:
                 for request in requests:
                     # Feed the worker with the source file data (bytes) from the
                     # main process
