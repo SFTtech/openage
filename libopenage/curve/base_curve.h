@@ -4,7 +4,6 @@
 
 #include <cstddef>
 #include <functional>
-#include <iterator>
 #include <memory>
 #include <sstream>
 #include <string>
@@ -40,7 +39,7 @@ public:
 		_id{id},
 		_idstr{idstr},
 		loop{loop},
-		last_element{this->container.begin()} {}
+		last_element{this->container.size()} {}
 
 	virtual ~BaseCurve() = default;
 
@@ -193,9 +192,9 @@ protected:
 	const std::shared_ptr<event::EventLoop> loop;
 
 	/**
-	 * Cache the iterator for quickly finding the last accessed element (usually the end)
+	 * Cache the index of the last accessed element (usually the end).
 	 */
-	mutable typename KeyframeContainer<T>::iterator last_element;
+	mutable typename KeyframeContainer<T>::index_t last_element;
 };
 
 
@@ -204,7 +203,7 @@ void BaseCurve<T>::set_last(const time::time_t &at, const T &value) {
 	auto hint = this->container.last(at, this->last_element);
 
 	// erase max one same-time value
-	if (hint->time == at) {
+	if (this->container.get(hint).time() == at) {
 		hint--;
 	}
 
@@ -221,7 +220,7 @@ template <typename T>
 void BaseCurve<T>::set_insert(const time::time_t &at, const T &value) {
 	auto hint = this->container.insert_after(at, value, this->last_element);
 	// check if this is now the final keyframe
-	if (hint->time > this->last_element->time) {
+	if (this->container.get(hint).time() > this->container.get(this->last_element).time()) {
 		this->last_element = hint;
 	}
 	this->changes(at);
@@ -244,16 +243,18 @@ void BaseCurve<T>::erase(const time::time_t &at) {
 
 template <typename T>
 std::pair<time::time_t, const T> BaseCurve<T>::frame(const time::time_t &time) const {
-	auto e = this->container.last(time, this->container.end());
-	return std::make_pair(e->time, e->value);
+	auto e = this->container.last(time, this->container.size());
+	auto elem = this->container.get(e);
+	return std::make_pair(elem.time(), elem.val());
 }
 
 
 template <typename T>
 std::pair<time::time_t, const T> BaseCurve<T>::next_frame(const time::time_t &time) const {
-	auto e = this->container.last(time, this->container.end());
+	auto e = this->container.last(time, this->container.size());
 	e++;
-	return std::make_pair(e->time, e->value);
+	auto elem = this->container.get(e);
+	return std::make_pair(elem.time(), elem.val());
 }
 
 template <typename T>
@@ -261,7 +262,7 @@ std::string BaseCurve<T>::str() const {
 	std::stringstream ss;
 	ss << "Curve[" << this->idstr() << "]{" << std::endl;
 	for (const auto &keyframe : this->container) {
-		ss << "    " << keyframe.time << ": " << keyframe.value << "," << std::endl;
+		ss << "    " << keyframe.time() << ": " << keyframe.val() << "," << std::endl;
 	}
 	ss << "}";
 
@@ -272,10 +273,10 @@ template <typename T>
 void BaseCurve<T>::check_integrity() const {
 	time::time_t last_time = time::TIME_MIN;
 	for (const auto &keyframe : this->container) {
-		if (keyframe.time < last_time) {
+		if (keyframe.time() < last_time) {
 			throw Error{MSG(err) << "curve is broken after t=" << last_time << ": " << this->str()};
 		}
-		last_time = keyframe.time;
+		last_time = keyframe.time();
 	}
 }
 

@@ -40,7 +40,7 @@ public:
 
 template <typename T>
 T Interpolated<T>::get(const time::time_t &time) const {
-	const auto &e = this->container.last(time, this->last_element);
+	const auto e = this->container.last(time, this->last_element);
 	this->last_element = e;
 
 	auto nxt = e;
@@ -48,21 +48,21 @@ T Interpolated<T>::get(const time::time_t &time) const {
 
 	time::time_t interval = 0;
 
-	auto offset = time - e->time;
+	auto offset = time - this->container.get(e).time();
 
-	if (nxt != this->container.end()) {
-		interval = nxt->time - e->time;
+	if (nxt != this->container.size()) {
+		interval = this->container.get(nxt).time() - this->container.get(e).time();
 	}
 
 	// here, offset > interval will never hold.
 	// otherwise the underlying storage is broken.
 
 	// If the next element is at the same time, just return the value of this one.
-	if (nxt == this->container.end() // use the last curve value
-	    || offset == 0               // values equal -> don't need to interpolate
-	    || interval == 0) {          // values at the same time -> division-by-zero-error
+	if (nxt == this->container.size() // use the last curve value
+	    || offset == 0 // values equal -> don't need to interpolate
+	    || interval == 0) { // values at the same time -> division-by-zero-error
 
-		return e->value;
+		return this->container.get(e).val();
 	}
 	else {
 		// Interpolation between time(now) and time(next) that has elapsed
@@ -72,7 +72,8 @@ T Interpolated<T>::get(const time::time_t &time) const {
 		// TODO: nxt->value - e->value will produce wrong results if
 		//       the nxt->value < e->value and curve element type is unsigned
 		//       Example: nxt = 2, e = 4; type = uint8_t ==> 2 - 4 = 254
-		return e->value + (nxt->value - e->value) * elapsed_frac;
+		auto diff_value = (this->container.get(nxt).val() - this->container.get(e).val()) * elapsed_frac;
+		return this->container.get(e).val() + diff_value;
 	}
 }
 

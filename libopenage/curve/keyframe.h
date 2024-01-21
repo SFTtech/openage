@@ -27,16 +27,26 @@ public:
 	 * New, default-constructed element at the given time
 	 */
 	Keyframe(const time::time_t &time) :
-		time{time} {}
+		timestamp{time} {}
 
 	/**
 	 * New element fron time and value
 	 */
 	Keyframe(const time::time_t &time, const T &value) :
-		time{time},
+		timestamp{time},
 		value{value} {}
 
-	const time::time_t time = time::TIME_MIN;
+	const time::time_t &time() const {
+		return this->timestamp;
+	}
+
+	const T &val() const {
+		return this->value;
+	}
+
+private:
+	time::time_t timestamp = time::TIME_MIN;
+
 	T value = T{};
 };
 

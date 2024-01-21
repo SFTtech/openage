@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #include <iterator>
 #include <list>
@@ -27,8 +27,8 @@ void curve_types() {
 		auto p0 = c.insert_before(0, 0);
 		auto p1 = c.insert_before(1, 1);
 		auto p2 = c.insert_before(10, 2);
-		auto pa = std::begin(c);
-		auto pe = std::end(c);
+		auto ib = 0;
+		auto ie = c.size();
 
 		// now contains: [-inf: 0, 0:0, 1:1, 10:2]
 
@@ -36,133 +36,133 @@ void curve_types() {
 
 		{
 			auto it = c.begin();
-			TESTEQUALS(it->value, 0);
-			TESTEQUALS(it->time, time::TIME_MIN);
-			TESTEQUALS((++it)->time, 0);
-			TESTEQUALS(it->value, 0);
-			TESTEQUALS((++it)->time, 1);
-			TESTEQUALS(it->value, 1);
-			TESTEQUALS((++it)->time, 10);
-			TESTEQUALS(it->value, 2);
+			TESTEQUALS(it->val(), 0);
+			TESTEQUALS(it->time(), time::TIME_MIN);
+			TESTEQUALS((++it)->time(), 0);
+			TESTEQUALS(it->val(), 0);
+			TESTEQUALS((++it)->time(), 1);
+			TESTEQUALS(it->val(), 1);
+			TESTEQUALS((++it)->time(), 10);
+			TESTEQUALS(it->val(), 2);
 		}
 
 		// last function tests without hints
-		TESTEQUALS(c.last(0)->value, 0);
-		TESTEQUALS(c.last(1)->value, 1);
-		TESTEQUALS(c.last(5)->value, 1);
-		TESTEQUALS(c.last(10)->value, 2);
-		TESTEQUALS(c.last(47)->value, 2);
+		TESTEQUALS(c.get(c.last(0)).val(), 0);
+		TESTEQUALS(c.get(c.last(1)).val(), 1);
+		TESTEQUALS(c.get(c.last(5)).val(), 1);
+		TESTEQUALS(c.get(c.last(10)).val(), 2);
+		TESTEQUALS(c.get(c.last(47)).val(), 2);
 
 		// last() with hints.
-		TESTEQUALS(c.last(0, pa)->value, 0);
-		TESTEQUALS(c.last(1, pa)->value, 1);
-		TESTEQUALS(c.last(5, pa)->value, 1);
-		TESTEQUALS(c.last(10, pa)->value, 2);
-		TESTEQUALS(c.last(47, pa)->value, 2);
+		TESTEQUALS(c.get(c.last(0, ib)).val(), 0);
+		TESTEQUALS(c.get(c.last(1, ib)).val(), 1);
+		TESTEQUALS(c.get(c.last(5, ib)).val(), 1);
+		TESTEQUALS(c.get(c.last(10, ib)).val(), 2);
+		TESTEQUALS(c.get(c.last(47, ib)).val(), 2);
 
-		TESTEQUALS(c.last(0, p0)->value, 0);
-		TESTEQUALS(c.last(1, p0)->value, 1);
-		TESTEQUALS(c.last(5, p0)->value, 1);
-		TESTEQUALS(c.last(10, p0)->value, 2);
-		TESTEQUALS(c.last(47, p0)->value, 2);
+		TESTEQUALS(c.get(c.last(0, p0)).val(), 0);
+		TESTEQUALS(c.get(c.last(1, p0)).val(), 1);
+		TESTEQUALS(c.get(c.last(5, p0)).val(), 1);
+		TESTEQUALS(c.get(c.last(10, p0)).val(), 2);
+		TESTEQUALS(c.get(c.last(47, p0)).val(), 2);
 
-		TESTEQUALS(c.last(0, p1)->value, 0);
-		TESTEQUALS(c.last(1, p1)->value, 1);
-		TESTEQUALS(c.last(5, p1)->value, 1);
-		TESTEQUALS(c.last(10, p1)->value, 2);
-		TESTEQUALS(c.last(47, p1)->value, 2);
+		TESTEQUALS(c.get(c.last(0, p1)).val(), 0);
+		TESTEQUALS(c.get(c.last(1, p1)).val(), 1);
+		TESTEQUALS(c.get(c.last(5, p1)).val(), 1);
+		TESTEQUALS(c.get(c.last(10, p1)).val(), 2);
+		TESTEQUALS(c.get(c.last(47, p1)).val(), 2);
 
-		TESTEQUALS(c.last(0, p2)->value, 0);
-		TESTEQUALS(c.last(1, p2)->value, 1);
-		TESTEQUALS(c.last(5, p2)->value, 1);
-		TESTEQUALS(c.last(10, p2)->value, 2);
-		TESTEQUALS(c.last(47, p2)->value, 2);
+		TESTEQUALS(c.get(c.last(0, p2)).val(), 0);
+		TESTEQUALS(c.get(c.last(1, p2)).val(), 1);
+		TESTEQUALS(c.get(c.last(5, p2)).val(), 1);
+		TESTEQUALS(c.get(c.last(10, p2)).val(), 2);
+		TESTEQUALS(c.get(c.last(47, p2)).val(), 2);
 
-		TESTEQUALS(c.last(0, pe)->value, 0);
-		TESTEQUALS(c.last(1, pe)->value, 1);
-		TESTEQUALS(c.last(5, pe)->value, 1);
-		TESTEQUALS(c.last(10, pe)->value, 2);
-		TESTEQUALS(c.last(47, pe)->value, 2);
+		TESTEQUALS(c.get(c.last(0, ie)).val(), 0);
+		TESTEQUALS(c.get(c.last(1, ie)).val(), 1);
+		TESTEQUALS(c.get(c.last(5, ie)).val(), 1);
+		TESTEQUALS(c.get(c.last(10, ie)).val(), 2);
+		TESTEQUALS(c.get(c.last(47, ie)).val(), 2);
 
 		// Now test the basic erase() function
 		// Delete the 1-element, new values should be [-inf:0, 0:0, 10:2]
 		c.erase(c.last(1));
 
-		TESTEQUALS(c.last(1)->value, 0);
-		TESTEQUALS(c.last(5)->value, 0);
-		TESTEQUALS(c.last(47)->value, 2);
+		TESTEQUALS(c.get(c.last(1)).val(), 0);
+		TESTEQUALS(c.get(c.last(5)).val(), 0);
+		TESTEQUALS(c.get(c.last(47)).val(), 2);
 
 		// should do nothing, since we delete all at > 99,
 		// but the last element is at 10. should still be [-inf:0, 0:0, 10:2]
 		c.erase_after(c.last(99));
-		TESTEQUALS(c.last(47)->value, 2);
+		TESTEQUALS(c.get(c.last(47)).val(), 2);
 
 		// now since 5 < 10, element with value 2 has to be gone
 		// result should be [-inf:0, 0:0]
 		c.erase_after(c.last(5));
-		TESTEQUALS(c.last(47)->value, 0);
+		TESTEQUALS(c.get(c.last(47)).val(), 0);
 
 		c.insert_overwrite(0, 42);
-		TESTEQUALS(c.last(100)->value, 42);
-		TESTEQUALS(c.last(100)->time, 0);
+		TESTEQUALS(c.get(c.last(100)).val(), 42);
+		TESTEQUALS(c.get(c.last(100)).time(), 0);
 
 		// the curve now contains [-inf:0, 0:42]
 		// let's change/add some more elements
 		c.insert_overwrite(0, 10);
-		TESTEQUALS(c.last(100)->value, 10);
+		TESTEQUALS(c.get(c.last(100)).val(), 10);
 
 		c.insert_after(0, 11);
 		c.insert_after(0, 12);
 		// now: [-inf:0, 0:10, 0:11, 0:12]
-		TESTEQUALS(c.last(0)->value, 12);
-		TESTEQUALS(c.last(10)->value, 12);
+		TESTEQUALS(c.get(c.last(0)).val(), 12);
+		TESTEQUALS(c.get(c.last(10)).val(), 12);
 
 		c.insert_before(0, 2);
 		// all the values at t=0 should be 2, 10, 11, 12
 
 		c.insert_after(1, 15);
-		TESTEQUALS(c.last(1)->value, 15);
-		TESTEQUALS(c.last(10)->value, 15);
+		TESTEQUALS(c.get(c.last(1)).val(), 15);
+		TESTEQUALS(c.get(c.last(10)).val(), 15);
 
 		c.insert_overwrite(2, 20);
-		TESTEQUALS(c.last(1)->value, 15);
-		TESTEQUALS(c.last(2)->value, 20);
-		TESTEQUALS(c.last(10)->value, 20);
+		TESTEQUALS(c.get(c.last(1)).val(), 15);
+		TESTEQUALS(c.get(c.last(2)).val(), 20);
+		TESTEQUALS(c.get(c.last(10)).val(), 20);
 
 		c.insert_before(3, 25);
-		TESTEQUALS(c.last(1)->value, 15);
-		TESTEQUALS(c.last(2)->value, 20);
-		TESTEQUALS(c.last(3)->value, 25);
-		TESTEQUALS(c.last(10)->value, 25);
+		TESTEQUALS(c.get(c.last(1)).val(), 15);
+		TESTEQUALS(c.get(c.last(2)).val(), 20);
+		TESTEQUALS(c.get(c.last(3)).val(), 25);
+		TESTEQUALS(c.get(c.last(10)).val(), 25);
 
 		// now it should be [-inf: 0, 0: 2, 0: 10, 0: 11, 0: 12, 1: 15, 2: 20,
 		// 3: 25]
 
 		{
 			auto it = c.begin();
-			TESTEQUALS(it->time, time::TIME_MIN);
-			TESTEQUALS(it->value, 0);
+			TESTEQUALS(it->time(), time::TIME_MIN);
+			TESTEQUALS(it->val(), 0);
 
-			TESTEQUALS((++it)->time, 0);
-			TESTEQUALS(it->value, 2);
+			TESTEQUALS((++it)->time(), 0);
+			TESTEQUALS(it->val(), 2);
 
-			TESTEQUALS((++it)->time, 0);
-			TESTEQUALS(it->value, 10);
+			TESTEQUALS((++it)->time(), 0);
+			TESTEQUALS(it->val(), 10);
 
-			TESTEQUALS((++it)->time, 0);
-			TESTEQUALS(it->value, 11);
+			TESTEQUALS((++it)->time(), 0);
+			TESTEQUALS(it->val(), 11);
 
-			TESTEQUALS((++it)->time, 0);
-			TESTEQUALS(it->value, 12);
+			TESTEQUALS((++it)->time(), 0);
+			TESTEQUALS(it->val(), 12);
 
-			TESTEQUALS((++it)->time, 1);
-			TESTEQUALS(it->value, 15);
+			TESTEQUALS((++it)->time(), 1);
+			TESTEQUALS(it->val(), 15);
 
-			TESTEQUALS((++it)->time, 2);
-			TESTEQUALS(it->value, 20);
+			TESTEQUALS((++it)->time(), 2);
+			TESTEQUALS(it->val(), 20);
 
-			TESTEQUALS((++it)->time, 3);
-			TESTEQUALS(it->value, 25);
+			TESTEQUALS((++it)->time(), 3);
+			TESTEQUALS(it->val(), 25);
 		}
 
 		// TODO: test c.insert_overwrite and c.insert_after
@@ -170,17 +170,17 @@ void curve_types() {
 		KeyframeContainer<int> c2;
 		c2.sync(c, 1);
 		// now c2 should be [-inf: 0, 1: 15, 2: 20, 3: 25]
-		TESTEQUALS(c2.last(0)->value, 0);
-		TESTEQUALS(c2.last(1)->value, 15);
-		TESTEQUALS(c2.last(2)->value, 20);
-		TESTEQUALS(c2.last(3)->value, 25);
-		TESTEQUALS(c2.last(10)->value, 25);
+		TESTEQUALS(c2.get(c2.last(0)).val(), 0);
+		TESTEQUALS(c2.get(c2.last(1)).val(), 15);
+		TESTEQUALS(c2.get(c2.last(2)).val(), 20);
+		TESTEQUALS(c2.get(c2.last(3)).val(), 25);
+		TESTEQUALS(c2.get(c2.last(10)).val(), 25);
 		TESTEQUALS(c2.size(), 4);
 
 		c.clear();
 		// now it should be [-inf: 0]
-		TESTEQUALS(c.last(0)->value, 0);
-		TESTEQUALS(c.last(1)->value, 0);
+		TESTEQUALS(c.get(c.last(0)).val(), 0);
+		TESTEQUALS(c.get(c.last(1)).val(), 0);
 		TESTEQUALS(c.size(), 1);
 	}
 
