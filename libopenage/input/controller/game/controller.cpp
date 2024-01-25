@@ -2,6 +2,8 @@
 
 #include "controller.h"
 
+#include "log/log.h"
+
 #include "event/event_loop.h"
 #include "event/evententity.h"
 #include "event/state.h"
@@ -16,6 +18,8 @@
 #include "time/time_loop.h"
 
 #include "coord/phys.h"
+#include "renderer/camera/camera.h"
+
 
 namespace openage::input::game {
 
@@ -45,8 +49,10 @@ const std::vector<gamestate::entity_id_t> &Controller::get_selected() const {
 	return this->selected;
 }
 
-void Controller::set_selected(std::vector<gamestate::entity_id_t> ids) {
+void Controller::set_selected(const std::vector<gamestate::entity_id_t> ids) {
 	std::unique_lock lock{this->mutex};
+
+	log::log(DBG << "Selected " << ids.size() << " entities");
 
 	this->selected = ids;
 }
@@ -86,6 +92,30 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 	return true;
 }
 
+void Controller::set_drag_select_start(const coord::input &start) {
+	std::unique_lock lock{this->mutex};
+
+	log::log(DBG << "Drag select start at " << start);
+	this->drag_select_start = start;
+}
+
+const coord::input Controller::get_drag_select_start() const {
+	std::unique_lock lock{this->mutex};
+
+	if (not this->drag_select_start.has_value()) {
+		throw Error{ERR << "Drag select start not set."};
+	}
+
+	return this->drag_select_start.value();
+}
+
+void Controller::reset_drag_select() {
+	std::unique_lock lock{this->mutex};
+
+	log::log(DBG << "Drag select start reset");
+	this->drag_select_start = std::nullopt;
+}
+
 void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<time::TimeLoop> &time_loop,
                     const std::shared_ptr<openage::gamestate::GameSimulation> &simulation,
@@ -96,10 +126,6 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 		event::EventHandler::param_map::map_t params{
 			{"position", mouse_pos},
 			{"owner", controller->get_controlled()},
-			// TODO: Remove
-			{"select_cb", std::function<void(gamestate::entity_id_t id)>{[controller](gamestate::entity_id_t id) {
-				 controller->set_selected({id});
-			 }}},
 		};
 
 		auto event = simulation->get_event_loop()->create_event(
@@ -112,9 +138,13 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 	}};
 
 	binding_action create_entity_action{forward_action_t::SEND, create_entity_event};
-	Event ev_mouse_lmb{event_class::MOUSE_BUTTON, Qt::MouseButton::LeftButton, Qt::NoModifier, QEvent::MouseButtonRelease};
+	Event ev_mouse_lmb_ctrl{
+		event_class::MOUSE_BUTTON,
+		Qt::MouseButton::LeftButton,
+		Qt::KeyboardModifier::ControlModifier,
+		QEvent::MouseButtonRelease};
 
-	ctx->bind(ev_mouse_lmb, create_entity_action);
+	ctx->bind(ev_mouse_lmb_ctrl, create_entity_action);
 
 	binding_func_t move_entity{[&](const event_arguments &args,
 	                               const std::shared_ptr<Controller> controller) {
@@ -135,9 +165,67 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 	}};
 
 	binding_action move_entity_action{forward_action_t::SEND, move_entity};
-	Event ev_mouse_rmb{event_class::MOUSE_BUTTON, Qt::MouseButton::RightButton, Qt::NoModifier, QEvent::MouseButtonRelease};
+	Event ev_mouse_rmb{
+		event_class::MOUSE_BUTTON,
+		Qt::MouseButton::RightButton,
+		Qt::KeyboardModifier::NoModifier,
+		QEvent::MouseButtonRelease};
 
 	ctx->bind(ev_mouse_rmb, move_entity_action);
+
+	binding_func_t init_drag_selection{[&](const event_arguments &args,
+	                                       const std::shared_ptr<Controller> controller) {
+		controller->set_drag_select_start(args.mouse);
+		return nullptr;
+	}};
+
+	binding_action init_drag_selection_action{forward_action_t::CLEAR, init_drag_selection};
+	Event ev_mouse_lmb_press{
+		event_class::MOUSE_BUTTON,
+		Qt::MouseButton::LeftButton,
+		Qt::KeyboardModifier::NoModifier,
+		QEvent::MouseButtonPress};
+
+	ctx->bind(ev_mouse_lmb_press, init_drag_selection_action);
+
+	binding_func_t drag_selection{
+		[&](const event_arguments &args,
+	        const std::shared_ptr<Controller> controller) {
+			Eigen::Matrix4f cam_matrix = camera->get_projection_matrix() * camera->get_view_matrix();
+			event::EventHandler::param_map::map_t params{
+				{"controlled", controller->get_controlled()},
+				{"drag_start", controller->get_drag_select_start().to_viewport(camera).to_ndc_space(camera)},
+				{"drag_end", args.mouse.to_viewport(camera).to_ndc_space(camera)},
+				{"camera_matrix", cam_matrix},
+				{"select_cb",
+		         std::function<void(const std::vector<gamestate::entity_id_t> ids)>{
+					 [controller](
+						 const std::vector<gamestate::entity_id_t> ids) {
+						 controller->set_selected(ids);
+					 }}},
+			};
+
+			auto event = simulation->get_event_loop()->create_event(
+				"game.drag_select",
+				simulation->get_commander(),
+				simulation->get_game()->get_state(),
+				time_loop->get_clock()->get_time(),
+				params);
+
+			// Reset drag selection start
+			controller->reset_drag_select();
+
+			return event;
+		}};
+
+	binding_action drag_selection_action{forward_action_t::CLEAR, drag_selection};
+	Event ev_mouse_lmb_release{
+		event_class::MOUSE_BUTTON,
+		Qt::MouseButton::LeftButton,
+		Qt::KeyboardModifier::NoModifier,
+		QEvent::MouseButtonRelease};
+
+	ctx->bind(ev_mouse_lmb_release, drag_selection_action);
 }
 
 

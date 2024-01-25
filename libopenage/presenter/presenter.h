@@ -41,20 +41,24 @@ namespace gui {
 class GUI;
 }
 
+namespace hud {
+class HudRenderStage;
+}
+
 namespace screen {
-class ScreenRenderer;
+class ScreenRenderStage;
 }
 
 namespace skybox {
-class SkyboxRenderer;
+class SkyboxRenderStage;
 }
 
 namespace terrain {
-class TerrainRenderer;
+class TerrainRenderStage;
 }
 
 namespace world {
-class WorldRenderer;
+class WorldRenderStage;
 }
 
 namespace resources {
@@ -178,22 +182,27 @@ protected:
 	/**
 	 * Graphics output for the map background.
 	 */
-	std::shared_ptr<renderer::skybox::SkyboxRenderer> skybox_renderer;
+	std::shared_ptr<renderer::skybox::SkyboxRenderStage> skybox_renderer;
 
 	/**
 	 * Graphics output for terrain.
 	 */
-	std::shared_ptr<renderer::terrain::TerrainRenderer> terrain_renderer;
+	std::shared_ptr<renderer::terrain::TerrainRenderStage> terrain_renderer;
 
 	/**
 	 * Graphics output for units/buildings.
 	 */
-	std::shared_ptr<renderer::world::WorldRenderer> world_renderer;
+	std::shared_ptr<renderer::world::WorldRenderStage> world_renderer;
+
+	/**
+     * Graphics output for the HUD.
+     */
+	std::shared_ptr<renderer::hud::HudRenderStage> hud_renderer;
 
 	/**
 	 * Final graphics output to the window screen.
 	 */
-	std::shared_ptr<renderer::screen::ScreenRenderer> screen_renderer;
+	std::shared_ptr<renderer::screen::ScreenRenderStage> screen_renderer;
 
 	/**
 	 * Manager for loading/storing asset resources.

@@ -21,6 +21,9 @@ namespace terrain {
 class TerrainRenderMesh;
 class TerrainRenderEntity;
 
+/**
+ * Stores the state of a terrain chunk in the terrain render stage.
+ */
 class TerrainChunk {
 public:
 	/**

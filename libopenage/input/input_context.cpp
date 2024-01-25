@@ -15,35 +15,53 @@ const std::string &InputContext::get_id() {
 	return this->id;
 }
 
-void InputContext::set_engine_bindings(const std::shared_ptr<game::BindingContext> &bindings) {
-	this->engine_bindings = bindings;
+void InputContext::set_game_bindings(const std::shared_ptr<game::BindingContext> &bindings) {
+	this->game_bindings = bindings;
 }
 
 void InputContext::set_camera_bindings(const std::shared_ptr<camera::BindingContext> &bindings) {
 	this->camera_bindings = bindings;
 }
 
-const std::shared_ptr<game::BindingContext> &InputContext::get_engine_bindings() {
-	return this->engine_bindings;
+void InputContext::set_hud_bindings(const std::shared_ptr<hud::BindingContext> &bindings) {
+	this->hud_bindings = bindings;
+}
+
+const std::shared_ptr<game::BindingContext> &InputContext::get_game_bindings() {
+	return this->game_bindings;
 }
 
 const std::shared_ptr<camera::BindingContext> &InputContext::get_camera_bindings() {
 	return this->camera_bindings;
 }
 
+const std::shared_ptr<hud::BindingContext> &InputContext::get_hud_bindings() {
+	return this->hud_bindings;
+}
+
 void InputContext::bind(const Event &ev, const input_action act) {
-	this->by_event.emplace(std::make_pair(ev, act));
+	std::vector<input_action> actions{act};
+	this->by_event.emplace(std::make_pair(ev, actions));
 }
 
 void InputContext::bind(const event_class &cl, const input_action act) {
-	this->by_class.emplace(std::make_pair(cl, act));
+	std::vector<input_action> actions{act};
+	this->by_class.emplace(std::make_pair(cl, actions));
+}
+
+void InputContext::bind(const Event &ev, const std::vector<input_action> &&acts) {
+	this->by_event.emplace(std::make_pair(ev, std::move(acts)));
+}
+
+void InputContext::bind(const event_class &cl, const std::vector<input_action> &&acts) {
+	this->by_class.emplace(std::make_pair(cl, std::move(acts)));
 }
 
 bool InputContext::is_bound(const Event &ev) const {
 	return this->by_event.contains(ev) || this->by_class.contains(ev.cc.cl);
 }
 
-const input_action &InputContext::lookup(const Event &ev) const {
+const std::vector<input_action> &InputContext::lookup(const Event &ev) const {
 	auto event_lookup = this->by_event.find(ev);
 	if (event_lookup != std::end(this->by_event)) {
 		return (*event_lookup).second;

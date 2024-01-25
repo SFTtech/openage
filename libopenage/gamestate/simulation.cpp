@@ -5,6 +5,7 @@
 #include "assets/mod_manager.h"
 #include "event/event_loop.h"
 #include "gamestate/entity_factory.h"
+#include "gamestate/event/drag_select.h"
 #include "gamestate/event/process_command.h"
 #include "gamestate/event/send_command.h"
 #include "gamestate/event/spawn_entity.h"
@@ -133,11 +134,13 @@ void GameSimulation::set_modpacks(const std::vector<std::string> &modpacks) {
 }
 
 void GameSimulation::init_event_handlers() {
+	auto drag_select_handler = std::make_shared<gamestate::event::DragSelectHandler>();
 	auto spawn_handler = std::make_shared<gamestate::event::SpawnEntityHandler>(this->event_loop,
 	                                                                            this->entity_factory);
 	auto command_handler = std::make_shared<gamestate::event::SendCommandHandler>();
 	auto manager_handler = std::make_shared<gamestate::event::ProcessCommandHandler>();
 	auto wait_handler = std::make_shared<gamestate::event::WaitHandler>();
+	this->event_loop->add_event_handler(drag_select_handler);
 	this->event_loop->add_event_handler(spawn_handler);
 	this->event_loop->add_event_handler(command_handler);
 	this->event_loop->add_event_handler(manager_handler);

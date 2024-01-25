@@ -9,7 +9,7 @@
 #include "gamestate/component/api/move.h"
 #include "gamestate/component/base_component.h"
 #include "gamestate/component/internal/position.h"
-#include "renderer/stages/world/world_render_entity.h"
+#include "renderer/stages/world/render_entity.h"
 
 namespace openage::gamestate {
 

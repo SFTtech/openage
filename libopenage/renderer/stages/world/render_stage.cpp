@@ -1,6 +1,6 @@
 // Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
-#include "world_renderer.h"
+#include "render_stage.h"
 
 #include "renderer/camera/camera.h"
 #include "renderer/opengl/context.h"
@@ -8,7 +8,7 @@
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/shader_program.h"
-#include "renderer/stages/world/world_object.h"
+#include "renderer/stages/world/object.h"
 #include "renderer/texture.h"
 #include "renderer/window.h"
 #include "time/clock.h"
@@ -16,12 +16,12 @@
 
 namespace openage::renderer::world {
 
-WorldRenderer::WorldRenderer(const std::shared_ptr<Window> &window,
-                             const std::shared_ptr<renderer::Renderer> &renderer,
-                             const std::shared_ptr<renderer::camera::Camera> &camera,
-                             const util::Path &shaderdir,
-                             const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
-                             const std::shared_ptr<time::Clock> clock) :
+WorldRenderStage::WorldRenderStage(const std::shared_ptr<Window> &window,
+                                   const std::shared_ptr<renderer::Renderer> &renderer,
+                                   const std::shared_ptr<renderer::camera::Camera> &camera,
+                                   const util::Path &shaderdir,
+                                   const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+                                   const std::shared_ptr<time::Clock> clock) :
 	renderer{renderer},
 	camera{camera},
 	asset_manager{asset_manager},
@@ -41,11 +41,11 @@ WorldRenderer::WorldRenderer(const std::shared_ptr<Window> &window,
 	log::log(INFO << "Created render stage 'World'");
 }
 
-std::shared_ptr<renderer::RenderPass> WorldRenderer::get_render_pass() {
+std::shared_ptr<renderer::RenderPass> WorldRenderStage::get_render_pass() {
 	return this->render_pass;
 }
 
-void WorldRenderer::add_render_entity(const std::shared_ptr<WorldRenderEntity> entity) {
+void WorldRenderStage::add_render_entity(const std::shared_ptr<WorldRenderEntity> entity) {
 	std::unique_lock lock{this->mutex};
 
 	auto world_object = std::make_shared<WorldObject>(this->asset_manager);
@@ -54,7 +54,7 @@ void WorldRenderer::add_render_entity(const std::shared_ptr<WorldRenderEntity> e
 	this->render_objects.push_back(world_object);
 }
 
-void WorldRenderer::update() {
+void WorldRenderStage::update() {
 	std::unique_lock lock{this->mutex};
 	auto current_time = this->clock->get_real_time();
 	for (auto &obj : this->render_objects) {
@@ -92,7 +92,7 @@ void WorldRenderer::update() {
 	}
 }
 
-void WorldRenderer::resize(size_t width, size_t height) {
+void WorldRenderStage::resize(size_t width, size_t height) {
 	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
 	this->depth_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::depth24));
 	this->id_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::r32ui));
@@ -101,9 +101,9 @@ void WorldRenderer::resize(size_t width, size_t height) {
 	this->render_pass->set_target(fbo);
 }
 
-void WorldRenderer::initialize_render_pass(size_t width,
-                                           size_t height,
-                                           const util::Path &shaderdir) {
+void WorldRenderStage::initialize_render_pass(size_t width,
+                                              size_t height,
+                                              const util::Path &shaderdir) {
 	auto vert_shader_file = (shaderdir / "world2d.vert.glsl").open();
 	auto vert_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
@@ -129,7 +129,7 @@ void WorldRenderer::initialize_render_pass(size_t width,
 	this->render_pass = this->renderer->add_render_pass({}, fbo);
 }
 
-void WorldRenderer::init_uniform_ids() {
+void WorldRenderStage::init_uniform_ids() {
 	WorldObject::obj_world_position = this->display_shader->get_uniform_id("obj_world_position");
 	WorldObject::flip_x = this->display_shader->get_uniform_id("flip_x");
 	WorldObject::flip_y = this->display_shader->get_uniform_id("flip_y");

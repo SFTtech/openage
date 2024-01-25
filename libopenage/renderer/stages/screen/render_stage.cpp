@@ -1,6 +1,6 @@
 // Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
-#include "screen_renderer.h"
+#include "render_stage.h"
 
 #include "renderer/opengl/context.h"
 #include "renderer/renderer.h"
@@ -15,9 +15,9 @@
 
 namespace openage::renderer::screen {
 
-ScreenRenderer::ScreenRenderer(const std::shared_ptr<Window> & /* window */,
-                               const std::shared_ptr<renderer::Renderer> &renderer,
-                               const util::Path &shaderdir) :
+ScreenRenderStage::ScreenRenderStage(const std::shared_ptr<Window> & /* window */,
+                                     const std::shared_ptr<renderer::Renderer> &renderer,
+                                     const util::Path &shaderdir) :
 	renderer{renderer},
 	render_targets{},
 	pass_outputs{} {
@@ -28,16 +28,16 @@ ScreenRenderer::ScreenRenderer(const std::shared_ptr<Window> & /* window */,
 	log::log(INFO << "Created render stage 'Screen'");
 }
 
-std::shared_ptr<renderer::RenderPass> ScreenRenderer::get_render_pass() {
+std::shared_ptr<renderer::RenderPass> ScreenRenderStage::get_render_pass() {
 	return this->render_pass;
 }
 
-void ScreenRenderer::set_render_targets(const std::vector<std::shared_ptr<renderer::RenderTarget>> &targets) {
+void ScreenRenderStage::set_render_targets(const std::vector<std::shared_ptr<renderer::RenderTarget>> &targets) {
 	this->render_targets = targets;
 	this->update_render_pass();
 }
 
-void ScreenRenderer::initialize_render_pass(const util::Path &shaderdir) {
+void ScreenRenderStage::initialize_render_pass(const util::Path &shaderdir) {
 	auto vert_shader_file = (shaderdir / "final.vert.glsl").open();
 	auto vert_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
@@ -59,7 +59,7 @@ void ScreenRenderer::initialize_render_pass(const util::Path &shaderdir) {
 	this->render_pass = renderer->add_render_pass({}, renderer->get_display_target());
 }
 
-void ScreenRenderer::update_render_pass() {
+void ScreenRenderStage::update_render_pass() {
 	auto quad = renderer->add_mesh_geometry(renderer::resources::MeshData::make_quad());
 
 	std::vector<renderer::Renderable> output_layers{};

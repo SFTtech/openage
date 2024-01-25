@@ -1,6 +1,6 @@
 // Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
-#include "skybox_renderer.h"
+#include "render_stage.h"
 
 #include "renderer/opengl/context.h"
 #include "renderer/renderer.h"
@@ -14,9 +14,9 @@
 
 namespace openage::renderer::skybox {
 
-SkyboxRenderer::SkyboxRenderer(const std::shared_ptr<Window> &window,
-                               const std::shared_ptr<renderer::Renderer> &renderer,
-                               const util::Path &shaderdir) :
+SkyboxRenderStage::SkyboxRenderStage(const std::shared_ptr<Window> &window,
+                                     const std::shared_ptr<renderer::Renderer> &renderer,
+                                     const util::Path &shaderdir) :
 	renderer{renderer},
 	bg_color{0.0, 0.0, 0.0, 1.0} // black
 {
@@ -32,11 +32,11 @@ SkyboxRenderer::SkyboxRenderer(const std::shared_ptr<Window> &window,
 	log::log(INFO << "Created render stage 'Skybox'");
 }
 
-std::shared_ptr<renderer::RenderPass> SkyboxRenderer::get_render_pass() {
+std::shared_ptr<renderer::RenderPass> SkyboxRenderStage::get_render_pass() {
 	return this->render_pass;
 }
 
-void SkyboxRenderer::set_color(const Eigen::Vector4i col) {
+void SkyboxRenderStage::set_color(const Eigen::Vector4i col) {
 	this->bg_color = Eigen::Vector4f(
 		col[0] / 255,
 		col[1] / 255,
@@ -45,7 +45,7 @@ void SkyboxRenderer::set_color(const Eigen::Vector4i col) {
 	this->color_unif->update("in_col", this->bg_color);
 }
 
-void SkyboxRenderer::set_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
+void SkyboxRenderStage::set_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
 	this->bg_color = Eigen::Vector4f(
 		r / 255,
 		g / 255,
@@ -54,26 +54,26 @@ void SkyboxRenderer::set_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
 	this->color_unif->update("in_col", this->bg_color);
 }
 
-void SkyboxRenderer::set_color(const Eigen::Vector4f col) {
+void SkyboxRenderStage::set_color(const Eigen::Vector4f col) {
 	this->bg_color = col;
 	this->color_unif->update("in_col", this->bg_color);
 }
 
-void SkyboxRenderer::set_color(float r, float g, float b, float a) {
+void SkyboxRenderStage::set_color(float r, float g, float b, float a) {
 	this->bg_color = Eigen::Vector4f(r, g, b, a);
 	this->color_unif->update("in_col", this->bg_color);
 }
 
-void SkyboxRenderer::resize(size_t width, size_t height) {
+void SkyboxRenderStage::resize(size_t width, size_t height) {
 	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
 
 	auto fbo = this->renderer->create_texture_target({this->output_texture});
 	this->render_pass->set_target(fbo);
 }
 
-void SkyboxRenderer::initialize_render_pass(size_t width,
-                                            size_t height,
-                                            const util::Path &shaderdir) {
+void SkyboxRenderStage::initialize_render_pass(size_t width,
+                                               size_t height,
+                                               const util::Path &shaderdir) {
 	auto vert_shader_file = (shaderdir / "skybox.vert.glsl").open();
 	auto vert_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,

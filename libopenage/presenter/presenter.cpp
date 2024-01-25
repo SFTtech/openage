@@ -12,6 +12,8 @@
 #include "input/controller/camera/controller.h"
 #include "input/controller/game/binding_context.h"
 #include "input/controller/game/controller.h"
+#include "input/controller/hud/binding_context.h"
+#include "input/controller/hud/controller.h"
 #include "input/input_context.h"
 #include "input/input_manager.h"
 #include "log/log.h"
@@ -23,10 +25,11 @@
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/stages/camera/manager.h"
-#include "renderer/stages/screen/screen_renderer.h"
-#include "renderer/stages/skybox/skybox_renderer.h"
-#include "renderer/stages/terrain/terrain_renderer.h"
-#include "renderer/stages/world/world_renderer.h"
+#include "renderer/stages/hud/render_stage.h"
+#include "renderer/stages/screen/render_stage.h"
+#include "renderer/stages/skybox/render_stage.h"
+#include "renderer/stages/terrain/render_stage.h"
+#include "renderer/stages/world/render_stage.h"
 #include "renderer/window.h"
 #include "time/time_loop.h"
 #include "util/path.h"
@@ -75,8 +78,7 @@ void Presenter::run(bool debug_graphics) {
 
 void Presenter::set_simulation(const std::shared_ptr<gamestate::GameSimulation> &simulation) {
 	this->simulation = simulation;
-	auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
-	                                                                this->world_renderer);
+	auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer, this->world_renderer);
 	this->simulation->attach_renderer(render_factory);
 }
 
@@ -103,8 +105,7 @@ void Presenter::init_graphics(bool debug) {
 	this->asset_manager->set_placeholder_animation(missing_tex);
 
 	// Camera
-	this->camera = std::make_shared<renderer::camera::Camera>(this->renderer,
-	                                                          this->window->get_size());
+	this->camera = std::make_shared<renderer::camera::Camera>(this->renderer, this->window->get_size());
 	this->window->add_resize_callback([this](size_t w, size_t h, double /*scale*/) {
 		this->camera->resize(w, h);
 	});
@@ -112,7 +113,7 @@ void Presenter::init_graphics(bool debug) {
 	this->camera_manager = std::make_shared<renderer::camera::CameraManager>(this->camera);
 
 	// Skybox
-	this->skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderer>(
+	this->skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderStage>(
 		this->window,
 		this->renderer,
 		this->root_dir["assets"]["shaders"]);
@@ -120,7 +121,7 @@ void Presenter::init_graphics(bool debug) {
 	this->render_passes.push_back(this->skybox_renderer->get_render_pass());
 
 	// Terrain
-	this->terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderer>(
+	this->terrain_renderer = std::make_shared<renderer::terrain::TerrainRenderStage>(
 		this->window,
 		this->renderer,
 		this->camera,
@@ -130,7 +131,7 @@ void Presenter::init_graphics(bool debug) {
 	this->render_passes.push_back(this->terrain_renderer->get_render_pass());
 
 	// Units/buildings
-	this->world_renderer = std::make_shared<renderer::world::WorldRenderer>(
+	this->world_renderer = std::make_shared<renderer::world::WorldRenderStage>(
 		this->window,
 		this->renderer,
 		this->camera,
@@ -139,12 +140,21 @@ void Presenter::init_graphics(bool debug) {
 		this->time_loop->get_clock());
 	this->render_passes.push_back(this->world_renderer->get_render_pass());
 
+	// HUD
+	this->hud_renderer = std::make_shared<renderer::hud::HudRenderStage>(
+		this->window,
+		this->renderer,
+		this->camera,
+		this->root_dir["assets"]["shaders"],
+		this->asset_manager,
+		this->time_loop->get_clock());
+	this->render_passes.push_back(this->hud_renderer->get_render_pass());
+
 	this->init_gui();
 	this->init_final_render_pass();
 
 	if (this->simulation) {
-		auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer,
-		                                                                this->world_renderer);
+		auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer, this->world_renderer);
 		this->simulation->attach_renderer(render_factory);
 	}
 
@@ -215,12 +225,12 @@ void Presenter::init_input() {
 		log::log(INFO << "Loading game simulation controls");
 
 		// TODO: Remove hardcoding
-		auto engine_controller = std::make_shared<input::game::Controller>(
+		auto game_controller = std::make_shared<input::game::Controller>(
 			std::unordered_set<size_t>{0, 1, 2, 3}, 0);
 		auto engine_context = std::make_shared<input::game::BindingContext>();
 		input::game::setup_defaults(engine_context, this->time_loop, this->simulation, this->camera);
-		this->input_manager->set_engine_controller(engine_controller);
-		input_ctx->set_engine_bindings(engine_context);
+		this->input_manager->set_game_controller(game_controller);
+		input_ctx->set_game_bindings(engine_context);
 	}
 
 	// attach GUI if it's initialized
@@ -239,12 +249,22 @@ void Presenter::init_input() {
 		input_ctx->set_camera_bindings(camera_context);
 	}
 
+	// setup HUD controls
+	if (this->hud_renderer) {
+		log::log(INFO << "Loading HUD controls");
+		auto hud_controller = std::make_shared<input::hud::Controller>();
+		auto hud_context = std::make_shared<input::hud::BindingContext>();
+		input::hud::setup_defaults(hud_context, this->hud_renderer);
+		this->input_manager->set_hud_controller(hud_controller);
+		input_ctx->set_hud_bindings(hud_context);
+	}
+
 	log::log(INFO << "Presenter: Input subsystem initialized");
 }
 
 void Presenter::init_final_render_pass() {
 	// Final output to window
-	this->screen_renderer = std::make_shared<renderer::screen::ScreenRenderer>(
+	this->screen_renderer = std::make_shared<renderer::screen::ScreenRenderStage>(
 		this->window,
 		this->renderer,
 		this->root_dir["assets"]["shaders"]);
@@ -269,9 +289,11 @@ void Presenter::init_final_render_pass() {
 }
 
 void Presenter::render() {
+	// TODO: Pass current time to update() instead of fetching it in renderer
 	this->camera_manager->update();
 	this->terrain_renderer->update();
 	this->world_renderer->update();
+	this->hud_renderer->update();
 	this->gui->render();
 
 	for (auto &pass : this->render_passes) {

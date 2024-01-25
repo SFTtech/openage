@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2023 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,16 +7,13 @@
 #include <memory>
 #include <string>
 
-#include "coord/scene.h"
+#include "coord/pixel.h"
 #include "curve/continuous.h"
-#include "curve/discrete.h"
-#include "curve/segmented.h"
-#include "renderer/resources/mesh_data.h"
-#include "renderer/types.h"
 #include "time/time.h"
 
 
 namespace openage::renderer {
+class Geometry;
 class UniformInput;
 
 namespace camera {
@@ -28,20 +25,28 @@ class AssetManager;
 class Animation2dInfo;
 } // namespace resources
 
-namespace world {
-class WorldRenderEntity;
+namespace hud {
+class HudDragRenderEntity;
 
-class WorldObject {
+/**
+ * Stores the state of a renderable object in the HUD render stage.
+ */
+class HudDragObject {
 public:
-	WorldObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
-	~WorldObject() = default;
+	/**
+     * Create a new object for the HUD render stage.
+     *
+     * @param asset_manager Asset manager for loading resources.
+     */
+	HudDragObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
+	~HudDragObject() = default;
 
 	/**
      * Set the world render entity.
      *
      * @param entity New world render entity.
      */
-	void set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity);
+	void set_render_entity(const std::shared_ptr<HudDragRenderEntity> &entity);
 
 	/**
      * Set the current camera of the scene.
@@ -65,18 +70,11 @@ public:
 	void update_uniforms(const time::time_t &time = 0.0);
 
 	/**
-	 * Get the ID of the corresponding game entity.
-	 *
-	 * @return Game entity ID.
-	 */
-	uint32_t get_id();
-
-	/**
-     * Get the quad for creating the geometry.
+     * Update the geometry of the renderable associated with this object.
      *
-     * @return Mesh for creating a renderer geometry object.
+     * @param time Current simulation time.
      */
-	static const renderer::resources::MeshData get_mesh();
+	void update_geometry(const time::time_t &time = 0.0);
 
 	/**
      * Check whether a new renderable needs to be created for this mesh.
@@ -116,15 +114,13 @@ public:
 	void set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms);
 
 	/**
-	 * Shader uniform IDs for setting uniform values.
-	 */
-	inline static uniform_id_t obj_world_position;
-	inline static uniform_id_t flip_x;
-	inline static uniform_id_t flip_y;
-	inline static uniform_id_t tex;
-	inline static uniform_id_t tile_params;
-	inline static uniform_id_t scale;
-	inline static uniform_id_t anchor_offset;
+     * Set the geometry of the renderable associated with this object.
+     *
+     * The geometry is updated when calling \p update().
+     *
+     * @param geometry Geometry of this object's renderable.
+     */
+	void set_geometry(const std::shared_ptr<renderer::Geometry> &geometry);
 
 private:
 	/**
@@ -151,38 +147,32 @@ private:
 	/**
 	 * Source for positional and texture data.
 	 */
-	std::shared_ptr<WorldRenderEntity> render_entity;
+	std::shared_ptr<HudDragRenderEntity> render_entity;
 
 	/**
-	 * Reference ID for passing interaction with the graphic (e.g. mouse clicks) back to
-	 * the engine.
-	 */
-	uint32_t ref_id;
-
-	/**
-	 * Position of the object.
-	 */
-	curve::Continuous<coord::scene3> position;
-
-	/**
-     * Angle of the object.
+     * Position of the dragged corner.
      */
-	curve::Segmented<coord::phys_angle_t> angle;
+	curve::Continuous<coord::input> drag_pos;
 
 	/**
-     * Animation information for the renderables.
+     * Position of the start corner.
      */
-	curve::Discrete<std::shared_ptr<renderer::resources::Animation2dInfo>> animation_info;
+	coord::input drag_start;
 
 	/**
-     * Shader uniforms for the renderable in the terrain render pass.
+     * Shader uniforms for the renderable in the HUD render pass.
      */
 	std::shared_ptr<renderer::UniformInput> uniforms;
+
+	/**
+     * Geometry of the renderable in the HUD render pass.
+     */
+	std::shared_ptr<renderer::Geometry> geometry;
 
 	/**
 	 * Time of the last update call.
 	 */
 	time::time_t last_update;
 };
-} // namespace world
+} // namespace hud
 } // namespace openage::renderer

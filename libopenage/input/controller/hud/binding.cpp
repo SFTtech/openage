@@ -2,6 +2,6 @@
 
 #include "binding.h"
 
-namespace openage::input::game {
+namespace openage::input::hud {
 
-} // namespace openage::input::game
+} // namespace openage::input::hud

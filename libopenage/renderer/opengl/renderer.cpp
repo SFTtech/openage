@@ -27,8 +27,17 @@ GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx,
 	display{std::make_shared<GlRenderTarget>(ctx,
                                              viewport_size[0],
                                              viewport_size[1])} {
+	// color used to clear the color buffers
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
 	// global GL alpha blending settings
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	// glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glBlendFuncSeparate(
+		GL_SRC_ALPHA, // source (overlaying) RGB factor
+		GL_ONE_MINUS_SRC_ALPHA, // destination (underlying) RGB factor
+		GL_ONE, // source (overlaying) alpha factor
+		GL_ONE_MINUS_SRC_ALPHA // destination (underlying) alpha factor
+	);
 
 	// global GL depth testing settings
 	glDepthFunc(GL_LEQUAL);
@@ -157,7 +166,6 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 	auto gl_target = std::dynamic_pointer_cast<GlRenderTarget>(pass->get_target());
 	gl_target->bind_write();
 
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// TODO: Option for face culling

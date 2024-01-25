@@ -37,15 +37,25 @@ class WorldObject;
 /**
  * Renderer for drawing and displaying entities in the game world (units, buildings, etc.)
  */
-class WorldRenderer {
+class WorldRenderStage {
 public:
-	WorldRenderer(const std::shared_ptr<Window> &window,
-	              const std::shared_ptr<renderer::Renderer> &renderer,
-	              const std::shared_ptr<renderer::camera::Camera> &camera,
-	              const util::Path &shaderdir,
-	              const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
-	              const std::shared_ptr<time::Clock> clock);
-	~WorldRenderer() = default;
+	/**
+     * Create a new render stage for the game world.
+     *
+     * @param window openage window targeted for rendering.
+     * @param renderer openage low-level renderer.
+     * @param camera Camera used for the rendered scene.
+     * @param shaderdir Directory containing the shader source files.
+     * @param asset_manager Asset manager for loading resources.
+     * @param clock Simulation clock for timing animations.
+     */
+	WorldRenderStage(const std::shared_ptr<Window> &window,
+	                 const std::shared_ptr<renderer::Renderer> &renderer,
+	                 const std::shared_ptr<renderer::camera::Camera> &camera,
+	                 const util::Path &shaderdir,
+	                 const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+	                 const std::shared_ptr<time::Clock> clock);
+	~WorldRenderStage() = default;
 
 	/**
 	 * Get the render pass of the world renderer.
@@ -89,6 +99,13 @@ private:
 	                            size_t height,
 	                            const util::Path &shaderdir);
 
+	/**
+	 * Fetch the uniform IDs for the uniforms of the world shader from OpenGL
+	 * and assign them to the WorldObject class.
+	 *
+	 * This method must be called after the shader program has been created but
+	 * before any uniforms are set.
+	 */
 	void init_uniform_ids();
 
 	/**

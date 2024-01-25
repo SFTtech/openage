@@ -4,13 +4,13 @@
 
 #include <unordered_map>
 
-#include "input/controller/game/binding.h"
+#include "input/controller/hud/binding.h"
 #include "input/event.h"
 
-namespace openage::input::game {
+namespace openage::input::hud {
 
 /**
- * Maps input events to gamestate events.
+ * Maps input events to HUD actons.
  */
 class BindingContext {
 public:
@@ -69,4 +69,4 @@ private:
 	std::unordered_map<event_class, binding_action, event_class_hash> by_class;
 };
 
-} // namespace openage::input::game
+} // namespace openage::input::hud

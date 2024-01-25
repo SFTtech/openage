@@ -1,6 +1,6 @@
 // Copyright 2022-2023 the openage authors. See copying.md for legal info.
 
-#include "world_object.h"
+#include "object.h"
 
 #include <array>
 #include <cstddef>
@@ -22,7 +22,7 @@
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/resources/texture_subinfo.h"
-#include "renderer/stages/world/world_render_entity.h"
+#include "renderer/stages/world/render_entity.h"
 #include "renderer/uniform_input.h"
 #include "util/fixed_point.h"
 #include "util/vector.h"

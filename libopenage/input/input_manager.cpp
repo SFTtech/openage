@@ -4,6 +4,7 @@
 
 #include "input/controller/camera/controller.h"
 #include "input/controller/game/controller.h"
+#include "input/controller/hud/controller.h"
 #include "input/event.h"
 #include "input/input_context.h"
 #include "renderer/gui/guisys/public/gui_input.h"
@@ -14,8 +15,9 @@ InputManager::InputManager() :
 	global_context{std::make_shared<InputContext>("main")},
 	active_contexts{},
 	available_contexts{},
-	engine_controller{nullptr},
+	game_controller{nullptr},
 	camera_controller{nullptr},
+	hud_controller{nullptr},
 	gui_input{nullptr} {
 }
 
@@ -27,8 +29,12 @@ void InputManager::set_camera_controller(const std::shared_ptr<camera::Controlle
 	this->camera_controller = controller;
 }
 
-void InputManager::set_engine_controller(const std::shared_ptr<game::Controller> &controller) {
-	this->engine_controller = controller;
+void InputManager::set_game_controller(const std::shared_ptr<game::Controller> &controller) {
+	this->game_controller = controller;
+}
+
+void InputManager::set_hud_controller(const std::shared_ptr<hud::Controller> controller) {
+	this->hud_controller = controller;
 }
 
 const std::shared_ptr<InputContext> &InputManager::get_global_context() {
@@ -127,18 +133,20 @@ bool InputManager::process(const QEvent &ev) {
 	// Check context list on top of the stack (most recent bound first)
 	for (auto const &ctx : this->active_contexts) {
 		if (ctx->is_bound(input_ev)) {
-			this->process_action(input_ev,
-			                     ctx->lookup(input_ev),
-			                     ctx);
+			auto &actions = ctx->lookup(input_ev);
+			for (auto const &action : actions) {
+				this->process_action(input_ev, action, ctx);
+			}
 			return true;
 		}
 	}
 
 	// If no local keybinds were bound, check the global keybinds
 	if (this->global_context->is_bound(input_ev)) {
-		this->process_action(input_ev,
-		                     this->global_context->lookup(input_ev),
-		                     this->global_context);
+		auto &actions = this->global_context->lookup(input_ev);
+		for (auto const &action : actions) {
+			this->process_action(input_ev, action, this->global_context);
+		}
 		return true;
 	}
 
@@ -173,12 +181,16 @@ void InputManager::process_action(const input::Event &ev,
 			this->pop_context(ctx_id);
 			break;
 		}
-		case input_action_t::ENGINE:
-			this->engine_controller->process(args, ctx->get_engine_bindings());
+		case input_action_t::GAME:
+			this->game_controller->process(args, ctx->get_game_bindings());
 			break;
 
 		case input_action_t::CAMERA:
 			this->camera_controller->process(args, ctx->get_camera_bindings());
+			break;
+
+		case input_action_t::HUD:
+			this->hud_controller->process(args, ctx->get_hud_bindings());
 			break;
 
 		case input_action_t::GUI:
@@ -196,6 +208,9 @@ void InputManager::process_action(const input::Event &ev,
 
 
 void setup_defaults(const std::shared_ptr<InputContext> &ctx) {
+	// hud
+	input_action hud_action{input_action_t::HUD};
+
 	// camera
 	input_action camera_action{input_action_t::CAMERA};
 
@@ -212,16 +227,19 @@ void setup_defaults(const std::shared_ptr<InputContext> &ctx) {
 	ctx->bind(ev_down, camera_action);
 	ctx->bind(ev_wheel_up, camera_action);
 	ctx->bind(ev_wheel_down, camera_action);
-	ctx->bind(event_class::MOUSE_MOVE, camera_action);
+	ctx->bind(event_class::MOUSE_MOVE, {camera_action, hud_action});
 
-	// engine
-	input_action engine_action{input_action_t::ENGINE};
+	// game
+	input_action game_action{input_action_t::GAME};
 
 	Event ev_mouse_lmb{event_class::MOUSE_BUTTON, Qt::LeftButton, Qt::NoModifier, QEvent::MouseButtonRelease};
 	Event ev_mouse_rmb{event_class::MOUSE_BUTTON, Qt::RightButton, Qt::NoModifier, QEvent::MouseButtonRelease};
 
-	ctx->bind(ev_mouse_lmb, engine_action);
-	ctx->bind(ev_mouse_rmb, engine_action);
+	ctx->bind(ev_mouse_lmb, {game_action, hud_action});
+	ctx->bind(ev_mouse_rmb, {game_action, hud_action});
+
+	// also forward all other mouse button events
+	ctx->bind(event_class::MOUSE_BUTTON, {game_action, hud_action});
 }
 
 

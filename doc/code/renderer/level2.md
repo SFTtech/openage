@@ -4,21 +4,21 @@ High-level renderer for transforming data from the gamestate to render objects f
 
 ## Overview
 
-1. [Level 2](#level-2)
-   1. [Overview](#overview)
-   2. [Stages](#stages)
-      1. [Updating Render Stages from the Gamestate](#updating-render-stages-from-the-gamestate)
-   3. [Camera](#camera)
+1. [Overview](#overview)
+2. [Stages](#stages)
+   1. [Updating Render Stages from the Gamestate](#updating-render-stages-from-the-gamestate)
+3. [Camera](#camera)
 
 ## Stages
 
 Every stage has its own subrenderer that manages a `RenderPass` from the level 1 renderer and updates it with `Renderable`s created using update information from the gamestate. Stages also store the vertex and fragment shaders used for drawing the renderable objects.
 
-There are currently 5 stages in the level 2 rendering pipeline:
+There are currently 6 stages in the level 2 rendering pipeline:
 
 1. `SkyboxRenderer`: Draws the background behind the terrain (as a single color).
 1. `TerrainRenderer`: Draws the terrain. Terrains are handled as textured 3D meshes.
 1. `WorldRenderer`: Draws animations and sprites for units/buildings and other 2D ingame objects.
+1. `HudRenderer`: Draws "Head-Up Display" elements like health bars, selection boxes, and others.
 1. `GuiRenderer`: Draws the GUI overlay. The drawing part in this stage is actually done by Qt, while the level 1 renderer only provides the framebuffer.
 1. `ScreenRenderer`: Alpha composites the framebuffer data of previous stages and draws them onto the screen (i.e. it overlays the outputs from the other stages).
 

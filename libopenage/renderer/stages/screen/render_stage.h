@@ -22,12 +22,19 @@ namespace screen {
  * (i.e. the renderers display target). This should always be the
  * last render stage.
  */
-class ScreenRenderer {
+class ScreenRenderStage {
 public:
-	ScreenRenderer(const std::shared_ptr<Window> &window,
-	               const std::shared_ptr<renderer::Renderer> &renderer,
-	               const util::Path &shaderdir);
-	~ScreenRenderer() = default;
+	/**
+     * Create a new render stage for drawing to the screen.
+     *
+     * @param window openage window targeted for rendering.
+     * @param renderer openage low-level renderer.
+     * @param shaderdir Directory containing the shader source files.
+     */
+	ScreenRenderStage(const std::shared_ptr<Window> &window,
+	                  const std::shared_ptr<renderer::Renderer> &renderer,
+	                  const util::Path &shaderdir);
+	~ScreenRenderStage() = default;
 
 	/**
 	 * Get the render pass of the screen renderer.

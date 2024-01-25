@@ -16,7 +16,9 @@
 
 namespace openage::renderer::terrain {
 
-
+/**
+ * Render entity for pushing updates to the Terrain renderer.
+ */
 class TerrainRenderEntity {
 public:
 	TerrainRenderEntity();
