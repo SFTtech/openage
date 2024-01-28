@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-return-statements
 
@@ -65,7 +65,9 @@ def convert_metadata(args: Namespace) -> None:
     gamedata_path = args.targetdir.joinpath('gamedata')
     if gamedata_path.exists():
         gamedata_path.removerecursive()
+
     read_start = timeit.default_timer()
+
     # Read .dat
     debug_gamedata_format(args.debugdir, args.debug_info, args.game_version)
     gamespec = get_gamespec(args.srcdir, args.game_version, not args.flag("no_pickle_cache"))
@@ -86,6 +88,7 @@ def convert_metadata(args: Namespace) -> None:
     debug_registered_graphics(args.debugdir, args.debug_info, existing_graphics)
 
     read_end = timeit.default_timer()
+    info("Finished metadata read (%.2f seconds)", read_end - read_start)
 
     conversion_start = timeit.default_timer()
     # Convert
@@ -95,6 +98,7 @@ def convert_metadata(args: Namespace) -> None:
                                       existing_graphics)
 
     conversion_end = timeit.default_timer()
+    info("Finished data conversion (%.2f seconds)", conversion_end - conversion_start)
 
     export_start = timeit.default_timer()
     for modpack in modpacks:
@@ -102,6 +106,7 @@ def convert_metadata(args: Namespace) -> None:
         debug_modpack(args.debugdir, args.debug_info, modpack)
 
     export_end = timeit.default_timer()
+    info("Finished modpack export (%.2f seconds)", export_end - export_start)
 
     stages_time = {
         "read": read_end - read_start,

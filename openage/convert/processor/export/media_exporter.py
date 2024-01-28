@@ -1,4 +1,4 @@
-# Copyright 2021-2023 the openage authors. See copying.md for legal info.
+# Copyright 2021-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments,too-many-locals
 """
@@ -9,7 +9,8 @@ import typing
 
 import logging
 import os
-
+import multiprocessing
+import queue
 
 from openage.convert.entity_object.export.texture import Texture
 from openage.convert.service import debug_info
@@ -31,6 +32,8 @@ if typing.TYPE_CHECKING:
 class MediaExporter:
     """
     Provides functions for converting media files and writing them to a targetdir.
+
+    TODO: Avoid code duplication in the export functions.
     """
 
     @staticmethod
@@ -62,39 +65,69 @@ class MediaExporter:
         for media_type in export_requests.keys():
             cur_export_requests = export_requests[media_type]
 
+            # Function for reading the source file data
+            read_data_func = None
+
+            # Multi-threaded function for exporting the source file data
             export_func = None
+
+            # Optional function for handling data in the outqueue
+            handle_outqueue_func = None
+
             kwargs = {}
-            if media_type is MediaType.TERRAIN:
-                # Game version and palettes
-                kwargs["game_version"] = args.game_version
-                kwargs["palettes"] = args.palettes
-                kwargs["compression_level"] = args.compression_level
-                export_func = MediaExporter._export_terrain
-                info("-- Exporting terrain files...")
+            if media_type is MediaType.BLEND:
+                read_data_func = MediaExporter._get_blend_data
+                export_func = _export_blend
+                itargs = (sourcedir, exportdir)
+                kwargs["blend_mode_count"] = args.blend_mode_count
+                info("-- Exporting blend files...")
 
             elif media_type is MediaType.GRAPHICS:
-                kwargs["palettes"] = args.palettes
-                kwargs["compression_level"] = args.compression_level
+                read_data_func = MediaExporter._get_graphics_data
+                export_func = _export_texture
+                handle_outqueue_func = MediaExporter._handle_graphics_outqueue
+                itargs = (args.palettes, args.compression_level)
                 kwargs["cache_info"] = cache_info
-                export_func = MediaExporter._export_graphics
                 info("-- Exporting graphics files...")
 
             elif media_type is MediaType.SOUNDS:
-                kwargs["loglevel"] = args.debug_info
+                read_data_func = MediaExporter._get_sound_data
+                export_func = _export_sound
+                itargs = tuple()
                 kwargs["debugdir"] = args.debugdir
-                export_func = MediaExporter._export_sound
+                kwargs["loglevel"] = args.debug_info
                 info("-- Exporting sound files...")
 
-            elif media_type is MediaType.BLEND:
-                kwargs["blend_mode_count"] = args.blend_mode_count
-                export_func = MediaExporter._export_blend
-                info("-- Exporting blend files...")
+            elif media_type is MediaType.TERRAIN:
+                read_data_func = MediaExporter._get_terrain_data
+                export_func = _export_terrain
+                itargs = (args.palettes, args.compression_level, args.game_version)
+                info("-- Exporting terrain files...")
 
-            total_count = len(cur_export_requests)
-            for count, request in enumerate(cur_export_requests, start = 1):
-                export_func(request, sourcedir, exportdir, **kwargs)
-                print(f"-- Files done: {format_progress(count, total_count)}",
-                      end = "\r", flush = True)
+            if args.jobs == 1:
+                MediaExporter._export_singlethreaded(
+                    cur_export_requests,
+                    sourcedir,
+                    exportdir,
+                    read_data_func,
+                    export_func,
+                    handle_outqueue_func,
+                    itargs,
+                    kwargs
+                )
+
+            else:
+                MediaExporter._export_multithreaded(
+                    cur_export_requests,
+                    sourcedir,
+                    exportdir,
+                    read_data_func,
+                    export_func,
+                    handle_outqueue_func,
+                    itargs,
+                    kwargs,
+                    args.jobs
+                )
 
         if args.debug_info > 5:
             cachedata = {}
@@ -121,299 +154,304 @@ class MediaExporter:
             )
 
     @staticmethod
-    def _export_blend(
-        export_request: MediaExportRequest,
+    def _export_singlethreaded(
+        requests: list[MediaExportRequest],
         sourcedir: Path,
         exportdir: Path,
-        blend_mode_count: int = None
-    ) -> None:
+        read_data_func: typing.Callable,
+        export_func: typing.Callable,
+        handle_outqueue_func: typing.Callable | None,
+        itargs: tuple,
+        kwargs: dict
+    ):
         """
-        Convert and export a blending mode.
+        Export media files in a single thread.
 
-        :param export_request: Export request for a blending mask.
+        :param requests: Export requests for media files.
         :param sourcedir: Directory where all media assets are mounted. Source subfolder and
                           source filename should be stored in the export request.
         :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
                           and target filename should be stored in the export request.
-        :param blend_mode_count: Number of blending modes extracted from the source file.
-        :type export_request: MediaExportRequest
+        :param read_data_func: Function for reading the source file data.
+        :param export_func: Function for exporting media files.
+        :param handle_outqueue_func: Optional function for handling data in the outqueue.
+        :param itargs: Arguments for the export function.
+        :param kwargs: Keyword arguments for the export function.
+        :type requests: list[MediaExportRequest]
         :type sourcedir: Path
         :type exportdir: Path
-        :type blend_mode_count: int
+        :type read_data_func: typing.Callable
+        :type export_func: typing.Callable
+        :type handle_outqueue_func: typing.Callable
+        :type itargs: tuple
+        :type kwargs: dict
         """
-        source_file = sourcedir.joinpath(export_request.source_filename)
+        single_queue = queue.Queue()
+        for idx, request in enumerate(requests):
+            source_data = read_data_func(request, sourcedir, **kwargs)
+            if source_data is None:
+                continue
 
-        media_file = source_file.open("rb")
-        blend_data = Blendomatic(media_file, blend_mode_count)
+            target_path = exportdir[request.targetdir, request.target_filename]
 
-        from .texture_merge import merge_frames
-
-        textures = blend_data.get_textures()
-        for idx, texture in enumerate(textures):
-            merge_frames(texture)
-            MediaExporter.save_png(
-                texture,
-                exportdir[export_request.targetdir],
-                f"{export_request.target_filename}{idx}.png"
+            export_func(
+                idx,
+                source_data,
+                single_queue,
+                request.source_filename,
+                target_path,
+                *itargs,
+                **kwargs
             )
 
             if get_loglevel() <= logging.DEBUG:
                 MediaExporter.log_fileinfo(
-                    source_file,
-                    exportdir[export_request.targetdir,
-                              f"{export_request.target_filename}{idx}.png"]
+                    sourcedir[request.get_type().value, request.source_filename],
+                    exportdir[request.targetdir, request.target_filename]
                 )
 
+            MediaExporter._show_progress(idx + 1, len(requests))
+
+        if handle_outqueue_func:
+            handle_outqueue_func(single_queue, requests)
+
     @staticmethod
-    def _export_graphics(
-        export_request: MediaExportRequest,
+    def _export_multithreaded(
+        requests: list[MediaExportRequest],
         sourcedir: Path,
         exportdir: Path,
-        palettes: dict[int, ColorTable],
-        compression_level: int,
-        cache_info: dict = None
-    ) -> None:
+        read_data_func: typing.Callable,
+        export_func: typing.Callable,
+        handle_outqueue_func: typing.Callable | None,
+        itargs: tuple,
+        kwargs: dict,
+        job_count: int = None
+    ):
         """
-        Convert and export a graphics file.
+        Export media files in multiple threads.
 
-        :param export_request: Export request for a graphics file.
+        :param requests: Export requests for media files.
         :param sourcedir: Directory where all media assets are mounted. Source subfolder and
                           source filename should be stored in the export request.
         :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
                           and target filename should be stored in the export request.
-        :param palettes: Palettes used by the game.
-        :param compression_level: PNG compression level for the resulting image file.
-        :param cache_info: Media cache information with compression parameters from a previous run.
-        :type export_request: MediaExportRequest
+        :param read_data_func: Function for reading the source file data.
+        :param export_func: Function for exporting media files.
+        :param handle_outqueue_func: Optional function for handling data in the outqueue.
+        :param itargs: Arguments for the export function.
+        :param kwargs: Keyword arguments for the export function.
+        :param job_count: Number of worker processes to use.
+        :type requests: list[MediaExportRequest]
         :type sourcedir: Path
         :type exportdir: Path
-        :type palettes: dict
-        :type compression_level: int
-        :type cache_info: tuple
+        :type read_data_func: typing.Callable
+        :type export_func: typing.Callable
+        :type handle_outqueue_func: typing.Callable
+        :type itargs: tuple
+        :type kwargs: dict
+        :type job_count: int
         """
-        source_file = sourcedir[
-            export_request.get_type().value,
-            export_request.source_filename
-        ]
+        worker_count = job_count
+        if worker_count is None:
+            # Small optimization that saves some time for small exports
+            worker_count = min(multiprocessing.cpu_count(), len(requests))
 
-        try:
-            media_file = source_file.open("rb")
+        # Create a manager for sharing data between the workers and main process
+        with multiprocessing.Manager() as manager:
+            # Workers write the image metadata to this queue
+            # so that it can be forwarded to the export requests
+            #
+            # we cannot do this in a worker process directly
+            # because the export requests cannot be pickled
+            outqueue = manager.Queue()
 
-        except FileNotFoundError:
+            expected_size = len(requests)
+
+            # Create a pool of workers
+            with multiprocessing.Pool(worker_count) as pool:
+                for idx, request in enumerate(requests):
+                    # Feed the worker with the source file data (bytes) from the
+                    # main process
+                    #
+                    # This is necessary because some image files are inside an
+                    # archive and cannot be accessed asynchronously
+                    source_data = read_data_func(request, sourcedir, **kwargs)
+                    if source_data is None:
+                        expected_size -= 1
+                        continue
+
+                    target_path = exportdir[request.targetdir, request.target_filename]
+
+                    # Start an export call in a worker process
+                    # The call is asynchronous, so the next worker can be
+                    # started immediately
+                    pool.apply_async(
+                        export_func,
+                        args=(
+                            idx,
+                            source_data,
+                            outqueue,
+                            request.source_filename,
+                            target_path,
+                            *itargs
+                        ),
+                        kwds=kwargs
+                    )
+
+                    # Log file information
+                    if get_loglevel() <= logging.DEBUG:
+                        MediaExporter.log_fileinfo(
+                            sourcedir[request.get_type().value, request.source_filename],
+                            exportdir[request.targetdir, request.target_filename]
+                        )
+
+                    # Show progress
+                    MediaExporter._show_progress(outqueue.qsize(), expected_size)
+
+                # Close the pool since all workers have been started
+                pool.close()
+
+                # Show progress for remaining workers
+                while outqueue.qsize() < expected_size:
+                    MediaExporter._show_progress(outqueue.qsize(), expected_size)
+
+                # Wait for all workers to finish
+                pool.join()
+
+            if handle_outqueue_func:
+                handle_outqueue_func(outqueue, requests)
+
+    @staticmethod
+    def _get_blend_data(
+        request: MediaExportRequest,
+        sourcedir: Path,
+        **kwargs  # pylint: disable=unused-argument
+    ) -> bytes:
+        """
+        Get the raw file data of a blending mask.
+
+        :param request: Export request for a blending mask.
+        :param sourcedir: Directory where all media assets are mounted.
+        :type request: MediaExportRequest
+        :type sourcedir: Path
+        """
+        source_file = sourcedir[request.get_type().value,
+                                request.source_filename]
+
+        return source_file.open("rb").read()
+
+    @staticmethod
+    def _get_graphics_data(
+        request: MediaExportRequest,
+        sourcedir: Path,
+        **kwargs  # pylint: disable=unused-argument
+    ) -> bytes:
+        """
+        Get the raw file data of a graphics file.
+
+        :param request: Export request for a graphics file.
+        :param sourcedir: Directory where all media assets are mounted.
+        :type request: MediaExportRequest
+        :type sourcedir: Path
+        """
+        source_file = sourcedir[request.get_type().value,
+                                request.source_filename]
+        if not source_file.exists():
             if source_file.suffix.lower() in (".smx", ".sld"):
-                # Rename extension to SMP and try again
-                other_filename = export_request.source_filename[:-3] + "smp"
+                # Some DE2 graphics files have the wrong extension
+                # Fall back to the SMP (beta) extension
+                other_filename = request.source_filename[:-3] + "smp"
                 source_file = sourcedir[
-                    export_request.get_type().value,
+                    request.get_type().value,
                     other_filename
                 ]
-                export_request.set_source_filename(other_filename)
+                request.set_source_filename(other_filename)
 
-            media_file = source_file.open("rb")
-
-        if source_file.suffix.lower() == ".slp":
-            from ...value_object.read.media.slp import SLP
-            image = SLP(media_file.read())
-
-        elif source_file.suffix.lower() == ".smp":
-            from ...value_object.read.media.smp import SMP
-            image = SMP(media_file.read())
-
-        elif source_file.suffix.lower() == ".smx":
-            from ...value_object.read.media.smx import SMX
-            image = SMX(media_file.read())
-
-        elif source_file.suffix.lower() == ".sld":
-            from ...value_object.read.media.sld import SLD
-            image = SLD(media_file.read())
-
-        else:
-            raise SyntaxError(f"Source file {source_file.name} has an unrecognized extension: "
-                              f"{source_file.suffix.lower()}")
-
-        packer_cache = None
-        compr_cache = None
-        if cache_info:
-            cache_params = cache_info.get(export_request.source_filename, None)
-
-            if cache_params:
-                packer_cache = cache_params["packer_settings"]
-                compression_level = cache_params["compr_settings"][0]
-                compr_cache = cache_params["compr_settings"][1:]
-
-        from .texture_merge import merge_frames
-
-        texture = Texture(image, palettes)
-        merge_frames(texture, cache=packer_cache)
-        MediaExporter.save_png(
-            texture,
-            exportdir[export_request.targetdir],
-            export_request.target_filename,
-            compression_level=compression_level,
-            cache=compr_cache
-        )
-        metadata = {export_request.target_filename: texture.get_metadata()}
-        export_request.set_changed()
-        export_request.notify_observers(metadata)
-        export_request.clear_changed()
-
-        if get_loglevel() <= logging.DEBUG:
-            MediaExporter.log_fileinfo(
-                source_file,
-                exportdir[export_request.targetdir, export_request.target_filename]
-            )
+        return source_file.open("rb").read()
 
     @staticmethod
-    def _export_interface(
-        export_request: MediaExportRequest,
+    def _get_sound_data(
+        request: MediaExportRequest,
         sourcedir: Path,
         **kwargs
-    ) -> None:
+    ) -> bytes | None:
         """
-        Convert and export a sprite file.
-        """
-        # TODO: Implement
+        Get the raw file data of a sound file.
 
-    @staticmethod
-    def _export_palette(
-        export_request: MediaExportRequest,
-        sourcedir: Path,
-        **kwargs
-    ) -> None:
-        """
-        Convert and export a palette file.
-        """
-        # TODO: Implement
-
-    @staticmethod
-    def _export_sound(
-        export_request: MediaExportRequest,
-        sourcedir: Path,
-        exportdir: Path,
-        **kwargs
-    ) -> None:
-        """
-        Convert and export a sound file.
-
-        :param export_request: Export request for a sound file.
-        :param sourcedir: Directory where all media assets are mounted. Source subfolder and
-                          source filename should be stored in the export request.
-        :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
-                          and target filename should be stored in the export request.
-        :type export_request: MediaExportRequest
+        :param request: Export request for a sound file.
+        :param sourcedir: Directory where all media assets are mounted.
+        :type request: MediaExportRequest
         :type sourcedir: Path
-        :type exportdir: Path
         """
-        source_file = sourcedir[
-            export_request.get_type().value,
-            export_request.source_filename
-        ]
+        source_file = sourcedir[request.get_type().value,
+                                request.source_filename]
 
-        if source_file.is_file():
-            with source_file.open_r() as infile:
-                media_file = infile.read()
-
-        else:
+        if not source_file.is_file():
             # TODO: Filter files that do not exist out sooner
-            debug_info.debug_not_found_sounds(kwargs["debugdir"], kwargs["loglevel"], source_file)
-            return
+            debug_info.debug_not_found_sounds(kwargs["debugdir"],
+                                              kwargs["loglevel"],
+                                              source_file)
+            return None
 
-        from ...service.export.opus.opusenc import encode
-
-        soundata = encode(media_file)
-
-        if isinstance(soundata, (str, int)):
-            raise RuntimeError(f"opusenc failed: {soundata}")
-
-        export_file = exportdir[
-            export_request.targetdir,
-            export_request.target_filename
-        ]
-
-        with export_file.open_w() as outfile:
-            outfile.write(soundata)
-
-        if get_loglevel() <= logging.DEBUG:
-            MediaExporter.log_fileinfo(
-                source_file,
-                exportdir[export_request.targetdir, export_request.target_filename]
-            )
+        return source_file.open("rb").read()
 
     @staticmethod
-    def _export_terrain(
-        export_request: MediaExportRequest,
+    def _get_terrain_data(
+        request: MediaExportRequest,
         sourcedir: Path,
-        exportdir: Path,
-        palettes: dict[int, ColorTable],
-        game_version: GameVersion,
-        compression_level: int
-    ) -> None:
+        **kwargs  # pylint: disable=unused-argument
+    ) -> bytes:
         """
-        Convert and export a terrain graphics file.
+        Get the raw file data of a terrain graphics file.
 
-        :param export_request: Export request for a terrain graphics file.
-        :param sourcedir: Directory where all media assets are mounted. Source subfolder and
-                          source filename should be stored in the export request.
-        :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
-                          and target filename should be stored in the export request.
-        :param game_version: Game edition and expansion info.
-        :param palettes: Palettes used by the game.
-        :param compression_level: PNG compression level for the resulting image file.
-        :type export_request: MediaExportRequest
-        :type sourcedir: Directory
-        :type exportdir: Directory
-        :type palettes: dict
-        :type game_version: GameVersion
-        :type compression_level: int
+        :param request: Export request for a terrain graphics file.
+        :param sourcedir: Directory where all media assets are mounted.
+        :type request: MediaExportRequest
+        :type sourcedir: Path
         """
-        source_file = sourcedir[
-            export_request.get_type().value,
-            export_request.source_filename
-        ]
+        source_file = sourcedir[request.get_type().value,
+                                request.source_filename]
 
-        if source_file.suffix.lower() == ".slp":
-            from ...value_object.read.media.slp import SLP
-            media_file = source_file.open("rb")
-            image = SLP(media_file.read())
+        return source_file.open("rb").read()
 
-        elif source_file.suffix.lower() == ".dds":
-            # TODO: Implement
-            pass
+    @staticmethod
+    def _handle_graphics_outqueue(
+        outqueue: multiprocessing.Queue,
+        requests: list[MediaExportRequest]
+    ):
+        """
+        Collect the metadata from the workers and forward it to the
+        export requests.
 
-        elif source_file.suffix.lower() == ".png":
-            from shutil import copyfileobj
-            src_path = source_file.open('rb')
-            dst_path = exportdir[export_request.targetdir,
-                                 export_request.target_filename].open('wb')
-            copyfileobj(src_path, dst_path)
-            return
+        This must be called before the manager of the queue is shutdown!
 
-        else:
-            raise SyntaxError(f"Source file {source_file.name} has an unrecognized extension: "
-                              f"{source_file.suffix.lower()}")
+        :param outqueue: Queue for passing metadata to the main process.
+        :param requests: Export requests for graphics files.
+        :type outqueue: multiprocessing.Queue
+        :type requests: list[MediaExportRequest]
+        """
+        while not outqueue.empty():
+            idx, metadata = outqueue.get()
+            update_data = {requests[idx].target_filename: metadata}
+            requests[idx].set_changed()
+            requests[idx].notify_observers(update_data)
+            requests[idx].clear_changed()
 
-        if game_version.edition.game_id in ("AOC", "SWGB"):
-            from .terrain_merge import merge_terrain
-            texture = Texture(image, palettes)
-            merge_terrain(texture)
+    @staticmethod
+    def _show_progress(
+        current_size: int,
+        total_size: int,
+    ):
+        """
+        Show the progress of the export process.
 
-        else:
-            from .texture_merge import merge_frames
-            texture = Texture(image, palettes)
-            merge_frames(texture)
-
-        MediaExporter.save_png(
-            texture,
-            exportdir[export_request.targetdir],
-            export_request.target_filename,
-            compression_level,
-        )
-
-        if get_loglevel() <= logging.DEBUG:
-            MediaExporter.log_fileinfo(
-                source_file,
-                exportdir[export_request.targetdir, export_request.target_filename]
-            )
+        :param current_size: Number of files that have been exported.
+        :param total_size: Total number of files to export.
+        :type current_size: int
+        :type total_size: int
+        """
+        print(f"-- Files done: {format_progress(current_size, total_size)}",
+              end = "\r", flush = True)
 
     @staticmethod
     def _get_media_cache(
@@ -582,3 +620,267 @@ class MediaExporter:
                f"{(target_size / source_size * 100) - 100:+.1f}%)")
 
         dbg(log)
+
+
+def _export_blend(
+    request_id: int,
+    blendfile_data: bytes,
+    outqueue: multiprocessing.Queue,
+    source_filename: str,  # pylint: disable=unused-argument
+    targetdir: Path,
+    target_filename: str,
+    blend_mode_count: int = None
+) -> None:
+    """
+    Convert and export a blending mode.
+
+    :param blendfile_data: Raw file data of the blending mask.
+    :param outqueue: Queue for passing metadata to the main process.
+    :param target_path: Path to the resulting image file.
+    :param blend_mode_count: Number of blending modes extracted from the source file.
+    :type blendfile_data: bytes
+    :type outqueue: multiprocessing.Queue
+    :type target_path: openage.util.fslike.path.Path
+    :type blend_mode_count: int
+    """
+    blend_data = Blendomatic(blendfile_data, blend_mode_count)
+
+    from .texture_merge import merge_frames
+
+    textures = blend_data.get_textures()
+    for idx, texture in enumerate(textures):
+        merge_frames(texture)
+        _save_png(
+            texture,
+            targetdir.joinpath(f"{target_filename}_{idx}.png")
+        )
+
+    outqueue.put(request_id)
+
+
+def _export_sound(
+    request_id: int,
+    sound_data: bytes,
+    outqueue: multiprocessing.Queue,
+    source_filename: str,  # pylint: disable=unused-argument
+    target_path: Path,
+    **kwargs  # pylint: disable=unused-argument
+) -> None:
+    """
+    Convert and export a sound file.
+
+    :param sound_data: Raw file data of the sound file.
+    :param outqueue: Queue for passing metadata to the main process.
+    :param target_path: Path to the resulting sound file.
+    :type sound_data: bytes
+    :type outqueue: multiprocessing.Queue
+    :type target_path: openage.util.fslike.path.Path
+    """
+    from ...service.export.opus.opusenc import encode
+    encoded = encode(sound_data)
+
+    if isinstance(encoded, (str, int)):
+        raise RuntimeError(f"opusenc failed: {encoded}")
+
+    with target_path.open("wb") as outfile:
+        outfile.write(encoded)
+
+    outqueue.put(request_id)
+
+
+def _export_terrain(
+    request_id: int,
+    graphics_data: bytes,
+    outqueue: multiprocessing.Queue,
+    source_filename: str,
+    target_path: Path,
+    palettes: dict[int, ColorTable],
+    compression_level: int,
+    game_version: GameVersion
+) -> None:
+    """
+    Convert and export a terrain graphics file.
+
+    :param graphics_data: Raw file data of the graphics file.
+    :param outqueue: Queue for passing the image metadata to the main process.
+    :param source_filename: Filename of the source file.
+    :param target_path: Path to the resulting image file.
+    :param palettes: Palettes used by the game.
+    :param compression_level: PNG compression level for the resulting image file.
+    :param game_version: Game edition and expansion info.
+    :type graphics_data: bytes
+    :type outqueue: multiprocessing.Queue
+    :type source_filename: str
+    :type target_path: openage.util.fslike.path.Path
+    :type palettes: dict
+    :type compression_level: int
+    :type game_version: GameVersion
+    """
+    file_ext = source_filename.split('.')[-1].lower()
+    if file_ext == "slp":
+        from ...value_object.read.media.slp import SLP
+        image = SLP(graphics_data)
+
+    elif file_ext == "dds":
+        # TODO: Implement
+        pass
+
+    elif file_ext == "png":
+        with target_path.open("wb") as imagefile:
+            imagefile.write(graphics_data)
+
+        outqueue.put(request_id)
+        return
+
+    else:
+        raise SyntaxError(f"Source file {source_filename} has an unrecognized extension: "
+                          f"{file_ext}")
+
+    if game_version.edition.game_id in ("AOC", "SWGB"):
+        from .terrain_merge import merge_terrain
+        texture = Texture(image, palettes)
+        merge_terrain(texture)
+
+    else:
+        from .texture_merge import merge_frames
+        texture = Texture(image, palettes)
+        merge_frames(texture)
+
+    _save_png(
+        texture,
+        target_path,
+        compression_level=compression_level
+    )
+
+    outqueue.put(request_id)
+
+
+def _export_texture(
+    request_id: int,
+    graphics_data: bytes,
+    outqueue: multiprocessing.Queue,
+    source_filename: str,
+    target_path: Path,
+    palettes: dict[int, ColorTable],
+    compression_level: int,
+    cache_info: dict = None
+) -> None:
+    """
+    Convert and export a graphics file to a PNG texture.
+
+    :param request_id: ID of the export request.
+    :param graphics_data: Raw file data of the graphics file.
+    :param outqueue: Queue for passing the image metadata to the main process.
+    :param source_filename: Filename of the source file.
+    :param target_path: Path to the resulting image file.
+    :param palettes: Palettes used by the game.
+    :param compression_level: PNG compression level for the resulting image file.
+    :param cache_info: Media cache information with compression parameters from a previous run.
+    :type request_id: int
+    :type graphics_data: bytes
+    :type outqueue: multiprocessing.Queue
+    :type source_filename: str
+    :type target_path: openage.util.fslike.path.Path
+    :type palettes: dict
+    :type compression_level: int
+    :type cache_info: tuple
+    """
+    file_ext = source_filename.split('.')[-1].lower()
+    if file_ext == "slp":
+        from ...value_object.read.media.slp import SLP
+        image = SLP(graphics_data)
+
+    elif file_ext == "smp":
+        from ...value_object.read.media.smp import SMP
+        image = SMP(graphics_data)
+
+    elif file_ext == "smx":
+        from ...value_object.read.media.smx import SMX
+        image = SMX(graphics_data)
+
+    elif file_ext == "sld":
+        from ...value_object.read.media.sld import SLD
+        image = SLD(graphics_data)
+
+    else:
+        raise SyntaxError(f"Source file {source_filename} has an unrecognized extension: "
+                          f"{file_ext}")
+
+    packer_cache = None
+    compr_cache = None
+    if cache_info:
+        cache_params = cache_info.get(source_filename, None)
+
+        if cache_params:
+            packer_cache = cache_params["packer_settings"]
+            compression_level = cache_params["compr_settings"][0]
+            compr_cache = cache_params["compr_settings"][1:]
+
+    from .texture_merge import merge_frames
+
+    texture = Texture(image, palettes)
+    merge_frames(texture, cache=packer_cache)
+    _save_png(
+        texture,
+        target_path,
+        compression_level=compression_level,
+        cache=compr_cache
+    )
+    metadata = (request_id, texture.get_metadata().copy())
+    outqueue.put(metadata)
+
+
+def _save_png(
+    texture: Texture,
+    target_path: Path,
+    compression_level: int = 1,
+    cache: dict = None,
+    dry_run: bool = False
+) -> None:
+    """
+    Store the image data into the target directory path,
+    with given target_path="dir/out.png".
+
+    :param texture: Texture with an image atlas.
+    :param target_path: Path to the resulting image file.
+    :param compression_level: PNG compression level used for the resulting image file.
+    :param dry_run: If True, create the PNG but don't save it as a file.
+    :type texture: Texture
+    :type target_path: openage.util.fslike.path.Path
+    :type compression_level: int
+    :type dry_run: bool
+    """
+    from ...service.export.png import png_create
+
+    compression_levels = {
+        0: png_create.CompressionMethod.COMPR_NONE,
+        1: png_create.CompressionMethod.COMPR_DEFAULT,
+        2: png_create.CompressionMethod.COMPR_OPTI,
+        3: png_create.CompressionMethod.COMPR_GREEDY,
+        4: png_create.CompressionMethod.COMPR_AGGRESSIVE,
+    }
+
+    if not dry_run:
+        ext = target_path.suffix.lower()
+
+        # only allow png
+        if ext != ".png":
+            raise ValueError("Filename invalid, a texture must be saved"
+                             f" as '*.png', not '*{ext}'")
+
+    compression_method = compression_levels.get(
+        compression_level,
+        png_create.CompressionMethod.COMPR_DEFAULT
+    )
+    png_data, compr_params = png_create.save(
+        texture.image_data.data,
+        compression_method,
+        cache
+    )
+
+    if not dry_run:
+        with target_path.open("wb") as imagefile:
+            imagefile.write(png_data)
+
+    if compr_params:
+        texture.best_compr = (compression_level, *compr_params)

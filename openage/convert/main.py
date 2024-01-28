@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches
 """
@@ -53,6 +53,10 @@ def convert_assets(
     if "compression_level" not in vars(args):
         args.compression_level = 1
 
+    # Set worker count for multi-threading if it was not set
+    if "jobs" not in vars(args):
+        args.jobs = None
+
     # Set verbosity for debug output
     if "debug_info" not in vars(args) or not args.debug_info:
         if args.devmode:
@@ -64,7 +68,7 @@ def convert_assets(
     # add a dir for debug info
     debug_log_path = converted_path / "debug" / datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
     debugdir = DirectoryCreator(debug_log_path).root
-    args.debugdir = AccessSynchronizer(debugdir).root
+    args.debugdir = debugdir
 
     # Create CLI args info
     debug_cli_args(args.debugdir, args.debug_info, args)
@@ -93,9 +97,8 @@ def convert_assets(
     if not data_dir:
         return None
 
-    # make srcdir and targetdir safe for threaded conversion
     args.srcdir = AccessSynchronizer(data_dir).root
-    args.targetdir = AccessSynchronizer(targetdir).root
+    args.targetdir = targetdir
 
     # Create mountpoint info
     debug_mounts(args.debugdir, args.debug_info, args)

@@ -12,8 +12,7 @@ from openage.convert.service.read.nyan_api_loader import load_api
 from openage.nyan.import_tree import ImportTree
 from openage.util.fslike.directory import Directory
 from openage.util.fslike.union import Union, UnionPath
-from openage.util.fslike.wrapper import (DirectoryCreator,
-                                         Synchronizer as AccessSynchronizer)
+from openage.util.fslike.wrapper import DirectoryCreator
 
 from ...log import info
 
@@ -50,7 +49,7 @@ def export_api(exportdir: UnionPath) -> None:
     info("Dumping info file...")
 
     targetdir = DirectoryCreator(exportdir).root
-    outdir = AccessSynchronizer(targetdir).root / "engine"
+    outdir = targetdir / "engine"
 
     # Modpack info file
     DataExporter.export([modpack.info], outdir)
