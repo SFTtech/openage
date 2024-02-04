@@ -1,6 +1,7 @@
 add_sources(libopenage
 	a_star.cpp
     cost_field.cpp
+	definitions.cpp
 	heuristics.cpp
 	path.cpp
 	tests.cpp
