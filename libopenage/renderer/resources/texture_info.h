@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -162,8 +162,8 @@ public:
 	/**
 	 * Get the coordinates of a specific subtexture inside the main texture.
 	 * Coordinates are returned as normalized values (floats in range 0.0 to 1.0).
-     *
-     * @deprecated Use \p get_subtex_tile_params() instead.
+	 *
+	 * @deprecated Use \p get_subtex_tile_params() instead.
 	 *
 	 * @param subidx Index of the subtexture.
 	 *

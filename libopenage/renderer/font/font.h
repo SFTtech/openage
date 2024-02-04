@@ -1,4 +1,4 @@
-// Copyright 2015-2021 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -68,8 +68,8 @@ struct font_description {
 	font_description(std::string font_file,
 	                 unsigned int size,
 	                 font_direction direction = font_direction::left_to_right,
-	                 std::string language="en",
-	                 std::string script="Latin");
+	                 std::string language = "en",
+	                 std::string script = "Latin");
 
 	/**
 	 * Constructs a font_description instance.
@@ -89,11 +89,9 @@ struct font_description {
 	bool operator==(const font_description &other) const;
 
 	bool operator!=(const font_description &other) const;
-
 };
 
 class Font {
-
 public:
 	/**
 	 * Create a font instance from the description.
@@ -189,14 +187,14 @@ private:
 
 	// The HarfBuzz font instance that drives the operations of this font
 	hb_font_t *hb_font;
-
 };
 
-}} // openage::renderer
+} // namespace renderer
+} // namespace openage
 
 namespace std {
 
-template<>
+template <>
 struct hash<openage::renderer::font_description> {
 	size_t operator()(const openage::renderer::font_description &fd) const {
 		size_t hash = std::hash<std::type_index>()(std::type_index(typeid(openage::renderer::font_description)));
@@ -206,4 +204,4 @@ struct hash<openage::renderer::font_description> {
 	}
 };
 
-}
+} // namespace std

@@ -1,4 +1,4 @@
-// Copyright 2019-2023 the openage authors. See copying.md for legal info.
+// Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -195,8 +195,8 @@ protected:
 	std::shared_ptr<renderer::world::WorldRenderStage> world_renderer;
 
 	/**
-     * Graphics output for the HUD.
-     */
+	 * Graphics output for the HUD.
+	 */
 	std::shared_ptr<renderer::hud::HudRenderStage> hud_renderer;
 
 	/**

@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -146,4 +146,5 @@ OAAPI void set_exc_translation_funcs(
 	void (*describe_py_exception)(PyException *));
 
 
-}} // openage::pyinterface
+} // namespace pyinterface
+} // namespace openage

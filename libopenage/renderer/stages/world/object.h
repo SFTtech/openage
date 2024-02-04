@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -37,39 +37,39 @@ class WorldRenderEntity;
 class WorldObject {
 public:
 	/**
-     * Create a new object for the World render stage.
-     *
-     * @param asset_manager Asset manager for loading resources.
-     */
+	 * Create a new object for the World render stage.
+	 *
+	 * @param asset_manager Asset manager for loading resources.
+	 */
 	WorldObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager);
 	~WorldObject() = default;
 
 	/**
-     * Set the world render entity.
-     *
-     * @param entity New world render entity.
-     */
+	 * Set the world render entity.
+	 *
+	 * @param entity New world render entity.
+	 */
 	void set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity);
 
 	/**
-     * Set the current camera of the scene.
-     *
-     * @param camera Camera object viewing the scene.
-     */
+	 * Set the current camera of the scene.
+	 *
+	 * @param camera Camera object viewing the scene.
+	 */
 	void set_camera(const std::shared_ptr<renderer::camera::Camera> &camera);
 
 	/**
-     * Fetch updates from the render entity.
-     *
-     * @param time Current simulation time.
-     */
+	 * Fetch updates from the render entity.
+	 *
+	 * @param time Current simulation time.
+	 */
 	void fetch_updates(const time::time_t &time = 0.0);
 
 	/**
-     * Update the uniforms of the renderable associated with this object.
-     *
-     * @param time Current simulation time.
-     */
+	 * Update the uniforms of the renderable associated with this object.
+	 *
+	 * @param time Current simulation time.
+	 */
 	void update_uniforms(const time::time_t &time = 0.0);
 
 	/**
@@ -80,26 +80,26 @@ public:
 	uint32_t get_id();
 
 	/**
-     * Get the quad for creating the geometry.
-     *
-     * @return Mesh for creating a renderer geometry object.
-     */
+	 * Get the quad for creating the geometry.
+	 *
+	 * @return Mesh for creating a renderer geometry object.
+	 */
 	static const renderer::resources::MeshData get_mesh();
 
 	/**
-     * Check whether a new renderable needs to be created for this mesh.
-     *
-     * If true, the old renderable should be removed from the render pass.
-     * The updated uniforms and geometry should be passed to this mesh.
-     * Afterwards, clear the requirement flag with \p clear_requires_renderable().
-     *
-     * @return true if a new renderable is required, else false.
-     */
+	 * Check whether a new renderable needs to be created for this mesh.
+	 *
+	 * If true, the old renderable should be removed from the render pass.
+	 * The updated uniforms and geometry should be passed to this mesh.
+	 * Afterwards, clear the requirement flag with \p clear_requires_renderable().
+	 *
+	 * @return true if a new renderable is required, else false.
+	 */
 	bool requires_renderable();
 
 	/**
-     * Indicate to this mesh that a new renderable has been created.
-     */
+	 * Indicate to this mesh that a new renderable has been created.
+	 */
 	void clear_requires_renderable();
 
 	/**
@@ -115,12 +115,12 @@ public:
 	void clear_changed_flag();
 
 	/**
-     * Set the reference to the uniform inputs of the renderable
-     * associated with this object. Relevant uniforms are updated
-     * when calling \p update().
-     *
-     * @param uniforms Uniform inputs of this object's renderable.
-     */
+	 * Set the reference to the uniform inputs of the renderable
+	 * associated with this object. Relevant uniforms are updated
+	 * when calling \p update().
+	 *
+	 * @param uniforms Uniform inputs of this object's renderable.
+	 */
 	void set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms);
 
 	/**
@@ -136,9 +136,9 @@ public:
 
 private:
 	/**
-     * Stores whether a new renderable for this object needs to be created
-     * for the render pass.
-     */
+	 * Stores whether a new renderable for this object needs to be created
+	 * for the render pass.
+	 */
 	bool require_renderable;
 
 	/**
@@ -173,18 +173,18 @@ private:
 	curve::Continuous<coord::scene3> position;
 
 	/**
-     * Angle of the object.
-     */
+	 * Angle of the object.
+	 */
 	curve::Segmented<coord::phys_angle_t> angle;
 
 	/**
-     * Animation information for the renderables.
-     */
+	 * Animation information for the renderables.
+	 */
 	curve::Discrete<std::shared_ptr<renderer::resources::Animation2dInfo>> animation_info;
 
 	/**
-     * Shader uniforms for the renderable in the terrain render pass.
-     */
+	 * Shader uniforms for the renderable in the terrain render pass.
+	 */
 	std::shared_ptr<renderer::UniformInput> uniforms;
 
 	/**

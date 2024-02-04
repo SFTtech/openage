@@ -1,4 +1,4 @@
-// Copyright 2019-2023 the openage authors. See copying.md for legal info.
+// Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -12,7 +12,6 @@ std::vector<PongEvent> get_ai_inputs(
 	const std::shared_ptr<PongBall> &ball,
 	const std::shared_ptr<curve::Discrete<util::Vector2s>> &area_size,
 	const time::time_t &now,
-	bool right_player
-);
+	bool right_player);
 
-} // openage::main::tests::pong
+} // namespace openage::main::tests::pong

@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,7 +16,7 @@ class GlShaderProgram;
 
 /**
  * Stores information about context capabilities and limitations.
-*/
+ */
 struct gl_context_spec {
 	/// The maximum number of vertex attributes in a shader.
 	size_t max_vertex_attributes;
@@ -67,14 +67,14 @@ public:
 	std::shared_ptr<QOpenGLContext> get_raw_context() const;
 
 	/**
-     * Get the ID of the default framebuffer used for displaying to
-     * the window.
-     *
-     * This value may change on every frame, so it should be called every
-     * time the default framebuffer is bound.
-     *
-     * @return ID of the default (display) framebuffer.
-     */
+	 * Get the ID of the default framebuffer used for displaying to
+	 * the window.
+	 *
+	 * This value may change on every frame, so it should be called every
+	 * time the default framebuffer is bound.
+	 *
+	 * @return ID of the default (display) framebuffer.
+	 */
 	unsigned int get_default_framebuffer_id();
 
 	/**
@@ -122,29 +122,29 @@ public:
 	void set_current_program(const std::shared_ptr<GlShaderProgram> &prog);
 
 	/**
-     * Get a free uniform buffer binding point that is not bound to any buffer.
-     *
-     * The number of available binding points is limited by the OpenGL implementation.
-     * When the context is created, there are \p capabilities.max_uniform_buffer_bindings
-     * free binding points available.
-     *
-     * @return Binding point ID.
-     *
-     * @throw Error if no binding point is available.
-     */
+	 * Get a free uniform buffer binding point that is not bound to any buffer.
+	 *
+	 * The number of available binding points is limited by the OpenGL implementation.
+	 * When the context is created, there are \p capabilities.max_uniform_buffer_bindings
+	 * free binding points available.
+	 *
+	 * @return Binding point ID.
+	 *
+	 * @throw Error if no binding point is available.
+	 */
 	size_t get_uniform_buffer_binding();
 
 	/**
-     * Free a buffer binding point, indicating that newly created buffers can use it.
-     *
-     * When calling this function, it must be ensured that the binding point is not
-     * assigned to any buffer or shader. Otherwise, reassigning the binding point
-     * can corrupt the uniform data.
-     *
-     * @param binding_point Binding point ID.
-     *
-     * @throw Error if the binding point is not valid.
-     */
+	 * Free a buffer binding point, indicating that newly created buffers can use it.
+	 *
+	 * When calling this function, it must be ensured that the binding point is not
+	 * assigned to any buffer or shader. Otherwise, reassigning the binding point
+	 * can corrupt the uniform data.
+	 *
+	 * @param binding_point Binding point ID.
+	 *
+	 * @throw Error if the binding point is not valid.
+	 */
 	void free_uniform_buffer_binding(size_t binding_point);
 
 	/**
@@ -181,8 +181,8 @@ private:
 	std::weak_ptr<GlShaderProgram> last_program;
 
 	/**
-     * Store the currently active binding points for uniform buffers.
-     */
+	 * Store the currently active binding points for uniform buffers.
+	 */
 	std::vector<bool> uniform_buffer_bindings;
 };
 

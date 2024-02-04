@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -20,7 +20,7 @@ namespace compress {
  *
  * See lzxd.h for documentation.
  */
-using read_callback_t = std::function<size_t (unsigned char *buf, size_t size)>;
+using read_callback_t = std::function<size_t(unsigned char *buf, size_t size)>;
 
 
 /**
@@ -65,7 +65,7 @@ using read_callback_t = std::function<size_t (unsigned char *buf, size_t size)>;
  * Calling the modeswitch methods while already in the respective mode does
  * nothing.
  */
-template<unsigned int inbuf_size>
+template <unsigned int inbuf_size>
 class BitStream {
 public:
 	/**
@@ -148,7 +148,8 @@ private:
 			if (read_bytes == 0) [[unlikely]] {
 				if (this->eof) {
 					throw Error(MSG(err) << "Unexpected EOF in the middle of a block");
-				} else {
+				}
+				else {
 					read_bytes = 2;
 					this->inbuf[0] = 0;
 					this->inbuf[1] = 0;
@@ -156,7 +157,7 @@ private:
 				}
 			}
 
-			if (read_bytes > (int) inbuf_size) [[unlikely]] {
+			if (read_bytes > (int)inbuf_size) [[unlikely]] {
 				throw Error(MSG(err) << "read() returned more data than requested");
 			}
 
@@ -174,7 +175,7 @@ private:
 	/*
 	 * allow our friend HuffmanTable to directly use ensure_bits, peek_bits and remove_bits.
 	 */
-	template<unsigned maxsymbols_p, unsigned tablebits_p, bool allow_empty>
+	template <unsigned maxsymbols_p, unsigned tablebits_p, bool allow_empty>
 	friend class HuffmanTable;
 
 	/**
@@ -266,7 +267,7 @@ private:
 	 *
 	 * If min_discard is given, at least that amount of bits is discarded.
 	 */
-	void align_bitstream(unsigned int min_discard=0) {
+	void align_bitstream(unsigned int min_discard = 0) {
 		unsigned int nbits = this->stream_position % 16;
 		if (nbits != 0) {
 			nbits = 16 - nbits;
@@ -292,8 +293,7 @@ private:
 	}
 
 public:
-	BitStream(read_callback_t read_callback)
-		:
+	BitStream(read_callback_t read_callback) :
 		eof{false},
 		read_callback{read_callback},
 		i_ptr{inbuf},
@@ -302,7 +302,6 @@ public:
 		bits_left{0},
 		stream_position{0},
 		bitstream_mode{true} {
-
 		static_assert(inbuf_size >= 2, "inbuf size must be at least 2");
 		static_assert(inbuf_size % 2 == 0, "inbuf size must be even");
 	}
@@ -368,8 +367,8 @@ public:
 	unsigned int read_4bytes_le() {
 		unsigned int result;
 
-		result  = this->read_single_byte() <<  0;
-		result |= this->read_single_byte() <<  8;
+		result = this->read_single_byte() << 0;
+		result |= this->read_single_byte() << 8;
 		result |= this->read_single_byte() << 16;
 		result |= this->read_single_byte() << 24;
 
@@ -404,7 +403,7 @@ public:
 	 * Discards 1 to 16 bits to align the bitstream first.
 	 */
 	void switch_to_bytestream_mode() {
-		if (! this->bitstream_mode) {
+		if (!this->bitstream_mode) {
 			return;
 		}
 
@@ -433,4 +432,6 @@ public:
 };
 
 
-}}} // openage::util::compress
+} // namespace compress
+} // namespace util
+} // namespace openage

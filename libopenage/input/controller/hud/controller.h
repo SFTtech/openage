@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -38,23 +38,23 @@ public:
 	             const std::shared_ptr<BindingContext> &ctx);
 
 	/**
-     * Set the render entity for the selection box.
-     *
-     * @param entity New render entity.
-     */
+	 * Set the render entity for the selection box.
+	 *
+	 * @param entity New render entity.
+	 */
 	void set_drag_entity(const std::shared_ptr<renderer::hud::HudDragRenderEntity> &entity);
 
 	/**
-     * Get the render entity for the selection box.
-     *
-     * @return Render entity for the selection box.
-     */
+	 * Get the render entity for the selection box.
+	 *
+	 * @return Render entity for the selection box.
+	 */
 	const std::shared_ptr<renderer::hud::HudDragRenderEntity> &get_drag_entity() const;
 
 private:
 	/**
-     * Render entity for the selection box.
-     */
+	 * Render entity for the selection box.
+	 */
 	std::shared_ptr<renderer::hud::HudDragRenderEntity> drag_entity;
 };
 

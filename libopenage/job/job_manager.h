@@ -1,4 +1,4 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -65,11 +65,11 @@ public:
 	/** Destructor that stops the job manager if it is still running. */
 	~JobManager();
 
-	JobManager(const JobManager&) = delete;
-	JobManager(JobManager&&) = delete;
+	JobManager(const JobManager &) = delete;
+	JobManager(JobManager &&) = delete;
 
-	JobManager &operator=(const JobManager&) = delete;
-	JobManager &operator=(JobManager&&) = delete;
+	JobManager &operator=(const JobManager &) = delete;
+	JobManager &operator=(JobManager &&) = delete;
 
 	/** Start the job manager's worker threads. */
 	void start();
@@ -89,9 +89,9 @@ public:
 	 * @param callback the callback function that is executed, when the background
 	 *        job has finished
 	 */
-	template<class T>
+	template <class T>
 	Job<T> enqueue(job_function_t<T> function,
-	               callback_function_t<T> callback={}) {
+	               callback_function_t<T> callback = {}) {
 		auto state = std::make_shared<JobState<T>>(function, callback);
 		this->enqueue_state(state);
 		return Job<T>{state};
@@ -109,9 +109,9 @@ public:
 	 * @param callback the callback function that is executed, when the background
 	 *        job has finished
 	 */
-	template<class T>
+	template <class T>
 	Job<T> enqueue(abortable_function_t<T> function,
-	               callback_function_t<T> callback={}) {
+	               callback_function_t<T> callback = {}) {
 		auto state = std::make_shared<AbortableJobState<T>>(function, callback);
 		this->enqueue_state(state);
 		return Job<T>{state};
@@ -152,5 +152,5 @@ private:
 	friend class Worker;
 };
 
-}
-}
+} // namespace job
+} // namespace openage

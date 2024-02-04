@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -20,10 +20,11 @@ namespace util {
  * be pretty uncommon; there generally are better ways of guaranteeing dynamic
  * initialization order, such as static function variables).
  */
-template<typename T>
+template <typename T>
 class ConstInitVector {
 public:
-	constexpr ConstInitVector() noexcept : data{nullptr}, capacity{16}, count{0} {}
+	constexpr ConstInitVector() noexcept :
+		data{nullptr}, capacity{16}, count{0} {}
 
 
 	~ConstInitVector() {
@@ -43,8 +44,8 @@ public:
 	 */
 	ConstInitVector(const ConstInitVector<T> &other) = delete;
 	ConstInitVector(ConstInitVector<T> &&other) = delete;
-	ConstInitVector &operator =(const ConstInitVector<T> &other) = delete;
-	ConstInitVector &operator =(ConstInitVector<T> &&other) = delete;
+	ConstInitVector &operator=(const ConstInitVector<T> &other) = delete;
+	ConstInitVector &operator=(ConstInitVector<T> &&other) = delete;
 
 
 	void push_back(const T &val) {
@@ -60,7 +61,7 @@ public:
 			size_t newcapacity = capacity * 2;
 			T *newdata = alloc.allocate(newcapacity);
 			for (size_t i = 0; i < this->capacity; i++) {
-				new(static_cast<void *>(&newdata[i])) T(std::move_if_noexcept(this->data[i]));
+				new (static_cast<void *>(&newdata[i])) T(std::move_if_noexcept(this->data[i]));
 				(this->data[i]).~T();
 			}
 			alloc.deallocate(this->data, this->capacity);
@@ -69,7 +70,7 @@ public:
 		}
 
 		// add val at the end.
-		new(static_cast<void *>(&this->data[this->count])) T(val);
+		new (static_cast<void *>(&this->data[this->count])) T(val);
 		this->count += 1;
 	}
 
@@ -78,7 +79,7 @@ public:
 	 * The returned reference is invalid if n >= this->size().
 	 * It may be invalidated by a call to push_back().
 	 */
-	const T &operator[] (size_t idx) const {
+	const T &operator[](size_t idx) const {
 		return this->data[idx];
 	}
 
@@ -97,4 +98,5 @@ private:
 };
 
 
-}} // openage::util
+} // namespace util
+} // namespace openage

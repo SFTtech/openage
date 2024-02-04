@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -27,11 +27,11 @@ public:
 	Resource(AudioManager *manager, category_t category, int id);
 	virtual ~Resource() = default;
 
-	Resource(const Resource&) = delete;
-	Resource &operator=(const Resource&) = delete;
+	Resource(const Resource &) = delete;
+	Resource &operator=(const Resource &) = delete;
 
-	Resource(Resource&&) = delete;
-	Resource &operator=(Resource&&) = delete;
+	Resource(Resource &&) = delete;
+	Resource &operator=(Resource &&) = delete;
 
 	virtual category_t get_category() const;
 	virtual int get_id() const;
@@ -83,5 +83,5 @@ private:
 	int id;
 };
 
-}
-}
+} // namespace audio
+} // namespace openage

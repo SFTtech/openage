@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -79,26 +79,26 @@ ModpackInfo parse_modepack_def(const util::Path &info_file);
 class Modpack {
 public:
 	/**
-     * Create a new modpack.
-     *
-     * Loads the modpack using the information in the definition file.
-     *
-     * @param info_file Path to the modpack definition file.
-     */
+	 * Create a new modpack.
+	 *
+	 * Loads the modpack using the information in the definition file.
+	 *
+	 * @param info_file Path to the modpack definition file.
+	 */
 	Modpack(const util::Path &info_file);
 
 	/**
-     * Create a new modpack from an existing modpack info.
-     *
-     * @param info Modpack metadata information.
-     */
+	 * Create a new modpack from an existing modpack info.
+	 *
+	 * @param info Modpack metadata information.
+	 */
 	Modpack(const ModpackInfo &info);
 
 	/**
-     * Create a new modpack from an existing modpack info.
-     *
-     * @param info Modpack metadata information.
-     */
+	 * Create a new modpack from an existing modpack info.
+	 *
+	 * @param info Modpack metadata information.
+	 */
 	Modpack(const ModpackInfo &&info);
 
 	Modpack(const Modpack &) = delete;
@@ -106,23 +106,23 @@ public:
 	~Modpack() = default;
 
 	/**
-     * Get the metadata information of the modpack.
-     *
-     * @return Modpack metadata information.
-     */
+	 * Get the metadata information of the modpack.
+	 *
+	 * @return Modpack metadata information.
+	 */
 	const ModpackInfo &get_info() const;
 
 	/**
-     * Check if the modpack is valid.
-     *
-     * @return true if the modpack is valid, false otherwise.
-     */
+	 * Check if the modpack is valid.
+	 *
+	 * @return true if the modpack is valid, false otherwise.
+	 */
 	bool check_integrity() const;
 
 private:
 	/**
-     * Modpack metadata information.
-     */
+	 * Modpack metadata information.
+	 */
 	ModpackInfo info;
 };
 

@@ -1,10 +1,10 @@
-// Copyright 2015-2021 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
+#include <array>
 #include <cstdint>
 #include <cstdlib>
-#include <array>
 #include <typeindex>
 #include <typeinfo>
 
@@ -17,7 +17,7 @@ namespace util {
 
 template <typename T>
 size_t type_hash() {
-    return std::hash<std::type_index>()(std::type_index(typeid(T)));
+	return std::hash<std::type_index>()(std::type_index(typeid(T)));
 }
 
 /**
@@ -27,7 +27,6 @@ size_t type_hash() {
  * hash1 and hash2 during a single run of a program.
  */
 size_t hash_combine(size_t hash1, size_t hash2);
-
 
 
 /** \class Siphash
@@ -49,7 +48,7 @@ public:
 	 * @param k Key to use with this hasher.
 	 * @return Reference to itself, for method chaining.
 	 */
-	Siphash& set_key(std::array<uint8_t, 16> key);
+	Siphash &set_key(std::array<uint8_t, 16> key);
 
 
 	/**
@@ -81,4 +80,5 @@ private:
 };
 
 
-}} // openage::util
+} // namespace util
+} // namespace openage

@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -28,19 +28,19 @@ public:
 	/// Part of VK_EXT_debug_report, allows setting a callback for debug events.
 	VkResult vkCreateDebugReportCallbackEXT(
 		VkInstance instance,
-		const VkDebugReportCallbackCreateInfoEXT* pCreateInfo,
-		const VkAllocationCallbacks* pAllocator,
-		VkDebugReportCallbackEXT* pCallback
-	);
+		const VkDebugReportCallbackCreateInfoEXT *pCreateInfo,
+		const VkAllocationCallbacks *pAllocator,
+		VkDebugReportCallbackEXT *pCallback);
 
 
 	/// Part of VK_EXT_debug_report, destroys the debug callback object.
 	void vkDestroyDebugReportCallbackEXT(
 		VkInstance instance,
 		VkDebugReportCallbackEXT callback,
-		const VkAllocationCallbacks* pAllocator
-	);
+		const VkAllocationCallbacks *pAllocator);
 #endif
 };
 
-}}} // openage::renderer::vulkan
+} // namespace vulkan
+} // namespace renderer
+} // namespace openage

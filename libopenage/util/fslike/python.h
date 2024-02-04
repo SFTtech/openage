@@ -1,4 +1,4 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -76,65 +76,67 @@ protected:
 
 
 // pxd: PyIfFunc2[bool, PyObjectPtr, const vector[string]] pyx_fs_is_file
-extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string>&> pyx_fs_is_file;
+extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string> &> pyx_fs_is_file;
 
 // pxd: PyIfFunc2[bool, PyObjectPtr, const vector[string]] pyx_fs_is_dir
-extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string>&> pyx_fs_is_dir;
+extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string> &> pyx_fs_is_dir;
 
 // pxd: PyIfFunc2[bool, PyObjectPtr, const vector[string]] pyx_fs_writable
-extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string>&> pyx_fs_writable;
+extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string> &> pyx_fs_writable;
 
 // pxd: PyIfFunc2[vector[string], PyObjectPtr, const vector[string]] pyx_fs_list
-extern OAAPI pyinterface::PyIfFunc<std::vector<std::string>, PyObject *, const std::vector<std::string>&> pyx_fs_list;
+extern OAAPI pyinterface::PyIfFunc<std::vector<std::string>, PyObject *, const std::vector<std::string> &> pyx_fs_list;
 
 // pxd: PyIfFunc2[bool, PyObjectPtr, const vector[string]] pyx_fs_mkdirs
-extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string>&> pyx_fs_mkdirs;
+extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string> &> pyx_fs_mkdirs;
 
 // pxd: PyIfFunc2[File, PyObjectPtr, const vector[string]] pyx_fs_open_r
-extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_r;
+extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string> &> pyx_fs_open_r;
 
 // pxd: PyIfFunc2[File, PyObjectPtr, const vector[string]] pyx_fs_open_w
-extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_w;
+extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string> &> pyx_fs_open_w;
 
 // pxd: PyIfFunc2[File, PyObjectPtr, const vector[string]] pyx_fs_open_rw
-extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_rw;
+extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string> &> pyx_fs_open_rw;
 
 // pxd: PyIfFunc2[File, PyObjectPtr, const vector[string]] pyx_fs_open_a
-extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_a;
+extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string> &> pyx_fs_open_a;
 
 // pxd: PyIfFunc2[File, PyObjectPtr, const vector[string]] pyx_fs_open_ar
-extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_ar;
+extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string> &> pyx_fs_open_ar;
 
 // pxd: PyIfFunc2[Path, PyObjectPtr, const vector[string]] pyx_fs_resolve_r
-extern OAAPI pyinterface::PyIfFunc<Path, PyObject *, const std::vector<std::string>&> pyx_fs_resolve_r;
+extern OAAPI pyinterface::PyIfFunc<Path, PyObject *, const std::vector<std::string> &> pyx_fs_resolve_r;
 
 // pxd: PyIfFunc2[Path, PyObjectPtr, const vector[string]] pyx_fs_resolve_w
-extern OAAPI pyinterface::PyIfFunc<Path, PyObject *, const std::vector<std::string>&> pyx_fs_resolve_w;
+extern OAAPI pyinterface::PyIfFunc<Path, PyObject *, const std::vector<std::string> &> pyx_fs_resolve_w;
 
 // pxd: PyIfFunc2[PyObjectRef, PyObjectPtr, const vector[string]] pyx_fs_get_native_path
-extern OAAPI pyinterface::PyIfFunc<py::Obj, PyObject *, const std::vector<std::string>&> pyx_fs_get_native_path;
+extern OAAPI pyinterface::PyIfFunc<py::Obj, PyObject *, const std::vector<std::string> &> pyx_fs_get_native_path;
 
 // pxd: PyIfFunc3[bool, PyObjectPtr, const vector[string], const vector[string]] pyx_fs_rename
-extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string>&, const std::vector<std::string>&> pyx_fs_rename;
+extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string> &, const std::vector<std::string> &> pyx_fs_rename;
 
 // pxd: PyIfFunc2[bool, PyObjectPtr, const vector[string]] pyx_fs_rmdir
-extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string>&> pyx_fs_rmdir;
+extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string> &> pyx_fs_rmdir;
 
 // pxd: PyIfFunc2[bool, PyObjectPtr, const vector[string]] pyx_fs_touch
-extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string>&> pyx_fs_touch;
+extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string> &> pyx_fs_touch;
 
 // pxd: PyIfFunc2[bool, PyObjectPtr, const vector[string]] pyx_fs_unlink
-extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string>&> pyx_fs_unlink;
+extern OAAPI pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string> &> pyx_fs_unlink;
 
 // pxd: PyIfFunc2[int, PyObjectPtr, const vector[string]] pyx_fs_get_mtime
-extern OAAPI pyinterface::PyIfFunc<int, PyObject *, const std::vector<std::string>&> pyx_fs_get_mtime;
+extern OAAPI pyinterface::PyIfFunc<int, PyObject *, const std::vector<std::string> &> pyx_fs_get_mtime;
 
 // pxd: PyIfFunc2[uint64_t, PyObjectPtr, const vector[string]] pyx_fs_get_filesize
-extern OAAPI pyinterface::PyIfFunc<uint64_t, PyObject *, const std::vector<std::string>&> pyx_fs_get_filesize;
+extern OAAPI pyinterface::PyIfFunc<uint64_t, PyObject *, const std::vector<std::string> &> pyx_fs_get_filesize;
 
 
 // pxd: PyIfFunc1[bool, PyObjectPtr] pyx_fs_is_fslike_directory
 extern OAAPI pyinterface::PyIfFunc<bool, PyObject *> pyx_fs_is_fslike_directory;
 
 
-}}} // openage::util::fslike
+} // namespace fslike
+} // namespace util
+} // namespace openage

@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -30,11 +30,11 @@ enum class event_class {
 	GUI,
 
 	// keyboard subclasses
-	ALPHA, // abc
-	DIGIT, // 123
-	PRINT, // remaining printable chars
+	ALPHA,    // abc
+	DIGIT,    // 123
+	PRINT,    // remaining printable chars
 	NONPRINT, // tab, return, backspace, delete
-	OTHER, // arrows, home, end
+	OTHER,    // arrows, home, end
 
 	// mouse subclasses
 	MOUSE_BUTTON,

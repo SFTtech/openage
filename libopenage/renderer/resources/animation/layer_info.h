@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -12,9 +12,9 @@ class AngleInfo;
 class FrameTiming;
 
 enum class display_mode {
-	OFF, // Only show first frame
+	OFF,  // Only show first frame
 	ONCE, // Play loop once
-	LOOP // Loop indefinitely
+	LOOP  // Loop indefinitely
 };
 
 /**
@@ -95,10 +95,10 @@ public:
 	const std::shared_ptr<AngleInfo> &get_direction_angle(float direction) const;
 
 	/**
-     * Get the frame timing information of this layer.
-     *
-     * @return Frame timing information.
-     */
+	 * Get the frame timing information of this layer.
+	 *
+	 * @return Frame timing information.
+	 */
 	const std::shared_ptr<FrameTiming> &get_frame_timing() const;
 
 private:

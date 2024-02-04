@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -40,8 +40,8 @@ std::string which(const char *name);
  *                           the existing file is overwritten.
  */
 int call(const std::vector<const char *> &argv,
-         bool wait=false,
-         const char *redirect_stdout_to=nullptr);
+         bool wait = false,
+         const char *redirect_stdout_to = nullptr);
 
 } // namespace subprocess
 } // namespace openage

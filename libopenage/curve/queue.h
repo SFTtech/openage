@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -70,7 +70,7 @@ public:
 
 	/**
 	 * Get the first element in the queue at the given time and remove it from
-     * the queue.
+	 * the queue.
 	 *
 	 * @param time The time to get the element at.
 	 * @param value Queue element.
@@ -148,19 +148,19 @@ public:
 	}
 
 	/**
-     * Get the identifier of this curve.
-     *
-     * @return Identifier.
-     */
+	 * Get the identifier of this curve.
+	 *
+	 * @return Identifier.
+	 */
 	size_t id() const override {
 		return this->_id;
 	}
 
 	/**
-     * Get the human-readable identifier of this curve.
-     *
-     * @return Human-readable identifier.
-     */
+	 * Get the human-readable identifier of this curve.
+	 *
+	 * @return Human-readable identifier.
+	 */
 	std::string idstr() const override {
 		if (this->_idstr.size() == 0) {
 			return std::to_string(this->id());
@@ -185,8 +185,8 @@ private:
 	container_t container;
 
 	/**
-     * The time of the last access to the queue.
-     */
+	 * The time of the last access to the queue.
+	 */
 	time::time_t last_pop;
 };
 

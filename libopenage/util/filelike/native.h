@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -19,7 +19,7 @@ namespace filelike {
  */
 class Native : public FileLike {
 public:
-	Native(const std::string &path, mode_t mode=mode_t::R);
+	Native(const std::string &path, mode_t mode = mode_t::R);
 	virtual ~Native();
 
 	std::string read(ssize_t max) override;
@@ -31,7 +31,7 @@ public:
 
 	bool writable() override;
 
-	void seek(ssize_t offset, seek_t how=seek_t::SET) override;
+	void seek(ssize_t offset, seek_t how = seek_t::SET) override;
 	bool seekable() override;
 	size_t tell() override;
 	void close() override;
@@ -48,4 +48,6 @@ protected:
 	std::fstream file;
 };
 
-}}} // openage::util::filelike
+} // namespace filelike
+} // namespace util
+} // namespace openage

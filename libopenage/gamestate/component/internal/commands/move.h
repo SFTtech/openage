@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,10 +15,10 @@ namespace openage::gamestate::component::command {
 class MoveCommand : public Command {
 public:
 	/**
-     * Creates a new move command.
-     *
-     * @param target Target position coordinates.
-     */
+	 * Creates a new move command.
+	 *
+	 * @param target Target position coordinates.
+	 */
 	MoveCommand(const coord::phys3 &target);
 	virtual ~MoveCommand() = default;
 
@@ -27,16 +27,16 @@ public:
 	}
 
 	/**
-     * Get the target position.
-     *
-     * @return Target position coordinates.
-     */
+	 * Get the target position.
+	 *
+	 * @return Target position coordinates.
+	 */
 	const coord::phys3 &get_target() const;
 
 private:
 	/**
-     * Target position.
-     */
+	 * Target position.
+	 */
 	const coord::phys3 target;
 };
 

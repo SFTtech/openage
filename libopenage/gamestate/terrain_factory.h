@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -26,26 +26,26 @@ class TerrainChunk;
 class TerrainFactory {
 public:
 	/**
-     * Create a new terrain factory.
-     */
+	 * Create a new terrain factory.
+	 */
 	TerrainFactory() = default;
 	~TerrainFactory() = default;
 
 	/**
-     * Create a new empty terrain object.
-     *
-     * @return New terrain object.
-     */
+	 * Create a new empty terrain object.
+	 *
+	 * @return New terrain object.
+	 */
 	std::shared_ptr<Terrain> add_terrain();
 
 	/**
-     * Create a new empty terrain chunk.
-     *
-     * @param size Size of the chunk.
-     * @param offset Offset of the chunk.
-     *
-     * @return New terrain chunk.
-     */
+	 * Create a new empty terrain chunk.
+	 *
+	 * @param size Size of the chunk.
+	 * @param offset Offset of the chunk.
+	 *
+	 * @return New terrain chunk.
+	 */
 	std::shared_ptr<TerrainChunk> add_chunk(const std::shared_ptr<GameState> &gstate,
 	                                        const util::Vector2s size,
 	                                        const coord::tile_delta offset);
@@ -57,8 +57,8 @@ public:
 
 	/**
 	 * Attach a render factory for graphical display.
-     *
-     * This enables rendering for all created terrain chunks.
+	 *
+	 * This enables rendering for all created terrain chunks.
 	 *
 	 * @param render_factory Factory for creating connector objects for gamestate->renderer
 	 *                       communication.
@@ -72,8 +72,8 @@ private:
 	std::shared_ptr<renderer::RenderFactory> render_factory;
 
 	/**
-     * Mutex for thread safety.
-     */
+	 * Mutex for thread safety.
+	 */
 	std::shared_mutex mutex;
 };
 

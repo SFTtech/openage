@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,23 +15,23 @@ public:
 	/**
 	 * sets the type and value
 	 */
-	template<class T, class V> void set(const V &value);
+	template <class T, class V>
+	void set(const V &value);
 
 	/**
 	 * returns the stored value
 	 * throws an exception if the template
 	 * does not match the set type
 	 */
-	template<class T> const T &get() const;
-
+	template <class T>
+	const T &get() const;
 };
 
 
-template<class T>
+template <class T>
 class Variable : public VariableBase {
 public:
-	Variable(const T &initial_value)
-		:
+	Variable(const T &initial_value) :
 		value(initial_value) {}
 
 
@@ -50,15 +50,16 @@ public:
 };
 
 
-template<class T>
+template <class T>
 const T &VariableBase::get() const {
 	return dynamic_cast<const Variable<T> &>(*this).get();
 }
 
-template<class T, class V>
-void VariableBase::set(const V& value) {
+template <class T, class V>
+void VariableBase::set(const V &value) {
 	return dynamic_cast<Variable<T> &>(*this).set(value);
 }
 
 
-}} // openage::util
+} // namespace util
+} // namespace openage

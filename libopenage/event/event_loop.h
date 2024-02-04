@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -33,31 +33,31 @@ class EventLoop {
 
 public:
 	/**
-     * Create a new event loop.
-     */
+	 * Create a new event loop.
+	 */
 	EventLoop() = default;
 	~EventLoop() = default;
 
 	/**
-     * Register a new event handler.
-     *
-     * Created event can reference the event handler ID to invoke it on
-     * execution.
-     *
-     * @param eventhandler Event handler.
-     */
+	 * Register a new event handler.
+	 *
+	 * Created event can reference the event handler ID to invoke it on
+	 * execution.
+	 *
+	 * @param eventhandler Event handler.
+	 */
 	void add_event_handler(const std::shared_ptr<EventHandler> eventhandler);
 
 	/**
 	 * Add a new event to the queue using a registered event handler.
-     *
-     * @param eventhandler Event handler ID. The handler must already be registered on the loop.
-     * @param target Target entity. Can be \p nullptr.
-     * @param state Global state.
-     * @param reference_time Reference time to calculate the event execution time. The actual
-     *                       depends execution time on the type of event and may be changed
-     *                       by other events.
-     * @param params Event parameters map (default = {}). Passed to the event handler on event execution.
+	 *
+	 * @param eventhandler Event handler ID. The handler must already be registered on the loop.
+	 * @param target Target entity. Can be \p nullptr.
+	 * @param state Global state.
+	 * @param reference_time Reference time to calculate the event execution time. The actual
+	 *                       depends execution time on the type of event and may be changed
+	 *                       by other events.
+	 * @param params Event parameters map (default = {}). Passed to the event handler on event execution.
 	 */
 	std::shared_ptr<Event> create_event(const std::string eventhandler,
 	                                    const std::shared_ptr<EventEntity> target,
@@ -67,19 +67,19 @@ public:
 
 	/**
 	 * Add a new event to the queue using an arbritary event handler. If an event handler
-     * with the same ID is already registered, the registered event handler will be used
-     * instead.
-     *
-     * TODO: Why use this function when one can simply add the event handler and use the other
-     *      create_event function?
-     *
-     * @param eventhandler Event handler.
-     * @param target Target entity. Can be \p nullptr.
-     * @param state Global state.
-     * @param reference_time Reference time to calculate the event execution time. The actual
-     *                       depends execution time on the type of event and may be changed
-     *                       by other events.
-     * @param params Event parameters map (default = {}). Passed to the event handler on event execution.
+	 * with the same ID is already registered, the registered event handler will be used
+	 * instead.
+	 *
+	 * TODO: Why use this function when one can simply add the event handler and use the other
+	 *      create_event function?
+	 *
+	 * @param eventhandler Event handler.
+	 * @param target Target entity. Can be \p nullptr.
+	 * @param state Global state.
+	 * @param reference_time Reference time to calculate the event execution time. The actual
+	 *                       depends execution time on the type of event and may be changed
+	 *                       by other events.
+	 * @param params Event parameters map (default = {}). Passed to the event handler on event execution.
 	 */
 	std::shared_ptr<Event> create_event(const std::shared_ptr<EventHandler> eventhandler,
 	                                    const std::shared_ptr<EventEntity> target,
@@ -89,33 +89,33 @@ public:
 
 	/**
 	 * Execute events in the queue with execution time <= a given point in time.
-     *
-     * @param time_until Maximum time until which events are executed.
-     * @param state Global state.
+	 *
+	 * @param time_until Maximum time until which events are executed.
+	 * @param state Global state.
 	 */
 	void reach_time(const time::time_t &time_until,
 	                const std::shared_ptr<State> &state);
 
 	/**
 	 * Initiate a reevaluation of a given event at a given time.
-     *
+	 *
 	 * This usually happens because this event depended on an event entity
 	 * that got changed at this time.
-     *
+	 *
 	 * This inserts the event into the changes queue
 	 * so it will be evaluated in the next loop iteration.
-     *
-     * @param event Event to reevaluate.
-     * @param changes_at Time at which the event should be reevaluated.
+	 *
+	 * @param event Event to reevaluate.
+	 * @param changes_at Time at which the event should be reevaluated.
 	 */
 	void create_change(const std::shared_ptr<Event> event,
 	                   const time::time_t changes_at);
 
 	/**
-     * Get the event queue.
-     *
-     * @return Event queue.
-     */
+	 * Get the event queue.
+	 *
+	 * @return Event queue.
+	 */
 	const EventQueue &get_queue() const {
 		return this->queue;
 	}
@@ -124,9 +124,9 @@ private:
 	/**
 	 *  Execute events in the queue with execution time <= a given point in time.
 	 *
-     * @param time_until Maximum time until which events are executed.
-     * @param state Global state.
-     *
+	 * @param time_until Maximum time until which events are executed.
+	 * @param state Global state.
+	 *
 	 * @returns number of events processed
 	 */
 	int execute_events(const time::time_t &time_until,
@@ -134,8 +134,8 @@ private:
 
 	/**
 	 * Call all the time change functions. This is constant on the state!
-     *
-     * @param state Global state.
+	 *
+	 * @param state Global state.
 	 */
 	void update_changes(const std::shared_ptr<State> &state);
 

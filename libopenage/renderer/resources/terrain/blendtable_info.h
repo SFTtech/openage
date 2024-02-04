@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -29,8 +29,8 @@ public:
 
 	/**
 	 * Get the blending lookup table.
-     *
-     * @return Lookup table for blending patterns.
+	 *
+	 * @return Lookup table for blending patterns.
 	 */
 	const std::vector<size_t> &get_table() const;
 

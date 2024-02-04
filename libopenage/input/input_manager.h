@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -44,30 +44,30 @@ public:
 
 	/**
 	 * Set the GUI input handler.
-     *
-     * @param gui_input GUI input handler.
+	 *
+	 * @param gui_input GUI input handler.
 	 */
 	void set_gui(const std::shared_ptr<qtgui::GuiInput> &gui_input);
 
 	/**
-     * Set the controller for the camera.
-     *
-     * @param controller Camera controller.
-     */
+	 * Set the controller for the camera.
+	 *
+	 * @param controller Camera controller.
+	 */
 	void set_camera_controller(const std::shared_ptr<camera::Controller> &controller);
 
 	/**
-     * Set the controller for the game simulation.
-     *
-     * @param controller Game controller.
-     */
+	 * Set the controller for the game simulation.
+	 *
+	 * @param controller Game controller.
+	 */
 	void set_game_controller(const std::shared_ptr<game::Controller> &controller);
 
 	/**
-     * Set the controller for the HUD.
-     *
-     * @param controller HUD controller.
-     */
+	 * Set the controller for the HUD.
+	 *
+	 * @param controller HUD controller.
+	 */
 	void set_hud_controller(const std::shared_ptr<hud::Controller> controller);
 
 	/**
@@ -91,7 +91,7 @@ public:
 
 	/**
 	 * Push a context on top of the stack, making it the
-     * current top context.
+	 * current top context.
 	 *
 	 * if other contexts are registered afterwards,
 	 * it wanders down the stack, i.e. loses priority.
@@ -100,7 +100,7 @@ public:
 
 	/**
 	 * Push the context with the specified ID on top of the stack,
-     * making it the current top context.
+	 * making it the current top context.
 	 *
 	 * if other contexts are registered afterwards,
 	 * it wanders down the stack, i.e. loses priority.
@@ -141,23 +141,23 @@ public:
 	void set_motion(int x, int y);
 
 	/**
-     * Process an input event from the Qt window management.
-     *
-     * @param ev Qt input event.
-     *
-     * @return true if the event is accepted, else false.
-     */
+	 * Process an input event from the Qt window management.
+	 *
+	 * @param ev Qt input event.
+	 *
+	 * @return true if the event is accepted, else false.
+	 */
 	bool process(const QEvent &ev);
 
 
 private:
 	/**
-     * Process the (default) action for an input event.
-     *
-     * @param ev Input event.
-     * @param action Action bound to the event.
-     * @param bind_ctx Context the action is bound in.
-     */
+	 * Process the (default) action for an input event.
+	 *
+	 * @param ev Input event.
+	 * @param action Action bound to the event.
+	 * @param bind_ctx Context the action is bound in.
+	 */
 	void process_action(const input::Event &ev,
 	                    const input_action &action,
 	                    const std::shared_ptr<InputContext> &ctx);
@@ -175,29 +175,29 @@ private:
 
 	/**
 	 * Map of all available contexts, referencable by an ID.
-     *
-     * TODO: Move this to cvar manager?
+	 *
+	 * TODO: Move this to cvar manager?
 	 */
 	std::unordered_map<std::string, std::shared_ptr<InputContext>> available_contexts;
 
 	/**
-     * Interface to the game simulation.
-     */
+	 * Interface to the game simulation.
+	 */
 	std::shared_ptr<game::Controller> game_controller;
 
 	/**
-     * Interface to the camera.
-     */
+	 * Interface to the camera.
+	 */
 	std::shared_ptr<camera::Controller> camera_controller;
 
 	/**
-     * Interface to the HUD.
-     */
+	 * Interface to the HUD.
+	 */
 	std::shared_ptr<hud::Controller> hud_controller;
 
 	/**
-     * Interface to the GUI.
-     */
+	 * Interface to the GUI.
+	 */
 	std::shared_ptr<qtgui::GuiInput> gui_input;
 
 	/**

@@ -1,4 +1,4 @@
-// Copyright 2019-2023 the openage authors. See copying.md for legal info.
+// Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -59,8 +59,8 @@ T Interpolated<T>::get(const time::time_t &time) const {
 
 	// If the next element is at the same time, just return the value of this one.
 	if (nxt == this->container.end() // use the last curve value
-	    || offset == 0 // values equal -> don't need to interpolate
-	    || interval == 0) { // values at the same time -> division-by-zero-error
+	    || offset == 0               // values equal -> don't need to interpolate
+	    || interval == 0) {          // values at the same time -> division-by-zero-error
 
 		return e->value;
 	}

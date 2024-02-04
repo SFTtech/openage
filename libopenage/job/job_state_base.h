@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -38,5 +38,5 @@ public:
 	virtual size_t get_thread_id() = 0;
 };
 
-}
-}
+} // namespace job
+} // namespace openage

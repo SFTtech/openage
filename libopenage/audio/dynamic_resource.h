@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,15 +8,15 @@
 #include <unordered_map>
 #include <vector>
 
+#include "../datastructure/concurrent_queue.h"
+#include "../job/job.h"
+#include "../job/job_group.h"
+#include "../util/path.h"
 #include "category.h"
 #include "dynamic_loader.h"
 #include "format.h"
 #include "resource.h"
 #include "types.h"
-#include "../datastructure/concurrent_queue.h"
-#include "../job/job.h"
-#include "../job/job_group.h"
-#include "../util/path.h"
 
 namespace openage {
 namespace audio {
@@ -59,10 +59,10 @@ public:
 	                category_t category,
 	                int id,
 	                const util::Path &path,
-	                format_t format=format_t::OPUS,
-	                int preload_amount=DEFAULT_PRELOAD_AMOUNT,
-	                size_t chunk_size=DEFAULT_CHUNK_SIZE,
-	                size_t max_chunks=DEFAULT_MAX_CHUNKS);
+	                format_t format = format_t::OPUS,
+	                int preload_amount = DEFAULT_PRELOAD_AMOUNT,
+	                size_t chunk_size = DEFAULT_CHUNK_SIZE,
+	                size_t max_chunks = DEFAULT_MAX_CHUNKS);
 
 	virtual ~DynamicResource() = default;
 
@@ -95,7 +95,7 @@ public:
 	static constexpr int DEFAULT_PRELOAD_AMOUNT = 10;
 
 	/** The default used chunk size in bytes (100ms for 48kHz stereo audio). */
-	static constexpr size_t DEFAULT_CHUNK_SIZE = 9600*2;
+	static constexpr size_t DEFAULT_CHUNK_SIZE = 9600 * 2;
 
 	/** The default number of chunks, that can be loaded at the same time. */
 	static constexpr size_t DEFAULT_MAX_CHUNKS = 100;
@@ -138,11 +138,11 @@ private:
 	 * Resource chunk index to chunk mapping.
 	 * Loading and usage state is reached through this.
 	 */
-	std::unordered_map<size_t,std::shared_ptr<chunk_info_t>> chunks;
+	std::unordered_map<size_t, std::shared_ptr<chunk_info_t>> chunks;
 
 	/** The background loading job group. */
 	job::JobGroup loading_job_group;
 };
 
-}
-}
+} // namespace audio
+} // namespace openage

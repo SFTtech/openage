@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -25,11 +25,11 @@ namespace system {
 class Activity {
 public:
 	/**
-     * Advance in the activity flow graph of the game entity.
-     *
-     * @param start_time Start time of change.
-     * @param entity Game entity.
-     */
+	 * Advance in the activity flow graph of the game entity.
+	 *
+	 * @param start_time Start time of change.
+	 * @param entity Game entity.
+	 */
 	static void advance(const time::time_t &start_time,
 	                    const std::shared_ptr<gamestate::GameEntity> &entity,
 	                    const std::shared_ptr<openage::event::EventLoop> &loop,
@@ -44,7 +44,7 @@ private:
 	 * @param start_time Start time of change.
 	 * @param system_id ID of the subsystem to run.
 	 *
-     * @return Runtime of the change in simulation time.
+	 * @return Runtime of the change in simulation time.
 	 */
 	static const time::time_t handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &entity,
 	                                           const time::time_t &start_time,

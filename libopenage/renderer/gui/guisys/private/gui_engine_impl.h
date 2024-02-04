@@ -1,4 +1,4 @@
-// Copyright 2015-2022 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -37,8 +37,8 @@ public:
 	static GuiQmlEngineImpl *impl(GuiQmlEngine *engine);
 
 	/**
-	* Get the underlying QQmlEngine object.
-	*/
+	 * Get the underlying QQmlEngine object.
+	 */
 	std::shared_ptr<QQmlEngine> get_qml_engine();
 
 	/**

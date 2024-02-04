@@ -1,4 +1,4 @@
-// Copyright 2013-2023 the openage authors. See copying.md for legal info.
+// Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -47,10 +47,10 @@ class GameSimulation final {
 public:
 	/**
 	 * Create the game simulation subsystems depending on the requested run mode.
-     *
-     * @param root_dir openage root directory.
-     * @param cvar_manager Environment variable manager.
-     * @param time_loop Time management loop.
+	 *
+	 * @param root_dir openage root directory.
+	 * @param cvar_manager Environment variable manager.
+	 * @param time_loop Time management loop.
 	 */
 	GameSimulation(const util::Path &root_dir,
 	               const std::shared_ptr<cvar::CVarManager> &cvar_manager,
@@ -85,32 +85,32 @@ public:
 
 	/**
 	 * Get this simulation's cvar manager.
-     *
-     * @return CVarManager instance.
+	 *
+	 * @return CVarManager instance.
 	 */
 	const std::shared_ptr<cvar::CVarManager> get_cvar_manager();
 
 	/**
-     * Get the game running in the simulation.
-     *
-     * @return Game instance.
-     */
+	 * Get the game running in the simulation.
+	 *
+	 * @return Game instance.
+	 */
 	const std::shared_ptr<gamestate::Game> get_game();
 
 	/**
-     * Get the event loop for the gamestate.
-     *
-     * @return Event loop.
-     */
+	 * Get the event loop for the gamestate.
+	 *
+	 * @return Event loop.
+	 */
 	const std::shared_ptr<openage::event::EventLoop> get_event_loop();
 
 	/**
-     * Get the event entity for spawing game entities.
-     *
-     * TODO: Move somewhere else or remove.
-     *
-     * @return Spawner for entity creation.
-     */
+	 * Get the event entity for spawing game entities.
+	 *
+	 * TODO: Move somewhere else or remove.
+	 *
+	 * @return Spawner for entity creation.
+	 */
 	const std::shared_ptr<gamestate::event::Spawner> get_spawner();
 
 	/**
@@ -130,10 +130,10 @@ public:
 	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
 
 	/**
-     * Set the modpacks to load for a game.
-     *
-     * @param modpacks IDs of the modpacks to load.
-     */
+	 * Set the modpacks to load for a game.
+	 *
+	 * @param modpacks IDs of the modpacks to load.
+	 */
 	void set_modpacks(const std::vector<std::string> &modpacks);
 
 	/**
@@ -144,8 +144,8 @@ public:
 
 private:
 	/**
-     * Initialize event handlers.
-     */
+	 * Initialize event handlers.
+	 */
 	void init_event_handlers();
 
 	/**
@@ -170,23 +170,23 @@ private:
 	std::shared_ptr<openage::time::TimeLoop> time_loop;
 
 	/**
-     * Event loop for processing events in the game.
-     */
+	 * Event loop for processing events in the game.
+	 */
 	std::shared_ptr<openage::event::EventLoop> event_loop;
 
 	/**
-     * Factory for creating game entities.
-     */
+	 * Factory for creating game entities.
+	 */
 	std::shared_ptr<gamestate::EntityFactory> entity_factory;
 
 	/**
-     * Factory for creating terrain.
-     */
+	 * Factory for creating terrain.
+	 */
 	std::shared_ptr<gamestate::TerrainFactory> terrain_factory;
 
 	/**
-     * Mod manager.
-     */
+	 * Mod manager.
+	 */
 	std::shared_ptr<assets::ModManager> mod_manager;
 
 	// TODO: move somewhere sensible or remove
@@ -197,8 +197,8 @@ private:
 	std::shared_ptr<gamestate::Game> game;
 
 	/**
-     * Mutex for thread-safe access to the simulation.
-     */
+	 * Mutex for thread-safe access to the simulation.
+	 */
 	std::shared_mutex mutex;
 };
 

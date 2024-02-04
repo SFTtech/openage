@@ -1,4 +1,4 @@
-// Copyright 2018-2023 the openage authors. See copying.md for legal info.
+// Copyright 2018-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -35,26 +35,26 @@ public:
 	void set_render_entity(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &entity);
 
 	/**
-     * Update the render entity.
-     *
-     * @param time Simulation time of the update.
-     * @param terrain_path Path to the terrain definition used at \p time.
-     */
+	 * Update the render entity.
+	 *
+	 * @param time Simulation time of the update.
+	 * @param terrain_path Path to the terrain definition used at \p time.
+	 */
 	void render_update(const time::time_t &time,
 	                   const std::string &terrain_path);
 
 	/**
-     * Get the size of this terrain chunk.
-     *
-     * @return Size of the terrain chunk (in tiles).
-     */
+	 * Get the size of this terrain chunk.
+	 *
+	 * @return Size of the terrain chunk (in tiles).
+	 */
 	const util::Vector2s &get_size() const;
 
 	/**
-     * Get the offset of this terrain chunk to the terrain origin.
-     *
-     * @return Offset of the terrain chunk (in tiles).
-     */
+	 * Get the offset of this terrain chunk to the terrain origin.
+	 *
+	 * @return Offset of the terrain chunk (in tiles).
+	 */
 	const coord::tile_delta &get_offset() const;
 
 	// TODO: Remove test texture references
@@ -69,20 +69,20 @@ public:
 
 private:
 	/**
-     * Size of the terrain chunk.
-     * Origin is the left corner.
-     * x = top left edge; y = top right edge.
-     */
+	 * Size of the terrain chunk.
+	 * Origin is the left corner.
+	 * x = top left edge; y = top right edge.
+	 */
 	util::Vector2s size;
 
 	/**
-     * Offset of the terrain chunk to the origin.
-     */
+	 * Offset of the terrain chunk to the origin.
+	 */
 	coord::tile_delta offset;
 
 	/**
-     * Height map of the terrain chunk.
-     */
+	 * Height map of the terrain chunk.
+	 */
 	std::vector<TerrainTile> tiles;
 
 	/**

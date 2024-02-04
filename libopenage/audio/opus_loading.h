@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -21,7 +21,7 @@ struct opus_file_t {
 	 * The opusfile handle, with a custom deleter that frees
 	 * the opusfile memory.
 	 */
-	std::unique_ptr<OggOpusFile, std::function<void(OggOpusFile*)>> handle;
+	std::unique_ptr<OggOpusFile, std::function<void(OggOpusFile *)>> handle;
 
 	/**
 	 * File used to supply the data.
@@ -37,4 +37,5 @@ struct opus_file_t {
  */
 opus_file_t open_opus_file(const util::Path &path);
 
-}} // openage::audio
+} // namespace audio
+} // namespace openage

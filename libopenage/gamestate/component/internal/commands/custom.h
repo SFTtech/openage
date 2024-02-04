@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,10 +16,10 @@ namespace openage::gamestate::component::command {
 class CustomCommand : public Command {
 public:
 	/**
-     * Create a new custom command.
-     *
-     * @param id Command identifier.
-     */
+	 * Create a new custom command.
+	 *
+	 * @param id Command identifier.
+	 */
 	CustomCommand(const std::string &id);
 	virtual ~CustomCommand() = default;
 
@@ -28,16 +28,16 @@ public:
 	}
 
 	/**
-     * Get the command identifier.
-     *
-     * @return Command identifier.
-     */
+	 * Get the command identifier.
+	 *
+	 * @return Command identifier.
+	 */
 	const std::string &get_id() const;
 
 private:
 	/**
-     * Command identifier.
-     */
+	 * Command identifier.
+	 */
 	const std::string id;
 
 	// TODO: Payload

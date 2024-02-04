@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -33,12 +33,13 @@ public:
 	/**
 	 * ref is a raw reference to the associated PyObject.
 	 */
-	PyExceptionBacktrace(PyObject *ref) : ref{ref} {}
+	PyExceptionBacktrace(PyObject *ref) :
+		ref{ref} {}
 
 	/**
 	 * Accesses the associated Python exception object to translate the traceback as needed.
 	 */
-	void get_symbols(std::function<void (const error::backtrace_symbol *)> cb, bool reversed) const override;
+	void get_symbols(std::function<void(const error::backtrace_symbol *)> cb, bool reversed) const override;
 
 private:
 	PyObject *ref;
@@ -83,4 +84,5 @@ public:
 extern OAAPI PyIfFunc<void, PyObject *, Func<void, const error::backtrace_symbol *>> pyexception_bt_get_symbols;
 
 
-}} // openage::pyinterface
+} // namespace pyinterface
+} // namespace openage

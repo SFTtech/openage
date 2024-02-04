@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -30,38 +30,38 @@ class GlShaderProgram final : public ShaderProgram
 	, public GlSimpleObject {
 public:
 	/**
-     * Tries to create a shader program from the given sources.
+	 * Tries to create a shader program from the given sources.
 	 * Throws an exception on compile/link errors.
-     */
+	 */
 	explicit GlShaderProgram(const std::shared_ptr<GlContext> &,
 	                         const std::vector<resources::ShaderSource> &);
 
 	/**
-     * Bind this program as the currently used one in the OpenGL context.
-     */
+	 * Bind this program as the currently used one in the OpenGL context.
+	 */
 	void use();
 
 	/**
-     * Check if this program is currently in use in the OpenGL context.
-     *
-     * @return true if the program is in use, false otherwise.
-     */
+	 * Check if this program is currently in use in the OpenGL context.
+	 *
+	 * @return true if the program is in use, false otherwise.
+	 */
 	bool in_use() const;
 
 	/**
-     * Updates the uniform values with the given input specification.
-     *
-     * @param input The uniform input specification.
-     */
+	 * Updates the uniform values with the given input specification.
+	 *
+	 * @param input The uniform input specification.
+	 */
 	void update_uniforms(std::shared_ptr<GlUniformInput> const &unif_in);
 
 	/**
-     * Get the uniform block with the given name.
-     *
-     * @param block_name Name of the uniform block.
-     *
-     * @return Uniform block.
-     */
+	 * Get the uniform block with the given name.
+	 *
+	 * @param block_name Name of the uniform block.
+	 *
+	 * @return Uniform block.
+	 */
 	const GlUniformBlock &get_uniform_block(const char *block_name) const;
 
 	uniform_id_t get_uniform_id(const char *name) override;
@@ -69,12 +69,12 @@ public:
 	bool has_uniform(const char *name) override;
 
 	/**
-     * Binds a uniform block in the shader program to the same binding point as
-     * the given uniform buffer.
-     *
-     * @param buffer Uniform buffer to bind.
-     * @param block_name Name of the uniform block in the shader program.
-     */
+	 * Binds a uniform block in the shader program to the same binding point as
+	 * the given uniform buffer.
+	 *
+	 * @param buffer Uniform buffer to bind.
+	 * @param block_name Name of the uniform block in the shader program.
+	 */
 	void bind_uniform_buffer(const char *block_name,
 	                         std::shared_ptr<UniformBuffer> const &) override;
 

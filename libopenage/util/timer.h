@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -31,12 +31,12 @@ public:
 	/**
 	 * creates the timer, in either stopped or running state.
 	 */
-	Timer(bool stopped=true);
+	Timer(bool stopped = true);
 
 	/**
 	 * resets the timer, in either stopped or running state.
 	 */
-	void reset(bool stopped=true);
+	void reset(bool stopped = true);
 
 	/**
 	 * stops/pauses the timer.
@@ -66,4 +66,5 @@ public:
 };
 
 
-}} // openage::util
+} // namespace util
+} // namespace openage

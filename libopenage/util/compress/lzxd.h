@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -54,8 +54,8 @@ public:
 	 *                           resets, such as in CAB LZX streams.
 	 */
 	LZXDecompressor(read_callback_t read_callback,
-	                unsigned int window_bits=21,
-	                unsigned int reset_interval=0);
+	                unsigned int window_bits = 21,
+	                unsigned int reset_interval = 0);
 
 	/**
 	 * Frees the internally-allocated LZXDStream object.
@@ -83,8 +83,10 @@ private:
 	LZXDecompressor(const LZXDecompressor &other) = delete;
 	LZXDecompressor(LZXDecompressor &&other) = delete;
 
-	LZXDecompressor &operator =(const LZXDecompressor &other) = delete;
-	LZXDecompressor &operator =(LZXDecompressor &&other) = delete;
+	LZXDecompressor &operator=(const LZXDecompressor &other) = delete;
+	LZXDecompressor &operator=(LZXDecompressor &&other) = delete;
 };
 
-}}} // openage::util::compress
+} // namespace compress
+} // namespace util
+} // namespace openage

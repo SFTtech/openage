@@ -1,4 +1,4 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -23,7 +23,7 @@ class Resource;
  */
 class SoundImpl {
 public:
-	SoundImpl(std::shared_ptr<Resource> resource, int32_t volume=128);
+	SoundImpl(std::shared_ptr<Resource> resource, int32_t volume = 128);
 	~SoundImpl();
 
 	/**
@@ -167,4 +167,5 @@ private:
 };
 
 
-}} // namespace openage::audio
+} // namespace audio
+} // namespace openage

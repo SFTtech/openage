@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -45,12 +45,12 @@ public:
 	virtual bool has_uniform(const char *name) = 0;
 
 	/**
-     * Binds a uniform block in the shader program to the same binding point as
-     * the given uniform buffer.
-     *
-     * @param buffer Uniform buffer to bind.
-     * @param block_name Name of the uniform block in the shader program.
-     */
+	 * Binds a uniform block in the shader program to the same binding point as
+	 * the given uniform buffer.
+	 *
+	 * @param buffer Uniform buffer to bind.
+	 * @param block_name Name of the uniform block in the shader program.
+	 */
 	virtual void bind_uniform_buffer(const char *block_name,
 	                                 std::shared_ptr<UniformBuffer> const &) = 0;
 

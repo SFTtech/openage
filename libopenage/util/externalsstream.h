@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include <iostream>
 #include <string>
@@ -43,8 +43,7 @@ public:
 	/**
 	 * Creates a stream without a valid accumulator.
 	 */
-	explicit ExternalOStringStream()
-		:
+	explicit ExternalOStringStream() :
 		std::ostream{&this->buf} {}
 
 	/**
@@ -60,4 +59,5 @@ private:
 };
 
 
-}} // openage::util
+} // namespace util
+} // namespace openage

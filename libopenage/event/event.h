@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -63,8 +63,8 @@ public:
 	void depend_on(const std::shared_ptr<EventEntity> &dependency);
 
 	/**
-     * Cancel the event.
-     */
+	 * Cancel the event.
+	 */
 	void cancel(const time::time_t reference_time);
 
 	/**

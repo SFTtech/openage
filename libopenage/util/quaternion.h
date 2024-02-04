@@ -1,11 +1,11 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <cmath>
 
-#include "matrix.h"
 #include "math_constants.h"
+#include "matrix.h"
 #include "vector.h"
 
 #include "../error/error.h"
@@ -35,15 +35,13 @@ public:
 
 	static constexpr T default_eps = 1e-4;
 
-	Quaternion(T w, T x, T y, T z)
-		:
+	Quaternion(T w, T x, T y, T z) :
 		w{w}, x{x}, y{y}, z{z} {}
 
 	/**
 	 * Create a identity quaternion.
 	 */
-	Quaternion()
-		:
+	Quaternion() :
 		w{1}, x{0}, y{0}, z{0} {}
 
 	/**
@@ -62,9 +60,8 @@ public:
 	 * max diagonal entry <=> max (|x|, |y|, |z|)
 	 * which is larger than |w| and >= 1/2
 	 */
-	template <size_t N=4>
+	template <size_t N = 4>
 	Quaternion(const Matrix<N, N, T> &mat) {
-
 		static_assert(N == 3 or N == 4, "only 3 and 4 dimensional matrices can be converted to a quaternion!");
 
 		T trace = mat.trace();
@@ -72,7 +69,8 @@ public:
 
 		if (N == 4) {
 			trace_cmp -= mat[3][3];
-		} else {
+		}
+		else {
 			trace += 1.0;
 		}
 
@@ -111,14 +109,15 @@ public:
 
 			if (N == 4) {
 				trace_ordered += mat[3][3];
-			} else {
+			}
+			else {
 				trace_ordered += 1.0;
 			}
 
 			T trace_root = std::sqrt(trace_ordered);
 
-			*ptrs[n0] = trace_root * 0.5;   // = w
-			trace_root = 0.5 / trace_root;  // = 1/4w
+			*ptrs[n0] = trace_root * 0.5;  // = w
+			trace_root = 0.5 / trace_root; // = 1/4w
 
 			*ptrs[n1] = (mat[n0][n1] + mat[n1][n0]) * trace_root;
 			*ptrs[n2] = (mat[n2][n0] + mat[n0][n2]) * trace_root;
@@ -134,8 +133,8 @@ public:
 
 	Quaternion(const this_type &other) = default;
 	Quaternion(this_type &&other) = default;
-	Quaternion &operator =(const this_type &other) = default;
-	Quaternion &operator =(this_type &&other) = default;
+	Quaternion &operator=(const this_type &other) = default;
+	Quaternion &operator=(this_type &&other) = default;
 
 	virtual ~Quaternion() = default;
 
@@ -148,8 +147,7 @@ public:
 			std::cos(rot),
 			axis[0] * std::sin(rot),
 			axis[1] * std::sin(rot),
-			axis[2] * std::sin(rot)
-		};
+			axis[2] * std::sin(rot)};
 		return q;
 	}
 
@@ -240,15 +238,15 @@ public:
 	/**
 	 * Test if the rotation of both quaternions is the same.
 	 */
-	bool equals(const this_type &other, T eps=default_eps) const {
+	bool equals(const this_type &other, T eps = default_eps) const {
 		T ori = this->dot(other);
-		return (1 - (ori*ori)) < eps;
+		return (1 - (ori * ori)) < eps;
 	}
 
 	/**
 	 * Test if both quaternion store the same numbers.
 	 */
-	bool equals_number(const this_type &other, T eps=default_eps) const {
+	bool equals_number(const this_type &other, T eps = default_eps) const {
 		bool result = true;
 		(this->w - other.w) < eps or (result = false);
 		(this->x - other.x) < eps or (result = false);
@@ -261,7 +259,7 @@ public:
 	 * Test rotation equality with another quaternion
 	 * with given precision in radians.
 	 */
-	bool equals_rad(const this_type &other, T rad_eps=default_eps) const {
+	bool equals_rad(const this_type &other, T rad_eps = default_eps) const {
 		T ori = this->dot(other);
 		T angle = std::acos((2.0 * (ori * ori)) - 1.0);
 
@@ -272,7 +270,7 @@ public:
 	 * Test rotation equality with another quaternion
 	 * with given precision in degree.
 	 */
-	bool equals_deg(const this_type &other, T deg_eps=default_eps) const {
+	bool equals_deg(const this_type &other, T deg_eps = default_eps) const {
 		return this->equals_rad(other, deg_eps * math::RADSPERDEG);
 	}
 
@@ -280,27 +278,29 @@ public:
 	 * Generate the corresponding rotation matrix.
 	 */
 	Matrix3t<T> to_matrix() const {
-		T x2  = this->x * 2;
-		T y2  = this->y * 2;
-		T z2  = this->z * 2;
+		T x2 = this->x * 2;
+		T y2 = this->y * 2;
+		T z2 = this->z * 2;
 
 		T x2w = x2 * this->w;
 		T y2w = y2 * this->w;
 		T z2w = z2 * this->w;
 
-		T x3  = x2 * this->x;
+		T x3 = x2 * this->x;
 		T y2x = y2 * this->x;
 		T z2x = z2 * this->x;
 
-		T y3  = y2 * this->y;
+		T y3 = y2 * this->y;
 		T z2y = z2 * this->y;
-		T z3  = z2 * this->z;
+		T z3 = z2 * this->z;
 
+		// clang-format off
 		Matrix3t<T> m{
 			1.0 - (y3 + z3), y2x - z2w, z2x + y2w,
 			y2x + z2w, 1.0 - (x3 + z3), z2y - x2w,
 			z2x - y2w, z2y + x2w, 1.0 - (x3 + y3)
 		};
+		// clang-format on
 
 		return m;
 	}
@@ -308,7 +308,7 @@ public:
 	/**
 	 * Transforms a vector by this quaternion.
 	 */
-	Vector3t<T> operator *(const Vector3t<T> &vec) const {
+	Vector3t<T> operator*(const Vector3t<T> &vec) const {
 		Vector3t<T> axis{this->x, this->y, this->z};
 
 		Vector3t<T> axis_vec_normal = axis.cross_product(vec);
@@ -320,7 +320,7 @@ public:
 		return vec + axis_vec_normal + axis_vec_inplane;
 	}
 
-	const this_type &operator +=(const this_type &other) {
+	const this_type &operator+=(const this_type &other) {
 		this->w += other.w;
 		this->x += other.x;
 		this->y += other.y;
@@ -329,13 +329,13 @@ public:
 		return *this;
 	}
 
-	this_type operator +(const this_type &other) const {
+	this_type operator+(const this_type &other) const {
 		this_type q{*this};
 		q += other;
 		return q;
 	}
 
-	const this_type &operator -=(const this_type &other) {
+	const this_type &operator-=(const this_type &other) {
 		this->w -= other.w;
 		this->x -= other.x;
 		this->y -= other.y;
@@ -344,13 +344,13 @@ public:
 		return *this;
 	}
 
-	this_type operator -(const this_type &other) const {
+	this_type operator-(const this_type &other) const {
 		this_type q{*this};
 		q -= other;
 		return q;
 	}
 
-	const this_type &operator *=(const T &fac) {
+	const this_type &operator*=(const T &fac) {
 		this->w *= fac;
 		this->x *= fac;
 		this->y *= fac;
@@ -359,21 +359,21 @@ public:
 		return *this;
 	}
 
-	this_type operator *(const T &fac) const {
+	this_type operator*(const T &fac) const {
 		this_type q{*this};
 		q *= fac;
 		return q;
 	}
 
-	const this_type &operator *=(const this_type &other) {
-		T w_new = (this->w * other.w - this->x * other.x -
-		           this->y * other.y - this->z * other.z);
-		T x_new = (this->w * other.x + this->x * other.w +
-		           this->y * other.z - this->z * other.y);
-		T y_new = (this->w * other.y - this->x * other.z +
-		           this->y * other.w + this->z * other.x);
-		T z_new = (this->w * other.z + this->x * other.y -
-		           this->y * other.x + this->z * other.w);
+	const this_type &operator*=(const this_type &other) {
+		T w_new = (this->w * other.w - this->x * other.x
+		           - this->y * other.y - this->z * other.z);
+		T x_new = (this->w * other.x + this->x * other.w
+		           + this->y * other.z - this->z * other.y);
+		T y_new = (this->w * other.y - this->x * other.z
+		           + this->y * other.w + this->z * other.x);
+		T z_new = (this->w * other.z + this->x * other.y
+		           - this->y * other.x + this->z * other.w);
 
 		this->w = w_new;
 		this->x = x_new;
@@ -383,13 +383,13 @@ public:
 		return *this;
 	}
 
-	this_type operator *(const this_type &other) const {
+	this_type operator*(const this_type &other) const {
 		this_type q{*this};
 		q *= other;
 		return q;
 	}
 
-	const this_type &operator /=(const T &fac) {
+	const this_type &operator/=(const T &fac) {
 		this->w /= fac;
 		this->x /= fac;
 		this->y /= fac;
@@ -398,28 +398,25 @@ public:
 		return *this;
 	}
 
-	this_type operator /(const T &fac) const {
+	this_type operator/(const T &fac) const {
 		this_type q{*this};
 		q /= fac;
 		return q;
 	}
 
-	const this_type operator -() const {
+	const this_type operator-() const {
 		return this_type{-this->w, -this->x, -this->y, -this->z};
 	}
 
-	bool operator ==(const this_type &other) const {
-		return ((this->w == other.w) and
-		        (this->x == other.x) and
-		        (this->y == other.y) and
-		        (this->z == other.z));
+	bool operator==(const this_type &other) const {
+		return ((this->w == other.w) and (this->x == other.x) and (this->y == other.y) and (this->z == other.z));
 	}
 
-	bool operator !=(const this_type &other) const {
-		return not (*this == other);
+	bool operator!=(const this_type &other) const {
+		return not(*this == other);
 	}
 
-	friend std::ostream &operator <<(std::ostream &o, const this_type &q) {
+	friend std::ostream &operator<<(std::ostream &o, const this_type &q) {
 		o << "Quaternion(" << q.w << ", " << q.x;
 		o << ", " << q.y << ", " << q.z << ")";
 		return o;
@@ -435,4 +432,5 @@ protected:
 using Quaternionf = Quaternion<float>;
 using Quaterniond = Quaternion<double>;
 
-}} // openage::util
+} // namespace util
+} // namespace openage

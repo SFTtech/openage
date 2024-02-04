@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -14,10 +14,10 @@ public:
 	virtual ~Component() = default;
 
 	/**
-     * Get the component type of the component.
-     *
-     * @return Component type of the component.
-     */
+	 * Get the component type of the component.
+	 *
+	 * @return Component type of the component.
+	 */
 	virtual component_t get_type() const = 0;
 };
 

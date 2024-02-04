@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -46,9 +46,9 @@ public:
 	 * Don't change the numbers, they're used from Cython.
 	 */
 	enum class seek_t : int {
-		SET = 0,  //!< offset from file beginning
-		CUR = 1,  //!< offset from current position
-		END = 2   //!< offset from file end
+		SET = 0, //!< offset from file beginning
+		CUR = 1, //!< offset from current position
+		END = 2  //!< offset from file end
 	};
 
 	/**
@@ -70,8 +70,8 @@ public:
 
 	virtual ~FileLike() = default;
 
-	virtual std::string read(ssize_t max=-1) = 0;
-	virtual size_t read_to(void *buf, ssize_t max=-1) = 0;
+	virtual std::string read(ssize_t max = -1) = 0;
+	virtual size_t read_to(void *buf, ssize_t max = -1) = 0;
 
 	virtual bool readable() = 0;
 
@@ -79,7 +79,7 @@ public:
 
 	virtual bool writable() = 0;
 
-	virtual void seek(ssize_t offset, seek_t how=seek_t::SET) = 0;
+	virtual void seek(ssize_t offset, seek_t how = seek_t::SET) = 0;
 	virtual bool seekable() = 0;
 	virtual size_t tell() = 0;
 	virtual void close() = 0;
@@ -93,4 +93,6 @@ public:
 };
 
 
-}}} // openage::util::filelike
+} // namespace filelike
+} // namespace util
+} // namespace openage

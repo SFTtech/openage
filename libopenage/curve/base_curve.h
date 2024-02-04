@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -104,52 +104,52 @@ public:
 	void check_integrity() const;
 
 	/**
-     * Copy keyframes from another curve to this curve. After syncing, the two curves
-     * are guaranteed to return the same values for t >= start.
-     *
-     * The operation may insert new keyframes at \p start on the curve.
-     *
-     * @param other Curve that keyframes are copied from.
-     * @param start Start time at which keyframes are replaced (default = -INF).
-     *              Using the default value replaces ALL keyframes of \p this with
-     *              the keyframes of \p other.
-     */
+	 * Copy keyframes from another curve to this curve. After syncing, the two curves
+	 * are guaranteed to return the same values for t >= start.
+	 *
+	 * The operation may insert new keyframes at \p start on the curve.
+	 *
+	 * @param other Curve that keyframes are copied from.
+	 * @param start Start time at which keyframes are replaced (default = -INF).
+	 *              Using the default value replaces ALL keyframes of \p this with
+	 *              the keyframes of \p other.
+	 */
 	void sync(const BaseCurve<T> &other,
 	          const time::time_t &start = time::TIME_MIN);
 
 	/**
-     * Copy keyframes from another curve (with a different element type) to this curve.
-     * After syncing, the two curves are guaranteed to return the same values
-     * for t >= start.
-     *
-     * The operation may insert new keyframes at \p start on the curve.
-     *
-     * @param other Curve that keyframes are copied from.
-     * @param converter Function that converts the value type of \p other to the
-     *                  value type of \p this.
-     * @param start Start time at which keyframes are replaced (default = -INF).
-     *              Using the default value replaces ALL keyframes of \p this with
-     *              the keyframes of \p other.
-     */
+	 * Copy keyframes from another curve (with a different element type) to this curve.
+	 * After syncing, the two curves are guaranteed to return the same values
+	 * for t >= start.
+	 *
+	 * The operation may insert new keyframes at \p start on the curve.
+	 *
+	 * @param other Curve that keyframes are copied from.
+	 * @param converter Function that converts the value type of \p other to the
+	 *                  value type of \p this.
+	 * @param start Start time at which keyframes are replaced (default = -INF).
+	 *              Using the default value replaces ALL keyframes of \p this with
+	 *              the keyframes of \p other.
+	 */
 	template <typename O>
 	void sync(const BaseCurve<O> &other,
 	          const std::function<T(const O &)> &converter,
 	          const time::time_t &start = time::TIME_MIN);
 
 	/**
-     * Get the identifier of this curve.
-     *
-     * @return Identifier.
-     */
+	 * Get the identifier of this curve.
+	 *
+	 * @return Identifier.
+	 */
 	size_t id() const override {
 		return this->_id;
 	}
 
 	/**
-     * Get the human-readable identifier of this curve.
-     *
-     * @return Human-readable identifier.
-     */
+	 * Get the human-readable identifier of this curve.
+	 *
+	 * @return Human-readable identifier.
+	 */
 	std::string idstr() const override {
 		if (this->_idstr.size() == 0) {
 			return std::to_string(this->id());
@@ -163,10 +163,10 @@ public:
 	std::string str() const;
 
 	/**
-     * Get the container containing all keyframes of this curve.
-     *
-     * @return Keyframe container.
-     */
+	 * Get the container containing all keyframes of this curve.
+	 *
+	 * @return Keyframe container.
+	 */
 	const KeyframeContainer<T> &get_container() const {
 		return this->container;
 	}

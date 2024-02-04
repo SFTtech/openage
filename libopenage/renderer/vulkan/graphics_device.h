@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -57,7 +57,7 @@ public:
 	/// Given a physical device and a list of queue family indices in that device, instantiates
 	/// a logical device with a queue per each of the families. The device has to support the
 	/// swapchain extension.
-	VlkGraphicsDevice(VkPhysicalDevice dev, std::vector<uint32_t> const& q_fams);
+	VlkGraphicsDevice(VkPhysicalDevice dev, std::vector<uint32_t> const &q_fams);
 
 	VkPhysicalDevice get_physical_device() const;
 	VkDevice get_device() const;
@@ -68,4 +68,6 @@ public:
 	~VlkGraphicsDevice();
 };
 
-}}} // openage::renderer::vulkan
+} // namespace vulkan
+} // namespace renderer
+} // namespace openage

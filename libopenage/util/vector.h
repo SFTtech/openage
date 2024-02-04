@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -21,7 +21,7 @@ namespace openage::util {
  * N = dimensions
  * T = underlying single value type (double, float, ...)
  */
-template<size_t N, typename T>
+template <size_t N, typename T>
 class Vector : public std::array<T, N> {
 public:
 	static_assert(N > 0, "0-dimensional vector not allowed");
@@ -45,18 +45,16 @@ public:
 	/**
 	 * Constructor for initialisation with N T values
 	 */
-	template<typename ... Ts>
-	Vector(Ts ... args)
-		:
+	template <typename... Ts>
+	Vector(Ts... args) :
 		std::array<T, N>{static_cast<T>(args)...} {
-
 		static_assert(sizeof...(args) == N, "not all values supplied.");
 	}
 
 	/**
 	 * Cast every value to NT and return the new Vector.
 	 */
-	template<typename NT>
+	template <typename NT>
 	Vector<N, NT> casted() const {
 		Vector<N, NT> ret;
 		std::copy(std::begin(*this), std::end(*this), std::begin(ret));
@@ -66,7 +64,7 @@ public:
 	/**
 	 * Equality test with given precision.
 	 */
-	bool equals(const this_type &other, T eps=default_eps) {
+	bool equals(const this_type &other, T eps = default_eps) {
 		for (size_t i = 0; i < N; i++) {
 			T diff = std::abs((*this)[i] - other[i]);
 			if (diff >= eps) {
@@ -79,7 +77,7 @@ public:
 	/**
 	 * Vector addition with assignment
 	 */
-	this_type &operator +=(const this_type &other) {
+	this_type &operator+=(const this_type &other) {
 		for (size_t i = 0; i < N; i++) {
 			(*this)[i] += other[i];
 		}
@@ -89,7 +87,7 @@ public:
 	/**
 	 * Vector addition
 	 */
-	this_type operator +(const this_type &other) const {
+	this_type operator+(const this_type &other) const {
 		this_type res(*this);
 		res += other;
 		return res;
@@ -98,7 +96,7 @@ public:
 	/**
 	 * Vector subtraction with assignment
 	 */
-	this_type &operator -=(const this_type &other) {
+	this_type &operator-=(const this_type &other) {
 		for (size_t i = 0; i < N; i++) {
 			(*this)[i] -= other[i];
 		}
@@ -108,7 +106,7 @@ public:
 	/**
 	 * Vector subtraction
 	 */
-	this_type operator -(const this_type &other) const {
+	this_type operator-(const this_type &other) const {
 		this_type res(*this);
 		res -= other;
 		return res;
@@ -117,7 +115,7 @@ public:
 	/**
 	 * Scalar multiplication with assignment
 	 */
-	this_type &operator *=(T a) {
+	this_type &operator*=(T a) {
 		for (size_t i = 0; i < N; i++) {
 			(*this)[i] *= a;
 		}
@@ -127,7 +125,7 @@ public:
 	/**
 	 * Scalar multiplication
 	 */
-	this_type operator *(T a) const {
+	this_type operator*(T a) const {
 		this_type res(*this);
 		res *= a;
 		return res;
@@ -136,7 +134,7 @@ public:
 	/**
 	 * Scalar division with assignment
 	 */
-	this_type &operator /=(T a) {
+	this_type &operator/=(T a) {
 		for (size_t i = 0; i < N; i++) {
 			(*this)[i] /= a;
 		}
@@ -146,7 +144,7 @@ public:
 	/**
 	 * Scalar division
 	 */
-	this_type operator /(T a) const {
+	this_type operator/(T a) const {
 		this_type res(*this);
 		res /= a;
 		return res;
@@ -181,50 +179,50 @@ public:
 	/**
 	 * Cross-product of two 3-dimensional vectors
 	 */
-	template<typename U=this_type>
-	typename std::enable_if<N==3, U>::type
-	/*Vector<N>*/ cross_product(const this_type &other) const {
+	template <typename U = this_type>
+	typename std::enable_if<N == 3, U>::type
+	/*Vector<N>*/
+	cross_product(const this_type &other) const {
 		return this_type(
 			((*this)[1] * other[2] - (*this)[2] * other[1]),
 			((*this)[2] * other[0] - (*this)[0] * other[2]),
-			((*this)[0] * other[1] - (*this)[1] * other[0])
-		);
+			((*this)[0] * other[1] - (*this)[1] * other[0]));
 	}
 
 	/**
 	 * Scalar multiplication with swapped arguments
 	 */
-	friend this_type operator *(T a, const this_type &v) {
+	friend this_type operator*(T a, const this_type &v) {
 		return v * a;
 	}
 
 	/**
 	 * Print to output stream using '<<'
 	 */
-	friend std::ostream &operator <<(std::ostream &o, const this_type &v) {
+	friend std::ostream &operator<<(std::ostream &o, const this_type &v) {
 		o << "(";
-		for (size_t i = 0; i < N-1; i++) {
+		for (size_t i = 0; i < N - 1; i++) {
 			o << v[i] << ", ";
 		}
-		o << v[N-1] << ")";
+		o << v[N - 1] << ")";
 		return o;
 	}
 };
 
 
-template<typename T=float>
+template <typename T = float>
 using Vector2t = Vector<2, T>;
 
-template<typename T=float>
+template <typename T = float>
 using Vector3t = Vector<3, T>;
 
-template<typename T=float>
+template <typename T = float>
 using Vector4t = Vector<4, T>;
 
-template<size_t N>
+template <size_t N>
 using Vectorf = Vector<N, float>;
 
-template<size_t N>
+template <size_t N>
 using Vectord = Vector<N, double>;
 
 using Vector2f = Vector<2, float>;
@@ -247,4 +245,4 @@ using Vector2ss = Vector<2, ssize_t>;
 using Vector3ss = Vector<3, ssize_t>;
 using Vector4ss = Vector<4, ssize_t>;
 
-} // openage::util
+} // namespace openage::util

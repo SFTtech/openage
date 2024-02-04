@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -21,13 +21,13 @@ public:
 	 */
 	explicit RNG(uint64_t seed);
 
-        [[maybe_unused]] /**
+	/**
 	 * Initializes the rng using data from the buffer pointed to by data
 	 * @param data The buffer that contains data for seeding the rng
 	 * @param count The number of bytes in the buffer
 	 * @throws Error if 0 bytes are passed
 	 */
-	RNG(const void *data, size_t count);
+	[[maybe_unused]] RNG(const void *data, size_t count);
 
 
 	/**
@@ -73,7 +73,7 @@ public:
 	/**
 	 * Retrieves a random value from the generator
 	 */
-	inline uint64_t operator ()() {
+	inline uint64_t operator()() {
 		return this->random();
 	}
 
@@ -189,13 +189,13 @@ private:
  * Reads the rng from a stream
  * @throws Error if reading from the stream fails
  */
-std::istream &operator >>(std::istream &instream, RNG &inrng);
+std::istream &operator>>(std::istream &instream, RNG &inrng);
 
 /**
  * Writes the rng state to a stream
  * @throws Error if writing data fails
  */
-std::ostream &operator <<(std::ostream &ostream, const RNG &inrng);
+std::ostream &operator<<(std::ostream &ostream, const RNG &inrng);
 
 
 /**

@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -222,8 +222,7 @@ public:
 	 * Sets up a factory for the type T.
 	 */
 	explicit GuiItemCoreInstantiator(GuiItemBase *item_base) :
-		GuiItemMethods<T> {}
-	{
+		GuiItemMethods<T>{} {
 		using namespace std::placeholders;
 
 		item_base->instantiate_core_func = std::bind(&GuiItemCoreInstantiator::instantiate_core, this);
@@ -298,10 +297,7 @@ public:
 	 */
 	explicit GuiItem(GuiItemBase *item_base) :
 		GuiItemOrigin<T>{},
-		GuiItemCoreInstantiator<T> {
-		item_base
-	}
-	{
+		GuiItemCoreInstantiator<T>{item_base} {
 	}
 };
 
@@ -311,8 +307,7 @@ class GuiItemInterface : public GuiItemOrigin<T>
 public:
 	explicit GuiItemInterface() :
 		GuiItemOrigin<T>{},
-		GuiItemMethods<T> {}
-	{
+		GuiItemMethods<T>{} {
 	}
 };
 
@@ -356,10 +351,7 @@ public:
 
 	Inherits(QObject *parent = nullptr) :
 		Shadow<T>{parent},
-		GuiItemCoreInstantiator<P> {
-		this
-	}
-	{
+		GuiItemCoreInstantiator<P>{this} {
 	}
 
 	virtual ~Inherits() {

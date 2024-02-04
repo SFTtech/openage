@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -27,4 +27,5 @@ struct resource_def {
 };
 
 
-}} // openage::audio
+} // namespace audio
+} // namespace openage

@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -72,13 +72,13 @@ public:
 	 * Assigns from an other PyObjectRef
 	 * (calls Py_XDECREF on the old value, and Py_XINCREF on the new one).
 	 */
-	PyObjectRef &operator =(const PyObjectRef &other);
+	PyObjectRef &operator=(const PyObjectRef &other);
 
 	/**
 	 * Move-assigns from an other PyObject
 	 * (calls Py_XDECREF on the old value).
 	 */
-	PyObjectRef &operator =(PyObjectRef &&other);
+	PyObjectRef &operator=(PyObjectRef &&other);
 
 	/**
 	 * Destroys the object, calls Py_XDECREF.
@@ -116,12 +116,11 @@ public:
 	/**
 	 * obj(args...)
 	 */
-	template <typename ...Args>
+	template <typename... Args>
 	PyObjectRef call(Args... args) const {
 		// this vector collects the function call arguments
-		std::vector<PyObjectRef> arg_objs {
-			PyObjectRef(args)...
-		};
+		std::vector<PyObjectRef> arg_objs{
+			PyObjectRef(args)...};
 
 		return this->call_impl(arg_objs);
 	}
@@ -251,7 +250,7 @@ public:
 	 * Implicit conversion to PyObject *.
 	 * Mainly for convenience to avoid all the get_ref() calls.
 	 */
-	PyObject *operator ()() const noexcept {
+	PyObject *operator()() const noexcept {
 		return this->ref;
 	}
 
@@ -285,7 +284,7 @@ using PyObj = PyObjectRef;
 /**
  * Stream operator for printing PyObjects
  */
-std::ostream &operator <<(std::ostream &os, const PyObjectRef &ref);
+std::ostream &operator<<(std::ostream &os, const PyObjectRef &ref);
 
 
 // now follow the various Python callbacks that implement all of the above,
@@ -313,7 +312,7 @@ extern OAAPI PyIfFunc<bool, PyObject *> py_callable;
 // pxd: PyIfFunc2[void, PyObjectRefPtr, PyObjectPtr] py_call0
 extern OAAPI PyIfFunc<void, PyObjectRef *, PyObject *> py_call0;
 // pxd: PyIfFunc3[void, PyObjectRefPtr, PyObjectPtr, vector[PyObjectPtr]] py_calln
-extern OAAPI PyIfFunc<void, PyObjectRef *, PyObject *, std::vector<PyObject *>&> py_calln;
+extern OAAPI PyIfFunc<void, PyObjectRef *, PyObject *, std::vector<PyObject *> &> py_calln;
 // pxd: PyIfFunc2[cppbool, PyObjectPtr, string] py_hasattr
 extern OAAPI PyIfFunc<bool, PyObject *, std::string> py_hasattr;
 // pxd: PyIfFunc3[void, PyObjectRefPtr, PyObjectPtr, string] py_getattr
@@ -346,13 +345,13 @@ extern OAAPI PyIfFunc<std::string, PyObject *> py_modulename;
 extern OAAPI PyIfFunc<std::string, PyObject *> py_classname;
 
 // pxd: PyIfFunc2[void, PyObjectRefPtr, const string] py_builtin
-extern OAAPI PyIfFunc<void, PyObjectRef *, const std::string&> py_builtin;
+extern OAAPI PyIfFunc<void, PyObjectRef *, const std::string &> py_builtin;
 // pxd: PyIfFunc2[void, PyObjectRefPtr, const string] py_import
-extern OAAPI PyIfFunc<void, PyObjectRef *, const std::string&> py_import;
+extern OAAPI PyIfFunc<void, PyObjectRef *, const std::string &> py_import;
 // pxd: PyIfFunc2[void, PyObjectRefPtr, const string] py_createstr
-extern OAAPI PyIfFunc<void, PyObjectRef *, const std::string&> py_createstr;
+extern OAAPI PyIfFunc<void, PyObjectRef *, const std::string &> py_createstr;
 // pxd: PyIfFunc2[void, PyObjectRefPtr, const string] py_createbytes
-extern OAAPI PyIfFunc<void, PyObjectRef *, const std::string&> py_createbytes;
+extern OAAPI PyIfFunc<void, PyObjectRef *, const std::string &> py_createbytes;
 // pxd: PyIfFunc2[void, PyObjectRefPtr, int] py_createint
 extern OAAPI PyIfFunc<void, PyObjectRef *, int> py_createint;
 // pxd: PyIfFunc1[void, PyObjectRefPtr] py_createdict
@@ -367,7 +366,7 @@ extern OAAPI PyObjectRef True;
 // pxd: PyObjectRef False
 extern OAAPI PyObjectRef False;
 
-} // pyinterface
+} // namespace pyinterface
 
 
 /**
@@ -440,5 +439,5 @@ using pyinterface::True;
  */
 using pyinterface::False;
 
-} // py
-} // openage
+} // namespace py
+} // namespace openage

@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -34,17 +34,17 @@ public:
 	~PaletteInfo() = default;
 
 	/**
-     * Get a color in the palette with a specified index.
-     *
-     * @return Normalized RGBA color vector.
-     */
+	 * Get a color in the palette with a specified index.
+	 *
+	 * @return Normalized RGBA color vector.
+	 */
 	Eigen::Vector4f get_color(size_t idx);
 
 	/**
-     * Get the colors of the palette.
-     *
-     * @return List of normalized RGBA colors.
-     */
+	 * Get the colors of the palette.
+	 *
+	 * @return List of normalized RGBA colors.
+	 */
 	const std::vector<Eigen::Vector4f> get_colors();
 
 private:

@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -17,9 +17,9 @@ public:
 	 * Create a 2D Frame Info.
 	 *
 	 * @param texture_idx Index of the texture containing the frame in the
-     *                    TerrainInfo object.
+	 *                    TerrainInfo object.
 	 * @param subtexture_idx Index of the subtexture containing the frame
-     *                       in the Texture2dInfo object.
+	 *                       in the Texture2dInfo object.
 	 * @param priority Blending priority.
 	 * @param priority Blend mode index.
 	 */
@@ -61,27 +61,27 @@ public:
 
 private:
 	/**
-     * Index of the texture containing the frame in the TerrainInfo object.
-     */
+	 * Index of the texture containing the frame in the TerrainInfo object.
+	 */
 	size_t texture_idx;
 
 	/**
-     * Index of the subtexture containing the frame in the Texture2dInfo object.
-     */
+	 * Index of the subtexture containing the frame in the Texture2dInfo object.
+	 */
 	size_t subtexture_idx;
 
 	/**
-     * Decides which blending table of the two adjacent terrain textures is selected.
-     *
-     * If two adjacent terrains have equal priority, the blending table of the terrain
-     * with a lower x coordinate value is selected. If the x coordinate value is also
-     * equal, the blending table of the terrain with the lowest y coordinate is selected.
-     */
+	 * Decides which blending table of the two adjacent terrain textures is selected.
+	 *
+	 * If two adjacent terrains have equal priority, the blending table of the terrain
+	 * with a lower x coordinate value is selected. If the x coordinate value is also
+	 * equal, the blending table of the terrain with the lowest y coordinate is selected.
+	 */
 	size_t priority;
 
 	/**
-     * Used for looking up the blending pattern index in a blending table.
-     */
+	 * Used for looking up the blending pattern index in a blending table.
+	 */
 	std::optional<size_t> blend_mode;
 };
 

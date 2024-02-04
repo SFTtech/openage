@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,4 +9,6 @@ namespace tests {
 void pyobject();
 void pyobject_demo();
 
-}}} // openage::pyinterface
+} // namespace tests
+} // namespace pyinterface
+} // namespace openage

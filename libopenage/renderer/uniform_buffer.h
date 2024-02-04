@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -21,10 +21,10 @@ public:
 	virtual ~UniformBuffer() = default;
 
 	/**
-     * Update the uniforms in the buffer.
-     *
-     * @param unif_in Uniform input to update the buffer with.
-     */
+	 * Update the uniforms in the buffer.
+	 *
+	 * @param unif_in Uniform input to update the buffer with.
+	 */
 	virtual void update_uniforms(std::shared_ptr<UniformBufferInput> const &unif_in) = 0;
 
 	/**

@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -24,7 +24,7 @@ class JobManager;
  *
  * @param T the job's result type
  */
-template<class T>
+template <class T>
 class Job {
 private:
 	/** A shared pointer to the job's shared state. */
@@ -58,7 +58,8 @@ public:
 		ENSURE(this->state->finished.load(), "trying to report a result of an unfinished job");
 		if (this->state->exception != nullptr) {
 			std::rethrow_exception(this->state->exception);
-		} else {
+		}
+		else {
 			return std::move(this->state->result);
 		}
 	}
@@ -68,8 +69,7 @@ private:
 	 * Creates a job with the given shared state. This method may only be called
 	 * by the job manager.
 	 */
-	Job(std::shared_ptr<TypedJobStateBase<T>> state)
-		:
+	Job(std::shared_ptr<TypedJobStateBase<T>> state) :
 		state{state} {
 	}
 
@@ -81,5 +81,5 @@ private:
 	friend class JobManager;
 };
 
-}
-}
+} // namespace job
+} // namespace openage
