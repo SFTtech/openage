@@ -4,16 +4,26 @@
 
 #include "error/error.h"
 
+#include "pathfinding/definitions.h"
+
 
 namespace openage::path {
 
 CostField::CostField(size_t size) :
 	size{size},
-	cells(this->size * this->size, 1) {
+	cells(this->size * this->size, COST_MIN) {
+}
+
+size_t CostField::get_size() const {
+	return this->size;
 }
 
 cost_t CostField::get_cost(size_t x, size_t y) const {
 	return this->cells[x + y * this->size];
+}
+
+cost_t CostField::get_cost(size_t idx) const {
+	return this->cells.at(idx);
 }
 
 void CostField::set_cost(size_t x, size_t y, cost_t cost) {
