@@ -23,6 +23,13 @@ public:
 	CostField(size_t size);
 
 	/**
+     * Get the size of the cost field.
+     *
+     * @return Size of the cost field.
+     */
+	size_t get_size() const;
+
+	/**
      * Get the cost at a specified position.
      *
      * @param x X coordinate.
@@ -30,6 +37,14 @@ public:
      * @return Cost at the specified position.
      */
 	cost_t get_cost(size_t x, size_t y) const;
+
+	/**
+      * Get the cost at a specified position.
+      *
+      * @param idx Index of the cell.
+      * @return Cost at the specified position.
+      */
+	cost_t get_cost(size_t idx) const;
 
 	/**
      * Set the cost at a specified position.

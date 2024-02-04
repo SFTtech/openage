@@ -3,6 +3,7 @@ add_sources(libopenage
     cost_field.cpp
 	definitions.cpp
 	heuristics.cpp
+	integration_field.cpp
 	path.cpp
 	tests.cpp
     types.cpp

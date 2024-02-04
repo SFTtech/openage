@@ -33,6 +33,11 @@ constexpr cost_t COST_IMPASSABLE = 255;
 
 
 /**
+ * Start value for goal cells.
+ */
+const integrate_t INTEGRATE_START = 0;
+
+/**
  * Unreachable value for a cells in the integration grid.
  */
 constexpr integrate_t INTEGRATE_UNREACHABLE = std::numeric_limits<integrate_t>::max();
