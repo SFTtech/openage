@@ -1,4 +1,4 @@
-// Copyright 2014-2023 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 /** @file
  *
@@ -31,7 +31,7 @@ Path to_point(coord::phys3 start,
 	auto valid_end = [&](const coord::phys3 &point) -> bool {
 		return euclidean_squared_cost(point, end) < path_grid_size.to_float();
 	};
-	auto heuristic = [&](const coord::phys3 &point) -> cost_t {
+	auto heuristic = [&](const coord::phys3 &point) -> cost_old_t {
 		return euclidean_cost(point, end);
 	};
 	return a_star(start, valid_end, heuristic, passable);
@@ -41,13 +41,13 @@ Path find_nearest(coord::phys3 start,
                   std::function<bool(const coord::phys3 &)> valid_end,
                   std::function<bool(const coord::phys3 &)> passable) {
 	// Use Dijkstra (heuristic = 0)
-	auto zero = [](const coord::phys3 &) -> cost_t { return .0f; };
+	auto zero = [](const coord::phys3 &) -> cost_old_t { return .0f; };
 	return a_star(start, valid_end, zero, passable);
 }
 
 Path a_star(coord::phys3 start,
             std::function<bool(const coord::phys3 &)> valid_end,
-            std::function<cost_t(const coord::phys3 &)> heuristic,
+            std::function<cost_old_t(const coord::phys3 &)> heuristic,
             std::function<bool(const coord::phys3 &)> passable) {
 	// path node storage, always provides cheapest next node.
 	heap_t node_candidates;
@@ -94,7 +94,7 @@ Path a_star(coord::phys3 start,
 			}
 
 			bool not_visited = (visited_tiles.count(neighbor->position) == 0);
-			cost_t new_past_cost = best_candidate->past_cost + best_candidate->cost_to(*neighbor);
+			cost_old_t new_past_cost = best_candidate->past_cost + best_candidate->cost_to(*neighbor);
 
 			// if new cost is better than the previous path
 			if (not_visited or new_past_cost < neighbor->past_cost) {

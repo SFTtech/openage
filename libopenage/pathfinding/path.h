@@ -1,4 +1,4 @@
-// Copyright 2014-2023 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -24,7 +24,7 @@ class Path;
 /**
  * The data type for movement cost
  */
-using cost_t = float;
+using cost_old_t = float;
 
 /**
  * Type for storing navigation nodes.
@@ -80,7 +80,7 @@ bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::p
 class Node : public std::enable_shared_from_this<Node> {
 public:
 	Node(const coord::phys3 &pos, node_pt prev);
-	Node(const coord::phys3 &pos, node_pt prev, cost_t past, cost_t heuristic);
+	Node(const coord::phys3 &pos, node_pt prev, cost_old_t past, cost_old_t heuristic);
 
 	/**
 	 * Orders nodes according to their future cost value.
@@ -96,7 +96,7 @@ public:
 	/**
 	 * Calculates the actual movement cose to another node.
 	 */
-	cost_t cost_to(const Node &other) const;
+	cost_old_t cost_to(const Node &other) const;
 
 	/**
 	 * Create a backtrace path beginning at this node.
@@ -119,20 +119,20 @@ public:
 	/**
 	 * Future cost estimation value for this node.
 	 */
-	cost_t future_cost;
+	cost_old_t future_cost;
 
 	/**
 	 * Evaluated past cost value for the node.
 	 * This stores the actual cost from start to this node.
 	 */
-	cost_t past_cost;
+	cost_old_t past_cost;
 
 	/**
 	 * Heuristic cost cache.
 	 * Calculated once, is the heuristic distance from this node
 	 * to the goal.
 	 */
-	cost_t heuristic_cost;
+	cost_old_t heuristic_cost;
 
 	/**
 	 * Can this node be passed?
@@ -155,7 +155,7 @@ public:
 	 * Factor to adjust movement cost.
 	 * default: 1
 	 */
-	cost_t factor;
+	cost_old_t factor;
 
 	/**
 	 * Node where this one was reached by least cost.
