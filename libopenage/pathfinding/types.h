@@ -22,8 +22,12 @@ using cost_t = uint8_t;
 using integrate_t = uint16_t;
 
 /**
- * Flow field direction value.
+ * Flow field cell value.
+ *
+ * Bit 2: Line of sight flag.
+ * Bit 3: Pathable flag.
+ * Bits 4-7: flow direction.
  */
-using flow_dir_t = uint8_t;
+using flow_t = uint8_t;
 
 } // namespace openage::path
