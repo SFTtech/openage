@@ -5,6 +5,7 @@ add_sources(libopenage
     flow_field.cpp
 	heuristics.cpp
 	integration_field.cpp
+    integrator.cpp
 	path.cpp
 	tests.cpp
     types.cpp
