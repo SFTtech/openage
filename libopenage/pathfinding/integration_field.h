@@ -20,7 +20,7 @@ public:
 	/**
 	 * Create a square integration field with a specified size.
 	 *
-	 * @param size Length of one side of the square field.
+	 * @param size Side length of the field.
 	 */
 	IntegrationField(size_t size);
 
@@ -42,6 +42,13 @@ public:
 	               size_t target_x,
 	               size_t target_y);
 
+	/**
+     * Get the integration field values.
+     *
+     * @return Integration field values.
+     */
+	const std::vector<integrate_t> &get_cells() const;
+
 private:
 	/**
 	 * Reset the integration field for a new integration.
@@ -62,7 +69,7 @@ private:
 	                        cost_t integrate_cost);
 
 	/**
-	 * Length of one side of the square integration field.
+	 * Side length of the field.
 	 */
 	size_t size;
 

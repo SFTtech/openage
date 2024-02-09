@@ -18,7 +18,7 @@ public:
 	/**
      * Create a square cost field with a specified size.
      *
-     * @param size Length of one side of the square field.
+     * @param size Side length of the field.
      */
 	CostField(size_t size);
 
@@ -71,8 +71,8 @@ public:
 
 private:
 	/**
-     * Length of one side of the square cost field.
-     */
+	 * Side length of the field.
+	 */
 	size_t size;
 
 	/**

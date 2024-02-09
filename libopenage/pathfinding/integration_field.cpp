@@ -118,6 +118,10 @@ void IntegrationField::integrate(const std::shared_ptr<CostField> &cost_field,
 	}
 }
 
+const std::vector<integrate_t> &IntegrationField::get_cells() const {
+	return this->cells;
+}
+
 void IntegrationField::reset() {
 	for (auto &cell : this->cells) {
 		cell = INTEGRATE_UNREACHABLE;
