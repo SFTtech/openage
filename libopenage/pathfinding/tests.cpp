@@ -1,9 +1,12 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "../log/log.h"
 #include "../testing/testing.h"
 
+#include "cost_field.h"
+#include "flow_field.h"
 #include "heuristics.h"
+#include "integrator.h"
 #include "path.h"
 
 namespace openage {
@@ -110,7 +113,7 @@ void node_cost_to_0() {
 	TESTEQUALS(n2->cost_to(*n0), 5);
 
 	// Testing cost_to with both se and ne:
-	coord::phys3 p3{3, 4, 0};  // -> sqrt(3*3 + 4*4) == 5
+	coord::phys3 p3{3, 4, 0}; // -> sqrt(3*3 + 4*4) == 5
 
 	node_pt n3 = std::make_unique<Node>(p3, nullptr);
 	TESTEQUALS(n0->cost_to(*n3), 5);
@@ -274,7 +277,8 @@ bool not_passable(const coord::phys3 &) {
 bool sometimes_passable(const coord::phys3 &pos) {
 	if (pos.ne == 20) {
 		return false;
-	} else {
+	}
+	else {
 		return true;
 	}
 }
@@ -311,6 +315,45 @@ void path_node() {
 	node_passable_line_0();
 }
 
+void flow_field() {
+	// Create initial cost grid
+	auto cost_field = std::make_shared<CostField>(3);
+
+	// | 1 | 1 | 1 |
+	// | 1 | X | 1 |
+	// | 1 | 1 | 1 |
+	cost_field->set_costs({1, 1, 1, 1, 255, 1, 1, 1, 1});
+
+	// Integrator for managing the flow field
+	auto integrator = std::make_shared<Integrator>();
+	integrator->set_cost_field(cost_field);
+
+	// Build the flow field
+	auto flow_field = integrator->build(2, 2);
+	auto cells = flow_field->get_cells();
+
+	// The directions in the flow field should look like:
+	// | E  | SE | S |
+	// | SE | X  | S |
+	// | E  | E  | N |
+	auto expected = std::vector<flow_t>{
+		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::EAST),
+		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
+		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::SOUTH),
+		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
+		0,
+		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::SOUTH),
+		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::EAST),
+		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::EAST),
+		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::NORTH),
+	};
+
+	for (size_t i = 0; i < cells.size(); i++) {
+		TESTEQUALS(cells[i], expected[i]);
+	}
+}
+
+
 } // namespace tests
-} // namespace pathfinding
+} // namespace path
 } // namespace openage

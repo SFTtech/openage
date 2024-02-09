@@ -112,4 +112,8 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integrate_field) 
 	}
 }
 
+const std::vector<flow_t> &FlowField::get_cells() const {
+	return this->cells;
+}
+
 } // namespace openage::path
