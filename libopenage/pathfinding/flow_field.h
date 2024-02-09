@@ -43,6 +43,13 @@ public:
      */
 	void build(const std::shared_ptr<IntegrationField> &integrate_field);
 
+	/**
+     * Get the flow field values.
+     *
+     * @return Flow field values.
+     */
+	const std::vector<flow_t> &get_cells() const;
+
 private:
 	/**
 	 * Side length of the field.
