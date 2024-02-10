@@ -52,6 +52,8 @@ def demos_py():
            "play pong on steroids through future prediction")
     yield ("openage.gamestate.tests.simulation_demo",
            "showcases the game simulation")
+    yield ("openage.pathfinding.tests.path_demo",
+           "showcases the pathfinding system")
     yield ("openage.renderer.tests.renderer_demo",
            "showcases the renderer")
     yield ("openage.renderer.tests.renderer_stresstest",

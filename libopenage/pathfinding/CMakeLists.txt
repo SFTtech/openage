@@ -10,3 +10,5 @@ add_sources(libopenage
 	tests.cpp
     types.cpp
 )
+
+add_subdirectory("demo")
