@@ -4,10 +4,13 @@
 #include "../testing/testing.h"
 
 #include "cost_field.h"
+#include "definitions.h"
 #include "flow_field.h"
 #include "heuristics.h"
+#include "integration_field.h"
 #include "integrator.h"
 #include "path.h"
+#include "types.h"
 
 namespace openage {
 namespace path {
@@ -324,19 +327,11 @@ void flow_field() {
 	// | 1 | 1 | 1 |
 	cost_field->set_costs({1, 1, 1, 1, 255, 1, 1, 1, 1});
 
-	// Integrator for managing the flow field
-	auto integrator = std::make_shared<Integrator>();
-	integrator->set_cost_field(cost_field);
-
-	// Build the flow field
-	auto flow_field = integrator->build(2, 2);
-	auto cells = flow_field->get_cells();
-
-	// The directions in the flow field should look like:
+	// The flow field for targeting (2, 2) hould look like this:
 	// | E  | SE | S |
 	// | SE | X  | S |
 	// | E  | E  | N |
-	auto expected = std::vector<flow_t>{
+	auto ff_expected = std::vector<flow_t>{
 		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::EAST),
 		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
 		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::SOUTH),
@@ -348,8 +343,58 @@ void flow_field() {
 		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::NORTH),
 	};
 
-	for (size_t i = 0; i < cells.size(); i++) {
-		TESTEQUALS(cells[i], expected[i]);
+	// Test the different field types
+	{
+		auto integration_field = std::make_shared<IntegrationField>(3);
+		integration_field->integrate(cost_field, 2, 2);
+		auto int_cells = integration_field->get_cells();
+
+		// The integration field should look like:
+		// | 4 | 3 | 2 |
+		// | 3 | X | 1 |
+		// | 2 | 1 | 0 |
+		auto int_expected = std::vector<integrate_t>{
+			4,
+			3,
+			2,
+			3,
+			65535,
+			1,
+			2,
+			1,
+			0,
+		};
+
+		// Compare the integration field cells with the expected values
+		for (size_t i = 0; i < int_cells.size(); i++) {
+			TESTEQUALS(int_cells[i], int_expected[i]);
+		}
+
+		// Build the flow field
+		auto flow_field = std::make_shared<FlowField>(3);
+		flow_field->build(integration_field);
+		auto ff_cells = flow_field->get_cells();
+
+		// Compare the flow field cells with the expected values
+		for (size_t i = 0; i < ff_cells.size(); i++) {
+			TESTEQUALS(ff_cells[i], ff_expected[i]);
+		}
+	}
+
+	// Integrator test
+	{
+		// Integrator for managing the flow field
+		auto integrator = std::make_shared<Integrator>();
+		integrator->set_cost_field(cost_field);
+
+		// Build the flow field
+		auto flow_field = integrator->build(2, 2);
+		auto ff_cells = flow_field->get_cells();
+
+		// Compare the flow field cells with the expected values
+		for (size_t i = 0; i < ff_cells.size(); i++) {
+			TESTEQUALS(ff_cells[i], ff_expected[i]);
+		}
 	}
 }
 
