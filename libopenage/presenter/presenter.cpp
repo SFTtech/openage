@@ -45,10 +45,10 @@ Presenter::Presenter(const util::Path &root_dir,
 	time_loop{time_loop} {}
 
 
-void Presenter::run(bool debug_graphics) {
+void Presenter::run(bool debug_graphics, int width, int height) {
 	log::log(INFO << "Presenter: Launching subsystems...");
 
-	this->init_graphics(debug_graphics);
+	this->init_graphics(debug_graphics, width, height);
 
 	this->init_input();
 
@@ -90,11 +90,11 @@ std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {
 	return std::make_shared<renderer::gui::GuiApplicationWithLogger>();
 }
 
-void Presenter::init_graphics(bool debug) {
+void Presenter::init_graphics(bool debug, int width, int height) {
 	log::log(INFO << "Presenter: Initializing graphics subsystems...");
 
 	this->gui_app = this->init_window_system();
-	this->window = renderer::Window::create("openage presenter test", 1024, 768, debug);
+	this->window = renderer::Window::create("openage presenter test", width, height, debug);
 	this->renderer = this->window->make_renderer();
 
 	// Asset mangement

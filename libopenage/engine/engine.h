@@ -76,7 +76,9 @@ public:
 	Engine(mode mode,
 	       const util::Path &root_dir,
 	       const std::vector<std::string> &mods,
-	       bool debug_graphics = false);
+	       bool debug_graphics = false,
+	       int wWidth =1024,
+		   int wHeight=768);
 
 	// engine should not be copied or moved
 	Engine(const Engine &) = delete;

@@ -36,6 +36,17 @@ def run_game(args, root_path):
             args_cpp.mods = args.modpacks
         else:
             args_cpp.mods = vector[string]()
+        
+        # window dimensions
+        if args.width is not None:
+            args_cpp.width = args.width
+        else:
+            args_cpp.width = 1024
+
+        if args.height is not None:
+            args_cpp.height = args.height
+        else:
+            args_cpp.height = 768
 
         # run the game!
         with nogil:

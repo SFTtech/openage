@@ -32,6 +32,8 @@ struct main_arguments {
 	bool gl_debug;
 	bool headless;
 	std::vector<std::string> mods;
+	int width;
+	int height;
 };
 
 
