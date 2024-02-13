@@ -80,22 +80,22 @@ public:
 
 	/**
 	 * Get the first element inserted at t <= time.
-     *
-     * Ignores dead elements.
+	 *
+	 * Ignores dead elements.
 	 *
 	 * @param time The time to get the element at.
-     *
+	 *
 	 * @return Queue element.
 	 */
 	const T &front(const time::time_t &time) const;
 
 	/**
 	 * Check if the queue is empty at the given time (no elements alive
-     * before t <= time).
-     *
-     * Ignores dead elements.
-     *
-     * @param time The time to check at.
+	 * before t <= time).
+	 *
+	 * Ignores dead elements.
+	 *
+	 * @param time The time to check at.
 	 *
 	 * @return true if the queue is empty, false otherwise.
 	 */
@@ -105,9 +105,9 @@ public:
 
 	/**
 	 * Get the first element inserted at t <= time and erase it from the
-     * queue.
-     *
-     * Ignores dead elements.
+	 * queue.
+	 *
+	 * Ignores dead elements.
 	 *
 	 * @param time The time to get the element at.
 	 * @param value Queue element.
@@ -116,34 +116,34 @@ public:
 
 	/**
 	 * Get an iterator to the first element inserted at t >= time.
-     *
-     * Does not ignore dead elements.
+	 *
+	 * Does not ignore dead elements.
 	 *
 	 * @param time The time to get the element at (default: \p time::TIME_MIN ).
-     *
+	 *
 	 * @return Iterator to the first element.
 	 */
 	QueueFilterIterator<T, Queue<T>> begin(const time::time_t &time = time::TIME_MIN) const;
 
 	/**
 	 * Get an iterator to the last element in the queue at the given time.
-     *
-     * Does not ignore dead elements.
+	 *
+	 * Does not ignore dead elements.
 	 *
 	 * @param t The time to get the element at (default: \p time::TIME_MAX ).
-     *
+	 *
 	 * @return Iterator to the last element.
 	 */
 	QueueFilterIterator<T, Queue<T>> end(const time::time_t &time = time::TIME_MAX) const;
 
 	/**
 	 * Get an iterator to elements that are in the queue between two time frames.
-     *
-     * Does not ignore dead elements.
+	 *
+	 * Does not ignore dead elements.
 	 *
 	 * @param begin Start time (default: \p time::TIME_MIN ).
 	 * @param end End time (default: \p time::TIME_MAX ).
-     *
+	 *
 	 * @return Iterator to the first element in the time frame.
 	 */
 	QueueFilterIterator<T, Queue<T>> between(
@@ -152,8 +152,8 @@ public:
 
 	/**
 	 * Erase an element from the queue.
-     *
-     * Does not ignore dead elements.
+	 *
+	 * Does not ignore dead elements.
 	 *
 	 * @param it The iterator to the element to erase.
 	 */
@@ -164,7 +164,7 @@ public:
 	 *
 	 * @param time The time to insert at.
 	 * @param e The element to insert.
-     *
+	 *
 	 * @return Iterator to the inserted element.
 	 */
 	QueueFilterIterator<T, Queue<T>> insert(const time::time_t &time, const T &e);
@@ -210,18 +210,18 @@ private:
 	/**
 	 * Erase an element from the queue at the given time.
 	 *
-     * @param time The time to erase at.
+	 * @param time The time to erase at.
 	 * @param it The iterator to the element to erase.
 	 */
 	void erase(const time::time_t &time, const_iterator &it);
 
 	/**
-     * Get the first alive element inserted at t <= time.
-     *
-     * @param time The time to get the element at.
-     *
-     * @return Iterator to the first alive element or end() if no such element exists.
-     */
+	 * Get the first alive element inserted at t <= time.
+	 *
+	 * @param time The time to get the element at.
+	 *
+	 * @return Iterator to the first alive element or end() if no such element exists.
+	 */
 	const_iterator first_alive(const time::time_t &time) const;
 
 	/**
@@ -240,15 +240,15 @@ private:
 	container_t container;
 
 	/**
-     * Simulation time of the last modifying change to the queue.
-     */
+	 * Simulation time of the last modifying change to the queue.
+	 */
 	time::time_t last_change;
 
 	/**
-     * Caches the search start position for the next front() call.
-     *
-     * All iterators before are guaranteed to be dead at t >= last_change.
-     */
+	 * Caches the search start position for the next front() call.
+	 *
+	 * All iterators before are guaranteed to be dead at t >= last_change.
+	 */
 	mutable typename Queue<T>::const_iterator front_start;
 };
 
