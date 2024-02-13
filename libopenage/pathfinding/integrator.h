@@ -19,26 +19,26 @@ public:
 	~Integrator() = default;
 
 	/**
-     * Set the cost field.
-     *
-     * @param cost_field Cost field.
-     */
+	 * Set the cost field.
+	 *
+	 * @param cost_field Cost field.
+	 */
 	void set_cost_field(const std::shared_ptr<CostField> &cost_field);
 
 	/**
-     * Build the flow field for a target cell.
-     *
-     * @param target_x X coordinate of the target cell.
-     * @param target_y Y coordinate of the target cell.
-     *
-     * @return Flow field.
-     */
+	 * Build the flow field for a target cell.
+	 *
+	 * @param target_x X coordinate of the target cell.
+	 * @param target_y Y coordinate of the target cell.
+	 *
+	 * @return Flow field.
+	 */
 	std::shared_ptr<FlowField> build(size_t target_x, size_t target_y);
 
 private:
 	/**
-     * Cost field.
-     */
+	 * Cost field.
+	 */
 	std::shared_ptr<CostField> cost_field;
 };
 
