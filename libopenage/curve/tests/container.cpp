@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <deque>
@@ -178,17 +178,6 @@ void test_queue() {
 	TESTEQUALS(*q.begin(12), 5);
 	TESTEQUALS(*q.begin(100000), 5);
 
-	TESTEQUALS(q.front(0), 1);
-	TESTEQUALS(q.front(1), 1);
-	TESTEQUALS(q.front(2), 2);
-	TESTEQUALS(q.front(3), 2);
-	TESTEQUALS(q.front(4), 3);
-	TESTEQUALS(q.front(5), 3);
-	TESTEQUALS(q.front(10), 4);
-	TESTEQUALS(q.front(12), 4);
-	TESTEQUALS(q.front(100000), 4);
-	TESTEQUALS(q.front(100001), 6);
-
 	{
 		std::unordered_set<int> reference = {1, 2, 3};
 		for (auto it = q.between(0, 6); it != q.end(); ++it) {
@@ -230,18 +219,27 @@ void test_queue() {
 		TESTEQUALS(reference.empty(), true);
 	}
 
+	TESTEQUALS(q.front(0), 1);
+	TESTEQUALS(q.front(2), 1);
+	TESTEQUALS(q.front(5), 1);
+	TESTEQUALS(q.front(10), 1);
+	TESTEQUALS(q.front(100001), 1);
 
 	TESTEQUALS(q.pop_front(0), 1);
 	TESTEQUALS(q.empty(0), true);
 
-	TESTEQUALS(q.pop_front(12), 4);
+	TESTEQUALS(q.pop_front(12), 2);
 	TESTEQUALS(q.empty(12), false);
 
 	TESTEQUALS(q.pop_front(12), 3);
 	TESTEQUALS(q.empty(12), false);
 
-	TESTEQUALS(q.pop_front(12), 2);
+	TESTEQUALS(q.pop_front(12), 4);
 	TESTEQUALS(q.empty(12), true);
+
+	q.clear(0);
+	TESTEQUALS(q.empty(0), true);
+	TESTEQUALS(q.empty(100001), false);
 }
 
 

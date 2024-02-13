@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -33,7 +33,7 @@ public:
 
 	virtual bool valid() const override {
 		if (this->container->end().get_base() != this->get_base()) {
-			return (this->get_base()->time() >= this->from and this->get_base()->time() < this->to);
+			return (this->get_base()->alive() >= this->from and this->get_base()->alive() < this->to);
 		}
 		return false;
 	}
