@@ -43,10 +43,10 @@ public:
 	               size_t target_y);
 
 	/**
-     * Get the integration field values.
-     *
-     * @return Integration field values.
-     */
+	 * Get the integration field values.
+	 *
+	 * @return Integration field values.
+	 */
 	const std::vector<integrate_t> &get_cells() const;
 
 private:
