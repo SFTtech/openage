@@ -81,11 +81,12 @@ renderer::resources::MeshData get_cost_field_mesh(const std::shared_ptr<CostFiel
 void path_demo_0(const util::Path &path) {
 	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
 
-	renderer::opengl::GlWindow window("openage pathfinding test", 1024, 768, true);
+	renderer::opengl::GlWindow window("openage pathfinding test", 1440, 720, true);
 	auto renderer = window.make_renderer();
 
 	// Camera for correct projection of terrain
 	auto camera = std::make_shared<renderer::camera::Camera>(renderer, window.get_size());
+	camera->look_at_coord({5, 5, 0});
 	window.add_resize_callback([&](size_t w, size_t h, double /*scale*/) {
 		camera->resize(w, h);
 	});
