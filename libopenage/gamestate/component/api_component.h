@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -58,13 +58,13 @@ public:
 
 private:
 	/**
-     * nyan object holding the data for the component.
-     */
+	 * nyan object holding the data for the component.
+	 */
 	nyan::Object ability;
 
 	/**
-     * Determines if the component is available to its game entity.
-     */
+	 * Determines if the component is available to its game entity.
+	 */
 	curve::Discrete<bool> enabled;
 };
 

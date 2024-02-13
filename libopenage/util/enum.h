@@ -1,4 +1,4 @@
-// Copyright 2015-2021 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -43,45 +43,46 @@ namespace util {
  *     const char *name
  *     NumericType numeric
  */
-template<typename DerivedType, typename NumericType=int>
+template <typename DerivedType, typename NumericType = int>
 class OAAPI EnumValue {
 public:
-	constexpr EnumValue(const char *value_name, NumericType numeric_value): name(value_name), numeric(numeric_value) {}
+	constexpr EnumValue(const char *value_name, NumericType numeric_value) :
+		name(value_name), numeric(numeric_value) {}
 
 	// enum values cannot be copied
 	EnumValue(const EnumValue &other) = delete;
-	EnumValue &operator =(const EnumValue &other) = delete;
+	EnumValue &operator=(const EnumValue &other) = delete;
 
 	// an explicit deletion of the implicitly defined copy constructor and assignment operator
 	// will implicitly delete the implicitly defined move constructor and assignment operator.
 	// yay for C++
 
 	// enum values are equal if the pointers are equal.
-	constexpr bool operator ==(const DerivedType &other) const {
+	constexpr bool operator==(const DerivedType &other) const {
 		return (this == &other);
 	}
 
-	constexpr bool operator !=(const DerivedType &other) const {
+	constexpr bool operator!=(const DerivedType &other) const {
 		return !(*this == other);
 	}
 
-	constexpr bool operator <=(const DerivedType &other) const {
+	constexpr bool operator<=(const DerivedType &other) const {
 		return this->numeric <= other.numeric;
 	}
 
-	constexpr bool operator <(const DerivedType &other) const {
+	constexpr bool operator<(const DerivedType &other) const {
 		return this->numeric < other.numeric;
 	}
 
-	constexpr bool operator >=(const DerivedType &other) const {
+	constexpr bool operator>=(const DerivedType &other) const {
 		return this->numeric >= other.numeric;
 	}
 
-	constexpr bool operator >(const DerivedType &other) const {
+	constexpr bool operator>(const DerivedType &other) const {
 		return this->numeric > other.numeric;
 	}
 
-	friend std::ostream &operator <<(std::ostream &os, const DerivedType &arg) {
+	friend std::ostream &operator<<(std::ostream &os, const DerivedType &arg) {
 		os << util::typestring<DerivedType>() << "::" << arg.name;
 		return os;
 	}
@@ -122,49 +123,50 @@ public:
  *     bool operator <=(Enum[DerivedType] other) except +
  *     bool operator >=(Enum[DerivedType] other) except +
  */
-template<typename DerivedType>
+template <typename DerivedType>
 class OAAPI Enum {
 	using this_type = Enum<DerivedType>;
 
 public:
 	// disallow the empty constructor to ensure that value is always a valid pointer.
 	constexpr Enum() = delete;
-	constexpr Enum(const DerivedType &value) : value{&value} {}
+	constexpr Enum(const DerivedType &value) :
+		value{&value} {}
 
 	constexpr explicit operator const DerivedType &() const {
 		return *this->value;
 	}
 
-	constexpr Enum &operator =(const DerivedType &value) {
+	constexpr Enum &operator=(const DerivedType &value) {
 		this->value = &value;
 		return *this;
 	}
 
-	constexpr const DerivedType *operator ->() const {
+	constexpr const DerivedType *operator->() const {
 		return this->value;
 	}
 
-	constexpr bool operator ==(const this_type &other) const {
+	constexpr bool operator==(const this_type &other) const {
 		return *this->value == *other.value;
 	}
 
-	constexpr bool operator !=(const this_type &other) const {
+	constexpr bool operator!=(const this_type &other) const {
 		return *this->value != *other.value;
 	}
 
-	constexpr bool operator <=(const this_type &other) const {
+	constexpr bool operator<=(const this_type &other) const {
 		return *this->value <= *other.value;
 	}
 
-	constexpr bool operator <(const this_type &other) const {
+	constexpr bool operator<(const this_type &other) const {
 		return *this->value < *other.value;
 	}
 
-	constexpr bool operator >=(const this_type &other) const {
+	constexpr bool operator>=(const this_type &other) const {
 		return *this->value >= *other.value;
 	}
 
-	constexpr bool operator >(const this_type &other) const {
+	constexpr bool operator>(const this_type &other) const {
 		return *this->value > *other.value;
 	}
 
@@ -172,7 +174,7 @@ public:
 		return *this->value;
 	}
 
-	friend std::ostream &operator <<(std::ostream &os, const this_type &arg) {
+	friend std::ostream &operator<<(std::ostream &os, const this_type &arg) {
 		os << *arg.value;
 		return os;
 	}
@@ -181,4 +183,5 @@ protected:
 	const DerivedType *value;
 };
 
-}} // openage::util
+} // namespace util
+} // namespace openage

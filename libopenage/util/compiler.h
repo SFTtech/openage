@@ -1,4 +1,4 @@
-// Copyright 2014-2023 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -18,6 +18,8 @@
 /**
  * DLL entry-point decorations.
  */
+// clang-format off
+// otherwise clang-format removes indentation
 #if defined(_WIN32)
 	#if defined(libopenage_EXPORTS)
 		#define OAAPI __declspec(dllexport)
@@ -40,18 +42,21 @@
 		#define HAVE_SSIZE_T 1
 	#endif // HAVE_SSIZE_T
 #endif // _MSC_VER
+// clang-format on
 
 
 /**
  * Software breakpoint if you're too lazy
  * to add it in gdb but instead wanna add it into the code directly.
  */
+// clang-format off
 #ifdef _WIN32
 	#define BREAKPOINT __debugbreak()
 #else
 	#include <signal.h>
 	#define BREAKPOINT raise(SIGTRAP)
 #endif
+// clang-format on
 
 
 /**
@@ -89,7 +94,7 @@ std::string demangle(const char *symbol);
  *
  * pxd: string symbol_name(const void *addr) except +
  */
-OAAPI std::string symbol_name(const void *addr, bool require_exact_addr=true, bool no_pure_addrs=false);
+OAAPI std::string symbol_name(const void *addr, bool require_exact_addr = true, bool no_pure_addrs = false);
 
 
 /**
@@ -129,4 +134,5 @@ std::string typestring(const T &ref) {
 }
 
 
-}} // openage::util
+} // namespace util
+} // namespace openage

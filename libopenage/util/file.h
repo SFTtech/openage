@@ -1,4 +1,4 @@
-// Copyright 2013-2019 the openage authors. See copying.md for legal info.
+// Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -56,7 +56,7 @@ public:
 	/**
 	 * Open a filesystem path.
 	 */
-	File(const std::string &path, mode_t mode=mode_t::R);
+	File(const std::string &path, mode_t mode = mode_t::R);
 
 	/**
 	 * Create a file from an already created filelike.
@@ -77,7 +77,7 @@ public:
 	 * Read data from the file and return a string.
 	 * If max is negative, return the full remaining file.
 	 */
-	std::string read(ssize_t max=-1);
+	std::string read(ssize_t max = -1);
 
 	/**
 	 * Read data from the file into a buffer,
@@ -87,11 +87,11 @@ public:
 	 *
 	 * Returns the number of bytes that were read.
 	 */
-	size_t read_to(void *buf, ssize_t max=-1);
+	size_t read_to(void *buf, ssize_t max = -1);
 	bool readable();
 	void write(const std::string &data);
 	bool writable();
-	void seek(ssize_t offset, seek_t how=seek_t::SET);
+	void seek(ssize_t offset, seek_t how = seek_t::SET);
 	bool seekable();
 	size_t tell();
 	void close();
@@ -104,7 +104,8 @@ public:
 protected:
 	std::shared_ptr<filelike::FileLike> filelike;
 
-	friend std::ostream &operator <<(std::ostream &stream, const File &file);
+	friend std::ostream &operator<<(std::ostream &stream, const File &file);
 };
 
-}} // openage::util
+} // namespace util
+} // namespace openage

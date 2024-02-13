@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -41,11 +41,11 @@ public:
 class SpawnEntityHandler : public openage::event::OnceEventHandler {
 public:
 	/**
-     * Creates a new SpawnEntityHandler.
-     *
-     * @param loop: Event loop that the components register on.
-     * @param factory: Factory that is used to create the entity.
-     */
+	 * Creates a new SpawnEntityHandler.
+	 *
+	 * @param loop: Event loop that the components register on.
+	 * @param factory: Factory that is used to create the entity.
+	 */
 	SpawnEntityHandler(const std::shared_ptr<openage::event::EventLoop> &loop,
 	                   const std::shared_ptr<gamestate::EntityFactory> &factory);
 	~SpawnEntityHandler() = default;
@@ -92,13 +92,13 @@ public:
 
 private:
 	/**
-     * Event loop that the entity components are registered on.
-     */
+	 * Event loop that the entity components are registered on.
+	 */
 	std::shared_ptr<openage::event::EventLoop> loop;
 
 	/**
-     * The factory that is used to create the entity.
-     */
+	 * The factory that is used to create the entity.
+	 */
 	std::shared_ptr<gamestate::EntityFactory> factory;
 };
 

@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -26,7 +26,7 @@ public:
 	/**
 	 * Create a new universe.
 	 *
-     * @param state State of the game.
+	 * @param state State of the game.
 	 */
 	Universe(const std::shared_ptr<GameState> &state);
 	~Universe() = default;

@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,7 +15,7 @@ namespace openage::util::constexpr_ {
  * Returns true IFF the string literals have equal content.
  */
 constexpr bool streq(const char *a, const char *b) {
-	for (;*a == *b; ++a, ++b) {
+	for (; *a == *b; ++a, ++b) {
 		if (*a == '\0') {
 			return true;
 		}
@@ -60,10 +60,12 @@ constexpr truncated_string_literal get_prefix(const char *str, const char *suffi
 	if (strlen(str) < strlen(suffix)) {
 		// suffix is longer than str
 		throw false;
-	} else if (streq(str + (strlen(str) - strlen(suffix)), suffix)) {
+	}
+	else if (streq(str + (strlen(str) - strlen(suffix)), suffix)) {
 		// str ends with suffix
 		return truncated_string_literal{str, strlen(str) - strlen(suffix)};
-	} else {
+	}
+	else {
 		throw false;
 	}
 }
@@ -97,7 +99,8 @@ constexpr bool has_prefix(const char *str, const truncated_string_literal prefix
 constexpr const char *strip_prefix(const char *str, const truncated_string_literal prefix) {
 	if (has_prefix(str, prefix)) {
 		return str + prefix.length;
-	} else {
+	}
+	else {
 		return str;
 	}
 }

@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -107,4 +107,5 @@ size_t utf8_last_char_size(char *str);
  */
 void utf8_pop_back(std::string &str);
 
-}} // openage::util
+} // namespace util
+} // namespace openage

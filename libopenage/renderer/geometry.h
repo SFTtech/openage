@@ -1,10 +1,10 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <vector>
-#include <cstdint>
 #include <cstddef>
+#include <cstdint>
+#include <vector>
 
 
 namespace openage {
@@ -30,13 +30,13 @@ public:
 	/// In a meshed geometry, updates the vertex data. The size and type of the vertex data has to be the same as before.
 	/// If the mesh is indexed, indices will stay the same.
 	/// @throws if there is a size mismatch between the new and old vertex data
-	void update_verts(std::vector<uint8_t> const& verts);
+	void update_verts(std::vector<uint8_t> const &verts);
 
 	/// In a meshed geometry, updates the vertex data starting from the offset-th vertex. The type of the vertex
 	/// data has to be the same as it was on initializing the geometry. The size plus the offset cannot exceed the
 	/// previous size of the vertex data. If the mesh is indexed, indices will stay the same.
 	/// @throws if there is a size mismatch between the new and old vertex data
-	virtual void update_verts_offset(std::vector<uint8_t> const& verts, size_t offset) = 0;
+	virtual void update_verts_offset(std::vector<uint8_t> const &verts, size_t offset) = 0;
 
 protected:
 	/// Initialize the geometry to a given type.
@@ -46,4 +46,5 @@ private:
 	geometry_t type;
 };
 
-}} // openage::renderer
+} // namespace renderer
+} // namespace openage

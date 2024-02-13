@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -21,4 +21,5 @@ namespace testing {
 OAAPI void run_method(const std::string &name);
 
 
-}} // openage::testing
+} // namespace testing
+} // namespace openage

@@ -1,4 +1,4 @@
-// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+// Copyright 2016-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -21,4 +21,5 @@ namespace error {
 OAAPI void set_exit_ok(bool value);
 
 
-}} // openage::error
+} // namespace error
+} // namespace openage

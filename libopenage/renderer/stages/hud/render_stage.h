@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -42,15 +42,15 @@ class HudDragRenderEntity;
 class HudRenderStage {
 public:
 	/**
-     * Create a new render stage for the HUD.
-     *
-     * @param window openage window targeted for rendering.
-     * @param renderer openage low-level renderer.
-     * @param camera Camera used for the rendered scene.
-     * @param shaderdir Directory containing the shader source files.
-     * @param asset_manager Asset manager for loading resources.
-     * @param clock Simulation clock for timing animations.
-     */
+	 * Create a new render stage for the HUD.
+	 *
+	 * @param window openage window targeted for rendering.
+	 * @param renderer openage low-level renderer.
+	 * @param camera Camera used for the rendered scene.
+	 * @param shaderdir Directory containing the shader source files.
+	 * @param asset_manager Asset manager for loading resources.
+	 * @param clock Simulation clock for timing animations.
+	 */
 	HudRenderStage(const std::shared_ptr<Window> &window,
 	               const std::shared_ptr<renderer::Renderer> &renderer,
 	               const std::shared_ptr<renderer::camera::Camera> &camera,
@@ -74,10 +74,10 @@ public:
 	void add_drag_entity(const std::shared_ptr<HudDragRenderEntity> entity);
 
 	/**
-     * Remove the render object for drag selection.
-     *
-     * @param render_entity Render entity to remove.
-     */
+	 * Remove the render object for drag selection.
+	 *
+	 * @param render_entity Render entity to remove.
+	 */
 	void remove_drag_entity();
 
 	/**
@@ -87,7 +87,7 @@ public:
 
 	/**
 	 * Resize the FBO for the HUD rendering. This basically updates the output
-     * texture size.
+	 * texture size.
 	 *
 	 * @param width New width of the FBO.
 	 * @param height New height of the FBO.

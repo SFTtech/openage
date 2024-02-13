@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -21,23 +21,23 @@ public:
 	component_t get_type() const override;
 
 	/**
-     * Add a new attribute to the component attributes.
-     *
-     * @param time The time at which the attribute is added.
-     * @param attribute Attribute identifier (fqon of the nyan object).
-     * @param starting_values Attribute values at the time of addition.
-     */
+	 * Add a new attribute to the component attributes.
+	 *
+	 * @param time The time at which the attribute is added.
+	 * @param attribute Attribute identifier (fqon of the nyan object).
+	 * @param starting_values Attribute values at the time of addition.
+	 */
 	void add_attribute(const time::time_t &time,
 	                   const nyan::fqon_t &attribute,
 	                   std::shared_ptr<curve::Discrete<int64_t>> starting_values);
 
 	/**
-     * Set the value of an attribute at a given time.
-     *
-     * @param time The time at which the attribute is set.
-     * @param attribute Attribute identifier (fqon of the nyan object).
-     * @param value New attribute value.
-     */
+	 * Set the value of an attribute at a given time.
+	 *
+	 * @param time The time at which the attribute is set.
+	 * @param attribute Attribute identifier (fqon of the nyan object).
+	 * @param value New attribute value.
+	 */
 	void set_attribute(const time::time_t &time,
 	                   const nyan::fqon_t &attribute,
 	                   int64_t value);

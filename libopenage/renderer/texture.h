@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,7 +15,7 @@ public:
 	virtual ~Texture2d();
 
 	/// Returns the texture information.
-	const resources::Texture2dInfo& get_info() const;
+	const resources::Texture2dInfo &get_info() const;
 
 	/// Copies this texture's data from graphics hardware into a CPU-accessible
 	/// Texture2dData buffer.
@@ -23,14 +23,15 @@ public:
 
 	/// Uploads the provided data into the GPU texture storage. The format has
 	/// to match the format this Texture was originally created with.
-	virtual void upload(resources::Texture2dData const&) = 0;
+	virtual void upload(resources::Texture2dData const &) = 0;
 
 protected:
 	/// Constructs the base with the given information.
-	Texture2d(const resources::Texture2dInfo&);
+	Texture2d(const resources::Texture2dInfo &);
 
 	/// Information about the size, format, etc. of this texture.
 	resources::Texture2dInfo info;
 };
 
-}}
+} // namespace renderer
+} // namespace openage

@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -17,7 +17,7 @@ namespace job {
  * providing two function objects to the job's function. One is used to check
  * whether the job should be aborted, while the other one aborts the job.
  */
-template<class T>
+template <class T>
 class AbortableJobState : public TypedJobStateBase<T> {
 public:
 	/** The job's function. */
@@ -25,8 +25,7 @@ public:
 
 	/** Creates a new abortable job with the given function and callback. */
 	AbortableJobState(abortable_function_t<T> function,
-                      callback_function_t<T> callback)
-		:
+	                  callback_function_t<T> callback) :
 		TypedJobStateBase<T>{callback},
 		function{function} {
 	}
@@ -48,4 +47,5 @@ protected:
 };
 
 
-}} // namespace openage::job
+} // namespace job
+} // namespace openage

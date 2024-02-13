@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,8 +6,8 @@
 #include <exception>
 #include <functional>
 
-#include "../util/thread_id.h"
 #include "../error/error.h"
+#include "../util/thread_id.h"
 #include "job_aborted_exception.h"
 #include "job_state_base.h"
 #include "types.h"
@@ -22,7 +22,7 @@ namespace job {
  * @param T the result type of this job state. This type must have a default
  *          constructor and support move semantics.
  */
-template<class T>
+template <class T>
 class TypedJobStateBase : public JobStateBase {
 public:
 	/** Id of the thread, that created this job state. */
@@ -48,8 +48,7 @@ public:
 	std::exception_ptr exception;
 
 	/** Creates a new typed job with the given callback. */
-	TypedJobStateBase(callback_function_t<T> callback)
-		:
+	TypedJobStateBase(callback_function_t<T> callback) :
 		thread_id{openage::util::get_current_thread_id()},
 		callback{callback},
 		finished{false} {
@@ -66,9 +65,11 @@ public:
 	bool execute(should_abort_t should_abort) override {
 		try {
 			this->result = this->execute_and_get(should_abort);
-		} catch (JobAbortedException &e) {
+		}
+		catch (JobAbortedException &e) {
 			return true;
-		} catch (...) {
+		}
+		catch (...) {
 			this->exception = std::current_exception();
 		}
 		this->finished.store(true);
@@ -85,7 +86,8 @@ public:
 			auto get_result = [this]() {
 				if (this->exception != nullptr) {
 					std::rethrow_exception(this->exception);
-				} else {
+				}
+				else {
 					return std::move(this->result);
 				}
 			};
@@ -105,4 +107,5 @@ protected:
 	virtual T execute_and_get(should_abort_t should_abort) = 0;
 };
 
-}} // openage::job
+} // namespace job
+} // namespace openage

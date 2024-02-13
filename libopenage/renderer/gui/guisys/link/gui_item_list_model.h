@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -20,10 +20,7 @@ template <typename T>
 class GuiItemListModel : public GuiItem<T> {
 public:
 	explicit GuiItemListModel(GuiItemBase *item_base) :
-		GuiItem<T> {
-		item_base
-	}
-	{
+		GuiItem<T>{item_base} {
 		item_base->on_core_adopted_func = std::bind(&GuiItemListModel::on_core_adopted, this);
 	}
 

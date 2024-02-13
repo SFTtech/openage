@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,4 +15,5 @@ namespace util {
  */
 size_t get_current_thread_id();
 
-}} // namespace openage::util
+} // namespace util
+} // namespace openage

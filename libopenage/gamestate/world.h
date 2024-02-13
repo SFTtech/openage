@@ -1,4 +1,4 @@
-// Copyright 2018-2023 the openage authors. See copying.md for legal info.
+// Copyright 2018-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -23,7 +23,7 @@ public:
 	/**
 	 * Create a new world.
 	 *
-     * @param state State of the game.
+	 * @param state State of the game.
 	 */
 	World(const std::shared_ptr<GameState> &state);
 	~World() = default;
@@ -38,8 +38,8 @@ public:
 
 private:
 	/**
-     * State of the current game.
-     */
+	 * State of the current game.
+	 */
 	std::shared_ptr<GameState> state;
 
 	/**

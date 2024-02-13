@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,9 +16,9 @@ public:
 	 * Create a 2D Frame Info.
 	 *
 	 * @param texture_idx Index of the texture containing the frame in the
-     *                    Animation2dInfo object.
+	 *                    Animation2dInfo object.
 	 * @param subtexture_idx Index of the subtexture containing the frame
-     *                    in the Texture2dInfo object.
+	 *                    in the Texture2dInfo object.
 	 */
 	FrameInfo(const size_t texture_idx,
 	          const size_t subtexture_idx);
@@ -42,13 +42,13 @@ public:
 
 private:
 	/**
-     * Index of the texture containing the frame in the Animation2dInfo object.
-     */
+	 * Index of the texture containing the frame in the Animation2dInfo object.
+	 */
 	size_t texture_idx;
 
 	/**
-     * Index of the subtexture containing the frame in the Texture2dInfo object.
-     */
+	 * Index of the subtexture containing the frame in the Texture2dInfo object.
+	 */
 	size_t subtexture_idx;
 };
 

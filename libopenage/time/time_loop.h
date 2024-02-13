@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,20 +15,20 @@ class Clock;
 class TimeLoop {
 public:
 	/**
-     * Create a new time loop with default values.
-     */
+	 * Create a new time loop with default values.
+	 */
 	TimeLoop();
 
 	/**
-     * Create a new time loop from an existing and clock.
-     */
+	 * Create a new time loop from an existing and clock.
+	 */
 	TimeLoop(const std::shared_ptr<Clock> clock);
 	~TimeLoop() = default;
 
 	/**
 	 * Run the time loop.
-     *
-     * Updates the clock and dispatches events that happened.
+	 *
+	 * Updates the clock and dispatches events that happened.
 	 */
 	void run();
 
@@ -43,10 +43,10 @@ public:
 	void stop();
 
 	/**
-     * Get the clock used by this time loop.
-     *
-     * @return Simulation clock.
-     */
+	 * Get the clock used by this time loop.
+	 *
+	 * @return Simulation clock.
+	 */
 	const std::shared_ptr<Clock> get_clock();
 
 private:
@@ -56,8 +56,8 @@ private:
 	bool running;
 
 	/**
-     * Manage time and speed inside the simulation.
-     */
+	 * Manage time and speed inside the simulation.
+	 */
 	std::shared_ptr<Clock> clock;
 
 	/**

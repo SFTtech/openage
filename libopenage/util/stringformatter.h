@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -88,15 +88,14 @@ private:
  * As an optimization, instead of creating a new ExternalOStringStream object,
  * CachableOSStream.acquire() is used internally.
  */
-template<typename ChildType>
+template <typename ChildType>
 class StringFormatter {
 public:
 	/**
 	 * @param buffer
 	 *     All input data is appended to this object.
 	 */
-	StringFormatter(std::string &output)
-		:
+	StringFormatter(std::string &output) :
 		output{&output},
 		stream_ptr{nullptr} {}
 
@@ -115,11 +114,10 @@ public:
 		:
 		output{other.output},
 		stream_ptr{other.stream_ptr} {
-
 		other.stream_ptr = nullptr;
 	}
 
-	StringFormatter<ChildType> &operator =(StringFormatter<ChildType> &&other) noexcept {
+	StringFormatter<ChildType> &operator=(StringFormatter<ChildType> &&other) noexcept {
 		this->output = other.output;
 
 		this->stream_ptr = other.stream_ptr;
@@ -129,11 +127,11 @@ public:
 
 	// no copy construction!
 	StringFormatter(const StringFormatter &) = delete;
-	StringFormatter &operator =(const StringFormatter &) = delete;
+	StringFormatter &operator=(const StringFormatter &) = delete;
 
 	// These methods allow usage like an ostream object.
-	template<typename T>
-	ChildType &operator <<(const T &t) {
+	template <typename T>
+	ChildType &operator<<(const T &t) {
 		if (this->should_format()) {
 			this->ensure_stream_obj();
 			this->stream_ptr->stream << t;
@@ -142,7 +140,7 @@ public:
 	}
 
 
-	ChildType &operator <<(std::ios &(*x)(std::ios &)) {
+	ChildType &operator<<(std::ios &(*x)(std::ios &)) {
 		if (this->should_format()) {
 			this->ensure_stream_obj();
 			this->stream_ptr->stream << x;
@@ -151,7 +149,7 @@ public:
 	}
 
 
-	ChildType &operator <<(std::ostream &(*x)(std::ostream &)) {
+	ChildType &operator<<(std::ostream &(*x)(std::ostream &)) {
 		if (this->should_format()) {
 			this->ensure_stream_obj();
 			this->stream_ptr->stream << x;
@@ -162,7 +160,7 @@ public:
 
 	// Optimizations to prevent needless stream-acquiring if just a simple
 	// string is printed.
-	ChildType &operator <<(const char *s) {
+	ChildType &operator<<(const char *s) {
 		if (this->should_format()) {
 			this->output->append(s);
 		}
@@ -170,7 +168,7 @@ public:
 	}
 
 
-	ChildType &operator <<(const std::string &s) {
+	ChildType &operator<<(const std::string &s) {
 		if (this->should_format()) {
 			this->output->append(s);
 		}
@@ -192,8 +190,8 @@ public:
 
 
 	// Allow direct inputting of stuff that's wrapped in the C++11 pointer types.
-	template<typename T>
-	ChildType &operator <<(const std::unique_ptr<T> &ptr) {
+	template <typename T>
+	ChildType &operator<<(const std::unique_ptr<T> &ptr) {
 		if (this->should_format()) {
 			*this << ptr.get();
 		}
@@ -201,8 +199,8 @@ public:
 	}
 
 
-	template<typename T>
-	ChildType &operator <<(const std::shared_ptr<T> &ptr) {
+	template <typename T>
+	ChildType &operator<<(const std::shared_ptr<T> &ptr) {
 		if (this->should_format()) {
 			*this << ptr.get();
 		}
@@ -221,8 +219,8 @@ public:
 	}
 
 	/**
-	* Returns if formatting should actually occur.
-	*/
+	 * Returns if formatting should actually occur.
+	 */
 	virtual bool should_format() const {
 		return true;
 	}
@@ -269,14 +267,12 @@ class Formatter : public StringFormatter<Formatter> {};
  */
 class FString : public StringFormatter<FString> {
 public:
-	FString()
-		:
+	FString() :
 		StringFormatter<FString>{this->buffer} {}
 
 	// allow assignment and construction from std::string.
 
-	FString(const std::string &other)
-		:
+	FString(const std::string &other) :
 		StringFormatter<FString>{this->buffer},
 		buffer{other} {}
 
@@ -285,12 +281,12 @@ public:
 		StringFormatter<FString>{this->buffer},
 		buffer{std::move(other)} {}
 
-	FString &operator =(const std::string &other) {
+	FString &operator=(const std::string &other) {
 		this->buffer = other;
 		return *this;
 	}
 
-	FString &operator =(std::string &&other) noexcept {
+	FString &operator=(std::string &&other) noexcept {
 		this->buffer = std::move(other);
 		return *this;
 	}
@@ -305,7 +301,7 @@ public:
 		return this->buffer;
 	}
 
-	operator std::string () && {
+	operator std::string() && {
 		return std::move(this->buffer);
 	}
 
@@ -319,4 +315,5 @@ public:
 };
 
 
-}} // namespace openage::util
+} // namespace util
+} // namespace openage

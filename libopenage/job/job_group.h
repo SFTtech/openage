@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -42,9 +42,9 @@ public:
 	 * @param callback the callback function that is executed, when the background
 	 *        job has finished
 	 */
-	template<class T>
+	template <class T>
 	Job<T> enqueue(job_function_t<T> function,
-	               callback_function_t<T> callback={}) {
+	               callback_function_t<T> callback = {}) {
 		ENSURE(this->parent_worker, "job group has no worker thread associated");
 		auto state = std::make_shared<JobState<T>>(function, callback);
 		this->parent_worker->enqueue(state);
@@ -63,9 +63,9 @@ public:
 	 * @param callback the callback function that is executed, when the background
 	 *        job has finished
 	 */
-	template<class T>
+	template <class T>
 	Job<T> enqueue(abortable_function_t<T> function,
-	               callback_function_t<T> callback={}) {
+	               callback_function_t<T> callback = {}) {
 		ENSURE(this->parent_worker, "job group has no worker thread associated");
 		auto state = std::make_shared<AbortableJobState<T>>(function, callback);
 		this->parent_worker->enqueue(state);
@@ -83,5 +83,5 @@ private:
 	friend class JobManager;
 };
 
-}
-}
+} // namespace job
+} // namespace openage

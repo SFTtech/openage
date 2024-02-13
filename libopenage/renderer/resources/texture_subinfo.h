@@ -1,4 +1,4 @@
-// Copyright 2013-2023 the openage authors. See copying.md for legal info.
+// Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -24,8 +24,8 @@ public:
 	 * @param h Height of subtexture.
 	 * @param cx Vertical anchor of subtexture.
 	 * @param cy Horizontal anchor of subtexture.
-     * @param atlas_width Width of the texture atlas containing the subtexture.
-     * @param atlas_height Height of the texture atlas containing the subtexture.
+	 * @param atlas_width Width of the texture atlas containing the subtexture.
+	 * @param atlas_height Height of the texture atlas containing the subtexture.
 	 */
 	Texture2dSubInfo(int32_t x,
 	                 int32_t y,
@@ -39,52 +39,52 @@ public:
 	Texture2dSubInfo() = default;
 
 	/**
-     * Get the position of the subtexture within the atlas.
-     *
-     * @return Pixel coordinates as 2-dimensional Eigen vector: (x, y)
-     */
+	 * Get the position of the subtexture within the atlas.
+	 *
+	 * @return Pixel coordinates as 2-dimensional Eigen vector: (x, y)
+	 */
 	const Eigen::Vector2i &get_pos() const;
 
 	/**
-     * Get the size of the subtexture.
-     *
-     * @return Pixel coordinates as 2-dimensional Eigen vector: (width, height)
-     */
+	 * Get the size of the subtexture.
+	 *
+	 * @return Pixel coordinates as 2-dimensional Eigen vector: (width, height)
+	 */
 	const Eigen::Vector2<uint32_t> &get_size() const;
 
 	/**
-     * Get the position of the subtexture anchor.
-     *
-     * @return Anchor coordinates as 2-dimensional Eigen vector: (x, y)
-     */
+	 * Get the position of the subtexture anchor.
+	 *
+	 * @return Anchor coordinates as 2-dimensional Eigen vector: (x, y)
+	 */
 	const Eigen::Vector2i &get_anchor_pos() const;
 
 	/**
-     * Get the normalized shader parameters of the subtexture. Use in the shader
-     * to sample the subtexture from the atlas.
-     *
-     * Values are in range (0.0, 1.0) and can be passed directly to a shader uniform.
-     * These parameters pre-computed and should be used whenever possible.
-     *
-     * @return Tile parameters as 4-dimensional Eigen vector: (x, y, width, height)
-     */
+	 * Get the normalized shader parameters of the subtexture. Use in the shader
+	 * to sample the subtexture from the atlas.
+	 *
+	 * Values are in range (0.0, 1.0) and can be passed directly to a shader uniform.
+	 * These parameters pre-computed and should be used whenever possible.
+	 *
+	 * @return Tile parameters as 4-dimensional Eigen vector: (x, y, width, height)
+	 */
 	const Eigen::Vector4f &get_tile_params() const;
 
 	/**
-     * Get the anchor parameters of the subtexture center. Used in the model matrix
-     * to calculate the offset position for displaying the subtexture inside
-     * the OpenGL viewport.
-     *
-     * The parameters represent the pixel distance of the anchor point to the subtexture
-     * center, multiplied by 2 to account for the normalized viewport size (which is 2.0
-     * because it spans from -1.0 to 1.0).
-     *
-     * To get the normalized offset distance, the parameters have to be divided by the
-     * viewport size and then multiplied by additional scaling factors (e.g. from the
-     * animation).
-     *
-     * @return Parameters as 2-dimensional Eigen vector: (x, y)
-     */
+	 * Get the anchor parameters of the subtexture center. Used in the model matrix
+	 * to calculate the offset position for displaying the subtexture inside
+	 * the OpenGL viewport.
+	 *
+	 * The parameters represent the pixel distance of the anchor point to the subtexture
+	 * center, multiplied by 2 to account for the normalized viewport size (which is 2.0
+	 * because it spans from -1.0 to 1.0).
+	 *
+	 * To get the normalized offset distance, the parameters have to be divided by the
+	 * viewport size and then multiplied by additional scaling factors (e.g. from the
+	 * animation).
+	 *
+	 * @return Parameters as 2-dimensional Eigen vector: (x, y)
+	 */
 	const Eigen::Vector2i &get_anchor_params() const;
 
 private:
@@ -104,13 +104,13 @@ private:
 	Eigen::Vector2i anchor_pos;
 
 	/**
-     * Pre-computed normalized coordinates of the subtexture.
-     */
+	 * Pre-computed normalized coordinates of the subtexture.
+	 */
 	Eigen::Vector4f tile_params;
 
 	/**
-     * Pre-computed normalized coordinates of the subtexture anchor.
-     */
+	 * Pre-computed normalized coordinates of the subtexture anchor.
+	 */
 	Eigen::Vector2i anchor_params;
 };
 

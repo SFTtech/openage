@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -25,9 +25,9 @@ public:
 	 * Bind a specific key combination to a binding.
 	 *
 	 * This is the first matching priority.
-     *
-     * @param ev Input event triggering the action.
-     * @param bind Binding for the event.
+	 *
+	 * @param ev Input event triggering the action.
+	 * @param bind Binding for the event.
 	 */
 	void bind(const Event &ev, const binding_action bind);
 
@@ -35,26 +35,26 @@ public:
 	 * Bind an event class to an action.
 	 *
 	 * This is the second matching priority.
-     *
-     * @param ev Input event triggering the action.
-     * @param bind Binding for the event.
+	 *
+	 * @param ev Input event triggering the action.
+	 * @param bind Binding for the event.
 	 */
 	void bind(const event_class &cl, const binding_action bind);
 
 	/**
-     * Check whether a specific key event is bound in this context.
-     *
-     * @param ev Input event.
-     *
-     * @return true if event is bound, else false.
-     */
+	 * Check whether a specific key event is bound in this context.
+	 *
+	 * @param ev Input event.
+	 *
+	 * @return true if event is bound, else false.
+	 */
 	bool is_bound(const Event &ev) const;
 
 	/**
-     * Get the bindings for a specific event.
-     *
-     * @param ev Input event mapped to the binding.
-     */
+	 * Get the bindings for a specific event.
+	 *
+	 * @param ev Input event mapped to the binding.
+	 */
 	const binding_action &lookup(const Event &ev) const;
 
 private:

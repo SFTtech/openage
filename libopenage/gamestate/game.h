@@ -1,4 +1,4 @@
-// Copyright 2018-2023 the openage authors. See copying.md for legal info.
+// Copyright 2018-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -48,8 +48,8 @@ public:
 	/**
 	 * Create a new game.
 	 *
-     * @param event_loop Event simulation loop for the gamestate.
-     * @param mod_manager Mod manager.
+	 * @param event_loop Event simulation loop for the gamestate.
+	 * @param mod_manager Mod manager.
 	 * @param entity_factory Factory for creating entities. Used for creating the players.
 	 */
 	Game(const std::shared_ptr<openage::event::EventLoop> &event_loop,
@@ -59,8 +59,8 @@ public:
 	~Game() = default;
 
 	/**
-     * Get the current game state.
-     */
+	 * Get the current game state.
+	 */
 	const std::shared_ptr<GameState> &get_state() const;
 
 	/**
@@ -74,44 +74,44 @@ public:
 
 private:
 	/**
-     * Load game data from the filesystem.
-     *
-     * @param mod_manager Mod manager.
-     */
+	 * Load game data from the filesystem.
+	 *
+	 * @param mod_manager Mod manager.
+	 */
 	void load_data(const std::shared_ptr<assets::ModManager> &mod_manager);
 
 	/**
-     * Load game data from the filesystem recursively.
-     *
-     * TODO: Move this into nyan.
-     *
-     * @param base_dir Base directory where mods are stored.
-     * @param mod_dir Name of the mod directory.
-     * @param search Search path relative to the mod directory.
-     * @param recursive if true, recursively search subfolders if the the search path is a directory.
-     */
+	 * Load game data from the filesystem recursively.
+	 *
+	 * TODO: Move this into nyan.
+	 *
+	 * @param base_dir Base directory where mods are stored.
+	 * @param mod_dir Name of the mod directory.
+	 * @param search Search path relative to the mod directory.
+	 * @param recursive if true, recursively search subfolders if the the search path is a directory.
+	 */
 	void load_path(const util::Path &base_dir,
 	               const std::string &mod_dir,
 	               const std::string &search,
 	               bool recursive = false);
 
 	/**
-     * Generate the terrain for the current game.
-     *
-     * TODO: Use a real map generator.
-     *
-     * @param terrain_factory Factory for creating terrain objects.
-     */
+	 * Generate the terrain for the current game.
+	 *
+	 * TODO: Use a real map generator.
+	 *
+	 * @param terrain_factory Factory for creating terrain objects.
+	 */
 	void generate_terrain(const std::shared_ptr<TerrainFactory> &terrain_factory);
 
 	/**
-     * Nyan game data database.
-     */
+	 * Nyan game data database.
+	 */
 	std::shared_ptr<nyan::Database> db;
 
 	/**
-     * State of the current game.
-     */
+	 * State of the current game.
+	 */
 	std::shared_ptr<GameState> state;
 
 	/**

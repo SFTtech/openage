@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -12,7 +12,7 @@ namespace job {
  *
  * @param T the job's result type
  */
-template<typename T>
+template <typename T>
 using job_function_t = std::function<T()>;
 
 /**
@@ -21,8 +21,8 @@ using job_function_t = std::function<T()>;
  *
  * @param T the job's result type
  */
-template<typename T>
-using abortable_function_t = std::function<T(std::function<bool()>,std::function<void()>)>;
+template <typename T>
+using abortable_function_t = std::function<T(std::function<bool()>, std::function<void()>)>;
 
 /**
  * Type of a function to retrieve the result of a job. If the job threw an
@@ -30,7 +30,7 @@ using abortable_function_t = std::function<T(std::function<bool()>,std::function
  *
  * @param T the job's result type
  */
-template<typename T>
+template <typename T>
 using result_function_t = std::function<T()>;
 
 /**
@@ -39,7 +39,7 @@ using result_function_t = std::function<T()>;
  *
  * @param T the job's result type
  */
-template<typename T>
+template <typename T>
 using callback_function_t = std::function<void(result_function_t<T>)>;
 
 /** Type of a function that returns whether a job should be aborted. */
@@ -48,5 +48,5 @@ using should_abort_t = std::function<bool()>;
 /** Type of a function that aborts a job. */
 using abort_t = std::function<void()>;
 
-}
-}
+} // namespace job
+} // namespace openage

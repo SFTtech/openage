@@ -1,10 +1,10 @@
-// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+// Copyright 2016-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "declarations.h"
 #include "coord_nese.gen.h"
 #include "coord_neseup.gen.h"
+#include "declarations.h"
 
 namespace openage {
 namespace coord {

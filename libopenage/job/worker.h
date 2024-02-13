@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -79,5 +79,5 @@ private:
 	void process();
 };
 
-}
-}
+} // namespace job
+} // namespace openage

@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -25,12 +25,12 @@ namespace screen {
 class ScreenRenderStage {
 public:
 	/**
-     * Create a new render stage for drawing to the screen.
-     *
-     * @param window openage window targeted for rendering.
-     * @param renderer openage low-level renderer.
-     * @param shaderdir Directory containing the shader source files.
-     */
+	 * Create a new render stage for drawing to the screen.
+	 *
+	 * @param window openage window targeted for rendering.
+	 * @param renderer openage low-level renderer.
+	 * @param shaderdir Directory containing the shader source files.
+	 */
 	ScreenRenderStage(const std::shared_ptr<Window> &window,
 	                  const std::shared_ptr<renderer::Renderer> &renderer,
 	                  const util::Path &shaderdir);

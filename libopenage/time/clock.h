@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -38,20 +38,20 @@ public:
 	~Clock() = default;
 
 	/**
-     * Get the current state of the clock.
-     */
+	 * Get the current state of the clock.
+	 */
 	ClockState get_state();
 
 	/**
-     * Update the simulation time.
-     */
+	 * Update the simulation time.
+	 */
 	void update_time();
 
 	/**
 	 * Get the current simulation time (in seconds).
-     *
-     * The returned value has a precision of milliseconds, so it is
-     * accurate to three decimal places.
+	 *
+	 * The returned value has a precision of milliseconds, so it is
+	 * accurate to three decimal places.
 	 *
 	 * @return Time passed (in seconds).
 	 */
@@ -59,28 +59,28 @@ public:
 
 	/**
 	 * Get the current simulation time without speed adjustments.
-     *
-     * The returned value has a precision of milliseconds, so it is
-     * accurate to three decimal places.
+	 *
+	 * The returned value has a precision of milliseconds, so it is
+	 * accurate to three decimal places.
 	 *
 	 * @return Time passed (in seconds).
 	 */
 	time::time_t get_real_time();
 
 	/**
-     * Get the current speed of the clock.
+	 * Get the current speed of the clock.
 	 *
 	 * @return Speed of the clock.
-     */
+	 */
 	speed_t get_speed();
 
 	/**
-     * Set the speed of the clock.
+	 * Set the speed of the clock.
 	 *
 	 * Simulation time is updated before changing speed.
-     *
-     * @param speed New speed of the clock.
-     */
+	 *
+	 * @param speed New speed of the clock.
+	 */
 	void set_speed(speed_t speed);
 
 	/**
@@ -109,8 +109,8 @@ public:
 
 private:
 	/**
-     * Status of the clock (init, running, stopped, ...).
-     */
+	 * Status of the clock (init, running, stopped, ...).
+	 */
 	ClockState state;
 
 	/**
@@ -119,29 +119,29 @@ private:
 	uint16_t max_tick_time;
 
 	/**
-     * How fast time passes relative to real time.
-     */
+	 * How fast time passes relative to real time.
+	 */
 	speed_t speed;
 
 	/**
-     * Last point in time where the clock was updated.
-     */
+	 * Last point in time where the clock was updated.
+	 */
 	timepoint_t last_check;
 
 	/**
-     * Start of the simulation in real time.
-     */
+	 * Start of the simulation in real time.
+	 */
 	timepoint_t start_time;
 
 	/**
-     * Stores how much time has passed inside the simulation (in milliseconds).
-     */
+	 * Stores how much time has passed inside the simulation (in milliseconds).
+	 */
 	time::time_t sim_time;
 
 	/**
-     * Stores how much time has passed inside the simulation (in milliseconds)
+	 * Stores how much time has passed inside the simulation (in milliseconds)
 	 * _without_ speed adjustments (i.e. it acts as if speed = 1.0).
-     */
+	 */
 	time::time_t sim_real_time;
 
 	/**

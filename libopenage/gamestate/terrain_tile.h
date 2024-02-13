@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -19,22 +19,22 @@ using terrain_elevation_t = util::FixedPoint<uint64_t, 16>;
  */
 struct TerrainTile {
 	/**
-     * Terrain definition used by this tile.
-     *
-     * TODO: Make this non-optional once all modpacks support terrain graphics.
-     */
+	 * Terrain definition used by this tile.
+	 *
+	 * TODO: Make this non-optional once all modpacks support terrain graphics.
+	 */
 	std::optional<nyan::Object> terrain;
 
 	/**
-     * Path to the terrain asset used by this tile.
-     *
-     * TODO: Remove this and fetch the asset path from the terrain definition.
-     */
+	 * Path to the terrain asset used by this tile.
+	 *
+	 * TODO: Remove this and fetch the asset path from the terrain definition.
+	 */
 	std::string terrain_asset_path;
 
 	/**
-     * Height of this tile on the terrain.
-     */
+	 * Height of this tile on the terrain.
+	 */
 	terrain_elevation_t elevation;
 };
 

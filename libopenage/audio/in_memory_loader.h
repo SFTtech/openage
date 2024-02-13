@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,9 +6,9 @@
 #include <string>
 #include <tuple>
 
+#include "../util/path.h"
 #include "format.h"
 #include "types.h"
-#include "../util/path.h"
 
 
 namespace openage {
@@ -47,4 +47,5 @@ public:
 	                                              format_t format);
 };
 
-}} // openage::audio
+} // namespace audio
+} // namespace openage

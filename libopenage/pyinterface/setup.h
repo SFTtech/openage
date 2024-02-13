@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include <functional>
 
@@ -30,7 +30,7 @@ namespace pyinterface {
  * It shall return true if the object has been properly initialized,
  * and shall not throw any exceptions.
  */
-void add_py_if_component(void *thisptr, std::function<bool ()> checker);
+void add_py_if_component(void *thisptr, std::function<bool()> checker);
 
 
 /**
@@ -56,4 +56,5 @@ void destroy_py_if_component(void *thisptr);
 OAAPI void check();
 
 
-}} // openage::pyinterface
+} // namespace pyinterface
+} // namespace openage

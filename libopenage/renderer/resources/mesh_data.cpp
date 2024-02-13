@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #include "mesh_data.h"
 
@@ -35,11 +35,18 @@ size_t vertex_input_count(vertex_input_t in) {
 	return vin_count.get(in);
 }
 
-VertexInputInfo::VertexInputInfo(std::vector<vertex_input_t> inputs, vertex_layout_t layout, vertex_primitive_t primitive) :
-	inputs(std::move(inputs)), layout(layout), primitive(primitive) {}
+VertexInputInfo::VertexInputInfo(std::vector<vertex_input_t> inputs,
+                                 vertex_layout_t layout,
+                                 vertex_primitive_t primitive) :
+	inputs(std::move(inputs)),
+	layout(layout), primitive(primitive) {}
 
-VertexInputInfo::VertexInputInfo(std::vector<vertex_input_t> inputs, vertex_layout_t layout, vertex_primitive_t primitive, index_t index_type) :
-	inputs(std::move(inputs)), layout(layout), primitive(primitive), index_type(index_type) {}
+VertexInputInfo::VertexInputInfo(std::vector<vertex_input_t> inputs,
+                                 vertex_layout_t layout,
+                                 vertex_primitive_t primitive,
+                                 index_t index_type) :
+	inputs(std::move(inputs)),
+	layout(layout), primitive(primitive), index_type(index_type) {}
 
 void VertexInputInfo::add_shader_input_map(std::unordered_map<size_t, size_t> &&in_map) {
 	for (auto mapping : in_map) {
@@ -105,12 +112,30 @@ VertexInputInfo MeshData::get_info() const {
 /// Vertices of a quadrilateral filling the whole screen.
 /// Format: (pos, tex_coords) = (x, y, u, v)
 static constexpr const std::array<float, 16> QUAD_DATA_CENTERED = {
-	{-1.0f, 1.0f, 0.0f, 1.0f, -1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 0.0f}};
+	// clang-format off
+	// prevent clang-format from putting this matrix on single line
+	{
+		-1.0f,  1.0f, 0.0f, 1.0f,
+		-1.0f, -1.0f, 0.0f, 0.0f,
+		 1.0f,  1.0f, 1.0f, 1.0f,
+		 1.0f, -1.0f, 1.0f, 0.0f
+	}
+	// clang-format on
+};
 
 /// Vertices of a quad from (0, 0) to (1, 1)
 /// Format: (pos, tex_coords) = (x, y, u, v)
 static constexpr const std::array<float, 16> QUAD_DATA_UNIT = {
-	{0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f}};
+	// clang-format off
+	// prevent clang-format from putting this matrix on single line
+	{
+		0.0f, 1.0f, 0.0f, 1.0f,
+		0.0f, 0.0f, 0.0f, 0.0f,
+		1.0f, 1.0f, 1.0f, 1.0f,
+		1.0f, 0.0f, 1.0f, 0.0f
+	}
+	// clang-format on
+};
 
 
 namespace {
@@ -154,11 +179,29 @@ MeshData MeshData::make_quad(float sidelength, bool centered) {
 	if (centered) {
 		float halfsidelength = sidelength / 2;
 		positions = {
-			{-halfsidelength, halfsidelength, 0.0f, 1.0f, -halfsidelength, -halfsidelength, 0.0f, 0.0f, halfsidelength, halfsidelength, 1.0f, 1.0f, halfsidelength, -halfsidelength, 1.0f, 0.0f}};
+			// clang-format off
+			// prevent clang-format from putting this matrix on single line
+			{
+				-halfsidelength,  halfsidelength, 0.0f, 1.0f,
+				-halfsidelength, -halfsidelength, 0.0f, 0.0f,
+				 halfsidelength,  halfsidelength, 1.0f, 1.0f,
+				 halfsidelength, -halfsidelength, 1.0f, 0.0f
+			}
+			// clang-format on
+		};
 	}
 	else {
 		positions = {
-			{0.0f, sidelength, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, sidelength, sidelength, 1.0f, 1.0f, sidelength, 0.0f, 1.0f, 0.0f}};
+			// clang-format off
+			// prevent clang-format from putting this matrix on single line
+			{
+				0.0f,       sidelength, 0.0f, 1.0f,
+				0.0f,       0.0f,       0.0f, 0.0f,
+				sidelength, sidelength, 1.0f, 1.0f,
+				sidelength, 0.0f,       1.0f, 0.0f
+			}
+			// clang-format on
+		};
 	}
 
 	return create_float_mesh(positions);
@@ -174,11 +217,28 @@ MeshData MeshData::make_quad(float width, float height, bool centered) {
 		float halfwidth = width / 2;
 		float halfheight = height / 2;
 		positions = {
-			{-halfwidth, halfheight, 0.0f, 1.0f, -halfwidth, -halfheight, 0.0f, 0.0f, halfwidth, halfheight, 1.0f, 1.0f, halfwidth, -halfheight, 1.0f, 0.0f}};
+			{
+				// clang-format off
+				// prevent clang-format from putting this matrix on single line
+				-halfwidth,  halfheight, 0.0f, 1.0f,
+				-halfwidth, -halfheight, 0.0f, 0.0f,
+				 halfwidth,  halfheight, 1.0f, 1.0f,
+				 halfwidth, -halfheight, 1.0f, 0.0f
+				// clang-format on
+			}};
 	}
 	else {
 		positions = {
-			{0.0f, height, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, width, height, 1.0f, 1.0f, width, 0.0f, 1.0f, 0.0f}};
+			// clang-format off
+			// prevent clang-format from putting this matrix on single line
+			{
+				0.0f,  height, 0.0f, 1.0f,
+				0.0f,  0.0f,   0.0f, 0.0f,
+				width, height, 1.0f, 1.0f,
+				width, 0.0f,   1.0f, 0.0f
+			}
+			// clang-format on
+		};
 	}
 
 	return create_float_mesh(positions);

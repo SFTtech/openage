@@ -1,14 +1,14 @@
-// Copyright 2013-2023 the openage authors. See copying.md for legal info.
+// Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <algorithm>
-#include <limits.h>
 #include <cmath>
 #include <cstring>
+#include <limits.h>
+#include <memory>
 #include <string>
 #include <vector>
-#include <memory>
 
 #include "../error/error.h"
 #include "compiler.h"
@@ -28,13 +28,13 @@ extern std::string empty_string;
  * modulo operation that guarantees to return positive values.
  */
 template <typename T>
-constexpr
-T mod(T x, T m) {
+constexpr T mod(T x, T m) {
 	T r = x % m;
 
 	if (r < 0) {
 		return r + m;
-	} else {
+	}
+	else {
 		return r;
 	}
 }
@@ -43,13 +43,13 @@ T mod(T x, T m) {
  * compiletime defined modulo function.
  */
 template <typename T, unsigned int modulo>
-constexpr
-T mod(T x) {
+constexpr T mod(T x) {
 	T r = x % modulo;
 
 	if (r < 0) {
 		return r + modulo;
-	} else {
+	}
+	else {
 		return r;
 	}
 }
@@ -59,10 +59,9 @@ T mod(T x) {
  * compiletime defined rotate left function
  */
 template <typename T, int amount>
-constexpr
-T rol(T x) {
-	static_assert(sizeof(T)*CHAR_BIT > amount && amount > 0, "invalid rotation amount");
-	return (x << amount) | (x >> (sizeof(T)*CHAR_BIT - amount));
+constexpr T rol(T x) {
+	static_assert(sizeof(T) * CHAR_BIT > amount && amount > 0, "invalid rotation amount");
+	return (x << amount) | (x >> (sizeof(T) * CHAR_BIT - amount));
 }
 
 
@@ -71,8 +70,7 @@ T rol(T x) {
  * which always rounds to -inf
  */
 template <typename T>
-constexpr
-inline T div(T x, T m) {
+constexpr inline T div(T x, T m) {
 	return (x - mod<T>(x, m)) / m;
 }
 
@@ -84,7 +82,7 @@ inline T div(T x, T m) {
  */
 template <typename T>
 struct less {
-	bool operator ()(const T x, const T y) const {
+	bool operator()(const T x, const T y) const {
 		return *x < *y;
 	}
 };
@@ -108,7 +106,7 @@ static constexpr size_t uint64_s = 8;
  * @return Input data as a 64 bit number.
  */
 inline uint64_t
-array8_to_uint64(const uint8_t *start, size_t count, bool big_endian=false) {
+array8_to_uint64(const uint8_t *start, size_t count, bool big_endian = false) {
 	if (count > uint64_s) {
 		throw Error(MSG(err) << "Tried to copy more than " << uint64_s << " bytes");
 	}
@@ -142,7 +140,7 @@ array8_to_uint64(const uint8_t *start, size_t count, bool big_endian=false) {
  * @return Input data as a 8 bit number array.
  */
 inline std::vector<uint8_t>
-uint64_to_array8(const uint64_t value, bool big_endian=false) {
+uint64_to_array8(const uint64_t value, bool big_endian = false) {
 	std::vector<uint8_t> result(uint64_s, 0);
 
 	if (big_endian) {
@@ -187,7 +185,7 @@ inline constexpr size_t array64_size(size_t count) {
  * @return Input data as a 64 bit number vector.
  */
 inline std::vector<uint64_t>
-array8_to_array64(const uint8_t *start, size_t count, bool big_endian=false) {
+array8_to_array64(const uint8_t *start, size_t count, bool big_endian = false) {
 	size_t size{array64_size(count)};
 	std::vector<uint64_t> result(size, 0);
 
@@ -197,8 +195,7 @@ array8_to_array64(const uint8_t *start, size_t count, bool big_endian=false) {
 		result[i] = array8_to_uint64(
 			start + (i * uint64_s),
 			std::min(rem_bytes, uint64_s),
-			big_endian
-		);
+			big_endian);
 	}
 	return result;
 }
@@ -219,7 +216,7 @@ array8_to_array64(const uint8_t *start, size_t count, bool big_endian=false) {
  * @return Input data as a 8 bit number vector.
  */
 inline std::vector<uint8_t>
-array64_to_array8(const uint64_t *start, size_t count, bool big_endian=false) {
+array64_to_array8(const uint64_t *start, size_t count, bool big_endian = false) {
 	std::vector<uint8_t> result;
 	result.reserve(count * uint64_s);
 
@@ -274,7 +271,8 @@ void vector_remove_swap_end(std::vector<T> &vec, size_t idx) {
 	else if (idx < vec.size()) {
 		std::swap(vec[idx], vec.back());
 		vec.pop_back();
-	} else {
+	}
+	else {
 		return;
 	}
 }
@@ -287,9 +285,8 @@ void vector_remove_swap_end(std::vector<T> &vec, size_t idx) {
  */
 template <typename T>
 struct SharedPtrLess {
-	bool operator ()(const std::shared_ptr<T> &left,
-	                 const std::shared_ptr<T> &right) {
-
+	bool operator()(const std::shared_ptr<T> &left,
+	                const std::shared_ptr<T> &right) {
 		if (not left or not right) [[unlikely]] {
 			return false;
 		}

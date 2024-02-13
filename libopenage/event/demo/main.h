@@ -1,4 +1,4 @@
-// Copyright 2018-2019 the openage authors. See copying.md for legal info.
+// Copyright 2018-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -12,4 +12,4 @@ namespace openage::event::demo {
 OAAPI void curvepong(bool disable_gui, bool no_human);
 
 
-} // openage::event::demo
+} // namespace openage::event::demo

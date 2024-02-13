@@ -1,4 +1,4 @@
-// Copyright 2014-2018 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -51,12 +51,11 @@ struct buf_char {
 	/**
 	 * Default copy constructor
 	 */
-	buf_char(int cp, chrcol_t fgcol, chrcol_t bgcol, chrflags_t flags)
-	:
-	cp{cp},
-	fgcol{fgcol},
-	bgcol{bgcol},
-	flags{flags} {
+	buf_char(int cp, chrcol_t fgcol, chrcol_t bgcol, chrflags_t flags) :
+		cp{cp},
+		fgcol{fgcol},
+		bgcol{bgcol},
+		flags{flags} {
 	}
 
 	buf_char() = default;
@@ -78,16 +77,12 @@ struct buf_char {
 	 */
 	chrflags_t flags;
 
-	bool operator ==(const buf_char &other) const {
-		return
-		 (this->cp == other.cp) &&
-		 (this->fgcol == other.fgcol) &&
-		 (this->bgcol == other.bgcol) &&
-		 (this->flags == other.flags);
+	bool operator==(const buf_char &other) const {
+		return (this->cp == other.cp) && (this->fgcol == other.fgcol) && (this->bgcol == other.bgcol) && (this->flags == other.flags);
 	}
 
-	bool operator !=(const buf_char &other) const {
-		return not (*this == other);
+	bool operator!=(const buf_char &other) const {
+		return not(*this == other);
 	}
 };
 
@@ -116,20 +111,19 @@ struct buf_line {
 	linetype_t type;
 };
 
-constexpr buf_line BUF_LINE_DEFAULT {LINE_EMPTY};
+constexpr buf_line BUF_LINE_DEFAULT{LINE_EMPTY};
 
 class Buf {
 	friend class NewBuf;
 
 public:
-	Buf(coord::term dims, coord::term_t scrollback_lines, coord::term_t min_width,
-	    buf_char default_char_fmt = {0x20, 254, 0, 0});
+	Buf(coord::term dims, coord::term_t scrollback_lines, coord::term_t min_width, buf_char default_char_fmt = {0x20, 254, 0, 0});
 	~Buf();
 
 	/*
 	 * we don't want this object to be copyable
 	 */
-	Buf& operator=(const Buf &) = delete;
+	Buf &operator=(const Buf &) = delete;
 	Buf(const Buf &) = delete;
 
 
@@ -407,7 +401,7 @@ public:
 	 */
 	buf_line *screen_linedata;
 
-	//following this line are all terminal size related variables
+	// following this line are all terminal size related variables
 
 	/**
 	 * minimum screen buffer width
@@ -425,7 +419,7 @@ public:
 	 */
 	coord::term_t scrollback_lines;
 
-	//following this line are all cursor state related variables
+	// following this line are all cursor state related variables
 
 	/**
 	 * cursor position
@@ -450,7 +444,7 @@ public:
 	 */
 	bool cursor_special_lastcol;
 
-	//following this line are misc variables
+	// following this line are misc variables
 
 	/**
 	 * true if we are currently reading an escape sequence
@@ -518,4 +512,5 @@ public:
 	coord::term_t scrollback_pos;
 };
 
-}} // openage::console
+} // namespace console
+} // namespace openage

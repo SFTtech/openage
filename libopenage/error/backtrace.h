@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,8 +6,8 @@
 
 #include <vector>
 // pxd: from libcpp.string cimport string
-#include <string>
 #include <iostream>
+#include <string>
 // pxd: from libopenage.pyinterface.functional cimport Func1
 #include <functional>
 
@@ -32,14 +32,14 @@ namespace error {
  * ctypedef const backtrace_symbol *backtrace_symbol_constptr
  */
 struct backtrace_symbol {
-	std::string filename;      // empty if unknown
-	unsigned int lineno;       // 0 if unknown
-	std::string functionname;  // empty if unknown
-	void *pc;                  // nullptr if unknown
+	std::string filename;     // empty if unknown
+	unsigned int lineno;      // 0 if unknown
+	std::string functionname; // empty if unknown
+	void *pc;                 // nullptr if unknown
 };
 
 
-std::ostream &operator <<(std::ostream &os, const backtrace_symbol &bt_sym);
+std::ostream &operator<<(std::ostream &os, const backtrace_symbol &bt_sym);
 
 
 /**
@@ -66,8 +66,8 @@ public:
 	 * @param reversed
 	 *    if true, the most recent call is given last.
 	 */
-	virtual void get_symbols(std::function<void (const backtrace_symbol *)> cb,
-	                         bool reversed=true) const = 0;
+	virtual void get_symbols(std::function<void(const backtrace_symbol *)> cb,
+	                         bool reversed = true) const = 0;
 
 	/**
 	 * Removes all the lower frames that are also present in the current stack.
@@ -77,13 +77,16 @@ public:
 	 *
 	 * Defaults to no-op.
 	 */
-	virtual void trim_to_current_stack_frame() {};
+	virtual void trim_to_current_stack_frame() {
+		return;
+	};
 
 	virtual ~Backtrace() = default;
 };
 
 
-std::ostream &operator <<(std::ostream &os, const Backtrace &bt);
+std::ostream &operator<<(std::ostream &os, const Backtrace &bt);
 
 
-}} // openage::error
+} // namespace error
+} // namespace openage

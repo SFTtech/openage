@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -47,10 +47,10 @@ public:
 	virtual ~GUI() = default;
 
 	/**
-     * Get the input handler of the GUI.
-     *
-     * @return Input handler of the GUI.
-     */
+	 * Get the input handler of the GUI.
+	 *
+	 * @return Input handler of the GUI.
+	 */
 	std::shared_ptr<qtgui::GuiInput> get_input_handler() const;
 
 	/**

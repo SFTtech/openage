@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -42,15 +42,15 @@ class TerrainRenderModel;
 class TerrainRenderStage {
 public:
 	/**
-     * Create a new render stage for the terrain.
-     *
-     * @param window openage window targeted for rendering.
-     * @param renderer openage low-level renderer.
-     * @param camera Camera used for the rendered scene.
-     * @param shaderdir Directory containing the shader source files.
-     * @param asset_manager Asset manager for loading resources.
-     * @param clock Simulation clock for timing animations.
-     */
+	 * Create a new render stage for the terrain.
+	 *
+	 * @param window openage window targeted for rendering.
+	 * @param renderer openage low-level renderer.
+	 * @param camera Camera used for the rendered scene.
+	 * @param shaderdir Directory containing the shader source files.
+	 * @param asset_manager Asset manager for loading resources.
+	 * @param clock Simulation clock for timing animations.
+	 */
 	TerrainRenderStage(const std::shared_ptr<Window> &window,
 	                   const std::shared_ptr<renderer::Renderer> &renderer,
 	                   const std::shared_ptr<renderer::camera::Camera> &camera,
@@ -68,8 +68,8 @@ public:
 
 	/**
 	 * Add a new render entity to the terrain renderer.
-     *
-     * This creates a new terrain chunk and add it to the model.
+	 *
+	 * This creates a new terrain chunk and add it to the model.
 	 *
 	 * @param render_entity New render entity.
 	 */
@@ -84,7 +84,7 @@ public:
 
 	/**
 	 * Resize the FBO for the terrain rendering. This basically updates the output
-     * texture size.
+	 * texture size.
 	 *
 	 * @param width New width of the FBO.
 	 * @param height New height of the FBO.

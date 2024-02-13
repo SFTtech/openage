@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -53,12 +53,15 @@ bool fail(const log::message &msg);
 			if (test_result_left != (right)) { \
 				TESTFAILMSG("unexpected value: " << (test_result_left)); \
 			} \
-		} catch (::openage::testing::TestError &e) { \
+		} \
+		catch (::openage::testing::TestError & e) { \
 			throw; \
-		} catch (::openage::error::Error &e) { \
+		} \
+		catch (::openage::error::Error & e) { \
 			TESTFAILMSG("unexpected exception: " << e); \
 		} \
-	} while (0)
+	} \
+	while (0)
 
 
 /**
@@ -69,16 +72,18 @@ bool fail(const log::message &msg);
 	do { \
 		try { \
 			auto &&test_result_left = (left); \
-			if ((test_result_left < (right - epsilon)) or \
-			    (test_result_left > (right + epsilon))) { \
+			if ((test_result_left < (right - epsilon)) or (test_result_left > (right + epsilon))) { \
 				TESTFAILMSG("unexpected value: " << (test_result_left)); \
 			} \
-		} catch (::openage::testing::TestError &e) { \
+		} \
+		catch (::openage::testing::TestError & e) { \
 			throw; \
-		} catch (::openage::error::Error &e) { \
+		} \
+		catch (::openage::error::Error & e) { \
 			TESTFAILMSG("unexpected exception: " << e); \
 		} \
-	} while (0)
+	} \
+	while (0)
 
 
 /**
@@ -89,13 +94,15 @@ bool fail(const log::message &msg);
 		bool expr_has_thrown = false; \
 		try { \
 			expression; \
-		} catch (::openage::error::Error &e) { \
+		} \
+		catch (::openage::error::Error & e) { \
 			expr_has_thrown = true; \
 		} \
 		if (not expr_has_thrown) { \
 			TESTFAILMSG("no exception"); \
 		} \
-	} while (0)
+	} \
+	while (0)
 
 
 /**
@@ -105,10 +112,13 @@ bool fail(const log::message &msg);
 	do { \
 		try { \
 			expression; \
-		} catch (::openage::error::Error &e) { \
+		} \
+		catch (::openage::error::Error & e) { \
 			TESTFAILMSG("unexpected exception"); \
 		} \
-	} while (0)
+	} \
+	while (0)
 
 
-}} // openage::testing
+} // namespace testing
+} // namespace openage

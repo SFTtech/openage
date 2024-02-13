@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -24,7 +24,6 @@ namespace renderer {
  * glyph atlas can be easily modified.
  */
 class GlyphAtlas {
-
 public:
 	/**
 	 * Datastructure for a single atlas entry
@@ -129,7 +128,7 @@ private:
 
 	// List of shelves currently used in the atlas
 	std::vector<GlyphAtlas::Shelf> shelves;
-
 };
 
-}} // openage::renderer
+} // namespace renderer
+} // namespace openage

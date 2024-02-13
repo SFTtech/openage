@@ -1,4 +1,4 @@
-// Copyright 2013-2019 the openage authors. See copying.md for legal info.
+// Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -34,4 +34,5 @@ private:
 	Timer frame_timer;
 };
 
-}} // openage::util
+} // namespace util
+} // namespace openage

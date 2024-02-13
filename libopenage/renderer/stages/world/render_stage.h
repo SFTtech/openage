@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -40,15 +40,15 @@ class WorldObject;
 class WorldRenderStage {
 public:
 	/**
-     * Create a new render stage for the game world.
-     *
-     * @param window openage window targeted for rendering.
-     * @param renderer openage low-level renderer.
-     * @param camera Camera used for the rendered scene.
-     * @param shaderdir Directory containing the shader source files.
-     * @param asset_manager Asset manager for loading resources.
-     * @param clock Simulation clock for timing animations.
-     */
+	 * Create a new render stage for the game world.
+	 *
+	 * @param window openage window targeted for rendering.
+	 * @param renderer openage low-level renderer.
+	 * @param camera Camera used for the rendered scene.
+	 * @param shaderdir Directory containing the shader source files.
+	 * @param asset_manager Asset manager for loading resources.
+	 * @param clock Simulation clock for timing animations.
+	 */
 	WorldRenderStage(const std::shared_ptr<Window> &window,
 	                 const std::shared_ptr<renderer::Renderer> &renderer,
 	                 const std::shared_ptr<renderer::camera::Camera> &camera,
@@ -78,7 +78,7 @@ public:
 
 	/**
 	 * Resize the FBO for the world rendering. This basically updates the output
-     * texture size.
+	 * texture size.
 	 *
 	 * @param width New width of the FBO.
 	 * @param height New height of the FBO.
@@ -144,12 +144,12 @@ private:
 	std::shared_ptr<time::Clock> clock;
 
 	/**
-     * Default geometry for every world object.
-     *
-     * Since all world objects are sprites, their mesh is always quad
-     * with the same vertex info. Reusing the geometry allows us to
-     * use the same vetrex buffer for every object.
-     */
+	 * Default geometry for every world object.
+	 *
+	 * Since all world objects are sprites, their mesh is always quad
+	 * with the same vertex info. Reusing the geometry allows us to
+	 * use the same vetrex buffer for every object.
+	 */
 	const std::shared_ptr<renderer::Geometry> default_geometry;
 
 	/**

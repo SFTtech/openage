@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -36,17 +36,17 @@ class Player;
 class EntityFactory {
 public:
 	/**
-     * Create a new entity factory for game entities.
-     */
+	 * Create a new entity factory for game entities.
+	 */
 	EntityFactory();
 	~EntityFactory() = default;
 
 	/**
-     * Create a new game entity.
+	 * Create a new game entity.
 	 *
 	 * This just creates the entity. The caller is responsible for initializing
 	 * its components and placing it into the game.
-     *
+	 *
 	 * @param loop Event loop for the gamestate.
 	 * @param state State of the game.
 	 * @param owner_id ID of the player owning the entity.
@@ -103,10 +103,10 @@ private:
 	                   const nyan::Object &ability);
 
 	/**
-     * Get a unique ID for creating a game entity.
-     *
-     * @return Unique ID for a game entity.
-     */
+	 * Get a unique ID for creating a game entity.
+	 *
+	 * @return Unique ID for a game entity.
+	 */
 	entity_id_t get_next_entity_id();
 
 	/**
@@ -117,8 +117,8 @@ private:
 	player_id_t get_next_player_id();
 
 	/**
-     * ID of the next game entity to be created.
-     */
+	 * ID of the next game entity to be created.
+	 */
 	entity_id_t next_entity_id;
 
 	/**
@@ -134,13 +134,13 @@ private:
 	// TODO: Cache created game entities.
 
 	/**
-     * Cache for activities.
-     */
+	 * Cache for activities.
+	 */
 	std::unordered_map<nyan::fqon_t, std::shared_ptr<activity::Activity>> activity_cache;
 
 	/**
-     * Mutex for thread safety.
-     */
+	 * Mutex for thread safety.
+	 */
 	std::shared_mutex mutex;
 };
 } // namespace gamestate

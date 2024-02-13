@@ -1,13 +1,13 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <memory>
 #include <string>
 
+#include "../util/path.h"
 #include "format.h"
 #include "types.h"
-#include "../util/path.h"
 
 
 namespace openage {
@@ -43,7 +43,8 @@ public:
 	 * @param offset the offset from the resource's beginning
 	 * @param chunk_size the number of int16_t values that fit in one chunk
 	 */
-	virtual size_t load_chunk(int16_t *chunk_buffer, size_t offset,
+	virtual size_t load_chunk(int16_t *chunk_buffer,
+	                          size_t offset,
 	                          size_t chunk_size) = 0;
 
 	/**
@@ -55,4 +56,5 @@ public:
 	                                             format_t format);
 };
 
-}} // openage::audio
+} // namespace audio
+} // namespace openage

@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -27,17 +27,17 @@ public:
 	                GLenum usage = GL_DYNAMIC_DRAW);
 
 	/**
-     * Get the binding point of the buffer.
-     *
-     * @return Binding point ID.
-     */
+	 * Get the binding point of the buffer.
+	 *
+	 * @return Binding point ID.
+	 */
 	GLuint get_binding_point() const;
 
 	/**
-     * Set the binding point of the buffer.
-     *
-     * @param binding_point Binding point ID.
-     */
+	 * Set the binding point of the buffer.
+	 *
+	 * @param binding_point Binding point ID.
+	 */
 	void set_binding_point(GLuint binding_point);
 
 	void update_uniforms(std::shared_ptr<UniformBufferInput> const &unif_in) override;
@@ -45,8 +45,8 @@ public:
 	bool has_uniform(const char *) override;
 
 	/**
-     * Bind the buffer.
-     */
+	 * Bind the buffer.
+	 */
 	void bind() const;
 
 protected:
@@ -70,34 +70,34 @@ protected:
 
 private:
 	/**
-     * Update a uniform value in a uniform buffer input object.
-     *
-     * Note that the uniform buffer itself is not updated by this. Data is only uploaded
-     * to the buffer when \p update_uniforms is eventually called.
-     *
-     * @param in Uniform buffer input object.
-     * @param name Name of the uniform.
-     * @param val Pointer to the value to update the uniform with.
-     * @param type Type of the uniform.
-     */
+	 * Update a uniform value in a uniform buffer input object.
+	 *
+	 * Note that the uniform buffer itself is not updated by this. Data is only uploaded
+	 * to the buffer when \p update_uniforms is eventually called.
+	 *
+	 * @param in Uniform buffer input object.
+	 * @param name Name of the uniform.
+	 * @param val Pointer to the value to update the uniform with.
+	 * @param type Type of the uniform.
+	 */
 	void set_unif(std::shared_ptr<UniformBufferInput> const &in,
 	              const char *name,
 	              void const *val,
 	              GLenum type);
 
 	/**
-     * Uniform definitions inside the buffer.
-     */
+	 * Uniform definitions inside the buffer.
+	 */
 	std::unordered_map<std::string, GlInBlockUniform> uniforms;
 
 	/**
-     * Size of the buffer (in bytes).
-     */
+	 * Size of the buffer (in bytes).
+	 */
 	size_t data_size;
 
 	/**
-     * Binding point of the buffer.
-     */
+	 * Binding point of the buffer.
+	 */
 	GLuint binding_point;
 };
 

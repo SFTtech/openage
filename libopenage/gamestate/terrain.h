@@ -1,4 +1,4 @@
-// Copyright 2018-2023 the openage authors. See copying.md for legal info.
+// Copyright 2018-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -22,23 +22,23 @@ class TerrainChunk;
 class Terrain {
 public:
 	/**
-     * Create a new terrain.
-     */
+	 * Create a new terrain.
+	 */
 	Terrain();
 	~Terrain() = default;
 
 	/**
-     * Add a chunk to the terrain.
-     *
-     * @param chunk New chunk.
-     */
+	 * Add a chunk to the terrain.
+	 *
+	 * @param chunk New chunk.
+	 */
 	void add_chunk(const std::shared_ptr<TerrainChunk> &chunk);
 
 	/**
-     * Get the chunks of the terrain.
-     *
-     * @return Terrain chunks.
-     */
+	 * Get the chunks of the terrain.
+	 *
+	 * @return Terrain chunks.
+	 */
 	const std::vector<std::shared_ptr<TerrainChunk>> &get_chunks() const;
 
 	/**
@@ -56,15 +56,15 @@ public:
 
 private:
 	/**
-     * Total size of the map
+	 * Total size of the map
 	 * origin is the left corner
 	 * x = top left edge; y = top right edge
-     */
+	 */
 	util::Vector2s size;
 
 	/**
-     * Subdivision of the main terrain entity.
-     */
+	 * Subdivision of the main terrain entity.
+	 */
 	std::vector<std::shared_ptr<TerrainChunk>> chunks;
 };
 

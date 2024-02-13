@@ -1,12 +1,12 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <string>
 
+#include "../util/path.h"
 #include "in_memory_loader.h"
 #include "types.h"
-#include "../util/path.h"
 
 
 namespace openage {
@@ -28,4 +28,5 @@ public:
 	pcm_data_t get_resource() override;
 };
 
-}} // openage::audio
+} // namespace audio
+} // namespace openage

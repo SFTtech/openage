@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -13,7 +13,7 @@ namespace util {
 /**
  * std::for_each except just on containers.
  */
-template<class Container, class Function>
+template <class Container, class Function>
 inline Function for_each(Container &&container, Function &&func) {
 	// why cpp why...
 	return std::for_each(std::begin(std::forward<Container>(container)),
@@ -24,7 +24,7 @@ inline Function for_each(Container &&container, Function &&func) {
 /**
  * Filters items from a container which satisfy a certain predicate.
  */
-template<class Container, class Function>
+template <class Container, class Function>
 inline void remove_from(Container &container, Function &&func) {
 	container.erase(std::remove_if(std::begin(container),
 	                               std::end(container),

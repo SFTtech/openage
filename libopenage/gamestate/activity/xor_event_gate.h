@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -55,22 +55,22 @@ using event_primer_t = std::function<std::shared_ptr<openage::event::Event>(cons
 class XorEventGate : public Node {
 public:
 	/**
-      * Create a new exclusive event gateway.
-      *
-      * @param id Unique identifier for this node.
-      * @param label Human-readable label (optional).
-      */
+	 * Create a new exclusive event gateway.
+	 *
+	 * @param id Unique identifier for this node.
+	 * @param label Human-readable label (optional).
+	 */
 	XorEventGate(node_id_t id,
 	             node_label_t label = "EventGateWay");
 
 	/**
-     * Create a new exclusive event gateway.
-     *
-     * @param id Unique identifier for this node.
-     * @param label Human-readable label.
-     * @param outputs Output nodes.
-     * @param primers Event primers for each output node.
-     */
+	 * Create a new exclusive event gateway.
+	 *
+	 * @param id Unique identifier for this node.
+	 * @param label Human-readable label.
+	 * @param outputs Output nodes.
+	 * @param primers Event primers for each output node.
+	 */
 	XorEventGate(node_id_t id,
 	             node_label_t label,
 	             const std::vector<std::shared_ptr<Node>> &outputs,
@@ -83,27 +83,27 @@ public:
 	}
 
 	/**
-      * Add an output node.
-      *
-      * @param output Output node.
-      * @param primer Creation function for the event associated with the output node.
-      */
+	 * Add an output node.
+	 *
+	 * @param output Output node.
+	 * @param primer Creation function for the event associated with the output node.
+	 */
 	void add_output(const std::shared_ptr<Node> &output,
 	                const event_primer_t &primer);
 
 	/**
-     * Get the output->event primer mappings.
-     *
-     * @return Event primer functions for each output node.
-     */
+	 * Get the output->event primer mappings.
+	 *
+	 * @return Event primer functions for each output node.
+	 */
 	const std::map<node_id_t, event_primer_t> &get_primers() const;
 
 private:
 	/**
-     * Maps output node IDs to event primer functions.
-     *
-     * Events are created and registered on the event loop when the node is visited.
-     */
+	 * Maps output node IDs to event primer functions.
+	 *
+	 * Events are created and registered on the event loop when the node is visited.
+	 */
 	std::map<node_id_t, event_primer_t> primers;
 };
 

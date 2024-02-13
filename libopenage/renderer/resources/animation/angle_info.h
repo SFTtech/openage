@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -14,9 +14,9 @@ class FrameInfo;
  * Describe whether/how the frame is mirrored
  */
 enum class flip_type {
-	NONE, // do not flip
+	NONE,   // do not flip
 	FLIP_X, // flip across x axis
-	FLIP_Y // flip across y axis
+	FLIP_Y  // flip across y axis
 };
 
 /**
@@ -32,7 +32,7 @@ public:
 	 * @param angle_start Rotation in degress at which the frames are displayed.
 	 * @param frames Frame information.
 	 * @param mirror_from Mirror frames from another angle instead of using uniquely
-     *                    defined frames.
+	 *                    defined frames.
 	 */
 	AngleInfo(const float angle_start,
 	          std::vector<std::shared_ptr<FrameInfo>> &frames,
@@ -50,10 +50,10 @@ public:
 	float get_angle_start() const;
 
 	/**
-     * Check if the angle is mirrored from another angle.
-     *
-     * @return true if a mirrored angle has been defined, else false.
-     */
+	 * Check if the angle is mirrored from another angle.
+	 *
+	 * @return true if a mirrored angle has been defined, else false.
+	 */
 	bool is_mirrored() const;
 
 	/**
@@ -88,18 +88,18 @@ public:
 
 private:
 	/**
-     * Starting rotation in degress at which the frames are displayed.
-     */
+	 * Starting rotation in degress at which the frames are displayed.
+	 */
 	float angle_start;
 
 	/**
-     * Frame information.
-     */
+	 * Frame information.
+	 */
 	std::vector<std::shared_ptr<FrameInfo>> frames;
 
 	/**
-     * Mirrored angle information.
-     */
+	 * Mirrored angle information.
+	 */
 	std::shared_ptr<AngleInfo> mirror_from = nullptr;
 
 	/**

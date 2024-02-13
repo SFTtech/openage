@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -24,7 +24,7 @@ std::string self_exec_filename();
 /**
  * tries to xdg-open the file
  */
-int execute_file(const char *path, bool background=true);
+int execute_file(const char *path, bool background = true);
 
 } // namespace os
 } // namespace openage

@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -261,13 +261,13 @@ public:
 	/**
 	 * Factory function to get a fixed-point number from a fixed-point number of different type.
 	 */
-	template <typename other_int_type, unsigned int other_fractional_bits, typename std::enable_if<(fractional_bits > other_fractional_bits)>::type* = nullptr>
+	template <typename other_int_type, unsigned int other_fractional_bits, typename std::enable_if<(fractional_bits > other_fractional_bits)>::type * = nullptr>
 	static constexpr FixedPoint from_fixedpoint(const FixedPoint<other_int_type, other_fractional_bits> &other) {
 		return FixedPoint::from_raw_value(
 			safe_shift<fractional_bits - other_fractional_bits, int_type>(static_cast<int_type>(other.get_raw_value())));
 	}
 
-	template <typename other_int_type, unsigned int other_fractional_bits, typename std::enable_if<(fractional_bits <= other_fractional_bits)>::type* = nullptr>
+	template <typename other_int_type, unsigned int other_fractional_bits, typename std::enable_if<(fractional_bits <= other_fractional_bits)>::type * = nullptr>
 	static constexpr FixedPoint from_fixedpoint(const FixedPoint<other_int_type, other_fractional_bits> &other) {
 		return FixedPoint::from_raw_value(
 			static_cast<int_type>(other.get_raw_value() / safe_shiftleft<other_fractional_bits - fractional_bits, other_int_type>(1)));

@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -41,61 +41,61 @@ public:
 	virtual ~InputContext() = default;
 
 	/**
-     * Get the unique ID of the context.
-     *
-     * @return Context ID.
-     */
+	 * Get the unique ID of the context.
+	 *
+	 * @return Context ID.
+	 */
 	const std::string &get_id();
 
 	/**
-     * Set the associated context for binding input events to game events.
-     *
-     * @param bindings Binding context for gamestate events.
-     */
+	 * Set the associated context for binding input events to game events.
+	 *
+	 * @param bindings Binding context for gamestate events.
+	 */
 	void set_game_bindings(const std::shared_ptr<game::BindingContext> &bindings);
 
 	/**
-     * Set the associated context for binding input events to camera actions.
-     *
-     * @param bindings Binding context for camera actions.
-     */
+	 * Set the associated context for binding input events to camera actions.
+	 *
+	 * @param bindings Binding context for camera actions.
+	 */
 	void set_camera_bindings(const std::shared_ptr<camera::BindingContext> &bindings);
 
 	/**
-     * Set the associated context for binding input events to HUD actions.
-     *
-     * @param bindings Binding context for HUD actions.
-     */
+	 * Set the associated context for binding input events to HUD actions.
+	 *
+	 * @param bindings Binding context for HUD actions.
+	 */
 	void set_hud_bindings(const std::shared_ptr<hud::BindingContext> &bindings);
 
 	/**
-     * Get the associated context for binding input events to game events.
-     *
-     * @return Binding context of the input context.
-     */
+	 * Get the associated context for binding input events to game events.
+	 *
+	 * @return Binding context of the input context.
+	 */
 	const std::shared_ptr<game::BindingContext> &get_game_bindings();
 
 	/**
-     * Get the associated context for binding input events to camera actions.
-     *
-     * @return Binding context of the input context.
-     */
+	 * Get the associated context for binding input events to camera actions.
+	 *
+	 * @return Binding context of the input context.
+	 */
 	const std::shared_ptr<camera::BindingContext> &get_camera_bindings();
 
 	/**
-     * Get the associated context for binding input events to HUD actions.
-     *
-     * @return Binding context of the input context.
-     */
+	 * Get the associated context for binding input events to HUD actions.
+	 *
+	 * @return Binding context of the input context.
+	 */
 	const std::shared_ptr<hud::BindingContext> &get_hud_bindings();
 
 	/**
 	 * Bind a specific key combination to a single action.
 	 *
 	 * This is the first matching priority.
-     *
-     * @param ev Input event triggering the action.
-     * @param act Action executed by the event.
+	 *
+	 * @param ev Input event triggering the action.
+	 * @param act Action executed by the event.
 	 */
 	void bind(const Event &ev, const input_action act);
 
@@ -103,9 +103,9 @@ public:
 	 * Bind an event class to a single action.
 	 *
 	 * This is the second matching priority.
-     *
-     * @param ev Input event triggering the action.
-     * @param act Action executed by the event.
+	 *
+	 * @param ev Input event triggering the action.
+	 * @param act Action executed by the event.
 	 */
 	void bind(const event_class &cl, const input_action act);
 
@@ -113,9 +113,9 @@ public:
 	 * Bind a specific key combination to a list of actions.
 	 *
 	 * This is the first matching priority.
-     *
-     * @param ev Input event triggering the action.
-     * @param act Actions executed by the event.
+	 *
+	 * @param ev Input event triggering the action.
+	 * @param act Actions executed by the event.
 	 */
 	void bind(const Event &ev, const std::vector<input_action> &&acts);
 
@@ -123,26 +123,26 @@ public:
 	 * Bind an event class to a list of actions.
 	 *
 	 * This is the second matching priority.
-     *
-     * @param ev Input event triggering the action.
-     * @param act Actions executed by the event.
+	 *
+	 * @param ev Input event triggering the action.
+	 * @param act Actions executed by the event.
 	 */
 	void bind(const event_class &cl, const std::vector<input_action> &&acts);
 
 	/**
-     * Check whether a specific key event is bound in this context.
-     *
-     * @param ev Input event.
-     *
-     * @return true if event is bound, else false.
-     */
+	 * Check whether a specific key event is bound in this context.
+	 *
+	 * @param ev Input event.
+	 *
+	 * @return true if event is bound, else false.
+	 */
 	bool is_bound(const Event &ev) const;
 
 	/**
-     * Get the action(s) bound to the given event.
-     *
-     * @param ev Input event triggering the action.
-     */
+	 * Get the action(s) bound to the given event.
+	 *
+	 * @param ev Input event triggering the action.
+	 */
 	const std::vector<input_action> &lookup(const Event &ev) const;
 
 	/**
@@ -162,8 +162,8 @@ public:
 
 private:
 	/**
-     * Unique ID of the context.
-     */
+	 * Unique ID of the context.
+	 */
 	std::string id;
 
 	/**
@@ -177,18 +177,18 @@ private:
 	std::unordered_map<event_class, std::vector<input_action>, event_class_hash> by_class;
 
 	/**
-     * Additional context for game simulation events.
-     */
+	 * Additional context for game simulation events.
+	 */
 	std::shared_ptr<game::BindingContext> game_bindings;
 
 	/**
-     * Additional context for camera actions.
-     */
+	 * Additional context for camera actions.
+	 */
 	std::shared_ptr<camera::BindingContext> camera_bindings;
 
 	/**
-     * Additional context for HUD actions.
-     */
+	 * Additional context for HUD actions.
+	 */
 	std::shared_ptr<hud::BindingContext> hud_bindings;
 };
 

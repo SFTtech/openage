@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -19,19 +19,19 @@ namespace openage::renderer::hud {
 class HudDragRenderEntity {
 public:
 	/**
-     * Create a new render entity for drag selection in the HUD.
-     *
-     * @param drag_start Position of the start corner.
-     */
+	 * Create a new render entity for drag selection in the HUD.
+	 *
+	 * @param drag_start Position of the start corner.
+	 */
 	HudDragRenderEntity(const coord::input drag_start);
 	~HudDragRenderEntity() = default;
 
 	/**
 	 * Update the render entity with information from the gamestate
-     * or input system.
-     *
-     * @param drag_pos Position of the dragged corner.
-     * @param time Current simulation time.
+	 * or input system.
+	 *
+	 * @param drag_pos Position of the dragged corner.
+	 * @param time Current simulation time.
 	 */
 	void update(const coord::input drag_pos,
 	            const time::time_t time = 0.0);
@@ -44,17 +44,17 @@ public:
 	time::time_t get_update_time();
 
 	/**
-     * Get the position of the dragged corner.
-     *
-     * @return Coordinates of the dragged corner.
-     */
+	 * Get the position of the dragged corner.
+	 *
+	 * @return Coordinates of the dragged corner.
+	 */
 	const curve::Continuous<coord::input> &get_drag_pos();
 
 	/**
-     * Get the position of the start corner.
-     *
-     * @return Coordinates of the start corner.
-     */
+	 * Get the position of the start corner.
+	 *
+	 * @return Coordinates of the start corner.
+	 */
 	const coord::input &get_drag_start();
 
 	/**
@@ -83,13 +83,13 @@ private:
 	time::time_t last_update;
 
 	/**
-     * Position of the dragged corner.
-     */
+	 * Position of the dragged corner.
+	 */
 	curve::Continuous<coord::input> drag_pos;
 
 	/**
-     * Position of the start corner.
-     */
+	 * Position of the start corner.
+	 */
 	coord::input drag_start;
 
 	/**

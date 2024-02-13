@@ -1,12 +1,10 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <iostream>
 
-namespace openage {
-namespace audio {
-
+namespace openage::audio {
 
 enum class category_t {
 	GAME,
@@ -17,7 +15,7 @@ enum class category_t {
 
 
 const char *category_t_to_str(category_t val);
-std::ostream &operator <<(std::ostream &os, category_t val);
+std::ostream &operator<<(std::ostream &os, category_t val);
 
 
-}} // openage::audio
+} // namespace openage::audio

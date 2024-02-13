@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -17,6 +17,7 @@ enum class format_t {
 
 const char *format_t_to_str(format_t val);
 
-std::ostream &operator <<(std::ostream &os, format_t val);
+std::ostream &operator<<(std::ostream &os, format_t val);
 
-}} // openage::audio
+} // namespace audio
+} // namespace openage

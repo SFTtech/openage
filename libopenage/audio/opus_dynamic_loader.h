@@ -1,14 +1,14 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <string>
 #include <memory>
+#include <string>
 
-#include "opus_loading.h"
-#include "dynamic_loader.h"
-#include "types.h"
 #include "../util/path.h"
+#include "dynamic_loader.h"
+#include "opus_loading.h"
+#include "types.h"
 
 
 namespace openage {
@@ -40,4 +40,5 @@ public:
 	                  size_t chunk_size) override;
 };
 
-}} // openage::audio
+} // namespace audio
+} // namespace openage

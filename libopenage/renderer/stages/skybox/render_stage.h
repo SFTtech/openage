@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -27,12 +27,12 @@ namespace skybox {
 class SkyboxRenderStage {
 public:
 	/**
-     * Create a new render stage for the skybox.
-     *
-     * @param window openage window targeted for rendering.
-     * @param renderer openage low-level renderer.
-     * @param shaderdir Directory containing the shader source files.
-     */
+	 * Create a new render stage for the skybox.
+	 *
+	 * @param window openage window targeted for rendering.
+	 * @param renderer openage low-level renderer.
+	 * @param shaderdir Directory containing the shader source files.
+	 */
 	SkyboxRenderStage(const std::shared_ptr<Window> &window,
 	                  const std::shared_ptr<renderer::Renderer> &renderer,
 	                  const util::Path &shaderdir);
@@ -46,26 +46,26 @@ public:
 	std::shared_ptr<renderer::RenderPass> get_render_pass();
 
 	/**
-     * Set the color used for the skybox using integer values
-     * for each channel (0 to 255).
-     *
-     * @param col RGBA color value.
-     */
+	 * Set the color used for the skybox using integer values
+	 * for each channel (0 to 255).
+	 *
+	 * @param col RGBA color value.
+	 */
 	void set_color(const Eigen::Vector4i col);
 	void set_color(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 
 	/**
-     * Set the color used for the skybox using float values
-     * for each channel (0.0 to 1.0).
-     *
-     * @param col RGBA color value.
-     */
+	 * Set the color used for the skybox using float values
+	 * for each channel (0.0 to 1.0).
+	 *
+	 * @param col RGBA color value.
+	 */
 	void set_color(const Eigen::Vector4f col);
 	void set_color(float r, float g, float b, float a);
 
 	/**
 	 * Resize the FBO for the skybox rendering. This basically updates the output
-     * texture size.
+	 * texture size.
 	 *
 	 * @param width New width of the FBO.
 	 * @param height New height of the FBO.
@@ -103,13 +103,13 @@ private:
 	std::shared_ptr<renderer::Texture2d> output_texture;
 
 	/**
-     * Background color.
-     */
+	 * Background color.
+	 */
 	Eigen::Vector4f bg_color;
 
 	/**
-     * Stores background color uniform for the shader.
-     */
+	 * Stores background color uniform for the shader.
+	 */
 	std::shared_ptr<renderer::UniformInput> color_unif;
 };
 

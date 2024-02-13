@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -47,25 +47,25 @@ public:
 	using const_iterator = typename container_t::const_iterator;
 
 	/**
-     * Create a new container.
-     *
-     * Inserts a default element with value \p T() at \p time = -INF to ensure
-     * that accessing the container always returns an element.
-     *
-     * TODO: need the datamanger for change management
-     */
+	 * Create a new container.
+	 *
+	 * Inserts a default element with value \p T() at \p time = -INF to ensure
+	 * that accessing the container always returns an element.
+	 *
+	 * TODO: need the datamanger for change management
+	 */
 	KeyframeContainer();
 
 	/**
-     * Create a new container.
-     *
-     * Inserts a default element at \p time = -INF to ensure
-     * that accessing the container always returns an element.
-     *
-     * @param defaultval Value of default element at -INF.
-     *
-     * TODO: need the datamanger for change management
-     */
+	 * Create a new container.
+	 *
+	 * Inserts a default element at \p time = -INF to ensure
+	 * that accessing the container always returns an element.
+	 *
+	 * @param defaultval Value of default element at -INF.
+	 *
+	 * TODO: need the datamanger for change management
+	 */
 	KeyframeContainer(const T &defaultval);
 
 	/**
@@ -259,42 +259,42 @@ public:
 	}
 
 	/**
-     * Remove all keyframes from the container, EXCEPT for the default value
-     * at -INF.
-     *
-     * Essentially, the container is reset to the state immediately after construction.
-     */
+	 * Remove all keyframes from the container, EXCEPT for the default value
+	 * at -INF.
+	 *
+	 * Essentially, the container is reset to the state immediately after construction.
+	 */
 	void clear() {
 		this->container.erase(++this->begin(), this->end());
 	}
 
 	/**
-     * Copy keyframes from another container to this container.
-     *
-     * Replaces all keyframes beginning at t >= start with keyframes from \p other.
-     *
-     * @param other Curve that keyframes are copied from.
-     * @param converter Function that converts the value type of \p other to the
-     *                  value type of \p this.
-     * @param start Start time at which keyframes are replaced (default = -INF).
-     *              Using the default value replaces ALL keyframes of \p this with
-     *              the keyframes of \p other.
-     */
+	 * Copy keyframes from another container to this container.
+	 *
+	 * Replaces all keyframes beginning at t >= start with keyframes from \p other.
+	 *
+	 * @param other Curve that keyframes are copied from.
+	 * @param converter Function that converts the value type of \p other to the
+	 *                  value type of \p this.
+	 * @param start Start time at which keyframes are replaced (default = -INF).
+	 *              Using the default value replaces ALL keyframes of \p this with
+	 *              the keyframes of \p other.
+	 */
 	iterator sync(const KeyframeContainer<T> &other,
 	              const time::time_t &start = time::TIME_MIN);
 
 	/**
-     * Copy keyframes from another container (with a different element type) to this container.
-     *
-     * Replaces all keyframes beginning at t >= start with keyframes from \p other.
-     *
-     * @param other Curve that keyframes are copied from.
-     * @param converter Function that converts the value type of \p other to the
-     *                  value type of \p this.
-     * @param start Start time at which keyframes are replaced (default = -INF).
-     *              Using the default value replaces ALL keyframes of \p this with
-     *              the keyframes of \p other.
-     */
+	 * Copy keyframes from another container (with a different element type) to this container.
+	 *
+	 * Replaces all keyframes beginning at t >= start with keyframes from \p other.
+	 *
+	 * @param other Curve that keyframes are copied from.
+	 * @param converter Function that converts the value type of \p other to the
+	 *                  value type of \p this.
+	 * @param start Start time at which keyframes are replaced (default = -INF).
+	 *              Using the default value replaces ALL keyframes of \p this with
+	 *              the keyframes of \p other.
+	 */
 	template <typename O>
 	iterator sync(const KeyframeContainer<O> &other,
 	              const std::function<T(const O &)> &converter,

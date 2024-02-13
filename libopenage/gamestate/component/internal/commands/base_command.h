@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,10 +15,10 @@ public:
 	virtual ~Command() = default;
 
 	/**
-     * Get the type of the command.
-     *
-     * @return Command type.
-     */
+	 * Get the type of the command.
+	 *
+	 * @return Command type.
+	 */
 	virtual command_t get_type() const = 0;
 };
 

@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -65,8 +65,8 @@ public:
 
 private:
 	/**
-     * Length of the time interval of this curve (time between first and last keyframe).
-     */
+	 * Length of the time interval of this curve (time between first and last keyframe).
+	 */
 	time::time_t time_length;
 };
 

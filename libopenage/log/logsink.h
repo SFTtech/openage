@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -46,9 +46,9 @@ private:
 
 
 /**
-* Holds a list of all registered log sinks;
-* Maintained from the LogSink constructors/destructors.
-*/
+ * Holds a list of all registered log sinks;
+ * Maintained from the LogSink constructors/destructors.
+ */
 class OAAPI LogSinkList {
 public:
 	static LogSinkList &instance();

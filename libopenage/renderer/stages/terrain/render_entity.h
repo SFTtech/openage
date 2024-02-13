@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -28,15 +28,15 @@ public:
 	using tiles_t = std::vector<std::pair<terrain_elevation_t, std::string>>;
 
 	/**
-     * Update a single tile of the displayed terrain (chunk) with information from the
-     * gamestate.
+	 * Update a single tile of the displayed terrain (chunk) with information from the
+	 * gamestate.
 	 *
 	 * @param size Size of the terrain in tiles (width x length)
 	 * @param pos Position of the tile in the chunk.
 	 * @param elevation Height of terrain tile.
 	 * @param terrain_path Path to the terrain definition.
-     * @param time Simulation time of the update.
-     */
+	 * @param time Simulation time of the update.
+	 */
 	void update_tile(const util::Vector2s size,
 	                 const coord::tile &pos,
 	                 const terrain_elevation_t elevation,
@@ -44,38 +44,38 @@ public:
 	                 const time::time_t time = 0.0);
 
 	/**
-     * Update the full grid of the displayed terrain (chunk) with information from the
-     * gamestate.
+	 * Update the full grid of the displayed terrain (chunk) with information from the
+	 * gamestate.
 	 *
 	 * @param size Size of the terrain in tiles (width x length)
 	 * @param tiles Animation data for each tile (elevation, terrain path).
-     * @param time Simulation time of the update.
-     */
+	 * @param time Simulation time of the update.
+	 */
 	void update(const util::Vector2s size,
 	            const tiles_t tiles,
 	            const time::time_t time = 0.0);
 
 	/**
-     * Get the vertices of the terrain.
-     *
-     * @return Vector of vertex coordinates.
-     */
+	 * Get the vertices of the terrain.
+	 *
+	 * @return Vector of vertex coordinates.
+	 */
 	const std::vector<coord::scene3> &get_vertices();
 
 	/**
-     * Get the texture mapping for the terrain.
-     *
-     * TODO: Return the actual mapping.
-     *
-     * @return Texture mapping of textures to vertex area.
-     */
+	 * Get the texture mapping for the terrain.
+	 *
+	 * TODO: Return the actual mapping.
+	 *
+	 * @return Texture mapping of textures to vertex area.
+	 */
 	const curve::Discrete<std::string> &get_terrain_path();
 
 	/**
-     * Get the number of vertices on each side of the terrain.
-     *
-     * @return Vector with width as first element and height as second element.
-     */
+	 * Get the number of vertices on each side of the terrain.
+	 *
+	 * @return Vector with width as first element and height as second element.
+	 */
 	const util::Vector2s &get_size();
 
 	/**
@@ -100,8 +100,8 @@ private:
 	bool changed;
 
 	/**
-     * Chunk dimensions (width x height).
-     */
+	 * Chunk dimensions (width x height).
+	 */
 	util::Vector2s size;
 
 	/**

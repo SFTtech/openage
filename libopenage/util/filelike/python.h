@@ -1,4 +1,4 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -41,7 +41,7 @@ public:
 
 	bool writable() override;
 
-	void seek(ssize_t offset, seek_t how=seek_t::SET) override;
+	void seek(ssize_t offset, seek_t how = seek_t::SET) override;
 	bool seekable() override;
 	size_t tell() override;
 	void close() override;
@@ -95,4 +95,6 @@ extern OAAPI pyinterface::PyIfFunc<void, PyObject *> pyx_file_flush;
 extern OAAPI pyinterface::PyIfFunc<ssize_t, PyObject *> pyx_file_size;
 
 
-}}} // openage::util::filelike
+} // namespace filelike
+} // namespace util
+} // namespace openage

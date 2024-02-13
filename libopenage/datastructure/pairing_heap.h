@@ -1,4 +1,4 @@
-// Copyright 2014-2023 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,13 +16,13 @@
  * Algorithmica 1, no. 1-4 (1986): 111-129.
  */
 
-#include <memory>
 #include <functional>
+#include <memory>
 #include <type_traits>
 #include <unordered_set>
 
-#include "../util/compiler.h"
 #include "../error/error.h"
+#include "../util/compiler.h"
 
 
 #define OPENAGE_PAIRINGHEAP_DEBUG false
@@ -31,14 +31,13 @@
 namespace openage::datastructure {
 
 
-template<typename T,
-         typename compare,
-         typename heapnode_t>
+template <typename T,
+          typename compare,
+          typename heapnode_t>
 class PairingHeap;
 
 
-
-template<typename T, typename compare=std::less<T>>
+template <typename T, typename compare = std::less<T>>
 class PairingHeapNode : public std::enable_shared_from_this<PairingHeapNode<T, compare>> {
 public:
 	using this_type = PairingHeapNode<T, compare>;
@@ -49,12 +48,10 @@ public:
 	compare cmp;
 
 public:
-	PairingHeapNode(const T &data)
-		:
+	PairingHeapNode(const T &data) :
 		data{data} {}
 
-	PairingHeapNode(T &&data)
-		:
+	PairingHeapNode(T &&data) :
 		data{std::move(data)} {}
 
 	~PairingHeapNode() = default;
@@ -101,11 +98,11 @@ public:
 		std::shared_ptr<this_type> new_child;
 
 		if (this->cmp(this->data, node->data)) {
-			new_root  = this->shared_from_this();
+			new_root = this->shared_from_this();
 			new_child = node;
 		}
 		else {
-			new_root  = node;
+			new_root = node;
 			new_child = this->shared_from_this();
 		}
 
@@ -182,16 +179,16 @@ private:
 	std::shared_ptr<this_type> first_child;
 	std::shared_ptr<this_type> prev_sibling;
 	std::shared_ptr<this_type> next_sibling;
-	std::shared_ptr<this_type> parent;       // for decrease-key and delete
+	std::shared_ptr<this_type> parent; // for decrease-key and delete
 };
 
 
 /**
  * (Quite) efficient heap implementation.
  */
-template<typename T,
-         typename compare=std::less<T>,
-         typename heapnode_t=PairingHeapNode<T, compare>>
+template <typename T,
+          typename compare = std::less<T>,
+          typename heapnode_t = PairingHeapNode<T, compare>>
 class PairingHeap final {
 public:
 	using node_t = heapnode_t;
@@ -202,8 +199,7 @@ public:
 	/**
 	 * create a empty heap.
 	 */
-	PairingHeap()
-		:
+	PairingHeap() :
 		node_count(0),
 		root_node(nullptr) {
 	}
@@ -291,7 +287,8 @@ public:
 					// link0 was the only node
 					first_pair = link0;
 					link0->prev_sibling = nullptr;
-				} else {
+				}
+				else {
 					previous_pair->next_sibling = link0;
 					link0->prev_sibling = previous_pair;
 				}
@@ -589,7 +586,6 @@ public:
 protected:
 	void walk_tree(const element_t &root,
 	               const std::function<void(const element_t &)> &func) const {
-
 		func(root);
 
 		if (root) {
@@ -629,7 +625,8 @@ protected:
 	void root_insert(const element_t &node) {
 		if (this->root_node == nullptr) [[unlikely]] {
 			this->root_node = node;
-		} else {
+		}
+		else {
 			this->root_node = this->root_node->link_with(node);
 		}
 	}
@@ -644,4 +641,4 @@ protected:
 #endif
 };
 
-} // openage::datastructure
+} // namespace openage::datastructure

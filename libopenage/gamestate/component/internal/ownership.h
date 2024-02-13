@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -50,16 +50,16 @@ public:
 	void set_owner(const time::time_t &time, const player_id_t owner_id);
 
 	/**
-     * Get the owner IDs over time.
-     *
-     * @return Owner ID curve.
-     */
+	 * Get the owner IDs over time.
+	 *
+	 * @return Owner ID curve.
+	 */
 	const curve::Discrete<player_id_t> &get_owners() const;
 
 private:
 	/**
-     * Owner ID storage over time.
-     */
+	 * Owner ID storage over time.
+	 */
 	curve::Discrete<player_id_t> owner;
 };
 

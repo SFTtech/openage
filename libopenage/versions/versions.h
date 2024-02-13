@@ -1,4 +1,4 @@
-// Copyright 2020-2020 the openage authors. See copying.md for legal info.
+// Copyright 2020-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -19,6 +19,6 @@ namespace openage::versions {
  * pxd:
  * map[string,string] get_version_numbers() except +
  */
-OAAPI std::map<std::string,std::string> get_version_numbers();
+OAAPI std::map<std::string, std::string> get_version_numbers();
 
 } // namespace openage::versions

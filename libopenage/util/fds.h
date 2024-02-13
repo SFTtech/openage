@@ -1,4 +1,4 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -89,4 +89,5 @@ public:
 #endif
 };
 
-}} // openage::util
+} // namespace util
+} // namespace openage

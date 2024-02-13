@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,6 +7,6 @@
 #ifndef Py_OBJECT_H
 // pxd: from cpython.ref cimport PyObject
 extern "C" {
-	typedef struct _object PyObject;
+typedef struct _object PyObject;
 }
 #endif

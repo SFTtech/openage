@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -67,10 +67,10 @@ public:
 
 	/**
 	 * Create the engine instance for this run.
-     *
-     * @param mode The run mode to use.
-     * @param root_dir openage root directory.
-     * @param mods The mods to load.
+	 *
+	 * @param mode The run mode to use.
+	 * @param root_dir openage root directory.
+	 * @param mods The mods to load.
 	 * @param debug_graphics If true, enable OpenGL debug logging.
 	 */
 	Engine(mode mode,
@@ -87,8 +87,8 @@ public:
 
 
 	/**
-     * Run the main loop.
-     */
+	 * Run the main loop.
+	 */
 	void loop();
 
 	/**
@@ -99,38 +99,38 @@ public:
 
 private:
 	/**
-     * The run mode to use.
-     */
+	 * The run mode to use.
+	 */
 	mode run_mode;
 
 	/**
-     * openage root directory.
-     */
+	 * openage root directory.
+	 */
 	util::Path root_dir;
 
 	/**
-     * The threads used by the engine.
-     */
+	 * The threads used by the engine.
+	 */
 	std::vector<std::jthread> threads;
 
 	/**
-     * Environment variables.
-     */
+	 * Environment variables.
+	 */
 	std::shared_ptr<cvar::CVarManager> cvar_manager;
 
 	/**
-     * Controls and update the clock for time-based measurements.
-     */
+	 * Controls and update the clock for time-based measurements.
+	 */
 	std::shared_ptr<time::TimeLoop> time_loop;
 
 	/**
-     * Gameplay simulation.
-     */
+	 * Gameplay simulation.
+	 */
 	std::shared_ptr<gamestate::GameSimulation> simulation;
 
 	/**
-     * Video/audio/input management. Can be nullptr in headless mode.
-     */
+	 * Video/audio/input management. Can be nullptr in headless mode.
+	 */
 	std::shared_ptr<presenter::Presenter> presenter;
 };
 

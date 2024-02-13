@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -13,4 +13,6 @@ namespace fslike {
 constexpr char PATHSEP = '/';
 
 
-}}} // openage::util::fslike
+} // namespace fslike
+} // namespace util
+} // namespace openage

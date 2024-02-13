@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -32,7 +32,7 @@ public:
 	 *
 	 * @param ref_id Game entity ID.
 	 * @param position Position of the game entity inside the game world.
-     * @param angle Angle of the game entity inside the game world.
+	 * @param angle Angle of the game entity inside the game world.
 	 * @param animation_path Path to the animation definition.
 	 * @param time Simulation time of the update.
 	 */
@@ -44,7 +44,7 @@ public:
 
 	/**
 	 * This function is for DEBUGGING and should not be used.
-     *
+	 *
 	 * Update the render entity with information from the gamestate.
 	 *
 	 * @param ref_id Game entity ID.
@@ -72,17 +72,17 @@ public:
 	const curve::Continuous<coord::scene3> &get_position();
 
 	/**
-     * Get the angle of the entity inside the game world.
-     *
-     * @return Angle curve of the entity.
-     */
+	 * Get the angle of the entity inside the game world.
+	 *
+	 * @return Angle curve of the entity.
+	 */
 	const curve::Segmented<coord::phys_angle_t> &get_angle();
 
 	/**
-     * Get the animation definition path.
-     *
-     * @return Path to the animation definition file.
-     */
+	 * Get the animation definition path.
+	 *
+	 * @return Path to the animation definition file.
+	 */
 	const curve::Discrete<std::string> &get_animation_path();
 
 	/**
@@ -124,8 +124,8 @@ private:
 	curve::Continuous<coord::scene3> position;
 
 	/**
-     * Angle of the entity inside the game world.
-     */
+	 * Angle of the entity inside the game world.
+	 */
 	curve::Segmented<coord::phys_angle_t> angle;
 
 	/**

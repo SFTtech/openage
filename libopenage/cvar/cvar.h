@@ -1,4 +1,4 @@
-// Copyright 2016-2017 the openage authors. See copying.md for legal info.
+// Copyright 2016-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -40,7 +40,6 @@ using set_func = std::function<void(std::string)>;
  *     void load_config(Path path) except +
  */
 class OAAPI CVarManager {
-
 public:
 	CVarManager(const util::Path &path);
 
@@ -102,4 +101,5 @@ private:
  */
 extern OAAPI pyinterface::PyIfFunc<void, CVarManager *, const util::Path &> pyx_load_config_file;
 
-}} // openage::cvar
+} // namespace cvar
+} // namespace openage

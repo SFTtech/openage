@@ -1,4 +1,4 @@
-// Copyright 2013-2018 the openage authors. See copying.md for legal info.
+// Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,7 +11,7 @@
 #include <vector>
 
 #if defined(__GNUC__)
-#define ATTRIBUTE_FORMAT(i, j) __attribute__ ((format (printf, i, j)))
+#define ATTRIBUTE_FORMAT(i, j) __attribute__((format(printf, i, j)))
 #else
 #define ATTRIBUTE_FORMAT(i, j)
 #endif
@@ -24,14 +24,14 @@ namespace util {
  * Quick-formatter for floats when working with string streams.
  * Usage: cout << FormatFloat{1.0, 10};
  */
-template<unsigned decimals, unsigned w=0>
+template <unsigned decimals, unsigned w = 0>
 struct FloatFixed {
 	float value;
 };
 
 
-template<unsigned decimals, unsigned w>
-std::ostream &operator <<(std::ostream &os, FloatFixed<decimals, w> f) {
+template <unsigned decimals, unsigned w>
+std::ostream &operator<<(std::ostream &os, FloatFixed<decimals, w> f) {
 	static_assert(decimals < 50, "Refusing to print float with >= 50 decimals");
 	static_assert(w < 70, "Refusing to print float with a width >= 70");
 
@@ -84,7 +84,7 @@ bool string_matches_pattern(const char *str, const char *pattern);
  * Split a string at a delimiter, push the result back in an iterator.
  * Why doesn't the fucking standard library have std::string::split(delimiter)?
  */
-template<typename ret_t>
+template <typename ret_t>
 void split(const std::string &txt, char delimiter, ret_t result) {
 	std::stringstream splitter;
 	splitter.str(txt);
@@ -113,6 +113,8 @@ std::vector<std::string> split(const std::string &txt, char delim);
  * to literal X, including the deliminiter.
  */
 std::vector<std::string> split_escape(const std::string &txt,
-                                      char delim, size_t size_hint=0);
+                                      char delim,
+                                      size_t size_hint = 0);
 
-}} // openage::util
+} // namespace util
+} // namespace openage

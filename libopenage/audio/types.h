@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -34,4 +34,5 @@ using pcm_data_t = std::vector<int16_t>;
  */
 using pcm_chunk_t = std::vector<int16_t>;
 
-}} // openage::audio
+} // namespace audio
+} // namespace openage

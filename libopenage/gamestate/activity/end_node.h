@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -21,11 +21,11 @@ namespace openage::gamestate::activity {
 class EndNode : public Node {
 public:
 	/**
-     * Create a new end node.
-     *
-     * @param id Unique identifier for this node.
-     * @param label Human-readable label (optional).
-     */
+	 * Create a new end node.
+	 *
+	 * @param id Unique identifier for this node.
+	 * @param label Human-readable label (optional).
+	 */
 	EndNode(node_id_t id,
 	        node_label_t label = "End");
 	virtual ~EndNode() = default;

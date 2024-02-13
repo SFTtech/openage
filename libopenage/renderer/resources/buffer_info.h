@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -81,71 +81,71 @@ static constexpr auto STD140_INPUT_SIZE = datastructure::create_const_map<ubo_in
 class UniformBufferInfo {
 public:
 	/**
-     * Create a new uniform buffer definition.
-     *
-     * @param layout Layout of the uniform block targeted by the buffer.
-     * @param inputs Uniform definitions inside the uniform block.
-     */
+	 * Create a new uniform buffer definition.
+	 *
+	 * @param layout Layout of the uniform block targeted by the buffer.
+	 * @param inputs Uniform definitions inside the uniform block.
+	 */
 	UniformBufferInfo(ubo_layout_t layout, const std::vector<UBOInput> &inputs);
 
 	/**
-     * Create a new uniform buffer definition.
-     *
-     * @param layout Layout of the uniform block targeted by the buffer.
-     * @param inputs Uniform definitions inside the uniform block.
-     */
+	 * Create a new uniform buffer definition.
+	 *
+	 * @param layout Layout of the uniform block targeted by the buffer.
+	 * @param inputs Uniform definitions inside the uniform block.
+	 */
 	UniformBufferInfo(ubo_layout_t layout, std::vector<UBOInput> &&inputs);
 
 	/**
-     * Get the layout of the uniform block targeted by the buffer.
-     *
-     * @return Uniform block layout.
-     */
+	 * Get the layout of the uniform block targeted by the buffer.
+	 *
+	 * @return Uniform block layout.
+	 */
 	ubo_layout_t get_layout() const;
 
 	/**
-     * Get the uniform definitions inside the uniform block.
-     *
-     * @return Uniform definitions.
-     */
+	 * Get the uniform definitions inside the uniform block.
+	 *
+	 * @return Uniform definitions.
+	 */
 	const std::vector<UBOInput> &get_inputs() const;
 
 	/**
-     * Get the total size of the uniform block (in bytes).
-     *
-     * @return Size of the uniform block (in bytes).
-     */
+	 * Get the total size of the uniform block (in bytes).
+	 *
+	 * @return Size of the uniform block (in bytes).
+	 */
 	size_t get_size() const;
 
 	/**
-     * Get the size of a single uniform input (in bytes).
-     *
-     * @param input Uniform input type.
-     * @param layout Layout of the uniform block targeted by the buffer.
-     *
-     * @return Size of the uniform input (in bytes).
-     */
+	 * Get the size of a single uniform input (in bytes).
+	 *
+	 * @param input Uniform input type.
+	 * @param layout Layout of the uniform block targeted by the buffer.
+	 *
+	 * @return Size of the uniform input (in bytes).
+	 */
 	static size_t get_size(const UBOInput &input, ubo_layout_t layout = ubo_layout_t::STD140);
 
 	/**
-     * Get the stride size of a uniform input in an array (in bytes).
-     *
-     * @param input Uniform input type.
-     * @param layout Layout of the uniform block targeted by the buffer.
-     *
-     * @return Size of the uniform input (in bytes).
-     */
+	 * Get the stride size of a uniform input in an array (in bytes).
+	 *
+	 * @param input Uniform input type.
+	 * @param layout Layout of the uniform block targeted by the buffer.
+	 *
+	 * @return Size of the uniform input (in bytes).
+	 */
 	static size_t get_stride_size(ubo_input_t input, ubo_layout_t layout = ubo_layout_t::STD140);
 
 private:
 	/**
-     * Uniform block layout.
-     */
+	 * Uniform block layout.
+	 */
 	ubo_layout_t layout;
 
 	/**
-     * Uniform definitions.
-     */
+	 * Uniform definitions.
+	 */
 	std::vector<UBOInput> inputs;
 };
 

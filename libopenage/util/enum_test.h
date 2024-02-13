@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -48,4 +48,6 @@ struct OAAPI testenum : Enum<testenum_value> {
 	static constexpr testenum_value bar{{"bar", 2}, "barrrrrrrrrrrrrrrrr"};
 };
 
-}}} // openage::util::tests
+} // namespace tests
+} // namespace util
+} // namespace openage

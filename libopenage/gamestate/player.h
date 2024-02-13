@@ -1,4 +1,4 @@
-// Copyright 2018-2023 the openage authors. See copying.md for legal info.
+// Copyright 2018-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -80,8 +80,8 @@ private:
 	player_id_t id;
 
 	/**
-     * Player view of the nyan game data database.
-     */
+	 * Player view of the nyan game data database.
+	 */
 	std::shared_ptr<nyan::View> db_view;
 };
 

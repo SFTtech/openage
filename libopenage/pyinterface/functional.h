@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -54,53 +54,52 @@ namespace pyinterface {
  * initialization time, use PyIfFunc instead of Func; that class has some
  * additional code to verify successful initialization.
  */
-template<typename ReturnType, typename ... ArgTypes>
+template <typename ReturnType, typename... ArgTypes>
 class Func {
 public:
-	Func()
-		:
+	Func() :
 		fptr{nullptr} {}
 
 	// for construction from lambdas and other callables (from C++).
-	template<typename F>
+	template <typename F>
 	Func(F &&f) {
 		this->fptr = f;
 	}
 
-	template<typename F>
+	template <typename F>
 	Func(std::reference_wrapper<F> f) {
 		this->fptr = f;
 	}
 
 	// for construction from std::function objects (from C++).
-	Func(const std::function<ReturnType (ArgTypes ...)> &f) {
+	Func(const std::function<ReturnType(ArgTypes...)> &f) {
 		this->fptr = f;
 	}
 
-	Func(std::function<ReturnType (ArgTypes ...)> &&f) {
+	Func(std::function<ReturnType(ArgTypes...)> &&f) {
 		this->fptr = f;
 	}
 
 	// for assignment of lambdas and other callables (from C++).
-	template<typename F>
-	Func<ReturnType, ArgTypes ...> &operator =(F &&f) {
+	template <typename F>
+	Func<ReturnType, ArgTypes...> &operator=(F &&f) {
 		this->fptr = f;
 		return *this;
 	}
 
-	template<typename F>
-	Func<ReturnType, ArgTypes ...> &operator =(std::reference_wrapper<F> f) {
+	template <typename F>
+	Func<ReturnType, ArgTypes...> &operator=(std::reference_wrapper<F> f) {
 		this->fptr = f;
 		return *this;
 	}
 
 	// for assignment of std::function objects (from C++).
-	Func<ReturnType, ArgTypes ...> &operator =(const std::function<ReturnType (ArgTypes ...)> &f) {
+	Func<ReturnType, ArgTypes...> &operator=(const std::function<ReturnType(ArgTypes...)> &f) {
 		this->fptr = f;
 		return *this;
 	}
 
-	Func<ReturnType, ArgTypes ...> &operator =(std::function<ReturnType (ArgTypes ...)> &&f) {
+	Func<ReturnType, ArgTypes...> &operator=(std::function<ReturnType(ArgTypes...)> &&f) {
 		this->fptr = f;
 		return *this;
 	}
@@ -111,9 +110,10 @@ public:
 	inline void check_fptr() const {
 		if (not this->fptr) [[unlikely]] {
 			throw Error(
-				MSG(err) << "Uninitialized Func object at " <<
-				util::symbol_name(static_cast<const void *>(this)) << ": "
-				"Can not call or convert to std::function.",
+				MSG(err) << "Uninitialized Func object at "
+						 << util::symbol_name(static_cast<const void *>(this))
+						 << ": "
+							"Can not call or convert to std::function.",
 
 				true // collect backtrace info
 			);
@@ -123,7 +123,7 @@ public:
 	/**
 	 * for direct usage (mostly from Cython)
 	 */
-	ReturnType call(ArgTypes ...args) const {
+	ReturnType call(ArgTypes... args) const {
 		this->check_fptr();
 		return this->fptr(args...);
 	}
@@ -132,7 +132,7 @@ public:
 	 * for implicit conversion to std::function,
 	 * for usage in a context where std::function would be expected.
 	 */
-	operator const std::function<ReturnType (ArgTypes ...)> &() const {
+	operator const std::function<ReturnType(ArgTypes...)> &() const {
 		this->check_fptr();
 		return this->fptr;
 	}
@@ -140,7 +140,7 @@ public:
 	/**
 	 * for explicit conversion to std::function.
 	 */
-	const std::function<ReturnType (ArgTypes ...)> &get() const {
+	const std::function<ReturnType(ArgTypes...)> &get() const {
 		this->check_fptr();
 		return this->fptr;
 	}
@@ -154,9 +154,9 @@ public:
 	 * Note that with clang, it's possible to directly pass function pointers, while with
 	 * gcc they need to be explicitly converted. Meh.
 	 */
-	template<typename ... BoundArgTypes>
-	inline void bind(util::FunctionPtr<ReturnType, BoundArgTypes ..., ArgTypes ...> f, BoundArgTypes ...bound_args) {
-		this->bind_catchexcept_impl<std::is_void<ReturnType>::value, BoundArgTypes ...>(f, bound_args...);
+	template <typename... BoundArgTypes>
+	inline void bind(util::FunctionPtr<ReturnType, BoundArgTypes..., ArgTypes...> f, BoundArgTypes... bound_args) {
+		this->bind_catchexcept_impl<std::is_void<ReturnType>::value, BoundArgTypes...>(f, bound_args...);
 	}
 
 
@@ -164,9 +164,9 @@ private:
 	/**
 	 * Specialization for bind() with void return types.
 	 */
-	template<bool return_type_is_void, typename ... BoundArgTypes>
-	inline typename std::enable_if<return_type_is_void>::type bind_catchexcept_impl(util::FunctionPtr<ReturnType, BoundArgTypes ..., ArgTypes ...> f, BoundArgTypes ...bound_args) {
-		this->fptr = [=](ArgTypes ...args) -> ReturnType {
+	template <bool return_type_is_void, typename... BoundArgTypes>
+	inline typename std::enable_if<return_type_is_void>::type bind_catchexcept_impl(util::FunctionPtr<ReturnType, BoundArgTypes..., ArgTypes...> f, BoundArgTypes... bound_args) {
+		this->fptr = [=](ArgTypes... args) -> ReturnType {
 			f.ptr(bound_args..., args...);
 			translate_exc_py_to_cpp();
 		};
@@ -176,9 +176,9 @@ private:
 	/**
 	 * Specialization for bind() with non-void return types.
 	 */
-	template<bool return_type_is_void, typename ... BoundArgTypes>
-	inline typename std::enable_if<not return_type_is_void>::type bind_catchexcept_impl(util::FunctionPtr<ReturnType, BoundArgTypes ..., ArgTypes ...> f, BoundArgTypes ...bound_args) {
-		this->fptr = [=](ArgTypes ...args) -> ReturnType {
+	template <bool return_type_is_void, typename... BoundArgTypes>
+	inline typename std::enable_if<not return_type_is_void>::type bind_catchexcept_impl(util::FunctionPtr<ReturnType, BoundArgTypes..., ArgTypes...> f, BoundArgTypes... bound_args) {
+		this->fptr = [=](ArgTypes... args) -> ReturnType {
 			ReturnType &&result = f.ptr(bound_args..., args...);
 			translate_exc_py_to_cpp();
 			return result;
@@ -190,62 +190,62 @@ public:
 	/**
 	 * Like bind, but does _not_ add an exception checker.
 	 */
-	template<typename ... BoundArgTypes>
-	void bind_noexcept(util::FunctionPtr<ReturnType, BoundArgTypes ..., ArgTypes ...> f, BoundArgTypes ...bound_args) {
-		this->fptr = [=](ArgTypes ...args) -> ReturnType {
+	template <typename... BoundArgTypes>
+	void bind_noexcept(util::FunctionPtr<ReturnType, BoundArgTypes..., ArgTypes...> f, BoundArgTypes... bound_args) {
+		this->fptr = [=](ArgTypes... args) -> ReturnType {
 			return f.ptr(bound_args..., args...);
 		};
 	}
 
 	// non-variadic aliases for bind, for use by Cython
-	inline void bind0(ReturnType (*f)(ArgTypes ...)) {
+	inline void bind0(ReturnType (*f)(ArgTypes...)) {
 		this->bind<>(
-			util::FunctionPtr<ReturnType, ArgTypes ...>(f));
+			util::FunctionPtr<ReturnType, ArgTypes...>(f));
 	}
 
-	inline void bind_noexcept0(ReturnType (*f)(ArgTypes ...)) {
+	inline void bind_noexcept0(ReturnType (*f)(ArgTypes...)) {
 		this->bind_noexcept<>(
-			util::FunctionPtr<ReturnType, ArgTypes ...>(f));
+			util::FunctionPtr<ReturnType, ArgTypes...>(f));
 	}
 
-	template<typename BoundArgType0>
-	inline void bind1(ReturnType (*f)(BoundArgType0, ArgTypes ...), BoundArgType0 bound_arg0) {
+	template <typename BoundArgType0>
+	inline void bind1(ReturnType (*f)(BoundArgType0, ArgTypes...), BoundArgType0 bound_arg0) {
 		this->bind<BoundArgType0>(
-			util::FunctionPtr<ReturnType, BoundArgType0, ArgTypes ...>(f), bound_arg0);
+			util::FunctionPtr<ReturnType, BoundArgType0, ArgTypes...>(f), bound_arg0);
 	}
 
-	template<typename BoundArgType0>
-	inline void bind_noexcept1(ReturnType (*f)(BoundArgType0, ArgTypes ...), BoundArgType0 bound_arg0) {
+	template <typename BoundArgType0>
+	inline void bind_noexcept1(ReturnType (*f)(BoundArgType0, ArgTypes...), BoundArgType0 bound_arg0) {
 		this->bind_noexcept<BoundArgType0>(
-			util::FunctionPtr<ReturnType, BoundArgType0, ArgTypes ...>(f), bound_arg0);
+			util::FunctionPtr<ReturnType, BoundArgType0, ArgTypes...>(f), bound_arg0);
 	}
 
-	template<typename BoundArgType0, typename BoundArgType1>
-	inline void bind2(ReturnType (*f)(BoundArgType0, BoundArgType1, ArgTypes ...), BoundArgType0 bound_arg0, BoundArgType1 bound_arg1) {
+	template <typename BoundArgType0, typename BoundArgType1>
+	inline void bind2(ReturnType (*f)(BoundArgType0, BoundArgType1, ArgTypes...), BoundArgType0 bound_arg0, BoundArgType1 bound_arg1) {
 		this->bind<BoundArgType0, BoundArgType1>(
-			util::FunctionPtr<ReturnType, BoundArgType0, BoundArgType1, ArgTypes ...>(f), bound_arg0, bound_arg1);
+			util::FunctionPtr<ReturnType, BoundArgType0, BoundArgType1, ArgTypes...>(f), bound_arg0, bound_arg1);
 	}
 
-	template<typename BoundArgType0, typename BoundArgType1>
-	inline void bind_noexcept2(ReturnType (*f)(BoundArgType0, BoundArgType1, ArgTypes ...), BoundArgType0 bound_arg0, BoundArgType1 bound_arg1) {
+	template <typename BoundArgType0, typename BoundArgType1>
+	inline void bind_noexcept2(ReturnType (*f)(BoundArgType0, BoundArgType1, ArgTypes...), BoundArgType0 bound_arg0, BoundArgType1 bound_arg1) {
 		this->bind_noexcept<BoundArgType0, BoundArgType1>(
-			util::FunctionPtr<ReturnType, BoundArgType0, BoundArgType1, ArgTypes ...>(f), bound_arg0, bound_arg1);
+			util::FunctionPtr<ReturnType, BoundArgType0, BoundArgType1, ArgTypes...>(f), bound_arg0, bound_arg1);
 	}
 
-	template<typename BoundArgType0, typename BoundArgType1, typename BoundArgType2>
-	inline void bind3(ReturnType (*f)(BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes ...), BoundArgType0 bound_arg0, BoundArgType1 bound_arg1, BoundArgType2 bound_arg2) {
+	template <typename BoundArgType0, typename BoundArgType1, typename BoundArgType2>
+	inline void bind3(ReturnType (*f)(BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes...), BoundArgType0 bound_arg0, BoundArgType1 bound_arg1, BoundArgType2 bound_arg2) {
 		this->bind<BoundArgType0, BoundArgType1, BoundArgType2>(
-			util::FunctionPtr<ReturnType, BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes ...>(f), bound_arg0, bound_arg1, bound_arg2);
+			util::FunctionPtr<ReturnType, BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes...>(f), bound_arg0, bound_arg1, bound_arg2);
 	}
 
-	template<typename BoundArgType0, typename BoundArgType1, typename BoundArgType2>
-	inline void bind_noexcept3(ReturnType (*f)(BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes ...), BoundArgType0 bound_arg0, BoundArgType1 bound_arg1, BoundArgType2 bound_arg2) {
+	template <typename BoundArgType0, typename BoundArgType1, typename BoundArgType2>
+	inline void bind_noexcept3(ReturnType (*f)(BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes...), BoundArgType0 bound_arg0, BoundArgType1 bound_arg1, BoundArgType2 bound_arg2) {
 		this->bind_noexcept<BoundArgType0, BoundArgType1, BoundArgType2>(
-			util::FunctionPtr<ReturnType, BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes ...>(f), bound_arg0, bound_arg1, bound_arg2);
+			util::FunctionPtr<ReturnType, BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes...>(f), bound_arg0, bound_arg1, bound_arg2);
 	}
 
 private:
-	std::function<ReturnType (ArgTypes ...)> fptr;
+	std::function<ReturnType(ArgTypes...)> fptr;
 };
 
 
@@ -271,7 +271,7 @@ private:
  *     void bind_noexcept2 [BT0, BT1]      (RT (*f)(BT0, BT1)               with gil, BT0, BT1     ) except +
  *     void bind_noexcept3 [BT0, BT1, BT2] (RT (*f)(BT0, BT1, BT2)          with gil, BT0, BT1, BT2) except +
  */
-template<typename RT>
+template <typename RT>
 using Func0 = Func<RT>;
 
 /*
@@ -292,7 +292,7 @@ using Func0 = Func<RT>;
  *     void bind_noexcept2 [BT0, BT1]      (RT (*f)(BT0, BT1, AT0)               with gil, BT0, BT1     ) except +
  *     void bind_noexcept3 [BT0, BT1, BT2] (RT (*f)(BT0, BT1, BT2, AT0)          with gil, BT0, BT1, BT2) except +
  */
-template<typename RT, typename AT0>
+template <typename RT, typename AT0>
 using Func1 = Func<RT, AT0>;
 
 /*
@@ -314,7 +314,7 @@ using Func1 = Func<RT, AT0>;
  *     void bind_noexcept3 [BT0, BT1, BT2] (RT (*f)(BT0, BT1, BT2, AT0, AT1)          with gil, BT0, BT1, BT2) except +
  */
 
-template<typename RT, typename AT0, typename AT1>
+template <typename RT, typename AT0, typename AT1>
 using Func2 = Func<RT, AT0, AT1>;
 
 /*
@@ -336,7 +336,7 @@ using Func2 = Func<RT, AT0, AT1>;
  *     void bind_noexcept3 [BT0, BT1, BT2] (RT (*f)(BT0, BT1, BT2, AT0, AT1, AT2)          with gil, BT0, BT1, BT2) except +
  */
 
-template<typename RT, typename AT0, typename AT1, typename AT2>
+template <typename RT, typename AT0, typename AT1, typename AT2>
 using Func3 = Func<RT, AT0, AT1, AT2>;
 
 /*
@@ -358,7 +358,7 @@ using Func3 = Func<RT, AT0, AT1, AT2>;
  *     void bind_noexcept3 [BT0, BT1, BT2] (RT (*f)(BT0, BT1, BT2, AT0, AT1, AT2, AT3)          with gil, BT0, BT1, BT2) except +
  */
 
-template<typename RT, typename AT0, typename AT1, typename AT2, typename AT3>
+template <typename RT, typename AT0, typename AT1, typename AT2, typename AT3>
 using Func4 = Func<RT, AT0, AT1, AT2, AT3>;
 
 
@@ -381,7 +381,7 @@ using Func4 = Func<RT, AT0, AT1, AT2, AT3>;
  *     void bind_noexcept3 [BT0, BT1, BT2] (RT (*f)(BT0, BT1, BT2, AT0, AT1, AT2, AT3, AT4)          with gil, BT0, BT1, BT2) except +
  */
 
-template<typename RT, typename AT0, typename AT1, typename AT2, typename AT3, typename AT4>
+template <typename RT, typename AT0, typename AT1, typename AT2, typename AT3, typename AT4>
 using Func5 = Func<RT, AT0, AT1, AT2, AT3, AT4>;
 
 
@@ -403,15 +403,16 @@ using Func5 = Func<RT, AT0, AT1, AT2, AT3, AT4>;
  * ctypedef Func4 PyIfFunc4
  * ctypedef Func5 PyIfFunc5
  */
-template<typename ReturnType, typename ... ArgTypes>
-class PyIfFunc : public Func<ReturnType, ArgTypes ...> {
+template <typename ReturnType, typename... ArgTypes>
+class PyIfFunc : public Func<ReturnType, ArgTypes...> {
 public:
 	PyIfFunc() {
 		add_py_if_component(this, [=, this]() -> bool {
 			try {
 				this->check_fptr();
 				return true;
-			} catch (Error &) {
+			}
+			catch (Error &) {
 				return false;
 			}
 		});
@@ -422,16 +423,17 @@ public:
 	}
 
 	// no copy construction!
-	PyIfFunc(const PyIfFunc<ReturnType, ArgTypes ...> &other) = delete;
-	PyIfFunc(PyIfFunc<ReturnType, ArgTypes ...> &&other) = delete;
-	PyIfFunc &operator =(const PyIfFunc<ReturnType, ArgTypes ...> &other) = delete;
-	PyIfFunc &operator =(PyIfFunc<ReturnType, ArgTypes ...> &&other) = delete;
+	PyIfFunc(const PyIfFunc<ReturnType, ArgTypes...> &other) = delete;
+	PyIfFunc(PyIfFunc<ReturnType, ArgTypes...> &&other) = delete;
+	PyIfFunc &operator=(const PyIfFunc<ReturnType, ArgTypes...> &other) = delete;
+	PyIfFunc &operator=(PyIfFunc<ReturnType, ArgTypes...> &&other) = delete;
 
 	// but you may convert this to a regular Func object.
-	operator const Func<ReturnType, ArgTypes ...> &() const {
-		return static_cast<Func<ReturnType, ArgTypes ...>>(this->fptr);
+	operator const Func<ReturnType, ArgTypes...> &() const {
+		return static_cast<Func<ReturnType, ArgTypes...>>(this->fptr);
 	}
 };
 
 
-}} // openage::pyinterface
+} // namespace pyinterface
+} // namespace openage

@@ -1,13 +1,13 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <string>
 
+#include "../util/path.h"
 #include "format.h"
 #include "resource.h"
 #include "types.h"
-#include "../util/path.h"
 
 
 namespace openage {
@@ -26,7 +26,7 @@ public:
 	                 category_t category,
 	                 int id,
 	                 const util::Path &path,
-	                 format_t format=format_t::OPUS);
+	                 format_t format = format_t::OPUS);
 	virtual ~InMemoryResource() = default;
 
 	void use() override;
@@ -35,5 +35,5 @@ public:
 	audio_chunk_t get_data(size_t position, size_t data_length) override;
 };
 
-}
-}
+} // namespace audio
+} // namespace openage

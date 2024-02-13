@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -23,7 +23,7 @@ namespace util {
  */
 class OnInit {
 public:
-	explicit OnInit(std::function<void ()> code) {
+	explicit OnInit(std::function<void()> code) {
 		code();
 	}
 
@@ -34,8 +34,8 @@ private:
 	OnInit(const OnInit &) = delete;
 	OnInit(OnInit &&) = delete;
 
-	OnInit &operator =(const OnInit &) = delete;
-	OnInit &operator =(OnInit &&) = delete;
+	OnInit &operator=(const OnInit &) = delete;
+	OnInit &operator=(OnInit &&) = delete;
 };
 
 
@@ -47,8 +47,7 @@ private:
  */
 class OnDeInit {
 public:
-	explicit OnDeInit(std::function<void ()> code)
-		:
+	explicit OnDeInit(std::function<void()> code) :
 		code{code} {}
 
 
@@ -57,15 +56,16 @@ public:
 	}
 
 private:
-	std::function<void ()> code;
+	std::function<void()> code;
 
 	// nope.
 	OnDeInit(const OnDeInit &) = delete;
 	OnDeInit(OnDeInit &&) = delete;
 
-	OnDeInit &operator =(const OnDeInit &) = delete;
-	OnDeInit &operator =(OnDeInit &&) = delete;
+	OnDeInit &operator=(const OnDeInit &) = delete;
+	OnDeInit &operator=(OnDeInit &&) = delete;
 };
 
 
-}} // openage::util
+} // namespace util
+} // namespace openage

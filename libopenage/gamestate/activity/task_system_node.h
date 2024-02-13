@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -23,7 +23,7 @@ public:
 	 * @param id Unique identifier for this node.
 	 * @param label Human-readable label (optional).
 	 * @param output Next node to visit (optional).
-     * @param system_id System to run when visiting this node (can be set later).
+	 * @param system_id System to run when visiting this node (can be set later).
 	 */
 	TaskSystemNode(node_id_t id,
 	               node_label_t label = "TaskSystem",
@@ -36,24 +36,24 @@ public:
 	}
 
 	/**
-	  * Set the current output node.
-	  *
-	  * @param output Output node.
-	  */
+	 * Set the current output node.
+	 *
+	 * @param output Output node.
+	 */
 	void add_output(const std::shared_ptr<Node> &output);
 
 	/**
-	  * Set the system id.
-      *
-      * @param system_id System to run when visiting this node.
-	  */
+	 * Set the system id.
+	 *
+	 * @param system_id System to run when visiting this node.
+	 */
 	void set_system_id(system::system_id_t system_id);
 
 	/**
-	  * Get the system id.
-	  *
-	  * @return System to run when visiting this node.
-	  */
+	 * Get the system id.
+	 *
+	 * @return System to run when visiting this node.
+	 */
 	system::system_id_t get_system_id() const;
 
 	/**
@@ -66,8 +66,8 @@ public:
 
 private:
 	/**
-     * System to run when visiting this node.
-     */
+	 * System to run when visiting this node.
+	 */
 	system::system_id_t system_id;
 };
 
