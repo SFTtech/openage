@@ -18,27 +18,62 @@
 
 namespace openage::path::tests {
 
-renderer::resources::MeshData get_cost_field_mesh(const std::shared_ptr<CostField> &field) {
+/**
+ * Create a mesh for the cost field.
+ *
+ * @param field Cost field to visualize.
+ * @param resolution Determines the number of subdivisions per grid cell. The number of
+ *                   quads per cell is resolution^2. (default = 2)
+ *
+ * @return Mesh data for the cost field.
+ */
+renderer::resources::MeshData get_cost_field_mesh(const std::shared_ptr<CostField> &field,
+                                                  size_t resolution = 2) {
 	// increase by 1 in every dimension because to get the vertex length
 	// of each dimension
-	util::Vector2s size{field->get_size() + 1, field->get_size() + 1};
+	util::Vector2s size{
+		field->get_size() * resolution + 1,
+		field->get_size() * resolution + 1,
+	};
+	auto vert_distance = 1.0f / resolution;
 
 	// add vertices for the cells of the grid
 	std::vector<float> verts{};
 	auto vert_count = size[0] * size[1];
 	verts.reserve(vert_count * 4);
-	for (int i = 0; i < (int)size[0]; ++i) {
-		for (int j = 0; j < (int)size[1]; ++j) {
+	for (int i = 0; i < static_cast<int>(size[0]); ++i) {
+		for (int j = 0; j < static_cast<int>(size[1]); ++j) {
+			// for each vertex, compare the surrounding tiles
+			std::vector<float> surround{};
+			if (j - 1 >= 0 and i - 1 >= 0) {
+				auto cost = field->get_cost((i - 1) / resolution, (j - 1) / resolution);
+				surround.push_back(cost);
+			}
+			if (j < static_cast<int>(field->get_size()) and i - 1 >= 0) {
+				auto cost = field->get_cost((i - 1) / resolution, j / resolution);
+				surround.push_back(cost);
+			}
+			if (j < static_cast<int>(field->get_size()) and i < static_cast<int>(field->get_size())) {
+				auto cost = field->get_cost(i / resolution, j / resolution);
+				surround.push_back(cost);
+			}
+			if (j - 1 >= 0 and i < static_cast<int>(field->get_size())) {
+				auto cost = field->get_cost(i / resolution, (j - 1) / resolution);
+				surround.push_back(cost);
+			}
+			// use the cost of the most expensive surrounding tile
+			auto max_cost = *std::max_element(surround.begin(), surround.end());
+
 			coord::scene3 v{
-				static_cast<float>(i),
-				static_cast<float>(j),
+				static_cast<float>(i * vert_distance),
+				static_cast<float>(j * vert_distance),
 				0,
 			};
 			auto world_v = v.to_world_space();
 			verts.push_back(world_v[0]);
 			verts.push_back(world_v[1]);
 			verts.push_back(world_v[2]);
-			verts.push_back(1.0); // TODO: push back actual cost
+			verts.push_back(max_cost); // TODO: push back actual cost
 		}
 	}
 
@@ -320,6 +355,10 @@ void path_demo_0(const util::Path &path) {
 
 	// Create the pathfinding fields
 	auto cost_field = std::make_shared<CostField>(10);
+	cost_field->set_cost(0, 0, 255);
+	cost_field->set_cost(1, 0, 254);
+	cost_field->set_cost(4, 3, 128);
+
 	auto integration_field = std::make_shared<IntegrationField>(10);
 	auto flow_field = std::make_shared<FlowField>(10);
 
@@ -351,7 +390,7 @@ void path_demo_0(const util::Path &path) {
 		camera->get_view_matrix(),
 		"proj",
 		camera->get_projection_matrix());
-	auto grid_mesh = get_grid_mesh(cost_field->get_size());
+	auto grid_mesh = get_grid_mesh(10);
 	auto grid_geometry = renderer->add_mesh_geometry(grid_mesh);
 	renderer::Renderable grid_renderable{
 		grid_unifs,
