@@ -26,7 +26,7 @@ renderer::resources::MeshData get_cost_field_mesh(const std::shared_ptr<CostFiel
 	// add vertices for the cells of the grid
 	std::vector<float> verts{};
 	auto vert_count = size[0] * size[1];
-	verts.reserve(vert_count * 3);
+	verts.reserve(vert_count * 4);
 	for (int i = 0; i < (int)size[0]; ++i) {
 		for (int j = 0; j < (int)size[1]; ++j) {
 			coord::scene3 v{
@@ -65,6 +65,66 @@ renderer::resources::MeshData get_cost_field_mesh(const std::shared_ptr<CostFiel
 		{renderer::resources::vertex_input_t::V3F32, renderer::resources::vertex_input_t::F32},
 		renderer::resources::vertex_layout_t::AOS,
 		renderer::resources::vertex_primitive_t::TRIANGLES,
+		renderer::resources::index_t::U16};
+
+	auto const vert_data_size = verts.size() * sizeof(float);
+	std::vector<uint8_t> vert_data(vert_data_size);
+	std::memcpy(vert_data.data(), verts.data(), vert_data_size);
+
+	auto const idx_data_size = idxs.size() * sizeof(uint16_t);
+	std::vector<uint8_t> idx_data(idx_data_size);
+	std::memcpy(idx_data.data(), idxs.data(), idx_data_size);
+
+	return {std::move(vert_data), std::move(idx_data), info};
+}
+
+renderer::resources::MeshData get_grid_mesh(size_t side_length) {
+	// increase by 1 in every dimension because to get the vertex length
+	// of each dimension
+	util::Vector2s size{side_length + 1, side_length + 1};
+
+	// add vertices for the cells of the grid
+	std::vector<float> verts{};
+	auto vert_count = size[0] * size[1];
+	verts.reserve(vert_count * 3);
+	for (int i = 0; i < (int)size[0]; ++i) {
+		for (int j = 0; j < (int)size[1]; ++j) {
+			coord::scene3 v{
+				static_cast<float>(i),
+				static_cast<float>(j),
+				0,
+			};
+			auto world_v = v.to_world_space();
+			verts.push_back(world_v[0]);
+			verts.push_back(world_v[1]);
+			verts.push_back(world_v[2]);
+		}
+	}
+
+	// split the grid into lines using an index array
+	std::vector<uint16_t> idxs;
+	idxs.reserve((size[0] - 1) * (size[1] - 1) * 8);
+	// iterate over all tiles in the grid by columns, i.e. starting
+	// from the left corner to the bottom corner if you imagine it from
+	// the camera's point of view
+	for (size_t i = 0; i < size[0] - 1; ++i) {
+		for (size_t j = 0; j < size[1] - 1; ++j) {
+			// since we are working on tiles, we just draw a square using the 4 vertices
+			idxs.push_back(j + i * size[1]);               // bottom left
+			idxs.push_back(j + 1 + i * size[1]);           // bottom right
+			idxs.push_back(j + 1 + i * size[1]);           // bottom right
+			idxs.push_back(j + size[1] + 1 + i * size[1]); // top right
+			idxs.push_back(j + size[1] + 1 + i * size[1]); // top right
+			idxs.push_back(j + size[1] + i * size[1]);     // top left
+			idxs.push_back(j + size[1] + i * size[1]);     // top left
+			idxs.push_back(j + i * size[1]);               // bottom left
+		}
+	}
+
+	renderer::resources::VertexInputInfo info{
+		{renderer::resources::vertex_input_t::V3F32},
+		renderer::resources::vertex_layout_t::AOS,
+		renderer::resources::vertex_primitive_t::LINES,
 		renderer::resources::index_t::U16};
 
 	auto const vert_data_size = verts.size() * sizeof(float);
@@ -133,6 +193,19 @@ void path_demo_0(const util::Path &path) {
 		renderer::resources::shader_stage_t::fragment,
 		ff_fshader_file);
 
+	// Shader for rendering the grid
+	auto grid_vshader_file = shaderdir / "demo_0_grid.vert.glsl";
+	auto grid_vshader_src = renderer::resources::ShaderSource(
+		renderer::resources::shader_lang_t::glsl,
+		renderer::resources::shader_stage_t::vertex,
+		grid_vshader_file);
+
+	auto grid_fshader_file = shaderdir / "demo_0_grid.frag.glsl";
+	auto grid_fshader_src = renderer::resources::ShaderSource(
+		renderer::resources::shader_lang_t::glsl,
+		renderer::resources::shader_stage_t::fragment,
+		grid_fshader_file);
+
 	// Shader for monocolored objects
 	auto obj_vshader_file = shaderdir / "demo_0_obj.vert.glsl";
 	auto obj_vshader_src = renderer::resources::ShaderSource(
@@ -163,6 +236,7 @@ void path_demo_0(const util::Path &path) {
 	auto cf_shader = renderer->add_shader({cf_vshader_src, cf_fshader_src});
 	auto if_shader = renderer->add_shader({if_vshader_src, if_fshader_src});
 	auto ff_shader = renderer->add_shader({ff_vshader_src, ff_fshader_src});
+	auto grid_shader = renderer->add_shader({grid_vshader_src, grid_fshader_src});
 	auto obj_shader = renderer->add_shader({obj_vshader_src, obj_fshader_src});
 	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
 
@@ -191,6 +265,18 @@ void path_demo_0(const util::Path &path) {
 	auto field_fbo = renderer->create_texture_target({field_texture, depth_texture_2});
 	auto field_pass = renderer->add_render_pass({}, field_fbo);
 
+	// Make a framebuffer for the grid render passes to draw into
+	auto grid_texture = renderer->add_texture(
+		renderer::resources::Texture2dInfo(size[0],
+	                                       size[1],
+	                                       renderer::resources::pixel_format::rgba8));
+	auto depth_texture_3 = renderer->add_texture(
+		renderer::resources::Texture2dInfo(size[0],
+	                                       size[1],
+	                                       renderer::resources::pixel_format::depth24));
+	auto grid_fbo = renderer->create_texture_target({grid_texture, depth_texture_3});
+	auto grid_pass = renderer->add_render_pass({}, grid_fbo);
+
 	// Make two objects that draw the results of the previous passes onto the screen
 	// in the display render pass
 	auto bg_texture_unif = display_shader->new_uniform_input("color_texture", background_texture);
@@ -208,7 +294,16 @@ void path_demo_0(const util::Path &path) {
 		true,
 		true,
 	};
-	auto display_pass = renderer->add_render_pass({bg_pass_obj, field_pass_obj}, renderer->get_display_target());
+	auto grid_texture_unif = display_shader->new_uniform_input("color_texture", grid_texture);
+	renderer::Renderable grid_pass_obj{
+		grid_texture_unif,
+		quad,
+		true,
+		true,
+	};
+	auto display_pass = renderer->add_render_pass(
+		{bg_pass_obj, field_pass_obj, grid_pass_obj},
+		renderer->get_display_target());
 
 	// Background object for contrast between field and display
 	auto background_unifs = obj_shader->new_uniform_input(
@@ -248,11 +343,30 @@ void path_demo_0(const util::Path &path) {
 	};
 	field_pass->add_renderables(cost_field_renderable);
 
+	// Create object for the grid
+	auto grid_unifs = grid_shader->new_uniform_input(
+		"model",
+		model,
+		"view",
+		camera->get_view_matrix(),
+		"proj",
+		camera->get_projection_matrix());
+	auto grid_mesh = get_grid_mesh(cost_field->get_size());
+	auto grid_geometry = renderer->add_mesh_geometry(grid_mesh);
+	renderer::Renderable grid_renderable{
+		grid_unifs,
+		grid_geometry,
+		true,
+		true,
+	};
+	grid_pass->add_renderables(grid_renderable);
+
 	while (not window.should_close()) {
 		qtapp->process_events();
 
 		renderer->render(background_pass);
 		renderer->render(field_pass);
+		renderer->render(grid_pass);
 		renderer->render(display_pass);
 
 		window.update();
