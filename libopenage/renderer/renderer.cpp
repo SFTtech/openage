@@ -17,7 +17,7 @@ void RenderPass::set_target(const std::shared_ptr<RenderTarget> &target) {
 	this->target = target;
 }
 
-void RenderPass::set_renderables(std::vector<Renderable> renderables) {
+void RenderPass::set_renderables(std::vector<Renderable> &&renderables) {
 	this->renderables = std::move(renderables);
 }
 

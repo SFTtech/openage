@@ -121,7 +121,7 @@ public:
 	 *
 	 * @param renderables New renderables.
 	 */
-	void set_renderables(std::vector<Renderable> renderables);
+	void set_renderables(std::vector<Renderable> &&renderables);
 
 	/**
 	 * Append a list of renderables to the objects rendered in this pass.
