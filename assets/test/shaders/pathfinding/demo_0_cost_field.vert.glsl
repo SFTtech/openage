@@ -11,5 +11,5 @@ out float v_cost;
 
 void main() {
 	gl_Position = proj * view * model * vec4(position, 1.0);
-    v_cost = cost / 256.0;
+    v_cost = cost;
 }
