@@ -32,6 +32,23 @@ public:
 	size_t get_size() const;
 
 	/**
+	 * Get the integration value at a specified position.
+	 *
+	 * @param x X coordinate.
+	 * @param y Y coordinate.
+	 * @return Integration value at the specified position.
+	 */
+	integrate_t get_cell(size_t x, size_t y) const;
+
+	/**
+	 * Get the integration value at a specified position.
+	 *
+	 * @param idx Index of the cell.
+	 * @return Integration value at the specified position.
+	 */
+	integrate_t get_cell(size_t idy) const;
+
+	/**
 	 * Calculate the integration field for a target cell.
 	 *
 	 * @param cost_field Cost field to integrate.

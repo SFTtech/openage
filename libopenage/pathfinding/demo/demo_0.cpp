@@ -73,7 +73,7 @@ renderer::resources::MeshData get_cost_field_mesh(const std::shared_ptr<CostFiel
 			verts.push_back(world_v[0]);
 			verts.push_back(world_v[1]);
 			verts.push_back(world_v[2]);
-			verts.push_back(max_cost); // TODO: push back actual cost
+			verts.push_back(max_cost);
 		}
 	}
 
@@ -113,6 +113,99 @@ renderer::resources::MeshData get_cost_field_mesh(const std::shared_ptr<CostFiel
 	return {std::move(vert_data), std::move(idx_data), info};
 }
 
+renderer::resources::MeshData get_integration_field_mesh(const std::shared_ptr<IntegrationField> &field,
+                                                         size_t resolution = 2) {
+	// increase by 1 in every dimension because to get the vertex length
+	// of each dimension
+	util::Vector2s size{
+		field->get_size() * resolution + 1,
+		field->get_size() * resolution + 1,
+	};
+	auto vert_distance = 1.0f / resolution;
+
+	// add vertices for the cells of the grid
+	std::vector<float> verts{};
+	auto vert_count = size[0] * size[1];
+	verts.reserve(vert_count * 4);
+	for (int i = 0; i < static_cast<int>(size[0]); ++i) {
+		for (int j = 0; j < static_cast<int>(size[1]); ++j) {
+			// for each vertex, compare the surrounding tiles
+			std::vector<float> surround{};
+			if (j - 1 >= 0 and i - 1 >= 0) {
+				auto cost = field->get_cell((i - 1) / resolution, (j - 1) / resolution);
+				surround.push_back(cost);
+			}
+			if (j < static_cast<int>(field->get_size()) and i - 1 >= 0) {
+				auto cost = field->get_cell((i - 1) / resolution, j / resolution);
+				surround.push_back(cost);
+			}
+			if (j < static_cast<int>(field->get_size()) and i < static_cast<int>(field->get_size())) {
+				auto cost = field->get_cell(i / resolution, j / resolution);
+				surround.push_back(cost);
+			}
+			if (j - 1 >= 0 and i < static_cast<int>(field->get_size())) {
+				auto cost = field->get_cell(i / resolution, (j - 1) / resolution);
+				surround.push_back(cost);
+			}
+			// use the cost of the most expensive surrounding tile
+			auto max_cost = *std::max_element(surround.begin(), surround.end());
+
+			coord::scene3 v{
+				static_cast<float>(i * vert_distance),
+				static_cast<float>(j * vert_distance),
+				0,
+			};
+			auto world_v = v.to_world_space();
+			verts.push_back(world_v[0]);
+			verts.push_back(world_v[1]);
+			verts.push_back(world_v[2]);
+			verts.push_back(max_cost);
+		}
+	}
+
+	// split the grid into triangles using an index array
+	std::vector<uint16_t> idxs;
+	idxs.reserve((size[0] - 1) * (size[1] - 1) * 6);
+	// iterate over all tiles in the grid by columns, i.e. starting
+	// from the left corner to the bottom corner if you imagine it from
+	// the camera's point of view
+	for (size_t i = 0; i < size[0] - 1; ++i) {
+		for (size_t j = 0; j < size[1] - 1; ++j) {
+			// since we are working on tiles, we split each tile into two triangles
+			// with counter-clockwise vertex order
+			idxs.push_back(j + i * size[1]);               // bottom left
+			idxs.push_back(j + 1 + i * size[1]);           // bottom right
+			idxs.push_back(j + size[1] + i * size[1]);     // top left
+			idxs.push_back(j + 1 + i * size[1]);           // bottom right
+			idxs.push_back(j + size[1] + 1 + i * size[1]); // top right
+			idxs.push_back(j + size[1] + i * size[1]);     // top left
+		}
+	}
+
+	renderer::resources::VertexInputInfo info{
+		{renderer::resources::vertex_input_t::V3F32, renderer::resources::vertex_input_t::F32},
+		renderer::resources::vertex_layout_t::AOS,
+		renderer::resources::vertex_primitive_t::TRIANGLES,
+		renderer::resources::index_t::U16};
+
+	auto const vert_data_size = verts.size() * sizeof(float);
+	std::vector<uint8_t> vert_data(vert_data_size);
+	std::memcpy(vert_data.data(), verts.data(), vert_data_size);
+
+	auto const idx_data_size = idxs.size() * sizeof(uint16_t);
+	std::vector<uint8_t> idx_data(idx_data_size);
+	std::memcpy(idx_data.data(), idxs.data(), idx_data_size);
+
+	return {std::move(vert_data), std::move(idx_data), info};
+}
+
+/**
+ * Create a mesh for the grid.
+ *
+ * @param side_length Length of the grid's side.
+ *
+ * @return Mesh data for the grid.
+ */
 renderer::resources::MeshData get_grid_mesh(size_t side_length) {
 	// increase by 1 in every dimension because to get the vertex length
 	// of each dimension
@@ -360,6 +453,7 @@ void path_demo_0(const util::Path &path) {
 	cost_field->set_cost(4, 3, 128);
 
 	auto integration_field = std::make_shared<IntegrationField>(10);
+	integration_field->integrate(cost_field, 7, 7);
 	auto flow_field = std::make_shared<FlowField>(10);
 
 	// Create object for the cost field
@@ -381,6 +475,24 @@ void path_demo_0(const util::Path &path) {
 		true,
 	};
 	field_pass->add_renderables(cost_field_renderable);
+
+	// Create object for the integration field
+	auto integration_field_unifs = if_shader->new_uniform_input(
+		"model",
+		model,
+		"view",
+		camera->get_view_matrix(),
+		"proj",
+		camera->get_projection_matrix());
+	auto integration_field_mesh = get_integration_field_mesh(integration_field);
+	auto integration_field_geometry = renderer->add_mesh_geometry(integration_field_mesh);
+	renderer::Renderable integration_field_renderable{
+		integration_field_unifs,
+		integration_field_geometry,
+		true,
+		true,
+	};
+	field_pass->add_renderables(integration_field_renderable);
 
 	// Create object for the grid
 	auto grid_unifs = grid_shader->new_uniform_input(
