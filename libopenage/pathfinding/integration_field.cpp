@@ -56,8 +56,8 @@ integrate_t IntegrationField::get_cell(size_t x, size_t y) const {
 	return this->cells.at(x + y * this->size);
 }
 
-integrate_t IntegrationField::get_cell(size_t idy) const {
-	return this->cells.at(idy);
+integrate_t IntegrationField::get_cell(size_t idx) const {
+	return this->cells.at(idx);
 }
 
 void IntegrationField::integrate(const std::shared_ptr<CostField> &cost_field,
