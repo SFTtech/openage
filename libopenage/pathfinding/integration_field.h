@@ -46,7 +46,7 @@ public:
 	 * @param idx Index of the cell.
 	 * @return Integration value at the specified position.
 	 */
-	integrate_t get_cell(size_t idy) const;
+	integrate_t get_cell(size_t idx) const;
 
 	/**
 	 * Calculate the integration field for a target cell.
