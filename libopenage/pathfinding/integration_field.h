@@ -83,7 +83,7 @@ private:
 	 */
 	integrate_t update_cell(size_t idx,
 	                        cost_t cell_cost,
-	                        cost_t integrate_cost);
+	                        integrate_t integrate_cost);
 
 	/**
 	 * Side length of the field.

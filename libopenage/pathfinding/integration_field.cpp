@@ -138,7 +138,7 @@ void IntegrationField::reset() {
 
 integrate_t IntegrationField::update_cell(size_t idx,
                                           cost_t cell_cost,
-                                          cost_t integrate_cost) {
+                                          integrate_t integrate_cost) {
 	ENSURE(cell_cost > COST_INIT, "cost field cell value must be non-zero");
 
 	// Check if the cell is impassable.
