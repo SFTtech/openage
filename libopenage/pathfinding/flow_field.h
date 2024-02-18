@@ -37,6 +37,26 @@ public:
 	size_t get_size() const;
 
 	/**
+	 * Get the flow field value at a specified position.
+	 *
+	 * @param x X coordinate.
+	 * @param y Y coordinate.
+	 *
+	 * @return Flowfield value at the specified position.
+	 */
+	flow_t get_cell(size_t x, size_t y) const;
+
+	/**
+	 * Get the flow field direction at a specified position.
+	 *
+	 * @param x X coordinate.
+	 * @param y Y coordinate.
+	 *
+	 * @return Flowfield direction at the specified position.
+	 */
+	flow_dir_t get_dir(size_t x, size_t y) const;
+
+	/**
 	 * Build the flow field.
 	 *
 	 * @param integrate_field Integration field.
