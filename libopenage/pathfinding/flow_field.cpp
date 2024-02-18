@@ -24,6 +24,14 @@ size_t FlowField::get_size() const {
 	return this->size;
 }
 
+flow_t FlowField::get_cell(size_t x, size_t y) const {
+	return this->cells.at(x + y * this->size);
+}
+
+flow_dir_t FlowField::get_dir(size_t x, size_t y) const {
+	return static_cast<flow_dir_t>(this->get_cell(x, y) & FLOW_DIR_MASK);
+}
+
 void FlowField::build(const std::shared_ptr<IntegrationField> &integrate_field) {
 	ENSURE(integrate_field->get_size() == this->get_size(),
 	       "integration field size "
