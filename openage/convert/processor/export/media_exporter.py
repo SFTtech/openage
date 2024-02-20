@@ -256,6 +256,12 @@ class MediaExporter:
             # Small optimization that saves some time for small exports
             worker_count = min(multiprocessing.cpu_count(), len(requests))
 
+        def error_callback(exception: Exception):
+            """
+            Error callback for the worker pool.
+            """
+            raise exception
+
         # Create a manager for sharing data between the workers and main process
         with multiprocessing.Manager() as manager:
             # Workers write the image metadata to this queue
@@ -295,7 +301,8 @@ class MediaExporter:
                             target_path,
                             *itargs
                         ),
-                        kwds=kwargs
+                        kwds=kwargs,
+                        error_callback=error_callback
                     )
 
                     # Log file information
