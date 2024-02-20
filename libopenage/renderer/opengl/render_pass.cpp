@@ -1,13 +1,18 @@
-// Copyright 2019-2023 the openage authors. See copying.md for legal info.
+// Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 #include "render_pass.h"
+
+#include "log/log.h"
+
 
 namespace openage::renderer::opengl {
 
 GlRenderPass::GlRenderPass(std::vector<Renderable> renderables,
                            const std::shared_ptr<RenderTarget> &target) :
 	RenderPass(renderables, target),
-	is_optimised(false) {}
+	is_optimised(false) {
+	log::log(MSG(dbg) << "Created OpenGL render pass");
+}
 
 const std::vector<Renderable> &GlRenderPass::get_renderables() const {
 	return this->renderables;
