@@ -1,8 +1,10 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "uniform_buffer.h"
 
 #include "error/error.h"
+#include "log/log.h"
+
 #include "renderer/opengl/context.h"
 #include "renderer/opengl/lookup.h"
 #include "renderer/opengl/texture.h"
@@ -32,6 +34,10 @@ GlUniformBuffer::GlUniformBuffer(const std::shared_ptr<GlContext> &context,
 	glBufferData(GL_UNIFORM_BUFFER, this->data_size, NULL, usage);
 
 	glBindBufferRange(GL_UNIFORM_BUFFER, this->binding_point, *this->handle, 0, this->data_size);
+
+	log::log(MSG(dbg) << "Created OpenGL uniform buffer (size: "
+	                  << this->data_size << ", binding point: "
+	                  << this->binding_point << ")");
 }
 
 GLuint GlUniformBuffer::get_binding_point() const {

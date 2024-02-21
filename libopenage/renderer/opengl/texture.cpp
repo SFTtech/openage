@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "texture.h"
 
@@ -54,7 +54,8 @@ GlTexture2d::GlTexture2d(const std::shared_ptr<GlContext> &context,
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-	log::log(MSG(dbg) << "Created OpenGL texture from data");
+	log::log(MSG(dbg) << "Created OpenGL texture from data (size: "
+	                  << size.first << "x" << size.second << ")");
 }
 
 GlTexture2d::GlTexture2d(const std::shared_ptr<GlContext> &context,
@@ -70,7 +71,7 @@ GlTexture2d::GlTexture2d(const std::shared_ptr<GlContext> &context,
 
 	auto fmt_in_out = GL_PIXEL_FORMAT.get(this->info.get_format());
 
-	auto dims = this->info.get_size();
+	auto size = this->info.get_size();
 
 	glPixelStorei(GL_UNPACK_ALIGNMENT, this->info.get_row_alignment());
 
@@ -78,8 +79,8 @@ GlTexture2d::GlTexture2d(const std::shared_ptr<GlContext> &context,
 		GL_TEXTURE_2D,
 		0,
 		std::get<0>(fmt_in_out),
-		dims.first,
-		dims.second,
+		size.first,
+		size.second,
 		0,
 		std::get<1>(fmt_in_out),
 		std::get<2>(fmt_in_out),
@@ -89,7 +90,8 @@ GlTexture2d::GlTexture2d(const std::shared_ptr<GlContext> &context,
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	log::log(MSG(dbg) << "Created OpenGL texture from parameters");
+	log::log(MSG(dbg) << "Created OpenGL texture from info parameters (size: "
+	                  << size.first << "x" << size.second << ")");
 }
 
 resources::Texture2dData GlTexture2d::into_data() {

@@ -1,6 +1,8 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #include "framebuffer.h"
+
+#include "log/log.h"
 
 #include "renderer/opengl/context.h"
 #include "renderer/opengl/texture.h"
@@ -12,6 +14,7 @@ GlFramebuffer::GlFramebuffer(const std::shared_ptr<GlContext> &context) :
 	GlSimpleObject(context,
                    [](GLuint /*handle*/) {}),
 	type{gl_framebuffer_t::display} {
+	log::log(MSG(dbg) << "Created OpenGL framebuffer with display target");
 }
 
 // TODO the validity of this object is contingent
@@ -51,6 +54,8 @@ GlFramebuffer::GlFramebuffer(const std::shared_ptr<GlContext> &context,
 	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
 		throw Error(MSG(err) << "Could not create OpenGL framebuffer.");
 	}
+
+	log::log(MSG(dbg) << "Created OpenGL framebuffer with texture targets");
 }
 
 gl_framebuffer_t GlFramebuffer::get_type() const {
