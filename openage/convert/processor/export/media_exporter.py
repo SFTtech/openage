@@ -305,13 +305,6 @@ class MediaExporter:
                         error_callback=error_callback
                     )
 
-                    # Log file information
-                    if get_loglevel() <= logging.DEBUG:
-                        MediaExporter.log_fileinfo(
-                            sourcedir[request.get_type().value, request.source_filename],
-                            exportdir[request.targetdir, request.target_filename]
-                        )
-
                     # Show progress
                     MediaExporter._show_progress(outqueue.qsize(), expected_size)
 
@@ -327,6 +320,14 @@ class MediaExporter:
 
             if handle_outqueue_func:
                 handle_outqueue_func(outqueue, requests)
+
+        # Log file information
+        if get_loglevel() <= logging.DEBUG:
+            for request in requests:
+                MediaExporter.log_fileinfo(
+                    sourcedir[request.get_type().value, request.source_filename],
+                    exportdir[request.targetdir, request.target_filename]
+                )
 
     @staticmethod
     def _get_blend_data(
