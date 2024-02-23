@@ -2,6 +2,8 @@
 
 #include "demo_0.h"
 
+#include <QKeyEvent>
+
 #include "pathfinding/cost_field.h"
 #include "pathfinding/flow_field.h"
 #include "pathfinding/integration_field.h"
@@ -595,6 +597,7 @@ void path_demo_0(const util::Path &path) {
 	flow_field->build(integration_field);
 
 	// Create object for the cost field
+	// this will be shown at the start
 	Eigen::Matrix4f model = Eigen::Matrix4f::Identity();
 	auto cost_field_unifs = cf_shader->new_uniform_input(
 		"model",
@@ -611,89 +614,117 @@ void path_demo_0(const util::Path &path) {
 		true,
 		true,
 	};
-	// field_pass->add_renderables(cost_field_renderable);
+	field_pass->add_renderables(cost_field_renderable);
 
-	// Create object for the integration field
-	auto integration_field_unifs = if_shader->new_uniform_input(
-		"model",
-		model,
-		"view",
-		camera->get_view_matrix(),
-		"proj",
-		camera->get_projection_matrix());
-	auto integration_field_mesh = get_integration_field_mesh(integration_field, 4);
-	auto integration_field_geometry = renderer->add_mesh_geometry(integration_field_mesh);
-	renderer::Renderable integration_field_renderable{
-		integration_field_unifs,
-		integration_field_geometry,
-		true,
-		true,
-	};
-	field_pass->add_renderables(integration_field_renderable);
-
-	// Create object for the flow field
-	auto flow_field_unifs = ff_shader->new_uniform_input(
-		"model",
-		model,
-		"view",
-		camera->get_view_matrix(),
-		"proj",
-		camera->get_projection_matrix(),
-		"color",
-		Eigen::Vector4f{192.0 / 256, 255.0 / 256, 64.0 / 256, 1.0});
-	auto flow_field_mesh = get_flow_field_mesh(flow_field);
-	auto flow_field_geometry = renderer->add_mesh_geometry(flow_field_mesh);
-	renderer::Renderable flow_field_renderable{
-		flow_field_unifs,
-		flow_field_geometry,
-		true,
-		true,
-	};
-	// field_pass->add_renderables(flow_field_renderable);
-
-	std::unordered_map<flow_dir_t, Eigen::Vector3f> offset_dir{
-		{flow_dir_t::NORTH, {-0.25f, 0.0f, 0.0f}},
-		{flow_dir_t::NORTH_EAST, {-0.25f, 0.0f, -0.25f}},
-		{flow_dir_t::EAST, {0.0f, 0.0f, -0.25f}},
-		{flow_dir_t::SOUTH_EAST, {0.25f, 0.0f, -0.25f}},
-		{flow_dir_t::SOUTH, {0.25f, 0.0f, 0.0f}},
-		{flow_dir_t::SOUTH_WEST, {0.25f, 0.0f, 0.25f}},
-		{flow_dir_t::WEST, {0.0f, 0.0f, 0.25f}},
-		{flow_dir_t::NORTH_WEST, {-0.25f, 0.0f, 0.25f}},
-	};
-
-	for (size_t y = 0; y < flow_field->get_size(); ++y) {
-		for (size_t x = 0; x < flow_field->get_size(); ++x) {
-			auto cell = flow_field->get_cell(x, y);
-			if (cell & FLOW_PATHABLE) {
-				Eigen::Affine3f arrow_model = Eigen::Affine3f::Identity();
-				arrow_model.translate(Eigen::Vector3f(y + 0.5, 0, -1.0f * x - 0.5));
-				auto dir = static_cast<flow_dir_t>(cell & FLOW_DIR_MASK);
-				arrow_model.translate(offset_dir[dir]);
-
-				auto rotation_rad = (cell & FLOW_DIR_MASK) * -45 * math::DEGSPERRAD;
-				arrow_model.rotate(Eigen::AngleAxisf(rotation_rad, Eigen::Vector3f::UnitY()));
-				auto arrow_unifs = ff_shader->new_uniform_input(
+	window.add_key_callback([&](const QKeyEvent &ev) {
+		if (ev.type() == QEvent::KeyRelease) {
+			if (ev.key() == Qt::Key_F1) { // Show cost field
+				// Recreate object for the cost field
+				Eigen::Matrix4f model = Eigen::Matrix4f::Identity();
+				auto cost_field_unifs = cf_shader->new_uniform_input(
 					"model",
-					arrow_model.matrix(),
+					model,
+					"view",
+					camera->get_view_matrix(),
+					"proj",
+					camera->get_projection_matrix());
+				auto cost_field_mesh = get_cost_field_mesh(cost_field);
+				auto cost_field_geometry = renderer->add_mesh_geometry(cost_field_mesh);
+				renderer::Renderable cost_field_renderable{
+					cost_field_unifs,
+					cost_field_geometry,
+					true,
+					true,
+				};
+				field_pass->set_renderables({cost_field_renderable});
+			}
+			else if (ev.key() == Qt::Key_F2) { // Show integration field
+				// Create object for the integration field
+				auto integration_field_unifs = if_shader->new_uniform_input(
+					"model",
+					model,
+					"view",
+					camera->get_view_matrix(),
+					"proj",
+					camera->get_projection_matrix());
+				auto integration_field_mesh = get_integration_field_mesh(integration_field, 4);
+				auto integration_field_geometry = renderer->add_mesh_geometry(integration_field_mesh);
+				renderer::Renderable integration_field_renderable{
+					integration_field_unifs,
+					integration_field_geometry,
+					true,
+					true,
+				};
+				field_pass->set_renderables({integration_field_renderable});
+			}
+			else if (ev.key() == Qt::Key_F3) { // Show flow field
+				// Create object for the flow field
+				auto flow_field_unifs = ff_shader->new_uniform_input(
+					"model",
+					model,
 					"view",
 					camera->get_view_matrix(),
 					"proj",
 					camera->get_projection_matrix(),
 					"color",
-					Eigen::Vector4f{0.0f, 0.0f, 0.0f, 1.0f});
-				auto arrow_mesh = get_arrow_mesh();
-				auto arrow_geometry = renderer->add_mesh_geometry(arrow_mesh);
-				renderer::Renderable arrow_renderable{
-					arrow_unifs,
-					arrow_geometry,
+					Eigen::Vector4f{192.0 / 256, 255.0 / 256, 64.0 / 256, 1.0});
+				auto flow_field_mesh = get_flow_field_mesh(flow_field);
+				auto flow_field_geometry = renderer->add_mesh_geometry(flow_field_mesh);
+				renderer::Renderable flow_field_renderable{
+					flow_field_unifs,
+					flow_field_geometry,
 					true,
 					true,
 				};
-				field_pass->add_renderables(arrow_renderable);
+				field_pass->set_renderables({flow_field_renderable});
+			}
+			else if (ev.key() == Qt::Key_F4) { // Show steering vectors
+				static const std::unordered_map<flow_dir_t, Eigen::Vector3f> offset_dir{
+					{flow_dir_t::NORTH, {-0.25f, 0.0f, 0.0f}},
+					{flow_dir_t::NORTH_EAST, {-0.25f, 0.0f, -0.25f}},
+					{flow_dir_t::EAST, {0.0f, 0.0f, -0.25f}},
+					{flow_dir_t::SOUTH_EAST, {0.25f, 0.0f, -0.25f}},
+					{flow_dir_t::SOUTH, {0.25f, 0.0f, 0.0f}},
+					{flow_dir_t::SOUTH_WEST, {0.25f, 0.0f, 0.25f}},
+					{flow_dir_t::WEST, {0.0f, 0.0f, 0.25f}},
+					{flow_dir_t::NORTH_WEST, {-0.25f, 0.0f, 0.25f}},
+				};
+
+				for (size_t y = 0; y < flow_field->get_size(); ++y) {
+					for (size_t x = 0; x < flow_field->get_size(); ++x) {
+						auto cell = flow_field->get_cell(x, y);
+						if (cell & FLOW_PATHABLE) {
+							Eigen::Affine3f arrow_model = Eigen::Affine3f::Identity();
+							arrow_model.translate(Eigen::Vector3f(y + 0.5, 0, -1.0f * x - 0.5));
+							auto dir = static_cast<flow_dir_t>(cell & FLOW_DIR_MASK);
+							arrow_model.translate(offset_dir.at(dir));
+
+							auto rotation_rad = (cell & FLOW_DIR_MASK) * -45 * math::DEGSPERRAD;
+							arrow_model.rotate(Eigen::AngleAxisf(rotation_rad, Eigen::Vector3f::UnitY()));
+							auto arrow_unifs = ff_shader->new_uniform_input(
+								"model",
+								arrow_model.matrix(),
+								"view",
+								camera->get_view_matrix(),
+								"proj",
+								camera->get_projection_matrix(),
+								"color",
+								Eigen::Vector4f{0.0f, 0.0f, 0.0f, 1.0f});
+							auto arrow_mesh = get_arrow_mesh();
+							auto arrow_geometry = renderer->add_mesh_geometry(arrow_mesh);
+							renderer::Renderable arrow_renderable{
+								arrow_unifs,
+								arrow_geometry,
+								true,
+								true,
+							};
+							field_pass->add_renderables(arrow_renderable);
+						}
+					}
+				}
 			}
 		}
-	}
+	});
 
 	// Create object for the grid
 	auto grid_unifs = grid_shader->new_uniform_input(
