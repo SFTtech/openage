@@ -72,6 +72,11 @@ public:
 
 private:
 	/**
+	 * Reset the flow field values for rebuilding the field.
+	 */
+	void reset();
+
+	/**
 	 * Side length of the field.
 	 */
 	size_t size;
