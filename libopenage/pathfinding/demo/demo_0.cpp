@@ -3,6 +3,7 @@
 #include "demo_0.h"
 
 #include <QKeyEvent>
+#include <QMouseEvent>
 
 #include "pathfinding/cost_field.h"
 #include "pathfinding/flow_field.h"
@@ -595,6 +596,27 @@ void path_demo_0(const util::Path &path) {
 	integration_field->integrate(cost_field, 7, 7);
 	auto flow_field = std::make_shared<FlowField>(10);
 	flow_field->build(integration_field);
+
+	window.add_mouse_button_callback([&](const QMouseEvent &ev) {
+		if (ev.type() == QEvent::MouseButtonRelease) {
+			if (ev.button() == Qt::RightButton) {
+				auto grid_plane_normal = Eigen::Vector3f{0, 1, 0};
+				auto grid_plane_point = Eigen::Vector3f{0, 0, 0};
+				auto camera_direction = renderer::camera::cam_direction;
+				auto camera_position = camera->get_input_pos(
+					coord::input{ev.position().x(), ev.position().y()});
+
+				Eigen::Vector3f intersect = camera_position + camera_direction * (grid_plane_point - camera_position).dot(grid_plane_normal) / camera_direction.dot(grid_plane_normal);
+				auto grid_x = static_cast<int>(-1 * intersect[2]);
+				auto grid_y = static_cast<int>(intersect[0]);
+
+				if (grid_x >= 0 && grid_x < 10 && grid_y >= 0 && grid_y < 10) {
+					integration_field->integrate(cost_field, grid_x, grid_y);
+					flow_field->build(integration_field);
+				}
+			}
+		}
+	});
 
 	// Create object for the cost field
 	// this will be shown at the start
