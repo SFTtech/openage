@@ -62,9 +62,11 @@ def main(argv=None):
     )
 
     if sys.platform == 'win32':
+        import inspect
         cli.add_argument(
             "--add-dll-search-path", action='append', dest='dll_paths',
-            default=[os.getcwd()],
+            # use path of current openage executable as default
+            default=[os.path.dirname(os.path.abspath(inspect.getsourcefile(lambda: 0)))],
             help="(Windows only) provide additional DLL search path")
 
     cli.add_argument("--version", "-V", action='store_true', dest='print_version',
