@@ -69,6 +69,10 @@ void path_demo_0(const util::Path &path) {
 		}
 	});
 
+	// Make steering vector visibility toggleable
+	auto vectors_visible = false;
+
+	// Enable key callbacks
 	window->add_key_callback([&](const QKeyEvent &ev) {
 		if (ev.type() == QEvent::KeyRelease) {
 			if (ev.key() == Qt::Key_F1) { // Show cost field
@@ -81,7 +85,14 @@ void path_demo_0(const util::Path &path) {
 				render_manager->show_flow_field(flow_field);
 			}
 			else if (ev.key() == Qt::Key_F4) { // Show steering vectors
-				render_manager->show_vectors(flow_field);
+				if (vectors_visible) {
+					render_manager->hide_vectors();
+					vectors_visible = false;
+				}
+				else {
+					render_manager->show_vectors(flow_field);
+					vectors_visible = true;
+				}
 			}
 		}
 	});
@@ -119,6 +130,7 @@ void RenderManager::run() {
 
 		this->renderer->render(this->background_pass);
 		this->renderer->render(this->field_pass);
+		this->renderer->render(this->vector_pass);
 		this->renderer->render(this->grid_pass);
 		this->renderer->render(this->display_pass);
 
@@ -203,6 +215,7 @@ void RenderManager::show_vectors(const std::shared_ptr<path::FlowField> &field) 
 		{flow_dir_t::NORTH_WEST, {-0.25f, 0.0f, 0.25f}},
 	};
 
+	this->vector_pass->clear_renderables();
 	for (size_t y = 0; y < field->get_size(); ++y) {
 		for (size_t x = 0; x < field->get_size(); ++x) {
 			auto cell = field->get_cell(x, y);
@@ -231,10 +244,14 @@ void RenderManager::show_vectors(const std::shared_ptr<path::FlowField> &field) 
 					true,
 					true,
 				};
-				field_pass->add_renderables(arrow_renderable);
+				this->vector_pass->add_renderables(arrow_renderable);
 			}
 		}
 	}
+}
+
+void RenderManager::hide_vectors() {
+	this->vector_pass->clear_renderables();
 }
 
 std::pair<int, int> RenderManager::select_tile(double x, double y) {
@@ -369,7 +386,7 @@ void RenderManager::init_passes() {
 	};
 	this->background_pass = renderer->add_render_pass({background_obj}, fbo);
 
-	// Make a framebuffer for the field render passes to draw into
+	// Make a framebuffer for the field render pass to draw into
 	auto field_texture = renderer->add_texture(
 		renderer::resources::Texture2dInfo(size[0],
 	                                       size[1],
@@ -381,8 +398,8 @@ void RenderManager::init_passes() {
 	auto field_fbo = renderer->create_texture_target({field_texture, depth_texture_2});
 	this->field_pass = renderer->add_render_pass({}, field_fbo);
 
-	// Make a framebuffer for the grid render passes to draw into
-	auto grid_texture = renderer->add_texture(
+	// Make a framebuffer for the vector render passes to draw into
+	auto vector_texture = renderer->add_texture(
 		renderer::resources::Texture2dInfo(size[0],
 	                                       size[1],
 	                                       renderer::resources::pixel_format::rgba8));
@@ -390,7 +407,19 @@ void RenderManager::init_passes() {
 		renderer::resources::Texture2dInfo(size[0],
 	                                       size[1],
 	                                       renderer::resources::pixel_format::depth24));
-	auto grid_fbo = renderer->create_texture_target({grid_texture, depth_texture_3});
+	auto vector_fbo = renderer->create_texture_target({vector_texture, depth_texture_3});
+	this->vector_pass = renderer->add_render_pass({}, vector_fbo);
+
+	// Make a framebuffer for the grid render passes to draw into
+	auto grid_texture = renderer->add_texture(
+		renderer::resources::Texture2dInfo(size[0],
+	                                       size[1],
+	                                       renderer::resources::pixel_format::rgba8));
+	auto depth_texture_4 = renderer->add_texture(
+		renderer::resources::Texture2dInfo(size[0],
+	                                       size[1],
+	                                       renderer::resources::pixel_format::depth24));
+	auto grid_fbo = renderer->create_texture_target({grid_texture, depth_texture_4});
 
 	// Create object for the grid
 	Eigen::Matrix4f model = Eigen::Matrix4f::Identity();
@@ -428,6 +457,13 @@ void RenderManager::init_passes() {
 		true,
 		true,
 	};
+	auto vector_texture_unif = display_shader->new_uniform_input("color_texture", vector_texture);
+	renderer::Renderable vector_pass_obj{
+		vector_texture_unif,
+		quad,
+		true,
+		true,
+	};
 	auto grid_texture_unif = display_shader->new_uniform_input("color_texture", grid_texture);
 	renderer::Renderable grid_pass_obj{
 		grid_texture_unif,
@@ -436,7 +472,7 @@ void RenderManager::init_passes() {
 		true,
 	};
 	this->display_pass = renderer->add_render_pass(
-		{bg_pass_obj, field_pass_obj, grid_pass_obj},
+		{bg_pass_obj, field_pass_obj, vector_pass_obj, grid_pass_obj},
 		renderer->get_display_target());
 }
 

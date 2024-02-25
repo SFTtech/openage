@@ -98,6 +98,11 @@ public:
 	void show_vectors(const std::shared_ptr<path::FlowField> &field);
 
 	/**
+	 * Hide drawn steering vectors.
+	 */
+	void hide_vectors();
+
+	/**
 	 * Get the cell coordinates at a given screen position.
 	 *
 	 * @param x X coordinate.
@@ -239,6 +244,11 @@ private:
 	 * Field pass: Renders the cost, integration and flow fields.
 	 */
 	std::shared_ptr<renderer::RenderPass> field_pass;
+
+	/**
+	 * Vector pass: Renders the steering vectors of a flow field.
+	 */
+	std::shared_ptr<renderer::RenderPass> vector_pass;
 
 	/**
 	 * Grid pass: Renders a grid on top of the fields.
