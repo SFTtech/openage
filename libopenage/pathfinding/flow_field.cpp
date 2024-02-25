@@ -3,6 +3,7 @@
 #include "flow_field.h"
 
 #include "error/error.h"
+#include "log/log.h"
 
 #include "pathfinding/integration_field.h"
 
@@ -12,6 +13,7 @@ namespace openage::path {
 FlowField::FlowField(size_t size) :
 	size{size},
 	cells(this->size * this->size, 0) {
+	log::log(DBG << "Created flow field with size " << this->size << "x" << this->size);
 }
 
 FlowField::FlowField(const std::shared_ptr<IntegrationField> &integrate_field) :
@@ -131,6 +133,8 @@ void FlowField::reset() {
 	for (auto &cell : this->cells) {
 		cell = 0;
 	}
+
+	log::log(DBG << "Flow field has been reset");
 }
 
 } // namespace openage::path
