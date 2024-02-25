@@ -262,7 +262,7 @@ void RenderManager::show_vectors(const std::shared_ptr<path::FlowField> &field) 
 	for (size_t y = 0; y < field->get_size(); ++y) {
 		for (size_t x = 0; x < field->get_size(); ++x) {
 			auto cell = field->get_cell(x, y);
-			if (cell & FLOW_PATHABLE) {
+			if (cell & FLOW_PATHABLE_MASK) {
 				Eigen::Affine3f arrow_model = Eigen::Affine3f::Identity();
 				arrow_model.translate(Eigen::Vector3f(y + 0.5, 0, -1.0f * x - 0.5));
 				auto dir = static_cast<flow_dir_t>(cell & FLOW_DIR_MASK);

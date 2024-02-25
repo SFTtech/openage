@@ -332,15 +332,15 @@ void flow_field() {
 	// | SE | X  | S |
 	// | E  | E  | N |
 	auto ff_expected = std::vector<flow_t>{
-		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::EAST),
-		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
-		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::SOUTH),
-		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
+		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::EAST),
+		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
+		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH),
+		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
 		0,
-		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::SOUTH),
-		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::EAST),
-		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::EAST),
-		FLOW_PATHABLE | static_cast<uint8_t>(flow_dir_t::NORTH),
+		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH),
+		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::EAST),
+		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::EAST),
+		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::NORTH),
 	};
 
 	// Test the different field types

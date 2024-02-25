@@ -12,13 +12,13 @@ namespace openage::path {
 
 FlowField::FlowField(size_t size) :
 	size{size},
-	cells(this->size * this->size, 0) {
+	cells(this->size * this->size, FLOW_INIT) {
 	log::log(DBG << "Created flow field with size " << this->size << "x" << this->size);
 }
 
 FlowField::FlowField(const std::shared_ptr<IntegrationField> &integrate_field) :
 	size{integrate_field->get_size()},
-	cells(this->size * this->size, 0) {
+	cells(this->size * this->size, FLOW_INIT) {
 	this->build(integrate_field);
 }
 
@@ -117,7 +117,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integrate_field) 
 			}
 
 			// Set the flow field cell to pathable.
-			flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE;
+			flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
 
 			// Set the flow field cell to the direction of the smallest cost.
 			flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(direction);
@@ -131,7 +131,7 @@ const std::vector<flow_t> &FlowField::get_cells() const {
 
 void FlowField::reset() {
 	for (auto &cell : this->cells) {
-		cell = 0;
+		cell = FLOW_INIT;
 	}
 
 	log::log(DBG << "Flow field has been reset");

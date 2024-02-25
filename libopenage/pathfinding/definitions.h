@@ -60,6 +60,11 @@ enum class flow_dir_t : uint8_t {
 };
 
 /**
+ * Initial value for a flow field cell.
+ */
+constexpr flow_t FLOW_INIT = 0;
+
+/**
  * Mask for the flow direction bits in a flow_t value.
  */
 constexpr flow_t FLOW_DIR_MASK = 0x0F;
@@ -67,11 +72,11 @@ constexpr flow_t FLOW_DIR_MASK = 0x0F;
 /**
  * Mask for the pathable flag in a flow_t value.
  */
-constexpr flow_t FLOW_PATHABLE = 0x10;
+constexpr flow_t FLOW_PATHABLE_MASK = 0x10;
 
 /**
  * Mask for the line of sight flag in a flow_t value.
  */
-constexpr flow_t FLOW_LOS = 0x20;
+constexpr flow_t FLOW_LOS_MASK = 0x20;
 
 } // namespace openage::path
