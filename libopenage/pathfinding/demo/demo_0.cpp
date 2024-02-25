@@ -50,7 +50,7 @@ void path_demo_0(const util::Path &path) {
 
 	// Render the grid and the pathfinding results
 	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
-	auto window = std::make_shared<renderer::opengl::GlWindow>("openage pathfinding test", 1440, 720, true);
+	auto window = std::make_shared<renderer::opengl::GlWindow>("openage pathfinding test", 1440, 720);
 	auto render_manager = std::make_shared<RenderManager>(qtapp, window, path);
 
 	// Show the cost field on startup
