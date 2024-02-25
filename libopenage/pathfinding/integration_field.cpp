@@ -13,7 +13,7 @@ namespace openage::path {
 
 IntegrationField::IntegrationField(size_t size) :
 	size{size},
-	cells(this->size * this->size, INTEGRATE_UNREACHABLE) {
+	cells(this->size * this->size, INTEGRATE_INIT) {
 	log::log(DBG << "Created integration field with size " << this->size << "x" << this->size);
 }
 
@@ -21,17 +21,17 @@ size_t IntegrationField::get_size() const {
 	return this->size;
 }
 
-integrate_t IntegrationField::get_cell(size_t x, size_t y) const {
+const integrate_t &IntegrationField::get_cell(size_t x, size_t y) const {
 	return this->cells.at(x + y * this->size);
 }
 
-integrate_t IntegrationField::get_cell(size_t idx) const {
+const integrate_t &IntegrationField::get_cell(size_t idx) const {
 	return this->cells.at(idx);
 }
 
-void IntegrationField::integrate(const std::shared_ptr<CostField> &cost_field,
-                                 size_t target_x,
-                                 size_t target_y) {
+void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_field,
+                                      size_t target_x,
+                                      size_t target_y) {
 	ENSURE(cost_field->get_size() == this->get_size(),
 	       "cost field size "
 	           << cost_field->get_size() << "x" << cost_field->get_size()
@@ -57,7 +57,7 @@ void IntegrationField::integrate(const std::shared_ptr<CostField> &cost_field,
 	neighbors.reserve(4);
 
 	// Move outwards from the target cell, updating the integration field
-	this->cells[target_idx] = INTEGRATE_START;
+	this->cells[target_idx].cost = INTEGRATED_COST_START;
 	open_list.push_back(target_idx);
 	while (!open_list.empty()) {
 		auto idx = open_list.front();
@@ -67,7 +67,7 @@ void IntegrationField::integrate(const std::shared_ptr<CostField> &cost_field,
 		auto x = idx % this->size;
 		auto y = idx / this->size;
 
-		auto integrated_current = this->cells[idx];
+		auto integrated_current = this->cells.at(idx).cost;
 
 		// Get the neighbors of the current cell
 		if (y > 0) {
@@ -106,37 +106,35 @@ const std::vector<integrate_t> &IntegrationField::get_cells() const {
 
 void IntegrationField::reset() {
 	for (auto &cell : this->cells) {
-		cell = INTEGRATE_UNREACHABLE;
+		cell = INTEGRATE_INIT;
 	}
 	log::log(DBG << "Integration field has been reset");
 }
 
-integrate_t IntegrationField::update_neighbor(size_t idx,
-                                              cost_t cell_cost,
-                                              integrate_t integrated_cost,
-                                              std::deque<size_t> &open_list,
-                                              std::unordered_set<size_t> &in_list) {
+void IntegrationField::update_neighbor(size_t idx,
+                                       cost_t cell_cost,
+                                       integrated_cost_t integrated_cost,
+                                       std::deque<size_t> &open_list,
+                                       std::unordered_set<size_t> &in_list) {
 	ENSURE(cell_cost > COST_INIT, "cost field cell value must be non-zero");
 
 	// Check if the cell is impassable
 	// then we don't need to update the integration field
 	if (cell_cost == COST_IMPASSABLE) {
-		return INTEGRATE_UNREACHABLE;
+		return;
 	}
 
-	auto integrated = integrated_cost + cell_cost;
-	if (integrated < this->cells.at(idx)) {
+	auto cost = integrated_cost + cell_cost;
+	if (cost < this->cells.at(idx).cost) {
 		// If the new integration value is smaller than the current one,
 		// update the cell and add it to the open list
-		this->cells[idx] = integrated;
+		this->cells[idx].cost = cost;
 
 		if (not in_list.contains(idx)) {
 			in_list.insert(idx);
 			open_list.push_back(idx);
 		}
 	}
-
-	return integrated;
 }
 
 
