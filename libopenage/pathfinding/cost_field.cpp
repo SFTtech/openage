@@ -3,6 +3,7 @@
 #include "cost_field.h"
 
 #include "error/error.h"
+#include "log/log.h"
 
 #include "pathfinding/definitions.h"
 
@@ -12,6 +13,7 @@ namespace openage::path {
 CostField::CostField(size_t size) :
 	size{size},
 	cells(this->size * this->size, COST_MIN) {
+	log::log(DBG << "Created cost field with size " << this->size << "x" << this->size);
 }
 
 size_t CostField::get_size() const {

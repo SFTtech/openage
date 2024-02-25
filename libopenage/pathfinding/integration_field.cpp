@@ -3,6 +3,7 @@
 #include "integration_field.h"
 
 #include "error/error.h"
+#include "log/log.h"
 
 #include "pathfinding/cost_field.h"
 #include "pathfinding/definitions.h"
@@ -13,6 +14,7 @@ namespace openage::path {
 IntegrationField::IntegrationField(size_t size) :
 	size{size},
 	cells(this->size * this->size, INTEGRATE_UNREACHABLE) {
+	log::log(DBG << "Created integration field with size " << this->size << "x" << this->size);
 }
 
 size_t IntegrationField::get_size() const {
@@ -106,6 +108,7 @@ void IntegrationField::reset() {
 	for (auto &cell : this->cells) {
 		cell = INTEGRATE_UNREACHABLE;
 	}
+	log::log(DBG << "Integration field has been reset");
 }
 
 integrate_t IntegrationField::update_neighbor(size_t idx,
