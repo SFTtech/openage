@@ -590,6 +590,19 @@ constexpr double hypot(openage::util::FixedPoint<I, F> x, openage::util::FixedPo
 }
 
 template <typename I, unsigned F>
+constexpr openage::util::FixedPoint<I, F> pow(openage::util::FixedPoint<I, F> base, double exponent) {
+	// Handle special cases: 0^0, 1^x, x^0
+	if (base == 0.0 && exponent == 0.0) {
+		return openage::util::FixedPoint<I, F>::quiet_NaN(); // Undefined; return NaN
+	} else if (base == 1.0 || exponent == 0.0) {
+		return openage::util::FixedPoint<I, F>::from_raw_value(1);
+	}
+	double log_base = std::log(base.get_raw_value());
+	double result = exponent * log_base;
+	return openage::util::FixedPoint<I, F>::from_raw_value(std::exp(result));
+}
+
+template <typename I, unsigned F>
 struct hash<openage::util::FixedPoint<I, F>> {
 	constexpr size_t operator()(const openage::util::FixedPoint<I, F> &n) const {
 		return std::hash<I>{}(n.raw_value);
