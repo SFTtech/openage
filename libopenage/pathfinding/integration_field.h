@@ -3,7 +3,9 @@
 #pragma once
 
 #include <cstddef>
+#include <deque>
 #include <memory>
+#include <unordered_set>
 #include <vector>
 
 #include "pathfinding/types.h"
@@ -73,17 +75,19 @@ private:
 	void reset();
 
 	/**
-	 * Update a cell in the integration field.
+	 * Update a neigbor cell during the integration process.
 	 *
-	 * @param idx Index of the cell that is updated.
-	 * @param cell_cost Cost of the cell from the cost field.
-	 * @param integrate_cost Integrated cost of the updating cell in the integration field.
+	 * @param idx Index of the neighbor cell that is updated.
+	 * @param cell_cost Cost of the neighbor cell from the cost field.
+	 * @param integrated_cost Current integrated cost of the updating cell in the integration field.
 	 *
 	 * @return New integration value of the cell.
 	 */
-	integrate_t update_cell(size_t idx,
-	                        cost_t cell_cost,
-	                        integrate_t integrate_cost);
+	integrate_t update_neighbor(size_t idx,
+	                            cost_t cell_cost,
+	                            integrate_t integrated_cost,
+	                            std::deque<size_t> &open_list,
+	                            std::unordered_set<size_t> &in_list);
 
 	/**
 	 * Side length of the field.
