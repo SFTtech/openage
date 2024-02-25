@@ -37,25 +37,33 @@ void path_demo_0(const util::Path &path) {
 	cost_field->set_cost(4, 4, 128);
 	cost_field->set_cost(5, 4, 128);
 	cost_field->set_cost(6, 4, 128);
+	log::log(INFO << "Created cost field");
 
 	// Create an integration field from the cost field
 	auto integration_field = std::make_shared<IntegrationField>(field_length);
+	log::log(INFO << "Created integration field");
 
 	// Set cell (7, 7) to be the target cell
 	integration_field->integrate(cost_field, 7, 7);
+	log::log(INFO << "Calculated integration field for target cell (7, 7)");
 
 	// Create a flow field from the integration field
 	auto flow_field = std::make_shared<FlowField>(field_length);
+	log::log(INFO << "Created flow field");
+
 	flow_field->build(integration_field);
+	log::log(INFO << "Built flow field from integration field");
 
 	// Render the grid and the pathfinding results
 	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
 	auto window = std::make_shared<renderer::opengl::GlWindow>("openage pathfinding test", 1440, 720);
 	auto render_manager = std::make_shared<RenderManager>(qtapp, window, path);
+	log::log(INFO << "Created RenderManager for pathfinding demo");
 
 	// Show the cost field on startup
 	render_manager->show_cost_field(cost_field);
 	auto current_field = RenderManager::field_t::COST;
+	log::log(INFO << "Showing cost field");
 
 	// Make steering vector visibility toggleable
 	auto vectors_visible = false;
@@ -69,9 +77,15 @@ void path_demo_0(const util::Path &path) {
 				auto grid_y = tile_pos.second;
 
 				if (grid_x >= 0 and grid_x < field_length and grid_y >= 0 and grid_y < field_length) {
+					log::log(INFO << "Selected new target cell (" << grid_x << ", " << grid_y << ")");
+
 					// Recalculate the integration field and the flow field
 					integration_field->integrate(cost_field, grid_x, grid_y);
+					log::log(INFO << "Calculated integration field for target cell ("
+					              << grid_x << ", " << grid_y << ")");
+
 					flow_field->build(integration_field);
+					log::log(INFO << "Built flow field from integration field");
 
 					// Show the new field values and vectors
 					switch (current_field) {
@@ -100,27 +114,36 @@ void path_demo_0(const util::Path &path) {
 			if (ev.key() == Qt::Key_F1) { // Show cost field
 				render_manager->show_cost_field(cost_field);
 				current_field = RenderManager::field_t::COST;
+				log::log(INFO << "Showing cost field");
 			}
 			else if (ev.key() == Qt::Key_F2) { // Show integration field
 				render_manager->show_integration_field(integration_field);
 				current_field = RenderManager::field_t::INTEGRATION;
+				log::log(INFO << "Showing integration field");
 			}
 			else if (ev.key() == Qt::Key_F3) { // Show flow field
 				render_manager->show_flow_field(flow_field);
 				current_field = RenderManager::field_t::FLOW;
+				log::log(INFO << "Showing flow field");
 			}
 			else if (ev.key() == Qt::Key_F4) { // Show steering vectors
 				if (vectors_visible) {
 					render_manager->hide_vectors();
 					vectors_visible = false;
+					log::log(INFO << "Hiding steering vectors");
 				}
 				else {
 					render_manager->show_vectors(flow_field);
 					vectors_visible = true;
+					log::log(INFO << "Showing steering vectors");
 				}
 			}
 		}
 	});
+
+	log::log(INFO << "Instructions:");
+	log::log(INFO << "  1. Press F1/F2/F3 to show cost/integration/flow field");
+	log::log(INFO << "  2. Press F4 to toggle steering vectors");
 
 	// Run the render loop
 	render_manager->run();
