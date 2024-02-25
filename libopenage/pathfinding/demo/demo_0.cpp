@@ -53,6 +53,13 @@ void path_demo_0(const util::Path &path) {
 	auto window = std::make_shared<renderer::opengl::GlWindow>("openage pathfinding test", 1440, 720, true);
 	auto render_manager = std::make_shared<RenderManager>(qtapp, window, path);
 
+	// Show the cost field on startup
+	render_manager->show_cost_field(cost_field);
+	auto current_field = RenderManager::field_t::COST;
+
+	// Make steering vector visibility toggleable
+	auto vectors_visible = false;
+
 	// Enable mouse button callbacks
 	window->add_mouse_button_callback([&](const QMouseEvent &ev) {
 		if (ev.type() == QEvent::MouseButtonRelease) {
@@ -62,27 +69,45 @@ void path_demo_0(const util::Path &path) {
 				auto grid_y = tile_pos.second;
 
 				if (grid_x >= 0 and grid_x < field_length and grid_y >= 0 and grid_y < field_length) {
+					// Recalculate the integration field and the flow field
 					integration_field->integrate(cost_field, grid_x, grid_y);
 					flow_field->build(integration_field);
+
+					// Show the new field values and vectors
+					switch (current_field) {
+					case RenderManager::field_t::COST:
+						render_manager->show_cost_field(cost_field);
+						break;
+					case RenderManager::field_t::INTEGRATION:
+						render_manager->show_integration_field(integration_field);
+						break;
+					case RenderManager::field_t::FLOW:
+						render_manager->show_flow_field(flow_field);
+						break;
+					}
+
+					if (vectors_visible) {
+						render_manager->show_vectors(flow_field);
+					}
 				}
 			}
 		}
 	});
-
-	// Make steering vector visibility toggleable
-	auto vectors_visible = false;
 
 	// Enable key callbacks
 	window->add_key_callback([&](const QKeyEvent &ev) {
 		if (ev.type() == QEvent::KeyRelease) {
 			if (ev.key() == Qt::Key_F1) { // Show cost field
 				render_manager->show_cost_field(cost_field);
+				current_field = RenderManager::field_t::COST;
 			}
 			else if (ev.key() == Qt::Key_F2) { // Show integration field
 				render_manager->show_integration_field(integration_field);
+				current_field = RenderManager::field_t::INTEGRATION;
 			}
 			else if (ev.key() == Qt::Key_F3) { // Show flow field
 				render_manager->show_flow_field(flow_field);
+				current_field = RenderManager::field_t::FLOW;
 			}
 			else if (ev.key() == Qt::Key_F4) { // Show steering vectors
 				if (vectors_visible) {
@@ -96,9 +121,6 @@ void path_demo_0(const util::Path &path) {
 			}
 		}
 	});
-
-	// Show the cost field on startup
-	render_manager->show_cost_field(cost_field);
 
 	// Run the render loop
 	render_manager->run();

@@ -52,6 +52,12 @@ void path_demo_0(const util::Path &path);
  */
 class RenderManager {
 public:
+	enum class field_t {
+		COST,
+		INTEGRATION,
+		FLOW
+	};
+
 	/**
 	 * Create a new render manager.
 	 *
