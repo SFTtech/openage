@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-statements
 """
@@ -44,12 +44,14 @@ def add_dll_search_paths(dll_paths):
         for handle in dll_path_handles:
             handle.close()
 
-    if sys.platform == 'win32' and dll_paths is not None:
-        import atexit
-        win_dll_path_handles = []
-        for addtional_path in dll_paths:
-            win_dll_path_handles.append(os.add_dll_directory(addtional_path))
-        atexit.register(close_windows_dll_path_handles, win_dll_path_handles)
+    if sys.platform != 'win32' or dll_paths is None:
+        return
+
+    import atexit
+    win_dll_path_handles = []
+    for addtional_path in dll_paths:
+        win_dll_path_handles.append(os.add_dll_directory(addtional_path))
+    atexit.register(close_windows_dll_path_handles, win_dll_path_handles)
 
 
 def main(argv=None):
@@ -60,8 +62,11 @@ def main(argv=None):
     )
 
     if sys.platform == 'win32':
+        import inspect
         cli.add_argument(
             "--add-dll-search-path", action='append', dest='dll_paths',
+            # use path of current openage executable as default
+            default=[os.path.dirname(os.path.abspath(inspect.getsourcefile(lambda: 0)))],
             help="(Windows only) provide additional DLL search path")
 
     cli.add_argument("--version", "-V", action='store_true', dest='print_version',
