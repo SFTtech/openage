@@ -47,21 +47,77 @@ namespace tests {
 void path_demo_0(const util::Path &path);
 
 
+/**
+ * Manages the graphical display of the pathfinding demo.
+ */
 class RenderManager {
 public:
+	/**
+	 * Create a new render manager.
+	 *
+	 * @param app GUI application.
+	 * @param window Window to render to.
+	 * @param path Path to the project rootdir.
+	 */
 	RenderManager(const std::shared_ptr<renderer::gui::GuiApplicationWithLogger> &app,
 	              const std::shared_ptr<renderer::Window> &window,
 	              const util::Path &path);
 	~RenderManager() = default;
 
+	/**
+	 * Run the render loop.
+	 */
 	void run();
 
+	/**
+	 * Draw a cost field to the screen.
+	 *
+	 * @param field Cost field.
+	 */
 	void show_cost_field(const std::shared_ptr<path::CostField> &field);
+
+	/**
+	 * Draw an integration field to the screen.
+	 *
+	 * @param field Integration field.
+	 */
 	void show_integration_field(const std::shared_ptr<path::IntegrationField> &field);
+
+	/**
+	 * Draw a flow field to the screen.
+	 *
+	 * @param field Flow field.
+	 */
 	void show_flow_field(const std::shared_ptr<path::FlowField> &field);
 
+	/**
+	 * Draw the steering vectors of a flow field to the screen.
+	 *
+	 * @param field Flow field.
+	 */
+	void show_vectors(const std::shared_ptr<path::FlowField> &field);
+
+	/**
+	 * Get the cell coordinates at a given screen position.
+	 *
+	 * @param x X coordinate.
+	 * @param y Y coordinate.
+	 */
+	std::pair<int, int> select_tile(double x, double y);
+
 private:
+	/**
+	 * Load the shader sources for the demo and create the shader programs.
+	 */
 	void init_shaders();
+
+	/**
+	 * Create the following render passes for the demo:
+	 *   - Background pass: Mono-colored background object.
+	 *   - Field pass; Renders the cost, integration and flow fields.
+	 *   - Grid pass: Renders a grid on top of the fields.
+	 *   - Display pass: Draws the results of previous passes to the screen.
+	 */
 	void init_passes();
 
 
@@ -113,24 +169,85 @@ private:
 	 */
 	static renderer::resources::MeshData get_grid_mesh(size_t side_length);
 
-
+	/**
+	 * Path to the project rootdir.
+	 */
 	const util::Path &path;
 
+	/* Renderer objects */
+
+	/**
+	 * Qt GUI application.
+	 */
 	std::shared_ptr<renderer::gui::GuiApplicationWithLogger> app;
+
+	/**
+	 * openage window to render to.
+	 */
 	std::shared_ptr<renderer::Window> window;
+
+	/**
+	 * openage renderer instance.
+	 */
 	std::shared_ptr<renderer::Renderer> renderer;
+
+	/**
+	 * Camera to view the scene.
+	 */
 	std::shared_ptr<renderer::camera::Camera> camera;
 
+	/* Shader programs */
+
+	/**
+	 * Shader program for rendering a cost field.
+	 */
 	std::shared_ptr<renderer::ShaderProgram> cost_shader;
+
+	/**
+	 * Shader program for rendering a integration field.
+	 */
 	std::shared_ptr<renderer::ShaderProgram> integration_shader;
+
+	/**
+	 * Shader program for rendering a flow field.
+	 */
 	std::shared_ptr<renderer::ShaderProgram> flow_shader;
+
+	/**
+	 * Shader program for rendering a grid.
+	 */
 	std::shared_ptr<renderer::ShaderProgram> grid_shader;
+
+	/**
+	 * Shader program for rendering mono-colored objects.
+	 */
 	std::shared_ptr<renderer::ShaderProgram> obj_shader;
+
+	/**
+	 * Shader program for rendering the final display.
+	 */
 	std::shared_ptr<renderer::ShaderProgram> display_shader;
 
+	/* Render passes */
+
+	/**
+	 * Background pass: Mono-colored background object.
+	 */
 	std::shared_ptr<renderer::RenderPass> background_pass;
+
+	/**
+	 * Field pass: Renders the cost, integration and flow fields.
+	 */
 	std::shared_ptr<renderer::RenderPass> field_pass;
+
+	/**
+	 * Grid pass: Renders a grid on top of the fields.
+	 */
 	std::shared_ptr<renderer::RenderPass> grid_pass;
+
+	/**
+	 * Display pass: Draws the results of previous passes to the screen.
+	 */
 	std::shared_ptr<renderer::RenderPass> display_pass;
 };
 
