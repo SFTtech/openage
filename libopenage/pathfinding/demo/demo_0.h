@@ -219,12 +219,17 @@ private:
 	std::shared_ptr<renderer::ShaderProgram> flow_shader;
 
 	/**
+	 * Shader program for rendering steering vectors.
+	 */
+	std::shared_ptr<renderer::ShaderProgram> vector_shader;
+
+	/**
 	 * Shader program for rendering a grid.
 	 */
 	std::shared_ptr<renderer::ShaderProgram> grid_shader;
 
 	/**
-	 * Shader program for rendering mono-colored objects.
+	 * Shader program for rendering 2D mono-colored objects.
 	 */
 	std::shared_ptr<renderer::ShaderProgram> obj_shader;
 

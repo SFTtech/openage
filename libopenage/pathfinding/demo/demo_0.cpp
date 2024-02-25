@@ -189,9 +189,7 @@ void RenderManager::show_flow_field(const std::shared_ptr<path::FlowField> &fiel
 		"view",
 		this->camera->get_view_matrix(),
 		"proj",
-		this->camera->get_projection_matrix(),
-		"color",
-		Eigen::Vector4f{192.0 / 256, 255.0 / 256, 64.0 / 256, 1.0});
+		this->camera->get_projection_matrix());
 	auto mesh = get_flow_field_mesh(field);
 	auto geometry = this->renderer->add_mesh_geometry(mesh);
 	renderer::Renderable renderable{
@@ -227,7 +225,7 @@ void RenderManager::show_vectors(const std::shared_ptr<path::FlowField> &field) 
 
 				auto rotation_rad = (cell & FLOW_DIR_MASK) * -45 * math::DEGSPERRAD;
 				arrow_model.rotate(Eigen::AngleAxisf(rotation_rad, Eigen::Vector3f::UnitY()));
-				auto arrow_unifs = this->flow_shader->new_uniform_input(
+				auto arrow_unifs = this->vector_shader->new_uniform_input(
 					"model",
 					arrow_model.matrix(),
 					"view",
@@ -311,6 +309,19 @@ void RenderManager::init_shaders() {
 		renderer::resources::shader_stage_t::fragment,
 		ff_fshader_file);
 
+	// Shader for rendering steering vectors
+	auto vec_vshader_file = shaderdir / "demo_0_vector.vert.glsl";
+	auto vec_vshader_src = renderer::resources::ShaderSource(
+		renderer::resources::shader_lang_t::glsl,
+		renderer::resources::shader_stage_t::vertex,
+		vec_vshader_file);
+
+	auto vec_fshader_file = shaderdir / "demo_0_vector.frag.glsl";
+	auto vec_fshader_src = renderer::resources::ShaderSource(
+		renderer::resources::shader_lang_t::glsl,
+		renderer::resources::shader_stage_t::fragment,
+		vec_fshader_file);
+
 	// Shader for rendering the grid
 	auto grid_vshader_file = shaderdir / "demo_0_grid.vert.glsl";
 	auto grid_vshader_src = renderer::resources::ShaderSource(
@@ -324,7 +335,7 @@ void RenderManager::init_shaders() {
 		renderer::resources::shader_stage_t::fragment,
 		grid_fshader_file);
 
-	// Shader for monocolored objects
+	// Shader for 2D monocolored objects
 	auto obj_vshader_file = shaderdir / "demo_0_obj.vert.glsl";
 	auto obj_vshader_src = renderer::resources::ShaderSource(
 		renderer::resources::shader_lang_t::glsl,
@@ -354,6 +365,7 @@ void RenderManager::init_shaders() {
 	this->cost_shader = renderer->add_shader({cf_vshader_src, cf_fshader_src});
 	this->integration_shader = renderer->add_shader({if_vshader_src, if_fshader_src});
 	this->flow_shader = renderer->add_shader({ff_vshader_src, ff_fshader_src});
+	this->vector_shader = renderer->add_shader({vec_vshader_src, vec_fshader_src});
 	this->grid_shader = renderer->add_shader({grid_vshader_src, grid_fshader_src});
 	this->obj_shader = renderer->add_shader({obj_vshader_src, obj_fshader_src});
 	this->display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
