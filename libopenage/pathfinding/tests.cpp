@@ -346,14 +346,14 @@ void flow_field() {
 	// Test the different field types
 	{
 		auto integration_field = std::make_shared<IntegrationField>(3);
-		integration_field->integrate(cost_field, 2, 2);
+		integration_field->integrate_cost(cost_field, 2, 2);
 		auto int_cells = integration_field->get_cells();
 
 		// The integration field should look like:
 		// | 4 | 3 | 2 |
 		// | 3 | X | 1 |
 		// | 2 | 1 | 0 |
-		auto int_expected = std::vector<integrate_t>{
+		auto int_expected = std::vector<integrated_cost_t>{
 			4,
 			3,
 			2,
@@ -367,7 +367,7 @@ void flow_field() {
 
 		// Compare the integration field cells with the expected values
 		for (size_t i = 0; i < int_cells.size(); i++) {
-			TESTEQUALS(int_cells[i], int_expected[i]);
+			TESTEQUALS(int_cells[i].cost, int_expected[i]);
 		}
 
 		// Build the flow field

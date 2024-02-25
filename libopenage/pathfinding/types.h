@@ -17,9 +17,32 @@ namespace openage::path {
 using cost_t = uint8_t;
 
 /**
- * Total integrated cost in the integration field.
+ * Integrated cost in the integration field.
  */
-using integrate_t = uint16_t;
+using integrated_cost_t = uint16_t;
+
+/**
+ * Integrated field cell flags.
+ */
+using integrated_flags_t = uint8_t;
+
+/**
+ * Integration field cell value.
+ */
+struct integrate_t {
+	/**
+	 * Total integrated cost.
+	 */
+	integrated_cost_t cost;
+
+	/**
+	 * Flags.
+	 *
+	 * Bit 6: Wave front blocked flag.
+	 * Bit 7: Line of sight flag.
+	 */
+	integrated_flags_t flags;
+};
 
 /**
  * Flow field cell value.

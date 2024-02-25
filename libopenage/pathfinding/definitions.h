@@ -35,12 +35,27 @@ constexpr cost_t COST_IMPASSABLE = 255;
 /**
  * Start value for goal cells.
  */
-const integrate_t INTEGRATE_START = 0;
+const integrated_cost_t INTEGRATED_COST_START = 0;
 
 /**
  * Unreachable value for a cells in the integration grid.
  */
-constexpr integrate_t INTEGRATE_UNREACHABLE = std::numeric_limits<integrate_t>::max();
+constexpr integrated_cost_t INTEGRATED_COST_UNREACHABLE = std::numeric_limits<integrated_cost_t>::max();
+
+/**
+ * Line of sight flag in an integrated_flags_t value.
+ */
+constexpr integrated_flags_t INTEGRATE_LOS_MASK = 0x01;
+
+/**
+ * Wavefront blocked flag in an integrated_flags_t value.
+ */
+constexpr integrated_flags_t INTEGRATE_WAVEFRONT_BLOCKED_MASK = 0x02;
+
+/**
+ * Initial value for a cell in the integration grid.
+ */
+constexpr integrate_t INTEGRATE_INIT = {INTEGRATED_COST_UNREACHABLE, 0};
 
 
 /**
@@ -70,12 +85,12 @@ constexpr flow_t FLOW_INIT = 0;
 constexpr flow_t FLOW_DIR_MASK = 0x0F;
 
 /**
- * Mask for the pathable flag in a flow_t value.
+ * Pathable flag in a flow_t value.
  */
 constexpr flow_t FLOW_PATHABLE_MASK = 0x10;
 
 /**
- * Mask for the line of sight flag in a flow_t value.
+ * Line of sight flag in a flow_t value.
  */
 constexpr flow_t FLOW_LOS_MASK = 0x20;
 

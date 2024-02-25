@@ -40,7 +40,7 @@ public:
 	 * @param y Y coordinate.
 	 * @return Integration value at the specified position.
 	 */
-	integrate_t get_cell(size_t x, size_t y) const;
+	const integrate_t &get_cell(size_t x, size_t y) const;
 
 	/**
 	 * Get the integration value at a specified position.
@@ -48,7 +48,7 @@ public:
 	 * @param idx Index of the cell.
 	 * @return Integration value at the specified position.
 	 */
-	integrate_t get_cell(size_t idx) const;
+	const integrate_t &get_cell(size_t idx) const;
 
 	/**
 	 * Calculate the integration field for a target cell.
@@ -57,9 +57,9 @@ public:
 	 * @param target_x X coordinate of the target cell.
 	 * @param target_y Y coordinate of the target cell.
 	 */
-	void integrate(const std::shared_ptr<CostField> &cost_field,
-	               size_t target_x,
-	               size_t target_y);
+	void integrate_cost(const std::shared_ptr<CostField> &cost_field,
+	                    size_t target_x,
+	                    size_t target_y);
 
 	/**
 	 * Get the integration field values.
@@ -83,11 +83,11 @@ private:
 	 *
 	 * @return New integration value of the cell.
 	 */
-	integrate_t update_neighbor(size_t idx,
-	                            cost_t cell_cost,
-	                            integrate_t integrated_cost,
-	                            std::deque<size_t> &open_list,
-	                            std::unordered_set<size_t> &in_list);
+	void update_neighbor(size_t idx,
+	                     cost_t cell_cost,
+	                     integrated_cost_t integrated_cost,
+	                     std::deque<size_t> &open_list,
+	                     std::unordered_set<size_t> &in_list);
 
 	/**
 	 * Side length of the field.

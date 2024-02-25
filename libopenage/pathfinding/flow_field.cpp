@@ -51,65 +51,65 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integrate_field) 
 		for (size_t x = 0; x < this->size; ++x) {
 			size_t idx = y * this->size + x;
 
-			if (integrate_cells[idx] == INTEGRATE_UNREACHABLE) {
+			if (integrate_cells[idx].cost == INTEGRATED_COST_UNREACHABLE) {
 				// Cell cannot be used as path
 				continue;
 			}
 
 			// Find the neighbor with the smallest cost.
 			flow_dir_t direction;
-			integrate_t smallest_cost = INTEGRATE_UNREACHABLE;
+			auto smallest_cost = INTEGRATED_COST_UNREACHABLE;
 			if (y > 0) {
-				integrate_t cost = integrate_cells[idx - this->size];
+				auto cost = integrate_cells[idx - this->size].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::NORTH;
 				}
 			}
 			if (x < this->size - 1 && y > 0) {
-				integrate_t cost = integrate_cells[idx - this->size + 1];
+				auto cost = integrate_cells[idx - this->size + 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::NORTH_EAST;
 				}
 			}
 			if (x < this->size - 1) {
-				integrate_t cost = integrate_cells[idx + 1];
+				auto cost = integrate_cells[idx + 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::EAST;
 				}
 			}
 			if (x < this->size - 1 && y < this->size - 1) {
-				integrate_t cost = integrate_cells[idx + this->size + 1];
+				auto cost = integrate_cells[idx + this->size + 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::SOUTH_EAST;
 				}
 			}
 			if (y < this->size - 1) {
-				integrate_t cost = integrate_cells[idx + this->size];
+				auto cost = integrate_cells[idx + this->size].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::SOUTH;
 				}
 			}
 			if (x > 0 && y < this->size - 1) {
-				integrate_t cost = integrate_cells[idx + this->size - 1];
+				auto cost = integrate_cells[idx + this->size - 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::SOUTH_WEST;
 				}
 			}
 			if (x > 0) {
-				integrate_t cost = integrate_cells[idx - 1];
+				auto cost = integrate_cells[idx - 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::WEST;
 				}
 			}
 			if (x > 0 && y > 0) {
-				integrate_t cost = integrate_cells[idx - this->size - 1];
+				auto cost = integrate_cells[idx - this->size - 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::NORTH_WEST;

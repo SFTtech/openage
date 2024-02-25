@@ -44,7 +44,7 @@ void path_demo_0(const util::Path &path) {
 	log::log(INFO << "Created integration field");
 
 	// Set cell (7, 7) to be the target cell
-	integration_field->integrate(cost_field, 7, 7);
+	integration_field->integrate_cost(cost_field, 7, 7);
 	log::log(INFO << "Calculated integration field for target cell (7, 7)");
 
 	// Create a flow field from the integration field
@@ -80,7 +80,7 @@ void path_demo_0(const util::Path &path) {
 					log::log(INFO << "Selected new target cell (" << grid_x << ", " << grid_y << ")");
 
 					// Recalculate the integration field and the flow field
-					integration_field->integrate(cost_field, grid_x, grid_y);
+					integration_field->integrate_cost(cost_field, grid_x, grid_y);
 					log::log(INFO << "Calculated integration field for target cell ("
 					              << grid_x << ", " << grid_y << ")");
 
@@ -638,19 +638,19 @@ renderer::resources::MeshData RenderManager::get_integration_field_mesh(const st
 			// for each vertex, compare the surrounding tiles
 			std::vector<float> surround{};
 			if (j - 1 >= 0 and i - 1 >= 0) {
-				auto cost = field->get_cell((i - 1) / resolution, (j - 1) / resolution);
+				auto cost = field->get_cell((i - 1) / resolution, (j - 1) / resolution).cost;
 				surround.push_back(cost);
 			}
 			if (j < static_cast<int>(field->get_size()) and i - 1 >= 0) {
-				auto cost = field->get_cell((i - 1) / resolution, j / resolution);
+				auto cost = field->get_cell((i - 1) / resolution, j / resolution).cost;
 				surround.push_back(cost);
 			}
 			if (j < static_cast<int>(field->get_size()) and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cell(i / resolution, j / resolution);
+				auto cost = field->get_cell(i / resolution, j / resolution).cost;
 				surround.push_back(cost);
 			}
 			if (j - 1 >= 0 and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cell(i / resolution, (j - 1) / resolution);
+				auto cost = field->get_cell(i / resolution, (j - 1) / resolution).cost;
 				surround.push_back(cost);
 			}
 			// use the cost of the most expensive surrounding tile
