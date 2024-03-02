@@ -41,9 +41,6 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integrate_field) 
 	           << " does not match flow field size "
 	           << this->get_size() << "x" << this->get_size());
 
-	// Reset the flow field.
-	this->reset();
-
 	auto &integrate_cells = integrate_field->get_cells();
 	auto &flow_cells = this->cells;
 

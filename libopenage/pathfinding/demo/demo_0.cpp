@@ -80,10 +80,12 @@ void path_demo_0(const util::Path &path) {
 					log::log(INFO << "Selected new target cell (" << grid_x << ", " << grid_y << ")");
 
 					// Recalculate the integration field and the flow field
+					integration_field->reset();
 					integration_field->integrate_cost(cost_field, grid_x, grid_y);
 					log::log(INFO << "Calculated integration field for target cell ("
 					              << grid_x << ", " << grid_y << ")");
 
+					flow_field->reset();
 					flow_field->build(integration_field);
 					log::log(INFO << "Built flow field from integration field");
 
@@ -302,7 +304,7 @@ std::pair<int, int> RenderManager::select_tile(double x, double y) {
 	auto grid_plane_point = Eigen::Vector3f{0, 0, 0};
 	auto camera_direction = renderer::camera::cam_direction;
 	auto camera_position = camera->get_input_pos(
-		coord::input{x, y});
+		coord::input(x, y));
 
 	Eigen::Vector3f intersect = camera_position + camera_direction * (grid_plane_point - camera_position).dot(grid_plane_normal) / camera_direction.dot(grid_plane_normal);
 	auto grid_x = static_cast<int>(-1 * intersect[2]);
