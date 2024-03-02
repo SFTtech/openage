@@ -51,6 +51,17 @@ public:
 	const integrate_t &get_cell(size_t idx) const;
 
 	/**
+	 * Calculate the line-of-sight cells for a target cell.
+	 *
+	 * @param cost_field Cost field to integrate.
+	 * @param target_x X coordinate of the target cell.
+	 * @param target_y Y coordinate of the target cell.
+	 */
+	void integrate_los(const std::shared_ptr<CostField> &cost_field,
+	                   size_t target_x,
+	                   size_t target_y);
+
+	/**
 	 * Calculate the integration field for a target cell.
 	 *
 	 * @param cost_field Cost field to integrate.

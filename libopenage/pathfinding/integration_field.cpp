@@ -29,6 +29,74 @@ const integrate_t &IntegrationField::get_cell(size_t idx) const {
 	return this->cells.at(idx);
 }
 
+void IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_field,
+                                     size_t target_x,
+                                     size_t target_y) {
+	ENSURE(cost_field->get_size() == this->get_size(),
+	       "cost field size "
+	           << cost_field->get_size() << "x" << cost_field->get_size()
+	           << " does not match integration field size "
+	           << this->get_size() << "x" << this->get_size());
+
+	// Reset the integration field
+	this->reset();
+
+
+	// Target cell index
+	auto target_idx = target_x + target_y * this->size;
+
+	// Lookup table for cells that have been found
+	std::unordered_set<size_t> found;
+	found.reserve(this->size * this->size);
+
+	// Cells that still have to be visited
+	std::deque<size_t> open_list;
+
+	// Move outwards from the target cell, updating the integration field
+	open_list.push_back(target_idx);
+	while (!open_list.empty()) {
+		auto idx = open_list.front();
+		open_list.pop_front();
+
+		if (found.contains(idx)) {
+			// Skip cells that have already been found
+			continue;
+		}
+
+		// Get the x and y coordinates of the current cell
+		auto x = idx % this->size;
+		auto y = idx / this->size;
+
+		// Get the cost of the current cell
+		auto cell_cost = cost_field->get_cost(idx);
+
+		if (cell_cost > COST_MIN) {
+			// TODO: stop the LOS search and check for LOS corners
+			continue;
+		}
+
+		// Set the LOS flag of the current cell
+		this->cells[idx].flags |= INTEGRATE_LOS_MASK;
+
+		// Search the neighbors of the current cell
+		if (y > 0) {
+			open_list.push_back(idx - this->size);
+		}
+		if (x > 0) {
+			open_list.push_back(idx - 1);
+		}
+		if (y < this->size - 1) {
+			open_list.push_back(idx + this->size);
+		}
+		if (x < this->size - 1) {
+			open_list.push_back(idx + 1);
+		}
+
+		// Add the current cell to the found cells
+		found.insert(idx);
+	}
+}
+
 void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_field,
                                       size_t target_x,
                                       size_t target_y) {
