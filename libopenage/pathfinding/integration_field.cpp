@@ -38,10 +38,6 @@ void IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_fiel
 	           << " does not match integration field size "
 	           << this->get_size() << "x" << this->get_size());
 
-	// Reset the integration field
-	this->reset();
-
-
 	// Target cell index
 	auto target_idx = target_x + target_y * this->size;
 
@@ -105,9 +101,6 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 	           << cost_field->get_size() << "x" << cost_field->get_size()
 	           << " does not match integration field size "
 	           << this->get_size() << "x" << this->get_size());
-
-	// Reset the integration field
-	this->reset();
 
 	// Target cell index
 	auto target_idx = target_x + target_y * this->size;

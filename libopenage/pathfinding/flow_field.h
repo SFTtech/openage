@@ -70,12 +70,12 @@ public:
 	 */
 	const std::vector<flow_t> &get_cells() const;
 
-private:
 	/**
 	 * Reset the flow field values for rebuilding the field.
 	 */
 	void reset();
 
+private:
 	/**
 	 * Side length of the field.
 	 */

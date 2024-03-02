@@ -79,12 +79,12 @@ public:
 	 */
 	const std::vector<integrate_t> &get_cells() const;
 
-private:
 	/**
 	 * Reset the integration field for a new integration.
 	 */
 	void reset();
 
+private:
 	/**
 	 * Update a neigbor cell during the integration process.
 	 *
