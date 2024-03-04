@@ -2,6 +2,8 @@
 
 #include "integration_field.h"
 
+#include <cmath>
+
 #include "error/error.h"
 #include "log/log.h"
 
@@ -58,6 +60,13 @@ void IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_fiel
 			// Skip cells that have already been found
 			continue;
 		}
+		else if (this->cells[idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
+			// Skip cells that are blocked by a LOS corner
+			continue;
+		}
+
+		// Add the current cell to the found cells
+		found.insert(idx);
 
 		// Get the x and y coordinates of the current cell
 		auto x = idx % this->size;
@@ -67,7 +76,16 @@ void IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_fiel
 		auto cell_cost = cost_field->get_cost(idx);
 
 		if (cell_cost > COST_MIN) {
-			// TODO: stop the LOS search and check for LOS corners
+			// check each neighbor for a corner
+			auto corners = this->get_los_corners(cost_field, target_x, target_y, x, y);
+
+			for (auto &corner : corners) {
+				auto blocked_cells = this->bresenhams_line(target_x, target_y, corner.first, corner.second);
+				for (auto &blocked_idx : blocked_cells) {
+					this->cells[blocked_idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
+				}
+			}
+
 			continue;
 		}
 
@@ -87,9 +105,6 @@ void IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_fiel
 		if (x < this->size - 1) {
 			open_list.push_back(idx + 1);
 		}
-
-		// Add the current cell to the found cells
-		found.insert(idx);
 	}
 }
 
@@ -196,6 +211,228 @@ void IntegrationField::update_neighbor(size_t idx,
 			open_list.push_back(idx);
 		}
 	}
+}
+
+std::vector<std::pair<size_t, size_t>> IntegrationField::get_los_corners(const std::shared_ptr<CostField> &cost_field,
+                                                                         size_t target_x,
+                                                                         size_t target_y,
+                                                                         size_t blocker_x,
+                                                                         size_t blocker_y) {
+	std::vector<std::pair<size_t, size_t>> corners;
+
+	// Get the cost of the blocking cell's neighbors
+
+	// Set all costs to MAX at the beginning
+	auto top_cost = COST_MAX;
+	auto left_cost = COST_MAX;
+	auto bottom_cost = COST_MAX;
+	auto right_cost = COST_MAX;
+
+	std::pair<size_t, size_t> top_left{blocker_x, blocker_y};
+	std::pair<size_t, size_t> top_right{blocker_x + 1, blocker_y};
+	std::pair<size_t, size_t> bottom_left{blocker_x, blocker_y + 1};
+	std::pair<size_t, size_t> bottom_right{blocker_x + 1, blocker_y + 1};
+
+	// Get neighbor costs (if they exist)
+	if (blocker_y > 0) {
+		top_cost = cost_field->get_cost(blocker_x, blocker_y - 1);
+	}
+	if (blocker_x > 0) {
+		left_cost = cost_field->get_cost(blocker_x - 1, blocker_y);
+	}
+	if (blocker_y < this->size - 1) {
+		bottom_cost = cost_field->get_cost(blocker_x, blocker_y + 1);
+	}
+	if (blocker_x < this->size - 1) {
+		right_cost = cost_field->get_cost(blocker_x + 1, blocker_y);
+	}
+
+	// Check which corners are blocking LOS
+	// TODO: Currently super complicated and could likely be optimized
+	if (blocker_x == target_x) {
+		// blocking cell is parallel to target on y-axis
+		if (blocker_y < target_y) {
+			if (left_cost == COST_MIN) {
+				// top
+				corners.push_back(bottom_left);
+			}
+			if (right_cost == COST_MIN) {
+				// top
+				corners.push_back(bottom_right);
+			}
+		}
+		else {
+			if (left_cost == COST_MIN) {
+				// bottom
+				corners.push_back(top_left);
+			}
+			if (right_cost == COST_MIN) {
+				// bottom
+				corners.push_back(top_right);
+			}
+		}
+	}
+	else if (blocker_y == target_y) {
+		// blocking cell is parallel to target on x-axis
+		if (blocker_x < target_x) {
+			if (top_cost == COST_MIN) {
+				// right
+				corners.push_back(top_right);
+			}
+			if (bottom_cost == COST_MIN) {
+				// right
+				corners.push_back(bottom_right);
+			}
+		}
+		else {
+			if (top_cost == COST_MIN) {
+				// left
+				corners.push_back(top_left);
+			}
+			if (bottom_cost == COST_MIN) {
+				// left
+				corners.push_back(bottom_left);
+			}
+		}
+	}
+	else {
+		// blocking cell is diagonal to target on
+		if (blocker_x < target_x) {
+			if (blocker_y < target_y) {
+				// top and right
+				if (top_cost == COST_MIN and right_cost == COST_MIN) {
+					// right
+					corners.push_back(top_right);
+				}
+				if (left_cost == COST_MIN and bottom_cost == COST_MIN) {
+					// bottom
+					corners.push_back(bottom_left);
+				}
+			}
+			else {
+				// bottom and right
+				if (bottom_cost == COST_MIN and right_cost == COST_MIN) {
+					// right
+					corners.push_back(bottom_right);
+				}
+				if (left_cost == COST_MIN and top_cost == COST_MIN) {
+					// top
+					corners.push_back(top_left);
+				}
+			}
+		}
+		else {
+			if (blocker_y < target_y) {
+				// top and left
+				if (top_cost == COST_MIN and left_cost == COST_MIN) {
+					// left
+					corners.push_back(top_left);
+				}
+				if (right_cost == COST_MIN and bottom_cost == COST_MIN) {
+					// bottom
+					corners.push_back(bottom_right);
+				}
+			}
+			else {
+				// bottom and left
+				if (bottom_cost == COST_MIN and left_cost == COST_MIN) {
+					// left
+					corners.push_back(bottom_left);
+				}
+				if (right_cost == COST_MIN and top_cost == COST_MIN) {
+					// top
+					corners.push_back(top_right);
+				}
+			}
+		}
+	}
+
+	return corners;
+}
+
+std::vector<size_t> IntegrationField::bresenhams_line(int target_x,
+                                                      int target_y,
+                                                      int corner_x,
+                                                      int corner_y) {
+	std::vector<size_t> cells;
+
+	auto x = corner_x;
+	auto y = corner_y;
+	double tx = target_x + 0.5;
+	double ty = target_y + 0.5;
+	double dx = std::abs(tx - corner_x);
+	double dy = std::abs(ty - corner_y);
+	auto m = dy / dx;
+
+	auto error = 0.5;
+
+	// Check which direction the line is going
+	if (corner_x < tx) {
+		if (corner_y < ty) {
+			// left and up
+			y -= 1;
+			while (x > 0 and y > 0) {
+				if (error > 1.0) {
+					y -= 1;
+					error -= 1.0;
+				}
+				else {
+					x -= 1;
+					error += m;
+				}
+				cells.push_back(x + y * this->size);
+			}
+		}
+		else {
+			// left and down
+			while (x > 0 and y < this->size - 1) {
+				if (error > 1.0) {
+					y += 1;
+					error -= 1.0;
+				}
+				else {
+					x -= 1;
+					error += m;
+				}
+				cells.push_back(x + y * this->size);
+			}
+		}
+	}
+	else {
+		if (corner_y < ty) {
+			// right and up
+			x -= 1;
+			y -= 1;
+			while (x < this->size - 1 and y > 0) {
+				if (error > 1.0) {
+					y -= 1;
+					error -= 1.0;
+				}
+				else {
+					x += 1;
+					error += m;
+				}
+				cells.push_back(x + y * this->size);
+			}
+		}
+		else {
+			// right and down
+			x -= 1;
+			while (x < this->size - 1 and y < this->size - 1) {
+				if (error > 1.0) {
+					y += 1;
+					error -= 1.0;
+				}
+				else {
+					x += 1;
+					error += m;
+				}
+				cells.push_back(x + y * this->size);
+			}
+		}
+	}
+
+	return cells;
 }
 
 
