@@ -222,11 +222,11 @@ std::vector<std::pair<size_t, size_t>> IntegrationField::get_los_corners(const s
 
 	// Get the cost of the blocking cell's neighbors
 
-	// Set all costs to MAX at the beginning
-	auto top_cost = COST_MAX;
-	auto left_cost = COST_MAX;
-	auto bottom_cost = COST_MAX;
-	auto right_cost = COST_MAX;
+	// Set all costs to IMPASSABLE at the beginning
+	auto top_cost = COST_IMPASSABLE;
+	auto left_cost = COST_IMPASSABLE;
+	auto bottom_cost = COST_IMPASSABLE;
+	auto right_cost = COST_IMPASSABLE;
 
 	std::pair<size_t, size_t> top_left{blocker_x, blocker_y};
 	std::pair<size_t, size_t> top_right{blocker_x + 1, blocker_y};
