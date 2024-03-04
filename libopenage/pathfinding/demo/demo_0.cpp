@@ -44,6 +44,7 @@ void path_demo_0(const util::Path &path) {
 	log::log(INFO << "Created integration field");
 
 	// Set cell (7, 7) to be the target cell
+	integration_field->integrate_los(cost_field, 7, 7);
 	integration_field->integrate_cost(cost_field, 7, 7);
 	log::log(INFO << "Calculated integration field for target cell (7, 7)");
 
@@ -81,6 +82,7 @@ void path_demo_0(const util::Path &path) {
 
 					// Recalculate the integration field and the flow field
 					integration_field->reset();
+					integration_field->integrate_los(cost_field, grid_x, grid_y);
 					integration_field->integrate_cost(cost_field, grid_x, grid_y);
 					log::log(INFO << "Calculated integration field for target cell ("
 					              << grid_x << ", " << grid_y << ")");
@@ -237,7 +239,7 @@ void RenderManager::show_flow_field(const std::shared_ptr<path::FlowField> &fiel
 		this->camera->get_view_matrix(),
 		"proj",
 		this->camera->get_projection_matrix());
-	auto mesh = get_flow_field_mesh(field);
+	auto mesh = get_flow_field_mesh(field, 4);
 	auto geometry = this->renderer->add_mesh_geometry(mesh);
 	renderer::Renderable renderable{
 		unifs,

@@ -56,7 +56,12 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integrate_field) 
 			if (integrate_cells[idx].flags & INTEGRATE_LOS_MASK) {
 				// Cell is in line of sight
 				this->cells[idx] = this->cells[idx] | FLOW_LOS_MASK;
-				// continue;
+				continue;
+			}
+
+			if (integrate_cells[idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
+				// Cell is blocked by a line-of-sight corner
+				this->cells[idx] = this->cells[idx] | FLOW_WAVEFRONT_BLOCKED_MASK;
 			}
 
 			// Find the neighbor with the smallest cost.

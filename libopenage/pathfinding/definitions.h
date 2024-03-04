@@ -94,4 +94,9 @@ constexpr flow_t FLOW_PATHABLE_MASK = 0x10;
  */
 constexpr flow_t FLOW_LOS_MASK = 0x20;
 
+/**
+ * Wavefront blocked flag in a flow_t value.
+ */
+constexpr flow_t FLOW_WAVEFRONT_BLOCKED_MASK = 0x40;
+
 } // namespace openage::path
