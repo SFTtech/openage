@@ -53,24 +53,39 @@ public:
 	/**
 	 * Calculate the line-of-sight integration flags for a target cell.
 	 *
-	 * @param cost_field Cost field to integrate.
-	 * @param target_x X coordinate of the target cell.
-	 * @param target_y Y coordinate of the target cell.
-	 */
-	void integrate_los(const std::shared_ptr<CostField> &cost_field,
-	                   size_t target_x,
-	                   size_t target_y);
-
-	/**
-	 * Calculate the cost integration field for a target cell.
+	 * Returns a list of cells that are flagged as "wavefront blocked". These cells
+	 * can be used as a starting point for the cost integration.
 	 *
 	 * @param cost_field Cost field to integrate.
 	 * @param target_x X coordinate of the target cell.
 	 * @param target_y Y coordinate of the target cell.
+	 *
+	 * @return Cells flagged as "wavefront blocked".
+	 */
+	std::vector<size_t> integrate_los(const std::shared_ptr<CostField> &cost_field,
+	                                  size_t target_x,
+	                                  size_t target_y);
+
+	/**
+	 * Calculate the cost integration field starting from a target cell.
+	 *
+	 * @param cost_field Cost field to integrate.
+	 * @param target_x X coordinate of the target cell.
+	 * @param target_y Y coordinate of the target cell.
+	 * @param start_cells Cells flagged as "wavefront blocked" from a LOS pass.
 	 */
 	void integrate_cost(const std::shared_ptr<CostField> &cost_field,
 	                    size_t target_x,
 	                    size_t target_y);
+
+	/**
+	 * Calculate the cost integration field starting from a wavefront.
+	 *
+	 * @param cost_field Cost field to integrate.
+	 * @param start_cells Cells flagged as "wavefront blocked" from a LOS pass.
+	 */
+	void integrate_cost(const std::shared_ptr<CostField> &cost_field,
+	                    std::vector<size_t> &&start_cells = {});
 
 	/**
 	 * Get the integration field values.
