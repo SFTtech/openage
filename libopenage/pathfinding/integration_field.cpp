@@ -31,14 +31,17 @@ const integrate_t &IntegrationField::get_cell(size_t idx) const {
 	return this->cells.at(idx);
 }
 
-void IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_field,
-                                     size_t target_x,
-                                     size_t target_y) {
+std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_field,
+                                                    size_t target_x,
+                                                    size_t target_y) {
 	ENSURE(cost_field->get_size() == this->get_size(),
 	       "cost field size "
 	           << cost_field->get_size() << "x" << cost_field->get_size()
 	           << " does not match integration field size "
 	           << this->get_size() << "x" << this->get_size());
+
+	// Store the wavefront cells
+	std::vector<size_t> wavefront;
 
 	// Target cell index
 	auto target_idx = target_x + target_y * this->size;
@@ -84,6 +87,7 @@ void IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_fiel
 				for (auto &blocked_idx : blocked_cells) {
 					this->cells[blocked_idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
 				}
+				wavefront.insert(wavefront.end(), blocked_cells.begin(), blocked_cells.end());
 			}
 
 			continue;
@@ -106,6 +110,8 @@ void IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_fiel
 			open_list.push_back(idx + 1);
 		}
 	}
+
+	return wavefront;
 }
 
 void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_field,
@@ -120,6 +126,13 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 	// Target cell index
 	auto target_idx = target_x + target_y * this->size;
 
+	// Move outwards from the target cell, updating the integration field
+	this->cells[target_idx].cost = INTEGRATED_COST_START;
+	this->integrate_cost(cost_field, {target_idx});
+}
+
+void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_field,
+                                      std::vector<size_t> &&start_cells) {
 	// Lookup table for cells that are in the open list
 	std::unordered_set<size_t> in_list;
 	in_list.reserve(this->size * this->size);
@@ -132,9 +145,8 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 	std::vector<size_t> neighbors;
 	neighbors.reserve(4);
 
-	// Move outwards from the target cell, updating the integration field
-	this->cells[target_idx].cost = INTEGRATED_COST_START;
-	open_list.push_back(target_idx);
+	// Move outwards from the wavefront, updating the integration field
+	open_list.insert(open_list.end(), start_cells.begin(), start_cells.end());
 	while (!open_list.empty()) {
 		auto idx = open_list.front();
 		open_list.pop_front();
@@ -199,6 +211,11 @@ void IntegrationField::update_neighbor(size_t idx,
 	if (cell_cost == COST_IMPASSABLE) {
 		return;
 	}
+
+	// if (this->cells.at(idx).flags & INTEGRATE_LOS_MASK) {
+	// 	// If the cell is part of the LOS, we don't need to update it
+	// 	return;
+	// }
 
 	auto cost = integrated_cost + cell_cost;
 	if (cost < this->cells.at(idx).cost) {
