@@ -44,9 +44,9 @@ void path_demo_0(const util::Path &path) {
 	auto integration_field = std::make_shared<IntegrationField>(field_length);
 	log::log(INFO << "Created integration field");
 
-	// Set cell (7, 7) to be the target cell
-	integration_field->integrate_los(cost_field, 7, 7);
-	integration_field->integrate_cost(cost_field, 7, 7);
+	// Set cell (7, 7) to be the initial target cell
+	auto wavefront_blocked = integration_field->integrate_los(cost_field, 7, 7);
+	integration_field->integrate_cost(cost_field, std::move(wavefront_blocked));
 	log::log(INFO << "Calculated integration field for target cell (7, 7)");
 
 	// Create a flow field from the integration field
@@ -83,8 +83,8 @@ void path_demo_0(const util::Path &path) {
 
 					// Recalculate the integration field and the flow field
 					integration_field->reset();
-					integration_field->integrate_los(cost_field, grid_x, grid_y);
-					integration_field->integrate_cost(cost_field, grid_x, grid_y);
+					auto wavefront_blocked = integration_field->integrate_los(cost_field, grid_x, grid_y);
+					integration_field->integrate_cost(cost_field, std::move(wavefront_blocked));
 					log::log(INFO << "Calculated integration field for target cell ("
 					              << grid_x << ", " << grid_y << ")");
 
