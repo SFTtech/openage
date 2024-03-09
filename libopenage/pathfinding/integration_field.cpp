@@ -87,6 +87,13 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 			auto cell_cost = cost_field->get_cost(idx);
 
 			if (cell_cost > COST_MIN) {
+				if (cell_cost != COST_IMPASSABLE) {
+					// Add the current cell to the blocked wavefront if it's not a wall
+					wavefront_blocked.push_back(idx);
+					this->cells[idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
+					this->cells[idx].cost = cost - 1 + cost_field->get_cost(idx);
+				}
+
 				// check each neighbor for a corner
 				auto corners = this->get_los_corners(cost_field, target_x, target_y, x, y);
 
@@ -98,7 +105,6 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 					}
 					wavefront_blocked.insert(wavefront_blocked.end(), blocked_cells.begin(), blocked_cells.end());
 				}
-
 				continue;
 			}
 
@@ -228,11 +234,6 @@ void IntegrationField::update_neighbor(size_t idx,
 	if (cell_cost == COST_IMPASSABLE) {
 		return;
 	}
-
-	// if (this->cells.at(idx).flags & INTEGRATE_LOS_MASK) {
-	// 	// If the cell is part of the LOS, we don't need to update it
-	// 	return;
-	// }
 
 	auto cost = integrated_cost + cell_cost;
 	if (cost < this->cells.at(idx).cost) {
