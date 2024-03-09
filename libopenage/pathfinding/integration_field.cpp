@@ -71,8 +71,9 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 				continue;
 			}
 			else if (this->cells[idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
-				// Skip cells that are blocked by a LOS corner
+				// Stop at cells that are blocked by a LOS corner
 				this->cells[idx].cost = cost - 1 + cost_field->get_cost(idx);
+				found.insert(idx);
 				continue;
 			}
 
@@ -90,7 +91,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 				if (cell_cost != COST_IMPASSABLE) {
 					// Add the current cell to the blocked wavefront if it's not a wall
 					wavefront_blocked.push_back(idx);
-					this->cells[idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
+					// this->cells[idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
 					this->cells[idx].cost = cost - 1 + cost_field->get_cost(idx);
 				}
 
@@ -100,7 +101,10 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 				for (auto &corner : corners) {
 					auto blocked_cells = this->bresenhams_line(target_x, target_y, corner.first, corner.second);
 					for (auto &blocked_idx : blocked_cells) {
-						// TODO: stop if blocked_idx is impassable
+						if (cost_field->get_cost(blocked_idx) == COST_IMPASSABLE) {
+							// stop if blocked_idx is impassable
+							break;
+						}
 						this->cells[blocked_idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
 					}
 					wavefront_blocked.insert(wavefront_blocked.end(), blocked_cells.begin(), blocked_cells.end());
