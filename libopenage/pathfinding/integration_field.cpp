@@ -401,76 +401,85 @@ std::vector<size_t> IntegrationField::bresenhams_line(int target_x,
                                                       int corner_y) {
 	std::vector<size_t> cells;
 
-	auto x = corner_x;
-	auto y = corner_y;
+	// cell coordinates
+	// these have to be offset depending on the line direction
+	auto cell_x = corner_x;
+	auto cell_y = corner_y;
+
+	// field edge boundary
+	int boundary = this->size;
+
+	// target coordinates
+	// offset by 0.5 to get the center of the cell
 	double tx = target_x + 0.5;
 	double ty = target_y + 0.5;
+
+	// slope of the line
 	double dx = std::abs(tx - corner_x);
 	double dy = std::abs(ty - corner_y);
 	auto m = dy / dx;
 
+	// error margin for the line
+	// if the error is greater than 1.0, we have to move in the y direction
 	auto error = m;
 
 	// Check which direction the line is going
 	if (corner_x < tx) {
-		if (corner_y < ty) {
-			// left and up
-			y -= 1;
-			x -= 1;
-			while (x >= 0 and y >= 0) {
-				cells.push_back(x + y * this->size);
+		if (corner_y < ty) { // left and up
+			cell_y -= 1;
+			cell_x -= 1;
+			while (cell_x >= 0 and cell_y >= 0) {
+				cells.push_back(cell_x + cell_y * this->size);
 				if (error > 1.0) {
-					y -= 1;
+					cell_y -= 1;
 					error -= 1.0;
 				}
 				else {
-					x -= 1;
+					cell_x -= 1;
 					error += m;
 				}
 			}
 		}
-		else {
-			// left and down
-			x -= 1;
-			while (x >= 0 and y < this->size) {
-				cells.push_back(x + y * this->size);
+
+		else { // left and down
+			cell_x -= 1;
+			while (cell_x >= 0 and cell_y < boundary) {
+				cells.push_back(cell_x + cell_y * this->size);
 				if (error > 1.0) {
-					y += 1;
+					cell_y += 1;
 					error -= 1.0;
 				}
 				else {
-					x -= 1;
+					cell_x -= 1;
 					error += m;
 				}
 			}
 		}
 	}
 	else {
-		if (corner_y < ty) {
-			// right and up
-			y -= 1;
-			while (x < this->size and y >= 0) {
-				cells.push_back(x + y * this->size);
+		if (corner_y < ty) { // right and up
+			cell_y -= 1;
+			while (cell_x < boundary and cell_y >= 0) {
+				cells.push_back(cell_x + cell_y * this->size);
 				if (error > 1.0) {
-					y -= 1;
+					cell_y -= 1;
 					error -= 1.0;
 				}
 				else {
-					x += 1;
+					cell_x += 1;
 					error += m;
 				}
 			}
 		}
-		else {
-			// right and down
-			while (x < this->size and y < this->size) {
-				cells.push_back(x + y * this->size);
+		else { // right and down
+			while (cell_x < boundary and cell_y < boundary) {
+				cells.push_back(cell_x + cell_y * this->size);
 				if (error > 1.0) {
-					y += 1;
+					cell_y += 1;
 					error -= 1.0;
 				}
 				else {
-					x += 1;
+					cell_x += 1;
 					error += m;
 				}
 			}
