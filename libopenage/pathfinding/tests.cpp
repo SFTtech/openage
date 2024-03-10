@@ -327,22 +327,6 @@ void flow_field() {
 	// | 1 | 1 | 1 |
 	cost_field->set_costs({1, 1, 1, 1, 255, 1, 1, 1, 1});
 
-	// The flow field for targeting (2, 2) hould look like this:
-	// | E  | SE | S |
-	// | SE | X  | S |
-	// | E  | E  | N |
-	auto ff_expected = std::vector<flow_t>{
-		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::EAST),
-		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
-		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH),
-		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
-		0,
-		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH),
-		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::EAST),
-		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::EAST),
-		FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::NORTH),
-	};
-
 	// Test the different field types
 	{
 		auto integration_field = std::make_shared<IntegrationField>(3);
@@ -363,6 +347,22 @@ void flow_field() {
 			2,
 			1,
 			0,
+		};
+
+		// The flow field for targeting (2, 2) hould look like this:
+		// | E  | SE | S |
+		// | SE | X  | S |
+		// | E  | E  | N |
+		auto ff_expected = std::vector<flow_t>{
+			FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::EAST),
+			FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
+			FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH),
+			FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
+			0,
+			FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH),
+			FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::EAST),
+			FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::EAST),
+			FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::NORTH),
 		};
 
 		// Compare the integration field cells with the expected values
@@ -390,6 +390,22 @@ void flow_field() {
 		// Build the flow field
 		auto flow_field = integrator->build(2, 2);
 		auto ff_cells = flow_field->get_cells();
+
+		// The flow field for targeting (2, 2) hould look like this:
+		// | E  | SE | S |
+		// | SE | X  | S |
+		// | E  | E  | N |
+		auto ff_expected = std::vector<flow_t>{
+			FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::EAST),
+			FLOW_WAVEFRONT_BLOCKED_MASK | FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
+			FLOW_LOS_MASK | FLOW_PATHABLE_MASK,
+			FLOW_WAVEFRONT_BLOCKED_MASK | FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
+			0,
+			FLOW_LOS_MASK | FLOW_PATHABLE_MASK,
+			FLOW_LOS_MASK | FLOW_PATHABLE_MASK,
+			FLOW_LOS_MASK | FLOW_PATHABLE_MASK,
+			FLOW_LOS_MASK | FLOW_PATHABLE_MASK,
+		};
 
 		// Compare the flow field cells with the expected values
 		for (size_t i = 0; i < ff_cells.size(); i++) {
