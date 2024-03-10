@@ -56,6 +56,10 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integrate_field) 
 			if (integrate_cells[idx].flags & INTEGRATE_LOS_MASK) {
 				// Cell is in line of sight
 				this->cells[idx] = this->cells[idx] | FLOW_LOS_MASK;
+
+				// we can skip calculating the flow direction as we can
+				// move straight to the target from this cell
+				this->cells[idx] = this->cells[idx] | FLOW_PATHABLE_MASK;
 				continue;
 			}
 
