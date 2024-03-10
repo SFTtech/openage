@@ -88,24 +88,30 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 			auto cell_cost = cost_field->get_cost(idx);
 
 			if (cell_cost > COST_MIN) {
+				// cell blocks line of sight
+				// and we have to check for corners
 				if (cell_cost != COST_IMPASSABLE) {
 					// Add the current cell to the blocked wavefront if it's not a wall
 					wavefront_blocked.push_back(idx);
-					// this->cells[idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
 					this->cells[idx].cost = cost - 1 + cost_field->get_cost(idx);
 				}
 
 				// check each neighbor for a corner
 				auto corners = this->get_los_corners(cost_field, target_x, target_y, x, y);
-
 				for (auto &corner : corners) {
+					// draw a line from the corner to the edge of the field
+					// to get the cells blocked by the corner
 					auto blocked_cells = this->bresenhams_line(target_x, target_y, corner.first, corner.second);
 					for (auto &blocked_idx : blocked_cells) {
-						if (cost_field->get_cost(blocked_idx) == COST_IMPASSABLE) {
+						if (cost_field->get_cost(blocked_idx) > COST_MIN) {
 							// stop if blocked_idx is impassable
 							break;
 						}
+						// set the blocked flag for the cell
 						this->cells[blocked_idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
+
+						// clear los flag if it was set
+						this->cells[blocked_idx].flags &= ~INTEGRATE_LOS_MASK;
 					}
 					wavefront_blocked.insert(wavefront_blocked.end(), blocked_cells.begin(), blocked_cells.end());
 				}
@@ -403,14 +409,16 @@ std::vector<size_t> IntegrationField::bresenhams_line(int target_x,
 	double dy = std::abs(ty - corner_y);
 	auto m = dy / dx;
 
-	auto error = 0.5;
+	auto error = m;
 
 	// Check which direction the line is going
 	if (corner_x < tx) {
 		if (corner_y < ty) {
 			// left and up
 			y -= 1;
-			while (x > 0 and y > 0) {
+			x -= 1;
+			while (x >= 0 and y >= 0) {
+				cells.push_back(x + y * this->size);
 				if (error > 1.0) {
 					y -= 1;
 					error -= 1.0;
@@ -419,12 +427,13 @@ std::vector<size_t> IntegrationField::bresenhams_line(int target_x,
 					x -= 1;
 					error += m;
 				}
-				cells.push_back(x + y * this->size);
 			}
 		}
 		else {
 			// left and down
-			while (x > 0 and y < this->size - 1) {
+			x -= 1;
+			while (x >= 0 and y < this->size) {
+				cells.push_back(x + y * this->size);
 				if (error > 1.0) {
 					y += 1;
 					error -= 1.0;
@@ -433,16 +442,15 @@ std::vector<size_t> IntegrationField::bresenhams_line(int target_x,
 					x -= 1;
 					error += m;
 				}
-				cells.push_back(x + y * this->size);
 			}
 		}
 	}
 	else {
 		if (corner_y < ty) {
 			// right and up
-			x -= 1;
 			y -= 1;
-			while (x < this->size - 1 and y > 0) {
+			while (x < this->size and y >= 0) {
+				cells.push_back(x + y * this->size);
 				if (error > 1.0) {
 					y -= 1;
 					error -= 1.0;
@@ -451,13 +459,12 @@ std::vector<size_t> IntegrationField::bresenhams_line(int target_x,
 					x += 1;
 					error += m;
 				}
-				cells.push_back(x + y * this->size);
 			}
 		}
 		else {
 			// right and down
-			x -= 1;
-			while (x < this->size - 1 and y < this->size - 1) {
+			while (x < this->size and y < this->size) {
+				cells.push_back(x + y * this->size);
 				if (error > 1.0) {
 					y += 1;
 					error -= 1.0;
@@ -466,7 +473,6 @@ std::vector<size_t> IntegrationField::bresenhams_line(int target_x,
 					x += 1;
 					error += m;
 				}
-				cells.push_back(x + y * this->size);
 			}
 		}
 	}
