@@ -106,6 +106,8 @@ private:
 	 * @param idx Index of the neighbor cell that is updated.
 	 * @param cell_cost Cost of the neighbor cell from the cost field.
 	 * @param integrated_cost Current integrated cost of the updating cell in the integration field.
+	 * @param open_list List of cells to be updated.
+	 * @param in_list Set of cells that have been updated.
 	 *
 	 * @return New integration value of the cell.
 	 */
@@ -119,10 +121,12 @@ private:
 	 * Get the LOS corners around a cell.
 	 *
 	 * @param cost_field Cost field to integrate.
-	 * @param target_x X coordinate of the target.
-	 * @param target_y Y coordinate of the target.
-	 * @param blocker_x X coordinate of the cell blocking LOS.
-	 * @param blocker_y Y coordinate of the cell blocking LOS.
+	 * @param target_x X cell coordinate of the target.
+	 * @param target_y Y cell coordinate of the target.
+	 * @param blocker_x X cell coordinate of the cell blocking LOS.
+	 * @param blocker_y Y cell coordinate of the cell blocking LOS.
+	 *
+	 * @return Field coordinates of the LOS corners.
 	 */
 	std::vector<std::pair<size_t, size_t>> get_los_corners(const std::shared_ptr<CostField> &cost_field,
 	                                                       size_t target_x,
@@ -133,10 +137,15 @@ private:
 	/**
 	 * Get the cells in a bresenham's line between the corner cell and the field edge.
 	 *
-	 * @param target_x X coordinate of the target.
-	 * @param target_y Y coordinate of the target.
-	 * @param corner_x X coordinate edge of the LOS corner.
-	 * @param corner_y Y coordinate edge of the LOS corner.
+	 * This function is a modified version of the bresenham's line algorithm that
+	 * retrieves the cells between the corner point and the field's edge, rather than
+	 * the cells between two arbitrary points. We do this because the intersection
+	 * point with the field edge is unknown.
+	 *
+	 * @param target_x X cell coordinate of the target.
+	 * @param target_y Y cell coordinate of the target.
+	 * @param corner_x X field coordinate edge of the LOS corner.
+	 * @param corner_y Y field coordinate edge of the LOS corner.
 	 */
 	std::vector<size_t> bresenhams_line(int target_x,
 	                                    int target_y,
