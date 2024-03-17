@@ -7,10 +7,8 @@
 
 namespace openage::path {
 
-Portal::Portal(std::shared_ptr<CostField> sector0,
-               std::shared_ptr<CostField> sector1,
-               std::vector<std::shared_ptr<Portal>> sector0_exits,
-               std::vector<std::shared_ptr<Portal>> sector1_exits,
+Portal::Portal(sector_id_t sector0,
+               sector_id_t sector1,
                PortalDirection direction,
                size_t cell_start_x,
                size_t cell_start_y,
@@ -18,8 +16,8 @@ Portal::Portal(std::shared_ptr<CostField> sector0,
                size_t cell_end_y) :
 	sector0{sector0},
 	sector1{sector1},
-	sector0_exits{sector0_exits},
-	sector1_exits{sector1_exits},
+	sector0_exits{},
+	sector1_exits{},
 	direction{direction},
 	cell_start_x{cell_start_x},
 	cell_start_y{cell_start_y},
@@ -27,7 +25,7 @@ Portal::Portal(std::shared_ptr<CostField> sector0,
 	cell_end_y{cell_end_y} {
 }
 
-const std::vector<std::shared_ptr<Portal>> &Portal::get_exits(const std::shared_ptr<CostField> &entry_sector) const {
+const std::vector<std::shared_ptr<Portal>> &Portal::get_exits(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -36,7 +34,18 @@ const std::vector<std::shared_ptr<Portal>> &Portal::get_exits(const std::shared_
 	return this->sector0_exits;
 }
 
-const std::shared_ptr<CostField> &Portal::get_exit_sector(const std::shared_ptr<CostField> &entry_sector) const {
+void Portal::set_exits(sector_id_t sector, const std::vector<std::shared_ptr<Portal>> &exits) {
+	ENSURE(sector == this->sector0 || sector == this->sector1, "Portal does not connect to sector");
+
+	if (sector == this->sector0) {
+		this->sector0_exits = exits;
+	}
+	else {
+		this->sector1_exits = exits;
+	}
+}
+
+sector_id_t Portal::get_exit_sector(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -45,7 +54,7 @@ const std::shared_ptr<CostField> &Portal::get_exit_sector(const std::shared_ptr<
 	return this->sector0;
 }
 
-std::pair<size_t, size_t> Portal::get_entry_start(const std::shared_ptr<CostField> &entry_sector) const {
+std::pair<size_t, size_t> Portal::get_entry_start(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -55,7 +64,7 @@ std::pair<size_t, size_t> Portal::get_entry_start(const std::shared_ptr<CostFiel
 	return this->get_sector1_start();
 }
 
-std::pair<size_t, size_t> Portal::get_entry_end(const std::shared_ptr<CostField> &entry_sector) const {
+std::pair<size_t, size_t> Portal::get_entry_end(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -65,7 +74,7 @@ std::pair<size_t, size_t> Portal::get_entry_end(const std::shared_ptr<CostField>
 	return this->get_sector1_end();
 }
 
-std::pair<size_t, size_t> Portal::get_exit_start(const std::shared_ptr<CostField> &entry_sector) const {
+std::pair<size_t, size_t> Portal::get_exit_start(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -75,7 +84,7 @@ std::pair<size_t, size_t> Portal::get_exit_start(const std::shared_ptr<CostField
 	return this->get_sector0_start();
 }
 
-std::pair<size_t, size_t> Portal::get_exit_end(const std::shared_ptr<CostField> &entry_sector) const {
+std::pair<size_t, size_t> Portal::get_exit_end(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {

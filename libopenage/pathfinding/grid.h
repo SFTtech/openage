@@ -3,29 +3,42 @@
 #pragma once
 
 #include <cstddef>
+#include <memory>
 #include <utility>
 #include <vector>
 
-#include "pathfinding/cost_field.h"
+#include "pathfinding/types.h"
 
 
 namespace openage::path {
+class Sector;
 
 /**
- * Grid of cost fields for flow field pathfinding.
+ * Grid for flow field pathfinding.
  */
-class CostGrid {
+class Grid {
 public:
 	/**
-	 * Create a grid with a specified size and field size.
+	 * Create a new empty grid of width x height sectors with a specified size.
 	 *
 	 * @param width Width of the grid.
 	 * @param height Height of the grid.
-	 * @param field_size Size of the cost fields.
+	 * @param sector_size Side length of each sector.
 	 */
-	CostGrid(size_t width,
-	         size_t height,
-	         size_t field_size);
+	Grid(size_t width,
+	     size_t height,
+	     size_t sector_size);
+
+	/**
+	 * Create a grid of width x height sectors from a list of existing sectors.
+	 *
+	 * @param width Width of the grid.
+	 * @param height Height of the grid.
+	 * @param sectors Existing sectors.
+	 */
+	Grid(size_t width,
+	     size_t height,
+	     std::vector<std::shared_ptr<Sector>> &&sectors);
 
 	/**
 	 * Get the size of the grid.
@@ -35,13 +48,23 @@ public:
 	std::pair<size_t, size_t> get_size() const;
 
 	/**
-	 * Get the cost field at a specified position.
+	 * Get the sector at a specified position.
 	 *
 	 * @param x X coordinate.
 	 * @param y Y coordinate.
-	 * @return Cost field at the specified position.
+	 *
+	 * @return Sector at the specified position.
 	 */
-	CostField &get_field(size_t x, size_t y);
+	const std::shared_ptr<Sector> &get_sector(size_t x, size_t y);
+
+	/**
+	 * Get the sector with a specified ID
+	 *
+	 * @param id ID of the sector.
+	 *
+	 * @return Sector with the specified ID.
+	 */
+	const std::shared_ptr<Sector> &get_sector(sector_id_t id) const;
 
 private:
 	/**
@@ -55,9 +78,9 @@ private:
 	size_t height;
 
 	/**
-	 * Cost fields.
+	 * Sectors of the grid.
 	 */
-	std::vector<CostField> fields;
+	std::vector<std::shared_ptr<Sector>> sectors;
 };
 
 

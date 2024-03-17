@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <cstddef>
 #include <cstdint>
 
 
@@ -54,5 +55,10 @@ struct integrate_t {
  * Bits 4-7: flow direction.
  */
 using flow_t = uint8_t;
+
+/**
+ * Sector identifier on a grid.
+ */
+using sector_id_t = size_t;
 
 } // namespace openage::path
