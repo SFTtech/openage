@@ -5,6 +5,7 @@ add_sources(libopenage
 	grid.cpp
 	integration_field.cpp
     integrator.cpp
+	pathfinder.cpp
 	portal.cpp
 	sector.cpp
 	tests.cpp
