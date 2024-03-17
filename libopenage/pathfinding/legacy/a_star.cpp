@@ -14,11 +14,11 @@
 
 #include <cmath>
 
-#include "../datastructure/pairing_heap.h"
-#include "../log/log.h"
-#include "../util/strings.h"
-#include "heuristics.h"
-#include "path.h"
+#include "datastructure/pairing_heap.h"
+#include "log/log.h"
+#include "pathfinding/legacy/heuristics.h"
+#include "pathfinding/legacy/path.h"
+#include "util/strings.h"
 
 
 namespace openage {

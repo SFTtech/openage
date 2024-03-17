@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-#include "path.h"
+#include "pathfinding/legacy/path.h"
 
 namespace openage::path {
 

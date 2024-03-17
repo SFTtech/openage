@@ -7,11 +7,11 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../coord/phys.h"
-#include "../coord/tile.h"
-#include "../datastructure/pairing_heap.h"
-#include "../util/hash.h"
-#include "../util/misc.h"
+#include "coord/phys.h"
+#include "coord/tile.h"
+#include "datastructure/pairing_heap.h"
+#include "util/hash.h"
+#include "util/misc.h"
 
 
 namespace openage {
