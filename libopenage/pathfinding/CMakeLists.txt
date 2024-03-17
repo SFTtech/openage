@@ -3,6 +3,7 @@ add_sources(libopenage
     cost_field.cpp
 	definitions.cpp
     flow_field.cpp
+	grid.cpp
 	heuristics.cpp
 	integration_field.cpp
     integrator.cpp
