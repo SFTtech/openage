@@ -2,10 +2,11 @@
 
 #pragma once
 
-
 #include <memory>
+#include <utility>
+#include <vector>
 
-#include "pathfinding/cost_field.h"
+#include "pathfinding/types.h"
 
 
 namespace openage::path {
@@ -45,18 +46,14 @@ public:
 	 *                Must be north or east on the grid in relation to sector 1.
 	 * @param sector1 Second sector connected by the portal.
 	 *                Must be south or west on the grid in relation to sector 0.
-	 * @param sector0_exits Portals reachable from this portal in sector 0.
-	 * @param sector1_exits Portals reachable from this portal in sector 1.
 	 * @param direction Direction of the portal from sector 0 to sector 1.
 	 * @param cell_start_x Start cell x coordinate in sector 0.
 	 * @param cell_start_y Start cell y coordinate in sector 0.
 	 * @param cell_end_x End cell x coordinate in sector 0.
 	 * @param cell_end_y End cell y coordinate in sector 0.
 	 */
-	Portal(std::shared_ptr<CostField> sector0,
-	       std::shared_ptr<CostField> sector1,
-	       std::vector<std::shared_ptr<Portal>> sector0_exits,
-	       std::vector<std::shared_ptr<Portal>> sector1_exits,
+	Portal(sector_id_t sector0,
+	       sector_id_t sector1,
 	       PortalDirection direction,
 	       size_t cell_start_x,
 	       size_t cell_start_y,
@@ -72,7 +69,15 @@ public:
 	 *
 	 * @return Exit portals reachable from the portal.
 	 */
-	const std::vector<std::shared_ptr<Portal>> &get_exits(const std::shared_ptr<CostField> &entry_sector) const;
+	const std::vector<std::shared_ptr<Portal>> &get_exits(sector_id_t entry_sector) const;
+
+	/**
+	 * Set the exit portals reachable for a specified sector.
+	 *
+	 * @param sector Sector for which the exit portals are set.
+	 * @param exits Exit portals reachable from the portal.
+	 */
+	void set_exits(sector_id_t sector, const std::vector<std::shared_ptr<Portal>> &exits);
 
 	/**
 	 * Get the cost field of the sector where the portal is exited.
@@ -81,7 +86,7 @@ public:
 	 *
 	 * @return Cost field of the sector where the portal is exited.
 	 */
-	const std::shared_ptr<CostField> &get_exit_sector(const std::shared_ptr<CostField> &entry_sector) const;
+	sector_id_t get_exit_sector(sector_id_t entry_sector) const;
 
 	/**
 	 * Get the cost field of the sector from which the portal is entered.
@@ -90,7 +95,7 @@ public:
 	 *
 	 * @return Cost field of the sector from which the portal is entered.
 	 */
-	std::pair<size_t, size_t> get_entry_start(const std::shared_ptr<CostField> &entry_sector) const;
+	std::pair<size_t, size_t> get_entry_start(sector_id_t entry_sector) const;
 
 	/**
 	 * Get the cell coordinates of the start of the portal in the entry sector.
@@ -99,7 +104,7 @@ public:
 	 *
 	 * @return Cell coordinates of the start of the portal in the entry sector.
 	 */
-	std::pair<size_t, size_t> get_entry_end(const std::shared_ptr<CostField> &entry_sector) const;
+	std::pair<size_t, size_t> get_entry_end(sector_id_t entry_sector) const;
 
 	/**
 	 * Get the cell coordinates of the start of the portal in the exit sector.
@@ -108,7 +113,7 @@ public:
 	 *
 	 * @return Cell coordinates of the start of the portal in the exit sector.
 	 */
-	std::pair<size_t, size_t> get_exit_start(const std::shared_ptr<CostField> &entry_sector) const;
+	std::pair<size_t, size_t> get_exit_start(sector_id_t entry_sector) const;
 
 	/**
 	 * Get the cell coordinates of the end of the portal in the exit sector.
@@ -117,7 +122,7 @@ public:
 	 *
 	 * @return Cell coordinates of the end of the portal in the exit sector.
 	 */
-	std::pair<size_t, size_t> get_exit_end(const std::shared_ptr<CostField> &entry_sector) const;
+	std::pair<size_t, size_t> get_exit_end(sector_id_t entry_sector) const;
 
 private:
 	/**
@@ -149,47 +154,47 @@ private:
 	std::pair<size_t, size_t> get_sector1_end() const;
 
 	/**
-	 * Sector 0
+	 * First sector connected by the portal.
 	 */
-	std::shared_ptr<CostField> sector0;
+	sector_id_t sector0;
 
 	/**
-	 * Sector 1
+	 * Second sector connected by the portal.
 	 */
-	std::shared_ptr<CostField> sector1;
+	sector_id_t sector1;
 
 	/**
-	 * Exits from sector 0
+	 * Exits in sector 0 reachable from the portal.
 	 */
 	std::vector<std::shared_ptr<Portal>> sector0_exits;
 
 	/**
-	 * Exits from sector 1
+	 * Exits in sector 1 reachable from the portal.
 	 */
 	std::vector<std::shared_ptr<Portal>> sector1_exits;
 
 	/**
-	 * Direction of the portal
+	 * Direction of the portal from sector 0 to sector 1.
 	 */
 	PortalDirection direction;
 
 	/**
-	 * Start cell x coordinate
+	 * Start cell x coordinate.
 	 */
 	size_t cell_start_x;
 
 	/**
-	 * Start cell y coordinate
+	 * Start cell y coordinate.
 	 */
 	size_t cell_start_y;
 
 	/**
-	 * End cell x coordinate
+	 * End cell x coordinate.
 	 */
 	size_t cell_end_x;
 
 	/**
-	 * End cell y coordinate
+	 * End cell y coordinate.
 	 */
 	size_t cell_end_y;
 };
