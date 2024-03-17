@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "path.h"
+#include "pathfinding/legacy/path.h"
 
 namespace openage {
 namespace path {

@@ -1,13 +1,10 @@
 add_sources(libopenage
-	a_star.cpp
     cost_field.cpp
 	definitions.cpp
     flow_field.cpp
 	grid.cpp
-	heuristics.cpp
 	integration_field.cpp
     integrator.cpp
-	path.cpp
 	portal.cpp
 	sector.cpp
 	tests.cpp
@@ -15,3 +12,4 @@ add_sources(libopenage
 )
 
 add_subdirectory("demo")
+add_subdirectory("legacy")
