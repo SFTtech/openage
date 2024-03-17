@@ -8,6 +8,7 @@ add_sources(libopenage
 	integration_field.cpp
     integrator.cpp
 	path.cpp
+	portal.cpp
 	tests.cpp
     types.cpp
 )
