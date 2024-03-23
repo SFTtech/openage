@@ -57,8 +57,18 @@ struct integrate_t {
 using flow_t = uint8_t;
 
 /**
- * Sector identifier on a grid.
+ * Grid identifier.
+ */
+using grid_id_t = size_t;
+
+/**
+ * Sector identifier (unique per grid).
  */
 using sector_id_t = size_t;
+
+/**
+ * Portal identifier (unique per grid).
+ */
+using portal_id_t = size_t;
 
 } // namespace openage::path

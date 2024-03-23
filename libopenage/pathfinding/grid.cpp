@@ -2,12 +2,15 @@
 
 #include "grid.h"
 
+#include "error/error.h"
+
 #include "pathfinding/sector.h"
 
 
 namespace openage::path {
 
-Grid::Grid(size_t width, size_t height, size_t sector_size) :
+Grid::Grid(grid_id_t id, size_t width, size_t height, size_t sector_size) :
+	id{id},
 	width{width},
 	height{height} {
 	for (size_t y = 0; y < height; y++) {
@@ -17,12 +20,21 @@ Grid::Grid(size_t width, size_t height, size_t sector_size) :
 	}
 }
 
-Grid::Grid(size_t width,
+Grid::Grid(grid_id_t id,
+           size_t width,
            size_t height,
            std::vector<std::shared_ptr<Sector>> &&sectors) :
+	id{id},
 	width{width},
 	height{height},
 	sectors{std::move(sectors)} {
+	ENSURE(this->sectors.size() == width * height,
+	       "Grid has size " << width << "x" << height << " (" << width * height << " sectors), "
+	                        << "but only " << this->sectors.size() << " sectors were provided");
+}
+
+grid_id_t Grid::get_id() const {
+	return this->id;
 }
 
 std::pair<size_t, size_t> Grid::get_size() const {

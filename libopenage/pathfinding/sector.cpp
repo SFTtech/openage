@@ -37,7 +37,8 @@ void Sector::add_portal(const std::shared_ptr<Portal> &portal) {
 }
 
 std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<Sector> &other,
-                                                          PortalDirection direction) const {
+                                                          PortalDirection direction,
+                                                          portal_id_t next_id) const {
 	ENSURE(this->cost_field->get_size() == other->get_cost_field()->get_size(), "Sector size mismatch");
 
 	std::vector<std::shared_ptr<Portal>> result;
@@ -62,6 +63,7 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 				if (passable_edge) {
 					result.push_back(
 						std::make_shared<Portal>(
+							next_id,
 							this->id,
 							other->get_id(),
 							direction,
@@ -70,6 +72,7 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 							x - 1,
 							0));
 					passable_edge = false;
+					next_id += 1;
 				}
 			}
 		}
@@ -90,6 +93,7 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 				if (passable_edge) {
 					result.push_back(
 						std::make_shared<Portal>(
+							next_id,
 							this->id,
 							other->get_id(),
 							direction,
@@ -98,6 +102,7 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 							0,
 							y - 1));
 					passable_edge = false;
+					next_id += 1;
 				}
 			}
 		}

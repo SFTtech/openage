@@ -12,8 +12,8 @@ Pathfinder::Pathfinder() :
 	integrator{std::make_shared<Integrator>()} {
 }
 
-const std::shared_ptr<Grid> &Pathfinder::get_grid(size_t idx) const {
-	return this->grids.at(idx);
+const std::shared_ptr<Grid> &Pathfinder::get_grid(size_t id) const {
+	return this->grids.at(id);
 }
 
 } // namespace openage::path

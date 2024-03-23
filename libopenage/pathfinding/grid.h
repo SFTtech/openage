@@ -21,24 +21,35 @@ public:
 	/**
 	 * Create a new empty grid of width x height sectors with a specified size.
 	 *
+	 * @param id ID of the grid.
 	 * @param width Width of the grid.
 	 * @param height Height of the grid.
 	 * @param sector_size Side length of each sector.
 	 */
-	Grid(size_t width,
+	Grid(grid_id_t id,
+	     size_t width,
 	     size_t height,
 	     size_t sector_size);
 
 	/**
 	 * Create a grid of width x height sectors from a list of existing sectors.
 	 *
+	 * @param id ID of the grid.
 	 * @param width Width of the grid.
 	 * @param height Height of the grid.
 	 * @param sectors Existing sectors.
 	 */
-	Grid(size_t width,
+	Grid(grid_id_t id,
+	     size_t width,
 	     size_t height,
 	     std::vector<std::shared_ptr<Sector>> &&sectors);
+
+	/**
+	 * Get the ID of the grid.
+	 *
+	 * @return ID of the grid.
+	 */
+	grid_id_t get_id() const;
 
 	/**
 	 * Get the size of the grid.
@@ -67,6 +78,11 @@ public:
 	const std::shared_ptr<Sector> &get_sector(sector_id_t id) const;
 
 private:
+	/**
+	 * ID of the grid.
+	 */
+	grid_id_t id;
+
 	/**
 	 * Width of the grid.
 	 */

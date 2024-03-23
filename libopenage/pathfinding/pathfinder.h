@@ -32,11 +32,11 @@ public:
 	/**
 	 * Get the grid at a specified index.
 	 *
-	 * @param idx Index of the grid.
+	 * @param id ID of the grid.
 	 *
 	 * @return Pathfinding grid.
 	 */
-	const std::shared_ptr<Grid> &get_grid(size_t idx) const;
+	const std::shared_ptr<Grid> &get_grid(size_t id) const;
 
 private:
 	/**

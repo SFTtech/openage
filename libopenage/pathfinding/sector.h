@@ -25,7 +25,7 @@ public:
 	/**
 	 * Create a new sector with a specified ID and an uninitialized cost field.
 	 *
-	 * @param id ID of the sector.
+	 * @param id ID of the sector. Should be unique per grid.
 	 * @param field_size Size of the cost field.
 	 */
 	Sector(sector_id_t id,
@@ -34,7 +34,7 @@ public:
 	/**
 	 * Create a new sector with a specified ID and an existing cost field.
 	 *
-	 * @param id ID of the sector.
+	 * @param id ID of the sector. Should be unique per grid.
 	 * @param cost_field Cost field of the sector.
 	 */
 	Sector(sector_id_t id,
@@ -42,6 +42,8 @@ public:
 
 	/**
 	 * Get the ID of this sector.
+	 *
+	 * IDs are unique per grid.
 	 *
 	 * @return ID of the sector.
 	 */
@@ -72,12 +74,14 @@ public:
 	 * Find portals connecting this sector to another sector.
 	 *
 	 * @param other Sector to which the portals should connect.
-	 * @param direction Direction from this sector to the other sector.
+	 * @param direction Direction from this sector to \p other sector.
+	 * @param next_id ID of the next portal to be created. Should be unique per grid.
 	 *
-	 * @return Portals connecting this sector to the other sector.
+	 * @return Portals connecting this sector to \p other sector.
 	 */
 	std::vector<std::shared_ptr<Portal>> find_portals(const std::shared_ptr<Sector> &other,
-	                                                  PortalDirection direction) const;
+	                                                  PortalDirection direction,
+	                                                  portal_id_t next_id) const;
 
 	/**
 	 * Connect all portals that are mutually reachable.
